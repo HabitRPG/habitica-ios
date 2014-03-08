@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D92CDADD18CB79E50006C242 /* HRPGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */; };
+		D92CDAE018CB83B90006C242 /* HRPGHabitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDADF18CB83B90006C242 /* HRPGHabitTableViewController.m */; };
+		D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE318CB83EF0006C242 /* HRPGDailyTableViewController.m */; };
+		D92CDAE718CB84000006C242 /* HRPGToDoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */; };
+		D92CDAEA18CB8C130006C242 /* HRPGAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE918CB8C130006C242 /* HRPGAddViewController.m */; };
+		D92CDAED18CBC8980006C242 /* HabitRPG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAEB18CBC8980006C242 /* HabitRPG.xcdatamodeld */; };
+		D92CDAF018CBC9160006C242 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAEF18CBC9160006C242 /* Task.m */; };
 		D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */; };
 		D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */; };
 		D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9218CB4A9400BB2094 /* UIKit.framework */; };
@@ -15,8 +22,6 @@
 		D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */; };
 		D9EB4EA218CB4A9400BB2094 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EA018CB4A9400BB2094 /* Main_iPhone.storyboard */; };
 		D9EB4EA518CB4A9400BB2094 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EA318CB4A9400BB2094 /* Main_iPad.storyboard */; };
-		D9EB4EA818CB4A9400BB2094 /* HRPGFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4EA718CB4A9400BB2094 /* HRPGFirstViewController.m */; };
-		D9EB4EAB18CB4A9400BB2094 /* HRPGSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4EAA18CB4A9400BB2094 /* HRPGSecondViewController.m */; };
 		D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */; };
 		D9EB4EB418CB4A9400BB2094 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4EB318CB4A9400BB2094 /* XCTest.framework */; };
 		D9EB4EB518CB4A9400BB2094 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */; };
@@ -36,6 +41,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D92CDADB18CB79E50006C242 /* HRPGTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTableViewController.h; sourceTree = "<group>"; };
+		D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTableViewController.m; sourceTree = "<group>"; };
+		D92CDADE18CB83B90006C242 /* HRPGHabitTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGHabitTableViewController.h; sourceTree = "<group>"; };
+		D92CDADF18CB83B90006C242 /* HRPGHabitTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGHabitTableViewController.m; sourceTree = "<group>"; };
+		D92CDAE218CB83EF0006C242 /* HRPGDailyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGDailyTableViewController.h; sourceTree = "<group>"; };
+		D92CDAE318CB83EF0006C242 /* HRPGDailyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGDailyTableViewController.m; sourceTree = "<group>"; };
+		D92CDAE518CB84000006C242 /* HRPGToDoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGToDoTableViewController.h; sourceTree = "<group>"; };
+		D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGToDoTableViewController.m; sourceTree = "<group>"; };
+		D92CDAE818CB8C130006C242 /* HRPGAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAddViewController.h; sourceTree = "<group>"; };
+		D92CDAE918CB8C130006C242 /* HRPGAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAddViewController.m; sourceTree = "<group>"; };
+		D92CDAEC18CBC8980006C242 /* HabitRPG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitRPG.xcdatamodel; sourceTree = "<group>"; };
+		D92CDAEE18CBC9160006C242 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		D92CDAEF18CBC9160006C242 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		D9EB4E8B18CB4A9400BB2094 /* HabitRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,10 +66,6 @@
 		D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRPGAppDelegate.m; sourceTree = "<group>"; };
 		D9EB4EA118CB4A9400BB2094 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		D9EB4EA418CB4A9400BB2094 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		D9EB4EA618CB4A9400BB2094 /* HRPGFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGFirstViewController.h; sourceTree = "<group>"; };
-		D9EB4EA718CB4A9400BB2094 /* HRPGFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRPGFirstViewController.m; sourceTree = "<group>"; };
-		D9EB4EA918CB4A9400BB2094 /* HRPGSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGSecondViewController.h; sourceTree = "<group>"; };
-		D9EB4EAA18CB4A9400BB2094 /* HRPGSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRPGSecondViewController.m; sourceTree = "<group>"; };
 		D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D9EB4EB218CB4A9400BB2094 /* HabitRPGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EB4EB318CB4A9400BB2094 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -84,6 +98,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D92CDAE118CB83C40006C242 /* TablewViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D92CDAE818CB8C130006C242 /* HRPGAddViewController.h */,
+				D92CDAE918CB8C130006C242 /* HRPGAddViewController.m */,
+				D92CDADB18CB79E50006C242 /* HRPGTableViewController.h */,
+				D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */,
+				D92CDADE18CB83B90006C242 /* HRPGHabitTableViewController.h */,
+				D92CDADF18CB83B90006C242 /* HRPGHabitTableViewController.m */,
+				D92CDAE218CB83EF0006C242 /* HRPGDailyTableViewController.h */,
+				D92CDAE318CB83EF0006C242 /* HRPGDailyTableViewController.m */,
+				D92CDAE518CB84000006C242 /* HRPGToDoTableViewController.h */,
+				D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */,
+			);
+			name = TablewViewController;
+			sourceTree = "<group>";
+		};
 		D9EB4E8218CB4A9400BB2094 = {
 			isa = PBXGroup;
 			children = (
@@ -117,14 +148,14 @@
 		D9EB4E9418CB4A9400BB2094 /* HabitRPG */ = {
 			isa = PBXGroup;
 			children = (
+				D92CDAE118CB83C40006C242 /* TablewViewController */,
 				D9EB4E9D18CB4A9400BB2094 /* HRPGAppDelegate.h */,
 				D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */,
 				D9EB4EA018CB4A9400BB2094 /* Main_iPhone.storyboard */,
 				D9EB4EA318CB4A9400BB2094 /* Main_iPad.storyboard */,
-				D9EB4EA618CB4A9400BB2094 /* HRPGFirstViewController.h */,
-				D9EB4EA718CB4A9400BB2094 /* HRPGFirstViewController.m */,
-				D9EB4EA918CB4A9400BB2094 /* HRPGSecondViewController.h */,
-				D9EB4EAA18CB4A9400BB2094 /* HRPGSecondViewController.m */,
+				D92CDAEB18CBC8980006C242 /* HabitRPG.xcdatamodeld */,
+				D92CDAEE18CBC9160006C242 /* Task.h */,
+				D92CDAEF18CBC9160006C242 /* Task.m */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				D9EB4E9518CB4A9400BB2094 /* Supporting Files */,
 			);
@@ -260,9 +291,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
-				D9EB4EAB18CB4A9400BB2094 /* HRPGSecondViewController.m in Sources */,
-				D9EB4EA818CB4A9400BB2094 /* HRPGFirstViewController.m in Sources */,
+				D92CDAE018CB83B90006C242 /* HRPGHabitTableViewController.m in Sources */,
+				D92CDAED18CBC8980006C242 /* HabitRPG.xcdatamodeld in Sources */,
+				D92CDADD18CB79E50006C242 /* HRPGTableViewController.m in Sources */,
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
+				D92CDAEA18CB8C130006C242 /* HRPGAddViewController.m in Sources */,
+				D92CDAE718CB84000006C242 /* HRPGToDoTableViewController.m in Sources */,
+				D92CDAF018CBC9160006C242 /* Task.m in Sources */,
+				D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +517,7 @@
 				D9EB4EC518CB4A9400BB2094 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D9EB4EC618CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "HabitRPGTests" */ = {
 			isa = XCConfigurationList;
@@ -489,8 +526,22 @@
 				D9EB4EC818CB4A9400BB2094 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D92CDAEB18CBC8980006C242 /* HabitRPG.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D92CDAEC18CBC8980006C242 /* HabitRPG.xcdatamodel */,
+			);
+			currentVersion = D92CDAEC18CBC8980006C242 /* HabitRPG.xcdatamodel */;
+			path = HabitRPG.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D9EB4E8318CB4A9400BB2094 /* Project object */;
 }
