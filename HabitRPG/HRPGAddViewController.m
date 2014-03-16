@@ -30,7 +30,7 @@
     [super viewDidLoad];
 
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
-    self.managedObjectContext = appdelegate.managedObjectContext;
+    self.managedObjectContext = appdelegate.sharedManager.getManagedObjectContext;
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,18 +75,10 @@
     Task *task = [NSEntityDescription
                   insertNewObjectForEntityForName:@"Task"
                   inManagedObjectContext:context];
-    task.name = self.nameField.text;
+    task.text = self.nameField.text;
     NSError *error;
     if (![context save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task"
-                                              inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    for (Task *task in fetchedObjects) {
-        NSLog(@"Name: %@", task.name);
     }
 }
 

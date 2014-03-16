@@ -2,7 +2,7 @@
 //  Task.m
 //  HabitRPG
 //
-//  Created by Phillip Thelen on 08/03/14.
+//  Created by Phillip Thelen on 09/03/14.
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
@@ -11,6 +11,20 @@
 
 @implementation Task
 
-@dynamic name;
+@dynamic attribute;
+@dynamic completed;
+@dynamic dateCreated;
+@dynamic down;
+@dynamic id;
+@dynamic notes;
+@dynamic priority;
+@dynamic streak;
+@dynamic text;
+@dynamic type;
+@dynamic up;
+@dynamic value;
+@dynamic checklist;
+@dynamic tags;
+@dynamic user;
 
 @end

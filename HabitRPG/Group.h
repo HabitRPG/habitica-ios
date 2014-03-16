@@ -1,0 +1,46 @@
+//
+//  Group.h
+//  HabitRPG
+//
+//  Created by Phillip Thelen on 16/03/14.
+//  Copyright (c) 2014 Phillip Thelen. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+
+@class ChatMessage, User;
+
+@interface Group : NSManagedObject
+
+@property (nonatomic, retain) NSString * hdescription;
+@property (nonatomic, retain) NSString * id;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * questKey;
+@property (nonatomic, retain) NSNumber * questHP;
+@property (nonatomic, retain) NSNumber * questActive;
+@property (nonatomic, retain) NSString * type;
+@property (nonatomic, retain) NSString * privacy;
+@property (nonatomic, retain) User *leader;
+@property (nonatomic, retain) NSSet *member;
+@property (nonatomic, retain) NSOrderedSet *chatmessages;
+@end
+
+@interface Group (CoreDataGeneratedAccessors)
+
+- (void)addMemberObject:(User *)value;
+- (void)removeMemberObject:(User *)value;
+- (void)addMember:(NSSet *)values;
+- (void)removeMember:(NSSet *)values;
+
+- (void)insertObject:(ChatMessage *)value inChatmessagesAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromChatmessagesAtIndex:(NSUInteger)idx;
+- (void)insertChatmessages:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removeChatmessagesAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInChatmessagesAtIndex:(NSUInteger)idx withObject:(ChatMessage *)value;
+- (void)replaceChatmessagesAtIndexes:(NSIndexSet *)indexes withChatmessages:(NSArray *)values;
+- (void)addChatmessagesObject:(ChatMessage *)value;
+- (void)removeChatmessagesObject:(ChatMessage *)value;
+- (void)addChatmessages:(NSOrderedSet *)values;
+- (void)removeChatmessages:(NSOrderedSet *)values;
+@end

@@ -1,0 +1,5 @@
+platform :ios, '7.0'
+pod 'CRToast', :git => 'https://github.com/cruffenach/CRToast'
+pod 'FontAwesomeIconFactory'
+pod 'RestKit', '~> 0.20.0'
+pod 'PDKeychainBindingsController', '~> 0.0.1'

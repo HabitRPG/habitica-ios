@@ -7,16 +7,21 @@
 //
 
 #import "HRPGDailyTableViewController.h"
+#import "Task.h"
+#import "HRPGManager.h"
 
 @interface HRPGDailyTableViewController ()
 @property NSString *readableName;
 @property NSString *typeName;
+@property HRPGManager *sharedManager;
+
 @end
 
 @implementation HRPGDailyTableViewController
 
 @dynamic readableName;
 @dynamic typeName;
+@dynamic sharedManager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +43,20 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    UILabel *label = (UILabel*)[cell viewWithTag:1];
+    label.text = task.text;
+    
+    if (task.completed) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        label.textColor = [UIColor grayColor];
+    } else {
+        label.textColor = [self.sharedManager getColorForValue:task.value];
+    }
 }
 
 @end

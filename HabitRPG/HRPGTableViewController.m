@@ -8,12 +8,15 @@
 
 #import "HRPGTableViewController.h"
 #import "HRPGAppDelegate.h"
+#import "Task.h"
+#import <PDKeychainBindings.h>
 
 @interface HRPGTableViewController ()
-    @property NSString *readableName;
+@property NSString *readableName;
 @property NSString *typeName;
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+@property HRPGManager *sharedManager;
 
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @implementation HRPGTableViewController
@@ -33,11 +36,20 @@
     [super viewDidLoad];
 
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
-    self.managedObjectContext = appdelegate.managedObjectContext;
+    _sharedManager = appdelegate.sharedManager;
+    self.managedObjectContext = _sharedManager.getManagedObjectContext;
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
+    
+    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
+
+    if ([keyChain stringForKey:@"id"] == nil) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+        UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+        [self presentViewController:navigationController animated:NO completion: nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,7 +59,12 @@
 }
 
 - (void) refresh {
-    [self.refreshControl endRefreshing];
+    [_sharedManager fetchTasks:^ () {
+        [self.refreshControl endRefreshing];
+    } onError:^ () {
+        [self.refreshControl endRefreshing];
+        [_sharedManager displayNetworkError];
+    }];
 }
 
 #pragma mark - Table view data source
@@ -139,16 +156,24 @@
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
+    NSPredicate *predicate;
+    if ([_typeName  isEqual:@"todo"]) {
+        predicate = [NSPredicate predicateWithFormat:@"type=='todo' && completed==NO"];
+    } else {
+        predicate = [NSPredicate predicateWithFormat:@"type==%@", _typeName];
+    }
+    [fetchRequest setPredicate:predicate];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
+    
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:_typeName];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -217,7 +242,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"name"] description];
+    cell.textLabel.text = [[object valueForKey:@"text"] description];
 }
 
 

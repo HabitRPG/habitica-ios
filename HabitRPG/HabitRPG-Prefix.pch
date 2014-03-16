@@ -7,11 +7,22 @@
 #import <Availability.h>
 
 #ifndef __IPHONE_5_0
-#warning "This project uses features only available in iOS SDK 5.0 and later."
+    #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
 
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
 #endif
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+    #import <SystemConfiguration/SystemConfiguration.h>
+    #import <MobileCoreServices/MobileCoreServices.h>
+#else
+    #import <SystemConfiguration/SystemConfiguration.h>
+    #import <CoreServices/CoreServices.h>
+#endif
+
+// Make RestKit globally available
+#import <RestKit/RestKit.h>
