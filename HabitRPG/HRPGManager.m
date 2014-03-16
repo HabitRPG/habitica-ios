@@ -155,14 +155,7 @@ NSString *userID;
                                                                                 withMapping:tagMapping]];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", userID];
-    [fetchRequest setPredicate:predicate];
-    NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
-    if ([fetchedObjects count] > 0) {
-        user = fetchedObjects[0];
-        NSLog(@"%@", user.rewards);
-    }
+    
     
     
     
@@ -207,6 +200,14 @@ NSString *userID;
         return nil;
     }];
     [self setCredentials];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", userID];
+    [fetchRequest setPredicate:predicate];
+    NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    if ([fetchedObjects count] > 0) {
+        user = fetchedObjects[0];
+        NSLog(@"%@", user.rewards);
+    }
 }
 
 - (NSManagedObjectContext *)getManagedObjectContext {
