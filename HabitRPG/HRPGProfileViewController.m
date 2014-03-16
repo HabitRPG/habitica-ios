@@ -239,12 +239,12 @@ NSString *username;
     healthProgress.progress = ([user.health floatValue] / [user.maxHealth floatValue]);
     
     UILabel *experienceLabel = (UILabel*)[cell viewWithTag:4];
-    experienceLabel.text = [NSString stringWithFormat:@"%@/%@", user.experience, user.nextLevel];
+    experienceLabel.text = [NSString stringWithFormat:@"%ld/%@", [user.experience integerValue], user.nextLevel];
     UIProgressView *experienceProgress = (UIProgressView*)[cell viewWithTag:5];
     experienceProgress.progress = ([user.experience floatValue] / [user.nextLevel floatValue]);
     
     UILabel *magicLabel = (UILabel*)[cell viewWithTag:6];
-    magicLabel.text = [NSString stringWithFormat:@"%@/%@", user.magic, user.maxMagic];
+    magicLabel.text = [NSString stringWithFormat:@"%ld/%@", [user.magic integerValue], user.maxMagic];
     UIProgressView *magicProgress = (UIProgressView*)[cell viewWithTag:7];
     magicProgress.progress = ([user.magic floatValue] / [user.maxMagic floatValue]);
     
