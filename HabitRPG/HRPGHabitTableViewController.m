@@ -9,11 +9,15 @@
 #import "HRPGHabitTableViewController.h"
 #import "Task.h"
 #import "HRPGManager.h"
+#import "MCSwipeTableViewCell.h"
+#import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
+#import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 
 @interface HRPGHabitTableViewController ()
 @property NSString *readableName;
 @property NSString *typeName;
 @property HRPGManager *sharedManager;
+@property NIKFontAwesomeIconFactory *iconFactory;
 @end
 
 @implementation HRPGHabitTableViewController
@@ -34,6 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.iconFactory = [NIKFontAwesomeIconFactory buttonIconFactory];
     self.readableName = NSLocalizedString(@"Habit", nil);
     self.typeName = @"habit";
 }
@@ -62,7 +67,7 @@
     }];
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UIColor *color = [self.sharedManager getColorForValue:task.value];
@@ -73,12 +78,33 @@
     upDownControl.tintColor = color;
     [upDownControl removeAllSegments];
     if (task.up) {
-        [upDownControl insertSegmentWithTitle:@"+" atIndex:0 animated:0];
+        UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconPlus]];
+        UIColor *greenColor = [UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0];
+        [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+            [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(){
+                
+            }onError:^(){
+                
+            }];
+        }];
     }
     if (task.down) {
-        [upDownControl insertSegmentWithTitle:@"-" atIndex:0 animated:0];
+        UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconMinus]];
+        UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
+        [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState1 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+            [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(){
+                
+            }onError:^(){
+                
+            }];
+        }];
     }
 }
 
+- (UIView *)viewWithIcon:(UIImage *)image {
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.contentMode = UIViewContentModeCenter;
+    return imageView;
+}
 
 @end

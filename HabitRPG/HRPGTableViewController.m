@@ -10,6 +10,7 @@
 #import "HRPGAppDelegate.h"
 #import "Task.h"
 #import <PDKeychainBindings.h>
+#import "MCSwipeTableViewCell.h"
 
 @interface HRPGTableViewController ()
 @property NSString *readableName;
@@ -82,7 +83,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    MCSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    [cell setDefaultColor:[UIColor whiteColor]];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -90,7 +92,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
