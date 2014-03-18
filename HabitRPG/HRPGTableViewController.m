@@ -84,7 +84,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MCSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    [cell setDefaultColor:[UIColor whiteColor]];
+    [cell setDefaultColor:[UIColor lightGrayColor]];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }

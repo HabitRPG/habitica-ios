@@ -38,7 +38,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.iconFactory = [NIKFontAwesomeIconFactory buttonIconFactory];
+    self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+    self.iconFactory.square = YES;
+    self.iconFactory.colors = @[[UIColor whiteColor]];
+    self.iconFactory.strokeColor = [UIColor whiteColor];
+    self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
     self.readableName = NSLocalizedString(@"To-Do", nil);
     self.typeName = @"todo";
 }
@@ -71,7 +75,7 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
         label.textColor = [self.sharedManager getColorForValue:task.value];
         UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconCheckSquareO]];
-        UIColor *greenColor = [UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0];
+        UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
         [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(){
                 
