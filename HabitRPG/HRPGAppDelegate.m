@@ -9,6 +9,7 @@
 #import "HRPGAppDelegate.h"
 #import "Task.h"
 #import "CRToast.h"
+#import "BWQuincyManager.h"
 
 @implementation HRPGAppDelegate
 
@@ -29,6 +30,7 @@
     //[_sharedManager fetchTasks:^() {
     //} onError:^() {
     //}];
+    [[BWQuincyManager sharedQuincyManager] setSubmissionURL:@"http://viirus.sirius.uberspace.de/quincy/crash_v300.php"]; [[BWQuincyManager sharedQuincyManager] startManager];
     return YES;
 }
 

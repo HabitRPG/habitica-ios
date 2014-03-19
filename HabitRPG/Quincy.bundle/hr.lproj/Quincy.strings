@@ -1,0 +1,30 @@
+/*
+ Localization provided by Wordcrafts
+ The Mac OS X and iOS localization experts.
+ http://www.wordcrafts.de
+ */
+
+
+/* Replacement for app name, if it could not be detected */
+"CrashAppNamePlaceholder" = "Ova aplikacija";
+
+/* Title showing in the alert box when crash report data has been found */
+"CrashDataFoundTitle" = "%@ Neočekivani Završetak";
+
+/* Description explaining that crash data has been found and ask the user if the data might be uploaded to the developers server */
+"CrashDataFoundAnonymousDescription" = "Želite li poslati anonimno izviješće da možemo riješiti problem?";
+
+/* Description explaining that crash data has been found and ask the user if the non anonymous data might be uplaoded to the developers server */
+"CrashDataFoundDescription" = "Želite li poslati izviješće da možemo riješiti problem?";
+
+/* Alert box button if the users wants to send crash data always automatically */
+"CrashSendReportAlways" = "Uvijek Šalji";
+
+/* Alert box button to send the crash report once */
+"CrashSendReport" = "Pošalji Izvijeće";
+
+/* Alert box button to decline sending the report */
+"CrashDontSendReport" = "Ne Šalji";
+
+/* Text showing in a processing box that the crash data is being uploaded to the server */
+"CrashReportSending" = "Slanje…";

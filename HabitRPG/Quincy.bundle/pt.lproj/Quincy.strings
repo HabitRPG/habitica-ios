@@ -1,0 +1,30 @@
+/*
+ Localization provided by Wordcrafts
+ The Mac OS X and iOS localization experts.
+ http://www.wordcrafts.de
+ */
+
+
+/* Replacement for app name, if it could not be detected */
+"CrashAppNamePlaceholder" = "Este app";
+
+/* Title showing in the alert box when crash report data has been found */
+"CrashDataFoundTitle" = "%@ fechou repentinamente";
+
+/* Description explaining that crash data has been found and ask the user if the data might be uploaded to the developers server */
+"CrashDataFoundAnonymousDescription" = "Gostaria de enviar um relatório anônimo para que possamos resolver o problema?";
+
+/* Description explaining that crash data has been found and ask the user if the non anonymous data might be uplaoded to the developers server */
+"CrashDataFoundDescription" = "Gostaria de enviar um relatório para que possamos resolver o problema?";
+
+/* Alert box button if the users wants to send crash data always automatically */
+"CrashSendReportAlways" = "Sempre enviar";
+
+/* Alert box button to send the crash report once */
+"CrashSendReport" = "Enviar relatório";
+
+/* Alert box button to decline sending the report */
+"CrashDontSendReport" = "Não enviar";
+
+/* Text showing in a processing box that the crash data is being uploaded to the server */
+"CrashReportSending" = "Enviando…";
