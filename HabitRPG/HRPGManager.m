@@ -230,18 +230,20 @@ NSString *userID;
         return nil;
     }];
     [self setCredentials];
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", userID];
-    [fetchRequest setPredicate:predicate];
-    NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
-    if ([fetchedObjects count] > 0) {
-        user = fetchedObjects[0];
-    } else {
-        [self fetchUser:^() {
-            
-        }onError:^() {
-            
-        }];
+    if (userID != nil) {
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", userID];
+        [fetchRequest setPredicate:predicate];
+        NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+        if ([fetchedObjects count] > 0) {
+            user = fetchedObjects[0];
+        } else {
+            [self fetchUser:^() {
+                
+            }onError:^() {
+                
+            }];
+        }
     }
 }
 
