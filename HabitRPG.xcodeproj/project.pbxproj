@@ -27,6 +27,10 @@
 		D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E318D610E300C8D1B7 /* HRPGTaskResponse.m */; };
 		D9B5C0E718D62CC700C8D1B7 /* HRPGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */; };
 		D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */; };
+		D9E0868B18DA040300BAF2EF /* BWCrashReportTextFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E0868518DA040200BAF2EF /* BWCrashReportTextFormatter.m */; };
+		D9E0868C18DA040300BAF2EF /* BWQuincyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E0868718DA040200BAF2EF /* BWQuincyManager.m */; };
+		D9E0868D18DA040300BAF2EF /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E0868918DA040200BAF2EF /* CrashReporter.framework */; };
+		D9E0868E18DA040300BAF2EF /* Quincy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D9E0868A18DA040200BAF2EF /* Quincy.bundle */; };
 		D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */; };
 		D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */; };
 		D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9218CB4A9400BB2094 /* UIKit.framework */; };
@@ -94,6 +98,13 @@
 		D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLoginViewController.m; sourceTree = "<group>"; };
 		D9B5C0E818D6320C00C8D1B7 /* HRPGLoginData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLoginData.h; sourceTree = "<group>"; };
 		D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLoginData.m; sourceTree = "<group>"; };
+		D9E0868418DA040200BAF2EF /* BWCrashReportTextFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWCrashReportTextFormatter.h; sourceTree = "<group>"; };
+		D9E0868518DA040200BAF2EF /* BWCrashReportTextFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWCrashReportTextFormatter.m; sourceTree = "<group>"; };
+		D9E0868618DA040200BAF2EF /* BWQuincyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWQuincyManager.h; sourceTree = "<group>"; };
+		D9E0868718DA040200BAF2EF /* BWQuincyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWQuincyManager.m; sourceTree = "<group>"; };
+		D9E0868818DA040200BAF2EF /* BWQuincyManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWQuincyManagerDelegate.h; sourceTree = "<group>"; };
+		D9E0868918DA040200BAF2EF /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CrashReporter.framework; sourceTree = "<group>"; };
+		D9E0868A18DA040200BAF2EF /* Quincy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Quincy.bundle; sourceTree = "<group>"; };
 		D9EB4E8B18CB4A9400BB2094 /* HabitRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -121,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9E0868D18DA040300BAF2EF /* CrashReporter.framework in Frameworks */,
 				D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */,
 				D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */,
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
@@ -189,6 +201,20 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		D9E0868318DA03C800BAF2EF /* Quincy */ = {
+			isa = PBXGroup;
+			children = (
+				D9E0868418DA040200BAF2EF /* BWCrashReportTextFormatter.h */,
+				D9E0868518DA040200BAF2EF /* BWCrashReportTextFormatter.m */,
+				D9E0868618DA040200BAF2EF /* BWQuincyManager.h */,
+				D9E0868718DA040200BAF2EF /* BWQuincyManager.m */,
+				D9E0868818DA040200BAF2EF /* BWQuincyManagerDelegate.h */,
+				D9E0868918DA040200BAF2EF /* CrashReporter.framework */,
+				D9E0868A18DA040200BAF2EF /* Quincy.bundle */,
+			);
+			name = Quincy;
+			sourceTree = "<group>";
+		};
 		D9EB4E8218CB4A9400BB2094 = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +250,7 @@
 		D9EB4E9418CB4A9400BB2094 /* HabitRPG */ = {
 			isa = PBXGroup;
 			children = (
+				D9E0868318DA03C800BAF2EF /* Quincy */,
 				D9B5C0EB18D6321400C8D1B7 /* Models */,
 				D92CDAE118CB83C40006C242 /* TablewViewController */,
 				D9EB4E9D18CB4A9400BB2094 /* HRPGAppDelegate.h */,
@@ -351,6 +378,7 @@
 			files = (
 				D9EB4EA518CB4A9400BB2094 /* Main_iPad.storyboard in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
+				D9E0868E18DA040300BAF2EF /* Quincy.bundle in Resources */,
 				D9EB4EA218CB4A9400BB2094 /* Main_iPhone.storyboard in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
 			);
@@ -421,11 +449,13 @@
 				D9B5C0E718D62CC700C8D1B7 /* HRPGLoginViewController.m in Sources */,
 				D9B5C0BA18D5E7DE00C8D1B7 /* Reward.m in Sources */,
 				D92CDAE718CB84000006C242 /* HRPGToDoTableViewController.m in Sources */,
+				D9E0868C18DA040300BAF2EF /* BWQuincyManager.m in Sources */,
 				D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */,
 				D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */,
 				D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */,
 				D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */,
 				D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */,
+				D9E0868B18DA040300BAF2EF /* BWCrashReportTextFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +593,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HabitRPG",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HabitRPG/HabitRPG-Prefix.pch";
 				INFOPLIST_FILE = "HabitRPG/HabitRPG-Info.plist";
@@ -577,6 +611,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HabitRPG",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HabitRPG/HabitRPG-Prefix.pch";
 				INFOPLIST_FILE = "HabitRPG/HabitRPG-Info.plist";

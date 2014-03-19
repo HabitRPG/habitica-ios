@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ChatMessage" representedClassName="ChatMessage" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
@@ -53,7 +53,7 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="up" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="checklist" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChecklistItem" inverseName="task" inverseEntity="ChecklistItem" syncable="YES"/>
+        <relationship name="checklist" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ChecklistItem" inverseName="task" inverseEntity="ChecklistItem" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="tasks" inverseEntity="Tag" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tasks" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -76,12 +76,12 @@
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="user" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ChecklistItem" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Group" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Tag" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Task" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Reward" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ChatMessage" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ChatMessage" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="Group" positionX="0" positionY="0" width="128" height="210"/>
+        <element name="Reward" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="270"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="285"/>
     </elements>
 </model>

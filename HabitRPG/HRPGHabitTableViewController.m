@@ -71,7 +71,7 @@
     }];
 }
 
-- (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate
 {
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UIColor *color = [self.sharedManager getColorForValue:task.value];

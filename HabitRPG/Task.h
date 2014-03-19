@@ -24,7 +24,7 @@
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic) BOOL up;
 @property (nonatomic, retain) NSNumber * value;
-@property (nonatomic, retain) NSSet *checklist;
+@property (nonatomic, retain) NSOrderedSet *checklist;
 @property (nonatomic, retain) NSSet *tags;
 @property (nonatomic, retain) NSManagedObject *user;
 @end

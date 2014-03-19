@@ -63,32 +63,57 @@ NSString *userID;
     
     
     RKEntityMapping *taskMapping = [RKEntityMapping mappingForEntityForName:@"Task" inManagedObjectStore:managedObjectStore];
-    [taskMapping addAttributeMappingsFromDictionary:@{
-                                                        @"id":              @"id",
-                                                        @"name":            @"name",
-                                                        @"attribute":       @"attribute",
-                                                        @"down":            @"down",
-                                                        @"up":              @"up",
-                                                        @"priority":        @"priority",
-                                                        @"text":            @"text",
-                                                        @"value":           @"value",
-                                                        @"type":            @"type",
-                                                        @"completed":       @"completed",
-                                                        @"notes":           @"notes",
-                                                        @"streak":          @"streak",
-                                                        @"dateCreated":     @"dateCreated"}];
+    [taskMapping addAttributeMappingsFromArray:@[
+                                                        @"id",
+                                                        @"attribute",
+                                                        @"down",
+                                                        @"up",
+                                                        @"priority",
+                                                        @"text",
+                                                        @"value",
+                                                        @"type",
+                                                        @"completed",
+                                                        @"notes",
+                                                        @"streak",
+                                                        @"dateCreated"]];
     taskMapping.identificationAttributes = @[ @"id" ];
     RKObjectMapping* checklistItemMapping = [RKEntityMapping mappingForEntityForName:@"ChecklistItem" inManagedObjectStore:managedObjectStore];
     [checklistItemMapping addAttributeMappingsFromArray:@[@"id", @"text", @"completed"]];
     [taskMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"checklist"
                                                                                   toKeyPath:@"checklist"
                                                                                 withMapping:checklistItemMapping]];
-
+    
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user/tasks" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Task class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodGET]];
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Task class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodPUT]];
-    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithName:@"taskdirection" pathPattern:@"/api/v2/user/tasks/:id/:direction" method:RKRequestMethodPOST]];
+    
+    RKObjectMapping *taskRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class] ];
+    [taskRequestMapping addAttributeMappingsFromArray:@[
+                                                 @"id",
+                                                 @"attribute",
+                                                 @"down",
+                                                 @"up",
+                                                 @"priority",
+                                                 @"text",
+                                                 @"value",
+                                                 @"type",
+                                                 @"completed",
+                                                 @"notes",
+                                                 @"streak",
+                                                 @"dateCreated"]];
+    RKObjectMapping *checklistItemRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [checklistItemRequestMapping addAttributeMappingsFromArray:@[@"id", @"text", @"completed"]];
+    [taskRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"checklist"
+                                                                                toKeyPath:@"checklist"
+                                                                              withMapping:checklistItemRequestMapping]];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user/tasks/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:taskRequestMapping objectClass:[Task class] rootKeyPath:nil method:RKRequestMethodPUT];
     [objectManager addResponseDescriptor:responseDescriptor];
+    [objectManager addRequestDescriptor:requestDescriptor];
+    
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithName:@"taskdirection" pathPattern:@"/api/v2/user/tasks/:id/:direction" method:RKRequestMethodPOST]];
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"/api/v2/user/tasks"];
         
@@ -206,7 +231,6 @@ NSString *userID;
     NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
     if ([fetchedObjects count] > 0) {
         user = fetchedObjects[0];
-        NSLog(@"%@", user.rewards);
     }
 }
 
@@ -281,6 +305,13 @@ NSString *userID;
 
 -(void) upDownTask:(Task*)task direction:(NSString*)withDirection onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@/%@", task.id, withDirection] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        if (user == nil) {
+            NSError *error;
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", userID];
+            [fetchRequest setPredicate:predicate];
+            NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+        }
         NSError *executeError = nil;
         HRPGTaskResponse *taskResponse = (HRPGTaskResponse*)[mappingResult firstObject];
         task.value = [NSNumber numberWithFloat:[task.value floatValue] + [taskResponse.delta floatValue]];
@@ -296,6 +327,18 @@ NSString *userID;
         if ([task.type  isEqual: @"daily"] || [task.type  isEqual: @"todo"]) {
             task.completed = ([withDirection  isEqual: @"up"]);
         }
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        errorBlock();
+        return;
+    }];
+}
+
+-(void) updateTask:(Task*)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [[RKObjectManager sharedManager] putObject:task path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
         return;

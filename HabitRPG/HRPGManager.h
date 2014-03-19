@@ -18,6 +18,7 @@
 -(void) fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) fetchParty:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) upDownTask:(Task*)task direction:(NSString*)withDirection onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+-(void) updateTask:(Task*)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) loginUser:(NSString*)username withPassword:(NSString*)password onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(NSManagedObjectContext *) getManagedObjectContext;
 - (void) displayNetworkError;
