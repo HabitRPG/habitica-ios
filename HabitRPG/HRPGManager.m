@@ -352,15 +352,22 @@ NIKFontAwesomeIconFactory *iconFactory;
         NSError *executeError = nil;
         HRPGTaskResponse *taskResponse = (HRPGTaskResponse*)[mappingResult firstObject];
         task.value = [NSNumber numberWithFloat:[task.value floatValue] + [taskResponse.delta floatValue]];
+        user.level = taskResponse.level;
+        if ([user.level integerValue] > [taskResponse.level integerValue]) {
+            [self displayLevelUpNotification];
+            //Set experience to the amount, that was missing for the next level. So that the notification
+            //displays the correct amount of experience gained
+            user.experience = [NSNumber numberWithFloat:[user.experience floatValue] - [user.nextLevel floatValue]];
+        }
         NSNumber *expDiff = [NSNumber numberWithFloat: [taskResponse.experience floatValue] - [user.experience floatValue]];
         user.experience = taskResponse.experience;
         NSNumber *healthDiff = [NSNumber numberWithFloat: [taskResponse.health floatValue] - [user.health floatValue]];
         user.health = taskResponse.health;
         user.magic = taskResponse.magic;
-        user.level = taskResponse.level;
+        
         NSNumber *goldDiff = [NSNumber numberWithFloat: [taskResponse.gold floatValue] - [user.gold floatValue]];
         user.gold = taskResponse.gold;
-        [self displaySuccessNotification:healthDiff withExperienceDiff:expDiff withGoldDiff:goldDiff];
+        [self displayTaskSuccessNotification:healthDiff withExperienceDiff:expDiff withGoldDiff:goldDiff];
         if ([task.type  isEqual: @"daily"] || [task.type  isEqual: @"todo"]) {
             task.completed = ([withDirection  isEqual: @"up"]);
         }
@@ -429,7 +436,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                 }];
 }
 
--(void) displaySuccessNotification:(NSNumber*) healthDiff withExperienceDiff:(NSNumber*)expDiff withGoldDiff:(NSNumber*)goldDiff {
+-(void) displayTaskSuccessNotification:(NSNumber*) healthDiff withExperienceDiff:(NSNumber*)expDiff withGoldDiff:(NSNumber*)goldDiff {
     UIColor *notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
     NSString *content;
     if ([healthDiff intValue] < 0) {
