@@ -13,12 +13,15 @@
 #import "HRPGTaskResponse.h"
 #import "HRPGLoginData.h"
 #import <PDKeychainBindings.h>
+#import <NIKFontAwesomeIconFactory.h>
+#import <NIKFontAwesomeIconFactory+iOS.h>
 
 @implementation HRPGManager
 @synthesize managedObjectContext;
 RKManagedObjectStore *managedObjectStore;
 User *user;
 NSString *userID;
+NIKFontAwesomeIconFactory *iconFactory;
 
 -(void)loadObjectManager
 {
@@ -245,6 +248,12 @@ NSString *userID;
             }];
         }
     }
+    
+    if (iconFactory == nil) {
+        iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+        iconFactory.colors = @[[UIColor whiteColor]];
+        iconFactory.size = 35;
+    }
 }
 
 - (NSManagedObjectContext *)getManagedObjectContext {
@@ -376,7 +385,10 @@ NSString *userID;
     NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Network error", nil),
                               kCRToastSubtitleTextKey :NSLocalizedString(@"Couldn't connect to the server. Check your network connection", nil),
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                              kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f]};
+                              kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],
+                              kCRToastImageKey : [iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
+                              };
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{
                                 }];
@@ -393,7 +405,23 @@ NSString *userID;
     }
     NSDictionary *options = @{kCRToastTextKey : content,
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                              kCRToastBackgroundColorKey : notificationColor};
+                              kCRToastBackgroundColorKey : notificationColor,
+                              kCRToastImageKey : [iconFactory createImageForIcon:NIKFontAwesomeIconCheck]
+                              };
+    [CRToastManager showNotificationWithOptions:options
+                                completionBlock:^{
+                                }];
+}
+
+-(void) displayLevelUpNotification {
+    UIColor *notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
+    NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Level up!", nil),
+                              kCRToastSubtitleTextKey : [NSString stringWithFormat:@"Level %@", user.level],
+                              kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastBackgroundColorKey : notificationColor,
+                              kCRToastImageKey : [iconFactory createImageForIcon:NIKFontAwesomeIconCheck]
+                              };
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{
                                 }];
