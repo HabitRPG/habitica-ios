@@ -31,6 +31,7 @@
 		D9E0868C18DA040300BAF2EF /* BWQuincyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E0868718DA040200BAF2EF /* BWQuincyManager.m */; };
 		D9E0868D18DA040300BAF2EF /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E0868918DA040200BAF2EF /* CrashReporter.framework */; };
 		D9E0868E18DA040300BAF2EF /* Quincy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D9E0868A18DA040200BAF2EF /* Quincy.bundle */; };
+		D9E0869118DF800F00BAF2EF /* HRPGTavernViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */; };
 		D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */; };
 		D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */; };
 		D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9218CB4A9400BB2094 /* UIKit.framework */; };
@@ -105,6 +106,8 @@
 		D9E0868818DA040200BAF2EF /* BWQuincyManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWQuincyManagerDelegate.h; sourceTree = "<group>"; };
 		D9E0868918DA040200BAF2EF /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CrashReporter.framework; sourceTree = "<group>"; };
 		D9E0868A18DA040200BAF2EF /* Quincy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Quincy.bundle; sourceTree = "<group>"; };
+		D9E0868F18DF800F00BAF2EF /* HRPGTavernViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTavernViewController.h; sourceTree = "<group>"; };
+		D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTavernViewController.m; sourceTree = "<group>"; };
 		D9EB4E8B18CB4A9400BB2094 /* HabitRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -166,6 +169,8 @@
 				D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */,
 				D9B5C0D318D5F94400C8D1B7 /* HRPGPartyViewController.h */,
 				D9B5C0D418D5F94400C8D1B7 /* HRPGPartyViewController.m */,
+				D9E0868F18DF800F00BAF2EF /* HRPGTavernViewController.h */,
+				D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */,
 				D9B5C0B518D5C07100C8D1B7 /* HRPGProfileViewController.h */,
 				D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */,
 				D92CDADB18CB79E50006C242 /* HRPGTableViewController.h */,
@@ -435,6 +440,7 @@
 				D9B5C0BD18D5E7DF00C8D1B7 /* User.m in Sources */,
 				D9B5C0D518D5F94400C8D1B7 /* HRPGPartyViewController.m in Sources */,
 				D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */,
+				D9E0869118DF800F00BAF2EF /* HRPGTavernViewController.m in Sources */,
 				D9B5C0D818D6015600C8D1B7 /* ChatMessage.m in Sources */,
 				D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */,
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
@@ -600,6 +606,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HabitRPG/HabitRPG-Prefix.pch";
 				INFOPLIST_FILE = "HabitRPG/HabitRPG-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -618,6 +625,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HabitRPG/HabitRPG-Prefix.pch";
 				INFOPLIST_FILE = "HabitRPG/HabitRPG-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

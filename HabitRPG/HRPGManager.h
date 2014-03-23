@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Task.h"
+#import "User.h"
 
 @interface HRPGManager : NSObject
 
@@ -16,13 +17,15 @@
 - (void) loadObjectManager;
 -(void) fetchTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock;
--(void) fetchParty:(void (^)())successBlock onError:(void (^)())errorBlock;
+-(void) fetchGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) upDownTask:(Task*)task direction:(NSString*)withDirection onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) updateTask:(Task*)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) loginUser:(NSString*)username withPassword:(NSString*)password onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+-(void) sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(NSManagedObjectContext *) getManagedObjectContext;
 - (void) displayNetworkError;
 - (void) setCredentials;
+- (User*) getUser;
 
 -(UIColor*) getColorForValue:(NSNumber*) value;
 

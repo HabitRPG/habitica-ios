@@ -156,6 +156,11 @@ NIKFontAwesomeIconFactory *iconFactory;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:loginMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user/auth/local" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
+    RKObjectMapping *sleepMapping = [RKObjectMapping mappingForClass:[NSDictionary class]];
+    [sleepMapping addAttributeMappingsFromDictionary:@{}];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:sleepMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/sleep" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
     
     RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     [entityMapping addAttributeMappingsFromDictionary:@{
@@ -314,8 +319,8 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 }
 
-- (void) fetchParty:(void (^)())successBlock onError:(void (^)())errorBlock{
-    [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/api/v2/groups/%@", @"22019889-582a-4443-bbec-8e02aba6a92b"] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+- (void) fetchGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock{
+    [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/api/v2/groups/%@", groupID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
@@ -381,6 +386,20 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 }
 
+-(void) sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [[RKObjectManager sharedManager] postObject:Nil path:@"/api/v2/user/sleep" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        user.sleep = !user.sleep;
+        NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        errorBlock();
+        return;
+    }];
+    
+}
+
 - (void) displayNetworkError {
     NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Network error", nil),
                               kCRToastSubtitleTextKey :NSLocalizedString(@"Couldn't connect to the server. Check your network connection", nil),
@@ -425,6 +444,10 @@ NIKFontAwesomeIconFactory *iconFactory;
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{
                                 }];
+}
+
+- (User*) getUser {
+    return user;
 }
 
 @end

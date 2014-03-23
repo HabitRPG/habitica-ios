@@ -140,7 +140,7 @@
         if (task.completed) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
             [UIView animateWithDuration:0.4 animations:^() {
-                label.textColor = [UIColor grayColor];
+                label.textColor = [UIColor colorWithWhite:0.581 alpha:1.000];
             }];
             UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconSquareO]];
             UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];

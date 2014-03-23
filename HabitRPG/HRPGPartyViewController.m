@@ -54,7 +54,7 @@ Group *party;
 }
 
 - (void) refresh {
-    [_sharedManager fetchParty:^ () {
+    [_sharedManager fetchGroup:@"22019889-582a-4443-bbec-8e02aba6a92b" onSuccess:^ () {
         [self.refreshControl endRefreshing];
     } onError:^ () {
         [self.refreshControl endRefreshing];

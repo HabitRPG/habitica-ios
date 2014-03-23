@@ -6,22 +6,23 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import "HRPGProfileViewController.h"
+#import "HRPGTavernViewController.h"
 #import "HRPGAppDelegate.h"
 #import "Task.h"
-#import "User.h"
-#import <PDKeychainBindings.h>
+#import "Group.h"
+#import "ChatMessage.h"
+#import <CRToast.h>
 
-@interface HRPGProfileViewController ()
+@interface HRPGTavernViewController ()
 @property HRPGManager *sharedManager;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
-@implementation HRPGProfileViewController
+@implementation HRPGTavernViewController
 @synthesize managedObjectContext;
-NSString *username;
-
+Group *tavern;
+User *user;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -44,15 +45,10 @@ NSString *username;
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
     
-    if ([[self.fetchedResultsController sections] count] > 0) {
-        if ([[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0) {
-            User *user = (User*)[self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-            username = user.username;
-        }
+    if ([[self.fetchedResultsController sections] count] > 0 && [[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0) {
+        tavern = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
     }
-    if (username == nil) {
-        [self refresh];
-    }
+    user = [_sharedManager getUser];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,7 +58,7 @@ NSString *username;
 }
 
 - (void) refresh {
-    [_sharedManager fetchUser:^ () {
+    [_sharedManager fetchGroup:@"habitrpg" onSuccess:^ () {
         [self.refreshControl endRefreshing];
     } onError:^ () {
         [self.refreshControl endRefreshing];
@@ -82,8 +78,11 @@ NSString *username;
     switch (section) {
         case 0:
             return 1;
-        case 1:
-            return 2;
+        case 1: {
+            if (tavern != nil && [tavern.chatmessages count] > 0) {
+                return [tavern.chatmessages count];
+            }
+        }
         default:
             return 0;
     }
@@ -92,55 +91,63 @@ NSString *username;
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return username;
+            return NSLocalizedString(@"Inn", nil);
             break;
         case 1:
-            return NSLocalizedString(@"Social", nil);
+            return NSLocalizedString(@"Chat", nil);
         default:
             return @"";
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0 && indexPath.item == 0) {
-        return 150;
-    } else {
         return 44;
-    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1 && indexPath.item == 0) {
-        [self performSegueWithIdentifier: @"TavernSegue" sender: self];
-    } else if (indexPath.section == 1 && indexPath.item == 1) {
-        [self performSegueWithIdentifier: @"PartySegue" sender: self];
+    UIColor *notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
+    if (indexPath.section == 0 && indexPath.item == 0) {
+        [_sharedManager sleepInn:^() {
+            NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Sleep tight!", nil),
+                                      kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+                                      kCRToastBackgroundColorKey : notificationColor,
+                                      };
+            [CRToastManager showNotificationWithOptions:options
+                                        completionBlock:^{
+                                        }];
+            [self.tableView reloadData];
+        } onError:^() {
+            NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Wakey, Wakey!", nil),
+                                      kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+                                      kCRToastBackgroundColorKey : notificationColor,
+                                      };
+            [CRToastManager showNotificationWithOptions:options
+                                        completionBlock:^{
+                                        }];
+        }];
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *cellname;
     if (indexPath.section == 0 && indexPath.item == 0) {
-        if (username == nil) {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EmptyProfileCell" forIndexPath:indexPath];
-            return cell;
+        if (user.sleep) {
+            cellname = @"WakeupCell";
+        } else {
+            cellname = @"RestCell";
         }
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell" forIndexPath:indexPath];
-        [self configureCell:cell atIndexPath:indexPath];
-        return cell;
     } else {
-        NSString *title = nil;
-        if (indexPath.section == 1 && indexPath.item == 0) {
-            title = NSLocalizedString(@"Tavern", nil);
-        } else if (indexPath.section == 1 && indexPath.item == 1) {
-            title = NSLocalizedString(@"Party", nil);
+        if (indexPath.section) {
+            cellname = @"ChatCell";
         }
-        
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-        UILabel *label = (UILabel*)[cell viewWithTag:1];
-        label.text = title;
-        return cell;
     }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
+    if (indexPath.section == 1) {
+        [self configureCell:cell atIndexPath:indexPath];
+    }
+    return cell;
 }
 
 
@@ -153,14 +160,12 @@ NSString *username;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", [keyChain stringForKey:@"id"]]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == 'habitrpg'"]];
     
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
@@ -171,7 +176,7 @@ NSString *username;
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"username" cacheName:@"profile"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"tavern"];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -204,25 +209,22 @@ NSString *username;
     UITableView *tableView = self.tableView;
     
     switch(type) {
-        case NSFetchedResultsChangeInsert: {
-            User *user = (User*)[self.fetchedResultsController objectAtIndexPath:newIndexPath];
-            username = user.username;
-            [tableView reloadData];
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
-        }
-        case NSFetchedResultsChangeDelete: {
+            
+        case NSFetchedResultsChangeDelete:
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
-        }
-        case NSFetchedResultsChangeUpdate: {
+            
+        case NSFetchedResultsChangeUpdate:
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
-        }
-        case NSFetchedResultsChangeMove: {
+            
+        case NSFetchedResultsChangeMove:
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
-        }
     }
 }
 
@@ -233,26 +235,10 @@ NSString *username;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    User *user = (User*)[self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *levelLabel = (UILabel*)[cell viewWithTag:1];
-    levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"LVL %@", nil), user.level];
-    
-    UILabel *healthLabel = (UILabel*)[cell viewWithTag:2];
-    healthLabel.text = [NSString stringWithFormat:@"%ld/%@", (long)[user.health integerValue], user.maxHealth];
-    UIProgressView *healthProgress = (UIProgressView*)[cell viewWithTag:3];
-    healthProgress.progress = ([user.health floatValue] / [user.maxHealth floatValue]);
-    
-    UILabel *experienceLabel = (UILabel*)[cell viewWithTag:4];
-    experienceLabel.text = [NSString stringWithFormat:@"%ld/%@", (long)[user.experience integerValue], user.nextLevel];
-    UIProgressView *experienceProgress = (UIProgressView*)[cell viewWithTag:5];
-    experienceProgress.progress = ([user.experience floatValue] / [user.nextLevel floatValue]);
-    
-    UILabel *magicLabel = (UILabel*)[cell viewWithTag:6];
-    magicLabel.text = [NSString stringWithFormat:@"%ld/%@", (long)[user.magic integerValue], user.maxMagic];
-    UIProgressView *magicProgress = (UIProgressView*)[cell viewWithTag:7];
-    magicProgress.progress = ([user.magic floatValue] / [user.maxMagic floatValue]);
-    
-    
+    if (tavern != nil) {
+            ChatMessage *message = (ChatMessage*)tavern.chatmessages[indexPath.item];
+            cell.textLabel.text = message.text;
+    }
 }
 
 
