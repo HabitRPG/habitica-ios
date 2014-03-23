@@ -66,19 +66,26 @@ NIKFontAwesomeIconFactory *iconFactory;
     
     
     RKEntityMapping *taskMapping = [RKEntityMapping mappingForEntityForName:@"Task" inManagedObjectStore:managedObjectStore];
-    [taskMapping addAttributeMappingsFromArray:@[
-                                                        @"id",
-                                                        @"attribute",
-                                                        @"down",
-                                                        @"up",
-                                                        @"priority",
-                                                        @"text",
-                                                        @"value",
-                                                        @"type",
-                                                        @"completed",
-                                                        @"notes",
-                                                        @"streak",
-                                                        @"dateCreated"]];
+    [taskMapping addAttributeMappingsFromDictionary:@{
+                                                        @"id": @"id",
+                                                        @"attribute" : @"attribute",
+                                                        @"down" : @"down",
+                                                        @"up" : @"up",
+                                                        @"priority" : @"priority",
+                                                        @"text" : @"text",
+                                                        @"value" : @"value",
+                                                        @"type" : @"type",
+                                                        @"completed" : @"completed",
+                                                        @"notes" : @"notes",
+                                                        @"streak" : @"streak",
+                                                        @"dateCreated" : @"dateCreated",
+                                                        @"repeat.m": @"monday",
+                                                        @"repeat.t": @"tuesday",
+                                                        @"repeat.w": @"wednesday",
+                                                        @"repeat.th": @"thursday",
+                                                        @"repeat.f": @"friday",
+                                                        @"repeat.s": @"saturday",
+                                                        @"repeat.su": @"sunday"}];
     taskMapping.identificationAttributes = @[ @"id" ];
     RKObjectMapping* checklistItemMapping = [RKEntityMapping mappingForEntityForName:@"ChecklistItem" inManagedObjectStore:managedObjectStore];
     [checklistItemMapping addAttributeMappingsFromArray:@[@"id", @"text", @"completed"]];
@@ -92,19 +99,26 @@ NIKFontAwesomeIconFactory *iconFactory;
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Task class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodPUT]];
     
     RKObjectMapping *taskRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class] ];
-    [taskRequestMapping addAttributeMappingsFromArray:@[
-                                                 @"id",
-                                                 @"attribute",
-                                                 @"down",
-                                                 @"up",
-                                                 @"priority",
-                                                 @"text",
-                                                 @"value",
-                                                 @"type",
-                                                 @"completed",
-                                                 @"notes",
-                                                 @"streak",
-                                                 @"dateCreated"]];
+    [taskRequestMapping addAttributeMappingsFromDictionary:@{
+                                                        @"id": @"id",
+                                                        @"attribute" : @"attribute",
+                                                        @"down" : @"down",
+                                                        @"up" : @"up",
+                                                        @"priority" : @"priority",
+                                                        @"text" : @"text",
+                                                        @"value" : @"value",
+                                                        @"type" : @"type",
+                                                        @"completed" : @"completed",
+                                                        @"notes" : @"notes",
+                                                        @"streak" : @"streak",
+                                                        @"dateCreated" : @"dateCreated",
+                                                        @"monday" : @"repeat.m",
+                                                        @"tuesday" : @"repeat.t",
+                                                        @"wednesday" : @"repeat.w",
+                                                        @"thursday" : @"repeat.th",
+                                                        @"friday" : @"repeat.f",
+                                                        @"saturday" : @"repeat.s",
+                                                        @"sunday" : @"repeat.su"}];
     RKObjectMapping *checklistItemRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
     [checklistItemRequestMapping addAttributeMappingsFromArray:@[@"id", @"text", @"completed"]];
     [taskRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"checklist"
@@ -166,6 +180,8 @@ NIKFontAwesomeIconFactory *iconFactory;
     [entityMapping addAttributeMappingsFromDictionary:@{
                                                         @"_id":              @"id",
                                                         @"profile.name":            @"username",
+                                                        @"preferences.dayStart" : @"dayStart",
+                                                        @"preferences.sleep" : @"sleep",
                                                         @"stats.lvl":             @"level",
                                                         @"stats.gp":             @"gold",
                                                         @"stats.exp":             @"experience",

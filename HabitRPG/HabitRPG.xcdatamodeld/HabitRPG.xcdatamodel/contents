@@ -45,19 +45,27 @@
         <attribute name="completed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="down" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="friday" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="monday" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="priority" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="saturday" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="streak" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="sunday" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thursday" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="tuesday" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="up" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="wednesday" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="checklist" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ChecklistItem" inverseName="task" inverseEntity="ChecklistItem" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="tasks" inverseEntity="Tag" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tasks" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="dayStart" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="experience" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="gold" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="hclass" optional="YES" attributeType="String" syncable="YES"/>
@@ -68,6 +76,7 @@
         <attribute name="maxHealth" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxMagic" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="nextLevel" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="sleep" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" syncable="YES"/>
         <relationship name="party" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="member" inverseEntity="Group" syncable="YES"/>
@@ -81,7 +90,7 @@
         <element name="Group" positionX="0" positionY="0" width="128" height="210"/>
         <element name="Reward" positionX="0" positionY="0" width="128" height="135"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="Task" positionX="0" positionY="0" width="128" height="270"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="285"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="373"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="313"/>
     </elements>
 </model>

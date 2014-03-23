@@ -137,10 +137,11 @@
         } else {
             checklistLabel.hidden = YES;
         }
+        
         if (task.completed) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
             [UIView animateWithDuration:0.4 animations:^() {
-                label.textColor = [UIColor grayColor];
+                label.textColor = [UIColor colorWithWhite:0.581 alpha:1.000];
             }];
             UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconSquareO]];
             UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
@@ -153,9 +154,15 @@
             }];
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;
-            [UIView animateWithDuration:0.4 animations:^() {
-                label.textColor = [self.sharedManager getColorForValue:task.value];
-            }];
+            if (![task dueToday]) {
+                [UIView animateWithDuration:0.4 animations:^() {
+                    label.textColor = [UIColor colorWithWhite:0.581 alpha:1.000];
+                }];
+            } else {
+                [UIView animateWithDuration:0.4 animations:^() {
+                    label.textColor = [self.sharedManager getColorForValue:task.value];
+                }];
+            }
             UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconCheckSquareO]];
             UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
             [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
