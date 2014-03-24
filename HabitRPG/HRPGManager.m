@@ -353,7 +353,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         HRPGTaskResponse *taskResponse = (HRPGTaskResponse*)[mappingResult firstObject];
         task.value = [NSNumber numberWithFloat:[task.value floatValue] + [taskResponse.delta floatValue]];
         user.level = taskResponse.level;
-        if ([user.level integerValue] > [taskResponse.level integerValue]) {
+        if ([user.level integerValue] < [taskResponse.level integerValue]) {
             [self displayLevelUpNotification];
             //Set experience to the amount, that was missing for the next level. So that the notification
             //displays the correct amount of experience gained
