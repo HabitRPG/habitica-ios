@@ -75,7 +75,6 @@
     if (self.openedIndexPath && self.openedIndexPath.item < indexPath.item && indexPath.item <= (self.openedIndexPath.item+self.indexOffset)) {
         Task *task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
         int currentOffset = (int)(indexPath.item - self.openedIndexPath.item-1);
-        NSLog(@"%ld, %ld, %d", (long)self.openedIndexPath.item, (long)indexPath.item, self.indexOffset);
         ChecklistItem *item = task.checklist[currentOffset];
         label.text = item.text;
         checklistLabel.hidden = YES;
