@@ -363,11 +363,12 @@
                     <connections>
                         <segue destination="IS1-JY-8Uz" kind="push" identifier="PartySegue" id="maM-8u-an6"/>
                         <segue destination="zlB-Z7-q34" kind="push" identifier="TavernSegue" id="s1s-PK-ebh"/>
+                        <segue destination="8ft-Gj-Y0Y" kind="push" identifier="RewardsSegue" id="9h3-4Z-6gC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVG-cg-SZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1063" y="1401"/>
+            <point key="canvasLocation" x="1063" y="1417"/>
         </scene>
         <!--Party View Controller - Party-->
         <scene sceneID="BQS-ZY-Ygv">
@@ -460,6 +461,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SY2-XN-wxb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1492" y="1264"/>
+        </scene>
+        <!--Rewards View Controller - Rewards-->
+        <scene sceneID="M9m-tL-yO2">
+            <objects>
+                <tableViewController id="8ft-Gj-Y0Y" customClass="HRPGRewardsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="d3i-Bq-HWt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="qDG-jG-6KD">
+                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qDG-jG-6KD" id="3zf-Nw-tyL">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8ft-Gj-Y0Y" id="phs-T1-5qH"/>
+                            <outlet property="delegate" destination="8ft-Gj-Y0Y" id="14L-kt-ykA"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Rewards" id="Mlq-VF-kA3"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kXn-rI-saa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1937" y="1138"/>
         </scene>
         <!--Tavern View Controller - Tavern-->
         <scene sceneID="a0s-8z-SBX">
@@ -635,7 +665,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="diY-W7-Wfi">
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="diY-W7-Wfi">
                                                     <rect key="frame" x="150" y="12" width="20" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </activityIndicatorView>
@@ -710,6 +740,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jeD-LQ-1O1"/>
+        <segue reference="HFM-OL-cM8"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,23 +20,38 @@
 @implementation HRPGPartyViewController
 @synthesize managedObjectContext;
 Group *party;
+NSUserDefaults *defaults;
+NSString *partyID;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
     _sharedManager = appdelegate.sharedManager;
+    defaults = [NSUserDefaults standardUserDefaults];
+    partyID = [defaults objectForKey:@"partyID"];
+    if (!partyID) {
+        [_sharedManager fetchGroups:@"party" onSuccess:^(){
+            partyID = [defaults objectForKey:@"partyID"];
+        }onError:^() {
+            
+        }];
+    }
     self.managedObjectContext = _sharedManager.getManagedObjectContext;
+
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
@@ -54,7 +69,7 @@ Group *party;
 }
 
 - (void) refresh {
-    [_sharedManager fetchGroup:@"22019889-582a-4443-bbec-8e02aba6a92b" onSuccess:^ () {
+    [_sharedManager fetchGroup:partyID onSuccess:^ () {
         [self.refreshControl endRefreshing];
     } onError:^ () {
         [self.refreshControl endRefreshing];
@@ -146,7 +161,7 @@ Group *party;
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == '22019889-582a-4443-bbec-8e02aba6a92b'"]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", partyID]];
     
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
@@ -188,7 +203,29 @@ Group *party;
       newIndexPath:(NSIndexPath *)newIndexPath
 {
     UITableView *tableView = self.tableView;
-    [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item inSection:1];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:1];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:1];
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:1];
+            newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item inSection:1];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
