@@ -27,6 +27,9 @@
 		D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E318D610E300C8D1B7 /* HRPGTaskResponse.m */; };
 		D9B5C0E718D62CC700C8D1B7 /* HRPGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */; };
 		D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */; };
+		D9C7C1ED18E268580083F4E4 /* Gear.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7C1EC18E268580083F4E4 /* Gear.m */; };
+		D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7C1EF18E26BBB0083F4E4 /* Egg.m */; };
+		D9C7C1F318E280DE0083F4E4 /* HRPGRewardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7C1F218E280DD0083F4E4 /* HRPGRewardsViewController.m */; };
 		D9E0868B18DA040300BAF2EF /* BWCrashReportTextFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E0868518DA040200BAF2EF /* BWCrashReportTextFormatter.m */; };
 		D9E0868C18DA040300BAF2EF /* BWQuincyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E0868718DA040200BAF2EF /* BWQuincyManager.m */; };
 		D9E0868D18DA040300BAF2EF /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E0868918DA040200BAF2EF /* CrashReporter.framework */; };
@@ -99,6 +102,12 @@
 		D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLoginViewController.m; sourceTree = "<group>"; };
 		D9B5C0E818D6320C00C8D1B7 /* HRPGLoginData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLoginData.h; sourceTree = "<group>"; };
 		D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLoginData.m; sourceTree = "<group>"; };
+		D9C7C1EB18E268580083F4E4 /* Gear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gear.h; sourceTree = "<group>"; };
+		D9C7C1EC18E268580083F4E4 /* Gear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gear.m; sourceTree = "<group>"; };
+		D9C7C1EE18E26BBB0083F4E4 /* Egg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Egg.h; sourceTree = "<group>"; };
+		D9C7C1EF18E26BBB0083F4E4 /* Egg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Egg.m; sourceTree = "<group>"; };
+		D9C7C1F118E280DD0083F4E4 /* HRPGRewardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGRewardsViewController.h; sourceTree = "<group>"; };
+		D9C7C1F218E280DD0083F4E4 /* HRPGRewardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGRewardsViewController.m; sourceTree = "<group>"; };
 		D9E0868418DA040200BAF2EF /* BWCrashReportTextFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWCrashReportTextFormatter.h; sourceTree = "<group>"; };
 		D9E0868518DA040200BAF2EF /* BWCrashReportTextFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWCrashReportTextFormatter.m; sourceTree = "<group>"; };
 		D9E0868618DA040200BAF2EF /* BWQuincyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWQuincyManager.h; sourceTree = "<group>"; };
@@ -175,6 +184,8 @@
 				D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */,
 				D92CDADB18CB79E50006C242 /* HRPGTableViewController.h */,
 				D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */,
+				D9C7C1F118E280DD0083F4E4 /* HRPGRewardsViewController.h */,
+				D9C7C1F218E280DD0083F4E4 /* HRPGRewardsViewController.m */,
 				D92CDAE518CB84000006C242 /* HRPGToDoTableViewController.h */,
 				D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */,
 			);
@@ -202,6 +213,10 @@
 				D9B5C0B018CCD1EA00C8D1B7 /* Task.m */,
 				D9B5C0BB18D5E7DF00C8D1B7 /* User.h */,
 				D9B5C0BC18D5E7DF00C8D1B7 /* User.m */,
+				D9C7C1EB18E268580083F4E4 /* Gear.h */,
+				D9C7C1EC18E268580083F4E4 /* Gear.m */,
+				D9C7C1EE18E26BBB0083F4E4 /* Egg.h */,
+				D9C7C1EF18E26BBB0083F4E4 /* Egg.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -437,6 +452,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */,
+				D9C7C1ED18E268580083F4E4 /* Gear.m in Sources */,
 				D9B5C0BD18D5E7DF00C8D1B7 /* User.m in Sources */,
 				D9B5C0D518D5F94400C8D1B7 /* HRPGPartyViewController.m in Sources */,
 				D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */,
@@ -453,6 +470,7 @@
 				D92CDAEA18CB8C130006C242 /* HRPGAddViewController.m in Sources */,
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
 				D9B5C0E718D62CC700C8D1B7 /* HRPGLoginViewController.m in Sources */,
+				D9C7C1F318E280DE0083F4E4 /* HRPGRewardsViewController.m in Sources */,
 				D9B5C0BA18D5E7DE00C8D1B7 /* Reward.m in Sources */,
 				D92CDAE718CB84000006C242 /* HRPGToDoTableViewController.m in Sources */,
 				D9E0868C18DA040300BAF2EF /* BWQuincyManager.m in Sources */,

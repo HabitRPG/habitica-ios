@@ -4,6 +4,7 @@
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="user" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="chatmessages" inverseEntity="Group" syncable="YES"/>
     </entity>
@@ -12,6 +13,40 @@
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="task" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="checklist" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="Egg" representedClassName="Egg" syncable="YES">
+        <attribute name="adjective" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="dialog" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mountText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Food" syncable="YES">
+        <attribute name="article" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="dialog" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Gear" representedClassName="Gear" syncable="YES">
+        <attribute name="con" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="intelligence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="klass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="per" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="str" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Group" representedClassName="Group" syncable="YES">
         <attribute name="hdescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -26,6 +61,34 @@
         <relationship name="leader" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
         <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="party" inverseEntity="User" syncable="YES"/>
     </entity>
+    <entity name="HatchingPotion" syncable="YES">
+        <attribute name="dialog" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Quest" syncable="YES">
+        <attribute name="bossHp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="bossName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bossStr" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="completition" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dropExp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="dropGp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="previous" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="collect" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="QuestCollect" inverseName="quest" inverseEntity="QuestCollect" syncable="YES"/>
+    </entity>
+    <entity name="QuestCollect" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quest" inverseName="collect" inverseEntity="Quest" syncable="YES"/>
+    </entity>
     <entity name="Reward" representedClassName="Reward" syncable="YES">
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -33,6 +96,15 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="rewards" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Spell" syncable="YES">
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="klass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="mana" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -65,9 +137,28 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tasks" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="costumeArmor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="costumeBack" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="costumeHead" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="costumeHeadAccessory" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="costumeShield" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="costumeWeapon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentMount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentPet" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dayStart" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="equippedArmor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="equippedBack" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="equippedHead" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="equippedHeadAccessory" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="equippedShield" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="equippedWeapon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="experience" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="gold" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="hairBangs" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairBase" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairBeard" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairColor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairMustache" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hclass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="health" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -76,6 +167,9 @@
         <attribute name="maxHealth" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxMagic" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="nextLevel" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="shirt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skin" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sleep" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" syncable="YES"/>
@@ -85,12 +179,19 @@
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="user" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ChatMessage" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="ChatMessage" positionX="0" positionY="0" width="128" height="135"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Group" positionX="0" positionY="0" width="128" height="210"/>
         <element name="Reward" positionX="0" positionY="0" width="128" height="135"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="373"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="313"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="645"/>
+        <element name="Gear" positionX="9" positionY="153" width="128" height="208"/>
+        <element name="Egg" positionX="18" positionY="162" width="128" height="178"/>
+        <element name="Quest" positionX="27" positionY="171" width="128" height="238"/>
+        <element name="QuestCollect" positionX="45" positionY="180" width="128" height="103"/>
+        <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="120"/>
+        <element name="Food" positionX="81" positionY="198" width="128" height="165"/>
+        <element name="Spell" positionX="45" positionY="153" width="128" height="148"/>
     </elements>
 </model>

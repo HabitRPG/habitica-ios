@@ -253,6 +253,94 @@ NIKFontAwesomeIconFactory *iconFactory;
         
         return nil;
     }];
+    
+    
+    RKEntityMapping *gearMapping = [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
+    gearMapping.forceCollectionMapping = YES;
+    [gearMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [gearMapping addAttributeMappingsFromDictionary:@{
+                                                        @"(key).text":              @"text",
+                                                        @"(key).notes":            @"notes",
+                                                        @"(key).con":       @"con",
+                                                        @"(key).value":            @"value",
+                                                        @"(key).type":              @"type",
+                                                        @"(key).klass":        @"klass",
+                                                        @"(key).index":        @"index",
+                                                        @"(key).str":        @"str",
+                                                        @"(key).int":        @"intelligence",
+                                                        @"(key).per":        @"per"}];
+    
+    
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:gearMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"gear.flat" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+
+    RKEntityMapping *eggMapping = [RKEntityMapping mappingForEntityForName:@"Egg" inManagedObjectStore:managedObjectStore];
+    eggMapping.forceCollectionMapping = YES;
+    [eggMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [eggMapping addAttributeMappingsFromDictionary:@{
+                                                      @"(key).text":              @"text",
+                                                      @"(key).adjective":            @"adjective",
+                                                      @"(key).canBuy":       @"canBuy",
+                                                      @"(key).value":            @"value",
+                                                      @"(key).notes":              @"notes",
+                                                      @"(key).mountText":        @"mountText",
+                                                      @"(key).type":        @"type",
+                                                      @"(key).dialog":        @"dialog"}];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:eggMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"eggs" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    RKEntityMapping *hatchingPotionMapping = [RKEntityMapping mappingForEntityForName:@"HatchingPotion" inManagedObjectStore:managedObjectStore];
+    hatchingPotionMapping.forceCollectionMapping = YES;
+    [hatchingPotionMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [hatchingPotionMapping addAttributeMappingsFromDictionary:@{
+                                                     @"(key).text":              @"text",
+                                                     @"(key).value":            @"value",
+                                                     @"(key).notes":              @"notes",
+                                                     @"(key).dialog":        @"dialog"}];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:hatchingPotionMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"hatchingPotions" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    RKEntityMapping *foodMapping = [RKEntityMapping mappingForEntityForName:@"Food" inManagedObjectStore:managedObjectStore];
+    foodMapping.forceCollectionMapping = YES;
+    [foodMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [foodMapping addAttributeMappingsFromDictionary:@{
+                                                     @"(key).text":              @"text",
+                                                     @"(key).target":            @"target",
+                                                     @"(key).canBuy":       @"canBuy",
+                                                     @"(key).value":            @"value",
+                                                     @"(key).notes":              @"notes",
+                                                     @"(key).article":        @"article",
+                                                     @"(key).dialog":        @"dialog"}];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:foodMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"food" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    RKEntityMapping *questMapping = [RKEntityMapping mappingForEntityForName:@"Quest" inManagedObjectStore:managedObjectStore];
+    questMapping.forceCollectionMapping = YES;
+    [questMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [questMapping addAttributeMappingsFromDictionary:@{
+                                                     @"(key).text":              @"text",
+                                                     @"(key).completition":            @"completition",
+                                                     @"(key).canBuy":       @"canBuy",
+                                                     @"(key).value":            @"value",
+                                                     @"(key).notes":              @"notes",
+                                                     @"(key).drop.gp":        @"dropGp",
+                                                     @"(key).drop.exp":        @"dropExp",
+                                                     @"(key).boss.name":        @"bossName",
+                                                     @"(key).boss.hp":        @"bossHp",
+                                                     @"(key).boss.str":        @"bossStr"}];
+    RKObjectMapping* questCollectMapping = [RKEntityMapping mappingForEntityForName:@"QuestCollect" inManagedObjectStore:managedObjectStore];
+    questCollectMapping.forceCollectionMapping = YES;
+    [questCollectMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [questCollectMapping addAttributeMappingsFromDictionary:@{
+                                                       @"(key).text":              @"text",
+                                                       @"(key).count":            @"count"}];
+    [questMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"collect"
+                                                                                  toKeyPath:@"collect"
+                                                                                withMapping:questCollectMapping]];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:questMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"quests" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+
     [self setCredentials];
     if (userID != nil) {
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
@@ -306,6 +394,19 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else {
         return [UIColor colorWithRed:0.231 green:0.442 blue:0.964 alpha:1.000];
     }
+}
+
+- (void) fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock{
+    NSLog(@"Fetching content");
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/content" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        errorBlock();
+        return;
+    }];
 }
 
 - (void) fetchTasks:(void (^)())successBlock onError:(void (^)())errorBlock{

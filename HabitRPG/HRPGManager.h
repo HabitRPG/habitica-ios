@@ -15,6 +15,7 @@
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 
 - (void) loadObjectManager;
+-(void) fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) fetchTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) fetchGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
