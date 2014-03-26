@@ -15,6 +15,9 @@
 #import <PDKeychainBindings.h>
 #import <NIKFontAwesomeIconFactory.h>
 #import <NIKFontAwesomeIconFactory+iOS.h>
+#import "Gear.h"
+#import "Egg.h"
+#import "Group.h"
 
 @implementation HRPGManager
 @synthesize managedObjectContext;
@@ -182,6 +185,14 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"profile.name":            @"username",
                                                         @"preferences.dayStart" : @"dayStart",
                                                         @"preferences.sleep" : @"sleep",
+                                                        @"preferences.skin" : @"skin",
+                                                        @"preferences.size" : @"size",
+                                                        @"preferences.shirt" : @"shirt",
+                                                        @"preferences.hair.mustache" : @"hairMustache",
+                                                        @"preferences.hair.bangs" : @"hairBangs",
+                                                        @"preferences.hair.beard" : @"hairBeard",
+                                                        @"preferences.hair.base" : @"hairBase",
+                                                        @"preferences.hair.color" : @"hairColor",
                                                         @"stats.lvl":             @"level",
                                                         @"stats.gp":             @"gold",
                                                         @"stats.exp":             @"experience",
@@ -189,7 +200,15 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"stats.hp":             @"health",
                                                         @"stats.toNextLevel":             @"nextLevel",
                                                         @"stats.maxHealth":             @"maxHealth",
-                                                        @"stats.maxMP":             @"maxMagic"
+                                                        @"stats.maxMP":             @"maxMagic",
+                                                        @"items.gear.equipped.headAccessory" : @"equippedHeadAccessory",
+                                                        @"items.gear.equipped.armor" : @"equippedArmor",
+                                                        @"items.gear.equipped.head" : @"equippedHead",
+                                                        @"items.gear.equipped.shield" : @"equippedShield",
+                                                        @"items.gear.equipped.weapon" : @"equippedWeapon",
+                                                        @"items.gear.equipped.back" : @"equippedBack",
+                                                        @"items.currentPet" : @"currentPet",
+                                                        @"items.currentMount" : @"currentMount",
                                                         }];
     entityMapping.identificationAttributes = @[ @"id" ];
     RKObjectMapping* rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
@@ -234,7 +253,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                                                 toKeyPath:@"member"
                                                                                 withMapping:memberMapping]];
     RKObjectMapping* chatMapping = [RKEntityMapping mappingForEntityForName:@"ChatMessage" inManagedObjectStore:managedObjectStore];
-    [chatMapping addAttributeMappingsFromArray:@[@"uuid", @"id", @"text", @"timestamp"]];
+    [chatMapping addAttributeMappingsFromArray:@[@"uuid", @"id", @"text", @"timestamp", @"user"]];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"chat"
                                                                                   toKeyPath:@"chatmessages"
                                                                                 withMapping:chatMapping]];
