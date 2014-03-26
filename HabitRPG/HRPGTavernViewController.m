@@ -21,7 +21,6 @@
 
 @implementation HRPGTavernViewController
 @synthesize managedObjectContext;
-Group *tavern;
 User *user;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -45,9 +44,6 @@ User *user;
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
     
-    if ([[self.fetchedResultsController sections] count] > 0 && [[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0) {
-        tavern = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-    }
     user = [_sharedManager getUser];
 }
 
@@ -79,9 +75,8 @@ User *user;
         case 0:
             return 1;
         case 1: {
-            if (tavern != nil && [tavern.chatmessages count] > 0) {
-                return [tavern.chatmessages count];
-            }
+            id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][0];
+            return [sectionInfo numberOfObjects];
         }
         default:
             return 0;
@@ -160,15 +155,15 @@ User *user;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"ChatMessage" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == 'habitrpg'"]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"group.id == 'habitrpg'"]];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -207,21 +202,25 @@ User *user;
       newIndexPath:(NSIndexPath *)newIndexPath
 {
     UITableView *tableView = self.tableView;
-    
     switch(type) {
         case NSFetchedResultsChangeInsert:
+            newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item inSection:1];
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeDelete:
+            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:1];
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeUpdate:
+            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:1];
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:
+            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:1];
+            newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item inSection:1];
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
@@ -235,10 +234,8 @@ User *user;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    if (tavern != nil) {
-            ChatMessage *message = (ChatMessage*)tavern.chatmessages[indexPath.item];
-            cell.textLabel.text = message.text;
-    }
+        ChatMessage *message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
+        cell.textLabel.text = message.text;
 }
 
 
