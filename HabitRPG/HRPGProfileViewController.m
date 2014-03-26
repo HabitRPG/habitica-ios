@@ -81,7 +81,7 @@ NSString *username;
 {
     switch (section) {
         case 0:
-            return 1;
+            return 2;
         case 1:
             return 2;
         default:
@@ -111,7 +111,9 @@ NSString *username;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1 && indexPath.item == 0) {
+    if (indexPath.section == 0 && indexPath.item == 1) {
+        [self performSegueWithIdentifier: @"RewardsSegue" sender: self];
+    } else if (indexPath.section == 1 && indexPath.item == 0) {
         [self performSegueWithIdentifier: @"TavernSegue" sender: self];
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         [self performSegueWithIdentifier: @"PartySegue" sender: self];
@@ -129,8 +131,9 @@ NSString *username;
         [self configureCell:cell atIndexPath:indexPath];
         return cell;
     } else {
-        NSString *title = nil;
-        if (indexPath.section == 1 && indexPath.item == 0) {
+        NSString *title = nil;if (indexPath.section == 0 && indexPath.item == 1) {
+            title = NSLocalizedString(@"Rewards", nil);
+        } else if (indexPath.section == 1 && indexPath.item == 0) {
             title = NSLocalizedString(@"Tavern", nil);
         } else if (indexPath.section == 1 && indexPath.item == 1) {
             title = NSLocalizedString(@"Party", nil);
