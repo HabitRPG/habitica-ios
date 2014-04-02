@@ -119,47 +119,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.openedIndexPath.item+self.indexOffset < indexPath.item && self.indexOffset > 0) {
-        indexPath = [NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section];
-    }
-    Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];
-    if (self.openedIndexPath.item == indexPath.item) {
-        NSIndexPath *tempPath = self.openedIndexPath;
-        self.openedIndexPath = nil;
-        self.indexOffset = 0;
-        [self configureCell:[tableView cellForRowAtIndexPath:tempPath] atIndexPath:tempPath withAnimation:YES];
-        NSMutableArray *deleteArray = [[NSMutableArray alloc] init];
-        for(int i=1; i<=[checklistCount integerValue]; i++) {
-            [deleteArray addObject:[NSIndexPath indexPathForItem:indexPath.item+i inSection:self.openedIndexPath.section]];
-        }
-        [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationTop];
-    } else {
-        if (self.openedIndexPath){
-            Task *oldTask = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
-            NSNumber *oldChecklistCount = [oldTask valueForKeyPath:@"checklist.@count"];
-            
-            NSMutableArray *deleteArray = [[NSMutableArray alloc] init];
-            for(int i=1; i<=[oldChecklistCount integerValue]; i++) {
-                [deleteArray addObject:[NSIndexPath indexPathForItem:self.openedIndexPath.item+i inSection:self.openedIndexPath.section]];
-            }
-            NSIndexPath *tempPath = self.openedIndexPath;
-            self.openedIndexPath = nil;
-            self.indexOffset = 0;
-            [self configureCell:[tableView cellForRowAtIndexPath:tempPath] atIndexPath:tempPath withAnimation:YES];
-            [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationTop];
-        }
-        if ([checklistCount integerValue] > 0) {
-            self.openedIndexPath = indexPath;
-            self.indexOffset = (int)[checklistCount integerValue];
-            NSMutableArray *insertArray = [[NSMutableArray alloc] init];
-            for(int i=1; i<=[checklistCount integerValue]; i++) {
-                [insertArray addObject:[NSIndexPath indexPathForItem:self.openedIndexPath.item+i inSection:self.openedIndexPath.section]];
-            }
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
-            [self.tableView insertRowsAtIndexPaths:insertArray withRowAnimation:UITableViewRowAnimationTop];
-        }
-    }
+
 }
 
 
@@ -207,7 +167,7 @@
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:_typeName];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"rewards"];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     

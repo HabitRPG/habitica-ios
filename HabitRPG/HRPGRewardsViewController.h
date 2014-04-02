@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRPGRewardsViewController : UITableViewController
+@interface HRPGRewardsViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;

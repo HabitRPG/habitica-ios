@@ -209,6 +209,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"items.gear.equipped.back" : @"equippedBack",
                                                         @"items.currentPet" : @"currentPet",
                                                         @"items.currentMount" : @"currentMount",
+                                                        @"party.quest.key" : @"party.quest.key",
                                                         }];
     entityMapping.identificationAttributes = @[ @"id" ];
     RKObjectMapping* rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
@@ -236,7 +237,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     [entityMapping addAttributeMappingsFromDictionary:@{
                                                         @"_id":              @"id",
                                                         @"name":            @"name",
-                                                        @"description":       @"description",
+                                                        @"description":       @"hdescription",
                                                         @"quest.key":            @"questKey",
                                                         @"quest.progress.hp":              @"questHP",
                                                         @"quest.active":        @"questActive",
@@ -480,6 +481,7 @@ NIKFontAwesomeIconFactory *iconFactory;
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:party.id forKey:@"partyID"];
             [defaults synchronize];
+            user.party = party;
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();

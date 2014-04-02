@@ -68,7 +68,7 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Quest" syncable="YES">
+    <entity name="Quest" representedClassName="Quest" syncable="YES">
         <attribute name="bossHp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="bossName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bossStr" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -83,7 +83,7 @@
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="collect" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="QuestCollect" inverseName="quest" inverseEntity="QuestCollect" syncable="YES"/>
     </entity>
-    <entity name="QuestCollect" syncable="YES">
+    <entity name="QuestCollect" representedClassName="QuestCollect" syncable="YES">
         <attribute name="count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
@@ -181,17 +181,17 @@
     <elements>
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="135"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="Egg" positionX="18" positionY="162" width="128" height="178"/>
+        <element name="Food" positionX="81" positionY="198" width="128" height="165"/>
+        <element name="Gear" positionX="9" positionY="153" width="128" height="208"/>
         <element name="Group" positionX="0" positionY="0" width="128" height="210"/>
+        <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="120"/>
+        <element name="Quest" positionX="27" positionY="171" width="128" height="238"/>
+        <element name="QuestCollect" positionX="45" positionY="180" width="128" height="103"/>
         <element name="Reward" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="Spell" positionX="45" positionY="153" width="128" height="148"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="373"/>
         <element name="User" positionX="0" positionY="0" width="128" height="645"/>
-        <element name="Gear" positionX="9" positionY="153" width="128" height="208"/>
-        <element name="Egg" positionX="18" positionY="162" width="128" height="178"/>
-        <element name="Quest" positionX="27" positionY="171" width="128" height="238"/>
-        <element name="QuestCollect" positionX="45" positionY="180" width="128" height="103"/>
-        <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="120"/>
-        <element name="Food" positionX="81" positionY="198" width="128" height="165"/>
-        <element name="Spell" positionX="45" positionY="153" width="128" height="148"/>
     </elements>
 </model>
