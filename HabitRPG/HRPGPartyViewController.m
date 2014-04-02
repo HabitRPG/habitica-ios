@@ -10,6 +10,7 @@
 #import "HRPGAppDelegate.h"
 #import "Task.h"
 #import "Group.h"
+#import "Quest.h"
 #import "ChatMessage.h"
 @interface HRPGPartyViewController ()
 @property HRPGManager *sharedManager;
@@ -20,6 +21,7 @@
 @implementation HRPGPartyViewController
 @synthesize managedObjectContext;
 Group *party;
+Quest *quest;
 NSUserDefaults *defaults;
 NSString *partyID;
 
@@ -41,25 +43,32 @@ NSString *partyID;
     [super viewDidLoad];
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
     _sharedManager = appdelegate.sharedManager;
+    
+    self.managedObjectContext = _sharedManager.getManagedObjectContext;
     defaults = [NSUserDefaults standardUserDefaults];
     partyID = [defaults objectForKey:@"partyID"];
     if (!partyID) {
         [_sharedManager fetchGroups:@"party" onSuccess:^(){
             partyID = [defaults objectForKey:@"partyID"];
+            party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+            [self refresh];
         }onError:^() {
             
         }];
+    } else {
+        if ([[self.fetchedResultsController sections] count] > 0 && [[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0) {
+            party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        }
+        [self fetchQuest];
+
     }
-    self.managedObjectContext = _sharedManager.getManagedObjectContext;
 
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
-
-    if ([[self.fetchedResultsController sections] count] > 0 && [[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0) {
-        party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,6 +80,7 @@ NSString *partyID;
 - (void) refresh {
     [_sharedManager fetchGroup:partyID onSuccess:^ () {
         [self.refreshControl endRefreshing];
+        [self fetchQuest];
     } onError:^ () {
         [self.refreshControl endRefreshing];
         [_sharedManager displayNetworkError];
@@ -119,7 +129,7 @@ NSString *partyID;
             return 100;
         }
     } else {
-        return 44;
+        return 80;
     }
 }
 
@@ -204,26 +214,7 @@ NSString *partyID;
 {
     UITableView *tableView = self.tableView;
     switch(type) {
-        case NSFetchedResultsChangeInsert:
-            newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item inSection:1];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:1];
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
         case NSFetchedResultsChangeUpdate:
-            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:1];
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:1];
-            newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item inSection:1];
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
@@ -231,6 +222,7 @@ NSString *partyID;
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView endUpdates];
+    [self.tableView reloadData];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
@@ -238,18 +230,36 @@ NSString *partyID;
     if (party != nil) {
         if (indexPath.section == 0 && indexPath.item == 0) {
             if (party.questKey != nil) {
-                UILabel *titleLabel = (UILabel*)[cell viewWithTag:2];
-                titleLabel.text = party.questKey;
+                UILabel *titleLabel = (UILabel*)[cell viewWithTag:1];
+                titleLabel.text = quest.text;
                 UILabel *lifeLabel = (UILabel*)[cell viewWithTag:2];
-                lifeLabel.text = [NSString stringWithFormat:@"%@", party.questHP];
+                lifeLabel.text = [NSString stringWithFormat:@"%@ / %@", party.questHP, quest.bossHp];
+                UIProgressView *lifeBar = (UIProgressView*)[cell viewWithTag:3];
+                lifeBar.progress = ([party.questHP floatValue] / [quest.bossHp floatValue]);
             }
         } else if (indexPath.section == 1) {
             ChatMessage *message = (ChatMessage*)party.chatmessages[indexPath.item];
-            cell.textLabel.text = message.text;
+            UILabel *authorLabel = (UILabel*)[cell viewWithTag:1];
+            authorLabel.text = message.user;
+            
+            UILabel *textLabel = (UILabel*)[cell viewWithTag:2];
+            textLabel.text = message.text;
         }
     }
 }
 
+
+-(void) fetchQuest {
+    if (party.questKey) {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        // Edit the entity name as appropriate.
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Quest" inManagedObjectContext:self.managedObjectContext];
+        [fetchRequest setEntity:entity];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", party.questKey]];
+        NSError *error;
+        quest = [managedObjectContext executeFetchRequest:fetchRequest error:&error][0];
+    }
+}
 
 #pragma mark - Navigation
 

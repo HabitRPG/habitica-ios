@@ -2,7 +2,7 @@
 //  ChatMessage.h
 //  HabitRPG
 //
-//  Created by Phillip Thelen on 16/03/14.
+//  Created by Phillip Thelen on 02/04/14.
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
@@ -13,10 +13,11 @@
 
 @interface ChatMessage : NSManagedObject
 
-@property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSDate * timestamp;
+@property (nonatomic, retain) NSString * user;
+@property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) Group *group;
 
 @end
