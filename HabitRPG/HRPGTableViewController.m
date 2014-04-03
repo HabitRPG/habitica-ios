@@ -8,6 +8,7 @@
 
 #import "HRPGTableViewController.h"
 #import "HRPGAppDelegate.h"
+#import "HRPGAddViewController.h"
 #import "Task.h"
 #import <PDKeychainBindings.h>
 #import "MCSwipeTableViewCell.h"
@@ -183,7 +184,12 @@
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue
 {
-    
+    HRPGAddViewController *addViewController = (HRPGAddViewController*)segue.sourceViewController;
+    [_sharedManager createTask:addViewController.createdTask onSuccess:^() {
+        
+    }onError:^() {
+        
+    }];
 }
 
 
@@ -297,6 +303,8 @@
     if ([segue.identifier isEqualToString:@"AddItem"]) {
         UINavigationController *destViewController = segue.destinationViewController;
         destViewController.topViewController.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Add %@", nil), self.readableName];
+        HRPGAddViewController *addController = (HRPGAddViewController*)destViewController.topViewController;
+        addController.taskType = self.typeName;
     }
 }
 

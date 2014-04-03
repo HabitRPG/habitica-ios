@@ -100,6 +100,8 @@ NIKFontAwesomeIconFactory *iconFactory;
     [objectManager addResponseDescriptor:responseDescriptor];
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Task class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodGET]];
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Task class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodPUT]];
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Task class] pathPattern:@"/api/v2/user/tasks" method:RKRequestMethodPOST]];
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Task class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodDELETE]];
     
     RKObjectMapping *taskRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class] ];
     [taskRequestMapping addAttributeMappingsFromDictionary:@{
@@ -516,6 +518,18 @@ NIKFontAwesomeIconFactory *iconFactory;
         if ([task.type  isEqual: @"daily"] || [task.type  isEqual: @"todo"]) {
             task.completed = ([withDirection  isEqual: @"up"]);
         }
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        errorBlock();
+        return;
+    }];
+}
+
+-(void) createTask:(Task*)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [[RKObjectManager sharedManager] postObject:task path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
         return;

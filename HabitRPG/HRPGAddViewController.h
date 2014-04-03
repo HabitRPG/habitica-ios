@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Task.h"
 @interface HRPGAddViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
+@property NSString *taskType;
+@property Task *createdTask;
 
 @end

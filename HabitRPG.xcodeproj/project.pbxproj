@@ -16,6 +16,7 @@
 		D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71DA18EC98A30089FDC6 /* Quest.m */; };
 		D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71DD18EC98A40089FDC6 /* QuestCollect.m */; };
 		D97C71E118ECA7050089FDC6 /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71E018ECA7050089FDC6 /* ChatMessage.m */; };
+		D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */; };
 		D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */; };
 		D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */; };
 		D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0B018CCD1EA00C8D1B7 /* Task.m */; };
@@ -82,6 +83,8 @@
 		D97C71DD18EC98A40089FDC6 /* QuestCollect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestCollect.m; sourceTree = "<group>"; };
 		D97C71DF18ECA7050089FDC6 /* ChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessage.h; sourceTree = "<group>"; };
 		D97C71E018ECA7050089FDC6 /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
+		D97C71E218ECE09A0089FDC6 /* HRPGSpellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellViewController.h; sourceTree = "<group>"; };
+		D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellViewController.m; sourceTree = "<group>"; };
 		D9B11C8A18D63D4E00AB4D23 /* HRPGTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTabBarController.h; sourceTree = "<group>"; };
 		D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTabBarController.m; sourceTree = "<group>"; };
 		D9B5C0AC18CCC87A00C8D1B7 /* HRPGManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGManager.h; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 				D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */,
 				D9C7C1F118E280DD0083F4E4 /* HRPGRewardsViewController.h */,
 				D9C7C1F218E280DD0083F4E4 /* HRPGRewardsViewController.m */,
+				D97C71E218ECE09A0089FDC6 /* HRPGSpellViewController.h */,
+				D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */,
 				D92CDAE518CB84000006C242 /* HRPGToDoTableViewController.h */,
 				D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */,
 			);
@@ -464,6 +469,7 @@
 			files = (
 				D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */,
 				D9C7C1ED18E268580083F4E4 /* Gear.m in Sources */,
+				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
 				D9B5C0BD18D5E7DF00C8D1B7 /* User.m in Sources */,
 				D9B5C0D518D5F94400C8D1B7 /* HRPGPartyViewController.m in Sources */,
 				D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */,
