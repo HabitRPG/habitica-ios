@@ -6,23 +6,18 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import "HRPGRewardsViewController.h"
+#import "HRPGSpellViewController.h"
 #import "HRPGAppDelegate.h"
 #import "Task.h"
-#import "MetaReward.h"
 #import <PDKeychainBindings.h>
 
-@interface HRPGRewardsViewController ()
-@property NSString *readableName;
-@property NSString *typeName;
+@interface HRPGSpellViewController ()
 @property HRPGManager *sharedManager;
-@property NSIndexPath *openedIndexPath;
-@property int indexOffset;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL) animate;
 @end
 
-@implementation HRPGRewardsViewController
+@implementation HRPGSpellViewController
 @synthesize managedObjectContext;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -41,33 +36,12 @@
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
     _sharedManager = appdelegate.sharedManager;
     self.managedObjectContext = _sharedManager.getManagedObjectContext;
-    
-    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refresh;
-    
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    
-    if ([keyChain stringForKey:@"id"] == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-        UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        [self presentViewController:navigationController animated:NO completion: nil];
-    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void) refresh {
-    [_sharedManager fetchUser:^ () {
-        [self.refreshControl endRefreshing];
-    } onError:^ () {
-        [self.refreshControl endRefreshing];
-        [_sharedManager displayNetworkError];
-    }];
 }
 
 #pragma mark - Table view data source
@@ -77,14 +51,10 @@
     return [[self.fetchedResultsController sections] count];
 }
 
-- (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[self.fetchedResultsController sections][section] name];
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects] + self.indexOffset;
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,10 +68,6 @@
 {
     // Return NO if you do not want the specified item to be editable.
     return NO;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -128,16 +94,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    if ([reward.type isEqualToString:@"reward"]) {
-        
-    } else {
-        [self.sharedManager buyObject:reward onSuccess:^() {
-            
-        }onError:^() {
-            
-        }];
-    }
+    
 }
 
 
@@ -151,17 +108,6 @@
     }
 }
 
-- (IBAction)unwindToList:(UIStoryboardSegue *)segue
-{
-    
-}
-
-
-- (IBAction)unwindToListSave:(UIStoryboardSegue *)segue
-{
-    
-}
-
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
@@ -171,26 +117,22 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"MetaReward" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Spell" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    
-    NSPredicate *predicate;
-    predicate = [NSPredicate predicateWithFormat:@"type=='potion' || type=='reward'"];
-    [fetchRequest setPredicate:predicate];
-    
+    User *user = [_sharedManager getUser];
+    //[fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"klass == %@ && level <= %@", user.hclass, user.level]];
     // Edit the sort key as appropriate.
-    NSSortDescriptor *keyDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
-    NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:NO];
-    NSArray *sortDescriptors = @[typeDescriptor, keyDescriptor];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"level" ascending:YES];
+    NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"type" cacheName:@"rewards"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"rewards"];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -258,14 +200,8 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate
 {
-    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
-    textLabel.text = reward.text;
-    UILabel *notesLabel = (UILabel*)[cell viewWithTag:2];
-    notesLabel.text = reward.notes;
-    UILabel *priceLabel = (UILabel*)[cell viewWithTag:3];
-    priceLabel.text = [NSString stringWithFormat:@"%ld", (long)[reward.value integerValue]];
-
+    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [[object valueForKey:@"text"] description];
 }
 
 
@@ -274,10 +210,6 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"AddItem"]) {
-        UINavigationController *destViewController = segue.destinationViewController;
-        destViewController.topViewController.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Add %@", nil), self.readableName];
-    }
 }
 
 @end

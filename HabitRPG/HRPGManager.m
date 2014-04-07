@@ -1,4 +1,4 @@
-//
+    //
 //  HRPGManager.m
 //  HabitRPG
 //
@@ -203,6 +203,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"stats.toNextLevel":             @"nextLevel",
                                                         @"stats.maxHealth":             @"maxHealth",
                                                         @"stats.maxMP":             @"maxMagic",
+                                                        @"stats.class": @"hclass",
                                                         @"items.gear.equipped.headAccessory" : @"equippedHeadAccessory",
                                                         @"items.gear.equipped.armor" : @"equippedArmor",
                                                         @"items.gear.equipped.head" : @"equippedHead",
@@ -211,16 +212,18 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"items.gear.equipped.back" : @"equippedBack",
                                                         @"items.currentPet" : @"currentPet",
                                                         @"items.currentMount" : @"currentMount",
-                                                        @"party.quest.key" : @"party.quest.key",
+                                                        @"party.quest.key" : @"party.questKey",
                                                         }];
     entityMapping.identificationAttributes = @[ @"id" ];
-    RKObjectMapping* rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
+    RKEntityMapping* rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
     [rewardMapping addAttributeMappingsFromDictionary:@{
-                                                        @"id":          @"id",
+                                                        @"id":          @"key",
                                                         @"text":        @"text",
                                                         @"dateCreated": @"dateCreated",
-                                                        @"value":       @"value"
+                                                        @"value":       @"value",
+                                                        @"type":       @"type"
                                                         }];
+    rewardMapping.identificationAttributes = @[ @"key" ];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"rewards"
                                                                                    toKeyPath:@"rewards"
                                                                                  withMapping:rewardMapping]];
@@ -232,7 +235,8 @@ NIKFontAwesomeIconFactory *iconFactory;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
-    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/buy/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
     
     
     entityMapping = [RKEntityMapping mappingForEntityForName:@"Group" inManagedObjectStore:managedObjectStore];
@@ -247,7 +251,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"type":                @"type"
                                                         }];
     entityMapping.identificationAttributes = @[ @"id" ];
-    RKObjectMapping* memberMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
+    RKEntityMapping* memberMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     [memberMapping addAttributeMappingsFromDictionary:@{
                                                         @"_id":                 @"id",
                                                         @"profile.name":        @"username"
@@ -255,11 +259,12 @@ NIKFontAwesomeIconFactory *iconFactory;
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"members"
                                                                                 toKeyPath:@"member"
                                                                                 withMapping:memberMapping]];
-    RKObjectMapping* chatMapping = [RKEntityMapping mappingForEntityForName:@"ChatMessage" inManagedObjectStore:managedObjectStore];
+    RKEntityMapping* chatMapping = [RKEntityMapping mappingForEntityForName:@"ChatMessage" inManagedObjectStore:managedObjectStore];
     [chatMapping addAttributeMappingsFromArray:@[@"uuid", @"id", @"text", @"timestamp", @"user"]];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"chat"
                                                                                   toKeyPath:@"chatmessages"
                                                                                 withMapping:chatMapping]];
+    chatMapping.identificationAttributes = @[ @"id" ];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/groups/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
@@ -280,7 +285,6 @@ NIKFontAwesomeIconFactory *iconFactory;
         return nil;
     }];
     
-    
     RKEntityMapping *gearMapping = [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
     gearMapping.forceCollectionMapping = YES;
     [gearMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
@@ -295,8 +299,6 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"(key).str":        @"str",
                                                         @"(key).int":        @"intelligence",
                                                         @"(key).per":        @"per"}];
-    
-    
     
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:gearMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"gear.flat" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -341,8 +343,28 @@ NIKFontAwesomeIconFactory *iconFactory;
     
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:foodMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"food" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    RKEntityMapping *spellMapping = [RKEntityMapping mappingForEntityForName:@"Spell" inManagedObjectStore:managedObjectStore];
+    spellMapping.forceCollectionMapping = YES;
+    [spellMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [spellMapping addAttributeMappingsFromDictionary:@{
+                                                       @"(key).text":              @"text",
+                                                       @"(key).lvl":            @"level",
+                                                       @"(key).notes":              @"notes"}];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:spellMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"spells" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    RKEntityMapping *potionMapping = [RKEntityMapping mappingForEntityForName:@"Potion" inManagedObjectStore:managedObjectStore];
+    [potionMapping addAttributeMappingsFromDictionary:@{
+                                                        @"text":              @"text",
+                                                        @"key":            @"key",
+                                                        @"value":       @"value",
+                                                        @"notes":              @"notes",
+                                                        @"type":              @"type"}];
+    potionMapping.identificationAttributes = @[ @"key" ];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:potionMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"potion" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
     RKEntityMapping *questMapping = [RKEntityMapping mappingForEntityForName:@"Quest" inManagedObjectStore:managedObjectStore];
-    questMapping.forceCollectionMapping = YES;
+    questMapping.forceCollectionMapping = YES; 
     [questMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
     [questMapping addAttributeMappingsFromDictionary:@{
                                                      @"(key).text":              @"text",
@@ -594,6 +616,20 @@ NIKFontAwesomeIconFactory *iconFactory;
     }];
     
 }
+
+-(void) buyObject:(MetaReward*)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/buy/%@", reward.key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        user.sleep = !user.sleep;
+        NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        errorBlock();
+        return;
+    }];
+}
+
 
 - (void) displayNetworkError {
     NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Network error", nil),

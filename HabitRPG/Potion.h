@@ -1,5 +1,5 @@
 //
-//  Reward.h
+//  Potion.h
 //  HabitRPG
 //
 //  Created by Phillip Thelen on 07/04/14.
@@ -9,11 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class User;
 
-@interface Reward : NSManagedObject
+@interface Potion : NSManagedObject
 
-@property (nonatomic, retain) NSDate * dateCreated;
-@property (nonatomic, retain) User *user;
 
 @end

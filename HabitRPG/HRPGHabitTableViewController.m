@@ -78,9 +78,6 @@
     UILabel *label = (UILabel*)[cell viewWithTag:1];
     label.text = task.text;
     label.textColor = color;
-    UISegmentedControl *upDownControl = (UISegmentedControl*)[cell viewWithTag:2];
-    upDownControl.tintColor = color;
-    [upDownControl removeAllSegments];
     if (task.up) {
         UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconPlus]];
         UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];

@@ -81,7 +81,7 @@ NSString *username;
 {
     switch (section) {
         case 0:
-            return 2;
+            return 3;
         case 1:
             return 2;
         default:
@@ -113,6 +113,8 @@ NSString *username;
 {
     if (indexPath.section == 0 && indexPath.item == 1) {
         [self performSegueWithIdentifier: @"RewardsSegue" sender: self];
+    } else if (indexPath.section == 0 && indexPath.item == 2) {
+        [self performSegueWithIdentifier: @"SpellSegue" sender: self];
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         [self performSegueWithIdentifier: @"TavernSegue" sender: self];
     } else if (indexPath.section == 1 && indexPath.item == 1) {
@@ -131,8 +133,11 @@ NSString *username;
         [self configureCell:cell atIndexPath:indexPath];
         return cell;
     } else {
-        NSString *title = nil;if (indexPath.section == 0 && indexPath.item == 1) {
+        NSString *title = nil;
+        if (indexPath.section == 0 && indexPath.item == 1) {
             title = NSLocalizedString(@"Rewards", nil);
+        } else if (indexPath.section == 0 && indexPath.item == 2) {
+            title = NSLocalizedString(@"Spells", nil);
         } else if (indexPath.section == 1 && indexPath.item == 0) {
             title = NSLocalizedString(@"Tavern", nil);
         } else if (indexPath.section == 1 && indexPath.item == 1) {

@@ -1,18 +1,15 @@
 //
-//  Reward.m
+//  Potion.m
 //  HabitRPG
 //
 //  Created by Phillip Thelen on 07/04/14.
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import "Reward.h"
-#import "User.h"
+#import "Potion.h"
 
 
-@implementation Reward
+@implementation Potion
 
-@dynamic dateCreated;
-@dynamic user;
 
 @end

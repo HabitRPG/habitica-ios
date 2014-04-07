@@ -35,18 +35,13 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Gear" representedClassName="Gear" syncable="YES">
+    <entity name="Gear" representedClassName="Gear" parentEntity="MetaReward" syncable="YES">
         <attribute name="con" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="intelligence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="key" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="klass" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="per" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="str" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Group" representedClassName="Group" syncable="YES">
         <attribute name="hdescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -68,6 +63,14 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="MetaReward" representedClassName="MetaReward" isAbstract="YES" syncable="YES">
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="Potion" representedClassName="Potion" parentEntity="MetaReward" syncable="YES"/>
     <entity name="Quest" representedClassName="Quest" syncable="YES">
         <attribute name="bossHp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="bossName" optional="YES" attributeType="String" syncable="YES"/>
@@ -89,12 +92,8 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quest" inverseName="collect" inverseEntity="Quest" syncable="YES"/>
     </entity>
-    <entity name="Reward" representedClassName="Reward" syncable="YES">
+    <entity name="Reward" representedClassName="Reward" parentEntity="MetaReward" syncable="YES">
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="value" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="rewards" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Spell" syncable="YES">
@@ -182,16 +181,18 @@
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="135"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Egg" positionX="18" positionY="162" width="128" height="178"/>
-        <element name="Food" positionX="81" positionY="198" width="128" height="165"/>
-        <element name="Gear" positionX="9" positionY="153" width="128" height="208"/>
+        <element name="Food" positionX="81" positionY="198" width="128" height="163"/>
+        <element name="Gear" positionX="9" positionY="153" width="128" height="135"/>
         <element name="Group" positionX="0" positionY="0" width="128" height="210"/>
         <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="120"/>
         <element name="Quest" positionX="27" positionY="171" width="128" height="238"/>
         <element name="QuestCollect" positionX="45" positionY="180" width="128" height="103"/>
-        <element name="Reward" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="Reward" positionX="0" positionY="0" width="128" height="73"/>
         <element name="Spell" positionX="45" positionY="153" width="128" height="148"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="373"/>
         <element name="User" positionX="0" positionY="0" width="128" height="645"/>
+        <element name="Potion" positionX="45" positionY="153" width="128" height="43"/>
+        <element name="MetaReward" positionX="54" positionY="162" width="128" height="118"/>
     </elements>
 </model>
