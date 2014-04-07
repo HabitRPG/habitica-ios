@@ -21,6 +21,7 @@
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mountText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="owned" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -31,6 +32,7 @@
         <attribute name="dialog" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="owned" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -40,8 +42,10 @@
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="intelligence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="klass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="owned" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="per" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="str" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedGear" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Group" representedClassName="Group" syncable="YES">
         <attribute name="hdescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -60,6 +64,7 @@
         <attribute name="dialog" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="owned" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
@@ -81,6 +86,7 @@
         <attribute name="dropGp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="owned" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="previous" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -172,6 +178,7 @@
         <attribute name="sleep" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" syncable="YES"/>
+        <relationship name="ownedGear" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Gear" inverseName="user" inverseEntity="Gear" syncable="YES"/>
         <relationship name="party" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="member" inverseEntity="Group" syncable="YES"/>
         <relationship name="rewards" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reward" inverseName="user" inverseEntity="Reward" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="user" inverseEntity="Tag" syncable="YES"/>
@@ -180,18 +187,18 @@
     <elements>
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="135"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="Egg" positionX="18" positionY="162" width="128" height="178"/>
-        <element name="Food" positionX="81" positionY="198" width="128" height="163"/>
-        <element name="Gear" positionX="9" positionY="153" width="128" height="135"/>
+        <element name="Egg" positionX="18" positionY="162" width="128" height="195"/>
+        <element name="Food" positionX="81" positionY="198" width="128" height="178"/>
+        <element name="Gear" positionX="9" positionY="153" width="128" height="163"/>
         <element name="Group" positionX="0" positionY="0" width="128" height="210"/>
-        <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="120"/>
-        <element name="Quest" positionX="27" positionY="171" width="128" height="238"/>
+        <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="135"/>
+        <element name="Quest" positionX="27" positionY="171" width="128" height="255"/>
         <element name="QuestCollect" positionX="45" positionY="180" width="128" height="103"/>
         <element name="Reward" positionX="0" positionY="0" width="128" height="73"/>
         <element name="Spell" positionX="45" positionY="153" width="128" height="148"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="373"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="645"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="658"/>
         <element name="Potion" positionX="45" positionY="153" width="128" height="43"/>
         <element name="MetaReward" positionX="54" positionY="162" width="128" height="118"/>
     </elements>

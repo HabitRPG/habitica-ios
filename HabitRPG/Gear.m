@@ -17,5 +17,6 @@
 @dynamic klass;
 @dynamic per;
 @dynamic str;
+@dynamic owned;
 
 @end

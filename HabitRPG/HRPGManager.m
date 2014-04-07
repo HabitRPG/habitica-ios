@@ -232,6 +232,51 @@ NIKFontAwesomeIconFactory *iconFactory;
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
                                                                                   toKeyPath:@"tags"
                                                                                 withMapping:tagMapping]];
+    RKEntityMapping* gearOwnedMapping = [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
+    gearOwnedMapping.forceCollectionMapping = YES;
+    [gearOwnedMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [gearOwnedMapping addAttributeMappingsFromDictionary:@{@"(key)":              @"owned"}];
+    gearOwnedMapping.identificationAttributes = @[ @"key" ];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.gear.owned"
+                                                                                  toKeyPath:@"ownedGear"
+                                                                                withMapping:gearOwnedMapping]];
+
+    RKEntityMapping* questOwnedMapping = [RKEntityMapping mappingForEntityForName:@"Quest" inManagedObjectStore:managedObjectStore];
+    questOwnedMapping.forceCollectionMapping = YES;
+    [questOwnedMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [questOwnedMapping addAttributeMappingsFromDictionary:@{@"(key)":              @"owned"}];
+    questOwnedMapping.identificationAttributes = @[ @"key" ];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.quests"
+                                                                                  toKeyPath:@"ownedQuests"
+                                                                                withMapping:questOwnedMapping]];
+
+    RKEntityMapping* foodOwnedMapping = [RKEntityMapping mappingForEntityForName:@"Food" inManagedObjectStore:managedObjectStore];
+    foodOwnedMapping.forceCollectionMapping = YES;
+    [foodOwnedMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [foodOwnedMapping addAttributeMappingsFromDictionary:@{@"(key)":              @"owned"}];
+    foodOwnedMapping.identificationAttributes = @[ @"key" ];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.food"
+                                                                                  toKeyPath:@"ownedFood"
+                                                                                withMapping:foodOwnedMapping]];
+    
+    RKEntityMapping* hPotionOwnedMapping = [RKEntityMapping mappingForEntityForName:@"HatchingPotion" inManagedObjectStore:managedObjectStore];
+    hPotionOwnedMapping.forceCollectionMapping = YES;
+    [hPotionOwnedMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [hPotionOwnedMapping addAttributeMappingsFromDictionary:@{@"(key)":              @"owned"}];
+    hPotionOwnedMapping.identificationAttributes = @[ @"key" ];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.hatchingPotions"
+                                                                                  toKeyPath:@"ownedHatchingPotions"
+                                                                                withMapping:hPotionOwnedMapping]];
+
+    RKEntityMapping* eggOwnedMapping = [RKEntityMapping mappingForEntityForName:@"Egg" inManagedObjectStore:managedObjectStore];
+    eggOwnedMapping.forceCollectionMapping = YES;
+    [eggOwnedMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [eggOwnedMapping addAttributeMappingsFromDictionary:@{@"(key)":              @"owned"}];
+    eggOwnedMapping.identificationAttributes = @[ @"key" ];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.eggs"
+                                                                                  toKeyPath:@"ownedEggs"
+                                                                                withMapping:gearOwnedMapping]];
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
@@ -299,7 +344,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"(key).str":        @"str",
                                                         @"(key).int":        @"intelligence",
                                                         @"(key).per":        @"per"}];
-    
+    gearMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:gearMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"gear.flat" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
@@ -315,7 +360,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                       @"(key).mountText":        @"mountText",
                                                       @"(key).type":        @"type",
                                                       @"(key).dialog":        @"dialog"}];
-    
+    eggMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:eggMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"eggs" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     RKEntityMapping *hatchingPotionMapping = [RKEntityMapping mappingForEntityForName:@"HatchingPotion" inManagedObjectStore:managedObjectStore];
@@ -326,7 +371,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                      @"(key).value":            @"value",
                                                      @"(key).notes":              @"notes",
                                                      @"(key).dialog":        @"dialog"}];
-    
+    hatchingPotionMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:hatchingPotionMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"hatchingPotions" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     RKEntityMapping *foodMapping = [RKEntityMapping mappingForEntityForName:@"Food" inManagedObjectStore:managedObjectStore];
@@ -340,7 +385,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                      @"(key).notes":              @"notes",
                                                      @"(key).article":        @"article",
                                                      @"(key).dialog":        @"dialog"}];
-    
+    foodMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:foodMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"food" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     RKEntityMapping *spellMapping = [RKEntityMapping mappingForEntityForName:@"Spell" inManagedObjectStore:managedObjectStore];
@@ -350,7 +395,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                        @"(key).text":              @"text",
                                                        @"(key).lvl":            @"level",
                                                        @"(key).notes":              @"notes"}];
-    
+    spellMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:spellMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"spells" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     RKEntityMapping *potionMapping = [RKEntityMapping mappingForEntityForName:@"Potion" inManagedObjectStore:managedObjectStore];
@@ -377,6 +422,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                      @"(key).boss.name":        @"bossName",
                                                      @"(key).boss.hp":        @"bossHp",
                                                      @"(key).boss.str":        @"bossStr"}];
+    questMapping.identificationAttributes = @[ @"key" ];
     RKObjectMapping* questCollectMapping = [RKEntityMapping mappingForEntityForName:@"QuestCollect" inManagedObjectStore:managedObjectStore];
     questCollectMapping.forceCollectionMapping = YES;
     [questCollectMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
@@ -619,7 +665,6 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 -(void) buyObject:(MetaReward*)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/buy/%@", reward.key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        user.sleep = !user.sleep;
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();

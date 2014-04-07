@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "MetaReward.h"
 
-
-@interface Gear : NSManagedObject
+@interface Gear : MetaReward
 
 @property (nonatomic, retain) NSNumber * con;
 @property (nonatomic, retain) NSNumber * index;
@@ -18,5 +18,6 @@
 @property (nonatomic, retain) NSString * klass;
 @property (nonatomic, retain) NSNumber * per;
 @property (nonatomic, retain) NSNumber * str;
+@property (nonatomic) BOOL owned;
 
 @end
