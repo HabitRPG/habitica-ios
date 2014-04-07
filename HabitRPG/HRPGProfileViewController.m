@@ -74,7 +74,7 @@ NSString *username;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -84,6 +84,8 @@ NSString *username;
             return 3;
         case 1:
             return 2;
+        case 2:
+            return 1;
         default:
             return 0;
     }
@@ -96,6 +98,8 @@ NSString *username;
             break;
         case 1:
             return NSLocalizedString(@"Social", nil);
+        case 2:
+            return NSLocalizedString(@"Inventory", nil);
         default:
             return @"";
     }
@@ -119,6 +123,8 @@ NSString *username;
         [self performSegueWithIdentifier: @"TavernSegue" sender: self];
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         [self performSegueWithIdentifier: @"PartySegue" sender: self];
+    } else if (indexPath.section == 2 && indexPath.item == 0) {
+        [self performSegueWithIdentifier: @"EquipmentSegue" sender: self];
     }
 }
 
@@ -142,6 +148,8 @@ NSString *username;
             title = NSLocalizedString(@"Tavern", nil);
         } else if (indexPath.section == 1 && indexPath.item == 1) {
             title = NSLocalizedString(@"Party", nil);
+        } else if (indexPath.section == 2 && indexPath.item == 0) {
+            title = NSLocalizedString(@"Equipment", nil);
         }
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];

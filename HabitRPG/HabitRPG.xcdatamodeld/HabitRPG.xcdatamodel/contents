@@ -25,6 +25,7 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedEggs" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Food" syncable="YES">
         <attribute name="article" optional="YES" attributeType="String" syncable="YES"/>
@@ -36,6 +37,7 @@
         <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedFood" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Gear" representedClassName="Gear" parentEntity="MetaReward" syncable="YES">
         <attribute name="con" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -67,6 +69,7 @@
         <attribute name="owned" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedHatchingPotions" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="MetaReward" representedClassName="MetaReward" isAbstract="YES" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
@@ -91,6 +94,7 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="collect" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="QuestCollect" inverseName="quest" inverseEntity="QuestCollect" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedQuests" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="QuestCollect" representedClassName="QuestCollect" syncable="YES">
         <attribute name="count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -178,7 +182,11 @@
         <attribute name="sleep" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" syncable="YES"/>
-        <relationship name="ownedGear" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Gear" inverseName="user" inverseEntity="Gear" syncable="YES"/>
+        <relationship name="ownedEggs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Egg" inverseName="user" inverseEntity="Egg" syncable="YES"/>
+        <relationship name="ownedFood" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="user" inverseEntity="Food" syncable="YES"/>
+        <relationship name="ownedGear" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gear" inverseName="user" inverseEntity="Gear" syncable="YES"/>
+        <relationship name="ownedHatchingPotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HatchingPotion" inverseName="user" inverseEntity="HatchingPotion" syncable="YES"/>
+        <relationship name="ownedQuests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Quest" inverseName="user" inverseEntity="Quest" syncable="YES"/>
         <relationship name="party" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="member" inverseEntity="Group" syncable="YES"/>
         <relationship name="rewards" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reward" inverseName="user" inverseEntity="Reward" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="user" inverseEntity="Tag" syncable="YES"/>
@@ -187,18 +195,18 @@
     <elements>
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="135"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="Egg" positionX="18" positionY="162" width="128" height="195"/>
-        <element name="Food" positionX="81" positionY="198" width="128" height="178"/>
+        <element name="Egg" positionX="18" positionY="162" width="128" height="208"/>
+        <element name="Food" positionX="81" positionY="198" width="128" height="193"/>
         <element name="Gear" positionX="9" positionY="153" width="128" height="163"/>
         <element name="Group" positionX="0" positionY="0" width="128" height="210"/>
-        <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="135"/>
-        <element name="Quest" positionX="27" positionY="171" width="128" height="255"/>
+        <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="148"/>
+        <element name="Quest" positionX="27" positionY="171" width="128" height="268"/>
         <element name="QuestCollect" positionX="45" positionY="180" width="128" height="103"/>
         <element name="Reward" positionX="0" positionY="0" width="128" height="73"/>
         <element name="Spell" positionX="45" positionY="153" width="128" height="148"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="373"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="658"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="718"/>
         <element name="Potion" positionX="45" positionY="153" width="128" height="43"/>
         <element name="MetaReward" positionX="54" positionY="162" width="128" height="118"/>
     </elements>

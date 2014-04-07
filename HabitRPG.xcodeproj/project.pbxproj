@@ -21,6 +21,7 @@
 		D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71E918F32FEE0089FDC6 /* Reward.m */; };
 		D97C71ED18F32FEF0089FDC6 /* Gear.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71EC18F32FEF0089FDC6 /* Gear.m */; };
 		D97C71F018F32FEF0089FDC6 /* MetaReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71EF18F32FEF0089FDC6 /* MetaReward.m */; };
+		D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */; };
 		D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */; };
 		D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */; };
 		D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0B018CCD1EA00C8D1B7 /* Task.m */; };
@@ -95,6 +96,8 @@
 		D97C71EC18F32FEF0089FDC6 /* Gear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gear.m; sourceTree = "<group>"; };
 		D97C71EE18F32FEF0089FDC6 /* MetaReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetaReward.h; sourceTree = "<group>"; };
 		D97C71EF18F32FEF0089FDC6 /* MetaReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetaReward.m; sourceTree = "<group>"; };
+		D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGEquipmentViewController.h; sourceTree = "<group>"; };
+		D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGEquipmentViewController.m; sourceTree = "<group>"; };
 		D9B11C8A18D63D4E00AB4D23 /* HRPGTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTabBarController.h; sourceTree = "<group>"; };
 		D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTabBarController.m; sourceTree = "<group>"; };
 		D9B5C0AC18CCC87A00C8D1B7 /* HRPGManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGManager.h; sourceTree = "<group>"; };
@@ -205,6 +208,8 @@
 				D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */,
 				D92CDAE518CB84000006C242 /* HRPGToDoTableViewController.h */,
 				D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */,
+				D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */,
+				D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */,
 			);
 			name = TablewViewController;
 			sourceTree = "<group>";
@@ -479,6 +484,7 @@
 			files = (
 				D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */,
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
+				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
 				D9B5C0BD18D5E7DF00C8D1B7 /* User.m in Sources */,
 				D9B5C0D518D5F94400C8D1B7 /* HRPGPartyViewController.m in Sources */,
 				D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */,

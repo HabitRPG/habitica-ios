@@ -212,7 +212,6 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"items.gear.equipped.back" : @"equippedBack",
                                                         @"items.currentPet" : @"currentPet",
                                                         @"items.currentMount" : @"currentMount",
-                                                        @"party.quest.key" : @"party.questKey",
                                                         }];
     entityMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping* rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
@@ -275,7 +274,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     eggOwnedMapping.identificationAttributes = @[ @"key" ];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.eggs"
                                                                                   toKeyPath:@"ownedEggs"
-                                                                                withMapping:gearOwnedMapping]];
+                                                                                withMapping:eggOwnedMapping]];
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
