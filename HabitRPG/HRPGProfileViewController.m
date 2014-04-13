@@ -11,6 +11,7 @@
 #import "Task.h"
 #import "User.h"
 #import <PDKeychainBindings.h>
+#import <VTAcknowledgementsViewController.h>
 
 @interface HRPGProfileViewController ()
 @property HRPGManager *sharedManager;
@@ -74,7 +75,7 @@ NSString *username;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -86,6 +87,8 @@ NSString *username;
             return 2;
         case 2:
             return 1;
+        case 3:
+            return 2;
         default:
             return 0;
     }
@@ -100,6 +103,8 @@ NSString *username;
             return NSLocalizedString(@"Social", nil);
         case 2:
             return NSLocalizedString(@"Inventory", nil);
+        case 3:
+            return NSLocalizedString(@"Settings", nil);
         default:
             return @"";
     }
@@ -125,6 +130,12 @@ NSString *username;
         [self performSegueWithIdentifier: @"PartySegue" sender: self];
     } else if (indexPath.section == 2 && indexPath.item == 0) {
         [self performSegueWithIdentifier: @"EquipmentSegue" sender: self];
+    } else if (indexPath.section == 3 && indexPath.item == 0) {
+        [self performSegueWithIdentifier: @"SettingsSegue" sender: self];
+    } else if (indexPath.section == 3 && indexPath.item == 1) {
+        VTAcknowledgementsViewController *viewController = [VTAcknowledgementsViewController acknowledgementsViewController];
+        viewController.headerText = NSLocalizedString(@"We love open source software.", nil); // optional
+        [self.navigationController pushViewController:viewController animated:YES];
     }
 }
 
@@ -150,6 +161,10 @@ NSString *username;
             title = NSLocalizedString(@"Party", nil);
         } else if (indexPath.section == 2 && indexPath.item == 0) {
             title = NSLocalizedString(@"Equipment", nil);
+        } else if (indexPath.section == 3 && indexPath.item == 0) {
+            title = NSLocalizedString(@"Settings", nil);
+        } else if (indexPath.section == 3 && indexPath.item == 1) {
+            title = NSLocalizedString(@"Acknowledgements", nil);
         }
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
