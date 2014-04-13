@@ -129,6 +129,7 @@ BOOL reminder;
         [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationTop];
     } else {
         [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationTop];
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
     }
 }
 

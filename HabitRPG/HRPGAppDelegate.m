@@ -30,9 +30,9 @@
     //[_sharedManager fetchTasks:^() {
     //} onError:^() {
     //}];
-    [_sharedManager fetchContent:^() {
-    } onError:^() {
-    }];
+    //[_sharedManager fetchContent:^() {
+    //} onError:^() {
+    //}];
     [[BWQuincyManager sharedQuincyManager] setSubmissionURL:@"http://viirus.sirius.uberspace.de/quincy/crash_v300.php"]; [[BWQuincyManager sharedQuincyManager] startManager];
     return YES;
 }
