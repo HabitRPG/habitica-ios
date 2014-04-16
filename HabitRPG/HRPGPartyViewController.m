@@ -11,6 +11,7 @@
 #import "Task.h"
 #import "Group.h"
 #import "Quest.h"
+#import "QuestCollect.h"
 #import "ChatMessage.h"
 @interface HRPGPartyViewController ()
 @property HRPGManager *sharedManager;
@@ -98,7 +99,11 @@ NSString *partyID;
 {
     switch (section) {
         case 0:
-            return 1;
+            if (party.questKey && [party.questHP integerValue] == 0) {
+                return [quest.collect count] + 1;
+            } else {
+                return 1;
+            }
         case 1: {
             if (party != nil && [party.chatmessages count] > 0) {
                 return [party.chatmessages count];
@@ -112,7 +117,7 @@ NSString *partyID;
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return @"Party";
+            return NSLocalizedString(@"Party", nil);
             break;
         case 1:
             return NSLocalizedString(@"Chat", nil);
@@ -123,11 +128,13 @@ NSString *partyID;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 0) {
-        if (party.questKey == nil) {
+        if (party.questKey || [party.questHP integerValue] == 0) {
             return 44;
         } else {
             return 100;
         }
+    } else if (indexPath.section == 0) {
+        return 44;
     } else {
         return 80;
     }
@@ -144,8 +151,14 @@ NSString *partyID;
         if (party.questKey == nil) {
             cellname = @"NoQuestCell";
         } else {
-            cellname = @"BossQuestCell";
+            if ([party.questHP integerValue] > 0) {
+                cellname = @"BossQuestCell";
+            } else {
+                cellname = @"CollectQuestCell";
+            }
         }
+    } else if (indexPath.section == 0) {
+        cellname = @"CollectItemQuestCell";
     } else {
         if (indexPath.section) {
             cellname = @"ChatCell";
@@ -212,7 +225,6 @@ NSString *partyID;
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
 {
-    UITableView *tableView = self.tableView;
     switch(type) {
         case NSFetchedResultsChangeUpdate:
             break;
@@ -232,11 +244,30 @@ NSString *partyID;
             if (party.questKey != nil) {
                 UILabel *titleLabel = (UILabel*)[cell viewWithTag:1];
                 titleLabel.text = quest.text;
-                UILabel *lifeLabel = (UILabel*)[cell viewWithTag:2];
-                lifeLabel.text = [NSString stringWithFormat:@"%@ / %@", party.questHP, quest.bossHp];
-                UIProgressView *lifeBar = (UIProgressView*)[cell viewWithTag:3];
-                lifeBar.progress = ([party.questHP floatValue] / [quest.bossHp floatValue]);
+                if ([party.questHP integerValue] > 0) {
+                    
+                    UILabel *lifeLabel = (UILabel*)[cell viewWithTag:2];
+                    lifeLabel.text = [NSString stringWithFormat:@"%@ / %@", party.questHP, quest.bossHp];
+                    UIProgressView *lifeBar = (UIProgressView*)[cell viewWithTag:3];
+                    lifeBar.progress = ([party.questHP floatValue] / [quest.bossHp floatValue]);
+                } else {
+                    for (QuestCollect *collects in quest.collect) {
+                        NSLog(@"%@", collects);
+                    }
+                }
             }
+        } else if (indexPath.section == 0) {
+            QuestCollect *collect = quest.collect[indexPath.item-1];
+            UILabel *authorLabel = (UILabel*)[cell viewWithTag:1];
+            authorLabel.text = collect.text;
+            if ([collect.count integerValue] == [collect.collectCount integerValue]) {
+                authorLabel.textColor = [UIColor grayColor];
+            } else {
+                authorLabel.textColor = [UIColor blackColor];
+            }
+            
+            UILabel *textLabel = (UILabel*)[cell viewWithTag:2];
+            textLabel.text = [NSString stringWithFormat:@"%@/%@", collect.collectCount, collect.count];
         } else if (indexPath.section == 1) {
             ChatMessage *message = (ChatMessage*)party.chatmessages[indexPath.item];
             UILabel *authorLabel = (UILabel*)[cell viewWithTag:1];

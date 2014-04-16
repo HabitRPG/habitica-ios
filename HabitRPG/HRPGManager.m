@@ -317,6 +317,14 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                                                   toKeyPath:@"chatmessages"
                                                                                 withMapping:chatMapping]];
     chatMapping.identificationAttributes = @[ @"id" ];
+    RKEntityMapping* collectMapping = [RKEntityMapping mappingForEntityForName:@"QuestCollect" inManagedObjectStore:managedObjectStore];
+    [collectMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [collectMapping addAttributeMappingsFromDictionary:@{@"(key)":              @"collectCount"}];
+    collectMapping.identificationAttributes = @[ @"key" ];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"quest.progress.collect"
+                                                                                  toKeyPath:@"collectStatus"
+                                                                                withMapping:collectMapping]];
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/groups/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
@@ -418,6 +426,16 @@ NIKFontAwesomeIconFactory *iconFactory;
     RKEntityMapping *questMapping = [RKEntityMapping mappingForEntityForName:@"Quest" inManagedObjectStore:managedObjectStore];
     questMapping.forceCollectionMapping = YES; 
     [questMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    RKEntityMapping* questCollectMapping = [RKEntityMapping mappingForEntityForName:@"QuestCollect" inManagedObjectStore:managedObjectStore];
+    questCollectMapping.forceCollectionMapping = YES;
+    [questCollectMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [questCollectMapping addAttributeMappingsFromDictionary:@{
+                                                              @"(key).text":              @"text",
+                                                              @"(key).count":            @"count"}];
+    questCollectMapping.identificationAttributes = @[ @"key" ];
+    [questMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"(key).collect"
+                                                                                 toKeyPath:@"collect"
+                                                                               withMapping:questCollectMapping]];
     [questMapping addAttributeMappingsFromDictionary:@{
                                                      @"(key).text":              @"text",
                                                      @"(key).completition":            @"completition",
