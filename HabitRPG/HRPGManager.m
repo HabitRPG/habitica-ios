@@ -23,6 +23,7 @@
 @synthesize managedObjectContext;
 RKManagedObjectStore *managedObjectStore;
 User *user;
+NSUserDefaults *defaults;
 NSString *userID;
 NIKFontAwesomeIconFactory *iconFactory;
 
@@ -429,15 +430,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                      @"(key).boss.hp":        @"bossHp",
                                                      @"(key).boss.str":        @"bossStr"}];
     questMapping.identificationAttributes = @[ @"key" ];
-    RKObjectMapping* questCollectMapping = [RKEntityMapping mappingForEntityForName:@"QuestCollect" inManagedObjectStore:managedObjectStore];
-    questCollectMapping.forceCollectionMapping = YES;
-    [questCollectMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
-    [questCollectMapping addAttributeMappingsFromDictionary:@{
-                                                       @"(key).text":              @"text",
-                                                       @"(key).count":            @"count"}];
-    [questMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"collect"
-                                                                                  toKeyPath:@"collect"
-                                                                                withMapping:questCollectMapping]];
+    
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:questMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"quests" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
@@ -501,6 +494,8 @@ NIKFontAwesomeIconFactory *iconFactory;
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/content" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        [defaults setObject:[NSDate date] forKey:@"lastContentFetch"];
+        [defaults synchronize];
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
