@@ -538,7 +538,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (void) fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock{
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/user" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        user = (User*)[mappingResult firstObject];
+        user = (User*)[mappingResult dictionary][[NSNull null]];
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         [defaults setObject:[NSDate date] forKey:@"lastTaskFetch"];
