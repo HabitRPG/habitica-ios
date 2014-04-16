@@ -90,7 +90,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"repeat.s": @"saturday",
                                                         @"repeat.su": @"sunday"}];
     taskMapping.identificationAttributes = @[ @"id" ];
-    RKObjectMapping* checklistItemMapping = [RKEntityMapping mappingForEntityForName:@"ChecklistItem" inManagedObjectStore:managedObjectStore];
+    RKEntityMapping* checklistItemMapping = [RKEntityMapping mappingForEntityForName:@"ChecklistItem" inManagedObjectStore:managedObjectStore];
     [checklistItemMapping addAttributeMappingsFromArray:@[@"id", @"text", @"completed"]];
     [taskMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"checklist"
                                                                                   toKeyPath:@"checklist"
@@ -226,11 +226,12 @@ NIKFontAwesomeIconFactory *iconFactory;
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"rewards"
                                                                                    toKeyPath:@"rewards"
                                                                                  withMapping:rewardMapping]];
-    RKObjectMapping* tagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
+    RKEntityMapping* tagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
     [tagMapping addAttributeMappingsFromArray:@[@"id", @"name"]];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
                                                                                   toKeyPath:@"tags"
                                                                                 withMapping:tagMapping]];
+    
     RKEntityMapping* gearOwnedMapping = [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
     gearOwnedMapping.forceCollectionMapping = YES;
     [gearOwnedMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
@@ -276,12 +277,18 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                                                   toKeyPath:@"ownedEggs"
                                                                                 withMapping:eggOwnedMapping]];
 
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:@"habits" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:@"todos" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:@"dailies" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/buy/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+
     
     entityMapping = [RKEntityMapping mappingForEntityForName:@"Group" inManagedObjectStore:managedObjectStore];
     [entityMapping addAttributeMappingsFromDictionary:@{
@@ -435,6 +442,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     [objectManager addResponseDescriptor:responseDescriptor];
 
     [self setCredentials];
+    defaults = [NSUserDefaults standardUserDefaults];
     if (userID != nil) {
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", userID];
@@ -490,7 +498,6 @@ NIKFontAwesomeIconFactory *iconFactory;
 }
 
 - (void) fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock{
-    NSLog(@"Fetching content");
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/content" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -503,10 +510,11 @@ NIKFontAwesomeIconFactory *iconFactory;
 }
 
 - (void) fetchTasks:(void (^)())successBlock onError:(void (^)())errorBlock{
-    NSLog(@"Fetching tasks");
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/user/tasks" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        [defaults setObject:[NSDate date] forKey:@"lastTaskFetch"];
+        [defaults synchronize];
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -520,6 +528,8 @@ NIKFontAwesomeIconFactory *iconFactory;
         user = (User*)[mappingResult firstObject];
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        [defaults setObject:[NSDate date] forKey:@"lastTaskFetch"];
+        [defaults synchronize];
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {

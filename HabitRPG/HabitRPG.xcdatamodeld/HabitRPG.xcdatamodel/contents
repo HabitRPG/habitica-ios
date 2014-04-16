@@ -59,6 +59,7 @@
         <attribute name="questKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ChatMessage" inverseName="group" inverseEntity="ChatMessage" syncable="YES"/>
+        <relationship name="collectStatus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestCollect" inverseName="group" inverseEntity="QuestCollect" syncable="YES"/>
         <relationship name="leader" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
         <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="party" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -97,9 +98,11 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedQuests" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="QuestCollect" representedClassName="QuestCollect" syncable="YES">
+        <attribute name="collectCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="collectStatus" inverseEntity="Group" syncable="YES"/>
         <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quest" inverseName="collect" inverseEntity="Quest" syncable="YES"/>
     </entity>
     <entity name="Reward" representedClassName="Reward" parentEntity="MetaReward" syncable="YES">
@@ -198,16 +201,16 @@
         <element name="Egg" positionX="18" positionY="162" width="128" height="208"/>
         <element name="Food" positionX="81" positionY="198" width="128" height="193"/>
         <element name="Gear" positionX="9" positionY="153" width="128" height="163"/>
-        <element name="Group" positionX="0" positionY="0" width="128" height="210"/>
+        <element name="Group" positionX="0" positionY="0" width="128" height="223"/>
         <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="148"/>
+        <element name="MetaReward" positionX="54" positionY="162" width="128" height="118"/>
+        <element name="Potion" positionX="45" positionY="153" width="128" height="45"/>
         <element name="Quest" positionX="27" positionY="171" width="128" height="268"/>
-        <element name="QuestCollect" positionX="45" positionY="180" width="128" height="103"/>
+        <element name="QuestCollect" positionX="45" positionY="180" width="128" height="133"/>
         <element name="Reward" positionX="0" positionY="0" width="128" height="73"/>
         <element name="Spell" positionX="45" positionY="153" width="128" height="148"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="373"/>
         <element name="User" positionX="0" positionY="0" width="128" height="718"/>
-        <element name="Potion" positionX="45" positionY="153" width="128" height="43"/>
-        <element name="MetaReward" positionX="54" positionY="162" width="128" height="118"/>
     </elements>
 </model>

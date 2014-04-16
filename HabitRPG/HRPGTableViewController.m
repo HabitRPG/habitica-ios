@@ -63,7 +63,7 @@
 }
 
 - (void) refresh {
-    [_sharedManager fetchTasks:^ () {
+    [_sharedManager fetchUser:^ () {
         [self.refreshControl endRefreshing];
     } onError:^ () {
         [self.refreshControl endRefreshing];
