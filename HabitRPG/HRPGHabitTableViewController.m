@@ -78,6 +78,13 @@
     UILabel *label = (UILabel*)[cell viewWithTag:1];
     label.text = task.text;
     label.textColor = color;
+    [self configureSwiping:cell withTask:task];
+}
+
+-(void)configureSwiping:(MCSwipeTableViewCell *)cell withTask:(Task*) task {
+    if (self.tableView.editing) {
+        cell.view3  = nil;
+    }
     if (task.up) {
         UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconPlus]];
         UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];

@@ -35,4 +35,11 @@
     item3.image = [factory createImageForIcon:NIKFontAwesomeIconUser];
 }
 
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    UINavigationController *navController = (UINavigationController*) self.selectedViewController;
+    if (navController.topViewController.isEditing) {
+        [navController.topViewController setEditing:NO animated:YES];
+    }
+}
+
 @end

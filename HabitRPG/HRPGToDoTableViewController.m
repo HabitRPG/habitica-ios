@@ -11,6 +11,7 @@
 #import "HRPGManager.h"
 #import "ChecklistItem.h"
 #import "MCSwipeTableViewCell.h"
+#import "HRPGSwipeTableViewCell.h"
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 
@@ -68,7 +69,7 @@
     return cell;
 }
 
-- (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate
+- (void)configureCell:(HRPGSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate
 {
     UILabel *checklistLabel = (UILabel*)[cell viewWithTag:2];
     UILabel *label = (UILabel*)[cell viewWithTag:1];
@@ -141,30 +142,15 @@
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor colorWithWhite:0.581 alpha:1.000];
             }];
-            UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconSquareO]];
-            UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
-            [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(){
-                    
-                }onError:^(){
-                    
-                }];
-            }];
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [self.sharedManager getColorForValue:task.value];
             }];
-            UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconCheckSquareO]];
-            UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
-            [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(){
-                    
-                }onError:^(){
-                    
-                }];
-            }];
         }
+        
+        [self configureSwiping:cell withTask:task];
+        
         if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor whiteColor];
@@ -177,6 +163,31 @@
         }
     }
 }
+
+-(void)configureSwiping:(HRPGSwipeTableViewCell *)cell withTask:(Task *)task {
+    if (task.completed) {
+        UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconSquareO]];
+        UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
+        [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+            [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(){
+                
+            }onError:^(){
+                
+            }];
+        }];
+    } else {
+        UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconCheckSquareO]];
+        UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
+        [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+            [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(){
+                
+            }onError:^(){
+                
+            }];
+        }];
+    }
+}
+
 - (UIView *)viewWithIcon:(UIImage *)image {
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     imageView.contentMode = UIViewContentModeCenter;

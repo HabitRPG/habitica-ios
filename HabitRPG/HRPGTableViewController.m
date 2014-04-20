@@ -12,6 +12,7 @@
 #import "Task.h"
 #import <PDKeychainBindings.h>
 #import "MCSwipeTableViewCell.h"
+#import "HRPGSwipeTableViewCell.h"
 
 @interface HRPGTableViewController ()
 @property NSString *readableName;
@@ -90,7 +91,7 @@ BOOL editable;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MCSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    HRPGSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     [cell setDefaultColor:[UIColor lightGrayColor]];
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
@@ -98,7 +99,6 @@ BOOL editable;
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
     return editable;
 }
 
@@ -188,11 +188,20 @@ BOOL editable;
     if ([self isEditing]) {
         editable = NO;
         [self setEditing:NO animated:YES];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonSelected:)];
     } else {
         editable = YES;
         [self setEditing:YES animated:YES];
+    }
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    if (editing) {
+        editable = YES;
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editButtonSelected:)];
+    } else {
+        editable = NO;
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonSelected:)];
     }
 }
 
@@ -320,6 +329,9 @@ BOOL editable;
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[object valueForKey:@"text"] description];
+}
+
+-(void)configureSwiping:(HRPGSwipeTableViewCell *)cell withTask:(Task*) task {
 }
 
 
