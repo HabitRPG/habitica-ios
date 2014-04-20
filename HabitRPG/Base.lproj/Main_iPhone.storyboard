@@ -67,7 +67,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eoD-0q-22r">
                             <connections>
-                                <segue destination="TLp-c7-ouI" kind="modal" identifier="AddItem" id="E5i-VS-PGN"/>
+                                <segue destination="TLp-c7-ouI" kind="modal" identifier="FormSegue" id="E5i-VS-PGN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -124,7 +124,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="QMS-gq-G3V">
                             <connections>
-                                <segue destination="TLp-c7-ouI" kind="modal" identifier="AddItem" id="jeD-LQ-1O1"/>
+                                <segue destination="TLp-c7-ouI" kind="modal" identifier="FormSegue" id="jeD-LQ-1O1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -181,7 +181,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="txM-DJ-1EC">
                             <connections>
-                                <segue destination="TLp-c7-ouI" kind="modal" identifier="AddItem" id="HFM-OL-cM8"/>
+                                <segue destination="TLp-c7-ouI" kind="modal" identifier="FormSegue" id="HFM-OL-cM8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -193,10 +193,10 @@
             </objects>
             <point key="canvasLocation" x="1063" y="721"/>
         </scene>
-        <!--Add View Controller-->
+        <!--Form View Controller-->
         <scene sceneID="gDV-ik-tUY">
             <objects>
-                <tableViewController id="IL8-2o-kb1" customClass="HRPGAddViewController" sceneMemberID="viewController">
+                <tableViewController id="IL8-2o-kb1" customClass="HRPGFormViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="CtV-nK-4bK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -210,24 +210,27 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nUx-wu-QSm">
-                                            <rect key="frame" x="70" y="7" width="230" height="30"/>
+                                            <rect key="frame" x="85" y="7" width="215" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SA8-sC-idK">
-                                            <rect key="frame" x="20" y="11" width="42" height="21"/>
+                                            <rect key="frame" x="20" y="11" width="50" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="RLF-FO-Kvs"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="nUx-wu-QSm" firstAttribute="leading" secondItem="SA8-sC-idK" secondAttribute="trailing" constant="8" symbolic="YES" id="SdY-71-kba"/>
-                                        <constraint firstItem="SA8-sC-idK" firstAttribute="leading" secondItem="pvl-2I-1ew" secondAttribute="leading" constant="20" id="YNB-7C-OJL"/>
+                                        <constraint firstItem="nUx-wu-QSm" firstAttribute="leading" secondItem="SA8-sC-idK" secondAttribute="trailing" constant="15" id="LDz-KK-EKg"/>
+                                        <constraint firstItem="SA8-sC-idK" firstAttribute="leading" secondItem="pvl-2I-1ew" secondAttribute="leading" constant="20" symbolic="YES" id="OD2-ft-65i"/>
+                                        <constraint firstItem="SA8-sC-idK" firstAttribute="centerY" secondItem="pvl-2I-1ew" secondAttribute="centerY" id="czR-zW-L8U"/>
                                         <constraint firstItem="nUx-wu-QSm" firstAttribute="top" secondItem="pvl-2I-1ew" secondAttribute="top" constant="7" id="gii-Ko-mhu"/>
-                                        <constraint firstItem="SA8-sC-idK" firstAttribute="centerY" secondItem="pvl-2I-1ew" secondAttribute="centerY" id="gsL-61-0iS"/>
                                         <constraint firstAttribute="trailing" secondItem="nUx-wu-QSm" secondAttribute="trailing" constant="20" symbolic="YES" id="hsj-7Z-qGi"/>
                                         <constraint firstAttribute="bottom" secondItem="nUx-wu-QSm" secondAttribute="bottom" constant="6" id="xnn-P6-imL"/>
                                     </constraints>
@@ -291,12 +294,12 @@
                     <navigationItem key="navigationItem" id="5Ym-xL-KTz">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="RqV-rk-yaU">
                             <connections>
-                                <segue destination="xc7-Za-ehU" kind="unwind" unwindAction="unwindToList:" id="hfz-pE-446"/>
+                                <segue destination="xc7-Za-ehU" kind="unwind" identifier="unwindCancelSegue" unwindAction="unwindToList:" id="hfz-pE-446"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="2iA-DC-iar">
                             <connections>
-                                <segue destination="xc7-Za-ehU" kind="unwind" unwindAction="unwindToListSave:" id="mt8-35-Gvz"/>
+                                <segue destination="xc7-Za-ehU" kind="unwind" identifier="unwindSaveSegue" unwindAction="unwindToListSave:" id="mt8-35-Gvz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1077,6 +1080,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jeD-LQ-1O1"/>
+        <segue reference="E5i-VS-PGN"/>
     </inferredMetricsTieBreakers>
 </document>

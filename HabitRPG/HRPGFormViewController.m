@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import "HRPGAddViewController.h"
+#import "HRPGFormViewController.h"
 #import "Task.h"
 #import "HRPGAppDelegate.h"
-@interface HRPGAddViewController ()
+@interface HRPGFormViewController ()
 
 @end
 
-@implementation HRPGAddViewController
+@implementation HRPGFormViewController
 @synthesize managedObjectContext;
 int selectedDifficulty;
 
@@ -33,15 +33,25 @@ int selectedDifficulty;
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
     self.managedObjectContext = appdelegate.sharedManager.getManagedObjectContext;
     
-    self.createdTask = [NSEntityDescription
+    if (!self.editTask) {
+        self.task = [NSEntityDescription
                     insertNewObjectForEntityForName:@"Task"
                     inManagedObjectContext:self.managedObjectContext];
-    self.createdTask.type = self.taskType;
+        self.task.type = self.taskType;
+    } else {
+        if ([self.task.priority floatValue] == 1.0) {
+            selectedDifficulty = 0;
+        } else if ([self.task.priority floatValue] == 1.5) {
+            selectedDifficulty = 1;
+        } else if ([self.task.priority floatValue] == 2.0) {
+            selectedDifficulty = 2;
+        }
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-    UITextField *textField = [cell viewWithTag:2];
+    UITextField *textField = (UITextField*)[cell viewWithTag:2];
     [textField becomeFirstResponder];
 }
 
@@ -109,12 +119,18 @@ int selectedDifficulty;
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
             cell.accessoryType = UITableViewCellAccessoryNone;
             UILabel *label = (UILabel *)[cell viewWithTag:1];
+            UITextField *textField = (UITextField*)[cell viewWithTag:2];
             
-            UITextField *inputField = (UITextField *)[cell viewWithTag:2];
             if (indexPath.item == 0) {
                 label.text = NSLocalizedString(@"Text", nil);
+                if (self.editTask && textField.text.length == 0) {
+                    textField.text = self.task.text;
+                }
             } else if (indexPath.item == 1) {
                 label.text = NSLocalizedString(@"Note", nil);
+                if (self.editTask && textField.text.length == 0) {
+                    textField.text = self.task.notes;
+                }
             }
             break;
         }
@@ -124,11 +140,23 @@ int selectedDifficulty;
                 cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
                 cell.accessoryType = UITableViewCellAccessoryNone;
                 UILabel *label = (UILabel *)[cell viewWithTag:1];
+                UISwitch *upDownSwitch = (UISwitch *)[cell viewWithTag:2];
                 
                 switch (indexPath.item) {
-                    case 0: label.text = NSLocalizedString(@"Up +", nil); break;
-                    case 1: label.text = NSLocalizedString(@"Down -", nil); break;
+                    case 0:
+                        label.text = NSLocalizedString(@"Up +", nil);
+                        if (self.editTask) {
+                            upDownSwitch.on = self.task.up;
+                        }
+                        break;
+                    case 1:
+                        label.text = NSLocalizedString(@"Down -", nil);
+                        if (self.editTask) {
+                            upDownSwitch.on = self.task.down;
+                        }
+                        break;
                 }
+                
             } else {
                 static NSString *CellIdentifier = @"CheckMarkCell";
                 cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -136,13 +164,48 @@ int selectedDifficulty;
                 UILabel *label = (UILabel *)[cell viewWithTag:1];
                 
                 switch (indexPath.item) {
-                    case 0: label.text = NSLocalizedString(@"Monday", nil); break;
-                    case 1: label.text = NSLocalizedString(@"Tuesday", nil); break;
-                    case 2: label.text = NSLocalizedString(@"Wednesday", nil); break;
-                    case 3: label.text = NSLocalizedString(@"Thursday", nil); break;
-                    case 4: label.text = NSLocalizedString(@"Friday", nil); break;
-                    case 5: label.text = NSLocalizedString(@"Saturday", nil); break;
-                    case 6: label.text = NSLocalizedString(@"Sunday", nil); break;
+                    case 0:
+                        label.text = NSLocalizedString(@"Monday", nil);
+                        if (self.editTask && self.task.monday) {
+                            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                        }
+                        break;
+                    case 1:
+                        label.text = NSLocalizedString(@"Tuesday", nil);
+                        if (self.editTask && self.task.tuesday) {
+                            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                        }
+                        break;
+                    case 2:
+                        label.text = NSLocalizedString(@"Wednesday", nil);
+                        if (self.editTask && self.task.wednesday) {
+                            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                        }
+                        break;
+                    case 3:
+                        label.text = NSLocalizedString(@"Thursday", nil);
+                        if (self.editTask && self.task.thursday) {
+                            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                        }
+                        break;
+                    case 4:
+                        label.text = NSLocalizedString(@"Friday", nil);
+                        if (self.editTask && self.task.friday) {
+                            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                        }
+                        break;
+                    case 5:
+                        label.text = NSLocalizedString(@"Saturday", nil);
+                        if (self.editTask && self.task.saturday) {
+                            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                        }
+                        break;
+                    case 6:
+                        label.text = NSLocalizedString(@"Sunday", nil);
+                        if (self.editTask && self.task.sunday) {
+                            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                        }
+                        break;
                 }
             }
             break;
@@ -177,14 +240,15 @@ int selectedDifficulty;
         } else {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
+
         switch (indexPath.item) {
-            case 0: self.createdTask.monday = YES; break;
-            case 2: self.createdTask.tuesday = YES; break;
-            case 3: self.createdTask.wednesday = YES; break;
-            case 4: self.createdTask.thursday = YES; break;
-            case 5: self.createdTask.friday = YES; break;
-            case 6: self.createdTask.saturday = YES; break;
-            case 7: self.createdTask.sunday = YES; break;
+            case 0: self.task.monday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
+            case 1: self.task.tuesday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
+            case 2: self.task.wednesday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
+            case 3: self.task.thursday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
+            case 4: self.task.friday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
+            case 5: self.task.saturday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
+            case 6: self.task.sunday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
         }
     } else if (indexPath.section == 2) {
         UITableViewCell *oldCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:selectedDifficulty inSection:indexPath.section]];
@@ -192,9 +256,9 @@ int selectedDifficulty;
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         selectedDifficulty = indexPath.item;
         switch (selectedDifficulty) {
-            case 0: self.createdTask.priority = [NSNumber numberWithFloat:1.0]; break;
-            case 1: self.createdTask.priority = [NSNumber numberWithFloat:1.5]; break;
-            case 2: self.createdTask.priority = [NSNumber numberWithFloat:2.0]; break;
+            case 0: self.task.priority = [NSNumber numberWithFloat:1.0]; break;
+            case 1: self.task.priority = [NSNumber numberWithFloat:1.5]; break;
+            case 2: self.task.priority = [NSNumber numberWithFloat:2.0]; break;
         }
     }
     cell.contentView.backgroundColor = [UIColor whiteColor];
@@ -206,18 +270,26 @@ int selectedDifficulty;
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    UITextField *textField = (UITextField*)[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]] viewWithTag:2];
-    self.createdTask.text = textField.text;
-    UITextField *noteField = (UITextField*)[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]] viewWithTag:2];
-    self.createdTask.notes = noteField.text;
-    if ([self.taskType isEqualToString:@"habit"]) {
-        UISwitch *upSwitch = (UISwitch*) [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1]] viewWithTag:2];
+    if ([segue.identifier isEqualToString:@"unwindSaveSegue"]) {
+        UITextField *textField = (UITextField*)[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]] viewWithTag:2];
+        self.task.text = textField.text;
+        UITextField *noteField = (UITextField*)[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]] viewWithTag:2];
+        self.task.notes = noteField.text;
+        if ([self.taskType isEqualToString:@"habit"]) {
+            UISwitch *upSwitch = (UISwitch*) [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1]] viewWithTag:2];
 
-        self.createdTask.up = upSwitch.on;
+            self.task.up = upSwitch.on;
         
-        UISwitch *downSwitch = (UISwitch*) [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:1]] viewWithTag:2];
-        self.createdTask.down = downSwitch.on;
-
+            UISwitch *downSwitch = (UISwitch*) [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:1]] viewWithTag:2];
+            self.task.down = downSwitch.on;
+        }
+    } else if([segue.identifier isEqualToString:@"unwindCancelSegue"]) {
+        if (!self.editTask) {
+            [managedObjectContext deleteObject:self.task];
+        } else {
+            [managedObjectContext refreshObject:self.task mergeChanges:NO];
+            
+        }
     }
 }
 @end

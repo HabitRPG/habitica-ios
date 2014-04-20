@@ -8,7 +8,7 @@
 
 #import "HRPGTableViewController.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGAddViewController.h"
+#import "HRPGFormViewController.h"
 #import "Task.h"
 #import <PDKeychainBindings.h>
 #import "MCSwipeTableViewCell.h"
@@ -25,6 +25,8 @@
 
 @implementation HRPGTableViewController
 @synthesize managedObjectContext;
+Task *editedTask;
+BOOL editable;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -39,6 +41,8 @@
 {
     [super viewDidLoad];
 
+    editable = NO;
+    
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
     _sharedManager = appdelegate.sharedManager;
     self.managedObjectContext = _sharedManager.getManagedObjectContext;
@@ -95,7 +99,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return editable;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -125,11 +129,17 @@
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // The table view should not be re-orderable.
-    return YES;
+    return editable;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (tableView.editing ) {
+        editedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [self performSegueWithIdentifier: @"FormSegue" sender: self];
+        return;
+    }
+    
     if (self.openedIndexPath.item+self.indexOffset < indexPath.item && self.indexOffset > 0) {
         indexPath = [NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section];
     }
@@ -176,9 +186,11 @@
 
 - (IBAction)editButtonSelected:(id)sender {
     if ([self isEditing]) {
+        editable = NO;
         [self setEditing:NO animated:YES];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonSelected:)];
     } else {
+        editable = YES;
         [self setEditing:YES animated:YES];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editButtonSelected:)];
     }
@@ -192,12 +204,20 @@
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue
 {
-    HRPGAddViewController *addViewController = (HRPGAddViewController*)segue.sourceViewController;
-    [_sharedManager createTask:addViewController.createdTask onSuccess:^() {
+    HRPGFormViewController *formViewController = (HRPGFormViewController*)segue.sourceViewController;
+    if (formViewController.editTask) {
+        [_sharedManager updateTask:formViewController.task onSuccess:^() {
+            
+        }onError:^() {
+            
+        }];
+    } else {
+        [_sharedManager createTask:formViewController.task onSuccess:^() {
+    
+        }onError:^() {
         
-    }onError:^() {
-        
-    }];
+        }];
+    }
 }
 
 
@@ -308,11 +328,19 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"AddItem"]) {
+    if ([segue.identifier isEqualToString:@"FormSegue"]) {
         UINavigationController *destViewController = segue.destinationViewController;
-        destViewController.topViewController.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Add %@", nil), self.readableName];
-        HRPGAddViewController *addController = (HRPGAddViewController*)destViewController.topViewController;
-        addController.taskType = self.typeName;
+        
+        HRPGFormViewController *formController = (HRPGFormViewController*)destViewController.topViewController;
+        formController.taskType = self.typeName;
+        if (editedTask) {
+            formController.editTask = YES;
+            formController.task = editedTask;
+            editedTask = nil;
+            destViewController.topViewController.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Edit %@", nil), self.readableName];
+        } else {
+            destViewController.topViewController.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Add %@", nil), self.readableName];
+        }
     }
 }
 
