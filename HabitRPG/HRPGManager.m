@@ -27,6 +27,20 @@ NSUserDefaults *defaults;
 NSString *userID;
 NIKFontAwesomeIconFactory *iconFactory;
 
++(RKValueTransformer*)millisecondsSince1970ToDateValueTransformer {
+    return [RKBlockValueTransformer valueTransformerWithValidationBlock:^BOOL(__unsafe_unretained Class sourceClass, __unsafe_unretained Class destinationClass) {
+        return [sourceClass isSubclassOfClass:[NSNumber class]] && [destinationClass isSubclassOfClass:[NSDate class]];
+    } transformationBlock:^BOOL(id inputValue, __autoreleasing id *outputValue, __unsafe_unretained Class outputValueClass, NSError *__autoreleasing *error) {
+        RKValueTransformerTestInputValueIsKindOfClass(inputValue, (@[ [NSNumber class] ]), error);
+        RKValueTransformerTestOutputValueClassIsSubclassOfClass(outputValueClass, (@[ [NSDate class] ]), error);
+        if ([inputValue unsignedLongValue] == 1396477933674) {
+            NSLog(@"asd");
+        }
+        *outputValue = [NSDate dateWithTimeIntervalSince1970:[inputValue unsignedLongValue] / 1000];
+        return YES;
+    }];
+}
+
 -(void)loadObjectManager
 {
     NSError *error = nil;
@@ -68,6 +82,8 @@ NIKFontAwesomeIconFactory *iconFactory;
         }
     }];
     
+    RKValueTransformer* transformer = [HRPGManager millisecondsSince1970ToDateValueTransformer];
+    [[RKValueTransformer defaultValueTransformer] insertValueTransformer:transformer atIndex:0];
     
     RKEntityMapping *taskMapping = [RKEntityMapping mappingForEntityForName:@"Task" inManagedObjectStore:managedObjectStore];
     [taskMapping addAttributeMappingsFromDictionary:@{

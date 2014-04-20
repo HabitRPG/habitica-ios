@@ -13,6 +13,7 @@
 #import "Quest.h"
 #import "QuestCollect.h"
 #import "ChatMessage.h"
+#import <NSDate+TimeAgo.h>
 @interface HRPGPartyViewController ()
 @property HRPGManager *sharedManager;
 
@@ -128,7 +129,7 @@ NSString *partyID;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 0) {
-        if (party.questKey || [party.questHP integerValue] == 0) {
+        if (!party.questKey || ([party.questHP integerValue] == 0)) {
             return 44;
         } else {
             return 100;
@@ -136,7 +137,13 @@ NSString *partyID;
     } else if (indexPath.section == 0) {
         return 44;
     } else {
-        return 80;
+        ChatMessage *message = party.chatmessages[indexPath.item];
+        return [message.text boundingRectWithSize:CGSizeMake(250.0f, MAXFLOAT)
+                                                     options:NSStringDrawingUsesLineFragmentOrigin
+                                                  attributes:@{
+                                                               NSFontAttributeName : [UIFont systemFontOfSize:15.0f]
+                                                               }
+                                                     context:nil].size.height + 41;
     }
 }
 
@@ -249,9 +256,6 @@ NSString *partyID;
                     UIProgressView *lifeBar = (UIProgressView*)[cell viewWithTag:3];
                     lifeBar.progress = ([party.questHP floatValue] / [quest.bossHp floatValue]);
                 } else {
-                    for (QuestCollect *collects in quest.collect) {
-                        NSLog(@"%@", collects);
-                    }
                 }
             }
         } else if (indexPath.section == 0) {
@@ -273,10 +277,12 @@ NSString *partyID;
             
             UILabel *textLabel = (UILabel*)[cell viewWithTag:2];
             textLabel.text = message.text;
+            
+            UILabel *dateLabel = (UILabel*)[cell viewWithTag:3];
+            dateLabel.text = [message.timestamp timeAgo];
         }
     }
 }
-
 
 -(void) fetchQuest {
     if (party.questKey) {

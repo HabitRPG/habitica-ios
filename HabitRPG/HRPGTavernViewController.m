@@ -12,6 +12,7 @@
 #import "Group.h"
 #import "ChatMessage.h"
 #import <CRToast.h>
+#import <NSDate+TimeAgo.h>
 
 @interface HRPGTavernViewController ()
 @property HRPGManager *sharedManager;
@@ -234,8 +235,15 @@ User *user;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-        ChatMessage *message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
-        cell.textLabel.text = message.text;
+    ChatMessage *message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
+    UILabel *authorLabel = (UILabel*)[cell viewWithTag:1];
+    authorLabel.text = message.user;
+    
+    UILabel *textLabel = (UILabel*)[cell viewWithTag:2];
+    textLabel.text = message.text;
+    
+    UILabel *dateLabel = (UILabel*)[cell viewWithTag:3];
+    dateLabel.text = [message.timestamp timeAgo];
 }
 
 
