@@ -97,7 +97,17 @@ User *user;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
         return 44;
+    } else {
+        ChatMessage *message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
+        return [message.text boundingRectWithSize:CGSizeMake(250.0f, MAXFLOAT)
+                                          options:NSStringDrawingUsesLineFragmentOrigin
+                                       attributes:@{
+                                                    NSFontAttributeName : [UIFont systemFontOfSize:15.0f]
+                                                    }
+                                          context:nil].size.height + 41;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
