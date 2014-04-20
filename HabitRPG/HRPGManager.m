@@ -189,7 +189,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"id":              @"id",
                                                         @"token":            @"key"}];
     
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:loginMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user/auth/local" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:loginMapping method:RKRequestMethodAny pathPattern:@"/api/v2/user/auth/local" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
     RKObjectMapping *sleepMapping = [RKObjectMapping mappingForClass:[NSDictionary class]];
@@ -324,16 +324,22 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"_id":                 @"id",
                                                         @"profile.name":        @"username"
                                                         }];
+    memberMapping.identificationAttributes = @[ @"id" ];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"members"
                                                                                 toKeyPath:@"member"
                                                                                 withMapping:memberMapping]];
     RKEntityMapping* chatMapping = [RKEntityMapping mappingForEntityForName:@"ChatMessage" inManagedObjectStore:managedObjectStore];
-    [chatMapping addAttributeMappingsFromArray:@[@"uuid", @"id", @"text", @"timestamp", @"user"]];
+    [chatMapping addAttributeMappingsFromDictionary:@{@"uuid":@"uuid",
+                                                       @"id":@"id",
+                                                       @"text":@"text",
+                                                       @"timestamp":@"timestamp",
+                                                       @"user":@"user"}];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"chat"
                                                                                   toKeyPath:@"chatmessages"
                                                                                 withMapping:chatMapping]];
     chatMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping* collectMapping = [RKEntityMapping mappingForEntityForName:@"QuestCollect" inManagedObjectStore:managedObjectStore];
+    collectMapping.forceCollectionMapping = YES;
     [collectMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
     [collectMapping addAttributeMappingsFromDictionary:@{@"(key)":              @"collectCount"}];
     collectMapping.identificationAttributes = @[ @"key" ];
