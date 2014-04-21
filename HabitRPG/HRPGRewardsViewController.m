@@ -54,6 +54,44 @@
         UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
         [self presentViewController:navigationController animated:NO completion: nil];
     }
+    
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0,0,100,40)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.font = [UIFont systemFontOfSize:18.0f];
+    titleLabel.text = NSLocalizedString(@"Rewards", nil);
+    NSNumber *gold = [_sharedManager getUser].gold;
+    UIImageView *goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 22)];
+    goldImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [goldImageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]];
+    UILabel *goldLabel = [[UILabel alloc] initWithFrame:CGRectMake(26, 2, 100, 20)];
+    goldLabel.font = [UIFont systemFontOfSize:13.0f];
+    goldLabel.text = [NSString stringWithFormat:@"%ld", (long)[gold integerValue]];
+    [goldLabel sizeToFit];
+    
+    
+    UIImageView *silverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(30+goldLabel.frame.size.width, 0, 25, 22)];
+    silverImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [silverImageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_silver.png"]];
+    UILabel *silverLabel = [[UILabel alloc] initWithFrame:CGRectMake(30+goldLabel.frame.size.width+26, 2, 100, 20)];
+    silverLabel.font = [UIFont systemFontOfSize:13.0f];
+    int silver = ([gold floatValue] - [gold integerValue])*100;
+    silverLabel.text = [NSString stringWithFormat:@"%d", silver];
+    [silverLabel sizeToFit];
+    
+    
+    int moneyWidth = goldImageView.frame.size.width+goldLabel.frame.size.width+silverImageView.frame.size.width+silverLabel.frame.size.width+7;
+    
+    UIView *moneyView = [[UIView alloc] initWithFrame:CGRectMake(50-(moneyWidth/2),20,moneyWidth,40)];
+    [moneyView addSubview:goldLabel];
+    [moneyView addSubview:goldImageView];
+    [moneyView addSubview:silverImageView];
+    [moneyView addSubview:silverLabel];
+
+    [titleView addSubview:titleLabel];
+    [titleView addSubview:moneyView];
+
+    self.navigationItem.titleView = titleView;
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,7 +129,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    if (indexPath.section == 1 && indexPath.item == 0) {
+    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
+    if ([reward.key isEqualToString:@"potion"]) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ImageCell" forIndexPath:indexPath];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
@@ -102,8 +142,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return NO;
+    return (indexPath.section == 0);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -118,8 +157,6 @@
         
         NSError *error = nil;
         if (![context save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
@@ -273,7 +310,7 @@
     priceLabel.text = [NSString stringWithFormat:@"%ld", (long)[reward.value integerValue]];
 
     
-    if (indexPath.section == 1 && indexPath.item == 0) {
+    if ([reward.key isEqualToString:@"potion"]) {
         UIImageView *imageView = (UIImageView*)[cell viewWithTag:4];
         [imageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_potion.png"]
                        placeholderImage:nil];
@@ -282,14 +319,8 @@
 
 
 #pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"AddItem"]) {
-        UINavigationController *destViewController = segue.destinationViewController;
-        destViewController.topViewController.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Add %@", nil), self.readableName];
-    }
 }
 
 @end

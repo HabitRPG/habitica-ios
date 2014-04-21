@@ -29,15 +29,12 @@
     [_sharedManager loadObjectManager];
     //Update Content if it wasn't updated in the last week.
     NSDate *lastContentFetch = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetch"];
-    NSLog(@"%@", lastContentFetch);
+    NSLog(@"%@ - %f", lastContentFetch, [lastContentFetch timeIntervalSinceNow]);
     if (lastContentFetch == nil || [lastContentFetch timeIntervalSinceNow] < -604800) {
         [_sharedManager fetchContent:^() {
         } onError:^() {
         }];
     }
-    [_sharedManager fetchContent:^() {
-    } onError:^() {
-    }];
     [[BWQuincyManager sharedQuincyManager] setSubmissionURL:@"http://viirus.sirius.uberspace.de/quincy/crash_v300.php"]; [[BWQuincyManager sharedQuincyManager] startManager];
     return YES;
 }
