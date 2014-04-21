@@ -103,7 +103,7 @@ NSString *partyID;
 {
     switch (section) {
         case 0:
-            if (party.questKey && [party.questHP integerValue] == 0) {
+            if (party.questKey && [quest.bossHp integerValue] == 0) {
                 return [quest.collect count] + 1;
             } else {
                 return 1;
@@ -132,7 +132,7 @@ NSString *partyID;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 0) {
-        if (!party.questKey || ([party.questHP integerValue] == 0)) {
+        if (!party.questKey || ([quest.bossHp integerValue] == 0)) {
             return 44;
         } else {
             return 100;
@@ -161,7 +161,7 @@ NSString *partyID;
         if (party.questKey == nil) {
             cellname = @"NoQuestCell";
         } else {
-            if ([party.questHP integerValue] > 0) {
+            if ([quest.bossHp integerValue] > 0) {
                 cellname = @"BossQuestCell";
             } else {
                 cellname = @"CollectQuestCell";
