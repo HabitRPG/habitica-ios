@@ -12,7 +12,6 @@
 #import "User.h"
 #import <PDKeychainBindings.h>
 #import <VTAcknowledgementsViewController.h>
-
 @interface HRPGProfileViewController ()
 @property HRPGManager *sharedManager;
 
@@ -112,7 +111,7 @@ NSString *username;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 0) {
-        return 150;
+        return 170;
     } else {
         return 44;
     }
@@ -266,7 +265,7 @@ NSString *username;
 {
     User *user = (User*)[self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *levelLabel = (UILabel*)[cell viewWithTag:1];
-    levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"LVL %@", nil), user.level];
+    levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@", nil), user.level];
     
     UILabel *healthLabel = (UILabel*)[cell viewWithTag:2];
     healthLabel.text = [NSString stringWithFormat:@"%ld/%@", (long)[user.health integerValue], user.maxHealth];
@@ -283,7 +282,8 @@ NSString *username;
     UIProgressView *magicProgress = (UIProgressView*)[cell viewWithTag:7];
     magicProgress.progress = ([user.magic floatValue] / [user.maxMagic floatValue]);
     
-    
+    UIImageView *imageView = (UIImageView*)[cell viewWithTag:8];
+    [user setAvatarOnImageView:imageView];
 }
 
 
