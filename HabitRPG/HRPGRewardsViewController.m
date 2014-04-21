@@ -11,6 +11,7 @@
 #import "Task.h"
 #import "MetaReward.h"
 #import <PDKeychainBindings.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRPGRewardsViewController ()
 @property NSString *readableName;
@@ -89,7 +90,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    UITableViewCell *cell;
+    if (indexPath.section == 1 && indexPath.item == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ImageCell" forIndexPath:indexPath];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    }
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
 }
@@ -266,6 +272,12 @@
     UILabel *priceLabel = (UILabel*)[cell viewWithTag:3];
     priceLabel.text = [NSString stringWithFormat:@"%ld", (long)[reward.value integerValue]];
 
+    
+    if (indexPath.section == 1 && indexPath.item == 0) {
+        UIImageView *imageView = (UIImageView*)[cell viewWithTag:4];
+        [imageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_potion.png"]
+                       placeholderImage:nil];
+    }
 }
 
 

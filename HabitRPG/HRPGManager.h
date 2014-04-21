@@ -36,4 +36,5 @@
 
 -(UIColor*) getColorForValue:(NSNumber*) value;
 
+- (void) getImage:(NSString*) imageName onSuccess:(void (^)(UIImage* image))successBlock;
 @end

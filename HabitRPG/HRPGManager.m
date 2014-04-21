@@ -18,6 +18,7 @@
 #import "Gear.h"
 #import "Egg.h"
 #import "Group.h"
+#import <SDWebImageManager.h>
 
 @implementation HRPGManager
 @synthesize managedObjectContext;
@@ -755,6 +756,24 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (User*) getUser {
     return user;
+}
+
+- (void) getImage:(NSString*) imageName onSuccess:(void (^)(UIImage* image))successBlock {
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@.png", imageName]]
+                     options:0
+                    progress:^(NSInteger receivedSize, NSInteger expectedSize)
+     {
+     }
+                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
+     {
+         if (image)
+         {
+             successBlock(image);
+         } else {
+             NSLog(@"%@: %@", imageName, error);
+         }
+     }];
 }
 
 @end
