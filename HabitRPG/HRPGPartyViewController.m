@@ -82,7 +82,7 @@ NSString *partyID;
 }
 
 - (void) refresh {
-    [_sharedManager fetchGroup:partyID onSuccess:^ () {
+    [_sharedManager fetchGroup:@"party" onSuccess:^ () {
         [self.refreshControl endRefreshing];
         party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
         [self fetchQuest];
@@ -96,19 +96,23 @@ NSString *partyID;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
         case 0:
+            return 2;
+        case 1:
             if (party.questKey && [quest.bossHp integerValue] == 0) {
-                return [quest.collect count] + 1;
+                return [quest.collect count] + 2;
+            } else if (party.questKey) {
+                return 2;
             } else {
                 return 1;
             }
-        case 1: {
+        case 2: {
             if (party != nil && [party.chatmessages count] > 0) {
                 return [party.chatmessages count];
             }
@@ -121,9 +125,14 @@ NSString *partyID;
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return NSLocalizedString(@"Party", nil);
-            break;
+            if (party) {
+                return party.name;
+            } else {
+                return NSLocalizedString(@"Party", nil);
+            }
         case 1:
+            return NSLocalizedString(@"Quest", nil);
+        case 2:
             return NSLocalizedString(@"Chat", nil);
         default:
             return @"";
@@ -131,17 +140,24 @@ NSString *partyID;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0 && indexPath.item == 0) {
+    if (indexPath.section == 1 && indexPath.item == 0) {
         if (!party.questKey || ([quest.bossHp integerValue] == 0)) {
             return 44;
         } else {
             return 100;
         }
-    } else if (indexPath.section == 0) {
+    } else if (indexPath.section == 0 && indexPath.item == 0) {
+        return [party.hdescription boundingRectWithSize:CGSizeMake(290.0f, MAXFLOAT)
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                      attributes:@{
+                                                   NSFontAttributeName : [UIFont systemFontOfSize:15.0f]
+                                                   }
+                                         context:nil].size.height + 20;
+    } else if (indexPath.section == 0 || indexPath.section == 1) {
         return 44;
     } else {
         ChatMessage *message = party.chatmessages[indexPath.item];
-        return [message.text boundingRectWithSize:CGSizeMake(250.0f, MAXFLOAT)
+        return [message.text boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
                                                      options:NSStringDrawingUsesLineFragmentOrigin
                                                   attributes:@{
                                                                NSFontAttributeName : [UIFont systemFontOfSize:15.0f]
@@ -152,12 +168,21 @@ NSString *partyID;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 0 && indexPath.item == 1) {
+        [self performSegueWithIdentifier: @"MembersSegue" sender: self];
+    } else if (indexPath.section == 1 && indexPath.item == 1) {
+        [self performSegueWithIdentifier: @"ParticipantsSegue" sender: self];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellname;
     if (indexPath.section == 0 && indexPath.item == 0) {
+        cellname = @"SmallTextCell";
+    } else if (indexPath.section == 0 && indexPath.item == 1) {
+        cellname = @"BaseCell";
+    } else if (indexPath.section == 1 && indexPath.item == 0) {
         if (party.questKey == nil) {
             cellname = @"NoQuestCell";
         } else {
@@ -167,7 +192,9 @@ NSString *partyID;
                 cellname = @"CollectQuestCell";
             }
         }
-    } else if (indexPath.section == 0) {
+    } else if (indexPath.section == 1 && indexPath.item == 1) {
+        cellname = @"SubtitleCell";
+    } else if (indexPath.section == 1) {
         cellname = @"CollectItemQuestCell";
     } else {
         if (indexPath.section) {
@@ -249,7 +276,19 @@ NSString *partyID;
 {
     if (party != nil) {
         if (indexPath.section == 0 && indexPath.item == 0) {
+            cell.textLabel.text = party.hdescription;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        } else if (indexPath.section == 0 && indexPath.item == 1) {
+            if ([party.member count] == 1) {
+                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                cell.textLabel.text = NSLocalizedString(@"1 Member", nil);
+            } else {
+                cell.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lu Members", nil), (unsigned long)[party.member count]];
+            }
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        } else if (indexPath.section == 1 && indexPath.item == 0) {
             if (party.questKey != nil) {
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 UILabel *titleLabel = (UILabel*)[cell viewWithTag:1];
                 titleLabel.text = quest.text;
                 if ([party.questHP integerValue] > 0) {
@@ -261,8 +300,14 @@ NSString *partyID;
                 } else {
                 }
             }
-        } else if (indexPath.section == 0) {
-            QuestCollect *collect = quest.collect[indexPath.item-1];
+        } else if (indexPath.section == 1 && indexPath.item == 1) {
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
+            textLabel.text = NSLocalizedString(@"Participants", nil);
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        } else if (indexPath.section == 1) {
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            QuestCollect *collect = quest.collect[indexPath.item-2];
             UILabel *authorLabel = (UILabel*)[cell viewWithTag:1];
             authorLabel.text = collect.text;
             if ([collect.count integerValue] == [collect.collectCount integerValue]) {
@@ -273,7 +318,8 @@ NSString *partyID;
             
             UILabel *textLabel = (UILabel*)[cell viewWithTag:2];
             textLabel.text = [NSString stringWithFormat:@"%@/%@", collect.collectCount, collect.count];
-        } else if (indexPath.section == 1) {
+        } else if (indexPath.section == 2) {
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             ChatMessage *message = (ChatMessage*)party.chatmessages[indexPath.item];
             UILabel *authorLabel = (UILabel*)[cell viewWithTag:1];
             authorLabel.text = message.user;

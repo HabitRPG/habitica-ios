@@ -229,7 +229,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"items.gear.equipped.weapon" : @"equippedWeapon",
                                                         @"items.gear.equipped.back" : @"equippedBack",
                                                         @"items.currentPet" : @"currentPet",
-                                                        @"items.currentMount" : @"currentMount",
+                                                        @"items.currentMount" : @"currentMount"
                                                         }];
     entityMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping* rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
@@ -322,8 +322,35 @@ NIKFontAwesomeIconFactory *iconFactory;
     entityMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping* memberMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     [memberMapping addAttributeMappingsFromDictionary:@{
-                                                        @"_id":                 @"id",
-                                                        @"profile.name":        @"username"
+                                                        @"_id":              @"id",
+                                                        @"profile.name":            @"username",
+                                                        @"preferences.dayStart" : @"dayStart",
+                                                        @"preferences.sleep" : @"sleep",
+                                                        @"preferences.skin" : @"skin",
+                                                        @"preferences.size" : @"size",
+                                                        @"preferences.shirt" : @"shirt",
+                                                        @"preferences.hair.mustache" : @"hairMustache",
+                                                        @"preferences.hair.bangs" : @"hairBangs",
+                                                        @"preferences.hair.beard" : @"hairBeard",
+                                                        @"preferences.hair.base" : @"hairBase",
+                                                        @"preferences.hair.color" : @"hairColor",
+                                                        @"stats.lvl":             @"level",
+                                                        @"stats.gp":             @"gold",
+                                                        @"stats.exp":             @"experience",
+                                                        @"stats.mp":             @"magic",
+                                                        @"stats.hp":             @"health",
+                                                        @"stats.toNextLevel":             @"nextLevel",
+                                                        @"stats.maxHealth":             @"maxHealth",
+                                                        @"stats.maxMP":             @"maxMagic",
+                                                        @"stats.class": @"hclass",
+                                                        @"items.gear.equipped.headAccessory" : @"equippedHeadAccessory",
+                                                        @"items.gear.equipped.armor" : @"equippedArmor",
+                                                        @"items.gear.equipped.head" : @"equippedHead",
+                                                        @"items.gear.equipped.shield" : @"equippedShield",
+                                                        @"items.gear.equipped.weapon" : @"equippedWeapon",
+                                                        @"items.gear.equipped.back" : @"equippedBack",
+                                                        @"items.currentPet" : @"currentPet",
+                                                        @"items.currentMount" : @"currentMount"
                                                         }];
     memberMapping.identificationAttributes = @[ @"id" ];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"members"
@@ -347,7 +374,14 @@ NIKFontAwesomeIconFactory *iconFactory;
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"quest.progress.collect"
                                                                                   toKeyPath:@"collectStatus"
                                                                                 withMapping:collectMapping]];
-
+    RKEntityMapping* questParticipantsMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
+    questParticipantsMapping.forceCollectionMapping = YES;
+    [questParticipantsMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"id"];
+    [questParticipantsMapping addAttributeMappingsFromDictionary:@{@"(id)":              @"participateInQuest"}];
+    questParticipantsMapping.identificationAttributes = @[ @"id" ];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"quest.members"
+                                                                                  toKeyPath:@"questParticipants"
+                                                                                withMapping:questParticipantsMapping]];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/groups/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     

@@ -62,6 +62,7 @@
         <relationship name="collectStatus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestCollect" inverseName="group" inverseEntity="QuestCollect" syncable="YES"/>
         <relationship name="leader" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
         <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="party" inverseEntity="User" syncable="YES"/>
+        <relationship name="questParticipants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <entity name="HatchingPotion" syncable="YES">
         <attribute name="dialog" optional="YES" attributeType="String" syncable="YES"/>
@@ -179,6 +180,7 @@
         <attribute name="maxHealth" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxMagic" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="nextLevel" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="participateInQuest" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="shirt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="skin" optional="YES" attributeType="String" syncable="YES"/>
@@ -201,7 +203,7 @@
         <element name="Egg" positionX="18" positionY="162" width="128" height="208"/>
         <element name="Food" positionX="81" positionY="198" width="128" height="193"/>
         <element name="Gear" positionX="9" positionY="153" width="128" height="163"/>
-        <element name="Group" positionX="0" positionY="0" width="128" height="223"/>
+        <element name="Group" positionX="0" positionY="0" width="128" height="240"/>
         <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="148"/>
         <element name="MetaReward" positionX="54" positionY="162" width="128" height="118"/>
         <element name="Potion" positionX="45" positionY="153" width="128" height="45"/>
@@ -211,6 +213,6 @@
         <element name="Spell" positionX="45" positionY="153" width="128" height="148"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="373"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="718"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="735"/>
     </elements>
 </model>

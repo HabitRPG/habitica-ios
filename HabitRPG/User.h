@@ -43,10 +43,11 @@
 @property (nonatomic, retain) NSNumber * maxHealth;
 @property (nonatomic, retain) NSNumber * maxMagic;
 @property (nonatomic, retain) NSNumber * nextLevel;
+@property (nonatomic) BOOL participateInQuest;
 @property (nonatomic, retain) NSString * shirt;
 @property (nonatomic, retain) NSString * size;
 @property (nonatomic, retain) NSString * skin;
-@property (nonatomic) BOOL sleep;
+@property (nonatomic) Boolean sleep;
 @property (nonatomic, retain) NSString * username;
 @property (nonatomic, retain) NSSet *groups;
 @property (nonatomic, retain) NSSet *ownedEggs;
@@ -103,4 +104,5 @@
 - (void)removeTasks:(NSSet *)values;
 
 - (void)setAvatarOnImageView:(UIImageView*)imageView;
+- (void)setAvatarOnImageView:(UIImageView*)imageView withPetMount:(BOOL)withPetMount;
 @end

@@ -49,6 +49,7 @@
 @dynamic maxHealth;
 @dynamic maxMagic;
 @dynamic nextLevel;
+@dynamic participateInQuest;
 @dynamic shirt;
 @dynamic size;
 @dynamic skin;
@@ -67,6 +68,10 @@
 
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView {
+    [self setAvatarOnImageView:imageView withPetMount:YES];
+}
+
+- (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount {
     NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:16];
     for(int i = 0; i<=16; i++) {
         [imageArray addObject:[NSNull null]];
@@ -99,15 +104,6 @@
         dispatch_group_leave(group);
     }];
     
-    if (![self.equippedHead isEqualToString:@"head_base_0"]) {
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager getImage:self.equippedHead onSuccess:^(UIImage *image) {
-            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-            dispatch_group_leave(group);
-        }];
-    }
-    
     if (![self.equippedArmor isEqualToString:@"armor_base_0"]) {
         dispatch_group_enter(group);
         currentLayer++;
@@ -120,13 +116,23 @@
     if ([self.hairBase integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
+        [sharedManager getImage:[NSString stringWithFormat:@"hair_base_%@_%@", self.hairBase, self.hairColor] onSuccess:^(UIImage *image) {
+            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            dispatch_group_leave(group);
+        }];
+    }
+
+    
+    if ([self.hairBangs integerValue] != 0) {
+        dispatch_group_enter(group);
+        currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"hair_bangs_%@_%@", self.hairBangs, self.hairColor] onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         }];
     }
     
-    if ([self.hairBase integerValue] != 0) {
+    if ([self.hairMustache integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"hair_mustache_%@_%@", self.hairMustache, self.hairColor] onSuccess:^(UIImage *image) {
@@ -135,7 +141,7 @@
     }];
     }
         
-    if ([self.hairBase integerValue] != 0) {
+    if ([self.hairBeard integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"hair_beard_%@_%@", self.hairBeard, self.hairColor] onSuccess:^(UIImage *image) {
@@ -153,7 +159,7 @@
         }];
     }
     
-    if (![self.equippedHeadAccessory isEqualToString:@"headAccessory_base_0"]) {
+    if (self.equippedHeadAccessory && ![self.equippedHeadAccessory isEqualToString:@"headAccessory_base_0"]) {
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:self.equippedHeadAccessory onSuccess:^(UIImage *image) {
@@ -189,7 +195,7 @@
         }];
     }
     
-    if (self.currentPet) {
+    if (withPetMount && self.currentPet) {
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"Pet-%@", self.currentPet] onSuccess:^(UIImage *image) {
@@ -198,7 +204,7 @@
         }];
     }
     
-    if (self.currentMount) {
+    if (withPetMount && self.currentMount) {
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"Mount_Head_%@", self.currentMount] onSuccess:^(UIImage *image) {
@@ -207,7 +213,7 @@
         }];
     }
     
-    if (self.currentMount) {
+    if (withPetMount && self.currentMount) {
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"Mount_Body_%@", self.currentMount] onSuccess:^(UIImage *image) {
@@ -217,19 +223,28 @@
     }
     
     dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(140.f, 147.f), NO, 0.0f);
         int yoffset = 18;
-        if (self.currentMount) {
+        int xoffset = 25;
+        float width = 140.0f;
+        float height = 147.0f;
+        if (!withPetMount) {
+            xoffset = 0;
+            width = 90.0f;
+            height = 90.0f;
+            yoffset = 0;
+        }
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), NO, 0.0f);
+        if (withPetMount && self.currentMount) {
             yoffset = 0;
             [currentMount drawInRect:CGRectMake(25, 18, currentMount.size.width, currentMount.size.height)];
         }
         for (id item in imageArray) {
             if (item != [NSNull null]) {
                 UIImage *addImage = (UIImage*)item;
-                [addImage drawInRect:CGRectMake(25, yoffset, addImage.size.width, addImage.size.height)];
+                [addImage drawInRect:CGRectMake(xoffset, yoffset, addImage.size.width, addImage.size.height)];
             }
         }
-        if (self.currentMount) {
+        if (withPetMount && self.currentMount) {
             [currentMountHead drawInRect:CGRectMake(25, 18, currentMountHead.size.width, currentMountHead.size.height)];
         }
         if (self.currentPet) {
