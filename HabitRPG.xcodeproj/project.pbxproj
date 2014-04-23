@@ -28,6 +28,10 @@
 		D98F5AEC190566CA002F8223 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AEB190566CA002F8223 /* User.m */; };
 		D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AEE1905C090002F8223 /* HRPGQuestParticipantsViewController.m */; };
 		D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */; };
+		D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */; };
+		D99DEC87190836D400FFD2B9 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC86190836D400FFD2B9 /* Item.m */; };
+		D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D99DEC88190842CA00FFD2B9 /* Placeholder.png */; };
+		D99DEC8C19084E0D00FFD2B9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D99DEC8B19084E0D00FFD2B9 /* Crashlytics.framework */; };
 		D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */; };
 		D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */; };
 		D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0B018CCD1EA00C8D1B7 /* Task.m */; };
@@ -114,6 +118,12 @@
 		D98F5AEE1905C090002F8223 /* HRPGQuestParticipantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGQuestParticipantsViewController.m; sourceTree = "<group>"; };
 		D98F5AF01905DE86002F8223 /* HRPGPartyMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPartyMembersViewController.h; sourceTree = "<group>"; };
 		D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPartyMembersViewController.m; sourceTree = "<group>"; };
+		D99DEC821908313D00FFD2B9 /* HRPGItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGItemViewController.h; sourceTree = "<group>"; };
+		D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGItemViewController.m; sourceTree = "<group>"; };
+		D99DEC85190836D400FFD2B9 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		D99DEC86190836D400FFD2B9 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		D99DEC88190842CA00FFD2B9 /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
+		D99DEC8B19084E0D00FFD2B9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		D9B11C8A18D63D4E00AB4D23 /* HRPGTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTabBarController.h; sourceTree = "<group>"; };
 		D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTabBarController.m; sourceTree = "<group>"; };
 		D9B5C0AC18CCC87A00C8D1B7 /* HRPGManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGManager.h; sourceTree = "<group>"; };
@@ -180,6 +190,7 @@
 				D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */,
 				D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */,
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
+				D99DEC8C19084E0D00FFD2B9 /* Crashlytics.framework in Frameworks */,
 				F076F3C3B57B4367B7624D1F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +217,8 @@
 				D92CDAE318CB83EF0006C242 /* HRPGDailyTableViewController.m */,
 				D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */,
 				D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */,
+				D99DEC821908313D00FFD2B9 /* HRPGItemViewController.h */,
+				D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */,
 				D92CDADE18CB83B90006C242 /* HRPGHabitTableViewController.h */,
 				D92CDADF18CB83B90006C242 /* HRPGHabitTableViewController.m */,
 				D9B5C0E518D62CC700C8D1B7 /* HRPGLoginViewController.h */,
@@ -263,6 +276,8 @@
 				D97C71DD18EC98A40089FDC6 /* QuestCollect.m */,
 				D97C71D918EC98A30089FDC6 /* Quest.h */,
 				D97C71DA18EC98A30089FDC6 /* Quest.m */,
+				D99DEC85190836D400FFD2B9 /* Item.h */,
+				D99DEC86190836D400FFD2B9 /* Item.m */,
 				D97C71DF18ECA7050089FDC6 /* ChatMessage.h */,
 				D97C71E018ECA7050089FDC6 /* ChatMessage.m */,
 				D98F5AEA190566CA002F8223 /* User.h */,
@@ -308,6 +323,7 @@
 		D9EB4E8D18CB4A9400BB2094 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D99DEC8B19084E0D00FFD2B9 /* Crashlytics.framework */,
 				D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */,
 				D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */,
 				D9EB4E9218CB4A9400BB2094 /* UIKit.framework */,
@@ -343,6 +359,7 @@
 		D9EB4E9518CB4A9400BB2094 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D99DEC88190842CA00FFD2B9 /* Placeholder.png */,
 				D97C71F418F371D70089FDC6 /* Pods-acknowledgements.plist */,
 				D9EB4E9618CB4A9400BB2094 /* HabitRPG-Info.plist */,
 				D9EB4E9718CB4A9400BB2094 /* InfoPlist.strings */,
@@ -382,6 +399,7 @@
 				D9EB4E8818CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8918CB4A9400BB2094 /* Resources */,
 				E849E9FA1DD6461BA39AB99A /* Copy Pods Resources */,
+				D99DEC8A19084DDD00FFD2B9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -454,6 +472,7 @@
 				D9E0868E18DA040300BAF2EF /* Quincy.bundle in Resources */,
 				D97C71F518F371D70089FDC6 /* Pods-acknowledgements.plist in Resources */,
 				D9EB4EA218CB4A9400BB2094 /* Main_iPhone.storyboard in Resources */,
+				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +503,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		D99DEC8A19084DDD00FFD2B9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 2eb3b3edb3b0f4722d37d649a5af366656e46ddd d2ba51e7ded38c0a45cef17c3288994dc2f00032f3c076119f9fed034aeb154c";
+		};
 		E849E9FA1DD6461BA39AB99A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -506,6 +538,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D99DEC87190836D400FFD2B9 /* Item.m in Sources */,
 				D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */,
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
@@ -532,6 +565,7 @@
 				D9C7C1F318E280DE0083F4E4 /* HRPGRewardsViewController.m in Sources */,
 				D92CDAE718CB84000006C242 /* HRPGToDoTableViewController.m in Sources */,
 				D9E0868C18DA040300BAF2EF /* BWQuincyManager.m in Sources */,
+				D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */,
 				D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */,
 				D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */,
 				D97C71E118ECA7050089FDC6 /* ChatMessage.m in Sources */,
@@ -684,6 +718,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HabitRPG",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HabitRPG/HabitRPG-Prefix.pch";
@@ -703,6 +738,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HabitRPG",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HabitRPG/HabitRPG-Prefix.pch";

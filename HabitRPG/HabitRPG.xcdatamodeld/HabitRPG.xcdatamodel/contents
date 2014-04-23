@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="BuyableItem" isAbstract="YES" parentEntity="Item" syncable="YES">
+        <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
     <entity name="ChatMessage" representedClassName="ChatMessage" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,29 +17,14 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="task" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="checklist" inverseEntity="Task" syncable="YES"/>
     </entity>
-    <entity name="Egg" representedClassName="Egg" syncable="YES">
+    <entity name="Egg" representedClassName="Egg" parentEntity="BuyableItem" syncable="YES">
         <attribute name="adjective" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="dialog" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mountText" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="owned" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedEggs" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Food" syncable="YES">
+    <entity name="Food" parentEntity="BuyableItem" syncable="YES">
         <attribute name="article" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="dialog" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="owned" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedFood" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Gear" representedClassName="Gear" parentEntity="MetaReward" syncable="YES">
@@ -64,14 +52,17 @@
         <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="party" inverseEntity="User" syncable="YES"/>
         <relationship name="questParticipants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
-    <entity name="HatchingPotion" syncable="YES">
+    <entity name="HatchingPotion" parentEntity="Item" syncable="YES">
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedHatchingPotions" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Item" representedClassName="Item" isAbstract="YES" syncable="YES">
         <attribute name="dialog" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="owned" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedHatchingPotions" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="MetaReward" representedClassName="MetaReward" isAbstract="YES" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
@@ -193,18 +184,18 @@
         <relationship name="ownedHatchingPotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HatchingPotion" inverseName="user" inverseEntity="HatchingPotion" syncable="YES"/>
         <relationship name="ownedQuests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Quest" inverseName="user" inverseEntity="Quest" syncable="YES"/>
         <relationship name="party" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="member" inverseEntity="Group" syncable="YES"/>
-        <relationship name="rewards" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reward" inverseName="user" inverseEntity="Reward" syncable="YES"/>
+        <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reward" inverseName="user" inverseEntity="Reward" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="user" inverseEntity="Tag" syncable="YES"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="user" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="135"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="Egg" positionX="18" positionY="162" width="128" height="208"/>
-        <element name="Food" positionX="81" positionY="198" width="128" height="193"/>
+        <element name="Egg" positionX="18" positionY="162" width="128" height="88"/>
+        <element name="Food" positionX="81" positionY="198" width="128" height="88"/>
         <element name="Gear" positionX="9" positionY="153" width="128" height="163"/>
         <element name="Group" positionX="0" positionY="0" width="128" height="240"/>
-        <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="148"/>
+        <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="58"/>
         <element name="MetaReward" positionX="54" positionY="162" width="128" height="118"/>
         <element name="Potion" positionX="45" positionY="153" width="128" height="45"/>
         <element name="Quest" positionX="27" positionY="171" width="128" height="268"/>
@@ -214,5 +205,7 @@
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="373"/>
         <element name="User" positionX="0" positionY="0" width="128" height="735"/>
+        <element name="Item" positionX="36" positionY="153" width="128" height="148"/>
+        <element name="BuyableItem" positionX="45" positionY="162" width="128" height="58"/>
     </elements>
 </model>

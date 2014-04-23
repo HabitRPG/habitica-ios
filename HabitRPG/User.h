@@ -56,7 +56,7 @@
 @property (nonatomic, retain) NSSet *ownedHatchingPotions;
 @property (nonatomic, retain) NSSet *ownedQuests;
 @property (nonatomic, retain) Group *party;
-@property (nonatomic, retain) Reward *rewards;
+@property (nonatomic, retain) NSSet *rewards;
 @property (nonatomic, retain) NSSet *tags;
 @property (nonatomic, retain) NSSet *tasks;
 @end

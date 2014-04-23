@@ -161,7 +161,7 @@
     
     // Edit the sort key as appropriate.
     NSSortDescriptor *indexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
-    NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:NO];
+    NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
     NSArray *sortDescriptors = @[typeDescriptor, indexDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -239,7 +239,7 @@
     Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = gear.text;
     [cell.imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", gear.key]]
-              placeholderImage:nil];
+              placeholderImage:[UIImage imageNamed:@"Placeholder"]];
 }
 
 

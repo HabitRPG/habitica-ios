@@ -202,6 +202,24 @@ NSString *partyID;
     textLabel.text = user.username;
     UIImageView *avatarView = (UIImageView*)[cell viewWithTag:2];
     [user setAvatarOnImageView:avatarView withPetMount:NO];
+    UILabel *healthLabel = (UILabel*)[cell viewWithTag:3];
+    healthLabel.text = [NSString stringWithFormat:@"%ld / 50", (long)[user.health integerValue]];
+    UIProgressView *healthBar = (UIProgressView*)[cell viewWithTag:4];
+    healthBar.progress = [user.health floatValue] / 50.0f;
+    UILabel *levelLabel = (UILabel*)[cell viewWithTag:5];
+    levelLabel.text = [NSString stringWithFormat:@"LVL %@", user.level];
+    UILabel *classLabel = (UILabel*)[cell viewWithTag:6];
+    classLabel.text = user.hclass;
+    [classLabel.layer setCornerRadius:5.0f];
+    if ([user.hclass isEqualToString:@"warrior"]) {
+        classLabel.backgroundColor = [UIColor colorWithRed:0.792 green:0.267 blue:0.239 alpha:1.000];
+    } else if ([user.hclass isEqualToString:@"wizard"]) {
+        classLabel.backgroundColor = [UIColor colorWithRed:0.211 green:0.718 blue:0.168 alpha:1.000];
+    } else if ([user.hclass isEqualToString:@"rogue"]) {
+        classLabel.backgroundColor = [UIColor colorWithRed:0.177 green:0.333 blue:0.559 alpha:1.000];
+    } else if ([user.hclass isEqualToString:@"healer"]) {
+        classLabel.backgroundColor = [UIColor colorWithRed:0.304 green:0.702 blue:0.839 alpha:1.000];
+    }
 }
 
 

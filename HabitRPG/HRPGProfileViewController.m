@@ -35,7 +35,6 @@ NSString *username;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
     _sharedManager = appdelegate.sharedManager;
     self.managedObjectContext = _sharedManager.getManagedObjectContext;
@@ -85,7 +84,7 @@ NSString *username;
         case 1:
             return 2;
         case 2:
-            return 1;
+            return 2;
         case 3:
             return 2;
         default:
@@ -129,6 +128,8 @@ NSString *username;
         [self performSegueWithIdentifier: @"PartySegue" sender: self];
     } else if (indexPath.section == 2 && indexPath.item == 0) {
         [self performSegueWithIdentifier: @"EquipmentSegue" sender: self];
+    } else if (indexPath.section == 2 && indexPath.item == 1) {
+        [self performSegueWithIdentifier: @"ItemSegue" sender: self];
     } else if (indexPath.section == 3 && indexPath.item == 0) {
         [self performSegueWithIdentifier: @"SettingsSegue" sender: self];
     } else if (indexPath.section == 3 && indexPath.item == 1) {
@@ -160,6 +161,8 @@ NSString *username;
             title = NSLocalizedString(@"Party", nil);
         } else if (indexPath.section == 2 && indexPath.item == 0) {
             title = NSLocalizedString(@"Equipment", nil);
+        } else if (indexPath.section == 2 && indexPath.item == 1) {
+            title = NSLocalizedString(@"Items", nil);
         } else if (indexPath.section == 3 && indexPath.item == 0) {
             title = NSLocalizedString(@"Settings", nil);
         } else if (indexPath.section == 3 && indexPath.item == 1) {
