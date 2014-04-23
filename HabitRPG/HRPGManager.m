@@ -18,6 +18,7 @@
 #import "Gear.h"
 #import "Egg.h"
 #import "Group.h"
+#import "Item.h"
 #import <SDWebImageManager.h>
 
 @implementation HRPGManager
@@ -179,9 +180,12 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                       @"lvl":       @"level",
                                                       @"hp":            @"health",
                                                       @"mp":              @"magic",
-                                                      @"exp":        @"experience"}];
+                                                      @"exp":        @"experience",
+                                                      @"_tmp.drop.key":        @"dropKey",
+                                                      @"_tmp.drop.type":        @"dropType",
+                                                      @"_tmp.drop.notes":        @"dropNote"}];
     
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:upDownMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user/tasks/:id/:direction" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:upDownMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/tasks/:id/:direction" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
     
@@ -418,7 +422,8 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                       @"(key).notes":              @"notes",
                                                       @"(key).mountText":        @"mountText",
                                                       @"(key).type":        @"type",
-                                                      @"(key).dialog":        @"dialog"}];
+                                                      @"(key).dialog":        @"dialog",
+                                                      @"(key).type":        @"type"}];
     eggMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:eggMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"eggs" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -429,7 +434,8 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                      @"(key).text":              @"text",
                                                      @"(key).value":            @"value",
                                                      @"(key).notes":              @"notes",
-                                                     @"(key).dialog":        @"dialog"}];
+                                                     @"(key).dialog":        @"dialog",
+                                                     @"(key).type":        @"type"}];
     hatchingPotionMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:hatchingPotionMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"hatchingPotions" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -443,7 +449,8 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                      @"(key).value":            @"value",
                                                      @"(key).notes":              @"notes",
                                                      @"(key).article":        @"article",
-                                                     @"(key).dialog":        @"dialog"}];
+                                                     @"(key).dialog":        @"dialog",
+                                                     @"(key).type":        @"type"}];
     foodMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:foodMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"food" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -633,13 +640,13 @@ NIKFontAwesomeIconFactory *iconFactory;
         NSError *executeError = nil;
         HRPGTaskResponse *taskResponse = (HRPGTaskResponse*)[mappingResult firstObject];
         task.value = [NSNumber numberWithFloat:[task.value floatValue] + [taskResponse.delta floatValue]];
-        user.level = taskResponse.level;
         if ([user.level integerValue] < [taskResponse.level integerValue]) {
             [self displayLevelUpNotification];
             //Set experience to the amount, that was missing for the next level. So that the notification
             //displays the correct amount of experience gained
             user.experience = [NSNumber numberWithFloat:[user.experience floatValue] - [user.nextLevel floatValue]];
         }
+        user.level = taskResponse.level;
         NSNumber *expDiff = [NSNumber numberWithFloat: [taskResponse.experience floatValue] - [user.experience floatValue]];
         user.experience = taskResponse.experience;
         NSNumber *healthDiff = [NSNumber numberWithFloat: [taskResponse.health floatValue] - [user.health floatValue]];
@@ -651,6 +658,22 @@ NIKFontAwesomeIconFactory *iconFactory;
         [self displayTaskSuccessNotification:healthDiff withExperienceDiff:expDiff withGoldDiff:goldDiff];
         if ([task.type  isEqual: @"daily"] || [task.type  isEqual: @"todo"]) {
             task.completed = ([withDirection  isEqual: @"up"]);
+        }
+        if (taskResponse.dropKey) {
+            NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+            // Edit the entity name as appropriate.
+            NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" inManagedObjectContext:[self getManagedObjectContext]];
+            [fetchRequest setEntity:entity];
+            NSPredicate *predicate;
+            predicate = [NSPredicate predicateWithFormat:@"type==%@ || key==%@", taskResponse.dropType, taskResponse.dropKey];
+            [fetchRequest setPredicate:predicate];
+            NSError * error = nil;
+            NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+            if([fetchedObjects count] == 1) {
+                Item *droppedItem = [fetchedObjects objectAtIndex:0];
+                droppedItem.owned = [NSNumber numberWithLong:([droppedItem.owned integerValue] + 1) ];
+                [self displayDropNotification:taskResponse.dropType withNote:taskResponse.dropNote];
+            }
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
@@ -756,7 +779,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 }
 
 -(void) displayTaskSuccessNotification:(NSNumber*) healthDiff withExperienceDiff:(NSNumber*)expDiff withGoldDiff:(NSNumber*)goldDiff {
-    UIColor *notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
+    UIColor *notificationColor = [UIColor colorWithRed:0.807 green:0.813 blue:0.127 alpha:1.000];
     NSString *content;
     if ([healthDiff intValue] < 0) {
         notificationColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
@@ -778,6 +801,20 @@ NIKFontAwesomeIconFactory *iconFactory;
     UIColor *notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
     NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Level up!", nil),
                               kCRToastSubtitleTextKey : [NSString stringWithFormat:@"Level %@", user.level],
+                              kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastBackgroundColorKey : notificationColor,
+                              kCRToastImageKey : [iconFactory createImageForIcon:NIKFontAwesomeIconCheck]
+                              };
+    [CRToastManager showNotificationWithOptions:options
+                                completionBlock:^{
+                                }];
+}
+
+-(void) displayDropNotification:(NSString*)type withNote:(NSString*)note {
+    UIColor *notificationColor = [UIColor colorWithRed:0.114 green:0.447 blue:0.597 alpha:1.000];
+    NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You found a %@", nil), type],
+                              kCRToastSubtitleTextKey : note,
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastBackgroundColorKey : notificationColor,

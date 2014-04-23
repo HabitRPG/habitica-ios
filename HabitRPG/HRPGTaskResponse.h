@@ -15,5 +15,8 @@
 @property (nonatomic, retain) NSNumber *experience;
 @property (nonatomic, retain) NSNumber *health;
 @property (nonatomic, retain) NSNumber *magic;
+@property (nonatomic, retain) NSString *dropType;
+@property (nonatomic, retain) NSString *dropKey;
+@property (nonatomic, retain) NSString *dropNote;
 
 @end
