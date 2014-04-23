@@ -9,12 +9,13 @@
 #import "HRPGAppDelegate.h"
 #import "Task.h"
 #import "CRToast.h"
-#import "BWQuincyManager.h"
+#import <Crashlytics/Crashlytics.h>
 
 @implementation HRPGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Crashlytics startWithAPIKey:@"2eb3b3edb3b0f4722d37d649a5af366656e46ddd"];
     [CRToastManager setDefaultOptions:@{kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),
                                         kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeGravity),
                                         kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
@@ -35,7 +36,6 @@
         } onError:^() {
         }];
     }
-    [[BWQuincyManager sharedQuincyManager] setSubmissionURL:@"http://viirus.sirius.uberspace.de/quincy/crash_v300.php"]; [[BWQuincyManager sharedQuincyManager] startManager];
     return YES;
 }
 
