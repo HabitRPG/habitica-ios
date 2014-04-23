@@ -779,7 +779,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 }
 
 -(void) displayTaskSuccessNotification:(NSNumber*) healthDiff withExperienceDiff:(NSNumber*)expDiff withGoldDiff:(NSNumber*)goldDiff {
-    UIColor *notificationColor = [UIColor colorWithRed:0.807 green:0.813 blue:0.127 alpha:1.000];
+    UIColor *notificationColor = [UIColor colorWithRed:0.768 green:0.782 blue:0.105 alpha:1.000];
     NSString *content;
     if ([healthDiff intValue] < 0) {
         notificationColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
@@ -812,7 +812,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 }
 
 -(void) displayDropNotification:(NSString*)type withNote:(NSString*)note {
-    UIColor *notificationColor = [UIColor colorWithRed:0.114 green:0.447 blue:0.597 alpha:1.000];
+    UIColor *notificationColor = [UIColor colorWithRed:0.231 green:0.442 blue:0.964 alpha:1.000];
     NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You found a %@", nil), type],
                               kCRToastSubtitleTextKey : note,
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),

@@ -25,8 +25,22 @@
     UITabBarItem *item0 = self.tabBar.items[0];
     item0.image = [factory createImageForIcon:NIKFontAwesomeIconArrowsV];
     
+    UIImage *calendarImage = [factory createImageForIcon:NIKFontAwesomeIconCalendarO];
+    
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(calendarImage.size.width, calendarImage.size.height), NO, 0.0f);
+    [calendarImage drawInRect:CGRectMake(0, 0, calendarImage.size.width, calendarImage.size.height)];
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd"];
+    NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+    NSDictionary *textAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
+    CGSize size = [dateString sizeWithAttributes:textAttributes];
+    int offset = (calendarImage.size.width - size.width) /2;
+    [dateString drawInRect:CGRectMake(offset, 8, 20, 20) withAttributes:textAttributes];
+    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
     UITabBarItem *item1 = self.tabBar.items[1];
-    item1.image = [factory createImageForIcon:NIKFontAwesomeIconCalendarO];
+    item1.image = resultImage;
 
     UITabBarItem *item2 = self.tabBar.items[2];
     item2.image = [factory createImageForIcon:NIKFontAwesomeIconCheckSquareO];
