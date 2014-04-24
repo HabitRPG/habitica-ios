@@ -347,6 +347,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     [questParticipantsMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"id"];
     [questParticipantsMapping addAttributeMappingsFromDictionary:@{@"(id)":              @"participateInQuest"}];
     questParticipantsMapping.identificationAttributes = @[ @"id" ];
+    questParticipantsMapping.assignsDefaultValueForMissingAttributes = YES;
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"quest.members"
                                                                                   toKeyPath:@"questParticipants"
                                                                                 withMapping:questParticipantsMapping]];
