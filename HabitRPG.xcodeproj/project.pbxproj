@@ -199,6 +199,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D91CE2A7190967EC00B0993A /* Markdown */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Markdown;
+			sourceTree = "<group>";
+		};
 		D92CDAE118CB83C40006C242 /* TablewViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +322,7 @@
 		D9EB4E9418CB4A9400BB2094 /* HabitRPG */ = {
 			isa = PBXGroup;
 			children = (
+				D91CE2A7190967EC00B0993A /* Markdown */,
 				D9B5C0EB18D6321400C8D1B7 /* Models */,
 				D92CDAE118CB83C40006C242 /* TablewViewController */,
 				D9EB4E9D18CB4A9400BB2094 /* HRPGAppDelegate.h */,

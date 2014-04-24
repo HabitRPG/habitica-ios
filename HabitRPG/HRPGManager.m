@@ -562,7 +562,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     if (intValue < -20) {
         return [UIColor colorWithRed:0.824 green:0.113 blue:0.104 alpha:1.000];
     } else if (intValue < -10) {
-        return [UIColor colorWithRed:0.933 green:0.144 blue:0.198 alpha:1.000];
+        return [UIColor colorWithRed:0.906 green:0.328 blue:0.113 alpha:1.000];
     } else if (intValue < -1) {
         return [UIColor colorWithRed:0.966 green:0.517 blue:0.117 alpha:1.000];
     } else if (intValue < 1) {
@@ -570,7 +570,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else if (intValue < 5) {
         return [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
     } else if (intValue < 10) {
-        return [UIColor colorWithRed:0.218 green:0.600 blue:0.692 alpha:1.000];
+        return [UIColor colorWithRed:0.124 green:0.627 blue:0.755 alpha:1.000];
     } else {
         return [UIColor colorWithRed:0.231 green:0.442 blue:0.964 alpha:1.000];
     }

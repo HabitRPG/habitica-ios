@@ -43,7 +43,7 @@ BOOL editable;
     [super viewDidLoad];
 
     editable = NO;
-    
+
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
     _sharedManager = appdelegate.sharedManager;
     self.managedObjectContext = _sharedManager.getManagedObjectContext;

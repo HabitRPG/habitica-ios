@@ -12,6 +12,7 @@
 #import "MCSwipeTableViewCell.h"
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
+#import "NSString+Emoji.h"
 
 @interface HRPGHabitTableViewController ()
 @property NSString *readableName;
@@ -76,7 +77,7 @@
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UIColor *color = [self.sharedManager getColorForValue:task.value];
     UILabel *label = (UILabel*)[cell viewWithTag:1];
-    label.text = task.text;
+    label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
     label.textColor = color;
     [self configureSwiping:cell withTask:task];
 }

@@ -13,6 +13,7 @@
 #import "MCSwipeTableViewCell.h"
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
+#import "NSString+Emoji.h"
 
 @interface HRPGDailyTableViewController ()
 @property NSString *readableName;
@@ -76,7 +77,7 @@
         Task *task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
         int currentOffset = (int)(indexPath.item - self.openedIndexPath.item-1);
         ChecklistItem *item = task.checklist[currentOffset];
-        label.text = item.text;
+        label.text = [item.text stringByReplacingEmojiCheatCodesWithUnicode];
         checklistLabel.hidden = YES;
         cell.backgroundColor = [UIColor lightGrayColor];
         if (item.completed) {
@@ -117,7 +118,7 @@
             indexPath = [NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section];
         }
         Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        label.text = task.text;
+        label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
         NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];
         if ([checklistCount integerValue] > 0) {
             int checkedCount = 0;

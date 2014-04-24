@@ -17,6 +17,8 @@
 #import "QuestCollect.h"
 #import "ChatMessage.h"
 #import <NSDate+TimeAgo.h>
+#import "NSString+Emoji.h"
+
 @interface HRPGPartyViewController ()
 @property HRPGManager *sharedManager;
 
@@ -342,7 +344,7 @@ NSString *partyID;
             authorLabel.text = message.user;
             
             UILabel *textLabel = (UILabel*)[cell viewWithTag:2];
-            textLabel.text = message.text;
+            textLabel.text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
             
             UILabel *dateLabel = (UILabel*)[cell viewWithTag:3];
             dateLabel.text = [message.timestamp timeAgo];

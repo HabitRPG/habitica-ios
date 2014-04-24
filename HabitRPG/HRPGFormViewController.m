@@ -9,6 +9,8 @@
 #import "HRPGFormViewController.h"
 #import "Task.h"
 #import "HRPGAppDelegate.h"
+#import "NSString+Emoji.h"
+
 @interface HRPGFormViewController ()
 
 @end
@@ -124,12 +126,12 @@ int selectedDifficulty;
             if (indexPath.item == 0) {
                 label.text = NSLocalizedString(@"Text", nil);
                 if (self.editTask && textField.text.length == 0) {
-                    textField.text = self.task.text;
+                    textField.text = [self.task.text stringByReplacingEmojiCheatCodesWithUnicode];
                 }
             } else if (indexPath.item == 1) {
                 label.text = NSLocalizedString(@"Note", nil);
                 if (self.editTask && textField.text.length == 0) {
-                    textField.text = self.task.notes;
+                    textField.text = [self.task.notes stringByReplacingEmojiCheatCodesWithUnicode];
                 }
             }
             break;
@@ -254,7 +256,7 @@ int selectedDifficulty;
         UITableViewCell *oldCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:selectedDifficulty inSection:indexPath.section]];
         oldCell.accessoryType = UITableViewCellAccessoryNone;
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        selectedDifficulty = indexPath.item;
+        selectedDifficulty = (int)indexPath.item;
         switch (selectedDifficulty) {
             case 0: self.task.priority = [NSNumber numberWithFloat:1.0]; break;
             case 1: self.task.priority = [NSNumber numberWithFloat:1.5]; break;
@@ -272,9 +274,9 @@ int selectedDifficulty;
 {
     if ([segue.identifier isEqualToString:@"unwindSaveSegue"]) {
         UITextField *textField = (UITextField*)[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]] viewWithTag:2];
-        self.task.text = textField.text;
+        self.task.text = [textField.text stringByReplacingEmojiUnicodeWithCheatCodes];
         UITextField *noteField = (UITextField*)[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]] viewWithTag:2];
-        self.task.notes = noteField.text;
+        self.task.notes = [noteField.text stringByReplacingEmojiUnicodeWithCheatCodes];
         if ([self.taskType isEqualToString:@"habit"]) {
             UISwitch *upSwitch = (UISwitch*) [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1]] viewWithTag:2];
 
