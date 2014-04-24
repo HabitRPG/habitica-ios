@@ -8,6 +8,7 @@
 
 #import "HRPGFormViewController.h"
 #import "Task.h"
+#import "ChecklistItem.h"
 #import "HRPGAppDelegate.h"
 #import "NSString+Emoji.h"
 
@@ -40,6 +41,7 @@ int selectedDifficulty;
                     insertNewObjectForEntityForName:@"Task"
                     inManagedObjectContext:self.managedObjectContext];
         self.task.type = self.taskType;
+        selectedDifficulty = 0;
     } else {
         if ([self.task.priority floatValue] == 1.0) {
             selectedDifficulty = 0;
@@ -49,6 +51,7 @@ int selectedDifficulty;
             selectedDifficulty = 2;
         }
     }
+    [self.tableView setEditing:YES animated:NO];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -67,56 +70,48 @@ int selectedDifficulty;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if ([self.taskType isEqualToString:@"daily"]) {
+        return 4;
+    }
     return 3;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
+    if (section == 0 ) {
             return NSLocalizedString(@"Task", nil);
-            break;
-        case 1:
-            if ([self.taskType isEqualToString:@"habit"]) {
-                return NSLocalizedString(@"Directions", nil);
-            }
-            return NSLocalizedString(@"Repeat", nil);
-            break;
-        case 2:
-            return NSLocalizedString(@"Difficulty", nil);
-            break;
-        default:
-            return @"";
-            break;
+    } else if (section == 1 && [self.taskType isEqualToString:@"habit"]) {
+        return NSLocalizedString(@"Directions", nil);
+    } else if (section == 1) {
+        return NSLocalizedString(@"Checklist", nil);
+    } else if (section == 2 && [self.taskType isEqualToString:@"daily"]) {
+        return NSLocalizedString(@"Repeat", nil);
+    } else {
+        return NSLocalizedString(@"Difficulty", nil);
     }
+    return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    switch (section) {
-        case 0:
-            return 2;
-            break;
-        case 1:
-            if ([self.taskType isEqualToString:@"habit"]) {
-                return 2;
-            }
-            return 7;
-            break;
-        case 2:
-            return 3;
-            break;
-        default:
-            return 0;
-            break;
+    if (section == 0 ) {
+        return 2;
+    } else if (section == 1 && [self.taskType isEqualToString:@"habit"]) {
+        return 2;
+    } else if (section == 1) {
+        return [self.task.checklist count] + 1;
+    } else if (section == 2 && [self.taskType isEqualToString:@"daily"]) {
+        return 7;
+    } else if ((section == 3 && [self.taskType isEqualToString:@"daily"]) || section == 2) {
+        return 3;
     }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
 
-    switch (indexPath.section) {
-        case 0: {
+    if (indexPath.section == 0 ) {
             static NSString *CellIdentifier = @"TextInputCell";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -134,10 +129,7 @@ int selectedDifficulty;
                     textField.text = [self.task.notes stringByReplacingEmojiCheatCodesWithUnicode];
                 }
             }
-            break;
-        }
-        case 1: {
-            if ([self.taskType isEqualToString:@"habit"]) {
+    } else if (indexPath.section == 1 && [self.taskType isEqualToString:@"habit"]) {
                 static NSString *CellIdentifier = @"SwitchCell";
                 cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
                 cell.accessoryType = UITableViewCellAccessoryNone;
@@ -159,7 +151,19 @@ int selectedDifficulty;
                         break;
                 }
                 
-            } else {
+    } else if (indexPath.section == 1) {
+        if (indexPath.item < [self.task.checklist count]) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"TextInputAltCell" forIndexPath:indexPath];
+            UITextField *textField = (UITextField*)[cell viewWithTag:1];
+            ChecklistItem *item = self.task.checklist[indexPath.item];
+            if (self.editTask && textField.text.length == 0) {
+                textField.text = item.text;
+            }
+        } else {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"CheckMarkCell" forIndexPath:indexPath];
+            cell.textLabel.text = NSLocalizedString(@"Add checklist item", nil);
+        }
+    } else if (indexPath.section == 2 && [self.taskType isEqualToString:@"daily"]) {
                 static NSString *CellIdentifier = @"CheckMarkCell";
                 cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
                 cell.accessoryType = UITableViewCellAccessoryNone;
@@ -209,12 +213,10 @@ int selectedDifficulty;
                         }
                         break;
                 }
-            }
-            break;
-        }
-        case 2: {
+    } else {
             static NSString *CellIdentifier = @"CheckMarkCell";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             UILabel *label = (UILabel *)[cell viewWithTag:1];
             
             switch (indexPath.item) {
@@ -227,16 +229,43 @@ int selectedDifficulty;
             } else {
                 cell.accessoryType = UITableViewCellAccessoryNone;
             }
-            break;
-        }
     }
     return cell;
     
 }
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1 && indexPath.item < ([tableView numberOfRowsInSection:indexPath.section]-1) && ![self.task.type isEqualToString:@"habit"]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1 && indexPath.item < ([tableView numberOfRowsInSection:indexPath.section]-1) && ![self.task.type isEqualToString:@"habit"]) {
+        if (editingStyle == UITableViewCellEditingStyleDelete) {
+            ChecklistItem *item = self.task.checklist[indexPath.item];
+            [self.task removeChecklistObject:item];
+            [self.managedObjectContext deleteObject:item];
+            [self.tableView beginUpdates];
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+            [self.tableView endUpdates];
+        }
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    if (indexPath.section == 1 && ![self.taskType isEqualToString:@"habit"]) {
+    if (indexPath.section == 1 && indexPath.item == ([tableView numberOfRowsInSection:indexPath.section]-1) && ![self.task.type isEqualToString:@"habit"]) {
+        ChecklistItem *item = [NSEntityDescription
+                               insertNewObjectForEntityForName:@"ChecklistItem"
+                               inManagedObjectContext:self.managedObjectContext];
+        [self.task addChecklistObject:item];
+        [tableView beginUpdates];
+        [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationTop];
+        [tableView endUpdates];
+    } else if (indexPath.section == 2 && [self.taskType isEqualToString:@"daily"]) {
         if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
             cell.accessoryType = UITableViewCellAccessoryNone;
         } else {
@@ -252,7 +281,7 @@ int selectedDifficulty;
             case 5: self.task.saturday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
             case 6: self.task.sunday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
         }
-    } else if (indexPath.section == 2) {
+    } else if ((indexPath.section == 3 && [self.taskType isEqualToString:@"daily"]) || indexPath.section == 2) {
         UITableViewCell *oldCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:selectedDifficulty inSection:indexPath.section]];
         oldCell.accessoryType = UITableViewCellAccessoryNone;
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -284,6 +313,13 @@ int selectedDifficulty;
         
             UISwitch *downSwitch = (UISwitch*) [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:1]] viewWithTag:2];
             self.task.down = downSwitch.on;
+        } else {
+            for (int i = 0; i < [self.task.checklist count]; i++) {
+                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:i inSection:1]];
+                UITextField *textField = (UITextField*)[cell viewWithTag:1];
+                ChecklistItem *item =  self.task.checklist[i];
+                item.text = textField.text;
+            }
         }
     } else if([segue.identifier isEqualToString:@"unwindCancelSegue"]) {
         if (!self.editTask) {

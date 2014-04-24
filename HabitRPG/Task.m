@@ -45,4 +45,17 @@
     NSArray *weekDayArray = @[@"sunday", @"monday", @"tuesday", @"wednesday", @"thursday", @"friday", @"saturday", @"sunday"];
     return [[self valueForKey:weekDayArray[weekdayID]] boolValue];
 }
+
+- (void)addChecklistObject:(ChecklistItem *)value {
+    NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.checklist];
+    [tempSet addObject:value];
+    self.checklist = tempSet;
+}
+
+- (void)removeChecklistObject:(ChecklistItem *)value {
+    NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.checklist];
+    [tempSet removeObject:value];
+    self.checklist = tempSet;
+}
+
 @end
