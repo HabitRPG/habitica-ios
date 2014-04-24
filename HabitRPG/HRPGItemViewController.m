@@ -239,7 +239,12 @@
     Item  *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = item.text;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", item.owned];
-    NSString *url = [NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet_%@_%@.png", item.type, item.key];
+    NSString *url;
+    if ([item.type isEqualToString:@"Quest"]) {
+        url = @"http://pherth.net/habitrpg/inventory_quest_scroll.png";
+    } else {
+        url = [NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet_%@_%@.png", item.type, item.key];
+    }
     [cell.imageView setImageWithURL:[NSURL URLWithString:url]
                    placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     cell.imageView.contentMode = UIViewContentModeCenter;
