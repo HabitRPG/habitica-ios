@@ -27,6 +27,10 @@
 -(void) updateTask:(Task*)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) deleteTask:(Task*)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) buyObject:(MetaReward*)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+-(void) acceptQuest:(NSString*)group withQuest:(NSString*)questID useForce:(Boolean)force onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+-(void) rejectQuest:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+-(void) abortQuest:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 -(void) loginUser:(NSString*)username withPassword:(NSString*)password onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(NSManagedObjectContext *) getManagedObjectContext;

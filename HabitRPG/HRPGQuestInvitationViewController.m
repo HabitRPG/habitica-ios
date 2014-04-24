@@ -7,12 +7,15 @@
 //
 
 #import "HRPGQuestInvitationViewController.h"
+#import "HRPGAppDelegate.h"
+#import "HRPGManager.h"
 #import "Quest.h"
 @interface HRPGQuestInvitationViewController ()
-
+@property HRPGManager *sharedManager;
 @end
 
 @implementation HRPGQuestInvitationViewController
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,11 +30,8 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
+    _sharedManager = appdelegate.sharedManager;
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,16 +65,26 @@
                                        attributes:@{
                                                     NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                     }
-                                              context:nil].size.height;
+                                              context:nil].size.height+24;
     }
     return 44;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 0) {
-        
+        [_sharedManager acceptQuest:self.party.id withQuest:nil useForce:NO onSuccess:^(){
+            
+        }onError:^(){
+            
+        }];
+        [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
     } else if (indexPath.section == 1 && indexPath.item == 1) {
-        
+        [_sharedManager rejectQuest:self.party.id onSuccess:^(){
+            
+        }onError:^(){
+            
+        }];
+        [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
     } else if (indexPath.section == 1 && indexPath.item == 2) {
         [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
     }
@@ -100,7 +110,8 @@
     if (indexPath.section == 0 && indexPath.item == 0) {
         cell.textLabel.text = self.quest.text;
     } else if (indexPath.section == 0 && indexPath.item == 1) {
-        cell.textLabel.text = self.quest.notes;
+        UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
+        textLabel.text = self.quest.notes;
     }
     return cell;
 }

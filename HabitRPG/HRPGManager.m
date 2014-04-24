@@ -324,6 +324,47 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"type":                @"type"
                                                         }];
     entityMapping.identificationAttributes = @[ @"id" ];
+    RKEntityMapping* chatMapping = [RKEntityMapping mappingForEntityForName:@"ChatMessage" inManagedObjectStore:managedObjectStore];
+    [chatMapping addAttributeMappingsFromDictionary:@{@"uuid":@"uuid",
+                                                       @"id":@"id",
+                                                       @"text":@"text",
+                                                       @"timestamp":@"timestamp",
+                                                       @"user":@"user"}];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"chat"
+                                                                                  toKeyPath:@"chatmessages"
+                                                                                withMapping:chatMapping]];
+    chatMapping.identificationAttributes = @[ @"id" ];
+    RKEntityMapping* collectMapping = [RKEntityMapping mappingForEntityForName:@"QuestCollect" inManagedObjectStore:managedObjectStore];
+    collectMapping.forceCollectionMapping = YES;
+    [collectMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [collectMapping addAttributeMappingsFromDictionary:@{@"(key)":              @"collectCount"}];
+    collectMapping.identificationAttributes = @[ @"key" ];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"quest.progress.collect"
+                                                                                  toKeyPath:@"collectStatus"
+                                                                                withMapping:collectMapping]];
+    RKEntityMapping* questParticipantsMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
+    questParticipantsMapping.forceCollectionMapping = YES;
+    [questParticipantsMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"id"];
+    [questParticipantsMapping addAttributeMappingsFromDictionary:@{@"(id)":              @"participateInQuest"}];
+    questParticipantsMapping.identificationAttributes = @[ @"id" ];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"quest.members"
+                                                                                  toKeyPath:@"questParticipants"
+                                                                                withMapping:questParticipantsMapping]];
+    
+    RKEntityMapping *partyResponseMapping = [entityMapping copy];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:partyResponseMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/questAccept" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:partyResponseMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/questReject" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:partyResponseMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/questAbort" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     RKEntityMapping* memberMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     [memberMapping addAttributeMappingsFromDictionary:@{
                                                         @"_id":              @"id",
@@ -358,34 +399,9 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         }];
     memberMapping.identificationAttributes = @[ @"id" ];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"members"
-                                                                                toKeyPath:@"member"
+                                                                                  toKeyPath:@"member"
                                                                                 withMapping:memberMapping]];
-    RKEntityMapping* chatMapping = [RKEntityMapping mappingForEntityForName:@"ChatMessage" inManagedObjectStore:managedObjectStore];
-    [chatMapping addAttributeMappingsFromDictionary:@{@"uuid":@"uuid",
-                                                       @"id":@"id",
-                                                       @"text":@"text",
-                                                       @"timestamp":@"timestamp",
-                                                       @"user":@"user"}];
-    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"chat"
-                                                                                  toKeyPath:@"chatmessages"
-                                                                                withMapping:chatMapping]];
-    chatMapping.identificationAttributes = @[ @"id" ];
-    RKEntityMapping* collectMapping = [RKEntityMapping mappingForEntityForName:@"QuestCollect" inManagedObjectStore:managedObjectStore];
-    collectMapping.forceCollectionMapping = YES;
-    [collectMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
-    [collectMapping addAttributeMappingsFromDictionary:@{@"(key)":              @"collectCount"}];
-    collectMapping.identificationAttributes = @[ @"key" ];
-    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"quest.progress.collect"
-                                                                                  toKeyPath:@"collectStatus"
-                                                                                withMapping:collectMapping]];
-    RKEntityMapping* questParticipantsMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
-    questParticipantsMapping.forceCollectionMapping = YES;
-    [questParticipantsMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"id"];
-    [questParticipantsMapping addAttributeMappingsFromDictionary:@{@"(id)":              @"participateInQuest"}];
-    questParticipantsMapping.identificationAttributes = @[ @"id" ];
-    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"quest.members"
-                                                                                  toKeyPath:@"questParticipants"
-                                                                                withMapping:questParticipantsMapping]];
+    
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/groups/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
@@ -764,6 +780,49 @@ NIKFontAwesomeIconFactory *iconFactory;
     }];
 }
 
+-(void) acceptQuest:(NSString*)group withQuest:(NSString*)questID useForce:(Boolean)force onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    NSDictionary *params = nil;
+
+    //if (force) {
+    //    params = @{@"force": force};
+    //}
+    if (questID) {
+        params = @{@"key": questID};
+    }
+    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/questAccept", group] parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        errorBlock();
+        return;
+    }];
+}
+
+-(void) rejectQuest:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/questReject", group] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        errorBlock();
+        return;
+    }];
+}
+
+-(void) abortQuest:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/questAbort", group] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        errorBlock();
+        return;
+    }];
+}
 
 - (void) displayNetworkError {
     NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Network error", nil),

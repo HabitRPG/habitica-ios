@@ -42,9 +42,6 @@ NSString *partyID;
     _sharedManager = appdelegate.sharedManager;
     self.managedObjectContext = _sharedManager.getManagedObjectContext;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    partyID = [defaults objectForKey:@"partyID"];
-    
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
     
     if ([keyChain stringForKey:@"id"] == nil) {
@@ -127,7 +124,11 @@ NSString *partyID;
     [fetchRequest setFetchBatchSize:20];
     
     NSPredicate *predicate;
-    predicate = [NSPredicate predicateWithFormat:@"party.id == %@", partyID];
+    if (self.party.questActive) {
+        predicate = [NSPredicate predicateWithFormat:@"participateInQuest == YES"];
+    } else {
+        predicate = [NSPredicate predicateWithFormat:@"party.id == %@", partyID];
+    }
     [fetchRequest setPredicate:predicate];
     
     // Edit the sort key as appropriate.
@@ -138,7 +139,7 @@ NSString *partyID;
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"participants"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -210,7 +211,7 @@ NSString *partyID;
     UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
     textLabel.text = user.username;
     cell.textLabel.text = user.username;
-    if (user.participateInQuest) {
+    if ([user.participateInQuest boolValue]) {
         cell.detailTextLabel.text = NSLocalizedString(@"Accepted", nil);
         cell.detailTextLabel.textColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
     } else if (user.participateInQuest == nil) {

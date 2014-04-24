@@ -43,7 +43,7 @@
 @property (nonatomic, retain) NSNumber * maxHealth;
 @property (nonatomic, retain) NSNumber * maxMagic;
 @property (nonatomic, retain) NSNumber * nextLevel;
-@property (nonatomic) BOOL participateInQuest;
+@property (nonatomic, retain) NSNumber *participateInQuest;
 @property (nonatomic, retain) NSString * shirt;
 @property (nonatomic, retain) NSString * size;
 @property (nonatomic, retain) NSString * skin;

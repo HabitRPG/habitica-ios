@@ -9,6 +9,7 @@
 #import "HRPGPartyViewController.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGQuestInvitationViewController.h"
+#import "HRPGQuestParticipantsViewController.h"
 #import "Task.h"
 #import "Group.h"
 #import "Quest.h"
@@ -366,6 +367,11 @@ NSString *partyID;
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([segue.identifier isEqualToString:@"ParticipantsSegue"]) {
+        HRPGQuestParticipantsViewController *qpViewcontroller = segue.destinationViewController;
+        qpViewcontroller.party = party;
+        qpViewcontroller.quest = quest;
+    }
 }
 
 @end
