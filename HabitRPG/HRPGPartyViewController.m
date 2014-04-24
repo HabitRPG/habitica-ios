@@ -8,9 +8,11 @@
 
 #import "HRPGPartyViewController.h"
 #import "HRPGAppDelegate.h"
+#import "HRPGQuestInvitationViewController.h"
 #import "Task.h"
 #import "Group.h"
 #import "Quest.h"
+#import "User.h"
 #import "QuestCollect.h"
 #import "ChatMessage.h"
 #import <NSDate+TimeAgo.h>
@@ -24,6 +26,7 @@
 @synthesize managedObjectContext;
 Group *party;
 Quest *quest;
+User *user;
 NSUserDefaults *defaults;
 NSString *partyID;
 
@@ -45,6 +48,7 @@ NSString *partyID;
     [super viewDidLoad];
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
     _sharedManager = appdelegate.sharedManager;
+    user = [_sharedManager getUser];
     
     self.managedObjectContext = _sharedManager.getManagedObjectContext;
     defaults = [NSUserDefaults standardUserDefaults];
@@ -85,6 +89,18 @@ NSString *partyID;
     [_sharedManager fetchGroup:@"party" onSuccess:^ () {
         [self.refreshControl endRefreshing];
         party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        if (party.questKey != nil) {
+            [self fetchQuest];
+        }
+        if (party.questKey != nil && !party.questActive && user.participateInQuest == nil) {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+            UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"questInvitationNavigationController"];
+            HRPGQuestInvitationViewController *questInvitationController = (HRPGQuestInvitationViewController*)navigationController.topViewController;
+            questInvitationController.quest = quest;
+            questInvitationController.party = party;
+            questInvitationController.sourceViewcontroller = self;
+            [self presentViewController:navigationController animated:YES completion: nil];
+        }
         [self fetchQuest];
     } onError:^ () {
         [self.refreshControl endRefreshing];
