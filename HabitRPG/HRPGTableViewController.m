@@ -144,8 +144,8 @@ BOOL editable;
         indexPath = [NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section];
     }
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];
-    if (self.openedIndexPath.item == indexPath.item) {
+    NSNumber *checklistCount = [NSNumber numberWithInteger:[task.checklist count]];
+    if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
         NSIndexPath *tempPath = self.openedIndexPath;
         self.openedIndexPath = nil;
         self.indexOffset = 0;
