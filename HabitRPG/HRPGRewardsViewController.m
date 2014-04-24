@@ -308,10 +308,13 @@
     notesLabel.text = reward.notes;
     UILabel *priceLabel = (UILabel*)[cell viewWithTag:3];
     priceLabel.text = [NSString stringWithFormat:@"%ld", (long)[reward.value integerValue]];
-
+    [priceLabel sizeToFit];
+    UIImageView *goldView = (UIImageView*)[cell viewWithTag:4];
+    [goldView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]
+              placeholderImage:nil];
     
     if ([reward.key isEqualToString:@"potion"]) {
-        UIImageView *imageView = (UIImageView*)[cell viewWithTag:4];
+        UIImageView *imageView = (UIImageView*)[cell viewWithTag:5];
         [imageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_potion.png"]
                        placeholderImage:nil];
     }
