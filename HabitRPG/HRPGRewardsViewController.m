@@ -173,7 +173,11 @@
 {
     MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
     if ([reward.type isEqualToString:@"reward"]) {
-        
+        [self.sharedManager getReward:reward.key onSuccess:^() {
+            
+        }onError:^() {
+            
+        }];
     } else {
         [self.sharedManager buyObject:reward onSuccess:^() {
             

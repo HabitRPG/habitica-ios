@@ -701,6 +701,52 @@ NIKFontAwesomeIconFactory *iconFactory;
     }];
 }
 
+-(void) getReward:(NSString*)rewardID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@/down", rewardID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        HRPGTaskResponse *taskResponse = (HRPGTaskResponse*)[mappingResult firstObject];
+        if ([user.level integerValue] < [taskResponse.level integerValue]) {
+            [self displayLevelUpNotification];
+            //Set experience to the amount, that was missing for the next level. So that the notification
+            //displays the correct amount of experience gained
+            user.experience = [NSNumber numberWithFloat:[user.experience floatValue] - [user.nextLevel floatValue]];
+        }
+        user.level = taskResponse.level;
+        NSNumber *expDiff = [NSNumber numberWithFloat: [taskResponse.experience floatValue] - [user.experience floatValue]];
+        user.experience = taskResponse.experience;
+        NSNumber *healthDiff = [NSNumber numberWithFloat: [taskResponse.health floatValue] - [user.health floatValue]];
+        user.health = taskResponse.health;
+        user.magic = taskResponse.magic;
+        
+        NSNumber *goldDiff = [NSNumber numberWithFloat: [taskResponse.gold floatValue] - [user.gold floatValue]];
+        user.gold = taskResponse.gold;
+        [self displayTaskSuccessNotification:healthDiff withExperienceDiff:expDiff withGoldDiff:goldDiff];
+        if (taskResponse.dropKey) {
+            NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+            // Edit the entity name as appropriate.
+            NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" inManagedObjectContext:[self getManagedObjectContext]];
+            [fetchRequest setEntity:entity];
+            NSPredicate *predicate;
+            predicate = [NSPredicate predicateWithFormat:@"type==%@ || key==%@", taskResponse.dropType, taskResponse.dropKey];
+            [fetchRequest setPredicate:predicate];
+            NSError * error = nil;
+            NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+            if([fetchedObjects count] == 1) {
+                Item *droppedItem = [fetchedObjects objectAtIndex:0];
+                droppedItem.owned = [NSNumber numberWithLong:([droppedItem.owned integerValue] + 1) ];
+                [self displayDropNotification:taskResponse.dropType withNote:taskResponse.dropNote];
+            }
+        }
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        errorBlock();
+        return;
+    }];
+}
+
+
 -(void) createTask:(Task*)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [[RKObjectManager sharedManager] postObject:task path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;

@@ -23,6 +23,7 @@
 -(void) fetchGroups:(NSString*)groupType onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 -(void) upDownTask:(Task*)task direction:(NSString*)withDirection onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+-(void) getReward:(NSString*)rewardID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) createTask:(Task*)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) updateTask:(Task*)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) deleteTask:(Task*)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
