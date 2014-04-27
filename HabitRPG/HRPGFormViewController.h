@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Task.h"
-@interface HRPGFormViewController : UITableViewController <UITableViewDataSource>
+@interface HRPGFormViewController : UITableViewController <UITableViewDataSource, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;

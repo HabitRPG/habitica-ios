@@ -51,7 +51,6 @@ int selectedDifficulty;
             selectedDifficulty = 2;
         }
     }
-    [self.tableView setEditing:YES animated:NO];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -152,16 +151,16 @@ int selectedDifficulty;
                 }
                 
     } else if (indexPath.section == 1) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"TextInputAltCell" forIndexPath:indexPath];
+        UITextField *textField = (UITextField*)[cell viewWithTag:1];
+        textField.delegate = self;
+        textField.returnKeyType = UIReturnKeyNext;
+
         if (indexPath.item < [self.task.checklist count]) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"TextInputAltCell" forIndexPath:indexPath];
-            UITextField *textField = (UITextField*)[cell viewWithTag:1];
             ChecklistItem *item = self.task.checklist[indexPath.item];
             if (self.editTask && textField.text.length == 0) {
                 textField.text = item.text;
             }
-        } else {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"CheckMarkCell" forIndexPath:indexPath];
-            cell.textLabel.text = NSLocalizedString(@"Add checklist item", nil);
         }
     } else if (indexPath.section == 2 && [self.taskType isEqualToString:@"daily"]) {
                 static NSString *CellIdentifier = @"CheckMarkCell";
@@ -257,15 +256,7 @@ int selectedDifficulty;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    if (indexPath.section == 1 && indexPath.item == ([tableView numberOfRowsInSection:indexPath.section]-1) && ![self.task.type isEqualToString:@"habit"]) {
-        ChecklistItem *item = [NSEntityDescription
-                               insertNewObjectForEntityForName:@"ChecklistItem"
-                               inManagedObjectContext:self.managedObjectContext];
-        [self.task addChecklistObject:item];
-        [tableView beginUpdates];
-        [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationTop];
-        [tableView endUpdates];
-    } else if (indexPath.section == 2 && [self.taskType isEqualToString:@"daily"]) {
+    if (indexPath.section == 2 && [self.taskType isEqualToString:@"daily"]) {
         if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
             cell.accessoryType = UITableViewCellAccessoryNone;
         } else {
@@ -294,6 +285,51 @@ int selectedDifficulty;
     }
     cell.contentView.backgroundColor = [UIColor whiteColor];
     cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
+}
+
+#pragma mark - TextField Delegates
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    UITableViewCell *cell = (UITableViewCell*)textField.superview.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    UITableViewCell *nextCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item+1 inSection:indexPath.section]];
+    UITextView *nextTextView = (UITextView*)[nextCell viewWithTag:1];
+    [nextTextView becomeFirstResponder];
+    return NO;
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if ([textField.text isEqualToString:@""] && ![string isEqualToString:@""]) {
+        UITableViewCell *cell = (UITableViewCell*)textField.superview.superview.superview;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        NSInteger itemCount = [self.tableView numberOfRowsInSection:indexPath.section];
+        if ((itemCount-1) == indexPath.item) {
+            ChecklistItem *item = [NSEntityDescription
+                                   insertNewObjectForEntityForName:@"ChecklistItem"
+                                   inManagedObjectContext:self.managedObjectContext];
+            [self.task addChecklistObject:item];
+            [self.tableView beginUpdates];
+            [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:indexPath.item+1 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationTop];
+            [self.tableView endUpdates];
+        }
+    }
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if ([textField.text isEqualToString:@""]) {
+        UITableViewCell *cell = (UITableViewCell*)textField.superview.superview.superview;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        if (indexPath.item < [self.task.checklist count]) {
+            ChecklistItem *item = self.task.checklist[indexPath.item];
+            [self.task removeChecklistObject:item];
+            [self.managedObjectContext deleteObject:item];
+            [self.tableView beginUpdates];
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+            [self.tableView endUpdates];
+        }
+    }
 }
 
 #pragma mark - Navigation
