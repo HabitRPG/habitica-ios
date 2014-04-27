@@ -36,10 +36,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     } transformationBlock:^BOOL(id inputValue, __autoreleasing id *outputValue, __unsafe_unretained Class outputValueClass, NSError *__autoreleasing *error) {
         RKValueTransformerTestInputValueIsKindOfClass(inputValue, (@[ [NSNumber class] ]), error);
         RKValueTransformerTestOutputValueClassIsSubclassOfClass(outputValueClass, (@[ [NSDate class] ]), error);
-        if ([inputValue unsignedLongValue] == 1396477933674) {
-            NSLog(@"asd");
-        }
-        *outputValue = [NSDate dateWithTimeIntervalSince1970:[inputValue unsignedLongValue] / 1000];
+        *outputValue = [NSDate dateWithTimeIntervalSince1970:([inputValue longLongValue] / 1000)];
         return YES;
     }];
 }
