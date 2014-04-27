@@ -110,7 +110,11 @@ BOOL editable;
             Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
             [_sharedManager deleteTask:task onSuccess:^() {
                 NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-                [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+                Task *task = (Task*)[self.fetchedResultsController objectAtIndexPath:indexPath];
+                for (ChecklistItem *item in task.checklist) {
+                    [context deleteObject:item];
+                }
+                [context deleteObject:task];
                 
                 NSError *error = nil;
                 if (![context save:&error]) {
