@@ -176,12 +176,16 @@ NSString *partyID;
         return 44;
     } else {
         ChatMessage *message = party.chatmessages[indexPath.item];
-        return [message.text boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
+        NSInteger height = [message.text boundingRectWithSize:CGSizeMake(229.0f, MAXFLOAT)
                                                      options:NSStringDrawingUsesLineFragmentOrigin
                                                   attributes:@{
                                                                NSFontAttributeName : [UIFont systemFontOfSize:15.0f]
                                                                }
                                                      context:nil].size.height + 41;
+        if (height < 70) {
+            height = 70;
+        }
+        return height;
     }
 }
 
@@ -342,12 +346,18 @@ NSString *partyID;
             ChatMessage *message = (ChatMessage*)party.chatmessages[indexPath.item];
             UILabel *authorLabel = (UILabel*)[cell viewWithTag:1];
             authorLabel.text = message.user;
-            
+            UIImageView *imageView = (UIImageView*)[cell viewWithTag:5];
+            if (message.user != nil) {
+                imageView.hidden = NO;
+                [message.userObject setAvatarOnImageView:imageView withPetMount:NO onlyHead:YES];
+            } else {
+                imageView.hidden = YES;
+            }
             UILabel *textLabel = (UILabel*)[cell viewWithTag:2];
             textLabel.text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
-            
             UILabel *dateLabel = (UILabel*)[cell viewWithTag:3];
             dateLabel.text = [message.timestamp timeAgo];
+            [dateLabel sizeToFit];
         }
     }
 }

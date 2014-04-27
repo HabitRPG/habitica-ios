@@ -59,6 +59,10 @@
 @property (nonatomic, retain) NSSet *rewards;
 @property (nonatomic, retain) NSSet *tags;
 @property (nonatomic, retain) NSSet *tasks;
+@property (nonatomic, retain) NSDate *lastLogin;
+@property (nonatomic, retain) NSDate *lastAvatarFull;
+@property (nonatomic, retain) NSDate *lastAvatarNoPet;
+@property (nonatomic, retain) NSDate *lastAvatarHead;
 @end
 
 @interface User (CoreDataGeneratedAccessors)
@@ -104,5 +108,5 @@
 - (void)removeTasks:(NSSet *)values;
 
 - (void)setAvatarOnImageView:(UIImageView*)imageView;
-- (void)setAvatarOnImageView:(UIImageView*)imageView withPetMount:(BOOL)withPetMount;
+- (void)setAvatarOnImageView:(UIImageView*)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead;
 @end

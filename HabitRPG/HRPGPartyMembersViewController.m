@@ -201,7 +201,7 @@ NSString *partyID;
     UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
     textLabel.text = user.username;
     UIImageView *avatarView = (UIImageView*)[cell viewWithTag:2];
-    [user setAvatarOnImageView:avatarView withPetMount:NO];
+    [user setAvatarOnImageView:avatarView withPetMount:NO onlyHead:NO];
     UILabel *healthLabel = (UILabel*)[cell viewWithTag:3];
     healthLabel.text = [NSString stringWithFormat:@"%ld / 50", (long)[user.health integerValue]];
     UIProgressView *healthBar = (UIProgressView*)[cell viewWithTag:4];

@@ -18,5 +18,6 @@
 @dynamic user;
 @dynamic uuid;
 @dynamic group;
+@dynamic userObject;
 
 @end

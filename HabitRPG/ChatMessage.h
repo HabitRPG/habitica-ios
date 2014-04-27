@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "User.h"
 
 @class Group;
 
@@ -19,5 +20,6 @@
 @property (nonatomic, retain) NSString * user;
 @property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) Group *group;
+@property (nonatomic, retain) User *userObject;
 
 @end

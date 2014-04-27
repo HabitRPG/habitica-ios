@@ -66,24 +66,36 @@
 @dynamic rewards;
 @dynamic tags;
 @dynamic tasks;
-
+@dynamic lastLogin;
+@dynamic lastAvatarFull;
+@dynamic lastAvatarNoPet;
+@dynamic lastAvatarHead;
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView {
-    [self setAvatarOnImageView:imageView withPetMount:YES];
+    [self setAvatarOnImageView:imageView withPetMount:YES onlyHead:NO];
 }
 
-- (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount {
+- (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead{
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
     HRPGManager *sharedManager = appdelegate.sharedManager;
     NSString *cachedImageName;
     UIImage *cachedImage;
-    if (withPetMount) {
+    if (withPetMount && !onlyHead) {
         cachedImageName = [NSString stringWithFormat:@"%@_full", self.username];
-    } else {
+    } else if (!withPetMount && !onlyHead){
         cachedImageName = [NSString stringWithFormat:@"%@_noPetMount", self.username];
+    } else {
+        cachedImageName = [NSString stringWithFormat:@"%@_head", self.username];
     }
     cachedImage = [sharedManager getCachedImage:cachedImageName];
     imageView.image = cachedImage;
+    if (withPetMount && !onlyHead && [self.lastLogin isEqualToDate:self.lastAvatarFull]) {
+        return;
+    } else if (!withPetMount && !onlyHead && [self.lastLogin isEqualToDate:self.lastAvatarNoPet]){
+        return;
+    } else if ([self.lastLogin isEqualToDate:self.lastAvatarHead]){
+        return;
+    }
     NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:16];
     for(int i = 0; i<=16; i++) {
         [imageArray addObject:[NSNull null]];
@@ -103,7 +115,7 @@
     
     dispatch_group_enter(group);
     currentLayer++;
-    [sharedManager getImage:[NSString stringWithFormat:@"%@_shirt_%@", self.size, self.shirt] onSuccess:^(UIImage *image) {
+    [sharedManager getImage:[NSString stringWithFormat:@"%@_shirt_%@", self.size, self.shirt] onSuccess:^(UIImage *image){
         [imageArray replaceObjectAtIndex:currentLayer withObject:image];
         dispatch_group_leave(group);
     }];
@@ -179,7 +191,7 @@
         }];
     }
     
-    if (![self.equippedShield isEqualToString:@"shield_base_0"]) {
+    if (!onlyHead && ![self.equippedShield isEqualToString:@"shield_base_0"]) {
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:self.equippedShield onSuccess:^(UIImage *image) {
@@ -188,7 +200,7 @@
         }];
     }
     
-    if (![self.equippedWeapon isEqualToString:@"weapon_base_0"]) {
+    if (!onlyHead && ![self.equippedWeapon isEqualToString:@"weapon_base_0"]) {
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:self.equippedWeapon onSuccess:^(UIImage *image) {
@@ -244,6 +256,12 @@
             height = 90.0f;
             yoffset = 0;
         }
+        if (onlyHead) {
+            xoffset = -29.0f;
+            width = 55.0f;
+            height = 55.0f;
+            yoffset = -6.0f;
+        }
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), NO, 0.0f);
         if (withPetMount && self.currentMount) {
             yoffset = 0;
@@ -268,6 +286,13 @@
             imageView.image = resultImage;
         });
         [sharedManager setCachedImage:resultImage withName:cachedImageName onSuccess:^() {
+            if (withPetMount && !onlyHead) {
+                self.lastAvatarFull = [self.lastLogin copy];
+            } else if (!withPetMount && !onlyHead){
+                self.lastAvatarNoPet = [self.lastLogin copy];
+            } else {
+                self.lastAvatarHead = [self.lastLogin copy];
+            }
         }];
     });
 }

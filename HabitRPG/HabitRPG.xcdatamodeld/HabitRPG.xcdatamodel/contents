@@ -10,6 +10,7 @@
         <attribute name="user" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="chatmessages" inverseEntity="Group" syncable="YES"/>
+        <relationship name="userObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="chatmessages" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="ChecklistItem" representedClassName="ChecklistItem" syncable="YES">
         <attribute name="completed" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -160,6 +161,10 @@
         <attribute name="hclass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="health" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastAvatarFull" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastAvatarHead" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastAvatarNoPet" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastLogin" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="magic" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxHealth" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -171,6 +176,7 @@
         <attribute name="skin" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sleep" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChatMessage" inverseName="userObject" inverseEntity="ChatMessage" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" syncable="YES"/>
         <relationship name="ownedEggs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Egg" inverseName="user" inverseEntity="Egg" syncable="YES"/>
         <relationship name="ownedFood" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="user" inverseEntity="Food" syncable="YES"/>
@@ -184,7 +190,7 @@
     </entity>
     <elements>
         <element name="BuyableItem" positionX="45" positionY="162" width="128" height="58"/>
-        <element name="ChatMessage" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="ChatMessage" positionX="0" positionY="0" width="128" height="148"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="103"/>
         <element name="Egg" positionX="18" positionY="162" width="128" height="90"/>
         <element name="Food" positionX="81" positionY="198" width="128" height="88"/>
@@ -200,6 +206,6 @@
         <element name="Spell" positionX="45" positionY="153" width="128" height="148"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="373"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="735"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="808"/>
     </elements>
 </model>

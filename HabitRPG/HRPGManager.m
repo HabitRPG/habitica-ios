@@ -262,7 +262,8 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"items.gear.equipped.weapon" : @"equippedWeapon",
                                                         @"items.gear.equipped.back" : @"equippedBack",
                                                         @"items.currentPet" : @"currentPet",
-                                                        @"items.currentMount" : @"currentMount"
+                                                        @"items.currentMount" : @"currentMount",
+                                                        @"auth.timestamps.loggedin":@"lastLogin"
                                                         }];
     entityMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping* rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
@@ -354,11 +355,15 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         }];
     entityMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping* chatMapping = [RKEntityMapping mappingForEntityForName:@"ChatMessage" inManagedObjectStore:managedObjectStore];
-    [chatMapping addAttributeMappingsFromDictionary:@{@"uuid":@"uuid",
-                                                       @"id":@"id",
+    [chatMapping addAttributeMappingsFromDictionary:@{@"id":@"id",
                                                        @"text":@"text",
                                                        @"timestamp":@"timestamp",
                                                        @"user":@"user"}];
+    RKEntityMapping *chatUserMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
+    [chatUserMapping addAttributeMappingsFromDictionary:@{@"uuid":@"id"}];
+    [chatMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:nil
+                                                                                  toKeyPath:@"userObject"
+                                                                                withMapping:chatUserMapping]];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"chat"
                                                                                   toKeyPath:@"chatmessages"
                                                                                 withMapping:chatMapping]];
@@ -425,7 +430,8 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"items.gear.equipped.weapon" : @"equippedWeapon",
                                                         @"items.gear.equipped.back" : @"equippedBack",
                                                         @"items.currentPet" : @"currentPet",
-                                                        @"items.currentMount" : @"currentMount"
+                                                        @"items.currentMount" : @"currentMount",
+                                                        @"auth.timestamps.loggedin":@"lastLogin"
                                                         }];
     memberMapping.identificationAttributes = @[ @"id" ];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"members"
@@ -988,7 +994,6 @@ NIKFontAwesomeIconFactory *iconFactory;
     {
         return image;
     } else {
-        NSLog(@"%@: Error", imageName);
         return nil;
     }
 }
