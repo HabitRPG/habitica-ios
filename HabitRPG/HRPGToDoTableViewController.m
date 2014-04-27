@@ -72,7 +72,7 @@
         label.text = [item.text stringByReplacingEmojiCheatCodesWithUnicode];
         checklistLabel.hidden = YES;
         cell.backgroundColor = [UIColor lightGrayColor];
-        if (item.completed) {
+        if ([item.completed boolValue]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor darkTextColor];
@@ -80,7 +80,7 @@
             UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconSquareO]];
             UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
             [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                item.completed = NO;
+                item.completed = [NSNumber numberWithBool:NO];;
                 [self.sharedManager updateTask:task onSuccess:^() {
                     [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
                 }onError:^() {
@@ -95,7 +95,7 @@
             UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconCheckSquareO]];
             UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
             [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                item.completed = YES;
+                item.completed = [NSNumber numberWithBool:YES];
                 [self.sharedManager updateTask:task onSuccess:^() {
                     
                     [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
@@ -115,7 +115,7 @@
         if ([checklistCount integerValue] > 0) {
             int checkedCount = 0;
             for (ChecklistItem *item in [task checklist]) {
-                if (item.completed) {
+                if ([item.completed boolValue]) {
                     checkedCount++;
                 }
             }
@@ -129,7 +129,7 @@
         } else {
             checklistLabel.hidden = YES;
         }
-        if (task.completed) {
+        if ([task.completed boolValue]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor colorWithWhite:0.581 alpha:1.000];
@@ -157,7 +157,7 @@
 }
 
 -(void)configureSwiping:(HRPGSwipeTableViewCell *)cell withTask:(Task *)task {
-    if (task.completed) {
+    if ([task.completed boolValue]) {
         UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconSquareO]];
         UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
         [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {

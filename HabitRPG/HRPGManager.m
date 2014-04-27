@@ -111,6 +111,8 @@ NIKFontAwesomeIconFactory *iconFactory;
     taskMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping* checklistItemMapping = [RKEntityMapping mappingForEntityForName:@"ChecklistItem" inManagedObjectStore:managedObjectStore];
     [checklistItemMapping addAttributeMappingsFromArray:@[@"id", @"text", @"completed"]];
+    checklistItemMapping.identificationAttributes = @[ @"id", @"text" ];
+
     [taskMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"checklist"
                                                                                   toKeyPath:@"checklist"
                                                                                 withMapping:checklistItemMapping]];
@@ -700,7 +702,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         user.gold = taskResponse.gold;
         [self displayTaskSuccessNotification:healthDiff withExperienceDiff:expDiff withGoldDiff:goldDiff];
         if ([task.type  isEqual: @"daily"] || [task.type  isEqual: @"todo"]) {
-            task.completed = ([withDirection  isEqual: @"up"]);
+            task.completed = [NSNumber numberWithBool:([withDirection  isEqual: @"up"])];
         }
         if (taskResponse.dropKey) {
             NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

@@ -14,24 +14,24 @@
 @interface Task : NSManagedObject
 
 @property (nonatomic, retain) NSString * attribute;
-@property (nonatomic) BOOL completed;
+@property (nonatomic, retain) NSNumber * completed;
 @property (nonatomic, retain) NSDate * dateCreated;
-@property (nonatomic) BOOL down;
+@property (nonatomic, retain) NSNumber * down;
 @property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) NSNumber * priority;
 @property (nonatomic, retain) NSNumber * streak;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * type;
-@property (nonatomic) BOOL up;
+@property (nonatomic, retain) NSNumber * up;
 @property (nonatomic, retain) NSNumber * value;
-@property (nonatomic) BOOL monday;
-@property (nonatomic) BOOL tuesday;
-@property (nonatomic) BOOL wednesday;
-@property (nonatomic) BOOL thursday;
-@property (nonatomic) BOOL friday;
-@property (nonatomic) BOOL saturday;
-@property (nonatomic) BOOL sunday;
+@property (nonatomic, retain) NSNumber * monday;
+@property (nonatomic, retain) NSNumber * tuesday;
+@property (nonatomic, retain) NSNumber * wednesday;
+@property (nonatomic, retain) NSNumber * thursday;
+@property (nonatomic, retain) NSNumber * friday;
+@property (nonatomic, retain) NSNumber * saturday;
+@property (nonatomic, retain) NSNumber * sunday;
 @property (nonatomic, retain) NSOrderedSet *checklist;
 @property (nonatomic, retain) NSSet *tags;
 @property (nonatomic, retain) User *user;

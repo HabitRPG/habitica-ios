@@ -264,13 +264,13 @@ int selectedDifficulty;
         }
 
         switch (indexPath.item) {
-            case 0: self.task.monday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
-            case 1: self.task.tuesday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
-            case 2: self.task.wednesday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
-            case 3: self.task.thursday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
-            case 4: self.task.friday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
-            case 5: self.task.saturday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
-            case 6: self.task.sunday = (cell.accessoryType == UITableViewCellAccessoryCheckmark); break;
+            case 0: self.task.monday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)]; break;
+            case 1: self.task.tuesday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)]; break;
+            case 2: self.task.wednesday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)]; break;
+            case 3: self.task.thursday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)]; break;
+            case 4: self.task.friday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)]; break;
+            case 5: self.task.saturday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)]; break;
+            case 6: self.task.sunday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)]; break;
         }
     } else if ((indexPath.section == 3 && [self.taskType isEqualToString:@"daily"]) || indexPath.section == 2) {
         UITableViewCell *oldCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:selectedDifficulty inSection:indexPath.section]];
@@ -345,16 +345,18 @@ int selectedDifficulty;
         if ([self.taskType isEqualToString:@"habit"]) {
             UISwitch *upSwitch = (UISwitch*) [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1]] viewWithTag:2];
 
-            self.task.up = upSwitch.on;
+            self.task.up = [NSNumber numberWithBool:upSwitch.on];
         
             UISwitch *downSwitch = (UISwitch*) [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:1]] viewWithTag:2];
-            self.task.down = downSwitch.on;
+            self.task.down = [NSNumber numberWithBool:downSwitch.on];
         } else {
             for (int i = 0; i < [self.task.checklist count]; i++) {
                 UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:i inSection:1]];
                 UITextField *textField = (UITextField*)[cell viewWithTag:1];
                 ChecklistItem *item =  self.task.checklist[i];
                 item.text = textField.text;
+                item.task = self.task;
+                item.completed = [NSNumber numberWithBool:NO];
             }
         }
     } else if([segue.identifier isEqualToString:@"unwindCancelSegue"]) {

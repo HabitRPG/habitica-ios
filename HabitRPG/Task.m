@@ -48,6 +48,7 @@
 
 - (void)addChecklistObject:(ChecklistItem *)value {
     NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.checklist];
+    value.task = self;
     [tempSet addObject:value];
     self.checklist = tempSet;
 }
