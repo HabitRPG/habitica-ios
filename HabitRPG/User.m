@@ -17,6 +17,7 @@
 #import "HRPGAppDelegate.h"
 #import "HRPGManager.h"
 
+
 @implementation User
 
 @dynamic costumeArmor;
@@ -72,13 +73,23 @@
 }
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount {
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
+    HRPGManager *sharedManager = appdelegate.sharedManager;
+    NSString *cachedImageName;
+    UIImage *cachedImage;
+    if (withPetMount) {
+        cachedImageName = [NSString stringWithFormat:@"%@_full", self.username];
+    } else {
+        cachedImageName = [NSString stringWithFormat:@"%@_noPetMount", self.username];
+    }
+    cachedImage = [sharedManager getCachedImage:cachedImageName];
+    imageView.image = cachedImage;
     NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:16];
     for(int i = 0; i<=16; i++) {
         [imageArray addObject:[NSNull null]];
     }
     int currentLayer = 0;
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
-    HRPGManager *sharedManager = appdelegate.sharedManager;
+    
     __block UIImage *currentPet = nil;
     __block UIImage *currentMount = nil;
     __block UIImage *currentMountHead = nil;
@@ -256,6 +267,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             imageView.image = resultImage;
         });
+        [sharedManager setCachedImage:resultImage withName:cachedImageName onSuccess:^() {
+        }];
     });
 }
 

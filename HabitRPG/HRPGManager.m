@@ -20,6 +20,7 @@
 #import "Group.h"
 #import "Item.h"
 #import <SDWebImageManager.h>
+#import <SDImageCache.h>
 
 @implementation HRPGManager
 @synthesize managedObjectContext;
@@ -979,6 +980,21 @@ NIKFontAwesomeIconFactory *iconFactory;
              NSLog(@"%@: %@", imageName, error);
          }
      }];
+}
+
+- (UIImage*)getCachedImage:(NSString *)imageName {
+    UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:imageName];
+    if (image)
+    {
+        return image;
+    } else {
+        NSLog(@"%@: Error", imageName);
+        return nil;
+    }
+}
+
+- (void)setCachedImage:(UIImage *)image withName:(NSString *)imageName onSuccess:(void (^)())successBlock {
+    [[SDImageCache sharedImageCache] storeImage:image forKey:imageName];
 }
 
 @end
