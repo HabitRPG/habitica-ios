@@ -173,6 +173,32 @@ NIKFontAwesomeIconFactory *iconFactory;
         return nil;
     }];
     
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"/api/v2/user"];
+        
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
+        if (match) {
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+            return fetchRequest;
+        }
+        
+        return nil;
+    }];
+    
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"/api/v2/user"];
+        
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
+        if (match) {
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Reward"];
+            return fetchRequest;
+        }
+        
+        return nil;
+    }];
+    
     RKObjectMapping *upDownMapping = [RKObjectMapping mappingForClass:[HRPGTaskResponse class]];
     [upDownMapping addAttributeMappingsFromDictionary:@{
                                                       @"delta":              @"delta",
@@ -606,7 +632,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (void) fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock{
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/user" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        user = (User*)[mappingResult dictionary][[NSNull null]];
+        //user = (User*)[mappingResult dictionary][[NSNull null]];
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         [defaults setObject:[NSDate date] forKey:@"lastTaskFetch"];
