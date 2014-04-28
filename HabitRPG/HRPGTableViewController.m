@@ -135,6 +135,12 @@ BOOL editable;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // fix for separators bug in iOS 7
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
     if (tableView.editing ) {
         editedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
         [self performSegueWithIdentifier: @"FormSegue" sender: self];
@@ -169,7 +175,7 @@ BOOL editable;
             self.openedIndexPath = nil;
             self.indexOffset = 0;
             [self configureCell:[tableView cellForRowAtIndexPath:tempPath] atIndexPath:tempPath withAnimation:YES];
-            [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationTop];
+            [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationBottom];
         }
         if ([checklistCount integerValue] > 0) {
             self.openedIndexPath = indexPath;
