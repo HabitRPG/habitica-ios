@@ -56,7 +56,7 @@ NSString *partyID;
     self.managedObjectContext = _sharedManager.getManagedObjectContext;
     defaults = [NSUserDefaults standardUserDefaults];
     partyID = [defaults objectForKey:@"partyID"];
-    if (!partyID) {
+    if (!partyID || [partyID isEqualToString:@""]) {
         [_sharedManager fetchGroups:@"party" onSuccess:^(){
             partyID = [defaults objectForKey:@"partyID"];
             party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];

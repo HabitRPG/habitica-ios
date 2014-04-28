@@ -577,6 +577,33 @@ NIKFontAwesomeIconFactory *iconFactory;
     }
 }
 
+- (void) resetSavedDatabase {
+    NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
+        NSManagedObjectContext *lmanagedObjectContext = [RKManagedObjectStore defaultStore].persistentStoreManagedObjectContext;
+        [lmanagedObjectContext performBlockAndWait:^{
+            NSError *error = nil;
+            for (NSEntityDescription *entity in [RKManagedObjectStore defaultStore].managedObjectModel) {
+                NSFetchRequest *fetchRequest = [NSFetchRequest new];
+                [fetchRequest setEntity:entity];
+                [fetchRequest setIncludesSubentities:NO];
+                NSArray *objects = [lmanagedObjectContext executeFetchRequest:fetchRequest error:&error];
+                if (! objects) RKLogWarning(@"Failed execution of fetch request %@: %@", fetchRequest, error);
+                for (NSManagedObject *managedObject in objects) {
+                    [lmanagedObjectContext deleteObject:managedObject];
+                }
+            }
+            
+            BOOL success = [lmanagedObjectContext save:&error];
+            if (!success) RKLogWarning(@"Failed saving managed object context: %@", error);
+        }];
+    }];
+    [operation setCompletionBlock:^{
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        NSLog(@"Database cleaned");
+    }];
+    [operation start];
+}
+
 - (NSManagedObjectContext *)getManagedObjectContext {
     return [managedObjectStore mainQueueManagedObjectContext];
 }
@@ -639,6 +666,16 @@ NIKFontAwesomeIconFactory *iconFactory;
 - (void) fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock{
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/user" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         //user = (User*)[mappingResult dictionary][[NSNull null]];
+        if (user == nil) {
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", userID];
+            [fetchRequest setPredicate:predicate];
+            NSError *error;
+            NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+            if ([fetchedObjects count] > 0) {
+                user = fetchedObjects[0];
+            }
+        }
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         [defaults setObject:[NSDate date] forKey:@"lastTaskFetch"];
@@ -673,7 +710,6 @@ NIKFontAwesomeIconFactory *iconFactory;
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:party.id forKey:@"partyID"];
             [defaults synchronize];
-            user.party = party;
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();

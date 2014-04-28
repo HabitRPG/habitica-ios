@@ -21,7 +21,8 @@
 @implementation HRPGProfileViewController
 @synthesize managedObjectContext;
 NSString *username;
-
+NSString *userID;
+PDKeychainBindings *keyChain;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,6 +31,19 @@ NSString *username;
         // Custom initialization
     }
     return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (![userID isEqualToString:[keyChain stringForKey:@"id"]]) {
+        userID = [keyChain stringForKey:@"id"];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@",userID];
+        [self.fetchedResultsController.fetchRequest setPredicate:predicate];
+        User *user = (User*)[self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        username = user.username;
+        NSError *error;
+        [self.fetchedResultsController performFetch:&error];
+    }
 }
 
 - (void)viewDidLoad
@@ -191,9 +205,10 @@ NSString *username;
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", [keyChain stringForKey:@"id"]]];
+
+    keyChain = [PDKeychainBindings sharedKeychainBindings];
+    userID = [keyChain stringForKey:@"id"];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", userID]];
     
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
@@ -204,7 +219,7 @@ NSString *username;
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"username" cacheName:@"profile"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"username" cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -243,18 +258,12 @@ NSString *username;
             [tableView reloadData];
             break;
         }
-        case NSFetchedResultsChangeDelete: {
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        }
         case NSFetchedResultsChangeUpdate: {
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
         }
-        case NSFetchedResultsChangeMove: {
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
+        case NSFetchedResultsChangeDelete: {
+            username = nil;
         }
     }
 }
