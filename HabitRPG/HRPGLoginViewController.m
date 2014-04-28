@@ -55,6 +55,7 @@
 
 - (IBAction)loginUser:(id)sender {
     self.loginCell.userInteractionEnabled = NO;
+    [self.activityIndicator startAnimating];
     [UIView animateWithDuration:0.5 animations:^() {
         self.loginLabel.alpha = 0.0;
         self.activityIndicator.alpha = 1.0;
@@ -77,6 +78,7 @@
             self.loginLabel.alpha = 1.0;
             self.activityIndicator.alpha = 0.0;
         }];
+        [self.activityIndicator stopAnimating];
     }];
     
 }

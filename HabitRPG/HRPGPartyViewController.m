@@ -104,7 +104,6 @@ NSString *partyID;
             questInvitationController.sourceViewcontroller = self;
             [self presentViewController:navigationController animated:YES completion: nil];
         }
-        [self fetchQuest];
     } onError:^ () {
         [self.refreshControl endRefreshing];
         [_sharedManager displayNetworkError];
@@ -371,6 +370,8 @@ NSString *partyID;
         [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", party.questKey]];
         NSError *error;
         quest = [managedObjectContext executeFetchRequest:fetchRequest error:&error][0];
+        [self.tableView reloadData];
+
     }
 }
 

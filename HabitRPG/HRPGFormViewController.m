@@ -139,13 +139,13 @@ int selectedDifficulty;
                     case 0:
                         label.text = NSLocalizedString(@"Up +", nil);
                         if (self.editTask) {
-                            upDownSwitch.on = self.task.up;
+                            upDownSwitch.on = [self.task.up boolValue];
                         }
                         break;
                     case 1:
                         label.text = NSLocalizedString(@"Down -", nil);
                         if (self.editTask) {
-                            upDownSwitch.on = self.task.down;
+                            upDownSwitch.on = [self.task.down boolValue];
                         }
                         break;
                 }
