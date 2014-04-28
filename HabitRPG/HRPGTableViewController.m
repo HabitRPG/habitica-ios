@@ -61,6 +61,17 @@ BOOL editable;
     }
 }
 
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.refreshControl.isRefreshing) {
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            [self.refreshControl beginRefreshing];
+            [self.refreshControl endRefreshing];
+        });
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
