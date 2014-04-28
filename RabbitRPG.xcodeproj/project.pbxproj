@@ -151,11 +151,11 @@
 		D9C7C1F218E280DD0083F4E4 /* HRPGRewardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGRewardsViewController.m; sourceTree = "<group>"; };
 		D9E0868F18DF800F00BAF2EF /* HRPGTavernViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTavernViewController.h; sourceTree = "<group>"; };
 		D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTavernViewController.m; sourceTree = "<group>"; };
-		D9EB4E8B18CB4A9400BB2094 /* HabitRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9EB4E8B18CB4A9400BB2094 /* RabbitRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RabbitRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D9EB4E9218CB4A9400BB2094 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D9EB4E9618CB4A9400BB2094 /* HabitRPG-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HabitRPG-Info.plist"; sourceTree = "<group>"; };
+		D9EB4E9618CB4A9400BB2094 /* RabbitRPG-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RabbitRPG-Info.plist"; sourceTree = "<group>"; };
 		D9EB4E9818CB4A9400BB2094 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9EB4E9A18CB4A9400BB2094 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D9EB4E9C18CB4A9400BB2094 /* HabitRPG-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HabitRPG-Prefix.pch"; sourceTree = "<group>"; };
@@ -164,9 +164,9 @@
 		D9EB4EA118CB4A9400BB2094 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		D9EB4EA418CB4A9400BB2094 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D9EB4EB218CB4A9400BB2094 /* HabitRPGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9EB4EB218CB4A9400BB2094 /* RabbitRPGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RabbitRPGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EB4EB318CB4A9400BB2094 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		D9EB4EBB18CB4A9400BB2094 /* HabitRPGTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HabitRPGTests-Info.plist"; sourceTree = "<group>"; };
+		D9EB4EBB18CB4A9400BB2094 /* RabbitRPGTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RabbitRPGTests-Info.plist"; sourceTree = "<group>"; };
 		D9EB4EBD18CB4A9400BB2094 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9EB4EBF18CB4A9400BB2094 /* HabitRPGTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabitRPGTests.m; sourceTree = "<group>"; };
 		E55E45210D0A48989E0A671E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -289,8 +289,8 @@
 		D9EB4E8218CB4A9400BB2094 = {
 			isa = PBXGroup;
 			children = (
-				D9EB4E9418CB4A9400BB2094 /* HabitRPG */,
-				D9EB4EB918CB4A9400BB2094 /* HabitRPGTests */,
+				D9EB4E9418CB4A9400BB2094 /* RabbitRPG */,
+				D9EB4EB918CB4A9400BB2094 /* RabbitRPGTests */,
 				D9EB4E8D18CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8C18CB4A9400BB2094 /* Products */,
 				E55E45210D0A48989E0A671E /* Pods.xcconfig */,
@@ -300,8 +300,8 @@
 		D9EB4E8C18CB4A9400BB2094 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D9EB4E8B18CB4A9400BB2094 /* HabitRPG.app */,
-				D9EB4EB218CB4A9400BB2094 /* HabitRPGTests.xctest */,
+				D9EB4E8B18CB4A9400BB2094 /* RabbitRPG.app */,
+				D9EB4EB218CB4A9400BB2094 /* RabbitRPGTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -319,7 +319,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D9EB4E9418CB4A9400BB2094 /* HabitRPG */ = {
+		D9EB4E9418CB4A9400BB2094 /* RabbitRPG */ = {
 			isa = PBXGroup;
 			children = (
 				D91CE2A7190967EC00B0993A /* Markdown */,
@@ -339,6 +339,7 @@
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				D9EB4E9518CB4A9400BB2094 /* Supporting Files */,
 			);
+			name = RabbitRPG;
 			path = HabitRPG;
 			sourceTree = "<group>";
 		};
@@ -347,7 +348,7 @@
 			children = (
 				D99DEC88190842CA00FFD2B9 /* Placeholder.png */,
 				D97C71F418F371D70089FDC6 /* Pods-acknowledgements.plist */,
-				D9EB4E9618CB4A9400BB2094 /* HabitRPG-Info.plist */,
+				D9EB4E9618CB4A9400BB2094 /* RabbitRPG-Info.plist */,
 				D9EB4E9718CB4A9400BB2094 /* InfoPlist.strings */,
 				D9EB4E9A18CB4A9400BB2094 /* main.m */,
 				D9EB4E9C18CB4A9400BB2094 /* HabitRPG-Prefix.pch */,
@@ -355,19 +356,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D9EB4EB918CB4A9400BB2094 /* HabitRPGTests */ = {
+		D9EB4EB918CB4A9400BB2094 /* RabbitRPGTests */ = {
 			isa = PBXGroup;
 			children = (
 				D9EB4EBF18CB4A9400BB2094 /* HabitRPGTests.m */,
 				D9EB4EBA18CB4A9400BB2094 /* Supporting Files */,
 			);
+			name = RabbitRPGTests;
 			path = HabitRPGTests;
 			sourceTree = "<group>";
 		};
 		D9EB4EBA18CB4A9400BB2094 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D9EB4EBB18CB4A9400BB2094 /* HabitRPGTests-Info.plist */,
+				D9EB4EBB18CB4A9400BB2094 /* RabbitRPGTests-Info.plist */,
 				D9EB4EBC18CB4A9400BB2094 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -376,9 +378,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D9EB4E8A18CB4A9400BB2094 /* HabitRPG */ = {
+		D9EB4E8A18CB4A9400BB2094 /* RabbitRPG */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "HabitRPG" */;
+			buildConfigurationList = D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "RabbitRPG" */;
 			buildPhases = (
 				02DCD40452424CABA2724616 /* Check Pods Manifest.lock */,
 				D9EB4E8718CB4A9400BB2094 /* Sources */,
@@ -391,14 +393,14 @@
 			);
 			dependencies = (
 			);
-			name = HabitRPG;
+			name = RabbitRPG;
 			productName = HabitRPG;
-			productReference = D9EB4E8B18CB4A9400BB2094 /* HabitRPG.app */;
+			productReference = D9EB4E8B18CB4A9400BB2094 /* RabbitRPG.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D9EB4EB118CB4A9400BB2094 /* HabitRPGTests */ = {
+		D9EB4EB118CB4A9400BB2094 /* RabbitRPGTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D9EB4EC618CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "HabitRPGTests" */;
+			buildConfigurationList = D9EB4EC618CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "RabbitRPGTests" */;
 			buildPhases = (
 				D9EB4EAE18CB4A9400BB2094 /* Sources */,
 				D9EB4EAF18CB4A9400BB2094 /* Frameworks */,
@@ -409,9 +411,9 @@
 			dependencies = (
 				D9EB4EB818CB4A9400BB2094 /* PBXTargetDependency */,
 			);
-			name = HabitRPGTests;
+			name = RabbitRPGTests;
 			productName = HabitRPGTests;
-			productReference = D9EB4EB218CB4A9400BB2094 /* HabitRPGTests.xctest */;
+			productReference = D9EB4EB218CB4A9400BB2094 /* RabbitRPGTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -429,7 +431,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D9EB4E8618CB4A9400BB2094 /* Build configuration list for PBXProject "HabitRPG" */;
+			buildConfigurationList = D9EB4E8618CB4A9400BB2094 /* Build configuration list for PBXProject "RabbitRPG" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -442,8 +444,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D9EB4E8A18CB4A9400BB2094 /* HabitRPG */,
-				D9EB4EB118CB4A9400BB2094 /* HabitRPGTests */,
+				D9EB4E8A18CB4A9400BB2094 /* RabbitRPG */,
+				D9EB4EB118CB4A9400BB2094 /* RabbitRPGTests */,
 			);
 		};
 /* End PBXProject section */
@@ -578,7 +580,7 @@
 /* Begin PBXTargetDependency section */
 		D9EB4EB818CB4A9400BB2094 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D9EB4E8A18CB4A9400BB2094 /* HabitRPG */;
+			target = D9EB4E8A18CB4A9400BB2094 /* RabbitRPG */;
 			targetProxy = D9EB4EB718CB4A9400BB2094 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -705,10 +707,10 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HabitRPG/HabitRPG-Prefix.pch";
-				INFOPLIST_FILE = "HabitRPG/HabitRPG-Info.plist";
+				GCC_PREFIX_HEADER = "HabitRPG/RabbitRPG-Prefix.pch";
+				INFOPLIST_FILE = "HabitRPG/RabbitRPG-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RabbitRPG;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -725,10 +727,10 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HabitRPG/HabitRPG-Prefix.pch";
-				INFOPLIST_FILE = "HabitRPG/HabitRPG-Info.plist";
+				GCC_PREFIX_HEADER = "HabitRPG/RabbitRPG-Prefix.pch";
+				INFOPLIST_FILE = "HabitRPG/RabbitRPG-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RabbitRPG;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -749,8 +751,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "HabitRPGTests/HabitRPGTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "HabitRPGTests/RabbitRPGTests-Info.plist";
+				PRODUCT_NAME = RabbitRPGTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -768,8 +770,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HabitRPG/HabitRPG-Prefix.pch";
-				INFOPLIST_FILE = "HabitRPGTests/HabitRPGTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "HabitRPGTests/RabbitRPGTests-Info.plist";
+				PRODUCT_NAME = RabbitRPGTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -778,7 +780,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D9EB4E8618CB4A9400BB2094 /* Build configuration list for PBXProject "HabitRPG" */ = {
+		D9EB4E8618CB4A9400BB2094 /* Build configuration list for PBXProject "RabbitRPG" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D9EB4EC118CB4A9400BB2094 /* Debug */,
@@ -787,7 +789,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "HabitRPG" */ = {
+		D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "RabbitRPG" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D9EB4EC418CB4A9400BB2094 /* Debug */,
@@ -796,7 +798,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D9EB4EC618CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "HabitRPGTests" */ = {
+		D9EB4EC618CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "RabbitRPGTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D9EB4EC718CB4A9400BB2094 /* Debug */,
