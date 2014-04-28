@@ -21,6 +21,7 @@
 @property NSString *typeName;
 @property HRPGManager *sharedManager;
 @property NIKFontAwesomeIconFactory *iconFactory;
+@property NIKFontAwesomeIconFactory *checkIconFactory;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
 @end
@@ -41,6 +42,14 @@
     self.iconFactory.colors = @[[UIColor whiteColor]];
     self.iconFactory.strokeColor = [UIColor whiteColor];
     self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
+    
+    self.checkIconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+    self.checkIconFactory.square = YES;
+    self.checkIconFactory.colors = @[[UIColor grayColor]];
+    self.checkIconFactory.strokeColor = [UIColor grayColor];
+    self.checkIconFactory.size = 17.0f;
+    self.checkIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
+    
     self.readableName = NSLocalizedString(@"To-Do", nil);
     self.typeName = @"todo";
 }
@@ -65,6 +74,7 @@
 {
     UILabel *checklistLabel = (UILabel*)[cell viewWithTag:2];
     UILabel *label = (UILabel*)[cell viewWithTag:1];
+    UIImageView *checkMarkView = (UIImageView*)[cell viewWithTag:3];
     if (self.openedIndexPath && self.openedIndexPath.item < indexPath.item && indexPath.item <= (self.openedIndexPath.item+self.indexOffset)) {
         Task *task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
         int currentOffset = (int)(indexPath.item - self.openedIndexPath.item-1);
@@ -73,7 +83,9 @@
         checklistLabel.hidden = YES;
         cell.backgroundColor = [UIColor lightGrayColor];
         if ([item.completed boolValue]) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.checkIconFactory.colors = @[[UIColor whiteColor]];
+            checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
+            checkMarkView.hidden = NO;
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor darkTextColor];
             }];
@@ -88,7 +100,8 @@
                 }];
             }];
         } else {
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            checkMarkView.image = nil;
+            checkMarkView.hidden = YES;
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor whiteColor];
             }];
@@ -130,12 +143,15 @@
             checklistLabel.hidden = YES;
         }
         if ([task.completed boolValue]) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.checkIconFactory.colors = @[[UIColor grayColor]];
+            checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
+            checkMarkView.hidden = NO;
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor colorWithWhite:0.581 alpha:1.000];
             }];
         } else {
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            checkMarkView.image = nil;
+            checkMarkView.hidden = YES;
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [self.sharedManager getColorForValue:task.value];
             }];
@@ -144,11 +160,15 @@
         [self configureSwiping:cell withTask:task];
         
         if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
+            self.checkIconFactory.colors = @[[UIColor whiteColor]];
+            checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor whiteColor];
                 cell.backgroundColor = [UIColor grayColor];
             }];
         } else {
+            self.checkIconFactory.colors = @[[UIColor grayColor]];
+            checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
             [UIView animateWithDuration:0.4 animations:^() {
                 cell.backgroundColor = [UIColor whiteColor];
             }];

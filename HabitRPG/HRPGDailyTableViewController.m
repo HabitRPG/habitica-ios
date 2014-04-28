@@ -20,6 +20,7 @@
 @property NSString *typeName;
 @property HRPGManager *sharedManager;
 @property NIKFontAwesomeIconFactory *iconFactory;
+@property NIKFontAwesomeIconFactory *checkIconFactory;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
 @end
@@ -49,6 +50,14 @@
     self.iconFactory.colors = @[[UIColor whiteColor]];
     self.iconFactory.strokeColor = [UIColor whiteColor];
     self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
+    
+    self.checkIconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+    self.checkIconFactory.square = YES;
+    self.checkIconFactory.colors = @[[UIColor grayColor]];
+    self.checkIconFactory.strokeColor = [UIColor grayColor];
+    self.checkIconFactory.size = 17.0f;
+    self.checkIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
+    
     self.readableName = NSLocalizedString(@"Daily", nil);
     self.typeName = @"daily";
 }
@@ -80,8 +89,11 @@
         label.text = [item.text stringByReplacingEmojiCheatCodesWithUnicode];
         checklistLabel.hidden = YES;
         cell.backgroundColor = [UIColor lightGrayColor];
+        UIImageView *checkMarkView = (UIImageView*)[cell viewWithTag:3];
         if ([item.completed boolValue]) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.checkIconFactory.colors = @[[UIColor whiteColor]];
+            checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
+            checkMarkView.hidden = NO;
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor darkTextColor];
             }];
@@ -96,7 +108,8 @@
                 }];
             }];
         } else {
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            checkMarkView.image = nil;
+            checkMarkView.hidden = YES;
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor whiteColor];
             }];
@@ -137,14 +150,17 @@
         } else {
             checklistLabel.hidden = YES;
         }
-        
+        UIImageView *checkMarkView = (UIImageView*)[cell viewWithTag:3];
         if ([task.completed boolValue]) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.checkIconFactory.colors = @[[UIColor grayColor]];
+            checkMarkView.hidden = NO;
+            checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor colorWithWhite:0.581 alpha:1.000];
             }];
         } else {
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            checkMarkView.image = nil;
+            checkMarkView.hidden = YES;
             if (![task dueToday]) {
                 [UIView animateWithDuration:0.4 animations:^() {
                     label.textColor = [UIColor colorWithWhite:0.581 alpha:1.000];
@@ -159,11 +175,15 @@
         [self configureSwiping:cell withTask:task];
         
         if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
+            self.checkIconFactory.colors = @[[UIColor whiteColor]];
+            checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor whiteColor];
                 cell.backgroundColor = [UIColor grayColor];
             }];
         } else {
+            self.checkIconFactory.colors = @[[UIColor grayColor]];
+            checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
             [UIView animateWithDuration:0.4 animations:^() {
                 cell.backgroundColor = [UIColor whiteColor];
             }];
