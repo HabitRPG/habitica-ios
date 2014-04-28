@@ -21,7 +21,7 @@
 @implementation HRPGProfileViewController
 @synthesize managedObjectContext;
 NSString *username;
-NSString *userID;
+NSString *currentUserID;
 PDKeychainBindings *keyChain;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -35,14 +35,15 @@ PDKeychainBindings *keyChain;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (![userID isEqualToString:[keyChain stringForKey:@"id"]]) {
-        userID = [keyChain stringForKey:@"id"];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@",userID];
+    if (![currentUserID isEqualToString:[keyChain stringForKey:@"id"]]) {
+        currentUserID = [keyChain stringForKey:@"id"];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@",currentUserID];
         [self.fetchedResultsController.fetchRequest setPredicate:predicate];
-        User *user = (User*)[self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-        username = user.username;
         NSError *error;
         [self.fetchedResultsController performFetch:&error];
+        User *user = (User*)[self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        username = user.username;
+        [self.tableView reloadData];
     }
 }
 
@@ -207,8 +208,8 @@ PDKeychainBindings *keyChain;
     [fetchRequest setFetchBatchSize:20];
 
     keyChain = [PDKeychainBindings sharedKeychainBindings];
-    userID = [keyChain stringForKey:@"id"];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", userID]];
+    currentUserID = [keyChain stringForKey:@"id"];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", currentUserID]];
     
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];

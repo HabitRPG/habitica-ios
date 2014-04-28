@@ -27,7 +27,7 @@
 RKManagedObjectStore *managedObjectStore;
 User *user;
 NSUserDefaults *defaults;
-NSString *userID;
+NSString *currentUser;
 NIKFontAwesomeIconFactory *iconFactory;
 
 +(RKValueTransformer*)millisecondsSince1970ToDateValueTransformer {
@@ -554,9 +554,9 @@ NIKFontAwesomeIconFactory *iconFactory;
 
     [self setCredentials];
     defaults = [NSUserDefaults standardUserDefaults];
-    if (userID != nil) {
+    if (currentUser != nil) {
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", userID];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", currentUser];
         [fetchRequest setPredicate:predicate];
         NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
         if ([fetchedObjects count] > 0) {
@@ -611,8 +611,8 @@ NIKFontAwesomeIconFactory *iconFactory;
 - (void) setCredentials {
     
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    userID = [keyChain stringForKey:@"id"];
-    [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-user" value:userID];
+    currentUser = [keyChain stringForKey:@"id"];
+    [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-user" value:currentUser];
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-key" value:[keyChain stringForKey:@"key"]];
 }
 
@@ -666,9 +666,9 @@ NIKFontAwesomeIconFactory *iconFactory;
 - (void) fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock{
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/user" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         //user = (User*)[mappingResult dictionary][[NSNull null]];
-        if (user == nil) {
+        if (![currentUser isEqualToString:user.id]) {
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", userID];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", currentUser];
             [fetchRequest setPredicate:predicate];
             NSError *error;
             NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
