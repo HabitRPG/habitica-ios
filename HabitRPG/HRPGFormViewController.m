@@ -111,45 +111,40 @@ int selectedDifficulty;
     UITableViewCell *cell;
 
     if (indexPath.section == 0 ) {
-            static NSString *CellIdentifier = @"TextInputCell";
-            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            UILabel *label = (UILabel *)[cell viewWithTag:1];
-            UITextField *textField = (UITextField*)[cell viewWithTag:2];
-            
-            if (indexPath.item == 0) {
-                label.text = NSLocalizedString(@"Text", nil);
-                if (self.editTask && textField.text.length == 0) {
-                    textField.text = [self.task.text stringByReplacingEmojiCheatCodesWithUnicode];
-                }
-            } else if (indexPath.item == 1) {
-                label.text = NSLocalizedString(@"Note", nil);
-                if (self.editTask && textField.text.length == 0) {
-                    textField.text = [self.task.notes stringByReplacingEmojiCheatCodesWithUnicode];
-                }
-            }
+        static NSString *CellIdentifier = @"TextInputCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        UILabel *label = (UILabel *)[cell viewWithTag:1];
+        UITextField *textField = (UITextField*)[cell viewWithTag:2];
+        textField.delegate = self;
+        if (indexPath.item == 0) {
+            label.text = NSLocalizedString(@"Text", nil);
+            textField.text = [self.task.text stringByReplacingEmojiCheatCodesWithUnicode];
+        } else if (indexPath.item == 1) {
+            label.text = NSLocalizedString(@"Note", nil);
+            textField.text = [self.task.notes stringByReplacingEmojiCheatCodesWithUnicode];
+        }
     } else if (indexPath.section == 1 && [self.taskType isEqualToString:@"habit"]) {
-                static NSString *CellIdentifier = @"SwitchCell";
-                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-                cell.accessoryType = UITableViewCellAccessoryNone;
-                UILabel *label = (UILabel *)[cell viewWithTag:1];
-                UISwitch *upDownSwitch = (UISwitch *)[cell viewWithTag:2];
-                
-                switch (indexPath.item) {
-                    case 0:
-                        label.text = NSLocalizedString(@"Up +", nil);
-                        if (self.editTask) {
-                            upDownSwitch.on = [self.task.up boolValue];
-                        }
-                        break;
-                    case 1:
-                        label.text = NSLocalizedString(@"Down -", nil);
-                        if (self.editTask) {
-                            upDownSwitch.on = [self.task.down boolValue];
-                        }
-                        break;
+        static NSString *CellIdentifier = @"SwitchCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        UILabel *label = (UILabel *)[cell viewWithTag:1];
+        UISwitch *upDownSwitch = (UISwitch *)[cell viewWithTag:2];
+    
+        switch (indexPath.item) {
+            case 0:
+                label.text = NSLocalizedString(@"Up +", nil);
+                if (self.editTask) {
+                    upDownSwitch.on = [self.task.up boolValue];
                 }
-                
+                break;
+            case 1:
+                label.text = NSLocalizedString(@"Down -", nil);
+                if (self.editTask) {
+                    upDownSwitch.on = [self.task.down boolValue];
+                }
+                break;
+        }
     } else if (indexPath.section == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"TextInputAltCell" forIndexPath:indexPath];
         UITextField *textField = (UITextField*)[cell viewWithTag:1];
@@ -158,76 +153,74 @@ int selectedDifficulty;
 
         if (indexPath.item < [self.task.checklist count]) {
             ChecklistItem *item = self.task.checklist[indexPath.item];
-            if (self.editTask && textField.text.length == 0) {
-                textField.text = item.text;
-            }
+            textField.text = item.text;
         }
     } else if (indexPath.section == 2 && [self.taskType isEqualToString:@"daily"]) {
-                static NSString *CellIdentifier = @"CheckMarkCell";
-                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-                cell.accessoryType = UITableViewCellAccessoryNone;
-                UILabel *label = (UILabel *)[cell viewWithTag:1];
-                
-                switch (indexPath.item) {
-                    case 0:
-                        label.text = NSLocalizedString(@"Monday", nil);
-                        if (self.editTask && self.task.monday) {
-                            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                        }
-                        break;
-                    case 1:
-                        label.text = NSLocalizedString(@"Tuesday", nil);
-                        if (self.editTask && self.task.tuesday) {
-                            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                        }
-                        break;
-                    case 2:
-                        label.text = NSLocalizedString(@"Wednesday", nil);
-                        if (self.editTask && self.task.wednesday) {
-                            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                        }
-                        break;
-                    case 3:
-                        label.text = NSLocalizedString(@"Thursday", nil);
-                        if (self.editTask && self.task.thursday) {
-                            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                        }
-                        break;
-                    case 4:
-                        label.text = NSLocalizedString(@"Friday", nil);
-                        if (self.editTask && self.task.friday) {
-                            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                        }
-                        break;
-                    case 5:
-                        label.text = NSLocalizedString(@"Saturday", nil);
-                        if (self.editTask && self.task.saturday) {
-                            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                        }
-                        break;
-                    case 6:
-                        label.text = NSLocalizedString(@"Sunday", nil);
-                        if (self.editTask && self.task.sunday) {
-                            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                        }
-                        break;
+        static NSString *CellIdentifier = @"CheckMarkCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        UILabel *label = (UILabel *)[cell viewWithTag:1];
+    
+        switch (indexPath.item) {
+            case 0:
+                label.text = NSLocalizedString(@"Monday", nil);
+                if (self.editTask && self.task.monday) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
                 }
+                break;
+            case 1:
+                label.text = NSLocalizedString(@"Tuesday", nil);
+                if (self.editTask && self.task.tuesday) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }
+                break;
+            case 2:
+                label.text = NSLocalizedString(@"Wednesday", nil);
+                if (self.editTask && self.task.wednesday) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }
+                break;
+            case 3:
+                label.text = NSLocalizedString(@"Thursday", nil);
+                if (self.editTask && self.task.thursday) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }
+                break;
+            case 4:
+                label.text = NSLocalizedString(@"Friday", nil);
+                if (self.editTask && self.task.friday) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }
+                break;
+            case 5:
+                label.text = NSLocalizedString(@"Saturday", nil);
+                if (self.editTask && self.task.saturday) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }
+                break;
+            case 6:
+                label.text = NSLocalizedString(@"Sunday", nil);
+                if (self.editTask && self.task.sunday) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }
+                break;
+        }
     } else {
-            static NSString *CellIdentifier = @"CheckMarkCell";
-            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        static NSString *CellIdentifier = @"CheckMarkCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-            UILabel *label = (UILabel *)[cell viewWithTag:1];
-            
-            switch (indexPath.item) {
-                case 0: label.text = NSLocalizedString(@"Easy", nil); break;
-                case 1: label.text = NSLocalizedString(@"Medium", nil); break;
-                case 2: label.text = NSLocalizedString(@"Hard", nil); break;
-            }
-            if (indexPath.item == selectedDifficulty) {
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            } else {
-                cell.accessoryType = UITableViewCellAccessoryNone;
-            }
+        UILabel *label = (UILabel *)[cell viewWithTag:1];
+        
+        switch (indexPath.item) {
+            case 0: label.text = NSLocalizedString(@"Easy", nil); break;
+            case 1: label.text = NSLocalizedString(@"Medium", nil); break;
+            case 2: label.text = NSLocalizedString(@"Hard", nil); break;
+        }
+        if (indexPath.item == selectedDifficulty) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
     }
     return cell;
     
@@ -318,16 +311,25 @@ int selectedDifficulty;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    if ([textField.text isEqualToString:@""]) {
-        UITableViewCell *cell = (UITableViewCell*)textField.superview.superview.superview;
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        if (indexPath.item < [self.task.checklist count]) {
-            ChecklistItem *item = self.task.checklist[indexPath.item];
-            [self.task removeChecklistObject:item];
-            [self.managedObjectContext deleteObject:item];
-            [self.tableView beginUpdates];
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-            [self.tableView endUpdates];
+    UITableViewCell *cell = (UITableViewCell*)textField.superview.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    if (indexPath.section == 0 && indexPath.item == 0) {
+        self.task.text = textField.text;
+    } else if (indexPath.section == 0 && indexPath.item == 1) {
+        self.task.notes = textField.text;
+    } else {
+        ChecklistItem *item = self.task.checklist[indexPath.item];
+        if ([textField.text isEqualToString:@""]) {
+            if (indexPath.item < [self.task.checklist count]) {
+                [self.task removeChecklistObject:item];
+                [self.managedObjectContext deleteObject:item];
+                [self.tableView beginUpdates];
+                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+                [self.tableView endUpdates];
+            }
+        } else {
+            item.text = textField.text;
         }
     }
 }
