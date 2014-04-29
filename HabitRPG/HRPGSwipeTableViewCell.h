@@ -10,4 +10,13 @@
 
 @interface HRPGSwipeTableViewCell : MCSwipeTableViewCell
 
+typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
+    MCSwipeTableViewCellDirectionLeft = 0,
+    MCSwipeTableViewCellDirectionCenter,
+    MCSwipeTableViewCellDirectionRight
+};
+
+- (void)moveWithDuration:(NSTimeInterval)duration andDirection:(MCSwipeTableViewCellDirection)direction;
+- (void)animateWithOffset:(CGFloat)offset;
+
 @end

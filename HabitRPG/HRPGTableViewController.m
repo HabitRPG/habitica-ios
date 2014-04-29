@@ -100,11 +100,16 @@ BOOL editable;
         [self performSegueWithIdentifier: @"FormSegue" sender: self];
         return;
     }
-    
+    Task *task;
     if (self.openedIndexPath.item+self.indexOffset < indexPath.item && self.indexOffset > 0) {
-        indexPath = [NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section];
+        task  = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
+    } else if (self.openedIndexPath.item+self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
+        task  = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
+        indexPath = self.openedIndexPath;
+    } else {
+        task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     }
-    Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
     NSNumber *checklistCount = [NSNumber numberWithInteger:[task.checklist count]];
     if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
         NSIndexPath *tempPath = self.openedIndexPath;
@@ -141,6 +146,11 @@ BOOL editable;
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
             [self.tableView insertRowsAtIndexPaths:insertArray withRowAnimation:UITableViewRowAnimationTop];
         }
+    }
+    
+    if (self.openedIndexPath == nil) {
+        HRPGSwipeTableViewCell *cell = (HRPGSwipeTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+        [cell animateWithOffset:10.f];
     }
 }
 
