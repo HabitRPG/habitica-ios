@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRPGBaseViewController.h"
 
-@interface HRPGPartyMembersViewController : UITableViewController
+@interface HRPGPartyMembersViewController : HRPGBaseViewController
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 
 @end

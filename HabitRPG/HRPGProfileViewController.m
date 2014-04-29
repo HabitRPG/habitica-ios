@@ -20,6 +20,7 @@
 
 @implementation HRPGProfileViewController
 @synthesize managedObjectContext;
+@dynamic sharedManager;
 NSString *username;
 NSString *currentUserID;
 PDKeychainBindings *keyChain;
@@ -50,10 +51,6 @@ PDKeychainBindings *keyChain;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
-    _sharedManager = appdelegate.sharedManager;
-    self.managedObjectContext = _sharedManager.getManagedObjectContext;
-    
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
@@ -76,11 +73,11 @@ PDKeychainBindings *keyChain;
 }
 
 - (void) refresh {
-    [_sharedManager fetchUser:^ () {
+    [self.sharedManager fetchUser:^ () {
         [self.refreshControl endRefreshing];
     } onError:^ () {
         [self.refreshControl endRefreshing];
-        [_sharedManager displayNetworkError];
+        [self.sharedManager displayNetworkError];
     }];
 }
 

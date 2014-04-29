@@ -42,9 +42,6 @@ BOOL reminder;
 {
     [super viewDidLoad];
     
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
-    _sharedManager = appdelegate.sharedManager;
-    
     self.managedObjectContext = _sharedManager.getManagedObjectContext;
     defaults = [NSUserDefaults standardUserDefaults];
     reminder = [defaults boolForKey:@"dailyReminderActive"];

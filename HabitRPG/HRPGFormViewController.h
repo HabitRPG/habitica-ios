@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Task.h"
-@interface HRPGFormViewController : UITableViewController <UITableViewDataSource, UITextFieldDelegate>
+#import "HRPGBaseViewController.h"
+@interface HRPGFormViewController : HRPGBaseViewController <UITableViewDataSource, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
-@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 @property NSString *taskType;
 @property Task *task;
 @property BOOL editTask;

@@ -32,9 +32,6 @@ int selectedDifficulty;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
-    self.managedObjectContext = appdelegate.sharedManager.getManagedObjectContext;
     
     if (!self.editTask) {
         self.task = [NSEntityDescription

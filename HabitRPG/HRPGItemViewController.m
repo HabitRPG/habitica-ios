@@ -24,6 +24,7 @@
 
 @implementation HRPGItemViewController
 @synthesize managedObjectContext;
+@dynamic sharedManager;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,23 +33,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
-    _sharedManager = appdelegate.sharedManager;
-    self.managedObjectContext = _sharedManager.getManagedObjectContext;
-    
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    
-    if ([keyChain stringForKey:@"id"] == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-        UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        [self presentViewController:navigationController animated:NO completion: nil];
-    }
 }
 
 - (void)didReceiveMemoryWarning

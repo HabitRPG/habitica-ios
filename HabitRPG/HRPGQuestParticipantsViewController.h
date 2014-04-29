@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Quest.h"
 #import "Group.h"
+#import "HRPGBaseViewController.h"
 
-@interface HRPGQuestParticipantsViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface HRPGQuestParticipantsViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 @property Quest *quest;
 @property Group *party;
 @end

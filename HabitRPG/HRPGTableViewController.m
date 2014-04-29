@@ -26,6 +26,7 @@
 
 @implementation HRPGTableViewController
 @synthesize managedObjectContext;
+@dynamic sharedManager;
 Task *editedTask;
 BOOL editable;
 
@@ -43,33 +44,10 @@ BOOL editable;
     [super viewDidLoad];
 
     editable = NO;
-
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
-    _sharedManager = appdelegate.sharedManager;
-    self.managedObjectContext = _sharedManager.getManagedObjectContext;
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
-    
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-
-    if ([keyChain stringForKey:@"id"] == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-        UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        [self presentViewController:navigationController animated:NO completion: nil];
-    }
-}
-
--(void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if (self.refreshControl.isRefreshing) {
-        dispatch_async(dispatch_get_main_queue(), ^
-        {
-            [self.refreshControl beginRefreshing];
-            [self.refreshControl endRefreshing];
-        });
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,11 +57,11 @@ BOOL editable;
 }
 
 - (void) refresh {
-    [_sharedManager fetchUser:^ () {
+    [self.sharedManager fetchUser:^ () {
         [self.refreshControl endRefreshing];
     } onError:^ () {
         [self.refreshControl endRefreshing];
-        [_sharedManager displayNetworkError];
+        [self.sharedManager displayNetworkError];
     }];
 }
 
@@ -119,7 +97,7 @@ BOOL editable;
         
         if (editingStyle == UITableViewCellEditingStyleDelete) {
             Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-            [_sharedManager deleteTask:task onSuccess:^() {
+            [self.sharedManager deleteTask:task onSuccess:^() {
             }onError:^() {
                 
             }];
@@ -222,13 +200,13 @@ BOOL editable;
 {
     HRPGFormViewController *formViewController = (HRPGFormViewController*)segue.sourceViewController;
     if (formViewController.editTask) {
-        [_sharedManager updateTask:formViewController.task onSuccess:^() {
+        [self.sharedManager updateTask:formViewController.task onSuccess:^() {
             
         }onError:^() {
             
         }];
     } else {
-        [_sharedManager createTask:formViewController.task onSuccess:^() {
+        [self.sharedManager createTask:formViewController.task onSuccess:^() {
     
         }onError:^() {
         

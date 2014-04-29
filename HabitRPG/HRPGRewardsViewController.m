@@ -25,6 +25,7 @@
 
 @implementation HRPGRewardsViewController
 @synthesize managedObjectContext;
+@dynamic sharedManager;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -38,11 +39,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
-    _sharedManager = appdelegate.sharedManager;
-    self.managedObjectContext = _sharedManager.getManagedObjectContext;
-    
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
@@ -60,7 +56,7 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont systemFontOfSize:18.0f];
     titleLabel.text = NSLocalizedString(@"Rewards", nil);
-    NSNumber *gold = [_sharedManager getUser].gold;
+    NSNumber *gold = [self.sharedManager getUser].gold;
     UIImageView *goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 22)];
     goldImageView.contentMode = UIViewContentModeScaleAspectFit;
     [goldImageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]];
@@ -101,11 +97,11 @@
 }
 
 - (void) refresh {
-    [_sharedManager fetchUser:^ () {
+    [self.sharedManager fetchUser:^ () {
         [self.refreshControl endRefreshing];
     } onError:^ () {
         [self.refreshControl endRefreshing];
-        [_sharedManager displayNetworkError];
+        [self.sharedManager displayNetworkError];
     }];
 }
 

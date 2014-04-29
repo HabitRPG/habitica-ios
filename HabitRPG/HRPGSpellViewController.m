@@ -19,6 +19,7 @@
 
 @implementation HRPGSpellViewController
 @synthesize managedObjectContext;
+@dynamic sharedManager;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,15 +28,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
-    _sharedManager = appdelegate.sharedManager;
-    self.managedObjectContext = _sharedManager.getManagedObjectContext;
 }
 
 - (void)didReceiveMemoryWarning
@@ -122,7 +114,7 @@
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    User *user = [_sharedManager getUser];
+    User *user = [self.sharedManager getUser];
     //[fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"klass == %@ && level <= %@", user.hclass, user.level]];
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"level" ascending:YES];

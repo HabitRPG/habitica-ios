@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRPGBaseViewController.h"
 
-@interface HRPGTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface HRPGTableViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate>
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue;
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 
 @end

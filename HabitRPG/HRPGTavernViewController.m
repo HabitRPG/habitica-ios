@@ -22,6 +22,7 @@
 
 @implementation HRPGTavernViewController
 @synthesize managedObjectContext;
+@dynamic sharedManager;
 User *user;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -37,15 +38,11 @@ User *user;
 {
     [super viewDidLoad];
     
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
-    _sharedManager = appdelegate.sharedManager;
-    self.managedObjectContext = _sharedManager.getManagedObjectContext;
-    
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
     
-    user = [_sharedManager getUser];
+    user = [self.sharedManager getUser];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,11 +52,11 @@ User *user;
 }
 
 - (void) refresh {
-    [_sharedManager fetchGroup:@"habitrpg" onSuccess:^ () {
+    [self.sharedManager fetchGroup:@"habitrpg" onSuccess:^ () {
         [self.refreshControl endRefreshing];
     } onError:^ () {
         [self.refreshControl endRefreshing];
-        [_sharedManager displayNetworkError];
+        [self.sharedManager displayNetworkError];
     }];
 }
 
@@ -114,7 +111,7 @@ User *user;
 {
     UIColor *notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
     if (indexPath.section == 0 && indexPath.item == 0) {
-        [_sharedManager sleepInn:^() {
+        [self.sharedManager sleepInn:^() {
             NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Sleep tight!", nil),
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
                                       kCRToastBackgroundColorKey : notificationColor,

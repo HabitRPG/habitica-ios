@@ -27,6 +27,7 @@
 
 @implementation HRPGPartyViewController
 @synthesize managedObjectContext;
+@dynamic sharedManager;
 Group *party;
 Quest *quest;
 User *user;
@@ -49,15 +50,12 @@ NSString *partyID;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
-    _sharedManager = appdelegate.sharedManager;
-    user = [_sharedManager getUser];
+    user = [self.sharedManager getUser];
     
-    self.managedObjectContext = _sharedManager.getManagedObjectContext;
     defaults = [NSUserDefaults standardUserDefaults];
     partyID = [defaults objectForKey:@"partyID"];
     if (!partyID || [partyID isEqualToString:@""]) {
-        [_sharedManager fetchGroups:@"party" onSuccess:^(){
+        [self.sharedManager fetchGroups:@"party" onSuccess:^(){
             partyID = [defaults objectForKey:@"partyID"];
             party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
             [self refresh];
@@ -89,7 +87,7 @@ NSString *partyID;
 }
 
 - (void) refresh {
-    [_sharedManager fetchGroup:@"party" onSuccess:^ () {
+    [self.sharedManager fetchGroup:@"party" onSuccess:^ () {
         [self.refreshControl endRefreshing];
         party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
         if (party.questKey != nil) {
@@ -106,7 +104,7 @@ NSString *partyID;
         }
     } onError:^ () {
         [self.refreshControl endRefreshing];
-        [_sharedManager displayNetworkError];
+        [self.sharedManager displayNetworkError];
     }];
 }
 

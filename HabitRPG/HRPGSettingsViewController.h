@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRPGBaseViewController.h"
 
-@interface HRPGSettingsViewController : UITableViewController
-
-@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
+@interface HRPGSettingsViewController : HRPGBaseViewController
 
 @end

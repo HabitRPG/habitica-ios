@@ -23,6 +23,7 @@
 
 @implementation HRPGPartyMembersViewController
 @synthesize managedObjectContext;
+@dynamic sharedManager;
 NSString *partyID;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -38,20 +39,8 @@ NSString *partyID;
 {
     [super viewDidLoad];
     
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
-    _sharedManager = appdelegate.sharedManager;
-    self.managedObjectContext = _sharedManager.getManagedObjectContext;
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     partyID = [defaults objectForKey:@"partyID"];
-    
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    
-    if ([keyChain stringForKey:@"id"] == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-        UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        [self presentViewController:navigationController animated:NO completion: nil];
-    }
 }
 
 - (void)didReceiveMemoryWarning
