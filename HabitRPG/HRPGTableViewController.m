@@ -169,6 +169,20 @@ BOOL editable;
     [super setEditing:editing animated:animated];
     if (editing) {
         editable = YES;
+        if (self.openedIndexPath) {
+            Task *oldTask = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
+            NSNumber *oldChecklistCount = [oldTask valueForKeyPath:@"checklist.@count"];
+            
+            NSMutableArray *deleteArray = [[NSMutableArray alloc] init];
+            for(int i=1; i<=[oldChecklistCount integerValue]; i++) {
+                [deleteArray addObject:[NSIndexPath indexPathForItem:self.openedIndexPath.item+i inSection:self.openedIndexPath.section]];
+            }
+            NSIndexPath *tempPath = self.openedIndexPath;
+            self.openedIndexPath = nil;
+            self.indexOffset = 0;
+            [self configureCell:[self.tableView cellForRowAtIndexPath:tempPath] atIndexPath:tempPath withAnimation:YES];
+            [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationBottom];
+        }
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editButtonSelected:)];
     } else {
         editable = NO;
