@@ -93,14 +93,22 @@ NSString *partyID;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    if (party) {
+        return 3;
+    } else {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
         case 0:
-            return 2;
+            if (party) {
+                return 2;
+            } else {
+                return 1;
+            }
         case 1:
             if (party.questKey && [quest.bossHp integerValue] == 0) {
                 return [quest.collect count] + 2;
@@ -144,6 +152,9 @@ NSString *partyID;
             return 100;
         }
     } else if (indexPath.section == 0 && indexPath.item == 0) {
+        if (!party) {
+            return 60;
+        }
         return [party.hdescription boundingRectWithSize:CGSizeMake(290.0f, MAXFLOAT)
                                          options:NSStringDrawingUsesLineFragmentOrigin
                                       attributes:@{
@@ -180,7 +191,11 @@ NSString *partyID;
 {
     NSString *cellname;
     if (indexPath.section == 0 && indexPath.item == 0) {
-        cellname = @"SmallTextCell";
+        if (party) {
+            cellname = @"SmallTextCell";
+        } else {
+            cellname = @"NoPartyDataCell";
+        }
     } else if (indexPath.section == 0 && indexPath.item == 1) {
         cellname = @"BaseCell";
     } else if (indexPath.section == 1 && indexPath.item == 0) {
@@ -194,7 +209,11 @@ NSString *partyID;
             }
         }
     } else if (indexPath.section == 1 && indexPath.item == 1) {
-        cellname = @"SubtitleCell";
+        if (party.questActive) {
+            cellname = @"BaseCell";
+        } else {
+            cellname = @"SubtitleCell";
+        }
     } else if (indexPath.section == 1) {
         cellname = @"CollectItemQuestCell";
     } else {
@@ -303,9 +322,31 @@ NSString *partyID;
             }
         } else if (indexPath.section == 1 && indexPath.item == 1) {
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-            UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
-            textLabel.text = NSLocalizedString(@"Participants", nil);
+            int acceptedCount = 0;
+            
+            if (party.questActive) {
+                for (User *participant in party.member) {
+                    if ([participant.participateInQuest boolValue]) {
+                        acceptedCount++;
+                    }
+                }
+                if (acceptedCount == 1) {
+                    cell.textLabel.text = NSLocalizedString(@"1 Participant", nil);
+                } else {
+                    cell.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d Participants", nil), acceptedCount];
+                }
+            } else {
+                cell.textLabel.text = NSLocalizedString(@"Participants", nil);
+                for (User *participant in party.member) {
+                    if (participant.participateInQuest != nil) {
+                        acceptedCount++;
+                    }
+                }
+                cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d out of %d responded", nil), acceptedCount, [party.member count]];
+                
+            }
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
         } else if (indexPath.section == 1) {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             QuestCollect *collect = quest.collect[indexPath.item-2];
