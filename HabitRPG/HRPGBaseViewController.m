@@ -52,6 +52,8 @@
                            [self.refreshControl endRefreshing];
                        });
     }
+    NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
+    [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
