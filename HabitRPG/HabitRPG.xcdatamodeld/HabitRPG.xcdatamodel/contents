@@ -120,6 +120,7 @@
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="monday" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="priority" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="saturday" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="streak" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -205,7 +206,7 @@
         <element name="Reward" positionX="0" positionY="0" width="128" height="73"/>
         <element name="Spell" positionX="45" positionY="153" width="128" height="148"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="Task" positionX="0" positionY="0" width="128" height="373"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="390"/>
         <element name="User" positionX="0" positionY="0" width="128" height="808"/>
     </elements>
 </model>

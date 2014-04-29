@@ -105,7 +105,8 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"repeat.th": @"thursday",
                                                         @"repeat.f": @"friday",
                                                         @"repeat.s": @"saturday",
-                                                        @"repeat.su": @"sunday"}];
+                                                        @"repeat.su": @"sunday",
+                                                        @"@metadata.mapping.collectionIndex" : @"order"}];
     taskMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping* checklistItemMapping = [RKEntityMapping mappingForEntityForName:@"ChecklistItem" inManagedObjectStore:managedObjectStore];
     [checklistItemMapping addAttributeMappingsFromArray:@[@"id", @"text", @"completed"]];
