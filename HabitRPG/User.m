@@ -70,6 +70,7 @@
 @dynamic lastAvatarFull;
 @dynamic lastAvatarNoPet;
 @dynamic lastAvatarHead;
+@dynamic useCostume;
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView {
     [self setAvatarOnImageView:imageView withPetMount:YES onlyHead:NO];
@@ -126,11 +127,11 @@
         [imageArray replaceObjectAtIndex:currentLayer withObject:image];
         dispatch_group_leave(group);
     }];
-    
-    if (![self.equippedArmor isEqualToString:@"armor_base_0"]) {
+    NSString *armor = [self.useCostume boolValue] ? self.costumeArmor : self.equippedArmor;
+    if (![armor isEqualToString:@"armor_base_0"]) {
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"%@_%@", self.size, self.equippedArmor] onSuccess:^(UIImage *image) {
+        [sharedManager getImage:[NSString stringWithFormat:@"%@_%@", self.size, armor] onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         }];
@@ -173,37 +174,38 @@
         }];
     }
     
-    if (![self.equippedHead isEqualToString:@"head_base_0"]) {
+    NSString *head = [self.useCostume boolValue] ? self.costumeHead : self.equippedHead;
+    if (![head isEqualToString:@"head_base_0"]) {
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:self.equippedHead onSuccess:^(UIImage *image) {
+        [sharedManager getImage:head onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         }];
     }
-    
-    if (self.equippedHeadAccessory && ![self.equippedHeadAccessory isEqualToString:@"headAccessory_base_0"]) {
+    NSString *headAccessory = [self.useCostume boolValue] ? self.costumeHeadAccessory : self.equippedHeadAccessory;
+    if (headAccessory && ![headAccessory isEqualToString:@"headAccessory_base_0"]) {
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:self.equippedHeadAccessory onSuccess:^(UIImage *image) {
+        [sharedManager getImage:headAccessory onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         }];
     }
-    
-    if (!onlyHead && ![self.equippedShield isEqualToString:@"shield_base_0"]) {
+    NSString *shield = [self.useCostume boolValue] ? self.costumeShield : self.equippedShield;
+    if (!onlyHead && ![shield isEqualToString:@"shield_base_0"]) {
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:self.equippedShield onSuccess:^(UIImage *image) {
+        [sharedManager getImage:shield onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         }];
     }
-    
-    if (!onlyHead && ![self.equippedWeapon isEqualToString:@"weapon_base_0"]) {
+    NSString *weapon = [self.useCostume boolValue] ? self.costumeWeapon : self.equippedWeapon;
+    if (!onlyHead && ![weapon isEqualToString:@"weapon_base_0"]) {
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:self.equippedWeapon onSuccess:^(UIImage *image) {
+        [sharedManager getImage:weapon onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         }];

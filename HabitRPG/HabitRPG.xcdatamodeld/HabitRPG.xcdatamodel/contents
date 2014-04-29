@@ -176,6 +176,7 @@
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="skin" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sleep" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="useCostume" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChatMessage" inverseName="userObject" inverseEntity="ChatMessage" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" syncable="YES"/>
@@ -207,6 +208,6 @@
         <element name="Spell" positionX="45" positionY="153" width="128" height="148"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="390"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="808"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="825"/>
     </elements>
 </model>

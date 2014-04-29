@@ -259,11 +259,19 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"items.gear.equipped.shield" : @"equippedShield",
                                                         @"items.gear.equipped.weapon" : @"equippedWeapon",
                                                         @"items.gear.equipped.back" : @"equippedBack",
+                                                        @"items.gear.costume.headAccessory" : @"costumeHeadAccessory",
+                                                        @"items.gear.costume.armor" : @"costumeArmor",
+                                                        @"items.gear.costume.head" : @"costumeHead",
+                                                        @"items.gear.costume.shield" : @"costumeShield",
+                                                        @"items.gear.costume.weapon" : @"costumeWeapon",
+                                                        @"items.gear.costume.back" : @"costumeBack",
+                                                        @"preferences.costume" : @"useCostume",
                                                         @"items.currentPet" : @"currentPet",
                                                         @"items.currentMount" : @"currentMount",
                                                         @"auth.timestamps.loggedin":@"lastLogin"
                                                         }];
     entityMapping.identificationAttributes = @[ @"id" ];
+    entityMapping.assignsDefaultValueForMissingAttributes = YES;
     RKEntityMapping* rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
     [rewardMapping addAttributeMappingsFromDictionary:@{
                                                         @"id":          @"key",

@@ -63,6 +63,7 @@
 @property (nonatomic, retain) NSDate *lastAvatarFull;
 @property (nonatomic, retain) NSDate *lastAvatarNoPet;
 @property (nonatomic, retain) NSDate *lastAvatarHead;
+@property (nonatomic, retain) NSNumber *useCostume;
 @end
 
 @interface User (CoreDataGeneratedAccessors)
