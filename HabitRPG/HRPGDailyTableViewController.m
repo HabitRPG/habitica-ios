@@ -158,20 +158,28 @@
         }
 
         [self configureSwiping:cell withTask:task];
-        
-        if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
-            self.checkIconFactory.colors = @[[UIColor whiteColor]];
-            checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
-            [UIView animateWithDuration:0.4 animations:^() {
+        if (animate) {
+            if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
+                self.checkIconFactory.colors = @[[UIColor whiteColor]];
+                checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
+                [UIView animateWithDuration:0.4 animations:^() {
+                    label.textColor = [UIColor whiteColor];
+                    cell.backgroundColor = [UIColor grayColor];
+                }];
+            } else {
+                self.checkIconFactory.colors = @[[UIColor grayColor]];
+                checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
+                [UIView animateWithDuration:0.4 animations:^() {
+                    cell.backgroundColor = [UIColor whiteColor];
+                }];
+            }
+        } else {
+            if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item)  {
                 label.textColor = [UIColor whiteColor];
                 cell.backgroundColor = [UIColor grayColor];
-            }];
-        } else {
-            self.checkIconFactory.colors = @[[UIColor grayColor]];
-            checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
-            [UIView animateWithDuration:0.4 animations:^() {
+            } else {
                 cell.backgroundColor = [UIColor whiteColor];
-            }];
+            }
         }
     }
 }
