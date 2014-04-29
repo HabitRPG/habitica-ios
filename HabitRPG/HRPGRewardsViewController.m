@@ -27,15 +27,6 @@
 @synthesize managedObjectContext;
 @dynamic sharedManager;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -88,12 +79,6 @@
     [titleView addSubview:moneyView];
 
     self.navigationItem.titleView = titleView;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) refresh {

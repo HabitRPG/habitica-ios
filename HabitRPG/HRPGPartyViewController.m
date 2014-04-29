@@ -34,19 +34,6 @@ User *user;
 NSUserDefaults *defaults;
 NSString *partyID;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        
-    }
-    return self;
-}
-
--(void)viewWillAppear:(BOOL)animated {
-    
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -78,12 +65,6 @@ NSString *partyID;
     self.refreshControl = refresh;
     
     
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) refresh {

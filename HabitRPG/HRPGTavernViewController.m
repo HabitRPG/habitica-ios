@@ -25,15 +25,6 @@
 @dynamic sharedManager;
 User *user;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,12 +34,6 @@ User *user;
     self.refreshControl = refresh;
     
     user = [self.sharedManager getUser];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) refresh {

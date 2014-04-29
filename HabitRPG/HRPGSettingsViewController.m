@@ -23,15 +23,6 @@ NSUserDefaults *defaults;
 User *user;
 BOOL reminder;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     user = [_sharedManager getUser];
@@ -45,12 +36,6 @@ BOOL reminder;
     self.managedObjectContext = _sharedManager.getManagedObjectContext;
     defaults = [NSUserDefaults standardUserDefaults];
     reminder = [defaults boolForKey:@"dailyReminderActive"];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source

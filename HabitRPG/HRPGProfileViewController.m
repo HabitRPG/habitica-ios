@@ -25,15 +25,6 @@ NSString *username;
 NSString *currentUserID;
 PDKeychainBindings *keyChain;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (![currentUserID isEqualToString:[keyChain stringForKey:@"id"]]) {
@@ -64,12 +55,6 @@ PDKeychainBindings *keyChain;
     if (username == nil) {
         [self refresh];
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) refresh {
