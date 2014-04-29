@@ -94,7 +94,7 @@
             [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                 item.completed = [NSNumber numberWithBool:NO];;
                 [self.sharedManager updateTask:task onSuccess:^() {
-                    [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                    [self configureCell:(HRPGSwipeTableViewCell*)cell atIndexPath:indexPath withAnimation:YES];
                 }onError:^() {
                     
                 }];
@@ -111,7 +111,7 @@
                 item.completed = [NSNumber numberWithBool:YES];
                 [self.sharedManager updateTask:task onSuccess:^() {
                     
-                    [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                    [self configureCell:(HRPGSwipeTableViewCell*)cell atIndexPath:indexPath withAnimation:YES];
                 }onError:^() {
                     
                 }];
