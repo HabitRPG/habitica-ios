@@ -479,10 +479,10 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                       @"(key).value":            @"value",
                                                       @"(key).notes":              @"notes",
                                                       @"(key).mountText":        @"mountText",
-                                                      @"(key).type":        @"type",
                                                       @"(key).dialog":        @"dialog",
-                                                      @"(key).type":        @"type"}];
+                                                      @"@metadata.mapping.rootKeyPath":        @"type"}];
     eggMapping.identificationAttributes = @[ @"key" ];
+    
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:eggMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"eggs" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     RKEntityMapping *hatchingPotionMapping = [RKEntityMapping mappingForEntityForName:@"HatchingPotion" inManagedObjectStore:managedObjectStore];
