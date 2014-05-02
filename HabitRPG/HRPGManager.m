@@ -360,6 +360,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"type":                @"type"
                                                         }];
     entityMapping.identificationAttributes = @[ @"id" ];
+    entityMapping.assignsDefaultValueForMissingAttributes = YES;
     RKEntityMapping* chatMapping = [RKEntityMapping mappingForEntityForName:@"ChatMessage" inManagedObjectStore:managedObjectStore];
     [chatMapping addAttributeMappingsFromDictionary:@{@"id":@"id",
                                                        @"text":@"text",

@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * privacy;
-@property (nonatomic) Boolean questActive;
+@property (nonatomic, retain) NSNumber *questActive;
 @property (nonatomic, retain) NSNumber * questHP;
 @property (nonatomic, retain) NSString * questKey;
 @property (nonatomic, retain) NSString * type;

@@ -93,7 +93,7 @@ NSString *partyID;
     [fetchRequest setFetchBatchSize:20];
     
     NSPredicate *predicate;
-    if (self.party.questActive) {
+    if ([self.party.questActive boolValue]) {
         predicate = [NSPredicate predicateWithFormat:@"participateInQuest == YES"];
     } else {
         predicate = [NSPredicate predicateWithFormat:@"party.id == %@", partyID];

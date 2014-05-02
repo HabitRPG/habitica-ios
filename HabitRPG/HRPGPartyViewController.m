@@ -146,8 +146,14 @@ NSString *partyID;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 0) {
-        if (!party.questKey || ([quest.bossHp integerValue] == 0)) {
-            return 44;
+        if (![party.questActive boolValue] || ([quest.bossHp integerValue] == 0)) {
+            NSInteger height = [quest.text boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
+                                                          options:NSStringDrawingUsesLineFragmentOrigin
+                                                       attributes:@{
+                                                                    NSFontAttributeName : [UIFont systemFontOfSize:18.0f]
+                                                                    }
+                                                          context:nil].size.height+22;
+            return height;
         } else {
             return 100;
         }
@@ -161,17 +167,29 @@ NSString *partyID;
                                                    NSFontAttributeName : [UIFont systemFontOfSize:15.0f]
                                                    }
                                          context:nil].size.height + 20;
-    } else if (indexPath.section == 0 || indexPath.section == 1) {
+    } else if (indexPath.section == 0) {
         return 44;
+    } else if (indexPath.section == 1) {
+        if ([party.questActive boolValue]) {
+            return 44;
+        } else {
+            return 50;
+        }
     } else {
         ChatMessage *message = party.chatmessages[indexPath.item];
-        NSInteger height = [message.text boundingRectWithSize:CGSizeMake(229.0f, MAXFLOAT)
+        float width;
+        if (message.user == nil) {
+            width = 280.0f;
+        } else {
+            width = 230.0f;
+        }
+        NSInteger height = [message.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                      options:NSStringDrawingUsesLineFragmentOrigin
                                                   attributes:@{
                                                                NSFontAttributeName : [UIFont systemFontOfSize:15.0f]
                                                                }
-                                                     context:nil].size.height + 41;
-        if (height < 70) {
+                                                     context:nil].size.height + 40;
+        if (height < 70 && message.user != nil) {
             height = 70;
         }
         return height;
@@ -201,6 +219,8 @@ NSString *partyID;
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         if (party.questKey == nil) {
             cellname = @"NoQuestCell";
+        } else if (![party.questActive boolValue]) {
+            cellname = @"BaseCell";
         } else {
             if ([quest.bossHp integerValue] > 0) {
                 cellname = @"BossQuestCell";
@@ -209,7 +229,7 @@ NSString *partyID;
             }
         }
     } else if (indexPath.section == 1 && indexPath.item == 1) {
-        if (party.questActive) {
+        if ([party.questActive boolValue]) {
             cellname = @"BaseCell";
         } else {
             cellname = @"SubtitleCell";
@@ -217,7 +237,10 @@ NSString *partyID;
     } else if (indexPath.section == 1) {
         cellname = @"CollectItemQuestCell";
     } else {
-        if (indexPath.section) {
+        ChatMessage *message = (ChatMessage*)party.chatmessages[indexPath.item];
+        if (message.user != nil) {
+            cellname = @"ImageChatCell";
+        } else {
             cellname = @"ChatCell";
         }
     }
@@ -324,7 +347,7 @@ NSString *partyID;
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             int acceptedCount = 0;
             
-            if (party.questActive) {
+            if ([party.questActive boolValue]) {
                 for (User *participant in party.member) {
                     if ([participant.participateInQuest boolValue]) {
                         acceptedCount++;
@@ -366,13 +389,11 @@ NSString *partyID;
             UILabel *authorLabel = (UILabel*)[cell viewWithTag:1];
             authorLabel.text = message.user;
             UIImageView *imageView = (UIImageView*)[cell viewWithTag:5];
-            if (message.user != nil) {
-                imageView.hidden = NO;
-                [message.userObject setAvatarOnImageView:imageView withPetMount:NO onlyHead:YES];
-            } else {
-                imageView.hidden = YES;
-            }
             UILabel *textLabel = (UILabel*)[cell viewWithTag:2];
+            if (message.user != nil) {
+                [message.userObject setAvatarOnImageView:imageView withPetMount:NO onlyHead:YES];
+            }
+            [imageView sizeToFit];
             textLabel.text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
             UILabel *dateLabel = (UILabel*)[cell viewWithTag:3];
             dateLabel.text = [message.timestamp timeAgo];
