@@ -495,7 +495,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                      @"(key).value":            @"value",
                                                      @"(key).notes":              @"notes",
                                                      @"(key).dialog":        @"dialog",
-                                                     @"(key).type":        @"type"}];
+                                                     @"@metadata.mapping.rootKeyPath":        @"type"}];
     hatchingPotionMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:hatchingPotionMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"hatchingPotions" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -510,7 +510,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                      @"(key).notes":              @"notes",
                                                      @"(key).article":        @"article",
                                                      @"(key).dialog":        @"dialog",
-                                                     @"(key).type":        @"type"}];
+                                                     @"@metadata.mapping.rootKeyPath":        @"type"}];
     foodMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:foodMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"food" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -520,17 +520,25 @@ NIKFontAwesomeIconFactory *iconFactory;
     [spellMapping addAttributeMappingsFromDictionary:@{
                                                        @"(key).text":              @"text",
                                                        @"(key).lvl":            @"level",
-                                                       @"(key).notes":              @"notes"}];
+                                                       @"(key).notes":              @"notes",
+                                                       @"@metadata.mapping.rootKeyPath":        @"klass"}];
     spellMapping.identificationAttributes = @[ @"key" ];
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:spellMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"spells" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:spellMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"spells.healer" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:spellMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"spells.wizard" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:spellMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"spells.warrior" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:spellMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"spells.rogue" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     RKEntityMapping *potionMapping = [RKEntityMapping mappingForEntityForName:@"Potion" inManagedObjectStore:managedObjectStore];
     [potionMapping addAttributeMappingsFromDictionary:@{
                                                         @"text":              @"text",
                                                         @"key":            @"key",
                                                         @"value":       @"value",
                                                         @"notes":              @"notes",
-                                                        @"type":              @"type"}];
+                                                        @"type":              @"type",}];
     potionMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:potionMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"potion" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -557,7 +565,8 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                      @"(key).drop.exp":        @"dropExp",
                                                      @"(key).boss.name":        @"bossName",
                                                      @"(key).boss.hp":        @"bossHp",
-                                                     @"(key).boss.str":        @"bossStr"}];
+                                                     @"(key).boss.str":        @"bossStr",
+                                                     @"@metadata.mapping.rootKeyPath":        @"type"}];
     questMapping.identificationAttributes = @[ @"key" ];
     
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:questMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"quests" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];

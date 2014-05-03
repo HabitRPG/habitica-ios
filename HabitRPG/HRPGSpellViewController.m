@@ -100,7 +100,8 @@
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     User *user = [self.sharedManager getUser];
-    //[fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"klass == %@ && level <= %@", user.hclass, user.level]];
+    NSString *classname = [NSString stringWithFormat:@"spells.%@", user.hclass];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"klass == %@ && level <= %@", classname, user.level]];
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"level" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
@@ -109,7 +110,7 @@
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"rewards"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     

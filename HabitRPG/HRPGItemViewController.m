@@ -57,7 +57,17 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSInteger height = [item.text boundingRectWithSize:CGSizeMake(260.0f, MAXFLOAT)
+                                                options:NSStringDrawingUsesLineFragmentOrigin
+                                             attributes:@{
+                                                          NSFontAttributeName : [UIFont systemFontOfSize:18.0f]
+                                                          }
+                                                context:nil].size.height+22;
+    if (height < 60) {
+        return 60;
+    }
+    return height;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -206,13 +216,24 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate
 {
     Item  *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = item.text;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", item.owned];
+    UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
+    textLabel.text = item.text;
+    UILabel *detailTextLabel = (UILabel*)[cell viewWithTag:2];
+    detailTextLabel.text = [NSString stringWithFormat:@"%@", item.owned];
+    [detailTextLabel sizeToFit];
     NSString *url;
-    if ([item.type isEqualToString:@"Quest"]) {
+    if ([item.type isEqualToString:@"quests"]) {
         url = @"http://pherth.net/habitrpg/inventory_quest_scroll.png";
     } else {
-        url = [NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet_%@_%@.png", item.type, item.key];
+        NSString *type;
+        if ([item.type isEqualToString:@"eggs"]) {
+            type = @"Egg";
+        } else if ([item.type isEqualToString:@"food"]) {
+            type = @"Food";
+        } else if ([item.type isEqualToString:@"hatchingPotions"]) {
+            type = @"HatchingPotion";
+        }
+        url = [NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet_%@_%@.png", type, item.key];
     }
     [cell.imageView setImageWithURL:[NSURL URLWithString:url]
                    placeholderImage:[UIImage imageNamed:@"Placeholder"]];
