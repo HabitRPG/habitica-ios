@@ -340,7 +340,6 @@ int selectedDifficulty;
                 ChecklistItem *item =  self.task.checklist[i];
                 item.text = textField.text;
                 item.task = self.task;
-                item.completed = [NSNumber numberWithBool:NO];
             }
         }
     } else if([segue.identifier isEqualToString:@"unwindCancelSegue"]) {

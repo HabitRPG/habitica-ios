@@ -13,7 +13,7 @@
         <relationship name="userObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="chatmessages" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="ChecklistItem" representedClassName="ChecklistItem" syncable="YES">
-        <attribute name="completed" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="completed" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="checklist" inverseEntity="Task" syncable="YES"/>
@@ -193,7 +193,7 @@
     <elements>
         <element name="BuyableItem" positionX="45" positionY="162" width="128" height="58"/>
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="148"/>
-        <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="103"/>
+        <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Egg" positionX="18" positionY="162" width="128" height="90"/>
         <element name="Food" positionX="81" positionY="198" width="128" height="88"/>
         <element name="Gear" positionX="9" positionY="153" width="128" height="163"/>
