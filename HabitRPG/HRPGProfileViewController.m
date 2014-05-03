@@ -62,7 +62,6 @@ PDKeychainBindings *keyChain;
         [self.refreshControl endRefreshing];
     } onError:^ () {
         [self.refreshControl endRefreshing];
-        [self.sharedManager displayNetworkError];
     }];
 }
 

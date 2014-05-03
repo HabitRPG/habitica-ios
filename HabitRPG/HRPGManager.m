@@ -703,6 +703,11 @@ NIKFontAwesomeIconFactory *iconFactory;
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
         errorBlock();
         return;
     }];
@@ -716,6 +721,11 @@ NIKFontAwesomeIconFactory *iconFactory;
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
         errorBlock();
         return;
     }];
@@ -735,6 +745,11 @@ NIKFontAwesomeIconFactory *iconFactory;
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
         errorBlock();
         return;
     }];
@@ -784,6 +799,11 @@ NIKFontAwesomeIconFactory *iconFactory;
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
         errorBlock();
         return;
     }];
@@ -829,6 +849,11 @@ NIKFontAwesomeIconFactory *iconFactory;
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
         errorBlock();
         return;
     }];
@@ -854,6 +879,11 @@ NIKFontAwesomeIconFactory *iconFactory;
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
         errorBlock();
         return;
     }];
@@ -866,6 +896,11 @@ NIKFontAwesomeIconFactory *iconFactory;
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
         errorBlock();
         return;
     }];
@@ -897,6 +932,11 @@ NIKFontAwesomeIconFactory *iconFactory;
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
         errorBlock();
         return;
     }];
@@ -910,6 +950,11 @@ NIKFontAwesomeIconFactory *iconFactory;
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
         errorBlock();
         return;
     }];
@@ -930,6 +975,11 @@ NIKFontAwesomeIconFactory *iconFactory;
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
         errorBlock();
         return;
     }];
@@ -954,6 +1004,11 @@ NIKFontAwesomeIconFactory *iconFactory;
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
         errorBlock();
         return;
     }];
@@ -962,6 +1017,19 @@ NIKFontAwesomeIconFactory *iconFactory;
 - (void) displayNetworkError {
     NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Network error", nil),
                               kCRToastSubtitleTextKey :NSLocalizedString(@"Couldn't connect to the server. Check your network connection", nil),
+                              kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],
+                              kCRToastImageKey : [iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
+                              };
+    [CRToastManager showNotificationWithOptions:options
+                                completionBlock:^{
+                                }];
+}
+
+- (void) displayServerError {
+    NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Server error", nil),
+                              kCRToastSubtitleTextKey :NSLocalizedString(@"There seems to be a problem with the server. Try again later", nil),
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],

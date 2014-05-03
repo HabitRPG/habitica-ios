@@ -85,7 +85,6 @@ NSString *partyID;
         }
     } onError:^ () {
         [self.refreshControl endRefreshing];
-        [self.sharedManager displayNetworkError];
     }];
 }
 
