@@ -186,7 +186,7 @@ NSString *partyID;
         NSInteger height = [message.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                      options:NSStringDrawingUsesLineFragmentOrigin
                                                   attributes:@{
-                                                               NSFontAttributeName : [UIFont systemFontOfSize:15.0f]
+                                                               NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                                }
                                                      context:nil].size.height + 40;
         if (height < 70 && message.user != nil) {
@@ -388,16 +388,15 @@ NSString *partyID;
             ChatMessage *message = (ChatMessage*)party.chatmessages[indexPath.item];
             UILabel *authorLabel = (UILabel*)[cell viewWithTag:1];
             authorLabel.text = message.user;
-            UIImageView *imageView = (UIImageView*)[cell viewWithTag:5];
             UILabel *textLabel = (UILabel*)[cell viewWithTag:2];
             if (message.user != nil) {
+                UIImageView *imageView = (UIImageView*)[cell viewWithTag:5];
                 [message.userObject setAvatarOnImageView:imageView withPetMount:NO onlyHead:YES];
             }
-            [imageView sizeToFit];
             textLabel.text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
             UILabel *dateLabel = (UILabel*)[cell viewWithTag:3];
             dateLabel.text = [message.timestamp timeAgo];
-            [dateLabel sizeToFit];
+            //[dateLabel sizeToFit];
         }
     }
 }

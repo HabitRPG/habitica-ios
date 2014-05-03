@@ -278,7 +278,8 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                         @"text":        @"text",
                                                         @"dateCreated": @"dateCreated",
                                                         @"value":       @"value",
-                                                        @"type":       @"type"
+                                                        @"type":        @"type",
+                                                        @"notes":       @"notes"
                                                         }];
     rewardMapping.identificationAttributes = @[ @"key" ];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"rewards"
