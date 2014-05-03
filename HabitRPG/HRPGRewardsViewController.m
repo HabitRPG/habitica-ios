@@ -127,7 +127,33 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    float height = 22.0f;
+    float width = 270.0f;
+    if (indexPath.section == 1) {
+        width = 229.0f;
+    }
+    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    width = width - [[NSString stringWithFormat:@"%ld", (long)[reward.value integerValue]] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
+                                             options:NSStringDrawingUsesLineFragmentOrigin
+                                          attributes:@{
+                                                       NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+                                                       }
+                                             context:nil].size.width;
+    height = height + [reward.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                                options:NSStringDrawingUsesLineFragmentOrigin
+                                             attributes:@{
+                                                          NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
+                                                          }
+                                                context:nil].size.height;
+    if ([reward.notes length] > 0) {
+        height = height + [reward.notes boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                                 options:NSStringDrawingUsesLineFragmentOrigin
+                                              attributes:@{
+                                                           NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
+                                                           }
+                                                 context:nil].size.height;
+    }
+    return height;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -289,8 +315,10 @@
     MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
     textLabel.text = reward.text;
+    [textLabel sizeToFit];
     UILabel *notesLabel = (UILabel*)[cell viewWithTag:2];
     notesLabel.text = reward.notes;
+    [notesLabel sizeToFit];
     UILabel *priceLabel = (UILabel*)[cell viewWithTag:3];
     priceLabel.text = [NSString stringWithFormat:@"%ld", (long)[reward.value integerValue]];
     [priceLabel sizeToFit];
