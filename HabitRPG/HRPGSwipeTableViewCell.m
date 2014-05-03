@@ -11,15 +11,6 @@
 @implementation HRPGSwipeTableViewCell
 BOOL isEditing;
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     isEditing = editing;

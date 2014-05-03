@@ -84,6 +84,25 @@ BOOL editable;
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    float width;
+    if ([task.type isEqualToString:@"habit"]) {
+        width = 280.0f;
+    } else if ([task.checklist count] > 0) {
+        width = 209.0f;
+    } else {
+        width = 261.0f;
+    }
+    NSInteger height = [task.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                                  options:NSStringDrawingUsesLineFragmentOrigin
+                                               attributes:@{
+                                                            NSFontAttributeName : [UIFont systemFontOfSize:15.0f]
+                                                            }
+                                                  context:nil].size.height + 34;
+    return height;
+}
+
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     return editable;
 }
@@ -146,11 +165,6 @@ BOOL editable;
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
             [self.tableView insertRowsAtIndexPaths:insertArray withRowAnimation:UITableViewRowAnimationTop];
         }
-    }
-    
-    if (self.openedIndexPath == nil) {
-        HRPGSwipeTableViewCell *cell = (HRPGSwipeTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-        [cell animateWithOffset:10.f];
     }
 }
 

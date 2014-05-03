@@ -185,7 +185,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" editingAccessoryType="disclosureIndicator" id="Qwe-jN-a2T" customClass="HRPGSwipeTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChecklistCell" editingAccessoryType="disclosureIndicator" id="Qwe-jN-a2T" customClass="HRPGSwipeTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qwe-jN-a2T" id="ibv-iu-Gv4">
@@ -236,6 +236,47 @@
                                         <constraint firstAttribute="bottom" secondItem="2hK-d5-4W6" secondAttribute="bottom" id="gvf-2c-0pb"/>
                                         <constraint firstAttribute="centerY" secondItem="Dr2-ZH-mnv" secondAttribute="centerY" id="usH-2C-7BL"/>
                                         <constraint firstItem="Dr2-ZH-mnv" firstAttribute="leading" secondItem="2hK-d5-4W6" secondAttribute="trailing" constant="11" id="vgc-JE-92Q"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" editingAccessoryType="disclosureIndicator" id="rnR-62-tCR" customClass="HRPGSwipeTableViewCell">
+                                <rect key="frame" x="0.0" y="146" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rnR-62-tCR" id="M0K-Hr-qsm">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="261" translatesAutoresizingMaskIntoConstraints="NO" id="j5D-Ph-B8J">
+                                            <rect key="frame" x="20" y="0.0" width="261" height="59"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Label">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ISs-mi-f6T">
+                                            <rect key="frame" x="289" y="15" width="26" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="Bcn-Xd-3Mr"/>
+                                                <constraint firstAttribute="width" constant="26" id="Rmw-ki-6OY"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="ISs-mi-f6T" secondAttribute="trailing" constant="5" id="6Bs-wf-4Jn"/>
+                                        <constraint firstAttribute="bottom" secondItem="j5D-Ph-B8J" secondAttribute="bottom" id="KeM-Vz-3iO"/>
+                                        <constraint firstAttribute="centerY" secondItem="ISs-mi-f6T" secondAttribute="centerY" id="Kxy-eo-yrU"/>
+                                        <constraint firstItem="j5D-Ph-B8J" firstAttribute="leading" secondItem="M0K-Hr-qsm" secondAttribute="leading" constant="20" id="Mcd-yU-sJe"/>
+                                        <constraint firstItem="ISs-mi-f6T" firstAttribute="leading" secondItem="j5D-Ph-B8J" secondAttribute="trailing" constant="8" id="btz-A8-jaw"/>
+                                        <constraint firstItem="j5D-Ph-B8J" firstAttribute="top" secondItem="M0K-Hr-qsm" secondAttribute="top" id="vhu-Vb-n1D"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1853,6 +1894,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jeD-LQ-1O1"/>
+        <segue reference="E5i-VS-PGN"/>
     </inferredMetricsTieBreakers>
 </document>
