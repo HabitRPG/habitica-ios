@@ -118,9 +118,9 @@ BOOL editable;
     NSInteger height = [task.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                   options:NSStringDrawingUsesLineFragmentOrigin
                                                attributes:@{
-                                                            NSFontAttributeName : [UIFont systemFontOfSize:15.0f]
+                                                            NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                             }
-                                                  context:nil].size.height + 30;
+                                                  context:nil].size.height + 25;
     return height;
 }
 
