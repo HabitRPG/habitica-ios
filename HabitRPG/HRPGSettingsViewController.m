@@ -42,7 +42,7 @@ BOOL reminder;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -56,6 +56,8 @@ BOOL reminder;
             } else {
                 return 1;
             }
+        case 2:
+            return 1;
         default:
             return 0;
     }
@@ -96,6 +98,9 @@ BOOL reminder;
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         title = NSLocalizedString(@"Daily Reminder", nil);
         identifier = @"SwitchCell";
+    } else if (indexPath.section == 2) {
+        title = NSLocalizedString(@"Clear Cache", nil);
+        identifier = @"LogoutCell";
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
@@ -114,6 +119,8 @@ BOOL reminder;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 1) {
         [self logoutUser];
+    } else if (indexPath.section == 2) {
+        [self resetCache];
     }
 }
 
@@ -155,6 +162,20 @@ BOOL reminder;
     UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
     [self presentViewController:navigationController animated:YES completion: nil];
 }
+
+-(void)resetCache {
+    [_sharedManager resetSavedDatabase];
+    [_sharedManager fetchContent:^() {
+        [_sharedManager fetchUser:^() {
+            
+        }onError:^() {
+            
+        }];
+    }onError:^() {
+        
+    }];
+}
+
 
 /*
 #pragma mark - Navigation
