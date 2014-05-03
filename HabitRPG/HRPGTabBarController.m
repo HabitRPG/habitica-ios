@@ -35,7 +35,7 @@
     NSDictionary *textAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:12]};
     CGSize size = [dateString sizeWithAttributes:textAttributes];
     int offset = (calendarImage.size.width - size.width) /2;
-    [dateString drawInRect:CGRectMake(offset+1, 8, 20, 20) withAttributes:textAttributes];
+    [dateString drawInRect:CGRectMake(offset+0.5f, 8, 20, 20) withAttributes:textAttributes];
     UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
