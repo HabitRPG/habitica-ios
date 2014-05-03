@@ -41,6 +41,7 @@ BOOL editable;
 }
 
 - (void) refresh {
+    [self collapseOpenedIndexPath];
     [self.sharedManager fetchUser:^ () {
         [self.refreshControl endRefreshing];
     } onError:^ () {
@@ -61,7 +62,19 @@ BOOL editable;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HRPGSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    NSString *cellname = @"Cell";
+    Task *task;
+    if (self.openedIndexPath.item+self.indexOffset < indexPath.item && self.indexOffset > 0) {
+        task  = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
+    } else if (self.openedIndexPath.item+self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
+        task  = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
+    } else {
+        task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    }
+    if ([task.checklist count] > 0) {
+        cellname = @"ChecklistCell";
+    }
+    HRPGSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     [cell setDefaultColor:[UIColor lightGrayColor]];
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
@@ -85,7 +98,15 @@ BOOL editable;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Task *task;
+    if (self.openedIndexPath.item+self.indexOffset < indexPath.item && self.indexOffset > 0) {
+        task  = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
+    } else if (self.openedIndexPath.item+self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
+        task  = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
+        indexPath = self.openedIndexPath;
+    } else {
+        task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    }
     float width;
     if ([task.type isEqualToString:@"habit"]) {
         width = 280.0f;
@@ -99,7 +120,7 @@ BOOL editable;
                                                attributes:@{
                                                             NSFontAttributeName : [UIFont systemFontOfSize:15.0f]
                                                             }
-                                                  context:nil].size.height + 34;
+                                                  context:nil].size.height + 30;
     return height;
 }
 
@@ -142,18 +163,7 @@ BOOL editable;
         [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationTop];
     } else {
         if (self.openedIndexPath){
-            Task *oldTask = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
-            NSNumber *oldChecklistCount = [oldTask valueForKeyPath:@"checklist.@count"];
-            
-            NSMutableArray *deleteArray = [[NSMutableArray alloc] init];
-            for(int i=1; i<=[oldChecklistCount integerValue]; i++) {
-                [deleteArray addObject:[NSIndexPath indexPathForItem:self.openedIndexPath.item+i inSection:self.openedIndexPath.section]];
-            }
-            NSIndexPath *tempPath = self.openedIndexPath;
-            self.openedIndexPath = nil;
-            self.indexOffset = 0;
-            [self configureCell:[tableView cellForRowAtIndexPath:tempPath] atIndexPath:tempPath withAnimation:YES];
-            [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationBottom];
+            [self collapseOpenedIndexPath];
         }
         if ([checklistCount integerValue] > 0) {
             self.openedIndexPath = indexPath;
@@ -184,24 +194,28 @@ BOOL editable;
     if (editing) {
         editable = YES;
         if (self.openedIndexPath) {
-            Task *oldTask = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
-            NSNumber *oldChecklistCount = [oldTask valueForKeyPath:@"checklist.@count"];
-            
-            NSMutableArray *deleteArray = [[NSMutableArray alloc] init];
-            for(int i=1; i<=[oldChecklistCount integerValue]; i++) {
-                [deleteArray addObject:[NSIndexPath indexPathForItem:self.openedIndexPath.item+i inSection:self.openedIndexPath.section]];
-            }
-            NSIndexPath *tempPath = self.openedIndexPath;
-            self.openedIndexPath = nil;
-            self.indexOffset = 0;
-            [self configureCell:[self.tableView cellForRowAtIndexPath:tempPath] atIndexPath:tempPath withAnimation:YES];
-            [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationBottom];
+            [self collapseOpenedIndexPath];
         }
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editButtonSelected:)];
     } else {
         editable = NO;
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonSelected:)];
     }
+}
+
+- (void)collapseOpenedIndexPath {
+    Task *oldTask = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
+    NSNumber *oldChecklistCount = [oldTask valueForKeyPath:@"checklist.@count"];
+    
+    NSMutableArray *deleteArray = [[NSMutableArray alloc] init];
+    for(int i=1; i<=[oldChecklistCount integerValue]; i++) {
+        [deleteArray addObject:[NSIndexPath indexPathForItem:self.openedIndexPath.item+i inSection:self.openedIndexPath.section]];
+    }
+    NSIndexPath *tempPath = self.openedIndexPath;
+    self.openedIndexPath = nil;
+    self.indexOffset = 0;
+    [self configureCell:[self.tableView cellForRowAtIndexPath:tempPath] atIndexPath:tempPath withAnimation:YES];
+    [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationBottom];
 }
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
