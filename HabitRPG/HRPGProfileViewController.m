@@ -12,6 +12,7 @@
 #import "User.h"
 #import <PDKeychainBindings.h>
 #import <VTAcknowledgementsViewController.h>
+#import <MessageUI/MFMailComposeViewController.h>
 @interface HRPGProfileViewController ()
 @property HRPGManager *sharedManager;
 
@@ -82,7 +83,7 @@ PDKeychainBindings *keyChain;
         case 2:
             return 2;
         case 3:
-            return 2;
+            return 3;
         default:
             return 0;
     }
@@ -98,7 +99,7 @@ PDKeychainBindings *keyChain;
         case 2:
             return NSLocalizedString(@"Inventory", nil);
         case 3:
-            return NSLocalizedString(@"Settings", nil);
+            return NSLocalizedString(@"About", nil);
         default:
             return @"";
     }
@@ -132,6 +133,19 @@ PDKeychainBindings *keyChain;
         VTAcknowledgementsViewController *viewController = [VTAcknowledgementsViewController acknowledgementsViewController];
         viewController.headerText = NSLocalizedString(@"We love open source software.", nil); // optional
         [self.navigationController pushViewController:viewController animated:YES];
+    } else if (indexPath.section == 3 && indexPath.item == 2) {
+        if ([MFMailComposeViewController canSendMail]) {
+            MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+            controller.mailComposeDelegate = self;
+            [controller setSubject:@"[RabbitRPG] Feedback"];
+            [controller setToRecipients:@[@"rabbitrpg@pherth.net"]];
+            [self.navigationController presentViewController:controller animated:YES completion:^() {
+                
+            }];
+        } else {
+            
+        }
+        
     }
 }
 
@@ -163,6 +177,8 @@ PDKeychainBindings *keyChain;
             title = NSLocalizedString(@"Settings", nil);
         } else if (indexPath.section == 3 && indexPath.item == 1) {
             title = NSLocalizedString(@"Acknowledgements", nil);
+        } else if (indexPath.section == 3 && indexPath.item == 2) {
+            title = NSLocalizedString(@"Send Feedback", nil);
         }
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
@@ -280,6 +296,12 @@ PDKeychainBindings *keyChain;
     [user setAvatarOnImageView:imageView];
 }
 
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+    [controller dismissViewControllerAnimated:YES completion:^(){
+        
+    }];
+}
 
 #pragma mark - Navigation
 
