@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRPGLoginViewController : UITableViewController
+@interface HRPGLoginViewController : UITableViewController <UITextFieldDelegate>
 @property BOOL hideCancelButton;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;

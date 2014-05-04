@@ -29,6 +29,8 @@
     _sharedManager = appdelegate.sharedManager;
     
     [self.usernameField becomeFirstResponder];
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -36,6 +38,16 @@
     if (indexPath.section == 1 && indexPath.item == 0) {
         [self loginUser:0];
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.usernameField) {
+        [self.passwordField becomeFirstResponder];
+    }
+    if (textField == self.passwordField) {
+        [self loginUser:textField];
+    }
+    return YES;
 }
 
 - (IBAction)loginUser:(id)sender {

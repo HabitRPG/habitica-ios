@@ -803,6 +803,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = RabbitRPG;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -873,6 +874,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = RabbitRPG;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
