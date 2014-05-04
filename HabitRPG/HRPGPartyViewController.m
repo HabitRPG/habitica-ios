@@ -18,6 +18,7 @@
 #import "ChatMessage.h"
 #import <NSDate+TimeAgo.h>
 #import "NSString+Emoji.h"
+#import "HRPGProgressView.h"
 
 @interface HRPGPartyViewController ()
 @property HRPGManager *sharedManager;
@@ -109,8 +110,10 @@ NSString *partyID;
                 return 1;
             }
         case 1:
-            if (party.questKey && [quest.bossHp integerValue] == 0) {
+            if ([party.questActive boolValue] && [quest.bossHp integerValue] == 0) {
                 return [quest.collect count] + 2;
+            } else if ([party.questActive boolValue] && [party.questHP integerValue] > 0) {
+                return 3;
             } else if (party.questKey) {
                 return 2;
             } else {
@@ -145,17 +148,16 @@ NSString *partyID;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 0) {
-        if (![party.questActive boolValue] || ([quest.bossHp integerValue] == 0)) {
-            NSInteger height = [quest.text boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
+        if (!party.questKey) {
+            return 60;
+        }
+        NSInteger height = [quest.text boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
                                                           options:NSStringDrawingUsesLineFragmentOrigin
                                                        attributes:@{
-                                                                    NSFontAttributeName : [UIFont systemFontOfSize:18.0f]
+                                                                    NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
                                                                     }
                                                           context:nil].size.height+22;
-            return height;
-        } else {
-            return 100;
-        }
+        return height;
     } else if (indexPath.section == 0 && indexPath.item == 0) {
         if (!party) {
             return 60;
@@ -163,11 +165,19 @@ NSString *partyID;
         return [party.hdescription boundingRectWithSize:CGSizeMake(290.0f, MAXFLOAT)
                                          options:NSStringDrawingUsesLineFragmentOrigin
                                       attributes:@{
-                                                   NSFontAttributeName : [UIFont systemFontOfSize:15.0f]
+                                                   NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                    }
                                          context:nil].size.height + 20;
     } else if (indexPath.section == 0) {
         return 44;
+    } else if (indexPath.section == 1 && indexPath.item == 1 && [party.questActive boolValue] && [party.questHP integerValue] > 0) {
+        NSInteger height = [@"50/100" boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
+                                                    options:NSStringDrawingUsesLineFragmentOrigin
+                                                 attributes:@{
+                                                              NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+                                                              }
+                                                    context:nil].size.height+10;
+        return height;
     } else if (indexPath.section == 1) {
         if ([party.questActive boolValue]) {
             return 44;
@@ -218,16 +228,12 @@ NSString *partyID;
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         if (party.questKey == nil) {
             cellname = @"NoQuestCell";
-        } else if (![party.questActive boolValue]) {
-            cellname = @"BaseCell";
         } else {
-            if ([quest.bossHp integerValue] > 0) {
-                cellname = @"BossQuestCell";
-            } else {
-                cellname = @"CollectQuestCell";
-            }
+            cellname = @"QuestCell";
         }
-    } else if (indexPath.section == 1 && indexPath.item == 1) {
+    } else if (indexPath.section == 1 && indexPath.item == 1 && [party.questActive boolValue] && [party.questHP integerValue] > 0) {
+        cellname = @"LifeCell";
+    } else if ((indexPath.section == 1 && indexPath.item == 1) || (indexPath.section == 1 && indexPath.item == 2 && [party.questActive boolValue] && [party.questHP integerValue] > 0)) {
         if ([party.questActive boolValue]) {
             cellname = @"BaseCell";
         } else {
@@ -333,17 +339,13 @@ NSString *partyID;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 UILabel *titleLabel = (UILabel*)[cell viewWithTag:1];
                 titleLabel.text = quest.text;
-                if ([party.questHP integerValue] > 0) {
-                    
-                    UILabel *lifeLabel = (UILabel*)[cell viewWithTag:2];
-                    lifeLabel.text = [NSString stringWithFormat:@"%@ / %@", party.questHP, quest.bossHp];
-                    UIProgressView *lifeBar = (UIProgressView*)[cell viewWithTag:3];
-                    lifeBar.progress = ([party.questHP floatValue] / [quest.bossHp floatValue]);
-                } else {
-                }
             }
-        } else if (indexPath.section == 1 && indexPath.item == 1) {
-            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        } else if (indexPath.section == 1 && indexPath.item == 1 && [party.questActive boolValue] && [party.questHP integerValue] > 0) {
+            UILabel *lifeLabel = (UILabel*)[cell viewWithTag:1];
+            lifeLabel.text = [NSString stringWithFormat:@"%@ / %@", party.questHP, quest.bossHp];
+            HRPGProgressView *lifeBar = (HRPGProgressView*)[cell viewWithTag:2];
+            lifeBar.progress = ([party.questHP floatValue] / [quest.bossHp floatValue]);
+        } else if ((indexPath.section == 1 && indexPath.item == 1) || (indexPath.section == 1 && indexPath.item == 2 && [party.questActive boolValue] && [party.questHP integerValue] > 0)) {            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             int acceptedCount = 0;
             
             if ([party.questActive boolValue]) {
