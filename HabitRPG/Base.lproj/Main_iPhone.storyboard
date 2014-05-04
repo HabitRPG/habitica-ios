@@ -1693,13 +1693,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Login" id="h2r-f2-MBt">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Mic-9b-jEF">
-                            <connections>
-                                <segue destination="nfF-k7-xqv" kind="unwind" unwindAction="unwindToList:" id="0qW-A2-Ru0"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Login" id="h2r-f2-MBt"/>
                     <connections>
                         <outlet property="activityIndicator" destination="diY-W7-Wfi" id="6Ev-M6-81a"/>
                         <outlet property="loginCell" destination="MAU-ua-dSf" id="8gZ-mR-1fc"/>
@@ -1709,7 +1703,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VlA-Q9-OBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="nfF-k7-xqv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1063" y="2470"/>
         </scene>
