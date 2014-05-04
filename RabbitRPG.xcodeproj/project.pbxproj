@@ -14,6 +14,10 @@
 		D92CDAE718CB84000006C242 /* HRPGToDoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */; };
 		D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */; };
 		D92CDAED18CBC8980006C242 /* HabitRPG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAEB18CBC8980006C242 /* HabitRPG.xcdatamodeld */; };
+		D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D958E2AC1915D40600186A08 /* CoreText.framework */; };
+		D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D915F8621915BEE50037D04D /* QuartzCore.framework */; };
+		D958E2B01915D41400186A08 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D958E2AF1915D41400186A08 /* Security.framework */; };
+		D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D915F8641915BF0D0037D04D /* SystemConfiguration.framework */; };
 		D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D966557318FB129F0014C09D /* HRPGSettingsViewController.m */; };
 		D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71DA18EC98A30089FDC6 /* Quest.m */; };
 		D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71DD18EC98A40089FDC6 /* QuestCollect.m */; };
@@ -78,6 +82,8 @@
 /* Begin PBXFileReference section */
 		D908B3811903515B00D32A75 /* HRPGSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSwipeTableViewCell.h; sourceTree = "<group>"; };
 		D908B3821903515B00D32A75 /* HRPGSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSwipeTableViewCell.m; sourceTree = "<group>"; };
+		D915F8621915BEE50037D04D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D915F8641915BF0D0037D04D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D92CDADB18CB79E50006C242 /* HRPGTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTableViewController.h; sourceTree = "<group>"; };
 		D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTableViewController.m; sourceTree = "<group>"; };
 		D92CDADE18CB83B90006C242 /* HRPGHabitTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGHabitTableViewController.h; sourceTree = "<group>"; };
@@ -89,6 +95,8 @@
 		D92CDAE818CB8C130006C242 /* HRPGFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGFormViewController.h; sourceTree = "<group>"; };
 		D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGFormViewController.m; sourceTree = "<group>"; };
 		D92CDAEC18CBC8980006C242 /* HabitRPG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitRPG.xcdatamodel; sourceTree = "<group>"; };
+		D958E2AC1915D40600186A08 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		D958E2AF1915D41400186A08 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D966557218FB129F0014C09D /* HRPGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSettingsViewController.h; sourceTree = "<group>"; };
 		D966557318FB129F0014C09D /* HRPGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSettingsViewController.m; sourceTree = "<group>"; };
 		D97C71D918EC98A30089FDC6 /* Quest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quest.h; sourceTree = "<group>"; };
@@ -181,6 +189,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */,
+				D958E2B01915D41400186A08 /* Security.framework in Frameworks */,
+				D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */,
+				D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */,
 				D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */,
 				D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */,
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
@@ -314,6 +326,10 @@
 		D9EB4E8D18CB4A9400BB2094 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D958E2AF1915D41400186A08 /* Security.framework */,
+				D958E2AC1915D40600186A08 /* CoreText.framework */,
+				D915F8641915BF0D0037D04D /* SystemConfiguration.framework */,
+				D915F8621915BEE50037D04D /* QuartzCore.framework */,
 				D99DEC8B19084E0D00FFD2B9 /* Crashlytics.framework */,
 				D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */,
 				D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */,
@@ -393,6 +409,7 @@
 				D9EB4E8918CB4A9400BB2094 /* Resources */,
 				E849E9FA1DD6461BA39AB99A /* Copy Pods Resources */,
 				D99DEC8A19084DDD00FFD2B9 /* ShellScript */,
+				D915F89E1915CD760037D04D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -494,6 +511,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		D915F89E1915CD760037D04D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
 		};
 		D99DEC8A19084DDD00FFD2B9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -711,11 +741,61 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/HabitRPG",
 					"$(PROJECT_DIR)",
+					"$(PODS_ROOT)/HockeySDK/Vendor",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/HabitRPG/HockeySDK-iOS/HockeySDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HabitRPG/RabbitRPG-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/CRToast\"",
+					"\"${PODS_ROOT}/Headers/CTFeedback\"",
+					"\"${PODS_ROOT}/Headers/FontAwesomeIconFactory\"",
+					"\"${PODS_ROOT}/Headers/ISO8601DateFormatterValueTransformer\"",
+					"\"${PODS_ROOT}/Headers/MCSwipeTableViewCell\"",
+					"\"${PODS_ROOT}/Headers/NSDate+TimeAgo\"",
+					"\"${PODS_ROOT}/Headers/NSString+Emoji\"",
+					"\"${PODS_ROOT}/Headers/PDKeychainBindingsController\"",
+					"\"${PODS_ROOT}/Headers/RKValueTransformers\"",
+					"\"${PODS_ROOT}/Headers/RestKit\"",
+					"\"${PODS_ROOT}/Headers/RestKit/CoreData\"",
+					"\"${PODS_ROOT}/Headers/RestKit/Network\"",
+					"\"${PODS_ROOT}/Headers/RestKit/ObjectMapping\"",
+					"\"${PODS_ROOT}/Headers/RestKit/Support\"",
+					"\"${PODS_ROOT}/Headers/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/SOCKit\"",
+					"\"${PODS_ROOT}/Headers/TransitionKit\"",
+					"\"${PODS_ROOT}/Headers/VTAcknowledgementsViewController\"",
+					"\"${PODS_ROOT}/Headers/Vendor/LibComponentLogging/Core\"",
+					"\"${PODS_ROOT}/Headers/Vendor/LibComponentLogging/NSLog\"",
+				);
 				INFOPLIST_FILE = "HabitRPG/RabbitRPG-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					CFNetwork,
+					"-framework",
+					CoreData,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					CoreText,
+					"-framework",
+					ImageIO,
+					"-framework",
+					MessageUI,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					UIKit,
+				);
 				PRODUCT_NAME = RabbitRPG;
 				WRAPPER_EXTENSION = app;
 			};
@@ -731,11 +811,61 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/HabitRPG",
 					"$(PROJECT_DIR)",
+					"$(PODS_ROOT)/HockeySDK/Vendor",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/HabitRPG/HockeySDK-iOS/HockeySDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HabitRPG/RabbitRPG-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/CRToast\"",
+					"\"${PODS_ROOT}/Headers/CTFeedback\"",
+					"\"${PODS_ROOT}/Headers/FontAwesomeIconFactory\"",
+					"\"${PODS_ROOT}/Headers/ISO8601DateFormatterValueTransformer\"",
+					"\"${PODS_ROOT}/Headers/MCSwipeTableViewCell\"",
+					"\"${PODS_ROOT}/Headers/NSDate+TimeAgo\"",
+					"\"${PODS_ROOT}/Headers/NSString+Emoji\"",
+					"\"${PODS_ROOT}/Headers/PDKeychainBindingsController\"",
+					"\"${PODS_ROOT}/Headers/RKValueTransformers\"",
+					"\"${PODS_ROOT}/Headers/RestKit\"",
+					"\"${PODS_ROOT}/Headers/RestKit/CoreData\"",
+					"\"${PODS_ROOT}/Headers/RestKit/Network\"",
+					"\"${PODS_ROOT}/Headers/RestKit/ObjectMapping\"",
+					"\"${PODS_ROOT}/Headers/RestKit/Support\"",
+					"\"${PODS_ROOT}/Headers/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/SOCKit\"",
+					"\"${PODS_ROOT}/Headers/TransitionKit\"",
+					"\"${PODS_ROOT}/Headers/VTAcknowledgementsViewController\"",
+					"\"${PODS_ROOT}/Headers/Vendor/LibComponentLogging/Core\"",
+					"\"${PODS_ROOT}/Headers/Vendor/LibComponentLogging/NSLog\"",
+				);
 				INFOPLIST_FILE = "HabitRPG/RabbitRPG-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					CFNetwork,
+					"-framework",
+					CoreData,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					CoreText,
+					"-framework",
+					ImageIO,
+					"-framework",
+					MessageUI,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					UIKit,
+				);
 				PRODUCT_NAME = RabbitRPG;
 				WRAPPER_EXTENSION = app;
 			};

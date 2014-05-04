@@ -10,12 +10,23 @@
 #import "Task.h"
 #import "CRToast.h"
 #import <Crashlytics/Crashlytics.h>
+#if !defined (CONFIGURATION_AppStore_Distribution)
+#import "BWHockeyManager.h"
+#endif
 
 @implementation HRPGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [Crashlytics startWithAPIKey:@"2eb3b3edb3b0f4722d37d649a5af366656e46ddd"];
+    
+    
+#if !defined (CONFIGURATION_AppStore_Distribution)
+    [BWHockeyManager sharedHockeyManager].updateURL = @"https://viirus.sirius.uberspace.de/hockeykit/";
+    [BWHockeyManager sharedHockeyManager].sendUserData = YES;
+    [BWHockeyManager sharedHockeyManager].sendUsageTime = YES;
+#endif
+    
     [CRToastManager setDefaultOptions:@{kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),
                                         kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeGravity),
                                         kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
