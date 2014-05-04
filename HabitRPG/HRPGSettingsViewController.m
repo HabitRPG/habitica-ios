@@ -26,6 +26,7 @@ BOOL reminder;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     user = [_sharedManager getUser];
+    self.username = user.username;
     [self.tableView reloadData];
 }
 
@@ -85,13 +86,14 @@ BOOL reminder;
 {
     if (indexPath.section == 1 && indexPath.item == 1) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DateCell" forIndexPath:indexPath];
+        
         return cell;
     }
     
     NSString *title = nil;
     NSString *identifier = @"Cell";
     if (indexPath.section == 0 && indexPath.item == 0) {
-        title = [NSString stringWithFormat:NSLocalizedString(@"Logged in as: %@", nil), user.username];
+        title = [NSString stringWithFormat:NSLocalizedString(@"Logged in as: %@", nil), self.username];
     } else if (indexPath.section == 0 && indexPath.item == 1) {
         title = NSLocalizedString(@"Log out", nil);
         identifier = @"LogoutCell";
@@ -152,12 +154,6 @@ BOOL reminder;
     [keyChain setString:@"" forKey:@"key"];
     [defaults setObject:@"" forKey:@"partyID"];
     [_sharedManager resetSavedDatabase];
-    
-    [_sharedManager fetchContent:^() {
-        
-    }onError:^() {
-        
-    }];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
     UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
     [self presentViewController:navigationController animated:YES completion: nil];
@@ -165,15 +161,6 @@ BOOL reminder;
 
 -(void)resetCache {
     [_sharedManager resetSavedDatabase];
-    [_sharedManager fetchContent:^() {
-        [_sharedManager fetchUser:^() {
-            
-        }onError:^() {
-            
-        }];
-    }onError:^() {
-        
-    }];
 }
 
 

@@ -50,11 +50,10 @@
     [_sharedManager loginUser:self.usernameField.text withPassword:self.passwordField.text onSuccess:^() {
         [_sharedManager setCredentials];
         [_sharedManager fetchUser:^() {
-            
+            [self dismissViewControllerAnimated:YES completion:nil];
         }onError:^() {
-            
+            [self dismissViewControllerAnimated:YES completion:nil];
         }];
-        [self dismissViewControllerAnimated:YES completion:nil];
     } onError:^() {
         self.navigationItem.prompt = NSLocalizedString(@"Invalid username or password", nil);
         [self.usernameField becomeFirstResponder];

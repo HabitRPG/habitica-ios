@@ -10,5 +10,5 @@
 #import "HRPGBaseViewController.h"
 
 @interface HRPGSettingsViewController : HRPGBaseViewController
-
+@property NSString *username;
 @end

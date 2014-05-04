@@ -619,8 +619,11 @@ NIKFontAwesomeIconFactory *iconFactory;
     }];
     [operation setCompletionBlock:^{
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
-        NSLog(@"Database cleaned");
-    }];
+        [self fetchContent:^() {
+            
+        }onError:^() {
+            
+        }];    }];
     [operation start];
 }
 
@@ -688,6 +691,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         //user = (User*)[mappingResult dictionary][[NSNull null]];
         if (![currentUser isEqualToString:user.id]) {
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+            [fetchRequest setReturnsObjectsAsFaults:NO];
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", currentUser];
             [fetchRequest setPredicate:predicate];
             NSError *error;
