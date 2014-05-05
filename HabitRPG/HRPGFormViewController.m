@@ -29,6 +29,7 @@ int selectedDifficulty;
                     insertNewObjectForEntityForName:@"Task"
                     inManagedObjectContext:self.managedObjectContext];
         self.task.type = self.taskType;
+        self.task.priority = [NSNumber numberWithFloat:1.0f];
         selectedDifficulty = 0;
     } else {
         if ([self.task.priority floatValue] == 1.0) {
