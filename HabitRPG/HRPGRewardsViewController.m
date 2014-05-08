@@ -315,9 +315,11 @@
     MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
     textLabel.text = reward.text;
+    textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     [textLabel sizeToFit];
     UILabel *notesLabel = (UILabel*)[cell viewWithTag:2];
     notesLabel.text = reward.notes;
+    notesLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     [notesLabel sizeToFit];
     UILabel *priceLabel = (UILabel*)[cell viewWithTag:3];
     priceLabel.text = [NSString stringWithFormat:@"%ld", (long)[reward.value integerValue]];

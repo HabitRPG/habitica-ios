@@ -72,6 +72,7 @@
         int currentOffset = (int)(indexPath.item - self.openedIndexPath.item-1);
         ChecklistItem *item = task.checklist[currentOffset];
         label.text = [item.text stringByReplacingEmojiCheatCodesWithUnicode];
+        label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         checklistLabel.hidden = YES;
         cell.backgroundColor = [UIColor lightGrayColor];
         UIImageView *checkMarkView = (UIImageView*)[cell viewWithTag:3];
@@ -117,6 +118,7 @@
         }
         Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
         label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
+        label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];
         if ([checklistCount integerValue] > 0) {
             int checkedCount = 0;

@@ -325,6 +325,7 @@ NSString *partyID;
     if (party != nil) {
         if (indexPath.section == 0 && indexPath.item == 0) {
             cell.textLabel.text = party.hdescription;
+            cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         } else if (indexPath.section == 0 && indexPath.item == 1) {
             if ([party.member count] == 1) {
@@ -339,10 +340,13 @@ NSString *partyID;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 UILabel *titleLabel = (UILabel*)[cell viewWithTag:1];
                 titleLabel.text = quest.text;
+                titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+
             }
         } else if (indexPath.section == 1 && indexPath.item == 1 && [party.questActive boolValue] && [party.questHP integerValue] > 0) {
             UILabel *lifeLabel = (UILabel*)[cell viewWithTag:1];
             lifeLabel.text = [NSString stringWithFormat:@"%@ / %@", party.questHP, quest.bossHp];
+            lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
             HRPGProgressView *lifeBar = (HRPGProgressView*)[cell viewWithTag:2];
             lifeBar.progress = ([party.questHP floatValue] / [quest.bossHp floatValue]);
         } else if ((indexPath.section == 1 && indexPath.item == 1) || (indexPath.section == 1 && indexPath.item == 2 && [party.questActive boolValue] && [party.questHP integerValue] > 0)) {            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
@@ -381,13 +385,15 @@ NSString *partyID;
             } else {
                 authorLabel.textColor = [UIColor blackColor];
             }
-            
+            authorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
             UILabel *textLabel = (UILabel*)[cell viewWithTag:2];
             textLabel.text = [NSString stringWithFormat:@"%@/%@", collect.collectCount, collect.count];
+            textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         } else if (indexPath.section == 2) {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             ChatMessage *message = (ChatMessage*)party.chatmessages[indexPath.item];
             UILabel *authorLabel = (UILabel*)[cell viewWithTag:1];
+            authorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
             authorLabel.text = message.user;
             UILabel *textLabel = (UILabel*)[cell viewWithTag:2];
             if (message.user != nil) {
@@ -395,8 +401,10 @@ NSString *partyID;
                 [message.userObject setAvatarOnImageView:imageView withPetMount:NO onlyHead:YES];
             }
             textLabel.text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
+            textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
             UILabel *dateLabel = (UILabel*)[cell viewWithTag:3];
             dateLabel.text = [message.timestamp timeAgo];
+            dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
             //[dateLabel sizeToFit];
         }
     }

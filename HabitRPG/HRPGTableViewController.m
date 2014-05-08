@@ -120,7 +120,7 @@ BOOL editable;
                                                attributes:@{
                                                             NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                             }
-                                                  context:nil].size.height + 25;
+                                                  context:nil].size.height + 35;
     return height;
 }
 

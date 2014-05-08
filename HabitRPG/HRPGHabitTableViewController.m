@@ -63,6 +63,7 @@
     UILabel *label = (UILabel*)[cell viewWithTag:1];
     label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
     label.textColor = color;
+    label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [self configureSwiping:cell withTask:task];
 }
 

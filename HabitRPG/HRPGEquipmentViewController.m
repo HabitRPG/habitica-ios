@@ -207,6 +207,7 @@
 {
     Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = gear.text;
+    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [cell.imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", gear.key]]
               placeholderImage:[UIImage imageNamed:@"Placeholder"]];
 }

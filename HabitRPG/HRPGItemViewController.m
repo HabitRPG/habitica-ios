@@ -218,6 +218,7 @@
     Item  *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
     textLabel.text = item.text;
+    textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     UILabel *detailTextLabel = (UILabel*)[cell viewWithTag:2];
     detailTextLabel.text = [NSString stringWithFormat:@"%@", item.owned];
     [detailTextLabel sizeToFit];

@@ -180,6 +180,7 @@
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[object valueForKey:@"text"] description];
+    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
 

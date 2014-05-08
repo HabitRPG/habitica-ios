@@ -230,12 +230,16 @@ User *user;
     ChatMessage *message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
     UILabel *authorLabel = (UILabel*)[cell viewWithTag:1];
     authorLabel.text = message.user;
-    
+    authorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+
     UILabel *textLabel = (UILabel*)[cell viewWithTag:2];
     textLabel.text = message.text;
+    textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+
     
     UILabel *dateLabel = (UILabel*)[cell viewWithTag:3];
     dateLabel.text = [message.timestamp timeAgo];
+    dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
 }
 
 
