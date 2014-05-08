@@ -796,7 +796,7 @@ NIKFontAwesomeIconFactory *iconFactory;
             if([fetchedObjects count] == 1) {
                 Item *droppedItem = [fetchedObjects objectAtIndex:0];
                 droppedItem.owned = [NSNumber numberWithLong:([droppedItem.owned integerValue] + 1) ];
-                [self displayDropNotification:taskResponse.dropType withNote:taskResponse.dropNote];
+                [self displayDropNotification:taskResponse.dropKey withType:taskResponse.dropType withNote:taskResponse.dropNote];
             }
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -846,7 +846,7 @@ NIKFontAwesomeIconFactory *iconFactory;
             if([fetchedObjects count] == 1) {
                 Item *droppedItem = [fetchedObjects objectAtIndex:0];
                 droppedItem.owned = [NSNumber numberWithLong:([droppedItem.owned integerValue] + 1) ];
-                [self displayDropNotification:taskResponse.dropType withNote:taskResponse.dropNote];
+                [self displayDropNotification:taskResponse.dropKey withType:taskResponse.dropType withNote:taskResponse.dropNote];
             }
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -1077,9 +1077,9 @@ NIKFontAwesomeIconFactory *iconFactory;
                                 }];
 }
 
--(void) displayDropNotification:(NSString*)type withNote:(NSString*)note {
+-(void) displayDropNotification:(NSString*)name withType:(NSString*)type withNote:(NSString*)note {
     UIColor *notificationColor = [UIColor colorWithRed:0.231 green:0.442 blue:0.964 alpha:1.000];
-    NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You found a %@", nil), type],
+    NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You found a %@ %@", nil), name, type],
                               kCRToastSubtitleTextKey : note,
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
