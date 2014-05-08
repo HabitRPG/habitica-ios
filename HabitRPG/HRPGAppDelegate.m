@@ -23,8 +23,6 @@
     
 #if !defined (CONFIGURATION_AppStore_Distribution)
     [BWHockeyManager sharedHockeyManager].updateURL = @"https://viirus.sirius.uberspace.de/hockeykit/";
-    [BWHockeyManager sharedHockeyManager].sendUserData = YES;
-    [BWHockeyManager sharedHockeyManager].sendUsageTime = YES;
 #endif
     
     [CRToastManager setDefaultOptions:@{kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),
@@ -46,7 +44,12 @@
         } onError:^() {
         }];
     }
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     return YES;
+}
+
+-(void)applicationWillEnterForeground:(UIApplication *)application {
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 @end
