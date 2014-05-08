@@ -117,15 +117,11 @@ int selectedDifficulty;
         switch (indexPath.item) {
             case 0:
                 label.text = NSLocalizedString(@"Up +", nil);
-                if (self.editTask) {
-                    upDownSwitch.on = [self.task.up boolValue];
-                }
+                upDownSwitch.on = [self.task.up boolValue];
                 break;
             case 1:
                 label.text = NSLocalizedString(@"Down -", nil);
-                if (self.editTask) {
-                    upDownSwitch.on = [self.task.down boolValue];
-                }
+                upDownSwitch.on = [self.task.down boolValue];
                 break;
         }
     } else if (indexPath.section == 1) {
@@ -147,43 +143,43 @@ int selectedDifficulty;
         switch (indexPath.item) {
             case 0:
                 label.text = NSLocalizedString(@"Monday", nil);
-                if (self.editTask && self.task.monday) {
+                if ([self.task.monday boolValue]) {
                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
                 }
                 break;
             case 1:
                 label.text = NSLocalizedString(@"Tuesday", nil);
-                if (self.editTask && self.task.tuesday) {
+                if ([self.task.tuesday boolValue]) {
                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
                 }
                 break;
             case 2:
                 label.text = NSLocalizedString(@"Wednesday", nil);
-                if (self.editTask && self.task.wednesday) {
+                if ([self.task.wednesday boolValue]) {
                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
                 }
                 break;
             case 3:
                 label.text = NSLocalizedString(@"Thursday", nil);
-                if (self.editTask && self.task.thursday) {
+                if ([self.task.thursday boolValue]) {
                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
                 }
                 break;
             case 4:
                 label.text = NSLocalizedString(@"Friday", nil);
-                if (self.editTask && self.task.friday) {
+                if ([self.task.friday boolValue]) {
                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
                 }
                 break;
             case 5:
                 label.text = NSLocalizedString(@"Saturday", nil);
-                if (self.editTask && self.task.saturday) {
+                if ([self.task.saturday boolValue]) {
                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
                 }
                 break;
             case 6:
                 label.text = NSLocalizedString(@"Sunday", nil);
-                if (self.editTask && self.task.sunday) {
+                if ([self.task.sunday boolValue]) {
                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
                 }
                 break;
