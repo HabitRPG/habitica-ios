@@ -97,7 +97,13 @@ User *user;
     UIColor *notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
     if (indexPath.section == 0 && indexPath.item == 0) {
         [self.sharedManager sleepInn:^() {
-            NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Sleep tight!", nil),
+            NSString *notificationText;
+            if (user.sleep) {
+                notificationText = NSLocalizedString(@"Sleep tight!", nil);
+            } else {
+                notificationText = NSLocalizedString(@"Wakey Wakey!", nil);
+            }
+            NSDictionary *options = @{kCRToastTextKey : notificationText,
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
                                       kCRToastBackgroundColorKey : notificationColor,
                                       };
@@ -106,13 +112,7 @@ User *user;
                                         }];
             [self.tableView reloadData];
         } onError:^() {
-            NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Wakey, Wakey!", nil),
-                                      kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                                      kCRToastBackgroundColorKey : notificationColor,
-                                      };
-            [CRToastManager showNotificationWithOptions:options
-                                        completionBlock:^{
-                                        }];
+            
         }];
     }
 }
