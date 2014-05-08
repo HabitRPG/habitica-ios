@@ -37,6 +37,9 @@ PDKeychainBindings *keyChain;
         User *user = (User*)[self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
         username = user.username;
         [self.tableView reloadData];
+    } else {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
+        [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
     }
 }
 
