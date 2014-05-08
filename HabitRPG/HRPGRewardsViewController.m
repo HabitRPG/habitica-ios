@@ -27,6 +27,12 @@
 @synthesize managedObjectContext;
 @dynamic sharedManager;
 
+UIImageView *goldImageView;
+UILabel *goldLabel;
+UIImageView *silverImageView;
+UILabel *silverLabel;
+UIView *moneyView;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -48,19 +54,19 @@
     titleLabel.font = [UIFont systemFontOfSize:18.0f];
     titleLabel.text = NSLocalizedString(@"Rewards", nil);
     NSNumber *gold = [self.sharedManager getUser].gold;
-    UIImageView *goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 22)];
+    goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 22)];
     goldImageView.contentMode = UIViewContentModeScaleAspectFit;
     [goldImageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]];
-    UILabel *goldLabel = [[UILabel alloc] initWithFrame:CGRectMake(26, 2, 100, 20)];
+    goldLabel = [[UILabel alloc] initWithFrame:CGRectMake(26, 2, 100, 20)];
     goldLabel.font = [UIFont systemFontOfSize:13.0f];
     goldLabel.text = [NSString stringWithFormat:@"%ld", (long)[gold integerValue]];
     [goldLabel sizeToFit];
     
     
-    UIImageView *silverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(30+goldLabel.frame.size.width, 0, 25, 22)];
+    silverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(30+goldLabel.frame.size.width, 0, 25, 22)];
     silverImageView.contentMode = UIViewContentModeScaleAspectFit;
     [silverImageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_silver.png"]];
-    UILabel *silverLabel = [[UILabel alloc] initWithFrame:CGRectMake(30+goldLabel.frame.size.width+26, 2, 100, 20)];
+    silverLabel = [[UILabel alloc] initWithFrame:CGRectMake(30+goldLabel.frame.size.width+26, 2, 100, 20)];
     silverLabel.font = [UIFont systemFontOfSize:13.0f];
     int silver = ([gold floatValue] - [gold integerValue])*100;
     silverLabel.text = [NSString stringWithFormat:@"%d", silver];
@@ -69,7 +75,7 @@
     
     int moneyWidth = goldImageView.frame.size.width+goldLabel.frame.size.width+silverImageView.frame.size.width+silverLabel.frame.size.width+7;
     
-    UIView *moneyView = [[UIView alloc] initWithFrame:CGRectMake(50-(moneyWidth/2),20,moneyWidth,40)];
+    moneyView = [[UIView alloc] initWithFrame:CGRectMake(50-(moneyWidth/2),20,moneyWidth,40)];
     [moneyView addSubview:goldLabel];
     [moneyView addSubview:goldImageView];
     [moneyView addSubview:silverImageView];
@@ -87,6 +93,37 @@
     } onError:^ () {
         [self.refreshControl endRefreshing];
         [self.sharedManager displayNetworkError];
+    }];
+}
+
+- (IBAction)updateRewardView:(NSString*)amount {
+    NSNumber *gold = [self.sharedManager getUser].gold;
+    goldLabel.text = [NSString stringWithFormat:@"%ld", (long)[gold integerValue]];
+    [goldLabel sizeToFit];
+    
+    int silver = ([gold floatValue] - [gold integerValue])*100;
+    silverLabel.text = [NSString stringWithFormat:@"%d", silver];
+    silverLabel.frame = CGRectMake(30+goldLabel.frame.size.width+26, 2, 100, 16);
+    
+    [silverLabel sizeToFit];
+    silverImageView.frame = CGRectMake(30+goldLabel.frame.size.width, 0, 25, 22);
+    
+    int moneyWidth = goldImageView.frame.size.width+goldLabel.frame.size.width+silverImageView.frame.size.width+silverLabel.frame.size.width+7;
+    
+    moneyView.frame = CGRectMake(50-(moneyWidth/2),20,moneyWidth,40);
+    
+    UILabel *updateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0
+                                                                     , goldLabel.frame.origin.y, goldLabel.frame.size.width+goldLabel.frame.origin.x, 16)];
+    updateLabel.font = [UIFont systemFontOfSize:13.0f];
+    updateLabel.textAlignment = NSTextAlignmentRight;
+    updateLabel.text = amount;
+    updateLabel.textColor = [UIColor redColor];
+    [moneyView addSubview:updateLabel];
+    [UIView animateWithDuration:0.3 animations:^() {
+        updateLabel.frame = CGRectMake(0, 25, goldLabel.frame.size.width+goldLabel.frame.origin.x, 16);
+        updateLabel.alpha = 0.0f;
+    } completion:^(BOOL completition) {
+        [updateLabel removeFromSuperview];
     }];
 }
 
@@ -181,13 +218,13 @@
     MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
     if ([reward.type isEqualToString:@"reward"]) {
         [self.sharedManager getReward:reward.key onSuccess:^() {
-            
+            [self updateRewardView:[reward.value stringValue]];
         }onError:^() {
             
         }];
     } else {
         [self.sharedManager buyObject:reward onSuccess:^() {
-            
+            [self updateRewardView:[reward.value stringValue]];
         }onError:^() {
             
         }];

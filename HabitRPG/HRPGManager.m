@@ -21,6 +21,7 @@
 #import "Item.h"
 #import <SDWebImageManager.h>
 #import <SDImageCache.h>
+#import "HRPGUserBuyResponse.h"
 
 @implementation HRPGManager
 @synthesize managedObjectContext;
@@ -342,12 +343,36 @@ NIKFontAwesomeIconFactory *iconFactory;
     [objectManager addResponseDescriptor:responseDescriptor];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:@"dailys" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/buy/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
+    
+    
+    RKObjectMapping *buyMapping = [RKObjectMapping mappingForClass:[HRPGUserBuyResponse class]];
+    [buyMapping addAttributeMappingsFromDictionary:@{
+                                                       @"stats.lvl":             @"level",
+                                                       @"stats.gp":             @"gold",
+                                                       @"stats.exp":             @"experience",
+                                                       @"stats.mp":             @"magic",
+                                                       @"stats.hp":             @"health",
+                                                       @"items.gear.equipped.headAccessory" : @"equippedHeadAccessory",
+                                                       @"items.gear.equipped.armor" : @"equippedArmor",
+                                                       @"items.gear.equipped.head" : @"equippedHead",
+                                                       @"items.gear.equipped.shield" : @"equippedShield",
+                                                       @"items.gear.equipped.weapon" : @"equippedWeapon",
+                                                       @"items.gear.equipped.back" : @"equippedBack",
+                                                       @"items.gear.costume.headAccessory" : @"costumeHeadAccessory",
+                                                       @"items.gear.costume.armor" : @"costumeArmor",
+                                                       @"items.gear.costume.head" : @"costumeHead",
+                                                       @"items.gear.costume.shield" : @"costumeShield",
+                                                       @"items.gear.costume.weapon" : @"costumeWeapon",
+                                                       @"items.gear.costume.back" : @"costumeBack",
+                                                       @"items.currentPet" : @"currentPet",
+                                                       @"items.currentMount" : @"currentMount",
+                                                       }];
+    buyMapping.assignsDefaultValueForMissingAttributes = NO;
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:buyMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/buy/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
     
     entityMapping = [RKEntityMapping mappingForEntityForName:@"Group" inManagedObjectStore:managedObjectStore];
     [entityMapping addAttributeMappingsFromDictionary:@{
@@ -950,6 +975,9 @@ NIKFontAwesomeIconFactory *iconFactory;
 -(void) buyObject:(MetaReward*)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/buy/%@", reward.key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
+        HRPGUserBuyResponse *response = [mappingResult firstObject];
+        user.health = response.health;
+        user.gold = response.gold;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
         return;
