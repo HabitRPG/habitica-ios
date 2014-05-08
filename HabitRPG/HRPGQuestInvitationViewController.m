@@ -95,8 +95,15 @@
     if (indexPath.section == 0 && indexPath.item == 0) {
         cell.textLabel.text = self.quest.text;
     } else if (indexPath.section == 0 && indexPath.item == 1) {
-        UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
-        textLabel.text = self.quest.notes;
+        UILabel *label = (UILabel*)[cell viewWithTag:1];
+        NSError *err = nil;
+        UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        NSString *html = [NSString stringWithFormat:@"<span style=\"font-family: Helvetica Neue; font-size: %ld\">%@</span>", (long)[[NSNumber numberWithFloat:font.pointSize] integerValue], self.quest.notes];
+        label.attributedText = [[NSAttributedString alloc]
+                                initWithData: [html dataUsingEncoding:NSUTF8StringEncoding]
+                                options: @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType}
+                                documentAttributes: nil
+                                error: &err];
     }
     return cell;
 }

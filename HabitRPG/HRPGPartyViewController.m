@@ -10,6 +10,7 @@
 #import "HRPGAppDelegate.h"
 #import "HRPGQuestInvitationViewController.h"
 #import "HRPGQuestParticipantsViewController.h"
+#import "HRPGQuestDetailController.h"
 #import "Task.h"
 #import "Group.h"
 #import "Quest.h"
@@ -151,7 +152,7 @@ NSString *partyID;
         if (!party.questKey) {
             return 60;
         }
-        NSInteger height = [quest.text boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
+        NSInteger height = [quest.text boundingRectWithSize:CGSizeMake(270.0f, MAXFLOAT)
                                                           options:NSStringDrawingUsesLineFragmentOrigin
                                                        attributes:@{
                                                                     NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
@@ -209,6 +210,8 @@ NSString *partyID;
 {
     if (indexPath.section == 0 && indexPath.item == 1) {
         [self performSegueWithIdentifier: @"MembersSegue" sender: self];
+    } else if (indexPath.section == 1 && indexPath.item == 0) {
+        [self performSegueWithIdentifier: @"QuestDetailSegue" sender: self];
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         [self performSegueWithIdentifier: @"ParticipantsSegue" sender: self];
     }
@@ -341,7 +344,7 @@ NSString *partyID;
                 UILabel *titleLabel = (UILabel*)[cell viewWithTag:1];
                 titleLabel.text = quest.text;
                 titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-
+                
             }
         } else if (indexPath.section == 1 && indexPath.item == 1 && [party.questActive boolValue] && [party.questHP integerValue] > 0) {
             UILabel *lifeLabel = (UILabel*)[cell viewWithTag:1];
@@ -433,6 +436,9 @@ NSString *partyID;
         HRPGQuestParticipantsViewController *qpViewcontroller = segue.destinationViewController;
         qpViewcontroller.party = party;
         qpViewcontroller.quest = quest;
+    } else if ([segue.identifier isEqualToString:@"QuestDetailSegue"]) {
+        HRPGQuestDetailController *qdViewcontroller = segue.destinationViewController;
+        qdViewcontroller.quest = quest;
     }
 }
 
