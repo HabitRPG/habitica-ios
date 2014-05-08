@@ -947,6 +947,11 @@ NIKFontAwesomeIconFactory *iconFactory;
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
         errorBlock();
         return;
     }];
@@ -1024,6 +1029,11 @@ NIKFontAwesomeIconFactory *iconFactory;
         successBlock();
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
         errorBlock();
         return;
     }];
