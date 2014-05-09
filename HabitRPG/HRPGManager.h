@@ -34,6 +34,8 @@
 
 -(void) loginUser:(NSString*)username withPassword:(NSString*)password onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock;
+-(void) reviveUser:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 -(NSManagedObjectContext *) getManagedObjectContext;
 - (void) displayNetworkError;
 - (void) setCredentials;

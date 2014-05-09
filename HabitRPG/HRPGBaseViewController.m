@@ -53,6 +53,15 @@
     [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+    User *user = [self.sharedManager getUser];
+    if (user && [user.health integerValue] <= 0) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+        UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"deathNavigationController"];
+        [self presentViewController:navigationController animated:YES completion: nil];
+    }
+}
+
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
     [self.tableView reloadData];
 }

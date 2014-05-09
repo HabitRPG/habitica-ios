@@ -1887,6 +1887,91 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1063" y="3058"/>
         </scene>
+        <!--Death View Controller - You died-->
+        <scene sceneID="0Na-T4-8Wq">
+            <objects>
+                <tableViewController id="6yw-s1-fkd" customClass="HRPGDeathViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ohk-0V-BHr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="RnB-G6-Rmw">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="256" id="X6V-xZ-UsG">
+                                        <rect key="frame" x="0.0" y="99" width="320" height="256"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X6V-xZ-UsG" id="Itd-DS-zmS">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="255"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JFx-ZH-65o">
+                                                    <rect key="frame" x="20" y="5" width="280" height="250"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <string key="text">You've lost a Level, all your Gold, and a random piece of Equipment. Arise, Habiteer, and try again! Curb those negative Habits, be vigilant in completion of Dailies, and hold death at arm's length with a Health Potion if you falter!</string>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JFx-ZH-65o" firstAttribute="leading" secondItem="Itd-DS-zmS" secondAttribute="leading" constant="20" id="6Gr-JK-kvx"/>
+                                                <constraint firstAttribute="bottom" secondItem="JFx-ZH-65o" secondAttribute="bottom" id="7ky-Rx-0hb"/>
+                                                <constraint firstAttribute="trailing" secondItem="JFx-ZH-65o" secondAttribute="trailing" constant="20" id="Rjd-Bf-e6x"/>
+                                                <constraint firstItem="JFx-ZH-65o" firstAttribute="top" secondItem="Itd-DS-zmS" secondAttribute="top" constant="5" id="Zds-9o-YTt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="GCr-hJ-GLz">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="69F-VA-kFE">
+                                        <rect key="frame" x="0.0" y="375" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="69F-VA-kFE" id="dCI-TI-rrE">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Revive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6u-qg-zeA">
+                                                    <rect key="frame" x="20" y="11" width="280" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.76852512360000003" green="0.011095160620000001" blue="0.086223028600000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="6yw-s1-fkd" id="gAI-oh-4lI"/>
+                            <outlet property="delegate" destination="6yw-s1-fkd" id="HUF-OP-sw6"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="You died" id="aDK-49-pdk"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Llr-FU-8Hc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1063" y="3641"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8pd-jO-W2P">
+            <objects>
+                <navigationController storyboardIdentifier="deathNavigationController" definesPresentationContext="YES" id="4t3-rx-jKg" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uZN-ZL-HAP">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6yw-s1-fkd" kind="relationship" relationship="rootViewController" id="0bb-36-ixm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ia5-DB-6nq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="625" y="3641"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ibZ-No-542">
             <objects>
