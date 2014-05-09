@@ -41,7 +41,7 @@ NSString *deathNote = @"You've lost a Level, all your Gold, and a random piece o
                                            attributes:@{
                                                         NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                         }
-                                              context:nil].size.height+5;
+                                              context:nil].size.height+25;
     }
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }

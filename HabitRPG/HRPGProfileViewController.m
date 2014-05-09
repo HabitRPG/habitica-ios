@@ -23,6 +23,7 @@
 @synthesize managedObjectContext;
 @dynamic sharedManager;
 NSString *username;
+NSInteger userLevel;
 NSString *currentUserID;
 PDKeychainBindings *keyChain;
 
@@ -36,6 +37,7 @@ PDKeychainBindings *keyChain;
         [self.fetchedResultsController performFetch:&error];
         User *user = (User*)[self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
         username = user.username;
+        userLevel = [user.level integerValue];
         [self.tableView reloadData];
     } else {
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
@@ -80,7 +82,11 @@ PDKeychainBindings *keyChain;
 {
     switch (section) {
         case 0:
-            return 3;
+            if (userLevel <= 10) {
+                return 2;
+            } else {
+                return 3;
+            }
         case 1:
             return 2;
         case 2:
@@ -291,10 +297,17 @@ PDKeychainBindings *keyChain;
     experienceProgress.progress = ([user.experience floatValue] / [user.nextLevel floatValue]);
     
     UILabel *magicLabel = (UILabel*)[cell viewWithTag:6];
-    magicLabel.text = [NSString stringWithFormat:@"%ld/%@", (long)[user.magic integerValue], user.maxMagic];
-    UIProgressView *magicProgress = (UIProgressView*)[cell viewWithTag:7];
-    magicProgress.progress = ([user.magic floatValue] / [user.maxMagic floatValue]);
     
+    UIProgressView *magicProgress = (UIProgressView*)[cell viewWithTag:7];
+    if ([user.level integerValue] >= 10) {
+        magicLabel.text = [NSString stringWithFormat:@"%ld/%@", (long)[user.magic integerValue], user.maxMagic];
+        magicProgress.progress = ([user.magic floatValue] / [user.maxMagic floatValue]);
+        magicLabel.hidden = NO;
+        magicProgress.hidden = NO;
+    } else {
+        magicLabel.hidden = YES;
+        magicProgress.hidden = YES;
+    }
     UIImageView *imageView = (UIImageView*)[cell viewWithTag:8];
     [user setAvatarOnImageView:imageView];
 }
