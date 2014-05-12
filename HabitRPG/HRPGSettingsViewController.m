@@ -87,8 +87,10 @@ BOOL reminder;
     if (indexPath.section == 1 && indexPath.item == 1) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DateCell" forIndexPath:indexPath];
         NSDate *reminderTime = [defaults valueForKey:@"dailyReminderTime"];
-        UIDatePicker *datePicker = (UIDatePicker*)[cell viewWithTag:1];
-        datePicker.date = reminderTime;
+        if (reminderTime) {
+            UIDatePicker *datePicker = (UIDatePicker*)[cell viewWithTag:1];
+            datePicker.date = reminderTime;
+        }
         return cell;
     }
     
@@ -146,6 +148,7 @@ BOOL reminder;
     localNotification.fireDate = picker.date;
     localNotification.repeatInterval = NSDayCalendarUnit;
     localNotification.alertBody = NSLocalizedString(@"Don't forget to mark your todos!", nil);
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     NSLog(@"%@", picker.date);
 }
