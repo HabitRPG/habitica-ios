@@ -44,6 +44,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         userLevel = [user.level integerValue];
         [self.tableView reloadData];
     }
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (void)viewDidLoad
@@ -74,6 +75,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 - (void) refresh {
     [self.sharedManager fetchUser:^ () {
         [self.refreshControl endRefreshing];
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
     } onError:^ () {
         [self.refreshControl endRefreshing];
     }];
@@ -285,6 +287,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         }
         case NSFetchedResultsChangeUpdate: {
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            
             break;
         }
         case NSFetchedResultsChangeDelete: {

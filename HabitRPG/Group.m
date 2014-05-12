@@ -10,7 +10,8 @@
 #import "ChatMessage.h"
 #import "QuestCollect.h"
 #import "User.h"
-
+#import "HRPGAppDelegate.h"
+#import "HRPGManager.h"
 
 @implementation Group
 

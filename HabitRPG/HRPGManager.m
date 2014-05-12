@@ -22,6 +22,12 @@
 #import <SDWebImageManager.h>
 #import <SDImageCache.h>
 #import "HRPGUserBuyResponse.h"
+#import "HRPGEmptySerializer.h"
+
+@interface HRPGManager ()
+@property NIKFontAwesomeIconFactory *iconFactory;
+
+@end
 
 @implementation HRPGManager
 @synthesize managedObjectContext;
@@ -29,7 +35,6 @@ RKManagedObjectStore *managedObjectStore;
 User *user;
 NSUserDefaults *defaults;
 NSString *currentUser;
-NIKFontAwesomeIconFactory *iconFactory;
 
 +(RKValueTransformer*)millisecondsSince1970ToDateValueTransformer {
     return [RKBlockValueTransformer valueTransformerWithValidationBlock:^BOOL(__unsafe_unretained Class sourceClass, __unsafe_unretained Class destinationClass) {
@@ -225,10 +230,14 @@ NIKFontAwesomeIconFactory *iconFactory;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:loginMapping method:RKRequestMethodAny pathPattern:@"/api/v2/user/auth/local" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
-    RKObjectMapping *sleepMapping = [RKObjectMapping mappingForClass:[NSDictionary class]];
-    [sleepMapping addAttributeMappingsFromDictionary:@{}];
+    RKObjectMapping *emptyMapping = [RKObjectMapping mappingForClass:[NSDictionary class]];
+    [emptyMapping addAttributeMappingsFromDictionary:@{}];
+    [RKMIMETypeSerialization registerClass:[HRPGEmptySerializer class] forMIMEType:@"text/plain"];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:emptyMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/sleep" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
     
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:sleepMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/sleep" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKObjectMapping *emptyStringMapping = [RKObjectMapping mappingForClass:[NSString class]];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:emptyStringMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/chat/seen" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
     RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
@@ -628,10 +637,10 @@ NIKFontAwesomeIconFactory *iconFactory;
         }
     }
     
-    if (iconFactory == nil) {
-        iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-        iconFactory.colors = @[[UIColor whiteColor]];
-        iconFactory.size = 35;
+    if (self.iconFactory == nil) {
+        self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+        self.iconFactory.colors = @[[UIColor whiteColor]];
+        self.iconFactory.size = 35;
     }
 }
 
@@ -1030,10 +1039,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 -(void) acceptQuest:(NSString*)group withQuest:(NSString*)questID useForce:(Boolean)force onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     NSDictionary *params = nil;
-
-    //if (force) {
-    //    params = @{@"force": force};
-    //}
+    
     if (questID) {
         params = @{@"key": questID};
     }
@@ -1052,6 +1058,22 @@ NIKFontAwesomeIconFactory *iconFactory;
         return;
     }];
 }
+
+-(void) chatSeen:(NSString*)group {
+    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/chat/seen", group] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        return;
+    }];
+}
+
 
 -(void) rejectQuest:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/questReject", group] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -1093,7 +1115,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],
-                              kCRToastImageKey : [iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
+                              kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
                               };
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{
@@ -1106,7 +1128,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],
-                              kCRToastImageKey : [iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
+                              kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
                               };
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{
@@ -1125,7 +1147,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     NSDictionary *options = @{kCRToastTextKey : content,
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastBackgroundColorKey : notificationColor,
-                              kCRToastImageKey : [iconFactory createImageForIcon:NIKFontAwesomeIconCheck]
+                              kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconCheck]
                               };
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{
@@ -1139,7 +1161,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastBackgroundColorKey : notificationColor,
-                              kCRToastImageKey : [iconFactory createImageForIcon:NIKFontAwesomeIconArrowUp]
+                              kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconArrowUp]
                               };
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{
@@ -1153,7 +1175,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastBackgroundColorKey : notificationColor,
-                              kCRToastImageKey : [iconFactory createImageForIcon:NIKFontAwesomeIconCheck]
+                              kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconCheck]
                               };
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{

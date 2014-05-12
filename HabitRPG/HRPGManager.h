@@ -31,6 +31,7 @@
 -(void) acceptQuest:(NSString*)group withQuest:(NSString*)questID useForce:(Boolean)force onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) rejectQuest:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) abortQuest:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+-(void) chatSeen:(NSString*)group;
 
 -(void) loginUser:(NSString*)username withPassword:(NSString*)password onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 -(void) sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock;
