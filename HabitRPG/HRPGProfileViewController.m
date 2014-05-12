@@ -10,9 +10,12 @@
 #import "HRPGAppDelegate.h"
 #import "Task.h"
 #import "User.h"
+#import "Group.h"
 #import <PDKeychainBindings.h>
 #import <VTAcknowledgementsViewController.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
+#import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 @interface HRPGProfileViewController ()
 @property HRPGManager *sharedManager;
 
@@ -26,6 +29,7 @@ NSString *username;
 NSInteger userLevel;
 NSString *currentUserID;
 PDKeychainBindings *keyChain;
+NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -39,9 +43,6 @@ PDKeychainBindings *keyChain;
         username = user.username;
         userLevel = [user.level integerValue];
         [self.tableView reloadData];
-    } else {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
-        [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
     }
 }
 
@@ -61,6 +62,13 @@ PDKeychainBindings *keyChain;
     if (username == nil) {
         [self refresh];
     }
+    
+    iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+    iconFactory.square = YES;
+    iconFactory.colors = @[[UIColor colorWithRed:0.372 green:0.603 blue:0.014 alpha:1.000]];
+    iconFactory.strokeColor = [UIColor colorWithRed:0.372 green:0.603 blue:0.014 alpha:1.000];
+    iconFactory.size = 13.0f;
+    iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
 }
 
 - (void) refresh {
@@ -170,6 +178,7 @@ PDKeychainBindings *keyChain;
         return cell;
     } else {
         NSString *title = nil;
+        BOOL showIndicator = NO;
         if (indexPath.section == 0 && indexPath.item == 1) {
             title = NSLocalizedString(@"Rewards", nil);
         } else if (indexPath.section == 0 && indexPath.item == 2) {
@@ -178,6 +187,10 @@ PDKeychainBindings *keyChain;
             title = NSLocalizedString(@"Tavern", nil);
         } else if (indexPath.section == 1 && indexPath.item == 1) {
             title = NSLocalizedString(@"Party", nil);
+            User *user = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+            if ([user.party.newMessages boolValue]) {
+                showIndicator = YES;
+            }
         } else if (indexPath.section == 2 && indexPath.item == 0) {
             title = NSLocalizedString(@"Equipment", nil);
         } else if (indexPath.section == 2 && indexPath.item == 1) {
@@ -193,6 +206,11 @@ PDKeychainBindings *keyChain;
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         UILabel *label = (UILabel*)[cell viewWithTag:1];
         label.text = title;
+        UIImageView *indicatorView = (UIImageView*)[cell viewWithTag:2];
+        indicatorView.hidden = !showIndicator;
+        if (showIndicator) {
+            indicatorView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconCircle];
+        }
         return cell;
     }
 }

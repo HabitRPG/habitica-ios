@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSNumber *questActive;
 @property (nonatomic, retain) NSNumber * questHP;
 @property (nonatomic, retain) NSString * questKey;
+@property (nonatomic, retain) NSNumber * newMessages;
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSOrderedSet *chatmessages;
 @property (nonatomic, retain) User *leader;

@@ -42,6 +42,7 @@
         <attribute name="hdescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="newMessages" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="privacy" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="questActive" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="questHP" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -197,7 +198,7 @@
         <element name="Egg" positionX="18" positionY="162" width="128" height="90"/>
         <element name="Food" positionX="81" positionY="198" width="128" height="88"/>
         <element name="Gear" positionX="9" positionY="153" width="128" height="163"/>
-        <element name="Group" positionX="0" positionY="0" width="128" height="240"/>
+        <element name="Group" positionX="0" positionY="0" width="128" height="255"/>
         <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="58"/>
         <element name="Item" positionX="36" positionY="153" width="128" height="148"/>
         <element name="MetaReward" positionX="54" positionY="162" width="128" height="118"/>

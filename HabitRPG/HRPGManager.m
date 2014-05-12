@@ -337,7 +337,17 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                                                   toKeyPath:@"ownedEggs"
                                                                                 withMapping:eggOwnedMapping]];
 
-        responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:@"habits" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKEntityMapping* newMessageMapping = [RKEntityMapping mappingForEntityForName:@"Group" inManagedObjectStore:managedObjectStore];
+    newMessageMapping.forceCollectionMapping = YES;
+    [newMessageMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"id"];
+    [newMessageMapping addAttributeMappingsFromDictionary:@{@"(id).value":              @"newMessages"}];
+    newMessageMapping.identificationAttributes = @[ @"id" ];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"newMessages"
+                                                                                  toKeyPath:@"groups"
+                                                                                withMapping:newMessageMapping]];
+
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:@"habits" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:@"todos" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];

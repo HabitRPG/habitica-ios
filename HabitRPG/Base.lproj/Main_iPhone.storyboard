@@ -583,13 +583,29 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mY-LD-ILX">
-                                            <rect key="frame" x="20" y="11" width="267" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mY-LD-ILX">
+                                            <rect key="frame" x="20" y="11" width="246" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fNf-oV-N8K">
+                                            <rect key="frame" x="274" y="15" width="13" height="13"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="13" id="DEC-3Y-Ge6"/>
+                                                <constraint firstAttribute="width" secondItem="fNf-oV-N8K" secondAttribute="height" multiplier="1:1" id="dbq-Vj-BbY"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="7mY-LD-ILX" firstAttribute="leading" secondItem="Wng-vv-ZBj" secondAttribute="leading" constant="20" id="7nR-Rx-gFj"/>
+                                        <constraint firstItem="fNf-oV-N8K" firstAttribute="leading" secondItem="7mY-LD-ILX" secondAttribute="trailing" constant="8" id="bjg-fn-di0"/>
+                                        <constraint firstAttribute="trailing" secondItem="fNf-oV-N8K" secondAttribute="trailing" id="fjg-lD-Iro"/>
+                                        <constraint firstAttribute="centerY" secondItem="fNf-oV-N8K" secondAttribute="centerY" id="grR-3z-52j"/>
+                                        <constraint firstItem="7mY-LD-ILX" firstAttribute="top" secondItem="Wng-vv-ZBj" secondAttribute="top" constant="11" id="tnp-Rw-8tc"/>
+                                        <constraint firstAttribute="bottom" secondItem="7mY-LD-ILX" secondAttribute="bottom" constant="11" id="yh4-O8-3li"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyProfileCell" textLabel="Spy-XJ-HaY" style="IBUITableViewCellStyleDefault" id="yyr-L9-GbT">
