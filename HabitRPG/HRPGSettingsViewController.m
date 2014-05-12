@@ -86,7 +86,9 @@ BOOL reminder;
 {
     if (indexPath.section == 1 && indexPath.item == 1) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DateCell" forIndexPath:indexPath];
-        
+        NSDate *reminderTime = [defaults valueForKey:@"dailyReminderTime"];
+        UIDatePicker *datePicker = (UIDatePicker*)[cell viewWithTag:1];
+        datePicker.date = reminderTime;
         return cell;
     }
     
