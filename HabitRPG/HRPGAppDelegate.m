@@ -25,6 +25,8 @@
     [BWHockeyManager sharedHockeyManager].updateURL = @"https://viirus.sirius.uberspace.de/hockeykit/";
 #endif
     
+    CRToastInteractionResponder *blankResponder = [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeAll automaticallyDismiss:YES block:^(CRToastInteractionType interactionType){
+    }];
     [CRToastManager setDefaultOptions:@{kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),
                                         kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeGravity),
                                         kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
@@ -33,7 +35,9 @@
                                         kCRToastAnimationInTimeIntervalKey : @(0.5),
                                         kCRToastAnimationOutTimeIntervalKey: @(0.5),
                                         kCRToastFontKey: [UIFont systemFontOfSize:17],
-                                        kCRToastNotificationPresentationTypeKey : @(CRToastPresentationTypeCover)}];
+                                        kCRToastNotificationPresentationTypeKey : @(CRToastPresentationTypeCover),
+                                        kCRToastInteractionRespondersKey:@[blankResponder]
+                                        }];
     
     _sharedManager = [[HRPGManager alloc] init];
     [_sharedManager loadObjectManager];
