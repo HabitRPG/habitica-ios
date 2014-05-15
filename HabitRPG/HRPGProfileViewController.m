@@ -44,7 +44,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         userLevel = [user.level integerValue];
         [self.tableView reloadData];
     }
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
+    //[self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (void)viewDidLoad

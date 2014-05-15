@@ -44,12 +44,14 @@
         } onError:^() {
         }];
     }
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    NSArray* scheduledNotifications = [NSArray arrayWithArray:application.scheduledLocalNotifications];
+    application.scheduledLocalNotifications = scheduledNotifications;
     return YES;
 }
 
 -(void)applicationWillEnterForeground:(UIApplication *)application {
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    NSArray* scheduledNotifications = [NSArray arrayWithArray:application.scheduledLocalNotifications];
+    application.scheduledLocalNotifications = scheduledNotifications;
 }
 
 @end
