@@ -23,10 +23,11 @@
 #import <SDImageCache.h>
 #import "HRPGUserBuyResponse.h"
 #import "HRPGEmptySerializer.h"
+#import "HRPGNetworkIndicatorController.h"
 
 @interface HRPGManager ()
 @property NIKFontAwesomeIconFactory *iconFactory;
-
+@property HRPGNetworkIndicatorController *networkIndicatorController;
 @end
 
 @implementation HRPGManager
@@ -642,6 +643,8 @@ NSString *currentUser;
         self.iconFactory.colors = @[[UIColor whiteColor]];
         self.iconFactory.size = 35;
     }
+    
+    self.networkIndicatorController = [[HRPGNetworkIndicatorController alloc] init];
 }
 
 - (void) resetSavedDatabase {
@@ -706,34 +709,43 @@ NSString *currentUser;
 }
 
 - (void) fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock{
+    [self.networkIndicatorController beginNetworking];
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/content" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         [defaults setObject:[NSDate date] forKey:@"lastContentFetch"];
         [defaults synchronize];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 }
 
 - (void) fetchTasks:(void (^)())successBlock onError:(void (^)())errorBlock{
+    [self.networkIndicatorController beginNetworking];
+
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/user/tasks" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         [defaults setObject:[NSDate date] forKey:@"lastTaskFetch"];
         [defaults synchronize];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 }
 
 - (void) fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock{
+    [self.networkIndicatorController beginNetworking];
+
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/user" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         //user = (User*)[mappingResult dictionary][[NSNull null]];
         if (![currentUser isEqualToString:user.id]) {
@@ -752,6 +764,7 @@ NSString *currentUser;
         [defaults setObject:[NSDate date] forKey:@"lastTaskFetch"];
         [defaults synchronize];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -760,16 +773,20 @@ NSString *currentUser;
             [self displayNetworkError];
         }
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 
 }
 
 - (void) fetchGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock{
+    [self.networkIndicatorController beginNetworking];
+
     [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/api/v2/groups/%@", groupID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -778,11 +795,14 @@ NSString *currentUser;
             [self displayNetworkError];
         }
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 }
 
 - (void) fetchGroups:(NSString*)groupType onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock{
+    [self.networkIndicatorController beginNetworking];
+
     NSDictionary *params = @{@"type": groupType};
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/groups" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
@@ -794,6 +814,7 @@ NSString *currentUser;
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -802,11 +823,14 @@ NSString *currentUser;
             [self displayNetworkError];
         }
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 }
 
 -(void) upDownTask:(Task*)task direction:(NSString*)withDirection onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@/%@", task.id, withDirection] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGTaskResponse *taskResponse = (HRPGTaskResponse*)[mappingResult firstObject];
@@ -848,6 +872,7 @@ NSString *currentUser;
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -856,11 +881,14 @@ NSString *currentUser;
             [self displayNetworkError];
         }
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 }
 
 -(void) getReward:(NSString*)rewardID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@/down", rewardID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGTaskResponse *taskResponse = (HRPGTaskResponse*)[mappingResult firstObject];
@@ -898,6 +926,7 @@ NSString *currentUser;
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -906,28 +935,36 @@ NSString *currentUser;
             [self displayNetworkError];
         }
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 }
 
 
 -(void) createTask:(Task*)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+
     [[RKObjectManager sharedManager] postObject:task path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 }
 
 -(void) updateTask:(Task*)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+
     [[RKObjectManager sharedManager] putObject:task path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -936,15 +973,19 @@ NSString *currentUser;
             [self displayNetworkError];
         }
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 }
 
 -(void) deleteTask:(Task*)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+
     [[RKObjectManager sharedManager] deleteObject:task path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -953,12 +994,15 @@ NSString *currentUser;
             [self displayNetworkError];
         }
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 }
 
 
 -(void) loginUser:(NSString *)username withPassword:(NSString *)password onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+
     NSDictionary *params = @{@"username": username, @"password": password};
     [[RKObjectManager sharedManager] postObject:Nil path:@"/api/v2/user/auth/local" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         HRPGLoginData *loginData = (HRPGLoginData*)[mappingResult firstObject];
@@ -967,6 +1011,7 @@ NSString *currentUser;
         [keyChain setString:loginData.key forKey:@"key"];
         
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -975,17 +1020,21 @@ NSString *currentUser;
             [self displayNetworkError];
         }
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 
 }
 
 -(void) sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+
     [[RKObjectManager sharedManager] postObject:Nil path:@"/api/v2/user/sleep" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         user.sleep = !user.sleep;
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -994,16 +1043,20 @@ NSString *currentUser;
             [self displayNetworkError];
         }
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
     
 }
 
 -(void) reviveUser:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+
     [[RKObjectManager sharedManager] postObject:Nil path:@"/api/v2/user/revive" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -1012,12 +1065,15 @@ NSString *currentUser;
             [self displayNetworkError];
         }
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
     
 }
 
 -(void) buyObject:(MetaReward*)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+
     [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/buy/%@", reward.key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGUserBuyResponse *response = [mappingResult firstObject];
@@ -1025,6 +1081,7 @@ NSString *currentUser;
         user.gold = response.gold;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -1033,11 +1090,14 @@ NSString *currentUser;
             [self displayNetworkError];
         }
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 }
 
 -(void) acceptQuest:(NSString*)group withQuest:(NSString*)questID useForce:(Boolean)force onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+
     NSDictionary *params = nil;
     
     if (questID) {
@@ -1047,6 +1107,7 @@ NSString *currentUser;
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -1055,14 +1116,18 @@ NSString *currentUser;
             [self displayNetworkError];
         }
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 }
 
 -(void) chatSeen:(NSString*)group {
+    [self.networkIndicatorController beginNetworking];
+
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/chat/seen", group] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -1070,16 +1135,20 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 }
 
 
 -(void) rejectQuest:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/questReject", group] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -1088,15 +1157,19 @@ NSString *currentUser;
             [self displayNetworkError];
         }
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 }
 
 -(void) abortQuest:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/questAbort", group] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -1105,6 +1178,7 @@ NSString *currentUser;
             [self displayNetworkError];
         }
         errorBlock();
+        [self.networkIndicatorController endNetworking];
         return;
     }];
 }

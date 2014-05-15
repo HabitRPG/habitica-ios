@@ -209,6 +209,6 @@
         <element name="Spell" positionX="45" positionY="153" width="128" height="148"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="390"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="825"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="823"/>
     </elements>
 </model>
