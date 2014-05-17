@@ -1244,6 +1244,9 @@ NSString *currentUser;
 }
 
 -(void) displayDropNotification:(NSString*)name withType:(NSString*)type withNote:(NSString*)note {
+    if (!note) {
+        note = @"";
+    }
     UIColor *notificationColor = [UIColor colorWithRed:0.231 green:0.442 blue:0.964 alpha:1.000];
     NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You found a %@ %@", nil), name, type],
                               kCRToastSubtitleTextKey : note,
