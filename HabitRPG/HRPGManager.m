@@ -1054,6 +1054,7 @@ NSString *currentUser;
 
     [[RKObjectManager sharedManager] postObject:Nil path:@"/api/v2/user/revive" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
+        user.health = [NSNumber numberWithInt:50];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
         [self.networkIndicatorController endNetworking];
