@@ -217,7 +217,7 @@ NSString *currentUser;
                                                       @"exp":        @"experience",
                                                       @"_tmp.drop.key":        @"dropKey",
                                                       @"_tmp.drop.type":        @"dropType",
-                                                      @"_tmp.drop.notes":        @"dropNote"}];
+                                                      @"_tmp.drop.dialog":        @"dropNote"}];
     
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:upDownMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/tasks/:id/:direction" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
