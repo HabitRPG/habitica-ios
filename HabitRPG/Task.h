@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * attribute;
 @property (nonatomic, retain) NSNumber * completed;
 @property (nonatomic, retain) NSDate * dateCreated;
+@property (nonatomic, retain) NSDate * duedate;
 @property (nonatomic, retain) NSNumber * down;
 @property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSString * notes;

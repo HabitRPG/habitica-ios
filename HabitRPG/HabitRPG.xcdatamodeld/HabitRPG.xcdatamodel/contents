@@ -117,6 +117,7 @@
         <attribute name="completed" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="down" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="duedate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="friday" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="monday" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
@@ -208,7 +209,7 @@
         <element name="Reward" positionX="0" positionY="0" width="128" height="73"/>
         <element name="Spell" positionX="45" positionY="153" width="128" height="148"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="Task" positionX="0" positionY="0" width="128" height="390"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="405"/>
         <element name="User" positionX="0" positionY="0" width="128" height="823"/>
     </elements>
 </model>

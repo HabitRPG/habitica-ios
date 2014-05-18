@@ -24,6 +24,8 @@
 @property NIKFontAwesomeIconFactory *checkIconFactory;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
+@property NSDateFormatter *dateFormatter;
+
 @end
 
 @implementation HRPGToDoTableViewController
@@ -52,6 +54,8 @@
     
     self.readableName = NSLocalizedString(@"To-Do", nil);
     self.typeName = @"todo";
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    self.dateFormatter.dateStyle = NSDateFormatterShortStyle;
 }
 
 - (void)didReceiveMemoryWarning
@@ -126,6 +130,16 @@
         Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
         label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        if (task.duedate) {
+            UILabel *subLabel = (UILabel*)[cell viewWithTag:4];
+            subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due until %@", nil), [self.dateFormatter stringFromDate:task.duedate]];
+            subLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
+            if ([task.duedate compare:[NSDate date]] == NSOrderedAscending) {
+                subLabel.textColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
+            } else {
+                [UIColor colorWithWhite:0.581 alpha:1.000];
+            }
+        }
         NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];
         if ([checklistCount integerValue] > 0) {
             int checkedCount = 0;

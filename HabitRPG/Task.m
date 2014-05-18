@@ -36,6 +36,7 @@
 @dynamic checklist;
 @dynamic tags;
 @dynamic user;
+@dynamic duedate;
 
 
 

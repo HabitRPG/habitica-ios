@@ -71,7 +71,15 @@ BOOL editable;
         task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     }
     if ([task.checklist count] > 0) {
-        cellname = @"ChecklistCell";
+        if (task.duedate) {
+            cellname = @"SubChecklistCell";
+        } else {
+            cellname = @"ChecklistCell";
+        }
+    } else {
+        if (task.duedate) {
+            cellname = @"SubCell";
+        }
     }
     HRPGSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     [cell setDefaultColor:[UIColor lightGrayColor]];
@@ -120,6 +128,9 @@ BOOL editable;
                                                             NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                             }
                                                   context:nil].size.height + 35;
+    if (task.duedate) {
+        height = height + 5;
+    }
     return height;
 }
 

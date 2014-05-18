@@ -113,7 +113,8 @@ NSString *currentUser;
                                                         @"repeat.f": @"friday",
                                                         @"repeat.s": @"saturday",
                                                         @"repeat.su": @"sunday",
-                                                        @"@metadata.mapping.collectionIndex" : @"order"}];
+                                                        @"@metadata.mapping.collectionIndex" : @"order",
+                                                        @"date": @"duedate"}];
     taskMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping* checklistItemMapping = [RKEntityMapping mappingForEntityForName:@"ChecklistItem" inManagedObjectStore:managedObjectStore];
     [checklistItemMapping addAttributeMappingsFromArray:@[@"id", @"text", @"completed"]];
@@ -150,7 +151,8 @@ NSString *currentUser;
                                                         @"thursday" : @"repeat.th",
                                                         @"friday" : @"repeat.f",
                                                         @"saturday" : @"repeat.s",
-                                                        @"sunday" : @"repeat.su"}];
+                                                        @"sunday" : @"repeat.su",
+                                                        @"duedate": @"date"}];
     RKObjectMapping *checklistItemRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
     [checklistItemRequestMapping addAttributeMappingsFromArray:@[@"id", @"text", @"completed"]];
     [taskRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"checklist"
