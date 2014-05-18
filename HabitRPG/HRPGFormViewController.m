@@ -396,10 +396,6 @@ NSDateFormatter *dateFormatter;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"unwindSaveSegue"]) {
-        UITextField *textField = (UITextField*)[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]] viewWithTag:2];
-        self.task.text = [textField.text stringByReplacingEmojiUnicodeWithCheatCodes];
-        UITextField *noteField = (UITextField*)[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]] viewWithTag:2];
-        self.task.notes = [noteField.text stringByReplacingEmojiUnicodeWithCheatCodes];
         if (!self.editTask) {
             self.task.type = self.taskType;
         }
