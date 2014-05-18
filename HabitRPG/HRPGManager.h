@@ -48,5 +48,5 @@
 - (UIImage*) getCachedImage:(NSString*) imageName;
 - (void) setCachedImage:(UIImage*) image withName:(NSString*)imageName onSuccess:(void (^)())successBlock;
 
-- (void) resetSavedDatabase;
+- (void) resetSavedDatabase:(BOOL)withUserData;
 @end

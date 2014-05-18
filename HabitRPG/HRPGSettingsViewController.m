@@ -105,7 +105,7 @@ BOOL reminder;
         title = NSLocalizedString(@"Daily Reminder", nil);
         identifier = @"SwitchCell";
     } else if (indexPath.section == 2) {
-        title = NSLocalizedString(@"Clear Cache", nil);
+        title = NSLocalizedString(@"Reset Cache", nil);
         identifier = @"LogoutCell";
     }
     
@@ -158,14 +158,14 @@ BOOL reminder;
     [keyChain setString:@"" forKey:@"id"];
     [keyChain setString:@"" forKey:@"key"];
     [defaults setObject:@"" forKey:@"partyID"];
-    [_sharedManager resetSavedDatabase];
+    [_sharedManager resetSavedDatabase:NO];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
     UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
     [self presentViewController:navigationController animated:YES completion: nil];
 }
 
 -(void)resetCache {
-    [_sharedManager resetSavedDatabase];
+    [_sharedManager resetSavedDatabase:YES];
 }
 
 
