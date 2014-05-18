@@ -669,22 +669,30 @@ NSString *currentUser;
     }];
     [operation setCompletionBlock:^{
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        NSError *error;
+        [managedObjectContext saveToPersistentStore:&error];
         [self fetchContent:^() {
-            if (!withUserData) {
+            if (withUserData) {
+                [self fetchUser:^(){
+                    completitionBlock();
+                }onError:^(){
+                    completitionBlock();
+                }];
+            } else {
                 completitionBlock();
             }
         }onError:^() {
-            if (!withUserData) {
+            if (withUserData) {
+                [self fetchUser:^(){
+                    completitionBlock();
+                }onError:^(){
+                    completitionBlock();
+                }];
+            } else {
                 completitionBlock();
             }
         }];
-        if (withUserData) {
-            [self fetchUser:^(){
-                completitionBlock();
-            }onError:^(){
-                completitionBlock();
-            }];
-        }
+        
     }];
     [operation start];
 }
