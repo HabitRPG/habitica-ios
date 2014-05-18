@@ -229,6 +229,7 @@ UIView *moneyView;
             
         }];
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
