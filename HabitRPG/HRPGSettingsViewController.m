@@ -11,6 +11,7 @@
 #import "HRPGManager.h"
 #import "User.h"
 #import <PDKeychainBindings.h>
+#import "HRPGActivityIndicatorOverlayView.h"
 
 @interface HRPGSettingsViewController ()
 @property HRPGManager *sharedManager;
@@ -178,18 +179,33 @@ BOOL showDatePicker;
 }
 
 -(void)logoutUser {
+    HRPGActivityIndicatorOverlayView *activityView = [[HRPGActivityIndicatorOverlayView alloc] initWithString:@"Loading…"];
+    [activityView display:^() {
+    }];
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
     [keyChain setString:@"" forKey:@"id"];
     [keyChain setString:@"" forKey:@"key"];
     [defaults setObject:@"" forKey:@"partyID"];
-    [_sharedManager resetSavedDatabase:NO];
+    
+    [_sharedManager resetSavedDatabase:YES onComplete:^() {
+        [activityView dismiss:^() {
+        }];
+    }];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
     UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
     [self presentViewController:navigationController animated:YES completion: nil];
 }
 
 -(void)resetCache {
-    [_sharedManager resetSavedDatabase:YES];
+    HRPGActivityIndicatorOverlayView *activityView = [[HRPGActivityIndicatorOverlayView alloc] initWithString:@"Clearing Data…"];
+    [activityView display:^() {
+        
+    }];
+    [_sharedManager resetSavedDatabase:YES onComplete:^() {
+        [activityView dismiss:^() {
+            
+        }];
+    }];
 }
 
 

@@ -647,7 +647,7 @@ NSString *currentUser;
     self.networkIndicatorController = [[HRPGNetworkIndicatorController alloc] init];
 }
 
-- (void) resetSavedDatabase:(BOOL)withUserData {
+- (void) resetSavedDatabase:(BOOL)withUserData onComplete:(void (^)())completitionBlock {
     NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
         NSManagedObjectContext *lmanagedObjectContext = [RKManagedObjectStore defaultStore].persistentStoreManagedObjectContext;
         [lmanagedObjectContext performBlockAndWait:^{
@@ -670,15 +670,19 @@ NSString *currentUser;
     [operation setCompletionBlock:^{
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
         [self fetchContent:^() {
-            
+            if (!withUserData) {
+                completitionBlock();
+            }
         }onError:^() {
-            
+            if (!withUserData) {
+                completitionBlock();
+            }
         }];
         if (withUserData) {
             [self fetchUser:^(){
-                
+                completitionBlock();
             }onError:^(){
-                
+                completitionBlock();
             }];
         }
     }];
