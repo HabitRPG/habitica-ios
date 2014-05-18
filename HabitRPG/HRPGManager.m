@@ -60,7 +60,11 @@ NSString *currentUser;
     [managedObjectStore createPersistentStoreCoordinator];
     
     NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"HabitRPG.sqlite"];
-    NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:storePath fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:storePath fromSeedDatabaseAtPath:nil withConfiguration:nil options:options error:&error];
+
     NSAssert(persistentStore, @"Failed to add persistent store with error: %@", error);
     
     // Create the managed object contexts
@@ -516,7 +520,9 @@ NSString *currentUser;
                                                         @"(key).index":        @"index",
                                                         @"(key).str":        @"str",
                                                         @"(key).int":        @"intelligence",
-                                                        @"(key).per":        @"per"}];
+                                                        @"(key).per":        @"per",
+                                                        @"(key).event.start": @"eventStart",
+                                                        @"(key).event.end": @"eventEnd"}];
     gearMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:gearMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"gear.flat" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
