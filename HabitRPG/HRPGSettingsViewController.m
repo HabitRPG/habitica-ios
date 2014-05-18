@@ -22,6 +22,7 @@ NSUserDefaults *defaults;
 @synthesize managedObjectContext;
 User *user;
 BOOL reminder;
+BOOL showDatePicker;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -53,6 +54,9 @@ BOOL reminder;
             return 2;
         case 1:
             if (reminder) {
+                if (showDatePicker) {
+                    return 3;
+                }
                 return 2;
             } else {
                 return 1;
@@ -65,7 +69,7 @@ BOOL reminder;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1 && indexPath.item == 1) {
+    if (indexPath.section == 1 && indexPath.item == 2) {
         return 210;
     }
     return [super tableView:self.tableView heightForRowAtIndexPath:indexPath];
@@ -84,7 +88,7 @@ BOOL reminder;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1 && indexPath.item == 1) {
+    if (indexPath.section == 1 && indexPath.item == 2) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DateCell" forIndexPath:indexPath];
         NSDate *reminderTime = [defaults valueForKey:@"dailyReminderTime"];
         if (reminderTime) {
@@ -104,6 +108,9 @@ BOOL reminder;
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         title = NSLocalizedString(@"Daily Reminder", nil);
         identifier = @"SwitchCell";
+    } else if (indexPath.section == 1 && indexPath.item == 1) {
+        title = NSLocalizedString(@"Every day at", nil);
+        identifier = @"DetailCell";
     } else if (indexPath.section == 2) {
         title = NSLocalizedString(@"Reset Cache", nil);
         identifier = @"LogoutCell";
@@ -112,7 +119,13 @@ BOOL reminder;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     UILabel *label = (UILabel*)[cell viewWithTag:1];
     label.text = title;
-    
+    if ([identifier isEqualToString:@"DetailCell"]) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        NSDate *reminderTime = [defaults valueForKey:@"dailyReminderTime"];
+        dateFormatter.dateStyle = NSDateFormatterNoStyle;
+        dateFormatter.timeStyle = NSDateFormatterShortStyle;
+        cell.detailTextLabel.text = [dateFormatter stringFromDate:reminderTime];
+    }
     if (indexPath.section == 1 && indexPath.item == 0) {
         UISwitch *cellSwitch = (UISwitch*)[cell viewWithTag:2];
         cellSwitch.on = reminder;
@@ -125,9 +138,20 @@ BOOL reminder;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 1) {
         [self logoutUser];
+    } else if (indexPath.section == 1 && indexPath.item == 1) {
+        NSIndexPath *pickerIndexPath = [NSIndexPath indexPathForItem:2 inSection:1];
+        [tableView beginUpdates];
+        showDatePicker = !showDatePicker;
+        if (showDatePicker) {
+            [tableView insertRowsAtIndexPaths:@[pickerIndexPath] withRowAnimation:UITableViewRowAnimationTop];
+        } else {
+            [tableView deleteRowsAtIndexPaths:@[pickerIndexPath] withRowAnimation:UITableViewRowAnimationTop];
+        }
+        [tableView endUpdates];
     } else if (indexPath.section == 2) {
         [self resetCache];
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (IBAction)reminderChanged:(UISwitch*)sender {
@@ -150,7 +174,7 @@ BOOL reminder;
     localNotification.alertBody = NSLocalizedString(@"Don't forget to mark your todos!", nil);
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-    NSLog(@"%@", picker.date);
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)logoutUser {
