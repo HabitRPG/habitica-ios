@@ -218,7 +218,6 @@ NSDateFormatter *dateFormatter;
             [dateSwitch addTarget:self action:@selector(changeDueDateSwitch:) forControlEvents:UIControlEventValueChanged];
         } else if (indexPath.item == 1) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"RightDetailCell" forIndexPath:indexPath];
-            cell.textLabel.text = NSLocalizedString(@"Due Date", nil);
             cell.detailTextLabel.text = [dateFormatter stringFromDate:self.task.duedate];
         } else {
             cell = [tableView dequeueReusableCellWithIdentifier:@"DatePickerCell" forIndexPath:indexPath];
