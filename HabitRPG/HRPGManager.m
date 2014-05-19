@@ -1137,7 +1137,7 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
     
     NSString *url = nil;
-    NSInteger health = [user.health integerValue];
+    NSInteger health = [user.health floatValue];
     CGFloat mana = [user.magic integerValue];
     if (target) {
         url = [NSString stringWithFormat:@"/api/v2/user/class/cast/%@?targetType=%@&targetId=%@", spell, targetType, target];

@@ -11,6 +11,8 @@
 #import "Task.h"
 #import <PDKeychainBindings.h>
 #import "Spell.h"
+#import "HRPGSpellTaskController.h"
+#import "HRPGSpellTabBarController.h"
 
 @interface HRPGSpellViewController ()
 @property HRPGManager *sharedManager;
@@ -83,7 +85,14 @@
     Spell *spell = [self.fetchedResultsController objectAtIndexPath:indexPath];
     if ([self.user.magic integerValue] >= [spell.mana integerValue]) {
         if ([spell.target isEqualToString:@"task"]) {
-        
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+            UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"spellTaskNavigationController"];
+            
+            [self presentViewController:navigationController animated:YES completion:^() {
+                HRPGSpellTabBarController *tabBarController = (HRPGSpellTabBarController*)navigationController.topViewController;
+                tabBarController.spell = spell;
+                tabBarController.sourceTableView = self.tableView;
+            }];
         } else {
             [self.sharedManager castSpell:spell.key withTargetType:spell.target onTarget:nil onSuccess:^() {
                 [tableView reloadData];

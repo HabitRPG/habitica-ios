@@ -20,6 +20,8 @@
 		D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */; };
 		D94AADB0192973CD00546C8E /* HabitRPG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */; };
 		D94AADB4192A30F900546C8E /* Spell.m in Sources */ = {isa = PBXBuildFile; fileRef = D94AADB3192A30F900546C8E /* Spell.m */; };
+		D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94AADB6192A56E800546C8E /* HRPGSpellTaskController.m */; };
+		D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */; };
 		D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D958E2AC1915D40600186A08 /* CoreText.framework */; };
 		D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D915F8621915BEE50037D04D /* QuartzCore.framework */; };
 		D958E2B01915D41400186A08 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D958E2AF1915D41400186A08 /* Security.framework */; };
@@ -117,6 +119,10 @@
 		D94AADB1192974AD00546C8E /* HabitRPG 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 2.xcdatamodel"; sourceTree = "<group>"; };
 		D94AADB2192A30F900546C8E /* Spell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spell.h; sourceTree = "<group>"; };
 		D94AADB3192A30F900546C8E /* Spell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spell.m; sourceTree = "<group>"; };
+		D94AADB5192A56E800546C8E /* HRPGSpellTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellTaskController.h; sourceTree = "<group>"; };
+		D94AADB6192A56E800546C8E /* HRPGSpellTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellTaskController.m; sourceTree = "<group>"; };
+		D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellTabBarController.h; sourceTree = "<group>"; };
+		D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellTabBarController.m; sourceTree = "<group>"; };
 		D958E2AC1915D40600186A08 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		D958E2AF1915D41400186A08 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D966557218FB129F0014C09D /* HRPGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSettingsViewController.h; sourceTree = "<group>"; };
@@ -282,6 +288,10 @@
 				D966557318FB129F0014C09D /* HRPGSettingsViewController.m */,
 				D97C71E218ECE09A0089FDC6 /* HRPGSpellViewController.h */,
 				D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */,
+				D94AADB5192A56E800546C8E /* HRPGSpellTaskController.h */,
+				D94AADB6192A56E800546C8E /* HRPGSpellTaskController.m */,
+				D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */,
+				D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */,
 				D92CDADB18CB79E50006C242 /* HRPGTableViewController.h */,
 				D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */,
 				D9E0868F18DF800F00BAF2EF /* HRPGTavernViewController.h */,
@@ -632,6 +642,7 @@
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
 				D92CDAE018CB83B90006C242 /* HRPGHabitTableViewController.m in Sources */,
 				D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */,
+				D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */,
 				D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */,
 				D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */,
 				D99DEC8F190914AD00FFD2B9 /* HRPGQuestInvitationViewController.m in Sources */,
@@ -652,6 +663,7 @@
 				D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */,
 				D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */,
 				D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */,
+				D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */,
 				D97C71E118ECA7050089FDC6 /* ChatMessage.m in Sources */,
 				D908B3831903515B00D32A75 /* HRPGSwipeTableViewCell.m in Sources */,
 				D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */,
