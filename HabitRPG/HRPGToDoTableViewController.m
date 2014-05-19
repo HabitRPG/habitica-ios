@@ -15,6 +15,7 @@
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 #import "NSString+Emoji.h"
+#import <NSDate+TimeAgo.h>
 
 @interface HRPGToDoTableViewController ()
 @property NSString *readableName;
@@ -132,12 +133,24 @@
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         if (task.duedate) {
             UILabel *subLabel = (UILabel*)[cell viewWithTag:4];
-            subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due until %@", nil), [self.dateFormatter stringFromDate:task.duedate]];
             subLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
             if ([task.duedate compare:[NSDate date]] == NSOrderedAscending) {
                 subLabel.textColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
+                subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due %@", nil), [task.duedate timeAgo]];
             } else {
                 [UIColor colorWithWhite:0.581 alpha:1.000];
+                NSCalendar *calendar = [NSCalendar currentCalendar];
+                NSDateComponents *differenceValue = [calendar components:NSDayCalendarUnit
+                                                                fromDate:[NSDate date] toDate:task.duedate options:0];
+                if ([differenceValue day] < 7) {
+                    if ([differenceValue day] == 1) {
+                        subLabel.text = NSLocalizedString(@"Due in 1 day", nil);
+                    } else {
+                    subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due in %d days", nil), [differenceValue day]];
+                    }
+                } else {
+                subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due until %@", nil), [self.dateFormatter stringFromDate:task.duedate]];
+                }
             }
         }
         NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];

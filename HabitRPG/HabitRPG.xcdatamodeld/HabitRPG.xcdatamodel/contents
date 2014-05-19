@@ -30,6 +30,8 @@
     </entity>
     <entity name="Gear" representedClassName="Gear" parentEntity="MetaReward" syncable="YES">
         <attribute name="con" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="eventEnd" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="eventStart" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="intelligence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="klass" optional="YES" attributeType="String" syncable="YES"/>
@@ -198,7 +200,7 @@
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Egg" positionX="18" positionY="162" width="128" height="90"/>
         <element name="Food" positionX="81" positionY="198" width="128" height="88"/>
-        <element name="Gear" positionX="9" positionY="153" width="128" height="163"/>
+        <element name="Gear" positionX="9" positionY="153" width="128" height="195"/>
         <element name="Group" positionX="0" positionY="0" width="128" height="255"/>
         <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="58"/>
         <element name="Item" positionX="36" positionY="153" width="128" height="148"/>
