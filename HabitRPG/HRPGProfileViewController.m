@@ -58,6 +58,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         if ([[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0) {
             User *user = (User*)[self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
             username = user.username;
+            userLevel = [user.level integerValue];
         }
     }
     if (username == nil) {

@@ -99,7 +99,7 @@
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="rewards" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Spell" syncable="YES">
+    <entity name="Spell" representedClassName="Spell" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="klass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>

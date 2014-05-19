@@ -288,7 +288,6 @@ NSString *currentUser;
                                                         @"auth.timestamps.loggedin":@"lastLogin"
                                                         }];
     entityMapping.identificationAttributes = @[ @"id" ];
-    entityMapping.assignsDefaultValueForMissingAttributes = YES;
     RKEntityMapping* rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
     [rewardMapping addAttributeMappingsFromDictionary:@{
                                                         @"id":          @"key",
@@ -362,7 +361,16 @@ NSString *currentUser;
                                                                                   toKeyPath:@"groups"
                                                                                 withMapping:newMessageMapping]];
 
+    RKEntityMapping *userMapping = [entityMapping copy];
     
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/class/cast/:spell" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/revive" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    entityMapping.assignsDefaultValueForMissingAttributes = YES;
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:@"habits" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:@"todos" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -372,8 +380,7 @@ NSString *currentUser;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/revive" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
+    
 
     
     
@@ -577,6 +584,8 @@ NSString *currentUser;
                                                        @"(key).text":              @"text",
                                                        @"(key).lvl":            @"level",
                                                        @"(key).notes":              @"notes",
+                                                       @"(key).mana":              @"mana",
+                                                       @"(key).target":              @"target",
                                                        @"@metadata.mapping.rootKeyPath":        @"klass"}];
     spellMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:spellMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"spells.healer" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -1124,6 +1133,36 @@ NSString *currentUser;
     }];
 }
 
+-(void) castSpell:(NSString*)spell withTargetType:(NSString*)targetType onTarget:(NSString*)target onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    NSString *url = nil;
+    NSInteger health = [user.health integerValue];
+    CGFloat mana = [user.magic integerValue];
+    if (target) {
+        url = [NSString stringWithFormat:@"/api/v2/user/class/cast/%@?targetType=%@&targetId=%@", spell, targetType, target];
+    } else {
+        url = [NSString stringWithFormat:@"/api/v2/user/class/cast/%@?targetType=%@", spell, targetType];
+    }
+    [[RKObjectManager sharedManager] postObject:nil path:url parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        [self displaySpellNotification:(mana-[user.magic integerValue]) withHealthDiff:([user.health floatValue]-health)];
+        successBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        errorBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
 -(void) acceptQuest:(NSString*)group withQuest:(NSString*)questID useForce:(Boolean)force onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
@@ -1265,6 +1304,25 @@ NSString *currentUser;
                               kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastBackgroundColorKey : notificationColor,
                               kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconArrowUp]
+                              };
+    [CRToastManager showNotificationWithOptions:options
+                                completionBlock:^{
+                                }];
+}
+
+-(void) displaySpellNotification:(NSInteger)manaDiff withHealthDiff:(CGFloat)healthDiff {
+    UIColor *notificationColor = [UIColor colorWithRed:0.768 green:0.782 blue:0.105 alpha:1.000];
+    NSString *content;
+    if (healthDiff > 0) {
+        notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
+        content = [NSString stringWithFormat:@"Health: +%.1f\n Mana: %ld", healthDiff, (long)manaDiff];
+    } else {
+        content = [NSString stringWithFormat:@"Mana: %ld", (long)manaDiff];
+    }
+    NSDictionary *options = @{kCRToastTextKey : content,
+                              kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastBackgroundColorKey : notificationColor,
+                              kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconCheck]
                               };
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{

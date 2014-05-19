@@ -10,9 +10,11 @@
 #import "HRPGAppDelegate.h"
 #import "Task.h"
 #import <PDKeychainBindings.h>
+#import "Spell.h"
 
 @interface HRPGSpellViewController ()
 @property HRPGManager *sharedManager;
+@property User *user;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL) animate;
 @end
@@ -20,6 +22,12 @@
 @implementation HRPGSpellViewController
 @synthesize managedObjectContext;
 @dynamic sharedManager;
+
+
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    self.user = [self.sharedManager getUser];
+}
 
 #pragma mark - Table view data source
 
@@ -71,9 +79,47 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    Spell *spell = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if ([self.user.magic integerValue] >= [spell.mana integerValue]) {
+        if ([spell.target isEqualToString:@"task"]) {
+        
+        } else {
+            [self.sharedManager castSpell:spell.key withTargetType:spell.target onTarget:nil onSuccess:^() {
+                [tableView reloadData];
+            }onError:^() {
+                
+            }];
+        }
+    }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    float height = 22.0f;
+    float width = 277.0f;
+    Spell *spell = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    width = width - [[NSString stringWithFormat:@"%ld MP", (long)[spell.mana integerValue]] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
+                                                                                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                                                                                     attributes:@{
+                                                                                                                  NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+                                                                                                                  }
+                                                                                context:nil].size.width;
+    height = height + [spell.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                                options:NSStringDrawingUsesLineFragmentOrigin
+                                             attributes:@{
+                                                          NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
+                                                          }
+                                                context:nil].size.height;
+    if ([spell.notes length] > 0) {
+        height = height + [spell.notes boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                                     options:NSStringDrawingUsesLineFragmentOrigin
+                                                  attributes:@{
+                                                               NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
+                                                               }
+                                                     context:nil].size.height;
+    }
+    return height;
+}
 
 - (IBAction)editButtonSelected:(id)sender {
     if ([self isEditing]) {
@@ -178,9 +224,27 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate
 {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"text"] description];
-    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    Spell *spell = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    UILabel *nameLabel = (UILabel*)[cell viewWithTag:1];
+    UILabel *detailLabel = (UILabel*)[cell viewWithTag:2];
+    UILabel *manaLabel = (UILabel*)[cell viewWithTag:3];
+    nameLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+    manaLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    nameLabel.text = spell.text;
+    detailLabel.text = spell.notes;
+    manaLabel.text = [NSString stringWithFormat:@"%@ MP", spell.mana];
+    if ([self.user.magic integerValue] >= [spell.mana integerValue]) {
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        nameLabel.textColor = [UIColor darkTextColor];
+        detailLabel.textColor = [UIColor darkTextColor];
+        manaLabel.textColor = [UIColor darkTextColor];
+    } else {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        nameLabel.textColor = [UIColor lightGrayColor];
+        detailLabel.textColor = [UIColor lightGrayColor];
+        manaLabel.textColor = [UIColor lightGrayColor];
+    }
 }
 
 
