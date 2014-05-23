@@ -13,7 +13,7 @@
 
 @interface HRPGQuestParticipantsViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property Quest *quest;
 @property Group *party;
 @end

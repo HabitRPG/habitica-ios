@@ -13,17 +13,20 @@
 
 @interface Tag : NSManagedObject
 
-@property (nonatomic, retain) NSString * id;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSSet *tasks;
-@property (nonatomic, retain) User *user;
+@property(nonatomic, retain) NSString *id;
+@property(nonatomic, retain) NSString *name;
+@property(nonatomic, retain) NSSet *tasks;
+@property(nonatomic, retain) User *user;
 @end
 
 @interface Tag (CoreDataGeneratedAccessors)
 
 - (void)addTasksObject:(Task *)value;
+
 - (void)removeTasksObject:(Task *)value;
+
 - (void)addTasks:(NSSet *)values;
+
 - (void)removeTasks:(NSSet *)values;
 
 @end

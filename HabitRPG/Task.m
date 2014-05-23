@@ -37,8 +37,7 @@
 @dynamic duedate;
 
 
-
-- (BOOL) dueToday {
+- (BOOL)dueToday {
     NSDate *today = [NSDate date];
     int weekdayID = [[[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:today] weekday];
     NSArray *weekDayArray = @[@"sunday", @"monday", @"tuesday", @"wednesday", @"thursday", @"friday", @"saturday", @"sunday"];
@@ -46,14 +45,14 @@
 }
 
 - (void)addChecklistObject:(ChecklistItem *)value {
-    NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.checklist];
+    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.checklist];
     value.task = self;
     [tempSet addObject:value];
     self.checklist = tempSet;
 }
 
 - (void)removeChecklistObject:(ChecklistItem *)value {
-    NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.checklist];
+    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.checklist];
     [tempSet removeObject:value];
     self.checklist = tempSet;
 }

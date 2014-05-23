@@ -11,6 +11,6 @@
 
 @interface HRPGEquipmentViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end

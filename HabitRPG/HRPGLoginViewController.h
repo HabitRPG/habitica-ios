@@ -10,10 +10,10 @@
 
 @interface HRPGLoginViewController : UITableViewController <UITextFieldDelegate>
 @property BOOL hideCancelButton;
-@property (weak, nonatomic) IBOutlet UITextField *usernameField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordField;
-@property (weak, nonatomic) IBOutlet UITableViewCell *loginCell;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property (weak, nonatomic) IBOutlet UILabel *loginLabel;
+@property(weak, nonatomic) IBOutlet UITextField *usernameField;
+@property(weak, nonatomic) IBOutlet UITextField *passwordField;
+@property(weak, nonatomic) IBOutlet UITableViewCell *loginCell;
+@property(weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property(weak, nonatomic) IBOutlet UILabel *loginLabel;
 
 @end

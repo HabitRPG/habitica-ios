@@ -14,12 +14,12 @@
 
 @interface ChatMessage : NSManagedObject
 
-@property (nonatomic, retain) NSString * id;
-@property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSDate * timestamp;
-@property (nonatomic, retain) NSString * user;
-@property (nonatomic, retain) NSString * uuid;
-@property (nonatomic, retain) Group *group;
-@property (nonatomic, retain) User *userObject;
+@property(nonatomic, retain) NSString *id;
+@property(nonatomic, retain) NSString *text;
+@property(nonatomic, retain) NSDate *timestamp;
+@property(nonatomic, retain) NSString *user;
+@property(nonatomic, retain) NSString *uuid;
+@property(nonatomic, retain) Group *group;
+@property(nonatomic, retain) User *userObject;
 
 @end

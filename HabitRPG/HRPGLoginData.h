@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface HRPGLoginData : NSObject
-@property (nonatomic, retain) NSString *id;
-@property (nonatomic, retain) NSString *key;
+@property(nonatomic, retain) NSString *id;
+@property(nonatomic, retain) NSString *key;
 
 @end

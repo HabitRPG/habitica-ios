@@ -19,7 +19,7 @@
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL) animate;
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
 
 @implementation HRPGTableViewController
@@ -32,17 +32,17 @@ BOOL editable;
     [super viewDidLoad];
 
     editable = NO;
-    
+
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 }
 
-- (void) refresh {
+- (void)refresh {
     [self collapseOpenedIndexPath];
-    [self.sharedManager fetchUser:^ () {
+    [self.sharedManager fetchUser:^() {
         [self.refreshControl endRefreshing];
-    } onError:^ () {
+    }                     onError:^() {
         [self.refreshControl endRefreshing];
     }];
 }
@@ -61,10 +61,10 @@ BOOL editable;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellname = @"Cell";
     Task *task;
-    if (self.openedIndexPath.item+self.indexOffset < indexPath.item && self.indexOffset > 0) {
-        task  = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
-    } else if (self.openedIndexPath.item+self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
-        task  = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
+    if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
+        task = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
+    } else if (self.openedIndexPath.item + self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
+        task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
     } else {
         task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     }
@@ -91,12 +91,12 @@ BOOL editable;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
+
         if (editingStyle == UITableViewCellEditingStyleDelete) {
             Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
             [self.sharedManager deleteTask:task onSuccess:^() {
-            }onError:^() {
-                
+            }                      onError:^() {
+
             }];
         }
     }
@@ -104,10 +104,10 @@ BOOL editable;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     Task *task;
-    if (self.openedIndexPath.item+self.indexOffset < indexPath.item && self.indexOffset > 0) {
-        task  = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
-    } else if (self.openedIndexPath.item+self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
-        task  = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
+    if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
+        task = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
+    } else if (self.openedIndexPath.item + self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
+        task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
         indexPath = self.openedIndexPath;
     } else {
         task = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -121,11 +121,11 @@ BOOL editable;
         width = 261.0f;
     }
     NSInteger height = [task.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
-                                                  options:NSStringDrawingUsesLineFragmentOrigin
-                                               attributes:@{
-                                                            NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
-                                                            }
-                                                  context:nil].size.height + 35;
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                            attributes:@{
+                                                    NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+                                            }
+                                               context:nil].size.height + 35;
     if (task.duedate) {
         height = height + 5;
     }
@@ -138,26 +138,26 @@ BOOL editable;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+
     // fix for separators bug in iOS 7
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    
-    if (tableView.editing ) {
+
+    if (tableView.editing) {
         editedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [self performSegueWithIdentifier: @"FormSegue" sender: self];
+        [self performSegueWithIdentifier:@"FormSegue" sender:self];
         return;
     }
     Task *task;
-    if (self.openedIndexPath.item+self.indexOffset < indexPath.item && self.indexOffset > 0) {
-        task  = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
-    } else if (self.openedIndexPath.item+self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
-        task  = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
+    if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
+        task = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
+    } else if (self.openedIndexPath.item + self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
+        task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
         indexPath = self.openedIndexPath;
     } else {
         task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     }
-    
+
     NSNumber *checklistCount = [NSNumber numberWithInteger:[task.checklist count]];
     if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
         NSIndexPath *tempPath = self.openedIndexPath;
@@ -165,20 +165,20 @@ BOOL editable;
         self.indexOffset = 0;
         [self configureCell:[tableView cellForRowAtIndexPath:tempPath] atIndexPath:tempPath withAnimation:YES];
         NSMutableArray *deleteArray = [[NSMutableArray alloc] init];
-        for(int i=1; i<=[checklistCount integerValue]; i++) {
-            [deleteArray addObject:[NSIndexPath indexPathForItem:indexPath.item+i inSection:self.openedIndexPath.section]];
+        for (int i = 1; i <= [checklistCount integerValue]; i++) {
+            [deleteArray addObject:[NSIndexPath indexPathForItem:indexPath.item + i inSection:self.openedIndexPath.section]];
         }
         [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationTop];
     } else {
-        if (self.openedIndexPath){
+        if (self.openedIndexPath) {
             [self collapseOpenedIndexPath];
         }
         if ([checklistCount integerValue] > 0) {
             self.openedIndexPath = indexPath;
-            self.indexOffset = (int)[checklistCount integerValue];
+            self.indexOffset = (int) [checklistCount integerValue];
             NSMutableArray *insertArray = [[NSMutableArray alloc] init];
-            for(int i=1; i<=[checklistCount integerValue]; i++) {
-                [insertArray addObject:[NSIndexPath indexPathForItem:self.openedIndexPath.item+i inSection:self.openedIndexPath.section]];
+            for (int i = 1; i <= [checklistCount integerValue]; i++) {
+                [insertArray addObject:[NSIndexPath indexPathForItem:self.openedIndexPath.item + i inSection:self.openedIndexPath.section]];
             }
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
             [self.tableView insertRowsAtIndexPaths:insertArray withRowAnimation:UITableViewRowAnimationTop];
@@ -214,10 +214,10 @@ BOOL editable;
 - (void)collapseOpenedIndexPath {
     Task *oldTask = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
     NSNumber *oldChecklistCount = [oldTask valueForKeyPath:@"checklist.@count"];
-    
+
     NSMutableArray *deleteArray = [[NSMutableArray alloc] init];
-    for(int i=1; i<=[oldChecklistCount integerValue]; i++) {
-        [deleteArray addObject:[NSIndexPath indexPathForItem:self.openedIndexPath.item+i inSection:self.openedIndexPath.section]];
+    for (int i = 1; i <= [oldChecklistCount integerValue]; i++) {
+        [deleteArray addObject:[NSIndexPath indexPathForItem:self.openedIndexPath.item + i inSection:self.openedIndexPath.section]];
     }
     NSIndexPath *tempPath = self.openedIndexPath;
     self.openedIndexPath = nil;
@@ -227,23 +227,23 @@ BOOL editable;
 }
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
-    
+
 }
 
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-    HRPGFormViewController *formViewController = (HRPGFormViewController*)segue.sourceViewController;
+    HRPGFormViewController *formViewController = (HRPGFormViewController *) segue.sourceViewController;
     if (formViewController.editTask) {
         [self.sharedManager updateTask:formViewController.task onSuccess:^() {
-            
-        }onError:^() {
-            
+
+        }                      onError:^() {
+
         }];
     } else {
         [self.sharedManager createTask:formViewController.task onSuccess:^() {
-    
-        }onError:^() {
-        
+
+        }                      onError:^() {
+
         }];
     }
 }
@@ -253,42 +253,42 @@ BOOL editable;
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
-    
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-    
+
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     NSPredicate *predicate;
-    if ([_typeName  isEqual:@"todo"]) {
+    if ([_typeName isEqual:@"todo"]) {
         predicate = [NSPredicate predicateWithFormat:@"type=='todo' && completed==NO"];
     } else {
         predicate = [NSPredicate predicateWithFormat:@"type==%@", _typeName];
     }
     [fetchRequest setPredicate:predicate];
-    
+
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
-    
+
     [fetchRequest setSortDescriptors:sortDescriptors];
-    
+
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:_typeName];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
-    
-	NSError *error = nil;
-	if (![self.fetchedResultsController performFetch:&error]) {
+
+    NSError *error = nil;
+    if (![self.fetchedResultsController performFetch:&error]) {
         // Replace this implementation with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	    abort();
-	}
-    
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+
     return _fetchedResultsController;
 }
 
@@ -299,11 +299,11 @@ BOOL editable;
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
-    switch(type) {
+    switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
-            
+
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
@@ -314,20 +314,20 @@ BOOL editable;
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
-    
-    switch(type) {
+
+    switch (type) {
         case NSFetchedResultsChangeInsert:
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
-            
+
         case NSFetchedResultsChangeDelete:
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
-            
+
         case NSFetchedResultsChangeUpdate:
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
             break;
-            
+
         case NSFetchedResultsChangeMove:
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -344,19 +344,18 @@ BOOL editable;
     cell.textLabel.text = [[object valueForKey:@"text"] description];
 }
 
--(void)configureSwiping:(HRPGSwipeTableViewCell *)cell withTask:(Task*) task {
+- (void)configureSwiping:(HRPGSwipeTableViewCell *)cell withTask:(Task *)task {
 }
 
 
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"FormSegue"]) {
         UINavigationController *destViewController = segue.destinationViewController;
-        
-        HRPGFormViewController *formController = (HRPGFormViewController*)destViewController.topViewController;
+
+        HRPGFormViewController *formController = (HRPGFormViewController *) destViewController.topViewController;
         formController.taskType = self.typeName;
         if (editedTask) {
             formController.editTask = YES;

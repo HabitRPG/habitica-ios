@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface HRPGTaskResponse : NSObject
-@property (nonatomic, retain) NSNumber *delta;
-@property (nonatomic, retain) NSNumber *level;
-@property (nonatomic, retain) NSNumber *gold;
-@property (nonatomic, retain) NSNumber *experience;
-@property (nonatomic, retain) NSNumber *health;
-@property (nonatomic, retain) NSNumber *magic;
-@property (nonatomic, retain) NSString *dropType;
-@property (nonatomic, retain) NSString *dropKey;
-@property (nonatomic, retain) NSString *dropNote;
+@property(nonatomic, retain) NSNumber *delta;
+@property(nonatomic, retain) NSNumber *level;
+@property(nonatomic, retain) NSNumber *gold;
+@property(nonatomic, retain) NSNumber *experience;
+@property(nonatomic, retain) NSNumber *health;
+@property(nonatomic, retain) NSNumber *magic;
+@property(nonatomic, retain) NSString *dropType;
+@property(nonatomic, retain) NSString *dropKey;
+@property(nonatomic, retain) NSString *dropNote;
 
 @end

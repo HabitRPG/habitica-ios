@@ -30,10 +30,9 @@ BOOL showDatePicker;
     [self.tableView reloadData];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.managedObjectContext = _sharedManager.getManagedObjectContext;
     defaults = [NSUserDefaults standardUserDefaults];
     reminder = [defaults boolForKey:@"dailyReminderActive"];
@@ -41,13 +40,11 @@ BOOL showDatePicker;
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
             return 2;
@@ -85,18 +82,17 @@ BOOL showDatePicker;
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 2) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DateCell" forIndexPath:indexPath];
         NSDate *reminderTime = [defaults valueForKey:@"dailyReminderTime"];
         if (reminderTime) {
-            UIDatePicker *datePicker = (UIDatePicker*)[cell viewWithTag:1];
+            UIDatePicker *datePicker = (UIDatePicker *) [cell viewWithTag:1];
             datePicker.date = reminderTime;
         }
         return cell;
     }
-    
+
     NSString *title = nil;
     NSString *identifier = @"Cell";
     if (indexPath.section == 0 && indexPath.item == 0) {
@@ -114,9 +110,9 @@ BOOL showDatePicker;
         title = NSLocalizedString(@"Reset Cache", nil);
         identifier = @"LogoutCell";
     }
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    UILabel *label = (UILabel*)[cell viewWithTag:1];
+    UILabel *label = (UILabel *) [cell viewWithTag:1];
     label.text = title;
     if ([identifier isEqualToString:@"DetailCell"]) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -126,10 +122,10 @@ BOOL showDatePicker;
         cell.detailTextLabel.text = [dateFormatter stringFromDate:reminderTime];
     }
     if (indexPath.section == 1 && indexPath.item == 0) {
-        UISwitch *cellSwitch = (UISwitch*)[cell viewWithTag:2];
+        UISwitch *cellSwitch = (UISwitch *) [cell viewWithTag:2];
         cellSwitch.on = reminder;
     }
-    
+
     return cell;
 
 }
@@ -153,7 +149,7 @@ BOOL showDatePicker;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (IBAction)reminderChanged:(UISwitch*)sender {
+- (IBAction)reminderChanged:(UISwitch *)sender {
     [defaults setBool:sender.on forKey:@"dailyReminderActive"];
     reminder = sender.on;
     if (reminder) {
@@ -164,7 +160,7 @@ BOOL showDatePicker;
     }
 }
 
-- (IBAction)reminderTimeChanged:(UIDatePicker*)picker {
+- (IBAction)reminderTimeChanged:(UIDatePicker *)picker {
     [defaults setValue:picker.date forKey:@"dailyReminderTime"];
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
@@ -176,7 +172,7 @@ BOOL showDatePicker;
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
--(void)logoutUser {
+- (void)logoutUser {
     HRPGActivityIndicatorOverlayView *activityView = [[HRPGActivityIndicatorOverlayView alloc] initWithString:@"Loading…"];
     [activityView display:^() {
     }];
@@ -184,24 +180,24 @@ BOOL showDatePicker;
     [keyChain setString:@"" forKey:@"id"];
     [keyChain setString:@"" forKey:@"key"];
     [defaults setObject:@"" forKey:@"partyID"];
-    
+
     [_sharedManager resetSavedDatabase:YES onComplete:^() {
         [activityView dismiss:^() {
         }];
     }];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-    UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-    [self presentViewController:navigationController animated:YES completion: nil];
+    UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
--(void)resetCache {
+- (void)resetCache {
     HRPGActivityIndicatorOverlayView *activityView = [[HRPGActivityIndicatorOverlayView alloc] initWithString:@"Clearing Data…"];
     [activityView display:^() {
-        
+
     }];
     [_sharedManager resetSavedDatabase:YES onComplete:^() {
         [activityView dismiss:^() {
-            
+
         }];
     }];
 }

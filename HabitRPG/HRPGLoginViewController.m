@@ -1,6 +1,6 @@
 //
-//  ShortdiaryLoginViewController.m
-//  Shortdiary
+//  HRPGLoginViewController.m
+//  HabitRPG
 //
 //  Created by Phillip Thelen on 19/01/14.
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
@@ -16,24 +16,22 @@
 
 @implementation HRPGLoginViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     if (self.hideCancelButton) {
         self.navigationItem.leftBarButtonItem = nil;
     }
-    
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
+
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     _sharedManager = appdelegate.sharedManager;
-    
+
     [self.usernameField becomeFirstResponder];
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 0) {
         [self loginUser:0];
     }
@@ -62,10 +60,10 @@
         [_sharedManager setCredentials];
         [_sharedManager fetchUser:^() {
             [self dismissViewControllerAnimated:YES completion:nil];
-        }onError:^() {
+        }                 onError:^() {
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
-    } onError:^() {
+    }                 onError:^() {
         self.navigationItem.prompt = NSLocalizedString(@"Invalid username or password", nil);
         [self.usernameField becomeFirstResponder];
         self.loginCell.userInteractionEnabled = YES;
@@ -75,6 +73,6 @@
         }];
         [self.activityIndicator stopAnimating];
     }];
-    
+
 }
 @end

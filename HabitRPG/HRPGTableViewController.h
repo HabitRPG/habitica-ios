@@ -12,8 +12,9 @@
 @interface HRPGTableViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate>
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue;
+
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue;
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end

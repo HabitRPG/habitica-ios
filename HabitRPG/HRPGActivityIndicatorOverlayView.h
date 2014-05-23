@@ -10,11 +10,13 @@
 
 @interface HRPGActivityIndicatorOverlayView : NSObject
 
--(void)display:(void (^)())completitionBlock;
--(void)dismiss:(void (^)())completitionBlock;
+- (void)display:(void (^)())completitionBlock;
+
+- (void)dismiss:(void (^)())completitionBlock;
 
 
--(id)initWithString:(NSString*)activityString;
+- (id)initWithString:(NSString *)activityString;
+
 @property NSString *activityString;
 
 @end

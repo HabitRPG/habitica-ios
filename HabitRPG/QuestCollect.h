@@ -13,11 +13,11 @@
 
 @interface QuestCollect : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * count;
-@property (nonatomic, retain) NSString * key;
-@property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSNumber *collectCount;
-@property (nonatomic, retain) Quest *quest;
-@property (nonatomic, retain) Group *group;
+@property(nonatomic, retain) NSNumber *count;
+@property(nonatomic, retain) NSString *key;
+@property(nonatomic, retain) NSString *text;
+@property(nonatomic, retain) NSNumber *collectCount;
+@property(nonatomic, retain) Quest *quest;
+@property(nonatomic, retain) Group *group;
 
 @end

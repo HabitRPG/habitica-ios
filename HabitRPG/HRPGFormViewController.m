@@ -20,14 +20,13 @@ int selectedDifficulty;
 BOOL displayDatePicker;
 NSDateFormatter *dateFormatter;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     if (!self.editTask) {
         self.task = [NSEntityDescription
-                    insertNewObjectForEntityForName:@"Task"
-                    inManagedObjectContext:self.managedObjectContext];
+                insertNewObjectForEntityForName:@"Task"
+                         inManagedObjectContext:self.managedObjectContext];
         self.task.priority = [NSNumber numberWithFloat:1.0f];
         selectedDifficulty = 0;
     } else {
@@ -39,22 +38,21 @@ NSDateFormatter *dateFormatter;
             selectedDifficulty = 2;
         }
     }
-    
+
     dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = NSDateFormatterShortStyle;
     displayDatePicker = NO;
 }
 
--(void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-    UITextField *textField = (UITextField*)[cell viewWithTag:2];
+    UITextField *textField = (UITextField *) [cell viewWithTag:2];
     [textField becomeFirstResponder];
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (![self.taskType isEqualToString:@"habit"]) {
         return 4;
     }
@@ -62,8 +60,8 @@ NSDateFormatter *dateFormatter;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0 ) {
-            return NSLocalizedString(@"Task", nil);
+    if (section == 0) {
+        return NSLocalizedString(@"Task", nil);
     } else if (section == 1 && [self.taskType isEqualToString:@"habit"]) {
         return NSLocalizedString(@"Directions", nil);
     } else if (section == 1) {
@@ -78,9 +76,8 @@ NSDateFormatter *dateFormatter;
     return nil;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (section == 0 ) {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 0) {
         return 2;
     } else if (section == 1 && [self.taskType isEqualToString:@"habit"]) {
         return 2;
@@ -111,16 +108,15 @@ NSDateFormatter *dateFormatter;
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
 
-    if (indexPath.section == 0 ) {
+    if (indexPath.section == 0) {
         static NSString *CellIdentifier = @"TextInputCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.accessoryType = UITableViewCellAccessoryNone;
-        UILabel *label = (UILabel *)[cell viewWithTag:1];
-        UITextField *textField = (UITextField*)[cell viewWithTag:2];
+        UILabel *label = (UILabel *) [cell viewWithTag:1];
+        UITextField *textField = (UITextField *) [cell viewWithTag:2];
         textField.delegate = self;
         if (indexPath.item == 0) {
             label.text = NSLocalizedString(@"Text", nil);
@@ -133,9 +129,9 @@ NSDateFormatter *dateFormatter;
         static NSString *CellIdentifier = @"SwitchCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.accessoryType = UITableViewCellAccessoryNone;
-        UILabel *label = (UILabel *)[cell viewWithTag:1];
-        UISwitch *upDownSwitch = (UISwitch *)[cell viewWithTag:2];
-    
+        UILabel *label = (UILabel *) [cell viewWithTag:1];
+        UISwitch *upDownSwitch = (UISwitch *) [cell viewWithTag:2];
+
         switch (indexPath.item) {
             case 0:
                 label.text = NSLocalizedString(@"Up +", nil);
@@ -148,7 +144,7 @@ NSDateFormatter *dateFormatter;
         }
     } else if (indexPath.section == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"TextInputAltCell" forIndexPath:indexPath];
-        UITextField *textField = (UITextField*)[cell viewWithTag:1];
+        UITextField *textField = (UITextField *) [cell viewWithTag:1];
         textField.delegate = self;
         textField.returnKeyType = UIReturnKeyNext;
 
@@ -160,8 +156,8 @@ NSDateFormatter *dateFormatter;
         static NSString *CellIdentifier = @"CheckMarkCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.accessoryType = UITableViewCellAccessoryNone;
-        UILabel *label = (UILabel *)[cell viewWithTag:1];
-    
+        UILabel *label = (UILabel *) [cell viewWithTag:1];
+
         switch (indexPath.item) {
             case 0:
                 label.text = NSLocalizedString(@"Monday", nil);
@@ -209,8 +205,8 @@ NSDateFormatter *dateFormatter;
     } else if (indexPath.section == 2 && [self.taskType isEqualToString:@"todo"]) {
         if (indexPath.item == 0) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"SwitchCell" forIndexPath:indexPath];
-            UILabel *label = (UILabel *)[cell viewWithTag:1];
-            UISwitch *dateSwitch = (UISwitch *)[cell viewWithTag:2];
+            UILabel *label = (UILabel *) [cell viewWithTag:1];
+            UISwitch *dateSwitch = (UISwitch *) [cell viewWithTag:2];
             label.text = NSLocalizedString(@"Due Date", nil);
             dateSwitch.on = !(self.task.duedate == nil);
             [dateSwitch addTarget:self action:@selector(changeDueDateSwitch:) forControlEvents:UIControlEventValueChanged];
@@ -219,19 +215,25 @@ NSDateFormatter *dateFormatter;
             cell.detailTextLabel.text = [dateFormatter stringFromDate:self.task.duedate];
         } else {
             cell = [tableView dequeueReusableCellWithIdentifier:@"DatePickerCell" forIndexPath:indexPath];
-            UIDatePicker *datePicker = (UIDatePicker*)[cell viewWithTag:1];
+            UIDatePicker *datePicker = (UIDatePicker *) [cell viewWithTag:1];
             datePicker.date = self.task.duedate;
         }
     } else {
         static NSString *CellIdentifier = @"CheckMarkCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-        UILabel *label = (UILabel *)[cell viewWithTag:1];
-        
+        UILabel *label = (UILabel *) [cell viewWithTag:1];
+
         switch (indexPath.item) {
-            case 0: label.text = NSLocalizedString(@"Easy", nil); break;
-            case 1: label.text = NSLocalizedString(@"Medium", nil); break;
-            case 2: label.text = NSLocalizedString(@"Hard", nil); break;
+            case 0:
+                label.text = NSLocalizedString(@"Easy", nil);
+                break;
+            case 1:
+                label.text = NSLocalizedString(@"Medium", nil);
+                break;
+            case 2:
+                label.text = NSLocalizedString(@"Hard", nil);
+                break;
         }
         if (indexPath.item == selectedDifficulty) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -240,19 +242,18 @@ NSDateFormatter *dateFormatter;
         }
     }
     return cell;
-    
+
 }
 
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1 && indexPath.item < ([tableView numberOfRowsInSection:indexPath.section]-1) && ![self.task.type isEqualToString:@"habit"]) {
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1 && indexPath.item < ([tableView numberOfRowsInSection:indexPath.section] - 1) && ![self.task.type isEqualToString:@"habit"]) {
         return YES;
     }
     return NO;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 1 && indexPath.item < ([tableView numberOfRowsInSection:indexPath.section]-1) && ![self.task.type isEqualToString:@"habit"]) {
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1 && indexPath.item < ([tableView numberOfRowsInSection:indexPath.section] - 1) && ![self.task.type isEqualToString:@"habit"]) {
         if (editingStyle == UITableViewCellEditingStyleDelete) {
             ChecklistItem *item = self.task.checklist[indexPath.item];
             [self.task removeChecklistObject:item];
@@ -264,14 +265,14 @@ NSDateFormatter *dateFormatter;
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    
+
     // fix for separators bug in iOS 7
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    
+
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.section == 2 && [self.taskType isEqualToString:@"daily"]) {
         if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
@@ -281,43 +282,63 @@ NSDateFormatter *dateFormatter;
         }
 
         switch (indexPath.item) {
-            case 0: self.task.monday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)]; break;
-            case 1: self.task.tuesday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)]; break;
-            case 2: self.task.wednesday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)]; break;
-            case 3: self.task.thursday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)]; break;
-            case 4: self.task.friday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)]; break;
-            case 5: self.task.saturday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)]; break;
-            case 6: self.task.sunday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)]; break;
+            case 0:
+                self.task.monday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)];
+                break;
+            case 1:
+                self.task.tuesday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)];
+                break;
+            case 2:
+                self.task.wednesday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)];
+                break;
+            case 3:
+                self.task.thursday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)];
+                break;
+            case 4:
+                self.task.friday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)];
+                break;
+            case 5:
+                self.task.saturday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)];
+                break;
+            case 6:
+                self.task.sunday = [NSNumber numberWithBool:(cell.accessoryType == UITableViewCellAccessoryCheckmark)];
+                break;
         }
     } else if (indexPath.section == 2 && [self.taskType isEqualToString:@"todo"]) {
         if (indexPath.item == 1) {
             displayDatePicker = !displayDatePicker;
             if (displayDatePicker) {
-                [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:2 inSection:2]]withRowAnimation:UITableViewRowAnimationTop];
+                [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:2 inSection:2]] withRowAnimation:UITableViewRowAnimationTop];
             } else {
-                [tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:2 inSection:2]]withRowAnimation:UITableViewRowAnimationTop];
+                [tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:2 inSection:2]] withRowAnimation:UITableViewRowAnimationTop];
             }
         }
     } else if ((indexPath.section == 3 && ![self.taskType isEqualToString:@"habit"]) || indexPath.section == 2) {
         UITableViewCell *oldCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:selectedDifficulty inSection:indexPath.section]];
         oldCell.accessoryType = UITableViewCellAccessoryNone;
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        selectedDifficulty = (int)indexPath.item;
+        selectedDifficulty = (int) indexPath.item;
         switch (selectedDifficulty) {
-            case 0: self.task.priority = [NSNumber numberWithFloat:1.0]; break;
-            case 1: self.task.priority = [NSNumber numberWithFloat:1.5]; break;
-            case 2: self.task.priority = [NSNumber numberWithFloat:2.0]; break;
+            case 0:
+                self.task.priority = [NSNumber numberWithFloat:1.0];
+                break;
+            case 1:
+                self.task.priority = [NSNumber numberWithFloat:1.5];
+                break;
+            case 2:
+                self.task.priority = [NSNumber numberWithFloat:2.0];
+                break;
         }
     }
 }
 
 #pragma mark - TextField Delegates
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    UITableViewCell *cell = (UITableViewCell*)textField.superview.superview.superview;
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    UITableViewCell *cell = (UITableViewCell *) textField.superview.superview.superview;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    UITableViewCell *nextCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item+1 inSection:indexPath.section]];
-    UITextView *nextTextView = (UITextView*)[nextCell viewWithTag:1];
+    UITableViewCell *nextCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item + 1 inSection:indexPath.section]];
+    UITextView *nextTextView = (UITextView *) [nextCell viewWithTag:1];
     [nextTextView becomeFirstResponder];
     return NO;
     return YES;
@@ -325,16 +346,16 @@ NSDateFormatter *dateFormatter;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if ([textField.text isEqualToString:@""] && ![string isEqualToString:@""]) {
-        UITableViewCell *cell = (UITableViewCell*)textField.superview.superview.superview;
+        UITableViewCell *cell = (UITableViewCell *) textField.superview.superview.superview;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         NSInteger itemCount = [self.tableView numberOfRowsInSection:indexPath.section];
-        if ((itemCount-1) == indexPath.item) {
+        if ((itemCount - 1) == indexPath.item) {
             ChecklistItem *item = [NSEntityDescription
-                                   insertNewObjectForEntityForName:@"ChecklistItem"
-                                   inManagedObjectContext:self.managedObjectContext];
+                    insertNewObjectForEntityForName:@"ChecklistItem"
+                             inManagedObjectContext:self.managedObjectContext];
             [self.task addChecklistObject:item];
             [self.tableView beginUpdates];
-            [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:indexPath.item+1 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationTop];
+            [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:indexPath.item + 1 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationTop];
             [self.tableView endUpdates];
         }
     }
@@ -342,9 +363,9 @@ NSDateFormatter *dateFormatter;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    UITableViewCell *cell = (UITableViewCell*)textField.superview.superview.superview;
+    UITableViewCell *cell = (UITableViewCell *) textField.superview.superview.superview;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    
+
     if (indexPath.section == 0 && indexPath.item == 0) {
         self.task.text = textField.text;
     } else if (indexPath.section == 0 && indexPath.item == 1) {
@@ -365,15 +386,15 @@ NSDateFormatter *dateFormatter;
     }
 }
 
-- (IBAction)datePickerChanged:(UIDatePicker*)datePicker {
+- (IBAction)datePickerChanged:(UIDatePicker *)datePicker {
     self.task.duedate = datePicker.date;
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:2]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
--(void)changeDueDateSwitch:(UISwitch*)sender{
+- (void)changeDueDateSwitch:(UISwitch *)sender {
     if (sender.on) {
         self.task.duedate = [NSDate date];
-        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:2]]withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:2]] withRowAnimation:UITableViewRowAnimationTop];
     } else {
         self.task.duedate = nil;
         NSArray *deleteArray;
@@ -390,34 +411,33 @@ NSDateFormatter *dateFormatter;
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"unwindSaveSegue"]) {
         if (!self.editTask) {
             self.task.type = self.taskType;
         }
         if ([self.taskType isEqualToString:@"habit"]) {
-            UISwitch *upSwitch = (UISwitch*) [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1]] viewWithTag:2];
+            UISwitch *upSwitch = (UISwitch *) [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1]] viewWithTag:2];
 
             self.task.up = [NSNumber numberWithBool:upSwitch.on];
-        
-            UISwitch *downSwitch = (UISwitch*) [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:1]] viewWithTag:2];
+
+            UISwitch *downSwitch = (UISwitch *) [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:1]] viewWithTag:2];
             self.task.down = [NSNumber numberWithBool:downSwitch.on];
         } else {
             for (int i = 0; i < [self.task.checklist count]; i++) {
                 UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:i inSection:1]];
-                UITextField *textField = (UITextField*)[cell viewWithTag:1];
-                ChecklistItem *item =  self.task.checklist[i];
+                UITextField *textField = (UITextField *) [cell viewWithTag:1];
+                ChecklistItem *item = self.task.checklist[i];
                 item.text = textField.text;
                 item.task = self.task;
             }
         }
-    } else if([segue.identifier isEqualToString:@"unwindCancelSegue"]) {
+    } else if ([segue.identifier isEqualToString:@"unwindCancelSegue"]) {
         if (!self.editTask) {
             [managedObjectContext deleteObject:self.task];
         } else {
             [managedObjectContext refreshObject:self.task mergeChanges:NO];
-            
+
         }
     }
 }

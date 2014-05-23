@@ -11,7 +11,7 @@
 
 @interface HRPGSpellTaskController : HRPGBaseViewController <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSString *taskType;
+@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property(strong, nonatomic) NSString *taskType;
 @end
 

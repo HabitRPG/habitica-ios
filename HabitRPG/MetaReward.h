@@ -12,10 +12,10 @@
 
 @interface MetaReward : NSManagedObject
 
-@property (nonatomic, retain) NSString * key;
-@property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSString * notes;
-@property (nonatomic, retain) NSNumber * value;
-@property (nonatomic, retain) NSString * type;
+@property(nonatomic, retain) NSString *key;
+@property(nonatomic, retain) NSString *text;
+@property(nonatomic, retain) NSString *notes;
+@property(nonatomic, retain) NSNumber *value;
+@property(nonatomic, retain) NSString *type;
 
 @end
