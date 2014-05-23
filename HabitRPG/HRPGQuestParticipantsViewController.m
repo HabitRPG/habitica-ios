@@ -8,10 +8,6 @@
 
 #import "HRPGQuestParticipantsViewController.h"
 #import "HRPGAppDelegate.h"
-#import "Task.h"
-#import "MetaReward.h"
-#import <PDKeychainBindings.h>
-#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRPGQuestParticipantsViewController ()
 @property NSString *readableName;

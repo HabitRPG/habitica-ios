@@ -11,10 +11,6 @@
 #import "HRPGQuestInvitationViewController.h"
 #import "HRPGQuestParticipantsViewController.h"
 #import "HRPGQuestDetailController.h"
-#import "Task.h"
-#import "Group.h"
-#import "Quest.h"
-#import "User.h"
 #import "QuestCollect.h"
 #import "ChatMessage.h"
 #import <NSDate+TimeAgo.h>

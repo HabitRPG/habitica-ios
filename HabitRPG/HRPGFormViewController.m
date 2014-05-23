@@ -7,9 +7,7 @@
 //
 
 #import "HRPGFormViewController.h"
-#import "Task.h"
 #import "ChecklistItem.h"
-#import "HRPGAppDelegate.h"
 #import "NSString+Emoji.h"
 
 @interface HRPGFormViewController ()

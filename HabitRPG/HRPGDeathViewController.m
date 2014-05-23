@@ -8,7 +8,6 @@
 
 #import "HRPGDeathViewController.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
 
 @interface HRPGDeathViewController ()
 @property HRPGManager *sharedManager;

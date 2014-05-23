@@ -8,9 +8,7 @@
 
 #import "HRPGItemViewController.h"
 #import "HRPGAppDelegate.h"
-#import "Task.h"
 #import "Item.h"
-#import <PDKeychainBindings.h>
 
 @interface HRPGItemViewController ()
 @property NSString *readableName;

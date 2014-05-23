@@ -8,8 +8,6 @@
 
 #import "HRPGTavernViewController.h"
 #import "HRPGAppDelegate.h"
-#import "Task.h"
-#import "Group.h"
 #import "ChatMessage.h"
 #import <CRToast.h>
 #import <NSDate+TimeAgo.h>

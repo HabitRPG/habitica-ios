@@ -7,15 +7,7 @@
 //
 
 #import "User.h"
-#import "Egg.h"
-#import "Gear.h"
-#import "Group.h"
-#import "Quest.h"
-#import "Reward.h"
-#import "Tag.h"
-#import "Task.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
 
 
 @implementation User

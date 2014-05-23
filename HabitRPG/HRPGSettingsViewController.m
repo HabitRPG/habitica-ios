@@ -8,8 +8,6 @@
 
 #import "HRPGSettingsViewController.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
-#import "User.h"
 #import <PDKeychainBindings.h>
 #import "HRPGActivityIndicatorOverlayView.h"
 

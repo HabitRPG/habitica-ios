@@ -8,8 +8,7 @@
 
 #import "HRPGQuestInvitationViewController.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
-#import "Quest.h"
+
 @interface HRPGQuestInvitationViewController ()
 @property HRPGManager *sharedManager;
 @end

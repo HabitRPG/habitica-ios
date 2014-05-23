@@ -7,20 +7,15 @@
 //
 
 #import "HRPGManager.h"
-#import "Task.h"
-#import "user.h"
 #import "CRToast.h"
 #import "HRPGTaskResponse.h"
 #import "HRPGLoginData.h"
 #import <PDKeychainBindings.h>
 #import <NIKFontAwesomeIconFactory.h>
 #import <NIKFontAwesomeIconFactory+iOS.h>
-#import "Gear.h"
-#import "Egg.h"
 #import "Group.h"
 #import "Item.h"
 #import <SDWebImageManager.h>
-#import <SDImageCache.h>
 #import "HRPGUserBuyResponse.h"
 #import "HRPGEmptySerializer.h"
 #import "HRPGNetworkIndicatorController.h"

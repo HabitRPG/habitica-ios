@@ -8,9 +8,7 @@
 
 #import "HRPGEquipmentViewController.h"
 #import "HRPGAppDelegate.h"
-#import "Task.h"
 #import "Gear.h"
-#import <PDKeychainBindings.h>
 
 @interface HRPGEquipmentViewController ()
 @property NSString *readableName;

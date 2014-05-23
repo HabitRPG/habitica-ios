@@ -14,14 +14,6 @@
 // limitations under the License.
 //
 
-#import "NSAttributedStringMarkdownParser.h"
-
-#import "MarkdownTokens.h"
-#import "fmemopen.h"
-
-#import <CoreText/CoreText.h>
-#import <pthread.h>
-
 static NSRegularExpression *_hrefRegex = nil;
 static inline NSRegularExpression* hrefRegex(void) {
     static dispatch_once_t onceToken;

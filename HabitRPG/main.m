@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 #import "HRPGAppDelegate.h"
 
 int main(int argc, char * argv[])

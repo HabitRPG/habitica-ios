@@ -9,7 +9,6 @@
 #import "HRPGSpellTabBarController.h"
 #import "HRPGSpellTaskController.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
 #import <NIKFontawesomeIconFactory.h>
 #import <NIKFontAwesomeIconFactory+iOS.h>
 

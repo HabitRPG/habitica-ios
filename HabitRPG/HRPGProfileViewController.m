@@ -8,12 +8,9 @@
 
 #import "HRPGProfileViewController.h"
 #import "HRPGAppDelegate.h"
-#import "Task.h"
-#import "User.h"
 #import "Group.h"
+#import "VTAcknowledgementsViewController.h"
 #import <PDKeychainBindings.h>
-#import <VTAcknowledgementsViewController.h>
-#import <MessageUI/MFMailComposeViewController.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 @interface HRPGProfileViewController ()
@@ -55,7 +52,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     self.refreshControl = refresh;
     
     if ([[self.fetchedResultsController sections] count] > 0) {
-        if ([[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0) {
+        if ([[self.fetchedResultsController sections][0] numberOfObjects] > 0) {
             User *user = (User*)[self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
             username = user.username;
             userLevel = [user.level integerValue];
@@ -294,6 +291,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         case NSFetchedResultsChangeDelete: {
             username = nil;
         }
+        case NSFetchedResultsChangeMove:break;
     }
 }
 

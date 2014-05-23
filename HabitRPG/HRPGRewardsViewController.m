@@ -8,10 +8,7 @@
 
 #import "HRPGRewardsViewController.h"
 #import "HRPGAppDelegate.h"
-#import "Task.h"
-#import "MetaReward.h"
 #import <PDKeychainBindings.h>
-#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRPGRewardsViewController ()
 @property NSString *readableName;

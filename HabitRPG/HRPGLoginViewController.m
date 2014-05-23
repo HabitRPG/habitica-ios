@@ -7,7 +7,6 @@
 //
 
 #import "HRPGLoginViewController.h"
-#import <CRToast.h>
 #import "HRPGManager.h"
 #import "HRPGAppDelegate.h"
 

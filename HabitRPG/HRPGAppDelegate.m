@@ -8,7 +8,6 @@
 
 #import "HRPGAppDelegate.h"
 #import "HRPGTableViewController.h"
-#import "Task.h"
 #import "CRToast.h"
 #import <Crashlytics/Crashlytics.h>
 #if !defined (CONFIGURATION_AppStore_Distribution)

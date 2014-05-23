@@ -15,11 +15,6 @@
 // limitations under the License.
 //
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/mman.h>
-
 struct fmem {
   size_t pos;
   size_t size;

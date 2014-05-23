@@ -8,8 +8,6 @@
 
 #import "Task.h"
 #import "ChecklistItem.h"
-#import "Tag.h"
-#import "User.h"
 
 
 @implementation Task

@@ -8,10 +8,7 @@
 
 #import "HRPGSpellViewController.h"
 #import "HRPGAppDelegate.h"
-#import "Task.h"
-#import <PDKeychainBindings.h>
 #import "Spell.h"
-#import "HRPGSpellTaskController.h"
 #import "HRPGSpellTabBarController.h"
 
 @interface HRPGSpellViewController ()

@@ -9,8 +9,6 @@
 #import "HRPGTableViewController.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGFormViewController.h"
-#import "Task.h"
-#import <PDKeychainBindings.h>
 #import "MCSwipeTableViewCell.h"
 #import "HRPGSwipeTableViewCell.h"
 
