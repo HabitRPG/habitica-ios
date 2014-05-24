@@ -61,7 +61,6 @@ NSString *partyID;
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 
-
 }
 
 - (void)refresh {
@@ -80,10 +79,13 @@ NSString *partyID;
             questInvitationController.sourceViewcontroller = self;
             [self presentViewController:navigationController animated:YES completion:nil];
         }
+        party.newMessages = [NSNumber numberWithBool:NO];
+        [self.sharedManager chatSeen:party.id];
     }                      onError:^() {
         [self.refreshControl endRefreshing];
     }];
 }
+
 
 #pragma mark - Table view data source
 
@@ -378,10 +380,6 @@ NSString *partyID;
             textLabel.text = [NSString stringWithFormat:@"%@/%@", collect.collectCount, collect.count];
             textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         } else if (indexPath.section == 2) {
-            if (indexPath.item == 0 && [party.newMessages boolValue]) {
-                party.newMessages = [NSNumber numberWithBool:NO];
-                [self.sharedManager chatSeen:party.id];
-            }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             ChatMessage *message = (ChatMessage *) party.chatmessages[indexPath.item];
             UILabel *authorLabel = (UILabel *) [cell viewWithTag:1];

@@ -68,7 +68,8 @@ NIKFontAwesomeIconFactory *iconFactory;
     iconFactory.strokeColor = [UIColor colorWithRed:0.372 green:0.603 blue:0.014 alpha:1.000];
     iconFactory.size = 13.0f;
     iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
-}
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPartyData:) name:@"partyUpdated"  object:nil];}
 
 - (void)refresh {
     [self.sharedManager fetchUser:^() {
@@ -77,6 +78,11 @@ NIKFontAwesomeIconFactory *iconFactory;
     }                     onError:^() {
         [self.refreshControl endRefreshing];
     }];
+}
+
+
+- (void)reloadPartyData:(id)sender {
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 #pragma mark - Table view data source

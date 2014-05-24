@@ -815,6 +815,9 @@ NSString *currentUser;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
         [self.networkIndicatorController endNetworking];
+        if ([groupID isEqualToString:@"party"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"partyUpdated" object:nil];
+        }
         return;
     }                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -839,6 +842,7 @@ NSString *currentUser;
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:party.id forKey:@"partyID"];
             [defaults synchronize];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"partyUpdated" object:party];
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
@@ -1187,6 +1191,7 @@ NSString *currentUser;
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         [self.networkIndicatorController endNetworking];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"partyUpdated" object:nil];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
