@@ -76,6 +76,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+                            NSLocalizedString(@"Equip as Battle Gear", nil),
+                            NSLocalizedString(@"Equip as Costume", nil),
+                            nil];
+    popup.tag = 1;
+    [popup showInView:[UIApplication sharedApplication].keyWindow];
 }
 
 
@@ -125,7 +131,7 @@
 
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"type" cacheName:@"equipment"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"type" cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
@@ -189,12 +195,52 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = gear.text;
-    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", gear.key]]
+    UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
+    textLabel.text = gear.text;
+    textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    UILabel *detailLabel = (UILabel*)[cell viewWithTag:2];
+    detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+
+    
+    NSDictionary *attributeDict;
+    UIFontDescriptor *fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle: UIFontTextStyleCaption1];
+    UIFontDescriptor *boldFontDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits: UIFontDescriptorTraitBold];
+    UIFont *boldFont = [UIFont fontWithDescriptor: boldFontDescriptor size: 0.0];
+    if ([gear.klass isEqualToString:@"warrior"]) {
+        attributeDict =@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.792 green:0.267 blue:0.239 alpha:1.000], NSFontAttributeName:boldFont};
+    } else if ([gear.klass isEqualToString:@"wizard"]) {
+        attributeDict =@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.211 green:0.718 blue:0.168 alpha:1.000], NSFontAttributeName:boldFont};
+    } else if ([gear.klass isEqualToString:@"rogue"]) {
+        attributeDict =@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.177 green:0.333 blue:0.559 alpha:1.000], NSFontAttributeName:boldFont};
+    } else if ([gear.klass isEqualToString:@"healer"]) {
+        attributeDict =@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.304 green:0.702 blue:0.839 alpha:1.000], NSFontAttributeName:boldFont};
+    }
+    NSMutableAttributedString *detailString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedString(@"%@", nil), gear.klass] attributes:attributeDict];
+    if ([gear.intelligence integerValue] != 0) {
+        [detailString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedString(@" Intelligence: %@", nil), gear.intelligence]]];
+    } else if ([gear.str integerValue] != 0) {
+        [detailString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedString(@" Strength: %@", nil), gear.str]]];
+    } else if ([gear.con integerValue] != 0) {
+        [detailString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedString(@" Constitution: %@", nil), gear.con]]];
+    } else if ([gear.per integerValue] != 0) {
+        [detailString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedString(@" Perception: %@", nil), gear.per]]];
+    }
+    
+    detailLabel.attributedText = detailString;
+    
+    UIImageView *imageView = (UIImageView*)[cell viewWithTag:3];
+    [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", gear.key]]
                    placeholderImage:[UIImage imageNamed:@"Placeholder"]];
 }
 
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        
+    } else if (buttonIndex == 1) {
+        
+    }
+}
 
 #pragma mark - Navigation
 
