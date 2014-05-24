@@ -7,15 +7,7 @@
 //
 
 #import "User.h"
-#import "Egg.h"
-#import "Gear.h"
-#import "Group.h"
-#import "Quest.h"
-#import "Reward.h"
-#import "Tag.h"
-#import "Task.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
 
 
 @implementation User
@@ -76,14 +68,14 @@
     [self setAvatarOnImageView:imageView withPetMount:YES onlyHead:NO];
 }
 
-- (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead{
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
+- (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead {
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     HRPGManager *sharedManager = appdelegate.sharedManager;
     NSString *cachedImageName;
     UIImage *cachedImage;
     if (withPetMount && !onlyHead) {
         cachedImageName = [NSString stringWithFormat:@"%@_full", self.username];
-    } else if (!withPetMount && !onlyHead){
+    } else if (!withPetMount && !onlyHead) {
         cachedImageName = [NSString stringWithFormat:@"%@_noPetMount", self.username];
     } else {
         cachedImageName = [NSString stringWithFormat:@"%@_head", self.username];
@@ -92,35 +84,35 @@
     imageView.image = cachedImage;
     if (withPetMount && !onlyHead && [self.lastLogin isEqualToDate:self.lastAvatarFull]) {
         return;
-    } else if (!withPetMount && !onlyHead && [self.lastLogin isEqualToDate:self.lastAvatarNoPet]){
+    } else if (!withPetMount && !onlyHead && [self.lastLogin isEqualToDate:self.lastAvatarNoPet]) {
         return;
-    } else if ([self.lastLogin isEqualToDate:self.lastAvatarHead]){
+    } else if ([self.lastLogin isEqualToDate:self.lastAvatarHead]) {
         return;
     }
     NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:16];
-    for(int i = 0; i<=16; i++) {
+    for (int i = 0; i <= 16; i++) {
         [imageArray addObject:[NSNull null]];
     }
     int currentLayer = 0;
-    
+
     __block UIImage *currentPet = nil;
     __block UIImage *currentMount = nil;
     __block UIImage *currentMountHead = nil;
     dispatch_group_t group = dispatch_group_create();
-    
+
     dispatch_group_enter(group);
     [sharedManager getImage:[NSString stringWithFormat:@"skin_%@", self.skin] onSuccess:^(UIImage *image) {
         [imageArray replaceObjectAtIndex:currentLayer withObject:image];
         dispatch_group_leave(group);
     }];
-    
+
     dispatch_group_enter(group);
     currentLayer++;
     [sharedManager getImage:[NSString stringWithFormat:@"%@_shirt_%@", self.size, self.shirt] onSuccess:^(UIImage *image){
         [imageArray replaceObjectAtIndex:currentLayer withObject:image];
         dispatch_group_leave(group);
     }];
-    
+
     dispatch_group_enter(group);
     currentLayer++;
     [sharedManager getImage:[NSString stringWithFormat:@"head_0"] onSuccess:^(UIImage *image) {
@@ -136,7 +128,7 @@
             dispatch_group_leave(group);
         }];
     }
-    
+
     if ([self.hairBase integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
@@ -146,7 +138,7 @@
         }];
     }
 
-    
+
     if ([self.hairBangs integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
@@ -155,16 +147,16 @@
             dispatch_group_leave(group);
         }];
     }
-    
+
     if ([self.hairMustache integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"hair_mustache_%@_%@", self.hairMustache, self.hairColor] onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
-    }];
+        }];
     }
-        
+
     if ([self.hairBeard integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
@@ -173,7 +165,7 @@
             dispatch_group_leave(group);
         }];
     }
-    
+
     NSString *head = [self.useCostume boolValue] ? self.costumeHead : self.equippedHead;
     if (![head isEqualToString:@"head_base_0"]) {
         dispatch_group_enter(group);
@@ -210,7 +202,7 @@
             dispatch_group_leave(group);
         }];
     }
-    
+
     if (self.sleep) {
         dispatch_group_enter(group);
         currentLayer++;
@@ -219,7 +211,7 @@
             dispatch_group_leave(group);
         }];
     }
-    
+
     if (withPetMount && self.currentPet) {
         dispatch_group_enter(group);
         currentLayer++;
@@ -228,7 +220,7 @@
             dispatch_group_leave(group);
         }];
     }
-    
+
     if (withPetMount && self.currentMount) {
         dispatch_group_enter(group);
         currentLayer++;
@@ -237,7 +229,7 @@
             dispatch_group_leave(group);
         }];
     }
-    
+
     if (withPetMount && self.currentMount) {
         dispatch_group_enter(group);
         currentLayer++;
@@ -246,7 +238,7 @@
             dispatch_group_leave(group);
         }];
     }
-    
+
     dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         int yoffset = 18;
         int xoffset = 25;
@@ -271,7 +263,7 @@
         }
         for (id item in imageArray) {
             if (item != [NSNull null]) {
-                UIImage *addImage = (UIImage*)item;
+                UIImage *addImage = (UIImage *) item;
                 [addImage drawInRect:CGRectMake(xoffset, yoffset, addImage.size.width, addImage.size.height)];
             }
         }
@@ -281,7 +273,7 @@
         if (self.currentPet) {
             [currentPet drawInRect:CGRectMake(0, 43, currentPet.size.width, currentPet.size.height)];
         }
-        
+
         UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -290,7 +282,7 @@
         [sharedManager setCachedImage:resultImage withName:cachedImageName onSuccess:^() {
             if (withPetMount && !onlyHead) {
                 self.lastAvatarFull = [self.lastLogin copy];
-            } else if (!withPetMount && !onlyHead){
+            } else if (!withPetMount && !onlyHead) {
                 self.lastAvatarNoPet = [self.lastLogin copy];
             } else {
                 self.lastAvatarHead = [self.lastLogin copy];

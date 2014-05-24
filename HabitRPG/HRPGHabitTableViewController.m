@@ -27,8 +27,7 @@
 @dynamic typeName;
 @dynamic sharedManager;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     self.iconFactory.square = YES;
@@ -39,46 +38,45 @@
     self.typeName = @"habit";
 }
 
-- (IBAction)upDownSelected:(UISegmentedControl*)sender {
-    UITableViewCell *cell = (UITableViewCell*)[[[sender superview] superview] superview];
+- (IBAction)upDownSelected:(UISegmentedControl *)sender {
+    UITableViewCell *cell = (UITableViewCell *) [[[sender superview] superview] superview];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    Task *habit = (Task*)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    Task *habit = (Task *) [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSString *direction;
     if (sender.selectedSegmentIndex == 0 && habit.down) {
-            direction = @"down";
+        direction = @"down";
     } else {
         direction = @"up";
     }
-    
-    [self.sharedManager upDownTask:habit direction:direction onSuccess:^ () {
-    } onError:^ () {
+
+    [self.sharedManager upDownTask:habit direction:direction onSuccess:^() {
+    }                      onError:^() {
         [self.sharedManager displayNetworkError];
     }];
 }
 
-- (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate
-{
+- (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UIColor *color = [self.sharedManager getColorForValue:task.value];
-    UILabel *label = (UILabel*)[cell viewWithTag:1];
+    UILabel *label = (UILabel *) [cell viewWithTag:1];
     label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
     label.textColor = color;
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [self configureSwiping:cell withTask:task];
 }
 
--(void)configureSwiping:(MCSwipeTableViewCell *)cell withTask:(Task*) task {
+- (void)configureSwiping:(MCSwipeTableViewCell *)cell withTask:(Task *)task {
     if (self.tableView.editing) {
-        cell.view3  = nil;
+        cell.view3 = nil;
     }
     if ([task.up boolValue]) {
         UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconPlus]];
         UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
         [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(){
-                
-            }onError:^(){
-                
+
+            }                      onError:^(){
+
             }];
         }];
     }
@@ -87,9 +85,9 @@
         UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
         [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState1 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(){
-                
-            }onError:^(){
-                
+
+            }                      onError:^(){
+
             }];
         }];
     }

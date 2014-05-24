@@ -7,8 +7,6 @@
 //
 
 #import "QuestCollect.h"
-#import "Group.h"
-#import "Quest.h"
 
 
 @implementation QuestCollect

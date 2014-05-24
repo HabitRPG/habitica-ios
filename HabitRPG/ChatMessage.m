@@ -7,7 +7,6 @@
 //
 
 #import "ChatMessage.h"
-#import "Group.h"
 
 
 @implementation ChatMessage

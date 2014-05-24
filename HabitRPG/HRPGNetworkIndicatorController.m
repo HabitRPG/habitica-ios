@@ -8,20 +8,20 @@
 
 #import "HRPGNetworkIndicatorController.h"
 
-@interface HRPGNetworkIndicatorController()
+@interface HRPGNetworkIndicatorController ()
 @property NSInteger networkCount;
 @end
 
 @implementation HRPGNetworkIndicatorController
 
--(void)beginNetworking {
+- (void)beginNetworking {
     if (self.networkCount == 0) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     }
     self.networkCount++;
 }
 
--(void)endNetworking {
+- (void)endNetworking {
     self.networkCount--;
     if (self.networkCount == 0) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;

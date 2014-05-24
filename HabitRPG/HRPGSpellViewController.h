@@ -11,7 +11,7 @@
 
 @interface HRPGSpellViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 
 @end

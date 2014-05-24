@@ -10,7 +10,8 @@
 
 @interface HRPGNetworkIndicatorController : NSObject
 
--(void)beginNetworking;
--(void)endNetworking;
+- (void)beginNetworking;
+
+- (void)endNetworking;
 
 @end

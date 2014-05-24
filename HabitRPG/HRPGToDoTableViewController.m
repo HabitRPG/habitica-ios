@@ -37,52 +37,48 @@
 @dynamic openedIndexPath;
 @dynamic indexOffset;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     self.iconFactory.square = YES;
     self.iconFactory.colors = @[[UIColor whiteColor]];
     self.iconFactory.strokeColor = [UIColor whiteColor];
     self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
-    
+
     self.checkIconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     self.checkIconFactory.square = YES;
     self.checkIconFactory.colors = @[[UIColor grayColor]];
     self.checkIconFactory.strokeColor = [UIColor grayColor];
     self.checkIconFactory.size = 17.0f;
     self.checkIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
-    
+
     self.readableName = NSLocalizedString(@"To-Do", nil);
     self.typeName = @"todo";
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateStyle = NSDateFormatterShortStyle;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-    
-    UILabel *v = (UILabel*)[cell viewWithTag:2];
+
+    UILabel *v = (UILabel *) [cell viewWithTag:2];
     // border radius
     [v.layer setCornerRadius:5.0f];
     return cell;
 }
 
-- (void)configureCell:(HRPGSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate
-{
-    UILabel *checklistLabel = (UILabel*)[cell viewWithTag:2];
-    UILabel *label = (UILabel*)[cell viewWithTag:1];
-    UIImageView *checkMarkView = (UIImageView*)[cell viewWithTag:3];
-    if (self.openedIndexPath && self.openedIndexPath.item < indexPath.item && indexPath.item <= (self.openedIndexPath.item+self.indexOffset)) {
+- (void)configureCell:(HRPGSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
+    UILabel *checklistLabel = (UILabel *) [cell viewWithTag:2];
+    UILabel *label = (UILabel *) [cell viewWithTag:1];
+    UIImageView *checkMarkView = (UIImageView *) [cell viewWithTag:3];
+    if (self.openedIndexPath && self.openedIndexPath.item < indexPath.item && indexPath.item <= (self.openedIndexPath.item + self.indexOffset)) {
         Task *task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
-        int currentOffset = (int)(indexPath.item - self.openedIndexPath.item-1);
+        int currentOffset = (int) (indexPath.item - self.openedIndexPath.item - 1);
         ChecklistItem *item = task.checklist[currentOffset];
         label.text = [item.text stringByReplacingEmojiCheatCodesWithUnicode];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
@@ -100,9 +96,9 @@
             [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                 item.completed = [NSNumber numberWithBool:NO];;
                 [self.sharedManager updateTask:task onSuccess:^() {
-                    [self configureCell:(HRPGSwipeTableViewCell*)cell atIndexPath:indexPath withAnimation:YES];
-                }onError:^() {
-                    
+                    [self configureCell:(HRPGSwipeTableViewCell *) cell atIndexPath:indexPath withAnimation:YES];
+                }                      onError:^() {
+
                 }];
             }];
         } else {
@@ -116,23 +112,23 @@
             [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                 item.completed = [NSNumber numberWithBool:YES];
                 [self.sharedManager updateTask:task onSuccess:^() {
-                    
-                    [self configureCell:(HRPGSwipeTableViewCell*)cell atIndexPath:indexPath withAnimation:YES];
-                }onError:^() {
-                    
+
+                    [self configureCell:(HRPGSwipeTableViewCell *) cell atIndexPath:indexPath withAnimation:YES];
+                }                      onError:^() {
+
                 }];
             }];
         }
-        
+
     } else {
-        if (self.openedIndexPath.item+self.indexOffset < indexPath.item && self.indexOffset > 0) {
+        if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
             indexPath = [NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section];
         }
         Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
         label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         if (task.duedate) {
-            UILabel *subLabel = (UILabel*)[cell viewWithTag:4];
+            UILabel *subLabel = (UILabel *) [cell viewWithTag:4];
             subLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
             if ([task.duedate compare:[NSDate date]] == NSOrderedAscending) {
                 subLabel.textColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
@@ -146,10 +142,10 @@
                     if ([differenceValue day] == 1) {
                         subLabel.text = NSLocalizedString(@"Due in 1 day", nil);
                     } else {
-                    subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due in %d days", nil), [differenceValue day]];
+                        subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due in %d days", nil), [differenceValue day]];
                     }
                 } else {
-                subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due until %@", nil), [self.dateFormatter stringFromDate:task.duedate]];
+                    subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due until %@", nil), [self.dateFormatter stringFromDate:task.duedate]];
                 }
             }
         }
@@ -185,7 +181,7 @@
                 label.textColor = [self.sharedManager getColorForValue:task.value];
             }];
         }
-        
+
         [self configureSwiping:cell withTask:task];
         if (animate) {
             if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
@@ -206,7 +202,7 @@
                 }];
             }
         } else {
-            if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item)  {
+            if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
                 label.textColor = [UIColor whiteColor];
                 cell.backgroundColor = [UIColor grayColor];
                 cell.separatorInset = UIEdgeInsetsZero;
@@ -219,15 +215,15 @@
     }
 }
 
--(void)configureSwiping:(HRPGSwipeTableViewCell *)cell withTask:(Task *)task {
+- (void)configureSwiping:(HRPGSwipeTableViewCell *)cell withTask:(Task *)task {
     if ([task.completed boolValue]) {
         UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconSquareO]];
         UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
         [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(){
-                
-            }onError:^(){
-                
+
+            }                      onError:^(){
+
             }];
         }];
     } else {
@@ -235,9 +231,9 @@
         UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
         [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(){
-                
-            }onError:^(){
-                
+
+            }                      onError:^(){
+
             }];
         }];
     }

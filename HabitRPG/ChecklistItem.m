@@ -7,7 +7,6 @@
 //
 
 #import "ChecklistItem.h"
-#import "Task.h"
 
 
 @implementation ChecklistItem

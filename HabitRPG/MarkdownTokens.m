@@ -14,18 +14,18 @@
 // limitations under the License.
 //
 
-const char* markdownnames[] = {
-  "EM",
-  "STRONG",
-  "STRONGEM",
-  "STRIKETHROUGH",
-  "HEADER",
-  "MULTILINEHEADER",
-  "URL",
-  "HREF",
-  "PARAGRAPH",
-  "NEWLINE",
-  "BULLETSTART",
-  "MARKDOWNCODESPAN",
-  "UNKNOWN"
+const char *markdownnames[] = {
+        "EM",
+        "STRONG",
+        "STRONGEM",
+        "STRIKETHROUGH",
+        "HEADER",
+        "MULTILINEHEADER",
+        "URL",
+        "HREF",
+        "PARAGRAPH",
+        "NEWLINE",
+        "BULLETSTART",
+        "MARKDOWNCODESPAN",
+        "UNKNOWN"
 };

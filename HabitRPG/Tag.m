@@ -7,8 +7,6 @@
 //
 
 #import "Tag.h"
-#import "Task.h"
-#import "User.h"
 
 
 @implementation Tag

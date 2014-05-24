@@ -8,32 +8,28 @@
 
 #import "HRPGQuestInvitationViewController.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
-#import "Quest.h"
+
 @interface HRPGQuestInvitationViewController ()
 @property HRPGManager *sharedManager;
 @end
 
 @implementation HRPGQuestInvitationViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
+
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     _sharedManager = appdelegate.sharedManager;
 }
 
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
             return 2;
@@ -43,14 +39,14 @@
     return 0;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 1) {
         return [self.quest.notes boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
-                                          options:NSStringDrawingUsesLineFragmentOrigin
-                                       attributes:@{
-                                                    NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
-                                                    }
-                                              context:nil].size.height+24;
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:@{
+                                                   NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+                                           }
+                                              context:nil].size.height + 24;
     }
     return 44;
 }
@@ -58,16 +54,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 0) {
         [_sharedManager acceptQuest:self.party.id withQuest:nil useForce:NO onSuccess:^(){
-            
-        }onError:^(){
-            
+
+        }                   onError:^(){
+
         }];
         [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         [_sharedManager rejectQuest:self.party.id onSuccess:^(){
-            
-        }onError:^(){
-            
+
+        }                   onError:^(){
+
         }];
         [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
     } else if (indexPath.section == 1 && indexPath.item == 2) {
@@ -75,8 +71,7 @@
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier;
     if (indexPath.section == 0 && indexPath.item == 0) {
         cellIdentifier = @"titleCell";
@@ -89,21 +84,21 @@
     } else if (indexPath.section == 1 && indexPath.item == 2) {
         cellIdentifier = @"asklaterCell";
     }
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
+
     if (indexPath.section == 0 && indexPath.item == 0) {
         cell.textLabel.text = self.quest.text;
     } else if (indexPath.section == 0 && indexPath.item == 1) {
-        UILabel *label = (UILabel*)[cell viewWithTag:1];
+        UILabel *label = (UILabel *) [cell viewWithTag:1];
         NSError *err = nil;
         UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-        NSString *html = [NSString stringWithFormat:@"<span style=\"font-family: Helvetica Neue; font-size: %ld\">%@</span>", (long)[[NSNumber numberWithFloat:font.pointSize] integerValue], self.quest.notes];
+        NSString *html = [NSString stringWithFormat:@"<span style=\"font-family: Helvetica Neue; font-size: %ld\">%@</span>", (long) [[NSNumber numberWithFloat:font.pointSize] integerValue], self.quest.notes];
         label.attributedText = [[NSAttributedString alloc]
-                                initWithData: [html dataUsingEncoding:NSUTF8StringEncoding]
-                                options: @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType}
-                                documentAttributes: nil
-                                error: &err];
+                initWithData:[html dataUsingEncoding:NSUTF8StringEncoding]
+                     options:@{NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType}
+          documentAttributes:nil
+                       error:&err];
     }
     return cell;
 }

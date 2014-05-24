@@ -14,6 +14,7 @@
 @property Spell *spell;
 @property NSString *taskID;
 @property UITableView *sourceTableView;
--(void)castSpell;
+
+- (void)castSpell;
 
 @end

@@ -17,48 +17,46 @@
 
 @implementation HRPGBaseViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate*)[[UIApplication sharedApplication] delegate];
+
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
     self.managedObjectContext = self.sharedManager.getManagedObjectContext;
-    
+
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    
+
     if ([keyChain stringForKey:@"id"] == nil || [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-        UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        [self presentViewController:navigationController animated:NO completion: nil];
+        UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+        [self presentViewController:navigationController animated:NO completion:nil];
     }
-    
+
     [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(preferredContentSizeChanged:)
-     name:UIContentSizeCategoryDidChangeNotification
-     object:nil];
+            addObserver:self
+               selector:@selector(preferredContentSizeChanged:)
+                   name:UIContentSizeCategoryDidChangeNotification
+                 object:nil];
 }
 
--(void) viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (self.refreshControl.isRefreshing) {
-        dispatch_async(dispatch_get_main_queue(), ^
-                       {
-                           [self.refreshControl beginRefreshing];
-                           [self.refreshControl endRefreshing];
-                       });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.refreshControl beginRefreshing];
+            [self.refreshControl endRefreshing];
+        });
     }
     NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
     [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
 }
 
--(void) viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     User *user = [self.sharedManager getUser];
     if (user && [user.health integerValue] <= 0) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-        UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"deathNavigationController"];
-        [self presentViewController:navigationController animated:YES completion: nil];
+        UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"deathNavigationController"];
+        [self presentViewController:navigationController animated:YES completion:nil];
     }
 }
 

@@ -13,7 +13,7 @@
 
 @interface Reward : NSManagedObject
 
-@property (nonatomic, retain) NSDate * dateCreated;
-@property (nonatomic, retain) User *user;
+@property(nonatomic, retain) NSDate *dateCreated;
+@property(nonatomic, retain) User *user;
 
 @end
