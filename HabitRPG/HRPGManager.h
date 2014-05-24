@@ -10,6 +10,7 @@
 #import "Task.h"
 #import "User.h"
 #import "MetaReward.h"
+#import "ChatMessage.h"
 
 @interface HRPGManager : NSObject
 
@@ -54,6 +55,8 @@
 - (void)sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)reviveUser:(void (^)())successBlock onError:(void (^)())errorBlock;
+
+- (void)chatMessage:(NSString *)message withGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (NSManagedObjectContext *)getManagedObjectContext;
 

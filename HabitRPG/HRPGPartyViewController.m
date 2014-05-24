@@ -11,6 +11,7 @@
 #import "HRPGQuestInvitationViewController.h"
 #import "HRPGQuestParticipantsViewController.h"
 #import "HRPGQuestDetailController.h"
+#import "HRPGMessageViewController.h"
 #import "QuestCollect.h"
 #import "ChatMessage.h"
 #import <NSDate+TimeAgo.h>
@@ -51,10 +52,8 @@ NSString *partyID;
         if ([[self.fetchedResultsController sections] count] > 0 && [[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0) {
             party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
             [self fetchQuest];
-            UIFontDescriptor *fontDescriptor =
-            [UIFontDescriptor preferredFontDescriptorWithTextStyle: UIFontTextStyleBody];
-            UIFontDescriptor *boldFontDescriptor =
-            [fontDescriptor fontDescriptorWithSymbolicTraits: UIFontDescriptorTraitBold];
+            UIFontDescriptor *fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle: UIFontTextStyleBody];
+            UIFontDescriptor *boldFontDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits: UIFontDescriptorTraitBold];
             UIFont *boldFont = [UIFont fontWithDescriptor: boldFontDescriptor size: 0.0];
             
             for (User *member in party.member) {
@@ -74,6 +73,23 @@ NSString *partyID;
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"newChatMessage" object:nil queue:nil usingBlock:^(NSNotification *notificaiton) {
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }];
+}
+
+- (void)preferredContentSizeChanged:(NSNotification *)notification {
+    [super preferredContentSizeChanged:notification];
+    UIFontDescriptor *fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle: UIFontTextStyleBody];
+    UIFontDescriptor *boldFontDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits: UIFontDescriptorTraitBold];
+    UIFont *boldFont = [UIFont fontWithDescriptor: boldFontDescriptor size: 0.0];
+    
+    for (User *member in party.member) {
+        [self.chatAttributeMapping setObject:@{
+                                               NSForegroundColorAttributeName: [member classColor],
+                                               NSFontAttributeName: boldFont
+                                               } forKey:member.username];
+    }
 }
 
 - (void)refresh {
@@ -449,6 +465,10 @@ NSString *partyID;
     } else if ([segue.identifier isEqualToString:@"QuestDetailSegue"]) {
         HRPGQuestDetailController *qdViewcontroller = segue.destinationViewController;
         qdViewcontroller.quest = quest;
+    } else if ([segue.identifier isEqualToString:@"MessageSegue"]) {
+        UINavigationController *navController = segue.destinationViewController;
+        HRPGMessageViewController *messageViewController = (HRPGMessageViewController*)navController.topViewController;
+        messageViewController.party = party;
     }
 }
 

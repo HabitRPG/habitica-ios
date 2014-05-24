@@ -7,7 +7,7 @@
 //
 
 #import "Group.h"
-
+#import "ChatMessage.h"
 @implementation Group
 
 @dynamic hdescription;
@@ -23,5 +23,18 @@
 @dynamic leader;
 @dynamic member;
 @dynamic collectStatus;
+
+-(void)addChatmessagesObject:(ChatMessage *)value {
+    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.chatmessages];
+    value.group = self;
+    [tempSet addObject:value];
+    self.chatmessages = tempSet;
+}
+
+- (void)removeChatMessagesObject:(ChatMessage *)value {
+    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.chatmessages];
+    [tempSet removeObject:value];
+    self.chatmessages = tempSet;
+}
 
 @end

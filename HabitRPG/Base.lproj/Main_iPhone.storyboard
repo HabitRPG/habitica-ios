@@ -1109,7 +1109,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="IS1-JY-8Uz" id="aVI-3o-jGV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Party" id="deL-Nn-rLy"/>
+                    <navigationItem key="navigationItem" title="Party" id="deL-Nn-rLy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="QSs-5T-qv5">
+                            <connections>
+                                <segue destination="CHE-k4-ZCL" kind="modal" identifier="MessageSegue" id="QZs-YK-kGB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="dTs-XW-ncH" kind="push" identifier="ParticipantsSegue" id="dgw-v8-d53"/>
                         <segue destination="C7A-kW-wAT" kind="push" identifier="MembersSegue" id="VsI-y2-kpI"/>
@@ -2354,6 +2360,66 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Llr-FU-8Hc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="559" y="3297"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9mG-3N-jXo">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="CHE-k4-ZCL" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rie-5n-r1K">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lvC-WQ-kTT" kind="relationship" relationship="rootViewController" id="Irl-eR-e5X"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZP3-Gb-0Xe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121" y="3874"/>
+        </scene>
+        <!--Message View Controller - New Message-->
+        <scene sceneID="K6d-SG-db4">
+            <objects>
+                <viewController id="lvC-WQ-kTT" customClass="HRPGMessageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fBx-BK-azD"/>
+                        <viewControllerLayoutGuide type="bottom" id="kfE-5L-KUs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zaH-GK-GaA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Eu-Vt-bAY">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="lvC-WQ-kTT" id="vSq-jo-7QN"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Message" id="Mbw-8k-G1S">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hBr-my-gYH">
+                            <connections>
+                                <action selector="dismissMessage:" destination="lvC-WQ-kTT" id="OL5-MR-4gd"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="5yH-w3-BDq">
+                            <connections>
+                                <action selector="postMessage:" destination="lvC-WQ-kTT" id="Dw5-Tn-nJb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="messageView" destination="7Eu-Vt-bAY" id="X9B-25-yIK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mYS-GU-nbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="559" y="3874"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8pd-jO-W2P">

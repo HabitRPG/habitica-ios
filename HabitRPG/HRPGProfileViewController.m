@@ -69,7 +69,8 @@ NIKFontAwesomeIconFactory *iconFactory;
     iconFactory.size = 13.0f;
     iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPartyData:) name:@"partyUpdated"  object:nil];}
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPartyData:) name:@"partyUpdated"  object:nil];
+}
 
 - (void)refresh {
     [self.sharedManager fetchUser:^() {

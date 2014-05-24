@@ -11,5 +11,5 @@
 @interface HRPGBaseViewController : UITableViewController
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-
+- (void)preferredContentSizeChanged:(NSNotification *)notification;
 @end
