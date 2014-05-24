@@ -260,48 +260,24 @@
 			children = (
 				D99F15BE191027D90081836E /* HRPGBaseViewController.h */,
 				D99F15BF191027D90081836E /* HRPGBaseViewController.m */,
-				D922F01D191BCC1600B197EA /* HRPGQuestDetailController.h */,
-				D922F01E191BCC1600B197EA /* HRPGQuestDetailController.m */,
-				D92CDAE818CB8C130006C242 /* HRPGFormViewController.h */,
-				D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */,
-				D92CDAE218CB83EF0006C242 /* HRPGDailyTableViewController.h */,
-				D92CDAE318CB83EF0006C242 /* HRPGDailyTableViewController.m */,
 				D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */,
 				D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */,
 				D99DEC821908313D00FFD2B9 /* HRPGItemViewController.h */,
 				D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */,
-				D92CDADE18CB83B90006C242 /* HRPGHabitTableViewController.h */,
-				D92CDADF18CB83B90006C242 /* HRPGHabitTableViewController.m */,
-				D9B5C0E518D62CC700C8D1B7 /* HRPGLoginViewController.h */,
-				D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */,
-				D9B5C0D318D5F94400C8D1B7 /* HRPGPartyViewController.h */,
-				D9B5C0D418D5F94400C8D1B7 /* HRPGPartyViewController.m */,
-				D98F5AED1905C090002F8223 /* HRPGQuestParticipantsViewController.h */,
-				D98F5AEE1905C090002F8223 /* HRPGQuestParticipantsViewController.m */,
-				D98F5AF01905DE86002F8223 /* HRPGPartyMembersViewController.h */,
-				D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */,
 				D9B5C0B518D5C07100C8D1B7 /* HRPGProfileViewController.h */,
 				D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */,
+				D922F01D191BCC1600B197EA /* HRPGQuestDetailController.h */,
+				D922F01E191BCC1600B197EA /* HRPGQuestDetailController.m */,
 				D9C7C1F118E280DD0083F4E4 /* HRPGRewardsViewController.h */,
 				D9C7C1F218E280DD0083F4E4 /* HRPGRewardsViewController.m */,
 				D966557218FB129F0014C09D /* HRPGSettingsViewController.h */,
 				D966557318FB129F0014C09D /* HRPGSettingsViewController.m */,
-				D97C71E218ECE09A0089FDC6 /* HRPGSpellViewController.h */,
-				D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */,
-				D94AADB5192A56E800546C8E /* HRPGSpellTaskController.h */,
-				D94AADB6192A56E800546C8E /* HRPGSpellTaskController.m */,
-				D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */,
-				D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */,
-				D92CDADB18CB79E50006C242 /* HRPGTableViewController.h */,
-				D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */,
 				D9E0868F18DF800F00BAF2EF /* HRPGTavernViewController.h */,
 				D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */,
-				D92CDAE518CB84000006C242 /* HRPGToDoTableViewController.h */,
-				D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */,
-				D99DEC8D190914AD00FFD2B9 /* HRPGQuestInvitationViewController.h */,
-				D99DEC8E190914AD00FFD2B9 /* HRPGQuestInvitationViewController.m */,
-				D922F0A9191D957D00B197EA /* HRPGDeathViewController.h */,
-				D922F0AA191D957D00B197EA /* HRPGDeathViewController.m */,
+				D9E3654F1930D45500C056F1 /* Modals */,
+				D9E365501930D58900C056F1 /* Party */,
+				D9E3654E1930D44300C056F1 /* Spells */,
+				D9E365511930D59D00C056F1 /* Tasks */,
 			);
 			name = TablewViewController;
 			sourceTree = "<group>";
@@ -362,6 +338,62 @@
 				D908B3821903515B00D32A75 /* HRPGSwipeTableViewCell.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		D9E3654E1930D44300C056F1 /* Spells */ = {
+			isa = PBXGroup;
+			children = (
+				D97C71E218ECE09A0089FDC6 /* HRPGSpellViewController.h */,
+				D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */,
+				D94AADB5192A56E800546C8E /* HRPGSpellTaskController.h */,
+				D94AADB6192A56E800546C8E /* HRPGSpellTaskController.m */,
+				D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */,
+				D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */,
+			);
+			name = Spells;
+			sourceTree = "<group>";
+		};
+		D9E3654F1930D45500C056F1 /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				D9B5C0E518D62CC700C8D1B7 /* HRPGLoginViewController.h */,
+				D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */,
+				D99DEC8D190914AD00FFD2B9 /* HRPGQuestInvitationViewController.h */,
+				D99DEC8E190914AD00FFD2B9 /* HRPGQuestInvitationViewController.m */,
+				D922F0A9191D957D00B197EA /* HRPGDeathViewController.h */,
+				D922F0AA191D957D00B197EA /* HRPGDeathViewController.m */,
+			);
+			name = Modals;
+			sourceTree = "<group>";
+		};
+		D9E365501930D58900C056F1 /* Party */ = {
+			isa = PBXGroup;
+			children = (
+				D9B5C0D318D5F94400C8D1B7 /* HRPGPartyViewController.h */,
+				D9B5C0D418D5F94400C8D1B7 /* HRPGPartyViewController.m */,
+				D98F5AED1905C090002F8223 /* HRPGQuestParticipantsViewController.h */,
+				D98F5AEE1905C090002F8223 /* HRPGQuestParticipantsViewController.m */,
+				D98F5AF01905DE86002F8223 /* HRPGPartyMembersViewController.h */,
+				D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */,
+			);
+			name = Party;
+			sourceTree = "<group>";
+		};
+		D9E365511930D59D00C056F1 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				D92CDAE818CB8C130006C242 /* HRPGFormViewController.h */,
+				D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */,
+				D92CDAE218CB83EF0006C242 /* HRPGDailyTableViewController.h */,
+				D92CDAE318CB83EF0006C242 /* HRPGDailyTableViewController.m */,
+				D92CDADE18CB83B90006C242 /* HRPGHabitTableViewController.h */,
+				D92CDADF18CB83B90006C242 /* HRPGHabitTableViewController.m */,
+				D92CDADB18CB79E50006C242 /* HRPGTableViewController.h */,
+				D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */,
+				D92CDAE518CB84000006C242 /* HRPGToDoTableViewController.h */,
+				D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */,
+			);
+			name = Tasks;
 			sourceTree = "<group>";
 		};
 		D9EB4E8218CB4A9400BB2094 = {
