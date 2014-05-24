@@ -43,7 +43,7 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     CGFloat screenHeight = screenRect.size.height;
-    self.messageView.frame = CGRectMake(0, 0, screenWidth, screenHeight-height);
+    self.messageView.frame = CGRectMake(4, 0, screenWidth-8, screenHeight-height);
 }
 
 - (IBAction)dismissMessage:(id)sender {

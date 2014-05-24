@@ -465,6 +465,7 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
     
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[ChatMessage class] pathPattern:@"/api/v2/groups/:group.id/chat" method:RKRequestMethodPOST]];
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[ChatMessage class] pathPattern:@"/api/v2/groups/:group.id/chat/:id" method:RKRequestMethodDELETE]];
 
     RKEntityMapping *memberMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     [memberMapping addAttributeMappingsFromDictionary:@{
@@ -1277,6 +1278,27 @@ NSString *currentUser;
     }];
 }
 
+- (void)deleteMessage:(ChatMessage *)message withGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] deleteObject:message path:[NSString stringWithFormat:@"/api/v2/groups/%@/chat/%@", groupID, message.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        //[self.managedObjectContext deleteObject:message];
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        errorBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
 
 - (void)displayNetworkError {
     NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Network error", nil),

@@ -32,6 +32,7 @@ Quest *quest;
 User *user;
 NSUserDefaults *defaults;
 NSString *partyID;
+ChatMessage *selectedMessage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -237,6 +238,17 @@ NSString *partyID;
         [self performSegueWithIdentifier:@"QuestDetailSegue" sender:self];
     } else if ((indexPath.section == 1 && indexPath.item == 1 && [party.questHP integerValue] == 0) || (indexPath.section == 1 && indexPath.item == 2 && [party.questActive boolValue] && [party.questHP integerValue] > 0)) {
         [self performSegueWithIdentifier:@"ParticipantsSegue" sender:self];
+    } else if (indexPath.section == 2) {
+        NSString *deleteTitle;
+        selectedMessage = party.chatmessages[indexPath.item];
+        if ([selectedMessage.user isEqualToString:user.username]) {
+            deleteTitle = NSLocalizedString(@"Delete", nil);
+        }
+        UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteTitle otherButtonTitles:
+                                NSLocalizedString(@"Copy", nil),
+                                nil];
+        popup.tag = 1;
+        [popup showInView:[UIApplication sharedApplication].keyWindow];
     }
 }
 
@@ -451,6 +463,22 @@ NSString *partyID;
         quest = [managedObjectContext executeFetchRequest:fetchRequest error:&error][0];
         [self.tableView reloadData];
 
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == actionSheet.destructiveButtonIndex) {
+        [self.sharedManager deleteMessage:selectedMessage withGroup:@"party" onSuccess:^() {
+            selectedMessage = nil;
+        } onError:^() {
+        }];
+    } else if (buttonIndex != actionSheet.cancelButtonIndex) {
+        UIPasteboard *pb = [UIPasteboard generalPasteboard];
+        if (selectedMessage.user != nil) {
+            [pb setString:[selectedMessage.text substringWithRange:NSMakeRange(1, [selectedMessage.text length]-2)]];
+        } else {
+            [pb setString:selectedMessage.text];
+        }
     }
 }
 

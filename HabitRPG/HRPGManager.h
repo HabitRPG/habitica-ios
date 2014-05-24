@@ -58,6 +58,8 @@
 
 - (void)chatMessage:(NSString *)message withGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)deleteMessage:(ChatMessage *)message withGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 - (NSManagedObjectContext *)getManagedObjectContext;
 
 - (void)displayNetworkError;
