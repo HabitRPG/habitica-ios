@@ -19,7 +19,7 @@
 
 @interface HRPGPartyViewController ()
 @property HRPGManager *sharedManager;
-
+@property NSMutableDictionary *chatAttributeMapping;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
@@ -38,6 +38,7 @@ NSString *partyID;
 
     defaults = [NSUserDefaults standardUserDefaults];
     partyID = [defaults objectForKey:@"partyID"];
+    self.chatAttributeMapping = [[NSMutableDictionary alloc] init];
     if (!partyID || [partyID isEqualToString:@""]) {
         [self.sharedManager fetchGroups:@"party" onSuccess:^(){
             partyID = [defaults objectForKey:@"partyID"];
@@ -50,6 +51,18 @@ NSString *partyID;
         if ([[self.fetchedResultsController sections] count] > 0 && [[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0) {
             party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
             [self fetchQuest];
+            UIFontDescriptor *fontDescriptor =
+            [UIFontDescriptor preferredFontDescriptorWithTextStyle: UIFontTextStyleBody];
+            UIFontDescriptor *boldFontDescriptor =
+            [fontDescriptor fontDescriptorWithSymbolicTraits: UIFontDescriptorTraitBold];
+            UIFont *boldFont = [UIFont fontWithDescriptor: boldFontDescriptor size: 0.0];
+            
+            for (User *member in party.member) {
+                [self.chatAttributeMapping setObject:@{
+                                                       NSForegroundColorAttributeName: [member classColor],
+                                                       NSFontAttributeName: boldFont
+                                                       } forKey:member.username];
+            }
         } else {
             [self refresh];
         }
@@ -389,9 +402,20 @@ NSString *partyID;
             if (message.user != nil) {
                 UIImageView *imageView = (UIImageView *) [cell viewWithTag:5];
                 [message.userObject setAvatarOnImageView:imageView withPetMount:NO onlyHead:YES];
+                textLabel.text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
+                authorLabel.textColor = [message.userObject classColor];
+                textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+            } else {
+                NSMutableAttributedString *attributedMessage = [[NSMutableAttributedString alloc] initWithString:[message.text substringWithRange:NSMakeRange(1, [message.text length]-2)] attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}];
+                
+                [[attributedMessage string] enumerateSubstringsInRange:NSMakeRange(0, [attributedMessage length]) options:NSStringEnumerationByWords usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+                    NSDictionary *attributes = [self.chatAttributeMapping objectForKey:substring];
+                    if (attributes) {
+                        [attributedMessage addAttributes:attributes range:substringRange];
+                    }
+                }];
+                textLabel.attributedText = attributedMessage;
             }
-            textLabel.text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
-            textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
             UILabel *dateLabel = (UILabel *) [cell viewWithTag:3];
             dateLabel.text = [message.timestamp timeAgo];
             dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];

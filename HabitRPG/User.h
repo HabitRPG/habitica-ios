@@ -135,4 +135,6 @@
 - (void)setAvatarOnImageView:(UIImageView *)imageView;
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead;
+
+-(UIColor*) classColor;
 @end
