@@ -40,6 +40,9 @@
 
 - (void)buyObject:(MetaReward *)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)equipObject:(NSString *)key withType:(NSString*)type onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
+
 - (void)castSpell:(NSString *)spell withTargetType:(NSString *)targetType onTarget:(NSString *)target onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)acceptQuest:(NSString *)group withQuest:(NSString *)questID useForce:(Boolean)force onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;

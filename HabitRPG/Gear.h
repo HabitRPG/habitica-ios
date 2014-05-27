@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "MetaReward.h"
+#import "User.h"
 
 @interface Gear : MetaReward
 
@@ -19,5 +20,8 @@
 @property(nonatomic, retain) NSNumber *per;
 @property(nonatomic, retain) NSNumber *str;
 @property(nonatomic) BOOL owned;
+
+-(BOOL)isEquippedBy:(User*)user;
+-(BOOL)isCostumeOf:(User*)user;
 
 @end

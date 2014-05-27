@@ -9,6 +9,7 @@
 #import "HRPGEquipmentViewController.h"
 #import "HRPGAppDelegate.h"
 #import "Gear.h"
+#import "User.h"
 
 @interface HRPGEquipmentViewController ()
 @property NSString *readableName;
@@ -16,6 +17,7 @@
 @property HRPGManager *sharedManager;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
+@property User *user;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
@@ -23,6 +25,12 @@
 @implementation HRPGEquipmentViewController
 @synthesize managedObjectContext;
 @dynamic sharedManager;
+Gear *selectedGear;
+
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    self.user = [self.sharedManager getUser];
+}
 
 #pragma mark - Table view data source
 
@@ -76,9 +84,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSString *battleGearString;
+    NSString *costumeString;
+    Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if ([gear isEquippedBy:self.user]) {
+        battleGearString = NSLocalizedString(@"Unequip as Battle Gear", nil);
+    } else {
+        battleGearString = NSLocalizedString(@"Equip as Battle Gear", nil);
+    }
+    
+    if ([gear isCostumeOf:self.user]) {
+        costumeString = NSLocalizedString(@"Unequip as Costume", nil);
+    } else {
+        costumeString = NSLocalizedString(@"Equip as Costume", nil);
+    }
+    selectedGear = gear;
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
-                            NSLocalizedString(@"Equip as Battle Gear", nil),
-                            NSLocalizedString(@"Equip as Costume", nil),
+                            battleGearString,
+                            costumeString,
                             nil];
     popup.tag = 1;
     [popup showInView:[UIApplication sharedApplication].keyWindow];
@@ -198,47 +221,65 @@
     UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
     textLabel.text = gear.text;
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-    UILabel *detailLabel = (UILabel*)[cell viewWithTag:2];
-    detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
-
     
-    NSDictionary *attributeDict;
-    UIFontDescriptor *fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle: UIFontTextStyleCaption1];
-    UIFontDescriptor *boldFontDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits: UIFontDescriptorTraitBold];
-    UIFont *boldFont = [UIFont fontWithDescriptor: boldFontDescriptor size: 0.0];
+    UILabel *classLabel = (UILabel*)[cell viewWithTag:2];
+    classLabel.text = gear.klass;
+    classLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     if ([gear.klass isEqualToString:@"warrior"]) {
-        attributeDict =@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.792 green:0.267 blue:0.239 alpha:1.000], NSFontAttributeName:boldFont};
+        classLabel.textColor = [UIColor colorWithRed:0.792 green:0.267 blue:0.239 alpha:1.000];
     } else if ([gear.klass isEqualToString:@"wizard"]) {
-        attributeDict =@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.211 green:0.718 blue:0.168 alpha:1.000], NSFontAttributeName:boldFont};
+        classLabel.textColor = [UIColor colorWithRed:0.211 green:0.718 blue:0.168 alpha:1.000];
     } else if ([gear.klass isEqualToString:@"rogue"]) {
-        attributeDict =@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.177 green:0.333 blue:0.559 alpha:1.000], NSFontAttributeName:boldFont};
+        classLabel.textColor = [UIColor colorWithRed:0.177 green:0.333 blue:0.559 alpha:1.000];
     } else if ([gear.klass isEqualToString:@"healer"]) {
-        attributeDict =@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.304 green:0.702 blue:0.839 alpha:1.000], NSFontAttributeName:boldFont};
+        classLabel.textColor = [UIColor colorWithRed:0.304 green:0.702 blue:0.839 alpha:1.000];
     }
-    NSMutableAttributedString *detailString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedString(@"%@", nil), gear.klass] attributes:attributeDict];
+    
+    UILabel *detailLabel = (UILabel*)[cell viewWithTag:3];
+    detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     if ([gear.intelligence integerValue] != 0) {
-        [detailString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedString(@" Intelligence: %@", nil), gear.intelligence]]];
+        detailLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Intelligence: %@", nil), gear.intelligence];
     } else if ([gear.str integerValue] != 0) {
-        [detailString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedString(@" Strength: %@", nil), gear.str]]];
+        detailLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Strength: %@", nil), gear.str];
     } else if ([gear.con integerValue] != 0) {
-        [detailString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedString(@" Constitution: %@", nil), gear.con]]];
+        detailLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Constitution: %@", nil), gear.con];
     } else if ([gear.per integerValue] != 0) {
-        [detailString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedString(@" Perception: %@", nil), gear.per]]];
+        detailLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Perception: %@", nil), gear.per];
     }
     
-    detailLabel.attributedText = detailString;
-    
-    UIImageView *imageView = (UIImageView*)[cell viewWithTag:3];
+    UIImageView *imageView = (UIImageView*)[cell viewWithTag:4];
     [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", gear.key]]
                    placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+    
+    UILabel *cLabel = (UILabel*)[cell viewWithTag:5];
+    UILabel *bLabel = (UILabel*)[cell viewWithTag:6];
+
+    if ([gear isEquippedBy:self.user]) {
+        bLabel.hidden = NO;
+    } else {
+        bLabel.hidden = YES;
+    }
+    if ([gear isCostumeOf:self.user]) {
+        cLabel.hidden = NO;
+    } else {
+        cLabel.hidden = YES;
+    }
 }
 
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
-        
+        [self.sharedManager equipObject:selectedGear.key withType:@"equipped" onSuccess:^() {
+            [self.tableView reloadData];
+        }onError:^() {
+            
+        }];
     } else if (buttonIndex == 1) {
-        
+        [self.sharedManager equipObject:selectedGear.key withType:@"costume" onSuccess:^() {
+            [self.tableView reloadData];
+        }onError:^() {
+            
+        }];
     }
 }
 

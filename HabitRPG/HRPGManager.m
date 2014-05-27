@@ -362,7 +362,30 @@ NSString *currentUser;
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/revive" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    
+    
 
+    RKObjectMapping *equipMapping = [RKObjectMapping mappingForClass:[HRPGUserBuyResponse class]];
+    [equipMapping addAttributeMappingsFromDictionary:@{
+                                                     @"gear.equipped.headAccessory" : @"equippedHeadAccessory",
+                                                     @"gear.equipped.armor" : @"equippedArmor",
+                                                     @"gear.equipped.head" : @"equippedHead",
+                                                     @"gear.equipped.shield" : @"equippedShield",
+                                                     @"gear.equipped.weapon" : @"equippedWeapon",
+                                                     @"gear.equipped.back" : @"equippedBack",
+                                                     @"gear.costume.headAccessory" : @"costumeHeadAccessory",
+                                                     @"gear.costume.armor" : @"costumeArmor",
+                                                     @"gear.costume.head" : @"costumeHead",
+                                                     @"gear.costume.shield" : @"costumeShield",
+                                                     @"gear.costume.weapon" : @"costumeWeapon",
+                                                     @"gear.costume.back" : @"costumeBack",
+                                                     @"currentPet" : @"currentPet",
+                                                     @"currentMount" : @"currentMount",
+                                                     }];
+    equipMapping.assignsDefaultValueForMissingAttributes = YES;
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:equipMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/equip/:type/:key" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     entityMapping.assignsDefaultValueForMissingAttributes = YES;
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:@"habits" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -1124,6 +1147,42 @@ NSString *currentUser;
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        errorBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)equipObject:(NSString *)key withType:(NSString *)type onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/equip/%@/%@", type, key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        HRPGUserBuyResponse *response = [mappingResult firstObject];
+        user.equippedHeadAccessory = response.equippedHeadAccessory;
+        user.equippedHead = response.equippedHead;
+        user.equippedBack = response.equippedBack;
+        user.equippedArmor = response.equippedArmor;
+        user.equippedShield = response.equippedShield;
+        user.equippedWeapon = response.equippedWeapon;
+        user.costumeArmor = response.costumeArmor;
+        user.costumeBack = response.costumeBack;
+        user.costumeHead = response.costumeHead;
+        user.costumeHeadAccessory = response.costumeHeadAccessory;
+        user.costumeShield = response.costumeShield;
+        user.costumeWeapon = response.costumeWeapon;
+        user.currentMount = response.currentMount;
+        user.currentPet = response.currentPet;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
             [self displayServerError];
         } else {
