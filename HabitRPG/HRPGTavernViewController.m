@@ -91,6 +91,13 @@ User *user;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIColor *notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
     if (indexPath.section == 0 && indexPath.item == 0) {
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        UILabel *label = (UILabel*)[cell viewWithTag:1];
+        UIActivityIndicatorView *indicator = (UIActivityIndicatorView*)[cell viewWithTag:2];
+        [UIView animateWithDuration:0.4 animations:^() {
+            label.hidden = YES;
+            indicator.hidden = NO;
+        }];
         [self.sharedManager sleepInn:^() {
             NSString *notificationText;
             if (user.sleep) {
@@ -105,9 +112,10 @@ User *user;
             [CRToastManager showNotificationWithOptions:options
                                         completionBlock:^{
             }];
-            [self.tableView reloadData];
-        }                    onError:^() {
-
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+        onError:^() {
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         }];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -127,7 +135,12 @@ User *user;
         }
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0 && indexPath.item == 0) {
+        UILabel *label = (UILabel*)[cell viewWithTag:1];
+        UIActivityIndicatorView *indicator = (UIActivityIndicatorView*)[cell viewWithTag:2];
+        label.hidden = NO;
+        indicator.hidden = YES;
+    } else if (indexPath.section == 1) {
         [self configureCell:cell atIndexPath:indexPath];
     }
     return cell;
