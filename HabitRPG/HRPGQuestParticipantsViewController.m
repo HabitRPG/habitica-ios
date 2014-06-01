@@ -171,6 +171,7 @@ NSString *partyID;
         cell.detailTextLabel.textColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
     } else if (user.participateInQuest == nil) {
         cell.detailTextLabel.text = NSLocalizedString(@"Pending", nil);
+        cell.detailTextLabel.textColor = [UIColor lightGrayColor];
     } else {
         cell.detailTextLabel.text = NSLocalizedString(@"Declined", nil);
         cell.detailTextLabel.textColor = [UIColor colorWithRed:0.933 green:0.144 blue:0.198 alpha:1.000];
