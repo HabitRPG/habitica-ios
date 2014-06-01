@@ -1790,7 +1790,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="zlB-Z7-q34" id="yoG-YF-GV7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tavern" id="9H8-uc-YBu"/>
+                    <navigationItem key="navigationItem" title="Tavern" id="9H8-uc-YBu">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="F4b-V0-2h5">
+                            <connections>
+                                <segue destination="CHE-k4-ZCL" kind="modal" id="xxy-Nl-SCN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n5R-Ol-NmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2543,5 +2549,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="HFM-OL-cM8"/>
+        <segue reference="xxy-Nl-SCN"/>
     </inferredMetricsTieBreakers>
 </document>
