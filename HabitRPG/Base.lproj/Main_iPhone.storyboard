@@ -1268,7 +1268,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wje-7F-htq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1492" y="582"/>
+            <point key="canvasLocation" x="1522" y="585"/>
         </scene>
         <!--Spell View Controller - Spells-->
         <scene sceneID="Jlk-8h-sx1">
@@ -2455,12 +2455,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <navigationItem key="navigationItem" title="New Message" id="Mbw-8k-G1S">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hBr-my-gYH">
                             <connections>
-                                <action selector="dismissMessage:" destination="lvC-WQ-kTT" id="OL5-MR-4gd"/>
+                                <segue destination="keV-xX-mhA" kind="unwind" unwindAction="unwindToList:" id="kUU-4G-kOw"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="5yH-w3-BDq">
                             <connections>
-                                <action selector="postMessage:" destination="lvC-WQ-kTT" id="Dw5-Tn-nJb"/>
+                                <segue destination="keV-xX-mhA" kind="unwind" unwindAction="unwindToListSendMessage:" id="mKb-S5-poS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2469,6 +2469,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYS-GU-nbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="keV-xX-mhA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="559" y="3874"/>
         </scene>

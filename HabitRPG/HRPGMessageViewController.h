@@ -13,6 +13,5 @@
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (weak, nonatomic) IBOutlet UITextView *messageView;
-@property Group *party;
 
 @end

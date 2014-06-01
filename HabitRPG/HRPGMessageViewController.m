@@ -46,20 +46,6 @@
     self.messageView.frame = CGRectMake(4, 0, screenWidth-8, screenHeight-height);
 }
 
-- (IBAction)dismissMessage:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)postMessage:(id)sender {
-    
-    [self.sharedManager chatMessage:self.messageView.text withGroup:self.party.id onSuccess:^() {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }onError:^() {
-        
-    }];
-
-}
-
 -(void)textViewDidChange:(UITextView *)textView {
     self.navigationItem.rightBarButtonItem.enabled = ([textView.text length] > 0);
 }

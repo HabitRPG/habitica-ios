@@ -493,11 +493,32 @@ ChatMessage *selectedMessage;
     } else if ([segue.identifier isEqualToString:@"QuestDetailSegue"]) {
         HRPGQuestDetailController *qdViewcontroller = segue.destinationViewController;
         qdViewcontroller.quest = quest;
-    } else if ([segue.identifier isEqualToString:@"MessageSegue"]) {
-        UINavigationController *navController = segue.destinationViewController;
-        HRPGMessageViewController *messageViewController = (HRPGMessageViewController*)navController.topViewController;
-        messageViewController.party = party;
     }
+}
+
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
+    
+}
+
+- (IBAction)unwindToListSendMessage:(UIStoryboardSegue *)segue {
+    HRPGMessageViewController *messageController = (HRPGMessageViewController*)[segue sourceViewController];
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:indicator];
+    UIBarButtonItem *navButton = self.navigationItem.rightBarButtonItem;
+    [indicator startAnimating];
+    [UIView animateWithDuration:0.4 animations:^() {
+        self.navigationItem.rightBarButtonItem = indicatorButton;
+    }];
+    [self.sharedManager chatMessage:messageController.messageView.text withGroup:party.id onSuccess:^() {
+        [UIView animateWithDuration:0.4 animations:^() {
+            self.navigationItem.rightBarButtonItem = navButton;
+        }];
+    }onError:^() {
+        [UIView animateWithDuration:0.4 animations:^() {
+            self.navigationItem.rightBarButtonItem = navButton;
+        }];
+    }];
+    
 }
 
 @end
