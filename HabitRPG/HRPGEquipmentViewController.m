@@ -233,6 +233,8 @@ Gear *selectedGear;
         classLabel.textColor = [UIColor colorWithRed:0.177 green:0.333 blue:0.559 alpha:1.000];
     } else if ([gear.klass isEqualToString:@"healer"]) {
         classLabel.textColor = [UIColor colorWithRed:0.304 green:0.702 blue:0.839 alpha:1.000];
+    } else {
+        classLabel.textColor = [UIColor colorWithRed:0.639 green:0.600 blue:0.022 alpha:1.000];
     }
     
     UILabel *detailLabel = (UILabel*)[cell viewWithTag:3];

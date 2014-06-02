@@ -9,6 +9,9 @@
 #import "HRPGRewardsViewController.h"
 #import "HRPGAppDelegate.h"
 #import <PDKeychainBindings.h>
+#import "Gear.h"
+#import "User.h"
+#import "Reward.h"
 
 @interface HRPGRewardsViewController ()
 @property NSString *readableName;
@@ -29,6 +32,7 @@ UILabel *goldLabel;
 UIImageView *silverImageView;
 UILabel *silverLabel;
 UIView *moneyView;
+User *user;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,13 +47,16 @@ UIView *moneyView;
         UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
         [self presentViewController:navigationController animated:NO completion:nil];
     }
-
+    
+    user = [self.sharedManager getUser];
+    self.sectionHeader = [[NSMutableArray alloc] init];
+    
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont systemFontOfSize:18.0f];
     titleLabel.text = NSLocalizedString(@"Rewards", nil);
-    NSNumber *gold = [self.sharedManager getUser].gold;
+    NSNumber *gold = user.gold;
     goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 22)];
     goldImageView.contentMode = UIViewContentModeScaleAspectFit;
     [goldImageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]];
@@ -93,7 +100,7 @@ UIView *moneyView;
 }
 
 - (IBAction)updateRewardView:(NSString *)amount {
-    NSNumber *gold = [self.sharedManager getUser].gold;
+    NSNumber *gold = user.gold;
     goldLabel.text = [NSString stringWithFormat:@"%ld", (long) [gold integerValue]];
     [goldLabel sizeToFit];
 
@@ -125,26 +132,25 @@ UIView *moneyView;
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[self.fetchedResultsController sections] count];
+    return [self.filteredData count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[self.fetchedResultsController sections][section] name];
+    return self.sectionHeader[section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects] + self.indexOffset;
+    return [self.filteredData[section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
-    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
 
-    if ([reward.key isEqualToString:@"potion"]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"ImageCell" forIndexPath:indexPath];
-    } else {
+    if ([reward isKindOfClass:[Reward class]]) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ImageCell" forIndexPath:indexPath];
     }
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
@@ -156,11 +162,11 @@ UIView *moneyView;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     float height = 22.0f;
-    float width = 270.0f;
-    if (indexPath.section == 1) {
-        width = 229.0f;
+    float width = 229.0f;
+    MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
+    if ([reward isKindOfClass:[Reward class]]) {
+        width = 270.0f;
     }
-    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
     width = width - [[NSString stringWithFormat:@"%ld", (long) [reward.value integerValue]] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                                                                                          options:NSStringDrawingUsesLineFragmentOrigin
                                                                                                       attributes:@{
@@ -203,8 +209,11 @@ UIView *moneyView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    if ([reward.type isEqualToString:@"reward"]) {
+    MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
+    if ([user.gold integerValue] < [reward.value integerValue]) {
+        return;
+    }
+    if ([reward isKindOfClass:[Reward class]]) {
         [self.sharedManager getReward:reward.key onSuccess:^() {
             [self updateRewardView:[reward.value stringValue]];
         }                     onError:^() {
@@ -241,6 +250,54 @@ UIView *moneyView;
 }
 
 
+- (NSArray *)filteredData {
+    if (_filteredData != nil) {
+        return _filteredData;
+    }
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    
+    for (id <NSFetchedResultsSectionInfo> section in [self.fetchedResultsController sections]) {
+        NSMutableArray *sectionArray = [[NSMutableArray alloc] initWithCapacity:[section numberOfObjects]];
+        for (id reward in [section objects]) {
+            if ([reward isKindOfClass:[Gear class]]) {
+                Gear *gear = reward;
+                if (gear.owned) {
+                    continue;
+                }
+                if ([gear.klass isEqualToString:@"special"]) {
+                    
+                }
+                if (!([gear.klass isEqualToString:user.hclass] || [gear.specialClass isEqualToString:user.hclass])) {
+                    continue;
+                }
+                if (gear.eventStart) {
+                    NSDate *today = [NSDate date];
+                    if (!([today compare:gear.eventStart] == NSOrderedDescending && [today compare:gear.eventEnd] == NSOrderedAscending)) {
+                        continue;
+                    }
+                }
+                if (gear.index && [[sectionArray lastObject] index]) {
+                    if ([[sectionArray lastObject] index] < gear.index) {
+                        continue;
+                    } else if ([[sectionArray lastObject] index] > gear.index) {
+                        [sectionArray removeLastObject];
+                    }
+                }
+                [sectionArray addObject:reward];
+            } else {
+                [sectionArray addObject:reward];
+            }
+        }
+        if ([sectionArray count] > 0) {
+            [array addObject:sectionArray];
+            [self.sectionHeader addObject:[section name]];
+        }
+    }
+    self.filteredData = array;
+    
+    return _filteredData;
+}
+
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
@@ -254,9 +311,9 @@ UIView *moneyView;
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
 
-    NSPredicate *predicate;
-    predicate = [NSPredicate predicateWithFormat:@"type=='potion' || type=='reward'"];
-    [fetchRequest setPredicate:predicate];
+    //NSPredicate *predicate;
+    //predicate = [NSPredicate predicateWithFormat:@"type=='potion' || type=='reward' || (owned == False) "];
+    //[fetchRequest setPredicate:predicate];
 
     // Edit the sort key as appropriate.
     NSSortDescriptor *keyDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
@@ -264,10 +321,11 @@ UIView *moneyView;
     NSArray *sortDescriptors = @[typeDescriptor, keyDescriptor];
 
     [fetchRequest setSortDescriptors:sortDescriptors];
+    //[fetchRequest setPropertiesToGroupBy:@[@"type", @"klass"]];
 
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"type" cacheName:@"rewards"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"type" cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
@@ -330,7 +388,7 @@ UIView *moneyView;
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
-    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
     UILabel *textLabel = (UILabel *) [cell viewWithTag:1];
     textLabel.text = reward.text;
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
@@ -345,11 +403,29 @@ UIView *moneyView;
     UIImageView *goldView = (UIImageView *) [cell viewWithTag:4];
     [goldView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]
              placeholderImage:nil];
-
+    UIImageView *imageView = (UIImageView *) [cell viewWithTag:5];
     if ([reward.key isEqualToString:@"potion"]) {
-        UIImageView *imageView = (UIImageView *) [cell viewWithTag:5];
         [imageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_potion.png"]
-                  placeholderImage:nil];
+                  placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+    } else if (![reward.key isEqualToString:@"reward"]) {
+        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", reward.key]]
+                  placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+    }
+    
+    if ([user.gold integerValue] < [reward.value integerValue]) {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        textLabel.textColor = [UIColor lightGrayColor];
+        notesLabel.textColor = [UIColor lightGrayColor];
+        imageView.alpha = 0.5;
+        goldView.alpha = 0.5;
+        priceLabel.textColor = [UIColor lightGrayColor];
+    } else {
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        textLabel.textColor = [UIColor darkTextColor];
+        notesLabel.textColor = [UIColor darkTextColor];
+        imageView.alpha = 1;
+        goldView.alpha = 1;
+        priceLabel.textColor = [UIColor darkTextColor];
     }
 }
 

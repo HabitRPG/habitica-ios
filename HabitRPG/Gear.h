@@ -20,6 +20,9 @@
 @property(nonatomic, retain) NSNumber *per;
 @property(nonatomic, retain) NSNumber *str;
 @property(nonatomic) BOOL owned;
+@property(nonatomic) NSDate *eventStart;
+@property(nonatomic) NSDate *eventEnd;
+@property(nonatomic) NSString *specialClass;
 
 -(BOOL)isEquippedBy:(User*)user;
 -(BOOL)isCostumeOf:(User*)user;

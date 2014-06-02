@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0"
-       lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic"
-       iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="BuyableItem" isAbstract="YES" parentEntity="Item" syncable="YES">
         <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
@@ -11,29 +9,24 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="user" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group"
-                      inverseName="chatmessages" inverseEntity="Group" syncable="YES"/>
-        <relationship name="userObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"
-                      inverseName="chatmessages" inverseEntity="User" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="chatmessages" inverseEntity="Group" syncable="YES"/>
+        <relationship name="userObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="chatmessages" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="ChecklistItem" representedClassName="ChecklistItem" syncable="YES">
         <attribute name="completed" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task"
-                      inverseName="checklist" inverseEntity="Task" syncable="YES"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="checklist" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Egg" representedClassName="Egg" parentEntity="BuyableItem" syncable="YES">
         <attribute name="adjective" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mountText" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"
-                      inverseName="ownedEggs" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedEggs" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Food" parentEntity="BuyableItem" syncable="YES">
         <attribute name="article" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"
-                      inverseName="ownedFood" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedFood" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Gear" representedClassName="Gear" parentEntity="MetaReward" syncable="YES">
         <attribute name="con" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -44,9 +37,9 @@
         <attribute name="klass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="owned" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="per" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="specialClass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="str" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"
-                      inverseName="ownedGear" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedGear" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Group" representedClassName="Group" syncable="YES">
         <attribute name="hdescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -58,20 +51,14 @@
         <attribute name="questHP" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="questKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES"
-                      destinationEntity="ChatMessage" inverseName="group" inverseEntity="ChatMessage" syncable="YES"/>
-        <relationship name="collectStatus" optional="YES" toMany="YES" deletionRule="Nullify"
-                      destinationEntity="QuestCollect" inverseName="group" inverseEntity="QuestCollect" syncable="YES"/>
-        <relationship name="leader" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"
-                      syncable="YES"/>
-        <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User"
-                      inverseName="party" inverseEntity="User" syncable="YES"/>
-        <relationship name="questParticipants" optional="YES" toMany="YES" deletionRule="Nullify"
-                      destinationEntity="User" syncable="YES"/>
+        <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ChatMessage" inverseName="group" inverseEntity="ChatMessage" syncable="YES"/>
+        <relationship name="collectStatus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestCollect" inverseName="group" inverseEntity="QuestCollect" syncable="YES"/>
+        <relationship name="leader" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
+        <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="party" inverseEntity="User" syncable="YES"/>
+        <relationship name="questParticipants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <entity name="HatchingPotion" parentEntity="Item" syncable="YES">
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"
-                      inverseName="ownedHatchingPotions" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedHatchingPotions" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Item" representedClassName="Item" isAbstract="YES" syncable="YES">
         <attribute name="dialog" optional="YES" attributeType="String" syncable="YES"/>
@@ -98,25 +85,20 @@
         <attribute name="dropExp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="dropGp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="previous" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="collect" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES"
-                      destinationEntity="QuestCollect" inverseName="quest" inverseEntity="QuestCollect" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"
-                      inverseName="ownedQuests" inverseEntity="User" syncable="YES"/>
+        <relationship name="collect" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="QuestCollect" inverseName="quest" inverseEntity="QuestCollect" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedQuests" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="QuestCollect" representedClassName="QuestCollect" syncable="YES">
         <attribute name="collectCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group"
-                      inverseName="collectStatus" inverseEntity="Group" syncable="YES"/>
-        <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quest"
-                      inverseName="collect" inverseEntity="Quest" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="collectStatus" inverseEntity="Group" syncable="YES"/>
+        <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quest" inverseName="collect" inverseEntity="Quest" syncable="YES"/>
     </entity>
     <entity name="Reward" representedClassName="Reward" parentEntity="MetaReward" syncable="YES">
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"
-                      inverseName="rewards" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="rewards" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Spell" representedClassName="Spell" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
@@ -130,10 +112,8 @@
     <entity name="Tag" representedClassName="Tag" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task"
-                      inverseName="tags" inverseEntity="Task" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"
-                      inverseName="tags" inverseEntity="User" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="tags" inverseEntity="Task" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tags" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES">
         <attribute name="attribute" optional="YES" attributeType="String" syncable="YES"/>
@@ -157,13 +137,9 @@
         <attribute name="up" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="wednesday" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
-        <relationship name="checklist" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES"
-                      destinationEntity="ChecklistItem" inverseName="task" inverseEntity="ChecklistItem"
-                      syncable="YES"/>
-        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag"
-                      inverseName="tasks" inverseEntity="Tag" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"
-                      inverseName="tasks" inverseEntity="User" syncable="YES"/>
+        <relationship name="checklist" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ChecklistItem" inverseName="task" inverseEntity="ChecklistItem" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="tasks" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tasks" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="costumeArmor" optional="YES" attributeType="String" syncable="YES"/>
@@ -207,30 +183,17 @@
         <attribute name="sleep" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="useCostume" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify"
-                      destinationEntity="ChatMessage" inverseName="userObject" inverseEntity="ChatMessage"
-                      syncable="YES"/>
-        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group"
-                      syncable="YES"/>
-        <relationship name="ownedEggs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Egg"
-                      inverseName="user" inverseEntity="Egg" syncable="YES"/>
-        <relationship name="ownedFood" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food"
-                      inverseName="user" inverseEntity="Food" syncable="YES"/>
-        <relationship name="ownedGear" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gear"
-                      inverseName="user" inverseEntity="Gear" syncable="YES"/>
-        <relationship name="ownedHatchingPotions" optional="YES" toMany="YES" deletionRule="Nullify"
-                      destinationEntity="HatchingPotion" inverseName="user" inverseEntity="HatchingPotion"
-                      syncable="YES"/>
-        <relationship name="ownedQuests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Quest"
-                      inverseName="user" inverseEntity="Quest" syncable="YES"/>
-        <relationship name="party" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group"
-                      inverseName="member" inverseEntity="Group" syncable="YES"/>
-        <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reward"
-                      inverseName="user" inverseEntity="Reward" syncable="YES"/>
-        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag"
-                      inverseName="user" inverseEntity="Tag" syncable="YES"/>
-        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task"
-                      inverseName="user" inverseEntity="Task" syncable="YES"/>
+        <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChatMessage" inverseName="userObject" inverseEntity="ChatMessage" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" syncable="YES"/>
+        <relationship name="ownedEggs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Egg" inverseName="user" inverseEntity="Egg" syncable="YES"/>
+        <relationship name="ownedFood" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="user" inverseEntity="Food" syncable="YES"/>
+        <relationship name="ownedGear" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gear" inverseName="user" inverseEntity="Gear" syncable="YES"/>
+        <relationship name="ownedHatchingPotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HatchingPotion" inverseName="user" inverseEntity="HatchingPotion" syncable="YES"/>
+        <relationship name="ownedQuests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Quest" inverseName="user" inverseEntity="Quest" syncable="YES"/>
+        <relationship name="party" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="member" inverseEntity="Group" syncable="YES"/>
+        <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reward" inverseName="user" inverseEntity="Reward" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="user" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="user" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
         <element name="BuyableItem" positionX="45" positionY="162" width="128" height="58"/>
@@ -238,7 +201,7 @@
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Egg" positionX="18" positionY="162" width="128" height="90"/>
         <element name="Food" positionX="81" positionY="198" width="128" height="88"/>
-        <element name="Gear" positionX="9" positionY="153" width="128" height="195"/>
+        <element name="Gear" positionX="9" positionY="153" width="128" height="210"/>
         <element name="Group" positionX="0" positionY="0" width="128" height="255"/>
         <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="58"/>
         <element name="Item" positionX="36" positionY="153" width="128" height="148"/>

@@ -1061,7 +1061,7 @@
 				D94AADB1192974AD00546C8E /* HabitRPG 2.xcdatamodel */,
 				D94AADAF192973CD00546C8E /* HabitRPG.xcdatamodel */,
 			);
-			currentVersion = D94AADAF192973CD00546C8E /* HabitRPG.xcdatamodel */;
+			currentVersion = D94AADB1192974AD00546C8E /* HabitRPG 2.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
