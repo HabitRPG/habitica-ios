@@ -362,7 +362,9 @@ User *user;
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
-
+    _filteredData = nil;
+    [self.tableView reloadData];
+    return;
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -392,14 +394,11 @@ User *user;
     UILabel *textLabel = (UILabel *) [cell viewWithTag:1];
     textLabel.text = reward.text;
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-    [textLabel sizeToFit];
     UILabel *notesLabel = (UILabel *) [cell viewWithTag:2];
     notesLabel.text = reward.notes;
     notesLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-    [notesLabel sizeToFit];
     UILabel *priceLabel = (UILabel *) [cell viewWithTag:3];
     priceLabel.text = [NSString stringWithFormat:@"%ld", (long) [reward.value integerValue]];
-    [priceLabel sizeToFit];
     UIImageView *goldView = (UIImageView *) [cell viewWithTag:4];
     [goldView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]
              placeholderImage:nil];

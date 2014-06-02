@@ -15,6 +15,7 @@
 #import <NIKFontAwesomeIconFactory+iOS.h>
 #import "Group.h"
 #import "Item.h"
+#import "Gear.h"
 #import <SDWebImageManager.h>
 #import "HRPGUserBuyResponse.h"
 #import "HRPGEmptySerializer.h"
@@ -1143,6 +1144,17 @@ NSString *currentUser;
         HRPGUserBuyResponse *response = [mappingResult firstObject];
         user.health = response.health;
         user.gold = response.gold;
+        user.magic = response.magic;
+        user.equippedArmor = response.equippedArmor;
+        user.equippedBack = response.equippedBack;
+        user.equippedHead = response.equippedHead;
+        user.equippedHeadAccessory = response.equippedHeadAccessory;
+        user.equippedShield = response.equippedShield;
+        user.equippedWeapon = response.equippedWeapon;
+        if ([reward isKindOfClass:[Gear class]]) {
+            Gear *gear = (Gear*)reward;
+            gear.owned = YES;
+        }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
         [self.networkIndicatorController endNetworking];
