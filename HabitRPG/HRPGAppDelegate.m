@@ -28,6 +28,7 @@
 #endif
 
     CRToastInteractionResponder *blankResponder = [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeAll automaticallyDismiss:YES block:^(CRToastInteractionType interactionType){
+        NSLog(@"tapped");
     }];
     [CRToastManager setDefaultOptions:@{kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),
             kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeGravity),

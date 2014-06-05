@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6172.12" systemVersion="14A238x" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="BuyableItem" isAbstract="YES" parentEntity="Item" syncable="YES">
         <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
@@ -45,12 +45,12 @@
         <attribute name="hdescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="newMessages" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="privacy" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="questActive" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="questHP" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="questKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unreadMessages" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ChatMessage" inverseName="group" inverseEntity="ChatMessage" syncable="YES"/>
         <relationship name="collectStatus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestCollect" inverseName="group" inverseEntity="QuestCollect" syncable="YES"/>
         <relationship name="leader" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
@@ -196,23 +196,23 @@
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="user" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BuyableItem" positionX="45" positionY="162" width="128" height="58"/>
-        <element name="ChatMessage" positionX="0" positionY="0" width="128" height="148"/>
-        <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="Egg" positionX="18" positionY="162" width="128" height="90"/>
-        <element name="Food" positionX="81" positionY="198" width="128" height="88"/>
-        <element name="Gear" positionX="9" positionY="153" width="128" height="210"/>
-        <element name="Group" positionX="0" positionY="0" width="128" height="255"/>
-        <element name="HatchingPotion" positionX="63" positionY="189" width="128" height="58"/>
-        <element name="Item" positionX="36" positionY="153" width="128" height="148"/>
-        <element name="MetaReward" positionX="54" positionY="162" width="128" height="118"/>
-        <element name="Potion" positionX="45" positionY="153" width="128" height="45"/>
-        <element name="Quest" positionX="27" positionY="171" width="128" height="178"/>
-        <element name="QuestCollect" positionX="45" positionY="180" width="128" height="133"/>
-        <element name="Reward" positionX="0" positionY="0" width="128" height="73"/>
-        <element name="Spell" positionX="45" positionY="153" width="128" height="148"/>
-        <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="Task" positionX="0" positionY="0" width="128" height="405"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="823"/>
+        <element name="BuyableItem" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ChatMessage" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ChecklistItem" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Egg" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Food" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Gear" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Group" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="HatchingPotion" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Item" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MetaReward" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Potion" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Quest" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="QuestCollect" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Reward" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Spell" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Tag" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Task" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

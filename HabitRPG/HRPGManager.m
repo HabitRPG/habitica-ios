@@ -350,7 +350,7 @@ NSString *currentUser;
     RKEntityMapping *newMessageMapping = [RKEntityMapping mappingForEntityForName:@"Group" inManagedObjectStore:managedObjectStore];
     newMessageMapping.forceCollectionMapping = YES;
     [newMessageMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"id"];
-    [newMessageMapping addAttributeMappingsFromDictionary:@{@"(id).value" : @"newMessages"}];
+    [newMessageMapping addAttributeMappingsFromDictionary:@{@"(id).value" : @"unreadMessages"}];
     newMessageMapping.identificationAttributes = @[@"id"];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"newMessages"
                                                                                   toKeyPath:@"groups"

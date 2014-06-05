@@ -191,7 +191,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         } else if (indexPath.section == 1 && indexPath.item == 1) {
             title = NSLocalizedString(@"Party", nil);
             User *user = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-            if ([user.party.newMessages boolValue]) {
+            if ([user.party.unreadMessages boolValue]) {
                 showIndicator = YES;
             }
         } else if (indexPath.section == 2 && indexPath.item == 0) {

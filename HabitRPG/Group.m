@@ -17,7 +17,7 @@
 @dynamic questActive;
 @dynamic questHP;
 @dynamic questKey;
-@dynamic newMessages;
+@dynamic unreadMessages;
 @dynamic type;
 @dynamic chatmessages;
 @dynamic leader;

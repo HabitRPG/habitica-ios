@@ -109,7 +109,7 @@ ChatMessage *selectedMessage;
             questInvitationController.sourceViewcontroller = self;
             [self presentViewController:navigationController animated:YES completion:nil];
         }
-        party.newMessages = [NSNumber numberWithBool:NO];
+        party.unreadMessages = [NSNumber numberWithBool:NO];
         [self.sharedManager chatSeen:party.id];
     }                      onError:^() {
         [self.refreshControl endRefreshing];
