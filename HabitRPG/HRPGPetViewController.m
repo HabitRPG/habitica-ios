@@ -52,22 +52,22 @@
     self.hatchingPotions = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
-- (Egg*) eggWithKey:(NSString*)key {
+- (NSString*) eggWithKey:(NSString*)key {
     for (Egg *egg in self.eggs) {
         if ([egg.key isEqualToString:key]) {
-            return egg;
+            return egg.text;
         }
     }
-    return nil;
+    return key;
 }
 
-- (HatchingPotion*) hatchingPotionWithKey:(NSString*)key {
+- (NSString*) hatchingPotionWithKey:(NSString*)key {
     for (HatchingPotion *hatchingPotion in self.hatchingPotions) {
         if ([hatchingPotion.key isEqualToString:key]) {
-            return hatchingPotion;
+            return hatchingPotion.text;
         }
     }
-    return nil;
+    return key;
 }
 
 - (void)fetchFood {
@@ -81,8 +81,8 @@
 - (NSString*)nicePetName:(Pet*)pet {
     NSArray *nameParts = [pet.key componentsSeparatedByString:@"-"];
     
-    NSString *nicePetName = [self eggWithKey:nameParts[0]].mountText;
-    NSString *niceHatchingPotionName = [self hatchingPotionWithKey:nameParts[1]].text;
+    NSString *nicePetName = [self eggWithKey:nameParts[0]];
+    NSString *niceHatchingPotionName = [self hatchingPotionWithKey:nameParts[1]];
     
     return [NSString stringWithFormat:@"%@ %@", niceHatchingPotionName, nicePetName];
 }
@@ -123,6 +123,8 @@
     NSString *sectionName = [[self.fetchedResultsController sections][indexPath.section] name];
     if ([sectionName isEqualToString:@"questPets"]) {
         label.text = NSLocalizedString(@"Quest Pets", nil);
+    } else if ([sectionName isEqualToString:@" "]) {
+        label.text = NSLocalizedString(@"Special Pets", nil);
     } else {
         label.text = NSLocalizedString(@"Base Pets", nil);
     }

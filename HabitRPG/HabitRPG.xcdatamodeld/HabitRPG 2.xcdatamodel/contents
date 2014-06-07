@@ -80,7 +80,7 @@
         <attribute name="asMount" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="trained" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" defaultValueString=" " syncable="YES"/>
         <relationship name="mountOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedMounts" inverseEntity="User" syncable="YES"/>
         <relationship name="petOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedPets" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -216,7 +216,7 @@
         <element name="HatchingPotion" positionX="0" positionY="0" width="128" height="60"/>
         <element name="Item" positionX="0" positionY="0" width="128" height="150"/>
         <element name="MetaReward" positionX="0" positionY="0" width="128" height="120"/>
-        <element name="Pet" positionX="9" positionY="153" width="128" height="133"/>
+        <element name="Pet" positionX="9" positionY="153" width="128" height="135"/>
         <element name="Potion" positionX="0" positionY="0" width="128" height="45"/>
         <element name="Quest" positionX="0" positionY="0" width="128" height="180"/>
         <element name="QuestCollect" positionX="0" positionY="0" width="128" height="135"/>

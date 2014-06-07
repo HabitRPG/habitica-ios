@@ -50,29 +50,29 @@
     self.hatchingPotions = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
-- (Egg*) eggWithKey:(NSString*)key {
+- (NSString*) eggWithKey:(NSString*)key {
     for (Egg *egg in self.eggs) {
         if ([egg.key isEqualToString:key]) {
-            return egg;
+            return egg.mountText;
         }
     }
-    return nil;
+    return key;
 }
 
-- (HatchingPotion*) hatchingPotionWithKey:(NSString*)key {
+- (NSString*) hatchingPotionWithKey:(NSString*)key {
     for (HatchingPotion *hatchingPotion in self.hatchingPotions) {
         if ([hatchingPotion.key isEqualToString:key]) {
-            return hatchingPotion;
+            return hatchingPotion.text;
         }
     }
-    return nil;
+    return key;
 }
 
 - (NSString*)niceMountName:(Pet*)mount {
     NSArray *nameParts = [mount.key componentsSeparatedByString:@"-"];
     
-    NSString *niceMountName = [self eggWithKey:nameParts[0]].mountText;
-    NSString *niceHatchingPotionName = [self hatchingPotionWithKey:nameParts[1]].text;
+    NSString *niceMountName = [self eggWithKey:nameParts[0]];
+    NSString *niceHatchingPotionName = [self hatchingPotionWithKey:nameParts[1]];
     
     return [NSString stringWithFormat:@"%@ %@", niceHatchingPotionName, niceMountName];
 }
@@ -113,6 +113,8 @@
     NSString *sectionName = [[self.fetchedResultsController sections][indexPath.section] name];
     if ([sectionName isEqualToString:@"questPets"]) {
         label.text = NSLocalizedString(@"Quest Mounts", nil);
+    } else if ([sectionName isEqualToString:@" "]) {
+        label.text = NSLocalizedString(@"Special Mounts", nil);
     } else {
         label.text = NSLocalizedString(@"Base Mounts", nil);
     }
