@@ -347,6 +347,24 @@ NSString *currentUser;
                                                                                   toKeyPath:@"ownedEggs"
                                                                                 withMapping:eggOwnedMapping]];
 
+    RKEntityMapping *petOwnedMapping = [RKEntityMapping mappingForEntityForName:@"Pet" inManagedObjectStore:managedObjectStore];
+    petOwnedMapping.forceCollectionMapping = YES;
+    [petOwnedMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [petOwnedMapping addAttributeMappingsFromDictionary:@{@"(key)" : @"trained"}];
+    petOwnedMapping.identificationAttributes = @[@"key"];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.pets"
+                                                                                  toKeyPath:@"ownedPets"
+                                                                                withMapping:petOwnedMapping]];
+    
+    RKEntityMapping *mountOwnedMapping = [RKEntityMapping mappingForEntityForName:@"Pet" inManagedObjectStore:managedObjectStore];
+    mountOwnedMapping.forceCollectionMapping = YES;
+    [mountOwnedMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [mountOwnedMapping addAttributeMappingsFromDictionary:@{@"(key)" : @"asMount"}];
+    mountOwnedMapping.identificationAttributes = @[@"key"];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.mounts"
+                                                                                  toKeyPath:@"ownedMounts"
+                                                                                withMapping:mountOwnedMapping]];
+    
     RKEntityMapping *newMessageMapping = [RKEntityMapping mappingForEntityForName:@"Group" inManagedObjectStore:managedObjectStore];
     newMessageMapping.forceCollectionMapping = YES;
     [newMessageMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"id"];
@@ -660,6 +678,16 @@ NSString *currentUser;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:questMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"quests" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
+    RKEntityMapping *petMapping = [RKEntityMapping mappingForEntityForName:@"Pet" inManagedObjectStore:managedObjectStore];
+    petMapping.forceCollectionMapping = YES;
+    [petMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
+    [petMapping addAttributeMappingsFromDictionary:@{@"@metadata.mapping.rootKeyPath" : @"type"}];
+    petMapping.identificationAttributes = @[@"key"];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:petMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"pets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:petMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"questPets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     [self setCredentials];
     defaults = [NSUserDefaults standardUserDefaults];
     if (currentUser != nil) {

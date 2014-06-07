@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6172.12" systemVersion="14A238x" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="BuyableItem" isAbstract="YES" parentEntity="Item" syncable="YES">
         <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
@@ -57,7 +57,7 @@
         <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="party" inverseEntity="User" syncable="YES"/>
         <relationship name="questParticipants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
-    <entity name="HatchingPotion" parentEntity="Item" syncable="YES">
+    <entity name="HatchingPotion" representedClassName="HatchingPotion" parentEntity="Item" syncable="YES">
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedHatchingPotions" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Item" representedClassName="Item" isAbstract="YES" syncable="YES">
@@ -75,6 +75,14 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="Pet" representedClassName="Pet" syncable="YES">
+        <attribute name="asMount" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trained" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="mountOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedMounts" inverseEntity="User" syncable="YES"/>
+        <relationship name="petOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedPets" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Potion" representedClassName="Potion" parentEntity="MetaReward" syncable="YES"/>
     <entity name="Quest" representedClassName="Quest" parentEntity="BuyableItem" syncable="YES">
@@ -189,6 +197,8 @@
         <relationship name="ownedFood" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="user" inverseEntity="Food" syncable="YES"/>
         <relationship name="ownedGear" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gear" inverseName="user" inverseEntity="Gear" syncable="YES"/>
         <relationship name="ownedHatchingPotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HatchingPotion" inverseName="user" inverseEntity="HatchingPotion" syncable="YES"/>
+        <relationship name="ownedMounts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pet" inverseName="mountOwner" inverseEntity="Pet" syncable="YES"/>
+        <relationship name="ownedPets" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pet" inverseName="petOwner" inverseEntity="Pet" syncable="YES"/>
         <relationship name="ownedQuests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Quest" inverseName="user" inverseEntity="Quest" syncable="YES"/>
         <relationship name="party" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="member" inverseEntity="Group" syncable="YES"/>
         <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reward" inverseName="user" inverseEntity="Reward" syncable="YES"/>
@@ -196,23 +206,24 @@
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="user" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BuyableItem" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ChatMessage" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ChecklistItem" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Egg" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Food" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Gear" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Group" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="HatchingPotion" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Item" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MetaReward" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Potion" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Quest" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="QuestCollect" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Reward" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Spell" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Tag" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Task" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="BuyableItem" positionX="0" positionY="0" width="128" height="60"/>
+        <element name="ChatMessage" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="Egg" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="Food" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="Gear" positionX="0" positionY="0" width="128" height="210"/>
+        <element name="Group" positionX="0" positionY="0" width="128" height="255"/>
+        <element name="HatchingPotion" positionX="0" positionY="0" width="128" height="60"/>
+        <element name="Item" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="MetaReward" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="Potion" positionX="0" positionY="0" width="128" height="45"/>
+        <element name="Quest" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="QuestCollect" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="Reward" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="405"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="853"/>
+        <element name="Pet" positionX="9" positionY="153" width="128" height="133"/>
     </elements>
 </model>

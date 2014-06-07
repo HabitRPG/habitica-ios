@@ -317,7 +317,7 @@ User *user;
 
     // Edit the sort key as appropriate.
     NSSortDescriptor *keyDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
-    NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:NO];
+    NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
     NSArray *sortDescriptors = @[typeDescriptor, keyDescriptor];
 
     [fetchRequest setSortDescriptors:sortDescriptors];

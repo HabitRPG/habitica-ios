@@ -510,13 +510,9 @@ ChatMessage *selectedMessage;
         self.navigationItem.rightBarButtonItem = indicatorButton;
     }];
     [self.sharedManager chatMessage:messageController.messageView.text withGroup:party.id onSuccess:^() {
-        [UIView animateWithDuration:0.4 animations:^() {
-            self.navigationItem.rightBarButtonItem = navButton;
-        }];
+        self.navigationItem.rightBarButtonItem = navButton;
     }onError:^() {
-        [UIView animateWithDuration:0.4 animations:^() {
-            self.navigationItem.rightBarButtonItem = navButton;
-        }];
+        self.navigationItem.rightBarButtonItem = navButton;
     }];
     
 }
