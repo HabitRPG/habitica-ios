@@ -501,7 +501,6 @@
 				D9EB4E8818CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8918CB4A9400BB2094 /* Resources */,
 				E849E9FA1DD6461BA39AB99A /* Copy Pods Resources */,
-				D99DEC8A19084DDD00FFD2B9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -540,6 +539,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Phillip Thelen";
 				TargetAttributes = {
+					D9EB4E8A18CB4A9400BB2094 = {
+						DevelopmentTeam = 532C46PK7T;
+					};
 					D9EB4EB118CB4A9400BB2094 = {
 						TestTargetID = D9EB4E8A18CB4A9400BB2094;
 					};
@@ -603,19 +605,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
-		};
-		D99DEC8A19084DDD00FFD2B9 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 2eb3b3edb3b0f4722d37d649a5af366656e46ddd d2ba51e7ded38c0a45cef17c3288994dc2f00032f3c076119f9fed034aeb154c";
 		};
 		E849E9FA1DD6461BA39AB99A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -828,6 +817,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HabitRPG",
@@ -888,6 +879,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = RabbitRPG;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
@@ -900,6 +892,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HabitRPG",
@@ -960,6 +954,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = RabbitRPG;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;

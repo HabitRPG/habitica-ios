@@ -35,10 +35,9 @@
             kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
             kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop),
             kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
-            kCRToastAnimationInTimeIntervalKey : @(0.5),
-            kCRToastAnimationOutTimeIntervalKey : @(0.5),
+            kCRToastAnimationInTimeIntervalKey : @(0.7),
+            kCRToastAnimationOutTimeIntervalKey : @(0.7),
             kCRToastFontKey : [UIFont systemFontOfSize:17],
-            kCRToastNotificationPresentationTypeKey : @(CRToastPresentationTypeCover),
             kCRToastInteractionRespondersKey : @[blankResponder]
     }];
 
