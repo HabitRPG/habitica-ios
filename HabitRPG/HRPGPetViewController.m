@@ -18,6 +18,7 @@
 @property (nonatomic) HRPGManager *sharedManager;
 @property (nonatomic) NSArray *eggs;
 @property (nonatomic) NSArray *hatchingPotions;
+@property (nonatomic) NSArray *food;
 @property (nonatomic) Pet *selectedPet;
 @end
 
@@ -68,6 +69,23 @@
     return nil;
 }
 
+- (void)fetchFood {
+    NSError *error;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Food" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    self.food = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+}
+
+- (NSString*)nicePetName:(Pet*)pet {
+    NSArray *nameParts = [pet.key componentsSeparatedByString:@"-"];
+    
+    NSString *nicePetName = [self eggWithKey:nameParts[0]].mountText;
+    NSString *niceHatchingPotionName = [self hatchingPotionWithKey:nameParts[1]].text;
+    
+    return [NSString stringWithFormat:@"%@ %@", niceHatchingPotionName, nicePetName];
+}
+
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
     [self.collectionView reloadData];
 }
@@ -79,6 +97,23 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat height = 120.0f;
+    height = height + [@" " boundingRectWithSize:CGSizeMake(90.0f, MAXFLOAT)
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:@{
+                                                        NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]
+                                                        }
+                                              context:nil].size.height*2;
+    if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+        return CGSizeMake(120.0f, height);
+    }
+    return CGSizeMake(100.0f, height);
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
@@ -110,13 +145,8 @@
     if (pet.asMount) {
         feedString = nil;
     }
-    
-    NSArray *nameParts = [pet.key componentsSeparatedByString:@"-"];
-    
-    NSString *nicePetName = [self eggWithKey:nameParts[0]].text;
-    NSString *niceHatchingPotionName = [self hatchingPotionWithKey:nameParts[1]].text;
 
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"%@ %@", niceHatchingPotionName, nicePetName] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:equipString, feedString, nil];
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:[self nicePetName:pet] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:equipString, feedString, nil];
     popup.tag = 1;
     self.selectedPet = pet;
     [popup showInView:[UIApplication sharedApplication].keyWindow];
@@ -181,6 +211,9 @@
     Pet *pet = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
     UIProgressView *progressView = (UIProgressView*)[cell viewWithTag:2];
+    UILabel *label = (UILabel*)[cell viewWithTag:3];
+    label.text = [self nicePetName:pet];
+    label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     imageView.alpha = 1;
     if (pet.trained) {
         [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet-%@.png", pet.key]]
