@@ -104,6 +104,8 @@
     [sharedManager getImage:[NSString stringWithFormat:@"skin_%@", self.skin] onSuccess:^(UIImage *image) {
         [imageArray replaceObjectAtIndex:currentLayer withObject:image];
         dispatch_group_leave(group);
+    } onError:^() {
+        dispatch_group_leave(group);
     }];
 
     dispatch_group_enter(group);
@@ -111,12 +113,16 @@
     [sharedManager getImage:[NSString stringWithFormat:@"%@_shirt_%@", self.size, self.shirt] onSuccess:^(UIImage *image){
         [imageArray replaceObjectAtIndex:currentLayer withObject:image];
         dispatch_group_leave(group);
+    } onError:^() {
+        dispatch_group_leave(group);
     }];
 
     dispatch_group_enter(group);
     currentLayer++;
     [sharedManager getImage:[NSString stringWithFormat:@"head_0"] onSuccess:^(UIImage *image) {
         [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+        dispatch_group_leave(group);
+    } onError:^() {
         dispatch_group_leave(group);
     }];
     NSString *armor = [self.useCostume boolValue] ? self.costumeArmor : self.equippedArmor;
@@ -126,6 +132,8 @@
         [sharedManager getImage:[NSString stringWithFormat:@"%@_%@", self.size, armor] onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
         }];
     }
 
@@ -134,6 +142,8 @@
         currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"hair_base_%@_%@", self.hairBase, self.hairColor] onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            dispatch_group_leave(group);
+        } onError:^() {
             dispatch_group_leave(group);
         }];
     }
@@ -145,6 +155,8 @@
         [sharedManager getImage:[NSString stringWithFormat:@"hair_bangs_%@_%@", self.hairBangs, self.hairColor] onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
         }];
     }
 
@@ -154,6 +166,8 @@
         [sharedManager getImage:[NSString stringWithFormat:@"hair_mustache_%@_%@", self.hairMustache, self.hairColor] onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
         }];
     }
 
@@ -162,6 +176,8 @@
         currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"hair_beard_%@_%@", self.hairBeard, self.hairColor] onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            dispatch_group_leave(group);
+        } onError:^() {
             dispatch_group_leave(group);
         }];
     }
@@ -173,6 +189,8 @@
         [sharedManager getImage:head onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
         }];
     }
     NSString *headAccessory = [self.useCostume boolValue] ? self.costumeHeadAccessory : self.equippedHeadAccessory;
@@ -181,6 +199,8 @@
         currentLayer++;
         [sharedManager getImage:headAccessory onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            dispatch_group_leave(group);
+        } onError:^() {
             dispatch_group_leave(group);
         }];
     }
@@ -191,6 +211,8 @@
         [sharedManager getImage:shield onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
         }];
     }
     NSString *weapon = [self.useCostume boolValue] ? self.costumeWeapon : self.equippedWeapon;
@@ -199,6 +221,8 @@
         currentLayer++;
         [sharedManager getImage:weapon onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            dispatch_group_leave(group);
+        } onError:^() {
             dispatch_group_leave(group);
         }];
     }
@@ -209,6 +233,8 @@
         [sharedManager getImage:@"zzz" onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
         }];
     }
 
@@ -217,6 +243,8 @@
         currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"Pet-%@", self.currentPet] onSuccess:^(UIImage *image) {
             currentPet = image;
+            dispatch_group_leave(group);
+        } onError:^() {
             dispatch_group_leave(group);
         }];
     }
@@ -227,6 +255,8 @@
         [sharedManager getImage:[NSString stringWithFormat:@"Mount_Head_%@", self.currentMount] onSuccess:^(UIImage *image) {
             currentMountHead = image;
             dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
         }];
     }
 
@@ -235,6 +265,8 @@
         currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"Mount_Body_%@", self.currentMount] onSuccess:^(UIImage *image) {
             currentMount = image;
+            dispatch_group_leave(group);
+        } onError:^() {
             dispatch_group_leave(group);
         }];
     }

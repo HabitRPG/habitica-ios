@@ -36,11 +36,15 @@
     [sharedManager getImage:[NSString stringWithFormat:@"Mount_Head_%@", self.key] onSuccess:^(UIImage *image) {
         currentMountHead = image;
         dispatch_group_leave(group);
+    } onError:^() {
+        dispatch_group_leave(group);
     }];
     
     dispatch_group_enter(group);
     [sharedManager getImage:[NSString stringWithFormat:@"Mount_Body_%@", self.key] onSuccess:^(UIImage *image) {
         currentMount = image;
+        dispatch_group_leave(group);
+    } onError:^() {
         dispatch_group_leave(group);
     }];
     

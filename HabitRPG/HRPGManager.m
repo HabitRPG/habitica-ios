@@ -1524,7 +1524,7 @@ NSString *currentUser;
     return user;
 }
 
-- (void)getImage:(NSString *)imageName onSuccess:(void (^)(UIImage *image))successBlock {
+- (void)getImage:(NSString *)imageName onSuccess:(void (^)(UIImage *image))successBlock onError:(void (^)())errorBlock {
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     [manager downloadWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@.png", imageName]]
                      options:0
@@ -1536,6 +1536,7 @@ NSString *currentUser;
                 if (image) {
                     successBlock(image);
                 } else {
+                    errorBlock();
                     NSLog(@"%@: %@", imageName, error);
                 }
             }];
