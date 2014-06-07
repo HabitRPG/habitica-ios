@@ -16,5 +16,5 @@
 @property (nonatomic, retain) NSNumber * trained;
 @property (nonatomic, retain) NSNumber * asMount;
 @property (nonatomic, retain) NSString * type;
-
+- (void)setMountOnImageView:(UIImageView *)imageView;
 @end

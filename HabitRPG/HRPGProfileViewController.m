@@ -103,7 +103,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         case 1:
             return 2;
         case 2:
-            return 3;
+            return 4;
         case 3:
             return 3;
         default:
@@ -150,6 +150,8 @@ NIKFontAwesomeIconFactory *iconFactory;
         [self performSegueWithIdentifier:@"ItemSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 2) {
         [self performSegueWithIdentifier:@"PetSegue" sender:self];
+    } else if (indexPath.section == 2 && indexPath.item == 3) {
+        [self performSegueWithIdentifier:@"MountSegue" sender:self];
     } else if (indexPath.section == 3 && indexPath.item == 0) {
         [self performSegueWithIdentifier:@"SettingsSegue" sender:self];
     } else if (indexPath.section == 3 && indexPath.item == 1) {
@@ -202,6 +204,8 @@ NIKFontAwesomeIconFactory *iconFactory;
             title = NSLocalizedString(@"Items", nil);
         } else if (indexPath.section == 2 && indexPath.item == 2) {
             title = NSLocalizedString(@"Pets", nil);
+        } else if (indexPath.section == 2 && indexPath.item == 3) {
+            title = NSLocalizedString(@"Mounts", nil);
         } else if (indexPath.section == 3 && indexPath.item == 0) {
             title = NSLocalizedString(@"Settings", nil);
         } else if (indexPath.section == 3 && indexPath.item == 1) {

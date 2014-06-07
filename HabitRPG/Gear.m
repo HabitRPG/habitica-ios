@@ -18,7 +18,9 @@
 @dynamic per;
 @dynamic str;
 @dynamic owned;
-
+@dynamic eventStart;
+@dynamic eventEnd;
+@dynamic specialClass;
 
 -(BOOL)isEquippedBy:(User *)user {
     if ([self.type isEqualToString:@"weapon"]) {
