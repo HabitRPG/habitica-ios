@@ -8,6 +8,7 @@
 
 #import "HRPGPetViewController.h"
 #import "HRPGAppDelegate.h"
+#import "HRPGFeedViewController.h"
 #import "HRPGManager.h"
 #import "Pet.h"
 #import "Egg.h"
@@ -240,8 +241,26 @@
         }onError:^() {
         }];
     } else if (actionSheet.numberOfButtons > 2 && buttonIndex == 1) {
-        
+        [self performSegueWithIdentifier:@"FeedSegue" sender:self];
     }
+}
+
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
+    
+}
+
+- (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
+    HRPGFeedViewController *feedController = (HRPGFeedViewController*)[segue sourceViewController];
+    Food *food = feedController.selectedFood;
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:indicator];
+    [indicator startAnimating];
+    self.navigationItem.rightBarButtonItem = indicatorButton;
+    [self.sharedManager feedPet:self.selectedPet.key withFood:food.key onSuccess:^() {
+        self.navigationItem.rightBarButtonItem = nil;
+    }onError:^() {
+        self.navigationItem.rightBarButtonItem = nil;
+    }];
 }
 
 @end

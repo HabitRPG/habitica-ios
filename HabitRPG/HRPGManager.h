@@ -63,6 +63,8 @@
 
 - (void)deleteMessage:(ChatMessage *)message withGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)feedPet:(NSString *)pet withFood:(NSString*)food onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 - (NSManagedObjectContext *)getManagedObjectContext;
 
 - (void)displayNetworkError;

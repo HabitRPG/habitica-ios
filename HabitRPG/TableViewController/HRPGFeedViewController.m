@@ -78,28 +78,9 @@
     return YES;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-
-- (IBAction)editButtonSelected:(id)sender {
-    if ([self isEditing]) {
-        [self setEditing:NO animated:YES];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonSelected:)];
-    } else {
-        [self setEditing:YES animated:YES];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editButtonSelected:)];
-    }
-}
-
-- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
-    
-}
-
-
-- (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-    
+- (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedFood = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    return indexPath;
 }
 
 
@@ -200,7 +181,7 @@
     detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [detailTextLabel sizeToFit];
     NSString *url;
-    url = [NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet_Food_%@.png", item.key];
+    url = [NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet_Food_%@.png", food.key];
     [cell.imageView setImageWithURL:[NSURL URLWithString:url]
                    placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     cell.imageView.contentMode = UIViewContentModeCenter;
@@ -209,12 +190,5 @@
 
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"AddItem"]) {
-        UINavigationController *destViewController = segue.destinationViewController;
-        destViewController.topViewController.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Add %@", nil), self.readableName];
-    }
-}
 
 @end

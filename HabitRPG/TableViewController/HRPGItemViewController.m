@@ -221,15 +221,4 @@
     cell.imageView.contentMode = UIViewContentModeCenter;
 }
 
-
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"AddItem"]) {
-        UINavigationController *destViewController = segue.destinationViewController;
-        destViewController.topViewController.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Add %@", nil), self.readableName];
-    }
-}
-
 @end
