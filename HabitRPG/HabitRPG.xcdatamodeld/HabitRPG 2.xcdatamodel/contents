@@ -197,8 +197,8 @@
         <relationship name="ownedFood" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="user" inverseEntity="Food" syncable="YES"/>
         <relationship name="ownedGear" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gear" inverseName="user" inverseEntity="Gear" syncable="YES"/>
         <relationship name="ownedHatchingPotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HatchingPotion" inverseName="user" inverseEntity="HatchingPotion" syncable="YES"/>
-        <relationship name="ownedMounts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pet" inverseName="mountOwner" inverseEntity="Pet" syncable="YES"/>
-        <relationship name="ownedPets" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pet" inverseName="petOwner" inverseEntity="Pet" syncable="YES"/>
+        <relationship name="ownedMounts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pet" inverseName="mountOwner" inverseEntity="Pet" syncable="YES"/>
+        <relationship name="ownedPets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pet" inverseName="petOwner" inverseEntity="Pet" syncable="YES"/>
         <relationship name="ownedQuests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Quest" inverseName="user" inverseEntity="Quest" syncable="YES"/>
         <relationship name="party" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="member" inverseEntity="Group" syncable="YES"/>
         <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reward" inverseName="user" inverseEntity="Reward" syncable="YES"/>
@@ -224,6 +224,6 @@
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="405"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="853"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="855"/>
     </elements>
 </model>
