@@ -52,6 +52,9 @@
 		D99DEC8C19084E0D00FFD2B9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D99DEC8B19084E0D00FFD2B9 /* Crashlytics.framework */; };
 		D99DEC8F190914AD00FFD2B9 /* HRPGQuestInvitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC8E190914AD00FFD2B9 /* HRPGQuestInvitationViewController.m */; };
 		D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99F15BF191027D90081836E /* HRPGBaseViewController.m */; };
+		D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD34A1943BB16006202C1 /* HRPGFeedViewController.m */; };
+		D9ADD34E1943BBB6006202C1 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD34D1943BBB6006202C1 /* Food.m */; };
+		D9ADD3511943BC0E006202C1 /* BuyableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD3501943BC0E006202C1 /* BuyableItem.m */; };
 		D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */; };
 		D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */; };
 		D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0B018CCD1EA00C8D1B7 /* Task.m */; };
@@ -122,8 +125,8 @@
 		D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGFormViewController.m; sourceTree = "<group>"; };
 		D94AADAF192973CD00546C8E /* HabitRPG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitRPG.xcdatamodel; sourceTree = "<group>"; };
 		D94AADB1192974AD00546C8E /* HabitRPG 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 2.xcdatamodel"; sourceTree = "<group>"; };
-		D94AADB2192A30F900546C8E /* Spell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spell.h; sourceTree = "<group>"; };
-		D94AADB3192A30F900546C8E /* Spell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spell.m; sourceTree = "<group>"; };
+		D94AADB2192A30F900546C8E /* Spell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Spell.h; path = ../Spell.h; sourceTree = "<group>"; };
+		D94AADB3192A30F900546C8E /* Spell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Spell.m; path = ../Spell.m; sourceTree = "<group>"; };
 		D94AADB5192A56E800546C8E /* HRPGSpellTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellTaskController.h; sourceTree = "<group>"; };
 		D94AADB6192A56E800546C8E /* HRPGSpellTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellTaskController.m; sourceTree = "<group>"; };
 		D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellTabBarController.h; sourceTree = "<group>"; };
@@ -134,67 +137,73 @@
 		D96038361930F90E0025EAEC /* HRPGMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGMessageViewController.m; sourceTree = "<group>"; };
 		D966557218FB129F0014C09D /* HRPGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSettingsViewController.h; sourceTree = "<group>"; };
 		D966557318FB129F0014C09D /* HRPGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSettingsViewController.m; sourceTree = "<group>"; };
-		D97C71D918EC98A30089FDC6 /* Quest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quest.h; sourceTree = "<group>"; };
-		D97C71DA18EC98A30089FDC6 /* Quest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quest.m; sourceTree = "<group>"; };
-		D97C71DC18EC98A40089FDC6 /* QuestCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestCollect.h; sourceTree = "<group>"; };
-		D97C71DD18EC98A40089FDC6 /* QuestCollect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestCollect.m; sourceTree = "<group>"; };
-		D97C71DF18ECA7050089FDC6 /* ChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessage.h; sourceTree = "<group>"; };
-		D97C71E018ECA7050089FDC6 /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
+		D97C71D918EC98A30089FDC6 /* Quest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Quest.h; path = ../Quest.h; sourceTree = "<group>"; };
+		D97C71DA18EC98A30089FDC6 /* Quest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Quest.m; path = ../Quest.m; sourceTree = "<group>"; };
+		D97C71DC18EC98A40089FDC6 /* QuestCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestCollect.h; path = ../QuestCollect.h; sourceTree = "<group>"; };
+		D97C71DD18EC98A40089FDC6 /* QuestCollect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestCollect.m; path = ../QuestCollect.m; sourceTree = "<group>"; };
+		D97C71DF18ECA7050089FDC6 /* ChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatMessage.h; path = ../ChatMessage.h; sourceTree = "<group>"; };
+		D97C71E018ECA7050089FDC6 /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatMessage.m; path = ../ChatMessage.m; sourceTree = "<group>"; };
 		D97C71E218ECE09A0089FDC6 /* HRPGSpellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellViewController.h; sourceTree = "<group>"; };
 		D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellViewController.m; sourceTree = "<group>"; };
-		D97C71E518F32FED0089FDC6 /* Potion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Potion.h; sourceTree = "<group>"; };
-		D97C71E618F32FED0089FDC6 /* Potion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Potion.m; sourceTree = "<group>"; };
-		D97C71E818F32FEE0089FDC6 /* Reward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reward.h; sourceTree = "<group>"; };
-		D97C71E918F32FEE0089FDC6 /* Reward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reward.m; sourceTree = "<group>"; };
-		D97C71EB18F32FEF0089FDC6 /* Gear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gear.h; sourceTree = "<group>"; };
-		D97C71EC18F32FEF0089FDC6 /* Gear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gear.m; sourceTree = "<group>"; };
-		D97C71EE18F32FEF0089FDC6 /* MetaReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetaReward.h; sourceTree = "<group>"; };
-		D97C71EF18F32FEF0089FDC6 /* MetaReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetaReward.m; sourceTree = "<group>"; };
-		D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGEquipmentViewController.h; sourceTree = "<group>"; };
-		D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGEquipmentViewController.m; sourceTree = "<group>"; };
+		D97C71E518F32FED0089FDC6 /* Potion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Potion.h; path = ../Potion.h; sourceTree = "<group>"; };
+		D97C71E618F32FED0089FDC6 /* Potion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Potion.m; path = ../Potion.m; sourceTree = "<group>"; };
+		D97C71E818F32FEE0089FDC6 /* Reward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reward.h; path = ../Reward.h; sourceTree = "<group>"; };
+		D97C71E918F32FEE0089FDC6 /* Reward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reward.m; path = ../Reward.m; sourceTree = "<group>"; };
+		D97C71EB18F32FEF0089FDC6 /* Gear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gear.h; path = ../Gear.h; sourceTree = "<group>"; };
+		D97C71EC18F32FEF0089FDC6 /* Gear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Gear.m; path = ../Gear.m; sourceTree = "<group>"; };
+		D97C71EE18F32FEF0089FDC6 /* MetaReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetaReward.h; path = ../MetaReward.h; sourceTree = "<group>"; };
+		D97C71EF18F32FEF0089FDC6 /* MetaReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetaReward.m; path = ../MetaReward.m; sourceTree = "<group>"; };
+		D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGEquipmentViewController.h; path = ../HRPGEquipmentViewController.h; sourceTree = "<group>"; };
+		D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGEquipmentViewController.m; path = ../HRPGEquipmentViewController.m; sourceTree = "<group>"; };
 		D97C71F418F371D70089FDC6 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-acknowledgements.plist"; path = "Pods/Pods-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
 		D9884B4319168AF00078BC7C /* HRPGProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGProgressView.h; sourceTree = "<group>"; };
 		D9884B4419168AF00078BC7C /* HRPGProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGProgressView.m; sourceTree = "<group>"; };
 		D98AD54919437A3500AF6174 /* HRPGPetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPetViewController.h; sourceTree = "<group>"; };
 		D98AD54A19437A3500AF6174 /* HRPGPetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPetViewController.m; sourceTree = "<group>"; };
-		D98AD54C19437D9400AF6174 /* Pet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet.h; sourceTree = "<group>"; };
-		D98AD54D19437D9400AF6174 /* Pet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet.m; sourceTree = "<group>"; };
-		D98AD54F1943904F00AF6174 /* HatchingPotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HatchingPotion.h; sourceTree = "<group>"; };
-		D98AD5501943904F00AF6174 /* HatchingPotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HatchingPotion.m; sourceTree = "<group>"; };
+		D98AD54C19437D9400AF6174 /* Pet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pet.h; path = ../Pet.h; sourceTree = "<group>"; };
+		D98AD54D19437D9400AF6174 /* Pet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pet.m; path = ../Pet.m; sourceTree = "<group>"; };
+		D98AD54F1943904F00AF6174 /* HatchingPotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HatchingPotion.h; path = ../HatchingPotion.h; sourceTree = "<group>"; };
+		D98AD5501943904F00AF6174 /* HatchingPotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HatchingPotion.m; path = ../HatchingPotion.m; sourceTree = "<group>"; };
 		D98AD5521943986100AF6174 /* HRPGMountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGMountViewController.h; sourceTree = "<group>"; };
 		D98AD5531943986100AF6174 /* HRPGMountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGMountViewController.m; sourceTree = "<group>"; };
-		D98F5AEA190566CA002F8223 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		D98F5AEB190566CA002F8223 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		D98F5AEA190566CA002F8223 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../User.h; sourceTree = "<group>"; };
+		D98F5AEB190566CA002F8223 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = ../User.m; sourceTree = "<group>"; };
 		D98F5AED1905C090002F8223 /* HRPGQuestParticipantsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGQuestParticipantsViewController.h; sourceTree = "<group>"; };
 		D98F5AEE1905C090002F8223 /* HRPGQuestParticipantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGQuestParticipantsViewController.m; sourceTree = "<group>"; };
 		D98F5AF01905DE86002F8223 /* HRPGPartyMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPartyMembersViewController.h; sourceTree = "<group>"; };
 		D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPartyMembersViewController.m; sourceTree = "<group>"; };
-		D99DEC821908313D00FFD2B9 /* HRPGItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGItemViewController.h; sourceTree = "<group>"; };
-		D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGItemViewController.m; sourceTree = "<group>"; };
-		D99DEC85190836D400FFD2B9 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
-		D99DEC86190836D400FFD2B9 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		D99DEC821908313D00FFD2B9 /* HRPGItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGItemViewController.h; path = ../HRPGItemViewController.h; sourceTree = "<group>"; };
+		D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGItemViewController.m; path = ../HRPGItemViewController.m; sourceTree = "<group>"; };
+		D99DEC85190836D400FFD2B9 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = ../Item.h; sourceTree = "<group>"; };
+		D99DEC86190836D400FFD2B9 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = ../Item.m; sourceTree = "<group>"; };
 		D99DEC88190842CA00FFD2B9 /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
 		D99DEC8B19084E0D00FFD2B9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		D99DEC8D190914AD00FFD2B9 /* HRPGQuestInvitationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGQuestInvitationViewController.h; sourceTree = "<group>"; };
 		D99DEC8E190914AD00FFD2B9 /* HRPGQuestInvitationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGQuestInvitationViewController.m; sourceTree = "<group>"; };
 		D99F15BE191027D90081836E /* HRPGBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBaseViewController.h; sourceTree = "<group>"; };
 		D99F15BF191027D90081836E /* HRPGBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBaseViewController.m; sourceTree = "<group>"; };
-		D9B11C8A18D63D4E00AB4D23 /* HRPGTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTabBarController.h; sourceTree = "<group>"; };
+		D9ADD3491943BB16006202C1 /* HRPGFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGFeedViewController.h; path = ../HRPGFeedViewController.h; sourceTree = "<group>"; };
+		D9ADD34A1943BB16006202C1 /* HRPGFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGFeedViewController.m; path = ../HRPGFeedViewController.m; sourceTree = "<group>"; };
+		D9ADD34C1943BBB6006202C1 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Food.h; path = ../Food.h; sourceTree = "<group>"; };
+		D9ADD34D1943BBB6006202C1 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Food.m; path = ../Food.m; sourceTree = "<group>"; };
+		D9ADD34F1943BC0E006202C1 /* BuyableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuyableItem.h; path = ../BuyableItem.h; sourceTree = "<group>"; };
+		D9ADD3501943BC0E006202C1 /* BuyableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyableItem.m; path = ../BuyableItem.m; sourceTree = "<group>"; };
+		D9ADD3541943BE95006202C1 /* HRPGTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGTabBarController.h; sourceTree = "<group>"; };
 		D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTabBarController.m; sourceTree = "<group>"; };
 		D9B5C0AC18CCC87A00C8D1B7 /* HRPGManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGManager.h; sourceTree = "<group>"; };
 		D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGManager.m; sourceTree = "<group>"; };
-		D9B5C0AF18CCD1EA00C8D1B7 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
-		D9B5C0B018CCD1EA00C8D1B7 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		D9B5C0AF18CCD1EA00C8D1B7 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Task.h; path = ../Task.h; sourceTree = "<group>"; };
+		D9B5C0B018CCD1EA00C8D1B7 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Task.m; path = ../Task.m; sourceTree = "<group>"; };
 		D9B5C0B518D5C07100C8D1B7 /* HRPGProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGProfileViewController.h; sourceTree = "<group>"; };
 		D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGProfileViewController.m; sourceTree = "<group>"; };
-		D9B5C0BE18D5EFF400C8D1B7 /* ChecklistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChecklistItem.h; sourceTree = "<group>"; };
-		D9B5C0BF18D5EFF400C8D1B7 /* ChecklistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChecklistItem.m; sourceTree = "<group>"; };
-		D9B5C0CD18D5F4D400C8D1B7 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
-		D9B5C0CE18D5F4D400C8D1B7 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
+		D9B5C0BE18D5EFF400C8D1B7 /* ChecklistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChecklistItem.h; path = ../ChecklistItem.h; sourceTree = "<group>"; };
+		D9B5C0BF18D5EFF400C8D1B7 /* ChecklistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChecklistItem.m; path = ../ChecklistItem.m; sourceTree = "<group>"; };
+		D9B5C0CD18D5F4D400C8D1B7 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tag.h; path = ../Tag.h; sourceTree = "<group>"; };
+		D9B5C0CE18D5F4D400C8D1B7 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tag.m; path = ../Tag.m; sourceTree = "<group>"; };
 		D9B5C0D318D5F94400C8D1B7 /* HRPGPartyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPartyViewController.h; sourceTree = "<group>"; };
 		D9B5C0D418D5F94400C8D1B7 /* HRPGPartyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPartyViewController.m; sourceTree = "<group>"; };
-		D9B5C0DF18D602FC00C8D1B7 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
-		D9B5C0E018D602FC00C8D1B7 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
+		D9B5C0DF18D602FC00C8D1B7 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Group.h; path = ../Group.h; sourceTree = "<group>"; };
+		D9B5C0E018D602FC00C8D1B7 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = ../Group.m; sourceTree = "<group>"; };
 		D9B5C0E218D610E200C8D1B7 /* HRPGTaskResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTaskResponse.h; sourceTree = "<group>"; };
 		D9B5C0E318D610E300C8D1B7 /* HRPGTaskResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTaskResponse.m; sourceTree = "<group>"; };
 		D9B5C0E518D62CC700C8D1B7 /* HRPGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLoginViewController.h; sourceTree = "<group>"; };
@@ -205,8 +214,8 @@
 		D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGRoundProgressView.m; sourceTree = "<group>"; };
 		D9C0003219290D5E003D4E4C /* HRPGActivityIndicatorOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGActivityIndicatorOverlayView.h; sourceTree = "<group>"; };
 		D9C0003319290D5E003D4E4C /* HRPGActivityIndicatorOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGActivityIndicatorOverlayView.m; sourceTree = "<group>"; };
-		D9C7C1EE18E26BBB0083F4E4 /* Egg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Egg.h; sourceTree = "<group>"; };
-		D9C7C1EF18E26BBB0083F4E4 /* Egg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Egg.m; sourceTree = "<group>"; };
+		D9C7C1EE18E26BBB0083F4E4 /* Egg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Egg.h; path = ../Egg.h; sourceTree = "<group>"; };
+		D9C7C1EF18E26BBB0083F4E4 /* Egg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Egg.m; path = ../Egg.m; sourceTree = "<group>"; };
 		D9C7C1F118E280DD0083F4E4 /* HRPGRewardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGRewardsViewController.h; sourceTree = "<group>"; };
 		D9C7C1F218E280DD0083F4E4 /* HRPGRewardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGRewardsViewController.m; sourceTree = "<group>"; };
 		D9E0868F18DF800F00BAF2EF /* HRPGTavernViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTavernViewController.h; sourceTree = "<group>"; };
@@ -218,7 +227,7 @@
 		D9EB4E9618CB4A9400BB2094 /* RabbitRPG-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RabbitRPG-Info.plist"; sourceTree = "<group>"; };
 		D9EB4E9818CB4A9400BB2094 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9EB4E9A18CB4A9400BB2094 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D9EB4E9C18CB4A9400BB2094 /* HabitRPG-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HabitRPG-Prefix.pch"; sourceTree = "<group>"; };
+		D9EB4E9C18CB4A9400BB2094 /* RabbitRPG-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RabbitRPG-Prefix.pch"; sourceTree = "<group>"; };
 		D9EB4E9D18CB4A9400BB2094 /* HRPGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGAppDelegate.h; sourceTree = "<group>"; };
 		D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRPGAppDelegate.m; sourceTree = "<group>"; };
 		D9EB4EA118CB4A9400BB2094 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -268,10 +277,6 @@
 			children = (
 				D99F15BE191027D90081836E /* HRPGBaseViewController.h */,
 				D99F15BF191027D90081836E /* HRPGBaseViewController.m */,
-				D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */,
-				D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */,
-				D99DEC821908313D00FFD2B9 /* HRPGItemViewController.h */,
-				D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */,
 				D9B5C0B518D5C07100C8D1B7 /* HRPGProfileViewController.h */,
 				D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */,
 				D922F01D191BCC1600B197EA /* HRPGQuestDetailController.h */,
@@ -282,17 +287,33 @@
 				D966557318FB129F0014C09D /* HRPGSettingsViewController.m */,
 				D9E0868F18DF800F00BAF2EF /* HRPGTavernViewController.h */,
 				D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */,
+				D9ADD3561943BFFA006202C1 /* Inventory */,
 				D9E3654F1930D45500C056F1 /* Modals */,
 				D9E365501930D58900C056F1 /* Party */,
 				D9E3654E1930D44300C056F1 /* Spells */,
 				D9E365511930D59D00C056F1 /* Tasks */,
 			);
 			name = TablewViewController;
+			path = TableViewController;
 			sourceTree = "<group>";
 		};
-		D9B5C0EB18D6321400C8D1B7 /* Models */ = {
+		D9ADD3531943BE33006202C1 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
+				D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */,
+				D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */,
+				D9ADD3541943BE95006202C1 /* HRPGTabBarController.h */,
+				D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */,
+			);
+			name = TabBarController;
+			path = /Users/viirus/Code/RabbitRPG/HabitRPG/TabBarController;
+			sourceTree = "<absolute>";
+		};
+		D9ADD3551943BEFB006202C1 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				D9ADD34F1943BC0E006202C1 /* BuyableItem.h */,
+				D9ADD3501943BC0E006202C1 /* BuyableItem.m */,
 				D97C71EE18F32FEF0089FDC6 /* MetaReward.h */,
 				D97C71EF18F32FEF0089FDC6 /* MetaReward.m */,
 				D97C71EB18F32FEF0089FDC6 /* Gear.h */,
@@ -307,10 +328,8 @@
 				D9B5C0E018D602FC00C8D1B7 /* Group.m */,
 				D98AD54F1943904F00AF6174 /* HatchingPotion.h */,
 				D98AD5501943904F00AF6174 /* HatchingPotion.m */,
-				D9B5C0E818D6320C00C8D1B7 /* HRPGLoginData.h */,
-				D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */,
-				D9B5C0E218D610E200C8D1B7 /* HRPGTaskResponse.h */,
-				D9B5C0E318D610E300C8D1B7 /* HRPGTaskResponse.m */,
+				D9ADD34C1943BBB6006202C1 /* Food.h */,
+				D9ADD34D1943BBB6006202C1 /* Food.m */,
 				D94AADB2192A30F900546C8E /* Spell.h */,
 				D94AADB3192A30F900546C8E /* Spell.m */,
 				D9B5C0CD18D5F4D400C8D1B7 /* Tag.h */,
@@ -329,13 +348,39 @@
 				D97C71E018ECA7050089FDC6 /* ChatMessage.m */,
 				D98F5AEA190566CA002F8223 /* User.h */,
 				D98F5AEB190566CA002F8223 /* User.m */,
-				D922F0A6191C1F6B00B197EA /* HRPGUserBuyResponse.h */,
-				D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */,
 				D98AD54C19437D9400AF6174 /* Pet.h */,
 				D98AD54D19437D9400AF6174 /* Pet.m */,
 			);
-			name = Models;
+			path = "Core Data";
 			sourceTree = "<group>";
+		};
+		D9ADD3561943BFFA006202C1 /* Inventory */ = {
+			isa = PBXGroup;
+			children = (
+				D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */,
+				D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */,
+				D99DEC821908313D00FFD2B9 /* HRPGItemViewController.h */,
+				D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */,
+				D9ADD3491943BB16006202C1 /* HRPGFeedViewController.h */,
+				D9ADD34A1943BB16006202C1 /* HRPGFeedViewController.m */,
+			);
+			path = Inventory;
+			sourceTree = "<group>";
+		};
+		D9B5C0EB18D6321400C8D1B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D9ADD3551943BEFB006202C1 /* Core Data */,
+				D9B5C0E818D6320C00C8D1B7 /* HRPGLoginData.h */,
+				D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */,
+				D9B5C0E218D610E200C8D1B7 /* HRPGTaskResponse.h */,
+				D9B5C0E318D610E300C8D1B7 /* HRPGTaskResponse.m */,
+				D922F0A6191C1F6B00B197EA /* HRPGUserBuyResponse.h */,
+				D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */,
+			);
+			name = Models;
+			path = /Users/viirus/Code/RabbitRPG/HabitRPG/HRPGModels;
+			sourceTree = "<absolute>";
 		};
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
@@ -349,7 +394,7 @@
 				D908B3811903515B00D32A75 /* HRPGSwipeTableViewCell.h */,
 				D908B3821903515B00D32A75 /* HRPGSwipeTableViewCell.m */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D9E3654E1930D44300C056F1 /* Spells */ = {
@@ -359,10 +404,8 @@
 				D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */,
 				D94AADB5192A56E800546C8E /* HRPGSpellTaskController.h */,
 				D94AADB6192A56E800546C8E /* HRPGSpellTaskController.m */,
-				D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */,
-				D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */,
 			);
-			name = Spells;
+			path = Spells;
 			sourceTree = "<group>";
 		};
 		D9E3654F1930D45500C056F1 /* Modals */ = {
@@ -377,7 +420,7 @@
 				D96038351930F90E0025EAEC /* HRPGMessageViewController.h */,
 				D96038361930F90E0025EAEC /* HRPGMessageViewController.m */,
 			);
-			name = Modals;
+			path = Modals;
 			sourceTree = "<group>";
 		};
 		D9E365501930D58900C056F1 /* Party */ = {
@@ -390,7 +433,7 @@
 				D98F5AF01905DE86002F8223 /* HRPGPartyMembersViewController.h */,
 				D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */,
 			);
-			name = Party;
+			path = Party;
 			sourceTree = "<group>";
 		};
 		D9E365511930D59D00C056F1 /* Tasks */ = {
@@ -407,7 +450,7 @@
 				D92CDAE518CB84000006C242 /* HRPGToDoTableViewController.h */,
 				D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */,
 			);
-			name = Tasks;
+			path = Tasks;
 			sourceTree = "<group>";
 		};
 		D9EB4E8218CB4A9400BB2094 = {
@@ -453,14 +496,13 @@
 				D9B5C0EB18D6321400C8D1B7 /* Models */,
 				D92CDAE118CB83C40006C242 /* TablewViewController */,
 				D9C000311928F85E003D4E4C /* Views */,
+				D9ADD3531943BE33006202C1 /* TabBarController */,
 				D9EB4E9D18CB4A9400BB2094 /* HRPGAppDelegate.h */,
 				D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */,
 				D922F0AF1925314500B197EA /* HRPGNetworkIndicatorController.h */,
 				D922F0B01925314500B197EA /* HRPGNetworkIndicatorController.m */,
 				D9B5C0AC18CCC87A00C8D1B7 /* HRPGManager.h */,
 				D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */,
-				D9B11C8A18D63D4E00AB4D23 /* HRPGTabBarController.h */,
-				D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */,
 				D922F0AC19217C2300B197EA /* HRPGEmptySerializer.h */,
 				D922F0AD19217C2300B197EA /* HRPGEmptySerializer.m */,
 				D98AD54919437A3500AF6174 /* HRPGPetViewController.h */,
@@ -485,7 +527,7 @@
 				D9EB4E9618CB4A9400BB2094 /* RabbitRPG-Info.plist */,
 				D9EB4E9718CB4A9400BB2094 /* InfoPlist.strings */,
 				D9EB4E9A18CB4A9400BB2094 /* main.m */,
-				D9EB4E9C18CB4A9400BB2094 /* HabitRPG-Prefix.pch */,
+				D9EB4E9C18CB4A9400BB2094 /* RabbitRPG-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -653,6 +695,7 @@
 				D922F0B11925314500B197EA /* HRPGNetworkIndicatorController.m in Sources */,
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
 				D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */,
+				D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */,
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
 				D9B5C0D518D5F94400C8D1B7 /* HRPGPartyViewController.m in Sources */,
 				D98AD5541943986100AF6174 /* HRPGMountViewController.m in Sources */,
@@ -696,6 +739,7 @@
 				D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */,
 				D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */,
 				D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */,
+				D9ADD34E1943BBB6006202C1 /* Food.m in Sources */,
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
 				D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */,
 				D97C71E718F32FED0089FDC6 /* Potion.m in Sources */,
@@ -704,6 +748,7 @@
 				D97C71F018F32FEF0089FDC6 /* MetaReward.m in Sources */,
 				D94AADB0192973CD00546C8E /* HabitRPG.xcdatamodeld in Sources */,
 				D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */,
+				D9ADD3511943BC0E006202C1 /* BuyableItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

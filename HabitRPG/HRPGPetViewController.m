@@ -103,7 +103,7 @@
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat height = 120.0f;
+    CGFloat height = 121.0f;
     height = height + [@" " boundingRectWithSize:CGSizeMake(90.0f, MAXFLOAT)
                                               options:NSStringDrawingUsesLineFragmentOrigin
                                            attributes:@{

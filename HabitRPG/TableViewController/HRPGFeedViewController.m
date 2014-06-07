@@ -1,26 +1,20 @@
 //
-//  HRPGTableViewController.m
-//  HabitRPG
+//  HRPGFeedViewController.m
+//  RabbitRPG
 //
-//  Created by Phillip Thelen on 08/03/14.
+//  Created by Phillip on 07/06/14.
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import "HRPGItemViewController.h"
+#import "HRPGFeedViewController.h"
 #import "HRPGAppDelegate.h"
-#import "Item.h"
+#import "Food.h"
 
-@interface HRPGItemViewController ()
-@property NSString *readableName;
-@property NSString *typeName;
+@interface HRPGFeedViewController ()
 @property HRPGManager *sharedManager;
-@property NSIndexPath *openedIndexPath;
-@property int indexOffset;
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
 
-@implementation HRPGItemViewController
+@implementation HRPGFeedViewController
 @synthesize managedObjectContext;
 @dynamic sharedManager;
 
@@ -55,8 +49,8 @@
     NSInteger height = [item.text boundingRectWithSize:CGSizeMake(260.0f, MAXFLOAT)
                                                options:NSStringDrawingUsesLineFragmentOrigin
                                             attributes:@{
-                                                    NSFontAttributeName : [UIFont systemFontOfSize:18.0f]
-                                            }
+                                                         NSFontAttributeName : [UIFont systemFontOfSize:18.0f]
+                                                         }
                                                context:nil].size.height + 22;
     if (height < 60) {
         return 60;
@@ -68,7 +62,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
         [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
-
+        
         NSError *error = nil;
         if (![context save:&error]) {
             // Replace this implementation with code to handle the error appropriately.
@@ -100,12 +94,12 @@
 }
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
-
+    
 }
 
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-
+    
 }
 
 
@@ -113,32 +107,31 @@
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
-
+    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Food" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-
+    
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-
+    
     NSPredicate *predicate;
     predicate = [NSPredicate predicateWithFormat:@"owned > 0"];
     [fetchRequest setPredicate:predicate];
-
+    
     // Edit the sort key as appropriate.
     NSSortDescriptor *indexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
-    NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
-    NSArray *sortDescriptors = @[typeDescriptor, indexDescriptor];
-
+    NSArray *sortDescriptors = @[indexDescriptor];
+    
     [fetchRequest setSortDescriptors:sortDescriptors];
-
+    
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"type" cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
-
+    
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
         // Replace this implementation with code to handle the error appropriately.
@@ -146,7 +139,7 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-
+    
     return _fetchedResultsController;
 }
 
@@ -161,7 +154,7 @@
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
-
+            
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
@@ -172,20 +165,20 @@
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
-
+    
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
-
+            
         case NSFetchedResultsChangeDelete:
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
-
+            
         case NSFetchedResultsChangeUpdate:
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
             break;
-
+            
         case NSFetchedResultsChangeMove:
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -198,27 +191,16 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
-    Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Food *food = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *textLabel = (UILabel *) [cell viewWithTag:1];
-    textLabel.text = item.text;
+    textLabel.text = food.text;
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     UILabel *detailTextLabel = (UILabel *) [cell viewWithTag:2];
-    detailTextLabel.text = [NSString stringWithFormat:@"%@", item.owned];
+    detailTextLabel.text = [NSString stringWithFormat:@"%@", food.owned];
+    detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [detailTextLabel sizeToFit];
     NSString *url;
-    if ([item.type isEqualToString:@"quests"]) {
-        url = @"http://pherth.net/habitrpg/inventory_quest_scroll.png";
-    } else {
-        NSString *type;
-        if ([item.type isEqualToString:@"eggs"]) {
-            type = @"Egg";
-        } else if ([item.type isEqualToString:@"food"]) {
-            type = @"Food";
-        } else if ([item.type isEqualToString:@"hatchingPotions"]) {
-            type = @"HatchingPotion";
-        }
-        url = [NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet_%@_%@.png", type, item.key];
-    }
+    url = [NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet_Food_%@.png", item.key];
     [cell.imageView setImageWithURL:[NSURL URLWithString:url]
                    placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     cell.imageView.contentMode = UIViewContentModeCenter;

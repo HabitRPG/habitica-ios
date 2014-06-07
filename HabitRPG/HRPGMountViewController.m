@@ -112,9 +112,9 @@
     UILabel *label = (UILabel*)[headerView viewWithTag:1];
     NSString *sectionName = [[self.fetchedResultsController sections][indexPath.section] name];
     if ([sectionName isEqualToString:@"questPets"]) {
-        label.text = NSLocalizedString(@"Quest Pets", nil);
+        label.text = NSLocalizedString(@"Quest Mounts", nil);
     } else {
-        label.text = NSLocalizedString(@"Base Pets", nil);
+        label.text = NSLocalizedString(@"Base Mounts", nil);
     }
     return headerView;
 }

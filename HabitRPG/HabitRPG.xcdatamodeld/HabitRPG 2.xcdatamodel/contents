@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="BuyableItem" isAbstract="YES" parentEntity="Item" syncable="YES">
+    <entity name="BuyableItem" representedClassName="BuyableItem" isAbstract="YES" parentEntity="Item" syncable="YES">
         <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <entity name="ChatMessage" representedClassName="ChatMessage" syncable="YES">
@@ -23,7 +23,7 @@
         <attribute name="mountText" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedEggs" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Food" parentEntity="BuyableItem" syncable="YES">
+    <entity name="Food" representedClassName="Food" parentEntity="BuyableItem" syncable="YES">
         <attribute name="article" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedFood" inverseEntity="User" syncable="YES"/>
@@ -216,6 +216,7 @@
         <element name="HatchingPotion" positionX="0" positionY="0" width="128" height="60"/>
         <element name="Item" positionX="0" positionY="0" width="128" height="150"/>
         <element name="MetaReward" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="Pet" positionX="9" positionY="153" width="128" height="133"/>
         <element name="Potion" positionX="0" positionY="0" width="128" height="45"/>
         <element name="Quest" positionX="0" positionY="0" width="128" height="180"/>
         <element name="QuestCollect" positionX="0" positionY="0" width="128" height="135"/>
@@ -224,6 +225,5 @@
         <element name="Tag" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="405"/>
         <element name="User" positionX="0" positionY="0" width="128" height="853"/>
-        <element name="Pet" positionX="9" positionY="153" width="128" height="133"/>
     </elements>
 </model>
