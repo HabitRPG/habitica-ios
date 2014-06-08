@@ -35,6 +35,7 @@
 @property(nonatomic, retain) NSString *hairBeard;
 @property(nonatomic, retain) NSString *hairColor;
 @property(nonatomic, retain) NSString *hairMustache;
+@property(nonatomic, retain) NSString *hairFlower;
 @property(nonatomic, retain) NSString *hclass;
 @property(nonatomic, retain) NSNumber *health;
 @property(nonatomic, retain) NSString *id;

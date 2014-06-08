@@ -260,6 +260,7 @@ NSString *currentUser;
             @"preferences.hair.beard" : @"hairBeard",
             @"preferences.hair.base" : @"hairBase",
             @"preferences.hair.color" : @"hairColor",
+            @"preferences.hair.flower" : @"hairFlower",
             @"stats.lvl" : @"level",
             @"stats.gp" : @"gold",
             @"stats.exp" : @"experience",
@@ -284,7 +285,19 @@ NSString *currentUser;
             @"preferences.costume" : @"useCostume",
             @"items.currentPet" : @"currentPet",
             @"items.currentMount" : @"currentMount",
-            @"auth.timestamps.loggedin" : @"lastLogin"
+            @"auth.timestamps.loggedin" : @"lastLogin",
+            @"stats.con" : @"constitution",
+            @"stats.int" : @"intelligence",
+            @"stats.per" : @"perception",
+            @"stats.str" : @"strength",
+            @"stats.buff.con" : @"buffConstitution",
+            @"stats.buff.int" : @"buffIntelligence",
+            @"stats.buff.per" : @"buffPerception",
+            @"stats.buff.str" : @"buffStrength",
+            @"stats.training.con" : @"trainingConstitution",
+            @"stats.training.int" : @"trainingIntelligence",
+            @"stats.training.per" : @"trainingPerception",
+            @"stats.training.str" : @"trainingStrength",
     }];
     entityMapping.identificationAttributes = @[@"id"];
     RKEntityMapping *rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
@@ -546,6 +559,7 @@ NSString *currentUser;
             @"preferences.hair.beard" : @"hairBeard",
             @"preferences.hair.base" : @"hairBase",
             @"preferences.hair.color" : @"hairColor",
+            @"preferences.hair.flower" : @"hairFlower",
             @"stats.lvl" : @"level",
             @"stats.gp" : @"gold",
             @"stats.exp" : @"experience",
@@ -563,7 +577,19 @@ NSString *currentUser;
             @"items.gear.equipped.back" : @"equippedBack",
             @"items.currentPet" : @"currentPet",
             @"items.currentMount" : @"currentMount",
-            @"auth.timestamps.loggedin" : @"lastLogin"
+            @"auth.timestamps.loggedin" : @"lastLogin",
+            @"stats.con" : @"constitution",
+            @"stats.int" : @"intelligence",
+            @"stats.per" : @"perception",
+            @"stats.str" : @"strength",
+            @"stats.buff.con" : @"buffConstitution",
+            @"stats.buff.int" : @"buffIntelligence",
+            @"stats.buff.per" : @"buffPerception",
+            @"stats.buff.str" : @"buffStrength",
+            @"stats.training.con" : @"trainingConstitution",
+            @"stats.training.int" : @"trainingIntelligence",
+            @"stats.training.per" : @"trainingPerception",
+            @"stats.training.str" : @"trainingStrength"
     }];
     memberMapping.identificationAttributes = @[@"id"];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"members"

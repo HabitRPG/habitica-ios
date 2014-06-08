@@ -37,6 +37,7 @@
 @dynamic hairBeard;
 @dynamic hairColor;
 @dynamic hairMustache;
+@dynamic hairFlower;
 @dynamic hclass;
 @dynamic health;
 @dynamic id;
@@ -204,6 +205,16 @@
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:headAccessory onSuccess:^(UIImage *image) {
+            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
+        }];
+    }
+    if ([self.hairFlower integerValue] != 0) {
+        dispatch_group_enter(group);
+        currentLayer++;
+        [sharedManager getImage:[NSString stringWithFormat:@"hair_flower_%@", self.hairFlower] onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
