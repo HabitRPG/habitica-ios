@@ -15,6 +15,8 @@
 
 @implementation User
 
+@dynamic contributorLevel;
+@dynamic contributorText;
 @dynamic costumeArmor;
 @dynamic costumeBack;
 @dynamic costumeHead;

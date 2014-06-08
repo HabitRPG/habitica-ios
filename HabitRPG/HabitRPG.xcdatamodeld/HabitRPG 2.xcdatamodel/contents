@@ -158,7 +158,7 @@
         <attribute name="constitution" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="contributions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contributorLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="contributorText" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="contributorText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="costumeArmor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="costumeBack" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="costumeHead" optional="YES" attributeType="String" syncable="YES"/>

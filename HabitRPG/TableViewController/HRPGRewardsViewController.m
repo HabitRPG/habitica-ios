@@ -263,10 +263,17 @@ User *user;
                 if (gear.owned) {
                     continue;
                 }
-                if ([gear.klass isEqualToString:@"special"]) {
-                    
-                }
-                if (!([gear.klass isEqualToString:user.hclass] || [gear.specialClass isEqualToString:user.hclass])) {
+                if ([gear.key rangeOfString:@"_special_1"].location != NSNotFound) {
+                        if ([gear.type isEqualToString:@"armor"] && [user.contributorLevel intValue] < 2) {
+                            continue;
+                        } else if ([gear.type isEqualToString:@"head"] && [user.contributorLevel intValue] < 3) {
+                            continue;
+                        } else if ([gear.type isEqualToString:@"weapon"] && [user.contributorLevel intValue] < 4) {
+                            continue;
+                        } else if ([gear.type isEqualToString:@"shield"] && [user.contributorLevel intValue] < 5) {
+                            continue;
+                        }
+                } else if (!([gear.klass isEqualToString:user.hclass] || [gear.specialClass isEqualToString:user.hclass])) {
                     continue;
                 }
                 if (gear.eventStart) {
@@ -275,7 +282,7 @@ User *user;
                         continue;
                     }
                 }
-                if (gear.index && [[sectionArray lastObject] index]) {
+                if (gear.index && [[sectionArray lastObject] index] && ![gear.klass isEqualToString:@"special"]) {
                     if ([[sectionArray lastObject] index] < gear.index) {
                         continue;
                     } else if ([[sectionArray lastObject] index] > gear.index) {
@@ -287,6 +294,7 @@ User *user;
                 [sectionArray addObject:reward];
             }
         }
+        
         if ([sectionArray count] > 0) {
             [array addObject:sectionArray];
             [self.sectionHeader addObject:[section name]];

@@ -13,6 +13,8 @@
 
 @interface User : NSManagedObject
 
+@property(nonatomic, retain) NSNumber *contributorLevel;
+@property(nonatomic, retain) NSString *contributorText;
 @property(nonatomic, retain) NSString *costumeArmor;
 @property(nonatomic, retain) NSString *costumeBack;
 @property(nonatomic, retain) NSString *costumeHead;
