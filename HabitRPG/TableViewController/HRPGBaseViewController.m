@@ -10,9 +10,12 @@
 #import "HRPGManager.h"
 #import <PDKeychainBindings.h>
 #import "HRPGAppDelegate.h"
+#import "HRPGRoundProgressView.h"
 
 @interface HRPGBaseViewController ()
 @property HRPGManager *sharedManager;
+@property NSInteger activityCounter;
+@property UIBarButtonItem *navigationButton;
 @end
 
 @implementation HRPGBaseViewController
@@ -37,6 +40,8 @@
                selector:@selector(preferredContentSizeChanged:)
                    name:UIContentSizeCategoryDidChangeNotification
                  object:nil];
+    
+    self.activityCounter = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -62,6 +67,27 @@
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
     [self.tableView reloadData];
+}
+
+-(void)addActivityCounter {
+    if (self.activityCounter == 0) {
+        self.navigationButton = self.navigationItem.rightBarButtonItem;
+        HRPGRoundProgressView *indicator = [[HRPGRoundProgressView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+        indicator.strokeWidth = 2;
+        [indicator beginAnimating];
+        UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:indicator];
+        [self.navigationItem setRightBarButtonItem:indicatorButton animated:YES];
+    }
+    self.activityCounter++;
+}
+
+- (void)removeActivityCounter {
+    self.activityCounter--;
+    if (self.activityCounter == 0) {
+        [self.navigationItem setRightBarButtonItem:self.navigationButton animated:YES];
+    } else if (self.activityCounter < 0) {
+        self.activityCounter = 0;
+    }
 }
 
 @end

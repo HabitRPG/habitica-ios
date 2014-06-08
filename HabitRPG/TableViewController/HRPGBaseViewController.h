@@ -12,4 +12,8 @@
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
+
+-(void)addActivityCounter;
+-(void)removeActivityCounter;
+
 @end

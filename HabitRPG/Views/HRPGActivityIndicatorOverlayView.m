@@ -39,7 +39,12 @@ CGFloat height = 140;
         self.indicatorView.backgroundColor = [UIColor whiteColor];
         [self.indicatorView.layer setCornerRadius:5.0f];
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, screenSize.height)];
-
+        
+        self.backgroundView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0];
+        HRPGRoundProgressView *roundProgress = [[HRPGRoundProgressView alloc] initWithFrame:CGRectMake(15, 15, width - 30, indicatorHeight - 30)];
+        [roundProgress beginAnimating];
+        [self.indicatorView addSubview:roundProgress];
+        
         if (self.activityString) {
             height = height + 40;
             self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, height - 40, width, 20)];
@@ -47,11 +52,7 @@ CGFloat height = 140;
             self.label.textAlignment = NSTextAlignmentCenter;
             [self.indicatorView addSubview:self.label];
         }
-
-        self.backgroundView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0];
-        HRPGRoundProgressView *roundProgress = [[HRPGRoundProgressView alloc] initWithFrame:CGRectMake(15, 15, width - 30, indicatorHeight - 30)];
-        [self.indicatorView addSubview:roundProgress];
-
+        
         UITabBarController *mainTabbar = ((UITabBarController *) [[UIApplication sharedApplication] delegate].window.rootViewController);
         [mainTabbar.view addSubview:self.backgroundView];
         [mainTabbar.view addSubview:self.indicatorView];

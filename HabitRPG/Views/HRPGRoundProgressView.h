@@ -15,4 +15,7 @@
 @property NSInteger strokeWidth;
 @property NSInteger indicatorLength;
 @property CGFloat roundTime;
+
+-(void)beginAnimating;
+
 @end

@@ -33,15 +33,17 @@
         endAngle = startAngle + (M_PI * 2);
         animAngle = (M_PI * 2);
         self.indicatorStrokeColor = [UIColor colorWithRed:0.409 green:0.743 blue:0.037 alpha:1.000];
-        self.backgroundStrokeColor = [UIColor colorWithWhite:0.761 alpha:1.000];
+        self.backgroundStrokeColor = [UIColor colorWithWhite:0.85 alpha:1.000];
         self.strokeWidth = 4;
         self.roundTime = 1.2f;
         self.indicatorLength = 8;
-
-        [self addShapeLayer];
-        [self startDisplayLink];
     }
     return self;
+}
+
+- (void)beginAnimating {
+    [self addShapeLayer];
+    [self startDisplayLink];
 }
 
 - (void)addShapeLayer {
@@ -95,7 +97,6 @@
     float radius = (rect.size.width - self.strokeWidth) / 2;
     // Create our arc, with the correct angles
     [backgroundPath addArcWithCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
-
     // Set the display for the path, and stroke it
     backgroundPath.lineWidth = self.strokeWidth;
     [self.backgroundStrokeColor setStroke];

@@ -84,10 +84,12 @@
             UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
             [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                 item.completed = [NSNumber numberWithBool:NO];
+                [self addActivityCounter];
                 [self.sharedManager updateTask:task onSuccess:^() {
                     [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                    [self removeActivityCounter];
                 }                      onError:^() {
-
+                    [self removeActivityCounter];
                 }];
             }];
         } else {
@@ -100,11 +102,12 @@
             UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
             [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                 item.completed = [NSNumber numberWithBool:YES];
+                [self addActivityCounter];
                 [self.sharedManager updateTask:task onSuccess:^() {
-
                     [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                    [self removeActivityCounter];
                 }                      onError:^() {
-
+                    [self removeActivityCounter];
                 }];
             }];
         }
@@ -192,20 +195,22 @@
         UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconSquareO]];
         UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
         [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+            [self addActivityCounter];
             [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(){
-
+                [self removeActivityCounter];
             }                      onError:^(){
-
+                [self removeActivityCounter];
             }];
         }];
     } else {
         UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconCheckSquareO]];
         UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
         [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+            [self addActivityCounter];
             [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(){
-
+                [self removeActivityCounter];
             }                      onError:^(){
-
+                [self removeActivityCounter];
             }];
         }];
     }

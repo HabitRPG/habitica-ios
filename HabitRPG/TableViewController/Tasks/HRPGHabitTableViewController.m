@@ -36,6 +36,8 @@
     self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
     self.readableName = NSLocalizedString(@"Habit", nil);
     self.typeName = @"habit";
+    [self addActivityCounter];
+
 }
 
 - (IBAction)upDownSelected:(UISegmentedControl *)sender {
@@ -73,10 +75,11 @@
         UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconPlus]];
         UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
         [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+            [self addActivityCounter];
             [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(){
-
+                [self removeActivityCounter];
             }                      onError:^(){
-
+                [self removeActivityCounter];
             }];
         }];
     }
@@ -84,10 +87,11 @@
         UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconMinus]];
         UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
         [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState1 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+            [self addActivityCounter];
             [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(){
-
+                [self removeActivityCounter];
             }                      onError:^(){
-
+                [self removeActivityCounter];
             }];
         }];
     }
