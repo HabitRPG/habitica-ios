@@ -11,6 +11,7 @@
 #import <PDKeychainBindings.h>
 #import "HRPGAppDelegate.h"
 #import "HRPGRoundProgressView.h"
+#import "HRPGBallActivityIndicator.h"
 
 @interface HRPGBaseViewController ()
 @property HRPGManager *sharedManager;
@@ -72,8 +73,10 @@
 -(void)addActivityCounter {
     if (self.activityCounter == 0) {
         self.navigationButton = self.navigationItem.rightBarButtonItem;
-        HRPGRoundProgressView *indicator = [[HRPGRoundProgressView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-        indicator.strokeWidth = 2;
+        //HRPGRoundProgressView *indicator = [[HRPGRoundProgressView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+        //indicator.strokeWidth = 2;
+        //[indicator beginAnimating];
+        HRPGBallActivityIndicator *indicator = [[HRPGBallActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         [indicator beginAnimating];
         UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:indicator];
         [self.navigationItem setRightBarButtonItem:indicatorButton animated:YES];

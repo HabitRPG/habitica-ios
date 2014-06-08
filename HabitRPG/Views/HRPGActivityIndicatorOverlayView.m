@@ -7,7 +7,7 @@
 //
 
 #import "HRPGActivityIndicatorOverlayView.h"
-#import "HRPGRoundProgressView.h"
+#import "HRPGBallActivityIndicator.h"
 
 @interface HRPGActivityIndicatorOverlayView ()
 @property UIView *indicatorView;
@@ -41,7 +41,8 @@ CGFloat height = 140;
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, screenSize.height)];
         
         self.backgroundView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0];
-        HRPGRoundProgressView *roundProgress = [[HRPGRoundProgressView alloc] initWithFrame:CGRectMake(15, 15, width - 30, indicatorHeight - 30)];
+        HRPGBallActivityIndicator *roundProgress = [[HRPGBallActivityIndicator alloc] initWithFrame:CGRectMake(30, 30, width - 60, indicatorHeight - 60)];
+        roundProgress.ballColor = [UIColor colorWithRed:0.824 green:0.113 blue:0.104 alpha:0.8];
         [roundProgress beginAnimating];
         [self.indicatorView addSubview:roundProgress];
         

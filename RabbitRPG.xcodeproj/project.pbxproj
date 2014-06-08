@@ -55,6 +55,8 @@
 		D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD34A1943BB16006202C1 /* HRPGFeedViewController.m */; };
 		D9ADD34E1943BBB6006202C1 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD34D1943BBB6006202C1 /* Food.m */; };
 		D9ADD3511943BC0E006202C1 /* BuyableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD3501943BC0E006202C1 /* BuyableItem.m */; };
+		D9ADD35A19446E1B006202C1 /* HRPGBallActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD35919446E1A006202C1 /* HRPGBallActivityIndicator.m */; };
+		D9ADD35D19447057006202C1 /* HRPGBall.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD35C19447057006202C1 /* HRPGBall.m */; };
 		D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */; };
 		D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */; };
 		D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0B018CCD1EA00C8D1B7 /* Task.m */; };
@@ -189,6 +191,10 @@
 		D9ADD34F1943BC0E006202C1 /* BuyableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuyableItem.h; path = ../BuyableItem.h; sourceTree = "<group>"; };
 		D9ADD3501943BC0E006202C1 /* BuyableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyableItem.m; path = ../BuyableItem.m; sourceTree = "<group>"; };
 		D9ADD3541943BE95006202C1 /* HRPGTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGTabBarController.h; sourceTree = "<group>"; };
+		D9ADD35819446E1A006202C1 /* HRPGBallActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBallActivityIndicator.h; sourceTree = "<group>"; };
+		D9ADD35919446E1A006202C1 /* HRPGBallActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBallActivityIndicator.m; sourceTree = "<group>"; };
+		D9ADD35B19447057006202C1 /* HRPGBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBall.h; sourceTree = "<group>"; };
+		D9ADD35C19447057006202C1 /* HRPGBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBall.m; sourceTree = "<group>"; };
 		D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTabBarController.m; sourceTree = "<group>"; };
 		D9B5C0AC18CCC87A00C8D1B7 /* HRPGManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGManager.h; sourceTree = "<group>"; };
 		D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGManager.m; sourceTree = "<group>"; };
@@ -397,6 +403,10 @@
 			children = (
 				D9C0002E1928F83E003D4E4C /* HRPGRoundProgressView.h */,
 				D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */,
+				D9ADD35819446E1A006202C1 /* HRPGBallActivityIndicator.h */,
+				D9ADD35919446E1A006202C1 /* HRPGBallActivityIndicator.m */,
+				D9ADD35B19447057006202C1 /* HRPGBall.h */,
+				D9ADD35C19447057006202C1 /* HRPGBall.m */,
 				D9C0003219290D5E003D4E4C /* HRPGActivityIndicatorOverlayView.h */,
 				D9C0003319290D5E003D4E4C /* HRPGActivityIndicatorOverlayView.m */,
 				D9884B4319168AF00078BC7C /* HRPGProgressView.h */,
@@ -711,7 +721,9 @@
 				D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */,
 				D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
+				D9ADD35A19446E1B006202C1 /* HRPGBallActivityIndicator.m in Sources */,
 				D94AADB4192A30F900546C8E /* Spell.m in Sources */,
+				D9ADD35D19447057006202C1 /* HRPGBall.m in Sources */,
 				D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */,
 				D9E0869118DF800F00BAF2EF /* HRPGTavernViewController.m in Sources */,
 				D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */,

@@ -13,6 +13,7 @@
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 #import "NSString+Emoji.h"
+#import "HRPGActivityIndicatorOverlayView.h"
 
 @interface HRPGHabitTableViewController ()
 @property NSString *readableName;
@@ -36,8 +37,6 @@
     self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
     self.readableName = NSLocalizedString(@"Habit", nil);
     self.typeName = @"habit";
-    [self addActivityCounter];
-
 }
 
 - (IBAction)upDownSelected:(UISegmentedControl *)sender {
