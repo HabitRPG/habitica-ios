@@ -1477,7 +1477,7 @@ NSString *currentUser;
     
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/chat?message=%@", groupID, [message stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
-        [user.party addChatmessagesObject:[mappingResult firstObject]];
+        [user.party addChatmessagesObjectAtFirstPosition:[mappingResult firstObject]];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
         [[NSNotificationCenter defaultCenter] postNotificationName:@"newChatMessage" object:nil];

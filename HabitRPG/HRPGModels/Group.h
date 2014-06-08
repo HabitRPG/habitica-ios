@@ -44,6 +44,8 @@
 
 - (void)addChatmessagesObject:(ChatMessage *)value;
 
+- (void)addChatmessagesObjectAtFirstPosition:(ChatMessage *)value;
+
 - (void)removeChatmessagesObject:(ChatMessage *)value;
 
 - (void)addChatmessages:(NSOrderedSet *)values;

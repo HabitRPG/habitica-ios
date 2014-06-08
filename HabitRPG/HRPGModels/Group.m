@@ -31,6 +31,14 @@
     self.chatmessages = tempSet;
 }
 
+
+-(void)addChatmessagesObjectAtFirstPosition:(ChatMessage *)value {
+    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.chatmessages];
+    value.group = self;
+    [tempSet insertObject:value atIndex:0];
+    self.chatmessages = tempSet;
+}
+
 - (void)removeChatMessagesObject:(ChatMessage *)value {
     NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.chatmessages];
     [tempSet removeObject:value];
