@@ -20,6 +20,20 @@
 
 #pragma mark - Table view data source
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if ([[self.fetchedResultsController fetchedObjects] count] == 0) {
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        UILabel *emptyLabel = [[UILabel alloc] initWithFrame:self.tableView.frame];
+        emptyLabel.text = NSLocalizedString(@"You have no food", nil);
+        emptyLabel.textAlignment = NSTextAlignmentCenter;
+        emptyLabel.textColor = [UIColor lightGrayColor];
+        emptyLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+        [self.navigationController.view addSubview:emptyLabel];
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [[self.fetchedResultsController sections] count];
 }
