@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "Item.h"
+#import "BuyableItem.h"
 
 @class User;
 
-@interface Food : Item
+@interface Food : BuyableItem
 
 @property (nonatomic, retain) NSString * article;
 @property (nonatomic, retain) NSString * target;

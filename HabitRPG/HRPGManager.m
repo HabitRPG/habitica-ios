@@ -16,6 +16,7 @@
 #import "Group.h"
 #import "Item.h"
 #import "Gear.h"
+#import "Quest.h"
 #import <SDWebImageManager.h>
 #import "HRPGUserBuyResponse.h"
 #import "HRPGEmptySerializer.h"
@@ -407,6 +408,22 @@ NSString *currentUser;
     equipMapping.assignsDefaultValueForMissingAttributes = YES;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:equipMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/equip/:type/:key" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:eggOwnedMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/equip/:type/:key" keyPath:@"eggs" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:petOwnedMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/equip/:type/:key" keyPath:@"pets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:hPotionOwnedMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/equip/:type/:key" keyPath:@"hatchingPotions" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:equipMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/hatch/:egg/:hatchingPotion" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:eggOwnedMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/hatch/:egg/:hatchingPotion" keyPath:@"eggs" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:petOwnedMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/hatch/:egg/:hatchingPotion" keyPath:@"pets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:hPotionOwnedMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/hatch/:egg/:hatchingPotion" keyPath:@"hatchingPotions" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
     
     entityMapping.assignsDefaultValueForMissingAttributes = YES;
 
@@ -693,6 +710,13 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:petMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"questPets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    
+    
+    RKObjectMapping *errorMapping = [RKObjectMapping mappingForClass:[RKErrorMessage class]];
+    
+    [errorMapping addPropertyMapping: [RKAttributeMapping attributeMappingFromKeyPath:@"err" toKeyPath:@"errorMessage"]];
+    RKResponseDescriptor *errorResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:errorMapping method:RKRequestMethodAny pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
+    [objectManager addResponseDescriptor:errorResponseDescriptor];
     
     [self setCredentials];
     defaults = [NSUserDefaults standardUserDefaults];
@@ -1196,6 +1220,9 @@ NSString *currentUser;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
             [self displayServerError];
+        } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+            RKErrorMessage *errorMessage = [[error userInfo] objectForKey:RKObjectMapperErrorObjectsKey][0];
+            [self displayError:errorMessage.errorMessage];
         } else {
             [self displayNetworkError];
         }
@@ -1228,6 +1255,9 @@ NSString *currentUser;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
             [self displayServerError];
+        } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+            RKErrorMessage *errorMessage = [[error userInfo] objectForKey:RKObjectMapperErrorObjectsKey][0];
+            [self displayError:errorMessage.errorMessage];
         } else {
             [self displayNetworkError];
         }
@@ -1264,6 +1294,48 @@ NSString *currentUser;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
             [self displayServerError];
+        } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+            RKErrorMessage *errorMessage = [[error userInfo] objectForKey:RKObjectMapperErrorObjectsKey][0];
+            [self displayError:errorMessage.errorMessage];
+        } else {
+            [self displayNetworkError];
+        }
+        errorBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)hatchEgg:(NSString *)egg withPotion:(NSString *)hPotion onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/hatch/%@/%@", egg, hPotion] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        HRPGUserBuyResponse *response = [mappingResult dictionary][[NSNull null]];
+        user.equippedHeadAccessory = response.equippedHeadAccessory;
+        user.equippedHead = response.equippedHead;
+        user.equippedBack = response.equippedBack;
+        user.equippedArmor = response.equippedArmor;
+        user.equippedShield = response.equippedShield;
+        user.equippedWeapon = response.equippedWeapon;
+        user.costumeArmor = response.costumeArmor;
+        user.costumeBack = response.costumeBack;
+        user.costumeHead = response.costumeHead;
+        user.costumeHeadAccessory = response.costumeHeadAccessory;
+        user.costumeShield = response.costumeShield;
+        user.costumeWeapon = response.costumeWeapon;
+        user.currentMount = response.currentMount;
+        user.currentPet = response.currentPet;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+            RKErrorMessage *errorMessage = [[error userInfo] objectForKey:RKObjectMapperErrorObjectsKey][0];
+            [self displayError:errorMessage.errorMessage];
         } else {
             [self displayNetworkError];
         }
@@ -1303,23 +1375,30 @@ NSString *currentUser;
     }];
 }
 
-- (void)acceptQuest:(NSString *)group withQuest:(NSString *)questID useForce:(Boolean)force onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+- (void)acceptQuest:(NSString *)group withQuest:(Quest *)quest useForce:(Boolean)force onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
-    NSDictionary *params = nil;
-
-    if (questID) {
-        params = @{@"key" : questID};
+    NSString *url;
+    if (quest) {
+        url = [NSString stringWithFormat:@"/api/v2/groups/%@/questAccept?key=%@", group, quest.key];
+    } else {
+        url = [NSString stringWithFormat:@"/api/v2/groups/%@/questAccept", group];
     }
-    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/questAccept", group] parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:nil path:url parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        if (quest) {
+            quest.owned = [NSNumber numberWithInt:[quest.owned intValue]-1];
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
             [self displayServerError];
+        } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+            RKErrorMessage *errorMessage = [[error userInfo] objectForKey:RKObjectMapperErrorObjectsKey][0];
+            [self displayError:errorMessage.errorMessage];
         } else {
             [self displayNetworkError];
         }
@@ -1484,6 +1563,18 @@ NSString *currentUser;
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{
     }];
+}
+
+- (void)displayError:(NSString*)message {
+    NSDictionary *options = @{kCRToastTextKey : message,
+                              kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],
+                              kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
+                              };
+    [CRToastManager showNotificationWithOptions:options
+                                completionBlock:^{
+                                }];
 }
 
 - (void)displayTaskSuccessNotification:(NSNumber *)healthDiff withExperienceDiff:(NSNumber *)expDiff withGoldDiff:(NSNumber *)goldDiff {

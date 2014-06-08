@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "BuyableItem.h"
 
-
-@interface Quest : NSManagedObject
+@interface Quest : BuyableItem
 
 @property(nonatomic, retain) NSNumber *bossHp;
 @property(nonatomic, retain) NSString *bossName;

@@ -45,10 +45,11 @@
 
 - (void)equipObject:(NSString *)key withType:(NSString*)type onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)hatchEgg:(NSString *)egg withPotion:(NSString*)hPotion onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)castSpell:(NSString *)spell withTargetType:(NSString *)targetType onTarget:(NSString *)target onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)acceptQuest:(NSString *)group withQuest:(NSString *)questID useForce:(Boolean)force onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+- (void)acceptQuest:(NSString *)group withQuest:(Quest *)quest useForce:(Boolean)force onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)rejectQuest:(NSString *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 

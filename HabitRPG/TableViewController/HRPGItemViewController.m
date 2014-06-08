@@ -9,10 +9,19 @@
 #import "HRPGItemViewController.h"
 #import "HRPGAppDelegate.h"
 #import "Item.h"
+#import "Quest.h"
+#import "HatchingPotion.h"
+#import "Egg.h"
+#import "Group.h"
+#import "User.h"
+#import "Pet.h"
 
 @interface HRPGItemViewController ()
 @property HRPGManager *sharedManager;
 @property Item *selectedItem;
+@property BOOL isHatching;
+@property NSArray *existingPets;
+@property UIBarButtonItem *backButton;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
@@ -20,6 +29,43 @@
 @implementation HRPGItemViewController
 @synthesize managedObjectContext;
 @dynamic sharedManager;
+
+- (void) fetchExistingPetsWithPartName:(NSString*)string {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Pet" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    // Set the batch size to a suitable number.
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSPredicate *predicate;
+    predicate = [NSPredicate predicateWithFormat:@"key contains[cd] %@ && trained > 0", string];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error;
+    self.existingPets = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+}
+
+-(void) showCancelButton {
+    self.backButton = self.navigationItem.leftBarButtonItem;
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(endHatching)];
+    [self.navigationItem setLeftBarButtonItem:cancelButton animated:YES];
+}
+
+-(void) showBackButton {
+    [self.navigationItem setLeftBarButtonItem:self.backButton animated:YES];
+}
+
+-(void)endHatching {
+    [self showBackButton];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"owned > 0"];
+    [self.fetchedResultsController.fetchRequest setPredicate:predicate];
+    self.isHatching = NO;
+    NSError *error;
+    [self.fetchedResultsController performFetch:&error];
+    [self.tableView reloadData];
+}
 
 #pragma mark - Table view data source
 
@@ -84,7 +130,38 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:NSLocalizedString(@"Sell", nil) otherButtonTitles:nil];
+    if (self.isHatching) {
+        for (Pet *pet in self.existingPets) {
+            if ([pet.key rangeOfString:item.key].location != NSNotFound) {
+                return;
+            }
+        }
+        [self addActivityCounter];
+        if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
+            [self.sharedManager hatchEgg:item.key withPotion:self.selectedItem.key onSuccess:^() {
+                [self removeActivityCounter];
+            }onError:^() {
+                [self removeActivityCounter];
+            }];
+        } else {
+            [self.sharedManager hatchEgg:self.selectedItem.key withPotion:item.key onSuccess:^() {
+                [self removeActivityCounter];
+            }onError:^() {
+                [self removeActivityCounter];
+            }];
+        }
+        [self endHatching];
+        return;
+    }
+    NSString *extraItem;
+    if ([item isKindOfClass:[Quest class]]) {
+        extraItem = NSLocalizedString(@"Invite Party", nil);
+    } else if ([item isKindOfClass:[HatchingPotion class]]) {
+        extraItem = NSLocalizedString(@"Hatch Egg", nil);
+    } else if ([item isKindOfClass:[Egg class]]) {
+        extraItem = NSLocalizedString(@"Hatch with Potion", nil);
+    }
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:NSLocalizedString(@"Sell", nil) otherButtonTitles:extraItem, nil];
     popup.tag = 1;
     self.selectedItem = item;
     [popup showInView:[UIApplication sharedApplication].keyWindow];}
@@ -195,6 +272,35 @@
         }onError:^() {
             [self removeActivityCounter];
         }];
+    } if (buttonIndex == 1) {
+        if ([self.selectedItem isKindOfClass:[Quest class]]) {
+            [self addActivityCounter];
+            User *user = [self.sharedManager getUser];
+            Quest *quest = (Quest*)self.selectedItem;
+            [self.sharedManager acceptQuest:user.party.id withQuest:quest useForce:NO onSuccess:^(){
+                [self removeActivityCounter];
+            }onError:^() {
+                [self removeActivityCounter];
+            }];
+        } else if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type = 'eggs' && owned > 0"];
+            self.isHatching = YES;
+            [self.fetchedResultsController.fetchRequest setPredicate:predicate];
+            NSError *error;
+            [self.fetchedResultsController performFetch:&error];
+            [self.tableView reloadData];
+            [self fetchExistingPetsWithPartName:self.selectedItem.key];
+            [self showCancelButton];
+        } else if ([self.selectedItem isKindOfClass:[Egg class]]) {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type = 'hatchingPotions' && owned > 0"];
+            [self.fetchedResultsController.fetchRequest setPredicate:predicate];
+            self.isHatching = YES;
+            NSError *error;
+            [self.fetchedResultsController performFetch:&error];
+            [self.tableView reloadData];
+            [self fetchExistingPetsWithPartName:self.selectedItem.key];
+            [self showCancelButton];
+        }
     }
 }
 
@@ -224,6 +330,19 @@
     [cell.imageView setImageWithURL:[NSURL URLWithString:url]
                    placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     cell.imageView.contentMode = UIViewContentModeCenter;
+    cell.imageView.alpha = 1;
+    textLabel.alpha = 1;
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+    if (self.isHatching) {
+        for (Pet *pet in self.existingPets) {
+            if ([pet.key rangeOfString:item.key].location != NSNotFound) {
+                cell.imageView.alpha = 0.4;
+                textLabel.alpha = 0.4;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                break;
+            }
+        }
+    }
 }
 
 @end

@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "BuyableItem.h"
 
-
-@interface Egg : NSManagedObject
+@interface Egg : BuyableItem
 
 @property(nonatomic, retain) NSString *text;
 @property(nonatomic, retain) NSString *adjective;
