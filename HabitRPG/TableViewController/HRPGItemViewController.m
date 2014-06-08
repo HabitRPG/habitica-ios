@@ -12,6 +12,7 @@
 
 @interface HRPGItemViewController ()
 @property HRPGManager *sharedManager;
+@property Item *selectedItem;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
@@ -82,18 +83,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-
-- (IBAction)editButtonSelected:(id)sender {
-    if ([self isEditing]) {
-        [self setEditing:NO animated:YES];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonSelected:)];
-    } else {
-        [self setEditing:YES animated:YES];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editButtonSelected:)];
-    }
-}
+    Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:NSLocalizedString(@"Sell", nil) otherButtonTitles:nil];
+    popup.tag = 1;
+    self.selectedItem = item;
+    [popup showInView:[UIApplication sharedApplication].keyWindow];}
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
 
@@ -191,6 +185,17 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView endUpdates];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == actionSheet.destructiveButtonIndex) {
+        [self addActivityCounter];
+        [self.sharedManager sellItem:self.selectedItem onSuccess:^() {
+            [self removeActivityCounter];
+        }onError:^() {
+            [self removeActivityCounter];
+        }];
+    }
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {

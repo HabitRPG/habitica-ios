@@ -445,7 +445,10 @@ NSString *currentUser;
     buyMapping.assignsDefaultValueForMissingAttributes = NO;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:buyMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/buy/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-
+    buyMapping.assignsDefaultValueForMissingAttributes = NO;
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:buyMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/sell/:type/:key" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     entityMapping = [RKEntityMapping mappingForEntityForName:@"Group" inManagedObjectStore:managedObjectStore];
     [entityMapping addAttributeMappingsFromDictionary:@{
             @"_id" : @"id",
@@ -1186,6 +1189,38 @@ NSString *currentUser;
             Gear *gear = (Gear*)reward;
             gear.owned = YES;
         }
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        errorBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)sellItem:(Item *)item onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/sell/%@/%@", item.type, item.key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        HRPGUserBuyResponse *response = [mappingResult firstObject];
+        user.health = response.health;
+        user.gold = response.gold;
+        user.magic = response.magic;
+        user.equippedArmor = response.equippedArmor;
+        user.equippedBack = response.equippedBack;
+        user.equippedHead = response.equippedHead;
+        user.equippedHeadAccessory = response.equippedHeadAccessory;
+        user.equippedShield = response.equippedShield;
+        user.equippedWeapon = response.equippedWeapon;
+        item.owned = [NSNumber numberWithInt:[item.owned intValue] - 1];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
         [self.networkIndicatorController endNetworking];
