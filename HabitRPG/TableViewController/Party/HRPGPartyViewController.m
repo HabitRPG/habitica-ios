@@ -429,7 +429,7 @@ ChatMessage *selectedMessage;
             UILabel *textLabel = (UILabel *) [cell viewWithTag:2];
             if (message.user != nil) {
                 UIImageView *imageView = (UIImageView *) [cell viewWithTag:5];
-                [message.userObject setAvatarOnImageView:imageView withPetMount:NO onlyHead:YES];
+                [message.userObject setAvatarOnImageView:imageView withPetMount:NO onlyHead:YES useForce:NO];
                 textLabel.text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
                 authorLabel.textColor = [message.userObject classColor];
                 textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];

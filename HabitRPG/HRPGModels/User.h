@@ -132,9 +132,9 @@
 
 - (void)removeTasks:(NSSet *)values;
 
-- (void)setAvatarOnImageView:(UIImageView *)imageView;
+- (void)setAvatarOnImageView:(UIImageView *)imageView useForce:(BOOL)force;
 
-- (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead;
+- (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead useForce:(BOOL)force;
 
 -(UIColor*) classColor;
 @end

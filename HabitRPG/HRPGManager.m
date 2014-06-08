@@ -1553,6 +1553,7 @@ NSString *currentUser;
 
 - (void)setCachedImage:(UIImage *)image withName:(NSString *)imageName onSuccess:(void (^)())successBlock {
     [[SDImageCache sharedImageCache] storeImage:image forKey:imageName];
+    successBlock();
 }
 
 @end

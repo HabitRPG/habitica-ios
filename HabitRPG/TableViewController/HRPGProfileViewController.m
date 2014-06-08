@@ -181,7 +181,7 @@ NIKFontAwesomeIconFactory *iconFactory;
             return cell;
         }
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell" forIndexPath:indexPath];
-        [self configureCell:cell atIndexPath:indexPath];
+        [self configureCell:cell atIndexPath:indexPath usForce:NO];
         return cell;
     } else {
         NSString *title = nil;
@@ -290,7 +290,7 @@ NIKFontAwesomeIconFactory *iconFactory;
             break;
         }
         case NSFetchedResultsChangeUpdate: {
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath usForce:YES];
 
             break;
         }
@@ -306,7 +306,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     [self.tableView endUpdates];
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath usForce:(BOOL)force {
     User *user = (User *) [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *levelLabel = (UILabel *) [cell viewWithTag:1];
     levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@", nil), user.level];
@@ -334,7 +334,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         magicProgress.hidden = YES;
     }
     UIImageView *imageView = (UIImageView *) [cell viewWithTag:8];
-    [user setAvatarOnImageView:imageView];
+    [user setAvatarOnImageView:imageView useForce:force];
 }
 
 

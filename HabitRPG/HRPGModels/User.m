@@ -9,6 +9,9 @@
 #import "User.h"
 #import "HRPGAppDelegate.h"
 
+@interface User ()
+@property (nonatomic) NSDate *lastImageGeneration;
+@end
 
 @implementation User
 
@@ -63,12 +66,13 @@
 @dynamic lastAvatarNoPet;
 @dynamic lastAvatarHead;
 @dynamic useCostume;
+@synthesize lastImageGeneration;
 
-- (void)setAvatarOnImageView:(UIImageView *)imageView {
-    [self setAvatarOnImageView:imageView withPetMount:YES onlyHead:NO];
+- (void)setAvatarOnImageView:(UIImageView *)imageView useForce:(BOOL)force {
+    [self setAvatarOnImageView:imageView withPetMount:YES onlyHead:NO useForce:force];
 }
 
-- (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead {
+- (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead useForce:(BOOL)force {
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     HRPGManager *sharedManager = appdelegate.sharedManager;
     NSString *cachedImageName;
@@ -82,12 +86,14 @@
     }
     cachedImage = [sharedManager getCachedImage:cachedImageName];
     imageView.image = cachedImage;
-    if (withPetMount && !onlyHead && [self.lastLogin isEqualToDate:self.lastAvatarFull]) {
-        return;
-    } else if (!withPetMount && !onlyHead && [self.lastLogin isEqualToDate:self.lastAvatarNoPet]) {
-        return;
-    } else if ([self.lastLogin isEqualToDate:self.lastAvatarHead]) {
-        return;
+    if (!force || [[NSDate date] timeIntervalSinceDate:self.lastImageGeneration] < 2) {
+        if (withPetMount && !onlyHead && [self.lastLogin isEqualToDate:self.lastAvatarFull]) {
+            return;
+        } else if (!withPetMount && !onlyHead && [self.lastLogin isEqualToDate:self.lastAvatarNoPet]) {
+            return;
+        } else if ([self.lastLogin isEqualToDate:self.lastAvatarHead]) {
+            return;
+        }
     }
     NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:16];
     for (int i = 0; i <= 16; i++) {
@@ -319,6 +325,7 @@
             } else {
                 self.lastAvatarHead = [self.lastLogin copy];
             }
+            self.lastImageGeneration = [NSDate date];
         }];
     });
 }
