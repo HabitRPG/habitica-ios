@@ -233,17 +233,18 @@ BOOL editable;
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGFormViewController *formViewController = (HRPGFormViewController *) segue.sourceViewController;
+    [self addActivityCounter];
     if (formViewController.editTask) {
         [self.sharedManager updateTask:formViewController.task onSuccess:^() {
-
+            [self removeActivityCounter];
         }                      onError:^() {
-
+            [self removeActivityCounter];
         }];
     } else {
         [self.sharedManager createTask:formViewController.task onSuccess:^() {
-
+            [self removeActivityCounter];
         }                      onError:^() {
-
+            [self removeActivityCounter];
         }];
     }
 }

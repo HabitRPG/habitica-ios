@@ -84,10 +84,12 @@
                 tabBarController.sourceTableView = self.tableView;
             }];
         } else {
+            [self addActivityCounter];
             [self.sharedManager castSpell:spell.key withTargetType:spell.target onTarget:nil onSuccess:^() {
                 [tableView reloadData];
+                [self removeActivityCounter];
             }                     onError:^() {
-
+                [self removeActivityCounter];
             }];
         }
     }
@@ -119,17 +121,6 @@
     }
     return height;
 }
-
-- (IBAction)editButtonSelected:(id)sender {
-    if ([self isEditing]) {
-        [self setEditing:NO animated:YES];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonSelected:)];
-    } else {
-        [self setEditing:YES animated:YES];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editButtonSelected:)];
-    }
-}
-
 
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {

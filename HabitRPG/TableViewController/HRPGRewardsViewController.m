@@ -156,10 +156,6 @@ User *user;
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return (indexPath.section == 0);
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     float height = 22.0f;
     float width = 229.0f;
@@ -213,17 +209,20 @@ User *user;
     if ([user.gold integerValue] < [reward.value integerValue]) {
         return;
     }
+    [self addActivityCounter];
     if ([reward isKindOfClass:[Reward class]]) {
         [self.sharedManager getReward:reward.key onSuccess:^() {
             [self updateRewardView:[reward.value stringValue]];
+            [self removeActivityCounter];
         }                     onError:^() {
-
+            [self removeActivityCounter];
         }];
     } else {
         [self.sharedManager buyObject:reward onSuccess:^() {
             [self updateRewardView:[reward.value stringValue]];
+            [self removeActivityCounter];
         }                     onError:^() {
-
+            [self removeActivityCounter];
         }];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

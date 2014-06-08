@@ -271,16 +271,20 @@ Gear *selectedGear;
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
+        [self addActivityCounter];
         [self.sharedManager equipObject:selectedGear.key withType:@"equipped" onSuccess:^() {
             [self.tableView reloadData];
+            [self removeActivityCounter];
         }onError:^() {
-            
+            [self removeActivityCounter];
         }];
     } else if (buttonIndex == 1) {
+        [self addActivityCounter];
         [self.sharedManager equipObject:selectedGear.key withType:@"costume" onSuccess:^() {
             [self.tableView reloadData];
+            [self removeActivityCounter];
         }onError:^() {
-            
+            [self removeActivityCounter];
         }];
     }
 }

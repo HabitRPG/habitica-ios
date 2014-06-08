@@ -12,6 +12,7 @@
 #import "Pet.h"
 #import "Egg.h"
 #import "HatchingPotion.h"
+#import "HRPGBallActivityIndicator.h"
 
 @interface HRPGMountViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -19,6 +20,8 @@
 @property (nonatomic) NSArray *eggs;
 @property (nonatomic) NSArray *hatchingPotions;
 @property (nonatomic) Pet *selectedMount;
+@property NSInteger activityCounter;
+@property UIBarButtonItem *navigationButton;
 @end
 
 @implementation HRPGMountViewController
@@ -216,9 +219,35 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
+        [self addActivityCounter];
         [self.sharedManager equipObject:self.selectedMount.key withType:@"mount" onSuccess:^() {
+            [self removeActivityCounter];
         }onError:^() {
+            [self removeActivityCounter];
         }];
+    }
+}
+
+-(void)addActivityCounter {
+    if (self.activityCounter == 0) {
+        self.navigationButton = self.navigationItem.rightBarButtonItem;
+        //HRPGRoundProgressView *indicator = [[HRPGRoundProgressView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+        //indicator.strokeWidth = 2;
+        //[indicator beginAnimating];
+        HRPGBallActivityIndicator *indicator = [[HRPGBallActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        [indicator beginAnimating];
+        UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:indicator];
+        [self.navigationItem setRightBarButtonItem:indicatorButton animated:NO];
+    }
+    self.activityCounter++;
+}
+
+- (void)removeActivityCounter {
+    self.activityCounter--;
+    if (self.activityCounter == 0) {
+        [self.navigationItem setRightBarButtonItem:self.navigationButton animated:NO];
+    } else if (self.activityCounter < 0) {
+        self.activityCounter = 0;
     }
 }
 

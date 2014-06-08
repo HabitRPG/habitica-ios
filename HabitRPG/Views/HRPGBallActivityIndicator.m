@@ -31,13 +31,13 @@
         self.ballWidth = self.frame.size.width/5;
         self.ballHeight = self.frame.size.height/5;
         self.ballColor = [UIColor colorWithRed:0.409 green:0.743 blue:0.037 alpha:0.8];
+        CGRect ballRect = CGRectMake(self.frame.size.width/2-self.ballWidth/2, self.frame.size.height/2-self.ballHeight/2, self.ballWidth, self.ballHeight);
         for (int x = 0; x < 4 ; x++) {
-            HRPGBall *ball = [[HRPGBall alloc] init];
+            HRPGBall *ball = [[HRPGBall alloc] initWithFrame:ballRect];
             ball.ballColor = self.ballColor;
             [self.balls addObject:ball];
             [self addSubview:ball];
         }
-        [self setBallsPosition];
     }
     return self;
 }

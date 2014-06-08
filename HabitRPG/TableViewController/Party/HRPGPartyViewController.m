@@ -502,17 +502,11 @@ ChatMessage *selectedMessage;
 
 - (IBAction)unwindToListSendMessage:(UIStoryboardSegue *)segue {
     HRPGMessageViewController *messageController = (HRPGMessageViewController*)[segue sourceViewController];
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:indicator];
-    UIBarButtonItem *navButton = self.navigationItem.rightBarButtonItem;
-    [indicator startAnimating];
-    [UIView animateWithDuration:0.4 animations:^() {
-        self.navigationItem.rightBarButtonItem = indicatorButton;
-    }];
+    [self addActivityCounter];
     [self.sharedManager chatMessage:messageController.messageView.text withGroup:party.id onSuccess:^() {
-        self.navigationItem.rightBarButtonItem = navButton;
+        [self removeActivityCounter];
     }onError:^() {
-        self.navigationItem.rightBarButtonItem = navButton;
+        [self removeActivityCounter];
     }];
     
 }

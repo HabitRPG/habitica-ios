@@ -79,7 +79,7 @@
         HRPGBallActivityIndicator *indicator = [[HRPGBallActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         [indicator beginAnimating];
         UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:indicator];
-        [self.navigationItem setRightBarButtonItem:indicatorButton animated:YES];
+        [self.navigationItem setRightBarButtonItem:indicatorButton animated:NO];
     }
     self.activityCounter++;
 }
@@ -87,7 +87,7 @@
 - (void)removeActivityCounter {
     self.activityCounter--;
     if (self.activityCounter == 0) {
-        [self.navigationItem setRightBarButtonItem:self.navigationButton animated:YES];
+        [self.navigationItem setRightBarButtonItem:self.navigationButton animated:NO];
     } else if (self.activityCounter < 0) {
         self.activityCounter = 0;
     }
