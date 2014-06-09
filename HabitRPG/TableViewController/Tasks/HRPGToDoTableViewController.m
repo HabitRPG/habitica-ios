@@ -38,6 +38,8 @@
 @dynamic indexOffset;
 
 - (void)viewDidLoad {
+    self.readableName = NSLocalizedString(@"To-Do", nil);
+    self.typeName = @"todo";
     [super viewDidLoad];
     self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     self.iconFactory.square = YES;
@@ -52,8 +54,6 @@
     self.checkIconFactory.size = 17.0f;
     self.checkIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
 
-    self.readableName = NSLocalizedString(@"To-Do", nil);
-    self.typeName = @"todo";
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateStyle = NSDateFormatterShortStyle;
 }

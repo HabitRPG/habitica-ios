@@ -29,14 +29,14 @@
 @dynamic sharedManager;
 
 - (void)viewDidLoad {
+    self.readableName = NSLocalizedString(@"Habit", nil);
+    self.typeName = @"habit";
     [super viewDidLoad];
     self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     self.iconFactory.square = YES;
     self.iconFactory.colors = @[[UIColor whiteColor]];
     self.iconFactory.strokeColor = [UIColor whiteColor];
     self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
-    self.readableName = NSLocalizedString(@"Habit", nil);
-    self.typeName = @"habit";
 }
 
 - (IBAction)upDownSelected:(UISegmentedControl *)sender {

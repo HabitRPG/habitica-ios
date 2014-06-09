@@ -10,4 +10,6 @@
 
 @interface HRPGTabBarController : UITabBarController
 
+@property NSArray *selectedTags;
+
 @end

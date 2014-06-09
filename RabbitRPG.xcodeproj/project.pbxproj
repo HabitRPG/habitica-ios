@@ -57,6 +57,8 @@
 		D9ADD3511943BC0E006202C1 /* BuyableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD3501943BC0E006202C1 /* BuyableItem.m */; };
 		D9ADD35A19446E1B006202C1 /* HRPGBallActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD35919446E1A006202C1 /* HRPGBallActivityIndicator.m */; };
 		D9ADD35D19447057006202C1 /* HRPGBall.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD35C19447057006202C1 /* HRPGBall.m */; };
+		D9ADD3601944F939006202C1 /* HRPGHeaderTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD35F1944F939006202C1 /* HRPGHeaderTagView.m */; };
+		D9ADD3631944FDBE006202C1 /* HRPGTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD3621944FDBE006202C1 /* HRPGTagViewController.m */; };
 		D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */; };
 		D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */; };
 		D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0B018CCD1EA00C8D1B7 /* Task.m */; };
@@ -195,6 +197,10 @@
 		D9ADD35919446E1A006202C1 /* HRPGBallActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBallActivityIndicator.m; sourceTree = "<group>"; };
 		D9ADD35B19447057006202C1 /* HRPGBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBall.h; sourceTree = "<group>"; };
 		D9ADD35C19447057006202C1 /* HRPGBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBall.m; sourceTree = "<group>"; };
+		D9ADD35E1944F939006202C1 /* HRPGHeaderTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGHeaderTagView.h; path = HabitRPG/Views/HRPGHeaderTagView.h; sourceTree = SOURCE_ROOT; };
+		D9ADD35F1944F939006202C1 /* HRPGHeaderTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGHeaderTagView.m; path = HabitRPG/Views/HRPGHeaderTagView.m; sourceTree = SOURCE_ROOT; };
+		D9ADD3611944FDBE006202C1 /* HRPGTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTagViewController.h; sourceTree = "<group>"; };
+		D9ADD3621944FDBE006202C1 /* HRPGTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTagViewController.m; sourceTree = "<group>"; };
 		D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTabBarController.m; sourceTree = "<group>"; };
 		D9B5C0AC18CCC87A00C8D1B7 /* HRPGManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGManager.h; sourceTree = "<group>"; };
 		D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGManager.m; sourceTree = "<group>"; };
@@ -401,6 +407,8 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D9ADD35E1944F939006202C1 /* HRPGHeaderTagView.h */,
+				D9ADD35F1944F939006202C1 /* HRPGHeaderTagView.m */,
 				D9C0002E1928F83E003D4E4C /* HRPGRoundProgressView.h */,
 				D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */,
 				D9ADD35819446E1A006202C1 /* HRPGBallActivityIndicator.h */,
@@ -431,6 +439,8 @@
 		D9E3654F1930D45500C056F1 /* Modals */ = {
 			isa = PBXGroup;
 			children = (
+				D9ADD3611944FDBE006202C1 /* HRPGTagViewController.h */,
+				D9ADD3621944FDBE006202C1 /* HRPGTagViewController.m */,
 				D9B5C0E518D62CC700C8D1B7 /* HRPGLoginViewController.h */,
 				D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */,
 				D99DEC8D190914AD00FFD2B9 /* HRPGQuestInvitationViewController.h */,
@@ -725,6 +735,7 @@
 				D94AADB4192A30F900546C8E /* Spell.m in Sources */,
 				D9ADD35D19447057006202C1 /* HRPGBall.m in Sources */,
 				D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */,
+				D9ADD3631944FDBE006202C1 /* HRPGTagViewController.m in Sources */,
 				D9E0869118DF800F00BAF2EF /* HRPGTavernViewController.m in Sources */,
 				D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */,
 				D97C71ED18F32FEF0089FDC6 /* Gear.m in Sources */,
@@ -764,6 +775,7 @@
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
 				D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */,
 				D97C71E718F32FED0089FDC6 /* Potion.m in Sources */,
+				D9ADD3601944F939006202C1 /* HRPGHeaderTagView.m in Sources */,
 				D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */,
 				D98AD5511943904F00AF6174 /* HatchingPotion.m in Sources */,
 				D97C71F018F32FEF0089FDC6 /* MetaReward.m in Sources */,

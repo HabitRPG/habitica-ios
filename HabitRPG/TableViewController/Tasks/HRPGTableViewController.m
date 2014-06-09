@@ -11,6 +11,10 @@
 #import "HRPGFormViewController.h"
 #import "MCSwipeTableViewCell.h"
 #import "HRPGSwipeTableViewCell.h"
+#import "Tag.h"
+#import "HRPGHeaderTagView.h"
+#import "HRPGTagViewController.h"
+#import "HRPGTabBarController.h"
 
 @interface HRPGTableViewController ()
 @property NSString *readableName;
@@ -18,6 +22,7 @@
 @property HRPGManager *sharedManager;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
+@property HRPGHeaderTagView *headerView;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
@@ -36,15 +41,62 @@ BOOL editable;
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
+    
+    
+    self.headerView = [[HRPGHeaderTagView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
+    self.headerView.currentNavigationController = self.navigationController;
+    HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
+    self.headerView.selectedTags = tabBarController.selectedTags;
+    self.tableView.tableHeaderView = self.headerView;
+    self.tableView.contentOffset = CGPointMake(0, self.headerView.frame.size.height);
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectTags:) name:@"tagsSelected"  object:nil];
 }
 
 - (void)refresh {
     [self collapseOpenedIndexPath];
     [self.sharedManager fetchUser:^() {
         [self.refreshControl endRefreshing];
+        CGRect newBounds = self.tableView.bounds;
+        if (self.tableView.bounds.origin.y < 44) {
+            newBounds.origin.y = 0;
+            self.tableView.bounds = newBounds;
+        }
+        // new for iOS 7
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:0 animated:YES];
     }                     onError:^() {
         [self.refreshControl endRefreshing];
+        self.tableView.contentOffset = CGPointMake(0, 30);
     }];
+}
+
+- (NSPredicate*) getPredicate {
+    NSPredicate *predicate;
+    HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
+    if (tabBarController.selectedTags == nil || [tabBarController.selectedTags count] == 0) {
+        if ([_typeName isEqual:@"todo"]) {
+            predicate = [NSPredicate predicateWithFormat:@"type=='todo' && completed==NO"];
+        } else {
+            predicate = [NSPredicate predicateWithFormat:@"type==%@", _typeName];
+        }
+    } else {
+        if ([_typeName isEqual:@"todo"]) {
+            predicate = [NSPredicate predicateWithFormat:@"type=='todo' && completed==NO && ANY tags IN[cd] %@", tabBarController.selectedTags];
+        } else {
+            predicate = [NSPredicate predicateWithFormat:@"type==%@ && ANY tags IN[cd] %@", _typeName, tabBarController.selectedTags];
+        }
+    }
+    return predicate;
+}
+
+- (void) didSelectTags:(NSNotification *)notification {
+    HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
+    self.headerView.selectedTags = tabBarController.selectedTags;
+    [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
+    NSError *error;
+    [self.fetchedResultsController performFetch:&error];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -227,9 +279,13 @@ BOOL editable;
 }
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
-
+    if ([segue.identifier isEqualToString:@"UnwindTagSegue"]) {
+        HRPGTagViewController *tagViewController = (HRPGTagViewController*)segue.sourceViewController;
+        HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
+        tabBarController.selectedTags = tagViewController.selectedTags;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"tagsSelected" object:nil];
+    }
 }
-
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGFormViewController *formViewController = (HRPGFormViewController *) segue.sourceViewController;
@@ -262,13 +318,7 @@ BOOL editable;
 
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    NSPredicate *predicate;
-    if ([_typeName isEqual:@"todo"]) {
-        predicate = [NSPredicate predicateWithFormat:@"type=='todo' && completed==NO"];
-    } else {
-        predicate = [NSPredicate predicateWithFormat:@"type==%@", _typeName];
-    }
-    [fetchRequest setPredicate:predicate];
+    [fetchRequest setPredicate:[self getPredicate]];
 
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
@@ -278,7 +328,7 @@ BOOL editable;
 
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:_typeName];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 

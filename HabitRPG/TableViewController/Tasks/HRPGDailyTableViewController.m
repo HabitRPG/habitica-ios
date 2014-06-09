@@ -34,6 +34,8 @@
 @dynamic indexOffset;
 
 - (void)viewDidLoad {
+    self.readableName = NSLocalizedString(@"Daily", nil);
+    self.typeName = @"daily";
     [super viewDidLoad];
     self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     self.iconFactory.square = YES;
@@ -47,9 +49,6 @@
     self.checkIconFactory.strokeColor = [UIColor grayColor];
     self.checkIconFactory.size = 17.0f;
     self.checkIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
-
-    self.readableName = NSLocalizedString(@"Daily", nil);
-    self.typeName = @"daily";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -123,7 +123,15 @@ NSString *currentUser;
     [taskMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"checklist"
                                                                                 toKeyPath:@"checklist"
                                                                               withMapping:checklistItemMapping]];
-
+    RKEntityMapping *tagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
+    [tagMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"id"];
+    [tagMapping addAttributeMappingsFromDictionary:@{@"(key)" : @"hasTasks"}];
+    tagMapping.identificationAttributes = @[@"id"];
+    tagMapping.forceCollectionMapping = YES;
+    [taskMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
+                                                                                toKeyPath:@"tags"
+                                                                              withMapping:tagMapping]];
+    
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user/tasks" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Task class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodGET]];
@@ -158,7 +166,13 @@ NSString *currentUser;
     [taskRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"checklist"
                                                                                        toKeyPath:@"checklist"
                                                                                      withMapping:checklistItemRequestMapping]];
-
+    RKObjectMapping *tagRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [tagMapping addAttributeMappingsFromDictionary:@{@"hasTasks" : @"(key)"}];
+    tagMapping.forceCollectionMapping = YES;
+    [taskRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
+                                                                                       toKeyPath:@"tags"
+                                                                                     withMapping:tagRequestMapping]];
+    
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodPUT pathPattern:@"/api/v2/user/tasks/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:taskRequestMapping objectClass:[Task class] rootKeyPath:nil method:RKRequestMethodPUT];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -316,11 +330,11 @@ NSString *currentUser;
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"rewards"
                                                                                   toKeyPath:@"rewards"
                                                                                 withMapping:rewardMapping]];
-    RKEntityMapping *tagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
-    [tagMapping addAttributeMappingsFromArray:@[@"id", @"name"]];
+    RKEntityMapping *userTagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
+    [userTagMapping addAttributeMappingsFromArray:@[@"id", @"name"]];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
                                                                                   toKeyPath:@"tags"
-                                                                                withMapping:tagMapping]];
+                                                                                withMapping:userTagMapping]];
 
     RKEntityMapping *gearOwnedMapping = [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
     gearOwnedMapping.forceCollectionMapping = YES;
