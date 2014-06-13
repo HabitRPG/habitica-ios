@@ -13,5 +13,6 @@
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
+@property (nonatomic) NSString *petName;
 
 @end

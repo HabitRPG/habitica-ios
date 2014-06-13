@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import "HRPGPetViewController.h"
+#import "HRPGMountMasterViewController.h"
+#import "HRPGMountViewController.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGFeedViewController.h"
 #import "HRPGManager.h"
@@ -15,17 +16,18 @@
 #import "HatchingPotion.h"
 #import "HRPGBallActivityIndicator.h"
 
-@interface HRPGPetViewController ()
+@interface HRPGMountMasterViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic) HRPGManager *sharedManager;
 @property (nonatomic) NSArray *eggs;
 @property (nonatomic) NSArray *hatchingPotions;
-@property (nonatomic) Pet *selectedPet;
+@property (nonatomic) NSString *selectedPet;
+@property (nonatomic) NSArray *sortedPets;
 @property NSInteger activityCounter;
 @property UIBarButtonItem *navigationButton;
 @end
 
-@implementation HRPGPetViewController
+@implementation HRPGMountMasterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,7 +35,7 @@
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
     self.managedObjectContext = self.sharedManager.getManagedObjectContext;
-
+    
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self
@@ -41,45 +43,29 @@
      name:UIContentSizeCategoryDidChangeNotification
      object:nil];
     
-    self.navigationItem.title = self.petName;
-    
     NSError *error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Egg" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     self.eggs = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
-    fetchRequest = [[NSFetchRequest alloc] init];
-    entity = [NSEntityDescription entityForName:@"HatchingPotion" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    self.hatchingPotions = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
-- (NSString*) eggWithKey:(NSString*)key {
+- (Egg*) eggWithKey:(NSString*)key {
     for (Egg *egg in self.eggs) {
         if ([egg.key isEqualToString:key]) {
-            return egg.text;
+            return egg;
+        }
+    }
+    return nil;
+}
+
+- (NSString*) eggNameWithKey:(NSString*)key {
+    for (Egg *egg in self.eggs) {
+        if ([egg.key isEqualToString:key]) {
+            return egg.mountText;
         }
     }
     return key;
-}
-
-- (NSString*) hatchingPotionWithKey:(NSString*)key {
-    for (HatchingPotion *hatchingPotion in self.hatchingPotions) {
-        if ([hatchingPotion.key isEqualToString:key]) {
-            return hatchingPotion.text;
-        }
-    }
-    return key;
-}
-
-- (NSString*)nicePetName:(Pet*)pet {
-    NSArray *nameParts = [pet.key componentsSeparatedByString:@"-"];
-    
-    NSString *nicePetName = [self eggWithKey:nameParts[0]];
-    NSString *niceHatchingPotionName = [self hatchingPotionWithKey:nameParts[1]];
-    
-    return [NSString stringWithFormat:@"%@ %@", niceHatchingPotionName, nicePetName];
 }
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
@@ -91,25 +77,31 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
+    return [self.sortedPets[section] count];
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *petArray = self.sortedPets[indexPath.section][indexPath.item];
+    Pet *namePet = [petArray firstObject];
+    self.selectedPet = [namePet.key componentsSeparatedByString:@"-"][0];
+    return YES;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat height = 121.0f;
-    height = height + [@" " boundingRectWithSize:CGSizeMake(90.0f, MAXFLOAT)
-                                              options:NSStringDrawingUsesLineFragmentOrigin
-                                           attributes:@{
-                                                        NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]
-                                                        }
-                                              context:nil].size.height*2;
+    CGFloat height = 136.0f;
+    height = height + [@" " boundingRectWithSize:CGSizeMake(140.0f, MAXFLOAT)
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                      attributes:@{
+                                                   NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]
+                                                   }
+                                         context:nil].size.height*2;
     if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
-        return CGSizeMake(120.0f, height);
+        return CGSizeMake(140.0f, height);
     }
-    return CGSizeMake(100.0f, height);
+    return CGSizeMake(140.0f, height);
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
@@ -127,27 +119,45 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BaseCell" forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *equipString = NSLocalizedString(@"Equip", nil);
-    NSString *feedString = NSLocalizedString(@"Feed", nil);
-    Pet *pet = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    if (!pet.trained || [pet.trained integerValue] == -1) {
-        equipString = nil;
-    }
-    if (pet.asMount) {
-        feedString = nil;
-    }
 
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:[self nicePetName:pet] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:equipString, feedString, nil];
-    popup.tag = 1;
-    self.selectedPet = pet;
-    [popup showInView:[UIApplication sharedApplication].keyWindow];
+- (NSArray*)sortedPets {
+    if (_sortedPets) {
+        return _sortedPets;
+    }
+    
+    NSMutableArray *newSortedPets = [NSMutableArray array];
+    for (id <NSFetchedResultsSectionInfo> sectionInfo in self.fetchedResultsController.sections) {
+        NSMutableArray *sectionArray = [NSMutableArray array];
+        [newSortedPets addObject:sectionArray];
+        for (Pet *pet in [sectionInfo objects]) {
+            NSArray *nameParts = [pet.key componentsSeparatedByString:@"-"];
+            if ([nameParts[0] isEqualToString:@"Egg"] || [nameParts[0] isEqualToString:@"Turkey"]) {
+                continue;
+            }
+            NSMutableArray *petArray;
+            for (NSMutableArray *oldPetArray in sectionArray) {
+                if (oldPetArray) {
+                    Pet *oldPet = [oldPetArray firstObject];
+                    if ([nameParts[0] isEqualToString:[oldPet.key componentsSeparatedByString:@"-"][0]]) {
+                        petArray = oldPetArray;
+                        break;
+                    }
+                }
+            }
+            if (!petArray) {
+                petArray = [NSMutableArray array];
+                [sectionArray addObject:petArray];
+            }
+            [petArray addObject:pet];
+        }
+    }
+    _sortedPets = newSortedPets;
+    return newSortedPets;
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
@@ -162,7 +172,6 @@
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@", self.petName]];
     
     // Edit the sort key as appropriate.
     NSSortDescriptor *typeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
@@ -174,7 +183,7 @@
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"type" cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -207,72 +216,35 @@
 }
 
 - (void)configureCell:(UICollectionViewCell*)cell atIndexPath:(NSIndexPath *)indexPath {
-    Pet *pet = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
-    UIProgressView *progressView = (UIProgressView*)[cell viewWithTag:2];
-    UILabel *label = (UILabel*)[cell viewWithTag:3];
-    label.text = [self nicePetName:pet];
+    NSArray *petArray = self.sortedPets[indexPath.section][indexPath.item];
+    UILabel *label = (UILabel*)[cell viewWithTag:1];
+    UIImageView *imageView = (UIImageView*)[cell viewWithTag:2];
+    UILabel *progressLabel = (UILabel*)[cell viewWithTag:3];
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
-    imageView.alpha = 1;
-    if (pet.trained) {
-        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet-%@.png", pet.key]]
-                  placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-        if ([pet.trained integerValue] == -1) {
-            imageView.alpha = 0.3f;
+    progressLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+    Pet *namePet = [petArray firstObject];
+    NSString *key = [namePet.key componentsSeparatedByString:@"-"][0];
+    label.text = [self eggNameWithKey:key];
+    int mounted = 0;
+    
+    for (Pet *pet in petArray) {
+        if (pet.asMount) {
+            mounted++;
         }
+    }
+    
+    if (mounted > 0) {
+        [namePet setMountOnImageView:imageView];
+        imageView.contentMode = UIViewContentModeScaleToFill;
+        imageView.alpha = 1;
     } else {
         [imageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/PixelPaw.png"]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+        imageView.contentMode = UIViewContentModeCenter;
         imageView.alpha = 0.3f;
     }
     
-    progressView.hidden = YES;
-    if (pet.trained && [pet.trained integerValue] != -1 && !pet.asMount) {
-        progressView.progress = [pet.trained floatValue] / 100;
-        progressView.hidden = NO;
-    }
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
-        [self addActivityCounter];
-        [self.sharedManager equipObject:self.selectedPet.key withType:@"pet" onSuccess:^() {
-            [self removeActivityCounter];
-        }onError:^() {
-            [self removeActivityCounter];
-        }];
-    } else if (actionSheet.numberOfButtons > 2 && buttonIndex == 1) {
-        [self performSegueWithIdentifier:@"FeedSegue" sender:self];
-    }
-}
-
-- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
-    
-}
-
-- (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-    HRPGFeedViewController *feedController = (HRPGFeedViewController*)[segue sourceViewController];
-    Food *food = feedController.selectedFood;
-    [self addActivityCounter];
-    [self.sharedManager feedPet:self.selectedPet.key withFood:food.key onSuccess:^() {
-        [self removeActivityCounter];
-    }onError:^() {
-        [self removeActivityCounter];
-    }];
-}
-
--(void)addActivityCounter {
-    if (self.activityCounter == 0) {
-        self.navigationButton = self.navigationItem.rightBarButtonItem;
-        //HRPGRoundProgressView *indicator = [[HRPGRoundProgressView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-        //indicator.strokeWidth = 2;
-        //[indicator beginAnimating];
-        HRPGBallActivityIndicator *indicator = [[HRPGBallActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        [indicator beginAnimating];
-        UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:indicator];
-        [self.navigationItem setRightBarButtonItem:indicatorButton animated:NO];
-    }
-    self.activityCounter++;
+    progressLabel.text = [NSString stringWithFormat:@"%d/%lu", mounted, (unsigned long)[petArray count]];
 }
 
 - (void)removeActivityCounter {
@@ -281,6 +253,13 @@
         [self.navigationItem setRightBarButtonItem:self.navigationButton animated:NO];
     } else if (self.activityCounter < 0) {
         self.activityCounter = 0;
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if (![segue.identifier isEqualToString:@"PetSegue"]) {
+        HRPGMountViewController *petController = (HRPGMountViewController*)segue.destinationViewController;
+        petController.petName = self.selectedPet;
     }
 }
 
