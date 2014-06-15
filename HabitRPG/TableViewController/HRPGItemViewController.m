@@ -19,6 +19,7 @@
 @interface HRPGItemViewController ()
 @property HRPGManager *sharedManager;
 @property Item *selectedItem;
+@property NSIndexPath *selectedIndex;
 @property BOOL isHatching;
 @property NSArray *existingPets;
 @property UIBarButtonItem *backButton;
@@ -128,7 +129,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    self.selectedIndex = indexPath;
     Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
     if (self.isHatching) {
         for (Pet *pet in self.existingPets) {
@@ -302,6 +303,10 @@
             [self showCancelButton];
         }
     }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {

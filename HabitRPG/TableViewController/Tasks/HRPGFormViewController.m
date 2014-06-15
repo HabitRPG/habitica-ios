@@ -371,7 +371,10 @@ NSDateFormatter *dateFormatter;
     } else if (indexPath.section == 0 && indexPath.item == 1) {
         self.task.notes = textField.text;
     } else {
-        ChecklistItem *item = self.task.checklist[indexPath.item];
+        ChecklistItem *item;
+        if ([self.task.checklist count] > indexPath.item) {
+            item = self.task.checklist[indexPath.item];
+        }
         if ([textField.text isEqualToString:@""]) {
             if (indexPath.item < [self.task.checklist count]) {
                 [self.task removeChecklistObject:item];

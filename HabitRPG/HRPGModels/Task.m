@@ -40,7 +40,7 @@
 - (BOOL)dueToday {
     NSDate *today = [NSDate date];
     long weekdayID = [[[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:today] weekday];
-    NSArray *weekDayArray = @[@"sunday", @"monday", @"tuesday", @"wednesday", @"thursday", @"friday", @"saturday", @"sunday"];
+    NSArray *weekDayArray = @[@"monday", @"tuesday", @"wednesday", @"thursday", @"friday", @"saturday", @"sunday"];
     return [[self valueForKey:weekDayArray[weekdayID]] boolValue];
 }
 

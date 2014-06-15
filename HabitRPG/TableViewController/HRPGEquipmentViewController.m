@@ -15,8 +15,6 @@
 @property NSString *readableName;
 @property NSString *typeName;
 @property HRPGManager *sharedManager;
-@property NSIndexPath *openedIndexPath;
-@property int indexOffset;
 @property User *user;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
@@ -26,6 +24,7 @@
 @synthesize managedObjectContext;
 @dynamic sharedManager;
 Gear *selectedGear;
+NSIndexPath *selectedIndex;
 
 -(void)viewDidLoad {
     [super viewDidLoad];
@@ -44,7 +43,7 @@ Gear *selectedGear;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects] + self.indexOffset;
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -83,7 +82,7 @@ Gear *selectedGear;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    selectedIndex = indexPath;
     NSString *battleGearString;
     NSString *costumeString;
     Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -287,6 +286,10 @@ Gear *selectedGear;
             [self removeActivityCounter];
         }];
     }
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    [self.tableView deselectRowAtIndexPath:selectedIndex animated:YES];
 }
 
 #pragma mark - Navigation

@@ -61,8 +61,7 @@
         for (Tag *tag in selectedTags) {
             [tagString appendFormat:@"%@, ", tag.name];
         }
-        tagString = [tagString substringToIndex:tagString.length-2];
-        self.label.text = tagString;
+        self.label.text = [tagString substringToIndex:tagString.length-2];
     } else {
         self.label.text = NSLocalizedString(@"Filter by tags", nil);
     }
