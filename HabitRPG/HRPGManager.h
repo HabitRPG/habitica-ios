@@ -79,7 +79,7 @@
 
 - (UIColor *)getColorForValue:(NSNumber *)value;
 
-- (void)getImage:(NSString *)imageName onSuccess:(void (^)(UIImage *image))successBlock onError:(void (^)())ErrorBlock;
+- (void)getImage:(NSString *)imageName withFormat:(NSString*)format onSuccess:(void (^)(UIImage *image))successBlock onError:(void (^)())ErrorBlock;
 
 - (UIImage *)getCachedImage:(NSString *)imageName;
 

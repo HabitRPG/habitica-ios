@@ -1698,9 +1698,12 @@ NSString *currentUser;
     return user;
 }
 
-- (void)getImage:(NSString *)imageName onSuccess:(void (^)(UIImage *image))successBlock onError:(void (^)())errorBlock {
+- (void)getImage:(NSString *)imageName withFormat:(NSString*)format onSuccess:(void (^)(UIImage *image))successBlock onError:(void (^)())errorBlock {
+    if (format == nil) {
+        format = @"png";
+    }
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    [manager downloadWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@.png", imageName]]
+    [manager downloadWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@.%@", imageName, format]]
                      options:0
                     progress:^(NSInteger receivedSize, NSInteger expectedSize)
             {
