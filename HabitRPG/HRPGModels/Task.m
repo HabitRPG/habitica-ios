@@ -38,10 +38,12 @@
 
 
 - (BOOL)dueToday {
-    NSDate *today = [NSDate date];
-    long weekdayID = [[[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:today] weekday];
-    NSArray *weekDayArray = @[@"monday", @"tuesday", @"wednesday", @"thursday", @"friday", @"saturday", @"sunday"];
-    return [[self valueForKey:weekDayArray[weekdayID]] boolValue];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"EEEE"];
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier: @"en_US"];
+    df.locale = locale;
+    NSString *dateString = [df stringFromDate:[NSDate date]];
+    return [[self valueForKey:[dateString lowercaseString]] boolValue];
 }
 
 - (void)addChecklistObject:(ChecklistItem *)value {
