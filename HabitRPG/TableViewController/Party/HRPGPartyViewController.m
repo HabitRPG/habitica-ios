@@ -368,10 +368,8 @@ ChatMessage *selectedMessage;
         } else if (indexPath.section == 1 && indexPath.item == 0) {
             if (party.questKey != nil) {
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                UILabel *titleLabel = (UILabel *) [cell viewWithTag:1];
-                titleLabel.text = quest.text;
-                titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-
+                cell.textLabel.text = quest.text;
+                cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];   
             }
         } else if (indexPath.section == 1 && indexPath.item == 1 && [party.questActive boolValue] && [party.questHP integerValue] > 0) {
             UILabel *lifeLabel = (UILabel *) [cell viewWithTag:1];
