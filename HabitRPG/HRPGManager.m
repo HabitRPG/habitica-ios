@@ -1320,7 +1320,7 @@ NSString *currentUser;
     
     [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/equip/%@/%@", type, key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
-        HRPGUserBuyResponse *response = [mappingResult firstObject];
+        HRPGUserBuyResponse *response = [mappingResult dictionary][[NSNull null]];
         user.equippedHeadAccessory = response.equippedHeadAccessory;
         user.equippedHead = response.equippedHead;
         user.equippedBack = response.equippedBack;
