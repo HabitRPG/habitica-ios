@@ -795,50 +795,55 @@ NSString *currentUser;
 
 - (void)resetSavedDatabase:(BOOL)withUserData onComplete:(void (^)())completitionBlock {
     NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
-        NSManagedObjectContext *lmanagedObjectContext = [RKManagedObjectStore defaultStore].persistentStoreManagedObjectContext;
-        [lmanagedObjectContext performBlockAndWait:^{
+        [[self getManagedObjectContext] performBlockAndWait:^{
             NSError *error = nil;
             for (NSEntityDescription *entity in [RKManagedObjectStore defaultStore].managedObjectModel) {
                 NSFetchRequest *fetchRequest = [NSFetchRequest new];
                 [fetchRequest setEntity:entity];
                 [fetchRequest setIncludesSubentities:NO];
-                NSArray *objects = [lmanagedObjectContext executeFetchRequest:fetchRequest error:&error];
+                NSArray *objects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
                 if (!objects) RKLogWarning(@"Failed execution of fetch request %@: %@", fetchRequest, error);
                 for (NSManagedObject *managedObject in objects) {
-                    [lmanagedObjectContext deleteObject:managedObject];
+                    [[self getManagedObjectContext] deleteObject:managedObject];
                 }
             }
-
-            BOOL success = [lmanagedObjectContext save:&error];
+            [[self getManagedObjectContext] processPendingChanges];
+            BOOL success = [[self getManagedObjectContext] save:&error];
             if (!success) RKLogWarning(@"Failed saving managed object context: %@", error);
         }];
     }];
     [operation setCompletionBlock:^{
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
         NSError *error;
-        [managedObjectContext saveToPersistentStore:&error];
-        [self fetchContent:^() {
-            if (withUserData) {
-                [self fetchUser:^(){
+        [[self getManagedObjectContext] saveToPersistentStore:&error];
+        if (!error) {
+            BOOL success = [[self getManagedObjectContext] save:&error];
+            if (!success) RKLogWarning(@"Failed saving managed object context: %@", error);
+            [self fetchContent:^() {
+                NSError *error;
+                [[self getManagedObjectContext] processPendingChanges];
+                [[self getManagedObjectContext] saveToPersistentStore:&error];
+                if (withUserData) {
+                    [self fetchUser:^(){
+                        completitionBlock();
+                    }       onError:^(){
+                        completitionBlock();
+                    }];
+                } else {
                     completitionBlock();
-                }       onError:^(){
+                }
+            }          onError:^() {
+                if (withUserData) {
+                    [self fetchUser:^(){
+                        completitionBlock();
+                    }       onError:^(){
+                        completitionBlock();
+                    }];
+                } else {
                     completitionBlock();
-                }];
-            } else {
-                completitionBlock();
-            }
-        }          onError:^() {
-            if (withUserData) {
-                [self fetchUser:^(){
-                    completitionBlock();
-                }       onError:^(){
-                    completitionBlock();
-                }];
-            } else {
-                completitionBlock();
-            }
-        }];
-
+                }
+            }];
+        }
     }];
     [operation start];
 }
