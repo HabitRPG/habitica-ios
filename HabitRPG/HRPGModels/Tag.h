@@ -17,6 +17,7 @@
 @property(nonatomic, retain) NSString *name;
 @property(nonatomic, retain) NSSet *tasks;
 @property(nonatomic, retain) User *user;
+@property(nonatomic, retain) NSNumber *hasTasks;
 @end
 
 @interface Tag (CoreDataGeneratedAccessors)

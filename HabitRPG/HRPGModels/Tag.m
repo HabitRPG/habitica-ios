@@ -15,5 +15,5 @@
 @dynamic name;
 @dynamic tasks;
 @dynamic user;
-
+@dynamic hasTasks;
 @end

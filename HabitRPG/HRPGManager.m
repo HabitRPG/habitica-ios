@@ -161,18 +161,13 @@ NSString *currentUser;
             @"friday" : @"repeat.f",
             @"saturday" : @"repeat.s",
             @"sunday" : @"repeat.su",
-            @"duedate" : @"date"}];
+            @"duedate" : @"date",
+            @"tagDictionary":@"tags"}];
     RKObjectMapping *checklistItemRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
     [checklistItemRequestMapping addAttributeMappingsFromArray:@[@"id", @"text", @"completed"]];
     [taskRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"checklist"
                                                                                        toKeyPath:@"checklist"
                                                                                      withMapping:checklistItemRequestMapping]];
-    RKObjectMapping *tagRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-    [tagMapping addAttributeMappingsFromDictionary:@{@"hasTasks" : @"(key)"}];
-    tagMapping.forceCollectionMapping = YES;
-    [taskRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
-                                                                                       toKeyPath:@"tags"
-                                                                                     withMapping:tagRequestMapping]];
     
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodPUT pathPattern:@"/api/v2/user/tasks/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];

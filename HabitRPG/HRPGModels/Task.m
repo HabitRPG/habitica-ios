@@ -8,7 +8,7 @@
 
 #import "Task.h"
 #import "ChecklistItem.h"
-
+#import "Tag.h"
 
 @implementation Task
 
@@ -57,6 +57,14 @@
     NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.checklist];
     [tempSet removeObject:value];
     self.checklist = tempSet;
+}
+
+- (NSDictionary *)getTagDictionary {
+    NSMutableDictionary *tagDictionary = [NSMutableDictionary dictionary];
+    for (Tag *tag in self.tags) {
+        [tagDictionary setObject:[NSNumber numberWithBool:YES] forKey:tag.id];
+    }
+    return tagDictionary;
 }
 
 @end
