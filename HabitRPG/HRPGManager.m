@@ -21,7 +21,6 @@
 #import "HRPGUserBuyResponse.h"
 #import "HRPGEmptySerializer.h"
 #import "HRPGNetworkIndicatorController.h"
-#import <RestKit/Network/RKPathMatcher.h>
 
 @interface HRPGManager ()
 @property NIKFontAwesomeIconFactory *iconFactory;
@@ -115,7 +114,8 @@ NSString *currentUser;
             @"repeat.s" : @"saturday",
             @"repeat.su" : @"sunday",
             @"@metadata.mapping.collectionIndex" : @"order",
-            @"date" : @"duedate"}];
+            @"date" : @"duedate",
+            @"tags":@"tagDictionary"}];
     taskMapping.identificationAttributes = @[@"id"];
     RKEntityMapping *checklistItemMapping = [RKEntityMapping mappingForEntityForName:@"ChecklistItem" inManagedObjectStore:managedObjectStore];
     [checklistItemMapping addAttributeMappingsFromArray:@[@"id", @"text", @"completed"]];
@@ -124,14 +124,6 @@ NSString *currentUser;
     [taskMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"checklist"
                                                                                 toKeyPath:@"checklist"
                                                                               withMapping:checklistItemMapping]];
-    RKEntityMapping *tagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
-    [tagMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"id"];
-    [tagMapping addAttributeMappingsFromDictionary:@{@"(id)" : @"hasTasks"}];
-    tagMapping.identificationAttributes = @[@"id"];
-    tagMapping.forceCollectionMapping = YES;
-    [taskMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
-                                                                                toKeyPath:@"tags"
-                                                                              withMapping:tagMapping]];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user/tasks" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -218,6 +210,19 @@ NSString *currentUser;
             return fetchRequest;
         }
 
+        return nil;
+    }];
+    
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"/api/v2/user"];
+        
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
+        if (match) {
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
+            return fetchRequest;
+        }
+        
         return nil;
     }];
 
