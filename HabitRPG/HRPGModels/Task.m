@@ -68,10 +68,7 @@
     // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
-    
-    // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
-    
+
     NSError *error;
     NSArray *tags = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     
@@ -97,10 +94,7 @@
     // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
-    
-    // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
-    
+
     NSError *error;
     NSArray *tags = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     

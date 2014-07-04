@@ -2454,11 +2454,6 @@
                                 <segue destination="Rot-qR-0bj" kind="unwind" identifier="UnwindTagSegue" unwindAction="unwindToList:" id="MrB-cc-ysf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lwi-yI-l1m">
-                            <connections>
-                                <segue destination="rUr-zL-kV2" kind="modal" id="1F8-4Z-O9Y"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SBZ-BJ-FJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
