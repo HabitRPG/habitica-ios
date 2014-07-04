@@ -77,14 +77,22 @@
         }                   onError:^(){
 
         }];
-        [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
+        if (self.wasPushed) {
+            [self.tableView reloadData];
+        } else {
+            [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
+        }
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         [_sharedManager rejectQuest:self.party.id onSuccess:^(){
 
         }                   onError:^(){
 
         }];
-        [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
+        if (self.wasPushed) {
+            [self.tableView reloadData];
+        } else {
+            [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
+        }
     } else if (indexPath.section == 1 && indexPath.item == 2) {
         [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
     }

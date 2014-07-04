@@ -494,6 +494,7 @@ ChatMessage *selectedMessage;
         qdViewcontroller.party = party;
         qdViewcontroller.user = user;
         qdViewcontroller.hideAskLater = [NSNumber numberWithBool:YES];
+        qdViewcontroller.wasPushed = [NSNumber numberWithBool:YES];
     }
 }
 

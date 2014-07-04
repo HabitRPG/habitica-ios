@@ -18,4 +18,5 @@
 @property User *user;
 @property UIViewController *sourceViewcontroller;
 @property NSNumber *hideAskLater;
+@property NSNumber *wasPushed;
 @end
