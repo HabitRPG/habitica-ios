@@ -126,7 +126,7 @@ NSString *currentUser;
                                                                               withMapping:checklistItemMapping]];
     RKEntityMapping *tagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
     [tagMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"id"];
-    [tagMapping addAttributeMappingsFromDictionary:@{@"(key)" : @"hasTasks"}];
+    [tagMapping addAttributeMappingsFromDictionary:@{@"(id)" : @"hasTasks"}];
     tagMapping.identificationAttributes = @[@"id"];
     tagMapping.forceCollectionMapping = YES;
     [taskMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
@@ -330,6 +330,7 @@ NSString *currentUser;
                                                                                 withMapping:rewardMapping]];
     RKEntityMapping *userTagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
     [userTagMapping addAttributeMappingsFromArray:@[@"id", @"name"]];
+    userTagMapping.identificationAttributes = @[@"id"];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
                                                                                   toKeyPath:@"tags"
                                                                                 withMapping:userTagMapping]];

@@ -118,7 +118,7 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES">
-        <attribute name="hasTasks" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasTasks" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="tags" inverseEntity="Task" syncable="YES"/>
@@ -241,7 +241,7 @@
         <element name="QuestCollect" positionX="0" positionY="0" width="128" height="135"/>
         <element name="Reward" positionX="0" positionY="0" width="128" height="75"/>
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="Tag" positionX="0" positionY="0" width="128" height="118"/>
+        <element name="Tag" positionX="0" positionY="0" width="128" height="120"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="405"/>
         <element name="User" positionX="0" positionY="0" width="128" height="1123"/>
     </elements>

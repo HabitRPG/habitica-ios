@@ -63,8 +63,6 @@ BOOL editable;
             newBounds.origin.y = 0;
             self.tableView.bounds = newBounds;
         }
-        // new for iOS 7
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:0 animated:YES];
     }                     onError:^() {
         [self.refreshControl endRefreshing];
         self.tableView.contentOffset = CGPointMake(0, 30);

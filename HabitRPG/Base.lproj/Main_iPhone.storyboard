@@ -2311,7 +2311,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YWa-8S-jGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1905" y="4708"/>
+            <point key="canvasLocation" x="2431" y="4708"/>
         </scene>
         <!--Spell Task Controller - Dailies-->
         <scene sceneID="ZtU-ke-UJe">
@@ -2349,7 +2349,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qq3-Vg-EmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1905" y="4136"/>
+            <point key="canvasLocation" x="2431" y="4136"/>
         </scene>
         <!--Spell Task Controller - Habits-->
         <scene sceneID="pyJ-pU-Dzp">
@@ -2456,7 +2456,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lwi-yI-l1m">
                             <connections>
-                                <segue destination="EI9-NL-AJb" kind="modal" id="1F8-4Z-O9Y"/>
+                                <segue destination="rUr-zL-kV2" kind="modal" id="1F8-4Z-O9Y"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2466,7 +2466,7 @@
             </objects>
             <point key="canvasLocation" x="552" y="4662"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Table View Controller - Add Tag-->
         <scene sceneID="BdN-sH-gGK">
             <objects>
                 <tableViewController id="EI9-NL-AJb" sceneMemberID="viewController">
@@ -2476,7 +2476,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="UUb-i5-irR">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UUb-i5-irR" id="P1s-Qf-oNG">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2489,10 +2489,23 @@
                             <outlet property="delegate" destination="EI9-NL-AJb" id="w1Q-Eg-0dG"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Add Tag" id="6kN-kK-ybL">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="USb-1a-Umt">
+                            <connections>
+                                <segue destination="Tx9-42-R19" kind="unwind" unwindAction="unwindToList:" id="KrO-PA-8Bj"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="drk-nK-6co">
+                            <connections>
+                                <segue destination="Tx9-42-R19" kind="unwind" unwindAction="unwindToListSave:" id="UAy-nc-3Fm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOH-DM-ayG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Tx9-42-R19" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="958" y="4662"/>
+            <point key="canvasLocation" x="1369" y="4662"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Qs-Im-7zO">
@@ -2952,6 +2965,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VqI-0M-zUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2549" y="2618"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oen-WF-nbs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rUr-zL-kV2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iCp-6a-WWc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EI9-NL-AJb" kind="relationship" relationship="rootViewController" id="2q5-8U-hyo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R58-3N-XlV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="958" y="4662"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.37176278233528137" green="0.60343527793884277" blue="0.013965161517262459" alpha="1" colorSpace="calibratedRGB"/>

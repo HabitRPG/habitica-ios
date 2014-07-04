@@ -9,9 +9,10 @@
 #import "HRPGFormViewController.h"
 #import "ChecklistItem.h"
 #import "NSString+Emoji.h"
+#import "Tag.h"
 
 @interface HRPGFormViewController ()
-
+@property (nonatomic) NSArray *tags;
 @end
 
 @implementation HRPGFormViewController
@@ -42,6 +43,8 @@ NSDateFormatter *dateFormatter;
     dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = NSDateFormatterShortStyle;
     displayDatePicker = NO;
+    
+    [self fetchTags];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -50,13 +53,26 @@ NSDateFormatter *dateFormatter;
     [textField becomeFirstResponder];
 }
 
+- (void) fetchTags {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    // Set the batch size to a suitable number.
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSError *error;
+    self.tags = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (![self.taskType isEqualToString:@"habit"]) {
-        return 4;
+        return 5;
     }
-    return 3;
+    return 4;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -70,8 +86,10 @@ NSDateFormatter *dateFormatter;
         return NSLocalizedString(@"Repeat", nil);
     } else if (section == 2 && [self.taskType isEqualToString:@"todo"]) {
         return NSLocalizedString(@"Due Date", nil);
-    } else {
+    } else if ((section == 3 && ![self.taskType isEqualToString:@"habit"] ) || section == 2) {
         return NSLocalizedString(@"Difficulty", nil);
+    } else {
+        return NSLocalizedString(@"Tags", nil);
     }
     return nil;
 }
@@ -95,8 +113,10 @@ NSDateFormatter *dateFormatter;
         } else {
             return 1;
         }
-    } else if ((section == 3 && ![self.taskType isEqualToString:@"habit"]) || section == 2) {
+    } else if ((section == 3 && ![self.taskType isEqualToString:@"habit"] ) || section == 2) {
         return 3;
+    } else {
+        return self.tags.count;
     }
     return 0;
 }
@@ -218,7 +238,7 @@ NSDateFormatter *dateFormatter;
             UIDatePicker *datePicker = (UIDatePicker *) [cell viewWithTag:1];
             datePicker.date = self.task.duedate;
         }
-    } else {
+    }  else if ((indexPath.section == 3 && ![self.taskType isEqualToString:@"habit"] ) || indexPath.section == 2) {
         static NSString *CellIdentifier = @"CheckMarkCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
@@ -236,6 +256,20 @@ NSDateFormatter *dateFormatter;
                 break;
         }
         if (indexPath.item == selectedDifficulty) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    } else {
+        static NSString *CellIdentifier = @"CheckMarkCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        UILabel *label = (UILabel *) [cell viewWithTag:1];
+        Tag *tag = self.tags[indexPath.item];
+        
+        label.text = tag.name;
+        
+        if ([self.task.tags containsObject:tag]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -329,6 +363,14 @@ NSDateFormatter *dateFormatter;
                 self.task.priority = [NSNumber numberWithFloat:2.0];
                 break;
         }
+    } else {
+        Tag *tag = self.tags[indexPath.item];
+        if ([self.task.tags containsObject:tag]) {
+            [self.task removeTagsObject:tag];
+        } else {
+            [self.task addTagsObject:tag];
+        }
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
