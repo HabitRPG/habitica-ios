@@ -334,7 +334,7 @@ NSString *currentUser;
                                                                                   toKeyPath:@"rewards"
                                                                                 withMapping:rewardMapping]];
     RKEntityMapping *userTagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
-    [userTagMapping addAttributeMappingsFromArray:@[@"id", @"name"]];
+    [userTagMapping addAttributeMappingsFromArray:@[@"id", @"name", @"challenge"]];
     userTagMapping.identificationAttributes = @[@"id"];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
                                                                                   toKeyPath:@"tags"

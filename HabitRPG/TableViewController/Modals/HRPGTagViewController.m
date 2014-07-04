@@ -8,11 +8,13 @@
 
 #import "HRPGTagViewController.h"
 #import "Tag.h"
+#import <NIKFontAwesomeIconFactory.h>
+#import <NIKFontAwesomeIconFactory+iOS.h>
 
 @interface HRPGTagViewController ()
 
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
-
+@property NIKFontAwesomeIconFactory *iconFactory;
 @end
 
 @implementation HRPGTagViewController
@@ -23,6 +25,12 @@
     if (self.selectedTags == nil) {
         self.selectedTags = [[NSMutableArray alloc] init];
     }
+    
+    self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+    self.iconFactory.square = YES;
+    self.iconFactory.colors = @[[UIColor blackColor]];
+    self.iconFactory.strokeColor = [UIColor blackColor];
+    self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -39,7 +47,14 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    Tag *tag = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
+    UITableViewCell *cell;
+    if ([tag.challenge boolValue]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ChallengeCell" forIndexPath:indexPath];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    }
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
 }
@@ -174,6 +189,12 @@
             tagSwitch.on = YES;
              break;
         }
+    }
+    
+    if (tag.challenge) {
+        cell.imageView.image = [self.iconFactory createImageForIcon:NIKFontAwesomeIconBullhorn];
+    } else {
+        cell.imageView.image = nil;
     }
 }
 

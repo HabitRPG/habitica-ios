@@ -2375,6 +2375,35 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChallengeCell" id="v5i-w1-Kbc">
+                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v5i-w1-Kbc" id="non-2i-QIv">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="183" translatesAutoresizingMaskIntoConstraints="NO" id="qjU-BV-CDx">
+                                            <rect key="frame" x="60" y="11" width="183" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KtV-ku-yD9">
+                                            <rect key="frame" x="251" y="6" width="51" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </switch>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="qjU-BV-CDx" firstAttribute="top" secondItem="non-2i-QIv" secondAttribute="top" constant="11" id="QwX-L8-3Km"/>
+                                        <constraint firstAttribute="centerY" secondItem="KtV-ku-yD9" secondAttribute="centerY" id="RdC-gn-1wh"/>
+                                        <constraint firstItem="KtV-ku-yD9" firstAttribute="leading" secondItem="qjU-BV-CDx" secondAttribute="trailing" constant="8" id="c0Y-rf-fal"/>
+                                        <constraint firstItem="qjU-BV-CDx" firstAttribute="leading" secondItem="non-2i-QIv" secondAttribute="leading" constant="60" id="err-U1-xEu"/>
+                                        <constraint firstAttribute="bottom" secondItem="qjU-BV-CDx" secondAttribute="bottom" constant="11" id="hRt-bm-bL2"/>
+                                        <constraint firstAttribute="trailing" secondItem="KtV-ku-yD9" secondAttribute="trailing" constant="20" id="tuc-lx-6Mm"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="CZc-T4-a1C" id="Fu0-t3-KEa"/>

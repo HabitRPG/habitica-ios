@@ -16,4 +16,5 @@
 @dynamic tasks;
 @dynamic user;
 @dynamic hasTasks;
+@dynamic challenge;
 @end
