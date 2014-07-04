@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Quest.h"
 #import "Group.h"
+#import "User.h"
 
-@interface HRPGQuestInvitationViewController : UITableViewController
+@interface HRPGQuestDetailViewController : UITableViewController
 
 @property Quest *quest;
 @property Group *party;
+@property User *user;
 @property UIViewController *sourceViewcontroller;
+@property NSNumber *hideAskLater;
 @end

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D908B3831903515B00D32A75 /* HRPGSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D908B3821903515B00D32A75 /* HRPGSwipeTableViewCell.m */; };
-		D922F01F191BCC1600B197EA /* HRPGQuestDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F01E191BCC1600B197EA /* HRPGQuestDetailController.m */; };
 		D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */; };
 		D922F0AB191D957D00B197EA /* HRPGDeathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0AA191D957D00B197EA /* HRPGDeathViewController.m */; };
 		D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0AD19217C2300B197EA /* HRPGEmptySerializer.m */; };
@@ -49,7 +48,7 @@
 		D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */; };
 		D99DEC87190836D400FFD2B9 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC86190836D400FFD2B9 /* Item.m */; };
 		D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D99DEC88190842CA00FFD2B9 /* Placeholder.png */; };
-		D99DEC8F190914AD00FFD2B9 /* HRPGQuestInvitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC8E190914AD00FFD2B9 /* HRPGQuestInvitationViewController.m */; };
+		D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC8E190914AD00FFD2B9 /* HRPGQuestDetailViewController.m */; };
 		D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99F15BF191027D90081836E /* HRPGBaseViewController.m */; };
 		D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD34A1943BB16006202C1 /* HRPGFeedViewController.m */; };
 		D9ADD34E1943BBB6006202C1 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD34D1943BBB6006202C1 /* Food.m */; };
@@ -109,8 +108,6 @@
 		D908B3821903515B00D32A75 /* HRPGSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSwipeTableViewCell.m; sourceTree = "<group>"; };
 		D915F8621915BEE50037D04D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D915F8641915BF0D0037D04D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		D922F01D191BCC1600B197EA /* HRPGQuestDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGQuestDetailController.h; path = ../HRPGQuestDetailController.h; sourceTree = "<group>"; };
-		D922F01E191BCC1600B197EA /* HRPGQuestDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGQuestDetailController.m; path = ../HRPGQuestDetailController.m; sourceTree = "<group>"; };
 		D922F0A6191C1F6B00B197EA /* HRPGUserBuyResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGUserBuyResponse.h; sourceTree = "<group>"; };
 		D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGUserBuyResponse.m; sourceTree = "<group>"; };
 		D922F0A9191D957D00B197EA /* HRPGDeathViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGDeathViewController.h; sourceTree = "<group>"; };
@@ -183,8 +180,8 @@
 		D99DEC85190836D400FFD2B9 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		D99DEC86190836D400FFD2B9 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		D99DEC88190842CA00FFD2B9 /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
-		D99DEC8D190914AD00FFD2B9 /* HRPGQuestInvitationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGQuestInvitationViewController.h; sourceTree = "<group>"; };
-		D99DEC8E190914AD00FFD2B9 /* HRPGQuestInvitationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGQuestInvitationViewController.m; sourceTree = "<group>"; };
+		D99DEC8D190914AD00FFD2B9 /* HRPGQuestDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGQuestDetailViewController.h; path = ../Modals/HRPGQuestDetailViewController.h; sourceTree = "<group>"; };
+		D99DEC8E190914AD00FFD2B9 /* HRPGQuestDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGQuestDetailViewController.m; path = ../Modals/HRPGQuestDetailViewController.m; sourceTree = "<group>"; };
 		D99F15BE191027D90081836E /* HRPGBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBaseViewController.h; sourceTree = "<group>"; };
 		D99F15BF191027D90081836E /* HRPGBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBaseViewController.m; sourceTree = "<group>"; };
 		D9ADD3491943BB16006202C1 /* HRPGFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGFeedViewController.h; sourceTree = "<group>"; };
@@ -452,8 +449,6 @@
 				D9ADD3621944FDBE006202C1 /* HRPGTagViewController.m */,
 				D9B5C0E518D62CC700C8D1B7 /* HRPGLoginViewController.h */,
 				D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */,
-				D99DEC8D190914AD00FFD2B9 /* HRPGQuestInvitationViewController.h */,
-				D99DEC8E190914AD00FFD2B9 /* HRPGQuestInvitationViewController.m */,
 				D922F0A9191D957D00B197EA /* HRPGDeathViewController.h */,
 				D922F0AA191D957D00B197EA /* HRPGDeathViewController.m */,
 				D96038351930F90E0025EAEC /* HRPGMessageViewController.h */,
@@ -465,8 +460,8 @@
 		D9E365501930D58900C056F1 /* Party */ = {
 			isa = PBXGroup;
 			children = (
-				D922F01D191BCC1600B197EA /* HRPGQuestDetailController.h */,
-				D922F01E191BCC1600B197EA /* HRPGQuestDetailController.m */,
+				D99DEC8D190914AD00FFD2B9 /* HRPGQuestDetailViewController.h */,
+				D99DEC8E190914AD00FFD2B9 /* HRPGQuestDetailViewController.m */,
 				D9B5C0D318D5F94400C8D1B7 /* HRPGPartyViewController.h */,
 				D9B5C0D418D5F94400C8D1B7 /* HRPGPartyViewController.m */,
 				D98F5AED1905C090002F8223 /* HRPGQuestParticipantsViewController.h */,
@@ -770,7 +765,7 @@
 				D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */,
 				D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */,
 				D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */,
-				D99DEC8F190914AD00FFD2B9 /* HRPGQuestInvitationViewController.m in Sources */,
+				D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */,
 				D92CDADD18CB79E50006C242 /* HRPGTableViewController.m in Sources */,
 				D9B5C0E118D602FC00C8D1B7 /* Group.m in Sources */,
 				D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */,
@@ -780,7 +775,6 @@
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
 				D9B5C0E718D62CC700C8D1B7 /* HRPGLoginViewController.m in Sources */,
 				D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */,
-				D922F01F191BCC1600B197EA /* HRPGQuestDetailController.m in Sources */,
 				D98F5AEC190566CA002F8223 /* User.m in Sources */,
 				D9C7C1F318E280DE0083F4E4 /* HRPGRewardsViewController.m in Sources */,
 				D922F0AB191D957D00B197EA /* HRPGDeathViewController.m in Sources */,

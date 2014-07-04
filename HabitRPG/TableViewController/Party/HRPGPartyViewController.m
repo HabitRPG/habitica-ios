@@ -8,9 +8,8 @@
 
 #import "HRPGPartyViewController.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGQuestInvitationViewController.h"
+#import "HRPGQuestDetailViewController.h"
 #import "HRPGQuestParticipantsViewController.h"
-#import "HRPGQuestDetailController.h"
 #import "HRPGMessageViewController.h"
 #import "QuestCollect.h"
 #import "ChatMessage.h"
@@ -103,9 +102,10 @@ ChatMessage *selectedMessage;
         if (party.questKey != nil && ![party.questActive boolValue] && user.participateInQuest == nil) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
             UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"questInvitationNavigationController"];
-            HRPGQuestInvitationViewController *questInvitationController = (HRPGQuestInvitationViewController *) navigationController.topViewController;
+            HRPGQuestDetailViewController *questInvitationController = (HRPGQuestDetailViewController *) navigationController.topViewController;
             questInvitationController.quest = quest;
             questInvitationController.party = party;
+            questInvitationController.user = user;
             questInvitationController.sourceViewcontroller = self;
             [self presentViewController:navigationController animated:YES completion:nil];
         }
@@ -367,7 +367,7 @@ ChatMessage *selectedMessage;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if (indexPath.section == 1 && indexPath.item == 0) {
             if (party.questKey != nil) {
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 cell.textLabel.text = quest.text;
                 cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];   
             }
@@ -489,8 +489,11 @@ ChatMessage *selectedMessage;
         qpViewcontroller.party = party;
         qpViewcontroller.quest = quest;
     } else if ([segue.identifier isEqualToString:@"QuestDetailSegue"]) {
-        HRPGQuestDetailController *qdViewcontroller = segue.destinationViewController;
+        HRPGQuestDetailViewController *qdViewcontroller = segue.destinationViewController;
         qdViewcontroller.quest = quest;
+        qdViewcontroller.party = party;
+        qdViewcontroller.user = user;
+        qdViewcontroller.hideAskLater = [NSNumber numberWithBool:YES];
     }
 }
 

@@ -6,27 +6,36 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import "HRPGQuestInvitationViewController.h"
+#import "HRPGQuestDetailViewController.h"
 #import "HRPGAppDelegate.h"
 
-@interface HRPGQuestInvitationViewController ()
+@interface HRPGQuestDetailViewController ()
 @property HRPGManager *sharedManager;
 @end
 
-@implementation HRPGQuestInvitationViewController
+@implementation HRPGQuestDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     _sharedManager = appdelegate.sharedManager;
+    if (self.party.questKey != nil && ![self.party.questActive boolValue] && self.user.participateInQuest == nil) {
+        self.navigationItem.title = NSLocalizedString(@"Quest Invitation", nil);
+    } else {
+        self.navigationItem.title = NSLocalizedString(@"Quest Detail", nil);
+    }
 }
 
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    if (self.party.questKey != nil && ![self.party.questActive boolValue] && self.user.participateInQuest == nil) {
+        return 2;
+    } else {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -34,13 +43,23 @@
         case 0:
             return 2;
         case 1:
+            if ([self.hideAskLater boolValue]) {
+                return 2;
+            }
             return 3;
     }
     return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0 && indexPath.item == 1) {
+    if (indexPath.section == 0 && indexPath.item == 0) {
+        return [self.quest.text boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:@{
+                                                        NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
+                                                        }
+                                              context:nil].size.height + 16;
+    } else if (indexPath.section == 0 && indexPath.item == 1) {
         return [self.quest.notes boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
                                               options:NSStringDrawingUsesLineFragmentOrigin
                                            attributes:@{

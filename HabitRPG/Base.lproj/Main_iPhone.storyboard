@@ -1076,7 +1076,7 @@
                     <connections>
                         <segue destination="dTs-XW-ncH" kind="push" identifier="ParticipantsSegue" id="dgw-v8-d53"/>
                         <segue destination="C7A-kW-wAT" kind="push" identifier="MembersSegue" id="VsI-y2-kpI"/>
-                        <segue destination="3G4-DA-YqP" kind="push" identifier="QuestDetailSegue" id="LFk-SJ-At5"/>
+                        <segue destination="Gf0-o8-VUQ" kind="push" identifier="QuestDetailSegue" id="8EB-JX-S8a"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SY2-XN-wxb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1401,73 +1401,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXn-rI-saa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1937" y="1138"/>
-        </scene>
-        <!--Quest Detail Controller - Quest Detail-->
-        <scene sceneID="ugc-Lw-iQt">
-            <objects>
-                <tableViewController id="3G4-DA-YqP" customClass="HRPGQuestDetailController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2YN-ai-62g">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TitleCell" textLabel="C19-iS-qVU" style="IBUITableViewCellStyleDefault" id="Ec3-SC-iPi">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ec3-SC-iPi" id="2xU-Vt-xeK">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C19-iS-qVU">
-                                            <rect key="frame" x="15" y="0.0" width="290" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DescriptionCell" id="HYl-vS-uN1">
-                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HYl-vS-uN1" id="ByH-8R-dd3">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="wb6-G8-0ZO">
-                                            <rect key="frame" x="20" y="0.0" width="280" height="44"/>
-                                            <attributedString key="attributedText">
-                                                <fragment content="Label">
-                                                    <attributes>
-                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="wb6-G8-0ZO" firstAttribute="top" secondItem="ByH-8R-dd3" secondAttribute="top" id="Wjf-D0-lY8"/>
-                                        <constraint firstItem="wb6-G8-0ZO" firstAttribute="leading" secondItem="ByH-8R-dd3" secondAttribute="leading" constant="20" id="iMH-vo-vqo"/>
-                                        <constraint firstAttribute="bottom" secondItem="wb6-G8-0ZO" secondAttribute="bottom" id="ra7-yd-L3d"/>
-                                        <constraint firstAttribute="trailing" secondItem="wb6-G8-0ZO" secondAttribute="trailing" constant="20" id="siR-yT-eUF"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="3G4-DA-YqP" id="8cf-hA-2Bj"/>
-                            <outlet property="delegate" destination="3G4-DA-YqP" id="8B2-9s-mAN"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Quest Detail" id="476-ad-7Ez"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rgl-BN-VbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2480" y="202"/>
         </scene>
         <!--Party Members View Controller - Members-->
         <scene sceneID="PpQ-CH-ZgY">
@@ -2645,10 +2578,10 @@
             </objects>
             <point key="canvasLocation" x="559" y="2126"/>
         </scene>
-        <!--Quest Invitation View Controller - Quest Invitation-->
+        <!--Quest Detail View Controller - Quest Invitation-->
         <scene sceneID="3Xn-1p-dUi">
             <objects>
-                <tableViewController id="Gf0-o8-VUQ" customClass="HRPGQuestInvitationViewController" sceneMemberID="viewController">
+                <tableViewController id="Gf0-o8-VUQ" customClass="HRPGQuestDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Tkw-cf-c07">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2661,7 +2594,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dhn-bx-6as">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" id="dhn-bx-6as">
                                             <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -2987,7 +2920,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="8EB-JX-S8a"/>
+        <segue reference="QZs-YK-kGB"/>
         <segue reference="E5i-VS-PGN"/>
-        <segue reference="xxy-Nl-SCN"/>
     </inferredMetricsTieBreakers>
 </document>
