@@ -2410,6 +2410,15 @@
                             <outlet property="delegate" destination="CZc-T4-a1C" id="GcB-xT-pa4"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="OZY-o0-CAc"/>
+                        <barButtonItem title="Clear" id="hIC-Qf-w8a">
+                            <color key="tintColor" red="0.34901961679999999" green="0.68627452850000004" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                            <connections>
+                                <action selector="clearTags:" destination="CZc-T4-a1C" id="GA7-07-5qy"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Filter by tags" id="RJ8-HL-bIH">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="2yR-UY-zxm">
                             <connections>
@@ -2417,6 +2426,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SBZ-BJ-FJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Rot-qR-0bj" userLabel="Exit" sceneMemberID="exit"/>
@@ -2942,7 +2952,7 @@
             <point key="canvasLocation" x="958" y="4662"/>
         </scene>
     </scenes>
-    <color key="tintColor" red="0.37176278233528137" green="0.60343527793884277" blue="0.013965161517262459" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="0.3490196168422699" green="0.68627452850341797" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

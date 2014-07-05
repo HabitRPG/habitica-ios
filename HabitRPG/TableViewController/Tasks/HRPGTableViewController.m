@@ -43,7 +43,7 @@ BOOL editable;
     self.refreshControl = refresh;
     
     
-    self.headerView = [[HRPGHeaderTagView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
+    self.headerView = [[HRPGHeaderTagView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 42)];
     self.headerView.currentNavigationController = self.navigationController;
     HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
     self.headerView.selectedTags = tabBarController.selectedTags;
@@ -58,14 +58,8 @@ BOOL editable;
     [self collapseOpenedIndexPath];
     [self.sharedManager fetchUser:^() {
         [self.refreshControl endRefreshing];
-        CGRect newBounds = self.tableView.bounds;
-        if (self.tableView.bounds.origin.y < 44) {
-            newBounds.origin.y = 0;
-            self.tableView.bounds = newBounds;
-        }
     }                     onError:^() {
         [self.refreshControl endRefreshing];
-        self.tableView.contentOffset = CGPointMake(0, 30);
     }];
 }
 
