@@ -236,11 +236,11 @@
         UISwitch *tagSwitch = (UISwitch*)[cell viewWithTag:2];
         if (tagSwitch.on) {
             activatedSwitches++;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.15 * activatedSwitches * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [tagSwitch setOn:NO animated:YES];
+            });
         }
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.15 * activatedSwitches * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [tagSwitch setOn:NO animated:YES];
-        });
     }
 }
 
