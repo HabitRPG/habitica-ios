@@ -20,6 +20,7 @@
 @interface HRPGPartyViewController ()
 @property HRPGManager *sharedManager;
 @property NSMutableDictionary *chatAttributeMapping;
+@property UIFont *boldFont;
 @property NSIndexPath *selectedIndex;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -34,6 +35,7 @@ User *user;
 NSUserDefaults *defaults;
 NSString *partyID;
 ChatMessage *selectedMessage;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -56,12 +58,11 @@ ChatMessage *selectedMessage;
             [self fetchQuest];
             UIFontDescriptor *fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle: UIFontTextStyleBody];
             UIFontDescriptor *boldFontDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits: UIFontDescriptorTraitBold];
-            UIFont *boldFont = [UIFont fontWithDescriptor: boldFontDescriptor size: 0.0];
+            self.boldFont = [UIFont fontWithDescriptor: boldFontDescriptor size: 0.0];
             
             for (User *member in party.member) {
                 [self.chatAttributeMapping setObject:@{
                                                        NSForegroundColorAttributeName: [member classColor],
-                                                       NSFontAttributeName: boldFont
                                                        } forKey:member.username];
             }
         } else {
@@ -84,12 +85,11 @@ ChatMessage *selectedMessage;
     [super preferredContentSizeChanged:notification];
     UIFontDescriptor *fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle: UIFontTextStyleBody];
     UIFontDescriptor *boldFontDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits: UIFontDescriptorTraitBold];
-    UIFont *boldFont = [UIFont fontWithDescriptor: boldFontDescriptor size: 0.0];
+    self.boldFont = [UIFont fontWithDescriptor: boldFontDescriptor size: 0.0];
     
     for (User *member in party.member) {
         [self.chatAttributeMapping setObject:@{
                                                NSForegroundColorAttributeName: [member classColor],
-                                               NSFontAttributeName: boldFont
                                                } forKey:member.username];
     }
 }
@@ -431,10 +431,31 @@ ChatMessage *selectedMessage;
             if (message.user != nil) {
                 UIImageView *imageView = (UIImageView *) [cell viewWithTag:5];
                 [message.userObject setAvatarOnImageView:imageView withPetMount:NO onlyHead:YES useForce:NO];
-                textLabel.text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
                 authorLabel.textColor = [message.userObject classColor];
                 textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+                cell.backgroundColor = [UIColor whiteColor];
+                NSString *text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
+                
+                NSMutableAttributedString *attributedMessage = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}];
+                
+                NSError *error = nil;
+                NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"@(\\w+)" options:0 error:&error];
+                NSArray *matches = [regex matchesInString:text options:0 range:NSMakeRange(0, attributedMessage.length)];
+                for (NSTextCheckingResult *match in matches) {
+                    NSRange wordRange = [match rangeAtIndex:0];
+                    NSString* username = [text substringWithRange:[match rangeAtIndex:1]];
+                    NSDictionary *attributes = [self.chatAttributeMapping objectForKey:username];
+                    if (attributes) {
+                        [attributedMessage addAttributes:attributes range:wordRange];
+                    }
+                    [attributedMessage addAttribute:NSFontAttributeName value:self.boldFont range:wordRange];
+                    if ([username isEqualToString:user.username]) {
+                        cell.backgroundColor = [UIColor colorWithRed:0.474 green:1.000 blue:0.031 alpha:0.030];
+                    }
+                }
+                textLabel.attributedText = attributedMessage;
             } else {
+                cell.backgroundColor = [UIColor colorWithRed:0.986 green:0.000 blue:0.047 alpha:0.020];
                 NSMutableAttributedString *attributedMessage = [[NSMutableAttributedString alloc] initWithString:[message.text substringWithRange:NSMakeRange(1, [message.text length]-2)] attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}];
                 
                 [[attributedMessage string] enumerateSubstringsInRange:NSMakeRange(0, [attributedMessage length]) options:NSStringEnumerationByWords usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
@@ -442,6 +463,7 @@ ChatMessage *selectedMessage;
                     if (attributes) {
                         [attributedMessage addAttributes:attributes range:substringRange];
                     }
+                    
                 }];
                 textLabel.attributedText = attributedMessage;
             }

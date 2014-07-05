@@ -518,7 +518,11 @@ NSString *currentUser;
     [chatMapping addAttributeMappingsFromDictionary:@{@"id" : @"id",
             @"text" : @"text",
             @"timestamp" : @"timestamp",
-            @"user" : @"user"}];
+                                                      @"user" : @"user",
+                                                      @"contributor.level" : @"contributorLevel",
+                                                      @"contributor.text" : @"contributorText",
+                                                      @"backer.tier" : @"backerLevel",
+                                                      @"backer.npc" : @"backerNpc"}];
     RKEntityMapping *chatUserMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     [chatUserMapping addAttributeMappingsFromDictionary:@{@"uuid" : @"id"}];
     [chatMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:nil

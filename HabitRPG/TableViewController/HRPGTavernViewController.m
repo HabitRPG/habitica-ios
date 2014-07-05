@@ -17,12 +17,14 @@
 #import "HRPGProgressView.h"
 #import "HRPGQuestDetailViewController.h"
 #import "NSNumber+abbreviation.h"
+#import "NSString+Emoji.h"
 
 @interface HRPGTavernViewController ()
 @property HRPGManager *sharedManager;
 @property Group *tavern;
 @property Quest *quest;
 @property NSIndexPath *selectedIndex;
+@property UIFont *boldFont;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
@@ -41,6 +43,10 @@ ChatMessage *selectedMessage;
     self.refreshControl = refresh;
 
     user = [self.sharedManager getUser];
+    
+    UIFontDescriptor *fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle: UIFontTextStyleBody];
+    UIFontDescriptor *boldFontDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits: UIFontDescriptorTraitBold];
+    self.boldFont = [UIFont fontWithDescriptor: boldFontDescriptor size: 0.0];
     
     [self fetchTavern];
 }
@@ -349,11 +355,27 @@ ChatMessage *selectedMessage;
     UILabel *authorLabel = (UILabel *) [cell viewWithTag:1];
     authorLabel.text = message.user;
     authorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    authorLabel.textColor = [message contributorColor];
 
     UILabel *textLabel = (UILabel *) [cell viewWithTag:2];
-    textLabel.text = message.text;
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-
+    cell.backgroundColor = [UIColor whiteColor];
+    NSString *text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
+    
+    NSMutableAttributedString *attributedMessage = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}];
+    
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"@(\\w+)" options:0 error:&error];
+    NSArray *matches = [regex matchesInString:text options:0 range:NSMakeRange(0, attributedMessage.length)];
+    for (NSTextCheckingResult *match in matches) {
+        NSRange wordRange = [match rangeAtIndex:0];
+        NSString* username = [text substringWithRange:[match rangeAtIndex:1]];
+        [attributedMessage addAttribute:NSFontAttributeName value:self.boldFont range:wordRange];
+        if ([username isEqualToString:user.username]) {
+            cell.backgroundColor = [UIColor colorWithRed:0.474 green:1.000 blue:0.031 alpha:0.050];
+        }
+    }
+    textLabel.attributedText = attributedMessage;
 
     UILabel *dateLabel = (UILabel *) [cell viewWithTag:3];
     dateLabel.text = [message.timestamp timeAgo];

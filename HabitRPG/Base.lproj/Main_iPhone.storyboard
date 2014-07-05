@@ -1722,7 +1722,7 @@
                     <navigationItem key="navigationItem" title="Tavern" id="9H8-uc-YBu">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="F4b-V0-2h5">
                             <connections>
-                                <segue destination="CHE-k4-ZCL" kind="push" identifier="PetSegue" id="xxy-Nl-SCN"/>
+                                <segue destination="CHE-k4-ZCL" kind="modal" identifier="" id="xxy-Nl-SCN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -140,4 +140,7 @@
 - (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead useForce:(BOOL)force;
 
 -(UIColor*) classColor;
+
+-(UIColor*) contributorColor;
+
 @end

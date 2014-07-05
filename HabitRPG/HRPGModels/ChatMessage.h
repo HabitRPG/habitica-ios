@@ -21,5 +21,8 @@
 @property(nonatomic, retain) NSString *uuid;
 @property(nonatomic, retain) Group *group;
 @property(nonatomic, retain) User *userObject;
+@property(nonatomic, retain) NSNumber *contributorLevel;
+
+-(UIColor*) contributorColor;
 
 @end
