@@ -507,6 +507,7 @@ NSString *currentUser;
             @"description" : @"hdescription",
             @"quest.key" : @"questKey",
             @"quest.progress.hp" : @"questHP",
+            @"quest.progress.rage" : @"questRage",
             @"quest.active" : @"questActive",
             @"privacy" : @"privacy",
             @"type" : @"type"
@@ -744,6 +745,10 @@ NSString *currentUser;
             @"(key).boss.name" : @"bossName",
             @"(key).boss.hp" : @"bossHp",
             @"(key).boss.str" : @"bossStr",
+            @"(key).boss.def" : @"bossDef",
+            @"(key).boss.rage.title" : @"rageTitle",
+            @"(key).boss.rage.value" : @"bossRage",
+            @"(key).boss.rage.description" : @"rageDescription",
             @"@metadata.mapping.rootKeyPath" : @"type"}];
     questMapping.identificationAttributes = @[@"key"];
 

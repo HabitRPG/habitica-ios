@@ -47,8 +47,9 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="privacy" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="questActive" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="questHP" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="questHP" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="questKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questRage" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unreadMessages" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ChatMessage" inverseName="group" inverseEntity="ChatMessage" syncable="YES"/>
@@ -86,13 +87,17 @@
     </entity>
     <entity name="Potion" representedClassName="Potion" parentEntity="MetaReward" syncable="YES"/>
     <entity name="Quest" representedClassName="Quest" parentEntity="BuyableItem" syncable="YES">
-        <attribute name="bossHp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="bossDef" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="bossHp" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="bossName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="bossStr" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="bossRage" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="bossStr" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="completition" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dropExp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="dropGp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="dropExp" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="dropGp" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="previous" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rageDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rageTitle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="collect" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="QuestCollect" inverseName="quest" inverseEntity="QuestCollect" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedQuests" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -231,13 +236,13 @@
         <element name="Egg" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Food" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Gear" positionX="0" positionY="0" width="128" height="210"/>
-        <element name="Group" positionX="0" positionY="0" width="128" height="255"/>
+        <element name="Group" positionX="0" positionY="0" width="128" height="270"/>
         <element name="HatchingPotion" positionX="0" positionY="0" width="128" height="60"/>
         <element name="Item" positionX="0" positionY="0" width="128" height="150"/>
         <element name="MetaReward" positionX="0" positionY="0" width="128" height="120"/>
         <element name="Pet" positionX="9" positionY="153" width="128" height="135"/>
         <element name="Potion" positionX="0" positionY="0" width="128" height="45"/>
-        <element name="Quest" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="Quest" positionX="0" positionY="0" width="128" height="240"/>
         <element name="QuestCollect" positionX="0" positionY="0" width="128" height="135"/>
         <element name="Reward" positionX="0" positionY="0" width="128" height="75"/>
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>

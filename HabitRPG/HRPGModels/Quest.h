@@ -13,8 +13,10 @@
 @interface Quest : BuyableItem
 
 @property(nonatomic, retain) NSNumber *bossHp;
+@property(nonatomic, retain) NSNumber *bossRage;
 @property(nonatomic, retain) NSString *bossName;
 @property(nonatomic, retain) NSNumber *bossStr;
+@property(nonatomic, retain) NSNumber *bossDef;
 @property(nonatomic, retain) NSNumber *canBuy;
 @property(nonatomic, retain) NSString *completition;
 @property(nonatomic, retain) NSNumber *dropExp;
@@ -25,6 +27,9 @@
 @property(nonatomic, retain) NSString *text;
 @property(nonatomic, retain) NSNumber *value;
 @property(nonatomic, retain) NSOrderedSet *collect;
+@property(nonatomic, retain) NSString *rageTitle;
+@property(nonatomic, retain) NSString *rageDescription;
+
 @end
 
 @interface Quest (CoreDataGeneratedAccessors)

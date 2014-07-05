@@ -37,6 +37,7 @@
 		D97C71F018F32FEF0089FDC6 /* MetaReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71EF18F32FEF0089FDC6 /* MetaReward.m */; };
 		D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */; };
 		D97C71F518F371D70089FDC6 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D97C71F418F371D70089FDC6 /* Pods-acknowledgements.plist */; };
+		D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */ = {isa = PBXBuildFile; fileRef = D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */; };
 		D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9884B4419168AF00078BC7C /* HRPGProgressView.m */; };
 		D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98AD54A19437A3500AF6174 /* HRPGPetViewController.m */; };
 		D98AD54E19437D9400AF6174 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = D98AD54D19437D9400AF6174 /* Pet.m */; };
@@ -159,6 +160,8 @@
 		D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGEquipmentViewController.h; sourceTree = "<group>"; };
 		D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGEquipmentViewController.m; sourceTree = "<group>"; };
 		D97C71F418F371D70089FDC6 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-acknowledgements.plist"; path = "Pods/Pods-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
+		D987393A19687F3E002A2426 /* NSNumber+abbreviation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+abbreviation.h"; path = "HabitRPG/Utilities/NSNumber+abbreviation.h"; sourceTree = SOURCE_ROOT; };
+		D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+abbreviation.m"; path = "HabitRPG/Utilities/NSNumber+abbreviation.m"; sourceTree = SOURCE_ROOT; };
 		D9884B4319168AF00078BC7C /* HRPGProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGProgressView.h; sourceTree = "<group>"; };
 		D9884B4419168AF00078BC7C /* HRPGProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGProgressView.m; sourceTree = "<group>"; };
 		D98AD54919437A3500AF6174 /* HRPGPetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPetViewController.h; sourceTree = "<group>"; };
@@ -306,6 +309,16 @@
 				D9E3654E1930D44300C056F1 /* Spells */,
 				D9E365511930D59D00C056F1 /* Tasks */,
 			);
+			path = TableViewController;
+			sourceTree = "<group>";
+		};
+		D987393919687E46002A2426 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D987393A19687F3E002A2426 /* NSNumber+abbreviation.h */,
+				D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */,
+			);
+			name = Utilities;
 			path = TableViewController;
 			sourceTree = "<group>";
 		};
@@ -534,6 +547,7 @@
 				D9C000311928F85E003D4E4C /* Views */,
 				D9ADD3531943BE33006202C1 /* TabBarController */,
 				D9ADD3571943C13F006202C1 /* Collection View Controller */,
+				D987393919687E46002A2426 /* Utilities */,
 				D9EB4E9D18CB4A9400BB2094 /* HRPGAppDelegate.h */,
 				D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */,
 				D922F0AF1925314500B197EA /* HRPGNetworkIndicatorController.h */,
@@ -792,6 +806,7 @@
 				D9ADD34E1943BBB6006202C1 /* Food.m in Sources */,
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
 				D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */,
+				D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */,
 				D97C71E718F32FED0089FDC6 /* Potion.m in Sources */,
 				D9ADD3601944F939006202C1 /* HRPGHeaderTagView.m in Sources */,
 				D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */,

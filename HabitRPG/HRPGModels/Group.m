@@ -16,6 +16,7 @@
 @dynamic privacy;
 @dynamic questActive;
 @dynamic questHP;
+@dynamic questRage;
 @dynamic questKey;
 @dynamic unreadMessages;
 @dynamic type;

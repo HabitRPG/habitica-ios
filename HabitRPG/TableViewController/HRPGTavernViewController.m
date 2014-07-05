@@ -12,9 +12,17 @@
 #import <CRToast.h>
 #import <NSDate+TimeAgo.h>
 #import "HRPGMessageViewController.h"
+#import "Group.h"
+#import "Quest.h"
+#import "HRPGProgressView.h"
+#import "HRPGQuestDetailViewController.h"
+#import "NSNumber+abbreviation.h"
 
 @interface HRPGTavernViewController ()
 @property HRPGManager *sharedManager;
+@property Group *tavern;
+@property Quest *quest;
+@property NSIndexPath *selectedIndex;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
@@ -23,6 +31,7 @@
 @synthesize managedObjectContext;
 @dynamic sharedManager;
 User *user;
+ChatMessage *selectedMessage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,64 +41,122 @@ User *user;
     self.refreshControl = refresh;
 
     user = [self.sharedManager getUser];
+    
+    [self fetchTavern];
 }
 
 - (void)refresh {
     [self.sharedManager fetchGroup:@"habitrpg" onSuccess:^() {
         [self.refreshControl endRefreshing];
+        [self fetchTavern];
     }                      onError:^() {
         [self.refreshControl endRefreshing];
         [self.sharedManager displayNetworkError];
     }];
 }
 
+- (void) fetchTavern {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == 'habitrpg'"]];
+    
+    NSError *error;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (results.count == 1) {
+        self.tavern = results[0];
+        if (self.tavern.questKey) {
+            [self fetchQuest];
+        }
+    } else {
+        [self refresh];
+    }
+}
+
+- (void)fetchQuest {
+    if (self.tavern.questKey) {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        // Edit the entity name as appropriate.
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Quest" inManagedObjectContext:self.managedObjectContext];
+        [fetchRequest setEntity:entity];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", self.tavern.questKey]];
+        NSError *error;
+        self.quest = [managedObjectContext executeFetchRequest:fetchRequest error:&error][0];
+        [self.tableView reloadData];
+        
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    if ([self.tavern.questActive boolValue]) {
+        return 3;
+    } else {
+        return 2;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return 1;
-        case 1: {
-            id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][0];
-            return [sectionInfo numberOfObjects];
-        }
-        default:
-            return 0;
+    if (section == 0) {
+        return 1;
+    } else if (section == 1 && [self.tavern.questActive boolValue]) {
+        return 3;
+    } else {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][0];
+        return [sectionInfo numberOfObjects];
     }
+    return 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return NSLocalizedString(@"Inn", nil);
-            break;
-        case 1:
-            return NSLocalizedString(@"Chat", nil);
-        default:
-            return @"";
+    if (section == 0) {
+        return NSLocalizedString(@"Inn", nil);
+    } else if (section == 1 && [self.tavern.questActive boolValue]) {
+        return NSLocalizedString(@"World Quest", nil);
+    } else {
+        return NSLocalizedString(@"Chat", nil);
     }
+    return @"";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         return 44;
+    } else if (indexPath.section == 1 && [self.tavern.questActive boolValue]) {
+        if (indexPath.item == 0) {
+            NSInteger height = [self.quest.text boundingRectWithSize:CGSizeMake(270.0f, MAXFLOAT)
+                                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                                     attributes:@{
+                                                                  NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
+                                                                  }
+                                                        context:nil].size.height + 22;
+            return height;
+        } else {
+            NSInteger height = [@"50/100" boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
+                                                       options:NSStringDrawingUsesLineFragmentOrigin
+                                                    attributes:@{
+                                                                 NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+                                                                 }
+                                                       context:nil].size.height + 20;
+            return height;
+        }
     } else {
         ChatMessage *message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
-        return [message.text boundingRectWithSize:CGSizeMake(250.0f, MAXFLOAT)
+        return [message.text boundingRectWithSize:CGSizeMake(280, MAXFLOAT)
                                           options:NSStringDrawingUsesLineFragmentOrigin
                                        attributes:@{
-                                               NSFontAttributeName : [UIFont systemFontOfSize:15.0f]
+                                               NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                        }
-                                          context:nil].size.height + 41;
+                                          context:nil].size.height + 40;
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIColor *notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
+    self.selectedIndex = indexPath;
     if (indexPath.section == 0 && indexPath.item == 0) {
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         UILabel *label = (UILabel*)[cell viewWithTag:1];
@@ -117,8 +184,25 @@ User *user;
         onError:^() {
             [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         }];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    } else if (indexPath.section == 1 && self.tavern.questActive) {
+        if (indexPath.item == 0) {
+            [self performSegueWithIdentifier:@"QuestDetailSegue" sender:self];
+        } else {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+    } else {
+        NSString *deleteTitle;
+        selectedMessage = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
+        if ([selectedMessage.user isEqualToString:user.username]) {
+            deleteTitle = NSLocalizedString(@"Delete", nil);
+        }
+        UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteTitle otherButtonTitles:
+                                    NSLocalizedString(@"Copy", nil),
+                                    nil];
+        popup.tag = 1;
+        [popup showInView:[UIApplication sharedApplication].keyWindow];
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -129,10 +213,16 @@ User *user;
         } else {
             cellname = @"RestCell";
         }
-    } else {
-        if (indexPath.section) {
-            cellname = @"ChatCell";
+    } else if (indexPath.section == 1 && [self.tavern.questActive boolValue]) {
+        if (indexPath.item == 0) {
+            cellname = @"QuestCell";
+        } else if (indexPath.item == 1) {
+            cellname = @"LifeCell";
+        } else if (indexPath.item == 2) {
+            cellname = @"RageCell";
         }
+    } else {
+        cellname = @"ChatCell";
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     if (indexPath.section == 0 && indexPath.item == 0) {
@@ -140,7 +230,7 @@ User *user;
         UIActivityIndicatorView *indicator = (UIActivityIndicatorView*)[cell viewWithTag:2];
         label.hidden = NO;
         indicator.hidden = YES;
-    } else if (indexPath.section == 1) {
+    } else {
         [self configureCell:cell atIndexPath:indexPath];
     }
     return cell;
@@ -198,25 +288,29 @@ User *user;
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
+    int section = 1;
+    if ([self.tavern.questActive boolValue]) {
+        section = 2;
+    }
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item inSection:1];
+            newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item inSection:section];
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
 
         case NSFetchedResultsChangeDelete:
-            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:1];
+            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:section];
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
 
         case NSFetchedResultsChangeUpdate:
-            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:1];
+            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:section];
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
 
         case NSFetchedResultsChangeMove:
-            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:1];
-            newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item inSection:1];
+            indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:section];
+            newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item inSection:section];
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
@@ -228,6 +322,29 @@ User *user;
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1 && [self.tavern.questActive boolValue]) {
+        if (indexPath.item == 0) {
+            if (self.tavern.questKey != nil) {
+                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                cell.textLabel.text = self.quest.text;
+                cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+            }
+        } else if (indexPath.item == 1) {
+            UILabel *lifeLabel = (UILabel *) [cell viewWithTag:1];
+            lifeLabel.text = [NSString stringWithFormat:@"Health: %@ / %@", [self.tavern.questHP abbreviateNumber], [self.quest.bossHp abbreviateNumber]];
+            lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+            HRPGProgressView *lifeBar = (HRPGProgressView *) [cell viewWithTag:2];
+            lifeBar.progress = ([self.tavern.questHP floatValue] / [self.quest.bossHp floatValue]);
+        } else if (indexPath.item == 2) {
+            UILabel *lifeLabel = (UILabel *) [cell viewWithTag:1];
+            lifeLabel.text = [NSString stringWithFormat:@"Rage: %@ / %@", [self.tavern.questRage abbreviateNumber], [self.quest.bossRage abbreviateNumber]];
+            lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+            HRPGProgressView *rageBar = (HRPGProgressView *) [cell viewWithTag:2];
+            rageBar.progress = ([self.tavern.questRage floatValue] / [self.quest.bossRage floatValue]);
+        }
+        return;
+    }
+    
     ChatMessage *message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
     UILabel *authorLabel = (UILabel *) [cell viewWithTag:1];
     authorLabel.text = message.user;
@@ -243,11 +360,38 @@ User *user;
     dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
 }
 
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == actionSheet.destructiveButtonIndex) {
+        [self.sharedManager deleteMessage:selectedMessage withGroup:@"habitrpg" onSuccess:^() {
+            selectedMessage = nil;
+        } onError:^() {
+        }];
+    } else if (buttonIndex != actionSheet.cancelButtonIndex) {
+        UIPasteboard *pb = [UIPasteboard generalPasteboard];
+        if (selectedMessage.user != nil) {
+            [pb setString:[selectedMessage.text substringWithRange:NSMakeRange(1, [selectedMessage.text length]-2)]];
+        } else {
+            [pb setString:selectedMessage.text];
+        }
+    }
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
+}
 
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"QuestDetailSegue"]) {
+        HRPGQuestDetailViewController *qdViewcontroller = segue.destinationViewController;
+        qdViewcontroller.quest = self.quest;
+        qdViewcontroller.party = self.tavern;
+        qdViewcontroller.user = user;
+        qdViewcontroller.hideAskLater = [NSNumber numberWithBool:YES];
+        qdViewcontroller.wasPushed = [NSNumber numberWithBool:YES];
+        qdViewcontroller.isWorldQuest = [NSNumber numberWithBool:YES];
+    }
 }
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
