@@ -20,6 +20,8 @@
 @interface HRPGPartyViewController ()
 @property HRPGManager *sharedManager;
 @property NSMutableDictionary *chatAttributeMapping;
+@property NSIndexPath *selectedIndex;
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
@@ -232,6 +234,7 @@ ChatMessage *selectedMessage;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedIndex = indexPath;
     if (indexPath.section == 0 && indexPath.item == 1) {
         [self performSegueWithIdentifier:@"MembersSegue" sender:self];
     } else if (indexPath.section == 1 && indexPath.item == 0) {
@@ -419,7 +422,7 @@ ChatMessage *selectedMessage;
             textLabel.text = [NSString stringWithFormat:@"%@/%@", collect.collectCount, collect.count];
             textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         } else if (indexPath.section == 2) {
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             ChatMessage *message = (ChatMessage *) party.chatmessages[indexPath.item];
             UILabel *authorLabel = (UILabel *) [cell viewWithTag:1];
             authorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
@@ -478,6 +481,10 @@ ChatMessage *selectedMessage;
             [pb setString:selectedMessage.text];
         }
     }
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
 }
 
 #pragma mark - Navigation

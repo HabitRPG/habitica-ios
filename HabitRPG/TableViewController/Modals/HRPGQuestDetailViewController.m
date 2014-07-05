@@ -31,7 +31,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (self.party.questKey != nil && ![self.party.questActive boolValue] && self.user.participateInQuest == nil) {
+    if ((![self.isWorldQuest boolValue]) && self.party.questKey != nil && ![self.party.questActive boolValue] && self.user.participateInQuest == nil) {
         return 2;
     } else {
         return 1;
@@ -65,7 +65,7 @@
                                            attributes:@{
                                                    NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                            }
-                                              context:nil].size.height + 24;
+                                              context:nil].size.height + 80;
     }
     return 44;
 }

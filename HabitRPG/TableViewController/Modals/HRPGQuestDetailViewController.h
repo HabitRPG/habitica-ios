@@ -19,4 +19,5 @@
 @property UIViewController *sourceViewcontroller;
 @property NSNumber *hideAskLater;
 @property NSNumber *wasPushed;
+@property NSNumber *isWorldQuest;
 @end
