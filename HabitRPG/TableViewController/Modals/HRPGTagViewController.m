@@ -28,9 +28,19 @@
     
     self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     self.iconFactory.square = YES;
-    self.iconFactory.colors = @[[UIColor blackColor]];
-    self.iconFactory.strokeColor = [UIColor blackColor];
+    self.iconFactory.colors = @[[UIColor darkGrayColor]];
+    self.iconFactory.strokeColor = [UIColor darkGrayColor];
     self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setToolbarHidden:NO animated:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setToolbarHidden:YES animated:NO];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -216,6 +226,21 @@
             }
             counter++;
         }
+    }
+}
+
+- (IBAction)clearTags:(id)sender {
+    int activatedSwitches = 0;
+    for (int i = 0; i < [self.tableView numberOfRowsInSection:0]; i++) {
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]];
+        UISwitch *tagSwitch = (UISwitch*)[cell viewWithTag:2];
+        if (tagSwitch.on) {
+            activatedSwitches++;
+        }
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.15 * activatedSwitches * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [tagSwitch setOn:NO animated:YES];
+        });
     }
 }
 
