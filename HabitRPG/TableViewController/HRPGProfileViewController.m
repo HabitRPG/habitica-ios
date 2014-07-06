@@ -13,6 +13,7 @@
 #import <PDKeychainBindings.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
+#import <UserVoice.h>
 
 @interface HRPGProfileViewController ()
 @property HRPGManager *sharedManager;
@@ -159,6 +160,8 @@ NIKFontAwesomeIconFactory *iconFactory;
         viewController.headerText = NSLocalizedString(@"We love open source software.", nil); // optional
         [self.navigationController pushViewController:viewController animated:YES];
     } else if (indexPath.section == 3 && indexPath.item == 2) {
+        [UserVoice presentUserVoiceInterfaceForParentViewController:self];
+        /*
         if ([MFMailComposeViewController canSendMail]) {
             MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
             controller.mailComposeDelegate = self;
@@ -170,6 +173,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         } else {
 
         }
+         */
 
     }
 }

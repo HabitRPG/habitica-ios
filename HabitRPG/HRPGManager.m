@@ -21,6 +21,7 @@
 #import "HRPGUserBuyResponse.h"
 #import "HRPGEmptySerializer.h"
 #import "HRPGNetworkIndicatorController.h"
+#import "RestKit/Network/RKPathMatcher.h"
 
 @interface HRPGManager ()
 @property NIKFontAwesomeIconFactory *iconFactory;
