@@ -15,6 +15,7 @@
 #import "Group.h"
 #import "User.h"
 #import "Pet.h"
+#import "HRPGPetHatchedOverlayView.h"
 
 @interface HRPGItemViewController ()
 @property HRPGManager *sharedManager;
@@ -138,15 +139,25 @@
             }
         }
         [self addActivityCounter];
+        HRPGPetHatchedOverlayView *phView = [[HRPGPetHatchedOverlayView alloc] init];
+        
         if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
+            [phView.petImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet-%@-%@.png", item.key, self.selectedItem.key]] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+            phView.hatchString = [NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil), self.selectedItem.text, item.key];
             [self.sharedManager hatchEgg:item.key withPotion:self.selectedItem.key onSuccess:^() {
                 [self removeActivityCounter];
+                [phView display:^() {
+                }];
             }onError:^() {
                 [self removeActivityCounter];
             }];
         } else {
+            [phView.petImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet-%@-%@.png", self.selectedItem.key, item.key]] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+            phView.hatchString = [NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil), item.key, self.selectedItem.text];
             [self.sharedManager hatchEgg:self.selectedItem.key withPotion:item.key onSuccess:^() {
                 [self removeActivityCounter];
+                [phView display:^() {
+                }];
             }onError:^() {
                 [self removeActivityCounter];
             }];
