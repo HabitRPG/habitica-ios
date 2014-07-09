@@ -435,25 +435,26 @@ ChatMessage *selectedMessage;
                 textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
                 cell.backgroundColor = [UIColor whiteColor];
                 NSString *text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
-                
-                NSMutableAttributedString *attributedMessage = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}];
-                
-                NSError *error = nil;
-                NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"@(\\w+)" options:0 error:&error];
-                NSArray *matches = [regex matchesInString:text options:0 range:NSMakeRange(0, attributedMessage.length)];
-                for (NSTextCheckingResult *match in matches) {
-                    NSRange wordRange = [match rangeAtIndex:0];
-                    NSString* username = [text substringWithRange:[match rangeAtIndex:1]];
-                    NSDictionary *attributes = [self.chatAttributeMapping objectForKey:username];
-                    if (attributes) {
-                        [attributedMessage addAttributes:attributes range:wordRange];
+                if (text) {
+                    NSMutableAttributedString *attributedMessage = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}];
+                    
+                    NSError *error = nil;
+                    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"@(\\w+)" options:0 error:&error];
+                    NSArray *matches = [regex matchesInString:text options:0 range:NSMakeRange(0, attributedMessage.length)];
+                    for (NSTextCheckingResult *match in matches) {
+                        NSRange wordRange = [match rangeAtIndex:0];
+                        NSString* username = [text substringWithRange:[match rangeAtIndex:1]];
+                        NSDictionary *attributes = [self.chatAttributeMapping objectForKey:username];
+                        if (attributes) {
+                            [attributedMessage addAttributes:attributes range:wordRange];
+                        }
+                        [attributedMessage addAttribute:NSFontAttributeName value:self.boldFont range:wordRange];
+                        if ([username isEqualToString:user.username]) {
+                            cell.backgroundColor = [UIColor colorWithRed:0.474 green:1.000 blue:0.031 alpha:0.030];
+                        }
                     }
-                    [attributedMessage addAttribute:NSFontAttributeName value:self.boldFont range:wordRange];
-                    if ([username isEqualToString:user.username]) {
-                        cell.backgroundColor = [UIColor colorWithRed:0.474 green:1.000 blue:0.031 alpha:0.030];
-                    }
+                    textLabel.attributedText = attributedMessage;
                 }
-                textLabel.attributedText = attributedMessage;
             } else {
                 cell.backgroundColor = [UIColor colorWithRed:0.986 green:0.000 blue:0.047 alpha:0.020];
                 NSMutableAttributedString *attributedMessage = [[NSMutableAttributedString alloc] initWithString:[message.text substringWithRange:NSMakeRange(1, [message.text length]-2)] attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}];

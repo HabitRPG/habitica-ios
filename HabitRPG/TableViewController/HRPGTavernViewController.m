@@ -362,21 +362,22 @@ ChatMessage *selectedMessage;
     cell.backgroundColor = [UIColor whiteColor];
     NSString *text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
     
-    NSMutableAttributedString *attributedMessage = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}];
-    
-    NSError *error = nil;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"@(\\w+)" options:0 error:&error];
-    NSArray *matches = [regex matchesInString:text options:0 range:NSMakeRange(0, attributedMessage.length)];
-    for (NSTextCheckingResult *match in matches) {
-        NSRange wordRange = [match rangeAtIndex:0];
-        NSString* username = [text substringWithRange:[match rangeAtIndex:1]];
-        [attributedMessage addAttribute:NSFontAttributeName value:self.boldFont range:wordRange];
-        if ([username isEqualToString:user.username]) {
-            cell.backgroundColor = [UIColor colorWithRed:0.474 green:1.000 blue:0.031 alpha:0.050];
+    if (text) {
+        NSMutableAttributedString *attributedMessage = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}];
+        
+        NSError *error = nil;
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"@(\\w+)" options:0 error:&error];
+        NSArray *matches = [regex matchesInString:text options:0 range:NSMakeRange(0, attributedMessage.length)];
+        for (NSTextCheckingResult *match in matches) {
+            NSRange wordRange = [match rangeAtIndex:0];
+            NSString* username = [text substringWithRange:[match rangeAtIndex:1]];
+            [attributedMessage addAttribute:NSFontAttributeName value:self.boldFont range:wordRange];
+            if ([username isEqualToString:user.username]) {
+                cell.backgroundColor = [UIColor colorWithRed:0.474 green:1.000 blue:0.031 alpha:0.050];
+            }
         }
+        textLabel.attributedText = attributedMessage;
     }
-    textLabel.attributedText = attributedMessage;
-
     UILabel *dateLabel = (UILabel *) [cell viewWithTag:3];
     dateLabel.text = [message.timestamp timeAgo];
     dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
