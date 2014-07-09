@@ -93,7 +93,6 @@
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
-    NSLog(@"bla");
     [self dismiss:^() {
         
     }];

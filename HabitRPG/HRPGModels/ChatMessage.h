@@ -22,6 +22,7 @@
 @property(nonatomic, retain) Group *group;
 @property(nonatomic, retain) User *userObject;
 @property(nonatomic, retain) NSNumber *contributorLevel;
+@property(nonatomic, retain) NSString *backerNpc;
 
 -(UIColor*) contributorColor;
 
