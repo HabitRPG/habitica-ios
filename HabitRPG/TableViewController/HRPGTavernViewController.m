@@ -425,6 +425,13 @@ ChatMessage *selectedMessage;
     HRPGMessageViewController *messageController = (HRPGMessageViewController*)[segue sourceViewController];
     [self addActivityCounter];
     [self.sharedManager chatMessage:messageController.messageView.text withGroup:@"habitrpg" onSuccess:^() {
+        [self.sharedManager fetchGroup:@"habitrpg" onSuccess:^() {
+            [self removeActivityCounter];
+            [self fetchTavern];
+        }                      onError:^() {
+            [self removeActivityCounter];
+            [self.sharedManager displayNetworkError];
+        }];
         [self removeActivityCounter];
     }onError:^() {
         [self removeActivityCounter];
