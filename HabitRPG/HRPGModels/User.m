@@ -378,10 +378,6 @@
 }
 
 -(UIColor *)contributorColor {
-    if (self.backerNpc) {
-        return [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
-    }
-    
     if ([self.contributorLevel integerValue] == 0) {
         
     } else if ([self.contributorLevel integerValue] <= 2) {

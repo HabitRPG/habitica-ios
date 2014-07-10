@@ -22,6 +22,7 @@
 #import "HRPGEmptySerializer.h"
 #import "HRPGNetworkIndicatorController.h"
 #import "RestKit/Network/RKPathMatcher.h"
+#import "HRPGImageOverlayView.h"
 
 @interface HRPGManager ()
 @property NIKFontAwesomeIconFactory *iconFactory;
@@ -1707,6 +1708,16 @@ NSString *currentUser;
     };
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{
+    }];
+    
+    HRPGImageOverlayView *imageOverlayView = [[HRPGImageOverlayView alloc] init];
+    imageOverlayView.width = 180;
+    imageOverlayView.height = 120;
+    [imageOverlayView displayImageWithName:[NSString stringWithFormat:@"Pet_%@_%@.png", type, name]];
+    imageOverlayView.descriptionText = [NSString stringWithFormat:@"You found a %@!", name];
+    imageOverlayView.detailText = note;
+    [imageOverlayView display:^() {
+        
     }];
 }
 
