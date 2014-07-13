@@ -1173,6 +1173,7 @@
                         <segue destination="dTs-XW-ncH" kind="push" identifier="ParticipantsSegue" id="dgw-v8-d53"/>
                         <segue destination="C7A-kW-wAT" kind="push" identifier="MembersSegue" id="VsI-y2-kpI"/>
                         <segue destination="Gf0-o8-VUQ" kind="push" identifier="QuestDetailSegue" id="8EB-JX-S8a"/>
+                        <segue destination="V3K-Ki-VTR" kind="push" identifier="UserProfileSegue" id="w8b-nU-BYs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SY2-XN-wxb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1920,6 +1921,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="Gf0-o8-VUQ" kind="push" identifier="QuestDetailSegue" id="ctJ-Nf-hOd"/>
+                        <segue destination="V3K-Ki-VTR" kind="push" identifier="UserProfileSegue" id="R7D-Cb-9Bi"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n5R-Ol-NmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2458,6 +2460,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tgy-p9-JH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2439" y="1907"/>
+        </scene>
+        <!--User Profile View Controller-->
+        <scene sceneID="zNq-iY-ly4">
+            <objects>
+                <tableViewController id="V3K-Ki-VTR" customClass="HRPGUserProfileViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RVv-qv-Q5q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ivy-Mg-QVS">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ivy-Mg-QVS" id="dos-MY-Tv0">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="V3K-Ki-VTR" id="DF2-5q-ONE"/>
+                            <outlet property="delegate" destination="V3K-Ki-VTR" id="6XF-tW-mqs"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="a85-I5-hQo"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q49-FX-vXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2969" y="1710"/>
         </scene>
         <!--Spell Tab Bar Controller - Choose Task-->
         <scene sceneID="oWJ-eh-rJ0">
@@ -3239,6 +3270,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="E5i-VS-PGN"/>
         <segue reference="ctJ-Nf-hOd"/>
+        <segue reference="R7D-Cb-9Bi"/>
         <segue reference="xxy-Nl-SCN"/>
     </inferredMetricsTieBreakers>
 </document>

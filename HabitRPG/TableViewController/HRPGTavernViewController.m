@@ -18,6 +18,7 @@
 #import "HRPGQuestDetailViewController.h"
 #import "NSNumber+abbreviation.h"
 #import "NSString+Emoji.h"
+#import "HRPGUserProfileViewController.h"
 
 @interface HRPGTavernViewController ()
 @property HRPGManager *sharedManager;
@@ -464,6 +465,10 @@ ChatMessage *selectedMessage;
             messageViewController.presetText = self.replyMessage;
             self.replyMessage = nil;
         }
+    } else if ([segue.identifier isEqualToString:@"UserProfileSegue"]) {
+        HRPGUserProfileViewController *userProfileViewController = (HRPGUserProfileViewController*) segue.destinationViewController;
+        userProfileViewController.userID = selectedMessage.uuid;
+        userProfileViewController.username = selectedMessage.user;
     }
 }
 
@@ -490,7 +495,7 @@ ChatMessage *selectedMessage;
 }
 
 - (IBAction)showUserProfile:(id)sender {
-    
+    [self performSegueWithIdentifier:@"UserProfileSegue" sender:self];
 }
 
 - (IBAction)deleteMessage:(id)sender {
