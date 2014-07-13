@@ -22,7 +22,8 @@
 @property NSMutableDictionary *chatAttributeMapping;
 @property UIFont *boldFont;
 @property NSIndexPath *selectedIndex;
-
+@property NSIndexPath *buttonIndex;
+@property NSString *replyMessage;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
@@ -149,7 +150,11 @@ ChatMessage *selectedMessage;
             }
         case 2: {
             if (party != nil && [party.chatmessages count] > 0) {
-                return [party.chatmessages count];
+                if (self.buttonIndex) {
+                    return [party.chatmessages count]+1;
+                } else {
+                    return [party.chatmessages count];
+                }
             }
         }
         default:
@@ -213,7 +218,15 @@ ChatMessage *selectedMessage;
             return 50;
         }
     } else {
-        ChatMessage *message = party.chatmessages[indexPath.item];
+        if (self.buttonIndex && self.buttonIndex.item == indexPath.item) {
+            return 44;
+        }
+        ChatMessage *message;
+        if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
+            message = (ChatMessage *) party.chatmessages[indexPath.item-1];
+        } else {
+            message = (ChatMessage *) party.chatmessages[indexPath.item];
+        }
         float width;
         if (message.user == nil) {
             width = 280.0f;
@@ -241,17 +254,36 @@ ChatMessage *selectedMessage;
         [self performSegueWithIdentifier:@"QuestDetailSegue" sender:self];
     } else if ((indexPath.section == 1 && indexPath.item == 1 && [party.questHP integerValue] == 0) || (indexPath.section == 1 && indexPath.item == 2 && [party.questActive boolValue] && [party.questHP integerValue] > 0)) {
         [self performSegueWithIdentifier:@"ParticipantsSegue" sender:self];
+    } else if (self.buttonIndex && self.buttonIndex.item == indexPath.item && self.buttonIndex.section == indexPath.section) {
+        
     } else if (indexPath.section == 2) {
-        NSString *deleteTitle;
-        selectedMessage = party.chatmessages[indexPath.item];
-        if ([selectedMessage.user isEqualToString:user.username]) {
-            deleteTitle = NSLocalizedString(@"Delete", nil);
+        if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
+            selectedMessage = (ChatMessage *) party.chatmessages[indexPath.item-1];
+        } else {
+            selectedMessage = (ChatMessage *) party.chatmessages[indexPath.item];
         }
-        UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteTitle otherButtonTitles:
-                                NSLocalizedString(@"Copy", nil),
-                                nil];
-        popup.tag = 1;
-        [popup showInView:[UIApplication sharedApplication].keyWindow];
+        if (!selectedMessage.user) {
+            selectedMessage = nil;
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+            return;
+        }
+        [self.tableView beginUpdates];
+        if (self.buttonIndex) {
+            [self.tableView deleteRowsAtIndexPaths:@[self.buttonIndex] withRowAnimation:UITableViewRowAnimationTop];
+        }
+        NSIndexPath *newIndex = [NSIndexPath indexPathForItem:indexPath.item+1 inSection:indexPath.section];
+        if (newIndex.item != self.buttonIndex.item) {
+            if (self.buttonIndex && self.buttonIndex.item < newIndex.item) {
+                self.buttonIndex = [NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section];
+            } else {
+                self.buttonIndex = newIndex;
+            }
+            [self.tableView insertRowsAtIndexPaths:@[self.buttonIndex] withRowAnimation:UITableViewRowAnimationTop];
+        } else {
+            self.buttonIndex = nil;
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+        [self.tableView endUpdates];
     }
 }
 
@@ -282,11 +314,25 @@ ChatMessage *selectedMessage;
     } else if (indexPath.section == 1) {
         cellname = @"CollectItemQuestCell";
     } else {
-        ChatMessage *message = (ChatMessage *) party.chatmessages[indexPath.item];
-        if (message.user != nil) {
-            cellname = @"ImageChatCell";
+        if (self.buttonIndex && indexPath.item == self.buttonIndex.item) {
+            ChatMessage *message = (ChatMessage *) party.chatmessages[indexPath.item-1];
+            if ([message.user isEqualToString: user.username]) {
+                cellname = @"OwnButtonCell";
+            } else {
+                cellname = @"ButtonCell";
+            }
         } else {
-            cellname = @"ChatCell";
+            ChatMessage *message;
+            if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
+                message = (ChatMessage *) party.chatmessages[indexPath.item-1];
+            } else {
+                message = (ChatMessage *) party.chatmessages[indexPath.item];
+            }
+            if (message.user != nil) {
+                cellname = @"ImageChatCell";
+            } else {
+                cellname = @"ChatCell";
+            }
         }
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
@@ -422,13 +468,22 @@ ChatMessage *selectedMessage;
             textLabel.text = [NSString stringWithFormat:@"%@/%@", collect.collectCount, collect.count];
             textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         } else if (indexPath.section == 2) {
+            if (self.buttonIndex && self.buttonIndex.item == indexPath.item) {
+                return;
+            }
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-            ChatMessage *message = (ChatMessage *) party.chatmessages[indexPath.item];
+            ChatMessage *message;
+            if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
+                message = (ChatMessage *) party.chatmessages[indexPath.item-1];
+            } else {
+                message = (ChatMessage *) party.chatmessages[indexPath.item];
+            }
             UILabel *authorLabel = (UILabel *) [cell viewWithTag:1];
             authorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
             authorLabel.text = message.user;
             UILabel *textLabel = (UILabel *) [cell viewWithTag:2];
             if (message.user != nil) {
+                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 UIImageView *imageView = (UIImageView *) [cell viewWithTag:5];
                 [message.userObject setAvatarOnImageView:imageView withPetMount:NO onlyHead:YES useForce:NO];
                 authorLabel.textColor = [message.userObject classColor];
@@ -456,6 +511,7 @@ ChatMessage *selectedMessage;
                     textLabel.attributedText = attributedMessage;
                 }
             } else {
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor colorWithRed:0.986 green:0.000 blue:0.047 alpha:0.020];
                 NSMutableAttributedString *attributedMessage = [[NSMutableAttributedString alloc] initWithString:[message.text substringWithRange:NSMakeRange(1, [message.text length]-2)] attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}];
                 
@@ -490,26 +546,6 @@ ChatMessage *selectedMessage;
     }
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == actionSheet.destructiveButtonIndex) {
-        [self.sharedManager deleteMessage:selectedMessage withGroup:@"party" onSuccess:^() {
-            selectedMessage = nil;
-        } onError:^() {
-        }];
-    } else if (buttonIndex != actionSheet.cancelButtonIndex) {
-        UIPasteboard *pb = [UIPasteboard generalPasteboard];
-        if (selectedMessage.user != nil) {
-            [pb setString:[selectedMessage.text substringWithRange:NSMakeRange(1, [selectedMessage.text length]-2)]];
-        } else {
-            [pb setString:selectedMessage.text];
-        }
-    }
-}
-
--(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
-}
-
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -525,6 +561,13 @@ ChatMessage *selectedMessage;
         qdViewcontroller.user = user;
         qdViewcontroller.hideAskLater = [NSNumber numberWithBool:YES];
         qdViewcontroller.wasPushed = [NSNumber numberWithBool:YES];
+    } else if ([segue.identifier isEqualToString:@"MessageSegue"]) {
+        UINavigationController *navController = segue.destinationViewController;
+        HRPGMessageViewController *messageViewController = (HRPGMessageViewController*) navController.topViewController;
+        if (self.replyMessage) {
+            messageViewController.presetText = self.replyMessage;
+            self.replyMessage = nil;
+        }
     }
 }
 
@@ -541,6 +584,31 @@ ChatMessage *selectedMessage;
         [self removeActivityCounter];
     }];
     
+}
+
+- (IBAction)showUserProfile:(id)sender {
+    
+}
+
+- (IBAction)deleteMessage:(id)sender {
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[self.buttonIndex] withRowAnimation:UITableViewRowAnimationTop];
+    self.buttonIndex = nil;
+    [self.tableView endUpdates];
+    [self.sharedManager deleteMessage:selectedMessage withGroup:@"party" onSuccess:^() {
+        selectedMessage = nil;
+    } onError:^() {
+    }];
+}
+
+- (IBAction)replyToMessage:(id)sender {
+    self.replyMessage = [NSString stringWithFormat:@"@%@ ", selectedMessage.user];
+    [self performSegueWithIdentifier:@"MessageSegue" sender:self];
+
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[self.buttonIndex] withRowAnimation:UITableViewRowAnimationTop];
+    self.buttonIndex = nil;
+    [self.tableView endUpdates];
 }
 
 @end

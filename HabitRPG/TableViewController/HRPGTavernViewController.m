@@ -24,6 +24,8 @@
 @property Group *tavern;
 @property Quest *quest;
 @property NSIndexPath *selectedIndex;
+@property NSIndexPath *buttonIndex;
+@property NSString *replyMessage;
 @property UIFont *boldFont;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -112,7 +114,11 @@ ChatMessage *selectedMessage;
         return 3;
     } else {
         id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][0];
-        return [sectionInfo numberOfObjects];
+        if (self.buttonIndex) {
+            return [sectionInfo numberOfObjects]+1;
+        } else {
+            return [sectionInfo numberOfObjects];
+        }
     }
     return 0;
 }
@@ -150,7 +156,15 @@ ChatMessage *selectedMessage;
             return height;
         }
     } else {
-        ChatMessage *message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
+        if (self.buttonIndex && self.buttonIndex.item == indexPath.item) {
+            return 44;
+        }
+        ChatMessage *message;
+        if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
+            message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item-1 inSection:0]];
+        } else {
+            message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
+        }
         return [message.text boundingRectWithSize:CGSizeMake(280, MAXFLOAT)
                                           options:NSStringDrawingUsesLineFragmentOrigin
                                        attributes:@{
@@ -198,16 +212,29 @@ ChatMessage *selectedMessage;
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
     } else {
-        NSString *deleteTitle;
-        selectedMessage = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
-        if ([selectedMessage.user isEqualToString:user.username]) {
-            deleteTitle = NSLocalizedString(@"Delete", nil);
+        if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
+            selectedMessage = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item-1 inSection:0]];
+        } else {
+            selectedMessage = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
         }
-        UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteTitle otherButtonTitles:
-                                    NSLocalizedString(@"Copy", nil),
-                                    nil];
-        popup.tag = 1;
-        [popup showInView:[UIApplication sharedApplication].keyWindow];
+        [self.tableView beginUpdates];
+        if (self.buttonIndex) {
+            [self.tableView deleteRowsAtIndexPaths:@[self.buttonIndex] withRowAnimation:UITableViewRowAnimationTop];
+        }
+        NSIndexPath *newIndex = [NSIndexPath indexPathForItem:indexPath.item+1 inSection:indexPath.section];
+        if (newIndex.item != self.buttonIndex.item) {
+            if (self.buttonIndex && self.buttonIndex.item < newIndex.item) {
+                self.buttonIndex = [NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section];
+            } else {
+                self.buttonIndex = newIndex;
+            }
+            [self.tableView insertRowsAtIndexPaths:@[self.buttonIndex] withRowAnimation:UITableViewRowAnimationTop];
+        } else {
+            self.buttonIndex = nil;
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+        [self.tableView endUpdates];
+
     }
 }
 
@@ -228,7 +255,16 @@ ChatMessage *selectedMessage;
             cellname = @"RageCell";
         }
     } else {
-        cellname = @"ChatCell";
+        if (self.buttonIndex && indexPath.item == self.buttonIndex.item) {
+            ChatMessage *message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item-1 inSection:0]];
+            if ([message.user isEqualToString: user.username]) {
+                cellname = @"OwnButtonCell";
+            } else {
+                cellname = @"ButtonCell";
+            }
+        } else {
+            cellname = @"ChatCell";
+        }
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     if (indexPath.section == 0 && indexPath.item == 0) {
@@ -350,8 +386,15 @@ ChatMessage *selectedMessage;
         }
         return;
     }
-    
-    ChatMessage *message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
+    if (self.buttonIndex && self.buttonIndex.item == indexPath.item) {
+        return;
+    }
+    ChatMessage *message;
+    if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
+        message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item-1 inSection:0]];
+    } else {
+        message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
+    }
     UILabel *authorLabel = (UILabel *) [cell viewWithTag:1];
     authorLabel.text = message.user;
     authorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
@@ -414,6 +457,13 @@ ChatMessage *selectedMessage;
         qdViewcontroller.hideAskLater = [NSNumber numberWithBool:YES];
         qdViewcontroller.wasPushed = [NSNumber numberWithBool:YES];
         qdViewcontroller.isWorldQuest = [NSNumber numberWithBool:YES];
+    } else if ([segue.identifier isEqualToString:@"MessageSegue"]) {
+        UINavigationController *navController = segue.destinationViewController;
+        HRPGMessageViewController *messageViewController = (HRPGMessageViewController*) navController.topViewController;
+        if (self.replyMessage) {
+            messageViewController.presetText = self.replyMessage;
+            self.replyMessage = nil;
+        }
     }
 }
 
@@ -438,5 +488,31 @@ ChatMessage *selectedMessage;
     }];
     
 }
+
+- (IBAction)showUserProfile:(id)sender {
+    
+}
+
+- (IBAction)deleteMessage:(id)sender {
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[self.buttonIndex] withRowAnimation:UITableViewRowAnimationTop];
+    self.buttonIndex = nil;
+    [self.tableView endUpdates];
+    [self.sharedManager deleteMessage:selectedMessage withGroup:@"party" onSuccess:^() {
+        selectedMessage = nil;
+    } onError:^() {
+    }];
+}
+
+- (IBAction)replyToMessage:(id)sender {
+    self.replyMessage = [NSString stringWithFormat:@"@%@ ", selectedMessage.user];
+    [self performSegueWithIdentifier:@"MessageSegue" sender:self];
+    
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[self.buttonIndex] withRowAnimation:UITableViewRowAnimationTop];
+    self.buttonIndex = nil;
+    [self.tableView endUpdates];
+}
+
 
 @end

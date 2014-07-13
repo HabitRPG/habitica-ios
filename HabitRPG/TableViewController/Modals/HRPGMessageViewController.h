@@ -14,4 +14,5 @@
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (weak, nonatomic) IBOutlet UITextView *messageView;
 
+@property (nonatomic) NSString *presetText;
 @end
