@@ -1545,7 +1545,7 @@ NSString *currentUser;
         [user.party addChatmessagesObjectAtFirstPosition:[mappingResult firstObject]];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"newChatMessage" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"newChatMessage" object:groupID];
         [self.networkIndicatorController endNetworking];
         return;
     }                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
