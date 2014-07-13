@@ -1664,7 +1664,7 @@ NSString *currentUser;
 - (void)displayLevelUpNotification {
     UIColor *notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
     NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Level up!", nil),
-            kCRToastSubtitleTextKey : [NSString stringWithFormat:@"Level %ld", ([user.level integerValue] + 1)],
+            kCRToastSubtitleTextKey : [NSString stringWithFormat:@"Level %d", ([user.level integerValue] + 1)],
             kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
             kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
             kCRToastBackgroundColorKey : notificationColor,
@@ -1695,29 +1695,16 @@ NSString *currentUser;
 }
 
 - (void)displayDropNotification:(NSString *)name withType:(NSString *)type withNote:(NSString *)note {
-    if (!note) {
-        note = @"";
-    }
-    UIColor *notificationColor = [UIColor colorWithRed:0.231 green:0.442 blue:0.964 alpha:1.000];
-    NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You found a %@ %@", nil), name, type],
-            kCRToastSubtitleTextKey : note,
-            kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-            kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-            kCRToastBackgroundColorKey : notificationColor,
-            kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconCheck]
-    };
-    [CRToastManager showNotificationWithOptions:options
-                                completionBlock:^{
-    }];
     
     HRPGImageOverlayView *imageOverlayView = [[HRPGImageOverlayView alloc] init];
     imageOverlayView.width = 180;
     imageOverlayView.height = 120;
     [imageOverlayView displayImageWithName:[NSString stringWithFormat:@"Pet_%@_%@.png", type, name]];
     imageOverlayView.descriptionText = [NSString stringWithFormat:@"You found a %@!", name];
-    imageOverlayView.detailText = note;
+    if (!note) {
+        imageOverlayView.detailText = note;
+    }
     [imageOverlayView display:^() {
-        
     }];
 }
 

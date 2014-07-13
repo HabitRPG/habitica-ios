@@ -349,6 +349,10 @@ NIKFontAwesomeIconFactory *iconFactory;
     [self.tableView endUpdates];
 }
 
+-(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    [self configureCell:cell atIndexPath:indexPath usForce:NO];
+}
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath usForce:(BOOL)force {
     User *user = (User *) [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *levelLabel = (UILabel *) [cell viewWithTag:1];
