@@ -96,13 +96,21 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *sections = [self.fetchedResultsController sections];
+    if ([sections count] < indexPath.section) {
+        return 0;
+    }
+    id <NSFetchedResultsSectionInfo> sectionInfo = sections[indexPath.section];
+    if ([sectionInfo numberOfObjects] < indexPath.item) {
+        return 0;
+    }
     Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSInteger height = [item.text boundingRectWithSize:CGSizeMake(260.0f, MAXFLOAT)
+    NSInteger height = [item.text boundingRectWithSize:CGSizeMake(202.0f, MAXFLOAT)
                                                options:NSStringDrawingUsesLineFragmentOrigin
                                             attributes:@{
-                                                    NSFontAttributeName : [UIFont systemFontOfSize:18.0f]
+                                                    NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                             }
-                                               context:nil].size.height + 22;
+                                               context:nil].size.height + 24;
     if (height < 60) {
         return 60;
     }
@@ -321,6 +329,14 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
+    NSArray *sections = [self.fetchedResultsController sections];
+    if ([sections count] < indexPath.section) {
+        return;
+    }
+    id <NSFetchedResultsSectionInfo> sectionInfo = sections[indexPath.section];
+    if ([sectionInfo numberOfObjects] < indexPath.item) {
+        return;
+    }
     Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *textLabel = (UILabel *) [cell viewWithTag:1];
     textLabel.text = item.text;
