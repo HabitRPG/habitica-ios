@@ -63,6 +63,19 @@
     label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
     label.textColor = color;
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    
+    if ([task.up boolValue]) {
+        [cell viewWithTag:3].hidden = NO;
+    } else {
+        [cell viewWithTag:3].hidden = YES;
+    }
+    
+    if ([task.down boolValue]) {
+        [cell viewWithTag:2].hidden = NO;
+    } else {
+        [cell viewWithTag:2].hidden = YES;
+    }
+    
     [self configureSwiping:cell withTask:task];
 }
 

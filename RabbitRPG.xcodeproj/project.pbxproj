@@ -412,6 +412,7 @@
 		D9C3D01D19509E4C00D22A4A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				D9ADD34F1943BC0E006202C1 /* BuyableItem.h */,
 				D9ADD3501943BC0E006202C1 /* BuyableItem.m */,
 				D97C71DF18ECA7050089FDC6 /* ChatMessage.h */,
 				D97C71E018ECA7050089FDC6 /* ChatMessage.m */,
@@ -449,7 +450,6 @@
 				D9B5C0B018CCD1EA00C8D1B7 /* Task.m */,
 				D98F5AEA190566CA002F8223 /* User.h */,
 				D98F5AEB190566CA002F8223 /* User.m */,
-				D9ADD34F1943BC0E006202C1 /* BuyableItem.h */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";

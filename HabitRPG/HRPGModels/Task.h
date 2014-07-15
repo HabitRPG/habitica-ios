@@ -35,7 +35,7 @@
 @property(nonatomic, retain) NSNumber *sunday;
 @property(nonatomic, retain) NSOrderedSet *checklist;
 @property(nonatomic, retain) NSSet *tags;
-@property(nonatomic, readonly, getter = getTagDictionary, setter = setTagDictionary:) NSDictionary *tagDictionary;
+@property(nonatomic, getter = getTagDictionary, setter = setTagDictionary:) NSDictionary *tagDictionary;
 @property(nonatomic, retain) User *user;
 @end
 

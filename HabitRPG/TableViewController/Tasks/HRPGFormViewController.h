@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Task.h"
 #import "HRPGBaseViewController.h"
+#import "XLFormViewController.h"
 
-@interface HRPGFormViewController : HRPGBaseViewController <UITableViewDataSource, UITextFieldDelegate>
+@interface HRPGFormViewController : XLFormViewController
 
 @property(weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property(weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property(weak, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property NSString *taskType;
 @property Task *task;

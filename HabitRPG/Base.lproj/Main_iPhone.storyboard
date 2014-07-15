@@ -49,12 +49,34 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UsP-4x-qeL">
+                                            <rect key="frame" x="0.0" y="0.0" width="2" height="59"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.98594826459999996" green="0.0" blue="0.026950567960000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="2" id="PUM-6H-JNi"/>
+                                            </constraints>
+                                        </view>
+                                        <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8SO-bn-LCS">
+                                            <rect key="frame" x="318" y="0.0" width="2" height="59"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.34901961679999999" green="0.68627452850000004" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="2" id="8kk-Xh-kef"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="UsP-4x-qeL" firstAttribute="leading" secondItem="6EL-SK-ylq" secondAttribute="leading" id="Hv3-o2-WpQ"/>
                                         <constraint firstItem="ytV-uy-Eaj" firstAttribute="top" secondItem="6EL-SK-ylq" secondAttribute="top" constant="11" id="XgW-6G-w1U"/>
+                                        <constraint firstAttribute="trailing" secondItem="8SO-bn-LCS" secondAttribute="trailing" id="eDd-Mb-h7V"/>
                                         <constraint firstAttribute="bottom" secondItem="ytV-uy-Eaj" secondAttribute="bottom" constant="11" id="f0b-i7-gyl"/>
                                         <constraint firstItem="ytV-uy-Eaj" firstAttribute="leading" secondItem="6EL-SK-ylq" secondAttribute="leading" constant="20" symbolic="YES" id="gLo-59-mbr"/>
                                         <constraint firstAttribute="trailing" secondItem="ytV-uy-Eaj" secondAttribute="trailing" constant="20" id="lsH-UM-ecK"/>
+                                        <constraint firstAttribute="bottom" secondItem="8SO-bn-LCS" secondAttribute="bottom" id="ofe-eU-Xwt"/>
+                                        <constraint firstAttribute="bottom" secondItem="UsP-4x-qeL" secondAttribute="bottom" id="pkL-cw-Mrg"/>
+                                        <constraint firstItem="UsP-4x-qeL" firstAttribute="top" secondItem="6EL-SK-ylq" secondAttribute="top" id="smQ-Fs-bq2"/>
+                                        <constraint firstItem="8SO-bn-LCS" firstAttribute="top" secondItem="6EL-SK-ylq" secondAttribute="top" id="zLI-M1-OB2"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
