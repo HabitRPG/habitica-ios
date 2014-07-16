@@ -125,6 +125,7 @@ BOOL editable;
     }
     HRPGSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     [cell setDefaultColor:[UIColor lightGrayColor]];
+    cell.taskType = [task.type substringToIndex:1];
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
 }

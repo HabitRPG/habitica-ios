@@ -10,4 +10,6 @@
 
 @interface HRPGSwipeTableViewCell : MCSwipeTableViewCell
 
+@property NSString *taskType;
+
 @end
