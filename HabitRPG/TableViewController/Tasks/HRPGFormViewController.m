@@ -234,12 +234,24 @@
     
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSArray * validationErrors = [self formValidationErrors];
-    if (validationErrors.count > 0){
-        [self showFormValidationError:[validationErrors firstObject]];
-        return;
+- (void)showFormValidationError:(NSError *)error {
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Validation Error", nil) message:error.localizedDescription delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+    [alertView show];
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString:@"unwindSaveSegue"]) {
+        NSArray * validationErrors = [self formValidationErrors];
+        if (validationErrors.count > 0){
+            [self showFormValidationError:[validationErrors firstObject]];
+            return NO;
+        }
     }
+    return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
     [self.tableView endEditing:YES];
     if ([segue.identifier isEqualToString:@"unwindSaveSegue"]) {
         if (!self.editTask) {
