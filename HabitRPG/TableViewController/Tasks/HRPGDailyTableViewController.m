@@ -197,7 +197,7 @@
                 checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
                 [UIView animateWithDuration:0.4 animations:^() {
                     cell.backgroundColor = [UIColor whiteColor];
-                    cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
+                    cell.separatorInset = UIEdgeInsetsMake(0, 42, 0, 0);
                 }];
             }
         } else {
@@ -207,7 +207,7 @@
                 cell.separatorInset = UIEdgeInsetsZero;
             } else {
                 cell.backgroundColor = [UIColor whiteColor];
-                cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
+                cell.separatorInset = UIEdgeInsetsMake(0, 42, 0, 0);
             }
         }
     }

@@ -161,9 +161,9 @@ BOOL editable;
     if ([task.type isEqualToString:@"habit"]) {
         width = 280.0f;
     } else if ([task.checklist count] > 0) {
-        width = 209.0f;
+        width = 210.0f;
     } else {
-        width = 261.0f;
+        width = 270.0f;
     }
     NSInteger height = [task.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                options:NSStringDrawingUsesLineFragmentOrigin
