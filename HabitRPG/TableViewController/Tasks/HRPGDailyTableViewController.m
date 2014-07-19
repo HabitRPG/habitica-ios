@@ -66,7 +66,11 @@
     if (self.openedIndexPath && self.openedIndexPath.item < indexPath.item && indexPath.item <= (self.openedIndexPath.item + self.indexOffset)) {
         Task *task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
         int currentOffset = (int) (indexPath.item - self.openedIndexPath.item - 1);
-        ChecklistItem *item = task.checklist[currentOffset];
+        
+        ChecklistItem *item;
+        if ([task.checklist count] > currentOffset) {
+            item = task.checklist[currentOffset];
+        }
         label.text = [item.text stringByReplacingEmojiCheatCodesWithUnicode];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         checklistLabel.hidden = YES;
