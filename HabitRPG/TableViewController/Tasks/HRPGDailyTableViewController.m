@@ -45,8 +45,8 @@
 
     self.checkIconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     self.checkIconFactory.square = YES;
-    self.checkIconFactory.colors = @[[UIColor grayColor]];
-    self.checkIconFactory.strokeColor = [UIColor grayColor];
+    self.checkIconFactory.colors = @[[UIColor darkGrayColor]];
+    self.checkIconFactory.strokeColor = [UIColor darkGrayColor];
     self.checkIconFactory.size = 17.0f;
     self.checkIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
 }
@@ -138,15 +138,39 @@
         }
         UIImageView *checkMarkView = (UIImageView *) [cell viewWithTag:3];
         if ([task.completed boolValue]) {
-            self.checkIconFactory.colors = @[[UIColor grayColor]];
-            checkMarkView.hidden = NO;
-            checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
+            self.checkIconFactory.colors = @[[UIColor darkGrayColor]];
+            if (animate) {
+                if (checkMarkView.hidden) {
+                    CGRect oldFrame = checkMarkView.frame;
+                    checkMarkView.frame = CGRectMake(-oldFrame.size.width, oldFrame.origin.y, oldFrame.size.width, oldFrame.size.width);
+                    checkMarkView.hidden = NO;
+                    checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
+                    [UIView animateWithDuration:0.4f delay:0 usingSpringWithDamping:0.5f initialSpringVelocity:0.5f options:UIViewAnimationOptionCurveEaseInOut animations:^() {
+                        checkMarkView.frame = CGRectMake(8, oldFrame.origin.y, oldFrame.size.width, oldFrame.size.width);
+                    }completion:nil];
+                }
+            } else {
+                checkMarkView.hidden = NO;
+                checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
+            }
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor colorWithWhite:0.581 alpha:1.000];
             }];
         } else {
-            checkMarkView.image = nil;
-            checkMarkView.hidden = YES;
+            if (animate) {
+                if (!checkMarkView.hidden) {
+                    CGRect oldFrame = checkMarkView.frame;
+                    [UIView animateWithDuration:0.4f delay:0 usingSpringWithDamping:0.6f initialSpringVelocity:0.9f options:UIViewAnimationOptionCurveEaseInOut animations:^() {
+                        checkMarkView.frame = CGRectMake(-oldFrame.size.width, oldFrame.origin.y, oldFrame.size.width, oldFrame.size.width);
+                    }completion:^(BOOL completed) {
+                        checkMarkView.image = nil;
+                        checkMarkView.hidden = YES;
+                    }];
+                }
+            } else {
+                checkMarkView.image = nil;
+                checkMarkView.hidden = YES;
+            }
             if (![task dueToday]) {
                 [UIView animateWithDuration:0.4 animations:^() {
                     label.textColor = [UIColor colorWithWhite:0.581 alpha:1.000];
@@ -195,6 +219,7 @@
         UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
         [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self addActivityCounter];
+            task.completed = [NSNumber numberWithBool:NO];
             [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(){
                 [self removeActivityCounter];
             }                      onError:^(){
@@ -206,6 +231,7 @@
         UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
         [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self addActivityCounter];
+            task.completed = [NSNumber numberWithBool:YES];
             [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(){
                 [self removeActivityCounter];
             }                      onError:^(){
