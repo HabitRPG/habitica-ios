@@ -20,7 +20,8 @@
                         <segue destination="ZPa-UZ-Rgq" kind="relationship" relationship="viewControllers" id="Mh7-dR-Kmc"/>
                         <segue destination="szj-Xo-0pc" kind="relationship" relationship="viewControllers" id="RE5-dd-u1g"/>
                         <segue destination="F9m-od-YIG" kind="relationship" relationship="viewControllers" id="EOb-V7-gLG"/>
-                        <segue destination="JSb-MY-Gwo" kind="relationship" relationship="viewControllers" id="LpH-tm-j4Z"/>
+                        <segue destination="tYf-ZM-zIQ" kind="relationship" relationship="viewControllers" id="UG6-Xr-Pfj"/>
+                        <segue destination="JSb-MY-Gwo" kind="relationship" relationship="viewControllers" id="xXS-0h-Y8G"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
@@ -794,7 +795,6 @@
                     <connections>
                         <segue destination="IS1-JY-8Uz" kind="push" identifier="PartySegue" id="maM-8u-an6"/>
                         <segue destination="zlB-Z7-q34" kind="push" identifier="TavernSegue" id="s1s-PK-ebh"/>
-                        <segue destination="8ft-Gj-Y0Y" kind="push" identifier="RewardsSegue" id="9h3-4Z-6gC"/>
                         <segue destination="KDA-vj-fqc" kind="push" identifier="SpellSegue" id="Hrn-PD-GvG"/>
                         <segue destination="fQG-OL-hM9" kind="push" identifier="EquipmentSegue" id="v29-UF-PPv"/>
                         <segue destination="yfw-7p-kgC" kind="push" identifier="SettingsSegue" id="Z1y-RE-Sif"/>
@@ -1526,7 +1526,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXn-rI-saa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1937" y="1138"/>
+            <point key="canvasLocation" x="121" y="1234"/>
         </scene>
         <!--Party Members View Controller - Members-->
         <scene sceneID="PpQ-CH-ZgY">
@@ -1621,7 +1621,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xi8-lo-Z3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2480" y="786"/>
+            <point key="canvasLocation" x="3006" y="786"/>
         </scene>
         <!--Quest Participants View Controller - Participants-->
         <scene sceneID="duN-cz-yyM">
@@ -1666,7 +1666,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PdK-mK-JlT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2480" y="1350"/>
+            <point key="canvasLocation" x="3006" y="1350"/>
         </scene>
         <!--Tavern View Controller - Tavern-->
         <scene sceneID="a0s-8z-SBX">
@@ -3286,6 +3286,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R58-3N-XlV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="958" y="4662"/>
+        </scene>
+        <!--Navigation Controller - Rewards-->
+        <scene sceneID="ADP-AR-Pd2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tYf-ZM-zIQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Rewards" id="zFI-xr-RjT"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="qZ5-Dx-RNg"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="n1T-X7-pMj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8ft-Gj-Y0Y" kind="relationship" relationship="rootViewController" id="QIQ-wG-Wht"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dx1-TM-9vW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-247" y="1234"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.3490196168422699" green="0.68627452850341797" blue="0.0" alpha="1" colorSpace="deviceRGB"/>

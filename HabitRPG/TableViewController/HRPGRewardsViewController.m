@@ -90,6 +90,12 @@ User *user;
     self.navigationItem.titleView = titleView;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self updateRewardView:nil];
+}
+
 - (void)refresh {
     [self.sharedManager fetchUser:^() {
         [self.refreshControl endRefreshing];
@@ -114,19 +120,20 @@ User *user;
     int moneyWidth = goldImageView.frame.size.width + goldLabel.frame.size.width + silverImageView.frame.size.width + silverLabel.frame.size.width + 7;
 
     moneyView.frame = CGRectMake(50 - (moneyWidth / 2), 20, moneyWidth, 40);
-
-    UILabel *updateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, goldLabel.frame.origin.y, goldLabel.frame.size.width + goldLabel.frame.origin.x, 16)];
-    updateLabel.font = [UIFont systemFontOfSize:13.0f];
-    updateLabel.textAlignment = NSTextAlignmentRight;
-    updateLabel.text = amount;
-    updateLabel.textColor = [UIColor redColor];
-    [moneyView addSubview:updateLabel];
-    [UIView animateWithDuration:0.3 animations:^() {
-        updateLabel.frame = CGRectMake(0, 25, goldLabel.frame.size.width + goldLabel.frame.origin.x, 16);
-        updateLabel.alpha = 0.0f;
-    }                completion:^(BOOL completition) {
-        [updateLabel removeFromSuperview];
-    }];
+    if (amount) {
+        UILabel *updateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, goldLabel.frame.origin.y, goldLabel.frame.size.width + goldLabel.frame.origin.x, 16)];
+        updateLabel.font = [UIFont systemFontOfSize:13.0f];
+        updateLabel.textAlignment = NSTextAlignmentRight;
+        updateLabel.text = amount;
+        updateLabel.textColor = [UIColor redColor];
+        [moneyView addSubview:updateLabel];
+        [UIView animateWithDuration:0.3 animations:^() {
+            updateLabel.frame = CGRectMake(0, 25, goldLabel.frame.size.width + goldLabel.frame.origin.x, 16);
+            updateLabel.alpha = 0.0f;
+        }                completion:^(BOOL completition) {
+            [updateLabel removeFromSuperview];
+        }];
+    }
 }
 
 #pragma mark - Table view data source
@@ -201,7 +208,15 @@ User *user;
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // The table view should not be re-orderable.
-    return YES;
+    return NO;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if ([reward.key isEqualToString:@"reward"]) {
+        return YES;
+    }
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
