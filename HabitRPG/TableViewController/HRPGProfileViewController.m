@@ -77,7 +77,6 @@ NIKFontAwesomeIconFactory *iconFactory;
     footerView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     footerView.numberOfLines = 0;
     self.tableView.tableFooterView = footerView;
-    [self.tableView setSeparatorStyle:(UITableViewCellSeparatorStyleNone)];
     [self.tableView setContentInset:(UIEdgeInsetsMake(0, 0, -50, 0))];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPartyData:) name:@"partyUpdated"  object:nil];
