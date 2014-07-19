@@ -283,7 +283,7 @@ User *user;
                     }
                 }
                 if (gear.index && [[sectionArray lastObject] index] && ![gear.klass isEqualToString:@"special"]) {
-                    if ([[sectionArray lastObject] index] < gear.index) {
+                    if (![[[sectionArray lastObject] klass] isEqualToString:@"special"] && [[sectionArray lastObject] index] < gear.index) {
                         continue;
                     } else if ([[sectionArray lastObject] index] > gear.index) {
                         [sectionArray removeLastObject];
