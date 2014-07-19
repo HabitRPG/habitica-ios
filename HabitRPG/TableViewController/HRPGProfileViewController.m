@@ -106,9 +106,9 @@ NIKFontAwesomeIconFactory *iconFactory;
     switch (section) {
         case 0:
             if (userLevel <= 10) {
-                return 2;
+                return 1;
             } else {
-                return 3;
+                return 2;
             }
         case 1:
             return 2;
@@ -147,8 +147,6 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 1) {
-        [self performSegueWithIdentifier:@"RewardsSegue" sender:self];
-    } else if (indexPath.section == 0 && indexPath.item == 2) {
         [self performSegueWithIdentifier:@"SpellSegue" sender:self];
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         [self performSegueWithIdentifier:@"TavernSegue" sender:self];
@@ -201,9 +199,6 @@ NIKFontAwesomeIconFactory *iconFactory;
         NSString *cellName = @"Cell";
         BOOL showIndicator = NO;
         if (indexPath.section == 0 && indexPath.item == 1) {
-            title = NSLocalizedString(@"Rewards", nil);
-            cellName = @"RewardCell";
-        } else if (indexPath.section == 0 && indexPath.item == 2) {
             title = NSLocalizedString(@"Spells", nil);
         } else if (indexPath.section == 1 && indexPath.item == 0) {
             title = NSLocalizedString(@"Tavern", nil);
@@ -236,43 +231,6 @@ NIKFontAwesomeIconFactory *iconFactory;
         indicatorView.hidden = !showIndicator;
         if (showIndicator) {
             indicatorView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconCircle];
-        }
-        
-        if (indexPath.section == 0 && indexPath.item == 1) {
-            UIView *oldMoneyView = [cell viewWithTag:2];
-            if (oldMoneyView) {
-                [oldMoneyView removeFromSuperview];
-            }
-            
-            User *user = (User *) [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-            NSNumber *gold = user.gold;
-            UIImageView *goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 22)];
-            goldImageView.contentMode = UIViewContentModeScaleAspectFit;
-            [goldImageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]];
-            UILabel *goldLabel = [[UILabel alloc] initWithFrame:CGRectMake(26, 2, 100, 20)];
-            goldLabel.font = [UIFont systemFontOfSize:14.0f];
-            goldLabel.text = [NSString stringWithFormat:@"%ld", (long) [gold integerValue]];
-            [goldLabel sizeToFit];
-            
-            UIImageView *silverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(30 + goldLabel.frame.size.width, 0, 25, 22)];
-            silverImageView.contentMode = UIViewContentModeScaleAspectFit;
-            [silverImageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_silver.png"]];
-            UILabel *silverLabel = [[UILabel alloc] initWithFrame:CGRectMake(30 + goldLabel.frame.size.width + 26, 2, 100, 20)];
-            silverLabel.font = [UIFont systemFontOfSize:14.0f];
-            int silver = ([gold floatValue] - [gold integerValue]) * 100;
-            silverLabel.text = [NSString stringWithFormat:@"%d", silver];
-            [silverLabel sizeToFit];
-            
-            int moneyWidth = goldImageView.frame.size.width + goldLabel.frame.size.width + silverImageView.frame.size.width + silverLabel.frame.size.width + 7;
-            int x_offset = 290-moneyWidth;
-            UIView *moneyView = [[UIView alloc] initWithFrame:CGRectMake(x_offset, cell.frame.size.height/2-10, moneyWidth, 40)];
-            moneyView.tag = 2;
-            [moneyView addSubview:goldLabel];
-            [moneyView addSubview:goldImageView];
-            [moneyView addSubview:silverImageView];
-            [moneyView addSubview:silverLabel];
-            
-            [cell addSubview:moneyView];
         }
         return cell;
     }
