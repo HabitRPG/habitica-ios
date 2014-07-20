@@ -15,6 +15,7 @@
 
 @implementation User
 
+@dynamic background;
 @dynamic contributorLevel;
 @dynamic contributorText;
 @dynamic costumeArmor;
@@ -72,10 +73,14 @@
 @synthesize lastImageGeneration;
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView useForce:(BOOL)force {
-    [self setAvatarOnImageView:imageView withPetMount:YES onlyHead:NO useForce:force];
+    [self setAvatarOnImageView:imageView withPetMount:YES onlyHead:NO withBackground:YES useForce:force];
 }
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead useForce:(BOOL)force {
+    [self setAvatarOnImageView:imageView withPetMount:withPetMount onlyHead:onlyHead withBackground:NO useForce:force];
+}
+
+- (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead withBackground:(BOOL)withBackground useForce:(BOOL)force {
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     HRPGManager *sharedManager = appdelegate.sharedManager;
     NSString *cachedImageName;
@@ -104,11 +109,21 @@
     }
     int currentLayer = 0;
 
+    __block UIImage *background = nil;
     __block UIImage *currentPet = nil;
     __block UIImage *currentMount = nil;
     __block UIImage *currentMountHead = nil;
     dispatch_group_t group = dispatch_group_create();
 
+    if (withBackground && self.background) {
+        dispatch_group_enter(group);
+        [sharedManager getImage:[NSString stringWithFormat:@"background_%@", self.background] withFormat:nil onSuccess:^(UIImage *image) {
+            background = image;
+            dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
+        }];
+    }
     dispatch_group_enter(group);
     [sharedManager getImage:[NSString stringWithFormat:@"skin_%@", self.skin] withFormat:nil onSuccess:^(UIImage *image) {
         [imageArray replaceObjectAtIndex:currentLayer withObject:image];
@@ -327,7 +342,13 @@
             height = 55.0f;
             yoffset = -6.0f;
         }
+
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), NO, 0.0f);
+        
+        if (withBackground && self.background) {
+            [background drawInRect:CGRectMake(0, 0, background.size.width, background.size.height)];
+        }
+        
         if (withPetMount && self.currentMount) {
             yoffset = 0;
             [currentMount drawInRect:CGRectMake(25, 18, currentMount.size.width, currentMount.size.height)];

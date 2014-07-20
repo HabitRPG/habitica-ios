@@ -48,6 +48,8 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
+
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
@@ -121,9 +123,12 @@ NIKFontAwesomeIconFactory *iconFactory;
     }
 }
 
+
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
         case 0:
+            return nil;
             return username;
             break;
         case 1:
@@ -139,7 +144,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 0) {
-        return 170;
+        return 147;
     } else {
         return 44;
     }
@@ -168,20 +173,6 @@ NIKFontAwesomeIconFactory *iconFactory;
         [self.navigationController pushViewController:viewController animated:YES];
     } else if (indexPath.section == 3 && indexPath.item == 2) {
         [UserVoice presentUserVoiceInterfaceForParentViewController:self];
-        /*
-        if ([MFMailComposeViewController canSendMail]) {
-            MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
-            controller.mailComposeDelegate = self;
-            [controller setSubject:@"[RabbitRPG] Feedback"];
-            [controller setToRecipients:@[@"rabbitrpg@pherth.net"]];
-            [self.navigationController presentViewController:controller animated:YES completion:^() {
-
-            }];
-        } else {
-
-        }
-         */
-
     }
 }
 
@@ -349,6 +340,9 @@ NIKFontAwesomeIconFactory *iconFactory;
     }
     UIImageView *imageView = (UIImageView *) [cell viewWithTag:8];
     [user setAvatarOnImageView:imageView useForce:force];
+    
+    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    cell.backgroundColor = [UIColor colorWithWhite:0.973 alpha:1.000];
 }
 
 

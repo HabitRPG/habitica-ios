@@ -619,15 +619,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProfileCell" rowHeight="170" id="FcG-JQ-Puf">
-                                <rect key="frame" x="0.0" y="119" width="320" height="170"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProfileCell" rowHeight="147" id="FcG-JQ-Puf">
+                                <rect key="frame" x="0.0" y="119" width="320" height="147"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FcG-JQ-Puf" id="qEz-re-chf">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="146"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <progressView opaque="NO" tag="3" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="oui-hr-A71">
-                                            <rect key="frame" x="145" y="39" width="155" height="5"/>
+                                            <rect key="frame" x="145" y="35" width="155" height="5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="4" id="sgW-7o-WF0"/>
                                             </constraints>
@@ -635,7 +635,7 @@
                                             <color key="trackTintColor" red="0.81507337093353271" green="0.8150489330291748" blue="0.81506282091140747" alpha="1" colorSpace="calibratedRGB"/>
                                         </progressView>
                                         <progressView opaque="NO" tag="5" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="4bv-3z-sO4">
-                                            <rect key="frame" x="145" y="78" width="155" height="5"/>
+                                            <rect key="frame" x="145" y="70" width="155" height="5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="4" id="wNt-a2-JSl"/>
                                             </constraints>
@@ -643,7 +643,7 @@
                                             <color key="trackTintColor" red="0.81507337093353271" green="0.8150489330291748" blue="0.81506282091140747" alpha="1" colorSpace="calibratedRGB"/>
                                         </progressView>
                                         <progressView opaque="NO" tag="7" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="JFG-i2-615">
-                                            <rect key="frame" x="145" y="117" width="155" height="5"/>
+                                            <rect key="frame" x="145" y="105" width="155" height="5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="4" id="XbX-qx-UXu"/>
                                             </constraints>
@@ -651,7 +651,7 @@
                                             <color key="trackTintColor" red="0.81507337093353271" green="0.8150489330291748" blue="0.81506282091140747" alpha="1" colorSpace="calibratedRGB"/>
                                         </progressView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40/50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qiw-pc-Mto">
-                                            <rect key="frame" x="145" y="18" width="155" height="21"/>
+                                            <rect key="frame" x="145" y="14" width="155" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="jCE-XQ-97V"/>
                                             </constraints>
@@ -660,7 +660,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40/100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Kn-hU-vEb">
-                                            <rect key="frame" x="145" y="57" width="155" height="21"/>
+                                            <rect key="frame" x="145" y="49" width="155" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="Ley-Vb-xmN"/>
                                             </constraints>
@@ -669,7 +669,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="65/82" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wy0-6I-mgC">
-                                            <rect key="frame" x="145" y="96" width="155" height="21"/>
+                                            <rect key="frame" x="145" y="84" width="155" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="J4w-ie-EyP"/>
                                             </constraints>
@@ -678,7 +678,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lvl 21" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8k-C0-R9R">
-                                            <rect key="frame" x="210" y="136" width="90" height="21"/>
+                                            <rect key="frame" x="210" y="121" width="90" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="90" id="HTM-de-ZQ5"/>
                                                 <constraint firstAttribute="height" constant="21" id="TNJ-rw-RjW"/>
@@ -688,7 +688,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" tag="8" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s2X-gz-ZN8">
-                                            <rect key="frame" x="0.0" y="10" width="140" height="147"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="147"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="147" id="Kn9-wG-fsA"/>
                                                 <constraint firstAttribute="width" constant="140" id="dPL-L6-VhO"/>
@@ -698,20 +698,20 @@
                                     <constraints>
                                         <constraint firstItem="JFG-i2-615" firstAttribute="top" secondItem="Wy0-6I-mgC" secondAttribute="bottom" id="2ZE-TU-d9m"/>
                                         <constraint firstItem="qiw-pc-Mto" firstAttribute="leading" secondItem="s2X-gz-ZN8" secondAttribute="trailing" constant="5" id="3e5-7R-nXL"/>
-                                        <constraint firstItem="qiw-pc-Mto" firstAttribute="top" secondItem="qEz-re-chf" secondAttribute="top" constant="18" id="CcQ-Ea-gjN"/>
+                                        <constraint firstItem="qiw-pc-Mto" firstAttribute="top" secondItem="qEz-re-chf" secondAttribute="top" constant="14" id="CcQ-Ea-gjN"/>
                                         <constraint firstAttribute="trailing" secondItem="JFG-i2-615" secondAttribute="trailing" constant="20" id="CeP-Ld-WYS"/>
                                         <constraint firstAttribute="trailing" secondItem="Wy0-6I-mgC" secondAttribute="trailing" constant="20" id="Ghr-JH-aIm"/>
                                         <constraint firstAttribute="trailing" secondItem="oui-hr-A71" secondAttribute="trailing" constant="20" id="JzW-Mb-Ed8"/>
-                                        <constraint firstItem="s2X-gz-ZN8" firstAttribute="top" secondItem="qEz-re-chf" secondAttribute="top" constant="10" id="LZZ-Ld-fTS"/>
-                                        <constraint firstItem="s2X-gz-ZN8" firstAttribute="bottom" secondItem="G8k-C0-R9R" secondAttribute="bottom" id="RZV-d1-Tzy"/>
+                                        <constraint firstItem="s2X-gz-ZN8" firstAttribute="top" secondItem="qEz-re-chf" secondAttribute="top" id="LZZ-Ld-fTS"/>
+                                        <constraint firstItem="s2X-gz-ZN8" firstAttribute="bottom" secondItem="G8k-C0-R9R" secondAttribute="bottom" constant="5" id="RZV-d1-Tzy"/>
                                         <constraint firstAttribute="trailing" secondItem="4bv-3z-sO4" secondAttribute="trailing" constant="20" id="V4L-Pv-6ra"/>
                                         <constraint firstItem="s2X-gz-ZN8" firstAttribute="leading" secondItem="qEz-re-chf" secondAttribute="leading" id="Wt5-kJ-V6I"/>
                                         <constraint firstAttribute="trailing" secondItem="1Kn-hU-vEb" secondAttribute="trailing" constant="20" id="aCr-4M-q7C"/>
                                         <constraint firstItem="oui-hr-A71" firstAttribute="leading" secondItem="s2X-gz-ZN8" secondAttribute="trailing" constant="5" id="cxk-h0-Hep"/>
                                         <constraint firstItem="qiw-pc-Mto" firstAttribute="leading" secondItem="1Kn-hU-vEb" secondAttribute="leading" id="eOx-4U-qV5"/>
                                         <constraint firstAttribute="trailing" secondItem="qiw-pc-Mto" secondAttribute="trailing" constant="20" id="i4R-qA-DK4"/>
-                                        <constraint firstItem="1Kn-hU-vEb" firstAttribute="top" secondItem="qiw-pc-Mto" secondAttribute="bottom" constant="18" id="jLn-A3-vzK"/>
-                                        <constraint firstItem="Wy0-6I-mgC" firstAttribute="top" secondItem="1Kn-hU-vEb" secondAttribute="bottom" constant="18" id="jk5-dS-etT"/>
+                                        <constraint firstItem="1Kn-hU-vEb" firstAttribute="top" secondItem="qiw-pc-Mto" secondAttribute="bottom" constant="14" id="jLn-A3-vzK"/>
+                                        <constraint firstItem="Wy0-6I-mgC" firstAttribute="top" secondItem="1Kn-hU-vEb" secondAttribute="bottom" constant="14" id="jk5-dS-etT"/>
                                         <constraint firstItem="4bv-3z-sO4" firstAttribute="leading" secondItem="oui-hr-A71" secondAttribute="leading" id="kNW-va-f30"/>
                                         <constraint firstItem="4bv-3z-sO4" firstAttribute="top" secondItem="1Kn-hU-vEb" secondAttribute="bottom" id="nbP-Za-gRE"/>
                                         <constraint firstAttribute="trailing" secondItem="G8k-C0-R9R" secondAttribute="trailing" constant="20" id="nfw-F1-HMF"/>
@@ -722,7 +722,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyProfileCell" textLabel="Spy-XJ-HaY" style="IBUITableViewCellStyleDefault" id="yyr-L9-GbT">
-                                <rect key="frame" x="0.0" y="289" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="266" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yyr-L9-GbT" id="fXl-MT-h7S">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -739,7 +739,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="ugt-ba-bZL">
-                                <rect key="frame" x="0.0" y="333" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="310" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ugt-ba-bZL" id="Wng-vv-ZBj">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -769,7 +769,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RewardCell" id="0Rn-bL-tBz">
-                                <rect key="frame" x="0.0" y="377" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="354" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Rn-bL-tBz" id="pqN-yU-SES">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>

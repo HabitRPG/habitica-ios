@@ -13,6 +13,7 @@
 
 @interface User : NSManagedObject
 
+@property(nonatomic, retain) NSString *background;
 @property(nonatomic, retain) NSNumber *contributorLevel;
 @property(nonatomic, retain) NSString *contributorText;
 @property(nonatomic, retain) NSString *costumeArmor;
@@ -138,7 +139,7 @@
 - (void)setAvatarOnImageView:(UIImageView *)imageView useForce:(BOOL)force;
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead useForce:(BOOL)force;
-
+- (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead withBackground:(BOOL)withBackground useForce:(BOOL)force;
 -(UIColor*) classColor;
 
 -(UIColor*) contributorColor;

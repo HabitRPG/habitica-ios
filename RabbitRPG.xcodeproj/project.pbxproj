@@ -133,6 +133,7 @@
 		D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGImageOverlayView.m; sourceTree = "<group>"; };
 		D94796081972C248002CB34C /* HRPGUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGUserProfileViewController.h; sourceTree = "<group>"; };
 		D94796091972C248002CB34C /* HRPGUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGUserProfileViewController.m; sourceTree = "<group>"; };
+		D947E646197B45C8001FBA6E /* HabitRPG 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 3.xcdatamodel"; sourceTree = "<group>"; };
 		D94AADAF192973CD00546C8E /* HabitRPG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitRPG.xcdatamodel; sourceTree = "<group>"; };
 		D94AADB1192974AD00546C8E /* HabitRPG 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 2.xcdatamodel"; sourceTree = "<group>"; };
 		D94AADB2192A30F900546C8E /* Spell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spell.h; sourceTree = "<group>"; };
@@ -1180,9 +1181,10 @@
 			isa = XCVersionGroup;
 			children = (
 				D94AADB1192974AD00546C8E /* HabitRPG 2.xcdatamodel */,
+				D947E646197B45C8001FBA6E /* HabitRPG 3.xcdatamodel */,
 				D94AADAF192973CD00546C8E /* HabitRPG.xcdatamodel */,
 			);
-			currentVersion = D94AADB1192974AD00546C8E /* HabitRPG 2.xcdatamodel */;
+			currentVersion = D947E646197B45C8001FBA6E /* HabitRPG 3.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
