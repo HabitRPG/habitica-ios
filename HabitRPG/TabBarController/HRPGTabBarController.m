@@ -9,6 +9,10 @@
 #import "HRPGTabBarController.h"
 #import "NIKFontAwesomeIconFactory.h"
 #import "NIKFontAwesomeIconFactory+iOS.h"
+#if DEBUG
+#import "FLEXManager.h"
+#endif
+
 
 @interface HRPGTabBarController ()
 
@@ -52,6 +56,14 @@
 
     [self.tabBar setTintColor:[UIColor colorWithRed:0.366 green:0.599 blue:0.014 alpha:1.000]];
 
+    
+#if DEBUG
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(showDebugMenu:)];
+    [swipe setDirection:UISwipeGestureRecognizerDirectionUp];
+    [swipe setDelaysTouchesBegan:YES];
+    [swipe setNumberOfTouchesRequired:3];
+    [[self view] addGestureRecognizer:swipe];
+#endif
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
@@ -60,5 +72,14 @@
         [navController.topViewController setEditing:NO animated:YES];
     }
 }
+#if DEBUG
+
+- (void)showDebugMenu:(UISwipeGestureRecognizer *)swipeRecognizer {
+    if (swipeRecognizer.state == UIGestureRecognizerStateRecognized) {
+        // This could also live in a handler for a keyboard shortcut, debug menu item, etc.
+        [[FLEXManager sharedManager] showExplorer];
+    }
+}
+#endif
 
 @end
