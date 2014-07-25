@@ -183,9 +183,13 @@ ChatMessage *selectedMessage;
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         UILabel *label = (UILabel*)[cell viewWithTag:1];
         UIActivityIndicatorView *indicator = (UIActivityIndicatorView*)[cell viewWithTag:2];
+        [indicator startAnimating];
         [UIView animateWithDuration:0.4 animations:^() {
             label.hidden = YES;
             indicator.hidden = NO;
+        } completion:^(BOOL completed) {
+            if (completed) {
+            }
         }];
         [self.sharedManager sleepInn:^() {
             NSString *notificationText;
@@ -436,26 +440,6 @@ ChatMessage *selectedMessage;
     UILabel *dateLabel = (UILabel *) [cell viewWithTag:3];
     dateLabel.text = [message.timestamp timeAgo];
     dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == actionSheet.destructiveButtonIndex) {
-        [self.sharedManager deleteMessage:selectedMessage withGroup:@"habitrpg" onSuccess:^() {
-            selectedMessage = nil;
-        } onError:^() {
-        }];
-    } else if (buttonIndex != actionSheet.cancelButtonIndex) {
-        UIPasteboard *pb = [UIPasteboard generalPasteboard];
-        if (selectedMessage.user != nil) {
-            [pb setString:[selectedMessage.text substringWithRange:NSMakeRange(1, [selectedMessage.text length]-2)]];
-        } else {
-            [pb setString:selectedMessage.text];
-        }
-    }
-}
-
--(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
 }
 
 #pragma mark - Navigation
