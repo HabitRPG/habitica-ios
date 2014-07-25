@@ -246,6 +246,8 @@ NSIndexPath *selectedIndex;
         detailLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Constitution: %@", nil), gear.con];
     } else if ([gear.per integerValue] != 0) {
         detailLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Perception: %@", nil), gear.per];
+    } else {
+        detailLabel.text = NSLocalizedString(@"No Effect", nil);
     }
     
     UIImageView *imageView = (UIImageView*)[cell viewWithTag:4];
