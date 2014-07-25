@@ -1718,46 +1718,47 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestCell" id="JkZ-rw-d2Y">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InnCell" id="Q8k-0X-faI">
                                 <rect key="frame" x="0.0" y="199" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JkZ-rw-d2Y" id="pjW-rs-PmF">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rest in the Inn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfZ-gH-8Mj">
-                                            <rect key="frame" x="20" y="11" width="280" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.37176278229999998" green="0.60343527789999996" blue="0.01396516152" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <activityIndicatorView opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Ufz-VA-t1R">
-                                            <rect key="frame" x="150" y="11" width="20" height="20"/>
-                                        </activityIndicatorView>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WakeupCell" id="Q8k-0X-faI">
-                                <rect key="frame" x="0.0" y="243" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q8k-0X-faI" id="dtW-eD-8bD">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leave the Inn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2F8-My-WsR">
-                                            <rect key="frame" x="20" y="11" width="280" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leave the Inn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2F8-My-WsR">
+                                            <rect key="frame" x="151" y="11" width="159" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.76852512360000003" green="0.011095160620000001" blue="0.086223028600000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <activityIndicatorView opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="57r-52-LWf">
-                                            <rect key="frame" x="150" y="11" width="20" height="20"/>
+                                        <activityIndicatorView opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="57r-52-LWf">
+                                            <rect key="frame" x="221" y="11" width="20" height="20"/>
                                         </activityIndicatorView>
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V8g-4a-6cS">
+                                            <rect key="frame" x="8" y="-40" width="135" height="123"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="135" id="8Rt-ml-jUL"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="123" id="Df2-lq-xBm"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="135" id="Hqf-Ae-Ib2"/>
+                                                <constraint firstAttribute="height" constant="123" id="sCQ-PZ-fef"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="2F8-My-WsR" secondAttribute="bottom" constant="11" id="24Z-hl-cGU"/>
+                                        <constraint firstItem="2F8-My-WsR" firstAttribute="leading" secondItem="V8g-4a-6cS" secondAttribute="trailing" constant="8" id="BbD-Jf-VZk"/>
+                                        <constraint firstItem="2F8-My-WsR" firstAttribute="top" secondItem="dtW-eD-8bD" secondAttribute="top" constant="11" id="FoX-Tx-yTS"/>
+                                        <constraint firstItem="V8g-4a-6cS" firstAttribute="leading" secondItem="dtW-eD-8bD" secondAttribute="leading" constant="8" id="KKY-hz-rBq"/>
+                                        <constraint firstAttribute="centerY" secondItem="57r-52-LWf" secondAttribute="centerY" id="NF1-VC-Gd0"/>
+                                        <constraint firstItem="57r-52-LWf" firstAttribute="centerX" secondItem="2F8-My-WsR" secondAttribute="centerX" id="SDi-fR-I00"/>
+                                        <constraint firstAttribute="centerY" secondItem="V8g-4a-6cS" secondAttribute="centerY" id="f8A-4L-8a2"/>
+                                        <constraint firstAttribute="trailing" secondItem="2F8-My-WsR" secondAttribute="trailing" constant="10" id="g7w-LT-jH2"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OwnButtonCell" id="e1b-Zp-D0x">
-                                <rect key="frame" x="0.0" y="287" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="243" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e1b-Zp-D0x" id="YFs-by-5w4">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1812,7 +1813,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ButtonCell" id="QMn-7G-pvC">
-                                <rect key="frame" x="0.0" y="331" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="287" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QMn-7G-pvC" id="v2h-JZ-D0q">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1853,7 +1854,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuestCell" textLabel="LGl-02-uVw" style="IBUITableViewCellStyleDefault" id="4fG-xt-Umw">
-                                <rect key="frame" x="0.0" y="375" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="331" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4fG-xt-Umw" id="bU9-CA-xLQ">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -1871,7 +1872,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LifeCell" id="RTx-Xe-Px2">
-                                <rect key="frame" x="0.0" y="419" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="375" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RTx-Xe-Px2" id="1J8-Ft-oPf">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1903,7 +1904,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RageCell" id="Led-Ie-Iph">
-                                <rect key="frame" x="0.0" y="463" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="419" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Led-Ie-Iph" id="7WI-G7-Qgr">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>

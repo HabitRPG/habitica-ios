@@ -137,7 +137,7 @@ ChatMessage *selectedMessage;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 44;
+        return 123;
     } else if (indexPath.section == 1 && [self.tavern.questActive boolValue]) {
         if (indexPath.item == 0) {
             NSInteger height = [self.quest.text boundingRectWithSize:CGSizeMake(270.0f, MAXFLOAT)
@@ -242,11 +242,7 @@ ChatMessage *selectedMessage;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellname;
     if (indexPath.section == 0 && indexPath.item == 0) {
-        if (user.sleep) {
-            cellname = @"WakeupCell";
-        } else {
-            cellname = @"RestCell";
-        }
+        cellname = @"InnCell";
     } else if (indexPath.section == 1 && [self.tavern.questActive boolValue]) {
         if (indexPath.item == 0) {
             cellname = @"QuestCell";
@@ -270,9 +266,21 @@ ChatMessage *selectedMessage;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     if (indexPath.section == 0 && indexPath.item == 0) {
         UILabel *label = (UILabel*)[cell viewWithTag:1];
+        if (user.sleep) {
+            label.text = NSLocalizedString(@"Leave the Inn", nil);
+            label.textColor = [UIColor colorWithRed:0.894 green:0.008 blue:0.000 alpha:1.000];
+        } else {
+            label.text = NSLocalizedString(@"Rest in the Inn", nil);
+            label.textColor = [UIColor colorWithRed:0.366 green:0.599 blue:0.014 alpha:1.000];
+        }
         UIActivityIndicatorView *indicator = (UIActivityIndicatorView*)[cell viewWithTag:2];
         label.hidden = NO;
         indicator.hidden = YES;
+        
+        UIImageView *innImageView = (UIImageView*)[cell viewWithTag:3];
+        if (innImageView.image == nil) {
+            [innImageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/npc_daniel.png"] placeholderImage:[UIImage imageWithContentsOfFile:@"Placeholder"]];
+        }
     } else {
         [self configureCell:cell atIndexPath:indexPath];
     }
