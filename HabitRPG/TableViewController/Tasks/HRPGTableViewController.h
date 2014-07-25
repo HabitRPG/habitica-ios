@@ -16,5 +16,8 @@
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue;
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+- (NSPredicate*) getPredicate;
+@property BOOL displayCompleted;
 
 @end
+

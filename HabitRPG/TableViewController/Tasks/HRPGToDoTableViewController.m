@@ -26,7 +26,7 @@
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
 @property NSDateFormatter *dateFormatter;
-
+@property UILabel *toggleCompletedView;
 @end
 
 @implementation HRPGToDoTableViewController
@@ -56,6 +56,31 @@
 
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateStyle = NSDateFormatterShortStyle;
+    
+    self.toggleCompletedView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 45)];
+    self.toggleCompletedView.text = NSLocalizedString(@"Show completed To-Dos", nil);
+    self.toggleCompletedView.textAlignment = NSTextAlignmentCenter;
+    self.toggleCompletedView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
+    self.toggleCompletedView.textColor = [UIColor colorWithRed:0.366 green:0.599 blue:0.014 alpha:1.000];
+
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.frame = CGRectMake(0.0f, self.toggleCompletedView.frame.size.height, self.toggleCompletedView.frame.size.width, 1.0f);
+    bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
+                                                     alpha:1.0f].CGColor;
+    [self.toggleCompletedView.layer addSublayer:bottomBorder];
+    CALayer *topBorder = [CALayer layer];
+    topBorder.frame = CGRectMake(0.0f, -1.0f, self.toggleCompletedView.frame.size.width, 1.0f);
+    topBorder.backgroundColor = [UIColor colorWithWhite:0.8f
+                                                     alpha:1.0f].CGColor;
+    [self.toggleCompletedView.layer addSublayer:topBorder];
+    
+    self.tableView.tableFooterView = self.toggleCompletedView;
+    
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(toggleCompletedTasks:)];
+    [self.toggleCompletedView setUserInteractionEnabled:YES];
+    [self.toggleCompletedView addGestureRecognizer:singleFingerTap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,6 +95,20 @@
     // border radius
     [v.layer setCornerRadius:5.0f];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 1) {
+        return 45;
+    }
+    return 0.1;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 1) {
+        return self.toggleCompletedView;
+    }
+    return nil;
 }
 
 - (void)configureCell:(HRPGSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
@@ -251,6 +290,25 @@
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     imageView.contentMode = UIViewContentModeCenter;
     return imageView;
+}
+
+- (void)toggleCompletedTasks:(UITapGestureRecognizer*)tapRecognizer {
+    self.displayCompleted = !self.displayCompleted;
+    [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
+    NSError *error;
+    [self.fetchedResultsController performFetch:&error];
+    if (self.displayCompleted) {
+        self.tableView.tableFooterView = nil;
+        self.toggleCompletedView.text = NSLocalizedString(@"Hide completed To-Dos", nil);
+        [self.tableView insertSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationBottom];
+    } else {
+        self.toggleCompletedView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 45);
+        self.tableView.tableFooterView = self.toggleCompletedView;
+        [UIView animateWithDuration:0.4f animations:^() {
+            self.toggleCompletedView.text = NSLocalizedString(@"Show completed To-Dos", nil);
+        }];
+        [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationBottom];
+    }
 }
 
 @end
