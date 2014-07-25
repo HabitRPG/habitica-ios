@@ -129,7 +129,6 @@ NIKFontAwesomeIconFactory *iconFactory;
     switch (section) {
         case 0:
             return nil;
-            return username;
             break;
         case 1:
             return NSLocalizedString(@"Social", nil);

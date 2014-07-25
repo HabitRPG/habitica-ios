@@ -40,7 +40,8 @@ ChatMessage *selectedMessage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
+    
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
@@ -126,7 +127,7 @@ ChatMessage *selectedMessage;
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return NSLocalizedString(@"Inn", nil);
+        return nil;
     } else if (section == 1 && [self.tavern.questActive boolValue]) {
         return NSLocalizedString(@"World Quest", nil);
     } else {
