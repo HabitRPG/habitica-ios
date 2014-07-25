@@ -317,13 +317,18 @@ BOOL editable;
     NSSortDescriptor *completedDescriptor = [[NSSortDescriptor alloc] initWithKey:@"completed" ascending:YES];
     NSSortDescriptor *orderDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
     NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:NO];
-    NSArray *sortDescriptors = @[completedDescriptor, orderDescriptor, dateDescriptor];
+    NSArray *sortDescriptors;
+    NSString *sectionKey;
+    if ([_typeName isEqual:@"todo"]) {
+        sectionKey = @"completed";
+        sortDescriptors = @[completedDescriptor, orderDescriptor, dateDescriptor];
+    } else {
+        sortDescriptors = @[orderDescriptor, dateDescriptor];
+    }
 
     [fetchRequest setSortDescriptors:sortDescriptors];
 
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"completed" cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:sectionKey cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
