@@ -79,15 +79,20 @@ NSString *currentUser;
     [RKObjectManager setSharedManager:objectManager];
     [RKObjectManager sharedManager].requestSerializationMIMEType = RKMIMETypeJSON;
     [objectManager.HTTPClient setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        if (status == AFNetworkReachabilityStatusUnknown) {
+            return;
+        }
         if (status == AFNetworkReachabilityStatusNotReachable) {
             NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"No Network connection", nil),
-                    kCRToastSubtitleTextKey : NSLocalizedString(@"You need a network connection to do that.", nil),
-                    kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                    kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f]};
+                                      kCRToastSubtitleTextKey : NSLocalizedString(@"You need a network connection to do that.", nil),
+                                      kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                                      kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                                      kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],
+                                      kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
+                                      };
             [CRToastManager showNotificationWithOptions:options
                                         completionBlock:^{
-            }];
-
+                                        }];
         }
     }];
 
