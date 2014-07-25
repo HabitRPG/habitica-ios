@@ -21,6 +21,7 @@
 @property (nonatomic) HRPGManager *sharedManager;
 @property (nonatomic) NSArray *eggs;
 @property (nonatomic) NSString *selectedPet;
+@property (nonatomic) NSString *selectedType;
 @property (nonatomic) NSArray *sortedPets;
 @property NSInteger activityCounter;
 @property UIBarButtonItem *navigationButton;
@@ -82,8 +83,22 @@
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *petArray = self.sortedPets[indexPath.section][indexPath.item];
     Pet *namePet = [petArray firstObject];
-    self.selectedPet = [namePet.key componentsSeparatedByString:@"-"][0];
-    return YES;
+    int trained = 0;
+    for (Pet *pet in petArray) {
+        if (pet.trained) {
+            trained++;
+        }
+    }
+    if (trained > 0) {
+        self.selectedPet = [namePet.key componentsSeparatedByString:@"-"][0];
+        if ([namePet.type isEqualToString:@" "]) {
+            self.selectedType = [namePet.key componentsSeparatedByString:@"-"][1];
+        } else {
+            self.selectedType = nil;
+        }
+        return YES;
+    }
+    return NO;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -228,9 +243,13 @@
             trained++;
         }
     }
+    NSString *petType = @"Base";
+    if ([namePet.type isEqualToString:@" "]) {
+        petType = [namePet.key componentsSeparatedByString:@"-"][1];
+    }
     
     if (trained > 0) {
-        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet-%@-Base.png", key]]
+        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet-%@-%@.png", key, petType]]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
         imageView.alpha = 1;
     } else {
@@ -260,6 +279,7 @@
     if (![segue.identifier isEqualToString:@"PetSegue"]) {
         HRPGPetViewController *petController = (HRPGPetViewController*)segue.destinationViewController;
         petController.petName = self.selectedPet;
+        petController.petType = self.selectedType;
     }
 }
 

@@ -156,8 +156,12 @@
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@", self.petName]];
-
+    if (self.mountType) {
+        NSString *completeName = [NSString stringWithFormat:@"%@-%@", self.mountName, self.mountType];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key = %@", completeName]];
+    } else {
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@", self.mountName]];
+    }
     // Edit the sort key as appropriate.
     NSSortDescriptor *typeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];

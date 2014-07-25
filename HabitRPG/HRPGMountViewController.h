@@ -13,6 +13,6 @@
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
-@property (nonatomic) NSString *petName;
-
+@property (nonatomic) NSString *mountName;
+@property (nonatomic) NSString *mountType;
 @end

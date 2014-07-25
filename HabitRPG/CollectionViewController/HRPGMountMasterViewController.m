@@ -21,7 +21,8 @@
 @property (nonatomic) HRPGManager *sharedManager;
 @property (nonatomic) NSArray *eggs;
 @property (nonatomic) NSArray *hatchingPotions;
-@property (nonatomic) NSString *selectedPet;
+@property (nonatomic) NSString *selectedMount;
+@property (nonatomic) NSString *selectedType;
 @property (nonatomic) NSArray *sortedPets;
 @property NSInteger activityCounter;
 @property UIBarButtonItem *navigationButton;
@@ -83,8 +84,22 @@
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *petArray = self.sortedPets[indexPath.section][indexPath.item];
     Pet *namePet = [petArray firstObject];
-    self.selectedPet = [namePet.key componentsSeparatedByString:@"-"][0];
-    return YES;
+    int mounted = 0;
+    for (Pet *pet in petArray) {
+        if (pet.asMount) {
+            mounted++;
+        }
+    }
+    if (mounted > 0) {
+        self.selectedMount = [namePet.key componentsSeparatedByString:@"-"][0];
+        if ([namePet.type isEqualToString:@" "]) {
+            self.selectedType = [namePet.key componentsSeparatedByString:@"-"][1];
+        } else {
+            self.selectedType = nil;
+        }
+        return YES;
+    }
+    return NO;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -259,7 +274,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if (![segue.identifier isEqualToString:@"PetSegue"]) {
         HRPGMountViewController *petController = (HRPGMountViewController*)segue.destinationViewController;
-        petController.petName = self.selectedPet;
+        petController.mountName = self.selectedMount;
+        petController.mountType = self.selectedType;
     }
 }
 
