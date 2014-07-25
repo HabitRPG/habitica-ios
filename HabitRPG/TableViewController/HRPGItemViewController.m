@@ -181,7 +181,7 @@
     } else if ([item isKindOfClass:[Egg class]]) {
         extraItem = NSLocalizedString(@"Hatch with Potion", nil);
     }
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:NSLocalizedString(@"Sell", nil) otherButtonTitles:extraItem, nil];
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:[NSString stringWithFormat:NSLocalizedString(@"Sell (%@ Gold)", nil), item.value] otherButtonTitles:extraItem, nil];
     popup.tag = 1;
     self.selectedItem = item;
     [popup showInView:[UIApplication sharedApplication].keyWindow];}
