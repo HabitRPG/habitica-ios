@@ -635,6 +635,24 @@ NSString *currentUser;
 
     [objectManager addResponseDescriptor:responseDescriptor];
 
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"/api/v2/groups/:groupID"];
+        
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
+        if (match) {
+            NSString *groupID = [argsDict objectForKey:@"groupID"];
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Group"];
+            if ([groupID isEqualToString:@"party"]) {
+                groupID = user.party.id;
+            }
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"id = %@", groupID];
+            return fetchRequest;
+        }
+        
+        return nil;
+    }];
+    
     RKEntityMapping *gearMapping = [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
     gearMapping.forceCollectionMapping = YES;
     [gearMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
