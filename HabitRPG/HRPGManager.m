@@ -517,6 +517,9 @@ NSString *currentUser;
             @"quest.progress.hp" : @"questHP",
             @"quest.progress.rage" : @"questRage",
             @"quest.active" : @"questActive",
+            @"quest.extra.worldDmg.tavern" : @"worldDmgTavern",
+            @"quest.extra.worldDmg.stable" : @"worldDmgStable",
+            @"quest.extra.worldDmg.market" : @"worldDmgMarket",
             @"privacy" : @"privacy",
             @"type" : @"type"
     }];

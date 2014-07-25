@@ -278,9 +278,11 @@ ChatMessage *selectedMessage;
         indicator.hidden = YES;
         
         UIImageView *innImageView = (UIImageView*)[cell viewWithTag:3];
-        if (innImageView.image == nil) {
-            [innImageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/npc_daniel.png"] placeholderImage:[UIImage imageWithContentsOfFile:@"Placeholder"]];
+        NSString *url = @"http://pherth.net/habitrpg/npc_daniel.png";
+        if ([self.tavern.worldDmgTavern boolValue]) {
+            url = @"http://pherth.net/habitrpg/npc_daniel_broken.png";
         }
+        [innImageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageWithContentsOfFile:@"Placeholder"]];
     } else {
         [self configureCell:cell atIndexPath:indexPath];
     }

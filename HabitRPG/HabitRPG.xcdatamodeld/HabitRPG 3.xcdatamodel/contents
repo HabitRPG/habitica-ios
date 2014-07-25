@@ -56,6 +56,9 @@
         <attribute name="questRage" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unreadMessages" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="worldDmgMarket" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="worldDmgStable" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="worldDmgTavern" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ChatMessage" inverseName="group" inverseEntity="ChatMessage" syncable="YES"/>
         <relationship name="collectStatus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestCollect" inverseName="group" inverseEntity="QuestCollect" syncable="YES"/>
         <relationship name="leader" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
@@ -241,7 +244,7 @@
         <element name="Egg" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Food" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Gear" positionX="0" positionY="0" width="128" height="210"/>
-        <element name="Group" positionX="0" positionY="0" width="128" height="270"/>
+        <element name="Group" positionX="0" positionY="0" width="128" height="315"/>
         <element name="HatchingPotion" positionX="0" positionY="0" width="128" height="60"/>
         <element name="Item" positionX="0" positionY="0" width="128" height="150"/>
         <element name="MetaReward" positionX="0" positionY="0" width="128" height="120"/>

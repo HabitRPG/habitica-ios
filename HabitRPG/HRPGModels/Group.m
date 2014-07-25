@@ -18,6 +18,9 @@
 @dynamic questHP;
 @dynamic questRage;
 @dynamic questKey;
+@dynamic worldDmgTavern;
+@dynamic worldDmgStable;
+@dynamic worldDmgMarket;
 @dynamic unreadMessages;
 @dynamic type;
 @dynamic chatmessages;
