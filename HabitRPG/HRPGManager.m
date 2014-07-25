@@ -1666,7 +1666,7 @@ NSString *currentUser;
 - (void)displayLevelUpNotification {
     UIColor *notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
     NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Level up!", nil),
-            kCRToastSubtitleTextKey : [NSString stringWithFormat:@"Level %d", ([user.level integerValue] + 1)],
+            kCRToastSubtitleTextKey : [NSString stringWithFormat:@"Level %ld", ([user.level integerValue] + 1)],
             kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
             kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
             kCRToastBackgroundColorKey : notificationColor,

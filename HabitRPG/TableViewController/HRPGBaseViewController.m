@@ -35,18 +35,19 @@
         UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
         [self presentViewController:navigationController animated:NO completion:nil];
     }
-
-    [[NSNotificationCenter defaultCenter]
-            addObserver:self
-               selector:@selector(preferredContentSizeChanged:)
-                   name:UIContentSizeCategoryDidChangeNotification
-                 object:nil];
     
     self.activityCounter = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(preferredContentSizeChanged:)
+     name:UIContentSizeCategoryDidChangeNotification
+     object:nil];
+    
     if (self.refreshControl.isRefreshing) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.refreshControl beginRefreshing];
@@ -64,6 +65,11 @@
         UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"deathNavigationController"];
         [self presentViewController:navigationController animated:YES completion:nil];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super viewWillDisappear:animated];
 }
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
