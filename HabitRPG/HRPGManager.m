@@ -1728,7 +1728,11 @@ NSString *currentUser;
     imageOverlayView.width = 180;
     imageOverlayView.height = 120;
     [imageOverlayView displayImageWithName:[NSString stringWithFormat:@"Pet_%@_%@.png", type, name]];
-    imageOverlayView.descriptionText = [NSString stringWithFormat:@"You found a %@!", name];
+    if ([[type lowercaseString] isEqualToString:@"food"]) {
+        imageOverlayView.descriptionText = [NSString stringWithFormat:@"You found a %@!", name];
+    } else {
+        imageOverlayView.descriptionText = [NSString stringWithFormat:@"You found a %@ %@!", name, type];
+    }
     if (!note) {
         imageOverlayView.detailText = note;
     }
