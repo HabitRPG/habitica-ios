@@ -172,7 +172,7 @@ ChatMessage *selectedMessage;
                                        attributes:@{
                                                NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                        }
-                                          context:nil].size.height + 40;
+                                          context:nil].size.height + 41	;
     }
 }
 
