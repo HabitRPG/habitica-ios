@@ -8,16 +8,18 @@
 
 #import "HRPGQuestDetailViewController.h"
 #import "HRPGAppDelegate.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRPGQuestDetailViewController ()
 @property HRPGManager *sharedManager;
+@property UIImage *bossImage;
 @end
 
 @implementation HRPGQuestDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     _sharedManager = appdelegate.sharedManager;
     if (self.party.questKey != nil && ![self.party.questActive boolValue] && self.user.participateInQuest == nil) {
@@ -48,7 +50,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return 2;
+            return 3;
         case 1:
             if ([self.hideAskLater boolValue]) {
                 return 2;
@@ -67,12 +69,19 @@
                                                         }
                                               context:nil].size.height + 16;
     } else if (indexPath.section == 0 && indexPath.item == 1) {
-        return [self.quest.notes boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
-                                              options:NSStringDrawingUsesLineFragmentOrigin
-                                           attributes:@{
-                                                   NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
-                                           }
-                                              context:nil].size.height + 80;
+        return self.bossImage.size.height;
+    } else if (indexPath.section == 0 && indexPath.item == 2) {
+        UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        NSString *html = [NSString stringWithFormat:@"<span style=\"font-family: Helvetica Neue; font-size: %ld;margin:0\">%@</span>", (long) [[NSNumber numberWithFloat:font.pointSize] integerValue], self.quest.notes];
+        NSError *err;
+        NSAttributedString *attributedText = [[NSAttributedString alloc]
+                                initWithData:[html dataUsingEncoding:NSUTF8StringEncoding]
+                                options:@{NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType}
+                                documentAttributes:nil
+                                error:&err];
+        return ceilf([attributedText boundingRectWithSize:CGSizeMake(300.0f, CGFLOAT_MAX)
+                                            options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                                            context:nil].size.height) + 60;
     }
     return 44;
 }
@@ -110,6 +119,8 @@
     if (indexPath.section == 0 && indexPath.item == 0) {
         cellIdentifier = @"titleCell";
     } else if (indexPath.section == 0 && indexPath.item == 1) {
+        cellIdentifier = @"bossImageCell";
+    } else if (indexPath.section == 0 && indexPath.item == 2) {
         cellIdentifier = @"descriptionCell";
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         cellIdentifier = @"acceptCell";
@@ -123,16 +134,32 @@
 
     if (indexPath.section == 0 && indexPath.item == 0) {
         cell.textLabel.text = self.quest.text;
+        cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
     } else if (indexPath.section == 0 && indexPath.item == 1) {
-        UILabel *label = (UILabel *) [cell viewWithTag:1];
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        __weak UIImageView *imageView = (UIImageView*) [cell viewWithTag:1];
+        [manager downloadWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/quest_%@.png", self.quest.key]]
+                         options:0
+                        progress:^(NSInteger receivedSize, NSInteger expectedSize){}
+                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished){
+             if (image) {
+                 self.bossImage = image;
+                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                 imageView.image = self.bossImage;
+             }
+         }];
+        cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
+    } else if (indexPath.section == 0 && indexPath.item == 2) {
+        UITextView *textView = (UITextView *) [cell viewWithTag:1];
         NSError *err = nil;
         UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-        NSString *html = [NSString stringWithFormat:@"<span style=\"font-family: Helvetica Neue; font-size: %ld\">%@</span>", (long) [[NSNumber numberWithFloat:font.pointSize] integerValue], self.quest.notes];
-        label.attributedText = [[NSAttributedString alloc]
+        NSString *html = [NSString stringWithFormat:@"<span style=\"font-family: Helvetica Neue; font-size: %ld;margin:0\">%@</span>", (long) [[NSNumber numberWithFloat:font.pointSize] integerValue], self.quest.notes];
+        textView.attributedText = [[NSAttributedString alloc]
                 initWithData:[html dataUsingEncoding:NSUTF8StringEncoding]
                      options:@{NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType}
           documentAttributes:nil
                        error:&err];
+        cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
     }
     return cell;
 }

@@ -2987,18 +2987,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="I9E-W6-Gkh">
-                                            <rect key="frame" x="20" y="11" width="280" height="21"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UUA-Lr-KRJ">
+                                            <rect key="frame" x="10" y="8" width="300" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <attributedString key="attributedText"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="I9E-W6-Gkh" firstAttribute="leading" secondItem="SZj-L9-3ny" secondAttribute="leading" constant="20" symbolic="YES" id="0ec-9K-cz4"/>
-                                        <constraint firstAttribute="bottom" secondItem="I9E-W6-Gkh" secondAttribute="bottom" constant="11" id="P7q-yF-wbi"/>
-                                        <constraint firstAttribute="trailing" secondItem="I9E-W6-Gkh" secondAttribute="trailing" constant="20" symbolic="YES" id="Uyn-aV-9uV"/>
-                                        <constraint firstItem="I9E-W6-Gkh" firstAttribute="top" secondItem="SZj-L9-3ny" secondAttribute="top" constant="11" id="ua6-L4-1vL"/>
+                                        <constraint firstAttribute="bottom" secondItem="UUA-Lr-KRJ" secondAttribute="bottom" constant="8" id="4zr-HG-XoT"/>
+                                        <constraint firstAttribute="trailing" secondItem="UUA-Lr-KRJ" secondAttribute="trailing" constant="10" id="7m0-06-inn"/>
+                                        <constraint firstItem="UUA-Lr-KRJ" firstAttribute="leading" secondItem="SZj-L9-3ny" secondAttribute="leading" constant="10" id="DxA-44-ZZS"/>
+                                        <constraint firstItem="UUA-Lr-KRJ" firstAttribute="top" secondItem="SZj-L9-3ny" secondAttribute="top" constant="8" id="vu4-Wf-4cq"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -3048,6 +3049,26 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bossImageCell" id="4mS-a4-ZDV">
+                                <rect key="frame" x="0.0" y="339" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4mS-a4-ZDV" id="510-Ao-RID">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QHj-Xm-JGz">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="QHj-Xm-JGz" secondAttribute="bottom" id="4KR-9a-EQh"/>
+                                        <constraint firstItem="QHj-Xm-JGz" firstAttribute="leading" secondItem="510-Ao-RID" secondAttribute="leading" id="XTk-Fz-xnR"/>
+                                        <constraint firstAttribute="trailing" secondItem="QHj-Xm-JGz" secondAttribute="trailing" id="emp-bD-7KJ"/>
+                                        <constraint firstItem="QHj-Xm-JGz" firstAttribute="top" secondItem="510-Ao-RID" secondAttribute="top" id="npC-uU-a7o"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
