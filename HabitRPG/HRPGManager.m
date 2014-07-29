@@ -517,6 +517,7 @@ NSString *currentUser;
             @"quest.progress.hp" : @"questHP",
             @"quest.progress.rage" : @"questRage",
             @"quest.active" : @"questActive",
+            @"quest.leader" : @"questLeader",
             @"quest.extra.worldDmg.tavern" : @"worldDmgTavern",
             @"quest.extra.worldDmg.stable" : @"worldDmgStable",
             @"quest.extra.worldDmg.market" : @"worldDmgMarket",
@@ -1474,9 +1475,17 @@ NSString *currentUser;
     NSString *url;
     if (quest) {
         url = [NSString stringWithFormat:@"/api/v2/groups/%@/questAccept?key=%@", group, quest.key];
+        if (force) {
+            url = [url stringByAppendingString:@"&force=true"];
+        }
     } else {
         url = [NSString stringWithFormat:@"/api/v2/groups/%@/questAccept", group];
+        if (force) {
+            url = [url stringByAppendingString:@"?force=true"];
+        }
     }
+    
+    
     [[RKObjectManager sharedManager] postObject:nil path:url parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];

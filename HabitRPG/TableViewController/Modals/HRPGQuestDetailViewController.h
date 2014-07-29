@@ -11,7 +11,7 @@
 #import "Group.h"
 #import "User.h"
 
-@interface HRPGQuestDetailViewController : UITableViewController
+@interface HRPGQuestDetailViewController : UITableViewController <UIAlertViewDelegate>
 
 @property Quest *quest;
 @property Group *party;

@@ -22,8 +22,15 @@
     _sharedManager = appdelegate.sharedManager;
     if (self.party.questKey != nil && ![self.party.questActive boolValue] && self.user.participateInQuest == nil) {
         self.navigationItem.title = NSLocalizedString(@"Quest Invitation", nil);
+        self.navigationItem.rightBarButtonItem = nil;
     } else {
         self.navigationItem.title = NSLocalizedString(@"Quest Detail", nil);
+        if ([self.party.questActive boolValue] && [self.party.questLeader isEqualToString:self.user.id]) {
+            self.navigationItem.rightBarButtonItem.title = NSLocalizedString(@"Abort", nil);
+            self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:0.894 green:0.008 blue:0.000 alpha:1.000];
+        } else if ([self.party.questActive boolValue] || ![self.party.questLeader isEqualToString:self.user.id]) {
+            self.navigationItem.rightBarButtonItem = nil;
+        }
     }
 }
 
@@ -131,16 +138,36 @@
 }
 
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)forceQuestBegin:(id)sender {
+    NSString *message;
+    if ([self.party.questActive boolValue]) {
+        message = NSLocalizedString(@"When you abort a quest, all progress will be lost and the quest scroll will be put back into your inventory.", nil);
+    } else {
+        message = NSLocalizedString(@"Once a quest is started, no other party members can join the quest.", nil);
+    }
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Are you sure?", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"No", nil) otherButtonTitles:NSLocalizedString(@"Yes", nil), nil];
+    [alertView show];
 }
-*/
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+        if ([self.party.questActive boolValue]) {
+            [_sharedManager abortQuest:self.party.id onSuccess:^(){
+                [self.navigationController popViewControllerAnimated:YES];
+            } onError:^(){
+                self.navigationItem.rightBarButtonItem.enabled = YES;
+            }];
+        } else {
+            [_sharedManager acceptQuest:self.party.id withQuest:nil useForce:YES onSuccess:^(){
+                [self.navigationController popViewControllerAnimated:YES];
+            } onError:^(){
+                self.navigationItem.rightBarButtonItem.enabled = YES;
+            }];
+        }
+
+    }
+}
 
 @end

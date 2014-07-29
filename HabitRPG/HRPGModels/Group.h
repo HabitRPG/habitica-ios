@@ -19,6 +19,7 @@
 @property(nonatomic, retain) NSString *privacy;
 @property(nonatomic, retain) NSNumber *questActive;
 @property(nonatomic, retain) NSNumber *questHP;
+@property(nonatomic, retain) NSString *questLeader;
 @property(nonatomic, retain) NSNumber *questRage;
 @property(nonatomic, retain) NSString *questKey;
 @property(nonatomic, retain) NSNumber *worldDmgTavern;

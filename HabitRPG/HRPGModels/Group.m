@@ -16,6 +16,7 @@
 @dynamic privacy;
 @dynamic questActive;
 @dynamic questHP;
+@dynamic questLeader;
 @dynamic questRage;
 @dynamic questKey;
 @dynamic worldDmgTavern;
