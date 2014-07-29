@@ -2826,11 +2826,11 @@
             </objects>
             <point key="canvasLocation" x="121" y="4662"/>
         </scene>
-        <!--Navigation Controller - Profile-->
+        <!--Navigation Controller - Menu-->
         <scene sceneID="Vp9-dg-sDn">
             <objects>
                 <navigationController definesPresentationContext="YES" id="JSb-MY-Gwo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="hyj-Mf-lvH"/>
+                    <tabBarItem key="tabBarItem" title="Menu" id="hyj-Mf-lvH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gph-cu-5tJ">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3056,7 +3056,13 @@
                             <outlet property="delegate" destination="Gf0-o8-VUQ" id="qfy-WP-pS4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Quest Invitation" id="peN-hy-vqi"/>
+                    <navigationItem key="navigationItem" title="Quest Invitation" id="peN-hy-vqi">
+                        <barButtonItem key="rightBarButtonItem" title="Begin" id="XiH-W3-0uw">
+                            <connections>
+                                <action selector="forceQuestBegin:" destination="Gf0-o8-VUQ" id="my3-uM-eof"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGA-sX-WYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

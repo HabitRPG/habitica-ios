@@ -52,7 +52,7 @@
     item3.image = [factory createImageForIcon:NIKFontAwesomeIconTrophy];
     
     UITabBarItem *item4 = self.tabBar.items[4];
-    item4.image = [factory createImageForIcon:NIKFontAwesomeIconUser];
+    item4.image = [factory createImageForIcon:NIKFontAwesomeIconBars]			;
 
     [self.tabBar setTintColor:[UIColor colorWithRed:0.366 green:0.599 blue:0.014 alpha:1.000]];
 
