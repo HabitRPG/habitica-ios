@@ -196,7 +196,7 @@ User *user;
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-        [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+        [context deleteObject:self.filteredData[indexPath.section][indexPath.item]];
 
         NSError *error = nil;
         if (![context save:&error]) {
@@ -213,7 +213,7 @@ User *user;
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
-    if ([reward.key isEqualToString:@"reward"]) {
+    if ([reward.type isEqualToString:@"reward"]) {
         return YES;
     }
     return NO;
