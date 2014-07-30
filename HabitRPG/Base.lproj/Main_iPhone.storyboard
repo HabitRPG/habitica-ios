@@ -1515,6 +1515,7 @@
                                         <constraint firstItem="kw2-a7-0pa" firstAttribute="leading" secondItem="P2J-7M-xbO" secondAttribute="trailing" constant="8" id="x1s-Hp-trv"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="48" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
