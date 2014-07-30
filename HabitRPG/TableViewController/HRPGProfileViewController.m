@@ -40,13 +40,10 @@ NIKFontAwesomeIconFactory *iconFactory;
         [self.fetchedResultsController performFetch:&error];
         User *user = (User *) [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
         username = user.username;
-        
-        self.navigationItem.title = username;
-        
         userLevel = [user.level integerValue];
         [self.tableView reloadData];
     }
-    //[self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
+    self.navigationItem.title = username;
 }
 
 - (void)viewDidLoad {
