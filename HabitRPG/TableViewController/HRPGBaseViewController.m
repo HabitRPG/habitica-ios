@@ -12,6 +12,7 @@
 #import "HRPGAppDelegate.h"
 #import "HRPGRoundProgressView.h"
 #import "HRPGBallActivityIndicator.h"
+#import "HRPGDeathView.h"
 
 @interface HRPGBaseViewController ()
 @property HRPGManager *sharedManager;
@@ -61,9 +62,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     User *user = [self.sharedManager getUser];
     if (user && [user.health integerValue] <= 0) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-        UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"deathNavigationController"];
-        [self presentViewController:navigationController animated:YES completion:nil];
+        HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
+        [deathView show];
     }
 }
 

@@ -75,6 +75,7 @@
 		D9C0003419290D5E003D4E4C /* HRPGActivityIndicatorOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C0003319290D5E003D4E4C /* HRPGActivityIndicatorOverlayView.m */; };
 		D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7C1EF18E26BBB0083F4E4 /* Egg.m */; };
 		D9C7C1F318E280DE0083F4E4 /* HRPGRewardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7C1F218E280DD0083F4E4 /* HRPGRewardsViewController.m */; };
+		D9D21731198D509100023367 /* HRPGDeathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D21730198D509000023367 /* HRPGDeathView.m */; };
 		D9D96F00194B87FF00796FE7 /* HRPGPetMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D96EFF194B87FF00796FE7 /* HRPGPetMasterViewController.m */; };
 		D9D96F03194B96FD00796FE7 /* HRPGMountMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D96F02194B96FD00796FE7 /* HRPGMountMasterViewController.m */; };
 		D9D96F08194E25FF00796FE7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D96F07194E25FF00796FE7 /* Crashlytics.framework */; };
@@ -238,6 +239,8 @@
 		D9C7C1EF18E26BBB0083F4E4 /* Egg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Egg.m; sourceTree = "<group>"; };
 		D9C7C1F118E280DD0083F4E4 /* HRPGRewardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGRewardsViewController.h; sourceTree = "<group>"; };
 		D9C7C1F218E280DD0083F4E4 /* HRPGRewardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGRewardsViewController.m; sourceTree = "<group>"; };
+		D9D2172F198D509000023367 /* HRPGDeathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGDeathView.h; sourceTree = "<group>"; };
+		D9D21730198D509000023367 /* HRPGDeathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGDeathView.m; sourceTree = "<group>"; };
 		D9D96EFE194B87FF00796FE7 /* HRPGPetMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPetMasterViewController.h; sourceTree = "<group>"; };
 		D9D96EFF194B87FF00796FE7 /* HRPGPetMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPetMasterViewController.m; sourceTree = "<group>"; };
 		D9D96F01194B96FD00796FE7 /* HRPGMountMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGMountMasterViewController.h; sourceTree = "<group>"; };
@@ -379,6 +382,8 @@
 			children = (
 				D9ADD35E1944F939006202C1 /* HRPGHeaderTagView.h */,
 				D9ADD35F1944F939006202C1 /* HRPGHeaderTagView.m */,
+				D9D2172F198D509000023367 /* HRPGDeathView.h */,
+				D9D21730198D509000023367 /* HRPGDeathView.m */,
 				D9C0002E1928F83E003D4E4C /* HRPGRoundProgressView.h */,
 				D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */,
 				D9ADD35819446E1A006202C1 /* HRPGBallActivityIndicator.h */,
@@ -774,6 +779,7 @@
 				D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */,
 				D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
+				D9D21731198D509100023367 /* HRPGDeathView.m in Sources */,
 				D947960A1972C248002CB34C /* HRPGUserProfileViewController.m in Sources */,
 				D9D96F03194B96FD00796FE7 /* HRPGMountMasterViewController.m in Sources */,
 				D9ADD35A19446E1B006202C1 /* HRPGBallActivityIndicator.m in Sources */,
