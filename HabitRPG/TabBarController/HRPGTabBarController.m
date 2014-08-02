@@ -61,7 +61,7 @@
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(showDebugMenu:)];
     [swipe setDirection:UISwipeGestureRecognizerDirectionUp];
     [swipe setDelaysTouchesBegan:YES];
-    [swipe setNumberOfTouchesRequired:3];
+    [swipe setNumberOfTouchesRequired:1];
     [[self view] addGestureRecognizer:swipe];
 #endif
 }

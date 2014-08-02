@@ -67,9 +67,6 @@ NIKFontAwesomeIconFactory *iconFactory;
 
     iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     iconFactory.square = YES;
-    iconFactory.colors = @[[UIColor colorWithRed:0.372 green:0.603 blue:0.014 alpha:1.000]];
-    iconFactory.strokeColor = [UIColor colorWithRed:0.372 green:0.603 blue:0.014 alpha:1.000];
-    iconFactory.size = 13.0f;
     iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
     
     UILabel* footerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
@@ -79,7 +76,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     footerView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     footerView.numberOfLines = 0;
     self.tableView.tableFooterView = footerView;
-    [self.tableView setContentInset:(UIEdgeInsetsMake(0, 0, -50, 0))];
+    [self.tableView setContentInset:(UIEdgeInsetsMake(0, 0, -70, 0))];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPartyData:) name:@"partyUpdated"  object:nil];
 }
@@ -139,6 +136,33 @@ NIKFontAwesomeIconFactory *iconFactory;
         default:
             return @"";
     }
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return nil;
+    }
+    iconFactory.colors = @[[UIColor darkGrayColor]];
+    iconFactory.size = 16.f;
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 37.5)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, 14, 290, 17)];
+    label.font = [UIFont systemFontOfSize:14];
+    label.textColor = [UIColor darkGrayColor];
+    UIImageView *iconView = [[UIImageView alloc] initWithFrame:CGRectMake(9, 14, 16, 16)];
+    iconView.contentMode = UIViewContentModeCenter;
+    [view addSubview:label];
+    [view addSubview:iconView];
+    
+    label.text = [[self tableView:tableView titleForHeaderInSection:section] uppercaseString];
+    if (section == 1) {
+        iconView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconUsers];
+    } else if (section == 2) {
+        iconView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconSuitcase];
+    } else if (section == 3) {
+        iconView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconQuestionCircle];
+    }
+    return view;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -220,6 +244,8 @@ NIKFontAwesomeIconFactory *iconFactory;
         UIImageView *indicatorView = (UIImageView *) [cell viewWithTag:2];
         indicatorView.hidden = !showIndicator;
         if (showIndicator) {
+            iconFactory.colors = @[[UIColor colorWithRed:0.372 green:0.603 blue:0.014 alpha:1.000]];
+            iconFactory.size = 13.0f;
             indicatorView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconCircle];
         }
         return cell;
