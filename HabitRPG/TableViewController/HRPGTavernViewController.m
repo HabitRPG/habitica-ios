@@ -79,6 +79,13 @@ ChatMessage *selectedMessage;
         self.tavern = results[0];
         if (self.tavern.questKey) {
             [self fetchQuest];
+        } else {
+            if ([self.tableView numberOfSections] == 3) {
+                [self.tableView beginUpdates];
+                self.quest = nil;
+                [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [self.tableView endUpdates];
+            }
         }
     } else {
         [self refresh];
@@ -494,6 +501,7 @@ ChatMessage *selectedMessage;
 }
 
 - (IBAction)deleteMessage:(id)sender {
+    //hide button cell again
     [self.tableView beginUpdates];
     [self.tableView deleteRowsAtIndexPaths:@[self.buttonIndex] withRowAnimation:UITableViewRowAnimationTop];
     self.buttonIndex = nil;
@@ -507,7 +515,7 @@ ChatMessage *selectedMessage;
 - (IBAction)replyToMessage:(id)sender {
     self.replyMessage = [NSString stringWithFormat:@"@%@ ", selectedMessage.user];
     [self performSegueWithIdentifier:@"MessageSegue" sender:self];
-    
+    //hide button cell again
     [self.tableView beginUpdates];
     [self.tableView deleteRowsAtIndexPaths:@[self.buttonIndex] withRowAnimation:UITableViewRowAnimationTop];
     self.buttonIndex = nil;
