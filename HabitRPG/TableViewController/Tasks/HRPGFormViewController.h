@@ -18,6 +18,7 @@
 @property(weak, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property NSString *taskType;
+@property NSString *readableTaskType;
 @property Task *task;
 @property BOOL editTask;
 @end

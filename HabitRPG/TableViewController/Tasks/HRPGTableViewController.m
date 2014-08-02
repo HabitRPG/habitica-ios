@@ -408,13 +408,11 @@ BOOL editable;
 
         HRPGFormViewController *formController = (HRPGFormViewController *) destViewController.topViewController;
         formController.taskType = self.typeName;
+        formController.readableTaskType = self.readableName;
         if (editedTask) {
             formController.editTask = YES;
             formController.task = editedTask;
             editedTask = nil;
-            destViewController.topViewController.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Edit %@", nil), self.readableName];
-        } else {
-            destViewController.topViewController.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Add %@", nil), self.readableName];
         }
     }
 }

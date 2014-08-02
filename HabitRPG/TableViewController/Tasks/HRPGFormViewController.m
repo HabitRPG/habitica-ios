@@ -84,9 +84,9 @@
     XLFormRowDescriptor *row;
     
     if (self.editTask) {
-        self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Edit %@", nil), self.taskType.capitalizedString];
+        self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Edit %@", nil), self.readableTaskType];
     } else {
-        self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Add %@", nil), self.taskType.capitalizedString];
+        self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Add %@", nil), self.readableTaskType];
     }
     
     if (![self.taskType isEqualToString:@"habit"]) {
