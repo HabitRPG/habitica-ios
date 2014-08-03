@@ -60,6 +60,37 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    UILabel *lastActionLabel = (UILabel*)[cell viewWithTag:4];
+    UILabel *titleLabel = (UILabel*)[cell viewWithTag:1];
+    if (!(self.openedIndexPath && self.openedIndexPath.item < indexPath.item && indexPath.item <= (self.openedIndexPath.item + self.indexOffset))) {
+        Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        if (lastActionLabel.text.length == 0) {
+            lastActionLabel.alpha = 0;
+            lastActionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Streak: %@", nil), task.streak];
+            [UIView animateWithDuration:0.3 animations:^() {
+                [lastActionLabel layoutIfNeeded];
+                [titleLabel layoutIfNeeded];
+                lastActionLabel.alpha = 1;
+            } completion:^(BOOL completed) {
+                if (completed) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                        lastActionLabel.text = nil;
+                        [UIView animateWithDuration:0.3 animations:^() {
+                            [lastActionLabel layoutIfNeeded];
+                            [titleLabel layoutIfNeeded];
+                            lastActionLabel.alpha = 0;
+                        }completion:nil];
+                    });
+                }
+            }];
+        }
+    }
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+}
+
 - (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     UILabel *checklistLabel = (UILabel *) [cell viewWithTag:2];
     UILabel *label = (UILabel *) [cell viewWithTag:1];
@@ -116,6 +147,8 @@
         }
 
     } else {
+        UILabel *streakLabel = (UILabel *) [cell viewWithTag:4];
+
         if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
             indexPath = [NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section];
         }
@@ -159,6 +192,7 @@
             }
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor colorWithWhite:0.581 alpha:1.000];
+                streakLabel.textColor = [UIColor blackColor];
             }];
         } else {
             if (animate) {
@@ -178,10 +212,12 @@
             if (![task dueToday]) {
                 [UIView animateWithDuration:0.4 animations:^() {
                     label.textColor = [UIColor colorWithWhite:0.581 alpha:1.000];
+                    streakLabel.textColor = [UIColor blackColor];
                 }];
             } else {
                 [UIView animateWithDuration:0.4 animations:^() {
                     label.textColor = [self.sharedManager getColorForValue:task.value];
+                    streakLabel.textColor = [UIColor blackColor];
                 }];
             }
         }
@@ -193,6 +229,7 @@
                 checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
                 [UIView animateWithDuration:0.4 animations:^() {
                     label.textColor = [UIColor whiteColor];
+                    streakLabel.textColor = [UIColor whiteColor];
                     cell.backgroundColor = [UIColor grayColor];
                     cell.separatorInset = UIEdgeInsetsZero;
                 }];
@@ -207,6 +244,7 @@
         } else {
             if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
                 label.textColor = [UIColor whiteColor];
+                streakLabel.textColor = [UIColor whiteColor];
                 cell.backgroundColor = [UIColor grayColor];
                 cell.separatorInset = UIEdgeInsetsZero;
             } else {

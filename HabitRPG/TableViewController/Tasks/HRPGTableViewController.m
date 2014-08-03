@@ -62,11 +62,6 @@ BOOL editable;
     self.taskResponseView.gold = [self.sharedManager getUser].gold;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self displayTaskResponse:@[[NSNumber numberWithInt:40]]];
-}
-
 - (void)refresh {
     [self collapseOpenedIndexPath];
     [self.sharedManager fetchUser:^() {
@@ -196,7 +191,7 @@ BOOL editable;
                                             attributes:@{
                                                     NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                             }
-                                               context:nil].size.height + 35;
+                                               context:nil].size.height + 38;
     if (task.duedate) {
         height = height + 5;
     }

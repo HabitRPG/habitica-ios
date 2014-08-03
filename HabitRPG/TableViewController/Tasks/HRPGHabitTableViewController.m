@@ -39,6 +39,34 @@
     self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
+    UILabel *lastActionLabel = (UILabel*)[cell viewWithTag:4];
+    UILabel *titleLabel = (UILabel*)[cell viewWithTag:1];
+    if (lastActionLabel.text.length == 0) {
+        lastActionLabel.alpha = 0;
+        [UIView animateWithDuration:0.3 animations:^() {
+            [lastActionLabel layoutIfNeeded];
+            [titleLabel layoutIfNeeded];
+            lastActionLabel.alpha = 1;
+        } completion:^(BOOL completed) {
+            if (completed) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                    lastActionLabel.text = nil;
+                    [UIView animateWithDuration:0.3 animations:^() {
+                        [lastActionLabel layoutIfNeeded];
+                        [titleLabel layoutIfNeeded];
+                        lastActionLabel.alpha = 0;
+                    }completion:nil];
+                });
+            }
+        }];
+    }
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+}
+
 - (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UIColor *color = [self.sharedManager getColorForValue:task.value];
