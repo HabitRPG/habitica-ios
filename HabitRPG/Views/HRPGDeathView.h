@@ -11,5 +11,6 @@
 @interface HRPGDeathView : UIView
 
 -(void)show;
+-(void)show:(void (^)())onHide ;
 
 @end

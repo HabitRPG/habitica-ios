@@ -82,6 +82,10 @@
     }];
 }
 
+- (void)show:(void (^)())onHide {
+    
+}
+
 -(void) dismiss:(UITapGestureRecognizer *)recognizer {
     [self dismiss];
 }
@@ -90,7 +94,7 @@
     [UIView animateWithDuration:0.8f animations:^() {
         self.alpha = 0;
     } completion:^(BOOL completed) {
-        
+        [self removeFromSuperview];
     }];
     
     [_sharedManager reviveUser:^(){

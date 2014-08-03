@@ -265,8 +265,9 @@
         [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeExit state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self addActivityCounter];
             task.completed = [NSNumber numberWithBool:NO];
-            [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(){
+            [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(NSArray *valuesArray){
                 [self removeActivityCounter];
+                [self displayTaskResponse:valuesArray];
             }                      onError:^(){
                 [self removeActivityCounter];
             }];
@@ -277,8 +278,9 @@
         [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeExit state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self addActivityCounter];
             task.completed = [NSNumber numberWithBool:YES];
-            [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(){
+            [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray){
                 [self removeActivityCounter];
+                [self displayTaskResponse:valuesArray];
             }                      onError:^(){
                 [self removeActivityCounter];
             }];

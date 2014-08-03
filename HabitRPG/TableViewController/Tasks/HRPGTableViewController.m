@@ -15,6 +15,7 @@
 #import "HRPGHeaderTagView.h"
 #import "HRPGTagViewController.h"
 #import "HRPGTabBarController.h"
+#import "HRPGTaskResponseView.h"
 
 @interface HRPGTableViewController ()
 @property NSString *readableName;
@@ -23,7 +24,7 @@
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
 @property HRPGHeaderTagView *headerView;
-
+@property HRPGTaskResponseView *taskResponseView;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
 
@@ -52,7 +53,15 @@ BOOL editable;
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectTags:) name:@"tagsSelected"  object:nil];
+    
+    self.taskResponseView = [[HRPGTaskResponseView alloc] init];
+    self.taskResponseView.health = [self.sharedManager getUser].health;
+    self.taskResponseView.healthMax = [self.sharedManager getUser].maxHealth;
+    self.taskResponseView.experience = [self.sharedManager getUser].experience;
+    self.taskResponseView.experienceMax = [self.sharedManager getUser].nextLevel;
+    self.taskResponseView.gold = [self.sharedManager getUser].gold;
 }
+
 
 - (void)refresh {
     [self collapseOpenedIndexPath];
@@ -89,6 +98,19 @@ BOOL editable;
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
     [self.tableView reloadData];
+}
+
+- (void) displayTaskResponse:(NSArray*) valuesArray {
+    if (!self.taskResponseView.isVisible) {
+        [self.view.superview addSubview:self.taskResponseView];
+        [self.taskResponseView show];
+    }
+    
+    [self.taskResponseView updateWithValues:valuesArray];
+
+    if (self.activityCounter == 0) {
+        [self.taskResponseView shouldDismissWithDelay:3.0f];
+    }
 }
 
 #pragma mark - Table view data source

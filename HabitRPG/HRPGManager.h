@@ -29,7 +29,7 @@
 
 - (void)fetchGroups:(NSString *)groupType onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)upDownTask:(Task *)task direction:(NSString *)withDirection onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+- (void)upDownTask:(Task *)task direction:(NSString *)withDirection onSuccess:(void (^)(NSArray *valuesArray))successBlock onError:(void (^)())errorBlock;
 
 - (void)getReward:(NSString *)rewardID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 

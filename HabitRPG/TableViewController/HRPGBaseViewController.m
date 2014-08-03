@@ -16,7 +16,6 @@
 
 @interface HRPGBaseViewController ()
 @property HRPGManager *sharedManager;
-@property NSInteger activityCounter;
 @property UIBarButtonItem *navigationButton;
 @end
 

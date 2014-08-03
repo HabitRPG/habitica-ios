@@ -15,5 +15,6 @@
 
 -(void)addActivityCounter;
 -(void)removeActivityCounter;
+@property NSInteger activityCounter;
 
 @end

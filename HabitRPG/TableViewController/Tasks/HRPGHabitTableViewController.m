@@ -39,23 +39,6 @@
     self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
 }
 
-- (IBAction)upDownSelected:(UISegmentedControl *)sender {
-    UITableViewCell *cell = (UITableViewCell *) [[[sender superview] superview] superview];
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    Task *habit = (Task *) [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSString *direction;
-    if (sender.selectedSegmentIndex == 0 && habit.down) {
-        direction = @"down";
-    } else {
-        direction = @"up";
-    }
-
-    [self.sharedManager upDownTask:habit direction:direction onSuccess:^() {
-    }                      onError:^() {
-        [self.sharedManager displayNetworkError];
-    }];
-}
-
 - (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UIColor *color = [self.sharedManager getColorForValue:task.value];
@@ -88,8 +71,9 @@
         UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
         [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self addActivityCounter];
-            [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(){
+            [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray){
                 [self removeActivityCounter];
+                [self displayTaskResponse:valuesArray];
             }                      onError:^(){
                 [self removeActivityCounter];
             }];
@@ -100,8 +84,9 @@
         UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
         [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState1 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self addActivityCounter];
-            [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(){
+            [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(NSArray *valuesArray){
                 [self removeActivityCounter];
+                [self displayTaskResponse:valuesArray];
             }                      onError:^(){
                 [self removeActivityCounter];
             }];
