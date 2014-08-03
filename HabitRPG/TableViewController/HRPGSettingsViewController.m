@@ -10,166 +10,122 @@
 #import "HRPGAppDelegate.h"
 #import <PDKeychainBindings.h>
 #import "HRPGActivityIndicatorOverlayView.h"
+#import "XLForm.h"
 
 @interface HRPGSettingsViewController ()
 @property HRPGManager *sharedManager;
-
+@property NSManagedObjectContext *managedObjectContext;
+@property XLFormSectionDescriptor *reminderSection;
 @end
 
 @implementation HRPGSettingsViewController
 NSUserDefaults *defaults;
-@synthesize managedObjectContext;
 User *user;
-BOOL reminder;
-BOOL showDatePicker;
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    user = [_sharedManager getUser];
-    self.username = user.username;
-    [self.tableView reloadData];
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self){
+        self.managedObjectContext = _sharedManager.getManagedObjectContext;
+        defaults = [NSUserDefaults standardUserDefaults];
+        user = [_sharedManager getUser];
+        self.username = user.username;
+        
+        [self initializeForm];
+    }
+    return self;
+}
+
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self){
+        HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+        HRPGManager *sharedManager = appdelegate.sharedManager;
+        self.managedObjectContext = sharedManager.getManagedObjectContext;
+        [self initializeForm];
+    }
+    return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.managedObjectContext = _sharedManager.getManagedObjectContext;
-    defaults = [NSUserDefaults standardUserDefaults];
-    reminder = [defaults boolForKey:@"dailyReminderActive"];
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+    self.sharedManager = appdelegate.sharedManager;
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+-(void)initializeForm {
+    XLFormDescriptor *formDescriptor = [XLFormDescriptor formDescriptorWithTitle:NSLocalizedString(@"Settings", nil)];
+    
+    formDescriptor.assignFirstResponderOnShow = YES;
+    
+    XLFormSectionDescriptor *section;
+    XLFormRowDescriptor *row;
+    
+    section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"User", nil)];
+    [formDescriptor addFormSection:section];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"logout" rowType:XLFormRowDescriptorTypeButton title:[NSString stringWithFormat:NSLocalizedString(@"Logged in as %@", nil), user.username]];
+    row.required = YES;
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"logout" rowType:XLFormRowDescriptorTypeButton title:NSLocalizedString(@"Log Out", nil)];
+    [row.cellConfigAtConfigure setObject:[UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000] forKey:@"textLabel.textColor"];
+    [section addFormRow:row];
+    
+    self.reminderSection = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Reminder", nil)];
+    [formDescriptor addFormSection:self.reminderSection];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"useReminder" rowType:XLFormRowDescriptorTypeBooleanSwitch title:NSLocalizedString(@"Daily Reminder", nil)];
+    [self.reminderSection addFormRow:row];
+    if ([defaults boolForKey:@"dailyReminderActive"]) {
+        row.value = [NSNumber numberWithBool:YES];
+        [self showDatePicker];
+    }
+    
+    section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Usability", nil)];
+    [formDescriptor addFormSection:section];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"swipeDirection" rowType:XLFormRowDescriptorTypeSelectorPush title:NSLocalizedString(@"Swipe Direction", nil)];
+    row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:NSLocalizedString(@"Left to Right", nil)],
+                            [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:NSLocalizedString(@"Right to Left", nil)]
+                            ];
+    row.value = row.selectorOptions[[defaults integerForKey:@"swipeDirection"]];
+    [section addFormRow:row];
+    
+    section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Maintenance", nil)];
+    [formDescriptor addFormSection:section];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"clearCache" rowType:XLFormRowDescriptorTypeButton title:NSLocalizedString(@"Clear Cache", nil)];
+    [row.cellConfigAtConfigure setObject:[UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000] forKey:@"textLabel.textColor"];
+    [section addFormRow:row];
+    
+    self.form = formDescriptor;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return 2;
-        case 1:
-            if (reminder) {
-                if (showDatePicker) {
-                    return 3;
-                }
-                return 2;
-            } else {
-                return 1;
-            }
-        case 2:
-            return 1;
-        default:
-            return 0;
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1 && indexPath.item == 2) {
-        return 210;
-    }
-    return [super tableView:self.tableView heightForRowAtIndexPath:indexPath];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return @"User";
-        case 1:
-            return @"Reminder";
-        default:
-            return @"";
-    }
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1 && indexPath.item == 2) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DateCell" forIndexPath:indexPath];
-        NSDate *reminderTime = [defaults valueForKey:@"dailyReminderTime"];
-        if (reminderTime) {
-            UIDatePicker *datePicker = (UIDatePicker *) [cell viewWithTag:1];
-            datePicker.date = reminderTime;
-        }
-        return cell;
-    }
-
-    NSString *title = nil;
-    NSString *identifier = @"Cell";
-    if (indexPath.section == 0 && indexPath.item == 0) {
-        title = [NSString stringWithFormat:NSLocalizedString(@"Logged in as: %@", nil), self.username];
-    } else if (indexPath.section == 0 && indexPath.item == 1) {
-        title = NSLocalizedString(@"Log out", nil);
-        identifier = @"LogoutCell";
-    } else if (indexPath.section == 1 && indexPath.item == 0) {
-        title = NSLocalizedString(@"Daily Reminder", nil);
-        identifier = @"SwitchCell";
-    } else if (indexPath.section == 1 && indexPath.item == 1) {
-        title = NSLocalizedString(@"Every day at", nil);
-        identifier = @"DetailCell";
-    } else if (indexPath.section == 2) {
-        title = NSLocalizedString(@"Reset Cache", nil);
-        identifier = @"LogoutCell";
-    }
-
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    UILabel *label = (UILabel *) [cell viewWithTag:1];
-    label.text = title;
-    if ([identifier isEqualToString:@"DetailCell"]) {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        NSDate *reminderTime = [defaults valueForKey:@"dailyReminderTime"];
-        dateFormatter.dateStyle = NSDateFormatterNoStyle;
-        dateFormatter.timeStyle = NSDateFormatterShortStyle;
-        cell.detailTextLabel.text = [dateFormatter stringFromDate:reminderTime];
-    }
-    if (indexPath.section == 1 && indexPath.item == 0) {
-        UISwitch *cellSwitch = (UISwitch *) [cell viewWithTag:2];
-        cellSwitch.on = reminder;
-    }
-
-    return cell;
-
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0 && indexPath.item == 1) {
-        [self logoutUser];
-    } else if (indexPath.section == 1 && indexPath.item == 1) {
-        NSIndexPath *pickerIndexPath = [NSIndexPath indexPathForItem:2 inSection:1];
-        [tableView beginUpdates];
-        showDatePicker = !showDatePicker;
-        if (showDatePicker) {
-            [tableView insertRowsAtIndexPaths:@[pickerIndexPath] withRowAnimation:UITableViewRowAnimationTop];
-        } else {
-            [tableView deleteRowsAtIndexPaths:@[pickerIndexPath] withRowAnimation:UITableViewRowAnimationTop];
-        }
-        [tableView endUpdates];
-    } else if (indexPath.section == 2) {
-        [self resetCache];
-    }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (IBAction)reminderChanged:(UISwitch *)sender {
-    [defaults setBool:sender.on forKey:@"dailyReminderActive"];
-    reminder = sender.on;
-    if (reminder) {
-        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationTop];
+- (void)showDatePicker {
+    XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"reminderDate" rowType:XLFormRowDescriptorTypeTimeInline title:@"Every Day at"];
+    if ([defaults valueForKeyPath:@"dailyReminderTime"]) {
+        row.value =[defaults valueForKeyPath:@"dailyReminderTime"];
     } else {
-        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationTop];
-        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        row.value = [NSDate date];
     }
+    [self.reminderSection addFormRow:row];
 }
 
-- (IBAction)reminderTimeChanged:(UIDatePicker *)picker {
-    [defaults setValue:picker.date forKey:@"dailyReminderTime"];
+-(void)hideDatePicker {
+    [self.form removeFormRowWithTag:@"reminderDate"];
+}
+
+- (IBAction)reminderTimeChanged:(NSDate *)date {
+    [defaults setValue:date forKey:@"dailyReminderTime"];
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    localNotification.fireDate = picker.date;
+    localNotification.fireDate = date;
     localNotification.repeatInterval = NSDayCalendarUnit;
     localNotification.alertBody = NSLocalizedString(@"Don't forget to mark your todos!", nil);
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (void)logoutUser {
@@ -181,7 +137,7 @@ BOOL showDatePicker;
     [keyChain setString:@"" forKey:@"key"];
     [defaults setObject:@"" forKey:@"partyID"];
 
-    [_sharedManager resetSavedDatabase:YES onComplete:^() {
+    [self.sharedManager resetSavedDatabase:YES onComplete:^() {
         [activityView dismiss:^() {
         }];
     }];
@@ -195,23 +151,45 @@ BOOL showDatePicker;
     [activityView display:^() {
 
     }];
-    [_sharedManager resetSavedDatabase:YES onComplete:^() {
+    [self.sharedManager resetSavedDatabase:YES onComplete:^() {
         [activityView dismiss:^() {
 
         }];
     }];
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(void)didSelectFormRow:(XLFormRowDescriptor *)formRow
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [super didSelectFormRow:formRow];
+    
+    if ([formRow.tag isEqual:@"logout"]){
+        [self logoutUser];
+        [self deselectFormRow:formRow];
+    } else if ([formRow.tag isEqual:@"clearCache"]){
+        [self resetCache];
+    }
 }
-*/
+
+-(void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)rowDescriptor oldValue:(id)oldValue newValue:(id)newValue {
+    [super formRowDescriptorValueHasChanged:rowDescriptor oldValue:oldValue newValue:newValue];
+    if ([rowDescriptor.tag isEqualToString:@"useReminder"]) {
+        if ([[rowDescriptor.value valueData] boolValue]){
+            [defaults setBool:YES forKey:@"dailyReminderActive"];
+            [self showDatePicker];
+        }
+        else if ([[oldValue valueData] isEqualToNumber:@(0)] == NO && [[newValue valueData] isEqualToNumber:@(0)]){
+            [defaults setBool:NO forKey:@"dailyReminderActive"];
+            [self hideDatePicker];
+            [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        }
+    } else if ([rowDescriptor.tag isEqualToString:@"reminderDate"]) {
+        [self reminderTimeChanged:[rowDescriptor.value valueData]];
+    }else if ([rowDescriptor.tag isEqualToString:@"swipeDirection"]) {
+        [defaults setValue:[rowDescriptor.value valueData] forKey:@"swipeDirection"];
+        dispatch_async(dispatch_get_main_queue(),^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"swipeDirectionChanged" object:nil];
+        });
+    }
+}
 
 @end

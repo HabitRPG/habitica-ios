@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
+#import "XLFormViewController.h"
 
-@interface HRPGSettingsViewController : HRPGBaseViewController
+@interface HRPGSettingsViewController : XLFormViewController
 @property NSString *username;
 @end

@@ -60,6 +60,21 @@ BOOL editable;
     self.taskResponseView.experience = [self.sharedManager getUser].experience;
     self.taskResponseView.experienceMax = [self.sharedManager getUser].nextLevel;
     self.taskResponseView.gold = [self.sharedManager getUser].gold;
+    
+    
+    [[NSNotificationCenter defaultCenter]
+        addObserver:self
+        selector:@selector(changeSwipeDirection:)
+        name:@"swipeDirectionChanged"
+        object:nil];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.swipeDirection = [defaults boolForKey:@"swipeDirection"];
+}
+
+- (void)changeSwipeDirection:(NSNotification *)notification {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.swipeDirection = [defaults boolForKey:@"swipeDirection"];
+    [self.tableView reloadData];
 }
 
 - (void)refresh {

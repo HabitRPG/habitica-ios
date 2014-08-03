@@ -75,17 +75,36 @@
     label.textColor = color;
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
-    if ([task.up boolValue]) {
-        [cell viewWithTag:3].hidden = NO;
+    if (self.swipeDirection) {
+        if ([task.down boolValue]) {
+            [cell viewWithTag:3].backgroundColor = [UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000];
+            [cell viewWithTag:3].hidden = NO;
+        } else {
+            [cell viewWithTag:3].hidden = YES;
+        }
+        
+        if ([task.up boolValue]) {
+            [cell viewWithTag:2].backgroundColor = [UIColor colorWithRed:0.292 green:0.642 blue:0.013 alpha:1.000];
+            [cell viewWithTag:2].hidden = NO;
+        } else {
+            [cell viewWithTag:2].hidden = YES;
+        }
     } else {
-        [cell viewWithTag:3].hidden = YES;
+        if ([task.up boolValue]) {
+            [cell viewWithTag:3].backgroundColor = [UIColor colorWithRed:0.292 green:0.642 blue:0.013 alpha:1.000];
+            [cell viewWithTag:3].hidden = NO;
+        } else {
+            [cell viewWithTag:3].hidden = YES;
+        }
+        
+        if ([task.down boolValue]) {
+            [cell viewWithTag:2].backgroundColor = [UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000];
+            [cell viewWithTag:2].hidden = NO;
+        } else {
+            [cell viewWithTag:2].hidden = YES;
+        }
     }
     
-    if ([task.down boolValue]) {
-        [cell viewWithTag:2].hidden = NO;
-    } else {
-        [cell viewWithTag:2].hidden = YES;
-    }
     
     [self configureSwiping:cell withTask:task];
 }
@@ -95,9 +114,15 @@
         cell.view3 = nil;
     }
     if ([task.up boolValue]) {
+        MCSwipeTableViewCellState state;
+        if (self.swipeDirection) {
+            state = MCSwipeTableViewCellState1;
+        } else {
+            state = MCSwipeTableViewCellState3;
+        }
         UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconPlus]];
         UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
-        [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+        [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:state completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self addActivityCounter];
             [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray){
                 [self removeActivityCounter];
@@ -108,9 +133,15 @@
         }];
     }
     if ([task.down boolValue]) {
+        MCSwipeTableViewCellState state;
+        if (self.swipeDirection) {
+            state = MCSwipeTableViewCellState3;
+        } else {
+            state = MCSwipeTableViewCellState1;
+        }
         UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconMinus]];
         UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
-        [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState1 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+        [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:state completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self addActivityCounter];
             [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(NSArray *valuesArray){
                 [self removeActivityCounter];

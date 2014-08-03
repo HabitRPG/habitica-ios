@@ -20,6 +20,7 @@
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 - (NSPredicate*) getPredicate;
 @property BOOL displayCompleted;
+@property BOOL swipeDirection;
 
 @end
 
