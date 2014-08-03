@@ -69,14 +69,14 @@ NIKFontAwesomeIconFactory *iconFactory;
     iconFactory.square = YES;
     iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
     
-    UILabel* footerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    UILabel* footerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 170)];
     footerView.text = [NSString stringWithFormat:NSLocalizedString(@"Hey! You are awesome!\nVersion %@", nil), [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
     footerView.textColor = [UIColor lightGrayColor];
     footerView.textAlignment = NSTextAlignmentCenter;
     footerView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     footerView.numberOfLines = 0;
     self.tableView.tableFooterView = footerView;
-    [self.tableView setContentInset:(UIEdgeInsetsMake(0, 0, -70, 0))];
+    [self.tableView setContentInset:(UIEdgeInsetsMake(0, 0, -150, 0))];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPartyData:) name:@"partyUpdated"  object:nil];
 }
