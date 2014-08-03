@@ -165,7 +165,7 @@
     
     self.healthProgress.frame = CGRectMake(self.healthLabel.frame.size.width + 16, 15, self.frame.size.width - (self.healthLabel.frame.size.width + 24), 2);
     
-    UILabel *updateLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - self.healthLabel.frame.size.width/2, self.ExpLabel.frame.origin.y, self.ExpLabel.frame.size.width, 16)];
+    UILabel *updateLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - self.healthLabel.frame.size.width/2, self.healthLabel.frame.origin.y, self.healthLabel.frame.size.width, 16)];
     updateLabel.font = [UIFont boldSystemFontOfSize:15.0f];
     updateLabel.textAlignment = NSTextAlignmentCenter;
     updateLabel.text = [NSString stringWithFormat:@"%.2f", [healthDiff floatValue]];
@@ -205,6 +205,8 @@
     }completion:^(BOOL completed) {
         
     }];
+    
+    [self shakeHealthViews];
 }
 
 - (void) updateExp:(NSNumber*)newExperience withGold:(NSNumber*)newGold {
@@ -368,6 +370,35 @@
             [self updateExp:valuesArray[1] withGold:valuesArray[2]];
         }
     }
+}
+
+- (void) shakeHealthViews {
+    CGAffineTransform firstTranslate  = CGAffineTransformTranslate(CGAffineTransformIdentity, ((float)rand() / RAND_MAX) * 7, ((float)rand() / RAND_MAX) * 7);
+    CGAffineTransform secondTranslate  = CGAffineTransformTranslate(CGAffineTransformIdentity, ((float)rand() / RAND_MAX) * 7, ((float)rand() / RAND_MAX) * 7);
+    CGAffineTransform thirdTranslate  = CGAffineTransformTranslate(CGAffineTransformIdentity, ((float)rand() / RAND_MAX) * 7, ((float)rand() / RAND_MAX) * 7);
+    self.healthProgress.transform = firstTranslate;
+    self.healthLabel.transform = firstTranslate;
+
+    [UIView animateWithDuration:0.07 delay:0.0 options:UIViewAnimationOptionAutoreverse|UIViewAnimationOptionRepeat animations:^{
+        [UIView setAnimationRepeatCount:2.0];
+        self.healthProgress.transform = secondTranslate;
+        self.healthLabel.transform = secondTranslate;
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [UIView animateWithDuration:0.07 delay:0.0 options:UIViewAnimationOptionAutoreverse|UIViewAnimationOptionRepeat animations:^{
+                [UIView setAnimationRepeatCount:2.0];
+                self.healthProgress.transform = thirdTranslate;
+                self.healthLabel.transform = thirdTranslate;
+            } completion:^(BOOL finished) {
+                if (finished) {
+                    [UIView animateWithDuration:0.05 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+                        self.healthProgress.transform = CGAffineTransformIdentity;
+                        self.healthLabel.transform = CGAffineTransformIdentity;
+                    } completion:NULL];
+                }
+            }];
+        }
+    }];
 }
 
 @end

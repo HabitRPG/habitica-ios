@@ -62,6 +62,10 @@ BOOL editable;
     self.taskResponseView.gold = [self.sharedManager getUser].gold;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self displayTaskResponse:@[[NSNumber numberWithInt:40]]];
+}
 
 - (void)refresh {
     [self collapseOpenedIndexPath];
