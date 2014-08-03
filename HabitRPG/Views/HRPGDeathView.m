@@ -28,8 +28,7 @@
         self.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
         UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss:)];
         [self addGestureRecognizer:singleFingerTap];
-        UIWindow* mainWindow = [[UIApplication sharedApplication] keyWindow];
-        [mainWindow addSubview: self];
+        
         HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
         _sharedManager = appdelegate.sharedManager;
         
@@ -65,6 +64,8 @@
 }
 
 - (void)show {
+    UIWindow* mainWindow = [[UIApplication sharedApplication] keyWindow];
+    [mainWindow addSubview: self];
     [UIView animateWithDuration:1.0f animations:^() {
         self.backgroundColor = [UIColor whiteColor];
     }completion:^(BOOL competed) {

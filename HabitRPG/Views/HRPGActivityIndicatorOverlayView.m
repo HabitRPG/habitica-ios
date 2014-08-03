@@ -53,17 +53,15 @@ CGFloat height = 140;
             self.label.textAlignment = NSTextAlignmentCenter;
             [self.indicatorView addSubview:self.label];
         }
-        
-        UITabBarController *mainTabbar = ((UITabBarController *) [[UIApplication sharedApplication] delegate].window.rootViewController);
-        [mainTabbar.view addSubview:self.backgroundView];
-        [mainTabbar.view addSubview:self.indicatorView];
     }
     return self;
 }
 
 - (void)display:(void (^)())completitionBlock {
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-
+    UIWindow* mainWindow = [[UIApplication sharedApplication] keyWindow];
+    [mainWindow addSubview:self.backgroundView];
+    [mainWindow addSubview:self.indicatorView];
     [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:1.0f options:UIViewAnimationOptionCurveEaseInOut animations:^() {
         self.backgroundView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.25];
         self.indicatorView.frame = CGRectMake((screenSize.width - width) / 2, (screenSize.height - height) / 2, width, height);
