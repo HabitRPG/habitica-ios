@@ -66,9 +66,8 @@
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super viewWillDisappear:animated];
 }
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
