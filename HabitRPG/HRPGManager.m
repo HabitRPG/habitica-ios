@@ -325,7 +325,9 @@ NSString *currentUser;
             @"stats.training.str" : @"trainingStrength",
             @"contributor.level" : @"contributorLevel",
             @"contributor.text" : @"contributorText",
-            @"contributor.contributions" : @"contributions"
+            @"contributor.contributions" : @"contributions",
+            @"party.order" : @"partyOrder",
+            @"items.pets" : @"petCount"
     }];
     entityMapping.identificationAttributes = @[@"id"];
     RKEntityMapping *rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
@@ -630,7 +632,10 @@ NSString *currentUser;
             @"stats.training.per" : @"trainingPerception",
             @"stats.training.str" : @"trainingStrength",
             @"contributor.level" : @"contributorLevel",
-            @"contributor.text" : @"contributorText"
+            @"contributor.text" : @"contributorText",
+            @"@metadata.mapping.collectionIndex" : @"partyPosition",
+            @"party.order" : @"partyOrder",
+            @"items.pets" : @"petCount"
     }];
     memberMapping.identificationAttributes = @[@"id"];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"members"

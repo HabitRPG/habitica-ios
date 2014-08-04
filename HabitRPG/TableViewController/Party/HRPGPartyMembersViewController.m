@@ -14,7 +14,8 @@
 @property NSString *typeName;
 @property HRPGManager *sharedManager;
 @property NSIndexPath *openedIndexPath;
-
+@property NSString *sortKey;
+@property BOOL sortAscending;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
 
@@ -28,6 +29,20 @@ NSString *partyID;
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     partyID = [defaults objectForKey:@"partyID"];
+    NSString *orderSetting = [self.sharedManager getUser].partyOrder;
+    if ([orderSetting isEqualToString:@"level"]) {
+        self.sortKey = @"level";
+        self.sortAscending = NO;
+    } else if ([orderSetting isEqualToString:@"pets"]) {
+        self.sortKey = @"petCount";
+        self.sortAscending = NO;
+    } else if ([orderSetting isEqualToString:@"random"]) {
+        self.sortKey = @"username";
+        self.sortAscending = YES;
+    } else {
+        self.sortKey = @"partyPosition";
+        self.sortAscending = NO;
+    }
 }
 
 #pragma mark - Table view data source
@@ -74,14 +89,14 @@ NSString *partyID;
     [fetchRequest setPredicate:predicate];
 
     // Edit the sort key as appropriate.
-    NSSortDescriptor *idDescriptor = [[NSSortDescriptor alloc] initWithKey:@"username" ascending:YES];
+    NSSortDescriptor *idDescriptor = [[NSSortDescriptor alloc] initWithKey:self.sortKey ascending:self.sortAscending];
     NSArray *sortDescriptors = @[idDescriptor];
 
     [fetchRequest setSortDescriptors:sortDescriptors];
 
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"participants"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 

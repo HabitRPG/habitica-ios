@@ -70,6 +70,9 @@
 @dynamic lastAvatarNoPet;
 @dynamic lastAvatarHead;
 @dynamic useCostume;
+@dynamic partyOrder;
+@dynamic partyPosition;
+@synthesize petCount = _petCount;
 @synthesize lastImageGeneration;
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView useForce:(BOOL)force {
@@ -413,6 +416,10 @@
         return [UIColor colorWithRed:1.000 green:0.506 blue:0.000 alpha:1.000];
     }
     return [UIColor grayColor];
+}
+
+- (void)setPetCountFromArray:(NSArray *)petArray {
+    _petCount = [NSNumber numberWithInt:[petArray count]];
 }
 
 @end

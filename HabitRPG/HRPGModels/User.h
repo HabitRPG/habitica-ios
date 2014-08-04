@@ -68,6 +68,9 @@
 @property(nonatomic, retain) NSDate *lastAvatarNoPet;
 @property(nonatomic, retain) NSDate *lastAvatarHead;
 @property(nonatomic, retain) NSNumber *useCostume;
+@property(nonatomic, retain) NSString *partyOrder;
+@property(nonatomic, retain) NSNumber *partyPosition;
+@property(nonatomic, retain, setter = setPetCountFromArray:) NSNumber *petCount;
 @end
 
 @interface User (CoreDataGeneratedAccessors)
