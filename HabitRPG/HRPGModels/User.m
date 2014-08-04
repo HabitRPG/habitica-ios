@@ -118,7 +118,7 @@
     __block UIImage *currentMountHead = nil;
     dispatch_group_t group = dispatch_group_create();
 
-    if (withBackground && self.background) {
+    if (withBackground && self.background && self.background.length > 0) {
         dispatch_group_enter(group);
         [sharedManager getImage:[NSString stringWithFormat:@"background_%@", self.background] withFormat:nil onSuccess:^(UIImage *image) {
             background = image;
@@ -291,7 +291,7 @@
         }];
     }
 
-    if (withPetMount && self.currentPet) {
+    if (withPetMount && self.currentPet && self.currentPet.length > 0) {
         dispatch_group_enter(group);
         currentLayer++;
         NSString *format = nil;
@@ -306,7 +306,7 @@
         }];
     }
 
-    if (withPetMount && self.currentMount) {
+    if (withPetMount && self.currentMount && self.currentMount.length > 0) {
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"Mount_Head_%@", self.currentMount] withFormat:nil onSuccess:^(UIImage *image) {
@@ -317,7 +317,7 @@
         }];
     }
 
-    if (withPetMount && self.currentMount) {
+    if (withPetMount && self.currentMount && self.currentMount.length > 0) {
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"Mount_Body_%@", self.currentMount] withFormat:nil onSuccess:^(UIImage *image) {
@@ -348,11 +348,11 @@
 
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), NO, 0.0f);
         
-        if (withBackground && self.background) {
+        if (withBackground && self.background && self.background.length > 0) {
             [background drawInRect:CGRectMake(0, 0, background.size.width, background.size.height)];
         }
         
-        if (withPetMount && self.currentMount) {
+        if (withPetMount && self.currentMount && self.currentMount.length > 0) {
             yoffset = 0;
             [currentMount drawInRect:CGRectMake(25, 18, currentMount.size.width, currentMount.size.height)];
         }
@@ -362,10 +362,10 @@
                 [addImage drawInRect:CGRectMake(xoffset, yoffset, addImage.size.width, addImage.size.height)];
             }
         }
-        if (withPetMount && self.currentMount) {
+        if (withPetMount && self.currentMount && self.currentMount.length > 0) {
             [currentMountHead drawInRect:CGRectMake(25, 18, currentMountHead.size.width, currentMountHead.size.height)];
         }
-        if (self.currentPet) {
+        if (withPetMount && self.currentPet) {
             [currentPet drawInRect:CGRectMake(0, 43, currentPet.size.width, currentPet.size.height)];
         }
 
