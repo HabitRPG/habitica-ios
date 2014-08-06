@@ -60,8 +60,8 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+- (void) displayTaskDetailAtIndexPath:(NSIndexPath*)indexPath adjustValue:(int) adjustment {
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
     UILabel *lastActionLabel = (UILabel*)[cell viewWithTag:4];
     UILabel *titleLabel = (UILabel*)[cell viewWithTag:1];
@@ -69,7 +69,8 @@
         Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
         if (lastActionLabel.text.length == 0) {
             lastActionLabel.alpha = 0;
-            lastActionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Streak: %@", nil), task.streak];
+            int value = [task.streak intValue] + adjustment;
+            lastActionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Streak: %d", nil), value];
             [UIView animateWithDuration:0.3 animations:^() {
                 [lastActionLabel layoutIfNeeded];
                 [titleLabel layoutIfNeeded];
@@ -88,6 +89,10 @@
             }];
         }
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[self displayTaskDetailAtIndexPath:indexPath adjustValue:0];
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
@@ -222,7 +227,7 @@
             }
         }
 
-        [self configureSwiping:cell withTask:task];
+        [self configureSwiping:cell atIndexPath:indexPath withTask:task];
         if (animate) {
             if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
                 self.checkIconFactory.colors = @[[UIColor whiteColor]];
@@ -255,7 +260,7 @@
     }
 }
 
-- (void)configureSwiping:(MCSwipeTableViewCell *)cell withTask:(Task *)task {
+- (void)configureSwiping:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withTask:(Task *)task {
     MCSwipeTableViewCellState state;
     if (self.swipeDirection) {
         state = MCSwipeTableViewCellState1;
@@ -271,6 +276,7 @@
             [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(NSArray *valuesArray){
                 [self removeActivityCounter];
                 [self displayTaskResponse:valuesArray];
+                [self displayTaskDetailAtIndexPath:indexPath adjustValue:0];
             }                      onError:^(){
                 [self removeActivityCounter];
             }];
@@ -284,6 +290,7 @@
             [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray){
                 [self removeActivityCounter];
                 [self displayTaskResponse:valuesArray];
+                [self displayTaskDetailAtIndexPath:indexPath adjustValue:1];
             }                      onError:^(){
                 [self removeActivityCounter];
             }];
