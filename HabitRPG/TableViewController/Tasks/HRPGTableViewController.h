@@ -17,6 +17,8 @@
 
 -(void) displayTaskResponse:(NSArray*) valuesArray;
 
+-(void) collapseOpenedIndexPath;
+
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 - (NSPredicate*) getPredicate;
 @property BOOL displayCompleted;

@@ -98,14 +98,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 1) {
+    if (!self.tableView.tableFooterView && section == (self.tableView.numberOfSections-1)) {
         return 45;
     }
     return 0.1;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (section == 1) {
+    if (!self.tableView.tableFooterView && section == (self.tableView.numberOfSections-1)) {
         return self.toggleCompletedView;
     }
     return nil;
@@ -271,6 +271,9 @@
         [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeExit state:state completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self addActivityCounter];
             task.completed = [NSNumber numberWithBool:NO];
+            if (self.openedIndexPath) {
+                [self collapseOpenedIndexPath];
+            }
             [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(NSArray *valuesArray){
                 [self removeActivityCounter];
                 [self displayTaskResponse:valuesArray];
@@ -284,6 +287,9 @@
         [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeExit state:state completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
             [self addActivityCounter];
             task.completed = [NSNumber numberWithBool:YES];
+            if (self.openedIndexPath) {
+                [self collapseOpenedIndexPath];
+            }
             [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray){
                 [self removeActivityCounter];
                 [self displayTaskResponse:valuesArray];
@@ -306,16 +312,27 @@
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
     if (self.displayCompleted) {
+        if (self.fetchedResultsController.sections.count == 0) {
+            return;
+        }
         self.tableView.tableFooterView = nil;
         self.toggleCompletedView.text = NSLocalizedString(@"Hide completed To-Dos", nil);
-        [self.tableView insertSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationBottom];
+        NSIndexSet *index = [NSIndexSet indexSetWithIndex:self.fetchedResultsController.sections.count-1];
+        [self.tableView insertSections:index withRowAnimation:UITableViewRowAnimationBottom];
     } else {
         self.toggleCompletedView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 45);
         self.tableView.tableFooterView = self.toggleCompletedView;
         [UIView animateWithDuration:0.4f animations:^() {
             self.toggleCompletedView.text = NSLocalizedString(@"Show completed To-Dos", nil);
         }];
-        [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationBottom];
+        if (self.fetchedResultsController.sections.count == 0) {
+            if (self.tableView.numberOfSections == 1) {
+                [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationBottom];
+            }
+            return;
+        }
+        NSIndexSet *index = [NSIndexSet indexSetWithIndex:1];
+        [self.tableView deleteSections:index withRowAnimation:UITableViewRowAnimationBottom];
     }
 }
 

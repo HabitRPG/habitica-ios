@@ -276,8 +276,7 @@
             [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(NSArray *valuesArray){
                 [self removeActivityCounter];
                 [self displayTaskResponse:valuesArray];
-                [self displayTaskDetailAtIndexPath:indexPath adjustValue:0];
-            }                      onError:^(){
+            } onError:^(){
                 [self removeActivityCounter];
             }];
         }];

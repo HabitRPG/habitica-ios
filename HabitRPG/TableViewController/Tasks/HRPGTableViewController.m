@@ -78,7 +78,9 @@ BOOL editable;
 }
 
 - (void)refresh {
-    [self collapseOpenedIndexPath];
+    if (self.openedIndexPath) {
+        [self collapseOpenedIndexPath];
+    }
     [self.sharedManager fetchUser:^() {
         [self.refreshControl endRefreshing];
     }                     onError:^() {
