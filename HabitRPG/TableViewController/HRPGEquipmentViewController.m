@@ -266,16 +266,22 @@ NSIndexPath *selectedIndex;
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         if (indexPath.item == 0) {
             equipmentDetailViewController.type = @"head";
+            equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Head", nil);
         } else if (indexPath.item == 1) {
             equipmentDetailViewController.type = @"headAccessory";
+            equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Head Accessory", nil);
         } else if (indexPath.item == 2) {
             equipmentDetailViewController.type = @"armor";
+            equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Armor", nil);
         } else if (indexPath.item == 3) {
             equipmentDetailViewController.type = @"back";
+            equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Back", nil);
         } else if (indexPath.item == 4) {
             equipmentDetailViewController.type = @"shield";
+            equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Shield", nil);
         } else if (indexPath.item == 5) {
             equipmentDetailViewController.type = @"weapon";
+            equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Weapon", nil);
         }
         
         if (indexPath.section == 0) {
