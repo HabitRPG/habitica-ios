@@ -390,7 +390,7 @@
 -(UIColor *)classColor {
     if ([self.hclass isEqualToString:@"warrior"]) {
         return [UIColor colorWithRed:0.792 green:0.267 blue:0.239 alpha:1.000];
-    } else if ([self.hclass isEqualToString:@"wizard"]) {
+    } else if ([self.hclass isEqualToString:@"mage"]) {
         return [UIColor colorWithRed:0.211 green:0.718 blue:0.168 alpha:1.000];
     } else if ([self.hclass isEqualToString:@"rogue"]) {
         return [UIColor colorWithRed:0.177 green:0.333 blue:0.559 alpha:1.000];
@@ -463,6 +463,14 @@
     }
     
     return array;
+}
+
+- (NSString *)getCleanedClassName {
+    NSString *className = [self valueForKey:@"hclass"];
+    if ([className isEqualToString:@"wizard"]) {
+        return @"mage";
+    }
+    return className;
 }
 
 @end

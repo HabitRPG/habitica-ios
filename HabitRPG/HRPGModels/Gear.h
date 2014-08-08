@@ -16,7 +16,7 @@
 @property(nonatomic, retain) NSNumber *con;
 @property(nonatomic, retain) NSNumber *index;
 @property(nonatomic, retain) NSNumber *intelligence;
-@property(nonatomic, retain) NSString *klass;
+@property(nonatomic, retain, getter = getCleanedClassName) NSString *klass;
 @property(nonatomic, retain) NSNumber *per;
 @property(nonatomic, retain) NSNumber *str;
 @property(nonatomic) BOOL owned;

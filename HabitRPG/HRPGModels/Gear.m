@@ -82,4 +82,13 @@
     return NO;
 }
 
+- (NSString *)getCleanedClassName {
+    NSString *className = [self valueForKey:@"klass"];
+    if ([className isEqualToString:@"wizard"]) {
+        return @"mage";
+    }
+    return className;
+}
+
+
 @end
