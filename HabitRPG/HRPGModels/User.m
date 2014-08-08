@@ -422,4 +422,47 @@
     _petCount = [NSNumber numberWithInt:[petArray count]];
 }
 
+- (NSArray*) equippedArray {
+    NSMutableArray *array = [NSMutableArray array];
+    if (self.equippedArmor) {
+        [array addObject:self.equippedArmor];
+    }
+    if (self.equippedBack) {
+        [array addObject:self.equippedBack];
+    }
+    if (self.equippedHead) {
+        [array addObject:self.equippedHead];
+    }
+    if (self.equippedHeadAccessory) {
+        [array addObject:self.equippedHeadAccessory];
+    }
+    if (self.equippedShield) {
+        [array addObject:self.equippedShield];
+    }
+    if (self.equippedWeapon) {
+        [array addObject:self.equippedWeapon];
+    }
+    
+    if (self.costumeArmor) {
+        [array addObject:self.costumeArmor];
+    }
+    if (self.costumeBack) {
+        [array addObject:self.costumeBack];
+    }
+    if (self.costumeHead) {
+        [array addObject:self.costumeHead];
+    }
+    if (self.costumeHeadAccessory) {
+        [array addObject:self.costumeHeadAccessory];
+    }
+    if (self.costumeShield) {
+        [array addObject:self.costumeShield];
+    }
+    if (self.costumeWeapon) {
+        [array addObject:self.costumeWeapon];
+    }
+    
+    return array;
+}
+
 @end

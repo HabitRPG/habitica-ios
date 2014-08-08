@@ -10,6 +10,7 @@
 #import "HRPGAppDelegate.h"
 #import "Gear.h"
 #import "User.h"
+#import "HRPGEquipmentDetailViewController.h"
 
 @interface HRPGEquipmentViewController ()
 @property NSString *readableName;
@@ -31,19 +32,30 @@ NSIndexPath *selectedIndex;
     self.user = [self.sharedManager getUser];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
+    if (tableSelection) {
+        [self.tableView reloadRowsAtIndexPaths:@[tableSelection] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    [super viewWillAppear:animated];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[self.fetchedResultsController sections] count];
+    return 2;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[self.fetchedResultsController sections][section] name];
+    if (section == 0) {
+        return NSLocalizedString(@"Battle Gear", nil);
+    } else {
+        return NSLocalizedString(@"Costume", nil);
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -53,7 +65,6 @@ NSIndexPath *selectedIndex;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
     return NO;
 }
 
@@ -77,44 +88,7 @@ NSIndexPath *selectedIndex;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // The table view should not be re-orderable.
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    selectedIndex = indexPath;
-    NSString *battleGearString;
-    NSString *costumeString;
-    Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    if ([gear isEquippedBy:self.user]) {
-        battleGearString = NSLocalizedString(@"Unequip as Battle Gear", nil);
-    } else {
-        battleGearString = NSLocalizedString(@"Equip as Battle Gear", nil);
-    }
-    
-    if ([gear isCostumeOf:self.user]) {
-        costumeString = NSLocalizedString(@"Unequip as Costume", nil);
-    } else {
-        costumeString = NSLocalizedString(@"Equip as Costume", nil);
-    }
-    selectedGear = gear;
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
-                            battleGearString,
-                            costumeString,
-                            nil];
-    popup.tag = 1;
-    [popup showInView:[UIApplication sharedApplication].keyWindow];
-}
-
-
-- (IBAction)editButtonSelected:(id)sender {
-    if ([self isEditing]) {
-        [self setEditing:NO animated:YES];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonSelected:)];
-    } else {
-        [self setEditing:YES animated:YES];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editButtonSelected:)];
-    }
+    return NO;
 }
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
@@ -153,7 +127,7 @@ NSIndexPath *selectedIndex;
 
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"type" cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
@@ -216,91 +190,99 @@ NSIndexPath *selectedIndex;
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
-    Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
-    textLabel.text = gear.text;
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     
-    UILabel *classLabel = (UILabel*)[cell viewWithTag:2];
-    classLabel.text = gear.klass;
-    classLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-    if ([gear.klass isEqualToString:@"warrior"]) {
-        classLabel.textColor = [UIColor colorWithRed:0.792 green:0.267 blue:0.239 alpha:1.000];
-    } else if ([gear.klass isEqualToString:@"wizard"]) {
-        classLabel.textColor = [UIColor colorWithRed:0.211 green:0.718 blue:0.168 alpha:1.000];
-    } else if ([gear.klass isEqualToString:@"rogue"]) {
-        classLabel.textColor = [UIColor colorWithRed:0.177 green:0.333 blue:0.559 alpha:1.000];
-    } else if ([gear.klass isEqualToString:@"healer"]) {
-        classLabel.textColor = [UIColor colorWithRed:0.304 green:0.702 blue:0.839 alpha:1.000];
+    NSString *searchedKey;
+    NSString *typeName;
+    if (indexPath.section == 0) {
+        if (indexPath.item == 0) {
+            searchedKey = self.user.equippedHead;
+            typeName = NSLocalizedString(@"Head", nil);
+        } else if (indexPath.item == 1) {
+            searchedKey = self.user.equippedHeadAccessory;
+            typeName = NSLocalizedString(@"Head Accessory", nil);
+        } else if (indexPath.item == 2) {
+            searchedKey = self.user.equippedArmor;
+            typeName = NSLocalizedString(@"Armor", nil);
+        } else if (indexPath.item == 3) {
+            searchedKey = self.user.equippedBack;
+            typeName = NSLocalizedString(@"Back", nil);
+        } else if (indexPath.item == 4) {
+            searchedKey = self.user.equippedShield;
+            typeName = NSLocalizedString(@"Shield", nil);
+        } else if (indexPath.item == 5) {
+            searchedKey = self.user.equippedWeapon;
+            typeName = NSLocalizedString(@"Weapon", nil);
+        }
     } else {
-        classLabel.textColor = [UIColor colorWithRed:0.639 green:0.600 blue:0.022 alpha:1.000];
+        if (indexPath.item == 0) {
+            searchedKey = self.user.costumeHead;
+            typeName = NSLocalizedString(@"Head", nil);
+        } else if (indexPath.item == 1) {
+            searchedKey = self.user.costumeHeadAccessory;
+            typeName = NSLocalizedString(@"Head Accessory", nil);
+        } else if (indexPath.item == 2) {
+            searchedKey = self.user.costumeArmor;
+            typeName = NSLocalizedString(@"Armor", nil);
+        } else if (indexPath.item == 3) {
+            searchedKey = self.user.costumeBack;
+            typeName = NSLocalizedString(@"Back", nil);
+        } else if (indexPath.item == 4) {
+            searchedKey = self.user.costumeShield;
+            typeName = NSLocalizedString(@"Shield", nil);
+        } else if (indexPath.item == 5) {
+            searchedKey = self.user.costumeWeapon;
+            typeName = NSLocalizedString(@"Weapon", nil);
+        }
     }
-    
+    Gear *searchedGear;
+    for (Gear *gear in self.fetchedResultsController.fetchedObjects) {
+        if ([gear.key isEqualToString:searchedKey]) {
+            searchedGear = gear;
+            break;
+        }
+    }
+    textLabel.text = typeName;
     UILabel *detailLabel = (UILabel*)[cell viewWithTag:3];
     detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-    if ([gear.intelligence integerValue] != 0) {
-        detailLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Intelligence: %@", nil), gear.intelligence];
-    } else if ([gear.str integerValue] != 0) {
-        detailLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Strength: %@", nil), gear.str];
-    } else if ([gear.con integerValue] != 0) {
-        detailLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Constitution: %@", nil), gear.con];
-    } else if ([gear.per integerValue] != 0) {
-        detailLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Perception: %@", nil), gear.per];
-    } else {
-        detailLabel.text = NSLocalizedString(@"No Effect", nil);
-    }
-    
     UIImageView *imageView = (UIImageView*)[cell viewWithTag:4];
-    [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", gear.key]]
-                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-    
-    UILabel *cLabel = (UILabel*)[cell viewWithTag:5];
-    UILabel *bLabel = (UILabel*)[cell viewWithTag:6];
+    if (searchedGear) {
+        detailLabel.text = searchedGear.text;
+        detailLabel.textColor = [UIColor blackColor];
 
-    if ([gear isEquippedBy:self.user]) {
-        bLabel.hidden = NO;
+        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", searchedGear.key]]
+                    placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     } else {
-        bLabel.hidden = YES;
-    }
-    if ([gear isCostumeOf:self.user]) {
-        cLabel.hidden = NO;
-    } else {
-        cLabel.hidden = YES;
+        detailLabel.text = NSLocalizedString(@"Nothing Equipped", nil);
+        detailLabel.textColor = [UIColor grayColor];
+        imageView.image = nil;
     }
 }
 
-
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        [self addActivityCounter];
-        [self.sharedManager equipObject:selectedGear.key withType:@"equipped" onSuccess:^() {
-            [self.tableView reloadData];
-            [self removeActivityCounter];
-        }onError:^() {
-            [self removeActivityCounter];
-        }];
-    } else if (buttonIndex == 1) {
-        [self addActivityCounter];
-        [self.sharedManager equipObject:selectedGear.key withType:@"costume" onSuccess:^() {
-            [self.tableView reloadData];
-            [self removeActivityCounter];
-        }onError:^() {
-            [self removeActivityCounter];
-        }];
-    }
-}
-
--(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    [self.tableView deselectRowAtIndexPath:selectedIndex animated:YES];
-}
-
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"AddItem"]) {
-        UINavigationController *destViewController = segue.destinationViewController;
-        destViewController.topViewController.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Add %@", nil), self.readableName];
+    if ([segue.identifier isEqualToString:@"EquipmentDetailSegue"]) {
+        HRPGEquipmentDetailViewController *equipmentDetailViewController = (HRPGEquipmentDetailViewController*)segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        if (indexPath.item == 0) {
+            equipmentDetailViewController.type = @"head";
+        } else if (indexPath.item == 1) {
+            equipmentDetailViewController.type = @"headAccessory";
+        } else if (indexPath.item == 2) {
+            equipmentDetailViewController.type = @"armor";
+        } else if (indexPath.item == 3) {
+            equipmentDetailViewController.type = @"back";
+        } else if (indexPath.item == 4) {
+            equipmentDetailViewController.type = @"shield";
+        } else if (indexPath.item == 5) {
+            equipmentDetailViewController.type = @"weapon";
+        }
+        
+        if (indexPath.section == 0) {
+            equipmentDetailViewController.equipType = @"equipped";
+        } else if (indexPath.section == 1) {
+            equipmentDetailViewController.equipType = @"costume";
+        }
     }
 }
 

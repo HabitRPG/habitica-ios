@@ -40,6 +40,7 @@
 		D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */; };
 		D97C71F518F371D70089FDC6 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D97C71F418F371D70089FDC6 /* Pods-acknowledgements.plist */; };
 		D9803735198E657E004C8871 /* HRPGTaskResponseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9803734198E657E004C8871 /* HRPGTaskResponseView.m */; };
+		D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */; };
 		D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */ = {isa = PBXBuildFile; fileRef = D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */; };
 		D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9884B4419168AF00078BC7C /* HRPGProgressView.m */; };
 		D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98AD54A19437A3500AF6174 /* HRPGPetViewController.m */; };
@@ -172,6 +173,8 @@
 		D9803733198E657E004C8871 /* HRPGTaskResponseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTaskResponseView.h; sourceTree = "<group>"; };
 		D9803734198E657E004C8871 /* HRPGTaskResponseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTaskResponseView.m; sourceTree = "<group>"; };
 		D980373619902BB1004C8871 /* HabitRPG 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 4.xcdatamodel"; sourceTree = "<group>"; };
+		D980373719956E46004C8871 /* HRPGEquipmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGEquipmentDetailViewController.h; path = Inventory/HRPGEquipmentDetailViewController.h; sourceTree = "<group>"; };
+		D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGEquipmentDetailViewController.m; path = Inventory/HRPGEquipmentDetailViewController.m; sourceTree = "<group>"; };
 		D987393A19687F3E002A2426 /* NSNumber+abbreviation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+abbreviation.h"; path = "HabitRPG/Utilities/NSNumber+abbreviation.h"; sourceTree = SOURCE_ROOT; };
 		D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+abbreviation.m"; path = "HabitRPG/Utilities/NSNumber+abbreviation.m"; sourceTree = SOURCE_ROOT; };
 		D9884B4319168AF00078BC7C /* HRPGProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGProgressView.h; sourceTree = "<group>"; };
@@ -413,6 +416,8 @@
 			children = (
 				D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */,
 				D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */,
+				D980373719956E46004C8871 /* HRPGEquipmentDetailViewController.h */,
+				D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */,
 				D99DEC821908313D00FFD2B9 /* HRPGItemViewController.h */,
 				D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */,
 				D9ADD3491943BB16006202C1 /* HRPGFeedViewController.h */,
@@ -782,6 +787,7 @@
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
 				D9B5C0D518D5F94400C8D1B7 /* HRPGPartyViewController.m in Sources */,
 				D98AD5541943986100AF6174 /* HRPGMountViewController.m in Sources */,
+				D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */,
 				D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */,
 				D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */,
 				D9803735198E657E004C8871 /* HRPGTaskResponseView.m in Sources */,

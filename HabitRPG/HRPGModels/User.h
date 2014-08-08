@@ -147,4 +147,6 @@
 
 -(UIColor*) contributorColor;
 
+-(NSArray*) equippedArray;
+
 @end
