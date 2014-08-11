@@ -153,11 +153,10 @@
     }];
 }
 
-- (void) updateHealth:(NSNumber*)newHealth {
+- (void) updateHealth:(NSNumber*)healthDiff withHealth:(NSNumber*)newHealth{
     if (!self.healthLabel) {
         [self addHealthView];
     }
-    NSNumber *healthDiff = [NSNumber numberWithFloat:([newHealth floatValue] - [self.health floatValue])];
     self.health = newHealth;
     
     self.healthLabel.text = [NSString stringWithFormat:@"Health: %@/%@", self.health, self.healthMax];
@@ -192,11 +191,12 @@
         }
         NSArray *valuesArray = [self.queue objectAtIndex:0];
         [self.queue removeObjectAtIndex:0];
-        NSNumber *health = valuesArray[0];
+        NSNumber *healthDiff = valuesArray[0];
+        NSNumber *health = valuesArray[3];
         if ([health floatValue] != [self.health floatValue]) {
-            [self updateHealth:health];
+            [self updateHealth:healthDiff withHealth:health];
         } else {
-            [self updateExp:valuesArray[1] withGold:valuesArray[2]];
+            [self updateExp:valuesArray[1] withExperience:valuesArray[4] withGold:valuesArray[2]];
         }
     }];
     
@@ -209,11 +209,10 @@
     [self shakeHealthViews];
 }
 
-- (void) updateExp:(NSNumber*)newExperience withGold:(NSNumber*)newGold {
+- (void) updateExp:(NSNumber*)expDiff withExperience:(NSNumber*)newExperience withGold:(NSNumber*)newGold {
     if (!self.ExpLabel) {
         [self addExpAndGoldViews];
     }
-    NSNumber *expDiff = [NSNumber numberWithFloat:([newExperience floatValue] - [self.experience floatValue])];
     self.experience = newExperience;
     self.ExpLabel.text = [NSString stringWithFormat:@"Exp: %@/%@", self.experience, self.experienceMax];
     [self.ExpLabel sizeToFit];
@@ -239,7 +238,11 @@
     UILabel *updateExpLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - self.ExpLabel.frame.size.width/2, self.ExpLabel.frame.origin.y, self.ExpLabel.frame.size.width, 16)];
     updateExpLabel.font = [UIFont boldSystemFontOfSize:15.0f];
     updateExpLabel.textAlignment = NSTextAlignmentCenter;
-    updateExpLabel.text = [NSString stringWithFormat:@"+%@", expDiff];
+    if ([expDiff intValue] < 0) {
+        updateExpLabel.text = [NSString stringWithFormat:@"+%@", expDiff];
+    } else {
+        updateExpLabel.text = [NSString stringWithFormat:@"%@", expDiff];
+    }
     updateExpLabel.textColor = [UIColor colorWithRed:0.870 green:0.686 blue:0.037 alpha:1.000];
     updateExpLabel.transform = CGAffineTransformScale(updateExpLabel.transform, 0.35, 0.35);
     [self addSubview:updateExpLabel];
@@ -247,7 +250,11 @@
     UILabel *updateGoldLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.goldLabel.frame.origin.x-10, self.goldLabel.frame.origin.y, self.goldLabel.frame.size.width+20, 16)];
     updateGoldLabel.font = [UIFont boldSystemFontOfSize:13.0f];
     updateGoldLabel.textAlignment = NSTextAlignmentCenter;
-    updateGoldLabel.text = [NSString stringWithFormat:@"+%d", [goldDiff intValue]];
+    if ([goldDiff intValue] > 0) {
+        updateGoldLabel.text = [NSString stringWithFormat:@"+%d", [goldDiff intValue]];
+    } else {
+        updateGoldLabel.text = [NSString stringWithFormat:@"%d", [goldDiff intValue]];
+    }
     updateGoldLabel.textColor = [UIColor colorWithRed:0.292 green:0.642 blue:0.013 alpha:1.000];
     updateGoldLabel.transform = CGAffineTransformScale(updateGoldLabel.transform, 0.35, 0.35);
     [self.moneyView addSubview:updateGoldLabel];
@@ -284,11 +291,12 @@
         }
         NSArray *valuesArray = [self.queue objectAtIndex:0];
         [self.queue removeObjectAtIndex:0];
-        NSNumber *health = valuesArray[0];
+        NSNumber *healthDiff = valuesArray[0];
+        NSNumber *health = valuesArray[3];
         if ([health floatValue] != [self.health floatValue]) {
-            [self updateHealth:health];
+            [self updateHealth:healthDiff withHealth:health];
         } else {
-            [self updateExp:valuesArray[1] withGold:valuesArray[2]];
+            [self updateExp:valuesArray[1] withExperience:valuesArray[4] withGold:valuesArray[2]];
         }
     }];
     
@@ -309,11 +317,12 @@
         if (!self.isDisplaying && self.queue.count != 0) {
             NSArray *valuesArray = [self.queue objectAtIndex:0];
             [self.queue removeObjectAtIndex:0];
-            NSNumber *health = valuesArray[0];
+            NSNumber *healthDiff = valuesArray[0];
+            NSNumber *health = valuesArray[3];
             if ([health floatValue] != [self.health floatValue]) {
-                [self updateHealth:health];
+                [self updateHealth:healthDiff withHealth:health];
             } else {
-                [self updateExp:valuesArray[1] withGold:valuesArray[2]];
+                [self updateExp:valuesArray[1] withExperience:valuesArray[4] withGold:valuesArray[2]];
             }
         }
     }];
@@ -363,11 +372,13 @@
         [self.queue addObject:valuesArray];
     } else {
         self.isDisplaying = YES;
-        NSNumber *health = valuesArray[0];
-        if ([health floatValue] != [self.health floatValue]) {
-            [self updateHealth:health];
+        NSNumber *healthDiff = valuesArray[0];
+        NSNumber *health = valuesArray[3];
+        self.experienceMax = valuesArray[5];
+        if ([healthDiff floatValue] != 0) {
+            [self updateHealth:healthDiff withHealth:health];
         } else {
-            [self updateExp:valuesArray[1] withGold:valuesArray[2]];
+            [self updateExp:valuesArray[1] withExperience:valuesArray[4] withGold:valuesArray[2]];
         }
     }
 }

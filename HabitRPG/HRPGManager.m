@@ -1063,7 +1063,9 @@ NSString *currentUser;
             user.experience = [NSNumber numberWithFloat:[user.experience floatValue] - [user.nextLevel floatValue]];
         }
         user.level = taskResponse.level;
+        NSNumber *expDiff = [NSNumber numberWithFloat:([taskResponse.experience floatValue] - [user.experience floatValue])];
         user.experience = taskResponse.experience;
+        NSNumber *healthDiff = [NSNumber numberWithFloat:([user.health floatValue] - [taskResponse.health floatValue])];
         user.health = taskResponse.health;
         user.magic = taskResponse.magic;
 
@@ -1088,7 +1090,7 @@ NSString *currentUser;
             }
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock(@[user.health, user.experience, user.gold]);
+        successBlock(@[healthDiff, expDiff, user.gold, user.health, user.experience, user.nextLevel]);
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
