@@ -112,6 +112,12 @@
                                                    NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]
                                                    }
                                          context:nil].size.height*2;
+    height = height + [@" " boundingRectWithSize:CGSizeMake(90.0f, MAXFLOAT)
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                      attributes:@{
+                                                   NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
+                                                   }
+                                         context:nil].size.height;
     if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
         return CGSizeMake(120.0f, height);
     }
@@ -232,7 +238,7 @@
     UIImageView *imageView = (UIImageView*)[cell viewWithTag:2];
     UILabel *progressLabel = (UILabel*)[cell viewWithTag:3];
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
-    progressLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+    progressLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     Pet *namePet = [petArray firstObject];
     NSString *key = [namePet.key componentsSeparatedByString:@"-"][0];
     label.text = [self eggNameWithKey:key];
