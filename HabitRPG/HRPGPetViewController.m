@@ -232,9 +232,11 @@
     }
     
     progressView.hidden = YES;
-    if (pet.trained && [pet.trained integerValue] != -1 && !pet.asMount) {
-        progressView.progress = [pet.trained floatValue] / 100;
-        progressView.hidden = NO;
+    if (![pet.key hasPrefix:@"Egg"]) {
+        if (pet.trained && [pet.trained integerValue] != -1 && !pet.asMount) {
+            progressView.progress = [pet.trained floatValue] / 50;
+            progressView.hidden = NO;
+        }
     }
 }
 
