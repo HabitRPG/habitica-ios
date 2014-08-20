@@ -363,6 +363,7 @@
 - (void)clearCompletedTasks:(UITapGestureRecognizer*)tapRecognizer {
     [self.sharedManager clearCompletedTasks:^(){
         [self toggleCompletedTasks:nil];
+        [self.sharedManager fetchUser:nil onError:nil];
     }onError:^() {
         
     }];
