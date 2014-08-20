@@ -231,6 +231,12 @@ BOOL editable;
         [self performSegueWithIdentifier:@"FormSegue" sender:self];
         return;
     }
+    
+//FIXME
+    if (indexPath.section == 1) {
+        return;
+    }
+    
     Task *task;
     if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
         task = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];

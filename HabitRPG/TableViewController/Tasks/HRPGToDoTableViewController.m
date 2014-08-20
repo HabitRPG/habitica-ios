@@ -98,14 +98,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (!self.tableView.tableFooterView && section == (self.tableView.numberOfSections-1)) {
+    if (self.tableView.tableFooterView != self.toggleCompletedView && section == (self.tableView.numberOfSections-1)) {
         return 45;
     }
     return 0.1;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (!self.tableView.tableFooterView && section == (self.tableView.numberOfSections-1)) {
+    if (self.tableView.tableFooterView != self.toggleCompletedView && section == (self.tableView.numberOfSections-1)) {
         return self.toggleCompletedView;
     }
     return nil;
@@ -315,7 +315,31 @@
         if (self.fetchedResultsController.sections.count == 0) {
             return;
         }
-        self.tableView.tableFooterView = nil;
+        UILabel *footerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 45)];
+        footerView.text = NSLocalizedString(@"Clear completed To-Dos", nil);
+        footerView.textAlignment = NSTextAlignmentCenter;
+        footerView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
+        footerView.textColor = [UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000];
+        
+        CALayer *bottomBorder = [CALayer layer];
+        bottomBorder.frame = CGRectMake(0.0f, footerView.frame.size.height, footerView.frame.size.width, 1.0f);
+        bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
+                                                         alpha:1.0f].CGColor;
+        [footerView.layer addSublayer:bottomBorder];
+        CALayer *topBorder = [CALayer layer];
+        topBorder.frame = CGRectMake(0.0f, -1.0f, footerView.frame.size.width, 1.0f);
+        topBorder.backgroundColor = [UIColor colorWithWhite:0.8f
+                                                      alpha:1.0f].CGColor;
+        [footerView.layer addSublayer:topBorder];
+
+        
+        UITapGestureRecognizer *singleFingerTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(clearCompletedTasks:)];
+        [footerView setUserInteractionEnabled:YES];
+        [footerView addGestureRecognizer:singleFingerTap];
+        self.tableView.tableFooterView = footerView;
+        
         self.toggleCompletedView.text = NSLocalizedString(@"Hide completed To-Dos", nil);
         NSIndexSet *index = [NSIndexSet indexSetWithIndex:self.fetchedResultsController.sections.count-1];
         [self.tableView insertSections:index withRowAnimation:UITableViewRowAnimationBottom];
@@ -336,4 +360,11 @@
     }
 }
 
+- (void)clearCompletedTasks:(UITapGestureRecognizer*)tapRecognizer {
+    [self.sharedManager clearCompletedTasks:^(){
+        [self toggleCompletedTasks:nil];
+    }onError:^() {
+        
+    }];
+}
 @end

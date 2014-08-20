@@ -39,6 +39,8 @@
 
 - (void)deleteTask:(Task *)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)clearCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 - (void)buyObject:(MetaReward *)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)sellItem:(Item *)item onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
