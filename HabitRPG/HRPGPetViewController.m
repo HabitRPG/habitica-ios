@@ -41,7 +41,11 @@
      name:UIContentSizeCategoryDidChangeNotification
      object:nil];
     
-    self.navigationItem.title = self.petName;
+    if (self.petColor) {
+        self.navigationItem.title = self.petColor;
+    } else {
+        self.navigationItem.title = self.petName;
+    }
     
     NSError *error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -162,15 +166,10 @@
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    if (self.petColor) {
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@ && type = %@", self.petColor, self.petType]];
+    if (self.petName) {
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@ && type = %@", self.petName, self.petType]];
     } else {
-        if (self.petType) {
-            NSString *completeName = [NSString stringWithFormat:@"%@-%@", self.petName, self.petType];
-            [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key = %@", completeName]];
-        } else {
-            [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@", self.petName]];
-        }
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@ && type = %@", self.petColor, self.petType]];
     }
     
     // Edit the sort key as appropriate.

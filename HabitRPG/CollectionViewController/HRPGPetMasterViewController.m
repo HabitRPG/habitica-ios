@@ -106,16 +106,13 @@ NSUserDefaults *defaults;
         if (pet.trained) {
             if (self.groupByKey) {
                 self.selectedColor = [namePet.key componentsSeparatedByString:@"-"][1];
-                self.selectedType = namePet.type;
             } else {
                 self.selectedPet = [namePet.key componentsSeparatedByString:@"-"][0];
                 if ([namePet.type isEqualToString:@" "]) {
-                    self.selectedType = [namePet.key componentsSeparatedByString:@"-"][1];
-                } else {
-                    self.selectedType = nil;
+                    self.selectedColor = [namePet.key componentsSeparatedByString:@"-"][1];
                 }
             }
-            
+            self.selectedType = namePet.type;
             return YES;
         }
     }

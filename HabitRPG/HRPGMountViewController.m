@@ -40,6 +40,12 @@
      name:UIContentSizeCategoryDidChangeNotification
      object:nil];
     
+    if (self.mountColor) {
+        self.navigationItem.title = self.mountColor;
+    } else {
+        self.navigationItem.title = self.mountName;
+    }
+    
     NSError *error;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -156,15 +162,10 @@
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    if (self.mountColor) {
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@ && type = %@", self.mountColor, self.mountType]];
+    if (self.mountName) {
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@ && type = %@", self.mountName, self.mountType]];
     } else {
-        if (self.mountType) {
-            NSString *completeName = [NSString stringWithFormat:@"%@-%@", self.mountName, self.mountType];
-            [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key = %@", completeName]];
-        } else {
-            [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@", self.mountName]];
-        }
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@ && type = %@", self.mountColor, self.mountType]];
     }
     // Edit the sort key as appropriate.
     NSSortDescriptor *typeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
