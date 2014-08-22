@@ -15,4 +15,5 @@
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 @property (nonatomic) NSString *mountName;
 @property (nonatomic) NSString *mountType;
+@property (nonatomic) NSString *mountColor;
 @end

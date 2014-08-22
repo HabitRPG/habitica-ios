@@ -71,14 +71,8 @@ NSUserDefaults *defaults;
 
 - (NSString*) eggNameWithKey:(NSString*)key {
     for (Egg *egg in self.eggs) {
-        if (self.groupByKey) {
-            if ([egg.type isEqualToString:key]) {
-                return egg.text;
-            }
-        } else {
-            if ([egg.key isEqualToString:key]) {
-                return egg.text;
-            }
+        if ([egg.key isEqualToString:key]) {
+            return egg.text;
         }
     }
     return key;
