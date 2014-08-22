@@ -105,7 +105,7 @@
                                            attributes:@{
                                                         NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]
                                                         }
-                                              context:nil].size.height*2;
+                                              context:nil].size.height*3;
     if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
         return CGSizeMake(120.0f, height);
     }
@@ -162,11 +162,15 @@
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    if (self.petType) {
-        NSString *completeName = [NSString stringWithFormat:@"%@-%@", self.petName, self.petType];
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key = %@", completeName]];
+    if (self.petColor) {
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@ && type = %@", self.petColor, self.petType]];
     } else {
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@", self.petName]];
+        if (self.petType) {
+            NSString *completeName = [NSString stringWithFormat:@"%@-%@", self.petName, self.petType];
+            [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key = %@", completeName]];
+        } else {
+            [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@", self.petName]];
+        }
     }
     
     // Edit the sort key as appropriate.

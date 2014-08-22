@@ -15,5 +15,6 @@
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 @property (nonatomic) NSString *petName;
 @property (nonatomic) NSString *petType;
+@property (nonatomic) NSString *petColor;
 
 @end

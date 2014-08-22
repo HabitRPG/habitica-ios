@@ -44,6 +44,7 @@
 		D97CCDB719A51EED00DA128A /* NSMutableAttributedString_GHFMarkdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDB019A51EED00DA128A /* NSMutableAttributedString_GHFMarkdown.m */; };
 		D97CCDB819A51EED00DA128A /* NSMutableString_GHFMarkdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDB219A51EED00DA128A /* NSMutableString_GHFMarkdown.m */; };
 		D97CCDB919A51EED00DA128A /* NSString_GHFMarkdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDB419A51EED00DA128A /* NSString_GHFMarkdown.m */; };
+		D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */; };
 		D9803735198E657E004C8871 /* HRPGTaskResponseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9803734198E657E004C8871 /* HRPGTaskResponseView.m */; };
 		D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */; };
 		D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */ = {isa = PBXBuildFile; fileRef = D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */; };
@@ -185,6 +186,8 @@
 		D97CCDB219A51EED00DA128A /* NSMutableString_GHFMarkdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMutableString_GHFMarkdown.m; sourceTree = "<group>"; };
 		D97CCDB319A51EED00DA128A /* NSString_GHFMarkdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_GHFMarkdown.h; sourceTree = "<group>"; };
 		D97CCDB419A51EED00DA128A /* NSString_GHFMarkdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_GHFMarkdown.m; sourceTree = "<group>"; };
+		D97CCDBA19A7AFFA00DA128A /* HRPGArrayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGArrayViewController.h; sourceTree = "<group>"; };
+		D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGArrayViewController.m; sourceTree = "<group>"; };
 		D9803733198E657E004C8871 /* HRPGTaskResponseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTaskResponseView.h; sourceTree = "<group>"; };
 		D9803734198E657E004C8871 /* HRPGTaskResponseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTaskResponseView.m; sourceTree = "<group>"; };
 		D980373619902BB1004C8871 /* HabitRPG 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 4.xcdatamodel"; sourceTree = "<group>"; };
@@ -337,6 +340,8 @@
 				D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */,
 				D94796081972C248002CB34C /* HRPGUserProfileViewController.h */,
 				D94796091972C248002CB34C /* HRPGUserProfileViewController.m */,
+				D97CCDBA19A7AFFA00DA128A /* HRPGArrayViewController.h */,
+				D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */,
 				D9C3D01C19509E3800D22A4A /* Inventory */,
 				D9E3654F1930D45500C056F1 /* Modals */,
 				D9E365501930D58900C056F1 /* Party */,
@@ -814,6 +819,7 @@
 				D99DEC87190836D400FFD2B9 /* Item.m in Sources */,
 				D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */,
 				D922F0B11925314500B197EA /* HRPGNetworkIndicatorController.m in Sources */,
+				D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */,
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
 				D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */,
 				D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */,

@@ -15,23 +15,29 @@
 #import "Egg.h"
 #import "HatchingPotion.h"
 #import "HRPGBallActivityIndicator.h"
+#import "HRPGArrayViewController.h"
 
 @interface HRPGPetMasterViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic) HRPGManager *sharedManager;
 @property (nonatomic) NSArray *eggs;
+@property (nonatomic) NSArray *hatchingPotions;
 @property (nonatomic) NSString *selectedPet;
 @property (nonatomic) NSString *selectedType;
+@property (nonatomic) NSString *selectedColor;
 @property (nonatomic) NSArray *sortedPets;
 @property NSInteger activityCounter;
 @property UIBarButtonItem *navigationButton;
+@property NSInteger groupByKey;
 @end
 
 @implementation HRPGPetMasterViewController
+NSUserDefaults *defaults;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    defaults = [NSUserDefaults standardUserDefaults];
+    self.groupByKey = [defaults integerForKey:@"groupPetsBy"];
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
     self.managedObjectContext = self.sharedManager.getManagedObjectContext;
@@ -48,6 +54,10 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Egg" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     self.eggs = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    fetchRequest = [[NSFetchRequest alloc] init];
+    entity = [NSEntityDescription entityForName:@"HatchingPotion" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    self.hatchingPotions = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
 - (Egg*) eggWithKey:(NSString*)key {
@@ -61,8 +71,23 @@
 
 - (NSString*) eggNameWithKey:(NSString*)key {
     for (Egg *egg in self.eggs) {
-        if ([egg.key isEqualToString:key]) {
-            return egg.text;
+        if (self.groupByKey) {
+            if ([egg.type isEqualToString:key]) {
+                return egg.text;
+            }
+        } else {
+            if ([egg.key isEqualToString:key]) {
+                return egg.text;
+            }
+        }
+    }
+    return key;
+}
+
+- (NSString*) hatchingPotionNameWithKey:(NSString*)key {
+    for (HatchingPotion *hPotion in self.hatchingPotions) {
+        if ([hPotion.key isEqualToString:key]) {
+            return hPotion.text;
         }
     }
     return key;
@@ -83,20 +108,22 @@
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *petArray = self.sortedPets[indexPath.section][indexPath.item];
     Pet *namePet = [petArray firstObject];
-    int trained = 0;
     for (Pet *pet in petArray) {
         if (pet.trained) {
-            trained++;
+            if (self.groupByKey) {
+                self.selectedColor = [namePet.key componentsSeparatedByString:@"-"][1];
+                self.selectedType = namePet.type;
+            } else {
+                self.selectedPet = [namePet.key componentsSeparatedByString:@"-"][0];
+                if ([namePet.type isEqualToString:@" "]) {
+                    self.selectedType = [namePet.key componentsSeparatedByString:@"-"][1];
+                } else {
+                    self.selectedType = nil;
+                }
+            }
+            
+            return YES;
         }
-    }
-    if (trained > 0) {
-        self.selectedPet = [namePet.key componentsSeparatedByString:@"-"][0];
-        if ([namePet.type isEqualToString:@" "]) {
-            self.selectedType = [namePet.key componentsSeparatedByString:@"-"][1];
-        } else {
-            self.selectedType = nil;
-        }
-        return YES;
     }
     return NO;
 }
@@ -111,7 +138,7 @@
                                       attributes:@{
                                                    NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]
                                                    }
-                                         context:nil].size.height*2;
+                                         context:nil].size.height*3;
     height = height + [@" " boundingRectWithSize:CGSizeMake(90.0f, MAXFLOAT)
                                          options:NSStringDrawingUsesLineFragmentOrigin
                                       attributes:@{
@@ -149,7 +176,6 @@
     if (_sortedPets) {
         return _sortedPets;
     }
-    
     NSMutableArray *newSortedPets = [NSMutableArray array];
     for (id <NSFetchedResultsSectionInfo> sectionInfo in self.fetchedResultsController.sections) {
         NSMutableArray *sectionArray = [NSMutableArray array];
@@ -160,7 +186,7 @@
             for (NSMutableArray *oldPetArray in sectionArray) {
                 if (oldPetArray) {
                     Pet *oldPet = [oldPetArray firstObject];
-                    if ([nameParts[0] isEqualToString:[oldPet.key componentsSeparatedByString:@"-"][0]]) {
+                    if ([nameParts[self.groupByKey] isEqualToString:[oldPet.key componentsSeparatedByString:@"-"][self.groupByKey]]) {
                         petArray = oldPetArray;
                         break;
                     }
@@ -239,23 +265,33 @@
     UILabel *progressLabel = (UILabel*)[cell viewWithTag:3];
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     progressLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-    Pet *namePet = [petArray firstObject];
-    NSString *key = [namePet.key componentsSeparatedByString:@"-"][0];
-    label.text = [self eggNameWithKey:key];
+    NSString *petType;
+    NSString *petColor;
     int trained = 0;
     
     for (Pet *pet in petArray) {
         if (pet.trained) {
+            if (petType == nil) {
+                petType = [pet.key componentsSeparatedByString:@"-"][0];
+                petColor = [pet.key componentsSeparatedByString:@"-"][1];
+            }
             trained++;
         }
     }
-    NSString *petType = @"Base";
-    if ([namePet.type isEqualToString:@" "]) {
-        petType = [namePet.key componentsSeparatedByString:@"-"][1];
+    if (self.groupByKey) {
+        if (petColor == nil) {
+            petColor = [((Pet*)[petArray firstObject]).key componentsSeparatedByString:@"-"][1];
+        }
+        label.text = [self hatchingPotionNameWithKey:petColor];
+    } else {
+        if (petType == nil) {
+            petType = [((Pet*)[petArray firstObject]).key componentsSeparatedByString:@"-"][0];
+        }
+        label.text = [self eggNameWithKey:petType];
     }
     
     if (trained > 0) {
-        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet-%@-%@.png", key, petType]]
+        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet-%@-%@.png", petType, petColor]]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
         imageView.alpha = 1;
     } else {
@@ -282,11 +318,33 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if (![segue.identifier isEqualToString:@"PetSegue"]) {
+    if ([segue.identifier isEqualToString:@"GroupBySegue"]) {
+        UINavigationController *navController = (UINavigationController*)segue.destinationViewController;
+        HRPGArrayViewController *arrayViewController = (HRPGArrayViewController*)navController.topViewController;
+        arrayViewController.items = @[
+                                      NSLocalizedString(@"Pet Type", nil),
+                                      NSLocalizedString(@"Color", nil)
+                                      ];
+        arrayViewController.selectedIndex = [defaults integerForKey:@"groupPetsBy"];
+    } else if (![segue.identifier isEqualToString:@"PetSegue"]) {
         HRPGPetViewController *petController = (HRPGPetViewController*)segue.destinationViewController;
         petController.petName = self.selectedPet;
         petController.petType = self.selectedType;
+        petController.petColor = self.selectedColor;
     }
+}
+
+
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
+    
+}
+
+- (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
+    HRPGArrayViewController *arrayViewController = (HRPGArrayViewController*)segue.sourceViewController;
+    [defaults setInteger:arrayViewController.selectedIndex forKey:@"groupPetsBy"];
+    self.groupByKey = arrayViewController.selectedIndex;
+    _sortedPets = nil;
+    [self.collectionView reloadData];
 }
 
 @end
