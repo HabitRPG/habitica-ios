@@ -309,9 +309,6 @@ NSString *currentUser;
             @"stats.exp" : @"experience",
             @"stats.mp" : @"magic",
             @"stats.hp" : @"health",
-            @"stats.toNextLevel" : @"nextLevel",
-            @"stats.maxHealth" : @"maxHealth",
-            @"stats.maxMP" : @"maxMagic",
             @"stats.class" : @"hclass",
             @"items.gear.equipped.headAccessory" : @"equippedHeadAccessory",
             @"items.gear.equipped.armor" : @"equippedArmor",
@@ -497,7 +494,17 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodAny pathPattern:@"/api/v2/user" keyPath:@"dailys" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodAny pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPUT pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    entityMapping = [entityMapping copy];
+    [entityMapping addAttributeMappingsFromDictionary:@{
+                                                       @"stats.toNextLevel" : @"nextLevel",
+                                                       @"stats.maxHealth" : @"maxHealth",
+                                                       @"stats.maxMP" : @"maxMagic",
+                                                       }];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
 
@@ -1004,6 +1011,7 @@ NSString *currentUser;
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
+        [self.networkIndicatorController endNetworking];
         return;
      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
          if (operation.HTTPRequestOperation.response.statusCode == 503) {
