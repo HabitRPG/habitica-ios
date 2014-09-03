@@ -1685,6 +1685,15 @@ NSString *currentUser;
     }                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
             [self displayServerError];
+        } else if (operation.HTTPRequestOperation.response.statusCode == 502) {
+            [self fetchUser:^(){
+                NSError *executeError = nil;
+                [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                successBlock();
+                [self.networkIndicatorController endNetworking];
+                return;
+            }onError:nil];
+            return;
         } else {
             [self displayNetworkError];
         }
