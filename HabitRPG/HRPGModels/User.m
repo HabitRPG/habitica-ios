@@ -49,6 +49,7 @@
 @dynamic maxHealth;
 @dynamic maxMagic;
 @dynamic nextLevel;
+@dynamic habitNewStuff;
 @dynamic participateInQuest;
 @dynamic shirt;
 @dynamic size;

@@ -25,6 +25,8 @@
 
 - (void)fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)updateUser:(NSDictionary*)newValues onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 - (void)fetchGroup:(NSString *)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)fetchGroups:(NSString *)groupType onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;

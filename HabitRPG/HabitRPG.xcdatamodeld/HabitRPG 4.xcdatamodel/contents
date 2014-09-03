@@ -192,6 +192,7 @@
         <attribute name="equippedWeapon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="experience" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="gold" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="habitNewStuff" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="hairBangs" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hairBase" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hairBeard" optional="YES" attributeType="String" syncable="YES"/>
@@ -263,6 +264,6 @@
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="120"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="405"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="1213"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1230"/>
     </elements>
 </model>
