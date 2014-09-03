@@ -32,10 +32,11 @@
         self.newsWebView.alpha = 1;
         self.loadingIndicator.alpha = 0;
     }];
-    
-    [self.sharedManager updateUser:@{@"flags.newStuff": @NO} onSuccess:^() {
-    }onError:^() {
-    }];
+    if ([[self.sharedManager getUser].habitNewStuff boolValue]) {
+        [self.sharedManager updateUser:@{@"flags.newStuff": @NO} onSuccess:^() {
+        }onError:^() {
+        }];
+    }
 }
 
 
