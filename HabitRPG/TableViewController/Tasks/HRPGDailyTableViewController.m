@@ -112,6 +112,12 @@
         checklistLabel.hidden = YES;
         cell.backgroundColor = [UIColor lightGrayColor];
         UIImageView *checkMarkView = (UIImageView *) [cell viewWithTag:3];
+        MCSwipeTableViewCellState state;
+        if (self.swipeDirection) {
+            state = MCSwipeTableViewCellState1;
+        } else {
+            state = MCSwipeTableViewCellState3;
+        }
         if ([item.completed boolValue]) {
             self.checkIconFactory.colors = @[[UIColor whiteColor]];
             checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
@@ -121,7 +127,7 @@
             }];
             UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconSquareO]];
             UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
-            [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+            [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:state completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                 item.completed = [NSNumber numberWithBool:NO];
                 [self addActivityCounter];
                 [self.sharedManager updateTask:task onSuccess:^() {
@@ -139,7 +145,7 @@
             }];
             UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconCheckSquareO]];
             UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
-            [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+            [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:state completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                 item.completed = [NSNumber numberWithBool:YES];
                 [self addActivityCounter];
                 [self.sharedManager updateTask:task onSuccess:^() {
