@@ -71,4 +71,6 @@
 
 - (BOOL)dueToday;
 
+- (UIColor*) taskColor;
+
 @end

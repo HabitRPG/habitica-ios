@@ -69,7 +69,7 @@
 
 - (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UIColor *color = [self.sharedManager getColorForValue:task.value];
+    UIColor *color = [task taskColor];
     UILabel *label = (UILabel *) [cell viewWithTag:1];
     label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
     label.textColor = color;

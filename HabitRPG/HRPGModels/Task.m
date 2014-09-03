@@ -114,5 +114,23 @@
     }
 }
 
+- (UIColor*) taskColor {
+    NSInteger intValue = [self.value integerValue];
+    if (intValue < -20) {
+        return [UIColor colorWithRed:0.824 green:0.113 blue:0.104 alpha:1.000];
+    } else if (intValue < -10) {
+        return [UIColor colorWithRed:0.906 green:0.328 blue:0.113 alpha:1.000];
+    } else if (intValue < -1) {
+        return [UIColor colorWithRed:0.966 green:0.517 blue:0.117 alpha:1.000];
+    } else if (intValue < 1) {
+        return [UIColor colorWithRed:0.847 green:0.597 blue:0.077 alpha:1.000];
+    } else if (intValue < 5) {
+        return [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
+    } else if (intValue < 10) {
+        return [UIColor colorWithRed:0.124 green:0.627 blue:0.755 alpha:1.000];
+    } else {
+        return [UIColor colorWithRed:0.231 green:0.442 blue:0.964 alpha:1.000];
+    }
+}
 
 @end

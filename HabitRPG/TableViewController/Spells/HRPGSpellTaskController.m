@@ -40,6 +40,7 @@
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     cell.textLabel.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
+    cell.textLabel.textColor = [task taskColor];
     return cell;
 }
 

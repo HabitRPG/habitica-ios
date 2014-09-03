@@ -227,7 +227,7 @@
                 }];
             } else {
                 [UIView animateWithDuration:0.4 animations:^() {
-                    label.textColor = [self.sharedManager getColorForValue:task.value];
+                    label.textColor = [task taskColor];
                     streakLabel.textColor = [UIColor blackColor];
                 }];
             }

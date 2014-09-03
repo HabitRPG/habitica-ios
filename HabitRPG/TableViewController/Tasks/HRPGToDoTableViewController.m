@@ -227,7 +227,7 @@
             checkMarkView.image = nil;
             checkMarkView.hidden = YES;
             [UIView animateWithDuration:0.4 animations:^() {
-                label.textColor = [self.sharedManager getColorForValue:task.value];
+                label.textColor = [task taskColor];
             }];
         }
 
