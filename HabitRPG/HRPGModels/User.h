@@ -40,6 +40,7 @@
 @property(nonatomic, retain) NSString *hairMustache;
 @property(nonatomic, retain) NSString *hairFlower;
 @property(nonatomic, retain, getter = getCleanedClassName) NSString *hclass;
+@property(nonatomic, readonly, getter = getDirtyClassName) NSString *dirtyClass;
 @property(nonatomic, retain) NSNumber *health;
 @property(nonatomic, retain) NSString *id;
 @property(nonatomic, retain) NSNumber *level;

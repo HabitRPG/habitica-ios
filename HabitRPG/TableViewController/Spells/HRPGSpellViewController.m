@@ -135,7 +135,7 @@
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     User *user = [self.sharedManager getUser];
-    NSString *classname = [NSString stringWithFormat:@"spells.%@", user.hclass];
+    NSString *classname = [NSString stringWithFormat:@"spells.%@", user.dirtyClass];
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"klass == %@ && level <= %@", classname, user.level]];
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"level" ascending:YES];

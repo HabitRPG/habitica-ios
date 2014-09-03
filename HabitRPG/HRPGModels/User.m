@@ -473,4 +473,8 @@
     return className;
 }
 
+- (NSString *)getDirtyClassName {
+    return [self valueForKey:@"hclass"];
+}
+
 @end
