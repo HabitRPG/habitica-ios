@@ -12,6 +12,7 @@
 #import "Gear.h"
 #import "User.h"
 #import "Reward.h"
+#import <NSString+Emoji.h>
 
 @interface HRPGRewardsViewController ()
 @property NSString *readableName;
@@ -340,7 +341,8 @@ User *user;
     // Edit the sort key as appropriate.
     NSSortDescriptor *keyDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
     NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
-    NSArray *sortDescriptors = @[typeDescriptor, keyDescriptor];
+    NSSortDescriptor *orderDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
+    NSArray *sortDescriptors = @[typeDescriptor, orderDescriptor, keyDescriptor];
 
     [fetchRequest setSortDescriptors:sortDescriptors];
     //[fetchRequest setPropertiesToGroupBy:@[@"type", @"klass"]];
@@ -373,10 +375,10 @@ User *user;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
     UILabel *textLabel = (UILabel *) [cell viewWithTag:1];
-    textLabel.text = reward.text;
+    textLabel.text = [reward.text stringByReplacingEmojiCheatCodesWithUnicode];
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     UILabel *notesLabel = (UILabel *) [cell viewWithTag:2];
-    notesLabel.text = reward.notes;
+    notesLabel.text = [reward.notes stringByReplacingEmojiCheatCodesWithUnicode];
     notesLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     UILabel *priceLabel = (UILabel *) [cell viewWithTag:3];
     priceLabel.text = [NSString stringWithFormat:@"%ld", (long) [reward.value integerValue]];

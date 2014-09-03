@@ -355,7 +355,8 @@ NSString *currentUser;
             @"dateCreated" : @"dateCreated",
             @"value" : @"value",
             @"type" : @"type",
-            @"notes" : @"notes"
+            @"notes" : @"notes",
+            @"@metadata.mapping.collectionIndex" : @"order",
     }];
     rewardMapping.identificationAttributes = @[@"key"];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"rewards"
