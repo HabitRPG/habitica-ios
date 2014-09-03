@@ -160,6 +160,7 @@
 		D966557318FB129F0014C09D /* HRPGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSettingsViewController.m; sourceTree = "<group>"; };
 		D9722B1819B7AEA1009D8AD3 /* HRPGNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGNewsViewController.h; sourceTree = "<group>"; };
 		D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGNewsViewController.m; sourceTree = "<group>"; };
+		D9722B1B19B7CD88009D8AD3 /* HabitRPG 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 5.xcdatamodel"; sourceTree = "<group>"; };
 		D97C71D918EC98A30089FDC6 /* Quest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quest.h; sourceTree = "<group>"; };
 		D97C71DA18EC98A30089FDC6 /* Quest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quest.m; sourceTree = "<group>"; };
 		D97C71DC18EC98A40089FDC6 /* QuestCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestCollect.h; sourceTree = "<group>"; };
@@ -1251,12 +1252,13 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D9722B1B19B7CD88009D8AD3 /* HabitRPG 5.xcdatamodel */,
 				D980373619902BB1004C8871 /* HabitRPG 4.xcdatamodel */,
 				D94AADB1192974AD00546C8E /* HabitRPG 2.xcdatamodel */,
 				D947E646197B45C8001FBA6E /* HabitRPG 3.xcdatamodel */,
 				D94AADAF192973CD00546C8E /* HabitRPG.xcdatamodel */,
 			);
-			currentVersion = D980373619902BB1004C8871 /* HabitRPG 4.xcdatamodel */;
+			currentVersion = D9722B1B19B7CD88009D8AD3 /* HabitRPG 5.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

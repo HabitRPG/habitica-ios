@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6220.17" systemVersion="14A329r" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="BuyableItem" representedClassName="BuyableItem" isAbstract="YES" parentEntity="Item" syncable="YES">
         <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
@@ -81,6 +81,7 @@
     <entity name="MetaReward" representedClassName="MetaReward" isAbstract="YES" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -191,6 +192,7 @@
         <attribute name="equippedWeapon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="experience" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="gold" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="habitNewStuff" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="hairBangs" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hairBase" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hairBeard" optional="YES" attributeType="String" syncable="YES"/>
@@ -215,6 +217,7 @@
         <attribute name="partyPosition" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="perception" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="petCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="petCountArray" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="shirt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="skin" optional="YES" attributeType="String" syncable="YES"/>
@@ -253,7 +256,7 @@
         <element name="Group" positionX="0" positionY="0" width="128" height="328"/>
         <element name="HatchingPotion" positionX="0" positionY="0" width="128" height="60"/>
         <element name="Item" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="MetaReward" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="MetaReward" positionX="0" positionY="0" width="128" height="135"/>
         <element name="Pet" positionX="9" positionY="153" width="128" height="135"/>
         <element name="Potion" positionX="0" positionY="0" width="128" height="45"/>
         <element name="Quest" positionX="0" positionY="0" width="128" height="240"/>
@@ -262,6 +265,6 @@
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="120"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="405"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="1213"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1245"/>
     </elements>
 </model>
