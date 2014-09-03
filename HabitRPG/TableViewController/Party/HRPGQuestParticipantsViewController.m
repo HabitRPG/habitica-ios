@@ -58,16 +58,7 @@ NSString *partyID;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    if ([reward.type isEqualToString:@"reward"]) {
-
-    } else {
-        [self.sharedManager buyObject:reward onSuccess:^() {
-
-        }                     onError:^() {
-
-        }];
-    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
