@@ -15,8 +15,10 @@
 - (void)dismiss:(void (^)())completitionBlock;
 
 
-- (id)initWithString:(NSString *)activityString;
+- (id)initWithString:(NSString *)activityString withColor:(UIColor*)color;
 
 @property NSString *activityString;
+@property UIColor *ballColor;
+
 
 @end

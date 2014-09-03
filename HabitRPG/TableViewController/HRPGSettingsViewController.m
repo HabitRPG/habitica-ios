@@ -100,6 +100,9 @@ User *user;
     [row.cellConfigAtConfigure setObject:[UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000] forKey:@"textLabel.textColor"];
     [section addFormRow:row];
     
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"reloadContent" rowType:XLFormRowDescriptorTypeButton title:NSLocalizedString(@"Reload Content", nil)];
+    [section addFormRow:row];
+    
     self.form = formDescriptor;
 }
 
@@ -129,7 +132,7 @@ User *user;
 }
 
 - (void)logoutUser {
-    HRPGActivityIndicatorOverlayView *activityView = [[HRPGActivityIndicatorOverlayView alloc] initWithString:@"Loading…"];
+    HRPGActivityIndicatorOverlayView *activityView = [[HRPGActivityIndicatorOverlayView alloc] initWithString:@"Loading…" withColor:nil];
     [activityView display:^() {
     }];
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
@@ -139,21 +142,35 @@ User *user;
 
     [self.sharedManager resetSavedDatabase:YES onComplete:^() {
         [activityView dismiss:^() {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+            UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+            [self presentViewController:navigationController animated:YES completion:nil];
         }];
     }];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-    UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-    [self presentViewController:navigationController animated:YES completion:nil];
+    
 }
 
 - (void)resetCache {
-    HRPGActivityIndicatorOverlayView *activityView = [[HRPGActivityIndicatorOverlayView alloc] initWithString:@"Clearing Data…"];
+    HRPGActivityIndicatorOverlayView *activityView = [[HRPGActivityIndicatorOverlayView alloc] initWithString:@"Clearing Data…" withColor:nil];
     [activityView display:^() {
 
     }];
     [self.sharedManager resetSavedDatabase:YES onComplete:^() {
         [activityView dismiss:^() {
 
+        }];
+    }];
+}
+
+- (void)reloadContent {
+    HRPGActivityIndicatorOverlayView *activityView = [[HRPGActivityIndicatorOverlayView alloc] initWithString:@"Loading Content…" withColor:[UIColor colorWithRed:0.366 green:0.599 blue:0.014 alpha:0.800]];
+    [activityView display:^() {
+    }];
+    [self.sharedManager fetchContent:^() {
+        [activityView dismiss:^() {
+        }];
+    }onError:^() {
+        [activityView dismiss:^() {
         }];
     }];
 }
@@ -167,7 +184,11 @@ User *user;
         [self deselectFormRow:formRow];
     } else if ([formRow.tag isEqual:@"clearCache"]){
         [self resetCache];
+    } else if ([formRow.tag isEqual:@"reloadContent"]){
+        [self reloadContent];
     }
+    
+    [self deselectFormRow:formRow];
 }
 
 -(void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)rowDescriptor oldValue:(id)oldValue newValue:(id)newValue {

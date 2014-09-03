@@ -13,16 +13,17 @@
 @property UIView *indicatorView;
 @property UIView *backgroundView;
 @property UILabel *label;
+@property HRPGBallActivityIndicator *roundProgress;
 @end
-
 
 @implementation HRPGActivityIndicatorOverlayView
 
-static CGFloat width = 140;
+static CGFloat width = 150;
 CGFloat height = 140;
 
-- (id)initWithString:(NSString *)activityString {
+- (id)initWithString:(NSString *)activityString withColor:(UIColor*)color {
     self.activityString = activityString;
+    self.ballColor = color;
     return [self init];
 }
 
@@ -41,14 +42,18 @@ CGFloat height = 140;
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, screenSize.height)];
         
         self.backgroundView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0];
-        HRPGBallActivityIndicator *roundProgress = [[HRPGBallActivityIndicator alloc] initWithFrame:CGRectMake(30, 30, width - 60, indicatorHeight - 60)];
-        roundProgress.ballColor = [UIColor colorWithRed:0.824 green:0.113 blue:0.104 alpha:0.8];
-        [roundProgress beginAnimating];
-        [self.indicatorView addSubview:roundProgress];
+        self.roundProgress = [[HRPGBallActivityIndicator alloc] initWithFrame:CGRectMake(30, 30, width - 60, indicatorHeight - 60)];
+        if (!self.ballColor) {
+            self.ballColor = [UIColor colorWithRed:0.824 green:0.113 blue:0.104 alpha:0.8];
+        }
+        self.roundProgress.ballColor = self.ballColor;
+        [self.roundProgress beginAnimating];
+        [self.indicatorView addSubview:self.roundProgress];
         
         if (self.activityString) {
-            height = height + 40;
-            self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, height - 40, width, 20)];
+            height = height + 50;
+            self.label = [[UILabel alloc] initWithFrame:CGRectMake(5, height - 60, width-10, 50)];
+            self.label.numberOfLines = 0;
             self.label.text = self.activityString;
             self.label.textAlignment = NSTextAlignmentCenter;
             [self.indicatorView addSubview:self.label];
