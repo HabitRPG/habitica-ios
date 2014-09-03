@@ -1819,13 +1819,14 @@ NSString *currentUser;
     if (format == nil) {
         format = @"png";
     }
+    
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    [manager downloadWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@.%@", imageName, format]]
+    [manager downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@.%@", imageName, format]]
                      options:0
                     progress:^(NSInteger receivedSize, NSInteger expectedSize)
             {
             }
-                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
+                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL)
             {
                 if (image) {
                     successBlock(image);

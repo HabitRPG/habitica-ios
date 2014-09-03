@@ -81,8 +81,6 @@
 
 - (User *)getUser;
 
-- (UIColor *)getColorForValue:(NSNumber *)value;
-
 - (void)getImage:(NSString *)imageName withFormat:(NSString*)format onSuccess:(void (^)(UIImage *image))successBlock onError:(void (^)())ErrorBlock;
 
 - (UIImage *)getCachedImage:(NSString *)imageName;
