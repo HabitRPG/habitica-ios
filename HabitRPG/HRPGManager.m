@@ -342,7 +342,7 @@ NSString *currentUser;
             @"contributor.text" : @"contributorText",
             @"contributor.contributions" : @"contributions",
             @"party.order" : @"partyOrder",
-            @"items.pets" : @"petCount",
+            @"items.pets" : @"petCountArray",
             @"flags.newStuff" : @"habitNewStuff"
     }];
     entityMapping.identificationAttributes = @[@"id"];
@@ -662,7 +662,7 @@ NSString *currentUser;
             @"contributor.text" : @"contributorText",
             @"@metadata.mapping.collectionIndex" : @"partyPosition",
             @"party.order" : @"partyOrder",
-            @"items.pets" : @"petCount"
+            @"items.pets" : @"petCountArray"
     }];
     memberMapping.identificationAttributes = @[@"id"];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"members"

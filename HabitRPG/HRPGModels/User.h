@@ -72,7 +72,8 @@
 @property(nonatomic, retain) NSNumber *useCostume;
 @property(nonatomic, retain) NSString *partyOrder;
 @property(nonatomic, retain) NSNumber *partyPosition;
-@property(nonatomic, retain, setter = setPetCountFromArray:) NSNumber *petCount;
+@property(nonatomic, retain) NSNumber *petCount;
+@property(nonatomic, retain, setter = setPetCountFromArray:) NSDictionary *petCountArray;
 @end
 
 @interface User (CoreDataGeneratedAccessors)
