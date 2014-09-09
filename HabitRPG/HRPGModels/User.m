@@ -129,7 +129,11 @@
         }];
     }
     dispatch_group_enter(group);
-    [sharedManager getImage:[NSString stringWithFormat:@"skin_%@", self.skin] withFormat:nil onSuccess:^(UIImage *image) {
+    NSString *skinString = [NSString stringWithFormat:@"skin_%@", self.skin];
+    if (self.sleep) {
+        skinString = [skinString stringByAppendingString:@"_sleep"];
+    }
+    [sharedManager getImage:skinString withFormat:nil onSuccess:^(UIImage *image) {
         [imageArray replaceObjectAtIndex:currentLayer withObject:image];
         dispatch_group_leave(group);
     } onError:^() {
