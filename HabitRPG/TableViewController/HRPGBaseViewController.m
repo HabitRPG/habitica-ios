@@ -13,6 +13,7 @@
 #import "HRPGRoundProgressView.h"
 #import "HRPGBallActivityIndicator.h"
 #import "HRPGDeathView.h"
+#import "HRPGNavigationController.h"
 
 @interface HRPGBaseViewController ()
 @property HRPGManager *sharedManager;
@@ -101,6 +102,14 @@
 }
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UIViewController *destViewController = segue.destinationViewController;
+    if ([destViewController isKindOfClass:[HRPGNavigationController class]]) {
+        HRPGNavigationController *destNavigationController = (HRPGNavigationController*)destViewController;
+        destNavigationController.sourceViewController = self;
+    }
 }
 
 @end

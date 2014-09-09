@@ -495,6 +495,7 @@ ChatMessage *selectedMessage;
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"QuestDetailSegue"]) {
         HRPGQuestDetailViewController *qdViewcontroller = segue.destinationViewController;
         qdViewcontroller.quest = self.quest;

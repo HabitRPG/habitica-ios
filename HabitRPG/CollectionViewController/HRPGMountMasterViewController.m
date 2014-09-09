@@ -16,6 +16,7 @@
 #import "HatchingPotion.h"
 #import "HRPGBallActivityIndicator.h"
 #import "HRPGArrayViewController.h"
+#import "HRPGNavigationController.h"
 
 @interface HRPGMountMasterViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -313,6 +314,11 @@ NSUserDefaults *defaults;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UIViewController *destViewController = segue.destinationViewController;
+    if ([destViewController isKindOfClass:[HRPGNavigationController class]]) {
+        HRPGNavigationController *destNavigationController = (HRPGNavigationController*)destViewController;
+        destNavigationController.sourceViewController = self;
+    }
     if ([segue.identifier isEqualToString:@"GroupBySegue"]) {
         UINavigationController *navController = (UINavigationController*)segue.destinationViewController;
         HRPGArrayViewController *arrayViewController = (HRPGArrayViewController*)navController.topViewController;

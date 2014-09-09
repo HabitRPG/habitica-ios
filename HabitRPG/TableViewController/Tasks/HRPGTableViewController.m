@@ -16,6 +16,7 @@
 #import "HRPGTagViewController.h"
 #import "HRPGTabBarController.h"
 #import "HRPGTaskResponseView.h"
+#import "HRPGNavigationController.h"
 
 @interface HRPGTableViewController ()
 @property NSString *readableName;
@@ -448,8 +449,9 @@ BOOL editable;
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"FormSegue"]) {
-        UINavigationController *destViewController = segue.destinationViewController;
-
+        HRPGNavigationController *destViewController = segue.destinationViewController;
+        destViewController.sourceViewController = self;
+        
         HRPGFormViewController *formController = (HRPGFormViewController *) destViewController.topViewController;
         formController.taskType = self.typeName;
         formController.readableTaskType = self.readableName;

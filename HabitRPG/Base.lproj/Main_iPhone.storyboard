@@ -612,7 +612,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="2iA-DC-iar">
                             <connections>
-                                <segue destination="xc7-Za-ehU" kind="unwind" unwindAction="unwindToListSave:" id="I5t-q5-BDG"/>
+                                <segue destination="xc7-Za-ehU" kind="unwind" identifier="unwindSaveSegue" unwindAction="unwindToListSave:" id="I5t-q5-BDG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -629,7 +629,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Qll-T6-t9b">
             <objects>
-                <navigationController definesPresentationContext="YES" id="TLp-c7-ouI" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="TLp-c7-ouI" customClass="HRPGNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wpi-h3-bV7">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2608,7 +2608,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Nw2-wB-jb0">
             <objects>
-                <navigationController definesPresentationContext="YES" id="2Kp-xG-Crg" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="2Kp-xG-Crg" customClass="HRPGNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bb5-m2-Nwx">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2996,7 +2996,7 @@
         <!--Navigation Controller-->
         <scene sceneID="9Qs-Im-7zO">
             <objects>
-                <navigationController storyboardIdentifier="tagNavigationController" definesPresentationContext="YES" id="6vN-Em-JCA" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="tagNavigationController" definesPresentationContext="YES" id="6vN-Em-JCA" customClass="HRPGNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="biY-dp-rGo">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3340,7 +3340,7 @@
         <!--Navigation Controller-->
         <scene sceneID="9mG-3N-jXo">
             <objects>
-                <navigationController definesPresentationContext="YES" id="CHE-k4-ZCL" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="CHE-k4-ZCL" customClass="HRPGNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rie-5n-r1K">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3400,7 +3400,7 @@
         <!--Navigation Controller-->
         <scene sceneID="8pd-jO-W2P">
             <objects>
-                <navigationController storyboardIdentifier="deathNavigationController" definesPresentationContext="YES" id="4t3-rx-jKg" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="deathNavigationController" definesPresentationContext="YES" id="4t3-rx-jKg" customClass="HRPGNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uZN-ZL-HAP">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3415,7 +3415,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ibZ-No-542">
             <objects>
-                <navigationController storyboardIdentifier="questInvitationNavigationController" definesPresentationContext="YES" id="VEf-mT-dfk" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="questInvitationNavigationController" definesPresentationContext="YES" id="VEf-mT-dfk" customClass="HRPGNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="N2T-OF-KlV">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3430,7 +3430,7 @@
         <!--Navigation Controller-->
         <scene sceneID="pak-rs-9QE">
             <objects>
-                <navigationController storyboardIdentifier="loginNavigationController" definesPresentationContext="YES" id="zXJ-qo-nbI" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="loginNavigationController" definesPresentationContext="YES" id="zXJ-qo-nbI" customClass="HRPGNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="e6j-HK-n20">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3525,11 +3525,11 @@
         </simulatedScreenMetrics>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jeD-LQ-1O1"/>
-        <segue reference="ctJ-Nf-hOd"/>
-        <segue reference="xxy-Nl-SCN"/>
         <segue reference="R7D-Cb-9Bi"/>
+        <segue reference="jeD-LQ-1O1"/>
         <segue reference="DAI-nh-Ljl"/>
+        <segue reference="xxy-Nl-SCN"/>
+        <segue reference="bA3-qD-h1W"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.3490196168422699" green="0.68627452850341797" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
 </document>

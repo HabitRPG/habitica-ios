@@ -14,6 +14,7 @@
 #import "Egg.h"
 #import "HatchingPotion.h"
 #import "HRPGBallActivityIndicator.h"
+#import "HRPGNavigationController.h"
 
 @interface HRPGPetViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
