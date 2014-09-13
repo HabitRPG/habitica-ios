@@ -230,7 +230,7 @@
         UILabel *healthLabel = (UILabel *) [cell viewWithTag:2];
         healthLabel.text = [NSString stringWithFormat:@"%ld/%ld", (long) [user.health integerValue], 50];
         UIProgressView *healthProgress = (UIProgressView *) [cell viewWithTag:3];
-        healthProgress.progress = ([user.health floatValue] / [user.maxHealth floatValue]);
+        healthProgress.progress = ([user.health floatValue] / 50.0);
         
         UILabel *experienceLabel = (UILabel *) [cell viewWithTag:4];
         experienceLabel.text = [NSString stringWithFormat:@"%ld/%@", (long) [user.experience integerValue], user.nextLevel];
