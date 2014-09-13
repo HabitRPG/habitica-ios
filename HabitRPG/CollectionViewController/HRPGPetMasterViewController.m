@@ -340,6 +340,7 @@ NSUserDefaults *defaults;
     HRPGArrayViewController *arrayViewController = (HRPGArrayViewController*)segue.sourceViewController;
     [defaults setInteger:arrayViewController.selectedIndex forKey:@"groupPetsBy"];
     self.groupByKey = arrayViewController.selectedIndex;
+    self.selectedPet = nil;
     _sortedPets = nil;
     [self.collectionView reloadData];
 }
