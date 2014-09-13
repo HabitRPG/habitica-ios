@@ -16,5 +16,5 @@
 -(void)addActivityCounter;
 -(void)removeActivityCounter;
 @property NSInteger activityCounter;
-
+- (NSDictionary *)markdownAttributes;
 @end

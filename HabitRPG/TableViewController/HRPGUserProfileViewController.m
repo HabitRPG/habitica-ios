@@ -9,10 +9,11 @@
 #import "HRPGUserProfileViewController.h"
 #import "HRPGManager.h"
 #import "User.h"
+#import "NSMutableAttributedString_GHFMarkdown.h"
 
 @interface HRPGUserProfileViewController ()
 @property HRPGManager *sharedManager;
-@property (nonatomic) User *user;
+@property (nonatomic, readonly, getter=getUser) User *user;
 @end
 
 @implementation HRPGUserProfileViewController
@@ -20,18 +21,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refresh;
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
     
-    if ([[self.fetchedResultsController sections] count] > 0) {
-        if ([[self.fetchedResultsController sections][0] numberOfObjects] > 0) {
-            self.user = (User *) [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-        }
-    }
-    if (self.user == nil) {
-        [self refresh];
-    }
+    [self.sharedManager fetchMember:self.userID onSuccess:^() {
+        
+    }onError:^() {
+        
+    }];
+    
     self.navigationItem.title = self.username;
 }
 
@@ -39,30 +36,104 @@
 
 }
 
+- (User*) getUser {
+    if ([[self.fetchedResultsController sections] count] > 0) {
+        if ([[self.fetchedResultsController sections][0] numberOfObjects] > 0) {
+            return (User *) [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        }
+    }
+    return nil;
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (self.user) {
+        return 1;
+    }
     return 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return self.userID;
+    switch (section) {
+        case 0:
+            return nil;
+        default:
+            return @"";
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
+    NSString *cellname = @"Cell";
+    if (indexPath.section == 0) {
+        switch (indexPath.item) {
+            case 0:
+                cellname = @"ProfileCell";
+                break;
+            case 1:
+                break;
+            case 2:
+                cellname = @"SubtitleCell";
+                break;
+            case 3:
+                cellname = @"SubtitleCell";
+                break;
+        }
+    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
+    if (indexPath.section == 0) {
+        switch (indexPath.item) {
+            case 0:
+                [self configureCell:cell atIndexPath:indexPath];
+                break;
+            case 1: {
+                NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:self.user.blurb];
+                [attributedText ghf_applyAttributes:self.markdownAttributes];
+                cell.textLabel.attributedText = attributedText;
+                break;
+            }
+            case 2:
+                cell.textLabel.text = NSLocalizedString(@"Member Since", nil);
+                cell.detailTextLabel.text = [NSDateFormatter localizedStringFromDate:self.user.memberSince
+                                                                           dateStyle:NSDateFormatterMediumStyle
+                                                                           timeStyle:NSDateFormatterNoStyle];                break;
+            case 3:
+                cell.textLabel.text = NSLocalizedString(@"Last logged in", nil);
+                cell.detailTextLabel.text = [NSDateFormatter localizedStringFromDate:self.user.lastLogin
+                                                                           dateStyle:NSDateFormatterMediumStyle
+                                                                           timeStyle:NSDateFormatterNoStyle];
+                break;
+        }
+    }
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    if (indexPath.section == 0 && indexPath.item == 0) {
+        return 147;
+    } else if (indexPath.section == 0 && indexPath.item == 1) {
+        NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:self.user.blurb];
+        [attributedText ghf_applyAttributes:self.markdownAttributes];
+        return [attributedText boundingRectWithSize:CGSizeMake(290, MAXFLOAT)
+                                          options:NSStringDrawingUsesLineFragmentOrigin
+                                          context:nil].size.height + 41;
+    } else {
+        return 44;
+    }
 }
 
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return nil;
+    }
+    
+    return [super tableView:tableView viewForHeaderInSection:section];
+}
 
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
@@ -126,21 +197,18 @@
     UITableView *tableView = self.tableView;
     
     switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        case NSFetchedResultsChangeInsert: {
+            [tableView reloadData];
             break;
-            
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+        case NSFetchedResultsChangeUpdate: {
+            [tableView reloadData];
             break;
-            
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
+        }
+        case NSFetchedResultsChangeDelete: {
             break;
-            
+        }
         case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
@@ -149,8 +217,44 @@
     [self.tableView endUpdates];
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
+-(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    [self configureCell:cell atIndexPath:indexPath usForce:NO];
+}
 
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath usForce:(BOOL)force {
+    if (indexPath.section == 0 && indexPath.item == 0) {
+        User *user = (User *) [self.fetchedResultsController objectAtIndexPath:indexPath];
+        UILabel *levelLabel = (UILabel *) [cell viewWithTag:1];
+        levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@", nil), user.level];
+        
+        UILabel *healthLabel = (UILabel *) [cell viewWithTag:2];
+        healthLabel.text = [NSString stringWithFormat:@"%ld/%ld", (long) [user.health integerValue], 50];
+        UIProgressView *healthProgress = (UIProgressView *) [cell viewWithTag:3];
+        healthProgress.progress = ([user.health floatValue] / [user.maxHealth floatValue]);
+        
+        UILabel *experienceLabel = (UILabel *) [cell viewWithTag:4];
+        experienceLabel.text = [NSString stringWithFormat:@"%ld/%@", (long) [user.experience integerValue], user.nextLevel];
+        UIProgressView *experienceProgress = (UIProgressView *) [cell viewWithTag:5];
+        experienceProgress.progress = ([user.experience floatValue] / [user.nextLevel floatValue]);
+        
+        UILabel *magicLabel = (UILabel *) [cell viewWithTag:6];
+        
+        UIProgressView *magicProgress = (UIProgressView *) [cell viewWithTag:7];
+        if ([user.level integerValue] >= 10) {
+            magicLabel.text = [NSString stringWithFormat:@"%ld/%@", (long) [user.magic integerValue], user.maxMagic];
+            magicProgress.progress = ([user.magic floatValue] / [user.maxMagic floatValue]);
+            magicLabel.hidden = NO;
+            magicProgress.hidden = NO;
+        } else {
+            magicLabel.hidden = YES;
+            magicProgress.hidden = YES;
+        }
+        UIImageView *imageView = (UIImageView *) [cell viewWithTag:8];
+        [user setAvatarOnImageView:imageView useForce:force];
+        
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        cell.backgroundColor = [UIColor colorWithWhite:0.973 alpha:1.000];
+    }
 }
 
 

@@ -8,6 +8,8 @@
 
 #import "HRPGPartyMembersViewController.h"
 #import "HRPGAppDelegate.h"
+#import "HRPGUserProfileViewController.h"
+#import "User.h"
 
 @interface HRPGPartyMembersViewController ()
 @property NSString *readableName;
@@ -16,6 +18,7 @@
 @property NSIndexPath *openedIndexPath;
 @property NSString *sortKey;
 @property BOOL sortAscending;
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
 
@@ -69,7 +72,6 @@ NSString *partyID;
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
 }
-
 
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
@@ -181,7 +183,15 @@ NSString *partyID;
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"UserProfileSegue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        User *user = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        HRPGUserProfileViewController *userProfileViewController = (HRPGUserProfileViewController*) segue.destinationViewController;
+        userProfileViewController.userID = user.id;
+        userProfileViewController.username = user.username;
+    }
     [super prepareForSegue:segue sender:sender];
+    
 }
 
 @end

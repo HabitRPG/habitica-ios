@@ -634,7 +634,7 @@ ChatMessage *selectedMessage;
         }
     } else if ([segue.identifier isEqualToString:@"UserProfileSegue"]) {
         HRPGUserProfileViewController *userProfileViewController = (HRPGUserProfileViewController*) segue.destinationViewController;
-        userProfileViewController.userID = selectedMessage.uuid;
+        userProfileViewController.userID = selectedMessage.userObject.id;
         userProfileViewController.username = selectedMessage.user;
     }
 }

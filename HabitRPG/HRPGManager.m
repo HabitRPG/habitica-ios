@@ -616,6 +616,7 @@ NSString *currentUser;
     [memberMapping addAttributeMappingsFromDictionary:@{
             @"_id" : @"id",
             @"profile.name" : @"username",
+            @"profile.blurb" : @"blurb",
             @"preferences.dayStart" : @"dayStart",
             @"preferences.sleep" : @"sleep",
             @"preferences.skin" : @"skin",
@@ -646,6 +647,7 @@ NSString *currentUser;
             @"items.currentPet" : @"currentPet",
             @"items.currentMount" : @"currentMount",
             @"auth.timestamps.loggedin" : @"lastLogin",
+            @"auth.timestamps.created" : @"memberSince",
             @"stats.con" : @"constitution",
             @"stats.int" : @"intelligence",
             @"stats.per" : @"perception",
@@ -676,6 +678,10 @@ NSString *currentUser;
 
     [objectManager addResponseDescriptor:responseDescriptor];
 
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:memberMapping method:RKRequestMethodGET pathPattern:@"/api/v2/members/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"/api/v2/groups/:groupID"];
         
@@ -1077,6 +1083,28 @@ NSString *currentUser;
         return;
     }];
 }
+
+- (void)fetchMember:(NSString *)memberId onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:[@"/api/v2/members/" stringByAppendingString:memberId] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        errorBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
 
 - (void)upDownTask:(Task *)task direction:(NSString *)withDirection onSuccess:(void (^)(NSArray *valuesArray))successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];

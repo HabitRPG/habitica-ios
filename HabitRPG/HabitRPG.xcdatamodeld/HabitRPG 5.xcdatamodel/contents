@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6220.17" systemVersion="14A329r" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="14A329r" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="BuyableItem" representedClassName="BuyableItem" isAbstract="YES" parentEntity="Item" syncable="YES">
         <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
@@ -166,6 +166,7 @@
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="background" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="blurb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="buffConstitution" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="buffIntelligence" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="buffPerception" optional="YES" attributeType="Integer 16" syncable="YES"/>
@@ -211,6 +212,7 @@
         <attribute name="magic" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxHealth" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="maxMagic" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="memberSince" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="nextLevel" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="participateInQuest" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="partyOrder" optional="YES" attributeType="String" syncable="YES"/>
@@ -265,6 +267,6 @@
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="120"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="405"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="1245"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1275"/>
     </elements>
 </model>

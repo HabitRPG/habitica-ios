@@ -16,6 +16,7 @@
 @implementation User
 
 @dynamic background;
+@dynamic blurb;
 @dynamic contributorLevel;
 @dynamic contributorText;
 @dynamic costumeArmor;
@@ -48,6 +49,7 @@
 @dynamic magic;
 @dynamic maxHealth;
 @dynamic maxMagic;
+@dynamic memberSince;
 @dynamic nextLevel;
 @dynamic habitNewStuff;
 @dynamic participateInQuest;

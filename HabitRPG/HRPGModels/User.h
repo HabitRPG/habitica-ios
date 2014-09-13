@@ -14,6 +14,7 @@
 @interface User : NSManagedObject
 
 @property(nonatomic, retain) NSString *background;
+@property(nonatomic, retain) NSString *blurb;
 @property(nonatomic, retain) NSNumber *contributorLevel;
 @property(nonatomic, retain) NSString *contributorText;
 @property(nonatomic, retain) NSString *costumeArmor;
@@ -47,6 +48,7 @@
 @property(nonatomic, retain) NSNumber *magic;
 @property(nonatomic, retain) NSNumber *maxHealth;
 @property(nonatomic, retain) NSNumber *maxMagic;
+@property(nonatomic, retain) NSDate *memberSince;
 @property(nonatomic, retain) NSNumber *nextLevel;
 @property(nonatomic, retain) NSNumber *habitNewStuff;
 @property(nonatomic, retain) NSNumber *participateInQuest;
