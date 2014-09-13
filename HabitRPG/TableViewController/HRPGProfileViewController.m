@@ -98,7 +98,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -114,9 +114,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         case 2:
             return 4;
         case 3:
-            return 1;
-        case 4:
-            return 3;
+            return 4;
         default:
             return 0;
     }
@@ -134,8 +132,6 @@ NIKFontAwesomeIconFactory *iconFactory;
         case 2:
             return NSLocalizedString(@"Inventory", nil);
         case 3:
-            return NSLocalizedString(@"Profile", nil);
-        case 4:
             return NSLocalizedString(@"About", nil);
         default:
             return @"";
@@ -164,8 +160,6 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else if (section == 2) {
         iconView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconSuitcase];
     } else if (section == 3) {
-        iconView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconUser];
-    } else if (section == 4) {
         iconView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconQuestionCircle];
     }
     return view;
@@ -196,13 +190,13 @@ NIKFontAwesomeIconFactory *iconFactory;
         [self performSegueWithIdentifier:@"MountSegue" sender:self];
     } else if (indexPath.section == 3 && indexPath.item == 0) {
         [self performSegueWithIdentifier:@"NewsSegue" sender:self];
-    } else if (indexPath.section == 4 && indexPath.item == 0) {
+    } else if (indexPath.section == 3 && indexPath.item == 1) {
         [self performSegueWithIdentifier:@"SettingsSegue" sender:self];
-    } else if (indexPath.section == 4 && indexPath.item == 1) {
+    } else if (indexPath.section == 3 && indexPath.item == 2) {
         VTAcknowledgementsViewController *viewController = [VTAcknowledgementsViewController acknowledgementsViewController];
         viewController.headerText = NSLocalizedString(@"We love open source software.", nil); // optional
         [self.navigationController pushViewController:viewController animated:YES];
-    } else if (indexPath.section == 4 && indexPath.item == 2) {
+    } else if (indexPath.section == 3 && indexPath.item == 3) {
         [UserVoice presentUserVoiceInterfaceForParentViewController:self];
     }
 }
@@ -244,11 +238,11 @@ NIKFontAwesomeIconFactory *iconFactory;
             if ([user.habitNewStuff boolValue]) {
                 showIndicator = YES;
             }
-        } else if (indexPath.section == 4 && indexPath.item == 0) {
+        } else if (indexPath.section == 3 && indexPath.item == 1) {
             title = NSLocalizedString(@"Settings", nil);
-        } else if (indexPath.section == 4 && indexPath.item == 1) {
+        } else if (indexPath.section == 3 && indexPath.item == 2) {
             title = NSLocalizedString(@"Acknowledgements", nil);
-        } else if (indexPath.section == 4 && indexPath.item == 2) {
+        } else if (indexPath.section == 3 && indexPath.item == 3) {
             title = NSLocalizedString(@"Send Feedback", nil);
         }
 
