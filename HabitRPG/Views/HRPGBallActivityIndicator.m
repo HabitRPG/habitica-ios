@@ -99,4 +99,9 @@
 - (void)beginAnimating {
     [self animate];
 }
+
+- (void)endAnimating {
+    [self.layer removeAllAnimations];
+}
+
 @end

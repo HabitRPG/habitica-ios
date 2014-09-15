@@ -7,13 +7,13 @@
 //
 
 #import "HRPGActivityIndicatorOverlayView.h"
-#import "HRPGBallActivityIndicator.h"
+#import "HRPGActivityIndicator.h"
 
 @interface HRPGActivityIndicatorOverlayView ()
 @property UIView *indicatorView;
 @property UIView *backgroundView;
 @property UILabel *label;
-@property HRPGBallActivityIndicator *roundProgress;
+@property HRPGActivityIndicator *roundProgress;
 @end
 
 @implementation HRPGActivityIndicatorOverlayView
@@ -42,11 +42,10 @@ CGFloat height = 140;
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, screenSize.height)];
         
         self.backgroundView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0];
-        self.roundProgress = [[HRPGBallActivityIndicator alloc] initWithFrame:CGRectMake(30, 30, width - 60, indicatorHeight - 60)];
+        self.roundProgress = [[HRPGActivityIndicator alloc] initWithFrame:CGRectMake(30, 30, width - 60, indicatorHeight - 60)];
         if (!self.ballColor) {
             self.ballColor = [UIColor colorWithRed:0.824 green:0.113 blue:0.104 alpha:0.8];
         }
-        self.roundProgress.ballColor = self.ballColor;
         [self.roundProgress beginAnimating];
         [self.indicatorView addSubview:self.roundProgress];
         

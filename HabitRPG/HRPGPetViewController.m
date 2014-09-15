@@ -13,8 +13,8 @@
 #import "Pet.h"
 #import "Egg.h"
 #import "HatchingPotion.h"
-#import "HRPGBallActivityIndicator.h"
 #import "HRPGNavigationController.h"
+#import "HRPGActivityIndicator.h"
 
 @interface HRPGPetViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -278,7 +278,7 @@
         //HRPGRoundProgressView *indicator = [[HRPGRoundProgressView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
         //indicator.strokeWidth = 2;
         //[indicator beginAnimating];
-        HRPGBallActivityIndicator *indicator = [[HRPGBallActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        HRPGActivityIndicator *indicator = [[HRPGActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         [indicator beginAnimating];
         UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:indicator];
         [self.navigationItem setRightBarButtonItem:indicatorButton animated:NO];

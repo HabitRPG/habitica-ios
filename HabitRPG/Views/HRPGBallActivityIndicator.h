@@ -17,5 +17,7 @@
 @property CGFloat stepDelay;
 
 - (void)beginAnimating;
+- (void)endAnimating;
+- (void)animate;
 
 @end

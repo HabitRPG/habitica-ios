@@ -14,7 +14,6 @@
 #import "Pet.h"
 #import "Egg.h"
 #import "HatchingPotion.h"
-#import "HRPGBallActivityIndicator.h"
 #import "HRPGArrayViewController.h"
 #import "HRPGNavigationController.h"
 
@@ -27,7 +26,6 @@
 @property (nonatomic) NSString *selectedType;
 @property (nonatomic) NSString *selectedColor;
 @property (nonatomic) NSArray *sortedPets;
-@property NSInteger activityCounter;
 @property UIBarButtonItem *navigationButton;
 @property NSInteger groupByKey;
 @end
@@ -302,15 +300,6 @@ NSUserDefaults *defaults;
     }
     
     progressLabel.text = [NSString stringWithFormat:@"%d/%lu", mounted, (unsigned long)[petArray count]];
-}
-
-- (void)removeActivityCounter {
-    self.activityCounter--;
-    if (self.activityCounter == 0) {
-        [self.navigationItem setRightBarButtonItem:self.navigationButton animated:NO];
-    } else if (self.activityCounter < 0) {
-        self.activityCounter = 0;
-    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
