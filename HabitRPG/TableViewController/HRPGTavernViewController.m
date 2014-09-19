@@ -171,12 +171,10 @@ ChatMessage *selectedMessage;
         } else {
             message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
         }
-        return [message.text boundingRectWithSize:CGSizeMake(280, MAXFLOAT)
-                                          options:NSStringDrawingUsesLineFragmentOrigin
-                                       attributes:@{
-                                               NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
-                                       }
-                                          context:nil].size.height + 41;
+        NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:message.text];
+        [attributedText ghf_applyAttributes:self.markdownAttributes];
+        return [attributedText boundingRectWithSize:CGSizeMake(280, MAXFLOAT)
+                                          options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height + 41;
     }
 }
 
@@ -420,8 +418,9 @@ ChatMessage *selectedMessage;
     authorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     authorLabel.textColor = [message contributorColor];
 
-    UILabel *textLabel = (UILabel *) [cell viewWithTag:2];
+    UITextView *textLabel = (UITextView *) [cell viewWithTag:2];
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    textLabel.delegate = self;
     cell.backgroundColor = [UIColor whiteColor];
     NSString *text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
     
@@ -429,6 +428,8 @@ ChatMessage *selectedMessage;
         NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:text];
         [attributedText ghf_applyAttributes:self.markdownAttributes];
         textLabel.attributedText = attributedText;
+        textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+
     }
     UILabel *dateLabel = (UILabel *) [cell viewWithTag:3];
     dateLabel.text = [message.timestamp timeAgo];
@@ -509,5 +510,8 @@ ChatMessage *selectedMessage;
     [self.tableView endUpdates];
 }
 
+-(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+    return YES;
+}
 
 @end

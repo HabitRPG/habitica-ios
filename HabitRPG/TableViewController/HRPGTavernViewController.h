@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
 
-@interface HRPGTavernViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
+@interface HRPGTavernViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UITextViewDelegate>
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 

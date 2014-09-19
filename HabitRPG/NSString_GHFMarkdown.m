@@ -25,13 +25,11 @@
     NSMutableString *string = self.mutableCopy;
     NSDictionary *codeBlocks = [string ghf_extractAndSubstituteGHFMarkdownCodeBlocks];
     NSArray *links = [string ghf_linksFromGHFMarkdownLinks];
-    NSArray *users = [string ghf_linksFromGHFMarkdownUsernames];
     NSArray *shas = [string ghf_linksFromGHFMarkdownShasWithContextRepoId:repoId];
     NSArray *issues = [string ghf_linksFromGHFMarkdownIssuesWithContextRepoId:repoId];
     [string ghf_insertSubstitutedGHFMarkdownCodeBlocks:codeBlocks];
-    NSMutableArray *all = [NSMutableArray arrayWithCapacity:links.count + users.count + shas.count + issues.count];
+    NSMutableArray *all = [NSMutableArray arrayWithCapacity:links.count + shas.count + issues.count];
     [all addObjectsFromArray:links];
-    [all addObjectsFromArray:users];
     [all addObjectsFromArray:shas];
     [all addObjectsFromArray:issues];
     return all;
@@ -126,25 +124,6 @@
          @"titleRange": [NSValue valueWithRange:titleRange],
          @"markRange": [NSValue valueWithRange:markRange],
          @"range": [NSValue valueWithRange:match.range]}];
-	}
-    return results;
-}
-
-- (NSArray *)ghf_linksFromGHFMarkdownUsernames {
-    NSString *string = self;
-    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:GHFMarkdownUsernameRegex options:NSRegularExpressionCaseInsensitive error:NULL];
-    NSArray *matches = [regex matchesInString:string options:NSMatchingReportCompletion range:NSMakeRange(0, string.length)];
-    if (!matches.count) return @[];
-    NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:matches.count];
-    for (NSTextCheckingResult *match in matches) {
-        NSRange titleRange = [match rangeAtIndex:1];
-        NSString *title = [string substringWithRange:titleRange];
-        NSString *login = [title substringFromIndex:1];
-        [results addObject:@{
-         @"title": title,
-         @"login": login,
-         @"range": [NSValue valueWithRange:titleRange],
-         @"url": [NSURL URLWithString:[NSString stringWithFormat:@"/%@", login]]}];
 	}
     return results;
 }

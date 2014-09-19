@@ -56,7 +56,7 @@
             NSRange range = [link[@"range"] rangeValue];
             NSString *title = link[@"title"];
             NSURL *url = link[@"url"];
-            if (url) [self addAttributes:@{@"GHFMarkdown_Link": url} range:range];
+            if (url) [self addAttributes:@{NSLinkAttributeName: url} range:range];
             [string replaceCharactersInRange:range withString:title];
         }
     }
