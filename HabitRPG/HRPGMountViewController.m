@@ -22,6 +22,7 @@
 @property (nonatomic) Pet *selectedMount;
 @property NSInteger activityCounter;
 @property UIBarButtonItem *navigationButton;
+@property HRPGActivityIndicator *activityIndicator;
 @end
 
 @implementation HRPGMountViewController
@@ -244,9 +245,9 @@
         //HRPGRoundProgressView *indicator = [[HRPGRoundProgressView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
         //indicator.strokeWidth = 2;
         //[indicator beginAnimating];
-        HRPGActivityIndicator *indicator = [[HRPGActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        [indicator beginAnimating];
-        UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:indicator];
+        self.activityIndicator = [[HRPGActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
+        [self.activityIndicator beginAnimating];
         [self.navigationItem setRightBarButtonItem:indicatorButton animated:NO];
     }
     self.activityCounter++;
@@ -255,7 +256,9 @@
 - (void)removeActivityCounter {
     self.activityCounter--;
     if (self.activityCounter == 0) {
-        [self.navigationItem setRightBarButtonItem:self.navigationButton animated:NO];
+        [self.activityIndicator endAnimating:^() {
+            [self.navigationItem setRightBarButtonItem:self.navigationButton animated:NO];
+        }];
     } else if (self.activityCounter < 0) {
         self.activityCounter = 0;
     }

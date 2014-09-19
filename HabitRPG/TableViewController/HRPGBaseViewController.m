@@ -88,12 +88,10 @@
 -(void)addActivityCounter {
     if (self.activityCounter == 0) {
         self.navigationButton = self.navigationItem.rightBarButtonItem;
-        //HRPGRoundProgressView *indicator = [[HRPGRoundProgressView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-        //indicator.strokeWidth = 2;
-        //[indicator beginAnimating];
         self.activityIndicator = [[HRPGActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
         [self.navigationItem setRightBarButtonItem:indicatorButton animated:NO];
+        [self.activityIndicator beginAnimating];
     }
     self.activityCounter++;
 }
@@ -102,7 +100,9 @@
     self.activityCounter--;
     if (self.activityCounter == 0) {
         [self.activityIndicator endAnimating:^() {
-            [self.navigationItem setRightBarButtonItem:self.navigationButton animated:NO];
+            [self.activityIndicator endAnimating:^() {
+                [self.navigationItem setRightBarButtonItem:self.navigationButton animated:NO];
+            }];
         }];
     } else if (self.activityCounter < 0) {
         self.activityCounter = 0;
