@@ -29,6 +29,7 @@
 @property NSIndexPath *selectedIndex;
 @property NSIndexPath *buttonIndex;
 @property NSString *replyMessage;
+@property NSMutableArray *rowHeights;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
@@ -47,6 +48,8 @@ ChatMessage *selectedMessage;
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 
+    self.rowHeights = [NSMutableArray array];
+    
     user = [self.sharedManager getUser];
     
     [self fetchTavern];
@@ -165,16 +168,37 @@ ChatMessage *selectedMessage;
         if (self.buttonIndex && self.buttonIndex.item == indexPath.item) {
             return 44;
         }
+        
         ChatMessage *message;
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
+            if (self.rowHeights.count > indexPath.item-1) {
+                if (self.rowHeights[indexPath.item-1] != [NSNull null]) {
+                    return [self.rowHeights[indexPath.item-1] doubleValue];
+                }
+            } else {
+                [self.rowHeights addObject:[NSNull null]];
+            }
             message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item-1 inSection:0]];
         } else {
+            if (self.rowHeights.count > indexPath.item) {
+                if (self.rowHeights[indexPath.item] != [NSNull null]) {
+                    return [self.rowHeights[indexPath.item] doubleValue];
+                }
+            } else {
+                [self.rowHeights addObject:[NSNull null]];
+            }
             message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
         }
-        NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:message.text];
-        [attributedText ghf_applyAttributes:self.markdownAttributes];
-        return [attributedText boundingRectWithSize:CGSizeMake(280, MAXFLOAT)
-                                          options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height + 41;
+        double rowHeight = [message.text boundingRectWithSize:CGSizeMake(280, MAXFLOAT)
+                                          options:NSStringDrawingUsesLineFragmentOrigin
+                                       attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}
+                                          context:nil].size.height + 61;
+        if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
+            self.rowHeights[indexPath.item-1] = [NSNumber numberWithDouble:rowHeight];
+        } else {
+            self.rowHeights[indexPath.item] = [NSNumber numberWithDouble:rowHeight];
+        }
+        return rowHeight;
     }
 }
 
@@ -331,7 +355,7 @@ ChatMessage *selectedMessage;
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-
+    
     return _fetchedResultsController;
 }
 
@@ -426,10 +450,18 @@ ChatMessage *selectedMessage;
     
     if (text) {
         NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:text];
+        [attributedText addAttribute:NSFontAttributeName value:[UIFont preferredFontForTextStyle:UIFontTextStyleBody] range:NSMakeRange(0, attributedText.length)];
         [attributedText ghf_applyAttributes:self.markdownAttributes];
         textLabel.attributedText = attributedText;
-        textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-
+        
+        double rowHeight = [attributedText boundingRectWithSize:CGSizeMake(280, MAXFLOAT)
+                                                      options:NSStringDrawingUsesLineFragmentOrigin
+                                                      context:nil].size.height + 61;
+        if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
+            self.rowHeights[indexPath.item-1] = [NSNumber numberWithDouble:rowHeight];
+        } else {
+            self.rowHeights[indexPath.item] = [NSNumber numberWithDouble:rowHeight];
+        }
     }
     UILabel *dateLabel = (UILabel *) [cell viewWithTag:3];
     dateLabel.text = [message.timestamp timeAgo];

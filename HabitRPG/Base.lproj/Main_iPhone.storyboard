@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361p" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -904,22 +905,23 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Tif-JP-aFK">
-                                            <rect key="frame" x="20" y="31" width="280" height="20"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esq-pk-blf">
+                                            <rect key="frame" x="16" y="30" width="288" height="40"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Esq-pk-blf" firstAttribute="top" secondItem="pqJ-ll-20F" secondAttribute="bottom" constant="1" id="55a-ba-Jl0"/>
                                         <constraint firstItem="Uij-s6-qfd" firstAttribute="leading" secondItem="pqJ-ll-20F" secondAttribute="trailing" constant="8" id="Bgp-Wy-D0z"/>
                                         <constraint firstItem="pqJ-ll-20F" firstAttribute="leading" secondItem="JGw-nf-3la" secondAttribute="leading" constant="20" id="E61-ic-ZBF"/>
-                                        <constraint firstAttribute="bottom" secondItem="Tif-JP-aFK" secondAttribute="bottom" priority="500" constant="8" id="ICy-jH-gHf"/>
                                         <constraint firstItem="pqJ-ll-20F" firstAttribute="top" secondItem="JGw-nf-3la" secondAttribute="top" constant="8" id="SCP-FL-IwC"/>
                                         <constraint firstAttribute="trailing" secondItem="Uij-s6-qfd" secondAttribute="trailing" constant="20" id="SPD-bv-OkO"/>
+                                        <constraint firstItem="Esq-pk-blf" firstAttribute="leading" secondItem="JGw-nf-3la" secondAttribute="leadingMargin" constant="8" id="Wcl-CV-NgT"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Esq-pk-blf" secondAttribute="trailing" constant="8" id="ZaZ-1i-bik"/>
                                         <constraint firstItem="Uij-s6-qfd" firstAttribute="top" secondItem="JGw-nf-3la" secondAttribute="top" constant="8" id="arj-AN-FbG"/>
-                                        <constraint firstItem="Tif-JP-aFK" firstAttribute="leading" secondItem="JGw-nf-3la" secondAttribute="leading" constant="20" id="e8t-zl-zdC"/>
-                                        <constraint firstAttribute="trailing" secondItem="Tif-JP-aFK" secondAttribute="trailing" constant="20" id="eIj-54-x2S"/>
-                                        <constraint firstItem="Tif-JP-aFK" firstAttribute="top" secondItem="pqJ-ll-20F" secondAttribute="bottom" constant="2" id="tge-Rc-6fA"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Esq-pk-blf" secondAttribute="bottom" constant="1" id="x3q-Al-5Ev"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -949,11 +951,6 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="229" translatesAutoresizingMaskIntoConstraints="NO" id="Jn6-0e-VwD">
-                                            <rect key="frame" x="71" y="31" width="229" height="20"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tVR-Km-2X8">
                                             <rect key="frame" x="8" y="12" width="55" height="55"/>
                                             <constraints>
@@ -961,16 +958,22 @@
                                                 <constraint firstAttribute="width" constant="55" id="vRt-YY-6rq"/>
                                             </constraints>
                                         </imageView>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6CQ-7T-qaf">
+                                            <rect key="frame" x="67" y="30" width="237" height="42"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="6CQ-7T-qaf" firstAttribute="bottom" secondItem="Sb3-MP-ZND" secondAttribute="bottomMargin" constant="1" id="1ud-g2-Tx2"/>
                                         <constraint firstAttribute="centerY" secondItem="tVR-Km-2X8" secondAttribute="centerY" id="B8a-jC-gRf"/>
-                                        <constraint firstAttribute="bottom" secondItem="Jn6-0e-VwD" secondAttribute="bottom" priority="500" constant="8" id="I6T-d6-KzD"/>
-                                        <constraint firstAttribute="trailing" secondItem="Jn6-0e-VwD" secondAttribute="trailing" constant="20" id="IgN-pC-fL4"/>
                                         <constraint firstItem="Xn8-ri-oLl" firstAttribute="leading" secondItem="tVR-Km-2X8" secondAttribute="trailing" constant="8" id="LJY-h9-kPU"/>
-                                        <constraint firstItem="Jn6-0e-VwD" firstAttribute="top" secondItem="Xn8-ri-oLl" secondAttribute="bottom" constant="2" id="WbC-BM-dHc"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="6CQ-7T-qaf" secondAttribute="trailing" constant="8" id="h00-Bi-AlE"/>
                                         <constraint firstAttribute="trailing" secondItem="OUl-lk-rLZ" secondAttribute="trailing" constant="20" id="h9a-fh-Sio"/>
+                                        <constraint firstItem="6CQ-7T-qaf" firstAttribute="top" secondItem="Xn8-ri-oLl" secondAttribute="bottom" constant="1" id="iHw-2b-6x1"/>
                                         <constraint firstItem="OUl-lk-rLZ" firstAttribute="top" secondItem="Sb3-MP-ZND" secondAttribute="top" constant="8" id="ibG-oI-azx"/>
-                                        <constraint firstItem="Jn6-0e-VwD" firstAttribute="leading" secondItem="tVR-Km-2X8" secondAttribute="trailing" constant="8" id="mD1-IN-foI"/>
+                                        <constraint firstItem="6CQ-7T-qaf" firstAttribute="leading" secondItem="tVR-Km-2X8" secondAttribute="trailing" constant="4" id="iw2-xA-t2h"/>
                                         <constraint firstItem="OUl-lk-rLZ" firstAttribute="leading" secondItem="Xn8-ri-oLl" secondAttribute="trailing" constant="8" id="qws-8i-JEH"/>
                                         <constraint firstItem="Xn8-ri-oLl" firstAttribute="top" secondItem="Sb3-MP-ZND" secondAttribute="top" constant="8" id="syo-d9-RNn"/>
                                         <constraint firstItem="tVR-Km-2X8" firstAttribute="leading" secondItem="Sb3-MP-ZND" secondAttribute="leading" constant="8" id="zLG-z0-YHS"/>
@@ -1728,8 +1731,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4AA-kL-msG">
-                                            <rect key="frame" x="20" y="30" width="280" height="40"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <rect key="frame" x="16" y="30" width="288" height="40"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <attributedString key="attributedText"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -1737,11 +1740,11 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="4AA-kL-msG" secondAttribute="bottom" constant="1" id="E5N-2Y-LuV"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="4AA-kL-msG" secondAttribute="trailing" constant="12" id="Kbe-F9-4dk"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="4AA-kL-msG" secondAttribute="trailing" constant="8" id="Kbe-F9-4dk"/>
                                         <constraint firstItem="kPG-vN-Sqq" firstAttribute="leading" secondItem="9yL-eE-BQI" secondAttribute="leading" constant="20" id="Mnp-kd-z6N"/>
                                         <constraint firstItem="kPG-vN-Sqq" firstAttribute="top" secondItem="iw9-fX-B6v" secondAttribute="top" id="NqJ-z6-aJQ"/>
                                         <constraint firstItem="4AA-kL-msG" firstAttribute="top" secondItem="kPG-vN-Sqq" secondAttribute="bottom" id="QIq-t6-rrC"/>
-                                        <constraint firstItem="4AA-kL-msG" firstAttribute="leading" secondItem="9yL-eE-BQI" secondAttribute="leadingMargin" constant="12" id="i3H-rt-zFs"/>
+                                        <constraint firstItem="4AA-kL-msG" firstAttribute="leading" secondItem="9yL-eE-BQI" secondAttribute="leadingMargin" constant="8" id="i3H-rt-zFs"/>
                                         <constraint firstItem="iw9-fX-B6v" firstAttribute="leading" secondItem="kPG-vN-Sqq" secondAttribute="trailing" constant="8" symbolic="YES" id="kLw-N1-yM9"/>
                                         <constraint firstItem="kPG-vN-Sqq" firstAttribute="top" secondItem="9yL-eE-BQI" secondAttribute="top" constant="10" id="krX-8u-BDO"/>
                                         <constraint firstAttribute="trailing" secondItem="iw9-fX-B6v" secondAttribute="trailing" constant="20" id="vke-fT-FNw"/>
@@ -3658,11 +3661,11 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="DAI-nh-Ljl"/>
         <segue reference="jeD-LQ-1O1"/>
         <segue reference="xxy-Nl-SCN"/>
         <segue reference="R7D-Cb-9Bi"/>
         <segue reference="ctJ-Nf-hOd"/>
-        <segue reference="DAI-nh-Ljl"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.3490196168422699" green="0.68627452850341797" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
 </document>
