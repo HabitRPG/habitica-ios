@@ -526,7 +526,7 @@ ChatMessage *selectedMessage;
     [self.tableView deleteRowsAtIndexPaths:@[self.buttonIndex] withRowAnimation:UITableViewRowAnimationTop];
     self.buttonIndex = nil;
     [self.tableView endUpdates];
-    [self.sharedManager deleteMessage:selectedMessage withGroup:@"party" onSuccess:^() {
+    [self.sharedManager deleteMessage:selectedMessage withGroup:@"habitrpg" onSuccess:^() {
         selectedMessage = nil;
     } onError:^() {
     }];

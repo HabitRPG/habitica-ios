@@ -606,7 +606,9 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
     
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:chatMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/chat" keyPath:@"message" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
     
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:chatMapping method:RKRequestMethodDELETE pathPattern:@"/api/v2/groups/:id/chat/:key" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[ChatMessage class] pathPattern:@"/api/v2/groups/:group.id/chat" method:RKRequestMethodPOST]];
