@@ -425,6 +425,7 @@ ChatMessage *selectedMessage;
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    self.rowHeights = [NSMutableArray array];
     [self.tableView reloadData];
 }
 
