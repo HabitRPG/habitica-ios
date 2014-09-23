@@ -95,11 +95,14 @@ User *user;
     [super viewWillAppear:animated];
     
     [self updateRewardView:nil];
+    [self.tableView reloadData];
 }
 
 - (void)refresh {
     [self.sharedManager fetchUser:^() {
         [self.refreshControl endRefreshing];
+        _filteredData = nil;
+        [self.tableView reloadData];
     }                     onError:^() {
         [self.refreshControl endRefreshing];
         [self.sharedManager displayNetworkError];
@@ -289,7 +292,7 @@ User *user;
                         } else if ([gear.type isEqualToString:@"shield"] && [user.contributorLevel intValue] < 5) {
                             continue;
                         }
-                } else if (!([gear.klass isEqualToString:user.hclass] || [gear.specialClass isEqualToString:user.hclass])) {
+                } else if (!([gear.klass isEqualToString:user.dirtyClass] || [gear.specialClass isEqualToString:user.dirtyClass])) {
                     continue;
                 }
                 if (gear.eventStart) {
