@@ -379,7 +379,11 @@ ChatMessage *selectedMessage;
     switch (type) {
         case NSFetchedResultsChangeInsert:
             newIndexPath = [NSIndexPath indexPathForItem:newIndexPath.item inSection:section];
-            [self.rowHeights insertObject:[NSNull null] atIndex:newIndexPath.item];
+            if (self.rowHeights.count > newIndexPath.item) {
+                [self.rowHeights insertObject:[NSNull null] atIndex:newIndexPath.item];
+            } else {
+                [self.rowHeights addObject:[NSNull null]];
+            }
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
 
