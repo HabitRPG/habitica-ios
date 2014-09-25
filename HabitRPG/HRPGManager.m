@@ -22,7 +22,7 @@
 #import "HRPGEmptySerializer.h"
 #import "HRPGNetworkIndicatorController.h"
 #import "RestKit/Network/RKPathMatcher.h"
-#import "HRPGImageOverlayView.h"
+#import "HRPGImageOverlayManager.h"
 
 @interface HRPGManager ()
 @property NIKFontAwesomeIconFactory *iconFactory;
@@ -1824,21 +1824,13 @@ NSString *currentUser;
 }
 
 - (void)displayDropNotification:(NSString *)name withType:(NSString *)type withNote:(NSString *)note {
-    
-    HRPGImageOverlayView *imageOverlayView = [[HRPGImageOverlayView alloc] init];
-    imageOverlayView.width = 180;
-    imageOverlayView.height = 120;
-    [imageOverlayView displayImageWithName:[NSString stringWithFormat:@"Pet_%@_%@.png", type, name]];
+    NSString *description;
     if ([[type lowercaseString] isEqualToString:@"food"]) {
-        imageOverlayView.descriptionText = [NSString stringWithFormat:@"You found %@!", name];
+        description = [NSString stringWithFormat:@"You found %@!", name];
     } else {
-        imageOverlayView.descriptionText = [NSString stringWithFormat:@"You found a %@ %@!", name, type];
+        description = [NSString stringWithFormat:@"You found a %@ %@!", name, type];
     }
-    if (!note) {
-        imageOverlayView.detailText = note;
-    }
-    [imageOverlayView display:^() {
-    }];
+    [HRPGImageOverlayManager displayImage:[NSString stringWithFormat:@"Pet_%@_%@.png", type, name] withText:description withNotes:note];
 }
 
 - (User *)getUser {
