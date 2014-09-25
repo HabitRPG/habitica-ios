@@ -15,6 +15,7 @@
 #import "HatchingPotion.h"
 #import "HRPGNavigationController.h"
 #import "HRPGActivityIndicator.h"
+#import <pop/POP.h>
 
 @interface HRPGPetViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -134,7 +135,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BaseCell" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
+    [self configureCell:cell atIndexPath:indexPath animated:NO];
     return cell;
 }
 
@@ -199,24 +200,32 @@
     return _fetchedResultsController;
 }
 
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
-}
-
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
+    UICollectionView *collectionView = self.collectionView;
+    
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [collectionView insertItemsAtIndexPaths:@[newIndexPath]];
+            break;
+        
+        case NSFetchedResultsChangeDelete:
+            [collectionView deleteItemsAtIndexPaths:@[indexPath]];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[collectionView cellForItemAtIndexPath:indexPath] atIndexPath:indexPath animated:YES];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [collectionView deleteItemsAtIndexPaths:@[indexPath]];
+            [collectionView insertItemsAtIndexPaths:@[newIndexPath]];
+            break;
+    }
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.collectionView reloadData];
-}
-
-- (void)configureCell:(UICollectionViewCell*)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)configureCell:(UICollectionViewCell*)cell atIndexPath:(NSIndexPath *)indexPath animated:(BOOL) animated {
     Pet *pet = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
     UIProgressView *progressView = (UIProgressView*)[cell viewWithTag:2];
@@ -239,8 +248,28 @@
     progressView.hidden = YES;
     if (![pet.key hasPrefix:@"Egg"]) {
         if (pet.trained && [pet.trained integerValue] != -1 && !pet.asMount) {
-            progressView.progress = [pet.trained floatValue] / 50;
             progressView.hidden = NO;
+            if (animated) {
+                POPBasicAnimation *scaleAnim = [POPBasicAnimation easeInEaseOutAnimation];
+                scaleAnim.property = [POPAnimatableProperty propertyWithName:kPOPViewScaleXY];
+                scaleAnim.toValue = [NSValue valueWithCGSize:CGSizeMake(1.1, 1.3)];
+                scaleAnim.duration = 0.2;
+                scaleAnim.completionBlock = ^(POPAnimation *anim, BOOL completed) {
+                    POPSpringAnimation *unScaleAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+                    unScaleAnim.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0, 1.0)];
+                    unScaleAnim.springBounciness = 13;
+                    unScaleAnim.springSpeed = 3;
+                    [progressView pop_addAnimation:unScaleAnim forKey:@"scaleAnimation"];
+                };
+                
+                [progressView pop_addAnimation:scaleAnim forKey:@"scaleAnimation"];
+                
+                [UIView animateWithDuration:0.3 animations:^() {
+                    progressView.progress = [pet.trained floatValue] / 50;
+                }];
+            } else {
+                progressView.progress = [pet.trained floatValue] / 50;
+            }
         }
     }
 }
