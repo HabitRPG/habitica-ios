@@ -208,7 +208,7 @@ NIKFontAwesomeIconFactory *iconFactory;
             return cell;
         }
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell" forIndexPath:indexPath];
-        [self configureCell:cell atIndexPath:indexPath usForce:NO];
+        [self configureCell:cell atIndexPath:indexPath usForce:NO animated:NO];
         return cell;
     } else {
         NSString *title = nil;
@@ -324,7 +324,7 @@ NIKFontAwesomeIconFactory *iconFactory;
             break;
         }
         case NSFetchedResultsChangeUpdate: {
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath usForce:YES];
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath usForce:YES animated:YES];
             [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0], [NSIndexPath indexPathForItem:0 inSection:3]] withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
         }
@@ -341,10 +341,10 @@ NIKFontAwesomeIconFactory *iconFactory;
 }
 
 -(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    [self configureCell:cell atIndexPath:indexPath usForce:NO];
+    [self configureCell:cell atIndexPath:indexPath usForce:NO animated:NO];
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath usForce:(BOOL)force {
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath usForce:(BOOL)force animated:(BOOL)animated {
     User *user = (User *) [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *levelLabel = (UILabel *) [cell viewWithTag:1];
     levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@", nil), user.level];
@@ -352,19 +352,34 @@ NIKFontAwesomeIconFactory *iconFactory;
     UILabel *healthLabel = (UILabel *) [cell viewWithTag:2];
     healthLabel.text = [NSString stringWithFormat:@"%ld/%@", (long) [user.health integerValue], user.maxHealth];
     UIProgressView *healthProgress = (UIProgressView *) [cell viewWithTag:3];
-    healthProgress.progress = ([user.health floatValue] / [user.maxHealth floatValue]);
 
     UILabel *experienceLabel = (UILabel *) [cell viewWithTag:4];
     experienceLabel.text = [NSString stringWithFormat:@"%ld/%@", (long) [user.experience integerValue], user.nextLevel];
+
     UIProgressView *experienceProgress = (UIProgressView *) [cell viewWithTag:5];
-    experienceProgress.progress = ([user.experience floatValue] / [user.nextLevel floatValue]);
+
+    if (animated) {
+        [UIView animateWithDuration:0.3 animations:^() {
+            healthProgress.progress = ([user.health floatValue] / [user.maxHealth floatValue]);
+            experienceProgress.progress = ([user.experience floatValue] / [user.nextLevel floatValue]);
+        }];
+    } else {
+        healthProgress.progress = ([user.health floatValue] / [user.maxHealth floatValue]);
+        experienceProgress.progress = ([user.experience floatValue] / [user.nextLevel floatValue]);
+    }
 
     UILabel *magicLabel = (UILabel *) [cell viewWithTag:6];
 
     UIProgressView *magicProgress = (UIProgressView *) [cell viewWithTag:7];
     if ([user.level integerValue] >= 10) {
         magicLabel.text = [NSString stringWithFormat:@"%ld/%@", (long) [user.magic integerValue], user.maxMagic];
-        magicProgress.progress = ([user.magic floatValue] / [user.maxMagic floatValue]);
+        if (animated) {
+            [UIView animateWithDuration:0.3 animations:^() {
+                magicProgress.progress = ([user.magic floatValue] / [user.maxMagic floatValue]);
+            }];
+        } else {
+            magicProgress.progress = ([user.magic floatValue] / [user.maxMagic floatValue]);
+        }
         magicLabel.hidden = NO;
         magicProgress.hidden = NO;
     } else {
