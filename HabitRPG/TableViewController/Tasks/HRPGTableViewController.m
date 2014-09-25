@@ -73,6 +73,11 @@ BOOL editable;
     self.swipeDirection = [defaults boolForKey:@"swipeDirection"];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [HRPGImageOverlayManager displayImage:@"Pet_Food_Meat.png" withText:@"You found meat!" withNotes:nil];
+    [HRPGImageOverlayManager displayImage:@"Pet_Food_Honey.png" withText:@"You found honey!" withNotes:nil];
+}
+
 - (void)changeSwipeDirection:(NSNotification *)notification {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.swipeDirection = [defaults boolForKey:@"swipeDirection"];

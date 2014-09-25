@@ -78,16 +78,22 @@
     POPSpringAnimation *sizeAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
     sizeAnim.fromValue = [NSValue valueWithCGSize:CGSizeMake(0.7, 0.7)];
     sizeAnim.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0, 1.0)];
-    sizeAnim.springBounciness=12;
-    sizeAnim.springSpeed=2.5;
+    sizeAnim.springBounciness=11;
+    sizeAnim.springSpeed=3;
     
     POPBasicAnimation *alphaAnim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
     alphaAnim.fromValue = @(0.0);
     alphaAnim.toValue = @(1.0);
     alphaAnim.duration = 0.4;
     
-    [self.indicatorView pop_addAnimation:sizeAnim forKey:@"tempImageSize"];
-    [self.indicatorView pop_addAnimation:alphaAnim forKey:@"tempImageAlpha"];
+    POPBasicAnimation *moveAnim = [POPBasicAnimation easeInAnimation];
+    moveAnim.property = [POPAnimatableProperty propertyWithName:kPOPViewCenter];
+    moveAnim.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.indicatorView.frame.origin.x+(self.indicatorView.frame.size.width/2), self.indicatorView.frame.origin.y+(self.indicatorView.frame.size.height/2)+25)];
+    moveAnim.duration = 0.4;
+    
+    [self.indicatorView pop_addAnimation:sizeAnim forKey:@"sizeAnimation"];
+    [self.indicatorView pop_addAnimation:alphaAnim forKey:@"alphaAnimation"];
+    [self.indicatorView pop_addAnimation:moveAnim forKey:@"moveAnimation"];
 }
 
 - (void)dismiss:(void (^)())completitionBlock {
@@ -107,8 +113,8 @@
         self.dismissBlock();
     };
 
-    [self.indicatorView pop_addAnimation:sizeAnim forKey:@"tempImageSize"];
-    [self.indicatorView pop_addAnimation:alphaAnim forKey:@"tempImageAlpha"];
+    [self.indicatorView pop_addAnimation:sizeAnim forKey:@"sizeAnimation"];
+    [self.indicatorView pop_addAnimation:alphaAnim forKey:@"alphaAnimation"];
 }
 
 - (void)setDescriptionText:(NSString *)descriptionText {
