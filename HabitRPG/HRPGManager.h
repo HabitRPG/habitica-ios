@@ -64,6 +64,7 @@
 - (void)chatSeen:(NSString *)group;
 
 - (void)loginUser:(NSString *)username withPassword:(NSString *)password onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+- (void)registerUser:(NSString *)username withPassword:(NSString *)password withEmail:(NSString *)email onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock;
 

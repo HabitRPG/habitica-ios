@@ -59,6 +59,8 @@
 		D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AEE1905C090002F8223 /* HRPGQuestParticipantsViewController.m */; };
 		D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */; };
 		D99BC42F19D47B4F006DC132 /* HRPGImageOverlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BC42E19D47B4F006DC132 /* HRPGImageOverlayManager.m */; };
+		D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D99BC43019D4C34A006DC132 /* 1Password.xcassets */; };
+		D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */; };
 		D99C46D819C7687A00834EC2 /* HRPGActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = D99C46D719C7687A00834EC2 /* HRPGActivityIndicator.m */; };
 		D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */; };
 		D99DEC87190836D400FFD2B9 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC86190836D400FFD2B9 /* Item.m */; };
@@ -221,6 +223,9 @@
 		D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPartyMembersViewController.m; sourceTree = "<group>"; };
 		D99BC42D19D47B4F006DC132 /* HRPGImageOverlayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGImageOverlayManager.h; sourceTree = "<group>"; };
 		D99BC42E19D47B4F006DC132 /* HRPGImageOverlayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGImageOverlayManager.m; sourceTree = "<group>"; };
+		D99BC43019D4C34A006DC132 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
+		D99BC43119D4C34A006DC132 /* OnePasswordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
+		D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
 		D99C46D619C7687A00834EC2 /* HRPGActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGActivityIndicator.h; sourceTree = "<group>"; };
 		D99C46D719C7687A00834EC2 /* HRPGActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGActivityIndicator.m; sourceTree = "<group>"; };
 		D99DEC821908313D00FFD2B9 /* HRPGItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGItemViewController.h; sourceTree = "<group>"; };
@@ -381,6 +386,9 @@
 		D987393919687E46002A2426 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D99BC43019D4C34A006DC132 /* 1Password.xcassets */,
+				D99BC43119D4C34A006DC132 /* OnePasswordExtension.h */,
+				D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */,
 				D987393A19687F3E002A2426 /* NSNumber+abbreviation.h */,
 				D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */,
 			);
@@ -765,6 +773,7 @@
 				D9EB4EA518CB4A9400BB2094 /* Main_iPad.storyboard in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
 				D97C71F518F371D70089FDC6 /* Pods-acknowledgements.plist in Resources */,
+				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
 				D9EB4EA218CB4A9400BB2094 /* Main_iPhone.storyboard in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
@@ -899,6 +908,7 @@
 				D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */,
 				D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */,
 				D9ADD34E1943BBB6006202C1 /* Food.m in Sources */,
+				D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */,
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
 				D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */,
 				D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */,

@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRPGLoginViewController : UITableViewController <UITextFieldDelegate>
+@interface HRPGLoginViewController : UITableViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 @property BOOL hideCancelButton;
-@property(weak, nonatomic) IBOutlet UITextField *usernameField;
-@property(weak, nonatomic) IBOutlet UITextField *passwordField;
-@property(weak, nonatomic) IBOutlet UITableViewCell *loginCell;
-@property(weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property(weak, nonatomic) IBOutlet UILabel *loginLabel;
+@property(weak, nonatomic) UITextField *usernameField;
+@property(weak, nonatomic) UITextField *emailField;
+@property(weak, nonatomic) UITextField *passwordField;
+@property(weak, nonatomic) UITextField *repeatPasswordField;
+@property(weak, nonatomic) UITableViewCell *loginCell;
+@property(weak, nonatomic) UIActivityIndicatorView *activityIndicator;
+@property(weak, nonatomic) UILabel *loginLabel;
+@property (weak, nonatomic) UIButton *onePasswordButton;
 
 @end

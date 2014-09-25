@@ -274,6 +274,9 @@ NSString *currentUser;
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:loginMapping method:RKRequestMethodAny pathPattern:@"/api/v2/user/auth/local" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:loginMapping method:RKRequestMethodAny pathPattern:@"/api/v2/register" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
 
     RKObjectMapping *emptyMapping = [RKObjectMapping mappingForClass:[NSDictionary class]];
     [emptyMapping addAttributeMappingsFromDictionary:@{}];
@@ -1315,6 +1318,7 @@ NSString *currentUser;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
             [self displayServerError];
+        } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
         } else {
             [self displayNetworkError];
         }
@@ -1323,6 +1327,35 @@ NSString *currentUser;
         return;
     }];
 
+}
+
+- (void)registerUser:(NSString *)username withPassword:(NSString *)password withEmail:(NSString *)email onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    NSDictionary *params = @{@"username" : username, @"password" : password, @"confirmPassword" : password, @"email": email};
+    [[RKObjectManager sharedManager] postObject:Nil path:@"/api/v2/register" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        HRPGLoginData *loginData = (HRPGLoginData *) [mappingResult firstObject];
+        PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
+        [keyChain setString:loginData.id forKey:@"id"];
+        [keyChain setString:loginData.key forKey:@"key"];
+        
+        successBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+            RKErrorMessage *errorMessage = [[error userInfo] objectForKey:RKObjectMapperErrorObjectsKey][0];
+            errorBlock(errorMessage.errorMessage);
+        } else {
+            [self displayNetworkError];
+        }
+        
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+    
 }
 
 - (void)sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock {
