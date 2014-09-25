@@ -16,6 +16,10 @@
 
 - (void)displayImageWithName:(NSString*)imageName;
 
+-(void)onDismiss:(void (^)())completitionBlock;
+
+@property (copy)void (^dismissBlock)(void);
+
 @property (nonatomic) CGFloat height;
 @property (nonatomic) CGFloat width;
 

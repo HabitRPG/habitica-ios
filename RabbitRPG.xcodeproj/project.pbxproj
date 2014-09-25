@@ -58,6 +58,7 @@
 		D98F5AEC190566CA002F8223 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AEB190566CA002F8223 /* User.m */; };
 		D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AEE1905C090002F8223 /* HRPGQuestParticipantsViewController.m */; };
 		D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */; };
+		D99BC42F19D47B4F006DC132 /* HRPGImageOverlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BC42E19D47B4F006DC132 /* HRPGImageOverlayManager.m */; };
 		D99C46D819C7687A00834EC2 /* HRPGActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = D99C46D719C7687A00834EC2 /* HRPGActivityIndicator.m */; };
 		D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */; };
 		D99DEC87190836D400FFD2B9 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC86190836D400FFD2B9 /* Item.m */; };
@@ -218,6 +219,8 @@
 		D98F5AEE1905C090002F8223 /* HRPGQuestParticipantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGQuestParticipantsViewController.m; sourceTree = "<group>"; };
 		D98F5AF01905DE86002F8223 /* HRPGPartyMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPartyMembersViewController.h; sourceTree = "<group>"; };
 		D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPartyMembersViewController.m; sourceTree = "<group>"; };
+		D99BC42D19D47B4F006DC132 /* HRPGImageOverlayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGImageOverlayManager.h; sourceTree = "<group>"; };
+		D99BC42E19D47B4F006DC132 /* HRPGImageOverlayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGImageOverlayManager.m; sourceTree = "<group>"; };
 		D99C46D619C7687A00834EC2 /* HRPGActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGActivityIndicator.h; sourceTree = "<group>"; };
 		D99C46D719C7687A00834EC2 /* HRPGActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGActivityIndicator.m; sourceTree = "<group>"; };
 		D99DEC821908313D00FFD2B9 /* HRPGItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGItemViewController.h; sourceTree = "<group>"; };
@@ -443,6 +446,8 @@
 				D9C0003319290D5E003D4E4C /* HRPGActivityIndicatorOverlayView.m */,
 				D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */,
 				D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */,
+				D99BC42D19D47B4F006DC132 /* HRPGImageOverlayManager.h */,
+				D99BC42E19D47B4F006DC132 /* HRPGImageOverlayManager.m */,
 				D9884B4319168AF00078BC7C /* HRPGProgressView.h */,
 				D9884B4419168AF00078BC7C /* HRPGProgressView.m */,
 				D908B3811903515B00D32A75 /* HRPGSwipeTableViewCell.h */,
@@ -857,6 +862,7 @@
 				D9E0869118DF800F00BAF2EF /* HRPGTavernViewController.m in Sources */,
 				D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */,
 				D97C71ED18F32FEF0089FDC6 /* Gear.m in Sources */,
+				D99BC42F19D47B4F006DC132 /* HRPGImageOverlayManager.m in Sources */,
 				D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */,
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
 				D92CDAE018CB83B90006C242 /* HRPGHabitTableViewController.m in Sources */,
@@ -1099,6 +1105,7 @@
 					SystemConfiguration,
 					"-framework",
 					UIKit,
+					"-lc++",
 				);
 				PRODUCT_NAME = RabbitRPG;
 				PROVISIONING_PROFILE = "";
@@ -1173,6 +1180,7 @@
 					SystemConfiguration,
 					"-framework",
 					UIKit,
+					"-lc++",
 				);
 				PRODUCT_NAME = RabbitRPG;
 				PROVISIONING_PROFILE = "";

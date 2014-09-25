@@ -7,11 +7,13 @@
 //
 
 #import "HRPGImageOverlayView.h"
+#import <pop/POP.h>
 
 @interface HRPGImageOverlayView ()
 @property UIView *indicatorView;
 @property UILabel *label;
 @property UILabel *detailLabel;
+@property UIView *animationView;
 @end
 
 
@@ -26,9 +28,9 @@
     CGRect frame = CGRectMake((screenSize.width - self.width) / 2, -self.height, self.width, self.height);
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
         self.indicatorView = [[UIView alloc] initWithFrame:frame];
         self.indicatorView.backgroundColor = [UIColor whiteColor];
+        self.indicatorView.alpha = 0;
         [self.indicatorView.layer setCornerRadius:5.0f];
         
         self.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0];
@@ -48,7 +50,6 @@
         [self.indicatorView addSubview:self.detailLabel];
         
         UITabBarController *mainTabbar = ((UITabBarController *) [[UIApplication sharedApplication] delegate].window.rootViewController);
-        [mainTabbar.view addSubview:self];
         [mainTabbar.view addSubview:self.indicatorView];
 
         UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
@@ -60,7 +61,7 @@
 - (void)setHeight:(CGFloat)height {
     _height = height;
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-    self.indicatorView.frame = CGRectMake((screenSize.width - self.width) / 2, -self.height, self.width, self.height);
+    self.indicatorView.frame = CGRectMake((screenSize.width - self.width) / 2, (screenSize.height - self.height) / 2, self.width, self.height);
     if (!self.descriptionText && !self.detailText) {
         self.ImageView.frame = CGRectMake(10, 20, self.width-20, self.height-50);
     }
@@ -69,31 +70,45 @@
 - (void)setWidth:(CGFloat)width {
     _width = width;
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-    self.indicatorView.frame = CGRectMake((screenSize.width - self.width) / 2, -self.height, self.width, self.height);
+    self.indicatorView.frame = CGRectMake((screenSize.width - self.width) / 2, (screenSize.height - self.height) / 2, self.width, self.height);
     self.ImageView.frame = CGRectMake(10, 20, self.width-20, self.height-50);
 }
 
 - (void)display:(void (^)())completitionBlock {
-    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-    [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:1.0f options:UIViewAnimationOptionCurveEaseInOut animations:^() {
-        self.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.25];
-        self.indicatorView.frame = CGRectMake((screenSize.width - self.width) / 2, (screenSize.height - self.height) / 2, self.width, self.height);
-    }                completion:^(BOOL complete) {
-        completitionBlock();
-    }];
+    POPSpringAnimation *sizeAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+    sizeAnim.fromValue = [NSValue valueWithCGSize:CGSizeMake(0.7, 0.7)];
+    sizeAnim.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0, 1.0)];
+    sizeAnim.springBounciness=12;
+    sizeAnim.springSpeed=2.5;
+    
+    POPBasicAnimation *alphaAnim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    alphaAnim.fromValue = @(0.0);
+    alphaAnim.toValue = @(1.0);
+    alphaAnim.duration = 0.4;
+    
+    [self.indicatorView pop_addAnimation:sizeAnim forKey:@"tempImageSize"];
+    [self.indicatorView pop_addAnimation:alphaAnim forKey:@"tempImageAlpha"];
 }
 
 - (void)dismiss:(void (^)())completitionBlock {
-    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    POPSpringAnimation *sizeAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+    sizeAnim.toValue = [NSValue valueWithCGSize:CGSizeMake(0.7, 0.7)];
+    sizeAnim.fromValue = [NSValue valueWithCGSize:CGSizeMake(1.0, 1.0)];
+    sizeAnim.springBounciness=14;
+    sizeAnim.springSpeed=2.5;
     
-    [UIView animateWithDuration:0.6f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:1.0f options:UIViewAnimationOptionCurveEaseInOut animations:^() {
-        self.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0];
-        self.indicatorView.frame = CGRectMake((screenSize.width - self.width) / 2, screenSize.height, self.width, self.height);
-    }                completion:^(BOOL complete) {
+    POPBasicAnimation *alphaAnim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    alphaAnim.fromValue = @(1.0);
+    alphaAnim.toValue = @(0.0);
+    alphaAnim.duration = 0.2;
+    alphaAnim.completionBlock = ^(POPAnimation *anim, BOOL finished) {
         [self.indicatorView removeFromSuperview];
-        [self removeFromSuperview];
         completitionBlock();
-    }];
+        self.dismissBlock();
+    };
+
+    [self.indicatorView pop_addAnimation:sizeAnim forKey:@"tempImageSize"];
+    [self.indicatorView pop_addAnimation:alphaAnim forKey:@"tempImageAlpha"];
 }
 
 - (void)setDescriptionText:(NSString *)descriptionText {
@@ -110,7 +125,7 @@
     self.height = self.height + height;
     self.label.frame = CGRectMake(10, self.height-height-10, self.width-20, height);
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-    self.indicatorView.frame = CGRectMake((screenSize.width - self.width) / 2, -self.height, self.width, self.height);
+    self.indicatorView.frame = CGRectMake((screenSize.width - self.width) / 2, (screenSize.height - self.height) / 2, self.width, self.height);
 }
 
 - (void)setDetailText:(NSString *)detailText {
@@ -127,12 +142,11 @@
     self.height = self.height + height;
     self.detailLabel.frame = CGRectMake(10, self.height-height-10, self.width-20, height);
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-    self.indicatorView.frame = CGRectMake((screenSize.width - self.width) / 2, -self.height, self.width, self.height);
+    self.indicatorView.frame = CGRectMake((screenSize.width - self.width) / 2, (screenSize.height - self.height) / 2, self.width, self.height);
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
     [self dismiss:^() {
-        
     }];
 }
 

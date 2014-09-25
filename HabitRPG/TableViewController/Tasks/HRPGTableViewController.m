@@ -17,6 +17,7 @@
 #import "HRPGTabBarController.h"
 #import "HRPGTaskResponseView.h"
 #import "HRPGNavigationController.h"
+#import "HRPGImageOverlayManager.h"
 
 @interface HRPGTableViewController ()
 @property NSString *readableName;
@@ -70,6 +71,11 @@ BOOL editable;
         object:nil];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.swipeDirection = [defaults boolForKey:@"swipeDirection"];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [HRPGImageOverlayManager displayImage:@"Pet_Food_Meat.png" withText:@"You found meat!" withNotes:nil];
+    [HRPGImageOverlayManager displayImage:@"Pet_Food_Honey.png" withText:@"You found honey!" withNotes:nil];
 }
 
 - (void)changeSwipeDirection:(NSNotification *)notification {
