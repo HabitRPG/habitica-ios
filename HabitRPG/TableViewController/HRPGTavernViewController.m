@@ -391,7 +391,7 @@ ChatMessage *selectedMessage;
             indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:section];
             if (self.rowHeights.count > newIndexPath.item) {
                 [self.rowHeights removeObjectAtIndex:indexPath.item];
-            }   
+            }
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
 

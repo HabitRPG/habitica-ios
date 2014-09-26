@@ -10,6 +10,7 @@
 #import "HRPGManager.h"
 #import "HRPGAppDelegate.h"
 #import "OnePasswordExtension.h"
+#import "HRPGTabBarController.h"
 
 @interface HRPGLoginViewController ()
 @property HRPGManager *sharedManager;
@@ -125,6 +126,11 @@
 
         [_sharedManager registerUser:self.usernameField.text withPassword:self.passwordField.text withEmail:self.emailField.text onSuccess:^() {
             [_sharedManager setCredentials];
+            HRPGTabBarController *mainTabbar = ((HRPGTabBarController *) [[UIApplication sharedApplication] delegate].window.rootViewController);
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            if (![defaults boolForKey:@"displayedIntro"]) {
+                [mainTabbar displayIntro];
+            }
             [_sharedManager fetchUser:^() {
                 [self dismissViewControllerAnimated:YES completion:nil];
             }                 onError:^() {
@@ -145,6 +151,11 @@
     } else {
         [_sharedManager loginUser:self.usernameField.text withPassword:self.passwordField.text onSuccess:^() {
             [_sharedManager setCredentials];
+            HRPGTabBarController *mainTabbar = ((HRPGTabBarController *) [[UIApplication sharedApplication] delegate].window.rootViewController);
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            if (![defaults boolForKey:@"displayedIntro"]) {
+                [mainTabbar displayIntro];
+            }
             [_sharedManager fetchUser:^() {
                 [self dismissViewControllerAnimated:YES completion:nil];
             }                 onError:^() {

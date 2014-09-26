@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D908B3831903515B00D32A75 /* HRPGSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D908B3821903515B00D32A75 /* HRPGSwipeTableViewCell.m */; };
+		D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03619D60421001EABE4 /* HabitIntro.png */; };
+		D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03919D60B53001EABE4 /* DailyIntro.png */; };
+		D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03A19D60B53001EABE4 /* TodoIntro.png */; };
+		D90EA03E19D60B53001EABE4 /* RewardIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03B19D60B53001EABE4 /* RewardIntro.png */; };
 		D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */; };
 		D922F0AB191D957D00B197EA /* HRPGDeathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0AA191D957D00B197EA /* HRPGDeathViewController.m */; };
 		D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0AD19217C2300B197EA /* HRPGEmptySerializer.m */; };
@@ -123,6 +127,10 @@
 /* Begin PBXFileReference section */
 		D908B3811903515B00D32A75 /* HRPGSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSwipeTableViewCell.h; sourceTree = "<group>"; };
 		D908B3821903515B00D32A75 /* HRPGSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSwipeTableViewCell.m; sourceTree = "<group>"; };
+		D90EA03619D60421001EABE4 /* HabitIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabitIntro.png; sourceTree = "<group>"; };
+		D90EA03919D60B53001EABE4 /* DailyIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DailyIntro.png; sourceTree = "<group>"; };
+		D90EA03A19D60B53001EABE4 /* TodoIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TodoIntro.png; sourceTree = "<group>"; };
+		D90EA03B19D60B53001EABE4 /* RewardIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RewardIntro.png; sourceTree = "<group>"; };
 		D915F8621915BEE50037D04D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D915F8641915BF0D0037D04D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D922F0A6191C1F6B00B197EA /* HRPGUserBuyResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGUserBuyResponse.h; sourceTree = "<group>"; };
@@ -340,6 +348,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D90EA03819D60427001EABE4 /* Intro Images */ = {
+			isa = PBXGroup;
+			children = (
+				D90EA03919D60B53001EABE4 /* DailyIntro.png */,
+				D90EA03A19D60B53001EABE4 /* TodoIntro.png */,
+				D90EA03B19D60B53001EABE4 /* RewardIntro.png */,
+				D90EA03619D60421001EABE4 /* HabitIntro.png */,
+			);
+			name = "Intro Images";
+			sourceTree = "<group>";
+		};
 		D92CDAE118CB83C40006C242 /* TableViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +405,7 @@
 		D987393919687E46002A2426 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D90EA03819D60427001EABE4 /* Intro Images */,
 				D99BC43019D4C34A006DC132 /* 1Password.xcassets */,
 				D99BC43119D4C34A006DC132 /* OnePasswordExtension.h */,
 				D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */,
@@ -770,13 +790,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D90EA03E19D60B53001EABE4 /* RewardIntro.png in Resources */,
 				D9EB4EA518CB4A9400BB2094 /* Main_iPad.storyboard in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
+				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
 				D97C71F518F371D70089FDC6 /* Pods-acknowledgements.plist in Resources */,
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
+				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
 				D9EB4EA218CB4A9400BB2094 /* Main_iPhone.storyboard in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
+				D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
