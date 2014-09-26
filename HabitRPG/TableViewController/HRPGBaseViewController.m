@@ -15,6 +15,7 @@
 #import "HRPGDeathView.h"
 #import "HRPGNavigationController.h"
 #import <CoreText/CoreText.h>
+#import "HRPGActivityIndicatorOverlayView.h"
 
 @interface HRPGBaseViewController ()
 @property HRPGManager *sharedManager;
@@ -89,6 +90,7 @@
     if (self.activityCounter == 0) {
         self.navigationButton = self.navigationItem.rightBarButtonItem;
         self.activityIndicator = [[HRPGActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        [self.activityIndicator setInnerInset:3];
         UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
         [self.navigationItem setRightBarButtonItem:indicatorButton animated:NO];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

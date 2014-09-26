@@ -21,14 +21,13 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        // Create a white ring that fills the entire frame and is 2 points wide.
-        // Its frame is inset 1 point to fit for the 2 point stroke width
         CGFloat radius = MIN(self.frame.size.width,self.frame.size.height)/2;
+        CGRect bounds = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, radius*2, radius*2);
         CGFloat outerInset  = 2;
-        CGFloat innerInset  = 10;
+        CGFloat innerInset  = (radius/2) + 4;
         CGFloat lineWidth = 2;
         self.outerRing1 = [CAShapeLayer layer];
-        self.outerRing1.path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, outerInset, outerInset)
+        self.outerRing1.path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(bounds, outerInset, outerInset)
                                                cornerRadius:radius-outerInset].CGPath;
         self.outerRing1.bounds = CGPathGetBoundingBox(self.outerRing1.path);
         self.outerRing1.fillColor   = [UIColor clearColor].CGColor;
@@ -39,8 +38,7 @@
         [self.outerRing1 setPosition:CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2)];
 
         self.outerRing2 = [CAShapeLayer layer];
-        self.outerRing2.path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, outerInset, outerInset)
-                                                cornerRadius:radius-outerInset].CGPath;
+        self.outerRing2.path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(bounds, outerInset, outerInset) cornerRadius:radius-outerInset].CGPath;
         self.outerRing2.bounds = CGPathGetBoundingBox(self.outerRing2.path);
         self.outerRing2.fillColor   = [UIColor clearColor].CGColor;
         self.outerRing2.strokeColor = [UIColor blackColor].CGColor;
@@ -50,8 +48,7 @@
         [self.outerRing2 setPosition:CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2)];
 
         self.innerRing1 = [CAShapeLayer layer];
-        self.innerRing1.path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, innerInset, innerInset)
-                                                     cornerRadius:radius-outerInset].CGPath;
+        self.innerRing1.path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(bounds, innerInset, innerInset) cornerRadius:radius-outerInset].CGPath;
         self.innerRing1.bounds = CGPathGetBoundingBox(self.innerRing1.path);
         self.innerRing1.fillColor   = [UIColor clearColor].CGColor;
         self.innerRing1.strokeColor = [UIColor blackColor].CGColor;
@@ -61,8 +58,7 @@
         [self.innerRing1 setPosition:CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2)];
         
         self.innerRing2 = [CAShapeLayer layer];
-        self.innerRing2.path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, innerInset, innerInset)
-                                                     cornerRadius:radius-outerInset].CGPath;
+        self.innerRing2.path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(bounds, innerInset, innerInset) cornerRadius:radius-outerInset].CGPath;
         self.innerRing2.bounds = CGPathGetBoundingBox(self.innerRing2.path);
         self.innerRing2.fillColor   = [UIColor clearColor].CGColor;
         self.innerRing2.strokeColor = [UIColor blackColor].CGColor;
@@ -86,7 +82,7 @@
     outerRingRotate.toValue=[NSNumber numberWithDouble:2*M_PI];
     outerRingRotate.duration = 0.8f;
     outerRingRotate.repeatCount = HUGE_VALF;
-    outerRingRotate.fillMode = kCAFillModeRemoved;
+    outerRingRotate.fillMode = kCAFillModeBoth;
     [self.outerRing1 addAnimation:outerRingRotate forKey:@"rotateOuterRing"];
     [self.outerRing2 addAnimation:outerRingRotate forKey:@"rotateOuterRing"];
     
@@ -95,7 +91,7 @@
     innerRingRotate.toValue=[NSNumber numberWithDouble:0.0f];
     innerRingRotate.duration = 1.4f;
     innerRingRotate.repeatCount = HUGE_VALF;
-    innerRingRotate.fillMode = kCAFillModeRemoved;
+    innerRingRotate.fillMode = kCAFillModeBoth;
     [self.innerRing1 addAnimation:innerRingRotate forKey:@"rotateInnerRing"];
     [self.innerRing2 addAnimation:innerRingRotate forKey:@"rotateInnerRing"];
 }
@@ -193,4 +189,23 @@
     [self.innerRing1 removeAllAnimations];
     [self.innerRing2 removeAllAnimations];
 }
+
+- (void)setLineWidth:(CGFloat)width {
+    self.outerRing1.lineWidth = width;
+    self.outerRing2.lineWidth = width;
+}
+
+-(void) setInnerInset:(CGFloat)inset {
+    CGFloat radius = MIN(self.frame.size.width,self.frame.size.height)/2;
+    CGRect bounds = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, radius*2, radius*2);
+    CGFloat outerInset  = 2;
+    CGFloat innerInset  = (radius/2) + inset;
+    self.innerRing1.path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(bounds, innerInset, innerInset) cornerRadius:radius-outerInset].CGPath;
+    self.innerRing2.path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(bounds, innerInset, innerInset) cornerRadius:radius-outerInset].CGPath;
+    
+    self.innerRing1.lineWidth   = (radius-innerInset)*2;
+    self.innerRing2.lineWidth   = (radius-innerInset)*2;
+
+}
+
 @end

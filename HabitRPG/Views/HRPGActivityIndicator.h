@@ -15,4 +15,6 @@
 - (void)pauseAnimating;
 - (void)animate;
 
+- (void)setLineWidth:(CGFloat)width;
+- (void)setInnerInset:(CGFloat)inset;
 @end

@@ -43,9 +43,8 @@ CGFloat height = 140;
         
         self.backgroundView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0];
         self.roundProgress = [[HRPGActivityIndicator alloc] initWithFrame:CGRectMake(30, 30, width - 60, indicatorHeight - 60)];
-        if (!self.ballColor) {
-            self.ballColor = [UIColor colorWithRed:0.824 green:0.113 blue:0.104 alpha:0.8];
-        }
+        [self.roundProgress setLineWidth:2.5];
+        
         [self.roundProgress beginAnimating];
         [self.indicatorView addSubview:self.roundProgress];
         
