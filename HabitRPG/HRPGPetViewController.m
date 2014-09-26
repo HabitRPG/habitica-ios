@@ -311,7 +311,9 @@
         self.activityIndicator = [[HRPGActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
         [self.navigationItem setRightBarButtonItem:indicatorButton animated:NO];
-        [self.activityIndicator beginAnimating];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.activityIndicator beginAnimating];
+        });
     }
     self.activityCounter++;
 }
