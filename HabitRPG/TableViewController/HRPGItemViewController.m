@@ -167,14 +167,17 @@
         return;
     }
     NSString *extraItem;
+    NSString *destructiveButton = [NSString stringWithFormat:NSLocalizedString(@"Sell (%@ Gold)", nil), item.value];
     if ([item isKindOfClass:[Quest class]]) {
         extraItem = NSLocalizedString(@"Invite Party", nil);
+        destructiveButton = nil;
     } else if ([item isKindOfClass:[HatchingPotion class]]) {
         extraItem = NSLocalizedString(@"Hatch Egg", nil);
     } else if ([item isKindOfClass:[Egg class]]) {
         extraItem = NSLocalizedString(@"Hatch with Potion", nil);
     }
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:[NSString stringWithFormat:NSLocalizedString(@"Sell (%@ Gold)", nil), item.value] otherButtonTitles:extraItem, nil];
+    
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:destructiveButton otherButtonTitles:extraItem, nil];
     popup.tag = 1;
     self.selectedItem = item;
     [popup showInView:[UIApplication sharedApplication].keyWindow];}
@@ -285,17 +288,18 @@
         }onError:^() {
             [self removeActivityCounter];
         }];
-    } if (buttonIndex == 1) {
-        if ([self.selectedItem isKindOfClass:[Quest class]]) {
-            [self addActivityCounter];
-            User *user = [self.sharedManager getUser];
-            Quest *quest = (Quest*)self.selectedItem;
-            [self.sharedManager acceptQuest:user.party.id withQuest:quest useForce:NO onSuccess:^(){
-                [self removeActivityCounter];
-            }onError:^() {
-                [self removeActivityCounter];
-            }];
-        } else if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
+    } else if (buttonIndex == 0 && [self.selectedIndex isKindOfClass:[Quest class]]) {
+        [self addActivityCounter];
+        User *user = [self.sharedManager getUser];
+        Quest *quest = (Quest*)self.selectedItem;
+        [self.sharedManager acceptQuest:user.party.id withQuest:quest useForce:NO onSuccess:^(){
+            [self removeActivityCounter];
+        }onError:^() {
+            [self removeActivityCounter];
+        }];
+    } else if (buttonIndex == 1 && ![self.selectedItem isKindOfClass:[Quest class]]) {
+        [self addActivityCounter];
+        if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type = 'eggs' && owned > 0"];
             self.isHatching = YES;
             [self.fetchedResultsController.fetchRequest setPredicate:predicate];
