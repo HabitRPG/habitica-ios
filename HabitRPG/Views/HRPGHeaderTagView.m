@@ -13,6 +13,7 @@
 #import "Tag.h"
 #import <NIKFontAwesomeIconFactory.h>
 #import <NIKFontAwesomeIconFactory+iOS.h>
+#import "HRPGNavigationController.h"
 
 @interface HRPGHeaderTagView()
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -81,7 +82,8 @@
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-    UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"tagNavigationController"];
+    HRPGNavigationController *navigationController = (HRPGNavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"tagNavigationController"];
+    navigationController.sourceViewController = self.currentNavigationController.topViewController;
     HRPGTagViewController *tagController = (HRPGTagViewController *) navigationController.topViewController;
     tagController.selectedTags = [self.selectedTags mutableCopy];
     [self.currentNavigationController presentViewController:navigationController animated:YES completion:^() {
