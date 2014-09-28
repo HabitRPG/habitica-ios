@@ -18,7 +18,7 @@
 #import "HRPGActivityIndicatorOverlayView.h"
 
 @interface HRPGBaseViewController ()
-@property HRPGManager *sharedManager;
+@property (nonatomic)  HRPGManager *sharedManager;
 @property UIBarButtonItem *navigationButton;
 @property HRPGActivityIndicator *activityIndicator;
 @end
@@ -28,8 +28,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
-    self.sharedManager = appdelegate.sharedManager;
     self.managedObjectContext = self.sharedManager.getManagedObjectContext;
 
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
@@ -184,4 +182,29 @@
     return _markdownAttributes;
 }
 
+- (HRPGManager *)sharedManager {
+    if (_sharedManager == nil) {
+        HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+        _sharedManager = appdelegate.sharedManager;
+    }
+    return _sharedManager;
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    if (_managedObjectContext == nil) {
+        _managedObjectContext = self.sharedManager.managedObjectContext;
+    }
+    return _managedObjectContext;
+}
+/*
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder {
+    [coder encodeObject:[NSValue valueWithCGPoint:self.tableView.contentOffset] forKey:@"tableView.contentOffset"];
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder {
+    [self.tableView setContentOffset:[[coder decodeObjectForKey:@"tableView.contentOffset"] CGPointValue]];
+    [super decodeRestorableStateWithCoder:coder];
+}
+*/
 @end

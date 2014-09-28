@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361p" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -9,7 +10,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
             <objects>
-                <tabBarController id="8YX-ce-x5E" customClass="HRPGTabBarController" sceneMemberID="viewController">
+                <tabBarController restorationIdentifier="MainTabBarController" id="8YX-ce-x5E" customClass="HRPGTabBarController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="cA8-1O-89C"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="JQR-rB-NYL">
@@ -32,7 +33,7 @@
         <!--Habits-->
         <scene sceneID="L5r-pU-vZs">
             <objects>
-                <tableViewController id="9wT-fg-nmz" customClass="HRPGHabitTableViewController" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="HabitTableViewController" id="9wT-fg-nmz" customClass="HRPGHabitTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="fvC-jm-ZX5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,7 +118,7 @@
         <!--Dailies-->
         <scene sceneID="wsG-G7-Bvd">
             <objects>
-                <tableViewController id="YnE-7V-tix" customClass="HRPGDailyTableViewController" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="DailyTableViewController" id="YnE-7V-tix" customClass="HRPGDailyTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Plb-DG-Ly3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,7 +248,7 @@
         <!--To-Dos-->
         <scene sceneID="d7F-oT-WJq">
             <objects>
-                <tableViewController id="sPQ-za-Ji6" customClass="HRPGToDoTableViewController" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="TodoTableViewCntroller" id="sPQ-za-Ji6" customClass="HRPGToDoTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="PdM-ko-TYf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -643,7 +644,7 @@
         <!--Profile-->
         <scene sceneID="STv-3f-rgk">
             <objects>
-                <tableViewController id="SXb-nw-RKG" customClass="HRPGProfileViewController" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="ProfileTableViewController" id="SXb-nw-RKG" customClass="HRPGProfileViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="yoT-GF-vkQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1423,7 +1424,7 @@
         <!--Rewards-->
         <scene sceneID="M9m-tL-yO2">
             <objects>
-                <tableViewController id="8ft-Gj-Y0Y" customClass="HRPGRewardsViewController" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="RewardTableViewController" id="8ft-Gj-Y0Y" customClass="HRPGRewardsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="d3i-Bq-HWt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3149,7 +3150,7 @@
         <!--Menu-->
         <scene sceneID="Vp9-dg-sDn">
             <objects>
-                <navigationController definesPresentationContext="YES" id="JSb-MY-Gwo" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="ProfileNavigationController" definesPresentationContext="YES" id="JSb-MY-Gwo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Menu" id="hyj-Mf-lvH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gph-cu-5tJ">
                         <autoresizingMask key="autoresizingMask"/>
@@ -3165,7 +3166,7 @@
         <!--To-Dos-->
         <scene sceneID="xdc-Uc-O5P">
             <objects>
-                <navigationController definesPresentationContext="YES" id="F9m-od-YIG" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="TodoNavigationController" definesPresentationContext="YES" id="F9m-od-YIG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="To-Dos" id="Np7-ws-fF6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mXU-6R-4bg">
                         <autoresizingMask key="autoresizingMask"/>
@@ -3181,7 +3182,7 @@
         <!--Dailies-->
         <scene sceneID="qkM-wB-5kH">
             <objects>
-                <navigationController definesPresentationContext="YES" id="szj-Xo-0pc" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="DailyNavigationController" definesPresentationContext="YES" id="szj-Xo-0pc" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dailies" id="pdW-W9-wj6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tc8-JW-aRd">
                         <autoresizingMask key="autoresizingMask"/>
@@ -3642,7 +3643,7 @@
         <!--Habits-->
         <scene sceneID="0w6-RO-vbL">
             <objects>
-                <navigationController definesPresentationContext="YES" id="ZPa-UZ-Rgq" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="HabitNavigationController" definesPresentationContext="YES" id="ZPa-UZ-Rgq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Habits" id="3G8-SH-Shd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qQq-gV-VmG">
                         <autoresizingMask key="autoresizingMask"/>
@@ -3695,7 +3696,7 @@
         <!--Rewards-->
         <scene sceneID="ADP-AR-Pd2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tYf-ZM-zIQ" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="RewardNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="tYf-ZM-zIQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Rewards" id="zFI-xr-RjT"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="qZ5-Dx-RNg"/>
@@ -3722,11 +3723,11 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="DAI-nh-Ljl"/>
         <segue reference="jeD-LQ-1O1"/>
-        <segue reference="xxy-Nl-SCN"/>
+        <segue reference="DAI-nh-Ljl"/>
         <segue reference="R7D-Cb-9Bi"/>
         <segue reference="ctJ-Nf-hOd"/>
+        <segue reference="xxy-Nl-SCN"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.3490196168422699" green="0.68627452850341797" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
 </document>

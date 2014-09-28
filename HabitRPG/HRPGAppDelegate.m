@@ -47,9 +47,6 @@
             kCRToastInteractionRespondersKey : @[blankResponder]
     }];
 
-    _sharedManager = [[HRPGManager alloc] init];
-    [_sharedManager loadObjectManager];
-
     [self cleanAndRefresh:application];
 
     return YES;
@@ -63,13 +60,13 @@
     //Update Content if it wasn't updated in the last week.
     NSDate *lastContentFetch = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetch"];
     if (lastContentFetch == nil || [lastContentFetch timeIntervalSinceNow] < -604800) {
-        [_sharedManager fetchContent:^() {
+        [self.sharedManager fetchContent:^() {
         }                    onError:^() {
         }];
     }
     NSArray *scheduledNotifications = [NSArray arrayWithArray:application.scheduledLocalNotifications];
     application.scheduledLocalNotifications = scheduledNotifications;
-    User *user = [_sharedManager getUser];
+    User *user = [self.sharedManager getUser];
     if (user) {
         NSDate *lastTaskFetch = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastTaskFetch"];
         NSDate *now = [NSDate date];
@@ -86,7 +83,7 @@
                 [viewController.refreshControl beginRefreshing];
                 [viewController.tableView setContentOffset:CGPointMake(0, -viewController.topLayoutGuide.length) animated:YES];
             }
-            [_sharedManager fetchUser:^() {
+            [self.sharedManager fetchUser:^() {
                 if (viewController) {
                     [viewController.refreshControl endRefreshing];
                     [viewController.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
@@ -99,6 +96,24 @@
             }];
         }
     }
+}
+
+-(BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder
+{
+    return YES;
+}
+
+-(BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder
+{
+    return YES;
+}
+
+- (HRPGManager *)sharedManager {
+    if (_sharedManager == nil) {
+        _sharedManager = [[HRPGManager alloc] init];
+        [_sharedManager loadObjectManager];
+    }
+    return _sharedManager;
 }
 
 @end

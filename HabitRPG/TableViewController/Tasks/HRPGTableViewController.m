@@ -51,7 +51,7 @@ BOOL editable;
     HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
     self.headerView.selectedTags = tabBarController.selectedTags;
     self.tableView.tableHeaderView = self.headerView;
-    self.tableView.contentOffset = CGPointMake(0, self.headerView.frame.size.height);
+    //self.tableView.contentOffset = CGPointMake(0, self.headerView.frame.size.height);
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectTags:) name:@"tagsSelected"  object:nil];
@@ -463,5 +463,7 @@ BOOL editable;
         }
     }
 }
+
+
 
 @end
