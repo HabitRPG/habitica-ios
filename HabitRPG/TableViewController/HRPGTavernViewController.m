@@ -389,9 +389,6 @@ ChatMessage *selectedMessage;
 
         case NSFetchedResultsChangeDelete:
             indexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:section];
-            if (self.rowHeights.count > newIndexPath.item) {
-                [self.rowHeights removeObjectAtIndex:indexPath.item];
-            }
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
 
@@ -410,6 +407,14 @@ ChatMessage *selectedMessage;
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    int section = 1;
+    if ([self.tavern.questActive boolValue]) {
+        section = 2;
+    }
+    NSInteger messageCount = [self.tableView numberOfRowsInSection:section];
+    if (self.rowHeights.count > messageCount) {
+        [self.rowHeights removeObjectsInRange:NSMakeRange(messageCount, self.rowHeights.count - messageCount)];
+    }
     [self.tableView endUpdates];
 }
 
