@@ -109,6 +109,11 @@
             return;
         }
     }
+    
+    if (self.skin == nil) {
+        return;
+    }
+    
     NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:16];
     for (int i = 0; i <= 16; i++) {
         [imageArray addObject:[NSNull null]];
