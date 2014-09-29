@@ -458,6 +458,10 @@ ChatMessage *selectedMessage;
     cell.backgroundColor = [UIColor whiteColor];
     NSString *text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
     
+    if (!([text rangeOfString:user.username].location == NSNotFound)) {
+        cell.backgroundColor = [UIColor colorWithRed:0.474 green:1.000 blue:0.031 alpha:0.030];
+    }
+    
     if (text) {
         NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:text];
         [attributedText addAttribute:NSFontAttributeName value:[UIFont preferredFontForTextStyle:UIFontTextStyleBody] range:NSMakeRange(0, attributedText.length)];
@@ -482,15 +486,7 @@ ChatMessage *selectedMessage;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
-    if ([segue.identifier isEqualToString:@"QuestDetailSegue"]) {
-        HRPGQuestDetailViewController *qdViewcontroller = segue.destinationViewController;
-        qdViewcontroller.quest = self.quest;
-        qdViewcontroller.party = self.tavern;
-        qdViewcontroller.user = user;
-        qdViewcontroller.hideAskLater = [NSNumber numberWithBool:YES];
-        qdViewcontroller.wasPushed = [NSNumber numberWithBool:YES];
-        qdViewcontroller.isWorldQuest = [NSNumber numberWithBool:YES];
-    } else if ([segue.identifier isEqualToString:@"MessageSegue"]) {
+    if ([segue.identifier isEqualToString:@"MessageSegue"]) {
         UINavigationController *navController = segue.destinationViewController;
         HRPGMessageViewController *messageViewController = (HRPGMessageViewController*) navController.topViewController;
         if (self.replyMessage) {

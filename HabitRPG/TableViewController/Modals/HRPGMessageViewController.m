@@ -30,6 +30,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChanged:) name:UIKeyboardDidShowNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChanged:) name:UIKeyboardWillHideNotification object:nil];
+    
+    [self keyboardChanged:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -50,7 +52,7 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     CGFloat screenHeight = screenRect.size.height;
-    self.messageView.frame = CGRectMake(4, 0, screenWidth-8, screenHeight-height);
+    self.messageView.frame = CGRectMake(4, 4, screenWidth-8, screenHeight-height-8);
 }
 
 -(void)textViewDidChange:(UITextView *)textView {
