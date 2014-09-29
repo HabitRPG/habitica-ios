@@ -285,7 +285,7 @@
         }onError:^() {
             [self removeActivityCounter];
         }];
-    } else if (buttonIndex == 0 && [self.selectedIndex isKindOfClass:[Quest class]]) {
+    } else if (buttonIndex == 0 && [self.selectedItem isKindOfClass:[Quest class]]) {
         [self addActivityCounter];
         User *user = [self.sharedManager getUser];
         Quest *quest = (Quest*)self.selectedItem;
