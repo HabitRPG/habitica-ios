@@ -537,9 +537,9 @@ ChatMessage *selectedMessage;
                     [attributedMessage addAttribute:NSFontAttributeName value:[UIFont preferredFontForTextStyle:UIFontTextStyleBody] range:NSMakeRange(0, attributedMessage.length)];
                     [attributedMessage ghf_applyAttributes:self.markdownAttributes];
                     
-                    NSInteger height = [attributedMessage boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
+                    NSInteger height = [attributedMessage boundingRectWithSize:CGSizeMake(230.0f, MAXFLOAT)
                                                                   options:NSStringDrawingUsesLineFragmentOrigin
-                                                                  context:nil].size.height + 40;
+                                                                  context:nil].size.height + 50;
                     if (height < 70 && message.user != nil) {
                         height = 70;
                     }
@@ -564,6 +564,14 @@ ChatMessage *selectedMessage;
                     
                 }];
                 textLabel.attributedText = attributedMessage;
+                NSInteger height = [attributedMessage boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
+                                                                   options:NSStringDrawingUsesLineFragmentOrigin
+                                                                   context:nil].size.height + 50;
+                if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
+                    self.rowHeights[indexPath.item-1] = [NSNumber numberWithDouble:height];
+                } else {
+                    self.rowHeights[indexPath.item] = [NSNumber numberWithDouble:height];
+                }
             }
             UILabel *dateLabel = (UILabel *) [cell viewWithTag:3];
             dateLabel.text = [message.timestamp timeAgo];

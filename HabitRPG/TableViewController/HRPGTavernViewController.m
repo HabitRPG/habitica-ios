@@ -466,7 +466,7 @@ ChatMessage *selectedMessage;
         
         double rowHeight = [attributedText boundingRectWithSize:CGSizeMake(280, MAXFLOAT)
                                                       options:NSStringDrawingUsesLineFragmentOrigin
-                                                      context:nil].size.height + 61;
+                                                      context:nil].size.height + 51;
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
             self.rowHeights[indexPath.item-1] = [NSNumber numberWithDouble:rowHeight];
         } else {
