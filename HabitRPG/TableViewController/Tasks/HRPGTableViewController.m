@@ -22,7 +22,6 @@
 @interface HRPGTableViewController ()
 @property NSString *readableName;
 @property NSString *typeName;
-@property HRPGManager *sharedManager;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
 @property HRPGHeaderTagView *headerView;
@@ -31,8 +30,6 @@
 @end
 
 @implementation HRPGTableViewController
-@synthesize managedObjectContext;
-@dynamic sharedManager;
 Task *editedTask;
 BOOL editable;
 

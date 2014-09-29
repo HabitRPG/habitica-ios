@@ -21,7 +21,6 @@
 #import <CoreText/CoreText.h>
 
 @interface HRPGPartyViewController ()
-@property HRPGManager *sharedManager;
 @property NSMutableDictionary *chatAttributeMapping;
 @property NSIndexPath *selectedIndex;
 @property NSIndexPath *buttonIndex;
@@ -31,8 +30,6 @@
 @end
 
 @implementation HRPGPartyViewController
-@synthesize managedObjectContext;
-@dynamic sharedManager;
 Group *party;
 Quest *quest;
 User *user;
@@ -584,7 +581,7 @@ ChatMessage *selectedMessage;
         [fetchRequest setEntity:entity];
         [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", party.questKey]];
         NSError *error;
-        quest = [managedObjectContext executeFetchRequest:fetchRequest error:&error][0];
+        quest = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error][0];
         [self.tableView reloadData];
 
     }

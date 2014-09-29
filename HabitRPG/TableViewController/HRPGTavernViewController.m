@@ -23,7 +23,6 @@
 #import <CoreText/CoreText.h>
 
 @interface HRPGTavernViewController ()
-@property HRPGManager *sharedManager;
 @property Group *tavern;
 @property Quest *quest;
 @property NSIndexPath *selectedIndex;
@@ -35,8 +34,6 @@
 @end
 
 @implementation HRPGTavernViewController
-@synthesize managedObjectContext;
-@dynamic sharedManager;
 User *user;
 ChatMessage *selectedMessage;
 
@@ -100,7 +97,7 @@ ChatMessage *selectedMessage;
         [fetchRequest setEntity:entity];
         [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", self.tavern.questKey]];
         NSError *error;
-        self.quest = [managedObjectContext executeFetchRequest:fetchRequest error:&error][0];
+        self.quest = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error][0];
         [self.tableView reloadData];
         
     }

@@ -14,7 +14,6 @@
 @interface HRPGPartyMembersViewController ()
 @property NSString *readableName;
 @property NSString *typeName;
-@property HRPGManager *sharedManager;
 @property NSIndexPath *openedIndexPath;
 @property NSString *sortKey;
 @property BOOL sortAscending;
@@ -23,8 +22,6 @@
 @end
 
 @implementation HRPGPartyMembersViewController
-@synthesize managedObjectContext;
-@dynamic sharedManager;
 NSString *partyID;
 
 - (void)viewDidLoad {

@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRPGManager.h"
 
 @interface HRPGBaseViewController : UITableViewController
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic)  HRPGManager *sharedManager;
+
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 
 -(void)addActivityCounter;

@@ -12,7 +12,6 @@
 #import "NSMutableAttributedString_GHFMarkdown.h"
 
 @interface HRPGUserProfileViewController ()
-@property HRPGManager *sharedManager;
 @property (nonatomic, readonly, getter=getUser) User *user;
 @end
 

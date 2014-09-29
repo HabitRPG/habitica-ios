@@ -11,12 +11,9 @@
 #import "Food.h"
 
 @interface HRPGFeedViewController ()
-@property HRPGManager *sharedManager;
 @end
 
 @implementation HRPGFeedViewController
-@synthesize managedObjectContext;
-@dynamic sharedManager;
 
 #pragma mark - Table view data source
 

@@ -12,16 +12,12 @@
 #import "HRPGSpellTabBarController.h"
 
 @interface HRPGSpellViewController ()
-@property HRPGManager *sharedManager;
 @property User *user;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
 
 @implementation HRPGSpellViewController
-@synthesize managedObjectContext;
-@dynamic sharedManager;
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];

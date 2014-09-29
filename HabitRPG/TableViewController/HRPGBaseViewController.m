@@ -18,7 +18,6 @@
 #import "HRPGActivityIndicatorOverlayView.h"
 
 @interface HRPGBaseViewController ()
-@property (nonatomic)  HRPGManager *sharedManager;
 @property UIBarButtonItem *navigationButton;
 @property HRPGActivityIndicator *activityIndicator;
 @end
@@ -27,8 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.managedObjectContext = self.sharedManager.getManagedObjectContext;
 
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
 
@@ -192,7 +189,7 @@
 
 - (NSManagedObjectContext *)managedObjectContext {
     if (_managedObjectContext == nil) {
-        _managedObjectContext = self.sharedManager.managedObjectContext;
+        _managedObjectContext = self.sharedManager.getManagedObjectContext;
     }
     return _managedObjectContext;
 }

@@ -18,7 +18,6 @@
 #import "HRPGImageOverlayManager.h"
 
 @interface HRPGItemViewController ()
-@property HRPGManager *sharedManager;
 @property Item *selectedItem;
 @property NSIndexPath *selectedIndex;
 @property BOOL isHatching;
@@ -29,8 +28,6 @@
 @end
 
 @implementation HRPGItemViewController
-@synthesize managedObjectContext;
-@dynamic sharedManager;
 
 - (void) fetchExistingPetsWithPartName:(NSString*)string {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

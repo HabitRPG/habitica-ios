@@ -18,7 +18,6 @@
 @interface HRPGHabitTableViewController ()
 @property NSString *readableName;
 @property NSString *typeName;
-@property HRPGManager *sharedManager;
 @property NIKFontAwesomeIconFactory *iconFactory;
 @end
 
@@ -26,7 +25,6 @@
 
 @dynamic readableName;
 @dynamic typeName;
-@dynamic sharedManager;
 
 - (void)viewDidLoad {
     self.readableName = NSLocalizedString(@"Habit", nil);

@@ -20,7 +20,6 @@
 @interface HRPGToDoTableViewController ()
 @property NSString *readableName;
 @property NSString *typeName;
-@property HRPGManager *sharedManager;
 @property NIKFontAwesomeIconFactory *iconFactory;
 @property NIKFontAwesomeIconFactory *checkIconFactory;
 @property NSIndexPath *openedIndexPath;
@@ -33,7 +32,6 @@
 
 @dynamic readableName;
 @dynamic typeName;
-@dynamic sharedManager;
 @dynamic openedIndexPath;
 @dynamic indexOffset;
 

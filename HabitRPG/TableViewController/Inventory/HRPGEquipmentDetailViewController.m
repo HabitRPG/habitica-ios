@@ -12,15 +12,12 @@
 #import "User.h"
 
 @interface HRPGEquipmentDetailViewController ()
-@property HRPGManager *sharedManager;
 @property User *user;
 @property NSIndexPath *equippedIndex;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
 
 @implementation HRPGEquipmentDetailViewController
-@synthesize managedObjectContext;
-@dynamic sharedManager;
 Gear *selectedGear;
 NSIndexPath *selectedIndex;
 

@@ -15,15 +15,12 @@
 @interface HRPGEquipmentViewController ()
 @property NSString *readableName;
 @property NSString *typeName;
-@property HRPGManager *sharedManager;
 @property User *user;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
 
 @implementation HRPGEquipmentViewController
-@synthesize managedObjectContext;
-@dynamic sharedManager;
 Gear *selectedGear;
 NSIndexPath *selectedIndex;
 

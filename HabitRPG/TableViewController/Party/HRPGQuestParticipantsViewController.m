@@ -12,15 +12,12 @@
 @interface HRPGQuestParticipantsViewController ()
 @property NSString *readableName;
 @property NSString *typeName;
-@property HRPGManager *sharedManager;
 @property NSIndexPath *openedIndexPath;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
 
 @implementation HRPGQuestParticipantsViewController
-@synthesize managedObjectContext;
-@dynamic sharedManager;
 NSString *partyID;
 
 #pragma mark - Table view data source

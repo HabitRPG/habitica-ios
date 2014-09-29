@@ -16,14 +16,10 @@
 #import <UserVoice.h>
 
 @interface HRPGProfileViewController ()
-@property HRPGManager *sharedManager;
-
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @implementation HRPGProfileViewController
-@synthesize managedObjectContext;
-@dynamic sharedManager;
 NSString *username;
 NSInteger userLevel;
 NSString *currentUserID;

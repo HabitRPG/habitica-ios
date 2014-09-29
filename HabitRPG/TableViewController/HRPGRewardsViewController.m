@@ -17,7 +17,6 @@
 @interface HRPGRewardsViewController ()
 @property NSString *readableName;
 @property NSString *typeName;
-@property HRPGManager *sharedManager;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
 
@@ -25,8 +24,6 @@
 @end
 
 @implementation HRPGRewardsViewController
-@synthesize managedObjectContext;
-@dynamic sharedManager;
 
 UIImageView *goldImageView;
 UILabel *goldLabel;
