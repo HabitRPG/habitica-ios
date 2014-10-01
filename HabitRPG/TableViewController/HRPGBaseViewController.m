@@ -193,15 +193,5 @@
     }
     return _managedObjectContext;
 }
-/*
-- (void)encodeRestorableStateWithCoder:(NSCoder *)coder {
-    [coder encodeObject:[NSValue valueWithCGPoint:self.tableView.contentOffset] forKey:@"tableView.contentOffset"];
-    [super encodeRestorableStateWithCoder:coder];
-}
 
-- (void)decodeRestorableStateWithCoder:(NSCoder *)coder {
-    [self.tableView setContentOffset:[[coder decodeObjectForKey:@"tableView.contentOffset"] CGPointValue]];
-    [super decodeRestorableStateWithCoder:coder];
-}
-*/
 @end
