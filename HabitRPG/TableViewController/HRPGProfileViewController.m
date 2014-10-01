@@ -34,9 +34,13 @@ NIKFontAwesomeIconFactory *iconFactory;
         [self.fetchedResultsController.fetchRequest setPredicate:predicate];
         NSError *error;
         [self.fetchedResultsController performFetch:&error];
-        User *user = (User *) [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-        username = user.username;
-        userLevel = [user.level integerValue];
+        if ([[self.fetchedResultsController sections] count] > 0) {
+            if ([[self.fetchedResultsController sections][0] numberOfObjects] > 0) {
+                User *user = (User *) [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+                username = user.username;
+                userLevel = [user.level integerValue];
+            }
+        }
         [self.tableView reloadData];
     }
     self.navigationItem.title = username;
@@ -311,7 +315,7 @@ NIKFontAwesomeIconFactory *iconFactory;
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
-
+    indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
     switch (type) {
         case NSFetchedResultsChangeInsert: {
             User *user = (User *) [self.fetchedResultsController objectAtIndexPath:newIndexPath];

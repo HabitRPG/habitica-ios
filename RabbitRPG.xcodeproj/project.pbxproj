@@ -44,7 +44,6 @@
 		D97C71ED18F32FEF0089FDC6 /* Gear.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71EC18F32FEF0089FDC6 /* Gear.m */; };
 		D97C71F018F32FEF0089FDC6 /* MetaReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71EF18F32FEF0089FDC6 /* MetaReward.m */; };
 		D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */; };
-		D97C71F518F371D70089FDC6 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D97C71F418F371D70089FDC6 /* Pods-acknowledgements.plist */; };
 		D97CCDB519A51EED00DA128A /* GHFMarkdown_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDAC19A51EED00DA128A /* GHFMarkdown_Private.m */; };
 		D97CCDB619A51EED00DA128A /* GHFMarkdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDAE19A51EED00DA128A /* GHFMarkdown.m */; };
 		D97CCDB719A51EED00DA128A /* NSMutableAttributedString_GHFMarkdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDB019A51EED00DA128A /* NSMutableAttributedString_GHFMarkdown.m */; };
@@ -125,6 +124,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A12B817AF1713BF5BCB7F702 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		A8C64F7451C560A6BB881198 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D908B3811903515B00D32A75 /* HRPGSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSwipeTableViewCell.h; sourceTree = "<group>"; };
 		D908B3821903515B00D32A75 /* HRPGSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSwipeTableViewCell.m; sourceTree = "<group>"; };
 		D90EA03619D60421001EABE4 /* HabitIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabitIntro.png; sourceTree = "<group>"; };
@@ -193,7 +194,6 @@
 		D97C71EF18F32FEF0089FDC6 /* MetaReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetaReward.m; sourceTree = "<group>"; };
 		D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGEquipmentViewController.h; sourceTree = "<group>"; };
 		D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGEquipmentViewController.m; sourceTree = "<group>"; };
-		D97C71F418F371D70089FDC6 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-acknowledgements.plist"; path = "Pods/Pods-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
 		D97CCDAB19A51EED00DA128A /* GHFMarkdown_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHFMarkdown_Private.h; sourceTree = "<group>"; };
 		D97CCDAC19A51EED00DA128A /* GHFMarkdown_Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHFMarkdown_Private.m; sourceTree = "<group>"; };
 		D97CCDAD19A51EED00DA128A /* GHFMarkdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHFMarkdown.h; sourceTree = "<group>"; };
@@ -314,7 +314,6 @@
 		D9EB4EBB18CB4A9400BB2094 /* RabbitRPGTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RabbitRPGTests-Info.plist"; sourceTree = "<group>"; };
 		D9EB4EBD18CB4A9400BB2094 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9EB4EBF18CB4A9400BB2094 /* HabitRPGTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabitRPGTests.m; sourceTree = "<group>"; };
-		E55E45210D0A48989E0A671E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		EC82AC0621234004BC92DB72 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -348,6 +347,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C8F6A6231C725855311FDF40 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A12B817AF1713BF5BCB7F702 /* Pods.debug.xcconfig */,
+				A8C64F7451C560A6BB881198 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D90EA03819D60427001EABE4 /* Intro Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -613,7 +621,7 @@
 				D9EB4EB918CB4A9400BB2094 /* RabbitRPGTests */,
 				D9EB4E8D18CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8C18CB4A9400BB2094 /* Products */,
-				E55E45210D0A48989E0A671E /* Pods.xcconfig */,
+				C8F6A6231C725855311FDF40 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -679,7 +687,6 @@
 			isa = PBXGroup;
 			children = (
 				D99DEC88190842CA00FFD2B9 /* Placeholder.png */,
-				D97C71F418F371D70089FDC6 /* Pods-acknowledgements.plist */,
 				D9EB4E9618CB4A9400BB2094 /* RabbitRPG-Info.plist */,
 				D9EB4E9718CB4A9400BB2094 /* InfoPlist.strings */,
 				D9EB4E9A18CB4A9400BB2094 /* main.m */,
@@ -794,7 +801,6 @@
 				D9EB4EA518CB4A9400BB2094 /* Main_iPad.storyboard in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
-				D97C71F518F371D70089FDC6 /* Pods-acknowledgements.plist in Resources */,
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
 				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
 				D9EB4EA218CB4A9400BB2094 /* Main_iPhone.storyboard in Resources */,
@@ -855,7 +861,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1076,7 +1082,7 @@
 		};
 		D9EB4EC418CB4A9400BB2094 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E55E45210D0A48989E0A671E /* Pods.xcconfig */;
+			baseConfigurationReference = A12B817AF1713BF5BCB7F702 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1092,28 +1098,36 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HabitRPG/RabbitRPG-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers\"",
-					"\"${PODS_ROOT}/Headers/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/CRToast\"",
-					"\"${PODS_ROOT}/Headers/CTFeedback\"",
-					"\"${PODS_ROOT}/Headers/FontAwesomeIconFactory\"",
-					"\"${PODS_ROOT}/Headers/ISO8601DateFormatterValueTransformer\"",
-					"\"${PODS_ROOT}/Headers/MCSwipeTableViewCell\"",
-					"\"${PODS_ROOT}/Headers/NSDate+TimeAgo\"",
-					"\"${PODS_ROOT}/Headers/NSString+Emoji\"",
-					"\"${PODS_ROOT}/Headers/PDKeychainBindingsController\"",
-					"\"${PODS_ROOT}/Headers/RKValueTransformers\"",
-					"\"${PODS_ROOT}/Headers/RestKit\"",
-					"\"${PODS_ROOT}/Headers/RestKit/CoreData\"",
-					"\"${PODS_ROOT}/Headers/RestKit/Network\"",
-					"\"${PODS_ROOT}/Headers/RestKit/ObjectMapping\"",
-					"\"${PODS_ROOT}/Headers/RestKit/Support\"",
-					"\"${PODS_ROOT}/Headers/SDWebImage\"",
-					"\"${PODS_ROOT}/Headers/SOCKit\"",
-					"\"${PODS_ROOT}/Headers/TransitionKit\"",
-					"\"${PODS_ROOT}/Headers/VTAcknowledgementsViewController\"",
-					"\"${PODS_ROOT}/Headers/Vendor/LibComponentLogging/Core\"",
-					"\"${PODS_ROOT}/Headers/Vendor/LibComponentLogging/NSLog\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/CRToast\"",
+					"\"${PODS_ROOT}/Headers/Public/EAIntroView\"",
+					"\"${PODS_ROOT}/Headers/Public/FLEX\"",
+					"\"${PODS_ROOT}/Headers/Public/FontAwesomeIconFactory\"",
+					"\"${PODS_ROOT}/Headers/Public/HockeyKit\"",
+					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatterValueTransformer\"",
+					"\"${PODS_ROOT}/Headers/Public/MCSwipeTableViewCell\"",
+					"\"${PODS_ROOT}/Headers/Public/NSDate+TimeAgo\"",
+					"\"${PODS_ROOT}/Headers/Public/NSString+Emoji\"",
+					"\"${PODS_ROOT}/Headers/Public/PDKeychainBindingsController\"",
+					"\"${PODS_ROOT}/Headers/Public/RFKeyboardToolbar\"",
+					"\"${PODS_ROOT}/Headers/Public/RFMarkdownTextView\"",
+					"\"${PODS_ROOT}/Headers/Public/RKValueTransformers\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/CoreData\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/Network\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/ObjectMapping\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/Support\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SOCKit\"",
+					"\"${PODS_ROOT}/Headers/Public/TransitionKit\"",
+					"\"${PODS_ROOT}/Headers/Public/VTAcknowledgementsViewController\"",
+					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/Core\"",
+					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/NSLog\"",
+					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
+					"\"${PODS_ROOT}/Headers/Public/pop\"",
+					"\"${PODS_ROOT}/Headers/Public/uservoice-iphone-sdk\"",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "HabitRPG/RabbitRPG-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
@@ -1140,18 +1154,18 @@
 					"-framework",
 					UIKit,
 					"-lc++",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = RabbitRPG;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		D9EB4EC518CB4A9400BB2094 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E55E45210D0A48989E0A671E /* Pods.xcconfig */;
+			baseConfigurationReference = A8C64F7451C560A6BB881198 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1167,28 +1181,36 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HabitRPG/RabbitRPG-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers\"",
-					"\"${PODS_ROOT}/Headers/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/CRToast\"",
-					"\"${PODS_ROOT}/Headers/CTFeedback\"",
-					"\"${PODS_ROOT}/Headers/FontAwesomeIconFactory\"",
-					"\"${PODS_ROOT}/Headers/ISO8601DateFormatterValueTransformer\"",
-					"\"${PODS_ROOT}/Headers/MCSwipeTableViewCell\"",
-					"\"${PODS_ROOT}/Headers/NSDate+TimeAgo\"",
-					"\"${PODS_ROOT}/Headers/NSString+Emoji\"",
-					"\"${PODS_ROOT}/Headers/PDKeychainBindingsController\"",
-					"\"${PODS_ROOT}/Headers/RKValueTransformers\"",
-					"\"${PODS_ROOT}/Headers/RestKit\"",
-					"\"${PODS_ROOT}/Headers/RestKit/CoreData\"",
-					"\"${PODS_ROOT}/Headers/RestKit/Network\"",
-					"\"${PODS_ROOT}/Headers/RestKit/ObjectMapping\"",
-					"\"${PODS_ROOT}/Headers/RestKit/Support\"",
-					"\"${PODS_ROOT}/Headers/SDWebImage\"",
-					"\"${PODS_ROOT}/Headers/SOCKit\"",
-					"\"${PODS_ROOT}/Headers/TransitionKit\"",
-					"\"${PODS_ROOT}/Headers/VTAcknowledgementsViewController\"",
-					"\"${PODS_ROOT}/Headers/Vendor/LibComponentLogging/Core\"",
-					"\"${PODS_ROOT}/Headers/Vendor/LibComponentLogging/NSLog\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/CRToast\"",
+					"\"${PODS_ROOT}/Headers/Public/EAIntroView\"",
+					"\"${PODS_ROOT}/Headers/Public/FLEX\"",
+					"\"${PODS_ROOT}/Headers/Public/FontAwesomeIconFactory\"",
+					"\"${PODS_ROOT}/Headers/Public/HockeyKit\"",
+					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatterValueTransformer\"",
+					"\"${PODS_ROOT}/Headers/Public/MCSwipeTableViewCell\"",
+					"\"${PODS_ROOT}/Headers/Public/NSDate+TimeAgo\"",
+					"\"${PODS_ROOT}/Headers/Public/NSString+Emoji\"",
+					"\"${PODS_ROOT}/Headers/Public/PDKeychainBindingsController\"",
+					"\"${PODS_ROOT}/Headers/Public/RFKeyboardToolbar\"",
+					"\"${PODS_ROOT}/Headers/Public/RFMarkdownTextView\"",
+					"\"${PODS_ROOT}/Headers/Public/RKValueTransformers\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/CoreData\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/Network\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/ObjectMapping\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/Support\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SOCKit\"",
+					"\"${PODS_ROOT}/Headers/Public/TransitionKit\"",
+					"\"${PODS_ROOT}/Headers/Public/VTAcknowledgementsViewController\"",
+					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/Core\"",
+					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/NSLog\"",
+					"\"${PODS_ROOT}/Headers/Public/XLForm\"",
+					"\"${PODS_ROOT}/Headers/Public/pop\"",
+					"\"${PODS_ROOT}/Headers/Public/uservoice-iphone-sdk\"",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "HabitRPG/RabbitRPG-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
@@ -1215,11 +1237,11 @@
 					"-framework",
 					UIKit,
 					"-lc++",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = RabbitRPG;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
