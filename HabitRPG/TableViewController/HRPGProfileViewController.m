@@ -29,6 +29,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (![currentUserID isEqualToString:[keyChain stringForKey:@"id"]]) {
+        //user has changed. Reload data.
         currentUserID = [keyChain stringForKey:@"id"];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", currentUserID];
         [self.fetchedResultsController.fetchRequest setPredicate:predicate];
@@ -62,6 +63,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         }
     }
     if (username == nil) {
+        //User does not exist in database. Fetch it.
         [self refresh];
     }
 
@@ -104,6 +106,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
+            //Below level 10 users don't have spells
             if (userLevel <= 10) {
                 return 1;
             } else {
@@ -267,34 +270,24 @@ NIKFontAwesomeIconFactory *iconFactory;
     }
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-
-    // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
 
     keyChain = [PDKeychainBindings sharedKeychainBindings];
     currentUserID = [keyChain stringForKey:@"id"];
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", currentUserID]];
 
-    // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
 
     [fetchRequest setSortDescriptors:sortDescriptors];
 
-
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"username" cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
@@ -391,20 +384,6 @@ NIKFontAwesomeIconFactory *iconFactory;
     
     cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     cell.backgroundColor = [UIColor colorWithWhite:0.973 alpha:1.000];
-}
-
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    [controller dismissViewControllerAnimated:YES completion:^(){
-
-    }];
-}
-
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [super prepareForSegue:segue sender:sender];
 }
 
 @end

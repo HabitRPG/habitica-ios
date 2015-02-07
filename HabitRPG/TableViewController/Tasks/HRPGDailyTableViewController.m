@@ -53,7 +53,6 @@
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
 
     UILabel *v = (UILabel *) [cell viewWithTag:2];
-    // border radius
     [v.layer setCornerRadius:5.0f];
     return cell;
 }
@@ -301,10 +300,5 @@
     }
 }
 
-- (UIView *)viewWithIcon:(UIImage *)image {
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.contentMode = UIViewContentModeCenter;
-    return imageView;
-}
 
 @end

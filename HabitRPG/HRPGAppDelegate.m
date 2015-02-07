@@ -11,27 +11,14 @@
 #import "CRToast.h"
 #import <Crashlytics/Crashlytics.h>
 #import <UserVoice.h>
-
-#if !defined (CONFIGURATION_AppStore_Distribution)
-
-#import "BWHockeyManager.h"
-
-#endif
-
 @implementation HRPGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Crashlytics startWithAPIKey:@"2eb3b3edb3b0f4722d37d649a5af366656e46ddd"];
 
-    // Set this up once when your application launches
     UVConfig *config = [UVConfig configWithSite:@"rabbitrpg.uservoice.com"];
     config.forumId = 257978;
-    // [config identifyUserWithEmail:@"email@example.com" name:@"User Name", guid:@"USER_ID");
     [UserVoice initialize:config];
-
-#if !defined (CONFIGURATION_AppStore_Distribution)
-    [BWHockeyManager sharedHockeyManager].updateURL = @"https://viirus.sirius.uberspace.de/hockeykit/";
-#endif
 
     CRToastInteractionResponder *blankResponder = [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeAll automaticallyDismiss:YES block:^(CRToastInteractionType interactionType){
         NSLog(@"tapped");

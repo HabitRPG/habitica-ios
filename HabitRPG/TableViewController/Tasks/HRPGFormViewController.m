@@ -229,11 +229,6 @@
     self.tags = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
--(IBAction)savePressed:(UIBarButtonItem * __unused)button
-{
-    
-}
-
 - (void)showFormValidationError:(NSError *)error {
     UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Validation Error", nil) message:error.localizedDescription delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
     [alertView show];

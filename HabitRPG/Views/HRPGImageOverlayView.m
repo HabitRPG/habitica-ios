@@ -58,6 +58,10 @@
     return self;
 }
 
+- (void)onDismiss:(void (^)())completitionBlock {
+    completitionBlock();
+}
+
 - (void)setHeight:(CGFloat)height {
     _height = height;
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;

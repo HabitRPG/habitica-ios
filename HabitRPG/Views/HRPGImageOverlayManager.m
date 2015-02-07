@@ -81,16 +81,20 @@
     if ([dict objectForKey:@"notes"]) {
     }
     
+    __weak NSMutableArray *weakQueue = queue;
+    __weak HRPGImageOverlayManager *weakSelf = self;
+    __block HRPGImageOverlayView *weakActiveView = activeView;
+    __block UIView *weakBackgroundView = backgroundView;
     activeView.dismissBlock = ^() {
-        if (queue.count != 0) {
-            [self displayNextImage];
+        if (weakQueue.count != 0) {
+            [weakSelf displayNextImage];
         } else {
-            activeView = nil;
+            weakActiveView = nil;
             [UIView animateWithDuration:0.3 animations:^() {
-                backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+                weakBackgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
             }completion:^(BOOL finished) {
-                [backgroundView removeFromSuperview];
-                backgroundView = nil;
+                [weakBackgroundView removeFromSuperview];
+                weakBackgroundView = nil;
             }];
         }
     };

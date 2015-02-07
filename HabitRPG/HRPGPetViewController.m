@@ -163,36 +163,28 @@
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Pet" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-    
-    // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
+    
     if (self.petName) {
         [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@ && type = %@", self.petName, self.petType]];
     } else {
         [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@ && type = %@", self.petColor, self.petType]];
     }
     
-    // Edit the sort key as appropriate.
     NSSortDescriptor *typeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
     NSArray *sortDescriptors = @[typeSortDescriptor, sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
-    
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
@@ -305,9 +297,6 @@
 -(void)addActivityCounter {
     if (self.activityCounter == 0) {
         self.navigationButton = self.navigationItem.rightBarButtonItem;
-        //HRPGRoundProgressView *indicator = [[HRPGRoundProgressView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-        //indicator.strokeWidth = 2;
-        //[indicator beginAnimating];
         self.activityIndicator = [[HRPGActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
         [self.navigationItem setRightBarButtonItem:indicatorButton animated:NO];

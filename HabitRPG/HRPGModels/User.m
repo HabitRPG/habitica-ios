@@ -414,6 +414,7 @@
 }
 
 -(UIColor *)contributorColor {
+    //TODO: add new rainbow colored contributor levels
     if ([self.contributorLevel integerValue] == 0) {
         
     } else if ([self.contributorLevel integerValue] <= 2) {

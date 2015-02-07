@@ -22,6 +22,7 @@
 @dynamic backerNpc;
 
 -(UIColor *)contributorColor {
+    //TODO: add new rainbow colored contributor levels
     if (self.backerNpc) {
         return [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
     }

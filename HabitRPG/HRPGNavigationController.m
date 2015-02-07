@@ -14,16 +14,6 @@
 
 @implementation HRPGNavigationController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (UIViewController *)viewControllerForUnwindSegueAction:(SEL)action fromViewController:(UIViewController *)fromViewController withSender:(id)sender
 {
     if ([self.sourceViewController canPerformUnwindSegueAction:action fromViewController:fromViewController withSender:sender])

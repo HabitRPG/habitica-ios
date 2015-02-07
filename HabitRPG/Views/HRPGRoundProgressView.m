@@ -25,10 +25,7 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
         self.backgroundColor = [UIColor clearColor];
-
-        // Determine our start and stop angles for the arc (in radians)
         startAngle = M_PI * 1.5;
         endAngle = startAngle + (M_PI * 2);
         animAngle = (M_PI * 2);
@@ -95,9 +92,7 @@
 
     CGPoint center = CGPointMake(rect.size.width / 2, rect.size.height / 2);
     float radius = (rect.size.width - self.strokeWidth) / 2;
-    // Create our arc, with the correct angles
     [backgroundPath addArcWithCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
-    // Set the display for the path, and stroke it
     backgroundPath.lineWidth = self.strokeWidth;
     [self.backgroundStrokeColor setStroke];
     [backgroundPath stroke];

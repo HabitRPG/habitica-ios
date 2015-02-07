@@ -17,7 +17,6 @@
 - (void) shouldDismissWithDelay:(float)delay;
 
 - (void) addExpAndGoldViews;
-- (void) updateExp:(NSNumber*)newExperience withGold:(NSNumber*)newGold;
 - (void) updateWithValues:(NSArray*)valuesArray;
 
 @property NSNumber *health;

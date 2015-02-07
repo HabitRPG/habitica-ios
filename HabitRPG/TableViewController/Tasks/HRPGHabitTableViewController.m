@@ -39,7 +39,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
     UILabel *lastActionLabel = (UILabel*)[cell viewWithTag:4];
     UILabel *titleLabel = (UILabel*)[cell viewWithTag:1];
@@ -149,12 +148,6 @@
             }];
         }];
     }
-}
-
-- (UIView *)viewWithIcon:(UIImage *)image {
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.contentMode = UIViewContentModeCenter;
-    return imageView;
 }
 
 @end

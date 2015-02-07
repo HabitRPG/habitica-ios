@@ -13,7 +13,6 @@
 		D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03A19D60B53001EABE4 /* TodoIntro.png */; };
 		D90EA03E19D60B53001EABE4 /* RewardIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03B19D60B53001EABE4 /* RewardIntro.png */; };
 		D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */; };
-		D922F0AB191D957D00B197EA /* HRPGDeathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0AA191D957D00B197EA /* HRPGDeathViewController.m */; };
 		D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0AD19217C2300B197EA /* HRPGEmptySerializer.m */; };
 		D922F0B11925314500B197EA /* HRPGNetworkIndicatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0B01925314500B197EA /* HRPGNetworkIndicatorController.m */; };
 		D92CDADD18CB79E50006C242 /* HRPGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */; };
@@ -103,7 +102,6 @@
 		D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4E9A18CB4A9400BB2094 /* main.m */; };
 		D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */; };
 		D9EB4EA218CB4A9400BB2094 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EA018CB4A9400BB2094 /* Main_iPhone.storyboard */; };
-		D9EB4EA518CB4A9400BB2094 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EA318CB4A9400BB2094 /* Main_iPad.storyboard */; };
 		D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */; };
 		D9EB4EB418CB4A9400BB2094 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4EB318CB4A9400BB2094 /* XCTest.framework */; };
 		D9EB4EB518CB4A9400BB2094 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */; };
@@ -136,8 +134,6 @@
 		D915F8641915BF0D0037D04D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D922F0A6191C1F6B00B197EA /* HRPGUserBuyResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGUserBuyResponse.h; sourceTree = "<group>"; };
 		D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGUserBuyResponse.m; sourceTree = "<group>"; };
-		D922F0A9191D957D00B197EA /* HRPGDeathViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGDeathViewController.h; sourceTree = "<group>"; };
-		D922F0AA191D957D00B197EA /* HRPGDeathViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGDeathViewController.m; sourceTree = "<group>"; };
 		D922F0AC19217C2300B197EA /* HRPGEmptySerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGEmptySerializer.h; sourceTree = "<group>"; };
 		D922F0AD19217C2300B197EA /* HRPGEmptySerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGEmptySerializer.m; sourceTree = "<group>"; };
 		D922F0AF1925314500B197EA /* HRPGNetworkIndicatorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGNetworkIndicatorController.h; sourceTree = "<group>"; };
@@ -171,7 +167,7 @@
 		D96038361930F90E0025EAEC /* HRPGMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGMessageViewController.m; sourceTree = "<group>"; };
 		D966557218FB129F0014C09D /* HRPGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSettingsViewController.h; sourceTree = "<group>"; };
 		D966557318FB129F0014C09D /* HRPGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSettingsViewController.m; sourceTree = "<group>"; };
-		D967755519F1379800A21F45 /* HabitRPG 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 6.xcdatamodel"; sourceTree = "<group>"; };
+		D967755519F1379800A21F45 /* HabitRPG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitRPG.xcdatamodel; sourceTree = "<group>"; };
 		D9722B1819B7AEA1009D8AD3 /* HRPGNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGNewsViewController.h; sourceTree = "<group>"; };
 		D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGNewsViewController.m; sourceTree = "<group>"; };
 		D9722B1B19B7CD88009D8AD3 /* HabitRPG 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -308,7 +304,6 @@
 		D9EB4E9D18CB4A9400BB2094 /* HRPGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGAppDelegate.h; sourceTree = "<group>"; };
 		D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRPGAppDelegate.m; sourceTree = "<group>"; };
 		D9EB4EA118CB4A9400BB2094 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		D9EB4EA418CB4A9400BB2094 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D9EB4EB218CB4A9400BB2094 /* RabbitRPGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RabbitRPGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EB4EB318CB4A9400BB2094 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -575,8 +570,6 @@
 				D9ADD3621944FDBE006202C1 /* HRPGTagViewController.m */,
 				D9B5C0E518D62CC700C8D1B7 /* HRPGLoginViewController.h */,
 				D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */,
-				D922F0A9191D957D00B197EA /* HRPGDeathViewController.h */,
-				D922F0AA191D957D00B197EA /* HRPGDeathViewController.m */,
 				D96038351930F90E0025EAEC /* HRPGMessageViewController.h */,
 				D96038361930F90E0025EAEC /* HRPGMessageViewController.m */,
 			);
@@ -675,7 +668,6 @@
 				D9722B7E19BD041E009D8AD3 /* HRPGNavigationController.h */,
 				D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */,
 				D9EB4EA018CB4A9400BB2094 /* Main_iPhone.storyboard */,
-				D9EB4EA318CB4A9400BB2094 /* Main_iPad.storyboard */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */,
 				D9EB4E9518CB4A9400BB2094 /* Supporting Files */,
@@ -799,7 +791,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D90EA03E19D60B53001EABE4 /* RewardIntro.png in Resources */,
-				D9EB4EA518CB4A9400BB2094 /* Main_iPad.storyboard in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
@@ -923,7 +914,6 @@
 				D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */,
 				D98F5AEC190566CA002F8223 /* User.m in Sources */,
 				D9C7C1F318E280DE0083F4E4 /* HRPGRewardsViewController.m in Sources */,
-				D922F0AB191D957D00B197EA /* HRPGDeathViewController.m in Sources */,
 				D92CDAE718CB84000006C242 /* HRPGToDoTableViewController.m in Sources */,
 				D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */,
 				D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */,
@@ -988,14 +978,6 @@
 				D9EB4EA118CB4A9400BB2094 /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		D9EB4EA318CB4A9400BB2094 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D9EB4EA418CB4A9400BB2094 /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		D9EB4EBC18CB4A9400BB2094 /* InfoPlist.strings */ = {
@@ -1324,13 +1306,13 @@
 			isa = XCVersionGroup;
 			children = (
 				D9722B1B19B7CD88009D8AD3 /* HabitRPG 5.xcdatamodel */,
-				D967755519F1379800A21F45 /* HabitRPG 6.xcdatamodel */,
+				D967755519F1379800A21F45 /* HabitRPG.xcdatamodel */,
 				D980373619902BB1004C8871 /* HabitRPG 4.xcdatamodel */,
 				D94AADB1192974AD00546C8E /* HabitRPG 2.xcdatamodel */,
 				D947E646197B45C8001FBA6E /* HabitRPG 3.xcdatamodel */,
 				D94AADAF192973CD00546C8E /* HabitRPG.xcdatamodel */,
 			);
-			currentVersion = D967755519F1379800A21F45 /* HabitRPG 6.xcdatamodel */;
+			currentVersion = D94AADAF192973CD00546C8E /* HabitRPG.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -41,7 +41,6 @@
         self.label.text = NSLocalizedString(@"Filter by tags", nil);
         [self addSubview:self.label];
 
-        // Add a bottomBorder.
         CALayer *bottomBorder = [CALayer layer];
         
         bottomBorder.frame = CGRectMake(0.0f, self.frame.size.height-1, self.frame.size.width, 0.5f);

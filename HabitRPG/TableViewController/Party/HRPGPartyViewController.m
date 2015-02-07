@@ -372,31 +372,16 @@ ChatMessage *selectedMessage;
     }
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-
-    // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", partyID]];
 
-    // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
-    NSArray *sortDescriptors = @[sortDescriptor];
-
-    [fetchRequest setSortDescriptors:sortDescriptors];
-
-
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
@@ -417,6 +402,12 @@ ChatMessage *selectedMessage;
       newIndexPath:(NSIndexPath *)newIndexPath {
     switch (type) {
         case NSFetchedResultsChangeUpdate:
+            break;
+        case NSFetchedResultsChangeMove:
+            break;
+        case NSFetchedResultsChangeDelete:
+            break;
+        case NSFetchedResultsChangeInsert:
             break;
     }
 }
@@ -597,7 +588,6 @@ ChatMessage *selectedMessage;
 
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"ParticipantsSegue"]) {
@@ -623,10 +613,6 @@ ChatMessage *selectedMessage;
         userProfileViewController.userID = selectedMessage.userObject.id;
         userProfileViewController.username = selectedMessage.user;
     }
-}
-
-- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
-    
 }
 
 - (IBAction)unwindToListSendMessage:(UIStoryboardSegue *)segue {

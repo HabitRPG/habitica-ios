@@ -122,6 +122,7 @@ User *user;
 
     moneyView.frame = CGRectMake(50 - (moneyWidth / 2), 20, moneyWidth, 40);
     if (amount) {
+        //animate the gold change
         UILabel *updateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, goldLabel.frame.origin.y, goldLabel.frame.size.width + goldLabel.frame.origin.x, 16)];
         updateLabel.font = [UIFont systemFontOfSize:13.0f];
         updateLabel.textAlignment = NSTextAlignmentRight;
@@ -194,6 +195,15 @@ User *user;
     return height;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
+    if ([reward.type isEqualToString:@"reward"]) {
+        //TODO: Correctly implement deleting
+        return NO;
+    }
+    return NO;
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
@@ -205,19 +215,6 @@ User *user;
             abort();
         }
     }
-}
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // The table view should not be re-orderable.
-    return NO;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
-    if ([reward.type isEqualToString:@"reward"]) {
-        return NO;
-    }
-    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -245,30 +242,11 @@ User *user;
 }
 
 
-- (IBAction)editButtonSelected:(id)sender {
-    if ([self isEditing]) {
-        [self setEditing:NO animated:YES];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonSelected:)];
-    } else {
-        [self setEditing:YES animated:YES];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editButtonSelected:)];
-    }
-}
-
-- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
-
-}
-
-
-- (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-
-}
-
-
 - (NSArray *)filteredData {
     if (_filteredData != nil) {
         return _filteredData;
     }
+    //The filtering wasn't possible with predicates, so everything is fetched and filtered here
     NSMutableArray *array = [[NSMutableArray alloc] init];
     
     for (id <NSFetchedResultsSectionInfo> section in [self.fetchedResultsController sections]) {
@@ -280,19 +258,22 @@ User *user;
                     continue;
                 }
                 if ([gear.key rangeOfString:@"_special_1"].location != NSNotFound) {
-                        if ([gear.type isEqualToString:@"armor"] && [user.contributorLevel intValue] < 2) {
-                            continue;
-                        } else if ([gear.type isEqualToString:@"head"] && [user.contributorLevel intValue] < 3) {
-                            continue;
-                        } else if ([gear.type isEqualToString:@"weapon"] && [user.contributorLevel intValue] < 4) {
-                            continue;
-                        } else if ([gear.type isEqualToString:@"shield"] && [user.contributorLevel intValue] < 5) {
-                            continue;
-                        }
+                    //filter the special contributer gear
+                    if ([gear.type isEqualToString:@"armor"] && [user.contributorLevel intValue] < 2) {
+                        continue;
+                    } else if ([gear.type isEqualToString:@"head"] && [user.contributorLevel intValue] < 3) {
+                        continue;
+                    } else if ([gear.type isEqualToString:@"weapon"] && [user.contributorLevel intValue] < 4) {
+                        continue;
+                    } else if ([gear.type isEqualToString:@"shield"] && [user.contributorLevel intValue] < 5) {
+                        continue;
+                    }
                 } else if (!([gear.klass isEqualToString:user.dirtyClass] || [gear.specialClass isEqualToString:user.dirtyClass])) {
+                    //filter gear that is not the right class
                     continue;
                 }
                 if (gear.eventStart) {
+                    //filter event gear
                     NSDate *today = [NSDate date];
                     if (!([today compare:gear.eventStart] == NSOrderedDescending && [today compare:gear.eventEnd] == NSOrderedAscending)) {
                         continue;
@@ -300,8 +281,10 @@ User *user;
                 }
                 if (gear.index && [[sectionArray lastObject] index] && ![gear.klass isEqualToString:@"special"]) {
                     if (![[(Gear*)[sectionArray lastObject] getCleanedClassName] isEqualToString:@"special"] && [[sectionArray lastObject] index] < gear.index) {
+                        //filter gear with lower level
                         continue;
                     } else if ([[sectionArray lastObject] index] > gear.index) {
+                        //remove last object if current one is of higher level
                         [sectionArray removeLastObject];
                     }
                 }
@@ -327,36 +310,22 @@ User *user;
     }
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"MetaReward" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-
-    // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
 
-    //NSPredicate *predicate;
-    //predicate = [NSPredicate predicateWithFormat:@"type=='potion' || type=='reward' || (owned == False) "];
-    //[fetchRequest setPredicate:predicate];
-
-    // Edit the sort key as appropriate.
     NSSortDescriptor *keyDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
     NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
     NSSortDescriptor *orderDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
     NSArray *sortDescriptors = @[typeDescriptor, orderDescriptor, keyDescriptor];
-
     [fetchRequest setSortDescriptors:sortDescriptors];
-    //[fetchRequest setPropertiesToGroupBy:@[@"type", @"klass"]];
 
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"type" cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
@@ -409,13 +378,6 @@ User *user;
         goldView.alpha = 1;
         priceLabel.textColor = [UIColor darkTextColor];
     }
-}
-
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [super prepareForSegue:segue sender:sender];
 }
 
 @end

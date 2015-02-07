@@ -81,11 +81,6 @@
     [self.toggleCompletedView addGestureRecognizer:singleFingerTap];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
 
@@ -302,12 +297,6 @@
             }];
         }];
     }
-}
-
-- (UIView *)viewWithIcon:(UIImage *)image {
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.contentMode = UIViewContentModeCenter;
-    return imageView;
 }
 
 - (void)toggleCompletedTasks:(UITapGestureRecognizer*)tapRecognizer {
