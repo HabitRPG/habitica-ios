@@ -143,7 +143,10 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", self.userID]];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
+    NSArray *sortDescriptors = @[sortDescriptor];
     
+    [fetchRequest setSortDescriptors:sortDescriptors];
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;

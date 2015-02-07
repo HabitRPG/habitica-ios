@@ -22,21 +22,6 @@
 NSUserDefaults *defaults;
 User *user;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self){
-        self.managedObjectContext = _sharedManager.getManagedObjectContext;
-        defaults = [NSUserDefaults standardUserDefaults];
-        user = [_sharedManager getUser];
-        self.username = user.username;
-        
-        [self initializeForm];
-    }
-    return self;
-}
-
-
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -44,6 +29,11 @@ User *user;
         HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
         HRPGManager *sharedManager = appdelegate.sharedManager;
         self.managedObjectContext = sharedManager.getManagedObjectContext;
+        defaults = [NSUserDefaults standardUserDefaults];
+        user = [_sharedManager getUser];
+        self.username = user.username;
+        
+        [self initializeForm];
         [self initializeForm];
     }
     return self;

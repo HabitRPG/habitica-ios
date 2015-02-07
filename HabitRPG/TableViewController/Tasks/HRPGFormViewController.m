@@ -21,16 +21,6 @@
 
 @implementation HRPGFormViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self){
-        [self initializeForm];
-    }
-    return self;
-}
-
-
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
