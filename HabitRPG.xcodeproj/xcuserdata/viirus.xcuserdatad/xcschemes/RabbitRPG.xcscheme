@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D9EB4E8A18CB4A9400BB2094"
-               BuildableName = "RabbitRPG.app"
-               BlueprintName = "RabbitRPG"
-               ReferencedContainer = "container:RabbitRPG.xcodeproj">
+               BuildableName = "HabitRPG-IOS.app"
+               BlueprintName = "HabitRPG"
+               ReferencedContainer = "container:HabitRPG.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D9EB4E8A18CB4A9400BB2094"
-            BuildableName = "RabbitRPG.app"
-            BlueprintName = "RabbitRPG"
-            ReferencedContainer = "container:RabbitRPG.xcodeproj">
+            BuildableName = "HabitRPG-IOS.app"
+            BlueprintName = "HabitRPG"
+            ReferencedContainer = "container:HabitRPG.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D9EB4E8A18CB4A9400BB2094"
-            BuildableName = "RabbitRPG.app"
-            BlueprintName = "RabbitRPG"
-            ReferencedContainer = "container:RabbitRPG.xcodeproj">
+            BuildableName = "HabitRPG-IOS.app"
+            BlueprintName = "HabitRPG"
+            ReferencedContainer = "container:HabitRPG.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D9EB4E8A18CB4A9400BB2094"
-            BuildableName = "RabbitRPG.app"
-            BlueprintName = "RabbitRPG"
-            ReferencedContainer = "container:RabbitRPG.xcodeproj">
+            BuildableName = "HabitRPG-IOS.app"
+            BlueprintName = "HabitRPG"
+            ReferencedContainer = "container:HabitRPG.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
