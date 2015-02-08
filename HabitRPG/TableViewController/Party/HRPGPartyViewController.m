@@ -105,7 +105,17 @@ ChatMessage *selectedMessage;
 - (void)refresh {
     [self.sharedManager fetchGroup:@"party" onSuccess:^() {
         [self.refreshControl endRefreshing];
-        party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        if ([[self.fetchedResultsController sections] count] > 0) {
+            if ([[self.fetchedResultsController sections][0] numberOfObjects] > 0) {
+                party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+
+            }
+        }
+        
+        if (party == nil) {
+            return;
+        }
+        
         if (party.questKey != nil) {
             [self fetchQuest];
         }
