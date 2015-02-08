@@ -95,7 +95,11 @@ ChatMessage *selectedMessage;
         [fetchRequest setEntity:entity];
         [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", self.tavern.questKey]];
         NSError *error;
-        self.quest = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error][0];
+        if ([[self.fetchedResultsController sections] count] > 0) {
+            if ([[self.fetchedResultsController sections][0] numberOfObjects] > 0) {
+                self.quest = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error][0];
+            }
+        }
         [self.tableView reloadData];
         
     }
