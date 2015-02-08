@@ -593,7 +593,10 @@ ChatMessage *selectedMessage;
         [fetchRequest setEntity:entity];
         [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", party.questKey]];
         NSError *error;
-        quest = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error][0];
+        NSArray *result = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        if ([result count] > 0) {
+            quest = result[0];
+        }
         [self.tableView reloadData];
 
     }

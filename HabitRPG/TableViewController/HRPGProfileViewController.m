@@ -35,12 +35,10 @@ NIKFontAwesomeIconFactory *iconFactory;
         [self.fetchedResultsController.fetchRequest setPredicate:predicate];
         NSError *error;
         [self.fetchedResultsController performFetch:&error];
-        if ([[self.fetchedResultsController sections] count] > 0) {
-            if ([[self.fetchedResultsController sections][0] numberOfObjects] > 0) {
-                User *user = (User *) [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-                username = user.username;
-                userLevel = [user.level integerValue];
-            }
+        User *user = [self getUser];
+        if (user) {
+            username = user.username;
+            userLevel = [user.level integerValue];
         }
         [self.tableView reloadData];
     }
@@ -55,14 +53,11 @@ NIKFontAwesomeIconFactory *iconFactory;
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 
-    if ([[self.fetchedResultsController sections] count] > 0) {
-        if ([[self.fetchedResultsController sections][0] numberOfObjects] > 0) {
-            User *user = (User *) [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-            username = user.username;
-            userLevel = [user.level integerValue];
-        }
-    }
-    if (username == nil) {
+    User *user = [self getUser];
+    if (user) {
+        username = user.username;
+        userLevel = [user.level integerValue];
+    } else {
         //User does not exist in database. Fetch it.
         [self refresh];
     }
@@ -95,6 +90,16 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)reloadPartyData:(id)sender {
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (User*)getUser {
+    if ([[self.fetchedResultsController sections] count] > 0) {
+        if ([[self.fetchedResultsController sections][0] numberOfObjects] > 0) {
+            return (User *) [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        }
+    }
+    
+    return nil;
 }
 
 #pragma mark - Table view data source
@@ -223,9 +228,12 @@ NIKFontAwesomeIconFactory *iconFactory;
             title = NSLocalizedString(@"Tavern", nil);
         } else if (indexPath.section == 1 && indexPath.item == 1) {
             title = NSLocalizedString(@"Party", nil);
-            User *user = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-            if ([user.party.unreadMessages boolValue]) {
-                showIndicator = YES;
+            
+            User *user = [self getUser];
+            if (user) {
+                if ([user.party.unreadMessages boolValue]) {
+                    showIndicator = YES;
+                }
             }
         } else if (indexPath.section == 2 && indexPath.item == 0) {
             title = NSLocalizedString(@"Equipment", nil);
@@ -237,9 +245,11 @@ NIKFontAwesomeIconFactory *iconFactory;
             title = NSLocalizedString(@"Mounts", nil);
         } else if (indexPath.section == 3 && indexPath.item == 0) {
             title = NSLocalizedString(@"News", nil);
-            User *user = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-            if ([user.habitNewStuff boolValue]) {
-                showIndicator = YES;
+            User *user = [self getUser];
+            if (user) {
+                if ([user.habitNewStuff boolValue]) {
+                    showIndicator = YES;
+                }
             }
         } else if (indexPath.section == 3 && indexPath.item == 1) {
             title = NSLocalizedString(@"Settings", nil);

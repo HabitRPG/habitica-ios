@@ -144,7 +144,7 @@
                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished){
              if (image) {
                  self.bossImage = image;
-                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                 [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
                  imageView.image = self.bossImage;
              }
          }];
