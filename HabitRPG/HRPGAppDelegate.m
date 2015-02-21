@@ -10,15 +10,11 @@
 #import "HRPGTableViewController.h"
 #import "CRToast.h"
 #import <Crashlytics/Crashlytics.h>
-#import <UserVoice.h>
+
 @implementation HRPGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Crashlytics startWithAPIKey:@"2eb3b3edb3b0f4722d37d649a5af366656e46ddd"];
-
-    UVConfig *config = [UVConfig configWithSite:@"rabbitrpg.uservoice.com"];
-    config.forumId = 257978;
-    [UserVoice initialize:config];
 
     CRToastInteractionResponder *blankResponder = [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeAll automaticallyDismiss:YES block:^(CRToastInteractionType interactionType){
         NSLog(@"tapped");

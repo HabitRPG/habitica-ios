@@ -122,7 +122,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         case 2:
             return 4;
         case 3:
-            return 4;
+            return 3;
         default:
             return 0;
     }
@@ -204,8 +204,6 @@ NIKFontAwesomeIconFactory *iconFactory;
         VTAcknowledgementsViewController *viewController = [VTAcknowledgementsViewController acknowledgementsViewController];
         viewController.headerText = NSLocalizedString(@"We love open source software.", nil); // optional
         [self.navigationController pushViewController:viewController animated:YES];
-    } else if (indexPath.section == 3 && indexPath.item == 3) {
-        [UserVoice presentUserVoiceInterfaceForParentViewController:self];
     }
 }
 
@@ -255,8 +253,6 @@ NIKFontAwesomeIconFactory *iconFactory;
             title = NSLocalizedString(@"Settings", nil);
         } else if (indexPath.section == 3 && indexPath.item == 2) {
             title = NSLocalizedString(@"Acknowledgements", nil);
-        } else if (indexPath.section == 3 && indexPath.item == 3) {
-            title = NSLocalizedString(@"Send Feedback", nil);
         }
 
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
