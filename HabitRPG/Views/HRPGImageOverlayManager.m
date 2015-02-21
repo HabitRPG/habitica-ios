@@ -1,6 +1,6 @@
 //
 //  HRPGImageOverlayManager.m
-//  RabbitRPG
+//  Habitica
 //
 //  Created by viirus on 25/09/14.
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.

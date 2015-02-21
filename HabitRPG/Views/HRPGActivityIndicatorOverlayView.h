@@ -1,6 +1,6 @@
 //
 //  HRPGActivityIndicatorOverlayView.h
-//  RabbitRPG
+//  Habitica
 //
 //  Created by Phillip Thelen on 18/05/14.
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.

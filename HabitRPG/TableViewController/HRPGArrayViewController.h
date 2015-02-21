@@ -1,6 +1,6 @@
 //
 //  HRPGArrayViewController.h
-//  RabbitRPG
+//  Habitica
 //
 //  Created by Phillip on 22/08/14.
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.

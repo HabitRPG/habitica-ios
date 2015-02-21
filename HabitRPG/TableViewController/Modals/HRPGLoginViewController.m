@@ -176,7 +176,7 @@
                                           AppExtensionTitleKey: @"HabitRPG",
                                           AppExtensionUsernameKey: self.usernameField.text ? : @"",
                                           AppExtensionPasswordKey: self.passwordField.text ? : @"",
-                                          AppExtensionNotesKey: @"Saved with RabbitRPG",
+                                          AppExtensionNotesKey: @"Saved with Habitica",
                                           };
         NSDictionary *passwordGenerationOptions = @{
                                                     AppExtensionGeneratedPasswordMinLengthKey: @(16),

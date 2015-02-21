@@ -1,6 +1,6 @@
 //
 //  NSNumber+abbreviation.h
-//  RabbitRPG
+//  Habitica
 //
 //  Created by Phillip on 05/07/14.
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
