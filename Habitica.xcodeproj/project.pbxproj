@@ -290,21 +290,21 @@
 		D9D96F07194E25FF00796FE7 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		D9E0868F18DF800F00BAF2EF /* HRPGTavernViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTavernViewController.h; sourceTree = "<group>"; };
 		D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTavernViewController.m; sourceTree = "<group>"; };
-		D9EB4E8B18CB4A9400BB2094 /* HabitRPG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitRPG.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9EB4E8B18CB4A9400BB2094 /* Habitica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habitica.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D9EB4E9218CB4A9400BB2094 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D9EB4E9618CB4A9400BB2094 /* HabitRPG-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HabitRPG-Info.plist"; sourceTree = "<group>"; };
+		D9EB4E9618CB4A9400BB2094 /* Habitica-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Habitica-Info.plist"; sourceTree = "<group>"; };
 		D9EB4E9818CB4A9400BB2094 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9EB4E9A18CB4A9400BB2094 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D9EB4E9C18CB4A9400BB2094 /* HabitRPG-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HabitRPG-Prefix.pch"; sourceTree = "<group>"; };
+		D9EB4E9C18CB4A9400BB2094 /* Habitica-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Habitica-Prefix.pch"; sourceTree = "<group>"; };
 		D9EB4E9D18CB4A9400BB2094 /* HRPGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGAppDelegate.h; sourceTree = "<group>"; };
 		D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRPGAppDelegate.m; sourceTree = "<group>"; };
 		D9EB4EA118CB4A9400BB2094 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D9EB4EB218CB4A9400BB2094 /* HabitRPGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9EB4EB218CB4A9400BB2094 /* HabiticaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabiticaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EB4EB318CB4A9400BB2094 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		D9EB4EBB18CB4A9400BB2094 /* HabitRPGTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HabitRPGTests-Info.plist"; sourceTree = "<group>"; };
+		D9EB4EBB18CB4A9400BB2094 /* HabiticaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HabiticaTests-Info.plist"; sourceTree = "<group>"; };
 		D9EB4EBD18CB4A9400BB2094 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9EB4EBF18CB4A9400BB2094 /* HabitRPGTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabitRPGTests.m; sourceTree = "<group>"; };
 		EC82AC0621234004BC92DB72 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -619,8 +619,8 @@
 		D9EB4E8C18CB4A9400BB2094 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D9EB4E8B18CB4A9400BB2094 /* HabitRPG.app */,
-				D9EB4EB218CB4A9400BB2094 /* HabitRPGTests.xctest */,
+				D9EB4E8B18CB4A9400BB2094 /* Habitica.app */,
+				D9EB4EB218CB4A9400BB2094 /* HabiticaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -676,10 +676,10 @@
 			isa = PBXGroup;
 			children = (
 				D99DEC88190842CA00FFD2B9 /* Placeholder.png */,
-				D9EB4E9618CB4A9400BB2094 /* HabitRPG-Info.plist */,
+				D9EB4E9618CB4A9400BB2094 /* Habitica-Info.plist */,
 				D9EB4E9718CB4A9400BB2094 /* InfoPlist.strings */,
 				D9EB4E9A18CB4A9400BB2094 /* main.m */,
-				D9EB4E9C18CB4A9400BB2094 /* HabitRPG-Prefix.pch */,
+				D9EB4E9C18CB4A9400BB2094 /* Habitica-Prefix.pch */,
 				D9A50E991A868DE400FC8B1A /* Launch Screen.xib */,
 			);
 			name = "Supporting Files";
@@ -697,7 +697,7 @@
 		D9EB4EBA18CB4A9400BB2094 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D9EB4EBB18CB4A9400BB2094 /* HabitRPGTests-Info.plist */,
+				D9EB4EBB18CB4A9400BB2094 /* HabiticaTests-Info.plist */,
 				D9EB4EBC18CB4A9400BB2094 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -706,9 +706,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D9EB4E8A18CB4A9400BB2094 /* HabitRPG */ = {
+		D9EB4E8A18CB4A9400BB2094 /* Habitica */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "HabitRPG" */;
+			buildConfigurationList = D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "Habitica" */;
 			buildPhases = (
 				02DCD40452424CABA2724616 /* Check Pods Manifest.lock */,
 				D9EB4E8718CB4A9400BB2094 /* Sources */,
@@ -721,14 +721,14 @@
 			);
 			dependencies = (
 			);
-			name = HabitRPG;
+			name = Habitica;
 			productName = HabitRPG;
-			productReference = D9EB4E8B18CB4A9400BB2094 /* HabitRPG.app */;
+			productReference = D9EB4E8B18CB4A9400BB2094 /* Habitica.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D9EB4EB118CB4A9400BB2094 /* HabitRPGTests */ = {
+		D9EB4EB118CB4A9400BB2094 /* HabiticaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D9EB4EC618CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "HabitRPGTests" */;
+			buildConfigurationList = D9EB4EC618CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "HabiticaTests" */;
 			buildPhases = (
 				D9EB4EAE18CB4A9400BB2094 /* Sources */,
 				D9EB4EAF18CB4A9400BB2094 /* Frameworks */,
@@ -739,9 +739,9 @@
 			dependencies = (
 				D9EB4EB818CB4A9400BB2094 /* PBXTargetDependency */,
 			);
-			name = HabitRPGTests;
+			name = HabiticaTests;
 			productName = HabitRPGTests;
-			productReference = D9EB4EB218CB4A9400BB2094 /* HabitRPGTests.xctest */;
+			productReference = D9EB4EB218CB4A9400BB2094 /* HabiticaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -762,7 +762,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D9EB4E8618CB4A9400BB2094 /* Build configuration list for PBXProject "HabitRPG" */;
+			buildConfigurationList = D9EB4E8618CB4A9400BB2094 /* Build configuration list for PBXProject "Habitica" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -775,8 +775,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D9EB4E8A18CB4A9400BB2094 /* HabitRPG */,
-				D9EB4EB118CB4A9400BB2094 /* HabitRPGTests */,
+				D9EB4E8A18CB4A9400BB2094 /* Habitica */,
+				D9EB4EB118CB4A9400BB2094 /* HabiticaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -955,7 +955,7 @@
 /* Begin PBXTargetDependency section */
 		D9EB4EB818CB4A9400BB2094 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D9EB4E8A18CB4A9400BB2094 /* HabitRPG */;
+			target = D9EB4E8A18CB4A9400BB2094 /* Habitica */;
 			targetProxy = D9EB4EB718CB4A9400BB2094 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1075,7 +1075,7 @@
 					/Users/viirus/Downloads/Crashlytics.app/Contents/Resources,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HabitRPG/HabitRPG-Prefix.pch";
+				GCC_PREFIX_HEADER = "HabitRPG/Habitica-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
@@ -1108,7 +1108,7 @@
 					"\"${PODS_ROOT}/Headers/Public/uservoice-iphone-sdk\"",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "HabitRPG/HabitRPG-Info.plist";
+				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1135,7 +1135,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_NAME = HabitRPG;
+				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1157,7 +1157,7 @@
 					/Users/viirus/Downloads/Crashlytics.app/Contents/Resources,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HabitRPG/HabitRPG-Prefix.pch";
+				GCC_PREFIX_HEADER = "HabitRPG/Habitica-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
@@ -1190,7 +1190,7 @@
 					"\"${PODS_ROOT}/Headers/Public/uservoice-iphone-sdk\"",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "HabitRPG/HabitRPG-Info.plist";
+				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1217,7 +1217,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_NAME = HabitRPG;
+				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1239,8 +1239,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "HabitRPGTests/HabitRPGTests-Info.plist";
-				PRODUCT_NAME = HabitRPGTests;
+				INFOPLIST_FILE = "HabitRPGTests/HabiticaTests-Info.plist";
+				PRODUCT_NAME = HabiticaTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1257,8 +1257,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HabitRPG/HabitRPG-Prefix.pch";
-				INFOPLIST_FILE = "HabitRPGTests/HabitRPGTests-Info.plist";
-				PRODUCT_NAME = HabitRPGTests;
+				INFOPLIST_FILE = "HabitRPGTests/HabiticaTests-Info.plist";
+				PRODUCT_NAME = HabiticaTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1267,7 +1267,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D9EB4E8618CB4A9400BB2094 /* Build configuration list for PBXProject "HabitRPG" */ = {
+		D9EB4E8618CB4A9400BB2094 /* Build configuration list for PBXProject "Habitica" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D9EB4EC118CB4A9400BB2094 /* Debug */,
@@ -1276,7 +1276,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "HabitRPG" */ = {
+		D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "Habitica" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D9EB4EC418CB4A9400BB2094 /* Debug */,
@@ -1285,7 +1285,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D9EB4EC618CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "HabitRPGTests" */ = {
+		D9EB4EC618CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "HabiticaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D9EB4EC718CB4A9400BB2094 /* Debug */,
