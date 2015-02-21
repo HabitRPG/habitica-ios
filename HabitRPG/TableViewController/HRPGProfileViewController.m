@@ -13,7 +13,6 @@
 #import <PDKeychainBindings.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
-#import <UserVoice.h>
 
 @interface HRPGProfileViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;

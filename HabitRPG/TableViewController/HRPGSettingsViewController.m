@@ -30,10 +30,9 @@ User *user;
         HRPGManager *sharedManager = appdelegate.sharedManager;
         self.managedObjectContext = sharedManager.getManagedObjectContext;
         defaults = [NSUserDefaults standardUserDefaults];
-        user = [_sharedManager getUser];
+        user = [sharedManager getUser];
         self.username = user.username;
         
-        [self initializeForm];
         [self initializeForm];
     }
     return self;
@@ -47,8 +46,6 @@ User *user;
 
 -(void)initializeForm {
     XLFormDescriptor *formDescriptor = [XLFormDescriptor formDescriptorWithTitle:NSLocalizedString(@"Settings", nil)];
-    
-    formDescriptor.assignFirstResponderOnShow = YES;
     
     XLFormSectionDescriptor *section;
     XLFormRowDescriptor *row;
