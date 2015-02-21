@@ -2475,19 +2475,19 @@
                                                 <constraint firstAttribute="height" constant="40" id="uUm-x1-Vdt"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5s9-Yq-fnA">
-                                            <rect key="frame" x="53" y="8" width="249" height="41"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5s9-Yq-fnA">
+                                            <rect key="frame" x="53" y="8" width="249" height="45"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="247" translatesAutoresizingMaskIntoConstraints="NO" id="rJb-0M-U3L">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="999" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="247" translatesAutoresizingMaskIntoConstraints="NO" id="rJb-0M-U3L">
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="21" id="CpL-ZA-n2w"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKA-ze-GvH">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKA-ze-GvH">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="4xP-6x-p4v"/>
                                                 <constraint firstAttribute="width" priority="500" constant="42" id="BoP-Dg-PzJ"/>
@@ -2498,7 +2498,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="5s9-Yq-fnA" firstAttribute="leading" secondItem="uYF-on-EP6" secondAttribute="trailing" constant="8" id="2dB-yl-TKr"/>
-                                        <constraint firstAttribute="bottom" secondItem="rJb-0M-U3L" secondAttribute="bottom" constant="8" id="2s9-I0-VDm"/>
+                                        <constraint firstAttribute="bottom" secondItem="rJb-0M-U3L" secondAttribute="bottom" constant="4" id="2s9-I0-VDm"/>
                                         <constraint firstItem="rJb-0M-U3L" firstAttribute="leading" secondItem="uYF-on-EP6" secondAttribute="trailing" constant="8" id="6TM-xQ-brE"/>
                                         <constraint firstItem="rJb-0M-U3L" firstAttribute="top" secondItem="5s9-Yq-fnA" secondAttribute="bottom" constant="2" id="Bzb-mS-HyX"/>
                                         <constraint firstAttribute="trailing" secondItem="rJb-0M-U3L" secondAttribute="trailing" constant="20" id="VH7-7T-yGj"/>

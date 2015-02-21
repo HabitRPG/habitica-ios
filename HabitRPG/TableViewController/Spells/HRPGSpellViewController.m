@@ -19,9 +19,14 @@
 
 @implementation HRPGSpellViewController
 
+float textWidth;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.user = [self.sharedManager getUser];
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    textWidth = screenRect.size.width - 43;
 }
 
 #pragma mark - Table view data source
@@ -72,7 +77,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     float height = 22.0f;
-    float width = 277.0f;
+    float width = textWidth;
     Spell *spell = [self.fetchedResultsController objectAtIndexPath:indexPath];
     width = width - [[NSString stringWithFormat:@"%ld MP", (long) [spell.mana integerValue]] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                                                                                           options:NSStringDrawingUsesLineFragmentOrigin

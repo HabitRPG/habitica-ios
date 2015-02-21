@@ -29,6 +29,14 @@
 
 @implementation HRPGItemViewController
 
+float textWidth;
+
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    textWidth = screenRect.size.width - 118;
+}
+
 - (void) fetchExistingPetsWithPartName:(NSString*)string {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Pet" inManagedObjectContext:self.managedObjectContext];
@@ -99,7 +107,7 @@
         return 0;
     }
     Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSInteger height = [item.text boundingRectWithSize:CGSizeMake(202.0f, MAXFLOAT)
+    NSInteger height = [item.text boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT)
                                                options:NSStringDrawingUsesLineFragmentOrigin
                                             attributes:@{
                                                     NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]

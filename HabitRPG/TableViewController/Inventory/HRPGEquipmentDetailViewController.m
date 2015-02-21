@@ -20,10 +20,14 @@
 @implementation HRPGEquipmentDetailViewController
 Gear *selectedGear;
 NSIndexPath *selectedIndex;
+float textWidth;
 
 -(void)viewDidLoad {
     [super viewDidLoad];
     self.user = [self.sharedManager getUser];
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    textWidth = screenRect.size.width - 73.0;
 }
 
 #pragma mark - Table view data source
@@ -54,13 +58,13 @@ NSIndexPath *selectedIndex;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
     float height = 22.0f;
-    height = height + [gear.text boundingRectWithSize:CGSizeMake(247.0f, MAXFLOAT)
+    height = height + [gear.text boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT)
                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                              attributes:@{
                                                           NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
                                                           }
                                                 context:nil].size.height;
-    height = height + [gear.notes boundingRectWithSize:CGSizeMake(247.0f, MAXFLOAT)
+    height = height + [gear.notes boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT)
                                                      options:NSStringDrawingUsesLineFragmentOrigin
                                                   attributes:@{
                                                                NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
