@@ -7,12 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EAIntroView.h"
 
-@interface HRPGTabBarController : UITabBarController <EAIntroDelegate>
+@interface HRPGTabBarController : UITabBarController
 
 @property NSArray *selectedTags;
-
-- (void) displayIntro;
 
 @end
