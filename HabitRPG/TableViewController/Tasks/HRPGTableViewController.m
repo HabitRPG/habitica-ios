@@ -32,6 +32,7 @@
 @implementation HRPGTableViewController
 Task *editedTask;
 BOOL editable;
+float displayWidth;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,20 +61,8 @@ BOOL editable;
     self.taskResponseView.experienceMax = [self.sharedManager getUser].nextLevel;
     self.taskResponseView.gold = [self.sharedManager getUser].gold;
     
-    
-    [[NSNotificationCenter defaultCenter]
-        addObserver:self
-        selector:@selector(changeSwipeDirection:)
-        name:@"swipeDirectionChanged"
-        object:nil];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.swipeDirection = [defaults boolForKey:@"swipeDirection"];
-}
-
-- (void)changeSwipeDirection:(NSNotification *)notification {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.swipeDirection = [defaults boolForKey:@"swipeDirection"];
-    [self.tableView reloadData];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    displayWidth = screenRect.size.width;
 }
 
 - (void)refresh {
@@ -196,7 +185,13 @@ BOOL editable;
     }
     float width;
     if ([task.type isEqualToString:@"habit"]) {
-        width = 280.0f;
+        if ([task.up boolValue] && [task.down boolValue]) {
+            //69 for segmentedControl + 3 * 8 for space between views
+            width = displayWidth - 93;
+        } else {
+            //34 for segmentedControl + 3 * 8 for space between views
+            width = displayWidth - 58;
+        }
     } else if ([task.checklist count] > 0) {
         width = 210.0f;
     } else {
@@ -437,9 +432,6 @@ BOOL editable;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[object valueForKey:@"text"] description];
-}
-
-- (void)configureSwiping:(HRPGSwipeTableViewCell *)cell withTask:(Task *)task {
 }
 
 

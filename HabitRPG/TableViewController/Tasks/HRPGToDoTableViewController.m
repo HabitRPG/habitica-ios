@@ -109,6 +109,7 @@
     UILabel *label = (UILabel *) [cell viewWithTag:1];
     UIImageView *checkMarkView = (UIImageView *) [cell viewWithTag:3];
     if (self.openedIndexPath && self.openedIndexPath.item < indexPath.item && indexPath.item <= (self.openedIndexPath.item + self.indexOffset)) {
+        //configure for checklist item
         Task *task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
         int currentOffset = (int) (indexPath.item - self.openedIndexPath.item - 1);
         ChecklistItem *item = task.checklist[currentOffset];
@@ -116,12 +117,6 @@
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         checklistLabel.hidden = YES;
         cell.backgroundColor = [UIColor lightGrayColor];
-        MCSwipeTableViewCellState state;
-        if (self.swipeDirection) {
-            state = MCSwipeTableViewCellState1;
-        } else {
-            state = MCSwipeTableViewCellState3;
-        }
         if ([item.completed boolValue]) {
             self.checkIconFactory.colors = @[[UIColor whiteColor]];
             checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
@@ -129,40 +124,16 @@
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor darkTextColor];
             }];
-            UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconSquareO]];
-            UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
-            [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:state completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                item.completed = [NSNumber numberWithBool:NO];;
-                [self addActivityCounter];
-                [self.sharedManager updateTask:task onSuccess:^() {
-                    [self configureCell:(HRPGSwipeTableViewCell *) cell atIndexPath:indexPath withAnimation:YES];
-                    [self removeActivityCounter];
-                }                      onError:^() {
-                    [self removeActivityCounter];
-                }];
-            }];
         } else {
             checkMarkView.image = nil;
             checkMarkView.hidden = YES;
             [UIView animateWithDuration:0.4 animations:^() {
                 label.textColor = [UIColor whiteColor];
             }];
-            UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconCheckSquareO]];
-            UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
-            [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:state completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                item.completed = [NSNumber numberWithBool:YES];
-                [self addActivityCounter];
-                [self.sharedManager updateTask:task onSuccess:^() {
-
-                    [self configureCell:(HRPGSwipeTableViewCell *) cell atIndexPath:indexPath withAnimation:YES];
-                    [self removeActivityCounter];
-                }                      onError:^() {
-                    [self removeActivityCounter];
-                }];
-            }];
         }
 
     } else {
+        //configure for task
         if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
             indexPath = [NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section];
         }
@@ -220,11 +191,10 @@
             checkMarkView.image = nil;
             checkMarkView.hidden = YES;
             [UIView animateWithDuration:0.4 animations:^() {
-                label.textColor = [task taskColor];
+                cell.backgroundColor = [task lightTaskColor];
             }];
         }
 
-        [self configureSwiping:cell withTask:task];
         if (animate) {
             if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
                 self.checkIconFactory.colors = @[[UIColor whiteColor]];
@@ -254,48 +224,6 @@
 
             }
         }
-    }
-}
-
-- (void)configureSwiping:(HRPGSwipeTableViewCell *)cell withTask:(Task *)task {
-    MCSwipeTableViewCellState state;
-    if (self.swipeDirection) {
-        state = MCSwipeTableViewCellState1;
-    } else {
-        state = MCSwipeTableViewCellState3;
-    }
-    if ([task.completed boolValue]) {
-        UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconSquareO]];
-        UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
-        [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeExit state:state completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-            [self addActivityCounter];
-            task.completed = [NSNumber numberWithBool:NO];
-            if (self.openedIndexPath) {
-                [self collapseOpenedIndexPath];
-            }
-            [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(NSArray *valuesArray){
-                [self removeActivityCounter];
-                [self displayTaskResponse:valuesArray];
-            }                      onError:^(){
-                [self removeActivityCounter];
-            }];
-        }];
-    } else {
-        UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconCheckSquareO]];
-        UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
-        [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeExit state:state completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-            [self addActivityCounter];
-            task.completed = [NSNumber numberWithBool:YES];
-            if (self.openedIndexPath) {
-                [self collapseOpenedIndexPath];
-            }
-            [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray){
-                [self removeActivityCounter];
-                [self displayTaskResponse:valuesArray];
-            }                      onError:^(){
-                [self removeActivityCounter];
-            }];
-        }];
     }
 }
 

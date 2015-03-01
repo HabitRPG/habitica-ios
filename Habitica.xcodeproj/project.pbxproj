@@ -97,6 +97,7 @@
 		D9D96F08194E25FF00796FE7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D96F07194E25FF00796FE7 /* Crashlytics.framework */; };
 		D9E0869118DF800F00BAF2EF /* HRPGTavernViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */; };
 		D9E08E5E1A98A71000D95B74 /* HRPGIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E08E5D1A98A71000D95B74 /* HRPGIntroView.m */; };
+		D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E918561AA3A70D005E378B /* HRPGCheckBoxView.m */; };
 		D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */; };
 		D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */; };
 		D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9218CB4A9400BB2094 /* UIKit.framework */; };
@@ -293,6 +294,8 @@
 		D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTavernViewController.m; sourceTree = "<group>"; };
 		D9E08E5C1A98A71000D95B74 /* HRPGIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGIntroView.h; sourceTree = "<group>"; };
 		D9E08E5D1A98A71000D95B74 /* HRPGIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGIntroView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D9E918551AA3A70D005E378B /* HRPGCheckBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCheckBoxView.h; sourceTree = "<group>"; };
+		D9E918561AA3A70D005E378B /* HRPGCheckBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCheckBoxView.m; sourceTree = "<group>"; };
 		D9EB4E8B18CB4A9400BB2094 /* Habitica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habitica.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -490,6 +493,8 @@
 				D99C46D719C7687A00834EC2 /* HRPGActivityIndicator.m */,
 				D9E08E5C1A98A71000D95B74 /* HRPGIntroView.h */,
 				D9E08E5D1A98A71000D95B74 /* HRPGIntroView.m */,
+				D9E918551AA3A70D005E378B /* HRPGCheckBoxView.h */,
+				D9E918561AA3A70D005E378B /* HRPGCheckBoxView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -883,6 +888,7 @@
 				D97CCDB819A51EED00DA128A /* NSMutableString_GHFMarkdown.m in Sources */,
 				D9803735198E657E004C8871 /* HRPGTaskResponseView.m in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
+				D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */,
 				D9D21731198D509100023367 /* HRPGDeathView.m in Sources */,
 				D9E08E5E1A98A71000D95B74 /* HRPGIntroView.m in Sources */,
 				D947960A1972C248002CB34C /* HRPGUserProfileViewController.m in Sources */,
