@@ -133,4 +133,23 @@
     }
 }
 
+- (UIColor*) lightTaskColor {
+    NSInteger intValue = [self.value integerValue];
+    if (intValue < -20) {
+        return [UIColor colorWithRed:0.859 green:0.663 blue:0.620 alpha:1.000];
+    } else if (intValue < -10) {
+        return [UIColor colorWithRed:0.941 green:0.753 blue:0.753 alpha:1.000];
+    } else if (intValue < -1) {
+        return [UIColor colorWithRed:0.976 green:0.878 blue:0.749 alpha:1.000];
+    } else if (intValue < 1) {
+        return [UIColor colorWithRed:0.996 green:0.941 blue:0.757 alpha:1.000];
+    } else if (intValue < 5) {
+        return [UIColor colorWithRed:0.827 green:0.902 blue:0.776 alpha:1.000];
+    } else if (intValue < 10) {
+        return [UIColor colorWithRed:0.780 green:0.851 blue:0.867 alpha:1.000];
+    } else {
+        return [UIColor colorWithRed:0.749 green:0.816 blue:0.980 alpha:1.000];
+    }
+}
+
 @end

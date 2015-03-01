@@ -70,16 +70,6 @@ User *user;
         [self showDatePicker];
     }
     
-    section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Usability", nil)];
-    [formDescriptor addFormSection:section];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"swipeDirection" rowType:XLFormRowDescriptorTypeSelectorPush title:NSLocalizedString(@"Swipe Direction", nil)];
-    row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:NSLocalizedString(@"Right to Left", nil)],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:NSLocalizedString(@"Left to Right", nil)]
-                            ];
-    row.value = row.selectorOptions[[defaults integerForKey:@"swipeDirection"]];
-    [section addFormRow:row];
-    
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Maintenance", nil)];
     [formDescriptor addFormSection:section];
     

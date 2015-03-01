@@ -30,11 +30,13 @@
     self.readableName = NSLocalizedString(@"Habit", nil);
     self.typeName = @"habit";
     [super viewDidLoad];
-    self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-    self.iconFactory.square = YES;
+    self.iconFactory = [NIKFontAwesomeIconFactory buttonIconFactory];
+    self.iconFactory.padded = NO;
+    self.iconFactory.size = 12;
+    self.iconFactory.edgeInsets = UIEdgeInsetsMake(0, 5, 0, 5);
     self.iconFactory.colors = @[[UIColor whiteColor]];
     self.iconFactory.strokeColor = [UIColor whiteColor];
-    self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
+    self.iconFactory.renderingMode = UIImageRenderingModeAutomatic;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -66,88 +68,41 @@
 
 - (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UIColor *color = [task taskColor];
+    UIColor *color = [task lightTaskColor];
     UILabel *label = (UILabel *) [cell viewWithTag:1];
     label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
-    label.textColor = color;
+    cell.backgroundColor = color;
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    
-    if (self.swipeDirection) {
-        if ([task.down boolValue]) {
-            [cell viewWithTag:3].backgroundColor = [UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000];
-            [cell viewWithTag:3].hidden = NO;
-        } else {
-            [cell viewWithTag:3].hidden = YES;
-        }
-        
-        if ([task.up boolValue]) {
-            [cell viewWithTag:2].backgroundColor = [UIColor colorWithRed:0.292 green:0.642 blue:0.013 alpha:1.000];
-            [cell viewWithTag:2].hidden = NO;
-        } else {
-            [cell viewWithTag:2].hidden = YES;
-        }
-    } else {
-        if ([task.up boolValue]) {
-            [cell viewWithTag:3].backgroundColor = [UIColor colorWithRed:0.292 green:0.642 blue:0.013 alpha:1.000];
-            [cell viewWithTag:3].hidden = NO;
-        } else {
-            [cell viewWithTag:3].hidden = YES;
-        }
-        
-        if ([task.down boolValue]) {
-            [cell viewWithTag:2].backgroundColor = [UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000];
-            [cell viewWithTag:2].hidden = NO;
-        } else {
-            [cell viewWithTag:2].hidden = YES;
-        }
-    }
-    
-    
-    [self configureSwiping:cell withTask:task];
-}
-
-- (void)configureSwiping:(MCSwipeTableViewCell *)cell withTask:(Task *)task {
-    if (self.tableView.editing) {
-        cell.view3 = nil;
-    }
+    UISegmentedControl *upDownControl = (UISegmentedControl *)[cell viewWithTag:2];
+    [upDownControl addTarget:self
+                             action:@selector(segmentedControlUpdated:)
+                   forControlEvents:UIControlEventValueChanged];
+    upDownControl.tintColor = [task taskColor];
+    [upDownControl removeAllSegments];
     if ([task.up boolValue]) {
-        MCSwipeTableViewCellState state;
-        if (self.swipeDirection) {
-            state = MCSwipeTableViewCellState1;
-        } else {
-            state = MCSwipeTableViewCellState3;
-        }
-        UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconPlus]];
-        UIColor *greenColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
-        [cell setSwipeGestureWithView:checkView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:state completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-            [self addActivityCounter];
-            [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray){
-                [self removeActivityCounter];
-                [self displayTaskResponse:valuesArray];
-            }                      onError:^(){
-                [self removeActivityCounter];
-            }];
-        }];
+        [upDownControl insertSegmentWithImage:[self.iconFactory createImageForIcon:NIKFontAwesomeIconPlus] atIndex:0 animated:NO];
     }
     if ([task.down boolValue]) {
-        MCSwipeTableViewCellState state;
-        if (self.swipeDirection) {
-            state = MCSwipeTableViewCellState3;
-        } else {
-            state = MCSwipeTableViewCellState1;
-        }
-        UIView *checkView = [self viewWithIcon:[self.iconFactory createImageForIcon:NIKFontAwesomeIconMinus]];
-        UIColor *redColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
-        [cell setSwipeGestureWithView:checkView color:redColor mode:MCSwipeTableViewCellModeSwitch state:state completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-            [self addActivityCounter];
-            [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(NSArray *valuesArray){
-                [self removeActivityCounter];
-                [self displayTaskResponse:valuesArray];
-            }                      onError:^(){
-                [self removeActivityCounter];
-            }];
-        }];
+        [upDownControl insertSegmentWithImage:[self.iconFactory createImageForIcon:NIKFontAwesomeIconMinus] atIndex:[upDownControl numberOfSegments] animated:NO];
     }
+}
+
+- (void)segmentedControlUpdated:(UISegmentedControl *)segmentedControl {
+    CGPoint senderOriginInTableView = [segmentedControl convertPoint:CGPointZero toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:senderOriginInTableView];
+    Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSString *upDown;
+    if (segmentedControl.selectedSegmentIndex == 0 && segmentedControl.numberOfSegments == 2) {
+        upDown = @"up";
+    } else {
+        upDown = @"down";
+    }
+    [self.sharedManager upDownTask:task direction:upDown onSuccess:^(NSArray *valuesArray){
+        [self removeActivityCounter];
+        [self displayTaskResponse:valuesArray];
+    }                      onError:^(){
+        [self removeActivityCounter];
+    }];
 }
 
 @end
