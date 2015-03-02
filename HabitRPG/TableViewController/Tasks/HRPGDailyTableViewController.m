@@ -182,6 +182,7 @@
             [checkBox setChecked:YES animated:YES];
             streakLabel.textColor = [UIColor darkGrayColor];
             checkBox.wasTouched = ^() {
+                [self addActivityCounter];
                 [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(NSArray *valuesArray) {
                     [self removeActivityCounter];
                 }onError:^() {
@@ -190,6 +191,7 @@
             };
         } else {
             checkBox.wasTouched = ^() {
+                [self addActivityCounter];
                 [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray) {
                     [self removeActivityCounter];
                 }onError:^() {

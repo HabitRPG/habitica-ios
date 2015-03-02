@@ -16,6 +16,7 @@
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 #import "NSString+Emoji.h"
 #import <NSDate+TimeAgo.h>
+#import "HRPGCheckBoxView.h"
 
 @interface HRPGToDoTableViewController ()
 @property NSString *readableName;
@@ -104,64 +105,66 @@
     return nil;
 }
 
-- (void)configureCell:(HRPGSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
+- (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     UILabel *checklistLabel = (UILabel *) [cell viewWithTag:2];
     UILabel *label = (UILabel *) [cell viewWithTag:1];
-    UIImageView *checkMarkView = (UIImageView *) [cell viewWithTag:3];
+    HRPGCheckBoxView *checkBox = (HRPGCheckBoxView *) [cell viewWithTag:3];
+    if (checkBox == nil) {
+        checkBox = [[HRPGCheckBoxView alloc] initWithFrame:CGRectMake(0, 0, 40, cell.frame.size.height)];
+        checkBox.tag = 3;
+        [cell.contentView addSubview:checkBox];
+    }
+    
     if (self.openedIndexPath && self.openedIndexPath.item < indexPath.item && indexPath.item <= (self.openedIndexPath.item + self.indexOffset)) {
-        //configure for checklist item
         Task *task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
         int currentOffset = (int) (indexPath.item - self.openedIndexPath.item - 1);
-        ChecklistItem *item = task.checklist[currentOffset];
+        
+        ChecklistItem *item;
+        if ([task.checklist count] > currentOffset) {
+            item = task.checklist[currentOffset];
+        }
         label.text = [item.text stringByReplacingEmojiCheatCodesWithUnicode];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         checklistLabel.hidden = YES;
         cell.backgroundColor = [UIColor lightGrayColor];
         if ([item.completed boolValue]) {
             self.checkIconFactory.colors = @[[UIColor whiteColor]];
-            checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
-            checkMarkView.hidden = NO;
-            [UIView animateWithDuration:0.4 animations:^() {
-                label.textColor = [UIColor darkTextColor];
-            }];
+            label.textColor = [UIColor darkTextColor];
+            checkBox.wasTouched = ^() {
+                item.completed = [NSNumber numberWithBool:NO];
+                [self addActivityCounter];
+                [self.sharedManager updateTask:task onSuccess:^() {
+                    [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                    [self removeActivityCounter];
+                }                      onError:^() {
+                    [self removeActivityCounter];
+                }];
+            };
+            [checkBox setChecked:YES animated:YES];
         } else {
-            checkMarkView.image = nil;
-            checkMarkView.hidden = YES;
-            [UIView animateWithDuration:0.4 animations:^() {
-                label.textColor = [UIColor whiteColor];
-            }];
+            label.textColor = [UIColor whiteColor];
+            checkBox.wasTouched = ^() {
+                item.completed = [NSNumber numberWithBool:YES];
+                [self addActivityCounter];
+                [self.sharedManager updateTask:task onSuccess:^() {
+                    [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                    [self removeActivityCounter];
+                }                      onError:^() {
+                    [self removeActivityCounter];
+                }];
+                
+            };
+            [checkBox setChecked:NO animated:YES];
         }
-
+        
     } else {
-        //configure for task
+        UILabel *streakLabel = (UILabel *) [cell viewWithTag:4];
         if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
             indexPath = [NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section];
         }
         Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
         label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-        if (task.duedate) {
-            UILabel *subLabel = (UILabel *) [cell viewWithTag:4];
-            subLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
-            if ([task.duedate compare:[NSDate date]] == NSOrderedAscending) {
-                subLabel.textColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
-                subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due %@", nil), [task.duedate timeAgo]];
-            } else {
-                [UIColor colorWithWhite:0.581 alpha:1.000];
-                NSCalendar *calendar = [NSCalendar currentCalendar];
-                NSDateComponents *differenceValue = [calendar components:NSDayCalendarUnit
-                                                                fromDate:[NSDate date] toDate:task.duedate options:0];
-                if ([differenceValue day] < 7) {
-                    if ([differenceValue day] == 1) {
-                        subLabel.text = NSLocalizedString(@"Due in 1 day", nil);
-                    } else {
-                        subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due in %d days", nil), [differenceValue day]];
-                    }
-                } else {
-                    subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due until %@", nil), [self.dateFormatter stringFromDate:task.duedate]];
-                }
-            }
-        }
         NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];
         if ([checklistCount integerValue] > 0) {
             int checkedCount = 0;
@@ -180,52 +183,50 @@
         } else {
             checklistLabel.hidden = YES;
         }
+        
         if ([task.completed boolValue]) {
-            self.checkIconFactory.colors = @[[UIColor grayColor]];
-            checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
-            checkMarkView.hidden = NO;
-            [UIView animateWithDuration:0.4 animations:^() {
-                label.textColor = [UIColor colorWithWhite:0.581 alpha:1.000];
-            }];
-        } else {
-            checkMarkView.image = nil;
-            checkMarkView.hidden = YES;
-            [UIView animateWithDuration:0.4 animations:^() {
-                cell.backgroundColor = [task lightTaskColor];
-            }];
-        }
-
-        if (animate) {
-            if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
-                self.checkIconFactory.colors = @[[UIColor whiteColor]];
-                checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
-                [UIView animateWithDuration:0.4 animations:^() {
-                    label.textColor = [UIColor whiteColor];
-                    cell.backgroundColor = [UIColor grayColor];
-                    cell.separatorInset = UIEdgeInsetsZero;
+            checkBox.boxColor = [UIColor lightGrayColor];
+            checkBox.checkColor = [UIColor darkGrayColor];
+            self.checkIconFactory.colors = @[[UIColor darkGrayColor]];
+            label.textColor = [UIColor lightGrayColor];
+            cell.backgroundColor = [UIColor whiteColor];
+            [checkBox setChecked:YES animated:YES];
+            streakLabel.textColor = [UIColor darkGrayColor];
+            checkBox.wasTouched = ^() {
+                [self addActivityCounter];
+                [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(NSArray *valuesArray) {
+                    [self removeActivityCounter];
+                }onError:^() {
+                    [self removeActivityCounter];
                 }];
-            } else {
-                self.checkIconFactory.colors = @[[UIColor grayColor]];
-                checkMarkView.image = [self.checkIconFactory createImageForIcon:NIKFontAwesomeIconCheck];
-                [UIView animateWithDuration:0.4 animations:^() {
-                    cell.backgroundColor = [UIColor whiteColor];
-                    cell.separatorInset = UIEdgeInsetsMake(0, 42, 0, 0);
-
-                }];
-            }
+            };
         } else {
-            if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
-                label.textColor = [UIColor whiteColor];
-                cell.backgroundColor = [UIColor grayColor];
-                cell.separatorInset = UIEdgeInsetsZero;
-            } else {
+            checkBox.wasTouched = ^() {
+                [self addActivityCounter];
+                [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray) {
+                    [self removeActivityCounter];
+                }onError:^() {
+                    [self removeActivityCounter];
+                }];
+            };
+            [checkBox setChecked:NO animated:YES];
+            if (![task dueToday]) {
+                checkBox.boxColor = [UIColor lightGrayColor];
+                checkBox.checkColor = [UIColor darkGrayColor];
+                label.textColor = [UIColor lightGrayColor];
                 cell.backgroundColor = [UIColor whiteColor];
-                cell.separatorInset = UIEdgeInsetsMake(0, 42, 0, 0);
-
+                streakLabel.textColor = [UIColor blackColor];
+            } else {
+                checkBox.boxColor = [task taskColor];
+                checkBox.checkColor = [UIColor darkGrayColor];
+                cell.backgroundColor = [task lightTaskColor];
+                label.textColor = [UIColor blackColor];
+                streakLabel.textColor = [UIColor blackColor];
             }
         }
     }
 }
+
 
 - (void)toggleCompletedTasks:(UITapGestureRecognizer*)tapRecognizer {
     self.displayCompleted = !self.displayCompleted;
