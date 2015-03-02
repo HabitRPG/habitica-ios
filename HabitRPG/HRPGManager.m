@@ -83,16 +83,22 @@ NSString *currentUser;
             return;
         }
         if (status == AFNetworkReachabilityStatusNotReachable) {
-            NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"No Network connection", nil),
-                                      kCRToastSubtitleTextKey : NSLocalizedString(@"You need a network connection to do that.", nil),
-                                      kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                                      kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                                      kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],
-                                      kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
-                                      };
-            [CRToastManager showNotificationWithOptions:options
-                                        completionBlock:^{
-                                        }];
+            NSString *title = NSLocalizedString(@"Connection Error", nil);
+            NSString *message = NSLocalizedString(@"There is no internet connection. You will not be able to perform any actions.", nil);
+            UIAlertController *alertController = [UIAlertController
+                                                  alertControllerWithTitle:title
+                                                  message:message
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *okAction = [UIAlertAction
+                                       actionWithTitle:NSLocalizedString(@"OK", nil)
+                                       style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                       }];
+            
+            [alertController addAction:okAction];
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
         }
     }];
 
