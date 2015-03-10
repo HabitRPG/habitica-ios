@@ -10,6 +10,7 @@
 #import "HRPGAppDelegate.h"
 #import "HRPGManager.h"
 #import "User.h"
+#import "Task.h"
 #import "NIKFontAwesomeIconFactory.h"
 #import "NIKFontAwesomeIconFactory+iOS.h"
 #import "PDKeychainBindings.h"
@@ -61,6 +62,8 @@
     [self.tabBar setTintColor:[UIColor colorWithRed:0.366 green:0.599 blue:0.014 alpha:1.000]];
 
     
+    [self updateDailyBadge];
+    
 #if DEBUG
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(showDebugMenu:)];
     [swipe setDirection:UISwipeGestureRecognizerDirectionUp];
@@ -68,6 +71,61 @@
     [swipe setNumberOfTouchesRequired:1];
     [[self view] addGestureRecognizer:swipe];
 #endif
+}
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSPredicate *predicate;
+    HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
+    if (tabBarController.selectedTags == nil || [tabBarController.selectedTags count] == 0) {
+            predicate = [NSPredicate predicateWithFormat:@"type=='daily' && completed==NO"];
+    } else {
+            predicate = [NSPredicate predicateWithFormat:@"type=='daily' && completed==NO && ANY tags IN[cd] %@", self.selectedTags];
+    }
+    [fetchRequest setPredicate:predicate];
+    
+    NSSortDescriptor *orderDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
+    NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:NO];
+    NSArray *sortDescriptors;
+    NSString *sectionKey;
+    sortDescriptors = @[orderDescriptor, dateDescriptor];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:sectionKey cacheName:nil];
+    aFetchedResultsController.delegate = self;
+    self.fetchedResultsController = aFetchedResultsController;
+    
+    NSError *error = nil;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return _fetchedResultsController;
+}
+
+- (HRPGManager *)sharedManager {
+    if (_sharedManager == nil) {
+        HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+        _sharedManager = appdelegate.sharedManager;
+    }
+    return _sharedManager;
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    if (_managedObjectContext == nil) {
+        _managedObjectContext = self.sharedManager.getManagedObjectContext;
+    }
+    return _managedObjectContext;
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
@@ -86,6 +144,26 @@
 }
 #endif
 
+- (void) updateDailyBadge {
+    UITabBarItem *dailyItem = self.tabBar.items[1];
+    NSInteger badgeCount = 0;
+    for (Task *task in self.fetchedResultsController.fetchedObjects) {
+        if ([task dueToday]) {
+            badgeCount++;
+        }
+    }
+    if (badgeCount > 0) {
+        dailyItem.badgeValue = [NSString stringWithFormat:@"%ld",(long)badgeCount];
+    } else {
+        dailyItem.badgeValue = nil;
+    }
+}
 
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+
+    [self updateDailyBadge];
+}
 
 @end
