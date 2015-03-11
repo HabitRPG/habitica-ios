@@ -92,7 +92,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:senderOriginInTableView];
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSString *upDown;
-    if (segmentedControl.selectedSegmentIndex == 0 && segmentedControl.numberOfSegments == 2) {
+    if (segmentedControl.selectedSegmentIndex == 0 && [task.up boolValue]) {
         upDown = @"up";
     } else {
         upDown = @"down";
