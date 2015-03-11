@@ -15,8 +15,6 @@
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue;
 
--(void) displayTaskResponse:(NSArray*) valuesArray;
-
 -(void) collapseOpenedIndexPath;
 
 - (UIView *)viewWithIcon:(UIImage *)image;

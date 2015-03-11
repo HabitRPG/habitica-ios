@@ -100,7 +100,6 @@
     [self addActivityCounter];
     [self.sharedManager upDownTask:task direction:upDown onSuccess:^(NSArray *valuesArray){
         [self removeActivityCounter];
-        [self displayTaskResponse:valuesArray];
     }                      onError:^(){
         [self removeActivityCounter];
     }];

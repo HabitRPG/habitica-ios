@@ -12,10 +12,8 @@
 #import "MCSwipeTableViewCell.h"
 #import "HRPGSwipeTableViewCell.h"
 #import "Tag.h"
-#import "HRPGHeaderTagView.h"
 #import "HRPGTagViewController.h"
 #import "HRPGTabBarController.h"
-#import "HRPGTaskResponseView.h"
 #import "HRPGNavigationController.h"
 #import "HRPGImageOverlayManager.h"
 
@@ -24,8 +22,6 @@
 @property NSString *typeName;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
-@property HRPGHeaderTagView *headerView;
-@property HRPGTaskResponseView *taskResponseView;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
 
@@ -43,23 +39,7 @@ float displayWidth;
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
     
-    
-    self.headerView = [[HRPGHeaderTagView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 42)];
-    self.headerView.currentNavigationController = self.navigationController;
-    HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
-    self.headerView.selectedTags = tabBarController.selectedTags;
-    self.tableView.tableHeaderView = self.headerView;
-    //self.tableView.contentOffset = CGPointMake(0, self.headerView.frame.size.height);
-    
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectTags:) name:@"tagsSelected"  object:nil];
-    
-    self.taskResponseView = [[HRPGTaskResponseView alloc] init];
-    self.taskResponseView.health = [self.sharedManager getUser].health;
-    self.taskResponseView.healthMax = [self.sharedManager getUser].maxHealth;
-    self.taskResponseView.experience = [self.sharedManager getUser].experience;
-    self.taskResponseView.experienceMax = [self.sharedManager getUser].nextLevel;
-    self.taskResponseView.gold = [self.sharedManager getUser].gold;
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     displayWidth = screenRect.size.width;
@@ -96,26 +76,12 @@ float displayWidth;
 }
 
 - (void) didSelectTags:(NSNotification *)notification {
-    HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
-    self.headerView.selectedTags = tabBarController.selectedTags;
     [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
     [self.tableView reloadData];
 }
 
-- (void) displayTaskResponse:(NSArray*) valuesArray {
-    if (!self.taskResponseView.isVisible) {
-        [self.view.superview addSubview:self.taskResponseView];
-        [self.taskResponseView show];
-    }
-    
-    [self.taskResponseView updateWithValues:valuesArray];
-
-    if (self.activityCounter == 0) {
-        [self.taskResponseView shouldDismissWithDelay:3.0f];
-    }
-}
 
 #pragma mark - Table view data source
 

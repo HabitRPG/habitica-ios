@@ -49,7 +49,6 @@
 		D97CCDB819A51EED00DA128A /* NSMutableString_GHFMarkdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDB219A51EED00DA128A /* NSMutableString_GHFMarkdown.m */; };
 		D97CCDB919A51EED00DA128A /* NSString_GHFMarkdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDB419A51EED00DA128A /* NSString_GHFMarkdown.m */; };
 		D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */; };
-		D9803735198E657E004C8871 /* HRPGTaskResponseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9803734198E657E004C8871 /* HRPGTaskResponseView.m */; };
 		D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */; };
 		D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */ = {isa = PBXBuildFile; fileRef = D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */; };
 		D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9884B4419168AF00078BC7C /* HRPGProgressView.m */; };
@@ -202,8 +201,6 @@
 		D97CCDB419A51EED00DA128A /* NSString_GHFMarkdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_GHFMarkdown.m; sourceTree = "<group>"; };
 		D97CCDBA19A7AFFA00DA128A /* HRPGArrayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGArrayViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGArrayViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D9803733198E657E004C8871 /* HRPGTaskResponseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTaskResponseView.h; sourceTree = "<group>"; };
-		D9803734198E657E004C8871 /* HRPGTaskResponseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTaskResponseView.m; sourceTree = "<group>"; };
 		D980373719956E46004C8871 /* HRPGEquipmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = HRPGEquipmentDetailViewController.h; path = Inventory/HRPGEquipmentDetailViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = HRPGEquipmentDetailViewController.m; path = Inventory/HRPGEquipmentDetailViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D987393A19687F3E002A2426 /* NSNumber+abbreviation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+abbreviation.h"; path = "HabitRPG/Utilities/NSNumber+abbreviation.h"; sourceTree = SOURCE_ROOT; };
@@ -487,8 +484,6 @@
 				D9884B4419168AF00078BC7C /* HRPGProgressView.m */,
 				D908B3811903515B00D32A75 /* HRPGSwipeTableViewCell.h */,
 				D908B3821903515B00D32A75 /* HRPGSwipeTableViewCell.m */,
-				D9803733198E657E004C8871 /* HRPGTaskResponseView.h */,
-				D9803734198E657E004C8871 /* HRPGTaskResponseView.m */,
 				D99C46D619C7687A00834EC2 /* HRPGActivityIndicator.h */,
 				D99C46D719C7687A00834EC2 /* HRPGActivityIndicator.m */,
 				D9E08E5C1A98A71000D95B74 /* HRPGIntroView.h */,
@@ -886,7 +881,6 @@
 				D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */,
 				D97CCDB519A51EED00DA128A /* GHFMarkdown_Private.m in Sources */,
 				D97CCDB819A51EED00DA128A /* NSMutableString_GHFMarkdown.m in Sources */,
-				D9803735198E657E004C8871 /* HRPGTaskResponseView.m in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
 				D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */,
 				D9D21731198D509100023367 /* HRPGDeathView.m in Sources */,

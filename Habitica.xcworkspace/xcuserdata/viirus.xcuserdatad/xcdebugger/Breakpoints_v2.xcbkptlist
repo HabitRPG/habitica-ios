@@ -187,5 +187,51 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HabitRPG/TableViewController/Tasks/HRPGHabitTableViewController.m"
+            timestampString = "447802159.077261"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-segmentedControlUpdated:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[HRPGHabitTableViewController segmentedControlUpdated:]"
+                  moduleName = "Habitica"
+                  urlString = "file:///Users/viirus/Code/RabbitRPG/HabitRPG/TableViewController/Tasks/HRPGHabitTableViewController.m"
+                  timestampString = "447802159.162228"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "519">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__56-[HRPGHabitTableViewController segmentedControlUpdated:]_block_invoke"
+                  moduleName = "Habitica"
+                  urlString = "file:///Users/viirus/Code/RabbitRPG/HabitRPG/TableViewController/Tasks/HRPGHabitTableViewController.m"
+                  timestampString = "447802159.164745"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "50">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

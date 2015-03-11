@@ -1136,7 +1136,10 @@ NSString *currentUser;
         user.health = taskResponse.health;
         user.magic = taskResponse.magic;
 
+        NSNumber *goldDiff = [NSNumber numberWithFloat:[taskResponse.gold floatValue] - [user.gold floatValue]];
         user.gold = taskResponse.gold;
+        
+        [self displayTaskSuccessNotification:healthDiff withExperienceDiff:expDiff withGoldDiff:goldDiff];
         if ([task.type isEqual:@"daily"] || [task.type isEqual:@"todo"]) {
             task.completed = [NSNumber numberWithBool:([withDirection isEqual:@"up"])];
         }
@@ -1868,7 +1871,20 @@ NSString *currentUser;
     } else {
         description = [NSString stringWithFormat:@"You found a %@ %@!", name, type];
     }
-    [HRPGImageOverlayManager displayImage:[NSString stringWithFormat:@"Pet_%@_%@.png", type, name] withText:description withNotes:note];
+    [self getImage:[NSString stringWithFormat:@"Pet_%@_%@.png", type, name] withFormat:@"png" onSuccess:^(UIImage *image) {
+        UIColor *notificationColor = [UIColor colorWithRed:0.107 green:0.352 blue:0.597 alpha:1.000];
+        NSDictionary *options = @{kCRToastTextKey : description,
+                                  kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                                  kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                                  kCRToastBackgroundColorKey : notificationColor,
+                                  kCRToastImageKey : image
+                                  };
+        [CRToastManager showNotificationWithOptions:options
+                                    completionBlock:^{
+                                    }];
+    }onError:^() {
+        
+    }];
 }
 
 - (User *)getUser {
