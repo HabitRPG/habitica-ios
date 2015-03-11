@@ -22,9 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (self.selectedTags == nil) {
-        self.selectedTags = [[NSMutableArray alloc] init];
-    }
     
     self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     self.iconFactory.square = YES;
@@ -35,11 +32,16 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:NO];
+    if (self.selectedTags == nil) {
+        self.selectedTags = [[NSMutableArray alloc] init];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     [self.navigationController setToolbarHidden:YES animated:NO];
 }
 

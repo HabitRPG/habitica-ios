@@ -87,9 +87,9 @@
                         <sections/>
                     </tableView>
                     <navigationItem key="navigationItem" title="Habits" id="Ueo-OS-iQj">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="r2M-pt-ZEv">
+                        <barButtonItem key="leftBarButtonItem" title="Tags" id="r2M-pt-ZEv">
                             <connections>
-                                <action selector="editButtonSelected:" destination="9wT-fg-nmz" id="Ajd-j3-Wc6"/>
+                                <segue destination="6vN-Em-JCA" kind="modal" identifier="TagSegue" id="njg-A8-lDq"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eoD-0q-22r">
@@ -199,9 +199,9 @@
                         <sections/>
                     </tableView>
                     <navigationItem key="navigationItem" title="Dailies" id="zec-6L-pJk">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="lJN-5G-qrz">
+                        <barButtonItem key="leftBarButtonItem" title="Tags" id="lJN-5G-qrz">
                             <connections>
-                                <action selector="editButtonSelected:" destination="YnE-7V-tix" id="xab-zC-2UV"/>
+                                <segue destination="6vN-Em-JCA" kind="modal" identifier="TagSegue" id="04Z-5H-zfF"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="QMS-gq-G3V">
@@ -371,9 +371,10 @@
                         <sections/>
                     </tableView>
                     <navigationItem key="navigationItem" title="To-Dos" id="Tis-dF-qId">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="7QR-Cq-K2a">
+                        <barButtonItem key="leftBarButtonItem" title="Tags" id="7QR-Cq-K2a">
                             <connections>
                                 <action selector="editButtonSelected:" destination="sPQ-za-Ji6" id="cc5-TO-pi3"/>
+                                <segue destination="6vN-Em-JCA" kind="modal" identifier="TagSegue" id="iSa-66-Wjc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="txM-DJ-1EC">
@@ -3493,11 +3494,12 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="HFM-OL-cM8"/>
         <segue reference="DAI-nh-Ljl"/>
-        <segue reference="QZs-YK-kGB"/>
         <segue reference="8EB-JX-S8a"/>
+        <segue reference="QZs-YK-kGB"/>
         <segue reference="IDZ-rz-bLv"/>
+        <segue reference="HFM-OL-cM8"/>
+        <segue reference="iSa-66-Wjc"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.3490196168422699" green="0.68627452850341797" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
 </document>

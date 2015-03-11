@@ -280,6 +280,15 @@ float displayWidth;
         HRPGTagViewController *tagViewController = (HRPGTagViewController*)segue.sourceViewController;
         HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
         tabBarController.selectedTags = tagViewController.selectedTags;
+        NSUInteger tagCount = tabBarController.selectedTags.count;
+        if (tagCount == 0) {
+            self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Tags", nil);
+        } else if (tagCount == 1) {
+            self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"1 Tag", nil);
+        } else {
+            NSString *localizedString = NSLocalizedString(@"%d Tags", nil);
+            self.navigationItem.leftBarButtonItem.title = [NSString stringWithFormat:localizedString, tagCount] ;
+        }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"tagsSelected" object:nil];
     }
 }
@@ -423,6 +432,12 @@ float displayWidth;
             formController.task = editedTask;
             editedTask = nil;
         }
+    } else if ([segue.identifier isEqualToString:@"TagSegue"]) {
+        HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
+        HRPGNavigationController *navigationController = (HRPGNavigationController *) segue.destinationViewController;
+        navigationController.sourceViewController = self;
+        HRPGTagViewController *tagController = (HRPGTagViewController *) navigationController.topViewController;
+        tagController.selectedTags = [tabBarController.selectedTags mutableCopy];
     }
 }
 
