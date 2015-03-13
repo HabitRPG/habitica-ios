@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Habitica.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D94461821AB34F5C0015215E"
+               BuildableName = "HabiticaTests.xctest"
+               BlueprintName = "HabiticaTests"
+               ReferencedContainer = "container:Habitica.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -28,6 +42,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D94461821AB34F5C0015215E"
+               BuildableName = "HabiticaTests.xctest"
+               BlueprintName = "HabiticaTests"
+               ReferencedContainer = "container:Habitica.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

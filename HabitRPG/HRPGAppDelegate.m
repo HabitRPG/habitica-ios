@@ -94,7 +94,7 @@
 - (HRPGManager *)sharedManager {
     if (_sharedManager == nil) {
         _sharedManager = [[HRPGManager alloc] init];
-        [_sharedManager loadObjectManager];
+        [_sharedManager loadObjectManager:nil];
     }
     return _sharedManager;
 }

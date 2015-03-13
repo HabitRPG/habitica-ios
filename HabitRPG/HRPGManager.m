@@ -47,26 +47,32 @@ NSString *currentUser;
     }];
 }
 
-- (void)loadObjectManager {
+- (void)loadObjectManager:(RKManagedObjectStore*)existingManagedObjectStore {
     NSError *error = nil;
     NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"HabitRPG" ofType:@"momd"]];
     // NOTE: Due to an iOS 5 bug, the managed object model returned is immutable.
-    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
-    managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+    if (!existingManagedObjectStore) {
+        NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
+        managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+        
+        // Initialize the Core Data stack
+        [managedObjectStore createPersistentStoreCoordinator];
+        
+        NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"HabitRPG.sqlite"];
+        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                                 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+        NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:storePath fromSeedDatabaseAtPath:nil withConfiguration:nil options:options error:&error];
+        
+        NSAssert(persistentStore, @"Failed to add persistent store with error: %@", error);
+        
+        
+        // Create the managed object contexts
+        [managedObjectStore createManagedObjectContexts];
+    } else {
+        managedObjectStore = existingManagedObjectStore;
+    }
 
-    // Initialize the Core Data stack
-    [managedObjectStore createPersistentStoreCoordinator];
-
-    NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"HabitRPG.sqlite"];
-    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-            [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-            [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-    NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:storePath fromSeedDatabaseAtPath:nil withConfiguration:nil options:options error:&error];
-
-    NSAssert(persistentStore, @"Failed to add persistent store with error: %@", error);
-
-    // Create the managed object contexts
-    [managedObjectStore createManagedObjectContexts];
 
     // Configure a managed object cache to ensure we do not create duplicate objects
     managedObjectStore.managedObjectCache = [[RKInMemoryManagedObjectCache alloc] initWithManagedObjectContext:managedObjectStore.persistentStoreManagedObjectContext];
@@ -989,10 +995,11 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/user" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        User *fetchedUser = [mappingResult dictionary][[NSNull null]];
         if (![currentUser isEqualToString:user.id]) {
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
             [fetchRequest setReturnsObjectsAsFaults:NO];
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", currentUser];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", fetchedUser.id];
             [fetchRequest setPredicate:predicate];
             NSError *error;
             NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];

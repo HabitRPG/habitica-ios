@@ -17,7 +17,7 @@
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
-- (void)loadObjectManager;
+- (void)loadObjectManager:(RKManagedObjectStore*)existingManagedObjectStore;
 
 - (void)fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock;
 

@@ -20,6 +20,8 @@
 		D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE318CB83EF0006C242 /* HRPGDailyTableViewController.m */; };
 		D92CDAE718CB84000006C242 /* HRPGToDoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */; };
 		D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */; };
+		D94461881AB34F5C0015215E /* HabiticaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D94461871AB34F5C0015215E /* HabiticaTests.m */; };
+		D94461911AB355940015215E /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
 		D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */; };
 		D947960A1972C248002CB34C /* HRPGUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94796091972C248002CB34C /* HRPGUserProfileViewController.m */; };
 		D94AADB0192973CD00546C8E /* HabitRPG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */; };
@@ -31,6 +33,8 @@
 		D958E2B01915D41400186A08 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D958E2AF1915D41400186A08 /* Security.framework */; };
 		D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D915F8641915BF0D0037D04D /* SystemConfiguration.framework */; };
 		D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D96038361930F90E0025EAEC /* HRPGMessageViewController.m */; };
+		D9660D751AB23F150084CE37 /* HRPGTopHeaderNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9660D741AB23F150084CE37 /* HRPGTopHeaderNavigationController.m */; };
+		D9660D781AB248030084CE37 /* HRPGUserTopHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */; };
 		D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D966557318FB129F0014C09D /* HRPGSettingsViewController.m */; };
 		D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */; };
 		D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */; };
@@ -104,21 +108,16 @@
 		D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */; };
 		D9EB4EA218CB4A9400BB2094 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EA018CB4A9400BB2094 /* Main_iPhone.storyboard */; };
 		D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */; };
-		D9EB4EB418CB4A9400BB2094 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4EB318CB4A9400BB2094 /* XCTest.framework */; };
-		D9EB4EB518CB4A9400BB2094 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */; };
-		D9EB4EB618CB4A9400BB2094 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E9218CB4A9400BB2094 /* UIKit.framework */; };
-		D9EB4EBE18CB4A9400BB2094 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EBC18CB4A9400BB2094 /* InfoPlist.strings */; };
-		D9EB4EC018CB4A9400BB2094 /* HabitRPGTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4EBF18CB4A9400BB2094 /* HabitRPGTests.m */; };
 		F076F3C3B57B4367B7624D1F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC82AC0621234004BC92DB72 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D9EB4EB718CB4A9400BB2094 /* PBXContainerItemProxy */ = {
+		D94461891AB34F5C0015215E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D9EB4E8318CB4A9400BB2094 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D9EB4E8A18CB4A9400BB2094;
-			remoteInfo = HabitRPG;
+			remoteInfo = Habitica;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -149,6 +148,10 @@
 		D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGToDoTableViewController.m; sourceTree = "<group>"; };
 		D92CDAE818CB8C130006C242 /* HRPGFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGFormViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGFormViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D94461831AB34F5C0015215E /* HabiticaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabiticaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D94461861AB34F5C0015215E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D94461871AB34F5C0015215E /* HabiticaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabiticaTests.m; sourceTree = "<group>"; };
+		D94461901AB355940015215E /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = user.json; path = HabiticaTests/Fixtures/user.json; sourceTree = SOURCE_ROOT; };
 		D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGImageOverlayView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGImageOverlayView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D94796081972C248002CB34C /* HRPGUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGUserProfileViewController.h; sourceTree = "<group>"; };
@@ -163,6 +166,10 @@
 		D958E2AF1915D41400186A08 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D96038351930F90E0025EAEC /* HRPGMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGMessageViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D96038361930F90E0025EAEC /* HRPGMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGMessageViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D9660D731AB23F150084CE37 /* HRPGTopHeaderNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTopHeaderNavigationController.h; sourceTree = "<group>"; };
+		D9660D741AB23F150084CE37 /* HRPGTopHeaderNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTopHeaderNavigationController.m; sourceTree = "<group>"; };
+		D9660D761AB248030084CE37 /* HRPGUserTopHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGUserTopHeader.h; sourceTree = "<group>"; };
+		D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGUserTopHeader.m; sourceTree = "<group>"; };
 		D966557218FB129F0014C09D /* HRPGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSettingsViewController.h; sourceTree = "<group>"; };
 		D966557318FB129F0014C09D /* HRPGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSettingsViewController.m; sourceTree = "<group>"; };
 		D967755519F1379800A21F45 /* HabitRPG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitRPG.xcdatamodel; sourceTree = "<group>"; };
@@ -302,15 +309,18 @@
 		D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9EB4EA118CB4A9400BB2094 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D9EB4EB218CB4A9400BB2094 /* HabiticaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabiticaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EB4EB318CB4A9400BB2094 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		D9EB4EBB18CB4A9400BB2094 /* HabiticaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HabiticaTests-Info.plist"; sourceTree = "<group>"; };
-		D9EB4EBD18CB4A9400BB2094 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D9EB4EBF18CB4A9400BB2094 /* HabitRPGTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabitRPGTests.m; sourceTree = "<group>"; };
 		EC82AC0621234004BC92DB72 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D94461801AB34F5C0015215E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9EB4E8818CB4A9400BB2094 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -324,16 +334,6 @@
 				D9D96F08194E25FF00796FE7 /* Crashlytics.framework in Frameworks */,
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
 				F076F3C3B57B4367B7624D1F /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D9EB4EAF18CB4A9400BB2094 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D9EB4EB418CB4A9400BB2094 /* XCTest.framework in Frameworks */,
-				D9EB4EB618CB4A9400BB2094 /* UIKit.framework in Frameworks */,
-				D9EB4EB518CB4A9400BB2094 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +384,24 @@
 				D9E365511930D59D00C056F1 /* Tasks */,
 			);
 			path = TableViewController;
+			sourceTree = "<group>";
+		};
+		D94461841AB34F5C0015215E /* HabiticaTests */ = {
+			isa = PBXGroup;
+			children = (
+				D9B967CB1AB33BD0001D84F7 /* Fixtures */,
+				D94461871AB34F5C0015215E /* HabiticaTests.m */,
+				D94461851AB34F5C0015215E /* Supporting Files */,
+			);
+			path = HabiticaTests;
+			sourceTree = "<group>";
+		};
+		D94461851AB34F5C0015215E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D94461861AB34F5C0015215E /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		D97CCDAA19A51D7A00DA128A /* Markdown */ = {
@@ -460,6 +478,15 @@
 			path = /Users/viirus/Code/RabbitRPG/HabitRPG/HRPGModels;
 			sourceTree = "<absolute>";
 		};
+		D9B967CB1AB33BD0001D84F7 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				D94461901AB355940015215E /* user.json */,
+			);
+			name = Fixtures;
+			path = ../HabitRPGTests;
+			sourceTree = "<group>";
+		};
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -485,6 +512,8 @@
 				D9E08E5D1A98A71000D95B74 /* HRPGIntroView.m */,
 				D9E918551AA3A70D005E378B /* HRPGCheckBoxView.h */,
 				D9E918561AA3A70D005E378B /* HRPGCheckBoxView.m */,
+				D9660D761AB248030084CE37 /* HRPGUserTopHeader.h */,
+				D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -609,7 +638,7 @@
 			isa = PBXGroup;
 			children = (
 				D9EB4E9418CB4A9400BB2094 /* Habitica */,
-				D9EB4EB918CB4A9400BB2094 /* HabitRPGTests */,
+				D94461841AB34F5C0015215E /* HabiticaTests */,
 				D9EB4E8D18CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8C18CB4A9400BB2094 /* Products */,
 				C8F6A6231C725855311FDF40 /* Pods */,
@@ -620,7 +649,7 @@
 			isa = PBXGroup;
 			children = (
 				D9EB4E8B18CB4A9400BB2094 /* Habitica.app */,
-				D9EB4EB218CB4A9400BB2094 /* HabiticaTests.xctest */,
+				D94461831AB34F5C0015215E /* HabiticaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -664,6 +693,8 @@
 				D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */,
 				D9722B7E19BD041E009D8AD3 /* HRPGNavigationController.h */,
 				D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */,
+				D9660D731AB23F150084CE37 /* HRPGTopHeaderNavigationController.h */,
+				D9660D741AB23F150084CE37 /* HRPGTopHeaderNavigationController.m */,
 				D9EB4EA018CB4A9400BB2094 /* Main_iPhone.storyboard */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */,
@@ -686,27 +717,27 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D9EB4EB918CB4A9400BB2094 /* HabitRPGTests */ = {
-			isa = PBXGroup;
-			children = (
-				D9EB4EBF18CB4A9400BB2094 /* HabitRPGTests.m */,
-				D9EB4EBA18CB4A9400BB2094 /* Supporting Files */,
-			);
-			path = HabitRPGTests;
-			sourceTree = "<group>";
-		};
-		D9EB4EBA18CB4A9400BB2094 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D9EB4EBB18CB4A9400BB2094 /* HabiticaTests-Info.plist */,
-				D9EB4EBC18CB4A9400BB2094 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D94461821AB34F5C0015215E /* HabiticaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D944618B1AB34F5C0015215E /* Build configuration list for PBXNativeTarget "HabiticaTests" */;
+			buildPhases = (
+				D944617F1AB34F5C0015215E /* Sources */,
+				D94461801AB34F5C0015215E /* Frameworks */,
+				D94461811AB34F5C0015215E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D944618A1AB34F5C0015215E /* PBXTargetDependency */,
+			);
+			name = HabiticaTests;
+			productName = HabiticaTests;
+			productReference = D94461831AB34F5C0015215E /* HabiticaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D9EB4E8A18CB4A9400BB2094 /* Habitica */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "Habitica" */;
@@ -727,24 +758,6 @@
 			productReference = D9EB4E8B18CB4A9400BB2094 /* Habitica.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D9EB4EB118CB4A9400BB2094 /* HabiticaTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D9EB4EC618CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "HabiticaTests" */;
-			buildPhases = (
-				D9EB4EAE18CB4A9400BB2094 /* Sources */,
-				D9EB4EAF18CB4A9400BB2094 /* Frameworks */,
-				D9EB4EB018CB4A9400BB2094 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D9EB4EB818CB4A9400BB2094 /* PBXTargetDependency */,
-			);
-			name = HabiticaTests;
-			productName = HabitRPGTests;
-			productReference = D9EB4EB218CB4A9400BB2094 /* HabiticaTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -755,11 +768,12 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Phillip Thelen";
 				TargetAttributes = {
+					D94461821AB34F5C0015215E = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = D9EB4E8A18CB4A9400BB2094;
+					};
 					D9EB4E8A18CB4A9400BB2094 = {
 						DevelopmentTeam = 532C46PK7T;
-					};
-					D9EB4EB118CB4A9400BB2094 = {
-						TestTargetID = D9EB4E8A18CB4A9400BB2094;
 					};
 				};
 			};
@@ -777,12 +791,20 @@
 			projectRoot = "";
 			targets = (
 				D9EB4E8A18CB4A9400BB2094 /* Habitica */,
-				D9EB4EB118CB4A9400BB2094 /* HabiticaTests */,
+				D94461821AB34F5C0015215E /* HabiticaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D94461811AB34F5C0015215E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D94461911AB355940015215E /* user.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9EB4E8918CB4A9400BB2094 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -797,14 +819,6 @@
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
 				D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */,
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D9EB4EB018CB4A9400BB2094 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D9EB4EBE18CB4A9400BB2094 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -857,6 +871,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D944617F1AB34F5C0015215E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D94461881AB34F5C0015215E /* HabiticaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9EB4E8718CB4A9400BB2094 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -894,6 +916,7 @@
 				D97C71ED18F32FEF0089FDC6 /* Gear.m in Sources */,
 				D99BC42F19D47B4F006DC132 /* HRPGImageOverlayManager.m in Sources */,
 				D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */,
+				D9660D751AB23F150084CE37 /* HRPGTopHeaderNavigationController.m in Sources */,
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
 				D92CDAE018CB83B90006C242 /* HRPGHabitTableViewController.m in Sources */,
 				D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */,
@@ -901,6 +924,7 @@
 				D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */,
 				D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */,
 				D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */,
+				D9660D781AB248030084CE37 /* HRPGUserTopHeader.m in Sources */,
 				D92CDADD18CB79E50006C242 /* HRPGTableViewController.m in Sources */,
 				D9B5C0E118D602FC00C8D1B7 /* Group.m in Sources */,
 				D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */,
@@ -943,21 +967,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D9EB4EAE18CB4A9400BB2094 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D9EB4EC018CB4A9400BB2094 /* HabitRPGTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D9EB4EB818CB4A9400BB2094 /* PBXTargetDependency */ = {
+		D944618A1AB34F5C0015215E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D9EB4E8A18CB4A9400BB2094 /* Habitica */;
-			targetProxy = D9EB4EB718CB4A9400BB2094 /* PBXContainerItemProxy */;
+			targetProxy = D94461891AB34F5C0015215E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -978,17 +994,55 @@
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
-		D9EB4EBC18CB4A9400BB2094 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D9EB4EBD18CB4A9400BB2094 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D944618C1AB34F5C0015215E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A12B817AF1713BF5BCB7F702 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = HabiticaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Habitica.app/Habitica";
+			};
+			name = Debug;
+		};
+		D944618D1AB34F5C0015215E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8C64F7451C560A6BB881198 /* Pods.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = HabiticaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Habitica.app/Habitica";
+			};
+			name = Release;
+		};
 		D9EB4EC118CB4A9400BB2094 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1110,7 +1164,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -1192,7 +1246,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -1225,49 +1279,17 @@
 			};
 			name = Release;
 		};
-		D9EB4EC718CB4A9400BB2094 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HabitRPG.app/HabitRPG";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HabitRPG/HabitRPG-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "HabitRPGTests/HabiticaTests-Info.plist";
-				PRODUCT_NAME = HabiticaTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		D9EB4EC818CB4A9400BB2094 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HabitRPG.app/HabitRPG";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HabitRPG/HabitRPG-Prefix.pch";
-				INFOPLIST_FILE = "HabitRPGTests/HabiticaTests-Info.plist";
-				PRODUCT_NAME = HabiticaTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D944618B1AB34F5C0015215E /* Build configuration list for PBXNativeTarget "HabiticaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D944618C1AB34F5C0015215E /* Debug */,
+				D944618D1AB34F5C0015215E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D9EB4E8618CB4A9400BB2094 /* Build configuration list for PBXProject "Habitica" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1282,15 +1304,6 @@
 			buildConfigurations = (
 				D9EB4EC418CB4A9400BB2094 /* Debug */,
 				D9EB4EC518CB4A9400BB2094 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D9EB4EC618CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "HabiticaTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D9EB4EC718CB4A9400BB2094 /* Debug */,
-				D9EB4EC818CB4A9400BB2094 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
