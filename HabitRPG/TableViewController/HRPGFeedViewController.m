@@ -9,6 +9,7 @@
 #import "HRPGFeedViewController.h"
 #import "HRPGAppDelegate.h"
 #import "Food.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRPGFeedViewController ()
 @end
@@ -171,7 +172,7 @@
     [detailTextLabel sizeToFit];
     NSString *url;
     url = [NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet_Food_%@.png", food.key];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:url]
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:url]
                    placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     cell.imageView.contentMode = UIViewContentModeCenter;
 }

@@ -16,6 +16,7 @@
 #import "User.h"
 #import "Pet.h"
 #import "HRPGImageOverlayManager.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRPGItemViewController ()
 @property Item *selectedItem;
@@ -336,7 +337,7 @@ float textWidth;
         }
         url = [NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet_%@_%@.png", type, item.key];
     }
-    [cell.imageView setImageWithURL:[NSURL URLWithString:url]
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:url]
                    placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     cell.imageView.contentMode = UIViewContentModeCenter;
     cell.imageView.alpha = 1;

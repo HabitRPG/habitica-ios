@@ -1006,6 +1006,8 @@ NSString *currentUser;
             if ([fetchedObjects count] > 0) {
                 user = fetchedObjects[0];
             }
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged" object:nil];
         }
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];

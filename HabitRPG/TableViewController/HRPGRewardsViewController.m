@@ -13,6 +13,7 @@
 #import "User.h"
 #import "Reward.h"
 #import <NSString+Emoji.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRPGRewardsViewController ()
 @property NSString *readableName;
@@ -25,11 +26,6 @@
 
 @implementation HRPGRewardsViewController
 
-UIImageView *goldImageView;
-UILabel *goldLabel;
-UIImageView *silverImageView;
-UILabel *silverLabel;
-UIView *moneyView;
 User *user;
 
 - (void)viewDidLoad {
@@ -48,50 +44,11 @@ User *user;
     
     user = [self.sharedManager getUser];
     self.sectionHeader = [[NSMutableArray alloc] init];
-    
-    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.font = [UIFont systemFontOfSize:18.0f];
-    titleLabel.text = NSLocalizedString(@"Rewards", nil);
-    NSNumber *gold = user.gold;
-    goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 22)];
-    goldImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [goldImageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]];
-    goldLabel = [[UILabel alloc] initWithFrame:CGRectMake(26, 2, 100, 20)];
-    goldLabel.font = [UIFont systemFontOfSize:13.0f];
-    goldLabel.text = [NSString stringWithFormat:@"%ld", (long) [gold integerValue]];
-    [goldLabel sizeToFit];
-
-
-    silverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(30 + goldLabel.frame.size.width, 0, 25, 22)];
-    silverImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [silverImageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_silver.png"]];
-    silverLabel = [[UILabel alloc] initWithFrame:CGRectMake(30 + goldLabel.frame.size.width + 26, 2, 100, 20)];
-    silverLabel.font = [UIFont systemFontOfSize:13.0f];
-    int silver = ([gold floatValue] - [gold integerValue]) * 100;
-    silverLabel.text = [NSString stringWithFormat:@"%d", silver];
-    [silverLabel sizeToFit];
-
-
-    int moneyWidth = goldImageView.frame.size.width + goldLabel.frame.size.width + silverImageView.frame.size.width + silverLabel.frame.size.width + 7;
-
-    moneyView = [[UIView alloc] initWithFrame:CGRectMake(50 - (moneyWidth / 2), 20, moneyWidth, 40)];
-    [moneyView addSubview:goldLabel];
-    [moneyView addSubview:goldImageView];
-    [moneyView addSubview:silverImageView];
-    [moneyView addSubview:silverLabel];
-
-    [titleView addSubview:titleLabel];
-    [titleView addSubview:moneyView];
-
-    self.navigationItem.titleView = titleView;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self updateRewardView:nil];
     [self.tableView reloadData];
 }
 
@@ -104,38 +61,6 @@ User *user;
         [self.refreshControl endRefreshing];
         [self.sharedManager displayNetworkError];
     }];
-}
-
-- (IBAction)updateRewardView:(NSString *)amount {
-    NSNumber *gold = user.gold;
-    goldLabel.text = [NSString stringWithFormat:@"%ld", (long) [gold integerValue]];
-    [goldLabel sizeToFit];
-
-    int silver = ([gold floatValue] - [gold integerValue]) * 100;
-    silverLabel.text = [NSString stringWithFormat:@"%d", silver];
-    silverLabel.frame = CGRectMake(30 + goldLabel.frame.size.width + 26, 2, 100, 16);
-
-    [silverLabel sizeToFit];
-    silverImageView.frame = CGRectMake(30 + goldLabel.frame.size.width, 0, 25, 22);
-
-    int moneyWidth = goldImageView.frame.size.width + goldLabel.frame.size.width + silverImageView.frame.size.width + silverLabel.frame.size.width + 7;
-
-    moneyView.frame = CGRectMake(50 - (moneyWidth / 2), 20, moneyWidth, 40);
-    if (amount) {
-        //animate the gold change
-        UILabel *updateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, goldLabel.frame.origin.y, goldLabel.frame.size.width + goldLabel.frame.origin.x, 16)];
-        updateLabel.font = [UIFont systemFontOfSize:13.0f];
-        updateLabel.textAlignment = NSTextAlignmentRight;
-        updateLabel.text = amount;
-        updateLabel.textColor = [UIColor redColor];
-        [moneyView addSubview:updateLabel];
-        [UIView animateWithDuration:0.3 animations:^() {
-            updateLabel.frame = CGRectMake(0, 25, goldLabel.frame.size.width + goldLabel.frame.origin.x, 16);
-            updateLabel.alpha = 0.0f;
-        }                completion:^(BOOL completition) {
-            [updateLabel removeFromSuperview];
-        }];
-    }
 }
 
 #pragma mark - Table view data source
@@ -225,14 +150,12 @@ User *user;
     [self addActivityCounter];
     if ([reward isKindOfClass:[Reward class]]) {
         [self.sharedManager getReward:reward.key onSuccess:^() {
-            [self updateRewardView:[reward.value stringValue]];
             [self removeActivityCounter];
         }                     onError:^() {
             [self removeActivityCounter];
         }];
     } else {
         [self.sharedManager buyObject:reward onSuccess:^() {
-            [self updateRewardView:[reward.value stringValue]];
             [self removeActivityCounter];
         }                     onError:^() {
             [self removeActivityCounter];
@@ -352,14 +275,14 @@ User *user;
     UILabel *priceLabel = (UILabel *) [cell viewWithTag:3];
     priceLabel.text = [NSString stringWithFormat:@"%ld", (long) [reward.value integerValue]];
     UIImageView *goldView = (UIImageView *) [cell viewWithTag:4];
-    [goldView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]
+    [goldView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]
              placeholderImage:nil];
     UIImageView *imageView = (UIImageView *) [cell viewWithTag:5];
     if ([reward.key isEqualToString:@"potion"]) {
-        [imageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_potion.png"]
+        [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_potion.png"]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     } else if (![reward.key isEqualToString:@"reward"]) {
-        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", reward.key]]
+        [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", reward.key]]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     }
     

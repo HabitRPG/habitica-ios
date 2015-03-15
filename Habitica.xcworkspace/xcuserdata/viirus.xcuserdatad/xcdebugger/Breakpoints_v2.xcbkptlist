@@ -352,11 +352,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG/HRPGTopHeaderNavigationController.m"
-            timestampString = "447891713.560339"
+            timestampString = "448125867.222518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-getContentOffset"
             landmarkType = "5">
          </BreakpointContent>
@@ -368,11 +368,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG/Views/HRPGUserTopHeader.m"
-            timestampString = "447893364.38305"
+            timestampString = "448127684.938209"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "-setData"
             landmarkType = "5">
          </BreakpointContent>
@@ -390,6 +390,22 @@
             startingLineNumber = "1007"
             endingLineNumber = "1007"
             landmarkName = "-fetchUser:onError:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HabitRPG/Views/HRPGUserTopHeader.m"
+            timestampString = "448127684.938209"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "-resetUser:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

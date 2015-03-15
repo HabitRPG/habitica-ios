@@ -89,6 +89,9 @@
 		D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E318D610E300C8D1B7 /* HRPGTaskResponse.m */; };
 		D9B5C0E718D62CC700C8D1B7 /* HRPGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */; };
 		D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */; };
+		D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */; };
+		D9BA33D11AB5E0C90028AFEC /* HRPGGoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33D01AB5E0C90028AFEC /* HRPGGoldView.m */; };
+		D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */; };
 		D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */; };
 		D9C0003419290D5E003D4E4C /* HRPGActivityIndicatorOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C0003319290D5E003D4E4C /* HRPGActivityIndicatorOverlayView.m */; };
 		D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7C1EF18E26BBB0083F4E4 /* Egg.m */; };
@@ -276,6 +279,12 @@
 		D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGLoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9B5C0E818D6320C00C8D1B7 /* HRPGLoginData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGLoginData.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGLoginData.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D9BA33CC1AB5D2CF0028AFEC /* HRPGProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGProgressBar.h; sourceTree = "<group>"; };
+		D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGProgressBar.m; sourceTree = "<group>"; };
+		D9BA33CF1AB5E0C90028AFEC /* HRPGGoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGoldView.h; sourceTree = "<group>"; };
+		D9BA33D01AB5E0C90028AFEC /* HRPGGoldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGoldView.m; sourceTree = "<group>"; };
+		D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLabeledProgressBar.h; sourceTree = "<group>"; };
+		D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLabeledProgressBar.m; sourceTree = "<group>"; };
 		D9C0002E1928F83E003D4E4C /* HRPGRoundProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGRoundProgressView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGRoundProgressView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9C0003219290D5E003D4E4C /* HRPGActivityIndicatorOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGActivityIndicatorOverlayView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -514,6 +523,12 @@
 				D9E918561AA3A70D005E378B /* HRPGCheckBoxView.m */,
 				D9660D761AB248030084CE37 /* HRPGUserTopHeader.h */,
 				D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */,
+				D9BA33CC1AB5D2CF0028AFEC /* HRPGProgressBar.h */,
+				D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */,
+				D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */,
+				D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */,
+				D9BA33CF1AB5E0C90028AFEC /* HRPGGoldView.h */,
+				D9BA33D01AB5E0C90028AFEC /* HRPGGoldView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -902,6 +917,7 @@
 				D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */,
 				D9D21731198D509100023367 /* HRPGDeathView.m in Sources */,
 				D9E08E5E1A98A71000D95B74 /* HRPGIntroView.m in Sources */,
+				D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */,
 				D947960A1972C248002CB34C /* HRPGUserProfileViewController.m in Sources */,
 				D9D96F03194B96FD00796FE7 /* HRPGMountMasterViewController.m in Sources */,
 				D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */,
@@ -954,6 +970,8 @@
 				D9ADD34E1943BBB6006202C1 /* Food.m in Sources */,
 				D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */,
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
+				D9BA33D11AB5E0C90028AFEC /* HRPGGoldView.m in Sources */,
+				D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */,
 				D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */,
 				D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */,
 				D97C71E718F32FED0089FDC6 /* Potion.m in Sources */,
@@ -1289,6 +1307,7 @@
 				D944618D1AB34F5C0015215E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D9EB4E8618CB4A9400BB2094 /* Build configuration list for PBXProject "Habitica" */ = {
 			isa = XCConfigurationList;

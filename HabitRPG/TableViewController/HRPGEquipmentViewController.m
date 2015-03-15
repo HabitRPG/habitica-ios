@@ -11,6 +11,7 @@
 #import "Gear.h"
 #import "User.h"
 #import "HRPGEquipmentDetailViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRPGEquipmentViewController ()
 @property NSString *readableName;
@@ -220,7 +221,7 @@ NSIndexPath *selectedIndex;
         detailLabel.text = searchedGear.text;
         detailLabel.textColor = [UIColor blackColor];
 
-        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", searchedGear.key]]
+        [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", searchedGear.key]]
                     placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     } else {
         detailLabel.text = NSLocalizedString(@"Nothing Equipped", nil);

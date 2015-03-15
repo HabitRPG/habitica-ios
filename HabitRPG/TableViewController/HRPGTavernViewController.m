@@ -21,6 +21,7 @@
 #import "HRPGUserProfileViewController.h"
 #import "NSMutableAttributedString_GHFMarkdown.h"
 #import <CoreText/CoreText.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRPGTavernViewController ()
 @property Group *tavern;
@@ -311,7 +312,7 @@ ChatMessage *selectedMessage;
         if ([self.tavern.worldDmgTavern boolValue]) {
             url = @"http://pherth.net/habitrpg/npc_daniel_broken.png";
         }
-        [innImageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageWithContentsOfFile:@"Placeholder"]];
+        [innImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageWithContentsOfFile:@"Placeholder"]];
     } else {
         [self configureCell:cell atIndexPath:indexPath];
     }

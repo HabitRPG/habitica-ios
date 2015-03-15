@@ -8,6 +8,7 @@
 
 #import "HRPGProfileViewController.h"
 #import "HRPGAppDelegate.h"
+#import "HRPGTopHeaderNavigationController.h"
 #import "Group.h"
 #import "VTAcknowledgementsViewController.h"
 #import <PDKeychainBindings.h>
@@ -72,7 +73,10 @@ NIKFontAwesomeIconFactory *iconFactory;
     footerView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     footerView.numberOfLines = 0;
     self.tableView.tableFooterView = footerView;
-    [self.tableView setContentInset:(UIEdgeInsetsMake(0, 0, -150, 0))];
+    
+    HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
+    [self.tableView setContentInset:(UIEdgeInsetsMake([navigationController getContentOffset], 0, -150, 0))];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPartyData:) name:@"partyUpdated"  object:nil];
 }
@@ -112,9 +116,9 @@ NIKFontAwesomeIconFactory *iconFactory;
         case 0:
             //Below level 10 users don't have spells
             if (userLevel <= 10) {
-                return 1;
+                return 0;
             } else {
-                return 2;
+                return 1;
             }
         case 1:
             return 2;
@@ -173,15 +177,11 @@ NIKFontAwesomeIconFactory *iconFactory;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0 && indexPath.item == 0) {
-        return 147;
-    } else {
-        return 44;
-    }
+    return 44;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0 && indexPath.item == 1) {
+    if (indexPath.section == 0 && indexPath.item == 0) {
         [self performSegueWithIdentifier:@"SpellSegue" sender:self];
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         [self performSegueWithIdentifier:@"TavernSegue" sender:self];
@@ -207,65 +207,55 @@ NIKFontAwesomeIconFactory *iconFactory;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *title = nil;
+    NSString *cellName = @"Cell";
+    BOOL showIndicator = NO;
     if (indexPath.section == 0 && indexPath.item == 0) {
-        if (username == nil) {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EmptyProfileCell" forIndexPath:indexPath];
-            return cell;
-        }
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell" forIndexPath:indexPath];
-        [self configureCell:cell atIndexPath:indexPath usForce:NO animated:NO];
-        return cell;
-    } else {
-        NSString *title = nil;
-        NSString *cellName = @"Cell";
-        BOOL showIndicator = NO;
-        if (indexPath.section == 0 && indexPath.item == 1) {
-            title = NSLocalizedString(@"Spells", nil);
-        } else if (indexPath.section == 1 && indexPath.item == 0) {
-            title = NSLocalizedString(@"Tavern", nil);
-        } else if (indexPath.section == 1 && indexPath.item == 1) {
-            title = NSLocalizedString(@"Party", nil);
-            
-            User *user = [self getUser];
-            if (user) {
-                if ([user.party.unreadMessages boolValue]) {
-                    showIndicator = YES;
-                }
+        title = NSLocalizedString(@"Spells", nil);
+    } else if (indexPath.section == 1 && indexPath.item == 0) {
+        title = NSLocalizedString(@"Tavern", nil);
+    } else if (indexPath.section == 1 && indexPath.item == 1) {
+        title = NSLocalizedString(@"Party", nil);
+        
+        User *user = [self getUser];
+        if (user) {
+            if ([user.party.unreadMessages boolValue]) {
+                showIndicator = YES;
             }
-        } else if (indexPath.section == 2 && indexPath.item == 0) {
-            title = NSLocalizedString(@"Equipment", nil);
-        } else if (indexPath.section == 2 && indexPath.item == 1) {
-            title = NSLocalizedString(@"Items", nil);
-        } else if (indexPath.section == 2 && indexPath.item == 2) {
-            title = NSLocalizedString(@"Pets", nil);
-        } else if (indexPath.section == 2 && indexPath.item == 3) {
-            title = NSLocalizedString(@"Mounts", nil);
-        } else if (indexPath.section == 3 && indexPath.item == 0) {
-            title = NSLocalizedString(@"News", nil);
-            User *user = [self getUser];
-            if (user) {
-                if ([user.habitNewStuff boolValue]) {
-                    showIndicator = YES;
-                }
+        }
+    } else if (indexPath.section == 2 && indexPath.item == 0) {
+        title = NSLocalizedString(@"Equipment", nil);
+    } else if (indexPath.section == 2 && indexPath.item == 1) {
+        title = NSLocalizedString(@"Items", nil);
+    } else if (indexPath.section == 2 && indexPath.item == 2) {
+        title = NSLocalizedString(@"Pets", nil);
+    } else if (indexPath.section == 2 && indexPath.item == 3) {
+        title = NSLocalizedString(@"Mounts", nil);
+    } else if (indexPath.section == 3 && indexPath.item == 0) {
+        title = NSLocalizedString(@"News", nil);
+        User *user = [self getUser];
+        if (user) {
+            if ([user.habitNewStuff boolValue]) {
+                showIndicator = YES;
             }
-        } else if (indexPath.section == 3 && indexPath.item == 1) {
-            title = NSLocalizedString(@"Settings", nil);
-        } else if (indexPath.section == 3 && indexPath.item == 2) {
-            title = NSLocalizedString(@"Acknowledgements", nil);
         }
-
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
-        UILabel *label = (UILabel *) [cell viewWithTag:1];
-        label.text = title;
-        UIImageView *indicatorView = (UIImageView *) [cell viewWithTag:2];
-        indicatorView.hidden = !showIndicator;
-        if (showIndicator) {
-            iconFactory.colors = @[[UIColor colorWithRed:0.372 green:0.603 blue:0.014 alpha:1.000]];
-            iconFactory.size = 13.0f;
-            indicatorView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconCircle];
-        }
-        return cell;
+    } else if (indexPath.section == 3 && indexPath.item == 1) {
+        title = NSLocalizedString(@"Settings", nil);
+    } else if (indexPath.section == 3 && indexPath.item == 2) {
+        title = NSLocalizedString(@"Acknowledgements", nil);
     }
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
+    UILabel *label = (UILabel *) [cell viewWithTag:1];
+    label.text = title;
+    UIImageView *indicatorView = (UIImageView *) [cell viewWithTag:2];
+    indicatorView.hidden = !showIndicator;
+    if (showIndicator) {
+        iconFactory.colors = @[[UIColor colorWithRed:0.372 green:0.603 blue:0.014 alpha:1.000]];
+        iconFactory.size = 13.0f;
+        indicatorView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconCircle];
+    }
+    return cell;
 }
 
 
@@ -322,8 +312,7 @@ NIKFontAwesomeIconFactory *iconFactory;
             break;
         }
         case NSFetchedResultsChangeUpdate: {
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath usForce:YES animated:YES];
-            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0], [NSIndexPath indexPathForItem:0 inSection:3]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0], [NSIndexPath indexPathForItem:0 inSection:3]] withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
         }
         case NSFetchedResultsChangeDelete: {
@@ -336,59 +325,6 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView endUpdates];
-}
-
--(void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    [self configureCell:cell atIndexPath:indexPath usForce:NO animated:NO];
-}
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath usForce:(BOOL)force animated:(BOOL)animated {
-    User *user = (User *) [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *levelLabel = (UILabel *) [cell viewWithTag:1];
-    levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@", nil), user.level];
-
-    UILabel *healthLabel = (UILabel *) [cell viewWithTag:2];
-    healthLabel.text = [NSString stringWithFormat:@"%ld/%@", (long) [user.health integerValue], user.maxHealth];
-    UIProgressView *healthProgress = (UIProgressView *) [cell viewWithTag:3];
-
-    UILabel *experienceLabel = (UILabel *) [cell viewWithTag:4];
-    experienceLabel.text = [NSString stringWithFormat:@"%ld/%@", (long) [user.experience integerValue], user.nextLevel];
-
-    UIProgressView *experienceProgress = (UIProgressView *) [cell viewWithTag:5];
-
-    if (animated) {
-        [UIView animateWithDuration:0.3 animations:^() {
-            healthProgress.progress = ([user.health floatValue] / [user.maxHealth floatValue]);
-            experienceProgress.progress = ([user.experience floatValue] / [user.nextLevel floatValue]);
-        }];
-    } else {
-        healthProgress.progress = ([user.health floatValue] / [user.maxHealth floatValue]);
-        experienceProgress.progress = ([user.experience floatValue] / [user.nextLevel floatValue]);
-    }
-
-    UILabel *magicLabel = (UILabel *) [cell viewWithTag:6];
-
-    UIProgressView *magicProgress = (UIProgressView *) [cell viewWithTag:7];
-    if ([user.level integerValue] >= 10) {
-        magicLabel.text = [NSString stringWithFormat:@"%ld/%@", (long) [user.magic integerValue], user.maxMagic];
-        if (animated) {
-            [UIView animateWithDuration:0.3 animations:^() {
-                magicProgress.progress = ([user.magic floatValue] / [user.maxMagic floatValue]);
-            }];
-        } else {
-            magicProgress.progress = ([user.magic floatValue] / [user.maxMagic floatValue]);
-        }
-        magicLabel.hidden = NO;
-        magicProgress.hidden = NO;
-    } else {
-        magicLabel.hidden = YES;
-        magicProgress.hidden = YES;
-    }
-    UIImageView *imageView = (UIImageView *) [cell viewWithTag:8];
-    [user setAvatarOnImageView:imageView useForce:force];
-    
-    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    cell.backgroundColor = [UIColor colorWithWhite:0.973 alpha:1.000];
 }
 
 @end

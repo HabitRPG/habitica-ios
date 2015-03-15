@@ -10,6 +10,7 @@
 #import "HRPGAppDelegate.h"
 #import "Gear.h"
 #import "User.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRPGEquipmentDetailViewController ()
 @property User *user;
@@ -195,7 +196,7 @@ float textWidth;
     textLabel.text = gear.text;
     detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     detailTextLabel.text = gear.notes;
-    [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", gear.key]]
+    [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", gear.key]]
               placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     
     UILabel *equippedLabel = (UILabel*)[cell viewWithTag:4];

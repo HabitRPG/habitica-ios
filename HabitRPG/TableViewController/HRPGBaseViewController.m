@@ -14,6 +14,7 @@
 #import "HRPGActivityIndicator.h"
 #import "HRPGDeathView.h"
 #import "HRPGNavigationController.h"
+#import "HRPGTopHeaderNavigationController.h"
 #import <CoreText/CoreText.h>
 #import "HRPGActivityIndicatorOverlayView.h"
 
@@ -35,11 +36,16 @@
         [self presentViewController:navigationController animated:NO completion:nil];
     }
     
+    HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+    [self.tableView setContentInset:UIEdgeInsetsMake([navigationController getContentOffset],0,0,0)];
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
+
     self.activityCounter = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self

@@ -16,6 +16,7 @@
 #import "HatchingPotion.h"
 #import "HRPGArrayViewController.h"
 #import "HRPGNavigationController.h"
+#import "HRPGTopHeaderNavigationController.h"
 
 @interface HRPGPetMasterViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -57,6 +58,10 @@ NSUserDefaults *defaults;
     entity = [NSEntityDescription entityForName:@"HatchingPotion" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     self.hatchingPotions = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+    [self.collectionView setContentInset:UIEdgeInsetsMake([navigationController getContentOffset],0,0,0)];
+    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
 }
 
 - (Egg*) eggWithKey:(NSString*)key {
