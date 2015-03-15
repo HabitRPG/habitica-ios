@@ -312,7 +312,8 @@ NIKFontAwesomeIconFactory *iconFactory;
             break;
         }
         case NSFetchedResultsChangeUpdate: {
-            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0], [NSIndexPath indexPathForItem:0 inSection:3]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:3]] withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
         }
         case NSFetchedResultsChangeDelete: {
