@@ -150,8 +150,10 @@ NSInteger rowOffset = 95;
         self.magicLabel.value = [self.user.magic integerValue];
         self.magicLabel.maxValue = [self.user.maxMagic integerValue];
         self.magicLabel.hidden = NO;
+        self.experienceLabel.frame = CGRectMake(rowOffset, margin+rowHeight, rowWidth/2, rowHeight);
     } else {
         self.magicLabel.hidden = YES;
+        self.experienceLabel.frame = CGRectMake(rowOffset, margin+rowHeight, rowWidth, rowHeight);
     }
     
     self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@", nil), self.user.level];

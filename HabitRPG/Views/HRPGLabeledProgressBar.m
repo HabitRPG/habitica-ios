@@ -61,6 +61,12 @@
     [self.progressBar setMaxBarValue:maxValue];
 }
 
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    self.labelView.frame = CGRectMake(23, 0, self.frame.size.width, 20);
+    self.progressBar.frame = CGRectMake(0, 20, self.frame.size.width, 5);
+}
+
 - (void) setLabelViewText {
     self.labelView.text = [NSString stringWithFormat:@"%ld/%ld", (long) self.value, self.maxValue];
 }
