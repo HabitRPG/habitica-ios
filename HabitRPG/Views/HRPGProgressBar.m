@@ -8,10 +8,14 @@
 
 #import "HRPGProgressBar.h"
 
-@implementation HRPGProgressBar
+@interface HRPGProgressBar ()
 
-CGFloat value;
-CGFloat maxValue;
+@property CGFloat value;
+@property CGFloat maxValue;
+
+@end
+
+@implementation HRPGProgressBar
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -19,28 +23,28 @@ CGFloat maxValue;
     if (self) {
         self.barColor = [UIColor blackColor];
         self.backgroundColor = [UIColor lightGrayColor];
-        value = 0;
     }
     
     return self;
 }
 
 - (CGFloat)getBarValue {
-    return value;
+    return self.value;
 }
 
 - (void)setBarValue:(CGFloat)newValue animated:(BOOL)animated {
-    value = newValue;
+    self.value = newValue;
     [self setNeedsDisplay];
 }
 
 - (void)setMaxBarValue:(CGFloat)newMaxValue {
-    maxValue = newMaxValue;
+    self.maxValue = newMaxValue;
     [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect {
-    CGRect rectangle = CGRectMake(rect.origin.x, rect.origin.y, (rect.size.width / 100 * value), rect.size.height);
+    CGFloat percent = self.value / self.maxValue;
+    CGRect rectangle = CGRectMake(rect.origin.x, rect.origin.y, (rect.size.width * percent), rect.size.height);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, [self.barColor CGColor]);
     CGContextFillRect(context, rectangle);

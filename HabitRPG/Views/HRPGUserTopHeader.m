@@ -11,21 +11,20 @@
 #import "HRPGManager.h"
 #import "User.h"
 #import <PDKeychainBindings.h>
-#import "HRPGProgressBar.h"
+#import "HRPGLabeledProgressBar.h"
 #import "HRPGGoldView.h"
+#import "NIKFontAwesomeIconFactory.h"
+#import "NIKFontAwesomeIconFactory+iOS.h"
 
 @interface HRPGUserTopHeader ()
 
 @property UIImageView *avatarImageView;
 
-@property UILabel *healthLabel;
-@property HRPGProgressBar *healthBar;
+@property HRPGLabeledProgressBar *healthLabel;
 
-@property UILabel *experienceLabel;
-@property HRPGProgressBar *experienceBar;
+@property HRPGLabeledProgressBar *experienceLabel;
 
-@property UILabel *magicLabel;
-@property HRPGProgressBar *magicBar;
+@property HRPGLabeledProgressBar *magicLabel;
 
 @property UILabel *levelLabel;
 
@@ -54,29 +53,24 @@ NSInteger rowOffset = 95;
         self.avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 90, 90)];
         [self addSubview:self.avatarImageView];
         
-        self.healthLabel = [[UILabel alloc] initWithFrame:CGRectMake(rowOffset, margin, rowWidth, 20)];
-        self.healthLabel.textColor = [UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000];
+        NIKFontAwesomeIconFactory *iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+        iconFactory.size = 15;
+        iconFactory.renderingMode = UIImageRenderingModeAlwaysTemplate;
+        
+        self.healthLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset, margin, rowWidth, rowHeight)];
+        self.healthLabel.color = [UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000];
+        self.healthLabel.icon = [iconFactory createImageForIcon:NIKFontAwesomeIconHeart];
         [self addSubview:self.healthLabel];
         
-        self.healthBar = [[HRPGProgressBar alloc] initWithFrame:CGRectMake(rowOffset, margin+20, rowWidth, barHeight)];
-        self.healthBar.barColor = [UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000];
-        [self addSubview:self.healthBar];
-        
-        self.experienceLabel = [[UILabel alloc] initWithFrame:CGRectMake(rowOffset, margin+rowHeight, rowWidth/2, 20)];
-        self.experienceLabel.textColor = [UIColor colorWithRed:0.870 green:0.686 blue:0.037 alpha:1.000];
+        self.experienceLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset, margin+rowHeight, rowWidth/2, rowHeight)];
+        self.experienceLabel.color = [UIColor colorWithRed:0.870 green:0.686 blue:0.037 alpha:1.000];
+        self.experienceLabel.icon = [iconFactory createImageForIcon:NIKFontAwesomeIconStar];
         [self addSubview:self.experienceLabel];
         
-        self.experienceBar = [[HRPGProgressBar alloc] initWithFrame:CGRectMake(rowOffset, margin+rowHeight+20, (rowWidth-margin)/2, barHeight)];
-        self.experienceBar.barColor = [UIColor colorWithRed:0.870 green:0.686 blue:0.037 alpha:1.000];
-        [self addSubview:self.experienceBar];
-        
-        self.magicLabel = [[UILabel alloc] initWithFrame:CGRectMake(rowOffset+(rowWidth+margin)/2, margin+rowHeight, rowWidth/2, 20)];
-        self.magicLabel.textColor = [UIColor blueColor];
+        self.magicLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset+(rowWidth+margin)/2, margin+rowHeight, rowWidth/2, rowHeight)];
+        self.magicLabel.color = [UIColor blueColor];
+        self.magicLabel.icon = [iconFactory createImageForIcon:NIKFontAwesomeIconFire];
         [self addSubview:self.magicLabel];
-        
-        self.magicBar = [[HRPGProgressBar alloc] initWithFrame:CGRectMake(rowOffset+(rowWidth+margin)/2, margin+rowHeight+20, (rowWidth-margin)/2, barHeight)];
-        self.magicBar.barColor = [UIColor blueColor];
-        [self addSubview:self.magicBar];
         
         self.levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(rowOffset, (margin+rowHeight)*2, (rowWidth-margin)/2, 20)];
         self.levelLabel.textColor = [UIColor blackColor];
@@ -146,22 +140,18 @@ NSInteger rowOffset = 95;
 - (void) setData {
     self.user = [self getUser];
     [self.user setAvatarOnImageView:self.avatarImageView withPetMount:NO onlyHead:NO useForce:YES];
-    self.healthLabel.text = [NSString stringWithFormat:@"%ld/%@", (long) [self.user.health integerValue], self.user.maxHealth];
-    [self.healthBar setMaxBarValue:[self.user.maxHealth floatValue]];
-    [self.healthBar setBarValue:[self.user.health floatValue]  animated:YES];
+    self.healthLabel.value = [self.user.health integerValue];
+    self.healthLabel.maxValue = [self.user.maxHealth integerValue];
 
-    self.experienceLabel.text = [NSString stringWithFormat:@"%ld/%@", (long) [self.user.experience integerValue], self.user.nextLevel];
-    [self.experienceBar setMaxBarValue:[self.user.nextLevel floatValue]];
-    [self.experienceBar setBarValue:[self.user.experience floatValue]  animated:YES];
+    self.experienceLabel.value = [self.user.experience integerValue];
+    self.experienceLabel.maxValue = [self.user.nextLevel integerValue];
 
     if ([self.user.level integerValue] >= 10) {
-        self.magicLabel.text = [NSString stringWithFormat:@"%ld/%@", (long) [self.user.magic integerValue], self.user.maxMagic];
-        [self.magicBar setMaxBarValue:[self.user.maxMagic floatValue]];
-        [self.magicBar setBarValue:[self.user.magic floatValue]  animated:YES];
-        self.magicBar.hidden = NO;
+        self.magicLabel.value = [self.user.magic integerValue];
+        self.magicLabel.maxValue = [self.user.maxMagic integerValue];
+        self.magicLabel.hidden = NO;
     } else {
-        self.magicLabel.text = nil;
-        self.magicBar.hidden = YES;
+        self.magicLabel.hidden = YES;
     }
     
     self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@", nil), self.user.level];
