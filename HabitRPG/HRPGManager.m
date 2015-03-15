@@ -1841,17 +1841,16 @@ NSString *currentUser;
 }
 
 - (void)displayLevelUpNotification {
-    UIColor *notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
-    NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Level up!", nil),
-            kCRToastSubtitleTextKey : [NSString stringWithFormat:@"Level %d", ([user.level integerValue] + 1)],
-            kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-            kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-            kCRToastBackgroundColorKey : notificationColor,
-            kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconArrowUp]
-    };
-    [CRToastManager showNotificationWithOptions:options
-                                completionBlock:^{
+    [self fetchUser:^() {
+        
+    }onError:^() {
+        
     }];
+    [user getAvatarImage:^(UIImage *image) {
+        [HRPGImageOverlayManager displayImage:image withText:NSLocalizedString(@"Level up!", nil)
+                                    withNotes:[NSString stringWithFormat:@"You are now Level %ld", ([user.level integerValue] + 1)]];
+    }withPetMount:YES onlyHead:NO withBackground:YES useForce:NO];
+
 }
 
 - (void)displaySpellNotification:(NSInteger)manaDiff withHealthDiff:(CGFloat)healthDiff {

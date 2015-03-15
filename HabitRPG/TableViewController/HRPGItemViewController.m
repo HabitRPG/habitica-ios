@@ -134,14 +134,14 @@ float textWidth;
         if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
             [self.sharedManager hatchEgg:item.key withPotion:self.selectedItem.key onSuccess:^() {
                 [self removeActivityCounter];
-                [HRPGImageOverlayManager displayImage:[NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet-%@-%@.png", item.key, self.selectedItem.key] withText:[NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil), self.selectedItem.text, item.key] withNotes:nil];
+                [HRPGImageOverlayManager displayImageWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet-%@-%@.png", item.key, self.selectedItem.key] withText:[NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil), self.selectedItem.text, item.key] withNotes:nil];
             }onError:^() {
                 [self removeActivityCounter];
             }];
         } else {
             [self.sharedManager hatchEgg:self.selectedItem.key withPotion:item.key onSuccess:^() {
                 [self removeActivityCounter];
-                [HRPGImageOverlayManager displayImage:[NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet-%@-%@.png", self.selectedItem.key, item.key] withText:[NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil), item.key, self.selectedItem.text] withNotes:nil];
+                [HRPGImageOverlayManager displayImageWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet-%@-%@.png", self.selectedItem.key, item.key] withText:[NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil), item.key, self.selectedItem.text] withNotes:nil];
             }onError:^() {
                 [self removeActivityCounter];
             }];

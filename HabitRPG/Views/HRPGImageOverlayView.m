@@ -35,8 +35,8 @@
         
         self.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0];
         
-        self.ImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 20, self.width-20, self.height-50)];
-        self.ImageView.contentMode = UIViewContentModeCenter;
+        self.ImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, self.width-20, self.height-30)];
+        self.ImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.indicatorView addSubview:self.ImageView];
         
         self.label = [[UILabel alloc] init];
@@ -67,7 +67,7 @@
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
     self.indicatorView.frame = CGRectMake((screenSize.width - self.width) / 2, (screenSize.height - self.height) / 2, self.width, self.height);
     if (!self.descriptionText && !self.detailText) {
-        self.ImageView.frame = CGRectMake(10, 20, self.width-20, self.height-50);
+        self.ImageView.frame = CGRectMake(10, 10, self.width-20, self.height-30);
     }
 }
 
@@ -75,7 +75,7 @@
     _width = width;
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
     self.indicatorView.frame = CGRectMake((screenSize.width - self.width) / 2, (screenSize.height - self.height) / 2, self.width, self.height);
-    self.ImageView.frame = CGRectMake(10, 20, self.width-20, self.height-50);
+    self.ImageView.frame = CGRectMake(10, 10, self.width-20, self.height-30);
 }
 
 - (void)display:(void (^)())completitionBlock {
@@ -163,4 +163,9 @@
 - (void)displayImageWithName:(NSString *)imageName {
     [self.ImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@", imageName]] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
 }
+
+- (void)displayImage:(UIImage *)image {
+    self.ImageView.image = image;
+}
+
 @end

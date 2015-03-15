@@ -15,6 +15,7 @@
 + (id)sharedManager;
 
 
-+ (void)displayImage:(NSString*)image withText:(NSString*)text withNotes:(NSString*)notes;
++ (void)displayImageWithString:(NSString*)image withText:(NSString*)text withNotes:(NSString*)notes;
++ (void)displayImage:(UIImage*)image withText:(NSString*)text withNotes:(NSString*)notes;
 
 @end

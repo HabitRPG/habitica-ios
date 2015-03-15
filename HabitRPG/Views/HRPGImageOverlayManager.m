@@ -9,12 +9,12 @@
 #import "HRPGImageOverlayManager.h"
 #import "HRPGImageOverlayView.h"
 
-@interface HRPGImageOverlayManager () {
-    NSMutableArray *queue;
-    UIView *backgroundView;
-    HRPGImageOverlayView *activeView;
-}
+@interface HRPGImageOverlayManager ()
 
+@property NSMutableArray *queue;
+@property UIView *backgroundView;
+@property BOOL *displayingView;
+@property HRPGImageOverlayView *activeView;
 @end
 
 @implementation HRPGImageOverlayManager
@@ -30,7 +30,7 @@
 
 - (id)init {
     if (self = [super init]) {
-        queue = [NSMutableArray array];
+        self.queue = [NSMutableArray array];
     }
     return self;
 }
@@ -39,57 +39,78 @@
     // Should never be called, but just here for clarity really.
 }
 
-+ (void)displayImage:(NSString *)image withText:(NSString *)text withNotes:(NSString *)notes {
++ (void)displayImageWithString:(NSString *)image withText:(NSString *)text withNotes:(NSString *)notes {
+    HRPGImageOverlayManager *manager = [HRPGImageOverlayManager sharedManager];
+    [manager displayImageWithString:image withText:text withNotes:notes];
+}
+
++ (void)displayImage:(UIImage *)image withText:(NSString *)text withNotes:(NSString *)notes {
     HRPGImageOverlayManager *manager = [HRPGImageOverlayManager sharedManager];
     [manager displayImage:image withText:text withNotes:notes];
 }
 
-- (void)displayImage:(NSString *)image withText:(NSString *)text withNotes:(NSString *)notes {
+- (void)displayImageWithString:(NSString *)image withText:(NSString *)text withNotes:(NSString *)notes {
     if (notes) {
-        [queue addObject:@{@"image":image, @"text":text, @"notes":notes}];
+        [self.queue addObject:@{@"image_name":image, @"text":text, @"notes":notes}];
     } else {
-        [queue addObject:@{@"image":image, @"text":text}];
+        [self.queue addObject:@{@"image_name":image, @"text":text}];
     }
-    if (!activeView) {
+    if (!self.displayingView) {
+        [self displayNextImage];
+    }
+}
+
+- (void)displayImage:(UIImage *)image withText:(NSString *)text withNotes:(NSString *)notes {
+    if (notes) {
+        [self.queue addObject:@{@"image":image, @"text":text, @"notes":notes}];
+    } else {
+        [self.queue addObject:@{@"image":image, @"text":text}];
+    }
+    if (!self.displayingView) {
         [self displayNextImage];
     }
 }
 
 - (void)displayNextImage {
-    if (!backgroundView) {
-        backgroundView = [[UIView alloc] init];
+    if (!self.backgroundView) {
+        self.backgroundView = [[UIView alloc] init];
         CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-        backgroundView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
-        backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+        self.backgroundView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
+        self.backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
         
         UITabBarController *mainTabbar = ((UITabBarController *) [[UIApplication sharedApplication] delegate].window.rootViewController);
-        [mainTabbar.view addSubview:backgroundView];
+        [mainTabbar.view addSubview:self.backgroundView];
         
         [UIView animateWithDuration:0.3 animations:^() {
-            backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.25];
+            self.backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.25];
         }];
     }
-    NSDictionary *dict = [queue firstObject];
-    [queue removeObjectAtIndex:0];
-    activeView = [[HRPGImageOverlayView alloc] init];
-    [activeView displayImageWithName:dict[@"image"]];
+    NSDictionary *dict = [self.queue firstObject];
+    [self.queue removeObjectAtIndex:0];
+    self.activeView = [[HRPGImageOverlayView alloc] init];
+    [self.activeView displayImageWithName:dict[@"image"]];
     
-    activeView.width = 180;
-    activeView.height = 120;
-    [activeView displayImageWithName:dict[@"image"]];
-    activeView.descriptionText = dict[@"text"];
+    self.activeView.width = 180;
+    self.activeView.height = 120;
+    if ([dict objectForKey:@"image_name"]) {
+        [self.activeView displayImageWithName:dict[@"image_name"]];
+    } else {
+        [self.activeView displayImage:dict[@"image"]];
+    }
+    self.activeView.descriptionText = dict[@"text"];
     if ([dict objectForKey:@"notes"]) {
+        self.activeView.detailText = dict[@"notes"];
     }
     
-    __weak NSMutableArray *weakQueue = queue;
+    __weak NSMutableArray *weakQueue = self.queue;
     __weak HRPGImageOverlayManager *weakSelf = self;
-    __block HRPGImageOverlayView *weakActiveView = activeView;
-    __block UIView *weakBackgroundView = backgroundView;
-    activeView.dismissBlock = ^() {
+    __block BOOL weakDisplayingView = self.displayingView;
+    __block UIView *weakBackgroundView = self.backgroundView;
+    self.activeView.dismissBlock = ^() {
         if (weakQueue.count != 0) {
             [weakSelf displayNextImage];
         } else {
-            weakActiveView = nil;
+            weakDisplayingView = NO;
             [UIView animateWithDuration:0.3 animations:^() {
                 weakBackgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
             }completion:^(BOOL finished) {
@@ -99,7 +120,7 @@
         }
     };
     
-    [activeView display:^() {
+    [self.activeView display:^() {
     }];
     
 }

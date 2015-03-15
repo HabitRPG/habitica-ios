@@ -87,6 +87,14 @@
 }
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead withBackground:(BOOL)withBackground useForce:(BOOL)force {
+    [self getAvatarImage:^(UIImage* image) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            imageView.image = image;
+        });
+    } withPetMount:withPetMount onlyHead:onlyHead withBackground:withBackground useForce:force];
+}
+
+- (void)getAvatarImage:(void (^)(UIImage *))successBlock withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead withBackground:(BOOL)withBackground useForce:(BOOL)force {
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     HRPGManager *sharedManager = appdelegate.sharedManager;
     NSString *cachedImageName;
@@ -99,7 +107,7 @@
         cachedImageName = [NSString stringWithFormat:@"%@_head", self.username];
     }
     cachedImage = [sharedManager getCachedImage:cachedImageName];
-    imageView.image = cachedImage;
+    successBlock(cachedImage);
     if (!force || [[NSDate date] timeIntervalSinceDate:self.lastImageGeneration] < 2) {
         if (withPetMount && !onlyHead && [self.lastLogin isEqualToDate:self.lastAvatarFull]) {
             return;
@@ -383,9 +391,7 @@
 
         UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        dispatch_async(dispatch_get_main_queue(), ^{
-            imageView.image = resultImage;
-        });
+        successBlock(resultImage);
         [sharedManager setCachedImage:resultImage withName:cachedImageName onSuccess:^() {
             if (withPetMount && !onlyHead) {
                 self.lastAvatarFull = [self.lastLogin copy];

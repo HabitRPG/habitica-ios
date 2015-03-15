@@ -17,18 +17,18 @@
     [Crashlytics startWithAPIKey:@"2eb3b3edb3b0f4722d37d649a5af366656e46ddd"];
 
     CRToastInteractionResponder *blankResponder = [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeAll automaticallyDismiss:YES block:^(CRToastInteractionType interactionType){
-        NSLog(@"tapped");
     }];
     [CRToastManager setDefaultOptions:@{kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),
-            kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeGravity),
-            kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
-            kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop),
-            kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
-            kCRToastAnimationInTimeIntervalKey : @(0.7),
-            kCRToastAnimationOutTimeIntervalKey : @(0.7),
-            kCRToastFontKey : [UIFont systemFontOfSize:17],
-            kCRToastInteractionRespondersKey : @[blankResponder]
-    }];
+                                        kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeGravity),
+                                        kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
+                                        kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop),
+                                        kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
+                                        kCRToastTimeIntervalKey: @(2.0),
+                                        kCRToastAnimationInTimeIntervalKey : @(0.7),
+                                        kCRToastAnimationOutTimeIntervalKey : @(0.7),
+                                        kCRToastFontKey : [UIFont systemFontOfSize:17],
+                                        kCRToastInteractionRespondersKey : @[blankResponder]
+                                        }];
 
     [self cleanAndRefresh:application];
 
@@ -53,8 +53,8 @@
     if (user) {
         NSDate *lastTaskFetch = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastTaskFetch"];
         NSDate *now = [NSDate date];
-        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        NSDateComponents *components = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:now];
+        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:now];
         [components setHour:[user.dayStart integerValue]];
         NSDate *dayStartDate = [calendar dateFromComponents:components];
         if (lastTaskFetch == nil || [dayStartDate compare:lastTaskFetch] == NSOrderedDescending) {

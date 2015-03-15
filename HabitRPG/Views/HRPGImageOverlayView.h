@@ -15,6 +15,7 @@
 - (void)dismiss:(void (^)())completitionBlock;
 
 - (void)displayImageWithName:(NSString*)imageName;
+- (void)displayImage:(UIImage*)image;
 
 -(void)onDismiss:(void (^)())completitionBlock;
 
