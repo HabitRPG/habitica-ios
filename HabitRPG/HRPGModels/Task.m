@@ -117,26 +117,26 @@
 - (UIColor*) taskColor {
     NSInteger intValue = [self.value integerValue];
     if (intValue < -20) {
-        return [UIColor colorWithRed:0.824 green:0.113 blue:0.104 alpha:1.000];
+        return [UIColor colorWithRed:0.702 green:0.314 blue:0.243 alpha:1.000];
     } else if (intValue < -10) {
-        return [UIColor colorWithRed:0.906 green:0.328 blue:0.113 alpha:1.000];
+        return [UIColor colorWithRed:0.780 green:0.275 blue:0.282 alpha:1.000];
     } else if (intValue < -1) {
-        return [UIColor colorWithRed:0.966 green:0.517 blue:0.117 alpha:1.000];
+        return [UIColor colorWithRed:0.906 green:0.569 blue:0.192 alpha:1.000];
     } else if (intValue < 1) {
-        return [UIColor colorWithRed:0.847 green:0.597 blue:0.077 alpha:1.000];
+        return [UIColor colorWithRed:0.973 green:0.780 blue:0.118 alpha:1.000];
     } else if (intValue < 5) {
-        return [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
+        return [UIColor colorWithRed:0.498 green:0.710 blue:0.380 alpha:1.000];
     } else if (intValue < 10) {
-        return [UIColor colorWithRed:0.124 green:0.627 blue:0.755 alpha:1.000];
+        return [UIColor colorWithRed:0.443 green:0.604 blue:0.639 alpha:1.000];
     } else {
-        return [UIColor colorWithRed:0.231 green:0.442 blue:0.964 alpha:1.000];
+        return [UIColor colorWithRed:0.294 green:0.439 blue:0.910 alpha:1.000];
     }
 }
 
 - (UIColor*) lightTaskColor {
     NSInteger intValue = [self.value integerValue];
     if (intValue < -20) {
-        return [UIColor colorWithRed:0.859 green:0.663 blue:0.620 alpha:1.000];
+        return [UIColor colorWithRed:0.855 green:0.663 blue:0.620 alpha:1.000];
     } else if (intValue < -10) {
         return [UIColor colorWithRed:0.941 green:0.753 blue:0.753 alpha:1.000];
     } else if (intValue < -1) {

@@ -151,13 +151,8 @@ float displayWidth;
     }
     float width;
     if ([task.type isEqualToString:@"habit"]) {
-        if ([task.up boolValue] && [task.down boolValue]) {
-            //69 for segmentedControl + 3 * 8 for space between views
-            width = displayWidth - 93;
-        } else {
-            //34 for segmentedControl + 3 * 8 for space between views
-            width = displayWidth - 58;
-        }
+        //50 for each button and 1 for seperator
+        width = displayWidth - 117;
     } else if ([task.checklist count] > 0) {
         width = 210.0f;
     } else {
@@ -168,7 +163,7 @@ float displayWidth;
                                             attributes:@{
                                                     NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                             }
-                                               context:nil].size.height + 38;
+                                               context:nil].size.height + 30;
     if (task.duedate) {
         height = height + 5;
     }

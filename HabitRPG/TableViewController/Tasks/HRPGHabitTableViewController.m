@@ -14,6 +14,7 @@
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 #import "NSString+Emoji.h"
 #import "HRPGActivityIndicatorOverlayView.h"
+#import "UIColor+LighterDarker.h"
 
 @interface HRPGHabitTableViewController ()
 @property NSString *readableName;
@@ -67,32 +68,94 @@
 }
 
 - (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
+    [cell setSeparatorInset:UIEdgeInsetsZero];
+    // Prevent the cell from inheriting the Table View's margin settings
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    
+    // Explictly set your cell's layout margins
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UIColor *color = [task lightTaskColor];
     UILabel *label = (UILabel *) [cell viewWithTag:1];
     label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
     cell.backgroundColor = color;
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    UISegmentedControl *upDownControl = (UISegmentedControl *)[cell viewWithTag:2];
-    [upDownControl addTarget:self
-                             action:@selector(segmentedControlUpdated:)
-                   forControlEvents:UIControlEventValueChanged];
-    upDownControl.tintColor = [task taskColor];
-    [upDownControl removeAllSegments];
+    UIButton *upButton = (UIButton *)[cell viewWithTag:2];
+    UIButton *downButton = (UIButton *)[cell viewWithTag:3];
+    UIView *seperatorView = [cell viewWithTag:5];
+    
+    [upButton setTitleColor:[[task taskColor] darkerColor] forState:UIControlStateHighlighted];
+    [downButton setTitleColor:[[task taskColor] darkerColor] forState:UIControlStateHighlighted];
+    [upButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [downButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSLayoutConstraint *upConstraint;
+    NSLayoutConstraint *downConstraint;
+    NSLayoutConstraint *seperatorConstraint;
+    for (NSLayoutConstraint *con in upButton.constraints) {
+        if (con.firstItem == upButton || con.secondItem == upButton) {
+            upConstraint = con;
+            break;
+        }
+    }
+    for (NSLayoutConstraint *con in downButton.constraints) {
+        if (con.firstItem == downButton || con.secondItem == downButton) {
+            downConstraint = con;
+            break;
+        }
+    }
+
+    for (NSLayoutConstraint *con in seperatorView.constraints) {
+        if (con.firstItem == seperatorView || con.secondItem == seperatorView) {
+            seperatorConstraint = con;
+            break;
+        }
+    }
     if ([task.up boolValue]) {
-        [upDownControl insertSegmentWithImage:[self.iconFactory createImageForIcon:NIKFontAwesomeIconPlus] atIndex:0 animated:NO];
+        upButton.hidden = NO;
+        upButton.backgroundColor = [task taskColor];
+        if (![task.down boolValue]) {
+            upConstraint.constant = 101;
+        } else {
+            upConstraint.constant = 50;
+        }
+    } else {
+        upButton.hidden = YES;
+        upConstraint.constant = 0;
     }
     if ([task.down boolValue]) {
-        [upDownControl insertSegmentWithImage:[self.iconFactory createImageForIcon:NIKFontAwesomeIconMinus] atIndex:[upDownControl numberOfSegments] animated:NO];
+        downButton.hidden = NO;
+        downButton.backgroundColor = [task taskColor];
+        if (![task.up boolValue]) {
+            downConstraint.constant = 101;
+        } else {
+            downConstraint.constant = 50;
+        }
+    } else {
+        downButton.hidden = YES;
+        downConstraint.constant = 0;
+    }
+    
+    if ([task.up boolValue] && [task.down boolValue]) {
+        seperatorView.hidden = NO;
+        seperatorView.backgroundColor = [[task taskColor] darkerColor];
+        seperatorConstraint.constant = 1;
+    } else {
+        seperatorView.hidden = YES;
+        seperatorConstraint.constant = 0;
     }
 }
 
-- (void)segmentedControlUpdated:(UISegmentedControl *)segmentedControl {
-    CGPoint senderOriginInTableView = [segmentedControl convertPoint:CGPointZero toView:self.tableView];
+- (void)buttonPressed:(UIButton *)button {
+    CGPoint senderOriginInTableView = [button convertPoint:CGPointZero toView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:senderOriginInTableView];
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSString *upDown;
-    if (segmentedControl.selectedSegmentIndex == 0 && [task.up boolValue]) {
+    if ([button.titleLabel.text isEqualToString:@"+"]) {
         upDown = @"up";
     } else {
         upDown = @"down";
