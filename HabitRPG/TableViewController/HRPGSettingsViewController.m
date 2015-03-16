@@ -10,6 +10,7 @@
 #import "HRPGAppDelegate.h"
 #import <PDKeychainBindings.h>
 #import "HRPGActivityIndicatorOverlayView.h"
+#import "HRPGTopHeaderNavigationController.h"
 #import "XLForm.h"
 
 @interface HRPGSettingsViewController ()
@@ -42,6 +43,9 @@ User *user;
     [super viewDidLoad];
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
+    HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
+    [self.tableView setContentInset:(UIEdgeInsetsMake([navigationController getContentOffset], 0, 0, 0))];
 }
 
 -(void)initializeForm {

@@ -21,6 +21,7 @@
 		D92CDAE718CB84000006C242 /* HRPGToDoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */; };
 		D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */; };
 		D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */ = {isa = PBXBuildFile; fileRef = D93422B81AB792B5003AFCDE /* UIColor+LighterDarker.m */; };
+		D93422BB1AB7A093003AFCDE /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D93422BA1AB7A093003AFCDE /* Pods-acknowledgements.plist */; };
 		D94461881AB34F5C0015215E /* HabiticaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D94461871AB34F5C0015215E /* HabiticaTests.m */; };
 		D94461911AB355940015215E /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
 		D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */; };
@@ -154,6 +155,7 @@
 		D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGFormViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D93422B71AB792B5003AFCDE /* UIColor+LighterDarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+LighterDarker.h"; path = "HabitRPG/UIColor+LighterDarker.h"; sourceTree = SOURCE_ROOT; };
 		D93422B81AB792B5003AFCDE /* UIColor+LighterDarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+LighterDarker.m"; path = "HabitRPG/UIColor+LighterDarker.m"; sourceTree = SOURCE_ROOT; };
+		D93422BA1AB7A093003AFCDE /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-acknowledgements.plist"; path = "../Pods/Target Support Files/Pods/Pods-acknowledgements.plist"; sourceTree = "<group>"; };
 		D94461831AB34F5C0015215E /* HabiticaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabiticaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94461861AB34F5C0015215E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D94461871AB34F5C0015215E /* HabiticaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabiticaTests.m; sourceTree = "<group>"; };
@@ -727,6 +729,7 @@
 		D9EB4E9518CB4A9400BB2094 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D93422BA1AB7A093003AFCDE /* Pods-acknowledgements.plist */,
 				D99DEC88190842CA00FFD2B9 /* Placeholder.png */,
 				D9EB4E9618CB4A9400BB2094 /* Habitica-Info.plist */,
 				D9EB4E9718CB4A9400BB2094 /* InfoPlist.strings */,
@@ -833,6 +836,7 @@
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
+				D93422BB1AB7A093003AFCDE /* Pods-acknowledgements.plist in Resources */,
 				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
 				D9EB4EA218CB4A9400BB2094 /* Main_iPhone.storyboard in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,

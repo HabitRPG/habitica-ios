@@ -201,7 +201,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         [self performSegueWithIdentifier:@"SettingsSegue" sender:self];
     } else if (indexPath.section == 3 && indexPath.item == 2) {
         VTAcknowledgementsViewController *viewController = [VTAcknowledgementsViewController acknowledgementsViewController];
-        viewController.headerText = NSLocalizedString(@"We love open source software.", nil); // optional
+        viewController.headerText = NSLocalizedString(@"We love open source software.", nil);
         [self.navigationController pushViewController:viewController animated:YES];
     }
 }

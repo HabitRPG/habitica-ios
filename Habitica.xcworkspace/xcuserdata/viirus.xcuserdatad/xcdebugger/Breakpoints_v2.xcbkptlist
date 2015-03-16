@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG/TableViewController/HRPGSettingsViewController.m"
-            timestampString = "446217622.816399"
+            timestampString = "448242001.044394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "-initWithCoder:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG/TableViewController/HRPGSettingsViewController.m"
-            timestampString = "446217845.666267"
+            timestampString = "448242001.044394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "-initializeForm"
             landmarkType = "5">
          </BreakpointContent>
