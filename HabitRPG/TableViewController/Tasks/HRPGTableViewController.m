@@ -150,15 +150,17 @@ float displayWidth;
         task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     }
     float width;
+    NSInteger height = 0;
     if ([task.type isEqualToString:@"habit"]) {
         //50 for each button and 1 for seperator
         width = displayWidth - 117;
+        height = height + 8;
     } else if ([task.checklist count] > 0) {
         width = 210.0f;
     } else {
         width = 270.0f;
     }
-    NSInteger height = [task.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+    height = height + [task.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                options:NSStringDrawingUsesLineFragmentOrigin
                                             attributes:@{
                                                     NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
