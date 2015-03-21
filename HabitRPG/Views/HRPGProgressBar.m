@@ -22,7 +22,9 @@
     
     if (self) {
         self.barColor = [UIColor blackColor];
-        self.backgroundColor = [UIColor lightGrayColor];
+        self.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.000];
+        self.layer.borderColor = [UIColor blackColor].CGColor;
+        self.layer.borderWidth = 0.5;
     }
     
     return self;

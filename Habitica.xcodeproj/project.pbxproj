@@ -113,6 +113,7 @@
 		D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */; };
 		D9EB4EA218CB4A9400BB2094 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EA018CB4A9400BB2094 /* Main_iPhone.storyboard */; };
 		D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */; };
+		D9FD3B311ABDF8E700B005F6 /* HRPGGemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FD3B301ABDF8E700B005F6 /* HRPGGemView.m */; };
 		F076F3C3B57B4367B7624D1F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC82AC0621234004BC92DB72 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -324,6 +325,8 @@
 		D9EB4EA118CB4A9400BB2094 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D9EB4EB318CB4A9400BB2094 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D9FD3B2F1ABDF8E700B005F6 /* HRPGGemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGemView.h; sourceTree = "<group>"; };
+		D9FD3B301ABDF8E700B005F6 /* HRPGGemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGemView.m; sourceTree = "<group>"; };
 		EC82AC0621234004BC92DB72 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -536,6 +539,8 @@
 				D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */,
 				D9BA33CF1AB5E0C90028AFEC /* HRPGGoldView.h */,
 				D9BA33D01AB5E0C90028AFEC /* HRPGGoldView.m */,
+				D9FD3B2F1ABDF8E700B005F6 /* HRPGGemView.h */,
+				D9FD3B301ABDF8E700B005F6 /* HRPGGemView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -924,6 +929,7 @@
 				D97CCDB819A51EED00DA128A /* NSMutableString_GHFMarkdown.m in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
 				D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */,
+				D9FD3B311ABDF8E700B005F6 /* HRPGGemView.m in Sources */,
 				D9D21731198D509100023367 /* HRPGDeathView.m in Sources */,
 				D9E08E5E1A98A71000D95B74 /* HRPGIntroView.m in Sources */,
 				D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */,

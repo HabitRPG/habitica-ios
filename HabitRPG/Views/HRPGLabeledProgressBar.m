@@ -10,9 +10,6 @@
 #import "HRPGProgressBar.h"
 
 @interface HRPGLabeledProgressBar ()
-@property UIImageView *iconView;
-@property UILabel *labelView;
-@property HRPGProgressBar *progressBar;
 
 @end
 
@@ -25,13 +22,15 @@
     if (self) {
         self.color = [UIColor blackColor];
         
-        self.iconView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-        self.iconView.contentMode = UIViewContentModeCenter;
-        [self addSubview:self.iconView];
-        self.labelView = [[UILabel alloc] initWithFrame:CGRectMake(23, 0, self.frame.size.width, 20)];
-        [self addSubview:self.labelView];
-        self.progressBar = [[HRPGProgressBar alloc] initWithFrame:CGRectMake(0, 20, self.frame.size.width, 5)];
+        self.progressBar = [[HRPGProgressBar alloc] initWithFrame:CGRectMake(20, 2, self.frame.size.width-20, self.frame.size.height-4)];
         [self addSubview:self.progressBar];
+        self.iconView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 2, 20, self.frame.size.height-4)];
+        self.iconView.contentMode = UIViewContentModeLeft;
+        self.iconView.tintColor = [UIColor blackColor];
+        [self addSubview:self.iconView];
+        self.labelView = [[UILabel alloc] initWithFrame:CGRectMake(20, 2, self.frame.size.width-25, self.frame.size.height-4)];
+        self.labelView.textAlignment = NSTextAlignmentRight;
+        [self addSubview:self.labelView];
     }
     
     return self;
@@ -40,8 +39,6 @@
 - (void)setColor:(UIColor *)color {
     _color = color;
     
-    self.iconView.tintColor = color;
-    self.labelView.textColor = color;
     self.progressBar.barColor = color;
 }
 
@@ -63,12 +60,12 @@
 
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
-    self.labelView.frame = CGRectMake(23, 0, self.frame.size.width, 20);
-    self.progressBar.frame = CGRectMake(0, 20, self.frame.size.width, 5);
+    self.labelView.frame = CGRectMake(20, 2, self.frame.size.width-25, self.frame.size.height-4);
+    self.progressBar.frame = CGRectMake(20, 2, self.frame.size.width-20, self.frame.size.height-4);
 }
 
 - (void) setLabelViewText {
-    self.labelView.text = [NSString stringWithFormat:@"%ld/%ld", (long) self.value, self.maxValue];
+    self.labelView.text = [NSString stringWithFormat:@"%ld / %ld", (long) self.value, self.maxValue];
 }
 
 @end

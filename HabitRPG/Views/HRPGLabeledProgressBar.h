@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRPGProgressBar.h"
 
 @interface HRPGLabeledProgressBar : UIView
+
+@property UIImageView *iconView;
+@property UILabel *labelView;
+@property HRPGProgressBar *progressBar;
 
 @property (nonatomic) UIColor *color;
 @property (nonatomic) NSInteger maxValue;

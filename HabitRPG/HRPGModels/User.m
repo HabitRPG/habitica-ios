@@ -36,6 +36,7 @@
 @dynamic equippedWeapon;
 @dynamic experience;
 @dynamic gold;
+@dynamic gems;
 @dynamic hairBangs;
 @dynamic hairBase;
 @dynamic hairBeard;

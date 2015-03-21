@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14C94b" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14D105g" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="BuyableItem" representedClassName="BuyableItem" isAbstract="YES" parentEntity="Item" syncable="YES">
         <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
@@ -193,6 +193,7 @@
         <attribute name="equippedShield" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="equippedWeapon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="experience" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gems" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="gold" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="habitNewStuff" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="hairBangs" optional="YES" attributeType="String" syncable="YES"/>
@@ -268,6 +269,6 @@
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="120"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="405"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="1273"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1290"/>
     </elements>
 </model>

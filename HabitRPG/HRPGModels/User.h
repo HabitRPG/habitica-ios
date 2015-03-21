@@ -34,6 +34,7 @@
 @property(nonatomic, retain) NSString *equippedWeapon;
 @property(nonatomic, retain) NSNumber *experience;
 @property(nonatomic, retain) NSNumber *gold;
+@property(nonatomic, retain) NSNumber *gems;
 @property(nonatomic, retain) NSString *hairBangs;
 @property(nonatomic, retain) NSString *hairBase;
 @property(nonatomic, retain) NSString *hairBeard;
