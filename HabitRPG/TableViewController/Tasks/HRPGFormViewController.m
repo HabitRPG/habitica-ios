@@ -17,6 +17,7 @@
 @interface HRPGFormViewController ()
 @property (nonatomic) NSArray *tags;
 @property (nonatomic) BOOL formFilled;
+@property (nonatomic) XLFormSectionDescriptor *duedateSection;
 @end
 
 @implementation HRPGFormViewController
@@ -86,20 +87,20 @@
         
         if (!self.editTask) {
             row = [XLFormRowDescriptor formRowDescriptorWithTag:@"checklist.new" rowType:XLFormRowDescriptorTypeText];
-            [[row cellConfig] setObject:NSLocalizedString(@"Add a new tag", nil) forKey:@"textField.placeholder"];
+            [[row cellConfig] setObject:NSLocalizedString(@"Add a new item", nil) forKey:@"textField.placeholder"];
             [section addFormRow:row];
         }
     }
     
     if ([self.taskType isEqualToString:@"habit"]) {
-        section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Directions", nil)];
+        section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Actions", nil)];
         [self.form addFormSection:section];
         
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"up" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Up", nil)];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"up" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Positive (+)", nil)];
         row.value = [NSNumber numberWithBool:YES];
         [section addFormRow:row];
         
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"down" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Down", nil)];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"down" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Negative (-)", nil)];
         row.value = [NSNumber numberWithBool:YES];
         [section addFormRow:row];
     }
@@ -131,8 +132,11 @@
     }
     
     if ([self.taskType isEqualToString:@"todo"]) {
-        section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Due Date", nil)];
-        [self.form addFormSection:section];
+        self.duedateSection = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Due Date", nil)];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"hasDueDate" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Has Due Date", nil)];
+        row.value = [NSNumber numberWithBool:NO];
+        [self.duedateSection addFormRow:row];
+        [self.form addFormSection:self.duedateSection];
         
     }
     
@@ -195,7 +199,10 @@
     }
     
     if ([self.taskType isEqualToString:@"todo"]) {
-        
+        if (self.task.duedate) {
+            [self.form formRowWithTag:@"hasDueDate"].value = [NSNumber numberWithBool:YES];
+            [self.form formRowWithTag:@"duedate"].value = self.task.duedate;
+        }
         
     }
 
@@ -249,6 +256,9 @@
         NSDictionary *formValues = [self.form formValues];
         NSMutableDictionary *tagDictionary = [NSMutableDictionary dictionary];
         for (NSString *key in formValues) {
+            if ([key isEqualToString:@"hasDueDate"]) {
+                continue;
+            }
             if ([key  hasPrefix:@"tag."]) {
                 if (formValues[key] != [NSNull null]) {
                     [tagDictionary setObject:formValues[key] forKey:[key substringFromIndex:4]];
@@ -294,5 +304,18 @@
     }
 }
 
+
+- (void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)formRow oldValue:(id)oldValue newValue:(id)newValue {
+    if ([formRow.tag isEqualToString:@"hasDueDate"]) {
+        NSNumber *value = formRow.value;
+        if ([value boolValue]) {
+            XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"duedate" rowType:XLFormRowDescriptorTypeDateInline title:@"Date"];
+            row.value = [NSDate new];
+            [self.duedateSection addFormRow:row];
+        } else {
+            [self.form removeFormRowWithTag:@"duedate"];
+        }
+    }
+}
 
 @end

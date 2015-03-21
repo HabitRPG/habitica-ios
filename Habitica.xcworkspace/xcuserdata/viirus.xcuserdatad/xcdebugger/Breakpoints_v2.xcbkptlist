@@ -200,12 +200,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG/TableViewController/Tasks/HRPGToDoTableViewController.m"
-            timestampString = "448653327.77027"
+            timestampString = "448662291.475259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "-toggleCompletedTasks:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HabitRPG/TableViewController/Tasks/HRPGToDoTableViewController.m"
+            timestampString = "448662291.475259"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "-configureCell:atIndexPath:withAnimation:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
