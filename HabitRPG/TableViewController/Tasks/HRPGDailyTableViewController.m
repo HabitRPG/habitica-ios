@@ -178,7 +178,7 @@
             checkBox.checkColor = [UIColor darkGrayColor];
             self.checkIconFactory.colors = @[[UIColor darkGrayColor]];
             label.textColor = [UIColor lightGrayColor];
-            cell.backgroundColor = [UIColor whiteColor];
+            cell.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.000];
             [checkBox setChecked:YES animated:YES];
             streakLabel.textColor = [UIColor darkGrayColor];
             checkBox.wasTouched = ^() {
@@ -203,7 +203,7 @@
                 checkBox.boxColor = [UIColor lightGrayColor];
                 checkBox.checkColor = [UIColor darkGrayColor];
                 label.textColor = [UIColor lightGrayColor];
-                cell.backgroundColor = [UIColor whiteColor];
+                cell.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.000];
                 streakLabel.textColor = [UIColor blackColor];
             } else {
                 checkBox.boxColor = [task taskColor];

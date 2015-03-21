@@ -159,7 +159,6 @@
         }
         
     } else {
-        UILabel *dueLabel = (UILabel *) [cell viewWithTag:4];
         if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
             indexPath = [NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section];
         }
@@ -221,7 +220,7 @@
             checkBox.checkColor = [UIColor darkGrayColor];
             self.checkIconFactory.colors = @[[UIColor darkGrayColor]];
             label.textColor = [UIColor lightGrayColor];
-            cell.backgroundColor = [UIColor whiteColor];
+            cell.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.000];
             [checkBox setChecked:YES animated:YES];
             checkBox.wasTouched = ^() {
                 [self addActivityCounter];
