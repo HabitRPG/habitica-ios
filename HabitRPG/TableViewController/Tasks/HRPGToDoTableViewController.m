@@ -261,9 +261,9 @@
         [footerView setUserInteractionEnabled:YES];
         [footerView addGestureRecognizer:singleFingerTap];
         self.tableView.tableFooterView = footerView;
-        
+
         self.toggleCompletedView.text = NSLocalizedString(@"Hide completed To-Dos", nil);
-        NSIndexSet *index = [NSIndexSet indexSetWithIndex:self.fetchedResultsController.sections.count-1];
+        NSIndexSet *index = [NSIndexSet indexSetWithIndex:[self.tableView numberOfSections]];
         [self.tableView insertSections:index withRowAnimation:UITableViewRowAnimationBottom];
     } else {
         self.toggleCompletedView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 45);
@@ -283,9 +283,13 @@
 }
 
 - (void)clearCompletedTasks:(UITapGestureRecognizer*)tapRecognizer {
+    [self toggleCompletedTasks:nil];
     [self.sharedManager clearCompletedTasks:^(){
-        [self toggleCompletedTasks:nil];
-        [self.sharedManager fetchUser:nil onError:nil];
+        [self.sharedManager fetchUser:^() {
+            
+        }onError:^() {
+            
+        }];
     }onError:^() {
         
     }];

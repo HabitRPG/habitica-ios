@@ -86,15 +86,40 @@ float displayWidth;
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[self.fetchedResultsController sections] count];
+    if (self.displayCompleted) {
+        if ([self.fetchedResultsController sections].count == 0) {
+            return 1;
+        } else if ([self.fetchedResultsController sections].count == 1) {
+            Task *task = (Task*) [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+            if ([task.completed boolValue]) {
+                return 1;
+            } else {
+                return 2;
+            }
+        } else {
+            return 2;
+        }
+    } else {
+        return [self.fetchedResultsController sections].count;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects] + self.indexOffset;
+    if (section > [self.fetchedResultsController sections].count-1) {
+        return 1;
+    } else {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+        return [sectionInfo numberOfObjects] + self.indexOffset;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section > [self.fetchedResultsController sections].count-1) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EmptyCell" forIndexPath:indexPath];
+        return cell;
+    }
+    
     NSString *cellname = @"Cell";
     Task *task;
     if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
@@ -118,6 +143,22 @@ float displayWidth;
     HRPGSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     [cell setDefaultColor:[UIColor lightGrayColor]];
     cell.taskType = [task.type substringToIndex:1];
+    
+    
+    UIView *whitespaceView = [cell viewWithTag:6];
+    NSLayoutConstraint *whiteSpaceHeightConstraint;
+    for (NSLayoutConstraint *con in whitespaceView.constraints) {
+        if (con.firstItem == whitespaceView || con.secondItem == whitespaceView) {
+            whiteSpaceHeightConstraint = con;
+            break;
+        }
+    }
+    if ([self.tableView numberOfRowsInSection:indexPath.section] == indexPath.row+1) {
+        whiteSpaceHeightConstraint.constant = 0;
+    } else {
+        whiteSpaceHeightConstraint.constant = 4;
+    }
+    
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
 }
@@ -140,6 +181,10 @@ float displayWidth;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section > [self.fetchedResultsController sections].count-1) {
+        return 44;
+    }
+    
     Task *task;
     if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
         task = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
@@ -150,11 +195,10 @@ float displayWidth;
         task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     }
     float width;
-    NSInteger height = 0;
+    NSInteger height = 8;
     if ([task.type isEqualToString:@"habit"]) {
         //50 for each button and 1 for seperator
         width = displayWidth - 117;
-        height = height + 8;
     } else if ([task.checklist count] > 0) {
         width = 210.0f;
     } else {
@@ -177,6 +221,11 @@ float displayWidth;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section > [self.fetchedResultsController sections].count-1) {
+        return;
+    }
+    
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     // fix for separators bug in iOS 7
