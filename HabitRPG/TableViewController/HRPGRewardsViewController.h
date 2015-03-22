@@ -13,5 +13,4 @@
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property(strong, nonatomic) NSMutableArray *filteredData;
-@property(strong, nonatomic) NSMutableArray *sectionHeader;
 @end

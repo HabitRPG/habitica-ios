@@ -43,7 +43,6 @@ User *user;
     }
     
     user = [self.sharedManager getUser];
-    self.sectionHeader = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,10 +66,6 @@ User *user;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.filteredData count];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return self.sectionHeader[section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -171,9 +166,10 @@ User *user;
     }
     //The filtering wasn't possible with predicates, so everything is fetched and filtered here
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    
+    NSMutableArray *inGameItemsArray = [[NSMutableArray alloc] init];
+    NSMutableArray *customRewardsArray = [[NSMutableArray alloc] init];
     for (id <NSFetchedResultsSectionInfo> section in [self.fetchedResultsController sections]) {
-        NSMutableArray *sectionArray = [[NSMutableArray alloc] initWithCapacity:[section numberOfObjects]];
+        NSMutableArray *sectionArray = [[NSMutableArray alloc] init];
         for (id reward in [section objects]) {
             if ([reward isKindOfClass:[Gear class]]) {
                 Gear *gear = reward;
@@ -212,16 +208,27 @@ User *user;
                     }
                 }
                 [sectionArray addObject:reward];
+                
+                if (sectionArray.count > 0) {
+                    [inGameItemsArray addObjectsFromArray:sectionArray];
+                }
             } else {
-                [sectionArray addObject:reward];
+                if ([reward isKindOfClass:[Reward class]]) {
+                    [customRewardsArray addObject:reward];
+                } else {
+                    [inGameItemsArray insertObject:reward atIndex:0];
+                }
             }
         }
-        
-        if ([sectionArray count] > 0) {
-            [array addObject:sectionArray];
-            [self.sectionHeader addObject:[section name]];
-        }
     }
+    
+    if ([inGameItemsArray count] > 0) {
+        [array addObject:inGameItemsArray];
+    }
+    if ([customRewardsArray count] > 0) {
+        [array addObject:customRewardsArray];
+    }
+    
     self.filteredData = array;
     
     return _filteredData;
