@@ -140,7 +140,7 @@ ChatMessage *selectedMessage;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (party) {
-        return 3;
+        return 4;
     } else {
         return 1;
     }
@@ -165,6 +165,9 @@ ChatMessage *selectedMessage;
                 return 1;
             }
         case 2: {
+            return 1;
+        }
+        case 3: {
             if (party != nil && [party.chatmessages count] > 0) {
                 if (self.buttonIndex) {
                     return [party.chatmessages count]+1;
@@ -233,6 +236,9 @@ ChatMessage *selectedMessage;
         } else {
             return 50;
         }
+        
+    } else if (indexPath.section != self.tableView.numberOfSections-1) {
+        return 44;
     } else {
         if (self.buttonIndex && self.buttonIndex.item == indexPath.item) {
             return 44;
@@ -291,6 +297,8 @@ ChatMessage *selectedMessage;
         [self performSegueWithIdentifier:@"ParticipantsSegue" sender:self];
     } else if (self.buttonIndex && self.buttonIndex.item == indexPath.item && self.buttonIndex.section == indexPath.section) {
         
+    } else if (indexPath.section != self.tableView.numberOfSections-1) {
+        [self performSegueWithIdentifier:@"MessageSegue" sender:self];
     } else if (indexPath.section == 2) {
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
             selectedMessage = (ChatMessage *) party.chatmessages[indexPath.item-1];
@@ -348,6 +356,8 @@ ChatMessage *selectedMessage;
         }
     } else if (indexPath.section == 1) {
         cellname = @"CollectItemQuestCell";
+    } else if (indexPath.section != self.tableView.numberOfSections-1) {
+        cellname = @"ComposeCell";
     } else {
         if (self.buttonIndex && indexPath.item == self.buttonIndex.item) {
             ChatMessage *message = (ChatMessage *) party.chatmessages[indexPath.item-1];
@@ -497,7 +507,7 @@ ChatMessage *selectedMessage;
             UILabel *textLabel = (UILabel *) [cell viewWithTag:2];
             textLabel.text = [NSString stringWithFormat:@"%@/%@", collect.collectCount, collect.count];
             textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-        } else if (indexPath.section == 2) {
+        } else if (indexPath.section == 3) {
             if (self.buttonIndex && self.buttonIndex.item == indexPath.item) {
                 return;
             }

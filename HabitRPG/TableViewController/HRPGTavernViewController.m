@@ -77,7 +77,7 @@ ChatMessage *selectedMessage;
         if (self.tavern.questKey) {
             [self fetchQuest];
         } else {
-            if ([self.tableView numberOfSections] == 3) {
+            if ([self.tableView numberOfSections] == 4) {
                 [self.tableView beginUpdates];
                 self.quest = nil;
                 [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -109,9 +109,9 @@ ChatMessage *selectedMessage;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if ([self.tavern.questActive boolValue]) {
-        return 3;
+        return 4;
     } else {
-        return 2;
+        return 3;
     }
 }
 
@@ -120,6 +120,8 @@ ChatMessage *selectedMessage;
         return 1;
     } else if (section == 1 && [self.tavern.questActive boolValue]) {
         return 3;
+    } else if (section != self.tableView.numberOfSections-1) {
+        return 1;
     } else {
         id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][0];
         if (self.buttonIndex) {
@@ -136,7 +138,7 @@ ChatMessage *selectedMessage;
         return nil;
     } else if (section == 1 && [self.tavern.questActive boolValue]) {
         return NSLocalizedString(@"World Quest", nil);
-    } else {
+    } else if (section != self.tableView.numberOfSections-1) {
         return NSLocalizedString(@"Chat", nil);
     }
     return @"";
@@ -163,6 +165,8 @@ ChatMessage *selectedMessage;
                                                        context:nil].size.height + 20;
             return height;
         }
+    } else if (indexPath.section != self.tableView.numberOfSections-1) {
+        return 44;
     } else {
         if (self.buttonIndex && self.buttonIndex.item == indexPath.item) {
             return 44;
@@ -242,6 +246,8 @@ ChatMessage *selectedMessage;
         } else {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
+    } else if (indexPath.section != self.tableView.numberOfSections-1) {
+        [self performSegueWithIdentifier:@"MessageSegue" sender:self];
     } else {
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
             selectedMessage = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item-1 inSection:0]];
@@ -281,6 +287,8 @@ ChatMessage *selectedMessage;
         } else if (indexPath.item == 2) {
             cellname = @"RageCell";
         }
+    } else if (indexPath.section != self.tableView.numberOfSections-1) {
+        cellname = @"ComposeCell";
     } else {
         if (self.buttonIndex && indexPath.item == self.buttonIndex.item) {
             ChatMessage *message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item-1 inSection:0]];
@@ -313,6 +321,9 @@ ChatMessage *selectedMessage;
             url = @"http://pherth.net/habitrpg/npc_daniel_broken.png";
         }
         [innImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageWithContentsOfFile:@"Placeholder"]];
+        
+    } else if (indexPath.section != self.tableView.numberOfSections-1) {
+        
     } else {
         [self configureCell:cell atIndexPath:indexPath];
     }
@@ -362,9 +373,9 @@ ChatMessage *selectedMessage;
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
-    int section = 1;
+    int section = 2;
     if ([self.tavern.questActive boolValue]) {
-        section = 2;
+        section = 3;
     }
     switch (type) {
         case NSFetchedResultsChangeInsert:
@@ -397,9 +408,9 @@ ChatMessage *selectedMessage;
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    int section = 1;
+    int section = 2;
     if ([self.tavern.questActive boolValue]) {
-        section = 2;
+        section = 3;
     }
     NSInteger messageCount = [self.tableView numberOfRowsInSection:section];
     if (self.rowHeights.count > messageCount) {
