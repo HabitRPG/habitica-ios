@@ -7,7 +7,7 @@
 //
 
 #import "HRPGCheckBoxView.h"
-
+#import <pop/POP.h>
 @interface HRPGCheckBoxView ()
 
 @end
@@ -61,7 +61,15 @@
 }
 
 - (void)viewTapped:(UITapGestureRecognizer*)recognizer {
-    self.wasTouched();
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+        scaleAnimation.velocity = [NSValue valueWithCGSize:CGSizeMake(-3.f, -3.f)];
+        scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
+        scaleAnimation.springBounciness = 18.0f;
+        scaleAnimation.beginTime = 0.5f;
+        [self.layer pop_addAnimation:scaleAnimation forKey:@"layerScaleSpringAnimation"];
+        self.wasTouched();
+    }
 }
 
 - (void)drawRect:(CGRect)rect {
