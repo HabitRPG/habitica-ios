@@ -108,13 +108,15 @@
         cachedImageName = [NSString stringWithFormat:@"%@_head", self.username];
     }
     cachedImage = [sharedManager getCachedImage:cachedImageName];
-    successBlock(cachedImage);
-    if (!force || [[NSDate date] timeIntervalSinceDate:self.lastImageGeneration] < 2) {
+    if (cachedImage && ( !force || [[NSDate date] timeIntervalSinceDate:self.lastImageGeneration] < 2)) {
         if (withPetMount && !onlyHead && [self.lastLogin isEqualToDate:self.lastAvatarFull]) {
+            successBlock(cachedImage);
             return;
         } else if (!withPetMount && !onlyHead && [self.lastLogin isEqualToDate:self.lastAvatarNoPet]) {
+            successBlock(cachedImage);
             return;
         } else if ([self.lastLogin isEqualToDate:self.lastAvatarHead]) {
+            successBlock(cachedImage);
             return;
         }
     }

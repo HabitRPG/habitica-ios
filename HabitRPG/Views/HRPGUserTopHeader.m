@@ -151,7 +151,7 @@ NSInteger rowOffset = 95;
 
 - (void) setData {
     self.user = [self getUser];
-    [self.user setAvatarOnImageView:self.avatarImageView withPetMount:NO onlyHead:NO useForce:YES];
+    [self.user setAvatarOnImageView:self.avatarImageView withPetMount:NO onlyHead:NO useForce:NO];
     self.healthLabel.value = [self.user.health integerValue];
     self.healthLabel.maxValue = [self.user.maxHealth integerValue];
 

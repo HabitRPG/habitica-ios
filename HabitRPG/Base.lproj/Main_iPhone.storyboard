@@ -59,7 +59,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIZ-1G-Vev">
+                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIZ-1G-Vev" customClass="HRPGHabitButton">
                                             <rect key="frame" x="51" y="0.0" width="50" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="2FZ-rb-eN4"/>
@@ -86,7 +86,7 @@
                                                 <constraint firstAttribute="height" id="VF1-UO-FIv"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ak4-ka-YFm">
+                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ak4-ka-YFm" customClass="HRPGHabitButton">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="XaB-0c-lPR"/>
@@ -197,7 +197,7 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLo-Uy-5kY">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLo-Uy-5kY">
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="15" id="XSi-Kx-K67"/>
                                             </constraints>
@@ -3647,12 +3647,12 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="iSa-66-Wjc"/>
-        <segue reference="HFM-OL-cM8"/>
-        <segue reference="8EB-JX-S8a"/>
-        <segue reference="QZs-YK-kGB"/>
-        <segue reference="IDZ-rz-bLv"/>
+        <segue reference="njg-A8-lDq"/>
+        <segue reference="E5i-VS-PGN"/>
         <segue reference="DAI-nh-Ljl"/>
+        <segue reference="QZs-YK-kGB"/>
+        <segue reference="8EB-JX-S8a"/>
+        <segue reference="IDZ-rz-bLv"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.3490196168422699" green="0.68627452850341797" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
 </document>

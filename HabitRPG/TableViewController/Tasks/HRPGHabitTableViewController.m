@@ -15,6 +15,7 @@
 #import "NSString+Emoji.h"
 #import "HRPGActivityIndicatorOverlayView.h"
 #import "UIColor+LighterDarker.h"
+#import "HRPGHabitButton.h"
 
 @interface HRPGHabitTableViewController ()
 @property NSString *readableName;
@@ -84,12 +85,10 @@
     label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
     cell.backgroundColor = color;
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    UIButton *upButton = (UIButton *)[cell viewWithTag:2];
-    UIButton *downButton = (UIButton *)[cell viewWithTag:3];
+    HRPGHabitButton *upButton = (HRPGHabitButton *)[cell viewWithTag:2];
+    HRPGHabitButton *downButton = (HRPGHabitButton *)[cell viewWithTag:3];
     UIView *seperatorView = [cell viewWithTag:5];
     
-    [upButton setTitleColor:[[task taskColor] darkerColor] forState:UIControlStateHighlighted];
-    [downButton setTitleColor:[[task taskColor] darkerColor] forState:UIControlStateHighlighted];
     [upButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [downButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     

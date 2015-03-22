@@ -16,6 +16,7 @@
 #import "HRPGTabBarController.h"
 #import "HRPGNavigationController.h"
 #import "HRPGImageOverlayManager.h"
+#import <POPSpringAnimation.h>
 
 @interface HRPGTableViewController ()
 @property NSString *readableName;
@@ -144,6 +145,8 @@ float displayWidth;
     [cell setDefaultColor:[UIColor lightGrayColor]];
     cell.taskType = [task.type substringToIndex:1];
     
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongCellPress:)];
+    [cell addGestureRecognizer:longPressGesture];
     
     UIView *whitespaceView = [cell viewWithTag:6];
     NSLayoutConstraint *whiteSpaceHeightConstraint;
@@ -231,12 +234,6 @@ float displayWidth;
     // fix for separators bug in iOS 7
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-
-    if (tableView.editing) {
-        editedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [self performSegueWithIdentifier:@"FormSegue" sender:self];
-        return;
-    }
     
 //FIXME
     if (indexPath.section == 1) {
@@ -460,6 +457,26 @@ float displayWidth;
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     imageView.contentMode = UIViewContentModeCenter;
     return imageView;
+}
+
+- (void) handleLongCellPress:(UILongPressGestureRecognizer*)gesture
+{
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        CGPoint p = [gesture locationInView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+        HRPGSwipeTableViewCell *cell = (HRPGSwipeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+        POPSpringAnimation *jumpAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+        jumpAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
+        jumpAnimation.velocity = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
+        jumpAnimation.springBounciness = 20.f;
+        [cell pop_addAnimation:jumpAnimation forKey:@"jumpAnimation"];
+    }
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        CGPoint p = [gesture locationInView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+        editedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [self performSegueWithIdentifier:@"FormSegue" sender:self];
+    }
 }
 
 
