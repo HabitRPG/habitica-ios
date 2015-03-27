@@ -78,8 +78,8 @@ NSInteger rowOffset = 95;
         self.magicLabel.icon = [iconFactory createImageForIcon:NIKFontAwesomeIconFire];
         [self addSubview:self.magicLabel];
         
-        self.levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, self.frame.size.height-margin-17, 45, 17)];
-        self.levelLabel.font = [UIFont systemFontOfSize:12];
+        self.levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(rowOffset+20, (margin+rowHeight)*2+(rowHeight-margin-20)/2, 45, 20)];
+        self.levelLabel.font = [UIFont systemFontOfSize:13];
         self.levelLabel.textColor = [UIColor whiteColor];
         self.levelLabel.backgroundColor = [UIColor blackColor];
         self.levelLabel.textAlignment = NSTextAlignmentCenter;
@@ -170,8 +170,14 @@ NSInteger rowOffset = 95;
     
     self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"lvl %@", nil), self.user.level];
     self.levelLabel.backgroundColor = self.user.contributorColor;
-    [self.goldView updateRewardView:self.user.gold withDiffString:nil];
+    [self.levelLabel sizeToFit];
+    self.levelLabel.frame = CGRectMake(self.levelLabel.frame.origin.x, self.levelLabel.frame.origin.y, self.levelLabel.frame.size.width+10, 20);
+    [self.goldView updateView:self.user.gold withDiffString:nil];
+    [self.goldView sizeToFit];
+    self.goldView.frame = CGRectMake(rowOffset+rowWidth-self.goldView.frame.size.width, self.goldView.frame.origin.y, self.goldView.frame.size.width, self.goldView.frame.size.height);
     [self.gemView updateViewWithGemcount:self.user.gems withDiffString:nil];
+    [self.gemView sizeToFit];
+    self.gemView.frame = CGRectMake(self.goldView.frame.origin.x-self.gemView.frame.size.width-8, self.gemView.frame.origin.y, self.gemView.frame.size.width, self.gemView.frame.size.height);
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject

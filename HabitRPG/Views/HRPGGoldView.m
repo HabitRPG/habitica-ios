@@ -9,71 +9,82 @@
 #import "HRPGGoldView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
+@interface HRPGGoldView ()
+
+@property UIImageView *goldImageView;
+@property UILabel *goldLabel;
+@property UIImageView *silverImageView;
+@property UILabel *silverLabel;
+@property UIView *moneyView;
+@property NSNumber *gold;
+
+@end
+
 @implementation HRPGGoldView
 
-UIImageView *goldImageView;
-UILabel *goldLabel;
-UIImageView *silverImageView;
-UILabel *silverLabel;
-UIView *moneyView;
-NSNumber *gold;
+
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
     if (self) {
-        goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, self.frame.size.height)];
-        goldImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [goldImageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]];
-        goldLabel = [[UILabel alloc] initWithFrame:CGRectMake(26, 0, 100, self.frame.size.height)];
-        goldLabel.text = [NSString stringWithFormat:@"%ld", (long) [gold integerValue]];
-        [goldLabel sizeToFit];
+        self.goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, self.frame.size.height)];
+        self.goldImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.goldImageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]];
+        self.goldLabel = [[UILabel alloc] initWithFrame:CGRectMake(26, 0, 100, self.frame.size.height)];
+        self.goldLabel.text = [NSString stringWithFormat:@"%ld", (long) [self.gold integerValue]];
+        [self.goldLabel sizeToFit];
         
         
-        silverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(30 + goldLabel.frame.size.width, 0, 25, self.frame.size.height)];
-        silverImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [silverImageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_silver.png"]];
-        silverLabel = [[UILabel alloc] initWithFrame:CGRectMake(30 + goldLabel.frame.size.width + 26, 0, 100, self.frame.size.height)];
-        int silver = ([gold floatValue] - [gold integerValue]) * 100;
-        silverLabel.text = [NSString stringWithFormat:@"%d", silver];
-        [silverLabel sizeToFit];
+        self.silverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(30 + self.goldLabel.frame.size.width, 0, 25, self.frame.size.height)];
+        self.silverImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.silverImageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_silver.png"]];
+        self.silverLabel = [[UILabel alloc] initWithFrame:CGRectMake(30 + self.goldLabel.frame.size.width + 26, 0, 100, self.frame.size.height)];
+        int silver = ([self.gold floatValue] - [self.gold integerValue]) * 100;
+        self.silverLabel.text = [NSString stringWithFormat:@"%d", silver];
+        [self.silverLabel sizeToFit];
         
-        [self addSubview:goldLabel];
-        [self addSubview:goldImageView];
-        [self addSubview:silverImageView];
-        [self addSubview:silverLabel];
+        [self addSubview:self.goldLabel];
+        [self addSubview:self.goldImageView];
+        [self addSubview:self.silverImageView];
+        [self addSubview:self.silverLabel];
     }
     
     return self;
 }
 
-- (void)updateRewardView:(NSNumber *)newGold withDiffString:(NSString *)amount {
+- (void)updateView:(NSNumber *)newGold withDiffString:(NSString *)amount {
     NSNumber *gold = newGold;
-    goldLabel.text = [NSString stringWithFormat:@"%ld", (long) [gold integerValue]];
-    [goldLabel sizeToFit];
+    self.goldLabel.text = [NSString stringWithFormat:@"%ld", (long) [gold integerValue]];
+    [self.goldLabel sizeToFit];
     
     int silver = ([gold floatValue] - [gold integerValue]) * 100;
-    silverLabel.text = [NSString stringWithFormat:@"%d", silver];
-    silverLabel.frame = CGRectMake(30 + goldLabel.frame.size.width + 26, 0, 100, 16);
+    self.silverLabel.text = [NSString stringWithFormat:@"%d", silver];
+    self.silverLabel.frame = CGRectMake(30 + self.goldLabel.frame.size.width + 26, 0, 100, 16);
     
-    [silverLabel sizeToFit];
-    silverImageView.frame = CGRectMake(30 + goldLabel.frame.size.width, 0, 25, 22);
+    [self.silverLabel sizeToFit];
+    self.silverImageView.frame = CGRectMake(30 + self.goldLabel.frame.size.width, 0, 25, 22);
 
     if (amount) {
         //animate the gold change
-        UILabel *updateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, goldLabel.frame.origin.y, goldLabel.frame.size.width + goldLabel.frame.origin.x, 16)];
+        UILabel *updateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.goldLabel.frame.origin.y, self.goldLabel.frame.size.width + self.goldLabel.frame.origin.x, 16)];
         updateLabel.font = [UIFont systemFontOfSize:13.0f];
         updateLabel.textAlignment = NSTextAlignmentRight;
         updateLabel.text = amount;
         updateLabel.textColor = [UIColor redColor];
-        [moneyView addSubview:updateLabel];
+        [self.moneyView addSubview:updateLabel];
         [UIView animateWithDuration:0.3 animations:^() {
-            updateLabel.frame = CGRectMake(0, 25, goldLabel.frame.size.width + goldLabel.frame.origin.x, 16);
+            updateLabel.frame = CGRectMake(0, 25, self.goldLabel.frame.size.width + self.goldLabel.frame.origin.x, 16);
             updateLabel.alpha = 0.0f;
         }                completion:^(BOOL completition) {
             [updateLabel removeFromSuperview];
         }];
     }
 }
+
+- (void)sizeToFit {
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.silverLabel.frame.origin.x+self.silverLabel.frame.size.width, self.frame.size.height);
+}
+
 
 @end

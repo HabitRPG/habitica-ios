@@ -9,34 +9,42 @@
 #import "HRPGGemView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@implementation HRPGGemView
+@interface HRPGGemView ()
 
-UIImageView *gemImageView;
-UILabel *gemLabel;
-NSNumber *gems;
+@property UIImageView *gemImageView;
+@property UILabel *gemLabel;
+@property NSNumber *gems;
+
+@end
+
+@implementation HRPGGemView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
     if (self) {
-        gemImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, self.frame.size.height)];
-        gemImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [gemImageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/Pet_Currency_Gem.png"]];
-        gemLabel = [[UILabel alloc] initWithFrame:CGRectMake(26, 0, 100, self.frame.size.height)];
-        gemLabel.text = [NSString stringWithFormat:@"%ld", (long) [gems integerValue]];
-        [gemLabel sizeToFit];
+        self.gemImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, self.frame.size.height)];
+        self.gemImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.gemImageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/Pet_Currency_Gem.png"]];
+        self.gemLabel = [[UILabel alloc] initWithFrame:CGRectMake(26, 0, 100, self.frame.size.height)];
+        self.gemLabel.text = [NSString stringWithFormat:@"%ld", (long) [self.gems integerValue]];
+        [self.gemLabel sizeToFit];
         
-        [self addSubview:gemLabel];
-        [self addSubview:gemImageView];
+        [self addSubview:self.gemLabel];
+        [self addSubview:self.gemImageView];
     }
     
     return self;
 }
 
 - (void)updateViewWithGemcount:(NSNumber *)gemCount withDiffString:(NSString *)amount {
-    gems = gemCount;
-    gemLabel.text = [NSString stringWithFormat:@"%ld", (long) [gemCount integerValue]];
-    [gemLabel sizeToFit];
+    self.gems = gemCount;
+    self.gemLabel.text = [NSString stringWithFormat:@"%ld", (long) [gemCount integerValue]];
+    [self.gemLabel sizeToFit];
+}
+
+- (void)sizeToFit {
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.gemLabel.frame.origin.x+self.gemLabel.frame.size.width, self.frame.size.height);
 }
 
 @end

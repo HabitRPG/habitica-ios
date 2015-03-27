@@ -10,6 +10,6 @@
 
 @interface HRPGGoldView : UIView
 
-- (void)updateRewardView:(NSNumber *)newGold withDiffString:(NSString *)amount;
+- (void)updateView:(NSNumber *)newGold withDiffString:(NSString *)amount;
 
 @end
