@@ -40,7 +40,7 @@
         [self addSubview:self.diedLabel];
         
         self.deathImageView = [[UIImageView alloc] initWithFrame:CGRectMake(screenRect.size.width/2-57, screenRect.size.height/2-96, 114, 132)];
-        [self.deathImageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/GrimReaper.png"]
+        [self.deathImageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/GrimReaper.png"]
                        placeholderImage:[UIImage imageNamed:@"Placeholder"]];
         self.deathImageView.alpha = 0;
         [self addSubview:self.deathImageView];

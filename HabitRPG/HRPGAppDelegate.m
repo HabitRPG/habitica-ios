@@ -23,6 +23,7 @@
                                         kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
                                         kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop),
                                         kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
+                                        kCRToastNotificationPresentationTypeKey: @(CRToastPresentationTypeCover),
                                         kCRToastTimeIntervalKey: @(2.0),
                                         kCRToastAnimationInTimeIntervalKey : @(0.7),
                                         kCRToastAnimationOutTimeIntervalKey : @(0.7),

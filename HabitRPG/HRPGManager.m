@@ -23,6 +23,7 @@
 #import "HRPGNetworkIndicatorController.h"
 #import "RestKit/Network/RKPathMatcher.h"
 #import "HRPGImageOverlayManager.h"
+#import "HRPGDeathView.h"
 
 @interface HRPGManager ()
 @property NIKFontAwesomeIconFactory *iconFactory;
@@ -1141,7 +1142,7 @@ NSString *currentUser;
         user.level = taskResponse.level;
         NSNumber *expDiff = [NSNumber numberWithFloat:([taskResponse.experience floatValue] - [user.experience floatValue])];
         user.experience = taskResponse.experience;
-        NSNumber *healthDiff = [NSNumber numberWithFloat:([user.health floatValue] - [taskResponse.health floatValue])];
+        NSNumber *healthDiff = [NSNumber numberWithFloat:([taskResponse.health floatValue] - [user.health floatValue])];
         user.health = taskResponse.health;
         user.magic = taskResponse.magic;
 
@@ -1152,6 +1153,12 @@ NSString *currentUser;
         if ([task.type isEqual:@"daily"] || [task.type isEqual:@"todo"]) {
             task.completed = [NSNumber numberWithBool:([withDirection isEqual:@"up"])];
         }
+        
+        if (user && [user.health integerValue] <= 0) {
+            HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
+            [deathView show];
+        }
+        
         if (taskResponse.dropKey) {
             NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
             // Edit the entity name as appropriate.
@@ -1822,10 +1829,10 @@ NSString *currentUser;
 }
 
 - (void)displayTaskSuccessNotification:(NSNumber *)healthDiff withExperienceDiff:(NSNumber *)expDiff withGoldDiff:(NSNumber *)goldDiff {
-    UIColor *notificationColor = [UIColor colorWithRed:0.768 green:0.782 blue:0.105 alpha:1.000];
+    UIColor *notificationColor = [UIColor colorWithRed:0.973 green:0.753 blue:0.000 alpha:1.000];
     NSString *content;
     if ([healthDiff intValue] < 0) {
-        notificationColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
+        notificationColor = [UIColor colorWithRed:0.733 green:0.208 blue:0.220 alpha:1.000];
         content = [NSString stringWithFormat:@"Health: %.1f", [healthDiff floatValue]];
     } else {
         content = [NSString stringWithFormat:@"Experience: %ld\nGold: %.2f", (long) [expDiff integerValue], [goldDiff floatValue]];
