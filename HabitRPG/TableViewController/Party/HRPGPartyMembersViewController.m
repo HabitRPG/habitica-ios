@@ -9,7 +9,10 @@
 #import "HRPGPartyMembersViewController.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGUserProfileViewController.h"
+#import "HRPGLabeledProgressBar.h"
 #import "User.h"
+#import <NIKFontAwesomeIconFactory.h>
+#import <NIKFontAwesomeIconFactory+iOS.h>
 
 @interface HRPGPartyMembersViewController ()
 @property NSString *readableName;
@@ -17,6 +20,7 @@
 @property NSIndexPath *openedIndexPath;
 @property NSString *sortKey;
 @property BOOL sortAscending;
+@property NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
@@ -43,6 +47,10 @@ NSString *partyID;
         self.sortKey = @"partyPosition";
         self.sortAscending = NO;
     }
+    
+    self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+    self.iconFactory.size = 15;
+    self.iconFactory.renderingMode = UIImageRenderingModeAlwaysTemplate;
 }
 
 #pragma mark - Table view data source
@@ -164,10 +172,14 @@ NSString *partyID;
     UIImageView *avatarView = (UIImageView *) [cell viewWithTag:2];
     avatarView.image = nil;
     [user setAvatarOnImageView:avatarView withPetMount:NO onlyHead:NO useForce:NO];
-    UILabel *healthLabel = (UILabel *) [cell viewWithTag:3];
-    healthLabel.text = [NSString stringWithFormat:@"%ld / 50", (long) [user.health integerValue]];
-    UIProgressView *healthBar = (UIProgressView *) [cell viewWithTag:4];
-    healthBar.progress = [user.health floatValue] / 50.0f;
+    
+    HRPGLabeledProgressBar *healthLabel = (HRPGLabeledProgressBar *) [cell viewWithTag:3];
+    healthLabel.color = [UIColor colorWithRed:0.773 green:0.235 blue:0.247 alpha:1.000];
+    healthLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.976 green:0.925 blue:0.925 alpha:1.000];
+    healthLabel.icon = [self.iconFactory createImageForIcon:NIKFontAwesomeIconHeart];
+    healthLabel.value = [user.health integerValue];
+    healthLabel.maxValue = 50;
+    
     UILabel *levelLabel = (UILabel *) [cell viewWithTag:5];
     levelLabel.text = [NSString stringWithFormat:@"LVL %@", user.level];
     UILabel *classLabel = (UILabel *) [cell viewWithTag:6];

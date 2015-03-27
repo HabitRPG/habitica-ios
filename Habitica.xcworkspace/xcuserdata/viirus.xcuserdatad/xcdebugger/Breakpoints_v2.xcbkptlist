@@ -448,11 +448,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG/TableViewController/HRPGUserProfileViewController.m"
-            timestampString = "449188626.357241"
+            timestampString = "449189931.76638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "-configureCell:atIndexPath:usForce:"
             landmarkType = "5">
          </BreakpointContent>
