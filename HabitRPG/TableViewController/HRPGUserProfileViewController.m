@@ -10,9 +10,13 @@
 #import "HRPGManager.h"
 #import "User.h"
 #import "NSMutableAttributedString_GHFMarkdown.h"
+#import "HRPGLabeledProgressBar.h"
+#import <NIKFontAwesomeIcon.h>
+#import <NIKFontAwesomeIconFactory+iOS.h>
 
 @interface HRPGUserProfileViewController ()
 @property (nonatomic, readonly, getter=getUser) User *user;
+@property NIKFontAwesomeIconFactory *iconFactory;
 @end
 
 @implementation HRPGUserProfileViewController
@@ -21,6 +25,11 @@
     [super viewDidLoad];
     
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
+    
+    
+    self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+    self.iconFactory.size = 15;
+    self.iconFactory.renderingMode = UIImageRenderingModeAlwaysTemplate;
     
     [self.sharedManager fetchMember:self.userID onSuccess:^() {
         
@@ -88,6 +97,7 @@
     if (indexPath.section == 0) {
         switch (indexPath.item) {
             case 0:
+                
                 [self configureCell:cell atIndexPath:indexPath];
                 break;
             case 1: {
@@ -221,33 +231,34 @@
         UILabel *levelLabel = (UILabel *) [cell viewWithTag:1];
         levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@", nil), user.level];
         
-        UILabel *healthLabel = (UILabel *) [cell viewWithTag:2];
-        healthLabel.text = [NSString stringWithFormat:@"%ld/%d", (long) [user.health integerValue], 50];
-        UIProgressView *healthProgress = (UIProgressView *) [cell viewWithTag:3];
-        healthProgress.progress = ([user.health floatValue] / 50.0);
+        HRPGLabeledProgressBar *healthLabel = (HRPGLabeledProgressBar *) [cell viewWithTag:2];
+        healthLabel.color = [UIColor colorWithRed:0.773 green:0.235 blue:0.247 alpha:1.000];
+        healthLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.976 green:0.925 blue:0.925 alpha:1.000];
+        healthLabel.icon = [self.iconFactory createImageForIcon:NIKFontAwesomeIconHeart];
+        healthLabel.value = [user.health integerValue];
+        healthLabel.maxValue = 50;
         
-        UILabel *experienceLabel = (UILabel *) [cell viewWithTag:4];
-        experienceLabel.text = [NSString stringWithFormat:@"%ld/%@", (long) [user.experience integerValue], user.nextLevel];
-        UIProgressView *experienceProgress = (UIProgressView *) [cell viewWithTag:5];
-        experienceProgress.progress = ([user.experience floatValue] / [user.nextLevel floatValue]);
+        HRPGLabeledProgressBar *experienceLabel = (HRPGLabeledProgressBar *) [cell viewWithTag:3];
+        experienceLabel.color = [UIColor colorWithRed:0.969 green:0.765 blue:0.027 alpha:1.000];
+        experienceLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.996 green:0.980 blue:0.922 alpha:1.000];
+        experienceLabel.icon = [self.iconFactory createImageForIcon:NIKFontAwesomeIconStar];
+        experienceLabel.value = [user.experience integerValue];
+        experienceLabel.maxValue = [user.nextLevel integerValue];
         
-        UILabel *magicLabel = (UILabel *) [cell viewWithTag:6];
+        HRPGLabeledProgressBar *magicLabel = (HRPGLabeledProgressBar *) [cell viewWithTag:4];
         
-        UIProgressView *magicProgress = (UIProgressView *) [cell viewWithTag:7];
         if ([user.level integerValue] >= 10) {
-            magicLabel.text = [NSString stringWithFormat:@"%ld/%@", (long) [user.magic integerValue], user.maxMagic];
-            magicProgress.progress = ([user.magic floatValue] / [user.maxMagic floatValue]);
+            magicLabel.color = [UIColor colorWithRed:0.259 green:0.412 blue:0.902 alpha:1.000];
+            magicLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.925 green:0.945 blue:0.992 alpha:1.000];
+            magicLabel.icon = [self.iconFactory createImageForIcon:NIKFontAwesomeIconFire];
+            magicLabel.value = [user.magic integerValue];
+            magicLabel.maxValue = [user.maxMagic integerValue];
             magicLabel.hidden = NO;
-            magicProgress.hidden = NO;
         } else {
             magicLabel.hidden = YES;
-            magicProgress.hidden = YES;
         }
         UIImageView *imageView = (UIImageView *) [cell viewWithTag:8];
         [user setAvatarOnImageView:imageView useForce:force];
-        
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        cell.backgroundColor = [UIColor colorWithWhite:0.973 alpha:1.000];
     }
 }
 
