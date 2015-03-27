@@ -184,43 +184,12 @@
             checklistLabel.hidden = YES;
         }
         
-        if (task.duedate) {
-            UILabel *subLabel = (UILabel *) [cell viewWithTag:4];
-            subLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
-            NSDate *now = [NSDate date];
-            NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-            NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:now];
-            [components setHour:0];
-            NSDate *today = [calendar dateFromComponents:components];
-            if ([task.duedate compare:today] == NSOrderedAscending) {
-                subLabel.textColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
-                subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due %@", nil), [self.dateFormatter stringFromDate:task.duedate]];
-            } else {
-                subLabel.textColor = [UIColor grayColor];
-                NSCalendar *calendar = [NSCalendar currentCalendar];
-                NSDateComponents *differenceValue = [calendar components:NSCalendarUnitDay
-                                                                fromDate:today toDate:task.duedate options:0];
-                if ([differenceValue day] < 7) {
-                    if ([differenceValue day] == 0) {
-                        subLabel.textColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
-                        subLabel.text = NSLocalizedString(@"Due today", nil);
-                    } else if ([differenceValue day] == 1) {
-                        subLabel.text = NSLocalizedString(@"Due tomorrow", nil);
-                    } else {
-                        subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due in %d days", nil), [differenceValue day]];
-                    }
-                } else {
-                    subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due until %@", nil), [self.dateFormatter stringFromDate:task.duedate]];
-                }
-            }
-        }
-        
         if ([task.completed boolValue]) {
             checkBox.boxColor = [UIColor lightGrayColor];
             checkBox.checkColor = [UIColor darkGrayColor];
             self.checkIconFactory.colors = @[[UIColor darkGrayColor]];
-            label.textColor = [UIColor lightGrayColor];
-            cell.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.000];
+            label.textColor = [UIColor darkGrayColor];
+            cell.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.000];
             [checkBox setChecked:YES animated:YES];
             checkBox.wasTouched = ^() {
                 [self addActivityCounter];
@@ -243,13 +212,47 @@
             if (![task dueToday]) {
                 checkBox.boxColor = [UIColor lightGrayColor];
                 checkBox.checkColor = [UIColor darkGrayColor];
-                label.textColor = [UIColor lightGrayColor];
-                cell.backgroundColor = [UIColor whiteColor];
+                label.textColor = [UIColor darkGrayColor];
+                cell.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.000];
             } else {
                 checkBox.boxColor = [task taskColor];
                 checkBox.checkColor = [UIColor darkGrayColor];
                 cell.backgroundColor = [task lightTaskColor];
                 label.textColor = [UIColor blackColor];
+            }
+        }
+        
+        if (task.duedate) {
+            UILabel *subLabel = (UILabel *) [cell viewWithTag:4];
+            subLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
+            NSDate *now = [NSDate date];
+            NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+            NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:now];
+            [components setHour:0];
+            NSDate *today = [calendar dateFromComponents:components];
+            if ([task.duedate compare:today] == NSOrderedAscending) {
+                if (![task.completed boolValue]) {
+                    cell.backgroundColor = [UIColor colorWithRed:0.824 green:0.600 blue:0.545 alpha:1.000];
+                    checkBox.boxColor = [UIColor colorWithRed:0.725 green:0.176 blue:0.188 alpha:1.000];
+                }
+                subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due %@", nil), [self.dateFormatter stringFromDate:task.duedate]];
+            } else {
+                subLabel.textColor = [UIColor grayColor];
+                NSCalendar *calendar = [NSCalendar currentCalendar];
+                NSDateComponents *differenceValue = [calendar components:NSCalendarUnitDay
+                                                                fromDate:today toDate:task.duedate options:0];
+                if ([differenceValue day] < 7) {
+                    if ([differenceValue day] == 0) {
+                        subLabel.textColor = [UIColor colorWithRed:0.725 green:0.176 blue:0.188 alpha:1.000];
+                        subLabel.text = NSLocalizedString(@"Due today", nil);
+                    } else if ([differenceValue day] == 1) {
+                        subLabel.text = NSLocalizedString(@"Due tomorrow", nil);
+                    } else {
+                        subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due in %d days", nil), [differenceValue day]];
+                    }
+                } else {
+                    subLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due until %@", nil), [self.dateFormatter stringFromDate:task.duedate]];
+                }
             }
         }
     }

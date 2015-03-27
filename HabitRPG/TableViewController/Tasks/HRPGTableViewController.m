@@ -230,10 +230,6 @@ float displayWidth;
     }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-    // fix for separators bug in iOS 7
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
 //FIXME
     if (indexPath.section == 1) {

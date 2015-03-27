@@ -118,7 +118,7 @@
         cell.backgroundColor = [UIColor lightGrayColor];
         if ([item.completed boolValue]) {
             self.checkIconFactory.colors = @[[UIColor whiteColor]];
-            label.textColor = [UIColor darkTextColor];
+            label.textColor = [UIColor whiteColor];
             checkBox.wasTouched = ^() {
                 item.completed = [NSNumber numberWithBool:NO];
                 [self addActivityCounter];
@@ -177,8 +177,8 @@
             checkBox.boxColor = [UIColor lightGrayColor];
             checkBox.checkColor = [UIColor darkGrayColor];
             self.checkIconFactory.colors = @[[UIColor darkGrayColor]];
-            label.textColor = [UIColor lightGrayColor];
-            cell.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.000];
+            label.textColor = [UIColor darkGrayColor];
+            cell.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.000];
             [checkBox setChecked:YES animated:YES];
             streakLabel.textColor = [UIColor darkGrayColor];
             checkBox.wasTouched = ^() {
@@ -202,9 +202,9 @@
             if (![task dueToday]) {
                 checkBox.boxColor = [UIColor lightGrayColor];
                 checkBox.checkColor = [UIColor darkGrayColor];
-                label.textColor = [UIColor lightGrayColor];
-                cell.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.000];
-                streakLabel.textColor = [UIColor blackColor];
+                label.textColor = [UIColor darkGrayColor];
+                cell.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.000];
+                streakLabel.textColor = [UIColor darkGrayColor];
             } else {
                 checkBox.boxColor = [task taskColor];
                 checkBox.checkColor = [UIColor darkGrayColor];
