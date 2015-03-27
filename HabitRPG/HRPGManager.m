@@ -1833,9 +1833,9 @@ NSString *currentUser;
     NSString *content;
     if ([healthDiff intValue] < 0) {
         notificationColor = [UIColor colorWithRed:0.733 green:0.208 blue:0.220 alpha:1.000];
-        content = [NSString stringWithFormat:@"Health: %.1f", [healthDiff floatValue]];
+        content = [NSString stringWithFormat:@"%.1f HP", [healthDiff floatValue]];
     } else {
-        content = [NSString stringWithFormat:@"Experience: %ld\nGold: %.2f", (long) [expDiff integerValue], [goldDiff floatValue]];
+        content = [NSString stringWithFormat:@"You earned %ld experience and %.2f gold on your adventures", (long) [expDiff integerValue], [goldDiff floatValue]];
     }
     NSDictionary *options = @{kCRToastTextKey : content,
             kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),

@@ -72,7 +72,7 @@ NSInteger rowOffset = 95;
         self.experienceLabel.icon = [iconFactory createImageForIcon:NIKFontAwesomeIconStar];
         [self addSubview:self.experienceLabel];
         
-        self.magicLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset+(rowWidth+8)/2, margin+rowHeight, rowWidth/2-4, rowHeight)];
+        self.magicLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset+(rowWidth+8+margin)/2, margin+rowHeight, (rowWidth-margin)/2-4, rowHeight)];
         self.magicLabel.color = [UIColor colorWithRed:0.259 green:0.412 blue:0.902 alpha:1.000];
         self.magicLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.925 green:0.945 blue:0.992 alpha:1.000];
         self.magicLabel.icon = [iconFactory createImageForIcon:NIKFontAwesomeIconFire];
@@ -162,7 +162,7 @@ NSInteger rowOffset = 95;
         self.magicLabel.value = [self.user.magic integerValue];
         self.magicLabel.maxValue = [self.user.maxMagic integerValue];
         self.magicLabel.hidden = NO;
-        self.experienceLabel.frame = CGRectMake(rowOffset, margin+rowHeight, rowWidth/2, rowHeight);
+        self.experienceLabel.frame = CGRectMake(rowOffset, margin+rowHeight, rowWidth/2-margin/2, rowHeight);
     } else {
         self.magicLabel.hidden = YES;
         self.experienceLabel.frame = CGRectMake(rowOffset, margin+rowHeight, rowWidth, rowHeight);

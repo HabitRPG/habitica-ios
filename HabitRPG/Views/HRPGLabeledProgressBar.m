@@ -40,6 +40,7 @@
     _color = color;
     
     self.progressBar.barColor = color;
+    self.iconView.tintColor = color;
 }
 
 - (void)setIcon:(UIImage *)icon {
