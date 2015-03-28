@@ -72,13 +72,13 @@ NSInteger rowOffset = 145;
         self.experienceLabel.icon = [iconFactory createImageForIcon:NIKFontAwesomeIconStar];
         [self addSubview:self.experienceLabel];
         
-        self.magicLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset, (margin+rowHeight)*2, rowWidth, rowHeight)];
+        self.magicLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset, margin+rowHeight*2, rowWidth, rowHeight)];
         self.magicLabel.color = [UIColor colorWithRed:0.259 green:0.412 blue:0.902 alpha:1.000];
         self.magicLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.925 green:0.945 blue:0.992 alpha:1.000];
         self.magicLabel.icon = [iconFactory createImageForIcon:NIKFontAwesomeIconFire];
         [self addSubview:self.magicLabel];
         
-        self.levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(rowOffset+20, (margin+rowHeight)*3+(rowHeight-margin-20)/2, 45, 20)];
+        self.levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(rowOffset+20, self.frame.size.height-27.5, 45, 20)];
         self.levelLabel.font = [UIFont systemFontOfSize:13];
         self.levelLabel.textColor = [UIColor whiteColor];
         self.levelLabel.backgroundColor = [UIColor blackColor];
@@ -87,10 +87,10 @@ NSInteger rowOffset = 145;
         self.levelLabel.layer.borderWidth = 0.5;
         [self addSubview:self.levelLabel];
         
-        self.goldView = [[HRPGGoldView alloc] initWithFrame:CGRectMake(rowOffset+(rowWidth+margin)/2, (margin+rowHeight)*3+(rowHeight-margin-20)/2, (rowWidth-margin)/2, 20)];
+        self.goldView = [[HRPGGoldView alloc] initWithFrame:CGRectMake(rowOffset+(rowWidth+margin)/2, margin+rowHeight*3+(rowHeight-20)/2, (rowWidth-margin)/2, 20)];
         [self addSubview:self.goldView];
         
-        self.gemView = [[HRPGGemView alloc] initWithFrame:CGRectMake(rowOffset, (margin+rowHeight)*3+(rowHeight-margin-20)/2, (rowWidth-margin)/2, 20)];
+        self.gemView = [[HRPGGemView alloc] initWithFrame:CGRectMake(rowOffset, margin+rowHeight*3+(rowHeight-20)/2, (rowWidth-margin)/2, 20)];
         [self addSubview:self.gemView];
         
         [self setData];
