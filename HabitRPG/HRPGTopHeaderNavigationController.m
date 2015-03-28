@@ -15,7 +15,7 @@
 
 @implementation HRPGTopHeaderNavigationController
 
-CGFloat topHeaderHeight = 100;
+CGFloat topHeaderHeight = 147;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

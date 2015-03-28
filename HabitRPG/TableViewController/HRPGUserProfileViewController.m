@@ -24,8 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
-    
     self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     self.iconFactory.size = 15;
     self.iconFactory.renderingMode = UIImageRenderingModeAlwaysTemplate;
@@ -65,7 +63,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return nil;
+            return @"";
         default:
             return @"";
     }
