@@ -1,3 +1,4 @@
+
 //
 //  HRPGManager.m
 //  HabitRPG
@@ -309,6 +310,7 @@ NSString *currentUser;
             @"_id" : @"id",
             @"profile.name" : @"username",
             @"preferences.dayStart" : @"dayStart",
+            @"preferences.disableClasses" : @"disableClass",
             @"preferences.sleep" : @"sleep",
             @"preferences.skin" : @"skin",
             @"preferences.size" : @"size",
@@ -359,7 +361,10 @@ NSString *currentUser;
             @"contributor.contributions" : @"contributions",
             @"party.order" : @"partyOrder",
             @"items.pets" : @"petCountArray",
-            @"flags.newStuff" : @"habitNewStuff"
+            @"flags.newStuff" : @"habitNewStuff",
+            @"flags.dropsEnabled" : @"dropsEnabled",
+            @"flags.itemsEnabled" : @"itemsEnabled",
+            @"flags.selectedClass" : @"selectedClass",
     }];
     entityMapping.identificationAttributes = @[@"id"];
     RKEntityMapping *rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];

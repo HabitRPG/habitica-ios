@@ -28,6 +28,8 @@
 @dynamic currentMount;
 @dynamic currentPet;
 @dynamic dayStart;
+@dynamic disableClass;
+@dynamic dropsEnabled;
 @dynamic equippedArmor;
 @dynamic equippedBack;
 @dynamic equippedHead;
@@ -46,6 +48,7 @@
 @dynamic hclass;
 @dynamic health;
 @dynamic id;
+@dynamic itemsEnabled;
 @dynamic level;
 @dynamic magic;
 @dynamic maxHealth;
@@ -73,6 +76,7 @@
 @dynamic lastAvatarFull;
 @dynamic lastAvatarNoPet;
 @dynamic lastAvatarHead;
+@dynamic selectedClass;
 @dynamic useCostume;
 @dynamic partyOrder;
 @dynamic partyPosition;

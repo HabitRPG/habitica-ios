@@ -16,6 +16,9 @@
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 
 @interface HRPGProfileViewController ()
+
+@property User *user;
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
@@ -35,10 +38,10 @@ NIKFontAwesomeIconFactory *iconFactory;
         [self.fetchedResultsController.fetchRequest setPredicate:predicate];
         NSError *error;
         [self.fetchedResultsController performFetch:&error];
-        User *user = [self getUser];
-        if (user) {
-            username = user.username;
-            userLevel = [user.level integerValue];
+        self.user = [self getUser];
+        if (self.user) {
+            username = self.user.username;
+            userLevel = [self.user.level integerValue];
         }
         [self.tableView reloadData];
     }
@@ -53,10 +56,10 @@ NIKFontAwesomeIconFactory *iconFactory;
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 
-    User *user = [self getUser];
-    if (user) {
-        username = user.username;
-        userLevel = [user.level integerValue];
+    self.user = [self getUser];
+    if (self.user) {
+        username = self.user.username;
+        userLevel = [self.user.level integerValue];
     } else {
         //User does not exist in database. Fetch it.
         [self refresh];
@@ -115,7 +118,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     switch (section) {
         case 0:
             //Below level 10 users don't have spells
-            if (userLevel <= 10) {
+            if ([self.user.level integerValue] <= 10 && [self.user.disableClass boolValue]) {
                 return 0;
             } else {
                 return 1;
@@ -182,7 +185,11 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 0) {
-        [self performSegueWithIdentifier:@"SpellSegue" sender:self];
+        if (![self.user.selectedClass boolValue] && ![self.user.disableClass boolValue]) {
+            [self performSegueWithIdentifier:@"SelectClassSegue" sender:self];
+        } else {
+            [self performSegueWithIdentifier:@"SpellSegue" sender:self];
+        }
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         [self performSegueWithIdentifier:@"TavernSegue" sender:self];
     } else if (indexPath.section == 1 && indexPath.item == 1) {
@@ -211,7 +218,11 @@ NIKFontAwesomeIconFactory *iconFactory;
     NSString *cellName = @"Cell";
     BOOL showIndicator = NO;
     if (indexPath.section == 0 && indexPath.item == 0) {
-        title = NSLocalizedString(@"Spells", nil);
+        if (![self.user.selectedClass boolValue] && ![self.user.disableClass boolValue]) {
+            title = NSLocalizedString(@"Select Class", nil);
+        } else {
+            title = NSLocalizedString(@"Spells", nil);
+        }
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         title = NSLocalizedString(@"Tavern", nil);
     } else if (indexPath.section == 1 && indexPath.item == 1) {

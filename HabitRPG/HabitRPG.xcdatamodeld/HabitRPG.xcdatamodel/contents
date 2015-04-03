@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14D105g" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6735" systemVersion="14D113c" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="BuyableItem" representedClassName="BuyableItem" isAbstract="YES" parentEntity="Item" syncable="YES">
         <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
@@ -186,6 +186,8 @@
         <attribute name="currentMount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="currentPet" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dayStart" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="disableClass" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="dropsEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="equippedArmor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="equippedBack" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="equippedHead" optional="YES" attributeType="String" syncable="YES"/>
@@ -206,6 +208,7 @@
         <attribute name="health" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="intelligence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="itemsEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastAvatarFull" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastAvatarHead" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastAvatarNoPet" optional="YES" attributeType="Date" syncable="YES"/>
@@ -222,6 +225,7 @@
         <attribute name="perception" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="petCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="petCountArray" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="selectedClass" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="shirt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="skin" optional="YES" attributeType="String" syncable="YES"/>
@@ -269,6 +273,6 @@
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="120"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="405"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="1290"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1350"/>
     </elements>
 </model>
