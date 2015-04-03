@@ -12,4 +12,7 @@
 
 - (CGFloat) getContentOffset;
 
+- (void)hideTopBar;
+- (void)showTopBar;
+
 @end

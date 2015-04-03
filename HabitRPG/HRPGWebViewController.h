@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRPGWebViewController : UIViewController
+@interface HRPGWebViewController : UIViewController <UIWebViewDelegate>
 
 @property NSString *url;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;

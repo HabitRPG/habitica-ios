@@ -7,6 +7,7 @@
 //
 
 #import "HRPGWebViewController.h"
+#import "HRPGTopHeaderNavigationController.h"
 
 @interface HRPGWebViewController ()
 
@@ -16,7 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.webView.delegate = self;
+    
+    [self.webView.scrollView setContentInset:UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height,0,0,0)];
+    self.webView.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height,0,0,0);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -26,7 +30,24 @@
     NSURL* nsUrl = [NSURL URLWithString:self.url];
     NSURLRequest* request = [NSURLRequest requestWithURL:nsUrl cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:30];
     [self.webView loadRequest:request];
+    
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
+        [navigationController hideTopBar];
+    }
+}
 
+- (void)viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
+        [navigationController showTopBar];
+    }
+    
+    [super viewWillDisappear:animated];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    
 }
 
 @end

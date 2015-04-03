@@ -11,6 +11,7 @@
 
 @interface HRPGTopHeaderNavigationController ()
 @property HRPGUserTopHeader *topHeader;
+@property id backgroundView;
 @end
 
 @implementation HRPGTopHeaderNavigationController
@@ -27,22 +28,22 @@ CGFloat topHeaderHeight = 147;
     self.navigationBar.translucent = YES;
     
     
-    self.topHeader = [[HRPGUserTopHeader alloc] initWithFrame:CGRectMake(0, self.navigationBar.frame.size.height+20, self.navigationBar.frame.size.width, topHeaderHeight)];
+    self.topHeader = [[HRPGUserTopHeader alloc] initWithFrame:CGRectMake(0, self.navigationBar.frame.size.height+[self statusBarHeight], self.navigationBar.frame.size.width, topHeaderHeight)];
     
     if ([UIVisualEffectView class]) {
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
         UIVisualEffectView *backgroundView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        [backgroundView setFrame:CGRectMake(0, 0, screenRect.size.width, self.navigationBar.frame.size.height+20+topHeaderHeight)];
+        [backgroundView setFrame:CGRectMake(0, 0, screenRect.size.width, self.navigationBar.frame.size.height+[self statusBarHeight]+topHeaderHeight)];
         
         UIVisualEffectView * seperatorView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        [seperatorView setFrame:CGRectMake(0, self.navigationBar.frame.size.height+20, screenRect.size.width, 1)];
+        [seperatorView setFrame:CGRectMake(0, self.navigationBar.frame.size.height+[self statusBarHeight]-1, screenRect.size.width, 1)];
         [backgroundView.contentView addSubview:seperatorView];
         UIView *seperatorLineView = [[UIView alloc] initWithFrame:seperatorView.frame];
         seperatorView.backgroundColor = [UIColor blackColor];
         [seperatorView.contentView addSubview:seperatorLineView];
         
         UIVisualEffectView * bottomBorderView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        [bottomBorderView setFrame:CGRectMake(0, self.navigationBar.frame.size.height+19+topHeaderHeight, screenRect.size.width, 1)];
+        [bottomBorderView setFrame:CGRectMake(0, self.navigationBar.frame.size.height+[self statusBarHeight]-1+topHeaderHeight, screenRect.size.width, 1)];
         [backgroundView.contentView addSubview:bottomBorderView];
         UIView *bottomBorderLineView = [[UIView alloc] initWithFrame:bottomBorderView.frame];
         bottomBorderView.backgroundColor = [UIColor blackColor];
@@ -51,21 +52,58 @@ CGFloat topHeaderHeight = 147;
         [self.view insertSubview:backgroundView belowSubview:self.navigationBar];
         
         [backgroundView addSubview:self.topHeader];
+        self.backgroundView = backgroundView;
     } else {
         UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, self.navigationBar.frame.size.height+20+topHeaderHeight)];
         backgroundView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.950];
         
-        UIView *seperatorView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationBar.frame.size.height+20, screenRect.size.width, 1)];
+        UIView *seperatorView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationBar.frame.size.height+[self statusBarHeight]-1, screenRect.size.width, 1)];
         seperatorView.backgroundColor = [UIColor colorWithWhite:0.333 alpha:0.720];
         [backgroundView addSubview:seperatorView];
         
         [self.view insertSubview:backgroundView belowSubview:self.navigationBar];
         [backgroundView addSubview:self.topHeader];
+        self.backgroundView = backgroundView;
     }
 }
 
 - (CGFloat)getContentOffset {
     return topHeaderHeight;
+}
+
+- (void)showTopBar {
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    [UIView animateWithDuration:0.3 animations:^() {
+        if ([UIVisualEffectView class]) {
+            UIVisualEffectView *backgroundView = self.backgroundView;
+            backgroundView.frame = CGRectMake(0, 0, screenRect.size.width, self.navigationBar.frame.size.height+[self statusBarHeight]+topHeaderHeight);
+        } else {
+            UIView *backgroundView = self.backgroundView;
+            backgroundView.frame = CGRectMake(0, 0, screenRect.size.width, self.navigationBar.frame.size.height+[self statusBarHeight]+topHeaderHeight);
+        }
+        self.topHeader.alpha = 1;
+    }];
+
+}
+
+- (CGFloat)statusBarHeight {
+    CGSize statusBarSize = [[UIApplication sharedApplication] statusBarFrame].size;
+    CGFloat height = MIN(statusBarSize.width, statusBarSize.height);
+    return height;
+}
+
+- (void)hideTopBar {
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    [UIView animateWithDuration:0.3 animations:^() {
+        if ([UIVisualEffectView class]) {
+            UIVisualEffectView *backgroundView = self.backgroundView;
+            backgroundView.frame = CGRectMake(0, 0, screenRect.size.width, self.navigationBar.frame.size.height+[self statusBarHeight]);
+        } else {
+            UIView *backgroundView = self.backgroundView;
+            backgroundView.frame = CGRectMake(0, 0, screenRect.size.width, self.navigationBar.frame.size.height+[self statusBarHeight]);
+        }
+        self.topHeader.alpha = 0;
+    }];
 }
 
 @end
