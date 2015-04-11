@@ -8,9 +8,12 @@
 
 #import "HRPGTopHeaderNavigationController.h"
 #import "HRPGUserTopHeader.h"
+#import "UIView+Screenshot.h"
 
 @interface HRPGTopHeaderNavigationController ()
 @property HRPGUserTopHeader *topHeader;
+@property UIImageView *topHeaderImageView;
+@property BOOL isTopHeaderVisible;
 @property id backgroundView;
 @end
 
@@ -29,6 +32,7 @@ CGFloat topHeaderHeight = 147;
     
     
     self.topHeader = [[HRPGUserTopHeader alloc] initWithFrame:CGRectMake(0, self.navigationBar.frame.size.height+[self statusBarHeight], self.navigationBar.frame.size.width, topHeaderHeight)];
+    self.topHeaderImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.navigationBar.frame.size.height+[self statusBarHeight], self.navigationBar.frame.size.width, topHeaderHeight)];
     
     if ([UIVisualEffectView class]) {
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
@@ -52,6 +56,7 @@ CGFloat topHeaderHeight = 147;
         [self.view insertSubview:backgroundView belowSubview:self.navigationBar];
         
         [backgroundView addSubview:self.topHeader];
+        [backgroundView addSubview:self.topHeaderImageView];
         self.backgroundView = backgroundView;
     } else {
         UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, self.navigationBar.frame.size.height+20+topHeaderHeight)];
@@ -63,6 +68,7 @@ CGFloat topHeaderHeight = 147;
         
         [self.view insertSubview:backgroundView belowSubview:self.navigationBar];
         [backgroundView addSubview:self.topHeader];
+        [backgroundView addSubview:self.topHeaderImageView];
         self.backgroundView = backgroundView;
     }
 }
@@ -72,7 +78,11 @@ CGFloat topHeaderHeight = 147;
 }
 
 - (void)showTopBar {
+    if (self.isTopHeaderVisible) {
+        return;
+    }
     CGRect screenRect = [[UIScreen mainScreen] bounds];
+    self.topHeaderImageView.alpha = 1;
     [UIView animateWithDuration:0.3 animations:^() {
         if ([UIVisualEffectView class]) {
             UIVisualEffectView *backgroundView = self.backgroundView;
@@ -81,7 +91,10 @@ CGFloat topHeaderHeight = 147;
             UIView *backgroundView = self.backgroundView;
             backgroundView.frame = CGRectMake(0, 0, screenRect.size.width, self.navigationBar.frame.size.height+[self statusBarHeight]+topHeaderHeight);
         }
+        self.topHeaderImageView.frame = CGRectMake(0, self.navigationBar.frame.size.height+[self statusBarHeight], self.navigationBar.frame.size.width, topHeaderHeight);
+    } completion:^(BOOL finished) {
         self.topHeader.alpha = 1;
+        self.topHeaderImageView.alpha = 0;
     }];
 
 }
@@ -93,7 +106,13 @@ CGFloat topHeaderHeight = 147;
 }
 
 - (void)hideTopBar {
+    if (!self.isTopHeaderVisible) {
+        return;
+    }
     CGRect screenRect = [[UIScreen mainScreen] bounds];
+    self.topHeaderImageView.image = [self.topHeader pb_takeScreenshot];
+    self.topHeader.alpha = 0;
+    self.topHeaderImageView.alpha = 1;
     [UIView animateWithDuration:0.3 animations:^() {
         if ([UIVisualEffectView class]) {
             UIVisualEffectView *backgroundView = self.backgroundView;
@@ -102,7 +121,10 @@ CGFloat topHeaderHeight = 147;
             UIView *backgroundView = self.backgroundView;
             backgroundView.frame = CGRectMake(0, 0, screenRect.size.width, self.navigationBar.frame.size.height+[self statusBarHeight]);
         }
-        self.topHeader.alpha = 0;
+        self.topHeaderImageView.frame = CGRectMake(0, self.navigationBar.frame.size.height+[self statusBarHeight], self.navigationBar.frame.size.width, 0);
+    } completion:^(BOOL finished) {
+        self.topHeaderImageView.alpha = 0;
+        
     }];
 }
 

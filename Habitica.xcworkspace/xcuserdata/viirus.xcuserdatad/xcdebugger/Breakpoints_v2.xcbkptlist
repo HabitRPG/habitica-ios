@@ -524,7 +524,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG/TableViewController/HRPGProfileViewController.m"
@@ -559,13 +559,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HabitRPG/HRPGWebViewController.m"
-            timestampString = "449766286.924458"
+            filePath = "HabitRPG/HRPGTopHeaderNavigationController.m"
+            timestampString = "450435422.96994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "-viewWillAppear:"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-hideTopBar"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
