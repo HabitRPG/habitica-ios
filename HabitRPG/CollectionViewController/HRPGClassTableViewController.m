@@ -214,7 +214,7 @@
             [alertController addAction:cancelAction];
             
             UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:[NSString stringWithFormat:NSLocalizedString(@"I want to become a %@", nil), className] style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                [self.sharedManager updateUser:@{@"preferences.disableClasses": @NO, @"flags.classSelected": @YES, @"stats.class": self.classesArray[indexPath.item][3]} onSuccess:^() {
+                [self.sharedManager changeClass:self.classesArray[indexPath.item][3] onSuccess:^() {
                 }onError:^() {
                 }];
             }];
