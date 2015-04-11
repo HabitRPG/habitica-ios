@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRPGClassCollectionViewController : UICollectionViewController
+@interface HRPGClassTableViewController : UITableViewController
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 

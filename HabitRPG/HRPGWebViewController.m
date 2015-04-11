@@ -10,7 +10,7 @@
 #import "HRPGTopHeaderNavigationController.h"
 
 @interface HRPGWebViewController ()
-
+@property BOOL shouldReshowTopHeader;
 @end
 
 @implementation HRPGWebViewController
@@ -33,14 +33,21 @@
     
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
-        [navigationController hideTopBar];
+        if (navigationController.isTopHeaderVisible) {
+            [navigationController hideTopBar];
+            self.shouldReshowTopHeader = YES;
+        } else {
+            self.shouldReshowTopHeader = NO;
+        }
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
-        [navigationController showTopBar];
+        if (self.shouldReshowTopHeader) {
+            [navigationController showTopBar];
+        }
     }
     
     [super viewWillDisappear:animated];

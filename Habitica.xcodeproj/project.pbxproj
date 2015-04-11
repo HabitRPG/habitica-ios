@@ -82,7 +82,7 @@
 		D9ADD3511943BC0E006202C1 /* BuyableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD3501943BC0E006202C1 /* BuyableItem.m */; };
 		D9ADD35D19447057006202C1 /* HRPGBall.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD35C19447057006202C1 /* HRPGBall.m */; };
 		D9ADD3631944FDBE006202C1 /* HRPGTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD3621944FDBE006202C1 /* HRPGTagViewController.m */; };
-		D9AEEA701ACECDBC0076951B /* HRPGClassCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEEA6F1ACECDBC0076951B /* HRPGClassCollectionViewController.m */; };
+		D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */; };
 		D9AEEA731ACEDD470076951B /* HRPGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */; };
 		D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */; };
 		D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */; };
@@ -272,8 +272,8 @@
 		D9ADD35C19447057006202C1 /* HRPGBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGBall.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9ADD3611944FDBE006202C1 /* HRPGTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTagViewController.h; sourceTree = "<group>"; };
 		D9ADD3621944FDBE006202C1 /* HRPGTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTagViewController.m; sourceTree = "<group>"; };
-		D9AEEA6E1ACECDBC0076951B /* HRPGClassCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGClassCollectionViewController.h; sourceTree = "<group>"; };
-		D9AEEA6F1ACECDBC0076951B /* HRPGClassCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGClassCollectionViewController.m; sourceTree = "<group>"; };
+		D9AEEA6E1ACECDBC0076951B /* HRPGClassTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGClassTableViewController.h; sourceTree = "<group>"; };
+		D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGClassTableViewController.m; sourceTree = "<group>"; };
 		D9AEEA711ACEDD470076951B /* HRPGWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGWebViewController.h; sourceTree = "<group>"; };
 		D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGWebViewController.m; sourceTree = "<group>"; };
 		D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTabBarController.m; sourceTree = "<group>"; };
@@ -491,8 +491,8 @@
 				D98AD5531943986100AF6174 /* HRPGMountViewController.m */,
 				D9D96F01194B96FD00796FE7 /* HRPGMountMasterViewController.h */,
 				D9D96F02194B96FD00796FE7 /* HRPGMountMasterViewController.m */,
-				D9AEEA6E1ACECDBC0076951B /* HRPGClassCollectionViewController.h */,
-				D9AEEA6F1ACECDBC0076951B /* HRPGClassCollectionViewController.m */,
+				D9AEEA6E1ACECDBC0076951B /* HRPGClassTableViewController.h */,
+				D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */,
 			);
 			name = "Collection View Controller";
 			path = CollectionViewController;
@@ -964,7 +964,7 @@
 				D9ADD3631944FDBE006202C1 /* HRPGTagViewController.m in Sources */,
 				D9E0869118DF800F00BAF2EF /* HRPGTavernViewController.m in Sources */,
 				D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */,
-				D9AEEA701ACECDBC0076951B /* HRPGClassCollectionViewController.m in Sources */,
+				D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */,
 				D9AEEA731ACEDD470076951B /* HRPGWebViewController.m in Sources */,
 				D994B1491AD9177D008AE188 /* UIView+Screenshot.m in Sources */,
 				D97C71ED18F32FEF0089FDC6 /* Gear.m in Sources */,

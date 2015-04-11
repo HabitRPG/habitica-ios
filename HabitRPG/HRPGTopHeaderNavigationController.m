@@ -13,7 +13,6 @@
 @interface HRPGTopHeaderNavigationController ()
 @property HRPGUserTopHeader *topHeader;
 @property UIImageView *topHeaderImageView;
-@property BOOL isTopHeaderVisible;
 @property id backgroundView;
 @end
 
@@ -33,6 +32,9 @@ CGFloat topHeaderHeight = 147;
     
     self.topHeader = [[HRPGUserTopHeader alloc] initWithFrame:CGRectMake(0, self.navigationBar.frame.size.height+[self statusBarHeight], self.navigationBar.frame.size.width, topHeaderHeight)];
     self.topHeaderImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.navigationBar.frame.size.height+[self statusBarHeight], self.navigationBar.frame.size.width, topHeaderHeight)];
+    self.topHeaderImageView.contentMode = UIViewContentModeBottom;
+    self.topHeaderImageView.clipsToBounds = YES;
+    self.isTopHeaderVisible = YES;
     
     if ([UIVisualEffectView class]) {
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
@@ -95,6 +97,7 @@ CGFloat topHeaderHeight = 147;
     } completion:^(BOOL finished) {
         self.topHeader.alpha = 1;
         self.topHeaderImageView.alpha = 0;
+        self.isTopHeaderVisible = YES;
     }];
 
 }
@@ -124,7 +127,7 @@ CGFloat topHeaderHeight = 147;
         self.topHeaderImageView.frame = CGRectMake(0, self.navigationBar.frame.size.height+[self statusBarHeight], self.navigationBar.frame.size.width, 0);
     } completion:^(BOOL finished) {
         self.topHeaderImageView.alpha = 0;
-        
+        self.isTopHeaderVisible = NO;
     }];
 }
 

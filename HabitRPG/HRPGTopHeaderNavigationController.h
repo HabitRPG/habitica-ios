@@ -10,6 +10,8 @@
 
 @interface HRPGTopHeaderNavigationController : UINavigationController
 
+@property BOOL isTopHeaderVisible;
+
 - (CGFloat) getContentOffset;
 
 - (void)hideTopBar;
