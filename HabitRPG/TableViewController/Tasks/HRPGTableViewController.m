@@ -29,7 +29,6 @@
 @implementation HRPGTableViewController
 Task *editedTask;
 BOOL editable;
-float displayWidth;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,9 +40,6 @@ float displayWidth;
     self.refreshControl = refresh;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectTags:) name:@"tagsSelected"  object:nil];
-    
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    displayWidth = screenRect.size.width;
 }
 
 - (void)refresh {
@@ -201,7 +197,7 @@ float displayWidth;
     NSInteger height = 8;
     if ([task.type isEqualToString:@"habit"]) {
         //50 for each button and 1 for seperator
-        width = displayWidth - 117;
+        width = self.screenWidth - 117;
     } else if ([task.checklist count] > 0) {
         width = 210.0f;
     } else {

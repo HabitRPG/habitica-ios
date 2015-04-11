@@ -41,6 +41,9 @@
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
 
     self.activityCounter = 0;
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    self.screenWidth = screenRect.size.width;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

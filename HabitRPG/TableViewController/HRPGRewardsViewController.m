@@ -87,10 +87,10 @@ User *user;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     float height = 22.0f;
-    float width = 229.0f;
+    float width = self.screenWidth-111;
     MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
     if ([reward isKindOfClass:[Reward class]]) {
-        width = 270.0f;
+        width = self.screenWidth-50;
     }
     width = width - [[NSString stringWithFormat:@"%ld", (long) [reward.value integerValue]] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                                                                                          options:NSStringDrawingUsesLineFragmentOrigin
@@ -168,9 +168,7 @@ User *user;
     NSMutableArray *array = [[NSMutableArray alloc] init];
     NSMutableArray *inGameItemsArray = [[NSMutableArray alloc] init];
     NSMutableArray *customRewardsArray = [[NSMutableArray alloc] init];
-    for (id <NSFetchedResultsSectionInfo> section in [self.fetchedResultsController sections]) {
-        NSMutableArray *sectionArray = [[NSMutableArray alloc] init];
-        for (id reward in [section objects]) {
+    for (Reward *reward in self.fetchedResultsController.fetchedObjects) {
             if ([reward isKindOfClass:[Gear class]]) {
                 Gear *gear = reward;
                 if (gear.owned) {
@@ -198,27 +196,22 @@ User *user;
                         continue;
                     }
                 }
-                if (gear.index && [[sectionArray lastObject] index] && ![gear.klass isEqualToString:@"special"]) {
-                    if (![[(Gear*)[sectionArray lastObject] getCleanedClassName] isEqualToString:@"special"] && [[sectionArray lastObject] index] < gear.index) {
+                if (gear.index && [[inGameItemsArray lastObject] index] && ![gear.klass isEqualToString:@"special"]) {
+                    if (![[(Gear*)[inGameItemsArray lastObject] getCleanedClassName] isEqualToString:@"special"] && [[inGameItemsArray lastObject] index] < gear.index) {
                         //filter gear with lower level
                         continue;
-                    } else if ([[sectionArray lastObject] index] > gear.index) {
+                    } else if ([[inGameItemsArray lastObject] index] > gear.index) {
                         //remove last object if current one is of higher level
-                        [sectionArray removeLastObject];
+                        [inGameItemsArray removeLastObject];
                     }
                 }
-                [sectionArray addObject:reward];
-                
-                if (sectionArray.count > 0) {
-                    [inGameItemsArray addObjectsFromArray:sectionArray];
-                }
+                [inGameItemsArray addObject:reward];
             } else {
                 if ([reward isKindOfClass:[Reward class]]) {
                     [customRewardsArray addObject:reward];
                 } else {
                     [inGameItemsArray insertObject:reward atIndex:0];
                 }
-            }
         }
     }
     
@@ -250,7 +243,7 @@ User *user;
     NSArray *sortDescriptors = @[typeDescriptor, orderDescriptor, keyDescriptor];
     [fetchRequest setSortDescriptors:sortDescriptors];
 
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"type" cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 

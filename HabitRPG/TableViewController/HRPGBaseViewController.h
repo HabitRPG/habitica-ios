@@ -13,6 +13,7 @@
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic)  HRPGManager *sharedManager;
+@property CGFloat screenWidth;
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 
