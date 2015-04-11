@@ -364,7 +364,7 @@ NSString *currentUser;
             @"flags.newStuff" : @"habitNewStuff",
             @"flags.dropsEnabled" : @"dropsEnabled",
             @"flags.itemsEnabled" : @"itemsEnabled",
-            @"flags.selectedClass" : @"selectedClass",
+            @"flags.classSelected" : @"selectedClass",
     }];
     entityMapping.identificationAttributes = @[@"id"];
     RKEntityMapping *rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
