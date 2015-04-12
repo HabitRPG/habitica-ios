@@ -48,6 +48,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        self.navigationItem.leftBarButtonItem = nil;
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
         [navigationController hideTopBar];
     }
