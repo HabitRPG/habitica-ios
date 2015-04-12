@@ -24,6 +24,7 @@
 @property NSInteger activityCounter;
 @property UIBarButtonItem *navigationButton;
 @property HRPGActivityIndicator *activityIndicator;
+@property CGSize screenSize;
 @end
 
 @implementation HRPGMountViewController
@@ -35,7 +36,8 @@
     self.sharedManager = appdelegate.sharedManager;
     self.managedObjectContext = self.sharedManager.getManagedObjectContext;
 
-    
+    self.screenSize = [[UIScreen mainScreen] bounds].size;
+
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(preferredContentSizeChanged:)
@@ -117,9 +119,9 @@
                                          }
                             context:nil].size.height*2;
     if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
-        return CGSizeMake(150.f, height);
+        return CGSizeMake(self.screenSize.width/3-20, height);
     }
-    return CGSizeMake(145.0f, height);
+    return CGSizeMake(self.screenSize.width/2-15, height);
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {

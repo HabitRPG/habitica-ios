@@ -29,6 +29,7 @@
 @property (nonatomic) NSArray *sortedPets;
 @property UIBarButtonItem *navigationButton;
 @property NSInteger groupByKey;
+@property CGSize screenSize;
 @end
 
 @implementation HRPGPetMasterViewController
@@ -42,7 +43,8 @@ NSUserDefaults *defaults;
     self.sharedManager = appdelegate.sharedManager;
     self.managedObjectContext = self.sharedManager.getManagedObjectContext;
     
-    
+    self.screenSize = [[UIScreen mainScreen] bounds].size;
+
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(preferredContentSizeChanged:)
@@ -141,9 +143,9 @@ NSUserDefaults *defaults;
                                                    }
                                          context:nil].size.height;
     if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
-        return CGSizeMake(120.0f, height);
+        return CGSizeMake(self.screenSize.width/4-15, height);
     }
-    return CGSizeMake(100.0f, height);
+    return CGSizeMake(self.screenSize.width/3-10, height);
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
