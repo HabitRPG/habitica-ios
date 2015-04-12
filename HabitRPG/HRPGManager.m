@@ -8,6 +8,7 @@
 //
 
 #import "HRPGManager.h"
+#import "HRPGAppDelegate.h"
 #import "CRToast.h"
 #import "HRPGTaskResponse.h"
 #import "HRPGLoginData.h"
@@ -1061,7 +1062,7 @@ NSString *currentUser;
 - (void)changeClass:(NSString*)newClass onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     
-    [[RKObjectManager sharedManager] postObject:nil path:@"/api/v2/user/class/change" parameters:@{@"class": newClass} success:^ (RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/class/change?class=%@", newClass] parameters:nil success:^ (RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
@@ -1162,6 +1163,7 @@ NSString *currentUser;
         HRPGTaskResponse *taskResponse = (HRPGTaskResponse *) [mappingResult firstObject];
         task.value = [NSNumber numberWithFloat:[task.value floatValue] + [taskResponse.delta floatValue]];
         if ([user.level integerValue] < [taskResponse.level integerValue]) {
+            user.level = taskResponse.level;
             [self displayLevelUpNotification];
             //Set experience to the amount, that was missing for the next level. So that the notification
             //displays the correct amount of experience gained
@@ -1881,10 +1883,21 @@ NSString *currentUser;
     }onError:^() {
         
     }];
-    [user getAvatarImage:^(UIImage *image) {
-        [HRPGImageOverlayManager displayImage:image withText:NSLocalizedString(@"Level up!", nil)
-                                    withNotes:[NSString stringWithFormat:@"You are now Level %ld", ([user.level integerValue] + 1)]];
-    }withPetMount:YES onlyHead:NO withBackground:YES useForce:NO];
+    if ([user.level integerValue] == 10 && ![user.disableClass boolValue]) {
+        HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
+        UINavigationController *selectClassNavigationController = [del.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
+        selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
+        
+        [del.window.rootViewController presentViewController:selectClassNavigationController animated:YES completion:^() {
+            
+        }];
+    } else {
+        [user getAvatarImage:^(UIImage *image) {
+            [HRPGImageOverlayManager displayImage:image withText:NSLocalizedString(@"Level up!", nil)
+                                        withNotes:[NSString stringWithFormat:@"You are now Level %ld", ([user.level integerValue] + 1)]];
+        } withPetMount:YES onlyHead:NO withBackground:YES useForce:NO];
+    }
+
 
 }
 

@@ -2522,7 +2522,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pdQ-c8-t8K">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdQ-c8-t8K">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
@@ -2550,7 +2550,7 @@
         <!--Navigation Controller-->
         <scene sceneID="EKs-yn-VUc">
             <objects>
-                <navigationController id="o94-7a-EOq" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SelectClassNavigationController" id="o94-7a-EOq" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kct-nb-9PY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2640,6 +2640,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="7y1-ng-Z7N">
+                        <barButtonItem key="leftBarButtonItem" title="Decide later" id="v0E-Hd-n5W">
+                            <connections>
+                                <action selector="decidesLater:" destination="0ML-Me-cHt" id="WjM-rI-cv6"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="?" id="obl-zo-g8m">
                             <connections>
                                 <segue destination="wZU-Fa-eCi" kind="push" identifier="HelpSegue" id="GTg-7t-9tX"/>
@@ -3709,13 +3714,13 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="04Z-5H-zfF"/>
-        <segue reference="sPD-XR-ORt"/>
         <segue reference="Bfo-Hm-DEG"/>
         <segue reference="8EB-JX-S8a"/>
         <segue reference="IDZ-rz-bLv"/>
         <segue reference="DAI-nh-Ljl"/>
-        <segue reference="GTg-7t-9tX"/>
         <segue reference="jeD-LQ-1O1"/>
+        <segue reference="GTg-7t-9tX"/>
+        <segue reference="fUS-KU-QMo"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.3490196168422699" green="0.68627452850341797" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
 </document>
