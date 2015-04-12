@@ -59,7 +59,7 @@
     UITabBarItem *item4 = self.tabBar.items[4];
     item4.image = [factory createImageForIcon:NIKFontAwesomeIconBars]			;
 
-    [self.tabBar setTintColor:[UIColor colorWithRed:0.366 green:0.599 blue:0.014 alpha:1.000]];
+    [self.tabBar setTintColor:[UIColor colorWithRed:0.837 green:0.652 blue:0.238 alpha:1.000]];
 
     
     [self updateDailyBadge];

@@ -61,7 +61,7 @@
     self.toggleCompletedView.text = NSLocalizedString(@"Show completed To-Dos", nil);
     self.toggleCompletedView.textAlignment = NSTextAlignmentCenter;
     self.toggleCompletedView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
-    self.toggleCompletedView.textColor = [UIColor colorWithRed:0.366 green:0.599 blue:0.014 alpha:1.000];
+    self.toggleCompletedView.textColor = [UIColor colorWithRed:0.837 green:0.652 blue:0.238 alpha:1.000];
 
     CALayer *bottomBorder = [CALayer layer];
     bottomBorder.frame = CGRectMake(0.0f, self.toggleCompletedView.frame.size.height, self.toggleCompletedView.frame.size.width, 1.0f);
@@ -276,13 +276,11 @@
         
         CALayer *bottomBorder = [CALayer layer];
         bottomBorder.frame = CGRectMake(0.0f, footerView.frame.size.height, footerView.frame.size.width, 1.0f);
-        bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
-                                                         alpha:1.0f].CGColor;
+        bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f].CGColor;
         [footerView.layer addSublayer:bottomBorder];
         CALayer *topBorder = [CALayer layer];
         topBorder.frame = CGRectMake(0.0f, -1.0f, footerView.frame.size.width, 1.0f);
-        topBorder.backgroundColor = [UIColor colorWithWhite:0.8f
-                                                      alpha:1.0f].CGColor;
+        topBorder.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f].CGColor;
         [footerView.layer addSublayer:topBorder];
 
         

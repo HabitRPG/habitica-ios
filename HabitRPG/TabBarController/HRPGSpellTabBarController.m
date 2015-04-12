@@ -48,7 +48,7 @@
     UITabBarItem *item2 = self.tabBar.items[2];
     item2.image = [factory createImageForIcon:NIKFontAwesomeIconCheckSquareO];
 
-    [self.tabBar setTintColor:[UIColor colorWithRed:0.366 green:0.599 blue:0.014 alpha:1.000]];
+    [self.tabBar setTintColor:[UIColor colorWithRed:0.837 green:0.652 blue:0.238 alpha:1.000]];
 
     int tabIndex = 0;
     for (HRPGSpellTaskController *taskController in self.viewControllers) {
