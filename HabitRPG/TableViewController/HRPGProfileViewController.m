@@ -207,9 +207,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else if (indexPath.section == 3 && indexPath.item == 1) {
         [self performSegueWithIdentifier:@"SettingsSegue" sender:self];
     } else if (indexPath.section == 3 && indexPath.item == 2) {
-        VTAcknowledgementsViewController *viewController = [VTAcknowledgementsViewController acknowledgementsViewController];
-        viewController.headerText = NSLocalizedString(@"We love open source software.", nil);
-        [self.navigationController pushViewController:viewController animated:YES];
+        [self performSegueWithIdentifier:@"AboutSegue" sender:self];
     }
 }
 
@@ -253,7 +251,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else if (indexPath.section == 3 && indexPath.item == 1) {
         title = NSLocalizedString(@"Settings", nil);
     } else if (indexPath.section == 3 && indexPath.item == 2) {
-        title = NSLocalizedString(@"Acknowledgements", nil);
+        title = NSLocalizedString(@"About", nil);
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
