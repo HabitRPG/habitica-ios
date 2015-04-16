@@ -67,13 +67,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 5;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellName = @"BasicCell";
-    if (indexPath.item == 0) {
+    if (indexPath.item == 0 || indexPath.item == 3) {
         cellName = @"RightDetailCell";
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
@@ -85,6 +85,11 @@
         cell.textLabel.text = NSLocalizedString(@"Send feedback", nil);
     } else if (indexPath.item == 2) {
         cell.textLabel.text = NSLocalizedString(@"Report a bug", nil);
+    } else if (indexPath.item == 3) {
+        cell.textLabel.text = @"Twitter";
+        cell.detailTextLabel.text = @"@habitrpg";
+    } else if (indexPath.item == 4) {
+        cell.textLabel.text = @"FAQ";
     }
     
     return cell;
@@ -94,10 +99,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.selectedIndex = indexPath;
     switch (indexPath.item) {
-        case 0:
+        case 0: {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://habitrpg.com/"]];
             break;
-        case 1:
+        }
+        case 1: {
             if ([MFMailComposeViewController canSendMail]) {
                 MFMailComposeViewController *composeViewController = [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
                 [composeViewController setMailComposeDelegate:self];
@@ -105,7 +111,9 @@
                 [composeViewController setSubject:@"[iOS] Feedback"];
                 [self presentViewController:composeViewController animated:YES completion:nil];
             }
-        case 2:
+            break;
+        }
+        case 2: {
             if ([MFMailComposeViewController canSendMail]) {
                 MFMailComposeViewController *composeViewController = [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
                 [composeViewController setMailComposeDelegate:self];
@@ -114,6 +122,16 @@
                 [composeViewController setMessageBody:[self createDeviceInformationString] isHTML:NO];
                 [self presentViewController:composeViewController animated:YES completion:nil];
             }
+            break;
+        }
+        case 3: {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/habitrpg"]];
+            break;
+        }
+        case 4: {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://habitrpg.wikia.com/wiki/FAQ"]];
+            break;
+        }
         default:
             break;
     }
