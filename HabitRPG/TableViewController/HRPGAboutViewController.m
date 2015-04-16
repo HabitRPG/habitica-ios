@@ -10,6 +10,7 @@
 #import "HRPGManager.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import <MessageUI/MessageUI.h>
+#import <sys/utsname.h> 
 
 @interface HRPGAboutViewController ()
 @property BOOL shouldReshowTopHeader;
@@ -151,7 +152,9 @@
     [informationString appendString:NSLocalizedString(@"The following lines help us find and squash the Bug you encountered. Please do not delete/change them.\n", nil)];
     
     [informationString appendString:[NSString stringWithFormat:@"iOS Version: %@\n", [[UIDevice currentDevice] systemVersion]]];
-    [informationString appendString:[NSString stringWithFormat:@"Device: %@ %@\n", [[UIDevice currentDevice] model], [[UIDevice currentDevice] name]]];
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    [informationString appendString:[NSString stringWithFormat:@"Device: %@\n", [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding]]];
     [informationString appendString:[NSString stringWithFormat:NSLocalizedString(@"App Version: %@\n", nil), [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]]];
     [informationString appendString:[NSString stringWithFormat:@"User UUID: %@\n", [self.sharedManager getUser].id]];
     
