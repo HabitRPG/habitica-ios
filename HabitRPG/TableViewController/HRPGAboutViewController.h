@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import "HRPGBaseViewController.h"
 
-@interface HRPGAboutViewController : UITableViewController
+@interface HRPGAboutViewController : HRPGBaseViewController <MFMailComposeViewControllerDelegate>
 
 @end

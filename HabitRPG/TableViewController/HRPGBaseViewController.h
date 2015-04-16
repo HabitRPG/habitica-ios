@@ -14,6 +14,7 @@
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic)  HRPGManager *sharedManager;
 @property CGFloat screenWidth;
+@property BOOL hidesTopBar;
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 
@@ -21,4 +22,5 @@
 -(void)removeActivityCounter;
 @property NSInteger activityCounter;
 - (NSDictionary *)markdownAttributes;
+
 @end

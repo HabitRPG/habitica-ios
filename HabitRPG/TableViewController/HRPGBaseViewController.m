@@ -36,9 +36,11 @@
         [self presentViewController:navigationController animated:NO completion:nil];
     }
     
-    HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
-    [self.tableView setContentInset:UIEdgeInsetsMake([navigationController getContentOffset],0,0,0)];
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
+    if (!self.hidesTopBar) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+        [self.tableView setContentInset:UIEdgeInsetsMake([navigationController getContentOffset],0,0,0)];
+        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
+    }
 
     self.activityCounter = 0;
     
