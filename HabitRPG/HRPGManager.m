@@ -1894,7 +1894,7 @@ NSString *currentUser;
     } else {
         [user getAvatarImage:^(UIImage *image) {
             [HRPGImageOverlayManager displayImage:image withText:NSLocalizedString(@"Level up!", nil)
-                                        withNotes:[NSString stringWithFormat:@"You are now Level %ld", ([user.level integerValue] + 1)]];
+                                        withNotes:[NSString stringWithFormat:@"You are now Level %ld", ([user.level integerValue])]];
         } withPetMount:YES onlyHead:NO withBackground:YES useForce:NO];
     }
 

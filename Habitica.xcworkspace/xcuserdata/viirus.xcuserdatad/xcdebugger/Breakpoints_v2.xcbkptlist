@@ -692,7 +692,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG/HRPGManager.m"
@@ -756,7 +756,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG/HRPGManager.m"
@@ -783,6 +783,54 @@
             endingLineNumber = "1230"
             landmarkName = "-getReward:onSuccess:onError:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HabitRPG/HRPGManager.m"
+            timestampString = "451064418.364743"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1895"
+            endingLineNumber = "1895"
+            landmarkName = "-displayLevelUpNotification"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[HRPGManager displayLevelUpNotification]"
+                  moduleName = "Habitica"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/viirus/Code/RabbitRPG/HabitRPG/HRPGManager.m"
+                  timestampString = "451064418.367565"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1895"
+                  endingLineNumber = "1895"
+                  offsetFromSymbolStart = "774">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__41-[HRPGManager displayLevelUpNotification]_block_invoke_4"
+                  moduleName = "Habitica"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/viirus/Code/RabbitRPG/HabitRPG/HRPGManager.m"
+                  timestampString = "451064418.367747"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1895"
+                  endingLineNumber = "1895"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
