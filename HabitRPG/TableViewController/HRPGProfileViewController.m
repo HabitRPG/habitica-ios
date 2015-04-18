@@ -219,7 +219,11 @@ NIKFontAwesomeIconFactory *iconFactory;
         if (![self.user.selectedClass boolValue] && ![self.user.disableClass boolValue]) {
             title = NSLocalizedString(@"Select Class", nil);
         } else {
-            title = NSLocalizedString(@"Cast Spells", nil);
+            if ([self.user.hclass isEqualToString:@"wizard"] || [self.user.hclass isEqualToString:@"healer"]) {
+                title = NSLocalizedString(@"Cast Spells", nil);
+            } else {
+                title = NSLocalizedString(@"Use Skills", nil);
+            }
         }
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         title = NSLocalizedString(@"Tavern", nil);

@@ -680,11 +680,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HabitRPG/TableViewController/Spells/HRPGSpellViewController.m"
-            timestampString = "450463220.875523"
+            timestampString = "451067696.921388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "-fetchedResultsController"
             landmarkType = "5">
          </BreakpointContent>

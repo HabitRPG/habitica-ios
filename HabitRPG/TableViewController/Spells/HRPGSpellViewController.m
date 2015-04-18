@@ -27,6 +27,12 @@ float textWidth;
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     textWidth = screenRect.size.width - 43;
+    
+    if ([self.user.hclass isEqualToString:@"wizard"] || [self.user.hclass isEqualToString:@"healer"]) {
+        self.navigationItem.title = NSLocalizedString(@"Cast Spells", nil);
+    } else {
+        self.navigationItem.title = NSLocalizedString(@"Use Skills", nil);
+    }
 }
 
 #pragma mark - Table view data source
