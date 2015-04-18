@@ -16,6 +16,7 @@
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 #import "NSString+Emoji.h"
 #import <NSDate+TimeAgo.h>
+#import "UIColor+LighterDarker.h"
 #import "HRPGCheckBoxView.h"
 
 @interface HRPGToDoTableViewController ()
@@ -111,7 +112,7 @@
     UILabel *label = (UILabel *) [cell viewWithTag:1];
     HRPGCheckBoxView *checkBox = (HRPGCheckBoxView *) [cell viewWithTag:3];
     if (checkBox == nil) {
-        checkBox = [[HRPGCheckBoxView alloc] initWithFrame:CGRectMake(0, 0, 40, cell.frame.size.height)];
+        checkBox = [[HRPGCheckBoxView alloc] initWithFrame:CGRectMake(0, 0, 50, cell.frame.size.height)];
         checkBox.tag = 3;
         [cell.contentView addSubview:checkBox];
     }
@@ -186,7 +187,7 @@
         
         if ([task.completed boolValue]) {
             checkBox.boxColor = [UIColor lightGrayColor];
-            checkBox.checkColor = [UIColor darkGrayColor];
+            checkBox.checkColor = [UIColor colorWithWhite:0.85 alpha:1.000];
             self.checkIconFactory.colors = @[[UIColor darkGrayColor]];
             label.textColor = [UIColor darkGrayColor];
             cell.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.000];
@@ -211,12 +212,12 @@
             [checkBox setChecked:NO animated:YES];
             if (![task dueToday]) {
                 checkBox.boxColor = [UIColor lightGrayColor];
-                checkBox.checkColor = [UIColor darkGrayColor];
+                checkBox.checkColor = [UIColor colorWithWhite:0.85 alpha:1.000];
                 label.textColor = [UIColor darkGrayColor];
                 cell.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.000];
             } else {
-                checkBox.boxColor = [task taskColor];
-                checkBox.checkColor = [UIColor darkGrayColor];
+                checkBox.boxColor = [[task taskColor] darkerColor];
+                checkBox.checkColor = [task lightTaskColor];
                 cell.backgroundColor = [task lightTaskColor];
                 label.textColor = [UIColor blackColor];
             }

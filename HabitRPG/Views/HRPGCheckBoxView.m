@@ -23,9 +23,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        self.size = 17;
+        self.size = 25;
         self.boxColor = [UIColor blackColor];
-        self.checkColor = [UIColor blackColor];
+        self.checkColor = [UIColor whiteColor];
         
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
         tapRecognizer.numberOfTapsRequired = 1;
@@ -63,7 +63,7 @@
 - (void)viewTapped:(UITapGestureRecognizer*)recognizer {
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-        scaleAnimation.velocity = [NSValue valueWithCGSize:CGSizeMake(-3.f, -3.f)];
+        scaleAnimation.velocity = [NSValue valueWithCGSize:CGSizeMake(-6.f, -6.f)];
         scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
         scaleAnimation.springBounciness = 18.0f;
         scaleAnimation.beginTime = 0.5f;
@@ -74,19 +74,22 @@
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(ctx, 1);
-    CGContextSetStrokeColorWithColor(ctx, [self.boxColor CGColor]);
-    CGContextStrokeRect(ctx, CGRectMake(self.frame.size.width/2-self.size/2, self.frame.size.height/2-self.size/2, self.size, self.size));
+    [self.boxColor setStroke];
+    [self.boxColor setFill];
+    UIBezierPath *rectPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(self.frame.size.width/2-self.size/2, self.frame.size.height/2-self.size/2, self.size, self.size) cornerRadius:3];
+    [rectPath stroke];
     if (self.checked) {
+        [rectPath fill];
         CGContextBeginPath(ctx);
-        CGContextSetLineWidth(ctx, 3);
+        CGContextSetLineWidth(ctx, 4);
         CGContextSetLineCap(ctx, kCGLineCapRound);
         CGContextSetLineJoin(ctx, kCGLineJoinRound);
         CGContextSetStrokeColorWithColor(ctx, [self.checkColor CGColor]);
-        CGContextMoveToPoint(ctx, self.frame.size.width/2-(self.size/3), self.frame.size.height/2);
-        CGContextAddLineToPoint(ctx, self.frame.size.width/2, self.frame.size.height/2+(self.size/3));
-        CGContextAddLineToPoint(ctx, self.frame.size.width/2+(self.size/4)*3, self.frame.size.height/2-(self.size/4)*2);
+        CGContextMoveToPoint(ctx, self.frame.size.width/2-(self.size/3.5), self.frame.size.height/2);
+        CGContextAddLineToPoint(ctx, self.frame.size.width/2-(self.size/8), self.frame.size.height/2+(self.size/5));
+        CGContextAddLineToPoint(ctx, self.frame.size.width/2+(self.size/4), self.frame.size.height/2-(self.size/5));
         CGContextStrokePath(ctx);
+    } else {
     }
 }
 

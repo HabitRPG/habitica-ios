@@ -14,6 +14,7 @@
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 #import "NSString+Emoji.h"
+#import "UIColor+LighterDarker.h"
 #import "HRPGCheckBoxView.h"
 
 @interface HRPGDailyTableViewController ()
@@ -174,8 +175,8 @@
         }
         
         if ([task.completed boolValue]) {
-            checkBox.boxColor = [UIColor lightGrayColor];
-            checkBox.checkColor = [UIColor darkGrayColor];
+            checkBox.boxColor = [UIColor colorWithWhite:0.705 alpha:1.000];
+            checkBox.checkColor = [UIColor colorWithWhite:0.85 alpha:1.000];
             self.checkIconFactory.colors = @[[UIColor darkGrayColor]];
             label.textColor = [UIColor darkGrayColor];
             cell.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.000];
@@ -201,13 +202,11 @@
             [checkBox setChecked:NO animated:YES];
             if (![task dueToday]) {
                 checkBox.boxColor = [UIColor lightGrayColor];
-                checkBox.checkColor = [UIColor darkGrayColor];
                 label.textColor = [UIColor darkGrayColor];
                 cell.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.000];
                 streakLabel.textColor = [UIColor darkGrayColor];
             } else {
-                checkBox.boxColor = [task taskColor];
-                checkBox.checkColor = [UIColor darkGrayColor];
+                checkBox.boxColor = [[task taskColor] darkerColor];
                 cell.backgroundColor = [task lightTaskColor];
                 label.textColor = [UIColor blackColor];
                 streakLabel.textColor = [UIColor blackColor];
