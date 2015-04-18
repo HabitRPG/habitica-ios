@@ -19,14 +19,9 @@
 
 @implementation HRPGSpellViewController
 
-float textWidth;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.user = [self.sharedManager getUser];
-    
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    textWidth = screenRect.size.width - 43;
     
     if ([self.user.hclass isEqualToString:@"wizard"] || [self.user.hclass isEqualToString:@"healer"]) {
         self.navigationItem.title = NSLocalizedString(@"Cast Spells", nil);
@@ -82,8 +77,8 @@ float textWidth;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    float height = 22.0f;
-    float width = textWidth;
+    float height = 30.0f;
+    float width = self.screenWidth-43;
     Spell *spell = [self.fetchedResultsController objectAtIndexPath:indexPath];
     width = width - [[NSString stringWithFormat:@"%ld MP", (long) [spell.mana integerValue]] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                                                                                           options:NSStringDrawingUsesLineFragmentOrigin

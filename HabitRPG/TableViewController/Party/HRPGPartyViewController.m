@@ -50,9 +50,11 @@ ChatMessage *selectedMessage;
     if (!partyID || [partyID isEqualToString:@""]) {
         [self.sharedManager fetchGroups:@"party" onSuccess:^(){
             partyID = [defaults objectForKey:@"partyID"];
-            party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-            [self refresh];
-        }                       onError:^() {
+            if (partyID && ![partyID isEqualToString:@""]) {
+                party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+                [self refresh];
+            }
+        } onError:^() {
 
         }];
     } else {
@@ -72,13 +74,12 @@ ChatMessage *selectedMessage;
         } else {
             [self refresh];
         }
-
+        
+        UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+        [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+        self.refreshControl = refresh;
     }
 
-
-    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refresh;
 
     [[NSNotificationCenter defaultCenter] addObserverForName:@"newChatMessage" object:nil queue:nil usingBlock:^(NSNotification *notification) {
         NSString *groupID = notification.object;

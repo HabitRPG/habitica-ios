@@ -40,19 +40,19 @@
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     cell.textLabel.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
-    cell.textLabel.textColor = [task taskColor];
+    cell.backgroundColor = [task lightTaskColor];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    float width = 280.0f;
+    float width = self.screenWidth-40;
     NSInteger height = [task.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                options:NSStringDrawingUsesLineFragmentOrigin
                                             attributes:@{
                                                     NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                             }
-                                               context:nil].size.height + 35;
+                                               context:nil].size.height + 45;
     if (task.duedate) {
         height = height + 5;
     }
