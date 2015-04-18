@@ -20,6 +20,7 @@
 @property NSArray *classesArray;
 @property User *user;
 @property (nonatomic) HRPGManager *sharedManager;
+@property NSIndexPath *selectedIndex;
 @end
 
 @implementation HRPGClassTableViewController
@@ -182,27 +183,31 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    self.selectedIndex = indexPath;
     if (indexPath.item == 4) {
         if ([UIAlertController class]) {
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Are you sure?", nil) message:nil preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Go Back", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                
             }];
             [alertController addAction:cancelAction];
             
             UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Opt-Out", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                [self.sharedManager updateUser:@{@"preferences.disableClasses": @YES, @"flags.classSelected": @YES} onSuccess:^() {
-                }onError:^() {
-                }];
+                [self alertView:nil clickedButtonAtIndex:1];
             }];
             [alertController addAction:confirmAction];
             
             [self presentViewController:alertController animated:YES completion:^() {
-                [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
             }];
         } else {
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Are you sure?", nil)
+                                                              message:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:NSLocalizedString(@"Go Back", nil)
+                                                    otherButtonTitles:nil];
+            
+            [message addButtonWithTitle:NSLocalizedString(@"Opt-Out", nil)];
+            [message show];
         }
     } else {
         NSString *className = self.classesArray[indexPath.item][0];
@@ -215,9 +220,7 @@
             [alertController addAction:cancelAction];
             
             UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:[NSString stringWithFormat:NSLocalizedString(@"I want to become a %@", nil), className] style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                [self.sharedManager changeClass:self.classesArray[indexPath.item][3] onSuccess:^() {
-                }onError:^() {
-                }];
+                [self alertView:nil clickedButtonAtIndex:1];
             }];
             [alertController addAction:confirmAction];
             
@@ -225,6 +228,14 @@
                 [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
             }];
         } else {
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Are you sure?", nil)
+                                                              message:[NSString stringWithFormat:NSLocalizedString(@"You will become a %@.", nil), className]
+                                                             delegate:self
+                                                    cancelButtonTitle:NSLocalizedString(@"Go Back", nil)
+                                                    otherButtonTitles:nil];
+            
+            [message addButtonWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Become a %@", nil), className]];
+            [message show];
         }
     }
 }
@@ -280,6 +291,48 @@
     user.size = self.user.size;
     
     return user;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
+    } else {
+        if (self.selectedIndex.item == 4) {
+            [self.sharedManager updateUser:@{@"preferences.disableClasses": @YES, @"flags.classSelected": @YES} onSuccess:^() {
+                if (self.navigationController.viewControllers.count > 1) {
+                    [self.navigationController popViewControllerAnimated:YES];
+                } else {
+                    [self.presentingViewController dismissViewControllerAnimated:YES completion:^() {
+                    }];
+                }
+            }onError:^() {
+            }];
+        } else {
+            [self.sharedManager changeClass:self.classesArray[self.selectedIndex.item][3] onSuccess:^() {
+                [self.sharedManager fetchUser:^() {
+                    if (self.navigationController.viewControllers.count > 1) {
+                        [self.navigationController popViewControllerAnimated:YES];
+                    } else {
+                        [self.presentingViewController dismissViewControllerAnimated:YES completion:^() {
+                        }];
+                    }
+                }onError:^() {
+                    if (self.navigationController.viewControllers.count > 1) {
+                        [self.navigationController popViewControllerAnimated:YES];
+                    } else {
+                        [self.presentingViewController dismissViewControllerAnimated:YES completion:^() {
+                        }];
+                    }
+                }];
+            }onError:^() {
+            }];
+        }
+        [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
+    }
+}
+
+- (IBAction)userDecidesLater:(id)sender {
+    
 }
 
 @end

@@ -118,7 +118,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     switch (section) {
         case 0:
             //Below level 10 users don't have spells
-            if ([self.user.level integerValue] <= 10 && [self.user.disableClass boolValue]) {
+            if ([self.user.level integerValue] < 10 || [self.user.disableClass boolValue]) {
                 return 0;
             } else {
                 return 1;

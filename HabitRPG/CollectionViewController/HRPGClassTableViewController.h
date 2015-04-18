@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRPGClassTableViewController : UITableViewController
+@interface HRPGClassTableViewController : UITableViewController <UIAlertViewDelegate>
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
