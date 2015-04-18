@@ -31,6 +31,11 @@
 - (id)init {
     if (self = [super init]) {
         self.queue = [NSMutableArray array];
+        self.backgroundView = [[UIView alloc] init];
+        CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+        self.backgroundView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
+        self.backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+
     }
     return self;
 }
@@ -72,13 +77,9 @@
 }
 
 - (void)displayNextImage {
-    if (!self.backgroundView) {
-        self.backgroundView = [[UIView alloc] init];
-        CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-        self.backgroundView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
-        self.backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
-        
-        UITabBarController *mainTabbar = ((UITabBarController *) [[UIApplication sharedApplication] delegate].window.rootViewController);
+    UITabBarController *mainTabbar = ((UITabBarController *) [[UIApplication sharedApplication] delegate].window.rootViewController);
+    
+    if (![self.backgroundView isDescendantOfView:mainTabbar.view]) {
         [mainTabbar.view addSubview:self.backgroundView];
         
         [UIView animateWithDuration:0.3 animations:^() {
@@ -115,7 +116,6 @@
                 weakBackgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
             }completion:^(BOOL finished) {
                 [weakBackgroundView removeFromSuperview];
-                weakBackgroundView = nil;
             }];
         }
     };
