@@ -62,10 +62,10 @@ CGFloat topHeaderHeight = 147;
         self.backgroundView = backgroundView;
     } else {
         UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, self.navigationBar.frame.size.height+20+topHeaderHeight)];
-        backgroundView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.950];
+        backgroundView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.980];
         
         UIView *seperatorView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationBar.frame.size.height+[self statusBarHeight]-1, screenRect.size.width, 1)];
-        seperatorView.backgroundColor = [UIColor colorWithWhite:0.333 alpha:0.720];
+        seperatorView.backgroundColor = [UIColor colorWithWhite:0.333 alpha:0.320];
         [backgroundView addSubview:seperatorView];
         
         [self.view insertSubview:backgroundView belowSubview:self.navigationBar];
