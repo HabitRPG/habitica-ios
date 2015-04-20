@@ -37,6 +37,15 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
+        [navigationController showTopBar];
+    }
+    
+    [super viewWillDisappear:animated];
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [UIView animateWithDuration:0.4 animations:^() {
         self.newsWebView.alpha = 1;

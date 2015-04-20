@@ -280,6 +280,7 @@
 		D9AEEA711ACEDD470076951B /* HRPGWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGWebViewController.h; sourceTree = "<group>"; };
 		D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGWebViewController.m; sourceTree = "<group>"; };
 		D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTabBarController.m; sourceTree = "<group>"; };
+		D9B27ED71AE4C138008914D7 /* HabitRPG 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 2.xcdatamodel"; sourceTree = "<group>"; };
 		D9B5C0AC18CCC87A00C8D1B7 /* HRPGManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGManager.h; sourceTree = "<group>"; };
 		D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGManager.m; sourceTree = "<group>"; };
 		D9B5C0AF18CCD1EA00C8D1B7 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
@@ -1379,9 +1380,10 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D9B27ED71AE4C138008914D7 /* HabitRPG 2.xcdatamodel */,
 				D967755519F1379800A21F45 /* HabitRPG.xcdatamodel */,
 			);
-			currentVersion = D967755519F1379800A21F45 /* HabitRPG.xcdatamodel */;
+			currentVersion = D9B27ED71AE4C138008914D7 /* HabitRPG 2.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

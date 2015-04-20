@@ -309,6 +309,7 @@ NSString *currentUser;
     RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     [entityMapping addAttributeMappingsFromDictionary:@{
             @"_id" : @"id",
+            @"balance": @"balance",
             @"profile.name" : @"username",
             @"preferences.dayStart" : @"dayStart",
             @"preferences.disableClasses" : @"disableClass",

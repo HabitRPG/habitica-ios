@@ -175,7 +175,7 @@ NSInteger rowOffset = 145;
     [self.goldView updateView:self.user.gold withDiffString:nil];
     [self.goldView sizeToFit];
     self.goldView.frame = CGRectMake(rowOffset+rowWidth-self.goldView.frame.size.width, self.goldView.frame.origin.y, self.goldView.frame.size.width, self.goldView.frame.size.height);
-    [self.gemView updateViewWithGemcount:self.user.gems withDiffString:nil];
+    [self.gemView updateViewWithGemcount:[NSNumber numberWithFloat:[self.user.balance floatValue]*4] withDiffString:nil];
     [self.gemView sizeToFit];
     self.gemView.frame = CGRectMake(self.goldView.frame.origin.x-self.gemView.frame.size.width-8, self.gemView.frame.origin.y, self.gemView.frame.size.width, self.gemView.frame.size.height);
 }

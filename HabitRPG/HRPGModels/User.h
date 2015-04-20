@@ -14,6 +14,7 @@
 @interface User : NSManagedObject
 
 @property(nonatomic, retain) NSString *background;
+@property(nonatomic, retain) NSNumber *balance;
 @property(nonatomic, retain) NSString *blurb;
 @property(nonatomic, retain) NSNumber *contributorLevel;
 @property(nonatomic, retain) NSString *contributorText;
@@ -36,7 +37,6 @@
 @property(nonatomic, retain) NSString *equippedWeapon;
 @property(nonatomic, retain) NSNumber *experience;
 @property(nonatomic, retain) NSNumber *gold;
-@property(nonatomic, retain) NSNumber *gems;
 @property(nonatomic, retain) NSString *hairBangs;
 @property(nonatomic, retain) NSString *hairBase;
 @property(nonatomic, retain) NSString *hairBeard;

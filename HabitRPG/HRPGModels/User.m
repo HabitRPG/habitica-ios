@@ -16,6 +16,7 @@
 @implementation User
 
 @dynamic background;
+@dynamic balance;
 @dynamic blurb;
 @dynamic contributorLevel;
 @dynamic contributorText;
@@ -38,7 +39,6 @@
 @dynamic equippedWeapon;
 @dynamic experience;
 @dynamic gold;
-@dynamic gems;
 @dynamic hairBangs;
 @dynamic hairBase;
 @dynamic hairBeard;
