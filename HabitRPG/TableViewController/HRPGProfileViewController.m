@@ -303,11 +303,6 @@ NIKFontAwesomeIconFactory *iconFactory;
     return _fetchedResultsController;
 }
 
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView beginUpdates];
-}
-
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
 }
@@ -316,7 +311,6 @@ NIKFontAwesomeIconFactory *iconFactory;
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
-    indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
     switch (type) {
         case NSFetchedResultsChangeInsert: {
             User *user = (User *) [self.fetchedResultsController objectAtIndexPath:newIndexPath];
@@ -331,6 +325,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         }
         case NSFetchedResultsChangeDelete: {
             username = nil;
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
         }
         case NSFetchedResultsChangeMove:
             break;
@@ -338,7 +333,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView endUpdates];
+    [self.tableView reloadData];
 }
 
 @end
