@@ -8,6 +8,7 @@
 
 #import "HRPGNewsViewController.h"
 #import "HRPGAppDelegate.h"
+#import "HRPGTopHeaderNavigationController.h"
 
 @interface HRPGNewsViewController ()
 
@@ -25,6 +26,15 @@
     self.newsWebView.delegate = self;
     [self.newsWebView loadRequest:request];
     [self.loadingIndicator startAnimating];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        self.navigationItem.leftBarButtonItem = nil;
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
+        [navigationController hideTopBar];
+    }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
