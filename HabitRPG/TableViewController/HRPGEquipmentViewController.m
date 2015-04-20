@@ -28,6 +28,19 @@ NSIndexPath *selectedIndex;
 -(void)viewDidLoad {
     [super viewDidLoad];
     self.user = [self.sharedManager getUser];
+    
+    UIView *costumeFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 68)];
+    
+    UILabel *footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, self.screenWidth-80, 60)];
+    footerLabel.text = NSLocalizedString(@"Wear costume", nil);
+    [costumeFooterView addSubview:footerLabel];
+    
+    UISwitch *footerSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.screenWidth-59, 14.5, 72, 31)];
+    footerSwitch.on = [self.user.useCostume boolValue];
+    [footerSwitch addTarget:self action:@selector(changeWearingCostume:) forControlEvents:UIControlEventValueChanged];
+    [costumeFooterView addSubview:footerSwitch];
+    
+    self.tableView.tableFooterView = costumeFooterView;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -69,7 +82,6 @@ NSIndexPath *selectedIndex;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
 }
-
 
 
 - (NSFetchedResultsController *)fetchedResultsController {
@@ -261,6 +273,14 @@ NSIndexPath *selectedIndex;
             equipmentDetailViewController.equipType = @"costume";
         }
     }
+}
+
+- (void)changeWearingCostume:(UISwitch *)switchState {
+    [self.sharedManager updateUser:@{@"preferences.costume": [NSNumber numberWithBool:switchState.on]} onSuccess:^() {
+        switchState.on = [self.user.useCostume boolValue];
+    }onError:^() {
+        switchState.on = [self.user.useCostume boolValue];
+    }];
 }
 
 @end
