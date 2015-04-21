@@ -18,6 +18,7 @@
 #import "Group.h"
 #import "Item.h"
 #import "Gear.h"
+#import "Reward.h"
 #import "Quest.h"
 #import <SDWebImageManager.h>
 #import "HRPGUserBuyResponse.h"
@@ -378,11 +379,32 @@ NSString *currentUser;
             @"type" : @"type",
             @"notes" : @"notes",
             @"@metadata.mapping.collectionIndex" : @"order",
+            @"type": @"type",
+            @"tags": @"tagDictionary"
     }];
     rewardMapping.identificationAttributes = @[@"key"];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"rewards"
                                                                                   toKeyPath:@"rewards"
                                                                                 withMapping:rewardMapping]];
+    
+    RKObjectMapping *rewardRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [rewardRequestMapping addAttributeMappingsFromDictionary:@{
+                                                             @"key" : @"id",
+                                                             @"text" : @"text",
+                                                             @"value" : @"value",
+                                                             @"notes" : @"notes",
+                                                             @"type": @"type",
+                                                             @"tagDictionary":@"tags"}];
+
+    
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodGET]];
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodPUT]];
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks" method:RKRequestMethodPOST]];
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodDELETE]];
+    
+    requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:rewardRequestMapping objectClass:[Reward class] rootKeyPath:nil method:RKRequestMethodPOST];
+    [objectManager addRequestDescriptor:requestDescriptor];
+    
     RKEntityMapping *userTagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
     [userTagMapping addAttributeMappingsFromArray:@[@"id", @"name", @"challenge"]];
     userTagMapping.identificationAttributes = @[@"id"];
@@ -1318,6 +1340,65 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] deleteObject:task path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@", task.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }                                     failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        errorBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+
+- (void)createReward:(Reward *)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:reward path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        errorBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)updateReward:(Reward *)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] putObject:reward path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        successBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        errorBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)deleteReward:(Reward *)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] deleteObject:reward path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@", reward.key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();

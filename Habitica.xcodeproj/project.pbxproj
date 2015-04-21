@@ -41,6 +41,7 @@
 		D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D966557318FB129F0014C09D /* HRPGSettingsViewController.m */; };
 		D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */; };
 		D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */; };
+		D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97B8F5C1AE6CD3C00C6447D /* HRPGRewardFormViewController.m */; };
 		D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71DA18EC98A30089FDC6 /* Quest.m */; };
 		D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71DD18EC98A40089FDC6 /* QuestCollect.m */; };
 		D97C71E118ECA7050089FDC6 /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71E018ECA7050089FDC6 /* ChatMessage.m */; };
@@ -193,6 +194,8 @@
 		D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGNewsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9722B7E19BD041E009D8AD3 /* HRPGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGNavigationController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGNavigationController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D97B8F5B1AE6CD3C00C6447D /* HRPGRewardFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGRewardFormViewController.h; sourceTree = "<group>"; };
+		D97B8F5C1AE6CD3C00C6447D /* HRPGRewardFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGRewardFormViewController.m; sourceTree = "<group>"; };
 		D97C71D918EC98A30089FDC6 /* Quest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quest.h; sourceTree = "<group>"; };
 		D97C71DA18EC98A30089FDC6 /* Quest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quest.m; sourceTree = "<group>"; };
 		D97C71DC18EC98A40089FDC6 /* QuestCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestCollect.h; sourceTree = "<group>"; };
@@ -649,6 +652,8 @@
 				D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */,
 				D96038351930F90E0025EAEC /* HRPGMessageViewController.h */,
 				D96038361930F90E0025EAEC /* HRPGMessageViewController.m */,
+				D97B8F5B1AE6CD3C00C6447D /* HRPGRewardFormViewController.h */,
+				D97B8F5C1AE6CD3C00C6447D /* HRPGRewardFormViewController.m */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -944,6 +949,7 @@
 				D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */,
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
 				D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */,
+				D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */,
 				D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */,
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
 				D9B5C0D518D5F94400C8D1B7 /* HRPGPartyViewController.m in Sources */,

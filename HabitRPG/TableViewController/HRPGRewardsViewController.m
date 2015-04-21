@@ -14,6 +14,7 @@
 #import "Reward.h"
 #import <NSString+Emoji.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "HRPGRewardFormViewController.h"
 
 @interface HRPGRewardsViewController ()
 @property NSString *readableName;
@@ -300,6 +301,27 @@ User *user;
         imageView.alpha = 1;
         goldView.alpha = 1;
         priceLabel.textColor = [UIColor darkTextColor];
+    }
+}
+
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
+}
+
+- (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
+    HRPGRewardFormViewController *formViewController = (HRPGRewardFormViewController *) segue.sourceViewController;
+    [self addActivityCounter];
+    if (formViewController.editReward) {
+        [self.sharedManager updateReward:formViewController.reward onSuccess:^() {
+            [self removeActivityCounter];
+        } onError:^() {
+            [self removeActivityCounter];
+        }];
+    } else {
+        [self.sharedManager createReward:formViewController.reward onSuccess:^() {
+            [self removeActivityCounter];
+        } onError:^() {
+            [self removeActivityCounter];
+        }];
     }
 }
 
