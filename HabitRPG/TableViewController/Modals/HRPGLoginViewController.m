@@ -127,11 +127,6 @@
 
         [_sharedManager registerUser:self.usernameField.text withPassword:self.passwordField.text withEmail:self.emailField.text onSuccess:^() {
             [_sharedManager setCredentials];
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            if (![defaults boolForKey:@"displayedIntro"]) {
-                HRPGIntroView *introView = [[HRPGIntroView alloc] init];
-                [introView displayIntro];
-            }
             [_sharedManager fetchUser:^() {
                 [self dismissViewControllerAnimated:YES completion:nil];
             }                 onError:^() {
