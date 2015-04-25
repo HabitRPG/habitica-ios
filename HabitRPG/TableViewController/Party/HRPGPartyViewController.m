@@ -266,16 +266,16 @@ ChatMessage *selectedMessage;
         }
         float width;
         if (message.user == nil) {
-            width = 280.0f;
+            width = self.screenWidth - 32;
         } else {
-            width = 230.0f;
+            width = self.screenWidth - 83;
         }
         NSInteger height = [message.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                       options:NSStringDrawingUsesLineFragmentOrigin
                                                    attributes:@{
                                                            NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                    }
-                                                      context:nil].size.height + 40;
+                                                      context:nil].size.height + 45;
         if (height < 70 && message.user != nil) {
             height = 70;
         }
