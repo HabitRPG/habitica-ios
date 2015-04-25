@@ -1257,15 +1257,13 @@ NSString *currentUser;
             user.experience = [NSNumber numberWithFloat:[user.experience floatValue] - [user.nextLevel floatValue]];
         }
         user.level = taskResponse.level;
-        NSNumber *expDiff = [NSNumber numberWithFloat:[taskResponse.experience floatValue] - [user.experience floatValue]];
         user.experience = taskResponse.experience;
-        NSNumber *healthDiff = [NSNumber numberWithFloat:[taskResponse.health floatValue] - [user.health floatValue]];
         user.health = taskResponse.health;
         user.magic = taskResponse.magic;
 
         NSNumber *goldDiff = [NSNumber numberWithFloat:[taskResponse.gold floatValue] - [user.gold floatValue]];
         user.gold = taskResponse.gold;
-        [self displayTaskSuccessNotification:healthDiff withExperienceDiff:expDiff withGoldDiff:goldDiff];
+        [self displayRewardNotification:goldDiff];
         if (taskResponse.dropKey) {
             NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
             // Edit the entity name as appropriate.
@@ -1547,7 +1545,9 @@ NSString *currentUser;
         NSError *executeError = nil;
         HRPGUserBuyResponse *response = [mappingResult firstObject];
         user.health = response.health;
+        NSNumber *goldDiff = [NSNumber numberWithFloat:[response.gold floatValue] - [user.gold floatValue]];
         user.gold = response.gold;
+        [self displayRewardNotification:goldDiff];
         user.magic = response.magic;
         user.equippedArmor = response.equippedArmor;
         user.equippedBack = response.equippedBack;
@@ -1984,7 +1984,7 @@ NSString *currentUser;
 }
 
 - (void)displaySpellNotification:(NSInteger)manaDiff withHealthDiff:(CGFloat)healthDiff {
-    UIColor *notificationColor = [UIColor colorWithRed:0.768 green:0.782 blue:0.105 alpha:1.000];
+    UIColor *notificationColor = [UIColor colorWithRed:0.973 green:0.753 blue:0.000 alpha:1.000];
     NSString *content;
     if (healthDiff > 0) {
         notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
@@ -2000,6 +2000,18 @@ NSString *currentUser;
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{
     }];
+}
+
+- (void)displayRewardNotification:(NSNumber *)goldDiff {
+    UIColor *notificationColor = [UIColor colorWithRed:0.973 green:0.753 blue:0.000 alpha:1.000];
+    NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"%@ Gold", nil), goldDiff],
+                              kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastBackgroundColorKey : notificationColor,
+                              kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconCheck]
+                              };
+    [CRToastManager showNotificationWithOptions:options
+                                completionBlock:^{
+                                }];
 }
 
 - (void)displayDropNotification:(NSString *)name withType:(NSString *)type withNote:(NSString *)note {
