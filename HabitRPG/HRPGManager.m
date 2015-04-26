@@ -1470,12 +1470,11 @@ NSString *currentUser;
     
     NSDictionary *params = @{@"username" : username, @"password" : password, @"confirmPassword" : password, @"email": email};
     [[RKObjectManager sharedManager] postObject:Nil path:@"/api/v2/register" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        HRPGLoginData *loginData = (HRPGLoginData *) [mappingResult firstObject];
-        PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-        [keyChain setString:loginData.id forKey:@"id"];
-        [keyChain setString:loginData.key forKey:@"key"];
+        [self loginUser:username withPassword:password onSuccess:^() {
+            successBlock();
+        }onError:^() {
+        }];
         
-        successBlock();
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
