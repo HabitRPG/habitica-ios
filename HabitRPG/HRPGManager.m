@@ -486,15 +486,14 @@ NSString *currentUser;
                                                                                   toKeyPath:@"groups"
                                                                                 withMapping:newMessageMapping]];
 
-    RKEntityMapping *userMapping = [entityMapping copy];
 
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/class/cast/:spell" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/class/cast/:spell" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/revive" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/revive" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/class/change" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/class/change" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
 
@@ -547,7 +546,6 @@ NSString *currentUser;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPUT pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
-    entityMapping = [entityMapping copy];
     [entityMapping addAttributeMappingsFromDictionary:@{
                                                        @"stats.toNextLevel" : @"nextLevel",
                                                        @"stats.maxHealth" : @"maxHealth",
@@ -640,17 +638,16 @@ NSString *currentUser;
                                                                                   toKeyPath:@"questParticipants"
                                                                                 withMapping:questParticipantsMapping]];
 
-    RKEntityMapping *partyResponseMapping = [entityMapping copy];
 
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:partyResponseMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/questAccept" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-
-    [objectManager addResponseDescriptor:responseDescriptor];
-
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:partyResponseMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/questReject" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/questAccept" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 
     [objectManager addResponseDescriptor:responseDescriptor];
 
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:partyResponseMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/questAbort" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/questReject" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+
+    [objectManager addResponseDescriptor:responseDescriptor];
+
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/questAbort" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 
     [objectManager addResponseDescriptor:responseDescriptor];
     
@@ -1067,9 +1064,13 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
     
     [[RKObjectManager sharedManager] putObject:nil path:@"/api/v2/user" parameters:newValues success:^ (RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSError *executeError = nil;
-        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        //TODO: API currently does not return maxHealth, maxMP and toNextLevel. To set them to correct values, fetch again until this is fixed.
+        [self fetchUser:^() {
+            NSError *executeError = nil;
+            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+            successBlock();
+        }onError:^() {
+        }];
         [self.networkIndicatorController endNetworking];
         return;
      } failure:^(RKObjectRequestOperation *operation, NSError *error) {

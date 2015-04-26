@@ -155,14 +155,20 @@ NSInteger rowOffset = 145;
     self.user = [self getUser];
     [self.user setAvatarOnImageView:self.avatarImageView withPetMount:YES onlyHead:NO withBackground:YES useForce:YES];
     self.healthLabel.value = [self.user.health integerValue];
-    self.healthLabel.maxValue = [self.user.maxHealth integerValue];
+    if ([self.user.maxHealth integerValue] > 0) {
+        self.healthLabel.maxValue = [self.user.maxHealth integerValue];
+    }
 
     self.experienceLabel.value = [self.user.experience integerValue];
-    self.experienceLabel.maxValue = [self.user.nextLevel integerValue];
+    if ([self.user.nextLevel integerValue] > 0) {
+        self.experienceLabel.maxValue = [self.user.nextLevel integerValue];
+    }
 
     if ([self.user.level integerValue] >= 10) {
         self.magicLabel.value = [self.user.magic integerValue];
-        self.magicLabel.maxValue = [self.user.maxMagic integerValue];
+        if ([self.user.maxMagic integerValue] > 0) {
+            self.magicLabel.maxValue = [self.user.maxMagic integerValue];
+        }
         self.magicLabel.hidden = NO;
     } else {
         self.magicLabel.hidden = YES;

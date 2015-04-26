@@ -81,8 +81,8 @@
     }
     
     if (![self.taskType isEqualToString:@"habit"]) {
-        section = [XLFormSectionDescriptor formSectionWithTitle:@"Checklist" multivaluedSection:YES];
-        section.multiValuedTag = @"checklist";
+        section = [XLFormSectionDescriptor formSectionWithTitle:@"Checklist" sectionOptions:XLFormSectionOptionCanReorder | XLFormSectionOptionCanInsert | XLFormSectionOptionCanDelete];
+        section.multivaluedTag = @"checklist";
         [self.form addFormSection:section];
         
         if (!self.editTask) {

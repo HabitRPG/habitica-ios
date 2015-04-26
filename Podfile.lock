@@ -1,67 +1,61 @@
 PODS:
   - AFNetworking (1.3.4)
   - CRToast (0.0.7)
-  - EAIntroView (2.6.4)
-  - FLEX (1.1.1)
-  - FontAwesomeIconFactory (1.4)
-  - HockeyKit (2.0.7)
+  - FLEX (2.0.2)
+  - FontAwesomeIconFactory (2.0)
   - ISO8601DateFormatterValueTransformer (0.6.0):
     - RKValueTransformers (~> 1.1.0)
   - MCSwipeTableViewCell (2.1.2)
   - NSDate+TimeAgo (1.0.3)
   - NSString+Emoji (0.2.0)
-  - OHHTTPStubs (3.1.11):
-    - OHHTTPStubs/Core (= 3.1.11)
-  - OHHTTPStubs/Core (3.1.11)
+  - OHHTTPStubs (4.0.0)
   - PDKeychainBindingsController (0.0.1)
   - pop (1.0.7)
-  - RestKit (0.23.3):
-    - RestKit/Core (= 0.23.3)
-  - RestKit/Core (0.23.3):
+  - RestKit (0.24.1):
+    - RestKit/Core (= 0.24.1)
+  - RestKit/Core (0.24.1):
     - RestKit/CoreData
     - RestKit/Network
     - RestKit/ObjectMapping
-  - RestKit/CoreData (0.23.3):
+  - RestKit/CoreData (0.24.1):
     - RestKit/ObjectMapping
-  - RestKit/Network (0.23.3):
+  - RestKit/Network (0.24.1):
     - AFNetworking (~> 1.3.0)
     - RestKit/ObjectMapping
     - RestKit/Support
     - SOCKit
-  - RestKit/ObjectMapping (0.23.3):
+  - RestKit/ObjectMapping (0.24.1):
     - ISO8601DateFormatterValueTransformer (~> 0.6.0)
     - RestKit/Support
     - RKValueTransformers (~> 1.1.0)
-  - RestKit/Support (0.23.3):
-    - TransitionKit (= 2.1.0)
-  - RestKit/Testing (0.23.3):
+  - RestKit/Support (0.24.1):
+    - TransitionKit (~> 2.1.0)
+  - RestKit/Testing (0.24.1):
     - RestKit/Network
-  - RKValueTransformers (1.1.1)
-  - SDWebImage (3.7.1):
-    - SDWebImage/Core (= 3.7.1)
-  - SDWebImage/Core (3.7.1)
+  - RKValueTransformers (1.1.2)
+  - SDWebImage (3.7.2):
+    - SDWebImage/Core (= 3.7.2)
+  - SDWebImage/Core (3.7.2)
   - SOCKit (1.1)
-  - TransitionKit (2.1.0)
-  - VTAcknowledgementsViewController (0.12)
-  - XLForm (2.1.0)
+  - TransitionKit (2.1.1)
+  - VTAcknowledgementsViewController (0.13)
+  - XLForm (2.2.0)
 
 DEPENDENCIES:
   - CRToast (from `https://github.com/cruffenach/CRToast`)
-  - EAIntroView (~> 2.6.0)
   - FLEX
   - FontAwesomeIconFactory
-  - HockeyKit (~> 2.0.7)
   - MCSwipeTableViewCell (~> 2.1.0)
   - NSDate+TimeAgo
   - NSString+Emoji
   - OHHTTPStubs
   - PDKeychainBindingsController (~> 0.0.1)
-  - pop (~> 1.0)
-  - RestKit (~> 0.23.1)
+  - pop
+  - RestKit (~> 0.24.1)
   - RestKit/Testing
   - SDWebImage
   - VTAcknowledgementsViewController
-  - XLForm (~> 2.1.0)
+  - XLForm
 
 EXTERNAL SOURCES:
   CRToast:
@@ -69,29 +63,27 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CRToast:
-    :commit: 583da45c328a7d5c6335ef11642c5f86794c4d8a
+    :commit: 076a83cb07db500150a495b9e7515b0114d6ec0b
     :git: https://github.com/cruffenach/CRToast
 
 SPEC CHECKSUMS:
-  AFNetworking: 80c4e0652b08eb34e25b9c0ff3c82556fe5967b4
-  CRToast: 99a28f4387def43b439ad88f957ce31357ff7373
-  EAIntroView: 8f66dc6b79f2d52db26af8fc5476a05ffc549d4c
-  FLEX: 8e53751b915759215d77c7c72b1c7bd28665dac2
-  FontAwesomeIconFactory: 6ef139e879d779e8e4561980ca170ea0981f5f9e
-  HockeyKit: 4e12409e2943bfab313fb641902d930e7d7b147e
-  ISO8601DateFormatterValueTransformer: a705384ea6531255258e25b6480ba1180db703a0
-  MCSwipeTableViewCell: 8e78ff197ab06ba7bfd5c938a00149de8a33afa9
-  NSDate+TimeAgo: f3533e0198fab05b716368b19f8c2185d53d6f3b
-  NSString+Emoji: bd879561d02703ec350dd82035bbafbe6de9886a
-  OHHTTPStubs: e6ecc3fd4fa11b2cfb5f4823421bddc95a82913d
-  PDKeychainBindingsController: 529f006d0707646b2bf0c79d476acdda58a9a587
-  pop: 2f14a1ea61339767af9e66741b418c831b3844df
-  RestKit: 193a35cddae5198388977abaedad129f8acb978b
-  RKValueTransformers: 67b4ea3eb6a1c1a0b8c3c37eb4e4c05e4febeba2
-  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  SOCKit: d8d0dd3688ae1026c12367570da8fa8e1a6980fb
-  TransitionKit: 6a6f3ddda38ae758778aa889dcb930e4f8d64edc
-  VTAcknowledgementsViewController: 5cdab8f3d003680b8fbdfcce90fcab92cee962a6
-  XLForm: 7d6855fe88df37b44ea00da80cc0cf3a945cfb1b
+  AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
+  CRToast: eb22641501990233c53cb8f83f7d2ea87e0ddf73
+  FLEX: 321e6150cbababb76aaadde355dfce2ee1cac2d8
+  FontAwesomeIconFactory: d161a1832f8220d764033e0fcc4f4a8388495ab7
+  ISO8601DateFormatterValueTransformer: 3ac3a721381697cab4e792d8049ce2f2e9ad3036
+  MCSwipeTableViewCell: 0fc22bd3635b9b5f4ce08675218b0a7278b6440f
+  NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
+  NSString+Emoji: 127da93993ac7c01eadb2edbb039cda89a1369f4
+  OHHTTPStubs: 3d65d31dd8389a8adabcc086ff2cc99c02e49bcc
+  PDKeychainBindingsController: fa8cb3cf99f2ea9240d61066ed0549f34e2cec3c
+  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
+  RestKit: 1987b5efef289c6b27bd980714d6ca48d3871b78
+  RKValueTransformers: 66ac5e4f077fdbe3496e792d89eeff4c3eb67701
+  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
+  SOCKit: c7376ac262bea9115b8f749358f762522a47d392
+  TransitionKit: 3a14b6acc7cf2d1dd3e454e24dbad1cfab9a1ef1
+  VTAcknowledgementsViewController: f2391b007c3abafd3b3afccda7d8914a59b44309
+  XLForm: 799e61ef230f519914e722bf032b19a597223c19
 
-COCOAPODS: 0.36.0.rc.1
+COCOAPODS: 0.36.3
