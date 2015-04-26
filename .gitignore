@@ -1,4 +1,5 @@
 /Pods/
+.DS_Store
 *.log
 
 # Created by https://www.gitignore.io
