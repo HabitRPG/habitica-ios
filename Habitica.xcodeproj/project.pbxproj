@@ -485,9 +485,8 @@
 				D9ADD3541943BE95006202C1 /* HRPGTabBarController.h */,
 				D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */,
 			);
-			name = TabBarController;
-			path = /Users/viirus/Code/RabbitRPG/HabitRPG/TabBarController;
-			sourceTree = "<absolute>";
+			path = TabBarController;
+			sourceTree = "<group>";
 		};
 		D9ADD3571943C13F006202C1 /* Collection View Controller */ = {
 			isa = PBXGroup;
@@ -519,8 +518,8 @@
 				D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */,
 			);
 			name = Models;
-			path = /Users/viirus/Code/RabbitRPG/HabitRPG/HRPGModels;
-			sourceTree = "<absolute>";
+			path = HRPGModels;
+			sourceTree = "<group>";
 		};
 		D9B967CB1AB33BD0001D84F7 /* Fixtures */ = {
 			isa = PBXGroup;
@@ -534,40 +533,40 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D9D2172F198D509000023367 /* HRPGDeathView.h */,
-				D9D21730198D509000023367 /* HRPGDeathView.m */,
-				D9C0002E1928F83E003D4E4C /* HRPGRoundProgressView.h */,
-				D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */,
-				D9ADD35B19447057006202C1 /* HRPGBall.h */,
-				D9ADD35C19447057006202C1 /* HRPGBall.m */,
-				D9C0003219290D5E003D4E4C /* HRPGActivityIndicatorOverlayView.h */,
-				D9C0003319290D5E003D4E4C /* HRPGActivityIndicatorOverlayView.m */,
-				D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */,
-				D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */,
-				D99BC42D19D47B4F006DC132 /* HRPGImageOverlayManager.h */,
-				D99BC42E19D47B4F006DC132 /* HRPGImageOverlayManager.m */,
-				D9884B4319168AF00078BC7C /* HRPGProgressView.h */,
-				D9884B4419168AF00078BC7C /* HRPGProgressView.m */,
-				D908B3811903515B00D32A75 /* HRPGSwipeTableViewCell.h */,
-				D908B3821903515B00D32A75 /* HRPGSwipeTableViewCell.m */,
 				D99C46D619C7687A00834EC2 /* HRPGActivityIndicator.h */,
 				D99C46D719C7687A00834EC2 /* HRPGActivityIndicator.m */,
-				D9E08E5C1A98A71000D95B74 /* HRPGIntroView.h */,
-				D9E08E5D1A98A71000D95B74 /* HRPGIntroView.m */,
+				D9C0003219290D5E003D4E4C /* HRPGActivityIndicatorOverlayView.h */,
+				D9C0003319290D5E003D4E4C /* HRPGActivityIndicatorOverlayView.m */,
+				D9ADD35B19447057006202C1 /* HRPGBall.h */,
+				D9ADD35C19447057006202C1 /* HRPGBall.m */,
 				D9E918551AA3A70D005E378B /* HRPGCheckBoxView.h */,
 				D9E918561AA3A70D005E378B /* HRPGCheckBoxView.m */,
-				D9660D761AB248030084CE37 /* HRPGUserTopHeader.h */,
-				D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */,
-				D9BA33CC1AB5D2CF0028AFEC /* HRPGProgressBar.h */,
-				D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */,
-				D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */,
-				D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */,
-				D9BA33CF1AB5E0C90028AFEC /* HRPGGoldView.h */,
-				D9BA33D01AB5E0C90028AFEC /* HRPGGoldView.m */,
+				D9D2172F198D509000023367 /* HRPGDeathView.h */,
+				D9D21730198D509000023367 /* HRPGDeathView.m */,
 				D9FD3B2F1ABDF8E700B005F6 /* HRPGGemView.h */,
 				D9FD3B301ABDF8E700B005F6 /* HRPGGemView.m */,
+				D9BA33CF1AB5E0C90028AFEC /* HRPGGoldView.h */,
+				D9BA33D01AB5E0C90028AFEC /* HRPGGoldView.m */,
 				D92D40D71ABF123800E30339 /* HRPGHabitButton.h */,
 				D92D40D81ABF123800E30339 /* HRPGHabitButton.m */,
+				D99BC42D19D47B4F006DC132 /* HRPGImageOverlayManager.h */,
+				D99BC42E19D47B4F006DC132 /* HRPGImageOverlayManager.m */,
+				D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */,
+				D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */,
+				D9E08E5C1A98A71000D95B74 /* HRPGIntroView.h */,
+				D9E08E5D1A98A71000D95B74 /* HRPGIntroView.m */,
+				D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */,
+				D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */,
+				D9BA33CC1AB5D2CF0028AFEC /* HRPGProgressBar.h */,
+				D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */,
+				D9884B4319168AF00078BC7C /* HRPGProgressView.h */,
+				D9884B4419168AF00078BC7C /* HRPGProgressView.m */,
+				D9C0002E1928F83E003D4E4C /* HRPGRoundProgressView.h */,
+				D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */,
+				D908B3811903515B00D32A75 /* HRPGSwipeTableViewCell.h */,
+				D908B3821903515B00D32A75 /* HRPGSwipeTableViewCell.m */,
+				D9660D761AB248030084CE37 /* HRPGUserTopHeader.h */,
+				D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
