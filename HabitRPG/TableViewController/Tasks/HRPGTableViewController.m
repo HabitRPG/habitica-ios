@@ -9,7 +9,6 @@
 #import "HRPGTableViewController.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGFormViewController.h"
-#import "MCSwipeTableViewCell.h"
 #import "HRPGSwipeTableViewCell.h"
 #import "Tag.h"
 #import "HRPGTagViewController.h"

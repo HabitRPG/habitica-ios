@@ -397,12 +397,14 @@ NSString *currentUser;
                                                              @"tagDictionary":@"tags"}];
 
     
-    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodGET]];
-    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodPUT]];
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks/:key" method:RKRequestMethodGET]];
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks/:key" method:RKRequestMethodPUT]];
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks" method:RKRequestMethodPOST]];
-    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodDELETE]];
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks/:key" method:RKRequestMethodDELETE]];
     
     requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:rewardRequestMapping objectClass:[Reward class] rootKeyPath:nil method:RKRequestMethodPOST];
+    [objectManager addRequestDescriptor:requestDescriptor];
+    requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:rewardRequestMapping objectClass:[Reward class] rootKeyPath:nil method:RKRequestMethodPUT];
     [objectManager addRequestDescriptor:requestDescriptor];
     
     RKEntityMapping *userTagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];

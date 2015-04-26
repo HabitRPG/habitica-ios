@@ -71,8 +71,8 @@
     self.form = formDescriptor;
 }
 - (void)fillEditForm {
-    [self.form formRowWithTag:@"text"].value = self.reward.text;
-    [self.form formRowWithTag:@"notes"].value = self.reward.notes;
+    [self.form formRowWithTag:@"text"].value = [self.reward.text stringByReplacingEmojiCheatCodesWithUnicode];
+    [self.form formRowWithTag:@"notes"].value = [self.reward.notes stringByReplacingEmojiCheatCodesWithUnicode];
     [self.form formRowWithTag:@"value"].value = self.reward.value;
     
     for (Tag *tag in self.reward.tags) {
@@ -136,8 +136,14 @@
                 }
                 continue;
             }
+
+            
             if (formValues[key] == [NSNull null]) {
                 [self.reward setValue:nil forKeyPath:key];
+                continue;
+            }
+            if ([formValues[key] isKindOfClass:[NSString class]]) {
+                [self.reward setValue:[formValues[key] stringByReplacingEmojiUnicodeWithCheatCodes] forKey:key];
                 continue;
             }
             [self.reward setValue:formValues[key] forKeyPath:key];

@@ -155,8 +155,8 @@
 }
 
 - (void)fillEditForm {
-    [self.form formRowWithTag:@"text"].value = self.task.text;
-    [self.form formRowWithTag:@"notes"].value = self.task.notes;
+    [self.form formRowWithTag:@"text"].value = [self.task.text stringByReplacingEmojiCheatCodesWithUnicode];
+    [self.form formRowWithTag:@"notes"].value = [self.task.notes stringByReplacingEmojiCheatCodesWithUnicode];
     
     if ([self.task.priority floatValue] == 1) {
         [self.form formRowWithTag:@"priority"].value = [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority displayText:NSLocalizedString(@"Easy", nil)];
