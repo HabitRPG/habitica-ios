@@ -15,12 +15,15 @@
 #import <NSString+Emoji.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "HRPGRewardFormViewController.h"
+#import <POPSpringAnimation.h>
+#import "HRPGNavigationController.h"
 
 @interface HRPGRewardsViewController ()
 @property NSString *readableName;
 @property NSString *typeName;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
+@property Reward *editedReward;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
@@ -79,8 +82,16 @@ User *user;
 
     if ([reward isKindOfClass:[Reward class]]) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongCellPress:)];
+        [cell addGestureRecognizer:longPressGesture];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ImageCell" forIndexPath:indexPath];
+        for (UIGestureRecognizer *gestureRecognizer in [cell gestureRecognizers]) {
+            if ([gestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]]) {
+                [cell removeGestureRecognizer:gestureRecognizer];
+                break;
+            }
+        };
     }
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
@@ -119,22 +130,18 @@ User *user;
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
     if ([reward.type isEqualToString:@"reward"]) {
-        //TODO: Correctly implement deleting
-        return NO;
+        return YES;
     }
     return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-        [context deleteObject:self.filteredData[indexPath.section][indexPath.item]];
-
-        NSError *error = nil;
-        if (![context save:&error]) {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
+        Reward *reward = self.filteredData[indexPath.section][indexPath.item];
+        [self.sharedManager deleteReward:reward onSuccess:^() {
+        } onError:^() {
+            
+        }];
     }
 }
 
@@ -171,7 +178,7 @@ User *user;
     NSMutableArray *customRewardsArray = [[NSMutableArray alloc] init];
     for (Reward *reward in self.fetchedResultsController.fetchedObjects) {
             if ([reward isKindOfClass:[Gear class]]) {
-                Gear *gear = reward;
+                Gear *gear = (Gear*)reward;
                 if (gear.owned) {
                     continue;
                 }
@@ -301,6 +308,40 @@ User *user;
         imageView.alpha = 1;
         goldView.alpha = 1;
         priceLabel.textColor = [UIColor darkTextColor];
+    }
+}
+
+- (void) handleLongCellPress:(UILongPressGestureRecognizer*)gesture
+{
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        CGPoint p = [gesture locationInView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        POPSpringAnimation *jumpAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+        jumpAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
+        jumpAnimation.velocity = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
+        jumpAnimation.springBounciness = 20.f;
+        [cell pop_addAnimation:jumpAnimation forKey:@"jumpAnimation"];
+    }
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        CGPoint p = [gesture locationInView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+        self.editedReward = self.filteredData[indexPath.section][indexPath.item];
+        [self performSegueWithIdentifier:@"FormSegue" sender:self];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"FormSegue"]) {
+        HRPGNavigationController *destViewController = segue.destinationViewController;
+        destViewController.sourceViewController = self;
+        
+        HRPGRewardFormViewController *formController = (HRPGRewardFormViewController *) destViewController.topViewController;
+        if (self.editedReward) {
+            formController.editReward = YES;
+            formController.reward = self.editedReward;
+            self.editedReward = nil;
+        }
     }
 }
 

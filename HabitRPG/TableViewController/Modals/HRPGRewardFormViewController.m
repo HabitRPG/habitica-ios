@@ -33,6 +33,13 @@
     return self;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    if (self.editReward) {
+        [self fillEditForm];
+    }
+}
+
 -(void)initializeForm {
     XLFormDescriptor *formDescriptor = [XLFormDescriptor formDescriptorWithTitle:@"New"];
     
@@ -61,15 +68,12 @@
         [section addFormRow:[XLFormRowDescriptor formRowDescriptorWithTag:[NSString stringWithFormat:@"tag.%@", tag.id] rowType:XLFormRowDescriptorTypeBooleanCheck title:tag.name]];
     }
     
-    if (self.editReward) {
-        [self fillEditForm];
-    }
-    
     self.form = formDescriptor;
 }
 - (void)fillEditForm {
-    [self.form formRowWithTag:@"text"].value = self.reward;
+    [self.form formRowWithTag:@"text"].value = self.reward.text;
     [self.form formRowWithTag:@"notes"].value = self.reward.notes;
+    [self.form formRowWithTag:@"value"].value = self.reward.value;
     
     for (Tag *tag in self.reward.tags) {
         [self.form formRowWithTag:[NSString stringWithFormat:@"tag.%@", tag.id]].value = [NSNumber numberWithBool:YES];
