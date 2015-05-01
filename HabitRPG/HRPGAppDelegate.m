@@ -52,33 +52,25 @@
     application.scheduledLocalNotifications = scheduledNotifications;
     User *user = [self.sharedManager getUser];
     if (user) {
-        NSDate *lastTaskFetch = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastTaskFetch"];
-        NSDate *now = [NSDate date];
-        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-        NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:now];
-        [components setHour:[user.dayStart integerValue]];
-        NSDate *dayStartDate = [calendar dateFromComponents:components];
-        if (lastTaskFetch == nil || [dayStartDate compare:lastTaskFetch] == NSOrderedDescending) {
-            UINavigationController *navigationController = (UINavigationController *) ((UITabBarController *) self.window.rootViewController).selectedViewController;
-            UIViewController *visibleView = navigationController.visibleViewController;
-            HRPGTableViewController *viewController;
-            if ([visibleView isKindOfClass:[HRPGTableViewController class]]) {
-                viewController = (HRPGTableViewController *) visibleView;
-                [viewController.refreshControl beginRefreshing];
-                [viewController.tableView setContentOffset:CGPointMake(0, -viewController.topLayoutGuide.length) animated:YES];
-            }
-            [self.sharedManager fetchUser:^() {
-                if (viewController) {
-                    [viewController.refreshControl endRefreshing];
-                    [viewController.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
-                }
-            }                 onError:^() {
-                if (viewController) {
-                    [viewController.refreshControl endRefreshing];
-                    [viewController.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
-                }
-            }];
+        UINavigationController *navigationController = (UINavigationController *) ((UITabBarController *) self.window.rootViewController).selectedViewController;
+        UIViewController *visibleView = navigationController.visibleViewController;
+        HRPGTableViewController *viewController;
+        if ([visibleView isKindOfClass:[HRPGTableViewController class]]) {
+            viewController = (HRPGTableViewController *) visibleView;
+            [viewController.refreshControl beginRefreshing];
+            [viewController.tableView setContentOffset:CGPointMake(0, -viewController.topLayoutGuide.length) animated:YES];
         }
+        [self.sharedManager fetchUser:^() {
+            if (viewController) {
+                [viewController.refreshControl endRefreshing];
+                [viewController.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+            }
+        }                 onError:^() {
+            if (viewController) {
+                [viewController.refreshControl endRefreshing];
+                [viewController.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+            }
+        }];
     }
 }
 
