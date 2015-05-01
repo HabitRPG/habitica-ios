@@ -1,1441 +1,1434 @@
 {
-"_id": "UUID",
-"__v": 1778,
-"migration": "20150131_birthday_goodies_fix_achievement__new_users_have_one_birthday",
-"rewards": [
-{
-"text": "Hello :shit:",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 10,
-"tags": {},
-"notes": "",
-"dateCreated": "2014-09-03T19:58:58.733Z",
-"id": "529eca78-e7f3-4cd7-bfe4-868f93f83591",
-"type": "reward"
-},
-{
-"text": "reward with note",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 10,
-"tags": {},
-"notes": "hello world this is nice",
-"dateCreated": "2014-05-03T11:11:55.866Z",
-"id": "f48a9b78-216a-42b5-8662-3f26ec4a2b01",
-"type": "reward"
-},
-{
-"text": "longer reward text to see how this behaves",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 10,
-"tags": {},
-"notes": "",
-"dateCreated": "2014-05-03T10:38:05.458Z",
-"id": "0285d12b-cee1-4862-8cd4-4ebdf76af036",
-"type": "reward"
-},
-{
-"text": "Cakeqwe",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 10,
-"tags": {},
-"notes": "Other people just want to enjoy a nice piece of cake. Try to create rewards that will motivate you best.",
-"dateCreated": "2014-03-15T22:53:09.042Z",
-"id": "54e177b5-d6c2-4d22-9f6c-894e48ca11af",
-"type": "reward"
-}
-],
-"todos": [
-{
-"text": "test123",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": -18.486422250696243,
-"tags": {
-"f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false,
-"39413ca6-b817-4ede-abd3-35822aec91b6": false,
-"b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false,
-"a2752584-682c-4660-bd59-92214dc74fac": false
-},
-"notes": "",
-"dateCreated": "2014-07-11T11:53:22.691Z",
-"id": "896d4056-fb0c-4858-ab6d-a97f019c1039",
-"checklist": [],
-"collapseChecklist": false,
-"completed": false,
-"type": "todo"
-},
-{
-"text": "Write your Happy List!",
-"challenge": {
-"id": "a2752584-682c-4660-bd59-92214dc74fac",
-"broken": "CHALLENGE_DELETED"
-},
-"attribute": "per",
-"priority": 1,
-"value": -31.352283868821,
-"tags": {
-"a2752584-682c-4660-bd59-92214dc74fac": true
-},
-"notes": "",
-"dateCreated": "2014-06-11T19:33:53.518Z",
-"id": "bbe9efce-4eba-4cab-86dc-a3002c8940aa",
-"checklist": [],
-"collapseChecklist": false,
-"completed": false,
-"type": "todo"
-}
-],
-"dailys": [
-{
-"text": "Test1",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": -11.313237922144532,
-"tags": {
-"b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false,
-"39413ca6-b817-4ede-abd3-35822aec91b6": true,
-"f6a34fea-5d06-4fb2-a2c7-127e2b58165a": true,
-"a2752584-682c-4660-bd59-92214dc74fac": false
-},
-"notes": "",
-"dateCreated": "2014-07-15T17:20:37.000Z",
-"id": "c4f7e186-c5ae-448b-9a98-72eec12db11e",
-"streak": 1,
-"checklist": [
-{
-"text": "Qweqweqwe",
-"id": "7b63b854-f219-44c5-be17-eb5ddb982834",
-"completed": false
-},
-{
-"text": "Böa",
-"id": "530d2468-297f-46f5-a019-cd4fda6d2c9f",
-"completed": true
-}
-],
-"collapseChecklist": false,
-"repeat": {
-"su": true,
-"s": true,
-"f": true,
-"th": true,
-"w": true,
-"t": true,
-"m": true
-},
-"completed": true,
-"history": [
-{
-"value": -1,
-"date": 1405515036658
-},
-{
-"date": 1405676931963,
-"value": -3.079244230667636
-},
-{
-"value": -4.161348258391507,
-"date": 1405802490788
-},
-{
-"date": 1405809943459,
-"value": -5.273878399739519
-},
-{
-"value": -11.3598999082337,
-"date": 1406317192756
-},
-{
-"date": 1406325703152,
-"value": -12.697803167060998
-}
-],
-"type": "daily"
-},
-{
-"text": "eat something",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": -31.110529782507335,
-"tags": {
-"b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false,
-"39413ca6-b817-4ede-abd3-35822aec91b6": false,
-"f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false,
-"a2752584-682c-4660-bd59-92214dc74fac": false
-},
-"notes": "",
-"dateCreated": "2014-06-15T18:28:04.000Z",
-"id": "c57e1c7d-a107-40fa-a958-f5514755732c",
-"streak": 0,
-"checklist": [
-{
-"text": "",
-"id": "ee40048e-2a00-449f-993a-b4c51276781b",
-"completed": false
-},
-{
-"text": "",
-"id": "2ee7ce3c-78c1-4504-aa14-ba06d8c45e84",
-"completed": true
-},
-{
-"text": "dinner",
-"id": "3bf81157-65f1-4cbe-8e1c-30a0f3181002",
-"completed": false
-}
-],
-"collapseChecklist": false,
-"repeat": {
-"su": true,
-"s": true,
-"f": true,
-"th": true,
-"w": false,
-"t": false,
-"m": false
-},
-"completed": false,
-"history": [
-{
-"date": "2014-06-16T00:42:18.752Z",
-"value": -5.204875041607884
-},
-{
-"date": 1404219756371,
-"value": -11.359900282102458
-},
-{
-"value": -12.697803553747661,
-"date": 1404499463220
-},
-{
-"date": 1404511359634,
-"value": -14.08237154301735
-},
-{
-"value": -15.516946320295709,
-"date": 1404603029263
-},
-{
-"date": 1404822000456,
-"value": -17.005239947630724
-},
-{
-"value": -17.005239947630724,
-"date": 1404938114898
-},
-{
-"date": 1404945175230,
-"value": -17.005239947630724
-},
-{
-"value": -18.551390900603604,
-"date": 1405079593295
-},
-{
-"date": 1405253614614,
-"value": -21.83636995673441
-},
-{
-"value": -23.58628797229782,
-"date": 1405442784550
-},
-{
-"value": -23.58628797229782,
-"date": 1405515036659
-},
-{
-"date": 1405676931967,
-"value": -25.416462890606358
-},
-{
-"value": -27.334516219719273,
-"date": 1405802490790
-},
-{
-"date": 1405809943459,
-"value": -25.319833049169493
-},
-{
-"value": -29.242599103974616,
-"date": 1406317192759
-},
-{
-"date": 1406325703154,
-"value": -31.35823963125462
-}
-],
-"type": "daily"
-},
-{
-"text": "1h Personal Project",
-"challenge": {},
-"attribute": "per",
-"priority": 1,
-"value": -167.87742982878302,
-"tags": [],
-"notes": "All tasks default to yellow when they are created. This means you will take only moderate damage when they are missed and will gain only a moderate reward when they are completed.",
-"dateCreated": "2014-03-15T22:53:09.000Z",
-"id": "297443bd-1a13-4300-823a-86f764ff21aa",
-"streak": 2,
-"checklist": [],
-"collapseChecklist": false,
-"repeat": {
-"su": true,
-"s": false,
-"f": true,
-"th": true,
-"w": true,
-"t": true,
-"m": true
-},
-"completed": false,
-"history": [
-{
-"date": "2014-03-15T23:24:47.295Z",
-"value": 4.007052471641401
-},
-{
-"date": "2014-04-02T16:40:40.972Z",
-"value": -7.433704155664562
-},
-{
-"date": "2014-05-18T22:01:39.930Z",
-"value": -13.253174148295631
-},
-{
-"date": "2014-06-02T07:53:56.789Z",
-"value": -56.47544927669601
-},
-{
-"date": 1404219756374,
-"value": -102.74464591170874
-},
-{
-"value": -112.81838477927187,
-"date": 1404499463222
-},
-{
-"date": 1404511359635,
-"value": -116.17629773512624
-},
-{
-"value": -116.17629773512624,
-"date": 1404603029264
-},
-{
-"date": 1404822000457,
-"value": -122.89212364683499
-},
-{
-"value": -126.25003660268936,
-"date": 1404938114900
-},
-{
-"date": 1404945175233,
-"value": -129.60794955854374
-},
-{
-"value": -132.9658625143981,
-"date": 1405079593299
-},
-{
-"date": 1405253614616,
-"value": -136.32377547025249
-},
-{
-"value": -143.03960138196123,
-"date": 1405442784553
-},
-{
-"value": -146.3975143378156,
-"date": 1405515036660
-},
-{
-"date": 1405676931970,
-"value": -153.11334024952436
-},
-{
-"value": -156.47125320537873,
-"date": 1405802490791
-},
-{
-"date": 1405809943459,
-"value": -153.11334024952436
-},
-{
-"value": -169.90290502879623,
-"date": 1406317192762
-},
-{
-"date": 1406325703155,
-"value": -173.2608179846506
-}
-],
-"type": "daily"
-},
-{
-"text": "Happy List :D",
-"challenge": {
-"broken": "CHALLENGE_DELETED",
-"id": "a2752584-682c-4660-bd59-92214dc74fac"
-},
-"attribute": "per",
-"priority": 1,
-"value": -24.976194462037093,
-"tags": {
-"a2752584-682c-4660-bd59-92214dc74fac": true
-},
-"notes": "",
-"dateCreated": "2014-06-11T19:33:42.900Z",
-"id": "e2d2c174-5953-404e-ba3f-b4263a68da7a",
-"streak": 1,
-"checklist": [],
-"collapseChecklist": false,
-"repeat": {
-"su": true,
-"s": true,
-"f": true,
-"th": true,
-"w": true,
-"t": true,
-"m": true
-},
-"completed": false,
-"history": [
-{
-"date": 1404511359636,
-"value": -1
-},
-{
-"value": -2.025956704627065,
-"date": 1404603029268
-},
-{
-"date": 1404822000459,
-"value": -4.161348258391507
-},
-{
-"value": -5.273878399739519,
-"date": 1404938114901
-},
-{
-"date": 1404945175234,
-"value": -6.418582324043852
-},
-{
-"value": -7.597361948942557,
-"date": 1405079593301
-},
-{
-"date": 1405253614618,
-"value": -10.065641872820203
-},
-{
-"value": -12.697803167060998,
-"date": 1405442784555
-},
-{
-"value": -14.082371142610924,
-"date": 1405515036662
-},
-{
-"date": 1405676931999,
-"value": -17.005239516672432
-},
-{
-"value": -18.55139045257033,
-"date": 1405802490792
-},
-{
-"date": 1405809943460,
-"value": -16.880461779733682
-},
-{
-"value": -25.262426561837763,
-"date": 1406317192765
-},
-{
-"date": 1406325703156,
-"value": -27.17292374849792
-}
-],
-"type": "daily"
-}
-],
-"habits": [
-{
-"text": "qwe",
-"challenge": {},
-"attribute": "str",
-"priority": 2,
-"value": 12.811867552519566,
-"tags": {
-"b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false,
-"a2752584-682c-4660-bd59-92214dc74fac": false,
-"39413ca6-b817-4ede-abd3-35822aec91b6": false,
-"f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false
-},
-"notes": "",
-"dateCreated": "2015-02-07T17:45:40.000Z",
-"id": "b7d83771-02b0-49df-8101-9b61392d3401",
-"down": true,
-"up": true,
-"history": [
-{
-"date": 1425333872660,
-"value": 1
-},
-{
-"value": 12.811867552519566,
-"date": 1426108925424
-}
-],
-"type": "habit"
-},
-{
-"text": "we",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 28.80397214237421,
-"tags": {
-"a2752584-682c-4660-bd59-92214dc74fac": false,
-"f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false,
-"39413ca6-b817-4ede-abd3-35822aec91b6": false,
-"b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false
-},
-"notes": "",
-"dateCreated": "2014-09-08T19:39:54.248Z",
-"id": "f831252e-d571-45ed-a741-6eb737010c4d",
-"down": true,
-"up": true,
-"history": [
-{
-"date": 1411432084195,
-"value": 27.064543156399505
-},
-{
-"date": 1425229542114,
-"value": 27.644352818391074
-},
-{
-"value": 28.80397214237421,
-"date": 1426108647266
-}
-],
-"type": "habit"
-},
-{
-"text": "",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 25.325120734656732,
-"tags": {
-"b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false,
-"39413ca6-b817-4ede-abd3-35822aec91b6": false,
-"f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false,
-"a2752584-682c-4660-bd59-92214dc74fac": false
-},
-"notes": "",
-"dateCreated": "2014-09-04T00:13:28.075Z",
-"id": "c4247988-1e3a-440b-ae68-7e5e7bfd185c",
-"down": true,
-"up": true,
-"history": [
-{
-"date": 1411157592311,
-"value": 1
-},
-{
-"date": 1411726166786,
-"value": 5.6443010177121415
-},
-{
-"date": 1425229540721,
-"value": 4.75912291340414
-},
-{
-"value": 25.325120734656732,
-"date": 1426108876204
-}
-],
-"type": "habit"
-},
-{
-"text": "9",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 4.75912291340414,
-"tags": {},
-"notes": "",
-"dateCreated": "2014-09-03T18:37:37.563Z",
-"id": "1656f801-bb0a-4e32-a9e7-3afbb32222c2",
-"down": true,
-"up": true,
-"history": [
-{
-"date": 1411157595412,
-"value": 1.9747
-},
-{
-"date": 1411431933516,
-"value": 3.853133245658556
-},
-{
-"date": 1411726171400,
-"value": 5.6443010177121415
-},
-{
-"date": 1425229539495,
-"value": 4.75912291340414
-}
-],
-"type": "habit"
-},
-{
-"text": "8",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 4.75912291340414,
-"tags": {},
-"notes": "",
-"dateCreated": "2014-09-03T18:37:36.141Z",
-"id": "6b9e5d3f-c301-4b42-b531-c923f2e20cd4",
-"down": true,
-"up": true,
-"history": [
-{
-"date": 1411157612283,
-"value": 1
-},
-{
-"date": 1411768309985,
-"value": 4.759112700885761
-},
-{
-"date": 1425229536324,
-"value": 4.75912291340414
-}
-],
-"type": "habit"
-},
-{
-"text": "7",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 1.0246522571244334,
-"tags": {},
-"notes": "",
-"dateCreated": "2014-09-03T18:37:34.896Z",
-"id": "6a39faed-e170-4b92-a556-f7e7940e1e10",
-"down": true,
-"up": true,
-"history": [
-{
-"date": 1411157614935,
-"value": 0.02529999999999999
-},
-{
-"date": 1411768476497,
-"value": 1.9987363426517264
-},
-{
-"date": 1425229532241,
-"value": 1.0246522571244334
-}
-],
-"type": "habit"
-},
-{
-"text": "6",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 4.759112700885761,
-"tags": {},
-"notes": "",
-"dateCreated": "2014-09-03T18:37:33.397Z",
-"id": "c32b425a-070a-41e2-8651-a0570140af67",
-"down": true,
-"up": true,
-"history": [
-{
-"date": 1411677351604,
-"value": 1.9747
-},
-{
-"date": 1411768313419,
-"value": 4.759112700885761
-}
-],
-"type": "habit"
-},
-{
-"text": "5",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 0,
-"tags": {},
-"notes": "",
-"dateCreated": "2014-09-03T18:37:31.848Z",
-"id": "0f2090df-a956-475e-ac7e-048fad14a2c1",
-"down": true,
-"up": true,
-"history": [],
-"type": "habit"
-},
-{
-"text": "4",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 0,
-"tags": {},
-"notes": "",
-"dateCreated": "2014-09-03T18:37:29.671Z",
-"id": "a250df6f-f6a4-4491-8e4d-89a918859082",
-"down": true,
-"up": true,
-"history": [],
-"type": "habit"
-},
-{
-"text": "3",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 1,
-"tags": {},
-"notes": "",
-"dateCreated": "2014-09-03T18:37:28.438Z",
-"id": "91f54056-c7a6-456b-9332-7199eb74f6b1",
-"down": true,
-"up": true,
-"history": [
-{
-"value": 1,
-"date": 1426109319652
-}
-],
-"type": "habit"
-},
-{
-"text": "2",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 1,
-"tags": {},
-"notes": "",
-"dateCreated": "2014-09-03T18:37:27.047Z",
-"id": "1b1c9485-a9fd-416b-9c84-fde5c03c481f",
-"down": true,
-"up": true,
-"history": [
-{
-"date": 1425230377483,
-"value": 1
-}
-],
-"type": "habit"
-},
-{
-"text": "1",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": 0,
-"tags": {},
-"notes": "",
-"dateCreated": "2014-09-03T18:37:25.493Z",
-"id": "7e039e75-75f5-4069-8a92-3534286b2b47",
-"down": true,
-"up": true,
-"history": [],
-"type": "habit"
-},
-{
-"text": "Erwe rhwerhwehjrwehrw erwe rhwer jwherjwh erw er",
-"challenge": {},
-"attribute": "str",
-"priority": 1,
-"value": -10.33785170717091,
-"tags": {
-"b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false,
-"39413ca6-b817-4ede-abd3-35822aec91b6": false,
-"f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false,
-"a2752584-682c-4660-bd59-92214dc74fac": false
-},
-"notes": "",
-"dateCreated": "2014-08-03T17:26:26.525Z",
-"id": "ca1ca9fc-e720-46cc-a597-6c879bc384fb",
-"down": true,
-"up": true,
-"history": [
-{
-"value": -2.025956704627065,
-"date": 1407792944604
-},
-{
-"value": -10.33785170717091,
-"date": 1425223839829
-}
-],
-"type": "habit"
-},
-{
-"text": "test",
-"challenge": {},
-"attribute": "str",
-"priority": 2,
-"value": -32.37677183936157,
-"tags": {
-"a2752584-682c-4660-bd59-92214dc74fac": false,
-"39413ca6-b817-4ede-abd3-35822aec91b6": false,
-"b161b1ae-9bf9-40c0-8d66-a707cdd8f417": true,
-"f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false
-},
-"notes": "",
-"dateCreated": "2014-07-01T13:05:55.000Z",
-"id": "9d8adc29-ec10-41e2-ac02-b08dbb70f9b2",
-"down": true,
-"up": true,
-"history": [
-{
-"date": 1407015864637,
-"value": -15.516945589502543
-},
-{
-"date": 1407078662524,
-"value": -37.832206218041726
-},
-{
-"value": -40.46875558100647,
-"date": 1407357910360
-},
-{
-"value": -46.32188798721053,
-"date": 1407792674598
-},
-{
-"date": 1425229546508,
-"value": -40.23023675602445
-},
-{
-"value": -32.37677183936157,
-"date": 1426109331762
-}
-],
-"type": "habit"
-},
-{
-"text": "Did a large-scale Happy thing :D",
-"challenge": {
-"broken": "CHALLENGE_DELETED",
-"id": "a2752584-682c-4660-bd59-92214dc74fac"
-},
-"attribute": "per",
-"priority": 2,
-"value": 38.76981104535786,
-"tags": {
-"a2752584-682c-4660-bd59-92214dc74fac": true
-},
-"notes": "",
-"dateCreated": "2014-06-11T19:34:59.275Z",
-"id": "ceae9427-8a35-4f36-afe5-3f6c12550a47",
-"down": false,
-"up": true,
-"history": [
-{
-"date": 1405811444222,
-"value": 1
-},
-{
-"date": 1407078646985,
-"value": 37.64543169181281
-},
-{
-"value": 40.54448000177065,
-"date": 1407790899677
-},
-{
-"date": 1425229544766,
-"value": 39.95586034716956
-},
-{
-"value": 38.76981104535786,
-"date": 1426109236118
-}
-],
-"type": "habit"
-},
-{
-"text": "Did an extra Happy thing :D",
-"challenge": {
-"id": "a2752584-682c-4660-bd59-92214dc74fac",
-"broken": "CHALLENGE_DELETED"
-},
-"attribute": "per",
-"priority": 1,
-"value": 28.206540345398906,
-"tags": {
-"a2752584-682c-4660-bd59-92214dc74fac": true,
-"b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false,
-"39413ca6-b817-4ede-abd3-35822aec91b6": false,
-"f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false
-},
-"notes": "",
-"dateCreated": "2014-06-11T19:33:15.000Z",
-"id": "3f62a46a-6125-40ef-9bf0-e70e77d0f933",
-"down": false,
-"up": true,
-"history": [
-{
-"date": 1407073252072,
-"value": 29.38378180436578
-},
-{
-"value": 28.206540345398906,
-"date": 1426109239760
-}
-],
-"type": "habit"
-}
-],
-"inbox": {
-"optOut": false,
-"messages": {},
-"blocks": [],
-"newMessages": 0
-},
-"challenges": [
-"a2752584-682c-4660-bd59-92214dc74fac"
-],
-"tags": [
-{
-"name": "morning",
-"id": "b161b1ae-9bf9-40c0-8d66-a707cdd8f417"
-},
-{
-"name": "afternoon",
-"id": "f6a34fea-5d06-4fb2-a2c7-127e2b58165a"
-},
-{
-"name": "evening",
-"id": "39413ca6-b817-4ede-abd3-35822aec91b6"
-},
-{
-"name": "Happy!!",
-"challenge": "true",
-"id": "a2752584-682c-4660-bd59-92214dc74fac"
-}
-],
-"stats": {
-"training": {
-"con": 0,
-"str": 0,
-"per": 0,
-"int": 0
-},
-"buffs": {
-"spookDust": false,
-"snowball": false,
-"streaks": false,
-"stealth": 0,
-"con": 0,
-"per": 0,
-"int": 0,
-"str": 0
-},
-"per": 0,
-"int": 8,
-"con": 0,
-"str": 0,
-"points": 14,
-"class": "warrior",
-"lvl": 22,
-"gp": 162.53077191993432,
-"exp": 184,
-"mp": 12,
-"hp": 31.700000000000003,
-"toNextLevel": 480,
-"maxHealth": 50,
-"maxMP": 91
-},
-"profile": {
-"blurb": "qweqweqwe qweqw eqweqwe\n qwe\n q\nweq\nwe qwe\n\n*test*",
-"name": "testuser"
-},
-"preferences": {
-"costume": false,
-"language": "en",
-"timezoneOffset": -60,
-"emailNotifications": {
-"importantAnnouncements": true,
-"invitedQuest": true,
-"questStarted": true,
-"invitedGuild": true,
-"invitedParty": true,
-"giftedSubscription": true,
-"giftedGems": true,
-"wonChallenge": true,
-"newPM": true,
-"unsubscribeFromAll": false
-},
-"webhooks": {},
-"toolbarCollapsed": false,
-"advancedCollapsed": false,
-"tagsCollapsed": false,
-"dailyDueDefaultView": false,
-"newTaskEdit": false,
-"disableClasses": false,
-"stickyHeader": true,
-"sleep": true,
-"dateFormat": "MM/dd/yyyy",
-"allocationMode": "flat",
-"sound": "off",
-"shirt": "black",
-"skin": "c06534",
-"hideHeader": false,
-"hair": {
-"flower": 1,
-"mustache": 0,
-"beard": 0,
-"bangs": 0,
-"base": 0,
-"color": "blond"
-},
-"size": "broad",
-"dayStart": 0
-},
-"party": {
-"quest": {
-"completed": "",
-"key": "vice1",
-"progress": {
-"collect": {},
-"down": 0,
-"up": 147.1704767718313
-}
-},
-"orderAscending": "ascending",
-"order": "level"
-},
-"newMessages": {},
-"lastCron": "2015-03-13T15:40:29.268Z",
-"items": {
-"currentMount": "Dragon-Red",
-"currentPet": "",
-"lastDrop": {
-"count": 0,
-"date": "2015-03-11T21:21:31.040Z"
-},
-"quests": {
-"atom1": 1,
-"egg": 0,
-"vice1": 4
-},
-"mounts": {
-"BearCub-Base": true,
-"Dragon-Red": true,
-"FlyingPig-CottonCandyBlue": true,
-"MantisShrimp-Base": true,
-"Wolf-Base": true,
-"Mammoth-Base": true
-},
-"food": {
-"Candy_Base": 0,
-"Candy_CottonCandyBlue": 0,
-"Candy_CottonCandyPink": 0,
-"Candy_Desert": 0,
-"Candy_Golden": 0,
-"Candy_Red": 1,
-"Candy_Shade": 1,
-"Candy_Skeleton": 0,
-"Candy_White": 0,
-"Candy_Zombie": 0,
-"Chocolate": 2,
-"CottonCandyBlue": 2,
-"CottonCandyPink": 3,
-"Fish": 2,
-"Honey": 1,
-"Meat": 2,
-"Milk": 1,
-"Potatoe": 1,
-"RottenMeat": 2,
-"Strawberry": 3,
-"Cake_Skeleton": 1,
-"Cake_Base": 1,
-"Cake_CottonCandyBlue": 1,
-"Cake_CottonCandyPink": 1,
-"Cake_Shade": 1,
-"Cake_White": 1,
-"Cake_Golden": 1,
-"Cake_Zombie": 1,
-"Cake_Desert": 1,
-"Cake_Red": 1
-},
-"hatchingPotions": {
-"Base": 2,
-"CottonCandyBlue": 0,
-"Desert": 2,
-"Golden": 1,
-"Red": 1,
-"Shade": 1,
-"Skeleton": 0,
-"White": 2,
-"Zombie": 2
-},
-"eggs": {
-"BearCub": 2,
-"Cactus": 1,
-"Dragon": 2,
-"Egg": 5,
-"FlyingPig": 6,
-"Fox": 3,
-"LionCub": 2,
-"PandaCub": 1,
-"Seahorse": 1,
-"TigerCub": 2,
-"Wolf": 1
-},
-"pets": {
-"BearCub-Base": -1,
-"Dragon-CottonCandyBlue": 5,
-"Dragon-Red": -1,
-"Egg-Base": 5,
-"Egg-Golden": 5,
-"Egg-Skeleton": 5,
-"Egg-White": 5,
-"Egg-Zombie": 5,
-"FlyingPig-CottonCandyBlue": -1,
-"FlyingPig-Zombie": 5,
-"LionCub-Skeleton": 5,
-"MantisShrimp-Base": 5,
-"PandaCub-Base": 7,
-"PandaCub-Desert": 5,
-"PandaCub-Golden": 5,
-"PandaCub-White": 10,
-"PandaCub-Zombie": 5,
-"TigerCub-White": 5,
-"Wolf-Base": 5,
-"Wolf-White": 5,
-"JackOLantern-Base": 5,
-"Turkey-Base": 5,
-"Mammoth-Base": 5
-},
-"special": {
-"nyeReceived": [],
-"valentineReceived": [],
-"spookDust": 0,
-"snowball": 0
-},
-"gear": {
-"costume": {
-"headAccessory": "headAccessory_special_springWarrior",
-"weapon": "weapon_healer_3",
-"shield": "shield_healer_5",
-"head": "head_healer_2",
-"armor": "armor_healer_4"
-},
-"equipped": {
-"headAccessory": "headAccessory_special_springWarrior",
-"weapon": "weapon_healer_3",
-"shield": "shield_healer_5",
-"head": "head_healer_4",
-"armor": "armor_healer_4"
-},
-"owned": {
-"armor_healer_1": false,
-"armor_healer_2": true,
-"armor_healer_3": true,
-"armor_healer_4": true,
-"armor_healer_5": false,
-"armor_warrior_1": false,
-"armor_warrior_2": false,
-"headAccessory_special_springWarrior": true,
-"head_healer_1": true,
-"head_healer_2": true,
-"head_healer_3": false,
-"head_healer_4": true,
-"head_healer_5": true,
-"head_special_ski": false,
-"head_warrior_1": false,
-"head_warrior_2": false,
-"shield_healer_1": false,
-"shield_healer_2": false,
-"shield_healer_3": false,
-"shield_healer_4": false,
-"shield_healer_5": true,
-"weapon_healer_0": true,
-"weapon_healer_1": false,
-"weapon_healer_2": false,
-"weapon_healer_3": true,
-"weapon_healer_4": false,
-"weapon_healer_5": false,
-"weapon_healer_6": false,
-"weapon_warrior_0": true,
-"weapon_warrior_1": true,
-"head_special_nye": false,
-"armor_special_birthday": false
-}
-}
-},
-"invitations": {
-"guilds": []
-},
-"history": {
-"todos": [
-{
-"date": "2014-03-15T23:24:47.290Z",
-"value": -1.2144713899175774
-},
-{
-"date": "2014-04-02T16:40:40.963Z",
-"value": -34.723909277951684
-},
-{
-"date": "2014-05-18T22:01:39.923Z",
-"value": 27.632848087181163
-},
-{
-"date": "2014-06-02T07:53:56.776Z",
-"value": -365.173917266629
-},
-{
-"value": -790.3402276927955,
-"date": 1404219756362
-},
-{
-"date": 1404499463212,
-"value": -870.9301386333003
-},
-{
-"value": -898.7934422801354,
-"date": 1404511359627
-},
-{
-"date": 1404603029253,
-"value": -926.6827026315974
-},
-{
-"value": -982.5447014790317,
-"date": 1404822000447
-},
-{
-"date": 1404938114885,
-"value": -1010.5205352672149
-},
-{
-"value": -1038.5285428383543,
-"date": 1404945175219
-},
-{
-"date": 1405079593284,
-"value": -1066.5706261100881
-},
-{
-"value": -1124.7914700322629,
-"date": 1405253614604
-},
-{
-"date": 1405442784539,
-"value": -1183.285630173938
-},
-{
-"value": -1212.646031937671,
-"date": 1405515036650
-},
-{
-"date": 1405676931840,
-"value": -1271.6189911546055
-},
-{
-"value": -1301.2433758571171,
-"date": 1405802490762
-},
-{
-"date": 1405809943450,
-"value": -1037.000457744826
-},
-{
-"value": -1170.656176489044,
-"date": 1406317192747
-},
-{
-"date": 1406325703143,
-"value": -863.447636772943
-}
-],
-"exp": [
-{
-"date": "2014-03-15T23:24:47.290Z",
-"value": 587.8
-},
-{
-"date": "2014-04-02T16:40:40.963Z",
-"value": 6984.142857142857
-},
-{
-"date": "2014-05-18T22:01:39.923Z",
-"value": 10497.4
-},
-{
-"date": "2014-06-02T07:53:56.776Z",
-"value": 14354.5
-},
-{
-"value": 12610,
-"date": 1404219756362
-},
-{
-"date": 1404499463212,
-"value": 12610
-},
-{
-"value": 12610,
-"date": 1404511359627
-},
-{
-"date": 1404603029253,
-"value": 11901
-},
-{
-"value": 11901,
-"date": 1404822000447
-},
-{
-"date": 1404938114885,
-"value": 11901
-},
-{
-"value": 11200,
-"date": 1404945175219
-},
-{
-"date": 1405079593284,
-"value": 11200
-},
-{
-"value": 12100,
-"date": 1405253614604
-},
-{
-"date": 1405442784539,
-"value": 12111
-},
-{
-"value": 11200,
-"date": 1405515036650
-},
-{
-"date": 1405676931840,
-"value": 11200
-},
-{
-"value": 11200,
-"date": 1405802490762
-},
-{
-"date": 1405809943450,
-"value": 10651
-},
-{
-"value": 10672,
-"date": 1406317192747
-},
-{
-"date": 1406325703143,
-"value": 9901
-}
-]
-},
-"flags": {
-"partyEnabled": true,
-"communityGuidelinesAccepted": true,
-"recaptureEmailsPhase": 0,
-"levelDrops": {
-"vice1": true,
-"atom1": true
-},
-"freeRebirth": true,
-"rebirthEnabled": true,
-"classSelected": true,
-"rewrite": true,
-"newStuff": false,
-"itemsEnabled": true,
-"dropsEnabled": true,
-"tour": {
-"classes": 0,
-"intro": -1
-},
-"showTour": false,
-"customizationsNotification": true
-},
-"purchased": {
-"plan": {
-"consecutive": {
-"trinkets": 0,
-"gemCapExtra": 0,
-"offset": 0,
-"count": 0
-},
-"mysteryItems": [],
-"gemsBought": 0,
-"extraMonths": 0
-},
-"txnCount": 0,
-"background": {},
-"shirt": {},
-"hair": {},
-"skin": {},
-"ads": false
-},
-"filters": {},
-"balance": 0,
-"contributor": {},
-"backer": {},
-"auth": {
-"timestamps": {
-"loggedin": "2015-03-13T15:40:29.270Z",
-"created": "2014-03-15T22:53:09.034Z"
-},
-"local": {
-"email": "testmail@test.com",
-"hashed_password": "HASH",
-"salt": "SALT",
-"username": "testuser"
-}
-},
-"achievements": {
-"beastMaster": false,
-"perfect": 8,
-"quests": {
-"stressbeast": 1,
-"egg": 1,
-"dilatory": 1
-},
-"ultimateGear": true,
-"habitBirthdays": 1,
-"challenges": []
-},
-"_v": 2966,
-"id": "UUID"
+  "_id": "UUID",
+  "__v": 1778,
+  "migration": "20150131_birthday_goodies_fix_achievement__new_users_have_one_birthday",
+  "rewards": [
+    {
+      "text": "reward with note",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": 10,
+      "tags": {},
+      "notes": "hello world this is nice",
+      "dateCreated": "2014-05-03T11:11:55.866Z",
+      "id": "f48a9b78-216a-42b5-8662-3f26ec4a2b01",
+      "type": "reward"
+    },
+    {
+      "text": "longer reward text to see how this behaves",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": 10,
+      "tags": {},
+      "notes": "",
+      "dateCreated": "2014-05-03T10:38:05.458Z",
+      "id": "0285d12b-cee1-4862-8cd4-4ebdf76af036",
+      "type": "reward"
+    },
+    {
+      "text": "Cake",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": 10,
+      "tags": {
+        "f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false,
+        "39413ca6-b817-4ede-abd3-35822aec91b6": false,
+        "b161b1ae-9bf9-40c0-8d66-a707cdd8f417": true,
+        "a2752584-682c-4660-bd59-92214dc74fac": false
+      },
+      "notes": "Other people just want to enjoy a nice piece of cake. Try to create rewards that will motivate you best.",
+      "dateCreated": "2014-03-15T22:53:09.042Z",
+      "id": "54e177b5-d6c2-4d22-9f6c-894e48ca11af",
+      "type": "reward"
+    }
+  ],
+  "todos": [
+    {
+      "text": "test123",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": -18.486422250696243,
+      "tags": {
+        "f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false,
+        "39413ca6-b817-4ede-abd3-35822aec91b6": false,
+        "b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false,
+        "a2752584-682c-4660-bd59-92214dc74fac": false
+      },
+      "notes": "",
+      "dateCreated": "2014-07-11T11:53:22.691Z",
+      "id": "896d4056-fb0c-4858-ab6d-a97f019c1039",
+      "checklist": [],
+      "collapseChecklist": false,
+      "completed": false,
+      "type": "todo"
+    },
+    {
+      "text": "Write your Happy List!",
+      "challenge": {
+        "id": "a2752584-682c-4660-bd59-92214dc74fac",
+        "broken": "CHALLENGE_DELETED"
+      },
+      "attribute": "per",
+      "priority": 1,
+      "value": -31.352283868821,
+      "tags": {
+        "a2752584-682c-4660-bd59-92214dc74fac": true
+      },
+      "notes": "",
+      "dateCreated": "2014-06-11T19:33:53.518Z",
+      "id": "bbe9efce-4eba-4cab-86dc-a3002c8940aa",
+      "checklist": [],
+      "collapseChecklist": false,
+      "completed": false,
+      "type": "todo"
+    }
+  ],
+  "dailys": [
+    {
+      "text": "Test1",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": -11.313237922144532,
+      "tags": {
+        "b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false,
+        "39413ca6-b817-4ede-abd3-35822aec91b6": true,
+        "f6a34fea-5d06-4fb2-a2c7-127e2b58165a": true,
+        "a2752584-682c-4660-bd59-92214dc74fac": false
+      },
+      "notes": "",
+      "dateCreated": "2014-07-15T17:20:37.000Z",
+      "id": "c4f7e186-c5ae-448b-9a98-72eec12db11e",
+      "streak": 1,
+      "checklist": [
+        {
+          "text": "Qweqweqwe",
+          "id": "7b63b854-f219-44c5-be17-eb5ddb982834",
+          "completed": false
+        },
+        {
+          "text": "Böa",
+          "id": "530d2468-297f-46f5-a019-cd4fda6d2c9f",
+          "completed": true
+        }
+      ],
+      "collapseChecklist": false,
+      "repeat": {
+        "su": true,
+        "s": true,
+        "f": true,
+        "th": true,
+        "w": true,
+        "t": true,
+        "m": true
+      },
+      "completed": true,
+      "history": [
+        {
+          "value": -1,
+          "date": 1405515036658
+        },
+        {
+          "date": 1405676931963,
+          "value": -3.079244230667636
+        },
+        {
+          "value": -4.161348258391507,
+          "date": 1405802490788
+        },
+        {
+          "date": 1405809943459,
+          "value": -5.273878399739519
+        },
+        {
+          "value": -11.3598999082337,
+          "date": 1406317192756
+        },
+        {
+          "date": 1406325703152,
+          "value": -12.697803167060998
+        }
+      ],
+      "type": "daily"
+    },
+    {
+      "text": "eat something",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": -31.110529782507335,
+      "tags": {
+        "b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false,
+        "39413ca6-b817-4ede-abd3-35822aec91b6": false,
+        "f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false,
+        "a2752584-682c-4660-bd59-92214dc74fac": false
+      },
+      "notes": "",
+      "dateCreated": "2014-06-15T18:28:04.000Z",
+      "id": "c57e1c7d-a107-40fa-a958-f5514755732c",
+      "streak": 0,
+      "checklist": [
+        {
+          "text": "",
+          "id": "ee40048e-2a00-449f-993a-b4c51276781b",
+          "completed": false
+        },
+        {
+          "text": "",
+          "id": "2ee7ce3c-78c1-4504-aa14-ba06d8c45e84",
+          "completed": true
+        },
+        {
+          "text": "dinner",
+          "id": "3bf81157-65f1-4cbe-8e1c-30a0f3181002",
+          "completed": false
+        }
+      ],
+      "collapseChecklist": false,
+      "repeat": {
+        "su": true,
+        "s": true,
+        "f": true,
+        "th": true,
+        "w": false,
+        "t": false,
+        "m": false
+      },
+      "completed": false,
+      "history": [
+        {
+          "date": "2014-06-16T00:42:18.752Z",
+          "value": -5.204875041607884
+        },
+        {
+          "date": 1404219756371,
+          "value": -11.359900282102458
+        },
+        {
+          "value": -12.697803553747661,
+          "date": 1404499463220
+        },
+        {
+          "date": 1404511359634,
+          "value": -14.08237154301735
+        },
+        {
+          "value": -15.516946320295709,
+          "date": 1404603029263
+        },
+        {
+          "date": 1404822000456,
+          "value": -17.005239947630724
+        },
+        {
+          "value": -17.005239947630724,
+          "date": 1404938114898
+        },
+        {
+          "date": 1404945175230,
+          "value": -17.005239947630724
+        },
+        {
+          "value": -18.551390900603604,
+          "date": 1405079593295
+        },
+        {
+          "date": 1405253614614,
+          "value": -21.83636995673441
+        },
+        {
+          "value": -23.58628797229782,
+          "date": 1405442784550
+        },
+        {
+          "value": -23.58628797229782,
+          "date": 1405515036659
+        },
+        {
+          "date": 1405676931967,
+          "value": -25.416462890606358
+        },
+        {
+          "value": -27.334516219719273,
+          "date": 1405802490790
+        },
+        {
+          "date": 1405809943459,
+          "value": -25.319833049169493
+        },
+        {
+          "value": -29.242599103974616,
+          "date": 1406317192759
+        },
+        {
+          "date": 1406325703154,
+          "value": -31.35823963125462
+        }
+      ],
+      "type": "daily"
+    },
+    {
+      "text": "1h Personal Project",
+      "challenge": {},
+      "attribute": "per",
+      "priority": 1,
+      "value": -167.87742982878302,
+      "tags": [],
+      "notes": "All tasks default to yellow when they are created. This means you will take only moderate damage when they are missed and will gain only a moderate reward when they are completed.",
+      "dateCreated": "2014-03-15T22:53:09.000Z",
+      "id": "297443bd-1a13-4300-823a-86f764ff21aa",
+      "streak": 2,
+      "checklist": [],
+      "collapseChecklist": false,
+      "repeat": {
+        "su": true,
+        "s": false,
+        "f": true,
+        "th": true,
+        "w": true,
+        "t": true,
+        "m": true
+      },
+      "completed": false,
+      "history": [
+        {
+          "date": "2014-03-15T23:24:47.295Z",
+          "value": 4.007052471641401
+        },
+        {
+          "date": "2014-04-02T16:40:40.972Z",
+          "value": -7.433704155664562
+        },
+        {
+          "date": "2014-05-18T22:01:39.930Z",
+          "value": -13.253174148295631
+        },
+        {
+          "date": "2014-06-02T07:53:56.789Z",
+          "value": -56.47544927669601
+        },
+        {
+          "date": 1404219756374,
+          "value": -102.74464591170874
+        },
+        {
+          "value": -112.81838477927187,
+          "date": 1404499463222
+        },
+        {
+          "date": 1404511359635,
+          "value": -116.17629773512624
+        },
+        {
+          "value": -116.17629773512624,
+          "date": 1404603029264
+        },
+        {
+          "date": 1404822000457,
+          "value": -122.89212364683499
+        },
+        {
+          "value": -126.25003660268936,
+          "date": 1404938114900
+        },
+        {
+          "date": 1404945175233,
+          "value": -129.60794955854374
+        },
+        {
+          "value": -132.9658625143981,
+          "date": 1405079593299
+        },
+        {
+          "date": 1405253614616,
+          "value": -136.32377547025249
+        },
+        {
+          "value": -143.03960138196123,
+          "date": 1405442784553
+        },
+        {
+          "value": -146.3975143378156,
+          "date": 1405515036660
+        },
+        {
+          "date": 1405676931970,
+          "value": -153.11334024952436
+        },
+        {
+          "value": -156.47125320537873,
+          "date": 1405802490791
+        },
+        {
+          "date": 1405809943459,
+          "value": -153.11334024952436
+        },
+        {
+          "value": -169.90290502879623,
+          "date": 1406317192762
+        },
+        {
+          "date": 1406325703155,
+          "value": -173.2608179846506
+        }
+      ],
+      "type": "daily"
+    },
+    {
+      "text": "Happy List :D",
+      "challenge": {
+        "broken": "CHALLENGE_DELETED",
+        "id": "a2752584-682c-4660-bd59-92214dc74fac"
+      },
+      "attribute": "per",
+      "priority": 1,
+      "value": -24.976194462037093,
+      "tags": {
+        "a2752584-682c-4660-bd59-92214dc74fac": true
+      },
+      "notes": "",
+      "dateCreated": "2014-06-11T19:33:42.900Z",
+      "id": "e2d2c174-5953-404e-ba3f-b4263a68da7a",
+      "streak": 1,
+      "checklist": [],
+      "collapseChecklist": false,
+      "repeat": {
+        "su": true,
+        "s": true,
+        "f": true,
+        "th": true,
+        "w": true,
+        "t": true,
+        "m": true
+      },
+      "completed": false,
+      "history": [
+        {
+          "date": 1404511359636,
+          "value": -1
+        },
+        {
+          "value": -2.025956704627065,
+          "date": 1404603029268
+        },
+        {
+          "date": 1404822000459,
+          "value": -4.161348258391507
+        },
+        {
+          "value": -5.273878399739519,
+          "date": 1404938114901
+        },
+        {
+          "date": 1404945175234,
+          "value": -6.418582324043852
+        },
+        {
+          "value": -7.597361948942557,
+          "date": 1405079593301
+        },
+        {
+          "date": 1405253614618,
+          "value": -10.065641872820203
+        },
+        {
+          "value": -12.697803167060998,
+          "date": 1405442784555
+        },
+        {
+          "value": -14.082371142610924,
+          "date": 1405515036662
+        },
+        {
+          "date": 1405676931999,
+          "value": -17.005239516672432
+        },
+        {
+          "value": -18.55139045257033,
+          "date": 1405802490792
+        },
+        {
+          "date": 1405809943460,
+          "value": -16.880461779733682
+        },
+        {
+          "value": -25.262426561837763,
+          "date": 1406317192765
+        },
+        {
+          "date": 1406325703156,
+          "value": -27.17292374849792
+        }
+      ],
+      "type": "daily"
+    }
+  ],
+  "habits": [
+    {
+      "text": "qwe",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 2,
+      "value": 12.811867552519566,
+      "tags": {
+        "b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false,
+        "a2752584-682c-4660-bd59-92214dc74fac": false,
+        "39413ca6-b817-4ede-abd3-35822aec91b6": false,
+        "f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false
+      },
+      "notes": "",
+      "dateCreated": "2015-02-07T17:45:40.000Z",
+      "id": "b7d83771-02b0-49df-8101-9b61392d3401",
+      "down": true,
+      "up": true,
+      "history": [
+        {
+          "date": 1425333872660,
+          "value": 1
+        },
+        {
+          "value": 12.811867552519566,
+          "date": 1426108925424
+        }
+      ],
+      "type": "habit"
+    },
+    {
+      "text": "we",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": 28.80397214237421,
+      "tags": {
+        "a2752584-682c-4660-bd59-92214dc74fac": false,
+        "f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false,
+        "39413ca6-b817-4ede-abd3-35822aec91b6": false,
+        "b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false
+      },
+      "notes": "",
+      "dateCreated": "2014-09-08T19:39:54.248Z",
+      "id": "f831252e-d571-45ed-a741-6eb737010c4d",
+      "down": true,
+      "up": true,
+      "history": [
+        {
+          "date": 1411432084195,
+          "value": 27.064543156399505
+        },
+        {
+          "date": 1425229542114,
+          "value": 27.644352818391074
+        },
+        {
+          "value": 28.80397214237421,
+          "date": 1426108647266
+        }
+      ],
+      "type": "habit"
+    },
+    {
+      "text": "",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": 25.325120734656732,
+      "tags": {
+        "b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false,
+        "39413ca6-b817-4ede-abd3-35822aec91b6": false,
+        "f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false,
+        "a2752584-682c-4660-bd59-92214dc74fac": false
+      },
+      "notes": "",
+      "dateCreated": "2014-09-04T00:13:28.075Z",
+      "id": "c4247988-1e3a-440b-ae68-7e5e7bfd185c",
+      "down": true,
+      "up": true,
+      "history": [
+        {
+          "date": 1411157592311,
+          "value": 1
+        },
+        {
+          "date": 1411726166786,
+          "value": 5.6443010177121415
+        },
+        {
+          "date": 1425229540721,
+          "value": 4.75912291340414
+        },
+        {
+          "value": 25.325120734656732,
+          "date": 1426108876204
+        }
+      ],
+      "type": "habit"
+    },
+    {
+      "text": "9",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": 4.75912291340414,
+      "tags": {},
+      "notes": "",
+      "dateCreated": "2014-09-03T18:37:37.563Z",
+      "id": "1656f801-bb0a-4e32-a9e7-3afbb32222c2",
+      "down": true,
+      "up": true,
+      "history": [
+        {
+          "date": 1411157595412,
+          "value": 1.9747
+        },
+        {
+          "date": 1411431933516,
+          "value": 3.853133245658556
+        },
+        {
+          "date": 1411726171400,
+          "value": 5.6443010177121415
+        },
+        {
+          "date": 1425229539495,
+          "value": 4.75912291340414
+        }
+      ],
+      "type": "habit"
+    },
+    {
+      "text": "8",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": 4.75912291340414,
+      "tags": {},
+      "notes": "",
+      "dateCreated": "2014-09-03T18:37:36.141Z",
+      "id": "6b9e5d3f-c301-4b42-b531-c923f2e20cd4",
+      "down": true,
+      "up": true,
+      "history": [
+        {
+          "date": 1411157612283,
+          "value": 1
+        },
+        {
+          "date": 1411768309985,
+          "value": 4.759112700885761
+        },
+        {
+          "date": 1425229536324,
+          "value": 4.75912291340414
+        }
+      ],
+      "type": "habit"
+    },
+    {
+      "text": "7",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": 1.0246522571244334,
+      "tags": {},
+      "notes": "",
+      "dateCreated": "2014-09-03T18:37:34.896Z",
+      "id": "6a39faed-e170-4b92-a556-f7e7940e1e10",
+      "down": true,
+      "up": true,
+      "history": [
+        {
+          "date": 1411157614935,
+          "value": 0.02529999999999999
+        },
+        {
+          "date": 1411768476497,
+          "value": 1.9987363426517264
+        },
+        {
+          "date": 1425229532241,
+          "value": 1.0246522571244334
+        }
+      ],
+      "type": "habit"
+    },
+    {
+      "text": "6",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": 4.759112700885761,
+      "tags": {},
+      "notes": "",
+      "dateCreated": "2014-09-03T18:37:33.397Z",
+      "id": "c32b425a-070a-41e2-8651-a0570140af67",
+      "down": true,
+      "up": true,
+      "history": [
+        {
+          "date": 1411677351604,
+          "value": 1.9747
+        },
+        {
+          "date": 1411768313419,
+          "value": 4.759112700885761
+        }
+      ],
+      "type": "habit"
+    },
+    {
+      "text": "5",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": 0,
+      "tags": {},
+      "notes": "",
+      "dateCreated": "2014-09-03T18:37:31.848Z",
+      "id": "0f2090df-a956-475e-ac7e-048fad14a2c1",
+      "down": true,
+      "up": true,
+      "history": [],
+      "type": "habit"
+    },
+    {
+      "text": "4",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": 0,
+      "tags": {},
+      "notes": "",
+      "dateCreated": "2014-09-03T18:37:29.671Z",
+      "id": "a250df6f-f6a4-4491-8e4d-89a918859082",
+      "down": true,
+      "up": true,
+      "history": [],
+      "type": "habit"
+    },
+    {
+      "text": "3",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": 1,
+      "tags": {},
+      "notes": "",
+      "dateCreated": "2014-09-03T18:37:28.438Z",
+      "id": "91f54056-c7a6-456b-9332-7199eb74f6b1",
+      "down": true,
+      "up": true,
+      "history": [
+        {
+          "value": 1,
+          "date": 1426109319652
+        }
+      ],
+      "type": "habit"
+    },
+    {
+      "text": "2",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": 1,
+      "tags": {},
+      "notes": "",
+      "dateCreated": "2014-09-03T18:37:27.047Z",
+      "id": "1b1c9485-a9fd-416b-9c84-fde5c03c481f",
+      "down": true,
+      "up": true,
+      "history": [
+        {
+          "date": 1425230377483,
+          "value": 1
+        }
+      ],
+      "type": "habit"
+    },
+    {
+      "text": "1",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": 0,
+      "tags": {},
+      "notes": "",
+      "dateCreated": "2014-09-03T18:37:25.493Z",
+      "id": "7e039e75-75f5-4069-8a92-3534286b2b47",
+      "down": true,
+      "up": true,
+      "history": [],
+      "type": "habit"
+    },
+    {
+      "text": "Erwe rhwerhwehjrwehrw erwe rhwer jwherjwh erw er",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 1,
+      "value": -10.33785170717091,
+      "tags": {
+        "b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false,
+        "39413ca6-b817-4ede-abd3-35822aec91b6": false,
+        "f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false,
+        "a2752584-682c-4660-bd59-92214dc74fac": false
+      },
+      "notes": "",
+      "dateCreated": "2014-08-03T17:26:26.525Z",
+      "id": "ca1ca9fc-e720-46cc-a597-6c879bc384fb",
+      "down": true,
+      "up": true,
+      "history": [
+        {
+          "value": -2.025956704627065,
+          "date": 1407792944604
+        },
+        {
+          "value": -10.33785170717091,
+          "date": 1425223839829
+        }
+      ],
+      "type": "habit"
+    },
+    {
+      "text": "test",
+      "challenge": {},
+      "attribute": "str",
+      "priority": 2,
+      "value": -32.37677183936157,
+      "tags": {
+        "a2752584-682c-4660-bd59-92214dc74fac": false,
+        "39413ca6-b817-4ede-abd3-35822aec91b6": false,
+        "b161b1ae-9bf9-40c0-8d66-a707cdd8f417": true,
+        "f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false
+      },
+      "notes": "",
+      "dateCreated": "2014-07-01T13:05:55.000Z",
+      "id": "9d8adc29-ec10-41e2-ac02-b08dbb70f9b2",
+      "down": true,
+      "up": true,
+      "history": [
+        {
+          "date": 1407015864637,
+          "value": -15.516945589502543
+        },
+        {
+          "date": 1407078662524,
+          "value": -37.832206218041726
+        },
+        {
+          "value": -40.46875558100647,
+          "date": 1407357910360
+        },
+        {
+          "value": -46.32188798721053,
+          "date": 1407792674598
+        },
+        {
+          "date": 1425229546508,
+          "value": -40.23023675602445
+        },
+        {
+          "value": -32.37677183936157,
+          "date": 1426109331762
+        }
+      ],
+      "type": "habit"
+    },
+    {
+      "text": "Did a large-scale Happy thing :D",
+      "challenge": {
+        "broken": "CHALLENGE_DELETED",
+        "id": "a2752584-682c-4660-bd59-92214dc74fac"
+      },
+      "attribute": "per",
+      "priority": 2,
+      "value": 38.76981104535786,
+      "tags": {
+        "a2752584-682c-4660-bd59-92214dc74fac": true
+      },
+      "notes": "",
+      "dateCreated": "2014-06-11T19:34:59.275Z",
+      "id": "ceae9427-8a35-4f36-afe5-3f6c12550a47",
+      "down": false,
+      "up": true,
+      "history": [
+        {
+          "date": 1405811444222,
+          "value": 1
+        },
+        {
+          "date": 1407078646985,
+          "value": 37.64543169181281
+        },
+        {
+          "value": 40.54448000177065,
+          "date": 1407790899677
+        },
+        {
+          "date": 1425229544766,
+          "value": 39.95586034716956
+        },
+        {
+          "value": 38.76981104535786,
+          "date": 1426109236118
+        }
+      ],
+      "type": "habit"
+    },
+    {
+      "text": "Did an extra Happy thing :D",
+      "challenge": {
+        "id": "a2752584-682c-4660-bd59-92214dc74fac",
+        "broken": "CHALLENGE_DELETED"
+      },
+      "attribute": "per",
+      "priority": 1,
+      "value": 28.206540345398906,
+      "tags": {
+        "a2752584-682c-4660-bd59-92214dc74fac": true,
+        "b161b1ae-9bf9-40c0-8d66-a707cdd8f417": false,
+        "39413ca6-b817-4ede-abd3-35822aec91b6": false,
+        "f6a34fea-5d06-4fb2-a2c7-127e2b58165a": false
+      },
+      "notes": "",
+      "dateCreated": "2014-06-11T19:33:15.000Z",
+      "id": "3f62a46a-6125-40ef-9bf0-e70e77d0f933",
+      "down": false,
+      "up": true,
+      "history": [
+        {
+          "date": 1407073252072,
+          "value": 29.38378180436578
+        },
+        {
+          "value": 28.206540345398906,
+          "date": 1426109239760
+        }
+      ],
+      "type": "habit"
+    }
+  ],
+  "inbox": {
+    "optOut": false,
+    "messages": {},
+    "blocks": [],
+    "newMessages": 0
+  },
+  "challenges": [
+    "a2752584-682c-4660-bd59-92214dc74fac"
+  ],
+  "tags": [
+    {
+      "name": "morning",
+      "id": "b161b1ae-9bf9-40c0-8d66-a707cdd8f417"
+    },
+    {
+      "name": "afternoon",
+      "id": "f6a34fea-5d06-4fb2-a2c7-127e2b58165a"
+    },
+    {
+      "name": "evening",
+      "id": "39413ca6-b817-4ede-abd3-35822aec91b6"
+    },
+    {
+      "name": "Happy!!",
+      "challenge": "true",
+      "id": "a2752584-682c-4660-bd59-92214dc74fac"
+    }
+  ],
+  "stats": {
+    "training": {
+      "con": 0,
+      "str": 0,
+      "per": 0,
+      "int": 0
+    },
+    "buffs": {
+      "spookDust": false,
+      "snowball": false,
+      "streaks": false,
+      "stealth": 0,
+      "con": 0,
+      "per": 0,
+      "int": 0,
+      "str": 0
+    },
+    "per": 0,
+    "int": 8,
+    "con": 0,
+    "str": 0,
+    "points": 14,
+    "class": "warrior",
+    "lvl": 22,
+    "gp": 162.53077191993432,
+    "exp": 184,
+    "mp": 12,
+    "hp": 31.700000000000003,
+    "toNextLevel": 480,
+    "maxHealth": 50,
+    "maxMP": 91
+  },
+  "profile": {
+    "blurb": "qweqweqwe qweqw eqweqwe\n qwe\n q\nweq\nwe qwe\n\n*test*",
+    "name": "testuser"
+  },
+  "preferences": {
+    "costume": false,
+    "language": "en",
+    "timezoneOffset": -60,
+    "emailNotifications": {
+      "importantAnnouncements": true,
+      "invitedQuest": true,
+      "questStarted": true,
+      "invitedGuild": true,
+      "invitedParty": true,
+      "giftedSubscription": true,
+      "giftedGems": true,
+      "wonChallenge": true,
+      "newPM": true,
+      "unsubscribeFromAll": false
+    },
+    "webhooks": {},
+    "toolbarCollapsed": false,
+    "advancedCollapsed": false,
+    "tagsCollapsed": false,
+    "dailyDueDefaultView": false,
+    "newTaskEdit": false,
+    "disableClasses": false,
+    "stickyHeader": true,
+    "sleep": true,
+    "dateFormat": "MM/dd/yyyy",
+    "allocationMode": "flat",
+    "sound": "off",
+    "shirt": "black",
+    "skin": "c06534",
+    "hideHeader": false,
+    "hair": {
+      "flower": 1,
+      "mustache": 0,
+      "beard": 0,
+      "bangs": 0,
+      "base": 0,
+      "color": "blond"
+    },
+    "size": "broad",
+    "dayStart": 0
+  },
+  "party": {
+    "quest": {
+      "completed": "",
+      "key": "vice1",
+      "progress": {
+        "collect": {},
+        "down": 0,
+        "up": 147.1704767718313
+      }
+    },
+    "orderAscending": "ascending",
+    "order": "level"
+  },
+  "newMessages": {},
+  "lastCron": "2015-03-13T15:40:29.268Z",
+  "items": {
+    "currentMount": "Dragon-Red",
+    "currentPet": "",
+    "lastDrop": {
+      "count": 0,
+      "date": "2015-03-11T21:21:31.040Z"
+    },
+    "quests": {
+      "atom1": 1,
+      "egg": 0,
+      "vice1": 4
+    },
+    "mounts": {
+      "BearCub-Base": true,
+      "Dragon-Red": true,
+      "FlyingPig-CottonCandyBlue": true,
+      "MantisShrimp-Base": true,
+      "Wolf-Base": true,
+      "Mammoth-Base": true
+    },
+    "food": {
+      "Candy_Base": 0,
+      "Candy_CottonCandyBlue": 0,
+      "Candy_CottonCandyPink": 0,
+      "Candy_Desert": 0,
+      "Candy_Golden": 0,
+      "Candy_Red": 1,
+      "Candy_Shade": 1,
+      "Candy_Skeleton": 0,
+      "Candy_White": 0,
+      "Candy_Zombie": 0,
+      "Chocolate": 2,
+      "CottonCandyBlue": 2,
+      "CottonCandyPink": 3,
+      "Fish": 2,
+      "Honey": 1,
+      "Meat": 2,
+      "Milk": 1,
+      "Potatoe": 1,
+      "RottenMeat": 2,
+      "Strawberry": 3,
+      "Cake_Skeleton": 1,
+      "Cake_Base": 1,
+      "Cake_CottonCandyBlue": 1,
+      "Cake_CottonCandyPink": 1,
+      "Cake_Shade": 1,
+      "Cake_White": 1,
+      "Cake_Golden": 1,
+      "Cake_Zombie": 1,
+      "Cake_Desert": 1,
+      "Cake_Red": 1
+    },
+    "hatchingPotions": {
+      "Base": 2,
+      "CottonCandyBlue": 0,
+      "Desert": 2,
+      "Golden": 1,
+      "Red": 1,
+      "Shade": 1,
+      "Skeleton": 0,
+      "White": 2,
+      "Zombie": 2
+    },
+    "eggs": {
+      "BearCub": 2,
+      "Cactus": 1,
+      "Dragon": 2,
+      "Egg": 5,
+      "FlyingPig": 6,
+      "Fox": 3,
+      "LionCub": 2,
+      "PandaCub": 1,
+      "Seahorse": 1,
+      "TigerCub": 2,
+      "Wolf": 1
+    },
+    "pets": {
+      "BearCub-Base": -1,
+      "Dragon-CottonCandyBlue": 5,
+      "Dragon-Red": -1,
+      "Egg-Base": 5,
+      "Egg-Golden": 5,
+      "Egg-Skeleton": 5,
+      "Egg-White": 5,
+      "Egg-Zombie": 5,
+      "FlyingPig-CottonCandyBlue": -1,
+      "FlyingPig-Zombie": 5,
+      "LionCub-Skeleton": 5,
+      "MantisShrimp-Base": 5,
+      "PandaCub-Base": 7,
+      "PandaCub-Desert": 5,
+      "PandaCub-Golden": 5,
+      "PandaCub-White": 10,
+      "PandaCub-Zombie": 5,
+      "TigerCub-White": 5,
+      "Wolf-Base": 5,
+      "Wolf-White": 5,
+      "JackOLantern-Base": 5,
+      "Turkey-Base": 5,
+      "Mammoth-Base": 5
+    },
+    "special": {
+      "nyeReceived": [],
+      "valentineReceived": [],
+      "spookDust": 0,
+      "snowball": 0
+    },
+    "gear": {
+      "costume": {
+        "headAccessory": "headAccessory_special_springWarrior",
+        "weapon": "weapon_healer_3",
+        "shield": "shield_healer_5",
+        "head": "head_healer_2",
+        "armor": "armor_healer_4"
+      },
+      "equipped": {
+        "headAccessory": "headAccessory_special_springWarrior",
+        "weapon": "weapon_healer_3",
+        "shield": "shield_healer_5",
+        "head": "head_healer_4",
+        "armor": "armor_healer_4"
+      },
+      "owned": {
+        "armor_healer_1": false,
+        "armor_healer_2": true,
+        "armor_healer_3": true,
+        "armor_healer_4": true,
+        "armor_healer_5": false,
+        "armor_warrior_1": false,
+        "armor_warrior_2": false,
+        "headAccessory_special_springWarrior": true,
+        "head_healer_1": true,
+        "head_healer_2": true,
+        "head_healer_3": false,
+        "head_healer_4": true,
+        "head_healer_5": true,
+        "head_special_ski": false,
+        "head_warrior_1": false,
+        "head_warrior_2": false,
+        "shield_healer_1": false,
+        "shield_healer_2": false,
+        "shield_healer_3": false,
+        "shield_healer_4": false,
+        "shield_healer_5": true,
+        "weapon_healer_0": true,
+        "weapon_healer_1": false,
+        "weapon_healer_2": false,
+        "weapon_healer_3": true,
+        "weapon_healer_4": false,
+        "weapon_healer_5": false,
+        "weapon_healer_6": false,
+        "weapon_warrior_0": true,
+        "weapon_warrior_1": true,
+        "head_special_nye": false,
+        "armor_special_birthday": false
+      }
+    }
+  },
+  "invitations": {
+    "guilds": []
+  },
+  "history": {
+    "todos": [
+      {
+        "date": "2014-03-15T23:24:47.290Z",
+        "value": -1.2144713899175774
+      },
+      {
+        "date": "2014-04-02T16:40:40.963Z",
+        "value": -34.723909277951684
+      },
+      {
+        "date": "2014-05-18T22:01:39.923Z",
+        "value": 27.632848087181163
+      },
+      {
+        "date": "2014-06-02T07:53:56.776Z",
+        "value": -365.173917266629
+      },
+      {
+        "value": -790.3402276927955,
+        "date": 1404219756362
+      },
+      {
+        "date": 1404499463212,
+        "value": -870.9301386333003
+      },
+      {
+        "value": -898.7934422801354,
+        "date": 1404511359627
+      },
+      {
+        "date": 1404603029253,
+        "value": -926.6827026315974
+      },
+      {
+        "value": -982.5447014790317,
+        "date": 1404822000447
+      },
+      {
+        "date": 1404938114885,
+        "value": -1010.5205352672149
+      },
+      {
+        "value": -1038.5285428383543,
+        "date": 1404945175219
+      },
+      {
+        "date": 1405079593284,
+        "value": -1066.5706261100881
+      },
+      {
+        "value": -1124.7914700322629,
+        "date": 1405253614604
+      },
+      {
+        "date": 1405442784539,
+        "value": -1183.285630173938
+      },
+      {
+        "value": -1212.646031937671,
+        "date": 1405515036650
+      },
+      {
+        "date": 1405676931840,
+        "value": -1271.6189911546055
+      },
+      {
+        "value": -1301.2433758571171,
+        "date": 1405802490762
+      },
+      {
+        "date": 1405809943450,
+        "value": -1037.000457744826
+      },
+      {
+        "value": -1170.656176489044,
+        "date": 1406317192747
+      },
+      {
+        "date": 1406325703143,
+        "value": -863.447636772943
+      }
+    ],
+    "exp": [
+      {
+        "date": "2014-03-15T23:24:47.290Z",
+        "value": 587.8
+      },
+      {
+        "date": "2014-04-02T16:40:40.963Z",
+        "value": 6984.142857142857
+      },
+      {
+        "date": "2014-05-18T22:01:39.923Z",
+        "value": 10497.4
+      },
+      {
+        "date": "2014-06-02T07:53:56.776Z",
+        "value": 14354.5
+      },
+      {
+        "value": 12610,
+        "date": 1404219756362
+      },
+      {
+        "date": 1404499463212,
+        "value": 12610
+      },
+      {
+        "value": 12610,
+        "date": 1404511359627
+      },
+      {
+        "date": 1404603029253,
+        "value": 11901
+      },
+      {
+        "value": 11901,
+        "date": 1404822000447
+      },
+      {
+        "date": 1404938114885,
+        "value": 11901
+      },
+      {
+        "value": 11200,
+        "date": 1404945175219
+      },
+      {
+        "date": 1405079593284,
+        "value": 11200
+      },
+      {
+        "value": 12100,
+        "date": 1405253614604
+      },
+      {
+        "date": 1405442784539,
+        "value": 12111
+      },
+      {
+        "value": 11200,
+        "date": 1405515036650
+      },
+      {
+        "date": 1405676931840,
+        "value": 11200
+      },
+      {
+        "value": 11200,
+        "date": 1405802490762
+      },
+      {
+        "date": 1405809943450,
+        "value": 10651
+      },
+      {
+        "value": 10672,
+        "date": 1406317192747
+      },
+      {
+        "date": 1406325703143,
+        "value": 9901
+      }
+    ]
+  },
+  "flags": {
+    "partyEnabled": true,
+    "communityGuidelinesAccepted": true,
+    "recaptureEmailsPhase": 0,
+    "levelDrops": {
+      "vice1": true,
+      "atom1": true
+    },
+    "freeRebirth": true,
+    "rebirthEnabled": true,
+    "classSelected": true,
+    "rewrite": true,
+    "newStuff": false,
+    "itemsEnabled": true,
+    "dropsEnabled": true,
+    "tour": {
+      "classes": 0,
+      "intro": -1
+    },
+    "showTour": false,
+    "customizationsNotification": true
+  },
+  "purchased": {
+    "plan": {
+      "consecutive": {
+        "trinkets": 0,
+        "gemCapExtra": 0,
+        "offset": 0,
+        "count": 0
+      },
+      "mysteryItems": [],
+      "gemsBought": 0,
+      "extraMonths": 0
+    },
+    "txnCount": 0,
+    "background": {},
+    "shirt": {},
+    "hair": {},
+    "skin": {},
+    "ads": false
+  },
+  "filters": {},
+  "balance": 0,
+  "contributor": {},
+  "backer": {},
+  "auth": {
+    "timestamps": {
+      "loggedin": "2015-03-13T15:40:29.270Z",
+      "created": "2014-03-15T22:53:09.034Z"
+    },
+    "local": {
+      "email": "testmail@test.com",
+      "hashed_password": "HASH",
+      "salt": "SALT",
+      "username": "testuser"
+    }
+  },
+  "achievements": {
+    "beastMaster": false,
+    "perfect": 8,
+    "quests": {
+      "stressbeast": 1,
+      "egg": 1,
+      "dilatory": 1
+    },
+    "ultimateGear": true,
+    "habitBirthdays": 1,
+    "challenges": []
+  },
+  "_v": 2966,
+  "id": "UUID"
 }

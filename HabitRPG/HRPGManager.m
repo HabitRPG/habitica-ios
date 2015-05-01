@@ -370,6 +370,15 @@ NSString *currentUser;
             @"flags.classSelected" : @"selectedClass",
     }];
     entityMapping.identificationAttributes = @[@"id"];
+    
+    
+    RKEntityMapping *userTagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
+    [userTagMapping addAttributeMappingsFromArray:@[@"id", @"name", @"challenge"]];
+    userTagMapping.identificationAttributes = @[@"id"];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
+                                                                                  toKeyPath:@"tags"
+                                                                                withMapping:userTagMapping]];
+    
     RKEntityMapping *rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
     [rewardMapping addAttributeMappingsFromDictionary:@{
             @"id" : @"key",
@@ -406,13 +415,6 @@ NSString *currentUser;
     [objectManager addRequestDescriptor:requestDescriptor];
     requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:rewardRequestMapping objectClass:[Reward class] rootKeyPath:nil method:RKRequestMethodPUT];
     [objectManager addRequestDescriptor:requestDescriptor];
-    
-    RKEntityMapping *userTagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
-    [userTagMapping addAttributeMappingsFromArray:@[@"id", @"name", @"challenge"]];
-    userTagMapping.identificationAttributes = @[@"id"];
-    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
-                                                                                  toKeyPath:@"tags"
-                                                                                withMapping:userTagMapping]];
 
     RKEntityMapping *gearOwnedMapping = [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
     gearOwnedMapping.forceCollectionMapping = YES;

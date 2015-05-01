@@ -13,6 +13,7 @@
 #import "HRPGManager.h"
 #import <OHHTTPStubs.h>
 #import <PDKeychainBindings.h>
+#import "Reward.h"
 
 @interface HabiticaTests : XCTestCase
 @property HRPGManager *sharedManager;
@@ -28,10 +29,25 @@
     [keyChain removeObjectForKey:@"key"];
     
     self.sharedManager = [[HRPGManager alloc] init];
-    RKManagedObjectStore *managedObjectStore = [RKTestFactory managedObjectStore];
+    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"HabitRPG" ofType:@"momd"]];
+    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
     NSError *error = nil;
     [managedObjectStore addInMemoryPersistentStore:&error];
+    [managedObjectStore createManagedObjectContexts];
     [self.sharedManager loadObjectManager:managedObjectStore];
+    [self setUpStubs];
+}
+
+- (void) setUpStubs {
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return [request.URL.host isEqualToString:@"habitrpg.com"];
+    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+        // Stub it with our "wsresponse.json" stub file
+        OHHTTPStubsResponse *response = [OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"user.json",self.class)
+                                                                         statusCode:200 headers:@{@"Content-Type":@"application/json"}];
+        return response;
+    }];
 }
 
 - (void)tearDown {
@@ -41,14 +57,6 @@
 - (void)testFetchUser {
     User *user = [self.sharedManager getUser];
     XCTAssertNil(user);
-    
-    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"habitrpg.com"];
-    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        // Stub it with our "wsresponse.json" stub file
-        return [OHHTTPStubsResponse responseWithFileAtPath:OHPathForFileInBundle(@"user.json",nil)
-                                                statusCode:200 headers:@{@"Content-Type":@"application/json"}];
-    }];
 
     XCTestExpectation *expectation = [self expectationWithDescription:@"userFetched"];
     
@@ -60,7 +68,28 @@
     
     [self waitForExpectationsWithTimeout:20 handler:^(NSError *error) {
         User *user = [self.sharedManager getUser];
-        XCTAssert([user.username isEqualToString:@"testuser"]);
+        XCTAssertEqualObjects(user.username, @"testuser");
+    }];
+}
+
+- (void)testRewardsWithTags {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"rewardsWithTags"];
+    
+    [self.sharedManager fetchUser:^() {
+        [expectation fulfill];
+    } onError:^() {
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:20 handler:^(NSError *error) {
+        NSArray *rewards = [[self.sharedManager getUser].rewards allObjects];
+        for (Reward *reward in rewards) {
+            if ([reward.text isEqualToString:@"Cake"]) {
+                XCTAssertEqual(1, reward.tags.count);
+            } else {
+                XCTAssertEqual(0, reward.tags.count);
+            }
+        }
     }];
 }
 
