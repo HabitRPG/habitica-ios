@@ -1516,7 +1516,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Rewards" id="Mlq-VF-kA3">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="VlY-fb-mtK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="VlY-fb-mtK">
                             <connections>
                                 <segue destination="IOk-9k-SGo" kind="modal" identifier="FormSegue" id="8FE-0R-f4P"/>
                             </connections>
