@@ -109,6 +109,21 @@
 - (void)introDidFinish:(EAIntroView *)introView {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:YES forKey:@"displayedIntro"];
+    
+    NSDate *today = [NSDate date];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *weekdayComponents = [gregorian
+                                           components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit)
+                                           fromDate:today];
+    weekdayComponents.hour = 19;
+    NSDate *date = [gregorian dateFromComponents:weekdayComponents];
+    [defaults setValue:date forKey:@"dailyReminderTime"];
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = date;
+    localNotification.repeatInterval = NSDayCalendarUnit;
+    localNotification.alertBody = NSLocalizedString(@"Don't forget to check off your Dailies!", nil);
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     [self removeFromSuperview];
 }
 
