@@ -25,6 +25,7 @@
 #import "HRPGEmptySerializer.h"
 #import "HRPGNetworkIndicatorController.h"
 #import "RestKit/Network/RKPathMatcher.h"
+#import "Customization.h"
 #import "HRPGImageOverlayManager.h"
 #import "HRPGDeathView.h"
 
@@ -368,6 +369,7 @@ NSString *currentUser;
             @"flags.dropsEnabled" : @"dropsEnabled",
             @"flags.itemsEnabled" : @"itemsEnabled",
             @"flags.classSelected" : @"selectedClass",
+            @"purchased" : @"customizationsDictionary"
     }];
     entityMapping.identificationAttributes = @[@"id"];
     
@@ -487,7 +489,6 @@ NSString *currentUser;
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"newMessages"
                                                                                   toKeyPath:@"groups"
                                                                                 withMapping:newMessageMapping]];
-
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/class/cast/:spell" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -993,6 +994,42 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/content" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
+        
+        NSString *textPath = [[NSBundle mainBundle] pathForResource:@"customizations" ofType:@"json"];
+        NSError *error;
+        NSString *content = [NSString stringWithContentsOfFile:textPath encoding:NSUTF8StringEncoding error:&error];
+        NSData *jsonData = [content dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary* customizations = [NSJSONSerialization
+                              JSONObjectWithData:jsonData
+                              options:kNilOptions
+                              error:&error][@"customizations"];
+        NSMutableArray *identifiers = [NSMutableArray arrayWithCapacity:1];
+        
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        [fetchRequest setEntity:
+         [NSEntityDescription entityForName:@"Customization" inManagedObjectContext:[self getManagedObjectContext]]];
+        NSArray *existingCustomizations = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+        
+        for (Customization *customization in existingCustomizations) {
+            [identifiers addObject:[NSString stringWithFormat:@"%@%@", customization.type, customization.name]];
+        }
+        
+        for (NSDictionary *data in customizations) {
+            if ([identifiers containsObject:[NSString stringWithFormat:@"%@%@", data[@"type"], data[@"name"]]]) {
+                continue;
+            }
+            Customization *customization = [NSEntityDescription
+                                            insertNewObjectForEntityForName:@"Customization"
+                                            inManagedObjectContext:[self getManagedObjectContext]];
+            customization.name = data[@"name"];
+            customization.text = data[@"text"];
+            customization.notes = data[@"notes"];
+            customization.type = data[@"type"];
+            customization.group = data[@"group"];
+            customization.set = data[@"set"];
+            customization.price = data[@"price"];
+        }
+        
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         [defaults setObject:[NSDate date] forKey:@"lastContentFetch"];
         [defaults synchronize];

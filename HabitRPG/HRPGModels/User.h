@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Egg, Gear, Group, Quest, Reward, Tag, Task;
+@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization;
 
 @interface User : NSManagedObject
 
@@ -81,6 +81,7 @@
 @property(nonatomic, retain) NSNumber *partyPosition;
 @property(nonatomic, retain) NSNumber *petCount;
 @property(nonatomic, retain, setter = setPetCountFromArray:) NSDictionary *petCountArray;
+@property(nonatomic, retain, setter = setCustomizationsDictionary:) NSDictionary *customizationsDictionary;
 @end
 
 @interface User (CoreDataGeneratedAccessors)
@@ -148,6 +149,14 @@
 - (void)addTasks:(NSSet *)values;
 
 - (void)removeTasks:(NSSet *)values;
+
+- (void)addCustomizationsObject:(Customization *)value;
+
+- (void)removeCustomizationsObject:(Customization *)value;
+
+- (void)addCustomizations:(NSSet *)values;
+
+- (void)removeCustomizations:(NSSet *)values;
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView useForce:(BOOL)force;
 

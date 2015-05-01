@@ -8,6 +8,7 @@
 
 #import "User.h"
 #import "HRPGAppDelegate.h"
+#import "Customization.h"
 
 @interface User ()
 @property (nonatomic) NSDate *lastImageGeneration;
@@ -81,6 +82,7 @@
 @dynamic partyOrder;
 @dynamic partyPosition;
 @synthesize petCount = _petCount;
+@synthesize customizationsDictionary;
 @synthesize lastImageGeneration;
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView useForce:(BOOL)force {
@@ -451,6 +453,73 @@
 
 - (void)setPetCountFromArray:(NSArray *)petArray {
     _petCount = [NSNumber numberWithInt:[petArray count]];
+}
+
+- (void)setCustomizationsDictionary:(NSDictionary *)customizationDictionary {
+    if (customizationDictionary.count == 0) {
+        return;
+    }
+    NSMutableDictionary *dict  = [customizationDictionary mutableCopy];
+
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *managedObjectContext = appdelegate.sharedManager.getManagedObjectContext;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Customization" inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *customizations = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    for (Customization *customization in customizations) {
+        if ([customization.type isEqualToString:@"hair"]) {
+            NSNumber *purchased = dict[customization.type][customization.group][customization.name];
+            if (purchased) {
+                customization.purchased = purchased;
+                NSMutableDictionary *typeDict = [dict[customization.type] mutableCopy];
+                NSMutableDictionary *groupDict = [typeDict[customization.group] mutableCopy];
+                [groupDict removeObjectForKey:customization.name];
+                typeDict[customization.group] = groupDict;
+                dict[customization.type] = typeDict;
+            }
+        } else {
+            NSNumber *purchased = dict[customization.type][customization.name];
+            if (purchased) {
+                customization.purchased = purchased;
+                NSMutableDictionary *typeDict = [dict[customization.type] mutableCopy];
+                [typeDict removeObjectForKey:customization.name];
+                dict[customization.type] = typeDict;
+            }
+        }
+    }
+    
+    for (NSString *type in @[@"background", @"shirt", @"skin"]) {
+        for (NSString *key in dict[type]) {
+            Customization *customization = [NSEntityDescription
+                                            insertNewObjectForEntityForName:@"Customization"
+                                            inManagedObjectContext:managedObjectContext];
+            customization.name = key;
+            customization.type = type;
+            customization.purchased = dict[type][key];
+            [managedObjectContext save:&error];
+        }
+    }
+    
+    for (NSString *group in @[@"color", @"bangs", @"beard", @"mustache"]) {
+        for (NSString *key in dict[@"hair"][group]) {
+            Customization *customization = [NSEntityDescription
+                                            insertNewObjectForEntityForName:@"Customization"
+                                            inManagedObjectContext:managedObjectContext];
+            customization.name = key;
+            customization.type = @"hair";
+            customization.group = group;
+            customization.purchased = dict[@"hair"][group][key];
+            [managedObjectContext save:&error];
+        }
+    }
+
+
 }
 
 - (NSArray*) equippedArray {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -825,6 +825,7 @@
                         <segue destination="rxD-1b-YpQ" kind="push" identifier="NewsSegue" id="A1v-Vl-4j8"/>
                         <segue destination="0ML-Me-cHt" kind="push" identifier="SelectClassSegue" id="sPD-XR-ORt"/>
                         <segue destination="r5L-RV-Ig6" kind="push" identifier="AboutSegue" id="V5t-v4-xQG"/>
+                        <segue destination="Eg1-Bx-Zdn" kind="push" identifier="CustomizationSegue" id="w7r-aq-PPf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVG-cg-SZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1526,6 +1527,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXn-rI-saa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="121" y="1234"/>
+        </scene>
+        <!--Customize Avatar-->
+        <scene sceneID="7gF-HT-Pzb">
+            <objects>
+                <tableViewController id="Eg1-Bx-Zdn" customClass="HRPGCustomizationsOverviewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lZI-Ra-XHc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="Zdl-eW-Mue" style="IBUITableViewCellStyleDefault" id="f81-YA-MSj">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f81-YA-MSj" id="PJy-f8-mMa">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zdl-eW-Mue">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Eg1-Bx-Zdn" id="P1o-lQ-69V"/>
+                            <outlet property="delegate" destination="Eg1-Bx-Zdn" id="eiR-Jj-fH6"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Customize Avatar" id="K4K-zl-tiU"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yu2-r7-grD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3006" y="101"/>
         </scene>
         <!--Members-->
         <scene sceneID="PpQ-CH-ZgY">

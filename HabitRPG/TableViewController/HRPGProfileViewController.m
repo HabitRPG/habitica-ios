@@ -126,7 +126,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         case 1:
             return 2;
         case 2:
-            return 4;
+            return 5;
         case 3:
             return 3;
         default:
@@ -194,14 +194,18 @@ NIKFontAwesomeIconFactory *iconFactory;
         [self performSegueWithIdentifier:@"TavernSegue" sender:self];
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         [self performSegueWithIdentifier:@"PartySegue" sender:self];
+        
     } else if (indexPath.section == 2 && indexPath.item == 0) {
-        [self performSegueWithIdentifier:@"EquipmentSegue" sender:self];
+        [self performSegueWithIdentifier:@"CustomizationSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 1) {
-        [self performSegueWithIdentifier:@"ItemSegue" sender:self];
+        [self performSegueWithIdentifier:@"EquipmentSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 2) {
-        [self performSegueWithIdentifier:@"PetSegue" sender:self];
+        [self performSegueWithIdentifier:@"ItemSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 3) {
+        [self performSegueWithIdentifier:@"PetSegue" sender:self];
+    } else if (indexPath.section == 2 && indexPath.item == 4) {
         [self performSegueWithIdentifier:@"MountSegue" sender:self];
+        
     } else if (indexPath.section == 3 && indexPath.item == 0) {
         [self performSegueWithIdentifier:@"NewsSegue" sender:self];
     } else if (indexPath.section == 3 && indexPath.item == 1) {
@@ -237,12 +241,14 @@ NIKFontAwesomeIconFactory *iconFactory;
             }
         }
     } else if (indexPath.section == 2 && indexPath.item == 0) {
-        title = NSLocalizedString(@"Equipment", nil);
+        title = NSLocalizedString(@"Customize Avatar", nil);
     } else if (indexPath.section == 2 && indexPath.item == 1) {
-        title = NSLocalizedString(@"Items", nil);
+        title = NSLocalizedString(@"Equipment", nil);
     } else if (indexPath.section == 2 && indexPath.item == 2) {
-        title = NSLocalizedString(@"Pets", nil);
+        title = NSLocalizedString(@"Items", nil);
     } else if (indexPath.section == 2 && indexPath.item == 3) {
+        title = NSLocalizedString(@"Pets", nil);
+    } else if (indexPath.section == 2 && indexPath.item == 4) {
         title = NSLocalizedString(@"Mounts", nil);
     } else if (indexPath.section == 3 && indexPath.item == 0) {
         title = NSLocalizedString(@"News", nil);

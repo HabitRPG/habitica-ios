@@ -41,6 +41,9 @@
 		D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D966557318FB129F0014C09D /* HRPGSettingsViewController.m */; };
 		D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */; };
 		D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */; };
+		D979AD131AF3CF6C00D59FAE /* Customization.m in Sources */ = {isa = PBXBuildFile; fileRef = D979AD121AF3CF6C00D59FAE /* Customization.m */; };
+		D979AD1A1AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D979AD191AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m */; };
+		D979AD1C1AF3EF6E00D59FAE /* customizations.json in Resources */ = {isa = PBXBuildFile; fileRef = D979AD1B1AF3EF6E00D59FAE /* customizations.json */; };
 		D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97B8F5C1AE6CD3C00C6447D /* HRPGRewardFormViewController.m */; };
 		D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71DA18EC98A30089FDC6 /* Quest.m */; };
 		D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71DD18EC98A40089FDC6 /* QuestCollect.m */; };
@@ -194,6 +197,12 @@
 		D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGNewsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9722B7E19BD041E009D8AD3 /* HRPGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGNavigationController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGNavigationController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D979AD101AF3CF0700D59FAE /* HabitRPG 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 3.xcdatamodel"; sourceTree = "<group>"; };
+		D979AD111AF3CF6C00D59FAE /* Customization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customization.h; sourceTree = "<group>"; };
+		D979AD121AF3CF6C00D59FAE /* Customization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customization.m; sourceTree = "<group>"; };
+		D979AD181AF3E70400D59FAE /* HRPGCustomizationsOverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCustomizationsOverviewController.h; sourceTree = "<group>"; };
+		D979AD191AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCustomizationsOverviewController.m; sourceTree = "<group>"; };
+		D979AD1B1AF3EF6E00D59FAE /* customizations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = customizations.json; sourceTree = "<group>"; };
 		D97B8F5B1AE6CD3C00C6447D /* HRPGRewardFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGRewardFormViewController.h; sourceTree = "<group>"; };
 		D97B8F5C1AE6CD3C00C6447D /* HRPGRewardFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGRewardFormViewController.m; sourceTree = "<group>"; };
 		D97C71D918EC98A30089FDC6 /* Quest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quest.h; sourceTree = "<group>"; };
@@ -416,6 +425,7 @@
 				D998FD931ADAC1FF00E9A26F /* HRPGAboutViewController.h */,
 				D998FD941ADAC1FF00E9A26F /* HRPGAboutViewController.m */,
 				D9C3D01C19509E3800D22A4A /* Inventory */,
+				D979AD171AF3E69800D59FAE /* Customizations */,
 				D9E3654F1930D45500C056F1 /* Modals */,
 				D9E365501930D58900C056F1 /* Party */,
 				D9E3654E1930D44300C056F1 /* Spells */,
@@ -440,6 +450,16 @@
 				D94461861AB34F5C0015215E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D979AD171AF3E69800D59FAE /* Customizations */ = {
+			isa = PBXGroup;
+			children = (
+				D979AD181AF3E70400D59FAE /* HRPGCustomizationsOverviewController.h */,
+				D979AD191AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m */,
+				D979AD1B1AF3EF6E00D59FAE /* customizations.json */,
+			);
+			path = Customizations;
 			sourceTree = "<group>";
 		};
 		D97CCDAA19A51D7A00DA128A /* Markdown */ = {
@@ -589,6 +609,8 @@
 		D9C3D01D19509E4C00D22A4A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				D979AD111AF3CF6C00D59FAE /* Customization.h */,
+				D979AD121AF3CF6C00D59FAE /* Customization.m */,
 				D9ADD34F1943BC0E006202C1 /* BuyableItem.h */,
 				D9ADD3501943BC0E006202C1 /* BuyableItem.m */,
 				D97C71DF18ECA7050089FDC6 /* ChatMessage.h */,
@@ -878,6 +900,7 @@
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
 				D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */,
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
+				D979AD1C1AF3EF6E00D59FAE /* customizations.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -957,6 +980,7 @@
 				D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */,
 				D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */,
 				D97CCDB519A51EED00DA128A /* GHFMarkdown_Private.m in Sources */,
+				D979AD1A1AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m in Sources */,
 				D97CCDB819A51EED00DA128A /* NSMutableString_GHFMarkdown.m in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
 				D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */,
@@ -967,6 +991,7 @@
 				D947960A1972C248002CB34C /* HRPGUserProfileViewController.m in Sources */,
 				D9D96F03194B96FD00796FE7 /* HRPGMountMasterViewController.m in Sources */,
 				D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */,
+				D979AD131AF3CF6C00D59FAE /* Customization.m in Sources */,
 				D94AADB4192A30F900546C8E /* Spell.m in Sources */,
 				D9ADD35D19447057006202C1 /* HRPGBall.m in Sources */,
 				D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */,
@@ -1387,10 +1412,11 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D979AD101AF3CF0700D59FAE /* HabitRPG 3.xcdatamodel */,
 				D9B27ED71AE4C138008914D7 /* HabitRPG 2.xcdatamodel */,
 				D967755519F1379800A21F45 /* HabitRPG.xcdatamodel */,
 			);
-			currentVersion = D9B27ED71AE4C138008914D7 /* HabitRPG 2.xcdatamodel */;
+			currentVersion = D979AD101AF3CF0700D59FAE /* HabitRPG 3.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

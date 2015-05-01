@@ -22,6 +22,16 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="checklist" inverseEntity="Task" syncable="YES"/>
     </entity>
+    <entity name="Customization" representedClassName="Customization" syncable="YES">
+        <attribute name="group" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="2" syncable="YES"/>
+        <attribute name="purchased" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="set" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Egg" representedClassName="Egg" parentEntity="BuyableItem" syncable="YES">
         <attribute name="adjective" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mountText" optional="YES" attributeType="String" syncable="YES"/>
@@ -121,7 +131,7 @@
     </entity>
     <entity name="Reward" representedClassName="Reward" parentEntity="MetaReward" syncable="YES">
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="tags" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="rewards" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="rewards" inverseEntity="Tag" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="rewards" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Spell" representedClassName="Spell" syncable="YES">
@@ -137,7 +147,7 @@
         <attribute name="challenge" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="rewards" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reward" inverseName="tags" inverseEntity="Reward" syncable="YES"/>
+        <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reward" inverseName="tags" inverseEntity="Reward" syncable="YES"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="tags" inverseEntity="Task" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tags" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -260,6 +270,7 @@
         <element name="BuyableItem" positionX="0" positionY="0" width="128" height="60"/>
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="210"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="Customization" positionX="9" positionY="153" width="128" height="165"/>
         <element name="Egg" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Food" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Gear" positionX="0" positionY="0" width="128" height="210"/>
