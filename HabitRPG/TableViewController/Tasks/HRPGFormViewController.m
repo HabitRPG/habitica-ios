@@ -171,12 +171,12 @@
         XLFormSectionDescriptor *section = [self.form formSectionAtIndex:1];
         if ([self.task.checklist count] == 0) {
             XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText];
-            [[row cellConfig] setObject:NSLocalizedString(@"Add a new tag", nil) forKey:@"textField.placeholder"];
+            [[row cellConfig] setObject:NSLocalizedString(@"Add a new checklist item", nil) forKey:@"textField.placeholder"];
             [section addFormRow:row];
         } else {
             for (ChecklistItem *item in self.task.checklist) {
                 XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:item.id rowType:XLFormRowDescriptorTypeText];
-                [[row cellConfig] setObject:NSLocalizedString(@"Add a new tag", nil) forKey:@"textField.placeholder"];
+                [[row cellConfig] setObject:NSLocalizedString(@"Add a new checklist item", nil) forKey:@"textField.placeholder"];
                 row.value = item.text;
                 [section addFormRow:row];
             }
