@@ -1197,15 +1197,16 @@ NSString *currentUser;
             //displays the correct amount of experience gained
             user.experience = [NSNumber numberWithFloat:[user.experience floatValue] - [user.nextLevel floatValue]];
         }
-        user.level = taskResponse.level;
+        user.level = taskResponse.level ? taskResponse.level : user.level;
+        
         NSNumber *expDiff = [NSNumber numberWithFloat:([taskResponse.experience floatValue] - [user.experience floatValue])];
         user.experience = taskResponse.experience;
         NSNumber *healthDiff = [NSNumber numberWithFloat:([taskResponse.health floatValue] - [user.health floatValue])];
-        user.health = taskResponse.health;
-        user.magic = taskResponse.magic;
+        user.health = taskResponse.health ? taskResponse.health : user.health;
+        user.magic = taskResponse.magic ? taskResponse.magic : user.magic;
 
         NSNumber *goldDiff = [NSNumber numberWithFloat:[taskResponse.gold floatValue] - [user.gold floatValue]];
-        user.gold = taskResponse.gold;
+        user.gold = taskResponse.gold ? taskResponse.gold : user.gold;
         
         [self displayTaskSuccessNotification:healthDiff withExperienceDiff:expDiff withGoldDiff:goldDiff];
         if ([task.type isEqual:@"daily"] || [task.type isEqual:@"todo"]) {
