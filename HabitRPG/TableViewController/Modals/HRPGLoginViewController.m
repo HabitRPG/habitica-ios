@@ -11,6 +11,7 @@
 #import "HRPGAppDelegate.h"
 #import "OnePasswordExtension.h"
 #import "HRPGTabBarController.h"
+#import "HRPGIntroView.h"
 
 @interface HRPGLoginViewController ()
 @property HRPGManager *sharedManager;
@@ -146,6 +147,11 @@
     } else {
         [_sharedManager loginUser:self.usernameField.text withPassword:self.passwordField.text onSuccess:^() {
             [_sharedManager setCredentials];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            if (![defaults boolForKey:@"displayedIntro"]) {
+                HRPGIntroView *introView = [[HRPGIntroView alloc] init];
+                [introView displayIntro];
+            }
             [_sharedManager fetchUser:^() {
                 [self dismissViewControllerAnimated:YES completion:nil];
             }                 onError:^() {
