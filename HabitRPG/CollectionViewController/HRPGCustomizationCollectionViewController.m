@@ -1,0 +1,207 @@
+//
+//  HRPGCustomizationCollectionViewController.m
+//  Habitica
+//
+//  Created by Phillip Thelen on 09/05/15.
+//  Copyright (c) 2015 Phillip Thelen. All rights reserved.
+//
+
+#import "HRPGCustomizationCollectionViewController.h"
+#import "HRPGManager.H"
+#import "HRPGActivityIndicator.h"
+#import "HRPGAppDelegate.h"
+#import "HRPGTopHeaderNavigationController.h"
+#import "Customization.h"
+
+@interface HRPGCustomizationCollectionViewController ()
+@property (nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic) HRPGManager *sharedManager;
+@property NSInteger activityCounter;
+@property UIBarButtonItem *navigationButton;
+@property HRPGActivityIndicator *activityIndicator;
+@property CGSize screenSize;
+@property Customization *selectedCustomization;
+@end
+
+@implementation HRPGCustomizationCollectionViewController
+
+static NSString * const reuseIdentifier = @"Cell";
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+    self.sharedManager = appdelegate.sharedManager;
+    self.managedObjectContext = self.sharedManager.getManagedObjectContext;
+    
+    self.screenSize = [[UIScreen mainScreen] bounds].size;
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(preferredContentSizeChanged:)
+     name:UIContentSizeCategoryDidChangeNotification
+     object:nil];
+    
+    HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+    [self.collectionView setContentInset:UIEdgeInsetsMake([navigationController getContentOffset],0,0,0)];
+    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
+}
+
+- (void)preferredContentSizeChanged:(NSNotification *)notification {
+    [self.collectionView reloadData];
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return [[self.fetchedResultsController sections] count];
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake((self.screenSize.width-30)/4, 75.0f);
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionCell" forIndexPath:indexPath];
+    UILabel *label = (UILabel*)[headerView viewWithTag:1];
+    label.text = [[self.fetchedResultsController sections][indexPath.section] name];
+    return headerView;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSString *cellName;
+    if ([customization.purchased boolValue] || [customization.price integerValue] == 0) {
+        cellName = @"Cell";
+    } else {
+        cellName = @"LockedCell";
+    }
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellName forIndexPath:indexPath];
+    [self configureCell:cell atIndexPath:indexPath animated:NO];
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *actionString = NSLocalizedString(@"Use", nil);
+    Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    if (![customization.purchased boolValue] && [customization.price integerValue] > 0) {
+        //TODO: implement buying
+        return;
+        actionString = [NSString stringWithFormat:NSLocalizedString(@"Buy for %@ Gems", nil), customization.price];
+    }
+    
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:actionString, nil];
+    popup.tag = 1;
+    [popup showInView:[UIApplication sharedApplication].keyWindow];
+    self.selectedCustomization = customization;
+}
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Customization" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setFetchBatchSize:20];
+    
+    if (self.group) {
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"(purchasable == true || purchased == true || price == 0) && type == %@ && group == %@", self.type, self.group]];
+    } else {
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"(purchasable == true || purchased == true || price == 0) && type == %@", self.type]];
+    }
+    
+    NSSortDescriptor *typeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"set" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *sortDescriptors = @[typeSortDescriptor, sortDescriptor];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"set" cacheName:nil];
+    aFetchedResultsController.delegate = self;
+    self.fetchedResultsController = aFetchedResultsController;
+    
+    NSError *error = nil;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return _fetchedResultsController;
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    UICollectionView *collectionView = self.collectionView;
+    
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [collectionView insertItemsAtIndexPaths:@[newIndexPath]];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [collectionView deleteItemsAtIndexPaths:@[indexPath]];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[collectionView cellForItemAtIndexPath:indexPath] atIndexPath:indexPath animated:YES];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [collectionView deleteItemsAtIndexPaths:@[indexPath]];
+            [collectionView insertItemsAtIndexPaths:@[newIndexPath]];
+            break;
+    }
+}
+
+- (void)configureCell:(UICollectionViewCell*)cell atIndexPath:(NSIndexPath *)indexPath animated:(BOOL) animated {
+    Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
+    [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@.png", [customization getImageNameForUser:self.user]]]
+                  placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
+        [self.sharedManager updateUser:@{self.userKey: self.selectedCustomization.name} onSuccess:^() {
+            
+        }onError:^() {
+            
+        }];
+    }
+}
+
+-(void)addActivityCounter {
+    if (self.activityCounter == 0) {
+        self.navigationButton = self.navigationItem.rightBarButtonItem;
+        self.activityIndicator = [[HRPGActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
+        [self.navigationItem setRightBarButtonItem:indicatorButton animated:NO];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.activityIndicator beginAnimating];
+        });
+    }
+    self.activityCounter++;
+}
+
+- (void)removeActivityCounter {
+    self.activityCounter--;
+    if (self.activityCounter == 0) {
+        [self.activityIndicator endAnimating:^() {
+            [self.navigationItem setRightBarButtonItem:self.navigationButton animated:NO];
+        }];
+    } else if (self.activityCounter < 0) {
+        self.activityCounter = 0;
+    }
+}
+
+@end

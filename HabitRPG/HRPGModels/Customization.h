@@ -18,9 +18,12 @@
 @property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) NSNumber * price;
 @property (nonatomic, retain) NSNumber * purchased;
+@property (nonatomic, retain) NSNumber * purchasable;
 @property (nonatomic, retain) NSString * set;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) User *owner;
+
+- (NSString*) getImageNameForUser:(User*) user;
 
 @end

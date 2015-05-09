@@ -27,6 +27,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="2" syncable="YES"/>
+        <attribute name="purchasable" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="purchased" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="set" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
@@ -270,7 +271,7 @@
         <element name="BuyableItem" positionX="0" positionY="0" width="128" height="60"/>
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="210"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="Customization" positionX="9" positionY="153" width="128" height="165"/>
+        <element name="Customization" positionX="9" positionY="153" width="128" height="180"/>
         <element name="Egg" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Food" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Gear" positionX="0" positionY="0" width="128" height="210"/>

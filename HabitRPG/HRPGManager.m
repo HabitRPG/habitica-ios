@@ -1028,6 +1028,7 @@ NSString *currentUser;
             customization.group = data[@"group"];
             customization.set = data[@"set"];
             customization.price = data[@"price"];
+            customization.purchasable = data[@"purchasable"];
         }
         
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];

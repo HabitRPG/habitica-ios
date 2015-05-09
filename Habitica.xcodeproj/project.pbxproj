@@ -100,6 +100,7 @@
 		D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E318D610E300C8D1B7 /* HRPGTaskResponse.m */; };
 		D9B5C0E718D62CC700C8D1B7 /* HRPGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */; };
 		D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */; };
+		D9B8C1201AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B8C11F1AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m */; };
 		D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */; };
 		D9BA33D11AB5E0C90028AFEC /* HRPGGoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33D01AB5E0C90028AFEC /* HRPGGoldView.m */; };
 		D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */; };
@@ -313,6 +314,8 @@
 		D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGLoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9B5C0E818D6320C00C8D1B7 /* HRPGLoginData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGLoginData.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGLoginData.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D9B8C11E1AFE70F900634B5A /* HRPGCustomizationCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCustomizationCollectionViewController.h; sourceTree = "<group>"; };
+		D9B8C11F1AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCustomizationCollectionViewController.m; sourceTree = "<group>"; };
 		D9BA33CC1AB5D2CF0028AFEC /* HRPGProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGProgressBar.h; sourceTree = "<group>"; };
 		D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGProgressBar.m; sourceTree = "<group>"; };
 		D9BA33CF1AB5E0C90028AFEC /* HRPGGoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGoldView.h; sourceTree = "<group>"; };
@@ -521,6 +524,8 @@
 				D9D96F02194B96FD00796FE7 /* HRPGMountMasterViewController.m */,
 				D9AEEA6E1ACECDBC0076951B /* HRPGClassTableViewController.h */,
 				D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */,
+				D9B8C11E1AFE70F900634B5A /* HRPGCustomizationCollectionViewController.h */,
+				D9B8C11F1AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m */,
 			);
 			name = "Collection View Controller";
 			path = CollectionViewController;
@@ -971,6 +976,7 @@
 				D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */,
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
 				D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */,
+				D9B8C1201AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m in Sources */,
 				D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */,
 				D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */,
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
