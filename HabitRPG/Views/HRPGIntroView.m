@@ -82,7 +82,7 @@
         
         EAIntroPage *rewardPage = [EAIntroPage page];
         rewardPage.title = NSLocalizedString(@"Rewards", nil);
-        rewardPage.desc = NSLocalizedString(@"All that gold you earned will allow you to reward yourself with either custom or in-game prizes. Buy them liberally – rewarding yourself is integral in forming good habits.", nil);
+        rewardPage.desc = NSLocalizedString(@"1. Use your gold to buy Rewards!\n2. In-game Rewards include equipment.\n3. Set Custom Rewards yourself!", nil);
         rewardPage.titleFont = titleFont;
         rewardPage.descFont = font;
         rewardPage.titlePositionY = titleY;
