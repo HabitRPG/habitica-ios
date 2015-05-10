@@ -139,10 +139,7 @@ BOOL editable;
     HRPGSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     [cell setDefaultColor:[UIColor lightGrayColor]];
     cell.taskType = [task.type substringToIndex:1];
-    
-    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongCellPress:)];
-    [cell addGestureRecognizer:longPressGesture];
-    
+
     UIView *whitespaceView = [cell viewWithTag:6];
     NSLayoutConstraint *whiteSpaceHeightConstraint;
     for (NSLayoutConstraint *con in whitespaceView.constraints) {
@@ -220,53 +217,9 @@ BOOL editable;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section > [self.fetchedResultsController sections].count-1) {
-        return;
-    }
-    
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-//FIXME
-    if (indexPath.section == 1) {
-        return;
-    }
-    
-    Task *task;
-    if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
-        task = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
-    } else if (self.openedIndexPath.item + self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
-        task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
-        indexPath = self.openedIndexPath;
-    } else {
-        task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    }
-
-    NSNumber *checklistCount = [NSNumber numberWithInteger:[task.checklist count]];
-    if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
-        NSIndexPath *tempPath = self.openedIndexPath;
-        self.openedIndexPath = nil;
-        self.indexOffset = 0;
-        [self configureCell:[tableView cellForRowAtIndexPath:tempPath] atIndexPath:tempPath withAnimation:YES];
-        NSMutableArray *deleteArray = [[NSMutableArray alloc] init];
-        for (int i = 1; i <= [checklistCount integerValue]; i++) {
-            [deleteArray addObject:[NSIndexPath indexPathForItem:indexPath.item + i inSection:self.openedIndexPath.section]];
-        }
-        [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationTop];
-    } else {
-        if (self.openedIndexPath) {
-            [self collapseOpenedIndexPath];
-        }
-        if ([checklistCount integerValue] > 0) {
-            self.openedIndexPath = indexPath;
-            self.indexOffset = (int) [checklistCount integerValue];
-            NSMutableArray *insertArray = [[NSMutableArray alloc] init];
-            for (int i = 1; i <= [checklistCount integerValue]; i++) {
-                [insertArray addObject:[NSIndexPath indexPathForItem:self.openedIndexPath.item + i inSection:self.openedIndexPath.section]];
-            }
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
-            [self.tableView insertRowsAtIndexPaths:insertArray withRowAnimation:UITableViewRowAnimationTop];
-        }
-    }
+    editedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"FormSegue" sender:self];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
@@ -450,24 +403,52 @@ BOOL editable;
     return imageView;
 }
 
-- (void) handleLongCellPress:(UILongPressGestureRecognizer*)gesture
-{
-    if (gesture.state == UIGestureRecognizerStateBegan) {
-        CGPoint p = [gesture locationInView:self.tableView];
-        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
-        HRPGSwipeTableViewCell *cell = (HRPGSwipeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-        POPSpringAnimation *jumpAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-        jumpAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
-        jumpAnimation.velocity = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
-        jumpAnimation.springBounciness = 20.f;
-        [cell pop_addAnimation:jumpAnimation forKey:@"jumpAnimation"];
+- (void) tableView:(UITableView *)tableView expandCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section > [self.fetchedResultsController sections].count-1) {
+        return;
     }
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-        CGPoint p = [gesture locationInView:self.tableView];
-        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
-        editedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [self performSegueWithIdentifier:@"FormSegue" sender:self];
+    
+    if (indexPath.section == 1) {
+        return;
     }
+    
+    Task *task;
+    if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
+        task = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
+    } else if (self.openedIndexPath.item + self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
+        task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
+        indexPath = self.openedIndexPath;
+    } else {
+        task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    }
+    
+    NSNumber *checklistCount = [NSNumber numberWithInteger:[task.checklist count]];
+    if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
+        NSIndexPath *tempPath = self.openedIndexPath;
+        self.openedIndexPath = nil;
+        self.indexOffset = 0;
+        [self configureCell:[tableView cellForRowAtIndexPath:tempPath] atIndexPath:tempPath withAnimation:YES];
+        NSMutableArray *deleteArray = [[NSMutableArray alloc] init];
+        for (int i = 1; i <= [checklistCount integerValue]; i++) {
+            [deleteArray addObject:[NSIndexPath indexPathForItem:indexPath.item + i inSection:self.openedIndexPath.section]];
+        }
+        [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationTop];
+    } else {
+        if (self.openedIndexPath) {
+            [self collapseOpenedIndexPath];
+        }
+        if ([checklistCount integerValue] > 0) {
+            self.openedIndexPath = indexPath;
+            self.indexOffset = (int) [checklistCount integerValue];
+            NSMutableArray *insertArray = [[NSMutableArray alloc] init];
+            for (int i = 1; i <= [checklistCount integerValue]; i++) {
+                [insertArray addObject:[NSIndexPath indexPathForItem:self.openedIndexPath.item + i inSection:self.openedIndexPath.section]];
+            }
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
+            [self.tableView insertRowsAtIndexPaths:insertArray withRowAnimation:UITableViewRowAnimationTop];
+        }
+    }
+
 }
 
 

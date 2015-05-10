@@ -19,6 +19,7 @@
 
 - (UIView *)viewWithIcon:(UIImage *)image;
 
+- (void) tableView:(UITableView *)tableView expandCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 - (NSPredicate*) getPredicate;

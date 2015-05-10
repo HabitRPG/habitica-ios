@@ -181,6 +181,9 @@
                 checklistLabel.backgroundColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
             }
             checklistLabel.hidden = NO;
+            UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandSelectedCell:)];
+            tapRecognizer.numberOfTapsRequired = 1;
+            [checklistLabel addGestureRecognizer:tapRecognizer];
         } else {
             checklistLabel.hidden = YES;
         }
@@ -324,4 +327,12 @@
         
     }];
 }
+
+- (void) expandSelectedCell:(UITapGestureRecognizer*)gesture {
+    CGPoint p = [gesture locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self tableView:self.tableView expandCell:cell atIndexPath:indexPath];
+}
+
 @end

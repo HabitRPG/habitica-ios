@@ -44,8 +44,14 @@
         return [request.URL.host isEqualToString:@"habitrpg.com"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         // Stub it with our "wsresponse.json" stub file
-        OHHTTPStubsResponse *response = [OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"user.json",self.class)
-                                                                         statusCode:200 headers:@{@"Content-Type":@"application/json"}];
+        OHHTTPStubsResponse *response;
+        if ([request.URL.path isEqualToString:@"/api/v2/user"]) {
+            response = [OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"user.json",self.class)
+                                                        statusCode:200 headers:@{@"Content-Type":@"application/json"}];
+        } else if ([request.URL.path isEqualToString:@"/api/v2/user/inventory/equip/costume/armor_special_fallWarrior"]) {
+            response = [OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"blade-equipResponse.json",self.class)
+                                                        statusCode:200 headers:@{@"Content-Type":@"application/json"}];
+        }
         return response;
     }];
 }
@@ -55,8 +61,6 @@
 }
 
 - (void)testFetchUser {
-    User *user = [self.sharedManager getUser];
-    XCTAssertNil(user);
 
     XCTestExpectation *expectation = [self expectationWithDescription:@"userFetched"];
     
@@ -93,6 +97,23 @@
     }];
 }
 
+- (void)testEquipping {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"equipGear"];
+    
+    [self.sharedManager fetchUser:^() {
+        [self.sharedManager equipObject:@"armor_special_fallWarrior" withType:@"costume" onSuccess:^() {
+            [expectation fulfill];
+        }onError:^() {
+            [expectation fulfill];
+        }];
+    } onError:^() {
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:20 handler:^(NSError *error) {
+        XCTAssertEqualObjects([self.sharedManager getUser].costumeArmor, @"armor_special_fallWarrior");
+    }];
+}
 
 
 @end
