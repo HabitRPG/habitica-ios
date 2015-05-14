@@ -32,8 +32,6 @@ BOOL editable;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    editable = NO;
-
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
