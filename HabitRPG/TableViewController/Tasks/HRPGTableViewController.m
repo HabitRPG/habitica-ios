@@ -220,31 +220,6 @@ BOOL editable;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-
-- (IBAction)editButtonSelected:(id)sender {
-    if ([self isEditing]) {
-        editable = NO;
-        [self setEditing:NO animated:YES];
-    } else {
-        editable = YES;
-        [self setEditing:YES animated:YES];
-    }
-}
-
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    [super setEditing:editing animated:animated];
-    if (editing) {
-        editable = YES;
-        if (self.openedIndexPath) {
-            [self collapseOpenedIndexPath];
-        }
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editButtonSelected:)];
-    } else {
-        editable = NO;
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonSelected:)];
-    }
-}
-
 - (void)collapseOpenedIndexPath {
     Task *oldTask = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
     NSNumber *oldChecklistCount = [oldTask valueForKeyPath:@"checklist.@count"];
