@@ -47,7 +47,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Item" id="Rcy-Hg-W2l"/>
+                    <navigationItem key="navigationItem" title="Habitica" id="Rcy-Hg-W2l"/>
                 </viewController>
             </viewControllers>
             <point key="canvasLocation" x="447" y="164"/>
