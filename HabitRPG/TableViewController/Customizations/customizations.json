@@ -777,6 +777,56 @@
       "purchasable": false,
       "set": "supernaturalSkins"
     },
+    {"name": "bear",
+      "type": "skin",
+      "price": 2,
+      "purchasable": true,
+      "set": "animalSkins"
+    },
+    {"name": "cactus",
+      "type": "skin",
+      "price": 2,
+      "purchasable": true,
+      "set": "animalSkins"
+    },
+    {"name": "fox",
+      "type": "skin",
+      "price": 2,
+      "purchasable": true,
+      "set": "animalSkins"
+    },
+    {"name": "lion",
+      "type": "skin",
+      "price": 2,
+      "purchasable": true,
+      "set": "animalSkins"
+    },
+    {"name": "panda",
+      "type": "skin",
+      "price": 2,
+      "purchasable": true,
+      "set": "animalSkins"
+    },
+    {"name": "pig",
+      "type": "skin",
+      "price": 2,
+      "purchasable": true,
+      "set": "animalSkins"
+    },
+    {"name": "tiger",
+      "type": "skin",
+      "price": 2,
+      "purchasable": true,
+      "set": "animalSkins"
+    },
+    {"name": "wolf",
+      "type": "skin",
+      "price": 2,
+      "purchasable": true,
+      "set": "animalSkins"
+    },
+
+
 
   ]
 }
