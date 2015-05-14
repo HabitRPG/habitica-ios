@@ -65,6 +65,8 @@
                             [XLFormOptionsObject formOptionsObjectWithValue:@(2) displayText:NSLocalizedString(@"Hard", nil)]
                             ];
     row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:NSLocalizedString(@"Easy", nil)];
+    row.required = YES;
+    row.selectorTitle = NSLocalizedString(@"Select Difficutly", nil);
     [section addFormRow:row];
     
     self.form = formDescriptor;
@@ -133,7 +135,7 @@
     
     if ([self.taskType isEqualToString:@"todo"]) {
         self.duedateSection = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Due Date", nil)];
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"hasDueDate" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Has Due Date", nil)];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"hasDueDate" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Has a due date", nil)];
         row.value = [NSNumber numberWithBool:NO];
         [self.duedateSection addFormRow:row];
         [self.form addFormSection:self.duedateSection];
