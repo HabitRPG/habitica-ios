@@ -94,22 +94,14 @@ NSString *currentUser;
             return;
         }
         if (status == AFNetworkReachabilityStatusNotReachable) {
-            NSString *title = NSLocalizedString(@"Connection Error", nil);
-            NSString *message = NSLocalizedString(@"There is no internet connection. You will not be able to perform any actions.", nil);
-            UIAlertController *alertController = [UIAlertController
-                                                  alertControllerWithTitle:title
-                                                  message:message
-                                                  preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertView *alertView = [[UIAlertView alloc]
+                                      initWithTitle:NSLocalizedString(@"Connection Error", nil)
+                                      message:NSLocalizedString(@"There is no internet connection. You will not be able to perform any actions.", nil)
+                                      delegate:self
+                                      cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                      otherButtonTitles:nil, nil];
             
-            UIAlertAction *okAction = [UIAlertAction
-                                       actionWithTitle:NSLocalizedString(@"OK", nil)
-                                       style:UIAlertActionStyleDefault
-                                       handler:^(UIAlertAction *action)
-                                       {
-                                       }];
-            
-            [alertController addAction:okAction];
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
+            [alertView show];
         }
     }];
 
