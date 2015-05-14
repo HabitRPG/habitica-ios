@@ -452,7 +452,7 @@
 }
 
 - (void)setPetCountFromArray:(NSArray *)petArray {
-    _petCount = [NSNumber numberWithInt:[petArray count]];
+    _petCount = [NSNumber numberWithInt:(int)[petArray count]];
 }
 
 - (void)setCustomizationsDictionary:(NSDictionary *)customizationDictionary {

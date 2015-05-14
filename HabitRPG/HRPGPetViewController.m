@@ -120,7 +120,7 @@
                                                         NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]
                                                         }
                                               context:nil].size.height*3;
-    if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+    if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
         return CGSizeMake(self.screenSize.width/4-15, height);
     }
     return CGSizeMake(self.screenSize.width/3-10, height);

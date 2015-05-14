@@ -19,7 +19,6 @@
 
 @property User *user;
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @implementation HRPGProfileViewController

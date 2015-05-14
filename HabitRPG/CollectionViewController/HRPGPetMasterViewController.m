@@ -142,7 +142,7 @@ NSUserDefaults *defaults;
                                                    NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
                                                    }
                                          context:nil].size.height;
-    if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+    if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
         return CGSizeMake(self.screenSize.width/4-15, height);
     }
     return CGSizeMake(self.screenSize.width/3-10, height);
