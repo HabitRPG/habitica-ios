@@ -47,4 +47,12 @@
     return @"";
 }
 
+- (NSString *)getPath {
+    if ([self.type isEqual:@"hair"]) {
+        return [NSString stringWithFormat:@"%@.%@.%@", self.type, self.group, self.name];
+    } else {
+        return [NSString stringWithFormat:@"%@.%@", self.type, self.name];
+    }
+}
+
 @end

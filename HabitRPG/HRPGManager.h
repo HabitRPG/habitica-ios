@@ -55,6 +55,8 @@
 
 - (void)buyObject:(MetaReward *)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)unlockPath:(NSString*)path onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 - (void)sellItem:(Item *)item onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)equipObject:(NSString *)key withType:(NSString*)type onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;

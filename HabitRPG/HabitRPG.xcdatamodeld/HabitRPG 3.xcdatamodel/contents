@@ -29,7 +29,7 @@
         <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="2" syncable="YES"/>
         <attribute name="purchasable" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="purchased" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="set" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="set" optional="YES" attributeType="String" defaultValueString=" " syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>

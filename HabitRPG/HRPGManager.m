@@ -1018,7 +1018,9 @@ NSString *currentUser;
             customization.notes = data[@"notes"];
             customization.type = data[@"type"];
             customization.group = data[@"group"];
-            customization.set = data[@"set"];
+            if (data[@"set"]) {
+                customization.set = data[@"set"];
+            }
             customization.price = data[@"price"];
             customization.purchasable = data[@"purchasable"];
         }
@@ -1613,6 +1615,32 @@ NSString *currentUser;
     }];
 }
 
+- (void)unlockPath:(NSString*)path onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/unlock?path=%@", path] parameters:nil success:^ (RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self fetchUser:^() {
+            NSError *executeError = nil;
+            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+            successBlock();
+        }onError:^() {
+        }];
+        [self.networkIndicatorController endNetworking];
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 401) {
+            [self displayNoGemAlert];
+        } else if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        errorBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
 - (void)sellItem:(Item *)item onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     
@@ -2070,6 +2098,17 @@ NSString *currentUser;
     }onError:^() {
         
     }];
+}
+
+- (void)displayNoGemAlert {
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:NSLocalizedString(@"Not enough gems", nil)
+                              message:NSLocalizedString(@"You do not have enough gems to purchase this. You can get more gems from the website.", nil)
+                              delegate:self
+                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                              otherButtonTitles:nil];
+    
+    [alertView show];
 }
 
 - (User *)getUser {

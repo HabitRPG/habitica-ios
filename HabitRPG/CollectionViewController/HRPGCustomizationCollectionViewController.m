@@ -89,16 +89,18 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *actionString = NSLocalizedString(@"Use", nil);
+    NSString *titleString;
+    NSInteger tag = 0;
     Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     if (![customization.purchased boolValue] && [customization.price integerValue] > 0) {
-        //TODO: implement buying
-        return;
-        actionString = [NSString stringWithFormat:NSLocalizedString(@"Buy for %@ Gems", nil), customization.price];
+        titleString = [NSString stringWithFormat:NSLocalizedString(@"This item cam be purchased for %@ Gems", nil), customization.price];
+        actionString = [NSString stringWithFormat:NSLocalizedString(@"Purchase for %@ Gems", nil), customization.price];
+        tag = 1;
     }
     
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:actionString, nil];
-    popup.tag = 1;
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:titleString delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:actionString, nil];
+    popup.tag = tag;
     [popup showInView:[UIApplication sharedApplication].keyWindow];
     self.selectedCustomization = customization;
 }
@@ -171,13 +173,27 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
-        [self.sharedManager updateUser:@{self.userKey: self.selectedCustomization.name} onSuccess:^() {
-            
-        }onError:^() {
-            
-        }];
+    switch (actionSheet.tag) {
+        case 0:
+            if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
+                [self.sharedManager updateUser:@{self.userKey: self.selectedCustomization.name} onSuccess:^() {
+                    
+                }onError:^() {
+                    
+                }];
+            }
+            break;
+        case 1:
+            if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
+                [self.sharedManager unlockPath:[self.selectedCustomization getPath] onSuccess:^() {
+                }onError:^() {
+                }];
+            }
+            break;
+        default:
+            break;
     }
+
 }
 
 -(void)addActivityCounter {

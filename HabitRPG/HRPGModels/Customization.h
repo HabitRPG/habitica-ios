@@ -25,5 +25,5 @@
 @property (nonatomic, retain) User *owner;
 
 - (NSString*) getImageNameForUser:(User*) user;
-
+- (NSString*) getPath;
 @end

@@ -12,6 +12,7 @@
 		D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03919D60B53001EABE4 /* DailyIntro.png */; };
 		D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03A19D60B53001EABE4 /* TodoIntro.png */; };
 		D90EA03E19D60B53001EABE4 /* RewardIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03B19D60B53001EABE4 /* RewardIntro.png */; };
+		D91D9B651B074AAA0086F988 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91D9B641B074AAA0086F988 /* Fabric.framework */; };
 		D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */; };
 		D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0AD19217C2300B197EA /* HRPGEmptySerializer.m */; };
 		D922F0B11925314500B197EA /* HRPGNetworkIndicatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0B01925314500B197EA /* HRPGNetworkIndicatorController.m */; };
@@ -150,6 +151,7 @@
 		D90EA03B19D60B53001EABE4 /* RewardIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RewardIntro.png; sourceTree = "<group>"; };
 		D915F8621915BEE50037D04D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D915F8641915BF0D0037D04D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D91D9B641B074AAA0086F988 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		D922F0A6191C1F6B00B197EA /* HRPGUserBuyResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGUserBuyResponse.h; sourceTree = "<group>"; };
 		D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGUserBuyResponse.m; sourceTree = "<group>"; };
 		D922F0AC19217C2300B197EA /* HRPGEmptySerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGEmptySerializer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -378,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */,
+				D91D9B651B074AAA0086F988 /* Fabric.framework in Frameworks */,
 				D958E2B01915D41400186A08 /* Security.framework in Frameworks */,
 				D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */,
 				D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */,
@@ -745,6 +748,7 @@
 		D9EB4E8D18CB4A9400BB2094 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D91D9B641B074AAA0086F988 /* Fabric.framework */,
 				D958E2AF1915D41400186A08 /* Security.framework */,
 				D958E2AC1915D40600186A08 /* CoreText.framework */,
 				D9D96F07194E25FF00796FE7 /* Crashlytics.framework */,
