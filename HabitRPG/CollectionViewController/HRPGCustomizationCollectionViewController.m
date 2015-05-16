@@ -155,7 +155,7 @@ static NSString * const reuseIdentifier = @"Cell";
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[collectionView cellForItemAtIndexPath:indexPath] atIndexPath:indexPath animated:YES];
+            [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
             break;
             
         case NSFetchedResultsChangeMove:
