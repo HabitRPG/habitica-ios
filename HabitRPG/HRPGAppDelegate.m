@@ -9,12 +9,14 @@
 #import "HRPGAppDelegate.h"
 #import "HRPGTableViewController.h"
 #import "CRToast.h"
+#import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+
 
 @implementation HRPGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [Crashlytics startWithAPIKey:@"2eb3b3edb3b0f4722d37d649a5af366656e46ddd"];
+    [Fabric with:@[CrashlyticsKit]];
 
     CRToastInteractionResponder *blankResponder = [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeAll automaticallyDismiss:YES block:^(CRToastInteractionType interactionType){
     }];
