@@ -45,22 +45,26 @@ NSIndexPath *selectedIndex;
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return NSLocalizedString(@"Body", nil);
-    } else {
+    } else if (section == 1) {
         return NSLocalizedString(@"Hair", nil);
+    } else {
+        return NSLocalizedString(@"Background", nil);
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         return 3;
-    } else {
+    } else if (section == 1) {
         return 6;
+    } else {
+        return 1;
     }
 }
 
@@ -75,7 +79,12 @@ NSIndexPath *selectedIndex;
         }
         return cell;
     }
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    NSString *cellName = @"Cell";
+    if (indexPath.section == 2) {
+        cellName = @"BackgroundCell";
+    }
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
 }
@@ -87,6 +96,8 @@ NSIndexPath *selectedIndex;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 0) {
         return 50;
+    } if (indexPath.section == 2) {
+        return 148;
     }
     return 76;
 }
@@ -167,7 +178,7 @@ NSIndexPath *selectedIndex;
             searchedType = @"skin";
             typeName = NSLocalizedString(@"Skin", nil);
         }
-    } else {
+    } else if (indexPath.section == 1) {
         searchedType = @"hair";
         if (indexPath.item == 0) {
             searchedGroup = @"color";
@@ -193,6 +204,12 @@ NSIndexPath *selectedIndex;
             searchedGroup = @"mustache";
             searchedKey = self.user.hairMustache;
             typeName = NSLocalizedString(@"Mustache", nil);
+        }
+    } else {
+        if (indexPath.item == 0) {
+            searchedKey = self.user.background;
+            searchedType = @"background";
+            typeName = NSLocalizedString(@"Background", nil);
         }
     }
     Customization *searchedCustomization;
@@ -272,6 +289,9 @@ NSIndexPath *selectedIndex;
                 default:
                     break;
             }
+        } else {
+            destViewController.userKey = @"preferences.background";
+            destViewController.type = @"background";
         }
     }
 }

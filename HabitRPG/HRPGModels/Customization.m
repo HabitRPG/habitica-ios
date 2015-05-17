@@ -47,6 +47,8 @@
         } else {
             return [NSString stringWithFormat:@"hair_%@_%@_%@", self.group, self.name, user.hairColor];
         }
+    } else if ([self.type isEqualToString:@"background"]) {
+        return [NSString stringWithFormat:@"background_%@", self.name];
     }
     return @"";
 }

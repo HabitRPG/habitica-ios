@@ -23,6 +23,7 @@
 @property CGSize screenSize;
 @property Customization *selectedCustomization;
 @property NSString *selectedSetPath;
+@property NSNumber *setPrice;
 @end
 
 @implementation HRPGCustomizationCollectionViewController
@@ -47,6 +48,12 @@ static NSString * const reuseIdentifier = @"Cell";
     HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
     [self.collectionView setContentInset:UIEdgeInsetsMake([navigationController getContentOffset],0,0,0)];
     self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
+    
+    if ([self.type isEqualToString:@"background"]) {
+        self.setPrice = [NSNumber numberWithInt:15];
+    } else {
+        self.setPrice = [NSNumber numberWithInt:5];
+    }
 }
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
@@ -66,13 +73,17 @@ static NSString * const reuseIdentifier = @"Cell";
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake((self.screenSize.width-30)/4, 75.0f);
+    if ([self.type isEqualToString:@"background"]) {
+        return CGSizeMake(141.0f, 147.0f);
+    } else {
+        return CGSizeMake((self.screenSize.width-46)/4, 75.0f);
+    }
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionCell" forIndexPath:indexPath];
     UILabel *label = (UILabel*)[headerView viewWithTag:1];
-    label.text = [[[[[self.fetchedResultsController sections][indexPath.section] name] stringByReplacingOccurrencesOfString:@"Shirts" withString:@""] stringByReplacingOccurrencesOfString:@"Skins" withString:@""] uppercaseString];
+    label.text = [[[[[[self.fetchedResultsController sections][indexPath.section] name] stringByReplacingOccurrencesOfString:@"Shirts" withString:@""] stringByReplacingOccurrencesOfString:@"Skins" withString:@""] stringByReplacingOccurrencesOfString:@"backgrounds" withString:@""] uppercaseString];
     HRPGPurchaseButton *purchaseButton = (HRPGPurchaseButton*)[headerView viewWithTag:2];
     BOOL purchasable = NO;
     NSString *setString = @"";
@@ -87,9 +98,11 @@ static NSString * const reuseIdentifier = @"Cell";
         purchaseButton.hidden = false;
         [purchaseButton addTarget:self action:@selector(purchaseSet:) forControlEvents:UIControlEventTouchUpInside];
         purchaseButton.setPath = setString;
+        [purchaseButton setTitle:[NSString stringWithFormat:NSLocalizedString(@" Unlock Set for %@ Gems ", nil), self.setPrice] forState:UIControlStateNormal];
     } else {
         purchaseButton.hidden = true;
     }
+    
     return headerView;
 }
 
@@ -224,7 +237,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)purchaseSet:(HRPGPurchaseButton *)button {
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"This set can be purchased for 5 Gems", nil) delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Purchase for 5 Gems", nil), nil];
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"This set can be purchased for %@ Gems", nil), self.setPrice] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:NSLocalizedString(@"Purchase for %@ Gems", nil), self.setPrice], nil];
     popup.tag = 2;
     [popup showInView:[UIApplication sharedApplication].keyWindow];
     self.selectedSetPath = button.setPath;

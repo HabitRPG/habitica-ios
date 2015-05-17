@@ -874,6 +874,25 @@ NSString *currentUser;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:questMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"quests" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
+    RKEntityMapping *backgroundMapping = [RKEntityMapping mappingForEntityForName:@"Customization" inManagedObjectStore:managedObjectStore];
+    backgroundMapping.forceCollectionMapping = YES;
+    [backgroundMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"name"];
+    [backgroundMapping addAttributeMappingsFromDictionary:@{
+                                                        @"(name).text" : @"text",
+                                                        @"(name).notes" : @"notes",}];
+    backgroundMapping.identificationAttributes = @[@"name", @"notes"];
+    RKDynamicMapping* dynamicMapping = [RKDynamicMapping new];
+    dynamicMapping.forceCollectionMapping = YES;
+    [dynamicMapping setObjectMappingForRepresentationBlock:^RKObjectMapping *(id representation) {
+        RKObjectMapping *testListMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+        [testListMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"setName"];
+        [testListMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"(setName)" toKeyPath:@"backgrounds" withMapping:backgroundMapping]];
+             
+        return testListMapping;
+    }];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:dynamicMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"backgrounds" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     RKEntityMapping *petMapping = [RKEntityMapping mappingForEntityForName:@"Pet" inManagedObjectStore:managedObjectStore];
     petMapping.forceCollectionMapping = YES;
     [petMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
@@ -989,6 +1008,15 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/content" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
+        for (NSDictionary *dict in [mappingResult dictionary][@"backgrounds"]) {
+            for (Customization *background in dict[@"backgrounds"]) {
+                background.type = @"background";
+                background.set = dict[@"setName"];
+                background.price = [NSNumber numberWithInt:7];
+                //TODO: Figure out why it is necessary to save each background individually
+                [background.managedObjectContext saveToPersistentStore:&executeError];
+            }
+        }
         
         NSString *textPath = [[NSBundle mainBundle] pathForResource:@"customizations" ofType:@"json"];
         NSError *error;
