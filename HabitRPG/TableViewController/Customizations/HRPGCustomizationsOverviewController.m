@@ -211,15 +211,15 @@ NSIndexPath *selectedIndex;
     UILabel *detailLabel = (UILabel*)[cell viewWithTag:2];
     detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     UIImageView *imageView = (UIImageView*)[cell viewWithTag:3];
-    if (searchedCustomization) {
-        detailLabel.text = searchedCustomization.name;
+    if (searchedCustomization && ![searchedCustomization.name isEqualToString:@"0"]) {
+        detailLabel.text = [searchedCustomization.name capitalizedString];
         detailLabel.textColor = [UIColor blackColor];
         imageView.contentMode = UIViewContentModeBottomRight;
         [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@.png", [searchedCustomization getImageNameForUser:self.user]]]
                      placeholderImage:[UIImage imageNamed:@"Placeholder"]];
         imageView.alpha = 1.0;
     } else {
-        detailLabel.text = NSLocalizedString(@"Nothing Equipped", nil);
+        detailLabel.text = NSLocalizedString(@"Nothing Set", nil);
         detailLabel.textColor = [UIColor grayColor];
         [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/head_0.png"]
                      placeholderImage:[UIImage imageNamed:@"Placeholder"]];

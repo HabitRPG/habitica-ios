@@ -37,7 +37,11 @@
             return @"head_0";
         }
         if ([self.group isEqualToString:@"color"]) {
-            return [NSString stringWithFormat:@"hair_bangs_%@_%@", user.hairBangs, self.name];
+            if ([user.hairBangs isEqualToString:@"0"]) {
+                return [NSString stringWithFormat:@"hair_bangs_1_%@", self.name];
+            } else {
+                return [NSString stringWithFormat:@"hair_bangs_%@_%@", user.hairBangs, self.name];
+            }
         } else if ([self.group isEqualToString:@"flower"]) {
                 return [NSString stringWithFormat:@"hair_flower_%@", self.name];
         } else {
