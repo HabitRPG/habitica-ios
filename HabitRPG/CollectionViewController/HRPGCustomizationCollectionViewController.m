@@ -12,6 +12,7 @@
 #import "HRPGAppDelegate.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "Customization.h"
+#import "HRPGPurchaseButton.h"
 
 @interface HRPGCustomizationCollectionViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -21,6 +22,7 @@
 @property HRPGActivityIndicator *activityIndicator;
 @property CGSize screenSize;
 @property Customization *selectedCustomization;
+@property NSString *selectedSetPath;
 @end
 
 @implementation HRPGCustomizationCollectionViewController
@@ -70,7 +72,24 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionCell" forIndexPath:indexPath];
     UILabel *label = (UILabel*)[headerView viewWithTag:1];
-    label.text = [[self.fetchedResultsController sections][indexPath.section] name];
+    label.text = [[[[[self.fetchedResultsController sections][indexPath.section] name] stringByReplacingOccurrencesOfString:@"Shirts" withString:@""] stringByReplacingOccurrencesOfString:@"Skins" withString:@""] uppercaseString];
+    HRPGPurchaseButton *purchaseButton = (HRPGPurchaseButton*)[headerView viewWithTag:2];
+    BOOL purchasable = NO;
+    NSString *setString = @"";
+    for (Customization *customization in [[self.fetchedResultsController sections][indexPath.section] objects]) {
+        if ([customization.purchasable boolValue] && ![customization.purchased boolValue]){
+            purchasable = YES;
+        }
+        setString = [setString stringByAppendingFormat:@"%@,", [customization getPath]];
+    }
+    setString = [setString stringByPaddingToLength:setString.length-1 withString:nil startingAtIndex:0];
+    if (purchasable) {
+        purchaseButton.hidden = false;
+        [purchaseButton addTarget:self action:@selector(purchaseSet:) forControlEvents:UIControlEventTouchUpInside];
+        purchaseButton.setPath = setString;
+    } else {
+        purchaseButton.hidden = true;
+    }
     return headerView;
 }
 
@@ -94,7 +113,7 @@ static NSString * const reuseIdentifier = @"Cell";
     Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     if (![customization.purchased boolValue] && [customization.price integerValue] > 0) {
-        titleString = [NSString stringWithFormat:NSLocalizedString(@"This item cam be purchased for %@ Gems", nil), customization.price];
+        titleString = [NSString stringWithFormat:NSLocalizedString(@"This item can be purchased for %@ Gems", nil), customization.price];
         actionString = [NSString stringWithFormat:NSLocalizedString(@"Purchase for %@ Gems", nil), customization.price];
         tag = 1;
     }
@@ -190,10 +209,25 @@ static NSString * const reuseIdentifier = @"Cell";
                 }];
             }
             break;
+        case 2:
+            if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
+                [self.sharedManager unlockPath:self.selectedSetPath onSuccess:^() {
+                    [self.collectionView reloadData];
+                }onError:^() {
+                }];
+            }
+            break;
         default:
             break;
     }
 
+}
+
+- (void)purchaseSet:(HRPGPurchaseButton *)button {
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"This set can be purchased for 5 Gems", nil) delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Purchase for 5 Gems", nil), nil];
+    popup.tag = 2;
+    [popup showInView:[UIApplication sharedApplication].keyWindow];
+    self.selectedSetPath = button.setPath;
 }
 
 -(void)addActivityCounter {

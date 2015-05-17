@@ -33,7 +33,11 @@ NSIndexPath *selectedIndex;
 - (void)viewWillAppear:(BOOL)animated {
     NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
     if (tableSelection) {
-        [self.tableView reloadRowsAtIndexPaths:@[tableSelection] withRowAnimation:UITableViewRowAnimationAutomatic];
+        if (tableSelection.section == 1) {
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+        } else {
+            [self.tableView reloadRowsAtIndexPaths:@[tableSelection] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
     }
     [super viewWillAppear:animated];
 }
