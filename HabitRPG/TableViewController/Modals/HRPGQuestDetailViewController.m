@@ -11,7 +11,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRPGQuestDetailViewController ()
-@property HRPGManager *sharedManager;
 @property UIImage *bossImage;
 @end
 
@@ -19,9 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
-    _sharedManager = appdelegate.sharedManager;
     if (self.party.questKey != nil && ![self.party.questActive boolValue] && self.user.participateInQuest == nil) {
         self.navigationItem.title = NSLocalizedString(@"Quest Invitation", nil);
         self.navigationItem.rightBarButtonItem = nil;
@@ -88,7 +84,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 0) {
-        [_sharedManager acceptQuest:self.party.id withQuest:nil useForce:NO onSuccess:^(){
+        [self.sharedManager acceptQuest:self.party.id withQuest:nil useForce:NO onSuccess:^(){
 
         }                   onError:^(){
 
@@ -99,7 +95,7 @@
             [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
         }
     } else if (indexPath.section == 1 && indexPath.item == 1) {
-        [_sharedManager rejectQuest:self.party.id onSuccess:^(){
+        [self.sharedManager rejectQuest:self.party.id onSuccess:^(){
 
         }                   onError:^(){
 
@@ -138,16 +134,13 @@
     } else if (indexPath.section == 0 && indexPath.item == 1) {
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
         __weak UIImageView *imageView = (UIImageView*) [cell viewWithTag:1];
-        [manager downloadWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/quest_%@.png", self.quest.key]]
-                         options:0
-                        progress:^(NSInteger receivedSize, NSInteger expectedSize){}
-                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished){
-             if (image) {
-                 self.bossImage = image;
-                 [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-                 imageView.image = self.bossImage;
-             }
-         }];
+        [manager downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/quest_%@.png", self.quest.key]] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {} completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            if (image) {
+                self.bossImage = image;
+                [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                imageView.image = self.bossImage;
+            }
+        }];
         cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
     } else if (indexPath.section == 0 && indexPath.item == 2) {
         UITextView *textView = (UITextView *) [cell viewWithTag:1];
@@ -181,13 +174,13 @@
     if (buttonIndex == 1) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
         if ([self.party.questActive boolValue]) {
-            [_sharedManager abortQuest:self.party.id onSuccess:^(){
+            [self.sharedManager abortQuest:self.party.id onSuccess:^(){
                 [self.navigationController popViewControllerAnimated:YES];
             } onError:^(){
                 self.navigationItem.rightBarButtonItem.enabled = YES;
             }];
         } else {
-            [_sharedManager acceptQuest:self.party.id withQuest:nil useForce:YES onSuccess:^(){
+            [self.sharedManager acceptQuest:self.party.id withQuest:nil useForce:YES onSuccess:^(){
                 [self.navigationController popViewControllerAnimated:YES];
             } onError:^(){
                 self.navigationItem.rightBarButtonItem.enabled = YES;
