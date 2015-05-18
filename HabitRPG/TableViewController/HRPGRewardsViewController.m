@@ -204,13 +204,15 @@ User *user;
                         continue;
                     }
                 }
-                if (gear.index && [[inGameItemsArray lastObject] index] && ![gear.klass isEqualToString:@"special"]) {
-                    if (![[(Gear*)[inGameItemsArray lastObject] getCleanedClassName] isEqualToString:@"special"] && [[inGameItemsArray lastObject] index] < gear.index) {
-                        //filter gear with lower level
-                        continue;
-                    } else if ([[inGameItemsArray lastObject] index] > gear.index) {
-                        //remove last object if current one is of higher level
-                        [inGameItemsArray removeLastObject];
+                if ([[inGameItemsArray lastObject] isKindOfClass:[Gear class]]) {
+                    if (gear.index && [[inGameItemsArray lastObject] index] && ![gear.klass isEqualToString:@"special"]) {
+                        if (![[(Gear*)[inGameItemsArray lastObject] getCleanedClassName] isEqualToString:@"special"] && [[inGameItemsArray lastObject] index] < gear.index) {
+                            //filter gear with lower level
+                            continue;
+                        } else if ([[inGameItemsArray lastObject] index] > gear.index) {
+                            //remove last object if current one is of higher level
+                            [inGameItemsArray removeLastObject];
+                        }
                     }
                 }
                 [inGameItemsArray addObject:reward];
