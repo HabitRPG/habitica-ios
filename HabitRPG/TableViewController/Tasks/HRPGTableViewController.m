@@ -16,6 +16,7 @@
 #import "HRPGNavigationController.h"
 #import "HRPGImageOverlayManager.h"
 #import <POPSpringAnimation.h>
+#import "NSString+Emoji.h"
 
 @interface HRPGTableViewController ()
 @property NSString *readableName;
@@ -188,7 +189,7 @@ BOOL editable;
         task = [self.fetchedResultsController objectAtIndexPath:indexPath];
     }
     float width;
-    NSInteger height = 8;
+    NSInteger height = 30;
     if ([task.type isEqualToString:@"habit"]) {
         //50 for each button and 1 for seperator
         width = self.screenWidth - 117;
@@ -197,12 +198,12 @@ BOOL editable;
     } else {
         width = 270.0f;
     }
-    height = height + [task.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+    height = height + [[task.text stringByReplacingEmojiCheatCodesWithUnicode] boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                options:NSStringDrawingUsesLineFragmentOrigin
                                             attributes:@{
                                                     NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                             }
-                                               context:nil].size.height + 30;
+                                               context:nil].size.height;
     if (task.duedate) {
         height = height + 5;
     }
