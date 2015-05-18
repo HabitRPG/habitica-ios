@@ -361,6 +361,7 @@ NSString *currentUser;
             @"flags.dropsEnabled" : @"dropsEnabled",
             @"flags.itemsEnabled" : @"itemsEnabled",
             @"flags.classSelected" : @"selectedClass",
+            @"flags.communityGuidelinesAccepted" : @"acceptedCommunityGuidelines",
             @"purchased" : @"customizationsDictionary"
     }];
     entityMapping.identificationAttributes = @[@"id"];

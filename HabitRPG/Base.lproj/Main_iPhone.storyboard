@@ -854,7 +854,7 @@
                                         <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gS-Bt-nHD" customClass="HRPGProgressView">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <color key="backgroundColor" red="0.96470588235294119" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="tintColor" red="0.67843137254901964" green="0.15294117647058825" blue="0.17647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="0.77300000000000002" green="0.23499999999999999" blue="0.247" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50/100" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="bi5-cB-HoN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2009,9 +2009,6 @@
                                         <constraint firstAttribute="centerX" secondItem="gHF-kR-cZI" secondAttribute="centerX" id="v3v-0l-G9k"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="CHE-k4-ZCL" kind="modal" identifier="MessageSegue" id="06o-xE-UR2"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InnCell" id="Q8k-0X-faI">
                                 <rect key="frame" x="0.0" y="199" width="320" height="44"/>
@@ -2231,6 +2228,8 @@
                     <connections>
                         <segue destination="Gf0-o8-VUQ" kind="push" identifier="QuestDetailSegue" id="ctJ-Nf-hOd"/>
                         <segue destination="V3K-Ki-VTR" kind="push" identifier="UserProfileSegue" id="R7D-Cb-9Bi"/>
+                        <segue destination="J9J-7f-Nhb" kind="modal" identifier="GuidelineSegue" id="KP5-R0-x3S"/>
+                        <segue destination="CHE-k4-ZCL" kind="modal" identifier="MessageSegue" id="rPy-vD-2tO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n5R-Ol-NmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2865,6 +2864,87 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1wP-sg-JIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="541" y="6429"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="glw-qJ-sSQ">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="J9J-7f-Nhb" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EIy-Pb-DkX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Zzz-ta-O17" kind="relationship" relationship="rootViewController" id="uhr-mt-18Z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HOk-hd-Fxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="157" y="7015"/>
+        </scene>
+        <!--Guidelines View Controller-->
+        <scene sceneID="JuR-2Q-Lpm">
+            <objects>
+                <viewController id="Zzz-ta-O17" customClass="HRPGGGuidelinesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zHf-Gu-Tuu"/>
+                        <viewControllerLayoutGuide type="bottom" id="fyH-hZ-6Gu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZqY-XA-Cy1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7iA-qA-x1r">
+                                <rect key="frame" x="16" y="20" width="288" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="500" constant="47" id="7qw-vl-hJW"/>
+                                </constraints>
+                                <string key="text">If you would like to post messages in the Tavern or any party or guild chat, please first read our  Community Guidelines and then click "Accept Guidelines" button below to indicate that you accept them.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <webView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1g-Gb-YFZ">
+                                <rect key="frame" x="0.0" y="153" width="320" height="327"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2KW-Nw-AU7">
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="Back" id="3wT-JA-hE4">
+                                        <connections>
+                                            <segue destination="Kmk-uy-5Nc" kind="unwind" unwindAction="unwindToList:" id="yHw-an-h88"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="9DT-5S-mIX"/>
+                                    <barButtonItem title="Accept Guidelines" id="alT-a1-CTH">
+                                        <connections>
+                                            <segue destination="Kmk-uy-5Nc" kind="unwind" unwindAction="unwindToAcceptGuidelines:" id="UG4-sE-dXP"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7iA-qA-x1r" firstAttribute="trailing" secondItem="ZqY-XA-Cy1" secondAttribute="trailingMargin" id="48Z-kh-hDF"/>
+                            <constraint firstItem="2KW-Nw-AU7" firstAttribute="leading" secondItem="F1g-Gb-YFZ" secondAttribute="leading" id="7gN-Fk-zqo"/>
+                            <constraint firstItem="F1g-Gb-YFZ" firstAttribute="leading" secondItem="ZqY-XA-Cy1" secondAttribute="leadingMargin" constant="-16" id="DYn-iB-eSR"/>
+                            <constraint firstItem="fyH-hZ-6Gu" firstAttribute="top" secondItem="F1g-Gb-YFZ" secondAttribute="bottom" id="H2B-fE-Xdu"/>
+                            <constraint firstItem="7iA-qA-x1r" firstAttribute="top" secondItem="zHf-Gu-Tuu" secondAttribute="bottom" id="eI9-DN-EZ0"/>
+                            <constraint firstItem="2KW-Nw-AU7" firstAttribute="bottom" secondItem="fyH-hZ-6Gu" secondAttribute="top" id="lqz-zx-0xI"/>
+                            <constraint firstItem="7iA-qA-x1r" firstAttribute="leading" secondItem="ZqY-XA-Cy1" secondAttribute="leadingMargin" id="m57-sa-j7w"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="F1g-Gb-YFZ" secondAttribute="trailing" constant="-16" id="o5X-F2-Bk4"/>
+                            <constraint firstItem="2KW-Nw-AU7" firstAttribute="trailing" secondItem="F1g-Gb-YFZ" secondAttribute="trailing" id="tQ9-CL-Tqo"/>
+                            <constraint firstItem="F1g-Gb-YFZ" firstAttribute="top" secondItem="7iA-qA-x1r" secondAttribute="bottom" constant="8" id="wKX-CX-PyD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="DSD-gI-bJa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OyA-AU-ct0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Kmk-uy-5Nc" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="541" y="7015"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EKs-yn-VUc">
@@ -4078,13 +4158,13 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="aWZ-FG-z5O"/>
-        <segue reference="jeD-LQ-1O1"/>
         <segue reference="04Z-5H-zfF"/>
+        <segue reference="jeD-LQ-1O1"/>
         <segue reference="sPD-XR-ORt"/>
-        <segue reference="8EB-JX-S8a"/>
-        <segue reference="w8b-nU-BYs"/>
-        <segue reference="Bfo-Hm-DEG"/>
+        <segue reference="R7D-Cb-9Bi"/>
+        <segue reference="ctJ-Nf-hOd"/>
+        <segue reference="rPy-vD-2tO"/>
+        <segue reference="aWZ-FG-z5O"/>
         <segue reference="DAI-nh-Ljl"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.83723447709999999" green="0.65165280540000003" blue="0.23782126249999999" alpha="1" colorSpace="calibratedRGB"/>

@@ -247,7 +247,11 @@ ChatMessage *selectedMessage;
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
     } else if (indexPath.section != self.tableView.numberOfSections-1) {
-        [self performSegueWithIdentifier:@"MessageSegue" sender:self];
+        if ([[self.sharedManager getUser].acceptedCommunityGuidelines boolValue]) {
+            [self performSegueWithIdentifier:@"MessageSegue" sender:self];
+        } else {
+            [self performSegueWithIdentifier:@"GuidelineSegue" sender:self];
+        }
     } else {
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
             selectedMessage = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item-1 inSection:0]];
@@ -550,6 +554,14 @@ ChatMessage *selectedMessage;
 
 -(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
     return YES;
+}
+
+- (IBAction)unwindToAcceptGuidelines:(UIStoryboardSegue *)segue {
+    [self.sharedManager updateUser:@{@"flags.communityGuidelinesAccepted": [NSNumber numberWithBool:YES]} onSuccess:^() {
+        [self performSegueWithIdentifier:@"MessageSegue" sender:self];
+    }onError:^() {
+        
+    }];
 }
 
 @end

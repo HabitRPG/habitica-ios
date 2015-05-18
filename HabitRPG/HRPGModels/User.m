@@ -16,6 +16,7 @@
 
 @implementation User
 
+@dynamic acceptedCommunityGuidelines;
 @dynamic background;
 @dynamic balance;
 @dynamic blurb;

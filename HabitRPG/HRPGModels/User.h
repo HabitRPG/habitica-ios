@@ -13,6 +13,7 @@
 
 @interface User : NSManagedObject
 
+@property(nonatomic, retain) NSNumber *acceptedCommunityGuidelines;
 @property(nonatomic, retain) NSString *background;
 @property(nonatomic, retain) NSNumber *balance;
 @property(nonatomic, retain) NSString *blurb;
