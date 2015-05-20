@@ -105,6 +105,7 @@
 - (void)getAvatarImage:(void (^)(UIImage *))successBlock withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead withBackground:(BOOL)withBackground useForce:(BOOL)force {
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     HRPGManager *sharedManager = appdelegate.sharedManager;
+    /*
     NSString *cachedImageName;
     UIImage *cachedImage;
     if (withPetMount && !onlyHead) {
@@ -127,7 +128,7 @@
             return;
         }
     }
-    
+    */
     if (self.skin == nil) {
         return;
     }
@@ -402,7 +403,7 @@
         UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         successBlock(resultImage);
-        [sharedManager setCachedImage:resultImage withName:cachedImageName onSuccess:^() {
+        /*[sharedManager setCachedImage:resultImage withName:cachedImageName onSuccess:^() {
             if (withPetMount && !onlyHead) {
                 self.lastAvatarFull = [self.lastLogin copy];
             } else if (!withPetMount && !onlyHead) {
@@ -411,7 +412,7 @@
                 self.lastAvatarHead = [self.lastLogin copy];
             }
             self.lastImageGeneration = [NSDate date];
-        }];
+        }];*/
     });
 }
 
