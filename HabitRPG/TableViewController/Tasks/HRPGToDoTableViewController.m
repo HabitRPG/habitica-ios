@@ -129,6 +129,8 @@
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         checklistLabel.hidden = YES;
         cell.backgroundColor = [UIColor lightGrayColor];
+        checkBox.boxColor = [UIColor darkGrayColor];
+        checkBox.checkColor = [UIColor lightGrayColor];
         if ([item.completed boolValue]) {
             self.checkIconFactory.colors = @[[UIColor whiteColor]];
             label.textColor = [UIColor darkTextColor];
