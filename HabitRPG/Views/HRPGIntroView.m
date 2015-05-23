@@ -46,7 +46,7 @@
         
         EAIntroPage *habitPage = [EAIntroPage page];
         habitPage.title = NSLocalizedString(@"Habits", nil);
-        habitPage.desc = NSLocalizedString(@"1. To-Dos are your To-Do list!\n2. Check them off for gold and experience.\n3. Tap and HOLD to edit!.", nil);
+        habitPage.desc = NSLocalizedString(@"1. Track your habits many times a day!\n2. Good habits give you gold and experience.\n3. Bad habits reduce your health!", nil);
         habitPage.titleFont = titleFont;
         habitPage.descFont = font;
         habitPage.titlePositionY = titleY;
@@ -70,7 +70,8 @@
         
         EAIntroPage *todoPage = [EAIntroPage page];
         todoPage.title = NSLocalizedString(@"To-Dos", nil);
-                                           todoPage.desc = NSLocalizedString(@"1. Dailies are tasks that repeat once a day!\n2. Check them off every day for gold and experience.\n3. BE CAREFUL: If you skip a Daily, your avatar will lose health!.", nil);
+        todoPage.desc = NSLocalizedString(@"1. To-Dos are your To-Do list!\n2. Check them off for gold and experience.\n3. Tap and HOLD to edit!.", nil);
+
         todoPage.titleFont = titleFont;
         todoPage.descFont = font;
         todoPage.titlePositionY = titleY;
