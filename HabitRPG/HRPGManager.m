@@ -1248,6 +1248,11 @@ NSString *currentUser;
 
 
 - (void)upDownTask:(Task *)task direction:(NSString *)withDirection onSuccess:(void (^)(NSArray *valuesArray))successBlock onError:(void (^)())errorBlock {
+    if (task.id == nil || [task.id isEqualToString:@""]) {
+        //Task is not saved on the server yet. Sending a request now would create a new empty habit.
+        return;
+    }
+    
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@/%@", task.id, withDirection] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
