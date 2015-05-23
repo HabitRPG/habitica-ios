@@ -1984,7 +1984,7 @@ NSString *currentUser;
     }                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
             [self displayServerError];
-        } else if (operation.HTTPRequestOperation.response.statusCode == 502) {
+        } else if (!operation.HTTPRequestOperation.response || operation.HTTPRequestOperation.response.statusCode == 502) {
             [self fetchUser:^(){
                 NSError *executeError = nil;
                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
