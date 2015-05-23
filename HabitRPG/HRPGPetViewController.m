@@ -28,6 +28,7 @@
 @property UIBarButtonItem *navigationButton;
 @property HRPGActivityIndicator *activityIndicator;
 @property CGSize screenSize;
+@property NSString *equippedPetName;
 @end
 
 @implementation HRPGPetViewController
@@ -38,6 +39,7 @@
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
     self.managedObjectContext = self.sharedManager.getManagedObjectContext;
+    self.equippedPetName = [self.sharedManager getUser].currentPet;
 
     self.screenSize = [[UIScreen mainScreen] bounds].size;
 
@@ -153,6 +155,8 @@
     
     if (!pet.trained || [pet.trained integerValue] == -1) {
         equipString = nil;
+    } else if ([self.equippedPetName isEqualToString:pet.key]) {
+        equipString = NSLocalizedString(@"Unequip", nil);
     }
     if (pet.asMount) {
         feedString = nil;
@@ -277,6 +281,11 @@
     if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
         [self addActivityCounter];
         [self.sharedManager equipObject:self.selectedPet.key withType:@"pet" onSuccess:^() {
+            if ([self.equippedPetName isEqualToString:self.selectedPet.key]) {
+                self.equippedPetName = nil;
+            } else {
+                self.equippedPetName = self.selectedPet.key;
+            }
             [self removeActivityCounter];
         }onError:^() {
             [self removeActivityCounter];

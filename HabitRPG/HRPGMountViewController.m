@@ -25,6 +25,7 @@
 @property UIBarButtonItem *navigationButton;
 @property HRPGActivityIndicator *activityIndicator;
 @property CGSize screenSize;
+@property NSString *equippedMountName;
 @end
 
 @implementation HRPGMountViewController
@@ -35,6 +36,7 @@
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
     self.managedObjectContext = self.sharedManager.getManagedObjectContext;
+    self.equippedMountName = [self.sharedManager getUser].currentMount;
 
     self.screenSize = [[UIScreen mainScreen] bounds].size;
 
@@ -150,6 +152,8 @@
 
     if (!mount.asMount) {
         equipString = nil;
+    } else if ([self.equippedMountName isEqualToString:mount.key]) {
+        equipString = NSLocalizedString(@"Unmount", nil);
     }
 
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:[self niceMountName:mount] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:equipString, nil];
@@ -233,7 +237,11 @@
     if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
         [self addActivityCounter];
         [self.sharedManager equipObject:self.selectedMount.key withType:@"mount" onSuccess:^() {
-            [self removeActivityCounter];
+            if ([self.equippedMountName isEqualToString:self.selectedMount.key]) {
+                self.equippedMountName = nil;
+            } else {
+                self.equippedMountName = self.selectedMount.key;
+            }            [self removeActivityCounter];
         }onError:^() {
             [self removeActivityCounter];
         }];
