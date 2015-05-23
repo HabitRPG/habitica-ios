@@ -61,10 +61,14 @@ BOOL editable;
             predicate = [NSPredicate predicateWithFormat:@"type==%@", _typeName];
         }
     } else {
+        NSString *tagPredicate = @"";
+        for (Tag *tag in tabBarController.selectedTags) {
+            tagPredicate = [tagPredicate stringByAppendingFormat:@"&& tags CONTAINS '%@'", tag.id];
+        }
         if ([_typeName isEqual:@"todo"]) {
-            predicate = [NSPredicate predicateWithFormat:@"type=='todo' && completed==NO && ANY tags IN[cd] %@", tabBarController.selectedTags];
+            predicate = [NSPredicate predicateWithFormat:@"type=='todo' && completed==NO %K", tagPredicate];
         } else {
-            predicate = [NSPredicate predicateWithFormat:@"type==%@ && ANY tags IN[cd] %@", _typeName, tabBarController.selectedTags];
+            predicate = [NSPredicate predicateWithFormat:@"type==%@ && SUBQUERY(tags, $tag, $tag IN %@).@count = %d", _typeName, tabBarController.selectedTags, [tabBarController.selectedTags count]];
         }
     }
     return predicate;
