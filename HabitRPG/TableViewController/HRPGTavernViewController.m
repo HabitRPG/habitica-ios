@@ -192,8 +192,8 @@ ChatMessage *selectedMessage;
             }
             message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
         }
-        double rowHeight = [message.text boundingRectWithSize:CGSizeMake(280, MAXFLOAT)
-                                          options:NSStringDrawingUsesLineFragmentOrigin
+        double rowHeight = [message.text boundingRectWithSize:CGSizeMake(self.screenWidth-40, MAXFLOAT)
+                                          options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
                                        attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}
                                           context:nil].size.height + 61;
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
@@ -476,9 +476,9 @@ ChatMessage *selectedMessage;
         [attributedText ghf_applyAttributes:self.markdownAttributes];
         textLabel.attributedText = attributedText;
         
-        double rowHeight = [attributedText boundingRectWithSize:CGSizeMake(280, MAXFLOAT)
-                                                      options:NSStringDrawingUsesLineFragmentOrigin
-                                                      context:nil].size.height + 51;
+        double rowHeight = [attributedText boundingRectWithSize:CGSizeMake(self.screenWidth-40, MAXFLOAT)
+                                                      options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+                                                      context:nil].size.height + 61;
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
             self.rowHeights[indexPath.item-1] = [NSNumber numberWithDouble:rowHeight];
         } else {
