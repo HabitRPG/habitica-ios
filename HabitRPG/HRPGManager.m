@@ -2088,9 +2088,9 @@ NSString *currentUser;
     NSString *content;
     if (healthDiff > 0) {
         notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
-        content = [NSString stringWithFormat:@"Health: +%.1f\n Mana: %ld", healthDiff, (long) manaDiff];
+        content = [NSString stringWithFormat:@"Health: +%.1f\n Mana: -%ld", healthDiff, (long) manaDiff];
     } else {
-        content = [NSString stringWithFormat:@"Mana: %ld", (long) manaDiff];
+        content = [NSString stringWithFormat:@"Mana: -%ld", (long) manaDiff];
     }
     NSDictionary *options = @{kCRToastTextKey : content,
             kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
