@@ -1304,7 +1304,13 @@ NSString *currentUser;
             }
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock(@[healthDiff, expDiff, user.gold, user.health, user.experience, user.nextLevel]);
+        NSNumber *nextLevel;
+        if (user.nextLevel) {
+            nextLevel = user.nextLevel;
+        } else {
+            nextLevel = [NSNumber numberWithInt:0];
+        }
+        successBlock(@[healthDiff, expDiff, user.gold, user.health, user.experience, nextLevel]);
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
