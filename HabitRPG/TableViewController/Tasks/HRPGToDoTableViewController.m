@@ -115,6 +115,8 @@
         checkBox = [[HRPGCheckBoxView alloc] initWithFrame:CGRectMake(0, 0, 50, cell.frame.size.height)];
         checkBox.tag = 3;
         [cell.contentView addSubview:checkBox];
+    } else {
+        checkBox.frame = CGRectMake(0, 0, 50, cell.frame.size.height);
     }
     
     Task *task = [self taskAtIndexPath:indexPath];

@@ -322,11 +322,13 @@ BOOL editable;
             break;
 
         case NSFetchedResultsChangeDelete: {
-            if (indexPath.section == self.openedIndexPath.section && indexPath.item == self.openedIndexPath.item) {
-                Task *task = [self taskAtIndexPath:indexPath];
-                [tableView deleteRowsAtIndexPaths:[self checklistitemIndexPathsForTask:task atIndexPath:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                self.openedIndexPath = nil;
-                self.indexOffset = 0;
+            if (self.openedIndexPath) {
+                if (indexPath.section == self.openedIndexPath.section && indexPath.item == self.openedIndexPath.item) {
+                    Task *task = [self taskAtIndexPath:indexPath];
+                    [tableView deleteRowsAtIndexPaths:[self checklistitemIndexPathsForTask:task atIndexPath:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                    self.openedIndexPath = nil;
+                    self.indexOffset = 0;
+                }
             }
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
@@ -401,13 +403,17 @@ BOOL editable;
 
 - (Task*)taskAtIndexPath:(NSIndexPath*)indexPath {
     if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
-        return [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
+        indexPath = [NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section];
     } else if (self.openedIndexPath.item + self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
-        return [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
         indexPath = self.openedIndexPath;
-    } else {
-        return[self.fetchedResultsController objectAtIndexPath:indexPath];
     }
+    if (self.fetchedResultsController.sections.count > indexPath.section) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][indexPath.section];
+        if ([sectionInfo numberOfObjects] > indexPath.item) {
+            return [self.fetchedResultsController objectAtIndexPath:indexPath];
+        }
+    }
+    return nil;
 }
 
 - (NSArray*)checklistitemIndexPathsForTask:(Task*)task atIndexPath:(NSIndexPath*)indexPath {
