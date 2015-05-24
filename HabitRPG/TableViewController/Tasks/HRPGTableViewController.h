@@ -15,11 +15,11 @@
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue;
 
--(void) collapseOpenedIndexPath;
-
 - (UIView *)viewWithIcon:(UIImage *)image;
 
-- (void) tableView:(UITableView *)tableView expandCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+- (void) tableView:(UITableView *)tableView expandTaskAtIndexPath:(NSIndexPath *)indexPath;
+
+- (Task*) taskAtIndexPath:(NSIndexPath*)indexPath;
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 - (NSPredicate*) getPredicate;

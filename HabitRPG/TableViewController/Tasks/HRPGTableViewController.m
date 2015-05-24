@@ -42,7 +42,7 @@ BOOL editable;
 
 - (void)refresh {
     if (self.openedIndexPath) {
-        [self collapseOpenedIndexPath];
+        [self tableView:self.tableView expandTaskAtIndexPath:self.openedIndexPath];
     }
     [self.sharedManager fetchUser:^() {
         [self.refreshControl endRefreshing];
@@ -120,14 +120,7 @@ BOOL editable;
     }
     
     NSString *cellname = @"Cell";
-    Task *task;
-    if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
-        task = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
-    } else if (self.openedIndexPath.item + self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
-        task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
-    } else {
-        task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    }
+    Task *task = [self taskAtIndexPath:indexPath];
     if ([task.checklist count] > 0) {
         if (task.duedate) {
             cellname = @"SubChecklistCell";
@@ -183,24 +176,16 @@ BOOL editable;
         return 44;
     }
     
-    Task *task;
-    if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
-        task = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
-    } else if (self.openedIndexPath.item + self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
-        task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
-        indexPath = self.openedIndexPath;
-    } else {
-        task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    }
+    Task *task = [self taskAtIndexPath:indexPath];
     float width;
     NSInteger height = 30;
     if ([task.type isEqualToString:@"habit"]) {
         //50 for each button and 1 for seperator
         width = self.screenWidth - 117;
     } else if ([task.checklist count] > 0) {
-        width = 210.0f;
+        width = self.screenWidth - 110;
     } else {
-        width = 270.0f;
+        width = self.screenWidth - 50;
     }
     height = height + [[task.text stringByReplacingEmojiCheatCodesWithUnicode] boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                options:NSStringDrawingUsesLineFragmentOrigin
@@ -220,25 +205,11 @@ BOOL editable;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    editedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    editedTask = [self taskAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"FormSegue" sender:self];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)collapseOpenedIndexPath {
-    Task *oldTask = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
-    NSNumber *oldChecklistCount = [oldTask valueForKeyPath:@"checklist.@count"];
-
-    NSMutableArray *deleteArray = [[NSMutableArray alloc] init];
-    for (int i = 1; i <= [oldChecklistCount integerValue]; i++) {
-        [deleteArray addObject:[NSIndexPath indexPathForItem:self.openedIndexPath.item + i inSection:self.openedIndexPath.section]];
-    }
-    NSIndexPath *tempPath = self.openedIndexPath;
-    self.openedIndexPath = nil;
-    self.indexOffset = 0;
-    [self configureCell:[self.tableView cellForRowAtIndexPath:tempPath] atIndexPath:tempPath withAnimation:YES];
-    [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationBottom];
-}
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
     if ([segue.identifier isEqualToString:@"UnwindTagSegue"]) {
@@ -350,9 +321,16 @@ BOOL editable;
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
 
-        case NSFetchedResultsChangeDelete:
+        case NSFetchedResultsChangeDelete: {
+            if (indexPath.section == self.openedIndexPath.section && indexPath.item == self.openedIndexPath.item) {
+                Task *task = [self taskAtIndexPath:indexPath];
+                [tableView deleteRowsAtIndexPaths:[self checklistitemIndexPathsForTask:task atIndexPath:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                self.openedIndexPath = nil;
+                self.indexOffset = 0;
+            }
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
+        }
 
         case NSFetchedResultsChangeUpdate:
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
@@ -381,7 +359,7 @@ BOOL editable;
     return imageView;
 }
 
-- (void) tableView:(UITableView *)tableView expandCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void) tableView:(UITableView *)tableView expandTaskAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section > [self.fetchedResultsController sections].count-1) {
         return;
     }
@@ -390,43 +368,54 @@ BOOL editable;
         return;
     }
     
-    Task *task;
-    if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
-        task = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
-    } else if (self.openedIndexPath.item + self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
-        task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
-        indexPath = self.openedIndexPath;
-    } else {
-        task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    }
+    Task *task = [self taskAtIndexPath:indexPath];
     
-    NSNumber *checklistCount = [NSNumber numberWithInteger:[task.checklist count]];
     if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
         NSIndexPath *tempPath = self.openedIndexPath;
         self.openedIndexPath = nil;
         self.indexOffset = 0;
         [self configureCell:[tableView cellForRowAtIndexPath:tempPath] atIndexPath:tempPath withAnimation:YES];
-        NSMutableArray *deleteArray = [[NSMutableArray alloc] init];
-        for (int i = 1; i <= [checklistCount integerValue]; i++) {
-            [deleteArray addObject:[NSIndexPath indexPathForItem:indexPath.item + i inSection:self.openedIndexPath.section]];
-        }
-        [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:[self checklistitemIndexPathsForTask:task atIndexPath:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView endUpdates];
     } else {
         if (self.openedIndexPath) {
-            [self collapseOpenedIndexPath];
-        }
-        if ([checklistCount integerValue] > 0) {
-            self.openedIndexPath = indexPath;
-            self.indexOffset = (int) [checklistCount integerValue];
-            NSMutableArray *insertArray = [[NSMutableArray alloc] init];
-            for (int i = 1; i <= [checklistCount integerValue]; i++) {
-                [insertArray addObject:[NSIndexPath indexPathForItem:self.openedIndexPath.item + i inSection:self.openedIndexPath.section]];
+            if (indexPath.section == self.openedIndexPath.section && indexPath.item > self.openedIndexPath.item) {
+                indexPath = [NSIndexPath indexPathForItem:indexPath.item-self.indexOffset inSection:indexPath.section];
             }
+            [self.tableView beginUpdates];
+            [self tableView:tableView expandTaskAtIndexPath:self.openedIndexPath];
+            [self.tableView endUpdates];
+        }
+        if ([task.checklist count] > 0) {
+            self.openedIndexPath = indexPath;
+            self.indexOffset = (int) [task.checklist count];
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
-            [self.tableView insertRowsAtIndexPaths:insertArray withRowAnimation:UITableViewRowAnimationTop];
+            [self.tableView beginUpdates];
+            [self.tableView insertRowsAtIndexPaths:[self checklistitemIndexPathsForTask:task atIndexPath:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+            [self.tableView endUpdates];
         }
     }
 
+}
+
+- (Task*)taskAtIndexPath:(NSIndexPath*)indexPath {
+    if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
+        return [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section]];
+    } else if (self.openedIndexPath.item + self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
+        return [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
+        indexPath = self.openedIndexPath;
+    } else {
+        return[self.fetchedResultsController objectAtIndexPath:indexPath];
+    }
+}
+
+- (NSArray*)checklistitemIndexPathsForTask:(Task*)task atIndexPath:(NSIndexPath*)indexPath {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int i = 1; i <= task.checklist.count; i++) {
+        [array addObject:[NSIndexPath indexPathForItem:indexPath.item + i inSection:indexPath.section]];
+    }
+    return array;
 }
 
 

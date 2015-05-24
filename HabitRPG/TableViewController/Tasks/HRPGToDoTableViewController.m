@@ -117,8 +117,9 @@
         [cell.contentView addSubview:checkBox];
     }
     
+    Task *task = [self taskAtIndexPath:indexPath];
+    
     if (self.openedIndexPath && self.openedIndexPath.item < indexPath.item && indexPath.item <= (self.openedIndexPath.item + self.indexOffset)) {
-        Task *task = [self.fetchedResultsController objectAtIndexPath:self.openedIndexPath];
         int currentOffset = (int) (indexPath.item - self.openedIndexPath.item - 1);
         
         ChecklistItem *item;
@@ -162,10 +163,6 @@
         }
         
     } else {
-        if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
-            indexPath = [NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section];
-        }
-        Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
         label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];
@@ -333,8 +330,7 @@
 - (void) expandSelectedCell:(UITapGestureRecognizer*)gesture {
     CGPoint p = [gesture locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    [self tableView:self.tableView expandCell:cell atIndexPath:indexPath];
+    [self tableView:self.tableView expandTaskAtIndexPath:indexPath];
 }
 
 @end
