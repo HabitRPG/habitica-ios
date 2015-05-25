@@ -882,7 +882,7 @@
 						TestTargetID = D9EB4E8A18CB4A9400BB2094;
 					};
 					D9EB4E8A18CB4A9400BB2094 = {
-						DevelopmentTeam = 9Q9SMRMCNN;
+						DevelopmentTeam = 532C46PK7T;
 					};
 				};
 			};
