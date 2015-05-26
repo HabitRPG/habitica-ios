@@ -62,7 +62,6 @@
         if ([visibleView isKindOfClass:[HRPGTableViewController class]]) {
             viewController = (HRPGTableViewController *) visibleView;
             [viewController.refreshControl beginRefreshing];
-            [viewController.tableView setContentOffset:CGPointMake(0, -viewController.topLayoutGuide.length) animated:YES];
         }
         [self.sharedManager fetchUser:^() {
             if (viewController) {
