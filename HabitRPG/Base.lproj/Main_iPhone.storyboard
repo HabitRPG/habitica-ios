@@ -39,7 +39,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" editingAccessoryType="disclosureIndicator" id="voZ-I6-F5G" customClass="HRPGSwipeTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" editingAccessoryType="disclosureIndicator" id="voZ-I6-F5G">
                                 <rect key="frame" x="0.0" y="86" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="voZ-I6-F5G" id="6EL-SK-ylq">
@@ -127,7 +127,7 @@
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyCell" editingAccessoryType="disclosureIndicator" textLabel="Av9-d1-q9n" style="IBUITableViewCellStyleDefault" id="FNd-uL-wwy" customClass="HRPGSwipeTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyCell" editingAccessoryType="disclosureIndicator" textLabel="Av9-d1-q9n" style="IBUITableViewCellStyleDefault" id="FNd-uL-wwy">
                                 <rect key="frame" x="0.0" y="266" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FNd-uL-wwy" id="wRg-gQ-Ryi">
@@ -177,7 +177,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="42" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChecklistCell" editingAccessoryType="disclosureIndicator" id="N5p-4F-k2O" customClass="HRPGSwipeTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChecklistCell" editingAccessoryType="disclosureIndicator" id="N5p-4F-k2O">
                                 <rect key="frame" x="0.0" y="86" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N5p-4F-k2O" id="rmb-Zq-WLv">
@@ -235,7 +235,7 @@
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" editingAccessoryType="disclosureIndicator" id="VY2-vv-FYw" customClass="HRPGSwipeTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" editingAccessoryType="disclosureIndicator" id="VY2-vv-FYw">
                                 <rect key="frame" x="0.0" y="146" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VY2-vv-FYw" id="ziI-61-Jot">
@@ -279,7 +279,7 @@
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyCell" editingAccessoryType="disclosureIndicator" textLabel="jHK-TE-zgG" style="IBUITableViewCellStyleDefault" id="0MY-oD-5od" customClass="HRPGSwipeTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyCell" editingAccessoryType="disclosureIndicator" textLabel="jHK-TE-zgG" style="IBUITableViewCellStyleDefault" id="0MY-oD-5od">
                                 <rect key="frame" x="0.0" y="266" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0MY-oD-5od" id="64o-IQ-j5i">
@@ -328,7 +328,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" editingAccessoryType="disclosureIndicator" id="rnR-62-tCR" customClass="HRPGSwipeTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" editingAccessoryType="disclosureIndicator" id="rnR-62-tCR">
                                 <rect key="frame" x="0.0" y="86" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rnR-62-tCR" id="M0K-Hr-qsm">
@@ -361,7 +361,7 @@
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChecklistCell" editingAccessoryType="disclosureIndicator" id="Qwe-jN-a2T" customClass="HRPGSwipeTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChecklistCell" editingAccessoryType="disclosureIndicator" id="Qwe-jN-a2T">
                                 <rect key="frame" x="0.0" y="146" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qwe-jN-a2T" id="ibv-iu-Gv4">
@@ -406,7 +406,7 @@
                                 </tableViewCellContentView>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubChecklistCell" editingAccessoryType="disclosureIndicator" id="NoV-QG-cbC" customClass="HRPGSwipeTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubChecklistCell" editingAccessoryType="disclosureIndicator" id="NoV-QG-cbC">
                                 <rect key="frame" x="0.0" y="206" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NoV-QG-cbC" id="kRS-Hl-kdQ">
@@ -463,7 +463,7 @@
                                 </tableViewCellContentView>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubCell" editingAccessoryType="disclosureIndicator" id="Wiy-qg-gM4" customClass="HRPGSwipeTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubCell" editingAccessoryType="disclosureIndicator" id="Wiy-qg-gM4">
                                 <rect key="frame" x="0.0" y="266" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wiy-qg-gM4" id="g8j-If-bOq">
@@ -507,7 +507,7 @@
                                 </tableViewCellContentView>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyCell" editingAccessoryType="disclosureIndicator" textLabel="rRE-Ue-tyN" style="IBUITableViewCellStyleDefault" id="Rbs-eI-MDW" customClass="HRPGSwipeTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyCell" editingAccessoryType="disclosureIndicator" textLabel="rRE-Ue-tyN" style="IBUITableViewCellStyleDefault" id="Rbs-eI-MDW">
                                 <rect key="frame" x="0.0" y="266" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rbs-eI-MDW" id="JTZ-uo-AJY">
@@ -2901,7 +2901,7 @@
                                 </constraints>
                                 <string key="text">If you would like to post messages in the Tavern or any party or guild chat, please first read our  Community Guidelines and then click "Accept Guidelines" button below to indicate that you accept them.</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <webView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1g-Gb-YFZ">
@@ -4158,14 +4158,14 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="04Z-5H-zfF"/>
-        <segue reference="jeD-LQ-1O1"/>
+        <segue reference="E5i-VS-PGN"/>
+        <segue reference="njg-A8-lDq"/>
         <segue reference="sPD-XR-ORt"/>
-        <segue reference="ctJ-Nf-hOd"/>
+        <segue reference="aWZ-FG-z5O"/>
         <segue reference="R7D-Cb-9Bi"/>
+        <segue reference="ctJ-Nf-hOd"/>
         <segue reference="rPy-vD-2tO"/>
         <segue reference="DAI-nh-Ljl"/>
-        <segue reference="aWZ-FG-z5O"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.83723447709999999" green="0.65165280540000003" blue="0.23782126249999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

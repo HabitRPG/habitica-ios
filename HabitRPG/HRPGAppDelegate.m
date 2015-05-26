@@ -66,12 +66,10 @@
         [self.sharedManager fetchUser:^() {
             if (viewController) {
                 [viewController.refreshControl endRefreshing];
-                [viewController.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
             }
         }                 onError:^() {
             if (viewController) {
                 [viewController.refreshControl endRefreshing];
-                [viewController.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
             }
         }];
     }

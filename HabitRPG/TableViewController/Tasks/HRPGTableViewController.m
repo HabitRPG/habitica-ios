@@ -9,7 +9,6 @@
 #import "HRPGTableViewController.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGFormViewController.h"
-#import "HRPGSwipeTableViewCell.h"
 #import "Tag.h"
 #import "HRPGTagViewController.h"
 #import "HRPGTabBarController.h"
@@ -128,9 +127,7 @@ BOOL editable;
             cellname = @"SubCell";
         }
     }
-    HRPGSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
-    [cell setDefaultColor:[UIColor lightGrayColor]];
-    cell.taskType = [task.type substringToIndex:1];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
 
     UIView *whitespaceView = [cell viewWithTag:6];
     NSLayoutConstraint *whiteSpaceHeightConstraint;
@@ -200,7 +197,10 @@ BOOL editable;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    indexPath = [self indexPathWithOffset:indexPath];
+    if (indexPath == self.openedIndexPath) {
+        [self tableView:tableView expandTaskAtIndexPath:self.openedIndexPath];
+    }
     editedTask = [self taskAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"FormSegue" sender:self];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -312,9 +312,13 @@ BOOL editable;
       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
 
+
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            if (self.openedIndexPath) {
+                [self tableView:tableView expandTaskAtIndexPath:self.openedIndexPath];
+            }
+            [tableView insertRowsAtIndexPaths:@[[self indexPathWithOffset:newIndexPath]] withRowAnimation:UITableViewRowAnimationFade];
             break;
 
         case NSFetchedResultsChangeDelete: {
@@ -326,15 +330,18 @@ BOOL editable;
                     self.indexOffset = 0;
                 }
             }
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView deleteRowsAtIndexPaths:@[[self indexPathWithOffset:indexPath]] withRowAnimation:UITableViewRowAnimationFade];
             break;
         }
 
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
+            [self configureCell:[tableView cellForRowAtIndexPath:[self indexPathWithOffset:indexPath]] atIndexPath:indexPath withAnimation:YES];
             break;
 
         case NSFetchedResultsChangeMove:
+            if (self.openedIndexPath) {
+                [self tableView:tableView expandTaskAtIndexPath:self.openedIndexPath];
+            }
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
@@ -394,7 +401,16 @@ BOOL editable;
             [self.tableView endUpdates];
         }
     }
+}
 
+- (NSIndexPath*)indexPathWithOffset:(NSIndexPath*) indexPath {
+    if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
+        return [NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section];
+    } else if (self.openedIndexPath.item + self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
+        return self.openedIndexPath;
+    } else {
+        return indexPath;
+    }
 }
 
 - (Task*)taskAtIndexPath:(NSIndexPath*)indexPath {

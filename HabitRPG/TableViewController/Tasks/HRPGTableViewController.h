@@ -20,6 +20,7 @@
 - (void) tableView:(UITableView *)tableView expandTaskAtIndexPath:(NSIndexPath *)indexPath;
 
 - (Task*) taskAtIndexPath:(NSIndexPath*)indexPath;
+- (NSIndexPath*)indexPathWithOffset:(NSIndexPath*) indexPath;
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 - (NSPredicate*) getPredicate;

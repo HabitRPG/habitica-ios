@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D908B3831903515B00D32A75 /* HRPGSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D908B3821903515B00D32A75 /* HRPGSwipeTableViewCell.m */; };
 		D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03619D60421001EABE4 /* HabitIntro.png */; };
 		D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03919D60B53001EABE4 /* DailyIntro.png */; };
 		D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03A19D60B53001EABE4 /* TodoIntro.png */; };
@@ -146,8 +145,6 @@
 /* Begin PBXFileReference section */
 		A12B817AF1713BF5BCB7F702 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A8C64F7451C560A6BB881198 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		D908B3811903515B00D32A75 /* HRPGSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSwipeTableViewCell.h; sourceTree = "<group>"; };
-		D908B3821903515B00D32A75 /* HRPGSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSwipeTableViewCell.m; sourceTree = "<group>"; };
 		D90EA03619D60421001EABE4 /* HabitIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabitIntro.png; sourceTree = "<group>"; };
 		D90EA03919D60B53001EABE4 /* DailyIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DailyIntro.png; sourceTree = "<group>"; };
 		D90EA03A19D60B53001EABE4 /* TodoIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TodoIntro.png; sourceTree = "<group>"; };
@@ -606,8 +603,6 @@
 				D9884B4419168AF00078BC7C /* HRPGProgressView.m */,
 				D9C0002E1928F83E003D4E4C /* HRPGRoundProgressView.h */,
 				D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */,
-				D908B3811903515B00D32A75 /* HRPGSwipeTableViewCell.h */,
-				D908B3821903515B00D32A75 /* HRPGSwipeTableViewCell.m */,
 				D9660D761AB248030084CE37 /* HRPGUserTopHeader.h */,
 				D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */,
 				D9A28F701B08DF58002907E0 /* HRPGPurchaseButton.h */,
@@ -1074,7 +1069,6 @@
 				D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */,
 				D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */,
 				D97C71E118ECA7050089FDC6 /* ChatMessage.m in Sources */,
-				D908B3831903515B00D32A75 /* HRPGSwipeTableViewCell.m in Sources */,
 				D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */,
 				D97CCDB619A51EED00DA128A /* GHFMarkdown.m in Sources */,
 				D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */,

@@ -9,7 +9,6 @@
 #import "HRPGHabitTableViewController.h"
 #import "Task.h"
 #import "HRPGManager.h"
-#import "MCSwipeTableViewCell.h"
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 #import "NSString+Emoji.h"
@@ -68,7 +67,7 @@
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
-- (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     [cell setSeparatorInset:UIEdgeInsetsZero];
     // Prevent the cell from inheriting the Table View's margin settings
     if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {

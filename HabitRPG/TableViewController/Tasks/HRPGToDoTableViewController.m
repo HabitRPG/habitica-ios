@@ -11,7 +11,6 @@
 #import "HRPGManager.h"
 #import "ChecklistItem.h"
 #import "MCSwipeTableViewCell.h"
-#import "HRPGSwipeTableViewCell.h"
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 #import "NSString+Emoji.h"
@@ -107,7 +106,7 @@
     return nil;
 }
 
-- (void)configureCell:(MCSwipeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     UILabel *checklistLabel = (UILabel *) [cell viewWithTag:2];
     UILabel *label = (UILabel *) [cell viewWithTag:1];
     HRPGCheckBoxView *checkBox = (HRPGCheckBoxView *) [cell viewWithTag:3];
@@ -142,6 +141,8 @@
                 [self addActivityCounter];
                 [self.sharedManager updateTask:task onSuccess:^() {
                     [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                    NSIndexPath *taskPath = [self indexPathWithOffset:indexPath];
+                    [self configureCell:[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
                     [self removeActivityCounter];
                 }                      onError:^() {
                     [self removeActivityCounter];
@@ -155,6 +156,8 @@
                 [self addActivityCounter];
                 [self.sharedManager updateTask:task onSuccess:^() {
                     [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                    NSIndexPath *taskPath = [self indexPathWithOffset:indexPath];
+                    [self configureCell:[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
                     [self removeActivityCounter];
                 }                      onError:^() {
                     [self removeActivityCounter];
