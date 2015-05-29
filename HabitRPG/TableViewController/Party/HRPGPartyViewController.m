@@ -293,7 +293,11 @@ ChatMessage *selectedMessage;
     if (indexPath.section == 0 && indexPath.item == 1) {
         [self performSegueWithIdentifier:@"MembersSegue" sender:self];
     } else if (indexPath.section == 1 && indexPath.item == 0) {
-        [self performSegueWithIdentifier:@"QuestDetailSegue" sender:self];
+        if ([party.questActive boolValue]) {
+            [self performSegueWithIdentifier:@"QuestDetailSegue" sender:self];
+        } else {
+            [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+        }
     } else if ((indexPath.section == 1 && indexPath.item == 1 && [party.questHP integerValue] == 0) || (indexPath.section == 1 && indexPath.item == 2 && [party.questActive boolValue] && [party.questHP integerValue] > 0)) {
         [self performSegueWithIdentifier:@"ParticipantsSegue" sender:self];
     } else if (self.buttonIndex && self.buttonIndex.item == indexPath.item && self.buttonIndex.section == indexPath.section) {
