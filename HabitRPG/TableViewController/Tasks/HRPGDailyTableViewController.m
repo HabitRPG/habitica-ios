@@ -128,7 +128,7 @@
                 [self addActivityCounter];
                 [self.sharedManager updateTask:task onSuccess:^() {
                     [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
-                    NSIndexPath *taskPath = [self indexPathWithOffset:indexPath];
+                    NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
                     [self configureCell:[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
                     [self removeActivityCounter];
                 }                      onError:^() {
@@ -143,7 +143,7 @@
                 [self addActivityCounter];
                 [self.sharedManager updateTask:task onSuccess:^() {
                     [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
-                    NSIndexPath *taskPath = [self indexPathWithOffset:indexPath];
+                    NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
                     [self configureCell:[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
                     [self removeActivityCounter];
                 }                      onError:^() {

@@ -197,7 +197,7 @@ BOOL editable;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    indexPath = [self indexPathWithOffset:indexPath];
+    indexPath = [self indexPathForTaskWithOffset:indexPath];
     if (indexPath == self.openedIndexPath) {
         [self tableView:tableView expandTaskAtIndexPath:self.openedIndexPath];
     }
@@ -335,7 +335,7 @@ BOOL editable;
         }
 
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:[self indexPathWithOffset:indexPath]] atIndexPath:indexPath withAnimation:YES];
+            [self configureCell:[tableView cellForRowAtIndexPath:[self indexPathWithOffset:indexPath]] atIndexPath:[self indexPathWithOffset:indexPath] withAnimation:YES];
             break;
 
         case NSFetchedResultsChangeMove:
@@ -403,11 +403,19 @@ BOOL editable;
     }
 }
 
-- (NSIndexPath*)indexPathWithOffset:(NSIndexPath*) indexPath {
+- (NSIndexPath*)indexPathForTaskWithOffset:(NSIndexPath*) indexPath {
     if (self.openedIndexPath.item + self.indexOffset < indexPath.item && self.indexOffset > 0) {
         return [NSIndexPath indexPathForItem:indexPath.item - self.indexOffset inSection:indexPath.section];
     } else if (self.openedIndexPath.item + self.indexOffset >= indexPath.item && self.openedIndexPath.item < indexPath.item && self.indexOffset > 0) {
         return self.openedIndexPath;
+    } else {
+        return indexPath;
+    }
+}
+
+- (NSIndexPath*)indexPathWithOffset:(NSIndexPath*) indexPath {
+    if (self.openedIndexPath.item < indexPath.item) {
+        return [NSIndexPath indexPathForItem:indexPath.item + self.indexOffset inSection:indexPath.section];
     } else {
         return indexPath;
     }
