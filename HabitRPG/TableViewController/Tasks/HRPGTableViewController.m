@@ -74,6 +74,16 @@ BOOL editable;
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
     [self.tableView reloadData];
+    HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
+    NSUInteger tagCount = tabBarController.selectedTags.count;
+    if (tagCount == 0) {
+        self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Tags", nil);
+    } else if (tagCount == 1) {
+        self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"1 Tag", nil);
+    } else {
+        NSString *localizedString = NSLocalizedString(@"%d Tags", nil);
+        self.navigationItem.leftBarButtonItem.title = [NSString stringWithFormat:localizedString, tagCount] ;
+    }
 }
 
 
