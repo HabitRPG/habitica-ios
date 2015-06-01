@@ -192,8 +192,8 @@ ChatMessage *selectedMessage;
             }
             message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
         }
-        double rowHeight = [message.text boundingRectWithSize:CGSizeMake(self.screenWidth-40, MAXFLOAT)
-                                          options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+        double rowHeight = [message.text boundingRectWithSize:CGSizeMake(self.screenWidth-32, MAXFLOAT)
+                                          options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
                                        attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}
                                           context:nil].size.height + 61;
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
@@ -473,11 +473,13 @@ ChatMessage *selectedMessage;
     if (text) {
         NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:text];
         [attributedText addAttribute:NSFontAttributeName value:[UIFont preferredFontForTextStyle:UIFontTextStyleBody] range:NSMakeRange(0, attributedText.length)];
+        [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, attributedText.length)];
         [attributedText ghf_applyAttributes:self.markdownAttributes];
+
         textLabel.attributedText = attributedText;
         
-        double rowHeight = [attributedText boundingRectWithSize:CGSizeMake(self.screenWidth-40, MAXFLOAT)
-                                                      options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+        double rowHeight = [attributedText boundingRectWithSize:CGSizeMake(self.screenWidth-32.0f, MAXFLOAT)
+                                                      options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
                                                       context:nil].size.height + 61;
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
             self.rowHeights[indexPath.item-1] = [NSNumber numberWithDouble:rowHeight];
