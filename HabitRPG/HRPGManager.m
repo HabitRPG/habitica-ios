@@ -770,7 +770,8 @@ NSString *currentUser;
             @"(key).per" : @"per",
             @"(key).event.start" : @"eventStart",
             @"(key).event.end" : @"eventEnd",
-            @"(key).specialClass" : @"specialClass"}];
+            @"(key).specialClass" : @"specialClass",
+            @"(key).gearSet" : @"set"}];
     gearMapping.identificationAttributes = @[@"key"];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:gearMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"gear.flat" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];

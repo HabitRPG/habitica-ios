@@ -23,6 +23,7 @@
 @property(nonatomic) NSDate *eventStart;
 @property(nonatomic) NSDate *eventEnd;
 @property(nonatomic) NSString *specialClass;
+@property(nonatomic) NSString *set;
 
 -(BOOL)isEquippedBy:(User*)user;
 -(BOOL)isCostumeOf:(User*)user;

@@ -12,6 +12,7 @@
 #import "HRPGAppDelegate.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "Customization.h"
+#import "Gear.h"
 #import "HRPGPurchaseButton.h"
 
 @interface HRPGCustomizationCollectionViewController ()
@@ -21,7 +22,7 @@
 @property UIBarButtonItem *navigationButton;
 @property HRPGActivityIndicator *activityIndicator;
 @property CGSize screenSize;
-@property Customization *selectedCustomization;
+@property id selectedCustomization;
 @property NSString *selectedSetPath;
 @property NSNumber *setPrice;
 @end
@@ -87,11 +88,20 @@ static NSString * const reuseIdentifier = @"Cell";
     HRPGPurchaseButton *purchaseButton = (HRPGPurchaseButton*)[headerView viewWithTag:2];
     BOOL purchasable = NO;
     NSString *setString = @"";
-    for (Customization *customization in [[self.fetchedResultsController sections][indexPath.section] objects]) {
-        if ([customization.purchasable boolValue] && ![customization.purchased boolValue]){
-            purchasable = YES;
+    if ([self.entityName isEqualToString:@"Customization"]) {
+        for (Customization *customization in [[self.fetchedResultsController sections][indexPath.section] objects]) {
+            if ([customization.purchasable boolValue] && ![customization.purchased boolValue]){
+                purchasable = YES;
+            }
+            setString = [setString stringByAppendingFormat:@"%@,", [customization getPath]];
         }
-        setString = [setString stringByAppendingFormat:@"%@,", [customization getPath]];
+    } else {
+        for (Gear *gear in [[self.fetchedResultsController sections][indexPath.section] objects]) {
+            if (!gear.owned){
+                purchasable = YES;
+            }
+            setString = [setString stringByAppendingFormat:@"items.gear.owned.%@,", gear.key];
+        }
     }
     setString = [setString stringByPaddingToLength:setString.length-1 withString:nil startingAtIndex:0];
     if (purchasable) {
@@ -107,13 +117,24 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSString *cellName;
-    if ([customization.purchased boolValue] || [customization.price integerValue] == 0) {
-        cellName = @"Cell";
+
+    if ([self.entityName isEqualToString:@"Customization"]) {
+        Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        if ([customization.purchased boolValue] || [customization.price integerValue] == 0) {
+            cellName = @"Cell";
+        } else {
+            cellName = @"LockedCell";
+        }
     } else {
-        cellName = @"LockedCell";
+        Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        if (gear.owned) {
+            cellName = @"Cell";
+        } else {
+            cellName = @"LockedCell";
+        }
     }
+    
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellName forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath animated:NO];
     return cell;
@@ -123,18 +144,31 @@ static NSString * const reuseIdentifier = @"Cell";
     NSString *actionString = NSLocalizedString(@"Use", nil);
     NSString *titleString;
     NSInteger tag = 0;
-    Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    if (![customization.purchased boolValue] && [customization.price integerValue] > 0) {
-        titleString = [NSString stringWithFormat:NSLocalizedString(@"This item can be purchased for %@ Gems", nil), customization.price];
-        actionString = [NSString stringWithFormat:NSLocalizedString(@"Purchase for %@ Gems", nil), customization.price];
-        tag = 1;
+    if ([self.entityName isEqualToString:@"Customization"]) {
+        Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        
+        if (![customization.purchased boolValue] && [customization.price integerValue] > 0) {
+            titleString = [NSString stringWithFormat:NSLocalizedString(@"This item can be purchased for %@ Gems", nil), customization.price];
+            actionString = [NSString stringWithFormat:NSLocalizedString(@"Purchase for %@ Gems", nil), customization.price];
+            tag = 1;
+        }
+        self.selectedCustomization = customization;
+
+    } else {
+        Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        
+        if (!gear.owned) {
+            titleString = [NSString stringWithFormat:NSLocalizedString(@"This item can be purchased for 2 Gems", nil)];
+            actionString = [NSString stringWithFormat:NSLocalizedString(@"Purchase for 2 Gems", nil)];
+            tag = 1;
+        }
+        self.selectedCustomization = gear;
     }
+    
     
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:titleString delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:actionString, nil];
     popup.tag = tag;
     [popup showInView:[UIApplication sharedApplication].keyWindow];
-    self.selectedCustomization = customization;
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
@@ -143,19 +177,26 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Customization" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
-    
-    if (self.group) {
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"(purchasable == true || purchased == true || price == 0) && type == %@ && group == %@", self.type, self.group]];
+
+    NSSortDescriptor *typeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"set" ascending:YES];
+    NSArray *sortDescriptors;
+    if ([self.entityName isEqualToString:@"Customization"]) {
+        if (self.group) {
+            [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"(purchasable == true || purchased == true || price == 0) && type == %@ && group == %@", self.type, self.group]];
+        } else {
+            [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"(purchasable == true || purchased == true || price == 0) && type == %@", self.type]];
+        }
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        sortDescriptors = @[typeSortDescriptor, sortDescriptor];
     } else {
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"(purchasable == true || purchased == true || price == 0) && type == %@", self.type]];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"set == 'animal' && type == 'headAccessory'"]];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
+        sortDescriptors = @[typeSortDescriptor, sortDescriptor];
     }
     
-    NSSortDescriptor *typeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"set" ascending:YES];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSArray *sortDescriptors = @[typeSortDescriptor, sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
@@ -198,21 +239,37 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)configureCell:(UICollectionViewCell*)cell atIndexPath:(NSIndexPath *)indexPath animated:(BOOL) animated {
-    Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
-    [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@.png", [customization getImageNameForUser:self.user]]]
+    if ([self.entityName isEqualToString:@"Customization"]) {
+        Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
+        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@.png", [customization getImageNameForUser:self.user]]]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+    } else {
+        Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
+        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", gear.key]]
+                  placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+    }
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (actionSheet.tag) {
         case 0:
             if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
-                [self.sharedManager updateUser:@{self.userKey: self.selectedCustomization.name} onSuccess:^() {
-                    
-                }onError:^() {
-                    
-                }];
+                NSString *path;
+                if ([self.entityName isEqualToString:@"Customization"]) {
+                    [self.sharedManager updateUser:@{self.userKey: [self.selectedCustomization valueForKey:@"name"]} onSuccess:^() {
+                        
+                    }onError:^() {
+                        
+                    }];
+                } else {
+                    path = [self.selectedCustomization valueForKey:@"key"];
+                    [self.sharedManager equipObject:[self.selectedCustomization valueForKey:@"key"] withType:self.userKey onSuccess:^{
+                    } onError:^{
+                        
+                    }];
+                }
             }
             break;
         case 1:

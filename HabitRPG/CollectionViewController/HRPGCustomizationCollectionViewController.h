@@ -16,6 +16,7 @@
 @property(nonatomic, strong) NSString *userKey;
 @property(nonatomic, strong) NSString *type;
 @property(nonatomic, strong) NSString *group;
+@property(nonatomic, strong) NSString *entityName;
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 

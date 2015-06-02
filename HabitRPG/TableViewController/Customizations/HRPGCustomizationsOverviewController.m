@@ -10,6 +10,7 @@
 #import "HRPGAppDelegate.h"
 #import "Customization.h"
 #import "User.h"
+#import "Gear.h"
 #import "HRPGCustomizationCollectionViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -60,7 +61,7 @@ NSIndexPath *selectedIndex;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return 3;
+        return 4;
     } else if (section == 1) {
         return 6;
     } else {
@@ -177,6 +178,14 @@ NSIndexPath *selectedIndex;
             searchedKey = self.user.skin;
             searchedType = @"skin";
             typeName = NSLocalizedString(@"Skin", nil);
+        } else if (indexPath.item == 3) {
+            if ([self.user.useCostume boolValue]) {
+                searchedKey = self.user.costumeHeadAccessory;
+            } else {
+                searchedKey = self.user.equippedHeadAccessory;
+            }
+            searchedType = @"ear";
+            typeName = NSLocalizedString(@"Animal Ears", nil);
         }
     } else if (indexPath.section == 1) {
         searchedType = @"hair";
@@ -212,35 +221,69 @@ NSIndexPath *selectedIndex;
             typeName = NSLocalizedString(@"Background", nil);
         }
     }
-    Customization *searchedCustomization;
-    for (Customization *customization in self.fetchedResultsController.fetchedObjects) {
-        if ([customization.name isEqualToString:searchedKey] && [customization.type isEqualToString:searchedType]) {
-            if (searchedGroup) {
-                if (![searchedGroup isEqualToString:customization.group]) {
-                    continue;
-                }
-            }
-            searchedCustomization = customization;
-            break;
-        }
-    }
+    
     textLabel.text = typeName;
     UILabel *detailLabel = (UILabel*)[cell viewWithTag:2];
     detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     UIImageView *imageView = (UIImageView*)[cell viewWithTag:3];
-    if (searchedCustomization && ![searchedCustomization.name isEqualToString:@"0"]) {
-        detailLabel.text = [searchedCustomization.name capitalizedString];
-        detailLabel.textColor = [UIColor blackColor];
-        imageView.contentMode = UIViewContentModeBottomRight;
-        [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@.png", [searchedCustomization getImageNameForUser:self.user]]]
-                     placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-        imageView.alpha = 1.0;
+    
+    if ([searchedType isEqualToString:@"ear"]) {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Gear" inManagedObjectContext:self.managedObjectContext];
+        [fetchRequest setEntity:entity];
+        [fetchRequest setFetchBatchSize:20];
+        
+        NSPredicate *predicate;
+        predicate = [NSPredicate predicateWithFormat:@"type == 'headAccessory' && key == %@ && set == 'animal'", searchedKey];
+        [fetchRequest setPredicate:predicate];
+        
+        NSError *error;
+        NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        if (results.count > 0) {
+            Gear *equippedEar = results[0];
+            detailLabel.text = equippedEar.text;
+            detailLabel.textColor = [UIColor blackColor];
+            imageView.contentMode = UIViewContentModeCenter;
+            [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", equippedEar.key]]
+                         placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+            imageView.alpha = 1.0;
+        } else {
+            detailLabel.text = NSLocalizedString(@"Nothing Set", nil);
+            detailLabel.textColor = [UIColor grayColor];
+            [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/head_0.png"]
+                         placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+            imageView.alpha = 0.4;
+        }
     } else {
-        detailLabel.text = NSLocalizedString(@"Nothing Set", nil);
-        detailLabel.textColor = [UIColor grayColor];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/head_0.png"]
-                     placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-        imageView.alpha = 0.4;
+        Customization *searchedCustomization;
+        if (searchedKey && ![searchedKey isEqualToString:@""]) {
+            for (Customization *customization in self.fetchedResultsController.fetchedObjects) {
+                if ([customization.name isEqualToString:searchedKey] && [customization.type isEqualToString:searchedType]) {
+                    if (searchedGroup) {
+                        if (![searchedGroup isEqualToString:customization.group]) {
+                            continue;
+                        }
+                    }
+                    searchedCustomization = customization;
+                    break;
+                }
+            }
+            
+        }
+        if (searchedCustomization && ![searchedCustomization.name isEqualToString:@"0"]) {
+            detailLabel.text = [searchedCustomization.name capitalizedString];
+            detailLabel.textColor = [UIColor blackColor];
+            imageView.contentMode = UIViewContentModeBottomRight;
+            [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@.png", [searchedCustomization getImageNameForUser:self.user]]]
+                         placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+            imageView.alpha = 1.0;
+        } else {
+            detailLabel.text = NSLocalizedString(@"Nothing Set", nil);
+            detailLabel.textColor = [UIColor grayColor];
+            [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/head_0.png"]
+                         placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+            imageView.alpha = 0.4;
+        }
     }
 }
 
@@ -250,6 +293,7 @@ NSIndexPath *selectedIndex;
         HRPGCustomizationCollectionViewController *destViewController = (HRPGCustomizationCollectionViewController*)segue.destinationViewController;
         destViewController.user = self.user;
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        destViewController.entityName = @"Customization";
         if (indexPath.section == 0) {
             if (indexPath.item == 1) {
                 destViewController.userKey = @"preferences.shirt";
@@ -257,6 +301,14 @@ NSIndexPath *selectedIndex;
             } else if (indexPath.item == 2) {
                 destViewController.userKey = @"preferences.skin";
                 destViewController.type = @"skin";
+            } else if (indexPath.item == 3) {
+                destViewController.entityName = @"Gear";
+                if ([self.user.useCostume boolValue]) {
+                    destViewController.userKey = @"costume";
+                } else {
+                    destViewController.userKey = @"equipped";
+                }
+                destViewController.type = @"ear";
             }
         } else if (indexPath.section == 1) {
             destViewController.type = @"hair";
