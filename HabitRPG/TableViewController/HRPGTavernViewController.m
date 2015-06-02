@@ -22,6 +22,7 @@
 #import "NSMutableAttributedString_GHFMarkdown.h"
 #import <CoreText/CoreText.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <DTAttributedTextView.h>
 
 @interface HRPGTavernViewController ()
 @property Group *tavern;
@@ -30,6 +31,7 @@
 @property NSIndexPath *buttonIndex;
 @property NSString *replyMessage;
 @property NSMutableArray *rowHeights;
+@property DTAttributedTextView *sizeTextView;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
@@ -46,8 +48,8 @@ ChatMessage *selectedMessage;
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 
-    self.rowHeights = [NSMutableArray array];
-    
+    self.rowHeights = [NSMutableArray arrayWithCapacity:self.fetchedResultsController.fetchedObjects.count];
+    self.sizeTextView = [[DTAttributedTextView alloc] init];
     user = [self.sharedManager getUser];
     
     [self fetchTavern];
@@ -192,10 +194,25 @@ ChatMessage *selectedMessage;
             }
             message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
         }
-        double rowHeight = [message.text boundingRectWithSize:CGSizeMake(self.screenWidth-32, MAXFLOAT)
-                                          options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-                                       attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}
-                                          context:nil].size.height + 61;
+        NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:message.text];
+        NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+        paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+        paragraphStyle.alignment = NSTextAlignmentLeft;
+        [attributedText addAttribute:NSFontAttributeName value:[UIFont preferredFontForTextStyle:UIFontTextStyleBody] range:NSMakeRange(0, attributedText.length)];
+        [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, attributedText.length)];
+        [attributedText ghf_applyAttributes:self.markdownAttributes];
+        
+        self.sizeTextView.attributedString = attributedText;
+        self.sizeTextView.shouldDrawLinks = YES;
+        
+        CGSize suggestedSize = [self.sizeTextView.attributedTextContentView suggestedFrameSizeToFitEntireStringConstraintedToWidth:self.screenWidth-32];
+        
+        CGFloat rowHeight = suggestedSize.height+40;
+        if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
+            self.rowHeights[indexPath.item-1] = [NSNumber numberWithDouble:rowHeight];
+        } else {
+            self.rowHeights[indexPath.item] = [NSNumber numberWithDouble:rowHeight];
+        }
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
             self.rowHeights[indexPath.item-1] = [NSNumber numberWithDouble:rowHeight];
         } else {
@@ -460,8 +477,7 @@ ChatMessage *selectedMessage;
     authorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     authorLabel.textColor = [message contributorColor];
 
-    UITextView *textLabel = (UITextView *) [cell viewWithTag:2];
-    textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    DTAttributedTextView *textLabel = (DTAttributedTextView *) [cell viewWithTag:2];
     textLabel.delegate = self;
     cell.backgroundColor = [UIColor whiteColor];
     NSString *text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
@@ -472,20 +488,15 @@ ChatMessage *selectedMessage;
     
     if (text) {
         NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:text];
+        NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+        paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+        paragraphStyle.alignment = NSTextAlignmentLeft;
         [attributedText addAttribute:NSFontAttributeName value:[UIFont preferredFontForTextStyle:UIFontTextStyleBody] range:NSMakeRange(0, attributedText.length)];
         [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, attributedText.length)];
         [attributedText ghf_applyAttributes:self.markdownAttributes];
 
-        textLabel.attributedText = attributedText;
-        
-        double rowHeight = [attributedText boundingRectWithSize:CGSizeMake(self.screenWidth-32.0f, MAXFLOAT)
-                                                      options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-                                                      context:nil].size.height + 61;
-        if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
-            self.rowHeights[indexPath.item-1] = [NSNumber numberWithDouble:rowHeight];
-        } else {
-            self.rowHeights[indexPath.item] = [NSNumber numberWithDouble:rowHeight];
-        }
+        textLabel.attributedString = attributedText;
+        textLabel.shouldDrawLinks = YES;
     }
     UILabel *dateLabel = (UILabel *) [cell viewWithTag:3];
     dateLabel.text = [message.timestamp timeAgo];

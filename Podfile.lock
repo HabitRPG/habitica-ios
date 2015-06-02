@@ -1,6 +1,17 @@
 PODS:
   - AFNetworking (1.3.4)
   - CRToast (0.0.7)
+  - DTCoreText (1.6.15):
+    - DTFoundation/Core (~> 1.7.5)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
+    - DTFoundation/DTHTMLParser (~> 1.7.5)
+    - DTFoundation/UIKit (~> 1.7.5)
+  - DTFoundation/Core (1.7.5)
+  - DTFoundation/DTAnimatedGIF (1.7.5)
+  - DTFoundation/DTHTMLParser (1.7.5):
+    - DTFoundation/Core
+  - DTFoundation/UIKit (1.7.5):
+    - DTFoundation/Core
   - EAIntroView (2.6.4)
   - FLEX (2.0.2)
   - FontAwesomeIconFactory (2.0)
@@ -44,6 +55,7 @@ PODS:
 
 DEPENDENCIES:
   - CRToast (from `https://github.com/cruffenach/CRToast`)
+  - DTCoreText
   - EAIntroView (~> 2.6.0)
   - FLEX
   - FontAwesomeIconFactory
@@ -71,6 +83,8 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
   CRToast: eb22641501990233c53cb8f83f7d2ea87e0ddf73
+  DTCoreText: 13ce06e63204a3b47c9db974e3d9be982bb0b1ed
+  DTFoundation: 1d28080c20c3da041706545363f8238ab53a6204
   EAIntroView: df7dc18da73e1831d06878b9c0e13da78e6bb3ce
   FLEX: 321e6150cbababb76aaadde355dfce2ee1cac2d8
   FontAwesomeIconFactory: d161a1832f8220d764033e0fcc4f4a8388495ab7

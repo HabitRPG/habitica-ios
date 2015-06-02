@@ -14,4 +14,4 @@ pod 'FLEX'
 pod 'pop'
 pod 'OHHTTPStubs'
 pod 'EAIntroView', '~> 2.6.0'
-
+pod 'DTCoreText'

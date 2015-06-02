@@ -18,7 +18,7 @@
 #import "HRPGProgressView.h"
 #import "HRPGUserProfileViewController.h"
 #import "NSMutableAttributedString_GHFMarkdown.h"
-#import <CoreText/CoreText.h>
+#import <DTAttributedTextView.h>
 
 @interface HRPGPartyViewController ()
 @property NSMutableDictionary *chatAttributeMapping;
@@ -27,6 +27,7 @@
 @property NSString *replyMessage;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @property NSMutableArray *rowHeights;
+@property DTAttributedTextView *sizeTextView;
 @end
 
 @implementation HRPGPartyViewController
@@ -43,6 +44,7 @@ ChatMessage *selectedMessage;
     user = [self.sharedManager getUser];
 
     self.rowHeights = [NSMutableArray array];
+    self.sizeTextView = [[DTAttributedTextView alloc] init];
     
     defaults = [NSUserDefaults standardUserDefaults];
     partyID = [defaults objectForKey:@"partyID"];
@@ -270,12 +272,21 @@ ChatMessage *selectedMessage;
         } else {
             width = self.screenWidth - 83;
         }
-        NSInteger height = [message.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
-                                                      options:NSStringDrawingUsesLineFragmentOrigin
-                                                   attributes:@{
-                                                           NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
-                                                   }
-                                                      context:nil].size.height + 45;
+        NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:message.text];
+        NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+        paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+        paragraphStyle.alignment = NSTextAlignmentLeft;
+        [attributedText addAttribute:NSFontAttributeName value:[UIFont preferredFontForTextStyle:UIFontTextStyleBody] range:NSMakeRange(0, attributedText.length)];
+        [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, attributedText.length)];
+        [attributedText ghf_applyAttributes:self.markdownAttributes];
+        
+        self.sizeTextView.attributedString = attributedText;
+        self.sizeTextView.shouldDrawLinks = YES;
+        
+        CGSize suggestedSize = [self.sizeTextView.attributedTextContentView suggestedFrameSizeToFitEntireStringConstraintedToWidth:width];
+        
+        CGFloat height = suggestedSize.height+40;
+        
         if (height < 70 && message.user != nil) {
             height = 70;
         }
@@ -517,6 +528,7 @@ ChatMessage *selectedMessage;
                 return;
             }
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.backgroundColor = [UIColor whiteColor];
             ChatMessage *message;
             if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
                 message = (ChatMessage *) party.chatmessages[indexPath.item-1];
@@ -526,19 +538,23 @@ ChatMessage *selectedMessage;
             UILabel *authorLabel = (UILabel *) [cell viewWithTag:1];
             authorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
             authorLabel.text = message.user;
-            UITextView *textLabel = (UITextView *) [cell viewWithTag:2];
+            DTAttributedTextView *textLabel = (DTAttributedTextView *) [cell viewWithTag:2];
+            textLabel.backgroundColor = [UIColor clearColor];
             textLabel.delegate = self;
             if (message.user != nil) {
                 cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 UIImageView *imageView = (UIImageView *) [cell viewWithTag:5];
                 [message.userObject setAvatarOnImageView:imageView withPetMount:NO onlyHead:YES useForce:NO];
                 authorLabel.textColor = [message.userObject classColor];
-                textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
                 cell.backgroundColor = [UIColor whiteColor];
                 NSString *text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
                 if (text) {
                     NSMutableAttributedString *attributedMessage = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:text];
-                    
+                    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+                    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+                    paragraphStyle.alignment = NSTextAlignmentLeft;
+                    [attributedMessage addAttribute:NSFontAttributeName value:[UIFont preferredFontForTextStyle:UIFontTextStyleBody] range:NSMakeRange(0, attributedMessage.length)];
+                    [attributedMessage addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, attributedMessage.length)];
                     NSError *error = nil;
                     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"@(\\w+)" options:0 error:&error];
                     NSArray *matches = [regex matchesInString:text options:0 range:NSMakeRange(0, attributedMessage.length)];
@@ -553,28 +569,20 @@ ChatMessage *selectedMessage;
                             cell.backgroundColor = [UIColor colorWithRed:0.474 green:1.000 blue:0.031 alpha:0.030];
                         }
                     }
-                    [attributedMessage addAttribute:NSFontAttributeName value:[UIFont preferredFontForTextStyle:UIFontTextStyleBody] range:NSMakeRange(0, attributedMessage.length)];
                     [attributedMessage ghf_applyAttributes:self.markdownAttributes];
-                    
-                    NSInteger height = [attributedMessage boundingRectWithSize:CGSizeMake(230.0f, MAXFLOAT)
-                                                                  options:NSStringDrawingUsesLineFragmentOrigin
-                                                                  context:nil].size.height + 50;
-                    if (height < 70 && message.user != nil) {
-                        height = 70;
-                    }
-                    if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
-                        self.rowHeights[indexPath.item-1] = [NSNumber numberWithDouble:height];
-                    } else {
-                        self.rowHeights[indexPath.item] = [NSNumber numberWithDouble:height];
-                    }
-                    
-                    textLabel.attributedText = attributedMessage;
+
+                    textLabel.attributedString = attributedMessage;
                 }
             } else {
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor colorWithRed:0.986 green:0.000 blue:0.047 alpha:0.020];
-                NSMutableAttributedString *attributedMessage = [[NSMutableAttributedString alloc] initWithString:[message.text substringWithRange:NSMakeRange(1, [message.text length]-2)] attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]}];
-                
+                NSMutableAttributedString *attributedMessage = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:message.text];
+                NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+                paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+                paragraphStyle.alignment = NSTextAlignmentLeft;
+                [attributedMessage addAttribute:NSFontAttributeName value:[UIFont preferredFontForTextStyle:UIFontTextStyleBody] range:NSMakeRange(0, attributedMessage.length)];
+                [attributedMessage addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, attributedMessage.length)];
+                [attributedMessage ghf_applyAttributes:self.markdownAttributes];
                 [[attributedMessage string] enumerateSubstringsInRange:NSMakeRange(0, [attributedMessage length]) options:NSStringEnumerationByWords usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
                     NSDictionary *attributes = [self.chatAttributeMapping objectForKey:substring];
                     if (attributes) {
@@ -582,15 +590,7 @@ ChatMessage *selectedMessage;
                     }
                     
                 }];
-                textLabel.attributedText = attributedMessage;
-                NSInteger height = [attributedMessage boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
-                                                                   options:NSStringDrawingUsesLineFragmentOrigin
-                                                                   context:nil].size.height + 50;
-                if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
-                    self.rowHeights[indexPath.item-1] = [NSNumber numberWithDouble:height];
-                } else {
-                    self.rowHeights[indexPath.item] = [NSNumber numberWithDouble:height];
-                }
+                textLabel.attributedString = attributedMessage;
             }
             UILabel *dateLabel = (UILabel *) [cell viewWithTag:3];
             dateLabel.text = [message.timestamp timeAgo];
