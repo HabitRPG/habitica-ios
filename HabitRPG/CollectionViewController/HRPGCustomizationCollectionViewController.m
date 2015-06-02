@@ -237,7 +237,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)purchaseSet:(HRPGPurchaseButton *)button {
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"This set can be purchased for %@ Gems", nil), self.setPrice] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:NSLocalizedString(@"Purchase for %@ Gems", nil), self.setPrice], nil];
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"This set can be unlocked for %@ Gems", nil), self.setPrice] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:NSLocalizedString(@"Unlock for %@ Gems", nil), self.setPrice], nil];
     popup.tag = 2;
     [popup showInView:[UIApplication sharedApplication].keyWindow];
     self.selectedSetPath = button.setPath;

@@ -2144,14 +2144,10 @@ NSString *currentUser;
 }
 
 - (void)displayNoGemAlert {
-    UIAlertView *alertView = [[UIAlertView alloc]
-                              initWithTitle:NSLocalizedString(@"Not enough gems", nil)
-                              message:NSLocalizedString(@"You do not have enough gems to purchase this. You can get more gems from the website.", nil)
-                              delegate:self
-                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                              otherButtonTitles:nil];
-    
-    [alertView show];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
+    UIViewController* viewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [viewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (User *)getUser {

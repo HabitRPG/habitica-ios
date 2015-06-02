@@ -2937,6 +2937,111 @@
             <point key="canvasLocation" x="541" y="7015"/>
         </scene>
         <!--Navigation Controller-->
+        <scene sceneID="xVP-nc-WPW">
+            <objects>
+                <navigationController storyboardIdentifier="PurchaseGemNavController" id="Ne7-W6-6zE" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="t9n-14-0tP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="RXB-FN-MmL" kind="relationship" relationship="rootViewController" id="h3x-Eh-6lY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4RK-O9-N6X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="157" y="7563"/>
+        </scene>
+        <!--Gem View Controller-->
+        <scene sceneID="w6J-Gk-IZz">
+            <objects>
+                <viewController id="RXB-FN-MmL" customClass="HRPGGemViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RHh-SX-WFt"/>
+                        <viewControllerLayoutGuide type="bottom" id="qTF-XM-pDY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jwS-uY-OoE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ns-xL-wc5">
+                                <rect key="frame" x="110" y="128" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1Ns-xL-wc5" secondAttribute="height" multiplier="1:1" id="aAD-dT-fqS"/>
+                                    <constraint firstAttribute="height" constant="100" id="bQ3-AB-nTj"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="You do not have enough gems to unlock this. Do you want to purchase more?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2X8-z5-njT">
+                                <rect key="frame" x="0.0" y="72" width="320" height="40.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="500" constant="40" id="Onj-Ko-IiX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="0.77300000190734863" green="0.23499999940395355" blue="0.24699999392032623" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="20 Gems" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jf-ef-S4f">
+                                <rect key="frame" x="16" y="236" width="288" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="500" constant="30" id="nWa-QJ-IyH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gems are used to buy special in-game items, such as shirts and hairstyles." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swT-vQ-9rg">
+                                <rect key="frame" x="16" y="280" width="288" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="500" constant="20" id="TH7-kh-Txk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yaI-Jo-Esb" customClass="HRPGPurchaseLoadingButton">
+                                <rect key="frame" x="70.5" y="420" width="180" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="7cc-co-a0k"/>
+                                    <constraint firstAttribute="height" constant="40" id="JiC-Ik-ro7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Jf-ef-S4f" firstAttribute="leading" secondItem="jwS-uY-OoE" secondAttribute="leadingMargin" id="2JL-d8-wM7"/>
+                            <constraint firstItem="2X8-z5-njT" firstAttribute="top" secondItem="RHh-SX-WFt" secondAttribute="bottom" constant="8" id="3Ty-bf-5zt"/>
+                            <constraint firstItem="7Jf-ef-S4f" firstAttribute="top" secondItem="1Ns-xL-wc5" secondAttribute="bottom" constant="8" id="6Yd-xT-Tie"/>
+                            <constraint firstAttribute="centerX" secondItem="yaI-Jo-Esb" secondAttribute="centerX" id="7Yw-2l-Pmc"/>
+                            <constraint firstItem="2X8-z5-njT" firstAttribute="leading" secondItem="jwS-uY-OoE" secondAttribute="leadingMargin" constant="-16" id="BzC-an-xMv"/>
+                            <constraint firstItem="qTF-XM-pDY" firstAttribute="top" secondItem="yaI-Jo-Esb" secondAttribute="bottom" constant="20" id="COb-f2-A1l"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2X8-z5-njT" secondAttribute="trailing" constant="-16" id="EDe-hC-Mo3"/>
+                            <constraint firstItem="swT-vQ-9rg" firstAttribute="leading" secondItem="jwS-uY-OoE" secondAttribute="leadingMargin" id="Vmy-A7-Nqy"/>
+                            <constraint firstItem="swT-vQ-9rg" firstAttribute="top" secondItem="7Jf-ef-S4f" secondAttribute="bottom" constant="8" id="YJU-Ir-Web"/>
+                            <constraint firstAttribute="centerX" secondItem="1Ns-xL-wc5" secondAttribute="centerX" id="Za9-oW-OOd"/>
+                            <constraint firstItem="1Ns-xL-wc5" firstAttribute="top" secondItem="2X8-z5-njT" secondAttribute="bottom" constant="16" id="sFJ-sQ-CFQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Jf-ef-S4f" secondAttribute="trailing" id="z2t-PF-DM2"/>
+                            <constraint firstItem="swT-vQ-9rg" firstAttribute="trailing" secondItem="jwS-uY-OoE" secondAttribute="trailingMargin" id="zeD-M6-bQr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wbK-fe-Har">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="qPH-se-KmL">
+                            <connections>
+                                <action selector="cancelButtonPress:" destination="RXB-FN-MmL" id="Nwd-yB-xGH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="qPH-se-KmL" id="gAN-Ua-u6a"/>
+                        <outlet property="gemImageView" destination="1Ns-xL-wc5" id="T7Y-Cn-EW1"/>
+                        <outlet property="notEnoughGemsLabel" destination="2X8-z5-njT" id="3nH-MV-1sr"/>
+                        <outlet property="purchaseButton" destination="yaI-Jo-Esb" id="U8F-Gs-GuN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gxF-ax-7zK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="541" y="7563"/>
+        </scene>
+        <!--Navigation Controller-->
         <scene sceneID="EKs-yn-VUc">
             <objects>
                 <navigationController storyboardIdentifier="SelectClassNavigationController" id="o94-7a-EOq" sceneMemberID="viewController">
