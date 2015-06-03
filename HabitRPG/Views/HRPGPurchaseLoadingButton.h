@@ -12,7 +12,8 @@ typedef enum {
     HRPGPurchaseButtonStateLabel = 0,
     HRPGPurchaseButtonStateConfirm,
     HRPGPurchaseButtonStateLoading,
-    HRPGPurchaseButtonStateDone
+    HRPGPurchaseButtonStateDone,
+    HRPGPurchaseButtonStateError
 } HRPGPurchaseButtonState;
 
 @interface HRPGPurchaseLoadingButton : UIView

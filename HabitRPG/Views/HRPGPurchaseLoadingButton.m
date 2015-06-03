@@ -93,6 +93,12 @@
             [self addLabelToView];
             self.label.text = [self.doneText uppercaseString];
             break;
+        case HRPGPurchaseButtonStateError:
+            [self removeLoadingIndicatorFromView];
+            [self addLabelToView];
+            self.tintColor = [UIColor redColor];
+            self.label.text = NSLocalizedString(@"ERROR", nil);
+            break;
             
         default:
             break;
