@@ -1,5 +1,7 @@
 PODS:
   - AFNetworking (1.3.4)
+  - CargoBay (1.0.0):
+    - AFNetworking (~> 1.0)
   - CRToast (0.0.7)
   - DTCoreText (1.6.15):
     - DTFoundation/Core (~> 1.7.5)
@@ -54,6 +56,7 @@ PODS:
   - XLForm (2.2.0)
 
 DEPENDENCIES:
+  - CargoBay
   - CRToast (from `https://github.com/cruffenach/CRToast`)
   - DTCoreText
   - EAIntroView (~> 2.6.0)
@@ -82,6 +85,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
+  CargoBay: ab17fb9573b0481d26e23e4c99c3961f83741170
   CRToast: eb22641501990233c53cb8f83f7d2ea87e0ddf73
   DTCoreText: 13ce06e63204a3b47c9db974e3d9be982bb0b1ed
   DTFoundation: 1d28080c20c3da041706545363f8238ab53a6204

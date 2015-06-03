@@ -2964,17 +2964,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="You do not have enough gems to unlock this. Do you want to purchase more?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2X8-z5-njT">
-                                <rect key="frame" x="0.0" y="72" width="320" height="40.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="500" constant="40" id="Onj-Ko-IiX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <color key="textColor" red="0.77300000190734863" green="0.23499999940395355" blue="0.24699999392032623" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="20 Gems" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jf-ef-S4f">
-                                <rect key="frame" x="16" y="234" width="288" height="36"/>
+                                <rect key="frame" x="16" y="271.5" width="288" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="30" id="nWa-QJ-IyH"/>
                                 </constraints>
@@ -2983,7 +2974,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gems are used to buy special in-game items, such as shirts and hairstyles." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swT-vQ-9rg">
-                                <rect key="frame" x="16" y="286" width="288" height="61"/>
+                                <rect key="frame" x="16" y="323.5" width="288" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="20" id="TH7-kh-Txk"/>
                                 </constraints>
@@ -2998,13 +2989,22 @@
                                     <constraint firstAttribute="height" constant="40" id="JiC-Ik-ro7"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ns-xL-wc5">
-                                <rect key="frame" x="115" y="128" width="90" height="90"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ns-xL-wc5">
+                                <rect key="frame" x="115" y="165.5" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1Ns-xL-wc5" secondAttribute="height" multiplier="1:1" id="aAD-dT-fqS"/>
                                     <constraint firstAttribute="height" constant="90" id="bQ3-AB-nTj"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="You do not have enough gems to unlock this. Do you want to purchase more?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2X8-z5-njT">
+                                <rect key="frame" x="16" y="72" width="288" height="61.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="500" constant="40" id="Onj-Ko-IiX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="0.77300000190734863" green="0.23499999940395355" blue="0.24699999392032623" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -3012,13 +3012,13 @@
                             <constraint firstItem="2X8-z5-njT" firstAttribute="top" secondItem="RHh-SX-WFt" secondAttribute="bottom" constant="8" id="3Ty-bf-5zt"/>
                             <constraint firstItem="7Jf-ef-S4f" firstAttribute="top" secondItem="1Ns-xL-wc5" secondAttribute="bottom" constant="16" id="6Yd-xT-Tie"/>
                             <constraint firstAttribute="centerX" secondItem="yaI-Jo-Esb" secondAttribute="centerX" id="7Yw-2l-Pmc"/>
-                            <constraint firstItem="2X8-z5-njT" firstAttribute="leading" secondItem="jwS-uY-OoE" secondAttribute="leadingMargin" constant="-16" id="BzC-an-xMv"/>
+                            <constraint firstItem="2X8-z5-njT" firstAttribute="leading" secondItem="jwS-uY-OoE" secondAttribute="leadingMargin" id="BzC-an-xMv"/>
                             <constraint firstItem="qTF-XM-pDY" firstAttribute="top" secondItem="yaI-Jo-Esb" secondAttribute="bottom" constant="20" id="COb-f2-A1l"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2X8-z5-njT" secondAttribute="trailing" constant="-16" id="EDe-hC-Mo3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2X8-z5-njT" secondAttribute="trailing" id="EDe-hC-Mo3"/>
                             <constraint firstItem="swT-vQ-9rg" firstAttribute="leading" secondItem="jwS-uY-OoE" secondAttribute="leadingMargin" id="Vmy-A7-Nqy"/>
                             <constraint firstItem="swT-vQ-9rg" firstAttribute="top" secondItem="7Jf-ef-S4f" secondAttribute="bottom" constant="16" id="YJU-Ir-Web"/>
                             <constraint firstAttribute="centerX" secondItem="1Ns-xL-wc5" secondAttribute="centerX" id="Za9-oW-OOd"/>
-                            <constraint firstItem="1Ns-xL-wc5" firstAttribute="top" secondItem="2X8-z5-njT" secondAttribute="bottom" constant="16" id="sFJ-sQ-CFQ"/>
+                            <constraint firstItem="1Ns-xL-wc5" firstAttribute="top" secondItem="2X8-z5-njT" secondAttribute="bottom" constant="32" id="sFJ-sQ-CFQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7Jf-ef-S4f" secondAttribute="trailing" id="z2t-PF-DM2"/>
                             <constraint firstItem="swT-vQ-9rg" firstAttribute="trailing" secondItem="jwS-uY-OoE" secondAttribute="trailingMargin" id="zeD-M6-bQr"/>
                         </constraints>

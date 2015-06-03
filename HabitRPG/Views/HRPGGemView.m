@@ -32,6 +32,10 @@
         
         [self addSubview:self.gemLabel];
         [self addSubview:self.gemImageView];
+        
+        
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openGemPurchaseView:)];
+        [self addGestureRecognizer:tapGestureRecognizer];
     }
     
     return self;
@@ -45,6 +49,13 @@
 
 - (void)sizeToFit {
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.gemLabel.frame.origin.x+self.gemLabel.frame.size.width, self.frame.size.height);
+}
+
+- (void)openGemPurchaseView:(UITapGestureRecognizer *)tapGestureRecognizer {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
+    UIViewController* viewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [viewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 @end
