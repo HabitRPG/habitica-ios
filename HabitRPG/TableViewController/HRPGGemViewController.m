@@ -23,29 +23,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.purchaseButton.tintColor = [UIColor colorWithRed:0.837 green:0.652 blue:0.238 alpha:1.000];
-    self.purchaseButton.text = @"$4.99";
+    self.purchaseButton.state = HRPGPurchaseButtonStateLoading;
     
-    self.purchaseButton.onTouchEvent = ^void(HRPGPurchaseLoadingButton *purchaseButton) {
-        switch (purchaseButton.state) {
-            case HRPGPurchaseButtonStateLabel:
-                purchaseButton.state = HRPGPurchaseButtonStateConfirm;
-                break;
-                
-            case HRPGPurchaseButtonStateConfirm:
-                purchaseButton.state = HRPGPurchaseButtonStateLoading;
-                break;
-            case HRPGPurchaseButtonStateLoading:
-                purchaseButton.state = HRPGPurchaseButtonStateDone;
-                break;
-            case HRPGPurchaseButtonStateDone:
-                purchaseButton.state = HRPGPurchaseButtonStateLabel;
-                break;
-            default:
-                break;
-        }
-    };
+    self.gemImageView.image = [UIImage imageNamed:@"Gem"];
     
-    [self.gemImageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/Pet_Currency_Gem.png"]];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
