@@ -34,6 +34,7 @@
         [self.indicatorView.layer setCornerRadius:5.0f];
         
         self.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0];
+        self.userInteractionEnabled = NO;
         
         self.ImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, self.width-20, self.height-30)];
         self.ImageView.contentMode = UIViewContentModeScaleAspectFit;

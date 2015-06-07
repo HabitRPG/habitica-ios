@@ -35,6 +35,7 @@
         CGSize screenSize = [[UIScreen mainScreen] bounds].size;
         self.backgroundView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
         self.backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+        self.backgroundView.userInteractionEnabled = NO;
 
     }
     return self;
