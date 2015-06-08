@@ -9,6 +9,7 @@
 #import "User.h"
 #import "HRPGAppDelegate.h"
 #import "Customization.h"
+#import <CommonCrypto/CommonCrypto.h>
 
 @interface User ()
 @property (nonatomic) NSDate *lastImageGeneration;
@@ -577,6 +578,34 @@
 
 - (NSString *)getDirtyClassName {
     return [self valueForKey:@"hclass"];
+}
+
+// Custom method to calculate the SHA-256 hash using Common Crypto
+- (NSString *)hashedValueForAccountName {
+    const int HASH_SIZE = 32;
+    unsigned char hashedChars[HASH_SIZE];
+    const char *accountName = [self.username UTF8String];
+    size_t accountNameLen = strlen(accountName);
+    
+    // Confirm that the length of the user name is small enough
+    // to be recast when calling the hash function.
+    if (accountNameLen > UINT32_MAX) {
+        NSLog(@"Account name too long to hash: %@", self.username);
+        return nil;
+    }
+    CC_SHA256(accountName, (CC_LONG)accountNameLen, hashedChars);
+    
+    // Convert the array of bytes into a string showing its hex representation.
+    NSMutableString *userAccountHash = [[NSMutableString alloc] init];
+    for (int i = 0; i < HASH_SIZE; i++) {
+        // Add a dash every four bytes, for readability.
+        if (i != 0 && i%4 == 0) {
+            [userAccountHash appendString:@"-"];
+        }
+        [userAccountHash appendFormat:@"%02x", hashedChars[i]];
+    }
+    
+    return userAccountHash;
 }
 
 @end

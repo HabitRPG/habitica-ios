@@ -84,7 +84,7 @@ NSString *currentUser;
 
     // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://habitrpg.com"]];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://192.168.3.62:3005"]];
     objectManager.managedObjectStore = managedObjectStore;
 
     [RKObjectManager setSharedManager:objectManager];
@@ -293,6 +293,13 @@ NSString *currentUser;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:emptyMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/sleep" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
+    RKObjectMapping *gemPurchaseMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [gemPurchaseMapping addAttributeMappingsFromDictionary:@{@"ok": @"ok",
+                                                             @"data.message": @"message"}];
+    [RKMIMETypeSerialization registerClass:[HRPGEmptySerializer class] forMIMEType:@"text/plain"];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:gemPurchaseMapping method:RKRequestMethodPOST pathPattern:@"/iap/ios/verify" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     RKObjectMapping *emptyStringMapping = [RKObjectMapping mappingForClass:[NSString class]];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:emptyStringMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/chat/seen" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -1982,7 +1989,6 @@ NSString *currentUser;
     
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/feed/%@/%@", pet, food] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
-        [user.party addChatmessagesObject:[mappingResult firstObject]];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
         [self.networkIndicatorController endNetworking];
@@ -1999,6 +2005,34 @@ NSString *currentUser;
                 return;
             }onError:nil];
             return;
+        } else {
+            [self displayNetworkError];
+        }
+        errorBlock();
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+-(void)purchaseGems:(NSDictionary *)receipt onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:nil path:@"/iap/ios/verify" parameters:receipt success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self fetchUser:^(){
+            NSError *executeError = nil;
+            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+            if ([[mappingResult.array[0] valueForKey:@"ok"] boolValue]) {
+                successBlock();
+            } else {
+                errorBlock();
+            }
+            [self.networkIndicatorController endNetworking];
+            return;
+        }onError:nil];
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
         } else {
             [self displayNetworkError];
         }
@@ -2082,7 +2116,7 @@ NSString *currentUser;
     } else {
         [user getAvatarImage:^(UIImage *image) {
             [HRPGImageOverlayManager displayImage:image withText:NSLocalizedString(@"Level up!", nil)
-                                        withNotes:[NSString stringWithFormat:@"You are now Level %ld", ([user.level integerValue])]];
+                                        withNotes:[NSString stringWithFormat:@"You are now Level %ld", (long)([user.level integerValue])]];
         } withPetMount:YES onlyHead:NO withBackground:YES useForce:NO];
     }
 

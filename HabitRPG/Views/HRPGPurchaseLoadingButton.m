@@ -12,7 +12,7 @@
 
 @property UILabel *label;
 @property UIActivityIndicatorView *loadingView;
-
+@property UIColor *originalTintColor;
 @end
 
 @implementation HRPGPurchaseLoadingButton
@@ -29,12 +29,13 @@
         self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
         
         self.tintColor = [UIColor blueColor];
+        self.layer.masksToBounds = YES;
         self.text = @"";
         self.confirmText = @"buy";
-        self.doneText = @"done";
+        self.doneText = @"success";
         self.state = HRPGPurchaseButtonStateLabel;
-        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-
+        UILongPressGestureRecognizer *tapGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        tapGestureRecognizer.minimumPressDuration = 0.001;
         [self addGestureRecognizer:tapGestureRecognizer];
     }
     
@@ -68,10 +69,10 @@
 }
 
 - (void)setState:(HRPGPurchaseButtonState)state {
-    _state = state;
-    if (state == HRPGPurchaseButtonStateLabel) {
-        self.label.text = self.text;
+    if (_state == HRPGPurchaseButtonStateError && _state != state) {
+        self.tintColor = self.originalTintColor;
     }
+    _state = state;
     
     switch (state) {
         case HRPGPurchaseButtonStateLabel:
@@ -96,6 +97,7 @@
         case HRPGPurchaseButtonStateError:
             [self removeLoadingIndicatorFromView];
             [self addLabelToView];
+            self.originalTintColor = self.tintColor;
             self.tintColor = [UIColor redColor];
             self.label.text = NSLocalizedString(@"ERROR", nil);
             break;
@@ -133,10 +135,34 @@
     [self.loadingView removeFromSuperview];
 }
 
+- (void)highlightButton {
+    [UIView animateWithDuration:0.2 animations:^() {
+        self.layer.backgroundColor = [self.tintColor CGColor];
+        self.label.textColor = [UIColor whiteColor];
+    }];
+}
+
+- (void)dehighlightButton {
+    [UIView animateWithDuration:0.2 animations:^() {
+        self.layer.backgroundColor = [[UIColor clearColor] CGColor];
+        self.label.textColor = self.tintColor;
+    }];
+}
+
 - (void)handleTap:(UITapGestureRecognizer *)tapGestureRecognizer {
-    if (self.onTouchEvent) {
-        self.onTouchEvent(self);
+    switch (tapGestureRecognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            [self highlightButton];
+            break;
+        case UIGestureRecognizerStateEnded:
+            if (self.onTouchEvent) {
+                self.onTouchEvent(self);
+            }
+        default:
+            [self dehighlightButton];
+            break;
     }
+
 }
 
 @end

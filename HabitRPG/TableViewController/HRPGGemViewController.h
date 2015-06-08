@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRPGManager.h"
 
 @interface HRPGGemViewController : UIViewController
 
 @property BOOL displayNoGemLabel;
+
+@property (nonatomic) HRPGManager *sharedManager;
 
 @end

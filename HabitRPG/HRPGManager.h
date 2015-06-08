@@ -86,6 +86,8 @@
 
 - (void)feedPet:(NSString *)pet withFood:(NSString*)food onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)purchaseGems:(NSDictionary *)receipt onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 - (NSManagedObjectContext *)getManagedObjectContext;
 
 - (void)displayNetworkError;
