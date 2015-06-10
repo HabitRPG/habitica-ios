@@ -50,8 +50,6 @@
     
     [[CargoBay sharedManager] productsWithIdentifiers:[NSSet setWithArray:identifiers]
                                               success:^(NSArray *products, NSArray *invalidIdentifiers) {
-                                                  NSLog(@"Products: %@", products);
-                                                  NSLog(@"Identifiers: %@", invalidIdentifiers);
                                                   if (products.count == 1) {
                                                       self.gemProduct = products[0];
                                                       NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];

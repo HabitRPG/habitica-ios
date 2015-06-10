@@ -88,6 +88,8 @@
 
 - (void)purchaseGems:(NSDictionary *)receipt onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)purchaseItem:(NSString *)itemName fromType:(NSString *)itemType onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 - (NSManagedObjectContext *)getManagedObjectContext;
 
 - (void)displayNetworkError;

@@ -274,9 +274,16 @@ static NSString * const reuseIdentifier = @"Cell";
             break;
         case 1:
             if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
-                [self.sharedManager unlockPath:[self.selectedCustomization getPath] onSuccess:^() {
-                }onError:^() {
-                }];
+                if ([self.entityName isEqualToString:@"Customization"]) {
+                    [self.sharedManager unlockPath:[self.selectedCustomization getPath] onSuccess:^() {
+                    }onError:^() {
+                    }];
+                } else {
+                    [self.sharedManager purchaseItem:[self.selectedCustomization valueForKey:@"key"] fromType:@"gear" onSuccess:^() {
+                        [self.collectionView reloadData];
+                    }onError:^() {
+                    }];
+                }
             }
             break;
         case 2:
