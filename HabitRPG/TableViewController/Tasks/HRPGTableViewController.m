@@ -126,16 +126,8 @@ BOOL editable;
     
     NSString *cellname = @"Cell";
     Task *task = [self taskAtIndexPath:indexPath];
-    if ([task.checklist count] > 0) {
-        if (task.duedate) {
-            cellname = @"SubChecklistCell";
-        } else {
-            cellname = @"ChecklistCell";
-        }
-    } else {
-        if (task.duedate) {
-            cellname = @"SubCell";
-        }
+    if (task.duedate) {
+        cellname = @"SubCell";
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
 
