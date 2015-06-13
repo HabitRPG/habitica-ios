@@ -108,6 +108,10 @@
     }
     
     if ([self.taskType isEqualToString:@"daily"]) {
+        section = [self.form formSectionAtIndex:0];
+        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"startDate" rowType:XLFormRowDescriptorTypeDateInline title:@"Start Date"];
+        row.value = [NSDate new];
+        [section addFormRow:row];
         section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Repeat", nil)];
         [self.form addFormSection:section];
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"monday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Monday", nil)];
@@ -191,6 +195,7 @@
     }
     
     if ([self.taskType isEqualToString:@"daily"]) {
+        [self.form formRowWithTag:@"startDate"].value = self.task.startDate;
         [self.form formRowWithTag:@"monday"].value = self.task.monday;
         [self.form formRowWithTag:@"tuesday"].value = self.task.tuesday;
         [self.form formRowWithTag:@"wednesday"].value = self.task.wednesday;
