@@ -69,7 +69,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
     
     UILabel* footerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 170)];
-    footerView.text = [NSString stringWithFormat:NSLocalizedString(@"Hey! You are awesome!\nVersion %@", nil), [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+    footerView.text = [NSString stringWithFormat:NSLocalizedString(@"Hey! You are awesome!\nVersion %@ (%@)", nil), [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
     footerView.textColor = [UIColor lightGrayColor];
     footerView.textAlignment = NSTextAlignmentCenter;
     footerView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
