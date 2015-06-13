@@ -128,10 +128,12 @@
 }
 
 - (void)purchaseGems {
-    SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:self.gemProduct];
-    payment.quantity = 1;
-    payment.applicationUsername = [[self.sharedManager getUser] hashedValueForAccountName];
-    [[SKPaymentQueue defaultQueue] addPayment:payment];
+    if (self.gemProduct) {
+        SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:self.gemProduct];
+        payment.quantity = 1;
+        payment.applicationUsername = [[self.sharedManager getUser] hashedValueForAccountName];
+        [[SKPaymentQueue defaultQueue] addPayment:payment];
+    }
 }
 
 - (void)verifyTransaction:(SKPaymentTransaction*)transaction {
