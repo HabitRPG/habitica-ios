@@ -291,6 +291,9 @@ User *user;
     if ([reward.key isEqualToString:@"potion"]) {
         [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_potion.png"]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+    } else if ([reward.key isEqualToString:@"armoire"]) {
+        [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_armoire.png"]
+                     placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     } else if (![reward.key isEqualToString:@"reward"]) {
         [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", reward.key]]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];

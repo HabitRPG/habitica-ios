@@ -851,6 +851,16 @@ NSString *currentUser;
     potionMapping.identificationAttributes = @[@"key"];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:potionMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"potion" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    RKEntityMapping *armoireMapping = [RKEntityMapping mappingForEntityForName:@"Armoire" inManagedObjectStore:managedObjectStore];
+    [armoireMapping addAttributeMappingsFromDictionary:@{
+                                                        @"text" : @"text",
+                                                        @"key" : @"key",
+                                                        @"value" : @"value",
+                                                        @"notes" : @"notes",
+                                                        @"type" : @"type",}];
+    armoireMapping.identificationAttributes = @[@"key"];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:armoireMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"armoire" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
     RKEntityMapping *questMapping = [RKEntityMapping mappingForEntityForName:@"Quest" inManagedObjectStore:managedObjectStore];
     questMapping.forceCollectionMapping = YES;
     [questMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
