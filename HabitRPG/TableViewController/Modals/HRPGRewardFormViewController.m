@@ -58,7 +58,7 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notes" rowType:XLFormRowDescriptorTypeText title:NSLocalizedString(@"Notes", nil)];
     [section addFormRow:row];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"value" rowType:XLFormRowDescriptorTypeNumber title:NSLocalizedString(@"Value", nil)];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"value" rowType:XLFormRowDescriptorTypeInteger title:NSLocalizedString(@"Value", nil)];
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Tags", nil)];
