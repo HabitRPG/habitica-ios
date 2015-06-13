@@ -334,8 +334,7 @@ BOOL editable;
         case NSFetchedResultsChangeDelete: {
             if (self.openedIndexPath) {
                 if (indexPath.section == self.openedIndexPath.section && indexPath.item == self.openedIndexPath.item) {
-                    Task *task = [self taskAtIndexPath:indexPath];
-                    [tableView deleteRowsAtIndexPaths:[self checklistitemIndexPathsForTask:task atIndexPath:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                    [tableView deleteRowsAtIndexPaths:[self checklistitemIndexPathsWithOffset:self.indexOffset atIndexPath:indexPath] withRowAnimation:UITableViewRowAnimationFade];
                     self.openedIndexPath = nil;
                     self.indexOffset = 0;
                 }
@@ -446,6 +445,14 @@ BOOL editable;
     return nil;
 }
 
+- (NSArray*)checklistitemIndexPathsWithOffset:(NSInteger)offset atIndexPath:(NSIndexPath*)indexPath {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int i = 1; i <= offset; i++) {
+        [array addObject:[NSIndexPath indexPathForItem:indexPath.item + i inSection:indexPath.section]];
+    }
+    return array;
+}
+
 - (NSArray*)checklistitemIndexPathsForTask:(Task*)task atIndexPath:(NSIndexPath*)indexPath {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     for (int i = 1; i <= task.checklist.count; i++) {
@@ -453,7 +460,6 @@ BOOL editable;
     }
     return array;
 }
-
 
 #pragma mark - Navigation
 
