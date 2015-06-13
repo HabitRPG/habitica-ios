@@ -33,6 +33,9 @@
 @property(nonatomic, retain) NSNumber *friday;
 @property(nonatomic, retain) NSNumber *saturday;
 @property(nonatomic, retain) NSNumber *sunday;
+@property(nonatomic, retain) NSNumber *everyX;
+@property(nonatomic, retain) NSString *frequency;
+@property(nonatomic, retain) NSDate *startDate;
 @property(nonatomic, retain) NSOrderedSet *checklist;
 @property(nonatomic, retain) NSSet *tags;
 @property(nonatomic, getter = getTagDictionary, setter = setTagDictionary:) NSDictionary *tagDictionary;

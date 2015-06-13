@@ -36,15 +36,45 @@
 @dynamic tags;
 @dynamic user;
 @dynamic duedate;
+@dynamic everyX;
+@dynamic frequency;
+@dynamic startDate;
 
 
 - (BOOL)dueToday {
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"EEEE"];
-    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier: @"en_US"];
-    df.locale = locale;
-    NSString *dateString = [df stringFromDate:[NSDate date]];
-    return [[self valueForKey:[dateString lowercaseString]] boolValue];
+    if (self.startDate) {
+        if ([self.startDate compare:[NSDate date]] == NSOrderedDescending) {
+            return NO;
+        }
+    }
+    
+    if ([self.frequency isEqualToString:@"weekly"]) {
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"EEEE"];
+        NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier: @"en_US"];
+        df.locale = locale;
+        NSString *dateString = [df stringFromDate:[NSDate date]];
+        return [[self valueForKey:[dateString lowercaseString]] boolValue];
+    } else {
+        NSDate *startDate = [NSDate date];
+        if (self.startDate) {
+            startDate = self.startDate;
+            NSDate *fromDate;
+            NSDate *toDate;
+            
+            NSCalendar *calendar = [NSCalendar currentCalendar];
+            
+            [calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate
+                         interval:NULL forDate:startDate];
+            [calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDate
+                         interval:NULL forDate:[NSDate date]];
+            
+            NSDateComponents *difference = [calendar components:NSCalendarUnitDay
+                                                       fromDate:fromDate toDate:toDate options:0];
+            return ([difference day] % [self.everyX integerValue]) == 0;
+        }
+    }
+    return YES;
 }
 
 - (void)addChecklistObject:(ChecklistItem *)value {

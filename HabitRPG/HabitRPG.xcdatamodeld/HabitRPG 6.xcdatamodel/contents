@@ -160,6 +160,8 @@
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="down" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="duedate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="everyX" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="frequency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="friday" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="monday" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
@@ -167,6 +169,7 @@
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="priority" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="saturday" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="streak" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="sunday" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
@@ -289,7 +292,7 @@
         <element name="Reward" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="135"/>
-        <element name="Task" positionX="0" positionY="0" width="128" height="405"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="450"/>
         <element name="User" positionX="0" positionY="0" width="128" height="1365"/>
         <element name="Armoire" positionX="18" positionY="162" width="128" height="45"/>
     </elements>

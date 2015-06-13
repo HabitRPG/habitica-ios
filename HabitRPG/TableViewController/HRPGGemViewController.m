@@ -133,6 +133,8 @@
         payment.quantity = 1;
         payment.applicationUsername = [[self.sharedManager getUser] hashedValueForAccountName];
         [[SKPaymentQueue defaultQueue] addPayment:payment];
+    } else {
+        self.purchaseButton.state = HRPGPurchaseButtonStateError;
     }
 }
 
