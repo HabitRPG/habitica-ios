@@ -1298,12 +1298,13 @@ NSString *currentUser;
         user.experience = taskResponse.experience;
         NSNumber *healthDiff = [NSNumber numberWithFloat:([taskResponse.health floatValue] - [user.health floatValue])];
         user.health = taskResponse.health ? taskResponse.health : user.health;
+        NSNumber *magicDiff = [NSNumber numberWithFloat:([taskResponse.magic floatValue] - [user.magic floatValue])];
         user.magic = taskResponse.magic ? taskResponse.magic : user.magic;
 
         NSNumber *goldDiff = [NSNumber numberWithFloat:[taskResponse.gold floatValue] - [user.gold floatValue]];
         user.gold = taskResponse.gold ? taskResponse.gold : user.gold;
         
-        [self displayTaskSuccessNotification:healthDiff withExperienceDiff:expDiff withGoldDiff:goldDiff];
+        [self displayTaskSuccessNotification:healthDiff withExperienceDiff:expDiff withGoldDiff:goldDiff withMagicDiff:magicDiff];
         if ([task.type isEqual:@"daily"] || [task.type isEqual:@"todo"]) {
             task.completed = [NSNumber numberWithBool:([withDirection isEqual:@"up"])];
         }
@@ -1336,7 +1337,7 @@ NSString *currentUser;
         } else {
             nextLevel = [NSNumber numberWithInt:0];
         }
-        successBlock(@[healthDiff, expDiff, user.gold, user.health, user.experience, nextLevel]);
+        successBlock(@[healthDiff, expDiff, user.gold, user.health, user.experience, nextLevel, magicDiff]);
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -2123,14 +2124,14 @@ NSString *currentUser;
                                 }];
 }
 
-- (void)displayTaskSuccessNotification:(NSNumber *)healthDiff withExperienceDiff:(NSNumber *)expDiff withGoldDiff:(NSNumber *)goldDiff {
+- (void)displayTaskSuccessNotification:(NSNumber *)healthDiff withExperienceDiff:(NSNumber *)expDiff withGoldDiff:(NSNumber *)goldDiff withMagicDiff:(NSNumber *)magicDiff {
     UIColor *notificationColor = [UIColor colorWithRed:0.973 green:0.753 blue:0.000 alpha:1.000];
     NSString *content;
     if ([healthDiff intValue] < 0) {
         notificationColor = [UIColor colorWithRed:0.733 green:0.208 blue:0.220 alpha:1.000];
-        content = [NSString stringWithFormat:@"%.1f HP", [healthDiff floatValue]];
+        content = [NSString stringWithFormat:@"You lost %.1f health and %.1f mana", [healthDiff floatValue]*-1, [magicDiff floatValue]*-1];
     } else {
-        content = [NSString stringWithFormat:@"You earned %ld experience and %.2f gold on your adventures", (long) [expDiff integerValue], [goldDiff floatValue]];
+        content = [NSString stringWithFormat:@"You earned %ld experience and %.2f gold and gained %.1f mana.", (long) [expDiff integerValue], [goldDiff floatValue], [magicDiff floatValue]];
     }
     NSDictionary *options = @{kCRToastTextKey : content,
             kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
