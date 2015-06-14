@@ -17,6 +17,8 @@
 
 @implementation User
 
+@dynamic armoireEnabled;
+@dynamic armoireEmpty;
 @dynamic acceptedCommunityGuidelines;
 @dynamic background;
 @dynamic balance;

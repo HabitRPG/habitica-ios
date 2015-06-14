@@ -374,6 +374,8 @@ NSString *currentUser;
             @"flags.dropsEnabled" : @"dropsEnabled",
             @"flags.itemsEnabled" : @"itemsEnabled",
             @"flags.classSelected" : @"selectedClass",
+            @"flags.armoireEnabled" : @"armoireEnabled",
+            @"flags.armoireEmpty" : @"armoireEmpty",
             @"flags.communityGuidelinesAccepted" : @"acceptedCommunityGuidelines",
             @"purchased" : @"customizationsDictionary"
     }];

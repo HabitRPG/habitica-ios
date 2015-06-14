@@ -13,6 +13,8 @@
 
 @interface User : NSManagedObject
 
+@property(nonatomic, retain) NSNumber *armoireEnabled;
+@property(nonatomic, retain) NSNumber *armoireEmpty;
 @property(nonatomic, retain) NSNumber *acceptedCommunityGuidelines;
 @property(nonatomic, retain) NSString *background;
 @property(nonatomic, retain) NSNumber *balance;

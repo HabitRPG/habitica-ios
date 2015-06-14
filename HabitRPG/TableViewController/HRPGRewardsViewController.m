@@ -220,6 +220,11 @@ User *user;
                 if ([reward isKindOfClass:[Reward class]]) {
                     [customRewardsArray addObject:reward];
                 } else {
+                    if ([reward.key isEqualToString:@"armoire"]) {
+                        if (![user.armoireEnabled boolValue]) {
+                            continue;
+                        }
+                    }
                     [inGameItemsArray insertObject:reward atIndex:0];
                 }
         }
