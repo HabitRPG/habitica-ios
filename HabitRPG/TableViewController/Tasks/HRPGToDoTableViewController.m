@@ -26,7 +26,6 @@
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
 @property NSDateFormatter *dateFormatter;
-@property UILabel *toggleCompletedView;
 @end
 
 @implementation HRPGToDoTableViewController
@@ -57,30 +56,21 @@
     self.dateFormatter.dateStyle = NSDateFormatterMediumStyle;
     self.dateFormatter.timeStyle = NSDateFormatterNoStyle;
     
-    self.toggleCompletedView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 45)];
-    self.toggleCompletedView.text = NSLocalizedString(@"Show completed To-Dos", nil);
-    self.toggleCompletedView.textAlignment = NSTextAlignmentCenter;
-    self.toggleCompletedView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
-    self.toggleCompletedView.textColor = [UIColor colorWithRed:0.837 green:0.652 blue:0.238 alpha:1.000];
-
-    CALayer *bottomBorder = [CALayer layer];
-    bottomBorder.frame = CGRectMake(0.0f, self.toggleCompletedView.frame.size.height, self.toggleCompletedView.frame.size.width, 1.0f);
-    bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
-                                                     alpha:1.0f].CGColor;
-    [self.toggleCompletedView.layer addSublayer:bottomBorder];
-    CALayer *topBorder = [CALayer layer];
-    topBorder.frame = CGRectMake(0.0f, -1.0f, self.toggleCompletedView.frame.size.width, 1.0f);
-    topBorder.backgroundColor = [UIColor colorWithWhite:0.8f
-                                                     alpha:1.0f].CGColor;
-    [self.toggleCompletedView.layer addSublayer:topBorder];
+    UILabel *footerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 45)];
+    footerView.text = NSLocalizedString(@"Show completed To-Dos", nil);
+    footerView.textAlignment = NSTextAlignmentCenter;
+    footerView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
+    footerView.textColor = [UIColor colorWithRed:0.837 green:0.652 blue:0.238 alpha:1.000];
     
-    self.tableView.tableFooterView = self.toggleCompletedView;
     
     UITapGestureRecognizer *singleFingerTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(toggleCompletedTasks:)];
-    [self.toggleCompletedView setUserInteractionEnabled:YES];
-    [self.toggleCompletedView addGestureRecognizer:singleFingerTap];
+    [footerView setUserInteractionEnabled:YES];
+    [footerView addGestureRecognizer:singleFingerTap];
+    
+    self.tableView.tableFooterView = footerView;
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -93,15 +83,15 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (self.tableView.tableFooterView != self.toggleCompletedView && section == (self.tableView.numberOfSections-1)) {
+    if (self.displayCompleted && section == (self.tableView.numberOfSections-1)) {
         return 45;
     }
     return 0.1;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (self.tableView.tableFooterView != self.toggleCompletedView && section == (self.tableView.numberOfSections-1)) {
-        return self.toggleCompletedView;
+    if (self.displayCompleted && section == (self.tableView.numberOfSections-1)) {
+        return [self toggleViewWithText:NSLocalizedString(@"Hide completed To-Dos", nil)];
     }
     return nil;
 }
@@ -299,15 +289,11 @@
         [footerView addGestureRecognizer:singleFingerTap];
         self.tableView.tableFooterView = footerView;
 
-        self.toggleCompletedView.text = NSLocalizedString(@"Hide completed To-Dos", nil);
         NSIndexSet *index = [NSIndexSet indexSetWithIndex:[self.tableView numberOfSections]];
         [self.tableView insertSections:index withRowAnimation:UITableViewRowAnimationBottom];
     } else {
-        self.toggleCompletedView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 45);
-        self.tableView.tableFooterView = self.toggleCompletedView;
-        [UIView animateWithDuration:0.4f animations:^() {
-            self.toggleCompletedView.text = NSLocalizedString(@"Show completed To-Dos", nil);
-        }];
+        self.tableView.tableFooterView = [self toggleViewWithText:NSLocalizedString(@"Show completed To-Dos", nil)];
+        
         if (self.fetchedResultsController.sections.count == 0) {
             if (self.tableView.numberOfSections == 1) {
                 [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationBottom];
@@ -336,6 +322,23 @@
     CGPoint p = [gesture locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
     [self tableView:self.tableView expandTaskAtIndexPath:indexPath];
+}
+
+- (UILabel*) toggleViewWithText:(NSString*)text {
+    UILabel *view = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 45)];
+    view.text = text;
+    view.textAlignment = NSTextAlignmentCenter;
+    view.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
+    view.textColor = [UIColor colorWithRed:0.837 green:0.652 blue:0.238 alpha:1.000];
+    
+    
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(toggleCompletedTasks:)];
+    [view setUserInteractionEnabled:YES];
+    [view addGestureRecognizer:singleFingerTap];
+    
+    return view;
 }
 
 @end

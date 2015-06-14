@@ -304,7 +304,7 @@ ChatMessage *selectedMessage;
     if (indexPath.section == 0 && indexPath.item == 1) {
         [self performSegueWithIdentifier:@"MembersSegue" sender:self];
     } else if (indexPath.section == 1 && indexPath.item == 0) {
-        if ([party.questActive boolValue]) {
+        if (quest) {
             [self performSegueWithIdentifier:@"QuestDetailSegue" sender:self];
         } else {
             [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -614,6 +614,8 @@ ChatMessage *selectedMessage;
         }
         [self.tableView reloadData];
 
+    } else {
+        quest = nil;
     }
 }
 

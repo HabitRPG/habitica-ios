@@ -83,6 +83,7 @@
                     NSLog(@"%@", transaction.error);
                     self.purchaseButton.state = HRPGPurchaseButtonStateError;
                     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                    self.navigationItem.leftBarButtonItem.enabled = YES;
                     break;
                 case SKPaymentTransactionStatePurchased:
                     [self verifyTransaction:transaction];
@@ -129,6 +130,7 @@
 
 - (void)purchaseGems {
     if (self.gemProduct) {
+        self.navigationItem.leftBarButtonItem.enabled = NO;
         SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:self.gemProduct];
         payment.quantity = 1;
         payment.applicationUsername = [[self.sharedManager getUser] hashedValueForAccountName];
