@@ -10,6 +10,11 @@
 
 @interface HRPGUserBuyResponse : NSObject
 
+@property(nonatomic, retain) NSString *armoireType;
+@property(nonatomic, retain) NSString *armoireKey;
+@property(nonatomic, retain) NSString *armoireArticle;
+@property(nonatomic, retain) NSString *armoireText;
+@property(nonatomic, retain) NSNumber *armoireValue;
 @property(nonatomic, retain) NSString *costumeArmor;
 @property(nonatomic, retain) NSString *costumeBack;
 @property(nonatomic, retain) NSString *costumeHead;

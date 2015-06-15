@@ -84,7 +84,7 @@ NSString *currentUser;
 
     // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://habitrpg.com"]];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3005"]];
     objectManager.managedObjectStore = managedObjectStore;
 
     [RKObjectManager setSharedManager:objectManager];
@@ -592,6 +592,11 @@ NSString *currentUser;
             @"items.gear.costume.back" : @"costumeBack",
             @"items.currentPet" : @"currentPet",
             @"items.currentMount" : @"currentMount",
+            @"armoire.type": @"armoireType",
+            @"armoire.dropKey": @"armoireKey",
+            @"armoire.dropArticle": @"armoireArticle",
+            @"armoire.dropText": @"armoireText",
+            @"armoire.value": @"armoireValue",
     }];
     buyMapping.assignsDefaultValueForMissingAttributes = NO;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:buyMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/buy/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -1374,22 +1379,6 @@ NSString *currentUser;
         NSNumber *goldDiff = [NSNumber numberWithFloat:[taskResponse.gold floatValue] - [user.gold floatValue]];
         user.gold = taskResponse.gold;
         [self displayRewardNotification:goldDiff];
-        if (taskResponse.dropKey) {
-            NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-            // Edit the entity name as appropriate.
-            NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" inManagedObjectContext:[self getManagedObjectContext]];
-            [fetchRequest setEntity:entity];
-            NSPredicate *predicate;
-            predicate = [NSPredicate predicateWithFormat:@"type==%@ || key==%@", taskResponse.dropType, taskResponse.dropKey];
-            [fetchRequest setPredicate:predicate];
-            NSError *error = nil;
-            NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
-            if ([fetchedObjects count] == 1) {
-                Item *droppedItem = [fetchedObjects objectAtIndex:0];
-                droppedItem.owned = [NSNumber numberWithLong:([droppedItem.owned integerValue] + 1)];
-                [self displayDropNotification:taskResponse.dropKey withType:taskResponse.dropType withNote:taskResponse.dropNote];
-            }
-        }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         successBlock();
         [self.networkIndicatorController endNetworking];
@@ -1656,7 +1645,18 @@ NSString *currentUser;
         user.health = response.health;
         NSNumber *goldDiff = [NSNumber numberWithFloat:[response.gold floatValue] - [user.gold floatValue]];
         user.gold = response.gold;
-        [self displayRewardNotification:goldDiff];
+        
+        if (response.armoireType) {
+            NSString *text;
+            if (response.armoireArticle) {
+                text = [NSString stringWithFormat:@"%@ %@", response.armoireArticle, response.armoireText];
+            } else {
+                text = response.armoireText;
+            }
+            [self displayArmoireNotification:response.armoireType withKey:response.armoireKey withText:text withValue:response.armoireValue];
+        } else {
+            [self displayRewardNotification:goldDiff];
+        }
         user.magic = response.magic;
         user.equippedArmor = response.equippedArmor;
         user.equippedBack = response.equippedBack;
@@ -2145,6 +2145,50 @@ NSString *currentUser;
     }];
 }
 
+- (void)displayArmoireNotification:(NSString *)type withKey:(NSString *)key withText:(NSString *)text withValue:(NSNumber *)value {
+    if ([type isEqualToString:@"experience"]) {
+        NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You wrestle with the Armoire and gain %@ Experience. Take that!", nil), value],
+                    kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                    kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                    kCRToastBackgroundColorKey : [UIColor colorWithRed:0.899 green:0.680 blue:0.048 alpha:1.000],
+                    kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconArrowCircleOUp]
+                    };
+        [CRToastManager showNotificationWithOptions:options
+                                    completionBlock:^{
+                                    }];
+    } else if ([type isEqualToString:@"food"]) {
+        [self getImage:[NSString stringWithFormat:@"Pet_Food_%@", key] withFormat:@"png" onSuccess:^(UIImage *image) {
+            UIColor *notificationColor = [UIColor colorWithRed:0.107 green:0.352 blue:0.597 alpha:1.000];
+            NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You rummage in the Armoire and find %@. What's that doing in here?", nil), text],
+                                      kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                                      kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                                      kCRToastBackgroundColorKey : notificationColor,
+                                      kCRToastImageKey : image
+                                      };
+            [CRToastManager showNotificationWithOptions:options
+                                        completionBlock:^{
+                                        }];
+        }onError:^() {
+            
+        }];
+    } else if ([type isEqualToString:@"gear"]) {
+        [self getImage:[NSString stringWithFormat:@"shop_%@", key] withFormat:@"png" onSuccess:^(UIImage *image) {
+            UIColor *notificationColor = [UIColor colorWithRed:0.111 green:0.539 blue:0.283 alpha:1.000];
+            NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You found a piece of rare Equipment in the Armoire: %@! Awesome!", nil), text],
+                                      kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                                      kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                                      kCRToastBackgroundColorKey : notificationColor,
+                                      kCRToastImageKey : image
+                                      };
+            [CRToastManager showNotificationWithOptions:options
+                                        completionBlock:^{
+                                        }];
+        }onError:^() {
+            
+        }];
+    }
+}
+
 - (void)displayLevelUpNotification {
     [self fetchUser:^() {
         
@@ -2207,7 +2251,7 @@ NSString *currentUser;
     } else {
         description = [NSString stringWithFormat:@"You found a %@ %@!", name, type];
     }
-    [self getImage:[NSString stringWithFormat:@"Pet_%@_%@.png", type, name] withFormat:@"png" onSuccess:^(UIImage *image) {
+    [self getImage:[NSString stringWithFormat:@"Pet_%@_%@", type, name] withFormat:@"png" onSuccess:^(UIImage *image) {
         UIColor *notificationColor = [UIColor colorWithRed:0.107 green:0.352 blue:0.597 alpha:1.000];
         NSDictionary *options = @{kCRToastTextKey : description,
                                   kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
