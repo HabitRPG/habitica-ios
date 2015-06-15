@@ -138,7 +138,10 @@
     [self.form addFormSection:section];
     [self fetchTags];
     for (Tag *tag in self.tags) {
-        [section addFormRow:[XLFormRowDescriptor formRowDescriptorWithTag:[NSString stringWithFormat:@"tag.%@", tag.id] rowType:XLFormRowDescriptorTypeBooleanCheck title:tag.name]];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:[NSString stringWithFormat:@"tag.%@", tag.id] rowType:XLFormRowDescriptorTypeBooleanCheck title:tag.name];
+        row.value = [NSNumber numberWithBool:[self.activeTags containsObject:tag]];
+        [section addFormRow:row];
+        
     }
     
     self.formFilled = YES;

@@ -21,4 +21,5 @@
 @property NSString *readableTaskType;
 @property Task *task;
 @property BOOL editTask;
+@property NSArray *activeTags;
 @end

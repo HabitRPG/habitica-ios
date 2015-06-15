@@ -37,6 +37,7 @@ BOOL editable;
     self.refreshControl = refresh;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectTags:) name:@"tagsSelected"  object:nil];
+    [self didSelectTags:nil];
 }
 
 - (void)refresh {
@@ -463,6 +464,8 @@ BOOL editable;
         HRPGFormViewController *formController = (HRPGFormViewController *) destViewController.topViewController;
         formController.taskType = self.typeName;
         formController.readableTaskType = self.readableName;
+        HRPGTabBarController *tabBarController = (HRPGTabBarController*) self.tabBarController;
+        formController.activeTags = tabBarController.selectedTags;
         if (editedTask) {
             formController.editTask = YES;
             formController.task = editedTask;
