@@ -46,6 +46,12 @@ User *user;
     HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
     [self.tableView setContentInset:(UIEdgeInsetsMake([navigationController getContentOffset], 0, 0, 0))];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(reloadAllData:)
+     name:@"shouldReloadAllData"
+     object:nil];
 }
 
 -(void)initializeForm {

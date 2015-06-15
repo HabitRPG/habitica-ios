@@ -16,7 +16,6 @@
 
 @interface HRPGRewardFormViewController ()
 @property (nonatomic) NSArray *tags;
-@property (nonatomic) XLFormSectionDescriptor *duedateSection;
 @end
 
 @implementation HRPGRewardFormViewController
@@ -41,8 +40,7 @@
 }
 
 -(void)initializeForm {
-    XLFormDescriptor *formDescriptor = [XLFormDescriptor formDescriptorWithTitle:@"New"];
-    
+    XLFormDescriptor *formDescriptor = [XLFormDescriptor formDescriptorWithTitle:NSLocalizedString(@"New Reward", nil)];
     formDescriptor.assignFirstResponderOnShow = YES;
     
     XLFormSectionDescriptor *section;
@@ -59,6 +57,7 @@
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"value" rowType:XLFormRowDescriptorTypeInteger title:NSLocalizedString(@"Value", nil)];
+    row.required = YES;
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Tags", nil)];
@@ -71,6 +70,7 @@
     self.form = formDescriptor;
 }
 - (void)fillEditForm {
+    self.navigationItem.title = NSLocalizedString(@"Edit Reward", nil);
     [self.form formRowWithTag:@"text"].value = [self.reward.text stringByReplacingEmojiCheatCodesWithUnicode];
     [self.form formRowWithTag:@"notes"].value = [self.reward.notes stringByReplacingEmojiCheatCodesWithUnicode];
     [self.form formRowWithTag:@"value"].value = self.reward.value;
