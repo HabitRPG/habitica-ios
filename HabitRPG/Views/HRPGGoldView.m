@@ -7,14 +7,15 @@
 //
 
 #import "HRPGGoldView.h"
+#import "HRPGAbbrevNumberLabel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRPGGoldView ()
 
 @property UIImageView *goldImageView;
-@property UILabel *goldLabel;
+@property HRPGAbbrevNumberLabel *goldLabel;
 @property UIImageView *silverImageView;
-@property UILabel *silverLabel;
+@property HRPGAbbrevNumberLabel *silverLabel;
 @property UIView *moneyView;
 @property NSNumber *gold;
 
@@ -31,7 +32,7 @@
         self.goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, self.frame.size.height)];
         self.goldImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.goldImageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]];
-        self.goldLabel = [[UILabel alloc] initWithFrame:CGRectMake(26, 0, 100, self.frame.size.height)];
+        self.goldLabel = [[HRPGAbbrevNumberLabel alloc] initWithFrame:CGRectMake(26, 0, 100, self.frame.size.height)];
         self.goldLabel.text = [NSString stringWithFormat:@"%ld", (long) [self.gold integerValue]];
         [self.goldLabel sizeToFit];
         
@@ -39,7 +40,7 @@
         self.silverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(30 + self.goldLabel.frame.size.width, 0, 25, self.frame.size.height)];
         self.silverImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.silverImageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_silver.png"]];
-        self.silverLabel = [[UILabel alloc] initWithFrame:CGRectMake(30 + self.goldLabel.frame.size.width + 26, 0, 100, self.frame.size.height)];
+        self.silverLabel = [[HRPGAbbrevNumberLabel alloc] initWithFrame:CGRectMake(30 + self.goldLabel.frame.size.width + 26, 0, 100, self.frame.size.height)];
         int silver = ([self.gold floatValue] - [self.gold integerValue]) * 100;
         self.silverLabel.text = [NSString stringWithFormat:@"%d", silver];
         [self.silverLabel sizeToFit];

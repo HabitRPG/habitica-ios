@@ -40,6 +40,7 @@
 		D9660D751AB23F150084CE37 /* HRPGTopHeaderNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9660D741AB23F150084CE37 /* HRPGTopHeaderNavigationController.m */; };
 		D9660D781AB248030084CE37 /* HRPGUserTopHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */; };
 		D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D966557318FB129F0014C09D /* HRPGSettingsViewController.m */; };
+		D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */; };
 		D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */; };
 		D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */; };
 		D979AD131AF3CF6C00D59FAE /* Customization.m in Sources */ = {isa = PBXBuildFile; fileRef = D979AD121AF3CF6C00D59FAE /* Customization.m */; };
@@ -201,6 +202,8 @@
 		D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGUserTopHeader.m; sourceTree = "<group>"; };
 		D966557218FB129F0014C09D /* HRPGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSettingsViewController.h; sourceTree = "<group>"; };
 		D966557318FB129F0014C09D /* HRPGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSettingsViewController.m; sourceTree = "<group>"; };
+		D96760C61B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAbbrevNumberLabel.h; sourceTree = "<group>"; };
+		D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAbbrevNumberLabel.m; sourceTree = "<group>"; };
 		D967755519F1379800A21F45 /* HabitRPG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitRPG.xcdatamodel; sourceTree = "<group>"; };
 		D9722B1819B7AEA1009D8AD3 /* HRPGNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGNewsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGNewsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -623,6 +626,8 @@
 				D9A28F711B08DF58002907E0 /* HRPGPurchaseButton.m */,
 				D9C89CF41B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.h */,
 				D9C89CF51B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m */,
+				D96760C61B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.h */,
+				D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1102,6 +1107,7 @@
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
 				D9BA33D11AB5E0C90028AFEC /* HRPGGoldView.m in Sources */,
 				D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */,
+				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
 				D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */,
 				D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */,
 				D97C71E718F32FED0089FDC6 /* Potion.m in Sources */,
