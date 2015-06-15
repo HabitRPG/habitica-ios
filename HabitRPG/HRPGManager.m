@@ -1840,8 +1840,9 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
 
     NSString *url = nil;
-    NSInteger health = [user.health floatValue];
-    CGFloat mana = [user.magic integerValue];
+    CGFloat health = [user.health floatValue];
+    CGFloat gold = [user.gold floatValue];
+    NSInteger mana = [user.magic integerValue];
     if (target) {
         url = [NSString stringWithFormat:@"/api/v2/user/class/cast/%@?targetType=%@&targetId=%@", spell, targetType, target];
     } else {
@@ -1850,7 +1851,7 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:nil path:url parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        [self displaySpellNotification:(mana - [user.magic integerValue]) withHealthDiff:([user.health floatValue] - health)];
+        [self displaySpellNotification:(mana - [user.magic integerValue]) withHealthDiff:([user.health floatValue] - health) withGoldDiff:([user.gold floatValue] - gold)];
         successBlock();
         [self.networkIndicatorController endNetworking];
         return;
@@ -2223,12 +2224,15 @@ NSString *currentUser;
 
 }
 
-- (void)displaySpellNotification:(NSInteger)manaDiff withHealthDiff:(CGFloat)healthDiff {
+- (void)displaySpellNotification:(NSInteger)manaDiff withHealthDiff:(CGFloat)healthDiff withGoldDiff:(CGFloat)goldDiff {
     UIColor *notificationColor = [UIColor colorWithRed:0.973 green:0.753 blue:0.000 alpha:1.000];
     NSString *content;
     if (healthDiff > 0) {
         notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
-        content = [NSString stringWithFormat:@"Health: +%.1f\n Mana: -%ld", healthDiff, (long) manaDiff];
+        content = [NSString stringWithFormat:@"Health: +%.1f\nMana: -%ld", healthDiff, (long) manaDiff];
+    } else if (goldDiff > 0) {
+            notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
+            content = [NSString stringWithFormat:@"Gold: +%.1f\nMana: -%ld", goldDiff, (long) manaDiff];
     } else {
         content = [NSString stringWithFormat:@"Mana: -%ld", (long) manaDiff];
     }
