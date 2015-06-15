@@ -84,7 +84,7 @@ NSString *currentUser;
 
     // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3005"]];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://habitrpg.com"]];
     objectManager.managedObjectStore = managedObjectStore;
 
     [RKObjectManager setSharedManager:objectManager];
@@ -736,9 +736,19 @@ NSString *currentUser;
             @"items.pets" : @"petCountArray"
     }];
     memberMapping.identificationAttributes = @[@"id"];
+    RKEntityMapping *memberIdMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
+    [memberIdMapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:nil toKeyPath:@"id"]];
+    memberIdMapping.identificationAttributes = @[@"id"];
+    RKDynamicMapping* dynamicMemberMapping = [RKDynamicMapping new];
+    [dynamicMemberMapping setObjectMappingForRepresentationBlock:^RKObjectMapping *(id representation) {
+        if ([representation isKindOfClass:[NSString class]]) {
+            return memberIdMapping;
+        }
+        return memberMapping;
+    }];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"members"
                                                                                   toKeyPath:@"member"
-                                                                                withMapping:memberMapping]];
+                                                                                withMapping:dynamicMemberMapping]];
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/groups/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
