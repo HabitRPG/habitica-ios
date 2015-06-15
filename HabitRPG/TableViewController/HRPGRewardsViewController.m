@@ -37,16 +37,13 @@ User *user;
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
-
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-
-    if ([keyChain stringForKey:@"id"] == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-        UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        [self presentViewController:navigationController animated:NO completion:nil];
-    }
     
     user = [self.sharedManager getUser];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(reloadAllData:)
+     name:@"shouldReloadAllData"
+     object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -64,6 +61,11 @@ User *user;
         [self.refreshControl endRefreshing];
         [self.sharedManager displayNetworkError];
     }];
+}
+
+- (void)reloadAllData:(NSNotification *)notification {
+    _filteredData = nil;
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source

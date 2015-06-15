@@ -137,6 +137,7 @@ User *user;
 
     }];
     [self.sharedManager resetSavedDatabase:YES onComplete:^() {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];
         [activityView dismiss:^() {
 
         }];

@@ -128,6 +128,7 @@
         [_sharedManager registerUser:self.usernameField.text withPassword:self.passwordField.text withEmail:self.emailField.text onSuccess:^() {
             [_sharedManager setCredentials];
             [_sharedManager fetchUser:^() {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];
                 [self dismissViewControllerAnimated:YES completion:nil];
             }                 onError:^() {
                 [self dismissViewControllerAnimated:YES completion:nil];
@@ -153,6 +154,7 @@
                 [introView displayIntro];
             }
             [_sharedManager fetchUser:^() {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];
                 [self dismissViewControllerAnimated:YES completion:nil];
             }                 onError:^() {
                 [self dismissViewControllerAnimated:YES completion:nil];
