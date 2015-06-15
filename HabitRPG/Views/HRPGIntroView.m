@@ -70,7 +70,7 @@
         
         EAIntroPage *todoPage = [EAIntroPage page];
         todoPage.title = NSLocalizedString(@"To-Dos", nil);
-        todoPage.desc = NSLocalizedString(@"1. To-Dos are your To-Do list!\n2. Check them off for gold and experience.\n3. Tap and HOLD to edit!.", nil);
+        todoPage.desc = NSLocalizedString(@"1. To-Dos are your To-Do list!\n2. Check them off for gold and experience.\n3. Tap and HOLD to edit!", nil);
 
         todoPage.titleFont = titleFont;
         todoPage.descFont = font;

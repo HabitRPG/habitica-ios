@@ -69,14 +69,20 @@
     scaleAnimation.velocity = [NSValue valueWithCGSize:CGSizeMake(-3.f, -3.f)];
     scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
     scaleAnimation.springBounciness = 18.0f;
-    scaleAnimation.beginTime = 0.5f;
+    if ([self.layer pop_animationForKey:@"layerScaleSmallAnimation"]) {
+        scaleAnimation.beginTime = 0.6f;
+    }
     [self.layer pop_addAnimation:scaleAnimation forKey:@"layerScaleSpringAnimation"];
 }
 
 - (void)scaleToDefault
 {
+    [self.layer pop_removeAnimationForKey:@"layerScaleSmallAnimation"];
     POPBasicAnimation *scaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
     scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
+    if ([self.layer pop_animationForKey:@"layerScaleSmallAnimation"]) {
+        scaleAnimation.beginTime = 0.6f;
+    }
     [self.layer pop_addAnimation:scaleAnimation forKey:@"layerScaleDefaultAnimation"];
 }
 
