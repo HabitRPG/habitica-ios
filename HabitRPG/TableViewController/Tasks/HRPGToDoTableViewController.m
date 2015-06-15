@@ -329,7 +329,7 @@
     view.text = text;
     view.textAlignment = NSTextAlignmentCenter;
     view.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
-    view.textColor = [UIColor colorWithRed:0.837 green:0.652 blue:0.238 alpha:1.000];
+    view.textColor = [UIColor colorWithRed:0.098 green:0.765 blue:0.753 alpha:1.000];
     
     
     UITapGestureRecognizer *singleFingerTap =
