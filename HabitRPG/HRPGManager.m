@@ -2138,7 +2138,7 @@ NSString *currentUser;
 }
 
 - (void)displayTaskSuccessNotification:(NSNumber *)healthDiff withExperienceDiff:(NSNumber *)expDiff withGoldDiff:(NSNumber *)goldDiff withMagicDiff:(NSNumber *)magicDiff {
-    UIColor *notificationColor = [UIColor colorWithRed:0.973 green:0.753 blue:0.000 alpha:1.000];
+    UIColor *notificationColor = [UIColor colorWithRed:0.111 green:0.539 blue:0.283 alpha:1.000];
     NSString *content;
     if ([healthDiff intValue] < 0) {
         notificationColor = [UIColor colorWithRed:0.733 green:0.208 blue:0.220 alpha:1.000];
