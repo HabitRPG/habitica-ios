@@ -56,7 +56,6 @@
     //get today + the custom offset the user uses
     NSDate *date = [NSDate date];
     NSDate *dateWithOffset = [date dateByAddingTimeInterval:-(offset*60*60)];
-    NSLog(@"%@ WithOffset: %@", date, dateWithOffset);
     if ([self.frequency isEqualToString:@"daily"]) {
         NSDate *startDate = [NSDate date];
         if (self.startDate) {

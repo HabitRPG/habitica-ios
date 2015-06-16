@@ -200,7 +200,6 @@ BOOL editable;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    indexPath = [self indexPathForTaskWithOffset:indexPath];
     if (indexPath == self.openedIndexPath) {
         [self tableView:tableView expandTaskAtIndexPath:self.openedIndexPath];
     }
