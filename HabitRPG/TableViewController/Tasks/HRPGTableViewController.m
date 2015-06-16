@@ -398,7 +398,7 @@ BOOL editable;
             self.indexOffset = (int) [task.checklist count];
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
             [self.tableView beginUpdates];
-            [self.tableView insertRowsAtIndexPaths:[self checklistitemIndexPathsForTask:task atIndexPath:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+            [self.tableView insertRowsAtIndexPaths:[self checklistitemIndexPathsWithOffset:self.indexOffset atIndexPath:indexPath] withRowAnimation:UITableViewRowAnimationTop];
             [self.tableView endUpdates];
         }
     }
