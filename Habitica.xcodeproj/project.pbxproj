@@ -26,6 +26,8 @@
 		D940A7E41B0CF80100370F2E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D940A7E21B0CF80100370F2E /* Crashlytics.framework */; };
 		D94461881AB34F5C0015215E /* HabiticaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D94461871AB34F5C0015215E /* HabiticaTests.m */; };
 		D94461911AB355940015215E /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
+		D946E5C21B30A89500806BE6 /* NSDAte+NSDateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = D946E5C11B30A89500806BE6 /* NSDAte+NSDateMock.m */; };
+		D946E5C41B30A9D700806BE6 /* HRPGTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D946E5C31B30A9D700806BE6 /* HRPGTaskTests.m */; };
 		D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */; };
 		D947960A1972C248002CB34C /* HRPGUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94796091972C248002CB34C /* HRPGUserProfileViewController.m */; };
 		D94AADB0192973CD00546C8E /* HabitRPG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */; };
@@ -182,6 +184,9 @@
 		D94461861AB34F5C0015215E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D94461871AB34F5C0015215E /* HabiticaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabiticaTests.m; sourceTree = "<group>"; };
 		D94461901AB355940015215E /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = user.json; path = HabiticaTests/Fixtures/user.json; sourceTree = SOURCE_ROOT; };
+		D946E5C01B30A89500806BE6 /* NSDAte+NSDateMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDAte+NSDateMock.h"; sourceTree = "<group>"; };
+		D946E5C11B30A89500806BE6 /* NSDAte+NSDateMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDAte+NSDateMock.m"; sourceTree = "<group>"; };
+		D946E5C31B30A9D700806BE6 /* HRPGTaskTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTaskTests.m; sourceTree = "<group>"; };
 		D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGImageOverlayView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGImageOverlayView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D94796081972C248002CB34C /* HRPGUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGUserProfileViewController.h; sourceTree = "<group>"; };
@@ -470,8 +475,10 @@
 		D94461841AB34F5C0015215E /* HabiticaTests */ = {
 			isa = PBXGroup;
 			children = (
+				D946E5BF1B30A7D200806BE6 /* Mocks */,
 				D9B967CB1AB33BD0001D84F7 /* Fixtures */,
 				D94461871AB34F5C0015215E /* HabiticaTests.m */,
+				D946E5C31B30A9D700806BE6 /* HRPGTaskTests.m */,
 				D94461851AB34F5C0015215E /* Supporting Files */,
 			);
 			path = HabiticaTests;
@@ -483,6 +490,15 @@
 				D94461861AB34F5C0015215E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D946E5BF1B30A7D200806BE6 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				D946E5C01B30A89500806BE6 /* NSDAte+NSDateMock.h */,
+				D946E5C11B30A89500806BE6 /* NSDAte+NSDateMock.m */,
+			);
+			name = Mocks;
 			sourceTree = "<group>";
 		};
 		D979AD171AF3E69800D59FAE /* Customizations */ = {
@@ -1011,7 +1027,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D946E5C41B30A9D700806BE6 /* HRPGTaskTests.m in Sources */,
 				D94461881AB34F5C0015215E /* HabiticaTests.m in Sources */,
+				D946E5C21B30A89500806BE6 /* NSDAte+NSDateMock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

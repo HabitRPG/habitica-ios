@@ -73,6 +73,7 @@
 - (void)removeTags:(NSSet *)values;
 
 - (BOOL)dueToday;
+- (BOOL)dueTodayWithOffset:(NSInteger)offset;
 
 - (UIColor*) taskColor;
 - (UIColor*) lightTaskColor;

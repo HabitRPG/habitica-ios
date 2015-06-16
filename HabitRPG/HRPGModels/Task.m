@@ -41,38 +41,49 @@
 @dynamic startDate;
 
 
+
+
 - (BOOL)dueToday {
+    return [self dueTodayWithOffset:0];
+}
+
+- (BOOL)dueTodayWithOffset:(NSInteger)offset {
     if (self.startDate) {
         if ([self.startDate compare:[NSDate date]] == NSOrderedDescending) {
             return NO;
         }
     }
-    
-    if ([self.frequency isEqualToString:@"weekly"]) {
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"EEEE"];
-        NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier: @"en_US"];
-        df.locale = locale;
-        NSString *dateString = [df stringFromDate:[NSDate date]];
-        return [[self valueForKey:[dateString lowercaseString]] boolValue];
-    } else {
+    //get today + the custom offset the user uses
+    NSDate *date = [NSDate date];
+    NSDate *dateWithOffset = [date dateByAddingTimeInterval:-(offset*60*60)];
+    NSLog(@"%@ WithOffset: %@", date, dateWithOffset);
+    if ([self.frequency isEqualToString:@"daily"]) {
         NSDate *startDate = [NSDate date];
         if (self.startDate) {
             startDate = self.startDate;
-            NSDate *fromDate;
-            NSDate *toDate;
-            
-            NSCalendar *calendar = [NSCalendar currentCalendar];
-            
-            [calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate
-                         interval:NULL forDate:startDate];
-            [calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDate
-                         interval:NULL forDate:[NSDate date]];
-            
-            NSDateComponents *difference = [calendar components:NSCalendarUnitDay
-                                                       fromDate:fromDate toDate:toDate options:0];
-            return ([difference day] % [self.everyX integerValue]) == 0;
         }
+
+        NSDate *fromDate;
+        NSDate *toDate;
+        
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        
+        [calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate
+                     interval:NULL forDate:startDate];
+        [calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDate
+                     interval:NULL forDate:dateWithOffset];
+        
+        NSDateComponents *difference = [calendar components:NSCalendarUnitDay
+                                                   fromDate:fromDate toDate:toDate options:0];
+        return ([difference day] % [self.everyX integerValue]) == 0;
+    } else {
+        
+            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+            [df setDateFormat:@"EEEE"];
+            NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier: @"en_US"];
+            df.locale = locale;
+            NSString *dateString = [df stringFromDate:dateWithOffset];
+            return [[self valueForKey:[dateString lowercaseString]] boolValue];
     }
     return YES;
 }

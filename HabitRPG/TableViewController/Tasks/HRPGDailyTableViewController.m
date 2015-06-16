@@ -23,6 +23,7 @@
 @property NIKFontAwesomeIconFactory *checkIconFactory;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
+@property NSInteger dayStart;
 @end
 
 @implementation HRPGDailyTableViewController
@@ -48,6 +49,11 @@
     self.checkIconFactory.strokeColor = [UIColor darkGrayColor];
     self.checkIconFactory.size = 17.0f;
     self.checkIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.dayStart = [[self.sharedManager getUser].dayStart integerValue];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -206,7 +212,7 @@
                 }];
             };
             [checkBox setChecked:NO animated:YES];
-            if (![task dueToday]) {
+            if (![task dueTodayWithOffset:self.dayStart]) {
                 checkBox.boxColor = [UIColor lightGrayColor];
                 label.textColor = [UIColor darkGrayColor];
                 cell.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.000];
