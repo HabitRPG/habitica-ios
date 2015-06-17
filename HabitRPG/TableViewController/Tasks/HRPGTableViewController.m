@@ -374,15 +374,13 @@ BOOL editable;
         return;
     }
     
-    Task *task = [self taskAtIndexPath:indexPath];
-    
     if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
         NSIndexPath *tempPath = self.openedIndexPath;
         self.openedIndexPath = nil;
-        self.indexOffset = 0;
         [self configureCell:[tableView cellForRowAtIndexPath:tempPath] atIndexPath:tempPath withAnimation:YES];
         [self.tableView beginUpdates];
-        [self.tableView deleteRowsAtIndexPaths:[self checklistitemIndexPathsForTask:task atIndexPath:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView deleteRowsAtIndexPaths:[self checklistitemIndexPathsWithOffset:self.indexOffset atIndexPath:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        self.indexOffset = 0;
         [self.tableView endUpdates];
     } else {
         if (self.openedIndexPath) {
@@ -393,6 +391,8 @@ BOOL editable;
             [self tableView:tableView expandTaskAtIndexPath:self.openedIndexPath];
             [self.tableView endUpdates];
         }
+        
+        Task *task = [self taskAtIndexPath:indexPath];
         if ([task.checklist count] > 0) {
             self.openedIndexPath = indexPath;
             self.indexOffset = (int) [task.checklist count];
