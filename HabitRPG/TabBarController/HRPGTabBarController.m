@@ -148,7 +148,7 @@
     UITabBarItem *dailyItem = self.tabBar.items[1];
     NSInteger badgeCount = 0;
     for (Task *task in self.fetchedResultsController.fetchedObjects) {
-        if ([task dueToday]) {
+        if ([task dueTodayWithOffset:[[self.sharedManager getUser].dayStart integerValue]]) {
             badgeCount++;
         }
     }

@@ -54,6 +54,10 @@ User *user;
      object:nil];
 }
 
+- (void)reloadAllData:(NSNotification *)notification {
+    [self.tableView reloadData];
+}
+
 -(void)initializeForm {
     XLFormDescriptor *formDescriptor = [XLFormDescriptor formDescriptorWithTitle:NSLocalizedString(@"Settings", nil)];
     
