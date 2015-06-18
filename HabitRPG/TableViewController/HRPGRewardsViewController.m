@@ -292,17 +292,17 @@ User *user;
     UILabel *priceLabel = (UILabel *) [cell viewWithTag:3];
     priceLabel.text = [NSString stringWithFormat:@"%ld", (long) [reward.value integerValue]];
     UIImageView *goldView = (UIImageView *) [cell viewWithTag:4];
-    [goldView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_gold.png"]
+    [goldView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_gold.png"]
              placeholderImage:nil];
     UIImageView *imageView = (UIImageView *) [cell viewWithTag:5];
     if ([reward.key isEqualToString:@"potion"]) {
-        [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_potion.png"]
+        [imageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_potion.png"]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     } else if ([reward.key isEqualToString:@"armoire"]) {
-        [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/shop_armoire.png"]
+        [imageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_armoire.png"]
                      placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     } else if (![reward.key isEqualToString:@"reward"]) {
-        [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", reward.key]]
+        [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_%@.png", reward.key]]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     }
     

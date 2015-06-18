@@ -26,7 +26,7 @@
     if (self) {
         self.gemImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, self.frame.size.height)];
         self.gemImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.gemImageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/Pet_Currency_Gem.png"]];
+        [self.gemImageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/Pet_Currency_Gem.png"]];
         self.gemLabel = [[HRPGAbbrevNumberLabel alloc] initWithFrame:CGRectMake(26, 0, 100, self.frame.size.height)];
         self.gemLabel.text = [NSString stringWithFormat:@"%ld", (long) [self.gems integerValue]];
         [self.gemLabel sizeToFit];

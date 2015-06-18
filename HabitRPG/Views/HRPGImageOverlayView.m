@@ -162,7 +162,7 @@
 }
 
 - (void)displayImageWithName:(NSString *)imageName {
-    [self.ImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@", imageName]] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+    [self.ImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/%@", imageName]] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
 }
 
 - (void)displayImage:(UIImage *)image {

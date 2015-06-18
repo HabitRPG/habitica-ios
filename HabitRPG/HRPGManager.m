@@ -2298,7 +2298,7 @@ NSString *currentUser;
     }
     
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    [manager downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@.%@", imageName, format]]
+    [manager downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/%@.%@", imageName, format]]
                      options:0
                     progress:^(NSInteger receivedSize, NSInteger expectedSize)
             {

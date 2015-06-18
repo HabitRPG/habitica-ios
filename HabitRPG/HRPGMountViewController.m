@@ -226,7 +226,7 @@
         imageView.contentMode = UIViewContentModeScaleToFill;
         imageView.alpha = 1;
     } else {
-        [imageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/PixelPaw.png"]
+        [imageView setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/PixelPaw.png"]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
         imageView.contentMode = UIViewContentModeCenter;
         imageView.alpha = 0.3f;

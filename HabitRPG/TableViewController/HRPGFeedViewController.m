@@ -171,7 +171,7 @@
     detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [detailTextLabel sizeToFit];
     NSString *url;
-    url = [NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet_Food_%@.png", food.key];
+    url = [NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/Pet_Food_%@.png", food.key];
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:url]
                    placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     cell.imageView.contentMode = UIViewContentModeCenter;

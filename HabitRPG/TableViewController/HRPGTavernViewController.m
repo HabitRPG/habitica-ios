@@ -337,9 +337,9 @@ ChatMessage *selectedMessage;
         indicator.hidden = YES;
         
         UIImageView *innImageView = (UIImageView*)[cell viewWithTag:3];
-        NSString *url = @"http://pherth.net/habitrpg/npc_daniel.png";
+        NSString *url = @"https://habitica-assets.s3.amazonaws.com/mobileApp/images/npc_daniel.png";
         if ([self.tavern.worldDmgTavern boolValue]) {
-            url = @"http://pherth.net/habitrpg/npc_daniel_broken.png";
+            url = @"https://habitica-assets.s3.amazonaws.com/mobileApp/images/npc_daniel_broken.png";
         }
         [innImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageWithContentsOfFile:@"Placeholder"]];
         

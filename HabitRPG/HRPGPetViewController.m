@@ -237,13 +237,13 @@
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     imageView.alpha = 1;
     if (pet.trained) {
-        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet-%@.png", pet.key]]
+        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/Pet-%@.png", pet.key]]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
         if ([pet.trained integerValue] == -1) {
             imageView.alpha = 0.3f;
         }
     } else {
-        [imageView setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/PixelPaw.png"]
+        [imageView setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/PixelPaw.png"]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
         imageView.alpha = 0.3f;
     }

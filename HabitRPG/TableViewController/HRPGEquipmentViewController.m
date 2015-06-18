@@ -233,7 +233,7 @@ NSIndexPath *selectedIndex;
         detailLabel.text = searchedGear.text;
         detailLabel.textColor = [UIColor blackColor];
 
-        [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", searchedGear.key]]
+        [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_%@.png", searchedGear.key]]
                     placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     } else {
         detailLabel.text = NSLocalizedString(@"Nothing Equipped", nil);

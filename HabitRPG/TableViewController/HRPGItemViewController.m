@@ -325,7 +325,7 @@ float textWidth;
     [detailTextLabel sizeToFit];
     NSString *url;
     if ([item.type isEqualToString:@"quests"]) {
-        url = @"http://pherth.net/habitrpg/inventory_quest_scroll.png";
+        url = @"https://habitica-assets.s3.amazonaws.com/mobileApp/images/inventory_quest_scroll.png";
     } else {
         NSString *type;
         if ([item.type isEqualToString:@"eggs"]) {
@@ -335,7 +335,7 @@ float textWidth;
         } else if ([item.type isEqualToString:@"hatchingPotions"]) {
             type = @"HatchingPotion";
         }
-        url = [NSString stringWithFormat:@"http://pherth.net/habitrpg/Pet_%@_%@.png", type, item.key];
+        url = [NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/Pet_%@_%@.png", type, item.key];
     }
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:url]
                    placeholderImage:[UIImage imageNamed:@"Placeholder"]];

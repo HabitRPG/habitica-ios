@@ -244,13 +244,13 @@ NSIndexPath *selectedIndex;
             detailLabel.text = equippedEar.text;
             detailLabel.textColor = [UIColor blackColor];
             imageView.contentMode = UIViewContentModeCenter;
-            [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/shop_%@.png", equippedEar.key]]
+            [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_%@.png", equippedEar.key]]
                          placeholderImage:[UIImage imageNamed:@"Placeholder"]];
             imageView.alpha = 1.0;
         } else {
             detailLabel.text = NSLocalizedString(@"Nothing Set", nil);
             detailLabel.textColor = [UIColor grayColor];
-            [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/head_0.png"]
+            [imageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/head_0.png"]
                          placeholderImage:[UIImage imageNamed:@"Placeholder"]];
             imageView.alpha = 0.4;
         }
@@ -274,13 +274,13 @@ NSIndexPath *selectedIndex;
             detailLabel.text = [searchedCustomization.name capitalizedString];
             detailLabel.textColor = [UIColor blackColor];
             imageView.contentMode = UIViewContentModeBottomRight;
-            [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/%@.png", [searchedCustomization getImageNameForUser:self.user]]]
+            [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/%@.png", [searchedCustomization getImageNameForUser:self.user]]]
                          placeholderImage:[UIImage imageNamed:@"Placeholder"]];
             imageView.alpha = 1.0;
         } else {
             detailLabel.text = NSLocalizedString(@"Nothing Set", nil);
             detailLabel.textColor = [UIColor grayColor];
-            [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://pherth.net/habitrpg/head_0.png"]
+            [imageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/head_0.png"]
                          placeholderImage:[UIImage imageNamed:@"Placeholder"]];
             imageView.alpha = 0.4;
         }

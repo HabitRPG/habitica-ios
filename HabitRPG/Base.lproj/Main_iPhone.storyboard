@@ -779,7 +779,7 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hep-Q0-bUw" customClass="DTAttributedTextView">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hep-Q0-bUw" customClass="DTAttributedTextView">
                                             <rect key="frame" x="16" y="31" width="288" height="41"/>
                                         </scrollView>
                                     </subviews>
@@ -862,7 +862,7 @@
                                                 <constraint firstAttribute="width" constant="55" id="vRt-YY-6rq"/>
                                             </constraints>
                                         </imageView>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kti-eD-CY4" customClass="DTAttributedTextView">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kti-eD-CY4" customClass="DTAttributedTextView">
                                             <rect key="frame" x="71" y="27" width="233" height="45"/>
                                         </scrollView>
                                     </subviews>
@@ -1814,12 +1814,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPG-vN-Sqq">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPG-vN-Sqq">
                                             <rect key="frame" x="8" y="10" width="268" height="20"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iw9-fX-B6v">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iw9-fX-B6v">
                                             <rect key="frame" x="284" y="10" width="29" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="QR8-NR-gOp"/>
@@ -1829,7 +1829,7 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDD-AG-Nyu" customClass="DTAttributedTextView">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDD-AG-Nyu" customClass="DTAttributedTextView">
                                             <rect key="frame" x="16" y="31" width="288" height="41"/>
                                         </scrollView>
                                     </subviews>
@@ -4141,5 +4141,5 @@
         <segue reference="DAI-nh-Ljl"/>
         <segue reference="aWZ-FG-z5O"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" red="0.098039215686274508" green="0.76470588235294112" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="0.47843137254901963" green="0.070588235294117646" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
 </document>

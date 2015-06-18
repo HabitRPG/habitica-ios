@@ -134,7 +134,7 @@
     } else if (indexPath.section == 0 && indexPath.item == 1) {
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
         __weak UIImageView *imageView = (UIImageView*) [cell viewWithTag:1];
-        [manager downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://pherth.net/habitrpg/quest_%@.png", self.quest.key]] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {} completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        [manager downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/quest_%@.png", self.quest.key]] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {} completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             if (image) {
                 self.bossImage = image;
                 [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
