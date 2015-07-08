@@ -7,7 +7,7 @@
 //
 
 #import "HRPGHabitButton.h"
-#import <POP/POP.h>
+#import <pop/POP.h>
 
 @interface HRPGHabitButton()
 - (void)setup;
