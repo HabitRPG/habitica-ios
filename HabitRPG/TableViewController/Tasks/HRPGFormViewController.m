@@ -60,7 +60,8 @@
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"priority" rowType:XLFormRowDescriptorTypeSelectorPush title:NSLocalizedString(@"Difficulty", nil)];
-    row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:NSLocalizedString(@"Easy", nil)],
+    row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0.1) displayText:NSLocalizedString(@"Trivial", nil)],
+                            [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:NSLocalizedString(@"Easy", nil)],
                             [XLFormOptionsObject formOptionsObjectWithValue:@(1.5) displayText:NSLocalizedString(@"Medium", nil)],
                             [XLFormOptionsObject formOptionsObjectWithValue:@(2) displayText:NSLocalizedString(@"Hard", nil)]
                             ];
@@ -155,10 +156,12 @@
     [self.form formRowWithTag:@"text"].value = [self.task.text stringByReplacingEmojiCheatCodesWithUnicode];
     [self.form formRowWithTag:@"notes"].value = [self.task.notes stringByReplacingEmojiCheatCodesWithUnicode];
     
-    if ([self.task.priority floatValue] == 1) {
+    if ([self.task.priority floatValue] == 0.1f) {
+        [self.form formRowWithTag:@"priority"].value = [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority displayText:NSLocalizedString(@"Trivial", nil)];
+    } else if ([self.task.priority floatValue] == 1) {
         [self.form formRowWithTag:@"priority"].value = [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority displayText:NSLocalizedString(@"Easy", nil)];
-    } else if ([self.task.priority floatValue] == 1.5) {
-        [self.form formRowWithTag:@"priority"].value = [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority displayText:NSLocalizedString(@"Easy", nil)];
+    } else if ([self.task.priority floatValue] == 1.5f) {
+        [self.form formRowWithTag:@"priority"].value = [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority displayText:NSLocalizedString(@"Medium", nil)];
 
     } else if ([self.task.priority floatValue] == 2) {
         [self.form formRowWithTag:@"priority"].value = [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority displayText:NSLocalizedString(@"Hard", nil)];
