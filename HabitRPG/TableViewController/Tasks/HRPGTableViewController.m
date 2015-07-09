@@ -161,7 +161,7 @@ BOOL editable;
     if (editingStyle == UITableViewCellEditingStyleDelete) {
 
         if (editingStyle == UITableViewCellEditingStyleDelete) {
-            Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+            Task *task = [self taskAtIndexPath:indexPath];
             [self.sharedManager deleteTask:task onSuccess:^() {
             }                      onError:^() {
 
