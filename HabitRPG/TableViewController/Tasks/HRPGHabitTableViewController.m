@@ -78,7 +78,7 @@
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
-    Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Task *task = [self taskAtIndexPath:indexPath];
     UIColor *color = [task lightTaskColor];
     UILabel *label = (UILabel *) [cell viewWithTag:1];
     label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
