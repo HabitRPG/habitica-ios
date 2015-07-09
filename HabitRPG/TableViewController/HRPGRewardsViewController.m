@@ -80,7 +80,7 @@ User *user;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
-    MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
+    MetaReward *reward = [self getRewardAtIndexPath:indexPath];
 
     if ([reward isKindOfClass:[Reward class]]) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
@@ -102,7 +102,7 @@ User *user;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     float height = 22.0f;
     float width = self.screenWidth-111;
-    MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
+    MetaReward *reward = [self getRewardAtIndexPath:indexPath];
     if ([reward isKindOfClass:[Reward class]]) {
         width = self.screenWidth-50;
     }
@@ -130,7 +130,7 @@ User *user;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
+    MetaReward *reward = [self getRewardAtIndexPath:indexPath];
     if ([reward.type isEqualToString:@"reward"]) {
         return YES;
     }
@@ -139,7 +139,7 @@ User *user;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Reward *reward = self.filteredData[indexPath.section][indexPath.item];
+        Reward *reward = (Reward *)[self getRewardAtIndexPath:indexPath];
         [self.sharedManager deleteReward:reward onSuccess:^() {
         } onError:^() {
             
@@ -148,7 +148,7 @@ User *user;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
+    MetaReward *reward = [self getRewardAtIndexPath:indexPath];
     if ([user.gold integerValue] < [reward.value integerValue]) {
         return;
     }
@@ -169,6 +169,14 @@ User *user;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (MetaReward *)getRewardAtIndexPath:(NSIndexPath*)indexPath {
+    if (indexPath.section < [self.filteredData count]) {
+        if (indexPath.item < [self.filteredData[indexPath.section] count]) {
+            return self.filteredData[indexPath.section][indexPath.item];
+        }
+    }
+    return nil;
+}
 
 - (NSArray *)filteredData {
     if (_filteredData != nil) {
@@ -282,7 +290,7 @@ User *user;
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
-    MetaReward *reward = self.filteredData[indexPath.section][indexPath.item];
+    MetaReward *reward = [self getRewardAtIndexPath:indexPath];
     UILabel *textLabel = (UILabel *) [cell viewWithTag:1];
     textLabel.text = [reward.text stringByReplacingEmojiCheatCodesWithUnicode];
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
@@ -338,7 +346,7 @@ User *user;
     if (gesture.state == UIGestureRecognizerStateEnded) {
         CGPoint p = [gesture locationInView:self.tableView];
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
-        self.editedReward = self.filteredData[indexPath.section][indexPath.item];
+        self.editedReward = [self getRewardAtIndexPath:indexPath];
         [self performSegueWithIdentifier:@"FormSegue" sender:self];
     }
 }
