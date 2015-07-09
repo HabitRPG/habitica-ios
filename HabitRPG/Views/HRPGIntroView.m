@@ -119,6 +119,7 @@
     weekdayComponents.hour = 19;
     NSDate *date = [gregorian dateFromComponents:weekdayComponents];
     [defaults setValue:date forKey:@"dailyReminderTime"];
+    [defaults setBool:YES forKey:@"dailyReminderActive"];
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     localNotification.fireDate = date;
     localNotification.repeatInterval = NSDayCalendarUnit;
