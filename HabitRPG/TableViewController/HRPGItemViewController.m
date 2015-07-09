@@ -308,11 +308,11 @@ float textWidth;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     NSArray *sections = [self.fetchedResultsController sections];
-    if ([sections count] < indexPath.section) {
+    if ([sections count] <= indexPath.section) {
         return;
     }
     id <NSFetchedResultsSectionInfo> sectionInfo = sections[indexPath.section];
-    if ([sectionInfo numberOfObjects] < indexPath.item) {
+    if ([sectionInfo numberOfObjects] <= indexPath.item) {
         return;
     }
     Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
