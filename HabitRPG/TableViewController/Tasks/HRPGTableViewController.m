@@ -379,10 +379,12 @@ BOOL editable;
     
     if (self.openedIndexPath != nil && self.openedIndexPath.item == indexPath.item) {
         NSIndexPath *tempPath = self.openedIndexPath;
+        int tempIndexOffset = self.indexOffset;
         self.openedIndexPath = nil;
+        self.indexOffset = 0;
         [self configureCell:[tableView cellForRowAtIndexPath:tempPath] atIndexPath:tempPath withAnimation:YES];
         [self.tableView beginUpdates];
-        [self.tableView deleteRowsAtIndexPaths:[self checklistitemIndexPathsWithOffset:self.indexOffset atIndexPath:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView deleteRowsAtIndexPaths:[self checklistitemIndexPathsWithOffset:tempIndexOffset atIndexPath:indexPath] withRowAnimation:UITableViewRowAnimationTop];
         self.indexOffset = 0;
         [self.tableView endUpdates];
     } else {
