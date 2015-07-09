@@ -64,39 +64,7 @@
     return cell;
 }
 
-- (void) displayTaskDetailAtIndexPath:(NSIndexPath*)indexPath adjustValue:(int) adjustment {
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    
-    UILabel *lastActionLabel = (UILabel*)[cell viewWithTag:4];
-    UILabel *titleLabel = (UILabel*)[cell viewWithTag:1];
-    if (!(self.openedIndexPath && self.openedIndexPath.item < indexPath.item && indexPath.item <= (self.openedIndexPath.item + self.indexOffset))) {
-        Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        if (lastActionLabel.text.length == 0) {
-            lastActionLabel.alpha = 0;
-            int value = [task.streak intValue] + adjustment;
-            lastActionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Streak: %d", nil), value];
-            [UIView animateWithDuration:0.3 animations:^() {
-                [lastActionLabel layoutIfNeeded];
-                [titleLabel layoutIfNeeded];
-                lastActionLabel.alpha = 1;
-            } completion:^(BOOL completed) {
-                if (completed) {
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                        lastActionLabel.text = nil;
-                        [UIView animateWithDuration:0.3 animations:^() {
-                            [lastActionLabel layoutIfNeeded];
-                            [titleLabel layoutIfNeeded];
-                            lastActionLabel.alpha = 0;
-                        }completion:nil];
-                    });
-                }
-            }];
-        }
-    }
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[self displayTaskDetailAtIndexPath:indexPath adjustValue:0];
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
