@@ -110,6 +110,9 @@ BOOL editable;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if ([self.fetchedResultsController sections].count == 0) {
+        return 0;
+    }
     if (section > [self.fetchedResultsController sections].count-1) {
         return 1;
     } else {
