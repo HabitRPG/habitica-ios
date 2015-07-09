@@ -1103,11 +1103,15 @@ NSString *currentUser;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         [defaults setObject:[NSDate date] forKey:@"lastContentFetch"];
         [defaults synchronize];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1121,11 +1125,15 @@ NSString *currentUser;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         [defaults setObject:[NSDate date] forKey:@"lastTaskFetch"];
         [defaults synchronize];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1153,7 +1161,9 @@ NSString *currentUser;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         [defaults setObject:[NSDate date] forKey:@"lastTaskFetch"];
         [defaults synchronize];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1162,7 +1172,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1177,7 +1189,9 @@ NSString *currentUser;
         [self fetchUser:^() {
             NSError *executeError = nil;
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-            successBlock();
+            if (successBlock) {
+                successBlock();
+            }
         }onError:^() {
         }];
         [self.networkIndicatorController endNetworking];
@@ -1188,7 +1202,9 @@ NSString *currentUser;
          } else {
              [self displayNetworkError];
          }
-         errorBlock();
+         if (errorBlock) {
+             errorBlock();
+         }
          [self.networkIndicatorController endNetworking];
          return;
      }];
@@ -1200,7 +1216,9 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/class/change?class=%@", newClass] parameters:nil success:^ (RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1209,7 +1227,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1221,7 +1241,9 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/api/v2/groups/%@", groupID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         if ([groupID isEqualToString:@"party"]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"partyUpdated" object:nil];
@@ -1233,7 +1255,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1253,7 +1277,9 @@ NSString *currentUser;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"partyUpdated" object:party];
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1262,7 +1288,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1274,7 +1302,9 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] getObjectsAtPath:[@"/api/v2/members/" stringByAppendingString:memberId] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1283,7 +1313,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1354,7 +1386,9 @@ NSString *currentUser;
         } else {
             nextLevel = [NSNumber numberWithInt:0];
         }
-        successBlock(@[healthDiff, expDiff, user.gold, user.health, user.experience, nextLevel, magicDiff]);
+        if (successBlock) {
+            successBlock(@[healthDiff, expDiff, user.gold, user.health, user.experience, nextLevel, magicDiff]);
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1363,7 +1397,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1390,7 +1426,9 @@ NSString *currentUser;
         user.gold = taskResponse.gold;
         [self displayRewardNotification:goldDiff];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1399,7 +1437,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1412,11 +1452,15 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:task path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1428,7 +1472,9 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] putObject:task path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1437,7 +1483,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1449,7 +1497,9 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] deleteObject:task path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@", task.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                     failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1458,7 +1508,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1471,11 +1523,15 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:reward path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1487,7 +1543,9 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] putObject:reward path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1496,7 +1554,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1508,7 +1568,9 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] deleteObject:reward path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@", reward.key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                     failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1517,7 +1579,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1529,7 +1593,9 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:nil path:@"/api/v2/user/tasks/clear-completed" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                     failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1538,7 +1604,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1555,7 +1623,9 @@ NSString *currentUser;
         [keyChain setString:loginData.id forKey:@"id"];
         [keyChain setString:loginData.key forKey:@"key"];
 
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1565,7 +1635,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1578,7 +1650,9 @@ NSString *currentUser;
     NSDictionary *params = @{@"username" : username, @"password" : password, @"confirmPassword" : password, @"email": email};
     [[RKObjectManager sharedManager] postObject:Nil path:@"/api/v2/register" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self loginUser:username withPassword:password onSuccess:^() {
-            successBlock();
+            if (successBlock) {
+                successBlock();
+            }
         }onError:^() {
         }];
         
@@ -1589,7 +1663,9 @@ NSString *currentUser;
             [self displayServerError];
         } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
             RKErrorMessage *errorMessage = [[error userInfo] objectForKey:RKObjectMapperErrorObjectsKey][0];
-            errorBlock(errorMessage.errorMessage);
+            if (errorBlock) {
+                errorBlock(errorMessage.errorMessage);
+            }
         } else {
             [self displayNetworkError];
         }
@@ -1607,7 +1683,9 @@ NSString *currentUser;
         user.sleep = !user.sleep;
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1616,7 +1694,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1630,7 +1710,9 @@ NSString *currentUser;
         NSError *executeError = nil;
         user.health = [NSNumber numberWithInt:50];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1639,7 +1721,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1679,7 +1763,9 @@ NSString *currentUser;
             gear.owned = YES;
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1691,7 +1777,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1717,7 +1805,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1740,7 +1830,9 @@ NSString *currentUser;
         user.equippedWeapon = response.equippedWeapon;
         item.owned = [NSNumber numberWithInt:[item.owned intValue] - 1];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1752,7 +1844,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1779,7 +1873,9 @@ NSString *currentUser;
         user.currentMount = response.currentMount;
         user.currentPet = response.currentPet;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1791,7 +1887,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1818,7 +1916,9 @@ NSString *currentUser;
         user.currentMount = response.currentMount;
         user.currentPet = response.currentPet;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1830,7 +1930,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1852,7 +1954,9 @@ NSString *currentUser;
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         [self displaySpellNotification:(mana - [user.magic integerValue]) withHealthDiff:([user.health floatValue] - health) withGoldDiff:([user.gold floatValue] - gold)];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1861,7 +1965,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1902,7 +2008,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1935,7 +2043,9 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/questReject", group] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1944,7 +2054,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1956,7 +2068,9 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/questAbort", group] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1965,7 +2079,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1979,7 +2095,9 @@ NSString *currentUser;
         NSError *executeError = nil;
         [user.party addChatmessagesObjectAtFirstPosition:[mappingResult firstObject]];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"newChatMessage" object:groupID];
         [self.networkIndicatorController endNetworking];
         return;
@@ -1989,7 +2107,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -2002,7 +2122,9 @@ NSString *currentUser;
         NSError *executeError = nil;
         //[self.managedObjectContext deleteObject:message];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -2011,7 +2133,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -2023,7 +2147,9 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/feed/%@/%@", pet, food] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -2033,7 +2159,9 @@ NSString *currentUser;
             [self fetchUser:^(){
                 NSError *executeError = nil;
                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                successBlock();
+                if (successBlock) {
+                    successBlock();
+                }
                 [self.networkIndicatorController endNetworking];
                 return;
             }onError:nil];
@@ -2041,7 +2169,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -2055,9 +2185,13 @@ NSString *currentUser;
             NSError *executeError = nil;
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
             if ([[mappingResult.array[0] valueForKey:@"ok"] boolValue]) {
-                successBlock();
+                if (successBlock) {
+                    successBlock();
+                }
             } else {
-                errorBlock();
+                if (errorBlock) {
+                    errorBlock();
+                }
             }
             [self.networkIndicatorController endNetworking];
             return;
@@ -2069,7 +2203,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -2082,7 +2218,9 @@ NSString *currentUser;
         [self fetchUser:^(){
             NSError *executeError = nil;
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-            successBlock();
+            if (successBlock) {
+                successBlock();
+            }
             [self.networkIndicatorController endNetworking];
             return;
         }onError:nil];
@@ -2093,7 +2231,9 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        errorBlock();
+        if (errorBlock) {
+            errorBlock();
+        }
         [self.networkIndicatorController endNetworking];
         return;
     }];
