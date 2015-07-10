@@ -10,7 +10,7 @@
 #import "HRPGAppDelegate.h"
 #import "ChatMessage.h"
 #import <CRToast.h>
-#import <NSDate+TimeAgo.h>
+#import <DateTools/DateTools.h>
 #import "HRPGMessageViewController.h"
 #import "Group.h"
 #import "Quest.h"
@@ -499,7 +499,7 @@ ChatMessage *selectedMessage;
         textLabel.shouldDrawLinks = YES;
     }
     UILabel *dateLabel = (UILabel *) [cell viewWithTag:3];
-    dateLabel.text = [message.timestamp timeAgo];
+    dateLabel.text = message.timestamp.timeAgoSinceNow;
     dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
 }
 

@@ -14,7 +14,6 @@
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 #import "NSString+Emoji.h"
-#import <NSDate+TimeAgo.h>
 #import "UIColor+LighterDarker.h"
 #import "HRPGCheckBoxView.h"
 
