@@ -140,7 +140,7 @@
     
     for (Tag *tag in tags) {
         NSNumber *val = tagsDictionary[tag.id];
-        if (val != nil) {
+        if (val != nil && ![val isKindOfClass:[NSNull class]]) {
             if ([val boolValue]) {
                 if (![self.tags containsObject:tag]) {
                     [self addTagsObject:tag];
