@@ -27,6 +27,7 @@
 @dynamic contributorText;
 @dynamic costumeArmor;
 @dynamic costumeBack;
+@dynamic costumeEyewear;
 @dynamic costumeHead;
 @dynamic costumeHeadAccessory;
 @dynamic costumeShield;
@@ -38,6 +39,7 @@
 @dynamic dropsEnabled;
 @dynamic equippedArmor;
 @dynamic equippedBack;
+@dynamic equippedEyewear;
 @dynamic equippedHead;
 @dynamic equippedHeadAccessory;
 @dynamic equippedShield;
@@ -195,6 +197,19 @@
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"%@_%@", self.size, armor] withFormat:format onSuccess:^(UIImage *image) {
+            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
+        }];
+    }
+    
+    NSString *eyewear = [self.useCostume boolValue] ? self.costumeEyewear : self.equippedEyewear;
+    if (![armor isEqualToString:@"eyewear_base_0"]) {
+        NSString *format = nil;
+        dispatch_group_enter(group);
+        currentLayer++;
+        [sharedManager getImage:[NSString stringWithFormat:@"%@", eyewear] withFormat:format onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {

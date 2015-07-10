@@ -149,6 +149,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A5F559A1B4F55B900CDE7EA /* HabitRPG 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 9.xcdatamodel"; sourceTree = "<group>"; };
 		A12B817AF1713BF5BCB7F702 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A8C64F7451C560A6BB881198 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D90EA03619D60421001EABE4 /* HabitIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabitIntro.png; sourceTree = "<group>"; };
@@ -1490,6 +1491,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				3A5F559A1B4F55B900CDE7EA /* HabitRPG 9.xcdatamodel */,
 				D9DE09171B4DC8E00032DCD6 /* HabitRPG 8.xcdatamodel */,
 				D9B507A61B2DD40C008DE986 /* HabitRPG 7.xcdatamodel */,
 				D9B507A51B2C5DD0008DE986 /* HabitRPG 6.xcdatamodel */,
@@ -1499,7 +1501,7 @@
 				D9B27ED71AE4C138008914D7 /* HabitRPG 2.xcdatamodel */,
 				D967755519F1379800A21F45 /* HabitRPG.xcdatamodel */,
 			);
-			currentVersion = D9DE09171B4DC8E00032DCD6 /* HabitRPG 8.xcdatamodel */;
+			currentVersion = 3A5F559A1B4F55B900CDE7EA /* HabitRPG 9.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
