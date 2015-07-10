@@ -139,11 +139,13 @@ User *user;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Reward *reward = (Reward *)[self getRewardAtIndexPath:indexPath];
-        [self.sharedManager deleteReward:reward onSuccess:^() {
-        } onError:^() {
+        MetaReward *reward = [self getRewardAtIndexPath:indexPath];
+        if ([reward isKindOfClass:[Reward class]]) {
+            [self.sharedManager deleteReward:(Reward*)reward onSuccess:^() {
+            } onError:^() {
             
-        }];
+            }];
+        }
     }
 }
 
@@ -346,8 +348,11 @@ User *user;
     if (gesture.state == UIGestureRecognizerStateEnded) {
         CGPoint p = [gesture locationInView:self.tableView];
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
-        self.editedReward = [self getRewardAtIndexPath:indexPath];
-        [self performSegueWithIdentifier:@"FormSegue" sender:self];
+        MetaReward *reward = [self getRewardAtIndexPath:indexPath];
+        if ([reward isKindOfClass:[Reward class]]) {
+            self.editedReward = (Reward *)reward;
+            [self performSegueWithIdentifier:@"FormSegue" sender:self];
+        }
     }
 }
 
