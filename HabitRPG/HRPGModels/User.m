@@ -140,8 +140,8 @@
         return;
     }
     
-    NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:16];
-    for (int i = 0; i <= 17; i++) {
+    NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:20];
+    for (int i = 0; i <= 20; i++) {
         [imageArray addObject:[NSNull null]];
     }
     int currentLayer = 0;
