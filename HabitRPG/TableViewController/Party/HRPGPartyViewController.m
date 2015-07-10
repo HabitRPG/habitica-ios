@@ -13,7 +13,7 @@
 #import "HRPGMessageViewController.h"
 #import "QuestCollect.h"
 #import "ChatMessage.h"
-#import <NSDate+TimeAgo.h>
+#import <DateTools/DateTools.h>
 #import "NSString+Emoji.h"
 #import "HRPGProgressView.h"
 #import "HRPGUserProfileViewController.h"
@@ -593,7 +593,7 @@ ChatMessage *selectedMessage;
                 textLabel.attributedString = attributedMessage;
             }
             UILabel *dateLabel = (UILabel *) [cell viewWithTag:3];
-            dateLabel.text = [message.timestamp timeAgo];
+            dateLabel.text = message.timestamp.timeAgoSinceNow;
             dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
             //[dateLabel sizeToFit];
         }
