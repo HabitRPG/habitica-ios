@@ -166,7 +166,6 @@
     if (![back isEqualToString:@"back_base_0"]) {
         NSString *format = nil;
         dispatch_group_enter(group);
-        currentLayer++;
         [sharedManager getImage:[NSString stringWithFormat:@"%@", back] withFormat:format onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
