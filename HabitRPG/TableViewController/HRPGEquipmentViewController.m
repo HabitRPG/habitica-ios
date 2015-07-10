@@ -66,7 +66,7 @@ NSIndexPath *selectedIndex;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -140,12 +140,15 @@ NSIndexPath *selectedIndex;
             searchedKey = self.user.equippedArmor;
             typeName = NSLocalizedString(@"Armor", nil);
         } else if (indexPath.item == 4) {
+            searchedKey = self.user.equippedBody;
+            typeName = NSLocalizedString(@"Body", nil);
+        } else if (indexPath.item == 5) {
             searchedKey = self.user.equippedBack;
             typeName = NSLocalizedString(@"Back", nil);
-        } else if (indexPath.item == 5) {
+        } else if (indexPath.item == 6) {
             searchedKey = self.user.equippedShield;
             typeName = NSLocalizedString(@"Shield", nil);
-        } else if (indexPath.item == 6) {
+        } else if (indexPath.item == 7) {
             searchedKey = self.user.equippedWeapon;
             typeName = NSLocalizedString(@"Weapon", nil);
         }
@@ -162,13 +165,16 @@ NSIndexPath *selectedIndex;
         } else if (indexPath.item == 3) {
             searchedKey = self.user.costumeArmor;
             typeName = NSLocalizedString(@"Armor", nil);
-        } else if (indexPath.item == 4) {
+        }  else if (indexPath.item == 4) {
+            searchedKey = self.user.costumeBody;
+            typeName = NSLocalizedString(@"Body", nil);
+        } else if (indexPath.item == 5) {
             searchedKey = self.user.costumeBack;
             typeName = NSLocalizedString(@"Back", nil);
-        } else if (indexPath.item == 5) {
+        } else if (indexPath.item == 6) {
             searchedKey = self.user.costumeShield;
             typeName = NSLocalizedString(@"Shield", nil);
-        } else if (indexPath.item == 6) {
+        } else if (indexPath.item == 7) {
             searchedKey = self.user.costumeWeapon;
             typeName = NSLocalizedString(@"Weapon", nil);
         }
@@ -215,12 +221,15 @@ NSIndexPath *selectedIndex;
             equipmentDetailViewController.type = @"armor";
             equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Armor", nil);
         } else if (indexPath.item == 4) {
+            equipmentDetailViewController.type = @"body";
+            equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Body", nil);
+        } else if (indexPath.item == 5) {
             equipmentDetailViewController.type = @"back";
             equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Back", nil);
-        } else if (indexPath.item == 5) {
+        } else if (indexPath.item == 6) {
             equipmentDetailViewController.type = @"shield";
             equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Shield", nil);
-        } else if (indexPath.item == 6) {
+        } else if (indexPath.item == 7) {
             equipmentDetailViewController.type = @"weapon";
             equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Weapon", nil);
         }

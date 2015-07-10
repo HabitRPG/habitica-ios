@@ -201,6 +201,7 @@
         <attribute name="contributorText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="costumeArmor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="costumeBack" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="costumeBody" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="costumeEyewear" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="costumeHead" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="costumeHeadAccessory" optional="YES" attributeType="String" syncable="YES"/>
@@ -213,6 +214,7 @@
         <attribute name="dropsEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="equippedArmor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="equippedBack" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="equippedBody" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="equippedEyewear" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="equippedHead" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="equippedHeadAccessory" optional="YES" attributeType="String" syncable="YES"/>
@@ -298,6 +300,6 @@
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="135"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="450"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="1425"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1455"/>
     </elements>
 </model>

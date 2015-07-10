@@ -27,6 +27,7 @@
 @dynamic contributorText;
 @dynamic costumeArmor;
 @dynamic costumeBack;
+@dynamic costumeBody;
 @dynamic costumeEyewear;
 @dynamic costumeHead;
 @dynamic costumeHeadAccessory;
@@ -39,6 +40,7 @@
 @dynamic dropsEnabled;
 @dynamic equippedArmor;
 @dynamic equippedBack;
+@dynamic equippedBody;
 @dynamic equippedEyewear;
 @dynamic equippedHead;
 @dynamic equippedHeadAccessory;
@@ -188,6 +190,21 @@
     } onError:^() {
         dispatch_group_leave(group);
     }];
+    
+    
+    NSString *eyewear = [self.useCostume boolValue] ? self.costumeEyewear : self.equippedEyewear;
+    if (![eyewear isEqualToString:@"eyewear_base_0"]) {
+        NSString *format = nil;
+        dispatch_group_enter(group);
+        currentLayer++;
+        [sharedManager getImage:[NSString stringWithFormat:@"%@", eyewear] withFormat:format onSuccess:^(UIImage *image) {
+            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
+        }];
+    }
+
     NSString *armor = [self.useCostume boolValue] ? self.costumeArmor : self.equippedArmor;
     if (![armor isEqualToString:@"armor_base_0"]) {
         NSString *format = nil;
@@ -204,19 +221,19 @@
         }];
     }
     
-    NSString *eyewear = [self.useCostume boolValue] ? self.costumeEyewear : self.equippedEyewear;
-    if (![armor isEqualToString:@"eyewear_base_0"]) {
+    NSString *body = [self.useCostume boolValue] ? self.costumeBody : self.equippedBody;
+    if (![body isEqualToString:@"body_base_0"]) {
         NSString *format = nil;
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"%@", eyewear] withFormat:format onSuccess:^(UIImage *image) {
+        [sharedManager getImage:[NSString stringWithFormat:@"%@", body] withFormat:format onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
             dispatch_group_leave(group);
         }];
     }
-
+    
     if ([self.hairBase integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
