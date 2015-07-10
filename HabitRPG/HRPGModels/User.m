@@ -141,7 +141,7 @@
     }
     
     NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:16];
-    for (int i = 0; i <= 16; i++) {
+    for (int i = 0; i <= 17; i++) {
         [imageArray addObject:[NSNull null]];
     }
     int currentLayer = 0;
@@ -161,7 +161,22 @@
             dispatch_group_leave(group);
         }];
     }
+    
+    NSString *back = [self.useCostume boolValue] ? self.costumeBack : self.equippedBack;
+    if (![back isEqualToString:@"back_base_0"]) {
+        NSString *format = nil;
+        dispatch_group_enter(group);
+        currentLayer++;
+        [sharedManager getImage:[NSString stringWithFormat:@"%@", back] withFormat:format onSuccess:^(UIImage *image) {
+            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
+        }];
+    }
+    
     dispatch_group_enter(group);
+    currentLayer++;
     NSString *skinString = [NSString stringWithFormat:@"skin_%@", self.skin];
     if (self.sleep) {
         skinString = [skinString stringByAppendingString:@"_sleep"];
@@ -190,7 +205,6 @@
     } onError:^() {
         dispatch_group_leave(group);
     }];
-    
     
     NSString *eyewear = [self.useCostume boolValue] ? self.costumeEyewear : self.equippedEyewear;
     if (![eyewear isEqualToString:@"eyewear_base_0"]) {

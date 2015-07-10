@@ -347,7 +347,7 @@ NSString *currentUser;
             @"items.gear.equipped.eyewear" : @"equippedEyewear",
             @"items.gear.costume.headAccessory" : @"costumeHeadAccessory",
             @"items.gear.costume.armor" : @"costumeArmor",
-            @"items.gear.costume.armor" : @"costumeBody",
+            @"items.gear.costume.body" : @"costumeBody",
             @"items.gear.costume.head" : @"costumeHead",
             @"items.gear.costume.shield" : @"costumeShield",
             @"items.gear.costume.weapon" : @"costumeWeapon",
