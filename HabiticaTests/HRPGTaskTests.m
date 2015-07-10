@@ -56,32 +56,86 @@ void SwizzleClassMethod(Class c, SEL orig, SEL new) {
     [super tearDown];
 }
 
-- (void)testTodayNotDue {
+- (void)testWeeklyTodayNotDue {
     [NSDate setMockDate:@"2015/06/20 20:00:00"];
     XCTAssertFalse([self.task dueToday], @"not due on day where not due");
 }
 
-- (void)testTodayDue {
+- (void)testWeeklyTodayDue {
     [NSDate setMockDate:@"2015/06/21 20:00:00"];
     XCTAssert([self.task dueToday], @"due on day where due");
 }
 
-- (void)testTodayNotDueWithOffset {
+- (void)testWeeklyTodayNotDueWithOffset {
     [NSDate setMockDate:@"2015/06/20 20:00:00"];
     XCTAssertFalse([self.task dueTodayWithOffset:5], @"not due on day where not due after offset");
 }
 
-- (void)testTodayDueWithOffset {
+- (void)testWeeklyTodayDueWithOffset {
     [NSDate setMockDate:@"2015/06/21 20:00:00"];
     XCTAssert([self.task dueTodayWithOffset:5], @"due on day where due after offset");
 }
 
-- (void)testNotTodayNotDueWithOffset {
+- (void)testWeeklyNotTodayNotDueWithOffset {
     [NSDate setMockDate:@"2015/06/21 2:00:00"];
     XCTAssertFalse([self.task dueTodayWithOffset:5], @"not due on day where due before offset");
 }
 
-- (void)testNotTodayDueWithOffset {
+- (void)testWeeklyNotTodayDueWithOffset {
+    [NSDate setMockDate:@"2015/06/22 2:00:00"];
+    XCTAssert([self.task dueTodayWithOffset:5], @"due on day where not due before offset");
+}
+
+
+
+- (void)testDailyTodayNotDue {
+    self.task.frequency = @"daily";
+    self.task.everyX = [NSNumber numberWithInt:2];
+    [NSDate setMockDate:@"2015/06/20 21:00:00"];
+    self.task.startDate = [NSDate date];
+    [NSDate setMockDate:@"2015/06/21 20:00:00"];
+    XCTAssertFalse([self.task dueToday], @"not due on day where not due");
+}
+
+- (void)testDailyTodayDue {
+    self.task.frequency = @"daily";
+    [NSDate setMockDate:@"2015/06/21 0:00:00"];
+    self.task.everyX = [NSNumber numberWithInt:2];
+    self.task.startDate = [NSDate date];
+    XCTAssert([self.task dueToday], @"due on day where due");
+}
+
+- (void)testDailyTodayNotDueWithOffset {
+    self.task.frequency = @"daily";
+    [NSDate setMockDate:@"2015/06/20 0:00:00"];
+    self.task.everyX = [NSNumber numberWithInt:2];
+    self.task.startDate = [NSDate date];
+    [NSDate setMockDate:@"2015/06/21 20:00:00"];
+    XCTAssertFalse([self.task dueTodayWithOffset:5], @"not due on day where not due after offset");
+}
+
+- (void)testDailyTodayDueWithOffset {
+    self.task.frequency = @"daily";
+    [NSDate setMockDate:@"2015/06/21 20:00:00"];
+    self.task.everyX = [NSNumber numberWithInt:2];
+    self.task.startDate = [NSDate date];
+    XCTAssert([self.task dueTodayWithOffset:5], @"due on day where due after offset");
+}
+
+- (void)testDailyNotTodayNotDueWithOffset {
+    self.task.frequency = @"daily";
+    [NSDate setMockDate:@"2015/06/21 2:00:00"];
+    self.task.everyX = [NSNumber numberWithInt:2];
+    self.task.startDate = [NSDate date];
+    [NSDate setMockDate:@"2015/06/22 20:00:00"];
+    XCTAssertFalse([self.task dueTodayWithOffset:5], @"not due on day where due before offset");
+}
+
+- (void)testDailyNotTodayDueWithOffset {
+    self.task.frequency = @"daily";
+    [NSDate setMockDate:@"2015/06/21 20:00:00"];
+    self.task.everyX = [NSNumber numberWithInt:2];
+    self.task.startDate = [NSDate date];
     [NSDate setMockDate:@"2015/06/22 2:00:00"];
     XCTAssert([self.task dueTodayWithOffset:5], @"due on day where not due before offset");
 }

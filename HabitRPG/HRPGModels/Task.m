@@ -48,7 +48,11 @@
 }
 
 - (BOOL)dueTodayWithOffset:(NSInteger)offset {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
     if (self.startDate) {
+        NSDate *startDateAtMidnight;
+        [calendar rangeOfUnit:NSCalendarUnitDay startDate:&startDateAtMidnight
+                     interval:NULL forDate:self.startDate];
         if ([self.startDate compare:[NSDate date]] == NSOrderedDescending) {
             return NO;
         }
@@ -65,7 +69,6 @@
         NSDate *fromDate;
         NSDate *toDate;
         
-        NSCalendar *calendar = [NSCalendar currentCalendar];
         
         [calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate
                      interval:NULL forDate:startDate];
