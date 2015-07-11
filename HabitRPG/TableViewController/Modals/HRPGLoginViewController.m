@@ -12,10 +12,15 @@
 #import "OnePasswordExtension.h"
 #import "HRPGTabBarController.h"
 #import "HRPGIntroView.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "MRProgress.h"
+#import "CRToast.h"
 
 @interface HRPGLoginViewController ()
 @property HRPGManager *sharedManager;
 @property BOOL isRegistering;
+@property FBSDKLoginButton *fbLoginButton;
 @end
 
 @implementation HRPGLoginViewController
@@ -33,10 +38,12 @@
     [self.usernameField becomeFirstResponder];
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
+    
+    [FBSDKLoginButton class];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -78,6 +85,10 @@
         self.loginCell = cell;
         self.loginLabel = (UILabel*)[cell viewWithTag:1];
         self.activityIndicator = (UIActivityIndicatorView*)[cell viewWithTag:2];
+    } else if (indexPath.section == 2) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"FacebookButtonCell" forIndexPath:indexPath];
+        self.fbLoginButton = (FBSDKLoginButton*)[cell viewWithTag:1];
+        self.fbLoginButton.delegate = self;
     }
     return cell;
 }
@@ -147,18 +158,7 @@
         }];
     } else {
         [_sharedManager loginUser:self.usernameField.text withPassword:self.passwordField.text onSuccess:^() {
-            [_sharedManager setCredentials];
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            if (![defaults boolForKey:@"displayedIntro"]) {
-                HRPGIntroView *introView = [[HRPGIntroView alloc] init];
-                [introView displayIntro];
-            }
-            [_sharedManager fetchUser:^() {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }                 onError:^() {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }];
+            [self onSuccessfullLogin];
         } onError:^() {
             self.navigationItem.prompt = NSLocalizedString(@"Invalid username or password", nil);
             [self.usernameField becomeFirstResponder];
@@ -243,6 +243,61 @@
         self.activityIndicator.alpha = 0.0;
     }];
     [self.activityIndicator stopAnimating];
+}
+
+- (void)loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error {
+    if (error) {
+        NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Authentication Error", nil),
+                                  kCRToastSubtitleTextKey : NSLocalizedString(@"There was an error with the authentication. Try again later", nil),
+                                  kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                                  kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                                  kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],
+                                  };
+        [CRToastManager showNotificationWithOptions:options
+                                    completionBlock:^{
+                                    }];
+    } else if (result.isCancelled) {
+        NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Authentication Calcelled", nil),
+                                  kCRToastSubtitleTextKey : NSLocalizedString(@"The authentication process was cancelled.", nil),
+                                  kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                                  kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                                  kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],
+                                  };
+        [CRToastManager showNotificationWithOptions:options
+                                    completionBlock:^{
+                                    }];
+    } else {
+        MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+        [self.sharedManager loginUserSocial:[FBSDKAccessToken currentAccessToken].userID withAccessToken:[FBSDKAccessToken currentAccessToken].tokenString onSuccess:^() {
+            overlayView.mode = MRProgressOverlayViewModeCheckmark;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [overlayView dismiss:YES];
+            });
+            [self onSuccessfullLogin];
+        }onError:^() {
+            
+        }];
+    }
+}
+
+- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
+    
+}
+
+- (void) onSuccessfullLogin {
+    [_sharedManager setCredentials];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults boolForKey:@"displayedIntro"]) {
+        HRPGIntroView *introView = [[HRPGIntroView alloc] init];
+        [introView displayIntro];
+    }
+    [_sharedManager fetchUser:^() {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }                 onError:^() {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -779,7 +779,7 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hep-Q0-bUw" customClass="DTAttributedTextView">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hep-Q0-bUw" customClass="DTAttributedTextView">
                                             <rect key="frame" x="16" y="31" width="288" height="41"/>
                                         </scrollView>
                                     </subviews>
@@ -862,7 +862,7 @@
                                                 <constraint firstAttribute="width" constant="55" id="vRt-YY-6rq"/>
                                             </constraints>
                                         </imageView>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kti-eD-CY4" customClass="DTAttributedTextView">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kti-eD-CY4" customClass="DTAttributedTextView">
                                             <rect key="frame" x="71" y="27" width="233" height="45"/>
                                         </scrollView>
                                     </subviews>
@@ -1814,12 +1814,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPG-vN-Sqq">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPG-vN-Sqq">
                                             <rect key="frame" x="8" y="10" width="268" height="20"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iw9-fX-B6v">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iw9-fX-B6v">
                                             <rect key="frame" x="284" y="10" width="29" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="QR8-NR-gOp"/>
@@ -1829,7 +1829,7 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDD-AG-Nyu" customClass="DTAttributedTextView">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDD-AG-Nyu" customClass="DTAttributedTextView">
                                             <rect key="frame" x="16" y="31" width="288" height="41"/>
                                         </scrollView>
                                     </subviews>
@@ -2844,7 +2844,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="20 Gems" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jf-ef-S4f">
-                                <rect key="frame" x="16" y="272" width="288" height="36"/>
+                                <rect key="frame" x="16" y="271" width="288" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="30" id="nWa-QJ-IyH"/>
                                 </constraints>
@@ -2853,7 +2853,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gems are used to buy special in-game items, such as shirts and hairstyles." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swT-vQ-9rg">
-                                <rect key="frame" x="16" y="324" width="288" height="61"/>
+                                <rect key="frame" x="16" y="323" width="288" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="20" id="TH7-kh-Txk"/>
                                 </constraints>
@@ -2861,15 +2861,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yaI-Jo-Esb" customClass="HRPGPurchaseLoadingButton">
-                                <rect key="frame" x="71" y="420" width="180" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yaI-Jo-Esb" customClass="HRPGPurchaseLoadingButton">
+                                <rect key="frame" x="70" y="420" width="180" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="7cc-co-a0k"/>
                                     <constraint firstAttribute="height" constant="40" id="JiC-Ik-ro7"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ns-xL-wc5">
-                                <rect key="frame" x="115" y="166" width="90" height="90"/>
+                                <rect key="frame" x="115" y="165" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1Ns-xL-wc5" secondAttribute="height" multiplier="1:1" id="aAD-dT-fqS"/>
                                     <constraint firstAttribute="height" constant="90" id="bQ3-AB-nTj"/>
@@ -3656,7 +3656,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                         </textField>
-                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQV-iU-RWL">
+                                        <button opaque="NO" alpha="0.49999999999999961" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQV-iU-RWL">
                                             <rect key="frame" x="285" y="8" width="27" height="27"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="27" id="Gai-s8-NkM"/>
@@ -3743,6 +3743,31 @@
                                         <constraint firstAttribute="centerY" secondItem="xvi-og-rtv" secondAttribute="centerY" id="hOi-Hw-8Bj"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="MlA-iN-6gR" secondAttribute="bottom" constant="3" id="qJM-wn-Adj"/>
                                         <constraint firstAttribute="centerX" secondItem="xvi-og-rtv" secondAttribute="centerX" id="xmz-5y-7to"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FacebookButtonCell" id="wjT-hZ-vjM">
+                                <rect key="frame" x="0.0" y="227" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wjT-hZ-vjM" id="ksj-GQ-cyG">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" alpha="0.0" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EDv-Zz-Vbq">
+                                            <rect key="frame" x="150" y="12" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                        <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6r-kV-wnh" customClass="FBSDKLoginButton">
+                                            <rect key="frame" x="8" y="8" width="304" height="28"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="EDv-Zz-Vbq" secondAttribute="centerY" id="FEe-Hm-qX8"/>
+                                        <constraint firstItem="P6r-kV-wnh" firstAttribute="bottom" secondItem="ksj-GQ-cyG" secondAttribute="bottomMargin" id="Hcw-8t-mBj"/>
+                                        <constraint firstItem="P6r-kV-wnh" firstAttribute="trailing" secondItem="ksj-GQ-cyG" secondAttribute="trailingMargin" id="Ki0-SU-WXo"/>
+                                        <constraint firstItem="P6r-kV-wnh" firstAttribute="top" secondItem="ksj-GQ-cyG" secondAttribute="topMargin" id="PC2-Ig-4th"/>
+                                        <constraint firstItem="P6r-kV-wnh" firstAttribute="leading" secondItem="ksj-GQ-cyG" secondAttribute="leadingMargin" id="Spe-vj-Xqf"/>
+                                        <constraint firstAttribute="centerX" secondItem="EDv-Zz-Vbq" secondAttribute="centerX" id="ZkL-Fh-IYe"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>

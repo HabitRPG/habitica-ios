@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
-@interface HRPGLoginViewController : UITableViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface HRPGLoginViewController : UITableViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, FBSDKLoginButtonDelegate>
 @property BOOL hideCancelButton;
 @property(weak, nonatomic) UITextField *usernameField;
 @property(weak, nonatomic) UITextField *emailField;

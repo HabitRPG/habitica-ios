@@ -12,6 +12,7 @@
 #import "HRPGActivityIndicatorOverlayView.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "XLForm.h"
+#import "MRProgress.h"
 
 @interface HRPGSettingsViewController ()
 @property HRPGManager *sharedManager;
@@ -123,47 +124,47 @@ User *user;
 }
 
 - (void)logoutUser {
-    HRPGActivityIndicatorOverlayView *activityView = [[HRPGActivityIndicatorOverlayView alloc] initWithString:@"Loading…" withColor:nil];
-    [activityView display:^() {
-    }];
+    MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
     [keyChain setString:@"" forKey:@"id"];
     [keyChain setString:@"" forKey:@"key"];
     [defaults setObject:@"" forKey:@"partyID"];
 
     [self.sharedManager resetSavedDatabase:YES onComplete:^() {
-        [activityView dismiss:^() {
+        [overlayView dismiss:YES completion:^() {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
             UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
             [self presentViewController:navigationController animated:YES completion:nil];
         }];
     }];
-    
 }
 
 - (void)resetCache {
-    HRPGActivityIndicatorOverlayView *activityView = [[HRPGActivityIndicatorOverlayView alloc] initWithString:@"Clearing Data…" withColor:nil];
-    [activityView display:^() {
-
-    }];
+    MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
     [self.sharedManager resetSavedDatabase:YES onComplete:^() {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];
-        [activityView dismiss:^() {
-
-        }];
+        overlayView.mode = MRProgressOverlayViewModeCheckmark;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [overlayView dismiss:YES];
+        });
     }];
 }
 
 - (void)reloadContent {
-    HRPGActivityIndicatorOverlayView *activityView = [[HRPGActivityIndicatorOverlayView alloc] initWithString:@"Loading Content…" withColor:[UIColor colorWithRed:0.366 green:0.599 blue:0.014 alpha:0.800]];
-    [activityView display:^() {
-    }];
+    MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
     [self.sharedManager fetchContent:^() {
-        [activityView dismiss:^() {
-        }];
+        overlayView.mode = MRProgressOverlayViewModeCheckmark;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [overlayView dismiss:YES];
+        });
     }onError:^() {
-        [activityView dismiss:^() {
-        }];
+        overlayView.mode = MRProgressOverlayViewModeCross;
+        overlayView.tintColor = [UIColor redColor];
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [overlayView dismiss:YES];
+        });
     }];
 }
 

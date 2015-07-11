@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D902AD841B5006570098A1BD /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D902AD821B5006570098A1BD /* FBSDKCoreKit.framework */; };
+		D902AD851B5006570098A1BD /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D902AD831B5006570098A1BD /* FBSDKLoginKit.framework */; };
 		D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03619D60421001EABE4 /* HabitIntro.png */; };
 		D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03919D60B53001EABE4 /* DailyIntro.png */; };
 		D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03A19D60B53001EABE4 /* TodoIntro.png */; };
@@ -151,6 +153,8 @@
 /* Begin PBXFileReference section */
 		A12B817AF1713BF5BCB7F702 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A8C64F7451C560A6BB881198 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D902AD821B5006570098A1BD /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		D902AD831B5006570098A1BD /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		D90EA03619D60421001EABE4 /* HabitIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabitIntro.png; sourceTree = "<group>"; };
 		D90EA03919D60B53001EABE4 /* DailyIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DailyIntro.png; sourceTree = "<group>"; };
 		D90EA03A19D60B53001EABE4 /* TodoIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TodoIntro.png; sourceTree = "<group>"; };
@@ -406,11 +410,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */,
+				D902AD841B5006570098A1BD /* FBSDKCoreKit.framework in Frameworks */,
 				D958E2B01915D41400186A08 /* Security.framework in Frameworks */,
 				D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */,
 				D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */,
 				D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */,
 				D940A7E31B0CF80100370F2E /* Fabric.framework in Frameworks */,
+				D902AD851B5006570098A1BD /* FBSDKLoginKit.framework in Frameworks */,
 				D940A7E41B0CF80100370F2E /* Crashlytics.framework in Frameworks */,
 				D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */,
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
@@ -792,6 +798,8 @@
 		D9EB4E8D18CB4A9400BB2094 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D902AD821B5006570098A1BD /* FBSDKCoreKit.framework */,
+				D902AD831B5006570098A1BD /* FBSDKLoginKit.framework */,
 				D9C89CF81B1F0E6C00A599B0 /* StoreKit.framework */,
 				D940A7E11B0CF80100370F2E /* Fabric.framework */,
 				D940A7E21B0CF80100370F2E /* Crashlytics.framework */,

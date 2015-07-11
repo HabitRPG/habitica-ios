@@ -290,6 +290,9 @@ NSString *currentUser;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:loginMapping method:RKRequestMethodAny pathPattern:@"/api/v2/user/auth/local" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:loginMapping method:RKRequestMethodAny pathPattern:@"/api/v2/user/auth/social" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:loginMapping method:RKRequestMethodAny pathPattern:@"/api/v2/register" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
@@ -311,6 +314,8 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:emptyStringMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/feed/:pet/:food" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:emptyStringMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/feed/:pet/:food" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassServerError)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
     RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
@@ -1642,6 +1647,41 @@ NSString *currentUser;
         return;
     }];
 
+}
+
+
+- (void)loginUserSocial:(NSString *)userID withAccessToken:(NSString *)accessToken onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    NSDictionary *params = @{@"network" : @"facebook", @"authResponse": @{
+                                 @"access_token": accessToken,
+                                 @"client_id": userID
+                                 }};
+    [[RKObjectManager sharedManager] postObject:Nil path:@"/api/v2/user/auth/social" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        HRPGLoginData *loginData = (HRPGLoginData *) [mappingResult firstObject];
+        PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
+        [keyChain setString:loginData.id forKey:@"id"];
+        [keyChain setString:loginData.key forKey:@"key"];
+        
+        if (successBlock) {
+            successBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+        } else {
+            [self displayNetworkError];
+        }
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+    
 }
 
 - (void)registerUser:(NSString *)username withPassword:(NSString *)password withEmail:(NSString *)email onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {

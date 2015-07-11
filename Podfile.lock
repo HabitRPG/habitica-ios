@@ -21,6 +21,34 @@ PODS:
   - ISO8601DateFormatterValueTransformer (0.6.0):
     - RKValueTransformers (~> 1.1.0)
   - MCSwipeTableViewCell (2.1.2)
+  - MRProgress (0.8.2):
+    - MRProgress/ActivityIndicator (= 0.8.2)
+    - MRProgress/Blur (= 0.8.2)
+    - MRProgress/Circular (= 0.8.2)
+    - MRProgress/Icons (= 0.8.2)
+    - MRProgress/NavigationBarProgress (= 0.8.2)
+    - MRProgress/Overlay (= 0.8.2)
+  - MRProgress/ActivityIndicator (0.8.2):
+    - MRProgress/Stopable
+  - MRProgress/Blur (0.8.2):
+    - MRProgress/Helper
+  - MRProgress/Circular (0.8.2):
+    - MRProgress/Helper
+    - MRProgress/ProgressBaseClass
+    - MRProgress/Stopable
+  - MRProgress/Helper (0.8.2)
+  - MRProgress/Icons (0.8.2)
+  - MRProgress/NavigationBarProgress (0.8.2):
+    - MRProgress/ProgressBaseClass
+  - MRProgress/Overlay (0.8.2):
+    - MRProgress/ActivityIndicator
+    - MRProgress/Blur
+    - MRProgress/Circular
+    - MRProgress/Helper
+    - MRProgress/Icons
+  - MRProgress/ProgressBaseClass (0.8.2)
+  - MRProgress/Stopable (0.8.2):
+    - MRProgress/Helper
   - NSString+Emoji (0.2.0)
   - OHHTTPStubs (4.0.0)
   - PDKeychainBindingsController (0.0.1)
@@ -64,6 +92,7 @@ DEPENDENCIES:
   - FLEX
   - FontAwesomeIconFactory
   - MCSwipeTableViewCell (~> 2.1.0)
+  - MRProgress
   - NSString+Emoji
   - OHHTTPStubs
   - PDKeychainBindingsController (~> 0.0.1)
@@ -101,6 +130,7 @@ SPEC CHECKSUMS:
   FontAwesomeIconFactory: d161a1832f8220d764033e0fcc4f4a8388495ab7
   ISO8601DateFormatterValueTransformer: 3ac3a721381697cab4e792d8049ce2f2e9ad3036
   MCSwipeTableViewCell: 0fc22bd3635b9b5f4ce08675218b0a7278b6440f
+  MRProgress: f4cfe862082418e8f542f077772283f425d6c699
   NSString+Emoji: 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: 3d65d31dd8389a8adabcc086ff2cc99c02e49bcc
   PDKeychainBindingsController: fa8cb3cf99f2ea9240d61066ed0549f34e2cec3c
@@ -113,4 +143,4 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: f2391b007c3abafd3b3afccda7d8914a59b44309
   XLForm: 799e61ef230f519914e722bf032b19a597223c19
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.37.1
