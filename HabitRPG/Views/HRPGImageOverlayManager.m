@@ -80,7 +80,7 @@
 - (void)displayNextImage {
     UITabBarController *mainTabbar = ((UITabBarController *) [[UIApplication sharedApplication] delegate].window.rootViewController);
     
-    if (![self.backgroundView isDescendantOfView:mainTabbar.view]) {
+    if (self.backgroundView && ![self.backgroundView isDescendantOfView:mainTabbar.view]) {
         [mainTabbar.view addSubview:self.backgroundView];
         
         [UIView animateWithDuration:0.3 animations:^() {

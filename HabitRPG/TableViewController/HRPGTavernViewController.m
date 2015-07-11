@@ -40,6 +40,17 @@
 User *user;
 ChatMessage *selectedMessage;
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        self.rowHeights = [NSMutableArray arrayWithCapacity:self.fetchedResultsController.fetchedObjects.count];
+        self.sizeTextView = [[DTAttributedTextView alloc] init];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
@@ -48,8 +59,6 @@ ChatMessage *selectedMessage;
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 
-    self.rowHeights = [NSMutableArray arrayWithCapacity:self.fetchedResultsController.fetchedObjects.count];
-    self.sizeTextView = [[DTAttributedTextView alloc] init];
     user = [self.sharedManager getUser];
     
     [self fetchTavern];
@@ -205,14 +214,9 @@ ChatMessage *selectedMessage;
         self.sizeTextView.attributedString = attributedText;
         self.sizeTextView.shouldDrawLinks = YES;
         
-        CGSize suggestedSize = [self.sizeTextView.attributedTextContentView suggestedFrameSizeToFitEntireStringConstraintedToWidth:self.screenWidth-32];
+        CGSize suggestedSize = [self.sizeTextView.attributedTextContentView suggestedFrameSizeToFitEntireStringConstraintedToWidth:self.screenWidth-48];
         
-        CGFloat rowHeight = suggestedSize.height+40;
-        if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
-            self.rowHeights[indexPath.item-1] = [NSNumber numberWithDouble:rowHeight];
-        } else {
-            self.rowHeights[indexPath.item] = [NSNumber numberWithDouble:rowHeight];
-        }
+        CGFloat rowHeight = suggestedSize.height+41;
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
             self.rowHeights[indexPath.item-1] = [NSNumber numberWithDouble:rowHeight];
         } else {
