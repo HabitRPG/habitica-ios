@@ -19,6 +19,7 @@
 @property(nonatomic, retain) User *user;
 @property(nonatomic, retain) NSNumber *hasTasks;
 @property(nonatomic, retain) NSNumber *challenge;
+@property(nonatomic, retain) NSNumber *order;
 @end
 
 @interface Tag (CoreDataGeneratedAccessors)
