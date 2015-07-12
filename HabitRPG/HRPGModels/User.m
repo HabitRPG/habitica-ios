@@ -141,7 +141,7 @@
     }
     
     NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:20];
-    for (int i = 0; i <= 20; i++) {
+    for (int i = 0; i <= 19; i++) {
         [imageArray addObject:[NSNull null]];
     }
     int currentLayer = 0;
@@ -166,8 +166,10 @@
     if (![back isEqualToString:@"back_base_0"]) {
         NSString *format = nil;
         dispatch_group_enter(group);
+        currentLayer++; //bump up current layer to 1 for skin
         [sharedManager getImage:[NSString stringWithFormat:@"%@", back] withFormat:format onSuccess:^(UIImage *image) {
-            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            // back accessory goes into layer 0, even though we incremented currentLayer
+            [imageArray replaceObjectAtIndex:0 withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
             dispatch_group_leave(group);
@@ -175,7 +177,6 @@
     }
     
     dispatch_group_enter(group);
-    currentLayer++;
     NSString *skinString = [NSString stringWithFormat:@"skin_%@", self.skin];
     if (self.sleep) {
         skinString = [skinString stringByAppendingString:@"_sleep"];
