@@ -68,10 +68,12 @@ ChatMessage *selectedMessage;
             UIFont *boldFont = [UIFont fontWithDescriptor: boldFontDescriptor size: 0.0];
             
             for (User *member in party.member) {
-                [self.chatAttributeMapping setObject:@{
-                                                       NSForegroundColorAttributeName: [member classColor],
-                                                       NSFontAttributeName: boldFont
-                                                       } forKey:member.username];
+                if (member.username) {
+                    [self.chatAttributeMapping setObject:@{
+                                                           NSForegroundColorAttributeName: [member classColor],
+                                                           NSFontAttributeName: boldFont
+                                                           } forKey:member.username];
+                }
             }
         } else {
             [self refresh];
