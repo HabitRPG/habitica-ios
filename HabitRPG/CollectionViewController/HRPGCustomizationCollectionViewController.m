@@ -17,8 +17,6 @@
 
 @interface HRPGCustomizationCollectionViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic) HRPGManager *sharedManager;
-@property NSInteger activityCounter;
 @property UIBarButtonItem *navigationButton;
 @property HRPGActivityIndicator *activityIndicator;
 @property CGSize screenSize;
@@ -34,18 +32,8 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
-    self.sharedManager = appdelegate.sharedManager;
-    self.managedObjectContext = self.sharedManager.getManagedObjectContext;
-    
     self.screenSize = [[UIScreen mainScreen] bounds].size;
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(preferredContentSizeChanged:)
-     name:UIContentSizeCategoryDidChangeNotification
-     object:nil];
-    
+
     HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
     [self.collectionView setContentInset:UIEdgeInsetsMake([navigationController getContentOffset],0,0,0)];
     self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
@@ -59,6 +47,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
     [self.collectionView reloadData];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -256,7 +248,6 @@ static NSString * const reuseIdentifier = @"Cell";
     switch (actionSheet.tag) {
         case 0:
             if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
-                NSString *path;
                 if ([self.entityName isEqualToString:@"Customization"]) {
                     [self.sharedManager updateUser:@{self.userKey: [self.selectedCustomization valueForKey:@"name"]} onSuccess:^() {
                         
@@ -264,7 +255,6 @@ static NSString * const reuseIdentifier = @"Cell";
                         
                     }];
                 } else {
-                    path = [self.selectedCustomization valueForKey:@"key"];
                     [self.sharedManager equipObject:[self.selectedCustomization valueForKey:@"key"] withType:self.userKey onSuccess:^{
                     } onError:^{
                         
@@ -305,30 +295,6 @@ static NSString * const reuseIdentifier = @"Cell";
     popup.tag = 2;
     [popup showInView:[UIApplication sharedApplication].keyWindow];
     self.selectedSetPath = button.setPath;
-}
-
--(void)addActivityCounter {
-    if (self.activityCounter == 0) {
-        self.navigationButton = self.navigationItem.rightBarButtonItem;
-        self.activityIndicator = [[HRPGActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
-        [self.navigationItem setRightBarButtonItem:indicatorButton animated:NO];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.activityIndicator beginAnimating];
-        });
-    }
-    self.activityCounter++;
-}
-
-- (void)removeActivityCounter {
-    self.activityCounter--;
-    if (self.activityCounter == 0) {
-        [self.activityIndicator endAnimating:^() {
-            [self.navigationItem setRightBarButtonItem:self.navigationButton animated:NO];
-        }];
-    } else if (self.activityCounter < 0) {
-        self.activityCounter = 0;
-    }
 }
 
 @end

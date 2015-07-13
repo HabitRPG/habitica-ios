@@ -104,6 +104,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:[CargoBay sharedManager]];
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

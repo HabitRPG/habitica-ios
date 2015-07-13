@@ -17,11 +17,9 @@
 
 @interface HRPGMountViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic) HRPGManager *sharedManager;
 @property (nonatomic) NSArray *eggs;
 @property (nonatomic) NSArray *hatchingPotions;
 @property (nonatomic) Pet *selectedMount;
-@property NSInteger activityCounter;
 @property UIBarButtonItem *navigationButton;
 @property HRPGActivityIndicator *activityIndicator;
 @property CGSize screenSize;
@@ -33,18 +31,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
-    self.sharedManager = appdelegate.sharedManager;
-    self.managedObjectContext = self.sharedManager.getManagedObjectContext;
     self.equippedMountName = [self.sharedManager getUser].currentMount;
 
     self.screenSize = [[UIScreen mainScreen] bounds].size;
 
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(preferredContentSizeChanged:)
-     name:UIContentSizeCategoryDidChangeNotification
-     object:nil];
     
     if (self.mountColor) {
         self.navigationItem.title = self.mountColor;
@@ -235,40 +225,14 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
-        [self addActivityCounter];
         [self.sharedManager equipObject:self.selectedMount.key withType:@"mount" onSuccess:^() {
             if ([self.equippedMountName isEqualToString:self.selectedMount.key]) {
                 self.equippedMountName = nil;
             } else {
                 self.equippedMountName = self.selectedMount.key;
-            }            [self removeActivityCounter];
+            }
         }onError:^() {
-            [self removeActivityCounter];
         }];
-    }
-}
-
--(void)addActivityCounter {
-    if (self.activityCounter == 0) {
-        self.navigationButton = self.navigationItem.rightBarButtonItem;
-        self.activityIndicator = [[HRPGActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
-        [self.navigationItem setRightBarButtonItem:indicatorButton animated:NO];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.activityIndicator beginAnimating];
-        });
-    }
-    self.activityCounter++;
-}
-
-- (void)removeActivityCounter {
-    self.activityCounter--;
-    if (self.activityCounter == 0) {
-        [self.activityIndicator endAnimating:^() {
-            [self.navigationItem setRightBarButtonItem:self.navigationButton animated:NO];
-        }];
-    } else if (self.activityCounter < 0) {
-        self.activityCounter = 0;
     }
 }
 

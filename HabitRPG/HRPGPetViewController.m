@@ -20,11 +20,9 @@
 
 @interface HRPGPetViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic) HRPGManager *sharedManager;
 @property (nonatomic) NSArray *eggs;
 @property (nonatomic) NSArray *hatchingPotions;
 @property (nonatomic) Pet *selectedPet;
-@property NSInteger activityCounter;
 @property UIBarButtonItem *navigationButton;
 @property HRPGActivityIndicator *activityIndicator;
 @property CGSize screenSize;
@@ -36,18 +34,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
-    self.sharedManager = appdelegate.sharedManager;
-    self.managedObjectContext = self.sharedManager.getManagedObjectContext;
     self.equippedPetName = [self.sharedManager getUser].currentPet;
 
     self.screenSize = [[UIScreen mainScreen] bounds].size;
-
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(preferredContentSizeChanged:)
-     name:UIContentSizeCategoryDidChangeNotification
-     object:nil];
     
     if (self.petColor) {
         self.navigationItem.title = self.petColor;
@@ -96,10 +85,6 @@
     NSString *niceHatchingPotionName = [self hatchingPotionWithKey:nameParts[1]];
     
     return [NSString stringWithFormat:@"%@ %@", niceHatchingPotionName, nicePetName];
-}
-
-- (void)preferredContentSizeChanged:(NSNotification *)notification {
-    [self.collectionView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -279,16 +264,13 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
-        [self addActivityCounter];
         [self.sharedManager equipObject:self.selectedPet.key withType:@"pet" onSuccess:^() {
             if ([self.equippedPetName isEqualToString:self.selectedPet.key]) {
                 self.equippedPetName = nil;
             } else {
                 self.equippedPetName = self.selectedPet.key;
             }
-            [self removeActivityCounter];
         }onError:^() {
-            [self removeActivityCounter];
         }];
     } else if (actionSheet.numberOfButtons > 2 && buttonIndex == 1) {
         [self performSegueWithIdentifier:@"FeedSegue" sender:self];
@@ -302,44 +284,11 @@
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGFeedViewController *feedController = (HRPGFeedViewController*)[segue sourceViewController];
     Food *food = feedController.selectedFood;
-    [self addActivityCounter];
     [self.sharedManager feedPet:self.selectedPet.key withFood:food.key onSuccess:^() {
-        [self removeActivityCounter];
     }onError:^() {
-        [self removeActivityCounter];
     }];
 }
 
--(void)addActivityCounter {
-    if (self.activityCounter == 0) {
-        self.navigationButton = self.navigationItem.rightBarButtonItem;
-        self.activityIndicator = [[HRPGActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
-        [self.navigationItem setRightBarButtonItem:indicatorButton animated:NO];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.activityIndicator beginAnimating];
-        });
-    }
-    self.activityCounter++;
-}
 
-- (void)removeActivityCounter {
-    self.activityCounter--;
-    if (self.activityCounter == 0) {
-        [self.activityIndicator endAnimating:^() {
-            [self.navigationItem setRightBarButtonItem:self.navigationButton animated:NO];
-        }];
-    } else if (self.activityCounter < 0) {
-        self.activityCounter = 0;
-    }
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UIViewController *destViewController = segue.destinationViewController;
-    if ([destViewController isKindOfClass:[HRPGNavigationController class]]) {
-        HRPGNavigationController *destNavigationController = (HRPGNavigationController*)destViewController;
-        destNavigationController.sourceViewController = self;
-    }
-}
 
 @end

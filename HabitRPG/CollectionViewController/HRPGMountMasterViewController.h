@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRPGBaseCollectionViewController.h"
 
-@interface HRPGMountMasterViewController : UICollectionViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
+@interface HRPGMountMasterViewController : HRPGBaseCollectionViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 

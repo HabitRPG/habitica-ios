@@ -7,12 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRPGBaseCollectionViewController.h"
 
-@interface HRPGPetMasterViewController : UICollectionViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
-
-@property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-
-- (void)preferredContentSizeChanged:(NSNotification *)notification;
+@interface HRPGPetMasterViewController : HRPGBaseCollectionViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
 
 
 @end

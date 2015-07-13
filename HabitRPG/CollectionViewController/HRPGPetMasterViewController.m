@@ -20,7 +20,6 @@
 
 @interface HRPGPetMasterViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic) HRPGManager *sharedManager;
 @property (nonatomic) NSArray *eggs;
 @property (nonatomic) NSArray *hatchingPotions;
 @property (nonatomic) NSString *selectedPet;
@@ -39,17 +38,8 @@ NSUserDefaults *defaults;
     [super viewDidLoad];
     defaults = [NSUserDefaults standardUserDefaults];
     self.groupByKey = [defaults integerForKey:@"groupPetsBy"];
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
-    self.sharedManager = appdelegate.sharedManager;
-    self.managedObjectContext = self.sharedManager.getManagedObjectContext;
     
     self.screenSize = [[UIScreen mainScreen] bounds].size;
-
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(preferredContentSizeChanged:)
-     name:UIContentSizeCategoryDidChangeNotification
-     object:nil];
     
     NSError *error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -320,10 +310,6 @@ NSUserDefaults *defaults;
     }
 }
 
-
-- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
-    
-}
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGArrayViewController *arrayViewController = (HRPGArrayViewController*)segue.sourceViewController;

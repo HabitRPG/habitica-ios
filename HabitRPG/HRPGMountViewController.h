@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRPGBaseCollectionViewController.h"
 
-@interface HRPGMountViewController : UICollectionViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
+@interface HRPGMountViewController : HRPGBaseCollectionViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
 
-@property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-
-- (void)preferredContentSizeChanged:(NSNotification *)notification;
 @property (nonatomic) NSString *mountName;
 @property (nonatomic) NSString *mountType;
 @property (nonatomic) NSString *mountColor;

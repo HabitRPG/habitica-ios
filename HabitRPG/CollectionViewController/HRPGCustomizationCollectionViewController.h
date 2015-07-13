@@ -8,17 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
+#import "HRPGBaseCollectionViewController.h"
 
-@interface HRPGCustomizationCollectionViewController : UICollectionViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
+@interface HRPGCustomizationCollectionViewController : HRPGBaseCollectionViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
 
-@property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property(nonatomic, weak) User *user;
 @property(nonatomic, strong) NSString *userKey;
 @property(nonatomic, strong) NSString *type;
 @property(nonatomic, strong) NSString *group;
 @property(nonatomic, strong) NSString *entityName;
-
-- (void)preferredContentSizeChanged:(NSNotification *)notification;
-
 
 @end

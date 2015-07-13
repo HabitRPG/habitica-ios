@@ -46,6 +46,10 @@
     [self.messageView becomeFirstResponder];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)keyboardChanged:(NSNotification *)notification{
     CGSize keyboardSize = [self.view convertRect:[[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue] toView:nil].size;
     CGFloat height = keyboardSize.height;
