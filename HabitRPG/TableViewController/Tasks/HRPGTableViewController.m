@@ -58,13 +58,13 @@ BOOL editable;
         if ([_typeName isEqual:@"todo"] && !self.displayCompleted) {
             predicate = [NSPredicate predicateWithFormat:@"type=='todo' && completed==NO"];
         } else {
-            predicate = [NSPredicate predicateWithFormat:@"type==%@", _typeName];
+            predicate = [NSPredicate predicateWithFormat:@"type==%@", self.typeName];
         }
     } else {
         if ([_typeName isEqual:@"todo"]) {
             predicate = [NSPredicate predicateWithFormat:@"type=='todo' && completed==NO && SUBQUERY(tags, $tag, $tag IN %@).@count = %d", tabBarController.selectedTags, [tabBarController.selectedTags count]];
         } else {
-            predicate = [NSPredicate predicateWithFormat:@"type==%@ && SUBQUERY(tags, $tag, $tag IN %@).@count = %d", _typeName, tabBarController.selectedTags, [tabBarController.selectedTags count]];
+            predicate = [NSPredicate predicateWithFormat:@"type==%@ && SUBQUERY(tags, $tag, $tag IN %@).@count = %d", self.typeName, tabBarController.selectedTags, [tabBarController.selectedTags count]];
         }
     }
     return predicate;

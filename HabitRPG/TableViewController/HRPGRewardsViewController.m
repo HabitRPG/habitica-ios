@@ -55,7 +55,7 @@ User *user;
 - (void)refresh {
     [self.sharedManager fetchUser:^() {
         [self.refreshControl endRefreshing];
-        _filteredData = nil;
+        self.filteredData = nil;
         [self.tableView reloadData];
     }                     onError:^() {
         [self.refreshControl endRefreshing];
@@ -64,7 +64,7 @@ User *user;
 }
 
 - (void)reloadAllData:(NSNotification *)notification {
-    _filteredData = nil;
+    self.filteredData = nil;
     [self.tableView reloadData];
 }
 
@@ -286,7 +286,7 @@ User *user;
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
-    _filteredData = nil;
+    self.filteredData = nil;
     [self.tableView reloadData];
     return;
 }

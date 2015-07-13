@@ -9,8 +9,6 @@
 #import "HRPGProgressView.h"
 
 @implementation HRPGProgressView
-@synthesize progress = _progress;
-
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -21,7 +19,7 @@
     rect = self.bounds;
 
     CGRect coloredRect = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, self.progressBarHeight);
-    coloredRect.size.width *= _progress;
+    coloredRect.size.width *= [self.progress floatValue];
     CGContextRef context = UIGraphicsGetCurrentContext();
 
     CGColorRef tintColor = self.tintColor.CGColor;
@@ -39,13 +37,9 @@
     return self.bounds.size.height;
 }
 
-- (void)setProgress:(CGFloat)progress {
+- (void)setProgress:(NSNumber *)progress {
     _progress = progress;
     [self setNeedsDisplay];
-}
-
-- (CGFloat)progress {
-    return _progress;
 }
 
 

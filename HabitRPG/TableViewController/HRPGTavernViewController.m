@@ -450,13 +450,13 @@ ChatMessage *selectedMessage;
             lifeLabel.text = [NSString stringWithFormat:@"Health: %@ / %@", [self.tavern.questHP abbreviateNumber], [self.quest.bossHp abbreviateNumber]];
             lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
             HRPGProgressView *lifeBar = (HRPGProgressView *) [cell viewWithTag:2];
-            lifeBar.progress = ([self.tavern.questHP floatValue] / [self.quest.bossHp floatValue]);
+            lifeBar.progress = [NSNumber numberWithFloat:([self.tavern.questHP floatValue] / [self.quest.bossHp floatValue])];
         } else if (indexPath.item == 2) {
             UILabel *lifeLabel = (UILabel *) [cell viewWithTag:1];
             lifeLabel.text = [NSString stringWithFormat:@"Rage: %@ / %@", [self.tavern.questRage abbreviateNumber], [self.quest.bossRage abbreviateNumber]];
             lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
             HRPGProgressView *rageBar = (HRPGProgressView *) [cell viewWithTag:2];
-            rageBar.progress = ([self.tavern.questRage floatValue] / [self.quest.bossRage floatValue]);
+            rageBar.progress = [NSNumber numberWithFloat:([self.tavern.questRage floatValue] / [self.quest.bossRage floatValue]) ];
         }
         return;
     }

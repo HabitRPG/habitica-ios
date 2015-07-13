@@ -482,7 +482,7 @@ ChatMessage *selectedMessage;
             lifeLabel.text = [NSString stringWithFormat:@"%@ / %@", party.questHP, quest.bossHp];
             lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
             HRPGProgressView *lifeBar = (HRPGProgressView *) [cell viewWithTag:2];
-            lifeBar.progress = ([party.questHP floatValue] / [quest.bossHp floatValue]);
+            lifeBar.progress = [NSNumber numberWithFloat:([party.questHP floatValue] / [quest.bossHp floatValue])];
         } else if ((indexPath.section == 1 && indexPath.item == 1) || (indexPath.section == 1 && indexPath.item == 2 && [party.questActive boolValue] && [party.questHP integerValue] > 0)) {
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             int acceptedCount = 0;

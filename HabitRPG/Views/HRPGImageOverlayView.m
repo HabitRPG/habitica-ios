@@ -22,8 +22,8 @@
 - (id)init {
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
     
-    _height = 140;
-    _width = 160;
+    self.height = 140;
+    self.width = 160;
     
     CGRect frame = CGRectMake((screenSize.width - self.width) / 2, -self.height, self.width, self.height);
     self = [super init];

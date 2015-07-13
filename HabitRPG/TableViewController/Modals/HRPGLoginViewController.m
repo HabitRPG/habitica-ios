@@ -34,7 +34,7 @@
     }
 
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
-    _sharedManager = appdelegate.sharedManager;
+    self.sharedManager = appdelegate.sharedManager;
 
     [self.usernameField becomeFirstResponder];
     self.usernameField.delegate = self;

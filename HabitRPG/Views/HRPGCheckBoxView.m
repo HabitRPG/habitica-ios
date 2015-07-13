@@ -14,11 +14,6 @@
 
 @implementation HRPGCheckBoxView
 
-@synthesize size = _size;
-@synthesize checked = _checked;
-@synthesize boxColor = _boxColor;
-@synthesize checkColor = _checkColor;
-
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {

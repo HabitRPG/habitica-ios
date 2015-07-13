@@ -317,7 +317,7 @@ NSUserDefaults *defaults;
     [defaults setInteger:arrayViewController.selectedIndex forKey:@"groupMountsBy"];
     self.groupByKey = arrayViewController.selectedIndex;
     self.selectedMount = nil;
-    _sortedPets = nil;
+    self.sortedPets = nil;
     [self.collectionView reloadData];
 }
 @end

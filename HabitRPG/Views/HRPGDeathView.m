@@ -30,7 +30,7 @@
         [self addGestureRecognizer:singleFingerTap];
         
         HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
-        _sharedManager = appdelegate.sharedManager;
+        self.sharedManager = appdelegate.sharedManager;
         
         self.diedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, screenRect.size.height/2-150, screenRect.size.width, 30)];
         self.diedLabel.font = [UIFont boldSystemFontOfSize:25];
