@@ -15,6 +15,7 @@
 @property (nonatomic)  HRPGManager *sharedManager;
 @property CGFloat screenWidth;
 @property BOOL hidesTopBar;
+@property NSString *readableScreenName;
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 

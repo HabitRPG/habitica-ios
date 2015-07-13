@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D902AD841B5006570098A1BD /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D902AD821B5006570098A1BD /* FBSDKCoreKit.framework */; };
 		D902AD851B5006570098A1BD /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D902AD831B5006570098A1BD /* FBSDKLoginKit.framework */; };
+		D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */; };
+		D902AD8A1B540AE30098A1BD /* HRPGBaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */; };
 		D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03619D60421001EABE4 /* HabitIntro.png */; };
 		D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03919D60B53001EABE4 /* DailyIntro.png */; };
 		D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03A19D60B53001EABE4 /* TodoIntro.png */; };
@@ -156,6 +158,9 @@
 		A8C64F7451C560A6BB881198 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D902AD821B5006570098A1BD /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		D902AD831B5006570098A1BD /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D902AD881B540AE30098A1BD /* HRPGBaseCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBaseCollectionViewController.h; sourceTree = "<group>"; };
+		D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBaseCollectionViewController.m; sourceTree = "<group>"; };
 		D90EA03619D60421001EABE4 /* HabitIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabitIntro.png; sourceTree = "<group>"; };
 		D90EA03919D60B53001EABE4 /* DailyIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DailyIntro.png; sourceTree = "<group>"; };
 		D90EA03A19D60B53001EABE4 /* TodoIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TodoIntro.png; sourceTree = "<group>"; };
@@ -312,8 +317,8 @@
 		D9ADD35C19447057006202C1 /* HRPGBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGBall.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9ADD3611944FDBE006202C1 /* HRPGTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTagViewController.h; sourceTree = "<group>"; };
 		D9ADD3621944FDBE006202C1 /* HRPGTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTagViewController.m; sourceTree = "<group>"; };
-		D9AEEA6E1ACECDBC0076951B /* HRPGClassTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGClassTableViewController.h; sourceTree = "<group>"; };
-		D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGClassTableViewController.m; sourceTree = "<group>"; };
+		D9AEEA6E1ACECDBC0076951B /* HRPGClassTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGClassTableViewController.h; path = ../CollectionViewController/HRPGClassTableViewController.h; sourceTree = "<group>"; };
+		D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGClassTableViewController.m; path = ../CollectionViewController/HRPGClassTableViewController.m; sourceTree = "<group>"; };
 		D9AEEA711ACEDD470076951B /* HRPGWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGWebViewController.h; sourceTree = "<group>"; };
 		D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGWebViewController.m; sourceTree = "<group>"; };
 		D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTabBarController.m; sourceTree = "<group>"; };
@@ -468,6 +473,8 @@
 				D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */,
 				D998FD931ADAC1FF00E9A26F /* HRPGAboutViewController.h */,
 				D998FD941ADAC1FF00E9A26F /* HRPGAboutViewController.m */,
+				D9AEEA6E1ACECDBC0076951B /* HRPGClassTableViewController.h */,
+				D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */,
 				D9C89CF11B1DE3A200A599B0 /* HRPGGemViewController.h */,
 				D9C89CF21B1DE3A200A599B0 /* HRPGGemViewController.m */,
 				D9C3D01C19509E3800D22A4A /* Inventory */,
@@ -568,6 +575,8 @@
 		D9ADD3571943C13F006202C1 /* Collection View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D902AD881B540AE30098A1BD /* HRPGBaseCollectionViewController.h */,
+				D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */,
 				D98AD54919437A3500AF6174 /* HRPGPetViewController.h */,
 				D98AD54A19437A3500AF6174 /* HRPGPetViewController.m */,
 				D9D96EFE194B87FF00796FE7 /* HRPGPetMasterViewController.h */,
@@ -576,8 +585,6 @@
 				D98AD5531943986100AF6174 /* HRPGMountViewController.m */,
 				D9D96F01194B96FD00796FE7 /* HRPGMountMasterViewController.h */,
 				D9D96F02194B96FD00796FE7 /* HRPGMountMasterViewController.m */,
-				D9AEEA6E1ACECDBC0076951B /* HRPGClassTableViewController.h */,
-				D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */,
 				D9B8C11E1AFE70F900634B5A /* HRPGCustomizationCollectionViewController.h */,
 				D9B8C11F1AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m */,
 			);
@@ -861,6 +868,7 @@
 				D93422BA1AB7A093003AFCDE /* Pods-acknowledgements.plist */,
 				D99DEC88190842CA00FFD2B9 /* Placeholder.png */,
 				D9EB4E9618CB4A9400BB2094 /* Habitica-Info.plist */,
+				D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */,
 				D9EB4E9718CB4A9400BB2094 /* InfoPlist.strings */,
 				D9EB4E9A18CB4A9400BB2094 /* main.m */,
 				D9EB4E9C18CB4A9400BB2094 /* Habitica-Prefix.pch */,
@@ -981,6 +989,7 @@
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
 				D9D44C131B0A19CA000732B4 /* Main_iPad.storyboard in Resources */,
 				D979AD1C1AF3EF6E00D59FAE /* customizations.json in Resources */,
+				D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1130,6 +1139,7 @@
 				D97CCDB619A51EED00DA128A /* GHFMarkdown.m in Sources */,
 				D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */,
 				D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */,
+				D902AD8A1B540AE30098A1BD /* HRPGBaseCollectionViewController.m in Sources */,
 				D9ADD34E1943BBB6006202C1 /* Food.m in Sources */,
 				D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */,
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,

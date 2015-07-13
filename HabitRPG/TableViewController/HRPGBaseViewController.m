@@ -29,6 +29,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:[self getScreenName]];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
 
     if ([keyChain stringForKey:@"id"] == nil || [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
@@ -47,6 +51,14 @@
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     self.screenWidth = screenRect.size.width;
+}
+
+- (NSString *) getScreenName {
+    if (self.readableScreenName) {
+        return self.readableScreenName;
+    } else {
+        return NSStringFromClass([self class]);
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -74,6 +86,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     User *user = [self.sharedManager getUser];
     if (user && [user.health floatValue] <= 0) {
         HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
@@ -83,6 +96,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [self.activityIndicator pauseAnimating];
+    [super viewDidDisappear:animated];
 }
 
 - (void)dealloc {

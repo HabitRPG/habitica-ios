@@ -433,10 +433,6 @@ ChatMessage *selectedMessage;
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    int section = 2;
-    if ([self.tavern.questActive boolValue]) {
-        section = 3;
-    }
     self.rowHeights = [NSMutableArray arrayWithCapacity:self.fetchedResultsController.fetchedObjects.count];
     [self.tableView endUpdates];
 }

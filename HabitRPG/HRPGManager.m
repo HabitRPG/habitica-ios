@@ -28,6 +28,7 @@
 #import "Customization.h"
 #import "HRPGImageOverlayManager.h"
 #import "HRPGDeathView.h"
+#import <Google/Analytics.h>
 
 @interface HRPGManager ()
 @property NIKFontAwesomeIconFactory *iconFactory;
@@ -1068,6 +1069,10 @@ NSString *currentUser;
     currentUser = [keyChain stringForKey:@"id"];
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-user" value:currentUser];
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-key" value:[keyChain stringForKey:@"key"]];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:@"&uid"
+           value:user.id];
 }
 
 - (void)fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock {
@@ -1352,6 +1357,12 @@ NSString *currentUser;
     
     [self.networkIndicatorController beginNetworking];
 
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"behaviour"
+                                                          action:@"score task"
+                                                           label:nil
+                                                           value:nil] build]];
+    
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@/%@", task.id, withDirection] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGTaskResponse *taskResponse = (HRPGTaskResponse *) [mappingResult firstObject];
@@ -1380,12 +1391,19 @@ NSString *currentUser;
             task.completed = [NSNumber numberWithBool:([withDirection isEqual:@"up"])];
         }
         
-        if (user && [user.health integerValue] <= 0) {
+        if (user && [user.health floatValue] <= 0) {
             HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
             [deathView show];
         }
         
         if (taskResponse.dropKey) {
+            
+            id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"behaviour"
+                                                                  action:@"acquire item"
+                                                                   label:nil
+                                                                   value:nil] build]];
+            
             NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
             // Edit the entity name as appropriate.
             NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" inManagedObjectContext:[self getManagedObjectContext]];
@@ -2242,6 +2260,13 @@ NSString *currentUser;
 
 -(void)purchaseGems:(NSDictionary *)receipt onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
+    
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"behaviour"
+                                                          action:@"purchase gems"
+                                                           label:nil
+                                                           value:nil] build]];
     
     [[RKObjectManager sharedManager] postObject:nil path:@"/iap/ios/verify" parameters:receipt success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self fetchUser:^(){
