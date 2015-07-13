@@ -163,7 +163,7 @@
     }
     
     NSString *back = [self.useCostume boolValue] ? self.costumeBack : self.equippedBack;
-    if (![back isEqualToString:@"back_base_0"]) {
+    if (![back isEqualToString:@"back_base_0"] && back) {
         NSString *format = nil;
         dispatch_group_enter(group);
         currentLayer++; //bump up current layer to 1 for skin
@@ -207,7 +207,7 @@
     }];
     
     NSString *eyewear = [self.useCostume boolValue] ? self.costumeEyewear : self.equippedEyewear;
-    if (![eyewear isEqualToString:@"eyewear_base_0"]) {
+    if (![eyewear isEqualToString:@"eyewear_base_0"] && eyewear) {
         NSString *format = nil;
         dispatch_group_enter(group);
         currentLayer++;
@@ -220,7 +220,7 @@
     }
 
     NSString *armor = [self.useCostume boolValue] ? self.costumeArmor : self.equippedArmor;
-    if (![armor isEqualToString:@"armor_base_0"]) {
+    if (![armor isEqualToString:@"armor_base_0"] && armor) {
         NSString *format = nil;
         if ([armor isEqualToString:@"armor_special_0"] || [armor isEqualToString:@"armor_special_1"]) {
             format = @"gif";
@@ -236,7 +236,7 @@
     }
     
     NSString *body = [self.useCostume boolValue] ? self.costumeBody : self.equippedBody;
-    if (![body isEqualToString:@"body_base_0"]) {
+    if (![body isEqualToString:@"body_base_0"] && body) {
         NSString *format = nil;
         dispatch_group_enter(group);
         currentLayer++;
@@ -294,7 +294,7 @@
     }
 
     NSString *head = [self.useCostume boolValue] ? self.costumeHead : self.equippedHead;
-    if (![head isEqualToString:@"head_base_0"]) {
+    if (![head isEqualToString:@"head_base_0"] && head) {
         NSString *format = nil;
         if ([head isEqualToString:@"head_special_0"] || [head isEqualToString:@"head_special_1"]) {
             format = @"gif";
@@ -309,7 +309,7 @@
         }];
     }
     NSString *headAccessory = [self.useCostume boolValue] ? self.costumeHeadAccessory : self.equippedHeadAccessory;
-    if (headAccessory && ![headAccessory isEqualToString:@"headAccessory_base_0"]) {
+    if (headAccessory && ![headAccessory isEqualToString:@"headAccessory_base_0"] && headAccessory) {
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:headAccessory withFormat:nil onSuccess:^(UIImage *image) {
@@ -330,7 +330,7 @@
         }];
     }
     NSString *shield = [self.useCostume boolValue] ? self.costumeShield : self.equippedShield;
-    if (!onlyHead && ![shield isEqualToString:@"shield_base_0"]) {
+    if (!onlyHead && ![shield isEqualToString:@"shield_base_0"] && shield) {
         NSString *format = nil;
         if ([shield isEqualToString:@"shield_special_0"]) {
             format = @"gif";
@@ -345,7 +345,7 @@
         }];
     }
     NSString *weapon = [self.useCostume boolValue] ? self.costumeWeapon : self.equippedWeapon;
-    if (!onlyHead && ![weapon isEqualToString:@"weapon_base_0"]) {
+    if (!onlyHead && ![weapon isEqualToString:@"weapon_base_0"] && weapon) {
         NSString *format = nil;
         if ([weapon isEqualToString:@"weapon_special_0"] || [weapon isEqualToString:@"weapon_special_critical"]) {
             format = @"gif";

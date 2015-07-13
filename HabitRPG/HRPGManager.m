@@ -344,20 +344,20 @@ NSString *currentUser;
             @"stats.class" : @"hclass",
             @"items.gear.equipped.headAccessory" : @"equippedHeadAccessory",
             @"items.gear.equipped.armor" : @"equippedArmor",
+            @"items.gear.equipped.back" : @"equippedBack",
             @"items.gear.equipped.body" : @"equippedBody",
+            @"items.gear.equipped.eyewear" : @"equippedEyewear",
             @"items.gear.equipped.head" : @"equippedHead",
             @"items.gear.equipped.shield" : @"equippedShield",
             @"items.gear.equipped.weapon" : @"equippedWeapon",
-            @"items.gear.equipped.back" : @"equippedBack",
-            @"items.gear.equipped.eyewear" : @"equippedEyewear",
             @"items.gear.costume.headAccessory" : @"costumeHeadAccessory",
             @"items.gear.costume.armor" : @"costumeArmor",
+            @"items.gear.costume.back" : @"costumeBack",
             @"items.gear.costume.body" : @"costumeBody",
+            @"items.gear.costume.eyewear" : @"costumeEyewear",
             @"items.gear.costume.head" : @"costumeHead",
             @"items.gear.costume.shield" : @"costumeShield",
             @"items.gear.costume.weapon" : @"costumeWeapon",
-            @"items.gear.costume.back" : @"costumeBack",
-            @"items.gear.costume.eyewear" : @"costumeEyewear",
             @"preferences.costume" : @"useCostume",
             @"items.currentPet" : @"currentPet",
             @"items.currentMount" : @"currentMount",
@@ -531,16 +531,20 @@ NSString *currentUser;
     [equipMapping addAttributeMappingsFromDictionary:@{
                                                      @"gear.equipped.headAccessory" : @"equippedHeadAccessory",
                                                      @"gear.equipped.armor" : @"equippedArmor",
+                                                     @"gear.equipped.body" : @"equippedBody",
+                                                     @"gear.equipped.eyewear" : @"equippedEyewear",
                                                      @"gear.equipped.head" : @"equippedHead",
                                                      @"gear.equipped.shield" : @"equippedShield",
                                                      @"gear.equipped.weapon" : @"equippedWeapon",
                                                      @"gear.equipped.back" : @"equippedBack",
                                                      @"gear.costume.headAccessory" : @"costumeHeadAccessory",
                                                      @"gear.costume.armor" : @"costumeArmor",
+                                                     @"gear.costume.back" : @"costumeBack",
+                                                     @"gear.costume.body" : @"costumeBody",
+                                                     @"gear.costume.eyewear" : @"costumeEyewear",
                                                      @"gear.costume.head" : @"costumeHead",
                                                      @"gear.costume.shield" : @"costumeShield",
                                                      @"gear.costume.weapon" : @"costumeWeapon",
-                                                     @"gear.costume.back" : @"costumeBack",
                                                      @"currentPet" : @"currentPet",
                                                      @"currentMount" : @"currentMount",
                                                      }];
@@ -594,16 +598,20 @@ NSString *currentUser;
             @"stats.hp" : @"health",
             @"items.gear.equipped.headAccessory" : @"equippedHeadAccessory",
             @"items.gear.equipped.armor" : @"equippedArmor",
+            @"items.gear.equipped.back" : @"equippedBack",
+            @"items.gear.equipped.body" : @"equippedBody",
+            @"items.gear.equipped.eyewear" : @"equippedEyewear",
             @"items.gear.equipped.head" : @"equippedHead",
             @"items.gear.equipped.shield" : @"equippedShield",
             @"items.gear.equipped.weapon" : @"equippedWeapon",
-            @"items.gear.equipped.back" : @"equippedBack",
             @"items.gear.costume.headAccessory" : @"costumeHeadAccessory",
             @"items.gear.costume.armor" : @"costumeArmor",
+            @"items.gear.costume.back" : @"costumeBack",
+            @"items.gear.costume.body" : @"costumeBody",
+            @"items.gear.costume.eyewear" : @"costumeEyewear",
             @"items.gear.costume.head" : @"costumeHead",
             @"items.gear.costume.shield" : @"costumeShield",
             @"items.gear.costume.weapon" : @"costumeWeapon",
-            @"items.gear.costume.back" : @"costumeBack",
             @"items.currentPet" : @"currentPet",
             @"items.currentMount" : @"currentMount",
             @"armoire.type": @"armoireType",
@@ -1908,13 +1916,17 @@ NSString *currentUser;
         NSError *executeError = nil;
         HRPGUserBuyResponse *response = [mappingResult dictionary][[NSNull null]];
         user.equippedHeadAccessory = response.equippedHeadAccessory;
-        user.equippedHead = response.equippedHead;
-        user.equippedBack = response.equippedBack;
         user.equippedArmor = response.equippedArmor;
+        user.equippedBack = response.equippedBack;
+        user.equippedBody = response.equippedBody;
+        user.equippedEyewear = response.equippedEyewear;
+        user.equippedHead = response.equippedHead;
         user.equippedShield = response.equippedShield;
         user.equippedWeapon = response.equippedWeapon;
         user.costumeArmor = response.costumeArmor;
         user.costumeBack = response.costumeBack;
+        user.costumeBody = response.costumeBody;
+        user.costumeEyewear = response.costumeEyewear;
         user.costumeHead = response.costumeHead;
         user.costumeHeadAccessory = response.costumeHeadAccessory;
         user.costumeShield = response.costumeShield;
@@ -1951,13 +1963,17 @@ NSString *currentUser;
         NSError *executeError = nil;
         HRPGUserBuyResponse *response = [mappingResult dictionary][[NSNull null]];
         user.equippedHeadAccessory = response.equippedHeadAccessory;
-        user.equippedHead = response.equippedHead;
-        user.equippedBack = response.equippedBack;
         user.equippedArmor = response.equippedArmor;
+        user.equippedBack = response.equippedBack;
+        user.equippedBody = response.equippedBody;
+        user.equippedEyewear = response.equippedEyewear;
+        user.equippedHead = response.equippedHead;
         user.equippedShield = response.equippedShield;
         user.equippedWeapon = response.equippedWeapon;
         user.costumeArmor = response.costumeArmor;
         user.costumeBack = response.costumeBack;
+        user.costumeBody = response.costumeBody;
+        user.costumeEyewear = response.costumeEyewear;
         user.costumeHead = response.costumeHead;
         user.costumeHeadAccessory = response.costumeHeadAccessory;
         user.costumeShield = response.costumeShield;
