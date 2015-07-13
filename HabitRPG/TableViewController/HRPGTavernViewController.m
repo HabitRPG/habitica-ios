@@ -437,10 +437,7 @@ ChatMessage *selectedMessage;
     if ([self.tavern.questActive boolValue]) {
         section = 3;
     }
-    NSInteger messageCount = [self.tableView numberOfRowsInSection:section];
-    if (self.rowHeights.count > messageCount) {
-        [self.rowHeights removeObjectsInRange:NSMakeRange(messageCount, self.rowHeights.count - messageCount)];
-    }
+    self.rowHeights = [NSMutableArray arrayWithCapacity:self.fetchedResultsController.fetchedObjects.count];
     [self.tableView endUpdates];
 }
 
