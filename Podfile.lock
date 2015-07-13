@@ -18,6 +18,19 @@ PODS:
   - EAIntroView (2.6.4)
   - FLEX (2.0.2)
   - FontAwesomeIconFactory (2.0)
+  - Google/Analytics (1.0.7):
+    - Google/Core
+    - GoogleAnalytics (~> 3.12)
+  - Google/Core (1.0.7):
+    - GoogleNetworkingUtilities (~> 1.0)
+    - GoogleSymbolUtilities (~> 1.0)
+    - GoogleUtilities (~> 1.0)
+  - GoogleAnalytics (3.12.0)
+  - GoogleNetworkingUtilities (1.0.0):
+    - GoogleSymbolUtilities (~> 1.0)
+  - GoogleSymbolUtilities (1.0.0)
+  - GoogleUtilities (1.0.1):
+    - GoogleSymbolUtilities (~> 1.0)
   - ISO8601DateFormatterValueTransformer (0.6.0):
     - RKValueTransformers (~> 1.1.0)
   - MCSwipeTableViewCell (2.1.2)
@@ -91,6 +104,7 @@ DEPENDENCIES:
   - EAIntroView (~> 2.6.0)
   - FLEX
   - FontAwesomeIconFactory
+  - Google/Analytics (~> 1.0.0)
   - MCSwipeTableViewCell (~> 2.1.0)
   - MRProgress
   - NSString+Emoji
@@ -128,6 +142,11 @@ SPEC CHECKSUMS:
   EAIntroView: df7dc18da73e1831d06878b9c0e13da78e6bb3ce
   FLEX: 321e6150cbababb76aaadde355dfce2ee1cac2d8
   FontAwesomeIconFactory: d161a1832f8220d764033e0fcc4f4a8388495ab7
+  Google: 875f5a8ade86dd02e36586e4a54814843938c7f6
+  GoogleAnalytics: ef2e0b800ef3c1e62688cdfc959e0d3132bc246c
+  GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
+  GoogleSymbolUtilities: a7b0feed1fe667c8d5e647177938d0ecd62d6948
+  GoogleUtilities: e3475cd4d45134221d2f3f3626095a1c49b62041
   ISO8601DateFormatterValueTransformer: 3ac3a721381697cab4e792d8049ce2f2e9ad3036
   MCSwipeTableViewCell: 0fc22bd3635b9b5f4ce08675218b0a7278b6440f
   MRProgress: f4cfe862082418e8f542f077772283f425d6c699

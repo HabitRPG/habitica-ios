@@ -16,6 +16,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "MRProgress.h"
 #import "CRToast.h"
+#import <Google/Analytics.h>
 
 @interface HRPGLoginViewController ()
 @property HRPGManager *sharedManager;
@@ -292,6 +293,13 @@
         HRPGIntroView *introView = [[HRPGIntroView alloc] init];
         [introView displayIntro];
     }
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"behaviour"
+                                                          action:@"login"
+                                                           label:nil
+                                                           value:nil] build]];
+    
     [_sharedManager fetchUser:^() {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];
         [self dismissViewControllerAnimated:YES completion:nil];

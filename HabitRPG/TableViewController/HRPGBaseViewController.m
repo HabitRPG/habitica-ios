@@ -17,6 +17,7 @@
 #import "HRPGTopHeaderNavigationController.h"
 #import <CoreText/CoreText.h>
 #import "HRPGActivityIndicatorOverlayView.h"
+#import <Google/Analytics.h>
 
 @interface HRPGBaseViewController ()
 @property UIBarButtonItem *navigationButton;
@@ -74,7 +75,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     User *user = [self.sharedManager getUser];
-    if (user && [user.health integerValue] <= 0) {
+    if (user && [user.health floatValue] <= 0) {
         HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
         [deathView show];
     }

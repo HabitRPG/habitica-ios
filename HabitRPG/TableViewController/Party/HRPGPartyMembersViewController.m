@@ -177,8 +177,8 @@ NSString *partyID;
     healthLabel.color = [UIColor colorWithRed:0.773 green:0.235 blue:0.247 alpha:1.000];
     healthLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.976 green:0.925 blue:0.925 alpha:1.000];
     healthLabel.icon = [self.iconFactory createImageForIcon:NIKFontAwesomeIconHeart];
-    healthLabel.value = [user.health integerValue];
-    healthLabel.maxValue = 50;
+    healthLabel.value = user.health;
+    healthLabel.maxValue = [NSNumber numberWithInt:50];
     
     UILabel *levelLabel = (UILabel *) [cell viewWithTag:5];
     levelLabel.text = [NSString stringWithFormat:@"LVL %@", user.level];

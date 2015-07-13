@@ -16,8 +16,8 @@
 @property HRPGProgressBar *progressBar;
 
 @property (nonatomic) UIColor *color;
-@property (nonatomic) NSInteger maxValue;
-@property (nonatomic) NSInteger value;
+@property (nonatomic) NSNumber *maxValue;
+@property (nonatomic) NSNumber *value;
 @property (nonatomic) UIImage *icon;
 
 @end

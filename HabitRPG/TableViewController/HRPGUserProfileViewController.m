@@ -232,15 +232,15 @@
         healthLabel.color = [UIColor colorWithRed:0.773 green:0.235 blue:0.247 alpha:1.000];
         healthLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.976 green:0.925 blue:0.925 alpha:1.000];
         healthLabel.icon = [self.iconFactory createImageForIcon:NIKFontAwesomeIconHeart];
-        healthLabel.value = [user.health integerValue];
-        healthLabel.maxValue = 50;
+        healthLabel.value = user.health;
+        healthLabel.maxValue = [NSNumber numberWithInt:50];
         
         HRPGLabeledProgressBar *experienceLabel = (HRPGLabeledProgressBar *) [cell viewWithTag:3];
         experienceLabel.color = [UIColor colorWithRed:0.969 green:0.765 blue:0.027 alpha:1.000];
         experienceLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.996 green:0.980 blue:0.922 alpha:1.000];
         experienceLabel.icon = [self.iconFactory createImageForIcon:NIKFontAwesomeIconStar];
-        experienceLabel.value = [user.experience integerValue];
-        experienceLabel.maxValue = [user.nextLevel integerValue];
+        experienceLabel.value = user.experience;
+        experienceLabel.maxValue = user.nextLevel;
         
         HRPGLabeledProgressBar *magicLabel = (HRPGLabeledProgressBar *) [cell viewWithTag:4];
         
@@ -248,8 +248,8 @@
             magicLabel.color = [UIColor colorWithRed:0.259 green:0.412 blue:0.902 alpha:1.000];
             magicLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.925 green:0.945 blue:0.992 alpha:1.000];
             magicLabel.icon = [self.iconFactory createImageForIcon:NIKFontAwesomeIconFire];
-            magicLabel.value = [user.magic integerValue];
-            magicLabel.maxValue = [user.maxMagic integerValue];
+            magicLabel.value = user.magic;
+            magicLabel.maxValue = user.maxMagic;
             magicLabel.hidden = NO;
         } else {
             magicLabel.hidden = YES;

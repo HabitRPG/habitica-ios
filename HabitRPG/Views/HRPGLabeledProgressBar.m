@@ -60,16 +60,16 @@
     self.iconView.image = icon;
 }
 
-- (void)setValue:(NSInteger)value {
+- (void)setValue:(NSNumber *)value {
     _value = value;
     [self setLabelViewText];
-    [self.progressBar setBarValue:value animated:YES];
+    [self.progressBar setBarValue:[value floatValue] animated:YES];
 }
 
-- (void)setMaxValue:(NSInteger)maxValue {
+- (void)setMaxValue:(NSNumber *)maxValue {
     _maxValue = maxValue;
     [self setLabelViewText];
-    [self.progressBar setMaxBarValue:maxValue];
+    [self.progressBar setMaxBarValue:[maxValue floatValue]];
 }
 
 - (void)setFrame:(CGRect)frame {
@@ -78,7 +78,11 @@
 }
 
 - (void) setLabelViewText {
-    self.labelView.text = [NSString stringWithFormat:@"%ld / %ld", (long) self.value, self.maxValue];
+    if ([self.value floatValue] < 1) {
+        self.labelView.text = [NSString stringWithFormat:@"%.1f / %@", [self.value floatValue], self.maxValue];
+    } else {
+        self.labelView.text = [NSString stringWithFormat:@"%ld / %@", [self.value integerValue], self.maxValue];
+    }
 }
 
 - (void) updateViewFrames {
