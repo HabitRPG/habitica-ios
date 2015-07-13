@@ -114,6 +114,7 @@
         }
     }
     if ([task.up boolValue]) {
+        upButton.layer.transform = CATransform3DMakeScale(1, 1, 1);
         upButton.hidden = NO;
         upButton.backgroundColor = [task taskColor];
         if (![task.down boolValue]) {
@@ -126,6 +127,7 @@
         upConstraint.constant = 0;
     }
     if ([task.down boolValue]) {
+        downButton.layer.transform = CATransform3DMakeScale(1, 1, 1);
         downButton.hidden = NO;
         downButton.backgroundColor = [task taskColor];
         if (![task.up boolValue]) {
