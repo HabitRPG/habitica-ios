@@ -8,7 +8,6 @@
 
 #import "Tag.h"
 
-
 @implementation Tag
 
 @dynamic id;
@@ -17,4 +16,6 @@
 @dynamic user;
 @dynamic hasTasks;
 @dynamic challenge;
+@dynamic order;
+
 @end

@@ -388,7 +388,12 @@ NSString *currentUser;
     
     
     RKEntityMapping *userTagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
-    [userTagMapping addAttributeMappingsFromArray:@[@"id", @"name", @"challenge"]];
+    [userTagMapping addAttributeMappingsFromDictionary:@{
+                                                         @"id" : @"id",
+                                                         @"name" : @"name",
+                                                         @"challenge" : @"challenge",
+                                                         @"@metadata.mapping.collectionIndex" : @"order"
+                                                         }];
     userTagMapping.identificationAttributes = @[@"id"];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
                                                                                   toKeyPath:@"tags"

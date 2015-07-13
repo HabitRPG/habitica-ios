@@ -388,6 +388,11 @@
 
 
 
+    {"name": "0",
+    "type": "hair",
+    "price": 0,
+    "group": "flower",
+    },
     {"name": "1",
       "type": "hair",
       "price": 0,
