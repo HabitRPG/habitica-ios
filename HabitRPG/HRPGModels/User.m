@@ -27,6 +27,8 @@
 @dynamic contributorText;
 @dynamic costumeArmor;
 @dynamic costumeBack;
+@dynamic costumeBody;
+@dynamic costumeEyewear;
 @dynamic costumeHead;
 @dynamic costumeHeadAccessory;
 @dynamic costumeShield;
@@ -38,6 +40,8 @@
 @dynamic dropsEnabled;
 @dynamic equippedArmor;
 @dynamic equippedBack;
+@dynamic equippedBody;
+@dynamic equippedEyewear;
 @dynamic equippedHead;
 @dynamic equippedHeadAccessory;
 @dynamic equippedShield;
@@ -136,8 +140,8 @@
         return;
     }
     
-    NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:16];
-    for (int i = 0; i <= 16; i++) {
+    NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:20];
+    for (int i = 0; i <= 19; i++) {
         [imageArray addObject:[NSNull null]];
     }
     int currentLayer = 0;
@@ -157,6 +161,21 @@
             dispatch_group_leave(group);
         }];
     }
+    
+    NSString *back = [self.useCostume boolValue] ? self.costumeBack : self.equippedBack;
+    if (![back isEqualToString:@"back_base_0"]) {
+        NSString *format = nil;
+        dispatch_group_enter(group);
+        currentLayer++; //bump up current layer to 1 for skin
+        [sharedManager getImage:[NSString stringWithFormat:@"%@", back] withFormat:format onSuccess:^(UIImage *image) {
+            // back accessory goes into layer 0, even though we incremented currentLayer
+            [imageArray replaceObjectAtIndex:0 withObject:image];
+            dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
+        }];
+    }
+    
     dispatch_group_enter(group);
     NSString *skinString = [NSString stringWithFormat:@"skin_%@", self.skin];
     if (self.sleep) {
@@ -186,6 +205,20 @@
     } onError:^() {
         dispatch_group_leave(group);
     }];
+    
+    NSString *eyewear = [self.useCostume boolValue] ? self.costumeEyewear : self.equippedEyewear;
+    if (![eyewear isEqualToString:@"eyewear_base_0"]) {
+        NSString *format = nil;
+        dispatch_group_enter(group);
+        currentLayer++;
+        [sharedManager getImage:[NSString stringWithFormat:@"%@", eyewear] withFormat:format onSuccess:^(UIImage *image) {
+            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
+        }];
+    }
+
     NSString *armor = [self.useCostume boolValue] ? self.costumeArmor : self.equippedArmor;
     if (![armor isEqualToString:@"armor_base_0"]) {
         NSString *format = nil;
@@ -201,7 +234,20 @@
             dispatch_group_leave(group);
         }];
     }
-
+    
+    NSString *body = [self.useCostume boolValue] ? self.costumeBody : self.equippedBody;
+    if (![body isEqualToString:@"body_base_0"]) {
+        NSString *format = nil;
+        dispatch_group_enter(group);
+        currentLayer++;
+        [sharedManager getImage:[NSString stringWithFormat:@"%@", body] withFormat:format onSuccess:^(UIImage *image) {
+            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
+        }];
+    }
+    
     if ([self.hairBase integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
