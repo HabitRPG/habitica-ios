@@ -60,6 +60,7 @@ ChatMessage *selectedMessage;
 
         }];
     } else {
+        [self refresh];
         if ([[self.fetchedResultsController sections] count] > 0 && [[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0) {
             party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
             [self fetchQuest];
@@ -75,8 +76,6 @@ ChatMessage *selectedMessage;
                                                            } forKey:member.username];
                 }
             }
-        } else {
-            [self refresh];
         }
         
         UIRefreshControl *refresh = [[UIRefreshControl alloc] init];

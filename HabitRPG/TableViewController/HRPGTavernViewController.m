@@ -61,7 +61,7 @@ ChatMessage *selectedMessage;
 
     user = [self.sharedManager getUser];
     
-    [self fetchTavern];
+    [self refresh];
 }
 
 - (void)refresh {
