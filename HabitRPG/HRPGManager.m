@@ -2034,12 +2034,16 @@ NSString *currentUser;
         url = [NSString stringWithFormat:@"/api/v2/user/class/cast/%@?targetType=%@", spell, targetType];
     }
     [[RKObjectManager sharedManager] postObject:nil path:url parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSError *executeError = nil;
-        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        [self displaySpellNotification:(mana - [user.magic integerValue]) withHealthDiff:([user.health floatValue] - health) withGoldDiff:([user.gold floatValue] - gold)];
-        if (successBlock) {
-            successBlock();
-        }
+        [self fetchUser:^(){
+            NSError *executeError = nil;
+            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+            [self displaySpellNotification:(mana - [user.magic integerValue]) withHealthDiff:([user.health floatValue] - health) withGoldDiff:([user.gold floatValue] - gold)];
+            if (successBlock) {
+                successBlock();
+            }
+            [self.networkIndicatorController endNetworking];
+            return;
+        }onError:nil];
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
