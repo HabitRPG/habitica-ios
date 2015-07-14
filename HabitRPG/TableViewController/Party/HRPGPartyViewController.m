@@ -612,6 +612,13 @@ ChatMessage *selectedMessage;
         NSArray *result = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
         if ([result count] > 0) {
             quest = result[0];
+            if (!quest.text) {
+                [self.sharedManager fetchContent:^() {
+                    [self fetchQuest];
+                }onError:^() {
+                    
+                }];
+            }
         }
         [self.tableView reloadData];
 
