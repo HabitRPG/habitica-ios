@@ -117,7 +117,11 @@ BOOL editable;
         return 1;
     } else {
         id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-        return [sectionInfo numberOfObjects] + self.indexOffset;
+        if (self.openedIndexPath.section != section) {
+            return [sectionInfo numberOfObjects];
+        } else {
+            return [sectionInfo numberOfObjects] + self.indexOffset;
+        }
     }
 }
 
