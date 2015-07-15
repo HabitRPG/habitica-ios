@@ -2232,13 +2232,17 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
     
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/feed/%@/%@", pet, food] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSError *executeError = nil;
-        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        if (successBlock) {
-            successBlock();
-        }
-        [self.networkIndicatorController endNetworking];
+        [self fetchUser:^(){
+            NSError *executeError = nil;
+            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+            if (successBlock) {
+                successBlock();
+            }
+            [self.networkIndicatorController endNetworking];
+            return;
+        }onError:nil];
         return;
+
     }                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (!operation.HTTPRequestOperation.response || operation.HTTPRequestOperation.response.statusCode == 502 || operation.HTTPRequestOperation.response.statusCode == 503) {
             [self fetchUser:^(){
