@@ -16,7 +16,6 @@
 @property UIView *animationView;
 @end
 
-
 @implementation HRPGImageOverlayView
 
 - (id)init {

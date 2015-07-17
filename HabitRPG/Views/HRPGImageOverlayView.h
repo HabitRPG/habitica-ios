@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HRPGImageOverlayView : UIView
+@interface HRPGImageOverlayView : UIView <UIGestureRecognizerDelegate>
 
 - (void)display:(void (^)())completitionBlock;
 

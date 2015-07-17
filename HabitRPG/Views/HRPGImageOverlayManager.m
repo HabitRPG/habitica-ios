@@ -13,7 +13,7 @@
 
 @property NSMutableArray *queue;
 @property UIView *backgroundView;
-@property BOOL *displayingView;
+@property BOOL displayingView;
 @property HRPGImageOverlayView *activeView;
 @end
 
@@ -104,19 +104,17 @@
         self.activeView.detailText = dict[@"notes"];
     }
     
-    __weak NSMutableArray *weakQueue = self.queue;
     __weak HRPGImageOverlayManager *weakSelf = self;
-    __block BOOL weakDisplayingView = self.displayingView;
-    __block UIView *weakBackgroundView = self.backgroundView;
     self.activeView.dismissBlock = ^() {
-        if (weakQueue.count != 0) {
+        if (weakSelf.queue.count != 0) {
             [weakSelf displayNextImage];
         } else {
-            weakDisplayingView = NO;
+            weakSelf.displayingView = NO;
+            weakSelf.activeView = nil;
             [UIView animateWithDuration:0.3 animations:^() {
-                weakBackgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+                weakSelf.backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
             }completion:^(BOOL finished) {
-                [weakBackgroundView removeFromSuperview];
+                [weakSelf.backgroundView removeFromSuperview];
             }];
         }
     };
