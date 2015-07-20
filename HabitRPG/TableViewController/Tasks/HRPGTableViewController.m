@@ -497,11 +497,13 @@ BOOL editable;
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
+    [searchBar setShowsCancelButton: NO animated: YES];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.searchBar resignFirstResponder];
+    [self.searchBar setShowsCancelButton: NO animated: YES];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
