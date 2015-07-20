@@ -494,6 +494,16 @@ BOOL editable;
     [self.tableView reloadData];
 }
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.searchBar resignFirstResponder];
+}
+
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     self.searchBar.text = @"";
