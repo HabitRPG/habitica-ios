@@ -84,15 +84,14 @@
     }
     
     if (![self.taskType isEqualToString:@"habit"]) {
-        section = [XLFormSectionDescriptor formSectionWithTitle:@"Checklist" sectionOptions:XLFormSectionOptionCanReorder | XLFormSectionOptionCanInsert | XLFormSectionOptionCanDelete];
+        section = [XLFormSectionDescriptor formSectionWithTitle:@"Checklist" sectionOptions:XLFormSectionOptionCanReorder | XLFormSectionOptionCanInsert | XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
+        section.multivaluedAddButton.title = NSLocalizedString(@"Add a new checklist item", nil);
         section.multivaluedTag = @"checklist";
+        // Set up row template
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText];
+        [[row cellConfig] setObject:NSLocalizedString(@"Add a new checklist item", nil) forKey:@"textField.placeholder"];
+        section.multivaluedRowTemplate = row;
         [self.form addFormSection:section];
-        
-        if (!self.editTask) {
-            row = [XLFormRowDescriptor formRowDescriptorWithTag:@"checklist.new" rowType:XLFormRowDescriptorTypeText];
-            [[row cellConfig] setObject:NSLocalizedString(@"Add a new item", nil) forKey:@"textField.placeholder"];
-            [section addFormRow:row];
-        }
     }
     
     if ([self.taskType isEqualToString:@"habit"]) {
@@ -169,17 +168,12 @@
     
     if (![self.taskType isEqualToString:@"habit"]) {
         XLFormSectionDescriptor *section = [self.form formSectionAtIndex:1];
-        if ([self.task.checklist count] == 0) {
-            XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText];
+        
+        for (ChecklistItem *item in self.task.checklist) {
+            XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:item.id rowType:XLFormRowDescriptorTypeText];
             [[row cellConfig] setObject:NSLocalizedString(@"Add a new checklist item", nil) forKey:@"textField.placeholder"];
+            row.value = item.text;
             [section addFormRow:row];
-        } else {
-            for (ChecklistItem *item in self.task.checklist) {
-                XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:item.id rowType:XLFormRowDescriptorTypeText];
-                [[row cellConfig] setObject:NSLocalizedString(@"Add a new checklist item", nil) forKey:@"textField.placeholder"];
-                row.value = item.text;
-                [section addFormRow:row];
-            }
         }
     }
     
