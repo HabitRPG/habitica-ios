@@ -93,7 +93,7 @@
         cell.textLabel.text = @"FAQ";
     } else if (indexPath.item == 5) {
         cell.textLabel.text = NSLocalizedString(@"Version", nil);
-        NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+        NSString * appVersionString = [NSString stringWithFormat: @"%@ (%@)", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
         cell.detailTextLabel.text = appVersionString;
     }
     
