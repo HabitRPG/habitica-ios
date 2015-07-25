@@ -16,6 +16,7 @@
 #import "HRPGImageOverlayManager.h"
 #import <POPSpringAnimation.h>
 #import "NSString+Emoji.h"
+#import "HRPGSearchDataManager.h"
 
 @interface HRPGTableViewController () <UISearchBarDelegate>
 @property NSString *readableName;
@@ -24,7 +25,6 @@
 @property int indexOffset;
 
 @property (nonatomic, strong) UISearchBar *searchBar;
-@property (nonatomic, copy) NSString *searchString;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
@@ -44,10 +44,29 @@ BOOL editable;
     self.searchBar.placeholder = @"Search";
     self.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchBar;
-    self.tableView.contentOffset = CGPointMake(0, self.tableView.contentOffset.y + self.searchBar.frame.size.height);
+    
+    if (![HRPGSearchDataManager sharedManager].searchString) {
+        self.tableView.contentOffset = CGPointMake(0, self.tableView.contentOffset.y + self.searchBar.frame.size.height);
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectTags:) name:@"tagsSelected"  object:nil];
     [self didSelectTags:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (![HRPGSearchDataManager sharedManager].searchString || [[HRPGSearchDataManager sharedManager].searchString isEqualToString:@""]) {
+        self.searchBar.text = @"";
+        [self.searchBar setShowsCancelButton: NO animated: YES];
+    } else {
+        self.searchBar.text = [HRPGSearchDataManager sharedManager].searchString;
+    }
+    
+    [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
+    NSError *error;
+    [self.fetchedResultsController performFetch:&error];
+    
+    [self.tableView reloadData];
 }
 
 - (void)refresh {
@@ -75,8 +94,8 @@ BOOL editable;
         [predicateArray addObject:[NSPredicate predicateWithFormat:@"SUBQUERY(tags, $tag, $tag IN %@).@count = %d", tabBarController.selectedTags, [tabBarController.selectedTags count]]];
     }
     
-    if (self.searchString) {
-        [predicateArray addObject:[NSPredicate predicateWithFormat:@"(text CONTAINS[cd] %@) OR (notes CONTAINS[cd] %@)", self.searchString, self.searchString]];
+    if ([HRPGSearchDataManager sharedManager].searchString) {
+        [predicateArray addObject:[NSPredicate predicateWithFormat:@"(text CONTAINS[cd] %@) OR (notes CONTAINS[cd] %@)", [HRPGSearchDataManager sharedManager].searchString, [HRPGSearchDataManager sharedManager].searchString]];
     }
     
     return [NSCompoundPredicate andPredicateWithSubpredicates:predicateArray];
@@ -481,10 +500,10 @@ BOOL editable;
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    self.searchString = searchText;
+    [HRPGSearchDataManager sharedManager].searchString = searchText;
     
-    if ([self.searchString isEqualToString:@""]) {
-        self.searchString = nil;
+    if ([[HRPGSearchDataManager sharedManager].searchString isEqualToString:@""]) {
+        [HRPGSearchDataManager sharedManager].searchString = nil;
     }
     
     [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
@@ -511,7 +530,7 @@ BOOL editable;
     self.searchBar.text = @"";
     [searchBar setShowsCancelButton: NO animated: YES];
     
-    self.searchString = nil;
+    [HRPGSearchDataManager sharedManager].searchString = nil;
     
     [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
     NSError *error;
