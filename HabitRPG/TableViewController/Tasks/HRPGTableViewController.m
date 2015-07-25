@@ -55,6 +55,8 @@ BOOL editable;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+
     if (![HRPGSearchDataManager sharedManager].searchString || [[HRPGSearchDataManager sharedManager].searchString isEqualToString:@""]) {
         self.searchBar.text = @"";
         [self.searchBar setShowsCancelButton: NO animated: YES];
