@@ -6,15 +6,11 @@
 //  Copyright (c) 2015 Phillip Thelen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface HRPGTopHeaderNavigationController : UINavigationController
 
-@property BOOL isTopHeaderVisible;
-
 - (CGFloat) getContentOffset;
-
-- (void)hideTopBar;
-- (void)showTopBar;
+- (void)toggleTopBar;
 
 @end
