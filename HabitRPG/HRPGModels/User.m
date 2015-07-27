@@ -205,19 +205,6 @@
     } onError:^() {
         dispatch_group_leave(group);
     }];
-    
-    NSString *eyewear = [self.useCostume boolValue] ? self.costumeEyewear : self.equippedEyewear;
-    if (![eyewear isEqualToString:@"eyewear_base_0"] && eyewear) {
-        NSString *format = nil;
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"%@", eyewear] withFormat:format onSuccess:^(UIImage *image) {
-            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-            dispatch_group_leave(group);
-        } onError:^() {
-            dispatch_group_leave(group);
-        }];
-    }
 
     NSString *armor = [self.useCostume boolValue] ? self.costumeArmor : self.equippedArmor;
     if (![armor isEqualToString:@"armor_base_0"] && armor) {
@@ -292,6 +279,19 @@
             dispatch_group_leave(group);
         }];
     }
+    
+    NSString *eyewear = [self.useCostume boolValue] ? self.costumeEyewear : self.equippedEyewear;
+    if (![eyewear isEqualToString:@"eyewear_base_0"] && eyewear) {
+        NSString *format = nil;
+        dispatch_group_enter(group);
+        currentLayer++;
+        [sharedManager getImage:[NSString stringWithFormat:@"%@", eyewear] withFormat:format onSuccess:^(UIImage *image) {
+            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            dispatch_group_leave(group);
+        } onError:^() {
+            dispatch_group_leave(group);
+        }];
+    }
 
     NSString *head = [self.useCostume boolValue] ? self.costumeHead : self.equippedHead;
     if (![head isEqualToString:@"head_base_0"] && head) {
@@ -308,6 +308,7 @@
             dispatch_group_leave(group);
         }];
     }
+    
     NSString *headAccessory = [self.useCostume boolValue] ? self.costumeHeadAccessory : self.equippedHeadAccessory;
     if (headAccessory && ![headAccessory isEqualToString:@"headAccessory_base_0"] && headAccessory) {
         dispatch_group_enter(group);
@@ -319,6 +320,7 @@
             dispatch_group_leave(group);
         }];
     }
+    
     if ([self.hairFlower integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
@@ -329,6 +331,7 @@
             dispatch_group_leave(group);
         }];
     }
+    
     NSString *shield = [self.useCostume boolValue] ? self.costumeShield : self.equippedShield;
     if (!onlyHead && ![shield isEqualToString:@"shield_base_0"] && shield) {
         NSString *format = nil;
