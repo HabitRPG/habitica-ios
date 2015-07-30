@@ -18,6 +18,9 @@ static const CGFloat topHeaderHeight = 147;
 @property (nonatomic, strong) id backgroundView;
 @property BOOL isTopHeaderVisible;
 
+- (CGFloat)statusBarHeight;
+- (CGFloat)bgViewOffset;
+
 @end
 
 @implementation HRPGTopHeaderNavigationController
@@ -26,39 +29,41 @@ static const CGFloat topHeaderHeight = 147;
     [super viewDidLoad];
     CGRect screenRect = [[UIScreen mainScreen] bounds];
 
-    self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.translucent = YES;
     
-    self.topHeader = [[HRPGUserTopHeader alloc] initWithFrame:CGRectMake(0, self.navigationBar.frame.size.height+[self statusBarHeight], self.navigationBar.frame.size.width, topHeaderHeight)];
+    self.topHeader = [[HRPGUserTopHeader alloc] initWithFrame:CGRectMake(0, 0, self.navigationBar.frame.size.width, topHeaderHeight)];
     self.isTopHeaderVisible = YES;
     
     if ([UIVisualEffectView class]) {
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
         UIVisualEffectView *backgroundView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        [backgroundView setFrame:CGRectMake(0, 0, screenRect.size.width, self.navigationBar.frame.size.height+[self statusBarHeight]+topHeaderHeight)];
+        [backgroundView setFrame:CGRectMake(0, [self bgViewOffset], screenRect.size.width, topHeaderHeight)];
         
-        UIVisualEffectView * bottomBorderView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        [bottomBorderView setFrame:CGRectMake(0, self.navigationBar.frame.size.height+[self statusBarHeight]-1+topHeaderHeight, screenRect.size.width, 1)];
-        [backgroundView.contentView addSubview:bottomBorderView];
-        UIView *bottomBorderLineView = [[UIView alloc] initWithFrame:bottomBorderView.frame];
-        bottomBorderView.backgroundColor = [UIColor blackColor];
-        [bottomBorderView.contentView addSubview:bottomBorderLineView];
+        UIVisualEffectView *bottomBorderView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        [bottomBorderView setFrame:CGRectMake(0, topHeaderHeight - 1, screenRect.size.width, 1)];
+        [bottomBorderView setBackgroundColor:[UIColor blackColor]];
         
-        [self.view insertSubview:backgroundView belowSubview:self.navigationBar];
-        
+        [backgroundView addSubview:bottomBorderView];
         [backgroundView addSubview:self.topHeader];
+        [self.view insertSubview:backgroundView belowSubview:self.navigationBar];
         self.backgroundView = backgroundView;
     } else {
-        UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, self.navigationBar.frame.size.height+[self statusBarHeight]+topHeaderHeight)];
+        UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, [self bgViewOffset], screenRect.size.width, topHeaderHeight)];
         backgroundView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.980];
         
-        [self.view insertSubview:backgroundView belowSubview:self.navigationBar];
+        UIView *bottomBorderView = [[UIView alloc] initWithFrame:CGRectMake(0, topHeaderHeight - 1, screenRect.size.width, 1)];
+        [bottomBorderView setBackgroundColor:[UIColor lightGrayColor]];
+        
+        [backgroundView addSubview:bottomBorderView];
         [backgroundView addSubview:self.topHeader];
+        [self.view insertSubview:backgroundView belowSubview:self.navigationBar];
         self.backgroundView = backgroundView;
     }
 }
 
-- (CGFloat)getContentOffset {
+#pragma mark - Helpers
+- (CGFloat)getContentOffset
+{
     return topHeaderHeight;
 }
 
@@ -66,6 +71,11 @@ static const CGFloat topHeaderHeight = 147;
     CGSize statusBarSize = [[UIApplication sharedApplication] statusBarFrame].size;
     CGFloat height = MIN(statusBarSize.width, statusBarSize.height);
     return height;
+}
+
+- (CGFloat)bgViewOffset
+{
+    return [self statusBarHeight] + self.navigationBar.frame.size.height;
 }
 
 #pragma mark - Animations
@@ -82,15 +92,9 @@ static const CGFloat topHeaderHeight = 147;
     }];
     
     // Dividing the height of the view by 2, because layer position is the center of the view.
-    if ([UIVisualEffectView class]) {
-        UIVisualEffectView *backgroundView = self.backgroundView;
-        hideBackground.toValue = [NSNumber numberWithDouble:multiplier * backgroundView.frame.size.height / 2];
-        [backgroundView pop_addAnimation:hideBackground forKey:@"hideTopHeader"];
-    } else {
-        UIView *backgroundView = self.backgroundView;
-        hideBackground.toValue = [NSNumber numberWithDouble:multiplier * backgroundView.frame.size.height / 2];
-        [backgroundView pop_addAnimation:hideBackground forKey:@"hideTopHeader"];
-    }
+    UIView *backgroundView = self.backgroundView;
+    hideBackground.toValue = [NSNumber numberWithDouble:[self bgViewOffset] + multiplier * (backgroundView.frame.size.height / 2)];
+    [backgroundView pop_addAnimation:hideBackground forKey:@"hideTopHeader"];
 }
 
 @end
