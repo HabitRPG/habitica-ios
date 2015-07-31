@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */; };
 		D902AD841B5006570098A1BD /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D902AD821B5006570098A1BD /* FBSDKCoreKit.framework */; };
 		D902AD851B5006570098A1BD /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D902AD831B5006570098A1BD /* FBSDKLoginKit.framework */; };
 		D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */; };
@@ -154,6 +155,8 @@
 
 /* Begin PBXFileReference section */
 		98697CA81B53300E00C72056 /* HabitRPG 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 9.xcdatamodel"; sourceTree = "<group>"; };
+		98A4DBEE1B643BC100A9E2A8 /* HRPGSearchDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSearchDataManager.h; sourceTree = "<group>"; };
+		98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSearchDataManager.m; sourceTree = "<group>"; };
 		A12B817AF1713BF5BCB7F702 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A8C64F7451C560A6BB881198 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D902AD821B5006570098A1BD /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -602,6 +605,8 @@
 				D9B5C0E318D610E300C8D1B7 /* HRPGTaskResponse.m */,
 				D922F0A6191C1F6B00B197EA /* HRPGUserBuyResponse.h */,
 				D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */,
+				98A4DBEE1B643BC100A9E2A8 /* HRPGSearchDataManager.h */,
+				98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */,
 			);
 			name = Models;
 			path = HRPGModels;
@@ -1058,6 +1063,7 @@
 			files = (
 				D99DEC87190836D400FFD2B9 /* Item.m in Sources */,
 				D9C89CF31B1DE3A200A599B0 /* HRPGGemViewController.m in Sources */,
+				98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */,
 				D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */,
 				D922F0B11925314500B197EA /* HRPGNetworkIndicatorController.m in Sources */,
 				D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */,
