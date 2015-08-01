@@ -116,8 +116,8 @@
         section = [XLFormSectionDescriptor formSectionWithTitle:@""];
         [self.form addFormSection:section];
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"frequency" rowType:XLFormRowDescriptorTypeSelectorPush title:NSLocalizedString(@"Frequency", nil)];
-        row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@"daily" displayText:NSLocalizedString(@"Daily", nil)],
-                                [XLFormOptionsObject formOptionsObjectWithValue:@"weekly" displayText:NSLocalizedString(@"Weekly", nil)]
+        row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@"daily" displayText:NSLocalizedString(@"Every x days", nil)],
+                                [XLFormOptionsObject formOptionsObjectWithValue:@"weekly" displayText:NSLocalizedString(@"On certain days of the week", nil)]
                                 ];
         row.value = [XLFormOptionsObject formOptionsObjectWithValue:@"weekly" displayText:NSLocalizedString(@"Weekly", nil)];
         row.required = YES;

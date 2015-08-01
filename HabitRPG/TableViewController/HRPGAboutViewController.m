@@ -68,13 +68,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 6;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellName = @"BasicCell";
-    if (indexPath.item == 0 || indexPath.item == 3) {
+    if (indexPath.item == 0 || indexPath.item == 3 || indexPath.item == 5) {
         cellName = @"RightDetailCell";
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
@@ -91,6 +91,10 @@
         cell.detailTextLabel.text = @"@habitrpg";
     } else if (indexPath.item == 4) {
         cell.textLabel.text = @"FAQ";
+    } else if (indexPath.item == 5) {
+        cell.textLabel.text = NSLocalizedString(@"Version", nil);
+        NSString * appVersionString = [NSString stringWithFormat: @"%@ (%@)", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
+        cell.detailTextLabel.text = appVersionString;
     }
     
     return cell;

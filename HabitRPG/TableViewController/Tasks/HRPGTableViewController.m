@@ -16,12 +16,16 @@
 #import "HRPGImageOverlayManager.h"
 #import <POPSpringAnimation.h>
 #import "NSString+Emoji.h"
+#import "HRPGSearchDataManager.h"
 
-@interface HRPGTableViewController ()
+@interface HRPGTableViewController () <UISearchBarDelegate>
 @property NSString *readableName;
 @property NSString *typeName;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
+
+@property (nonatomic, strong) UISearchBar *searchBar;
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
 
@@ -36,8 +40,35 @@ BOOL editable;
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
     
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 44)];
+    self.searchBar.placeholder = @"Search";
+    self.searchBar.delegate = self;
+    self.tableView.tableHeaderView = self.searchBar;
+    
+    if (![HRPGSearchDataManager sharedManager].searchString) {
+        self.tableView.contentOffset = CGPointMake(0, self.tableView.contentOffset.y + self.searchBar.frame.size.height);
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectTags:) name:@"tagsSelected"  object:nil];
     [self didSelectTags:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    if (![HRPGSearchDataManager sharedManager].searchString || [[HRPGSearchDataManager sharedManager].searchString isEqualToString:@""]) {
+        self.searchBar.text = @"";
+        [self.searchBar setShowsCancelButton: NO animated: YES];
+    } else {
+        self.searchBar.text = [HRPGSearchDataManager sharedManager].searchString;
+    }
+    
+    [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
+    NSError *error;
+    [self.fetchedResultsController performFetch:&error];
+    
+    [self.tableView reloadData];
 }
 
 - (void)refresh {
@@ -51,23 +82,25 @@ BOOL editable;
     }];
 }
 
-- (NSPredicate*) getPredicate {
-    NSPredicate *predicate;
+- (NSPredicate *)getPredicate {
+    NSMutableArray *predicateArray = [[NSMutableArray alloc] initWithCapacity:3];
     HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
-    if (tabBarController.selectedTags == nil || [tabBarController.selectedTags count] == 0) {
-        if ([_typeName isEqual:@"todo"] && !self.displayCompleted) {
-            predicate = [NSPredicate predicateWithFormat:@"type=='todo' && completed==NO"];
-        } else {
-            predicate = [NSPredicate predicateWithFormat:@"type==%@", self.typeName];
-        }
+    
+    if ([self.typeName isEqual:@"todo"]) {
+        [predicateArray addObject:[NSPredicate predicateWithFormat:@"type=='todo' && completed==NO"]];
     } else {
-        if ([_typeName isEqual:@"todo"]) {
-            predicate = [NSPredicate predicateWithFormat:@"type=='todo' && completed==NO && SUBQUERY(tags, $tag, $tag IN %@).@count = %d", tabBarController.selectedTags, [tabBarController.selectedTags count]];
-        } else {
-            predicate = [NSPredicate predicateWithFormat:@"type==%@ && SUBQUERY(tags, $tag, $tag IN %@).@count = %d", self.typeName, tabBarController.selectedTags, [tabBarController.selectedTags count]];
-        }
+        [predicateArray addObject:[NSPredicate predicateWithFormat:@"type==%@", self.typeName]];
     }
-    return predicate;
+    
+    if ([tabBarController.selectedTags count] > 0) {
+        [predicateArray addObject:[NSPredicate predicateWithFormat:@"SUBQUERY(tags, $tag, $tag IN %@).@count = %d", tabBarController.selectedTags, [tabBarController.selectedTags count]]];
+    }
+    
+    if ([HRPGSearchDataManager sharedManager].searchString) {
+        [predicateArray addObject:[NSPredicate predicateWithFormat:@"(text CONTAINS[cd] %@) OR (notes CONTAINS[cd] %@)", [HRPGSearchDataManager sharedManager].searchString, [HRPGSearchDataManager sharedManager].searchString]];
+    }
+    
+    return [NSCompoundPredicate andPredicateWithSubpredicates:predicateArray];
 }
 
 - (void) didSelectTags:(NSNotification *)notification {
@@ -86,7 +119,6 @@ BOOL editable;
         self.navigationItem.leftBarButtonItem.title = [NSString stringWithFormat:localizedString, tagCount] ;
     }
 }
-
 
 #pragma mark - Table view data source
 
@@ -462,6 +494,55 @@ BOOL editable;
     return array;
 }
 
+#pragma mark - Search
+- (void)searchBarTextDidBeginEditing:(UISearchBar*)searchBar
+{
+    [searchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    [HRPGSearchDataManager sharedManager].searchString = searchText;
+    
+    if ([[HRPGSearchDataManager sharedManager].searchString isEqualToString:@""]) {
+        [HRPGSearchDataManager sharedManager].searchString = nil;
+    }
+    
+    [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
+    NSError *error;
+    [self.fetchedResultsController performFetch:&error];
+    
+    [self.tableView reloadData];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    [searchBar setShowsCancelButton: NO animated: YES];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.searchBar resignFirstResponder];
+    [self.searchBar setShowsCancelButton: NO animated: YES];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    self.searchBar.text = @"";
+    [searchBar setShowsCancelButton: NO animated: YES];
+    
+    [HRPGSearchDataManager sharedManager].searchString = nil;
+    
+    [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
+    NSError *error;
+    [self.fetchedResultsController performFetch:&error];
+    
+    [searchBar resignFirstResponder];
+    
+    [self.tableView reloadData];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -487,7 +568,5 @@ BOOL editable;
         tagController.selectedTags = [tabBarController.selectedTags mutableCopy];
     }
 }
-
-
 
 @end
