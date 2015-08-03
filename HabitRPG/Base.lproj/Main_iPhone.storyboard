@@ -219,7 +219,6 @@
                                         <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0b-Gt-1Dy">
                                             <rect key="frame" x="261" y="0.0" width="58" height="60"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="60" id="NHV-Xb-xng"/>
                                                 <constraint firstAttribute="width" constant="58" id="kGM-Ho-qOD"/>
                                             </constraints>
                                             <state key="normal">
@@ -328,11 +327,10 @@
                                                 <constraint firstAttribute="height" constant="8" id="qL1-yt-72a"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Kv-EF-wkr">
+                                        <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Kv-EF-wkr">
                                             <rect key="frame" x="262" y="0.0" width="58" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="58" id="nZs-if-dDA"/>
-                                                <constraint firstAttribute="height" constant="60" id="vjA-Dv-4iF"/>
                                             </constraints>
                                             <state key="normal">
                                                 <color key="titleColor" red="0.1070003096281168" green="0.1015779256563315" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -396,11 +394,10 @@
                                                 <constraint firstAttribute="height" constant="8" id="sq2-qo-F5n"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUp-mR-40K">
+                                        <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUp-mR-40K">
                                             <rect key="frame" x="262" y="0.0" width="58" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="58" id="cZ5-AF-Deb"/>
-                                                <constraint firstAttribute="height" constant="60" id="zA7-Bg-4Jp"/>
                                             </constraints>
                                             <state key="normal">
                                                 <color key="titleColor" red="0.1070003096281168" green="0.1015779256563315" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -4199,14 +4196,14 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Bfo-Hm-DEG"/>
-        <segue reference="jeD-LQ-1O1"/>
-        <segue reference="04Z-5H-zfF"/>
+        <segue reference="HFM-OL-cM8"/>
+        <segue reference="iSa-66-Wjc"/>
         <segue reference="sPD-XR-ORt"/>
         <segue reference="aWZ-FG-z5O"/>
-        <segue reference="DAI-nh-Ljl"/>
+        <segue reference="Bfo-Hm-DEG"/>
         <segue reference="8EB-JX-S8a"/>
         <segue reference="w8b-nU-BYs"/>
+        <segue reference="DAI-nh-Ljl"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.47843137254901963" green="0.070588235294117646" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
 </document>
