@@ -13,9 +13,10 @@
 #import <sys/utsname.h> 
 
 @interface HRPGAboutViewController ()
-@property BOOL shouldReshowTopHeader;
+
 @property UIView *headerView;
 @property NSIndexPath *selectedIndex;
+
 @end
 
 @implementation HRPGAboutViewController
@@ -40,21 +41,14 @@
 
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
-        if (navigationController.isTopHeaderVisible) {
-            [navigationController hideTopBar];
-            self.shouldReshowTopHeader = YES;
-        } else {
-            self.shouldReshowTopHeader = NO;
-        }
+        [navigationController toggleTopBar];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
-        if (self.shouldReshowTopHeader) {
-            [navigationController showTopBar];
-        }
+        [navigationController toggleTopBar];
     }
     
     [super viewWillDisappear:animated];
