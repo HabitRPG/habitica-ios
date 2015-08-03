@@ -48,6 +48,8 @@
     }
 
     self.activityCounter = 0;
+    
+    [self orientationChanged:nil];  // orientationChanged sets the screenWidth based on the orientation of the user interface
 }
 
 - (NSString *) getScreenName {
@@ -73,8 +75,6 @@
      selector:@selector(orientationChanged:)
      name:UIDeviceOrientationDidChangeNotification
      object:nil];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:UIDeviceOrientationDidChangeNotification object:self];
     
     if (self.refreshControl.isRefreshing) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -112,8 +112,8 @@
     [self.tableView reloadData];
 }
 
--(void)orientationChanged:(NSNotification*)notification
-{       // just because the orientation of the device changed does not mean the orientation of the User Interface changed.  Determine the Orientation of the User Interface and then set the self.screenWidth value accordingly
+- (void)orientationChanged:(NSNotification *)notification {
+    // just because the orientation of the device changed does not mean the orientation of the User Interface changed.  Determine the Orientation of the User Interface and then set the self.screenWidth value accordingly
 
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     

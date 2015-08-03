@@ -18,6 +18,7 @@
 @property NSString *readableScreenName;
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
+- (void)orientationChanged:(NSNotification *)notification;
 
 -(void)addActivityCounter;
 -(void)removeActivityCounter;
