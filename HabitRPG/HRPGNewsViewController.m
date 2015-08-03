@@ -22,7 +22,7 @@
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://habitrpg.com/static/new-stuff"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://habitica.com/static/new-stuff"]];
     self.newsWebView.delegate = self;
     [self.newsWebView loadRequest:request];
     [self.loadingIndicator startAnimating];

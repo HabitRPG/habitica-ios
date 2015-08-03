@@ -75,14 +75,14 @@
     
     if (indexPath.item == 0) {
         cell.textLabel.text = NSLocalizedString(@"Website", nil);
-        cell.detailTextLabel.text = @"habitrpg.com";
+        cell.detailTextLabel.text = @"habitica.com";
     } else if (indexPath.item == 1) {
         cell.textLabel.text = NSLocalizedString(@"Send feedback", nil);
     } else if (indexPath.item == 2) {
         cell.textLabel.text = NSLocalizedString(@"Report a bug", nil);
     } else if (indexPath.item == 3) {
         cell.textLabel.text = @"Twitter";
-        cell.detailTextLabel.text = @"@habitrpg";
+        cell.detailTextLabel.text = @"@habitica";
     } else if (indexPath.item == 4) {
         cell.textLabel.text = @"FAQ";
     } else if (indexPath.item == 5) {
@@ -99,7 +99,7 @@
     self.selectedIndex = indexPath;
     switch (indexPath.item) {
         case 0: {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://habitrpg.com/"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://habitica.com/"]];
             break;
         }
         case 1: {
@@ -124,11 +124,11 @@
             break;
         }
         case 3: {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/habitrpg"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/habitica"]];
             break;
         }
         case 4: {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://habitrpg.wikia.com/wiki/FAQ"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://habitica.wikia.com/wiki/FAQ"]];
             break;
         }
         default:
