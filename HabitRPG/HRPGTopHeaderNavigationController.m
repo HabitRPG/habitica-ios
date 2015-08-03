@@ -83,16 +83,11 @@ static const CGFloat topHeaderHeight = 147;
 {
     // Hide or show the header bar is decided here
     int multiplier = (self.isTopHeaderVisible) ? -1 : 1;
+    self.isTopHeaderVisible = !self.isTopHeaderVisible;
     
     POPBasicAnimation *hideBackground = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    [hideBackground setCompletionBlock:^(POPAnimation *anim, BOOL finished) {
-        if (finished) {
-            self.isTopHeaderVisible = !self.isTopHeaderVisible;
-        }
-    }];
-    
-    // Dividing the height of the view by 2, because layer position is the center of the view.
     UIView *backgroundView = self.backgroundView;
+    // Dividing the height of the view by 2, because layer position is the center of the view.
     hideBackground.toValue = [NSNumber numberWithDouble:[self bgViewOffset] + multiplier * (backgroundView.frame.size.height / 2)];
     [backgroundView pop_addAnimation:hideBackground forKey:@"hideTopHeader"];
 }
