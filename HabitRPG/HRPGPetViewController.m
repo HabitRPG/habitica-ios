@@ -268,7 +268,7 @@
     }
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
         [self.sharedManager equipObject:self.selectedPet.key withType:@"pet" onSuccess:^() {
             if ([self.equippedPetName isEqualToString:self.selectedPet.key]) {
