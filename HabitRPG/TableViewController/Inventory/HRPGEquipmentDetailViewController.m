@@ -24,10 +24,11 @@ NSIndexPath *selectedIndex;
 float textWidth;
 
 -(void)viewDidLoad {
-    [super viewDidLoad];
     self.user = [self.sharedManager getUser];
+    [super viewDidLoad];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
+    
     textWidth = screenRect.size.width - 73.0;
 }
 

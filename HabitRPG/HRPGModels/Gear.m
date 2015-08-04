@@ -48,6 +48,14 @@
         if ([user.equippedBack isEqualToString:self.key]) {
             return YES;
         }
+    } else if ([self.type isEqualToString:@"body"]) {
+        if ([user.equippedBody isEqualToString:self.key]) {
+            return YES;
+        }
+    } else if ([self.type isEqualToString:@"eyewear"]) {
+        if ([user.equippedEyewear isEqualToString:self.key]) {
+            return YES;
+        }
     }
     
     return NO;
