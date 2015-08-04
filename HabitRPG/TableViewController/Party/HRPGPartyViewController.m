@@ -124,7 +124,7 @@ ChatMessage *selectedMessage;
             [self fetchQuest];
         }
         if (party.questKey != nil && ![party.questActive boolValue] && user.participateInQuest == nil) {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"questInvitationNavigationController"];
             HRPGQuestDetailViewController *questInvitationController = (HRPGQuestDetailViewController *) navigationController.topViewController;
             questInvitationController.quest = quest;

@@ -132,7 +132,7 @@ User *user;
 
     [self.sharedManager resetSavedDatabase:YES onComplete:^() {
         [overlayView dismiss:YES completion:^() {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
             [self presentViewController:navigationController animated:YES completion:nil];
         }];

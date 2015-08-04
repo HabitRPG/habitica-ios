@@ -2518,7 +2518,7 @@ NSString *currentUser;
 }
 
 - (void)displayNoGemAlert {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
     UIViewController* viewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     [viewController presentViewController:navigationController animated:YES completion:nil];
