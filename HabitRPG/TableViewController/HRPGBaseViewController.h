@@ -13,7 +13,7 @@
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic)  HRPGManager *sharedManager;
-@property CGFloat screenWidth;
+@property CGFloat viewWidth;
 @property BOOL hidesTopBar;
 @property NSString *readableScreenName;
 

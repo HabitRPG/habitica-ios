@@ -48,8 +48,7 @@
     }
 
     self.activityCounter = 0;
-    
-    [self orientationChanged:nil];  // orientationChanged sets the screenWidth based on the orientation of the user interface
+    self.viewWidth = self.view.frame.size.width;
 }
 
 - (NSString *) getScreenName {
@@ -60,6 +59,19 @@
     }
 }
 
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+-(void)viewWillLayoutSubviews {
+    CGFloat newWidth = self.view.frame.size.width;
+    if (self.viewWidth != newWidth) {
+        self.viewWidth = newWidth;
+        [self.tableView reloadData];
+    }
+    [super viewWillLayoutSubviews];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
@@ -68,12 +80,6 @@
      addObserver:self
      selector:@selector(preferredContentSizeChanged:)
      name:UIContentSizeCategoryDidChangeNotification
-     object:nil];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(orientationChanged:)
-     name:UIDeviceOrientationDidChangeNotification
      object:nil];
     
     if (self.refreshControl.isRefreshing) {
@@ -109,22 +115,6 @@
 }
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
-    [self.tableView reloadData];
-}
-
-- (void)orientationChanged:(NSNotification *)notification {
-    // just because the orientation of the device changed does not mean the orientation of the User Interface changed.  Determine the Orientation of the User Interface and then set the self.screenWidth value accordingly
-
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    
-    if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
-            // if the User Interface is in Portrait mode then self.screenWidth = the device width
-        self.screenWidth = screenRect.size.width;
-    } else if(UIInterfaceOrientationIsLandscape(self.interfaceOrientation)){
-            // if the User Interface is in Landscape mode then self.screenWidth = the device height
-        self.screenWidth = screenRect.size.height;
-    }
-        // now that self.screenWidth has been set, reload the data
     [self.tableView reloadData];
 }
 

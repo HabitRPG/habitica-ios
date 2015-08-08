@@ -101,10 +101,10 @@ User *user;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     float height = 22.0f;
-    float width = self.screenWidth-111;
+    float width = self.viewWidth-111;
     MetaReward *reward = [self getRewardAtIndexPath:indexPath];
     if ([reward isKindOfClass:[Reward class]]) {
-        width = self.screenWidth-50;
+        width = self.viewWidth-50;
     }
     width = width - [[NSString stringWithFormat:@"%ld", (long) [reward.value integerValue]] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                                                                                          options:NSStringDrawingUsesLineFragmentOrigin

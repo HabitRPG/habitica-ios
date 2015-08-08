@@ -78,7 +78,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     float height = 30.0f;
-    float width = self.screenWidth-43;
+    float width = self.viewWidth-43;
     Spell *spell = [self.fetchedResultsController objectAtIndexPath:indexPath];
     width = width - [[NSString stringWithFormat:@"%ld MP", (long) [spell.mana integerValue]] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                                                                                           options:NSStringDrawingUsesLineFragmentOrigin

@@ -140,6 +140,17 @@ NSInteger rowOffset = 145;
     return _fetchedResultsController;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    rowHeight = (self.frame.size.height-(margin*2))/4;
+    rowWidth = self.frame.size.width-rowOffset-margin;
+    self.healthLabel.frame = CGRectMake(rowOffset, margin, rowWidth, rowHeight);
+    self.experienceLabel.frame = CGRectMake(rowOffset, margin+rowHeight, rowWidth, rowHeight);
+    self.magicLabel.frame = CGRectMake(rowOffset, margin+rowHeight*2, rowWidth, rowHeight);
+    self.goldView.frame = CGRectMake(rowOffset+rowWidth-self.goldView.frame.size.width, self.goldView.frame.origin.y, self.goldView.frame.size.width, self.goldView.frame.size.height);
+    self.gemView.frame = CGRectMake(self.goldView.frame.origin.x-self.gemView.frame.size.width-8, self.gemView.frame.origin.y, self.gemView.frame.size.width, self.gemView.frame.size.height);
+}
+
 - (HRPGManager *)sharedManager {
     if (_sharedManager == nil) {
         HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];

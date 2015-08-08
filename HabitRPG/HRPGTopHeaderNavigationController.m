@@ -16,6 +16,7 @@ static const CGFloat topHeaderHeight = 147;
 
 @property (nonatomic, strong) HRPGUserTopHeader *topHeader;
 @property (nonatomic, strong) id backgroundView;
+@property (nonatomic, strong) id bottomBorderView;
 @property BOOL isTopHeaderVisible;
 
 - (CGFloat)statusBarHeight;
@@ -31,7 +32,7 @@ static const CGFloat topHeaderHeight = 147;
 
     self.navigationBar.translucent = YES;
     
-    self.topHeader = [[HRPGUserTopHeader alloc] initWithFrame:CGRectMake(0, 0, self.navigationBar.frame.size.width, topHeaderHeight)];
+    self.topHeader = [[HRPGUserTopHeader alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, topHeaderHeight)];
     self.isTopHeaderVisible = YES;
     
     if ([UIVisualEffectView class]) {
@@ -47,6 +48,7 @@ static const CGFloat topHeaderHeight = 147;
         [backgroundView addSubview:self.topHeader];
         [self.view insertSubview:backgroundView belowSubview:self.navigationBar];
         self.backgroundView = backgroundView;
+        self.bottomBorderView = bottomBorderView;
     } else {
         UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, [self bgViewOffset], screenRect.size.width, topHeaderHeight)];
         backgroundView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.980];
@@ -58,7 +60,18 @@ static const CGFloat topHeaderHeight = 147;
         [backgroundView addSubview:self.topHeader];
         [self.view insertSubview:backgroundView belowSubview:self.navigationBar];
         self.backgroundView = backgroundView;
+        self.bottomBorderView = bottomBorderView;
     }
+}
+
+
+-(void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    CGRect parentFrame = self.view.frame;
+    
+    ((UIView*)self.backgroundView).frame = CGRectMake(0, [self bgViewOffset], parentFrame.size.width, topHeaderHeight);
+    ((UIView*)self.bottomBorderView).frame = CGRectMake(0, topHeaderHeight - 1, parentFrame.size.width, 1);
+    self.topHeader.frame = CGRectMake(0, 0, parentFrame.size.width, topHeaderHeight);
 }
 
 #pragma mark - Helpers

@@ -269,9 +269,9 @@ ChatMessage *selectedMessage;
         }
         float width;
         if (message.user == nil) {
-            width = self.screenWidth - 32;
+            width = self.viewWidth - 32;
         } else {
-            width = self.screenWidth - 83;
+            width = self.viewWidth - 83;
         }
         NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:message.text];
         NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];

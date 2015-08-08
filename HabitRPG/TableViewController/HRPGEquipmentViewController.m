@@ -29,13 +29,13 @@ NSIndexPath *selectedIndex;
     [super viewDidLoad];
     self.user = [self.sharedManager getUser];
     
-    UIView *costumeFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 68)];
+    UIView *costumeFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.viewWidth, 68)];
     
-    UILabel *footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, self.screenWidth-80, 60)];
+    UILabel *footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, self.viewWidth-80, 60)];
     footerLabel.text = NSLocalizedString(@"Wear costume", nil);
     [costumeFooterView addSubview:footerLabel];
     
-    UISwitch *footerSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.screenWidth-59, 14.5, 72, 31)];
+    UISwitch *footerSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.viewWidth-59, 14.5, 72, 31)];
     footerSwitch.on = [self.user.useCostume boolValue];
     [footerSwitch addTarget:self action:@selector(changeWearingCostume:) forControlEvents:UIControlEventValueChanged];
     [costumeFooterView addSubview:footerSwitch];
