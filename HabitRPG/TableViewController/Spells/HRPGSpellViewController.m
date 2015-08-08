@@ -56,7 +56,7 @@
     Spell *spell = [self.fetchedResultsController objectAtIndexPath:indexPath];
     if ([self.user.magic integerValue] >= [spell.mana integerValue]) {
         if ([spell.target isEqualToString:@"task"]) {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"spellTaskNavigationController"];
 
             [self presentViewController:navigationController animated:YES completion:^() {

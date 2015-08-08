@@ -36,7 +36,7 @@
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
 
     if ([keyChain stringForKey:@"id"] == nil || [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
         [self presentViewController:navigationController animated:NO completion:nil];
     }
@@ -49,8 +49,7 @@
 
     self.activityCounter = 0;
     
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    self.screenWidth = screenRect.size.width;
+    [self orientationChanged:nil];  // orientationChanged sets the screenWidth based on the orientation of the user interface
 }
 
 - (NSString *) getScreenName {
@@ -69,6 +68,12 @@
      addObserver:self
      selector:@selector(preferredContentSizeChanged:)
      name:UIContentSizeCategoryDidChangeNotification
+     object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(orientationChanged:)
+     name:UIDeviceOrientationDidChangeNotification
      object:nil];
     
     if (self.refreshControl.isRefreshing) {
@@ -106,6 +111,23 @@
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
     [self.tableView reloadData];
 }
+
+- (void)orientationChanged:(NSNotification *)notification {
+    // just because the orientation of the device changed does not mean the orientation of the User Interface changed.  Determine the Orientation of the User Interface and then set the self.screenWidth value accordingly
+
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    
+    if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+            // if the User Interface is in Portrait mode then self.screenWidth = the device width
+        self.screenWidth = screenRect.size.width;
+    } else if(UIInterfaceOrientationIsLandscape(self.interfaceOrientation)){
+            // if the User Interface is in Landscape mode then self.screenWidth = the device height
+        self.screenWidth = screenRect.size.height;
+    }
+        // now that self.screenWidth has been set, reload the data
+    [self.tableView reloadData];
+}
+
 
 -(void)addActivityCounter {
     if (self.activityCounter == 0) {

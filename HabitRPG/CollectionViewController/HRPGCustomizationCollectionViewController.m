@@ -160,7 +160,13 @@ static NSString * const reuseIdentifier = @"Cell";
     
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:titleString delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:actionString, nil];
     popup.tag = tag;
-    [popup showInView:[UIApplication sharedApplication].keyWindow];
+    
+    // get the selected cell so that the popup can be displayed near it on the iPad
+    UICollectionViewCell *selectedCell = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    
+    CGRect rectIPad = CGRectMake(selectedCell.frame.origin.x, selectedCell.frame.origin.y + 2.75*selectedCell.frame.size.height, selectedCell.frame.size.width, selectedCell.frame.size.height);
+    // using the following form rather than [popup showInView:[UIApplication sharedApplication].keyWindow]] to make it compatible with both iPhone and iPad
+    [popup showFromRect:rectIPad inView:self.view animated:YES];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {

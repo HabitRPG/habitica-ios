@@ -29,8 +29,6 @@
 NSString *partyID;
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     partyID = [defaults objectForKey:@"partyID"];
     NSString *orderSetting = [self.sharedManager getUser].partyOrder;
@@ -47,7 +45,9 @@ NSString *partyID;
         self.sortKey = @"partyPosition";
         self.sortAscending = NO;
     }
-    
+
+    [super viewDidLoad];
+  
     self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     self.iconFactory.size = 15;
     self.iconFactory.renderingMode = UIImageRenderingModeAlwaysTemplate;
