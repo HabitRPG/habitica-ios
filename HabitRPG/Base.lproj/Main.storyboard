@@ -966,7 +966,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khv-VU-cz2">
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khv-VU-cz2">
                                             <rect key="frame" x="209" y="4" width="182" height="35"/>
                                             <state key="normal" title="Profile">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1661,7 +1661,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionCell" id="fLQ-5C-sqc">
-                            <rect key="frame" x="0.0" y="64" width="320" height="60"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="60"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWt-Qo-uxJ">
@@ -1963,7 +1963,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ida-t3-Rqb">
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ida-t3-Rqb">
                                             <rect key="frame" x="209" y="4" width="182" height="35"/>
                                             <state key="normal" title="Profile">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -2287,7 +2287,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionCell" id="oR7-tW-WDp">
-                            <rect key="frame" x="0.0" y="64" width="320" height="40"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="40"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxw-fC-Q3d">
@@ -2445,7 +2445,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionCell" id="Bl0-lB-Fjh">
-                            <rect key="frame" x="0.0" y="64" width="320" height="40"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="40"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oG2-fh-hvG">
@@ -2883,11 +2883,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" text="20 Gems" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jf-ef-S4f">
-<<<<<<< HEAD:HabitRPG/Base.lproj/Main_iPhone.storyboard
-                                <rect key="frame" x="16" y="271" width="288" height="36"/>
-=======
                                 <rect key="frame" x="16" y="271" width="568" height="36"/>
->>>>>>> Shadallark-iPadVersion:HabitRPG/Base.lproj/Main.storyboard
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="30" id="nWa-QJ-IyH"/>
                                 </constraints>
@@ -2896,11 +2892,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" text="Gems are used to buy special in-game items, such as shirts and hairstyles." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swT-vQ-9rg">
-<<<<<<< HEAD:HabitRPG/Base.lproj/Main_iPhone.storyboard
-                                <rect key="frame" x="16" y="323" width="288" height="61"/>
-=======
                                 <rect key="frame" x="16" y="323" width="568" height="61"/>
->>>>>>> Shadallark-iPadVersion:HabitRPG/Base.lproj/Main.storyboard
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="20" id="TH7-kh-Txk"/>
                                 </constraints>
@@ -2916,11 +2908,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ns-xL-wc5">
-<<<<<<< HEAD:HabitRPG/Base.lproj/Main_iPhone.storyboard
-                                <rect key="frame" x="115" y="165" width="90" height="90"/>
-=======
                                 <rect key="frame" x="255" y="165" width="90" height="90"/>
->>>>>>> Shadallark-iPadVersion:HabitRPG/Base.lproj/Main.storyboard
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1Ns-xL-wc5" secondAttribute="height" multiplier="1:1" id="aAD-dT-fqS"/>
                                     <constraint firstAttribute="height" constant="90" id="bQ3-AB-nTj"/>
@@ -4203,16 +4191,6 @@
         <image name="onepassword-button" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD:HabitRPG/Base.lproj/Main_iPhone.storyboard
-        <segue reference="HFM-OL-cM8"/>
-        <segue reference="iSa-66-Wjc"/>
-        <segue reference="sPD-XR-ORt"/>
-        <segue reference="aWZ-FG-z5O"/>
-        <segue reference="Bfo-Hm-DEG"/>
-        <segue reference="8EB-JX-S8a"/>
-        <segue reference="w8b-nU-BYs"/>
-        <segue reference="DAI-nh-Ljl"/>
-=======
         <segue reference="njg-A8-lDq"/>
         <segue reference="sPD-XR-ORt"/>
         <segue reference="OZd-8c-sWC"/>
@@ -4221,7 +4199,6 @@
         <segue reference="dsP-Ie-Qai"/>
         <segue reference="w8b-nU-BYs"/>
         <segue reference="jeD-LQ-1O1"/>
->>>>>>> Shadallark-iPadVersion:HabitRPG/Base.lproj/Main.storyboard
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.47843137254901963" green="0.070588235294117646" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
 </document>
