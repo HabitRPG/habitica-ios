@@ -69,8 +69,17 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
-    UILabel *checklistLabel = (UILabel *) [cell viewWithTag:2];
+        // Listing of the tag numbers [cell viewWithTag:#]
+        //  1 = label
+        //  2 = checklistLabel  // this should be removed once the checklistButton is done
+        //  3 = checkBox
+        //  4 = streakLabel
+        //  5 = checklistButton
+        //
+        //  Lines that have the comment "to be removed once checklistButton is done" refer to having the checklistButton have the same look as checklistLabel while still filling the full end of the cell
+    UILabel *checklistLabel = (UILabel *) [cell viewWithTag:2]; // to be removed once checklistButton done
     UILabel *label = (UILabel *) [cell viewWithTag:1];
+    UIButton *checklistButton = (UIButton *) [cell viewWithTag:5];
     HRPGCheckBoxView *checkBox = (HRPGCheckBoxView *) [cell viewWithTag:3];
     if (checkBox == nil) {
         checkBox = [[HRPGCheckBoxView alloc] initWithFrame:CGRectMake(0, 0, 50, cell.frame.size.height)];
@@ -90,7 +99,8 @@
         }
         label.text = [item.text stringByReplacingEmojiCheatCodesWithUnicode];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-        checklistLabel.hidden = YES;
+        checklistLabel.hidden = YES;    // to be removed once checklistButton done
+        [checklistButton setHidden:YES];
         cell.backgroundColor = [UIColor lightGrayColor];
         checkBox.boxColor = [UIColor darkGrayColor];
         checkBox.checkColor = [UIColor lightGrayColor];
@@ -140,18 +150,27 @@
                     checkedCount++;
                 }
             }
-            checklistLabel.text = [NSString stringWithFormat:@"%d/%@", checkedCount, checklistCount];
+            checklistLabel.text = [NSString stringWithFormat:@"%d/%@", checkedCount, checklistCount]; // to be removed once checklistButton is done
+            //[checklistButton setTitle:[NSString stringWithFormat:@"%d/%@", checkedCount, checklistCount] forState:UIControlStateNormal];
             if (checkedCount == [checklistCount integerValue]) {
-                checklistLabel.backgroundColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
+                checklistLabel.backgroundColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];   // to be removed once checklistButton is done
+                //[checklistButton setBackgroundColor:[UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000]];
             } else {
-                checklistLabel.backgroundColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
+                checklistLabel.backgroundColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f]; // to be removed once checklistButton is done
+                //[checklistButton setBackgroundColor:[UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f]];
             }
-            checklistLabel.hidden = NO;
-            UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandSelectedCell:)];
-            tapRecognizer.numberOfTapsRequired = 1;
-            [checklistLabel addGestureRecognizer:tapRecognizer];
+            checklistLabel.hidden = NO;    // to be removed once checklistButton is done
+            [checklistButton setHidden:NO];
+                // remove following three lines once checklistButton is done
+            //UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandSelectedCell:)];
+            //tapRecognizer.numberOfTapsRequired = 1;
+            //[checklistLabel addGestureRecognizer:tapRecognizer];
+            UITapGestureRecognizer *btnTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandSelectedCell:)];
+            btnTapRecognizer.numberOfTapsRequired = 1;
+            [checklistButton addGestureRecognizer:btnTapRecognizer];
         } else {
-            checklistLabel.hidden = YES;
+            checklistLabel.hidden = YES;    // remove once checklistButton is done
+            [checklistButton setHidden:YES];
         }
         
         if ([task.completed boolValue]) {
