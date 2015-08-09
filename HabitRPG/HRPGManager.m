@@ -1416,7 +1416,7 @@ NSString *currentUser;
             if ([fetchedObjects count] == 1) {
                 Item *droppedItem = [fetchedObjects objectAtIndex:0];
                 droppedItem.owned = [NSNumber numberWithLong:([droppedItem.owned integerValue] + 1)];
-                [self displayDropNotification:taskResponse.dropKey withType:taskResponse.dropType withNote:taskResponse.dropNote];
+                [self displayDropNotification:droppedItem.text withType:taskResponse.dropType withNote:taskResponse.dropNote];
             }
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
