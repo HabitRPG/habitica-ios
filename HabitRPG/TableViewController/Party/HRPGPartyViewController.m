@@ -558,7 +558,7 @@ ChatMessage *selectedMessage;
                     [attributedMessage addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, attributedMessage.length)];
                     NSError *error = nil;
                     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"@(\\w+)" options:0 error:&error];
-                    NSArray *matches = [regex matchesInString:text options:0 range:NSMakeRange(0, attributedMessage.length)];
+                    NSArray *matches = [regex matchesInString:text options:0 range:NSMakeRange(0, text.length)];
                     for (NSTextCheckingResult *match in matches) {
                         NSRange wordRange = [match rangeAtIndex:0];
                         NSString* username = [text substringWithRange:[match rangeAtIndex:1]];
