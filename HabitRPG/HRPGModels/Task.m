@@ -39,8 +39,7 @@
 @dynamic everyX;
 @dynamic frequency;
 @dynamic startDate;
-
-
+@synthesize currentlyChecking;
 
 
 - (BOOL)dueToday {

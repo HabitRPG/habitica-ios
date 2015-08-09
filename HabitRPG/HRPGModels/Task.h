@@ -40,6 +40,9 @@
 @property(nonatomic, retain) NSSet *tags;
 @property(nonatomic, getter = getTagDictionary, setter = setTagDictionary:) NSDictionary *tagDictionary;
 @property(nonatomic, retain) User *user;
+
+//Temporary variable to store whether or not the task is currently being checked or not. Used to preved doubletapping on a daily and receiving twice the bonus
+@property(nonatomic, retain) NSNumber *currentlyChecking;
 @end
 
 @interface Task (CoreDataGeneratedAccessors)

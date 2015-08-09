@@ -138,31 +138,41 @@
             self.checkIconFactory.colors = @[[UIColor whiteColor]];
             label.textColor = [UIColor darkTextColor];
             checkBox.wasTouched = ^() {
-                item.completed = [NSNumber numberWithBool:NO];
-                [self addActivityCounter];
-                [self.sharedManager updateTask:task onSuccess:^() {
-                    [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
-                    NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
-                    [self configureCell:[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
-                    [self removeActivityCounter];
-                }                      onError:^() {
-                    [self removeActivityCounter];
-                }];
+                if (![task.currentlyChecking boolValue]) {
+                    task.currentlyChecking = [NSNumber numberWithBool:YES];
+                    item.completed = [NSNumber numberWithBool:YES];
+                    [self addActivityCounter];
+                    [self.sharedManager updateTask:task onSuccess:^() {
+                        [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                        NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
+                        [self configureCell:[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }                      onError:^() {
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }];
+                }
             };
             [checkBox setChecked:YES animated:YES];
         } else {
             label.textColor = [UIColor whiteColor];
             checkBox.wasTouched = ^() {
-                item.completed = [NSNumber numberWithBool:YES];
-                [self addActivityCounter];
-                [self.sharedManager updateTask:task onSuccess:^() {
-                    [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
-                    NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
-                    [self configureCell:[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
-                    [self removeActivityCounter];
-                }                      onError:^() {
-                    [self removeActivityCounter];
-                }];
+                if (![task.currentlyChecking boolValue]) {
+                    task.currentlyChecking = [NSNumber numberWithBool:YES];
+                    item.completed = [NSNumber numberWithBool:YES];
+                    [self addActivityCounter];
+                    [self.sharedManager updateTask:task onSuccess:^() {
+                        [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                        NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
+                        [self configureCell:[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }                      onError:^() {
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }];
+                }
                 
             };
             [checkBox setChecked:NO animated:YES];
@@ -210,21 +220,31 @@
             cell.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.000];
             [checkBox setChecked:YES animated:YES];
             checkBox.wasTouched = ^() {
-                [self addActivityCounter];
-                [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(NSArray *valuesArray) {
-                    [self removeActivityCounter];
-                }onError:^() {
-                    [self removeActivityCounter];
-                }];
+                if (![task.currentlyChecking boolValue]) {
+                    [self addActivityCounter];
+                    task.currentlyChecking = [NSNumber numberWithBool:YES];
+                    [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(NSArray *valuesArray) {
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }onError:^() {
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }];
+                }
             };
         } else {
             checkBox.wasTouched = ^() {
-                [self addActivityCounter];
-                [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray) {
-                    [self removeActivityCounter];
-                }onError:^() {
-                    [self removeActivityCounter];
-                }];
+                if (![task.currentlyChecking boolValue]) {
+                    [self addActivityCounter];
+                    task.currentlyChecking = [NSNumber numberWithBool:YES];
+                    [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray) {
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }onError:^() {
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }];
+                }
             };
             [checkBox setChecked:NO animated:YES];
             if (![task dueToday]) {
