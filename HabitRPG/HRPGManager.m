@@ -1368,7 +1368,10 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@/%@", task.id, withDirection] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGTaskResponse *taskResponse = (HRPGTaskResponse *) [mappingResult firstObject];
-        task.value = [NSNumber numberWithFloat:[task.value floatValue] + [taskResponse.delta floatValue]];
+        
+        if ([task.managedObjectContext existingObjectWithID:task.objectID error:&executeError] != nil) {
+            task.value = [NSNumber numberWithFloat:[task.value floatValue] + [taskResponse.delta floatValue]];
+        }
         if ([user.level integerValue] < [taskResponse.level integerValue]) {
             user.level = taskResponse.level;
             [self displayLevelUpNotification];
