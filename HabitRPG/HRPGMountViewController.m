@@ -217,7 +217,7 @@
     UILabel *label = (UILabel*)[cell viewWithTag:2];
     label.text = [self niceMountName:mount];
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
-    if (mount.asMount) {
+    if ([mount.asMount boolValue]) {
         [mount setMountOnImageView:imageView];
         imageView.contentMode = UIViewContentModeScaleToFill;
         imageView.alpha = 1;
