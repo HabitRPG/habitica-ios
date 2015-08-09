@@ -1171,18 +1171,20 @@ NSString *currentUser;
 
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/user" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         User *fetchedUser = [mappingResult dictionary][[NSNull null]];
-        if (![currentUser isEqualToString:user.id]) {
-            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-            [fetchRequest setReturnsObjectsAsFaults:NO];
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", fetchedUser.id];
-            [fetchRequest setPredicate:predicate];
-            NSError *error;
-            NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
-            if ([fetchedObjects count] > 0) {
-                user = fetchedObjects[0];
+        if ([fetchedUser isKindOfClass:User.class]) {
+            if (![currentUser isEqualToString:user.id]) {
+                NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+                [fetchRequest setReturnsObjectsAsFaults:NO];
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", fetchedUser.id];
+                [fetchRequest setPredicate:predicate];
+                NSError *error;
+                NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+                if ([fetchedObjects count] > 0) {
+                    user = fetchedObjects[0];
+                }
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged" object:nil];
             }
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged" object:nil];
         }
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
