@@ -104,9 +104,10 @@
         //  5 = checklistButton
         //
         //  Lines that have the comment "to be removed once checklistButton is done" refer to having the checklistButton have the same look as checklistLabel while still filling the full end of the cell
-    UILabel *checklistLabel = (UILabel *) [cell viewWithTag:2]; // to be removed once checklistButton is done
     UILabel *label = (UILabel *) [cell viewWithTag:1];
+    UILabel *checklistLabel = (UILabel *) [cell viewWithTag:2]; // to be removed once checklistButton is done
     HRPGCheckBoxView *checkBox = (HRPGCheckBoxView *) [cell viewWithTag:3];
+    UILabel *subLabel = (UILabel *) [cell viewWithTag:4];
     UIButton *checklistButton = (UIButton *) [cell viewWithTag:5];
     if (checkBox == nil) {
         checkBox = [[HRPGCheckBoxView alloc] initWithFrame:CGRectMake(0, 0, 50, cell.frame.size.height)];
@@ -132,6 +133,7 @@
         cell.backgroundColor = [UIColor lightGrayColor];
         checkBox.boxColor = [UIColor darkGrayColor];
         checkBox.checkColor = [UIColor lightGrayColor];
+        subLabel.hidden = YES;
         if ([item.completed boolValue]) {
             self.checkIconFactory.colors = @[[UIColor whiteColor]];
             label.textColor = [UIColor darkTextColor];
@@ -239,7 +241,7 @@
         }
         
         if (task.duedate) {
-            UILabel *subLabel = (UILabel *) [cell viewWithTag:4];
+            subLabel.hidden = NO;
             subLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
             NSDate *now = [NSDate date];
             NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];

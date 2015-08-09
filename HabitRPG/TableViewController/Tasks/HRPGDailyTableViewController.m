@@ -77,10 +77,11 @@
         //  5 = checklistButton
         //
         //  Lines that have the comment "to be removed once checklistButton is done" refer to having the checklistButton have the same look as checklistLabel while still filling the full end of the cell
-    UILabel *checklistLabel = (UILabel *) [cell viewWithTag:2]; // to be removed once checklistButton done
     UILabel *label = (UILabel *) [cell viewWithTag:1];
-    UIButton *checklistButton = (UIButton *) [cell viewWithTag:5];
+    UILabel *checklistLabel = (UILabel *) [cell viewWithTag:2]; // to be removed once checklistButton done
     HRPGCheckBoxView *checkBox = (HRPGCheckBoxView *) [cell viewWithTag:3];
+    UILabel *streakLabel = (UILabel *) [cell viewWithTag:4];
+    UIButton *checklistButton = (UIButton *) [cell viewWithTag:5];
     if (checkBox == nil) {
         checkBox = [[HRPGCheckBoxView alloc] initWithFrame:CGRectMake(0, 0, 50, cell.frame.size.height)];
         checkBox.tag = 3;
@@ -99,6 +100,7 @@
         }
         label.text = [item.text stringByReplacingEmojiCheatCodesWithUnicode];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        streakLabel.hidden = YES;
         checklistLabel.hidden = YES;    // to be removed once checklistButton done
         [checklistButton setHidden:YES];
         cell.backgroundColor = [UIColor lightGrayColor];
@@ -139,9 +141,9 @@
         }
 
     } else {
-        UILabel *streakLabel = (UILabel *) [cell viewWithTag:4];
         label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        streakLabel.hidden = NO;
         NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];
         if ([checklistCount integerValue] > 0) {
             int checkedCount = 0;
