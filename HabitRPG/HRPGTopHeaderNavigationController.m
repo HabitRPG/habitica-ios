@@ -88,7 +88,7 @@ static const CGFloat topHeaderHeight = 147;
 
 - (CGFloat)bgViewOffset
 {
-    return [self statusBarHeight] + self.navigationBar.frame.size.height;
+    return 20 + self.navigationBar.frame.size.height;
 }
 
 #pragma mark - Animations
