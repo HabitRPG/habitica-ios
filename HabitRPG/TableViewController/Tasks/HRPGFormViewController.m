@@ -252,6 +252,9 @@
         NSMutableDictionary *tagDictionary = [NSMutableDictionary dictionary];
         for (NSString *key in formValues) {
             if ([key isEqualToString:@"hasDueDate"]) {
+                if (![formValues[key] boolValue]) {
+                    self.task.duedate = nil;
+                }
                 continue;
             }
             if ([key isEqualToString:@"frequency"]) {
