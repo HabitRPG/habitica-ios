@@ -240,7 +240,7 @@
     }
     
     progressView.hidden = YES;
-    if (![pet.key hasPrefix:@"Egg"]) {
+    if (!([pet.key hasPrefix:@"Egg"] || [pet.type isEqualToString:@" "])) {
         if (pet.trained && [pet.trained integerValue] != -1 && !pet.asMount) {
             progressView.hidden = NO;
             if (animated) {
