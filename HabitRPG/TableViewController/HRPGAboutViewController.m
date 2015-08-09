@@ -62,13 +62,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return 7;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellName = @"BasicCell";
-    if (indexPath.item == 0 || indexPath.item == 3 || indexPath.item == 5) {
+    if (indexPath.item == 0 || indexPath.item == 3 || indexPath.item == 6) {
         cellName = @"RightDetailCell";
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
@@ -84,8 +84,10 @@
         cell.textLabel.text = @"Twitter";
         cell.detailTextLabel.text = @"@habitica";
     } else if (indexPath.item == 4) {
-        cell.textLabel.text = @"FAQ";
+        cell.textLabel.text = NSLocalizedString(@"FAQ", nil);
     } else if (indexPath.item == 5) {
+        cell.textLabel.text = NSLocalizedString(@"Leave a Review", nil);
+    } else if (indexPath.item == 6) {
         cell.textLabel.text = NSLocalizedString(@"Version", nil);
         NSString * appVersionString = [NSString stringWithFormat: @"%@ (%@)", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
         cell.detailTextLabel.text = appVersionString;
@@ -129,6 +131,10 @@
         }
         case 4: {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://habitica.wikia.com/wiki/FAQ"]];
+            break;
+        }
+        case 5: {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id994882113"]];
             break;
         }
         default:

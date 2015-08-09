@@ -216,11 +216,11 @@ BOOL editable;
     NSInteger height = 30;
     if ([task.type isEqualToString:@"habit"]) {
         //50 for each button and 1 for seperator
-        width = self.screenWidth - 117;
+        width = self.viewWidth - 117;
     } else if ([task.checklist count] > 0) {
-        width = self.screenWidth - 110;
+        width = self.viewWidth - 110;
     } else {
-        width = self.screenWidth - 50;
+        width = self.viewWidth - 50;
     }
     height = height + [[task.text stringByReplacingEmojiCheatCodesWithUnicode] boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                options:NSStringDrawingUsesLineFragmentOrigin

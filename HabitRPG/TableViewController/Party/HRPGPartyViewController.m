@@ -124,7 +124,7 @@ ChatMessage *selectedMessage;
             [self fetchQuest];
         }
         if (party.questKey != nil && ![party.questActive boolValue] && user.participateInQuest == nil) {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"questInvitationNavigationController"];
             HRPGQuestDetailViewController *questInvitationController = (HRPGQuestDetailViewController *) navigationController.topViewController;
             questInvitationController.quest = quest;
@@ -269,9 +269,9 @@ ChatMessage *selectedMessage;
         }
         float width;
         if (message.user == nil) {
-            width = self.screenWidth - 32;
+            width = self.viewWidth - 32;
         } else {
-            width = self.screenWidth - 83;
+            width = self.viewWidth - 83;
         }
         NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:message.text];
         NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
@@ -558,7 +558,7 @@ ChatMessage *selectedMessage;
                     [attributedMessage addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, attributedMessage.length)];
                     NSError *error = nil;
                     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"@(\\w+)" options:0 error:&error];
-                    NSArray *matches = [regex matchesInString:text options:0 range:NSMakeRange(0, attributedMessage.length)];
+                    NSArray *matches = [regex matchesInString:text options:0 range:NSMakeRange(0, text.length)];
                     for (NSTextCheckingResult *match in matches) {
                         NSRange wordRange = [match rangeAtIndex:0];
                         NSString* username = [text substringWithRange:[match rangeAtIndex:1]];

@@ -149,7 +149,13 @@
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:[self niceMountName:mount] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:equipString, nil];
     popup.tag = 1;
     self.selectedMount = mount;
-    [popup showInView:[UIApplication sharedApplication].keyWindow];
+    
+    // get the selected cell so that the popup can be displayed near it on the iPad
+    UICollectionViewCell *selectedCell = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    
+    CGRect rectIPad = CGRectMake(selectedCell.frame.origin.x, selectedCell.frame.origin.y + selectedCell.frame.size.height, selectedCell.frame.size.width, selectedCell.frame.size.height);
+    // using the following form rather than [popup showInView:[UIApplication sharedApplication].keyWindow]] to make it compatible with both iPhone and iPad
+    [popup showFromRect:rectIPad inView:self.view animated:YES];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
@@ -211,7 +217,7 @@
     UILabel *label = (UILabel*)[cell viewWithTag:2];
     label.text = [self niceMountName:mount];
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
-    if (mount.asMount) {
+    if ([mount.asMount boolValue]) {
         [mount setMountOnImageView:imageView];
         imageView.contentMode = UIViewContentModeScaleToFill;
         imageView.alpha = 1;

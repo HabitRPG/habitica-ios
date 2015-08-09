@@ -24,10 +24,11 @@ NSIndexPath *selectedIndex;
 float textWidth;
 
 -(void)viewDidLoad {
-    [super viewDidLoad];
     self.user = [self.sharedManager getUser];
+    [super viewDidLoad];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
+    
     textWidth = screenRect.size.width - 73.0;
 }
 
@@ -96,7 +97,13 @@ float textWidth;
                             gearString,
                             nil];
     popup.tag = 1;
-    [popup showInView:[UIApplication sharedApplication].keyWindow];
+    
+    // get the selected cell so that the popup can be displayed near it on the iPad
+    UITableViewCell *selectedCell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    CGRect rectIPad = CGRectMake(selectedCell.frame.origin.x, selectedCell.frame.origin.y, selectedCell.frame.size.width, selectedCell.frame.size.height);
+    // using the following form rather than [popup showInView:[UIApplication sharedApplication].keyWindow]] to make it compatible with both iPhone and iPad
+    [popup showFromRect:rectIPad inView:self.view animated:YES];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {

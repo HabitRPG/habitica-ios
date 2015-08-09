@@ -97,10 +97,13 @@
         NSRange urlRange = [match rangeAtIndex:2];
         NSString *title = [string substringWithRange:titleRange];
         NSString *url = [string substringWithRange:urlRange];
-        [results addObject:@{
-         @"title": title,
-         @"range": [NSValue valueWithRange:match.range],
-         @"url": [NSURL URLWithString:url]}];
+        NSURL *nsurl = [NSURL URLWithString:url];
+        if (nsurl) {
+            [results addObject:@{
+                                 @"title": title,
+                                 @"range": [NSValue valueWithRange:match.range],
+                                 @"url": nsurl}];
+        }
 	}
     return results;
 }

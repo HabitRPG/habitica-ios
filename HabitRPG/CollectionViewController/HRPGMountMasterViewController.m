@@ -171,7 +171,7 @@ NSUserDefaults *defaults;
         [newSortedPets addObject:sectionArray];
         for (Pet *pet in [sectionInfo objects]) {
             NSArray *nameParts = [pet.key componentsSeparatedByString:@"-"];
-            if ([nameParts[0] isEqualToString:@"Egg"] || [nameParts[0] isEqualToString:@"Turkey"]) {
+            if ([nameParts[0] isEqualToString:@"Turkey"] || ([pet.type isEqualToString:@" "] && ![pet.asMount boolValue])) {
                 continue;
             }
             NSMutableArray *petArray;

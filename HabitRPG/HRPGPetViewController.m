@@ -150,7 +150,13 @@
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:[self nicePetName:pet] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:equipString, feedString, nil];
     popup.tag = 1;
     self.selectedPet = pet;
-    [popup showInView:[UIApplication sharedApplication].keyWindow];
+    
+    // get the selected cell so that the popup can be displayed near it on the iPad
+    UICollectionViewCell *selectedCell = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    
+    CGRect rectIPad = CGRectMake(selectedCell.frame.origin.x, selectedCell.frame.origin.y + selectedCell.frame.size.height, selectedCell.frame.size.width, selectedCell.frame.size.height);
+    // using the following form rather than [popup showInView:[UIApplication sharedApplication].keyWindow]] to make it compatible with both iPhone and iPad
+    [popup showFromRect:rectIPad inView:self.view animated:YES];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
@@ -221,7 +227,7 @@
     label.text = [self nicePetName:pet];
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     imageView.alpha = 1;
-    if (pet.trained) {
+    if ([pet.trained boolValue]) {
         [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/Pet-%@.png", pet.key]]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
         if ([pet.trained integerValue] == -1) {
@@ -234,7 +240,7 @@
     }
     
     progressView.hidden = YES;
-    if (![pet.key hasPrefix:@"Egg"]) {
+    if (!([pet.key hasPrefix:@"Egg"] || [pet.type isEqualToString:@" "])) {
         if (pet.trained && [pet.trained integerValue] != -1 && !pet.asMount) {
             progressView.hidden = NO;
             if (animated) {
@@ -262,7 +268,7 @@
     }
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
         [self.sharedManager equipObject:self.selectedPet.key withType:@"pet" onSuccess:^() {
             if ([self.equippedPetName isEqualToString:self.selectedPet.key]) {

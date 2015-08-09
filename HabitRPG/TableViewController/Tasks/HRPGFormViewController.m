@@ -241,7 +241,8 @@
 
     [self.tableView endEditing:YES];
     if ([segue.identifier isEqualToString:@"unwindSaveSegue"]) {
-        if (!self.editTask) {
+        NSError *error;
+        if (!self.editTask || (self.editTask && [self.task.managedObjectContext existingObjectWithID:self.task.objectID error:&error] == nil)) {
             self.task = [NSEntityDescription
                          insertNewObjectForEntityForName:@"Task"
                          inManagedObjectContext:self.managedObjectContext];
@@ -251,6 +252,9 @@
         NSMutableDictionary *tagDictionary = [NSMutableDictionary dictionary];
         for (NSString *key in formValues) {
             if ([key isEqualToString:@"hasDueDate"]) {
+                if (![formValues[key] boolValue]) {
+                    self.task.duedate = nil;
+                }
                 continue;
             }
             if ([key isEqualToString:@"frequency"]) {
