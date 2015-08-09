@@ -241,7 +241,8 @@
 
     [self.tableView endEditing:YES];
     if ([segue.identifier isEqualToString:@"unwindSaveSegue"]) {
-        if (!self.editTask) {
+        NSError *error;
+        if (!self.editTask || (self.editTask && [self.task.managedObjectContext existingObjectWithID:self.task.objectID error:&error] == nil)) {
             self.task = [NSEntityDescription
                          insertNewObjectForEntityForName:@"Task"
                          inManagedObjectContext:self.managedObjectContext];
