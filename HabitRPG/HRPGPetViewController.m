@@ -227,7 +227,7 @@
     label.text = [self nicePetName:pet];
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     imageView.alpha = 1;
-    if (pet.trained) {
+    if ([pet.trained boolValue]) {
         [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/Pet-%@.png", pet.key]]
                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
         if ([pet.trained integerValue] == -1) {
