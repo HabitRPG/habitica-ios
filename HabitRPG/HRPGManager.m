@@ -710,6 +710,7 @@ NSString *currentUser;
             @"profile.name" : @"username",
             @"profile.blurb" : @"blurb",
             @"preferences.dayStart" : @"dayStart",
+            @"preferences.costume": @"useCostume",
             @"preferences.sleep" : @"sleep",
             @"preferences.skin" : @"skin",
             @"preferences.size" : @"size",
