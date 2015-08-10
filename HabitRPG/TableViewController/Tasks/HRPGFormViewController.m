@@ -18,6 +18,7 @@
 @property (nonatomic) NSArray *tags;
 @property (nonatomic) BOOL formFilled;
 @property (nonatomic) XLFormSectionDescriptor *duedateSection;
+@property NSInteger customDayStart;
 @end
 
 @implementation HRPGFormViewController
@@ -28,6 +29,8 @@
     if (self){
         HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
         HRPGManager *sharedManager = appdelegate.sharedManager;
+        User *user = [sharedManager getUser];
+        self.customDayStart = [user.dayStart integerValue];
         self.managedObjectContext = sharedManager.getManagedObjectContext;
         [self initializeForm];
     }
@@ -110,7 +113,14 @@
     if ([self.taskType isEqualToString:@"daily"]) {
         section = [self.form formSectionAtIndex:0];
         XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"startDate" rowType:XLFormRowDescriptorTypeDateInline title:@"Start Date"];
-        row.value = [NSDate new];
+        NSDate *date = [NSDate new];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:(NSHourCalendarUnit) fromDate:date];
+        if (components.hour < self.customDayStart) {
+            [components setHour:-24];
+            date = [calendar dateByAddingComponents:components toDate:date options:0];
+        }
+        row.value = date;
         [section addFormRow:row];
         
         section = [XLFormSectionDescriptor formSectionWithTitle:@""];
