@@ -21,7 +21,6 @@
 @property NSString *typeName;
 @property NIKFontAwesomeIconFactory *iconFactory;
 @property NIKFontAwesomeIconFactory *checkIconFactory;
-@property NIKFontAwesomeIconFactory *streakIconFactory;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
 @property NSInteger dayStart;
@@ -33,6 +32,7 @@
 @dynamic typeName;
 @dynamic openedIndexPath;
 @dynamic indexOffset;
+NIKFontAwesomeIconFactory *streakIconFactory;
 
 - (void)viewDidLoad {
     self.readableName = NSLocalizedString(@"Daily", nil);
@@ -51,12 +51,9 @@
     self.checkIconFactory.size = 17.0f;
     self.checkIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
     
-    self.streakIconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-    self.streakIconFactory.square = YES;
-    self.streakIconFactory.colors = @[[UIColor darkGrayColor]];
-    self.checkIconFactory.strokeColor = [UIColor darkGrayColor];
-    self.streakIconFactory.size = 15.0f;
-    self.streakIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
+    streakIconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+    streakIconFactory.square = YES;
+    streakIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -84,6 +81,7 @@
         //  4 = streakLabel
         //  5 = checklistButton
         //  6 = streakImage
+        //  7 = View
         //
         //  Lines that have the comment "to be removed once checklistButton is done" refer to having the checklistButton have the same look as checklistLabel while still filling the full end of the cell
     UILabel *label = (UILabel *) [cell viewWithTag:1];
@@ -169,12 +167,15 @@
         streakLabel.hidden = NO;
         if ([task.streak isEqualToNumber:[NSNumber numberWithInt:0]]) {
             streakLabel.textColor = [UIColor lightGrayColor];  // set text color to light gray if not currently on a streak
+            streakIconFactory.colors = @[[UIColor lightGrayColor]];
         }
         else {
             streakLabel.textColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];  // set text color to green if currently on a streak
+            streakIconFactory.colors = @[[UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000]];
         }
-        //streakImage.image = [self.streakIconFactory createImageForIcon:NIKFontAwesomeIconSuitcase];
-        //[streakImage setImage:[self.streakIconFactory createImageForIcon:NIKFontAwesomeIconForward]];
+
+        streakIconFactory.size = 10.0f;
+        streakImage.image = [streakIconFactory createImageForIcon:NIKFontAwesomeIconForward];
 
         NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];
         if ([checklistCount integerValue] > 0) {
