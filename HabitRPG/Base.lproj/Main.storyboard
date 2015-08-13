@@ -184,7 +184,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" tag="2" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7N-WY-jtc">
+                                        <label opaque="NO" clipsSubviews="YES" tag="2" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7N-WY-jtc" userLabel="lbl_checklistLabel">
                                             <rect key="frame" x="543" y="13" width="45" height="30"/>
                                             <color key="backgroundColor" red="0.52053194520000001" green="0.69100288720000003" blue="0.020580532969999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <gestureRecognizers/>
@@ -196,7 +196,7 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLo-Uy-5kY">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLo-Uy-5kY">
                                             <rect key="frame" x="43" y="48" width="480" height="0.0"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="15" id="XSi-Kx-K67"/>
@@ -211,7 +211,7 @@
                                                 <constraint firstAttribute="height" constant="8" id="bvs-Fc-mrD"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0b-Gt-1Dy">
+                                        <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0b-Gt-1Dy" userLabel="btn_checklistButton">
                                             <rect key="frame" x="261" y="0.0" width="58" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="58" id="kGM-Ho-qOD"/>
@@ -221,19 +221,34 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nA9-3m-XhZ">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nA9-3m-XhZ" userLabel="lbl_daily">
                                             <rect key="frame" x="43" y="8" width="489" height="40"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ngd-pW-fHC" userLabel="lbl_streakLabel">
+                                            <rect key="frame" x="476" y="7" width="42" height="15"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="15" id="6zt-Nm-ref"/>
+                                                <constraint firstAttribute="width" constant="30" id="a2h-LA-gM0"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" tag="6" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KXZ-6B-9Q6" userLabel="img_streakImage">
+                                            <rect key="frame" x="382" y="0.0" width="30" height="30"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="nA9-3m-XhZ" firstAttribute="leading" secondItem="yLo-Uy-5kY" secondAttribute="leading" id="0bO-AL-Vvx"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="a0b-Gt-1Dy" secondAttribute="bottom" constant="-3" id="4d9-87-mNs"/>
                                         <constraint firstItem="E7N-WY-jtc" firstAttribute="leading" secondItem="yLo-Uy-5kY" secondAttribute="trailing" constant="20" id="7Tk-VA-ndy"/>
                                         <constraint firstItem="E7N-WY-jtc" firstAttribute="centerY" secondItem="nA9-3m-XhZ" secondAttribute="centerY" id="B2o-Gz-3Tt"/>
+                                        <constraint firstItem="Ngd-pW-fHC" firstAttribute="top" secondItem="rmb-Zq-WLv" secondAttribute="topMargin" constant="-3" id="Bku-KZ-2cH"/>
                                         <constraint firstItem="8Nw-Su-rKE" firstAttribute="leading" secondItem="rmb-Zq-WLv" secondAttribute="leadingMargin" constant="-16" id="DQk-Vp-vwc"/>
                                         <constraint firstItem="a0b-Gt-1Dy" firstAttribute="top" secondItem="rmb-Zq-WLv" secondAttribute="topMargin" constant="-8" id="HFr-M3-0RX"/>
+                                        <constraint firstItem="Ngd-pW-fHC" firstAttribute="trailing" secondItem="KXZ-6B-9Q6" secondAttribute="leading" id="HKc-YZ-69b"/>
                                         <constraint firstItem="nA9-3m-XhZ" firstAttribute="leading" secondItem="rmb-Zq-WLv" secondAttribute="leadingMargin" constant="35" id="JoH-u4-zeh"/>
                                         <constraint firstItem="yLo-Uy-5kY" firstAttribute="top" secondItem="nA9-3m-XhZ" secondAttribute="bottom" id="NQX-Te-yt3"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="a0b-Gt-1Dy" secondAttribute="trailing" constant="-8" id="U5s-la-VRa"/>
@@ -242,6 +257,8 @@
                                         <constraint firstItem="E7N-WY-jtc" firstAttribute="leading" secondItem="nA9-3m-XhZ" secondAttribute="trailing" constant="11" id="Yr0-0m-joE"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="8Nw-Su-rKE" secondAttribute="trailing" constant="-16" id="Z6f-FH-cre"/>
                                         <constraint firstItem="8Nw-Su-rKE" firstAttribute="top" secondItem="yLo-Uy-5kY" secondAttribute="bottom" constant="4" id="tT4-dw-Vdv"/>
+                                        <constraint firstItem="a0b-Gt-1Dy" firstAttribute="leading" secondItem="Ngd-pW-fHC" secondAttribute="trailing" constant="10" id="u8Q-WX-m5M"/>
+                                        <constraint firstItem="KXZ-6B-9Q6" firstAttribute="centerY" secondItem="Ngd-pW-fHC" secondAttribute="centerY" id="uVC-H8-A5Q"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="8Nw-Su-rKE" secondAttribute="bottom" constant="-8" id="wwp-fa-vVn"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -4049,14 +4066,14 @@
         <image name="onepassword-button" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="njg-A8-lDq"/>
+        <segue reference="04Z-5H-zfF"/>
+        <segue reference="jeD-LQ-1O1"/>
         <segue reference="sPD-XR-ORt"/>
         <segue reference="OZd-8c-sWC"/>
-        <segue reference="w8b-nU-BYs"/>
-        <segue reference="rPy-vD-2tO"/>
         <segue reference="ctJ-Nf-hOd"/>
+        <segue reference="rPy-vD-2tO"/>
+        <segue reference="w8b-nU-BYs"/>
         <segue reference="dsP-Ie-Qai"/>
-        <segue reference="E5i-VS-PGN"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.47843137254901963" green="0.070588235294117646" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
 </document>

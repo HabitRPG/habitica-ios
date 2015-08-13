@@ -21,6 +21,7 @@
 @property NSString *typeName;
 @property NIKFontAwesomeIconFactory *iconFactory;
 @property NIKFontAwesomeIconFactory *checkIconFactory;
+@property NIKFontAwesomeIconFactory *streakIconFactory;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
 @property NSInteger dayStart;
@@ -49,6 +50,13 @@
     self.checkIconFactory.strokeColor = [UIColor darkGrayColor];
     self.checkIconFactory.size = 17.0f;
     self.checkIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
+    
+    self.streakIconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+    self.streakIconFactory.square = YES;
+    self.streakIconFactory.colors = @[[UIColor darkGrayColor]];
+    self.checkIconFactory.strokeColor = [UIColor darkGrayColor];
+    self.streakIconFactory.size = 15.0f;
+    self.streakIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -75,12 +83,14 @@
         //  3 = checkBox
         //  4 = streakLabel
         //  5 = checklistButton
+        //  6 = streakImage
         //
         //  Lines that have the comment "to be removed once checklistButton is done" refer to having the checklistButton have the same look as checklistLabel while still filling the full end of the cell
     UILabel *label = (UILabel *) [cell viewWithTag:1];
     UILabel *checklistLabel = (UILabel *) [cell viewWithTag:2]; // to be removed once checklistButton done
     HRPGCheckBoxView *checkBox = (HRPGCheckBoxView *) [cell viewWithTag:3];
     UILabel *streakLabel = (UILabel *) [cell viewWithTag:4];
+    UIImageView *streakImage = (UIImageView *) [cell viewWithTag:6];
     UIButton *checklistButton = (UIButton *) [cell viewWithTag:5];
     if (checkBox == nil) {
         checkBox = [[HRPGCheckBoxView alloc] initWithFrame:CGRectMake(0, 0, 50, cell.frame.size.height)];
@@ -154,7 +164,18 @@
     } else {
         label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+
+        streakLabel.text = [task.streak stringValue];
         streakLabel.hidden = NO;
+        if ([task.streak isEqualToNumber:[NSNumber numberWithInt:0]]) {
+            streakLabel.textColor = [UIColor lightGrayColor];  // set text color to light gray if not currently on a streak
+        }
+        else {
+            streakLabel.textColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];  // set text color to green if currently on a streak
+        }
+        //streakImage.image = [self.streakIconFactory createImageForIcon:NIKFontAwesomeIconSuitcase];
+        //[streakImage setImage:[self.streakIconFactory createImageForIcon:NIKFontAwesomeIconForward]];
+
         NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];
         if ([checklistCount integerValue] > 0) {
             int checkedCount = 0;
@@ -174,10 +195,6 @@
             }
             checklistLabel.hidden = NO;    // to be removed once checklistButton is done
             [checklistButton setHidden:NO];
-                // remove following three lines once checklistButton is done
-            //UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandSelectedCell:)];
-            //tapRecognizer.numberOfTapsRequired = 1;
-            //[checklistLabel addGestureRecognizer:tapRecognizer];
             UITapGestureRecognizer *btnTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandSelectedCell:)];
             btnTapRecognizer.numberOfTapsRequired = 1;
             [checklistButton addGestureRecognizer:btnTapRecognizer];
@@ -193,7 +210,7 @@
             label.textColor = [UIColor darkGrayColor];
             cell.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.000];
             [checkBox setChecked:YES animated:YES];
-            streakLabel.textColor = [UIColor darkGrayColor];
+            //streakLabel.textColor = [UIColor darkGrayColor];
             checkBox.wasTouched = ^() {
                 if (![task.currentlyChecking boolValue]) {
                     [self addActivityCounter];
@@ -226,12 +243,12 @@
                 checkBox.boxColor = [UIColor lightGrayColor];
                 label.textColor = [UIColor darkGrayColor];
                 cell.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.000];
-                streakLabel.textColor = [UIColor darkGrayColor];
+                //streakLabel.textColor = [UIColor darkGrayColor];
             } else {
                 checkBox.boxColor = [[task taskColor] darkerColor];
                 cell.backgroundColor = [task lightTaskColor];
                 label.textColor = [UIColor blackColor];
-                streakLabel.textColor = [UIColor blackColor];
+                //streakLabel.textColor = [UIColor blackColor];
             }
         }
     }
