@@ -23,6 +23,7 @@
 @property NSString *typeName;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
+@property int extraCellSpacing;
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 
@@ -51,6 +52,11 @@ BOOL editable;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectTags:) name:@"tagsSelected"  object:nil];
     [self didSelectTags:nil];
+    
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
+        //due to the way ipads are used we want to have a bit of extra spacing
+        self.extraCellSpacing = 8;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -228,6 +234,7 @@ BOOL editable;
                                                     NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                             }
                                                context:nil].size.height;
+    height = height + self.extraCellSpacing;
     if (task.duedate) {
         height = height + 5;
     }
