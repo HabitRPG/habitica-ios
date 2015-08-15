@@ -185,7 +185,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" tag="2" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7N-WY-jtc" userLabel="lbl_checklistLabel">
-                                            <rect key="frame" x="543" y="13" width="45" height="30"/>
+                                            <rect key="frame" x="543" y="15" width="45" height="30"/>
                                             <color key="backgroundColor" red="0.52053194520000001" green="0.69100288720000003" blue="0.020580532969999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <gestureRecognizers/>
                                             <constraints>
@@ -197,7 +197,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLo-Uy-5kY">
-                                            <rect key="frame" x="43" y="48" width="480" height="0.0"/>
+                                            <rect key="frame" x="43" y="52" width="480" height="0.0"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="15" id="XSi-Kx-K67"/>
                                             </constraints>
@@ -205,10 +205,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Nw-Su-rKE">
-                                            <rect key="frame" x="-8" y="52" width="616" height="8"/>
+                                            <rect key="frame" x="-8" y="56" width="616" height="4"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="8" id="bvs-Fc-mrD"/>
+                                                <constraint firstAttribute="height" constant="4" id="bvs-Fc-mrD"/>
                                             </constraints>
                                         </view>
                                         <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0b-Gt-1Dy" userLabel="btn_checklistButton">
@@ -222,22 +222,26 @@
                                             </state>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nA9-3m-XhZ" userLabel="lbl_daily">
-                                            <rect key="frame" x="43" y="8" width="489" height="40"/>
+                                            <rect key="frame" x="43" y="8" width="489" height="44"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ngd-pW-fHC" userLabel="lbl_streakLabel">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ngd-pW-fHC" userLabel="lbl_streakLabel">
                                             <rect key="frame" x="476" y="7" width="42" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="6zt-Nm-ref"/>
-                                                <constraint firstAttribute="width" constant="30" id="a2h-LA-gM0"/>
+                                                <constraint firstAttribute="width" priority="500" constant="30" id="a2h-LA-gM0"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" tag="6" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KXZ-6B-9Q6" userLabel="img_streakImage">
+                                        <imageView userInteractionEnabled="NO" tag="6" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KXZ-6B-9Q6" userLabel="img_streakImage">
                                             <rect key="frame" x="382" y="0.0" width="15" height="15"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="KXZ-6B-9Q6" secondAttribute="height" multiplier="1:1" id="naU-72-iwP"/>
+                                                <constraint firstAttribute="width" constant="15" id="wbn-cF-Aoc"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>

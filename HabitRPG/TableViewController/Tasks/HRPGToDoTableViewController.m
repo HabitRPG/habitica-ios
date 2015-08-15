@@ -200,10 +200,6 @@
             }
             checklistLabel.hidden = NO; // to be removed once checklistButton is done
             [checklistButton setHidden:NO];
-                // remove next three lines once checklistButton is done
-            //UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandSelectedCell:)];
-            //tapRecognizer.numberOfTapsRequired = 1;
-            //[checklistLabel addGestureRecognizer:tapRecognizer];
             UITapGestureRecognizer *btnTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandSelectedCell:)];
             btnTapRecognizer.numberOfTapsRequired = 1;
             [checklistButton addGestureRecognizer:btnTapRecognizer];

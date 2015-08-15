@@ -174,7 +174,7 @@ NIKFontAwesomeIconFactory *streakIconFactory;
             streakIconFactory.colors = @[[UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000]];
         }
 
-        streakIconFactory.size = 10.0f;
+        streakIconFactory.size = 16.0f;
         streakImage.image = [streakIconFactory createImageForIcon:NIKFontAwesomeIconForward];
 
         NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];
@@ -211,7 +211,6 @@ NIKFontAwesomeIconFactory *streakIconFactory;
             label.textColor = [UIColor darkGrayColor];
             cell.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.000];
             [checkBox setChecked:YES animated:YES];
-            //streakLabel.textColor = [UIColor darkGrayColor];
             checkBox.wasTouched = ^() {
                 if (![task.currentlyChecking boolValue]) {
                     [self addActivityCounter];
@@ -244,12 +243,10 @@ NIKFontAwesomeIconFactory *streakIconFactory;
                 checkBox.boxColor = [UIColor lightGrayColor];
                 label.textColor = [UIColor darkGrayColor];
                 cell.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.000];
-                //streakLabel.textColor = [UIColor darkGrayColor];
             } else {
                 checkBox.boxColor = [[task taskColor] darkerColor];
                 cell.backgroundColor = [task lightTaskColor];
                 label.textColor = [UIColor blackColor];
-                //streakLabel.textColor = [UIColor blackColor];
             }
         }
     }
