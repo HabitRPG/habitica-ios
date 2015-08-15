@@ -68,8 +68,7 @@ User *user;
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"User", nil)];
     [formDescriptor addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"logout" rowType:XLFormRowDescriptorTypeButton title:[NSString stringWithFormat:NSLocalizedString(@"Logged in as %@", nil), user.username]];
-    row.required = YES;
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"loggedInAs" rowType:XLFormRowDescriptorTypeButton title:[NSString stringWithFormat:NSLocalizedString(@"Logged in as %@", nil), user.username]];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"logout" rowType:XLFormRowDescriptorTypeButton title:NSLocalizedString(@"Log Out", nil)];
