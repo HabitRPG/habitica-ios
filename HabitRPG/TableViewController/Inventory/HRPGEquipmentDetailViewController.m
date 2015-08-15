@@ -235,7 +235,7 @@ float textWidth;
     if (buttonIndex == 0) {
         [self addActivityCounter];
         [self.sharedManager equipObject:selectedGear.key withType:self.equipType onSuccess:^() {
-            if (self.equippedIndex && self.equippedIndex.item != selectedIndex.item && self.equippedIndex.section != selectedIndex.section) {
+            if (self.equippedIndex && (self.equippedIndex.item != selectedIndex.item || self.equippedIndex.section != selectedIndex.section)) {
                 [self.tableView reloadRowsAtIndexPaths:@[selectedIndex, self.equippedIndex] withRowAnimation:UITableViewRowAnimationFade];
             } else {
                 [self.tableView reloadRowsAtIndexPaths:@[selectedIndex] withRowAnimation:UITableViewRowAnimationFade];
