@@ -86,6 +86,14 @@
         if ([user.costumeBack isEqualToString:self.key]) {
             return YES;
         }
+    } else if ([self.type isEqualToString:@"body"]) {
+        if ([user.costumeBody isEqualToString:self.key]) {
+            return YES;
+        }
+    } else if ([self.type isEqualToString:@"eyewear"]) {
+        if ([user.costumeEyewear isEqualToString:self.key]) {
+            return YES;
+        }
     }
     
     return NO;
