@@ -49,6 +49,8 @@
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
     
+    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    
     return YES;
 }
 
@@ -113,6 +115,14 @@
                                                           openURL:url
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
+}
+
+-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+    [self.sharedManager fetchUser:^() {
+        completionHandler(UIBackgroundFetchResultNewData);
+    }onError:^() {
+        completionHandler(UIBackgroundFetchResultFailed);
+    }];
 }
 
 @end
