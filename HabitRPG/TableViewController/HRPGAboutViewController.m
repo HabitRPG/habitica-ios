@@ -11,6 +11,7 @@
 #import "HRPGTopHeaderNavigationController.h"
 #import <MessageUI/MessageUI.h>
 #import <sys/utsname.h> 
+#import <VTAcknowledgementsViewController.h>
 
 @interface HRPGAboutViewController ()
 
@@ -38,7 +39,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
         [navigationController toggleTopBar];
@@ -62,13 +62,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return 9;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellName = @"BasicCell";
-    if (indexPath.item == 0 || indexPath.item == 3 || indexPath.item == 6) {
+    if (indexPath.item == 0 || indexPath.item == 3 || indexPath.item == 8) {
         cellName = @"RightDetailCell";
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
@@ -88,6 +88,10 @@
     } else if (indexPath.item == 5) {
         cell.textLabel.text = NSLocalizedString(@"Leave a Review", nil);
     } else if (indexPath.item == 6) {
+        cell.textLabel.text = NSLocalizedString(@"View Source Code", nil);
+    } else if (indexPath.item == 7) {
+        cell.textLabel.text = NSLocalizedString(@"Acknowledgements", nil);
+    } else if (indexPath.item == 8) {
         cell.textLabel.text = NSLocalizedString(@"Version", nil);
         NSString * appVersionString = [NSString stringWithFormat: @"%@ (%@)", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
         cell.detailTextLabel.text = appVersionString;
@@ -135,6 +139,16 @@
         }
         case 5: {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id994882113"]];
+            break;
+        }
+        case 6: {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/HabitRPG/habitrpg-ios/"]];
+            break;
+        }
+        case 7: {
+            VTAcknowledgementsViewController *viewController = [VTAcknowledgementsViewController acknowledgementsViewController];
+            viewController.headerText = NSLocalizedString(@"We love open source software.", nil); // optional
+            [self.navigationController pushViewController:viewController animated:YES];
             break;
         }
         default:
