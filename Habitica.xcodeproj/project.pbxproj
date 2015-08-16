@@ -937,9 +937,6 @@
 					D9EB4E8A18CB4A9400BB2094 = {
 						DevelopmentTeam = 9Q9SMRMCNN;
 						SystemCapabilities = {
-							com.apple.BackgroundModes = {
-								enabled = 1;
-							};
 							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
