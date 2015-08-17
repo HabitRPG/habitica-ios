@@ -48,6 +48,14 @@
         if ([user.equippedBack isEqualToString:self.key]) {
             return YES;
         }
+    } else if ([self.type isEqualToString:@"body"]) {
+        if ([user.equippedBody isEqualToString:self.key]) {
+            return YES;
+        }
+    } else if ([self.type isEqualToString:@"eyewear"]) {
+        if ([user.equippedEyewear isEqualToString:self.key]) {
+            return YES;
+        }
     }
     
     return NO;
@@ -76,6 +84,14 @@
         }
     } else if ([self.type isEqualToString:@"back"])  {
         if ([user.costumeBack isEqualToString:self.key]) {
+            return YES;
+        }
+    } else if ([self.type isEqualToString:@"body"]) {
+        if ([user.costumeBody isEqualToString:self.key]) {
+            return YES;
+        }
+    } else if ([self.type isEqualToString:@"eyewear"]) {
+        if ([user.costumeEyewear isEqualToString:self.key]) {
             return YES;
         }
     }

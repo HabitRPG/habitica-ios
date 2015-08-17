@@ -138,7 +138,11 @@
             if (image) {
                 self.bossImage = image;
                 imageView.image = self.bossImage;
-                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                if (self.tableView.numberOfSections > indexPath.section) {
+                    if ([self.tableView numberOfRowsInSection:indexPath.section] > indexPath.item) {
+                        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                    }
+                }
             }
         }];
         cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);

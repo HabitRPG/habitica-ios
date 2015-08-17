@@ -18,6 +18,7 @@
 @property (nonatomic) NSArray *tags;
 @property (nonatomic) BOOL formFilled;
 @property (nonatomic) XLFormSectionDescriptor *duedateSection;
+@property NSInteger customDayStart;
 @end
 
 @implementation HRPGFormViewController
@@ -28,6 +29,8 @@
     if (self){
         HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
         HRPGManager *sharedManager = appdelegate.sharedManager;
+        User *user = [sharedManager getUser];
+        self.customDayStart = [user.dayStart integerValue];
         self.managedObjectContext = sharedManager.getManagedObjectContext;
         [self initializeForm];
     }
@@ -110,7 +113,14 @@
     if ([self.taskType isEqualToString:@"daily"]) {
         section = [self.form formSectionAtIndex:0];
         XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"startDate" rowType:XLFormRowDescriptorTypeDateInline title:@"Start Date"];
-        row.value = [NSDate new];
+        NSDate *date = [NSDate new];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:(NSHourCalendarUnit) fromDate:date];
+        if (components.hour < self.customDayStart) {
+            [components setHour:-24];
+            date = [calendar dateByAddingComponents:components toDate:date options:0];
+        }
+        row.value = date;
         [section addFormRow:row];
         
         section = [XLFormSectionDescriptor formSectionWithTitle:@""];
@@ -122,6 +132,7 @@
         row.value = [XLFormOptionsObject formOptionsObjectWithValue:@"weekly" displayText:NSLocalizedString(@"Weekly", nil)];
         row.required = YES;
         row.selectorTitle = NSLocalizedString(@"Select Frequency", nil);
+        [self setFrequencyRows:@"weekly"];
         [section addFormRow:row];
     }
     
@@ -185,6 +196,7 @@
     if ([self.taskType isEqualToString:@"daily"]) {
         [self.form formRowWithTag:@"startDate"].value = self.task.startDate;
         [self.form formRowWithTag:@"frequency"].value = self.task.frequency;
+        [self setFrequencyRows:self.task.frequency];
     }
     
     if ([self.taskType isEqualToString:@"todo"]) {
@@ -241,7 +253,8 @@
 
     [self.tableView endEditing:YES];
     if ([segue.identifier isEqualToString:@"unwindSaveSegue"]) {
-        if (!self.editTask) {
+        NSError *error;
+        if (!self.editTask || (self.editTask && [self.task.managedObjectContext existingObjectWithID:self.task.objectID error:&error] == nil)) {
             self.task = [NSEntityDescription
                          insertNewObjectForEntityForName:@"Task"
                          inManagedObjectContext:self.managedObjectContext];
@@ -251,6 +264,9 @@
         NSMutableDictionary *tagDictionary = [NSMutableDictionary dictionary];
         for (NSString *key in formValues) {
             if ([key isEqualToString:@"hasDueDate"]) {
+                if (![formValues[key] boolValue]) {
+                    self.task.duedate = nil;
+                }
                 continue;
             }
             if ([key isEqualToString:@"frequency"]) {
@@ -314,51 +330,62 @@
             [self.form removeFormRowWithTag:@"duedate"];
         }
     } else if ([formRow.tag isEqualToString:@"frequency"]) {
-        if ([[formRow.value valueData]  isEqualToString:@"daily"]) {
-            XLFormSectionDescriptor *section = [self.form formSectionAtIndex:2];
-            XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"everyX" rowType:XLFormRowDescriptorTypeInteger title:NSLocalizedString(@"Repeat every X days", nil)];
-            row.value = self.task.everyX;
-            row.required = YES;
-            [section addFormRow:row];
-            if (self.form.formSections.count > 4) {
-                [self.form removeFormSectionAtIndex:3];
-            }
-        } else {
-            XLFormSectionDescriptor *section = [self.form formSectionAtIndex:2];
-            [section removeFormRowAtIndex:1];
-            
-            section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Repeat", nil)];
-            [self.form addFormSection:section atIndex:3];
-            XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"monday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Monday", nil)];
-            row.value = [NSNumber numberWithBool:YES];
-            [section addFormRow:row];
-            row = [XLFormRowDescriptor formRowDescriptorWithTag:@"tuesday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Tuesday", nil)];
-            row.value = [NSNumber numberWithBool:YES];
-            [section addFormRow:row];
-            row = [XLFormRowDescriptor formRowDescriptorWithTag:@"wednesday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Wednesday", nil)];
-            row.value = [NSNumber numberWithBool:YES];
-            [section addFormRow:row];
-            row = [XLFormRowDescriptor formRowDescriptorWithTag:@"thursday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Thursday", nil)];
-            row.value = [NSNumber numberWithBool:YES];
-            [section addFormRow:row];
-            row = [XLFormRowDescriptor formRowDescriptorWithTag:@"friday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Friday", nil)];
-            row.value = [NSNumber numberWithBool:YES];
-            [section addFormRow:row];
-            row = [XLFormRowDescriptor formRowDescriptorWithTag:@"saturday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Saturday", nil)];
-            row.value = [NSNumber numberWithBool:YES];
-            [section addFormRow:row];
-            row = [XLFormRowDescriptor formRowDescriptorWithTag:@"sunday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Sunday", nil)];
-            row.value = [NSNumber numberWithBool:YES];
-            [section addFormRow:row];
-            [self.form formRowWithTag:@"monday"].value = self.task.monday;
-            [self.form formRowWithTag:@"tuesday"].value = self.task.tuesday;
-            [self.form formRowWithTag:@"wednesday"].value = self.task.wednesday;
-            [self.form formRowWithTag:@"thursday"].value = self.task.thursday;
-            [self.form formRowWithTag:@"friday"].value = self.task.friday;
-            [self.form formRowWithTag:@"saturday"].value = self.task.saturday;
-            [self.form formRowWithTag:@"sunday"].value = self.task.sunday;
-        }
+        [self setFrequencyRows:[formRow.value valueData]];
+        
     }
+}
+
+- (void)setFrequencyRows:(NSString *) frequencyType {
+    if ([frequencyType  isEqualToString:@"daily"]) {
+        XLFormSectionDescriptor *section = [self.form formSectionAtIndex:2];
+        XLFormRowDescriptor *row;
+        if (section.formRows.count == 1) {
+            row = [XLFormRowDescriptor formRowDescriptorWithTag:@"everyX" rowType:XLFormRowDescriptorTypeInteger title:NSLocalizedString(@"Repeat every X days", nil)];
+            [section addFormRow:row];
+        } else {
+            row = section.formRows[1];
+        }
+        row.value = self.task.everyX;
+        row.required = YES;
+        if (self.form.formSections.count > 4) {
+            [self.form removeFormSectionAtIndex:3];
+        }
+    } else {
+        XLFormSectionDescriptor *section = [self.form formSectionAtIndex:2];
+        [section removeFormRowAtIndex:1];
+        
+        section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Repeat", nil)];
+        [self.form addFormSection:section atIndex:3];
+        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"monday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Monday", nil)];
+        row.value = [NSNumber numberWithBool:YES];
+        [section addFormRow:row];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"tuesday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Tuesday", nil)];
+        row.value = [NSNumber numberWithBool:YES];
+        [section addFormRow:row];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"wednesday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Wednesday", nil)];
+        row.value = [NSNumber numberWithBool:YES];
+        [section addFormRow:row];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"thursday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Thursday", nil)];
+        row.value = [NSNumber numberWithBool:YES];
+        [section addFormRow:row];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"friday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Friday", nil)];
+        row.value = [NSNumber numberWithBool:YES];
+        [section addFormRow:row];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"saturday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Saturday", nil)];
+        row.value = [NSNumber numberWithBool:YES];
+        [section addFormRow:row];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"sunday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Sunday", nil)];
+        row.value = [NSNumber numberWithBool:YES];
+        [section addFormRow:row];
+        [self.form formRowWithTag:@"monday"].value = self.task.monday;
+        [self.form formRowWithTag:@"tuesday"].value = self.task.tuesday;
+        [self.form formRowWithTag:@"wednesday"].value = self.task.wednesday;
+        [self.form formRowWithTag:@"thursday"].value = self.task.thursday;
+        [self.form formRowWithTag:@"friday"].value = self.task.friday;
+        [self.form formRowWithTag:@"saturday"].value = self.task.saturday;
+        [self.form formRowWithTag:@"sunday"].value = self.task.sunday;
+    }
+    
 }
 
 @end

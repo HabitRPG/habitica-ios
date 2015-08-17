@@ -36,7 +36,7 @@
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
 
     if ([keyChain stringForKey:@"id"] == nil || [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
         [self presentViewController:navigationController animated:NO completion:nil];
     }
@@ -48,9 +48,7 @@
     }
 
     self.activityCounter = 0;
-    
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    self.screenWidth = screenRect.size.width;
+    self.viewWidth = self.view.frame.size.width;
 }
 
 - (NSString *) getScreenName {
@@ -59,6 +57,19 @@
     } else {
         return NSStringFromClass([self class]);
     }
+}
+
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+-(void)viewWillLayoutSubviews {
+    CGFloat newWidth = self.view.frame.size.width;
+    if (self.viewWidth != newWidth) {
+        self.viewWidth = newWidth;
+        [self.tableView reloadData];
+    }
+    [super viewWillLayoutSubviews];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -106,6 +117,7 @@
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
     [self.tableView reloadData];
 }
+
 
 -(void)addActivityCounter {
     if (self.activityCounter == 0) {

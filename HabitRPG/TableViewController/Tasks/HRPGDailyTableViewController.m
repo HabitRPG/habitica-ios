@@ -69,9 +69,19 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
-    UILabel *checklistLabel = (UILabel *) [cell viewWithTag:2];
+        // Listing of the tag numbers [cell viewWithTag:#]
+        //  1 = label
+        //  2 = checklistLabel  // this should be removed once the checklistButton is done
+        //  3 = checkBox
+        //  4 = streakLabel
+        //  5 = checklistButton
+        //
+        //  Lines that have the comment "to be removed once checklistButton is done" refer to having the checklistButton have the same look as checklistLabel while still filling the full end of the cell
     UILabel *label = (UILabel *) [cell viewWithTag:1];
+    UILabel *checklistLabel = (UILabel *) [cell viewWithTag:2]; // to be removed once checklistButton done
     HRPGCheckBoxView *checkBox = (HRPGCheckBoxView *) [cell viewWithTag:3];
+    UILabel *streakLabel = (UILabel *) [cell viewWithTag:4];
+    UIButton *checklistButton = (UIButton *) [cell viewWithTag:5];
     if (checkBox == nil) {
         checkBox = [[HRPGCheckBoxView alloc] initWithFrame:CGRectMake(0, 0, 50, cell.frame.size.height)];
         checkBox.tag = 3;
@@ -90,7 +100,9 @@
         }
         label.text = [item.text stringByReplacingEmojiCheatCodesWithUnicode];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-        checklistLabel.hidden = YES;
+        streakLabel.hidden = YES;
+        checklistLabel.hidden = YES;    // to be removed once checklistButton done
+        [checklistButton setHidden:YES];
         cell.backgroundColor = [UIColor lightGrayColor];
         checkBox.boxColor = [UIColor darkGrayColor];
         checkBox.checkColor = [UIColor lightGrayColor];
@@ -98,40 +110,51 @@
             self.checkIconFactory.colors = @[[UIColor whiteColor]];
             label.textColor = [UIColor whiteColor];
             checkBox.wasTouched = ^() {
-                item.completed = [NSNumber numberWithBool:NO];
-                [self addActivityCounter];
-                [self.sharedManager updateTask:task onSuccess:^() {
-                    [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
-                    NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
-                    [self configureCell:[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
-                    [self removeActivityCounter];
-                }                      onError:^() {
-                    [self removeActivityCounter];
-                }];
+                if (![task.currentlyChecking boolValue]) {
+                    task.currentlyChecking = [NSNumber numberWithBool:YES];
+                    item.completed = [NSNumber numberWithBool:NO];
+                    [self addActivityCounter];
+                    [self.sharedManager updateTask:task onSuccess:^() {
+                        [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                        NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
+                        [self configureCell:[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }                      onError:^() {
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }];
+                }
+
             };
             [checkBox setChecked:YES animated:YES];
         } else {
             label.textColor = [UIColor whiteColor];
             checkBox.wasTouched = ^() {
-                item.completed = [NSNumber numberWithBool:YES];
-                [self addActivityCounter];
-                [self.sharedManager updateTask:task onSuccess:^() {
-                    [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
-                    NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
-                    [self configureCell:[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
-                    [self removeActivityCounter];
-                }                      onError:^() {
-                    [self removeActivityCounter];
-                }];
+                if (![task.currentlyChecking boolValue]) {
+                    task.currentlyChecking = [NSNumber numberWithBool:YES];
+                    item.completed = [NSNumber numberWithBool:YES];
+                    [self addActivityCounter];
+                    [self.sharedManager updateTask:task onSuccess:^() {
+                        [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                        NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
+                        [self configureCell:[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }                      onError:^() {
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }];
+                }
 
             };
             [checkBox setChecked:NO animated:YES];
         }
 
     } else {
-        UILabel *streakLabel = (UILabel *) [cell viewWithTag:4];
         label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        streakLabel.hidden = NO;
         NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];
         if ([checklistCount integerValue] > 0) {
             int checkedCount = 0;
@@ -140,18 +163,27 @@
                     checkedCount++;
                 }
             }
-            checklistLabel.text = [NSString stringWithFormat:@"%d/%@", checkedCount, checklistCount];
+            checklistLabel.text = [NSString stringWithFormat:@"%d/%@", checkedCount, checklistCount]; // to be removed once checklistButton is done
+            //[checklistButton setTitle:[NSString stringWithFormat:@"%d/%@", checkedCount, checklistCount] forState:UIControlStateNormal];
             if (checkedCount == [checklistCount integerValue]) {
-                checklistLabel.backgroundColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
+                checklistLabel.backgroundColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];   // to be removed once checklistButton is done
+                //[checklistButton setBackgroundColor:[UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000]];
             } else {
-                checklistLabel.backgroundColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f];
+                checklistLabel.backgroundColor = [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f]; // to be removed once checklistButton is done
+                //[checklistButton setBackgroundColor:[UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f]];
             }
-            checklistLabel.hidden = NO;
-            UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandSelectedCell:)];
-            tapRecognizer.numberOfTapsRequired = 1;
-            [checklistLabel addGestureRecognizer:tapRecognizer];
+            checklistLabel.hidden = NO;    // to be removed once checklistButton is done
+            [checklistButton setHidden:NO];
+                // remove following three lines once checklistButton is done
+            //UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandSelectedCell:)];
+            //tapRecognizer.numberOfTapsRequired = 1;
+            //[checklistLabel addGestureRecognizer:tapRecognizer];
+            UITapGestureRecognizer *btnTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandSelectedCell:)];
+            btnTapRecognizer.numberOfTapsRequired = 1;
+            [checklistButton addGestureRecognizer:btnTapRecognizer];
         } else {
-            checklistLabel.hidden = YES;
+            checklistLabel.hidden = YES;    // remove once checklistButton is done
+            [checklistButton setHidden:YES];
         }
         
         if ([task.completed boolValue]) {
@@ -163,21 +195,31 @@
             [checkBox setChecked:YES animated:YES];
             streakLabel.textColor = [UIColor darkGrayColor];
             checkBox.wasTouched = ^() {
-                [self addActivityCounter];
-                [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(NSArray *valuesArray) {
-                    [self removeActivityCounter];
-                }onError:^() {
-                    [self removeActivityCounter];
-                }];
+                if (![task.currentlyChecking boolValue]) {
+                    [self addActivityCounter];
+                    task.currentlyChecking = [NSNumber numberWithBool:YES];
+                    [self.sharedManager upDownTask:task direction:@"down" onSuccess:^(NSArray *valuesArray) {
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }onError:^() {
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }];
+                }
             };
         } else {
             checkBox.wasTouched = ^() {
-                [self addActivityCounter];
-                [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray) {
-                    [self removeActivityCounter];
-                }onError:^() {
-                    [self removeActivityCounter];
-                }];
+                if (![task.currentlyChecking boolValue]) {
+                    [self addActivityCounter];
+                    task.currentlyChecking = [NSNumber numberWithBool:YES];
+                    [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray) {
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }onError:^() {
+                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        [self removeActivityCounter];
+                    }];
+                }
             };
             [checkBox setChecked:NO animated:YES];
             if (![task dueTodayWithOffset:self.dayStart]) {

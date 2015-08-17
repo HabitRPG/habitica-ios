@@ -85,7 +85,7 @@ NSString *currentUser;
 
     // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://habitrpg.com"]];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://habitica.com"]];
     objectManager.managedObjectStore = managedObjectStore;
 
     [RKObjectManager setSharedManager:objectManager];
@@ -710,6 +710,7 @@ NSString *currentUser;
             @"profile.name" : @"username",
             @"profile.blurb" : @"blurb",
             @"preferences.dayStart" : @"dayStart",
+            @"preferences.costume": @"useCostume",
             @"preferences.sleep" : @"sleep",
             @"preferences.skin" : @"skin",
             @"preferences.size" : @"size",
@@ -1171,18 +1172,20 @@ NSString *currentUser;
 
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/user" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         User *fetchedUser = [mappingResult dictionary][[NSNull null]];
-        if (![currentUser isEqualToString:user.id]) {
-            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-            [fetchRequest setReturnsObjectsAsFaults:NO];
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", fetchedUser.id];
-            [fetchRequest setPredicate:predicate];
-            NSError *error;
-            NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
-            if ([fetchedObjects count] > 0) {
-                user = fetchedObjects[0];
+        if ([fetchedUser isKindOfClass:User.class]) {
+            if (![currentUser isEqualToString:user.id]) {
+                NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+                [fetchRequest setReturnsObjectsAsFaults:NO];
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", fetchedUser.id];
+                [fetchRequest setPredicate:predicate];
+                NSError *error;
+                NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+                if ([fetchedObjects count] > 0) {
+                    user = fetchedObjects[0];
+                }
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged" object:nil];
             }
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged" object:nil];
         }
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -1366,7 +1369,10 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@/%@", task.id, withDirection] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGTaskResponse *taskResponse = (HRPGTaskResponse *) [mappingResult firstObject];
-        task.value = [NSNumber numberWithFloat:[task.value floatValue] + [taskResponse.delta floatValue]];
+        
+        if ([task.managedObjectContext existingObjectWithID:task.objectID error:&executeError] != nil) {
+            task.value = [NSNumber numberWithFloat:[task.value floatValue] + [taskResponse.delta floatValue]];
+        }
         if ([user.level integerValue] < [taskResponse.level integerValue]) {
             user.level = taskResponse.level;
             [self displayLevelUpNotification];
@@ -1416,7 +1422,7 @@ NSString *currentUser;
             if ([fetchedObjects count] == 1) {
                 Item *droppedItem = [fetchedObjects objectAtIndex:0];
                 droppedItem.owned = [NSNumber numberWithLong:([droppedItem.owned integerValue] + 1)];
-                [self displayDropNotification:taskResponse.dropKey withType:taskResponse.dropType withNote:taskResponse.dropNote];
+                [self displayDropNotification:droppedItem.text withType:taskResponse.dropType withNote:taskResponse.dropNote];
             }
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -2518,7 +2524,7 @@ NSString *currentUser;
 }
 
 - (void)displayNoGemAlert {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
     UIViewController* viewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     [viewController presentViewController:navigationController animated:YES completion:nil];

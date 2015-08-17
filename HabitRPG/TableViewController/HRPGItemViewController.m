@@ -163,7 +163,13 @@ float textWidth;
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:destructiveButton otherButtonTitles:extraItem, nil];
     popup.tag = 1;
     self.selectedItem = item;
-    [popup showInView:[UIApplication sharedApplication].keyWindow];
+
+        // get the selected cell so that the popup can be displayed near it on the iPad
+    UITableViewCell *selectedCell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    CGRect rectIPad = CGRectMake(selectedCell.frame.origin.x, selectedCell.frame.origin.y, selectedCell.frame.size.width, selectedCell.frame.size.height);
+        // using the following form rather than [popup showInView:[UIApplication sharedApplication].keyWindow]] to make it compatible with both iPhone and iPad
+    [popup showFromRect:rectIPad inView:self.view animated:YES];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {

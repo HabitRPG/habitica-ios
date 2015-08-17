@@ -214,7 +214,7 @@ ChatMessage *selectedMessage;
         self.sizeTextView.attributedString = attributedText;
         self.sizeTextView.shouldDrawLinks = YES;
         
-        CGSize suggestedSize = [self.sizeTextView.attributedTextContentView suggestedFrameSizeToFitEntireStringConstraintedToWidth:self.screenWidth-48];
+        CGSize suggestedSize = [self.sizeTextView.attributedTextContentView suggestedFrameSizeToFitEntireStringConstraintedToWidth:self.viewWidth-48];
         
         CGFloat rowHeight = suggestedSize.height+41;
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {

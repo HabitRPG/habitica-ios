@@ -168,6 +168,9 @@ NSUserDefaults *defaults;
         NSMutableArray *sectionArray = [NSMutableArray array];
         [newSortedPets addObject:sectionArray];
         for (Pet *pet in [sectionInfo objects]) {
+            if ([pet.type isEqualToString:@" "] && ![pet.trained boolValue]) {
+                continue;
+            }
             NSArray *nameParts = [pet.key componentsSeparatedByString:@"-"];
             NSMutableArray *petArray;
             for (NSMutableArray *oldPetArray in sectionArray) {

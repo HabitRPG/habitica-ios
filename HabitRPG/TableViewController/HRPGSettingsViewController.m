@@ -68,8 +68,7 @@ User *user;
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"User", nil)];
     [formDescriptor addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"logout" rowType:XLFormRowDescriptorTypeButton title:[NSString stringWithFormat:NSLocalizedString(@"Logged in as %@", nil), user.username]];
-    row.required = YES;
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"loggedInAs" rowType:XLFormRowDescriptorTypeButton title:[NSString stringWithFormat:NSLocalizedString(@"Logged in as %@", nil), user.username]];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"logout" rowType:XLFormRowDescriptorTypeButton title:NSLocalizedString(@"Log Out", nil)];
@@ -132,7 +131,7 @@ User *user;
 
     [self.sharedManager resetSavedDatabase:YES onComplete:^() {
         [overlayView dismiss:YES completion:^() {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
             [self presentViewController:navigationController animated:YES completion:nil];
         }];

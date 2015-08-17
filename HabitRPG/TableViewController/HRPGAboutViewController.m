@@ -11,11 +11,13 @@
 #import "HRPGTopHeaderNavigationController.h"
 #import <MessageUI/MessageUI.h>
 #import <sys/utsname.h> 
+#import <VTAcknowledgementsViewController.h>
 
 @interface HRPGAboutViewController ()
-@property BOOL shouldReshowTopHeader;
+
 @property UIView *headerView;
 @property NSIndexPath *selectedIndex;
+
 @end
 
 @implementation HRPGAboutViewController
@@ -37,24 +39,16 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
-        if (navigationController.isTopHeaderVisible) {
-            [navigationController hideTopBar];
-            self.shouldReshowTopHeader = YES;
-        } else {
-            self.shouldReshowTopHeader = NO;
-        }
+        [navigationController toggleTopBar];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
-        if (self.shouldReshowTopHeader) {
-            [navigationController showTopBar];
-        }
+        [navigationController toggleTopBar];
     }
     
     [super viewWillDisappear:animated];
@@ -68,30 +62,36 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return 9;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellName = @"BasicCell";
-    if (indexPath.item == 0 || indexPath.item == 3 || indexPath.item == 5) {
+    if (indexPath.item == 0 || indexPath.item == 3 || indexPath.item == 8) {
         cellName = @"RightDetailCell";
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
     
     if (indexPath.item == 0) {
         cell.textLabel.text = NSLocalizedString(@"Website", nil);
-        cell.detailTextLabel.text = @"habitrpg.com";
+        cell.detailTextLabel.text = @"habitica.com";
     } else if (indexPath.item == 1) {
         cell.textLabel.text = NSLocalizedString(@"Send feedback", nil);
     } else if (indexPath.item == 2) {
         cell.textLabel.text = NSLocalizedString(@"Report a bug", nil);
     } else if (indexPath.item == 3) {
         cell.textLabel.text = @"Twitter";
-        cell.detailTextLabel.text = @"@habitrpg";
+        cell.detailTextLabel.text = @"@habitica";
     } else if (indexPath.item == 4) {
-        cell.textLabel.text = @"FAQ";
+        cell.textLabel.text = NSLocalizedString(@"FAQ", nil);
     } else if (indexPath.item == 5) {
+        cell.textLabel.text = NSLocalizedString(@"Leave a Review", nil);
+    } else if (indexPath.item == 6) {
+        cell.textLabel.text = NSLocalizedString(@"View Source Code", nil);
+    } else if (indexPath.item == 7) {
+        cell.textLabel.text = NSLocalizedString(@"Acknowledgements", nil);
+    } else if (indexPath.item == 8) {
         cell.textLabel.text = NSLocalizedString(@"Version", nil);
         NSString * appVersionString = [NSString stringWithFormat: @"%@ (%@)", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
         cell.detailTextLabel.text = appVersionString;
@@ -105,7 +105,7 @@
     self.selectedIndex = indexPath;
     switch (indexPath.item) {
         case 0: {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://habitrpg.com/"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://habitica.com/"]];
             break;
         }
         case 1: {
@@ -130,11 +130,25 @@
             break;
         }
         case 3: {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/habitrpg"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/habitica"]];
             break;
         }
         case 4: {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://habitrpg.wikia.com/wiki/FAQ"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://habitica.wikia.com/wiki/FAQ"]];
+            break;
+        }
+        case 5: {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id994882113"]];
+            break;
+        }
+        case 6: {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/HabitRPG/habitrpg-ios/"]];
+            break;
+        }
+        case 7: {
+            VTAcknowledgementsViewController *viewController = [VTAcknowledgementsViewController acknowledgementsViewController];
+            viewController.headerText = NSLocalizedString(@"We love open source software.", nil); // optional
+            [self.navigationController pushViewController:viewController animated:YES];
             break;
         }
         default:

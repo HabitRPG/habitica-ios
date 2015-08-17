@@ -22,7 +22,7 @@
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://habitrpg.com/static/new-stuff"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://habitica.com/static/new-stuff"]];
     self.newsWebView.delegate = self;
     [self.newsWebView loadRequest:request];
     [self.loadingIndicator startAnimating];
@@ -33,14 +33,14 @@
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         self.navigationItem.leftBarButtonItem = nil;
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
-        [navigationController hideTopBar];
+        [navigationController toggleTopBar];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
-        [navigationController showTopBar];
+        [navigationController toggleTopBar];
     }
     
     [super viewWillDisappear:animated];
