@@ -70,7 +70,7 @@
                             ];
     row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:NSLocalizedString(@"Easy", nil)];
     row.required = YES;
-    row.selectorTitle = NSLocalizedString(@"Select Difficutly", nil);
+    row.selectorTitle = NSLocalizedString(@"Select Difficulty", nil);
     [section addFormRow:row];
     
     self.form = formDescriptor;
