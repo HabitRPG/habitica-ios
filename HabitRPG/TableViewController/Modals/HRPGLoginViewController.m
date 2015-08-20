@@ -258,7 +258,7 @@
                                     completionBlock:^{
                                     }];
     } else if (result.isCancelled) {
-        NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Authentication Calcelled", nil),
+        NSDictionary *options = @{kCRToastTextKey : NSLocalizedString(@"Authentication Cancelled", nil),
                                   kCRToastSubtitleTextKey : NSLocalizedString(@"The authentication process was cancelled.", nil),
                                   kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                                   kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),

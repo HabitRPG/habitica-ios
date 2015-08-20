@@ -132,7 +132,9 @@
         row.value = [XLFormOptionsObject formOptionsObjectWithValue:@"weekly" displayText:NSLocalizedString(@"Weekly", nil)];
         row.required = YES;
         row.selectorTitle = NSLocalizedString(@"Select Frequency", nil);
-        [self setFrequencyRows:@"weekly"];
+        if (!self.editTask) {
+            [self setFrequencyRows:@"weekly"];
+        }
         [section addFormRow:row];
     }
     
@@ -196,7 +198,6 @@
     if ([self.taskType isEqualToString:@"daily"]) {
         [self.form formRowWithTag:@"startDate"].value = self.task.startDate;
         [self.form formRowWithTag:@"frequency"].value = self.task.frequency;
-        [self setFrequencyRows:self.task.frequency];
     }
     
     if ([self.taskType isEqualToString:@"todo"]) {
@@ -345,7 +346,11 @@
         } else {
             row = section.formRows[1];
         }
-        row.value = self.task.everyX;
+        if (self.editTask) {
+            row.value = self.task.everyX;
+        } else {
+            row.value = [NSNumber numberWithInt:1];
+        }
         row.required = YES;
         if (self.form.formSections.count > 4) {
             [self.form removeFormSectionAtIndex:3];
@@ -377,13 +382,15 @@
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"sunday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Sunday", nil)];
         row.value = [NSNumber numberWithBool:YES];
         [section addFormRow:row];
-        [self.form formRowWithTag:@"monday"].value = self.task.monday;
-        [self.form formRowWithTag:@"tuesday"].value = self.task.tuesday;
-        [self.form formRowWithTag:@"wednesday"].value = self.task.wednesday;
-        [self.form formRowWithTag:@"thursday"].value = self.task.thursday;
-        [self.form formRowWithTag:@"friday"].value = self.task.friday;
-        [self.form formRowWithTag:@"saturday"].value = self.task.saturday;
-        [self.form formRowWithTag:@"sunday"].value = self.task.sunday;
+        if (self.editTask) {
+            [self.form formRowWithTag:@"monday"].value = self.task.monday;
+            [self.form formRowWithTag:@"tuesday"].value = self.task.tuesday;
+            [self.form formRowWithTag:@"wednesday"].value = self.task.wednesday;
+            [self.form formRowWithTag:@"thursday"].value = self.task.thursday;
+            [self.form formRowWithTag:@"friday"].value = self.task.friday;
+            [self.form formRowWithTag:@"saturday"].value = self.task.saturday;
+            [self.form formRowWithTag:@"sunday"].value = self.task.sunday;
+        }
     }
     
 }
