@@ -12,6 +12,7 @@
 #import "MetaReward.h"
 #import "ChatMessage.h"
 #import "item.h"
+#import <RestKit/CoreData/RKManagedObjectStore.h>
 
 @interface HRPGManager : NSObject
 
