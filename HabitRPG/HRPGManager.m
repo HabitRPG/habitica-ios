@@ -2384,9 +2384,15 @@ NSString *currentUser;
     NSString *content;
     if ([healthDiff intValue] < 0) {
         notificationColor = [UIColor colorWithRed:0.733 green:0.208 blue:0.220 alpha:1.000];
-        content = [NSString stringWithFormat:@"You lost %.1f health and %.1f mana", [healthDiff floatValue]*-1, [magicDiff floatValue]*-1];
+        content = [NSString stringWithFormat:@"You lost %.1f health", [healthDiff floatValue]*-1];
+        if ([[self getUser].level integerValue] >= 10) {
+            content = [content stringByAppendingFormat:@" and %.1f mana", [magicDiff floatValue]*-1];
+        }
     } else {
-        content = [NSString stringWithFormat:@"You earned %ld experience and %.2f gold and gained %.1f mana.", (long) [expDiff integerValue], [goldDiff floatValue], [magicDiff floatValue]];
+        content = [NSString stringWithFormat:@"You earned %ld experience and %.2f gold", (long) [expDiff integerValue], [goldDiff floatValue]];
+        if ([[self getUser].level integerValue] >= 10) {
+            content = [content stringByAppendingFormat:@" and gained %.1f mana", [magicDiff floatValue]];
+        }
     }
     NSDictionary *options = @{kCRToastTextKey : content,
             kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
