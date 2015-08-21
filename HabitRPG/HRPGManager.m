@@ -38,7 +38,6 @@
 @implementation HRPGManager
 @synthesize managedObjectContext;
 RKManagedObjectStore *managedObjectStore;
-User *user;
 NSUserDefaults *defaults;
 NSString *currentUser;
 
@@ -794,7 +793,7 @@ NSString *currentUser;
             NSString *groupID = [argsDict objectForKey:@"groupID"];
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Group"];
             if ([groupID isEqualToString:@"party"]) {
-                groupID = user.party.id;
+                groupID = self.user.party.id;
             }
             fetchRequest.predicate = [NSPredicate predicateWithFormat:@"id = %@", groupID];
             return fetchRequest;
@@ -986,7 +985,7 @@ NSString *currentUser;
         [fetchRequest setPredicate:predicate];
         NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
         if ([fetchedObjects count] > 0) {
-            user = fetchedObjects[0];
+            self.user = fetchedObjects[0];
         } else {
             [self fetchUser:^() {
 
@@ -996,13 +995,16 @@ NSString *currentUser;
         }
     }
 
-    if (self.iconFactory == nil) {
-        self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-        self.iconFactory.colors = @[[UIColor whiteColor]];
-        self.iconFactory.size = 35;
-    }
-
     self.networkIndicatorController = [[HRPGNetworkIndicatorController alloc] init];
+}
+
+- (NIKFontAwesomeIconFactory *)iconFactory {
+    if (_iconFactory == nil) {
+        _iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+        _iconFactory.colors = @[[UIColor whiteColor]];
+        _iconFactory.size = 35;
+    }
+    return _iconFactory;
 }
 
 - (void)resetSavedDatabase:(BOOL)withUserData onComplete:(void (^)())completitionBlock {
@@ -1073,7 +1075,7 @@ NSString *currentUser;
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:@"&uid"
-           value:user.id];
+           value:self.user.id];
 }
 
 - (void)fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock {
@@ -1173,7 +1175,7 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/user" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         User *fetchedUser = [mappingResult dictionary][[NSNull null]];
         if ([fetchedUser isKindOfClass:User.class]) {
-            if (![currentUser isEqualToString:user.id]) {
+            if (![currentUser isEqualToString:self.user.id]) {
                 NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
                 [fetchRequest setReturnsObjectsAsFaults:NO];
                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", fetchedUser.id];
@@ -1181,7 +1183,7 @@ NSString *currentUser;
                 NSError *error;
                 NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
                 if ([fetchedObjects count] > 0) {
-                    user = fetchedObjects[0];
+                    self.user = fetchedObjects[0];
                 }
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged" object:nil];
@@ -1373,31 +1375,31 @@ NSString *currentUser;
         if ([task.managedObjectContext existingObjectWithID:task.objectID error:&executeError] != nil) {
             task.value = [NSNumber numberWithFloat:[task.value floatValue] + [taskResponse.delta floatValue]];
         }
-        if ([user.level integerValue] < [taskResponse.level integerValue]) {
-            user.level = taskResponse.level;
+        if ([self.user.level integerValue] < [taskResponse.level integerValue]) {
+            self.user.level = taskResponse.level;
             [self displayLevelUpNotification];
             //Set experience to the amount, that was missing for the next level. So that the notification
             //displays the correct amount of experience gained
-            user.experience = [NSNumber numberWithFloat:[user.experience floatValue] - [user.nextLevel floatValue]];
+            self.user.experience = [NSNumber numberWithFloat:[self.user.experience floatValue] - [self.user.nextLevel floatValue]];
         }
-        user.level = taskResponse.level ? taskResponse.level : user.level;
+        self.user.level = taskResponse.level ? taskResponse.level : self.user.level;
         
-        NSNumber *expDiff = [NSNumber numberWithFloat:([taskResponse.experience floatValue] - [user.experience floatValue])];
-        user.experience = taskResponse.experience;
-        NSNumber *healthDiff = [NSNumber numberWithFloat:([taskResponse.health floatValue] - [user.health floatValue])];
-        user.health = taskResponse.health ? taskResponse.health : user.health;
-        NSNumber *magicDiff = [NSNumber numberWithFloat:([taskResponse.magic floatValue] - [user.magic floatValue])];
-        user.magic = taskResponse.magic ? taskResponse.magic : user.magic;
+        NSNumber *expDiff = [NSNumber numberWithFloat:([taskResponse.experience floatValue] - [self.user.experience floatValue])];
+        self.user.experience = taskResponse.experience;
+        NSNumber *healthDiff = [NSNumber numberWithFloat:([taskResponse.health floatValue] - [self.user.health floatValue])];
+        self.user.health = taskResponse.health ? taskResponse.health : self.user.health;
+        NSNumber *magicDiff = [NSNumber numberWithFloat:([taskResponse.magic floatValue] - [self.user.magic floatValue])];
+        self.user.magic = taskResponse.magic ? taskResponse.magic : self.user.magic;
 
-        NSNumber *goldDiff = [NSNumber numberWithFloat:[taskResponse.gold floatValue] - [user.gold floatValue]];
-        user.gold = taskResponse.gold ? taskResponse.gold : user.gold;
+        NSNumber *goldDiff = [NSNumber numberWithFloat:[taskResponse.gold floatValue] - [self.user.gold floatValue]];
+        self.user.gold = taskResponse.gold ? taskResponse.gold : self.user.gold;
         
         [self displayTaskSuccessNotification:healthDiff withExperienceDiff:expDiff withGoldDiff:goldDiff withMagicDiff:magicDiff];
         if ([task.type isEqual:@"daily"] || [task.type isEqual:@"todo"]) {
             task.completed = [NSNumber numberWithBool:([withDirection isEqual:@"up"])];
         }
         
-        if (user && [user.health floatValue] <= 0) {
+        if (self.user && [self.user.health floatValue] <= 0) {
             HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
             [deathView show];
         }
@@ -1427,13 +1429,13 @@ NSString *currentUser;
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         NSNumber *nextLevel;
-        if (user.nextLevel) {
-            nextLevel = user.nextLevel;
+        if (self.user.nextLevel) {
+            nextLevel = self.user.nextLevel;
         } else {
             nextLevel = [NSNumber numberWithInt:0];
         }
         if (successBlock) {
-            successBlock(@[healthDiff, expDiff, user.gold, user.health, user.experience, nextLevel, magicDiff]);
+            successBlock(@[healthDiff, expDiff, self.user.gold, self.user.health, self.user.experience, nextLevel, magicDiff]);
         }
         [self.networkIndicatorController endNetworking];
         return;
@@ -1457,19 +1459,19 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@/down", rewardID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGTaskResponse *taskResponse = (HRPGTaskResponse *) [mappingResult firstObject];
-        if ([user.level integerValue] < [taskResponse.level integerValue]) {
+        if ([self.user.level integerValue] < [taskResponse.level integerValue]) {
             [self displayLevelUpNotification];
             //Set experience to the amount, that was missing for the next level. So that the notification
             //displays the correct amount of experience gained
-            user.experience = [NSNumber numberWithFloat:[user.experience floatValue] - [user.nextLevel floatValue]];
+            self.user.experience = [NSNumber numberWithFloat:[self.user.experience floatValue] - [self.user.nextLevel floatValue]];
         }
-        user.level = taskResponse.level;
-        user.experience = taskResponse.experience;
-        user.health = taskResponse.health;
-        user.magic = taskResponse.magic;
+        self.user.level = taskResponse.level;
+        self.user.experience = taskResponse.experience;
+        self.user.health = taskResponse.health;
+        self.user.magic = taskResponse.magic;
 
-        NSNumber *goldDiff = [NSNumber numberWithFloat:[taskResponse.gold floatValue] - [user.gold floatValue]];
-        user.gold = taskResponse.gold;
+        NSNumber *goldDiff = [NSNumber numberWithFloat:[taskResponse.gold floatValue] - [self.user.gold floatValue]];
+        self.user.gold = taskResponse.gold;
         [self displayRewardNotification:goldDiff];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
@@ -1761,7 +1763,7 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:Nil path:@"/api/v2/user/sleep" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        user.sleep = !user.sleep;
+        self.user.sleep = !self.user.sleep;
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
@@ -1789,7 +1791,7 @@ NSString *currentUser;
 
     [[RKObjectManager sharedManager] postObject:Nil path:@"/api/v2/user/revive" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
-        user.health = [NSNumber numberWithInt:50];
+        self.user.health = [NSNumber numberWithInt:50];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
             successBlock();
@@ -1817,9 +1819,9 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/buy/%@", reward.key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGUserBuyResponse *response = [mappingResult firstObject];
-        user.health = response.health;
-        NSNumber *goldDiff = [NSNumber numberWithFloat:[response.gold floatValue] - [user.gold floatValue]];
-        user.gold = response.gold;
+        self.user.health = response.health;
+        NSNumber *goldDiff = [NSNumber numberWithFloat:[response.gold floatValue] - [self.user.gold floatValue]];
+        self.user.gold = response.gold;
         
         if (response.armoireType) {
             NSString *text;
@@ -1832,13 +1834,13 @@ NSString *currentUser;
         } else {
             [self displayRewardNotification:goldDiff];
         }
-        user.magic = response.magic;
-        user.equippedArmor = response.equippedArmor;
-        user.equippedBack = response.equippedBack;
-        user.equippedHead = response.equippedHead;
-        user.equippedHeadAccessory = response.equippedHeadAccessory;
-        user.equippedShield = response.equippedShield;
-        user.equippedWeapon = response.equippedWeapon;
+        self.user.magic = response.magic;
+        self.user.equippedArmor = response.equippedArmor;
+        self.user.equippedBack = response.equippedBack;
+        self.user.equippedHead = response.equippedHead;
+        self.user.equippedHeadAccessory = response.equippedHeadAccessory;
+        self.user.equippedShield = response.equippedShield;
+        self.user.equippedWeapon = response.equippedWeapon;
         if ([reward isKindOfClass:[Gear class]]) {
             Gear *gear = (Gear*)reward;
             gear.owned = YES;
@@ -1900,15 +1902,15 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/sell/%@/%@", item.type, item.key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGUserBuyResponse *response = [mappingResult firstObject];
-        user.health = response.health;
-        user.gold = response.gold;
-        user.magic = response.magic;
-        user.equippedArmor = response.equippedArmor;
-        user.equippedBack = response.equippedBack;
-        user.equippedHead = response.equippedHead;
-        user.equippedHeadAccessory = response.equippedHeadAccessory;
-        user.equippedShield = response.equippedShield;
-        user.equippedWeapon = response.equippedWeapon;
+        self.user.health = response.health;
+        self.user.gold = response.gold;
+        self.user.magic = response.magic;
+        self.user.equippedArmor = response.equippedArmor;
+        self.user.equippedBack = response.equippedBack;
+        self.user.equippedHead = response.equippedHead;
+        self.user.equippedHeadAccessory = response.equippedHeadAccessory;
+        self.user.equippedShield = response.equippedShield;
+        self.user.equippedWeapon = response.equippedWeapon;
         item.owned = [NSNumber numberWithInt:[item.owned intValue] - 1];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
@@ -1939,24 +1941,24 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/equip/%@/%@", type, key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGUserBuyResponse *response = [mappingResult dictionary][[NSNull null]];
-        user.equippedHeadAccessory = response.equippedHeadAccessory;
-        user.equippedArmor = response.equippedArmor;
-        user.equippedBack = response.equippedBack;
-        user.equippedBody = response.equippedBody;
-        user.equippedEyewear = response.equippedEyewear;
-        user.equippedHead = response.equippedHead;
-        user.equippedShield = response.equippedShield;
-        user.equippedWeapon = response.equippedWeapon;
-        user.costumeArmor = response.costumeArmor;
-        user.costumeBack = response.costumeBack;
-        user.costumeBody = response.costumeBody;
-        user.costumeEyewear = response.costumeEyewear;
-        user.costumeHead = response.costumeHead;
-        user.costumeHeadAccessory = response.costumeHeadAccessory;
-        user.costumeShield = response.costumeShield;
-        user.costumeWeapon = response.costumeWeapon;
-        user.currentMount = response.currentMount;
-        user.currentPet = response.currentPet;
+        self.user.equippedHeadAccessory = response.equippedHeadAccessory;
+        self.user.equippedArmor = response.equippedArmor;
+        self.user.equippedBack = response.equippedBack;
+        self.user.equippedBody = response.equippedBody;
+        self.user.equippedEyewear = response.equippedEyewear;
+        self.user.equippedHead = response.equippedHead;
+        self.user.equippedShield = response.equippedShield;
+        self.user.equippedWeapon = response.equippedWeapon;
+        self.user.costumeArmor = response.costumeArmor;
+        self.user.costumeBack = response.costumeBack;
+        self.user.costumeBody = response.costumeBody;
+        self.user.costumeEyewear = response.costumeEyewear;
+        self.user.costumeHead = response.costumeHead;
+        self.user.costumeHeadAccessory = response.costumeHeadAccessory;
+        self.user.costumeShield = response.costumeShield;
+        self.user.costumeWeapon = response.costumeWeapon;
+        self.user.currentMount = response.currentMount;
+        self.user.currentPet = response.currentPet;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
             successBlock();
@@ -1986,24 +1988,24 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/hatch/%@/%@", egg, hPotion] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGUserBuyResponse *response = [mappingResult dictionary][[NSNull null]];
-        user.equippedHeadAccessory = response.equippedHeadAccessory;
-        user.equippedArmor = response.equippedArmor;
-        user.equippedBack = response.equippedBack;
-        user.equippedBody = response.equippedBody;
-        user.equippedEyewear = response.equippedEyewear;
-        user.equippedHead = response.equippedHead;
-        user.equippedShield = response.equippedShield;
-        user.equippedWeapon = response.equippedWeapon;
-        user.costumeArmor = response.costumeArmor;
-        user.costumeBack = response.costumeBack;
-        user.costumeBody = response.costumeBody;
-        user.costumeEyewear = response.costumeEyewear;
-        user.costumeHead = response.costumeHead;
-        user.costumeHeadAccessory = response.costumeHeadAccessory;
-        user.costumeShield = response.costumeShield;
-        user.costumeWeapon = response.costumeWeapon;
-        user.currentMount = response.currentMount;
-        user.currentPet = response.currentPet;
+        self.user.equippedHeadAccessory = response.equippedHeadAccessory;
+        self.user.equippedArmor = response.equippedArmor;
+        self.user.equippedBack = response.equippedBack;
+        self.user.equippedBody = response.equippedBody;
+        self.user.equippedEyewear = response.equippedEyewear;
+        self.user.equippedHead = response.equippedHead;
+        self.user.equippedShield = response.equippedShield;
+        self.user.equippedWeapon = response.equippedWeapon;
+        self.user.costumeArmor = response.costumeArmor;
+        self.user.costumeBack = response.costumeBack;
+        self.user.costumeBody = response.costumeBody;
+        self.user.costumeEyewear = response.costumeEyewear;
+        self.user.costumeHead = response.costumeHead;
+        self.user.costumeHeadAccessory = response.costumeHeadAccessory;
+        self.user.costumeShield = response.costumeShield;
+        self.user.costumeWeapon = response.costumeWeapon;
+        self.user.currentMount = response.currentMount;
+        self.user.currentPet = response.currentPet;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
             successBlock();
@@ -2031,9 +2033,9 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
 
     NSString *url = nil;
-    CGFloat health = [user.health floatValue];
-    CGFloat gold = [user.gold floatValue];
-    NSInteger mana = [user.magic integerValue];
+    CGFloat health = [self.user.health floatValue];
+    CGFloat gold = [self.user.gold floatValue];
+    NSInteger mana = [self.user.magic integerValue];
     if (target) {
         url = [NSString stringWithFormat:@"/api/v2/user/class/cast/%@?targetType=%@&targetId=%@", spell, targetType, target];
     } else {
@@ -2043,7 +2045,7 @@ NSString *currentUser;
         [self fetchUser:^(){
             NSError *executeError = nil;
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-            [self displaySpellNotification:(mana - [user.magic integerValue]) withHealthDiff:([user.health floatValue] - health) withGoldDiff:([user.gold floatValue] - gold)];
+            [self displaySpellNotification:(mana - [self.user.magic integerValue]) withHealthDiff:([self.user.health floatValue] - health) withGoldDiff:([self.user.gold floatValue] - gold)];
             if (successBlock) {
                 successBlock();
             }
@@ -2186,7 +2188,7 @@ NSString *currentUser;
     
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/chat?message=%@", groupID, [message stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
-        [user.party addChatmessagesObjectAtFirstPosition:[mappingResult firstObject]];
+        [self.user.party addChatmessagesObjectAtFirstPosition:[mappingResult firstObject]];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
             successBlock();
@@ -2385,12 +2387,12 @@ NSString *currentUser;
     if ([healthDiff intValue] < 0) {
         notificationColor = [UIColor colorWithRed:0.733 green:0.208 blue:0.220 alpha:1.000];
         content = [NSString stringWithFormat:@"You lost %.1f health", [healthDiff floatValue]*-1];
-        if ([[self getUser].level integerValue] >= 10) {
+        if ([[self getUser].level integerValue] >= 10 && [magicDiff floatValue] > 0) {
             content = [content stringByAppendingFormat:@" and %.1f mana", [magicDiff floatValue]*-1];
         }
     } else {
         content = [NSString stringWithFormat:@"You earned %ld experience and %.2f gold", (long) [expDiff integerValue], [goldDiff floatValue]];
-        if ([[self getUser].level integerValue] >= 10) {
+        if ([[self getUser].level integerValue] >= 10 && [magicDiff floatValue] > 0) {
             content = [content stringByAppendingFormat:@" and gained %.1f mana", [magicDiff floatValue]];
         }
     }
@@ -2454,7 +2456,7 @@ NSString *currentUser;
     }onError:^() {
         
     }];
-    if ([user.level integerValue] == 10 && ![user.disableClass boolValue]) {
+    if ([self.user.level integerValue] == 10 && ![self.user.disableClass boolValue]) {
         HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
         UINavigationController *selectClassNavigationController = [del.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
         selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
@@ -2463,9 +2465,9 @@ NSString *currentUser;
             
         }];
     } else {
-        [user getAvatarImage:^(UIImage *image) {
+        [self.user getAvatarImage:^(UIImage *image) {
             [HRPGImageOverlayManager displayImage:image withText:NSLocalizedString(@"Level up!", nil)
-                                        withNotes:[NSString stringWithFormat:@"You are now Level %ld", (long)([user.level integerValue])]];
+                                        withNotes:[NSString stringWithFormat:@"You are now Level %ld", (long)([self.user.level integerValue])]];
         } withPetMount:YES onlyHead:NO withBackground:YES useForce:NO];
     }
 
@@ -2537,7 +2539,7 @@ NSString *currentUser;
 }
 
 - (User *)getUser {
-    return user;
+    return self.user;
 }
 
 - (void)getImage:(NSString *)imageName withFormat:(NSString*)format onSuccess:(void (^)(UIImage *image))successBlock onError:(void (^)())errorBlock {
