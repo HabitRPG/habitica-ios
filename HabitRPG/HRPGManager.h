@@ -12,10 +12,13 @@
 #import "MetaReward.h"
 #import "ChatMessage.h"
 #import "item.h"
+#import <RestKit/CoreData/RKManagedObjectStore.h>
+#import "User.h"
 
 @interface HRPGManager : NSObject
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property(nonatomic, strong) User *user;
 
 - (void)loadObjectManager:(RKManagedObjectStore*)existingManagedObjectStore;
 
@@ -106,4 +109,7 @@
 - (void)setCachedImage:(UIImage *)image withName:(NSString *)imageName onSuccess:(void (^)())successBlock;
 
 - (void)resetSavedDatabase:(BOOL)withUserData onComplete:(void (^)())completitionBlock;
+
+- (void)displayTaskSuccessNotification:(NSNumber *)healthDiff withExperienceDiff:(NSNumber *)expDiff withGoldDiff:(NSNumber *)goldDiff withMagicDiff:(NSNumber *)magicDiff;
+
 @end

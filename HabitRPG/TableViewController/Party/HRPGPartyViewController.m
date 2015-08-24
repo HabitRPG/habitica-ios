@@ -513,17 +513,15 @@ ChatMessage *selectedMessage;
         } else if (indexPath.section == 1) {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             QuestCollect *collect = quest.collect[indexPath.item - 2];
-            UILabel *authorLabel = (UILabel *) [cell viewWithTag:1];
-            authorLabel.text = collect.text;
+            cell.textLabel.text = collect.text;
             if ([collect.count integerValue] == [collect.collectCount integerValue]) {
-                authorLabel.textColor = [UIColor grayColor];
+                cell.textLabel.textColor = [UIColor grayColor];
             } else {
-                authorLabel.textColor = [UIColor blackColor];
+                cell.textLabel.textColor = [UIColor blackColor];
             }
-            authorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-            UILabel *textLabel = (UILabel *) [cell viewWithTag:2];
-            textLabel.text = [NSString stringWithFormat:@"%@/%@", collect.collectCount, collect.count];
-            textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+            cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@/%@", collect.collectCount, collect.count];
+            cell.detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         } else if (indexPath.section == 3) {
             if (self.buttonIndex && self.buttonIndex.item == indexPath.item) {
                 return;

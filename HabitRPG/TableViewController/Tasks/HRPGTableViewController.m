@@ -92,7 +92,7 @@ BOOL editable;
     NSMutableArray *predicateArray = [[NSMutableArray alloc] initWithCapacity:3];
     HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
     
-    if ([self.typeName isEqual:@"todo"]) {
+    if ([self.typeName isEqual:@"todo"] && !self.displayCompleted) {
         [predicateArray addObject:[NSPredicate predicateWithFormat:@"type=='todo' && completed==NO"]];
     } else {
         [predicateArray addObject:[NSPredicate predicateWithFormat:@"type==%@", self.typeName]];
