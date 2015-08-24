@@ -38,7 +38,7 @@ User *user;
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
     
-    user = [self.sharedManager getUser];
+    user = self.sharedManager.user;
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(reloadAllData:)
@@ -100,7 +100,7 @@ User *user;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    float height = 22.0f;
+    float height = 30.0f;
     float width = self.viewWidth-111;
     MetaReward *reward = [self getRewardAtIndexPath:indexPath];
     if ([reward isKindOfClass:[Reward class]]) {
@@ -205,7 +205,7 @@ User *user;
                     } else if ([gear.type isEqualToString:@"shield"] && [user.contributorLevel intValue] < 5) {
                         continue;
                     }
-                } else if (!([gear.klass isEqualToString:user.dirtyClass] || [gear.specialClass isEqualToString:user.dirtyClass])) {
+                } else if ([user getCleanedClassName] != nil && ( !([[gear getCleanedClassName] isEqualToString:[user getCleanedClassName]] || [gear.specialClass isEqualToString:[user getCleanedClassName]]))) {
                     //filter gear that is not the right class
                     continue;
                 }
@@ -217,11 +217,12 @@ User *user;
                     }
                 }
                 if ([[inGameItemsArray lastObject] isKindOfClass:[Gear class]]) {
-                    if (gear.index && [[inGameItemsArray lastObject] index] && ![gear.klass isEqualToString:@"special"]) {
-                        if (![[(Gear*)[inGameItemsArray lastObject] getCleanedClassName] isEqualToString:@"special"] && [[inGameItemsArray lastObject] index] < gear.index) {
+                    Gear *lastGear = (Gear*)[inGameItemsArray lastObject];
+                    if (gear.index && lastGear.index && ![gear.klass isEqualToString:@"special"]) {
+                        if (![[lastGear getCleanedClassName] isEqualToString:@"special"] && lastGear.index < gear.index && [lastGear.type isEqualToString:gear.type]) {
                             //filter gear with lower level
                             continue;
-                        } else if ([[inGameItemsArray lastObject] index] > gear.index) {
+                        } else if ([[inGameItemsArray lastObject] index] > gear.index && [lastGear.type isEqualToString:gear.type]) {
                             //remove last object if current one is of higher level
                             [inGameItemsArray removeLastObject];
                         }
@@ -244,6 +245,10 @@ User *user;
     
     if ([inGameItemsArray count] > 0) {
         [array addObject:inGameItemsArray];
+        if (inGameItemsArray.count == 1) {
+            //Only potion is available. reload user to check if armoire is enabled.
+            [self refresh];
+        }
     }
     if ([customRewardsArray count] > 0) {
         [array addObject:customRewardsArray];
@@ -298,7 +303,7 @@ User *user;
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     UILabel *notesLabel = (UILabel *) [cell viewWithTag:2];
     notesLabel.text = [reward.notes stringByReplacingEmojiCheatCodesWithUnicode];
-    notesLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+        notesLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     UILabel *priceLabel = (UILabel *) [cell viewWithTag:3];
     priceLabel.text = [NSString stringWithFormat:@"%ld", (long) [reward.value integerValue]];
     UIImageView *goldView = (UIImageView *) [cell viewWithTag:4];
