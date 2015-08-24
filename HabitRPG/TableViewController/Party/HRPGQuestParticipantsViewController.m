@@ -160,6 +160,7 @@ NSString *partyID;
         cell.detailTextLabel.text = NSLocalizedString(@"Declined", nil);
         cell.detailTextLabel.textColor = [UIColor colorWithRed:0.933 green:0.144 blue:0.198 alpha:1.000];
     }
+    [cell layoutSubviews];
 }
 
 

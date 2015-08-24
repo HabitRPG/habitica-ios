@@ -94,7 +94,6 @@
     if (indexPath.section == 0) {
         switch (indexPath.item) {
             case 0:
-                
                 [self configureCell:cell atIndexPath:indexPath];
                 break;
             case 1: {
@@ -116,6 +115,7 @@
                 break;
         }
     }
+    [cell layoutSubviews];
     return cell;
 }
 
