@@ -188,6 +188,10 @@ User *user;
     NSMutableArray *array = [[NSMutableArray alloc] init];
     NSMutableArray *inGameItemsArray = [[NSMutableArray alloc] init];
     NSMutableArray *customRewardsArray = [[NSMutableArray alloc] init];
+    NSString *userClass = [user getCleanedClassName];
+    if (userClass == nil) {
+        userClass = @"warrior";
+    }
     for (Reward *reward in self.fetchedResultsController.fetchedObjects) {
             if ([reward isKindOfClass:[Gear class]]) {
                 Gear *gear = (Gear*)reward;
@@ -205,7 +209,8 @@ User *user;
                     } else if ([gear.type isEqualToString:@"shield"] && [user.contributorLevel intValue] < 5) {
                         continue;
                     }
-                } else if ([user getCleanedClassName] != nil && ( !([[gear getCleanedClassName] isEqualToString:[user getCleanedClassName]] || [gear.specialClass isEqualToString:[user getCleanedClassName]]))) {
+                }
+                if (!([userClass isEqualToString:[gear getCleanedClassName]] || [userClass isEqualToString:gear.specialClass])) {
                     //filter gear that is not the right class
                     continue;
                 }
