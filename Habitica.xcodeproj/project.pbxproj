@@ -21,7 +21,6 @@
 		D922F0B11925314500B197EA /* HRPGNetworkIndicatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0B01925314500B197EA /* HRPGNetworkIndicatorController.m */; };
 		D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C0C401B8745DF000AF799 /* HRPGAPITests.m */; };
 		D92C0C441B8749DF000AF799 /* HabiticaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D94461871AB34F5C0015215E /* HabiticaTests.m */; };
-		D92C0C461B876332000AF799 /* HRPGManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C0C451B876332000AF799 /* HRPGManagerTests.m */; };
 		D92CDADD18CB79E50006C242 /* HRPGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */; };
 		D92CDAE018CB83B90006C242 /* HRPGHabitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDADF18CB83B90006C242 /* HRPGHabitTableViewController.m */; };
 		D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE318CB83EF0006C242 /* HRPGDailyTableViewController.m */; };
@@ -183,7 +182,6 @@
 		D922F0B01925314500B197EA /* HRPGNetworkIndicatorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGNetworkIndicatorController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D92C0C401B8745DF000AF799 /* HRPGAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAPITests.m; sourceTree = "<group>"; };
 		D92C0C421B8748CD000AF799 /* HabiticaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HabiticaTests.h; sourceTree = "<group>"; };
-		D92C0C451B876332000AF799 /* HRPGManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGManagerTests.m; sourceTree = "<group>"; };
 		D92CDADB18CB79E50006C242 /* HRPGTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTableViewController.h; sourceTree = "<group>"; };
 		D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTableViewController.m; sourceTree = "<group>"; };
 		D92CDADE18CB83B90006C242 /* HRPGHabitTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGHabitTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -510,7 +508,6 @@
 				D92C0C421B8748CD000AF799 /* HabiticaTests.h */,
 				D94461871AB34F5C0015215E /* HabiticaTests.m */,
 				D92C0C401B8745DF000AF799 /* HRPGAPITests.m */,
-				D92C0C451B876332000AF799 /* HRPGManagerTests.m */,
 				D94B969D1B8B2C9300C977C2 /* HRPGRewardsViewControllerTests.m */,
 				D99EA73C1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m */,
 				D946E5C31B30A9D700806BE6 /* HRPGTaskTests.m */,
@@ -1085,7 +1082,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D92C0C461B876332000AF799 /* HRPGManagerTests.m in Sources */,
 				D92C0C441B8749DF000AF799 /* HabiticaTests.m in Sources */,
 				D946E5C41B30A9D700806BE6 /* HRPGTaskTests.m in Sources */,
 				D99EA73D1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m in Sources */,
