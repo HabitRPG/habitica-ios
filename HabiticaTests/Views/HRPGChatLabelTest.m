@@ -73,4 +73,22 @@
   XCTAssertEqualObjects(@([matches count]), @(3));
 }
 
+- (void) testSetAttributedTextCallsFindURLRanges {
+  NSString *url = @"https://gist.github.com/jmoody/ccd1d44085f829cc44e9";
+  NSString *text = [NSString stringWithFormat:@"This gist: %@ shows an example",
+                    url];
+  NSAttributedString *atrributed = [[NSAttributedString alloc]
+                                initWithString:text];
+
+  self.label.attributedText = atrributed;
+
+  [self.label findURLRanges:text];
+
+  NSArray *matches = [self.label URLRanges];
+  XCTAssertEqualObjects(@([matches count]), @(1));
+
+  // Unexpected: label.attributedText != attributed
+  XCTAssertEqualObjects(self.label.attributedText.string, atrributed.string);
+}
+
 @end

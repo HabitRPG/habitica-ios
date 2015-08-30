@@ -14,6 +14,12 @@
   return YES;
 }
 
+- (void) setAttributedText:(NSAttributedString *)attributedText {
+  [self findURLRanges:attributedText.string];
+
+  [super setAttributedText:attributedText];
+}
+
 - (void) findURLRanges:(NSString *) text {
   NSError *error = NULL;
   NSDataDetector *detector;
