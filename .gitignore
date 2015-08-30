@@ -2,6 +2,9 @@
 .DS_Store
 *.log
 
+# Private API keys
+private/*.key
+
 # Created by https://www.gitignore.io
 ### Xcode ###
 build/
