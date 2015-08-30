@@ -1058,7 +1058,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 2eb3b3edb3b0f4722d37d649a5af366656e46ddd d2ba51e7ded38c0a45cef17c3288994dc2f00032f3c076119f9fed034aeb154c";
+			shellScript = "bin/xcode-build-phase/fabric.sh";
 		};
 		E849E9FA1DD6461BA39AB99A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
