@@ -4,6 +4,8 @@
 
 @property(nonatomic, retain, readonly) NSMutableArray *linkRanges;
 
+- (void) addLinkRange:(NSRange) range;
+
 @end
 
 @implementation HRPGChatLabel
@@ -14,6 +16,11 @@
   if (_linkRanges) { return _linkRanges; }
   _linkRanges = [@[] mutableCopy];
   return _linkRanges;
+}
+
+- (void) addLinkRange:(NSRange) range {
+  NSString *string = NSStringFromRange(range);
+  [self.linkRanges addObject:string];
 }
 
 @end
