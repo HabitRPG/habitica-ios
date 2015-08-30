@@ -1456,7 +1456,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/HabitRPG",
 					"$(PROJECT_DIR)",
-					/Users/viirus/Downloads/Crashlytics.app/Contents/Resources,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HabitRPG/Habitica-Prefix.pch";
@@ -1539,7 +1538,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/HabitRPG",
 					"$(PROJECT_DIR)",
-					/Users/viirus/Downloads/Crashlytics.app/Contents/Resources,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HabitRPG/Habitica-Prefix.pch";
