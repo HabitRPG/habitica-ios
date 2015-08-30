@@ -2,29 +2,33 @@
 
 @interface HRPGChatLabel ()
 
-@property(nonatomic, retain, readonly) NSMutableArray *linkRanges;
+@property(nonatomic, retain) NSArray *URLRanges;
 
-- (void) addLinkRange:(NSRange) range;
+- (void) findURLRanges:(NSString *) text;
 
 @end
 
 @implementation HRPGChatLabel
 
-@synthesize linkRanges = _linkRanges;
-
-- (NSMutableArray *) linkRanges {
-  if (_linkRanges) { return _linkRanges; }
-  _linkRanges = [@[] mutableCopy];
-  return _linkRanges;
-}
-
-- (void) addLinkRange:(NSRange) range {
-  NSString *string = NSStringFromRange(range);
-  [self.linkRanges addObject:string];
-}
-
 - (BOOL) isUserInteractionEnabled {
   return YES;
+}
+
+- (void) findURLRanges:(NSString *) text {
+  NSError *error = NULL;
+  NSDataDetector *detector;
+  detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink
+                                             error:&error];
+
+  if (error) {
+    NSLog(@"Error detecting URLs in chat text: %@",
+          [error localizedDescription]);
+    return;
+  }
+
+  self.URLRanges = [detector matchesInString:text
+                                     options:0
+                                       range:NSMakeRange(0, [text length])];
 }
 
 @end

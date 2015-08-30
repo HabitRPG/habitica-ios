@@ -4,8 +4,8 @@
 
 @interface HRPGChatLabel (XCTESTS)
 
-- (NSMutableArray *) linkRanges;
-- (void) addLinkRange:(NSRange) range;
+- (NSArray *) URLRanges;
+- (void) findURLRanges:(NSString *) text;
 
 @end
 
@@ -26,31 +26,51 @@
   [super tearDown];
 }
 
-- (void) testLinkRanges {
-  NSMutableArray *array = [self.label linkRanges];
-  XCTAssertTrue([array isKindOfClass:[NSMutableArray class]]);
-  XCTAssertEqual(array, [self.label linkRanges]);
-}
-
-- (void) testAddLinkRange {
-  NSRange range = NSMakeRange(0, 1);
-  NSString *expected = NSStringFromRange(range);
-
-  [self.label addLinkRange:range];
-  NSArray *ranges = [self.label linkRanges];
-
-  XCTAssertEqualObjects(@([ranges count]), @(1));
-
-  NSString *actual = ranges[0];
-  XCTAssertEqualObjects(actual, expected);
-
-  NSRange fromString = NSRangeFromString(actual);
-  XCTAssertEqualObjects(@(range.location), @(fromString.location));
-  XCTAssertEqualObjects(@(range.length), @(fromString.length));
-}
-
 - (void) testAllowsUserInteraction {
   XCTAssertEqualObjects(@([[self label] isUserInteractionEnabled]), @(1));
+}
+
+- (void) testFindURLRangeNone {
+  NSString *text = @"string";
+
+  [self.label findURLRanges:text];
+
+  NSArray *matches = [self.label URLRanges];
+  XCTAssertEqualObjects(@([matches count]), @(0));
+}
+
+- (void) testFindURLRangeOne {
+  NSString *url = @"https://gist.github.com/jmoody/ccd1d44085f829cc44e9";
+  NSString *text = [NSString stringWithFormat:@"This gist: %@ shows an example",
+                    url];
+
+  [self.label findURLRanges:text];
+
+  NSArray *matches = [self.label URLRanges];
+  XCTAssertEqualObjects(@([matches count]), @(1));
+
+  NSTextCheckingResult *match = matches[0];
+  NSRange range = match.range;
+  XCTAssertEqualObjects(@(range.location), @(11));
+  XCTAssertEqualObjects(@(range.length), @(51));
+}
+
+- (void) testFindURLRangeSeveral {
+  NSArray *lines =
+  @[
+    @"Here are some more gists:",
+    @" * https://gist.github.com/jmoody/ccd1d44085f829cc44e9",
+    @" * https://gist.github.com/jmoody/7f840e29f7829059707b",
+    @" * https://gist.github.com/jmoody/cab1f0530f1c1035ac70",
+    @"",
+    @"As you can see, it is quite complicated. :)"
+    ];
+  NSString *text = [lines componentsJoinedByString:@"\n"];
+
+  [self.label findURLRanges:text];
+
+  NSArray *matches = [self.label URLRanges];
+  XCTAssertEqualObjects(@([matches count]), @(3));
 }
 
 @end
