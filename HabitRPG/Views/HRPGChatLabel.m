@@ -23,4 +23,8 @@
   [self.linkRanges addObject:string];
 }
 
+- (BOOL) isUserInteractionEnabled {
+  return YES;
+}
+
 @end

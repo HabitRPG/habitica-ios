@@ -49,4 +49,8 @@
   XCTAssertEqualObjects(@(range.length), @(fromString.length));
 }
 
+- (void) testAllowsUserInteraction {
+  XCTAssertEqualObjects(@([[self label] isUserInteractionEnabled]), @(1));
+}
+
 @end
