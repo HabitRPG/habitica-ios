@@ -26,6 +26,13 @@
   [super tearDown];
 }
 
+- (void) testLabelHasRecognizer {
+  NSArray *recognizers = [self.label gestureRecognizers];
+  XCTAssertEqualObjects(@([recognizers count]), @(1));
+  id recognizer = recognizers[0];
+  XCTAssertTrue([recognizer isKindOfClass:[UITapGestureRecognizer class]]);
+}
+
 - (void) testAllowsUserInteraction {
   XCTAssertEqualObjects(@([[self label] isUserInteractionEnabled]), @(1));
 }

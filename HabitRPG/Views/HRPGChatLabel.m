@@ -10,6 +10,18 @@
 
 @implementation HRPGChatLabel
 
+- (instancetype) initWithFrame:(CGRect) frame {
+  self = [super initWithFrame:frame];
+  if (self) {
+    UITapGestureRecognizer *recognizer;
+    recognizer = [[UITapGestureRecognizer alloc]
+                  initWithTarget:self
+                  action:@selector(handleTapWithRecognizer:)];
+    [self addGestureRecognizer:recognizer];
+  }
+  return self;
+}
+
 - (BOOL) isUserInteractionEnabled {
   return YES;
 }
