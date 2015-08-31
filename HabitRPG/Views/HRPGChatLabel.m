@@ -5,6 +5,7 @@
 @property(nonatomic, retain) NSArray *URLRanges;
 
 - (void) findURLRanges:(NSString *) text;
+- (void) handleTapWithRecognizer:(UITapGestureRecognizer *) recognizer;
 
 @end
 
@@ -24,6 +25,10 @@
 
 - (BOOL) isUserInteractionEnabled {
   return YES;
+}
+
+- (void) handleTapWithRecognizer:(UITapGestureRecognizer *) recognizer {
+  NSLog(@"Handling tap on chat label");
 }
 
 - (void) setAttributedText:(NSAttributedString *)attributedText {
@@ -50,3 +55,4 @@
 }
 
 @end
+
