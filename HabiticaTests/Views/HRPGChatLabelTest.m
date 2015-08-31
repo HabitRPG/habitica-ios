@@ -86,9 +86,7 @@
 
 @interface HRPGChatLabel (XCTESTS)
 
-- (NSArray *) URLRanges;
-- (void) findURLRanges:(NSString *) text;
-
+- (NSArray *) arrayOfURLRanges:(NSString *) text;
 - (CGPoint) offsetForTextContainerWithBoundingBox:(CGRect) boundingBox;
 - (CGPoint) pointByApplyingOffset:(CGPoint) offset toPoint:(CGPoint) point;
 - (BOOL) tapAtPoint:(CGPoint) point wasWithinRange:(NSRange) range;
@@ -130,23 +128,6 @@
   CGRect frame = CGRectMake(0, 0, size.width + 20, size.height + 16);
   self.label.frame = frame;
   return frame;
-}
-
-- (NSArray *) arrayOfURLRanges:(NSString *) text {
-  NSError *error = NULL;
-  NSDataDetector *detector;
-  detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink
-                                             error:&error];
-
-  if (!detector) {
-    NSLog(@"Error detecting URLs in chat text: %@",
-          [error localizedDescription]);
-    return nil;
-  }
-
-  return [detector matchesInString:text
-                           options:0
-                             range:NSMakeRange(0, [text length])];
 }
 
 #pragma mark - Tests
@@ -192,7 +173,7 @@
                     url];
 
   CGRect frame = [self frameAfterConfiguringLabelWithText:text];
-  NSTextCheckingResult *match = [self arrayOfURLRanges:text][0];
+  NSTextCheckingResult *match = [self.label arrayOfURLRanges:text][0];
   NSRange range = match.range;
 
   CGPoint touch;
@@ -220,7 +201,7 @@
                     url];
 
   CGRect frame = [self frameAfterConfiguringLabelWithText:text];
-  NSTextCheckingResult *match = [self arrayOfURLRanges:text][0];
+  NSTextCheckingResult *match = [self.label arrayOfURLRanges:text][0];
   NSRange range = match.range;
 
   CGPoint touch;
@@ -239,23 +220,20 @@
   XCTAssertTrue([self.label tapAtPoint:touch wasWithinRange:range]);
 }
 
-- (void) testFindURLRangeNone {
+- (void) testArrayOfURLRangesNone {
   NSString *text = @"string";
 
-  [self.label findURLRanges:text];
+  NSArray *matches = [self.label arrayOfURLRanges:text];
 
-  NSArray *matches = [self.label URLRanges];
   XCTAssertEqualObjects(@([matches count]), @(0));
 }
 
-- (void) testFindURLRangeOne {
+- (void) testArrayOfURLRangesOne {
   NSString *url = @"https://gist.github.com/jmoody/ccd1d44085f829cc44e9";
   NSString *text = [NSString stringWithFormat:@"This gist: %@ shows an example",
                     url];
 
-  [self.label findURLRanges:text];
-
-  NSArray *matches = [self.label URLRanges];
+  NSArray *matches = [self.label arrayOfURLRanges:text];
   XCTAssertEqualObjects(@([matches count]), @(1));
 
   NSTextCheckingResult *match = matches[0];
@@ -264,7 +242,7 @@
   XCTAssertEqualObjects(@(range.length), @(51));
 }
 
-- (void) testFindURLRangeSeveral {
+- (void) testArrayOfURLRangesSeveral {
   NSArray *lines =
   @[
     @"Here are some more gists:",
@@ -276,28 +254,8 @@
     ];
   NSString *text = [lines componentsJoinedByString:@"\n"];
 
-  [self.label findURLRanges:text];
-
-  NSArray *matches = [self.label URLRanges];
+  NSArray *matches = [self.label arrayOfURLRanges:text];
   XCTAssertEqualObjects(@([matches count]), @(3));
-}
-
-- (void) testSetAttributedTextCallsFindURLRanges {
-  NSString *url = @"https://gist.github.com/jmoody/ccd1d44085f829cc44e9";
-  NSString *text = [NSString stringWithFormat:@"This gist: %@ shows an example",
-                    url];
-  NSAttributedString *atrributed = [[NSAttributedString alloc]
-                                initWithString:text];
-
-  self.label.attributedText = atrributed;
-
-  [self.label findURLRanges:text];
-
-  NSArray *matches = [self.label URLRanges];
-  XCTAssertEqualObjects(@([matches count]), @(1));
-
-  // Unexpected: label.attributedText != attributed
-  XCTAssertEqualObjects(self.label.attributedText.string, atrributed.string);
 }
 
 @end

@@ -2,9 +2,7 @@
 
 @interface HRPGChatLabel ()
 
-@property(nonatomic, retain) NSArray *URLRanges;
-
-- (void) findURLRanges:(NSString *) text;
+- (NSArray *) arrayOfURLRanges:(NSString *) text;
 - (void) handleTapWithRecognizer:(UITapGestureRecognizer *) recognizer;
 - (BOOL) tapAtPoint:(CGPoint) point wasWithinRange:(NSRange) range;
 
@@ -84,26 +82,24 @@
 }
 
 - (void) setAttributedText:(NSAttributedString *)attributedText {
-  [self findURLRanges:attributedText.string];
-
   [super setAttributedText:attributedText];
 }
 
-- (void) findURLRanges:(NSString *) text {
+- (NSArray *) arrayOfURLRanges:(NSString *) text {
   NSError *error = NULL;
   NSDataDetector *detector;
   detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink
                                              error:&error];
 
-  if (error) {
+  if (!detector) {
     NSLog(@"Error detecting URLs in chat text: %@",
           [error localizedDescription]);
-    return;
+    return nil;
   }
 
-  self.URLRanges = [detector matchesInString:text
-                                     options:0
-                                       range:NSMakeRange(0, [text length])];
+  return [detector matchesInString:text
+                           options:0
+                             range:NSMakeRange(0, [text length])];
 }
 
 @end
