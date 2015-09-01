@@ -4,10 +4,13 @@
 
 - (NSArray *) arrayOfURLRanges:(NSString *) text;
 - (void) handleTapWithRecognizer:(UITapGestureRecognizer *) recognizer;
-- (BOOL) tapAtPoint:(CGPoint) point wasWithinRange:(NSRange) range;
+- (NSTextCheckingResult *) URLTextCheckingResultWithTouchPoint:(CGPoint) point;
+- (BOOL) callURLHandlerWithTextCheckingResult:(NSTextCheckingResult *) result;
 
 - (CGPoint) offsetForTextContainerWithBoundingBox:(CGRect) boundingBox;
 - (CGPoint) pointByApplyingOffset:(CGPoint) offset toPoint:(CGPoint) point;
+- (BOOL) tapAtPoint:(CGPoint) point wasWithinRange:(NSRange) range;
+
 
 @end
 
@@ -31,6 +34,41 @@
 
 - (void) handleTapWithRecognizer:(UITapGestureRecognizer *) recognizer {
   NSLog(@"Handling tap on chat label");
+
+  if (recognizer.state == UIGestureRecognizerStateEnded) {
+    CGPoint touchPoint = [recognizer locationInView:self];
+
+    NSTextCheckingResult *URLMatch;
+    URLMatch = [self URLTextCheckingResultWithTouchPoint:touchPoint];
+    [self callURLHandlerWithTextCheckingResult:URLMatch];
+  }
+}
+
+- (NSTextCheckingResult *) URLTextCheckingResultWithTouchPoint:(CGPoint) point {
+  NSArray *matches = [self arrayOfURLRanges:self.attributedText.string];
+
+  NSTextCheckingResult *touched = nil;
+  for (NSTextCheckingResult *match in matches) {
+    NSRange range = match.range;
+    if ([self tapAtPoint:point wasWithinRange:range]) {
+      touched = match;
+      break;
+    }
+  }
+
+  if (!touched) { return nil; }
+
+  if ([touched resultType] != NSTextCheckingTypeLink) { return nil; }
+
+  return touched;
+}
+
+- (BOOL) callURLHandlerWithTextCheckingResult:(NSTextCheckingResult *) result {
+  if (result && self.URLTouchedBlock) {
+    return self.URLTouchedBlock([result URL]);
+  } else {
+    return NO;
+  }
 }
 
 - (CGPoint) offsetForTextContainerWithBoundingBox:(CGRect) boundingBox {

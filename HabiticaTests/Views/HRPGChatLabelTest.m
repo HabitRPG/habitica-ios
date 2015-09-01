@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
 #import "HRPGChatLabel.h"
 
 @interface NSString (XCTEST)
@@ -90,6 +91,9 @@
 - (CGPoint) offsetForTextContainerWithBoundingBox:(CGRect) boundingBox;
 - (CGPoint) pointByApplyingOffset:(CGPoint) offset toPoint:(CGPoint) point;
 - (BOOL) tapAtPoint:(CGPoint) point wasWithinRange:(NSRange) range;
+- (BOOL) callURLHandlerWithTextCheckingResult:(NSTextCheckingResult *) result;
+- (NSTextCheckingResult *) URLTextCheckingResultWithTouchPoint:(CGPoint) point;
+- (void) handleTapWithRecognizer:(UITapGestureRecognizer *) recognizer;
 
 @end
 
@@ -116,19 +120,29 @@
 #pragma mark - Helpers
 
 - (CGRect) frameAfterConfiguringLabelWithText:(NSString *) text {
+  return [self frameAfterConfiguringLabelWithText:text
+                                    lineBreakMode:NSLineBreakByWordWrapping];
+}
+
+- (CGRect) frameAfterConfiguringLabelWithText:(NSString *) text
+                                lineBreakMode:(NSLineBreakMode) lineBreakMode {
   NSAttributedString *attributed;
+
+  self.label.lineBreakMode = lineBreakMode;
   attributed = [[NSAttributedString alloc]
                 initWithString:text];
 
   self.label.attributedText = attributed;
 
   CGSize size = [text sizeOfStringWithFont:self.font
-                         constrainedToSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)];
+                         constrainedToSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+                             lineBreakMode:lineBreakMode];
 
   CGRect frame = CGRectMake(0, 0, size.width + 20, size.height + 16);
   self.label.frame = frame;
   return frame;
 }
+
 
 #pragma mark - Tests
 
@@ -141,6 +155,21 @@
 
 - (void) testAllowsUserInteraction {
   XCTAssertEqualObjects(@([[self label] isUserInteractionEnabled]), @(1));
+}
+
+- (void) testCanSetURLTouchedBlock {
+  __block NSString *string = nil;
+
+  BOOL (^touched)(NSURL *url) = ^BOOL(NSURL *url) {
+    string = @"set in the block";
+    return YES;
+  };
+
+  self.label.URLTouchedBlock = touched;
+  XCTAssertNotNil(self.label.URLTouchedBlock);
+
+  XCTAssertTrue(self.label.URLTouchedBlock(nil));
+  XCTAssertEqualObjects(string, @"set in the block");
 }
 
 - (void) testOffestForTextContainer {
@@ -256,6 +285,99 @@
 
   NSArray *matches = [self.label arrayOfURLRanges:text];
   XCTAssertEqualObjects(@([matches count]), @(3));
+}
+
+- (void) testCallURLHandler {
+  // No result.
+  XCTAssertFalse([self.label callURLHandlerWithTextCheckingResult:nil]);
+
+  // No URLTouchedBlock ivar.
+  NSString *url = @"https://gist.github.com/jmoody/ccd1d44085f829cc44e9";
+  NSString *text = [NSString stringWithFormat:@"This gist: %@ shows an example",
+                    url];
+
+  NSTextCheckingResult *match = [self.label arrayOfURLRanges:text][0];
+  XCTAssertNotNil(match);
+
+  XCTAssertFalse([self.label callURLHandlerWithTextCheckingResult:match]);
+
+  // Block returns NO.
+  BOOL (^noblock)(NSURL *url) = ^BOOL(NSURL *url) {
+    return NO;
+  };
+
+  self.label.URLTouchedBlock = noblock;
+  XCTAssertFalse([self.label callURLHandlerWithTextCheckingResult:match]);
+
+  // Block returns YES.
+  // Block returns NO.
+  BOOL (^yesblock)(NSURL *url) = ^BOOL(NSURL *url) {
+    return YES;
+  };
+
+  self.label.URLTouchedBlock = yesblock;
+  XCTAssertTrue([self.label callURLHandlerWithTextCheckingResult:match]);
+}
+
+- (void) testURLTextCheckingResultWithTouchPoint {
+  NSArray *lines =
+  @[
+    @"Here are some more gists:",
+    @" * https://gist.github.com/jmoody/ccd1d44085f829cc44e9",
+    @" * https://gist.github.com/jmoody/7f840e29f7829059707b",
+    @" * https://gist.github.com/jmoody/cab1f0530f1c1035ac70",
+    @"",
+    @"As you can see, it is quite complicated. :)"
+    ];
+  NSString *text = [lines componentsJoinedByString:@"\n"];
+
+  [self frameAfterConfiguringLabelWithText:text];
+
+  // Second URL.
+  CGPoint point = CGPointMake(130, (24 * 2) + 10);
+
+  NSTextCheckingResult *match = [self.label URLTextCheckingResultWithTouchPoint:point];
+  XCTAssertNotNil(match);
+
+  XCTAssertEqualObjects([match URL],
+                        [NSURL URLWithString:@"https://gist.github.com/jmoody/7f840e29f7829059707b"]);
+
+  // First line; not a URL.
+  point = CGPointMake(130, 24/2);
+  match = [self.label URLTextCheckingResultWithTouchPoint:point];
+  XCTAssertNil(match);
+}
+
+// This would be better as UI test.
+- (void) testHandleTapWithRecognizer {
+  NSString *url = @"https://gist.github.com/jmoody/ccd1d44085f829cc44e9";
+  NSString *text = [NSString stringWithFormat:@"This gist! %@ shows an example",
+                    url];
+
+  CGRect frame = [self frameAfterConfiguringLabelWithText:text];
+  // Touches the ':' in 'http:'.
+  CGPoint touch = CGPointMake(130, frame.size.height/2);
+
+  UITapGestureRecognizer *recognizer;
+  recognizer = [[UITapGestureRecognizer alloc]
+                initWithTarget:self.label
+                action:@selector(handleTapWithRecognizer:)];
+
+  id recognizerMock = OCMPartialMock(recognizer);
+  OCMStub([recognizerMock state]).andReturn(UIGestureRecognizerStateEnded);
+  OCMStub([recognizerMock locationInView:self.label]).andReturn(touch);
+
+
+  id labelMock = OCMPartialMock(self.label);
+  OCMStub([labelMock URLTextCheckingResultWithTouchPoint:touch]).andForwardToRealObject();
+  OCMStub([labelMock callURLHandlerWithTextCheckingResult:[OCMArg any]]).andForwardToRealObject();
+
+  [self.label handleTapWithRecognizer:recognizerMock];
+
+  OCMVerify([recognizerMock state]);
+  OCMVerify([recognizerMock locationInView:self.label]);
+  OCMVerify([labelMock URLTextCheckingResultWithTouchPoint:touch]);
+  OCMVerify([labelMock callURLHandlerWithTextCheckingResult:[OCMArg any]]);
 }
 
 @end
