@@ -20,8 +20,6 @@
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 - (void)orientationChanged:(NSNotification *)notification;
 
--(void)addActivityCounter;
--(void)removeActivityCounter;
 @property NSInteger activityCounter;
 - (NSDictionary *)markdownAttributes;
 

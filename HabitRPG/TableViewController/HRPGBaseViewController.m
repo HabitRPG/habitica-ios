@@ -22,6 +22,7 @@
 @interface HRPGBaseViewController ()
 @property UIBarButtonItem *navigationButton;
 @property HRPGActivityIndicator *activityIndicator;
+@property BOOL didAppear;
 @end
 
 @implementation HRPGBaseViewController
@@ -74,7 +75,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    self.didAppear = NO;
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self
@@ -103,6 +104,7 @@
         HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
         [deathView show];
     }
+    self.didAppear = YES;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -118,31 +120,24 @@
     [self.tableView reloadData];
 }
 
-
--(void)addActivityCounter {
-    if (self.activityCounter == 0) {
-        self.navigationButton = self.navigationItem.rightBarButtonItem;
-        self.activityIndicator = [[HRPGActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        [self.activityIndicator setInnerInset:3];
-        UIBarButtonItem *indicatorButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
-        [self.navigationItem setRightBarButtonItem:indicatorButton animated:NO];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.activityIndicator beginAnimating];
-        });
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (self.didAppear) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        [navigationController scrollViewDidScroll:scrollView];
     }
-    self.activityCounter++;
 }
 
-- (void)removeActivityCounter {
-    self.activityCounter--;
-    if (self.activityCounter == 0) {
-        [self.activityIndicator endAnimating:^() {
-            [self.activityIndicator endAnimating:^() {
-                [self.navigationItem setRightBarButtonItem:self.navigationButton animated:NO];
-            }];
-        }];
-    } else if (self.activityCounter < 0) {
-        self.activityCounter = 0;
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (self.didAppear) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        [navigationController scrollViewDidEndDecelerating:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (self.didAppear) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        [navigationController scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
     }
 }
 

@@ -65,13 +65,9 @@
                 tabBarController.sourceTableView = self.tableView;
             }];
         } else {
-            [self addActivityCounter];
             [self.sharedManager castSpell:spell.key withTargetType:spell.target onTarget:nil onSuccess:^() {
                 [tableView reloadData];
-                [self removeActivityCounter];
-            }                     onError:^() {
-                [self removeActivityCounter];
-            }];
+            } onError:nil];
         }
     }
 }

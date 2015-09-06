@@ -129,22 +129,15 @@ float textWidth;
                 return;
             }
         }
-        [self addActivityCounter];
         
         if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
             [self.sharedManager hatchEgg:item.key withPotion:self.selectedItem.key onSuccess:^() {
-                [self removeActivityCounter];
                 [HRPGImageOverlayManager displayImageWithString:[NSString stringWithFormat:@"Pet-%@-%@.png", item.key, self.selectedItem.key] withText:[NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil), self.selectedItem.text, item.key] withNotes:nil];
-            }onError:^() {
-                [self removeActivityCounter];
-            }];
+            }onError:nil];
         } else {
             [self.sharedManager hatchEgg:self.selectedItem.key withPotion:item.key onSuccess:^() {
-                [self removeActivityCounter];
                 [HRPGImageOverlayManager displayImageWithString:[NSString stringWithFormat:@"Pet-%@-%@.png", self.selectedItem.key, item.key] withText:[NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil), item.key, self.selectedItem.text] withNotes:nil];
-            }onError:^() {
-                [self removeActivityCounter];
-            }];
+            }onError:nil];
         }
         [self endHatching];
         return;
@@ -269,23 +262,12 @@ float textWidth;
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == actionSheet.destructiveButtonIndex) {
-        [self addActivityCounter];
-        [self.sharedManager sellItem:self.selectedItem onSuccess:^() {
-            [self removeActivityCounter];
-        }onError:^() {
-            [self removeActivityCounter];
-        }];
+        [self.sharedManager sellItem:self.selectedItem onSuccess:nil onError:nil];
     } else if (buttonIndex == 0 && [self.selectedItem isKindOfClass:[Quest class]]) {
-        [self addActivityCounter];
         User *user = [self.sharedManager getUser];
         Quest *quest = (Quest*)self.selectedItem;
-        [self.sharedManager acceptQuest:user.party.id withQuest:quest useForce:NO onSuccess:^(){
-            [self removeActivityCounter];
-        }onError:^() {
-            [self removeActivityCounter];
-        }];
+        [self.sharedManager acceptQuest:user.party.id withQuest:quest useForce:NO onSuccess:nil onError:nil];
     } else if (buttonIndex == 1 && ![self.selectedItem isKindOfClass:[Quest class]]) {
-        [self addActivityCounter];
         if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type = 'eggs' && owned > 0"];
             self.isHatching = YES;

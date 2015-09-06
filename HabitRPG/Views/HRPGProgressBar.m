@@ -22,9 +22,7 @@
     
     if (self) {
         self.barColor = [UIColor blackColor];
-        self.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.000];
-        self.layer.borderColor = [UIColor blackColor].CGColor;
-        self.layer.borderWidth = 0.5;
+        self.backgroundColor = [UIColor clearColor];
     }
     
     return self;
@@ -45,11 +43,17 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    CGFloat percent = self.value / self.maxValue;
-    CGRect rectangle = CGRectMake(rect.origin.x, rect.origin.y, (rect.size.width * percent), rect.size.height);
     CGContextRef context = UIGraphicsGetCurrentContext();
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:8.0f];
+    CGContextSetFillColorWithColor(context, [[UIColor colorWithRed:0.8549 green:0.8549 blue:0.8549 alpha:1.0] CGColor]);
+    [path fill];
+    CGFloat percent = self.value / self.maxValue;
+    if (self.maxValue == 0 || percent < 0) {
+        percent = 0;
+    }
+    path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width*percent, rect.size.height) cornerRadius:8.0f];
     CGContextSetFillColorWithColor(context, [self.barColor CGColor]);
-    CGContextFillRect(context, rectangle);
+    [path fill];
 }
 
 

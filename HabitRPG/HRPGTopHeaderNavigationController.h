@@ -8,9 +8,8 @@
 
 @import UIKit;
 
-@interface HRPGTopHeaderNavigationController : UINavigationController
+@interface HRPGTopHeaderNavigationController : UINavigationController <UIScrollViewDelegate>
 
 - (CGFloat) getContentOffset;
-- (void)toggleTopBar;
 
 @end

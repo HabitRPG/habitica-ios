@@ -37,24 +37,6 @@
     self.tableView.tableHeaderView = self.headerView;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
-        [navigationController toggleTopBar];
-    }
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
-        [navigationController toggleTopBar];
-    }
-    
-    [super viewWillDisappear:animated];
-}
-
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -112,7 +94,7 @@
             if ([MFMailComposeViewController canSendMail]) {
                 MFMailComposeViewController *composeViewController = [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
                 [composeViewController setMailComposeDelegate:self];
-                [composeViewController setToRecipients:@[@"mobile@habitrpg.com"]];
+                [composeViewController setToRecipients:@[@"mobile@habitica.com"]];
                 [composeViewController setSubject:@"[iOS] Feedback"];
                 [self presentViewController:composeViewController animated:YES completion:nil];
             }
@@ -122,7 +104,7 @@
             if ([MFMailComposeViewController canSendMail]) {
                 MFMailComposeViewController *composeViewController = [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
                 [composeViewController setMailComposeDelegate:self];
-                [composeViewController setToRecipients:@[@"mobile@habitrpg.com"]];
+                [composeViewController setToRecipients:@[@"mobile@habitica.com"]];
                 [composeViewController setSubject:@"[iOS] Bugreport"];
                 [composeViewController setMessageBody:[self createDeviceInformationString] isHTML:NO];
                 [self presentViewController:composeViewController animated:YES completion:nil];

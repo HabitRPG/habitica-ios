@@ -13,11 +13,13 @@
 
 @property UIImageView *iconView;
 @property UILabel *labelView;
+@property UILabel *typeView;
 @property HRPGProgressBar *progressBar;
 
 @property (nonatomic) UIColor *color;
 @property (nonatomic) NSNumber *maxValue;
 @property (nonatomic) NSNumber *value;
+@property (nonatomic) NSString *type;
 @property (nonatomic) UIImage *icon;
 
 @end

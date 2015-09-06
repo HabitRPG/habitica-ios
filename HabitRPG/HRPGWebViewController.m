@@ -30,21 +30,8 @@
     NSURL* nsUrl = [NSURL URLWithString:self.url];
     NSURLRequest* request = [NSURLRequest requestWithURL:nsUrl cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:30];
     [self.webView loadRequest:request];
-    
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
-        [navigationController toggleTopBar];
-    }
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
-        [navigationController toggleTopBar];
-    }
-    
-    [super viewWillDisappear:animated];
-}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     

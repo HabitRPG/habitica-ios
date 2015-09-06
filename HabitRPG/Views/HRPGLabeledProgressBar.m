@@ -38,15 +38,22 @@
 - (void) initViews {
     self.color = [UIColor blackColor];
     
-    self.progressBar = [[HRPGProgressBar alloc] initWithFrame:CGRectMake(20, 2, self.frame.size.width-20, self.frame.size.height-4)];
+    self.progressBar = [[HRPGProgressBar alloc] initWithFrame:CGRectMake(31, 0, self.frame.size.width-31, 16)];
     [self addSubview:self.progressBar];
-    self.iconView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 2, 20, self.frame.size.height-4)];
+    self.iconView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 16, 16)];
     self.iconView.contentMode = UIViewContentModeLeft;
     self.iconView.tintColor = [UIColor blackColor];
     [self addSubview:self.iconView];
-    self.labelView = [[UILabel alloc] initWithFrame:CGRectMake(20, 2, self.frame.size.width-25, self.frame.size.height-4)];
-    self.labelView.textAlignment = NSTextAlignmentRight;
+    self.labelView = [[UILabel alloc] initWithFrame:CGRectMake(33, 18, self.frame.size.width-33, 12)];
+    self.labelView.textAlignment = NSTextAlignmentLeft;
+    self.labelView.font = [UIFont systemFontOfSize:11];
+    self.labelView.textColor = [UIColor darkGrayColor];
     [self addSubview:self.labelView];
+    self.typeView = [[UILabel alloc] initWithFrame:CGRectMake(33, (self.frame.size.width-33)/2, (self.frame.size.width-33)/2, 12)];
+    self.typeView.textAlignment = NSTextAlignmentRight;
+    self.typeView.font = [UIFont systemFontOfSize:11];
+    self.typeView.textColor = [UIColor darkGrayColor];
+    [self addSubview:self.typeView];
 }
 
 - (void)setColor:(UIColor *)color {
@@ -77,6 +84,12 @@
     [self updateViewFrames];
 }
 
+- (void)setType:(NSString *)type {
+    _type = type;
+    self.typeView.text = self.type;
+    [self updateViewFrames];
+}
+
 - (void) setLabelViewText {
     if ([self.value floatValue] < 1) {
         self.labelView.text = [NSString stringWithFormat:@"%.1f / %@", [self.value floatValue], self.maxValue];
@@ -86,8 +99,9 @@
 }
 
 - (void) updateViewFrames {
-    self.labelView.frame = CGRectMake(20, 2, self.frame.size.width-25, self.frame.size.height-4);
-    self.progressBar.frame = CGRectMake(20, 2, self.frame.size.width-20, self.frame.size.height-4);
+    self.progressBar.frame = CGRectMake(31, 0, self.frame.size.width-31, 16);
+    self.labelView.frame = CGRectMake(33, 18, (self.frame.size.width-33)/2, 12);
+    self.typeView.frame = CGRectMake((self.frame.size.width+33)/2, 18, (self.frame.size.width-33)/2, 12);
 }
 
 - (void)layoutSubviews {

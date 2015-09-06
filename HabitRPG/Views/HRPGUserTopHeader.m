@@ -16,6 +16,7 @@
 #import "HRPGGemView.h"
 #import "NIKFontAwesomeIconFactory.h"
 #import "NIKFontAwesomeIconFactory+iOS.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGUserTopHeader ()
 
@@ -27,7 +28,11 @@
 
 @property HRPGLabeledProgressBar *magicLabel;
 
+@property UIView *darkerBackground;
+
 @property UILabel *levelLabel;
+
+@property UILabel *usernameLabel;
 
 @property HRPGGoldView *goldView;
 
@@ -43,48 +48,56 @@ NSInteger barHeight = 5;
 NSInteger rowHeight;
 NSInteger rowWidth;
 NSInteger margin = 3;
-NSInteger rowOffset = 145;
+NSInteger rightMargin = 12;
+NSInteger rowOffset = 130;
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
     if (self) {
         
-        rowHeight = (self.frame.size.height-(margin*2))/4;
-        rowWidth = self.frame.size.width-rowOffset-margin;
         
-        self.avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 140, 147)];
+        self.avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 110, 115)];
+        self.avatarImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:self.avatarImageView];
+        
+        rowHeight = (self.frame.size.height-(margin*2))/4;
+        rowWidth = self.frame.size.width-self.avatarImageView.frame.size.width-rightMargin;
         
         NIKFontAwesomeIconFactory *iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
         iconFactory.size = 15;
         iconFactory.renderingMode = UIImageRenderingModeAlwaysTemplate;
         
-        self.healthLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset, margin, rowWidth, rowHeight)];
-        self.healthLabel.color = [UIColor colorWithRed:0.773 green:0.235 blue:0.247 alpha:1.000];
-        self.healthLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.976 green:0.925 blue:0.925 alpha:1.000];
+        self.healthLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset, 0, rowWidth, rowHeight)];
+        self.healthLabel.color = [UIColor red100];
         self.healthLabel.icon = [iconFactory createImageForIcon:NIKFontAwesomeIconHeart];
+        self.healthLabel.type = NSLocalizedString(@"Health", nil);
         [self addSubview:self.healthLabel];
         
-        self.experienceLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset, margin+rowHeight, rowWidth, rowHeight)];
-        self.experienceLabel.color = [UIColor colorWithRed:0.969 green:0.765 blue:0.027 alpha:1.000];
-        self.experienceLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.996 green:0.980 blue:0.922 alpha:1.000];
+        self.experienceLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset, rowHeight, rowWidth, rowHeight)];
+        self.experienceLabel.color = [UIColor yellow100];
         self.experienceLabel.icon = [iconFactory createImageForIcon:NIKFontAwesomeIconStar];
+        self.experienceLabel.type = NSLocalizedString(@"Experience", nil);
         [self addSubview:self.experienceLabel];
         
-        self.magicLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset, margin+rowHeight*2, rowWidth, rowHeight)];
-        self.magicLabel.color = [UIColor colorWithRed:0.259 green:0.412 blue:0.902 alpha:1.000];
-        self.magicLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.925 green:0.945 blue:0.992 alpha:1.000];
+        self.magicLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset, rowHeight*2, rowWidth, rowHeight)];
+        self.magicLabel.color = [UIColor blue100];
         self.magicLabel.icon = [iconFactory createImageForIcon:NIKFontAwesomeIconFire];
+        self.magicLabel.type = NSLocalizedString(@"Mana", nil);
         [self addSubview:self.magicLabel];
         
-        self.levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(rowOffset+20, self.frame.size.height-27.5, 45, 20)];
-        self.levelLabel.font = [UIFont systemFontOfSize:13];
-        self.levelLabel.textColor = [UIColor whiteColor];
-        self.levelLabel.backgroundColor = [UIColor blackColor];
-        self.levelLabel.textAlignment = NSTextAlignmentCenter;
-        self.levelLabel.layer.borderColor = [UIColor blackColor].CGColor;
-        self.levelLabel.layer.borderWidth = 0.5;
+        self.darkerBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 115, self.frame.size.width, self.frame.size.height-115)];
+        self.darkerBackground.backgroundColor = [UIColor gray500];
+        [self addSubview:self.darkerBackground];
+        
+        self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, self.frame.size.height-40, 150, 20)];
+        self.usernameLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightRegular];
+        self.usernameLabel.textColor = [UIColor colorWithRed:0.3725 green:0.3725 blue:0.3725 alpha:1.0];
+        [self addSubview:self.usernameLabel];
+        
+        self.levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, self.frame.size.height-22, 150, 20)];
+        self.levelLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightLight];
+        self.levelLabel.textColor = [UIColor colorWithRed:0.3725 green:0.3725 blue:0.3725 alpha:1.0];
         [self addSubview:self.levelLabel];
         
         self.goldView = [[HRPGGoldView alloc] initWithFrame:CGRectMake(rowOffset+(rowWidth+margin)/2, margin+rowHeight*3+(rowHeight-20)/2, (rowWidth-margin)/2, 20)];
@@ -143,10 +156,11 @@ NSInteger rowOffset = 145;
 - (void)layoutSubviews {
     [super layoutSubviews];
     rowHeight = (self.frame.size.height-(margin*2))/4;
-    rowWidth = self.frame.size.width-rowOffset-margin;
+    rowWidth = self.frame.size.width-rowOffset-rightMargin;
     self.healthLabel.frame = CGRectMake(rowOffset, margin, rowWidth, rowHeight);
     self.experienceLabel.frame = CGRectMake(rowOffset, margin+rowHeight, rowWidth, rowHeight);
     self.magicLabel.frame = CGRectMake(rowOffset, margin+rowHeight*2, rowWidth, rowHeight);
+    self.darkerBackground.frame = CGRectMake(0, 115, self.frame.size.width, self.frame.size.height-115);
     self.goldView.frame = CGRectMake(rowOffset+rowWidth-self.goldView.frame.size.width, self.goldView.frame.origin.y, self.goldView.frame.size.width, self.goldView.frame.size.height);
     self.gemView.frame = CGRectMake(self.goldView.frame.origin.x-self.gemView.frame.size.width-8, self.gemView.frame.origin.y, self.gemView.frame.size.width, self.gemView.frame.size.height);
 }
@@ -189,10 +203,8 @@ NSInteger rowOffset = 145;
         self.magicLabel.hidden = YES;
     }
     
-    self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"lvl %@", nil), self.user.level];
-    self.levelLabel.backgroundColor = self.user.contributorColor;
-    [self.levelLabel sizeToFit];
-    self.levelLabel.frame = CGRectMake(122.5-self.levelLabel.frame.size.width, self.levelLabel.frame.origin.y, self.levelLabel.frame.size.width+10, 20);
+    self.usernameLabel.text = self.user.username;
+    self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@ %@", nil), self.user.level, [self.user.hclass capitalizedString]];
     [self.goldView updateView:self.user.gold withDiffString:nil];
     [self.goldView sizeToFit];
     self.goldView.frame = CGRectMake(rowOffset+rowWidth-self.goldView.frame.size.width, self.goldView.frame.origin.y, self.goldView.frame.size.width, self.goldView.frame.size.height);
