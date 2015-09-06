@@ -7,15 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Task.h"
+#import "ChecklistItem.h"
 
 @interface HRPGCheckBoxView : UIView
 
-@property (nonatomic) CGFloat size;
-@property (nonatomic) bool checked;
-@property (nonatomic) UIColor *boxColor;
-@property (nonatomic) UIColor *checkColor;
-@property (copy)void (^wasTouched)(void);
+- (void)configureForTask:(Task *) task;
+- (void)configureForChecklistItem:(ChecklistItem *) item forTask:(Task *)task;
 
-- (void)setChecked:(bool)isChecked animated:(bool)animated;
+@property (copy)void (^wasTouched)(void);
 
 @end

@@ -10,6 +10,7 @@
 #import "ChecklistItem.h"
 #import "Tag.h"
 #import "HRPGAppDelegate.h"
+#import "UIColor+Habitica.h"
 
 @implementation Task
 
@@ -159,38 +160,38 @@
 - (UIColor*) taskColor {
     NSInteger intValue = [self.value integerValue];
     if (intValue < -20) {
-        return [UIColor colorWithRed:0.702 green:0.314 blue:0.243 alpha:1.000];
+        return [UIColor darkRed50];
     } else if (intValue < -10) {
-        return [UIColor colorWithRed:0.780 green:0.275 blue:0.282 alpha:1.000];
+        return [UIColor red50];
     } else if (intValue < -1) {
-        return [UIColor colorWithRed:0.906 green:0.569 blue:0.192 alpha:1.000];
+        return [UIColor orange50];
     } else if (intValue < 1) {
-        return [UIColor colorWithRed:0.973 green:0.780 blue:0.118 alpha:1.000];
+        return [UIColor yellow50];
     } else if (intValue < 5) {
-        return [UIColor colorWithRed:0.498 green:0.710 blue:0.380 alpha:1.000];
+        return [UIColor green50];
     } else if (intValue < 10) {
-        return [UIColor colorWithRed:0.443 green:0.604 blue:0.639 alpha:1.000];
+        return [UIColor teal50];
     } else {
-        return [UIColor colorWithRed:0.294 green:0.439 blue:0.910 alpha:1.000];
+        return [UIColor blue50];
     }
 }
 
 - (UIColor*) lightTaskColor {
     NSInteger intValue = [self.value integerValue];
     if (intValue < -20) {
-        return [UIColor colorWithRed:0.855 green:0.663 blue:0.620 alpha:1.000];
+        return [UIColor darkRed100];
     } else if (intValue < -10) {
-        return [UIColor colorWithRed:0.941 green:0.753 blue:0.753 alpha:1.000];
+        return [UIColor red100];
     } else if (intValue < -1) {
-        return [UIColor colorWithRed:0.976 green:0.878 blue:0.749 alpha:1.000];
+        return [UIColor orange100];
     } else if (intValue < 1) {
-        return [UIColor colorWithRed:0.996 green:0.941 blue:0.757 alpha:1.000];
+        return [UIColor yellow100];
     } else if (intValue < 5) {
-        return [UIColor colorWithRed:0.827 green:0.902 blue:0.776 alpha:1.000];
+        return [UIColor green100];
     } else if (intValue < 10) {
-        return [UIColor colorWithRed:0.780 green:0.851 blue:0.867 alpha:1.000];
+        return [UIColor teal100];
     } else {
-        return [UIColor colorWithRed:0.749 green:0.816 blue:0.980 alpha:1.000];
+        return [UIColor blue100];
     }
 }
 

@@ -28,24 +28,6 @@
     [self.loadingIndicator startAnimating];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        self.navigationItem.leftBarButtonItem = nil;
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
-        [navigationController toggleTopBar];
-    }
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*)self.navigationController;
-        [navigationController toggleTopBar];
-    }
-    
-    [super viewWillDisappear:animated];
-}
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [UIView animateWithDuration:0.4 animations:^() {
         self.newsWebView.alpha = 1;

@@ -656,12 +656,7 @@ ChatMessage *selectedMessage;
 
 - (IBAction)unwindToListSendMessage:(UIStoryboardSegue *)segue {
     HRPGMessageViewController *messageController = (HRPGMessageViewController*)[segue sourceViewController];
-    [self addActivityCounter];
-    [self.sharedManager chatMessage:messageController.messageView.text withGroup:party.id onSuccess:^() {
-        [self removeActivityCounter];
-    }onError:^() {
-        [self removeActivityCounter];
-    }];
+    [self.sharedManager chatMessage:messageController.messageView.text withGroup:party.id onSuccess:nil onError:nil];
     
 }
 

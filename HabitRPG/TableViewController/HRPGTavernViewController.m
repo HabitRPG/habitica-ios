@@ -520,19 +520,13 @@ ChatMessage *selectedMessage;
 
 - (IBAction)unwindToListSendMessage:(UIStoryboardSegue *)segue {
     HRPGMessageViewController *messageController = (HRPGMessageViewController*)[segue sourceViewController];
-    [self addActivityCounter];
     [self.sharedManager chatMessage:messageController.messageView.text withGroup:@"habitrpg" onSuccess:^() {
         [self.sharedManager fetchGroup:@"habitrpg" onSuccess:^() {
-            [self removeActivityCounter];
             [self fetchTavern];
-        }                      onError:^() {
-            [self removeActivityCounter];
+        } onError:^() {
             [self.sharedManager displayNetworkError];
         }];
-        [self removeActivityCounter];
-    }onError:^() {
-        [self removeActivityCounter];
-    }];
+    }onError:nil];
     
 }
 

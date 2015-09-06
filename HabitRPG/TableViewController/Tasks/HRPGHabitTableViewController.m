@@ -11,10 +11,10 @@
 #import "HRPGManager.h"
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
-#import "NSString+Emoji.h"
 #import "HRPGActivityIndicatorOverlayView.h"
 #import "UIColor+LighterDarker.h"
-#import "HRPGHabitButton.h"
+#import "HRPGHabitButtons.h"
+#import "HRPGHabitTableViewCell.h"
 
 @interface HRPGHabitTableViewController ()
 @property NSString *readableName;
@@ -40,131 +40,16 @@
     self.iconFactory.renderingMode = UIImageRenderingModeAutomatic;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-
-    UILabel *lastActionLabel = (UILabel*)[cell viewWithTag:4];
-    UILabel *titleLabel = (UILabel*)[cell viewWithTag:1];
-    if (lastActionLabel.text.length == 0) {
-        lastActionLabel.alpha = 0;
-        [UIView animateWithDuration:0.3 animations:^() {
-            [lastActionLabel layoutIfNeeded];
-            [titleLabel layoutIfNeeded];
-            lastActionLabel.alpha = 1;
-        } completion:^(BOOL completed) {
-            if (completed) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                    lastActionLabel.text = nil;
-                    [UIView animateWithDuration:0.3 animations:^() {
-                        [lastActionLabel layoutIfNeeded];
-                        [titleLabel layoutIfNeeded];
-                        lastActionLabel.alpha = 0;
-                    }completion:nil];
-                });
-            }
-        }];
-    }
-    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-}
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
-    [cell setSeparatorInset:UIEdgeInsetsZero];
-    // Prevent the cell from inheriting the Table View's margin settings
-    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
-        [cell setPreservesSuperviewLayoutMargins:NO];
-    }
-    
-    // Explictly set your cell's layout margins
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
+- (void)configureCell:(HRPGHabitTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     Task *task = [self taskAtIndexPath:indexPath];
-    UIColor *color = [task lightTaskColor];
-    UILabel *label = (UILabel *) [cell viewWithTag:1];
-    label.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
-    cell.backgroundColor = color;
-    label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    HRPGHabitButton *upButton = (HRPGHabitButton *)[cell viewWithTag:2];
-    HRPGHabitButton *downButton = (HRPGHabitButton *)[cell viewWithTag:3];
-    UIView *seperatorView = [cell viewWithTag:5];
     
-    [upButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [downButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [cell configureForTask:task];
     
-    NSLayoutConstraint *upConstraint;
-    NSLayoutConstraint *downConstraint;
-    NSLayoutConstraint *seperatorConstraint;
-    for (NSLayoutConstraint *con in upButton.constraints) {
-        if (con.firstItem == upButton || con.secondItem == upButton) {
-            upConstraint = con;
-            break;
-        }
-    }
-    for (NSLayoutConstraint *con in downButton.constraints) {
-        if (con.firstItem == downButton || con.secondItem == downButton) {
-            downConstraint = con;
-            break;
-        }
-    }
-
-    for (NSLayoutConstraint *con in seperatorView.constraints) {
-        if (con.firstItem == seperatorView || con.secondItem == seperatorView) {
-            seperatorConstraint = con;
-            break;
-        }
-    }
-    if ([task.up boolValue]) {
-        upButton.layer.transform = CATransform3DMakeScale(1, 1, 1);
-        upButton.hidden = NO;
-        upButton.backgroundColor = [task taskColor];
-        if (![task.down boolValue]) {
-            upConstraint.constant = 101;
-        } else {
-            upConstraint.constant = 50;
-        }
-    } else {
-        upButton.hidden = YES;
-        upConstraint.constant = 0;
-    }
-    if ([task.down boolValue]) {
-        downButton.layer.transform = CATransform3DMakeScale(1, 1, 1);
-        downButton.hidden = NO;
-        downButton.backgroundColor = [task taskColor];
-        if (![task.up boolValue]) {
-            downConstraint.constant = 101;
-        } else {
-            downConstraint.constant = 50;
-        }
-    } else {
-        downButton.hidden = YES;
-        downConstraint.constant = 0;
-    }
-    
-    if ([task.up boolValue] && [task.down boolValue]) {
-        seperatorView.hidden = NO;
-        seperatorView.backgroundColor = [[task taskColor] darkerColor];
-        seperatorConstraint.constant = 1;
-    } else {
-        seperatorView.hidden = YES;
-        seperatorConstraint.constant = 0;
-    }
-}
-
-- (void)buttonPressed:(UIButton *)button {
-    CGPoint senderOriginInTableView = [button convertPoint:CGPointZero toView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:senderOriginInTableView];
-    Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSString *upDown;
-    if ([button.titleLabel.text isEqualToString:@"+"]) {
-        upDown = @"up";
-    } else {
-        upDown = @"down";
-    }
-    [self addActivityCounter];
-    [self.sharedManager upDownTask:task direction:upDown onSuccess:^(NSArray *valuesArray){
-        [self removeActivityCounter];
-    }                      onError:^(){
-        [self removeActivityCounter];
+    [cell.buttons onUpAction:^() {
+        [self.sharedManager upDownTask:task direction:@"up" onSuccess:nil onError:nil];
+    }];
+    [cell.buttons onDownAction:^() {
+        [self.sharedManager upDownTask:task direction:@"down" onSuccess:nil onError:nil];
     }];
 }
 

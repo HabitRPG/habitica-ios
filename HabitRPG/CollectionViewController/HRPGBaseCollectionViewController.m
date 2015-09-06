@@ -17,6 +17,8 @@
 #import "HRPGNavigationController.h"
 
 @interface HRPGBaseCollectionViewController ()
+@property BOOL didAppear;
+
 @end
 
 @implementation HRPGBaseCollectionViewController
@@ -79,6 +81,27 @@
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
     [self.collectionView reloadData];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (self.didAppear) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        [navigationController scrollViewDidScroll:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (self.didAppear) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        [navigationController scrollViewDidEndDecelerating:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (self.didAppear) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        [navigationController scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -154,19 +154,10 @@ User *user;
     if ([user.gold integerValue] < [reward.value integerValue]) {
         return;
     }
-    [self addActivityCounter];
     if ([reward isKindOfClass:[Reward class]]) {
-        [self.sharedManager getReward:reward.key onSuccess:^() {
-            [self removeActivityCounter];
-        }                     onError:^() {
-            [self removeActivityCounter];
-        }];
+        [self.sharedManager getReward:reward.key onSuccess:nil onError:nil];
     } else {
-        [self.sharedManager buyObject:reward onSuccess:^() {
-            [self removeActivityCounter];
-        }                     onError:^() {
-            [self removeActivityCounter];
-        }];
+        [self.sharedManager buyObject:reward onSuccess:nil onError:nil];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -385,19 +376,10 @@ User *user;
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGRewardFormViewController *formViewController = (HRPGRewardFormViewController *) segue.sourceViewController;
-    [self addActivityCounter];
     if (formViewController.editReward) {
-        [self.sharedManager updateReward:formViewController.reward onSuccess:^() {
-            [self removeActivityCounter];
-        } onError:^() {
-            [self removeActivityCounter];
-        }];
+        [self.sharedManager updateReward:formViewController.reward onSuccess:nil onError:nil];
     } else {
-        [self.sharedManager createReward:formViewController.reward onSuccess:^() {
-            [self removeActivityCounter];
-        } onError:^() {
-            [self removeActivityCounter];
-        }];
+        [self.sharedManager createReward:formViewController.reward onSuccess:nil onError:nil];
     }
 }
 

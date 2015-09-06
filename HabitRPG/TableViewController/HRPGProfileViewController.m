@@ -44,7 +44,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         }
         [self.tableView reloadData];
     }
-    self.navigationItem.title = username;
+    self.navigationItem.title = NSLocalizedString(@"Menu", nil);
 }
 
 - (void)viewDidLoad {

@@ -1,0 +1,16 @@
+//
+//  HRPGHabitTableViewCell.h
+//  Habitica
+//
+//  Created by Phillip Thelen on 05/09/15.
+//  Copyright (c) 2015 Phillip Thelen. All rights reserved.
+//
+
+#import "HRPGTaskTableViewCell.h"
+#import "HRPGHabitButtons.h"
+
+@interface HRPGHabitTableViewCell : HRPGTaskTableViewCell
+
+@property (weak, nonatomic) IBOutlet HRPGHabitButtons *buttons;
+@property (weak, nonatomic) IBOutlet UIView *rightBorderView;
+@end

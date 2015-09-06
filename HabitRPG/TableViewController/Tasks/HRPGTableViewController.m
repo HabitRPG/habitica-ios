@@ -172,9 +172,6 @@ BOOL editable;
     
     NSString *cellname = @"Cell";
     Task *task = [self taskAtIndexPath:indexPath];
-    if (task.duedate) {
-        cellname = @"SubCell";
-    }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
 
     UIView *whitespaceView = [cell viewWithTag:6];
@@ -219,10 +216,10 @@ BOOL editable;
     
     Task *task = [self taskAtIndexPath:indexPath];
     float width;
-    NSInteger height = 30;
+    NSInteger height = 40;
     if ([task.type isEqualToString:@"habit"]) {
         //50 for each button and 1 for seperator
-        width = self.viewWidth - 117;
+        width = self.viewWidth - 95;
     } else if ([task.checklist count] > 0) {
         width = self.viewWidth - 110;
     } else {
@@ -233,10 +230,26 @@ BOOL editable;
                                             attributes:@{
                                                     NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                             }
-                                               context:nil].size.height;
+                                                                                            context:nil].size.height;
+    if (task.notes) {
+        NSInteger notesHeight = [[task.notes stringByReplacingEmojiCheatCodesWithUnicode] boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                                                                            options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+                                                                                         attributes:@{
+                                                                                                      NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
+                                                                                                      }
+                                                                                            context:nil].size.height;
+        if (notesHeight < [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline].leading*2) {
+            height = height + notesHeight;
+        } else {
+            height = height + [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline].leading*2;
+        }
+    }
     height = height + self.extraCellSpacing;
     if (task.duedate) {
         height = height + 5;
+    }
+    if (height <= 71) {
+        return 71;
     }
     return height;
 }
@@ -275,19 +288,10 @@ BOOL editable;
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGFormViewController *formViewController = (HRPGFormViewController *) segue.sourceViewController;
-    [self addActivityCounter];
     if (formViewController.editTask) {
-        [self.sharedManager updateTask:formViewController.task onSuccess:^() {
-            [self removeActivityCounter];
-        }                      onError:^() {
-            [self removeActivityCounter];
-        }];
+        [self.sharedManager updateTask:formViewController.task onSuccess:nil onError:nil];
     } else {
-        [self.sharedManager createTask:formViewController.task onSuccess:^() {
-            [self removeActivityCounter];
-        }                      onError:^() {
-            [self removeActivityCounter];
-        }];
+        [self.sharedManager createTask:formViewController.task onSuccess:nil onError:nil];
     }
 }
 
@@ -397,6 +401,36 @@ BOOL editable;
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView endUpdates];
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
+    if ([cell.contentView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell.contentView setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+-(void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
