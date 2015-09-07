@@ -54,10 +54,6 @@
     entity = [NSEntityDescription entityForName:@"HatchingPotion" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     self.hatchingPotions = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
-    HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
-    [self.collectionView setContentInset:UIEdgeInsetsMake([navigationController getContentOffset],0,0,0)];
-    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
 }
 
 - (NSString*) eggWithKey:(NSString*)key {

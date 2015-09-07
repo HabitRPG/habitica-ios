@@ -33,10 +33,6 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     
     self.screenSize = [[UIScreen mainScreen] bounds].size;
-
-    HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
-    [self.collectionView setContentInset:UIEdgeInsetsMake([navigationController getContentOffset],0,0,0)];
-    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
     
     if ([self.type isEqualToString:@"background"]) {
         self.setPrice = [NSNumber numberWithInt:15];
