@@ -39,8 +39,12 @@
     
     if (!self.hidesTopBar && [self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
-        [self.collectionView setContentInset:UIEdgeInsetsMake([navigationController getContentOffset],0,0,0)];
-        self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
+        [self.collectionView setContentInset:UIEdgeInsetsMake([navigationController getContentInset],0,0,0)];
+        self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentInset],0,0,0);
+        if (!navigationController.isTopHeaderVisible) {
+            [self.collectionView setContentOffset:CGPointMake(0, self.collectionView.contentInset.top-[navigationController getContentOffset])];
+        }
+        navigationController.previousScrollViewYOffset = self.collectionView.contentOffset.y;
     }
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -56,9 +60,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    self.didAppear = NO;
     [super viewWillAppear:animated];
-    
-    
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(preferredContentSizeChanged:)
@@ -73,6 +76,11 @@
         HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
         [deathView show];
     }
+    if (!self.hidesTopBar && [self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+        navigationController.previousScrollViewYOffset = self.collectionView.contentOffset.y;
+    }
+    self.didAppear = YES;
 }
 
 - (void)dealloc {

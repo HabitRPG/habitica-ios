@@ -45,8 +45,8 @@ User *user;
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
     HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
-    [self.tableView setContentInset:(UIEdgeInsetsMake([navigationController getContentOffset], 0, 0, 0))];
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentInset],0,0,0);
+    [self.tableView setContentInset:(UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0))];
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self

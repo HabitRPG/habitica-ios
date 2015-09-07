@@ -19,8 +19,6 @@ static const CGFloat topHeaderHeight = 168;
 @property (nonatomic, strong) UIView *backgroundView;
 @property (nonatomic, strong) UIView *bottomBorderView;
 @property (nonatomic, strong) UIView *upperBackgroundView;
-@property BOOL isTopHeaderVisible;
-@property (nonatomic) CGFloat previousScrollViewYOffset;
 
 - (CGFloat)statusBarHeight;
 - (CGFloat)bgViewOffset;
@@ -139,7 +137,7 @@ static const CGFloat topHeaderHeight = 168;
 
 
 #pragma mark - Helpers
-- (CGFloat)getContentOffset
+- (CGFloat)getContentInset
 {
     return topHeaderHeight;
 }
@@ -148,6 +146,10 @@ static const CGFloat topHeaderHeight = 168;
     CGSize statusBarSize = [[UIApplication sharedApplication] statusBarFrame].size;
     CGFloat height = MIN(statusBarSize.width, statusBarSize.height);
     return height;
+}
+
+- (CGFloat)getContentOffset {
+    return self.backgroundView.frame.size.height;
 }
 
 - (CGFloat)bgViewOffset

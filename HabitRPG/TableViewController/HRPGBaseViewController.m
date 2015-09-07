@@ -44,8 +44,12 @@
     
     if (!self.hidesTopBar && [self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
-        [self.tableView setContentInset:UIEdgeInsetsMake([navigationController getContentOffset],0,0,0)];
-        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentOffset],0,0,0);
+        [self.tableView setContentInset:UIEdgeInsetsMake([navigationController getContentInset],0,0,0)];
+        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentInset],0,0,0);
+        if (!navigationController.isTopHeaderVisible) {
+            [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentInset.top-[navigationController getContentOffset])];
+        }
+        navigationController.previousScrollViewYOffset = self.tableView.contentOffset.y;
     }
 
     self.activityCounter = 0;
@@ -74,8 +78,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     self.didAppear = NO;
+    [super viewWillAppear:animated];
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self
@@ -103,6 +107,10 @@
     if (user && [user.health floatValue] <= 0) {
         HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
         [deathView show];
+    }
+    if (!self.hidesTopBar && [self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+        navigationController.previousScrollViewYOffset = self.tableView.contentOffset.y;
     }
     self.didAppear = YES;
 }
