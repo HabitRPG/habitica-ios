@@ -12,8 +12,8 @@
 
 @interface HRPGHabitButtons()
 
-@property (nonatomic) UILabel *upLabel;
-@property (nonatomic) UILabel *downLabel;
+@property (nonatomic) UIImageView *upLabel;
+@property (nonatomic) UIImageView *downLabel;
 @property (nonatomic) UIView *roundedView;
 
 @property (nonatomic, copy) void (^upAction)();
@@ -30,11 +30,9 @@
     [self cleanUp];
     
     if ([task.up boolValue]) {
-        self.upLabel = [[UILabel alloc] init];
-        self.upLabel.text = @"+";
-        self.upLabel.textColor = [UIColor whiteColor];
-        self.upLabel.textAlignment = NSTextAlignmentCenter;
-        self.upLabel.font = [UIFont systemFontOfSize:32 weight:UIFontWeightLight];
+        self.upLabel = [[UIImageView alloc] init];
+        self.upLabel.image = [UIImage imageNamed:@"plus"];
+        self.upLabel.contentMode = UIViewContentModeCenter;
         [self addSubview:self.upLabel];
         
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleUpSingleTap:)];
@@ -44,11 +42,9 @@
     }
     
     if ([task.down boolValue]) {
-        self.downLabel = [[UILabel alloc] init];
-        self.downLabel.text = @"-";
-        self.downLabel.textColor = [UIColor whiteColor];
-        self.downLabel.textAlignment = NSTextAlignmentCenter;
-        self.downLabel.font = [UIFont systemFontOfSize:32 weight:UIFontWeightLight];
+        self.downLabel = [[UIImageView alloc] init];
+        self.downLabel.image = [UIImage imageNamed:@"minus"];
+        self.downLabel.contentMode = UIViewContentModeCenter;
         [self addSubview:self.downLabel];
         
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDownSingleTap:)];

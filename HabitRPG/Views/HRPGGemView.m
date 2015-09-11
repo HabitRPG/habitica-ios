@@ -9,6 +9,7 @@
 #import "HRPGGemView.h"
 #import "HRPGAbbrevNumberLabel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UIColor+Habitica.h"
 
 @interface HRPGGemView ()
 
@@ -24,11 +25,13 @@
     self = [super initWithFrame:frame];
     
     if (self) {
-        self.gemImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, self.frame.size.height)];
+        self.gemImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 1, 18, 13)];
         self.gemImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.gemImageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/Pet_Currency_Gem.png"]];
-        self.gemLabel = [[HRPGAbbrevNumberLabel alloc] initWithFrame:CGRectMake(26, 0, 100, self.frame.size.height)];
+        [self.gemImageView setImage:[UIImage imageNamed:@"Gem"]];
+        self.gemLabel = [[HRPGAbbrevNumberLabel alloc] initWithFrame:CGRectMake(21, 0, 100, 15)];
         self.gemLabel.text = [NSString stringWithFormat:@"%ld", (long) [self.gems integerValue]];
+        self.gemLabel.font = [UIFont systemFontOfSize:13.0];
+        self.gemLabel.textColor = [UIColor purple300];
         [self.gemLabel sizeToFit];
         
         [self addSubview:self.gemLabel];

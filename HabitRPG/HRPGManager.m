@@ -59,19 +59,19 @@ NSString *currentUser;
     if (!existingManagedObjectStore) {
         NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
         managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
-        
+
         // Initialize the Core Data stack
         [managedObjectStore createPersistentStoreCoordinator];
-        
+
         NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"HabitRPG.sqlite"];
         NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
                                  [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
                                  [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
         NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:storePath fromSeedDatabaseAtPath:nil withConfiguration:nil options:options error:&error];
-        
+
         NSAssert(persistentStore, @"Failed to add persistent store with error: %@", error);
-        
-        
+
+
         // Create the managed object contexts
         [managedObjectStore createManagedObjectContexts];
     } else {
@@ -93,7 +93,7 @@ NSString *currentUser;
         if (CUSTOM_DOMAIN.length == 0) {
             CUSTOM_DOMAIN = @"habitica.com";
         }
-    
+
         if ([DISABLE_SSL isEqualToString:@"true"]) {
           ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
         } else {
@@ -121,7 +121,7 @@ NSString *currentUser;
                                       delegate:self
                                       cancelButtonTitle:NSLocalizedString(@"OK", nil)
                                       otherButtonTitles:nil, nil];
-            
+
             [alertView show];
         }
     }];
@@ -164,13 +164,13 @@ NSString *currentUser;
     [taskMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"checklist"
                                                                                 toKeyPath:@"checklist"
                                                                               withMapping:checklistItemMapping]];
-    
+
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user/tasks" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/tasks/clear-completed" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Task class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodGET]];
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Task class] pathPattern:@"/api/v2/user/tasks/:id" method:RKRequestMethodPUT]];
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Task class] pathPattern:@"/api/v2/user/tasks" method:RKRequestMethodPOST]];
@@ -207,7 +207,7 @@ NSString *currentUser;
     [taskRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"checklist"
                                                                                        toKeyPath:@"checklist"
                                                                                      withMapping:checklistItemRequestMapping]];
-    
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodPUT pathPattern:@"/api/v2/user/tasks/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodDELETE pathPattern:@"/api/v2/user/tasks/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -233,10 +233,10 @@ NSString *currentUser;
 
         return nil;
     }];
-    
+
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"/api/v2/user/tasks/clear-completed"];
-        
+
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
         if (match) {
@@ -244,7 +244,7 @@ NSString *currentUser;
             fetchRequest.predicate = [NSPredicate predicateWithFormat:@"type=='todo'"];
             return fetchRequest;
         }
-        
+
         return nil;
     }];
 
@@ -273,17 +273,17 @@ NSString *currentUser;
 
         return nil;
     }];
-    
+
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"/api/v2/user"];
-        
+
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
         if (match) {
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
             return fetchRequest;
         }
-        
+
         return nil;
     }];
 
@@ -310,10 +310,10 @@ NSString *currentUser;
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:loginMapping method:RKRequestMethodAny pathPattern:@"/api/v2/user/auth/local" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:loginMapping method:RKRequestMethodAny pathPattern:@"/api/v2/user/auth/social" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:loginMapping method:RKRequestMethodAny pathPattern:@"/api/v2/register" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
@@ -329,7 +329,7 @@ NSString *currentUser;
     [RKMIMETypeSerialization registerClass:[HRPGEmptySerializer class] forMIMEType:@"text/plain"];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:gemPurchaseMapping method:RKRequestMethodPOST pathPattern:@"/iap/ios/verify" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     RKObjectMapping *emptyStringMapping = [RKObjectMapping mappingForClass:[NSString class]];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:emptyStringMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/chat/seen" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -338,7 +338,7 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:emptyStringMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/feed/:pet/:food" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassServerError)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     [entityMapping addAttributeMappingsFromDictionary:@{
             @"_id" : @"id",
@@ -410,8 +410,8 @@ NSString *currentUser;
             @"purchased" : @"customizationsDictionary"
     }];
     entityMapping.identificationAttributes = @[@"id"];
-    
-    
+
+
     RKEntityMapping *userTagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
     [userTagMapping addAttributeMappingsFromDictionary:@{
                                                          @"id" : @"id",
@@ -423,7 +423,7 @@ NSString *currentUser;
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
                                                                                   toKeyPath:@"tags"
                                                                                 withMapping:userTagMapping]];
-    
+
     RKEntityMapping *rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
     [rewardMapping addAttributeMappingsFromDictionary:@{
             @"id" : @"key",
@@ -440,7 +440,7 @@ NSString *currentUser;
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"rewards"
                                                                                   toKeyPath:@"rewards"
                                                                                 withMapping:rewardMapping]];
-    
+
     RKObjectMapping *rewardRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
     [rewardRequestMapping addAttributeMappingsFromDictionary:@{
                                                              @"key" : @"id",
@@ -450,12 +450,12 @@ NSString *currentUser;
                                                              @"type": @"type",
                                                              @"tagDictionary":@"tags"}];
 
-    
+
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks/:key" method:RKRequestMethodGET]];
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks/:key" method:RKRequestMethodPUT]];
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks" method:RKRequestMethodPOST]];
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Reward class] pathPattern:@"/api/v2/user/tasks/:key" method:RKRequestMethodDELETE]];
-    
+
     requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:rewardRequestMapping objectClass:[Reward class] rootKeyPath:nil method:RKRequestMethodPOST];
     [objectManager addRequestDescriptor:requestDescriptor];
     requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:rewardRequestMapping objectClass:[Reward class] rootKeyPath:nil method:RKRequestMethodPUT];
@@ -514,7 +514,7 @@ NSString *currentUser;
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.pets"
                                                                                   toKeyPath:@"ownedPets"
                                                                                 withMapping:petOwnedMapping]];
-    
+
     RKEntityMapping *mountOwnedMapping = [RKEntityMapping mappingForEntityForName:@"Pet" inManagedObjectStore:managedObjectStore];
     mountOwnedMapping.forceCollectionMapping = YES;
     [mountOwnedMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
@@ -523,7 +523,7 @@ NSString *currentUser;
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.mounts"
                                                                                   toKeyPath:@"ownedMounts"
                                                                                 withMapping:mountOwnedMapping]];
-    
+
     RKEntityMapping *newMessageMapping = [RKEntityMapping mappingForEntityForName:@"Group" inManagedObjectStore:managedObjectStore];
     newMessageMapping.forceCollectionMapping = YES;
     [newMessageMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"id"];
@@ -538,13 +538,13 @@ NSString *currentUser;
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/revive" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/class/change" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/unlock" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/purchase/:type/:item" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
@@ -578,8 +578,8 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:hPotionOwnedMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/equip/:type/:key" keyPath:@"hatchingPotions" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
-    
+
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:equipMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/hatch/:egg/:hatchingPotion" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:eggOwnedMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/hatch/:egg/:hatchingPotion" keyPath:@"eggs" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -588,7 +588,7 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:hPotionOwnedMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/hatch/:egg/:hatchingPotion" keyPath:@"hatchingPotions" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     entityMapping.assignsDefaultValueForMissingAttributes = YES;
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodAny pathPattern:@"/api/v2/user" keyPath:@"habits" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -597,10 +597,10 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodAny pathPattern:@"/api/v2/user" keyPath:@"dailys" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPUT pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     [entityMapping addAttributeMappingsFromDictionary:@{
                                                        @"stats.toNextLevel" : @"nextLevel",
                                                        @"stats.maxHealth" : @"maxHealth",
@@ -608,7 +608,7 @@ NSString *currentUser;
                                                        }];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
 
     RKObjectMapping *buyMapping = [RKObjectMapping mappingForClass:[HRPGUserBuyResponse class]];
     [buyMapping addAttributeMappingsFromDictionary:@{
@@ -647,7 +647,7 @@ NSString *currentUser;
     buyMapping.assignsDefaultValueForMissingAttributes = NO;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:buyMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/sell/:type/:key" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     entityMapping = [RKEntityMapping mappingForEntityForName:@"Group" inManagedObjectStore:managedObjectStore];
     [entityMapping addAttributeMappingsFromDictionary:@{
             @"_id" : @"id",
@@ -714,13 +714,13 @@ NSString *currentUser;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/questAbort" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:chatMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/chat" keyPath:@"message" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:chatMapping method:RKRequestMethodDELETE pathPattern:@"/api/v2/groups/:id/chat/:key" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[ChatMessage class] pathPattern:@"/api/v2/groups/:group.id/chat" method:RKRequestMethodPOST]];
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[ChatMessage class] pathPattern:@"/api/v2/groups/:group.id/chat/:id" method:RKRequestMethodDELETE]];
 
@@ -802,12 +802,12 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:memberMapping method:RKRequestMethodGET pathPattern:@"/api/v2/members/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    
+
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"/api/v2/groups/:groupID"];
-        
+
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
         if (match) {
@@ -819,10 +819,10 @@ NSString *currentUser;
             fetchRequest.predicate = [NSPredicate predicateWithFormat:@"id = %@", groupID];
             return fetchRequest;
         }
-        
+
         return nil;
     }];
-    
+
     RKEntityMapping *gearMapping = [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
     gearMapping.forceCollectionMapping = YES;
     [gearMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
@@ -975,12 +975,12 @@ NSString *currentUser;
         RKObjectMapping *testListMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
         [testListMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"setName"];
         [testListMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"(setName)" toKeyPath:@"backgrounds" withMapping:backgroundMapping]];
-             
+
         return testListMapping;
     }];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:dynamicMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"backgrounds" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     RKEntityMapping *petMapping = [RKEntityMapping mappingForEntityForName:@"Pet" inManagedObjectStore:managedObjectStore];
     petMapping.forceCollectionMapping = YES;
     [petMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"key"];
@@ -990,14 +990,25 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:petMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"questPets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
-    
+
+    RKEntityMapping *faqMapping = [RKEntityMapping mappingForEntityForName:@"FAQ" inManagedObjectStore:managedObjectStore];
+    [faqMapping addAttributeMappingsFromDictionary:@{
+                                                      @"question" : @"question",
+                                                      @"ios" : @"iosAnswer",
+                                                      @"web" : @"webAnswer",
+                                                      @"mobile" : @"mobileAnswer",
+                                                      @"@metadata.mapping.collectionIndex" : @"index"}];
+    faqMapping.identificationAttributes = @[@"question"];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:faqMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"faq.questions" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+
+
     RKObjectMapping *errorMapping = [RKObjectMapping mappingForClass:[RKErrorMessage class]];
-    
+
     [errorMapping addPropertyMapping: [RKAttributeMapping attributeMappingFromKeyPath:@"err" toKeyPath:@"errorMessage"]];
     RKResponseDescriptor *errorResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:errorMapping method:RKRequestMethodAny pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
     [objectManager addResponseDescriptor:errorResponseDescriptor];
-    
+
     [self setCredentials];
     defaults = [NSUserDefaults standardUserDefaults];
     if (currentUser != nil) {
@@ -1093,7 +1104,7 @@ NSString *currentUser;
     currentUser = [keyChain stringForKey:@"id"];
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-user" value:currentUser];
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-key" value:[keyChain stringForKey:@"key"]];
-    
+
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:@"&uid"
            value:self.user.id];
@@ -1112,7 +1123,7 @@ NSString *currentUser;
                 [background.managedObjectContext saveToPersistentStore:&executeError];
             }
         }
-        
+
         NSString *textPath = [[NSBundle mainBundle] pathForResource:@"customizations" ofType:@"json"];
         NSError *error;
         NSString *content = [NSString stringWithContentsOfFile:textPath encoding:NSUTF8StringEncoding error:&error];
@@ -1122,16 +1133,16 @@ NSString *currentUser;
                               options:kNilOptions
                               error:&error][@"customizations"];
         NSMutableArray *identifiers = [NSMutableArray arrayWithCapacity:1];
-        
+
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         [fetchRequest setEntity:
          [NSEntityDescription entityForName:@"Customization" inManagedObjectContext:[self getManagedObjectContext]]];
         NSArray *existingCustomizations = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
-        
+
         for (Customization *customization in existingCustomizations) {
             [identifiers addObject:[NSString stringWithFormat:@"%@%@", customization.type, customization.name]];
         }
-        
+
         for (NSDictionary *data in customizations) {
             if ([identifiers containsObject:[NSString stringWithFormat:@"%@%@", data[@"type"], data[@"name"]]]) {
                 continue;
@@ -1150,7 +1161,7 @@ NSString *currentUser;
             customization.price = data[@"price"];
             customization.purchasable = data[@"purchasable"];
         }
-        
+
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         [defaults setObject:[NSDate date] forKey:@"lastContentFetch"];
         [defaults synchronize];
@@ -1206,7 +1217,7 @@ NSString *currentUser;
                 if ([fetchedObjects count] > 0) {
                     self.user = fetchedObjects[0];
                 }
-                
+
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged" object:nil];
             }
         }
@@ -1236,7 +1247,7 @@ NSString *currentUser;
 
 - (void)updateUser:(NSDictionary*)newValues onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] putObject:nil path:@"/api/v2/user" parameters:newValues success:^ (RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         //TODO: API currently does not return maxHealth, maxMP and toNextLevel. To set them to correct values, fetch again until this is fixed.
         [self fetchUser:^() {
@@ -1265,7 +1276,7 @@ NSString *currentUser;
 
 - (void)changeClass:(NSString*)newClass onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/class/change?class=%@", newClass] parameters:nil success:^ (RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -1351,7 +1362,7 @@ NSString *currentUser;
 
 - (void)fetchMember:(NSString *)memberId onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] getObjectsAtPath:[@"/api/v2/members/" stringByAppendingString:memberId] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -1380,7 +1391,7 @@ NSString *currentUser;
         //Task is not saved on the server yet. Sending a request now would create a new empty habit.
         return;
     }
-    
+
     [self.networkIndicatorController beginNetworking];
 
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -1388,11 +1399,11 @@ NSString *currentUser;
                                                           action:@"score task"
                                                            label:nil
                                                            value:nil] build]];
-    
+
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@/%@", task.id, withDirection] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGTaskResponse *taskResponse = (HRPGTaskResponse *) [mappingResult firstObject];
-        
+
         if ([task.managedObjectContext existingObjectWithID:task.objectID error:&executeError] != nil) {
             task.value = [NSNumber numberWithFloat:[task.value floatValue] + [taskResponse.delta floatValue]];
         }
@@ -1404,7 +1415,7 @@ NSString *currentUser;
             self.user.experience = [NSNumber numberWithFloat:[self.user.experience floatValue] - [self.user.nextLevel floatValue]];
         }
         self.user.level = taskResponse.level ? taskResponse.level : self.user.level;
-        
+
         NSNumber *expDiff = [NSNumber numberWithFloat:([taskResponse.experience floatValue] - [self.user.experience floatValue])];
         self.user.experience = taskResponse.experience;
         NSNumber *healthDiff = [NSNumber numberWithFloat:([taskResponse.health floatValue] - [self.user.health floatValue])];
@@ -1414,25 +1425,25 @@ NSString *currentUser;
 
         NSNumber *goldDiff = [NSNumber numberWithFloat:[taskResponse.gold floatValue] - [self.user.gold floatValue]];
         self.user.gold = taskResponse.gold ? taskResponse.gold : self.user.gold;
-        
+
         [self displayTaskSuccessNotification:healthDiff withExperienceDiff:expDiff withGoldDiff:goldDiff withMagicDiff:magicDiff];
         if ([task.type isEqual:@"daily"] || [task.type isEqual:@"todo"]) {
             task.completed = [NSNumber numberWithBool:([withDirection isEqual:@"up"])];
         }
-        
+
         if (self.user && [self.user.health floatValue] <= 0) {
             HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
             [deathView show];
         }
-        
+
         if (taskResponse.dropKey) {
-            
+
             id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
             [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"behaviour"
                                                                   action:@"acquire item"
                                                                    label:nil
                                                                    value:nil] build]];
-            
+
             NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
             // Edit the entity name as appropriate.
             NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" inManagedObjectContext:[self getManagedObjectContext]];
@@ -1588,7 +1599,7 @@ NSString *currentUser;
 
 - (void)createReward:(Reward *)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:reward path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -1608,7 +1619,7 @@ NSString *currentUser;
 
 - (void)updateReward:(Reward *)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] putObject:reward path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -1633,7 +1644,7 @@ NSString *currentUser;
 
 - (void)deleteReward:(Reward *)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] deleteObject:reward path:[NSString stringWithFormat:@"/api/v2/user/tasks/%@", reward.key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -1658,7 +1669,7 @@ NSString *currentUser;
 
 - (void)clearCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil path:@"/api/v2/user/tasks/clear-completed" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -1716,7 +1727,7 @@ NSString *currentUser;
 
 - (void)loginUserSocial:(NSString *)userID withAccessToken:(NSString *)accessToken onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     NSDictionary *params = @{@"network" : @"facebook", @"authResponse": @{
                                  @"access_token": accessToken,
                                  @"client_id": userID
@@ -1726,7 +1737,7 @@ NSString *currentUser;
         PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
         [keyChain setString:loginData.id forKey:@"id"];
         [keyChain setString:loginData.key forKey:@"key"];
-        
+
         if (successBlock) {
             successBlock();
         }
@@ -1745,12 +1756,12 @@ NSString *currentUser;
         [self.networkIndicatorController endNetworking];
         return;
     }];
-    
+
 }
 
 - (void)registerUser:(NSString *)username withPassword:(NSString *)password withEmail:(NSString *)email onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     NSDictionary *params = @{@"username" : username, @"password" : password, @"confirmPassword" : password, @"email": email};
     [[RKObjectManager sharedManager] postObject:Nil path:@"/api/v2/register" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self loginUser:username withPassword:password onSuccess:^() {
@@ -1759,7 +1770,7 @@ NSString *currentUser;
             }
         }onError:^() {
         }];
-        
+
         [self.networkIndicatorController endNetworking];
         return;
     }                                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -1773,11 +1784,11 @@ NSString *currentUser;
         } else {
             [self displayNetworkError];
         }
-        
+
         [self.networkIndicatorController endNetworking];
         return;
     }];
-    
+
 }
 
 - (void)sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock {
@@ -1843,7 +1854,7 @@ NSString *currentUser;
         self.user.health = response.health;
         NSNumber *goldDiff = [NSNumber numberWithFloat:[response.gold floatValue] - [self.user.gold floatValue]];
         self.user.gold = response.gold;
-        
+
         if (response.armoireType) {
             NSString *text;
             if (response.armoireArticle) {
@@ -1891,7 +1902,7 @@ NSString *currentUser;
 
 - (void)unlockPath:(NSString*)path onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/unlock?path=%@", path] parameters:nil success:^ (RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self fetchUser:^() {
             NSError *executeError = nil;
@@ -1919,7 +1930,7 @@ NSString *currentUser;
 
 - (void)sellItem:(Item *)item onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/sell/%@/%@", item.type, item.key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGUserBuyResponse *response = [mappingResult firstObject];
@@ -1958,7 +1969,7 @@ NSString *currentUser;
 
 - (void)equipObject:(NSString *)key withType:(NSString *)type onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/equip/%@/%@", type, key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGUserBuyResponse *response = [mappingResult dictionary][[NSNull null]];
@@ -2005,7 +2016,7 @@ NSString *currentUser;
 
 - (void)hatchEgg:(NSString *)egg withPotion:(NSString *)hPotion onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/hatch/%@/%@", egg, hPotion] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGUserBuyResponse *response = [mappingResult dictionary][[NSNull null]];
@@ -2104,8 +2115,8 @@ NSString *currentUser;
             url = [url stringByAppendingString:@"?force=true"];
         }
     }
-    
-    
+
+
     [[RKObjectManager sharedManager] postObject:nil path:url parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -2206,7 +2217,7 @@ NSString *currentUser;
 
 - (void)chatMessage:(NSString *)message withGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/chat?message=%@", groupID, [message stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [self.user.party addChatmessagesObjectAtFirstPosition:[mappingResult firstObject]];
@@ -2233,7 +2244,7 @@ NSString *currentUser;
 
 - (void)deleteMessage:(ChatMessage *)message withGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] deleteObject:message path:[NSString stringWithFormat:@"/api/v2/groups/%@/chat/%@", groupID, message.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         //[self.managedObjectContext deleteObject:message];
@@ -2259,7 +2270,7 @@ NSString *currentUser;
 
 -(void)feedPet:(NSString *)pet withFood:(NSString *)food onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/feed/%@/%@", pet, food] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self fetchUser:^(){
             NSError *executeError = nil;
@@ -2297,14 +2308,14 @@ NSString *currentUser;
 
 -(void)purchaseGems:(NSDictionary *)receipt onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
-    
+
+
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"behaviour"
                                                           action:@"purchase gems"
                                                            label:nil
                                                            value:nil] build]];
-    
+
     [[RKObjectManager sharedManager] postObject:nil path:@"/iap/ios/verify" parameters:receipt success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self fetchUser:^(){
             NSError *executeError = nil;
@@ -2338,7 +2349,7 @@ NSString *currentUser;
 
 - (void)purchaseItem:(NSString *)itemName fromType:(NSString *)itemType onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/purchase/%@/%@", itemType, itemName] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self fetchUser:^(){
             NSError *executeError = nil;
@@ -2451,7 +2462,7 @@ NSString *currentUser;
                                         completionBlock:^{
                                         }];
         }onError:^() {
-            
+
         }];
     } else if ([type isEqualToString:@"gear"]) {
         [self getImage:[NSString stringWithFormat:@"shop_%@", key] withFormat:@"png" onSuccess:^(UIImage *image) {
@@ -2466,24 +2477,24 @@ NSString *currentUser;
                                         completionBlock:^{
                                         }];
         }onError:^() {
-            
+
         }];
     }
 }
 
 - (void)displayLevelUpNotification {
     [self fetchUser:^() {
-        
+
     }onError:^() {
-        
+
     }];
     if ([self.user.level integerValue] == 10 && ![self.user.disableClass boolValue]) {
         HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
         UINavigationController *selectClassNavigationController = [del.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
         selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
-        
+
         [del.window.rootViewController presentViewController:selectClassNavigationController animated:YES completion:^() {
-            
+
         }];
     } else {
         [self.user getAvatarImage:^(UIImage *image) {
@@ -2548,7 +2559,7 @@ NSString *currentUser;
                                     completionBlock:^{
                                     }];
     }onError:^() {
-        
+
     }];
 }
 
@@ -2567,7 +2578,7 @@ NSString *currentUser;
     if (format == nil) {
         format = @"png";
     }
-    
+
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     [manager downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/%@.%@", imageName, format]]
                      options:0

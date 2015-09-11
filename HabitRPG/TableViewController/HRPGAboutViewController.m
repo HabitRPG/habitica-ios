@@ -54,7 +54,7 @@
         cellName = @"RightDetailCell";
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
-    
+    cell.accessoryType = UITableViewCellAccessoryNone;
     if (indexPath.item == 0) {
         cell.textLabel.text = NSLocalizedString(@"Website", nil);
         cell.detailTextLabel.text = @"habitica.com";
@@ -67,6 +67,7 @@
         cell.detailTextLabel.text = @"@habitica";
     } else if (indexPath.item == 4) {
         cell.textLabel.text = NSLocalizedString(@"FAQ", nil);
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else if (indexPath.item == 5) {
         cell.textLabel.text = NSLocalizedString(@"Leave a Review", nil);
     } else if (indexPath.item == 6) {
@@ -116,7 +117,7 @@
             break;
         }
         case 4: {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://habitica.wikia.com/wiki/FAQ"]];
+            [self performSegueWithIdentifier:@"FAQSegue" sender:self];
             break;
         }
         case 5: {

@@ -9,6 +9,7 @@
 #import "HRPGGoldView.h"
 #import "HRPGAbbrevNumberLabel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UIColor+Habitica.h"
 
 @interface HRPGGoldView ()
 
@@ -29,20 +30,24 @@
     self = [super initWithFrame:frame];
     
     if (self) {
-        self.goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, self.frame.size.height)];
+        self.goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 15, 15)];
         self.goldImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.goldImageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_gold.png"]];
-        self.goldLabel = [[HRPGAbbrevNumberLabel alloc] initWithFrame:CGRectMake(26, 0, 100, self.frame.size.height)];
+        [self.goldImageView setImage:[UIImage imageNamed:@"gold_coin"]];
+        self.goldLabel = [[HRPGAbbrevNumberLabel alloc] initWithFrame:CGRectMake(24, 0, 100, 15)];
         self.goldLabel.text = [NSString stringWithFormat:@"%ld", (long) [self.gold integerValue]];
+        self.goldLabel.font = [UIFont systemFontOfSize:13.0];
+        self.goldLabel.textColor = [UIColor gray50];
         [self.goldLabel sizeToFit];
         
         
-        self.silverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(30 + self.goldLabel.frame.size.width, 0, 25, self.frame.size.height)];
+        self.silverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(35 + self.goldLabel.frame.size.width, 0, 15, 15)];
         self.silverImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.silverImageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_silver.png"]];
-        self.silverLabel = [[HRPGAbbrevNumberLabel alloc] initWithFrame:CGRectMake(30 + self.goldLabel.frame.size.width + 26, 0, 100, self.frame.size.height)];
+        [self.silverImageView setImage:[UIImage imageNamed:@"silver_coin"]];
+        self.silverLabel = [[HRPGAbbrevNumberLabel alloc] initWithFrame:CGRectMake(35 + self.goldLabel.frame.size.width + 24, 0, 100, 15)];
         int silver = ([self.gold floatValue] - [self.gold integerValue]) * 100;
         self.silverLabel.text = [NSString stringWithFormat:@"%d", silver];
+        self.silverLabel.font = [UIFont systemFontOfSize:13.0];
+        self.silverLabel.textColor = [UIColor gray50];
         [self.silverLabel sizeToFit];
         
         [self addSubview:self.goldLabel];
@@ -61,10 +66,10 @@
     
     int silver = ([gold floatValue] - [gold integerValue]) * 100;
     self.silverLabel.text = [NSString stringWithFormat:@"%d", silver];
-    self.silverLabel.frame = CGRectMake(30 + self.goldLabel.frame.size.width + 26, 0, 100, 16);
+    self.silverLabel.frame = CGRectMake(35 + self.goldLabel.frame.size.width + 24, 0, 100, 16);
     
     [self.silverLabel sizeToFit];
-    self.silverImageView.frame = CGRectMake(30 + self.goldLabel.frame.size.width, 0, 25, 22);
+    self.silverImageView.frame = CGRectMake(35 + self.goldLabel.frame.size.width, 0, 15, 15);
 
     if (amount) {
         //animate the gold change

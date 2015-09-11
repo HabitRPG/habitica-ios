@@ -31,8 +31,7 @@ static const CGFloat topHeaderHeight = 168;
     [super viewDidLoad];
     CGRect screenRect = [[UIScreen mainScreen] bounds];
 
-    [self.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.translucent = YES;
     self.view.backgroundColor = [UIColor clearColor];
@@ -44,7 +43,7 @@ static const CGFloat topHeaderHeight = 168;
     self.backgroundView.backgroundColor = [UIColor gray600];
     
     self.bottomBorderView = [[UIView alloc] initWithFrame:CGRectMake(0, self.backgroundView.frame.size.height - 6, screenRect.size.width, 6)];
-    [self.bottomBorderView setBackgroundColor:[UIColor gray300]];
+    [self.bottomBorderView setBackgroundColor:[UIColor gray400]];
     
     self.upperBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, [self bgViewOffset])];
     [self.upperBackgroundView setBackgroundColor:[UIColor gray600]];
@@ -129,12 +128,21 @@ static const CGFloat topHeaderHeight = 168;
 }
 
 - (void)setNavigationBarColors:(CGFloat) alpha {
-    self.upperBackgroundView.backgroundColor = [[UIColor gray600] blendWithColor:[UIColor purple200] alpha:alpha];
+    self.upperBackgroundView.backgroundColor = [[UIColor gray600] blendWithColor:[UIColor purple300] alpha:alpha];
     self.navigationBar.tintColor = [[UIColor purple400] blendWithColor:[UIColor gray600] alpha:alpha];
     self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [[UIColor blackColor] blendWithColor:[UIColor whiteColor] alpha:alpha]};
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    if (self.navigationBar.barStyle == UIBarStyleDefault && alpha > 0.5) {
+        self.navigationBar.barStyle = UIBarStyleBlack;
+        [self setNeedsStatusBarAppearanceUpdate];
+    } else if (self.navigationBar.barStyle == UIBarStyleBlack && alpha < 0.5) {
+        self.navigationBar.barStyle = UIBarStyleDefault;
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return self.navigationBar.barStyle == UIBarStyleBlack ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault;
+}
 
 #pragma mark - Helpers
 - (CGFloat)getContentInset

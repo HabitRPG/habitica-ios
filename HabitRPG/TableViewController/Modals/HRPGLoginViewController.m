@@ -33,6 +33,12 @@
         self.navigationItem.leftBarButtonItem = nil;
     }
 
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
 
@@ -60,7 +66,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return 60;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,7 +81,7 @@
         } else if (indexPath.item == 1 || indexPath.item == 2) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"PasswordCell" forIndexPath:indexPath];
             self.passwordField = (UITextField*)[cell viewWithTag:1];
-            self.onePasswordButton = (UIButton*)[cell viewWithTag:2];
+            self.onePasswordButton = (UIButton*)[cell viewWithTag:3];
             [self.onePasswordButton setHidden:![[OnePasswordExtension sharedExtension] isAppExtensionAvailable]];
         } else if (self.isRegistering && indexPath.item == 3) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"RepeatPasswordCell" forIndexPath:indexPath];
@@ -91,6 +97,12 @@
         self.fbLoginButton = (FBSDKLoginButton*)[cell viewWithTag:1];
         self.fbLoginButton.delegate = self;
     }
+    
+    UIView *wrapperView = [cell viewWithTag:9];
+    if (wrapperView) {
+        wrapperView.layer.cornerRadius = 5;
+    }
+    
     return cell;
 }
 
@@ -172,7 +184,7 @@
     __weak typeof (self) miniMe = self;
     if (self.isRegistering) {
         NSDictionary *newLoginDetails = @{
-                                          AppExtensionTitleKey: @"HabitRPG",
+                                          AppExtensionTitleKey: @"Habitica",
                                           AppExtensionUsernameKey: self.usernameField.text ? : @"",
                                           AppExtensionPasswordKey: self.passwordField.text ? : @"",
                                           AppExtensionNotesKey: @"Saved with Habitica",
@@ -184,7 +196,7 @@
         
         __weak typeof (self) miniMe = self;
         
-        [[OnePasswordExtension sharedExtension] storeLoginForURLString:@"https://habitrpg.com/" loginDetails:newLoginDetails passwordGenerationOptions:passwordGenerationOptions forViewController:self sender:sender completion:^(NSDictionary *loginDict, NSError *error) {
+        [[OnePasswordExtension sharedExtension] storeLoginForURLString:@"https://habitica.com/" loginDetails:newLoginDetails passwordGenerationOptions:passwordGenerationOptions forViewController:self sender:sender completion:^(NSDictionary *loginDict, NSError *error) {
             
             if (!loginDict) {
                 if (error.code != AppExtensionErrorCodeCancelledByUser) {
@@ -200,7 +212,7 @@
             strongMe.repeatPasswordField.text = loginDict[AppExtensionPasswordKey] ? : @"";
         }];
     } else {
-    [[OnePasswordExtension sharedExtension] findLoginForURLString:@"https://habitrpg.com/" forViewController:self sender:sender completion:^(NSDictionary *loginDict, NSError *error) {
+    [[OnePasswordExtension sharedExtension] findLoginForURLString:@"https://habitica.com/" forViewController:self sender:sender completion:^(NSDictionary *loginDict, NSError *error) {
         if (!loginDict) {
             if (error.code != AppExtensionErrorCodeCancelledByUser) {
                 NSLog(@"Error invoking 1Password App Extension for find login: %@", error);
@@ -219,14 +231,12 @@
     self.isRegistering = !self.isRegistering;
     if (self.isRegistering) {
         [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0], [NSIndexPath indexPathForItem:3 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-        self.navigationItem.title = NSLocalizedString(@"Register", nil);
-        self.navigationItem.rightBarButtonItem.title = NSLocalizedString(@"Login", nil);
+        self.navigationItem.rightBarButtonItem.title = NSLocalizedString(@"Log in", nil);
         self.loginLabel.text = NSLocalizedString(@"Register", nil);
     } else {
         [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0], [NSIndexPath indexPathForItem:3 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-        self.navigationItem.title = NSLocalizedString(@"Login", nil);
         self.navigationItem.rightBarButtonItem.title = NSLocalizedString(@"Register", nil);
-        self.loginLabel.text = NSLocalizedString(@"Login", nil);
+        self.loginLabel.text = NSLocalizedString(@"Log in", nil);
     }
 }
 
