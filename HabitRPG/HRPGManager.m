@@ -84,7 +84,7 @@ NSString *currentUser;
 
     // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://habitica.com"]];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://habitrpg-staging.herokuapp.com"]];
     objectManager.managedObjectStore = managedObjectStore;
 
     [RKObjectManager setSharedManager:objectManager];
@@ -968,6 +968,17 @@ NSString *currentUser;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:petMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"pets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:petMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"questPets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    RKEntityMapping *faqMapping = [RKEntityMapping mappingForEntityForName:@"FAQ" inManagedObjectStore:managedObjectStore];
+    [faqMapping addAttributeMappingsFromDictionary:@{
+                                                      @"question" : @"question",
+                                                      @"ios" : @"iosAnswer",
+                                                      @"web" : @"webAnswer",
+                                                      @"mobile" : @"mobileAnswer",
+                                                      @"@metadata.mapping.collectionIndex" : @"index"}];
+    faqMapping.identificationAttributes = @[@"question"];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:faqMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"faq.questions" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
     

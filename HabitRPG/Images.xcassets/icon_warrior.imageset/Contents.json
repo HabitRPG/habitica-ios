@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "header_gem@1x.png"
+      "filename" : "header_warrior@1x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "header_gem@2x.png"
+      "filename" : "header_warrior@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "header_gem@3x.png"
+      "filename" : "header_warrior@3x.png"
     }
   ],
   "info" : {
