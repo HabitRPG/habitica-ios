@@ -7,19 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KLCPopup.h"
 
 @interface HRPGImageOverlayView : UIView <UIGestureRecognizerDelegate>
 
-- (void)display:(void (^)())completitionBlock;
-
-- (void)dismiss:(void (^)())completitionBlock;
-
 - (void)displayImageWithName:(NSString*)imageName;
 - (void)displayImage:(UIImage*)image;
-
--(void)onDismiss:(void (^)())completitionBlock;
-
-@property (copy)void (^dismissBlock)(void);
 
 @property (nonatomic) CGFloat height;
 @property (nonatomic) CGFloat width;

@@ -19,3 +19,4 @@ pod 'CargoBay', :git => 'https://github.com/segiddins/CargoBay.git', :branch => 
 pod 'MRProgress'
 pod 'Google/Analytics', '~> 1.0.0'
 pod 'VTAcknowledgementsViewController'
+pod 'KLCPopup'

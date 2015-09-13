@@ -86,7 +86,6 @@
 		D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */; };
 		D994B1491AD9177D008AE188 /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = D994B1481AD9177D008AE188 /* UIView+Screenshot.m */; };
 		D998FD951ADAC1FF00E9A26F /* HRPGAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D998FD941ADAC1FF00E9A26F /* HRPGAboutViewController.m */; };
-		D99BC42F19D47B4F006DC132 /* HRPGImageOverlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BC42E19D47B4F006DC132 /* HRPGImageOverlayManager.m */; };
 		D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D99BC43019D4C34A006DC132 /* 1Password.xcassets */; };
 		D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */; };
 		D99C46D819C7687A00834EC2 /* HRPGActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = D99C46D719C7687A00834EC2 /* HRPGActivityIndicator.m */; };
@@ -310,8 +309,6 @@
 		D994B1481AD9177D008AE188 /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Screenshot.m"; path = "HabitRPG/Utilities/UIView+Screenshot.m"; sourceTree = SOURCE_ROOT; };
 		D998FD931ADAC1FF00E9A26F /* HRPGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAboutViewController.h; sourceTree = "<group>"; };
 		D998FD941ADAC1FF00E9A26F /* HRPGAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAboutViewController.m; sourceTree = "<group>"; };
-		D99BC42D19D47B4F006DC132 /* HRPGImageOverlayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGImageOverlayManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D99BC42E19D47B4F006DC132 /* HRPGImageOverlayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGImageOverlayManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D99BC43019D4C34A006DC132 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
 		D99BC43119D4C34A006DC132 /* OnePasswordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
 		D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
@@ -691,8 +688,6 @@
 				D9BA33D01AB5E0C90028AFEC /* HRPGGoldView.m */,
 				D92D40D71ABF123800E30339 /* HRPGHabitButtons.h */,
 				D92D40D81ABF123800E30339 /* HRPGHabitButtons.m */,
-				D99BC42D19D47B4F006DC132 /* HRPGImageOverlayManager.h */,
-				D99BC42E19D47B4F006DC132 /* HRPGImageOverlayManager.m */,
 				D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */,
 				D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */,
 				D9E08E5C1A98A71000D95B74 /* HRPGIntroView.h */,
@@ -1208,7 +1203,6 @@
 				D9AEEA731ACEDD470076951B /* HRPGWebViewController.m in Sources */,
 				D994B1491AD9177D008AE188 /* UIView+Screenshot.m in Sources */,
 				D97C71ED18F32FEF0089FDC6 /* Gear.m in Sources */,
-				D99BC42F19D47B4F006DC132 /* HRPGImageOverlayManager.m in Sources */,
 				D9C257101B9B4C2D00839F48 /* HRPGTaskTableViewCell.m in Sources */,
 				D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */,
 				D9660D751AB23F150084CE37 /* HRPGTopHeaderNavigationController.m in Sources */,

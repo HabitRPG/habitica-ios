@@ -15,8 +15,9 @@
 #import "Group.h"
 #import "User.h"
 #import "Pet.h"
-#import "HRPGImageOverlayManager.h"
+#import "HRPGImageOverlayView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "KLCPopup.h"
 
 @interface HRPGItemViewController ()
 @property Item *selectedItem;
@@ -129,14 +130,23 @@ float textWidth;
                 return;
             }
         }
-        
         if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
             [self.sharedManager hatchEgg:item.key withPotion:self.selectedItem.key onSuccess:^() {
-                [HRPGImageOverlayManager displayImageWithString:[NSString stringWithFormat:@"Pet-%@-%@.png", item.key, self.selectedItem.key] withText:[NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil), self.selectedItem.text, item.key] withNotes:nil];
-            }onError:nil];
+                HRPGImageOverlayView *overlayView = [[HRPGImageOverlayView alloc] init];
+                [overlayView displayImageWithName:[NSString stringWithFormat:@"Pet-%@-%@.png", item.key, self.selectedItem.key]];
+                overlayView.descriptionText = [NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil), self.selectedItem.text, item.key];
+                
+                KLCPopup* popup = [KLCPopup popupWithContentView:overlayView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:YES];
+                [popup show];
+            } onError:nil];
         } else {
             [self.sharedManager hatchEgg:self.selectedItem.key withPotion:item.key onSuccess:^() {
-                [HRPGImageOverlayManager displayImageWithString:[NSString stringWithFormat:@"Pet-%@-%@.png", self.selectedItem.key, item.key] withText:[NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil), item.key, self.selectedItem.text] withNotes:nil];
+                HRPGImageOverlayView *overlayView = [[HRPGImageOverlayView alloc] init];
+                [overlayView displayImageWithName:[NSString stringWithFormat:@"Pet-%@-%@.png", self.selectedItem.key, item.key]];
+                overlayView.descriptionText = [NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil), item.key, self.selectedItem.text];
+                
+                KLCPopup* popup = [KLCPopup popupWithContentView:overlayView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:YES];
+                [popup show];
             }onError:nil];
         }
         [self endHatching];

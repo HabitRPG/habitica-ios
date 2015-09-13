@@ -26,9 +26,10 @@
 #import "HRPGNetworkIndicatorController.h"
 #import "RestKit/Network/RKPathMatcher.h"
 #import "Customization.h"
-#import "HRPGImageOverlayManager.h"
 #import "HRPGDeathView.h"
 #import <Google/Analytics.h>
+#import "HRPGImageOverlayView.h"
+#import "KLCPopup.h"
 
 @interface HRPGManager ()
 @property NIKFontAwesomeIconFactory *iconFactory;
@@ -2477,8 +2478,15 @@ NSString *currentUser;
         }];
     } else {
         [self.user getAvatarImage:^(UIImage *image) {
-            [HRPGImageOverlayManager displayImage:image withText:NSLocalizedString(@"Level up!", nil)
-                                        withNotes:[NSString stringWithFormat:@"You are now Level %ld", (long)([self.user.level integerValue])]];
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+                HRPGImageOverlayView *overlayView = [[HRPGImageOverlayView alloc] init];
+                [overlayView displayImage:image];
+                overlayView.descriptionText = NSLocalizedString(@"Level up!", nil);
+                overlayView.detailText = [NSString stringWithFormat:NSLocalizedString(@"You are now Level %ld", nil), (long)([self.user.level integerValue])];
+                
+                KLCPopup *popup = [KLCPopup popupWithContentView:overlayView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:YES];
+                [popup show];
+            }];
         } withPetMount:YES onlyHead:NO withBackground:YES useForce:NO];
     }
 
