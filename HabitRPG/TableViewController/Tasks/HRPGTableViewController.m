@@ -171,22 +171,7 @@ BOOL editable;
     }
     
     NSString *cellname = @"Cell";
-    Task *task = [self taskAtIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
-
-    UIView *whitespaceView = [cell viewWithTag:6];
-    NSLayoutConstraint *whiteSpaceHeightConstraint;
-    for (NSLayoutConstraint *con in whitespaceView.constraints) {
-        if (con.firstItem == whitespaceView || con.secondItem == whitespaceView) {
-            whiteSpaceHeightConstraint = con;
-            break;
-        }
-    }
-    if ([self.tableView numberOfRowsInSection:indexPath.section] == indexPath.row+1) {
-        whiteSpaceHeightConstraint.constant = 0;
-    } else {
-        whiteSpaceHeightConstraint.constant = 4;
-    }
     
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;

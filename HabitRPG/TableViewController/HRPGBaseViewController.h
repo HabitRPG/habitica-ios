@@ -18,7 +18,6 @@
 @property NSString *readableScreenName;
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
-- (void)orientationChanged:(NSNotification *)notification;
 
 @property NSInteger activityCounter;
 - (NSDictionary *)markdownAttributes;

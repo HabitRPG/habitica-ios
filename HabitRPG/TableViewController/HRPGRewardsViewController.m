@@ -13,10 +13,10 @@
 #import "User.h"
 #import "Reward.h"
 #import <NSString+Emoji.h>
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "HRPGRewardFormViewController.h"
 #import <POPSpringAnimation.h>
 #import "HRPGNavigationController.h"
+#import "HRPGRewardTableViewCell.h"
 
 @interface HRPGRewardsViewController ()
 @property NSString *readableName;
@@ -79,32 +79,17 @@ User *user;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell;
-    MetaReward *reward = [self getRewardAtIndexPath:indexPath];
-
-    if ([reward isKindOfClass:[Reward class]]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-        UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongCellPress:)];
-        [cell addGestureRecognizer:longPressGesture];
-    } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"ImageCell" forIndexPath:indexPath];
-        for (UIGestureRecognizer *gestureRecognizer in [cell gestureRecognizers]) {
-            if ([gestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]]) {
-                [cell removeGestureRecognizer:gestureRecognizer];
-                break;
-            }
-        };
-    }
+    HRPGRewardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    float height = 30.0f;
-    float width = self.viewWidth-111;
+    float height = 40.0f;
+    float width = self.viewWidth-109;
     MetaReward *reward = [self getRewardAtIndexPath:indexPath];
     if ([reward isKindOfClass:[Reward class]]) {
-        width = self.viewWidth-50;
+        width = self.viewWidth-67;
     }
     width = width - [[NSString stringWithFormat:@"%ld", (long) [reward.value integerValue]] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                                                                                          options:NSStringDrawingUsesLineFragmentOrigin
@@ -125,6 +110,9 @@ User *user;
                                                           NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
                                                   }
                                                      context:nil].size.height;
+    }
+    if (height < 87) {
+        return 87;
     }
     return height;
 }
@@ -150,16 +138,45 @@ User *user;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     MetaReward *reward = [self getRewardAtIndexPath:indexPath];
     if ([user.gold integerValue] < [reward.value integerValue]) {
         return;
     }
     if ([reward isKindOfClass:[Reward class]]) {
-        [self.sharedManager getReward:reward.key onSuccess:nil onError:nil];
-    } else {
-        [self.sharedManager buyObject:reward onSuccess:nil onError:nil];
+        self.editedReward = (Reward *)reward;
+        [self performSegueWithIdentifier:@"FormSegue" sender:self];
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
+    if ([cell.contentView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell.contentView setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+-(void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (MetaReward *)getRewardAtIndexPath:(NSIndexPath*)indexPath {
@@ -292,69 +309,18 @@ User *user;
     return;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
+- (void)configureCell:(HRPGRewardTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     MetaReward *reward = [self getRewardAtIndexPath:indexPath];
-    UILabel *textLabel = (UILabel *) [cell viewWithTag:1];
-    textLabel.text = [reward.text stringByReplacingEmojiCheatCodesWithUnicode];
-    textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-    UILabel *notesLabel = (UILabel *) [cell viewWithTag:2];
-    notesLabel.text = [reward.notes stringByReplacingEmojiCheatCodesWithUnicode];
-        notesLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-    UILabel *priceLabel = (UILabel *) [cell viewWithTag:3];
-    priceLabel.text = [NSString stringWithFormat:@"%ld", (long) [reward.value integerValue]];
-    UIImageView *goldView = (UIImageView *) [cell viewWithTag:4];
-    [goldView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_gold.png"]
-             placeholderImage:nil];
-    UIImageView *imageView = (UIImageView *) [cell viewWithTag:5];
-    if ([reward.key isEqualToString:@"potion"]) {
-        [imageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_potion.png"]
-                  placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-    } else if ([reward.key isEqualToString:@"armoire"]) {
-        [imageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_armoire.png"]
-                     placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-    } else if (![reward.key isEqualToString:@"reward"]) {
-        [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_%@.png", reward.key]]
-                  placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-    }
     
-    if ([user.gold integerValue] < [reward.value integerValue]) {
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        textLabel.textColor = [UIColor lightGrayColor];
-        notesLabel.textColor = [UIColor lightGrayColor];
-        imageView.alpha = 0.5;
-        goldView.alpha = 0.5;
-        priceLabel.textColor = [UIColor lightGrayColor];
-    } else {
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-        textLabel.textColor = [UIColor darkTextColor];
-        notesLabel.textColor = [UIColor darkTextColor];
-        imageView.alpha = 1;
-        goldView.alpha = 1;
-        priceLabel.textColor = [UIColor darkTextColor];
-    }
-}
-
-- (void) handleLongCellPress:(UILongPressGestureRecognizer*)gesture
-{
-    if (gesture.state == UIGestureRecognizerStateBegan) {
-        CGPoint p = [gesture locationInView:self.tableView];
-        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        POPSpringAnimation *jumpAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-        jumpAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
-        jumpAnimation.velocity = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
-        jumpAnimation.springBounciness = 20.f;
-        [cell pop_addAnimation:jumpAnimation forKey:@"jumpAnimation"];
-    }
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-        CGPoint p = [gesture locationInView:self.tableView];
-        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
-        MetaReward *reward = [self getRewardAtIndexPath:indexPath];
+    [cell configureForReward:reward withGoldOwned:user.gold];
+    
+    [cell onPurchaseTap:^() {
         if ([reward isKindOfClass:[Reward class]]) {
-            self.editedReward = (Reward *)reward;
-            [self performSegueWithIdentifier:@"FormSegue" sender:self];
+            [self.sharedManager getReward:reward.key onSuccess:nil onError:nil];
+        } else {
+            [self.sharedManager buyObject:reward onSuccess:nil onError:nil];
         }
-    }
+    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
