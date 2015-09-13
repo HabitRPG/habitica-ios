@@ -13,7 +13,6 @@
 #import "HRPGTagViewController.h"
 #import "HRPGTabBarController.h"
 #import "HRPGNavigationController.h"
-#import "HRPGImageOverlayManager.h"
 #import <POPSpringAnimation.h>
 #import "NSString+Emoji.h"
 #import "HRPGSearchDataManager.h"
