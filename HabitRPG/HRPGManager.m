@@ -2538,7 +2538,7 @@ NSString *currentUser;
 
 - (void)displayRewardNotification:(NSNumber *)goldDiff {
     UIColor *notificationColor = [UIColor colorWithRed:0.973 green:0.753 blue:0.000 alpha:1.000];
-    NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"%@ Gold", nil), goldDiff],
+    NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"%.2f Gold", nil), [goldDiff floatValue]],
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastBackgroundColorKey : notificationColor,
                               kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconCheck]
