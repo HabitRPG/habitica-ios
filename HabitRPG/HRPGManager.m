@@ -1703,7 +1703,7 @@ NSString *currentUser;
         PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
         [keyChain setString:loginData.id forKey:@"id"];
         [keyChain setString:loginData.key forKey:@"key"];
-
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged" object:nil];
         if (successBlock) {
             successBlock();
         }
