@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIView *buyButton;
 @property (weak, nonatomic) IBOutlet UIView *buyView;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *coinImageView;
 
 - (void)onPurchaseTap:(void (^)())actionBlock;
 
