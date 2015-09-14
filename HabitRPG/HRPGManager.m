@@ -107,6 +107,7 @@ NSString *currentUser;
     // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
     RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString: ROOT_URL]];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://habitrpg.com"]];
     objectManager.managedObjectStore = managedObjectStore;
 
     [RKObjectManager setSharedManager:objectManager];
@@ -2504,7 +2505,7 @@ NSString *currentUser;
                 [overlayView displayImage:image];
                 overlayView.descriptionText = NSLocalizedString(@"Level up!", nil);
                 overlayView.detailText = [NSString stringWithFormat:NSLocalizedString(@"You are now Level %ld", nil), (long)([self.user.level integerValue])];
-                
+
                 KLCPopup *popup = [KLCPopup popupWithContentView:overlayView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:YES];
                 [popup show];
             }];

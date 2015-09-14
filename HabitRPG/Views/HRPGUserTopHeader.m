@@ -93,12 +93,12 @@ NSInteger rowOffset = 130;
         [self addSubview:self.darkerBackground];
         
         self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, self.frame.size.height-42, 150, 20)];
-        self.usernameLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
+        self.usernameLabel.font = [UIFont systemFontOfSize:16];
         self.usernameLabel.textColor = [UIColor colorWithRed:0.3725 green:0.3725 blue:0.3725 alpha:1.0];
         [self addSubview:self.usernameLabel];
         
         self.levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, self.frame.size.height-24, 150, 20)];
-        self.levelLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightLight];
+        self.levelLabel.font = [UIFont systemFontOfSize:11];
         self.levelLabel.textColor = [UIColor colorWithRed:0.3725 green:0.3725 blue:0.3725 alpha:1.0];
         [self addSubview:self.levelLabel];
         
