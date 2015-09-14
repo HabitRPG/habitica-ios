@@ -24,7 +24,6 @@
 @property NIKFontAwesomeIconFactory *checkIconFactory;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
-@property NSInteger dayStart;
 @end
 
 @implementation HRPGDailyTableViewController
@@ -59,7 +58,6 @@ NIKFontAwesomeIconFactory *streakIconFactory;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.dayStart = [[self.sharedManager getUser].dayStart integerValue];
 }
 
 - (void)configureCell:(HRPGDailyTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
@@ -106,6 +104,13 @@ NIKFontAwesomeIconFactory *streakIconFactory;
         UITapGestureRecognizer *btnTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandSelectedCell:)];
         btnTapRecognizer.numberOfTapsRequired = 1;
         [cell.checklistIndicator addGestureRecognizer:btnTapRecognizer];
+        
+        //TODO: if we find a way to filter due dailies in predicate remove this
+        if ([task.type isEqualToString:@"daily"] && ((self.filterType == TaskDailyFilterTypeDue && ![task dueTodayWithOffset:self.dayStart]) || (self.filterType == TaskDailyFilterTypeGrey && [task dueTodayWithOffset:self.dayStart]))) {
+            cell.contentView.hidden = YES;
+        } else {
+            cell.contentView.hidden = NO;
+        }
     }
 }
 

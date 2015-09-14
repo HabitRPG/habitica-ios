@@ -14,6 +14,9 @@
     [super configureForTask:task];
     [self.buttons configureForTask:task];
     self.rightBorderView.backgroundColor = [task lightTaskColor];
+    
+    //Until we save the TaskHistory just set the last action to be hidden
+    self.notesLastActionConstraint.constant = 0;
 }
 
 @end

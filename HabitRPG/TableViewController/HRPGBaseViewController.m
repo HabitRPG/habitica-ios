@@ -130,22 +130,28 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (self.didAppear) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
-        [navigationController scrollViewDidScroll:scrollView];
+        if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+            HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+            [navigationController scrollViewDidScroll:scrollView];
+        }
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if (self.didAppear) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
-        [navigationController scrollViewDidEndDecelerating:scrollView];
+        if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+            HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+            [navigationController scrollViewDidEndDecelerating:scrollView];
+        }
     }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (self.didAppear) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
-        [navigationController scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+        if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+            HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+            [navigationController scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+        }
     }
 }
 

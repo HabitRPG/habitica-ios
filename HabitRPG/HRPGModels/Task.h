@@ -11,6 +11,24 @@
 
 @class ChecklistItem, Tag, User;
 
+typedef NS_ENUM(NSInteger, TaskHabitFilterType){
+    TaskHabitFilterTypeAll,
+    TaskHabitFilterTypeWeak,
+    TaskHabitFilterTypeStrong
+};
+
+typedef NS_ENUM(NSInteger, TaskDailyFilterType){
+    TaskDailyFilterTypeAll,
+    TaskDailyFilterTypeDue,
+    TaskDailyFilterTypeGrey
+};
+
+typedef NS_ENUM(NSInteger, TaskToDoFilterType){
+    TaskToDoFilterTypeActive,
+    TaskToDoFilterTypeDated,
+    TaskToDoFilterTypeDone
+};
+
 @interface Task : NSManagedObject
 
 @property(nonatomic, retain) NSString *attribute;
@@ -80,5 +98,7 @@
 
 - (UIColor*) taskColor;
 - (UIColor*) lightTaskColor;
+
++ (NSArray*)predicatesForTaskType:(NSString *)taskType withFilterType:(NSInteger)filterType;
 
 @end
