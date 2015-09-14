@@ -8,7 +8,7 @@
 
 #import "HRPGFAQTableViewController.h"
 #import "FAQ.h"
-#import "HRPGFAQDetailTableViewController.h"
+#import "HRPGFAQDetailViewController.h"
 
 @interface HRPGFAQTableViewController ()
 
@@ -155,7 +155,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"FAQDetailSegue"]) {
-        HRPGFAQDetailTableViewController *detailViewController = (HRPGFAQDetailTableViewController *)segue.destinationViewController;
+        HRPGFAQDetailViewController *detailViewController = (HRPGFAQDetailViewController *)segue.destinationViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         FAQ *faq = [self.fetchedResultsController objectAtIndexPath:indexPath];
         detailViewController.faq = faq;
