@@ -43,6 +43,13 @@
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBuyTap:)];
         [self.buyButton addGestureRecognizer:tapGestureRecognizer];
     }
+    if ([reward.value floatValue] < 1 && [reward.value floatValue] > 0) {
+        self.coinImageView.image = [UIImage imageNamed:@"silver_coin"];
+        self.priceLabel.text = [NSString stringWithFormat:@"%.f", (([reward.value floatValue] - [reward.value integerValue]) * 100)];
+    } else {
+        self.coinImageView.image = [UIImage imageNamed:@"gold_coin"];
+    }
+    
     
     if ([reward.key isEqualToString:@"potion"]) {
         [self.shopImageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_potion.png"]
