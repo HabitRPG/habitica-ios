@@ -24,8 +24,9 @@
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 - (NSPredicate*) getPredicate;
-@property BOOL displayCompleted;
-@property BOOL swipeDirection;
+
+@property NSInteger filterType;
+@property NSInteger dayStart;
 
 @end
 

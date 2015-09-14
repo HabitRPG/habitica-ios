@@ -98,13 +98,14 @@
 		D99EA7421B8667C90048BF6A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D99EA7411B8667C90048BF6A /* libOCMock.a */; };
 		D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99F15BF191027D90081836E /* HRPGBaseViewController.m */; };
 		D9A1A27E1BA593D900903567 /* HRPGRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A1A27D1BA593D900903567 /* HRPGRewardTableViewCell.m */; };
+		D9A1A2811BA7029D00903567 /* NSDate+DaysSince.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A1A2801BA7029D00903567 /* NSDate+DaysSince.m */; };
 		D9A28F721B08DF58002907E0 /* HRPGPurchaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A28F711B08DF58002907E0 /* HRPGPurchaseButton.m */; };
 		D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9A50E991A868DE400FC8B1A /* Launch Screen.xib */; };
 		D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD34A1943BB16006202C1 /* HRPGFeedViewController.m */; };
 		D9ADD34E1943BBB6006202C1 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD34D1943BBB6006202C1 /* Food.m */; };
 		D9ADD3511943BC0E006202C1 /* BuyableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD3501943BC0E006202C1 /* BuyableItem.m */; };
 		D9ADD35D19447057006202C1 /* HRPGBall.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD35C19447057006202C1 /* HRPGBall.m */; };
-		D9ADD3631944FDBE006202C1 /* HRPGTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD3621944FDBE006202C1 /* HRPGTagViewController.m */; };
+		D9ADD3631944FDBE006202C1 /* HRPGFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD3621944FDBE006202C1 /* HRPGFilterViewController.m */; };
 		D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */; };
 		D9AEEA731ACEDD470076951B /* HRPGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */; };
 		D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */; };
@@ -329,6 +330,8 @@
 		D99F15BF191027D90081836E /* HRPGBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGBaseViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9A1A27C1BA593D900903567 /* HRPGRewardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGRewardTableViewCell.h; sourceTree = "<group>"; };
 		D9A1A27D1BA593D900903567 /* HRPGRewardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGRewardTableViewCell.m; sourceTree = "<group>"; };
+		D9A1A27F1BA7029D00903567 /* NSDate+DaysSince.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DaysSince.h"; sourceTree = "<group>"; };
+		D9A1A2801BA7029D00903567 /* NSDate+DaysSince.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DaysSince.m"; sourceTree = "<group>"; };
 		D9A28F701B08DF58002907E0 /* HRPGPurchaseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPurchaseButton.h; sourceTree = "<group>"; };
 		D9A28F711B08DF58002907E0 /* HRPGPurchaseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPurchaseButton.m; sourceTree = "<group>"; };
 		D9A50E991A868DE400FC8B1A /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "HabitRPG/Launch Screen.xib"; sourceTree = SOURCE_ROOT; };
@@ -341,8 +344,8 @@
 		D9ADD3541943BE95006202C1 /* HRPGTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGTabBarController.h; sourceTree = "<group>"; };
 		D9ADD35B19447057006202C1 /* HRPGBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGBall.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9ADD35C19447057006202C1 /* HRPGBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGBall.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D9ADD3611944FDBE006202C1 /* HRPGTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTagViewController.h; sourceTree = "<group>"; };
-		D9ADD3621944FDBE006202C1 /* HRPGTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTagViewController.m; sourceTree = "<group>"; };
+		D9ADD3611944FDBE006202C1 /* HRPGFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGFilterViewController.h; sourceTree = "<group>"; };
+		D9ADD3621944FDBE006202C1 /* HRPGFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGFilterViewController.m; sourceTree = "<group>"; };
 		D9AEEA6E1ACECDBC0076951B /* HRPGClassTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGClassTableViewController.h; path = ../CollectionViewController/HRPGClassTableViewController.h; sourceTree = "<group>"; };
 		D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGClassTableViewController.m; path = ../CollectionViewController/HRPGClassTableViewController.m; sourceTree = "<group>"; };
 		D9AEEA711ACEDD470076951B /* HRPGWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGWebViewController.h; sourceTree = "<group>"; };
@@ -606,6 +609,8 @@
 				D994B1481AD9177D008AE188 /* UIView+Screenshot.m */,
 				D976D23E1B98FA940032BC41 /* UIColor+Habitica.h */,
 				D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */,
+				D9A1A27F1BA7029D00903567 /* NSDate+DaysSince.h */,
+				D9A1A2801BA7029D00903567 /* NSDate+DaysSince.m */,
 			);
 			name = Utilities;
 			path = TableViewController;
@@ -822,8 +827,8 @@
 		D9E3654F1930D45500C056F1 /* Modals */ = {
 			isa = PBXGroup;
 			children = (
-				D9ADD3611944FDBE006202C1 /* HRPGTagViewController.h */,
-				D9ADD3621944FDBE006202C1 /* HRPGTagViewController.m */,
+				D9ADD3611944FDBE006202C1 /* HRPGFilterViewController.h */,
+				D9ADD3621944FDBE006202C1 /* HRPGFilterViewController.m */,
 				D9B5C0E518D62CC700C8D1B7 /* HRPGLoginViewController.h */,
 				D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */,
 				D96038351930F90E0025EAEC /* HRPGMessageViewController.h */,
@@ -1166,6 +1171,7 @@
 				D9C89CF31B1DE3A200A599B0 /* HRPGGemViewController.m in Sources */,
 				98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */,
 				D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */,
+				D9A1A2811BA7029D00903567 /* NSDate+DaysSince.m in Sources */,
 				D9C257191B9B4EF600839F48 /* HRPGDailyTableViewCell.m in Sources */,
 				D922F0B11925314500B197EA /* HRPGNetworkIndicatorController.m in Sources */,
 				D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */,
@@ -1199,7 +1205,7 @@
 				D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */,
 				D99C46D819C7687A00834EC2 /* HRPGActivityIndicator.m in Sources */,
 				D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */,
-				D9ADD3631944FDBE006202C1 /* HRPGTagViewController.m in Sources */,
+				D9ADD3631944FDBE006202C1 /* HRPGFilterViewController.m in Sources */,
 				D9E0869118DF800F00BAF2EF /* HRPGTavernViewController.m in Sources */,
 				D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */,
 				D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */,

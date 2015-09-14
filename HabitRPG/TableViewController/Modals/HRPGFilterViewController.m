@@ -6,18 +6,20 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import "HRPGTagViewController.h"
+#import "HRPGFilterViewController.h"
 #import "Tag.h"
 #import <NIKFontAwesomeIconFactory.h>
 #import <NIKFontAwesomeIconFactory+iOS.h>
 
-@interface HRPGTagViewController ()
+@interface HRPGFilterViewController ()
 
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property NIKFontAwesomeIconFactory *iconFactory;
+@property UIView *headerView;
+@property UISegmentedControl *filterTypeControl;
 @end
 
-@implementation HRPGTagViewController
+@implementation HRPGFilterViewController
 
 
 - (void)viewDidLoad {
@@ -28,6 +30,23 @@
     self.iconFactory.colors = @[[UIColor darkGrayColor]];
     self.iconFactory.strokeColor = [UIColor darkGrayColor];
     self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
+    
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
+    if ([self.taskType isEqualToString:@"habit"]) {
+        self.filterTypeControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"All", nil), NSLocalizedString(@"Weak", nil), NSLocalizedString(@"Strong", nil)]];
+    } else if ([self.taskType isEqualToString:@"daily"]) {
+        self.filterTypeControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"All", nil), NSLocalizedString(@"Due", nil), NSLocalizedString(@"Grey", nil)]];
+    } else if ([self.taskType isEqualToString:@"todo"]) {
+        self.filterTypeControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"Active", nil), NSLocalizedString(@"Dated", nil), NSLocalizedString(@"Done", nil)]];
+    }
+    self.filterTypeControl.frame = CGRectMake(8, (self.headerView.frame.size.height-30)/2, self.headerView.frame.size.width-16, 30);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.filterTypeControl.selectedSegmentIndex = [defaults integerForKey:[NSString stringWithFormat:@"%@Filter", self.taskType]];
+    [self.filterTypeControl addTarget:self action:@selector(filterTypeChanged:) forControlEvents: UIControlEventValueChanged];
+
+    [self.headerView addSubview:self.filterTypeControl];
+    
+    self.tableView.tableHeaderView = self.headerView;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -223,6 +242,13 @@
             });
         }
     }
+}
+
+- (void)filterTypeChanged:(UISegmentedControl *)segment {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:segment.selectedSegmentIndex forKey:[NSString stringWithFormat:@"%@Filter", self.taskType]];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"taskFilterChanged" object:nil];
 }
 
 @end

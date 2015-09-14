@@ -10,12 +10,13 @@
 #import "HRPGAppDelegate.h"
 #import "HRPGFormViewController.h"
 #import "Tag.h"
-#import "HRPGTagViewController.h"
+#import "HRPGFilterViewController.h"
 #import "HRPGTabBarController.h"
 #import "HRPGNavigationController.h"
 #import <POPSpringAnimation.h>
 #import "NSString+Emoji.h"
 #import "HRPGSearchDataManager.h"
+#import "NSDate+DaysSince.h"
 
 @interface HRPGTableViewController () <UISearchBarDelegate>
 @property NSString *readableName;
@@ -49,13 +50,14 @@ BOOL editable;
         self.tableView.contentOffset = CGPointMake(0, self.tableView.contentOffset.y + self.searchBar.frame.size.height);
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectTags:) name:@"tagsSelected"  object:nil];
-    [self didSelectTags:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangeFilter:) name:@"taskFilterChanged"  object:nil];
+    [self didChangeFilter:nil];
     
     if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
         //due to the way ipads are used we want to have a bit of extra spacing
         self.extraCellSpacing = 8;
     }
+    self.dayStart = [[self.sharedManager getUser].dayStart integerValue];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -91,11 +93,7 @@ BOOL editable;
     NSMutableArray *predicateArray = [[NSMutableArray alloc] initWithCapacity:3];
     HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
     
-    if ([self.typeName isEqual:@"todo"] && !self.displayCompleted) {
-        [predicateArray addObject:[NSPredicate predicateWithFormat:@"type=='todo' && completed==NO"]];
-    } else {
-        [predicateArray addObject:[NSPredicate predicateWithFormat:@"type==%@", self.typeName]];
-    }
+    [predicateArray addObjectsFromArray:[Task predicatesForTaskType:self.typeName withFilterType:self.filterType]];
     
     if ([tabBarController.selectedTags count] > 0) {
         [predicateArray addObject:[NSPredicate predicateWithFormat:@"SUBQUERY(tags, $tag, $tag IN %@).@count = %d", tabBarController.selectedTags, [tabBarController.selectedTags count]]];
@@ -108,42 +106,20 @@ BOOL editable;
     return [NSCompoundPredicate andPredicateWithSubpredicates:predicateArray];
 }
 
-- (void) didSelectTags:(NSNotification *)notification {
+- (void) didChangeFilter:(NSNotification *)notification {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.filterType = [defaults integerForKey:[NSString stringWithFormat:@"%@Filter", self.typeName]];
+    
     [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
     [self.tableView reloadData];
-    HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
-    NSUInteger tagCount = tabBarController.selectedTags.count;
-    if (tagCount == 0) {
-        self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Tags", nil);
-    } else if (tagCount == 1) {
-        self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"1 Tag", nil);
-    } else {
-        NSString *localizedString = NSLocalizedString(@"%d Tags", nil);
-        self.navigationItem.leftBarButtonItem.title = [NSString stringWithFormat:localizedString, tagCount] ;
-    }
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (self.displayCompleted) {
-        if ([self.fetchedResultsController sections].count == 0) {
-            return 1;
-        } else if ([self.fetchedResultsController sections].count == 1) {
-            Task *task = (Task*) [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-            if ([task.completed boolValue]) {
-                return 1;
-            } else {
-                return 2;
-            }
-        } else {
-            return 2;
-        }
-    } else {
-        return [self.fetchedResultsController sections].count;
-    }
+    return [self.fetchedResultsController sections].count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -199,10 +175,14 @@ BOOL editable;
     }
     
     Task *task = [self taskAtIndexPath:indexPath];
+    
+    //TODO: if we find a way to filter due dailies in predicate remove this
+    if ([task.type isEqualToString:@"daily"] && indexPath.item+1 < [self.fetchedResultsController fetchedObjects].count && ((self.filterType == TaskDailyFilterTypeDue && ![task dueTodayWithOffset:self.dayStart]) || (self.filterType == TaskDailyFilterTypeGrey && [task dueTodayWithOffset:self.dayStart]))) {
+        return 0.1;
+    }
     float width;
     NSInteger height = 40;
     if ([task.type isEqualToString:@"habit"]) {
-        //50 for each button and 1 for seperator
         width = self.viewWidth - 95;
     } else if ([task.checklist count] > 0) {
         width = self.viewWidth - 110;
@@ -254,19 +234,10 @@ BOOL editable;
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
     if ([segue.identifier isEqualToString:@"UnwindTagSegue"]) {
-        HRPGTagViewController *tagViewController = (HRPGTagViewController*)segue.sourceViewController;
+        HRPGFilterViewController *tagViewController = (HRPGFilterViewController*)segue.sourceViewController;
         HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
         tabBarController.selectedTags = tagViewController.selectedTags;
-        NSUInteger tagCount = tabBarController.selectedTags.count;
-        if (tagCount == 0) {
-            self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Tags", nil);
-        } else if (tagCount == 1) {
-            self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"1 Tag", nil);
-        } else {
-            NSString *localizedString = NSLocalizedString(@"%d Tags", nil);
-            self.navigationItem.leftBarButtonItem.title = [NSString stringWithFormat:localizedString, tagCount] ;
-        }
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"tagsSelected" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"taskFilterChanged" object:nil];
     }
 }
 
@@ -585,12 +556,13 @@ BOOL editable;
             formController.task = editedTask;
             editedTask = nil;
         }
-    } else if ([segue.identifier isEqualToString:@"TagSegue"]) {
+    } else if ([segue.identifier isEqualToString:@"FilterSegue"]) {
         HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
         HRPGNavigationController *navigationController = (HRPGNavigationController *) segue.destinationViewController;
         navigationController.sourceViewController = self;
-        HRPGTagViewController *tagController = (HRPGTagViewController *) navigationController.topViewController;
-        tagController.selectedTags = [tabBarController.selectedTags mutableCopy];
+        HRPGFilterViewController *filterController = (HRPGFilterViewController *) navigationController.topViewController;
+        filterController.selectedTags = [tabBarController.selectedTags mutableCopy];
+        filterController.taskType = self.typeName;
     }
 }
 

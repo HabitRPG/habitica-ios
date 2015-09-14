@@ -11,6 +11,7 @@
 #import "Tag.h"
 #import "HRPGAppDelegate.h"
 #import "UIColor+Habitica.h"
+#import "NSDate+DaysSince.h"
 
 @implementation Task
 
@@ -65,19 +66,8 @@
         if (self.startDate) {
             startDate = self.startDate;
         }
-
-        NSDate *fromDate;
-        NSDate *toDate;
         
-        
-        [calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate
-                     interval:NULL forDate:startDate];
-        [calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDate
-                     interval:NULL forDate:dateWithOffset];
-        
-        NSDateComponents *difference = [calendar components:NSCalendarUnitDay
-                                                   fromDate:fromDate toDate:toDate options:0];
-        return ([difference day] % [self.everyX integerValue]) == 0;
+        return ([[dateWithOffset daysSinceDate:startDate] integerValue] % [self.everyX integerValue]) == 0;
     } else {
         
             NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -193,6 +183,56 @@
     } else {
         return [UIColor blue100];
     }
+}
+
++ (NSArray*)predicatesForTaskType:(NSString *) taskType withFilterType:(NSInteger)filterType {
+    if ([taskType isEqual:@"habit"]) {
+        switch (filterType) {
+            case TaskHabitFilterTypeAll: {
+                return @[[NSPredicate predicateWithFormat:@"type=='habit'"]];
+            }
+            case TaskHabitFilterTypeWeak: {
+                return @[[NSPredicate predicateWithFormat:@"type=='habit' && value <= 0"]];
+            }
+            case TaskHabitFilterTypeStrong: {
+                return @[[NSPredicate predicateWithFormat:@"type=='habit' && value > 0"]];
+            }
+        }
+    } else if ([taskType isEqual:@"daily"]) {
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"EEEE"];
+        NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier: @"en_US"];
+        df.locale = locale;
+        NSString *dateString = [df stringFromDate:[NSDate date]];
+        switch (filterType) {
+            case TaskDailyFilterTypeAll: {
+                return @[[NSPredicate predicateWithFormat:@"type=='daily'"]];
+            }
+            case TaskDailyFilterTypeDue: {
+                NSArray *predicates = @[[NSPredicate predicateWithFormat:@"type=='daily' && completed == NO"]];
+                predicates = [predicates arrayByAddingObject:[NSPredicate predicateWithFormat:@"(frequency == 'weekly' && %K == YES) || (frequency == 'daily')", [dateString lowercaseString]]];
+                return predicates;
+            }
+            case TaskDailyFilterTypeGrey: {
+                NSArray *predicates = @[[NSPredicate predicateWithFormat:@"type=='daily'"]];
+                predicates = [predicates arrayByAddingObject:[NSPredicate predicateWithFormat:@"completed == YES || (frequency == 'weekly' && %K == NO) || (frequency == 'daily')", [dateString lowercaseString]]];
+                return predicates;
+            }
+        }
+    } else if ([taskType isEqual:@"todo"]) {
+        switch (filterType) {
+            case TaskToDoFilterTypeActive: {
+                return @[[NSPredicate predicateWithFormat:@"type=='todo' && completed==NO"]];
+            }
+            case TaskToDoFilterTypeDated: {
+                return @[[NSPredicate predicateWithFormat:@"type=='todo' && completed==NO && duedate!=nil"]];
+            }
+            case TaskToDoFilterTypeDone: {
+                return @[[NSPredicate predicateWithFormat:@"type=='todo' && completed==YES"]];
+            }
+        }
+    }
+    return @[];
 }
 
 @end
