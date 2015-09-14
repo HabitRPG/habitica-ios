@@ -128,7 +128,18 @@
         }
         case 7: {
             VTAcknowledgementsViewController *viewController = [VTAcknowledgementsViewController acknowledgementsViewController];
-            viewController.headerText = NSLocalizedString(@"We love open source software.", nil); // optional
+            viewController.headerText = NSLocalizedString(@"We love open source software.", nil);
+            
+            if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+                HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+                [viewController.tableView setContentInset:UIEdgeInsetsMake([navigationController getContentInset],0,0,0)];
+                viewController.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentInset],0,0,0);
+                if (!navigationController.isTopHeaderVisible) {
+                    [viewController.tableView setContentOffset:CGPointMake(0, self.tableView.contentInset.top-[navigationController getContentOffset])];
+                }
+                navigationController.previousScrollViewYOffset = self.tableView.contentOffset.y;
+            }
+            
             [self.navigationController pushViewController:viewController animated:YES];
             break;
         }

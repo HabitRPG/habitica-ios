@@ -53,6 +53,10 @@ User *user;
     }
     navigationController.previousScrollViewYOffset = self.tableView.contentOffset.y;
     
+    if (self.tableView.contentSize.height < self.tableView.frame.size.height-self.tableView.contentInset.top-self.tableView.contentInset.bottom) {
+        self.tableView.contentInset = UIEdgeInsetsZero;
+    }
+    
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(reloadAllData:)
