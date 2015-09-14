@@ -18,14 +18,14 @@
 @property HRPGManager *sharedManager;
 @property NSManagedObjectContext *managedObjectContext;
 @property XLFormSectionDescriptor *reminderSection;
+@property BOOL didAppear;
 @end
 
 @implementation HRPGSettingsViewController
 NSUserDefaults *defaults;
 User *user;
 
--(id)initWithCoder:(NSCoder *)aDecoder
-{
+-(id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self){
         HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
@@ -44,15 +44,47 @@ User *user;
     [super viewDidLoad];
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
+    
     HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+    [self.tableView setContentInset:UIEdgeInsetsMake([navigationController getContentInset],0,0,0)];
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentInset],0,0,0);
-    [self.tableView setContentInset:(UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0))];
+    if (!navigationController.isTopHeaderVisible) {
+        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentInset.top-[navigationController getContentOffset])];
+    }
+    navigationController.previousScrollViewYOffset = self.tableView.contentOffset.y;
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(reloadAllData:)
      name:@"shouldReloadAllData"
      object:nil];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (self.didAppear) {
+        if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+            HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+            [navigationController scrollViewDidScroll:scrollView];
+        }
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (self.didAppear) {
+        if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+            HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+            [navigationController scrollViewDidEndDecelerating:scrollView];
+        }
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (self.didAppear) {
+        if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+            HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+            [navigationController scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+        }
+    }
 }
 
 - (void)reloadAllData:(NSNotification *)notification {
