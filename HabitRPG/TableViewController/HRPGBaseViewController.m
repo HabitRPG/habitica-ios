@@ -42,7 +42,7 @@
         [self presentViewController:navigationController animated:NO completion:nil];
     }
     
-    if (!self.hidesTopBar && [self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
         [self.tableView setContentInset:UIEdgeInsetsMake([navigationController getContentInset],0,0,0)];
         self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentInset],0,0,0);
@@ -108,7 +108,7 @@
         HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
         [deathView show];
     }
-    if (!self.hidesTopBar && [self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
         navigationController.previousScrollViewYOffset = self.tableView.contentOffset.y;
     }
