@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "FAQ.h"
 
-@interface HRPGFAQDetailTableViewController : UIViewController
+@interface HRPGFAQDetailViewController : UIViewController
 
 @property FAQ *faq;
+@property (weak, nonatomic) IBOutlet UILabel *questionLabel;
+@property (weak, nonatomic) IBOutlet UITextView *answerTextView;
 
 @end

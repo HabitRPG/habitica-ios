@@ -18,4 +18,6 @@
 @property (nonatomic, retain) NSString * mobileAnswer;
 @property (nonatomic, retain) NSNumber * index;
 
+- (NSString*) getRelevantAnswer;
+
 @end

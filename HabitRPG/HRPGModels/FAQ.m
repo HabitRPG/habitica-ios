@@ -17,4 +17,14 @@
 @dynamic mobileAnswer;
 @dynamic index;
 
+- (NSString *)getRelevantAnswer {
+    if (self.iosAnswer && self.iosAnswer.length > 0) {
+        return self.iosAnswer;
+    } else if (self.mobileAnswer && self.mobileAnswer.length > 0) {
+        return self.mobileAnswer;
+    } else {
+        return self.webAnswer;
+    }
+}
+
 @end

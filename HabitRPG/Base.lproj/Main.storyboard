@@ -1328,6 +1328,7 @@
                                 <connections>
                                     <outlet property="buyButton" destination="Dnk-KH-Ao7" id="FAN-Lt-PD9"/>
                                     <outlet property="buyView" destination="xnL-kE-ttW" id="ltj-yg-S1H"/>
+                                    <outlet property="coinImageView" destination="l2q-hU-3CL" id="303-Qh-mCE"/>
                                     <outlet property="detailLabel" destination="oYh-oR-3co" id="tTE-Ve-ZOL"/>
                                     <outlet property="priceLabel" destination="imx-7O-EEy" id="f7W-r1-MzK"/>
                                     <outlet property="shopImageView" destination="R1k-gI-mzJ" id="WCf-I7-meL"/>
@@ -1382,7 +1383,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Uys-BA-gjm" kind="show" identifier="FAQDetailSegue" id="Xec-l6-0hW"/>
+                                    <segue destination="EKs-nQ-slC" kind="show" identifier="FAQDetailSegue" id="CmY-eT-aVV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1397,31 +1398,55 @@
             </objects>
             <point key="canvasLocation" x="5235" y="-605"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="3Lj-WP-X6z">
+        <!--Detail View Controller-->
+        <scene sceneID="4IN-KI-Dqx">
             <objects>
-                <tableViewController id="Uys-BA-gjm" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qFX-Zm-Xyr">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="EKs-nQ-slC" customClass="HRPGFAQDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PUx-1m-TEb"/>
+                        <viewControllerLayoutGuide type="bottom" id="iqV-eg-bF0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qgK-LN-ots">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iE-Xy-7j2">
+                                <rect key="frame" x="0.0" y="122.5" width="600" height="428.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5f-pj-SLH">
+                                <rect key="frame" x="16" y="80" width="568" height="26.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="500" constant="21" id="8kI-LC-7S3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qmM-Xx-L4G">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qmM-Xx-L4G" id="r3x-cD-ktx">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Uys-BA-gjm" id="PQj-6Z-HwF"/>
-                            <outlet property="delegate" destination="Uys-BA-gjm" id="uXE-I9-taN"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uMS-fs-p9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="Z5f-pj-SLH" firstAttribute="top" secondItem="PUx-1m-TEb" secondAttribute="bottom" constant="16" id="5PW-vw-IuM"/>
+                            <constraint firstItem="2iE-Xy-7j2" firstAttribute="leading" secondItem="qgK-LN-ots" secondAttribute="leadingMargin" constant="-16" id="C3l-hg-Enq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2iE-Xy-7j2" secondAttribute="trailing" constant="-16" id="GDF-cB-PI9"/>
+                            <constraint firstItem="iqV-eg-bF0" firstAttribute="top" secondItem="2iE-Xy-7j2" secondAttribute="bottom" id="N4z-ni-nxC"/>
+                            <constraint firstItem="Z5f-pj-SLH" firstAttribute="leading" secondItem="qgK-LN-ots" secondAttribute="leadingMargin" id="Ucr-Yj-C9x"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Z5f-pj-SLH" secondAttribute="trailing" id="gpT-vZ-fpe"/>
+                            <constraint firstItem="2iE-Xy-7j2" firstAttribute="top" secondItem="Z5f-pj-SLH" secondAttribute="bottom" constant="16" id="mfC-su-m8N"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="answerTextView" destination="2iE-Xy-7j2" id="aLx-5f-Bek"/>
+                        <outlet property="questionLabel" destination="Z5f-pj-SLH" id="VD8-Js-jVj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nfs-aV-KV4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6012" y="-605"/>
+            <point key="canvasLocation" x="5939" y="-605"/>
         </scene>
         <!--Customize Avatar-->
         <scene sceneID="7gF-HT-Pzb">

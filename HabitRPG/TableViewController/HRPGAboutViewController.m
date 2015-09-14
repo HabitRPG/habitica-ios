@@ -23,10 +23,8 @@
 @implementation HRPGAboutViewController
 
 - (void)viewDidLoad {
-    self.hidesTopBar = YES;
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
     
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 150)];

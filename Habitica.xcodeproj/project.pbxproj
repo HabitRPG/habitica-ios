@@ -130,7 +130,7 @@
 		D9C257191B9B4EF600839F48 /* HRPGDailyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C257181B9B4EF600839F48 /* HRPGDailyTableViewCell.m */; };
 		D9C2571C1B9B4F4A00839F48 /* HRPGToDoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C2571B1B9B4F4A00839F48 /* HRPGToDoTableViewCell.m */; };
 		D9C257261B9DC26D00839F48 /* HRPGFAQTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C257251B9DC26D00839F48 /* HRPGFAQTableViewController.m */; };
-		D9C2572A1B9DC4E900839F48 /* HRPGFAQDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C257291B9DC4E900839F48 /* HRPGFAQDetailTableViewController.m */; };
+		D9C2572A1B9DC4E900839F48 /* HRPGFAQDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C257291B9DC4E900839F48 /* HRPGFAQDetailViewController.m */; };
 		D9C2572D1B9DC58700839F48 /* FAQ.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C2572C1B9DC58700839F48 /* FAQ.m */; };
 		D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7C1EF18E26BBB0083F4E4 /* Egg.m */; };
 		D9C7C1F318E280DE0083F4E4 /* HRPGRewardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7C1F218E280DD0083F4E4 /* HRPGRewardsViewController.m */; };
@@ -395,8 +395,8 @@
 		D9C257241B9DC26D00839F48 /* HRPGFAQTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGFAQTableViewController.h; sourceTree = "<group>"; };
 		D9C257251B9DC26D00839F48 /* HRPGFAQTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGFAQTableViewController.m; sourceTree = "<group>"; };
 		D9C257271B9DC27A00839F48 /* HabitRPG 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 10.xcdatamodel"; sourceTree = "<group>"; };
-		D9C257281B9DC4E900839F48 /* HRPGFAQDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGFAQDetailTableViewController.h; sourceTree = "<group>"; };
-		D9C257291B9DC4E900839F48 /* HRPGFAQDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGFAQDetailTableViewController.m; sourceTree = "<group>"; };
+		D9C257281B9DC4E900839F48 /* HRPGFAQDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGFAQDetailViewController.h; sourceTree = "<group>"; };
+		D9C257291B9DC4E900839F48 /* HRPGFAQDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGFAQDetailViewController.m; sourceTree = "<group>"; };
 		D9C2572B1B9DC58700839F48 /* FAQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAQ.h; sourceTree = "<group>"; };
 		D9C2572C1B9DC58700839F48 /* FAQ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAQ.m; sourceTree = "<group>"; };
 		D9C7C1EE18E26BBB0083F4E4 /* Egg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Egg.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -736,8 +736,8 @@
 			children = (
 				D9C257241B9DC26D00839F48 /* HRPGFAQTableViewController.h */,
 				D9C257251B9DC26D00839F48 /* HRPGFAQTableViewController.m */,
-				D9C257281B9DC4E900839F48 /* HRPGFAQDetailTableViewController.h */,
-				D9C257291B9DC4E900839F48 /* HRPGFAQDetailTableViewController.m */,
+				D9C257281B9DC4E900839F48 /* HRPGFAQDetailViewController.h */,
+				D9C257291B9DC4E900839F48 /* HRPGFAQDetailViewController.m */,
 			);
 			path = FAQ;
 			sourceTree = "<group>";
@@ -1249,7 +1249,7 @@
 				D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */,
 				D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */,
 				D902AD8A1B540AE30098A1BD /* HRPGBaseCollectionViewController.m in Sources */,
-				D9C2572A1B9DC4E900839F48 /* HRPGFAQDetailTableViewController.m in Sources */,
+				D9C2572A1B9DC4E900839F48 /* HRPGFAQDetailViewController.m in Sources */,
 				D9ADD34E1943BBB6006202C1 /* Food.m in Sources */,
 				D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */,
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
