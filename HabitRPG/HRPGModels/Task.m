@@ -21,6 +21,7 @@
 @dynamic down;
 @dynamic id;
 @dynamic notes;
+@dynamic order;
 @dynamic priority;
 @dynamic streak;
 @dynamic text;
