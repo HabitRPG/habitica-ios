@@ -16,6 +16,7 @@
     [super configureForTask:task];
     [self.checkBox configureForTask:task];
     self.checklistIndicator.backgroundColor = [task lightTaskColor];
+    self.checklistIndicator.hidden = NO;
 
     NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];
     if ([checklistCount integerValue] > 0) {
