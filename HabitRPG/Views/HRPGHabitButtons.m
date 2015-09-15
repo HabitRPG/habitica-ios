@@ -88,18 +88,18 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     if (self.upLabel && self.downLabel) {
-        self.upLabel.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, (int)self.frame.size.height/2);
-        self.downLabel.frame = CGRectMake(self.frame.origin.x, (int)self.frame.size.height/2, self.frame.size.width, self.frame.size.height-(int)self.frame.size.height/2);
+        self.upLabel.frame = CGRectMake(0, 0, self.frame.size.width, (int)self.frame.size.height/2);
+        self.downLabel.frame = CGRectMake(0, (int)self.frame.size.height/2, self.frame.size.width, self.frame.size.height-(int)self.frame.size.height/2);
     } else {
         int verticalCenter = self.frame.size.height/2;
         int horizontalCenter = self.frame.size.width/2;
         self.roundedView.frame = CGRectMake(horizontalCenter-20, verticalCenter-20, 40, 40);
         
         if (self.upLabel) {
-            self.upLabel.frame = self.frame;
+            self.upLabel.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         }
         if (self.downLabel) {
-            self.downLabel.frame = self.frame;
+            self.downLabel.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         }
     }
 }

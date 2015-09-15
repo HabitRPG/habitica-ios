@@ -107,7 +107,6 @@ NSString *currentUser;
     // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
     RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString: ROOT_URL]];
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://habitrpg.com"]];
     objectManager.managedObjectStore = managedObjectStore;
 
     [RKObjectManager setSharedManager:objectManager];
@@ -1432,7 +1431,19 @@ NSString *currentUser;
         if ([task.type isEqual:@"daily"] || [task.type isEqual:@"todo"]) {
             task.completed = [NSNumber numberWithBool:([withDirection isEqual:@"up"])];
         }
+<<<<<<< HEAD
 
+=======
+        if ([task.type isEqual:@"daily"]) {
+            if ([withDirection isEqualToString:@"up"]) {
+                task.streak = [NSNumber numberWithInt:[task.streak integerValue]+1];
+            } else if ([task.streak integerValue] > 0) {
+                task.streak = [NSNumber numberWithInt:[task.streak integerValue]-1];
+            }
+        }
+
+
+>>>>>>> Update streak values when scoring dailies
         if (self.user && [self.user.health floatValue] <= 0) {
             HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
             [deathView show];
@@ -2122,7 +2133,9 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:nil path:url parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-        successBlock();
+        if (successBlock) {
+            successBlock();
+        }
         if (quest) {
             quest.owned = [NSNumber numberWithInt:[quest.owned intValue]-1];
         }
