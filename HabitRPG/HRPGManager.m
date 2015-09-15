@@ -85,7 +85,7 @@ NSString *currentUser;
 
     // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://habitrpg-gamma.herokuapp.com"]];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://habitica.com"]];
     objectManager.managedObjectStore = managedObjectStore;
 
     [RKObjectManager setSharedManager:objectManager];
