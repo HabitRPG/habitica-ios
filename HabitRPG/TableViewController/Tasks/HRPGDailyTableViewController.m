@@ -85,8 +85,6 @@ NIKFontAwesomeIconFactory *streakIconFactory;
             }
             
         };
-
-
     } else {
         [cell configureForTask:task withOffset:self.dayStart];
         cell.checkBox.wasTouched = ^() {

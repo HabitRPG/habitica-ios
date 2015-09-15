@@ -85,6 +85,7 @@
     } else {
         self.cornerRadius = self.size/2;
     }
+    [self setNeedsDisplay];
 }
 
 - (void)viewTapped:(UITapGestureRecognizer*)recognizer {
