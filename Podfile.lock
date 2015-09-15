@@ -2,8 +2,8 @@ PODS:
   - AFNetworking (1.3.4)
   - CargoBay (1.0.0):
     - AFNetworking (~> 1.3)
-  - CRToast (0.0.7)
-  - DateTools (1.6.1)
+  - CRToast (0.0.8)
+  - DateTools (1.7.0)
   - DTCoreText (1.6.16):
     - DTFoundation/Core (~> 1.7.5)
     - DTFoundation/DTAnimatedGIF (~> 1.7.5)
@@ -16,8 +16,8 @@ PODS:
   - DTFoundation/UIKit (1.7.7):
     - DTFoundation/Core
   - EAIntroView (2.6.4)
-  - FLEX (2.0.3)
-  - FontAwesomeIconFactory (2.0.2)
+  - FLEX (2.0.6)
+  - FontAwesomeIconFactory (2.1)
   - Google/Analytics (1.0.7):
     - Google/Core
     - GoogleAnalytics (~> 3.12)
@@ -106,7 +106,7 @@ PODS:
   - SDWebImage/Core (3.7.3)
   - SOCKit (1.1)
   - TransitionKit (2.1.1)
-  - VTAcknowledgementsViewController (0.14)
+  - VTAcknowledgementsViewController (0.15)
   - XLForm (3.0.2)
 
 DEPENDENCIES:
@@ -143,19 +143,19 @@ CHECKOUT OPTIONS:
     :commit: 333b13622ff465539d124a7537b18d4677a6b397
     :git: https://github.com/segiddins/CargoBay.git
   CRToast:
-    :commit: cfdb868c74f7fd4e7cfb5b73d0b03ad5cd520ffe
+    :commit: 3f7d99e2302ea08166c33caf6a9c74cc4b76acd0
     :git: https://github.com/cruffenach/CRToast
 
 SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
   CargoBay: d0ab6070553bb49ef61e6b5a036c0091936cc3be
-  CRToast: eb22641501990233c53cb8f83f7d2ea87e0ddf73
-  DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
+  CRToast: b087127369b4c603726ef6249d74d0d737629ab8
+  DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   DTCoreText: 934a16fe9ffdd169c96261721b39dc312b75713d
   DTFoundation: c9b3362b83f0017389082ec067ede719826a579d
   EAIntroView: df7dc18da73e1831d06878b9c0e13da78e6bb3ce
-  FLEX: 4f04fe0b0594163c00879e2b3db888e5ae37c8d5
-  FontAwesomeIconFactory: 36ea917783d4df460a6a3abf7e26481d7d49aef2
+  FLEX: 3c390976e788d3d447b614ea1714ffc8fc914cf3
+  FontAwesomeIconFactory: 0be1c4e100bb228ea59645d5b1f8a933b7ebe73a
   Google: 875f5a8ade86dd02e36586e4a54814843938c7f6
   GoogleAnalytics: fcf1f1cad57ae1a9a53520018f0f680ceeeb8b49
   GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
@@ -174,7 +174,7 @@ SPEC CHECKSUMS:
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   TransitionKit: 3a14b6acc7cf2d1dd3e454e24dbad1cfab9a1ef1
-  VTAcknowledgementsViewController: 11a869dd69598a852f12699aeaf36e2589d3fc1b
+  VTAcknowledgementsViewController: 575f5841fb47b7d9c852ccb406104ea68de07b21
   XLForm: 7817ce29f3f259186e837bb7309ac7e5b7e9b883
 
 COCOAPODS: 0.38.2
