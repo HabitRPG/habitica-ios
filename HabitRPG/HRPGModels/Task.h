@@ -38,6 +38,7 @@ typedef NS_ENUM(NSInteger, TaskToDoFilterType){
 @property(nonatomic, retain) NSNumber *down;
 @property(nonatomic, retain) NSString *id;
 @property(nonatomic, retain) NSString *notes;
+@property(nonatomic, retain) NSNumber *order;
 @property(nonatomic, retain) NSNumber *priority;
 @property(nonatomic, retain) NSNumber *streak;
 @property(nonatomic, retain) NSString *text;
