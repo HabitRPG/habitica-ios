@@ -1,0 +1,13 @@
+//
+//  debug.xcconfig
+//  Habitica
+//  Copy this file to ./debug.xcconfig
+//
+
+#include "Pods/Target Support Files/Pods/Pods.debug.xcconfig"
+
+// Set to localhost:3000 if you are running a local instance of habitica
+CUSTOM_DOMAIN = habitica.com
+// Set to true if you are running a local instance of habitica
+
+DISABLE_SSL = false
