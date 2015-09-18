@@ -21,7 +21,7 @@ $ sudo gem install cocoapods
 $ pod install
 ```
 
-CocoaPods requires that you open the *Habitica.xcworspace*.
+CocoaPods requires that you open the *Habitica.xcworkspace*.
 
 ```
 $ open Habitica.xcworkspace
