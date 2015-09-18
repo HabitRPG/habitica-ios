@@ -5,6 +5,9 @@
 # Private API keys
 private/*.key
 
+# Environemnt Config Files
+debug.xcconfig
+
 # Created by https://www.gitignore.io
 ### Xcode ###
 build/
