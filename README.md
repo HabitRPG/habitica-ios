@@ -1,6 +1,6 @@
-# HabitRPG for iOS
+# Habitica for iOS
 
-Native iOS app for [HabitRPG](https://habitrpg.com/).
+Native iOS app for [Habitica](https://habitica.com/).
 
 ## Setup for local development
 
