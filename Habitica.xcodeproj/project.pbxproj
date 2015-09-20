@@ -77,6 +77,8 @@
 		D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */; };
 		D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */ = {isa = PBXBuildFile; fileRef = D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */; };
 		D98768F51AFFB85100336978 /* blade-equipResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = D98768F41AFFB85100336978 /* blade-equipResponse.json */; };
+		D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98830D41BADD4220018594D /* HRPGLoadingViewController.m */; };
+		D98830DB1BADDE050018594D /* HRPGLoadingSquaresSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = D98830DA1BADDE050018594D /* HRPGLoadingSquaresSegue.m */; };
 		D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9884B4419168AF00078BC7C /* HRPGProgressView.m */; };
 		D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98AD54A19437A3500AF6174 /* HRPGPetViewController.m */; };
 		D98AD54E19437D9400AF6174 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = D98AD54D19437D9400AF6174 /* Pet.m */; };
@@ -292,6 +294,10 @@
 		D987393A19687F3E002A2426 /* NSNumber+abbreviation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+abbreviation.h"; path = "HabitRPG/Utilities/NSNumber+abbreviation.h"; sourceTree = SOURCE_ROOT; };
 		D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+abbreviation.m"; path = "HabitRPG/Utilities/NSNumber+abbreviation.m"; sourceTree = SOURCE_ROOT; };
 		D98768F41AFFB85100336978 /* blade-equipResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "blade-equipResponse.json"; path = "HabiticaTests/Fixtures/blade-equipResponse.json"; sourceTree = SOURCE_ROOT; };
+		D98830D31BADD4220018594D /* HRPGLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLoadingViewController.h; sourceTree = "<group>"; };
+		D98830D41BADD4220018594D /* HRPGLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLoadingViewController.m; sourceTree = "<group>"; };
+		D98830D91BADDE050018594D /* HRPGLoadingSquaresSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLoadingSquaresSegue.h; sourceTree = "<group>"; };
+		D98830DA1BADDE050018594D /* HRPGLoadingSquaresSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLoadingSquaresSegue.m; sourceTree = "<group>"; };
 		D9884B4319168AF00078BC7C /* HRPGProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGProgressView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9884B4419168AF00078BC7C /* HRPGProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGProgressView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D98AD54919437A3500AF6174 /* HRPGPetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGPetViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -943,6 +949,10 @@
 				D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */,
 				D9D44C0F1B0A0C73000732B4 /* HRPGGGuidelinesViewController.h */,
 				D9D44C101B0A0C73000732B4 /* HRPGGGuidelinesViewController.m */,
+				D98830D31BADD4220018594D /* HRPGLoadingViewController.h */,
+				D98830D41BADD4220018594D /* HRPGLoadingViewController.m */,
+				D98830D91BADDE050018594D /* HRPGLoadingSquaresSegue.h */,
+				D98830DA1BADDE050018594D /* HRPGLoadingSquaresSegue.m */,
 				D9EB4EA018CB4A9400BB2094 /* Main.storyboard */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */,
@@ -1201,6 +1211,7 @@
 				D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */,
 				D979AD131AF3CF6C00D59FAE /* Customization.m in Sources */,
 				D94AADB4192A30F900546C8E /* Spell.m in Sources */,
+				D98830DB1BADDE050018594D /* HRPGLoadingSquaresSegue.m in Sources */,
 				D9ADD35D19447057006202C1 /* HRPGBall.m in Sources */,
 				D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */,
 				D99C46D819C7687A00834EC2 /* HRPGActivityIndicator.m in Sources */,
@@ -1266,6 +1277,7 @@
 				D9BA33D11AB5E0C90028AFEC /* HRPGGoldView.m in Sources */,
 				D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */,
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
+				D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */,
 				D9C2571C1B9B4F4A00839F48 /* HRPGToDoTableViewCell.m in Sources */,
 				D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */,
 				D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */,
