@@ -68,7 +68,7 @@
     application.scheduledLocalNotifications = scheduledNotifications;
     User *user = [self.sharedManager getUser];
     if (user) {
-        UINavigationController *navigationController = (UINavigationController *) ((UITabBarController *) self.window.rootViewController).selectedViewController;
+        /*UINavigationController *navigationController = (UINavigationController *) ((UITabBarController *) self.window.rootViewController).selectedViewController;
         UIViewController *visibleView = navigationController.visibleViewController;
         HRPGTableViewController *viewController;
         if ([visibleView isKindOfClass:[HRPGTableViewController class]]) {
@@ -83,7 +83,7 @@
             if (viewController) {
                 [viewController.refreshControl endRefreshing];
             }
-        }];
+        }];*/
     }
 }
 
