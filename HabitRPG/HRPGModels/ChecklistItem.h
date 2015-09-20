@@ -14,6 +14,7 @@
 @interface ChecklistItem : NSManagedObject
 
 @property(nonatomic, retain) NSNumber *completed;
+@property(nonatomic, retain) NSNumber *currentlyChecking;
 @property(nonatomic, retain) NSString *id;
 @property(nonatomic, retain) NSString *text;
 @property(nonatomic, retain) Task *task;
