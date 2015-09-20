@@ -17,6 +17,7 @@
 		D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03919D60B53001EABE4 /* DailyIntro.png */; };
 		D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03A19D60B53001EABE4 /* TodoIntro.png */; };
 		D90EA03E19D60B53001EABE4 /* RewardIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03B19D60B53001EABE4 /* RewardIntro.png */; };
+		D914398A1BAF14C40006999E /* UIImage+withColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D91439891BAF14C40006999E /* UIImage+withColor.m */; };
 		D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */; };
 		D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0AD19217C2300B197EA /* HRPGEmptySerializer.m */; };
 		D922F0B11925314500B197EA /* HRPGNetworkIndicatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0B01925314500B197EA /* HRPGNetworkIndicatorController.m */; };
@@ -186,6 +187,8 @@
 		D90EA03919D60B53001EABE4 /* DailyIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DailyIntro.png; sourceTree = "<group>"; };
 		D90EA03A19D60B53001EABE4 /* TodoIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TodoIntro.png; sourceTree = "<group>"; };
 		D90EA03B19D60B53001EABE4 /* RewardIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RewardIntro.png; sourceTree = "<group>"; };
+		D91439881BAF14C40006999E /* UIImage+withColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+withColor.h"; path = "HabitRPG/UIImage+withColor.h"; sourceTree = SOURCE_ROOT; };
+		D91439891BAF14C40006999E /* UIImage+withColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+withColor.m"; path = "HabitRPG/UIImage+withColor.m"; sourceTree = SOURCE_ROOT; };
 		D915F8621915BEE50037D04D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D915F8641915BF0D0037D04D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D922F0A6191C1F6B00B197EA /* HRPGUserBuyResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGUserBuyResponse.h; sourceTree = "<group>"; };
@@ -615,6 +618,8 @@
 				D994B1481AD9177D008AE188 /* UIView+Screenshot.m */,
 				D976D23E1B98FA940032BC41 /* UIColor+Habitica.h */,
 				D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */,
+				D91439881BAF14C40006999E /* UIImage+withColor.h */,
+				D91439891BAF14C40006999E /* UIImage+withColor.m */,
 				D9A1A27F1BA7029D00903567 /* NSDate+DaysSince.h */,
 				D9A1A2801BA7029D00903567 /* NSDate+DaysSince.m */,
 			);
@@ -1221,6 +1226,7 @@
 				D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */,
 				D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */,
 				D9C257131B9B4C4100839F48 /* HRPGHabitTableViewCell.m in Sources */,
+				D914398A1BAF14C40006999E /* UIImage+withColor.m in Sources */,
 				D9AEEA731ACEDD470076951B /* HRPGWebViewController.m in Sources */,
 				D994B1491AD9177D008AE188 /* UIView+Screenshot.m in Sources */,
 				D97C71ED18F32FEF0089FDC6 /* Gear.m in Sources */,

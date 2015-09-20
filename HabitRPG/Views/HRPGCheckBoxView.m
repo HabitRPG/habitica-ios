@@ -38,7 +38,7 @@
 
 - (void)configureForTask:(Task *)task {
     self.boxFillColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-    self.checked = [task.completed boolValue];
+    self.checked = [task.completed boolValue] || [task.currentlyChecking boolValue];
     if ([task.type isEqualToString:@"daily"]) {
         self.cornerRadius = 3;
         
@@ -51,6 +51,7 @@
             if ([task dueToday]) {
                 self.backgroundColor = [task lightTaskColor];
                 self.boxBorderColor = [task taskColor];
+                self.checkColor = [task taskColor];
             } else {
                 self.boxBorderColor = [UIColor gray50];
                 self.backgroundColor = [UIColor gray100];
@@ -68,6 +69,7 @@
         } else {
             self.boxBorderColor = [task taskColor];
             self.backgroundColor = [task lightTaskColor];
+            self.checkColor = [task taskColor];
         }
     }
     
@@ -75,7 +77,7 @@
 }
 
 - (void)configureForChecklistItem:(ChecklistItem *)item forTask:(Task *)task {
-    self.checked = [item.completed boolValue];
+    self.checked = [item.completed boolValue] || [item.currentlyChecking boolValue];
     self.backgroundColor = [UIColor clearColor];
     self.boxBorderColor = [UIColor gray50];
     self.boxFillColor = [UIColor gray400];
@@ -89,7 +91,9 @@
 }
 
 - (void)viewTapped:(UITapGestureRecognizer*)recognizer {
+    self.checked = !self.checked;
     self.wasTouched();
+    [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect {
