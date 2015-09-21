@@ -10,17 +10,14 @@
 #import "HRPGManager.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGRoundProgressView.h"
-#import "HRPGActivityIndicator.h"
 #import "HRPGDeathView.h"
 #import "HRPGNavigationController.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import <CoreText/CoreText.h>
-#import "HRPGActivityIndicatorOverlayView.h"
 #import <Google/Analytics.h>
 
 @interface HRPGBaseViewController ()
 @property UIBarButtonItem *navigationButton;
-@property HRPGActivityIndicator *activityIndicator;
 @property BOOL didAppear;
 @end
 
@@ -43,7 +40,6 @@
         navigationController.previousScrollViewYOffset = self.tableView.contentOffset.y;
     }
 
-    self.activityCounter = 0;
     self.viewWidth = self.view.frame.size.width;
 }
 
@@ -86,10 +82,6 @@
     }
     NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
     [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
-    
-    if (self.activityCounter > 0) {
-        [self.activityIndicator animate];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -107,7 +99,6 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [self.activityIndicator pauseAnimating];
     [super viewDidDisappear:animated];
 }
 

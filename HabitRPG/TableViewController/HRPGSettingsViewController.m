@@ -9,7 +9,6 @@
 #import "HRPGSettingsViewController.h"
 #import "HRPGAppDelegate.h"
 #import <PDKeychainBindings.h>
-#import "HRPGActivityIndicatorOverlayView.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "XLForm.h"
 #import "MRProgress.h"

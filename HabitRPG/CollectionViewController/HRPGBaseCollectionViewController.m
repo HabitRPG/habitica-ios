@@ -11,7 +11,6 @@
 #import <PDKeychainBindings.h>
 #import "HRPGAppDelegate.h"
 #import "HRPGRoundProgressView.h"
-#import "HRPGActivityIndicator.h"
 #import "HRPGDeathView.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "HRPGNavigationController.h"

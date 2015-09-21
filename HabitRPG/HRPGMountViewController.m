@@ -12,7 +12,6 @@
 #import "Pet.h"
 #import "Egg.h"
 #import "HatchingPotion.h"
-#import "HRPGActivityIndicator.h"
 #import "HRPGTopHeaderNavigationController.h"
 
 @interface HRPGMountViewController ()
@@ -21,7 +20,6 @@
 @property (nonatomic) NSArray *hatchingPotions;
 @property (nonatomic) Pet *selectedMount;
 @property UIBarButtonItem *navigationButton;
-@property HRPGActivityIndicator *activityIndicator;
 @property CGSize screenSize;
 @property NSString *equippedMountName;
 @end

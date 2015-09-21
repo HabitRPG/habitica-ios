@@ -14,7 +14,6 @@
 #import "Egg.h"
 #import "HatchingPotion.h"
 #import "HRPGNavigationController.h"
-#import "HRPGActivityIndicator.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import <pop/POP.h>
 
@@ -24,7 +23,6 @@
 @property (nonatomic) NSArray *hatchingPotions;
 @property (nonatomic) Pet *selectedPet;
 @property UIBarButtonItem *navigationButton;
-@property HRPGActivityIndicator *activityIndicator;
 @property CGSize screenSize;
 @property NSString *equippedPetName;
 @end
