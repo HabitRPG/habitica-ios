@@ -1012,7 +1012,7 @@ NSString *currentUser;
 
     [self setCredentials];
     defaults = [NSUserDefaults standardUserDefaults];
-    if (currentUser != nil) {
+    if (currentUser != nil && currentUser.length > 0) {
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", currentUser];
         [fetchRequest setPredicate:predicate];

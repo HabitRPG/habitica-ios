@@ -20,4 +20,6 @@
 @property(weak, nonatomic) UILabel *loginLabel;
 @property (weak, nonatomic) UIButton *onePasswordButton;
 
+@property BOOL isRootViewController;
+
 @end

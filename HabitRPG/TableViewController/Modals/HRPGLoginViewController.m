@@ -198,10 +198,17 @@
             [_sharedManager setCredentials];
             [_sharedManager fetchUser:^() {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }                 onError:^() {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }];
+                if (self.isRootViewController) {
+                    [self performSegueWithIdentifier:@"MainSegue" sender:self];
+                } else {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+            } onError:^() {
+                if (self.isRootViewController) {
+                    [self performSegueWithIdentifier:@"MainSegue" sender:self];
+                } else {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }            }];
         } onError:^(NSString *errorMessage) {
             if ([errorMessage isEqualToString:@"Email already taken"]) {
                 self.navigationItem.prompt = NSLocalizedString(@"Email already taken.", nil);
@@ -357,9 +364,17 @@
     
     [_sharedManager fetchUser:^() {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        if (self.isRootViewController) {
+            [self performSegueWithIdentifier:@"MainSegue" sender:self];
+        } else {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }                 onError:^() {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        if (self.isRootViewController) {
+            [self performSegueWithIdentifier:@"MainSegue" sender:self];
+        } else {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }];
 }
 
