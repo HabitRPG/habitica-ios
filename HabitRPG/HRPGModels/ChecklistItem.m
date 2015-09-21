@@ -12,7 +12,7 @@
 @implementation ChecklistItem
 
 @dynamic completed;
-@dynamic currentlyChecking;
+@synthesize currentlyChecking;
 @dynamic id;
 @dynamic text;
 @dynamic task;
