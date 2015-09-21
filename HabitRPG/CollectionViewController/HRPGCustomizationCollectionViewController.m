@@ -8,7 +8,6 @@
 
 #import "HRPGCustomizationCollectionViewController.h"
 #import "HRPGManager.H"
-#import "HRPGActivityIndicator.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "Customization.h"
@@ -18,7 +17,6 @@
 @interface HRPGCustomizationCollectionViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property UIBarButtonItem *navigationButton;
-@property HRPGActivityIndicator *activityIndicator;
 @property CGSize screenSize;
 @property id selectedCustomization;
 @property NSString *selectedSetPath;

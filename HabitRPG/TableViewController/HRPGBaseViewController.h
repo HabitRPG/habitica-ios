@@ -18,7 +18,6 @@
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 
-@property NSInteger activityCounter;
 - (NSDictionary *)markdownAttributes;
 
 @end

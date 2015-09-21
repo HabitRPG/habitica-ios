@@ -17,6 +17,8 @@
 #import <POPSpringAnimation.h>
 #import "HRPGNavigationController.h"
 #import "HRPGRewardTableViewCell.h"
+#import "HRPGGearDetailView.h"
+#import "KLCPopup.h"
 
 @interface HRPGRewardsViewController ()
 @property NSString *readableName;
@@ -140,12 +142,24 @@ User *user;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     MetaReward *reward = [self getRewardAtIndexPath:indexPath];
-    if ([user.gold integerValue] < [reward.value integerValue]) {
-        return;
-    }
     if ([reward isKindOfClass:[Reward class]]) {
         self.editedReward = (Reward *)reward;
         [self performSegueWithIdentifier:@"FormSegue" sender:self];
+    } else {
+        NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"HRPGGearDetailView" owner:self options:nil];
+        HRPGGearDetailView *gearView = [nibViews objectAtIndex:0];
+        [gearView configureForReward:reward withGold:[user.gold floatValue]];
+        gearView.buyAction = ^() {
+            if ([reward isKindOfClass:[Reward class]]) {
+                [self.sharedManager getReward:reward.key onSuccess:nil onError:nil];
+            } else {
+                [self.sharedManager buyObject:reward onSuccess:nil onError:nil];
+            }
+        };
+        [gearView sizeToFit];
+        
+        KLCPopup* popup = [KLCPopup popupWithContentView:gearView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:NO];
+        [popup show];
     }
 }
 
@@ -316,9 +330,17 @@ User *user;
     
     [cell onPurchaseTap:^() {
         if ([reward isKindOfClass:[Reward class]]) {
-            [self.sharedManager getReward:reward.key onSuccess:nil onError:nil];
+            [self.sharedManager getReward:reward.key onSuccess:^() {
+                for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
+                    [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:NO];
+                }
+            } onError:nil];
         } else {
-            [self.sharedManager buyObject:reward onSuccess:nil onError:nil];
+            [self.sharedManager buyObject:reward onSuccess:^() {
+                for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
+                    [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:NO];
+                }
+            } onError:nil];
         }
     }];
 }

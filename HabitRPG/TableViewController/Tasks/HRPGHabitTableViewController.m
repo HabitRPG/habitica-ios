@@ -11,7 +11,6 @@
 #import "HRPGManager.h"
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
-#import "HRPGActivityIndicatorOverlayView.h"
 #import "UIColor+LighterDarker.h"
 #import "HRPGHabitButtons.h"
 #import "HRPGHabitTableViewCell.h"
