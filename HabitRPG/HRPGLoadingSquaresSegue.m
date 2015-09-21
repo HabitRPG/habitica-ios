@@ -34,7 +34,7 @@
         }completion:nil];
     });
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (0.03*sourceController.lineCount+0.3) * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [sourceController presentViewController:destController animated:NO completion:NULL];
+            [sourceController presentViewController:destController animated:NO completion:NULL];
     });
 }
 

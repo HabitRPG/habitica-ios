@@ -8,7 +8,6 @@
 
 #import "HRPGBaseViewController.h"
 #import "HRPGManager.h"
-#import <PDKeychainBindings.h>
 #import "HRPGAppDelegate.h"
 #import "HRPGRoundProgressView.h"
 #import "HRPGActivityIndicator.h"
@@ -33,14 +32,6 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:[self getScreenName]];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
-    
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-
-    if ([keyChain stringForKey:@"id"] == nil || [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        [self presentViewController:navigationController animated:NO completion:nil];
-    }
     
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;

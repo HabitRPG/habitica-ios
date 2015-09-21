@@ -8,6 +8,8 @@
 
 #import "HRPGLoadingViewController.h"
 #import "UIColor+Habitica.h"
+#import <PDKeychainBindings.h>
+#import "HRPGLoginViewController.h"
 
 @interface HRPGLoadingViewController ()
 
@@ -68,10 +70,27 @@
     self.logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"launch_logo" ]];
     self.logo.frame = CGRectMake((self.view.frame.size.width-165)/2, 100, 165, 140);
     [self.view addSubview:self.logo];
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self performSegueWithIdentifier:@"InitialSegue" sender:self];
+    
+    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
+    
+    if ([keyChain stringForKey:@"id"] == nil || [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
+        [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"InitialSegue" sender:self];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"LoginSegue"]) {
+        UINavigationController *navigationViewController = (UINavigationController*)segue.destinationViewController;
+        HRPGLoginViewController *loginViewController = (HRPGLoginViewController*)navigationViewController.topViewController;
+        loginViewController.isRootViewController = YES;
+    }
 }
 
 @end
