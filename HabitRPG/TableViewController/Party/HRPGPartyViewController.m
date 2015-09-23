@@ -19,6 +19,7 @@
 #import "HRPGUserProfileViewController.h"
 #import "NSMutableAttributedString_GHFMarkdown.h"
 #import <DTAttributedTextView.h>
+#import "HRPGCreatePartyViewController.h"
 
 @interface HRPGPartyViewController ()
 @property NSMutableDictionary *chatAttributeMapping;
@@ -31,7 +32,6 @@
 @end
 
 @implementation HRPGPartyViewController
-Group *party;
 Quest *quest;
 User *user;
 NSUserDefaults *defaults;
@@ -49,11 +49,13 @@ ChatMessage *selectedMessage;
     defaults = [NSUserDefaults standardUserDefaults];
     partyID = [defaults objectForKey:@"partyID"];
     self.chatAttributeMapping = [[NSMutableDictionary alloc] init];
+    _fetchedResultsController = nil;
     if (!partyID || [partyID isEqualToString:@""]) {
         [self.sharedManager fetchGroups:@"party" onSuccess:^(){
             partyID = [defaults objectForKey:@"partyID"];
+            self.fetchedResultsController = nil;
+            [self.tableView reloadData];
             if (partyID && ![partyID isEqualToString:@""]) {
-                party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
                 [self refresh];
             }
         } onError:^() {
@@ -61,14 +63,13 @@ ChatMessage *selectedMessage;
         }];
     } else {
         [self refresh];
-        if ([[self.fetchedResultsController sections] count] > 0 && [[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0) {
-            party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        if (self.party) {
             [self fetchQuest];
             UIFontDescriptor *fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle: UIFontTextStyleBody];
             UIFontDescriptor *boldFontDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits: UIFontDescriptorTraitBold];
             UIFont *boldFont = [UIFont fontWithDescriptor: boldFontDescriptor size: 0.0];
             
-            for (User *member in party.member) {
+            for (User *member in self.party.member) {
                 if (member.username) {
                     [self.chatAttributeMapping setObject:@{
                                                            NSForegroundColorAttributeName: [member classColor],
@@ -90,6 +91,12 @@ ChatMessage *selectedMessage;
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
         }
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"partyChanged" object:nil queue:nil usingBlock:^(NSNotification *notification) {
+        _fetchedResultsController = nil;
+        partyID = [defaults objectForKey:@"partyID"];
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
@@ -98,7 +105,7 @@ ChatMessage *selectedMessage;
     UIFontDescriptor *boldFontDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits: UIFontDescriptorTraitBold];
     UIFont *boldFont = [UIFont fontWithDescriptor: boldFontDescriptor size: 0.0];
     
-    for (User *member in party.member) {
+    for (User *member in self.party.member) {
         [self.chatAttributeMapping setObject:@{
                                                NSForegroundColorAttributeName: [member classColor],
                                                NSFontAttributeName: boldFont
@@ -109,13 +116,7 @@ ChatMessage *selectedMessage;
 - (void)refresh {
     [self.sharedManager fetchGroup:@"party" onSuccess:^() {
         [self.refreshControl endRefreshing];
-        if ([[self.fetchedResultsController sections] count] > 0) {
-            if ([[self.fetchedResultsController sections][0] numberOfObjects] > 0) {
-                party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-
-            }
-        }
-        
+        Group *party = self.party;
         if (party == nil) {
             return;
         }
@@ -128,7 +129,7 @@ ChatMessage *selectedMessage;
             UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"questInvitationNavigationController"];
             HRPGQuestDetailViewController *questInvitationController = (HRPGQuestDetailViewController *) navigationController.topViewController;
             questInvitationController.quest = quest;
-            questInvitationController.party = party;
+            questInvitationController.party = self.party;
             questInvitationController.user = user;
             questInvitationController.sourceViewcontroller = self;
             [self presentViewController:navigationController animated:YES completion:nil];
@@ -143,27 +144,29 @@ ChatMessage *selectedMessage;
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (party) {
+    if (self.party) {
         return 4;
     } else {
-        return 1;
+        return 2;
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            if (party) {
+            if (self.party) {
                 return 2;
             } else {
                 return 1;
             }
         case 1:
-            if ([party.questActive boolValue] && [quest.bossHp integerValue] == 0) {
+            if (!self.party) {
+                return 1;
+            } else if ([self.party.questActive boolValue] && [quest.bossHp integerValue] == 0) {
                 return [quest.collect count] + 2;
-            } else if ([party.questActive boolValue] && [party.questHP integerValue] > 0) {
+            } else if ([self.party.questActive boolValue] && [self.party.questHP integerValue] > 0) {
                 return 3;
-            } else if (party.questKey) {
+            } else if (self.party.questKey) {
                 return 2;
             } else {
                 return 1;
@@ -172,11 +175,11 @@ ChatMessage *selectedMessage;
             return 1;
         }
         case 3: {
-            if (party != nil && [party.chatmessages count] > 0) {
+            if (self.party != nil && [self.party.chatmessages count] > 0) {
                 if (self.buttonIndex) {
-                    return [party.chatmessages count]+1;
+                    return [self.party.chatmessages count]+1;
                 } else {
-                    return [party.chatmessages count];
+                    return [self.party.chatmessages count];
                 }
             }
         }
@@ -188,13 +191,17 @@ ChatMessage *selectedMessage;
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            if (party) {
-                return party.name;
+            if (self.party) {
+                return self.party.name;
             } else {
-                return NSLocalizedString(@"Party", nil);
+                return NSLocalizedString(@"New Party", nil);
             }
         case 1:
-            return NSLocalizedString(@"Quest", nil);
+            if (self.party) {
+                return NSLocalizedString(@"Quest", nil);
+            } else {
+                return NSLocalizedString(@"Join Party", nil);
+            }
         case 2:
             return NSLocalizedString(@"Chat", nil);
         default:
@@ -204,7 +211,10 @@ ChatMessage *selectedMessage;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 0) {
-        if (!party.questKey) {
+        if (!self.party) {
+            return 100;
+        }
+        if (!self.party.questKey) {
             return 60;
         }
         NSInteger height = [quest.text boundingRectWithSize:CGSizeMake(270.0f, MAXFLOAT)
@@ -215,10 +225,10 @@ ChatMessage *selectedMessage;
                                                     context:nil].size.height + 22;
         return height;
     } else if (indexPath.section == 0 && indexPath.item == 0) {
-        if (!party) {
+        if (!self.party) {
             return 60;
         }
-        return [party.hdescription boundingRectWithSize:CGSizeMake(290.0f, MAXFLOAT)
+        return [self.party.hdescription boundingRectWithSize:CGSizeMake(290.0f, MAXFLOAT)
                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                              attributes:@{
                                                      NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
@@ -226,7 +236,7 @@ ChatMessage *selectedMessage;
                                                 context:nil].size.height + 20;
     } else if (indexPath.section == 0) {
         return 44;
-    } else if (indexPath.section == 1 && indexPath.item == 1 && [party.questActive boolValue] && [party.questHP integerValue] > 0) {
+    } else if (indexPath.section == 1 && indexPath.item == 1 && [self.party.questActive boolValue] && [self.party.questHP integerValue] > 0) {
         NSInteger height = [@"50/100" boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
                                                    options:NSStringDrawingUsesLineFragmentOrigin
                                                 attributes:@{
@@ -235,7 +245,7 @@ ChatMessage *selectedMessage;
                                                    context:nil].size.height + 10;
         return height;
     } else if (indexPath.section == 1) {
-        if ([party.questActive boolValue]) {
+        if ([self.party.questActive boolValue]) {
             return 44;
         } else {
             return 50;
@@ -256,7 +266,7 @@ ChatMessage *selectedMessage;
             } else {
                 [self.rowHeights addObject:[NSNull null]];
             }
-            message = (ChatMessage *) party.chatmessages[indexPath.item-1];
+            message = (ChatMessage *) self.party.chatmessages[indexPath.item-1];
         } else {
             if (self.rowHeights.count > indexPath.item) {
                 if (self.rowHeights[indexPath.item] != [NSNull null]) {
@@ -265,7 +275,7 @@ ChatMessage *selectedMessage;
             } else {
                 [self.rowHeights addObject:[NSNull null]];
             }
-            message = (ChatMessage *) party.chatmessages[indexPath.item];
+            message = (ChatMessage *) self.party.chatmessages[indexPath.item];
         }
         float width;
         if (message.user == nil) {
@@ -302,6 +312,9 @@ ChatMessage *selectedMessage;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.selectedIndex = indexPath;
+    if (!self.party && indexPath.section == 0 && indexPath.item == 0) {
+        return;
+    }
     if (indexPath.section == 0 && indexPath.item == 1) {
         [self performSegueWithIdentifier:@"MembersSegue" sender:self];
     } else if (indexPath.section == 1 && indexPath.item == 0) {
@@ -310,7 +323,7 @@ ChatMessage *selectedMessage;
         } else {
             [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
         }
-    } else if ((indexPath.section == 1 && indexPath.item == 1 && [party.questHP integerValue] == 0) || (indexPath.section == 1 && indexPath.item == 2 && [party.questActive boolValue] && [party.questHP integerValue] > 0)) {
+    } else if ((indexPath.section == 1 && indexPath.item == 1 && [self.party.questHP integerValue] == 0) || (indexPath.section == 1 && indexPath.item == 2 && [self.party.questActive boolValue] && [self.party.questHP integerValue] > 0)) {
         [self performSegueWithIdentifier:@"ParticipantsSegue" sender:self];
     } else if (self.buttonIndex && self.buttonIndex.item == indexPath.item && self.buttonIndex.section == indexPath.section) {
         
@@ -318,9 +331,9 @@ ChatMessage *selectedMessage;
         [self performSegueWithIdentifier:@"MessageSegue" sender:self];
     } else if (indexPath.section == 2) {
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
-            selectedMessage = (ChatMessage *) party.chatmessages[indexPath.item-1];
+            selectedMessage = (ChatMessage *) self.party.chatmessages[indexPath.item-1];
         } else {
-            selectedMessage = (ChatMessage *) party.chatmessages[indexPath.item];
+            selectedMessage = (ChatMessage *) self.party.chatmessages[indexPath.item];
         }
         if (!selectedMessage.user) {
             selectedMessage = nil;
@@ -349,19 +362,25 @@ ChatMessage *selectedMessage;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellname;
+    Group *party = self.party;
     if (indexPath.section == 0 && indexPath.item == 0) {
         if (party) {
             cellname = @"SmallTextCell";
         } else {
-            cellname = @"NoPartyDataCell";
+            cellname = @"CreatePartyCell";
         }
     } else if (indexPath.section == 0 && indexPath.item == 1) {
-        cellname = @"BaseCell";
+            cellname = @"BaseCell";
+
     } else if (indexPath.section == 1 && indexPath.item == 0) {
-        if (party.questKey == nil) {
-            cellname = @"NoQuestCell";
+        if (party) {
+            if (party.questKey == nil) {
+                cellname = @"NoQuestCell";
+            } else {
+                cellname = @"QuestCell";
+            }
         } else {
-            cellname = @"QuestCell";
+            cellname = @"JoinPartyCell";
         }
     } else if (indexPath.section == 1 && indexPath.item == 1 && [party.questActive boolValue] && [party.questHP integerValue] > 0) {
         cellname = @"LifeCell";
@@ -458,7 +477,8 @@ ChatMessage *selectedMessage;
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    if (party != nil) {
+    Group *party = self.party;
+    if (party) {
         if (indexPath.section == 0 && indexPath.item == 0) {
             cell.textLabel.text = party.hdescription;
             cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
@@ -596,16 +616,21 @@ ChatMessage *selectedMessage;
             dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
             //[dateLabel sizeToFit];
         }
+    } else {
+        if (indexPath.section == 1 && indexPath.item == 0) {
+            UILabel *userIDLabel = (UILabel*)[cell viewWithTag:1];
+            userIDLabel.text = user.id;
+        }
     }
 }
 
 - (void)fetchQuest {
-    if (party.questKey) {
+    if (self.party.questKey) {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         // Edit the entity name as appropriate.
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Quest" inManagedObjectContext:self.managedObjectContext];
         [fetchRequest setEntity:entity];
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", party.questKey]];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", self.party.questKey]];
         NSError *error;
         NSArray *result = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
         if ([result count] > 0) {
@@ -631,12 +656,12 @@ ChatMessage *selectedMessage;
     [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"ParticipantsSegue"]) {
         HRPGQuestParticipantsViewController *qpViewcontroller = segue.destinationViewController;
-        qpViewcontroller.party = party;
+        qpViewcontroller.party = self.party;
         qpViewcontroller.quest = quest;
     } else if ([segue.identifier isEqualToString:@"QuestDetailSegue"]) {
         HRPGQuestDetailViewController *qdViewcontroller = segue.destinationViewController;
         qdViewcontroller.quest = quest;
-        qdViewcontroller.party = party;
+        qdViewcontroller.party = self.party;
         qdViewcontroller.user = user;
         qdViewcontroller.hideAskLater = [NSNumber numberWithBool:YES];
         qdViewcontroller.wasPushed = [NSNumber numberWithBool:YES];
@@ -656,7 +681,7 @@ ChatMessage *selectedMessage;
 
 - (IBAction)unwindToListSendMessage:(UIStoryboardSegue *)segue {
     HRPGMessageViewController *messageController = (HRPGMessageViewController*)[segue sourceViewController];
-    [self.sharedManager chatMessage:messageController.messageView.text withGroup:party.id onSuccess:nil onError:nil];
+    [self.sharedManager chatMessage:messageController.messageView.text withGroup:self.party.id onSuccess:nil onError:nil];
     
 }
 
@@ -687,6 +712,32 @@ ChatMessage *selectedMessage;
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
     return YES;
+}
+
+- (Group*) party {
+    if ([[self.fetchedResultsController sections] count] > 0 && [[[self.fetchedResultsController sections] objectAtIndex:0] numberOfObjects] > 0) {
+        Group *party = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        if (party.id) {
+            return party;
+        }
+    }
+    return nil;
+}
+
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
+}
+
+- (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
+    HRPGCreatePartyViewController *formViewController = (HRPGCreatePartyViewController *) segue.sourceViewController;
+    if (formViewController.editParty) {
+        [self.sharedManager updateGroup:formViewController.party onSuccess:nil onError:nil];
+    } else {
+        [self.sharedManager createGroup:formViewController.party onSuccess:^() {
+            partyID = [defaults objectForKey:@"partyID"];
+            _fetchedResultsController = nil;
+            [self.tableView reloadData];
+        } onError:nil];
+    }
 }
 
 @end
