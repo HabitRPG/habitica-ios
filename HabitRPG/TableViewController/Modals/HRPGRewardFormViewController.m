@@ -1,5 +1,5 @@
 //
-//  HRPG.m
+//  HRPGRewardFormViewController.m
 //  Habitica
 //
 //  Created by Phillip Thelen on 21/04/15.

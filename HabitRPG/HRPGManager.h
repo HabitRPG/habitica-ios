@@ -14,6 +14,7 @@
 #import "item.h"
 #import <RestKit/CoreData/RKManagedObjectStore.h>
 #import "User.h"
+#import "Group.h"
 
 @interface HRPGManager : NSObject
 
@@ -73,6 +74,10 @@
 - (void)rejectQuest:(NSString *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)abortQuest:(NSString *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
+- (void)createGroup:(Group *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
+- (void)updateGroup:(Group *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)chatSeen:(NSString *)group;
 

@@ -43,6 +43,7 @@
 		D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */; };
 		D94B969E1B8B2C9300C977C2 /* HRPGRewardsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D94B969D1B8B2C9300C977C2 /* HRPGRewardsViewControllerTests.m */; };
 		D94B96A01B8B2CEE00C977C2 /* content-24.8.15.json in Resources */ = {isa = PBXBuildFile; fileRef = D94B969F1B8B2CEE00C977C2 /* content-24.8.15.json */; };
+		D94FEDEB1BB314B10046A52E /* HRPGCreatePartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94FEDEA1BB314B10046A52E /* HRPGCreatePartyViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D958E2AC1915D40600186A08 /* CoreText.framework */; };
 		D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D915F8621915BEE50037D04D /* QuartzCore.framework */; };
 		D958E2B01915D41400186A08 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D958E2AF1915D41400186A08 /* Security.framework */; };
@@ -54,6 +55,7 @@
 		D9660D781AB248030084CE37 /* HRPGUserTopHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */; };
 		D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D966557318FB129F0014C09D /* HRPGSettingsViewController.m */; };
 		D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */; };
+		D96C86CB1BB0546400E4C134 /* HRPGCopyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96C86CA1BB0546400E4C134 /* HRPGCopyLabel.m */; settings = {ASSET_TAGS = (); }; };
 		D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */; };
 		D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */; };
 		D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */ = {isa = PBXBuildFile; fileRef = D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */; };
@@ -233,6 +235,8 @@
 		D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellTabBarController.m; sourceTree = "<group>"; };
 		D94B969D1B8B2C9300C977C2 /* HRPGRewardsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGRewardsViewControllerTests.m; sourceTree = "<group>"; };
 		D94B969F1B8B2CEE00C977C2 /* content-24.8.15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "content-24.8.15.json"; path = "HabiticaTests/Fixtures/content-24.8.15.json"; sourceTree = SOURCE_ROOT; };
+		D94FEDE91BB314B10046A52E /* HRPGCreatePartyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCreatePartyViewController.h; sourceTree = "<group>"; };
+		D94FEDEA1BB314B10046A52E /* HRPGCreatePartyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCreatePartyViewController.m; sourceTree = "<group>"; };
 		D958E2AC1915D40600186A08 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		D958E2AF1915D41400186A08 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D96038351930F90E0025EAEC /* HRPGMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGMessageViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -249,6 +253,8 @@
 		D96760C61B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAbbrevNumberLabel.h; sourceTree = "<group>"; };
 		D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAbbrevNumberLabel.m; sourceTree = "<group>"; };
 		D967755519F1379800A21F45 /* HabitRPG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitRPG.xcdatamodel; sourceTree = "<group>"; };
+		D96C86C91BB0546400E4C134 /* HRPGCopyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCopyLabel.h; sourceTree = "<group>"; };
+		D96C86CA1BB0546400E4C134 /* HRPGCopyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCopyLabel.m; sourceTree = "<group>"; };
 		D9722B1819B7AEA1009D8AD3 /* HRPGNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGNewsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGNewsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9722B7E19BD041E009D8AD3 /* HRPGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGNavigationController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -722,6 +728,8 @@
 				D96576C11BAF539000CCA28E /* HRPGGearDetailView.h */,
 				D96576C21BAF539000CCA28E /* HRPGGearDetailView.m */,
 				D96576C41BAF53D400CCA28E /* HRPGGearDetailView.xib */,
+				D96C86C91BB0546400E4C134 /* HRPGCopyLabel.h */,
+				D96C86CA1BB0546400E4C134 /* HRPGCopyLabel.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -842,6 +850,8 @@
 				D96038361930F90E0025EAEC /* HRPGMessageViewController.m */,
 				D97B8F5B1AE6CD3C00C6447D /* HRPGRewardFormViewController.h */,
 				D97B8F5C1AE6CD3C00C6447D /* HRPGRewardFormViewController.m */,
+				D94FEDE91BB314B10046A52E /* HRPGCreatePartyViewController.h */,
+				D94FEDEA1BB314B10046A52E /* HRPGCreatePartyViewController.m */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -1218,6 +1228,7 @@
 				D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */,
 				D9ADD3631944FDBE006202C1 /* HRPGFilterViewController.m in Sources */,
 				D9E0869118DF800F00BAF2EF /* HRPGTavernViewController.m in Sources */,
+				D96C86CB1BB0546400E4C134 /* HRPGCopyLabel.m in Sources */,
 				D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */,
 				D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */,
 				D9C257131B9B4C4100839F48 /* HRPGHabitTableViewCell.m in Sources */,
@@ -1234,6 +1245,7 @@
 				D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */,
 				D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */,
 				D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */,
+				D94FEDEB1BB314B10046A52E /* HRPGCreatePartyViewController.m in Sources */,
 				D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */,
 				D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */,
 				D9660D781AB248030084CE37 /* HRPGUserTopHeader.m in Sources */,

@@ -694,6 +694,24 @@ NSString *currentUser;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/questAbort" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 
     [objectManager addResponseDescriptor:responseDescriptor];
+
+    RKObjectMapping *groupRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [groupRequestMapping addAttributeMappingsFromDictionary:@{
+                                                               @"id" : @"_id",
+                                                               @"name" : @"name",
+                                                               @"hdescription" : @"description",
+                                                               @"type": @"type"}];
+    
+    
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Group class] pathPattern:@"/api/v2/groups/:id" method:RKRequestMethodGET]];
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Group class] pathPattern:@"/api/v2/groups/:id" method:RKRequestMethodPUT]];
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Group class] pathPattern:@"/api/v2/groups" method:RKRequestMethodPOST]];
+    [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Group class] pathPattern:@"/api/v2/groups/:id" method:RKRequestMethodDELETE]];
+    
+    requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:groupRequestMapping objectClass:[Group class] rootKeyPath:nil method:RKRequestMethodPOST];
+    [objectManager addRequestDescriptor:requestDescriptor];
+    requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:groupRequestMapping objectClass:[Group class] rootKeyPath:nil method:RKRequestMethodPUT];
+    [objectManager addRequestDescriptor:requestDescriptor];
     
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:chatMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/chat" keyPath:@"message" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -774,10 +792,10 @@ NSString *currentUser;
                                                                                   toKeyPath:@"member"
                                                                                 withMapping:dynamicMemberMapping]];
 
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/groups/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodAny pathPattern:@"/api/v2/groups/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
-    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/groups" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodAny pathPattern:@"/api/v2/groups" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 
     [objectManager addResponseDescriptor:responseDescriptor];
 
@@ -1284,6 +1302,19 @@ NSString *currentUser;
 
     [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/api/v2/groups/%@", groupID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
+        if ([groupID isEqualToString:@"party"]) {
+            Group *party = [mappingResult dictionary][[NSNull null]];
+            if ([party isKindOfClass:[NSArray class]]) {
+                NSArray *array = (NSArray *) party;
+                party = array[0];
+            }
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            if (![party.id isEqualToString:[defaults stringForKey:@"partyID"]]) {
+                [defaults setObject:party.id forKey:@"partyID"];
+                [defaults synchronize];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged" object:party];
+            }
+        }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
             successBlock();
@@ -1293,15 +1324,24 @@ NSString *currentUser;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"partyUpdated" object:nil];
         }
         return;
-    }                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (errorBlock) {
+            errorBlock();
+        }
+        if (operation.HTTPRequestOperation.response.statusCode == 200) {
+            [self fetchGroups:@"party" onSuccess:^() {
+                
+            } onError:^() {
+                
+            }];
+            return;
+        }
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
             [self displayServerError];
         } else {
             [self displayNetworkError];
         }
-        if (errorBlock) {
-            errorBlock();
-        }
+
         [self.networkIndicatorController endNetworking];
         return;
     }];
@@ -1316,9 +1356,13 @@ NSString *currentUser;
         if ([groupType isEqualToString:@"party"]) {
             Group *party = (Group *) [mappingResult firstObject];
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:party.id forKey:@"partyID"];
+            if (party) {
+                [defaults setObject:party.id forKey:@"partyID"];
+            } else {
+                [defaults setObject:party.id forKey:@"partyID"];
+            }
             [defaults synchronize];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"partyUpdated" object:party];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged" object:party];
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
@@ -2203,6 +2247,63 @@ NSString *currentUser;
         return;
     }];
 }
+
+- (void)createGroup:(Group *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:group path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        
+        if ([group.type isEqualToString:@"party"]) {
+            Group *party = [mappingResult dictionary][[NSNull null]];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            if (![party.id isEqualToString:[defaults stringForKey:@"partyID"]]) {
+                [defaults setObject:party.id forKey:@"partyID"];
+                [defaults synchronize];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged" object:party];
+            }
+        }
+        
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        if (successBlock) {
+            successBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)updateGroup:(Group *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] putObject:group path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        if (successBlock) {
+            successBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
 
 
 - (void)chatMessage:(NSString *)message withGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
