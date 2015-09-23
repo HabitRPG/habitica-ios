@@ -9,6 +9,7 @@
 #import "HRPGHabitButtons.h"
 #import <pop/POP.h>
 #import "Task.h"
+#import "UIColor+LighterDarker.h"
 
 @interface HRPGHabitButtons()
 
@@ -115,48 +116,29 @@
 #pragma mark - Gesture recognizers
 
 - (void)handleUpSingleTap:(UITapGestureRecognizer *)recognizer {
+    [UIView animateWithDuration:0.2 animations:^() {
+        self.upLabel.backgroundColor = [self.upLabel.backgroundColor darkerColor];
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^() {
+            self.upLabel.backgroundColor = [self.upLabel.backgroundColor lighterColor];
+        }];
+    }];
     if (self.upAction) {
         self.upAction();
     }
 }
 
 - (void)handleDownSingleTap:(UITapGestureRecognizer *)recognizer {
+    [UIView animateWithDuration:0.2 animations:^() {
+        self.downLabel.backgroundColor = [self.downLabel.backgroundColor darkerColor];
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^() {
+            self.downLabel.backgroundColor = [self.downLabel.backgroundColor lighterColor];
+        }];
+    }];
     if (self.downAction) {
         self.downAction();
     }
-}
-
-
-#pragma mark - Animations
-
-- (void)scaleToSmall
-{
-    POPBasicAnimation *scaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-    scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(0.8f, 0.8f)];
-    [self.layer pop_addAnimation:scaleAnimation forKey:@"layerScaleSmallAnimation"];
-}
-
-- (void)scaleAnimation
-{
-    POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-    scaleAnimation.velocity = [NSValue valueWithCGSize:CGSizeMake(-3.f, -3.f)];
-    scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
-    scaleAnimation.springBounciness = 18.0f;
-    if ([self.layer pop_animationForKey:@"layerScaleSmallAnimation"]) {
-        scaleAnimation.beginTime = 0.6f;
-    }
-    [self.layer pop_addAnimation:scaleAnimation forKey:@"layerScaleSpringAnimation"];
-}
-
-- (void)scaleToDefault
-{
-    [self.layer pop_removeAnimationForKey:@"layerScaleSmallAnimation"];
-    POPBasicAnimation *scaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-    scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
-    if ([self.layer pop_animationForKey:@"layerScaleSmallAnimation"]) {
-        scaleAnimation.beginTime = 0.6f;
-    }
-    [self.layer pop_addAnimation:scaleAnimation forKey:@"layerScaleDefaultAnimation"];
 }
 
 @end

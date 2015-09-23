@@ -88,15 +88,15 @@
         [cell configureForItem:item forTask:task];
         cell.checkBox.wasTouched = ^() {
             if (![task.currentlyChecking boolValue]) {
-                task.currentlyChecking = [NSNumber numberWithBool:YES];
+                item.currentlyChecking = [NSNumber numberWithBool:YES];
                 item.completed = [NSNumber numberWithBool:![item.completed boolValue]];
                 [self.sharedManager updateTask:task onSuccess:^() {
                     [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
                     NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
                     [self configureCell:(HRPGToDoTableViewCell *)[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
-                    task.currentlyChecking = [NSNumber numberWithBool:NO];
+                    item.currentlyChecking = [NSNumber numberWithBool:NO];
                 }                      onError:^() {
-                    task.currentlyChecking = [NSNumber numberWithBool:NO];
+                    item.currentlyChecking = [NSNumber numberWithBool:NO];
                 }];
             }
         };

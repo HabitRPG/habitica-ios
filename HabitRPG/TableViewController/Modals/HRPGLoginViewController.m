@@ -22,6 +22,11 @@
 @property HRPGManager *sharedManager;
 @property BOOL isRegistering;
 @property FBSDKLoginButton *fbLoginButton;
+
+@property UIView *headerView;
+@property UIImageView *gryphonView;
+@property UIImageView *logoView;
+
 @end
 
 @implementation HRPGLoginViewController
@@ -42,12 +47,52 @@
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
 
-    [self.usernameField becomeFirstResponder];
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     
+    self.gryphonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gryphon"]];
+    self.gryphonView.frame = CGRectMake(0, 0, self.view.frame.size.width, 85);
+    self.gryphonView.contentMode = UIViewContentModeCenter;
+    self.logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_text"]];
+    self.logoView.frame = CGRectMake(0, 85, self.view.frame.size.width, 55);
+    self.logoView.contentMode = UIViewContentModeCenter;
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
+    [self.headerView addSubview:self.gryphonView];
+    [self.headerView addSubview:self.logoView];
+    
+    self.tableView.tableHeaderView = self.headerView;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeShown:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
     [FBSDKLoginButton class];
 }
+
+- (void)keyboardWillBeShown:(NSNotification*)aNotification {
+    [UIView animateWithDuration:0.3 animations:^() {
+        self.gryphonView.alpha = 0;
+    }];
+    if (self.tableView.contentOffset.y > -85.0) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView setContentOffset:CGPointMake(0, 20) animated:YES];
+        });
+    }
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification {
+    [UIView animateWithDuration:0.3 animations:^() {
+        self.gryphonView.alpha = 1.0;
+    }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+    });}
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
