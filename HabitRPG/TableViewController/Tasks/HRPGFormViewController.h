@@ -17,9 +17,9 @@
 @property(weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property(weak, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-@property NSString *taskType;
+@property (nonatomic) NSString *taskType;
 @property NSString *readableTaskType;
 @property Task *task;
-@property BOOL editTask;
+@property (nonatomic) BOOL editTask;
 @property NSArray *activeTags;
 @end

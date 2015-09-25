@@ -8,6 +8,7 @@
 
 #import "HRPGAppDelegate.h"
 #import "HRPGTableViewController.h"
+#import "HRPGTabBarController.h"
 #import "CRToast.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -98,6 +99,26 @@
                                                           openURL:url
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
+}
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
+    id presentedController = self.window.rootViewController.presentedViewController;
+    if ([presentedController isKindOfClass:[HRPGTabBarController class]]) {
+        HRPGTabBarController *tabBarController = (HRPGTabBarController *)presentedController;
+        if ([shortcutItem.type isEqualToString:@"com.habitrpg.habitica.ios.newhabit"]) {
+            [tabBarController setSelectedIndex:0];
+        } else if ([shortcutItem.type isEqualToString:@"com.habitrpg.habitica.ios.newdaily"]) {
+            [tabBarController setSelectedIndex:1];
+        } else if ([shortcutItem.type isEqualToString:@"com.habitrpg.habitica.ios.newtodo"]) {
+            [tabBarController setSelectedIndex:2];
+        } else {
+            return;
+        }
+        UINavigationController *displayedNavigationController = tabBarController.selectedViewController;
+        UIViewController *displayedTableViewController = displayedNavigationController.topViewController;
+        [displayedTableViewController performSegueWithIdentifier:@"FormSegue" sender:displayedTableViewController];
+    }
+
 }
 
 @end

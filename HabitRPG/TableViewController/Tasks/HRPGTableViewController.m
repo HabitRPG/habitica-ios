@@ -547,10 +547,10 @@ BOOL editable;
         destViewController.sourceViewController = self;
         
         HRPGFormViewController *formController = (HRPGFormViewController *) destViewController.topViewController;
-        formController.taskType = self.typeName;
         formController.readableTaskType = self.readableName;
         HRPGTabBarController *tabBarController = (HRPGTabBarController*) self.tabBarController;
         formController.activeTags = tabBarController.selectedTags;
+        formController.taskType = self.typeName;
         if (editedTask) {
             formController.editTask = YES;
             formController.task = editedTask;

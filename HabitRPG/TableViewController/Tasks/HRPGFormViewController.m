@@ -395,4 +395,14 @@
     
 }
 
+- (void)setTaskType:(NSString *)taskType {
+    _taskType = taskType;
+    [self initializeForm];
+}
+
+- (void)setEditTask:(BOOL)editTask {
+    _editTask = editTask;
+    [self fillEditForm];
+}
+
 @end
