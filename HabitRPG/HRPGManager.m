@@ -783,6 +783,7 @@ NSString *currentUser;
     memberIdMapping.identificationAttributes = @[@"id"];
     RKDynamicMapping* dynamicMemberMapping = [RKDynamicMapping new];
     [dynamicMemberMapping setObjectMappingForRepresentationBlock:^RKObjectMapping *(id representation) {
+        NSLog(@"Mapping user");
         if ([representation isKindOfClass:[NSString class]]) {
             return memberIdMapping;
         }
@@ -790,6 +791,9 @@ NSString *currentUser;
     }];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"members"
                                                                                   toKeyPath:@"member"
+                                                                                withMapping:dynamicMemberMapping]];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"leader"
+                                                                                  toKeyPath:@"leader"
                                                                                 withMapping:dynamicMemberMapping]];
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodAny pathPattern:@"/api/v2/groups/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -2282,7 +2286,7 @@ NSString *currentUser;
 - (void)updateGroup:(Group *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     
-    [[RKObjectManager sharedManager] putObject:group path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:group path:[NSString stringWithFormat:@"/api/v2/groups/%@", group.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {

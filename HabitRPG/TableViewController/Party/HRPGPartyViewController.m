@@ -56,12 +56,14 @@ ChatMessage *selectedMessage;
             self.fetchedResultsController = nil;
             [self.tableView reloadData];
             if (partyID && ![partyID isEqualToString:@""]) {
+                [self setUpPartyEditButton];
                 [self refresh];
             }
         } onError:^() {
 
         }];
     } else {
+        [self setUpPartyEditButton];
         [self refresh];
         if (self.party) {
             [self fetchQuest];
@@ -676,6 +678,13 @@ ChatMessage *selectedMessage;
         HRPGUserProfileViewController *userProfileViewController = (HRPGUserProfileViewController*) segue.destinationViewController;
         userProfileViewController.userID = selectedMessage.userObject.id;
         userProfileViewController.username = selectedMessage.user;
+    } else if ([segue.identifier isEqualToString:@"PartyFormSegue"]) {
+        if (self.party) {
+            UINavigationController *navigationController = (UINavigationController*)segue.destinationViewController;
+            HRPGCreatePartyViewController *partyFormViewController = (HRPGCreatePartyViewController *) navigationController.topViewController;
+            partyFormViewController.editParty = YES;
+            partyFormViewController.party = self.party;
+        }
     }
 }
 
@@ -738,6 +747,17 @@ ChatMessage *selectedMessage;
             [self.tableView reloadData];
         } onError:nil];
     }
+}
+
+- (void)setUpPartyEditButton {
+    if ([self.party.leader.id isEqualToString:user.id]) {
+        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(openPartyForm)];
+        self.navigationItem.rightBarButtonItem = barButton;
+    }
+}
+
+- (void) openPartyForm {
+    [self performSegueWithIdentifier:@"PartyFormSegue" sender:self];
 }
 
 @end

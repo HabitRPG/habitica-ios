@@ -59,8 +59,8 @@
 }
 - (void)fillEditForm {
     self.navigationItem.title = NSLocalizedString(@"Edit Party", nil);
-    [self.form formRowWithTag:@"text"].value = self.party.name;
-    [self.form formRowWithTag:@"notes"].value = self.party.hdescription;
+    [self.form formRowWithTag:@"name"].value = self.party.name;
+    [self.form formRowWithTag:@"hdescription"].value = self.party.hdescription;
 
     [self.tableView reloadData];
 }
