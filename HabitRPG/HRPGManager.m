@@ -804,6 +804,7 @@ NSString *currentUser;
     memberIdMapping.identificationAttributes = @[@"id"];
     RKDynamicMapping* dynamicMemberMapping = [RKDynamicMapping new];
     [dynamicMemberMapping setObjectMappingForRepresentationBlock:^RKObjectMapping *(id representation) {
+        NSLog(@"Mapping user");
         if ([representation isKindOfClass:[NSString class]]) {
             return memberIdMapping;
         }
@@ -811,6 +812,9 @@ NSString *currentUser;
     }];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"members"
                                                                                   toKeyPath:@"member"
+                                                                                withMapping:dynamicMemberMapping]];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"leader"
+                                                                                  toKeyPath:@"leader"
                                                                                 withMapping:dynamicMemberMapping]];
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodAny pathPattern:@"/api/v2/groups/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -1475,9 +1479,7 @@ NSString *currentUser;
         if ([task.type isEqual:@"daily"] || [task.type isEqual:@"todo"]) {
             task.completed = [NSNumber numberWithBool:([withDirection isEqual:@"up"])];
         }
-<<<<<<< HEAD
 
-=======
         if ([task.type isEqual:@"daily"]) {
             if ([withDirection isEqualToString:@"up"]) {
                 task.streak = [NSNumber numberWithInt:[task.streak integerValue]+1];
@@ -1486,8 +1488,6 @@ NSString *currentUser;
             }
         }
 
-
->>>>>>> Update streak values when scoring dailies
         if (self.user && [self.user.health floatValue] <= 0) {
             HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
             [deathView show];
@@ -2307,7 +2307,7 @@ NSString *currentUser;
 - (void)updateGroup:(Group *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
-    [[RKObjectManager sharedManager] putObject:group path:nil parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:group path:[NSString stringWithFormat:@"/api/v2/groups/%@", group.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {

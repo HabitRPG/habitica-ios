@@ -1046,7 +1046,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="aWj-Pm-Klq" kind="presentation" id="zja-mg-iLJ"/>
+                                    <segue destination="aWj-Pm-Klq" kind="presentation" identifier="PartyFormSegue" id="zja-mg-iLJ"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CollectItemQuestCell" textLabel="hP6-2D-WOO" detailTextLabel="7N7-lY-Z42" style="IBUITableViewCellStyleValue1" id="O1c-Xa-06Q">
