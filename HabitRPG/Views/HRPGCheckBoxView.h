@@ -13,6 +13,7 @@
 @interface HRPGCheckBoxView : UIView
 
 - (void)configureForTask:(Task *) task;
+- (void)configureForTask:(Task *) task withOffset:(NSInteger) offset;
 - (void)configureForChecklistItem:(ChecklistItem *) item forTask:(Task *)task;
 
 @property (copy)void (^wasTouched)(void);

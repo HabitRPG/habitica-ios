@@ -10,6 +10,7 @@
 #import "HRPGAppDelegate.h"
 #import "Customization.h"
 #import <CommonCrypto/CommonCrypto.h>
+#import "UIColor+Habitica.h"
 
 @interface User ()
 @property (nonatomic) NSDate *lastImageGeneration;
@@ -470,13 +471,13 @@
 
 -(UIColor *)classColor {
     if ([self.hclass isEqualToString:@"warrior"]) {
-        return [UIColor colorWithRed:0.792 green:0.267 blue:0.239 alpha:1.000];
+        return [UIColor red100];
     } else if ([self.hclass isEqualToString:@"mage"]) {
-        return [UIColor colorWithRed:0.211 green:0.718 blue:0.168 alpha:1.000];
+        return [UIColor blue100];
     } else if ([self.hclass isEqualToString:@"rogue"]) {
-        return [UIColor colorWithRed:0.177 green:0.333 blue:0.559 alpha:1.000];
+        return [UIColor purple50];
     } else if ([self.hclass isEqualToString:@"healer"]) {
-        return [UIColor colorWithRed:0.304 green:0.702 blue:0.839 alpha:1.000];
+        return [UIColor yellow100];
     } else {
         return [UIColor blackColor];
     }
