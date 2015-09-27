@@ -31,7 +31,12 @@
 
     
     self.answerTextView.attributedText = attributedText;
-    self.answerTextView.textContainerInset = UIEdgeInsetsMake(0, 16, 0, 16);
+    self.answerTextView.textContainerInset = UIEdgeInsetsMake(0, 16, 16, 16);
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.answerTextView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
 }
 
 - (NSDictionary *)markdownAttributes {
