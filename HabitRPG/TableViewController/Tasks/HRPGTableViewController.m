@@ -551,7 +551,6 @@ BOOL editable;
         HRPGTabBarController *tabBarController = (HRPGTabBarController*) self.tabBarController;
         formController.activeTags = tabBarController.selectedTags;
         formController.taskType = self.typeName;
-        [formController initializeForm];
         if (editedTask) {
             formController.task = editedTask;
             formController.editTask = YES;

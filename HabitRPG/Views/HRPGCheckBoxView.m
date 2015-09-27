@@ -37,6 +37,10 @@
 }
 
 - (void)configureForTask:(Task *)task {
+    [self configureForTask:task withOffset:0];
+}
+
+- (void)configureForTask:(Task *)task withOffset:(NSInteger) offset {
     self.boxFillColor = [UIColor colorWithWhite:1.0 alpha:0.7];
     self.checked = [task.completed boolValue] || [task.currentlyChecking boolValue];
     if ([task.type isEqualToString:@"daily"]) {
@@ -48,7 +52,7 @@
             self.backgroundColor = [UIColor gray100];
             self.checkColor = [UIColor gray200];
         } else {
-            if ([task dueToday]) {
+            if ([task dueTodayWithOffset:offset]) {
                 self.backgroundColor = [task lightTaskColor];
                 self.boxBorderColor = [task taskColor];
                 self.checkColor = [task taskColor];

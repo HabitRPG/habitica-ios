@@ -13,6 +13,7 @@
 
 - (void)configureForTask:(Task *)task withOffset:(NSInteger)offset {
     [super configureForTask:task];
+    [self.checkBox configureForTask:task withOffset:offset];
     if (![task.completed boolValue]) {
         if ([task dueTodayWithOffset:offset]) {
             self.titleLabel.textColor = [UIColor blackColor];

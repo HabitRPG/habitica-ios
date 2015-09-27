@@ -44,11 +44,6 @@
 @dynamic startDate;
 @synthesize currentlyChecking;
 
-
-- (BOOL)dueToday {
-    return [self dueTodayWithOffset:0];
-}
-
 - (BOOL)dueTodayWithOffset:(NSInteger)offset {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     if (self.startDate) {
