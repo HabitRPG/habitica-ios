@@ -77,6 +77,9 @@
 }
 
 -(void)fillForm {
+    if (self.formFilled) {
+        return;
+    }
     XLFormSectionDescriptor *section;
     XLFormRowDescriptor *row;
     
@@ -158,13 +161,12 @@
     }
     
     self.formFilled = YES;
-    
-    if (self.editTask) {
-        [self fillEditForm];
-    }
 }
 
 - (void)fillEditForm {
+    if (!self.formFilled) {
+        [self fillForm];
+    }
     [self.form formRowWithTag:@"text"].value = [self.task.text stringByReplacingEmojiCheatCodesWithUnicode];
     [self.form formRowWithTag:@"notes"].value = [self.task.notes stringByReplacingEmojiCheatCodesWithUnicode];
     
@@ -305,7 +307,11 @@
                 continue;
             }
             if (formValues[key] == [NSNull null]) {
-                [self.task setValue:nil forKeyPath:key];
+                if ([key isEqualToString:@"text"] || [key isEqualToString:@"notes"]) {
+                    [self.task setValue:@"" forKeyPath:key];
+                } else {
+                    [self.task setValue:nil forKeyPath:key];
+                }
                 continue;
             }
             if ([key isEqualToString:@"priority"]) {

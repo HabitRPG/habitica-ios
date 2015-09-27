@@ -551,9 +551,10 @@ BOOL editable;
         HRPGTabBarController *tabBarController = (HRPGTabBarController*) self.tabBarController;
         formController.activeTags = tabBarController.selectedTags;
         formController.taskType = self.typeName;
+        [formController initializeForm];
         if (editedTask) {
-            formController.editTask = YES;
             formController.task = editedTask;
+            formController.editTask = YES;
             editedTask = nil;
         }
     } else if ([segue.identifier isEqualToString:@"FilterSegue"]) {
