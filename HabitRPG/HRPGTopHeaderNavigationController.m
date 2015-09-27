@@ -75,18 +75,18 @@ static const CGFloat topHeaderHeight = 168;
     CGFloat size = frame.size.height;
     CGFloat scrollOffset = scrollView.contentOffset.y;
     CGFloat scrollDiff = scrollOffset - self.previousScrollViewYOffset;
-    CGFloat scrollHeight = scrollView.frame.size.height;
-    CGFloat scrollContentSizeHeight = scrollView.contentSize.height + scrollView.contentInset.bottom;
     
     if (scrollOffset <= -scrollView.contentInset.top) {
         self.isTopHeaderVisible = YES;
         frame.origin.y = [self bgViewOffset];
-    } else if ((scrollOffset + scrollHeight) >= scrollContentSizeHeight) {
-        self.isTopHeaderVisible = NO;
-        frame.origin.y = -size;
     } else {
         frame.origin.y = MIN([self bgViewOffset], MAX(-size, frame.origin.y - scrollDiff));
     }
+    
+    if (frame.origin.y < -size) {
+        frame.origin.y = -size;
+    }
+    
     CGFloat alpha = -((frame.origin.y-[self bgViewOffset]) / frame.size.height);
     [self.backgroundView setFrame:frame];
     [self setNavigationBarColors:alpha];
