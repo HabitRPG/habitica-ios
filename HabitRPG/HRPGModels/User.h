@@ -54,6 +54,8 @@
 @property(nonatomic, readonly, getter = getDirtyClassName) NSString *dirtyClass;
 @property(nonatomic, retain) NSNumber *health;
 @property(nonatomic, retain) NSString *id;
+@property(nonatomic, retain) NSString *invitedParty;
+@property(nonatomic, retain) NSString *invitedPartyName;
 @property(nonatomic, retain) NSNumber *itemsEnabled;
 @property(nonatomic, retain) NSNumber *level;
 @property(nonatomic, retain) NSNumber *magic;
