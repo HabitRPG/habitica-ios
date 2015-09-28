@@ -58,6 +58,8 @@
 @dynamic hclass;
 @dynamic health;
 @dynamic id;
+@dynamic invitedParty;
+@dynamic invitedPartyName;
 @dynamic itemsEnabled;
 @dynamic level;
 @dynamic magic;

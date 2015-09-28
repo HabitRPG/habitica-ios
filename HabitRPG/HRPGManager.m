@@ -2366,11 +2366,22 @@ NSString *currentUser;
     }];
 }
 
-- (void)joinGrouü:(NSArray *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+- (void)joinGroup:(NSString *)group withType:(NSString *)type onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/join", group] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
+        
+        if ([type isEqualToString:@"party"]) {
+            Group *party = [mappingResult dictionary][[NSNull null]];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            if (![party.id isEqualToString:[defaults stringForKey:@"partyID"]]) {
+                [defaults setObject:party.id forKey:@"partyID"];
+                [defaults synchronize];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged" object:party];
+            }
+        }
+        
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
             successBlock();

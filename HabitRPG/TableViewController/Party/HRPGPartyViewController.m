@@ -52,17 +52,19 @@ ChatMessage *selectedMessage;
     self.chatAttributeMapping = [[NSMutableDictionary alloc] init];
     _fetchedResultsController = nil;
     if (!partyID || [partyID isEqualToString:@""]) {
-        [self.sharedManager fetchGroups:@"party" onSuccess:^(){
-            partyID = [defaults objectForKey:@"partyID"];
-            self.fetchedResultsController = nil;
-            [self.tableView reloadData];
-            if (partyID && ![partyID isEqualToString:@""]) {
-                [self setUpPartyEditButton];
-                [self refresh];
-            }
-        } onError:^() {
-
-        }];
+        if (!user.invitedParty) {
+            [self.sharedManager fetchGroups:@"party" onSuccess:^(){
+                partyID = [defaults objectForKey:@"partyID"];
+                self.fetchedResultsController = nil;
+                [self.tableView reloadData];
+                if (partyID && ![partyID isEqualToString:@""]) {
+                    [self setUpPartyEditButton];
+                    [self refresh];
+                }
+            } onError:^() {
+                
+            }];
+        }
     } else {
         [self setUpPartyEditButton];
         [self refresh];
@@ -150,7 +152,11 @@ ChatMessage *selectedMessage;
     if (self.party) {
         return 4;
     } else {
-        return 2;
+        if (user.invitedParty) {
+            return 1;
+        } else {
+            return 2;
+        }
     }
 }
 
@@ -160,7 +166,11 @@ ChatMessage *selectedMessage;
             if (self.party) {
                 return 2;
             } else {
-                return 1;
+                if (user.invitedParty) {
+                    return 3;
+                } else {
+                    return 1;
+                }
             }
         case 1:
             if (!self.party) {
@@ -197,7 +207,11 @@ ChatMessage *selectedMessage;
             if (self.party) {
                 return self.party.name;
             } else {
-                return NSLocalizedString(@"New Party", nil);
+                if (user.invitedParty) {
+                    return NSLocalizedString(@"Party Invitation", nil);
+                } else {
+                    return NSLocalizedString(@"New Party", nil);
+                }
             }
         case 1:
             if (self.party) {
@@ -213,10 +227,22 @@ ChatMessage *selectedMessage;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1 && indexPath.item == 0) {
-        if (!self.party) {
-            return 100;
+    if (!self.party) {
+        if (user.invitedParty) {
+            if (indexPath.item == 0) {
+                return 44;
+            } else {
+                return 44;
+            }
+        } else {
+            if (indexPath.section == 1 && indexPath.item == 0) {
+                return 100;
+            } else if (indexPath.section == 0 && indexPath.item == 0) {
+                return 60;
+            }
         }
+    }
+    if (indexPath.section == 1 && indexPath.item == 0) {
         if (!self.party.questKey) {
             return 60;
         }
@@ -228,9 +254,6 @@ ChatMessage *selectedMessage;
                                                     context:nil].size.height + 22;
         return height;
     } else if (indexPath.section == 0 && indexPath.item == 0) {
-        if (!self.party) {
-            return 60;
-        }
         return [self.party.hdescription boundingRectWithSize:CGSizeMake(290.0f, MAXFLOAT)
                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                              attributes:@{
@@ -315,6 +338,22 @@ ChatMessage *selectedMessage;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.selectedIndex = indexPath;
+    
+    if (user.invitedParty) {
+        if (indexPath.item == 1) {
+            [self.sharedManager joinGroup:user.invitedParty withType:@"party" onSuccess:^() {
+                partyID = [defaults objectForKey:@"partyID"];
+                _fetchedResultsController = nil;
+                [self.tableView reloadData];
+            }onError:^() {
+                
+            }];
+        } else if (indexPath.item == 2) {
+            //TODO
+        }
+        return;
+    }
+    
     if (!self.party && indexPath.section == 0 && indexPath.item == 0) {
         return;
     }
@@ -366,59 +405,69 @@ ChatMessage *selectedMessage;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellname;
     Group *party = self.party;
-    if (indexPath.section == 0 && indexPath.item == 0) {
-        if (party) {
-            cellname = @"SmallTextCell";
+    
+    if (!party) {
+        if (user.invitedParty) {
+            if (indexPath.item == 0) {
+                cellname = @"BaseCell";
+            } else {
+                cellname = @"BaseCell";
+            }
         } else {
-            cellname = @"CreatePartyCell";
+            if (indexPath.section == 1 && indexPath.item == 0) {
+                cellname = @"JoinPartyCell";
+            } else if (indexPath.section == 0 && indexPath.item == 0) {
+                cellname = @"CreatePartyCell";
+            }
         }
-    } else if (indexPath.section == 0 && indexPath.item == 1) {
+    } else {
+        if (indexPath.section == 0 && indexPath.item == 0) {
+            cellname = @"SmallTextCell";
+        } else if (indexPath.section == 0 && indexPath.item == 1) {
             cellname = @"BaseCell";
-
-    } else if (indexPath.section == 1 && indexPath.item == 0) {
-        if (party) {
+        } else if (indexPath.section == 1 && indexPath.item == 0) {
             if (party.questKey == nil) {
                 cellname = @"NoQuestCell";
             } else {
                 cellname = @"QuestCell";
             }
-        } else {
-            cellname = @"JoinPartyCell";
-        }
-    } else if (indexPath.section == 1 && indexPath.item == 1 && [party.questActive boolValue] && [party.questHP integerValue] > 0) {
-        cellname = @"LifeCell";
-    } else if ((indexPath.section == 1 && indexPath.item == 1) || (indexPath.section == 1 && indexPath.item == 2 && [party.questActive boolValue] && [party.questHP integerValue] > 0)) {
-        if ([party.questActive boolValue]) {
-            cellname = @"BaseCell";
-        } else {
-            cellname = @"SubtitleCell";
-        }
-    } else if (indexPath.section == 1) {
-        cellname = @"CollectItemQuestCell";
-    } else if (indexPath.section != self.tableView.numberOfSections-1) {
-        cellname = @"ComposeCell";
-    } else {
-        if (self.buttonIndex && indexPath.item == self.buttonIndex.item) {
-            ChatMessage *message = (ChatMessage *) party.chatmessages[indexPath.item-1];
-            if ([message.user isEqualToString: user.username]) {
-                cellname = @"OwnButtonCell";
+        } else if (indexPath.section == 1 && indexPath.item == 1 && [party.questActive boolValue] && [party.questHP integerValue] > 0) {
+            cellname = @"LifeCell";
+        } else if ((indexPath.section == 1 && indexPath.item == 1) || (indexPath.section == 1 && indexPath.item == 2 && [party.questActive boolValue] && [party.questHP integerValue] > 0)) {
+            if ([party.questActive boolValue]) {
+                cellname = @"BaseCell";
             } else {
-                cellname = @"ButtonCell";
+                cellname = @"SubtitleCell";
             }
+        } else if (indexPath.section == 1) {
+            cellname = @"CollectItemQuestCell";
+        } else if (indexPath.section != self.tableView.numberOfSections-1) {
+            cellname = @"ComposeCell";
         } else {
-            ChatMessage *message;
-            if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
-                message = (ChatMessage *) party.chatmessages[indexPath.item-1];
+            if (self.buttonIndex && indexPath.item == self.buttonIndex.item) {
+                ChatMessage *message = (ChatMessage *) party.chatmessages[indexPath.item-1];
+                if ([message.user isEqualToString: user.username]) {
+                    cellname = @"OwnButtonCell";
+                } else {
+                    cellname = @"ButtonCell";
+                }
             } else {
-                message = (ChatMessage *) party.chatmessages[indexPath.item];
-            }
-            if (message.user != nil) {
-                cellname = @"ImageChatCell";
-            } else {
-                cellname = @"ChatCell";
+                ChatMessage *message;
+                if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
+                    message = (ChatMessage *) party.chatmessages[indexPath.item-1];
+                } else {
+                    message = (ChatMessage *) party.chatmessages[indexPath.item];
+                }
+                if (message.user != nil) {
+                    cellname = @"ImageChatCell";
+                } else {
+                    cellname = @"ChatCell";
+                }
             }
         }
+
     }
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
@@ -620,10 +669,21 @@ ChatMessage *selectedMessage;
             //[dateLabel sizeToFit];
         }
     } else {
-        if (indexPath.section == 1 && indexPath.item == 0) {
-            UILabel *userIDLabel = (UILabel*)[cell viewWithTag:1];
-            userIDLabel.text = user.id;
+        if (user.invitedParty) {
+            if (indexPath.item == 0) {
+                cell.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Invited to %@", nil), user.invitedPartyName];
+            } else if (indexPath.item == 1) {
+                cell.textLabel.text = NSLocalizedString(@"Accept", nil);
+            } else if (indexPath.item == 2) {
+                cell.textLabel.text = NSLocalizedString(@"Reject", nil);
+            }
+        } else {
+            if (indexPath.section == 1 && indexPath.item == 0) {
+                UILabel *userIDLabel = (UILabel*)[cell viewWithTag:1];
+                userIDLabel.text = user.id;
+            }
         }
+        
     }
 }
 
