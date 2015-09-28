@@ -1914,6 +1914,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Members" id="RLc-Ty-TSs"/>
+                    <connections>
+                        <segue destination="2Pu-LV-WpP" kind="presentation" identifier="InvitationSegue" id="AB3-w7-0JJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xi8-lo-Z3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3312,6 +3315,63 @@
             </objects>
             <point key="canvasLocation" x="4573.125" y="2383.75"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ztx-ib-cOH">
+            <objects>
+                <navigationController id="2Pu-LV-WpP" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KJB-a6-l3R">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yGc-iv-W1B" kind="relationship" relationship="rootViewController" id="ZRZ-WU-Bc6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UlD-WK-w5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6339" y="1906"/>
+        </scene>
+        <!--Invite Members View Controller-->
+        <scene sceneID="nLM-rw-yIe">
+            <objects>
+                <tableViewController id="yGc-iv-W1B" customClass="HRPGInviteMembersViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="OYa-rn-tOY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="tst-h1-fxk">
+                                <rect key="frame" x="0.0" y="114" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tst-h1-fxk" id="cA0-D8-5gd">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yGc-iv-W1B" id="7PQ-XS-R05"/>
+                            <outlet property="delegate" destination="yGc-iv-W1B" id="p3U-Jb-gwT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="X4J-vR-6W8">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hik-Nm-h3u">
+                            <connections>
+                                <segue destination="NSJ-X3-59d" kind="unwind" unwindAction="unwindToList:" id="qBg-xo-kPE"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="1pt-GX-ni0">
+                            <connections>
+                                <segue destination="NSJ-X3-59d" kind="unwind" identifier="unwindSaveSegue" unwindAction="unwindToListSave:" id="e4J-tj-Wpv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ajd-hm-8wp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="NSJ-X3-59d" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="7074" y="1906"/>
+        </scene>
         <!--User Profile View Controller-->
         <scene sceneID="zNq-iY-ly4">
             <objects>
@@ -4503,7 +4563,7 @@
         <segue reference="dsP-Ie-Qai"/>
         <segue reference="Bfo-Hm-DEG"/>
         <segue reference="8EB-JX-S8a"/>
-        <segue reference="w8b-nU-BYs"/>
+        <segue reference="IDZ-rz-bLv"/>
         <segue reference="OZd-8c-sWC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.52939999999999998" green="0.25879999999999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

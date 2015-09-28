@@ -20,6 +20,7 @@
 #import "NSMutableAttributedString_GHFMarkdown.h"
 #import <DTAttributedTextView.h>
 #import "HRPGCreatePartyViewController.h"
+#import "HRPGPartyMembersViewController.h"
 
 @interface HRPGPartyViewController ()
 @property NSMutableDictionary *chatAttributeMapping;
@@ -685,6 +686,10 @@ ChatMessage *selectedMessage;
             partyFormViewController.editParty = YES;
             partyFormViewController.party = self.party;
         }
+    } else if ([segue.identifier isEqualToString:@"MembersSegue"]) {
+        HRPGPartyMembersViewController *membersViewController = (HRPGPartyMembersViewController *) segue.destinationViewController;
+        membersViewController.isLeader = [self.party.leader.id isEqualToString:user.id];
+        membersViewController.partyID = self.party.id;
     }
 }
 
