@@ -48,7 +48,7 @@
 	<key>FacebookAppID</key>
 	<string>128307497299777</string>
 	<key>FacebookDisplayName</key>
-	<string>Habitca Test</string>
+	<string>Habitica</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -66,6 +66,33 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeAdd</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>New Habit</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.habitrpg.habitica.ios.newhabit</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeAdd</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>New Daily</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.habitrpg.habitica.ios.newdaily</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeAdd</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>New To-Do</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.habitrpg.habitica.ios.newtodo</string>
+		</dict>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile~ipad</key>
@@ -74,6 +101,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UIStatusBarTintParameters</key>
 	<dict>
 		<key>UINavigationBar</key>
@@ -97,32 +126,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-    <key>UIApplicationShortcutItems</key>
-    <array>
-        <dict>
-            <key>UIApplicationShortcutItemIconType</key>
-            <string>UIApplicationShortcutIconTypeAdd</string>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>New Habit</string>
-            <key>UIApplicationShortcutItemType</key>
-            <string>com.habitrpg.habitica.ios.newhabit</string>
-        </dict>
-        <dict>
-            <key>UIApplicationShortcutItemIconType</key>
-            <string>UIApplicationShortcutIconTypeAdd</string>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>New Daily</string>
-            <key>UIApplicationShortcutItemType</key>
-            <string>com.habitrpg.habitica.ios.newdaily</string>
-        </dict>
-        <dict>
-            <key>UIApplicationShortcutItemIconType</key>
-            <string>UIApplicationShortcutIconTypeAdd</string>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>New To-Do</string>
-            <key>UIApplicationShortcutItemType</key>
-            <string>com.habitrpg.habitica.ios.newtodo</string>
-        </dict>
-    </array>
 </dict>
 </plist>

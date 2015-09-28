@@ -79,6 +79,10 @@
 
 - (void)updateGroup:(Group *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)inviteMembers:(NSArray *)members toGroupWithID:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
+- (void)joinGroup:(NSArray *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 - (void)chatSeen:(NSString *)group;
 
 - (void)loginUser:(NSString *)username withPassword:(NSString *)password onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;

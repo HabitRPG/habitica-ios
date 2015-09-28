@@ -13,4 +13,7 @@
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
+@property BOOL isLeader;
+@property NSString *partyID;
+
 @end

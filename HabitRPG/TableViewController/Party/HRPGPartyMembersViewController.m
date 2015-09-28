@@ -13,6 +13,7 @@
 #import "User.h"
 #import <NIKFontAwesomeIconFactory.h>
 #import <NIKFontAwesomeIconFactory+iOS.h>
+#import "HRPGInviteMembersViewController.h"
 
 @interface HRPGPartyMembersViewController ()
 @property NSString *readableName;
@@ -51,6 +52,8 @@ NSString *partyID;
     self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     self.iconFactory.size = 15;
     self.iconFactory.renderingMode = UIImageRenderingModeAlwaysTemplate;
+    
+    [self setUpInvitationButton];
 }
 
 #pragma mark - Table view data source
@@ -202,5 +205,29 @@ NSString *partyID;
     [super prepareForSegue:segue sender:sender];
     
 }
+
+- (void)setUpInvitationButton {
+    if (self.isLeader) {
+        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Invite", nil) style:UIBarButtonItemStylePlain target:self action:@selector(openInvitationForm)];
+        self.navigationItem.rightBarButtonItem = barButton;
+    }
+}
+
+- (void) openInvitationForm {
+    [self performSegueWithIdentifier:@"InvitationSegue" sender:self];
+}
+
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
+}
+
+- (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
+    HRPGInviteMembersViewController *formViewController = (HRPGInviteMembersViewController *) segue.sourceViewController;
+    [self.sharedManager inviteMembers:formViewController.members toGroupWithID:self.partyID onSuccess:^() {
+        
+    }onError:^() {
+        
+    }];
+}
+
 
 @end
