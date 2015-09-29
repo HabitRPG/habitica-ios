@@ -1073,8 +1073,52 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PartyDescriptionCell" textLabel="nkg-Zw-3fk" rowHeight="100" style="IBUITableViewCellStyleDefault" id="apO-SV-UhM">
+                                <rect key="frame" x="0.0" y="826" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="apO-SV-UhM" id="rFP-Nr-NXy">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nkg-Zw-3fk">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="99"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <attributedString key="attributedText">
+                                                <fragment>
+                                                    <string key="content">Play Habitica with friends to stay accountable!
+Battle monsters and create Challenges!
+Invite friends now to earn a Quest Scroll!</string>
+                                                    <attributes>
+                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CenteredCell" textLabel="jty-zV-TDX" style="IBUITableViewCellStyleDefault" id="lfi-fJ-drh">
+                                <rect key="frame" x="0.0" y="926" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lfi-fJ-drh" id="txS-vK-DUm">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jty-zV-TDX">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubtitleCell" textLabel="uDn-LO-lxT" detailTextLabel="HtQ-yF-kbl" style="IBUITableViewCellStyleSubtitle" id="BFa-vg-gid">
-                                <rect key="frame" x="0.0" y="826" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="970" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BFa-vg-gid" id="L9y-ae-nkL">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1098,7 +1142,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SmallTextCell" textLabel="zwq-dx-N3h" style="IBUITableViewCellStyleDefault" id="04I-GU-5JR">
-                                <rect key="frame" x="0.0" y="870" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="1014" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="04I-GU-5JR" id="ChW-vt-Od8">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1115,7 +1159,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BaseCell" textLabel="IeV-Vw-kIx" style="IBUITableViewCellStyleDefault" id="rfp-oc-cFO">
-                                <rect key="frame" x="0.0" y="914" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="1058" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rfp-oc-cFO" id="vSz-GG-iHl">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1132,7 +1176,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserCell" id="Z9i-k7-RDR">
-                                <rect key="frame" x="0.0" y="958" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="1102" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z9i-k7-RDR" id="Dfi-mG-oyb">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -4560,10 +4604,10 @@
         <segue reference="iSa-66-Wjc"/>
         <segue reference="HFM-OL-cM8"/>
         <segue reference="sPD-XR-ORt"/>
-        <segue reference="dsP-Ie-Qai"/>
-        <segue reference="Bfo-Hm-DEG"/>
+        <segue reference="w8b-nU-BYs"/>
         <segue reference="8EB-JX-S8a"/>
-        <segue reference="IDZ-rz-bLv"/>
+        <segue reference="Bfo-Hm-DEG"/>
+        <segue reference="dsP-Ie-Qai"/>
         <segue reference="OZd-8c-sWC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.52939999999999998" green="0.25879999999999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
