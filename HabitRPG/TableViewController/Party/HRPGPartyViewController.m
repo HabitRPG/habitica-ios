@@ -155,7 +155,7 @@ ChatMessage *selectedMessage;
         if (user.invitedParty) {
             return 1;
         } else {
-            return 2;
+            return 3;
         }
     }
 }
@@ -210,17 +210,21 @@ ChatMessage *selectedMessage;
                 if (user.invitedParty) {
                     return NSLocalizedString(@"Party Invitation", nil);
                 } else {
-                    return NSLocalizedString(@"New Party", nil);
+                    return @"";
                 }
             }
         case 1:
             if (self.party) {
                 return NSLocalizedString(@"Quest", nil);
             } else {
-                return NSLocalizedString(@"Join Party", nil);
+                return NSLocalizedString(@"New Party", nil);
             }
         case 2:
-            return NSLocalizedString(@"Chat", nil);
+            if (self.party) {
+                return NSLocalizedString(@"Chat", nil);
+            } else {
+                return NSLocalizedString(@"Join Party", nil);
+            }
         default:
             return @"";
     }
@@ -235,10 +239,12 @@ ChatMessage *selectedMessage;
                 return 44;
             }
         } else {
-            if (indexPath.section == 1 && indexPath.item == 0) {
+            if (indexPath.section == 2 && indexPath.item == 0) {
                 return 100;
-            } else if (indexPath.section == 0 && indexPath.item == 0) {
+            } else if (indexPath.section == 1 && indexPath.item == 0) {
                 return 60;
+            } else if (indexPath.section == 0 && indexPath.item == 0) {
+                return 100;
             }
         }
     }
@@ -354,7 +360,7 @@ ChatMessage *selectedMessage;
         return;
     }
     
-    if (!self.party && indexPath.section == 0 && indexPath.item == 0) {
+    if (!self.party) {
         return;
     }
     if (indexPath.section == 0 && indexPath.item == 1) {
@@ -411,13 +417,15 @@ ChatMessage *selectedMessage;
             if (indexPath.item == 0) {
                 cellname = @"BaseCell";
             } else {
-                cellname = @"BaseCell";
+                cellname = @"CenteredCell";
             }
         } else {
-            if (indexPath.section == 1 && indexPath.item == 0) {
+            if (indexPath.section == 2 && indexPath.item == 0) {
                 cellname = @"JoinPartyCell";
-            } else if (indexPath.section == 0 && indexPath.item == 0) {
+            } else if (indexPath.section == 1 && indexPath.item == 0) {
                 cellname = @"CreatePartyCell";
+            } else if (indexPath.section == 0 && indexPath.item == 0) {
+                cellname = @"PartyDescriptionCell";
             }
         }
     } else {
@@ -678,7 +686,7 @@ ChatMessage *selectedMessage;
                 cell.textLabel.text = NSLocalizedString(@"Reject", nil);
             }
         } else {
-            if (indexPath.section == 1 && indexPath.item == 0) {
+            if (indexPath.section == 2 && indexPath.item == 0) {
                 UILabel *userIDLabel = (UILabel*)[cell viewWithTag:1];
                 userIDLabel.text = user.id;
             }
