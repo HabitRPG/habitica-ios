@@ -152,7 +152,7 @@ User *user;
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     localNotification.fireDate = date;
     localNotification.repeatInterval = NSDayCalendarUnit;
-    localNotification.alertBody = NSLocalizedString(@"Don't forget to check off your Dailies!", nil);
+    localNotification.alertBody = NSLocalizedString(@"Remember to check off your Dailies!", nil);
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
