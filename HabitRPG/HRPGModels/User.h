@@ -89,6 +89,9 @@
 @property(nonatomic, retain) NSString *partyOrder;
 @property(nonatomic, retain) NSNumber *partyPosition;
 @property(nonatomic, retain) NSNumber *petCount;
+
+@property(nonatomic, retain) NSNumber *lastSetupStep;
+
 @property(nonatomic, retain, setter = setPetCountFromArray:) NSDictionary *petCountArray;
 @property(nonatomic, retain, setter = setCustomizationsDictionary:) NSDictionary *customizationsDictionary;
 @end

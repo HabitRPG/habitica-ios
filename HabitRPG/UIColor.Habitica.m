@@ -84,16 +84,16 @@
 }
 
 + (UIColor *)green10 {
-    return [UIColor colorWithRed:0.141 green:0.800 blue:0.561 alpha:1.000];
+    return [UIColor colorWithRed:0.184 green:0.686 blue:0.365 alpha:1.000];
 }
 + (UIColor *)green50 {
-    return [UIColor colorWithRed:0.247 green:0.855 blue:0.635 alpha:1.000];
+    return [UIColor colorWithRed:0.271 green:0.757 blue:0.455 alpha:1.000];
 }
 + (UIColor *)green100 {
-    return [UIColor colorWithRed:0.353 green:0.894 blue:0.698 alpha:1.000];
+    return [UIColor colorWithRed:0.353 green:0.812 blue:0.537 alpha:1.000];
 }
 + (UIColor *)green500 {
-    return [UIColor colorWithRed:0.651 green:1.000 blue:0.875 alpha:1.000];
+    return [UIColor colorWithRed:0.635 green:0.961 blue:0.769 alpha:1.000];
 }
 
 + (UIColor *)teal10 {
