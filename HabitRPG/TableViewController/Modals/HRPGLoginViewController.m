@@ -11,7 +11,6 @@
 #import "HRPGAppDelegate.h"
 #import "OnePasswordExtension.h"
 #import "HRPGTabBarController.h"
-#import "HRPGIntroView.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "MRProgress.h"
@@ -350,11 +349,6 @@
 
 - (void) onSuccessfullLogin {
     [_sharedManager setCredentials];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults boolForKey:@"displayedIntro"]) {
-        HRPGIntroView *introView = [[HRPGIntroView alloc] init];
-        [introView displayIntro];
-    }
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"behaviour"
