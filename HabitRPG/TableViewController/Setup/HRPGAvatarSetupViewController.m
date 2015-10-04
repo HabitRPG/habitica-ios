@@ -14,6 +14,7 @@
 #import "HRPGTaskSetupTableViewController.h"
 #import "HRPGManager.h"
 #import "HRPGAppDelegate.h"
+
 @interface HRPGAvatarSetupViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
@@ -32,6 +33,7 @@
 @property UIButton *welcomeButton;
 
 @property NSString *welcomeDescriptionString;
+@property NSString *avatarDescriptionString;
 
 @property BOOL isSkipping;
 
@@ -43,6 +45,7 @@
     [super viewDidLoad];
     
     self.welcomeDescriptionString = NSLocalizedString(@"Welcome to Habitica, where advancing in the game will improve your real life! As you accomplish real-world goals, you'll unlock equipment, pets, quests, and more.", nil);
+    self.avatarDescriptionString = NSLocalizedString(@"First, you need an avatar in the game to represent you! The things you do in real life will affect your avatar's health, experience level, and gold.", nil);
     
     switch (self.currentStep) {
         case HRPGAvatarSetupStepsWelcome:
@@ -59,6 +62,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
+    if (!self.user) {
+        HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+        HRPGManager *manager = appdelegate.sharedManager;
+        self.user = [manager getUser];
+    }
     
     if ([self.user.lastSetupStep integerValue] > self.currentStep) {
         self.isSkipping = YES;
@@ -91,7 +100,24 @@
         default:
             self.justinView.frame = CGRectMake(20, 80, self.mainScrollView.frame.size.width/2-10, 120);
             self.avatarView.frame = CGRectMake(self.mainScrollView.frame.size.width/2-10, 80, self.mainScrollView.frame.size.width/2-10, 120);
-            self.instructionLabel.frame = CGRectMake(20, self.avatarView.frame.origin.y+self.avatarView.frame.size.height+20, self.mainScrollView.frame.size.width-40, 40);
+            CGFloat instructionHeight = [self.instructionLabel.text boundingRectWithSize:CGSizeMake(self.mainScrollView.frame.size.width-40, MAXFLOAT)
+                                                                                   options:NSStringDrawingUsesLineFragmentOrigin
+                                                                                attributes:@{
+                                                                                             NSFontAttributeName : [UIFont systemFontOfSize:16.0]
+                                                                                             }
+                                                                                   context:nil].size.height+10;
+            if (self.descriptionlabel) {
+                CGFloat descriptionHeight = [self.avatarDescriptionString boundingRectWithSize:CGSizeMake(self.mainScrollView.frame.size.width-40, MAXFLOAT)
+                                                                                       options:NSStringDrawingUsesLineFragmentOrigin
+                                                                                    attributes:@{
+                                                                                                 NSFontAttributeName : [UIFont systemFontOfSize:16.0]
+                                                                                                 }
+                                                                                       context:nil].size.height+10;
+                self.descriptionlabel.frame = CGRectMake(20, self.justinView.frame.origin.y+160, self.mainScrollView.frame.size.width-40, descriptionHeight);
+                self.instructionLabel.frame = CGRectMake(20, self.descriptionlabel.frame.origin.y+self.descriptionlabel.frame.size.height+20, self.mainScrollView.frame.size.width-40, instructionHeight);
+            } else {
+                self.instructionLabel.frame = CGRectMake(20, self.avatarView.frame.origin.y+self.avatarView.frame.size.height+20, self.mainScrollView.frame.size.width-40, instructionHeight);
+            }
             self.customizationSelectionView.frame = CGRectMake(20, self.instructionLabel.frame.origin.y+80, self.mainScrollView.frame.size.width-40, 250);
             [self.customizationSelectionView layoutSubviews];
             [self.customizationSelectionView sizeToFit];
@@ -170,9 +196,13 @@
             predicate = [NSPredicate predicateWithFormat:@"price == 0 && type == 'skin'"];
             verticalCutoff = 0.85;
             selectedItem = self.user.skin;
+            self.descriptionlabel = [[UILabel alloc] init];
+            self.descriptionlabel.numberOfLines = 0;
+            self.descriptionlabel.text = self.avatarDescriptionString;
+            [self.mainScrollView addSubview:self.descriptionlabel];
             break;
         case HRPGAvatarSetupStepsShirt:
-            instructionString = NSLocalizedString(@"Choose a shirt!", nil);
+            instructionString = NSLocalizedString(@"Choose your outfit! (You'll unlock more outfits soon.)", nil);
             predicate = [NSPredicate predicateWithFormat:@"price == 0 && type == 'shirt'"];
             verticalCutoff = 1.1;
             selectedItem = self.user.shirt;
@@ -192,6 +222,7 @@
     }
     
     self.instructionLabel = [[UILabel alloc] init];
+    self.instructionLabel.numberOfLines = 0;
     self.instructionLabel.textAlignment = NSTextAlignmentCenter;
     self.instructionLabel.text = instructionString;
     [self.mainScrollView addSubview:self.instructionLabel];
@@ -255,7 +286,7 @@
         
     }];
     
-    if (self.currentStep != HRPGAvatarSetupStepsHairColor) {
+    if (self.currentStep != HRPGAvatarSetupStepsShirt) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         HRPGAvatarSetupViewController *dest = [storyboard instantiateViewControllerWithIdentifier:@"AvatarSetupViewController"];
         dest.currentStep = self.currentStep+1;
