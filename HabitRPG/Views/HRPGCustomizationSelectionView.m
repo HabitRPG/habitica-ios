@@ -19,7 +19,7 @@
 
 @implementation HRPGCustomizationSelectionView
 
-CGFloat space = 20.0;
+CGFloat space = 10;
 CGFloat viewSize = 60;
 
 - (instancetype)init {
@@ -59,6 +59,13 @@ CGFloat viewSize = 60;
             count++;
         }
     }
+}
+
+- (void)sizeToFit {
+    UIView *lastview = self.views[self.views.count-1];
+    CGRect frame = self.frame;
+    frame.size.height = lastview.frame.size.height+lastview.frame.origin.y;
+    self.frame = frame;
 }
 
 - (void)setItems:(NSArray *)items {

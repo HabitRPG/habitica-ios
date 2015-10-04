@@ -79,6 +79,7 @@
 
 
 - (IBAction)previousStep:(id)sender {
+    self.user.lastSetupStep = [NSNumber numberWithInteger:self.currentStep-1];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
