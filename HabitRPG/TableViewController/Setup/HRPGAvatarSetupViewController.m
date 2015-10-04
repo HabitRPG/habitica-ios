@@ -12,7 +12,8 @@
 #import "UIColor+Habitica.h"
 #import "Customization.h"
 #import "HRPGTaskSetupTableViewController.h"
-
+#import "HRPGManager.h"
+#import "HRPGAppDelegate.h"
 @interface HRPGAvatarSetupViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
@@ -24,6 +25,7 @@
 @property UILabel *instructionLabel;
 
 @property HRPGCustomizationSelectionView *customizationSelectionView;
+@property UISegmentedControl *bodySizeView;
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
@@ -46,6 +48,9 @@
         case HRPGAvatarSetupStepsWelcome:
             [self setupWelcomeStep];
             break;
+        case HRPGAvatarSetupStepsShirt:
+            [self setupShirtStep];
+            break;
         default:
             [self setupCustomizationStep];
             break;
@@ -67,6 +72,7 @@
 }
 
 - (void)viewWillLayoutSubviews {
+    CGFloat height;
     switch (self.currentStep) {
         case HRPGAvatarSetupStepsWelcome:
             [super viewWillLayoutSubviews];
@@ -80,15 +86,27 @@
             self.welcomeLabel.frame = CGRectMake(0, self.justinView.frame.origin.y - 50, self.mainScrollView.frame.size.width, 30);
             self.descriptionlabel.frame = CGRectMake(20, self.justinView.frame.origin.y+160, self.mainScrollView.frame.size.width-40, descriptionHeight);
             self.welcomeButton.frame = CGRectMake(20, self.descriptionlabel.frame.origin.y+descriptionHeight+20, self.mainScrollView.frame.size.width-20, 60);
+            height = self.welcomeButton.frame.origin.y+self.welcomeButton.frame.size.height;
             break;
         default:
             self.justinView.frame = CGRectMake(20, 80, self.mainScrollView.frame.size.width/2-10, 120);
             self.avatarView.frame = CGRectMake(self.mainScrollView.frame.size.width/2-10, 80, self.mainScrollView.frame.size.width/2-10, 120);
             self.instructionLabel.frame = CGRectMake(20, self.avatarView.frame.origin.y+self.avatarView.frame.size.height+20, self.mainScrollView.frame.size.width-40, 40);
-            self.customizationSelectionView.frame = CGRectMake(20, self.mainScrollView.frame.size.height-250, self.mainScrollView.frame.size.width-20, 250);
+            self.customizationSelectionView.frame = CGRectMake(20, self.instructionLabel.frame.origin.y+80, self.mainScrollView.frame.size.width-40, 250);
+            [self.customizationSelectionView layoutSubviews];
+            [self.customizationSelectionView sizeToFit];
+            height = self.customizationSelectionView.frame.origin.y+self.customizationSelectionView.frame.size.height;
+            if (self.bodySizeView) {
+                self.bodySizeView.frame = CGRectMake((self.mainScrollView.frame.size.width/2)-50, self.customizationSelectionView.frame.origin.y+self.customizationSelectionView.frame.size.height+32, 100, 30);
+                height = self.bodySizeView.frame.origin.y+self.bodySizeView.frame.size.height;
+            }
+            
             break;
     }
     [super viewWillLayoutSubviews];
+    CGSize oldContentSize = self.mainScrollView.contentSize;
+    oldContentSize.height = height;
+    self.mainScrollView.contentSize = oldContentSize;
 }
 
 - (void)setupWelcomeStep {
@@ -116,6 +134,19 @@
     [self.welcomeButton setTitleColor:[UIColor purple400] forState:UIControlStateNormal];
     [self.welcomeButton addTarget:self action:@selector(nextStep:) forControlEvents:UIControlEventTouchUpInside];
     [self.mainScrollView addSubview:self.welcomeButton];
+}
+
+- (void)setupShirtStep {
+    [self setupCustomizationStep];
+    
+    self.bodySizeView = [[UISegmentedControl alloc] initWithItems:@[@"Slim", @"Broad"]];
+    [self.mainScrollView addSubview:self.bodySizeView];
+    if ([self.user.size isEqualToString:@"slim"]) {
+        [self.bodySizeView setSelectedSegmentIndex:0];
+    } else {
+        [self.bodySizeView setSelectedSegmentIndex:1];
+    }
+    [self.bodySizeView addTarget:self action:@selector(userSizeChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void) setupCustomizationStep {
@@ -200,6 +231,30 @@
 - (IBAction)nextStep:(id)sender {
     NSError *error;
     [self.managedObjectContext saveToPersistentStore:&error];
+    
+    NSDictionary *updateDict;
+    switch (self.currentStep) {
+        case HRPGAvatarSetupStepsSkin:
+            updateDict = @{@"preferences.skin": self.user.skin};
+            break;
+        case HRPGAvatarSetupStepsShirt:
+            updateDict = @{@"preferences.shirt": self.user.shirt, @"preferences.size": self.user.size};
+            break;
+        case HRPGAvatarSetupStepsHairStyle:
+            updateDict = @{@"preferences.hair.base": self.user.hairBase};
+            break;
+        case HRPGAvatarSetupStepsHairColor:
+            updateDict = @{@"preferences.hair.color": self.user.hairColor};
+            break;
+    }
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+    HRPGManager *manager = appdelegate.sharedManager;
+    [manager updateUser:updateDict onSuccess:^() {
+        
+    }onError:^() {
+        
+    }];
+    
     if (self.currentStep != HRPGAvatarSetupStepsHairColor) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         HRPGAvatarSetupViewController *dest = [storyboard instantiateViewControllerWithIdentifier:@"AvatarSetupViewController"];
@@ -229,6 +284,16 @@
         destinationController.managedObjectContext = self.managedObjectContext;
         destinationController.currentStep = HRPGAvatarSetupStepsTasks;
     }
+}
+
+- (IBAction)userSizeChanged:(UISegmentedControl*)sender {
+    if (sender.selectedSegmentIndex == 0) {
+        self.user.size = @"slim";
+    } else {
+        self.user.size = @"broad";
+    }
+    [self.user setAvatarOnImageView:self.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:YES];
+
 }
 
 @end

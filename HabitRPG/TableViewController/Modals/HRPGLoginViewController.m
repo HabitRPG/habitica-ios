@@ -16,6 +16,7 @@
 #import "MRProgress.h"
 #import "CRToast.h"
 #import <Google/Analytics.h>
+#import "HRPGAvatarSetupViewController.h"
 
 @interface HRPGLoginViewController ()
 @property HRPGManager *sharedManager;
@@ -198,13 +199,23 @@
             [_sharedManager fetchUser:^() {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];
                 if (self.isRootViewController) {
-                    [self performSegueWithIdentifier:@"MainSegue" sender:self];
+                    User *user = [self.sharedManager getUser];
+                    if ([user.lastSetupStep integerValue] != HRPGAvatarSetupStepsTasks) {
+                        [self performSegueWithIdentifier:@"SetupSegue" sender:self];
+                    } else {
+                        [self performSegueWithIdentifier:@"MainSegue" sender:self];
+                    }
                 } else {
                     [self dismissViewControllerAnimated:YES completion:nil];
                 }
             } onError:^() {
                 if (self.isRootViewController) {
-                    [self performSegueWithIdentifier:@"MainSegue" sender:self];
+                    User *user = [self.sharedManager getUser];
+                    if ([user.lastSetupStep integerValue] != HRPGAvatarSetupStepsTasks) {
+                        [self performSegueWithIdentifier:@"SetupSegue" sender:self];
+                    } else {
+                        [self performSegueWithIdentifier:@"MainSegue" sender:self];
+                    }
                 } else {
                     [self dismissViewControllerAnimated:YES completion:nil];
                 }            }];
@@ -359,17 +370,40 @@
     [_sharedManager fetchUser:^() {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];
         if (self.isRootViewController) {
-            [self performSegueWithIdentifier:@"MainSegue" sender:self];
+            User *user = [self.sharedManager getUser];
+            if ([user.lastSetupStep integerValue] != HRPGAvatarSetupStepsTasks) {
+                [self performSegueWithIdentifier:@"SetupSegue" sender:self];
+            } else {
+                [self performSegueWithIdentifier:@"MainSegue" sender:self];
+            }
         } else {
             [self dismissViewControllerAnimated:YES completion:nil];
         }
     }                 onError:^() {
         if (self.isRootViewController) {
-            [self performSegueWithIdentifier:@"MainSegue" sender:self];
+            User *user = [self.sharedManager getUser];
+            if ([user.lastSetupStep integerValue] != HRPGAvatarSetupStepsTasks) {
+                [self performSegueWithIdentifier:@"SetupSegue" sender:self];
+            } else {
+                [self performSegueWithIdentifier:@"MainSegue" sender:self];
+            }
         } else {
             [self dismissViewControllerAnimated:YES completion:nil];
         }
     }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"SetupSegue"]) {
+        UINavigationController *navController = segue.destinationViewController;
+        HRPGAvatarSetupViewController *avatarSetupViewController = (HRPGAvatarSetupViewController*)navController.topViewController;
+        HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+        HRPGManager *manager = appdelegate.sharedManager;
+        User *user = [manager getUser];
+        avatarSetupViewController.lastCompletedStep = [user.lastSetupStep integerValue];
+        avatarSetupViewController.user = user;
+        avatarSetupViewController.managedObjectContext = manager.getManagedObjectContext;
+    }
 }
 
 @end
