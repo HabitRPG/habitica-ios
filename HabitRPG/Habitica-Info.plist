@@ -31,6 +31,10 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>74</string>
+	<key>CustomDomain</key>
+	<string>${CUSTOM_DOMAIN}</string>
+	<key>DisableSSL</key>
+	<string>${DISABLE_SSL}</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
