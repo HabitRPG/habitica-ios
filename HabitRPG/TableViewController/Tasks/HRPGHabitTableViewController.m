@@ -37,6 +37,8 @@
     self.iconFactory.colors = @[[UIColor whiteColor]];
     self.iconFactory.strokeColor = [UIColor whiteColor];
     self.iconFactory.renderingMode = UIImageRenderingModeAutomatic;
+    
+    self.tutorialIdentifier = @"habit";
 }
 
 - (void)configureCell:(HRPGHabitTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {

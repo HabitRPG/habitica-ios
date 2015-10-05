@@ -35,6 +35,7 @@ PODS:
     - RKValueTransformers (~> 1.1.0)
   - KLCPopup (1.0)
   - MCSwipeTableViewCell (2.1.4)
+  - MPCoachMarks (0.0.8)
   - MRProgress (0.8.2):
     - MRProgress/ActivityIndicator (= 0.8.2)
     - MRProgress/Blur (= 0.8.2)
@@ -120,6 +121,7 @@ DEPENDENCIES:
   - Google/Analytics (~> 1.0.0)
   - KLCPopup
   - MCSwipeTableViewCell (~> 2.1.0)
+  - MPCoachMarks
   - MRProgress
   - NSString+Emoji
   - OHHTTPStubs
@@ -164,6 +166,7 @@ SPEC CHECKSUMS:
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
   MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
+  MPCoachMarks: f29a33b024a43dfaa56d94f463fe89f28f62ed0c
   MRProgress: f4cfe862082418e8f542f077772283f425d6c699
   NSString+Emoji: 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: 0aec5755528693a165bd616cb79f69387de306a8

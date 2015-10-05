@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization;
+@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, TutorialSteps;
 
 @interface User : NSManagedObject
 
@@ -91,6 +91,7 @@
 @property(nonatomic, retain) NSNumber *petCount;
 
 @property(nonatomic, retain) NSNumber *lastSetupStep;
+@property(nonatomic, retain) NSSet *tutorialSteps;
 
 @property(nonatomic, retain, setter = setPetCountFromArray:) NSDictionary *petCountArray;
 @property(nonatomic, retain, setter = setCustomizationsDictionary:) NSDictionary *customizationsDictionary;
@@ -183,4 +184,7 @@
 
 - (NSString *)hashedValueForAccountName;
 
+- (BOOL)hasSeenTutorialStepWithIdentifier:(NSString *) identifier;
+
+- (void) addTutorialStepsObject:(TutorialSteps *)value;
 @end

@@ -55,6 +55,8 @@
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateStyle = NSDateFormatterMediumStyle;
     self.dateFormatter.timeStyle = NSDateFormatterNoStyle;
+    
+    self.tutorialIdentifier = @"todo";
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

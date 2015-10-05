@@ -16,6 +16,8 @@
 @property CGFloat viewWidth;
 @property NSString *readableScreenName;
 
+@property NSString *tutorialIdentifier;
+@property NSArray *coachMarks;
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 
 - (NSDictionary *)markdownAttributes;

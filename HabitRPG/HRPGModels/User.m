@@ -11,6 +11,7 @@
 #import "Customization.h"
 #import <CommonCrypto/CommonCrypto.h>
 #import "UIColor+Habitica.h"
+#import "TutorialSteps.h"
 
 @interface User ()
 @property (nonatomic) NSDate *lastImageGeneration;
@@ -660,6 +661,15 @@
     }
     
     return userAccountHash;
+}
+
+- (BOOL)hasSeenTutorialStepWithIdentifier:(NSString *)identifier {
+    for (TutorialSteps *tutorialStep in self.tutorialSteps) {
+        if ([tutorialStep.identifier isEqualToString:identifier]) {
+            return [tutorialStep.wasShown boolValue];
+        }
+    }
+    return NO;
 }
 
 @end

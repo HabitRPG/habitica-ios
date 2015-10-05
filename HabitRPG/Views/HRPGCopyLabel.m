@@ -12,9 +12,9 @@
 
 - (void) attachTapHandler {
     [self setUserInteractionEnabled:YES];
-    UIGestureRecognizer *touchy = [[UITapGestureRecognizer alloc]
+    UIGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self action:@selector(handleTap:)];
-    [self addGestureRecognizer:touchy];
+    [self addGestureRecognizer:gestureRecognizer];
 }
 
 - (id) initWithFrame: (CGRect) frame {
