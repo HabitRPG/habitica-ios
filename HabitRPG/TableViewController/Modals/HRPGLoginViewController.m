@@ -370,23 +370,13 @@
     [_sharedManager fetchUser:^() {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];
         if (self.isRootViewController) {
-            User *user = [self.sharedManager getUser];
-            if ([user.lastSetupStep integerValue] != HRPGAvatarSetupStepsTasks) {
-                [self performSegueWithIdentifier:@"SetupSegue" sender:self];
-            } else {
-                [self performSegueWithIdentifier:@"MainSegue" sender:self];
-            }
+            [self performSegueWithIdentifier:@"MainSegue" sender:self];
         } else {
             [self dismissViewControllerAnimated:YES completion:nil];
         }
     }                 onError:^() {
         if (self.isRootViewController) {
-            User *user = [self.sharedManager getUser];
-            if ([user.lastSetupStep integerValue] != HRPGAvatarSetupStepsTasks) {
-                [self performSegueWithIdentifier:@"SetupSegue" sender:self];
-            } else {
-                [self performSegueWithIdentifier:@"MainSegue" sender:self];
-            }
+            [self performSegueWithIdentifier:@"MainSegue" sender:self];
         } else {
             [self dismissViewControllerAnimated:YES completion:nil];
         }
