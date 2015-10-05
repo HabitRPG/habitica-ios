@@ -717,10 +717,10 @@ NSString *currentUser;
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/invite" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/join" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     RKObjectMapping *groupRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
     [groupRequestMapping addAttributeMappingsFromDictionary:@{
                                                                @"id" : @"_id",
@@ -2336,7 +2336,7 @@ NSString *currentUser;
 
 - (void)inviteMembers:(NSArray *)members toGroupWithID:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/invite", group] parameters:@{@"uuids": members} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -2368,10 +2368,10 @@ NSString *currentUser;
 
 - (void)joinGroup:(NSString *)group withType:(NSString *)type onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/join", group] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
-        
+
         if ([type isEqualToString:@"party"]) {
             Group *party = [mappingResult dictionary][[NSNull null]];
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -2381,7 +2381,7 @@ NSString *currentUser;
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged" object:party];
             }
         }
-        
+
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
             successBlock();
