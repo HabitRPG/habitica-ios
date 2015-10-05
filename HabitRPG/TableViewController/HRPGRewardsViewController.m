@@ -46,6 +46,8 @@ User *user;
      selector:@selector(reloadAllData:)
      name:@"shouldReloadAllData"
      object:nil];
+    
+    self.tutorialIdentifier = @"reward";
 }
 
 - (void)viewWillAppear:(BOOL)animated {

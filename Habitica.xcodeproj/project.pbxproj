@@ -162,6 +162,12 @@
 		D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */; };
 		D9F16E361BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F16E351BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D9F16E391BBC536500CA3E02 /* HRPGCustomizationSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F16E381BBC536500CA3E02 /* HRPGCustomizationSelectionView.m */; settings = {ASSET_TAGS = (); }; };
+		D9FC1A781BC28C5F00B97D23 /* HRPGExplanationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A771BC28C5F00B97D23 /* HRPGExplanationView.m */; settings = {ASSET_TAGS = (); }; };
+		D9FC1A7B1BC28D7100B97D23 /* HRPGSpeechbubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A7A1BC28D7100B97D23 /* HRPGSpeechbubbleView.m */; settings = {ASSET_TAGS = (); }; };
+		D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */; settings = {ASSET_TAGS = (); }; };
+		D9FC1A801BC2CD7500B97D23 /* TutorialDefinitions.json in Resources */ = {isa = PBXBuildFile; fileRef = D9FC1A7F1BC2CD7500B97D23 /* TutorialDefinitions.json */; settings = {ASSET_TAGS = (); }; };
+		D9FC1A861BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A831BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A851BC2D8A300B97D23 /* TutorialSteps.m */; settings = {ASSET_TAGS = (); }; };
 		D9FD3B311ABDF8E700B005F6 /* HRPGGemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FD3B301ABDF8E700B005F6 /* HRPGGemView.m */; };
 		F076F3C3B57B4367B7624D1F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC82AC0621234004BC92DB72 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -469,6 +475,18 @@
 		D9F16E371BBC536500CA3E02 /* HRPGCustomizationSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCustomizationSelectionView.h; sourceTree = "<group>"; };
 		D9F16E381BBC536500CA3E02 /* HRPGCustomizationSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCustomizationSelectionView.m; sourceTree = "<group>"; };
 		D9F16E3A1BBC5C2B00CA3E02 /* HabitRPG 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 12.xcdatamodel"; sourceTree = "<group>"; };
+		D9FC1A761BC28C5F00B97D23 /* HRPGExplanationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGExplanationView.h; sourceTree = "<group>"; };
+		D9FC1A771BC28C5F00B97D23 /* HRPGExplanationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGExplanationView.m; sourceTree = "<group>"; };
+		D9FC1A791BC28D7100B97D23 /* HRPGSpeechbubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpeechbubbleView.h; sourceTree = "<group>"; };
+		D9FC1A7A1BC28D7100B97D23 /* HRPGSpeechbubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpeechbubbleView.m; sourceTree = "<group>"; };
+		D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTypingLabel.h; sourceTree = "<group>"; };
+		D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTypingLabel.m; sourceTree = "<group>"; };
+		D9FC1A7F1BC2CD7500B97D23 /* TutorialDefinitions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TutorialDefinitions.json; sourceTree = "<group>"; };
+		D9FC1A811BC2D86300B97D23 /* HabitRPG 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 13.xcdatamodel"; sourceTree = "<group>"; };
+		D9FC1A821BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TutorialSteps+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D9FC1A831BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TutorialSteps+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D9FC1A841BC2D8A300B97D23 /* TutorialSteps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialSteps.h; sourceTree = "<group>"; };
+		D9FC1A851BC2D8A300B97D23 /* TutorialSteps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialSteps.m; sourceTree = "<group>"; };
 		D9FD3B2F1ABDF8E700B005F6 /* HRPGGemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGemView.h; sourceTree = "<group>"; };
 		D9FD3B301ABDF8E700B005F6 /* HRPGGemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGemView.m; sourceTree = "<group>"; };
 		EC82AC0621234004BC92DB72 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -745,6 +763,12 @@
 				D96C86CA1BB0546400E4C134 /* HRPGCopyLabel.m */,
 				D9F16E371BBC536500CA3E02 /* HRPGCustomizationSelectionView.h */,
 				D9F16E381BBC536500CA3E02 /* HRPGCustomizationSelectionView.m */,
+				D9FC1A761BC28C5F00B97D23 /* HRPGExplanationView.h */,
+				D9FC1A771BC28C5F00B97D23 /* HRPGExplanationView.m */,
+				D9FC1A791BC28D7100B97D23 /* HRPGSpeechbubbleView.h */,
+				D9FC1A7A1BC28D7100B97D23 /* HRPGSpeechbubbleView.m */,
+				D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */,
+				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
 				D95CBD461BBC0EDA002F4498 /* UIView+Pulse.h */,
 				D95CBD471BBC0EDA002F4498 /* UIView+Pulse.m */,
 			);
@@ -799,6 +823,10 @@
 		D9C3D01D19509E4C00D22A4A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				D9FC1A821BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.h */,
+				D9FC1A831BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m */,
+				D9FC1A841BC2D8A300B97D23 /* TutorialSteps.h */,
+				D9FC1A851BC2D8A300B97D23 /* TutorialSteps.m */,
 				D9C2572B1B9DC58700839F48 /* FAQ.h */,
 				D9C2572C1B9DC58700839F48 /* FAQ.m */,
 				D979AD111AF3CF6C00D59FAE /* Customization.h */,
@@ -1002,6 +1030,7 @@
 				D9EB4E9A18CB4A9400BB2094 /* main.m */,
 				D9EB4E9C18CB4A9400BB2094 /* Habitica-Prefix.pch */,
 				D9A50E991A868DE400FC8B1A /* Launch Screen.xib */,
+				D9FC1A7F1BC2CD7500B97D23 /* TutorialDefinitions.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1131,6 +1160,7 @@
 				D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */,
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
 				D979AD1C1AF3EF6E00D59FAE /* customizations.json in Resources */,
+				D9FC1A801BC2CD7500B97D23 /* TutorialDefinitions.json in Resources */,
 				D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1216,6 +1246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9FC1A7B1BC28D7100B97D23 /* HRPGSpeechbubbleView.m in Sources */,
 				D9C2572D1B9DC58700839F48 /* FAQ.m in Sources */,
 				D99DEC87190836D400FFD2B9 /* Item.m in Sources */,
 				D9C89CF31B1DE3A200A599B0 /* HRPGGemViewController.m in Sources */,
@@ -1232,6 +1263,7 @@
 				D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */,
 				D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */,
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
+				D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */,
 				D9B5C0D518D5F94400C8D1B7 /* HRPGPartyViewController.m in Sources */,
 				D98AD5541943986100AF6174 /* HRPGMountViewController.m in Sources */,
 				D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */,
@@ -1251,6 +1283,7 @@
 				D9D96F03194B96FD00796FE7 /* HRPGMountMasterViewController.m in Sources */,
 				D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */,
 				D979AD131AF3CF6C00D59FAE /* Customization.m in Sources */,
+				D9FC1A861BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m in Sources */,
 				D9D4A3AE1BBED941008AD861 /* HRPGTaskSetupTableViewController.m in Sources */,
 				D94AADB4192A30F900546C8E /* Spell.m in Sources */,
 				D98830DB1BADDE050018594D /* HRPGLoadingSquaresSegue.m in Sources */,
@@ -1295,6 +1328,7 @@
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
 				D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */,
 				D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */,
+				D9FC1A781BC28C5F00B97D23 /* HRPGExplanationView.m in Sources */,
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
 				D9B5C0E718D62CC700C8D1B7 /* HRPGLoginViewController.m in Sources */,
 				D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */,
@@ -1308,6 +1342,7 @@
 				D9C89CF61B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m in Sources */,
 				D97CCDB719A51EED00DA128A /* NSMutableAttributedString_GHFMarkdown.m in Sources */,
 				D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */,
+				D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */,
 				D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */,
 				D97C71E118ECA7050089FDC6 /* ChatMessage.m in Sources */,
 				D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */,
@@ -1778,6 +1813,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D9FC1A811BC2D86300B97D23 /* HabitRPG 13.xcdatamodel */,
 				D9F16E3A1BBC5C2B00CA3E02 /* HabitRPG 12.xcdatamodel */,
 				D94FEDEF1BB988D70046A52E /* HabitRPG 11.xcdatamodel */,
 				D9C257271B9DC27A00839F48 /* HabitRPG 10.xcdatamodel */,
@@ -1791,7 +1827,7 @@
 				D9B27ED71AE4C138008914D7 /* HabitRPG 2.xcdatamodel */,
 				D967755519F1379800A21F45 /* HabitRPG.xcdatamodel */,
 			);
-			currentVersion = D9F16E3A1BBC5C2B00CA3E02 /* HabitRPG 12.xcdatamodel */;
+			currentVersion = D9FC1A811BC2D86300B97D23 /* HabitRPG 13.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

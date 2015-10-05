@@ -29,7 +29,7 @@
         }
     }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (0.3) * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseIn animations:^() {
+        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^() {
             sourceController.logo.alpha = 0;
         }completion:nil];
     });

@@ -54,6 +54,8 @@ NIKFontAwesomeIconFactory *streakIconFactory;
     streakIconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     streakIconFactory.square = YES;
     streakIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
+    
+    self.tutorialIdentifier = @"daily";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
