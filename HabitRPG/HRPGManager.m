@@ -83,9 +83,26 @@ NSString *currentUser;
     // Configure a managed object cache to ensure we do not create duplicate objects
     managedObjectStore.managedObjectCache = [[RKInMemoryManagedObjectCache alloc] initWithManagedObjectContext:managedObjectStore.persistentStoreManagedObjectContext];
 
+
+    NSString *ROOT_URL = nil;
+
+    #ifdef DEBUG
+        NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+        NSString *CUSTOM_DOMAIN = [info objectForKey:@"CustomDomain"];
+        NSString *DISABLE_SSL = [info objectForKey:@"DisableSSL"];
+
+        if ([DISABLE_SSL isEqualToString:@"true"]) {
+          ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
+        } else {
+          ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
+        }
+    #else
+        ROOT_URL = @"https://habitica.com";
+    #endif
+
     // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://habitica.com"]];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString: ROOT_URL]];
     objectManager.managedObjectStore = managedObjectStore;
 
     [RKObjectManager setSharedManager:objectManager];
