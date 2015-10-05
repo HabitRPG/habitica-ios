@@ -146,6 +146,8 @@
 		D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */; };
 		D9FD3B311ABDF8E700B005F6 /* HRPGGemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FD3B301ABDF8E700B005F6 /* HRPGGemView.m */; };
 		F076F3C3B57B4367B7624D1F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC82AC0621234004BC92DB72 /* libPods.a */; };
+		F5351C5E1B93551600426D5F /* HRPGChatLabelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F5351C5D1B93551600426D5F /* HRPGChatLabelTest.m */; };
+		F5351C611B93555B00426D5F /* HRPGChatLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5351C601B93555B00426D5F /* HRPGChatLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -415,6 +417,9 @@
 		D9FD3B2F1ABDF8E700B005F6 /* HRPGGemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGemView.h; sourceTree = "<group>"; };
 		D9FD3B301ABDF8E700B005F6 /* HRPGGemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGemView.m; sourceTree = "<group>"; };
 		EC82AC0621234004BC92DB72 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5351C5D1B93551600426D5F /* HRPGChatLabelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGChatLabelTest.m; sourceTree = "<group>"; };
+		F5351C5F1B93555B00426D5F /* HRPGChatLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGChatLabel.h; sourceTree = "<group>"; };
+		F5351C601B93555B00426D5F /* HRPGChatLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGChatLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -513,6 +518,7 @@
 				D94B969D1B8B2C9300C977C2 /* HRPGRewardsViewControllerTests.m */,
 				D99EA73C1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m */,
 				D946E5C31B30A9D700806BE6 /* HRPGTaskTests.m */,
+				F5351C5C1B93551600426D5F /* Views */,
 				D94461851AB34F5C0015215E /* Supporting Files */,
 			);
 			path = HabiticaTests;
@@ -681,6 +687,8 @@
 				D9C89CF51B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m */,
 				D96760C61B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.h */,
 				D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */,
+				F5351C5F1B93555B00426D5F /* HRPGChatLabel.h */,
+				F5351C601B93555B00426D5F /* HRPGChatLabel.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -900,6 +908,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F5351C5C1B93551600426D5F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F5351C5D1B93551600426D5F /* HRPGChatLabelTest.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1091,6 +1107,7 @@
 				D99EA73D1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m in Sources */,
 				D94B969E1B8B2C9300C977C2 /* HRPGRewardsViewControllerTests.m in Sources */,
 				D946E5C21B30A89500806BE6 /* NSDAte+NSDateMock.m in Sources */,
+				F5351C5E1B93551600426D5F /* HRPGChatLabelTest.m in Sources */,
 				D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1130,6 +1147,7 @@
 				D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */,
 				D979AD131AF3CF6C00D59FAE /* Customization.m in Sources */,
 				D94AADB4192A30F900546C8E /* Spell.m in Sources */,
+				F5351C611B93555B00426D5F /* HRPGChatLabel.m in Sources */,
 				D9ADD35D19447057006202C1 /* HRPGBall.m in Sources */,
 				D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */,
 				D99C46D819C7687A00834EC2 /* HRPGActivityIndicator.m in Sources */,
