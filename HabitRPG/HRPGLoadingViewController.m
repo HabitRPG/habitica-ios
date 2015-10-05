@@ -84,14 +84,7 @@
     if ([keyChain stringForKey:@"id"] == nil || [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     } else {
-        HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
-        HRPGManager *manager = appdelegate.sharedManager;
-        User *user = [manager getUser];
-        if ([user.lastSetupStep integerValue] != HRPGAvatarSetupStepsTasks) {
-            [self performSegueWithIdentifier:@"SetupSegue" sender:self];
-        } else {
-            [self performSegueWithIdentifier:@"InitialSegue" sender:self];
-        }
+        [self performSegueWithIdentifier:@"InitialSegue" sender:self];
     }
 }
 
@@ -100,15 +93,6 @@
         UINavigationController *navigationViewController = (UINavigationController*)segue.destinationViewController;
         HRPGLoginViewController *loginViewController = (HRPGLoginViewController*)navigationViewController.topViewController;
         loginViewController.isRootViewController = YES;
-    } else if ([segue.identifier isEqualToString:@"SetupSegue"]) {
-        UINavigationController *navController = segue.destinationViewController;
-        HRPGAvatarSetupViewController *avatarSetupViewController = (HRPGAvatarSetupViewController*)navController.topViewController;
-        HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
-        HRPGManager *manager = appdelegate.sharedManager;
-        User *user = [manager getUser];
-        avatarSetupViewController.lastCompletedStep = [user.lastSetupStep integerValue];
-        avatarSetupViewController.user = user;
-        avatarSetupViewController.managedObjectContext = manager.getManagedObjectContext;
     }
 }
 
