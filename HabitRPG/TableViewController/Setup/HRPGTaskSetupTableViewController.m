@@ -30,9 +30,20 @@
     self.tableView.dataSource = self;
     [self.tableView reloadData];
     
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
-    UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(20, 100, self.view.frame.size.width-40, 100)];
-    titleView.text = NSLocalizedString(@"What do you want to improve in your life?", nil);
+    NSString *title = NSLocalizedString(@"Splendid! Now let's set up your tasks so that you can start earning experience and gold.\n\nTo start, which parts of your life do you want to improve?", nil);
+    
+    CGFloat height = [title boundingRectWithSize:CGSizeMake(self.view.frame.size.width-40, MAXFLOAT)
+                                                                           options:NSStringDrawingUsesLineFragmentOrigin
+                                                                        attributes:@{
+                                                                                     NSFontAttributeName : [UIFont systemFontOfSize:16.0]
+                                                                                     }
+                                                                           context:nil].size.height+10;
+    
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, height+60)];
+    UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(20, 60, self.view.frame.size.width-40, height)];
+    titleView.font = [UIFont systemFontOfSize:16.0];
+    titleView.numberOfLines = 0;
+    titleView.text = title;
     [self.headerView addSubview:titleView];
     self.tableView.tableHeaderView = self.headerView;
 }

@@ -14,6 +14,7 @@
 #import "HRPGTaskSetupTableViewController.h"
 #import "HRPGManager.h"
 #import "HRPGAppDelegate.h"
+#import "HRPGTypingLabel.h"
 
 @interface HRPGAvatarSetupViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
@@ -22,11 +23,13 @@
 @property UIImageView *avatarView;
 
 @property UILabel *welcomeLabel;
+@property HRPGTypingLabel *welcomeDescriptionLabel;
 @property UILabel *descriptionlabel;
 @property UILabel *instructionLabel;
 
 @property HRPGCustomizationSelectionView *customizationSelectionView;
 @property UISegmentedControl *bodySizeView;
+@property HRPGCustomizationSelectionView *bangsSelectionView;
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
@@ -80,6 +83,12 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    if (self.currentStep == HRPGAvatarSetupStepsWelcome && self.welcomeDescriptionLabel.text.length == 0) {
+        self.welcomeDescriptionLabel.text = self.welcomeDescriptionString;
+    }
+}
+
 - (void)viewWillLayoutSubviews {
     CGFloat height;
     switch (self.currentStep) {
@@ -93,13 +102,12 @@
                                                                                                               }
                                                                                                     context:nil].size.height+10;
             self.welcomeLabel.frame = CGRectMake(0, self.justinView.frame.origin.y - 50, self.mainScrollView.frame.size.width, 30);
-            self.descriptionlabel.frame = CGRectMake(20, self.justinView.frame.origin.y+160, self.mainScrollView.frame.size.width-40, descriptionHeight);
-            self.welcomeButton.frame = CGRectMake(20, self.descriptionlabel.frame.origin.y+descriptionHeight+20, self.mainScrollView.frame.size.width-20, 60);
+            self.welcomeDescriptionLabel.frame = CGRectMake(20, self.justinView.frame.origin.y+160, self.mainScrollView.frame.size.width-40, descriptionHeight);
+            self.welcomeButton.frame = CGRectMake(20, self.welcomeDescriptionLabel.frame.origin.y+descriptionHeight+20, self.mainScrollView.frame.size.width-20, 60);
             height = self.welcomeButton.frame.origin.y+self.welcomeButton.frame.size.height;
             break;
         default:
-            self.justinView.frame = CGRectMake(20, 80, self.mainScrollView.frame.size.width/2-10, 120);
-            self.avatarView.frame = CGRectMake(self.mainScrollView.frame.size.width/2-10, 80, self.mainScrollView.frame.size.width/2-10, 120);
+            self.avatarView.frame = CGRectMake(10, 40, self.mainScrollView.frame.size.width-20, 120);
             CGFloat instructionHeight = [self.instructionLabel.text boundingRectWithSize:CGSizeMake(self.mainScrollView.frame.size.width-40, MAXFLOAT)
                                                                                    options:NSStringDrawingUsesLineFragmentOrigin
                                                                                 attributes:@{
@@ -113,18 +121,24 @@
                                                                                                  NSFontAttributeName : [UIFont systemFontOfSize:16.0]
                                                                                                  }
                                                                                        context:nil].size.height+10;
-                self.descriptionlabel.frame = CGRectMake(20, self.justinView.frame.origin.y+160, self.mainScrollView.frame.size.width-40, descriptionHeight);
+                self.descriptionlabel.frame = CGRectMake(20, self.avatarView.frame.origin.y+140, self.mainScrollView.frame.size.width-40, descriptionHeight);
                 self.instructionLabel.frame = CGRectMake(20, self.descriptionlabel.frame.origin.y+self.descriptionlabel.frame.size.height+20, self.mainScrollView.frame.size.width-40, instructionHeight);
             } else {
                 self.instructionLabel.frame = CGRectMake(20, self.avatarView.frame.origin.y+self.avatarView.frame.size.height+20, self.mainScrollView.frame.size.width-40, instructionHeight);
             }
-            self.customizationSelectionView.frame = CGRectMake(20, self.instructionLabel.frame.origin.y+80, self.mainScrollView.frame.size.width-40, 250);
+            self.customizationSelectionView.frame = CGRectMake(20, self.instructionLabel.frame.origin.y+self.instructionLabel.frame.size.height+20, self.mainScrollView.frame.size.width-40, 250);
             [self.customizationSelectionView layoutSubviews];
             [self.customizationSelectionView sizeToFit];
             height = self.customizationSelectionView.frame.origin.y+self.customizationSelectionView.frame.size.height;
             if (self.bodySizeView) {
                 self.bodySizeView.frame = CGRectMake((self.mainScrollView.frame.size.width/2)-50, self.customizationSelectionView.frame.origin.y+self.customizationSelectionView.frame.size.height+32, 100, 30);
                 height = self.bodySizeView.frame.origin.y+self.bodySizeView.frame.size.height;
+            }
+            if (self.bangsSelectionView) {
+                self.bangsSelectionView.frame = CGRectMake(20, self.customizationSelectionView.frame.origin.y+self.customizationSelectionView.frame.size.height+60, self.mainScrollView.frame.size.width-40, 250);
+                [self.customizationSelectionView layoutSubviews];
+                [self.customizationSelectionView sizeToFit];
+                height = self.bangsSelectionView.frame.origin.y+self.bangsSelectionView.frame.size.height;
             }
             
             break;
@@ -149,11 +163,10 @@
     [self.justinView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/npc_justin.png"]];
     [self.mainScrollView addSubview:self.justinView];
     
-    self.descriptionlabel = [[UILabel alloc] init];
-    self.descriptionlabel.numberOfLines = 0;
-    self.descriptionlabel.textAlignment = NSTextAlignmentCenter;
-    self.descriptionlabel.text = self.welcomeDescriptionString;
-    [self.mainScrollView addSubview:self.descriptionlabel];
+    self.welcomeDescriptionLabel = [[HRPGTypingLabel alloc] init];
+    self.welcomeDescriptionLabel.textAlignment = NSTextAlignmentLeft;
+    self.welcomeDescriptionLabel.font = [UIFont systemFontOfSize:16.0];
+    [self.mainScrollView addSubview:self.welcomeDescriptionLabel];
     
     self.welcomeButton = [[UIButton alloc] init];
     [self.welcomeButton setTitle:NSLocalizedString(@"Enter", nil) forState:UIControlStateNormal];
@@ -176,14 +189,10 @@
 }
 
 - (void) setupCustomizationStep {
-    self.justinView = [[UIImageView alloc] init];
-    [self.justinView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/npc_justin.png"]];
-    self.justinView.contentMode = UIViewContentModeCenter;
-    [self.mainScrollView addSubview:self.justinView];
-    
     self.avatarView = [[UIImageView alloc] init];
     [self.user setAvatarOnImageView:self.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:NO];
     self.avatarView.contentMode = UIViewContentModeCenter;
+    self.avatarView.userInteractionEnabled = NO;
     [self.mainScrollView addSubview:self.avatarView];
     
     NSString *instructionString;
@@ -196,10 +205,6 @@
             predicate = [NSPredicate predicateWithFormat:@"price == 0 && type == 'skin'"];
             verticalCutoff = 0.85;
             selectedItem = self.user.skin;
-            self.descriptionlabel = [[UILabel alloc] init];
-            self.descriptionlabel.numberOfLines = 0;
-            self.descriptionlabel.text = self.avatarDescriptionString;
-            [self.mainScrollView addSubview:self.descriptionlabel];
             break;
         case HRPGAvatarSetupStepsShirt:
             instructionString = NSLocalizedString(@"Choose your outfit! (You'll unlock more outfits soon.)", nil);
@@ -212,6 +217,8 @@
             predicate = [NSPredicate predicateWithFormat:@"price == 0 && type == 'hair' && group == 'base'"];
             selectedItem = self.user.hairBase;
             verticalCutoff = 0.85;
+            [self.mainScrollView addSubview:self.customizationSelectionView];
+        
             break;
         case HRPGAvatarSetupStepsHairColor:
             instructionString = NSLocalizedString(@"Choose a hair color!", nil);
@@ -220,6 +227,11 @@
             verticalCutoff = 0.77;
             break;
     }
+    
+    self.descriptionlabel = [[UILabel alloc] init];
+    self.descriptionlabel.numberOfLines = 0;
+    self.descriptionlabel.text = self.avatarDescriptionString;
+    [self.mainScrollView addSubview:self.descriptionlabel];
     
     self.instructionLabel = [[UILabel alloc] init];
     self.instructionLabel.numberOfLines = 0;
@@ -231,6 +243,7 @@
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
     [fetchRequest setPredicate:predicate];
+    [fetchRequest setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
     NSError *error;
     
     self.customizationSelectionView = [[HRPGCustomizationSelectionView alloc] init];
@@ -257,6 +270,28 @@
         [weakSelf.user setAvatarOnImageView:weakSelf.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:YES];
     };
     [self.mainScrollView addSubview:self.customizationSelectionView];
+    
+    if (self.currentStep == HRPGAvatarSetupStepsHairStyle) {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Customization" inManagedObjectContext:self.managedObjectContext];
+        [fetchRequest setEntity:entity];
+        [fetchRequest setFetchBatchSize:20];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"price == 0 && type == 'hair' && group == 'bangs'"]];
+        [fetchRequest setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+
+        NSError *error;
+        self.bangsSelectionView = [[HRPGCustomizationSelectionView alloc] init];
+        self.bangsSelectionView.verticalCutoff = verticalCutoff;
+        self.bangsSelectionView.user = self.user;
+        self.bangsSelectionView.selectedItem = self.user.hairBangs;
+        self.bangsSelectionView.items = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        __weak HRPGAvatarSetupViewController *weakSelf = self;
+        self.bangsSelectionView.selectionAction = ^(Customization *selectedItem) {
+            weakSelf.user.hairBangs = selectedItem.name;
+            [weakSelf.user setAvatarOnImageView:weakSelf.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:YES];
+        };
+        [self.mainScrollView addSubview:self.bangsSelectionView];
+    }
 }
 
 - (IBAction)nextStep:(id)sender {
@@ -272,7 +307,7 @@
             updateDict = @{@"preferences.shirt": self.user.shirt, @"preferences.size": self.user.size};
             break;
         case HRPGAvatarSetupStepsHairStyle:
-            updateDict = @{@"preferences.hair.base": self.user.hairBase};
+            updateDict = @{@"preferences.hair.base": self.user.hairBase, @"preferences.hair.bangs": self.user.hairBangs};
             break;
         case HRPGAvatarSetupStepsHairColor:
             updateDict = @{@"preferences.hair.color": self.user.hairColor};
@@ -305,7 +340,10 @@
 }
 
 - (IBAction)skipSetup:(id)sender {
-    
+    self.user.lastSetupStep = [NSNumber numberWithInteger:HRPGAvatarSetupStepsTasks];
+    NSError *error;
+    [self.managedObjectContext saveToPersistentStore:&error];
+    [self performSegueWithIdentifier:@"MainSegue" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
