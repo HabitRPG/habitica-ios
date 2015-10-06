@@ -90,6 +90,10 @@ NSString *currentUser;
         NSString *CUSTOM_DOMAIN = [info objectForKey:@"CustomDomain"];
         NSString *DISABLE_SSL = [info objectForKey:@"DisableSSL"];
 
+        if (CUSTOM_DOMAIN.length == 0) {
+            CUSTOM_DOMAIN = @"habitica.com";
+        }
+    
         if ([DISABLE_SSL isEqualToString:@"true"]) {
           ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
         } else {

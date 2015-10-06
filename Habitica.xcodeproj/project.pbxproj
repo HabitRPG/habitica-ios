@@ -1445,7 +1445,7 @@
 		};
 		D9EB4EC418CB4A9400BB2094 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A11A64FF1BAC9FC30037D41C /* debug.xcconfig */;
+			baseConfigurationReference = A12B817AF1713BF5BCB7F702 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
