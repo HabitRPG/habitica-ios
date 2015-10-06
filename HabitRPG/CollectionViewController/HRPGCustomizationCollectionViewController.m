@@ -95,7 +95,7 @@ static NSString * const reuseIdentifier = @"Cell";
             setString = [setString stringByAppendingFormat:@"items.gear.owned.%@,", gear.key];
         }
     }
-    setString = [setString stringByPaddingToLength:setString.length-1 withString:nil startingAtIndex:0];
+    setString = [setString stringByPaddingToLength:setString.length-1 withString:@"" startingAtIndex:0];
     if (purchasable) {
         purchaseButton.hidden = false;
         [purchaseButton addTarget:self action:@selector(purchaseSet:) forControlEvents:UIControlEventTouchUpInside];
