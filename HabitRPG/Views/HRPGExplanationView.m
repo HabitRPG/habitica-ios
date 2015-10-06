@@ -45,13 +45,13 @@
 - (void)displayOnView:(UIView *)view animated:(BOOL)animated {
     [view addSubview:self];
     self.frame = view.frame;
-    
-    CGFloat speechBubbleHeight = [self.speechBubbleText boundingRectWithSize:CGSizeMake(self.frame.size.width-96, MAXFLOAT)
-                                                                                                                           options:NSStringDrawingUsesLineFragmentOrigin
-                                                                                                                        attributes:@{
-                                                                                                                                     NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
-                                                                                                                                     }
-                                                                                                                           context:nil].size.height + 32;
+    CGRect boundingRect = [self.speechBubbleText boundingRectWithSize:CGSizeMake(self.frame.size.width-108, MAXFLOAT)
+                                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                                           attributes:@{
+                                                                        NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+                                                                        }
+                                                              context:nil];
+    CGFloat speechBubbleHeight = boundingRect.size.height + 32;
     self.justinView.frame = CGRectMake(10, self.frame.size.height, 42, 63);
     self.speechBubbleView.frame = CGRectMake(60, self.frame.size.height-20, 0, 0);
     self.speechBubbleView.alpha = 0;

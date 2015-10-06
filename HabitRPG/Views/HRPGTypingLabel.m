@@ -26,6 +26,7 @@
         self.userInteractionEnabled = NO;
         self.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         self.backgroundColor = [UIColor clearColor];
+        self.contentInset = UIEdgeInsetsMake(0,0,0,0);
     }
     
     return self;
