@@ -12,6 +12,8 @@
 #import "HRPGAppDelegate.h"
 #import "UIColor+Habitica.h"
 #import "NSDate+DaysSince.h"
+#import <CoreSpotlight/CoreSpotlight.h>
+#import "NSString+Emoji.h"
 
 @implementation Task
 
@@ -229,6 +231,33 @@
         }
     }
     return @[];
+}
+
+- (void)didSave {
+    if ([CSSearchableIndex class]) {
+        NSString *domainIdenntifier = [NSString stringWithFormat:@"com.habitrpg.habitica.tasks.%@", self.type];
+        NSString *uniqueIdentifier = [NSString stringWithFormat:@"%@.%@", domainIdenntifier, self.id];
+        if (self.inserted || self.updated) {
+            CSSearchableItemAttributeSet *attributeSet;
+            attributeSet = [[CSSearchableItemAttributeSet alloc]
+                            initWithItemContentType:(NSString *)kUTTypeImage];
+            
+            attributeSet.title = [self.text stringByReplacingEmojiCheatCodesWithUnicode];
+            attributeSet.contentDescription = [self.notes stringByReplacingEmojiCheatCodesWithUnicode];
+            
+            CSSearchableItem *item = [[CSSearchableItem alloc]
+                                      initWithUniqueIdentifier:uniqueIdentifier
+                                      domainIdentifier:domainIdenntifier
+                                      attributeSet:attributeSet];
+            
+            [[CSSearchableIndex defaultSearchableIndex] indexSearchableItems:@[item]
+                                                           completionHandler: ^(NSError * __nullable error) {
+                                                           }];
+        } else if (self.deleted) {
+            [[CSSearchableIndex defaultSearchableIndex] deleteSearchableItemsWithIdentifiers:@[uniqueIdentifier] completionHandler:^(NSError * _Nullable error) {
+            }];
+        }
+    }
 }
 
 @end
