@@ -539,6 +539,21 @@ BOOL editable;
     [self.tableView reloadData];
 }
 
+- (void) scrollToTaskWithId:(NSString *)taskID {
+    NSInteger index = 0;
+    NSIndexPath *indexPath;
+    for (Task *task in self.fetchedResultsController.fetchedObjects) {
+        if ([task.id isEqualToString:taskID]) {
+            indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+        }
+        index++;
+    }
+    if (indexPath) {
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -9,6 +9,7 @@
 #import "HRPGAppDelegate.h"
 #import "HRPGTableViewController.h"
 #import "HRPGTabBarController.h"
+#import "HRPGTableViewController.h"
 #import "CRToast.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -16,6 +17,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Google/Analytics.h>
+#import <CoreSpotlight/CoreSpotlight.h>
 
 @implementation HRPGAppDelegate
 
@@ -118,7 +120,33 @@
         UIViewController *displayedTableViewController = displayedNavigationController.topViewController;
         [displayedTableViewController performSegueWithIdentifier:@"FormSegue" sender:displayedTableViewController];
     }
+    completionHandler(YES);
 
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler {
+    if ([userActivity.activityType isEqualToString:CSSearchableItemActionType]) {
+        NSString *uniqueIdentifier = userActivity.userInfo[CSSearchableItemActivityIdentifier];
+        NSArray *components = [uniqueIdentifier componentsSeparatedByString:@"."];
+        NSString *taskType = components[4];
+        NSString *taskID = components[5];
+        id presentedController = self.window.rootViewController.presentedViewController;
+        if ([presentedController isKindOfClass:[HRPGTabBarController class]]) {
+            HRPGTabBarController *tabBarController = (HRPGTabBarController *)presentedController;
+            if ([taskType isEqualToString:@"habit"]) {
+                [tabBarController setSelectedIndex:0];
+            } else if ([taskType isEqualToString:@"daily"]) {
+                [tabBarController setSelectedIndex:1];
+            } else if ([taskType isEqualToString:@"todo"]) {
+                [tabBarController setSelectedIndex:2];
+            }
+            UINavigationController *displayedNavigationController = tabBarController.selectedViewController;
+            HRPGTableViewController *displayedTableViewController = (HRPGTableViewController *)displayedNavigationController.topViewController;
+            [displayedTableViewController scrollToTaskWithId:taskID];
+        }
+
+    }
+    return YES;
 }
 
 @end

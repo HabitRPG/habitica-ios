@@ -25,6 +25,8 @@
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 - (NSPredicate*) getPredicate;
 
+- (void) scrollToTaskWithId:(NSString *)taskID;
+
 @property NSInteger filterType;
 @property NSInteger dayStart;
 
