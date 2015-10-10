@@ -58,7 +58,7 @@
 - (void)openGemPurchaseView:(UITapGestureRecognizer *)tapGestureRecognizer {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
-    UIViewController* viewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController* viewController = [UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController;
     [viewController presentViewController:navigationController animated:YES completion:nil];
 }
 

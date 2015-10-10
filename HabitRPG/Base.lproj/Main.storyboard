@@ -3499,7 +3499,7 @@ Invite friends now to earn a Quest Scroll!</string>
                         <animations/>
                     </navigationBar>
                     <connections>
-                        <segue destination="RXB-FN-MmL" kind="relationship" relationship="rootViewController" id="h3x-Eh-6lY"/>
+                        <segue destination="5tC-8Q-RuU" kind="relationship" relationship="rootViewController" id="YjA-9l-Zvx"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4RK-O9-N6X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3507,99 +3507,81 @@ Invite friends now to earn a Quest Scroll!</string>
             <point key="canvasLocation" x="294.375" y="9453.75"/>
         </scene>
         <!--Gem View Controller-->
-        <scene sceneID="w6J-Gk-IZz">
+        <scene sceneID="HcL-tx-rYL">
             <objects>
-                <viewController id="RXB-FN-MmL" customClass="HRPGGemViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="RHh-SX-WFt"/>
-                        <viewControllerLayoutGuide type="bottom" id="qTF-XM-pDY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jwS-uY-OoE">
+                <tableViewController id="5tC-8Q-RuU" customClass="HRPGGemViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" id="MB0-K7-JRe">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" text="20 Gems" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jf-ef-S4f">
-                                <rect key="frame" x="16" y="251" width="568" height="36"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="500" constant="30" id="nWa-QJ-IyH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" text="Gems are used to buy special in-game items, such as shirts and hairstyles." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swT-vQ-9rg">
-                                <rect key="frame" x="16" y="303" width="568" height="41"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="500" constant="20" id="TH7-kh-Txk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yaI-Jo-Esb" customClass="HRPGPurchaseLoadingButton">
-                                <rect key="frame" x="210" y="540" width="180" height="40"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="7cc-co-a0k"/>
-                                    <constraint firstAttribute="height" constant="40" id="JiC-Ik-ro7"/>
-                                </constraints>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ns-xL-wc5">
-                                <rect key="frame" x="255" y="145" width="90" height="90"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="1Ns-xL-wc5" secondAttribute="height" multiplier="1:1" id="aAD-dT-fqS"/>
-                                    <constraint firstAttribute="height" constant="90" id="bQ3-AB-nTj"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" text="You do not have enough gems to unlock this. Do you want to purchase more?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2X8-z5-njT">
-                                <rect key="frame" x="16" y="72" width="568" height="41"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="500" constant="40" id="Onj-Ko-IiX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <color key="textColor" red="0.77300000190734863" green="0.23499999940395355" blue="0.24699999392032623" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="7Jf-ef-S4f" firstAttribute="leading" secondItem="jwS-uY-OoE" secondAttribute="leadingMargin" id="2JL-d8-wM7"/>
-                            <constraint firstItem="2X8-z5-njT" firstAttribute="top" secondItem="RHh-SX-WFt" secondAttribute="bottom" constant="8" id="3Ty-bf-5zt"/>
-                            <constraint firstItem="7Jf-ef-S4f" firstAttribute="top" secondItem="1Ns-xL-wc5" secondAttribute="bottom" constant="16" id="6Yd-xT-Tie"/>
-                            <constraint firstAttribute="centerX" secondItem="yaI-Jo-Esb" secondAttribute="centerX" id="7Yw-2l-Pmc"/>
-                            <constraint firstItem="2X8-z5-njT" firstAttribute="leading" secondItem="jwS-uY-OoE" secondAttribute="leadingMargin" id="BzC-an-xMv"/>
-                            <constraint firstItem="qTF-XM-pDY" firstAttribute="top" secondItem="yaI-Jo-Esb" secondAttribute="bottom" constant="20" id="COb-f2-A1l"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2X8-z5-njT" secondAttribute="trailing" id="EDe-hC-Mo3"/>
-                            <constraint firstItem="swT-vQ-9rg" firstAttribute="leading" secondItem="jwS-uY-OoE" secondAttribute="leadingMargin" id="Vmy-A7-Nqy"/>
-                            <constraint firstItem="swT-vQ-9rg" firstAttribute="top" secondItem="7Jf-ef-S4f" secondAttribute="bottom" constant="16" id="YJU-Ir-Web"/>
-                            <constraint firstAttribute="centerX" secondItem="1Ns-xL-wc5" secondAttribute="centerX" id="Za9-oW-OOd"/>
-                            <constraint firstItem="1Ns-xL-wc5" firstAttribute="top" secondItem="2X8-z5-njT" secondAttribute="bottom" constant="32" id="sFJ-sQ-CFQ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7Jf-ef-S4f" secondAttribute="trailing" id="z2t-PF-DM2"/>
-                            <constraint firstItem="swT-vQ-9rg" firstAttribute="trailing" secondItem="jwS-uY-OoE" secondAttribute="trailingMargin" id="zeD-M6-bQr"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="wbK-fe-Har">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="qPH-se-KmL">
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="55" id="0a2-3a-f8v">
+                                <rect key="frame" x="0.0" y="92" width="600" height="55"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0a2-3a-f8v" id="rKR-Iz-pZv">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cy-vn-w79">
+                                            <rect key="frame" x="55" y="8" width="447" height="39"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view tag="2" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="TZD-8N-6Ik" customClass="HRPGPurchaseLoadingButton">
+                                            <rect key="frame" x="510" y="13" width="82" height="30"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" priority="500" constant="82" id="DLU-9G-kvH"/>
+                                                <constraint firstAttribute="height" priority="500" constant="30" id="NTA-Ow-avE"/>
+                                            </constraints>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gem" translatesAutoresizingMaskIntoConstraints="NO" id="b4g-5d-naU">
+                                            <rect key="frame" x="8" y="8" width="39" height="39"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="b4g-5d-naU" secondAttribute="height" multiplier="1:1" id="Jgf-7u-X02"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="6cy-vn-w79" firstAttribute="leading" secondItem="b4g-5d-naU" secondAttribute="trailing" constant="8" id="4Hf-ku-4Q1"/>
+                                        <constraint firstItem="6cy-vn-w79" firstAttribute="top" secondItem="rKR-Iz-pZv" secondAttribute="topMargin" id="FMg-JW-PgJ"/>
+                                        <constraint firstItem="6cy-vn-w79" firstAttribute="bottom" secondItem="rKR-Iz-pZv" secondAttribute="bottomMargin" id="Hdi-OQ-8DH"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="b4g-5d-naU" secondAttribute="bottom" id="Wpd-uh-OMQ"/>
+                                        <constraint firstItem="TZD-8N-6Ik" firstAttribute="centerY" secondItem="rKR-Iz-pZv" secondAttribute="centerY" id="dkD-v0-QV1"/>
+                                        <constraint firstItem="TZD-8N-6Ik" firstAttribute="trailing" secondItem="rKR-Iz-pZv" secondAttribute="trailingMargin" id="kf0-AD-vYt"/>
+                                        <constraint firstItem="b4g-5d-naU" firstAttribute="leading" secondItem="rKR-Iz-pZv" secondAttribute="leadingMargin" id="lUF-xu-sPe"/>
+                                        <constraint firstItem="b4g-5d-naU" firstAttribute="top" secondItem="rKR-Iz-pZv" secondAttribute="topMargin" id="oCD-kW-nKd"/>
+                                        <constraint firstItem="TZD-8N-6Ik" firstAttribute="leading" secondItem="6cy-vn-w79" secondAttribute="trailing" constant="8" id="x6N-7h-TYG"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5tC-8Q-RuU" id="kdk-81-a6K"/>
+                            <outlet property="delegate" destination="5tC-8Q-RuU" id="RGb-Z1-DBS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="TBf-Pe-VRZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Vmx-PA-g6t">
                             <connections>
-                                <action selector="cancelButtonPress:" destination="RXB-FN-MmL" id="Nwd-yB-xGH"/>
+                                <action selector="cancelButtonPress:" destination="5tC-8Q-RuU" id="Cwe-oP-A2o"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelButton" destination="qPH-se-KmL" id="gAN-Ua-u6a"/>
-                        <outlet property="gemImageView" destination="1Ns-xL-wc5" id="T7Y-Cn-EW1"/>
-                        <outlet property="notEnoughGemsLabel" destination="2X8-z5-njT" id="3nH-MV-1sr"/>
-                        <outlet property="purchaseButton" destination="yaI-Jo-Esb" id="U8F-Gs-GuN"/>
+                        <outlet property="cancelButton" destination="Vmx-PA-g6t" id="YQi-CD-Ayz"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gxF-ax-7zK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JXG-vs-v6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1014.375" y="9453.75"/>
+            <point key="canvasLocation" x="1014" y="9453"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EKs-yn-VUc">
@@ -5216,6 +5198,7 @@ Invite friends now to earn a Quest Scroll!</string>
         </scene>
     </scenes>
     <resources>
+        <image name="Gem" width="18" height="13"/>
         <image name="gold_coin" width="15" height="15"/>
         <image name="login_email" width="17" height="20"/>
         <image name="login_password" width="17" height="20"/>
