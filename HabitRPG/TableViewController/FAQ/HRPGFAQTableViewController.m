@@ -9,6 +9,7 @@
 #import "HRPGFAQTableViewController.h"
 #import "FAQ.h"
 #import "HRPGFAQDetailViewController.h"
+#import "TutorialSteps.h"
 
 @interface HRPGFAQTableViewController ()
 
@@ -30,17 +31,28 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.fetchedResultsController.sections.count;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
+    if (section == 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+        return [sectionInfo numberOfObjects];
+    } else {
+        return 1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
+    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    if (indexPath.section == 0) {
+        [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else {
+        cell.textLabel.text = NSLocalizedString(@"Reset Justins Tips", nil);
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     return cell;
 }
 
@@ -49,18 +61,29 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FAQ *faq = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    CGFloat width = self.viewWidth - 51;
-    
-    CGFloat height =  [faq.question boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
-                                               options:NSStringDrawingUsesLineFragmentOrigin
-                                            attributes:@{
-                                                         NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
-                                                         }
-                                               context:nil].size.height;
-    height = height + 32;
-    return height;
+    if (indexPath.section == 0) {
+        FAQ *faq = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        
+        CGFloat width = self.viewWidth - 51;
+        
+        CGFloat height =  [faq.question boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                                     options:NSStringDrawingUsesLineFragmentOrigin
+                                                  attributes:@{
+                                                               NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
+                                                               }
+                                                     context:nil].size.height;
+        height = height + 32;
+        return height;
+    } else {
+        CGFloat height = [@" " boundingRectWithSize:CGSizeMake(self.viewWidth, MAXFLOAT)
+                                                    options:NSStringDrawingUsesLineFragmentOrigin
+                                                 attributes:@{
+                                                              NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
+                                                              }
+                                                    context:nil].size.height;
+        height = height + 32;
+        return height;
+    }
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
@@ -148,9 +171,20 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     FAQ *faq = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *label = (UILabel *)[cell viewWithTag:1];
-    label.text = faq.question;
-    label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    cell.textLabel.text = faq.question;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        [self performSegueWithIdentifier:@"FAQDetailSegue" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
+    } else {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        for (TutorialSteps *step in [self.sharedManager user].tutorialSteps) {
+            step.wasShown = [NSNumber numberWithBool:NO];
+        }
+        NSError *error;
+        [self.managedObjectContext saveToPersistentStore:&error];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

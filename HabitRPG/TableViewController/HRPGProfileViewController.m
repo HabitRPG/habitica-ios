@@ -127,7 +127,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         case 2:
             return 5;
         case 3:
-            return 3;
+            return 4;
         default:
             return 0;
     }
@@ -210,6 +210,8 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else if (indexPath.section == 3 && indexPath.item == 1) {
         [self performSegueWithIdentifier:@"SettingsSegue" sender:self];
     } else if (indexPath.section == 3 && indexPath.item == 2) {
+        [self performSegueWithIdentifier:@"FAQSegue" sender:self];
+    } else if (indexPath.section == 4 && indexPath.item == 2) {
         [self performSegueWithIdentifier:@"AboutSegue" sender:self];
     }
 }
@@ -260,6 +262,8 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else if (indexPath.section == 3 && indexPath.item == 1) {
         title = NSLocalizedString(@"Settings", nil);
     } else if (indexPath.section == 3 && indexPath.item == 2) {
+        title = NSLocalizedString(@"Help", nil);
+    } else if (indexPath.section == 4 && indexPath.item == 2) {
         title = NSLocalizedString(@"About", nil);
     }
     
