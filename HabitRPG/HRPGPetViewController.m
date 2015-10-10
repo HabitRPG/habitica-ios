@@ -31,6 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tutorialIdentifier = @"pets";
     
     self.equippedPetName = [self.sharedManager getUser].currentPet;
 

@@ -22,7 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.user = [self.sharedManager getUser];
-    
+    self.tutorialIdentifier = @"skills";
+
     if ([self.user.hclass isEqualToString:@"wizard"] || [self.user.hclass isEqualToString:@"healer"]) {
         self.navigationItem.title = NSLocalizedString(@"Cast Spells", nil);
     } else {

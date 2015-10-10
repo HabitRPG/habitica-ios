@@ -14,6 +14,9 @@
 #import "HRPGWebViewController.h"
 #import "NIKFontAwesomeIconFactory.h"
 #import "NIKFontAwesomeIconFactory+iOS.h"
+#import "MPCoachMarks.h"
+#import "TutorialSteps.h"
+#import "HRPGExplanationView.h"
 
 @interface HRPGClassTableViewController ()
 @property CGSize screenSize;
@@ -21,13 +24,17 @@
 @property User *user;
 @property (nonatomic) HRPGManager *sharedManager;
 @property NSIndexPath *selectedIndex;
+@property NSString *tutorialIdentifier;
+@property NSArray *coachMarks;
+@property BOOL displayedTutorialStep;
 @end
 
 @implementation HRPGClassTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.tutorialIdentifier = @"classes";
+
     
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
@@ -46,6 +53,41 @@
     
     [self loadClassesArray];
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    if (self.tutorialIdentifier && !self.displayedTutorialStep) {
+        if (![[self.sharedManager user] hasSeenTutorialStepWithIdentifier:self.tutorialIdentifier]) {
+            self.displayedTutorialStep = YES;
+            NSError *error = nil;
+            NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TutorialDefinitions"
+                                                                 ofType:@"json"];
+            NSData *dataFromFile = [NSData dataWithContentsOfFile:filePath];
+            NSDictionary *data = [NSJSONSerialization JSONObjectWithData:dataFromFile
+                                                                 options:kNilOptions
+                                                                   error:&error];
+            if (error == nil) {
+                HRPGExplanationView *explanationView = [[HRPGExplanationView alloc] init];
+                explanationView.speechBubbleText = data[self.tutorialIdentifier][@"text"];
+                [explanationView displayOnView:self.parentViewController.parentViewController.view animated:YES];
+                
+                TutorialSteps *step = [TutorialSteps markStepAsSeen:self.tutorialIdentifier withContext:self.managedObjectContext];
+                [[self.sharedManager user] addTutorialStepsObject:step];
+                
+                NSError *error;
+                [self.managedObjectContext saveToPersistentStore:&error];
+            }
+        }
+    }
+    
+    if (self.coachMarks && !self.displayedTutorialStep) {
+        for (NSString *coachMark in self.coachMarks) {
+            if (![[self.sharedManager user] hasSeenTutorialStepWithIdentifier:coachMark]) {
+                break;
+            }
+        }
+    }
+}
+
 
 #pragma mark <UITableViewDataSource>
 

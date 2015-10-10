@@ -35,6 +35,8 @@ float textWidth;
 
 -(void)viewDidLoad {
     [super viewDidLoad];
+    self.tutorialIdentifier = @"items";
+
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     textWidth = screenRect.size.width - 118;
 }

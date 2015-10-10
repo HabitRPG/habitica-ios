@@ -28,6 +28,7 @@ NSIndexPath *selectedIndex;
 -(void)viewDidLoad {
     [super viewDidLoad];
     self.user = [self.sharedManager getUser];
+    self.tutorialIdentifier = @"equipment";
     
     UIView *costumeFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.viewWidth, 68)];
     
