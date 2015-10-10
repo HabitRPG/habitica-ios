@@ -42,7 +42,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 9;
+    return 8;
 }
 
 
@@ -64,15 +64,12 @@
         cell.textLabel.text = @"Twitter";
         cell.detailTextLabel.text = @"@habitica";
     } else if (indexPath.item == 4) {
-        cell.textLabel.text = NSLocalizedString(@"FAQ", nil);
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    } else if (indexPath.item == 5) {
         cell.textLabel.text = NSLocalizedString(@"Leave a Review", nil);
-    } else if (indexPath.item == 6) {
+    } else if (indexPath.item == 5) {
         cell.textLabel.text = NSLocalizedString(@"View Source Code", nil);
-    } else if (indexPath.item == 7) {
+    } else if (indexPath.item == 6) {
         cell.textLabel.text = NSLocalizedString(@"Acknowledgements", nil);
-    } else if (indexPath.item == 8) {
+    } else if (indexPath.item == 7) {
         cell.textLabel.text = NSLocalizedString(@"Version", nil);
         NSString * appVersionString = [NSString stringWithFormat: @"%@ (%@)", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
         cell.detailTextLabel.text = appVersionString;
@@ -115,18 +112,14 @@
             break;
         }
         case 4: {
-            [self performSegueWithIdentifier:@"FAQSegue" sender:self];
-            break;
-        }
-        case 5: {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id994882113"]];
             break;
         }
-        case 6: {
+        case 5: {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/HabitRPG/habitrpg-ios/"]];
             break;
         }
-        case 7: {
+        case 6: {
             VTAcknowledgementsViewController *viewController = [VTAcknowledgementsViewController acknowledgementsViewController];
             viewController.headerText = NSLocalizedString(@"We love open source software.", nil);
             

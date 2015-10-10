@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    /*
     NSArray *colors = @[
                         @[@3,@1,@3,@3,@1,@3,@3,@3,@3,@3,@3,@3,@3,@3,@1,@3],
                         @[@3,@3,@3,@3,@3,@3,@3,@3,@3,@1,@3,@1,@3,@3,@3,@3],
@@ -73,7 +73,7 @@
     self.logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"launch_logo" ]];
     self.logo.frame = CGRectMake((self.view.frame.size.width-165)/2, 100, 165, 140);
     [self.view addSubview:self.logo];
-    
+    */
     
 }
 

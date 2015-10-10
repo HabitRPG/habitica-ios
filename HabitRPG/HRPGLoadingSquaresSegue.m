@@ -12,6 +12,9 @@
 @implementation HRPGLoadingSquaresSegue
 
 - (void)perform {
+    [self.sourceViewController presentViewController:self.destinationViewController animated:NO completion:NULL];
+
+    /*
     HRPGLoadingViewController *sourceController = (HRPGLoadingViewController*) self.sourceViewController;
     UIViewController *destController = self.destinationViewController;
     
@@ -34,8 +37,8 @@
         }completion:nil];
     });
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (0.02*sourceController.lineCount+0.2) * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            [sourceController presentViewController:destController animated:NO completion:NULL];
     });
+    */
 }
 
 @end

@@ -211,7 +211,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         [self performSegueWithIdentifier:@"SettingsSegue" sender:self];
     } else if (indexPath.section == 3 && indexPath.item == 2) {
         [self performSegueWithIdentifier:@"FAQSegue" sender:self];
-    } else if (indexPath.section == 4 && indexPath.item == 2) {
+    } else if (indexPath.section == 3 && indexPath.item == 3) {
         [self performSegueWithIdentifier:@"AboutSegue" sender:self];
     }
 }
@@ -263,7 +263,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         title = NSLocalizedString(@"Settings", nil);
     } else if (indexPath.section == 3 && indexPath.item == 2) {
         title = NSLocalizedString(@"Help", nil);
-    } else if (indexPath.section == 4 && indexPath.item == 2) {
+    } else if (indexPath.section == 3 && indexPath.item == 3) {
         title = NSLocalizedString(@"About", nil);
     }
     

@@ -45,7 +45,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     if (indexPath.section == 0) {
         [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -69,7 +69,7 @@
         CGFloat height =  [faq.question boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                      options:NSStringDrawingUsesLineFragmentOrigin
                                                   attributes:@{
-                                                               NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
+                                                               NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                                }
                                                      context:nil].size.height;
         height = height + 32;
@@ -78,7 +78,7 @@
         CGFloat height = [@" " boundingRectWithSize:CGSizeMake(self.viewWidth, MAXFLOAT)
                                                     options:NSStringDrawingUsesLineFragmentOrigin
                                                  attributes:@{
-                                                              NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
+                                                              NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                               }
                                                     context:nil].size.height;
         height = height + 32;
