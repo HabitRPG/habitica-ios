@@ -16,6 +16,7 @@
 #import "HRPGNavigationController.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import <pop/POP.h>
+#import "UIViewcontroller+TutorialSteps.h"
 
 @interface HRPGPetViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;

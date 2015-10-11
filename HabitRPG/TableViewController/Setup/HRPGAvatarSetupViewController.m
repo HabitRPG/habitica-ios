@@ -15,6 +15,7 @@
 #import "HRPGManager.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGTypingLabel.h"
+#import <Google/Analytics.h>
 
 @interface HRPGAvatarSetupViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
@@ -46,6 +47,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:NSStringFromClass([self class])];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
     
     self.welcomeDescriptionString = NSLocalizedString(@"Welcome to Habitica, where advancing in the game will improve your real life! As you accomplish real-world goals, you'll unlock equipment, pets, quests, and more.", nil);
     self.avatarDescriptionString = NSLocalizedString(@"First, you need an avatar in the game to represent you! The things you do in real life will affect your avatar's health, experience level, and gold.", nil);

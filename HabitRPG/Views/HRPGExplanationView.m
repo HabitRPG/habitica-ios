@@ -51,7 +51,7 @@
                                                                         NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                                         }
                                                               context:nil];
-    CGFloat speechBubbleHeight = boundingRect.size.height + 32;
+    CGFloat speechBubbleHeight = boundingRect.size.height + 100;
     self.justinView.frame = CGRectMake(10, self.frame.size.height, 42, 63);
     self.speechBubbleView.frame = CGRectMake(60, self.frame.size.height-20, 0, 0);
     self.speechBubbleView.alpha = 0;
@@ -71,11 +71,14 @@
     }];
 }
 
-- (void)dismissAnimated:(BOOL)animated {
+- (void)dismissAnimated:(BOOL)animated wasSeen:(BOOL)wasSeen {
     [UIView animateWithDuration:0.4 animations:^() {
         self.alpha = 0;
     }completion:^(BOOL completed) {
         [self removeFromSuperview];
+        if (self.dismissAction) {
+            self.dismissAction(wasSeen);
+        }
     }];
 }
 
@@ -85,7 +88,7 @@
 }
 
 - (void) handleTap:(UIGestureRecognizer *)recognizer {
-    [self dismissAnimated:YES];
+    [self dismissAnimated:YES wasSeen:YES];
 }
 
 @end

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */; };
-		A11A65001BAC9FC30037D41C /* debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A11A64FF1BAC9FC30037D41C /* debug.xcconfig */; settings = {ASSET_TAGS = (); }; };
 		D902AD841B5006570098A1BD /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D902AD821B5006570098A1BD /* FBSDKCoreKit.framework */; };
 		D902AD851B5006570098A1BD /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D902AD831B5006570098A1BD /* FBSDKLoginKit.framework */; };
 		D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */; };
@@ -147,6 +146,7 @@
 		D9C89CF61B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C89CF51B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m */; };
 		D9C89CF91B1F0E6C00A599B0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9C89CF81B1F0E6C00A599B0 /* StoreKit.framework */; };
 		D9CD2DBE1BC7FBB500B1304B /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CD2DBD1BC7FBB500B1304B /* CoreSpotlight.framework */; };
+		D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */; settings = {ASSET_TAGS = (); }; };
 		D9D21731198D509100023367 /* HRPGDeathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D21730198D509000023367 /* HRPGDeathView.m */; };
 		D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D44C101B0A0C73000732B4 /* HRPGGGuidelinesViewController.m */; };
 		D9D4A3AE1BBED941008AD861 /* HRPGTaskSetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D4A3AD1BBED941008AD861 /* HRPGTaskSetupTableViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -445,6 +445,8 @@
 		D9C89CF71B1E42D500A599B0 /* HabitRPG 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 5.xcdatamodel"; sourceTree = "<group>"; };
 		D9C89CF81B1F0E6C00A599B0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D9CD2DBD1BC7FBB500B1304B /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
+		D9CD2DD31BCAA6F700B1304B /* UIViewController+TutorialSteps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+TutorialSteps.h"; path = "HabitRPG/Utilities/UIViewController+TutorialSteps.h"; sourceTree = SOURCE_ROOT; };
+		D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+TutorialSteps.m"; path = "HabitRPG/Utilities/UIViewController+TutorialSteps.m"; sourceTree = SOURCE_ROOT; };
 		D9D2172F198D509000023367 /* HRPGDeathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGDeathView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9D21730198D509000023367 /* HRPGDeathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGDeathView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9D44C0E1B0A07E6000732B4 /* HabitRPG 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 4.xcdatamodel"; sourceTree = "<group>"; };
@@ -663,6 +665,8 @@
 				D91439891BAF14C40006999E /* UIImage+withColor.m */,
 				D9A1A27F1BA7029D00903567 /* NSDate+DaysSince.h */,
 				D9A1A2801BA7029D00903567 /* NSDate+DaysSince.m */,
+				D9CD2DD31BCAA6F700B1304B /* UIViewController+TutorialSteps.h */,
+				D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */,
 			);
 			name = Utilities;
 			path = TableViewController;
@@ -1102,7 +1106,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HRPG;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Phillip Thelen";
 				TargetAttributes = {
 					D94461821AB34F5C0015215E = {
@@ -1165,7 +1169,6 @@
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
 				D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */,
-				A11A65001BAC9FC30037D41C /* debug.xcconfig in Resources */,
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
 				D979AD1C1AF3EF6E00D59FAE /* customizations.json in Resources */,
 				D9FC1A801BC2CD7500B97D23 /* TutorialDefinitions.json in Resources */,
@@ -1303,6 +1306,7 @@
 				D94FEDEE1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m in Sources */,
 				D96C86CB1BB0546400E4C134 /* HRPGCopyLabel.m in Sources */,
 				D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */,
+				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
 				D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */,
 				D9C257131B9B4C4100839F48 /* HRPGHabitTableViewCell.m in Sources */,
 				D914398A1BAF14C40006999E /* UIImage+withColor.m in Sources */,
@@ -1477,6 +1481,7 @@
 					"$(PROJECT_DIR)/OCMock",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Habitica.app/Habitica";
 			};
@@ -1544,6 +1549,7 @@
 					"$(PROJECT_DIR)/OCMock",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Habitica.app/Habitica";
 			};
@@ -1567,6 +1573,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1696,6 +1703,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1778,6 +1786,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

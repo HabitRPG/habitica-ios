@@ -22,6 +22,8 @@ typedef enum : NSUInteger {
 @property (nonatomic) UIColor *speechBubbleTextColor;
 
 - (void) displayOnView:(UIView *)view animated:(BOOL)animated;
-- (void) dismissAnimated:(BOOL)animated;
+- (void) dismissAnimated:(BOOL)animated wasSeen:(BOOL)wasSeen;
+
+@property (nonatomic, copy) void (^dismissAction)(BOOL wasSeen);
 
 @end

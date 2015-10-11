@@ -47,6 +47,9 @@
     if (self.index > self.setText.length) {
         [timer invalidate];
         timer = nil;
+        if (self.finishedAction) {
+            self.finishedAction();
+        }
     } else {
         super.text = [self.setText substringToIndex:self.index];
     }

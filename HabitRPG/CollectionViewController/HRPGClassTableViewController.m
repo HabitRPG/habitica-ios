@@ -17,6 +17,8 @@
 #import "MPCoachMarks.h"
 #import "TutorialSteps.h"
 #import "HRPGExplanationView.h"
+#import "UIViewcontroller+TutorialSteps.h"
+#import <Google/Analytics.h>
 
 @interface HRPGClassTableViewController ()
 @property CGSize screenSize;
@@ -35,6 +37,9 @@
     [super viewDidLoad];
     self.tutorialIdentifier = @"classes";
 
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:NSStringFromClass([self class])];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
     
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
@@ -55,37 +60,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    if (self.tutorialIdentifier && !self.displayedTutorialStep) {
-        if (![[self.sharedManager user] hasSeenTutorialStepWithIdentifier:self.tutorialIdentifier]) {
-            self.displayedTutorialStep = YES;
-            NSError *error = nil;
-            NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TutorialDefinitions"
-                                                                 ofType:@"json"];
-            NSData *dataFromFile = [NSData dataWithContentsOfFile:filePath];
-            NSDictionary *data = [NSJSONSerialization JSONObjectWithData:dataFromFile
-                                                                 options:kNilOptions
-                                                                   error:&error];
-            if (error == nil) {
-                HRPGExplanationView *explanationView = [[HRPGExplanationView alloc] init];
-                explanationView.speechBubbleText = data[self.tutorialIdentifier][@"text"];
-                [explanationView displayOnView:self.parentViewController.parentViewController.view animated:YES];
-                
-                TutorialSteps *step = [TutorialSteps markStepAsSeen:self.tutorialIdentifier withContext:self.managedObjectContext];
-                [[self.sharedManager user] addTutorialStepsObject:step];
-                
-                NSError *error;
-                [self.managedObjectContext saveToPersistentStore:&error];
-            }
-        }
-    }
-    
-    if (self.coachMarks && !self.displayedTutorialStep) {
-        for (NSString *coachMark in self.coachMarks) {
-            if (![[self.sharedManager user] hasSeenTutorialStepWithIdentifier:coachMark]) {
-                break;
-            }
-        }
-    }
+    [self displayTutorialStep:self.sharedManager];
 }
 
 

@@ -12,4 +12,6 @@
 
 @property (nonatomic) CGFloat typingSpeed;
 
+@property (nonatomic, copy) void (^finishedAction)();
+
 @end

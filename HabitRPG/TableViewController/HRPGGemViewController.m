@@ -85,6 +85,7 @@
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 150)];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:self.headerView.frame];
     titleLabel.text = NSLocalizedString(@"Gems are purchased with real money, which makes it possible for Habitica to release new updates. Gems can be used to buy special items and backgrounds. Thank you for supporting us!", nil);
+    titleLabel.numberOfLines = 0;
     [self.headerView addSubview:titleLabel];
     self.tableView.tableHeaderView = self.headerView;
 }

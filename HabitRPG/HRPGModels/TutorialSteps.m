@@ -11,7 +11,7 @@
 
 @implementation TutorialSteps
 
-+ (TutorialSteps *)markStepAsSeen:(NSString *)identifier withContext:(NSManagedObjectContext *)context {
++ (TutorialSteps *)markStep:(NSString *)identifier asSeen:(BOOL)wasSeen withContext:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"TutorialSteps" inManagedObjectContext:context];
     [request setEntity:entity];
@@ -26,7 +26,7 @@
                                                                 inManagedObjectContext:context];
         step.identifier = identifier;
     }
-    step.wasShown = [NSNumber numberWithBool:YES];
+    step.wasShown = [NSNumber numberWithBool:wasSeen];
 
     return step;
 }

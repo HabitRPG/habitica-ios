@@ -7,6 +7,7 @@
 //
 
 #import "HRPGTaskSetupTableViewController.h"
+#import <Google/Analytics.h>
 
 @interface HRPGTaskSetupTableViewController ()
 
@@ -20,6 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:NSStringFromClass([self class])];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
     
     NSError *error;
     self.user.lastSetupStep = [NSNumber numberWithLong:self.currentStep];
