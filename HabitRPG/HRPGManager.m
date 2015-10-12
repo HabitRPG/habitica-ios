@@ -32,7 +32,7 @@
 #import "KLCPopup.h"
 
 @interface HRPGManager ()
-@property NIKFontAwesomeIconFactory *iconFactory;
+@property (nonatomic)  NIKFontAwesomeIconFactory *iconFactory;
 @property HRPGNetworkIndicatorController *networkIndicatorController;
 @end
 
@@ -1486,9 +1486,9 @@ NSString *currentUser;
 
         if ([task.type isEqual:@"daily"]) {
             if ([withDirection isEqualToString:@"up"]) {
-                task.streak = [NSNumber numberWithInt:[task.streak integerValue]+1];
+                task.streak = [NSNumber numberWithInteger:[task.streak integerValue]+1];
             } else if ([task.streak integerValue] > 0) {
-                task.streak = [NSNumber numberWithInt:[task.streak integerValue]-1];
+                task.streak = [NSNumber numberWithInteger:[task.streak integerValue]-1];
             }
         }
 
