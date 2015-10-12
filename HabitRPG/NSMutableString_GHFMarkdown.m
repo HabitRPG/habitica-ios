@@ -130,7 +130,7 @@
     NSMutableString *string = self;
     [codeBlocks enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSString *substitute = [NSString stringWithFormat:GHFMarkdownSubstitutionFormat, key];
-        [string replaceOccurrencesOfString:substitute withString:obj options:NULL range:NSMakeRange(0, string.length)];
+        [string replaceOccurrencesOfString:substitute withString:obj options:kNilOptions range:NSMakeRange(0, string.length)];
     }];
 }
 

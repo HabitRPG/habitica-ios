@@ -6,8 +6,8 @@
     },
     {
       "idiom" : "iphone",
-      "scale" : "2x",
-      "filename" : "onepassword-extension-iphone@2x.png"
+      "filename" : "onepassword-extension-iphone@2x.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "iphone",
@@ -20,13 +20,13 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x",
-      "filename" : "onepassword-extension-ipad.png"
+      "filename" : "onepassword-extension-ipad.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "ipad",
-      "scale" : "2x",
-      "filename" : "onepassword-extension-ipad@2x.png"
+      "filename" : "onepassword-extension-ipad@2x.png",
+      "scale" : "2x"
     }
   ],
   "info" : {

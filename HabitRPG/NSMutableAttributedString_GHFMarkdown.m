@@ -41,7 +41,7 @@
 - (void)ghf_applyAttributes:(NSDictionary *)attributes {
     NSRange range = NSMakeRange(0, self.length);
     [attributes enumerateKeysAndObjectsUsingBlock:^(id attributeKey, id attributeValues, BOOL *stop) {
-        [self enumerateAttribute:attributeKey inRange:range options:NULL usingBlock:^(id value, NSRange range, BOOL *stop) {
+        [self enumerateAttribute:attributeKey inRange:range options:kNilOptions usingBlock:^(id value, NSRange range, BOOL *stop) {
             if (value) [self addAttributes:attributeValues range:range];
         }];
     }];
