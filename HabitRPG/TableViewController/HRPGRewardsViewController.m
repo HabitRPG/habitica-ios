@@ -47,7 +47,7 @@ User *user;
      name:@"shouldReloadAllData"
      object:nil];
     
-    self.tutorialIdentifier = @"reward";
+    self.tutorialIdentifier = @"rewards";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -57,7 +57,7 @@ User *user;
 }
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
-    if ([tutorialIdentifier isEqualToString:@"reward"]) {
+    if ([tutorialIdentifier isEqualToString:@"rewards"]) {
         return @{@"text": NSLocalizedString(@"These are your Rewards! Earn gold by completing real-world Habits, Dailies, and To-Dos. Then spend it on in-game Rewards or custom real-world Rewards!", nil)};
     }
     return nil;

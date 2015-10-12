@@ -216,7 +216,7 @@ BOOL editable;
         return 0.1;
     }
     float width;
-    NSInteger height = 40;
+    NSInteger height = 60;
     if ([task.type isEqualToString:@"habit"]) {
         width = self.viewWidth - 95;
     } else if ([task.checklist count] > 0) {
@@ -237,10 +237,10 @@ BOOL editable;
                                                                                                       NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
                                                                                                       }
                                                                                             context:nil].size.height;
-        if (notesHeight < [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline].leading*2) {
+        if (notesHeight < [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline].leading*3) {
             height = height + notesHeight;
         } else {
-            height = height + [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline].leading*2;
+            height = height + [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline].leading*3;
         }
     }
     height = height + self.extraCellSpacing;

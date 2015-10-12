@@ -1106,6 +1106,9 @@ NSString *currentUser;
                     completitionBlock();
                 }
             }          onError:^() {
+                NSError *error;
+                [[self getManagedObjectContext] processPendingChanges];
+                [[self getManagedObjectContext] saveToPersistentStore:&error];
                 if (withUserData) {
                     [self fetchUser:^(){
                         completitionBlock();

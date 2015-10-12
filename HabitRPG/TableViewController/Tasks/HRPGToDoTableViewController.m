@@ -56,21 +56,14 @@
     self.dateFormatter.dateStyle = NSDateFormatterMediumStyle;
     self.dateFormatter.timeStyle = NSDateFormatterNoStyle;
     
-    self.tutorialIdentifier = @"todo";
+    self.tutorialIdentifier = @"todos";
 }
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
-    if ([tutorialIdentifier isEqualToString:@"todo"]) {
+    if ([tutorialIdentifier isEqualToString:@"todos"]) {
         return @{@"text": NSLocalizedString(@"When you defeat your To-Dos by completing them in real life, your avatar will earn GOLD and EXPERIENCE so you can earn Rewards and unlock features!", nil)};
     }
     return [super getDefinitonForTutorial:tutorialIdentifier];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (self.filterType == TaskToDoFilterTypeDone) {
-        return NSLocalizedString(@"Completed To-Dos", nil);
-    }
-    return nil;
 }
 
 - (void)configureCell:(HRPGToDoTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {

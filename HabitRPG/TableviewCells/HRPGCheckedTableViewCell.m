@@ -50,6 +50,8 @@
         self.backgroundColor = [UIColor whiteColor];
         self.titleLabel.textColor = [UIColor blackColor];
     }
+    
+    [self setNeedsUpdateConstraints];
 }
 
 - (void)configureForItem:(ChecklistItem *)item forTask:(Task *)task{

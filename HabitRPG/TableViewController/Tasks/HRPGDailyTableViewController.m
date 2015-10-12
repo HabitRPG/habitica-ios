@@ -55,11 +55,11 @@ NIKFontAwesomeIconFactory *streakIconFactory;
     streakIconFactory.square = YES;
     streakIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
     
-    self.tutorialIdentifier = @"daily";
+    self.tutorialIdentifier = @"dailies";
 }
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
-    if ([tutorialIdentifier isEqualToString:@"daily"]) {
+    if ([tutorialIdentifier isEqualToString:@"dailies"]) {
         return @{@"text": NSLocalizedString(@"Danger! These repeating tasks will hurt your avatar if you don't complete them in time. If you defeat them, you'll gain gold and experience!", nil)};
     }
     return [super getDefinitonForTutorial:tutorialIdentifier];

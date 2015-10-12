@@ -93,7 +93,9 @@ ChatMessage *selectedMessage;
     [[NSNotificationCenter defaultCenter] addObserverForName:@"newChatMessage" object:nil queue:nil usingBlock:^(NSNotification *notification) {
         NSString *groupID = notification.object;
         if ([groupID isEqualToString:partyID]) {
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+            if (self.tableView.numberOfSections >= 2) {
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
         }
     }];
     
