@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "HRPGManager.h"
+#import "TutorialStepsProtocol.h"
 
-@interface HRPGBaseCollectionViewController : UICollectionViewController
+@interface HRPGBaseCollectionViewController : UICollectionViewController <TutorialStepsProtocol>
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic)  HRPGManager *sharedManager;
@@ -19,6 +20,8 @@
 
 @property NSString *tutorialIdentifier;
 @property NSArray *coachMarks;
+@property BOOL displayedTutorialStep;
+
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 
 @end

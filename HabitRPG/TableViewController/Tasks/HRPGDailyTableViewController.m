@@ -58,8 +58,11 @@ NIKFontAwesomeIconFactory *streakIconFactory;
     self.tutorialIdentifier = @"daily";
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
+    if ([tutorialIdentifier isEqualToString:@"daily"]) {
+        return @{@"text": NSLocalizedString(@"Danger! These repeating tasks will hurt your avatar if you don't complete them in time. If you defeat them, you'll gain gold and experience!", nil)};
+    }
+    return [super getDefinitonForTutorial:tutorialIdentifier];
 }
 
 - (void)configureCell:(HRPGDailyTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {

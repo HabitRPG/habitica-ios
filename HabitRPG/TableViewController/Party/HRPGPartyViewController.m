@@ -146,6 +146,13 @@ ChatMessage *selectedMessage;
     }];
 }
 
+- (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
+    if ([tutorialIdentifier isEqualToString:@"party"]) {
+        return @{@"text": NSLocalizedString(@"This is where you and your friends can hold each other accountable to your goals and fight monsters with your tasks!", nil)};
+    }
+    return nil;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

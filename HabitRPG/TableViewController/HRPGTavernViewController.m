@@ -65,6 +65,13 @@ ChatMessage *selectedMessage;
     [self refresh];
 }
 
+- (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
+    if ([tutorialIdentifier isEqualToString:@"tavern"]) {
+        return @{@"text": NSLocalizedString(@"Welcome to the Tavern, a public, all-ages chatroom! Here you can chat about productivity and ask questions. Have fun!", nil)};
+    }
+    return nil;
+}
+
 - (void)refresh {
     [self.sharedManager fetchGroup:@"habitrpg" onSuccess:^() {
         [self.refreshControl endRefreshing];

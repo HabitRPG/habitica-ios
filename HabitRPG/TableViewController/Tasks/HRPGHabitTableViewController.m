@@ -41,6 +41,13 @@
     self.tutorialIdentifier = @"habit";
 }
 
+- (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
+    if ([tutorialIdentifier isEqualToString:@"habit"]) {
+        return @{@"text": NSLocalizedString(@"Complete Positive Habits to earn gold and experience! Negative Habits will hurt your avatar if you tap them, so avoid them in real life!", nil)};
+    }
+    return [super getDefinitonForTutorial:tutorialIdentifier];
+}
+
 - (void)configureCell:(HRPGHabitTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     Task *task = [self taskAtIndexPath:indexPath];
     

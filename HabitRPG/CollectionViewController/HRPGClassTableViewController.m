@@ -60,9 +60,16 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [self viewDidAppear:animated];
     [self displayTutorialStep:self.sharedManager];
 }
 
+- (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
+    if ([tutorialIdentifier isEqualToString:@"classes"]) {
+        return @{@"text": NSLocalizedString(@"Choose to become a Warrior, Mage, Healer, or Rogue! Each class has unique equipment and skills. Tap the (?) to learn more!", nil)};
+    }
+    return nil;
+}
 
 #pragma mark <UITableViewDataSource>
 

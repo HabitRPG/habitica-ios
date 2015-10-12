@@ -52,6 +52,13 @@ NSIndexPath *selectedIndex;
     [super viewWillAppear:animated];
 }
 
+- (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
+    if ([tutorialIdentifier isEqualToString:@"equipment"]) {
+        return @{@"text": NSLocalizedString(@"When you buy equipment, it appears here. Your Battle Gear affects your stats, and your Costume (if enabled) affects what your avatar wears.", nil)};
+    }
+    return nil;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

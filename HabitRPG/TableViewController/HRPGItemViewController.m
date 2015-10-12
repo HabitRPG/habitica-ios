@@ -76,6 +76,13 @@ float textWidth;
     [self.tableView reloadData];
 }
 
+- (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
+    if ([tutorialIdentifier isEqualToString:@"items"]) {
+        return @{@"text": NSLocalizedString(@"Earn items by completing tasks and leveling up. Tap on an item to use it!", nil)};
+    }
+    return nil;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

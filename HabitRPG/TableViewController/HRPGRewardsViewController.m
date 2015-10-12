@@ -56,6 +56,13 @@ User *user;
     [self.tableView reloadData];
 }
 
+- (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
+    if ([tutorialIdentifier isEqualToString:@"reward"]) {
+        return @{@"text": NSLocalizedString(@"These are your Rewards! Earn gold by completing real-world Habits, Dailies, and To-Dos. Then spend it on in-game Rewards or custom real-world Rewards!", nil)};
+    }
+    return nil;
+}
+
 - (void)refresh {
     [self.sharedManager fetchUser:^() {
         [self.refreshControl endRefreshing];

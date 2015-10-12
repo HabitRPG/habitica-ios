@@ -809,7 +809,6 @@ NSString *currentUser;
     memberIdMapping.identificationAttributes = @[@"id"];
     RKDynamicMapping* dynamicMemberMapping = [RKDynamicMapping new];
     [dynamicMemberMapping setObjectMappingForRepresentationBlock:^RKObjectMapping *(id representation) {
-        NSLog(@"Mapping user");
         if ([representation isKindOfClass:[NSString class]]) {
             return memberIdMapping;
         }

@@ -59,6 +59,13 @@
     self.tutorialIdentifier = @"todo";
 }
 
+- (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
+    if ([tutorialIdentifier isEqualToString:@"todo"]) {
+        return @{@"text": NSLocalizedString(@"When you defeat your To-Dos by completing them in real life, your avatar will earn GOLD and EXPERIENCE so you can earn Rewards and unlock features!", nil)};
+    }
+    return [super getDefinitonForTutorial:tutorialIdentifier];
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (self.filterType == TaskToDoFilterTypeDone) {
         return NSLocalizedString(@"Completed To-Dos", nil);

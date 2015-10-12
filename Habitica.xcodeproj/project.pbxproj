@@ -167,7 +167,6 @@
 		D9FC1A781BC28C5F00B97D23 /* HRPGExplanationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A771BC28C5F00B97D23 /* HRPGExplanationView.m */; settings = {ASSET_TAGS = (); }; };
 		D9FC1A7B1BC28D7100B97D23 /* HRPGSpeechbubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A7A1BC28D7100B97D23 /* HRPGSpeechbubbleView.m */; settings = {ASSET_TAGS = (); }; };
 		D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */; settings = {ASSET_TAGS = (); }; };
-		D9FC1A801BC2CD7500B97D23 /* TutorialDefinitions.json in Resources */ = {isa = PBXBuildFile; fileRef = D9FC1A7F1BC2CD7500B97D23 /* TutorialDefinitions.json */; settings = {ASSET_TAGS = (); }; };
 		D9FC1A861BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A831BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
 		D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A851BC2D8A300B97D23 /* TutorialSteps.m */; settings = {ASSET_TAGS = (); }; };
 		D9FD3B311ABDF8E700B005F6 /* HRPGGemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FD3B301ABDF8E700B005F6 /* HRPGGemView.m */; };
@@ -447,6 +446,7 @@
 		D9CD2DBD1BC7FBB500B1304B /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
 		D9CD2DD31BCAA6F700B1304B /* UIViewController+TutorialSteps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+TutorialSteps.h"; path = "HabitRPG/Utilities/UIViewController+TutorialSteps.h"; sourceTree = SOURCE_ROOT; };
 		D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+TutorialSteps.m"; path = "HabitRPG/Utilities/UIViewController+TutorialSteps.m"; sourceTree = SOURCE_ROOT; };
+		D9CD2DD61BCAC00300B1304B /* TutorialStepsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TutorialStepsProtocol.h; path = HabitRPG/Utilities/TutorialStepsProtocol.h; sourceTree = SOURCE_ROOT; };
 		D9D2172F198D509000023367 /* HRPGDeathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGDeathView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9D21730198D509000023367 /* HRPGDeathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGDeathView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9D44C0E1B0A07E6000732B4 /* HabitRPG 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 4.xcdatamodel"; sourceTree = "<group>"; };
@@ -487,7 +487,6 @@
 		D9FC1A7A1BC28D7100B97D23 /* HRPGSpeechbubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpeechbubbleView.m; sourceTree = "<group>"; };
 		D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTypingLabel.h; sourceTree = "<group>"; };
 		D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTypingLabel.m; sourceTree = "<group>"; };
-		D9FC1A7F1BC2CD7500B97D23 /* TutorialDefinitions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TutorialDefinitions.json; sourceTree = "<group>"; };
 		D9FC1A811BC2D86300B97D23 /* HabitRPG 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 13.xcdatamodel"; sourceTree = "<group>"; };
 		D9FC1A821BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TutorialSteps+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D9FC1A831BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TutorialSteps+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -667,6 +666,7 @@
 				D9A1A2801BA7029D00903567 /* NSDate+DaysSince.m */,
 				D9CD2DD31BCAA6F700B1304B /* UIViewController+TutorialSteps.h */,
 				D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */,
+				D9CD2DD61BCAC00300B1304B /* TutorialStepsProtocol.h */,
 			);
 			name = Utilities;
 			path = TableViewController;
@@ -1041,7 +1041,6 @@
 				D9EB4E9A18CB4A9400BB2094 /* main.m */,
 				D9EB4E9C18CB4A9400BB2094 /* Habitica-Prefix.pch */,
 				D9A50E991A868DE400FC8B1A /* Launch Screen.xib */,
-				D9FC1A7F1BC2CD7500B97D23 /* TutorialDefinitions.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1171,7 +1170,6 @@
 				D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */,
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
 				D979AD1C1AF3EF6E00D59FAE /* customizations.json in Resources */,
-				D9FC1A801BC2CD7500B97D23 /* TutorialDefinitions.json in Resources */,
 				D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

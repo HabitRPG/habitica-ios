@@ -36,6 +36,7 @@ BOOL editable;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.coachMarks = @[@"addTask", @"editTask", @"deleteTask", @"filterTask"];
 
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
@@ -114,6 +115,40 @@ BOOL editable;
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
     [self.tableView reloadData];
+}
+
+
+- (CGRect)getFrameForCoachmark:(NSString *)coachMarkIdentifier {
+    if ([coachMarkIdentifier isEqualToString:@"addTask"]) {
+        return CGRectMake(self.view.frame.size.width-47, 20, 45, 45);
+    } else if ([coachMarkIdentifier isEqualToString:@"editTask"]) {
+        if ([self.tableView numberOfRowsInSection:0] > 0) {
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[[self.tableView indexPathsForVisibleRows] objectAtIndex:0]];
+            return [cell convertRect:cell.frame toView:nil];
+        }
+    } else if ([coachMarkIdentifier isEqualToString:@"deleteTask"]) {
+        if ([self.tableView numberOfRowsInSection:0] > 0) {
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[[self.tableView indexPathsForVisibleRows] objectAtIndex:0]];
+            return [cell convertRect:cell.frame toView:nil];
+        }
+    } else if ([coachMarkIdentifier isEqualToString:@"filterTask"]) {
+        return CGRectMake(self.navigationItem.leftBarButtonItem.width+2, 20, self.navigationItem.leftBarButtonItem.width, 45);
+    }
+    return CGRectZero;
+}
+
+- (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
+    if ([tutorialIdentifier isEqualToString:@"addTask"]) {
+        return @{@"text": NSLocalizedString(@"Tap to add a new task", nil)};
+    } else if ([tutorialIdentifier isEqualToString:@"editTask"]) {
+        return @{@"text": NSLocalizedString(@"Tap a task to edit it", nil)};
+    } else if ([tutorialIdentifier isEqualToString:@"deleteTask"]) {
+        return @{@"text": NSLocalizedString(@"Swipe left on a task to delete it", nil)};
+    } else if ([tutorialIdentifier isEqualToString:@"filterTask"]) {
+        return @{@"text": NSLocalizedString(@"Tap to filter tasks", nil)};
+    }
+    
+    return nil;
 }
 
 #pragma mark - Table view data source

@@ -21,7 +21,6 @@
 
 @interface HRPGBaseCollectionViewController ()
 @property BOOL didAppear;
-@property BOOL displayedTutorialStep;
 
 @end
 

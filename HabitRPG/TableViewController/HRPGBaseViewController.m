@@ -23,7 +23,6 @@
 @interface HRPGBaseViewController ()
 @property UIBarButtonItem *navigationButton;
 @property BOOL didAppear;
-@property BOOL displayedTutorialStep;
 @end
 
 @implementation HRPGBaseViewController

@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "HRPGManager.h"
+#import "TutorialStepsProtocol.h"
 
-@interface UIViewController (TutorialSteps)
-
-@property NSString *tutorialIdentifier;
-@property NSArray *coachMarks;
-@property BOOL displayedTutorialStep;
+@interface UIViewController (TutorialSteps) <TutorialStepsProtocol>
 
 - (void)displayTutorialStep:(HRPGManager *)sharedManager;
 
