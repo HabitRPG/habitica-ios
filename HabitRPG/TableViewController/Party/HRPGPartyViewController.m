@@ -77,7 +77,7 @@ ChatMessage *selectedMessage;
             for (User *member in self.party.member) {
                 if (member.username) {
                     [self.chatAttributeMapping setObject:@{
-                                                           NSForegroundColorAttributeName: [member classColor],
+                                                           NSForegroundColorAttributeName: [member contributorColor],
                                                            NSFontAttributeName: boldFont
                                                            } forKey:member.username];
                 }
@@ -337,7 +337,7 @@ ChatMessage *selectedMessage;
         
         CGSize suggestedSize = [self.sizeTextView.attributedTextContentView suggestedFrameSizeToFitEntireStringConstraintedToWidth:width];
         
-        CGFloat height = suggestedSize.height+40;
+        CGFloat height = suggestedSize.height+46;
         
         if (height < 70 && message.user != nil) {
             height = 70;
@@ -354,7 +354,7 @@ ChatMessage *selectedMessage;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.selectedIndex = indexPath;
     
-    if (user.invitedParty) {
+    if (user.invitedParty && !self.party) {
         if (indexPath.item == 1) {
             [self.sharedManager joinGroup:user.invitedParty withType:@"party" onSuccess:^() {
                 partyID = [defaults objectForKey:@"partyID"];
@@ -633,7 +633,7 @@ ChatMessage *selectedMessage;
                 cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 UIImageView *imageView = (UIImageView *) [cell viewWithTag:5];
                 [message.userObject setAvatarOnImageView:imageView withPetMount:NO onlyHead:YES useForce:NO];
-                authorLabel.textColor = [message.userObject classColor];
+                authorLabel.textColor = [message.userObject contributorColor];
                 cell.backgroundColor = [UIColor whiteColor];
                 NSString *text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
                 if (text) {
@@ -683,7 +683,6 @@ ChatMessage *selectedMessage;
             UILabel *dateLabel = (UILabel *) [cell viewWithTag:3];
             dateLabel.text = message.timestamp.timeAgoSinceNow;
             dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
-            //[dateLabel sizeToFit];
         }
     } else {
         if (user.invitedParty) {

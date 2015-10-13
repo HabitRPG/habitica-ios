@@ -1015,7 +1015,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hep-Q0-bUw" customClass="DTAttributedTextView">
-                                            <rect key="frame" x="16" y="31" width="568" height="40"/>
+                                            <rect key="frame" x="16" y="37" width="568" height="34"/>
                                             <animations/>
                                         </scrollView>
                                     </subviews>
@@ -1025,7 +1025,7 @@
                                         <constraint firstItem="Uij-s6-qfd" firstAttribute="leading" secondItem="pqJ-ll-20F" secondAttribute="trailing" constant="8" id="Bgp-Wy-D0z"/>
                                         <constraint firstItem="pqJ-ll-20F" firstAttribute="leading" secondItem="JGw-nf-3la" secondAttribute="leading" constant="8" id="E61-ic-ZBF"/>
                                         <constraint firstItem="Hep-Q0-bUw" firstAttribute="leading" secondItem="JGw-nf-3la" secondAttribute="leadingMargin" constant="8" id="FbQ-0K-fX6"/>
-                                        <constraint firstItem="Hep-Q0-bUw" firstAttribute="top" secondItem="pqJ-ll-20F" secondAttribute="bottom" constant="2" id="M7t-mv-H1j"/>
+                                        <constraint firstItem="Hep-Q0-bUw" firstAttribute="top" secondItem="pqJ-ll-20F" secondAttribute="bottom" constant="8" id="M7t-mv-H1j"/>
                                         <constraint firstItem="pqJ-ll-20F" firstAttribute="top" secondItem="JGw-nf-3la" secondAttribute="top" constant="8" id="SCP-FL-IwC"/>
                                         <constraint firstAttribute="trailing" secondItem="Uij-s6-qfd" secondAttribute="trailing" constant="8" id="SPD-bv-OkO"/>
                                         <constraint firstItem="Uij-s6-qfd" firstAttribute="top" secondItem="JGw-nf-3la" secondAttribute="top" constant="8" id="arj-AN-FbG"/>
@@ -5226,10 +5226,10 @@ Invite friends now to earn a Quest Scroll!</string>
         <segue reference="HFM-OL-cM8"/>
         <segue reference="iSa-66-Wjc"/>
         <segue reference="sPD-XR-ORt"/>
+        <segue reference="w8b-nU-BYs"/>
+        <segue reference="8EB-JX-S8a"/>
+        <segue reference="Bfo-Hm-DEG"/>
         <segue reference="OZd-8c-sWC"/>
-        <segue reference="rPy-vD-2tO"/>
-        <segue reference="R7D-Cb-9Bi"/>
-        <segue reference="ctJ-Nf-hOd"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.52939999999999998" green="0.25879999999999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
