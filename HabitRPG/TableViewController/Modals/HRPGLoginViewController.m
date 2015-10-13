@@ -51,15 +51,18 @@
     self.passwordField.delegate = self;
     
     self.gryphonView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gryphon"]];
-    self.gryphonView.frame = CGRectMake(0, 0, self.view.frame.size.width, 85);
     self.gryphonView.contentMode = UIViewContentModeCenter;
     self.logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_text"]];
-    self.logoView.frame = CGRectMake(0, 85, self.view.frame.size.width, 55);
     self.logoView.contentMode = UIViewContentModeCenter;
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    } else {
+        self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
+    }
     [self.headerView addSubview:self.gryphonView];
     [self.headerView addSubview:self.logoView];
-    
+
     self.tableView.tableHeaderView = self.headerView;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -71,6 +74,18 @@
                                                  name:UIKeyboardWillHideNotification object:nil];
     
     [FBSDKLoginButton class];
+}
+
+- (void)viewWillLayoutSubviews {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.gryphonView.frame = CGRectMake(0, 20, self.view.frame.size.width, 85);
+        self.logoView.frame = CGRectMake(0, 105, self.view.frame.size.width, 55);
+        self.headerView.frame = CGRectMake(0, 0, self.view.frame.size.width, 200);
+    } else {
+        self.gryphonView.frame = CGRectMake(0, 0, self.view.frame.size.width, 85);
+        self.logoView.frame = CGRectMake(0, 85, self.view.frame.size.width, 55);
+        self.headerView.frame = CGRectMake(0, 0, self.view.frame.size.width, 140);
+    }
 }
 
 - (void)keyboardWillBeShown:(NSNotification*)aNotification {
@@ -111,7 +126,18 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1 && indexPath.item == 0) {
+        return 65;
+    }
     return 60;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return 30;
+    } else {
+        return [super tableView:tableView heightForHeaderInSection:section];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -4447,6 +4447,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                             <animations/>
                                             <color key="backgroundColor" red="0.52939999999999998" green="0.25879999999999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="Awp-Pl-DSR"/>
                                                 <constraint firstItem="MlA-iN-6gR" firstAttribute="leading" secondItem="qD4-QT-lkL" secondAttribute="leading" id="VRV-MD-Lvz"/>
                                                 <constraint firstAttribute="bottom" secondItem="MlA-iN-6gR" secondAttribute="bottom" id="VRd-f9-ynp"/>
                                                 <constraint firstAttribute="centerX" secondItem="xvi-og-rtv" secondAttribute="centerX" id="ppc-DR-XtW"/>
@@ -4458,9 +4459,10 @@ Invite friends now to earn a Quest Scroll!</string>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="qD4-QT-lkL" secondAttribute="trailing" id="Euz-7O-9G6"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="qD4-QT-lkL" secondAttribute="trailing" priority="999" id="Euz-7O-9G6"/>
+                                        <constraint firstItem="qD4-QT-lkL" firstAttribute="centerX" secondItem="PP5-4y-hlh" secondAttribute="centerX" id="Y2a-aH-Rcr"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="qD4-QT-lkL" secondAttribute="bottom" id="o1B-cA-o2y"/>
-                                        <constraint firstItem="qD4-QT-lkL" firstAttribute="leading" secondItem="PP5-4y-hlh" secondAttribute="leadingMargin" id="qP0-bj-CHs"/>
+                                        <constraint firstItem="qD4-QT-lkL" firstAttribute="leading" secondItem="PP5-4y-hlh" secondAttribute="leadingMargin" priority="999" id="qP0-bj-CHs"/>
                                         <constraint firstItem="qD4-QT-lkL" firstAttribute="top" secondItem="PP5-4y-hlh" secondAttribute="topMargin" id="xFE-wb-WG2"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -4482,6 +4484,9 @@ Invite friends now to earn a Quest Scroll!</string>
                                             <rect key="frame" x="8" y="8" width="584" height="44"/>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="6lv-op-7Gm"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                     <animations/>
@@ -4489,9 +4494,10 @@ Invite friends now to earn a Quest Scroll!</string>
                                     <constraints>
                                         <constraint firstAttribute="centerY" secondItem="EDv-Zz-Vbq" secondAttribute="centerY" id="FEe-Hm-qX8"/>
                                         <constraint firstItem="P6r-kV-wnh" firstAttribute="bottom" secondItem="ksj-GQ-cyG" secondAttribute="bottomMargin" id="Hcw-8t-mBj"/>
-                                        <constraint firstItem="P6r-kV-wnh" firstAttribute="trailing" secondItem="ksj-GQ-cyG" secondAttribute="trailingMargin" id="Ki0-SU-WXo"/>
+                                        <constraint firstItem="P6r-kV-wnh" firstAttribute="trailing" secondItem="ksj-GQ-cyG" secondAttribute="trailingMargin" priority="999" id="Ki0-SU-WXo"/>
                                         <constraint firstItem="P6r-kV-wnh" firstAttribute="top" secondItem="ksj-GQ-cyG" secondAttribute="topMargin" id="PC2-Ig-4th"/>
-                                        <constraint firstItem="P6r-kV-wnh" firstAttribute="leading" secondItem="ksj-GQ-cyG" secondAttribute="leadingMargin" id="Spe-vj-Xqf"/>
+                                        <constraint firstItem="P6r-kV-wnh" firstAttribute="leading" secondItem="ksj-GQ-cyG" secondAttribute="leadingMargin" priority="999" id="Spe-vj-Xqf"/>
+                                        <constraint firstItem="P6r-kV-wnh" firstAttribute="centerX" secondItem="ksj-GQ-cyG" secondAttribute="centerX" id="W0U-or-dDT"/>
                                         <constraint firstAttribute="centerX" secondItem="EDv-Zz-Vbq" secondAttribute="centerX" id="ZkL-Fh-IYe"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -4536,6 +4542,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="r6h-y4-Yj6" secondAttribute="bottom" id="1SZ-o9-J66"/>
                                                 <constraint firstItem="jHX-uY-Cy5" firstAttribute="leading" secondItem="a7R-CA-Ghg" secondAttribute="trailing" constant="16" id="8ze-Ad-hD0"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="JjI-Vy-tC4"/>
                                                 <constraint firstItem="r6h-y4-Yj6" firstAttribute="leading" secondItem="jHX-uY-Cy5" secondAttribute="trailing" constant="16" id="JsC-dO-x6T"/>
                                                 <constraint firstItem="jHX-uY-Cy5" firstAttribute="top" secondItem="igc-h7-pZV" secondAttribute="top" constant="8" id="M39-de-bzv"/>
                                                 <constraint firstItem="r6h-y4-Yj6" firstAttribute="top" secondItem="igc-h7-pZV" secondAttribute="top" id="NE5-1M-oDD"/>
@@ -4548,9 +4555,10 @@ Invite friends now to earn a Quest Scroll!</string>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="igc-h7-pZV" secondAttribute="trailing" id="GFR-Uh-ha7"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="igc-h7-pZV" secondAttribute="trailing" priority="999" id="GFR-Uh-ha7"/>
+                                        <constraint firstItem="igc-h7-pZV" firstAttribute="centerX" secondItem="ttP-Vs-qoI" secondAttribute="centerX" id="Ofs-9C-v4F"/>
                                         <constraint firstItem="igc-h7-pZV" firstAttribute="top" secondItem="ttP-Vs-qoI" secondAttribute="topMargin" id="YEz-yb-FrO"/>
-                                        <constraint firstItem="igc-h7-pZV" firstAttribute="leading" secondItem="ttP-Vs-qoI" secondAttribute="leadingMargin" id="a9f-7Z-40Q"/>
+                                        <constraint firstItem="igc-h7-pZV" firstAttribute="leading" secondItem="ttP-Vs-qoI" secondAttribute="leadingMargin" priority="999" id="a9f-7Z-40Q"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="igc-h7-pZV" secondAttribute="bottom" id="qiu-rJ-M9d"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -4602,15 +4610,17 @@ Invite friends now to earn a Quest Scroll!</string>
                                                 <constraint firstItem="c6L-Nt-YPn" firstAttribute="leading" secondItem="cfU-cV-fOC" secondAttribute="trailing" constant="16" id="d0W-RW-rCa"/>
                                                 <constraint firstItem="VEb-v1-78K" firstAttribute="leading" secondItem="vQ6-CR-qnf" secondAttribute="leading" constant="16" id="dU7-E4-Prc"/>
                                                 <constraint firstItem="c6L-Nt-YPn" firstAttribute="top" secondItem="vQ6-CR-qnf" secondAttribute="top" id="epo-C4-qy2"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="yep-fF-2aE"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <animations/>
                                     <constraints>
                                         <constraint firstItem="vQ6-CR-qnf" firstAttribute="top" secondItem="VSs-eP-KqD" secondAttribute="topMargin" id="BfC-fb-KH9"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="vQ6-CR-qnf" secondAttribute="trailing" id="cRt-fl-a0b"/>
+                                        <constraint firstItem="vQ6-CR-qnf" firstAttribute="centerX" secondItem="VSs-eP-KqD" secondAttribute="centerX" id="H6W-RC-s8A"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="vQ6-CR-qnf" secondAttribute="trailing" priority="999" id="cRt-fl-a0b"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="vQ6-CR-qnf" secondAttribute="bottom" id="fz9-NG-RBX"/>
-                                        <constraint firstItem="vQ6-CR-qnf" firstAttribute="leading" secondItem="VSs-eP-KqD" secondAttribute="leadingMargin" id="m0U-WU-VDI"/>
+                                        <constraint firstItem="vQ6-CR-qnf" firstAttribute="leading" secondItem="VSs-eP-KqD" secondAttribute="leadingMargin" priority="999" id="m0U-WU-VDI"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
@@ -4658,6 +4668,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                 <constraint firstAttribute="bottom" secondItem="1tk-aB-YAI" secondAttribute="bottom" constant="8" id="D4k-bl-WIH"/>
                                                 <constraint firstAttribute="bottom" secondItem="DQC-ay-MKP" secondAttribute="bottom" id="IIm-3l-efu"/>
                                                 <constraint firstAttribute="trailing" secondItem="DQC-ay-MKP" secondAttribute="trailing" id="UDS-Mg-WLw"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="bZ7-fn-qr2"/>
                                                 <constraint firstAttribute="centerY" secondItem="XCQ-6g-WOM" secondAttribute="centerY" id="fhP-jB-oUu"/>
                                                 <constraint firstItem="1tk-aB-YAI" firstAttribute="leading" secondItem="XCQ-6g-WOM" secondAttribute="trailing" constant="16" id="g1I-9L-yOM"/>
                                                 <constraint firstItem="1tk-aB-YAI" firstAttribute="top" secondItem="aX9-oJ-IaI" secondAttribute="top" constant="8" id="iQ0-ca-1gu"/>
@@ -4666,9 +4677,10 @@ Invite friends now to earn a Quest Scroll!</string>
                                     </subviews>
                                     <animations/>
                                     <constraints>
+                                        <constraint firstItem="aX9-oJ-IaI" firstAttribute="centerX" secondItem="X8m-Q6-W5q" secondAttribute="centerX" id="DBa-Tr-R1n"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="aX9-oJ-IaI" secondAttribute="bottom" id="cDo-Zl-jYB"/>
-                                        <constraint firstItem="aX9-oJ-IaI" firstAttribute="leading" secondItem="X8m-Q6-W5q" secondAttribute="leadingMargin" id="gHJ-O3-Kf0"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="aX9-oJ-IaI" secondAttribute="trailing" id="iJk-og-zfq"/>
+                                        <constraint firstItem="aX9-oJ-IaI" firstAttribute="leading" secondItem="X8m-Q6-W5q" secondAttribute="leadingMargin" priority="999" id="gHJ-O3-Kf0"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="aX9-oJ-IaI" secondAttribute="trailing" priority="999" id="iJk-og-zfq"/>
                                         <constraint firstItem="aX9-oJ-IaI" firstAttribute="top" secondItem="X8m-Q6-W5q" secondAttribute="topMargin" id="y8K-W2-vmk"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -4731,6 +4743,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                 <constraint firstAttribute="centerY" secondItem="GAf-29-4Gp" secondAttribute="centerY" id="Z6c-Or-THo"/>
                                                 <constraint firstAttribute="centerY" secondItem="5No-X9-yq5" secondAttribute="centerY" id="cT2-Yj-MHR"/>
                                                 <constraint firstItem="wUf-yh-Qus" firstAttribute="leading" secondItem="mQt-hr-J5d" secondAttribute="trailing" constant="16" id="grg-Xl-F2V"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="val-Rj-YSo"/>
                                                 <constraint firstAttribute="bottom" secondItem="wUf-yh-Qus" secondAttribute="bottom" id="wCp-ol-4Ts"/>
                                                 <constraint firstItem="mQt-hr-J5d" firstAttribute="leading" secondItem="GAf-29-4Gp" secondAttribute="trailing" constant="16" id="xZ2-6F-6vz"/>
                                                 <constraint firstItem="GAf-29-4Gp" firstAttribute="leading" secondItem="BKq-2e-XHw" secondAttribute="leading" constant="16" id="yeF-bP-QXZ"/>
@@ -4740,9 +4753,10 @@ Invite friends now to earn a Quest Scroll!</string>
                                     <animations/>
                                     <constraints>
                                         <constraint firstItem="BKq-2e-XHw" firstAttribute="top" secondItem="Bd2-Iw-Yct" secondAttribute="topMargin" id="2yE-OJ-7mB"/>
-                                        <constraint firstItem="BKq-2e-XHw" firstAttribute="leading" secondItem="Bd2-Iw-Yct" secondAttribute="leadingMargin" id="5ax-te-JJE"/>
+                                        <constraint firstItem="BKq-2e-XHw" firstAttribute="leading" secondItem="Bd2-Iw-Yct" secondAttribute="leadingMargin" priority="999" id="5ax-te-JJE"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="BKq-2e-XHw" secondAttribute="bottom" id="cun-Xf-Cha"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="BKq-2e-XHw" secondAttribute="trailing" id="xlk-bn-lHm"/>
+                                        <constraint firstItem="BKq-2e-XHw" firstAttribute="centerX" secondItem="Bd2-Iw-Yct" secondAttribute="centerX" id="lKc-56-6J3"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="BKq-2e-XHw" secondAttribute="trailing" priority="999" id="xlk-bn-lHm"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
@@ -5206,16 +5220,16 @@ Invite friends now to earn a Quest Scroll!</string>
         <image name="onepassword-button" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HFM-OL-cM8"/>
-        <segue reference="zEC-Wx-BHZ"/>
-        <segue reference="ffA-qm-0SO"/>
-        <segue reference="sPD-XR-ORt"/>
         <segue reference="aWZ-FG-z5O"/>
+        <segue reference="ydi-dk-kDU"/>
+        <segue reference="ffA-qm-0SO"/>
+        <segue reference="HFM-OL-cM8"/>
+        <segue reference="iSa-66-Wjc"/>
+        <segue reference="sPD-XR-ORt"/>
         <segue reference="OZd-8c-sWC"/>
-        <segue reference="ctJ-Nf-hOd"/>
         <segue reference="rPy-vD-2tO"/>
         <segue reference="R7D-Cb-9Bi"/>
-        <segue reference="iSa-66-Wjc"/>
+        <segue reference="ctJ-Nf-hOd"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.52939999999999998" green="0.25879999999999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
