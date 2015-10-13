@@ -45,25 +45,31 @@
 - (void)displayOnView:(UIView *)view animated:(BOOL)animated {
     [view addSubview:self];
     self.frame = view.frame;
-    CGRect boundingRect = [self.speechBubbleText boundingRectWithSize:CGSizeMake(self.frame.size.width-108, MAXFLOAT)
+    CGFloat speechBubbleWidth = self.frame.size.width-80;
+    CGFloat xOffset = 10;
+    if (speechBubbleWidth > 500) {
+        speechBubbleWidth = 500;
+        xOffset = (self.frame.size.width-560)/2;
+    }
+    CGRect boundingRect = [self.speechBubbleText boundingRectWithSize:CGSizeMake(speechBubbleWidth-28, MAXFLOAT)
                                                               options:NSStringDrawingUsesLineFragmentOrigin
                                                            attributes:@{
                                                                         NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                                         }
                                                               context:nil];
     CGFloat speechBubbleHeight = boundingRect.size.height + 100;
-    self.justinView.frame = CGRectMake(10, self.frame.size.height, 42, 63);
-    self.speechBubbleView.frame = CGRectMake(60, self.frame.size.height-20, 0, 0);
+    self.justinView.frame = CGRectMake(xOffset, self.frame.size.height, 42, 63);
+    self.speechBubbleView.frame = CGRectMake(xOffset+50, self.frame.size.height-20, 0, 0);
     self.speechBubbleView.alpha = 0;
     [UIView animateWithDuration:0.4 animations:^() {
         self.backgroundColor = self.dimColor;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.4 animations:^() {
-            self.justinView.frame = CGRectMake(10, self.frame.size.height-50, 42, 63);
+            self.justinView.frame = CGRectMake(xOffset, self.frame.size.height-50, 42, 63);
         } completion:^(BOOL completed) {
             [UIView animateWithDuration:0.3 animations:^() {
                 self.speechBubbleView.alpha = 1.0;
-                self.speechBubbleView.frame = CGRectMake(60, self.frame.size.height-speechBubbleHeight-20, self.frame.size.width-80, speechBubbleHeight);
+                self.speechBubbleView.frame = CGRectMake(xOffset+50, self.frame.size.height-speechBubbleHeight-20, speechBubbleWidth, speechBubbleHeight);
             } completion:^(BOOL completed) {
                 self.speechBubbleView.text = self.speechBubbleText;
             }];
