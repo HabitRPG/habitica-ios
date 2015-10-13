@@ -140,12 +140,12 @@ BOOL editable;
     } else if ([coachMarkIdentifier isEqualToString:@"editTask"]) {
         if ([self.tableView numberOfRowsInSection:0] > 0) {
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[[self.tableView indexPathsForVisibleRows] objectAtIndex:0]];
-            return [self.tableView convertRect:cell.frame toView:self.view];
+            return [self.tableView convertRect:cell.frame toView:self.parentViewController.parentViewController.view];
         }
     } else if ([coachMarkIdentifier isEqualToString:@"deleteTask"]) {
         if ([self.tableView numberOfRowsInSection:0] > 0) {
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[[self.tableView indexPathsForVisibleRows] objectAtIndex:0]];
-            return [self.tableView convertRect:cell.frame toView:self.view];
+            return [self.tableView convertRect:cell.frame toView:self.parentViewController.parentViewController.view];
 ;
         }
     } else if ([coachMarkIdentifier isEqualToString:@"filterTask"]) {

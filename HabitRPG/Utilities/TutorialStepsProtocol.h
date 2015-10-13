@@ -11,6 +11,7 @@
 @property NSString *tutorialIdentifier;
 @property NSArray *coachMarks;
 @property BOOL displayedTutorialStep;
+@property HRPGManager *sharedManager;
 
 @optional
 - (CGRect)getFrameForCoachmark:(NSString *)coachMarkIdentifier;

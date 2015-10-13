@@ -19,8 +19,14 @@
     NSError *errorFetch = nil;
     NSArray *array = [context executeFetchRequest:request error:&errorFetch];
     TutorialSteps *step;
-    if (array.count > 1) {
+    if (array.count == 1) {
         step = array[0];
+    } else if (array.count > 1) {
+        for (int index = 0; index < array.count-1; index++) {
+            TutorialSteps *deleteStep = array[index];
+            [context deleteObject:deleteStep];
+        }
+        step = array[array.count-1];
     } else {
         step = [NSEntityDescription insertNewObjectForEntityForName:@"TutorialSteps"
                                                                 inManagedObjectContext:context];

@@ -16,10 +16,10 @@ typedef enum : NSUInteger {
 
 @interface HRPGExplanationView : UIView
 
-@property (nonatomic) UIColor *dimColor;
 @property (nonatomic) NSString *speechBubbleText;
 @property (nonatomic) HRPGExplanationViewPosition position;
 @property (nonatomic) UIColor *speechBubbleTextColor;
+@property (nonatomic) CGRect highlightedFrame;
 
 - (void) displayOnView:(UIView *)view animated:(BOOL)animated;
 - (void) dismissAnimated:(BOOL)animated wasSeen:(BOOL)wasSeen;

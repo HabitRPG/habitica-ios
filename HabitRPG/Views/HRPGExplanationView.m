@@ -8,12 +8,13 @@
 
 #import "HRPGExplanationView.h"
 #import "HRPGSpeechBubbleView.h"
+#import "HRPGHoledView.h"
 
 @interface HRPGExplanationView ()
 
 @property UIImageView *justinView;
 @property HRPGSpeechbubbleView *speechBubbleView;
-
+@property HRPGHoledView *backgroundView;
 @end
 
 @implementation HRPGExplanationView
@@ -24,7 +25,10 @@
     if (self) {
         
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.0];
-        self.dimColor = [UIColor colorWithWhite:0 alpha:0.6];
+        self.backgroundView = [[HRPGHoledView alloc] init];
+        self.backgroundView.dimColor = [UIColor colorWithWhite:0 alpha:0.6];
+        self.backgroundView.alpha = 0;
+        [self addSubview:self.backgroundView];
         
         self.justinView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"justin"]];
         self.justinView.userInteractionEnabled = NO;
@@ -45,6 +49,7 @@
 - (void)displayOnView:(UIView *)view animated:(BOOL)animated {
     [view addSubview:self];
     self.frame = view.frame;
+    self.backgroundView.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
     CGFloat speechBubbleWidth = self.frame.size.width-80;
     CGFloat xOffset = 10;
     if (speechBubbleWidth > 500) {
@@ -62,7 +67,7 @@
     self.speechBubbleView.frame = CGRectMake(xOffset+50, self.frame.size.height-20, 0, 0);
     self.speechBubbleView.alpha = 0;
     [UIView animateWithDuration:0.4 animations:^() {
-        self.backgroundColor = self.dimColor;
+        self.backgroundView.alpha = 1;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.4 animations:^() {
             self.justinView.frame = CGRectMake(xOffset, self.frame.size.height-50, 42, 63);
@@ -91,6 +96,11 @@
 - (void)setSpeechBubbleTextColor:(UIColor *)speechBubbleTextColor {
     _speechBubbleTextColor = speechBubbleTextColor;
     self.speechBubbleView.textColor = speechBubbleTextColor;
+}
+
+- (void)setHighlightedFrame:(CGRect)highlightedFrame {
+    self.backgroundView.highlightedFrame = highlightedFrame;
+    [self.backgroundView setNeedsDisplay];
 }
 
 - (void) handleTap:(UIGestureRecognizer *)recognizer {
