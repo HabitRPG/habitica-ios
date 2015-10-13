@@ -216,7 +216,7 @@
                 <tabBarController restorationIdentifier="MainTabBarController" id="8YX-ce-x5E" customClass="HRPGTabBarController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="cA8-1O-89C"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="JQR-rB-NYL">
+                    <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="JQR-rB-NYL">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <animations/>
