@@ -168,8 +168,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // get the selected cell so that the popup can be displayed near it on the iPad
     UICollectionViewCell *selectedCell = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
-    
-    CGRect rectIPad = CGRectMake(selectedCell.frame.origin.x, selectedCell.frame.origin.y + 2.75*selectedCell.frame.size.height, selectedCell.frame.size.width, selectedCell.frame.size.height);
+    CGRect rectIPad = [self.collectionView convertRect:selectedCell.frame toView:self.view];
     // using the following form rather than [popup showInView:[UIApplication sharedApplication].keyWindow]] to make it compatible with both iPhone and iPad
     [popup showFromRect:rectIPad inView:self.view animated:YES];
 }
