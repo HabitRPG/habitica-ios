@@ -107,11 +107,27 @@ BOOL editable;
     return [NSCompoundPredicate andPredicateWithSubpredicates:predicateArray];
 }
 
+- (NSArray *)getSortDescriptors {
+    NSSortDescriptor *orderDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
+    NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:NO];
+    if ([_typeName isEqual:@"todo"]) {
+        if (self.filterType == TaskToDoFilterTypeDated) {
+            NSSortDescriptor *dueDescriptor = [[NSSortDescriptor alloc] initWithKey:@"duedate" ascending:YES];
+            return @[dueDescriptor, orderDescriptor, dateDescriptor];
+        } else {
+            return @[orderDescriptor, dateDescriptor];
+        }
+    } else {
+        return @[orderDescriptor, dateDescriptor];
+    }
+}
+
 - (void) didChangeFilter:(NSNotification *)notification {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.filterType = [defaults integerForKey:[NSString stringWithFormat:@"%@Filter", self.typeName]];
     
     [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
+    [self.fetchedResultsController.fetchRequest setSortDescriptors:[self getSortDescriptors]];
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
     [self.tableView reloadData];
@@ -124,15 +140,16 @@ BOOL editable;
     } else if ([coachMarkIdentifier isEqualToString:@"editTask"]) {
         if ([self.tableView numberOfRowsInSection:0] > 0) {
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[[self.tableView indexPathsForVisibleRows] objectAtIndex:0]];
-            return [cell convertRect:cell.frame toView:nil];
+            return [self.tableView convertRect:cell.frame toView:self.view];
         }
     } else if ([coachMarkIdentifier isEqualToString:@"deleteTask"]) {
         if ([self.tableView numberOfRowsInSection:0] > 0) {
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[[self.tableView indexPathsForVisibleRows] objectAtIndex:0]];
-            return [cell convertRect:cell.frame toView:nil];
+            return [self.tableView convertRect:cell.frame toView:self.view];
+;
         }
     } else if ([coachMarkIdentifier isEqualToString:@"filterTask"]) {
-        return CGRectMake(self.navigationItem.leftBarButtonItem.width+2, 20, self.navigationItem.leftBarButtonItem.width, 45);
+        return CGRectMake(2, 20, 60, 45);
     }
     return CGRectZero;
 }
@@ -296,22 +313,10 @@ BOOL editable;
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
     [fetchRequest setPredicate:[self getPredicate]];
+    
+    [fetchRequest setSortDescriptors:[self getSortDescriptors]];
 
-    NSSortDescriptor *completedDescriptor = [[NSSortDescriptor alloc] initWithKey:@"completed" ascending:YES];
-    NSSortDescriptor *orderDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
-    NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:NO];
-    NSArray *sortDescriptors;
-    NSString *sectionKey;
-    if ([_typeName isEqual:@"todo"]) {
-        sectionKey = @"completed";
-        sortDescriptors = @[completedDescriptor, orderDescriptor, dateDescriptor];
-    } else {
-        sortDescriptors = @[orderDescriptor, dateDescriptor];
-    }
-
-    [fetchRequest setSortDescriptors:sortDescriptors];
-
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:sectionKey cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
