@@ -386,7 +386,7 @@ ChatMessage *selectedMessage;
         
     } else if (indexPath.section != self.tableView.numberOfSections-1) {
         [self performSegueWithIdentifier:@"MessageSegue" sender:self];
-    } else if (indexPath.section == 2) {
+    } else if (indexPath.section == 3) {
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
             selectedMessage = (ChatMessage *) self.party.chatmessages[indexPath.item-1];
         } else {
