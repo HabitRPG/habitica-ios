@@ -262,7 +262,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else if (indexPath.section == 3 && indexPath.item == 1) {
         title = NSLocalizedString(@"Settings", nil);
     } else if (indexPath.section == 3 && indexPath.item == 2) {
-        title = NSLocalizedString(@"Help", nil);
+        title = NSLocalizedString(@"Help & FAQ", nil);
     } else if (indexPath.section == 3 && indexPath.item == 3) {
         title = NSLocalizedString(@"About", nil);
     }
