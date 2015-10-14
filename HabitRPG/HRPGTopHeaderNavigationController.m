@@ -11,14 +11,13 @@
 #import <pop/POP.h>
 #import "UIColor+Habitica.h"
 
-static const CGFloat topHeaderHeight = 168;
-
 @interface HRPGTopHeaderNavigationController ()
 
 @property (nonatomic, strong) HRPGUserTopHeader *topHeader;
 @property (nonatomic, strong) UIView *backgroundView;
 @property (nonatomic, strong) UIView *bottomBorderView;
 @property (nonatomic, strong) UIView *upperBackgroundView;
+@property (nonatomic, readonly) CGFloat topHeaderHeight;
 
 - (CGFloat)statusBarHeight;
 - (CGFloat)bgViewOffset;
@@ -29,7 +28,6 @@ static const CGFloat topHeaderHeight = 168;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
 
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
@@ -37,15 +35,17 @@ static const CGFloat topHeaderHeight = 168;
     self.view.backgroundColor = [UIColor clearColor];
     self.navigationBar.backgroundColor = [UIColor clearColor];
     
-    self.topHeader = [[HRPGUserTopHeader alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, topHeaderHeight-6)];
+    
+    NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"HRPGUserTopHeader" owner:self options:nil];
+    self.topHeader = [nibViews objectAtIndex:0];
     self.isTopHeaderVisible = YES;
-    self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, [self bgViewOffset], screenRect.size.width, topHeaderHeight)];
+    self.backgroundView = [[UIView alloc] init];
     self.backgroundView.backgroundColor = [UIColor gray600];
     
-    self.bottomBorderView = [[UIView alloc] initWithFrame:CGRectMake(0, self.backgroundView.frame.size.height - 6, screenRect.size.width, 6)];
+    self.bottomBorderView = [[UIView alloc] init];
     [self.bottomBorderView setBackgroundColor:[UIColor gray400]];
     
-    self.upperBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, [self bgViewOffset])];
+    self.upperBackgroundView = [[UIView alloc] init];
     [self.upperBackgroundView setBackgroundColor:[UIColor gray600]];
     
     [self.backgroundView addSubview:self.bottomBorderView];
@@ -59,13 +59,13 @@ static const CGFloat topHeaderHeight = 168;
     [super viewWillLayoutSubviews];
     CGRect parentFrame = self.view.frame;
     if (self.isTopHeaderVisible) {
-        self.backgroundView.frame = CGRectMake(0, [self bgViewOffset], parentFrame.size.width, topHeaderHeight);
+        self.backgroundView.frame = CGRectMake(0, [self bgViewOffset], parentFrame.size.width, self.topHeaderHeight);
     } else {
-        self.backgroundView.frame = CGRectMake(0, -topHeaderHeight, parentFrame.size.width, topHeaderHeight);
+        self.backgroundView.frame = CGRectMake(0, -self.topHeaderHeight, parentFrame.size.width, self.topHeaderHeight);
     }
     self.upperBackgroundView.frame = CGRectMake(0, 0, parentFrame.size.width, [self bgViewOffset]);
     self.bottomBorderView.frame = CGRectMake(0, self.backgroundView.frame.size.height - 6, parentFrame.size.width, 6);
-    self.topHeader.frame = CGRectMake(0, 0, parentFrame.size.width, topHeaderHeight-6);
+    self.topHeader.frame = CGRectMake(0, 0, parentFrame.size.width, self.topHeaderHeight-6);
 }
 
 #pragma mark - Scrollview Delegate
@@ -144,10 +144,18 @@ static const CGFloat topHeaderHeight = 168;
     return self.navigationBar.barStyle == UIBarStyleBlack ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault;
 }
 
+- (CGFloat)topHeaderHeight {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return 200;
+    } else {
+        return 168;
+    }
+}
+
 #pragma mark - Helpers
 - (CGFloat)getContentInset
 {
-    return topHeaderHeight;
+    return self.topHeaderHeight;
 }
 
 - (CGFloat)statusBarHeight {

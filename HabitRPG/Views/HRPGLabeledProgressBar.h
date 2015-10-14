@@ -21,5 +21,6 @@
 @property (nonatomic) NSNumber *value;
 @property (nonatomic) NSString *type;
 @property (nonatomic) UIImage *icon;
+@property (nonatomic) NSInteger fontSize;
 
 @end

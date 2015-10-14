@@ -38,18 +38,18 @@
 - (void) initViews {
     self.color = [UIColor blackColor];
     
-    self.progressBar = [[HRPGProgressBar alloc] initWithFrame:CGRectMake(31, 0, self.frame.size.width-31, 16)];
+    self.progressBar = [[HRPGProgressBar alloc] init];
     [self addSubview:self.progressBar];
-    self.iconView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 16, 16)];
+    self.iconView = [[UIImageView alloc] init];
     self.iconView.contentMode = UIViewContentModeLeft;
     self.iconView.tintColor = [UIColor blackColor];
     [self addSubview:self.iconView];
-    self.labelView = [[UILabel alloc] initWithFrame:CGRectMake(33, 18, self.frame.size.width-33, 12)];
+    self.labelView = [[UILabel alloc] init];
     self.labelView.textAlignment = NSTextAlignmentLeft;
     self.labelView.font = [UIFont systemFontOfSize:11];
     self.labelView.textColor = [UIColor darkGrayColor];
     [self addSubview:self.labelView];
-    self.typeView = [[UILabel alloc] initWithFrame:CGRectMake(33, (self.frame.size.width-33)/2, (self.frame.size.width-33)/2, 12)];
+    self.typeView = [[UILabel alloc] init];
     self.typeView.textAlignment = NSTextAlignmentRight;
     self.typeView.font = [UIFont systemFontOfSize:11];
     self.typeView.textColor = [UIColor darkGrayColor];
@@ -98,10 +98,17 @@
     }
 }
 
+- (void)setFontSize:(NSInteger)fontSize {
+    _fontSize = fontSize;
+    self.typeView.font = [UIFont systemFontOfSize:fontSize];
+    self.labelView.font = [UIFont systemFontOfSize:fontSize];
+    [self updateViewFrames];
+}
 - (void) updateViewFrames {
+    self.iconView.frame = CGRectMake(0, 0, 16, 16);
     self.progressBar.frame = CGRectMake(31, 0, self.frame.size.width-31, 16);
-    self.labelView.frame = CGRectMake(33, 18, (self.frame.size.width-33)/2, 12);
-    self.typeView.frame = CGRectMake((self.frame.size.width+33)/2, 18, (self.frame.size.width-33)/2, 12);
+    self.labelView.frame = CGRectMake(33, 18, (self.frame.size.width-33)/2, self.fontSize+1);
+    self.typeView.frame = CGRectMake((self.frame.size.width+33)/2, 18, (self.frame.size.width-33)/2, self.fontSize+1);
 }
 
 - (void)layoutSubviews {

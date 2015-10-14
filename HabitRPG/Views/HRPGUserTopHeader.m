@@ -12,34 +12,31 @@
 #import "User.h"
 #import <PDKeychainBindings.h>
 #import "HRPGLabeledProgressBar.h"
-#import "HRPGGoldView.h"
-#import "HRPGGemView.h"
 #import "NIKFontAwesomeIconFactory.h"
 #import "NIKFontAwesomeIconFactory+iOS.h"
 #import "UIColor+Habitica.h"
 
 @interface HRPGUserTopHeader ()
 
-@property UIImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 
-@property HRPGLabeledProgressBar *healthLabel;
+@property (weak, nonatomic) IBOutlet HRPGLabeledProgressBar *healthLabel;
 
-@property HRPGLabeledProgressBar *experienceLabel;
+@property (weak, nonatomic) IBOutlet HRPGLabeledProgressBar *experienceLabel;
 
-@property HRPGLabeledProgressBar *magicLabel;
+@property (weak, nonatomic) IBOutlet HRPGLabeledProgressBar *magicLabel;
 
 @property UIView *darkerBackground;
 
-@property UILabel *levelLabel;
+@property (weak, nonatomic) IBOutlet UILabel *levelLabel;
 
-@property UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
-@property UIImageView *classImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *classImageView;
 
-@property HRPGGoldView *goldView;
-
-@property HRPGGemView *gemView;
-
+@property (weak, nonatomic) IBOutlet UILabel *goldLabel;
+@property (weak, nonatomic) IBOutlet UILabel *silverLabel;
+@property (weak, nonatomic) IBOutlet UILabel *gemLabel;
 @property User *user;
 
 @end
@@ -51,69 +48,12 @@ NSInteger rowHeight;
 NSInteger rowWidth;
 NSInteger margin = 3;
 NSInteger rightMargin = 12;
-NSInteger rowOffset = 130;
+NSInteger rowOffset = 16;
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
     
     if (self) {
-        
-        
-        self.avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 110, 115)];
-        self.avatarImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self addSubview:self.avatarImageView];
-        
-        rowHeight = (self.frame.size.height-(margin*2))/4;
-        rowWidth = self.frame.size.width-self.avatarImageView.frame.size.width-rightMargin;
-        
-        NIKFontAwesomeIconFactory *iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-        iconFactory.size = 15;
-        iconFactory.renderingMode = UIImageRenderingModeAlwaysTemplate;
-        
-        self.healthLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset, 0, rowWidth, rowHeight)];
-        self.healthLabel.color = [UIColor red100];
-        self.healthLabel.icon = [UIImage imageNamed:@"icon_health"];
-        self.healthLabel.type = NSLocalizedString(@"Health", nil);
-        [self addSubview:self.healthLabel];
-        
-        self.experienceLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset, rowHeight, rowWidth, rowHeight)];
-        self.experienceLabel.color = [UIColor yellow100];
-        self.experienceLabel.icon = [UIImage imageNamed:@"icon_experience"];
-        self.experienceLabel.type = NSLocalizedString(@"Experience", nil);
-        [self addSubview:self.experienceLabel];
-        
-        self.magicLabel = [[HRPGLabeledProgressBar alloc] initWithFrame:CGRectMake(rowOffset, rowHeight*2, rowWidth, rowHeight)];
-        self.magicLabel.color = [UIColor blue100];
-        self.magicLabel.icon = [UIImage imageNamed:@"icon_magic"];
-        self.magicLabel.type = NSLocalizedString(@"Mana", nil);
-        [self addSubview:self.magicLabel];
-        
-        self.darkerBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 115, self.frame.size.width, self.frame.size.height-115)];
-        self.darkerBackground.backgroundColor = [UIColor gray500];
-        [self addSubview:self.darkerBackground];
-        
-        self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, self.frame.size.height-42, 150, 20)];
-        self.usernameLabel.font = [UIFont systemFontOfSize:16];
-        self.usernameLabel.textColor = [UIColor colorWithRed:0.3725 green:0.3725 blue:0.3725 alpha:1.0];
-        [self addSubview:self.usernameLabel];
-        
-        self.levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, self.frame.size.height-24, 150, 20)];
-        self.levelLabel.font = [UIFont systemFontOfSize:11];
-        self.levelLabel.textColor = [UIColor colorWithRed:0.3725 green:0.3725 blue:0.3725 alpha:1.0];
-        [self addSubview:self.levelLabel];
-        
-        self.classImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.usernameLabel.frame.origin.x-24)/2, self.frame.size.height-(self.darkerBackground.frame.size.height+24)/2, 24, 24)];
-        [self addSubview:self.classImageView];
-        
-        self.gemView = [[HRPGGemView alloc] initWithFrame:CGRectMake(rowOffset+(rowWidth+margin)/2, margin+rowHeight*3+(rowHeight-20)/2, (rowWidth-margin)/2, 20)];
-        [self addSubview:self.gemView];
-        
-        self.goldView = [[HRPGGoldView alloc] initWithFrame:CGRectMake(rowOffset, margin+rowHeight*3+(rowHeight-20)/2, (rowWidth-margin)/2, 20)];
-        [self addSubview:self.goldView];
-
-        
-        [self setData];
-        
         [[NSNotificationCenter defaultCenter]
          addObserver:self
          selector:@selector(resetUser:)
@@ -122,6 +62,36 @@ NSInteger rowOffset = 130;
     }
     
     return self;
+}
+
+- (void)awakeFromNib {
+    NIKFontAwesomeIconFactory *iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+    iconFactory.size = 15;
+    iconFactory.renderingMode = UIImageRenderingModeAlwaysTemplate;
+    
+    self.healthLabel.color = [UIColor red100];
+    self.healthLabel.icon = [UIImage imageNamed:@"icon_health"];
+    self.healthLabel.type = NSLocalizedString(@"Health", nil);
+    
+    self.experienceLabel.color = [UIColor yellow100];
+    self.experienceLabel.icon = [UIImage imageNamed:@"icon_experience"];
+    self.experienceLabel.type = NSLocalizedString(@"Experience", nil);
+    
+    self.magicLabel.color = [UIColor blue100];
+    self.magicLabel.icon = [UIImage imageNamed:@"icon_magic"];
+    self.magicLabel.type = NSLocalizedString(@"Mana", nil);
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.healthLabel.fontSize = 13;
+        self.experienceLabel.fontSize = 13;
+        self.magicLabel.fontSize = 13;
+    } else {
+        self.healthLabel.fontSize = 11;
+        self.experienceLabel.fontSize = 11;
+        self.magicLabel.fontSize = 11;
+    }
+    
+    [self setData];
 }
 
 - (void)dealloc {
@@ -157,18 +127,6 @@ NSInteger rowOffset = 130;
     }
     
     return _fetchedResultsController;
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    rowHeight = (self.frame.size.height-(margin*2))/4;
-    rowWidth = self.frame.size.width-rowOffset-rightMargin;
-    self.healthLabel.frame = CGRectMake(rowOffset, margin, rowWidth, rowHeight);
-    self.experienceLabel.frame = CGRectMake(rowOffset, margin+rowHeight, rowWidth, rowHeight);
-    self.magicLabel.frame = CGRectMake(rowOffset, margin+rowHeight*2, rowWidth, rowHeight);
-    self.darkerBackground.frame = CGRectMake(0, 115, self.frame.size.width, self.frame.size.height-115);
-    self.gemView.frame = CGRectMake(rowOffset+rowWidth-self.gemView.frame.size.width, self.gemView.frame.origin.y, self.gemView.frame.size.width, self.gemView.frame.size.height);
-    self.goldView.frame = CGRectMake(self.gemView.frame.origin.x-self.goldView.frame.size.width-20, self.goldView.frame.origin.y, self.goldView.frame.size.width, self.goldView.frame.size.height);
 }
 
 - (HRPGManager *)sharedManager {
@@ -212,13 +170,11 @@ NSInteger rowOffset = 130;
     self.usernameLabel.text = self.user.username;
     self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@ %@", nil), self.user.level, [self.user.hclass capitalizedString]];
     self.classImageView.image = [UIImage imageNamed:@"icon_warrior"];
-    [self.gemView updateViewWithGemcount:[NSNumber numberWithFloat:[self.user.balance floatValue]*4] withDiffString:nil];
-    [self.gemView sizeToFit];
-    self.gemView.frame = CGRectMake(rowOffset+rowWidth-self.gemView.frame.size.width, self.gemView.frame.origin.y, self.gemView.frame.size.width, self.gemView.frame.size.height);
+    self.gemLabel.text = [[NSNumber numberWithFloat:[self.user.balance floatValue]*4] stringValue];
 
-    [self.goldView updateView:self.user.gold withDiffString:nil];
-    [self.goldView sizeToFit];
-        self.goldView.frame = CGRectMake(self.gemView.frame.origin.x-self.goldView.frame.size.width-20, self.goldView.frame.origin.y, self.goldView.frame.size.width, self.goldView.frame.size.height);
+    self.goldLabel.text = [NSString stringWithFormat:@"%d", [self.user.gold integerValue]];
+    int silver = ([self.user.gold floatValue] - [self.user.gold integerValue]) * 100;
+    self.silverLabel.text = [NSString stringWithFormat:@"%d", silver];
     }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
