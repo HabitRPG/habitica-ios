@@ -176,7 +176,10 @@
         NSData *receiptData = [NSData dataWithContentsOfURL:receiptURL];
         NSDictionary *receiptDict = @{@"transaction": @{@"receipt": [receiptData base64EncodedStringWithOptions:0]}};
         [self.sharedManager purchaseGems:receiptDict onSuccess:^() {
-            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+            SKPaymentQueue* currentQueue = [SKPaymentQueue defaultQueue];
+            [currentQueue.transactions enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                [currentQueue finishTransaction:(SKPaymentTransaction *)obj];
+            }];
             purchaseButton.state = HRPGPurchaseButtonStateDone;
         }onError:^() {
             [self handleInvalidReceipt:transaction withButton:purchaseButton];
