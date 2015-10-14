@@ -67,15 +67,6 @@
 }
 
 - (void)configureCell:(HRPGToDoTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
-        // listing of the tag numbers [cell viewWithTag:#]
-        //  1 = label
-        //  2 = checklistLabel  // to be removed once checklistButton is done
-        //  3 = checkBox
-        //  4 = subLabel
-        //  5 = checklistButton
-        //
-        //  Lines that have the comment "to be removed once checklistButton is done" refer to having the checklistButton have the same look as checklistLabel while still filling the full end of the cell
-    
     Task *task = [self taskAtIndexPath:indexPath];
     
     cell.dateFormatter = self.dateFormatter;
@@ -93,9 +84,13 @@
                 item.currentlyChecking = [NSNumber numberWithBool:YES];
                 item.completed = [NSNumber numberWithBool:![item.completed boolValue]];
                 [self.sharedManager updateTask:task onSuccess:^() {
-                    [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                    if ([self isIndexPathVisible:indexPath]) {
+                        [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                    }
                     NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
-                    [self configureCell:(HRPGToDoTableViewCell *)[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
+                    if ([self isIndexPathVisible:taskPath]) {
+                        [self.tableView reloadRowsAtIndexPaths:@[indexPath, taskPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    }
                     item.currentlyChecking = [NSNumber numberWithBool:NO];
                 }                      onError:^() {
                     item.currentlyChecking = [NSNumber numberWithBool:NO];

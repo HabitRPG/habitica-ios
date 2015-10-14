@@ -25,4 +25,6 @@
 
 - (NSDictionary *)markdownAttributes;
 
+- (BOOL) isIndexPathVisible:(NSIndexPath *)indexPath;
+
 @end

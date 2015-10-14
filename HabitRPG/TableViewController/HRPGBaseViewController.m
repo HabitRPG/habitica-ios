@@ -217,6 +217,16 @@
     return _markdownAttributes;
 }
 
+- (BOOL)isIndexPathVisible:(NSIndexPath *)indexPath {
+        NSArray *indexes = [self.tableView indexPathsForVisibleRows];
+        for (NSIndexPath *index in indexes) {
+            if (index.item == indexPath.item && index.section == indexPath.section) {
+                return YES;
+            }
+        }
+        return NO;
+}
+
 - (HRPGManager *)sharedManager {
     if (_sharedManager == nil) {
         HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];

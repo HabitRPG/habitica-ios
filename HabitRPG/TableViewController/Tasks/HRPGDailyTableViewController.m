@@ -80,9 +80,13 @@ NIKFontAwesomeIconFactory *streakIconFactory;
                 item.currentlyChecking = [NSNumber numberWithBool:YES];
                 item.completed = [NSNumber numberWithBool:![item.completed boolValue]];
                 [self.sharedManager updateTask:task onSuccess:^() {
-                    [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                    if ([self isIndexPathVisible:indexPath]) {
+                        [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                    }
                     NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
-                    [self configureCell:(HRPGDailyTableViewCell *)[self.tableView cellForRowAtIndexPath:taskPath] atIndexPath:taskPath withAnimation:YES];
+                    if ([self isIndexPathVisible:taskPath]) {
+                        [self.tableView reloadRowsAtIndexPaths:@[indexPath, taskPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    }
                     item.currentlyChecking = [NSNumber numberWithBool:NO];
                 }                      onError:^() {
                     item.currentlyChecking = [NSNumber numberWithBool:NO];
