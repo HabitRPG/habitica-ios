@@ -18,7 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *notEnoughGemsLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *gemImageView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
-@property (nonatomic) NSArray *products;
+@property (nonatomic) NSMutableDictionary *products;
+@property (nonatomic) NSArray *identifiers;
 @property (nonatomic) UIView *headerView;
 @end
 
@@ -29,11 +30,14 @@
     
     self.gemImageView.image = [UIImage imageNamed:@"Gem"];
     
-    NSArray *identifiers = @[@"com.habitrpg.ios.Habitica.4gems", @"com.habitrpg.ios.Habitica.8gems", @"com.habitrpg.ios.Habitica.21gems", @"com.habitrpg.ios.Habitica.42gems"];
+    self.identifiers = @[@"com.habitrpg.ios.Habitica.4gems", @"com.habitrpg.ios.Habitica.21gems", @"com.habitrpg.ios.Habitica.42gems"];
+    self.products = [NSMutableDictionary dictionaryWithCapacity:self.identifiers.count];
     
-    [[CargoBay sharedManager] productsWithIdentifiers:[NSSet setWithArray:identifiers]
+    [[CargoBay sharedManager] productsWithIdentifiers:[NSSet setWithArray:self.identifiers]
                                               success:^(NSArray *products, NSArray *invalidIdentifiers) {
-                                                      self.products = products;
+                                                  for (SKProduct *product in products) {
+                                                      self.products[product.productIdentifier] = product;
+                                                  }
                                                   [self.tableView reloadData];
                                               } failure:^(NSError *error) {
                                                   NSLog(@"%@", error);
@@ -41,7 +45,6 @@
     
     [[CargoBay sharedManager] setPaymentQueueUpdatedTransactionsBlock:^(SKPaymentQueue *queue, NSArray *transactions) {
         for (SKPaymentTransaction *transaction in transactions) {
-            NSLog(@"Transaction: %@, %ld", transaction, (long)transaction.transactionState);
             HRPGPurchaseLoadingButton *purchaseButton;
             NSInteger count = 0;
             for (SKProduct *product in self.products) {
@@ -108,7 +111,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SKProduct *product = self.products[indexPath.item];
+    SKProduct *product = self.products[self.identifiers[indexPath.item]];
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:1];
