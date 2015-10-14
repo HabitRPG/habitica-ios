@@ -35,17 +35,25 @@ CGFloat viewSize = 60;
 - (void)layoutSubviews {
     NSInteger perRowCount = self.frame.size.width/(viewSize+space);
     CGFloat alignedSpace = (self.frame.size.width / perRowCount)-viewSize;
+    CGFloat xOffset = (self.frame.size.width-(perRowCount*viewSize+(perRowCount-1)*alignedSpace))/2;
     NSInteger count = 0;
     for (UIImageView *view in self.views) {
         NSInteger yOffset = 0;
         NSInteger column = count;
         NSInteger row = 0;
+        CGFloat thisXOffset = xOffset;
         if (count >= perRowCount) {
             row = count / perRowCount;
+
             column = count - (row*perRowCount);
             yOffset = (viewSize+space)*row;
         }
-        view.frame = CGRectMake(column*(viewSize+alignedSpace), row*(viewSize+alignedSpace), viewSize, viewSize);
+        if ((NSInteger)(self.views.count-((row+1)*perRowCount)) < 0) {
+            NSInteger inThisRow = self.views.count-((row)*perRowCount);
+            thisXOffset = (self.frame.size.width-(inThisRow*viewSize+(inThisRow-1)*alignedSpace))/2;
+        }
+        
+        view.frame = CGRectMake(thisXOffset+column*(viewSize+alignedSpace), row*(viewSize+alignedSpace), viewSize, viewSize);
         count++;
     }
     if (self.selectedItem) {

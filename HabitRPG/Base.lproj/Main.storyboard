@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Les-vZ-cx6">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="540"/>
+                                <rect key="frame" x="0.0" y="168" width="600" height="372"/>
                                 <animations/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwy-jV-Jrm">
@@ -61,19 +61,29 @@
                                     <action selector="nextStep:" destination="oYX-uo-fPD" eventType="touchUpInside" id="2PQ-Vc-65q"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EHI-Bs-o2d">
+                                <rect key="frame" x="20" y="40" width="560" height="120"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="p9N-Ej-2ky"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="rwy-jV-Jrm" secondAttribute="trailing" id="1so-Sa-scv"/>
                             <constraint firstItem="rwy-jV-Jrm" firstAttribute="top" secondItem="I6M-cg-Hvu" secondAttribute="bottom" id="3YW-sc-XKN"/>
-                            <constraint firstItem="Les-vZ-cx6" firstAttribute="top" secondItem="SRb-CW-vTC" secondAttribute="topMargin" id="B1S-cc-y6s"/>
+                            <constraint firstItem="EHI-Bs-o2d" firstAttribute="leading" secondItem="SRb-CW-vTC" secondAttribute="leadingMargin" id="Ikj-v3-2D5"/>
                             <constraint firstItem="IRA-55-1g8" firstAttribute="top" secondItem="Les-vZ-cx6" secondAttribute="bottom" id="KzV-h0-MjQ"/>
                             <constraint firstItem="FYR-h9-UfW" firstAttribute="top" secondItem="Les-vZ-cx6" secondAttribute="bottom" id="Sui-gC-k27"/>
                             <constraint firstItem="FYR-h9-UfW" firstAttribute="leading" secondItem="SRb-CW-vTC" secondAttribute="leadingMargin" id="UuW-Kn-9oG"/>
                             <constraint firstItem="udZ-2L-6V8" firstAttribute="top" secondItem="FYR-h9-UfW" secondAttribute="bottom" id="XvQ-rt-ciq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EHI-Bs-o2d" secondAttribute="trailing" id="YA2-yU-vrq"/>
                             <constraint firstItem="IRA-55-1g8" firstAttribute="trailing" secondItem="SRb-CW-vTC" secondAttribute="trailingMargin" id="ayg-9n-VwC"/>
+                            <constraint firstItem="Les-vZ-cx6" firstAttribute="top" secondItem="EHI-Bs-o2d" secondAttribute="bottom" constant="8" id="btn-K6-XUa"/>
                             <constraint firstItem="udZ-2L-6V8" firstAttribute="top" secondItem="IRA-55-1g8" secondAttribute="bottom" id="h4m-lN-ShV"/>
+                            <constraint firstItem="EHI-Bs-o2d" firstAttribute="top" secondItem="SRb-CW-vTC" secondAttribute="topMargin" constant="40" id="j1Z-kL-KVg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Les-vZ-cx6" secondAttribute="trailing" constant="-20" id="jV1-It-lsg"/>
                             <constraint firstItem="Les-vZ-cx6" firstAttribute="leading" secondItem="SRb-CW-vTC" secondAttribute="leadingMargin" constant="-20" id="lDh-CV-SOf"/>
                             <constraint firstItem="udZ-2L-6V8" firstAttribute="top" secondItem="Les-vZ-cx6" secondAttribute="bottom" constant="60" id="nkR-od-uIR"/>
@@ -81,6 +91,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="5RR-Y4-5So"/>
                     <connections>
+                        <outlet property="avatarView" destination="EHI-Bs-o2d" id="qtE-XO-A9Q"/>
                         <outlet property="backButton" destination="FYR-h9-UfW" id="dej-GE-OdE"/>
                         <outlet property="mainScrollView" destination="Les-vZ-cx6" id="F3I-ZY-BbR"/>
                         <outlet property="nextButton" destination="IRA-55-1g8" id="ayR-7Z-PbC"/>
@@ -5220,16 +5231,16 @@ Invite friends now to earn a Quest Scroll!</string>
         <image name="onepassword-button" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aWZ-FG-z5O"/>
-        <segue reference="ydi-dk-kDU"/>
-        <segue reference="ffA-qm-0SO"/>
+        <segue reference="67a-aB-Ubi"/>
+        <segue reference="zEC-Wx-BHZ"/>
         <segue reference="HFM-OL-cM8"/>
         <segue reference="iSa-66-Wjc"/>
         <segue reference="sPD-XR-ORt"/>
+        <segue reference="Bfo-Hm-DEG"/>
         <segue reference="w8b-nU-BYs"/>
         <segue reference="8EB-JX-S8a"/>
-        <segue reference="Bfo-Hm-DEG"/>
         <segue reference="OZd-8c-sWC"/>
+        <segue reference="aWZ-FG-z5O"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.52939999999999998" green="0.25879999999999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

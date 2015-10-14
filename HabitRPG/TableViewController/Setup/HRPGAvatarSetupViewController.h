@@ -11,10 +11,7 @@
 
 typedef enum HRPGAvatarSetupSteps : NSInteger {
     HRPGAvatarSetupStepsWelcome,
-    HRPGAvatarSetupStepsSkin,
-    HRPGAvatarSetupStepsHairStyle,
-    HRPGAvatarSetupStepsHairColor,
-    HRPGAvatarSetupStepsShirt,
+    HRPGAvatarSetupStepsAvatar,
     HRPGAvatarSetupStepsTasks
 } HRPGavatarSetupSteps;
 
