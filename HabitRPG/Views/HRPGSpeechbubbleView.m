@@ -40,7 +40,7 @@
         [self.dismissButton addTarget:self action:@selector(dismissButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.dismissButton];
         self.remindAgainButton = [[UIButton alloc] init];
-        [self.remindAgainButton setTitle:NSLocalizedString(@"Remind me again", nil) forState:UIControlStateNormal];
+        [self.remindAgainButton setTitle:NSLocalizedString(@"Remind me tomorrow", nil) forState:UIControlStateNormal];
         [self.remindAgainButton setTitleColor:[UIColor purple400] forState:UIControlStateNormal];
         self.remindAgainButton.alpha = 0;
         [self.remindAgainButton addTarget:self action:@selector(remindAgainButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
