@@ -672,4 +672,14 @@
     return NO;
 }
 
+- (void)willSave {
+    if (self.nextLevel.integerValue == 0) {
+        self.nextLevel = [NSNumber numberWithFloat:lroundf((([self.level floatValue] * [self.level floatValue] * 0.25) + 10 * [self.level floatValue] + 139.75) / 10) * 10];
+    }
+    
+    if (self.maxMagic.integerValue == 0) {
+        
+    }
+}
+
 @end

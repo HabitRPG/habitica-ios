@@ -13,6 +13,7 @@
 #import "HRPGLabeledProgressBar.h"
 #import <NIKFontAwesomeIcon.h>
 #import <NIKFontAwesomeIconFactory+iOS.h>
+#import "UIColor+Habitica.h"
 
 @interface HRPGUserProfileViewController ()
 @property (nonatomic, readonly, getter=getUser) User *user;
@@ -229,25 +230,31 @@
         levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@", nil), user.level];
         
         HRPGLabeledProgressBar *healthLabel = (HRPGLabeledProgressBar *) [cell viewWithTag:2];
-        healthLabel.color = [UIColor colorWithRed:0.773 green:0.235 blue:0.247 alpha:1.000];
-        healthLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.976 green:0.925 blue:0.925 alpha:1.000];
-        healthLabel.icon = [self.iconFactory createImageForIcon:NIKFontAwesomeIconHeart];
+        healthLabel.color = [UIColor red100];
+        healthLabel.icon = [UIImage imageNamed:@"icon_health"];
+        healthLabel.type = NSLocalizedString(@"Health", nil);
         healthLabel.value = user.health;
         healthLabel.maxValue = [NSNumber numberWithInt:50];
         
         HRPGLabeledProgressBar *experienceLabel = (HRPGLabeledProgressBar *) [cell viewWithTag:3];
-        experienceLabel.color = [UIColor colorWithRed:0.969 green:0.765 blue:0.027 alpha:1.000];
-        experienceLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.996 green:0.980 blue:0.922 alpha:1.000];
-        experienceLabel.icon = [self.iconFactory createImageForIcon:NIKFontAwesomeIconStar];
+        experienceLabel.color = [UIColor yellow100];
+        experienceLabel.icon = [UIImage imageNamed:@"icon_experience"];
+        experienceLabel.type = NSLocalizedString(@"Experience", nil);
         experienceLabel.value = user.experience;
         experienceLabel.maxValue = user.nextLevel;
+        
+        
+        
+        
+        
+        
         
         HRPGLabeledProgressBar *magicLabel = (HRPGLabeledProgressBar *) [cell viewWithTag:4];
         
         if ([user.level integerValue] >= 10) {
-            magicLabel.color = [UIColor colorWithRed:0.259 green:0.412 blue:0.902 alpha:1.000];
-            magicLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.925 green:0.945 blue:0.992 alpha:1.000];
-            magicLabel.icon = [self.iconFactory createImageForIcon:NIKFontAwesomeIconFire];
+            magicLabel.color = [UIColor blue100];
+            magicLabel.icon = [UIImage imageNamed:@"icon_magic"];
+            magicLabel.type = NSLocalizedString(@"Mana", nil);
             magicLabel.value = user.magic;
             magicLabel.maxValue = user.maxMagic;
             magicLabel.hidden = NO;

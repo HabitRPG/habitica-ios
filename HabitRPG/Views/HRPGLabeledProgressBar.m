@@ -46,14 +46,13 @@
     [self addSubview:self.iconView];
     self.labelView = [[UILabel alloc] init];
     self.labelView.textAlignment = NSTextAlignmentLeft;
-    self.labelView.font = [UIFont systemFontOfSize:11];
     self.labelView.textColor = [UIColor darkGrayColor];
     [self addSubview:self.labelView];
     self.typeView = [[UILabel alloc] init];
     self.typeView.textAlignment = NSTextAlignmentRight;
-    self.typeView.font = [UIFont systemFontOfSize:11];
     self.typeView.textColor = [UIColor darkGrayColor];
     [self addSubview:self.typeView];
+    self.fontSize = 11;
 }
 
 - (void)setColor:(UIColor *)color {

@@ -4441,14 +4441,14 @@ Invite friends now to earn a Quest Scroll!</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qD4-QT-lkL">
-                                            <rect key="frame" x="16" y="8" width="568" height="44"/>
+                                            <rect key="frame" x="50" y="8" width="500" height="44"/>
                                             <subviews>
                                                 <activityIndicatorView opaque="NO" alpha="0.0" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xvi-og-rtv">
-                                                    <rect key="frame" x="266" y="4" width="37" height="37"/>
+                                                    <rect key="frame" x="232" y="4" width="37" height="37"/>
                                                     <animations/>
                                                 </activityIndicatorView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlA-iN-6gR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
                                                     <animations/>
                                                     <color key="tintColor" red="0.38039215686274508" green="0.20000000000000001" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -4459,7 +4459,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                             <animations/>
                                             <color key="backgroundColor" red="0.52939999999999998" green="0.25879999999999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="Awp-Pl-DSR"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="Awp-Pl-DSR"/>
                                                 <constraint firstItem="MlA-iN-6gR" firstAttribute="leading" secondItem="qD4-QT-lkL" secondAttribute="leading" id="VRV-MD-Lvz"/>
                                                 <constraint firstAttribute="bottom" secondItem="MlA-iN-6gR" secondAttribute="bottom" id="VRd-f9-ynp"/>
                                                 <constraint firstAttribute="centerX" secondItem="xvi-og-rtv" secondAttribute="centerX" id="ppc-DR-XtW"/>
@@ -4489,7 +4489,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbf-BQ-bUU">
-                                            <rect key="frame" x="16" y="8" width="568" height="44"/>
+                                            <rect key="frame" x="50" y="8" width="500" height="44"/>
                                             <subviews>
                                                 <activityIndicatorView opaque="NO" alpha="0.0" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EDv-Zz-Vbq">
                                                     <rect key="frame" x="-10" y="12" width="20" height="20"/>
@@ -4507,7 +4507,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                 <constraint firstItem="EDv-Zz-Vbq" firstAttribute="centerX" secondItem="gbf-BQ-bUU" secondAttribute="centerX" id="4Gm-w4-IBr"/>
                                                 <constraint firstItem="P6r-kV-wnh" firstAttribute="top" secondItem="gbf-BQ-bUU" secondAttribute="top" id="5d8-cs-9u7"/>
                                                 <constraint firstItem="P6r-kV-wnh" firstAttribute="leading" secondItem="gbf-BQ-bUU" secondAttribute="leading" id="B15-bh-nfG"/>
-                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="MfH-pk-EUw"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="MfH-pk-EUw"/>
                                                 <constraint firstAttribute="bottom" secondItem="P6r-kV-wnh" secondAttribute="bottom" id="Xu0-Bh-jEH"/>
                                                 <constraint firstAttribute="trailing" secondItem="P6r-kV-wnh" secondAttribute="trailing" id="d4C-NT-AeO"/>
                                                 <constraint firstItem="EDv-Zz-Vbq" firstAttribute="centerY" secondItem="gbf-BQ-bUU" secondAttribute="centerY" id="sZb-bZ-JIN"/>
@@ -4535,10 +4535,10 @@ Invite friends now to earn a Quest Scroll!</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igc-h7-pZV">
-                                            <rect key="frame" x="16" y="8" width="568" height="44"/>
+                                            <rect key="frame" x="50" y="8" width="500" height="44"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r6h-y4-Yj6">
-                                                    <rect key="frame" x="69" y="0.0" width="499" height="44"/>
+                                                    <rect key="frame" x="69" y="0.0" width="431" height="44"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
@@ -4565,7 +4565,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="r6h-y4-Yj6" secondAttribute="bottom" id="1SZ-o9-J66"/>
                                                 <constraint firstItem="jHX-uY-Cy5" firstAttribute="leading" secondItem="a7R-CA-Ghg" secondAttribute="trailing" constant="16" id="8ze-Ad-hD0"/>
-                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="JjI-Vy-tC4"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="JjI-Vy-tC4"/>
                                                 <constraint firstItem="r6h-y4-Yj6" firstAttribute="leading" secondItem="jHX-uY-Cy5" secondAttribute="trailing" constant="16" id="JsC-dO-x6T"/>
                                                 <constraint firstItem="jHX-uY-Cy5" firstAttribute="top" secondItem="igc-h7-pZV" secondAttribute="top" constant="8" id="M39-de-bzv"/>
                                                 <constraint firstItem="r6h-y4-Yj6" firstAttribute="top" secondItem="igc-h7-pZV" secondAttribute="top" id="NE5-1M-oDD"/>
@@ -4596,10 +4596,10 @@ Invite friends now to earn a Quest Scroll!</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQ6-CR-qnf">
-                                            <rect key="frame" x="16" y="8" width="568" height="44"/>
+                                            <rect key="frame" x="50" y="8" width="500" height="44"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c6L-Nt-YPn">
-                                                    <rect key="frame" x="69" y="0.0" width="499" height="44"/>
+                                                    <rect key="frame" x="69" y="0.0" width="431" height="44"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
@@ -4633,7 +4633,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                 <constraint firstItem="c6L-Nt-YPn" firstAttribute="leading" secondItem="cfU-cV-fOC" secondAttribute="trailing" constant="16" id="d0W-RW-rCa"/>
                                                 <constraint firstItem="VEb-v1-78K" firstAttribute="leading" secondItem="vQ6-CR-qnf" secondAttribute="leading" constant="16" id="dU7-E4-Prc"/>
                                                 <constraint firstItem="c6L-Nt-YPn" firstAttribute="top" secondItem="vQ6-CR-qnf" secondAttribute="top" id="epo-C4-qy2"/>
-                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="yep-fF-2aE"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="yep-fF-2aE"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -4657,10 +4657,10 @@ Invite friends now to earn a Quest Scroll!</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aX9-oJ-IaI">
-                                            <rect key="frame" x="16" y="8" width="568" height="44"/>
+                                            <rect key="frame" x="50" y="8" width="500" height="44"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Repeat Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DQC-ay-MKP">
-                                                    <rect key="frame" x="69" y="0.0" width="499" height="44"/>
+                                                    <rect key="frame" x="69" y="0.0" width="431" height="44"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
@@ -4691,7 +4691,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                 <constraint firstAttribute="bottom" secondItem="1tk-aB-YAI" secondAttribute="bottom" constant="8" id="D4k-bl-WIH"/>
                                                 <constraint firstAttribute="bottom" secondItem="DQC-ay-MKP" secondAttribute="bottom" id="IIm-3l-efu"/>
                                                 <constraint firstAttribute="trailing" secondItem="DQC-ay-MKP" secondAttribute="trailing" id="UDS-Mg-WLw"/>
-                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="bZ7-fn-qr2"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="bZ7-fn-qr2"/>
                                                 <constraint firstAttribute="centerY" secondItem="XCQ-6g-WOM" secondAttribute="centerY" id="fhP-jB-oUu"/>
                                                 <constraint firstItem="1tk-aB-YAI" firstAttribute="leading" secondItem="XCQ-6g-WOM" secondAttribute="trailing" constant="16" id="g1I-9L-yOM"/>
                                                 <constraint firstItem="1tk-aB-YAI" firstAttribute="top" secondItem="aX9-oJ-IaI" secondAttribute="top" constant="8" id="iQ0-ca-1gu"/>
@@ -4718,7 +4718,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BKq-2e-XHw">
-                                            <rect key="frame" x="16" y="8" width="568" height="44"/>
+                                            <rect key="frame" x="50" y="8" width="500" height="44"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQt-hr-J5d">
                                                     <rect key="frame" x="52" y="8" width="1" height="28"/>
@@ -4729,7 +4729,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                     </constraints>
                                                 </view>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wUf-yh-Qus">
-                                                    <rect key="frame" x="69" y="0.0" width="456" height="44"/>
+                                                    <rect key="frame" x="69" y="0.0" width="388" height="44"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
@@ -4743,7 +4743,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" alpha="0.5" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5No-X9-yq5">
-                                                    <rect key="frame" x="533" y="9" width="27" height="27"/>
+                                                    <rect key="frame" x="465" y="9" width="27" height="27"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="27" id="DWf-fy-Ka6"/>
@@ -4766,7 +4766,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                 <constraint firstAttribute="centerY" secondItem="GAf-29-4Gp" secondAttribute="centerY" id="Z6c-Or-THo"/>
                                                 <constraint firstAttribute="centerY" secondItem="5No-X9-yq5" secondAttribute="centerY" id="cT2-Yj-MHR"/>
                                                 <constraint firstItem="wUf-yh-Qus" firstAttribute="leading" secondItem="mQt-hr-J5d" secondAttribute="trailing" constant="16" id="grg-Xl-F2V"/>
-                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="val-Rj-YSo"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="val-Rj-YSo"/>
                                                 <constraint firstAttribute="bottom" secondItem="wUf-yh-Qus" secondAttribute="bottom" id="wCp-ol-4Ts"/>
                                                 <constraint firstItem="mQt-hr-J5d" firstAttribute="leading" secondItem="GAf-29-4Gp" secondAttribute="trailing" constant="16" id="xZ2-6F-6vz"/>
                                                 <constraint firstItem="GAf-29-4Gp" firstAttribute="leading" secondItem="BKq-2e-XHw" secondAttribute="leading" constant="16" id="yeF-bP-QXZ"/>
