@@ -58,7 +58,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self viewDidAppear:animated];
+    [super viewDidAppear:animated];
     [self displayTutorialStep:self.sharedManager];
 }
 
@@ -308,7 +308,7 @@
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGFeedViewController *feedController = (HRPGFeedViewController*)[segue sourceViewController];
     Food *food = feedController.selectedFood;
-    [self.sharedManager feedPet:self.selectedPet.key withFood:food.key onSuccess:^() {
+    [self.sharedManager feedPet:self.selectedPet withFood:food onSuccess:^() {
     }onError:^() {
     }];
 }

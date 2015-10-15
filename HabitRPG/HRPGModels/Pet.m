@@ -64,4 +64,9 @@
     });
 }
 
+- (BOOL)likesFood:(Food *)food {
+    NSString *type = [self.key componentsSeparatedByString:@"-"][1];
+    return [type isEqualToString:food.target];
+}
+
 @end

@@ -15,6 +15,8 @@
 #import <RestKit/CoreData/RKManagedObjectStore.h>
 #import "User.h"
 #import "Group.h"
+#import "Pet.h"
+#import "Food.h"
 
 @interface HRPGManager : NSObject
 
@@ -97,7 +99,7 @@
 
 - (void)deleteMessage:(ChatMessage *)message withGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)feedPet:(NSString *)pet withFood:(NSString*)food onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+- (void)feedPet:(Pet *)pet withFood:(Food *)food onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)purchaseGems:(NSDictionary *)receipt onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 

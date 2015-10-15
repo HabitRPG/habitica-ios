@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
+#import "Food.h"
 
 @interface Pet : NSManagedObject
 
@@ -17,4 +17,6 @@
 @property (nonatomic, retain) NSNumber * asMount;
 @property (nonatomic, retain) NSString * type;
 - (void)setMountOnImageView:(UIImageView *)imageView;
+- (BOOL)likesFood:(Food *)food;
+
 @end

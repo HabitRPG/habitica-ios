@@ -2458,13 +2458,27 @@ NSString *currentUser;
     }];
 }
 
--(void)feedPet:(NSString *)pet withFood:(NSString *)food onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+-(void)feedPet:(Pet *)pet withFood:(Food *)food onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
-    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/feed/%@/%@", pet, food] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/feed/%@/%@", pet.key, food.key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self fetchUser:^(){
             NSError *executeError = nil;
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+            NSString *preferenceString;
+            if ([pet likesFood:food]) {
+                preferenceString = NSLocalizedString(@"Your pet really likes the %@", nil);
+            } else {
+                preferenceString = NSLocalizedString(@"Your pet eats the %@ but doesn't seem to enjoy it.", nil);
+            }
+            NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:preferenceString, food.text],
+                                      kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                                      kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                                      kCRToastBackgroundColorKey : [UIColor colorWithRed:0.899 green:0.680 blue:0.048 alpha:1.000],
+                                      };
+            [CRToastManager showNotificationWithOptions:options
+                                        completionBlock:^{
+                                        }];
             if (successBlock) {
                 successBlock();
             }
@@ -2473,7 +2487,7 @@ NSString *currentUser;
         }onError:nil];
         return;
 
-    }                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (!operation.HTTPRequestOperation.response || operation.HTTPRequestOperation.response.statusCode == 502 || operation.HTTPRequestOperation.response.statusCode == 503) {
             [self fetchUser:^(){
                 NSError *executeError = nil;
