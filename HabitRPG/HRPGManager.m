@@ -2691,6 +2691,8 @@ NSString *currentUser;
             [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
                 HRPGImageOverlayView *overlayView = [[HRPGImageOverlayView alloc] init];
                 [overlayView displayImage:image];
+                overlayView.height = 177;
+                overlayView.width = 200;
                 overlayView.descriptionText = NSLocalizedString(@"Level up!", nil);
                 overlayView.detailText = [NSString stringWithFormat:NSLocalizedString(@"You are now Level %ld", nil), (long)([self.user.level integerValue])];
 
