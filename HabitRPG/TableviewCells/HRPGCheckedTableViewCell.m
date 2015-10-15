@@ -17,7 +17,7 @@
     [self.checkBox configureForTask:task];
     self.checklistIndicator.backgroundColor = [task lightTaskColor];
     self.checklistIndicator.hidden = NO;
-
+    self.checklistIndicator.translatesAutoresizingMaskIntoConstraints = NO;
     NSNumber *checklistCount = [task valueForKeyPath:@"checklist.@count"];
     if ([checklistCount integerValue] > 0) {
         int checkedCount = 0;
@@ -51,7 +51,7 @@
         self.titleLabel.textColor = [UIColor blackColor];
     }
     
-    [self setNeedsUpdateConstraints];
+    [self.checklistIndicator layoutIfNeeded];
 }
 
 - (void)configureForItem:(ChecklistItem *)item forTask:(Task *)task{
