@@ -385,6 +385,9 @@ BOOL editable;
             break;
 
         case NSFetchedResultsChangeMove:
+            if (indexPath.item == newIndexPath.item) {
+                return;
+            }
             if (self.openedIndexPath) {
                 [self tableView:tableView expandTaskAtIndexPath:self.openedIndexPath];
             }
@@ -429,8 +432,6 @@ BOOL editable;
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"text"] description];
 }
 
 

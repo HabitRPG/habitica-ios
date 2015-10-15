@@ -55,6 +55,14 @@
 }
 
 - (void)configureForItem:(ChecklistItem *)item forTask:(Task *)task{
+    if ([task.completed boolValue]) {
+        self.backgroundColor = [UIColor gray500];
+        self.checklistIndicator.backgroundColor = [UIColor gray100];
+        self.titleLabel.textColor = [UIColor gray50];
+    } else {
+        self.backgroundColor = [UIColor whiteColor];
+        self.titleLabel.textColor = [UIColor blackColor];
+    }
     self.titleLabel.text = [item.text stringByReplacingEmojiCheatCodesWithUnicode];
     self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [self.checkBox configureForChecklistItem:item forTask:task];

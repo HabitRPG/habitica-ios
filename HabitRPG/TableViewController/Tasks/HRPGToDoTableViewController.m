@@ -84,6 +84,7 @@
                 item.currentlyChecking = [NSNumber numberWithBool:YES];
                 item.completed = [NSNumber numberWithBool:![item.completed boolValue]];
                 [self.sharedManager updateTask:task onSuccess:^() {
+                    item.currentlyChecking = [NSNumber numberWithBool:NO];
                     if ([self isIndexPathVisible:indexPath]) {
                         [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
                     }
@@ -91,7 +92,6 @@
                     if ([self isIndexPathVisible:taskPath]) {
                         [self.tableView reloadRowsAtIndexPaths:@[indexPath, taskPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                     }
-                    item.currentlyChecking = [NSNumber numberWithBool:NO];
                 }                      onError:^() {
                     item.currentlyChecking = [NSNumber numberWithBool:NO];
                 }];
