@@ -169,10 +169,10 @@ NSInteger rowOffset = 16;
     
     self.usernameLabel.text = self.user.username;
     self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@ %@", nil), self.user.level, [self.user.hclass capitalizedString]];
-    self.classImageView.image = [UIImage imageNamed:@"icon_warrior"];
+    self.classImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@", self.user.hclass]];
     self.gemLabel.text = [[NSNumber numberWithFloat:[self.user.balance floatValue]*4] stringValue];
 
-    self.goldLabel.text = [NSString stringWithFormat:@"%d", [self.user.gold integerValue]];
+    self.goldLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.user.gold integerValue]];
     int silver = ([self.user.gold floatValue] - [self.user.gold integerValue]) * 100;
     self.silverLabel.text = [NSString stringWithFormat:@"%d", silver];
     }

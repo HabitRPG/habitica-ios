@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "header_warrior@1x.png",
+      "filename" : "header_mage@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "header_warrior@2x.png",
+      "filename" : "header_mage@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "header_warrior@3x.png",
+      "filename" : "header_mage@3x.png",
       "scale" : "3x"
     }
   ],
