@@ -240,7 +240,17 @@
         experienceLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.996 green:0.980 blue:0.922 alpha:1.000];
         experienceLabel.icon = [self.iconFactory createImageForIcon:NIKFontAwesomeIconStar];
         experienceLabel.value = user.experience;
-        experienceLabel.maxValue = user.nextLevel;
+            // once the API returns the user.nextLevel value for all Party members the following If-Then-Else statement can be reverted back to simply:
+            // experienceLabel.MaxValue = user.nextLevel;
+        if ([user.nextLevel floatValue] == 0.0) {
+            // toNextLevel equation copied on 2015/08/29 from: habitrpg/common/script/index.coffee
+            NSNumber *toNextLevel = [NSNumber numberWithFloat:lroundf((([user.level floatValue] * [user.level floatValue] * 0.25) + 10 * [user.level floatValue] + 139.75) / 10) * 10];
+            experienceLabel.maxValue = toNextLevel;
+        }
+        else {
+            experienceLabel.maxValue = user.nextLevel;
+        }
+            
         
         HRPGLabeledProgressBar *magicLabel = (HRPGLabeledProgressBar *) [cell viewWithTag:4];
         
