@@ -478,6 +478,10 @@ BOOL editable;
             [self.tableView beginUpdates];
             [self.tableView insertRowsAtIndexPaths:[self checklistitemIndexPathsWithOffset:self.indexOffset atIndexPath:indexPath] withRowAnimation:UITableViewRowAnimationTop];
             [self.tableView endUpdates];
+            NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:indexPath.item+self.indexOffset inSection:indexPath.section];
+            if (![self isIndexPathVisible:lastIndexPath]) {
+                [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            }
         }
     }
 }
