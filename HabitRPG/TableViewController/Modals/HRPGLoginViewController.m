@@ -65,14 +65,6 @@
 
     self.tableView.tableHeaderView = self.headerView;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillBeShown:)
-                                                 name:UIKeyboardWillShowNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillBeHidden:)
-                                                 name:UIKeyboardWillHideNotification object:nil];
-    
     [FBSDKLoginButton class];
 }
 
@@ -87,27 +79,6 @@
         self.headerView.frame = CGRectMake(0, 0, self.view.frame.size.width, 140);
     }
 }
-
-- (void)keyboardWillBeShown:(NSNotification*)aNotification {
-    [UIView animateWithDuration:0.3 animations:^() {
-        self.gryphonView.alpha = 0;
-    }];
-    if (self.tableView.contentOffset.y > -85.0) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView setContentOffset:CGPointMake(0, 20) animated:YES];
-        });
-    }
-}
-
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification {
-    [UIView animateWithDuration:0.3 animations:^() {
-        self.gryphonView.alpha = 1.0;
-    }];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
-    });}
-
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
