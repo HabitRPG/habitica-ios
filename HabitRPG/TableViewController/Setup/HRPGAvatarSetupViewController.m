@@ -54,6 +54,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+    HRPGManager *manager = appdelegate.sharedManager;
+    self.user = [manager getUser];
+    
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:NSStringFromClass([self class])];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
@@ -192,7 +196,7 @@
     [self.mainScrollView addSubview:self.welcomeLabel];
     
     self.justinView = [[UIImageView alloc] init];
-    [self.justinView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/npc_justin.png"]];
+    self.justinView.image = [UIImage imageNamed:@"justin"];
     [self.mainScrollView addSubview:self.justinView];
     
     self.welcomeDescriptionLabel = [[HRPGTypingLabel alloc] init];
