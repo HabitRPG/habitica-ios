@@ -8,12 +8,17 @@
 
 #import "HRPGTaskSetupTableViewController.h"
 #import <Google/Analytics.h>
+#import "Task.h"
+#import "ChecklistItem.h"
+#import "HRPGAppDelegate.h"
+#import "HRPGManager.h"
 
 @interface HRPGTaskSetupTableViewController ()
 
 @property NSMutableArray *taskGroups;
 
 @property UIView *headerView;
+@property NSDictionary *tasks;
 
 @end
 
@@ -30,7 +35,192 @@
     self.user.lastSetupStep = [NSNumber numberWithLong:self.currentStep];
     [self.managedObjectContext saveToPersistentStore:&error];
     
-    self.taskGroups = [NSMutableArray arrayWithObjects:@{@"text": @"Household", @"isActive": @NO}, @{@"text": @"Sports", @"isActive": @NO}, nil];
+    self.taskGroups = [NSMutableArray arrayWithObjects:@{@"text": NSLocalizedString(@"Work", nil), @"identifier": @"work", @"isActive": @NO},
+                       @{@"text": NSLocalizedString(@"Exercise", nil), @"identifier": @"exercise", @"isActive": @NO},
+                       @{@"text": NSLocalizedString(@"Health + Wellness", nil), @"identifier": @"healthWellness", @"isActive": @NO},
+                       @{@"text": NSLocalizedString(@"School", nil),@"identifier": @"school",  @"isActive": @NO},
+                       @{@"text": NSLocalizedString(@"Teams", nil), @"identifier": @"teams", @"isActive": @NO},
+                       @{@"text": NSLocalizedString(@"Chores", nil), @"identifier": @"chores", @"isActive": @NO},
+                       @{@"text": NSLocalizedString(@"Creativity", nil), @"identifier": @"creativity", @"isActive": @NO}, nil];
+    
+    self.tasks = @{
+                   @"work": @[
+                           @{
+                               @"text": NSLocalizedString(@"Process email", nil),
+                               @"up": @YES,
+                               @"down": @NO,
+                               @"type": @"habit"
+                               },
+                           @{
+                               @"text": NSLocalizedString(@"Most important task", nil),
+                               @"frequency": @"weekly",
+                               @"startDate": [NSDate date],
+                               @"monday": @YES,
+                               @"tuesday": @YES,
+                               @"wednesday": @YES,
+                               @"thursday": @YES,
+                               @"friday": @YES,
+                               @"saturday": @YES,
+                               @"sunday": @YES,
+                               @"type": @"daily"
+                               },
+                           @{
+                               @"text": NSLocalizedString(@"Work project", nil),
+                               @"type": @"todo"
+                               }
+                           ],
+                   @"exercise": @[
+                           @{
+                               @"text": NSLocalizedString(@"10 min cardio", nil),
+                               @"up": @YES,
+                               @"down": @NO,
+                               @"type": @"habit"
+                               },
+                           @{
+                               @"text": NSLocalizedString(@"Stretching", nil),
+                               @"frequency": @"weekly",
+                               @"startDate": [NSDate date],
+                               @"monday": @YES,
+                               @"tuesday": @YES,
+                               @"wednesday": @YES,
+                               @"thursday": @YES,
+                               @"friday": @YES,
+                               @"saturday": @YES,
+                               @"sunday": @YES,
+                               @"type": @"daily"
+                               },
+                           @{
+                               @"text": NSLocalizedString(@"Set up workout schedule", nil),
+                               @"type": @"todo"
+                               }
+                           ],
+                   @"healthWellness": @[
+                           @{
+                               @"text": NSLocalizedString(@"Eat healthy/junk food", nil),
+                               @"up": @YES,
+                               @"down": @YES,
+                               @"type": @"habit"
+                               },
+                           @{
+                               @"text": NSLocalizedString(@"Floss", nil),
+                               @"frequency": @"weekly",
+                               @"startDate": [NSDate date],
+                               @"monday": @YES,
+                               @"tuesday": @YES,
+                               @"wednesday": @YES,
+                               @"thursday": @YES,
+                               @"friday": @YES,
+                               @"saturday": @YES,
+                               @"sunday": @YES,
+                               @"type": @"daily"
+                               },
+                           @{
+                               @"text": NSLocalizedString(@"Schedule check-up", nil),
+                               @"type": @"todo"
+                               }
+                           ],
+                   @"school": @[
+                           @{
+                               @"text": NSLocalizedString(@"Study/Procrastinate", nil),
+                               @"up": @YES,
+                               @"down": @YES,
+                               @"type": @"habit"
+                               },
+                           @{
+                               @"text": NSLocalizedString(@"Do homework", nil),
+                               @"frequency": @"weekly",
+                               @"startDate": [NSDate date],
+                               @"monday": @YES,
+                               @"tuesday": @YES,
+                               @"wednesday": @YES,
+                               @"thursday": @YES,
+                               @"friday": @YES,
+                               @"saturday": @YES,
+                               @"sunday": @YES,
+                               @"type": @"daily"
+                               },
+                           @{
+                               @"text": NSLocalizedString(@"Finish assignment for class ", nil),
+                               @"type": @"todo"
+                               }
+                           ],
+                   @"teams": @[
+                           @{
+                               @"text": NSLocalizedString(@"Check in with team", nil),
+                               @"up": @YES,
+                               @"down": @NO,
+                               @"type": @"habit"
+                               },
+                           @{
+                               @"text": NSLocalizedString(@"Update team on status", nil),
+                               @"frequency": @"weekly",
+                               @"startDate": [NSDate date],
+                               @"monday": @YES,
+                               @"tuesday": @YES,
+                               @"wednesday": @YES,
+                               @"thursday": @YES,
+                               @"friday": @YES,
+                               @"saturday": @YES,
+                               @"sunday": @YES,
+                               @"type": @"daily"
+                               },
+                           @{
+                               @"text": NSLocalizedString(@"Complete Team Project", nil),
+                               @"type": @"todo"
+                               }
+                           ],
+                   @"chores": @[
+                           @{
+                               @"text": NSLocalizedString(@"10 minutes cleaning", nil),
+                               @"up": @YES,
+                               @"down": @NO,
+                               @"type": @"habit"
+                               },
+                           @{
+                               @"text": NSLocalizedString(@"Wash Dishes", nil),
+                               @"frequency": @"weekly",
+                               @"startDate": [NSDate date],
+                               @"monday": @YES,
+                               @"tuesday": @YES,
+                               @"wednesday": @YES,
+                               @"thursday": @YES,
+                               @"friday": @YES,
+                               @"saturday": @YES,
+                               @"sunday": @YES,
+                               @"type": @"daily"
+                               },
+                           @{
+                               @"text": NSLocalizedString(@"Organize Closet", nil),
+                               @"type": @"todo"
+                               }
+                           ],
+                   @"creativity": @[
+                           @{
+                               @"text": NSLocalizedString(@"Study a master of the craft", nil),
+                               @"up": @YES,
+                               @"down": @NO,
+                               @"type": @"habit"
+                               },
+                           @{
+                               @"text": NSLocalizedString(@"Work on creative project", nil),
+                               @"frequency": @"weekly",
+                               @"startDate": [NSDate date],
+                               @"monday": @YES,
+                               @"tuesday": @YES,
+                               @"wednesday": @YES,
+                               @"thursday": @YES,
+                               @"friday": @YES,
+                               @"saturday": @YES,
+                               @"sunday": @YES,
+                               @"type": @"daily"
+                               },
+                           @{
+                               @"text": NSLocalizedString(@"Finish creative project", nil),
+                               @"type": @"todo"
+                               }
+                           ]
+                   };
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView reloadData];
@@ -88,6 +278,46 @@
 - (IBAction)nextStep:(id)sender {
     NSError *error;
     self.user.lastSetupStep = [NSNumber numberWithLong:self.currentStep];
+    
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+    HRPGManager *manager = appdelegate.sharedManager;
+    
+    for (NSDictionary *taskGroup in self.taskGroups) {
+        if ([taskGroup[@"isActive"] boolValue]) {
+            for (NSDictionary *taskDictionary in self.tasks[taskGroup[@"identifier"]]) {
+                Task *task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
+                task.text = taskDictionary[@"text"];
+                task.type = taskDictionary[@"type"];
+                if ([task.type isEqualToString:@"habit"]) {
+                    task.up = taskDictionary[@"up"];
+                    task.down = taskDictionary[@"down"];
+                } else if ([task.type isEqualToString:@"daily"]) {
+                    task.frequency = taskDictionary[@"frequency"];
+                    task.startDate = [NSDate date];
+                    task.monday = taskDictionary[@"monday"];
+                    task.tuesday = taskDictionary[@"tuesday"];
+                    task.wednesday = taskDictionary[@"wednesday"];
+                    task.thursday = taskDictionary[@"thursday"];
+                    task.friday = taskDictionary[@"friday"];
+                    task.saturday = taskDictionary[@"saturday"];
+                    task.sunday = taskDictionary[@"sunday"];
+                } else {
+                    for (NSDictionary *checklistItemDictionary in taskDictionary[@"checklist"]) {
+                        ChecklistItem *checklistItem = [NSEntityDescription insertNewObjectForEntityForName:@"ChecklistItem" inManagedObjectContext:self.managedObjectContext];
+                        checklistItem.text = checklistItemDictionary[@"text"];
+                        [task addChecklistObject:checklistItem];
+                    }
+                }
+                
+                [manager createTask:task onSuccess:^() {
+                    
+                } onError:^() {
+                    
+                }];
+            }
+        }
+    }
+    
     [self.managedObjectContext saveToPersistentStore:&error];
     
     [self performSegueWithIdentifier:@"MainSegue" sender:self];

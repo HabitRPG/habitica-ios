@@ -36,7 +36,7 @@ BOOL editable;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.coachMarks = @[@"addTask", @"editTask", @"deleteTask", @"filterTask"];
+    self.coachMarks = @[@"addTask", @"editTask", @"filterTask"];
 
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
@@ -156,13 +156,11 @@ BOOL editable;
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"addTask"]) {
-        return @{@"text": NSLocalizedString(@"Tap to add a new task", nil)};
+        return @{@"text": NSLocalizedString(@"Tap to add a new task.", nil)};
     } else if ([tutorialIdentifier isEqualToString:@"editTask"]) {
-        return @{@"text": NSLocalizedString(@"Tap a task to edit it", nil)};
-    } else if ([tutorialIdentifier isEqualToString:@"deleteTask"]) {
-        return @{@"text": NSLocalizedString(@"Swipe left on a task to delete it", nil)};
+        return @{@"text": NSLocalizedString(@"Tap a task to edit it. Swipe left to delete it.", nil)};
     } else if ([tutorialIdentifier isEqualToString:@"filterTask"]) {
-        return @{@"text": NSLocalizedString(@"Tap to filter tasks", nil)};
+        return @{@"text": NSLocalizedString(@"Tap to filter tasks.", nil)};
     }
     
     return nil;

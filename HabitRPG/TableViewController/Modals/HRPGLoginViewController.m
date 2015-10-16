@@ -195,27 +195,17 @@
             [_sharedManager setCredentials];
             [_sharedManager fetchUser:^() {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];
-                if (self.isRootViewController) {
-                    User *user = [self.sharedManager getUser];
-                    if ([user.lastSetupStep integerValue] != HRPGAvatarSetupStepsTasks) {
-                        [self performSegueWithIdentifier:@"SetupSegue" sender:self];
-                    } else {
-                        [self performSegueWithIdentifier:@"MainSegue" sender:self];
-                    }
-                } else {
+                if (!self.isRootViewController) {
                     [self dismissViewControllerAnimated:YES completion:nil];
                 }
+                [self performSegueWithIdentifier:@"SetupSegue" sender:self];
             } onError:^() {
-                if (self.isRootViewController) {
-                    User *user = [self.sharedManager getUser];
-                    if ([user.lastSetupStep integerValue] != HRPGAvatarSetupStepsTasks) {
-                        [self performSegueWithIdentifier:@"SetupSegue" sender:self];
-                    } else {
-                        [self performSegueWithIdentifier:@"MainSegue" sender:self];
-                    }
-                } else {
+                if (!self.isRootViewController) {
                     [self dismissViewControllerAnimated:YES completion:nil];
-                }            }];
+                }
+                [self performSegueWithIdentifier:@"SetupSegue" sender:self];
+                
+            }];
         } onError:^(NSString *errorMessage) {
             if ([errorMessage isEqualToString:@"Email already taken"]) {
                 self.navigationItem.prompt = NSLocalizedString(@"Email already taken.", nil);
