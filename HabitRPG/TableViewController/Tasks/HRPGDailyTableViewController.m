@@ -60,7 +60,7 @@ NIKFontAwesomeIconFactory *streakIconFactory;
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"dailies"]) {
-        return @{@"text": NSLocalizedString(@"Danger! These repeating tasks will hurt your avatar if you don't complete them in time. If you defeat them, you'll gain gold and experience!", nil)};
+        return @{@"text": NSLocalizedString(@"Defeat your repeating Daily tasks to gain gold and experience. Danger! Dailies will hurt your avatar if you don't complete them in time.", nil)};
     }
     return [super getDefinitonForTutorial:tutorialIdentifier];
 }
