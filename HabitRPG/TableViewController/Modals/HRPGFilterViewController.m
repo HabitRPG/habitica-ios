@@ -17,6 +17,7 @@
 @property NIKFontAwesomeIconFactory *iconFactory;
 @property UIView *headerView;
 @property UISegmentedControl *filterTypeControl;
+@property NSMutableArray *areTagsSelected;
 @end
 
 @implementation HRPGFilterViewController
@@ -24,6 +25,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.areTagsSelected = [NSMutableArray arrayWithCapacity:self.fetchedResultsController.fetchedObjects.count];
+    
+    for (Tag *tag in self.fetchedResultsController.fetchedObjects) {
+        [self.areTagsSelected addObject:@NO];
+        for (Tag *selectedTag in self.selectedTags) {
+            if ([tag.id isEqualToString:selectedTag.id]) {
+                self.areTagsSelected[self.areTagsSelected.count-1] = @YES;
+                break;
+            }
+        }
+    }
     
     self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     self.iconFactory.square = YES;
@@ -194,11 +207,8 @@
     textLabel.text = tag.name;
     UISwitch *tagSwitch = (UISwitch*)[cell viewWithTag:2];
     tagSwitch.on = NO;
-    for (Tag *selectedTag in self.selectedTags) {
-        if ([tag.id isEqualToString:selectedTag.id]) {
-            tagSwitch.on = YES;
-             break;
-        }
+    if ([self.areTagsSelected[indexPath.item] boolValue]) {
+        tagSwitch.on = YES;
     }
     
     if (tag.challenge) {
@@ -208,14 +218,18 @@
     }
 }
 
+- (IBAction)clearTags:(id)sender {
+    for (int i = 0; i < self.areTagsSelected.count; i++) {
+        self.areTagsSelected[i] = @NO;
+    }
+    [self.tableView reloadData];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"UnwindTagSegue"]) {
         int counter = 0;
         for (Tag *tag in [self.fetchedResultsController fetchedObjects]) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:counter inSection:0];
-            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-            UISwitch *tagSwitch = (UISwitch*)[cell viewWithTag:2];
-            if (tagSwitch.on) {
+            if ([self.areTagsSelected[counter] boolValue]) {
                 if (![self.selectedTags containsObject:tag]) {
                     [self.selectedTags addObject:tag];
                 }
@@ -229,26 +243,18 @@
     }
 }
 
-- (IBAction)clearTags:(id)sender {
-    int activatedSwitches = 0;
-    for (int i = 0; i < [self.tableView numberOfRowsInSection:0]; i++) {
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]];
-        UISwitch *tagSwitch = (UISwitch*)[cell viewWithTag:2];
-        if (tagSwitch.on) {
-            activatedSwitches++;
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.15 * activatedSwitches * NSEC_PER_SEC);
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                [tagSwitch setOn:NO animated:YES];
-            });
-        }
-    }
-}
-
 - (void)filterTypeChanged:(UISegmentedControl *)segment {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:segment.selectedSegmentIndex forKey:[NSString stringWithFormat:@"%@Filter", self.taskType]];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"taskFilterChanged" object:nil];
 }
+
+- (IBAction)switchChanged:(UISwitch *)sender {
+    UITableViewCell *cell = (UITableViewCell *)sender.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    self.areTagsSelected[indexPath.item] = [NSNumber numberWithBool:sender.on];
+}
+
 
 @end

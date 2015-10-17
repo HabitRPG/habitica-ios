@@ -4321,6 +4321,9 @@ Invite friends now to earn a Quest Scroll!</string>
                                         <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J6e-Po-uwq">
                                             <rect key="frame" x="531" y="6" width="51" height="31"/>
                                             <animations/>
+                                            <connections>
+                                                <action selector="switchChanged:" destination="CZc-T4-a1C" eventType="valueChanged" id="55X-FA-TCh"/>
+                                            </connections>
                                         </switch>
                                     </subviews>
                                     <animations/>
@@ -4352,6 +4355,9 @@ Invite friends now to earn a Quest Scroll!</string>
                                         <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KtV-ku-yD9">
                                             <rect key="frame" x="531" y="6" width="51" height="31"/>
                                             <animations/>
+                                            <connections>
+                                                <action selector="switchChanged:" destination="CZc-T4-a1C" eventType="valueChanged" id="xgn-Jp-I20"/>
+                                            </connections>
                                         </switch>
                                     </subviews>
                                     <animations/>
@@ -5321,7 +5327,7 @@ Invite friends now to earn a Quest Scroll!</string>
     <resources>
         <image name="Gem" width="18" height="13"/>
         <image name="gold_coin" width="15" height="15"/>
-        <image name="icon_lock" width="26" height="30"/>
+        <image name="icon_lock" width="16" height="18"/>
         <image name="login_email" width="17" height="20"/>
         <image name="login_password" width="17" height="20"/>
         <image name="login_username" width="17" height="20"/>
