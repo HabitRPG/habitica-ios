@@ -37,6 +37,12 @@
 @property HRPGCustomizationSelectionView *hairBaseSelectionView;
 @property HRPGCustomizationSelectionView *hairBangsSelectionView;
 @property HRPGCustomizationSelectionView *hairColorSelectionView;
+@property HRPGCustomizationSelectionView *hairFlowerSelectionView;
+
+@property UIView *skinSeparatorView;
+@property UIView *shirtSeparatorView;
+@property UIView *hairStyleSeparatorView;
+@property UIView *hairColorSeparatorView;
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
@@ -113,7 +119,7 @@
             CGFloat descriptionHeight = [self.welcomeDescriptionString boundingRectWithSize:CGSizeMake(labelWidth, MAXFLOAT)
                                                                                                     options:NSStringDrawingUsesLineFragmentOrigin
                                                                                                  attributes:@{
-                                                                                                              NSFontAttributeName : [UIFont systemFontOfSize:16.0]
+                                                                                                              NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                                                                               }
                                                                                                     context:nil].size.height+10;
             self.welcomeLabel.frame = CGRectMake(0, self.justinView.frame.origin.y - 50, self.mainScrollView.frame.size.width, 30);
@@ -124,7 +130,7 @@
             CGFloat descriptionHeight = [self.avatarDescriptionString boundingRectWithSize:CGSizeMake(labelWidth, MAXFLOAT)
                                                                                    options:NSStringDrawingUsesLineFragmentOrigin
                                                                                 attributes:@{
-                                                                                             NSFontAttributeName : [UIFont systemFontOfSize:16.0]
+                                                                                             NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                                                              }
                                                                                    context:nil].size.height+10;
             self.descriptionlabel.frame = CGRectMake((self.mainScrollView.frame.size.width-labelWidth)/2, 0, labelWidth, descriptionHeight);
@@ -132,18 +138,19 @@
             CGFloat skinInstructionHeight = [self.skinInstructionlabel.text boundingRectWithSize:CGSizeMake(labelWidth, MAXFLOAT)
                                                                                          options:NSStringDrawingUsesLineFragmentOrigin
                                                                                       attributes:@{
-                                                                                                   NSFontAttributeName : [UIFont systemFontOfSize:16.0]
+                                                                                                   NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
                                                                                                    }
                                                                                          context:nil].size.height+10;
             self.skinInstructionlabel.frame = CGRectMake((self.mainScrollView.frame.size.width-labelWidth)/2, self.descriptionlabel.frame.origin.y+self.descriptionlabel.frame.size.height+30, labelWidth, skinInstructionHeight);
             self.skinSelectionView.frame = CGRectMake(20, self.skinInstructionlabel.frame.origin.y+self.skinInstructionlabel.frame.size.height+10, self.mainScrollView.frame.size.width-40, 250);
             [self.skinSelectionView layoutSubviews];
             [self.skinSelectionView sizeToFit];
+            self.skinSeparatorView.frame = CGRectMake(0, self.skinInstructionlabel.frame.origin.y - 15, self.mainScrollView.frame.size.width, 1);
             
             CGFloat shirtInstructionHeight = [self.shirtInstructionlabel.text boundingRectWithSize:CGSizeMake(labelWidth, MAXFLOAT)
                                                                                          options:NSStringDrawingUsesLineFragmentOrigin
                                                                                       attributes:@{
-                                                                                                   NSFontAttributeName : [UIFont systemFontOfSize:16.0]
+                                                                                                   NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
                                                                                                    }
                                                                                          context:nil].size.height+10;
             self.shirtInstructionlabel.frame = CGRectMake((self.mainScrollView.frame.size.width-labelWidth)/2, self.skinSelectionView.frame.origin.y+self.skinSelectionView.frame.size.height+30, labelWidth, shirtInstructionHeight);
@@ -151,11 +158,12 @@
             [self.shirtSelectionView layoutSubviews];
             [self.shirtSelectionView sizeToFit];
             self.bodySizeView.frame = CGRectMake((self.mainScrollView.frame.size.width/2)-50, self.shirtSelectionView.frame.origin.y+self.shirtSelectionView.frame.size.height+10, 100, 30);
+            self.shirtSeparatorView.frame = CGRectMake(0, self.shirtInstructionlabel.frame.origin.y - 15, self.mainScrollView.frame.size.width, 1);
             
             CGFloat hairStyleInstructionHeight = [self.hairStyleInstructionlabel.text boundingRectWithSize:CGSizeMake(labelWidth, MAXFLOAT)
                                                                                            options:NSStringDrawingUsesLineFragmentOrigin
                                                                                         attributes:@{
-                                                                                                     NSFontAttributeName : [UIFont systemFontOfSize:16.0]
+                                                                                                     NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
                                                                                                      }
                                                                                            context:nil].size.height+10;
             self.hairStyleInstructionlabel.frame = CGRectMake((self.mainScrollView.frame.size.width-labelWidth)/2, self.bodySizeView.frame.origin.y+self.bodySizeView.frame.size.height+30, labelWidth, hairStyleInstructionHeight);
@@ -165,19 +173,24 @@
             self.hairBangsSelectionView.frame = CGRectMake(20, self.hairBaseSelectionView.frame.origin.y+self.hairBaseSelectionView.frame.size.height+20, self.mainScrollView.frame.size.width-40, 250);
             [self.hairBangsSelectionView layoutSubviews];
             [self.hairBangsSelectionView sizeToFit];
+            self.hairStyleSeparatorView.frame = CGRectMake(0, self.hairStyleInstructionlabel.frame.origin.y - 15, self.mainScrollView.frame.size.width, 1);
             
             CGFloat hairColorInstructionHeight = [self.hairColorInstructionlabel.text boundingRectWithSize:CGSizeMake(labelWidth, MAXFLOAT)
                                                                                          options:NSStringDrawingUsesLineFragmentOrigin
                                                                                       attributes:@{
-                                                                                                   NSFontAttributeName : [UIFont systemFontOfSize:16.0]
+                                                                                                   NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
                                                                                                    }
                                                                                          context:nil].size.height+10;
             self.hairColorInstructionlabel.frame = CGRectMake((self.mainScrollView.frame.size.width-labelWidth)/2, self.hairBangsSelectionView.frame.origin.y+self.hairBangsSelectionView.frame.size.height+30, labelWidth, hairColorInstructionHeight);
             self.hairColorSelectionView.frame = CGRectMake(20, self.hairColorInstructionlabel.frame.origin.y+self.hairColorInstructionlabel.frame.size.height+10, self.mainScrollView.frame.size.width-40, 250);
             [self.hairColorSelectionView layoutSubviews];
             [self.hairColorSelectionView sizeToFit];
+            self.hairFlowerSelectionView.frame = CGRectMake(20, self.hairColorSelectionView.frame.origin.y+self.hairColorSelectionView.frame.size.height+10, self.mainScrollView.frame.size.width-40, 250);
+            [self.hairFlowerSelectionView layoutSubviews];
+            [self.hairFlowerSelectionView sizeToFit];
+            self.hairColorSeparatorView.frame = CGRectMake(0, self.hairColorInstructionlabel.frame.origin.y - 15, self.mainScrollView.frame.size.width, 1);
             
-            height = self.hairColorSelectionView.frame.origin.y+self.hairColorSelectionView.frame.size.height;
+            height = self.hairFlowerSelectionView.frame.origin.y+self.hairFlowerSelectionView.frame.size.height;
     }
     [super viewWillLayoutSubviews];
     CGSize oldContentSize = self.mainScrollView.contentSize;
@@ -201,7 +214,8 @@
     
     self.welcomeDescriptionLabel = [[HRPGTypingLabel alloc] init];
     self.welcomeDescriptionLabel.textAlignment = NSTextAlignmentLeft;
-    self.welcomeDescriptionLabel.font = [UIFont systemFontOfSize:16.0];
+    self.welcomeDescriptionLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+;
     [self.mainScrollView addSubview:self.welcomeDescriptionLabel];
     
     self.welcomeButton = [[UIButton alloc] init];
@@ -220,12 +234,18 @@
     self.descriptionlabel = [[UILabel alloc] init];
     self.descriptionlabel.numberOfLines = 0;
     self.descriptionlabel.text = self.avatarDescriptionString;
+    self.descriptionlabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [self.mainScrollView addSubview:self.descriptionlabel];
+    
+    self.skinSeparatorView = [[UIView alloc] init];
+    self.skinSeparatorView.backgroundColor = [UIColor gray400];
+    [self.mainScrollView addSubview:self.skinSeparatorView];
     
     self.skinInstructionlabel = [[UILabel alloc] init];
     self.skinInstructionlabel.numberOfLines = 0;
     self.skinInstructionlabel.textAlignment = NSTextAlignmentCenter;
     self.skinInstructionlabel.text = NSLocalizedString(@"Choose a skin color!", nil);
+    self.skinInstructionlabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     [self.mainScrollView addSubview:self.skinInstructionlabel];
     self.skinSelectionView = [[HRPGCustomizationSelectionView alloc] init];
     self.skinSelectionView.verticalCutoff = 0.85;
@@ -238,10 +258,16 @@
     };
     [self.mainScrollView addSubview:self.skinSelectionView];
     
+    
+    self.shirtSeparatorView = [[UIView alloc] init];
+    self.shirtSeparatorView.backgroundColor = [UIColor gray400];
+    [self.mainScrollView addSubview:self.shirtSeparatorView];
+    
     self.shirtInstructionlabel = [[UILabel alloc] init];
     self.shirtInstructionlabel.numberOfLines = 0;
     self.shirtInstructionlabel.textAlignment = NSTextAlignmentCenter;
     self.shirtInstructionlabel.text = NSLocalizedString(@"Choose your outfit! (You'll unlock more outfits soon.)", nil);
+    self.shirtInstructionlabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     [self.mainScrollView addSubview:self.shirtInstructionlabel];
     self.shirtSelectionView = [[HRPGCustomizationSelectionView alloc] init];
     self.shirtSelectionView.verticalCutoff = 1.1;
@@ -263,10 +289,15 @@
     [self.bodySizeView addTarget:self action:@selector(userSizeChanged:) forControlEvents:UIControlEventValueChanged];
     
     
+    self.hairStyleSeparatorView = [[UIView alloc] init];
+    self.hairStyleSeparatorView.backgroundColor = [UIColor gray300];
+    [self.mainScrollView addSubview:self.hairStyleSeparatorView];
+    
     self.hairStyleInstructionlabel = [[UILabel alloc] init];
     self.hairStyleInstructionlabel.numberOfLines = 0;
     self.hairStyleInstructionlabel.textAlignment = NSTextAlignmentCenter;
     self.hairStyleInstructionlabel.text = NSLocalizedString(@"Choose a hairstyle!", nil);
+    self.hairStyleInstructionlabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     [self.mainScrollView addSubview:self.hairStyleInstructionlabel];
     self.hairBaseSelectionView = [[HRPGCustomizationSelectionView alloc] init];
     self.hairBaseSelectionView.verticalCutoff = 0.85;
@@ -289,10 +320,15 @@
     };
     [self.mainScrollView addSubview:self.hairBangsSelectionView];
     
+    self.hairColorSeparatorView = [[UIView alloc] init];
+    self.hairColorSeparatorView.backgroundColor = [UIColor gray400];
+    [self.mainScrollView addSubview:self.hairColorSeparatorView];
+    
     self.hairColorInstructionlabel = [[UILabel alloc] init];
     self.hairColorInstructionlabel.numberOfLines = 0;
     self.hairColorInstructionlabel.textAlignment = NSTextAlignmentCenter;
     self.hairColorInstructionlabel.text = NSLocalizedString(@"Choose a hair color!", nil);
+    self.hairColorInstructionlabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     [self.mainScrollView addSubview:self.hairColorInstructionlabel];
     self.hairColorSelectionView = [[HRPGCustomizationSelectionView alloc] init];
     self.hairColorSelectionView.verticalCutoff = 0.77;
@@ -304,6 +340,17 @@
         [weakSelf.user setAvatarOnImageView:weakSelf.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:YES];
     };
     [self.mainScrollView addSubview:self.hairColorSelectionView];
+    
+    self.hairFlowerSelectionView = [[HRPGCustomizationSelectionView alloc] init];
+    self.hairFlowerSelectionView.verticalCutoff = 0.77;
+    self.hairFlowerSelectionView.user = self.user;
+    self.hairFlowerSelectionView.selectedItem = self.user.hairFlower;
+    self.hairFlowerSelectionView.items = [self getCustomizationsWithPredicate:[NSPredicate predicateWithFormat:@"price == 0 && type == 'hair' && group == 'flower'"]];
+    self.hairFlowerSelectionView.selectionAction = ^(Customization *selectedItem) {
+        weakSelf.user.hairFlower = selectedItem.name;
+        [weakSelf.user setAvatarOnImageView:weakSelf.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:YES];
+    };
+    [self.mainScrollView addSubview:self.hairFlowerSelectionView];
 }
 
 - (IBAction)nextStep:(id)sender {

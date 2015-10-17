@@ -8,6 +8,42 @@
     </dependencies>
     <scenes>
         <!--Avatar Setup View Controller-->
+        <scene sceneID="U97-BZ-8bh">
+            <objects>
+                <viewController id="UKF-XE-fHm" customClass="HRPGAvatarSetupViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XNI-uS-R5g"/>
+                        <viewControllerLayoutGuide type="bottom" id="GQB-wL-yqc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TcG-5d-J79">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MzZ-lx-fZV">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </scrollView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MzZ-lx-fZV" firstAttribute="top" secondItem="TcG-5d-J79" secondAttribute="topMargin" id="RC9-7Q-51a"/>
+                            <constraint firstItem="GQB-wL-yqc" firstAttribute="top" secondItem="MzZ-lx-fZV" secondAttribute="bottom" id="aw1-dj-hI3"/>
+                            <constraint firstItem="MzZ-lx-fZV" firstAttribute="leading" secondItem="TcG-5d-J79" secondAttribute="leadingMargin" constant="-20" id="pyZ-dd-558"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MzZ-lx-fZV" secondAttribute="trailing" constant="-20" id="qRi-ba-18u"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="yoG-K5-VHY"/>
+                    <connections>
+                        <outlet property="mainScrollView" destination="MzZ-lx-fZV" id="mqo-5Y-YUv"/>
+                        <segue destination="oYX-uo-fPD" kind="show" identifier="NextStepSegue" id="4uI-5v-MyW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cxe-nc-DZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1030" y="-541"/>
+        </scene>
+        <!--Avatar Setup View Controller-->
         <scene sceneID="DRP-tX-6kj">
             <objects>
                 <viewController storyboardIdentifier="AvatarSetupViewController" id="oYX-uo-fPD" customClass="HRPGAvatarSetupViewController" sceneMemberID="viewController">
@@ -101,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WeM-sH-h3S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-476" y="-541"/>
+            <point key="canvasLocation" x="-398" y="-541"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="uLK-eP-jZx">
@@ -1743,10 +1779,10 @@ Invite friends now to earn a Quest Scroll!</string>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="90C-Sp-WTM">
-                                            <rect key="frame" x="66" y="9" width="433" height="42"/>
+                                            <rect key="frame" x="66" y="28" width="433" height="4"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5KR-Zz-2Ox">
-                                                    <rect key="frame" x="0.0" y="0.0" width="433" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5KR-Zz-2Ox">
+                                                    <rect key="frame" x="0.0" y="0.0" width="433" height="0.0"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="500" constant="21" id="ONn-HG-349"/>
@@ -1755,8 +1791,8 @@ Invite friends now to earn a Quest Scroll!</string>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYh-oR-3co">
-                                                    <rect key="frame" x="0.0" y="25" width="433" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYh-oR-3co">
+                                                    <rect key="frame" x="0.0" y="4" width="433" height="0.0"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="500" constant="10" id="vcc-Aw-ogr"/>
@@ -3918,7 +3954,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="146"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lvl 21" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vds-Wg-kdp">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vds-Wg-kdp">
                                             <rect key="frame" x="502" y="121" width="90" height="21"/>
                                             <animations/>
                                             <constraints>
@@ -5227,12 +5263,12 @@ Invite friends now to earn a Quest Scroll!</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="oYX-uo-fPD" kind="relationship" relationship="rootViewController" id="g6q-Wc-8lA"/>
+                        <segue destination="UKF-XE-fHm" kind="relationship" relationship="rootViewController" id="FBN-yc-ux1"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wW0-wM-8Oj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1115" y="-541"/>
+            <point key="canvasLocation" x="-1660" y="-541"/>
         </scene>
     </scenes>
     <resources>
@@ -5244,16 +5280,16 @@ Invite friends now to earn a Quest Scroll!</string>
         <image name="onepassword-button" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ydi-dk-kDU"/>
         <segue reference="ffA-qm-0SO"/>
-        <segue reference="04Z-5H-zfF"/>
-        <segue reference="jeD-LQ-1O1"/>
+        <segue reference="zEC-Wx-BHZ"/>
         <segue reference="sPD-XR-ORt"/>
-        <segue reference="aWZ-FG-z5O"/>
-        <segue reference="OZd-8c-sWC"/>
         <segue reference="8EB-JX-S8a"/>
         <segue reference="Bfo-Hm-DEG"/>
         <segue reference="w8b-nU-BYs"/>
+        <segue reference="OZd-8c-sWC"/>
+        <segue reference="aWZ-FG-z5O"/>
+        <segue reference="jeD-LQ-1O1"/>
+        <segue reference="04Z-5H-zfF"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.52939999999999998" green="0.25879999999999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
