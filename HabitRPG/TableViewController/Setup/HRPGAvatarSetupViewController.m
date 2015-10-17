@@ -51,6 +51,8 @@
 @property NSString *welcomeDescriptionString;
 @property NSString *avatarDescriptionString;
 
+@property (weak, nonatomic) IBOutlet UIView *gradientView;
+
 @property BOOL isSkipping;
 
 @end
@@ -190,7 +192,7 @@
             [self.hairFlowerSelectionView sizeToFit];
             self.hairColorSeparatorView.frame = CGRectMake(0, self.hairColorInstructionlabel.frame.origin.y - 15, self.mainScrollView.frame.size.width, 1);
             
-            height = self.hairFlowerSelectionView.frame.origin.y+self.hairFlowerSelectionView.frame.size.height;
+            height = self.hairFlowerSelectionView.frame.origin.y+self.hairFlowerSelectionView.frame.size.height+50;
     }
     [super viewWillLayoutSubviews];
     CGSize oldContentSize = self.mainScrollView.contentSize;
@@ -351,6 +353,13 @@
         [weakSelf.user setAvatarOnImageView:weakSelf.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:YES];
     };
     [self.mainScrollView addSubview:self.hairFlowerSelectionView];
+    
+    CAGradientLayer *layer = [CAGradientLayer layer];
+    layer.frame = self.gradientView.bounds;
+    layer.colors = [NSArray arrayWithObjects:(id)[UIColor whiteColor].CGColor, (id)[UIColor colorWithWhite:1 alpha:0].CGColor, nil];
+    layer.startPoint = CGPointMake(1.0f, 1.0f);
+    layer.endPoint = CGPointMake(1.0f, 0.0f);
+    [self.gradientView.layer insertSublayer:layer atIndex:0];
 }
 
 - (IBAction)nextStep:(id)sender {

@@ -104,13 +104,23 @@
                                     <constraint firstAttribute="height" constant="120" id="p9N-Ej-2ky"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcz-t6-WqN">
+                                <rect key="frame" x="0.0" y="490" width="600" height="50"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="yyX-G1-yka"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="IRA-55-1g8" firstAttribute="top" secondItem="tcz-t6-WqN" secondAttribute="bottom" id="0rM-Vc-6FR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rwy-jV-Jrm" secondAttribute="trailing" id="1so-Sa-scv"/>
                             <constraint firstItem="rwy-jV-Jrm" firstAttribute="top" secondItem="I6M-cg-Hvu" secondAttribute="bottom" id="3YW-sc-XKN"/>
                             <constraint firstItem="EHI-Bs-o2d" firstAttribute="leading" secondItem="SRb-CW-vTC" secondAttribute="leadingMargin" id="Ikj-v3-2D5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tcz-t6-WqN" secondAttribute="trailing" constant="-20" id="J59-mz-meh"/>
                             <constraint firstItem="IRA-55-1g8" firstAttribute="top" secondItem="Les-vZ-cx6" secondAttribute="bottom" id="KzV-h0-MjQ"/>
                             <constraint firstItem="FYR-h9-UfW" firstAttribute="top" secondItem="Les-vZ-cx6" secondAttribute="bottom" id="Sui-gC-k27"/>
                             <constraint firstItem="FYR-h9-UfW" firstAttribute="leading" secondItem="SRb-CW-vTC" secondAttribute="leadingMargin" id="UuW-Kn-9oG"/>
@@ -118,6 +128,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="EHI-Bs-o2d" secondAttribute="trailing" id="YA2-yU-vrq"/>
                             <constraint firstItem="IRA-55-1g8" firstAttribute="trailing" secondItem="SRb-CW-vTC" secondAttribute="trailingMargin" id="ayg-9n-VwC"/>
                             <constraint firstItem="Les-vZ-cx6" firstAttribute="top" secondItem="EHI-Bs-o2d" secondAttribute="bottom" constant="8" id="btn-K6-XUa"/>
+                            <constraint firstItem="tcz-t6-WqN" firstAttribute="leading" secondItem="SRb-CW-vTC" secondAttribute="leadingMargin" constant="-20" id="cQf-xB-Xf1"/>
                             <constraint firstItem="udZ-2L-6V8" firstAttribute="top" secondItem="IRA-55-1g8" secondAttribute="bottom" id="h4m-lN-ShV"/>
                             <constraint firstItem="EHI-Bs-o2d" firstAttribute="top" secondItem="SRb-CW-vTC" secondAttribute="topMargin" constant="40" id="j1Z-kL-KVg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Les-vZ-cx6" secondAttribute="trailing" constant="-20" id="jV1-It-lsg"/>
@@ -129,6 +140,7 @@
                     <connections>
                         <outlet property="avatarView" destination="EHI-Bs-o2d" id="qtE-XO-A9Q"/>
                         <outlet property="backButton" destination="FYR-h9-UfW" id="dej-GE-OdE"/>
+                        <outlet property="gradientView" destination="tcz-t6-WqN" id="KGR-0F-IgN"/>
                         <outlet property="mainScrollView" destination="Les-vZ-cx6" id="F3I-ZY-BbR"/>
                         <outlet property="nextButton" destination="IRA-55-1g8" id="ayR-7Z-PbC"/>
                         <segue destination="tSJ-zo-fKn" kind="show" identifier="TaskSetupSegue" id="0qN-Ag-1oV"/>
