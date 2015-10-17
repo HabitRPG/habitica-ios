@@ -360,7 +360,7 @@
     NSDictionary *updateDict;
     switch (self.currentStep) {
         case HRPGAvatarSetupStepsAvatar:
-            updateDict = @{@"preferences.skin": self.user.skin, @"preferences.shirt": self.user.shirt, @"preferences.size": self.user.size, @"preferences.hair.base": self.user.hairBase, @"preferences.hair.bangs": self.user.hairBangs, @"preferences.hair.color": self.user.hairColor};
+            updateDict = @{@"preferences.skin": self.user.skin, @"preferences.shirt": self.user.shirt, @"preferences.size": self.user.size, @"preferences.hair.base": self.user.hairBase, @"preferences.hair.bangs": self.user.hairBangs, @"preferences.hair.color": self.user.hairColor, @"preferences.hair.flower": self.user.hairFlower};
             break;
     }
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
@@ -377,6 +377,7 @@
         dest.currentStep = self.currentStep+1;
         dest.user = self.user;
         dest.managedObjectContext = self.managedObjectContext;
+        dest.shouldDismiss = self.shouldDismiss;
         [self.navigationController pushViewController:dest animated:!self.isSkipping];
     } else {
         [self performSegueWithIdentifier:@"TaskSetupSegue" sender:self];
@@ -393,7 +394,11 @@
     self.user.lastSetupStep = [NSNumber numberWithInteger:HRPGAvatarSetupStepsTasks];
     NSError *error;
     [self.managedObjectContext saveToPersistentStore:&error];
-    [self performSegueWithIdentifier:@"MainSegue" sender:self];
+    if (self.shouldDismiss) {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self performSegueWithIdentifier:@"MainSegue" sender:self];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -402,6 +407,7 @@
         destinationController.user = self.user;
         destinationController.managedObjectContext = self.managedObjectContext;
         destinationController.currentStep = HRPGAvatarSetupStepsTasks;
+        destinationController.shouldDismiss = self.shouldDismiss;
     }
 }
 

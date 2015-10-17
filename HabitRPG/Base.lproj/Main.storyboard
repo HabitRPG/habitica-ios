@@ -137,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WeM-sH-h3S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-398" y="-541"/>
+            <point key="canvasLocation" x="-370" y="-541"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="uLK-eP-jZx">
@@ -255,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugT-vp-Svh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="167" y="-541"/>
+            <point key="canvasLocation" x="277" y="-541"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -5280,7 +5280,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <image name="onepassword-button" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ffA-qm-0SO"/>
+        <segue reference="67a-aB-Ubi"/>
         <segue reference="zEC-Wx-BHZ"/>
         <segue reference="sPD-XR-ORt"/>
         <segue reference="8EB-JX-S8a"/>

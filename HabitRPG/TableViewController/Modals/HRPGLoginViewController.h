@@ -21,5 +21,5 @@
 @property (weak, nonatomic) UIButton *onePasswordButton;
 
 @property BOOL isRootViewController;
-
+@property BOOL shouldDismissOnNextAppear;
 @end

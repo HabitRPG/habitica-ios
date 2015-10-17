@@ -320,8 +320,11 @@
     
     [self.managedObjectContext saveToPersistentStore:&error];
     
-    [self performSegueWithIdentifier:@"MainSegue" sender:self];
-}
+    if (self.shouldDismiss) {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self performSegueWithIdentifier:@"MainSegue" sender:self];
+    }}
 
 
 - (IBAction)previousStep:(id)sender {

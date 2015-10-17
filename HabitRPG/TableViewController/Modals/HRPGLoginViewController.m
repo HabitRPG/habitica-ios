@@ -68,6 +68,13 @@
     [FBSDKLoginButton class];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.shouldDismissOnNextAppear) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 - (void)viewWillLayoutSubviews {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         self.gryphonView.frame = CGRectMake(0, 20, self.view.frame.size.width, 85);
@@ -195,14 +202,8 @@
             [_sharedManager setCredentials];
             [_sharedManager fetchUser:^() {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];
-                if (!self.isRootViewController) {
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                }
                 [self performSegueWithIdentifier:@"SetupSegue" sender:self];
             } onError:^() {
-                if (!self.isRootViewController) {
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                }
                 [self performSegueWithIdentifier:@"SetupSegue" sender:self];
                 
             }];
@@ -370,6 +371,12 @@
     }];
 }
 
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
+    if ([segue.identifier isEqualToString:@"UnwindFromSetup"]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"SetupSegue"]) {
         UINavigationController *navController = segue.destinationViewController;
@@ -380,6 +387,10 @@
         avatarSetupViewController.lastCompletedStep = [user.lastSetupStep integerValue];
         avatarSetupViewController.user = user;
         avatarSetupViewController.managedObjectContext = manager.getManagedObjectContext;
+        if (!self.isRootViewController) {
+            avatarSetupViewController.shouldDismiss = YES;
+            self.shouldDismissOnNextAppear = YES;
+        }
     }
 }
 

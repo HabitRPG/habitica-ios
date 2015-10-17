@@ -21,4 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *skipButton;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
+@property BOOL shouldDismiss;
+
 @end

@@ -21,6 +21,6 @@ typedef enum HRPGAvatarSetupSteps : NSInteger {
 @property NSInteger lastCompletedStep;
 @property User *user;
 @property NSManagedObjectContext *managedObjectContext;
-
+@property BOOL shouldDismiss;
 
 @end
