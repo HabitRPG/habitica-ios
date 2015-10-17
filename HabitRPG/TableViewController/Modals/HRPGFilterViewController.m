@@ -222,7 +222,10 @@
     for (int i = 0; i < self.areTagsSelected.count; i++) {
         self.areTagsSelected[i] = @NO;
     }
-    [self.tableView reloadData];
+    for (UITableViewCell *cell in self.tableView.visibleCells) {
+        UISwitch *tagSwitch = (UISwitch *)[cell viewWithTag:2];
+        [tagSwitch setOn:NO animated:YES];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

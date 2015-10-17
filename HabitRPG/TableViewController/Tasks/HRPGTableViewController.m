@@ -131,6 +131,21 @@ BOOL editable;
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
     [self.tableView reloadData];
+    
+    NSInteger filterCount = 0;
+    if (self.filterType != 0) {
+        filterCount++;
+    }
+    HRPGTabBarController *tabBarController = (HRPGTabBarController*)self.tabBarController;
+    filterCount += tabBarController.selectedTags.count;
+    
+    if (filterCount == 0) {
+        self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Filter", nil);
+    } else if (filterCount == 1) {
+        self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"1 Filter", nil);
+    } else {
+        self.navigationItem.leftBarButtonItem.title = [NSString stringWithFormat:NSLocalizedString(@"%ld Filter", @"more than one filter"), (long)filterCount];
+    }
 }
 
 
