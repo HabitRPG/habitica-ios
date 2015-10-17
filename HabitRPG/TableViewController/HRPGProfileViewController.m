@@ -199,12 +199,23 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else if (indexPath.section == 2 && indexPath.item == 1) {
         [self performSegueWithIdentifier:@"EquipmentSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 2) {
-        [self performSegueWithIdentifier:@"ItemSegue" sender:self];
+        if ([self.user.itemsEnabled boolValue]) {
+            [self performSegueWithIdentifier:@"ItemSegue" sender:self];
+        } else {
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
     } else if (indexPath.section == 2 && indexPath.item == 3) {
-        [self performSegueWithIdentifier:@"PetSegue" sender:self];
+        if ([self.user.itemsEnabled boolValue]) {
+            [self performSegueWithIdentifier:@"PetSegue" sender:self];
+        } else {
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
     } else if (indexPath.section == 2 && indexPath.item == 4) {
-        [self performSegueWithIdentifier:@"MountSegue" sender:self];
-        
+        if ([self.user.itemsEnabled boolValue]) {
+            [self performSegueWithIdentifier:@"MountSegue" sender:self];
+        } else {
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
     } else if (indexPath.section == 3 && indexPath.item == 0) {
         [self performSegueWithIdentifier:@"NewsSegue" sender:self];
     } else if (indexPath.section == 3 && indexPath.item == 1) {
@@ -247,10 +258,19 @@ NIKFontAwesomeIconFactory *iconFactory;
         title = NSLocalizedString(@"Equipment", nil);
     } else if (indexPath.section == 2 && indexPath.item == 2) {
         title = NSLocalizedString(@"Items", nil);
+        if (![self.user.itemsEnabled boolValue]) {
+            cellName = @"LockedCell";
+        }
     } else if (indexPath.section == 2 && indexPath.item == 3) {
         title = NSLocalizedString(@"Pets", nil);
+        if (![self.user.itemsEnabled boolValue]) {
+            cellName = @"LockedCell";
+        }
     } else if (indexPath.section == 2 && indexPath.item == 4) {
         title = NSLocalizedString(@"Mounts", nil);
+        if (![self.user.itemsEnabled boolValue]) {
+            cellName = @"LockedCell";
+        }
     } else if (indexPath.section == 3 && indexPath.item == 0) {
         title = NSLocalizedString(@"News", nil);
         User *user = [self getUser];
