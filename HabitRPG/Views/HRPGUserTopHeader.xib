@@ -50,7 +50,7 @@
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="J68-ym-ngp">
-                            <rect key="frame" x="52" y="231" width="0.0" height="24"/>
+                            <rect key="frame" x="52" y="241" width="0.0" height="4"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7A-NB-rwz">
                                     <animations/>
@@ -80,7 +80,7 @@
                                 <constraint firstAttribute="trailing" secondItem="v7A-NB-rwz" secondAttribute="trailing" id="L4J-Sv-8pC"/>
                                 <constraint firstItem="v7A-NB-rwz" firstAttribute="leading" secondItem="J68-ym-ngp" secondAttribute="leading" id="N87-8M-cmi"/>
                                 <constraint firstItem="AL5-B2-uxe" firstAttribute="top" secondItem="v7A-NB-rwz" secondAttribute="bottom" constant="4" id="Wim-Qw-TAT"/>
-                                <constraint firstAttribute="bottom" secondItem="AL5-B2-uxe" secondAttribute="bottom" constant="20" symbolic="YES" id="Zwe-hb-pyh"/>
+                                <constraint firstAttribute="bottom" secondItem="AL5-B2-uxe" secondAttribute="bottom" id="Zwe-hb-pyh"/>
                                 <constraint firstAttribute="trailing" secondItem="AL5-B2-uxe" secondAttribute="trailing" id="bLq-R0-ypy"/>
                                 <constraint firstAttribute="height" priority="500" constant="128" id="j1Z-Uy-Kjq"/>
                                 <constraint firstItem="v7A-NB-rwz" firstAttribute="top" secondItem="J68-ym-ngp" secondAttribute="top" id="laC-K2-chz"/>

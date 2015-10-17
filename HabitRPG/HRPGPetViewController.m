@@ -32,8 +32,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tutorialIdentifier = @"pets";
-    self.coachMarks = @[@"groupPets"];
     
     self.equippedPetName = [self.sharedManager getUser].currentPet;
 
@@ -60,22 +58,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self displayTutorialStep:self.sharedManager];
-}
-
-- (CGRect)getFrameForCoachmark:(NSString *)coachMarkIdentifier {
-    if ([coachMarkIdentifier isEqualToString:@"groupPets"]) {
-        return CGRectMake(self.view.frame.size.width-self.navigationItem.rightBarButtonItem.width-2, 20, self.navigationItem.rightBarButtonItem.width, 45);
-    }
-    return CGRectZero;
-}
-
-- (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
-    if ([tutorialIdentifier isEqualToString:@"pets"]) {
-        return @{@"text": NSLocalizedString(@"As you complete real-world tasks, you now have a random chance of finding eggs and potions. Combine them to hatch pets", nil)};
-    } else if ([tutorialIdentifier isEqualToString:@"groupPets"]) {
-        return @{@"text": NSLocalizedString(@"Tap to change how your pets are grouped.", nil)};
-    }
-    return nil;
 }
 
 - (NSString*) eggWithKey:(NSString*)key {
@@ -188,9 +170,9 @@
     [fetchRequest setFetchBatchSize:20];
     
     if (self.petName) {
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@ && type = %@", self.petName, self.petType]];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key BEGINSWITH[cd] %@ && type = %@", [self.petName stringByAppendingString:@"-"], self.petType]];
     } else {
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key contains[cd] %@ && type = %@", self.petColor, self.petType]];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key ENDSWITH[cd] %@ && type = %@", [@"-" stringByAppendingString:self.petColor], self.petType]];
     }
     
     NSSortDescriptor *typeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];

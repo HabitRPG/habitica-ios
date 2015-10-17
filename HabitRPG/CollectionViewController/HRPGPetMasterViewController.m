@@ -36,6 +36,9 @@ NSUserDefaults *defaults;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tutorialIdentifier = @"pets";
+    self.coachMarks = @[@"groupPets"];
+    
     defaults = [NSUserDefaults standardUserDefaults];
     self.groupByKey = [defaults integerForKey:@"groupPetsBy"];
     
@@ -50,6 +53,22 @@ NSUserDefaults *defaults;
     entity = [NSEntityDescription entityForName:@"HatchingPotion" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     self.hatchingPotions = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+}
+
+- (CGRect)getFrameForCoachmark:(NSString *)coachMarkIdentifier {
+    if ([coachMarkIdentifier isEqualToString:@"groupPets"]) {
+        return CGRectMake(self.view.frame.size.width-self.navigationItem.rightBarButtonItem.width-2, 20, self.navigationItem.rightBarButtonItem.width, 45);
+    }
+    return CGRectZero;
+}
+
+- (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
+    if ([tutorialIdentifier isEqualToString:@"pets"]) {
+        return @{@"text": NSLocalizedString(@"As you complete real-world tasks, you now have a random chance of finding eggs and potions. Combine them to hatch pets", nil)};
+    } else if ([tutorialIdentifier isEqualToString:@"groupPets"]) {
+        return @{@"text": NSLocalizedString(@"Tap to change how your pets are grouped.", nil)};
+    }
+    return nil;
 }
 
 - (Egg*) eggWithKey:(NSString*)key {
