@@ -74,17 +74,27 @@
     self.logo.frame = CGRectMake((self.view.frame.size.width-165)/2, 100, 165, 140);
     [self.view addSubview:self.logo];
     */
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    
     if ([keyChain stringForKey:@"id"] == nil || [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
         [self performSegueWithIdentifier:@"LoginSegue" sender:self];
     } else {
-        [self performSegueWithIdentifier:@"InitialSegue" sender:self];
+        HRPGAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        HRPGManager *manager = appDelegate.sharedManager;
+        
+        if ([manager getUser].username.length == 0) {
+            self.activityIndicator.hidden = NO;
+            [self.activityIndicator startAnimating];
+            [manager fetchUser:^() {
+                [self performSegueWithIdentifier:@"InitialSegue" sender:self];
+            }onError:^() {
+                [self performSegueWithIdentifier:@"InitialSegue" sender:self];
+            }];
+        } else {
+            [self performSegueWithIdentifier:@"InitialSegue" sender:self];
+        }
     }
 }
 
