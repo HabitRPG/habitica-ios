@@ -92,13 +92,13 @@ NSString *currentUser;
         NSString *DISABLE_SSL = [info objectForKey:@"DisableSSL"];
 
         if (CUSTOM_DOMAIN.length == 0) {
-            CUSTOM_DOMAIN = @"habitica.com";
+            CUSTOM_DOMAIN = @"localhost:3000";
         }
 
         if ([DISABLE_SSL isEqualToString:@"true"]) {
           ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
         } else {
-          ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
+          ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
         }
     #else
         ROOT_URL = @"https://habitica.com";
@@ -1068,6 +1068,7 @@ NSString *currentUser;
 }
 
 - (void)resetSavedDatabase:(BOOL)withUserData onComplete:(void (^)())completitionBlock {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"startClearingData" object:nil];
     NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
         [[self getManagedObjectContext] performBlockAndWait:^{
             NSError *error = nil;
@@ -1100,10 +1101,13 @@ NSString *currentUser;
                 if (withUserData) {
                     [self fetchUser:^(){
                         completitionBlock();
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"finishedClearingData" object:nil];
                     }       onError:^(){
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"finishedClearingData" object:nil];
                         completitionBlock();
                     }];
                 } else {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"finishedClearingData" object:nil];
                     completitionBlock();
                 }
             }          onError:^() {
@@ -1112,11 +1116,14 @@ NSString *currentUser;
                 [[self getManagedObjectContext] saveToPersistentStore:&error];
                 if (withUserData) {
                     [self fetchUser:^(){
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"finishedClearingData" object:nil];
                         completitionBlock();
                     }       onError:^(){
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"finishedClearingData" object:nil];
                         completitionBlock();
                     }];
                 } else {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"finishedClearingData" object:nil];
                     completitionBlock();
                 }
             }];

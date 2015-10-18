@@ -26,6 +26,7 @@
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
 @property Reward *editedReward;
+@property BOOL disableFetchedResultsControllerUpdates;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
@@ -46,7 +47,16 @@ User *user;
      selector:@selector(reloadAllData:)
      name:@"shouldReloadAllData"
      object:nil];
-    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(startClearing:)
+     name:@"startClearingData"
+     object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(finishedClearing:)
+     name:@"finishedClearingData"
+     object:nil];
     self.tutorialIdentifier = @"rewards";
 }
 
@@ -75,6 +85,16 @@ User *user;
 }
 
 - (void)reloadAllData:(NSNotification *)notification {
+    self.filteredData = nil;
+    [self.tableView reloadData];
+}
+
+- (void)startClearing:(NSNotification *)notification {
+    self.disableFetchedResultsControllerUpdates = YES;
+}
+
+- (void)finishedClearing:(NSNotification *)notification {
+    self.disableFetchedResultsControllerUpdates = NO;
     self.filteredData = nil;
     [self.tableView reloadData];
 }
@@ -327,6 +347,9 @@ User *user;
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
+    if (self.disableFetchedResultsControllerUpdates) {
+        return;
+    }
     self.filteredData = nil;
     [self.tableView reloadData];
     return;

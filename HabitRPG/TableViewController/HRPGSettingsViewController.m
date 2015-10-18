@@ -140,7 +140,7 @@ User *user;
 }
 
 - (void)logoutUser {
-    MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+    MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.parentViewController.view animated:YES];
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
     [keyChain setString:@"" forKey:@"id"];
     [keyChain setString:@"" forKey:@"key"];
@@ -156,7 +156,7 @@ User *user;
 }
 
 - (void)resetCache {
-    MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+    MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.parentViewController.view animated:YES];
     [self.sharedManager resetSavedDatabase:YES onComplete:^() {
         overlayView.mode = MRProgressOverlayViewModeCheckmark;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC));
@@ -167,7 +167,7 @@ User *user;
 }
 
 - (void)reloadContent {
-    MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+    MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.parentViewController.view animated:YES];
     [self.sharedManager fetchContent:^() {
         overlayView.mode = MRProgressOverlayViewModeCheckmark;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC));
@@ -216,11 +216,6 @@ User *user;
         }
     } else if ([rowDescriptor.tag isEqualToString:@"reminderDate"]) {
         [self reminderTimeChanged:[rowDescriptor.value valueData]];
-    }else if ([rowDescriptor.tag isEqualToString:@"swipeDirection"]) {
-        [defaults setValue:[rowDescriptor.value valueData] forKey:@"swipeDirection"];
-        dispatch_async(dispatch_get_main_queue(),^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"swipeDirectionChanged" object:nil];
-        });
     }
 }
 
