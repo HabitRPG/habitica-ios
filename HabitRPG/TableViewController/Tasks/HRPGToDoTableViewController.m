@@ -11,8 +11,6 @@
 #import "HRPGManager.h"
 #import "ChecklistItem.h"
 #import "MCSwipeTableViewCell.h"
-#import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
-#import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 #import "NSString+Emoji.h"
 #import "UIColor+LighterDarker.h"
 #import "HRPGCheckBoxView.h"
@@ -21,8 +19,6 @@
 @interface HRPGToDoTableViewController ()
 @property NSString *readableName;
 @property NSString *typeName;
-@property NIKFontAwesomeIconFactory *iconFactory;
-@property NIKFontAwesomeIconFactory *checkIconFactory;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
 @property NSDateFormatter *dateFormatter;
@@ -39,18 +35,6 @@
     self.readableName = NSLocalizedString(@"To-Do", nil);
     self.typeName = @"todo";
     [super viewDidLoad];
-    self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-    self.iconFactory.square = YES;
-    self.iconFactory.colors = @[[UIColor whiteColor]];
-    self.iconFactory.strokeColor = [UIColor whiteColor];
-    self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
-
-    self.checkIconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-    self.checkIconFactory.square = YES;
-    self.checkIconFactory.colors = @[[UIColor grayColor]];
-    self.checkIconFactory.strokeColor = [UIColor grayColor];
-    self.checkIconFactory.size = 17.0f;
-    self.checkIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
 
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateStyle = NSDateFormatterMediumStyle;

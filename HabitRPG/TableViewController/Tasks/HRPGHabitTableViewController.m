@@ -9,8 +9,6 @@
 #import "HRPGHabitTableViewController.h"
 #import "Task.h"
 #import "HRPGManager.h"
-#import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
-#import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 #import "UIColor+LighterDarker.h"
 #import "HRPGHabitButtons.h"
 #import "HRPGHabitTableViewCell.h"
@@ -18,7 +16,6 @@
 @interface HRPGHabitTableViewController ()
 @property NSString *readableName;
 @property NSString *typeName;
-@property NIKFontAwesomeIconFactory *iconFactory;
 @end
 
 @implementation HRPGHabitTableViewController
@@ -30,13 +27,6 @@
     self.readableName = NSLocalizedString(@"Habit", nil);
     self.typeName = @"habit";
     [super viewDidLoad];
-    self.iconFactory = [NIKFontAwesomeIconFactory buttonIconFactory];
-    self.iconFactory.padded = NO;
-    self.iconFactory.size = 12;
-    self.iconFactory.edgeInsets = UIEdgeInsetsMake(0, 5, 0, 5);
-    self.iconFactory.colors = @[[UIColor whiteColor]];
-    self.iconFactory.strokeColor = [UIColor whiteColor];
-    self.iconFactory.renderingMode = UIImageRenderingModeAutomatic;
     
     self.tutorialIdentifier = @"habits";
 }

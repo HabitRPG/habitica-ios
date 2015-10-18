@@ -10,8 +10,6 @@
 #import "Task.h"
 #import "HRPGManager.h"
 #import "ChecklistItem.h"
-#import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
-#import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 #import "NSString+Emoji.h"
 #import "UIColor+LighterDarker.h"
 #import "HRPGCheckBoxView.h"
@@ -20,8 +18,6 @@
 @interface HRPGDailyTableViewController ()
 @property NSString *readableName;
 @property NSString *typeName;
-@property NIKFontAwesomeIconFactory *iconFactory;
-@property NIKFontAwesomeIconFactory *checkIconFactory;
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
 @end
@@ -32,28 +28,11 @@
 @dynamic typeName;
 @dynamic openedIndexPath;
 @dynamic indexOffset;
-NIKFontAwesomeIconFactory *streakIconFactory;
 
 - (void)viewDidLoad {
     self.readableName = NSLocalizedString(@"Daily", nil);
     self.typeName = @"daily";
     [super viewDidLoad];
-    self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-    self.iconFactory.square = YES;
-    self.iconFactory.colors = @[[UIColor whiteColor]];
-    self.iconFactory.strokeColor = [UIColor whiteColor];
-    self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
-
-    self.checkIconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-    self.checkIconFactory.square = YES;
-    self.checkIconFactory.colors = @[[UIColor darkGrayColor]];
-    self.checkIconFactory.strokeColor = [UIColor darkGrayColor];
-    self.checkIconFactory.size = 17.0f;
-    self.checkIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
-    
-    streakIconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-    streakIconFactory.square = YES;
-    streakIconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
     
     self.tutorialIdentifier = @"dailies";
 }

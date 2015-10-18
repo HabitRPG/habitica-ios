@@ -12,8 +12,6 @@
 #import "User.h"
 #import <PDKeychainBindings.h>
 #import "HRPGLabeledProgressBar.h"
-#import "NIKFontAwesomeIconFactory.h"
-#import "NIKFontAwesomeIconFactory+iOS.h"
 #import "UIColor+Habitica.h"
 
 @interface HRPGUserTopHeader ()
@@ -65,10 +63,6 @@ NSInteger rowOffset = 16;
 }
 
 - (void)awakeFromNib {
-    NIKFontAwesomeIconFactory *iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-    iconFactory.size = 15;
-    iconFactory.renderingMode = UIImageRenderingModeAlwaysTemplate;
-    
     self.healthLabel.color = [UIColor red100];
     self.healthLabel.icon = [UIImage imageNamed:@"icon_health"];
     self.healthLabel.type = NSLocalizedString(@"Health", nil);

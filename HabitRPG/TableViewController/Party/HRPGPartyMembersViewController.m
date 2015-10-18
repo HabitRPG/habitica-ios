@@ -11,9 +11,8 @@
 #import "HRPGUserProfileViewController.h"
 #import "HRPGLabeledProgressBar.h"
 #import "User.h"
-#import <NIKFontAwesomeIconFactory.h>
-#import <NIKFontAwesomeIconFactory+iOS.h>
 #import "HRPGInviteMembersViewController.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGPartyMembersViewController ()
 @property NSString *readableName;
@@ -21,7 +20,6 @@
 @property NSIndexPath *openedIndexPath;
 @property NSString *sortKey;
 @property BOOL sortAscending;
-@property NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
@@ -48,10 +46,6 @@ NSString *partyID;
     }
 
     [super viewDidLoad];
-  
-    self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-    self.iconFactory.size = 15;
-    self.iconFactory.renderingMode = UIImageRenderingModeAlwaysTemplate;
     
     [self setUpInvitationButton];
 }
@@ -177,9 +171,8 @@ NSString *partyID;
     [user setAvatarOnImageView:avatarView withPetMount:NO onlyHead:NO useForce:NO];
     
     HRPGLabeledProgressBar *healthLabel = (HRPGLabeledProgressBar *) [cell viewWithTag:3];
-    healthLabel.color = [UIColor colorWithRed:0.773 green:0.235 blue:0.247 alpha:1.000];
-    healthLabel.progressBar.backgroundColor = [UIColor colorWithRed:0.976 green:0.925 blue:0.925 alpha:1.000];
-    healthLabel.icon = [self.iconFactory createImageForIcon:NIKFontAwesomeIconHeart];
+    healthLabel.color = [UIColor red100];
+    healthLabel.icon = [UIImage imageNamed:@"icon_health"];
     healthLabel.value = user.health;
     healthLabel.maxValue = [NSNumber numberWithInt:50];
     

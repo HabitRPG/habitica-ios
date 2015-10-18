@@ -11,23 +11,16 @@
 #import "User.h"
 #import "NSMutableAttributedString_GHFMarkdown.h"
 #import "HRPGLabeledProgressBar.h"
-#import <NIKFontAwesomeIcon.h>
-#import <NIKFontAwesomeIconFactory+iOS.h>
 #import "UIColor+Habitica.h"
 
 @interface HRPGUserProfileViewController ()
 @property (nonatomic, readonly, getter=getUser) User *user;
-@property NIKFontAwesomeIconFactory *iconFactory;
 @end
 
 @implementation HRPGUserProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-    self.iconFactory.size = 15;
-    self.iconFactory.renderingMode = UIImageRenderingModeAlwaysTemplate;
     
     [self.sharedManager fetchMember:self.userID onSuccess:^() {
         
@@ -242,13 +235,7 @@
         experienceLabel.type = NSLocalizedString(@"Experience", nil);
         experienceLabel.value = user.experience;
         experienceLabel.maxValue = user.nextLevel;
-        
-        
-        
-        
-        
-        
-        
+
         HRPGLabeledProgressBar *magicLabel = (HRPGLabeledProgressBar *) [cell viewWithTag:4];
         
         if ([user.level integerValue] >= 10) {
