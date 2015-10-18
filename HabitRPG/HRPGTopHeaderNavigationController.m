@@ -163,7 +163,7 @@
     if (delta > 0) {
         // No need to scroll if the content fits
         if (self.state != HRPGTopHeaderStateHidden) {
-            if (self.scrollableView.frame.size.height >= self.scrollableView.contentSize.height) {
+            if (self.scrollableView.frame.size.height-self.scrollableView.contentInset.top >= self.scrollableView.contentSize.height) {
                 return;
             }
         }

@@ -34,6 +34,7 @@
 @property(nonatomic, retain) NSNumber *dayStart;
 @property(nonatomic, retain) NSNumber *disableClass;
 @property(nonatomic, retain) NSNumber *dropsEnabled;
+@property(nonatomic, retain) NSString *email;
 @property(nonatomic, retain) NSString *equippedArmor;
 @property(nonatomic, retain) NSString *equippedBack;
 @property(nonatomic, retain) NSString *equippedBody;

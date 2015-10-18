@@ -345,6 +345,7 @@ NSString *currentUser;
             @"_id" : @"id",
             @"balance": @"balance",
             @"profile.name" : @"username",
+            @"auth.local.email" : @"email",
             @"preferences.dayStart" : @"dayStart",
             @"preferences.disableClasses" : @"disableClass",
             @"preferences.sleep" : @"sleep",

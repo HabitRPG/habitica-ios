@@ -85,7 +85,7 @@ User *user;
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"User", nil)];
     [formDescriptor addFormSection:section];
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"loggedInAs" rowType:XLFormRowDescriptorTypeButton title:[NSString stringWithFormat:NSLocalizedString(@"Logged in as %@", nil), user.username]];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"accountDetail" rowType:XLFormRowDescriptorTypeInfo title:NSLocalizedString(@"Account Details", nil)];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"logout" rowType:XLFormRowDescriptorTypeButton title:NSLocalizedString(@"Log Out", nil)];
@@ -188,7 +188,9 @@ User *user;
 {
     [super didSelectFormRow:formRow];
     
-    if ([formRow.tag isEqual:@"logout"]){
+    if ([formRow.tag isEqual:@"accountDetail"]){
+        [self performSegueWithIdentifier:@"AccountDetailSegue" sender:self];
+    } else if ([formRow.tag isEqual:@"logout"]){
         [self logoutUser];
         [self deselectFormRow:formRow];
     } else if ([formRow.tag isEqual:@"clearCache"]){

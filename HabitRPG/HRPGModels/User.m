@@ -40,6 +40,7 @@
 @dynamic dayStart;
 @dynamic disableClass;
 @dynamic dropsEnabled;
+@dynamic email;
 @dynamic equippedArmor;
 @dynamic equippedBack;
 @dynamic equippedBody;
