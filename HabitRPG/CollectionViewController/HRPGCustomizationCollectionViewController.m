@@ -56,17 +56,6 @@ static NSString * const reuseIdentifier = @"Cell";
     return [sectionInfo numberOfObjects];
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    
-    NSString *title = [[[[[[self.fetchedResultsController sections][section] name] stringByReplacingOccurrencesOfString:@"Shirts" withString:@""] stringByReplacingOccurrencesOfString:@"Skins" withString:@""] stringByReplacingOccurrencesOfString:@"backgrounds" withString:@""] uppercaseString];
-    
-    if (title.length <= 1) {
-        return CGSizeMake(CGRectGetWidth(collectionView.bounds), 10);
-    }else {
-        return CGSizeMake(CGRectGetWidth(collectionView.bounds), 60);
-    }
-}
-
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath

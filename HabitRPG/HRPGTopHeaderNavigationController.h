@@ -8,13 +8,19 @@
 
 @import UIKit;
 
-@interface HRPGTopHeaderNavigationController : UINavigationController <UIScrollViewDelegate>
+typedef enum HRPGTopHeaderState : NSInteger {
+    HRPGTopHeaderStateVisible,
+    HRPGTopHeaderStateHidden,
+    HRPGTopHeaderStateScrolling
+} HRPGTopHeaderState;
+
+@interface HRPGTopHeaderNavigationController : UINavigationController <UIGestureRecognizerDelegate>
 
 - (CGFloat) getContentInset;
 - (CGFloat) getContentOffset;
-@property BOOL isTopHeaderVisible;
-@property (nonatomic) CGFloat previousScrollViewYOffset;
+@property (nonatomic) HRPGTopHeaderState state;
 
-
+- (void)startFollowingScrollView:(UIScrollView *)scrollView;
+- (void)stopFollowingScrollView;
 
 @end

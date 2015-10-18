@@ -20,7 +20,6 @@
 #import "UIViewcontroller+TutorialSteps.h"
 
 @interface HRPGBaseCollectionViewController ()
-@property BOOL didAppear;
 
 @end
 
@@ -40,14 +39,13 @@
         [self presentViewController:navigationController animated:NO completion:nil];
     }
     
-    if (!self.hidesTopBar && [self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
         [self.collectionView setContentInset:UIEdgeInsetsMake([navigationController getContentInset],0,0,0)];
         self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentInset],0,0,0);
-        if (!navigationController.isTopHeaderVisible) {
+        if (navigationController.state == HRPGTopHeaderStateHidden) {
             [self.collectionView setContentOffset:CGPointMake(0, self.collectionView.contentInset.top-[navigationController getContentOffset])];
         }
-        navigationController.previousScrollViewYOffset = self.collectionView.contentOffset.y;
     }
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -63,13 +61,19 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.didAppear = NO;
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(preferredContentSizeChanged:)
      name:UIContentSizeCategoryDidChangeNotification
      object:nil];
+    
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+        if (navigationController.state == HRPGTopHeaderStateHidden && self.collectionView.contentOffset.y < self.collectionView.contentInset.top-[navigationController getContentOffset]) {
+            [self.collectionView setContentOffset:CGPointMake(0, self.collectionView.contentInset.top-[navigationController getContentOffset])];
+        }
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -79,13 +83,16 @@
         HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
         [deathView show];
     }
-    if (!self.hidesTopBar && [self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
-        navigationController.previousScrollViewYOffset = self.collectionView.contentOffset.y;
-    }
-    self.didAppear = YES;
-    
     [self displayTutorialStep:self.sharedManager];
+    
+    HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+    [navigationController startFollowingScrollView:self.collectionView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+    [navigationController stopFollowingScrollView];
 }
 
 - (void)dealloc {
@@ -94,27 +101,6 @@
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
     [self.collectionView reloadData];
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (self.didAppear) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
-        [navigationController scrollViewDidScroll:scrollView];
-    }
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if (self.didAppear) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
-        [navigationController scrollViewDidEndDecelerating:scrollView];
-    }
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (self.didAppear) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
-        [navigationController scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
-    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

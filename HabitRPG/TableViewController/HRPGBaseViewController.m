@@ -22,7 +22,6 @@
 
 @interface HRPGBaseViewController ()
 @property UIBarButtonItem *navigationButton;
-@property BOOL didAppear;
 @end
 
 @implementation HRPGBaseViewController
@@ -38,10 +37,9 @@
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
         [self.tableView setContentInset:UIEdgeInsetsMake([navigationController getContentInset],0,0,0)];
         self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentInset],0,0,0);
-        if (!navigationController.isTopHeaderVisible) {
+        if (navigationController.state == HRPGTopHeaderStateHidden) {
             [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentInset.top-[navigationController getContentOffset])];
         }
-        navigationController.previousScrollViewYOffset = self.tableView.contentOffset.y;
     }
 
     self.viewWidth = self.view.frame.size.width;
@@ -69,7 +67,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.didAppear = NO;
     [super viewWillAppear:animated];
     
     [[NSNotificationCenter defaultCenter]
@@ -86,6 +83,14 @@
     }
     NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
     [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
+    
+    
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+        if (navigationController.state == HRPGTopHeaderStateHidden && self.tableView.contentOffset.y < self.tableView.contentInset.top-[navigationController getContentOffset]) {
+            [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentInset.top-[navigationController getContentOffset])];
+        }
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -95,13 +100,21 @@
         HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
         [deathView show];
     }
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
-        navigationController.previousScrollViewYOffset = self.tableView.contentOffset.y;
-    }
-    self.didAppear = YES;
     
     [self displayTutorialStep:self.sharedManager];
+    
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        [navigationController startFollowingScrollView:self.tableView];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        [navigationController stopFollowingScrollView];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -115,33 +128,6 @@
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
     [self.tableView reloadData];
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (self.didAppear) {
-        if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-            HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
-            [navigationController scrollViewDidScroll:scrollView];
-        }
-    }
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if (self.didAppear) {
-        if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-            HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
-            [navigationController scrollViewDidEndDecelerating:scrollView];
-        }
-    }
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (self.didAppear) {
-        if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-            HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
-            [navigationController scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
-        }
-    }
 }
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {

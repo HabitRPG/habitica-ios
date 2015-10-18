@@ -22,6 +22,12 @@
 - (CGFloat)statusBarHeight;
 - (CGFloat)bgViewOffset;
 
+@property UIScrollView *scrollableView;
+@property UIPanGestureRecognizer *gestureRecognizer;
+@property (nonatomic) CGFloat previousScrollViewYOffset;
+@property CGFloat delayDistance;
+@property CGFloat maxDelay;
+@property HRPGTopHeaderState previousState;
 @end
 
 @implementation HRPGTopHeaderNavigationController
@@ -38,7 +44,7 @@
     
     NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"HRPGUserTopHeader" owner:self options:nil];
     self.topHeader = [nibViews objectAtIndex:0];
-    self.isTopHeaderVisible = YES;
+    self.state = HRPGTopHeaderStateVisible;
     self.backgroundView = [[UIView alloc] init];
     self.backgroundView.backgroundColor = [UIColor gray600];
     
@@ -52,13 +58,15 @@
     [self.backgroundView addSubview:self.topHeader];
     [self.view insertSubview:self.upperBackgroundView belowSubview:self.navigationBar];
     [self.view insertSubview:self.backgroundView belowSubview:self.upperBackgroundView];
+    
+    self.maxDelay = 50;
 }
 
 
 -(void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     CGRect parentFrame = self.view.frame;
-    if (self.isTopHeaderVisible) {
+    if (self.state == HRPGTopHeaderStateVisible) {
         self.backgroundView.frame = CGRectMake(0, [self bgViewOffset], parentFrame.size.width, self.topHeaderHeight);
     } else {
         self.backgroundView.frame = CGRectMake(0, -self.topHeaderHeight, parentFrame.size.width, self.topHeaderHeight);
@@ -68,63 +76,148 @@
     self.topHeader.frame = CGRectMake(0, 0, parentFrame.size.width, self.topHeaderHeight-6);
 }
 
-#pragma mark - Scrollview Delegate
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGRect frame = self.backgroundView.frame;
-    CGFloat size = frame.size.height;
-    CGFloat scrollOffset = scrollView.contentOffset.y;
-    CGFloat scrollDiff = scrollOffset - self.previousScrollViewYOffset;
-    
-    if (scrollOffset <= -scrollView.contentInset.top) {
-        self.isTopHeaderVisible = YES;
-        frame.origin.y = [self bgViewOffset];
-    } else {
-        frame.origin.y = MIN([self bgViewOffset], MAX(-size, frame.origin.y - scrollDiff));
-    }
-    
-    if (frame.origin.y < -size) {
-        frame.origin.y = -size;
-    }
-    
-    CGFloat alpha = -((frame.origin.y-[self bgViewOffset]) / frame.size.height);
-    [self.backgroundView setFrame:frame];
-    [self setNavigationBarColors:alpha];
-    self.previousScrollViewYOffset = scrollOffset;
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self stoppedScrolling];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (!decelerate) {
-        [self stoppedScrolling];
-    }
-}
-
-- (void)stoppedScrolling {
+- (void)stoppedScrolling:(CGFloat)delta {
     CGRect frame = self.backgroundView.frame;
     if (frame.origin.y < [self bgViewOffset] && frame.origin.y > -frame.size.height) {
-        if (frame.origin.y < [self bgViewOffset]-(([self bgViewOffset]+frame.size.height)/2)) {
-            self.isTopHeaderVisible = NO;
-            [UIView animateWithDuration:0.3 animations:^() {
-                CGRect frame = self.backgroundView.frame;
-                frame.origin.y = -frame.size.height;
-                self.backgroundView.frame = frame;
-                [self setNavigationBarColors:1];
-            }];
+        if (self.previousState == HRPGTopHeaderStateHidden) {
+            [self showHeader];
         } else {
-            self.isTopHeaderVisible = YES;
-            [UIView animateWithDuration:0.3 animations:^() {
-                CGRect frame = self.backgroundView.frame;
-                frame.origin.y = [self bgViewOffset];
-                self.backgroundView.frame = frame;
-                [self setNavigationBarColors:0];
-            }];
+            [self hideHeader];
         }
 
     }
+}
+
+- (void)showHeader {
+    self.state = HRPGTopHeaderStateVisible;
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^() {
+        CGRect frame = self.backgroundView.frame;
+        frame.origin.y = [self bgViewOffset];
+        self.backgroundView.frame = frame;
+        [self setNavigationBarColors:0];
+    } completion:nil];
+}
+
+- (void)hideHeader {
+    self.state = HRPGTopHeaderStateHidden;
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^() {
+        CGRect frame = self.backgroundView.frame;
+        frame.origin.y = -frame.size.height;
+        self.backgroundView.frame = frame;
+        [self setNavigationBarColors:1];
+    } completion:nil];
+}
+
+- (void)startFollowingScrollView:(UIScrollView *)scrollView {
+    if (self.scrollableView) {
+        [self stopFollowingScrollView];
+    }
+    
+    self.scrollableView = scrollView;
+    
+    self.gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    self.gestureRecognizer.maximumNumberOfTouches = 1;
+    self.gestureRecognizer.delegate = self;
+    [self.scrollableView addGestureRecognizer:self.gestureRecognizer];
+}
+
+- (void)stopFollowingScrollView {
+    [self.scrollableView removeGestureRecognizer:self.gestureRecognizer];
+    self.gestureRecognizer = nil;
+    self.scrollableView = nil;
+}
+
+- (void) handlePan:(UIPanGestureRecognizer *) recognizer {
+    
+    CGPoint translation = [recognizer translationInView:self.scrollableView.superview];
+    CGFloat delta = self.previousScrollViewYOffset - translation.y;
+    self.previousScrollViewYOffset = translation.y;
+    
+    BOOL didStopScrolling = NO;
+    if (recognizer.state == UIGestureRecognizerStateEnded || recognizer.state == UIGestureRecognizerStateCancelled) {
+        didStopScrolling = YES;
+        self.previousScrollViewYOffset = 0;
+    }
+    
+    if ([self shouldScrollWithDelta:delta]) {
+        [self scrollWithDelta:delta stoppedScrolling:didStopScrolling];
+    }
+}
+
+- (BOOL)shouldScrollWithDelta:(CGFloat)delta {
+    if (delta < 0) {
+            if (self.scrollableView.contentOffset.y + self.scrollableView.frame.size.height > self.scrollableView.contentSize.height) {
+                if (self.scrollableView.frame.size.height < self.scrollableView.contentSize.height) {
+                    // Only if the content is big enough
+                    return false;
+                }
+            }
+    }
+    return true;
+}
+
+- (void)scrollWithDelta:(CGFloat)delta stoppedScrolling:(BOOL)didStopScrolling {
+    CGRect frame = self.backgroundView.frame;
+    
+    // View scrolling up, hide the header
+    if (delta > 0) {
+        // No need to scroll if the content fits
+        if (self.state != HRPGTopHeaderStateHidden) {
+            if (self.scrollableView.frame.size.height >= self.scrollableView.contentSize.height) {
+                return;
+            }
+        }
+        
+        // Compute the bar position
+        if (frame.origin.y - delta < -frame.size.height) {
+            delta = frame.origin.y + frame.size.height;
+        }
+        
+        // Detect when the bar is completely collapsed
+        if (frame.origin.y == -frame.size.height) {
+            self.state = HRPGTopHeaderStateHidden;
+            self.delayDistance = self.maxDelay;
+        } else {
+            self.state = HRPGTopHeaderStateVisible;
+        }
+    }
+    
+    if (delta < 0) {
+        // Update the delay
+        self.delayDistance += delta;
+        
+        // Skip if the delay is not over yet
+        if (self.delayDistance > 0 && self.maxDelay < self.scrollableView.contentOffset.y) {
+            return;
+        }
+        
+        // Compute the bar position
+        if (frame.origin.y - delta > self.bgViewOffset) {
+            delta = frame.origin.y - self.bgViewOffset;
+        }
+        
+        // Detect when the bar is completely expanded
+        if (frame.origin.y == self.bgViewOffset) {
+            self.state = HRPGTopHeaderStateVisible;
+        } else {
+            self.state = HRPGTopHeaderStateScrolling;
+        }
+    }
+    
+    if (delta != 0) {
+        CGFloat alpha = -((frame.origin.y-[self bgViewOffset]) / frame.size.height);
+        [self updateSizing:delta];
+        [self setNavigationBarColors:alpha];
+    }
+    if (didStopScrolling) {
+        [self stoppedScrolling:delta];
+    }
+}
+
+- (void)updateSizing:(CGFloat)delta {
+    CGRect frame = self.backgroundView.frame;
+    frame.origin = CGPointMake(frame.origin.x, frame.origin.y - delta);
+    self.backgroundView.frame = frame;
 }
 
 - (void)setNavigationBarColors:(CGFloat) alpha {
@@ -170,7 +263,18 @@
 
 - (CGFloat)bgViewOffset
 {
-    return 20 + self.navigationBar.frame.size.height;
+    return self.statusBarHeight + self.navigationBar.frame.size.height;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
+- (void)setState:(HRPGTopHeaderState)state {
+    if (state != _state) {
+        self.previousState = _state;
+    }
+    _state = state;
 }
 
 @end

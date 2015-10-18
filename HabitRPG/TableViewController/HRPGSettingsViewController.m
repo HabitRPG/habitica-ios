@@ -17,7 +17,6 @@
 @property HRPGManager *sharedManager;
 @property NSManagedObjectContext *managedObjectContext;
 @property XLFormSectionDescriptor *reminderSection;
-@property BOOL didAppear;
 @end
 
 @implementation HRPGSettingsViewController
@@ -47,13 +46,8 @@ User *user;
     HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
     [self.tableView setContentInset:UIEdgeInsetsMake([navigationController getContentInset],0,0,0)];
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentInset],0,0,0);
-    if (!navigationController.isTopHeaderVisible) {
+    if (navigationController.state == HRPGTopHeaderStateHidden) {
         [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentInset.top-[navigationController getContentOffset])];
-    }
-    navigationController.previousScrollViewYOffset = self.tableView.contentOffset.y;
-    
-    if (self.tableView.contentSize.height < self.tableView.frame.size.height-self.tableView.contentInset.top-self.tableView.contentInset.bottom) {
-        self.tableView.contentInset = UIEdgeInsetsZero;
     }
     
     [[NSNotificationCenter defaultCenter]
@@ -63,30 +57,18 @@ User *user;
      object:nil];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (self.didAppear) {
-        if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-            HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
-            [navigationController scrollViewDidScroll:scrollView];
-        }
+- (void)viewDidAppear:(BOOL)animated {
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        [navigationController startFollowingScrollView:self.tableView];
     }
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if (self.didAppear) {
-        if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-            HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
-            [navigationController scrollViewDidEndDecelerating:scrollView];
-        }
-    }
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (self.didAppear) {
-        if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-            HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
-            [navigationController scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
-        }
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        [navigationController stopFollowingScrollView];
     }
 }
 
