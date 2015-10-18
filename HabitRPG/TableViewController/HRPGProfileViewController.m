@@ -342,13 +342,16 @@ NIKFontAwesomeIconFactory *iconFactory;
     UITableView *tableView = self.tableView;
     switch (type) {
         case NSFetchedResultsChangeInsert: {
-            User *user = (User *) [self.fetchedResultsController objectAtIndexPath:newIndexPath];
-            username = user.username;
+            self.user = (User *) [self.fetchedResultsController objectAtIndexPath:newIndexPath];
+            username = self.user.username;
             [tableView reloadData];
             break;
         }
         case NSFetchedResultsChangeUpdate: {
+            self.user = (User *) [self.fetchedResultsController objectAtIndexPath:newIndexPath];
+            username = self.user.username;
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
             [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:3]] withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
         }

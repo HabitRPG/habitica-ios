@@ -85,7 +85,7 @@
         HRPGManager *manager = appDelegate.sharedManager;
         
         if ([manager getUser].username.length == 0) {
-            self.activityIndicator.hidden = NO;
+            self.activityIndicator.alpha = 1;
             [self.activityIndicator startAnimating];
             [manager fetchUser:^() {
                 [self performSegueWithIdentifier:@"InitialSegue" sender:self];
