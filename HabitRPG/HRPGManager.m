@@ -1161,6 +1161,11 @@ NSString *currentUser;
            value:self.user.id];
 }
 
+- (void)clearLoginCredentials {
+    [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-user" value:@""];
+    [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-key" value:@""];
+}
+
 - (void)fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/content" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {

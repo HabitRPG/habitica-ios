@@ -148,7 +148,8 @@ User *user;
     [defaults setObject:@"" forKey:@"habitFilter"];
     [defaults setObject:@"" forKey:@"dailyFilter"];
     [defaults setObject:@"" forKey:@"todoFilter"];
-
+    [self.sharedManager clearLoginCredentials];
+    
     [self.sharedManager resetSavedDatabase:YES onComplete:^() {
         [overlayView dismiss:YES completion:^() {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
