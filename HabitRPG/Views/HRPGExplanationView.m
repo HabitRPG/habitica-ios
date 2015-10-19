@@ -63,7 +63,7 @@
                                                                         }
                                                               context:nil];
     CGFloat speechBubbleHeight = boundingRect.size.height + 100;
-    self.justinView.frame = CGRectMake(xOffset, self.frame.size.height, 42, 63);
+    self.justinView.frame = CGRectMake(xOffset, self.frame.size.height, 48, 63);
     self.speechBubbleView.frame = CGRectMake(xOffset+50, self.frame.size.height-20, 0, 0);
     self.speechBubbleView.alpha = 0;
     [UIView animateWithDuration:0.4 animations:^() {

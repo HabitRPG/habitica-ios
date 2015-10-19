@@ -117,7 +117,7 @@
     }
     if (self.currentStep == HRPGAvatarSetupStepsWelcome) {
             [super viewWillLayoutSubviews];
-            self.justinView.frame = CGRectMake((self.mainScrollView.frame.size.width-84)/2, self.mainScrollView.frame.size.height/2-120, 84, 120);
+            self.justinView.frame = CGRectMake((self.mainScrollView.frame.size.width-84)/2, self.mainScrollView.frame.size.height/2-120, 84, 90);
             CGFloat descriptionHeight = [self.welcomeDescriptionString boundingRectWithSize:CGSizeMake(labelWidth, MAXFLOAT)
                                                                                                     options:NSStringDrawingUsesLineFragmentOrigin
                                                                                                  attributes:@{
@@ -211,7 +211,7 @@
     [self.mainScrollView addSubview:self.welcomeLabel];
     
     self.justinView = [[UIImageView alloc] init];
-    self.justinView.image = [UIImage imageNamed:@"justin"];
+    self.justinView.image = [UIImage imageNamed:@"justin_alt"];
     [self.mainScrollView addSubview:self.justinView];
     
     self.welcomeDescriptionLabel = [[HRPGTypingLabel alloc] init];
