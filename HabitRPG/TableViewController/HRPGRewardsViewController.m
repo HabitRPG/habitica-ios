@@ -110,17 +110,23 @@ User *user;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HRPGRewardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    MetaReward *reward = [self getRewardAtIndexPath:indexPath];
+    NSString *cellName = @"Cell";
+    if (![reward isKindOfClass:[Reward class]]) {
+        cellName = @"ImageCell";
+    }
+    
+    HRPGRewardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     float height = 40.0f;
-    float width = self.viewWidth-109;
+    float width = self.viewWidth-127;
     MetaReward *reward = [self getRewardAtIndexPath:indexPath];
     if ([reward isKindOfClass:[Reward class]]) {
-        width = self.viewWidth-67;
+        width = self.viewWidth-77;
     }
     width = width - [[NSString stringWithFormat:@"%ld", (long) [reward.value integerValue]] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                                                                                          options:NSStringDrawingUsesLineFragmentOrigin
