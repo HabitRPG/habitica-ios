@@ -168,6 +168,10 @@
             }
         }
         
+        if (self.scrollableView.contentOffset.y < -self.scrollableView.contentInset.top) {
+            return;
+        }
+        
         // Compute the bar position
         if (frame.origin.y - delta < -frame.size.height) {
             delta = frame.origin.y + frame.size.height;
