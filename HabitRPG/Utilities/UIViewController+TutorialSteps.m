@@ -17,6 +17,8 @@
 @dynamic displayedTutorialStep;
 @dynamic tutorialIdentifier;
 @dynamic coachMarks;
+@dynamic sharedManager;
+
 
 - (void)displayTutorialStep:(HRPGManager *)sharedManager {
     if (self.tutorialIdentifier && !self.displayedTutorialStep) {

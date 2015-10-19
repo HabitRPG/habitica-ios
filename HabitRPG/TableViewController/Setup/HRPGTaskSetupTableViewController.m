@@ -288,6 +288,7 @@
                 Task *task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
                 task.text = taskDictionary[@"text"];
                 task.type = taskDictionary[@"type"];
+                task.priority = @1;
                 if ([task.type isEqualToString:@"habit"]) {
                     task.up = taskDictionary[@"up"];
                     task.down = taskDictionary[@"down"];

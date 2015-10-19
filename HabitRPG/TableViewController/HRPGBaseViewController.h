@@ -13,7 +13,7 @@
 @interface HRPGBaseViewController : UITableViewController <TutorialStepsProtocol>
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic)  HRPGManager *sharedManager;
+@property (nonatomic) HRPGManager *sharedManager;
 @property CGFloat viewWidth;
 @property NSString *readableScreenName;
 
