@@ -144,7 +144,7 @@ BOOL editable;
     } else if (filterCount == 1) {
         self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"1 Filter", nil);
     } else {
-        self.navigationItem.leftBarButtonItem.title = [NSString stringWithFormat:NSLocalizedString(@"%ld Filter", @"more than one filter"), (long)filterCount];
+        self.navigationItem.leftBarButtonItem.title = [NSString stringWithFormat:NSLocalizedString(@"%ld Filters", @"more than one filter"), (long)filterCount];
     }
 }
 
