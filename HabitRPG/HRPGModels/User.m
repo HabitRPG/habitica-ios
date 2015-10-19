@@ -97,6 +97,8 @@
 @synthesize petCount = _petCount;
 @synthesize customizationsDictionary;
 @synthesize lastImageGeneration;
+@dynamic iosTutorialSteps;
+@dynamic commonTutorialSteps;
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView useForce:(BOOL)force {
     [self setAvatarOnImageView:imageView withPetMount:YES onlyHead:NO withBackground:YES useForce:force];
@@ -665,7 +667,12 @@
 }
 
 - (BOOL)hasSeenTutorialStepWithIdentifier:(NSString *)identifier {
-    for (TutorialSteps *tutorialStep in self.tutorialSteps) {
+    for (TutorialSteps *tutorialStep in self.iosTutorialSteps) {
+        if ([tutorialStep.identifier isEqualToString:identifier]) {
+            return [tutorialStep.wasShown boolValue];
+        }
+    }
+    for (TutorialSteps *tutorialStep in self.commonTutorialSteps) {
         if ([tutorialStep.identifier isEqualToString:identifier]) {
             return [tutorialStep.wasShown boolValue];
         }

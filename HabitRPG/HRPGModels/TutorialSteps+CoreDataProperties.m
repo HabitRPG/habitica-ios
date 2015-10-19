@@ -14,6 +14,7 @@
 @implementation TutorialSteps (CoreDataProperties)
 
 @dynamic identifier;
+@dynamic type;
 @dynamic wasShown;
 @dynamic user;
 

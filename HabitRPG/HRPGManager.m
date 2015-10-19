@@ -428,6 +428,7 @@ NSString *currentUser;
                                                                                   toKeyPath:@"tags"
                                                                                 withMapping:userTagMapping]];
 
+    
     RKEntityMapping *rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
     [rewardMapping addAttributeMappingsFromDictionary:@{
             @"id" : @"key",
@@ -437,7 +438,6 @@ NSString *currentUser;
             @"type" : @"type",
             @"notes" : @"notes",
             @"@metadata.mapping.collectionIndex" : @"order",
-            @"type": @"type",
             @"tags": @"tagDictionary"
     }];
     rewardMapping.identificationAttributes = @[@"key"];
@@ -537,6 +537,19 @@ NSString *currentUser;
                                                                                   toKeyPath:@"groups"
                                                                                 withMapping:newMessageMapping]];
 
+    RKEntityMapping *tutorialsSeenMapping = [RKEntityMapping mappingForEntityForName:@"TutorialSteps" inManagedObjectStore:managedObjectStore];
+    tutorialsSeenMapping.forceCollectionMapping = YES;
+    [tutorialsSeenMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"identifier"];
+    [tutorialsSeenMapping addAttributeMappingsFromDictionary:@{@"(identifier)" : @"wasShown",
+                                                               @"@metadata.mapping.rootKeyPath" : @"type"}];
+    tutorialsSeenMapping.identificationAttributes = @[@"identifier"];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"flags.tutorial.ios"
+                                                                                  toKeyPath:@"iosTutorialSteps"
+                                                                                withMapping:tutorialsSeenMapping]];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"flags.tutorial.common"
+                                                                                  toKeyPath:@"commonTutorialSteps"
+                                                                                withMapping:tutorialsSeenMapping]];
+    
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/class/cast/:spell" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 

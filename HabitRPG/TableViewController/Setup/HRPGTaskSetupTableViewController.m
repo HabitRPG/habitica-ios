@@ -35,7 +35,6 @@
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
     
     NSError *error;
-    self.user.lastSetupStep = [NSNumber numberWithLong:self.currentStep];
     [self.managedObjectContext saveToPersistentStore:&error];
     
     self.taskGroups = [NSMutableArray arrayWithObjects:@{@"text": NSLocalizedString(@"Work", nil), @"identifier": @"work", @"isActive": @NO},
@@ -297,8 +296,6 @@
 
 - (IBAction)nextStep:(id)sender {
     NSError *error;
-    self.user.lastSetupStep = [NSNumber numberWithLong:self.currentStep];
-    
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     HRPGManager *manager = appdelegate.sharedManager;
     
@@ -349,7 +346,6 @@
 
 
 - (IBAction)previousStep:(id)sender {
-    self.user.lastSetupStep = [NSNumber numberWithInteger:self.currentStep-1];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

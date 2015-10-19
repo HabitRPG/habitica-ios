@@ -385,12 +385,10 @@
 
 
 - (IBAction)previousStep:(id)sender {
-    self.user.lastSetupStep = [NSNumber numberWithInteger:self.currentStep-1];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)skipSetup:(id)sender {
-    self.user.lastSetupStep = [NSNumber numberWithInteger:HRPGAvatarSetupStepsTasks];
     NSError *error;
     [self.managedObjectContext saveToPersistentStore:&error];
     if (self.shouldDismiss) {

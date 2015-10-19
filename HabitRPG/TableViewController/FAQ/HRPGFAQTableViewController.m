@@ -179,7 +179,10 @@
         [self performSegueWithIdentifier:@"FAQDetailSegue" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
     } else {
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-        for (TutorialSteps *step in [self.sharedManager user].tutorialSteps) {
+        for (TutorialSteps *step in [self.sharedManager user].iosTutorialSteps) {
+            step.wasShown = [NSNumber numberWithBool:NO];
+        }
+        for (TutorialSteps *step in [self.sharedManager user].commonTutorialSteps) {
             step.wasShown = [NSNumber numberWithBool:NO];
         }
         NSError *error;

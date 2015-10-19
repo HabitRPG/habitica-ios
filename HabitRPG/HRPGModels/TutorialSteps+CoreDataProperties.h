@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TutorialSteps (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *identifier;
+@property (nullable, nonatomic, retain) NSString *type;
 @property (nullable, nonatomic, retain) NSNumber *wasShown;
 @property (nullable, nonatomic, retain) User *user;
 

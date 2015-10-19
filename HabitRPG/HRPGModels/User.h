@@ -91,8 +91,8 @@
 @property(nonatomic, retain) NSNumber *partyPosition;
 @property(nonatomic, retain) NSNumber *petCount;
 
-@property(nonatomic, retain) NSNumber *lastSetupStep;
-@property(nonatomic, retain) NSSet *tutorialSteps;
+@property(nonatomic, retain) NSSet *iosTutorialSteps;
+@property(nonatomic, retain) NSSet *commonTutorialSteps;
 
 @property(nonatomic, retain, setter = setPetCountFromArray:) NSDictionary *petCountArray;
 @property(nonatomic, retain, setter = setCustomizationsDictionary:) NSDictionary *customizationsDictionary;
@@ -187,5 +187,11 @@
 
 - (BOOL)hasSeenTutorialStepWithIdentifier:(NSString *) identifier;
 
-- (void) addTutorialStepsObject:(TutorialSteps *)value;
+- (void)addIosTutorialStepsObject:(TutorialSteps *)value;
+- (void)addIosTutorialSteps:(NSSet *)values;
+- (void)removeIosTutorialSteps:(NSSet *)values;
+
+- (void)addCommonTutorialStepsObject:(TutorialSteps *)value;
+- (void)addCommonTutorialSteps:(NSSet *)values;
+- (void)removeCommonTutorialSteps:(NSSet *)values;
 @end
