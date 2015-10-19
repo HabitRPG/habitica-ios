@@ -11,12 +11,7 @@
 #import "UIColor+Habitica.h"
 
 @interface HRPGCheckBoxView ()
-@property (nonatomic) CGFloat size;
-@property (nonatomic) CGFloat cornerRadius;
-@property (nonatomic) bool checked;
-@property (nonatomic) UIColor *boxBorderColor;
-@property (nonatomic) UIColor *boxFillColor;
-@property (nonatomic) UIColor *checkColor;
+
 @end
 
 @implementation HRPGCheckBoxView
@@ -96,7 +91,9 @@
 
 - (void)viewTapped:(UITapGestureRecognizer*)recognizer {
     self.checked = !self.checked;
-    self.wasTouched();
+    if (self.wasTouched) {
+        self.wasTouched();
+    }
     [self setNeedsDisplay];
 }
 
@@ -105,10 +102,9 @@
     [self.boxBorderColor setStroke];
     [self.boxFillColor setFill];
     UIBezierPath *borderPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(self.frame.size.width/2-self.size/2, self.frame.size.height/2-self.size/2, self.size, self.size) cornerRadius:self.cornerRadius];
-    UIBezierPath *fillPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(borderPath.bounds.origin.x+1, borderPath.bounds.origin.y+1, borderPath.bounds.size.width-2, borderPath.bounds.size.height-2) cornerRadius:self.cornerRadius];
+    [borderPath fill];
     [borderPath setLineWidth:2];
     [borderPath stroke];
-    [fillPath fill];
     if (self.checked) {
         CGContextBeginPath(ctx);
         CGContextSetLineWidth(ctx, 2);

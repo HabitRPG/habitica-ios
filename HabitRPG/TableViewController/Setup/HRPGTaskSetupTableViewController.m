@@ -12,12 +12,15 @@
 #import "ChecklistItem.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGManager.h"
+#import "HRPGCheckBoxView.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGTaskSetupTableViewController ()
 
 @property NSMutableArray *taskGroups;
 
 @property UIView *headerView;
+@property UIImageView *avatarView;
 @property NSDictionary *tasks;
 
 @end
@@ -227,19 +230,28 @@
     
     NSString *title = NSLocalizedString(@"Splendid! Now let's set up your tasks so that you can start earning experience and gold.\n\nTo start, which parts of your life do you want to improve?", nil);
     
-    CGFloat height = [title boundingRectWithSize:CGSizeMake(self.view.frame.size.width-40, MAXFLOAT)
+    CGFloat height = [title boundingRectWithSize:CGSizeMake(self.view.frame.size.width-140, MAXFLOAT)
                                                                            options:NSStringDrawingUsesLineFragmentOrigin
                                                                         attributes:@{
                                                                                      NSFontAttributeName : [UIFont systemFontOfSize:16.0]
                                                                                      }
                                                                            context:nil].size.height+10;
-    
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, height+60)];
-    UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(20, 60, self.view.frame.size.width-40, height)];
+    if (height < 90) {
+        height = 90;
+    }
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, height+30)];
+    UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(110, 20, self.view.frame.size.width-140, height)];
     titleView.font = [UIFont systemFontOfSize:16.0];
     titleView.numberOfLines = 0;
+    titleView.textAlignment = NSTextAlignmentJustified;
     titleView.text = title;
     [self.headerView addSubview:titleView];
+
+    self.avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 20, 90, height)];
+    self.avatarView.contentMode = UIViewContentModeCenter;
+    [self.user setAvatarOnImageView:self.avatarView withPetMount:NO onlyHead:NO useForce:NO];
+    [self.headerView addSubview:self.avatarView];
+    
     self.tableView.tableHeaderView = self.headerView;
 }
 
@@ -256,23 +268,31 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     NSDictionary *taskGroup = self.taskGroups[indexPath.item];
-    cell.textLabel.text = taskGroup[@"text"];
+    UILabel *textLabel = (UILabel *)[cell viewWithTag:1];
+    HRPGCheckBoxView *checkboxView = (HRPGCheckBoxView *)[cell viewWithTag:2];
+    textLabel.text = taskGroup[@"text"];
+    checkboxView.cornerRadius = checkboxView.size/2;
     if ([taskGroup[@"isActive"] boolValue]) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        checkboxView.checkColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+        checkboxView.boxBorderColor = [UIColor purple300];
+        checkboxView.boxFillColor = [UIColor purple300];
     } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
+        checkboxView.boxFillColor = [UIColor clearColor];
+        checkboxView.boxBorderColor = [UIColor purple300];
+        checkboxView.checkColor = [UIColor purple300];
     }
-    
+    checkboxView.checked = [taskGroup[@"isActive"] boolValue];
+    checkboxView.userInteractionEnabled = NO;
+    [checkboxView setNeedsDisplay];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     NSMutableDictionary *mutableDict = [self.taskGroups[indexPath.item] mutableCopy];
-    mutableDict[@"isActive"] = [NSNumber numberWithBool:!(cell.accessoryType == UITableViewCellAccessoryCheckmark)];
+    mutableDict[@"isActive"] = [NSNumber numberWithBool:!([mutableDict[@"isActive"] boolValue])];
     self.taskGroups[indexPath.item] = mutableDict;
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (IBAction)nextStep:(id)sender {

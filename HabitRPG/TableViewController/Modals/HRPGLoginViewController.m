@@ -384,7 +384,6 @@
         HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
         HRPGManager *manager = appdelegate.sharedManager;
         User *user = [manager getUser];
-        avatarSetupViewController.lastCompletedStep = [user.lastSetupStep integerValue];
         avatarSetupViewController.user = user;
         avatarSetupViewController.managedObjectContext = manager.getManagedObjectContext;
         if (!self.isRootViewController) {

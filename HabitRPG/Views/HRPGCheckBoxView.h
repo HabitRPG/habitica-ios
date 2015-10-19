@@ -12,6 +12,13 @@
 
 @interface HRPGCheckBoxView : UIView
 
+@property (nonatomic) bool checked;
+@property (nonatomic) CGFloat size;
+@property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic) UIColor *boxBorderColor;
+@property (nonatomic) UIColor *boxFillColor;
+@property (nonatomic) UIColor *checkColor;
+
 - (void)configureForTask:(Task *) task;
 - (void)configureForTask:(Task *) task withOffset:(NSInteger) offset;
 - (void)configureForChecklistItem:(ChecklistItem *) item forTask:(Task *)task;

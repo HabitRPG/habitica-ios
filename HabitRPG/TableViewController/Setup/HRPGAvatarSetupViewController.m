@@ -91,16 +91,6 @@
         HRPGManager *manager = appdelegate.sharedManager;
         self.user = [manager getUser];
     }
-    
-    if ([self.user.lastSetupStep integerValue] > self.currentStep) {
-        self.isSkipping = YES;
-        [self nextStep:nil];
-    } else {
-        self.isSkipping = NO;
-        NSError *error;
-        self.user.lastSetupStep = [NSNumber numberWithLong:self.currentStep];
-        [self.managedObjectContext saveToPersistentStore:&error];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -125,7 +115,7 @@
                                                                                                               }
                                                                                                     context:nil].size.height+10;
             self.welcomeLabel.frame = CGRectMake(0, self.justinView.frame.origin.y - 50, self.mainScrollView.frame.size.width, 30);
-            self.welcomeDescriptionLabel.frame = CGRectMake((self.mainScrollView.frame.size.width-labelWidth)/2, self.justinView.frame.origin.y+160, labelWidth, descriptionHeight);
+            self.welcomeDescriptionLabel.frame = CGRectMake((self.mainScrollView.frame.size.width-labelWidth)/2, self.justinView.frame.origin.y+self.justinView.frame.size.height+20, labelWidth, descriptionHeight);
             self.welcomeButton.frame = CGRectMake(20, self.welcomeDescriptionLabel.frame.origin.y+descriptionHeight+20, self.mainScrollView.frame.size.width-20, 60);
             height = self.welcomeButton.frame.origin.y+self.welcomeButton.frame.size.height;
         } else {
