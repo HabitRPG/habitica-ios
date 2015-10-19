@@ -145,6 +145,9 @@ User *user;
     [keyChain setString:@"" forKey:@"id"];
     [keyChain setString:@"" forKey:@"key"];
     [defaults setObject:@"" forKey:@"partyID"];
+    [defaults setObject:@"" forKey:@"habitFilter"];
+    [defaults setObject:@"" forKey:@"dailyFilter"];
+    [defaults setObject:@"" forKey:@"todoFilter"];
 
     [self.sharedManager resetSavedDatabase:YES onComplete:^() {
         [overlayView dismiss:YES completion:^() {
