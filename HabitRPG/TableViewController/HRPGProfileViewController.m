@@ -17,7 +17,7 @@
 
 @interface HRPGProfileViewController ()
 
-@property User *user;
+@property (nonatomic) User *user;
 
 @end
 
@@ -37,7 +37,6 @@ NIKFontAwesomeIconFactory *iconFactory;
         [self.fetchedResultsController.fetchRequest setPredicate:predicate];
         NSError *error;
         [self.fetchedResultsController performFetch:&error];
-        self.user = [self getUser];
         if (self.user) {
             username = self.user.username;
             userLevel = [self.user.level integerValue];
@@ -55,7 +54,6 @@ NIKFontAwesomeIconFactory *iconFactory;
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 
-    self.user = [self getUser];
     if (self.user) {
         username = self.user.username;
         userLevel = [self.user.level integerValue];
@@ -95,16 +93,6 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)reloadPartyData:(id)sender {
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
-}
-
-- (User*)getUser {
-    if ([[self.fetchedResultsController sections] count] > 0) {
-        if ([[self.fetchedResultsController sections][0] numberOfObjects] > 0) {
-            return (User *) [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-        }
-    }
-    
-    return nil;
 }
 
 #pragma mark - Table view data source
@@ -246,7 +234,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         title = NSLocalizedString(@"Party", nil);
         
-        User *user = [self getUser];
+        User *user = self.user;
         if (user) {
             if ([user.party.unreadMessages boolValue]) {
                 showIndicator = YES;
@@ -273,7 +261,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         }
     } else if (indexPath.section == 3 && indexPath.item == 0) {
         title = NSLocalizedString(@"News", nil);
-        User *user = [self getUser];
+        User *user = self.user;
         if (user) {
             if ([user.habitNewStuff boolValue]) {
                 showIndicator = YES;
@@ -366,6 +354,20 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView reloadData];
+}
+
+- (User *)user {
+    if (_user) {
+        return _user;
+    }
+    
+    if ([[self.fetchedResultsController sections] count] > 0) {
+        if ([[self.fetchedResultsController sections][0] numberOfObjects] > 0) {
+            _user = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        }
+    }
+    
+    return _user;
 }
 
 @end
