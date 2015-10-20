@@ -63,6 +63,7 @@
 @dynamic invitedParty;
 @dynamic invitedPartyName;
 @dynamic itemsEnabled;
+@dynamic language;
 @dynamic level;
 @dynamic magic;
 @dynamic maxHealth;

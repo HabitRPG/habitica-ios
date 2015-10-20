@@ -92,13 +92,13 @@ NSString *currentUser;
         NSString *DISABLE_SSL = [info objectForKey:@"DisableSSL"];
 
         if (CUSTOM_DOMAIN.length == 0) {
-            CUSTOM_DOMAIN = @"habitica.com";
+            CUSTOM_DOMAIN = @"localhost:3000";
         }
 
         if ([DISABLE_SSL isEqualToString:@"true"]) {
           ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
         } else {
-          ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
+          ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
         }
     #else
         ROOT_URL = @"https://habitica.com";
@@ -409,6 +409,7 @@ NSString *currentUser;
             @"flags.armoireEnabled" : @"armoireEnabled",
             @"flags.armoireEmpty" : @"armoireEmpty",
             @"flags.communityGuidelinesAccepted" : @"acceptedCommunityGuidelines",
+            @"preferences.language": @"language",
             @"purchased" : @"customizationsDictionary",
             @"invitations.party.id": @"invitedParty",
             @"invitations.party.name": @"invitedPartyName"
@@ -1168,7 +1169,14 @@ NSString *currentUser;
 
 - (void)fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/content" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    NSString *url = @"/api/v2/content";
+    if (![self.user.language isEqualToString:@"en"]) {
+        url = [url stringByAppendingFormat:@"?language=%@", self.user.language];
+        [defaults setObject:self.user.language forKey:@"contentLanguage"];
+        [defaults synchronize];
+    }
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:url parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         for (NSDictionary *dict in [mappingResult dictionary][@"backgrounds"]) {
             for (Customization *background in dict[@"backgrounds"]) {
@@ -1275,6 +1283,9 @@ NSString *currentUser;
                 }
 
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged" object:nil];
+            }
+            if (![[defaults stringForKey:@"contentLanguage"] isEqualToString:fetchedUser.language]) {
+                [self fetchContent:nil onError:nil];
             }
         }
         NSError *executeError = nil;

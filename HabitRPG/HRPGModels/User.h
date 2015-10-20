@@ -58,6 +58,7 @@
 @property(nonatomic, retain) NSString *invitedParty;
 @property(nonatomic, retain) NSString *invitedPartyName;
 @property(nonatomic, retain) NSNumber *itemsEnabled;
+@property(nonatomic, retain) NSString *language;
 @property(nonatomic, retain) NSNumber *level;
 @property(nonatomic, retain) NSNumber *magic;
 @property(nonatomic, retain) NSNumber *maxHealth;
