@@ -217,6 +217,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *title = nil;
+    NSString *accessibilityLabel = nil;
     NSString *cellName = @"Cell";
     BOOL showIndicator = NO;
     if (indexPath.section == 0 && indexPath.item == 0) {
@@ -233,7 +234,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         title = NSLocalizedString(@"Tavern", nil);
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         title = NSLocalizedString(@"Party", nil);
-        
+        accessibilityLabel = title;
         User *user = self.user;
         if (user) {
             if ([user.party.unreadMessages boolValue]) {
@@ -276,6 +277,9 @@ NIKFontAwesomeIconFactory *iconFactory;
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
+    if (accessibilityLabel) {
+        cell.accessibilityLabel = accessibilityLabel;
+    }
     UILabel *label = (UILabel *) [cell viewWithTag:1];
     label.text = title;
     UIImageView *indicatorView = (UIImageView *) [cell viewWithTag:2];

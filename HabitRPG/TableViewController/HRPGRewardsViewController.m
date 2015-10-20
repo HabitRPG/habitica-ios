@@ -307,10 +307,6 @@ User *user;
     
     if ([inGameItemsArray count] > 0) {
         [array addObject:inGameItemsArray];
-        if (inGameItemsArray.count == 1) {
-            //Only potion is available. reload user to check if armoire is enabled.
-            [self refresh];
-        }
     }
     if ([customRewardsArray count] > 0) {
         [array addObject:customRewardsArray];
