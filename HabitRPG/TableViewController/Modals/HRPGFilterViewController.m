@@ -10,6 +10,8 @@
 #import "Tag.h"
 #import <NIKFontAwesomeIconFactory.h>
 #import <NIKFontAwesomeIconFactory+iOS.h>
+#import "HRPGCheckBoxView.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGFilterViewController ()
 
@@ -114,7 +116,7 @@
                                             attributes:@{
                                                          NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                                          }
-                                               context:nil].size.height + 22;
+                                               context:nil].size.height + 42;
     return height;
 }
 
@@ -205,17 +207,30 @@
     Tag *tag = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
     textLabel.text = tag.name;
-    UISwitch *tagSwitch = (UISwitch*)[cell viewWithTag:2];
-    tagSwitch.on = NO;
+    
+    HRPGCheckBoxView *checkboxView = (HRPGCheckBoxView *)[cell viewWithTag:2];
+    checkboxView.cornerRadius = checkboxView.size/2;
     if ([self.areTagsSelected[indexPath.item] boolValue]) {
-        tagSwitch.on = YES;
+        checkboxView.checkColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+        checkboxView.boxBorderColor = [UIColor purple300];
+        checkboxView.boxFillColor = [UIColor purple300];
+    } else {
+        checkboxView.boxFillColor = [UIColor clearColor];
+        checkboxView.boxBorderColor = [UIColor purple300];
+        checkboxView.checkColor = [UIColor purple300];
     }
+    checkboxView.checked = [self.areTagsSelected[indexPath.item] boolValue];
+    [checkboxView setNeedsDisplay];
     
     if (tag.challenge) {
-        cell.imageView.image = [self.iconFactory createImageForIcon:NIKFontAwesomeIconBullhorn];
-    } else {
-        cell.imageView.image = nil;
+        UIImageView *imageView = (UIImageView *)[cell viewWithTag:3];
+        imageView.image = [self.iconFactory createImageForIcon:NIKFontAwesomeIconBullhorn];
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.areTagsSelected[indexPath.item] = [NSNumber numberWithBool:![self.areTagsSelected[indexPath.item] boolValue]];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (IBAction)clearTags:(id)sender {
@@ -232,12 +247,17 @@
     if ([segue.identifier isEqualToString:@"UnwindTagSegue"]) {
         int counter = 0;
         for (Tag *tag in [self.fetchedResultsController fetchedObjects]) {
+            NSLog(@"Counter: %d", counter);
             if ([self.areTagsSelected[counter] boolValue]) {
+                NSLog(@"%@", tag);
                 if (![self.selectedTags containsObject:tag]) {
+                    NSLog(@"Is contained");
                     [self.selectedTags addObject:tag];
                 }
             } else {
+                NSLog(@"invalid %@", tag);
                 if ([self.selectedTags containsObject:tag]) {
+                    NSLog(@"invalid Is contained");
                     [self.selectedTags removeObject:tag];
                 }
             }
@@ -251,12 +271,6 @@
     [defaults setInteger:segment.selectedSegmentIndex forKey:[NSString stringWithFormat:@"%@Filter", self.taskType]];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"taskFilterChanged" object:nil];
-}
-
-- (IBAction)switchChanged:(UISwitch *)sender {
-    UITableViewCell *cell = (UITableViewCell *)sender.superview.superview;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    self.areTagsSelected[indexPath.item] = [NSNumber numberWithBool:sender.on];
 }
 
 
