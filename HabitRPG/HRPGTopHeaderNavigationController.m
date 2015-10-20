@@ -28,6 +28,7 @@
 @property CGFloat delayDistance;
 @property CGFloat maxDelay;
 @property HRPGTopHeaderState previousState;
+@property CGFloat headerYPosition;
 @end
 
 @implementation HRPGTopHeaderNavigationController
@@ -60,17 +61,14 @@
     [self.view insertSubview:self.backgroundView belowSubview:self.upperBackgroundView];
     
     self.maxDelay = 50;
+    self.headerYPosition = [self bgViewOffset];
 }
 
 
 -(void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     CGRect parentFrame = self.view.frame;
-    if (self.state == HRPGTopHeaderStateVisible) {
-        self.backgroundView.frame = CGRectMake(0, [self bgViewOffset], parentFrame.size.width, self.topHeaderHeight);
-    } else {
-        self.backgroundView.frame = CGRectMake(0, -self.topHeaderHeight, parentFrame.size.width, self.topHeaderHeight);
-    }
+    self.backgroundView.frame = CGRectMake(0, self.headerYPosition, parentFrame.size.width, self.topHeaderHeight);
     self.upperBackgroundView.frame = CGRectMake(0, 0, parentFrame.size.width, [self bgViewOffset]);
     self.bottomBorderView.frame = CGRectMake(0, self.backgroundView.frame.size.height - 6, parentFrame.size.width, 6);
     self.topHeader.frame = CGRectMake(0, 0, parentFrame.size.width, self.topHeaderHeight-6);
@@ -221,6 +219,7 @@
 - (void)updateSizing:(CGFloat)delta {
     CGRect frame = self.backgroundView.frame;
     frame.origin = CGPointMake(frame.origin.x, frame.origin.y - delta);
+    self.headerYPosition = frame.origin.y;
     self.backgroundView.frame = frame;
 }
 
