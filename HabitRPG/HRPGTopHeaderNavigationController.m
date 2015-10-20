@@ -88,12 +88,15 @@
 
 - (void)showHeader {
     self.state = HRPGTopHeaderStateVisible;
+    
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^() {
         CGRect frame = self.backgroundView.frame;
         frame.origin.y = [self bgViewOffset];
         self.backgroundView.frame = frame;
         [self setNavigationBarColors:0];
-    } completion:nil];
+    } completion:^(BOOL completed) {
+        self.headerYPosition = self.backgroundView.frame.origin.y;
+    }];
 }
 
 - (void)hideHeader {
@@ -103,7 +106,9 @@
         frame.origin.y = -frame.size.height;
         self.backgroundView.frame = frame;
         [self setNavigationBarColors:1];
-    } completion:nil];
+    } completion:^(BOOL completed) {
+        self.headerYPosition = self.backgroundView.frame.origin.y;
+    }];
 }
 
 - (void)startFollowingScrollView:(UIScrollView *)scrollView {
