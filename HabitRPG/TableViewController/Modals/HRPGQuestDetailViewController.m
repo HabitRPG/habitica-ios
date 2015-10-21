@@ -153,7 +153,8 @@
         NSString *html = [NSString stringWithFormat:@"<span style=\"font-family: Helvetica Neue; font-size: %ld;margin:0\">%@</span>", (long) [[NSNumber numberWithFloat:font.pointSize] integerValue], self.quest.notes];
         textView.attributedText = [[NSAttributedString alloc]
                 initWithData:[html dataUsingEncoding:NSUTF8StringEncoding]
-                     options:@{NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType}
+                                   options:@{NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType,
+                                             NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
           documentAttributes:nil
                        error:&err];
         cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
