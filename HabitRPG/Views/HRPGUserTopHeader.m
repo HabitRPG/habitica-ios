@@ -162,7 +162,7 @@ NSInteger rowOffset = 16;
     }
     
     self.usernameLabel.text = self.user.username;
-    self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@ %@", nil), self.user.level, [self.user.hclass capitalizedString]];
+    self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@ %@", nil), self.user.level, NSLocalizedString([self.user.hclass capitalizedString], nil)];
     self.classImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@", self.user.hclass]];
     self.gemLabel.text = [[NSNumber numberWithFloat:[self.user.balance floatValue]*4] stringValue];
 
