@@ -9,12 +9,16 @@
 #import "HRPGExplanationView.h"
 #import "HRPGSpeechBubbleView.h"
 #import "HRPGHoledView.h"
+#import "HRPGHintView.h"
 
 @interface HRPGExplanationView ()
+
+@property UIView *displayView;
 
 @property UIImageView *justinView;
 @property HRPGSpeechbubbleView *speechBubbleView;
 @property HRPGHoledView *backgroundView;
+@property HRPGHintView *hintView;
 @end
 
 @implementation HRPGExplanationView
@@ -44,6 +48,18 @@
     }
     
     return self;
+}
+
+- (void)displayHintOnView:(UIView *)view withDisplayView:(UIView *)displayView animated:(BOOL)animated {
+    self.displayView = displayView;
+    self.hintView = [[HRPGHintView alloc] init];
+    self.hintView.frame = CGRectMake(self.highlightedFrame.origin.x+((self.highlightedFrame.size.width-45)/2), self.highlightedFrame.origin.y+((self.highlightedFrame.size.height-45)/2), 45, 45);
+    UIGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc]
+                                              initWithTarget:self action:@selector(handleHintTap:)];
+    [self.hintView addGestureRecognizer:gestureRecognizer];
+    [self.hintView pulseToSize:1.4 withDuration:1.0];
+    
+    [view addSubview:self.hintView];
 }
 
 - (void)displayOnView:(UIView *)view animated:(BOOL)animated {
@@ -83,6 +99,7 @@
 }
 
 - (void)dismissAnimated:(BOOL)animated wasSeen:(BOOL)wasSeen {
+    self.displayView = nil;
     [UIView animateWithDuration:0.4 animations:^() {
         self.alpha = 0;
     }completion:^(BOOL completed) {
@@ -99,8 +116,14 @@
 }
 
 - (void)setHighlightedFrame:(CGRect)highlightedFrame {
+    _highlightedFrame = highlightedFrame;
     self.backgroundView.highlightedFrame = highlightedFrame;
     [self.backgroundView setNeedsDisplay];
+}
+
+- (void) handleHintTap:(UIGestureRecognizer *)recognizer {
+    [self.hintView removeFromSuperview];
+    [self displayOnView:self.displayView animated:YES];
 }
 
 - (void) handleTap:(UIGestureRecognizer *)recognizer {

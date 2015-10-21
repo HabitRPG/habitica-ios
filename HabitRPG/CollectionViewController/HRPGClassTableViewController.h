@@ -7,10 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRPGManager.h"
+#import "TutorialStepsProtocol.h"
 
-@interface HRPGClassTableViewController : UITableViewController <UIAlertViewDelegate>
+@interface HRPGClassTableViewController : UITableViewController <UIAlertViewDelegate, TutorialStepsProtocol>
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic) HRPGManager *sharedManager;
+@property NSIndexPath *selectedIndex;
+@property NSString *tutorialIdentifier;
+@property NSArray *coachMarks;
+@property BOOL displayedTutorialStep;
+@property HRPGExplanationView *activeTutorialView;
 
 
 @end

@@ -24,11 +24,6 @@
 @property CGSize screenSize;
 @property NSArray *classesArray;
 @property User *user;
-@property (nonatomic) HRPGManager *sharedManager;
-@property NSIndexPath *selectedIndex;
-@property NSString *tutorialIdentifier;
-@property NSArray *coachMarks;
-@property BOOL displayedTutorialStep;
 @end
 
 @implementation HRPGClassTableViewController

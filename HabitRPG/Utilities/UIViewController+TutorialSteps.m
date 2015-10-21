@@ -21,6 +21,9 @@
 
 
 - (void)displayTutorialStep:(HRPGManager *)sharedManager {
+    if (self.activeTutorialView) {
+        return;
+    }
     if (self.tutorialIdentifier && !self.displayedTutorialStep) {
         if (![[sharedManager user] hasSeenTutorialStepWithIdentifier:self.tutorialIdentifier]) {
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -59,19 +62,24 @@
 - (void)displayExlanationView:(NSString *)identifier  highlightingArea:(CGRect)frame withDefaults:(NSUserDefaults *)defaults inDefaultsKey:(NSString *)defaultsKey withTutorialType:(NSString *)type {
     NSDictionary *tutorialDefinition = [self getDefinitonForTutorial:identifier];
     HRPGExplanationView *explanationView = [[HRPGExplanationView alloc] init];
+    self.activeTutorialView = explanationView;
     explanationView.speechBubbleText = tutorialDefinition[@"text"];
     if (!CGRectIsEmpty(frame)) {
         explanationView.highlightedFrame = frame;
+        [explanationView displayHintOnView:self.parentViewController.view withDisplayView:self.parentViewController.parentViewController.view animated:YES];
+    } else {
+        [explanationView displayOnView:self.parentViewController.parentViewController.view animated:YES];
     }
-    [explanationView displayOnView:self.parentViewController.parentViewController.view animated:YES];
+    TutorialSteps *step = [TutorialSteps markStep:identifier asSeen:YES withType:type withContext:self.sharedManager.getManagedObjectContext];
+    if ([type isEqualToString:@"common"]) {
+        [[self.sharedManager user] addCommonTutorialStepsObject:step];
+    } else {
+        [[self.sharedManager user] addIosTutorialStepsObject:step];
+    }
     
     explanationView.dismissAction= ^(BOOL wasSeen) {
-        TutorialSteps *step = [TutorialSteps markStep:identifier asSeen:wasSeen withType:type withContext:self.sharedManager.getManagedObjectContext];
-        if ([type isEqualToString:@"common"]) {
-            [[self.sharedManager user] addCommonTutorialStepsObject:step];
-        } else {
-            [[self.sharedManager user] addIosTutorialStepsObject:step];
-        }
+        self.activeTutorialView = nil;
+        
         if (!wasSeen) {
             //Show it again the next day
             NSDate *nextAppearance = [[NSDate date] dateByAddingTimeInterval:86400];

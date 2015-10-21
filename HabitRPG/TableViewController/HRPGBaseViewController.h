@@ -20,6 +20,7 @@
 @property NSString *tutorialIdentifier;
 @property NSArray *coachMarks;
 @property BOOL displayedTutorialStep;
+@property HRPGExplanationView *activeTutorialView;
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 

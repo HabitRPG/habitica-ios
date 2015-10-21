@@ -21,6 +21,7 @@ typedef enum : NSUInteger {
 @property (nonatomic) UIColor *speechBubbleTextColor;
 @property (nonatomic) CGRect highlightedFrame;
 
+- (void)displayHintOnView:(UIView *)view withDisplayView:(UIView *)displayView animated:(BOOL)animated;
 - (void) displayOnView:(UIView *)view animated:(BOOL)animated;
 - (void) dismissAnimated:(BOOL)animated wasSeen:(BOOL)wasSeen;
 

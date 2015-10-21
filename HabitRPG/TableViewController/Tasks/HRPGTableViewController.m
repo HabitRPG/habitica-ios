@@ -151,20 +151,14 @@ BOOL editable;
 
 - (CGRect)getFrameForCoachmark:(NSString *)coachMarkIdentifier {
     if ([coachMarkIdentifier isEqualToString:@"addTask"]) {
-        return CGRectMake(self.view.frame.size.width-47, 20, 45, 45);
+        return CGRectMake(self.view.frame.size.width-47, 18, 45, 45);
     } else if ([coachMarkIdentifier isEqualToString:@"editTask"]) {
         if ([self.tableView numberOfRowsInSection:0] > 0) {
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[[self.tableView indexPathsForVisibleRows] objectAtIndex:0]];
             return [self.tableView convertRect:cell.frame toView:self.parentViewController.parentViewController.view];
         }
-    } else if ([coachMarkIdentifier isEqualToString:@"deleteTask"]) {
-        if ([self.tableView numberOfRowsInSection:0] > 0) {
-            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[[self.tableView indexPathsForVisibleRows] objectAtIndex:0]];
-            return [self.tableView convertRect:cell.frame toView:self.parentViewController.parentViewController.view];
-;
-        }
     } else if ([coachMarkIdentifier isEqualToString:@"filterTask"]) {
-        return CGRectMake(2, 20, 60, 45);
+        return CGRectMake(2, 18, 50, 45);
     }
     return CGRectZero;
 }
@@ -289,6 +283,7 @@ BOOL editable;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath == self.openedIndexPath || (self.indexOffset > 0 && indexPath.item > self.openedIndexPath.item && indexPath.item < (self.openedIndexPath.item+self.indexOffset))) {
+        indexPath = [self indexPathForTaskWithOffset:indexPath];
         [self tableView:tableView expandTaskAtIndexPath:self.openedIndexPath];
     }
     editedTask = [self taskAtIndexPath:indexPath];
