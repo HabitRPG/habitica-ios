@@ -87,6 +87,7 @@
 @property(nonatomic, retain) NSDate *lastAvatarNoPet;
 @property(nonatomic, retain) NSDate *lastAvatarHead;
 @property(nonatomic, retain) NSNumber *selectedClass;
+@property(nonatomic, retain) NSNumber *timezoneOffset;
 @property(nonatomic, retain) NSNumber *useCostume;
 @property(nonatomic, retain) NSString *partyOrder;
 @property(nonatomic, retain) NSNumber *partyPosition;

@@ -92,6 +92,7 @@
 @dynamic lastAvatarNoPet;
 @dynamic lastAvatarHead;
 @dynamic selectedClass;
+@dynamic timezoneOffset;
 @dynamic useCostume;
 @dynamic partyOrder;
 @dynamic partyPosition;

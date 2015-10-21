@@ -410,6 +410,7 @@ NSString *currentUser;
             @"flags.armoireEmpty" : @"armoireEmpty",
             @"flags.communityGuidelinesAccepted" : @"acceptedCommunityGuidelines",
             @"preferences.language": @"language",
+            @"preferences.timezoneOffset" : @"timezoneOffset",
             @"purchased" : @"customizationsDictionary",
             @"invitations.party.id": @"invitedParty",
             @"invitations.party.name": @"invitedPartyName"
@@ -1060,9 +1061,10 @@ NSString *currentUser;
         NSArray *fetchedObjects = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
         if ([fetchedObjects count] > 0) {
             self.user = fetchedObjects[0];
+            [self setTimezoneOffset];
         } else {
             [self fetchUser:^() {
-
+                [self setTimezoneOffset];
             }       onError:^() {
 
             }];
@@ -1167,10 +1169,18 @@ NSString *currentUser;
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-key" value:@""];
 }
 
+- (void)setTimezoneOffset {
+    NSInteger offset = -[[NSTimeZone localTimeZone] secondsFromGMT] / 60;
+    if (offset != [self.user.timezoneOffset integerValue]) {
+        self.user.timezoneOffset = [NSNumber numberWithInteger:offset];
+        [self updateUser:@{@"preferences.timezoneOffset" : self.user.timezoneOffset} onSuccess:nil onError:nil];
+    }
+}
+
 - (void)fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     NSString *url = @"/api/v2/content";
-    if (![self.user.language isEqualToString:@"en"]) {
+    if (self.user.language) {
         url = [url stringByAppendingFormat:@"?language=%@", self.user.language];
         [defaults setObject:self.user.language forKey:@"contentLanguage"];
         [defaults synchronize];
