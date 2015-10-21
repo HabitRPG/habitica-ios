@@ -88,26 +88,26 @@
 
 - (void)showHeader {
     self.state = HRPGTopHeaderStateVisible;
-    
+    CGRect frame = self.backgroundView.frame;
+    frame.origin.y = [self bgViewOffset];
+    self.headerYPosition = frame.origin.y;
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^() {
-        CGRect frame = self.backgroundView.frame;
-        frame.origin.y = [self bgViewOffset];
         self.backgroundView.frame = frame;
         [self setNavigationBarColors:0];
     } completion:^(BOOL completed) {
-        self.headerYPosition = self.backgroundView.frame.origin.y;
     }];
 }
 
 - (void)hideHeader {
     self.state = HRPGTopHeaderStateHidden;
+    CGRect frame = self.backgroundView.frame;
+    frame.origin.y = -frame.size.height;
+    self.headerYPosition = frame.origin.y;
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^() {
-        CGRect frame = self.backgroundView.frame;
-        frame.origin.y = -frame.size.height;
+
         self.backgroundView.frame = frame;
         [self setNavigationBarColors:1];
     } completion:^(BOOL completed) {
-        self.headerYPosition = self.backgroundView.frame.origin.y;
     }];
 }
 
@@ -212,9 +212,7 @@
     }
     
     if (delta != 0) {
-        CGFloat alpha = -((frame.origin.y-[self bgViewOffset]) / frame.size.height);
         [self updateSizing:delta];
-        [self setNavigationBarColors:alpha];
     }
     if (didStopScrolling) {
         [self stoppedScrolling:delta];
@@ -226,6 +224,8 @@
     frame.origin = CGPointMake(frame.origin.x, frame.origin.y - delta);
     self.headerYPosition = frame.origin.y;
     self.backgroundView.frame = frame;
+    CGFloat alpha = -((frame.origin.y-[self bgViewOffset]) / frame.size.height);
+    [self setNavigationBarColors:alpha];
 }
 
 - (void)setNavigationBarColors:(CGFloat) alpha {

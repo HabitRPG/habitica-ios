@@ -112,6 +112,14 @@
                                     <constraint firstAttribute="height" constant="50" id="yyX-G1-yka"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_icon" translatesAutoresizingMaskIntoConstraints="NO" id="cMO-eO-aFA">
+                                <rect key="frame" x="276" y="532" width="48" height="18"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="noZ-6c-gDb"/>
+                                    <constraint firstAttribute="height" constant="18" id="oY0-uO-qXw"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -122,6 +130,7 @@
                             <constraint firstItem="EHI-Bs-o2d" firstAttribute="leading" secondItem="SRb-CW-vTC" secondAttribute="leadingMargin" id="Ikj-v3-2D5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tcz-t6-WqN" secondAttribute="trailing" constant="-20" id="J59-mz-meh"/>
                             <constraint firstItem="IRA-55-1g8" firstAttribute="top" secondItem="Les-vZ-cx6" secondAttribute="bottom" id="KzV-h0-MjQ"/>
+                            <constraint firstItem="udZ-2L-6V8" firstAttribute="top" secondItem="cMO-eO-aFA" secondAttribute="bottom" constant="50" id="N5c-IY-M0M"/>
                             <constraint firstItem="FYR-h9-UfW" firstAttribute="top" secondItem="Les-vZ-cx6" secondAttribute="bottom" id="Sui-gC-k27"/>
                             <constraint firstItem="FYR-h9-UfW" firstAttribute="leading" secondItem="SRb-CW-vTC" secondAttribute="leadingMargin" id="UuW-Kn-9oG"/>
                             <constraint firstItem="udZ-2L-6V8" firstAttribute="top" secondItem="FYR-h9-UfW" secondAttribute="bottom" id="XvQ-rt-ciq"/>
@@ -134,10 +143,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Les-vZ-cx6" secondAttribute="trailing" constant="-20" id="jV1-It-lsg"/>
                             <constraint firstItem="Les-vZ-cx6" firstAttribute="leading" secondItem="SRb-CW-vTC" secondAttribute="leadingMargin" constant="-20" id="lDh-CV-SOf"/>
                             <constraint firstItem="udZ-2L-6V8" firstAttribute="top" secondItem="Les-vZ-cx6" secondAttribute="bottom" constant="60" id="nkR-od-uIR"/>
+                            <constraint firstItem="cMO-eO-aFA" firstAttribute="centerX" secondItem="SRb-CW-vTC" secondAttribute="centerX" id="s0p-uq-IoS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5RR-Y4-5So"/>
                     <connections>
+                        <outlet property="arrowView" destination="cMO-eO-aFA" id="QX1-XT-WrC"/>
                         <outlet property="avatarView" destination="EHI-Bs-o2d" id="qtE-XO-A9Q"/>
                         <outlet property="backButton" destination="FYR-h9-UfW" id="dej-GE-OdE"/>
                         <outlet property="gradientView" destination="tcz-t6-WqN" id="KGR-0F-IgN"/>
@@ -5563,6 +5574,7 @@ Invite friends now to earn a Quest Scroll!</string>
     </scenes>
     <resources>
         <image name="Gem" width="18" height="13"/>
+        <image name="down_icon" width="50" height="20"/>
         <image name="gold_coin" width="15" height="15"/>
         <image name="icon_lock" width="16" height="18"/>
         <image name="launch_bg" width="375" height="667"/>
@@ -5573,16 +5585,16 @@ Invite friends now to earn a Quest Scroll!</string>
         <image name="onepassword-button" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kJO-Vd-TWl"/>
+        <segue reference="zEC-Wx-BHZ"/>
         <segue reference="67a-aB-Ubi"/>
+        <segue reference="sPD-XR-ORt"/>
+        <segue reference="aWZ-FG-z5O"/>
+        <segue reference="OZd-8c-sWC"/>
+        <segue reference="Bfo-Hm-DEG"/>
+        <segue reference="8EB-JX-S8a"/>
+        <segue reference="w8b-nU-BYs"/>
         <segue reference="04Z-5H-zfF"/>
         <segue reference="jeD-LQ-1O1"/>
-        <segue reference="sPD-XR-ORt"/>
-        <segue reference="OZd-8c-sWC"/>
-        <segue reference="w8b-nU-BYs"/>
-        <segue reference="8EB-JX-S8a"/>
-        <segue reference="Bfo-Hm-DEG"/>
-        <segue reference="aWZ-FG-z5O"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.52939999999999998" green="0.25879999999999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
