@@ -13,6 +13,9 @@
 
 @property UIView *pulseView;
 
+@property CGFloat pulseSize;
+@property CGFloat duration;
+
 @end
 
 @implementation HRPGHintView
@@ -41,6 +44,9 @@
 }
 
 -(void)pulseToSize: (float) value withDuration:(float) duration {
+    [self.pulseView.layer removeAllAnimations];
+    self.pulseSize = value;
+    self.duration = duration;
     CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     pulseAnimation.duration = duration;
     pulseAnimation.toValue = [NSNumber numberWithFloat:value];;
@@ -58,6 +64,10 @@
     opacityAnimation.repeatCount = FLT_MAX;
     
     [self.pulseView.layer addAnimation:opacityAnimation forKey:nil];
+}
+
+- (void)continueAnimating {
+    [self pulseToSize:self.pulseSize withDuration:self.duration];
 }
 
 @end

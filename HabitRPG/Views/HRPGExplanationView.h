@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRPGHintView.h"
 
 typedef enum : NSUInteger {
     HRPGExplanationViewPositionTop,
@@ -20,6 +21,7 @@ typedef enum : NSUInteger {
 @property (nonatomic) HRPGExplanationViewPosition position;
 @property (nonatomic) UIColor *speechBubbleTextColor;
 @property (nonatomic) CGRect highlightedFrame;
+@property HRPGHintView *hintView;
 
 - (void)displayHintOnView:(UIView *)view withDisplayView:(UIView *)displayView animated:(BOOL)animated;
 - (void) displayOnView:(UIView *)view animated:(BOOL)animated;

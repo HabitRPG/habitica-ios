@@ -18,7 +18,6 @@
 @property UIImageView *justinView;
 @property HRPGSpeechbubbleView *speechBubbleView;
 @property HRPGHoledView *backgroundView;
-@property HRPGHintView *hintView;
 @end
 
 @implementation HRPGExplanationView

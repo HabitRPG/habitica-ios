@@ -11,6 +11,7 @@
 #import "HRPGManager.h"
 #import "TutorialSteps.h"
 #import "MPCoachMarks.h"
+#import "HRPGHintView.h"
 
 @implementation UIViewController (TutorialSteps)
 
@@ -18,10 +19,13 @@
 @dynamic tutorialIdentifier;
 @dynamic coachMarks;
 @dynamic sharedManager;
-
+@dynamic activeTutorialView;
 
 - (void)displayTutorialStep:(HRPGManager *)sharedManager {
     if (self.activeTutorialView) {
+        if (self.activeTutorialView.hintView) {
+            [self.activeTutorialView.hintView continueAnimating];
+        }
         return;
     }
     if (self.tutorialIdentifier && !self.displayedTutorialStep) {
@@ -87,7 +91,7 @@
         }
         NSError *error;
         [self.sharedManager.getManagedObjectContext saveToPersistentStore:&error];
-        [self.sharedManager updateUser:@{[NSString stringWithFormat:@"flags.tutorial.%@.%@", step.type, step.identifier]: step.wasShown} onSuccess:nil onError:nil];
+        [self.sharedManager updateUser:@{[NSString stringWithFormat:@"flags.tutorial.%@.%@", type, step.identifier]: step.wasShown} onSuccess:nil onError:nil];
     };
 }
 
