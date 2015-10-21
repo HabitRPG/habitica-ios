@@ -247,17 +247,12 @@
     if ([segue.identifier isEqualToString:@"UnwindTagSegue"]) {
         int counter = 0;
         for (Tag *tag in [self.fetchedResultsController fetchedObjects]) {
-            NSLog(@"Counter: %d", counter);
             if ([self.areTagsSelected[counter] boolValue]) {
-                NSLog(@"%@", tag);
                 if (![self.selectedTags containsObject:tag]) {
-                    NSLog(@"Is contained");
                     [self.selectedTags addObject:tag];
                 }
             } else {
-                NSLog(@"invalid %@", tag);
                 if ([self.selectedTags containsObject:tag]) {
-                    NSLog(@"invalid Is contained");
                     [self.selectedTags removeObject:tag];
                 }
             }

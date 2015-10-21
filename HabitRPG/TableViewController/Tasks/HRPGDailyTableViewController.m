@@ -98,7 +98,7 @@
         [cell.checklistIndicator addGestureRecognizer:btnTapRecognizer];
         
         //TODO: if we find a way to filter due dailies in predicate remove this
-        if ([task.type isEqualToString:@"daily"] && ((self.filterType == TaskDailyFilterTypeDue && ![task dueTodayWithOffset:self.dayStart]) || (self.filterType == TaskDailyFilterTypeGrey && [task dueTodayWithOffset:self.dayStart]))) {
+        if ([task.type isEqualToString:@"daily"] && ((self.filterType == TaskDailyFilterTypeDue && ![task dueTodayWithOffset:self.dayStart]) || (self.filterType == TaskDailyFilterTypeGrey && [task dueTodayWithOffset:self.dayStart] && ![task.completed boolValue]))) {
             cell.contentView.hidden = YES;
         } else {
             cell.contentView.hidden = NO;

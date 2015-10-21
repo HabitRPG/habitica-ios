@@ -236,7 +236,7 @@ BOOL editable;
     Task *task = [self taskAtIndexPath:indexPath];
     
     //TODO: if we find a way to filter due dailies in predicate remove this
-    if ([task.type isEqualToString:@"daily"] && indexPath.item+1 < [self.fetchedResultsController fetchedObjects].count && ((self.filterType == TaskDailyFilterTypeDue && ![task dueTodayWithOffset:self.dayStart]) || (self.filterType == TaskDailyFilterTypeGrey && [task dueTodayWithOffset:self.dayStart]))) {
+    if ([task.type isEqualToString:@"daily"] && indexPath.item+1 < [self.fetchedResultsController fetchedObjects].count && ((self.filterType == TaskDailyFilterTypeDue && ![task dueTodayWithOffset:self.dayStart]) || (self.filterType == TaskDailyFilterTypeGrey && [task dueTodayWithOffset:self.dayStart] && ![task.completed boolValue]))) {
         return 0.1;
     }
     float width;
