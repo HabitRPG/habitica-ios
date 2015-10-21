@@ -52,6 +52,7 @@
 @property NSString *avatarDescriptionString;
 
 @property (weak, nonatomic) IBOutlet UIView *gradientView;
+@property (weak, nonatomic) IBOutlet UIImageView *arrowView;
 
 @property BOOL isSkipping;
 
@@ -65,6 +66,8 @@
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     HRPGManager *manager = appdelegate.sharedManager;
     self.user = [manager getUser];
+    
+    self.mainScrollView.delegate = self;
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:NSStringFromClass([self class])];
@@ -81,6 +84,7 @@
             [self setupCustomizationStep];
             break;
     }
+    [self viewWillLayoutSubviews];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -97,6 +101,8 @@
     if (self.currentStep == HRPGAvatarSetupStepsWelcome && self.welcomeDescriptionLabel.text.length == 0) {
         self.welcomeDescriptionLabel.text = self.welcomeDescriptionString;
     }
+    
+    [self.mainScrollView flashScrollIndicators];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -347,7 +353,7 @@
     CAGradientLayer *layer = [CAGradientLayer layer];
     layer.frame = self.gradientView.bounds;
     layer.colors = [NSArray arrayWithObjects:(id)[UIColor whiteColor].CGColor, (id)[UIColor colorWithWhite:1 alpha:0].CGColor, nil];
-    layer.startPoint = CGPointMake(1.0f, 1.0f);
+    layer.startPoint = CGPointMake(1.0f, 0.75f);
     layer.endPoint = CGPointMake(1.0f, 0.0f);
     [self.gradientView.layer insertSublayer:layer atIndex:0];
 }
@@ -415,7 +421,6 @@
         self.user.size = @"broad";
     }
     [self.user setAvatarOnImageView:self.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:YES];
-
 }
 
 - (NSArray *)getCustomizationsWithPredicate:(NSPredicate *)predicate {
@@ -429,4 +434,16 @@
     return [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+    if (bottomEdge >= scrollView.contentSize.height) {
+        [UIView animateWithDuration:0.2 animations:^() {
+            self.arrowView.alpha = 0;
+        }];
+    } else if (self.arrowView.alpha == 0) {
+        [UIView animateWithDuration:0.2 animations:^() {
+            self.arrowView.alpha = 1;
+        }];
+    }
+}
 @end
