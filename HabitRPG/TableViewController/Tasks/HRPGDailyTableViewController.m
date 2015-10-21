@@ -65,7 +65,13 @@
                     }
                     NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
                     if ([self isIndexPathVisible:taskPath]) {
-                        [self.tableView reloadRowsAtIndexPaths:@[indexPath, taskPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                        NSArray *paths;
+                        if (indexPath.item != taskPath.item) {
+                            paths = @[indexPath, taskPath];
+                        } else {
+                            paths = @[indexPath];
+                        }
+                        [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];
                     }
                 }                      onError:^() {
                     item.currentlyChecking = [NSNumber numberWithBool:NO];

@@ -43,6 +43,12 @@
     self.tutorialIdentifier = @"todos";
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.sharedManager displayLevelUpNotification];
+}
+
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"todos"]) {
         return @{@"text": NSLocalizedString(@"Complete your To-Dos in real life, then check them off for GOLD and EXPERIENCE so you can earn Rewards and unlock new features!", nil)};
@@ -74,8 +80,13 @@
                     }
                     NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
                     if ([self isIndexPathVisible:taskPath]) {
-                        [self.tableView reloadRowsAtIndexPaths:@[indexPath, taskPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                    }
+                        NSArray *paths;
+                        if (indexPath.item != taskPath.item) {
+                            paths = @[indexPath, taskPath];
+                        } else {
+                            paths = @[indexPath];
+                        }
+                        [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];                    }
                 }                      onError:^() {
                     item.currentlyChecking = [NSNumber numberWithBool:NO];
                 }];
