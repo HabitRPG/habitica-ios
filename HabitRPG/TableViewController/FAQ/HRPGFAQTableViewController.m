@@ -179,14 +179,18 @@
         [self performSegueWithIdentifier:@"FAQDetailSegue" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
     } else {
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        NSMutableDictionary *steps = [NSMutableDictionary dictionary];
         for (TutorialSteps *step in [self.sharedManager user].iosTutorialSteps) {
-            step.wasShown = [NSNumber numberWithBool:NO];
+            step.wasShown = @NO;
+            [steps setObject:@NO forKey:[NSString stringWithFormat:@"flags.tutorial.ios.%@", step.identifier]];
         }
         for (TutorialSteps *step in [self.sharedManager user].commonTutorialSteps) {
-            step.wasShown = [NSNumber numberWithBool:NO];
+            step.wasShown = @NO;
+            [steps setObject:@NO forKey:[NSString stringWithFormat:@"flags.tutorial.common.%@", step.identifier]];
         }
         NSError *error;
         [self.managedObjectContext saveToPersistentStore:&error];
+        [self.sharedManager updateUser:steps onSuccess:nil onError:nil];
     }
 }
 
