@@ -361,10 +361,6 @@ NIKFontAwesomeIconFactory *iconFactory;
 }
 
 - (User *)user {
-    if (_user) {
-        return _user;
-    }
-    
     if ([[self.fetchedResultsController sections] count] > 0) {
         if ([[self.fetchedResultsController sections][0] numberOfObjects] > 0) {
             _user = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];

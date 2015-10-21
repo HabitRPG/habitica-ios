@@ -101,6 +101,23 @@ User *user;
         [self showDatePicker];
     }
     
+    section= [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Day Start", nil)];
+    [formDescriptor addFormSection:section];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"dayStart" rowType:XLFormRowDescriptorTypeSelectorPickerView title:NSLocalizedString(@"Custom Day Start", nil)];
+    [section addFormRow:row];
+    
+    NSMutableArray *hourOptions = [NSMutableArray arrayWithCapacity:23];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setDateFormat:@"HH:mm:ss"];
+    for (int hour = 0; hour < 24; hour++) {
+        NSDate *date = [dateFormatter dateFromString:[NSString stringWithFormat:@"%d:00:00", hour]];
+        [hourOptions addObject:[XLFormOptionsObject formOptionsObjectWithValue:@(hour) displayText:[NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterShortStyle]]];
+    }
+    row.selectorOptions = hourOptions;
+    NSDate *currentDayStart = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@:00:00", user.dayStart]];
+    row.value = [XLFormOptionsObject formOptionsObjectWithValue:user.dayStart displayText:[NSDateFormatter localizedStringFromDate:currentDayStart dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterShortStyle]];
+    
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Maintenance", nil)];
     [formDescriptor addFormSection:section];
     
@@ -220,7 +237,29 @@ User *user;
         }
     } else if ([rowDescriptor.tag isEqualToString:@"reminderDate"]) {
         [self reminderTimeChanged:[rowDescriptor.value valueData]];
+    } else if ([rowDescriptor.tag isEqualToString:@"dayStart"]) {
+        XLFormOptionsObject *value = (XLFormOptionsObject *)newValue;
+        [self.sharedManager updateUser:@{@"preferences.dayStart" : value.valueData} onSuccess:nil onError:nil];
     }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    if (indexPath.section == 0 && indexPath.item == 0) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if (section == 2) {
+        return NSLocalizedString(@"Habitica defaults to check and reset your Dailies at midnight in your own time zone each day. You can customize that time here.", nil);
+    }
+    return [super tableView:tableView titleForFooterInSection:section];
 }
 
 @end
