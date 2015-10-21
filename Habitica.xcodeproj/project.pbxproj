@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */; };
-		D902AD841B5006570098A1BD /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D902AD821B5006570098A1BD /* FBSDKCoreKit.framework */; };
-		D902AD851B5006570098A1BD /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D902AD831B5006570098A1BD /* FBSDKLoginKit.framework */; };
 		D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */; };
 		D902AD8A1B540AE30098A1BD /* HRPGBaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */; };
+		D905766F1BD7F581009BB7BC /* HRPGHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = D905766E1BD7F581009BB7BC /* HRPGHintView.m */; settings = {ASSET_TAGS = (); }; };
+		D90576721BD80275009BB7BC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90576701BD80275009BB7BC /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
+		D90576731BD80275009BB7BC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90576711BD80275009BB7BC /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
 		D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03619D60421001EABE4 /* HabitIntro.png */; };
 		D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03919D60B53001EABE4 /* DailyIntro.png */; };
 		D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03A19D60B53001EABE4 /* TodoIntro.png */; };
@@ -192,13 +193,15 @@
 		A11A64FF1BAC9FC30037D41C /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
 		A12B817AF1713BF5BCB7F702 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A8C64F7451C560A6BB881198 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		D902AD821B5006570098A1BD /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		D902AD831B5006570098A1BD /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D902AD881B540AE30098A1BD /* HRPGBaseCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBaseCollectionViewController.h; sourceTree = "<group>"; };
 		D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBaseCollectionViewController.m; sourceTree = "<group>"; };
 		D905766B1BD7049F009BB7BC /* HabitRPG 16.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 16.xcdatamodel"; sourceTree = "<group>"; };
 		D905766C1BD7C3F0009BB7BC /* HabitRPG 17.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 17.xcdatamodel"; sourceTree = "<group>"; };
+		D905766D1BD7F581009BB7BC /* HRPGHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGHintView.h; sourceTree = "<group>"; };
+		D905766E1BD7F581009BB7BC /* HRPGHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGHintView.m; sourceTree = "<group>"; };
+		D90576701BD80275009BB7BC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		D90576711BD80275009BB7BC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		D90EA03619D60421001EABE4 /* HabitIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabitIntro.png; sourceTree = "<group>"; };
 		D90EA03919D60B53001EABE4 /* DailyIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DailyIntro.png; sourceTree = "<group>"; };
 		D90EA03A19D60B53001EABE4 /* TodoIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TodoIntro.png; sourceTree = "<group>"; };
@@ -521,14 +524,14 @@
 			files = (
 				D9CD2DBE1BC7FBB500B1304B /* CoreSpotlight.framework in Frameworks */,
 				D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */,
-				D902AD841B5006570098A1BD /* FBSDKCoreKit.framework in Frameworks */,
 				D958E2B01915D41400186A08 /* Security.framework in Frameworks */,
 				D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */,
+				D90576731BD80275009BB7BC /* FBSDKLoginKit.framework in Frameworks */,
 				D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */,
 				D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */,
 				D940A7E31B0CF80100370F2E /* Fabric.framework in Frameworks */,
-				D902AD851B5006570098A1BD /* FBSDKLoginKit.framework in Frameworks */,
 				D940A7E41B0CF80100370F2E /* Crashlytics.framework in Frameworks */,
+				D90576721BD80275009BB7BC /* FBSDKCoreKit.framework in Frameworks */,
 				D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */,
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
 				F076F3C3B57B4367B7624D1F /* libPods.a in Frameworks */,
@@ -788,6 +791,8 @@
 				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
 				D91CCACB1BCD9068001C6A0C /* HRPGHoledView.h */,
 				D91CCACC1BCD9068001C6A0C /* HRPGHoledView.m */,
+				D905766D1BD7F581009BB7BC /* HRPGHintView.h */,
+				D905766E1BD7F581009BB7BC /* HRPGHintView.m */,
 				D95CBD461BBC0EDA002F4498 /* UIView+Pulse.h */,
 				D95CBD471BBC0EDA002F4498 /* UIView+Pulse.m */,
 			);
@@ -982,8 +987,8 @@
 			children = (
 				D9CD2DBD1BC7FBB500B1304B /* CoreSpotlight.framework */,
 				D99EA7411B8667C90048BF6A /* libOCMock.a */,
-				D902AD821B5006570098A1BD /* FBSDKCoreKit.framework */,
-				D902AD831B5006570098A1BD /* FBSDKLoginKit.framework */,
+				D90576701BD80275009BB7BC /* FBSDKCoreKit.framework */,
+				D90576711BD80275009BB7BC /* FBSDKLoginKit.framework */,
 				D9C89CF81B1F0E6C00A599B0 /* StoreKit.framework */,
 				D940A7E11B0CF80100370F2E /* Fabric.framework */,
 				D940A7E21B0CF80100370F2E /* Crashlytics.framework */,
@@ -1383,6 +1388,7 @@
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
 				D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */,
 				D9F16E391BBC536500CA3E02 /* HRPGCustomizationSelectionView.m in Sources */,
+				D905766F1BD7F581009BB7BC /* HRPGHintView.m in Sources */,
 				D9C2571C1B9B4F4A00839F48 /* HRPGToDoTableViewCell.m in Sources */,
 				D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */,
 				D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */,
