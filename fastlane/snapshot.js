@@ -5,14 +5,17 @@ var app = target.frontMostApp();
 var window = app.mainWindow();
 
 function login(username) {
+    console.log("logging in");
     target.delay(1);
     target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].textFields()[0].setValue(username);
     target.frontMostApp().mainWindow().tableViews()[0].cells()[1].secureTextFields()[0].secureTextFields()[0].setValue("t");
+    target.frontMostApp().mainWindow().tableViews()[0].cells()[2].scrollToVisible();
     target.frontMostApp().mainWindow().tableViews()[0].cells()[2].tapWithOptions({tapOffset:{x:0.30, y:0.55}});
     target.delay(5);
 }
 
 function logout() {
+    console.log("Logging out");
     target.frontMostApp().tabBar().buttons()[4].tap();
     target.frontMostApp().tabBar().buttons()[4].tap();
     target.frontMostApp().mainWindow().tableViews()[0].cells()[9].scrollToVisible();
@@ -23,9 +26,9 @@ function logout() {
 }
 
 function logoutlogin(username) {
-        target.delay(3);
+    logout();
+    target.delay(3);
     login(username);
-    target.frontMostApp().mainWindow().tableViews()[0].cells()[3].tap();
     target.delay(6);
     target.frontMostApp().tabBar().buttons()[4].tap();
     target.delay(2);
@@ -70,3 +73,4 @@ target.delay(2);
 captureLocalizedScreenshot("4-Quest Details");
 target.frontMostApp().tabBar().buttons()[4].tap();
 
+logout();

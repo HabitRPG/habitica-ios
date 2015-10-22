@@ -11,10 +11,11 @@ devices([
 
 languages([
   'en-US',
+  'de',
   'es',
   'da',
   'cs',
-  'cmn'
+  'zh'
 ])
 
 # Where should the resulting screenshots be stored?
@@ -41,12 +42,12 @@ scheme 'Habitica'
 
 # Custom Callbacks
 
-# setup_for_device_change do |device, udid, language|
-#   puts "Running #{language} on #{device}"
-#   system("./populateDatabase.sh")
-# end
+ setup_for_device_change do |device, udid, language|
+   puts "Running #{language} on #{device}"
+   system("xcrun simctl erase all")
+ end
 
-# teardown_device do |language, device|
-#   puts "Finished with #{language} on #{device}"
-#   system("./cleanup.sh")
-# end
+#teardown_device do |language, device|
+#  puts "Finished with #{language} on #{device}"
+#  system("xcrun simctl erase all")
+#end
