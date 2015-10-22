@@ -1,0 +1,62 @@
+¡REDISEÑADA POR COMPLETO!
+
+Hemos rediseñado la aplicación con muchísimas funciones muy útiles, como:
+
+BÚSQUEDA SPOTLIGHT
+
+Ahora, puedes usar la búsqueda Spotlight con todas tus tareas.
+
+FILTROS DE TAREAS
+
+Ahora, puedes filtrar las tareas con solo pulsar una vez, para ver solamente las tareas diarias por hacer, los hábitos que debes reforzar, las tareas pendientes para una fecha concreta, etc. 
+
+RACHAS MÁS VISIBLES
+
+Ahora, verás directamente si estás acumulando una racha en una tarea, sin tener que pulsar en ella.
+
+DESPLAZAMIENTO DE CABECERA
+
+Ahora, si tienes muchas tareas, la cabecera se desplaza hasta desaparecer de la pantalla, para que puedas ver sin interrupciones todo lo que te queda por hacer.
+
+COLORES MÁS INTENSOS Y MEJORAS VISUALES
+
+Hemos renovado los colores y mejorado algunos diseños, para que encajen más con el nuevo logotipo y la nueva marca.
+
+MULTITAREA EN IPAD
+
+¿Quieres tener la lista de tareas en segundo plano mientras consultas el correo? Ahora, puedes usar la multitarea en el iPad.
+
+ORGANIZACIÓN DEL GRUPO
+
+Ahora, puedes crear y editar un grupo, invitar a amigos o unirte al grupo de otra persona, todo ello desde la aplicación.
+
+MÁS NIVELES DE GEMAS
+
+Ahora se ofrecen más niveles al comprar gemas, para que puedas elegir el precio con más flexibilidad. ¡Gracias por tu apoyo!
+
+VISUALIZACIÓN DE CLASES
+
+Ahora, tu clase actual se muestra en la cabecera y cada clase tiene un bonito icono.
+
+PREGUNTAS FRECUENTES
+
+Si tienes alguna duda, ve a \"Ayuda y preguntas frecuentes\", en el menú, y consulta las respuestas a las preguntas más frecuentes.
+
+NUEVO TUTORIAL
+
+Hemos creado un tutorial mejorado para guiar a los nuevos usuarios por la aplicación. Ahora, Justin el Guía recorre las diferentes pestañas en función de cuáles usas.
+
+TAREAS PERSONALIZADAS
+
+Ahora, los nuevos usuarios pueden elegir tareas de ejemplo personalizadas, para que empezar les resulte más fácil que nunca.
+
+TRADUCCIONES
+
+La aplicación ya está disponible en varias lenguas. Muchas gracias a nuestros fantásticos colaboradores por ayudarnos para que Habitica llegue a más gente.
+
+DIVERSAS CORRECCIONES DE ERRORES
+
+Además de todas las nuevas funciones, hemos derrotado a unos cuantos errores, por ejemplo...
+ - Ahora se pueden ver las tareas pendientes completadas.
+ - Ahora se pueden usar varios filtros a la vez.
+ - Se han solucionado algunos bloqueos, como los que sucedían al borrar la caché.

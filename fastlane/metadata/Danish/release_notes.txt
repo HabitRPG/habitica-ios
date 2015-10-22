@@ -1,0 +1,63 @@
+SUPERFEDT REDESIGN!
+
+Vi har redesignet appen med mange nye features, inklusiv:
+
+SPOTLIGHT-SØGNING
+
+Nu kan du spotlight-søge i dine opgaver!
+
+OPGAVEFILTRERING
+
+Nu kan du filtrere dine opgaver med et enkelt tryk, så du kun ser Forfaldne Daglige, Svage Vaner, To-Dos med deadlines osv.
+
+LETLÆSELIGE STRIBER
+
+Nu kan du se hvor mange gange i streg du har udført en opgave uden at skulle trykke på den!
+
+SCROLLENDE HEADER
+
+Hvis du har mange opgaver vil headeren nu scrolle af skærmen, så du har et mere uforstyrret overblik over alt det du skal lave.
+
+KLARERE FARVER OG VISUELLE FORBEDRINGER
+
+Vi har opdateret farverne og gjort designet bedre, så det passer til vores nye logo og brand!
+
+MULTITASKING PÅ iPADS
+
+Vil du have din To-Do-liste i baggrunden mens du tjekker din mail? Nu kan du bruge multitasking på iPads!
+
+GRUPPEADMINISTRATION
+
+Nu kan du oprette og redigere en Gruppe, invitere venner eller selv slå dig til en gruppe, altsammen gennem appen!
+
+FLERE ÆDELSTENSNIVEAUER
+
+Nu kan der købes ædelsten i flere niveauer, hvilket gør prisen mere fleksibel. Tak for at støtte appen!
+
+KLASSEVISNING
+
+Din nuværende klasse vises nu i headeren - og alle klasser har nu hvert sit ikon!
+
+OFTE STILLEDE SPØRGSMÅL
+
+Forvirret? Ikke længere! Vælg \"Hjælp og OSS\" i menuen og få svar på de oftest stillede spørgsmål.
+
+NY TUTORIAL
+
+Vi har lavet en bedre tutorial for at hjælpe nye brugere gennem appen. Nu vil Guiden Justin give dig en personlig tour, baseret på de faner du besøger!
+
+SKRÆDDERSYEDE OPGAVER
+
+Nye brugere har nu muligheden for at vælge skræddersyede eksempelopgaver, så det er endnu lettere at starte end nogen sinde før!
+
+OVERSÆTTELSER
+
+Mange tak til vores fantastiske bidragydere for at gøre Habitica tilgængelig for nye brugere.
+
+DIVERSE BUGFIXES
+
+Udover alle de nye features har vi også fikset en masse ting, f.eks...
+
+ - Mulighed for at se færdiggjorte To-Dos
+ - Mulighed for at filtrere på flere tags
+ - Crashes, inklusive problemer med cachen
