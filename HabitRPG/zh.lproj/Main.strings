@@ -1,0 +1,267 @@
+/* Class = "UILabel"; text = "Leave the Inn"; ObjectID = "2F8-My-WsR"; */
+"2F8-My-WsR.text" = "離開旅店";
+
+/* Class = "UILabel"; text = "Unlocks at lvl 3"; ObjectID = "2yp-6U-Xpz"; */
+"2yp-6U-Xpz.text" = "等級 3 時解鎖";
+
+/* Class = "UITabBarItem"; title = "Habits"; ObjectID = "3G8-SH-Shd"; */
+"3G8-SH-Shd.title" = "習慣";
+
+/* Class = "UINavigationItem"; title = "Equipment"; ObjectID = "3bv-D6-Dzj"; */
+"3bv-D6-Dzj.title" = "裝備";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "3wT-JA-hE4"; */
+"3wT-JA-hE4.title" = "返回";
+
+/* Class = "UILabel"; text = "Want to join a party? Give them your User ID:"; ObjectID = "4RA-Hp-yRh"; */
+"4RA-Hp-yRh.text" = "想加入組隊嗎？給對方您的使用者 ID：";
+
+/* Class = "UINavigationItem"; title = "Pets"; ObjectID = "4dW-yC-5Ar"; */
+"4dW-yC-5Ar.title" = "寵物";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "5AI-vM-jzp"; */
+"5AI-vM-jzp.normalTitle" = "返回";
+
+/* Class = "UILabel"; text = "Size"; ObjectID = "5KS-In-70X"; */
+"5KS-In-70X.text" = "大小";
+
+/* Class = "UILabel"; text = "Accept"; ObjectID = "5he-Cd-t9O"; */
+"5he-Cd-t9O.text" = "接受";
+
+/* Class = "UINavigationItem"; title = "Add Tag"; ObjectID = "6kN-kK-ybL"; */
+"6kN-kK-ybL.title" = "加上標籤";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "7QR-Cq-K2a"; */
+"7QR-Cq-K2a.title" = "條件篩選";
+
+/* Class = "UINavigationItem"; title = "Items"; ObjectID = "7Sa-Zz-2NE"; */
+"7Sa-Zz-2NE.title" = "物品";
+
+/* Class = "UILabel"; text = "If you would like to post messages in the Tavern or any party or guild chat, please first read our  Community Guidelines and then click \"Accept Guidelines\" button below to indicate that you accept them."; ObjectID = "7iA-qA-x1r"; */
+"7iA-qA-x1r.text" = "若想在酒館、隊伍發言或在公會聊天，請先閱讀我們的社群守則並按下下方「同意守則」的按鈕以表示同意遵守。";
+
+/* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "8QD-xr-Tcj"; */
+"8QD-xr-Tcj.title" = "座騎";
+
+/* Class = "UINavigationItem"; title = "Tavern"; ObjectID = "9H8-uc-YBu"; */
+"9H8-uc-YBu.title" = "酒館";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9b7-Yf-yJs"; */
+"9b7-Yf-yJs.text" = "標籤";
+
+/* Class = "UIButton"; normalTitle = "Finish"; ObjectID = "63H-Fj-Vls"; */
+"63H-Fj-Vls.normalTitle" = "結束";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
+"970-3u-C37.title" = "關於";
+
+/* Class = "UIButton"; normalTitle = " Unlock Set for 5 gems "; ObjectID = "AQN-pU-u81"; */
+"AQN-pU-u81.normalTitle" = "用 5 個寶石解鎖此套組";
+
+/* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "Aco-n2-RnG"; */
+"Aco-n2-RnG.title" = "每日任務";
+
+/* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "CIQ-ZB-hHa"; */
+"CIQ-ZB-hHa.normalTitle" = "刪除";
+
+/* Class = "UITabBarItem"; title = "Habits"; ObjectID = "CTh-zS-7ZY"; */
+"CTh-zS-7ZY.title" = "習慣";
+
+/* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "DQC-ay-MKP"; */
+"DQC-ay-MKP.placeholder" = "再次輸入密碼";
+
+/* Class = "UILabel"; text = "Create new Party"; ObjectID = "EFI-g8-gvi"; */
+"EFI-g8-gvi.text" = "創立新隊伍";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "FYR-h9-UfW"; */
+"FYR-h9-UfW.normalTitle" = "返回";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "IRA-55-1g8"; */
+"IRA-55-1g8.normalTitle" = "下一步";
+
+/* Class = "UIButton"; normalTitle = "Profile"; ObjectID = "Ida-t3-Rqb"; */
+"Ida-t3-Rqb.normalTitle" = "基本資料";
+
+/* Class = "UILabel"; text = "Ask Later"; ObjectID = "Io5-GC-NPe"; */
+"Io5-GC-NPe.text" = "稍後再詢問";
+
+/* Class = "UINavigationItem"; title = "News"; ObjectID = "Jni-km-FCZ"; */
+"Jni-km-FCZ.title" = "最新消息";
+
+/* Class = "UINavigationItem"; title = "Spells"; ObjectID = "K1m-Oj-jYN"; */
+"K1m-Oj-jYN.title" = "法術";
+
+/* Class = "UINavigationItem"; title = "Customize Avatar"; ObjectID = "K4K-zl-tiU"; */
+"K4K-zl-tiU.title" = "自訂角色";
+
+/* Class = "UIButton"; normalTitle = "View Profile"; ObjectID = "KDG-GT-0Yk"; */
+"KDG-GT-0Yk.normalTitle" = "查看基本資料";
+
+/* Class = "UIButton"; normalTitle = "Profile"; ObjectID = "Khv-VU-cz2"; */
+"Khv-VU-cz2.normalTitle" = "基本資料";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "KkO-6T-Qmx"; */
+"KkO-6T-Qmx.text" = "標題";
+
+/* Class = "UIButton"; normalTitle = "Reply"; ObjectID = "LCC-CD-ggA"; */
+"LCC-CD-ggA.normalTitle" = "回覆";
+
+/* Class = "UINavigationItem"; title = "New Message"; ObjectID = "Mbw-8k-G1S"; */
+"Mbw-8k-G1S.title" = "新訊息";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "MlA-iN-6gR"; */
+"MlA-iN-6gR.text" = "登入";
+
+/* Class = "UINavigationItem"; title = "Rewards"; ObjectID = "Mlq-VF-kA3"; */
+"Mlq-VF-kA3.title" = "獎勵";
+
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "Np7-ws-fF6"; */
+"Np7-ws-fF6.title" = "待辦事項";
+
+/* Class = "UILabel"; text = "No active quest"; ObjectID = "QtZ-gI-jc8"; */
+"QtZ-gI-jc8.text" = "無進行中的任務";
+
+/* Class = "UINavigationItem"; title = "Filter by tags"; ObjectID = "RJ8-HL-bIH"; */
+"RJ8-HL-bIH.title" = "依標籤篩選";
+
+/* Class = "UINavigationItem"; title = "Members"; ObjectID = "RLc-Ty-TSs"; */
+"RLc-Ty-TSs.title" = "成員";
+
+/* Class = "UILabel"; text = "No data yet"; ObjectID = "Spy-XJ-HaY"; */
+"Spy-XJ-HaY.text" = "尚無資訊";
+
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "TXB-iK-KhP"; */
+"TXB-iK-KhP.title" = "待辦事項";
+
+/* Class = "UINavigationItem"; title = "To-Dos"; ObjectID = "Tis-dF-qId"; */
+"Tis-dF-qId.title" = "待辦事項";
+
+/* Class = "UINavigationItem"; title = "Habits"; ObjectID = "Ueo-OS-iQj"; */
+"Ueo-OS-iQj.title" = "習慣";
+
+/* Class = "UIBarButtonItem"; title = "Register"; ObjectID = "XUX-eN-jCp"; */
+"XUX-eN-jCp.title" = "註冊";
+
+/* Class = "UIBarButtonItem"; title = "Begin"; ObjectID = "XiH-W3-0uw"; */
+"XiH-W3-0uw.title" = "開始";
+
+/* Class = "UIButton"; normalTitle = "View Profile"; ObjectID = "XmA-Fg-ETr"; */
+"XmA-Fg-ETr.normalTitle" = "查看基本資料";
+
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "Y9b-tv-h4L"; */
+"Y9b-tv-h4L.title" = "隊長為";
+
+/* Class = "UINavigationItem"; title = "Choose Task"; ObjectID = "Yuh-D9-NY5"; */
+"Yuh-D9-NY5.title" = "選擇任務";
+
+/* Class = "UIBarButtonItem"; title = "Accept Guidelines"; ObjectID = "alT-a1-CTH"; */
+"alT-a1-CTH.title" = "同意守則";
+
+/* Class = "UIButton"; normalTitle = "Reply"; ObjectID = "b3r-wi-DvT"; */
+"b3r-wi-DvT.normalTitle" = "回覆";
+
+/* Class = "UIButton"; normalTitle = "Reply"; ObjectID = "bKC-rj-4EH"; */
+"bKC-rj-4EH.normalTitle" = "回覆";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "c6L-Nt-YPn"; */
+"c6L-Nt-YPn.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "ciB-Fl-be7"; */
+"ciB-Fl-be7.text" = "副標題";
+
+/* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "coN-8t-vNL"; */
+"coN-8t-vNL.normalTitle" = "刪除";
+
+/* Class = "UILabel"; text = "Write Message"; ObjectID = "dVR-u2-O6g"; */
+"dVR-u2-O6g.text" = "撰寫訊息";
+
+/* Class = "UINavigationItem"; title = "Party"; ObjectID = "deL-Nn-rLy"; */
+"deL-Nn-rLy.title" = "隊伍";
+
+/* Class = "UILabel"; text = "Write Message"; ObjectID = "gHF-kR-cZI"; */
+"gHF-kR-cZI.text" = "撰寫訊息";
+
+/* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "hIC-Qf-w8a"; */
+"hIC-Qf-w8a.title" = "清除";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "hnF-ml-Qfo"; */
+"hnF-ml-Qfo.title" = "基本資料";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "hnb-Ox-m1C"; */
+"hnb-Ox-m1C.title" = "設定";
+
+/* Class = "UITabBarItem"; title = "Menu"; ObjectID = "hyj-Mf-lvH"; */
+"hyj-Mf-lvH.title" = "選單";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "imx-7O-EEy"; */
+"imx-7O-EEy.text" = "標籤";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "lJN-5G-qrz"; */
+"lJN-5G-qrz.title" = "條件篩選";
+
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "mdo-xN-SW4"; */
+"mdo-xN-SW4.title" = "隊長為";
+
+/* Class = "UIButton"; normalTitle = "Reply"; ObjectID = "oWY-py-aTm"; */
+"oWY-py-aTm.normalTitle" = "回覆";
+
+/* Class = "UIBarButtonItem"; title = "?"; ObjectID = "obl-zo-g8m"; */
+"obl-zo-g8m.title" = "？";
+
+/* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "pdW-W9-wj6"; */
+"pdW-W9-wj6.title" = "每日任務";
+
+/* Class = "UINavigationItem"; title = "Quest Invitation"; ObjectID = "peN-hy-vqi"; */
+"peN-hy-vqi.title" = "任務邀請";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "r2M-pt-ZEv"; */
+"r2M-pt-ZEv.title" = "條件篩選";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "r6h-y4-Yj6"; */
+"r6h-y4-Yj6.placeholder" = "使用者名稱";
+
+/* Class = "UILabel"; text = "No completed To-Dos"; ObjectID = "rRE-Ue-tyN"; */
+"rRE-Ue-tyN.text" = "未完成的待辦事項";
+
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "rwy-jV-Jrm"; */
+"rwy-jV-Jrm.normalTitle" = "略過";
+
+/* Class = "UISegmentedControl"; sMQ-xU-ZOd.segmentTitles[0] = "Slim"; ObjectID = "sMQ-xU-ZOd"; */
+"sMQ-xU-ZOd.segmentTitles[0]" = "瘦小";
+
+/* Class = "UISegmentedControl"; sMQ-xU-ZOd.segmentTitles[1] = "Broad"; ObjectID = "sMQ-xU-ZOd"; */
+"sMQ-xU-ZOd.segmentTitles[1]" = "厚實";
+
+/* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "si7-7p-nZ9"; */
+"si7-7p-nZ9.title" = "座騎";
+
+/* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "sni-tf-k5c"; */
+"sni-tf-k5c.title" = "FAQ";
+
+/* Class = "UINavigationItem"; title = "Participants"; ObjectID = "so4-rB-H76"; */
+"so4-rB-H76.title" = "參與者";
+
+/* Class = "UIBarButtonItem"; title = "Decide later"; ObjectID = "v0E-Hd-n5W"; */
+"v0E-Hd-n5W.title" = "稍後再決定";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "wUf-yh-Qus"; */
+"wUf-yh-Qus.placeholder" = "密碼";
+
+/* Class = "UILabel"; text = "Reject"; ObjectID = "xJS-on-MBM"; */
+"xJS-on-MBM.text" = "拒絕";
+
+/* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
+"xZ9-Ng-9se.title" = "餵食寵物";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "xcV-Mk-39A"; */
+"xcV-Mk-39A.text" = "標籤";
+
+/* Class = "UITabBarItem"; title = "Rewards"; ObjectID = "zFI-xr-RjT"; */
+"zFI-xr-RjT.title" = "獎勵";
+
+/* Class = "UINavigationItem"; title = "Pets"; ObjectID = "zdm-Oo-gvg"; */
+"zdm-Oo-gvg.title" = "寵物";
+
+/* Class = "UINavigationItem"; title = "Dailies"; ObjectID = "zec-6L-pJk"; */
+"zec-6L-pJk.title" = "每日任務";
+

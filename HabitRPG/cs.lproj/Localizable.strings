@@ -1,0 +1,938 @@
+/* No comment provided by engineer. */
+" Unlock Set for %@ Gems " = "Odemknout set za %@ Drahokamů";
+
+/* No comment provided by engineer. */
+"%.2f Gold" = "%.2f Zlaťáků";
+
+/* No comment provided by engineer. */
+"%d Participants" = "%d Účastníků";
+
+/* No comment provided by engineer. */
+"%d out of %d responded" = "%1$d z %2$d odpovědělo";
+
+/* more than one filter */
+"%ld Filters" = "%ld Filtrů";
+
+/* No comment provided by engineer. */
+"%lu Members" = "%lu Členové";
+
+/* No comment provided by engineer. */
+"1 Filter" = "1 Filtr";
+
+/* No comment provided by engineer. */
+"1 Member" = "1 člen";
+
+/* No comment provided by engineer. */
+"1 Participant" = "1 Účastník";
+
+/* 1Password App Extension Error Message */
+"1Password Extension was cancelled by the user" = "1Password Extension bylo zrušeno uživatelem";
+
+/* No comment provided by engineer. */
+"10 min cardio" = "10 minut cvičení";
+
+/* No comment provided by engineer. */
+"10 minutes cleaning" = "10 minut úklidu";
+
+/* No comment provided by engineer. */
+"API" = "API";
+
+/* No comment provided by engineer. */
+"API Key" = "Klíč API";
+
+/* No comment provided by engineer. */
+"Abort" = "Zrušit";
+
+/* No comment provided by engineer. */
+"About" = "O";
+
+/* No comment provided by engineer. */
+"Accept" = "Přijmout";
+
+/* No comment provided by engineer. */
+"Accepted" = "Přijato";
+
+/* No comment provided by engineer. */
+"Account Details" = "Detaily účtu";
+
+/* No comment provided by engineer. */
+"Acknowledgements" = "Poděkování";
+
+/* No comment provided by engineer. */
+"Actions" = "Akce";
+
+/* No comment provided by engineer. */
+"Active" = "Aktivní";
+
+/* No comment provided by engineer. */
+"Add %@" = "Přidat %@";
+
+/* No comment provided by engineer. */
+"Add a User ID" = "Přidat uživatelské ID";
+
+/* No comment provided by engineer. */
+"Add a new checklist item" = "Přidat položku v seznamu";
+
+/* No comment provided by engineer. */
+"All" = "Všechno";
+
+/* No comment provided by engineer. */
+"Animal Ears" = "Zvířecí uši";
+
+/* 1Password App Extension Error Message */
+"App Extension API is not available in this version of iOS" = "API aplikace není dostupné pro tuto verzi iOS";
+
+/* No comment provided by engineer. */
+"App Version: %@
+" = "Verze aplikace: %@
+";
+
+/* No comment provided by engineer. */
+"Are you sure?" = "Jsi si jistý?";
+
+/* No comment provided by engineer. */
+"Armor" = "zbroj";
+
+/* No comment provided by engineer. */
+"As you complete real-world tasks, you now have a random chance of finding eggs and potions. Combine them to hatch pets" = "Při splnění úkolu v reálném životě máš možnost nalézt vejce a lektvary. Zkombinuj je a líhni mazlíčky";
+
+/* Noun */
+"Authentication" = "Ověření";
+
+/* No comment provided by engineer. */
+"Authentication Cancelled" = "Ověření zrušeno";
+
+/* No comment provided by engineer. */
+"Authentication Error" = "Chyba ověření";
+
+/* No comment provided by engineer. */
+"Back" = "Zpět";
+
+/* No comment provided by engineer. */
+"Background" = "Pozadí";
+
+/* No comment provided by engineer. */
+"Bangs" = "Ofina";
+
+/* No comment provided by engineer. */
+"Base" = "Základní";
+
+/* No comment provided by engineer. */
+"Base Mounts" = "Základní zvířata";
+
+/* No comment provided by engineer. */
+"Base Pets" = "Základní mazlíčci";
+
+/* No comment provided by engineer. */
+"Battle Gear" = "Bojová výzbroj";
+
+/* No comment provided by engineer. */
+"Beard" = "Plnovous";
+
+/* No comment provided by engineer. */
+"Become a %@" = "Staň se %@";
+
+/* No comment provided by engineer. */
+"Body" = "Tělo";
+
+/* No comment provided by engineer. */
+"Can't be bothered with classes? Want to choose later? Opt out - you'll be a warrior and your points handled automatically. You can enable classes later under Settings." = "Nechceš se zabývat povoláními? Chceš se rozhodnout později? Nech to - budeš válečníkem a tvé body budou zpracovány automaticky. Povolání můžeš povolit později v Nastavení.";
+
+/* No comment provided by engineer. */
+"Cancel" = "Zrušit";
+
+/* No comment provided by engineer. */
+"Cast Spells" = "Seslat kouzla";
+
+/* No comment provided by engineer. */
+"Chat" = "Chat";
+
+/* No comment provided by engineer. */
+"Check in with team" = "Přihlaš se k týmu";
+
+/* No comment provided by engineer. */
+"Choose a hair color!" = "Vyber si barvu vlasů!";
+
+/* No comment provided by engineer. */
+"Choose a hairstyle!" = "Vyber si účes!";
+
+/* No comment provided by engineer. */
+"Choose a skin color!" = "Vyber s barvu kůže!";
+
+/* No comment provided by engineer. */
+"Choose to become a Warrior, Mage, Healer, or Rogue! Each class has unique equipment and skills. Tap the (?) to learn more!" = "Vyber si, zda chceš být Válečníkem, Mágem, Léčitelem, nebo Zlodějem! Každé povolání má unikátní vybavení a dovednosti. Ťukni na (?) aby ses dozvěděl víc!";
+
+/* No comment provided by engineer. */
+"Choose your outfit! (You'll unlock more outfits soon.)" = "Vyber si oblečení! (Brzy ho odemkneš více.)";
+
+/* No comment provided by engineer. */
+"Chores" = "Domácí práce";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "Vymazat cache";
+
+/* No comment provided by engineer. */
+"Color" = "Barva";
+
+/* No comment provided by engineer. */
+"Complete Positive Habits to earn gold and experience! Negative Habits will hurt your avatar if you tap them, so avoid them in real life!" = "Plň dobré zvyky a dostaň zlato a zkušenosti! Zlozvyky tvé postavě ublíží, když na ně ťukneš, tak se jim snaž v životě vyhýbat!";
+
+/* No comment provided by engineer. */
+"Complete Team Project" = "Dodělat týmový projekt";
+
+/* No comment provided by engineer. */
+"Complete your To-Dos in real life, then check them off for GOLD and EXPERIENCE so you can earn Rewards and unlock new features!" = "Plň úkoly v Úkolníčku v reálném životě, pak je odškrtni a získej ZLATO a ZKUŠENOST, abys mohl získat Odměny a odemkl nové funkce!";
+
+/* No comment provided by engineer. */
+"Connection Error" = "Problém s připojením";
+
+/* No comment provided by engineer. */
+"Copy these for use in third party applications. However, think of your API Token like a password, and do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github." = "Zkopíruj je pro použití v aplikacích třetích stran. Avšak, stejně jako bys nikomu neřekl své heslo, tak nikomu neříkej svůj API Token. Někdy můžeš být požádán o své uživatelské ID, ale nikdy neuveřejňuj svůj API Token tam, kde ho uvidí ostatní a to včetně Githubu.";
+
+/* No comment provided by engineer. */
+"Costume" = "Kostým";
+
+/* No comment provided by engineer. */
+"Couldn't connect to the server. Check your network connection" = "Nemohu se připojit k serveru. Zkontroluj připojení k síti";
+
+/* No comment provided by engineer. */
+"Creativity" = "Kreativita";
+
+/* No comment provided by engineer. */
+"Current streak: %@" = "Momentální série: %@";
+
+/* No comment provided by engineer. */
+"Customize Avatar" = "Upravit postavu";
+
+/* No comment provided by engineer. */
+"Daily" = "Denně";
+
+/* No comment provided by engineer. */
+"Daily Reminder" = "Denní upomínka";
+
+/* No comment provided by engineer. */
+"Dated" = "Datováno";
+
+/* No comment provided by engineer. */
+"Declined" = "Zamítnuto";
+
+/* No comment provided by engineer. */
+"Defeat your repeating Daily tasks to gain gold and experience. Danger! Dailies will hurt your avatar if you don't complete them in time." = "Poraž své opakující se denní úkoly a získej zlato a zkušenosti. Pozor! Denní úkoly ublíží tvé postavě, pokud je nesplníš včas.";
+
+/* No comment provided by engineer. */
+"Description" = "Popis";
+
+/* No comment provided by engineer. */
+"Difficulty" = "Obtížnost";
+
+/* No comment provided by engineer. */
+"Do homework" = "Udělat domácí úkoly";
+
+/* No comment provided by engineer. */
+"Done" = "Hotovo";
+
+/* No comment provided by engineer. */
+"Due" = "Do";
+
+/* No comment provided by engineer. */
+"Due %@" = "Splnit do %@";
+
+/* No comment provided by engineer. */
+"Due Date" = "Termín splnění";
+
+/* No comment provided by engineer. */
+"Due in %d days" = "Splnit do %d dnů";
+
+/* No comment provided by engineer. */
+"Due today" = "Splnit dnes";
+
+/* No comment provided by engineer. */
+"Due tomorrow" = "Splnit zítra";
+
+/* No comment provided by engineer. */
+"ERROR" = "CHYBA:";
+
+/* No comment provided by engineer. */
+"Earn items by completing tasks and leveling up. Tap on an item to use it!" = "Získej předměty za splnění úkolů a dosažení dalších úrovní. Ťukni na ně, abys je mohl použít.";
+
+/* No comment provided by engineer. */
+"Easy" = "Jednoduché";
+
+/* No comment provided by engineer. */
+"Eat healthy/junk food" = "Jíst zdravě/nezdravě";
+
+/* No comment provided by engineer. */
+"Edit %@" = "Upravit %@";
+
+/* No comment provided by engineer. */
+"Edit Party" = "Upravit družinu";
+
+/* No comment provided by engineer. */
+"Edit Reward" = "Upravit odměnu";
+
+/* No comment provided by engineer. */
+"Email already taken." = "Email se již používá";
+
+/* No comment provided by engineer. */
+"Enter" = "Vstoupit";
+
+/* No comment provided by engineer. */
+"Equip" = "Vybavit";
+
+/* No comment provided by engineer. */
+"Equipment" = "Vybavení";
+
+/* No comment provided by engineer. */
+"Error" = "Chyba";
+
+/* No comment provided by engineer. */
+"Every x days" = "Každých X dnů";
+
+/* No comment provided by engineer. */
+"Exercise" = "Cvičit";
+
+/* No comment provided by engineer. */
+"Experience" = "Zkušenost";
+
+/* No comment provided by engineer. */
+"Eyewear" = "Brýle";
+
+/* 1Password App Extension Error Message */
+"Failed to contacting the 1Password App Extension" = "Nepodařilo se mi připojit se k 1Password Extension";
+
+/* 1Password App Extension Error Message */
+"Failed to execute script that collects web page information" = "Nepodařilo se spustit skript, který sbírá informace o stránce";
+
+/* 1Password App Extension Error Message */
+"Failed to fill web page because script could not be evaluated" = "Nepodařilo se vyplnit stránku, protože se skript nebyl vyhodnocen";
+
+/* 1Password App Extension Error Message */
+"Failed to fill web page because script is missing" = "Nepodařilo se vyplnit stránku, protože skript chybí";
+
+/* 1Password App Extension Error Message */
+"Failed to parse information returned by 1Password App Extension" = "Nepodařilo se přeložit informace vrácené 1Password Extension";
+
+/* No comment provided by engineer. */
+"Feed" = "Nakrmit";
+
+/* No comment provided by engineer. */
+"Filter" = "Filtr";
+
+/* No comment provided by engineer. */
+"Finish assignment for class " = "Dodělat úkol";
+
+/* No comment provided by engineer. */
+"Finish creative project" = "Dodělat kreativní projekt";
+
+/* No comment provided by engineer. */
+"First, you need an avatar in the game to represent you! The things you do in real life will affect your avatar's health, experience level, and gold." = "Nejprve potřebuješ postavu, která tě bude ve hře reprezentovat! Věci, které budeš dělat v reálném životě ovlivní zdraví, zkušenosti a zlato tvé postavy.";
+
+/* No comment provided by engineer. */
+"Floss" = "Použít zubní nit";
+
+/* No comment provided by engineer. */
+"Flower" = "Květina";
+
+/* No comment provided by engineer. */
+"Frequency" = "Frekvence";
+
+/* No comment provided by engineer. */
+"Friday" = "Pátek";
+
+/* No comment provided by engineer. */
+"Gems are purchased with real money, which makes it possible for Habitica to release new updates. Gems can be used to buy special items and backgrounds. Thank you for supporting us!" = "Drahokamy se kupují za reálné peníze, díky čemuž můžeme v Habitica vydávat nové aktualizace. Drahokamy mohou být použity na speciální předměty a pozadí. Děkujeme za tvou podporu!";
+
+/* No comment provided by engineer. */
+"Go Back" = "Zpět";
+
+/* No comment provided by engineer. */
+"Got it" = "Chápu";
+
+/* No comment provided by engineer. */
+"Grey" = "Šedý";
+
+/* No comment provided by engineer. */
+"Habit" = "Zvyk";
+
+/* No comment provided by engineer. */
+"Hair" = "Účes";
+
+/* No comment provided by engineer. */
+"Hard" = "Těžké";
+
+/* No comment provided by engineer. */
+"Has a due date" = "Má datum splnění";
+
+/* No comment provided by engineer. */
+"Hatch Egg" = "Vylíhnout vejce";
+
+/* No comment provided by engineer. */
+"Hatch with Potion" = "Vylíhnout lektvarem";
+
+/* No comment provided by engineer. */
+"Head" = "Vlasy";
+
+/* No comment provided by engineer. */
+"Head Accessory" = "Doplňky na hlavu";
+
+/* No comment provided by engineer. */
+"Healer" = "Léčitel";
+
+/* No comment provided by engineer. */
+"Healers stand impervious against harm, and extend that protection to others. Missed Dailies and bad Habits don't faze them much, and they have ways to recover Health from failure. Play a Healer if you enjoy assisting others in your Party, or if the idea of cheating Death through hard work inspires you!" = "Léčitel je nezranitelný a ochraňuje i ostatní. Promeškané Denní úkoly a špatné Zvyky jim moc neublíží a mají možnosti jak se zahojit. Buď léčitelem a užij si pomoc ostatním v družině, nebo pokud tě inspiruje myšlenka ošidit smrt tak, že budeš pořádně dřít!";
+
+/* No comment provided by engineer. */
+"Health" = "Zdraví";
+
+/* No comment provided by engineer. */
+"Health + Wellness" = "Zdraví + Wellness";
+
+/* No comment provided by engineer. */
+"Help & FAQ" = "Nápověda a často kladené dotazy";
+
+/* No comment provided by engineer. */
+"Hey! You are awesome!
+Version %@ (%@)" = "Hej! Jsi skvělý!
+Verze %1$@ (%2$@)";
+
+/* No comment provided by engineer. */
+"I want to become a %@" = "Chci se stát %@";
+
+/* No comment provided by engineer. */
+"I want to opt-out" = "Chci se odhlásit";
+
+/* No comment provided by engineer. */
+"Invalid E-Mail Address." = "Nesprávná emailová adresa";
+
+/* No comment provided by engineer. */
+"Invalid username or password" = "Nesprávné jméno nebo heslo";
+
+/* No comment provided by engineer. */
+"Inventory" = "Inventář";
+
+/* No comment provided by engineer. */
+"Invite" = "Pozvat";
+
+/* No comment provided by engineer. */
+"Invite Members" = "Pozvat členy";
+
+/* No comment provided by engineer. */
+"Invite Party" = "Pozvat družinu";
+
+/* No comment provided by engineer. */
+"Invited to %@" = "Pozván do %@";
+
+/* No comment provided by engineer. */
+"Items" = "Předměty";
+
+/* No comment provided by engineer. */
+"Join Party" = "Přidat se k družině";
+
+/* No comment provided by engineer. */
+"Last logged in" = "Naposledy přihlášen";
+
+/* No comment provided by engineer. */
+"Leave a Review" = "Napsat recenzi";
+
+/* No comment provided by engineer. */
+"Leave the Inn" = "Odejít z Hostince";
+
+/* No comment provided by engineer. */
+"Level %@" = "Úroveň %@";
+
+/* No comment provided by engineer. */
+"Level %@ %@" = "Úroveň %1$@ %2$@";
+
+/* No comment provided by engineer. */
+"Level up!" = "Další úroveň!";
+
+/* No comment provided by engineer. */
+"Local" = "Lokální";
+
+/* No comment provided by engineer. */
+"Log Out" = "Odhlásit";
+
+/* No comment provided by engineer. */
+"Log in" = "Přihlásit se";
+
+/* No comment provided by engineer. */
+"Login Method" = "Způsob přihlášení";
+
+/* No comment provided by engineer. */
+"Login name" = "Přihlašovací jméno";
+
+/* No comment provided by engineer. */
+"Mage" = "Mág";
+
+/* No comment provided by engineer. */
+"Mages learn swiftly, gaining Experience and Levels faster than other classes. They also get a great deal of Mana for using special abilities. Play a Mage if you enjoy the tactical game aspects of Habit, or if you are strongly motivated by leveling up and unlocking advanced features!" = "Mágové se rychle učí, získávají zkušenosti a postupují na vyšší úrovně rychleji než ostatní povolání. Mají také opravdu hodně many na používání speciálních schopností. Hraj za Mága, pokud si chceš užít taktický aspekt Habitica, nebo pokud tě motivuje postup na vyšší úrovně a odemykání nových pokročilých funkcí.";
+
+/* No comment provided by engineer. */
+"Maintenance" = "Údržba";
+
+/* No comment provided by engineer. */
+"Mana" = "Mana";
+
+/* No comment provided by engineer. */
+"Medium" = "Středně těžké";
+
+/* No comment provided by engineer. */
+"Member Since" = "Členem od";
+
+/* No comment provided by engineer. */
+"Menu" = "Menu";
+
+/* No comment provided by engineer. */
+"Monday" = "Pondělí";
+
+/* No comment provided by engineer. */
+"Most important task" = "Nejdůležitější úkol";
+
+/* No comment provided by engineer. */
+"Mount" = "Nasednout";
+
+/* No comment provided by engineer. */
+"Mount Type" = "typ zvířete";
+
+/* No comment provided by engineer. */
+"Mounts" = "Stáj";
+
+/* No comment provided by engineer. */
+"Mustache" = "Knír";
+
+/* No comment provided by engineer. */
+"Name" = "Jméno";
+
+/* No comment provided by engineer. */
+"Negative (-)" = "Záporný (-)";
+
+/* No comment provided by engineer. */
+"Network error" = "Chyba sítě";
+
+/* No comment provided by engineer. */
+"New Party" = "Nová družina";
+
+/* No comment provided by engineer. */
+"New Reward" = "Nová odměna";
+
+/* No comment provided by engineer. */
+"News" = "Novinky";
+
+/* No comment provided by engineer. */
+"No" = "Ne";
+
+/* No comment provided by engineer. */
+"Notes" = "Poznámky";
+
+/* No comment provided by engineer. */
+"Nothing Equipped" = "Žádné vybavení";
+
+/* No comment provided by engineer. */
+"Nothing Set" = "Nic nastaveno";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"On certain days of the week" = "V určité dny v týdnu";
+
+/* No comment provided by engineer. */
+"Once a quest is started, no other party members can join the quest." = "Jakmile výprava začne, nikdo další se k ní již nemůže přidat.";
+
+/* No comment provided by engineer. */
+"Opt-Out" = "Odhlásit";
+
+/* No comment provided by engineer. */
+"Organize Closet" = "Přerovnat skříň s oblečením";
+
+/* No comment provided by engineer. */
+"Participants" = "Účastníci";
+
+/* No comment provided by engineer. */
+"Party" = "Družina";
+
+/* No comment provided by engineer. */
+"Party Invitation" = "Pozvání do družiny";
+
+/* No comment provided by engineer. */
+"Passwords don't match." = "Hesla se neshodují";
+
+/* No comment provided by engineer. */
+"Pending" = "Nerozhodnuto";
+
+/* No comment provided by engineer. */
+"Pet Type" = "typ mazlíčka";
+
+/* No comment provided by engineer. */
+"Pets" = "Mazlíčci";
+
+/* No comment provided by engineer. */
+"Positive (+)" = "Kladný (+)";
+
+/* No comment provided by engineer. */
+"Process email" = "Zpracovat email";
+
+/* No comment provided by engineer. */
+"Purchase for %@ Gems" = "Koupit za %@ drahokamy/ů";
+
+/* No comment provided by engineer. */
+"Purchase for 2 Gems" = "Koupit za 2 drahokamy";
+
+/* No comment provided by engineer. */
+"Quest" = "Výprava";
+
+/* No comment provided by engineer. */
+"Quest Detail" = "Detaily výpravy";
+
+/* No comment provided by engineer. */
+"Quest Invitation" = "Pozvánka na Výpravu";
+
+/* No comment provided by engineer. */
+"Quest Mounts" = "Zvířata z výprav";
+
+/* No comment provided by engineer. */
+"Quest Pets" = "Mazlíčci z výprav";
+
+/* No comment provided by engineer. */
+"Register" = "Registrovat";
+
+/* No comment provided by engineer. */
+"Reject" = "Odmítnout";
+
+/* No comment provided by engineer. */
+"Reload Content" = "Znovu načíst obsah";
+
+/* No comment provided by engineer. */
+"Remember to check off your Dailies!" = "Nezapomeň splnit své denní úkoly!";
+
+/* No comment provided by engineer. */
+"Remind me tomorrow" = "Připomenout zítra";
+
+/* No comment provided by engineer. */
+"Reminder" = "Upomínka";
+
+/* No comment provided by engineer. */
+"Repeat" = "Opakovat";
+
+/* No comment provided by engineer. */
+"Repeat every X days" = "Opakovat každých x dní";
+
+/* No comment provided by engineer. */
+"Report a bug" = "Nahlásit chybu";
+
+/* No comment provided by engineer. */
+"Reset Justins Tips" = "Obnovit Justinovy tipy";
+
+/* No comment provided by engineer. */
+"Rest in the Inn" = "Odpočívat v hostinci";
+
+/* No comment provided by engineer. */
+"Rogue" = "Zloděj";
+
+/* No comment provided by engineer. */
+"Rogues love to accumulate wealth, gaining more Gold than anyone else, and are adept at finding random items. Their iconic Stealth ability lets them duck the consequences of missed Dailies. Play a Rogue if you find strong motivation from Rewards and Achievements, striving for loot and badges!" = "Zloděj miluje střádání bohatství, získávání více zlata než mají ostatní, a je adeptem na nalezení náhodných předmětů. Jeho pověstná lstivost mu umožňuje uniknout důsledkům promeškání Denních úkolů. Buď zlodějem, pokud nacházíš silnou motivaci v odměnách a úspěších a usiluješ o kořist a ocenění!";
+
+/* No comment provided by engineer. */
+"Saturday" = "Sobota";
+
+/* No comment provided by engineer. */
+"Schedule check-up" = "Naplánovat kontrolu";
+
+/* No comment provided by engineer. */
+"School" = "Škola";
+
+/* No comment provided by engineer. */
+"Select Class" = "Vybrat povolání";
+
+/* No comment provided by engineer. */
+"Select Difficulty" = "Vybrat obtížnost";
+
+/* No comment provided by engineer. */
+"Select Frequency" = "Vybrat frekvenci";
+
+/* No comment provided by engineer. */
+"Sell (%@ Gold)" = "Prodat %@ Zlaťáků";
+
+/* No comment provided by engineer. */
+"Send feedback" = "Poslat zpětnou vazbu";
+
+/* No comment provided by engineer. */
+"Server error" = "Chyba serveru";
+
+/* No comment provided by engineer. */
+"Set up workout schedule" = "Naplánovat cvičení";
+
+/* No comment provided by engineer. */
+"Settings" = "Nastavení";
+
+/* No comment provided by engineer. */
+"Shield" = "Štít";
+
+/* No comment provided by engineer. */
+"Shirt" = "Košile";
+
+/* No comment provided by engineer. */
+"Size" = "Velikost";
+
+/* (No Commment) */
+"Skills are special abilities that have powerful affects! Tap on a skill to use it. It will cost Mana (the blue bar), which you earn by checking in every day and by completing your real-life tasks. Check out the FAQ in the menu for more info!" = "Dovednosti jsou speciální schopnosti, které mají velkou účinnost! Ťuknutím na dovednost ji použiješ. Dovednosti platíš Manou (modrá lišta), kterou získáváš za přihlášení každý den a za plnění úkolů. Pro více informací se koukni do Často kladených dotazů v menu!";
+
+/* No comment provided by engineer. */
+"Skin" = "Kůže";
+
+/* No comment provided by engineer. */
+"Sleep tight!" = "Spi sladce!";
+
+/* No comment provided by engineer. */
+"Social" = "Komunita";
+
+/* No comment provided by engineer. */
+"Special Mounts" = "Speciální zvířata";
+
+/* No comment provided by engineer. */
+"Special Pets" = "Speciální mazlíčci";
+
+/* No comment provided by engineer. */
+"Splendid! Now let's set up your tasks so that you can start earning experience and gold.
+
+To start, which parts of your life do you want to improve?" = "Výborně! Teď si zadej úkoly a začni získávat zkušenosti a zlato!
+
+Čím začít? Které části svého života bys chtěl vylepšit?";
+
+/* No comment provided by engineer. */
+"Stretching" = "Protahování";
+
+/* No comment provided by engineer. */
+"Strong" = "Silné";
+
+/* No comment provided by engineer. */
+"Study a master of the craft" = "Studuj řemeslo";
+
+/* No comment provided by engineer. */
+"Study/Procrastinate" = "Studovat/flákat se";
+
+/* No comment provided by engineer. */
+"Sunday" = "Neděle";
+
+/* No comment provided by engineer. */
+"Tags" = "Štítky";
+
+/* No comment provided by engineer. */
+"Tap a task to edit it. Swipe left to delete it." = "Ťuknutím upravíš úkol. Přejetím doleva ho smažeš.";
+
+/* No comment provided by engineer. */
+"Tap to add a new task." = "Ťuknutím přidáš nový úkol.";
+
+/* No comment provided by engineer. */
+"Tap to change how your pets are grouped." = "Ťuknutím změníš jak se ti řadí mazlíčci.";
+
+/* No comment provided by engineer. */
+"Tap to continue" = "Klepni a pokračuj";
+
+/* No comment provided by engineer. */
+"Tap to filter tasks." = "Ťuknutím seřadíš úkoly.";
+
+/* No comment provided by engineer. */
+"Tavern" = "Krčma";
+
+/* No comment provided by engineer. */
+"Teams" = "Týmy";
+
+/* No comment provided by engineer. */
+"Text" = "Text";
+
+/* No comment provided by engineer. */
+"The authentication process was cancelled." = "Proces ověřování byl zrušen.";
+
+/* No comment provided by engineer. */
+"The following lines help us find and squash the Bug you encountered. Please do not delete/change them.
+" = "Následující řádky nám pomohou najít a zabít tu chybu, kterou jsi našel. Prosím nemaž/neupravuj je.
+";
+
+/* No comment provided by engineer. */
+"There comes a point in the life of every habitican, where they have to decide their path.
+
+What will yours be?" = "V životě každého habiťana přijde doba, kdy se musí rozhodnout, po jaké cestě se vydají.
+
+Jaká bude ta tvoje?";
+
+/* No comment provided by engineer. */
+"There is no internet connection. You will not be able to perform any actions." = "Žádné připojení k internetu. Nebudeš moci nic dělat.";
+
+/* No comment provided by engineer. */
+"There seems to be a problem with the server. Try again later" = "Zdá se, že se vyskytl problém se serverem. Zkus to později";
+
+/* No comment provided by engineer. */
+"There was an error verifying your purchase" = "Chyba při ověřování nákupu";
+
+/* No comment provided by engineer. */
+"There was an error with the authentication. Try again later" = "Chyba v ověření uživatele. Zkus to později";
+
+/* No comment provided by engineer. */
+"These are your Rewards! Earn gold by completing real-world Habits, Dailies, and To-Dos. Then spend it on in-game Rewards or custom real-world Rewards!" = "Toto jsou tvé Odměny! Získej zlat za plnění zvyků, denních úkolů a úkolů v Úkolníčku. A pak je utrať za Odměny!";
+
+/* No comment provided by engineer. */
+"This is where you and your friends can hold each other accountable to your goals and fight monsters with your tasks!" = "Tady si navzájem zodpovídáte se svými přáteli za své cíle a společně tu bojujete proti příšerám!";
+
+/* No comment provided by engineer. */
+"This item can be purchased for %@ Gems" = "Tento předmět může být zakoupen za %@ Zlaťáky/ů";
+
+/* No comment provided by engineer. */
+"This item can be purchased for 2 Gems" = "Tento předmět můžeš koupit za 2 drahokamy";
+
+/* No comment provided by engineer. */
+"This set can be unlocked for %@ Gems" = "Tenhle sen může být odemčen za %@ Drahokamy/ů";
+
+/* No comment provided by engineer. */
+"Thursday" = "Čtvrtek";
+
+/* No comment provided by engineer. */
+"To-Do" = "úkol";
+
+/* No comment provided by engineer. */
+"Trivial" = "Triviální";
+
+/* No comment provided by engineer. */
+"Tuesday" = "Úterý";
+
+/* No comment provided by engineer. */
+"Unequip" = "Odebrat";
+
+/* No comment provided by engineer. */
+"Unlock for %@ Gems" = "Odemknout za %@ Drahokamů";
+
+/* No comment provided by engineer. */
+"Unmount" = "Sesednout";
+
+/* No comment provided by engineer. */
+"Update team on status" = "Seznámit tým se stavem";
+
+/* No comment provided by engineer. */
+"Use" = "Použít";
+
+/* No comment provided by engineer. */
+"Use Skills" = "Použít dovednosti";
+
+/* No comment provided by engineer. */
+"User" = "Uživatel";
+
+/* No comment provided by engineer. */
+"User ID" = "Uživatelské ID";
+
+/* No comment provided by engineer. */
+"Username already taken." = "Toto jméno již existuje.";
+
+/* No comment provided by engineer. */
+"Validation Error" = "Chyba ověření";
+
+/* No comment provided by engineer. */
+"Value" = "Hodnota";
+
+/* No comment provided by engineer. */
+"Version" = "Verze";
+
+/* No comment provided by engineer. */
+"View Source Code" = "Zobrazit zdrojový kód";
+
+/* No comment provided by engineer. */
+"Wakey Wakey!" = "Vstávat a cvičit!";
+
+/* No comment provided by engineer. */
+"Warrior" = "Válečník";
+
+/* No comment provided by engineer. */
+"Warriors score more and better \"critical hits\", which randomly give bonus Gold, Experience, and drop chance for scoring a task. They also deal heavy damage to boss monsters. Play a Warrior if you find motivation from unpredictable jackpot-style rewards, or want to dish out the hurt in boss Quests!" = "Válečníci získávají lepší \"kritické zásahy\", které náhodně dávají bonusové zlaťáky a zkušenosti a zvyšují šanci na nalezení předmětů při splnění úkolu. Také způsobují větší újmu bossům. Hraj za válečníka, pokud tě motivují nepředvídatelné odměny nebo to chceš pořádně nandat bossům při Výpravách!";
+
+/* No comment provided by engineer. */
+"Wash Dishes" = "Umýt nádobí";
+
+/* No comment provided by engineer. */
+"We love open source software." = "Milujeme open source software";
+
+/* No comment provided by engineer. */
+"Weak" = "Slabé";
+
+/* No comment provided by engineer. */
+"Weapon" = "zbraň";
+
+/* No comment provided by engineer. */
+"Wear costume" = "Použít kostým";
+
+/* No comment provided by engineer. */
+"Website" = "Stránka";
+
+/* No comment provided by engineer. */
+"Wednesday" = "Středa";
+
+/* No comment provided by engineer. */
+"Weekly" = "týdně";
+
+/* No comment provided by engineer. */
+"Welcome" = "Vítej";
+
+/* No comment provided by engineer. */
+"Welcome to Habitica, where advancing in the game will improve your real life! As you accomplish real-world goals, you'll unlock equipment, pets, quests, and more." = "Vítej v zemi Habitica, kde ti postup ve hře zlepší život! S každým zvládnutým úkolem odemkneš nové vybavení, mazlíčky, výpravy a mnoho dalších věcí.";
+
+/* No comment provided by engineer. */
+"Welcome to the Tavern, a public, all-ages chatroom! Here you can chat about productivity and ask questions. Have fun!" = "Vítej v Krčmě, veřejném chatu pro všechny věkové kategorie! Můžeš si tu popovídat o své produktivitě nebo se ptát na otázky. Bav se!";
+
+/* No comment provided by engineer. */
+"When you abort a quest, all progress will be lost and the quest scroll will be put back into your inventory." = "Když opustíš výpravu, všechen tvůj postup bude ztracen a svitek výpravy bude vrácen zpátky do Inventáře.";
+
+/* No comment provided by engineer. */
+"When you buy equipment, it appears here. Your Battle Gear affects your stats, and your Costume (if enabled) affects what your avatar wears." = "Když si koupíš vybavení, objeví se tady. Tvá bojová výzbroj ovlivňuje tvé statistiky, a tvůj kostým (pokud ho máš zapnutý) se objevuje na tvé postavě.";
+
+/* No comment provided by engineer. */
+"Work" = "Práce";
+
+/* No comment provided by engineer. */
+"Work on creative project" = "Práce na kreativním projektu";
+
+/* No comment provided by engineer. */
+"Work project" = "Pracovní projekt";
+
+/* No comment provided by engineer. */
+"World Quest" = "Světová výprava";
+
+/* No comment provided by engineer. */
+"Yes" = "Ano";
+
+/* No comment provided by engineer. */
+"You Died" = "Zemřel jsi";
+
+/* No comment provided by engineer. */
+"You are now Level %ld" = "Nyní jsi na úrovni %ld";
+
+/* No comment provided by engineer. */
+"You found a piece of rare Equipment in the Armoire: %@! Awesome!" = "Ve zbrojnici jsi našel kus vzácného vybavení ve Zbrojnici: %@! Skvělé!";
+
+/* No comment provided by engineer. */
+"You hatched a %@ %@!" = "Vylíhnul se ti %1$@ %2$@!";
+
+/* No comment provided by engineer. */
+"You have no food" = "Nemáš žádné jídlo.";
+
+/* No comment provided by engineer. */
+"You rummage in the Armoire and find %@. What's that doing in here?" = "Prohledáváš zbrojnici a nacházíš %@. Co to tu dělá?";
+
+/* No comment provided by engineer. */
+"You will become a %@." = "Staneš se %@.";
+
+/* No comment provided by engineer. */
+"You wrestle with the Armoire and gain %@ Experience. Take that!" = "Zápasíš se Zbrojnicí a získáváš %@ zkušeností. To jsi jí to nandal!";
+
+/* No comment provided by engineer. */
+"You've lost a Level, all your Gold, and a random piece of Equipment. Arise, Habiteer, and try again! Curb those negative Habits, be vigilant in completion of Dailies, and hold death at arm's length with a Health Potion if you falter!" = "Propadl jsi o úroveň níž a přišel jsi o všechny zlaťáky a náhodný kus vybavení. Povstaň, Habiťane, a zkus to znovu! Zbav se zlozvyků, poctivě plň denní úkoly a v případě zaváhání se vyhni smrti pomocí léčivého lektvaru.";
+
+/* No comment provided by engineer. */
+"Your pet eats the %@ but doesn't seem to enjoy it." = "%@ není pro tvého mazlíčka žádnou pochoutkou.";
+
+/* No comment provided by engineer. */
+"Your pet really likes the %@" = "%@ tvému mazlíčkovi moc chutná";
+
+/* No comment provided by engineer. */
+"email" = "Email";
+
+/* No comment provided by engineer. */
+"equipped" = "použito";
+

@@ -1,0 +1,938 @@
+/* No comment provided by engineer. */
+" Unlock Set for %@ Gems " = "Frigør sættet for %@ Ædelsten";
+
+/* No comment provided by engineer. */
+"%.2f Gold" = "%.2f Guld";
+
+/* No comment provided by engineer. */
+"%d Participants" = "%@ Deltagere";
+
+/* No comment provided by engineer. */
+"%d out of %d responded" = "%1$d ud af %2$d har svaret";
+
+/* more than one filter */
+"%ld Filters" = "%ld Filtre";
+
+/* No comment provided by engineer. */
+"%lu Members" = "%lu Medlemmer";
+
+/* No comment provided by engineer. */
+"1 Filter" = "1 Filter";
+
+/* No comment provided by engineer. */
+"1 Member" = "1 Medlem";
+
+/* No comment provided by engineer. */
+"1 Participant" = "1 Deltager";
+
+/* 1Password App Extension Error Message */
+"1Password Extension was cancelled by the user" = "1Password Extension afbrudt af bruger";
+
+/* No comment provided by engineer. */
+"10 min cardio" = "10 minutters konditionstræning";
+
+/* No comment provided by engineer. */
+"10 minutes cleaning" = "10 minutters rengøring";
+
+/* No comment provided by engineer. */
+"API" = "API";
+
+/* No comment provided by engineer. */
+"API Key" = "API-Nøgle";
+
+/* No comment provided by engineer. */
+"Abort" = "Afbryd";
+
+/* No comment provided by engineer. */
+"About" = "Om";
+
+/* No comment provided by engineer. */
+"Accept" = "Acceptér";
+
+/* No comment provided by engineer. */
+"Accepted" = "Accepteret";
+
+/* No comment provided by engineer. */
+"Account Details" = "Kontodetaljer";
+
+/* No comment provided by engineer. */
+"Acknowledgements" = "Anderkendelser";
+
+/* No comment provided by engineer. */
+"Actions" = "Handlinger";
+
+/* No comment provided by engineer. */
+"Active" = "Aktiv";
+
+/* No comment provided by engineer. */
+"Add %@" = "Tilføj %@";
+
+/* No comment provided by engineer. */
+"Add a User ID" = "Tilføj et BrugerID";
+
+/* No comment provided by engineer. */
+"Add a new checklist item" = "Tilføj ny ting til tjekliste";
+
+/* No comment provided by engineer. */
+"All" = "Alle";
+
+/* No comment provided by engineer. */
+"Animal Ears" = "Dyreører";
+
+/* 1Password App Extension Error Message */
+"App Extension API is not available in this version of iOS" = "App-udvidelsesAPI ikke tilgængelig i denne version af iOS";
+
+/* No comment provided by engineer. */
+"App Version: %@
+" = "App Version: %@
+";
+
+/* No comment provided by engineer. */
+"Are you sure?" = "Er du sikker?";
+
+/* No comment provided by engineer. */
+"Armor" = "Rustning";
+
+/* No comment provided by engineer. */
+"As you complete real-world tasks, you now have a random chance of finding eggs and potions. Combine them to hatch pets" = "Når du udfører opgaver i den virkelige verden har du nu en chance for at finde æg og eliksirer. Kombinér dem for at udruge kæledyr";
+
+/* Noun */
+"Authentication" = "Godkendelse";
+
+/* No comment provided by engineer. */
+"Authentication Cancelled" = "Godkendelse Afbrudt";
+
+/* No comment provided by engineer. */
+"Authentication Error" = "Godkendelsesfejl";
+
+/* No comment provided by engineer. */
+"Back" = "Ryg";
+
+/* No comment provided by engineer. */
+"Background" = "Baggrund";
+
+/* No comment provided by engineer. */
+"Bangs" = "Pandehår";
+
+/* No comment provided by engineer. */
+"Base" = "Basis";
+
+/* No comment provided by engineer. */
+"Base Mounts" = "Basisridedyr";
+
+/* No comment provided by engineer. */
+"Base Pets" = "Basiskæledyr";
+
+/* No comment provided by engineer. */
+"Battle Gear" = "Kampudstyr";
+
+/* No comment provided by engineer. */
+"Beard" = "Skæg";
+
+/* No comment provided by engineer. */
+"Become a %@" = "Bliv en %@";
+
+/* No comment provided by engineer. */
+"Body" = "Krop";
+
+/* No comment provided by engineer. */
+"Can't be bothered with classes? Want to choose later? Opt out - you'll be a warrior and your points handled automatically. You can enable classes later under Settings." = "Er du ligeglad med klasser? Vil du vælge senere? Fravælg klasser - du bliver så til en Kriger og dine point vil automatisk blive tildelt. Du kan senere tilvælge klasser under Indstillinger";
+
+/* No comment provided by engineer. */
+"Cancel" = "Afbryd";
+
+/* No comment provided by engineer. */
+"Cast Spells" = "Kast Fortryllelser";
+
+/* No comment provided by engineer. */
+"Chat" = "Chat";
+
+/* No comment provided by engineer. */
+"Check in with team" = "Tjek ind med team";
+
+/* No comment provided by engineer. */
+"Choose a hair color!" = "Vælg en hårfarve!";
+
+/* No comment provided by engineer. */
+"Choose a hairstyle!" = "Vælg en frisure!";
+
+/* No comment provided by engineer. */
+"Choose a skin color!" = "Vælg en hudfarve!";
+
+/* No comment provided by engineer. */
+"Choose to become a Warrior, Mage, Healer, or Rogue! Each class has unique equipment and skills. Tap the (?) to learn more!" = "Vælg mellem at blive Kriger, Magiker, Helbreder eller Slyngel! Hver klasse har eget udstyr og evner. Tryk på (?) for at læse mere!";
+
+/* No comment provided by engineer. */
+"Choose your outfit! (You'll unlock more outfits soon.)" = "Vælg dit udstyr! (Du får adgang til mere udstyr snart.)";
+
+/* No comment provided by engineer. */
+"Chores" = "Pligter";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "Ryd Cache";
+
+/* No comment provided by engineer. */
+"Color" = "Farve";
+
+/* No comment provided by engineer. */
+"Complete Positive Habits to earn gold and experience! Negative Habits will hurt your avatar if you tap them, so avoid them in real life!" = "Færdiggør Positive Vaner for at tjene guld og erfaring! Negative Vaner skader din avatar hvis du udfører dem, så undgå dem i den virkelige verden!";
+
+/* No comment provided by engineer. */
+"Complete Team Project" = "Færdiggør Teamprojekt";
+
+/* No comment provided by engineer. */
+"Complete your To-Dos in real life, then check them off for GOLD and EXPERIENCE so you can earn Rewards and unlock new features!" = "Færdiggør dine To-Dos i den virkelige verden, og marker dem så her for at tjene Guld og Erfaring, så du kan få Belønninger og låse op for nye features!";
+
+/* No comment provided by engineer. */
+"Connection Error" = "Forbindelsesfejl";
+
+/* No comment provided by engineer. */
+"Copy these for use in third party applications. However, think of your API Token like a password, and do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github." = "Kopier disse til brug i tredjepartsapplikationer. Du skal dog tænke på din API Nøgle som et password og lade være med at dele den offentligt. Du kan nogen gange blive bedt om dit BrugerID, men lad være med at sende din API Nøgle hvor andre kan se det, inklusive på Github.";
+
+/* No comment provided by engineer. */
+"Costume" = "Kostume";
+
+/* No comment provided by engineer. */
+"Couldn't connect to the server. Check your network connection" = "Kunne ikke forbinde til serveren. Tjek din netværksforbindelse";
+
+/* No comment provided by engineer. */
+"Creativity" = "Kreativitet";
+
+/* No comment provided by engineer. */
+"Current streak: %@" = "Nuværende stime: %@";
+
+/* No comment provided by engineer. */
+"Customize Avatar" = "Tilpas Avatar";
+
+/* No comment provided by engineer. */
+"Daily" = "Daglig";
+
+/* No comment provided by engineer. */
+"Daily Reminder" = "Daglig Påmindelse";
+
+/* No comment provided by engineer. */
+"Dated" = "Dateret";
+
+/* No comment provided by engineer. */
+"Declined" = "Afslå";
+
+/* No comment provided by engineer. */
+"Defeat your repeating Daily tasks to gain gold and experience. Danger! Dailies will hurt your avatar if you don't complete them in time." = "Overvind dine gentagne Daglige opgaver for at tjene guld og erfaring. Advarsel! Daglige vil skade din avatar hvis du ikke færdiggør dem i tide.";
+
+/* No comment provided by engineer. */
+"Description" = "Beskrivelse";
+
+/* No comment provided by engineer. */
+"Difficulty" = "Sværhedsgrad";
+
+/* No comment provided by engineer. */
+"Do homework" = "Lav lektier";
+
+/* No comment provided by engineer. */
+"Done" = "Færdig";
+
+/* No comment provided by engineer. */
+"Due" = "Forfaldne";
+
+/* No comment provided by engineer. */
+"Due %@" = "Forfaldne %@";
+
+/* No comment provided by engineer. */
+"Due Date" = "Forfaldsdato";
+
+/* No comment provided by engineer. */
+"Due in %d days" = "Forfaldne om %d dage";
+
+/* No comment provided by engineer. */
+"Due today" = "Forfaldne i dag";
+
+/* No comment provided by engineer. */
+"Due tomorrow" = "Forfaldne i morgen";
+
+/* No comment provided by engineer. */
+"ERROR" = "FEJL";
+
+/* No comment provided by engineer. */
+"Earn items by completing tasks and leveling up. Tap on an item to use it!" = "Modtag ting for at færdiggøre opgaver og stige i niveau. Tryk på en ting for at bruge den!";
+
+/* No comment provided by engineer. */
+"Easy" = "Let";
+
+/* No comment provided by engineer. */
+"Eat healthy/junk food" = "Spis sund/usund mad";
+
+/* No comment provided by engineer. */
+"Edit %@" = "Ret %@";
+
+/* No comment provided by engineer. */
+"Edit Party" = "Ret Gruppe";
+
+/* No comment provided by engineer. */
+"Edit Reward" = "Ret Belønning";
+
+/* No comment provided by engineer. */
+"Email already taken." = "Email allerede i brug.";
+
+/* No comment provided by engineer. */
+"Enter" = "Luk mig ind";
+
+/* No comment provided by engineer. */
+"Equip" = "Brug";
+
+/* No comment provided by engineer. */
+"Equipment" = "Udstyr";
+
+/* No comment provided by engineer. */
+"Error" = "Fejl";
+
+/* No comment provided by engineer. */
+"Every x days" = "Hver x dage";
+
+/* No comment provided by engineer. */
+"Exercise" = "Motion";
+
+/* No comment provided by engineer. */
+"Experience" = "Erfaring";
+
+/* No comment provided by engineer. */
+"Eyewear" = "Øjenbeklædning";
+
+/* 1Password App Extension Error Message */
+"Failed to contacting the 1Password App Extension" = "Fejl i forbindelsen til 1Password App Extension";
+
+/* 1Password App Extension Error Message */
+"Failed to execute script that collects web page information" = "Fejl i scriptkørslen der indsamler website-information";
+
+/* 1Password App Extension Error Message */
+"Failed to fill web page because script could not be evaluated" = "Fejl i at udfylde websitet fordi scriptet ikke kunne evalueres";
+
+/* 1Password App Extension Error Message */
+"Failed to fill web page because script is missing" = "Fejl i at udfylde websitet fordi scriptet mangler";
+
+/* 1Password App Extension Error Message */
+"Failed to parse information returned by 1Password App Extension" = "Fejl i fortolkning af information returneret fra 1Password App Extension";
+
+/* No comment provided by engineer. */
+"Feed" = "Fodr";
+
+/* No comment provided by engineer. */
+"Filter" = "Filter";
+
+/* No comment provided by engineer. */
+"Finish assignment for class " = "Færdiggør opgave i fag";
+
+/* No comment provided by engineer. */
+"Finish creative project" = "Færdiggør kreativt projekt";
+
+/* No comment provided by engineer. */
+"First, you need an avatar in the game to represent you! The things you do in real life will affect your avatar's health, experience level, and gold." = "Først skal du bruge en avatar, der repræsenterer dig i spillet! Det, du gør i virkeligheden vil have indflydelse på din avatars helbred, erfaringsniveau og guld.";
+
+/* No comment provided by engineer. */
+"Floss" = "Brug tandtråd";
+
+/* No comment provided by engineer. */
+"Flower" = "Blomst";
+
+/* No comment provided by engineer. */
+"Frequency" = "Frekvens";
+
+/* No comment provided by engineer. */
+"Friday" = "Fredag";
+
+/* No comment provided by engineer. */
+"Gems are purchased with real money, which makes it possible for Habitica to release new updates. Gems can be used to buy special items and backgrounds. Thank you for supporting us!" = "Ædelsten købes med rigtige penge, hvilket gør det muligt at holde Habitica opdateret. Ædelsten kan bruges til at købe særligt udstyr og baggrunde. Tak for at støtte os!";
+
+/* No comment provided by engineer. */
+"Go Back" = "Gå Tilbage";
+
+/* No comment provided by engineer. */
+"Got it" = "Forstået";
+
+/* No comment provided by engineer. */
+"Grey" = "Grå";
+
+/* No comment provided by engineer. */
+"Habit" = "Vane";
+
+/* No comment provided by engineer. */
+"Hair" = "Hår";
+
+/* No comment provided by engineer. */
+"Hard" = "Svær";
+
+/* No comment provided by engineer. */
+"Has a due date" = "Har en forfaldsdato";
+
+/* No comment provided by engineer. */
+"Hatch Egg" = "Udrug Æg";
+
+/* No comment provided by engineer. */
+"Hatch with Potion" = "Udrug med Eliksir";
+
+/* No comment provided by engineer. */
+"Head" = "Hoved";
+
+/* No comment provided by engineer. */
+"Head Accessory" = "Hovedbeklædning";
+
+/* No comment provided by engineer. */
+"Healer" = "Helbreder";
+
+/* No comment provided by engineer. */
+"Healers stand impervious against harm, and extend that protection to others. Missed Dailies and bad Habits don't faze them much, and they have ways to recover Health from failure. Play a Healer if you enjoy assisting others in your Party, or if the idea of cheating Death through hard work inspires you!" = "Helbredere er upåvirkede af skade, og giver denne beskyttelse videre til andre. Oversprungne Daglige og dårlige Vaner tager næppe pippet fra dem, og de har metoder for at genvinde Helbred fra fiaskoer. Spil som Helbreder hvis du nyder at hjælpe andre i dit Selskab, eller hvis tanken om at snyde Døden med hårdt arbejde inspirerer dig!";
+
+/* No comment provided by engineer. */
+"Health" = "Helbred";
+
+/* No comment provided by engineer. */
+"Health + Wellness" = "Helbred + Velvære";
+
+/* No comment provided by engineer. */
+"Help & FAQ" = "Hjælp & OSS";
+
+/* No comment provided by engineer. */
+"Hey! You are awesome!
+Version %@ (%@)" = "Hey! Du er sej!
+Version %1$@ (%2$@)";
+
+/* No comment provided by engineer. */
+"I want to become a %@" = "Jeg vil være en %@";
+
+/* No comment provided by engineer. */
+"I want to opt-out" = "Jeg vil melde mig fra";
+
+/* No comment provided by engineer. */
+"Invalid E-Mail Address." = "Ugyldig Emailadresse.";
+
+/* No comment provided by engineer. */
+"Invalid username or password" = "Forkert brugernavn eller password";
+
+/* No comment provided by engineer. */
+"Inventory" = "Inventar";
+
+/* No comment provided by engineer. */
+"Invite" = "Invitér";
+
+/* No comment provided by engineer. */
+"Invite Members" = "Invitér medlemmer";
+
+/* No comment provided by engineer. */
+"Invite Party" = "Invitér Gruppe";
+
+/* No comment provided by engineer. */
+"Invited to %@" = "Inviteret til %@";
+
+/* No comment provided by engineer. */
+"Items" = "Genstande";
+
+/* No comment provided by engineer. */
+"Join Party" = "Slut dig til gruppen";
+
+/* No comment provided by engineer. */
+"Last logged in" = "Sidst logget ind";
+
+/* No comment provided by engineer. */
+"Leave a Review" = "Skriv en Anmeldelse";
+
+/* No comment provided by engineer. */
+"Leave the Inn" = "Forlad Kroen";
+
+/* No comment provided by engineer. */
+"Level %@" = "Niveau %@";
+
+/* No comment provided by engineer. */
+"Level %@ %@" = "Niveau %1$@ %2$@";
+
+/* No comment provided by engineer. */
+"Level up!" = "Niveau op!";
+
+/* No comment provided by engineer. */
+"Local" = "Lokal";
+
+/* No comment provided by engineer. */
+"Log Out" = "Log ud";
+
+/* No comment provided by engineer. */
+"Log in" = "Log ind";
+
+/* No comment provided by engineer. */
+"Login Method" = "Loginmetode";
+
+/* No comment provided by engineer. */
+"Login name" = "Loginnavn";
+
+/* No comment provided by engineer. */
+"Mage" = "Magiker";
+
+/* No comment provided by engineer. */
+"Mages learn swiftly, gaining Experience and Levels faster than other classes. They also get a great deal of Mana for using special abilities. Play a Mage if you enjoy the tactical game aspects of Habit, or if you are strongly motivated by leveling up and unlocking advanced features!" = "Magikere lærer hurtigt, og får Erfaring og Niveau hurtigere end andre Klasser. De får endvidere en masse Mana til at bruge specielle evner. Spil som Magiker hvis du kan godt lide Habiticas taktiske spilaspekter, eller hvis du er stærkt motiveret af at gå op i niveau og åbne op for avancerede features!";
+
+/* No comment provided by engineer. */
+"Maintenance" = "Vedligeholdelse";
+
+/* No comment provided by engineer. */
+"Mana" = "Mana";
+
+/* No comment provided by engineer. */
+"Medium" = "Medium";
+
+/* No comment provided by engineer. */
+"Member Since" = "Medlem siden";
+
+/* No comment provided by engineer. */
+"Menu" = "Menu";
+
+/* No comment provided by engineer. */
+"Monday" = "Mandag";
+
+/* No comment provided by engineer. */
+"Most important task" = "Vigtigste opgave";
+
+/* No comment provided by engineer. */
+"Mount" = "Ridedyr";
+
+/* No comment provided by engineer. */
+"Mount Type" = "Ridedyrstype";
+
+/* No comment provided by engineer. */
+"Mounts" = "Ridedyr";
+
+/* No comment provided by engineer. */
+"Mustache" = "Overskæg";
+
+/* No comment provided by engineer. */
+"Name" = "Navn";
+
+/* No comment provided by engineer. */
+"Negative (-)" = "Negativ (-)";
+
+/* No comment provided by engineer. */
+"Network error" = "Netværksfejl";
+
+/* No comment provided by engineer. */
+"New Party" = "Ny Gruppe";
+
+/* No comment provided by engineer. */
+"New Reward" = "Ny Belønning";
+
+/* No comment provided by engineer. */
+"News" = "Nyheder";
+
+/* No comment provided by engineer. */
+"No" = "Nej";
+
+/* No comment provided by engineer. */
+"Notes" = "Noter";
+
+/* No comment provided by engineer. */
+"Nothing Equipped" = "Intet Udstyr";
+
+/* No comment provided by engineer. */
+"Nothing Set" = "Intet Sat";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"On certain days of the week" = "På specifikke ugedage";
+
+/* No comment provided by engineer. */
+"Once a quest is started, no other party members can join the quest." = "Når en quest er startet kan andre gruppemedlemmer ikke tilmelde sig questen.";
+
+/* No comment provided by engineer. */
+"Opt-Out" = "Fravælg";
+
+/* No comment provided by engineer. */
+"Organize Closet" = "Ryd op i skabet";
+
+/* No comment provided by engineer. */
+"Participants" = "Deltagere";
+
+/* No comment provided by engineer. */
+"Party" = "Gruppe";
+
+/* No comment provided by engineer. */
+"Party Invitation" = "Gruppeinvitation";
+
+/* No comment provided by engineer. */
+"Passwords don't match." = "Passwords er ikke ens";
+
+/* No comment provided by engineer. */
+"Pending" = "Ventende";
+
+/* No comment provided by engineer. */
+"Pet Type" = "Kæledyrstype";
+
+/* No comment provided by engineer. */
+"Pets" = "Kæledyr";
+
+/* No comment provided by engineer. */
+"Positive (+)" = "Positiv (+)";
+
+/* No comment provided by engineer. */
+"Process email" = "Gennemgå email";
+
+/* No comment provided by engineer. */
+"Purchase for %@ Gems" = "Køb for %@ Ædelsten";
+
+/* No comment provided by engineer. */
+"Purchase for 2 Gems" = "Køb for 2 Ædelsten";
+
+/* No comment provided by engineer. */
+"Quest" = "Quest";
+
+/* No comment provided by engineer. */
+"Quest Detail" = "Questdetaljer";
+
+/* No comment provided by engineer. */
+"Quest Invitation" = "Quest-invitation";
+
+/* No comment provided by engineer. */
+"Quest Mounts" = "Questridedyr";
+
+/* No comment provided by engineer. */
+"Quest Pets" = "Questkæledyr";
+
+/* No comment provided by engineer. */
+"Register" = "Registrer";
+
+/* No comment provided by engineer. */
+"Reject" = "Afvis";
+
+/* No comment provided by engineer. */
+"Reload Content" = "Genindlæs Indhold";
+
+/* No comment provided by engineer. */
+"Remember to check off your Dailies!" = "Husk at færdiggøre dine Daglige!";
+
+/* No comment provided by engineer. */
+"Remind me tomorrow" = "Påmind mig i morgen";
+
+/* No comment provided by engineer. */
+"Reminder" = "Påmindelse";
+
+/* No comment provided by engineer. */
+"Repeat" = "Gentag";
+
+/* No comment provided by engineer. */
+"Repeat every X days" = "Gentag hver x dage";
+
+/* No comment provided by engineer. */
+"Report a bug" = "Rapportér en fejl";
+
+/* No comment provided by engineer. */
+"Reset Justins Tips" = "Nulstil Justins Råd";
+
+/* No comment provided by engineer. */
+"Rest in the Inn" = "Slap af på Kroen";
+
+/* No comment provided by engineer. */
+"Rogue" = "Slyngel";
+
+/* No comment provided by engineer. */
+"Rogues love to accumulate wealth, gaining more Gold than anyone else, and are adept at finding random items. Their iconic Stealth ability lets them duck the consequences of missed Dailies. Play a Rogue if you find strong motivation from Rewards and Achievements, striving for loot and badges!" = "Slyngler elsker at samle sig en formue, eftersom de får mere Guld end nogen anden, og de er dygtige til at finde tilfældige ting. Deres ikoniske Listeevne lader dem undgå konsekvenserne af oversprungne Daglige. Spil  som Slyngel hvis du er stærkt motiveret af Belønninger og Præstationer, og stræber efter bytte og emblemer!";
+
+/* No comment provided by engineer. */
+"Saturday" = "Lørdag";
+
+/* No comment provided by engineer. */
+"Schedule check-up" = "Planlæg check-up";
+
+/* No comment provided by engineer. */
+"School" = "Skole";
+
+/* No comment provided by engineer. */
+"Select Class" = "Vælg Klasse";
+
+/* No comment provided by engineer. */
+"Select Difficulty" = "Vælg Sværhedsgrad";
+
+/* No comment provided by engineer. */
+"Select Frequency" = "Vælg Frekvens";
+
+/* No comment provided by engineer. */
+"Sell (%@ Gold)" = "Sælg (%@ Guld)";
+
+/* No comment provided by engineer. */
+"Send feedback" = "Send feedback";
+
+/* No comment provided by engineer. */
+"Server error" = "Serverfejl";
+
+/* No comment provided by engineer. */
+"Set up workout schedule" = "Planlæg motionsskema";
+
+/* No comment provided by engineer. */
+"Settings" = "Indstillinger";
+
+/* No comment provided by engineer. */
+"Shield" = "Skjold";
+
+/* No comment provided by engineer. */
+"Shirt" = "Bluse";
+
+/* No comment provided by engineer. */
+"Size" = "Størrelse";
+
+/* (No Commment) */
+"Skills are special abilities that have powerful affects! Tap on a skill to use it. It will cost Mana (the blue bar), which you earn by checking in every day and by completing your real-life tasks. Check out the FAQ in the menu for more info!" = "Evner er specielle færdigheder, der har kraftige virkninger! Tryk på en evne for at bruge den. Det koster Mana (den blå bar), hvilket du får ved at logge ind hver dag og for at færdiggøre opgaver. Læs mere om dette i OSS i menuen!";
+
+/* No comment provided by engineer. */
+"Skin" = "Skins";
+
+/* No comment provided by engineer. */
+"Sleep tight!" = "Sov godt!";
+
+/* No comment provided by engineer. */
+"Social" = "Social";
+
+/* No comment provided by engineer. */
+"Special Mounts" = "Specielle Ridedyr";
+
+/* No comment provided by engineer. */
+"Special Pets" = "Specielle Kæledyr";
+
+/* No comment provided by engineer. */
+"Splendid! Now let's set up your tasks so that you can start earning experience and gold.
+
+To start, which parts of your life do you want to improve?" = "Godt! Lad os nu sætte dine opgaver op så du kan begynde at tjene erfaring og guld.
+
+For at begynde, hvilke dele af dit liv vil du forbedre?";
+
+/* No comment provided by engineer. */
+"Stretching" = "Stræk ud";
+
+/* No comment provided by engineer. */
+"Strong" = "Stærk";
+
+/* No comment provided by engineer. */
+"Study a master of the craft" = "Lær fra en mester";
+
+/* No comment provided by engineer. */
+"Study/Procrastinate" = "Studier/Overspringshandlinger";
+
+/* No comment provided by engineer. */
+"Sunday" = "Søndag";
+
+/* No comment provided by engineer. */
+"Tags" = "Tags";
+
+/* No comment provided by engineer. */
+"Tap a task to edit it. Swipe left to delete it." = "Tryk på en opgave for at rette den. Stryg til venstre for at slette den.";
+
+/* No comment provided by engineer. */
+"Tap to add a new task." = "Tryk for at tilføje en ny opgave.";
+
+/* No comment provided by engineer. */
+"Tap to change how your pets are grouped." = "Tryk for at ændre hvordan dine kæledyr er grupperet.";
+
+/* No comment provided by engineer. */
+"Tap to continue" = "Tap for at fortsætte";
+
+/* No comment provided by engineer. */
+"Tap to filter tasks." = "Tryk for at filtrere opgaver.";
+
+/* No comment provided by engineer. */
+"Tavern" = "Værtshus";
+
+/* No comment provided by engineer. */
+"Teams" = "Teams";
+
+/* No comment provided by engineer. */
+"Text" = "Tekst";
+
+/* No comment provided by engineer. */
+"The authentication process was cancelled." = "Godkendelsesprocessen blev afbrudt.";
+
+/* No comment provided by engineer. */
+"The following lines help us find and squash the Bug you encountered. Please do not delete/change them.
+" = "De følgende linjer hjælper os med at finde og fikse fejlen som du har oplevet. Lad venligst være med at slette/ændre dem.
+";
+
+/* No comment provided by engineer. */
+"There comes a point in the life of every habitican, where they have to decide their path.
+
+What will yours be?" = "Der kommer et tidspunkt i enhver Habikitaners liv, hvor de må beslutte deres videre vej.
+
+Hvad er din?";
+
+/* No comment provided by engineer. */
+"There is no internet connection. You will not be able to perform any actions." = "Der er ingen internetforbindelse. Du vil ikke kunne udføre nogen handlinger.";
+
+/* No comment provided by engineer. */
+"There seems to be a problem with the server. Try again later" = "Der er vist et problem med serveren. Prøv igen senere";
+
+/* No comment provided by engineer. */
+"There was an error verifying your purchase" = "Der opstod en fejl med verifikationen af dit køb";
+
+/* No comment provided by engineer. */
+"There was an error with the authentication. Try again later" = "Der opstod en fejl med godkendelsen. Prøv igen senere";
+
+/* No comment provided by engineer. */
+"These are your Rewards! Earn gold by completing real-world Habits, Dailies, and To-Dos. Then spend it on in-game Rewards or custom real-world Rewards!" = "Dette er dine Belønninger! Tjen guld ved at udføre Vaner, Daglige og To-Dos i virkeligheden, og brug dem på Belønninger i spillet - eller dine egne Belønninger i virkeligheden!";
+
+/* No comment provided by engineer. */
+"This is where you and your friends can hold each other accountable to your goals and fight monsters with your tasks!" = "Dette er hvor dine venner og du kan holde hinanden ansvarlige overfor jeres mål og nedkæmpe monstre med jeres opgaver!";
+
+/* No comment provided by engineer. */
+"This item can be purchased for %@ Gems" = "Denne ting kan købes for %@ Ædelsten";
+
+/* No comment provided by engineer. */
+"This item can be purchased for 2 Gems" = "Denne ting kan købes for 2 Ædelsten";
+
+/* No comment provided by engineer. */
+"This set can be unlocked for %@ Gems" = "Dette sæt kan frigøres for %@ Ædelsten";
+
+/* No comment provided by engineer. */
+"Thursday" = "Torsdag";
+
+/* No comment provided by engineer. */
+"To-Do" = "To-Do";
+
+/* No comment provided by engineer. */
+"Trivial" = "Triviel";
+
+/* No comment provided by engineer. */
+"Tuesday" = "Tirsdag";
+
+/* No comment provided by engineer. */
+"Unequip" = "Fjern";
+
+/* No comment provided by engineer. */
+"Unlock for %@ Gems" = "Frigør for %@ Ædelsten";
+
+/* No comment provided by engineer. */
+"Unmount" = "Stig Af";
+
+/* No comment provided by engineer. */
+"Update team on status" = "Opdatér team om status";
+
+/* No comment provided by engineer. */
+"Use" = "Brug";
+
+/* No comment provided by engineer. */
+"Use Skills" = "Brug Evner";
+
+/* No comment provided by engineer. */
+"User" = "Bruger";
+
+/* No comment provided by engineer. */
+"User ID" = "BrugerID";
+
+/* No comment provided by engineer. */
+"Username already taken." = "Brugernavn allerede taget.";
+
+/* No comment provided by engineer. */
+"Validation Error" = "Valideringsfejl";
+
+/* No comment provided by engineer. */
+"Value" = "Værdi";
+
+/* No comment provided by engineer. */
+"Version" = "Version";
+
+/* No comment provided by engineer. */
+"View Source Code" = "Vis Kildekode";
+
+/* No comment provided by engineer. */
+"Wakey Wakey!" = "Vågn op!";
+
+/* No comment provided by engineer. */
+"Warrior" = "Kriger";
+
+/* No comment provided by engineer. */
+"Warriors score more and better \"critical hits\", which randomly give bonus Gold, Experience, and drop chance for scoring a task. They also deal heavy damage to boss monsters. Play a Warrior if you find motivation from unpredictable jackpot-style rewards, or want to dish out the hurt in boss Quests!" = "Krigere scorer flere og bedre \"fuldtræffere\", der vilkårligt giver ekstra Guld, Erfaring, og dropchance når du færdiggør en opgave. De forvolder også stor skade på Boss-monstre. Spil som Kriger hvis du finder uforudsigelige, jackpotagtige belønninger motiverende, eller du virkelig vil uddele smerte i Boss-quests!";
+
+/* No comment provided by engineer. */
+"Wash Dishes" = "Tag opvasken";
+
+/* No comment provided by engineer. */
+"We love open source software." = "Vi elsker open source software.";
+
+/* No comment provided by engineer. */
+"Weak" = "Svag";
+
+/* No comment provided by engineer. */
+"Weapon" = "Våben";
+
+/* No comment provided by engineer. */
+"Wear costume" = "Brug Kostume";
+
+/* No comment provided by engineer. */
+"Website" = "Website";
+
+/* No comment provided by engineer. */
+"Wednesday" = "Onsdag";
+
+/* No comment provided by engineer. */
+"Weekly" = "Ugentlig";
+
+/* No comment provided by engineer. */
+"Welcome" = "Velkommen";
+
+/* No comment provided by engineer. */
+"Welcome to Habitica, where advancing in the game will improve your real life! As you accomplish real-world goals, you'll unlock equipment, pets, quests, and more." = "Velkommen til Habitica, hvor fremskridt i spillet vil forbedre dit virkelige liv! Som du når dine mål udenfor spillet vil du åbne op for udstyr, kæledyr, quests og andet.";
+
+/* No comment provided by engineer. */
+"Welcome to the Tavern, a public, all-ages chatroom! Here you can chat about productivity and ask questions. Have fun!" = "Velkommen til Værtshuset, et offentligt chatrum for alle aldre! Her kan du chatte om produktivitet og stille spørgsmål. Hyg dig!";
+
+/* No comment provided by engineer. */
+"When you abort a quest, all progress will be lost and the quest scroll will be put back into your inventory." = "Når du afbryder en quest vil al fremskridt blive anulleret og questskriftrullen lagt tilbage i dit inventar.";
+
+/* No comment provided by engineer. */
+"When you buy equipment, it appears here. Your Battle Gear affects your stats, and your Costume (if enabled) affects what your avatar wears." = "Når du køber udstyr vises det her. Dit Kampudstyr påvirker dine stats, og dit Kostume (hvis slået til) påvirker hvordan din avatar ser ud.";
+
+/* No comment provided by engineer. */
+"Work" = "Arbejde";
+
+/* No comment provided by engineer. */
+"Work on creative project" = "Arbejd på kreativt projekt";
+
+/* No comment provided by engineer. */
+"Work project" = "Arbejdsprojekt";
+
+/* No comment provided by engineer. */
+"World Quest" = "Verdensquests";
+
+/* No comment provided by engineer. */
+"Yes" = "Ja";
+
+/* No comment provided by engineer. */
+"You Died" = "Du Døde";
+
+/* No comment provided by engineer. */
+"You are now Level %ld" = "Du er nu Niveau %ld";
+
+/* No comment provided by engineer. */
+"You found a piece of rare Equipment in the Armoire: %@! Awesome!" = "Du har fundet sjældent Udstyr i Klædeskabet: %@! Fantastisk!";
+
+/* No comment provided by engineer. */
+"You hatched a %@ %@!" = "Du udrugede %1$@ %2$@!";
+
+/* No comment provided by engineer. */
+"You have no food" = "Du har ingen mad";
+
+/* No comment provided by engineer. */
+"You rummage in the Armoire and find %@. What's that doing in here?" = "Du roder rundt i bunden af Klædeskabet. Pludselig finder du %@. Gad vide hvad den laver her?";
+
+/* No comment provided by engineer. */
+"You will become a %@." = "Du vil blive en %@.";
+
+/* No comment provided by engineer. */
+"You wrestle with the Armoire and gain %@ Experience. Take that!" = "Du kæmper med Klædeskabet og får %@ Erfaring. Sådan!";
+
+/* No comment provided by engineer. */
+"You've lost a Level, all your Gold, and a random piece of Equipment. Arise, Habiteer, and try again! Curb those negative Habits, be vigilant in completion of Dailies, and hold death at arm's length with a Health Potion if you falter!" = "Du har tabt et niveau, alt dit Guld, og et vilkårligt stykke Udstyr. Rejs dig, Habitør, og prøv igen! Tøjl dine negative Vaner, vær opmærksom på at fuldføre Daglige, og hold Døden på afstand med en Helbredseliksir hvis du vakler!";
+
+/* No comment provided by engineer. */
+"Your pet eats the %@ but doesn't seem to enjoy it." = "Dit kæledyr spiser %@ men ser ikke ud til at nyde det.";
+
+/* No comment provided by engineer. */
+"Your pet really likes the %@" = "Dit kæledyr kan virkelig godt lide %@";
+
+/* No comment provided by engineer. */
+"email" = "email";
+
+/* No comment provided by engineer. */
+"equipped" = "i brug";
+

@@ -1,0 +1,938 @@
+/* No comment provided by engineer. */
+" Unlock Set for %@ Gems " = "用 %@ 個寶石解鎖此套組";
+
+/* No comment provided by engineer. */
+"%.2f Gold" = "%.2f 金幣";
+
+/* No comment provided by engineer. */
+"%d Participants" = "%d 位參與者";
+
+/* No comment provided by engineer. */
+"%d out of %d responded" = "%2$d 位中的 %1$d 位做出了回應";
+
+/* more than one filter */
+"%ld Filters" = "%ld 條件篩尋";
+
+/* No comment provided by engineer. */
+"%lu Members" = "%lu 位成員";
+
+/* No comment provided by engineer. */
+"1 Filter" = "1 組條件篩選";
+
+/* No comment provided by engineer. */
+"1 Member" = "1 位成員";
+
+/* No comment provided by engineer. */
+"1 Participant" = "1 位參與者";
+
+/* 1Password App Extension Error Message */
+"1Password Extension was cancelled by the user" = "使用者取消了 1Password 擴充功能";
+
+/* No comment provided by engineer. */
+"10 min cardio" = "10 分鐘的有氧運動";
+
+/* No comment provided by engineer. */
+"10 minutes cleaning" = "打掃 10 分鐘";
+
+/* No comment provided by engineer. */
+"API" = "API";
+
+/* No comment provided by engineer. */
+"API Key" = "API Key";
+
+/* No comment provided by engineer. */
+"Abort" = "放棄";
+
+/* No comment provided by engineer. */
+"About" = "關於";
+
+/* No comment provided by engineer. */
+"Accept" = "接受";
+
+/* No comment provided by engineer. */
+"Accepted" = "已接受";
+
+/* No comment provided by engineer. */
+"Account Details" = "帳號資料";
+
+/* No comment provided by engineer. */
+"Acknowledgements" = "致謝";
+
+/* No comment provided by engineer. */
+"Actions" = "行動";
+
+/* No comment provided by engineer. */
+"Active" = "進行中";
+
+/* No comment provided by engineer. */
+"Add %@" = "新增 %@";
+
+/* No comment provided by engineer. */
+"Add a User ID" = "加入使用者 ID";
+
+/* No comment provided by engineer. */
+"Add a new checklist item" = "新增清單項目";
+
+/* No comment provided by engineer. */
+"All" = "全部";
+
+/* No comment provided by engineer. */
+"Animal Ears" = "受耳";
+
+/* 1Password App Extension Error Message */
+"App Extension API is not available in this version of iOS" = "App Extension API 不適用於目前的 IOS 版本";
+
+/* No comment provided by engineer. */
+"App Version: %@
+" = "App 版本：%@
+";
+
+/* No comment provided by engineer. */
+"Are you sure?" = "確定？";
+
+/* No comment provided by engineer. */
+"Armor" = "裝備";
+
+/* No comment provided by engineer. */
+"As you complete real-world tasks, you now have a random chance of finding eggs and potions. Combine them to hatch pets" = "現在每當您完成現實世界的任務，都有機會獲得蛋和孵化靈藥。將兩者結合可孵育出寵物。";
+
+/* Noun */
+"Authentication" = "驗證";
+
+/* No comment provided by engineer. */
+"Authentication Cancelled" = "身分驗證已取消";
+
+/* No comment provided by engineer. */
+"Authentication Error" = "身分驗證錯誤";
+
+/* No comment provided by engineer. */
+"Back" = "返回";
+
+/* No comment provided by engineer. */
+"Background" = "背景";
+
+/* No comment provided by engineer. */
+"Bangs" = "瀏海";
+
+/* No comment provided by engineer. */
+"Base" = "主體";
+
+/* No comment provided by engineer. */
+"Base Mounts" = "基本座騎";
+
+/* No comment provided by engineer. */
+"Base Pets" = "基本寵物";
+
+/* No comment provided by engineer. */
+"Battle Gear" = "戰鬥套裝";
+
+/* No comment provided by engineer. */
+"Beard" = "鬍子";
+
+/* No comment provided by engineer. */
+"Become a %@" = "成為%@";
+
+/* No comment provided by engineer. */
+"Body" = "身體";
+
+/* No comment provided by engineer. */
+"Can't be bothered with classes? Want to choose later? Opt out - you'll be a warrior and your points handled automatically. You can enable classes later under Settings." = "不想為職業煩惱？想晚點再選擇？點選不選擇──您將成為戰士且點數自動分配，之後可以在設定中再啟用職業。";
+
+/* No comment provided by engineer. */
+"Cancel" = "取消";
+
+/* No comment provided by engineer. */
+"Cast Spells" = "施展法術";
+
+/* No comment provided by engineer. */
+"Chat" = "聊天";
+
+/* No comment provided by engineer. */
+"Check in with team" = "團體入住";
+
+/* No comment provided by engineer. */
+"Choose a hair color!" = "選擇髮色！";
+
+/* No comment provided by engineer. */
+"Choose a hairstyle!" = "選擇髮型！";
+
+/* No comment provided by engineer. */
+"Choose a skin color!" = "選擇膚色！";
+
+/* No comment provided by engineer. */
+"Choose to become a Warrior, Mage, Healer, or Rogue! Each class has unique equipment and skills. Tap the (?) to learn more!" = "選擇成為戰士、法師、牧師或盜賊！每個職業都有獨特裝備和技能。點一下 (？) 來獲得更多資訊！";
+
+/* No comment provided by engineer. */
+"Choose your outfit! (You'll unlock more outfits soon.)" = "選擇您的服裝！( 您很快還會再解鎖更多服裝 )";
+
+/* No comment provided by engineer. */
+"Chores" = "雜務";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "輕空暫存檔";
+
+/* No comment provided by engineer. */
+"Color" = "顏色";
+
+/* No comment provided by engineer. */
+"Complete Positive Habits to earn gold and experience! Negative Habits will hurt your avatar if you tap them, so avoid them in real life!" = "達成好習慣可獲得金幣和經驗值！壞習慣則會讓角色受到傷害，所以請在現實生活中避開它們！";
+
+/* No comment provided by engineer. */
+"Complete Team Project" = "完成團隊計畫";
+
+/* No comment provided by engineer. */
+"Complete your To-Dos in real life, then check them off for GOLD and EXPERIENCE so you can earn Rewards and unlock new features!" = "在現實生活中完成您的待辦事項，並在完成項目上打勾來獲得金幣和經驗值，這樣做可以獲得獎勵和解鎖新功能！";
+
+/* No comment provided by engineer. */
+"Connection Error" = "連線錯誤";
+
+/* No comment provided by engineer. */
+"Copy these for use in third party applications. However, think of your API Token like a password, and do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github." = "將這些複製下來以在第三方程式中使用。然而請把您的 API 代碼視為一種密碼，不要將它公開。您可能偶爾會被要求輸入使用者 ID，但千萬不要在其他人看得到的地方發布您的 API 代碼，包括在 Github。";
+
+/* No comment provided by engineer. */
+"Costume" = "裝扮";
+
+/* No comment provided by engineer. */
+"Couldn't connect to the server. Check your network connection" = "無法連接伺服器，請檢查網路連線。";
+
+/* No comment provided by engineer. */
+"Creativity" = "創作";
+
+/* No comment provided by engineer. */
+"Current streak: %@" = "目前連擊數：%@";
+
+/* No comment provided by engineer. */
+"Customize Avatar" = "自訂角色";
+
+/* No comment provided by engineer. */
+"Daily" = "每日任務";
+
+/* No comment provided by engineer. */
+"Daily Reminder" = "每日任務提醒";
+
+/* No comment provided by engineer. */
+"Dated" = "有時限";
+
+/* No comment provided by engineer. */
+"Declined" = "已拒絕";
+
+/* No comment provided by engineer. */
+"Defeat your repeating Daily tasks to gain gold and experience. Danger! Dailies will hurt your avatar if you don't complete them in time." = "戰勝反覆規律的日常任務來獲得金幣和經驗值。危險！若沒有及時完成每日任務將會使角色受到傷害。";
+
+/* No comment provided by engineer. */
+"Description" = "描述";
+
+/* No comment provided by engineer. */
+"Difficulty" = "難度";
+
+/* No comment provided by engineer. */
+"Do homework" = "做作業";
+
+/* No comment provided by engineer. */
+"Done" = "已完成";
+
+/* No comment provided by engineer. */
+"Due" = "待辦";
+
+/* No comment provided by engineer. */
+"Due %@" = "%@ 到期";
+
+/* No comment provided by engineer. */
+"Due Date" = "期限";
+
+/* No comment provided by engineer. */
+"Due in %d days" = "%d 天後過期";
+
+/* No comment provided by engineer. */
+"Due today" = "今天到期";
+
+/* No comment provided by engineer. */
+"Due tomorrow" = "明天到期";
+
+/* No comment provided by engineer. */
+"ERROR" = "錯誤";
+
+/* No comment provided by engineer. */
+"Earn items by completing tasks and leveling up. Tap on an item to use it!" = "完成任務和提升等級來獲得物品。點擊物品就能使用！";
+
+/* No comment provided by engineer. */
+"Easy" = "簡單";
+
+/* No comment provided by engineer. */
+"Eat healthy/junk food" = "吃健康 / 垃圾食務";
+
+/* No comment provided by engineer. */
+"Edit %@" = "編輯%@";
+
+/* No comment provided by engineer. */
+"Edit Party" = "編輯隊伍";
+
+/* No comment provided by engineer. */
+"Edit Reward" = "編輯獎勵";
+
+/* No comment provided by engineer. */
+"Email already taken." = "此 Email 已有人使用";
+
+/* No comment provided by engineer. */
+"Enter" = "進入";
+
+/* No comment provided by engineer. */
+"Equip" = "裝備";
+
+/* No comment provided by engineer. */
+"Equipment" = "裝備";
+
+/* No comment provided by engineer. */
+"Error" = "錯誤";
+
+/* No comment provided by engineer. */
+"Every x days" = "每格 x 天";
+
+/* No comment provided by engineer. */
+"Exercise" = "運動";
+
+/* No comment provided by engineer. */
+"Experience" = "經驗值";
+
+/* No comment provided by engineer. */
+"Eyewear" = "臉部裝備";
+
+/* 1Password App Extension Error Message */
+"Failed to contacting the 1Password App Extension" = "連接 1Password App Extension 失敗";
+
+/* 1Password App Extension Error Message */
+"Failed to execute script that collects web page information" = "無法執行取得網頁資訊的腳本";
+
+/* 1Password App Extension Error Message */
+"Failed to fill web page because script could not be evaluated" = "填送網頁失敗，因為無法判別腳本";
+
+/* 1Password App Extension Error Message */
+"Failed to fill web page because script is missing" = "填送網頁失敗，因為腳本遺失";
+
+/* 1Password App Extension Error Message */
+"Failed to parse information returned by 1Password App Extension" = "解析 1Password App Extension 回傳資訊失敗";
+
+/* No comment provided by engineer. */
+"Feed" = "餵食";
+
+/* No comment provided by engineer. */
+"Filter" = "條件篩選";
+
+/* No comment provided by engineer. */
+"Finish assignment for class " = "完成職業指定";
+
+/* No comment provided by engineer. */
+"Finish creative project" = "完成創作計畫";
+
+/* No comment provided by engineer. */
+"First, you need an avatar in the game to represent you! The things you do in real life will affect your avatar's health, experience level, and gold." = "首先您需要一位角色在遊戲中代表您！在現實生活中的行為將影響角色的生命值、經驗等級和金幣。";
+
+/* No comment provided by engineer. */
+"Floss" = "使用牙線";
+
+/* No comment provided by engineer. */
+"Flower" = "花朵";
+
+/* No comment provided by engineer. */
+"Frequency" = "頻率";
+
+/* No comment provided by engineer. */
+"Friday" = "週五";
+
+/* No comment provided by engineer. */
+"Gems are purchased with real money, which makes it possible for Habitica to release new updates. Gems can be used to buy special items and backgrounds. Thank you for supporting us!" = "寶石須用真實金錢購買，藉此讓 Habitica 能夠繼續發布更新。寶石可用來購買特殊物品和背景。謝謝您的支持！";
+
+/* No comment provided by engineer. */
+"Go Back" = "返回";
+
+/* No comment provided by engineer. */
+"Got it" = "了解";
+
+/* No comment provided by engineer. */
+"Grey" = "灰色";
+
+/* No comment provided by engineer. */
+"Habit" = "習慣";
+
+/* No comment provided by engineer. */
+"Hair" = "頭髮";
+
+/* No comment provided by engineer. */
+"Hard" = "困難";
+
+/* No comment provided by engineer. */
+"Has a due date" = "有期限";
+
+/* No comment provided by engineer. */
+"Hatch Egg" = "孵蛋";
+
+/* No comment provided by engineer. */
+"Hatch with Potion" = "用靈藥孵育";
+
+/* No comment provided by engineer. */
+"Head" = "頭部裝備";
+
+/* No comment provided by engineer. */
+"Head Accessory" = "頭飾";
+
+/* No comment provided by engineer. */
+"Healer" = "牧師";
+
+/* No comment provided by engineer. */
+"Healers stand impervious against harm, and extend that protection to others. Missed Dailies and bad Habits don't faze them much, and they have ways to recover Health from failure. Play a Healer if you enjoy assisting others in your Party, or if the idea of cheating Death through hard work inspires you!" = "牧師面對傷害毫無懼色，並能給予其他人保護。未完成的每日任務和壞習慣不會對他們造成太大的困擾，而且還能治癒因失敗而損失的生命值。如果您喜歡協助隊伍中的其他人，或在艱難的工作任務間與死神搏鬥的感覺讓您熱血沸騰，那就成為牧師吧！";
+
+/* No comment provided by engineer. */
+"Health" = "生命值";
+
+/* No comment provided by engineer. */
+"Health + Wellness" = "健康 + 保健";
+
+/* No comment provided by engineer. */
+"Help & FAQ" = "幫助 & FAQ";
+
+/* No comment provided by engineer. */
+"Hey! You are awesome!
+Version %@ (%@)" = "嘿！你超讚的！
+Version %1$@ (%2$@)";
+
+/* No comment provided by engineer. */
+"I want to become a %@" = "我想成為%@";
+
+/* No comment provided by engineer. */
+"I want to opt-out" = "我想先不選擇";
+
+/* No comment provided by engineer. */
+"Invalid E-Mail Address." = "無效的 E-Mail 地址";
+
+/* No comment provided by engineer. */
+"Invalid username or password" = "無效的使用者名稱或密碼";
+
+/* No comment provided by engineer. */
+"Inventory" = "道具庫";
+
+/* No comment provided by engineer. */
+"Invite" = "邀請";
+
+/* No comment provided by engineer. */
+"Invite Members" = "邀請成員";
+
+/* No comment provided by engineer. */
+"Invite Party" = "邀請隊伍";
+
+/* No comment provided by engineer. */
+"Invited to %@" = "邀請至%@";
+
+/* No comment provided by engineer. */
+"Items" = "物品";
+
+/* No comment provided by engineer. */
+"Join Party" = "加入隊伍";
+
+/* No comment provided by engineer. */
+"Last logged in" = "上次登入";
+
+/* No comment provided by engineer. */
+"Leave a Review" = "留下評論";
+
+/* No comment provided by engineer. */
+"Leave the Inn" = "離開旅店";
+
+/* No comment provided by engineer. */
+"Level %@" = "等級 %@";
+
+/* No comment provided by engineer. */
+"Level %@ %@" = "等級 %1$@ %2$@";
+
+/* No comment provided by engineer. */
+"Level up!" = "等級提升！";
+
+/* No comment provided by engineer. */
+"Local" = "本機";
+
+/* No comment provided by engineer. */
+"Log Out" = "登出";
+
+/* No comment provided by engineer. */
+"Log in" = "登入";
+
+/* No comment provided by engineer. */
+"Login Method" = "登入方式";
+
+/* No comment provided by engineer. */
+"Login name" = "登入名稱";
+
+/* No comment provided by engineer. */
+"Mage" = "法師";
+
+/* No comment provided by engineer. */
+"Mages learn swiftly, gaining Experience and Levels faster than other classes. They also get a great deal of Mana for using special abilities. Play a Mage if you enjoy the tactical game aspects of Habit, or if you are strongly motivated by leveling up and unlocking advanced features!" = "法師能快速學習事物，提升經驗值和等級比其他職業快。他們還擁有許多魔力可以使用特殊能力。如果你享受習慣養成的戰略遊戲性，或是提升等級和解鎖新功能可帶給你強大動力，那就成為法師吧！";
+
+/* No comment provided by engineer. */
+"Maintenance" = "維護";
+
+/* No comment provided by engineer. */
+"Mana" = "魔力";
+
+/* No comment provided by engineer. */
+"Medium" = "中等";
+
+/* No comment provided by engineer. */
+"Member Since" = "加入時間";
+
+/* No comment provided by engineer. */
+"Menu" = "選單";
+
+/* No comment provided by engineer. */
+"Monday" = "週一";
+
+/* No comment provided by engineer. */
+"Most important task" = "最重要的任務";
+
+/* No comment provided by engineer. */
+"Mount" = "座騎";
+
+/* No comment provided by engineer. */
+"Mount Type" = "座騎類型";
+
+/* No comment provided by engineer. */
+"Mounts" = "座騎";
+
+/* No comment provided by engineer. */
+"Mustache" = "鬍鬚";
+
+/* No comment provided by engineer. */
+"Name" = "名字";
+
+/* No comment provided by engineer. */
+"Negative (-)" = "負面的 ( - )";
+
+/* No comment provided by engineer. */
+"Network error" = "網路錯誤";
+
+/* No comment provided by engineer. */
+"New Party" = "新隊伍";
+
+/* No comment provided by engineer. */
+"New Reward" = "新獎勵";
+
+/* No comment provided by engineer. */
+"News" = "最新消息";
+
+/* No comment provided by engineer. */
+"No" = "否";
+
+/* No comment provided by engineer. */
+"Notes" = "備註";
+
+/* No comment provided by engineer. */
+"Nothing Equipped" = "無裝備";
+
+/* No comment provided by engineer. */
+"Nothing Set" = "無設置";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"On certain days of the week" = "一週中的某幾天";
+
+/* No comment provided by engineer. */
+"Once a quest is started, no other party members can join the quest." = "任務開始後，其他隊伍成員便無法再參加任務。";
+
+/* No comment provided by engineer. */
+"Opt-Out" = "不選擇";
+
+/* No comment provided by engineer. */
+"Organize Closet" = "整理衣櫃";
+
+/* No comment provided by engineer. */
+"Participants" = "參與者";
+
+/* No comment provided by engineer. */
+"Party" = "隊伍";
+
+/* No comment provided by engineer. */
+"Party Invitation" = "組隊邀請";
+
+/* No comment provided by engineer. */
+"Passwords don't match." = "密碼不相符";
+
+/* No comment provided by engineer. */
+"Pending" = "未決定";
+
+/* No comment provided by engineer. */
+"Pet Type" = "寵物類型";
+
+/* No comment provided by engineer. */
+"Pets" = "寵物";
+
+/* No comment provided by engineer. */
+"Positive (+)" = "正面的 ( + )";
+
+/* No comment provided by engineer. */
+"Process email" = "處理 email";
+
+/* No comment provided by engineer. */
+"Purchase for %@ Gems" = "購買 %@ 個飽食";
+
+/* No comment provided by engineer. */
+"Purchase for 2 Gems" = "購買 2 個寶石";
+
+/* No comment provided by engineer. */
+"Quest" = "任務";
+
+/* No comment provided by engineer. */
+"Quest Detail" = "任務詳情";
+
+/* No comment provided by engineer. */
+"Quest Invitation" = "任務邀請";
+
+/* No comment provided by engineer. */
+"Quest Mounts" = "任務坐騎";
+
+/* No comment provided by engineer. */
+"Quest Pets" = "任務寵物";
+
+/* No comment provided by engineer. */
+"Register" = "註冊";
+
+/* No comment provided by engineer. */
+"Reject" = "拒絕";
+
+/* No comment provided by engineer. */
+"Reload Content" = "重新讀取內容";
+
+/* No comment provided by engineer. */
+"Remember to check off your Dailies!" = "記得把完成的每日任務打勾！";
+
+/* No comment provided by engineer. */
+"Remind me tomorrow" = "明天提醒我";
+
+/* No comment provided by engineer. */
+"Reminder" = "提醒";
+
+/* No comment provided by engineer. */
+"Repeat" = "重複";
+
+/* No comment provided by engineer. */
+"Repeat every X days" = "每 X 天重複一次";
+
+/* No comment provided by engineer. */
+"Report a bug" = "回報 bug";
+
+/* No comment provided by engineer. */
+"Reset Justins Tips" = "重啟 Justin  的提示";
+
+/* No comment provided by engineer. */
+"Rest in the Inn" = "在旅店休息";
+
+/* No comment provided by engineer. */
+"Rogue" = "盜賊";
+
+/* No comment provided by engineer. */
+"Rogues love to accumulate wealth, gaining more Gold than anyone else, and are adept at finding random items. Their iconic Stealth ability lets them duck the consequences of missed Dailies. Play a Rogue if you find strong motivation from Rewards and Achievements, striving for loot and badges!" = "盜賊喜歡累積財富，能獲得比別人更多的金幣，也很擅長找到物品。他們代表性的潛行能力能閃避未完成的每日任務所帶來的懲罰。如果取得獎勵和達成成就來獲得寶物和徽章能給你強大的動力，那就成為盜賊吧！";
+
+/* No comment provided by engineer. */
+"Saturday" = "週六";
+
+/* No comment provided by engineer. */
+"Schedule check-up" = "確認行程";
+
+/* No comment provided by engineer. */
+"School" = "學校";
+
+/* No comment provided by engineer. */
+"Select Class" = "選擇職業";
+
+/* No comment provided by engineer. */
+"Select Difficulty" = "選擇難度";
+
+/* No comment provided by engineer. */
+"Select Frequency" = "選擇頻率";
+
+/* No comment provided by engineer. */
+"Sell (%@ Gold)" = "販售 ( %@ 金幣 )";
+
+/* No comment provided by engineer. */
+"Send feedback" = "發送意見";
+
+/* No comment provided by engineer. */
+"Server error" = "伺服器錯誤";
+
+/* No comment provided by engineer. */
+"Set up workout schedule" = "設定健身計劃";
+
+/* No comment provided by engineer. */
+"Settings" = "設定";
+
+/* No comment provided by engineer. */
+"Shield" = "盾牌";
+
+/* No comment provided by engineer. */
+"Shirt" = "上衣";
+
+/* No comment provided by engineer. */
+"Size" = "大小";
+
+/* (No Commment) */
+"Skills are special abilities that have powerful affects! Tap on a skill to use it. It will cost Mana (the blue bar), which you earn by checking in every day and by completing your real-life tasks. Check out the FAQ in the menu for more info!" = "技能是有強大作用的特殊能力！點擊技能就能施展。施展技能需要耗費魔力 ( 藍色長條 )，魔力可由每天到訪和完成現實生活任務來獲得。查看選單中的 FAQ 來獲得更多資訊！";
+
+/* No comment provided by engineer. */
+"Skin" = "膚色";
+
+/* No comment provided by engineer. */
+"Sleep tight!" = "睡個好覺！";
+
+/* No comment provided by engineer. */
+"Social" = "社群";
+
+/* No comment provided by engineer. */
+"Special Mounts" = "特殊坐騎";
+
+/* No comment provided by engineer. */
+"Special Pets" = "特殊寵物";
+
+/* No comment provided by engineer. */
+"Splendid! Now let's set up your tasks so that you can start earning experience and gold.
+
+To start, which parts of your life do you want to improve?" = "漂亮！現在來建立任務以獲得經驗值和金幣吧。
+
+首先，您想改善生活中的哪個部分呢？";
+
+/* No comment provided by engineer. */
+"Stretching" = "伸展";
+
+/* No comment provided by engineer. */
+"Strong" = "高強度";
+
+/* No comment provided by engineer. */
+"Study a master of the craft" = "取得藝術學位";
+
+/* No comment provided by engineer. */
+"Study/Procrastinate" = "念書 / 拖延";
+
+/* No comment provided by engineer. */
+"Sunday" = "週日";
+
+/* No comment provided by engineer. */
+"Tags" = "標籤";
+
+/* No comment provided by engineer. */
+"Tap a task to edit it. Swipe left to delete it." = "輕點任務可編輯，向左滑過可刪除。";
+
+/* No comment provided by engineer. */
+"Tap to add a new task." = "點擊此處可新增任務。";
+
+/* No comment provided by engineer. */
+"Tap to change how your pets are grouped." = "點擊以改變寵物分類的方式。";
+
+/* No comment provided by engineer. */
+"Tap to continue" = "點一下可繼續";
+
+/* No comment provided by engineer. */
+"Tap to filter tasks." = "點擊此處可篩選任務。";
+
+/* No comment provided by engineer. */
+"Tavern" = "酒館";
+
+/* No comment provided by engineer. */
+"Teams" = "團隊";
+
+/* No comment provided by engineer. */
+"Text" = "文字";
+
+/* No comment provided by engineer. */
+"The authentication process was cancelled." = "認證程序已取消。";
+
+/* No comment provided by engineer. */
+"The following lines help us find and squash the Bug you encountered. Please do not delete/change them.
+" = "以下的行句能幫助我們發現和解決您所遇到的 Bug，請不要刪除 / 修改它們。
+";
+
+/* No comment provided by engineer. */
+"There comes a point in the life of every habitican, where they have to decide their path.
+
+What will yours be?" = "每一位 habitica 人都會遇到一個重要的時刻，必須決定自己的道路。
+
+您的會是什麼呢？";
+
+/* No comment provided by engineer. */
+"There is no internet connection. You will not be able to perform any actions." = "無網路連線。您將無法進行任何行動。";
+
+/* No comment provided by engineer. */
+"There seems to be a problem with the server. Try again later" = "伺服器似乎出了問題。請稍後再試。";
+
+/* No comment provided by engineer. */
+"There was an error verifying your purchase" = "為您的購買進行驗證時出現錯誤。";
+
+/* No comment provided by engineer. */
+"There was an error with the authentication. Try again later" = "認證過程出現了錯誤。請稍後再試。";
+
+/* No comment provided by engineer. */
+"These are your Rewards! Earn gold by completing real-world Habits, Dailies, and To-Dos. Then spend it on in-game Rewards or custom real-world Rewards!" = "這些是您的獎勵！透過完成現實世界的習慣、日常事務和待辦事項來獲得金幣，再用它們換取遊戲中的獎勵或是自訂的現實世界獎勵！";
+
+/* No comment provided by engineer. */
+"This is where you and your friends can hold each other accountable to your goals and fight monsters with your tasks!" = "在這裡您和您的朋友可以互相督促完成目標，並透過完成事務來對抗怪物！";
+
+/* No comment provided by engineer. */
+"This item can be purchased for %@ Gems" = "此物品可用 %@ 寶石購買";
+
+/* No comment provided by engineer. */
+"This item can be purchased for 2 Gems" = "此物品可用 2 寶石購買";
+
+/* No comment provided by engineer. */
+"This set can be unlocked for %@ Gems" = "此套組可用 %@ 寶石解鎖";
+
+/* No comment provided by engineer. */
+"Thursday" = "週四";
+
+/* No comment provided by engineer. */
+"To-Do" = "待辦事項";
+
+/* No comment provided by engineer. */
+"Trivial" = "輕而易舉";
+
+/* No comment provided by engineer. */
+"Tuesday" = "週二";
+
+/* No comment provided by engineer. */
+"Unequip" = "卸下";
+
+/* No comment provided by engineer. */
+"Unlock for %@ Gems" = "以 %@ 寶石解鎖";
+
+/* No comment provided by engineer. */
+"Unmount" = "停止騎乘";
+
+/* No comment provided by engineer. */
+"Update team on status" = "更新團隊狀態";
+
+/* No comment provided by engineer. */
+"Use" = "使用";
+
+/* No comment provided by engineer. */
+"Use Skills" = "施展技能";
+
+/* No comment provided by engineer. */
+"User" = "使用者";
+
+/* No comment provided by engineer. */
+"User ID" = "使用者 ID";
+
+/* No comment provided by engineer. */
+"Username already taken." = "使用者名稱已被使用";
+
+/* No comment provided by engineer. */
+"Validation Error" = "驗證錯誤";
+
+/* No comment provided by engineer. */
+"Value" = "值";
+
+/* No comment provided by engineer. */
+"Version" = "版本";
+
+/* No comment provided by engineer. */
+"View Source Code" = "查看原始碼";
+
+/* No comment provided by engineer. */
+"Wakey Wakey!" = "起床囉！";
+
+/* No comment provided by engineer. */
+"Warrior" = "戰士";
+
+/* No comment provided by engineer. */
+"Warriors score more and better \"critical hits\", which randomly give bonus Gold, Experience, and drop chance for scoring a task. They also deal heavy damage to boss monsters. Play a Warrior if you find motivation from unpredictable jackpot-style rewards, or want to dish out the hurt in boss Quests!" = "戰士能觸發更有效的「致命一擊」，致命一擊在完成任務時有機會發生，可獲得額外的金幣、經驗值和物品掉落機會。戰士也能給予 boss 怪物們巨大的傷害。如果出其不意的獎勵能夠激勵您，或是想在 boss 任務中輸出傷害的話，那就成為戰士吧！";
+
+/* No comment provided by engineer. */
+"Wash Dishes" = "清喜碗盤";
+
+/* No comment provided by engineer. */
+"We love open source software." = "我們都愛開源程式";
+
+/* No comment provided by engineer. */
+"Weak" = "低強度";
+
+/* No comment provided by engineer. */
+"Weapon" = "武器";
+
+/* No comment provided by engineer. */
+"Wear costume" = "穿上裝扮";
+
+/* No comment provided by engineer. */
+"Website" = "網站";
+
+/* No comment provided by engineer. */
+"Wednesday" = "週三";
+
+/* No comment provided by engineer. */
+"Weekly" = "每週";
+
+/* No comment provided by engineer. */
+"Welcome" = "歡迎";
+
+/* No comment provided by engineer. */
+"Welcome to Habitica, where advancing in the game will improve your real life! As you accomplish real-world goals, you'll unlock equipment, pets, quests, and more." = "歡迎來到 Habitica，在這遊戲中的進展也能幫助您提升現實生活！隨著您完成現實世界的目標，將會解鎖遊戲中的裝備、寵物、任務等等。";
+
+/* No comment provided by engineer. */
+"Welcome to the Tavern, a public, all-ages chatroom! Here you can chat about productivity and ask questions. Have fun!" = "歡迎來到酒館，這是公開、不分年齡的聊天室！在這裡您可以分享事務心得或問任何問題。祝你玩得開心！";
+
+/* No comment provided by engineer. */
+"When you abort a quest, all progress will be lost and the quest scroll will be put back into your inventory." = "若放棄任務，所有任務進度都會不見，且任務卷軸會回到您的物品庫。";
+
+/* No comment provided by engineer. */
+"When you buy equipment, it appears here. Your Battle Gear affects your stats, and your Costume (if enabled) affects what your avatar wears." = "您所購買的裝備都會出現在這裡。戰鬥套裝會影響您的屬性數值，而裝扮 ( 若有開啟 ) 會影響角色的外觀。";
+
+/* No comment provided by engineer. */
+"Work" = "工作";
+
+/* No comment provided by engineer. */
+"Work on creative project" = "進行創作計畫";
+
+/* No comment provided by engineer. */
+"Work project" = "工作計畫";
+
+/* No comment provided by engineer. */
+"World Quest" = "世界任務";
+
+/* No comment provided by engineer. */
+"Yes" = "是";
+
+/* No comment provided by engineer. */
+"You Died" = "您已死亡";
+
+/* No comment provided by engineer. */
+"You are now Level %ld" = "您目前為等級 %ld";
+
+/* No comment provided by engineer. */
+"You found a piece of rare Equipment in the Armoire: %@! Awesome!" = "您從衣箱中獲得了一件稀有裝備：%@！太棒了！";
+
+/* No comment provided by engineer. */
+"You hatched a %@ %@!" = "您孵育出了 %1$@ %2$@！";
+
+/* No comment provided by engineer. */
+"You have no food" = "您沒有食物";
+
+/* No comment provided by engineer. */
+"You rummage in the Armoire and find %@. What's that doing in here?" = "您在衣箱內翻找並發現了%@。這怎麼會出現在這裡呢？";
+
+/* No comment provided by engineer. */
+"You will become a %@." = "您將成為%@。";
+
+/* No comment provided by engineer. */
+"You wrestle with the Armoire and gain %@ Experience. Take that!" = "您和衣箱角力了一場並得到 %@ 經驗值。接好了！";
+
+/* No comment provided by engineer. */
+"You've lost a Level, all your Gold, and a random piece of Equipment. Arise, Habiteer, and try again! Curb those negative Habits, be vigilant in completion of Dailies, and hold death at arm's length with a Health Potion if you falter!" = "您損失了一個等級、所有的金幣，以及隨機一件裝備。站起來吧，Habitica 勇者，重新振作！約束壞習慣、上緊發條完成日常工作，如果狀況不佳，可使用生命藥水來避免死亡！";
+
+/* No comment provided by engineer. */
+"Your pet eats the %@ but doesn't seem to enjoy it." = "您的寵物吃了%@但好像不太喜歡。";
+
+/* No comment provided by engineer. */
+"Your pet really likes the %@" = "您的寵物非常喜歡%@";
+
+/* No comment provided by engineer. */
+"email" = "email";
+
+/* No comment provided by engineer. */
+"equipped" = "已裝備";
+

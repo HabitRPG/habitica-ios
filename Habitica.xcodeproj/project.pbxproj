@@ -13,6 +13,8 @@
 		D905766F1BD7F581009BB7BC /* HRPGHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = D905766E1BD7F581009BB7BC /* HRPGHintView.m */; settings = {ASSET_TAGS = (); }; };
 		D90576721BD80275009BB7BC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90576701BD80275009BB7BC /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
 		D90576731BD80275009BB7BC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90576711BD80275009BB7BC /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
+		D90576851BD83240009BB7BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D90576871BD83240009BB7BC /* InfoPlist.strings */; };
+		D905768A1BD83241009BB7BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D905768C1BD83241009BB7BC /* Localizable.strings */; };
 		D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03619D60421001EABE4 /* HabitIntro.png */; };
 		D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03919D60B53001EABE4 /* DailyIntro.png */; };
 		D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03A19D60B53001EABE4 /* TodoIntro.png */; };
@@ -35,6 +37,7 @@
 		D92D40D91ABF123800E30339 /* HRPGHabitButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = D92D40D81ABF123800E30339 /* HRPGHabitButtons.m */; };
 		D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */ = {isa = PBXBuildFile; fileRef = D93422B81AB792B5003AFCDE /* UIColor+LighterDarker.m */; };
 		D93422BB1AB7A093003AFCDE /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D93422BA1AB7A093003AFCDE /* Pods-acknowledgements.plist */; };
+		D939B5F61BD8FBD50015AEB6 /* HRPGBatchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D939B5F51BD8FBD50015AEB6 /* HRPGBatchOperation.m */; settings = {ASSET_TAGS = (); }; };
 		D940A7E31B0CF80100370F2E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D940A7E11B0CF80100370F2E /* Fabric.framework */; };
 		D940A7E41B0CF80100370F2E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D940A7E21B0CF80100370F2E /* Crashlytics.framework */; };
 		D94461911AB355940015215E /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
@@ -177,6 +180,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D905767D1BD82DB8009BB7BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9EB4E8318CB4A9400BB2094 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9EB4E8A18CB4A9400BB2094;
+			remoteInfo = Habitica;
+		};
 		D94461891AB34F5C0015215E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D9EB4E8318CB4A9400BB2094 /* Project object */;
@@ -202,6 +212,19 @@
 		D905766E1BD7F581009BB7BC /* HRPGHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGHintView.m; sourceTree = "<group>"; };
 		D90576701BD80275009BB7BC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		D90576711BD80275009BB7BC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		D90576781BD82DB8009BB7BC /* HabitRPGUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPGUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D90576821BD8323F009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D90576861BD83240009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D905768B1BD83241009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D905768D1BD83242009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Main.strings; sourceTree = "<group>"; };
+		D90576931BD83258009BB7BC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D90576941BD83259009BB7BC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D90576951BD83259009BB7BC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D90576961BD83259009BB7BC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		D90576981BD8326F009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D90576991BD8326F009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D905769A1BD8326F009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D905769B1BD83270009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Main.strings; sourceTree = "<group>"; };
 		D90EA03619D60421001EABE4 /* HabitIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabitIntro.png; sourceTree = "<group>"; };
 		D90EA03919D60B53001EABE4 /* DailyIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DailyIntro.png; sourceTree = "<group>"; };
 		D90EA03A19D60B53001EABE4 /* TodoIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TodoIntro.png; sourceTree = "<group>"; };
@@ -242,6 +265,12 @@
 		D93422B71AB792B5003AFCDE /* UIColor+LighterDarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+LighterDarker.h"; path = "HabitRPG/UIColor+LighterDarker.h"; sourceTree = SOURCE_ROOT; };
 		D93422B81AB792B5003AFCDE /* UIColor+LighterDarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+LighterDarker.m"; path = "HabitRPG/UIColor+LighterDarker.m"; sourceTree = SOURCE_ROOT; };
 		D93422BA1AB7A093003AFCDE /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-acknowledgements.plist"; path = "../Pods/Target Support Files/Pods/Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		D939B5EF1BD832B20015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D939B5F01BD832B30015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D939B5F11BD832B30015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D939B5F21BD832B30015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Main.strings; sourceTree = "<group>"; };
+		D939B5F41BD8FBD50015AEB6 /* HRPGBatchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBatchOperation.h; sourceTree = "<group>"; };
+		D939B5F51BD8FBD50015AEB6 /* HRPGBatchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBatchOperation.m; sourceTree = "<group>"; };
 		D940A7E11B0CF80100370F2E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		D940A7E21B0CF80100370F2E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		D94461831AB34F5C0015215E /* HabiticaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabiticaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -510,6 +539,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D90576751BD82DB8009BB7BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D94461801AB34F5C0015215E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -618,6 +654,7 @@
 		D94461851AB34F5C0015215E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D90576871BD83240009BB7BC /* InfoPlist.strings */,
 				D94461861AB34F5C0015215E /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -729,6 +766,8 @@
 				D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */,
 				98A4DBEE1B643BC100A9E2A8 /* HRPGSearchDataManager.h */,
 				98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */,
+				D939B5F41BD8FBD50015AEB6 /* HRPGBatchOperation.h */,
+				D939B5F51BD8FBD50015AEB6 /* HRPGBatchOperation.m */,
 			);
 			name = Models;
 			path = HRPGModels;
@@ -978,6 +1017,7 @@
 			children = (
 				D9EB4E8B18CB4A9400BB2094 /* Habitica.app */,
 				D94461831AB34F5C0015215E /* HabiticaTests.xctest */,
+				D90576781BD82DB8009BB7BC /* HabitRPGUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1050,6 +1090,7 @@
 		D9EB4E9518CB4A9400BB2094 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D905768C1BD83241009BB7BC /* Localizable.strings */,
 				D93422BA1AB7A093003AFCDE /* Pods-acknowledgements.plist */,
 				D99DEC88190842CA00FFD2B9 /* Placeholder.png */,
 				D9EB4E9618CB4A9400BB2094 /* Habitica-Info.plist */,
@@ -1076,6 +1117,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D90576771BD82DB8009BB7BC /* HabitRPGUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D905767F1BD82DB8009BB7BC /* Build configuration list for PBXNativeTarget "HabitRPGUITests" */;
+			buildPhases = (
+				D90576741BD82DB8009BB7BC /* Sources */,
+				D90576751BD82DB8009BB7BC /* Frameworks */,
+				D90576761BD82DB8009BB7BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D905767E1BD82DB8009BB7BC /* PBXTargetDependency */,
+			);
+			name = HabitRPGUITests;
+			productName = HabitRPGUITests;
+			productReference = D90576781BD82DB8009BB7BC /* HabitRPGUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		D94461821AB34F5C0015215E /* HabiticaTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D944618B1AB34F5C0015215E /* Build configuration list for PBXNativeTarget "HabiticaTests" */;
@@ -1125,6 +1184,10 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Phillip Thelen";
 				TargetAttributes = {
+					D90576771BD82DB8009BB7BC = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = D9EB4E8A18CB4A9400BB2094;
+					};
 					D94461821AB34F5C0015215E = {
 						CreatedOnToolsVersion = 6.1;
 						TestTargetID = D9EB4E8A18CB4A9400BB2094;
@@ -1154,11 +1217,19 @@
 			targets = (
 				D9EB4E8A18CB4A9400BB2094 /* Habitica */,
 				D94461821AB34F5C0015215E /* HabiticaTests */,
+				D90576771BD82DB8009BB7BC /* HabitRPGUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D90576761BD82DB8009BB7BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D94461811AB34F5C0015215E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1167,6 +1238,7 @@
 				D94461911AB355940015215E /* user.json in Resources */,
 				D98768F51AFFB85100336978 /* blade-equipResponse.json in Resources */,
 				D94B96A01B8B2CEE00C977C2 /* content-24.8.15.json in Resources */,
+				D90576851BD83240009BB7BC /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1187,6 +1259,7 @@
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
 				D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */,
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
+				D905768A1BD83241009BB7BC /* Localizable.strings in Resources */,
 				D979AD1C1AF3EF6E00D59FAE /* customizations.json in Resources */,
 				D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */,
 			);
@@ -1256,6 +1329,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D90576741BD82DB8009BB7BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D944617F1AB34F5C0015215E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1388,6 +1468,7 @@
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
 				D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */,
 				D9F16E391BBC536500CA3E02 /* HRPGCustomizationSelectionView.m in Sources */,
+				D939B5F61BD8FBD50015AEB6 /* HRPGBatchOperation.m in Sources */,
 				D905766F1BD7F581009BB7BC /* HRPGHintView.m in Sources */,
 				D9C2571C1B9B4F4A00839F48 /* HRPGToDoTableViewCell.m in Sources */,
 				D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */,
@@ -1406,6 +1487,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D905767E1BD82DB8009BB7BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9EB4E8A18CB4A9400BB2094 /* Habitica */;
+			targetProxy = D905767D1BD82DB8009BB7BC /* PBXContainerItemProxy */;
+		};
 		D944618A1AB34F5C0015215E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D9EB4E8A18CB4A9400BB2094 /* Habitica */;
@@ -1414,10 +1500,36 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D90576871BD83240009BB7BC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D90576861BD83240009BB7BC /* da */,
+				D90576941BD83259009BB7BC /* es */,
+				D90576991BD8326F009BB7BC /* cs */,
+				D939B5F01BD832B30015AEB6 /* zh */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D905768C1BD83241009BB7BC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D905768B1BD83241009BB7BC /* da */,
+				D90576951BD83259009BB7BC /* es */,
+				D905769A1BD8326F009BB7BC /* cs */,
+				D939B5F11BD832B30015AEB6 /* zh */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		D9EB4E9718CB4A9400BB2094 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D9EB4E9818CB4A9400BB2094 /* en */,
+				D90576821BD8323F009BB7BC /* da */,
+				D90576931BD83258009BB7BC /* es */,
+				D90576981BD8326F009BB7BC /* cs */,
+				D939B5EF1BD832B20015AEB6 /* zh */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1426,6 +1538,10 @@
 			isa = PBXVariantGroup;
 			children = (
 				D9EB4EA118CB4A9400BB2094 /* Base */,
+				D905768D1BD83242009BB7BC /* da */,
+				D90576961BD83259009BB7BC /* es */,
+				D905769B1BD83270009BB7BC /* cs */,
+				D939B5F21BD832B30015AEB6 /* zh */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1433,6 +1549,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D90576801BD82DB8009BB7BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = HabitRPGUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = net.pherth.ios.HabitRPGUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_TARGET_NAME = Habitica;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		D90576811BD82DB8009BB7BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = HabitRPGUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = net.pherth.ios.HabitRPGUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Habitica;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 		D944618C1AB34F5C0015215E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A12B817AF1713BF5BCB7F702 /* Pods.debug.xcconfig */;
@@ -1815,6 +1971,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D905767F1BD82DB8009BB7BC /* Build configuration list for PBXNativeTarget "HabitRPGUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D90576801BD82DB8009BB7BC /* Debug */,
+				D90576811BD82DB8009BB7BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D944618B1AB34F5C0015215E /* Build configuration list for PBXNativeTarget "HabiticaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
