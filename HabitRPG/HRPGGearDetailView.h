@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *dismissButton;
 @property (weak, nonatomic) IBOutlet UIButton *buyButton;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionLabel;
-
+@property (nonatomic) NSString *descriptionText;
 - (void)configureForReward:(MetaReward*)reward withGold:(CGFloat)gold;
 
 @property (nonatomic, copy) void (^buyAction)();

@@ -91,6 +91,7 @@ static inline UIImage* MTDContextCreateRoundedMask( CGRect rect, CGFloat radius_
         [self.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_%@.png", reward.key]]
                               placeholderImage:[UIImage imageNamed:@"Placeholder"]];
     }
+    self.descriptionText = reward.notes;
     self.descriptionLabel.text = reward.notes;
     
     if ([reward.value floatValue] > gold) {
@@ -112,10 +113,10 @@ static inline UIImage* MTDContextCreateRoundedMask( CGRect rect, CGFloat radius_
     self.frame = CGRectMake(0, 0, width, 300);
     [self layoutSubviews];
     //top margin, title-image margin, image, image-notes margin, notes-buttons margin, button height
-    CGFloat height = 20+16+42+16+16+50;
+    CGFloat height = 20+16+42+16+16+50+40;
     height = height + self.titleLabel.frame.size.height;
     
-    height = height + [self.descriptionLabel.text boundingRectWithSize:CGSizeMake(width-40, MAXFLOAT)
+    height = height + [self.descriptionText boundingRectWithSize:CGSizeMake(width-50, MAXFLOAT)
                                                                                              options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
                                                                                           attributes:@{
                                                                                                        NSFontAttributeName : [UIFont systemFontOfSize:17]
