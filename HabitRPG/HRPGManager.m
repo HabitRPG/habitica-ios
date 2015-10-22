@@ -30,6 +30,7 @@
 #import <Google/Analytics.h>
 #import "HRPGImageOverlayView.h"
 #import "KLCPopup.h"
+#import "HRPGBatchOperation.h"
 
 @interface HRPGManager ()
 @property (nonatomic)  NIKFontAwesomeIconFactory *iconFactory;
@@ -628,6 +629,23 @@ NSString *currentUser;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
+    RKObjectMapping *batchOperationMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [batchOperationMapping addAttributeMappingsFromDictionary:@{
+                                                              @"op" : @"op",
+                                                              @"body" : @"body"}];
+    
+    requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:batchOperationMapping objectClass:[HRPGBatchOperation class] rootKeyPath:nil method:RKRequestMethodPOST];
+    [objectManager addRequestDescriptor:requestDescriptor];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodAny pathPattern:@"/api/v2/user/batch-update" keyPath:@"habits" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodAny pathPattern:@"/api/v2/user/batch-update" keyPath:@"todos" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodAny pathPattern:@"/api/v2/user/batch-update" keyPath:@"dailys" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/batch-update" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
 
     RKObjectMapping *buyMapping = [RKObjectMapping mappingForClass:[HRPGUserBuyResponse class]];
     [buyMapping addAttributeMappingsFromDictionary:@{
@@ -1349,6 +1367,35 @@ NSString *currentUser;
          [self.networkIndicatorController endNetworking];
          return;
      }];
+}
+
+- (void)batchUpdateUser:(NSArray *)actions onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+
+    [[RKObjectManager sharedManager] postObject:actions path:@"/api/v2/user/batch-update" parameters:nil success:^ (RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        //TODO: API currently does not return maxHealth, maxMP and toNextLevel. To set them to correct values, fetch again until this is fixed.
+        [self fetchUser:^() {
+            NSError *executeError = nil;
+            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+            if (successBlock) {
+                successBlock();
+            }
+        }onError:^() {
+        }];
+        [self.networkIndicatorController endNetworking];
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
 }
 
 - (void)changeClass:(NSString*)newClass onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {

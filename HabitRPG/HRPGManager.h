@@ -33,6 +33,8 @@
 
 - (void)updateUser:(NSDictionary*)newValues onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)batchUpdateUser:(NSArray*)actions onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 - (void)changeClass:(NSString*)newClass onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)fetchGroup:(NSString *)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
