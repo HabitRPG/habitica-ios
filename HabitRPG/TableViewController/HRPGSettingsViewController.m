@@ -48,6 +48,8 @@ User *user;
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentInset],0,0,0);
     if (navigationController.state == HRPGTopHeaderStateHidden) {
         [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentInset.top-[navigationController getContentOffset])];
+    } else {
+        [self.tableView setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
     }
     
     [[NSNotificationCenter defaultCenter]
