@@ -14,6 +14,7 @@
 #import "HRPGManager.h"
 #import "HRPGCheckBoxView.h"
 #import "UIColor+Habitica.h"
+#import "HRPGBatchOperation.h"
 
 @interface HRPGTaskSetupTableViewController ()
 
@@ -298,43 +299,26 @@
     NSError *error;
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     HRPGManager *manager = appdelegate.sharedManager;
-    
+    NSMutableArray *actions = [NSMutableArray array];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     for (NSDictionary *taskGroup in self.taskGroups) {
         if ([taskGroup[@"isActive"] boolValue]) {
             for (NSDictionary *taskDictionary in self.tasks[taskGroup[@"identifier"]]) {
-                Task *task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
-                task.text = taskDictionary[@"text"];
-                task.type = taskDictionary[@"type"];
-                task.priority = @1;
-                if ([task.type isEqualToString:@"habit"]) {
-                    task.up = taskDictionary[@"up"];
-                    task.down = taskDictionary[@"down"];
-                } else if ([task.type isEqualToString:@"daily"]) {
-                    task.frequency = taskDictionary[@"frequency"];
-                    task.startDate = [NSDate date];
-                    task.monday = taskDictionary[@"monday"];
-                    task.tuesday = taskDictionary[@"tuesday"];
-                    task.wednesday = taskDictionary[@"wednesday"];
-                    task.thursday = taskDictionary[@"thursday"];
-                    task.friday = taskDictionary[@"friday"];
-                    task.saturday = taskDictionary[@"saturday"];
-                    task.sunday = taskDictionary[@"sunday"];
-                } else {
-                    for (NSDictionary *checklistItemDictionary in taskDictionary[@"checklist"]) {
-                        ChecklistItem *checklistItem = [NSEntityDescription insertNewObjectForEntityForName:@"ChecklistItem" inManagedObjectContext:self.managedObjectContext];
-                        checklistItem.text = checklistItemDictionary[@"text"];
-                        [task addChecklistObject:checklistItem];
-                    }
+                NSMutableDictionary *mutableTaskDictionary = [taskDictionary mutableCopy];
+                mutableTaskDictionary[@"priority"] = @1;
+                if ([taskDictionary[@"type"] isEqualToString:@"daily"]) {
+                    mutableTaskDictionary[@"startDate"] = [dateFormatter stringFromDate:[NSDate date]];
                 }
-                
-                [manager createTask:task onSuccess:^() {
-                    
-                } onError:^() {
-                    
-                }];
+                HRPGBatchOperation *batchOperation = [[HRPGBatchOperation alloc] init];
+                batchOperation.op = @"addTask";
+                batchOperation.body = mutableTaskDictionary;
+                [actions addObject:batchOperation];
             }
         }
     }
+    
+    [manager batchUpdateUser:actions onSuccess:nil onError:nil];
     
     [self.managedObjectContext saveToPersistentStore:&error];
     
@@ -342,7 +326,8 @@
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     } else {
         [self performSegueWithIdentifier:@"MainSegue" sender:self];
-    }}
+    }
+}
 
 
 - (IBAction)previousStep:(id)sender {
