@@ -68,7 +68,7 @@
     [FBSDKLoginButton class];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (self.shouldDismissOnNextAppear) {
         [self dismissViewControllerAnimated:YES completion:nil];
