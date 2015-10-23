@@ -23,6 +23,7 @@
 @property UIView *headerView;
 @property UIImageView *avatarView;
 @property NSDictionary *tasks;
+@property (weak, nonatomic) IBOutlet UIView *gradientView;
 
 @end
 
@@ -253,6 +254,14 @@
     [self.headerView addSubview:self.avatarView];
     
     self.tableView.tableHeaderView = self.headerView;
+    
+    
+    CAGradientLayer *layer = [CAGradientLayer layer];
+    layer.frame = self.gradientView.bounds;
+    layer.colors = [NSArray arrayWithObjects:(id)[UIColor whiteColor].CGColor, (id)[UIColor colorWithWhite:1 alpha:0].CGColor, nil];
+    layer.startPoint = CGPointMake(1.0f, 0.75f);
+    layer.endPoint = CGPointMake(1.0f, 0.0f);
+    [self.gradientView.layer insertSublayer:layer atIndex:0];
 }
 
 #pragma mark - Table view data source
