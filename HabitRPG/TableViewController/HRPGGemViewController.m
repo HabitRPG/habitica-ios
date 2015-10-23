@@ -51,8 +51,8 @@
         for (SKPaymentTransaction *transaction in transactions) {
             HRPGPurchaseLoadingButton *purchaseButton;
             NSInteger count = 0;
-            for (SKProduct *product in self.products) {
-                if ([product.productIdentifier isEqualToString:transaction.payment.productIdentifier]) {
+            for (NSString *identifier in self.identifiers) {
+                if ([identifier isEqualToString:transaction.payment.productIdentifier]) {
                     break;
                 }
                 count++;
