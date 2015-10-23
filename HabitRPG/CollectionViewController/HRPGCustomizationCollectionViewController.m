@@ -263,6 +263,10 @@ static NSString * const reuseIdentifier = @"Cell";
             break;
         case 1:
             if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
+                if ([self.user.balance floatValue] < [[self.selectedCustomization valueForKey:@"price"] floatValue] / 4) {
+                    [self displayGemPurchaseView];
+                    return;
+                }
                 if ([self.entityName isEqualToString:@"Customization"]) {
                     [self.sharedManager unlockPath:[self.selectedCustomization getPath] onSuccess:^() {
                     }onError:^() {
@@ -277,6 +281,10 @@ static NSString * const reuseIdentifier = @"Cell";
             break;
         case 2:
             if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
+                if ([self.user.balance floatValue] < [self.setPrice floatValue] / 4) {
+                    [self displayGemPurchaseView];
+                    return;
+                }
                 [self.sharedManager unlockPath:self.selectedSetPath onSuccess:^() {
                     [self.collectionView reloadData];
                 }onError:^() {
@@ -294,6 +302,12 @@ static NSString * const reuseIdentifier = @"Cell";
     popup.tag = 2;
     [popup showInView:[UIApplication sharedApplication].keyWindow];
     self.selectedSetPath = button.setPath;
+}
+
+- (void) displayGemPurchaseView {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 @end
