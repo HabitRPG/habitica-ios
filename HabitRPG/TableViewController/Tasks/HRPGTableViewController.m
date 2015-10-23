@@ -154,7 +154,16 @@ BOOL editable;
         return CGRectMake(self.view.frame.size.width-47, 18, 45, 45);
     } else if ([coachMarkIdentifier isEqualToString:@"editTask"]) {
         if ([self.tableView numberOfRowsInSection:0] > 0) {
-            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[[self.tableView indexPathsForVisibleRows] objectAtIndex:0]];
+            NSArray *visibleCells = [self.tableView indexPathsForVisibleRows];
+            
+            UITableViewCell *cell;
+            for (NSIndexPath *indexPath in visibleCells) {
+                cell = [self.tableView cellForRowAtIndexPath:indexPath];
+                CGRect frame = [self.tableView convertRect:cell.frame toView:self.parentViewController.parentViewController.view];
+                if (frame.origin.y >= self.tableView.contentInset.top) {
+                    return frame;
+                }
+            }
             return [self.tableView convertRect:cell.frame toView:self.parentViewController.parentViewController.view];
         }
     } else if ([coachMarkIdentifier isEqualToString:@"filterTask"]) {

@@ -99,13 +99,14 @@
 
 - (void)dismissAnimated:(BOOL)animated wasSeen:(BOOL)wasSeen {
     self.displayView = nil;
+    if (self.dismissAction) {
+        self.dismissAction(wasSeen);
+    }
     [UIView animateWithDuration:0.4 animations:^() {
         self.alpha = 0;
     }completion:^(BOOL completed) {
         [self removeFromSuperview];
-        if (self.dismissAction) {
-            self.dismissAction(wasSeen);
-        }
+
     }];
 }
 
