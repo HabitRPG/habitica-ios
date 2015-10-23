@@ -64,6 +64,20 @@
 }
 
 - (void)displayExlanationView:(NSString *)identifier  highlightingArea:(CGRect)frame withDefaults:(NSUserDefaults *)defaults inDefaultsKey:(NSString *)defaultsKey withTutorialType:(NSString *)type {
+    TutorialSteps *step = [TutorialSteps markStep:identifier withType:type withContext:self.sharedManager.getManagedObjectContext];
+    NSString *className = NSStringFromClass([self class]);
+    if ([step.wasShown boolValue]) {
+        return;
+    }
+    if (step.shownInView && ![step.shownInView isEqualToString:className]) {
+        return;
+    }
+    
+    step.shownInView = className;
+    step.wasShown = @YES;
+    NSError *error;
+    [self.sharedManager.getManagedObjectContext saveToPersistentStore:&error];
+    
     NSDictionary *tutorialDefinition = [self getDefinitonForTutorial:identifier];
     HRPGExplanationView *explanationView = [[HRPGExplanationView alloc] init];
     self.activeTutorialView = explanationView;
@@ -74,7 +88,6 @@
     } else {
         [explanationView displayOnView:self.parentViewController.parentViewController.view animated:YES];
     }
-    TutorialSteps *step = [TutorialSteps markStep:identifier asSeen:YES withType:type withContext:self.sharedManager.getManagedObjectContext];
     if ([type isEqualToString:@"common"]) {
         [[self.sharedManager user] addCommonTutorialStepsObject:step];
     } else {
@@ -91,7 +104,7 @@
         }
         NSError *error;
         [self.sharedManager.getManagedObjectContext saveToPersistentStore:&error];
-        [self.sharedManager updateUser:@{[NSString stringWithFormat:@"flags.tutorial.%@.%@", type, step.identifier]: step.wasShown} onSuccess:nil onError:nil];
+        [self.sharedManager updateUser:@{[NSString stringWithFormat:@"flags.tutorial.%@.%@", type, step.identifier]: [NSNumber numberWithBool:wasSeen]} onSuccess:nil onError:nil];
     };
 }
 

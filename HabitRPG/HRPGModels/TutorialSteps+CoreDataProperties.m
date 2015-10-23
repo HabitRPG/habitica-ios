@@ -16,6 +16,7 @@
 @dynamic identifier;
 @dynamic type;
 @dynamic wasShown;
+@dynamic shownInView;
 @dynamic user;
 
 @end

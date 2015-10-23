@@ -182,10 +182,12 @@
         NSMutableDictionary *steps = [NSMutableDictionary dictionary];
         for (TutorialSteps *step in [self.sharedManager user].iosTutorialSteps) {
             step.wasShown = @NO;
+            step.shownInView = nil;
             [steps setObject:@NO forKey:[NSString stringWithFormat:@"flags.tutorial.ios.%@", step.identifier]];
         }
         for (TutorialSteps *step in [self.sharedManager user].commonTutorialSteps) {
             step.wasShown = @NO;
+            step.shownInView = nil;
             [steps setObject:@NO forKey:[NSString stringWithFormat:@"flags.tutorial.common.%@", step.identifier]];
         }
         NSError *error;
