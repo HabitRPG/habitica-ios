@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *goldLabel;
 @property (weak, nonatomic) IBOutlet UILabel *silverLabel;
 @property (weak, nonatomic) IBOutlet UILabel *gemLabel;
+@property (weak, nonatomic) IBOutlet UIView *gemView;
 @property User *user;
 
 @end
@@ -84,6 +85,9 @@ NSInteger rowOffset = 16;
         self.experienceLabel.fontSize = 11;
         self.magicLabel.fontSize = 11;
     }
+    
+    UIGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGemView)];
+    [self.gemView addGestureRecognizer:recognizer];
     
     [self setData];
 }
@@ -191,6 +195,16 @@ NSInteger rowOffset = 16;
 - (void)resetUser:(NSNotification *)notification {
     self.fetchedResultsController = nil;
     [self setData];
+}
+
+- (void)showGemView {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
+    UIViewController* viewController = [UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController;
+    if (!viewController.isViewLoaded || !viewController.view.window){
+        viewController = viewController.presentedViewController;
+    }
+    [viewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 @end

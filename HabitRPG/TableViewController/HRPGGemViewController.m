@@ -13,6 +13,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <CargoBay.h>
 #import "UIColor+Habitica.h"
+#import "MRProgress.h"
 
 @interface HRPGGemViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *notEnoughGemsLabel;
@@ -21,6 +22,7 @@
 @property (nonatomic) NSMutableDictionary *products;
 @property (nonatomic) NSArray *identifiers;
 @property (nonatomic) UIView *headerView;
+@property MRProgressOverlayView *overlayView;
 @end
 
 @implementation HRPGGemViewController
@@ -39,7 +41,9 @@
                                                       self.products[product.productIdentifier] = product;
                                                   }
                                                   [self.tableView reloadData];
+                                                  [self.overlayView dismiss:YES];
                                               } failure:^(NSError *error) {
+                                                  [self.overlayView dismiss:YES];
                                                   NSLog(@"%@", error);
                                               }];
     
@@ -99,7 +103,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
+    self.overlayView = [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

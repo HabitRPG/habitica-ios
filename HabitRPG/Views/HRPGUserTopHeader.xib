@@ -11,18 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UWI-d8-sGn">
-                    <rect key="frame" x="0.0" y="0.0" width="110" height="115"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="115" id="538-Gt-fjD">
-                            <variation key="heightClass=regular-widthClass=regular" constant="147"/>
-                        </constraint>
-                        <constraint firstAttribute="width" constant="110" id="UXE-Lu-zdW">
-                            <variation key="heightClass=regular-widthClass=regular" constant="140"/>
-                        </constraint>
-                    </constraints>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tP1-9i-M3A" customClass="HRPGLabeledProgressBar">
                     <rect key="frame" x="125" y="0.0" width="467" height="33"/>
                     <animations/>
@@ -142,7 +130,7 @@
                                         <constraint firstAttribute="width" priority="500" constant="42" id="buX-tv-FIX"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gold_coin" translatesAutoresizingMaskIntoConstraints="NO" id="urD-EK-a0I">
@@ -201,6 +189,18 @@
                         <constraint firstAttribute="trailing" secondItem="KDH-jE-dkP" secondAttribute="trailing" constant="8" id="k7k-IL-2pT"/>
                     </constraints>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UWI-d8-sGn">
+                    <rect key="frame" x="0.0" y="0.0" width="110" height="115"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="115" id="538-Gt-fjD">
+                            <variation key="heightClass=regular-widthClass=regular" constant="147"/>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="110" id="UXE-Lu-zdW">
+                            <variation key="heightClass=regular-widthClass=regular" constant="140"/>
+                        </constraint>
+                    </constraints>
+                </imageView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -229,6 +229,7 @@
                 <outlet property="classImageView" destination="0wH-g6-8n6" id="li4-lc-Pun"/>
                 <outlet property="experienceLabel" destination="BEm-of-HXC" id="AEF-d8-Rwc"/>
                 <outlet property="gemLabel" destination="I8k-bx-NRC" id="ej6-jh-hCd"/>
+                <outlet property="gemView" destination="KDH-jE-dkP" id="gdd-K3-mWD"/>
                 <outlet property="goldLabel" destination="7dp-ID-atv" id="JH7-IJ-gGy"/>
                 <outlet property="healthLabel" destination="tP1-9i-M3A" id="jg8-ek-SmV"/>
                 <outlet property="levelLabel" destination="AL5-B2-uxe" id="eWm-vr-s8p"/>
