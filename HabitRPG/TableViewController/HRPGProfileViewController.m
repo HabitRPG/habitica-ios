@@ -247,9 +247,6 @@ NIKFontAwesomeIconFactory *iconFactory;
         title = NSLocalizedString(@"Equipment", nil);
     } else if (indexPath.section == 2 && indexPath.item == 2) {
         title = NSLocalizedString(@"Items", nil);
-        if (![self.user.itemsEnabled boolValue]) {
-            cellName = @"LockedCell";
-        }
     } else if (indexPath.section == 2 && indexPath.item == 3) {
         title = NSLocalizedString(@"Pets", nil);
         if (![self.user.itemsEnabled boolValue]) {
