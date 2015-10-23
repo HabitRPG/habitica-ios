@@ -80,9 +80,13 @@
         if (self.previousState == HRPGTopHeaderStateHidden) {
             [self showHeader];
         } else {
-            [self hideHeader];
-        }
+            if (self.scrollableView.contentOffset.y > -self.bgViewOffset) {
+                [self hideHeader];
 
+            } else {
+                [self showHeader];
+            }
+        }
     }
 }
 
