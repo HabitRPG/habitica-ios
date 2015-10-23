@@ -390,6 +390,10 @@
 		D994B1481AD9177D008AE188 /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Screenshot.m"; path = "HabitRPG/Utilities/UIView+Screenshot.m"; sourceTree = SOURCE_ROOT; };
 		D998FD931ADAC1FF00E9A26F /* HRPGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAboutViewController.h; sourceTree = "<group>"; };
 		D998FD941ADAC1FF00E9A26F /* HRPGAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAboutViewController.m; sourceTree = "<group>"; };
+		D99B82171BD9545800E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D99B82181BD9545800E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D99B82191BD9545A00E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D99B821A1BD9545A00E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		D99BC43019D4C34A006DC132 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
 		D99BC43119D4C34A006DC132 /* OnePasswordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
 		D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
@@ -1507,6 +1511,7 @@
 				D90576941BD83259009BB7BC /* es */,
 				D90576991BD8326F009BB7BC /* cs */,
 				D939B5F01BD832B30015AEB6 /* zh */,
+				D99B82181BD9545800E770B7 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1518,6 +1523,7 @@
 				D90576951BD83259009BB7BC /* es */,
 				D905769A1BD8326F009BB7BC /* cs */,
 				D939B5F11BD832B30015AEB6 /* zh */,
+				D99B82191BD9545A00E770B7 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1530,6 +1536,7 @@
 				D90576931BD83258009BB7BC /* es */,
 				D90576981BD8326F009BB7BC /* cs */,
 				D939B5EF1BD832B20015AEB6 /* zh */,
+				D99B82171BD9545800E770B7 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1542,6 +1549,7 @@
 				D90576961BD83259009BB7BC /* es */,
 				D905769B1BD83270009BB7BC /* cs */,
 				D939B5F21BD832B30015AEB6 /* zh */,
+				D99B821A1BD9545A00E770B7 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
