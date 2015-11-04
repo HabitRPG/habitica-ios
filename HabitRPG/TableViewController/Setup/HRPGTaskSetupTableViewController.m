@@ -255,6 +255,7 @@
     
     self.tableView.tableHeaderView = self.headerView;
     
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
     
     CAGradientLayer *layer = [CAGradientLayer layer];
     layer.frame = self.gradientView.bounds;
@@ -348,14 +349,6 @@
         UITabBarController *tabBarController = segue.destinationViewController;
         [tabBarController setSelectedIndex:2];
     }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 50;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return @" ";
 }
 
 @end
