@@ -187,11 +187,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else if (indexPath.section == 2 && indexPath.item == 1) {
         [self performSegueWithIdentifier:@"EquipmentSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 2) {
-        if ([self.user.itemsEnabled boolValue]) {
-            [self performSegueWithIdentifier:@"ItemSegue" sender:self];
-        } else {
-            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-        }
+        [self performSegueWithIdentifier:@"ItemSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 3) {
         if ([self.user.itemsEnabled boolValue]) {
             [self performSegueWithIdentifier:@"PetSegue" sender:self];
