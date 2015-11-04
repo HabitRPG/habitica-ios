@@ -26,3 +26,4 @@ DerivedData
 *.xcuserstate
 fastlane/screenshots
 translations
+fastlane/Preview.html
