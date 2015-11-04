@@ -278,19 +278,25 @@ User *user;
                         continue;
                     }
                 }
-                if ([[inGameItemsArray lastObject] isKindOfClass:[Gear class]]) {
-                    Gear *lastGear = (Gear*)[inGameItemsArray lastObject];
-                    if (gear.index && lastGear.index && ![gear.klass isEqualToString:@"special"]) {
-                        if (![[lastGear getCleanedClassName] isEqualToString:@"special"] && lastGear.index < gear.index && [lastGear.type isEqualToString:gear.type]) {
-                            //filter gear with lower level
-                            continue;
-                        } else if ([[inGameItemsArray lastObject] index] > gear.index && [lastGear.type isEqualToString:gear.type]) {
-                            //remove last object if current one is of higher level
-                            [inGameItemsArray removeLastObject];
+                BOOL shouldAdd = YES;
+                for (Reward *oldReward in inGameItemsArray) {
+                    if ([oldReward isKindOfClass:[Gear class]] && [[oldReward.key substringToIndex:oldReward.key.length-2] isEqualToString:[gear.key substringToIndex:gear.key.length-2]]) {
+                        Gear *lastGear = (Gear*)[inGameItemsArray lastObject];
+                        if (gear.index && lastGear.index && ![gear.klass isEqualToString:@"special"]) {
+                            if (![[lastGear getCleanedClassName] isEqualToString:@"special"] && lastGear.index < gear.index && [lastGear.type isEqualToString:gear.type]) {
+                                //filter gear with lower level
+                                shouldAdd = NO;
+                            } else if ([[inGameItemsArray lastObject] index] > gear.index && [lastGear.type isEqualToString:gear.type]) {
+                                //remove last object if current one is of higher level
+                                [inGameItemsArray removeObject:oldReward];
+                            }
                         }
+                        break;
                     }
                 }
-                [inGameItemsArray addObject:reward];
+                if (shouldAdd) {
+                    [inGameItemsArray addObject:reward];
+                }
             } else {
                 if ([reward isKindOfClass:[Reward class]]) {
                     [customRewardsArray addObject:reward];
