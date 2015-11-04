@@ -269,7 +269,7 @@ ChatMessage *selectedMessage;
             [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         }];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    } else if (indexPath.section == 1 && self.tavern.questActive) {
+    } else if (indexPath.section == 1 && [self.tavern.questActive boolValue]) {
         if (indexPath.item == 0) {
             [self performSegueWithIdentifier:@"QuestDetailSegue" sender:self];
         } else {
