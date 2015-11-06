@@ -2,18 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "iTunesArtwork@2x.png"
+      "filename" : "iTunesArtwork@2x.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "iTunesArtwork@2x-1.png"
+      "filename" : "iTunesArtwork@2x-1.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "iTunesArtwork@2x-2.png"
+      "filename" : "iTunesArtwork@2x-2.png",
+      "scale" : "3x"
     }
   ],
   "info" : {
