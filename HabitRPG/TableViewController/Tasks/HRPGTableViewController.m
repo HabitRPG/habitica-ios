@@ -249,7 +249,7 @@ BOOL editable;
         return 0.1;
     }
     float width;
-    NSInteger height = 60;
+    NSInteger height = 30;
     if ([task.type isEqualToString:@"habit"]) {
         width = self.viewWidth - 95;
     } else if ([task.checklist count] > 0) {
@@ -267,21 +267,21 @@ BOOL editable;
         NSInteger notesHeight = [[task.notes stringByReplacingEmojiCheatCodesWithUnicode] boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                                                             options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
                                                                                          attributes:@{
-                                                                                                      NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
+                                                                                                      NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2]
                                                                                                       }
                                                                                             context:nil].size.height;
-        if (notesHeight < [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline].leading*3) {
+        if (notesHeight < [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2].lineHeight*3) {
             height = height + notesHeight;
         } else {
-            height = height + [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline].leading*3;
+            height = height + [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2].lineHeight*3;
         }
     }
     height = height + self.extraCellSpacing;
     if (task.duedate) {
         height = height + 5;
     }
-    if (height <= 71) {
-        return 71;
+    if (height <= 70) {
+        return 70;
     }
     return height;
 }
