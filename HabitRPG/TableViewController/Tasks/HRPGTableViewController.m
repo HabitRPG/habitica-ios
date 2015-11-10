@@ -151,7 +151,7 @@ BOOL editable;
 
 - (CGRect)getFrameForCoachmark:(NSString *)coachMarkIdentifier {
     if ([coachMarkIdentifier isEqualToString:@"addTask"]) {
-        return CGRectMake(self.view.frame.size.width-47, 18, 45, 45);
+        return CGRectMake(self.view.frame.size.width-47, 19, 44, 44);
     } else if ([coachMarkIdentifier isEqualToString:@"editTask"]) {
         if ([self.tableView numberOfRowsInSection:0] > 0) {
             NSArray *visibleCells = [self.tableView indexPathsForVisibleRows];
@@ -167,7 +167,13 @@ BOOL editable;
             return [self.tableView convertRect:cell.frame toView:self.parentViewController.parentViewController.view];
         }
     } else if ([coachMarkIdentifier isEqualToString:@"filterTask"]) {
-        return CGRectMake(2, 18, 50, 45);
+        NSInteger width = [[self.navigationItem.leftBarButtonItem.title stringByReplacingEmojiCheatCodesWithUnicode] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
+                                                                                                       options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+                                                                                                    attributes:@{
+                                                                                                                 NSFontAttributeName : [UIFont systemFontOfSize:17.0]
+                                                                                                                 }
+                                                                                                       context:nil].size.width;
+        return CGRectMake(5, 20, width+6, 44);
     }
     return CGRectZero;
 }
