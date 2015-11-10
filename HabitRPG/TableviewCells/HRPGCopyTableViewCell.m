@@ -12,8 +12,10 @@
 
 
 - (void) copy: (id) sender {
-    UIPasteboard *pboard = [UIPasteboard generalPasteboard];
-    pboard.string = self.detailTextLabel.text;
+    if (self.detailTextLabel.text) {
+        UIPasteboard *pboard = [UIPasteboard generalPasteboard];
+        pboard.string = self.detailTextLabel.text;
+    }
 }
 
 - (BOOL) canPerformAction: (SEL) action withSender: (id) sender {

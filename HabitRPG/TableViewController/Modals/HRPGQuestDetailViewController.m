@@ -85,9 +85,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 0) {
         [self.sharedManager acceptQuest:self.party.id withQuest:nil useForce:NO onSuccess:^(){
-
         }                   onError:^(){
-
         }];
         if (self.wasPushed) {
             [self.tableView reloadData];
@@ -96,9 +94,7 @@
         }
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         [self.sharedManager rejectQuest:self.party.id onSuccess:^(){
-
         }                   onError:^(){
-
         }];
         if (self.wasPushed) {
             [self.tableView reloadData];
