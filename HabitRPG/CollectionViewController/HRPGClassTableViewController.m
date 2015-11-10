@@ -55,7 +55,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self viewDidAppear:animated];
+    [super viewDidAppear:animated];
     [self displayTutorialStep:self.sharedManager];
 }
 

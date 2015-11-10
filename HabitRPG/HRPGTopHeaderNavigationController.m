@@ -60,7 +60,7 @@
     [self.view insertSubview:self.upperBackgroundView belowSubview:self.navigationBar];
     [self.view insertSubview:self.backgroundView belowSubview:self.upperBackgroundView];
     
-    self.maxDelay = 50;
+    self.maxDelay = 150;
     self.headerYPosition = [self bgViewOffset];
 }
 
