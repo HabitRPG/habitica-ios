@@ -1432,10 +1432,12 @@ NSString *currentUser;
             Group *party = [mappingResult dictionary][[NSNull null]];
             if ([party isKindOfClass:[NSArray class]]) {
                 NSArray *array = (NSArray *) party;
-                party = array[0];
+                if (array.count > 0) {
+                    party = array[0];
+                }
             }
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            if (![party.id isEqualToString:[defaults stringForKey:@"partyID"]]) {
+            if (party && ![party.id isEqualToString:[defaults stringForKey:@"partyID"]]) {
                 [defaults setObject:party.id forKey:@"partyID"];
                 [defaults synchronize];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged" object:party];
