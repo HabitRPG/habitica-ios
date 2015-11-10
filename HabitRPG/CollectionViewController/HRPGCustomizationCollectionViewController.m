@@ -263,15 +263,19 @@ static NSString * const reuseIdentifier = @"Cell";
             break;
         case 1:
             if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
-                if ([self.user.balance floatValue] < [[self.selectedCustomization valueForKey:@"price"] floatValue] / 4) {
-                    [self displayGemPurchaseView];
-                    return;
-                }
                 if ([self.entityName isEqualToString:@"Customization"]) {
+                    if ([self.user.balance floatValue] < [[self.selectedCustomization valueForKey:@"price"] floatValue] / 4) {
+                        [self displayGemPurchaseView];
+                        return;
+                    }
                     [self.sharedManager unlockPath:[self.selectedCustomization getPath] onSuccess:^() {
                     }onError:^() {
                     }];
                 } else {
+                    if ([self.user.balance floatValue] < 0.5) {
+                        [self displayGemPurchaseView];
+                        return;
+                    }
                     [self.sharedManager purchaseItem:[self.selectedCustomization valueForKey:@"key"] fromType:@"gear" onSuccess:^() {
                         [self.collectionView reloadData];
                     }onError:^() {
