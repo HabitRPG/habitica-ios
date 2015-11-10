@@ -213,8 +213,12 @@
             break;
             
         case NSFetchedResultsChangeMove:
-            [collectionView deleteItemsAtIndexPaths:@[indexPath]];
-            [collectionView insertItemsAtIndexPaths:@[newIndexPath]];
+            if (indexPath.item != newIndexPath.item) {
+                [collectionView deleteItemsAtIndexPaths:@[indexPath]];
+                [collectionView insertItemsAtIndexPaths:@[newIndexPath]];
+            } else {
+                [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+            }
             break;
     }
 }
