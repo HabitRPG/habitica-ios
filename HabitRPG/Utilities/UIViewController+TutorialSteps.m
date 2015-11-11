@@ -108,6 +108,12 @@
     };
 }
 
+- (void)removeActiveView {
+    if (self.activeTutorialView) {
+        [self.activeTutorialView removeFromSuperview];
+        self.activeTutorialView = nil;
+    }
+}
 
 @end
 

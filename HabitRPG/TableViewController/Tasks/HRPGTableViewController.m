@@ -167,7 +167,7 @@ BOOL editable;
             return [self.tableView convertRect:cell.frame toView:self.parentViewController.parentViewController.view];
         }
     } else if ([coachMarkIdentifier isEqualToString:@"filterTask"]) {
-        NSInteger width = [[self.navigationItem.leftBarButtonItem.title stringByReplacingEmojiCheatCodesWithUnicode] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
+        NSInteger width = [self.navigationItem.leftBarButtonItem.title boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                                                                                        options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
                                                                                                     attributes:@{
                                                                                                                  NSFontAttributeName : [UIFont systemFontOfSize:17.0]

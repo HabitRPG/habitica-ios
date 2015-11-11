@@ -130,4 +130,11 @@
     [self dismissAnimated:YES wasSeen:YES];
 }
 
+- (void) removeFromSuperview {
+    if (self.hintView) {
+        [self.hintView removeFromSuperview];
+    }
+    [super removeFromSuperview];
+}
+
 @end

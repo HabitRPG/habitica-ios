@@ -14,6 +14,6 @@
 
 - (void)displayTutorialStep:(HRPGManager *)sharedManager;
 
-
+- (void)removeActiveView;
 
 @end
