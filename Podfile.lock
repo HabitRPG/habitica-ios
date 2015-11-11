@@ -115,6 +115,7 @@ DEPENDENCIES:
   - CRToast (from `https://github.com/cruffenach/CRToast`)
   - DateTools
   - DTCoreText
+  - EAIntroView
   - EAIntroView (~> 2.6.0)
   - FLEX
   - FontAwesomeIconFactory

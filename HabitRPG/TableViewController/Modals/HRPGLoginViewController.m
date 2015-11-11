@@ -17,6 +17,7 @@
 #import "CRToast.h"
 #import <Google/Analytics.h>
 #import "HRPGAvatarSetupViewController.h"
+#import "HRPGIntroView.h"
 
 @interface HRPGLoginViewController ()
 @property HRPGManager *sharedManager;
@@ -66,6 +67,14 @@
     self.tableView.tableHeaderView = self.headerView;
     
     [FBSDKLoginButton class];
+    
+    if (self.isRootViewController) {
+        HRPGIntroView *introView = [[HRPGIntroView alloc] initWithFrame:self.navigationController.view.frame];
+        [introView displayInView:self.navigationController.view];
+        [introView setDelegate:self];
+        [[UIApplication sharedApplication] setStatusBarHidden:YES
+                                                withAnimation:UIStatusBarAnimationFade];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -391,6 +400,11 @@
             self.shouldDismissOnNextAppear = YES;
         }
     }
+}
+
+- (void)introDidFinish:(EAIntroView *)introView {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO
+                                            withAnimation:UIStatusBarAnimationFade];
 }
 
 @end

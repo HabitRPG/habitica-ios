@@ -111,6 +111,7 @@
 		D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC8E190914AD00FFD2B9 /* HRPGQuestDetailViewController.m */; };
 		D99EA73D1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D99EA73C1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m */; };
 		D99EA7421B8667C90048BF6A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D99EA7411B8667C90048BF6A /* libOCMock.a */; };
+		D99EAB621BF375F7003C1C62 /* HRPGIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = D99EAB611BF375F7003C1C62 /* HRPGIntroView.m */; };
 		D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99F15BF191027D90081836E /* HRPGBaseViewController.m */; };
 		D9A1A27E1BA593D900903567 /* HRPGRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A1A27D1BA593D900903567 /* HRPGRewardTableViewCell.m */; };
 		D9A1A2811BA7029D00903567 /* NSDate+DaysSince.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A1A2801BA7029D00903567 /* NSDate+DaysSince.m */; };
@@ -407,6 +408,8 @@
 		D99DEC8E190914AD00FFD2B9 /* HRPGQuestDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGQuestDetailViewController.m; path = ../Modals/HRPGQuestDetailViewController.m; sourceTree = "<group>"; };
 		D99EA73C1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTaskFormViewControllerTests.m; sourceTree = "<group>"; };
 		D99EA7411B8667C90048BF6A /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = OCMock/libOCMock.a; sourceTree = "<group>"; };
+		D99EAB601BF375F7003C1C62 /* HRPGIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGIntroView.h; sourceTree = "<group>"; };
+		D99EAB611BF375F7003C1C62 /* HRPGIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGIntroView.m; sourceTree = "<group>"; };
 		D99F15BE191027D90081836E /* HRPGBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGBaseViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D99F15BF191027D90081836E /* HRPGBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGBaseViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9A1A27C1BA593D900903567 /* HRPGRewardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGRewardTableViewCell.h; sourceTree = "<group>"; };
@@ -839,6 +842,8 @@
 				D905766E1BD7F581009BB7BC /* HRPGHintView.m */,
 				D95CBD461BBC0EDA002F4498 /* UIView+Pulse.h */,
 				D95CBD471BBC0EDA002F4498 /* UIView+Pulse.m */,
+				D99EAB601BF375F7003C1C62 /* HRPGIntroView.h */,
+				D99EAB611BF375F7003C1C62 /* HRPGIntroView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1446,6 +1451,7 @@
 				D9FC1A781BC28C5F00B97D23 /* HRPGExplanationView.m in Sources */,
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
 				D9B5C0E718D62CC700C8D1B7 /* HRPGLoginViewController.m in Sources */,
+				D99EAB621BF375F7003C1C62 /* HRPGIntroView.m in Sources */,
 				D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */,
 				D98F5AEC190566CA002F8223 /* User.m in Sources */,
 				D9C7C1F318E280DE0083F4E4 /* HRPGRewardsViewController.m in Sources */,

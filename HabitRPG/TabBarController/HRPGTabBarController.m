@@ -28,6 +28,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO
+                                            withAnimation:UIStatusBarAnimationFade];
+    
     NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
 
     UITabBarItem *item0 = self.tabBar.items[0];
@@ -164,6 +168,10 @@
       newIndexPath:(NSIndexPath *)newIndexPath {
 
     [self updateDailyBadge];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return NO;
 }
 
 @end

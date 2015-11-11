@@ -255,7 +255,7 @@ BOOL editable;
         return 0.1;
     }
     float width;
-    NSInteger height = 30;
+    NSInteger height = 25;
     if ([task.type isEqualToString:@"habit"]) {
         width = self.viewWidth - 95;
     } else if ([task.checklist count] > 0) {
@@ -286,8 +286,8 @@ BOOL editable;
     if (task.duedate) {
         height = height + 5;
     }
-    if (height <= 70) {
-        return 70;
+    if (height <= 60) {
+        return 60;
     }
     return height;
 }
