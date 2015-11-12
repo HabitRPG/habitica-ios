@@ -256,12 +256,10 @@ BOOL editable;
     }
     float width;
     NSInteger height = 25;
-    if ([task.type isEqualToString:@"habit"]) {
-        width = self.viewWidth - 95;
-    } else if ([task.checklist count] > 0) {
-        width = self.viewWidth - 110;
+    if ([task.checklist count] > 0) {
+        width = self.viewWidth - 125;
     } else {
-        width = self.viewWidth - 50;
+        width = self.viewWidth - 94;
     }
     height = height + [[task.text stringByReplacingEmojiCheatCodesWithUnicode] boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                options:NSStringDrawingUsesLineFragmentOrigin
@@ -282,6 +280,25 @@ BOOL editable;
             height = height + [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2].lineHeight*3;
         }
     }
+    
+    if ([task.type isEqualToString:@"daily"] && [task.streak integerValue] > 0) {
+        NSString *text = [NSString stringWithFormat:NSLocalizedString(@"Current streak: %@", nil), task.streak];
+        height = height + [text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                                                                                       options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+                                                                                                    attributes:@{
+                                                                                                                 NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2]
+                                                                                                                 }
+                                                                                                       context:nil].size.height;
+    } else if ([task.type isEqualToString:@"todo"]) {
+        height = height + [@"" boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                             options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+                                          attributes:@{
+                                                       NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2]
+                                                       }
+                                             context:nil].size.height;
+    }
+
+    
     height = height + self.extraCellSpacing;
     if (task.duedate) {
         height = height + 5;

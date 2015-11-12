@@ -23,6 +23,7 @@
         NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:now];
         [components setHour:0];
         NSDate *today = [calendar dateFromComponents:components];
+        self.dueLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2];
         if ([task.duedate compare:today] == NSOrderedAscending) {
             self.dueLabel.textColor = [UIColor red10];
             self.dueLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Due %@", nil), [self.dateFormatter stringFromDate:task.duedate]];
