@@ -239,7 +239,7 @@ NSString *partyID;
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGInviteMembersViewController *formViewController = (HRPGInviteMembersViewController *) segue.sourceViewController;
-    [self.sharedManager inviteMembers:formViewController.members toGroupWithID:self.partyID onSuccess:^() {
+    [self.sharedManager inviteMembers:formViewController.members withInvitationType:formViewController.invitationType toGroupWithID:self.partyID onSuccess:^() {
         
     }onError:^() {
         

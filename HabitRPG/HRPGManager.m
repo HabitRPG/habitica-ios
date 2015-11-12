@@ -2432,10 +2432,10 @@ NSString *currentUser;
     }];
 }
 
-- (void)inviteMembers:(NSArray *)members toGroupWithID:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+- (void)inviteMembers:(NSArray *)members withInvitationType:(NSString *)invitationType toGroupWithID:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
-    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/invite", group] parameters:@{@"uuids": members} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/invite", group] parameters:@{invitationType: members} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {

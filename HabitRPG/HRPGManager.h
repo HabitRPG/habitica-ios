@@ -83,7 +83,7 @@
 
 - (void)updateGroup:(Group *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)inviteMembers:(NSArray *)members toGroupWithID:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+- (void)inviteMembers:(NSArray *)members withInvitationType:(NSString *)invitationType toGroupWithID:(NSString*)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)joinGroup:(NSString *)group withType:(NSString*)type onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
