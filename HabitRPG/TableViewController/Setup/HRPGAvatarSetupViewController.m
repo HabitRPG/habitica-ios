@@ -394,16 +394,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)skipSetup:(id)sender {
-    NSError *error;
-    [self.managedObjectContext saveToPersistentStore:&error];
-    if (self.shouldDismiss) {
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    } else {
-        [self performSegueWithIdentifier:@"MainSegue" sender:self];
-    }
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"TaskSetupSegue"]) {
         HRPGTaskSetupTableViewController *destinationController = segue.destinationViewController;

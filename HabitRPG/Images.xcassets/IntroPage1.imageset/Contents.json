@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "SAMPLE SLIDE1Resized.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Slack for iOS Upload.png",
       "scale" : "2x"
     },
     {

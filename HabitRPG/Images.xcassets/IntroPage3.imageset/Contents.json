@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "SnackLessMonster_by_Arcosine.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Slack for iOS Upload.png",
       "scale" : "2x"
     },
     {

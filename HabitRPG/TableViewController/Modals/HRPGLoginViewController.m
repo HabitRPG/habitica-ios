@@ -74,6 +74,7 @@
         [introView setDelegate:self];
         [[UIApplication sharedApplication] setStatusBarHidden:YES
                                                 withAnimation:UIStatusBarAnimationFade];
+        [self registerLoginSwitch:nil];
     }
 }
 
