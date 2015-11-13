@@ -293,10 +293,12 @@
         [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0], [NSIndexPath indexPathForItem:3 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
         self.navigationItem.rightBarButtonItem.title = NSLocalizedString(@"Log in", nil);
         self.loginLabel.text = NSLocalizedString(@"Register", nil);
+        self.usernameField.placeholder = NSLocalizedString(@"Username", nil);
     } else {
         [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0], [NSIndexPath indexPathForItem:3 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
         self.navigationItem.rightBarButtonItem.title = NSLocalizedString(@"Register", nil);
         self.loginLabel.text = NSLocalizedString(@"Log in", nil);
+        self.usernameField.placeholder= NSLocalizedString(@"Email / Username", nil);
     }
 }
 

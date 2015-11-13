@@ -255,7 +255,7 @@ BOOL editable;
         return 0.1;
     }
     float width;
-    NSInteger height = 25;
+    NSInteger height = 35;
     if ([task.checklist count] > 0) {
         width = self.viewWidth - 125;
     } else {
@@ -303,8 +303,8 @@ BOOL editable;
     if (task.duedate) {
         height = height + 5;
     }
-    if (height <= 60) {
-        return 60;
+    if (height <= 70) {
+        return 70;
     }
     return height;
 }

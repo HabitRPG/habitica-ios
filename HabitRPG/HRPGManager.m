@@ -1070,6 +1070,8 @@ NSString *currentUser;
     RKResponseDescriptor *errorResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:errorMapping method:RKRequestMethodAny pathPattern:nil keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
     [objectManager addResponseDescriptor:errorResponseDescriptor];
 
+    [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-client" value:@"habitica-ios"];
+    
     [self setCredentials];
     defaults = [NSUserDefaults standardUserDefaults];
     if (currentUser != nil && currentUser.length > 0) {

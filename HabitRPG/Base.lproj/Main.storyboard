@@ -4882,7 +4882,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                         <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igc-h7-pZV">
                                             <rect key="frame" x="50" y="8" width="500" height="44"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username / Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r6h-y4-Yj6">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email / Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r6h-y4-Yj6">
                                                     <rect key="frame" x="69" y="0.0" width="431" height="44"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -5593,7 +5593,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <image name="onepassword-button" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zEC-Wx-BHZ"/>
+        <segue reference="ydi-dk-kDU"/>
         <segue reference="ffA-qm-0SO"/>
         <segue reference="jeD-LQ-1O1"/>
         <segue reference="04Z-5H-zfF"/>
