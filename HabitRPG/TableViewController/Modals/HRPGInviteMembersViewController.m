@@ -43,12 +43,12 @@
     row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@"uuids" displayText:NSLocalizedString(@"User ID", nil)],
                             [XLFormOptionsObject formOptionsObjectWithValue:@"emails" displayText:NSLocalizedString(@"Email", nil)],
                             ];
-    row.value = [XLFormOptionsObject formOptionsObjectWithValue:@"uuids" displayText:NSLocalizedString(@"User ID", nil)];
+    row.value = [XLFormOptionsObject formOptionsObjectWithValue:@"emails" displayText:NSLocalizedString(@"Emails", nil)];
     row.title = NSLocalizedString(@"Invitation Type", nil);
     [section addFormRow:row];
     [formDescriptor addFormSection:section];
     
-    [self initializeUIDSection];
+    [self initializeEmailSection];
     
 }
 
@@ -103,7 +103,12 @@
         if ([self.invitationType isEqualToString:@"uuids"]) {
             self.members = [self.form formValues][@"userIDs"];
         } else {
-            self.members = [self.form formValues][@"emails"];
+            NSArray *memberEmails = [self.form formValues][@"emails"];
+            NSMutableArray *members = [NSMutableArray arrayWithCapacity:memberEmails.count];
+            for (NSString *email in memberEmails) {
+                [members addObject:@{@"name" : @"", @"email": email}];
+            }
+            self.members = members;
         }
     }
 }

@@ -74,7 +74,7 @@
         page3.titlePositionY = titleposition;
         page3.titleFont = [UIFont boldSystemFontOfSize:20.0];
         page3.title = NSLocalizedString(@"Get Social and Fight Monsters", nil);
-        page3.desc = NSLocalizedString(@"Stay on track with your goals by staying accountable. Support your friends by battling monsters together, and reap the real-life rewards.", nil);
+        page3.desc = NSLocalizedString(@"Keep your goals on track with help from your friends. Support each other in life and in battle as you improve together!", nil);
         page3.descPositionY = titleposition - 24;
         page3.descFont = [UIFont systemFontOfSize:14.0];
         page3.titleIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IntroPage3"]];

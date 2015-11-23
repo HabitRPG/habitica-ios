@@ -50,28 +50,7 @@ NSString *partyID;
     
     [self setUpInvitationButton];
     
-    if (self.isLeader) {
-        self.coachMarks = @[@"inviteParty"];
-    }
-}
 
-- (CGRect)getFrameForCoachmark:(NSString *)coachMarkIdentifier {
-    NSInteger width = [self.navigationItem.rightBarButtonItem.title boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
-                                                                                 options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
-                                                                              attributes:@{
-                                                                                           NSFontAttributeName : [UIFont systemFontOfSize:17.0]
-                                                                                           }
-                                                                                 context:nil].size.width;
-    return CGRectMake(self.view.frame.size.width-width-12, 20, width+6, 44);
-}
-
-- (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
-    return @{@"text": NSLocalizedString(@"Tap to invite friends to your party!", nil)};
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self removeActiveView];
 }
 
 #pragma mark - Table view data source

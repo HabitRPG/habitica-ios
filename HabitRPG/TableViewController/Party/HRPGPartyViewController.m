@@ -44,6 +44,8 @@ ChatMessage *selectedMessage;
     [super viewDidLoad];
     user = [self.sharedManager getUser];
 
+    self.tutorialIdentifier = @"party";
+
     self.rowHeights = [NSMutableArray array];
     self.sizeTextView = [[DTAttributedTextView alloc] init];
     
@@ -148,9 +150,18 @@ ChatMessage *selectedMessage;
     }];
 }
 
+- (CGRect)getFrameForCoachmark:(NSString *)coachMarkIdentifier {
+    
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]];
+        return [self.tableView convertRect:cell.frame toView:self.parentViewController.parentViewController.view];
+}
+
+
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"party"]) {
         return @{@"text": NSLocalizedString(@"This is where you and your friends can hold each other accountable to your goals and fight monsters with your tasks!", nil)};
+    } else if ([tutorialIdentifier isEqualToString:@"inviteParty"]) {
+        return @{@"text": NSLocalizedString(@"Tap to invite friends and view party members.", nil)};
     }
     return nil;
 }
@@ -834,6 +845,8 @@ ChatMessage *selectedMessage;
     if ([self.party.leader.id isEqualToString:user.id]) {
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(openPartyForm)];
         self.navigationItem.rightBarButtonItem = barButton;
+        
+        self.coachMarks = @[@"inviteParty"];
     }
 }
 
