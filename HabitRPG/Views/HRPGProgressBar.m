@@ -44,16 +44,17 @@
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:8.0f];
-    CGContextSetFillColorWithColor(context, [[UIColor colorWithRed:0.8549 green:0.8549 blue:0.8549 alpha:1.0] CGColor]);
-    [path fill];
+    UIBezierPath *trackPath = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:8.0f];
+    CGContextSetFillColorWithColor(context, [[UIColor colorWithWhite:0.8549 alpha:1.0] CGColor]);
+    [trackPath fill];
     CGFloat percent = self.value / self.maxValue;
     if (self.maxValue == 0 || percent < 0) {
         percent = 0;
     }
-    path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width*percent, rect.size.height) cornerRadius:8.0f];
+    UIBezierPath *fillPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width*percent, rect.size.height) cornerRadius:8.0f];
     CGContextSetFillColorWithColor(context, [self.barColor CGColor]);
-    [path fill];
+    [trackPath addClip];
+    [fillPath fill];
 }
 
 
