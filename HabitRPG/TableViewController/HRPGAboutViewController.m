@@ -48,11 +48,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellName = @"BasicCell";
-    if (indexPath.item == 0 || indexPath.item == 3 || indexPath.item == 8) {
+    if (indexPath.item == 0 || indexPath.item == 3 || indexPath.item == 7) {
         cellName = @"RightDetailCell";
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     if (indexPath.item == 0) {
         cell.textLabel.text = NSLocalizedString(@"Website", nil);
         cell.detailTextLabel.text = @"habitica.com";
@@ -73,6 +74,7 @@
         cell.textLabel.text = NSLocalizedString(@"Version", nil);
         NSString * appVersionString = [NSString stringWithFormat: @"%@ (%@)", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
         cell.detailTextLabel.text = appVersionString;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return cell;
@@ -138,6 +140,8 @@
         default:
             break;
     }
+
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
