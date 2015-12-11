@@ -71,6 +71,7 @@
          localNotification.repeatInterval = NSDayCalendarUnit;
          localNotification.alertBody = NSLocalizedString(@"Remember to check off your Dailies!", nil);
          localNotification.soundName = UILocalNotificationDefaultSoundName;
+         localNotification.timeZone = [NSTimeZone defaultTimeZone];
          [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     }
     
