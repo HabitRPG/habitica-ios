@@ -18,6 +18,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Google/Analytics.h>
 #import <CoreSpotlight/CoreSpotlight.h>
+#import "Reminder.h"
 
 @implementation HRPGAppDelegate
 
@@ -92,6 +93,13 @@
     }
     NSArray *scheduledNotifications = [NSArray arrayWithArray:application.scheduledLocalNotifications];
     application.scheduledLocalNotifications = scheduledNotifications;
+    
+    NSDate *lastReminderSchedule = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastReminderSchedule"];
+    if (lastReminderSchedule == nil || [lastReminderSchedule timeIntervalSinceNow] < -259200) {
+        //Reschedule every 3 days
+        [self rescheduleTaskReminders];
+    }
+    
     User *user = [self.sharedManager getUser];
     if (user) {
         [self.sharedManager fetchUser:^() {} onError:^() {}];
@@ -170,6 +178,35 @@
 
     }
     return YES;
+}
+
+- (void) rescheduleTaskReminders {
+    UIApplication *sharedApplication = [UIApplication sharedApplication];
+    for(UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
+        if([reminder.userInfo objectForKey:@"ID"] != nil) {
+            [sharedApplication cancelLocalNotification:reminder];
+        }
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:[self.sharedManager getManagedObjectContext]];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setFetchBatchSize:20];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"reminders.@count != 0"]];
+    NSError *error;
+    NSArray *tasks = [[self.sharedManager getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    
+    for (int day = 0; day < 6; day++) {
+        for (Task *task in tasks) {
+            NSDate *checkedDate = [NSDate dateWithTimeIntervalSinceNow:(day * 86400)];
+            if ([task dueOnDate:checkedDate]) {
+                for (Reminder *reminder in task.reminders) {
+                    [reminder scheduleForDay:checkedDate];
+                }
+            }
+        }
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastReminderSchedule"];
 }
 
 @end

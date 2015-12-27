@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class ChecklistItem, Tag, User;
+@class ChecklistItem, Tag, User, Reminder;
 
 typedef NS_ENUM(NSInteger, TaskHabitFilterType){
     TaskHabitFilterTypeAll,
@@ -57,6 +57,7 @@ typedef NS_ENUM(NSInteger, TaskToDoFilterType){
 @property(nonatomic, retain) NSDate *startDate;
 @property(nonatomic, retain) NSOrderedSet *checklist;
 @property(nonatomic, retain) NSSet *tags;
+@property(nonatomic, retain) NSOrderedSet *reminders;
 @property(nonatomic, getter = getTagDictionary, setter = setTagDictionary:) NSDictionary *tagDictionary;
 @property(nonatomic, retain) User *user;
 
@@ -94,8 +95,18 @@ typedef NS_ENUM(NSInteger, TaskToDoFilterType){
 
 - (void)removeTags:(NSSet *)values;
 
+- (void)addRemindersObject:(Reminder *)value;
+
+- (void)removeRemindersObject:(Reminder *)value;
+
+- (void)addReminders:(NSSet *)values;
+
+- (void)removeReminders:(NSSet *)values;
+
 - (BOOL)dueToday;
 - (BOOL)dueTodayWithOffset:(NSInteger)offset;
+- (BOOL)dueOnDate:(NSDate *)date;
+- (BOOL)dueOnDate:(NSDate *)date withOffset:(NSInteger)offset;
 
 - (UIColor*) taskColor;
 - (UIColor*) lightTaskColor;

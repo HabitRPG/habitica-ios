@@ -14,6 +14,7 @@
 #import "NSDate+DaysSince.h"
 #import <CoreSpotlight/CoreSpotlight.h>
 #import "NSString+Emoji.h"
+#import "Reminder.h"
 
 @implementation Task
 
@@ -39,6 +40,7 @@
 @dynamic sunday;
 @dynamic checklist;
 @dynamic tags;
+@dynamic reminders;
 @dynamic user;
 @dynamic duedate;
 @dynamic everyX;
@@ -46,7 +48,19 @@
 @dynamic startDate;
 @synthesize currentlyChecking;
 
+- (BOOL)dueToday {
+    return [self dueOnDate:[NSDate date] withOffset:0];
+}
+
 - (BOOL)dueTodayWithOffset:(NSInteger)offset {
+    return [self dueOnDate:[NSDate date] withOffset:offset];
+}
+
+- (BOOL)dueOnDate:(NSDate *)date {
+    return [self dueOnDate:date withOffset:0];
+}
+
+- (BOOL)dueOnDate:(NSDate *)date withOffset:(NSInteger)offset {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     if (self.startDate) {
         NSDate *startDateAtMidnight;
@@ -57,7 +71,6 @@
         }
     }
     //get today + the custom offset the user uses
-    NSDate *date = [NSDate date];
     NSDate *dateWithOffset = [date dateByAddingTimeInterval:-(offset*60*60)];
     if ([self.frequency isEqualToString:@"daily"]) {
         NSDate *startDate = [NSDate date];
@@ -89,6 +102,19 @@
     NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.checklist];
     [tempSet removeObject:value];
     self.checklist = tempSet;
+}
+
+- (void)addRemindersObject:(Reminder *)value {
+    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.reminders];
+    value.task = self;
+    [tempSet addObject:value];
+    self.reminders = tempSet;
+}
+
+- (void)removeRemindersObject:(Reminder *)value {
+    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.reminders];
+    [tempSet removeObject:value];
+    self.reminders = tempSet;
 }
 
 - (NSDictionary *)getTagDictionary {
