@@ -136,10 +136,10 @@
         row.value = [XLFormOptionsObject formOptionsObjectWithValue:@"weekly" displayText:NSLocalizedString(@"Weekly", nil)];
         row.required = YES;
         row.selectorTitle = NSLocalizedString(@"Select Frequency", nil);
+        [section addFormRow:row];
         if (!self.editTask) {
             [self setFrequencyRows:@"weekly"];
         }
-        [section addFormRow:row];
     
         
         // Enable Insertion, Deletion, Reordering
@@ -415,7 +415,9 @@
         }
         row.required = YES;
     } else {
-        [section removeFormRowAtIndex:1];
+        if (section.formRows.count > 1) {
+            [section removeFormRowAtIndex:1];
+        }
 
         XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"monday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Monday", nil)];
         row.value = [NSNumber numberWithBool:YES];
