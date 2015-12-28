@@ -77,7 +77,9 @@
         if (self.startDate) {
             startDate = self.startDate;
         }
-        
+        if ([self.everyX integerValue] == 0) {
+            return true;
+        }
         return ([[dateWithOffset daysSinceDate:startDate] integerValue] % [self.everyX integerValue]) == 0;
     } else {
         
