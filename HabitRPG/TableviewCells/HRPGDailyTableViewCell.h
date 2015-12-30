@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *streakLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *notesStreakSeparator;
 
+
 - (void)configureForTask:(Task *) task withOffset:(NSInteger) offset;
 
 @end

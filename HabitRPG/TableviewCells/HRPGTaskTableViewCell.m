@@ -29,6 +29,15 @@
         self.subtitleLabel.text = nil;
         self.titleNoteConstraint.constant = 0;
     }
+    
+    self.tagImageView.hidden = YES;
+    
+    if (task.reminders != nil && task.reminders.count > 0) {
+        self.reminderImageView.hidden = NO;
+    } else {
+        self.reminderImageView.hidden = YES;
+    }
+    
     [self setNeedsLayout];
 }
 

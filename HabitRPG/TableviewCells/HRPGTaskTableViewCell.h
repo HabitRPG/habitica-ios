@@ -16,4 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleNoteConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *tagImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *reminderImageView;
+
 @end

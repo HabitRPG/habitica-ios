@@ -498,10 +498,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="MrU-hM-ysT">
-                                            <rect key="frame" x="84" y="39" width="463" height="12"/>
+                                            <rect key="frame" x="84" y="39" width="433" height="12"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4g-ej-s0n" userLabel="Title">
-                                                    <rect key="frame" x="0.0" y="0.0" width="463" height="0.0"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="433" height="0.0"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="500" constant="15" id="ICV-g6-PdU"/>
@@ -510,7 +510,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kba-Rn-ko5" userLabel="Streak">
-                                                    <rect key="frame" x="0.0" y="12" width="463" height="0.0"/>
+                                                    <rect key="frame" x="0.0" y="12" width="433" height="0.0"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="500" constant="17" id="7yl-sT-tUA"/>
@@ -521,7 +521,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haZ-wz-eyi" userLabel="Subtitle">
-                                                    <rect key="frame" x="0.0" y="6" width="463" height="0.0"/>
+                                                    <rect key="frame" x="0.0" y="6" width="433" height="0.0"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="500" constant="21" id="doO-lf-5qm"/>
@@ -588,18 +588,54 @@
                                                 <constraint firstItem="4aJ-po-TMF" firstAttribute="top" secondItem="CZ0-zQ-lJQ" secondAttribute="bottom" id="uaz-d1-rra"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="03P-7d-h2i">
+                                            <rect key="frame" x="525" y="33" width="22" height="25"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reminder" translatesAutoresizingMaskIntoConstraints="NO" id="Hh8-V2-JsF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="22" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="PFk-nr-hEF"/>
+                                                        <constraint firstAttribute="width" constant="20" id="s3z-n9-yIb"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="s3z-n9-yIb"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="22" id="EJX-PK-shI"/>
+                                                <constraint firstItem="Hh8-V2-JsF" firstAttribute="top" secondItem="03P-7d-h2i" secondAttribute="top" id="auG-p8-R4W"/>
+                                                <constraint firstAttribute="bottom" secondItem="Hh8-V2-JsF" secondAttribute="bottom" id="eo0-6s-8yS"/>
+                                                <constraint firstItem="Hh8-V2-JsF" firstAttribute="leading" secondItem="03P-7d-h2i" secondAttribute="leading" id="iRS-yT-hhS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hh8-V2-JsF" secondAttribute="trailing" id="mzR-7Z-NPP"/>
+                                                <constraint firstAttribute="height" priority="500" constant="5" id="tLZ-bL-KVU"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="03P-7d-h2i" firstAttribute="bottom" secondItem="rmb-Zq-WLv" secondAttribute="bottomMargin" id="5cO-Uh-4ll"/>
                                         <constraint firstItem="MrU-hM-ysT" firstAttribute="leading" secondItem="Acn-CN-thv" secondAttribute="trailing" constant="16" id="CtT-py-TZH"/>
-                                        <constraint firstItem="L43-nJ-Zxc" firstAttribute="leading" secondItem="MrU-hM-ysT" secondAttribute="trailing" constant="8" id="LFP-zM-pWE"/>
+                                        <constraint firstItem="03P-7d-h2i" firstAttribute="leading" secondItem="MrU-hM-ysT" secondAttribute="trailing" constant="8" id="J3I-8L-OOP"/>
+                                        <constraint firstItem="L43-nJ-Zxc" firstAttribute="leading" secondItem="03P-7d-h2i" secondAttribute="trailing" constant="8" id="Sqf-ml-Qrm"/>
                                         <constraint firstItem="Acn-CN-thv" firstAttribute="top" secondItem="rmb-Zq-WLv" secondAttribute="topMargin" placeholder="YES" id="U0S-dt-iy9"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="L43-nJ-Zxc" secondAttribute="trailing" placeholder="YES" id="UPT-eE-bEU"/>
                                         <constraint firstAttribute="centerY" secondItem="MrU-hM-ysT" secondAttribute="centerY" id="cQ9-tI-Khj"/>
                                         <constraint firstItem="Acn-CN-thv" firstAttribute="leading" secondItem="rmb-Zq-WLv" secondAttribute="leadingMargin" placeholder="YES" id="d2W-c8-pl1"/>
+                                        <constraint firstItem="03P-7d-h2i" firstAttribute="top" secondItem="rmb-Zq-WLv" secondAttribute="topMargin" id="get-ht-IIf"/>
                                         <constraint firstItem="L43-nJ-Zxc" firstAttribute="top" secondItem="rmb-Zq-WLv" secondAttribute="topMargin" placeholder="YES" id="gle-iy-bv9"/>
+                                        <constraint firstItem="03P-7d-h2i" firstAttribute="centerY" secondItem="rmb-Zq-WLv" secondAttribute="centerY" id="m1m-Xs-gNk"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="L43-nJ-Zxc" secondAttribute="bottom" placeholder="YES" id="qP3-D4-cFP"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Acn-CN-thv" secondAttribute="bottom" placeholder="YES" id="w7D-GW-TzJ"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="5cO-Uh-4ll"/>
+                                            <exclude reference="get-ht-IIf"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -610,6 +646,7 @@
                                     <outlet property="checklistIndicatorWidth" destination="5Jz-3B-z2G" id="79a-GP-dFC"/>
                                     <outlet property="checklistSeparator" destination="CZ0-zQ-lJQ" id="rIq-K2-oGg"/>
                                     <outlet property="notesStreakSeparator" destination="wnA-pQ-b1r" id="bsG-gX-5L3"/>
+                                    <outlet property="reminderImageView" destination="Hh8-V2-JsF" id="gKk-NM-ZHE"/>
                                     <outlet property="streakLabel" destination="kba-Rn-ko5" id="EeP-XU-D3b"/>
                                     <outlet property="subtitleLabel" destination="haZ-wz-eyi" id="ITo-1w-1hj"/>
                                     <outlet property="titleLabel" destination="c4g-ej-s0n" id="W81-VS-EfH"/>
@@ -5117,18 +5154,19 @@ Invite friends now to earn a Quest Scroll!</string>
         <image name="login_password" width="17" height="20"/>
         <image name="login_username" width="17" height="20"/>
         <image name="onepassword-button" width="27" height="27"/>
+        <image name="reminder" width="17" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ydi-dk-kDU"/>
         <segue reference="ffA-qm-0SO"/>
-        <segue reference="jeD-LQ-1O1"/>
-        <segue reference="04Z-5H-zfF"/>
+        <segue reference="ydi-dk-kDU"/>
         <segue reference="sPD-XR-ORt"/>
-        <segue reference="aWZ-FG-z5O"/>
+        <segue reference="8EB-JX-S8a"/>
         <segue reference="w8b-nU-BYs"/>
         <segue reference="Bfo-Hm-DEG"/>
-        <segue reference="8EB-JX-S8a"/>
         <segue reference="OZd-8c-sWC"/>
+        <segue reference="aWZ-FG-z5O"/>
+        <segue reference="jeD-LQ-1O1"/>
+        <segue reference="04Z-5H-zfF"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.52939999999999998" green="0.25879999999999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
