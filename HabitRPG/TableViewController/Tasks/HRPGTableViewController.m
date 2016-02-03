@@ -255,11 +255,14 @@ BOOL editable;
         return 0.1;
     }
     float width;
-    NSInteger height = 60;
+    NSInteger height = 30;
     if ([task.checklist count] > 0) {
         width = self.viewWidth - 125;
     } else {
         width = self.viewWidth - 94;
+    }
+    if ([task.type isEqualToString:@"daily"]) {
+        width = width - 25;
     }
     height = height + [[task.text stringByReplacingEmojiCheatCodesWithUnicode] boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                options:NSStringDrawingUsesLineFragmentOrigin
