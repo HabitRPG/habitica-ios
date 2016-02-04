@@ -33,7 +33,7 @@
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             NSString *defaultsKey = [NSString stringWithFormat:@"tutorial%@", self.tutorialIdentifier];
             NSDate *nextAppearance = [defaults valueForKey:defaultsKey];
-            if (![nextAppearance compare:[NSDate date]] == NSOrderedDescending) {
+            if (!([nextAppearance compare:[NSDate date]] == NSOrderedDescending)) {
                 self.displayedTutorialStep = YES;
                 [self displayExlanationView:self.tutorialIdentifier highlightingArea:CGRectZero withDefaults:defaults inDefaultsKey:defaultsKey withTutorialType:@"common"];
 
