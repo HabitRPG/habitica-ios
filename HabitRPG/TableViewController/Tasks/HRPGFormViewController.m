@@ -113,7 +113,10 @@
         row.value = [NSNumber numberWithBool:YES];
         [section addFormRow:row];
     }
-    
+    NSString *rowType;
+    if ([self.task.type isEqualToString:@"daily"]) {
+    } else {
+    }
     if ([self.taskType isEqualToString:@"daily"]) {
         section = [self.form formSectionAtIndex:0];
         XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"startDate" rowType:XLFormRowDescriptorTypeDateInline title:@"Start Date"];
@@ -141,15 +144,7 @@
             [self setFrequencyRows:@"weekly"];
         }
     
-        
-        // Enable Insertion, Deletion, Reordering
-        section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Reminders", nil)
-                                                 sectionOptions:XLFormSectionOptionCanReorder | XLFormSectionOptionCanInsert | XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
-        section.multivaluedAddButton.title = NSLocalizedString(@"Add a new reminder", nil);
-        section.multivaluedTag = @"reminders";
-        [self.form addFormSection:section];
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"reminder" rowType:XLFormRowDescriptorTypeTime title:@""];
-        section.multivaluedRowTemplate = row;
+        rowType = XLFormRowDescriptorTypeTime;
     }
     
     if ([self.taskType isEqualToString:@"todo"]) {
@@ -159,6 +154,17 @@
         [self.duedateSection addFormRow:row];
         [self.form addFormSection:self.duedateSection];
         
+        rowType = XLFormRowDescriptorTypeDateTime;
+    }
+    
+    if (![self.taskType isEqualToString:@"habit"]) {
+        section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Reminders", nil)
+                                                 sectionOptions:XLFormSectionOptionCanReorder | XLFormSectionOptionCanInsert | XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
+        section.multivaluedAddButton.title = NSLocalizedString(@"Add a new reminder", nil);
+        section.multivaluedTag = @"reminders";
+        [self.form addFormSection:section];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"reminder" rowType:rowType title:@""];
+        section.multivaluedRowTemplate = row;
     }
     
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Tags", nil)];
@@ -202,9 +208,16 @@
             [section addFormRow:row];
         }
         
+        NSString *rowType;
+        if ([self.task.type isEqualToString:@"daily"]) {
+            rowType = XLFormRowDescriptorTypeTime;
+        } else {
+            rowType = XLFormRowDescriptorTypeDateTime;
+        }
+        
         section = [self.form formSectionAtIndex:3];
         for (Reminder *item in self.task.reminders) {
-            XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeTime title:@""];
+            XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowType title:@""];
             row.value = item.time;
             [section addFormRow:row];
         }

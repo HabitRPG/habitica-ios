@@ -48,6 +48,8 @@
                                         kCRToastInteractionRespondersKey : @[blankResponder]
                                         }];
 
+    [self configureNotifications];
+    
     [self cleanAndRefresh:application];
     if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
@@ -180,6 +182,34 @@
     return YES;
 }
 
+-(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
+    
+    if ([identifier isEqualToString: @"completeAction"]) {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:[self.sharedManager getManagedObjectContext]];
+        [fetchRequest setEntity:entity];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id = %@", [notification.userInfo valueForKey:@"taskID"]]];
+        [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES]]];
+        
+        NSError *error;
+        NSArray *fetchedObjects = [[self.sharedManager getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+        if (fetchedObjects != nil && fetchedObjects.count == 1) {
+            Task *task = [fetchedObjects objectAtIndex:0];
+            if (![task.completed boolValue]) {
+                [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray) {
+                    completionHandler();
+                    return;
+                }onError:^() {
+                    completionHandler();
+                    return;
+                }];
+            }
+        }
+    }
+    
+}
+
+
 - (void) rescheduleTaskReminders {
     UIApplication *sharedApplication = [UIApplication sharedApplication];
     for(UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
@@ -199,14 +229,36 @@
     for (int day = 0; day < 6; day++) {
         for (Task *task in tasks) {
             NSDate *checkedDate = [NSDate dateWithTimeIntervalSinceNow:(day * 86400)];
-            if ([task dueOnDate:checkedDate]) {
-                for (Reminder *reminder in task.reminders) {
-                    [reminder scheduleForDay:checkedDate];
-                }
+            if ([task.type isEqualToString:@"daily"] && ![task dueOnDate:checkedDate]) {
+                continue;
+            }
+            for (Reminder *reminder in task.reminders) {
+                [reminder scheduleForDay:checkedDate];
             }
         }
     }
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastReminderSchedule"];
+}
+
+-(void) configureNotifications {
+    if  ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        UIUserNotificationType types = UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        
+        UIMutableUserNotificationAction *completeAction = [[UIMutableUserNotificationAction alloc] init];
+        completeAction.identifier = @"completeAction";
+        completeAction.title = NSLocalizedString(@"Complete", nil);
+        completeAction.activationMode = UIUserNotificationActivationModeBackground;
+        completeAction.destructive = NO;
+        completeAction.authenticationRequired = NO;
+        UIMutableUserNotificationCategory *completeCategory = [[UIMutableUserNotificationCategory alloc] init];
+        completeCategory.identifier = @"completeCategory";
+        [completeCategory setActions:@[completeAction]
+                          forContext:UIUserNotificationActionContextDefault];
+        
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:[NSSet setWithObject:completeCategory]];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }
+
 }
 
 @end
