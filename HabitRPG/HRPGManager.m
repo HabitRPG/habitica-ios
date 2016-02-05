@@ -699,7 +699,8 @@ NSString *currentUser;
             @"quest.extra.worldDmg.stable" : @"worldDmgStable",
             @"quest.extra.worldDmg.market" : @"worldDmgMarket",
             @"privacy" : @"privacy",
-            @"type" : @"type"
+            @"type" : @"type",
+            @"memberCount" : @"memberCount"
     }];
     entityMapping.identificationAttributes = @[@"id"];
     entityMapping.assignsDefaultValueForMissingAttributes = YES;
@@ -1493,6 +1494,17 @@ NSString *currentUser;
             }
             [defaults synchronize];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged" object:party];
+        } else if ([groupType isEqualToString:@"guilds"]) {
+            NSArray *guilds = [mappingResult array];
+            for (Group *guild in guilds) {
+                guild.type = @"guild";
+                guild.isMember = @YES;
+            }
+        } else if ([groupType isEqualToString:@"public"]) {
+            NSArray *guilds = [mappingResult array];
+            for (Group *guild in guilds) {
+                guild.type = @"guild";
+            }
         }
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {

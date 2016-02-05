@@ -68,6 +68,7 @@
     <entity name="Group" representedClassName="Group" syncable="YES">
         <attribute name="hdescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isMember" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="memberCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="privacy" optional="YES" attributeType="String" syncable="YES"/>
@@ -207,6 +208,11 @@
         <relationship name="commonUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="commonTutorialSteps" inverseEntity="User" syncable="YES"/>
         <relationship name="iosUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="iosTutorialSteps" inverseEntity="User" syncable="YES"/>
     </entity>
+    <entity name="UnreadMessages" syncable="YES">
+        <attribute name="groupID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hasUnread" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="unreadMessages" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="acceptedCommunityGuidelines" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="armoireEmpty" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -310,6 +316,7 @@
         <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reward" inverseName="user" inverseEntity="Reward" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="user" inverseEntity="Tag" syncable="YES"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="user" inverseEntity="Task" syncable="YES"/>
+        <relationship name="unreadMessages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="UnreadMessages" inverseName="user" inverseEntity="UnreadMessages" syncable="YES"/>
     </entity>
     <elements>
         <element name="Armoire" positionX="18" positionY="162" width="128" height="45"/>
@@ -321,7 +328,7 @@
         <element name="FAQ" positionX="9" positionY="153" width="128" height="120"/>
         <element name="Food" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Gear" positionX="0" positionY="0" width="128" height="225"/>
-        <element name="Group" positionX="0" positionY="0" width="128" height="360"/>
+        <element name="Group" positionX="0" positionY="0" width="128" height="375"/>
         <element name="HatchingPotion" positionX="0" positionY="0" width="128" height="60"/>
         <element name="Item" positionX="0" positionY="0" width="128" height="150"/>
         <element name="MetaReward" positionX="0" positionY="0" width="128" height="135"/>
@@ -335,6 +342,7 @@
         <element name="Tag" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="465"/>
         <element name="TutorialSteps" positionX="9" positionY="153" width="128" height="135"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="1575"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1590"/>
+        <element name="UnreadMessages" positionX="9" positionY="153" width="128" height="90"/>
     </elements>
 </model>

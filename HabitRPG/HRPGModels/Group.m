@@ -28,6 +28,8 @@
 @dynamic leader;
 @dynamic member;
 @dynamic collectStatus;
+@dynamic isMember;
+@dynamic memberCount;
 
 -(void)addChatmessagesObject:(ChatMessage *)value {
     NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.chatmessages];

@@ -217,14 +217,8 @@
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "r2M-pt-ZEv"; */
 "r2M-pt-ZEv.title" = "條件篩選";
 
-/* Class = "UITextField"; placeholder = "Username"; ObjectID = "r6h-y4-Yj6"; */
-"r6h-y4-Yj6.placeholder" = "使用者名稱";
-
 /* Class = "UILabel"; text = "No completed To-Dos"; ObjectID = "rRE-Ue-tyN"; */
 "rRE-Ue-tyN.text" = "未完成的待辦事項";
-
-/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "rwy-jV-Jrm"; */
-"rwy-jV-Jrm.normalTitle" = "略過";
 
 /* Class = "UISegmentedControl"; sMQ-xU-ZOd.segmentTitles[0] = "Slim"; ObjectID = "sMQ-xU-ZOd"; */
 "sMQ-xU-ZOd.segmentTitles[0]" = "瘦小";

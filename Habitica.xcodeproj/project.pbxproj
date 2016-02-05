@@ -138,6 +138,8 @@
 		D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */; };
 		D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */; };
 		D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */; };
+		D9C0E51A1C6510B40062C89A /* HRPGPublicGuildsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C0E5191C6510B40062C89A /* HRPGPublicGuildsViewController.m */; };
+		D9C0E51F1C6516C50062C89A /* HRPGPublicGuildTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C0E51E1C6516C50062C89A /* HRPGPublicGuildTableViewCell.m */; };
 		D9C257101B9B4C2D00839F48 /* HRPGTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C2570F1B9B4C2D00839F48 /* HRPGTaskTableViewCell.m */; };
 		D9C257131B9B4C4100839F48 /* HRPGHabitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C257121B9B4C4100839F48 /* HRPGHabitTableViewCell.m */; };
 		D9C257161B9B4C5100839F48 /* HRPGCheckedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C257151B9B4C5100839F48 /* HRPGCheckedTableViewCell.m */; };
@@ -146,6 +148,7 @@
 		D9C257261B9DC26D00839F48 /* HRPGFAQTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C257251B9DC26D00839F48 /* HRPGFAQTableViewController.m */; };
 		D9C2572A1B9DC4E900839F48 /* HRPGFAQDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C257291B9DC4E900839F48 /* HRPGFAQDetailViewController.m */; };
 		D9C2572D1B9DC58700839F48 /* FAQ.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C2572C1B9DC58700839F48 /* FAQ.m */; };
+		D9C31DB31C6501090096F4EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C31DB11C6501090096F4EC /* Main.storyboard */; };
 		D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7C1EF18E26BBB0083F4E4 /* Egg.m */; };
 		D9C7C1F318E280DE0083F4E4 /* HRPGRewardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7C1F218E280DD0083F4E4 /* HRPGRewardsViewController.m */; };
 		D9C89CF31B1DE3A200A599B0 /* HRPGGemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C89CF21B1DE3A200A599B0 /* HRPGGemViewController.m */; };
@@ -168,7 +171,6 @@
 		D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4E9718CB4A9400BB2094 /* InfoPlist.strings */; };
 		D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4E9A18CB4A9400BB2094 /* main.m */; };
 		D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */; };
-		D9EB4EA218CB4A9400BB2094 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EA018CB4A9400BB2094 /* Main.storyboard */; };
 		D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */; };
 		D9F16E361BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F16E351BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m */; };
 		D9F16E391BBC536500CA3E02 /* HRPGCustomizationSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F16E381BBC536500CA3E02 /* HRPGCustomizationSelectionView.m */; };
@@ -217,15 +219,12 @@
 		D90576821BD8323F009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D90576861BD83240009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D905768B1BD83241009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D905768D1BD83242009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Main.strings; sourceTree = "<group>"; };
 		D90576931BD83258009BB7BC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D90576941BD83259009BB7BC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D90576951BD83259009BB7BC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D90576961BD83259009BB7BC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		D90576981BD8326F009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D90576991BD8326F009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D905769A1BD8326F009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D905769B1BD83270009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Main.strings; sourceTree = "<group>"; };
 		D90EA03619D60421001EABE4 /* HabitIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabitIntro.png; sourceTree = "<group>"; };
 		D90EA03919D60B53001EABE4 /* DailyIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DailyIntro.png; sourceTree = "<group>"; };
 		D90EA03A19D60B53001EABE4 /* TodoIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TodoIntro.png; sourceTree = "<group>"; };
@@ -263,6 +262,7 @@
 		D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGFormViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D92D40D71ABF123800E30339 /* HRPGHabitButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGHabitButtons.h; sourceTree = "<group>"; };
 		D92D40D81ABF123800E30339 /* HRPGHabitButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGHabitButtons.m; sourceTree = "<group>"; };
+		D93136CE1C650283009869DF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		D93422B71AB792B5003AFCDE /* UIColor+LighterDarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+LighterDarker.h"; path = "HabitRPG/UIColor+LighterDarker.h"; sourceTree = SOURCE_ROOT; };
 		D93422B81AB792B5003AFCDE /* UIColor+LighterDarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+LighterDarker.m"; path = "HabitRPG/UIColor+LighterDarker.m"; sourceTree = SOURCE_ROOT; };
 		D93422BA1AB7A093003AFCDE /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-acknowledgements.plist"; path = "../Pods/Target Support Files/Pods/Pods-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -270,7 +270,6 @@
 		D939B5EF1BD832B20015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D939B5F01BD832B30015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D939B5F11BD832B30015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D939B5F21BD832B30015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Main.strings; sourceTree = "<group>"; };
 		D939B5F41BD8FBD50015AEB6 /* HRPGBatchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBatchOperation.h; sourceTree = "<group>"; };
 		D939B5F51BD8FBD50015AEB6 /* HRPGBatchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBatchOperation.m; sourceTree = "<group>"; };
 		D940A7E11B0CF80100370F2E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -390,7 +389,6 @@
 		D99B82171BD9545800E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D99B82181BD9545800E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D99B82191BD9545A00E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D99B821A1BD9545A00E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		D99BC43019D4C34A006DC132 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
 		D99BC43119D4C34A006DC132 /* OnePasswordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
 		D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
@@ -462,6 +460,14 @@
 		D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLabeledProgressBar.m; sourceTree = "<group>"; };
 		D9C0002E1928F83E003D4E4C /* HRPGRoundProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGRoundProgressView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGRoundProgressView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D9C0E5141C6502C50062C89A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		D9C0E5151C6502FD0062C89A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Main.strings; sourceTree = "<group>"; };
+		D9C0E5161C6503790062C89A /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Main.strings; sourceTree = "<group>"; };
+		D9C0E5171C650D1D0062C89A /* HabitRPG 20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 20.xcdatamodel"; sourceTree = "<group>"; };
+		D9C0E5181C6510B40062C89A /* HRPGPublicGuildsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPublicGuildsViewController.h; sourceTree = "<group>"; };
+		D9C0E5191C6510B40062C89A /* HRPGPublicGuildsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPublicGuildsViewController.m; sourceTree = "<group>"; };
+		D9C0E51D1C6516C50062C89A /* HRPGPublicGuildTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPublicGuildTableViewCell.h; sourceTree = "<group>"; };
+		D9C0E51E1C6516C50062C89A /* HRPGPublicGuildTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPublicGuildTableViewCell.m; sourceTree = "<group>"; };
 		D9C2570E1B9B4C2D00839F48 /* HRPGTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGTaskTableViewCell.h; path = HabitRPG/TableviewCells/HRPGTaskTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		D9C2570F1B9B4C2D00839F48 /* HRPGTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGTaskTableViewCell.m; path = HabitRPG/TableviewCells/HRPGTaskTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		D9C257111B9B4C4100839F48 /* HRPGHabitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGHabitTableViewCell.h; sourceTree = "<group>"; };
@@ -479,6 +485,8 @@
 		D9C257291B9DC4E900839F48 /* HRPGFAQDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGFAQDetailViewController.m; sourceTree = "<group>"; };
 		D9C2572B1B9DC58700839F48 /* FAQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAQ.h; sourceTree = "<group>"; };
 		D9C2572C1B9DC58700839F48 /* FAQ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAQ.m; sourceTree = "<group>"; };
+		D9C31DB21C6501090096F4EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D9C31DB71C6501EF0096F4EC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Main.strings; sourceTree = "<group>"; };
 		D9C7C1EE18E26BBB0083F4E4 /* Egg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Egg.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9C7C1EF18E26BBB0083F4E4 /* Egg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Egg.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9C7C1F118E280DD0083F4E4 /* HRPGRewardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGRewardsViewController.h; sourceTree = "<group>"; };
@@ -656,6 +664,8 @@
 			children = (
 				D9436AC71C64F880008D1171 /* HRPGGuildsOverviewViewController.h */,
 				D9436AC81C64F880008D1171 /* HRPGGuildsOverviewViewController.m */,
+				D9C0E5181C6510B40062C89A /* HRPGPublicGuildsViewController.h */,
+				D9C0E5191C6510B40062C89A /* HRPGPublicGuildsViewController.m */,
 			);
 			path = Guilds;
 			sourceTree = "<group>";
@@ -850,9 +860,27 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		D9C0E51B1C6515AD0062C89A /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				D9C0E51C1C6515B30062C89A /* Guilds */,
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
+		D9C0E51C1C6515B30062C89A /* Guilds */ = {
+			isa = PBXGroup;
+			children = (
+				D9C0E51D1C6516C50062C89A /* HRPGPublicGuildTableViewCell.h */,
+				D9C0E51E1C6516C50062C89A /* HRPGPublicGuildTableViewCell.m */,
+			);
+			path = Guilds;
+			sourceTree = "<group>";
+		};
 		D9C2570D1B9B4BFB00839F48 /* TableviewCells */ = {
 			isa = PBXGroup;
 			children = (
+				D9C0E51B1C6515AD0062C89A /* Social */,
 				D92C60FA1BD3FAC1005F68CC /* HRPGCopyTableViewCell.h */,
 				D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */,
 				D9C2570E1B9B4C2D00839F48 /* HRPGTaskTableViewCell.h */,
@@ -1094,7 +1122,7 @@
 				D98830D41BADD4220018594D /* HRPGLoadingViewController.m */,
 				D98830D91BADDE050018594D /* HRPGLoadingSquaresSegue.h */,
 				D98830DA1BADDE050018594D /* HRPGLoadingSquaresSegue.m */,
-				D9EB4EA018CB4A9400BB2094 /* Main.storyboard */,
+				D9C31DB11C6501090096F4EC /* Main.storyboard */,
 				D9436ACA1C64FDF2008D1171 /* Social.storyboard */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */,
@@ -1227,6 +1255,7 @@
 			knownRegions = (
 				en,
 				Base,
+				cs,
 			);
 			mainGroup = D9EB4E8218CB4A9400BB2094;
 			productRefGroup = D9EB4E8C18CB4A9400BB2094 /* Products */;
@@ -1271,7 +1300,6 @@
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
 				D93422BB1AB7A093003AFCDE /* Pods-acknowledgements.plist in Resources */,
 				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
-				D9EB4EA218CB4A9400BB2094 /* Main.storyboard in Resources */,
 				D96576C51BAF53D400CCA28E /* HRPGGearDetailView.xib in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				D91CCAD01BCF11CC001C6A0C /* HRPGUserTopHeader.xib in Resources */,
@@ -1279,6 +1307,7 @@
 				D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */,
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
 				D905768A1BD83241009BB7BC /* Localizable.strings in Resources */,
+				D9C31DB31C6501090096F4EC /* Main.storyboard in Resources */,
 				D979AD1C1AF3EF6E00D59FAE /* customizations.json in Resources */,
 				D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */,
 			);
@@ -1450,9 +1479,11 @@
 				D9660D751AB23F150084CE37 /* HRPGTopHeaderNavigationController.m in Sources */,
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
 				D92CDAE018CB83B90006C242 /* HRPGHabitTableViewController.m in Sources */,
+				D9C0E51A1C6510B40062C89A /* HRPGPublicGuildsViewController.m in Sources */,
 				D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */,
 				D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */,
 				D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */,
+				D9C0E51F1C6516C50062C89A /* HRPGPublicGuildTableViewCell.m in Sources */,
 				D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */,
 				D9D0451C1C2B1AEC00630244 /* Reminder.m in Sources */,
 				D94FEDEB1BB314B10046A52E /* HRPGCreatePartyViewController.m in Sources */,
@@ -1558,6 +1589,19 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		D9C31DB11C6501090096F4EC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9C31DB21C6501090096F4EC /* Base */,
+				D9C31DB71C6501EF0096F4EC /* da */,
+				D93136CE1C650283009869DF /* de */,
+				D9C0E5141C6502C50062C89A /* es */,
+				D9C0E5151C6502FD0062C89A /* cs */,
+				D9C0E5161C6503790062C89A /* zh */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		D9EB4E9718CB4A9400BB2094 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1569,19 +1613,6 @@
 				D99B82171BD9545800E770B7 /* de */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		D9EB4EA018CB4A9400BB2094 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D9EB4EA118CB4A9400BB2094 /* Base */,
-				D905768D1BD83242009BB7BC /* da */,
-				D90576961BD83259009BB7BC /* es */,
-				D905769B1BD83270009BB7BC /* cs */,
-				D939B5F21BD832B30015AEB6 /* zh */,
-				D99B821A1BD9545A00E770B7 /* de */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -2051,6 +2082,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D9C0E5171C650D1D0062C89A /* HabitRPG 20.xcdatamodel */,
 				D9D045161C2B18F500630244 /* HabitRPG 19.xcdatamodel */,
 				D934F0201BDA493700D11466 /* HabitRPG 18.xcdatamodel */,
 				D905766C1BD7C3F0009BB7BC /* HabitRPG 17.xcdatamodel */,
@@ -2071,7 +2103,7 @@
 				D9B27ED71AE4C138008914D7 /* HabitRPG 2.xcdatamodel */,
 				D967755519F1379800A21F45 /* HabitRPG.xcdatamodel */,
 			);
-			currentVersion = D9D045161C2B18F500630244 /* HabitRPG 19.xcdatamodel */;
+			currentVersion = D9C0E5171C650D1D0062C89A /* HabitRPG 20.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

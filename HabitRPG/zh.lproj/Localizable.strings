@@ -612,9 +612,6 @@ Version %1$@ (%2$@)";
 "Reminder" = "提醒";
 
 /* No comment provided by engineer. */
-"Repeat" = "重複";
-
-/* No comment provided by engineer. */
 "Repeat every X days" = "每 X 天重複一次";
 
 /* No comment provided by engineer. */
@@ -673,9 +670,6 @@ Version %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Size" = "大小";
-
-/* (No Commment) */
-"Skills are special abilities that have powerful affects! Tap on a skill to use it. It will cost Mana (the blue bar), which you earn by checking in every day and by completing your real-life tasks. Check out the FAQ in the menu for more info!" = "技能是有強大作用的特殊能力！點擊技能就能施展。施展技能需要耗費魔力 ( 藍色長條 )，魔力可由每天到訪和完成現實生活任務來獲得。查看選單中的 FAQ 來獲得更多資訊！";
 
 /* No comment provided by engineer. */
 "Skin" = "膚色";

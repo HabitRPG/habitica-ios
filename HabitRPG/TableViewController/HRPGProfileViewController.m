@@ -111,7 +111,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                 return 1;
             }
         case 1:
-            return 2;
+            return 3;
         case 2:
             return 5;
         case 3:
@@ -178,10 +178,17 @@ NIKFontAwesomeIconFactory *iconFactory;
             [self performSegueWithIdentifier:@"SpellSegue" sender:self];
         }
     } else if (indexPath.section == 1 && indexPath.item == 0) {
-        [self performSegueWithIdentifier:@"TavernSegue" sender:self];
+        UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
+        UIViewController *tavernViewController = (UIViewController *)[secondStoryBoard instantiateViewControllerWithIdentifier:@"TavernViewController"];
+        [self.navigationController pushViewController:tavernViewController animated:YES];
     } else if (indexPath.section == 1 && indexPath.item == 1) {
-        [self performSegueWithIdentifier:@"PartySegue" sender:self];
-        
+        UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
+        UIViewController *partyViewController = (UIViewController *)[secondStoryBoard instantiateViewControllerWithIdentifier:@"PartyViewController"];
+        [self.navigationController pushViewController:partyViewController animated:YES];
+    } else if (indexPath.section == 1 && indexPath.item == 2) {
+        UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
+        UIViewController *guildsViewController = (UIViewController *)[secondStoryBoard instantiateViewControllerWithIdentifier:@"GuildsOverviewViewController"];
+        [self.navigationController pushViewController:guildsViewController animated:YES];
     } else if (indexPath.section == 2 && indexPath.item == 0) {
         [self performSegueWithIdentifier:@"CustomizationSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 1) {
@@ -237,6 +244,8 @@ NIKFontAwesomeIconFactory *iconFactory;
                 showIndicator = YES;
             }
         }
+    } else if (indexPath.section == 1 && indexPath.item == 2) {
+        title = NSLocalizedString(@"Guilds", nil);
     } else if (indexPath.section == 2 && indexPath.item == 0) {
         title = NSLocalizedString(@"Customize Avatar", nil);
     } else if (indexPath.section == 2 && indexPath.item == 1) {

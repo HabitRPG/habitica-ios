@@ -31,6 +31,8 @@
 @property(nonatomic, retain) User *leader;
 @property(nonatomic, retain) NSSet *member;
 @property(nonatomic, retain) NSSet *collectStatus;
+@property(nonatomic, retain) NSNumber *isMember;
+@property(nonatomic, retain) NSNumber *memberCount;
 @end
 
 @interface Group (CoreDataGeneratedAccessors)

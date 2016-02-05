@@ -1,0 +1,21 @@
+//
+//  HRPGPublicGuildTableViewCell.h
+//  Habitica
+//
+//  Created by Phillip Thelen on 05/02/16.
+//  Copyright © 2016 Phillip Thelen. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "Group.h"
+
+@interface HRPGPublicGuildTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *memberCountLabel;
+@property (weak, nonatomic) IBOutlet UIButton *joinLeaveButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *joinLeaveButtonWidthConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+
+- (void) configureForGuild:(Group *)guild;
+
+@end

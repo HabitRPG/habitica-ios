@@ -217,14 +217,8 @@
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "r2M-pt-ZEv"; */
 "r2M-pt-ZEv.title" = "Filtr";
 
-/* Class = "UITextField"; placeholder = "Username"; ObjectID = "r6h-y4-Yj6"; */
-"r6h-y4-Yj6.placeholder" = "Uživatelské jméno";
-
 /* Class = "UILabel"; text = "No completed To-Dos"; ObjectID = "rRE-Ue-tyN"; */
 "rRE-Ue-tyN.text" = "Žádné nedokončené úkoly";
-
-/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "rwy-jV-Jrm"; */
-"rwy-jV-Jrm.normalTitle" = "Přeskočit";
 
 /* Class = "UISegmentedControl"; sMQ-xU-ZOd.segmentTitles[0] = "Slim"; ObjectID = "sMQ-xU-ZOd"; */
 "sMQ-xU-ZOd.segmentTitles[0]" = "Štíhlý";
