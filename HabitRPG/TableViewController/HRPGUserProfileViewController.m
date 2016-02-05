@@ -9,12 +9,13 @@
 #import "HRPGUserProfileViewController.h"
 #import "HRPGManager.h"
 #import "User.h"
-#import "NSMutableAttributedString_GHFMarkdown.h"
 #import "HRPGLabeledProgressBar.h"
 #import "UIColor+Habitica.h"
+#import "UIViewController+Markdown.h"
 
 @interface HRPGUserProfileViewController ()
 @property (nonatomic, readonly, getter=getUser) User *user;
+@property NSMutableDictionary *attributes;
 @end
 
 @implementation HRPGUserProfileViewController
@@ -29,6 +30,7 @@
     }];
     
     self.navigationItem.title = self.username;
+    [self configureMarkdownAttributes];
 }
 
 - (void)refresh {
@@ -91,9 +93,7 @@
                 [self configureCell:cell atIndexPath:indexPath];
                 break;
             case 1: {
-                NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:self.user.blurb];
-                [attributedText ghf_applyAttributes:self.markdownAttributes];
-                cell.textLabel.attributedText = attributedText;
+                cell.textLabel.attributedText = [self renderMarkdown:self.user.blurb];
                 break;
             }
             case 2:
@@ -117,9 +117,7 @@
     if (indexPath.section == 0 && indexPath.item == 0) {
         return 147;
     } else if (indexPath.section == 0 && indexPath.item == 1) {
-        NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:self.user.blurb];
-        [attributedText ghf_applyAttributes:self.markdownAttributes];
-        return [attributedText boundingRectWithSize:CGSizeMake(290, MAXFLOAT)
+        return [[self renderMarkdown:self.user.blurb] boundingRectWithSize:CGSizeMake(290, MAXFLOAT)
                                           options:NSStringDrawingUsesLineFragmentOrigin
                                           context:nil].size.height + 41;
     } else {

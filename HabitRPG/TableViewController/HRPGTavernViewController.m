@@ -19,10 +19,10 @@
 #import "NSNumber+abbreviation.h"
 #import "NSString+Emoji.h"
 #import "HRPGUserProfileViewController.h"
-#import "NSMutableAttributedString_GHFMarkdown.h"
 #import <CoreText/CoreText.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <DTAttributedTextView.h>
+#import "UIViewController+Markdown.h"
 
 @interface HRPGTavernViewController ()
 @property Group *tavern;
@@ -32,6 +32,7 @@
 @property NSString *replyMessage;
 @property NSMutableArray *rowHeights;
 @property DTAttributedTextView *sizeTextView;
+@property NSMutableDictionary *attributes;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
@@ -46,6 +47,7 @@ ChatMessage *selectedMessage;
     if (self) {
         self.rowHeights = [NSMutableArray arrayWithCapacity:self.fetchedResultsController.fetchedObjects.count];
         self.sizeTextView = [[DTAttributedTextView alloc] init];
+        [self configureMarkdownAttributes];
     }
     
     return self;
@@ -211,20 +213,13 @@ ChatMessage *selectedMessage;
             }
             message = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
         }
-        NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:message.text];
-        NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-        paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-        paragraphStyle.alignment = NSTextAlignmentLeft;
-        [attributedText addAttribute:NSFontAttributeName value:[UIFont preferredFontForTextStyle:UIFontTextStyleBody] range:NSMakeRange(0, attributedText.length)];
-        [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, attributedText.length)];
-        [attributedText ghf_applyAttributes:self.markdownAttributes];
         
-        self.sizeTextView.attributedString = attributedText;
+        self.sizeTextView.attributedString = [self renderMarkdown:message.text];
         self.sizeTextView.shouldDrawLinks = YES;
         
         CGSize suggestedSize = [self.sizeTextView.attributedTextContentView suggestedFrameSizeToFitEntireStringConstraintedToWidth:self.viewWidth-48];
         
-        CGFloat rowHeight = suggestedSize.height+41;
+        CGFloat rowHeight = suggestedSize.height+49;
         if (self.buttonIndex && self.buttonIndex.item < indexPath.item) {
             self.rowHeights[indexPath.item-1] = [NSNumber numberWithDouble:rowHeight];
         } else {
@@ -482,7 +477,7 @@ ChatMessage *selectedMessage;
     authorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     authorLabel.textColor = [message contributorColor];
 
-    DTAttributedTextView *textLabel = (DTAttributedTextView *) [cell viewWithTag:2];
+    UITextView *textLabel = (UITextView *) [cell viewWithTag:2];
     textLabel.delegate = self;
     cell.backgroundColor = [UIColor whiteColor];
     NSString *text = [message.text stringByReplacingEmojiCheatCodesWithUnicode];
@@ -492,17 +487,10 @@ ChatMessage *selectedMessage;
     }
     
     if (text) {
-        NSMutableAttributedString *attributedText = [NSMutableAttributedString ghf_mutableAttributedStringFromGHFMarkdown:text];
-        NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-        paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-        paragraphStyle.alignment = NSTextAlignmentLeft;
-        [attributedText addAttribute:NSFontAttributeName value:[UIFont preferredFontForTextStyle:UIFontTextStyleBody] range:NSMakeRange(0, attributedText.length)];
-        [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, attributedText.length)];
-        [attributedText ghf_applyAttributes:self.markdownAttributes];
-
-        textLabel.attributedString = attributedText;
-        textLabel.shouldDrawLinks = YES;
+        textLabel.dataDetectorTypes = UIDataDetectorTypeAll;
+        textLabel.attributedText = [self renderMarkdown:message.text];
     }
+    
     UILabel *dateLabel = (UILabel *) [cell viewWithTag:3];
     dateLabel.text = message.timestamp.timeAgoSinceNow;
     dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];

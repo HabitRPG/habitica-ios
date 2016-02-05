@@ -40,6 +40,9 @@
 		D939B5F61BD8FBD50015AEB6 /* HRPGBatchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D939B5F51BD8FBD50015AEB6 /* HRPGBatchOperation.m */; };
 		D940A7E31B0CF80100370F2E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D940A7E11B0CF80100370F2E /* Fabric.framework */; };
 		D940A7E41B0CF80100370F2E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D940A7E21B0CF80100370F2E /* Crashlytics.framework */; };
+		D9436AC11C63A4BB008D1171 /* UIViewController+Markdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D9436AC01C63A4BB008D1171 /* UIViewController+Markdown.m */; };
+		D9436AC91C64F880008D1171 /* HRPGGuildsOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9436AC81C64F880008D1171 /* HRPGGuildsOverviewViewController.m */; };
+		D9436ACB1C64FDF2008D1171 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9436ACA1C64FDF2008D1171 /* Social.storyboard */; };
 		D94461911AB355940015215E /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
 		D946E5C21B30A89500806BE6 /* NSDAte+NSDateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = D946E5C11B30A89500806BE6 /* NSDAte+NSDateMock.m */; };
 		D946E5C41B30A9D700806BE6 /* HRPGTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D946E5C31B30A9D700806BE6 /* HRPGTaskTests.m */; };
@@ -82,11 +85,6 @@
 		D97C71ED18F32FEF0089FDC6 /* Gear.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71EC18F32FEF0089FDC6 /* Gear.m */; };
 		D97C71F018F32FEF0089FDC6 /* MetaReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71EF18F32FEF0089FDC6 /* MetaReward.m */; };
 		D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */; };
-		D97CCDB519A51EED00DA128A /* GHFMarkdown_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDAC19A51EED00DA128A /* GHFMarkdown_Private.m */; };
-		D97CCDB619A51EED00DA128A /* GHFMarkdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDAE19A51EED00DA128A /* GHFMarkdown.m */; };
-		D97CCDB719A51EED00DA128A /* NSMutableAttributedString_GHFMarkdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDB019A51EED00DA128A /* NSMutableAttributedString_GHFMarkdown.m */; };
-		D97CCDB819A51EED00DA128A /* NSMutableString_GHFMarkdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDB219A51EED00DA128A /* NSMutableString_GHFMarkdown.m */; };
-		D97CCDB919A51EED00DA128A /* NSString_GHFMarkdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDB419A51EED00DA128A /* NSString_GHFMarkdown.m */; };
 		D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */; };
 		D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */; };
 		D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */ = {isa = PBXBuildFile; fileRef = D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */; };
@@ -277,6 +275,11 @@
 		D939B5F51BD8FBD50015AEB6 /* HRPGBatchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBatchOperation.m; sourceTree = "<group>"; };
 		D940A7E11B0CF80100370F2E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		D940A7E21B0CF80100370F2E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		D9436ABF1C63A4BB008D1171 /* UIViewController+Markdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Markdown.h"; sourceTree = "<group>"; };
+		D9436AC01C63A4BB008D1171 /* UIViewController+Markdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Markdown.m"; sourceTree = "<group>"; };
+		D9436AC71C64F880008D1171 /* HRPGGuildsOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGuildsOverviewViewController.h; sourceTree = "<group>"; };
+		D9436AC81C64F880008D1171 /* HRPGGuildsOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGuildsOverviewViewController.m; sourceTree = "<group>"; };
+		D9436ACA1C64FDF2008D1171 /* Social.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Social.storyboard; sourceTree = "<group>"; };
 		D94461831AB34F5C0015215E /* HabiticaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabiticaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94461861AB34F5C0015215E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D94461871AB34F5C0015215E /* HabiticaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabiticaTests.m; sourceTree = "<group>"; };
@@ -353,16 +356,6 @@
 		D97C71EF18F32FEF0089FDC6 /* MetaReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetaReward.m; sourceTree = "<group>"; };
 		D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGEquipmentViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGEquipmentViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D97CCDAB19A51EED00DA128A /* GHFMarkdown_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHFMarkdown_Private.h; sourceTree = "<group>"; };
-		D97CCDAC19A51EED00DA128A /* GHFMarkdown_Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHFMarkdown_Private.m; sourceTree = "<group>"; };
-		D97CCDAD19A51EED00DA128A /* GHFMarkdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHFMarkdown.h; sourceTree = "<group>"; };
-		D97CCDAE19A51EED00DA128A /* GHFMarkdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHFMarkdown.m; sourceTree = "<group>"; };
-		D97CCDAF19A51EED00DA128A /* NSMutableAttributedString_GHFMarkdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMutableAttributedString_GHFMarkdown.h; sourceTree = "<group>"; };
-		D97CCDB019A51EED00DA128A /* NSMutableAttributedString_GHFMarkdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMutableAttributedString_GHFMarkdown.m; sourceTree = "<group>"; };
-		D97CCDB119A51EED00DA128A /* NSMutableString_GHFMarkdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMutableString_GHFMarkdown.h; sourceTree = "<group>"; };
-		D97CCDB219A51EED00DA128A /* NSMutableString_GHFMarkdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMutableString_GHFMarkdown.m; sourceTree = "<group>"; };
-		D97CCDB319A51EED00DA128A /* NSString_GHFMarkdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_GHFMarkdown.h; sourceTree = "<group>"; };
-		D97CCDB419A51EED00DA128A /* NSString_GHFMarkdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_GHFMarkdown.m; sourceTree = "<group>"; };
 		D97CCDBA19A7AFFA00DA128A /* HRPGArrayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGArrayViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGArrayViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D980373719956E46004C8871 /* HRPGEquipmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = HRPGEquipmentDetailViewController.h; path = Inventory/HRPGEquipmentDetailViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -517,8 +510,8 @@
 		D9D96F01194B96FD00796FE7 /* HRPGMountMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGMountMasterViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9D96F02194B96FD00796FE7 /* HRPGMountMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGMountMasterViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9DE09171B4DC8E00032DCD6 /* HabitRPG 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 8.xcdatamodel"; sourceTree = "<group>"; };
-		D9E0868F18DF800F00BAF2EF /* HRPGTavernViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTavernViewController.h; sourceTree = "<group>"; };
-		D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTavernViewController.m; sourceTree = "<group>"; };
+		D9E0868F18DF800F00BAF2EF /* HRPGTavernViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGTavernViewController.h; path = ../HRPGTavernViewController.h; sourceTree = "<group>"; };
+		D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGTavernViewController.m; path = ../HRPGTavernViewController.m; sourceTree = "<group>"; };
 		D9E918551AA3A70D005E378B /* HRPGCheckBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCheckBoxView.h; sourceTree = "<group>"; };
 		D9E918561AA3A70D005E378B /* HRPGCheckBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCheckBoxView.m; sourceTree = "<group>"; };
 		D9EB4E8B18CB4A9400BB2094 /* Habitica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habitica.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -531,7 +524,6 @@
 		D9EB4E9C18CB4A9400BB2094 /* Habitica-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Habitica-Prefix.pch"; sourceTree = "<group>"; };
 		D9EB4E9D18CB4A9400BB2094 /* HRPGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGAppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D9EB4EA118CB4A9400BB2094 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D9EB4EB318CB4A9400BB2094 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D9F16E341BBC502C00CA3E02 /* HRPGAvatarSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGAvatarSetupViewController.h; path = Setup/HRPGAvatarSetupViewController.h; sourceTree = "<group>"; };
@@ -616,6 +608,7 @@
 		D92CDAE118CB83C40006C242 /* TableViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D9436AC21C64F6DC008D1171 /* Social */,
 				D99F15BE191027D90081836E /* HRPGBaseViewController.h */,
 				D99F15BF191027D90081836E /* HRPGBaseViewController.m */,
 				D9B5C0B518D5C07100C8D1B7 /* HRPGProfileViewController.h */,
@@ -626,8 +619,6 @@
 				D966557318FB129F0014C09D /* HRPGSettingsViewController.m */,
 				D92C60F61BD3F28A005F68CC /* HRPGAccountDetailViewController.h */,
 				D92C60F71BD3F28A005F68CC /* HRPGAccountDetailViewController.m */,
-				D9E0868F18DF800F00BAF2EF /* HRPGTavernViewController.h */,
-				D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */,
 				D94796081972C248002CB34C /* HRPGUserProfileViewController.h */,
 				D94796091972C248002CB34C /* HRPGUserProfileViewController.m */,
 				D97CCDBA19A7AFFA00DA128A /* HRPGArrayViewController.h */,
@@ -641,13 +632,32 @@
 				D9C3D01C19509E3800D22A4A /* Inventory */,
 				D979AD171AF3E69800D59FAE /* Customizations */,
 				D9E3654F1930D45500C056F1 /* Modals */,
-				D9E365501930D58900C056F1 /* Party */,
 				D9E3654E1930D44300C056F1 /* Spells */,
 				D9C257231B9DC23700839F48 /* FAQ */,
 				D9F16E331BBC500E00CA3E02 /* Setup */,
 				D9E365511930D59D00C056F1 /* Tasks */,
 			);
 			path = TableViewController;
+			sourceTree = "<group>";
+		};
+		D9436AC21C64F6DC008D1171 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				D9E0868F18DF800F00BAF2EF /* HRPGTavernViewController.h */,
+				D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */,
+				D9E365501930D58900C056F1 /* Party */,
+				D9436AC31C64F6E5008D1171 /* Guilds */,
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
+		D9436AC31C64F6E5008D1171 /* Guilds */ = {
+			isa = PBXGroup;
+			children = (
+				D9436AC71C64F880008D1171 /* HRPGGuildsOverviewViewController.h */,
+				D9436AC81C64F880008D1171 /* HRPGGuildsOverviewViewController.m */,
+			);
+			path = Guilds;
 			sourceTree = "<group>";
 		};
 		D94461841AB34F5C0015215E /* HabiticaTests */ = {
@@ -694,23 +704,6 @@
 			path = Customizations;
 			sourceTree = "<group>";
 		};
-		D97CCDAA19A51D7A00DA128A /* Markdown */ = {
-			isa = PBXGroup;
-			children = (
-				D97CCDAB19A51EED00DA128A /* GHFMarkdown_Private.h */,
-				D97CCDAC19A51EED00DA128A /* GHFMarkdown_Private.m */,
-				D97CCDAD19A51EED00DA128A /* GHFMarkdown.h */,
-				D97CCDAE19A51EED00DA128A /* GHFMarkdown.m */,
-				D97CCDAF19A51EED00DA128A /* NSMutableAttributedString_GHFMarkdown.h */,
-				D97CCDB019A51EED00DA128A /* NSMutableAttributedString_GHFMarkdown.m */,
-				D97CCDB119A51EED00DA128A /* NSMutableString_GHFMarkdown.h */,
-				D97CCDB219A51EED00DA128A /* NSMutableString_GHFMarkdown.m */,
-				D97CCDB319A51EED00DA128A /* NSString_GHFMarkdown.h */,
-				D97CCDB419A51EED00DA128A /* NSString_GHFMarkdown.m */,
-			);
-			name = Markdown;
-			sourceTree = "<group>";
-		};
 		D987393919687E46002A2426 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -732,6 +725,8 @@
 				D9A1A2801BA7029D00903567 /* NSDate+DaysSince.m */,
 				D9CD2DD31BCAA6F700B1304B /* UIViewController+TutorialSteps.h */,
 				D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */,
+				D9436ABF1C63A4BB008D1171 /* UIViewController+Markdown.h */,
+				D9436AC01C63A4BB008D1171 /* UIViewController+Markdown.m */,
 				D9CD2DD61BCAC00300B1304B /* TutorialStepsProtocol.h */,
 			);
 			name = Utilities;
@@ -1001,7 +996,8 @@
 				D98F5AF01905DE86002F8223 /* HRPGPartyMembersViewController.h */,
 				D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */,
 			);
-			path = Party;
+			name = Party;
+			path = ../Party;
 			sourceTree = "<group>";
 		};
 		D9E365511930D59D00C056F1 /* Tasks */ = {
@@ -1069,7 +1065,6 @@
 		D9EB4E9418CB4A9400BB2094 /* Habitica */ = {
 			isa = PBXGroup;
 			children = (
-				D97CCDAA19A51D7A00DA128A /* Markdown */,
 				D9B5C0EB18D6321400C8D1B7 /* Models */,
 				D92CDAE118CB83C40006C242 /* TableViewController */,
 				D9C2570D1B9B4BFB00839F48 /* TableviewCells */,
@@ -1100,6 +1095,7 @@
 				D98830D91BADDE050018594D /* HRPGLoadingSquaresSegue.h */,
 				D98830DA1BADDE050018594D /* HRPGLoadingSquaresSegue.m */,
 				D9EB4EA018CB4A9400BB2094 /* Main.storyboard */,
+				D9436ACA1C64FDF2008D1171 /* Social.storyboard */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */,
 				D9EB4E9518CB4A9400BB2094 /* Supporting Files */,
@@ -1185,6 +1181,7 @@
 				D9EB4E8918CB4A9400BB2094 /* Resources */,
 				E849E9FA1DD6461BA39AB99A /* Copy Pods Resources */,
 				D940A7E01B0CF7E900370F2E /* ShellScript */,
+				9E10A130E7932D2077850DF9 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1269,6 +1266,7 @@
 			files = (
 				D90EA03E19D60B53001EABE4 /* RewardIntro.png in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
+				D9436ACB1C64FDF2008D1171 /* Social.storyboard in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
 				D93422BB1AB7A093003AFCDE /* Pods-acknowledgements.plist in Resources */,
@@ -1317,6 +1315,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9E10A130E7932D2077850DF9 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D940A7E01B0CF7E900370F2E /* ShellScript */ = {
@@ -1399,11 +1412,10 @@
 				D9A1A27E1BA593D900903567 /* HRPGRewardTableViewCell.m in Sources */,
 				D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */,
 				D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */,
-				D97CCDB519A51EED00DA128A /* GHFMarkdown_Private.m in Sources */,
 				D979AD1A1AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m in Sources */,
-				D97CCDB819A51EED00DA128A /* NSMutableString_GHFMarkdown.m in Sources */,
 				D9F16E361BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
+				D9436AC91C64F880008D1171 /* HRPGGuildsOverviewViewController.m in Sources */,
 				D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */,
 				D9D21731198D509100023367 /* HRPGDeathView.m in Sources */,
 				D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */,
@@ -1455,7 +1467,6 @@
 				D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */,
 				D9A28F721B08DF58002907E0 /* HRPGPurchaseButton.m in Sources */,
 				D998FD951ADAC1FF00E9A26F /* HRPGAboutViewController.m in Sources */,
-				D97CCDB919A51EED00DA128A /* NSString_GHFMarkdown.m in Sources */,
 				D92D40D91ABF123800E30339 /* HRPGHabitButtons.m in Sources */,
 				D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */,
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
@@ -1474,13 +1485,12 @@
 				D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */,
 				D98AD54E19437D9400AF6174 /* Pet.m in Sources */,
 				D9C89CF61B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m in Sources */,
-				D97CCDB719A51EED00DA128A /* NSMutableAttributedString_GHFMarkdown.m in Sources */,
+				D9436AC11C63A4BB008D1171 /* UIViewController+Markdown.m in Sources */,
 				D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */,
 				D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */,
 				D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */,
 				D97C71E118ECA7050089FDC6 /* ChatMessage.m in Sources */,
 				D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */,
-				D97CCDB619A51EED00DA128A /* GHFMarkdown.m in Sources */,
 				D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */,
 				D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */,
 				D902AD8A1B540AE30098A1BD /* HRPGBaseCollectionViewController.m in Sources */,

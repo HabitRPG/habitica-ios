@@ -22,3 +22,5 @@ pod 'VTAcknowledgementsViewController'
 pod 'KLCPopup'
 pod 'MPCoachMarks'
 pod 'EAIntroView'
+pod 'AttributedMarkdown', :git => 'https://github.com/dreamwieber/AttributedMarkdown.git'
+

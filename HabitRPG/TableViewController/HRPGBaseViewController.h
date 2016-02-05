@@ -24,8 +24,6 @@
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 
-- (NSDictionary *)markdownAttributes;
-
 - (BOOL) isIndexPathVisible:(NSIndexPath *)indexPath;
 
 @end
