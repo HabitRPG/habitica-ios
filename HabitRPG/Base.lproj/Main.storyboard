@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="w3K-rB-cob">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="w3K-rB-cob">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -2619,87 +2619,6 @@
             <point key="canvasLocation" x="1014.375" y="8036.25"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="glw-qJ-sSQ">
-            <objects>
-                <navigationController navigationBarHidden="YES" id="J9J-7f-Nhb" sceneMemberID="viewController">
-                    <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EIy-Pb-DkX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Zzz-ta-O17" kind="relationship" relationship="rootViewController" id="uhr-mt-18Z"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HOk-hd-Fxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="294.375" y="8768.75"/>
-        </scene>
-        <!--Guidelines View Controller-->
-        <scene sceneID="JuR-2Q-Lpm">
-            <objects>
-                <viewController id="Zzz-ta-O17" customClass="HRPGGGuidelinesViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zHf-Gu-Tuu"/>
-                        <viewControllerLayoutGuide type="bottom" id="fyH-hZ-6Gu"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ZqY-XA-Cy1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7iA-qA-x1r">
-                                <rect key="frame" x="20" y="20" width="560" height="62"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="500" constant="47" id="7qw-vl-hJW"/>
-                                </constraints>
-                                <string key="text">If you would like to post messages in the Tavern or any party or guild chat, please first read our  Community Guidelines and then click "Accept Guidelines" button below to indicate that you accept them.</string>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <webView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1g-Gb-YFZ">
-                                <rect key="frame" x="4" y="90" width="592" height="510"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2KW-Nw-AU7">
-                                <rect key="frame" x="4" y="556" width="592" height="44"/>
-                                <items>
-                                    <barButtonItem title="Back" id="3wT-JA-hE4">
-                                        <connections>
-                                            <segue destination="Kmk-uy-5Nc" kind="unwind" unwindAction="unwindToList:" id="yHw-an-h88"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem systemItem="flexibleSpace" id="9DT-5S-mIX"/>
-                                    <barButtonItem title="Accept Guidelines" id="alT-a1-CTH">
-                                        <connections>
-                                            <segue destination="Kmk-uy-5Nc" kind="unwind" unwindAction="unwindToAcceptGuidelines:" id="UG4-sE-dXP"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="7iA-qA-x1r" firstAttribute="trailing" secondItem="ZqY-XA-Cy1" secondAttribute="trailingMargin" id="48Z-kh-hDF"/>
-                            <constraint firstItem="2KW-Nw-AU7" firstAttribute="leading" secondItem="F1g-Gb-YFZ" secondAttribute="leading" id="7gN-Fk-zqo"/>
-                            <constraint firstItem="F1g-Gb-YFZ" firstAttribute="leading" secondItem="ZqY-XA-Cy1" secondAttribute="leadingMargin" constant="-16" id="DYn-iB-eSR"/>
-                            <constraint firstItem="fyH-hZ-6Gu" firstAttribute="top" secondItem="F1g-Gb-YFZ" secondAttribute="bottom" id="H2B-fE-Xdu"/>
-                            <constraint firstItem="7iA-qA-x1r" firstAttribute="top" secondItem="zHf-Gu-Tuu" secondAttribute="bottom" id="eI9-DN-EZ0"/>
-                            <constraint firstItem="2KW-Nw-AU7" firstAttribute="bottom" secondItem="fyH-hZ-6Gu" secondAttribute="top" id="lqz-zx-0xI"/>
-                            <constraint firstItem="7iA-qA-x1r" firstAttribute="leading" secondItem="ZqY-XA-Cy1" secondAttribute="leadingMargin" id="m57-sa-j7w"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="F1g-Gb-YFZ" secondAttribute="trailing" constant="-16" id="o5X-F2-Bk4"/>
-                            <constraint firstItem="2KW-Nw-AU7" firstAttribute="trailing" secondItem="F1g-Gb-YFZ" secondAttribute="trailing" id="tQ9-CL-Tqo"/>
-                            <constraint firstItem="F1g-Gb-YFZ" firstAttribute="top" secondItem="7iA-qA-x1r" secondAttribute="bottom" constant="8" id="wKX-CX-PyD"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="DSD-gI-bJa"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OyA-AU-ct0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Kmk-uy-5Nc" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1014.375" y="8768.75"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="xVP-nc-WPW">
             <objects>
                 <navigationController storyboardIdentifier="PurchaseGemNavController" id="Ne7-W6-6zE" sceneMemberID="viewController">
@@ -3728,66 +3647,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VlA-Q9-OBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1159" y="953"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="9mG-3N-jXo">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="CHE-k4-ZCL" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rie-5n-r1K">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="lvC-WQ-kTT" kind="relationship" relationship="rootViewController" id="Irl-eR-e5X"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZP3-Gb-0Xe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="226.875" y="4842.5"/>
-        </scene>
-        <!--New Message-->
-        <scene sceneID="K6d-SG-db4">
-            <objects>
-                <viewController id="lvC-WQ-kTT" customClass="HRPGMessageViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fBx-BK-azD"/>
-                        <viewControllerLayoutGuide type="bottom" id="kfE-5L-KUs"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zaH-GK-GaA">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Eu-Vt-bAY">
-                                <rect key="frame" x="4" y="0.0" width="312" height="480"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outlet property="delegate" destination="lvC-WQ-kTT" id="vSq-jo-7QN"/>
-                                </connections>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="New Message" id="Mbw-8k-G1S">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hBr-my-gYH">
-                            <connections>
-                                <segue destination="keV-xX-mhA" kind="unwind" unwindAction="unwindToList:" id="kUU-4G-kOw"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="5yH-w3-BDq">
-                            <connections>
-                                <segue destination="keV-xX-mhA" kind="unwind" unwindAction="unwindToListSendMessage:" id="mKb-S5-poS"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="messageView" destination="7Eu-Vt-bAY" id="X9B-25-yIK"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mYS-GU-nbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="keV-xX-mhA" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1048.125" y="4842.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pak-rs-9QE">

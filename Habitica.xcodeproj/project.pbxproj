@@ -99,6 +99,11 @@
 		D98F5AEC190566CA002F8223 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AEB190566CA002F8223 /* User.m */; };
 		D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AEE1905C090002F8223 /* HRPGQuestParticipantsViewController.m */; };
 		D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */; };
+		D98F5DBE1C6A1D770035CBEC /* HRPGChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DBD1C6A1D770035CBEC /* HRPGChatTableViewCell.m */; };
+		D98F5DC11C6A1DA60035CBEC /* HRPGGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DC01C6A1DA60035CBEC /* HRPGGroupTableViewController.m */; };
+		D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */; };
+		D98F5DC91C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DC61C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m */; };
+		D98F5DCA1C6A45800035CBEC /* ChatMessageLike.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DC81C6A45800035CBEC /* ChatMessageLike.m */; };
 		D994B1491AD9177D008AE188 /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = D994B1481AD9177D008AE188 /* UIView+Screenshot.m */; };
 		D998FD951ADAC1FF00E9A26F /* HRPGAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D998FD941ADAC1FF00E9A26F /* HRPGAboutViewController.m */; };
 		D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D99BC43019D4C34A006DC132 /* 1Password.xcassets */; };
@@ -382,6 +387,16 @@
 		D98F5AEE1905C090002F8223 /* HRPGQuestParticipantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGQuestParticipantsViewController.m; sourceTree = "<group>"; };
 		D98F5AF01905DE86002F8223 /* HRPGPartyMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPartyMembersViewController.h; sourceTree = "<group>"; };
 		D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPartyMembersViewController.m; sourceTree = "<group>"; };
+		D98F5DBC1C6A1D770035CBEC /* HRPGChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGChatTableViewCell.h; sourceTree = "<group>"; };
+		D98F5DBD1C6A1D770035CBEC /* HRPGChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGChatTableViewCell.m; sourceTree = "<group>"; };
+		D98F5DBF1C6A1DA60035CBEC /* HRPGGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGroupTableViewController.h; sourceTree = "<group>"; };
+		D98F5DC01C6A1DA60035CBEC /* HRPGGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGroupTableViewController.m; sourceTree = "<group>"; };
+		D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMessageCell.xib; sourceTree = "<group>"; };
+		D98F5DC41C6A43D20035CBEC /* HabitRPG 21.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 21.xcdatamodel"; sourceTree = "<group>"; };
+		D98F5DC51C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChatMessageLike+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D98F5DC61C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ChatMessageLike+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D98F5DC71C6A45800035CBEC /* ChatMessageLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageLike.h; sourceTree = "<group>"; };
+		D98F5DC81C6A45800035CBEC /* ChatMessageLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageLike.m; sourceTree = "<group>"; };
 		D994B1471AD9177D008AE188 /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Screenshot.h"; path = "HabitRPG/Utilities/UIView+Screenshot.h"; sourceTree = SOURCE_ROOT; };
 		D994B1481AD9177D008AE188 /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Screenshot.m"; path = "HabitRPG/Utilities/UIView+Screenshot.m"; sourceTree = SOURCE_ROOT; };
 		D998FD931ADAC1FF00E9A26F /* HRPGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAboutViewController.h; sourceTree = "<group>"; };
@@ -653,6 +668,8 @@
 			children = (
 				D9E0868F18DF800F00BAF2EF /* HRPGTavernViewController.h */,
 				D9E0869018DF800F00BAF2EF /* HRPGTavernViewController.m */,
+				D98F5DBF1C6A1DA60035CBEC /* HRPGGroupTableViewController.h */,
+				D98F5DC01C6A1DA60035CBEC /* HRPGGroupTableViewController.m */,
 				D9E365501930D58900C056F1 /* Party */,
 				D9436AC31C64F6E5008D1171 /* Guilds */,
 			);
@@ -863,6 +880,9 @@
 		D9C0E51B1C6515AD0062C89A /* Social */ = {
 			isa = PBXGroup;
 			children = (
+				D98F5DBC1C6A1D770035CBEC /* HRPGChatTableViewCell.h */,
+				D98F5DBD1C6A1D770035CBEC /* HRPGChatTableViewCell.m */,
+				D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */,
 				D9C0E51C1C6515B30062C89A /* Guilds */,
 			);
 			path = Social;
@@ -944,6 +964,10 @@
 				D9ADD3501943BC0E006202C1 /* BuyableItem.m */,
 				D97C71DF18ECA7050089FDC6 /* ChatMessage.h */,
 				D97C71E018ECA7050089FDC6 /* ChatMessage.m */,
+				D98F5DC51C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.h */,
+				D98F5DC61C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m */,
+				D98F5DC71C6A45800035CBEC /* ChatMessageLike.h */,
+				D98F5DC81C6A45800035CBEC /* ChatMessageLike.m */,
 				D9B5C0BE18D5EFF400C8D1B7 /* ChecklistItem.h */,
 				D9B5C0BF18D5EFF400C8D1B7 /* ChecklistItem.m */,
 				D9C7C1EE18E26BBB0083F4E4 /* Egg.h */,
@@ -1298,6 +1322,7 @@
 				D9436ACB1C64FDF2008D1171 /* Social.storyboard in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
+				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
 				D93422BB1AB7A093003AFCDE /* Pods-acknowledgements.plist in Resources */,
 				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
 				D96576C51BAF53D400CCA28E /* HRPGGearDetailView.xib in Resources */,
@@ -1438,6 +1463,7 @@
 				D9B5C0D518D5F94400C8D1B7 /* HRPGPartyViewController.m in Sources */,
 				D98AD5541943986100AF6174 /* HRPGMountViewController.m in Sources */,
 				D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */,
+				D98F5DCA1C6A45800035CBEC /* ChatMessageLike.m in Sources */,
 				D9A1A27E1BA593D900903567 /* HRPGRewardTableViewCell.m in Sources */,
 				D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */,
 				D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */,
@@ -1488,6 +1514,7 @@
 				D9D0451C1C2B1AEC00630244 /* Reminder.m in Sources */,
 				D94FEDEB1BB314B10046A52E /* HRPGCreatePartyViewController.m in Sources */,
 				D95CBD481BBC0EDA002F4498 /* UIView+Pulse.m in Sources */,
+				D98F5DC11C6A1DA60035CBEC /* HRPGGroupTableViewController.m in Sources */,
 				D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */,
 				D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */,
 				D9660D781AB248030084CE37 /* HRPGUserTopHeader.m in Sources */,
@@ -1507,6 +1534,7 @@
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
 				D9B5C0E718D62CC700C8D1B7 /* HRPGLoginViewController.m in Sources */,
 				D99EAB621BF375F7003C1C62 /* HRPGIntroView.m in Sources */,
+				D98F5DC91C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m in Sources */,
 				D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */,
 				D98F5AEC190566CA002F8223 /* User.m in Sources */,
 				D9C7C1F318E280DE0083F4E4 /* HRPGRewardsViewController.m in Sources */,
@@ -1531,6 +1559,7 @@
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
 				D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */,
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
+				D98F5DBE1C6A1D770035CBEC /* HRPGChatTableViewCell.m in Sources */,
 				D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */,
 				D9F16E391BBC536500CA3E02 /* HRPGCustomizationSelectionView.m in Sources */,
 				D939B5F61BD8FBD50015AEB6 /* HRPGBatchOperation.m in Sources */,
@@ -2082,6 +2111,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D98F5DC41C6A43D20035CBEC /* HabitRPG 21.xcdatamodel */,
 				D9C0E5171C650D1D0062C89A /* HabitRPG 20.xcdatamodel */,
 				D9D045161C2B18F500630244 /* HabitRPG 19.xcdatamodel */,
 				D934F0201BDA493700D11466 /* HabitRPG 18.xcdatamodel */,
@@ -2103,7 +2133,7 @@
 				D9B27ED71AE4C138008914D7 /* HabitRPG 2.xcdatamodel */,
 				D967755519F1379800A21F45 /* HabitRPG.xcdatamodel */,
 			);
-			currentVersion = D9C0E5171C650D1D0062C89A /* HabitRPG 20.xcdatamodel */;
+			currentVersion = D98F5DC41C6A43D20035CBEC /* HabitRPG 21.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

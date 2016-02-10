@@ -12,10 +12,6 @@
 
 @implementation HRPGPublicGuildTableViewCell
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-}
-
 - (void)configureForGuild:(Group *)guild {
     self.titleLabel.text = guild.name;
     self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];

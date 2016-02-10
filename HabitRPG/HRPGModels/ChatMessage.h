@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "User.h"
+#import "ChatMessageLike.h"
 
 @class Group;
 
@@ -23,6 +24,7 @@
 @property(nonatomic, retain) User *userObject;
 @property(nonatomic, retain) NSNumber *contributorLevel;
 @property(nonatomic, retain) NSString *backerNpc;
+@property(nonatomic, retain) NSSet *likes;
 
 -(UIColor*) contributorColor;
 

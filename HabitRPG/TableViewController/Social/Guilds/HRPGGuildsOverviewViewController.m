@@ -7,6 +7,7 @@
 //
 
 #import "HRPGGuildsOverviewViewController.h"
+#import "HRPGGroupTableViewController.h"
 
 @interface HRPGGuildsOverviewViewController ()
 
@@ -127,6 +128,15 @@
     Group *guild = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *titleLabel = (UILabel *) [cell viewWithTag:1];
     titleLabel.text = guild.name;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell*)sender {
+    if ([segue.identifier isEqualToString:@"ShowGuildSegue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        Group *guild = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        HRPGGroupTableViewController *tableviewController = (HRPGGroupTableViewController *) segue.destinationViewController;
+        tableviewController.groupID = guild.id;
+    }
 }
 
 

@@ -1,0 +1,127 @@
+//
+//  HRPGChatTableViewCell.m
+//  Habitica
+//
+//  Created by Phillip Thelen on 09/02/16.
+//  Copyright © 2016 Phillip Thelen. All rights reserved.
+//
+
+#import "HRPGChatTableViewCell.h"
+#import <DateTools/DateTools.h>
+#import "User.h"
+#import "ChatMessageLike.h"
+#import "UIColor+Habitica.h"
+
+@interface HRPGChatTableViewCell()
+
+@property bool isOwnMessage;
+
+@end
+
+@implementation HRPGChatTableViewCell
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(displayMenu:)];
+        [self addGestureRecognizer:tapRecognizer];
+    }
+    return self;
+}
+
+-(BOOL) canPerformAction:(SEL)action withSender:(id)sender {
+    if (self.isOwnMessage) {
+        return (action == @selector(copy:) || action == @selector(profileMenuItemSelected:) || action == @selector(delete:));
+    } else {
+        return (action == @selector(copy:) || action == @selector(profileMenuItemSelected:) || action == @selector(reply:) || action == @selector(flag:));
+    }
+}
+
+- (void) displayMenu:(UITapGestureRecognizer *)gestureRecognizer {
+    [self becomeFirstResponder];
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    UIMenuItem *profileMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Profile", nil) action:@selector(profileMenuItemSelected:)];
+    UIMenuItem *replyMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Reply", nil) action:@selector(reply:)];
+    UIMenuItem *flagMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Flag", nil) action:@selector(flag:)];
+    [menu setMenuItems: @[profileMenuItem, replyMenuItem, flagMenuItem]];
+    [menu update];
+    [menu setTargetRect:self.frame inView:self.superview];
+    [menu setMenuVisible:YES animated:YES];
+}
+
+- (BOOL) canBecomeFirstResponder {
+    return YES;
+}
+
+-(void) profileMenuItemSelected: (id) sender {
+    if (self.profileAction) {
+        self.profileAction();
+    }
+}
+
+-(void) copy:(id)sender {
+    if (self.messageTextView.attributedText) {
+        UIPasteboard *pboard = [UIPasteboard generalPasteboard];
+        pboard.string = [self.detailTextLabel.attributedText string];
+    }
+}
+
+-(void) flag:(id)sender {
+    if (self.flagAction) {
+        self.flagAction();
+    }
+}
+
+-(void) reply:(id)sender {
+    if (self.replyAction) {
+        self.replyAction();
+    }
+}
+
+-(void) delete:(id)sender {
+    if (self.deleteAction) {
+        self.deleteAction();
+    }
+}
+
+- (void)configureForMessage:(ChatMessage *)message withUserID:(NSString *)userID {
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (message.user) {
+        self.usernameLabel.text = message.user;
+        self.usernameLabel.backgroundColor = [message contributorColor];
+        self.usernameWidthConstraint.constant = self.usernameLabel.intrinsicContentSize.width + 16;
+        self.usernameHeightConstraint.constant = self.usernameLabel.intrinsicContentSize.height + 8;
+    } else {
+        self.usernameLabel.text = nil;
+    }
+    
+    self.timeLabel.text = message.timestamp.timeAgoSinceNow;
+    self.messageTextView.text = message.text;
+    
+    self.usernameLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    self.timeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+    
+    [self.plusOneButton setTitle:[NSString stringWithFormat:@"+%lu", (unsigned long)message.likes.count] forState:UIControlStateNormal];
+    if (message.likes.count > 0) {
+        self.plusOneButton.backgroundColor = [UIColor gray100];
+        [self.plusOneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    } else {
+        self.plusOneButton.backgroundColor = [UIColor gray400];
+        [self.plusOneButton setTitleColor:[UIColor gray50] forState:UIControlStateNormal];
+    }
+    for (ChatMessageLike *like in message.likes) {
+        if ([like.userID isEqualToString:userID]) {
+            self.plusOneButton.backgroundColor = [UIColor purple100];
+            break;
+        }
+    }
+    [self.plusOneButton setTitleColor:[UIColor purple300] forState:UIControlStateSelected];
+    self.plusOneButtonWidthConstraint.constant = self.plusOneButton.intrinsicContentSize.width + 8;
+    self.plusOneButtonHeightConstraint.constant = self.usernameHeightConstraint.constant;
+    
+    self.isOwnMessage = [message.uuid isEqualToString:userID];
+    
+    [self setNeedsLayout];
+}
+
+@end

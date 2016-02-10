@@ -709,6 +709,7 @@ NSString *currentUser;
             @"text" : @"text",
             @"timestamp" : @"timestamp",
                                                       @"user" : @"user",
+                                                      @"uuid" : @"uuid",
                                                       @"contributor.level" : @"contributorLevel",
                                                       @"contributor.text" : @"contributorText",
                                                       @"backer.tier" : @"backerLevel",
@@ -718,6 +719,13 @@ NSString *currentUser;
     [chatMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:nil
                                                                                 toKeyPath:@"userObject"
                                                                               withMapping:chatUserMapping]];
+    RKEntityMapping *likeMapping = [RKEntityMapping mappingForEntityForName:@"ChatMessageLike" inManagedObjectStore:managedObjectStore];
+    likeMapping.forceCollectionMapping = YES;
+    [likeMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"userID"];
+    likeMapping.identificationAttributes = @[@"userID"];
+    [chatMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"likes"
+                                                                                toKeyPath:@"likes"
+                                                                              withMapping:likeMapping]];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"chat"
                                                                                   toKeyPath:@"chatmessages"
                                                                                 withMapping:chatMapping]];
