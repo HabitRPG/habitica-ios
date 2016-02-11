@@ -1079,6 +1079,9 @@ Invite friends now to earn a Quest Scroll!</string>
                                             <state key="normal" title="Join">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="joinLeaveButtonTapped:" destination="L6F-UF-L9a" eventType="touchUpInside" id="ni7-Ze-JZU"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHf-h0-50k">
                                             <rect key="frame" x="8" y="36" width="516" height="93"/>
@@ -1793,7 +1796,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <segue reference="whE-Hb-tpM"/>
         <segue reference="qzm-Ef-Hlu"/>
         <segue reference="CPW-wy-yYL"/>
-        <segue reference="VUt-se-F6s"/>
+        <segue reference="bEM-KI-Si8"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.4478360116481781" green="0.10848049819469452" blue="0.9984632134437561" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -10,6 +10,12 @@
 #import "Group.h"
 #import "UIColor+Habitica.h"
 
+@interface HRPGPublicGuildTableViewCell()
+
+@property bool isMember;
+
+@end
+
 @implementation HRPGPublicGuildTableViewCell
 
 - (void)configureForGuild:(Group *)guild {
@@ -26,10 +32,24 @@
         self.joinLeaveButton.backgroundColor = [UIColor green10];
         [self.joinLeaveButton setTitle:NSLocalizedString(@"Join", nil) forState:UIControlStateNormal];
     }
+    self.isMember = guild.isMember;
     self.joinLeaveButton.layer.cornerRadius = 5;
     self.joinLeaveButtonWidthConstraint.constant = self.joinLeaveButton.intrinsicContentSize.width + 20;
     
     [self setNeedsLayout];
 }
+
+- (IBAction)joinLeaveButtonTapped:(id)sender {
+    if (self.isMember) {
+        if (self.leaveAction) {
+            self.leaveAction();
+        }
+    } else {
+        if (self.joinAction) {
+            self.joinAction();
+        }
+    }
+}
+
 
 @end

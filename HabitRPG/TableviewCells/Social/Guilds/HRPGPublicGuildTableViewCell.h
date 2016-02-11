@@ -18,4 +18,8 @@
 
 - (void) configureForGuild:(Group *)guild;
 
+@property (nonatomic, copy) void (^joinAction)();
+@property (nonatomic, copy) void (^leaveAction)();
+
+
 @end

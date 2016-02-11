@@ -87,6 +87,8 @@
 
 - (void)joinGroup:(NSString *)group withType:(NSString*)type onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)leaveGroup:(Group *)group withType:(NSString*)type onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 - (void)chatSeen:(NSString *)group;
 
 - (void)loginUser:(NSString *)username withPassword:(NSString *)password onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;

@@ -126,6 +126,12 @@
 - (void) configureCell:(HRPGPublicGuildTableViewCell *) cell atIndexPath:(NSIndexPath *)indexPath {
     Group *guild = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [cell configureForGuild:guild];
+    cell.joinAction = ^() {
+        [self.sharedManager joinGroup:guild.id withType:guild.type onSuccess:nil onError:nil];
+    };
+    cell.leaveAction = ^() {
+        [self.sharedManager leaveGroup:guild withType:guild.type onSuccess:nil onError:nil];
+    };
 }
 
 @end

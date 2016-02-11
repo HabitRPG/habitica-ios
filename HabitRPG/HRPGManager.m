@@ -288,6 +288,23 @@ NSString *currentUser;
 
         return nil;
     }];
+    
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"/api/v2/groups"];
+        
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:YES parsedArguments:&argsDict];
+        if (match) {
+            if ([URL.query isEqualToString:@"type=guilds"]) {
+                NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Group"];
+                fetchRequest.predicate = [NSPredicate predicateWithFormat:@"type=='guild' && isMember == true"];
+                return fetchRequest;
+            }
+            
+        }
+        
+        return nil;
+    }];
 
     RKObjectMapping *upDownMapping = [RKObjectMapping mappingForClass:[HRPGTaskResponse class]];
     [upDownMapping addAttributeMappingsFromDictionary:@{
@@ -764,6 +781,9 @@ NSString *currentUser;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/join" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/leave" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     RKObjectMapping *groupRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
     [groupRequestMapping addAttributeMappingsFromDictionary:@{
                                                                @"id" : @"_id",
@@ -2497,17 +2517,50 @@ NSString *currentUser;
 
     [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/join", group] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
-
+        Group *group = [mappingResult dictionary][[NSNull null]];
         if ([type isEqualToString:@"party"]) {
-            Group *party = [mappingResult dictionary][[NSNull null]];
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            if (![party.id isEqualToString:[defaults stringForKey:@"partyID"]]) {
-                [defaults setObject:party.id forKey:@"partyID"];
+            if (![group.id isEqualToString:[defaults stringForKey:@"partyID"]]) {
+                [defaults setObject:group.id forKey:@"partyID"];
                 [defaults synchronize];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged" object:party];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged" object:group];
             }
         }
+        group.isMember = @YES;
 
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        if (successBlock) {
+            successBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)leaveGroup:(Group *)group withType:(NSString *)type onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/leave", group] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        if ([type isEqualToString:@"party"]) {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:nil forKey:@"partyID"];
+            [defaults synchronize];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged" object:group];
+        }
+        group.isMember = @NO;
+        
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
             successBlock();
