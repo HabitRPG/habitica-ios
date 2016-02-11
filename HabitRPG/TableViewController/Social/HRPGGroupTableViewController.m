@@ -15,6 +15,8 @@
 #import "HRPGMessageViewController.h"
 #import "HRPGUserProfileViewController.h"
 #import "HRPGMessageViewController.h"
+#import "HRPGFlagInformationOverlayView.h"
+#import <KLCPopup.h>
 
 @interface HRPGGroupTableViewController ()
 @property User *user;
@@ -266,7 +268,16 @@
         [self.navigationController pushViewController:profileViewController animated:YES];
     };
     cell.flagAction = ^() {
-        
+        NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"HRPGFlagInformationOverlayView" owner:self options:nil];
+        HRPGFlagInformationOverlayView *overlayView = [nibViews objectAtIndex:0];
+        overlayView.username = message.user;
+        overlayView.message = message.text;
+        overlayView.flagAction = ^() {
+            [self.sharedManager flagMessage:message withGroup:self.groupID onSuccess:nil onError:nil];
+        };
+        [overlayView sizeToFit];
+        KLCPopup *popup = [KLCPopup popupWithContentView:overlayView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:YES];
+        [popup show];
     };
     cell.replyAction = ^() {
         NSString *replyMessage = [NSString stringWithFormat:@"@%@ ", message.user];
@@ -276,10 +287,12 @@
         [self.navigationController pushViewController:messageViewController animated:YES];
     };
     
+    cell.plusOneAction = ^() {
+        [self.sharedManager likeMessage:message withGroup:self.groupID onSuccess:nil onError:nil];
+    };
+    
     cell.deleteAction = ^() {
-        [self.sharedManager deleteMessage:message withGroup:@"habitrpg" onSuccess:^() {
-        } onError:^() {
-        }];
+        [self.sharedManager deleteMessage:message withGroup:self.groupID onSuccess:nil onError:nil];
     };
 }
 

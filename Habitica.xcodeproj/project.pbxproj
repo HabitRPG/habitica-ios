@@ -104,6 +104,8 @@
 		D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */; };
 		D98F5DC91C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DC61C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m */; };
 		D98F5DCA1C6A45800035CBEC /* ChatMessageLike.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DC81C6A45800035CBEC /* ChatMessageLike.m */; };
+		D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */; };
+		D98F5DD11C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */; };
 		D994B1491AD9177D008AE188 /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = D994B1481AD9177D008AE188 /* UIView+Screenshot.m */; };
 		D998FD951ADAC1FF00E9A26F /* HRPGAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D998FD941ADAC1FF00E9A26F /* HRPGAboutViewController.m */; };
 		D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D99BC43019D4C34A006DC132 /* 1Password.xcassets */; };
@@ -397,6 +399,9 @@
 		D98F5DC61C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ChatMessageLike+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D98F5DC71C6A45800035CBEC /* ChatMessageLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageLike.h; sourceTree = "<group>"; };
 		D98F5DC81C6A45800035CBEC /* ChatMessageLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageLike.m; sourceTree = "<group>"; };
+		D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGFlagInformationOverlayView.h; sourceTree = "<group>"; };
+		D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGFlagInformationOverlayView.m; sourceTree = "<group>"; };
+		D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HRPGFlagInformationOverlayView.xib; path = ../HRPGFlagInformationOverlayView.xib; sourceTree = "<group>"; };
 		D994B1471AD9177D008AE188 /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Screenshot.h"; path = "HabitRPG/Utilities/UIView+Screenshot.h"; sourceTree = SOURCE_ROOT; };
 		D994B1481AD9177D008AE188 /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Screenshot.m"; path = "HabitRPG/Utilities/UIView+Screenshot.m"; sourceTree = SOURCE_ROOT; };
 		D998FD931ADAC1FF00E9A26F /* HRPGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAboutViewController.h; sourceTree = "<group>"; };
@@ -873,6 +878,9 @@
 				D95CBD471BBC0EDA002F4498 /* UIView+Pulse.m */,
 				D99EAB601BF375F7003C1C62 /* HRPGIntroView.h */,
 				D99EAB611BF375F7003C1C62 /* HRPGIntroView.m */,
+				D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */,
+				D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */,
+				D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1333,6 +1341,7 @@
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
 				D905768A1BD83241009BB7BC /* Localizable.strings in Resources */,
 				D9C31DB31C6501090096F4EC /* Main.storyboard in Resources */,
+				D98F5DD11C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib in Resources */,
 				D979AD1C1AF3EF6E00D59FAE /* customizations.json in Resources */,
 				D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */,
 			);
@@ -1491,6 +1500,7 @@
 				D96C86CB1BB0546400E4C134 /* HRPGCopyLabel.m in Sources */,
 				D92C60FC1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m in Sources */,
 				D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */,
+				D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */,
 				D92C60F81BD3F28A005F68CC /* HRPGAccountDetailViewController.m in Sources */,
 				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
 				D91CCACD1BCD9068001C6A0C /* HRPGHoledView.m in Sources */,

@@ -784,7 +784,13 @@ NSString *currentUser;
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:chatMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/chat" keyPath:@"message" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:chatMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/chat/:key/like" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:chatMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/groups/:id/chat/:key/flag" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:chatMapping method:RKRequestMethodDELETE pathPattern:@"/api/v2/groups/:id/chat/:key" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
@@ -2555,6 +2561,56 @@ NSString *currentUser;
 
     [[RKObjectManager sharedManager] deleteObject:message path:[NSString stringWithFormat:@"/api/v2/groups/%@/chat/%@", groupID, message.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        if (successBlock) {
+            successBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)likeMessage:(ChatMessage *)message withGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/chat/%@/like", groupID, message.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        if (successBlock) {
+            successBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)flagMessage:(ChatMessage *)message withGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/chat/%@/flag", groupID, message.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
         //[self.managedObjectContext deleteObject:message];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
@@ -2630,7 +2686,6 @@ NSString *currentUser;
 
 -(void)purchaseGems:(NSDictionary *)receipt onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-
 
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"behaviour"

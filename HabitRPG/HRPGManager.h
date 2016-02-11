@@ -102,6 +102,10 @@
 
 - (void)deleteMessage:(ChatMessage *)message withGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)likeMessage:(ChatMessage *)message withGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
+- (void)flagMessage:(ChatMessage *)message withGroup:(NSString*)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 - (void)feedPet:(Pet *)pet withFood:(Food *)food onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)purchaseGems:(NSDictionary *)receipt onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;

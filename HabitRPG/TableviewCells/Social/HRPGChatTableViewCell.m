@@ -24,10 +24,18 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(displayMenu:)];
+        tapRecognizer.delegate = self;
+        tapRecognizer.cancelsTouchesInView = NO;
+        [self.contentView removeGestureRecognizer:self.contentView.gestureRecognizers[0]];
         [self addGestureRecognizer:tapRecognizer];
+        self.plusOneButton.userInteractionEnabled = YES;
+        UITapGestureRecognizer *buttonTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(plusOneButtonTapped:)];
+        [self.plusOneButton addGestureRecognizer:buttonTapRecognizer];
+        [self bringSubviewToFront:self.plusOneButton];
     }
     return self;
 }
+
 
 -(BOOL) canPerformAction:(SEL)action withSender:(id)sender {
     if (self.isOwnMessage) {
@@ -84,6 +92,15 @@
     }
 }
 
+- (IBAction)plusOneButtonTapped:(id)sender {
+    if (self.isOwnMessage) {
+        return;
+    }
+    if (self.plusOneAction) {
+        self.plusOneAction();
+    }
+}
+
 - (void)configureForMessage:(ChatMessage *)message withUserID:(NSString *)userID {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     if (message.user) {
@@ -122,6 +139,15 @@
     self.isOwnMessage = [message.uuid isEqualToString:userID];
     
     [self setNeedsLayout];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if (self.plusOneButton.superview != nil) {
+        if (CGRectContainsPoint(self.plusOneButton.frame, [touch locationInView:self])) {
+            return NO; // ignore the touch
+        }
+    }
+    return YES; // handle the touch
 }
 
 @end
