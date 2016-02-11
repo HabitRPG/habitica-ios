@@ -52,4 +52,12 @@
     self.chatmessages = tempSet;
 }
 
+- (void)setType:(NSString *)type {
+    if (type != nil) {
+        [self willChangeValueForKey:@"type"];
+        [self setPrimitiveValue:type forKey:@"type"];
+        [self didChangeValueForKey:@"type"];
+    }
+}
+
 @end
