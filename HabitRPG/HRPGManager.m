@@ -300,7 +300,6 @@ NSString *currentUser;
                 fetchRequest.predicate = [NSPredicate predicateWithFormat:@"type=='guild' && isMember == true"];
                 return fetchRequest;
             }
-            
         }
         
         return nil;

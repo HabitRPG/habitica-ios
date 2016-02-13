@@ -17,9 +17,9 @@
 #import "HRPGMessageViewController.h"
 #import "HRPGFlagInformationOverlayView.h"
 #import <KLCPopup.h>
+#import "HRPGPartyMembersViewController.h"
 
 @interface HRPGGroupTableViewController ()
-@property User *user;
 @property NSString *replyMessage;
 @property DTAttributedTextView *sizeTextView;
 @property NSMutableDictionary *attributes;
@@ -124,7 +124,7 @@
     }
     if (section == 0) {
         return self.group.name;
-    } else if (section == [self chatSectionIndex]) {
+    } else if (section == [self chatSectionIndex]-1) {
         return NSLocalizedString(@"Chat", nil);
     }
     return @"";
@@ -133,8 +133,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == [self chatSectionIndex]) {
         ChatMessage *message= [self.chatMessagesFRC objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
-        
-        self.sizeTextView.attributedString = [self renderMarkdown:message.text];
+        if (!message.attributedText) {
+            message.attributedText = [self renderMarkdown:message.text];
+        }
+        self.sizeTextView.attributedString = message.attributedText;
         self.sizeTextView.shouldDrawLinks = YES;
         
         CGSize suggestedSize = [self.sizeTextView.attributedTextContentView suggestedFrameSizeToFitEntireStringConstraintedToWidth:self.viewWidth-24];
@@ -257,9 +259,20 @@
     
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"MembersSegue"]) {
+        HRPGPartyMembersViewController *membersViewController = (HRPGPartyMembersViewController *) segue.destinationViewController;
+        membersViewController.isLeader = [self.group.leader.id isEqualToString:self.user.id];
+        membersViewController.partyID = self.group.id;
+    }
+}
+
 - (void)configureChatMessageCell:(HRPGChatTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     indexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
     ChatMessage *message = [self.chatMessagesFRC objectAtIndexPath:indexPath];
+    if (!message.attributedText) {
+        message.attributedText = [self renderMarkdown:message.text];
+    }
     [cell configureForMessage:message withUserID:self.user.id];
     cell.profileAction = ^() {
         HRPGUserProfileViewController *profileViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UserProfileViewController"];

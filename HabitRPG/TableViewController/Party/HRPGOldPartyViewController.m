@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import "HRPGPartyViewController.h"
+#import "HRPGOldPartyViewController.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGQuestDetailViewController.h"
 #import "HRPGQuestParticipantsViewController.h"
@@ -22,7 +22,7 @@
 #import "HRPGPartyMembersViewController.h"
 #import "UIViewController+Markdown.h"
 
-@interface HRPGPartyViewController ()
+@interface HRPGOldPartyViewController ()
 @property NSMutableDictionary *chatAttributeMapping;
 @property NSIndexPath *selectedIndex;
 @property NSIndexPath *buttonIndex;
@@ -33,7 +33,7 @@
 @property NSMutableDictionary *attributes;
 @end
 
-@implementation HRPGPartyViewController
+@implementation HRPGOldPartyViewController
 Quest *quest;
 User *user;
 NSUserDefaults *defaults;

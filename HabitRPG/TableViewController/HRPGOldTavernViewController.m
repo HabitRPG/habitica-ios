@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import "HRPGTavernViewController.h"
+#import "HRPGOldTavernViewController.h"
 #import "HRPGAppDelegate.h"
 #import "ChatMessage.h"
 #import <CRToast.h>
@@ -24,7 +24,7 @@
 #import <DTAttributedTextView.h>
 #import "UIViewController+Markdown.h"
 
-@interface HRPGTavernViewController ()
+@interface HRPGOldTavernViewController ()
 @property Group *tavern;
 @property Quest *quest;
 @property NSIndexPath *selectedIndex;
@@ -37,7 +37,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
-@implementation HRPGTavernViewController
+@implementation HRPGOldTavernViewController
 User *user;
 ChatMessage *selectedMessage;
 

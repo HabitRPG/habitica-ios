@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10102" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,17 +13,14 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tP1-9i-M3A" customClass="HRPGLabeledProgressBar">
                     <rect key="frame" x="125" y="0.0" width="467" height="33"/>
-                    <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEm-of-HXC" customClass="HRPGLabeledProgressBar">
                     <rect key="frame" x="125" y="41" width="467" height="33"/>
-                    <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkr-YH-kSX" customClass="HRPGLabeledProgressBar">
                     <rect key="frame" x="125" y="82" width="467" height="33"/>
-                    <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPv-ZA-fig">
@@ -31,7 +28,6 @@
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0wH-g6-8n6">
                             <rect key="frame" x="8" y="225" width="36" height="36"/>
-                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="RQJ-Rh-0AA"/>
                                 <constraint firstAttribute="width" constant="36" id="ehs-7W-t4k"/>
@@ -41,7 +37,6 @@
                             <rect key="frame" x="52" y="241" width="0.0" height="4"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7A-NB-rwz">
-                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="Hvt-ve-akz"/>
                                     </constraints>
@@ -51,7 +46,6 @@
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-B2-uxe">
                                     <rect key="frame" x="0.0" y="4" width="0.0" height="0.0"/>
-                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="Ic2-r3-SHc"/>
                                     </constraints>
@@ -60,7 +54,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="AL5-B2-uxe" firstAttribute="leading" secondItem="J68-ym-ngp" secondAttribute="leading" id="6aI-XZ-kE7"/>
@@ -79,7 +72,6 @@
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gem" translatesAutoresizingMaskIntoConstraints="NO" id="QSJ-ss-yRa">
                                     <rect key="frame" x="0.0" y="1" width="18" height="13"/>
-                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="18" id="fUQ-H2-s81"/>
                                         <constraint firstAttribute="height" constant="13" id="zfs-mL-7IP"/>
@@ -87,7 +79,6 @@
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8k-bx-NRC" customClass="HRPGAbbrevNumberLabel">
                                     <rect key="frame" x="26" y="0.0" width="0.0" height="15"/>
-                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="width" priority="500" constant="125" id="9PW-BD-k05"/>
                                         <constraint firstAttribute="height" constant="15" id="UYH-g1-GGR"/>
@@ -97,7 +88,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="I8k-bx-NRC" firstAttribute="top" secondItem="KDH-jE-dkP" secondAttribute="top" id="1bW-rq-wc6"/>
@@ -115,7 +105,6 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dp-ID-atv" customClass="HRPGAbbrevNumberLabel">
                                     <rect key="frame" x="19" y="0.0" width="0.0" height="20"/>
-                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="width" priority="500" constant="42" id="LTG-Aq-qjl"/>
                                     </constraints>
@@ -125,7 +114,6 @@
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tms-GD-xKe" customClass="HRPGAbbrevNumberLabel">
                                     <rect key="frame" x="46" y="0.0" width="0.0" height="20"/>
-                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="width" priority="500" constant="42" id="buX-tv-FIX"/>
                                     </constraints>
@@ -135,7 +123,6 @@
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gold_coin" translatesAutoresizingMaskIntoConstraints="NO" id="urD-EK-a0I">
                                     <rect key="frame" x="0.0" y="3" width="15" height="15"/>
-                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="15" id="fXs-5F-qUm"/>
                                         <constraint firstAttribute="width" constant="15" id="rvx-JC-Q52"/>
@@ -143,14 +130,12 @@
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silver_coin" translatesAutoresizingMaskIntoConstraints="NO" id="X3d-Go-xbp">
                                     <rect key="frame" x="27" y="3" width="15" height="15"/>
-                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="15" id="gk6-b8-i3t"/>
                                         <constraint firstAttribute="height" constant="15" id="m8Z-DV-XAQ"/>
                                     </constraints>
                                 </imageView>
                             </subviews>
-                            <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="7dp-ID-atv" firstAttribute="top" secondItem="OVa-57-mu3" secondAttribute="top" id="6ui-vZ-exo"/>
@@ -175,7 +160,6 @@
                             </variation>
                         </view>
                     </subviews>
-                    <animations/>
                     <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="OVa-57-mu3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="J68-ym-ngp" secondAttribute="trailing" constant="8" id="3rI-bn-0Z4"/>
@@ -191,7 +175,6 @@
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UWI-d8-sGn">
                     <rect key="frame" x="0.0" y="0.0" width="110" height="115"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="115" id="538-Gt-fjD">
                             <variation key="heightClass=regular-widthClass=regular" constant="147"/>
@@ -202,7 +185,6 @@
                     </constraints>
                 </imageView>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="BEm-of-HXC" secondAttribute="trailing" constant="8" id="0mR-VB-b2N"/>

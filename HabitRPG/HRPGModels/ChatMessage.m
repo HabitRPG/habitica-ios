@@ -21,6 +21,7 @@
 @dynamic contributorLevel;
 @dynamic backerNpc;
 @dynamic likes;
+@dynamic attributedText;
 
 -(UIColor *)contributorColor {
     if ([self.contributorLevel integerValue] == 1) {

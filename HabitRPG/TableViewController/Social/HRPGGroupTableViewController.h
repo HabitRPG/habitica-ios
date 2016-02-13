@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Group.h"
+#import "User.h"
 #import "HRPGBaseViewController.h"
 #import "HRPGChatTableViewCell.h"
 
 @interface HRPGGroupTableViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UITextViewDelegate>
+
+@property User *user;
 
 @property NSString *groupID;
 @property (nonatomic) Group *group;
@@ -19,5 +22,6 @@
 
 - (int) chatSectionIndex;
 - (void)configureChatMessageCell:(HRPGChatTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
-
+- (void) fetchGroup;
+- (void) refresh;
 @end

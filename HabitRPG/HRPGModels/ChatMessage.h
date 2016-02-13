@@ -26,6 +26,8 @@
 @property(nonatomic, retain) NSString *backerNpc;
 @property(nonatomic, retain) NSSet *likes;
 
+@property NSAttributedString *attributedText;
+
 -(UIColor*) contributorColor;
 
 @end

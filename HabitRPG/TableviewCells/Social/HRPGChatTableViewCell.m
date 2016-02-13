@@ -113,7 +113,7 @@
     }
     
     self.timeLabel.text = message.timestamp.timeAgoSinceNow;
-    self.messageTextView.text = message.text;
+    self.messageTextView.attributedText = message.attributedText;
     
     self.usernameLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     self.timeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];

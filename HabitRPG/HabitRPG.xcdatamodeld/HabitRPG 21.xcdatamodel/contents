@@ -5,6 +5,7 @@
         <attribute name="canBuy" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <entity name="ChatMessage" representedClassName="ChatMessage" syncable="YES">
+        <attribute name="attributedText" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="backerLevel" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="backerNpc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contributorLevel" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -326,7 +327,7 @@
     <elements>
         <element name="Armoire" positionX="18" positionY="162" width="128" height="45"/>
         <element name="BuyableItem" positionX="0" positionY="0" width="128" height="60"/>
-        <element name="ChatMessage" positionX="0" positionY="0" width="128" height="225"/>
+        <element name="ChatMessage" positionX="0" positionY="0" width="128" height="240"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Customization" positionX="9" positionY="153" width="128" height="180"/>
         <element name="Egg" positionX="0" positionY="0" width="128" height="90"/>

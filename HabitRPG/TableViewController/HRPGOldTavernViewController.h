@@ -1,15 +1,15 @@
 //
-//  HRPGPartyViewController.h
+//  HRPGTavernViewController.h
 //  HabitRPG
 //
-//  Created by Phillip Thelen on 16/03/14.
+//  Created by Phillip Thelen on 23/03/14.
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
 
-@interface HRPGPartyViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UITextViewDelegate>
+@interface HRPGOldTavernViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UITextViewDelegate>
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
