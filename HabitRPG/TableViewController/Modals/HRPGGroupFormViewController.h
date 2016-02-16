@@ -10,13 +10,13 @@
 #import "XLFormViewController.h"
 #import "Group.h"
 
-@interface HRPGCreatePartyViewController : XLFormViewController
+@interface HRPGGroupFormViewController : XLFormViewController
 
 @property(weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property(weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property(weak, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-@property Group *party;
-@property BOOL editParty;
-
+@property Group *group;
+@property BOOL editGroup;
+@property NSString *groupType;
 @end

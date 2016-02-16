@@ -72,6 +72,7 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedGear" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Group" representedClassName="Group" syncable="YES">
+        <attribute name="balance" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="hdescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isMember" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -328,13 +329,14 @@
         <element name="Armoire" positionX="18" positionY="162" width="128" height="45"/>
         <element name="BuyableItem" positionX="0" positionY="0" width="128" height="60"/>
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="240"/>
+        <element name="ChatMessageLike" positionX="9" positionY="153" width="128" height="75"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Customization" positionX="9" positionY="153" width="128" height="180"/>
         <element name="Egg" positionX="0" positionY="0" width="128" height="90"/>
         <element name="FAQ" positionX="9" positionY="153" width="128" height="120"/>
         <element name="Food" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Gear" positionX="0" positionY="0" width="128" height="225"/>
-        <element name="Group" positionX="0" positionY="0" width="128" height="375"/>
+        <element name="Group" positionX="0" positionY="0" width="128" height="390"/>
         <element name="HatchingPotion" positionX="0" positionY="0" width="128" height="60"/>
         <element name="Item" positionX="0" positionY="0" width="128" height="150"/>
         <element name="MetaReward" positionX="0" positionY="0" width="128" height="135"/>
@@ -350,6 +352,5 @@
         <element name="TutorialSteps" positionX="9" positionY="153" width="128" height="135"/>
         <element name="UnreadMessages" positionX="9" positionY="153" width="128" height="90"/>
         <element name="User" positionX="0" positionY="0" width="128" height="1590"/>
-        <element name="ChatMessageLike" positionX="9" positionY="153" width="128" height="75"/>
     </elements>
 </model>

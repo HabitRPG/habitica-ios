@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSFetchedResultsController *chatMessagesFRC;
 
 - (int) chatSectionIndex;
+- (bool) listMembers;
 - (void)configureChatMessageCell:(HRPGChatTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 - (void) fetchGroup;
 - (void) refresh;

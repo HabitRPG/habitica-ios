@@ -17,5 +17,4 @@
 
 - (bool) displayQuestSection;
 - (bool) isQuestSection:(NSInteger)section;
-- (bool) listMembers;
 @end

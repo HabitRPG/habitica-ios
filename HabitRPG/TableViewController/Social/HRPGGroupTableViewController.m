@@ -18,6 +18,8 @@
 #import "HRPGFlagInformationOverlayView.h"
 #import <KLCPopup.h>
 #import "HRPGPartyMembersViewController.h"
+#import "HRPGGroupAboutTableViewController.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGGroupTableViewController ()
 @property NSString *replyMessage;
@@ -62,6 +64,10 @@
     [self.sharedManager fetchGroup:self.groupID onSuccess:^() {
         [self.refreshControl endRefreshing];
         [self fetchGroup];
+        if ([self.group.unreadMessages boolValue]) {
+            self.group.unreadMessages = [NSNumber numberWithBool:NO];
+            [self.sharedManager chatSeen:self.group.id];
+        }
     } onError:^() {
         [self.refreshControl endRefreshing];
         [self.sharedManager displayNetworkError];
@@ -79,6 +85,12 @@
     NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     if (results.count == 1) {
         self.group = results[0];
+        
+        if (![self.group.isMember boolValue] && [self.group.type isEqualToString:@"guild"]) {
+            UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Join", nil) style:UIBarButtonItemStylePlain target:self action:@selector(joinGroup)];
+            barButton.tintColor = [UIColor green50];
+            self.navigationItem.rightBarButtonItem = barButton;
+        }
     } else {
         [self refresh];
     }
@@ -88,6 +100,12 @@
     _group = group;
     self.navigationItem.title = group.name;
     [self.tableView reloadData];
+}
+
+- (void)joinGroup {
+    [self.sharedManager joinGroup:self.group.id withType:self.group.type onSuccess:^() {
+        self.navigationItem.rightBarButtonItem = nil;
+    } onError:nil];
 }
 
 #pragma mark - Table view data source
@@ -105,6 +123,11 @@
         return 1;
     }
     if (section == 0) {
+        if ([self listMembers]) {
+            return 2;
+        } else {
+            return 1;
+        }
         return 2;
     } else if (section == [self chatSectionIndex]-1) {
         return 1;
@@ -116,6 +139,10 @@
 
 - (int)chatSectionIndex {
     return 2;
+}
+
+- (bool)listMembers {
+    return NO;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -154,6 +181,10 @@
         } else {
             [self performSegueWithIdentifier:@"GuidelinesSegue" sender:self];
         }
+    } else if (indexPath.section == 0) {
+        if (indexPath.item == 1) {
+            [self performSegueWithIdentifier:@"MembersSegue" sender:self];
+        }
     }
 }
 
@@ -165,7 +196,7 @@
     } else if (indexPath.section == 0 && indexPath.item == 0) {
         cellname = @"AboutCell";
     } else if (indexPath.section == 0 && indexPath.item == 1) {
-        cellname = @"ChallengeCell";
+        cellname = @"MembersCell";
     } else if (indexPath.section == [self chatSectionIndex]-1) {
         cellname = @"ComposeCell";
     } else if (indexPath.section == [self chatSectionIndex]) {
@@ -174,6 +205,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     if (indexPath.section == [self chatSectionIndex])  {
         [self configureChatMessageCell:(HRPGChatTableViewCell *)cell atIndexPath:indexPath];
+    } else if ([cellname isEqualToString:@"LoadingCell"]) {
+        UIActivityIndicatorView *activityIndicator = (UIActivityIndicatorView *) [cell viewWithTag:1];
+        [activityIndicator startAnimating];
+    } else if ([cellname isEqualToString:@"MembersCell"]) {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[self.group.member count]];
     }
     return cell;
 }
@@ -264,6 +300,10 @@
         HRPGPartyMembersViewController *membersViewController = (HRPGPartyMembersViewController *) segue.destinationViewController;
         membersViewController.isLeader = [self.group.leader.id isEqualToString:self.user.id];
         membersViewController.partyID = self.group.id;
+    } else if ([segue.identifier isEqualToString:@"AboutSegue"]) {
+        HRPGGroupAboutTableViewController *aboutViewController = (HRPGGroupAboutTableViewController *) segue.destinationViewController;
+        aboutViewController.isLeader = [self.group.leader.id isEqualToString:self.user.id];
+        aboutViewController.group = self.group;
     }
 }
 

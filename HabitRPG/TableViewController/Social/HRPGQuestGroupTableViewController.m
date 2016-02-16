@@ -38,10 +38,6 @@
     }
 }
 
-- (bool)listMembers {
-    return NO;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([self isQuestSection:section]) {
         if (self.quest) {
@@ -67,6 +63,22 @@
         }
     } else {
         return [super tableView:tableView numberOfRowsInSection:section];
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 1) {
+        return NSLocalizedString(@"Quest", nil);
+    } else {
+        return [super tableView:tableView titleForHeaderInSection:section];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self listMembers] && indexPath.section == 1 && indexPath.item == 1) {
+        [self performSegueWithIdentifier:@"ParticipantsSegue" sender:self];
+    } else {
+        [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     }
 }
 

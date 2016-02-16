@@ -716,7 +716,8 @@ NSString *currentUser;
             @"quest.extra.worldDmg.market" : @"worldDmgMarket",
             @"privacy" : @"privacy",
             @"type" : @"type",
-            @"memberCount" : @"memberCount"
+            @"memberCount" : @"memberCount",
+            @"balance": @"balance"
     }];
     entityMapping.identificationAttributes = @[@"id"];
     entityMapping.assignsDefaultValueForMissingAttributes = YES;
@@ -788,8 +789,8 @@ NSString *currentUser;
                                                                @"id" : @"_id",
                                                                @"name" : @"name",
                                                                @"hdescription" : @"description",
-                                                               @"type": @"type"}];
-
+                                                               @"type": @"type",
+                                                               @"leader.id": @"leader"}];
 
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Group class] pathPattern:@"/api/v2/groups/:id" method:RKRequestMethodGET]];
     [[RKObjectManager sharedManager].router.routeSet addRoute:[RKRoute routeWithClass:[Group class] pathPattern:@"/api/v2/groups/:id" method:RKRequestMethodPUT]];
@@ -899,24 +900,6 @@ NSString *currentUser;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:memberMapping method:RKRequestMethodGET pathPattern:@"/api/v2/members/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 
     [objectManager addResponseDescriptor:responseDescriptor];
-
-    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
-        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"/api/v2/groups/:groupID"];
-
-        NSDictionary *argsDict = nil;
-        BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
-        if (match) {
-            NSString *groupID = [argsDict objectForKey:@"groupID"];
-            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Group"];
-            if ([groupID isEqualToString:@"party"]) {
-                groupID = self.user.party.id;
-            }
-            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"id = %@", groupID];
-            return fetchRequest;
-        }
-
-        return nil;
-    }];
 
     RKEntityMapping *gearMapping = [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
     gearMapping.forceCollectionMapping = YES;
@@ -1473,7 +1456,7 @@ NSString *currentUser;
                 }
             }
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            if (party && ![party.id isEqualToString:[defaults stringForKey:@"partyID"]]) {
+            if (party && [party.type isEqualToString:@"party"] && ![party.id isEqualToString:[defaults stringForKey:@"partyID"]]) {
                 [defaults setObject:party.id forKey:@"partyID"];
                 [defaults synchronize];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged" object:party];
@@ -2550,7 +2533,7 @@ NSString *currentUser;
 - (void)leaveGroup:(Group *)group withType:(NSString *)type onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     
-    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/leave", group] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:nil path:[NSString stringWithFormat:@"/api/v2/groups/%@/leave", group.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         if ([type isEqualToString:@"party"]) {
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

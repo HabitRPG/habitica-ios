@@ -8,6 +8,7 @@
 
 #import "HRPGPublicGuildsViewController.h"
 #import "HRPGPublicGuildTableViewCell.h"
+#import "HRPGGroupTableViewController.h"
 
 @interface HRPGPublicGuildsViewController ()
 
@@ -132,6 +133,16 @@
     cell.leaveAction = ^() {
         [self.sharedManager leaveGroup:guild withType:guild.type onSuccess:nil onError:nil];
     };
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowGuildSegue"]) {
+        UITableViewCell *cell = (UITableViewCell *) sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        Group *guild = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        HRPGGroupTableViewController *guildViewController = (HRPGGroupTableViewController *)segue.destinationViewController;
+        guildViewController.groupID = guild.id;
+    }
 }
 
 @end

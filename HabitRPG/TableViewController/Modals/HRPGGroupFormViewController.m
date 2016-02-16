@@ -6,18 +6,18 @@
 //  Copyright © 2015 Phillip Thelen. All rights reserved.
 //
 
-#import "HRPGCreatePartyViewController.h"
+#import "HRPGGroupFormViewController.h"
 #import "Group.h"
 #import "NSString+Emoji.h"
 #import "XLForm.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGManager.h"
 
-@interface HRPGCreatePartyViewController ()
+@interface HRPGGroupFormViewController ()
 
 @end
 
-@implementation HRPGCreatePartyViewController
+@implementation HRPGGroupFormViewController
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -33,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (self.editParty) {
+    if (self.editGroup) {
         [self fillEditForm];
     }
 }
@@ -59,8 +59,8 @@
 }
 - (void)fillEditForm {
     self.navigationItem.title = NSLocalizedString(@"Edit Party", nil);
-    [self.form formRowWithTag:@"name"].value = self.party.name;
-    [self.form formRowWithTag:@"hdescription"].value = self.party.hdescription;
+    [self.form formRowWithTag:@"name"].value = self.group.name;
+    [self.form formRowWithTag:@"hdescription"].value = self.group.hdescription;
 
     [self.tableView reloadData];
 }
@@ -86,19 +86,19 @@
     
     [self.tableView endEditing:YES];
     if ([segue.identifier isEqualToString:@"unwindSaveSegue"]) {
-        if (!self.editParty) {
-            self.party = [NSEntityDescription
+        if (!self.editGroup) {
+            self.group = [NSEntityDescription
                            insertNewObjectForEntityForName:@"Group"
                            inManagedObjectContext:self.managedObjectContext];
-            self.party.type = @"party";
+            self.group.type = self.groupType;
         }
         NSDictionary *formValues = [self.form formValues];
         for (NSString *key in formValues) {
             if (formValues[key] == [NSNull null]) {
-                [self.party setValue:nil forKeyPath:key];
+                [self.group setValue:nil forKeyPath:key];
                 continue;
             }
-            [self.party setValue:formValues[key] forKeyPath:key];
+            [self.group setValue:formValues[key] forKeyPath:key];
         }
     }
 }

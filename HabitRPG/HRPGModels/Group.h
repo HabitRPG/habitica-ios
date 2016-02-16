@@ -33,6 +33,7 @@
 @property(nonatomic, retain) NSSet *collectStatus;
 @property(nonatomic, retain) NSNumber *isMember;
 @property(nonatomic, retain) NSNumber *memberCount;
+@property(nonatomic, retain) NSNumber *balance;
 @end
 
 @interface Group (CoreDataGeneratedAccessors)
