@@ -25,27 +25,27 @@
 
 -(NSString *)getImageNameForUser:(User *)user {
     if ([self.type isEqualToString:@"skin"]) {
-        if (user.sleep) {
+        if ([user.preferences.sleep boolValue]) {
             return [NSString stringWithFormat:@"skin_%@_sleep", self.name];
         } else {
             return [NSString stringWithFormat:@"skin_%@", self.name];
         }
     } else if ([self.type isEqualToString:@"shirt"]) {
-        return [NSString stringWithFormat:@"%@_shirt_%@", user.size, self.name];
+        return [NSString stringWithFormat:@"%@_shirt_%@", user.preferences.size, self.name];
     } else if ([self.type isEqualToString:@"hair"]) {
         if ([self.name isEqualToString:@"0"]) {
             return @"head_0";
         }
         if ([self.group isEqualToString:@"color"]) {
-            if ([user.hairBangs isEqualToString:@"0"]) {
+            if ([user.preferences.hairBangs isEqualToString:@"0"]) {
                 return [NSString stringWithFormat:@"hair_bangs_1_%@", self.name];
             } else {
-                return [NSString stringWithFormat:@"hair_bangs_%@_%@", user.hairBangs, self.name];
+                return [NSString stringWithFormat:@"hair_bangs_%@_%@", user.preferences.hairBangs, self.name];
             }
         } else if ([self.group isEqualToString:@"flower"]) {
                 return [NSString stringWithFormat:@"hair_flower_%@", self.name];
         } else {
-            return [NSString stringWithFormat:@"hair_%@_%@_%@", self.group, self.name, user.hairColor];
+            return [NSString stringWithFormat:@"hair_%@_%@_%@", self.group, self.name, user.preferences.hairColor];
         }
     } else if ([self.type isEqualToString:@"background"]) {
         return [NSString stringWithFormat:@"background_%@", self.name];

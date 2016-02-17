@@ -105,7 +105,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     switch (section) {
         case 0:
             //Below level 10 users don't have spells
-            if ([self.user.level integerValue] < 10 || [self.user.disableClass boolValue]) {
+            if ([self.user.level integerValue] < 10 || [self.user.preferences.disableClass boolValue]) {
                 return 0;
             } else {
                 return 1;
@@ -172,7 +172,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 0) {
-        if (![self.user.selectedClass boolValue] && ![self.user.disableClass boolValue]) {
+        if (![self.user.selectedClass boolValue] && ![self.user.preferences.disableClass boolValue]) {
             [self performSegueWithIdentifier:@"SelectClassSegue" sender:self];
         } else {
             [self performSegueWithIdentifier:@"SpellSegue" sender:self];
@@ -224,7 +224,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     NSString *cellName = @"Cell";
     BOOL showIndicator = NO;
     if (indexPath.section == 0 && indexPath.item == 0) {
-        if (![self.user.selectedClass boolValue] && ![self.user.disableClass boolValue]) {
+        if (![self.user.selectedClass boolValue] && ![self.user.preferences.disableClass boolValue]) {
             title = NSLocalizedString(@"Select Class", nil);
         } else {
             if ([self.user.hclass isEqualToString:@"wizard"] || [self.user.hclass isEqualToString:@"healer"]) {

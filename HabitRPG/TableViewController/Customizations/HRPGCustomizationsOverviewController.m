@@ -73,7 +73,7 @@ NSIndexPath *selectedIndex;
     if (indexPath.section == 0 && indexPath.item == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SizeCell" forIndexPath:indexPath];
         UISegmentedControl *sizeControl = (UISegmentedControl*)[cell viewWithTag:1];
-        if ([self.user.size isEqualToString:@"slim"]) {
+        if ([self.user.preferences.size isEqualToString:@"slim"]) {
             [sizeControl setSelectedSegmentIndex:0];
         } else {
             [sizeControl setSelectedSegmentIndex:1];
@@ -167,22 +167,22 @@ NSIndexPath *selectedIndex;
     NSString *searchedGroup;
     if (indexPath.section == 0) {
         if (indexPath.item == 0) {
-            searchedKey = self.user.size;
+            searchedKey = self.user.preferences.size;
             searchedType = @"size";
             typeName = NSLocalizedString(@"Size", nil);
         } else if (indexPath.item == 1) {
-            searchedKey = self.user.shirt;
+            searchedKey = self.user.preferences.shirt;
             searchedType = @"shirt";
             typeName = NSLocalizedString(@"Shirt", nil);
         } else if (indexPath.item == 2) {
-            searchedKey = self.user.skin;
+            searchedKey = self.user.preferences.skin;
             searchedType = @"skin";
             typeName = NSLocalizedString(@"Skin", nil);
         } else if (indexPath.item == 3) {
-            if ([self.user.useCostume boolValue]) {
-                searchedKey = self.user.costumeHeadAccessory;
+            if ([self.user.preferences.useCostume boolValue]) {
+                searchedKey = self.user.costume.headAccessory;
             } else {
-                searchedKey = self.user.equippedHeadAccessory;
+                searchedKey = self.user.equipped.headAccessory;
             }
             searchedType = @"ear";
             typeName = NSLocalizedString(@"Animal Ears", nil);
@@ -191,32 +191,32 @@ NSIndexPath *selectedIndex;
         searchedType = @"hair";
         if (indexPath.item == 0) {
             searchedGroup = @"color";
-            searchedKey = self.user.hairColor;
+            searchedKey = self.user.preferences.hairColor;
             typeName = NSLocalizedString(@"Color", nil);
         } else if (indexPath.item == 1) {
             searchedGroup = @"base";
-            searchedKey = self.user.hairBase;
+            searchedKey = self.user.preferences.hairBase;
             typeName = NSLocalizedString(@"Base", nil);
         } else if (indexPath.item == 2) {
             searchedGroup = @"bangs";
-            searchedKey = self.user.hairBangs;
+            searchedKey = self.user.preferences.hairBangs;
             typeName = NSLocalizedString(@"Bangs", nil);
         } else if (indexPath.item == 3) {
             searchedGroup = @"flower";
-            searchedKey = self.user.hairFlower;
+            searchedKey = self.user.preferences.hairFlower;
             typeName = NSLocalizedString(@"Flower", nil);
         } else if (indexPath.item == 4) {
             searchedGroup = @"beard";
-            searchedKey = self.user.hairBeard;
+            searchedKey = self.user.preferences.hairBeard;
             typeName = NSLocalizedString(@"Beard", nil);
         } else if (indexPath.item == 5) {
             searchedGroup = @"mustache";
-            searchedKey = self.user.hairMustache;
+            searchedKey = self.user.preferences.hairMustache;
             typeName = NSLocalizedString(@"Mustache", nil);
         }
     } else {
         if (indexPath.item == 0) {
-            searchedKey = self.user.background;
+            searchedKey = self.user.preferences.background;
             searchedType = @"background";
             typeName = NSLocalizedString(@"Background", nil);
         }
@@ -303,7 +303,7 @@ NSIndexPath *selectedIndex;
                 destViewController.type = @"skin";
             } else if (indexPath.item == 3) {
                 destViewController.entityName = @"Gear";
-                if ([self.user.useCostume boolValue]) {
+                if ([self.user.preferences.useCostume boolValue]) {
                     destViewController.userKey = @"costume";
                 } else {
                     destViewController.userKey = @"equipped";

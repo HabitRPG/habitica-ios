@@ -80,7 +80,7 @@
     }];
     
     [self waitForExpectationsWithTimeout:20 handler:^(NSError *error) {
-        XCTAssertEqualObjects([self.sharedManager getUser].costumeArmor, @"armor_special_fallWarrior");
+        XCTAssertEqualObjects([self.sharedManager getUser].costume.armor, @"armor_special_fallWarrior");
     }];
 }
 @end

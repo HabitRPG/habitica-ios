@@ -250,24 +250,24 @@
 
 - (void)loadClassesArray {
     User *warrior = [self setUpClassUserWithClass:@"Warrior"];
-    warrior.equippedArmor = @"armor_warrior_5";
-    warrior.equippedHead = @"head_warrior_5";
-    warrior.equippedShield = @"shield_warrior_5";
-    warrior.equippedWeapon = @"weapon_warrior_6";
+    warrior.equipped.armor = @"armor_warrior_5";
+    warrior.equipped.head = @"head_warrior_5";
+    warrior.equipped.shield = @"shield_warrior_5";
+    warrior.equipped.weapon = @"weapon_warrior_6";
     User *mage = [self setUpClassUserWithClass:@"Mage"];
-    mage.equippedArmor = @"armor_wizard_5";
-    mage.equippedHead = @"head_wizard_5";
-    mage.equippedWeapon = @"weapon_wizard_6";
+    mage.equipped.armor = @"armor_wizard_5";
+    mage.equipped.head = @"head_wizard_5";
+    mage.equipped.weapon = @"weapon_wizard_6";
     User *rogue = [self setUpClassUserWithClass:@"Rogue"];
-    rogue.equippedArmor = @"armor_rogue_5";
-    rogue.equippedHead = @"head_rogue_5";
-    rogue.equippedShield = @"shield_rogue_6";
-    rogue.equippedWeapon = @"weapon_rogue_6";
+    rogue.equipped.armor = @"armor_rogue_5";
+    rogue.equipped.head = @"head_rogue_5";
+    rogue.equipped.shield = @"shield_rogue_6";
+    rogue.equipped.weapon = @"weapon_rogue_6";
     User *healer = [self setUpClassUserWithClass:@"Healer"];
-    healer.equippedArmor = @"armor_healer_5";
-    healer.equippedHead = @"head_healer_5";
-    healer.equippedShield = @"shield_healer_5";
-    healer.equippedWeapon = @"weapon_healer_6";
+    healer.equipped.armor = @"armor_healer_5";
+    healer.equipped.head = @"head_healer_5";
+    healer.equipped.shield = @"shield_healer_5";
+    healer.equipped.weapon = @"weapon_healer_6";
     
     
     self.classesArray = @[
@@ -281,15 +281,19 @@
 - (User*)setUpClassUserWithClass:(NSString*)className {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:self.managedObjectContext];
     User *user = (User*)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    entity = [NSEntityDescription entityForName:@"Preferences" inManagedObjectContext:self.managedObjectContext];
+    user.preferences = (Preferences*)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    entity = [NSEntityDescription entityForName:@"Outfit" inManagedObjectContext:self.managedObjectContext];
+    user.equipped = (Outfit*)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
     user.username = [self.user.username stringByAppendingString:className];
-    user.skin = self.user.skin;
-    user.hairBangs = self.user.hairBangs;
-    user.hairBase = self.user.hairBase;
-    user.hairBeard = self.user.hairBeard;
-    user.hairColor = self.user.hairColor;
-    user.hairMustache = self.user.hairMustache;
-    user.shirt = self.user.shirt;
-    user.size = self.user.size;
+    user.preferences.skin = self.user.preferences.skin;
+    user.preferences.hairBangs = self.user.preferences.hairBangs;
+    user.preferences.hairBase = self.user.preferences.hairBase;
+    user.preferences.hairBeard = self.user.preferences.hairBeard;
+    user.preferences.hairColor = self.user.preferences.hairColor;
+    user.preferences.hairMustache = self.user.preferences.hairMustache;
+    user.preferences.shirt = self.user.preferences.shirt;
+    user.preferences.size = self.user.preferences.size;
     
     return user;
 }

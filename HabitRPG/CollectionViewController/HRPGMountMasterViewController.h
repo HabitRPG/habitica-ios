@@ -11,8 +11,6 @@
 
 @interface HRPGMountMasterViewController : HRPGBaseCollectionViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
 
-@property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 
 

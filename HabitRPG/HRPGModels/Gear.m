@@ -25,35 +25,35 @@
 
 -(BOOL)isEquippedBy:(User *)user {
     if ([self.type isEqualToString:@"weapon"]) {
-        if ([user.equippedWeapon isEqualToString:self.key]) {
+        if ([user.equipped.weapon isEqualToString:self.key]) {
             return YES;
         }
     } else if ([self.type isEqualToString:@"armor"]) {
-        if ([user.equippedArmor isEqualToString:self.key]) {
+        if ([user.equipped.armor isEqualToString:self.key]) {
             return YES;
         }
     } else if ([self.type isEqualToString:@"head"]) {
-        if ([user.equippedHead isEqualToString:self.key]) {
+        if ([user.equipped.head isEqualToString:self.key]) {
             return YES;
         }
     } else if ([self.type isEqualToString:@"shield"]) {
-        if ([user.equippedShield isEqualToString:self.key]) {
+        if ([user.equipped.shield isEqualToString:self.key]) {
             return YES;
         }
     } else if ([self.type isEqualToString:@"headAccessory"])  {
-        if ([user.equippedHeadAccessory isEqualToString:self.key]) {
+        if ([user.equipped.headAccessory isEqualToString:self.key]) {
             return YES;
         }
     } else if ([self.type isEqualToString:@"back"])  {
-        if ([user.equippedBack isEqualToString:self.key]) {
+        if ([user.equipped.back isEqualToString:self.key]) {
             return YES;
         }
     } else if ([self.type isEqualToString:@"body"]) {
-        if ([user.equippedBody isEqualToString:self.key]) {
+        if ([user.equipped.body isEqualToString:self.key]) {
             return YES;
         }
     } else if ([self.type isEqualToString:@"eyewear"]) {
-        if ([user.equippedEyewear isEqualToString:self.key]) {
+        if ([user.equipped.eyewear isEqualToString:self.key]) {
             return YES;
         }
     }
@@ -63,35 +63,35 @@
 
 -(BOOL)isCostumeOf:(User *)user {
     if ([self.type isEqualToString:@"weapon"]) {
-        if ([user.costumeWeapon isEqualToString:self.key]) {
+        if ([user.costume.weapon isEqualToString:self.key]) {
             return YES;
         }
     } else if ([self.type isEqualToString:@"armor"]) {
-        if ([user.costumeArmor isEqualToString:self.key]) {
+        if ([user.costume.armor isEqualToString:self.key]) {
             return YES;
         }
     } else if ([self.type isEqualToString:@"head"]) {
-        if ([user.costumeHead isEqualToString:self.key]) {
+        if ([user.costume.head isEqualToString:self.key]) {
             return YES;
         }
     } else if ([self.type isEqualToString:@"shield"]) {
-        if ([user.costumeShield isEqualToString:self.key]) {
+        if ([user.costume.shield isEqualToString:self.key]) {
             return YES;
         }
     } else if ([self.type isEqualToString:@"headAccessory"])  {
-        if ([user.costumeHeadAccessory isEqualToString:self.key]) {
+        if ([user.costume.headAccessory isEqualToString:self.key]) {
             return YES;
         }
     } else if ([self.type isEqualToString:@"back"])  {
-        if ([user.costumeBack isEqualToString:self.key]) {
+        if ([user.costume.back isEqualToString:self.key]) {
             return YES;
         }
     } else if ([self.type isEqualToString:@"body"]) {
-        if ([user.costumeBody isEqualToString:self.key]) {
+        if ([user.costume.body isEqualToString:self.key]) {
             return YES;
         }
     } else if ([self.type isEqualToString:@"eyewear"]) {
-        if ([user.costumeEyewear isEqualToString:self.key]) {
+        if ([user.costume.eyewear isEqualToString:self.key]) {
             return YES;
         }
     }

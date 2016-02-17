@@ -58,7 +58,7 @@
         }];
         [self.sharedManager sleepInn:^() {
             NSString *notificationText;
-            if (self.user.sleep) {
+            if ([self.user.preferences.sleep boolValue]) {
                 notificationText = NSLocalizedString(@"Sleep tight!", nil);
             } else {
                 notificationText = NSLocalizedString(@"Wakey Wakey!", nil);
@@ -84,7 +84,7 @@
     if (indexPath.section == 0 && indexPath.item == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InnCell" forIndexPath:indexPath];
         UILabel *label = (UILabel*)[cell viewWithTag:1];
-        if (self.user.sleep) {
+        if ([self.user.preferences.sleep boolValue]) {
             label.text = NSLocalizedString(@"Leave the Inn", nil);
             label.textColor = [UIColor colorWithRed:0.894 green:0.008 blue:0.000 alpha:1.000];
         } else {

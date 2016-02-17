@@ -37,7 +37,7 @@ NSIndexPath *selectedIndex;
     [costumeFooterView addSubview:footerLabel];
     
     UISwitch *footerSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.viewWidth-59, 14.5, 72, 31)];
-    footerSwitch.on = [self.user.useCostume boolValue];
+    footerSwitch.on = [self.user.preferences.useCostume boolValue];
     [footerSwitch addTarget:self action:@selector(changeWearingCostume:) forControlEvents:UIControlEventValueChanged];
     [costumeFooterView addSubview:footerSwitch];
     
@@ -134,58 +134,36 @@ NSIndexPath *selectedIndex;
     
     NSString *searchedKey;
     NSString *typeName;
+    Outfit *outfit;
     if (indexPath.section == 0) {
-        if (indexPath.item == 0) {
-            searchedKey = self.user.equippedHead;
-            typeName = NSLocalizedString(@"Head", nil);
-        } else if (indexPath.item == 1) {
-            searchedKey = self.user.equippedHeadAccessory;
-            typeName = NSLocalizedString(@"Head Accessory", nil);
-        } else if (indexPath.item == 2) {
-            searchedKey = self.user.equippedEyewear;
-            typeName = NSLocalizedString(@"Eyewear", nil);
-        } else if (indexPath.item == 3) {
-            searchedKey = self.user.equippedArmor;
-            typeName = NSLocalizedString(@"Armor", nil);
-        } else if (indexPath.item == 4) {
-            searchedKey = self.user.equippedBody;
-            typeName = NSLocalizedString(@"Body", nil);
-        } else if (indexPath.item == 5) {
-            searchedKey = self.user.equippedBack;
-            typeName = NSLocalizedString(@"Back", nil);
-        } else if (indexPath.item == 6) {
-            searchedKey = self.user.equippedShield;
-            typeName = NSLocalizedString(@"Shield", nil);
-        } else if (indexPath.item == 7) {
-            searchedKey = self.user.equippedWeapon;
-            typeName = NSLocalizedString(@"Weapon", nil);
-        }
+        outfit = self.user.equipped;
     } else {
-        if (indexPath.item == 0) {
-            searchedKey = self.user.costumeHead;
-            typeName = NSLocalizedString(@"Head", nil);
-        } else if (indexPath.item == 1) {
-            searchedKey = self.user.costumeHeadAccessory;
-            typeName = NSLocalizedString(@"Head Accessory", nil);
-        } else if (indexPath.item == 2) {
-            searchedKey = self.user.costumeEyewear;
-            typeName = NSLocalizedString(@"Eyewear", nil);
-        } else if (indexPath.item == 3) {
-            searchedKey = self.user.costumeArmor;
-            typeName = NSLocalizedString(@"Armor", nil);
-        }  else if (indexPath.item == 4) {
-            searchedKey = self.user.costumeBody;
-            typeName = NSLocalizedString(@"Body", nil);
-        } else if (indexPath.item == 5) {
-            searchedKey = self.user.costumeBack;
-            typeName = NSLocalizedString(@"Back", nil);
-        } else if (indexPath.item == 6) {
-            searchedKey = self.user.costumeShield;
-            typeName = NSLocalizedString(@"Shield", nil);
-        } else if (indexPath.item == 7) {
-            searchedKey = self.user.costumeWeapon;
-            typeName = NSLocalizedString(@"Weapon", nil);
-        }
+        outfit = self.user.costume;
+    }
+    if (indexPath.item == 0) {
+        searchedKey = outfit.head;
+        typeName = NSLocalizedString(@"Head", nil);
+    } else if (indexPath.item == 1) {
+        searchedKey = outfit.headAccessory;
+        typeName = NSLocalizedString(@"Head Accessory", nil);
+    } else if (indexPath.item == 2) {
+        searchedKey = outfit.eyewear;
+        typeName = NSLocalizedString(@"Eyewear", nil);
+    } else if (indexPath.item == 3) {
+        searchedKey = outfit.armor;
+        typeName = NSLocalizedString(@"Armor", nil);
+    }  else if (indexPath.item == 4) {
+        searchedKey = outfit.body;
+        typeName = NSLocalizedString(@"Body", nil);
+    } else if (indexPath.item == 5) {
+        searchedKey = outfit.back;
+        typeName = NSLocalizedString(@"Back", nil);
+    } else if (indexPath.item == 6) {
+        searchedKey = outfit.shield;
+        typeName = NSLocalizedString(@"Shield", nil);
+    } else if (indexPath.item == 7) {
+        searchedKey = outfit.weapon;
+        typeName = NSLocalizedString(@"Weapon", nil);
     }
     Gear *searchedGear;
     for (Gear *gear in self.fetchedResultsController.fetchedObjects) {
@@ -252,9 +230,9 @@ NSIndexPath *selectedIndex;
 
 - (void)changeWearingCostume:(UISwitch *)switchState {
     [self.sharedManager updateUser:@{@"preferences.costume": [NSNumber numberWithBool:switchState.on]} onSuccess:^() {
-        switchState.on = [self.user.useCostume boolValue];
+        switchState.on = [self.user.preferences.useCostume boolValue];
     }onError:^() {
-        switchState.on = [self.user.useCostume boolValue];
+        switchState.on = [self.user.preferences.useCostume boolValue];
     }];
 }
 

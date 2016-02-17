@@ -22,48 +22,22 @@
 @dynamic armoireEnabled;
 @dynamic armoireEmpty;
 @dynamic acceptedCommunityGuidelines;
-@dynamic background;
 @dynamic balance;
 @dynamic blurb;
 @dynamic contributorLevel;
 @dynamic contributorText;
-@dynamic costumeArmor;
-@dynamic costumeBack;
-@dynamic costumeBody;
-@dynamic costumeEyewear;
-@dynamic costumeHead;
-@dynamic costumeHeadAccessory;
-@dynamic costumeShield;
-@dynamic costumeWeapon;
 @dynamic currentMount;
 @dynamic currentPet;
-@dynamic dayStart;
-@dynamic disableClass;
 @dynamic dropsEnabled;
 @dynamic email;
-@dynamic equippedArmor;
-@dynamic equippedBack;
-@dynamic equippedBody;
-@dynamic equippedEyewear;
-@dynamic equippedHead;
-@dynamic equippedHeadAccessory;
-@dynamic equippedShield;
-@dynamic equippedWeapon;
 @dynamic experience;
 @dynamic gold;
-@dynamic hairBangs;
-@dynamic hairBase;
-@dynamic hairBeard;
-@dynamic hairColor;
-@dynamic hairMustache;
-@dynamic hairFlower;
 @dynamic hclass;
 @dynamic health;
 @dynamic id;
 @dynamic invitedParty;
 @dynamic invitedPartyName;
 @dynamic itemsEnabled;
-@dynamic language;
 @dynamic level;
 @dynamic magic;
 @dynamic maxHealth;
@@ -72,10 +46,6 @@
 @dynamic nextLevel;
 @dynamic habitNewStuff;
 @dynamic participateInQuest;
-@dynamic shirt;
-@dynamic size;
-@dynamic skin;
-@dynamic sleep;
 @dynamic username;
 @dynamic groups;
 @dynamic ownedEggs;
@@ -91,9 +61,6 @@
 @dynamic lastAvatarFull;
 @dynamic lastAvatarNoPet;
 @dynamic lastAvatarHead;
-@dynamic selectedClass;
-@dynamic timezoneOffset;
-@dynamic useCostume;
 @dynamic partyOrder;
 @dynamic partyPosition;
 @synthesize petCount = _petCount;
@@ -101,6 +68,11 @@
 @synthesize lastImageGeneration;
 @dynamic iosTutorialSteps;
 @dynamic commonTutorialSteps;
+@dynamic lifeCategories;
+
+@dynamic preferences;
+@dynamic equipped;
+@dynamic costume;
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView useForce:(BOOL)force {
     [self setAvatarOnImageView:imageView withPetMount:YES onlyHead:NO withBackground:YES useForce:force];
@@ -145,7 +117,7 @@
         }
     }
     */
-    if (self.skin == nil) {
+    if (self.preferences.skin == nil) {
         return;
     }
     
@@ -161,22 +133,21 @@
     __block UIImage *currentMountHead = nil;
     dispatch_group_t group = dispatch_group_create();
 
-    if (withBackground && self.background && self.background.length > 0) {
+    if (withBackground && self.preferences.background && self.preferences.background.length > 0) {
         dispatch_group_enter(group);
-        [sharedManager getImage:[NSString stringWithFormat:@"background_%@", self.background] withFormat:nil onSuccess:^(UIImage *image) {
+        [sharedManager getImage:[NSString stringWithFormat:@"background_%@", self.preferences.background] withFormat:nil onSuccess:^(UIImage *image) {
             background = image;
             dispatch_group_leave(group);
         } onError:^() {
             dispatch_group_leave(group);
         }];
     }
-    
-    NSString *back = [self.useCostume boolValue] ? self.costumeBack : self.equippedBack;
-    if (![back isEqualToString:@"back_base_0"] && back) {
+    Outfit *outfit = [self.preferences.useCostume boolValue] ? self.costume: self.equipped;
+    if (![outfit.back isEqualToString:@"back_base_0"] && outfit.back) {
         NSString *format = nil;
         dispatch_group_enter(group);
         currentLayer++; //bump up current layer to 1 for skin
-        [sharedManager getImage:[NSString stringWithFormat:@"%@", back] withFormat:format onSuccess:^(UIImage *image) {
+        [sharedManager getImage:[NSString stringWithFormat:@"%@", outfit.back] withFormat:format onSuccess:^(UIImage *image) {
             // back accessory goes into layer 0, even though we incremented currentLayer
             [imageArray replaceObjectAtIndex:0 withObject:image];
             dispatch_group_leave(group);
@@ -186,8 +157,8 @@
     }
     
     dispatch_group_enter(group);
-    NSString *skinString = [NSString stringWithFormat:@"skin_%@", self.skin];
-    if (self.sleep) {
+    NSString *skinString = [NSString stringWithFormat:@"skin_%@", self.preferences.skin];
+    if ([self.preferences.sleep boolValue]) {
         skinString = [skinString stringByAppendingString:@"_sleep"];
     }
     [sharedManager getImage:skinString withFormat:nil onSuccess:^(UIImage *image) {
@@ -199,7 +170,7 @@
 
     dispatch_group_enter(group);
     currentLayer++;
-    [sharedManager getImage:[NSString stringWithFormat:@"%@_shirt_%@", self.size, self.shirt] withFormat:nil onSuccess:^(UIImage *image){
+    [sharedManager getImage:[NSString stringWithFormat:@"%@_shirt_%@", self.preferences.size, self.preferences.shirt] withFormat:nil onSuccess:^(UIImage *image){
         [imageArray replaceObjectAtIndex:currentLayer withObject:image];
         dispatch_group_leave(group);
     } onError:^() {
@@ -215,15 +186,14 @@
         dispatch_group_leave(group);
     }];
 
-    NSString *armor = [self.useCostume boolValue] ? self.costumeArmor : self.equippedArmor;
-    if (![armor isEqualToString:@"armor_base_0"] && armor) {
+    if (![outfit.armor isEqualToString:@"armor_base_0"] && outfit.armor) {
         NSString *format = nil;
-        if ([armor isEqualToString:@"armor_special_0"] || [armor isEqualToString:@"armor_special_1"]) {
+        if ([outfit.armor isEqualToString:@"armor_special_0"] || [outfit.armor isEqualToString:@"armor_special_1"]) {
             format = @"gif";
         }
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"%@_%@", self.size, armor] withFormat:format onSuccess:^(UIImage *image) {
+        [sharedManager getImage:[NSString stringWithFormat:@"%@_%@", self.preferences.size, outfit.armor] withFormat:format onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
@@ -231,12 +201,11 @@
         }];
     }
     
-    NSString *body = [self.useCostume boolValue] ? self.costumeBody : self.equippedBody;
-    if (![body isEqualToString:@"body_base_0"] && body) {
+    if (![outfit.body isEqualToString:@"body_base_0"] && outfit.body) {
         NSString *format = nil;
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"%@", body] withFormat:format onSuccess:^(UIImage *image) {
+        [sharedManager getImage:[NSString stringWithFormat:@"%@", outfit.body] withFormat:format onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
@@ -244,10 +213,10 @@
         }];
     }
     
-    if ([self.hairBase integerValue] != 0) {
+    if ([self.preferences.hairBase integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"hair_base_%@_%@", self.hairBase, self.hairColor] withFormat:nil onSuccess:^(UIImage *image) {
+        [sharedManager getImage:[NSString stringWithFormat:@"hair_base_%@_%@", self.preferences.hairBase, self.preferences.hairColor] withFormat:nil onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
@@ -256,10 +225,10 @@
     }
 
 
-    if ([self.hairBangs integerValue] != 0) {
+    if ([self.preferences.hairBangs integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"hair_bangs_%@_%@", self.hairBangs, self.hairColor] withFormat:nil onSuccess:^(UIImage *image) {
+        [sharedManager getImage:[NSString stringWithFormat:@"hair_bangs_%@_%@", self.preferences.hairBangs, self.preferences.hairColor] withFormat:nil onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
@@ -267,10 +236,10 @@
         }];
     }
 
-    if ([self.hairMustache integerValue] != 0) {
+    if ([self.preferences.hairMustache integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"hair_mustache_%@_%@", self.hairMustache, self.hairColor] withFormat:nil onSuccess:^(UIImage *image) {
+        [sharedManager getImage:[NSString stringWithFormat:@"hair_mustache_%@_%@", self.preferences.hairMustache, self.preferences.hairColor] withFormat:nil onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
@@ -278,10 +247,10 @@
         }];
     }
 
-    if ([self.hairBeard integerValue] != 0) {
+    if ([self.preferences.hairBeard integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"hair_beard_%@_%@", self.hairBeard, self.hairColor] withFormat:nil onSuccess:^(UIImage *image) {
+        [sharedManager getImage:[NSString stringWithFormat:@"hair_beard_%@_%@", self.preferences.hairBeard, self.preferences.hairColor] withFormat:nil onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
@@ -289,12 +258,11 @@
         }];
     }
     
-    NSString *eyewear = [self.useCostume boolValue] ? self.costumeEyewear : self.equippedEyewear;
-    if (![eyewear isEqualToString:@"eyewear_base_0"] && eyewear) {
+    if (![outfit.eyewear isEqualToString:@"eyewear_base_0"] && outfit.eyewear) {
         NSString *format = nil;
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"%@", eyewear] withFormat:format onSuccess:^(UIImage *image) {
+        [sharedManager getImage:[NSString stringWithFormat:@"%@", outfit.eyewear] withFormat:format onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
@@ -302,15 +270,14 @@
         }];
     }
 
-    NSString *head = [self.useCostume boolValue] ? self.costumeHead : self.equippedHead;
-    if (![head isEqualToString:@"head_base_0"] && head) {
+    if (![outfit.head isEqualToString:@"head_base_0"] && outfit.head) {
         NSString *format = nil;
-        if ([head isEqualToString:@"head_special_0"] || [head isEqualToString:@"head_special_1"]) {
+        if ([outfit.head isEqualToString:@"head_special_0"] || [outfit.head isEqualToString:@"head_special_1"]) {
             format = @"gif";
         }
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:head withFormat:format onSuccess:^(UIImage *image) {
+        [sharedManager getImage:outfit.head withFormat:format onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
@@ -318,11 +285,10 @@
         }];
     }
     
-    NSString *headAccessory = [self.useCostume boolValue] ? self.costumeHeadAccessory : self.equippedHeadAccessory;
-    if (headAccessory && ![headAccessory isEqualToString:@"headAccessory_base_0"] && headAccessory) {
+    if (outfit.headAccessory && ![outfit.headAccessory isEqualToString:@"headAccessory_base_0"] && outfit.headAccessory) {
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:headAccessory withFormat:nil onSuccess:^(UIImage *image) {
+        [sharedManager getImage:outfit.headAccessory withFormat:nil onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
@@ -330,10 +296,10 @@
         }];
     }
     
-    if ([self.hairFlower integerValue] != 0) {
+    if ([self.preferences.hairFlower integerValue] != 0) {
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"hair_flower_%@", self.hairFlower] withFormat:nil onSuccess:^(UIImage *image) {
+        [sharedManager getImage:[NSString stringWithFormat:@"hair_flower_%@", self.preferences.hairFlower] withFormat:nil onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
@@ -341,30 +307,28 @@
         }];
     }
     
-    NSString *shield = [self.useCostume boolValue] ? self.costumeShield : self.equippedShield;
-    if (!onlyHead && ![shield isEqualToString:@"shield_base_0"] && shield) {
+    if (!onlyHead && ![outfit.shield isEqualToString:@"shield_base_0"] && outfit.shield) {
         NSString *format = nil;
-        if ([shield isEqualToString:@"shield_special_0"]) {
+        if ([outfit.shield isEqualToString:@"shield_special_0"]) {
             format = @"gif";
         }
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:shield withFormat:format onSuccess:^(UIImage *image) {
+        [sharedManager getImage:outfit.shield withFormat:format onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
             dispatch_group_leave(group);
         }];
     }
-    NSString *weapon = [self.useCostume boolValue] ? self.costumeWeapon : self.equippedWeapon;
-    if (!onlyHead && ![weapon isEqualToString:@"weapon_base_0"] && weapon) {
+    if (!onlyHead && ![outfit.weapon isEqualToString:@"weapon_base_0"] && outfit.weapon) {
         NSString *format = nil;
-        if ([weapon isEqualToString:@"weapon_special_0"] || [weapon isEqualToString:@"weapon_special_critical"]) {
+        if ([outfit.weapon isEqualToString:@"weapon_special_0"] || [outfit.weapon isEqualToString:@"weapon_special_critical"]) {
             format = @"gif";
         }
         dispatch_group_enter(group);
         currentLayer++;
-        [sharedManager getImage:weapon withFormat:format onSuccess:^(UIImage *image) {
+        [sharedManager getImage:outfit.weapon withFormat:format onSuccess:^(UIImage *image) {
             [imageArray replaceObjectAtIndex:currentLayer withObject:image];
             dispatch_group_leave(group);
         } onError:^() {
@@ -372,7 +336,7 @@
         }];
     }
 
-    if (self.sleep) {
+    if ([self.preferences.sleep boolValue]) {
         dispatch_group_enter(group);
         currentLayer++;
         [sharedManager getImage:@"zzz" withFormat:nil onSuccess:^(UIImage *image) {
@@ -440,7 +404,7 @@
 
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), NO, 0.0f);
         
-        if (withBackground && self.background && self.background.length > 0) {
+        if (withBackground && self.preferences.background && self.preferences.background.length > 0) {
             [background drawInRect:CGRectMake(0, 0, background.size.width, background.size.height)];
         }
         
@@ -587,42 +551,30 @@
 
 - (NSArray*) equippedArray {
     NSMutableArray *array = [NSMutableArray array];
-    if (self.equippedArmor) {
-        [array addObject:self.equippedArmor];
+    Outfit *outfit = [self.preferences.useCostume boolValue] ? self.costume: self.equipped;
+    if (outfit.armor) {
+        [array addObject:outfit.armor];
     }
-    if (self.equippedBack) {
-        [array addObject:self.equippedBack];
+    if (outfit.back) {
+        [array addObject:outfit.back];
     }
-    if (self.equippedHead) {
-        [array addObject:self.equippedHead];
+    if (outfit.body) {
+        [array addObject:outfit.body];
     }
-    if (self.equippedHeadAccessory) {
-        [array addObject:self.equippedHeadAccessory];
+    if (outfit.eyewear) {
+        [array addObject:outfit.eyewear];
     }
-    if (self.equippedShield) {
-        [array addObject:self.equippedShield];
+    if (outfit.head) {
+        [array addObject:outfit.head];
     }
-    if (self.equippedWeapon) {
-        [array addObject:self.equippedWeapon];
+    if (outfit.headAccessory) {
+        [array addObject:outfit.headAccessory];
     }
-    
-    if (self.costumeArmor) {
-        [array addObject:self.costumeArmor];
+    if (outfit.shield) {
+        [array addObject:outfit.shield];
     }
-    if (self.costumeBack) {
-        [array addObject:self.costumeBack];
-    }
-    if (self.costumeHead) {
-        [array addObject:self.costumeHead];
-    }
-    if (self.costumeHeadAccessory) {
-        [array addObject:self.costumeHeadAccessory];
-    }
-    if (self.costumeShield) {
-        [array addObject:self.costumeShield];
-    }
-    if (self.costumeWeapon) {
-        [array addObject:self.costumeWeapon];
+    if (outfit.weapon) {
+        [array addObject:outfit.weapon];
     }
     
     return array;

@@ -166,9 +166,9 @@
         self.sizeTextView.attributedString = message.attributedText;
         self.sizeTextView.shouldDrawLinks = YES;
         
-        CGSize suggestedSize = [self.sizeTextView.attributedTextContentView suggestedFrameSizeToFitEntireStringConstraintedToWidth:self.viewWidth-24];
+        CGSize suggestedSize = [self.sizeTextView.attributedTextContentView suggestedFrameSizeToFitEntireStringConstraintedToWidth:self.viewWidth-26];
         
-        CGFloat rowHeight = suggestedSize.height+40;
+        CGFloat rowHeight = suggestedSize.height+55;
         return rowHeight;
     }
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];

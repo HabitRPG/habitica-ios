@@ -117,8 +117,8 @@ User *user;
         [hourOptions addObject:[XLFormOptionsObject formOptionsObjectWithValue:@(hour) displayText:[NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterShortStyle]]];
     }
     row.selectorOptions = hourOptions;
-    NSDate *currentDayStart = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@:00:00", user.dayStart]];
-    row.value = [XLFormOptionsObject formOptionsObjectWithValue:user.dayStart displayText:[NSDateFormatter localizedStringFromDate:currentDayStart dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterShortStyle]];
+    NSDate *currentDayStart = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@:00:00", user.preferences.dayStart]];
+    row.value = [XLFormOptionsObject formOptionsObjectWithValue:user.preferences.dayStart displayText:[NSDateFormatter localizedStringFromDate:currentDayStart dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterShortStyle]];
     
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Maintenance", nil)];
     [formDescriptor addFormSection:section];

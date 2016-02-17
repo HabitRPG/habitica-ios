@@ -58,7 +58,7 @@ BOOL editable;
         //due to the way ipads are used we want to have a bit of extra spacing
         self.extraCellSpacing = 8;
     }
-    self.dayStart = [[self.sharedManager getUser].dayStart integerValue];
+    self.dayStart = [[self.sharedManager getUser].preferences.dayStart integerValue];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -166,6 +166,13 @@ NSInteger rowOffset = 16;
     }
     
     self.usernameLabel.text = self.user.username;
+    if ([self.user.contributorLevel integerValue] > 0) {
+        self.usernameLabel.textColor = self.user.contributorColor;
+        self.levelLabel.textColor = self.user.contributorColor;
+    } else {
+        self.usernameLabel.textColor = self.user.contributorColor;
+        self.levelLabel.textColor = self.user.contributorColor;
+    }
     self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Level %@ %@", nil), self.user.level, NSLocalizedString([self.user.hclass capitalizedString], nil)];
     self.classImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@", self.user.hclass]];
     self.gemLabel.text = [[NSNumber numberWithFloat:[self.user.balance floatValue]*4] stringValue];

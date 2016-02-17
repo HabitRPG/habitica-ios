@@ -248,10 +248,10 @@
     self.skinSelectionView = [[HRPGCustomizationSelectionView alloc] init];
     self.skinSelectionView.verticalCutoff = 0.85;
     self.skinSelectionView.user = self.user;
-    self.skinSelectionView.selectedItem = self.user.skin;
+    self.skinSelectionView.selectedItem = self.user.preferences.skin;
     self.skinSelectionView.items = [self getCustomizationsWithPredicate:[NSPredicate predicateWithFormat:@"price == 0 && type == 'skin'"]];
     self.skinSelectionView.selectionAction = ^(Customization *selectedItem) {
-        weakSelf.user.skin = selectedItem.name;
+        weakSelf.user.preferences.skin = selectedItem.name;
         [weakSelf.user setAvatarOnImageView:weakSelf.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:YES];
     };
     [self.mainScrollView addSubview:self.skinSelectionView];
@@ -270,16 +270,16 @@
     self.shirtSelectionView = [[HRPGCustomizationSelectionView alloc] init];
     self.shirtSelectionView.verticalCutoff = 1.1;
     self.shirtSelectionView.user = self.user;
-    self.shirtSelectionView.selectedItem = self.user.shirt;
+    self.shirtSelectionView.selectedItem = self.user.preferences.shirt;
     self.shirtSelectionView.items = [self getCustomizationsWithPredicate:[NSPredicate predicateWithFormat:@"price == 0 && type == 'shirt'"]];
     self.shirtSelectionView.selectionAction = ^(Customization *selectedItem) {
-        weakSelf.user.shirt = selectedItem.name;
+        weakSelf.user.preferences.shirt = selectedItem.name;
         [weakSelf.user setAvatarOnImageView:weakSelf.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:YES];
     };
     [self.mainScrollView addSubview:self.shirtSelectionView];
     self.bodySizeView = [[UISegmentedControl alloc] initWithItems:@[@"Slim", @"Broad"]];
     [self.mainScrollView addSubview:self.bodySizeView];
-    if ([self.user.size isEqualToString:@"slim"]) {
+    if ([self.user.preferences.size isEqualToString:@"slim"]) {
         [self.bodySizeView setSelectedSegmentIndex:0];
     } else {
         [self.bodySizeView setSelectedSegmentIndex:1];
@@ -300,20 +300,20 @@
     self.hairBaseSelectionView = [[HRPGCustomizationSelectionView alloc] init];
     self.hairBaseSelectionView.verticalCutoff = 0.85;
     self.hairBaseSelectionView.user = self.user;
-    self.hairBaseSelectionView.selectedItem = self.user.hairBase;
+    self.hairBaseSelectionView.selectedItem = self.user.preferences.hairBase;
     self.hairBaseSelectionView.items = [self getCustomizationsWithPredicate:[NSPredicate predicateWithFormat:@"price == 0 && type == 'hair' && group == 'base'"]];
     self.hairBaseSelectionView.selectionAction = ^(Customization *selectedItem) {
-        weakSelf.user.hairBase = selectedItem.name;
+        weakSelf.user.preferences.hairBase = selectedItem.name;
         [weakSelf.user setAvatarOnImageView:weakSelf.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:YES];
     };
     [self.mainScrollView addSubview:self.hairBaseSelectionView];
     self.hairBangsSelectionView = [[HRPGCustomizationSelectionView alloc] init];
     self.hairBangsSelectionView.verticalCutoff = 0.85;
     self.hairBangsSelectionView.user = self.user;
-    self.hairBangsSelectionView.selectedItem = self.user.hairBangs;
+    self.hairBangsSelectionView.selectedItem = self.user.preferences.hairBangs;
     self.hairBangsSelectionView.items = [self getCustomizationsWithPredicate:[NSPredicate predicateWithFormat:@"price == 0 && type == 'hair' && group == 'bangs'"]];
     self.hairBangsSelectionView.selectionAction = ^(Customization *selectedItem) {
-        weakSelf.user.hairBangs = selectedItem.name;
+        weakSelf.user.preferences.hairBangs = selectedItem.name;
         [weakSelf.user setAvatarOnImageView:weakSelf.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:YES];
     };
     [self.mainScrollView addSubview:self.hairBangsSelectionView];
@@ -331,10 +331,10 @@
     self.hairColorSelectionView = [[HRPGCustomizationSelectionView alloc] init];
     self.hairColorSelectionView.verticalCutoff = 0.77;
     self.hairColorSelectionView.user = self.user;
-    self.hairColorSelectionView.selectedItem = self.user.hairColor;
+    self.hairColorSelectionView.selectedItem = self.user.preferences.hairColor;
     self.hairColorSelectionView.items = [self getCustomizationsWithPredicate:[NSPredicate predicateWithFormat:@"price == 0 && type == 'hair' && group == 'color'"]];
     self.hairColorSelectionView.selectionAction = ^(Customization *selectedItem) {
-        weakSelf.user.hairColor = selectedItem.name;
+        weakSelf.user.preferences.hairColor = selectedItem.name;
         [weakSelf.user setAvatarOnImageView:weakSelf.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:YES];
     };
     [self.mainScrollView addSubview:self.hairColorSelectionView];
@@ -342,10 +342,10 @@
     self.hairFlowerSelectionView = [[HRPGCustomizationSelectionView alloc] init];
     self.hairFlowerSelectionView.verticalCutoff = 0.77;
     self.hairFlowerSelectionView.user = self.user;
-    self.hairFlowerSelectionView.selectedItem = self.user.hairFlower;
+    self.hairFlowerSelectionView.selectedItem = self.user.preferences.hairFlower;
     self.hairFlowerSelectionView.items = [self getCustomizationsWithPredicate:[NSPredicate predicateWithFormat:@"price == 0 && type == 'hair' && group == 'flower'"]];
     self.hairFlowerSelectionView.selectionAction = ^(Customization *selectedItem) {
-        weakSelf.user.hairFlower = selectedItem.name;
+        weakSelf.user.preferences.hairFlower = selectedItem.name;
         [weakSelf.user setAvatarOnImageView:weakSelf.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:YES];
     };
     [self.mainScrollView addSubview:self.hairFlowerSelectionView];
@@ -365,7 +365,7 @@
     NSDictionary *updateDict;
     switch (self.currentStep) {
         case HRPGAvatarSetupStepsAvatar:
-            updateDict = @{@"preferences.skin": self.user.skin, @"preferences.shirt": self.user.shirt, @"preferences.size": self.user.size, @"preferences.hair.base": self.user.hairBase, @"preferences.hair.bangs": self.user.hairBangs, @"preferences.hair.color": self.user.hairColor, @"preferences.hair.flower": self.user.hairFlower};
+            updateDict = @{@"preferences.skin": self.user.preferences.skin, @"preferences.shirt": self.user.preferences.shirt, @"preferences.size": self.user.preferences.size, @"preferences.hair.base": self.user.preferences.hairBase, @"preferences.hair.bangs": self.user.preferences.hairBangs, @"preferences.hair.color": self.user.preferences.hairColor, @"preferences.hair.flower": self.user.preferences.hairFlower};
             break;
     }
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
@@ -406,9 +406,9 @@
 
 - (IBAction)userSizeChanged:(UISegmentedControl*)sender {
     if (sender.selectedSegmentIndex == 0) {
-        self.user.size = @"slim";
+        self.user.preferences.size = @"slim";
     } else {
-        self.user.size = @"broad";
+        self.user.preferences.size = @"broad";
     }
     [self.user setAvatarOnImageView:self.avatarView withPetMount:NO onlyHead:NO withBackground:NO useForce:YES];
 }

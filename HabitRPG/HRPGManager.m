@@ -363,42 +363,12 @@ NSString *currentUser;
             @"balance": @"balance",
             @"profile.name" : @"username",
             @"auth.local.email" : @"email",
-            @"preferences.dayStart" : @"dayStart",
-            @"preferences.disableClasses" : @"disableClass",
-            @"preferences.sleep" : @"sleep",
-            @"preferences.skin" : @"skin",
-            @"preferences.size" : @"size",
-            @"preferences.shirt" : @"shirt",
-            @"preferences.hair.mustache" : @"hairMustache",
-            @"preferences.hair.bangs" : @"hairBangs",
-            @"preferences.hair.beard" : @"hairBeard",
-            @"preferences.hair.base" : @"hairBase",
-            @"preferences.hair.color" : @"hairColor",
-            @"preferences.hair.flower" : @"hairFlower",
-            @"preferences.background" : @"background",
             @"stats.lvl" : @"level",
             @"stats.gp" : @"gold",
             @"stats.exp" : @"experience",
             @"stats.mp" : @"magic",
             @"stats.hp" : @"health",
             @"stats.class" : @"hclass",
-            @"items.gear.equipped.headAccessory" : @"equippedHeadAccessory",
-            @"items.gear.equipped.armor" : @"equippedArmor",
-            @"items.gear.equipped.back" : @"equippedBack",
-            @"items.gear.equipped.body" : @"equippedBody",
-            @"items.gear.equipped.eyewear" : @"equippedEyewear",
-            @"items.gear.equipped.head" : @"equippedHead",
-            @"items.gear.equipped.shield" : @"equippedShield",
-            @"items.gear.equipped.weapon" : @"equippedWeapon",
-            @"items.gear.costume.headAccessory" : @"costumeHeadAccessory",
-            @"items.gear.costume.armor" : @"costumeArmor",
-            @"items.gear.costume.back" : @"costumeBack",
-            @"items.gear.costume.body" : @"costumeBody",
-            @"items.gear.costume.eyewear" : @"costumeEyewear",
-            @"items.gear.costume.head" : @"costumeHead",
-            @"items.gear.costume.shield" : @"costumeShield",
-            @"items.gear.costume.weapon" : @"costumeWeapon",
-            @"preferences.costume" : @"useCostume",
             @"items.currentPet" : @"currentPet",
             @"items.currentMount" : @"currentMount",
             @"auth.timestamps.loggedin" : @"lastLogin",
@@ -426,15 +396,11 @@ NSString *currentUser;
             @"flags.armoireEnabled" : @"armoireEnabled",
             @"flags.armoireEmpty" : @"armoireEmpty",
             @"flags.communityGuidelinesAccepted" : @"acceptedCommunityGuidelines",
-            @"preferences.language": @"language",
-            @"preferences.timezoneOffset" : @"timezoneOffset",
             @"purchased" : @"customizationsDictionary",
             @"invitations.party.id": @"invitedParty",
             @"invitations.party.name": @"invitedPartyName"
     }];
     entityMapping.identificationAttributes = @[@"id"];
-
-
     RKEntityMapping *userTagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:managedObjectStore];
     [userTagMapping addAttributeMappingsFromDictionary:@{
                                                          @"id" : @"id",
@@ -446,7 +412,48 @@ NSString *currentUser;
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
                                                                                   toKeyPath:@"tags"
                                                                                 withMapping:userTagMapping]];
-
+    RKEntityMapping *userOutfitMapping = [RKEntityMapping mappingForEntityForName:@"Outfit" inManagedObjectStore:managedObjectStore];
+    [userOutfitMapping addAttributeMappingsFromDictionary:@{@"@parent.@parent.@parent._id" : @"userID", @"@metadata.mapping.rootKeyPath" : @"type"}];
+    [userOutfitMapping addAttributeMappingsFromArray:@[@"armor", @"back", @"body", @"eyewear", @"head", @"headAccessory", @"shield", @"weapon"]];
+    userOutfitMapping.identificationAttributes = @[@"userID", @"type"];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.gear.costume"
+                                                                                  toKeyPath:@"costume"
+                                                                                    withMapping:userOutfitMapping]];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.gear.equipped"
+                                                                                       toKeyPath:@"equipped"
+                                                                                     withMapping:userOutfitMapping]];
+    
+    RKEntityMapping *preferencesMapping = [RKEntityMapping mappingForEntityForName:@"Preferences" inManagedObjectStore:managedObjectStore];
+    [preferencesMapping addAttributeMappingsFromDictionary:@{
+                                                             @"@parent._id" : @"userID",
+                                                         @"dayStart" : @"dayStart",
+                                                         @"disableClasses" : @"disableClass",
+                                                         @"sleep" : @"sleep",
+                                                         @"skin" : @"skin",
+                                                         @"size" : @"size",
+                                                         @"shirt" : @"shirt",
+                                                         @"hair.mustache" : @"hairMustache",
+                                                         @"hair.bangs" : @"hairBangs",
+                                                         @"hair.beard" : @"hairBeard",
+                                                         @"hair.base" : @"hairBase",
+                                                         @"hair.color" : @"hairColor",
+                                                         @"hair.flower" : @"hairFlower",
+                                                         @"background" : @"background",
+                                                         @"costume" : @"useCostume",
+                                                         @"language": @"language",
+                                                         @"timezoneOffset" : @"timezoneOffset",
+                                                         }];
+    userOutfitMapping.identificationAttributes = @[@"userID"];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"preferences"
+                                                                                  toKeyPath:@"preferences"
+                                                                                withMapping:preferencesMapping]];
+    
+    RKEntityMapping *lifeCategoryMapping = [RKEntityMapping mappingForEntityForName:@"LifeCategory" inManagedObjectStore:managedObjectStore];
+    [lifeCategoryMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"identifier"];
+    lifeCategoryMapping.identificationAttributes = @[@"identifier"];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"flags.lifeCategories"
+                                                                                  toKeyPath:@"lifeCategories"
+                                                                                withMapping:lifeCategoryMapping]];
     
     RKEntityMapping *rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
     [rewardMapping addAttributeMappingsFromDictionary:@{
@@ -822,19 +829,6 @@ NSString *currentUser;
             @"_id" : @"id",
             @"profile.name" : @"username",
             @"profile.blurb" : @"blurb",
-            @"preferences.dayStart" : @"dayStart",
-            @"preferences.costume": @"useCostume",
-            @"preferences.sleep" : @"sleep",
-            @"preferences.skin" : @"skin",
-            @"preferences.size" : @"size",
-            @"preferences.shirt" : @"shirt",
-            @"preferences.hair.mustache" : @"hairMustache",
-            @"preferences.hair.bangs" : @"hairBangs",
-            @"preferences.hair.beard" : @"hairBeard",
-            @"preferences.hair.base" : @"hairBase",
-            @"preferences.hair.color" : @"hairColor",
-            @"preferences.hair.flower" : @"hairFlower",
-            @"preferences.background" : @"background",
             @"stats.lvl" : @"level",
             @"stats.gp" : @"gold",
             @"stats.exp" : @"experience",
@@ -844,12 +838,6 @@ NSString *currentUser;
             @"stats.maxHealth" : @"maxHealth",
             @"stats.maxMP" : @"maxMagic",
             @"stats.class" : @"hclass",
-            @"items.gear.equipped.headAccessory" : @"equippedHeadAccessory",
-            @"items.gear.equipped.armor" : @"equippedArmor",
-            @"items.gear.equipped.head" : @"equippedHead",
-            @"items.gear.equipped.shield" : @"equippedShield",
-            @"items.gear.equipped.weapon" : @"equippedWeapon",
-            @"items.gear.equipped.back" : @"equippedBack",
             @"items.currentPet" : @"currentPet",
             @"items.currentMount" : @"currentMount",
             @"auth.timestamps.loggedin" : @"lastLogin",
@@ -873,6 +861,14 @@ NSString *currentUser;
             @"items.pets" : @"petCountArray"
     }];
     memberMapping.identificationAttributes = @[@"id"];
+    
+    [memberMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.gear.costume"
+                                                                                  toKeyPath:@"costume"
+                                                                                withMapping:userOutfitMapping]];
+    [memberMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.gear.equipped"
+                                                                                  toKeyPath:@"equipped"
+                                                                                withMapping:userOutfitMapping]];
+    
     RKEntityMapping *memberIdMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     [memberIdMapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:nil toKeyPath:@"id"]];
     memberIdMapping.identificationAttributes = @[@"id"];
@@ -1208,18 +1204,18 @@ NSString *currentUser;
 
 - (void)setTimezoneOffset {
     NSInteger offset = -[[NSTimeZone localTimeZone] secondsFromGMT] / 60;
-    if (offset != [self.user.timezoneOffset integerValue]) {
-        self.user.timezoneOffset = [NSNumber numberWithInteger:offset];
-        [self updateUser:@{@"preferences.timezoneOffset" : self.user.timezoneOffset} onSuccess:nil onError:nil];
+    if (offset != [self.user.preferences.timezoneOffset integerValue]) {
+        self.user.preferences.timezoneOffset = [NSNumber numberWithInteger:offset];
+        [self updateUser:@{@"preferences.timezoneOffset" : self.user.preferences.timezoneOffset} onSuccess:nil onError:nil];
     }
 }
 
 - (void)fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     NSString *url = @"/api/v2/content";
-    if (self.user.language) {
-        url = [url stringByAppendingFormat:@"?language=%@", self.user.language];
-        [defaults setObject:self.user.language forKey:@"contentLanguage"];
+    if (self.user.preferences.language) {
+        url = [url stringByAppendingFormat:@"?language=%@", self.user.preferences.language];
+        [defaults setObject:self.user.preferences.language forKey:@"contentLanguage"];
         [defaults synchronize];
     }
     
@@ -1331,7 +1327,7 @@ NSString *currentUser;
 
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged" object:nil];
             }
-            if (![[defaults stringForKey:@"contentLanguage"] isEqualToString:fetchedUser.language]) {
+            if (![[defaults stringForKey:@"contentLanguage"] isEqualToString:fetchedUser.preferences.language]) {
                 [self fetchContent:nil onError:nil];
             }
         }
@@ -1985,7 +1981,7 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:Nil path:@"/api/v2/user/sleep" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        self.user.sleep = !self.user.sleep;
+        self.user.preferences.sleep = [NSNumber numberWithBool:![self.user.preferences.sleep boolValue]];
         NSError *executeError = nil;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
@@ -2057,12 +2053,12 @@ NSString *currentUser;
             [self displayRewardNotification:goldDiff];
         }
         self.user.magic = response.magic;
-        self.user.equippedArmor = response.equippedArmor;
-        self.user.equippedBack = response.equippedBack;
-        self.user.equippedHead = response.equippedHead;
-        self.user.equippedHeadAccessory = response.equippedHeadAccessory;
-        self.user.equippedShield = response.equippedShield;
-        self.user.equippedWeapon = response.equippedWeapon;
+        self.user.equipped.armor = response.equippedArmor;
+        self.user.equipped.back = response.equippedBack;
+        self.user.equipped.head = response.equippedHead;
+        self.user.equipped.headAccessory = response.equippedHeadAccessory;
+        self.user.equipped.shield = response.equippedShield;
+        self.user.equipped.weapon = response.equippedWeapon;
         if ([reward isKindOfClass:[Gear class]]) {
             Gear *gear = (Gear*)reward;
             gear.owned = YES;
@@ -2127,12 +2123,12 @@ NSString *currentUser;
         self.user.health = response.health;
         self.user.gold = response.gold;
         self.user.magic = response.magic;
-        self.user.equippedArmor = response.equippedArmor;
-        self.user.equippedBack = response.equippedBack;
-        self.user.equippedHead = response.equippedHead;
-        self.user.equippedHeadAccessory = response.equippedHeadAccessory;
-        self.user.equippedShield = response.equippedShield;
-        self.user.equippedWeapon = response.equippedWeapon;
+        self.user.equipped.armor = response.equippedArmor;
+        self.user.equipped.back = response.equippedBack;
+        self.user.equipped.head = response.equippedHead;
+        self.user.equipped.headAccessory = response.equippedHeadAccessory;
+        self.user.equipped.shield = response.equippedShield;
+        self.user.equipped.weapon = response.equippedWeapon;
         item.owned = [NSNumber numberWithInt:[item.owned intValue] - 1];
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
         if (successBlock) {
@@ -2163,22 +2159,22 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/equip/%@/%@", type, key] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGUserBuyResponse *response = [mappingResult dictionary][[NSNull null]];
-        self.user.equippedHeadAccessory = response.equippedHeadAccessory;
-        self.user.equippedArmor = response.equippedArmor;
-        self.user.equippedBack = response.equippedBack;
-        self.user.equippedBody = response.equippedBody;
-        self.user.equippedEyewear = response.equippedEyewear;
-        self.user.equippedHead = response.equippedHead;
-        self.user.equippedShield = response.equippedShield;
-        self.user.equippedWeapon = response.equippedWeapon;
-        self.user.costumeArmor = response.costumeArmor;
-        self.user.costumeBack = response.costumeBack;
-        self.user.costumeBody = response.costumeBody;
-        self.user.costumeEyewear = response.costumeEyewear;
-        self.user.costumeHead = response.costumeHead;
-        self.user.costumeHeadAccessory = response.costumeHeadAccessory;
-        self.user.costumeShield = response.costumeShield;
-        self.user.costumeWeapon = response.costumeWeapon;
+        self.user.equipped.headAccessory = response.equippedHeadAccessory;
+        self.user.equipped.armor = response.equippedArmor;
+        self.user.equipped.back = response.equippedBack;
+        self.user.equipped.body = response.equippedBody;
+        self.user.equipped.eyewear = response.equippedEyewear;
+        self.user.equipped.head = response.equippedHead;
+        self.user.equipped.shield = response.equippedShield;
+        self.user.equipped.weapon = response.equippedWeapon;
+        self.user.costume.armor = response.costumeArmor;
+        self.user.costume.back = response.costumeBack;
+        self.user.costume.body = response.costumeBody;
+        self.user.costume.eyewear = response.costumeEyewear;
+        self.user.costume.head = response.costumeHead;
+        self.user.costume.headAccessory = response.costumeHeadAccessory;
+        self.user.costume.shield = response.costumeShield;
+        self.user.costume.weapon = response.costumeWeapon;
         self.user.currentMount = response.currentMount;
         self.user.currentPet = response.currentPet;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -2210,22 +2206,22 @@ NSString *currentUser;
     [[RKObjectManager sharedManager] postObject:Nil path:[NSString stringWithFormat:@"/api/v2/user/inventory/hatch/%@/%@", egg, hPotion] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSError *executeError = nil;
         HRPGUserBuyResponse *response = [mappingResult dictionary][[NSNull null]];
-        self.user.equippedHeadAccessory = response.equippedHeadAccessory;
-        self.user.equippedArmor = response.equippedArmor;
-        self.user.equippedBack = response.equippedBack;
-        self.user.equippedBody = response.equippedBody;
-        self.user.equippedEyewear = response.equippedEyewear;
-        self.user.equippedHead = response.equippedHead;
-        self.user.equippedShield = response.equippedShield;
-        self.user.equippedWeapon = response.equippedWeapon;
-        self.user.costumeArmor = response.costumeArmor;
-        self.user.costumeBack = response.costumeBack;
-        self.user.costumeBody = response.costumeBody;
-        self.user.costumeEyewear = response.costumeEyewear;
-        self.user.costumeHead = response.costumeHead;
-        self.user.costumeHeadAccessory = response.costumeHeadAccessory;
-        self.user.costumeShield = response.costumeShield;
-        self.user.costumeWeapon = response.costumeWeapon;
+        self.user.equipped.headAccessory = response.equippedHeadAccessory;
+        self.user.equipped.armor = response.equippedArmor;
+        self.user.equipped.back = response.equippedBack;
+        self.user.equipped.body = response.equippedBody;
+        self.user.equipped.eyewear = response.equippedEyewear;
+        self.user.equipped.head = response.equippedHead;
+        self.user.equipped.shield = response.equippedShield;
+        self.user.equipped.weapon = response.equippedWeapon;
+        self.user.costume.armor = response.costumeArmor;
+        self.user.costume.back = response.costumeBack;
+        self.user.costume.body = response.costumeBody;
+        self.user.costume.eyewear = response.costumeEyewear;
+        self.user.costume.head = response.costumeHead;
+        self.user.costume.headAccessory = response.costumeHeadAccessory;
+        self.user.costume.shield = response.costumeShield;
+        self.user.costume.weapon = response.costumeWeapon;
         self.user.currentMount = response.currentMount;
         self.user.currentPet = response.currentPet;
         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -2900,7 +2896,7 @@ NSString *currentUser;
     }onError:^() {
 
     }];
-    if ([self.user.level integerValue] == 10 && ![self.user.disableClass boolValue]) {
+    if ([self.user.level integerValue] == 10 && ![self.user.preferences.disableClass boolValue]) {
         HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
         UINavigationController *selectClassNavigationController = [del.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
         selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;

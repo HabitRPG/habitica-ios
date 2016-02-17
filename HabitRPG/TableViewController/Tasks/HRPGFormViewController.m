@@ -31,7 +31,7 @@
         HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
         HRPGManager *sharedManager = appdelegate.sharedManager;
         User *user = [sharedManager getUser];
-        self.customDayStart = [user.dayStart integerValue];
+        self.customDayStart = [user.preferences.dayStart integerValue];
         self.managedObjectContext = sharedManager.getManagedObjectContext;
         [self initializeForm];
     }
