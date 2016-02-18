@@ -19,23 +19,6 @@
 @implementation HabiticaTests
 
 - (void) setUpStubs {
-    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"habitica.com"];
-    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        // Stub it with our "wsresponse.json" stub file
-        OHHTTPStubsResponse *response;
-        if ([request.URL.path isEqualToString:@"/api/v2/user"]) {
-            response = [OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"user.json",self.class)
-                                                        statusCode:200 headers:@{@"Content-Type":@"application/json"}];
-        } else if ([request.URL.path isEqualToString:@"/api/v2/user/inventory/equip/costume/armor_special_fallWarrior"]) {
-            response = [OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"blade-equipResponse.json",self.class)
-                                                        statusCode:200 headers:@{@"Content-Type":@"application/json"}];
-        } else if ([request.URL.path isEqualToString:@"/api/v2/content"]) {
-            response = [OHHTTPStubsResponse responseWithFileAtPath:OHPathForFile(@"content-24.8.15.json",self.class)
-                                                        statusCode:200 headers:@{@"Content-Type":@"application/json"}];
-        }
-        return response;
-    }];
 }
 
 - (void)initializeCoreDataStorage {

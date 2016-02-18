@@ -15,7 +15,6 @@
 #import "HRPGTopHeaderNavigationController.h"
 #import "HRPGNavigationController.h"
 #import "HRPGExplanationView.h"
-#import "MPCoachMarks.h"
 #import "TutorialSteps.h"
 #import "UIViewcontroller+TutorialSteps.h"
 

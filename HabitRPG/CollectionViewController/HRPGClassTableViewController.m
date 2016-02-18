@@ -14,7 +14,6 @@
 #import "HRPGWebViewController.h"
 #import "NIKFontAwesomeIconFactory.h"
 #import "NIKFontAwesomeIconFactory+iOS.h"
-#import "MPCoachMarks.h"
 #import "TutorialSteps.h"
 #import "HRPGExplanationView.h"
 #import "UIViewcontroller+TutorialSteps.h"

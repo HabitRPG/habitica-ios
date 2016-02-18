@@ -16,7 +16,6 @@
 #import <CoreText/CoreText.h>
 #import <Google/Analytics.h>
 #import "HRPGExplanationView.h"
-#import "MPCoachMarks.h"
 #import "TutorialSteps.h"
 #import "UIViewController+TutorialSteps.h"
 

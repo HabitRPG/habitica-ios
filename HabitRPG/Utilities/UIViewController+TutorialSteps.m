@@ -10,7 +10,6 @@
 #import "HRPGExplanationView.h"
 #import "HRPGManager.h"
 #import "TutorialSteps.h"
-#import "MPCoachMarks.h"
 #import "HRPGHintView.h"
 
 @implementation UIViewController (TutorialSteps)

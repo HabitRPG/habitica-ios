@@ -10,7 +10,6 @@
 #import "Task.h"
 #import "HRPGManager.h"
 #import "ChecklistItem.h"
-#import "MCSwipeTableViewCell.h"
 #import "NSString+Emoji.h"
 #import "UIColor+LighterDarker.h"
 #import "HRPGCheckBoxView.h"

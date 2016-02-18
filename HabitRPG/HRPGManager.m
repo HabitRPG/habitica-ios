@@ -869,6 +869,10 @@ NSString *currentUser;
                                                                                   toKeyPath:@"equipped"
                                                                                 withMapping:userOutfitMapping]];
     
+    [memberMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"preferences"
+                                                                                  toKeyPath:@"preferences"
+                                                                                withMapping:preferencesMapping]];
+    
     RKEntityMapping *memberIdMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     [memberIdMapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:nil toKeyPath:@"id"]];
     memberIdMapping.identificationAttributes = @[@"id"];
@@ -3004,6 +3008,7 @@ NSString *currentUser;
             }
                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL)
             {
+                image = [UIImage imageWithCGImage:image.CGImage scale:1.0 orientation:UIImageOrientationUp];
                 if (image) {
                     successBlock(image);
                 } else {
