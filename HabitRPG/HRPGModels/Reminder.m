@@ -18,7 +18,7 @@
         [self scheduleReminders];
     } else {
         for(UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
-            if([[reminder.userInfo objectForKey:@"ID"] isEqualToString:self.uuid]) {
+            if([[reminder.userInfo objectForKey:@"ID"] isEqualToString:self.id]) {
                 [sharedApplication cancelLocalNotification:reminder];
             }
         }
@@ -60,7 +60,11 @@
     localNotification.fireDate = fireDate;
     localNotification.alertBody = self.task.text;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    localNotification.userInfo = @{@"ID": self.uuid, @"taskID": self.task.id};
+    if (self.task) {
+        localNotification.userInfo = @{@"ID": self.id, @"taskID": self.task.id};
+    } else {
+        localNotification.userInfo = @{@"ID": self.id};
+    }
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     localNotification.category = @"completeCategory";
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];

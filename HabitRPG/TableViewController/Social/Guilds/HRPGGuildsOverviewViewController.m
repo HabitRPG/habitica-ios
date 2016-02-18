@@ -9,7 +9,7 @@
 #import "HRPGGuildsOverviewViewController.h"
 #import "HRPGGroupTableViewController.h"
 #import "User.h"
-#import "LifeCategory.h"
+#import "ImprovementCategory.h"
 
 @interface HRPGGuildsOverviewViewController ()
 
@@ -196,7 +196,7 @@
                                  @"creativity": @[@"dea7a124-9e69-4163-a708-d3e961a96159"],
                                  };
     
-    for (LifeCategory *category in self.user.lifeCategories) {
+    for (ImprovementCategory *category in self.user.preferences.improvementCategories) {
         NSArray *guildsList = [taskGroups objectForKey:category.identifier];
         for (NSString *guildID in guildsList) {
             if (![memberGuildIds containsObject:guildID]) {

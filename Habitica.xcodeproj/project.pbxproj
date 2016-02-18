@@ -65,8 +65,8 @@
 		D95D03941C74AA5500D6BFB3 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = D95D038E1C74AA5500D6BFB3 /* Preferences.m */; };
 		D95D03951C74AA5500D6BFB3 /* Outfit+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D95D03901C74AA5500D6BFB3 /* Outfit+CoreDataProperties.m */; };
 		D95D03961C74AA5500D6BFB3 /* Outfit.m in Sources */ = {isa = PBXBuildFile; fileRef = D95D03921C74AA5500D6BFB3 /* Outfit.m */; };
-		D95D039B1C74E3E900D6BFB3 /* LifeCategory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D95D03981C74E3E900D6BFB3 /* LifeCategory+CoreDataProperties.m */; };
-		D95D039C1C74E3E900D6BFB3 /* LifeCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D95D039A1C74E3E900D6BFB3 /* LifeCategory.m */; };
+		D95D039B1C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D95D03981C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.m */; };
+		D95D039C1C74E3E900D6BFB3 /* ImprovementCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D95D039A1C74E3E900D6BFB3 /* ImprovementCategory.m */; };
 		D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D96038361930F90E0025EAEC /* HRPGMessageViewController.m */; };
 		D96576C31BAF539000CCA28E /* HRPGGearDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D96576C21BAF539000CCA28E /* HRPGGearDetailView.m */; };
 		D96576C51BAF53D400CCA28E /* HRPGGearDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D96576C41BAF53D400CCA28E /* HRPGGearDetailView.xib */; };
@@ -333,10 +333,10 @@
 		D95D03901C74AA5500D6BFB3 /* Outfit+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Outfit+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D95D03911C74AA5500D6BFB3 /* Outfit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outfit.h; sourceTree = "<group>"; };
 		D95D03921C74AA5500D6BFB3 /* Outfit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outfit.m; sourceTree = "<group>"; };
-		D95D03971C74E3E900D6BFB3 /* LifeCategory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LifeCategory+CoreDataProperties.h"; sourceTree = "<group>"; };
-		D95D03981C74E3E900D6BFB3 /* LifeCategory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LifeCategory+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D95D03991C74E3E900D6BFB3 /* LifeCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifeCategory.h; sourceTree = "<group>"; };
-		D95D039A1C74E3E900D6BFB3 /* LifeCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifeCategory.m; sourceTree = "<group>"; };
+		D95D03971C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ImprovementCategory+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D95D03981C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ImprovementCategory+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D95D03991C74E3E900D6BFB3 /* ImprovementCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImprovementCategory.h; sourceTree = "<group>"; };
+		D95D039A1C74E3E900D6BFB3 /* ImprovementCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImprovementCategory.m; sourceTree = "<group>"; };
 		D96038351930F90E0025EAEC /* HRPGMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGMessageViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D96038361930F90E0025EAEC /* HRPGMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGMessageViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D96576C11BAF539000CCA28E /* HRPGGearDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGGearDetailView.h; path = ../HRPGGearDetailView.h; sourceTree = "<group>"; };
@@ -990,10 +990,10 @@
 		D9C3D01D19509E4C00D22A4A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				D95D03971C74E3E900D6BFB3 /* LifeCategory+CoreDataProperties.h */,
-				D95D03981C74E3E900D6BFB3 /* LifeCategory+CoreDataProperties.m */,
-				D95D03991C74E3E900D6BFB3 /* LifeCategory.h */,
-				D95D039A1C74E3E900D6BFB3 /* LifeCategory.m */,
+				D95D03971C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.h */,
+				D95D03981C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.m */,
+				D95D03991C74E3E900D6BFB3 /* ImprovementCategory.h */,
+				D95D039A1C74E3E900D6BFB3 /* ImprovementCategory.m */,
 				D95D038B1C74AA5500D6BFB3 /* Preferences+CoreDataProperties.h */,
 				D95D038C1C74AA5500D6BFB3 /* Preferences+CoreDataProperties.m */,
 				D95D038D1C74AA5500D6BFB3 /* Preferences.h */,
@@ -1576,7 +1576,7 @@
 				D94FEDEE1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m in Sources */,
 				D96C86CB1BB0546400E4C134 /* HRPGCopyLabel.m in Sources */,
 				D92C60FC1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m in Sources */,
-				D95D039B1C74E3E900D6BFB3 /* LifeCategory+CoreDataProperties.m in Sources */,
+				D95D039B1C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.m in Sources */,
 				D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */,
 				D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */,
 				D92C60F81BD3F28A005F68CC /* HRPGAccountDetailViewController.m in Sources */,
@@ -1599,7 +1599,7 @@
 				D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */,
 				D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */,
 				D9C0E51F1C6516C50062C89A /* HRPGPublicGuildTableViewCell.m in Sources */,
-				D95D039C1C74E3E900D6BFB3 /* LifeCategory.m in Sources */,
+				D95D039C1C74E3E900D6BFB3 /* ImprovementCategory.m in Sources */,
 				D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */,
 				D9D0451C1C2B1AEC00630244 /* Reminder.m in Sources */,
 				D94FEDEB1BB314B10046A52E /* HRPGGroupFormViewController.m in Sources */,

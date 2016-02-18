@@ -33,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *useCostume;
 @property (nullable, nonatomic, retain) NSString *userID;
 @property (nullable, nonatomic, retain) User *user;
+@property(nonatomic, retain) NSSet *improvementCategories;
 
 @end
 

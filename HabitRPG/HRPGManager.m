@@ -167,6 +167,13 @@ NSString *currentUser;
     [taskMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"checklist"
                                                                                 toKeyPath:@"checklist"
                                                                               withMapping:checklistItemMapping]];
+    RKEntityMapping *remindersMapping = [RKEntityMapping mappingForEntityForName:@"Reminder" inManagedObjectStore:managedObjectStore];
+    [remindersMapping addAttributeMappingsFromArray:@[@"id", @"startDate", @"time"]];
+    remindersMapping.identificationAttributes = @[@"id"];
+    
+    [taskMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"reminders"
+                                                                                toKeyPath:@"reminders"
+                                                                              withMapping:remindersMapping]];
 
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user/tasks" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -210,6 +217,11 @@ NSString *currentUser;
     [taskRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"checklist"
                                                                                        toKeyPath:@"checklist"
                                                                                      withMapping:checklistItemRequestMapping]];
+    RKObjectMapping *reminderRequestmapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [reminderRequestmapping addAttributeMappingsFromArray:@[@"id", @"startDate", @"time"]];
+    [taskRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"reminders"
+                                                                                       toKeyPath:@"reminders"
+                                                                                     withMapping:reminderRequestmapping]];
 
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taskMapping method:RKRequestMethodPUT pathPattern:@"/api/v2/user/tasks/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -448,12 +460,13 @@ NSString *currentUser;
                                                                                   toKeyPath:@"preferences"
                                                                                 withMapping:preferencesMapping]];
     
-    RKEntityMapping *lifeCategoryMapping = [RKEntityMapping mappingForEntityForName:@"LifeCategory" inManagedObjectStore:managedObjectStore];
-    [lifeCategoryMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"identifier"];
-    lifeCategoryMapping.identificationAttributes = @[@"identifier"];
-    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"flags.lifeCategories"
-                                                                                  toKeyPath:@"lifeCategories"
-                                                                                withMapping:lifeCategoryMapping]];
+    RKEntityMapping *improvementCategoryMapping = [RKEntityMapping mappingForEntityForName:@"ImprovementCategory" inManagedObjectStore:managedObjectStore];
+    [improvementCategoryMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"identifier"];
+    [improvementCategoryMapping addAttributeMappingsFromDictionary:@{@"{identifier}": @"isActive"}];
+    improvementCategoryMapping.identificationAttributes = @[@"identifier"];
+    [preferencesMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"improvementCategories"
+                                                                                  toKeyPath:@"improvementCategories"
+                                                                                withMapping:improvementCategoryMapping]];
     
     RKEntityMapping *rewardMapping = [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
     [rewardMapping addAttributeMappingsFromDictionary:@{

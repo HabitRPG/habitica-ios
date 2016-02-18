@@ -9,11 +9,11 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "LifeCategory.h"
+#import "ImprovementCategory.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LifeCategory (CoreDataProperties)
+@interface ImprovementCategory (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *identifier;
 @property (nullable, nonatomic, retain) User *user;

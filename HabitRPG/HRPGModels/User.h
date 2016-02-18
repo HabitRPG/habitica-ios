@@ -11,7 +11,7 @@
 #import "Preferences.h"
 #import "Outfit.h"
 
-@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, TutorialSteps, LifeCategory;
+@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, TutorialSteps, ImprovementCategory;
 
 @interface User : NSManagedObject
 
@@ -65,7 +65,6 @@
 
 @property(nonatomic, retain) NSSet *iosTutorialSteps;
 @property(nonatomic, retain) NSSet *commonTutorialSteps;
-@property(nonatomic, retain) NSSet *lifeCategories;
 
 @property(nonatomic, retain) Preferences *preferences;
 @property(nonatomic, retain) Outfit *costume;
@@ -172,8 +171,4 @@
 - (void)addCommonTutorialStepsObject:(TutorialSteps *)value;
 - (void)addCommonTutorialSteps:(NSSet *)values;
 - (void)removeCommonTutorialSteps:(NSSet *)values;
-
-- (void)addLifeCategoriesObject:(LifeCategory *)value;
-- (void)addLifeCategories:(NSSet *)values;
-- (void)removeLifeCategories:(NSSet *)values;
 @end

@@ -6,10 +6,10 @@
 //  Copyright © 2016 Phillip Thelen. All rights reserved.
 //
 
-#import "LifeCategory.h"
+#import "ImprovementCategory.h"
 #import "User.h"
 
-@implementation LifeCategory
+@implementation ImprovementCategory
 
 // Insert code here to add functionality to your managed object subclass
 

@@ -16,6 +16,6 @@
 @dynamic startDate;
 @dynamic time;
 @dynamic task;
-@dynamic uuid;
+@dynamic id;
 
 @end

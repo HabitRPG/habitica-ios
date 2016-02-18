@@ -68,7 +68,6 @@
 @synthesize lastImageGeneration;
 @dynamic iosTutorialSteps;
 @dynamic commonTutorialSteps;
-@dynamic lifeCategories;
 
 @dynamic preferences;
 @dynamic equipped;

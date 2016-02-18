@@ -347,7 +347,7 @@
                                                   insertNewObjectForEntityForName:@"Reminder"
                                                   inManagedObjectContext:self.managedObjectContext];
                         newItem.time = itemTime;
-                        newItem.uuid = [[NSUUID UUID] UUIDString];
+                        newItem.id = [[NSUUID UUID] UUIDString];
                         [self.task addRemindersObject:newItem];
                     }
                     reminderindex++;

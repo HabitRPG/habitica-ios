@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSDate *startDate;
 @property (nullable, nonatomic, retain) NSDate *time;
 @property (nullable, nonatomic, retain) Task *task;
-@property (nullable, nonatomic, retain) NSString *uuid;
+@property (nullable, nonatomic, retain) NSString *id;
 
 @end
 

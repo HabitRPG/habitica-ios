@@ -31,5 +31,6 @@
 @dynamic useCostume;
 @dynamic userID;
 @dynamic user;
+@dynamic improvementCategories;
 
 @end

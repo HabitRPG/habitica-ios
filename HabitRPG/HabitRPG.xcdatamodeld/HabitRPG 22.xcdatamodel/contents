@@ -99,6 +99,11 @@
     <entity name="HatchingPotion" representedClassName="HatchingPotion" parentEntity="Item" syncable="YES">
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedHatchingPotions" inverseEntity="User" syncable="YES"/>
     </entity>
+    <entity name="ImprovementCategory" representedClassName="ImprovementCategory" syncable="YES">
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="preferences" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Preferences" inverseName="improvementCategories" inverseEntity="Preferences" syncable="YES"/>
+    </entity>
     <entity name="Item" representedClassName="Item" isAbstract="YES" syncable="YES">
         <attribute name="dialog" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
@@ -107,10 +112,6 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" defaultValueString="Quest" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-    </entity>
-    <entity name="LifeCategory" representedClassName="LifeCategory" syncable="YES">
-        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="lifeCategories" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="MetaReward" representedClassName="MetaReward" isAbstract="YES" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
@@ -161,6 +162,7 @@
         <attribute name="timezoneOffset" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="useCostume" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="improvementCategories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ImprovementCategory" inverseName="preferences" inverseEntity="ImprovementCategory" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="preferences" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Quest" representedClassName="Quest" parentEntity="BuyableItem" syncable="YES">
@@ -187,9 +189,9 @@
         <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quest" inverseName="collect" inverseEntity="Quest" syncable="YES"/>
     </entity>
     <entity name="Reminder" representedClassName="Reminder" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="reminders" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Reward" representedClassName="Reward" parentEntity="MetaReward" syncable="YES">
@@ -319,7 +321,6 @@
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="groupMembers" inverseEntity="Group" syncable="YES"/>
         <relationship name="iosTutorialSteps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TutorialSteps" inverseName="iosUser" inverseEntity="TutorialSteps" syncable="YES"/>
         <relationship name="leadedParty" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="leader" inverseEntity="Group" syncable="YES"/>
-        <relationship name="lifeCategories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LifeCategory" inverseName="user" inverseEntity="LifeCategory" syncable="YES"/>
         <relationship name="ownedEggs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Egg" inverseName="user" inverseEntity="Egg" syncable="YES"/>
         <relationship name="ownedFood" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="user" inverseEntity="Food" syncable="YES"/>
         <relationship name="ownedGear" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gear" inverseName="user" inverseEntity="Gear" syncable="YES"/>
@@ -336,34 +337,34 @@
         <relationship name="unreadMessages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="UnreadMessages" inverseName="user" inverseEntity="UnreadMessages" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Armoire" positionX="18" positionY="162" width="128" height="45"/>
+        <element name="Armoire" positionX="0" positionY="0" width="128" height="45"/>
         <element name="BuyableItem" positionX="0" positionY="0" width="128" height="60"/>
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="240"/>
-        <element name="ChatMessageLike" positionX="9" positionY="153" width="128" height="75"/>
+        <element name="ChatMessageLike" positionX="0" positionY="0" width="128" height="75"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="Customization" positionX="9" positionY="153" width="128" height="180"/>
+        <element name="Customization" positionX="0" positionY="0" width="128" height="180"/>
         <element name="Egg" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="FAQ" positionX="9" positionY="153" width="128" height="120"/>
+        <element name="FAQ" positionX="0" positionY="0" width="128" height="120"/>
         <element name="Food" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Gear" positionX="0" positionY="0" width="128" height="225"/>
         <element name="Group" positionX="0" positionY="0" width="128" height="390"/>
         <element name="HatchingPotion" positionX="0" positionY="0" width="128" height="60"/>
+        <element name="ImprovementCategory" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Item" positionX="0" positionY="0" width="128" height="150"/>
         <element name="MetaReward" positionX="0" positionY="0" width="128" height="135"/>
-        <element name="Pet" positionX="9" positionY="153" width="128" height="135"/>
+        <element name="Outfit" positionX="0" positionY="0" width="128" height="225"/>
+        <element name="Pet" positionX="0" positionY="0" width="128" height="135"/>
         <element name="Potion" positionX="0" positionY="0" width="128" height="45"/>
-        <element name="Preferences" positionX="9" positionY="153" width="128" height="315"/>
+        <element name="Preferences" positionX="0" positionY="0" width="128" height="330"/>
         <element name="Quest" positionX="0" positionY="0" width="128" height="240"/>
         <element name="QuestCollect" positionX="0" positionY="0" width="128" height="135"/>
-        <element name="Reminder" positionX="9" positionY="153" width="128" height="105"/>
+        <element name="Reminder" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Reward" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="465"/>
-        <element name="TutorialSteps" positionX="9" positionY="153" width="128" height="135"/>
-        <element name="UnreadMessages" positionX="9" positionY="153" width="128" height="90"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="1170"/>
-        <element name="Outfit" positionX="27" positionY="171" width="128" height="225"/>
-        <element name="LifeCategory" positionX="36" positionY="180" width="128" height="75"/>
+        <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1155"/>
     </elements>
 </model>

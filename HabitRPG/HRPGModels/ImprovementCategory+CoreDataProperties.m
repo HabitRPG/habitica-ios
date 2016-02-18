@@ -9,9 +9,9 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "LifeCategory+CoreDataProperties.h"
+#import "ImprovementCategory+CoreDataProperties.h"
 
-@implementation LifeCategory (CoreDataProperties)
+@implementation ImprovementCategory (CoreDataProperties)
 
 @dynamic identifier;
 @dynamic user;
