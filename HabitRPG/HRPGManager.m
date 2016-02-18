@@ -415,7 +415,6 @@ NSString *currentUser;
     RKEntityMapping *userOutfitMapping = [RKEntityMapping mappingForEntityForName:@"Outfit" inManagedObjectStore:managedObjectStore];
     [userOutfitMapping addAttributeMappingsFromDictionary:@{@"@parent.@parent.@parent._id" : @"userID", @"@metadata.mapping.rootKeyPath" : @"type"}];
     [userOutfitMapping addAttributeMappingsFromArray:@[@"armor", @"back", @"body", @"eyewear", @"head", @"headAccessory", @"shield", @"weapon"]];
-    userOutfitMapping.identificationAttributes = @[@"userID", @"type"];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.gear.costume"
                                                                                   toKeyPath:@"costume"
                                                                                     withMapping:userOutfitMapping]];
@@ -443,7 +442,7 @@ NSString *currentUser;
                                                          @"language": @"language",
                                                          @"timezoneOffset" : @"timezoneOffset",
                                                          }];
-    userOutfitMapping.identificationAttributes = @[@"userID"];
+    preferencesMapping.identificationAttributes = @[@"userID"];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"preferences"
                                                                                   toKeyPath:@"preferences"
                                                                                 withMapping:preferencesMapping]];
