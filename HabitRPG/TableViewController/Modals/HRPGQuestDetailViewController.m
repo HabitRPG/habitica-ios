@@ -9,6 +9,7 @@
 #import "HRPGQuestDetailViewController.h"
 #import "HRPGAppDelegate.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UIColor+Habitica.h"
 
 @interface HRPGQuestDetailViewController ()
 @property UIImage *bossImage;
@@ -25,7 +26,7 @@
         self.navigationItem.title = NSLocalizedString(@"Quest Detail", nil);
         if ([self.party.questActive boolValue] && [self.party.questLeader isEqualToString:self.user.id]) {
             self.navigationItem.rightBarButtonItem.title = NSLocalizedString(@"Abort", nil);
-            self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:0.894 green:0.008 blue:0.000 alpha:1.000];
+            self.navigationItem.rightBarButtonItem.tintColor = [UIColor red100];
         } else if ([self.party.questActive boolValue] || ![self.party.questLeader isEqualToString:self.user.id]) {
             self.navigationItem.rightBarButtonItem = nil;
         }

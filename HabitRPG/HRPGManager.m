@@ -31,6 +31,7 @@
 #import "HRPGImageOverlayView.h"
 #import "KLCPopup.h"
 #import "HRPGBatchOperation.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGManager ()
 @property (nonatomic)  NIKFontAwesomeIconFactory *iconFactory;
@@ -2682,7 +2683,7 @@ NSString *currentUser;
             NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:preferenceString, food.text],
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                                       kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                                      kCRToastBackgroundColorKey : [UIColor colorWithRed:0.899 green:0.680 blue:0.048 alpha:1.000],
+                                      kCRToastBackgroundColorKey : [UIColor yellow50],
                                       };
             [CRToastManager showNotificationWithOptions:options
                                         completionBlock:^{
@@ -2791,7 +2792,7 @@ NSString *currentUser;
             kCRToastSubtitleTextKey : NSLocalizedString(@"Couldn't connect to the server. Check your network connection", nil),
             kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
             kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-            kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],
+            kCRToastBackgroundColorKey : [UIColor red50],
             kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
     };
     [CRToastManager showNotificationWithOptions:options
@@ -2804,7 +2805,7 @@ NSString *currentUser;
             kCRToastSubtitleTextKey : NSLocalizedString(@"There seems to be a problem with the server. Try again later", nil),
             kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
             kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-            kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],
+            kCRToastBackgroundColorKey : [UIColor red50],
             kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
     };
     [CRToastManager showNotificationWithOptions:options
@@ -2816,7 +2817,7 @@ NSString *currentUser;
     NSDictionary *options = @{kCRToastTextKey : message,
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                              kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],
+                              kCRToastBackgroundColorKey : [UIColor red50],
                               kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
                               };
     [CRToastManager showNotificationWithOptions:options
@@ -2825,10 +2826,10 @@ NSString *currentUser;
 }
 
 - (void)displayTaskSuccessNotification:(NSNumber *)healthDiff withExperienceDiff:(NSNumber *)expDiff withGoldDiff:(NSNumber *)goldDiff withMagicDiff:(NSNumber *)magicDiff {
-    UIColor *notificationColor = [UIColor colorWithRed:0.111 green:0.539 blue:0.283 alpha:1.000];
+    UIColor *notificationColor = [UIColor green50];
     NSString *content;
     if ([healthDiff intValue] < 0) {
-        notificationColor = [UIColor colorWithRed:0.733 green:0.208 blue:0.220 alpha:1.000];
+        notificationColor = [UIColor red50];
         content = [NSString stringWithFormat:@"You lost %.1f health", [healthDiff floatValue]*-1];
         if ([[self getUser].level integerValue] >= 10 && [magicDiff floatValue] > 0) {
             content = [content stringByAppendingFormat:@" and %.1f mana", [magicDiff floatValue]*-1];
@@ -2854,7 +2855,7 @@ NSString *currentUser;
         NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You wrestle with the Armoire and gain %@ Experience. Take that!", nil), value],
                     kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                     kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                    kCRToastBackgroundColorKey : [UIColor colorWithRed:0.899 green:0.680 blue:0.048 alpha:1.000],
+                    kCRToastBackgroundColorKey : [UIColor yellow50],
                     kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconArrowCircleOUp]
                     };
         [CRToastManager showNotificationWithOptions:options
@@ -2862,7 +2863,7 @@ NSString *currentUser;
                                     }];
     } else if ([type isEqualToString:@"food"]) {
         [self getImage:[NSString stringWithFormat:@"Pet_Food_%@", key] withFormat:@"png" onSuccess:^(UIImage *image) {
-            UIColor *notificationColor = [UIColor colorWithRed:0.107 green:0.352 blue:0.597 alpha:1.000];
+            UIColor *notificationColor = [UIColor blue50];
             NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You rummage in the Armoire and find %@. What's that doing in here?", nil), text],
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                                       kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
@@ -2877,7 +2878,7 @@ NSString *currentUser;
         }];
     } else if ([type isEqualToString:@"gear"]) {
         [self getImage:[NSString stringWithFormat:@"shop_%@", key] withFormat:@"png" onSuccess:^(UIImage *image) {
-            UIColor *notificationColor = [UIColor colorWithRed:0.111 green:0.539 blue:0.283 alpha:1.000];
+            UIColor *notificationColor = [UIColor green50];
             NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You found a piece of rare Equipment in the Armoire: %@! Awesome!", nil), text],
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                                       kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
@@ -2927,13 +2928,13 @@ NSString *currentUser;
 }
 
 - (void)displaySpellNotification:(NSInteger)manaDiff withHealthDiff:(CGFloat)healthDiff withGoldDiff:(CGFloat)goldDiff {
-    UIColor *notificationColor = [UIColor colorWithRed:0.973 green:0.753 blue:0.000 alpha:1.000];
+    UIColor *notificationColor = [UIColor red50];
     NSString *content;
     if (healthDiff > 0) {
-        notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
+        notificationColor = [UIColor green50];
         content = [NSString stringWithFormat:@"Health: +%.1f\nMana: -%ld", healthDiff, (long) manaDiff];
     } else if (goldDiff > 0) {
-            notificationColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
+            notificationColor = [UIColor green50];
             content = [NSString stringWithFormat:@"Gold: +%.1f\nMana: -%ld", goldDiff, (long) manaDiff];
     } else {
         content = [NSString stringWithFormat:@"Mana: -%ld", (long) manaDiff];
@@ -2949,7 +2950,7 @@ NSString *currentUser;
 }
 
 - (void)displayRewardNotification:(NSNumber *)goldDiff {
-    UIColor *notificationColor = [UIColor colorWithRed:0.973 green:0.753 blue:0.000 alpha:1.000];
+    UIColor *notificationColor = [UIColor yellow50];
     NSDictionary *options = @{kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"%.2f Gold", nil), [goldDiff floatValue]],
                               kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                               kCRToastBackgroundColorKey : notificationColor,
@@ -2968,7 +2969,7 @@ NSString *currentUser;
         description = [NSString stringWithFormat:@"You found a %@ %@!", name, type];
     }
     [self getImage:[NSString stringWithFormat:@"Pet_%@_%@", type, name] withFormat:@"png" onSuccess:^(UIImage *image) {
-        UIColor *notificationColor = [UIColor colorWithRed:0.107 green:0.352 blue:0.597 alpha:1.000];
+        UIColor *notificationColor = [UIColor blue50];
         NSDictionary *options = @{kCRToastTextKey : description,
                                   kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                                   kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),

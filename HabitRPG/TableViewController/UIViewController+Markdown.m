@@ -63,7 +63,7 @@
     [self.attributes setObject:@{NSFontAttributeName : paragraphFont, NSParagraphStyleAttributeName : listItemParagraphStyle} forKey:@(LISTITEM)];
     
     // a
-    UIColor *linkColor = [UIColor purple100];
+    UIColor *linkColor = [UIColor purple400];
     [self.attributes setObject:@{NSForegroundColorAttributeName : linkColor} forKey:@(LINK)];
     
     // blockquote

@@ -14,6 +14,7 @@
 #import <PDKeychainBindings.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
+#import "UIColor+Habitica.h"
 
 @interface HRPGProfileViewController ()
 
@@ -287,7 +288,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     UIImageView *indicatorView = (UIImageView *) [cell viewWithTag:2];
     indicatorView.hidden = !showIndicator;
     if (showIndicator) {
-        iconFactory.colors = @[[UIColor colorWithRed:0.372 green:0.603 blue:0.014 alpha:1.000]];
+        iconFactory.colors = @[[UIColor purple400]];
         iconFactory.size = 13.0f;
         indicatorView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconCircle];
     }

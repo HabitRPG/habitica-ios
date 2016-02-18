@@ -8,6 +8,7 @@
 
 #import "HRPGQuestParticipantsViewController.h"
 #import "HRPGAppDelegate.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGQuestParticipantsViewController ()
 @property NSString *readableName;
@@ -152,13 +153,13 @@ NSString *partyID;
     cell.textLabel.text = user.username;
     if ([user.participateInQuest boolValue]) {
         cell.detailTextLabel.text = NSLocalizedString(@"Accepted", nil);
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000];
+        cell.detailTextLabel.textColor = [UIColor green100];
     } else if (user.participateInQuest == nil) {
         cell.detailTextLabel.text = NSLocalizedString(@"Pending", nil);
         cell.detailTextLabel.textColor = [UIColor lightGrayColor];
     } else {
         cell.detailTextLabel.text = NSLocalizedString(@"Declined", nil);
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.933 green:0.144 blue:0.198 alpha:1.000];
+        cell.detailTextLabel.textColor = [UIColor red100];
     }
     [cell layoutSubviews];
 }

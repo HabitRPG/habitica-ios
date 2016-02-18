@@ -17,6 +17,7 @@
 #import "HRPGArrayViewController.h"
 #import "HRPGNavigationController.h"
 #import "HRPGTopHeaderNavigationController.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGPetMasterViewController ()
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -300,7 +301,7 @@ NSUserDefaults *defaults;
     
     progressLabel.text = [NSString stringWithFormat:@"%d/%lu", trained, (unsigned long)[petArray count]];
     if (trained == [petArray count]) {
-        progressLabel.textColor = [UIColor colorWithRed:0.409 green:0.743 blue:0.037 alpha:1.0];
+        progressLabel.textColor = [UIColor purple400];
     } else {
         progressLabel.textColor = [UIColor darkTextColor];
     }

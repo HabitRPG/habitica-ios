@@ -7,6 +7,7 @@
 //
 
 #import "HRPGRoundProgressView.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGRoundProgressView () {
     CGFloat startAngle;
@@ -29,7 +30,7 @@
         startAngle = M_PI * 1.5;
         endAngle = startAngle + (M_PI * 2);
         animAngle = (M_PI * 2);
-        self.indicatorStrokeColor = [UIColor colorWithRed:0.409 green:0.743 blue:0.037 alpha:1.000];
+        self.indicatorStrokeColor = [UIColor purple400];
         self.backgroundStrokeColor = [UIColor colorWithWhite:0.85 alpha:1.000];
         self.strokeWidth = 4;
         self.roundTime = 1.2f;

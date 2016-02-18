@@ -9,6 +9,7 @@
 #import "HRPGTavernTableViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <CRToast.h>
+#import "UIColor+Habitica.h"
 
 @interface HRPGTavernTableViewController ()
 
@@ -65,7 +66,7 @@
             }
             NSDictionary *options = @{kCRToastTextKey : notificationText,
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                                      kCRToastBackgroundColorKey : [UIColor colorWithRed:0.251 green:0.662 blue:0.127 alpha:1.000]
+                                      kCRToastBackgroundColorKey : [UIColor green50]
                                       };
             [CRToastManager showNotificationWithOptions:options
                                         completionBlock:^{
@@ -86,10 +87,10 @@
         UILabel *label = (UILabel*)[cell viewWithTag:1];
         if ([self.user.preferences.sleep boolValue]) {
             label.text = NSLocalizedString(@"Leave the Inn", nil);
-            label.textColor = [UIColor colorWithRed:0.894 green:0.008 blue:0.000 alpha:1.000];
+            label.textColor = [UIColor red100];
         } else {
             label.text = NSLocalizedString(@"Rest in the Inn", nil);
-            label.textColor = [UIColor colorWithRed:0.366 green:0.599 blue:0.014 alpha:1.000];
+            label.textColor = [UIColor green100];
         }
         UIActivityIndicatorView *indicator = (UIActivityIndicatorView*)[cell viewWithTag:2];
         label.hidden = NO;

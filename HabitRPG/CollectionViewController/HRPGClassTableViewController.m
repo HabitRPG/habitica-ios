@@ -18,6 +18,7 @@
 #import "HRPGExplanationView.h"
 #import "UIViewcontroller+TutorialSteps.h"
 #import <Google/Analytics.h>
+#import "UIColor+Habitica.h"
 
 @interface HRPGClassTableViewController ()
 @property CGSize screenSize;
@@ -112,7 +113,7 @@
     if (indexPath.item == 4) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OptOutCell" forIndexPath:indexPath];
         cell.textLabel.text = NSLocalizedString(@"I want to opt-out", nil);
-        cell.textLabel.textColor = [UIColor colorWithRed:0.773 green:0.235 blue:0.247 alpha:1.000];
+        cell.textLabel.textColor = [UIColor red100];
         cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
         cell.detailTextLabel.text = NSLocalizedString(@"Can't be bothered with classes? Want to choose later? Opt out - you'll be a warrior and your points handled automatically. You can enable classes later under Settings.", nil);
         cell.detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];

@@ -666,7 +666,6 @@
 		D92CDAE118CB83C40006C242 /* TableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D9436AC21C64F6DC008D1171 /* Social */,
 				D99F15BE191027D90081836E /* HRPGBaseViewController.h */,
 				D99F15BF191027D90081836E /* HRPGBaseViewController.m */,
 				D9B5C0B518D5C07100C8D1B7 /* HRPGProfileViewController.h */,
@@ -687,6 +686,7 @@
 				D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */,
 				D9C89CF11B1DE3A200A599B0 /* HRPGGemViewController.h */,
 				D9C89CF21B1DE3A200A599B0 /* HRPGGemViewController.m */,
+				D9436AC21C64F6DC008D1171 /* Social */,
 				D9C3D01C19509E3800D22A4A /* Inventory */,
 				D979AD171AF3E69800D59FAE /* Customizations */,
 				D9E3654F1930D45500C056F1 /* Modals */,

@@ -14,6 +14,7 @@
 #import "NIKFontAwesomeIconFactory.h"
 #import "NIKFontAwesomeIconFactory+iOS.h"
 #import "PDKeychainBindings.h"
+#import "UIColor+Habitica.h"
 #if DEBUG
 #import "FLEXManager.h"
 #endif
@@ -63,7 +64,7 @@
     UITabBarItem *item4 = self.tabBar.items[4];
     item4.image = [factory createImageForIcon:NIKFontAwesomeIconBars]			;
 
-    [self.tabBar setTintColor:[UIColor colorWithRed:0.478 green:0.071 blue:0.973 alpha:1.000]];
+    [self.tabBar setTintColor:[UIColor purple400]];
 
     
     [self updateDailyBadge];

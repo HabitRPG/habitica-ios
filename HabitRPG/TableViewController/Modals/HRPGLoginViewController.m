@@ -18,6 +18,7 @@
 #import <Google/Analytics.h>
 #import "HRPGAvatarSetupViewController.h"
 #import "HRPGIntroView.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGLoginViewController ()
 @property HRPGManager *sharedManager;
@@ -324,7 +325,7 @@
                                   kCRToastSubtitleTextKey : NSLocalizedString(@"There was an error with the authentication. Try again later", nil),
                                   kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                                   kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                                  kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],
+                                  kCRToastBackgroundColorKey : [UIColor red100],
                                   };
         [CRToastManager showNotificationWithOptions:options
                                     completionBlock:^{
@@ -334,7 +335,7 @@
                                   kCRToastSubtitleTextKey : NSLocalizedString(@"The authentication process was cancelled.", nil),
                                   kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                                   kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                                  kCRToastBackgroundColorKey : [UIColor colorWithRed:1.0f green:0.22f blue:0.22f alpha:1.0f],
+                                  kCRToastBackgroundColorKey : [UIColor red100],
                                   };
         [CRToastManager showNotificationWithOptions:options
                                     completionBlock:^{

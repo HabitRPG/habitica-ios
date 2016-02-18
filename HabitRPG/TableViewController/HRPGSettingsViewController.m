@@ -12,6 +12,7 @@
 #import "HRPGTopHeaderNavigationController.h"
 #import "XLForm.h"
 #import "MRProgress.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGSettingsViewController ()
 @property HRPGManager *sharedManager;
@@ -91,7 +92,7 @@ User *user;
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"logout" rowType:XLFormRowDescriptorTypeButton title:NSLocalizedString(@"Log Out", nil)];
-    [row.cellConfigAtConfigure setObject:[UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000] forKey:@"textLabel.textColor"];
+    [row.cellConfigAtConfigure setObject:[UIColor red100] forKey:@"textLabel.textColor"];
     [section addFormRow:row];
     
     self.reminderSection = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Reminder", nil)];
@@ -124,7 +125,7 @@ User *user;
     [formDescriptor addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"clearCache" rowType:XLFormRowDescriptorTypeButton title:NSLocalizedString(@"Clear Cache", nil)];
-    [row.cellConfigAtConfigure setObject:[UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000] forKey:@"textLabel.textColor"];
+    [row.cellConfigAtConfigure setObject:[UIColor red100] forKey:@"textLabel.textColor"];
     [section addFormRow:row];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"reloadContent" rowType:XLFormRowDescriptorTypeButton title:NSLocalizedString(@"Reload Content", nil)];
