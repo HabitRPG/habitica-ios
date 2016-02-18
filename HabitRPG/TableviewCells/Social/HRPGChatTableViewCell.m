@@ -32,6 +32,9 @@
         UITapGestureRecognizer *buttonTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(plusOneButtonTapped:)];
         [self.plusOneButton addGestureRecognizer:buttonTapRecognizer];
         [self bringSubviewToFront:self.plusOneButton];
+        
+        self.messageTextView.textContainerInset = UIEdgeInsetsZero;
+        self.messageTextView.contentInset = UIEdgeInsetsZero;
     }
     return self;
 }
@@ -101,7 +104,7 @@
     }
 }
 
-- (void)configureForMessage:(ChatMessage *)message withUserID:(NSString *)userID {
+- (void)configureForMessage:(ChatMessage *)message withUserID:(NSString *)userID withUsername:(NSString *)username {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     if (message.user) {
         self.usernameLabel.text = message.user;
@@ -137,7 +140,15 @@
     self.plusOneButtonHeightConstraint.constant = self.usernameHeightConstraint.constant;
     
     self.isOwnMessage = [message.uuid isEqualToString:userID];
+    if (self.isOwnMessage) {
+        self.backgroundColor = [UIColor gray500];
+    }
+    if ([message.text containsString:[NSString stringWithFormat:@"@%@", username]]) {
+        self.backgroundColor = [UIColor purple600];
+    }
     
+
+
     [self setNeedsLayout];
 }
 

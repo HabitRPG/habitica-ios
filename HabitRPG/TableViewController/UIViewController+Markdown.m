@@ -18,9 +18,16 @@
 - (void) configureMarkdownAttributes {
     self.attributes = [[NSMutableDictionary alloc]init];
     
+    UIFont *plainFont = [UIFont systemFontOfSize:14.0f];
+    NSDictionary *plainAttributes = @{
+                                  NSFontAttributeName : plainFont,
+                                  };
+    
+    [self.attributes setObject:plainAttributes forKey:@(PLAIN)];
+    
     // p
     
-    UIFont *paragraphFont = [UIFont systemFontOfSize:15.0f];
+    UIFont *paragraphFont = [UIFont systemFontOfSize:14.0f];
     NSMutableParagraphStyle* pParagraphStyle = [[NSMutableParagraphStyle alloc]init];
     
     pParagraphStyle.paragraphSpacing = 4;
@@ -45,11 +52,11 @@
     [self.attributes setObject:@{NSFontAttributeName : h3Font} forKey:@(H3)];
     
     // em
-    UIFont *emFont = [UIFont italicSystemFontOfSize:15.0f];
+    UIFont *emFont = [UIFont italicSystemFontOfSize:14.0f];
     [self.attributes setObject:@{NSFontAttributeName : emFont} forKey:@(EMPH)];
     
     // strong
-    UIFont *strongFont = [UIFont boldSystemFontOfSize:15.0f];
+    UIFont *strongFont = [UIFont boldSystemFontOfSize:14.0f];
     [self.attributes setObject:@{NSFontAttributeName : strongFont} forKey:@(STRONG)];
     
     // ul

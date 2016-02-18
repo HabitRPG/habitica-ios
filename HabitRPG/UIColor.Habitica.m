@@ -28,6 +28,9 @@
 + (UIColor *)purple500 {
     return [UIColor colorWithRed:0.741 green:0.659 blue:1.000 alpha:1.000];
 }
++ (UIColor *)purple600 {
+    return [UIColor colorWithRed:0.969 green:0.937 blue:1.000 alpha:1.000];
+}
 
 
 + (UIColor *)darkRed10 {

@@ -384,6 +384,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="tintColor" red="0.4478360116481781" green="0.10848049819469452" blue="0.9984632134437561" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="VBl-LN-ElK" kind="show" identifier="QuestDetailSegue" id="2KU-R3-vSq"/>
                                 </connections>

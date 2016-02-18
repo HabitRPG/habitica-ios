@@ -288,7 +288,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     UIImageView *indicatorView = (UIImageView *) [cell viewWithTag:2];
     indicatorView.hidden = !showIndicator;
     if (showIndicator) {
-        iconFactory.colors = @[[UIColor purple400]];
+        iconFactory.colors = @[[UIColor purple200]];
         iconFactory.size = 13.0f;
         indicatorView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconCircle];
     }

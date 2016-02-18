@@ -23,7 +23,7 @@
 
 @interface HRPGGroupTableViewController ()
 @property NSString *replyMessage;
-@property DTAttributedTextView *sizeTextView;
+@property UITextView *sizeTextView;
 @property NSMutableDictionary *attributes;
 
 @end
@@ -34,7 +34,9 @@
     self = [super initWithCoder:aDecoder];
     
     if (self) {
-        self.sizeTextView = [[DTAttributedTextView alloc] init];
+        self.sizeTextView = [[UITextView alloc] init];
+        self.sizeTextView.textContainerInset = UIEdgeInsetsZero;
+        self.sizeTextView.contentInset = UIEdgeInsetsZero;
         [self configureMarkdownAttributes];
     }
     
@@ -163,12 +165,11 @@
         if (!message.attributedText) {
             message.attributedText = [self renderMarkdown:message.text];
         }
-        self.sizeTextView.attributedString = message.attributedText;
-        self.sizeTextView.shouldDrawLinks = YES;
+        self.sizeTextView.attributedText = message.attributedText;
         
-        CGSize suggestedSize = [self.sizeTextView.attributedTextContentView suggestedFrameSizeToFitEntireStringConstraintedToWidth:self.viewWidth-26];
+        CGSize suggestedSize = [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth-26, CGFLOAT_MAX)];
         
-        CGFloat rowHeight = suggestedSize.height+55;
+        CGFloat rowHeight = suggestedSize.height+35;
         return rowHeight;
     }
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
@@ -313,7 +314,7 @@
     if (!message.attributedText) {
         message.attributedText = [self renderMarkdown:message.text];
     }
-    [cell configureForMessage:message withUserID:self.user.id];
+    [cell configureForMessage:message withUserID:self.user.id withUsername:self.user.username];
     cell.profileAction = ^() {
         HRPGUserProfileViewController *profileViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UserProfileViewController"];
         profileViewController.userID = message.uuid;

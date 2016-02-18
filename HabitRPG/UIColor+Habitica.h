@@ -16,6 +16,7 @@
 + (UIColor *)purple300;
 + (UIColor *)purple400;
 + (UIColor *)purple500;
++ (UIColor *)purple600;
 
 + (UIColor *)darkRed10;
 + (UIColor *)darkRed50;
