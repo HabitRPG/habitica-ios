@@ -77,6 +77,10 @@
     self.checklistIndicator.translatesAutoresizingMaskIntoConstraints = YES;
     self.checklistIndicator.frame = CGRectMake(self.frame.size.width-self.checklistIndicatorWidth.constant, 0, self.checklistIndicatorWidth.constant, self.frame.size.height);
     
+    self.tagImageView.hidden = YES;
+    self.reminderImageView.hidden = YES;
+    self.tagReminderConstraint.constant = 0;
+    
     [super layoutSubviews];
 }
 
