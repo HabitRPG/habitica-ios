@@ -107,12 +107,21 @@
 - (void)configureForMessage:(ChatMessage *)message withUserID:(NSString *)userID withUsername:(NSString *)username {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     if (message.user) {
+        self.usernameWrapper.hidden = NO;
         self.usernameLabel.text = message.user;
-        self.usernameLabel.backgroundColor = [message contributorColor];
-        self.usernameWidthConstraint.constant = self.usernameLabel.intrinsicContentSize.width + 16;
-        self.usernameHeightConstraint.constant = self.usernameLabel.intrinsicContentSize.height + 8;
+        self.usernameWrapper.backgroundColor = [message contributorColor];
+        self.indicatorImageViewWidthConstraint.constant = 21;
+        if ([message.contributorLevel integerValue] == 8) {
+            self.modIndicatorImageView.image = [UIImage imageNamed:@"star"];
+        } else if ([message.contributorLevel integerValue] == 9) {
+            self.modIndicatorImageView.image = [UIImage imageNamed:@"crown"];
+        } else {
+            self.modIndicatorImageView.image = nil;
+            self.indicatorImageViewWidthConstraint.constant = 8;
+        }
     } else {
         self.usernameLabel.text = nil;
+        self.usernameWrapper.hidden = YES;
     }
     
     self.timeLabel.text = message.timestamp.timeAgoSinceNow;
@@ -137,7 +146,6 @@
     }
     [self.plusOneButton setTitleColor:[UIColor purple300] forState:UIControlStateSelected];
     self.plusOneButtonWidthConstraint.constant = self.plusOneButton.intrinsicContentSize.width + 8;
-    self.plusOneButtonHeightConstraint.constant = self.usernameHeightConstraint.constant;
     
     self.isOwnMessage = [message.uuid isEqualToString:userID];
     if (self.isOwnMessage) {

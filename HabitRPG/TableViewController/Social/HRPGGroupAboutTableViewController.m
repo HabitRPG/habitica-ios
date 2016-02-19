@@ -128,7 +128,7 @@
     } else if (indexPath.item == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"RightDetailCell" forIndexPath:indexPath];
         cell.textLabel.text = NSLocalizedString(@"Gems", nil);
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%f", [self.group.balance floatValue]*4];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%.0f", [self.group.balance floatValue]*4];
     } else if (indexPath.item == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"RightDetailCell" forIndexPath:indexPath];
         cell.textLabel.text = NSLocalizedString(@"Visibility", nil);

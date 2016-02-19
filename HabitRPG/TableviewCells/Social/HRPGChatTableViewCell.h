@@ -18,6 +18,9 @@ typedef NS_ENUM(NSInteger, HRPGChatTableViewCellType) {
 @interface HRPGChatTableViewCell : UITableViewCell <UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *modIndicatorImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *indicatorImageViewWidthConstraint;
+@property (weak, nonatomic) IBOutlet UIView *usernameWrapper;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *usernameHeightConstraint;
