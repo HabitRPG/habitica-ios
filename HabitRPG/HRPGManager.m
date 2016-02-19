@@ -1221,7 +1221,7 @@ NSString *currentUser;
 
 - (void)setTimezoneOffset {
     NSInteger offset = -[[NSTimeZone localTimeZone] secondsFromGMT] / 60;
-    if (offset != [self.user.preferences.timezoneOffset integerValue]) {
+    if ([self.user.preferences.timezoneOffset integerValue] && offset != [self.user.preferences.timezoneOffset integerValue]) {
         self.user.preferences.timezoneOffset = [NSNumber numberWithInteger:offset];
         [self updateUser:@{@"preferences.timezoneOffset" : self.user.preferences.timezoneOffset} onSuccess:nil onError:nil];
     }
