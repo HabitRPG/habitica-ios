@@ -90,7 +90,7 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"type == 'guild' && isMember==YES"]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"type == 'guild' && isMember==YES && id != 'habitrpg'"]];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
