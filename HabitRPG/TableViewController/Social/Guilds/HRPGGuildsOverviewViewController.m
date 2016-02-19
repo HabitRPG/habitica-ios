@@ -38,7 +38,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if ([self.fetchedResultsController fetchedObjects].count < 3) {
+    if (self.suggestedGuilds.count > 0) {
         return 3;
     } else {
         return 2;
@@ -138,9 +138,9 @@
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    if ([self.fetchedResultsController fetchedObjects].count < 3 && self.tableView.numberOfSections == 2) {
+    if (self.suggestedGuilds.count > 0 && self.tableView.numberOfSections == 2) {
         [self.tableView insertSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
-    } else if ([self.fetchedResultsController fetchedObjects].count >= 3 && self.tableView.numberOfSections == 3) {
+    } else if (self.suggestedGuilds.count == 0 && self.tableView.numberOfSections == 3) {
         [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     [self.tableView endUpdates];
@@ -167,6 +167,10 @@
 }
 
 - (NSArray *) suggestedGuilds {
+    
+    if ([self.fetchedResultsController fetchedObjects].count >= 3) {
+        return nil;
+    }
     
     if (_suggestedGuilds != nil) {
         return _suggestedGuilds;
@@ -217,6 +221,13 @@
     
     NSError *error;
     _suggestedGuilds = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if (_suggestedGuilds.count < guilds.count) {
+        [self.sharedManager fetchGroups:@"public" onSuccess:^() {
+            _suggestedGuilds = nil;
+            [self.tableView reloadData];
+        }onError:nil];
+    }
     
     return _suggestedGuilds;
 }
