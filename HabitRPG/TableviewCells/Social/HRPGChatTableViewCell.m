@@ -153,6 +153,8 @@
     }
     if ([message.text containsString:[NSString stringWithFormat:@"@%@", username]]) {
         self.backgroundColor = [UIColor purple600];
+    } else {
+        self.backgroundColor = [UIColor whiteColor];
     }
     
 
