@@ -98,7 +98,7 @@ static inline UIImage* MTDContextCreateRoundedMask( CGRect rect, CGFloat radius_
 - (void)sizeToFit {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
-    CGFloat width = screenRect.size.width-80;
+    CGFloat width = screenRect.size.width-40;
     
     if (width > 500) {
         width = 500;
@@ -126,6 +126,10 @@ static inline UIImage* MTDContextCreateRoundedMask( CGRect rect, CGFloat radius_
                                                                    NSFontAttributeName : [UIFont systemFontOfSize:17]
                                                                    }
                                                          context:nil].size.height;
+    
+    if (height > screenRect.size.height-60) {
+        height = screenRect.size.height;
+    }
     
     self.frame = CGRectMake(0, 0, width, height);
     UIImage *mask = MTDContextCreateRoundedMask( self.bounds, 8.0, 8.0, 8.0, 8.0 );
