@@ -77,6 +77,7 @@
                 cellname = @"ProfileCell";
                 break;
             case 1:
+                cellname = @"TextCell";
                 break;
             case 2:
                 cellname = @"SubtitleCell";
@@ -93,7 +94,8 @@
                 [self configureCell:cell atIndexPath:indexPath];
                 break;
             case 1: {
-                cell.textLabel.attributedText = [self renderMarkdown:self.user.blurb];
+                UITextView *textView = (UITextView *)[cell viewWithTag:1];
+                textView.attributedText = [self renderMarkdown:self.user.blurb];
                 break;
             }
             case 2:

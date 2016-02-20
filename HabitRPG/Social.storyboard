@@ -1323,6 +1323,29 @@ Invite friends now to earn a Quest Scroll!</string>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextCell" id="7sl-us-tRn">
+                                <rect key="frame" x="0.0" y="285" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7sl-us-tRn" id="brz-em-Fub">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="c0E-7k-uBC">
+                                            <rect key="frame" x="8" y="8" width="584" height="27"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="c0E-7k-uBC" firstAttribute="trailing" secondItem="brz-em-Fub" secondAttribute="trailingMargin" id="eEj-oJ-HOk"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="c0E-7k-uBC" secondAttribute="bottom" id="hfH-9K-ltn"/>
+                                        <constraint firstItem="c0E-7k-uBC" firstAttribute="leading" secondItem="brz-em-Fub" secondAttribute="leadingMargin" id="x7R-LF-Qe2"/>
+                                        <constraint firstItem="c0E-7k-uBC" firstAttribute="top" secondItem="brz-em-Fub" secondAttribute="topMargin" id="zHr-Iu-8lG"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="MTH-Re-wqo" id="JwV-sh-BSq"/>

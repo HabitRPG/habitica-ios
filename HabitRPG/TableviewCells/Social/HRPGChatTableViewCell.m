@@ -163,9 +163,32 @@
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    if (self.plusOneButton.superview != nil) {
-        if (CGRectContainsPoint(self.plusOneButton.frame, [touch locationInView:self])) {
-            return NO; // ignore the touch
+    if (CGRectContainsPoint(self.plusOneButton.frame, [touch locationInView:self])) {
+        return NO; // ignore the touch
+    }
+    if (CGRectContainsPoint(self.messageTextView.frame, [touch locationInView:self])) {
+        NSLayoutManager *layoutManager = self.messageTextView.layoutManager;
+        CGPoint location = [touch locationInView:self.messageTextView];
+        location.x -= self.messageTextView.textContainerInset.left;
+        location.y -= self.messageTextView.textContainerInset.top;
+        
+        NSLog(@"location: %@", NSStringFromCGPoint(location));
+        
+        // Find the character that's been tapped on
+        
+        NSUInteger characterIndex;
+        characterIndex = [layoutManager characterIndexForPoint:location
+                                               inTextContainer:self.messageTextView.textContainer
+                      fractionOfDistanceBetweenInsertionPoints:NULL];
+        
+        if (characterIndex < self.messageTextView.textStorage.length) {
+            
+            NSRange range;
+            NSDictionary *attributes = [self.messageTextView.textStorage attributesAtIndex:characterIndex effectiveRange:&range];
+            if ([attributes objectForKey:@"NSLink"]) {
+                return NO;
+            }
+            
         }
     }
     return YES; // handle the touch
