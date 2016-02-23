@@ -21,6 +21,12 @@
 #import "Reminder.h"
 #import "Amplitude.h"
 
+@interface HRPGAppDelegate()
+
+@property NSString *notifiedTaskID;
+
+@end
+
 @implementation HRPGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -188,30 +194,21 @@
 -(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
     
     if ([identifier isEqualToString: @"completeAction"]) {
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:[self.sharedManager getManagedObjectContext]];
-        [fetchRequest setEntity:entity];
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id = %@", [notification.userInfo valueForKey:@"taskID"]]];
-        [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES]]];
-        
-        NSError *error;
-        NSArray *fetchedObjects = [[self.sharedManager getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
-        if (fetchedObjects != nil && fetchedObjects.count == 1) {
-            Task *task = [fetchedObjects objectAtIndex:0];
-            if (![task.completed boolValue]) {
-                [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray) {
-                    completionHandler();
-                    return;
-                }onError:^() {
-                    completionHandler();
-                    return;
-                }];
-            }
-        }
+        [self completeTaskWithId:[notification.userInfo valueForKey:@"taskID"]];
     }
     
 }
 
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    self.notifiedTaskID = [notification.userInfo valueForKey:@"taskID"];
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Reminder", nil)
+                                                      message:notification.alertBody
+                                                     delegate:self
+                                            cancelButtonTitle:NSLocalizedString(@"Close", nil)
+                                            otherButtonTitles:NSLocalizedString(@"Complete", nil), nil];
+    message.delegate = self;
+    [message show];
+}
 
 - (void) rescheduleTaskReminders {
     UIApplication *sharedApplication = [UIApplication sharedApplication];
@@ -262,6 +259,33 @@
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     }
 
+}
+
+- (void) completeTaskWithId:(NSString *)taskID {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:[self.sharedManager getManagedObjectContext]];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id = %@", taskID]];
+    [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES]]];
+    
+    NSError *error;
+    NSArray *fetchedObjects = [[self.sharedManager getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects != nil && fetchedObjects.count == 1) {
+        Task *task = [fetchedObjects objectAtIndex:0];
+        if (![task.completed boolValue]) {
+            [self.sharedManager upDownTask:task direction:@"up" onSuccess:^(NSArray *valuesArray) {
+                return;
+            }onError:^() {
+                return;
+            }];
+        }
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [self completeTaskWithId:self.notifiedTaskID];
+    }
 }
 
 @end
