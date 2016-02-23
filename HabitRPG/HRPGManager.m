@@ -3089,10 +3089,19 @@ NSString *currentUser;
                 if (image) {
                     successBlock(image);
                 } else {
-                    errorBlock();
+                    if (errorBlock) {
+                        errorBlock();
+                    }
                     NSLog(@"%@: %@", imageName, error);
                 }
             }];
+}
+
+- (void)setImage:(NSString *)imageName withFormat:(NSString *)format onView:(UIImageView *)imageView {
+    imageView.image = [UIImage imageNamed:@"Placeholder"];
+    [self getImage:imageName withFormat:@"png" onSuccess:^(UIImage *image) {
+        imageView.image = image;
+    } onError:nil];
 }
 
 - (UIImage *)getCachedImage:(NSString *)imageName {

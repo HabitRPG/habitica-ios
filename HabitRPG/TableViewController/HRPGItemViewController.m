@@ -16,7 +16,6 @@
 #import "User.h"
 #import "Pet.h"
 #import "HRPGImageOverlayView.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "KLCPopup.h"
 
 @interface HRPGItemViewController ()
@@ -280,6 +279,7 @@ float textWidth;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
     if (buttonIndex == actionSheet.destructiveButtonIndex) {
         [self.sharedManager sellItem:self.selectedItem onSuccess:nil onError:nil];
     } else if (buttonIndex == 0 && [self.selectedItem isKindOfClass:[Quest class]]) {
@@ -330,9 +330,9 @@ float textWidth;
     detailTextLabel.text = [NSString stringWithFormat:@"%@", item.owned];
     detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [detailTextLabel sizeToFit];
-    NSString *url;
+    NSString *imageName;
     if ([item.type isEqualToString:@"quests"]) {
-        url = @"https://habitica-assets.s3.amazonaws.com/mobileApp/images/inventory_quest_scroll.png";
+        imageName = @"inventory_quest_scroll";
     } else {
         NSString *type;
         if ([item.type isEqualToString:@"eggs"]) {
@@ -342,10 +342,9 @@ float textWidth;
         } else if ([item.type isEqualToString:@"hatchingPotions"]) {
             type = @"HatchingPotion";
         }
-        url = [NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/Pet_%@_%@.png", type, item.key];
+        imageName = [NSString stringWithFormat:@"Pet_%@_%@", type, item.key];
     }
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:url]
-                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+    [self.sharedManager setImage:imageName withFormat:@"png" onView:cell.imageView];
     cell.imageView.contentMode = UIViewContentModeCenter;
     cell.imageView.alpha = 1;
     textLabel.alpha = 1;

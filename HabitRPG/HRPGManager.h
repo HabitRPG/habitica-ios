@@ -126,6 +126,8 @@
 
 - (void)getImage:(NSString *)imageName withFormat:(NSString*)format onSuccess:(void (^)(UIImage *image))successBlock onError:(void (^)())ErrorBlock;
 
+- (void)setImage:(NSString *)imageName withFormat:(NSString*)format onView:(UIImageView *)imageView;
+
 - (UIImage *)getCachedImage:(NSString *)imageName;
 
 - (void)setCachedImage:(UIImage *)image withName:(NSString *)imageName onSuccess:(void (^)())successBlock;

@@ -50,18 +50,6 @@
         self.coinImageView.image = [UIImage imageNamed:@"gold_coin"];
     }
     
-    
-    if ([reward.key isEqualToString:@"potion"]) {
-        [self.shopImageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_potion.png"]
-                     placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-    } else if ([reward.key isEqualToString:@"armoire"]) {
-        [self.shopImageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_armoire.png"]
-                     placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-    } else if (![reward.key isEqualToString:@"reward"]) {
-        [self.shopImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_%@.png", reward.key]]
-                     placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-    }
-    
     if ([gold floatValue] > [reward.value floatValue]) {
         self.buyView.layer.borderColor = [[UIColor purple300] CGColor];
         self.titleLabel.textColor = [UIColor blackColor];

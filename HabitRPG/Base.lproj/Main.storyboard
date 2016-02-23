@@ -1508,13 +1508,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="to9-xR-Q1g">
-                                            <rect key="frame" x="16" y="9" width="42" height="42"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="42" id="Sll-km-EjS"/>
-                                                <constraint firstAttribute="height" constant="42" id="kyA-t8-Um9"/>
-                                            </constraints>
-                                        </imageView>
                                         <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="bfO-Ls-Uak">
                                             <rect key="frame" x="507" y="8" width="85" height="43"/>
                                             <subviews>
@@ -1559,10 +1552,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="rGE-yI-r5f">
-                                            <rect key="frame" x="66" y="28" width="433" height="4"/>
+                                            <rect key="frame" x="64" y="28" width="435" height="4"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4z-iX-3F6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="433" height="0.0"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="435" height="0.0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="500" constant="21" id="WUo-GQ-Uqd"/>
                                                     </constraints>
@@ -1571,7 +1564,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6Q-55-OOa">
-                                                    <rect key="frame" x="0.0" y="4" width="433" height="0.0"/>
+                                                    <rect key="frame" x="0.0" y="4" width="435" height="0.0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="500" constant="10" id="IoM-t2-fxi"/>
                                                     </constraints>
@@ -1591,6 +1584,13 @@
                                                 <constraint firstItem="I4z-iX-3F6" firstAttribute="top" secondItem="rGE-yI-r5f" secondAttribute="top" id="t2v-aG-5Fv"/>
                                             </constraints>
                                         </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="to9-xR-Q1g">
+                                            <rect key="frame" x="16" y="10" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="Sll-km-EjS"/>
+                                                <constraint firstAttribute="height" constant="40" id="kyA-t8-Um9"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="bfO-Ls-Uak" secondAttribute="bottom" id="94r-uq-kIk"/>

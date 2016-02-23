@@ -81,16 +81,6 @@ static inline UIImage* MTDContextCreateRoundedMask( CGRect rect, CGFloat radius_
 - (void)configureForReward:(MetaReward *)reward withGold:(CGFloat)gold {
     self.titleLabel.text = reward.text;
     self.priceLabel.text = [reward.value stringValue];
-    if ([reward.key isEqualToString:@"potion"]) {
-        [self.imageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_potion.png"]
-                              placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-    } else if ([reward.key isEqualToString:@"armoire"]) {
-        [self.imageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_armoire.png"]
-                              placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-    } else if (![reward.key isEqualToString:@"reward"]) {
-        [self.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_%@.png", reward.key]]
-                              placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-    }
     self.descriptionText = reward.notes;
     self.descriptionLabel.text = reward.notes;
     

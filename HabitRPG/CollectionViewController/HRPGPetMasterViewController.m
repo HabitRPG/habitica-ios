@@ -290,12 +290,12 @@ NSUserDefaults *defaults;
     }
     
     if (trained > 0) {
-        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/Pet-%@-%@.png", petType, petColor]]
-                  placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+        [self.sharedManager setImage:[NSString stringWithFormat:@"Pet-%@-%@", petType, petColor] withFormat:@"png" onView:imageView];
+
         imageView.alpha = 1;
     } else {
-        [imageView setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/PixelPaw.png"]
-                  placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+        [self.sharedManager setImage:@"PixelPaw" withFormat:@"png" onView:imageView];
+
         imageView.alpha = 0.3f;
     }
     

@@ -244,14 +244,12 @@ NSIndexPath *selectedIndex;
             detailLabel.text = equippedEar.text;
             detailLabel.textColor = [UIColor blackColor];
             imageView.contentMode = UIViewContentModeCenter;
-            [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_%@.png", equippedEar.key]]
-                         placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+            [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", equippedEar.key] withFormat:@"png" onView:imageView];
             imageView.alpha = 1.0;
         } else {
             detailLabel.text = NSLocalizedString(@"Nothing Set", nil);
             detailLabel.textColor = [UIColor grayColor];
-            [imageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/head_0.png"]
-                         placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+            [self.sharedManager setImage:@"head_0" withFormat:@"png" onView:imageView];
             imageView.alpha = 0.4;
         }
     } else {
@@ -274,14 +272,12 @@ NSIndexPath *selectedIndex;
             detailLabel.text = [searchedCustomization.name capitalizedString];
             detailLabel.textColor = [UIColor blackColor];
             imageView.contentMode = UIViewContentModeBottomRight;
-            [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/%@.png", [searchedCustomization getImageNameForUser:self.user]]]
-                         placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+            [self.sharedManager setImage:[searchedCustomization getImageNameForUser:self.user] withFormat:@"png" onView:imageView];
             imageView.alpha = 1.0;
         } else {
             detailLabel.text = NSLocalizedString(@"Nothing Set", nil);
             detailLabel.textColor = [UIColor grayColor];
-            [imageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/head_0.png"]
-                         placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+            [self.sharedManager setImage:@"head_0" withFormat:@"png" onView:imageView];
             imageView.alpha = 0.4;
         }
     }

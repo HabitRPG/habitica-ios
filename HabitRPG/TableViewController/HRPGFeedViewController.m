@@ -170,10 +170,8 @@
     detailTextLabel.text = [NSString stringWithFormat:@"%@", food.owned];
     detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [detailTextLabel sizeToFit];
-    NSString *url;
-    url = [NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/Pet_Food_%@.png", food.key];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:url]
-                   placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+    [self.sharedManager setImage:[NSString stringWithFormat:@"Pet_Food_%@", food.key] withFormat:@"png" onView:cell.imageView];
+
     cell.imageView.contentMode = UIViewContentModeCenter;
 }
 

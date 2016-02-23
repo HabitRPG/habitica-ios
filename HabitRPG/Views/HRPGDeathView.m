@@ -40,8 +40,13 @@
         [self addSubview:self.diedLabel];
         
         self.deathImageView = [[UIImageView alloc] initWithFrame:CGRectMake(screenRect.size.width/2-57, screenRect.size.height/2-96, 114, 132)];
-        [self.deathImageView sd_setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/GrimReaper.png"]
-                       placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/GrimReaper.png"] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            image = [UIImage imageWithCGImage:image.CGImage scale:1.0 orientation:UIImageOrientationUp];
+            if (image) {
+                self.deathImageView.image = image;
+            }
+        }];
         self.deathImageView.alpha = 0;
         [self addSubview:self.deathImageView];
         

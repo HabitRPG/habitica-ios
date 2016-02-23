@@ -201,13 +201,15 @@
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     self.notifiedTaskID = [notification.userInfo valueForKey:@"taskID"];
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Reminder", nil)
-                                                      message:notification.alertBody
-                                                     delegate:self
-                                            cancelButtonTitle:NSLocalizedString(@"Close", nil)
-                                            otherButtonTitles:NSLocalizedString(@"Complete", nil), nil];
-    message.delegate = self;
-    [message show];
+    if (self.notifiedTaskID) {
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Reminder", nil)
+                                                          message:notification.alertBody
+                                                         delegate:self
+                                                cancelButtonTitle:NSLocalizedString(@"Close", nil)
+                                                otherButtonTitles:NSLocalizedString(@"Complete", nil), nil];
+        message.delegate = self;
+        [message show];
+    }
 }
 
 - (void) rescheduleTaskReminders {

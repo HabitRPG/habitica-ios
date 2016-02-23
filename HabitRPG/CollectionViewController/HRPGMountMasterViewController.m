@@ -277,8 +277,7 @@ NSUserDefaults *defaults;
         imageView.contentMode = UIViewContentModeScaleToFill;
         imageView.alpha = 1;
     } else {
-        [imageView setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/PixelPaw.png"]
-                  placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+        [self.sharedManager setImage:@"PixelPaw" withFormat:@"png" onView:imageView];
         imageView.contentMode = UIViewContentModeCenter;
         imageView.alpha = 0.3f;
     }

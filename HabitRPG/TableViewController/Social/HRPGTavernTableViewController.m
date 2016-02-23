@@ -97,12 +97,11 @@
         indicator.hidden = YES;
         
         UIImageView *innImageView = (UIImageView*)[cell viewWithTag:3];
-        NSString *url = @"https://habitica-assets.s3.amazonaws.com/mobileApp/images/npc_daniel.png";
+        NSString *url = @"npc_daniel";
         if ([self.group.worldDmgTavern boolValue]) {
-            url = @"https://habitica-assets.s3.amazonaws.com/mobileApp/images/npc_daniel_broken.png";
+            url = @"npc_daniel_broken";
         }
-        [innImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageWithContentsOfFile:@"Placeholder"]];
-
+        [self.sharedManager setImage:url withFormat:@"png" onView:innImageView];
         return cell;
     } else {
         return [super tableView:tableView cellForRowAtIndexPath:indexPath];

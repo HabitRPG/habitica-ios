@@ -195,6 +195,15 @@ User *user;
                 [self.sharedManager buyObject:reward onSuccess:nil onError:nil];
             }
         };
+        NSString *imageName;
+        if ([reward.key isEqualToString:@"potion"]) {
+            imageName = @"shop_potion";
+        } else if ([reward.key isEqualToString:@"armoire"]) {
+            imageName = @"shop_armoire";
+        } else if (![reward.key isEqualToString:@"reward"]) {
+            imageName = [NSString stringWithFormat:@"shop_%@", reward.key];
+        }
+        [self.sharedManager setImage:imageName withFormat:@"png" onView:gearView.imageView];
         [gearView sizeToFit];
         
         KLCPopup* popup = [KLCPopup popupWithContentView:gearView showType:KLCPopupShowTypeBounceIn dismissType:KLCPopupDismissTypeBounceOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:NO];
@@ -321,6 +330,16 @@ User *user;
     MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     [cell configureForReward:reward withGoldOwned:user.gold];
+    
+    NSString *imageName;
+    if ([reward.key isEqualToString:@"potion"]) {
+        imageName = @"shop_potion";
+    } else if ([reward.key isEqualToString:@"armoire"]) {
+        imageName = @"shop_armoire";
+    } else if (![reward.key isEqualToString:@"reward"]) {
+        imageName = [NSString stringWithFormat:@"shop_%@", reward.key];
+    }
+    [self.sharedManager setImage:imageName withFormat:@"png" onView:cell.shopImageView];
     
     [cell onPurchaseTap:^() {
         if ([reward isKindOfClass:[Reward class]]) {

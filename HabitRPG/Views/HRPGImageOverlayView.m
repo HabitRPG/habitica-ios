@@ -8,6 +8,7 @@
 
 #import "HRPGImageOverlayView.h"
 #import <pop/POP.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRPGImageOverlayView ()
 @property UILabel *label;
@@ -92,7 +93,13 @@
 }
 
 - (void)displayImageWithName:(NSString *)imageName {
-    [self.ImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/%@", imageName]] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/%@", imageName]] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        image = [UIImage imageWithCGImage:image.CGImage scale:1.0 orientation:UIImageOrientationUp];
+        if (image) {
+            self.ImageView.image = image;
+        }
+    }];
 }
 
 - (void)displayImage:(UIImage *)image {

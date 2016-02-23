@@ -232,14 +232,13 @@
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     imageView.alpha = 1;
     if ([pet.trained boolValue]) {
-        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/Pet-%@.png", pet.key]]
-                  placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+        [self.sharedManager setImage:[NSString stringWithFormat:@"Pet-%@", pet.key] withFormat:@"png" onView:imageView];
+
         if ([pet.trained integerValue] == -1) {
             imageView.alpha = 0.3f;
         }
     } else {
-        [imageView setImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/PixelPaw.png"]
-                  placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+        [self.sharedManager setImage:@"PixelPaw" withFormat:@"png" onView:imageView];
         imageView.alpha = 0.3f;
     }
     

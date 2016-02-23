@@ -233,13 +233,11 @@ static NSString * const reuseIdentifier = @"Cell";
     if ([self.entityName isEqualToString:@"Customization"]) {
         Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
         UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
-        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/%@.png", [customization getImageNameForUser:self.user]]]
-                  placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+        [self.sharedManager setImage:[customization getImageNameForUser:self.user] withFormat:@"png" onView:imageView];
     } else {
         Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
         UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
-        [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_%@.png", gear.key]]
-                  placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+        [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", gear.key] withFormat:@"png" onView:imageView];
     }
 }
 

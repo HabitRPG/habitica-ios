@@ -91,8 +91,13 @@ CGFloat viewSize = 60;
     NSInteger count = 0;
     for (Customization *item in items) {
         UIImageView *view = [[UIImageView alloc] init];
-        [view sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/%@.png", [item getImageNameForUser:self.user]]]
-                     placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/%@.png", [item getImageNameForUser:self.user]]] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+             image = [UIImage imageWithCGImage:image.CGImage scale:1.0 orientation:UIImageOrientationUp];
+             if (image) {
+                 view.image = image;
+             }
+         }];
         view.contentMode = UIViewContentModeBottomRight;
         view.layer.contentsRect = CGRectMake(0, 0, 0.96, self.verticalCutoff);
         view.tag = count;

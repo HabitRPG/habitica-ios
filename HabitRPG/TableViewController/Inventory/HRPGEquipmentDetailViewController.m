@@ -10,7 +10,6 @@
 #import "HRPGAppDelegate.h"
 #import "Gear.h"
 #import "User.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRPGEquipmentDetailViewController ()
 @property User *user;
@@ -203,9 +202,8 @@ float textWidth;
     textLabel.text = gear.text;
     detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     detailTextLabel.text = gear.notes;
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/shop_%@.png", gear.key]]
-              placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-    
+    [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", gear.key] withFormat:@"png" onView:imageView];
+
     UILabel *equippedLabel = (UILabel*)[cell viewWithTag:4];
     equippedLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     equippedLabel.textAlignment = NSTextAlignmentRight;
@@ -232,6 +230,7 @@ float textWidth;
 
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self.tableView deselectRowAtIndexPath:selectedIndex animated:YES];
     if (buttonIndex == 0) {
         [self.sharedManager equipObject:selectedGear.key withType:self.equipType onSuccess:^() {
             if (self.equippedIndex && (self.equippedIndex.item != selectedIndex.item || self.equippedIndex.section != selectedIndex.section)) {
