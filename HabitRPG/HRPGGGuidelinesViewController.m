@@ -24,5 +24,8 @@
     [self.webView loadRequest:request];
 }
 
+- (IBAction)dismissGuidelines:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

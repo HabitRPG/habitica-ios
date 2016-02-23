@@ -283,6 +283,9 @@
     [self.tableView endUpdates];
 }
 
+- (IBAction)unwindToGroup:(UIStoryboardSegue *)segue {
+}
+
 - (IBAction)unwindToListSendMessage:(UIStoryboardSegue *)segue {
     [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:[self chatSectionIndex]-1] animated:YES];
     HRPGMessageViewController *messageController = (HRPGMessageViewController*)[segue sourceViewController];
@@ -294,6 +297,14 @@
         }];
     }onError:nil];
     
+}
+
+- (IBAction)unwindToAcceptGuidelines:(UIStoryboardSegue *)segue {
+    [self.sharedManager updateUser:@{@"flags.communityGuidelinesAccepted": [NSNumber numberWithBool:YES]} onSuccess:^() {
+        [self performSegueWithIdentifier:@"MessageSegue" sender:self];
+    }onError:^() {
+        
+    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
