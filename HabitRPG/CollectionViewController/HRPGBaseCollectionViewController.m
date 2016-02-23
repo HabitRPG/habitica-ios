@@ -17,6 +17,7 @@
 #import "HRPGExplanationView.h"
 #import "TutorialSteps.h"
 #import "UIViewcontroller+TutorialSteps.h"
+#import "Amplitude.h"
 
 @interface HRPGBaseCollectionViewController ()
 
@@ -30,6 +31,13 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:[self getScreenName]];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
+    NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
+    [eventProperties setValue:@"navigate" forKey:@"eventAction"];
+    [eventProperties setValue:@"navigation" forKey:@"eventCategory"];
+    [eventProperties setValue:@"pageview" forKey:@"hitType"];
+    [eventProperties setValue:[self getScreenName] forKey:@"page"];
+    [[Amplitude instance] logEvent:@"navigate" withEventProperties:eventProperties];
     
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
     if ([keyChain stringForKey:@"id"] == nil || [[keyChain stringForKey:@"id"] isEqualToString:@""]) {

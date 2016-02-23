@@ -171,11 +171,7 @@
         CGPoint location = [touch locationInView:self.messageTextView];
         location.x -= self.messageTextView.textContainerInset.left;
         location.y -= self.messageTextView.textContainerInset.top;
-        
-        NSLog(@"location: %@", NSStringFromCGPoint(location));
-        
-        // Find the character that's been tapped on
-        
+                
         NSUInteger characterIndex;
         characterIndex = [layoutManager characterIndexForPoint:location
                                                inTextContainer:self.messageTextView.textContainer

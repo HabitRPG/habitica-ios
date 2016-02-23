@@ -16,6 +16,7 @@
 #import "HRPGAppDelegate.h"
 #import "HRPGTypingLabel.h"
 #import <Google/Analytics.h>
+#import "Amplitude.h"
 
 @interface HRPGAvatarSetupViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
@@ -72,6 +73,13 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:NSStringFromClass([self class])];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
+    NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
+    [eventProperties setValue:@"navigate" forKey:@"eventAction"];
+    [eventProperties setValue:@"navigation" forKey:@"eventCategory"];
+    [eventProperties setValue:@"pageview" forKey:@"hitType"];
+    [eventProperties setValue:NSStringFromClass([self class]) forKey:@"page"];
+    [[Amplitude instance] logEvent:@"navigate" withEventProperties:eventProperties];
     
     self.welcomeDescriptionString = NSLocalizedString(@"Welcome to Habitica, where advancing in the game will improve your real life! As you accomplish real-world goals, you'll unlock equipment, pets, quests, and more.", nil);
     self.avatarDescriptionString = NSLocalizedString(@"First, you need an avatar in the game to represent you! The things you do in real life will affect your avatar's health, experience level, and gold.", nil);

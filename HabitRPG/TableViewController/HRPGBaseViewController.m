@@ -18,6 +18,7 @@
 #import "HRPGExplanationView.h"
 #import "TutorialSteps.h"
 #import "UIViewController+TutorialSteps.h"
+#import "Amplitude.h"
 
 @interface HRPGBaseViewController ()
 @property UIBarButtonItem *navigationButton;
@@ -31,6 +32,13 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:[self getScreenName]];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
+    NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
+    [eventProperties setValue:@"navigate" forKey:@"eventAction"];
+    [eventProperties setValue:@"navigation" forKey:@"eventCategory"];
+    [eventProperties setValue:@"pageview" forKey:@"hitType"];
+    [eventProperties setValue:[self getScreenName] forKey:@"page"];
+    [[Amplitude instance] logEvent:@"navigate" withEventProperties:eventProperties];
     
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;

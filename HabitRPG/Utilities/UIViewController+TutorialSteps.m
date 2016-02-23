@@ -11,6 +11,7 @@
 #import "HRPGManager.h"
 #import "TutorialSteps.h"
 #import "HRPGHintView.h"
+#import "Amplitude.h"
 
 @implementation UIViewController (TutorialSteps)
 
@@ -93,6 +94,16 @@
         [[self.sharedManager user] addIosTutorialStepsObject:step];
     }
     
+    NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
+    [eventProperties setValue:@"tutorial" forKey:@"eventAction"];
+    [eventProperties setValue:@"behaviour" forKey:@"eventCategory"];
+    [eventProperties setValue:@"event" forKey:@"event"];
+    [eventProperties setValue:[step.identifier stringByAppendingString:@"-iOS"] forKey:@"eventLabel"];
+    [eventProperties setValue:step.identifier forKey:@"eventValue"];
+    [eventProperties setValue:@NO forKey:@"complete"];
+    [[Amplitude instance] logEvent:@"tutorial" withEventProperties:eventProperties];
+
+    
     explanationView.dismissAction= ^(BOOL wasSeen) {
         self.activeTutorialView = nil;
         
@@ -100,6 +111,15 @@
             //Show it again the next day
             NSDate *nextAppearance = [[NSDate date] dateByAddingTimeInterval:86400];
             [defaults setValue:nextAppearance forKey:defaultsKey];
+        } else {
+            NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
+            [eventProperties setValue:@"tutorial" forKey:@"eventAction"];
+            [eventProperties setValue:@"behaviour" forKey:@"eventCategory"];
+            [eventProperties setValue:@"event" forKey:@"event"];
+            [eventProperties setValue:[step.identifier stringByAppendingString:@"-iOS"] forKey:@"eventLabel"];
+            [eventProperties setValue:step.identifier forKey:@"eventValue"];
+            [eventProperties setValue:@YES forKey:@"complete"];
+            [[Amplitude instance] logEvent:@"tutorial" withEventProperties:eventProperties];
         }
         NSError *error;
         [self.sharedManager.getManagedObjectContext saveToPersistentStore:&error];

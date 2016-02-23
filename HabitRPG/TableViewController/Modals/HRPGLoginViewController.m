@@ -19,6 +19,7 @@
 #import "HRPGAvatarSetupViewController.h"
 #import "HRPGIntroView.h"
 #import "UIColor+Habitica.h"
+#import "Amplitude.h"
 
 @interface HRPGLoginViewController ()
 @property HRPGManager *sharedManager;
@@ -367,6 +368,12 @@
                                                           action:@"login"
                                                            label:nil
                                                            value:nil] build]];
+    
+    NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
+    [eventProperties setValue:@"login" forKey:@"eventAction"];
+    [eventProperties setValue:@"behaviour" forKey:@"eventCategory"];
+    [eventProperties setValue:@"event" forKey:@"hitType"];
+    [[Amplitude instance] logEvent:@"login" withEventProperties:eventProperties];
     
     [_sharedManager fetchUser:^() {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData" object:nil];

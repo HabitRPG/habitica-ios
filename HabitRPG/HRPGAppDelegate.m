@@ -19,6 +19,7 @@
 #import <Google/Analytics.h>
 #import <CoreSpotlight/CoreSpotlight.h>
 #import "Reminder.h"
+#import "Amplitude.h"
 
 @implementation HRPGAppDelegate
 
@@ -31,6 +32,8 @@
     [[GGLContext sharedInstance] configureWithError:&configureError];
     NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
     [[GAI sharedInstance] setTrackUncaughtExceptions:YES];
+    
+    [[Amplitude instance] initializeApiKey:@"3123d3554f5aae83ce3b4a97a8d62ecb"];
     
     //Notifications
     CRToastInteractionResponder *blankResponder = [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeAll automaticallyDismiss:YES block:^(CRToastInteractionType interactionType){
