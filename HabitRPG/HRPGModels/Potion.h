@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "MetaReward.h"
 
-
-@interface Potion : NSManagedObject
+@interface Potion : MetaReward
 
 
 @end

@@ -721,7 +721,7 @@ NSString *currentUser;
     buyMapping.assignsDefaultValueForMissingAttributes = NO;
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:buyMapping method:RKRequestMethodPOST pathPattern:@"/api/v2/user/inventory/sell/:type/:key" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-
+    
     entityMapping = [RKEntityMapping mappingForEntityForName:@"Group" inManagedObjectStore:managedObjectStore];
     [entityMapping addAttributeMappingsFromDictionary:@{
             @"_id" : @"id",
@@ -935,6 +935,27 @@ NSString *currentUser;
             @"(key).gearSet" : @"set"}];
     gearMapping.identificationAttributes = @[@"key"];
     responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:gearMapping method:RKRequestMethodGET pathPattern:@"/api/v2/content" keyPath:@"gear.flat" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    gearMapping = [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
+    gearMapping.forceCollectionMapping = YES;
+    [gearMapping addAttributeMappingsFromDictionary:@{
+                                                      @"key" : @"key",
+                                                      @"con" : @"con",
+                                                      @"value" : @"value",
+                                                      @"type" : @"type",
+                                                      @"klass" : @"klass",
+                                                      @"index" : @"index",
+                                                      @"str" : @"str",
+                                                      @"int" : @"intelligence",
+                                                      @"per" : @"per",
+                                                      @"event.start" : @"eventStart",
+                                                      @"event.end" : @"eventEnd",
+                                                      @"specialClass" : @"specialClass",
+                                                      @"gearSet" : @"set"}];
+    gearMapping.identificationAttributes = @[@"key"];
+    gearMapping.assignsDefaultValueForMissingAttributes = NO;
+    responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:gearMapping method:RKRequestMethodGET pathPattern:@"/api/v2/user/inventory/buy" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
     RKEntityMapping *eggMapping = [RKEntityMapping mappingForEntityForName:@"Egg" inManagedObjectStore:managedObjectStore];
@@ -1860,6 +1881,46 @@ NSString *currentUser;
         [self.networkIndicatorController endNetworking];
         return;
     }                                     failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (operation.HTTPRequestOperation.response.statusCode == 503) {
+            [self displayServerError];
+        } else {
+            [self displayNetworkError];
+        }
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)fetchBuyableRewards:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/v2/user/inventory/buy" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSError *executeError = nil;
+        
+        NSFetchRequest *fetch = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Gear" inManagedObjectContext:[self getManagedObjectContext]];
+        [fetch setEntity:entity];
+        [fetch setPredicate:[NSPredicate predicateWithFormat:@"buyable == true"]];
+        NSMutableArray *oldBuyableGear = [[[self getManagedObjectContext] executeFetchRequest:fetch error:&executeError] mutableCopy];
+        NSArray *buyableGear = [mappingResult array];
+        for (Gear *gear in  buyableGear) {
+            gear.buyable = @YES;
+            if ([oldBuyableGear containsObject:gear]) {
+                [oldBuyableGear removeObject:gear];
+            }
+        }
+        for (Gear *gear in oldBuyableGear) {
+            gear.buyable = @NO;
+        }
+        
+        [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+        if (successBlock) {
+            successBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (operation.HTTPRequestOperation.response.statusCode == 503) {
             [self displayServerError];
         } else {

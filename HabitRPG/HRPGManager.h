@@ -59,6 +59,8 @@
 
 - (void)deleteReward:(Reward *)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void) fetchBuyableRewards:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 - (void)clearCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)buyObject:(MetaReward *)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;

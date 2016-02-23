@@ -11,10 +11,12 @@
 
 @implementation MetaReward
 
+@dynamic buyable;
 @dynamic key;
 @dynamic text;
 @dynamic notes;
 @dynamic value;
 @dynamic type;
+@dynamic rewardType;
 
 @end

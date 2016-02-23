@@ -16,6 +16,11 @@
 @dynamic tags;
 @dynamic tagDictionary;
 
+- (void)willSave {
+    if (![self.rewardType isEqualToString:@"reward"]) {
+        self.rewardType = @"reward";
+    }}
+
 - (NSDictionary *)getTagDictionary {
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *managedObjectContext = appdelegate.sharedManager.getManagedObjectContext;

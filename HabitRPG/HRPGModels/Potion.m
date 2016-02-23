@@ -11,5 +11,9 @@
 
 @implementation Potion
 
+- (void)willSave {
+    if (![self.rewardType isEqualToString:@"potion"]) {
+        self.rewardType = @"potion";
+    }}
 
 @end

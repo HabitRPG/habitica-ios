@@ -23,6 +23,12 @@
 @dynamic specialClass;
 @dynamic set;
 
+- (void)willSave {
+    if (![self.rewardType isEqualToString:@"gear"]) {
+        self.rewardType = @"gear";
+    }
+}
+
 -(BOOL)isEquippedBy:(User *)user {
     if ([self.type isEqualToString:@"weapon"]) {
         if ([user.equipped.weapon isEqualToString:self.key]) {

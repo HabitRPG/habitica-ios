@@ -58,6 +58,8 @@ User *user;
      name:@"finishedClearingData"
      object:nil];
     self.tutorialIdentifier = @"rewards";
+    
+    [self.sharedManager fetchBuyableRewards:nil onError:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -75,9 +77,12 @@ User *user;
 
 - (void)refresh {
     [self.sharedManager fetchUser:^() {
-        [self.refreshControl endRefreshing];
-        self.filteredData = nil;
-        [self.tableView reloadData];
+        [self.sharedManager fetchBuyableRewards:^{
+            [self.refreshControl endRefreshing];
+        } onError:^{
+            [self.refreshControl endRefreshing];
+            [self.sharedManager displayNetworkError];
+        }];
     }                     onError:^() {
         [self.refreshControl endRefreshing];
         [self.sharedManager displayNetworkError];
@@ -85,7 +90,7 @@ User *user;
 }
 
 - (void)reloadAllData:(NSNotification *)notification {
-    self.filteredData = nil;
+    _fetchedResultsController = nil;
     [self.tableView reloadData];
 }
 
@@ -95,22 +100,21 @@ User *user;
 
 - (void)finishedClearing:(NSNotification *)notification {
     self.disableFetchedResultsControllerUpdates = NO;
-    self.filteredData = nil;
     [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.filteredData count];
+    return [self.fetchedResultsController sections].count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.filteredData[section] count];
+    return self.fetchedResultsController.sections[section].numberOfObjects;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MetaReward *reward = [self getRewardAtIndexPath:indexPath];
+    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSString *cellName = @"Cell";
     if (![reward isKindOfClass:[Reward class]]) {
         cellName = @"ImageCell";
@@ -124,7 +128,7 @@ User *user;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     float height = 40.0f;
     float width = self.viewWidth-127;
-    MetaReward *reward = [self getRewardAtIndexPath:indexPath];
+    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
     if ([reward isKindOfClass:[Reward class]]) {
         width = self.viewWidth-77;
     }
@@ -155,7 +159,7 @@ User *user;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    MetaReward *reward = [self getRewardAtIndexPath:indexPath];
+    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
     if ([reward.type isEqualToString:@"reward"]) {
         return YES;
     }
@@ -164,7 +168,7 @@ User *user;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        MetaReward *reward = [self getRewardAtIndexPath:indexPath];
+        MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
         if ([reward isKindOfClass:[Reward class]]) {
             [self.sharedManager deleteReward:(Reward*)reward onSuccess:^() {
             } onError:^() {
@@ -176,7 +180,7 @@ User *user;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    MetaReward *reward = [self getRewardAtIndexPath:indexPath];
+    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
     if ([reward isKindOfClass:[Reward class]]) {
         self.editedReward = (Reward *)reward;
         [self performSegueWithIdentifier:@"FormSegue" sender:self];
@@ -228,101 +232,6 @@ User *user;
     }
 }
 
-- (MetaReward *)getRewardAtIndexPath:(NSIndexPath*)indexPath {
-    if (indexPath.section < [self.filteredData count]) {
-        if (indexPath.item < [self.filteredData[indexPath.section] count]) {
-            return self.filteredData[indexPath.section][indexPath.item];
-        }
-    }
-    return nil;
-}
-
-- (NSArray *)filteredData {
-    if (_filteredData != nil) {
-        return _filteredData;
-    }
-    //The filtering wasn't possible with predicates, so everything is fetched and filtered here
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    NSMutableArray *inGameItemsArray = [[NSMutableArray alloc] init];
-    NSMutableArray *customRewardsArray = [[NSMutableArray alloc] init];
-    NSString *userClass = [user getCleanedClassName];
-    if (userClass == nil) {
-        userClass = @"warrior";
-    }
-    for (Reward *reward in self.fetchedResultsController.fetchedObjects) {
-            if ([reward isKindOfClass:[Gear class]]) {
-                Gear *gear = (Gear*)reward;
-                if (gear.owned) {
-                    continue;
-                }
-                if ([gear.key rangeOfString:@"_special_1"].location != NSNotFound) {
-                    //filter the special contributer gear
-                    if ([gear.type isEqualToString:@"armor"] && [user.contributorLevel intValue] < 2) {
-                        continue;
-                    } else if ([gear.type isEqualToString:@"head"] && [user.contributorLevel intValue] < 3) {
-                        continue;
-                    } else if ([gear.type isEqualToString:@"weapon"] && [user.contributorLevel intValue] < 4) {
-                        continue;
-                    } else if ([gear.type isEqualToString:@"shield"] && [user.contributorLevel intValue] < 5) {
-                        continue;
-                    }
-                }
-                if (!([userClass isEqualToString:[gear getCleanedClassName]] || [userClass isEqualToString:gear.specialClass])) {
-                    //filter gear that is not the right class
-                    continue;
-                }
-                if (gear.eventStart) {
-                    //filter event gear
-                    NSDate *today = [NSDate date];
-                    if (!([today compare:gear.eventStart] == NSOrderedDescending && [today compare:gear.eventEnd] == NSOrderedAscending)) {
-                        continue;
-                    }
-                }
-                BOOL shouldAdd = YES;
-                for (Reward *oldReward in inGameItemsArray) {
-                    if ([oldReward isKindOfClass:[Gear class]] && [[oldReward.key substringToIndex:oldReward.key.length-2] isEqualToString:[gear.key substringToIndex:gear.key.length-2]]) {
-                        Gear *lastGear = (Gear*)[inGameItemsArray lastObject];
-                        if (gear.index && lastGear.index && ![gear.klass isEqualToString:@"special"]) {
-                            if (![[lastGear getCleanedClassName] isEqualToString:@"special"] && lastGear.index < gear.index && [lastGear.type isEqualToString:gear.type]) {
-                                //filter gear with lower level
-                                shouldAdd = NO;
-                            } else if ([[inGameItemsArray lastObject] index] > gear.index && [lastGear.type isEqualToString:gear.type]) {
-                                //remove last object if current one is of higher level
-                                [inGameItemsArray removeObject:oldReward];
-                            }
-                        }
-                        break;
-                    }
-                }
-                if (shouldAdd) {
-                    [inGameItemsArray addObject:reward];
-                }
-            } else {
-                if ([reward isKindOfClass:[Reward class]]) {
-                    [customRewardsArray addObject:reward];
-                } else {
-                    if ([reward.key isEqualToString:@"armoire"]) {
-                        if (![user.armoireEnabled boolValue]) {
-                            continue;
-                        }
-                    }
-                    [inGameItemsArray insertObject:reward atIndex:0];
-                }
-        }
-    }
-    
-    if ([inGameItemsArray count] > 0) {
-        [array addObject:inGameItemsArray];
-    }
-    if ([customRewardsArray count] > 0) {
-        [array addObject:customRewardsArray];
-    }
-    
-    self.filteredData = array;
-    
-    return _filteredData;
-}
-
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
@@ -333,10 +242,13 @@ User *user;
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
 
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"type == 'reward' || type == 'potion' || type == 'armoire' ||buyable == true"]];
+    
     NSSortDescriptor *keyDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
-    NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
     NSSortDescriptor *orderDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
-    NSArray *sortDescriptors = @[typeDescriptor, orderDescriptor, keyDescriptor];
+    NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
+    NSSortDescriptor *rewardTypeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"rewardType" ascending:YES];
+    NSArray *sortDescriptors = @[rewardTypeDescriptor, typeDescriptor, orderDescriptor, keyDescriptor];
     [fetchRequest setSortDescriptors:sortDescriptors];
 
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
@@ -352,19 +264,61 @@ User *user;
     return _fetchedResultsController;
 }
 
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            break;
+    }
+}
+
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
-    if (self.disableFetchedResultsControllerUpdates) {
-        return;
+    UITableView *tableView = self.tableView;
+    
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
     }
-    self.filteredData = nil;
-    [self.tableView reloadData];
-    return;
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView endUpdates];
 }
 
 - (void)configureCell:(HRPGRewardTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
-    MetaReward *reward = [self getRewardAtIndexPath:indexPath];
+    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     [cell configureForReward:reward withGoldOwned:user.gold];
     
