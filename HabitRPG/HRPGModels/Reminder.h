@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Reminder : NSManagedObject
 
 - (void) scheduleForDay:(NSDate *) day;
+- (void) removeTodaysNotifications;
+- (void) removeAllNotifications;
 
 @end
 

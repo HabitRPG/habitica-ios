@@ -14,6 +14,7 @@
 #import "UIColor+LighterDarker.h"
 #import "HRPGCheckBoxView.h"
 #import "HRPGDailyTableViewCell.h"
+#import "Reminder.h"
 
 @interface HRPGDailyTableViewController ()
 @property NSString *readableName;
@@ -87,6 +88,9 @@
                 NSString *actionName = [task.completed boolValue] ? @"down" : @"up";
                 [self.sharedManager upDownTask:task direction:actionName onSuccess:^(NSArray *valuesArray) {
                     task.currentlyChecking = [NSNumber numberWithBool:NO];
+                    for (Reminder *reminder in task.reminders) {
+                        [reminder removeTodaysNotifications];
+                    }
                 }onError:^() {
                     task.currentlyChecking = [NSNumber numberWithBool:NO];
                 }];

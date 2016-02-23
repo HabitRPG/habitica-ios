@@ -13,17 +13,30 @@
 
 
 - (void)willSave {
-    UIApplication *sharedApplication = [UIApplication sharedApplication];
     if (self.inserted) {
         [self scheduleReminders];
     } else {
-        for(UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
-            if([[reminder.userInfo objectForKey:@"ID"] isEqualToString:self.id]) {
-                [sharedApplication cancelLocalNotification:reminder];
-            }
-        }
+        [self removeAllNotifications];
         if (self.updated) {
             [self scheduleReminders];
+        }
+    }
+}
+
+- (void) removeAllNotifications {
+    UIApplication *sharedApplication = [UIApplication sharedApplication];
+    for(UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
+        if([[reminder.userInfo objectForKey:@"ID"] isEqualToString:self.id]) {
+            [sharedApplication cancelLocalNotification:reminder];
+        }
+    }
+}
+
+- (void) removeTodaysNotifications {
+    UIApplication *sharedApplication = [UIApplication sharedApplication];
+    for(UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
+        if([[reminder.userInfo objectForKey:@"ID"] isEqualToString:self.id] && [self isSameDayWithDate1:[NSDate date] date2:reminder.fireDate]) {
+            [sharedApplication cancelLocalNotification:reminder];
         }
     }
 }
@@ -73,6 +86,18 @@
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     localNotification.category = @"completeCategory";
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+}
+
+- (BOOL)isSameDayWithDate1:(NSDate*)date1 date2:(NSDate*)date2 {
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    
+    unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
+    NSDateComponents* comp1 = [calendar components:unitFlags fromDate:date1];
+    NSDateComponents* comp2 = [calendar components:unitFlags fromDate:date2];
+    
+    return [comp1 day]   == [comp2 day] &&
+    [comp1 month] == [comp2 month] &&
+    [comp1 year]  == [comp2 year];
 }
 
 @end
