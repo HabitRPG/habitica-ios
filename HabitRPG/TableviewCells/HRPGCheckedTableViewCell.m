@@ -69,6 +69,10 @@
     self.checklistIndicator.hidden = YES;
     self.subtitleLabel.text = nil;
     self.titleNoteConstraint.constant = 0;
+    
+    self.tagImageView.hidden = YES;
+    self.reminderImageView.hidden = YES;
+    self.tagReminderConstraint.constant = 0;
 }
 
 - (void)layoutSubviews {
@@ -76,10 +80,6 @@
     self.checkBox.frame = CGRectMake(0, 0, self.checkBox.frame.size.width, self.frame.size.height);
     self.checklistIndicator.translatesAutoresizingMaskIntoConstraints = YES;
     self.checklistIndicator.frame = CGRectMake(self.frame.size.width-self.checklistIndicatorWidth.constant, 0, self.checklistIndicatorWidth.constant, self.frame.size.height);
-    
-    self.tagImageView.hidden = YES;
-    self.reminderImageView.hidden = YES;
-    self.tagReminderConstraint.constant = 0;
     
     [super layoutSubviews];
 }
