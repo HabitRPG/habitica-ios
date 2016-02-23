@@ -29,6 +29,11 @@
 }
 
 - (void) scheduleReminders {
+    if (self.task) {
+        if ([self.task.completed boolValue]) {
+            return;
+        }
+    }
     if ([self.task.type isEqualToString:@"daily"]) {
         for (int day = 0; day < 6; day++) {
             NSDate *checkedDate = [NSDate dateWithTimeIntervalSinceNow:(day * 86400)];
