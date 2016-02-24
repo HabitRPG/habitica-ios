@@ -11,6 +11,8 @@
 #import "HRPGGroupTableViewController.h"
 
 @interface HRPGPublicGuildsViewController ()
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) NSString *searchValue;
 
 @end
 
@@ -23,6 +25,15 @@
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
     
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 44)];
+    self.searchBar.placeholder = @"Search";
+    self.searchBar.delegate = self;
+    self.tableView.tableHeaderView = self.searchBar;
+    
+    if (!self.searchValue) {
+        self.tableView.contentOffset = CGPointMake(0, self.tableView.contentOffset.y + self.searchBar.frame.size.height);
+    }
+    
     [self refresh];
 }
 
@@ -32,6 +43,14 @@
     }                      onError:^() {
         [self.refreshControl endRefreshing];
     }];
+}
+
+- (NSPredicate *)getPredicate {
+    if (self.searchValue) {
+        return [NSPredicate predicateWithFormat:@"type == 'guild' && ((name CONTAINS[cd] %@) || (hdescription CONTAINS[cd] %@))", self.searchValue, self.searchValue];
+    } else {
+        return [NSPredicate predicateWithFormat:@"type == 'guild'"];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -73,14 +92,14 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"type == 'guild'"]];
+    [fetchRequest setPredicate:[self getPredicate]];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"memberCount" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     [fetchRequest setSortDescriptors:sortDescriptors];
     
     
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"publicGuilds"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -143,6 +162,55 @@
         HRPGGroupTableViewController *guildViewController = (HRPGGroupTableViewController *)segue.destinationViewController;
         guildViewController.groupID = guild.id;
     }
+}
+
+#pragma mark - Search
+- (void)searchBarTextDidBeginEditing:(UISearchBar*)searchBar
+{
+    [searchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    self.searchValue = searchText;
+    
+    if ([self.searchValue isEqualToString:@""]) {
+        self.searchValue = nil;
+    }
+    
+    [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
+    NSError *error;
+    [self.fetchedResultsController performFetch:&error];
+    
+    [self.tableView reloadData];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    [searchBar setShowsCancelButton: NO animated: YES];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.searchBar resignFirstResponder];
+    [self.searchBar setShowsCancelButton: NO animated: YES];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    self.searchBar.text = @"";
+    [searchBar setShowsCancelButton: NO animated: YES];
+    
+    self.searchValue = nil;
+    
+    [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
+    NSError *error;
+    [self.fetchedResultsController performFetch:&error];
+    
+    [searchBar resignFirstResponder];
+    
+    [self.tableView reloadData];
 }
 
 @end

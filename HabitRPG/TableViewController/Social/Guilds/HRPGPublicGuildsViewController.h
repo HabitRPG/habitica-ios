@@ -8,7 +8,7 @@
 
 #import "HRPGBaseViewController.h"
 
-@interface HRPGPublicGuildsViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate>
+@interface HRPGPublicGuildsViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate, UISearchBarDelegate>
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
