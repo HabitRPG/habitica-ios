@@ -235,4 +235,11 @@
     return _quest;
 }
 
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    if ([self.tableView numberOfRowsInSection:1] != [self tableView:self.tableView numberOfRowsInSection:1]) {
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    [super controllerDidChangeContent:controller];
+}
+
 @end

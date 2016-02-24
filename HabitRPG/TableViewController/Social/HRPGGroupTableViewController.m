@@ -280,9 +280,6 @@
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    if ([self.tableView numberOfRowsInSection:1] != [self tableView:self.tableView numberOfRowsInSection:1]) {
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
-    }
     [self.tableView endUpdates];
 }
 

@@ -43,6 +43,8 @@
     [self.sharedManager fetchGroup:@"party" onSuccess:^() {
         [self.refreshControl endRefreshing];
         [self fetchGroup];
+        self.group.unreadMessages = [NSNumber numberWithBool:NO];
+        [self.sharedManager chatSeen:self.group.id];
     } onError:^() {
         [self.refreshControl endRefreshing];
         [self.sharedManager displayNetworkError];
