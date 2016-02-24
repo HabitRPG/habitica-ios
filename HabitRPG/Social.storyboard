@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -1650,8 +1650,8 @@ Invite friends now to earn a Quest Scroll!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0S-Uy-ZIr">
-                                <rect key="frame" x="4" y="0.0" width="312" height="480"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V0S-Uy-ZIr">
+                                <rect key="frame" x="4" y="0.0" width="592" height="600"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1661,6 +1661,12 @@ Invite friends now to earn a Quest Scroll!</string>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="V0S-Uy-ZIr" firstAttribute="top" secondItem="mHk-1m-59t" secondAttribute="topMargin" id="4G2-TF-TJV"/>
+                            <constraint firstItem="V0S-Uy-ZIr" firstAttribute="leading" secondItem="mHk-1m-59t" secondAttribute="leadingMargin" constant="-16" id="JnG-gh-fg4"/>
+                            <constraint firstItem="31y-mL-Hvj" firstAttribute="top" secondItem="V0S-Uy-ZIr" secondAttribute="bottom" id="pyj-Qo-S9j"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V0S-Uy-ZIr" secondAttribute="trailing" constant="-16" id="x2U-Kb-1lK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Message" id="Ib5-SB-HqM">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="EK1-lk-GhX">
@@ -1675,6 +1681,7 @@ Invite friends now to earn a Quest Scroll!</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomOffsetConstraint" destination="pyj-Qo-S9j" id="m95-NO-a63"/>
                         <outlet property="messageView" destination="V0S-Uy-ZIr" id="6QI-3U-9Fi"/>
                     </connections>
                 </viewController>

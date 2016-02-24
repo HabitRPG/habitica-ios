@@ -14,6 +14,7 @@
 
 @interface HRPGMessageViewController ()
 @property HRPGManager *sharedManager;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomOffsetConstraint;
 
 @end
 
@@ -52,11 +53,8 @@
 
 - (void)keyboardChanged:(NSNotification *)notification{
     CGSize keyboardSize = [self.view convertRect:[[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue] toView:nil].size;
-    CGFloat height = keyboardSize.height;
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
-    self.messageView.frame = CGRectMake(4, 4, screenWidth-8, screenHeight-height-8);
+    self.bottomOffsetConstraint.constant = keyboardSize.height;
+    
 }
 
 -(void)textViewDidChange:(UITextView *)textView {
