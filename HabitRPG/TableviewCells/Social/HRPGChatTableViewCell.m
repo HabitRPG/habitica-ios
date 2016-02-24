@@ -89,7 +89,7 @@
     }
 }
 
--(void) delete:(id)sender {
+-(void) delete:(id)sender {  
     if (self.deleteAction) {
         self.deleteAction();
     }

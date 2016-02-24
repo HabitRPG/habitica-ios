@@ -15,5 +15,5 @@
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property Quest *quest;
-@property Group *party;
+@property Group *group;
 @end

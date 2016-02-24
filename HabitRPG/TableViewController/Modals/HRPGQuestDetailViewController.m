@@ -19,15 +19,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (self.party.questKey != nil && ![self.party.questActive boolValue] && self.user.participateInQuest == nil) {
+    if (self.group.questKey != nil && ![self.group.questActive boolValue] && self.user.participateInQuest == nil) {
         self.navigationItem.title = NSLocalizedString(@"Quest Invitation", nil);
         self.navigationItem.rightBarButtonItem = nil;
     } else {
         self.navigationItem.title = NSLocalizedString(@"Quest Detail", nil);
-        if ([self.party.questActive boolValue] && [self.party.questLeader isEqualToString:self.user.id]) {
+        if ([self.group.questActive boolValue] && [self.group.questLeader isEqualToString:self.user.id]) {
             self.navigationItem.rightBarButtonItem.title = NSLocalizedString(@"Abort", nil);
             self.navigationItem.rightBarButtonItem.tintColor = [UIColor red100];
-        } else if ([self.party.questActive boolValue] || ![self.party.questLeader isEqualToString:self.user.id]) {
+        } else if ([self.group.questActive boolValue] || ![self.group.questLeader isEqualToString:self.user.id]) {
             self.navigationItem.rightBarButtonItem = nil;
         }
     }
@@ -37,7 +37,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if ((![self.isWorldQuest boolValue]) && self.party.questKey != nil && ![self.party.questActive boolValue] && self.user.participateInQuest == nil) {
+    if ((![self.isWorldQuest boolValue]) && self.group.questKey != nil && ![self.group.questActive boolValue] && self.user.participateInQuest == nil) {
         return 2;
     } else {
         return 1;
@@ -85,7 +85,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 0) {
-        [self.sharedManager acceptQuest:self.party.id withQuest:nil useForce:NO onSuccess:^(){
+        [self.sharedManager acceptQuest:self.group.id withQuest:nil useForce:NO onSuccess:^(){
         }                   onError:^(){
         }];
         if (self.wasPushed) {
@@ -94,7 +94,7 @@
             [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
         }
     } else if (indexPath.section == 1 && indexPath.item == 1) {
-        [self.sharedManager rejectQuest:self.party.id onSuccess:^(){
+        [self.sharedManager rejectQuest:self.group.id onSuccess:^(){
         }                   onError:^(){
         }];
         if (self.wasPushed) {
@@ -129,19 +129,20 @@
         cell.textLabel.text = self.quest.text;
         cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
     } else if (indexPath.section == 0 && indexPath.item == 1) {
-        SDWebImageManager *manager = [SDWebImageManager sharedManager];
-        __weak UIImageView *imageView = (UIImageView*) [cell viewWithTag:1];
-        [manager downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/quest_%@.png", self.quest.key]] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {} completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-            if (image) {
-                self.bossImage = image;
-                imageView.image = self.bossImage;
-                if (self.tableView.numberOfSections > indexPath.section) {
-                    if ([self.tableView numberOfRowsInSection:indexPath.section] > indexPath.item) {
-                        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-                    }
+        if (self.bossImage) {
+            UIImageView *imageView = (UIImageView*) [cell viewWithTag:1];
+            imageView.image = self.bossImage;
+
+        } else {
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            __weak UIImageView *imageView = (UIImageView*) [cell viewWithTag:1];
+            [manager downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/quest_%@.png", self.quest.key]] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {} completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                if (image) {
+                    self.bossImage = image;
+                    imageView.image = self.bossImage;
                 }
-            }
-        }];
+            }];
+        }
         cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
     } else if (indexPath.section == 0 && indexPath.item == 2) {
         UITextView *textView = (UITextView *) [cell viewWithTag:1];
@@ -162,7 +163,7 @@
 
 - (IBAction)forceQuestBegin:(id)sender {
     NSString *message;
-    if ([self.party.questActive boolValue]) {
+    if ([self.group.questActive boolValue]) {
         message = NSLocalizedString(@"When you abort a quest, all progress will be lost and the quest scroll will be put back into your inventory.", nil);
     } else {
         message = NSLocalizedString(@"Once a quest is started, no other party members can join the quest.", nil);
@@ -175,14 +176,14 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
-        if ([self.party.questActive boolValue]) {
-            [self.sharedManager abortQuest:self.party.id onSuccess:^(){
+        if ([self.group.questActive boolValue]) {
+            [self.sharedManager abortQuest:self.group.id onSuccess:^(){
                 [self.navigationController popViewControllerAnimated:YES];
             } onError:^(){
                 self.navigationItem.rightBarButtonItem.enabled = YES;
             }];
         } else {
-            [self.sharedManager acceptQuest:self.party.id withQuest:nil useForce:YES onSuccess:^(){
+            [self.sharedManager acceptQuest:self.group.id withQuest:nil useForce:YES onSuccess:^(){
                 [self.navigationController popViewControllerAnimated:YES];
             } onError:^(){
                 self.navigationItem.rightBarButtonItem.enabled = YES;

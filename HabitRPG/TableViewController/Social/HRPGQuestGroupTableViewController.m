@@ -195,12 +195,12 @@
     [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"ParticipantsSegue"]) {
         HRPGQuestParticipantsViewController *qpViewcontroller = segue.destinationViewController;
-        qpViewcontroller.party = self.group;
+        qpViewcontroller.group = self.group;
         qpViewcontroller.quest = self.quest;
     } else if ([segue.identifier isEqualToString:@"QuestDetailSegue"]) {
         HRPGQuestDetailViewController *qdViewcontroller = segue.destinationViewController;
         qdViewcontroller.quest = self.quest;
-        qdViewcontroller.party = self.group;
+        qdViewcontroller.group = self.group;
         qdViewcontroller.user = self.user;
         qdViewcontroller.hideAskLater = [NSNumber numberWithBool:YES];
         qdViewcontroller.wasPushed = [NSNumber numberWithBool:YES];

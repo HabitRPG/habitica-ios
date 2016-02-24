@@ -66,7 +66,7 @@
     [self.sharedManager fetchGroup:self.groupID onSuccess:^() {
         [self.refreshControl endRefreshing];
         [self fetchGroup];
-        if ([self.group.unreadMessages boolValue]) {
+        if (![self.groupID isEqualToString:@"habitrpg"]) {
             self.group.unreadMessages = [NSNumber numberWithBool:NO];
             [self.sharedManager chatSeen:self.group.id];
         }
@@ -280,6 +280,9 @@
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    if ([self.tableView numberOfRowsInSection:1] != [self tableView:self.tableView numberOfRowsInSection:1]) {
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+    }
     [self.tableView endUpdates];
 }
 

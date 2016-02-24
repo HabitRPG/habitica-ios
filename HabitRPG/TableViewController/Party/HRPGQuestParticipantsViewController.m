@@ -19,8 +19,6 @@
 @end
 
 @implementation HRPGQuestParticipantsViewController
-NSString *partyID;
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -70,10 +68,10 @@ NSString *partyID;
     [fetchRequest setFetchBatchSize:20];
 
     NSPredicate *predicate;
-    if ([self.party.questActive boolValue]) {
+    if ([self.group.questActive boolValue]) {
         predicate = [NSPredicate predicateWithFormat:@"participateInQuest == YES"];
     } else {
-        predicate = [NSPredicate predicateWithFormat:@"party.id == %@", partyID];
+        predicate = [NSPredicate predicateWithFormat:@"party.id == %@", self.group.id];
     }
     [fetchRequest setPredicate:predicate];
 

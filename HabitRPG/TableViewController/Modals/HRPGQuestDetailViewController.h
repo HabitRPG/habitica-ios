@@ -15,7 +15,7 @@
 @interface HRPGQuestDetailViewController : HRPGBaseViewController <UIAlertViewDelegate>
 
 @property Quest *quest;
-@property Group *party;
+@property Group *group;
 @property User *user;
 @property UIViewController *sourceViewcontroller;
 @property NSNumber *hideAskLater;
