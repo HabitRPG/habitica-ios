@@ -45,7 +45,7 @@
         [self.tableView setContentInset:UIEdgeInsetsMake([navigationController getContentInset],0,0,0)];
         self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentInset],0,0,0);
         if (navigationController.state == HRPGTopHeaderStateHidden) {
-            [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentInset.top-[navigationController getContentOffset])];
+            [self.tableView setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
         }
     }
 
@@ -94,8 +94,8 @@
     
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
-        if (navigationController.state == HRPGTopHeaderStateHidden && self.tableView.contentOffset.y < self.tableView.contentInset.top-[navigationController getContentOffset]) {
-            [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentInset.top-[navigationController getContentOffset])];
+        if (self.tableView.contentOffset.y < -[navigationController getContentOffset]) {
+            [self.tableView setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
         }
     }
 }
@@ -112,7 +112,17 @@
     
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
-        [navigationController startFollowingScrollView:self.tableView];
+        [navigationController startFollowingScrollView:self.tableView withOffset:0];
+        if (navigationController.state == HRPGTopHeaderStateVisible && self.tableView.contentOffset.y > -[navigationController getContentOffset]) {
+            [navigationController scrollview:self.tableView scrolledToPosition:self.tableView.contentOffset.y];
+        }
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        [navigationController scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
     }
 }
 

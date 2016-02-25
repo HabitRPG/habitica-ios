@@ -20,7 +20,8 @@ typedef enum HRPGTopHeaderState : NSInteger {
 - (CGFloat) getContentOffset;
 @property (nonatomic) HRPGTopHeaderState state;
 
-- (void)startFollowingScrollView:(UIScrollView *)scrollView;
+- (void)startFollowingScrollView:(UIScrollView *)scrollView withOffset:(CGFloat) scrolloffset;
 - (void)stopFollowingScrollView;
+- (void) scrollview:(UIScrollView *)scrollView scrolledToPosition:(CGFloat)position;
 
 @end

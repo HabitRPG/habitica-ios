@@ -8,11 +8,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="176" id="XSH-GM-86g" customClass="HRPGChatTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="464" height="176"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="XSH-GM-86g" customClass="HRPGChatTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="464" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XSH-GM-86g" id="QoR-9C-CZD">
-                <rect key="frame" x="0.0" y="0.0" width="464" height="175"/>
+                <rect key="frame" x="0.0" y="0.0" width="464" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3I-XE-4oR">
@@ -26,10 +26,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="G67-MT-zkQ">
-                        <rect key="frame" x="8" y="36" width="448" height="131"/>
+                        <rect key="frame" x="8" y="36" width="448" height="55"/>
                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
+                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
                     </textView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M9t-Rq-xRV">
                         <rect key="frame" x="8" y="8" width="63" height="28"/>
@@ -124,7 +124,7 @@
                 <outlet property="usernameWidthConstraint" destination="x9k-Tp-10v" id="8WR-W9-hDP"/>
                 <outlet property="usernameWrapper" destination="M9t-Rq-xRV" id="xwQ-XQ-bQr"/>
             </connections>
-            <point key="canvasLocation" x="249" y="242"/>
+            <point key="canvasLocation" x="249" y="204"/>
         </tableViewCell>
     </objects>
 </document>
