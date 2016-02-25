@@ -349,7 +349,7 @@
         UINavigationController *messageNavigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"MessageViewController"];
         HRPGMessageViewController *messageViewController = (HRPGMessageViewController*) messageNavigationController.topViewController;
             messageViewController.presetText = replyMessage;
-        [self.navigationController pushViewController:messageViewController animated:YES];
+        [self.navigationController presentViewController:messageNavigationController animated:YES completion:nil];
     };
     
     cell.plusOneAction = ^() {
