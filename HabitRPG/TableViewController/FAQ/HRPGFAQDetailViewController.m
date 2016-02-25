@@ -9,6 +9,7 @@
 #import "HRPGFAQDetailViewController.h"
 #import <CoreText/CoreText.h>
 #import "UIViewController+Markdown.h"
+#import "HRPGTopHeaderNavigationController.h"
 
 @interface HRPGFAQDetailViewController ()
 @property NSMutableDictionary *attributes;
@@ -24,11 +25,13 @@
     self.questionLabel.text = self.faq.question;
     self.answerTextView.attributedText = [self renderMarkdown:[self.faq getRelevantAnswer]];
     self.answerTextView.textContainerInset = UIEdgeInsetsMake(0, 16, 16, 16);
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.answerTextView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+    
+    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
+        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+        if (navigationController.state != HRPGTopHeaderStateHidden) {
+            [navigationController scrollview:nil scrolledToPosition:0];
+        }
+    }
 }
 
 @end
