@@ -106,6 +106,7 @@
 
 - (void)configureForMessage:(ChatMessage *)message withUserID:(NSString *)userID withUsername:(NSString *)username {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.backgroundColor = [UIColor whiteColor];
     if (message.user) {
         self.usernameWrapper.hidden = NO;
         self.usernameLabel.text = message.user;
@@ -119,9 +120,13 @@
             self.modIndicatorImageView.image = nil;
             self.indicatorImageViewWidthConstraint.constant = 8;
         }
+        self.messageTextView.textColor = [UIColor blackColor];
     } else {
         self.usernameLabel.text = nil;
         self.usernameWrapper.hidden = YES;
+        self.backgroundColor = [UIColor red500];
+        self.messageTextView.textColor = [UIColor red50];
+        self.plusOneButton.hidden = YES;
     }
     
     self.timeLabel.text = message.timestamp.timeAgoSinceNow;
@@ -145,8 +150,11 @@
         }
     }
     [self.plusOneButton setTitleColor:[UIColor purple300] forState:UIControlStateSelected];
-    self.plusOneButtonWidthConstraint.constant = self.plusOneButton.intrinsicContentSize.width + 8;
-    
+    if (message.user) {
+        self.plusOneButtonWidthConstraint.constant = self.plusOneButton.intrinsicContentSize.width + 8;
+    } else {
+        self.plusOneButtonWidthConstraint.constant = 0;
+    }
     self.isOwnMessage = [message.uuid isEqualToString:userID];
     if (self.isOwnMessage) {
         self.backgroundColor = [UIColor gray500];
@@ -154,12 +162,7 @@
     if ([message.text containsString:[NSString stringWithFormat:@"@%@", username]]) {
         self.backgroundColor = [UIColor purple600];
     } else {
-        self.backgroundColor = [UIColor whiteColor];
     }
-    
-
-
-    [self setNeedsLayout];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {

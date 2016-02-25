@@ -59,6 +59,9 @@
 + (UIColor *)red500 {
     return [UIColor colorWithRed:1.000 green:0.714 blue:0.722 alpha:1.000];
 }
++ (UIColor *)red600 {
+    return [UIColor colorWithRed:1.000 green:0.947 blue:0.949 alpha:1.000];
+}
 
 + (UIColor *)orange10 {
     return [UIColor colorWithRed:0.957 green:0.471 blue:0.145 alpha:1.000];
