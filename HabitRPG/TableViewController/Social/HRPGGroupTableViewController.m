@@ -88,7 +88,7 @@
     if (results.count == 1) {
         self.group = results[0];
         
-        if (![self.group.isMember boolValue] && [self.group.type isEqualToString:@"guild"]) {
+        if (![self.group.isMember boolValue] && [self.group.type isEqualToString:@"guild"] && ![self.groupID isEqualToString:@"habitrpg"]) {
             UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Join", nil) style:UIBarButtonItemStylePlain target:self action:@selector(joinGroup)];
             barButton.tintColor = [UIColor green50];
             self.navigationItem.rightBarButtonItem = barButton;
