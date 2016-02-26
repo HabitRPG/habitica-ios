@@ -13,14 +13,17 @@
 
 
 - (void)willSave {
-    if (self.inserted) {
-        [self scheduleReminders];
-    } else {
-        [self removeAllNotifications];
-        if (self.updated) {
+    if (self.hasChanges) {
+        if (self.inserted) {
             [self scheduleReminders];
+        } else {
+            [self removeAllNotifications];
+            if (self.updated) {
+                [self scheduleReminders];
+            }
         }
     }
+    [super didSave];
 }
 
 - (void) removeAllNotifications {
@@ -74,12 +77,16 @@
         fireDate = self.time;
     }
     
+    if ([fireDate compare:[NSDate date]] != NSOrderedDescending) {
+        return;
+    }
+    
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
     localNotification.fireDate = fireDate;
     localNotification.alertBody = self.task.text;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     if (self.task) {
-        localNotification.userInfo = @{@"ID": self.id, @"taskID": self.task.id};
+        localNotification.userInfo = @{@"ID": self.id, @"taskID": self.task.id, @"taskType": self.task.type};
     } else {
         localNotification.userInfo = @{@"ID": self.id};
     }

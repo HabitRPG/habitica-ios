@@ -172,21 +172,7 @@
         NSArray *components = [uniqueIdentifier componentsSeparatedByString:@"."];
         NSString *taskType = components[4];
         NSString *taskID = components[5];
-        id presentedController = self.window.rootViewController.presentedViewController;
-        if ([presentedController isKindOfClass:[HRPGTabBarController class]]) {
-            HRPGTabBarController *tabBarController = (HRPGTabBarController *)presentedController;
-            if ([taskType isEqualToString:@"habit"]) {
-                [tabBarController setSelectedIndex:0];
-            } else if ([taskType isEqualToString:@"daily"]) {
-                [tabBarController setSelectedIndex:1];
-            } else if ([taskType isEqualToString:@"todo"]) {
-                [tabBarController setSelectedIndex:2];
-            }
-            UINavigationController *displayedNavigationController = tabBarController.selectedViewController;
-            HRPGTableViewController *displayedTableViewController = (HRPGTableViewController *)displayedNavigationController.topViewController;
-            [displayedTableViewController scrollToTaskWithId:taskID];
-        }
-
+        [self displayTaskWithId:taskID fromType:taskType];
     }
     return YES;
 }
@@ -200,6 +186,11 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
+        [self displayTaskWithId:[notification.userInfo valueForKey:@"taskID"] fromType:[notification.userInfo valueForKey:@"taskType"]];
+        return;
+    }
+
     self.notifiedTaskID = [notification.userInfo valueForKey:@"taskID"];
     if (self.notifiedTaskID) {
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Reminder", nil)
@@ -287,6 +278,23 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         [self completeTaskWithId:self.notifiedTaskID];
+    }
+}
+
+- (void)displayTaskWithId:(NSString *)taskID fromType:(nullable NSString *)taskType {
+    id presentedController = self.window.rootViewController.presentedViewController;
+    if ([presentedController isKindOfClass:[HRPGTabBarController class]]) {
+        HRPGTabBarController *tabBarController = (HRPGTabBarController *)presentedController;
+        if ([taskType isEqualToString:@"habit"]) {
+            [tabBarController setSelectedIndex:0];
+        } else if ([taskType isEqualToString:@"daily"]) {
+            [tabBarController setSelectedIndex:1];
+        } else if ([taskType isEqualToString:@"todo"]) {
+            [tabBarController setSelectedIndex:2];
+        }
+        UINavigationController *displayedNavigationController = tabBarController.selectedViewController;
+        HRPGTableViewController *displayedTableViewController = (HRPGTableViewController *)displayedNavigationController.topViewController;
+        [displayedTableViewController scrollToTaskWithId:taskID];
     }
 }
 

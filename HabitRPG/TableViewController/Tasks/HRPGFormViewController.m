@@ -159,7 +159,7 @@
     
     if (![self.taskType isEqualToString:@"habit"]) {
         section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Reminders", nil)
-                                                 sectionOptions:XLFormSectionOptionCanReorder | XLFormSectionOptionCanInsert | XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
+                                                 sectionOptions:XLFormSectionOptionCanInsert | XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
         section.multivaluedAddButton.title = NSLocalizedString(@"Add a new reminder", nil);
         section.multivaluedTag = @"reminders";
         [self.form addFormSection:section];
