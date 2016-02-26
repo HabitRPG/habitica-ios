@@ -258,7 +258,7 @@
     
     NSSortDescriptor *keyDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
     NSSortDescriptor *orderDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
-    NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
+    NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:NO];
     NSSortDescriptor *rewardTypeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"rewardType" ascending:YES];
     NSArray *sortDescriptors = @[rewardTypeDescriptor, typeDescriptor, orderDescriptor, keyDescriptor];
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -339,6 +339,7 @@
         imageName = @"shop_potion";
     } else if ([reward.key isEqualToString:@"armoire"]) {
         imageName = @"shop_armoire";
+        cell.detailLabel.text = [self getArmoireFillStatus];
     } else if (![reward.key isEqualToString:@"reward"]) {
         imageName = [NSString stringWithFormat:@"shop_%@", reward.key];
     }
@@ -390,6 +391,25 @@
         [self.sharedManager updateReward:formViewController.reward onSuccess:nil onError:nil];
     } else {
         [self.sharedManager createReward:formViewController.reward onSuccess:nil onError:nil];
+    }
+}
+
+- (NSUInteger) leftInArmoire {
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Gear" inManagedObjectContext:self.managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"klass == 'armoire' && (owned == nil || owned == NO)"]];
+    NSError *error;
+    NSArray *gear = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    return gear.count;
+}
+
+- (NSString *) getArmoireFillStatus {
+    NSUInteger leftInArmoire = [self leftInArmoire];
+    if (leftInArmoire > 0) {
+        return [NSString stringWithFormat:NSLocalizedString(@"Equipment pieces remaining: %d", nil), leftInArmoire];
+    } else {
+        return NSLocalizedString(@"The Armoire will have new Equipment in the first week of every month. Until then, keep clicking for Experience and Food!", nil);
     }
 }
 
