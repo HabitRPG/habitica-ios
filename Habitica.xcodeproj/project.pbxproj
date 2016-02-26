@@ -1925,6 +1925,7 @@
 		};
 		D9EB4EC118CB4A9400BB2094 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A11A64FF1BAC9FC30037D41C /* debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
