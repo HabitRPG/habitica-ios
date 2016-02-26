@@ -60,9 +60,6 @@
     [self configureNotifications];
     
     [self cleanAndRefresh:application];
-    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
-        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
-    }
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"wasLaunchedBefore"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"wasLaunchedBefore"];
@@ -234,7 +231,7 @@
 }
 
 -(void) configureNotifications {
-    if  ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationType types = UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
         
         UIMutableUserNotificationAction *completeAction = [[UIMutableUserNotificationAction alloc] init];
