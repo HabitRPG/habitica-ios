@@ -27,13 +27,13 @@
 @property int indexOffset;
 @property Reward *editedReward;
 @property BOOL disableFetchedResultsControllerUpdates;
+@property User *user;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
 
 @implementation HRPGRewardsViewController
 
-User *user;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,7 +41,7 @@ User *user;
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
     
-    user = self.sharedManager.user;
+    self.user = self.sharedManager.user;
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(reloadAllData:)
@@ -187,7 +187,7 @@ User *user;
     } else {
         NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"HRPGGearDetailView" owner:self options:nil];
         HRPGGearDetailView *gearView = [nibViews objectAtIndex:0];
-        [gearView configureForReward:reward withGold:[user.gold floatValue]];
+        [gearView configureForReward:reward withGold:[self.user.gold floatValue]];
         gearView.buyAction = ^() {
             if ([reward isKindOfClass:[Reward class]]) {
                 [self.sharedManager getReward:reward.key onSuccess:nil onError:nil];
@@ -250,8 +250,11 @@ User *user;
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"MetaReward" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
-
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"type == 'reward' || type == 'potion' || type == 'armoire' ||buyable == true"]];
+    NSString *predicateString = @"type == 'reward' || type == 'potion' ||buyable == true";
+    if ([self.user.armoireEnabled boolValue]) {
+        predicateString = [predicateString stringByAppendingString:@" || type == 'armoire'"];
+    }
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:predicateString]];
     
     NSSortDescriptor *keyDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
     NSSortDescriptor *orderDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
@@ -329,7 +332,7 @@ User *user;
 - (void)configureCell:(HRPGRewardTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
     MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    [cell configureForReward:reward withGoldOwned:user.gold];
+    [cell configureForReward:reward withGoldOwned:self.user.gold];
     
     NSString *imageName;
     if ([reward.key isEqualToString:@"potion"]) {
