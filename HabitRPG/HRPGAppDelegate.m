@@ -44,15 +44,15 @@
     //Notifications
     CRToastInteractionResponder *blankResponder = [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeAll automaticallyDismiss:YES block:^(CRToastInteractionType interactionType){
     }];
-    [CRToastManager setDefaultOptions:@{kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),
-                                        kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeGravity),
+    [CRToastManager setDefaultOptions:@{kCRToastAnimationInTypeKey : @(CRToastAnimationTypeLinear),
+                                        kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeLinear),
                                         kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
                                         kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop),
                                         kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
                                         kCRToastNotificationPresentationTypeKey: @(CRToastPresentationTypeCover),
-                                        kCRToastTimeIntervalKey: @(2.0),
-                                        kCRToastAnimationInTimeIntervalKey : @(0.7),
-                                        kCRToastAnimationOutTimeIntervalKey : @(0.7),
+                                        kCRToastTimeIntervalKey: @(1.0),
+                                        kCRToastAnimationInTimeIntervalKey : @(0.2),
+                                        kCRToastAnimationOutTimeIntervalKey : @(0.2),
                                         kCRToastFontKey : [UIFont systemFontOfSize:17],
                                         kCRToastInteractionRespondersKey : @[blankResponder]
                                         }];
