@@ -352,11 +352,17 @@
                 }
             } onError:nil];
         } else {
+            reward.buyable = @NO;
             [self.sharedManager buyObject:reward onSuccess:^() {
+                [self.sharedManager fetchBuyableRewards:nil onError:nil];
                 for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
                     [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:NO];
                 }
-            } onError:nil];
+            } onError:^() {
+                reward.buyable = @YES;
+                NSError *error;
+                [self.managedObjectContext save:&error];
+            }];
         }
     }];
 }
