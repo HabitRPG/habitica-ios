@@ -182,7 +182,7 @@ BOOL editable;
     if ([tutorialIdentifier isEqualToString:@"addTask"]) {
         return @{@"text": NSLocalizedString(@"Tap to add a new task.", nil)};
     } else if ([tutorialIdentifier isEqualToString:@"editTask"]) {
-        return @{@"text": NSLocalizedString(@"Tap a task to edit it. Swipe left to delete it.", nil)};
+        return @{@"text": NSLocalizedString(@"Tap a task to edit it and add reminders. Swipe left to delete it.", nil)};
     } else if ([tutorialIdentifier isEqualToString:@"filterTask"]) {
         return @{@"text": NSLocalizedString(@"Tap to filter tasks.", nil)};
     }
