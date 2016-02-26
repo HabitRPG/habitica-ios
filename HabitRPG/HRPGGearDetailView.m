@@ -82,19 +82,22 @@ static inline UIImage* MTDContextCreateRoundedMask( CGRect rect, CGFloat radius_
     self.titleLabel.text = reward.text;
     self.priceLabel.text = [reward.value stringValue];
     self.descriptionText = reward.notes;
-    self.descriptionLabel.text = reward.notes;
     
     if ([reward.value floatValue] > gold) {
         self.buyButton.enabled = NO;
     } else {
         self.buyButton.enabled = YES;
     }
+    
+    if ([reward.key isEqualToString:@"armoire"]) {
+        self.descriptionText = NSLocalizedString(@"Tap on the Enchanted Armoire to randomly receive special equipment, experience, or food!", nil);
+    }
 }
 
 - (void)sizeToFit {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
-    CGFloat width = screenRect.size.width-80;
+    CGFloat width = screenRect.size.width-40;
     
     if (width > 500) {
         width = 500;
@@ -130,6 +133,11 @@ static inline UIImage* MTDContextCreateRoundedMask( CGRect rect, CGFloat radius_
         self.buyAction();
     }
     [self dismissPresentingPopup];
+}
+
+- (void)setDescriptionText:(NSString *)descriptionText {
+    _descriptionText = descriptionText;
+    self.descriptionLabel.text = descriptionText;
 }
 
 @end
