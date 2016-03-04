@@ -22,7 +22,7 @@
     NSString *trimmedNotes = [task.notes stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
     if (trimmedNotes && trimmedNotes.length != 0) {
-        self.subtitleLabel.text = trimmedNotes;
+        self.subtitleLabel.text = [trimmedNotes stringByReplacingEmojiCheatCodesWithUnicode];
         self.subtitleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2];
         self.titleNoteConstraint.constant = 6.0;
     } else {
