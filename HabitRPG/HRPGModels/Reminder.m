@@ -49,6 +49,8 @@
         if ([self.task.completed boolValue]) {
             return;
         }
+    } else {
+        return;
     }
     if ([self.task.type isEqualToString:@"daily"]) {
         for (int day = 0; day < 6; day++) {

@@ -39,7 +39,7 @@
     NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
     [[GAI sharedInstance] setTrackUncaughtExceptions:YES];
     
-    [[Amplitude instance] initializeApiKey:@"3123d3554f5aae83ce3b4a97a8d62ecb"];
+    [[Amplitude instance] initializeApiKey:@"e8d4c24b3d6ef3ee73eeba715023dd43"];
     
     //Notifications
     CRToastInteractionResponder *blankResponder = [CRToastInteractionResponder interactionResponderWithInteractionType:CRToastInteractionTypeAll automaticallyDismiss:YES block:^(CRToastInteractionType interactionType){

@@ -288,4 +288,45 @@
     }
 }
 
+- (void)awakeFromInsert {
+    [super awakeFromInsert];
+    [self observeCompleted];
+}
+
+- (void)awakeFromFetch {
+    [super awakeFromFetch];
+    [self observeCompleted];
+}
+
+- (void)observeCompleted {
+    [self addObserver:self forKeyPath:@"completed"
+              options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:NULL];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change
+                       context:(void *)context {
+    if ([keyPath isEqualToString:@"completed"]) {
+        NSNumber *oldValue = [change objectForKey:NSKeyValueChangeOldKey];
+        NSNumber *newValue = [change objectForKey:NSKeyValueChangeNewKey];
+        if ([newValue boolValue] != [oldValue boolValue]) {
+            for (Reminder *reminder in self.reminders) {
+                if ([newValue boolValue]) {
+                    if ([self.type isEqualToString:@"daily"]) {
+                        [reminder removeTodaysNotifications];
+                    } else {
+                        [reminder removeAllNotifications];
+                    }
+                } else {
+                    [reminder removeAllNotifications];
+                    [reminder scheduleReminders];
+                }
+            }
+        }
+    }
+}
+
+- (void)willTurnIntoFault {
+    [self removeObserver:self forKeyPath:@"completed"];
+}
+
 @end
