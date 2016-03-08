@@ -96,7 +96,6 @@
 		D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */ = {isa = PBXBuildFile; fileRef = D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */; };
 		D98768F51AFFB85100336978 /* blade-equipResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = D98768F41AFFB85100336978 /* blade-equipResponse.json */; };
 		D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98830D41BADD4220018594D /* HRPGLoadingViewController.m */; };
-		D98830DB1BADDE050018594D /* HRPGLoadingSquaresSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = D98830DA1BADDE050018594D /* HRPGLoadingSquaresSegue.m */; };
 		D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9884B4419168AF00078BC7C /* HRPGProgressView.m */; };
 		D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98AD54A19437A3500AF6174 /* HRPGPetViewController.m */; };
 		D98AD54E19437D9400AF6174 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = D98AD54D19437D9400AF6174 /* Pet.m */; };
@@ -395,8 +394,6 @@
 		D98768F41AFFB85100336978 /* blade-equipResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "blade-equipResponse.json"; path = "HabiticaTests/Fixtures/blade-equipResponse.json"; sourceTree = SOURCE_ROOT; };
 		D98830D31BADD4220018594D /* HRPGLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLoadingViewController.h; sourceTree = "<group>"; };
 		D98830D41BADD4220018594D /* HRPGLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLoadingViewController.m; sourceTree = "<group>"; };
-		D98830D91BADDE050018594D /* HRPGLoadingSquaresSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLoadingSquaresSegue.h; sourceTree = "<group>"; };
-		D98830DA1BADDE050018594D /* HRPGLoadingSquaresSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLoadingSquaresSegue.m; sourceTree = "<group>"; };
 		D9884B4319168AF00078BC7C /* HRPGProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGProgressView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9884B4419168AF00078BC7C /* HRPGProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGProgressView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D98AD54919437A3500AF6174 /* HRPGPetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGPetViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -1200,8 +1197,6 @@
 				D9D44C101B0A0C73000732B4 /* HRPGGGuidelinesViewController.m */,
 				D98830D31BADD4220018594D /* HRPGLoadingViewController.h */,
 				D98830D41BADD4220018594D /* HRPGLoadingViewController.m */,
-				D98830D91BADDE050018594D /* HRPGLoadingSquaresSegue.h */,
-				D98830DA1BADDE050018594D /* HRPGLoadingSquaresSegue.m */,
 				D9C31DB11C6501090096F4EC /* Main.storyboard */,
 				D9436ACA1C64FDF2008D1171 /* Social.storyboard */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
@@ -1569,7 +1564,6 @@
 				D9FC1A861BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m in Sources */,
 				D9D4A3AE1BBED941008AD861 /* HRPGTaskSetupTableViewController.m in Sources */,
 				D94AADB4192A30F900546C8E /* Spell.m in Sources */,
-				D98830DB1BADDE050018594D /* HRPGLoadingSquaresSegue.m in Sources */,
 				D9ADD35D19447057006202C1 /* HRPGBall.m in Sources */,
 				D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */,
 				D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */,

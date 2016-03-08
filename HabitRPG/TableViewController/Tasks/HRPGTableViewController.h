@@ -30,5 +30,7 @@
 @property NSInteger filterType;
 @property NSInteger dayStart;
 
+@property NSString* scrollToTaskAfterLoading;
+
 @end
 

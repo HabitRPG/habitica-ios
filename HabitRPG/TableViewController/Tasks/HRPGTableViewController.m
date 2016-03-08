@@ -79,6 +79,14 @@ BOOL editable;
     [self.tableView reloadData];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (self.scrollToTaskAfterLoading) {
+        [self scrollToTaskWithId:self.scrollToTaskAfterLoading];
+        self.scrollToTaskAfterLoading = nil;
+    }
+}
+
 - (void)refresh {
     if (self.openedIndexPath) {
         [self tableView:self.tableView expandTaskAtIndexPath:self.openedIndexPath];
@@ -633,6 +641,7 @@ BOOL editable;
     for (Task *task in self.fetchedResultsController.fetchedObjects) {
         if ([task.id isEqualToString:taskID]) {
             indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+            break;
         }
         index++;
     }

@@ -20,6 +20,7 @@
 #import <CoreSpotlight/CoreSpotlight.h>
 #import "Reminder.h"
 #import "Amplitude.h"
+#import "HRPGLoadingViewController.h"
 
 @interface HRPGAppDelegate()
 
@@ -84,6 +85,11 @@
          [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     }
     
+    UILocalNotification *notification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (notification) {
+        [self displayTaskWithId:[notification.userInfo valueForKey:@"taskID"] fromType:[notification.userInfo valueForKey:@"taskType"]];
+    }
+
     return YES;
 }
 
@@ -291,7 +297,12 @@
         }
         UINavigationController *displayedNavigationController = tabBarController.selectedViewController;
         HRPGTableViewController *displayedTableViewController = (HRPGTableViewController *)displayedNavigationController.topViewController;
-        [displayedTableViewController scrollToTaskWithId:taskID];
+        displayedTableViewController.scrollToTaskAfterLoading = taskID;
+    } else if ([self.window.rootViewController isKindOfClass:[HRPGLoadingViewController class]]) {
+        HRPGLoadingViewController *loadingViewController = (HRPGLoadingViewController *)self.window.rootViewController;
+        loadingViewController.loadingFinishedAction = ^() {
+            [self displayTaskWithId:taskID fromType:taskType];
+        };
     }
 }
 

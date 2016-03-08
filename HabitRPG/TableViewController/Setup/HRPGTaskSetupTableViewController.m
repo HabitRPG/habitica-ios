@@ -327,6 +327,7 @@
                 mutableTaskDictionary[@"priority"] = @1;
                 if ([taskDictionary[@"type"] isEqualToString:@"daily"]) {
                     mutableTaskDictionary[@"startDate"] = [dateFormatter stringFromDate:[NSDate date]];
+                    mutableTaskDictionary[@"notes"] = NSLocalizedString(@"Tap to edit task, change notification time, or delete.", nil);
                 }
                 HRPGBatchOperation *batchOperation = [[HRPGBatchOperation alloc] init];
                 batchOperation.op = @"addTask";
