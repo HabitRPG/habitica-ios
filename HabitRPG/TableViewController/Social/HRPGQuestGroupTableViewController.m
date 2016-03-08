@@ -74,8 +74,18 @@
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self isQuestSection:indexPath.section] && indexPath.item == 0) {
+        if (self.quest) {
+            CGFloat height = [self.quest.text boundingRectWithSize:CGSizeMake(self.viewWidth-32, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]} context:nil].size.height;
+            return height + 16;
+        }
+    }
+    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self listMembers] && indexPath.section == 1 && indexPath.item == 1) {
+    if ([self listMembers] && [self isQuestSection:indexPath.section] && indexPath.item == 1) {
         [self performSegueWithIdentifier:@"ParticipantsSegue" sender:self];
     } else {
         [super tableView:tableView didSelectRowAtIndexPath:indexPath];
