@@ -16,6 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *logoView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
-@property void (^loadingFinishedAction)();
+@property (nonatomic, copy) void (^loadingFinishedAction)();
 
 @end
