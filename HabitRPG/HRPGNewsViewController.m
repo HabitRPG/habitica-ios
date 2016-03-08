@@ -9,6 +9,7 @@
 #import "HRPGNewsViewController.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGTopHeaderNavigationController.h"
+#import "Amplitude.h"
 
 @interface HRPGNewsViewController ()
 
@@ -26,6 +27,13 @@
     self.newsWebView.delegate = self;
     [self.newsWebView loadRequest:request];
     [self.loadingIndicator startAnimating];
+    
+    NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
+    [eventProperties setValue:@"navigate" forKey:@"eventAction"];
+    [eventProperties setValue:@"navigation" forKey:@"eventCategory"];
+    [eventProperties setValue:@"pageview" forKey:@"hitType"];
+    [eventProperties setValue:NSStringFromClass([self class]) forKey:@"page"];
+    [[Amplitude instance] logEvent:@"navigate" withEventProperties:eventProperties];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {

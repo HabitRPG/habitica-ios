@@ -13,6 +13,7 @@
 #import "XLForm.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGManager.h"
+#import "Amplitude.h"
 
 @interface HRPGRewardFormViewController ()
 @property (nonatomic) NSArray *tags;
@@ -29,6 +30,14 @@
         self.managedObjectContext = sharedManager.getManagedObjectContext;
         [self initializeForm];
     }
+    
+    NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
+    [eventProperties setValue:@"navigate" forKey:@"eventAction"];
+    [eventProperties setValue:@"navigation" forKey:@"eventCategory"];
+    [eventProperties setValue:@"pageview" forKey:@"hitType"];
+    [eventProperties setValue:NSStringFromClass([self class]) forKey:@"page"];
+    [[Amplitude instance] logEvent:@"navigate" withEventProperties:eventProperties];
+    
     return self;
 }
 
