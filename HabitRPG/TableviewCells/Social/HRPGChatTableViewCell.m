@@ -53,7 +53,7 @@
     UIMenuController *menu = [UIMenuController sharedMenuController];
     UIMenuItem *profileMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Profile", nil) action:@selector(profileMenuItemSelected:)];
     UIMenuItem *replyMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Reply", nil) action:@selector(reply:)];
-    UIMenuItem *flagMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Flag", nil) action:@selector(flag:)];
+    UIMenuItem *flagMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Report", nil) action:@selector(flag:)];
     [menu setMenuItems: @[profileMenuItem, replyMenuItem, flagMenuItem]];
     [menu update];
     [menu setTargetRect:self.frame inView:self.superview];
