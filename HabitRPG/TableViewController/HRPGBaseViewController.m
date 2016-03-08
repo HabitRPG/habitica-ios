@@ -95,7 +95,7 @@
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
         if (self.tableView.contentOffset.y < -[navigationController getContentOffset]) {
-            [self.tableView setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
+            [self.tableView setContentOffset:CGPointMake(0, 0)];
         }
     }
 }

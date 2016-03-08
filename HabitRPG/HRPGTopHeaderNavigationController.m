@@ -193,7 +193,7 @@
     if ((self.backgroundView.frame.origin.y+self.backgroundView.frame.size.height) < self.bgViewOffset) {
         return 0;
     }
-    return self.backgroundView.frame.size.height-(self.bgViewOffset-self.backgroundView.frame.origin.y);
+    return self.backgroundView.frame.size.height+self.backgroundView.frame.origin.y;
 }
 
 - (CGFloat)bgViewOffset

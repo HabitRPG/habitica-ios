@@ -47,10 +47,6 @@ BOOL editable;
     self.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchBar;
     
-    if (![HRPGSearchDataManager sharedManager].searchString) {
-        self.tableView.contentOffset = CGPointMake(0, self.tableView.contentOffset.y + self.searchBar.frame.size.height);
-    }
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangeFilter:) name:@"taskFilterChanged"  object:nil];
     [self didChangeFilter:nil];
     

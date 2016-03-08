@@ -30,10 +30,6 @@
     self.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchBar;
     
-    if (!self.searchValue) {
-        self.tableView.contentOffset = CGPointMake(0, self.tableView.contentOffset.y + self.searchBar.frame.size.height);
-    }
-    
     [self refresh];
 }
 
