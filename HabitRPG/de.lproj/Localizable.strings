@@ -96,6 +96,9 @@
 /* No comment provided by engineer. */
 "As you complete real-world tasks, you now have a random chance of finding eggs and potions. Combine them to hatch pets" = "Während du echte Aufgaben bewältigst, hast du eine zufällige Möglichkeit Eier und Tränke zu finden. Kombiniere sie um Haustiere schlüpfen zu lassen";
 
+/* No comment provided by engineer. */
+"Attributes" = "Attribute";
+
 /* Noun */
 "Authentication" = "Authentifizierung";
 
@@ -480,6 +483,9 @@ Version %1$@ (%2$@)";
 "Member Since" = "Mitglied seit";
 
 /* No comment provided by engineer. */
+"Mental" = "Mental";
+
+/* No comment provided by engineer. */
 "Menu" = "Menü";
 
 /* No comment provided by engineer. */
@@ -546,6 +552,9 @@ Version %1$@ (%2$@)";
 "Organize Closet" = "Kleiderschrank sortieren";
 
 /* No comment provided by engineer. */
+"Other" = "Anderes";
+
+/* No comment provided by engineer. */
 "Participants" = "Teilnehmer";
 
 /* No comment provided by engineer. */
@@ -565,6 +574,9 @@ Version %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Pets" = "Haustiere";
+
+/* No comment provided by engineer. */
+"Physical" = "Körperlich";
 
 /* No comment provided by engineer. */
 "Positive (+)" = "Positiv (+)";
@@ -637,6 +649,9 @@ Version %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "School" = "Schule";
+
+/* No comment provided by engineer. */
+"Select Attributes" = "Wähle Attribute aus";
 
 /* No comment provided by engineer. */
 "Select Class" = "Wähle Klasse aus";

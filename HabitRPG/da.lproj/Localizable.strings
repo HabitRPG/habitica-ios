@@ -96,6 +96,9 @@
 /* No comment provided by engineer. */
 "As you complete real-world tasks, you now have a random chance of finding eggs and potions. Combine them to hatch pets" = "Når du udfører opgaver i den virkelige verden har du nu en chance for at finde æg og eliksirer. Kombinér dem for at udruge kæledyr";
 
+/* No comment provided by engineer. */
+"Attributes" = "Attributter";
+
 /* Noun */
 "Authentication" = "Godkendelse";
 
@@ -480,6 +483,9 @@ Version %1$@ (%2$@)";
 "Member Since" = "Medlem siden";
 
 /* No comment provided by engineer. */
+"Mental" = "Mental";
+
+/* No comment provided by engineer. */
 "Menu" = "Menu";
 
 /* No comment provided by engineer. */
@@ -546,6 +552,9 @@ Version %1$@ (%2$@)";
 "Organize Closet" = "Ryd op i skabet";
 
 /* No comment provided by engineer. */
+"Other" = "Andet";
+
+/* No comment provided by engineer. */
 "Participants" = "Deltagere";
 
 /* No comment provided by engineer. */
@@ -565,6 +574,9 @@ Version %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Pets" = "Kæledyr";
+
+/* No comment provided by engineer. */
+"Physical" = "Fysisk";
 
 /* No comment provided by engineer. */
 "Positive (+)" = "Positiv (+)";
@@ -637,6 +649,9 @@ Version %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "School" = "Skole";
+
+/* No comment provided by engineer. */
+"Select Attributes" = "Vælg Attributter";
 
 /* No comment provided by engineer. */
 "Select Class" = "Vælg Klasse";

@@ -96,6 +96,9 @@
 /* No comment provided by engineer. */
 "As you complete real-world tasks, you now have a random chance of finding eggs and potions. Combine them to hatch pets" = "Ahora, cuando realices tareas en el mundo real, puede que te toquen huevos y pociones. Combínalos para criar mascotas.";
 
+/* No comment provided by engineer. */
+"Attributes" = "Atributos";
+
 /* Noun */
 "Authentication" = "Autenticación";
 
@@ -480,6 +483,9 @@ Versión %1$@ (%2$@)";
 "Member Since" = "Miembro desde";
 
 /* No comment provided by engineer. */
+"Mental" = "Mentales";
+
+/* No comment provided by engineer. */
 "Menu" = "Menú";
 
 /* No comment provided by engineer. */
@@ -546,6 +552,9 @@ Versión %1$@ (%2$@)";
 "Organize Closet" = "Ordenar el armario";
 
 /* No comment provided by engineer. */
+"Other" = "Otro";
+
+/* No comment provided by engineer. */
 "Participants" = "Participantes";
 
 /* No comment provided by engineer. */
@@ -565,6 +574,9 @@ Versión %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Pets" = "Mascotas";
+
+/* No comment provided by engineer. */
+"Physical" = "Físicos";
 
 /* No comment provided by engineer. */
 "Positive (+)" = "Positivo (+)";
@@ -637,6 +649,9 @@ Versión %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "School" = "Colegio";
+
+/* No comment provided by engineer. */
+"Select Attributes" = "Elegir atributos";
 
 /* No comment provided by engineer. */
 "Select Class" = "Elegir clase";

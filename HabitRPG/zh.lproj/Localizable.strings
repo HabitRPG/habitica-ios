@@ -96,6 +96,9 @@
 /* No comment provided by engineer. */
 "As you complete real-world tasks, you now have a random chance of finding eggs and potions. Combine them to hatch pets" = "現在每當您完成現實世界的任務，都有機會獲得蛋和孵化靈藥。將兩者結合可孵育出寵物。";
 
+/* No comment provided by engineer. */
+"Attributes" = "属性";
+
 /* Noun */
 "Authentication" = "驗證";
 
@@ -480,6 +483,9 @@ Version %1$@ (%2$@)";
 "Member Since" = "加入時間";
 
 /* No comment provided by engineer. */
+"Mental" = "心理上的";
+
+/* No comment provided by engineer. */
 "Menu" = "選單";
 
 /* No comment provided by engineer. */
@@ -546,6 +552,9 @@ Version %1$@ (%2$@)";
 "Organize Closet" = "整理衣櫃";
 
 /* No comment provided by engineer. */
+"Other" = "其他";
+
+/* No comment provided by engineer. */
 "Participants" = "參與者";
 
 /* No comment provided by engineer. */
@@ -565,6 +574,9 @@ Version %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Pets" = "寵物";
+
+/* No comment provided by engineer. */
+"Physical" = "生理上的";
 
 /* No comment provided by engineer. */
 "Positive (+)" = "正面的 ( + )";
@@ -637,6 +649,9 @@ Version %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "School" = "學校";
+
+/* No comment provided by engineer. */
+"Select Attributes" = "選擇属性";
 
 /* No comment provided by engineer. */
 "Select Class" = "選擇職業";

@@ -96,6 +96,9 @@
 /* No comment provided by engineer. */
 "As you complete real-world tasks, you now have a random chance of finding eggs and potions. Combine them to hatch pets" = "Při splnění úkolu v reálném životě máš možnost nalézt vejce a lektvary. Zkombinuj je a líhni mazlíčky";
 
+/* No comment provided by engineer. */
+"Attributes" = "Vlastnosti";
+
 /* Noun */
 "Authentication" = "Ověření";
 
@@ -480,6 +483,9 @@ Verze %1$@ (%2$@)";
 "Member Since" = "Členem od";
 
 /* No comment provided by engineer. */
+"Mental" = "Duševní";
+
+/* No comment provided by engineer. */
 "Menu" = "Menu";
 
 /* No comment provided by engineer. */
@@ -546,6 +552,9 @@ Verze %1$@ (%2$@)";
 "Organize Closet" = "Přerovnat skříň s oblečením";
 
 /* No comment provided by engineer. */
+"Other" = "Další";
+
+/* No comment provided by engineer. */
 "Participants" = "Účastníci";
 
 /* No comment provided by engineer. */
@@ -565,6 +574,9 @@ Verze %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Pets" = "Mazlíčci";
+
+/* No comment provided by engineer. */
+"Physical" = "Fyzické";
 
 /* No comment provided by engineer. */
 "Positive (+)" = "Kladný (+)";
@@ -637,6 +649,9 @@ Verze %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "School" = "Škola";
+
+/* No comment provided by engineer. */
+"Select Attributes" = "Vybrat vlastnosti";
 
 /* No comment provided by engineer. */
 "Select Class" = "Vybrat povolání";
