@@ -14,7 +14,7 @@
 @interface HRPGGuildsOverviewViewController ()
 
 @property User *user;
-@property (nonatomic) NSArray *suggestedGuilds;
+@property(nonatomic) NSArray *suggestedGuilds;
 
 @end
 
@@ -30,11 +30,13 @@
 }
 
 - (void)refresh {
-    [self.sharedManager fetchGroups:@"guilds" onSuccess:^() {
-        [self.refreshControl endRefreshing];
-    }                      onError:^() {
-        [self.refreshControl endRefreshing];
-    }];
+    [self.sharedManager fetchGroups:@"guilds"
+        onSuccess:^() {
+            [self.refreshControl endRefreshing];
+        }
+        onError:^() {
+            [self.refreshControl endRefreshing];
+        }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -65,18 +67,21 @@
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
-        return [self.tableView dequeueReusableCellWithIdentifier:@"PublicGuildsCell" forIndexPath:indexPath];
+        return [self.tableView dequeueReusableCellWithIdentifier:@"PublicGuildsCell"
+                                                    forIndexPath:indexPath];
     } else {
-        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-        
+        UITableViewCell *cell =
+            [self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+
         if (indexPath.section == 0) {
             [self configureCell:cell atIndexPath:indexPath];
         } else {
             cell.textLabel.text = ((Group *)[self suggestedGuilds][indexPath.item]).name;
         }
-        
+
         return cell;
     }
 }
@@ -85,28 +90,34 @@
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
-    
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group"
+                                              inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"type == 'guild' && isMember==YES && id != 'habitrpg'"]];
-    
+    [fetchRequest
+        setPredicate:[NSPredicate predicateWithFormat:
+                                      @"type == 'guild' && isMember==YES && id != 'habitrpg'"]];
+
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
+    NSArray *sortDescriptors = @[ sortDescriptor ];
     [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"guildsList"];
+
+    NSFetchedResultsController *aFetchedResultsController =
+        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                            managedObjectContext:self.managedObjectContext
+                                              sectionNameKeyPath:nil
+                                                       cacheName:@"guildsList"];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
-    
+
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    
+
     return _fetchedResultsController;
 }
 
@@ -114,48 +125,57 @@
     [self.tableView beginUpdates];
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
+                             withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
+                             withRowAnimation:UITableViewRowAnimationFade];
             break;
-            
+
         case NSFetchedResultsChangeUpdate:
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
-            
+
         case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
+                             withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     if (self.suggestedGuilds.count > 0 && self.tableView.numberOfSections == 2) {
-        [self.tableView insertSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView insertSections:[NSIndexSet indexSetWithIndex:2]
+                      withRowAnimation:UITableViewRowAnimationAutomatic];
     } else if (self.suggestedGuilds.count == 0 && self.tableView.numberOfSections == 3) {
-        [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:2]
+                      withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     [self.tableView endUpdates];
 }
 
-- (void) configureCell:(UITableViewCell *) cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Group *guild = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *titleLabel = (UILabel *) [cell viewWithTag:1];
+    UILabel *titleLabel = (UILabel *)[cell viewWithTag:1];
     titleLabel.text = guild.name;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell*)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender {
     if ([segue.identifier isEqualToString:@"ShowGuildSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        HRPGGroupTableViewController *tableviewController = (HRPGGroupTableViewController *) segue.destinationViewController;
+        HRPGGroupTableViewController *tableviewController =
+            (HRPGGroupTableViewController *)segue.destinationViewController;
         if (indexPath.section == 0) {
             Group *guild = [self.fetchedResultsController objectAtIndexPath:indexPath];
             tableviewController.groupID = guild.id;
@@ -166,40 +186,40 @@
     }
 }
 
-- (NSArray *) suggestedGuilds {
-    
+- (NSArray *)suggestedGuilds {
     if ([self.fetchedResultsController fetchedObjects].count >= 3) {
         return nil;
     }
-    
+
     if (_suggestedGuilds != nil) {
         return _suggestedGuilds;
     }
-    
+
     NSMutableArray *guilds = [NSMutableArray array];
     NSMutableArray *memberGuildIds = [NSMutableArray array];
     for (Group *guild in [self.fetchedResultsController fetchedObjects]) {
         [memberGuildIds addObject:guild.id];
     }
-    
+
     if (![memberGuildIds containsObject:@"5481ccf3-5d2d-48a9-a871-70a7380cee5a"]) {
         [guilds addObject:@"5481ccf3-5d2d-48a9-a871-70a7380cee5a"];
     }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults objectForKey:@"partyID"] && ![memberGuildIds containsObject:@"f2db2a7f-13c5-454d-b3ee-ea1f5089e601"]) {
+    if (![defaults objectForKey:@"partyID"] &&
+        ![memberGuildIds containsObject:@"f2db2a7f-13c5-454d-b3ee-ea1f5089e601"]) {
         [guilds addObject:@"f2db2a7f-13c5-454d-b3ee-ea1f5089e601"];
     }
-    
+
     NSDictionary *taskGroups = @{
-                                 @"work": @[@"cf0a9cb8-606e-4bf0-bcad-f9b1715b8819"],
-                                 @"exercise": @[],
-                                 @"healthWellness": @[@"b422b8a5-8d66-4197-9f91-d4edb8610264"],
-                                 @"school": @[@"82fe50b1-4fa5-4e94-8114-aa66516c0d9d"],
-                                 @"teams": @[],
-                                 @"chores": @[],
-                                 @"creativity": @[@"dea7a124-9e69-4163-a708-d3e961a96159"],
-                                 };
-    
+        @"work" : @[ @"cf0a9cb8-606e-4bf0-bcad-f9b1715b8819" ],
+        @"exercise" : @[],
+        @"healthWellness" : @[ @"b422b8a5-8d66-4197-9f91-d4edb8610264" ],
+        @"school" : @[ @"82fe50b1-4fa5-4e94-8114-aa66516c0d9d" ],
+        @"teams" : @[],
+        @"chores" : @[],
+        @"creativity" : @[ @"dea7a124-9e69-4163-a708-d3e961a96159" ],
+    };
+
     for (ImprovementCategory *category in self.user.preferences.improvementCategories) {
         NSArray *guildsList = [taskGroups objectForKey:category.identifier];
         for (NSString *guildID in guildsList) {
@@ -208,27 +228,31 @@
             }
         }
     }
-    
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group"
+                                              inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"type == 'guild' && id IN %@", guilds]];
-    
+    [fetchRequest
+        setPredicate:[NSPredicate predicateWithFormat:@"type == 'guild' && id IN %@", guilds]];
+
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
+    NSArray *sortDescriptors = @[ sortDescriptor ];
     [fetchRequest setSortDescriptors:sortDescriptors];
-    
+
     NSError *error;
     _suggestedGuilds = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
+
     if (_suggestedGuilds.count < guilds.count) {
-        [self.sharedManager fetchGroups:@"public" onSuccess:^() {
-            _suggestedGuilds = nil;
-            [self.tableView reloadData];
-        }onError:nil];
+        [self.sharedManager fetchGroups:@"public"
+                              onSuccess:^() {
+                                  _suggestedGuilds = nil;
+                                  [self.tableView reloadData];
+                              }
+                                onError:nil];
     }
-    
+
     return _suggestedGuilds;
 }
 

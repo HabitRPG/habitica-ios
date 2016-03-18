@@ -13,11 +13,11 @@
 
 @interface HRPGTopHeaderNavigationController ()
 
-@property (nonatomic, strong) HRPGUserTopHeader *topHeader;
-@property (nonatomic, strong) UIView *backgroundView;
-@property (nonatomic, strong) UIView *bottomBorderView;
-@property (nonatomic, strong) UIView *upperBackgroundView;
-@property (nonatomic, readonly) CGFloat topHeaderHeight;
+@property(nonatomic, strong) HRPGUserTopHeader *topHeader;
+@property(nonatomic, strong) UIView *backgroundView;
+@property(nonatomic, strong) UIView *bottomBorderView;
+@property(nonatomic, strong) UIView *upperBackgroundView;
+@property(nonatomic, readonly) CGFloat topHeaderHeight;
 
 - (CGFloat)statusBarHeight;
 - (CGFloat)bgViewOffset;
@@ -25,7 +25,7 @@
 @property UIScrollView *scrollableView;
 @property CGFloat scrolloffset;
 @property UIPanGestureRecognizer *gestureRecognizer;
-@property (nonatomic) CGFloat previousScrollViewYOffset;
+@property(nonatomic) CGFloat previousScrollViewYOffset;
 @property CGFloat delayDistance;
 @property CGFloat maxDelay;
 @property HRPGTopHeaderState previousState;
@@ -42,37 +42,38 @@
     self.navigationBar.translucent = YES;
     self.view.backgroundColor = [UIColor clearColor];
     self.navigationBar.backgroundColor = [UIColor clearColor];
-    
-    
-    NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"HRPGUserTopHeader" owner:self options:nil];
+
+    NSArray *nibViews =
+        [[NSBundle mainBundle] loadNibNamed:@"HRPGUserTopHeader" owner:self options:nil];
     self.topHeader = [nibViews objectAtIndex:0];
     self.state = HRPGTopHeaderStateVisible;
     self.backgroundView = [[UIView alloc] init];
     self.backgroundView.backgroundColor = [UIColor gray600];
-    
+
     self.bottomBorderView = [[UIView alloc] init];
     [self.bottomBorderView setBackgroundColor:[UIColor gray400]];
-    
+
     self.upperBackgroundView = [[UIView alloc] init];
     [self.upperBackgroundView setBackgroundColor:[UIColor gray600]];
-    
+
     [self.backgroundView addSubview:self.bottomBorderView];
     [self.backgroundView addSubview:self.topHeader];
     [self.view insertSubview:self.upperBackgroundView belowSubview:self.navigationBar];
     [self.view insertSubview:self.backgroundView belowSubview:self.upperBackgroundView];
-    
+
     self.maxDelay = 150;
     self.headerYPosition = [self bgViewOffset];
 }
 
-
--(void)viewWillLayoutSubviews {
+- (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     CGRect parentFrame = self.view.frame;
-    self.backgroundView.frame = CGRectMake(0, self.headerYPosition, parentFrame.size.width, self.topHeaderHeight);
+    self.backgroundView.frame =
+        CGRectMake(0, self.headerYPosition, parentFrame.size.width, self.topHeaderHeight);
     self.upperBackgroundView.frame = CGRectMake(0, 0, parentFrame.size.width, [self bgViewOffset]);
-    self.bottomBorderView.frame = CGRectMake(0, self.backgroundView.frame.size.height - 6, parentFrame.size.width, 6);
-    self.topHeader.frame = CGRectMake(0, 0, parentFrame.size.width, self.topHeaderHeight-6);
+    self.bottomBorderView.frame =
+        CGRectMake(0, self.backgroundView.frame.size.height - 6, parentFrame.size.width, 6);
+    self.topHeader.frame = CGRectMake(0, 0, parentFrame.size.width, self.topHeaderHeight - 6);
 }
 
 - (void)stoppedScrolling:(CGFloat)delta {
@@ -96,11 +97,15 @@
     CGRect frame = self.backgroundView.frame;
     frame.origin.y = [self bgViewOffset];
     self.headerYPosition = frame.origin.y;
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^() {
-        self.backgroundView.frame = frame;
-        [self setNavigationBarColors:0];
-    } completion:^(BOOL completed) {
-    }];
+    [UIView animateWithDuration:0.3
+        delay:0
+        options:UIViewAnimationOptionCurveEaseOut
+        animations:^() {
+            self.backgroundView.frame = frame;
+            [self setNavigationBarColors:0];
+        }
+        completion:^(BOOL completed){
+        }];
 }
 
 - (void)hideHeader {
@@ -108,19 +113,23 @@
     CGRect frame = self.backgroundView.frame;
     frame.origin.y = -frame.size.height;
     self.headerYPosition = frame.origin.y;
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^() {
+    [UIView animateWithDuration:0.3
+        delay:0
+        options:UIViewAnimationOptionCurveEaseOut
+        animations:^() {
 
-        self.backgroundView.frame = frame;
-        [self setNavigationBarColors:1];
-    } completion:^(BOOL completed) {
-    }];
+            self.backgroundView.frame = frame;
+            [self setNavigationBarColors:1];
+        }
+        completion:^(BOOL completed){
+        }];
 }
 
-- (void)startFollowingScrollView:(UIScrollView *)scrollView withOffset:(CGFloat) scrolloffset {
+- (void)startFollowingScrollView:(UIScrollView *)scrollView withOffset:(CGFloat)scrolloffset {
     if (self.scrollableView) {
         [self stopFollowingScrollView];
     }
-    
+
     self.scrollableView = scrollView;
     self.scrolloffset = scrolloffset;
 }
@@ -131,16 +140,16 @@
     self.scrollableView = nil;
 }
 
-- (void) scrollview:(UIScrollView *)scrollView scrolledToPosition:(CGFloat)position {
+- (void)scrollview:(UIScrollView *)scrollView scrolledToPosition:(CGFloat)position {
     if (self.scrollableView != scrollView) {
         return;
     }
     CGRect frame = self.backgroundView.frame;
-    CGFloat newYPos = -position-frame.size.height;
+    CGFloat newYPos = -position - frame.size.height;
     if (newYPos > self.bgViewOffset) {
         newYPos = self.bgViewOffset;
     }
-    if ((newYPos+frame.size.height) > self.bgViewOffset) {
+    if ((newYPos + frame.size.height) > self.bgViewOffset) {
         [self setState:HRPGTopHeaderStateVisible];
     } else {
         [self setState:HRPGTopHeaderStateHidden];
@@ -148,14 +157,19 @@
     frame.origin = CGPointMake(frame.origin.x, newYPos);
     self.headerYPosition = frame.origin.y;
     self.backgroundView.frame = frame;
-    CGFloat alpha = -((frame.origin.y-[self bgViewOffset]) / frame.size.height);
+    CGFloat alpha = -((frame.origin.y - [self bgViewOffset]) / frame.size.height);
     [self setNavigationBarColors:alpha];
 }
 
-- (void)setNavigationBarColors:(CGFloat) alpha {
-    self.upperBackgroundView.backgroundColor = [[UIColor gray600] blendWithColor:[UIColor purple300] alpha:alpha];
-    self.navigationBar.tintColor = [[UIColor purple400] blendWithColor:[UIColor gray600] alpha:alpha];
-    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [[UIColor blackColor] blendWithColor:[UIColor whiteColor] alpha:alpha]};
+- (void)setNavigationBarColors:(CGFloat)alpha {
+    self.upperBackgroundView.backgroundColor =
+        [[UIColor gray600] blendWithColor:[UIColor purple300] alpha:alpha];
+    self.navigationBar.tintColor =
+        [[UIColor purple400] blendWithColor:[UIColor gray600] alpha:alpha];
+    self.navigationBar.titleTextAttributes = @{
+        NSForegroundColorAttributeName :
+            [[UIColor blackColor] blendWithColor:[UIColor whiteColor] alpha:alpha]
+    };
     if (self.navigationBar.barStyle == UIBarStyleDefault && alpha > 0.5) {
         self.navigationBar.barStyle = UIBarStyleBlack;
         [self setNeedsStatusBarAppearanceUpdate];
@@ -166,7 +180,8 @@
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return self.navigationBar.barStyle == UIBarStyleBlack ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault;
+    return self.navigationBar.barStyle == UIBarStyleBlack ? UIStatusBarStyleLightContent
+                                                          : UIStatusBarStyleDefault;
 }
 
 - (CGFloat)topHeaderHeight {
@@ -178,8 +193,7 @@
 }
 
 #pragma mark - Helpers
-- (CGFloat)getContentInset
-{
+- (CGFloat)getContentInset {
     return self.topHeaderHeight;
 }
 
@@ -190,18 +204,20 @@
 }
 
 - (CGFloat)getContentOffset {
-    if ((self.backgroundView.frame.origin.y+self.backgroundView.frame.size.height) < self.bgViewOffset) {
+    if ((self.backgroundView.frame.origin.y + self.backgroundView.frame.size.height) <
+        self.bgViewOffset) {
         return 0;
     }
-    return self.backgroundView.frame.size.height+self.backgroundView.frame.origin.y;
+    return self.backgroundView.frame.size.height + self.backgroundView.frame.origin.y;
 }
 
-- (CGFloat)bgViewOffset
-{
+- (CGFloat)bgViewOffset {
     return self.statusBarHeight + self.navigationBar.frame.size.height;
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+    shouldRecognizeSimultaneouslyWithGestureRecognizer:
+        (UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
 }
 

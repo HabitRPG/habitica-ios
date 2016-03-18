@@ -10,28 +10,26 @@
 
 @implementation HRPGCopyTableViewCell
 
-
-- (void) copy: (id) sender {
+- (void)copy:(id)sender {
     if (self.detailTextLabel.text) {
         UIPasteboard *pboard = [UIPasteboard generalPasteboard];
         pboard.string = self.detailTextLabel.text;
     }
 }
 
-- (BOOL) canPerformAction: (SEL) action withSender: (id) sender {
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
     return (action == @selector(copy:));
 }
 
-- (void) selectedCell {
+- (void)selectedCell {
     [self becomeFirstResponder];
     UIMenuController *menu = [UIMenuController sharedMenuController];
     [menu setTargetRect:self.frame inView:self.superview];
     [menu setMenuVisible:YES animated:YES];
 }
 
-- (BOOL) canBecomeFirstResponder {
+- (BOOL)canBecomeFirstResponder {
     return YES;
 }
-
 
 @end

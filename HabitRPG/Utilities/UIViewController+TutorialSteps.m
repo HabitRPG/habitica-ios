@@ -31,16 +31,20 @@
     if (self.tutorialIdentifier && !self.displayedTutorialStep) {
         if (![[sharedManager user] hasSeenTutorialStepWithIdentifier:self.tutorialIdentifier]) {
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            NSString *defaultsKey = [NSString stringWithFormat:@"tutorial%@", self.tutorialIdentifier];
+            NSString *defaultsKey =
+                [NSString stringWithFormat:@"tutorial%@", self.tutorialIdentifier];
             NSDate *nextAppearance = [defaults valueForKey:defaultsKey];
             if (!([nextAppearance compare:[NSDate date]] == NSOrderedDescending)) {
                 self.displayedTutorialStep = YES;
-                [self displayExlanationView:self.tutorialIdentifier highlightingArea:CGRectZero withDefaults:defaults inDefaultsKey:defaultsKey withTutorialType:@"common"];
-
+                [self displayExlanationView:self.tutorialIdentifier
+                           highlightingArea:CGRectZero
+                               withDefaults:defaults
+                              inDefaultsKey:defaultsKey
+                           withTutorialType:@"common"];
             }
         }
     }
-    
+
     if (self.coachMarks && !self.displayedTutorialStep) {
         for (NSString *coachMark in self.coachMarks) {
             if (![[sharedManager user] hasSeenTutorialStepWithIdentifier:coachMark]) {
@@ -54,7 +58,11 @@
                     CGRect frame = [self getFrameForCoachmark:coachMark];
                     if (!CGRectEqualToRect(frame, CGRectZero)) {
                         self.displayedTutorialStep = YES;
-                        [self displayExlanationView:coachMark highlightingArea:frame withDefaults:defaults inDefaultsKey:defaultsKey withTutorialType:@"ios"];
+                        [self displayExlanationView:coachMark
+                                   highlightingArea:frame
+                                       withDefaults:defaults
+                                      inDefaultsKey:defaultsKey
+                                   withTutorialType:@"ios"];
                     }
                 }
                 break;
@@ -63,8 +71,14 @@
     }
 }
 
-- (void)displayExlanationView:(NSString *)identifier  highlightingArea:(CGRect)frame withDefaults:(NSUserDefaults *)defaults inDefaultsKey:(NSString *)defaultsKey withTutorialType:(NSString *)type {
-    TutorialSteps *step = [TutorialSteps markStep:identifier withType:type withContext:self.sharedManager.getManagedObjectContext];
+- (void)displayExlanationView:(NSString *)identifier
+             highlightingArea:(CGRect)frame
+                 withDefaults:(NSUserDefaults *)defaults
+                inDefaultsKey:(NSString *)defaultsKey
+             withTutorialType:(NSString *)type {
+    TutorialSteps *step = [TutorialSteps markStep:identifier
+                                         withType:type
+                                      withContext:self.sharedManager.getManagedObjectContext];
     NSString *className = NSStringFromClass([self class]);
     if ([step.wasShown boolValue]) {
         return;
@@ -72,43 +86,46 @@
     if (step.shownInView && ![step.shownInView isEqualToString:className]) {
         return;
     }
-    
+
     step.shownInView = className;
     step.wasShown = @YES;
     NSError *error;
     [self.sharedManager.getManagedObjectContext saveToPersistentStore:&error];
-    
+
     NSDictionary *tutorialDefinition = [self getDefinitonForTutorial:identifier];
     HRPGExplanationView *explanationView = [[HRPGExplanationView alloc] init];
     self.activeTutorialView = explanationView;
     explanationView.speechBubbleText = tutorialDefinition[@"text"];
     if (!CGRectIsEmpty(frame)) {
         explanationView.highlightedFrame = frame;
-        [explanationView displayHintOnView:self.parentViewController.view withDisplayView:self.parentViewController.parentViewController.view animated:YES];
+        [explanationView displayHintOnView:self.parentViewController.view
+                           withDisplayView:self.parentViewController.parentViewController.view
+                                  animated:YES];
     } else {
-        [explanationView displayOnView:self.parentViewController.parentViewController.view animated:YES];
+        [explanationView displayOnView:self.parentViewController.parentViewController.view
+                              animated:YES];
     }
     if ([type isEqualToString:@"common"]) {
         [[self.sharedManager user] addCommonTutorialStepsObject:step];
     } else {
         [[self.sharedManager user] addIosTutorialStepsObject:step];
     }
-    
+
     NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
     [eventProperties setValue:@"tutorial" forKey:@"eventAction"];
     [eventProperties setValue:@"behaviour" forKey:@"eventCategory"];
     [eventProperties setValue:@"event" forKey:@"event"];
-    [eventProperties setValue:[step.identifier stringByAppendingString:@"-iOS"] forKey:@"eventLabel"];
+    [eventProperties setValue:[step.identifier stringByAppendingString:@"-iOS"]
+                       forKey:@"eventLabel"];
     [eventProperties setValue:step.identifier forKey:@"eventValue"];
     [eventProperties setValue:@NO forKey:@"complete"];
     [[Amplitude instance] logEvent:@"tutorial" withEventProperties:eventProperties];
 
-    
-    explanationView.dismissAction= ^(BOOL wasSeen) {
+    explanationView.dismissAction = ^(BOOL wasSeen) {
         self.activeTutorialView = nil;
-        
+
         if (!wasSeen) {
-            //Show it again the next day
+            // Show it again the next day
             NSDate *nextAppearance = [[NSDate date] dateByAddingTimeInterval:86400];
             [defaults setValue:nextAppearance forKey:defaultsKey];
         } else {
@@ -116,14 +133,20 @@
             [eventProperties setValue:@"tutorial" forKey:@"eventAction"];
             [eventProperties setValue:@"behaviour" forKey:@"eventCategory"];
             [eventProperties setValue:@"event" forKey:@"event"];
-            [eventProperties setValue:[step.identifier stringByAppendingString:@"-iOS"] forKey:@"eventLabel"];
+            [eventProperties setValue:[step.identifier stringByAppendingString:@"-iOS"]
+                               forKey:@"eventLabel"];
             [eventProperties setValue:step.identifier forKey:@"eventValue"];
             [eventProperties setValue:@YES forKey:@"complete"];
             [[Amplitude instance] logEvent:@"tutorial" withEventProperties:eventProperties];
         }
         NSError *error;
         [self.sharedManager.getManagedObjectContext saveToPersistentStore:&error];
-        [self.sharedManager updateUser:@{[NSString stringWithFormat:@"flags.tutorial.%@.%@", type, step.identifier]: [NSNumber numberWithBool:wasSeen]} onSuccess:nil onError:nil];
+        [self.sharedManager updateUser:@{
+            [NSString stringWithFormat:@"flags.tutorial.%@.%@", type, step.identifier] :
+                [NSNumber numberWithBool:wasSeen]
+        }
+                             onSuccess:nil
+                               onError:nil];
     };
 }
 
@@ -135,4 +158,3 @@
 }
 
 @end
-

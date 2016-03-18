@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRPGWebViewController : UIViewController <UIWebViewDelegate>
+@interface HRPGWebViewController : UIViewController<UIWebViewDelegate>
 
 @property NSString *url;
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *shareButton;
+@property(weak, nonatomic) IBOutlet UIWebView *webView;
+@property(weak, nonatomic) IBOutlet UIBarButtonItem *shareButton;
 
 @end

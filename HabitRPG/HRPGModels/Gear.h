@@ -16,7 +16,7 @@
 @property(nonatomic, retain) NSNumber *con;
 @property(nonatomic, retain) NSNumber *index;
 @property(nonatomic, retain) NSNumber *intelligence;
-@property(nonatomic, retain, getter = getCleanedClassName) NSString *klass;
+@property(nonatomic, retain, getter=getCleanedClassName) NSString *klass;
 @property(nonatomic, retain) NSNumber *per;
 @property(nonatomic, retain) NSNumber *str;
 @property(nonatomic) BOOL owned;
@@ -25,7 +25,7 @@
 @property(nonatomic) NSString *specialClass;
 @property(nonatomic) NSString *set;
 
--(BOOL)isEquippedBy:(User*)user;
--(BOOL)isCostumeOf:(User*)user;
+- (BOOL)isEquippedBy:(User *)user;
+- (BOOL)isCostumeOf:(User *)user;
 
 @end

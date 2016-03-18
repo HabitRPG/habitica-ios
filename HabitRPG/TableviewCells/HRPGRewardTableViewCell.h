@@ -11,18 +11,17 @@
 
 @interface HRPGRewardTableViewCell : UITableViewCell
 
-- (void) configureForReward:(MetaReward *)reward withGoldOwned:(NSNumber *)gold;
+- (void)configureForReward:(MetaReward *)reward withGoldOwned:(NSNumber *)gold;
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleNotesConstraint;
-@property (weak, nonatomic) IBOutlet UIImageView *shopImageView;
-@property (weak, nonatomic) IBOutlet UIView *buyButton;
-@property (weak, nonatomic) IBOutlet UIView *buyView;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *coinImageView;
+@property(weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property(weak, nonatomic) IBOutlet UILabel *detailLabel;
+@property(weak, nonatomic) IBOutlet NSLayoutConstraint *titleNotesConstraint;
+@property(weak, nonatomic) IBOutlet UIImageView *shopImageView;
+@property(weak, nonatomic) IBOutlet UIView *buyButton;
+@property(weak, nonatomic) IBOutlet UIView *buyView;
+@property(weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property(weak, nonatomic) IBOutlet UIImageView *coinImageView;
 
 - (void)onPurchaseTap:(void (^)())actionBlock;
-
 
 @end

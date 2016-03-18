@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
 
-@interface HRPGFAQTableViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate, UISearchBarDelegate>
+@interface HRPGFAQTableViewController
+    : HRPGBaseViewController<NSFetchedResultsControllerDelegate, UISearchBarDelegate>
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 

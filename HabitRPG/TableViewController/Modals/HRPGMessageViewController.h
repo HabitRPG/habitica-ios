@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Group.h"
 
-@interface HRPGMessageViewController : UIViewController <UITextViewDelegate>
+@interface HRPGMessageViewController : UIViewController<UITextViewDelegate>
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-@property (weak, nonatomic) IBOutlet UITextView *messageView;
+@property(weak, nonatomic) IBOutlet UITextView *messageView;
 
-@property (nonatomic) NSString *presetText;
+@property(nonatomic) NSString *presetText;
 @end

@@ -10,26 +10,23 @@
 
 @implementation NSDate (Screenshot)
 
-- (NSNumber*)daysSinceDate:(NSDate *)date {
+- (NSNumber *)daysSinceDate:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    
+
     if (date == nil) {
         date = [NSDate date];
     }
 
     NSDate *fromDate;
     NSDate *toDate;
-    
-    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate
-                 interval:NULL forDate:date];
-    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDate
-                 interval:NULL forDate:self];
-    
-    NSDateComponents *difference = [calendar components:NSCalendarUnitDay
-                                               fromDate:fromDate toDate:toDate options:0];
-    
+
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate interval:NULL forDate:date];
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDate interval:NULL forDate:self];
+
+    NSDateComponents *difference =
+        [calendar components:NSCalendarUnitDay fromDate:fromDate toDate:toDate options:0];
+
     return [NSNumber numberWithInteger:[difference day]];
 }
 
 @end
-

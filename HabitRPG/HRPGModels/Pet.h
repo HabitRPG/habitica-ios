@@ -12,10 +12,10 @@
 
 @interface Pet : NSManagedObject
 
-@property (nonatomic, retain) NSString * key;
-@property (nonatomic, retain) NSNumber * trained;
-@property (nonatomic, retain) NSNumber * asMount;
-@property (nonatomic, retain) NSString * type;
+@property(nonatomic, retain) NSString *key;
+@property(nonatomic, retain) NSNumber *trained;
+@property(nonatomic, retain) NSNumber *asMount;
+@property(nonatomic, retain) NSString *type;
 - (void)setMountOnImageView:(UIImageView *)imageView;
 - (BOOL)likesFood:(Food *)food;
 

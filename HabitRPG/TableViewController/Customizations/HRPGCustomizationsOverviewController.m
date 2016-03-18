@@ -19,14 +19,16 @@
 @property NSString *typeName;
 @property User *user;
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
+- (void)configureCell:(UITableViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+        withAnimation:(BOOL)animate;
 @end
 
 @implementation HRPGCustomizationsOverviewController
 Gear *selectedGear;
 NSIndexPath *selectedIndex;
 
--(void)viewDidLoad {
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.user = [self.sharedManager getUser];
 }
@@ -35,9 +37,11 @@ NSIndexPath *selectedIndex;
     NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
     if (tableSelection) {
         if (tableSelection.section == 1) {
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
         } else {
-            [self.tableView reloadRowsAtIndexPaths:@[tableSelection] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadRowsAtIndexPaths:@[ tableSelection ]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
         }
     }
     [super viewWillAppear:animated];
@@ -69,10 +73,12 @@ NSIndexPath *selectedIndex;
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SizeCell" forIndexPath:indexPath];
-        UISegmentedControl *sizeControl = (UISegmentedControl*)[cell viewWithTag:1];
+        UITableViewCell *cell =
+            [tableView dequeueReusableCellWithIdentifier:@"SizeCell" forIndexPath:indexPath];
+        UISegmentedControl *sizeControl = (UISegmentedControl *)[cell viewWithTag:1];
         if ([self.user.preferences.size isEqualToString:@"slim"]) {
             [sizeControl setSelectedSegmentIndex:0];
         } else {
@@ -84,8 +90,9 @@ NSIndexPath *selectedIndex;
     if (indexPath.section == 2) {
         cellName = @"BackgroundCell";
     }
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
+
+    UITableViewCell *cell =
+        [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
 }
@@ -97,57 +104,65 @@ NSIndexPath *selectedIndex;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 0) {
         return 50;
-    } if (indexPath.section == 2) {
+    }
+    if (indexPath.section == 2) {
         return 148;
     }
     return 76;
 }
 
-
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
-    
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Customization" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Customization"
+                                              inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
-    
+
     NSPredicate *predicate;
     predicate = [NSPredicate predicateWithFormat:@"purchased == True || price == 0"];
     [fetchRequest setPredicate:predicate];
-    
+
     NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
     NSSortDescriptor *nameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSArray *sortDescriptors = @[typeDescriptor, nameDescriptor];
-    
+    NSArray *sortDescriptors = @[ typeDescriptor, nameDescriptor ];
+
     [fetchRequest setSortDescriptors:sortDescriptors];
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController =
+        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                            managedObjectContext:self.managedObjectContext
+                                              sectionNameKeyPath:nil
+                                                       cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
-    
+
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    
+
     return _fetchedResultsController;
 }
-
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView beginUpdates];
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+- (void)controller:(NSFetchedResultsController *)controller
+  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex
+     forChangeType:(NSFetchedResultsChangeType)type {
     [self.tableView reloadData];
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
     [tableView reloadData];
@@ -157,10 +172,12 @@ NSIndexPath *selectedIndex;
     [self.tableView endUpdates];
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
-    UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
+- (void)configureCell:(UITableViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+        withAnimation:(BOOL)animate {
+    UILabel *textLabel = (UILabel *)[cell viewWithTag:1];
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-    
+
     NSString *searchedKey;
     NSString *typeName;
     NSString *searchedType;
@@ -221,30 +238,36 @@ NSIndexPath *selectedIndex;
             typeName = NSLocalizedString(@"Background", nil);
         }
     }
-    
+
     textLabel.text = typeName;
-    UILabel *detailLabel = (UILabel*)[cell viewWithTag:2];
+    UILabel *detailLabel = (UILabel *)[cell viewWithTag:2];
     detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-    UIImageView *imageView = (UIImageView*)[cell viewWithTag:3];
-    
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:3];
+
     if ([searchedType isEqualToString:@"ear"]) {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Gear" inManagedObjectContext:self.managedObjectContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Gear"
+                                                  inManagedObjectContext:self.managedObjectContext];
         [fetchRequest setEntity:entity];
         [fetchRequest setFetchBatchSize:20];
-        
+
         NSPredicate *predicate;
-        predicate = [NSPredicate predicateWithFormat:@"type == 'headAccessory' && key == %@ && set == 'animal'", searchedKey];
+        predicate = [NSPredicate
+            predicateWithFormat:@"type == 'headAccessory' && key == %@ && set == 'animal'",
+                                searchedKey];
         [fetchRequest setPredicate:predicate];
-        
+
         NSError *error;
-        NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        NSArray *results =
+            [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
         if (results.count > 0) {
             Gear *equippedEar = results[0];
             detailLabel.text = equippedEar.text;
             detailLabel.textColor = [UIColor blackColor];
             imageView.contentMode = UIViewContentModeCenter;
-            [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", equippedEar.key] withFormat:@"png" onView:imageView];
+            [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", equippedEar.key]
+                              withFormat:@"png"
+                                  onView:imageView];
             imageView.alpha = 1.0;
         } else {
             detailLabel.text = NSLocalizedString(@"Nothing Set", nil);
@@ -256,7 +279,8 @@ NSIndexPath *selectedIndex;
         Customization *searchedCustomization;
         if (searchedKey && ![searchedKey isEqualToString:@""]) {
             for (Customization *customization in self.fetchedResultsController.fetchedObjects) {
-                if ([customization.name isEqualToString:searchedKey] && [customization.type isEqualToString:searchedType]) {
+                if ([customization.name isEqualToString:searchedKey] &&
+                    [customization.type isEqualToString:searchedType]) {
                     if (searchedGroup) {
                         if (![searchedGroup isEqualToString:customization.group]) {
                             continue;
@@ -266,13 +290,14 @@ NSIndexPath *selectedIndex;
                     break;
                 }
             }
-            
         }
         if (searchedCustomization && ![searchedCustomization.name isEqualToString:@"0"]) {
             detailLabel.text = [searchedCustomization.name capitalizedString];
             detailLabel.textColor = [UIColor blackColor];
             imageView.contentMode = UIViewContentModeBottomRight;
-            [self.sharedManager setImage:[searchedCustomization getImageNameForUser:self.user] withFormat:@"png" onView:imageView];
+            [self.sharedManager setImage:[searchedCustomization getImageNameForUser:self.user]
+                              withFormat:@"png"
+                                  onView:imageView];
             imageView.alpha = 1.0;
         } else {
             detailLabel.text = NSLocalizedString(@"Nothing Set", nil);
@@ -286,7 +311,8 @@ NSIndexPath *selectedIndex;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"DetailSegue"]) {
-        HRPGCustomizationCollectionViewController *destViewController = (HRPGCustomizationCollectionViewController*)segue.destinationViewController;
+        HRPGCustomizationCollectionViewController *destViewController =
+            (HRPGCustomizationCollectionViewController *)segue.destinationViewController;
         destViewController.user = self.user;
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         destViewController.entityName = @"Customization";
@@ -333,7 +359,7 @@ NSIndexPath *selectedIndex;
                     destViewController.userKey = @"preferences.hair.mustache";
                     destViewController.group = @"mustache";
                     break;
-                    
+
                 default:
                     break;
             }
@@ -344,19 +370,23 @@ NSIndexPath *selectedIndex;
     }
 }
 
-- (IBAction)userSizeChanged:(UISegmentedControl*)sender {
+- (IBAction)userSizeChanged:(UISegmentedControl *)sender {
     NSString *newSize;
     if (sender.selectedSegmentIndex == 0) {
         newSize = @"slim";
     } else {
         newSize = @"broad";
     }
-    
-    [self.sharedManager updateUser:@{@"preferences.size": newSize} onSuccess:^() {
-        
-    }onError:^() {
-        
-    }];
+
+    [self.sharedManager updateUser:@{
+        @"preferences.size" : newSize
+    }
+        onSuccess:^() {
+
+        }
+        onError:^(){
+
+        }];
 }
 
 @end

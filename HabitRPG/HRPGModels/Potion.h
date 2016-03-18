@@ -12,5 +12,4 @@
 
 @interface Potion : MetaReward
 
-
 @end

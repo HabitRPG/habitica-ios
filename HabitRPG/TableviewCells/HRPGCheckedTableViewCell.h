@@ -12,13 +12,13 @@
 #import "Task.h"
 
 @interface HRPGCheckedTableViewCell : HRPGTaskTableViewCell
-@property (weak, nonatomic) IBOutlet HRPGCheckBoxView *checkBox;
-@property (weak, nonatomic) IBOutlet UIView *checklistIndicator;
-@property (weak, nonatomic) IBOutlet UILabel *checklistDoneLabel;
-@property (weak, nonatomic) IBOutlet UILabel *checklistAllLabel;
-@property (weak, nonatomic) IBOutlet UIView *checklistSeparator;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *checklistIndicatorWidth;
+@property(weak, nonatomic) IBOutlet HRPGCheckBoxView *checkBox;
+@property(weak, nonatomic) IBOutlet UIView *checklistIndicator;
+@property(weak, nonatomic) IBOutlet UILabel *checklistDoneLabel;
+@property(weak, nonatomic) IBOutlet UILabel *checklistAllLabel;
+@property(weak, nonatomic) IBOutlet UIView *checklistSeparator;
+@property(weak, nonatomic) IBOutlet NSLayoutConstraint *checklistIndicatorWidth;
 
-- (void)configureForItem:(ChecklistItem *) item forTask:(Task *)task;
+- (void)configureForItem:(ChecklistItem *)item forTask:(Task *)task;
 
 @end

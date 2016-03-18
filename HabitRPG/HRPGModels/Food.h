@@ -14,8 +14,8 @@
 
 @interface Food : BuyableItem
 
-@property (nonatomic, retain) NSString * article;
-@property (nonatomic, retain) NSString * target;
-@property (nonatomic, retain) User *user;
+@property(nonatomic, retain) NSString *article;
+@property(nonatomic, retain) NSString *target;
+@property(nonatomic, retain) User *user;
 
 @end

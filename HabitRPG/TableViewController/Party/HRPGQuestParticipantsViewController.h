@@ -11,7 +11,8 @@
 #import "Group.h"
 #import "HRPGBaseViewController.h"
 
-@interface HRPGQuestParticipantsViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate>
+@interface HRPGQuestParticipantsViewController
+    : HRPGBaseViewController<NSFetchedResultsControllerDelegate>
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property Quest *quest;

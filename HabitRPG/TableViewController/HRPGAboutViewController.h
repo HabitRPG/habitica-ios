@@ -10,6 +10,6 @@
 #import <MessageUI/MessageUI.h>
 #import "HRPGBaseViewController.h"
 
-@interface HRPGAboutViewController : HRPGBaseViewController <MFMailComposeViewControllerDelegate>
+@interface HRPGAboutViewController : HRPGBaseViewController<MFMailComposeViewControllerDelegate>
 
 @end

@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ImprovementCategory (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *identifier;
-@property (nullable, nonatomic, retain) User *user;
+@property(nullable, nonatomic, retain) NSString *identifier;
+@property(nullable, nonatomic, retain) User *user;
 
 @end
 

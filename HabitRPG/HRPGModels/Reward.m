@@ -19,20 +19,23 @@
 - (void)willSave {
     if (![self.rewardType isEqualToString:@"reward"]) {
         self.rewardType = @"reward";
-    }}
+    }
+}
 
 - (NSDictionary *)getTagDictionary {
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *managedObjectContext = appdelegate.sharedManager.getManagedObjectContext;
-    
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *managedObjectContext =
+        appdelegate.sharedManager.getManagedObjectContext;
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
+    NSEntityDescription *entity =
+        [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
-    
+
     NSError *error;
     NSArray *tags = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
+
     NSMutableDictionary *tagDictionary = [NSMutableDictionary dictionary];
     for (Tag *tag in tags) {
         if ([self.tags containsObject:tag]) {
@@ -48,17 +51,19 @@
     if (tagsDictionary.count == 0) {
         return;
     }
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *managedObjectContext = appdelegate.sharedManager.getManagedObjectContext;
-    
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *managedObjectContext =
+        appdelegate.sharedManager.getManagedObjectContext;
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
+    NSEntityDescription *entity =
+        [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
-    
+
     NSError *error;
     NSArray *tags = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
+
     for (Tag *tag in tags) {
         NSNumber *val = tagsDictionary[tag.id];
         if (val != nil) {

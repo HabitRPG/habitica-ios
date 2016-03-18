@@ -16,19 +16,19 @@
 #import "Reminder.h"
 
 @interface HRPGFormViewController ()
-@property (nonatomic) NSArray *tags;
-@property (nonatomic) BOOL formFilled;
-@property (nonatomic) XLFormSectionDescriptor *duedateSection;
+@property(nonatomic) NSArray *tags;
+@property(nonatomic) BOOL formFilled;
+@property(nonatomic) XLFormSectionDescriptor *duedateSection;
 @property NSInteger customDayStart;
 @end
 
 @implementation HRPGFormViewController
 
--(id)initWithCoder:(NSCoder *)aDecoder
-{
+- (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    if (self){
-        HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+    if (self) {
+        HRPGAppDelegate *appdelegate =
+            (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
         HRPGManager *sharedManager = appdelegate.sharedManager;
         User *user = [sharedManager getUser];
         self.customDayStart = [user.preferences.dayStart integerValue];
@@ -45,71 +45,97 @@
     }
 }
 
--(void)initializeForm {
+- (void)initializeForm {
     XLFormDescriptor *formDescriptor = [XLFormDescriptor formDescriptorWithTitle:@"New"];
-    
+
     formDescriptor.assignFirstResponderOnShow = YES;
-    
+
     XLFormSectionDescriptor *section;
     XLFormRowDescriptor *row;
-    
+
     section = [XLFormSectionDescriptor formSectionWithTitle:@"Task"];
     [formDescriptor addFormSection:section];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"text" rowType:XLFormRowDescriptorTypeText title:NSLocalizedString(@"Text", nil)];
+
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"text"
+                                                rowType:XLFormRowDescriptorTypeText
+                                                  title:NSLocalizedString(@"Text", nil)];
     row.required = YES;
     [section addFormRow:row];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notes" rowType:XLFormRowDescriptorTypeTextView title:NSLocalizedString(@"Notes", nil)];
+
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notes"
+                                                rowType:XLFormRowDescriptorTypeTextView
+                                                  title:NSLocalizedString(@"Notes", nil)];
     [section addFormRow:row];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"priority" rowType:XLFormRowDescriptorTypeSelectorPush title:NSLocalizedString(@"Difficulty", nil)];
-    row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0.1) displayText:NSLocalizedString(@"Trivial", nil)],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:NSLocalizedString(@"Easy", nil)],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(1.5) displayText:NSLocalizedString(@"Medium", nil)],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(2) displayText:NSLocalizedString(@"Hard", nil)]
-                            ];
-    row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:NSLocalizedString(@"Easy", nil)];
+
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"priority"
+                                                rowType:XLFormRowDescriptorTypeSelectorPush
+                                                  title:NSLocalizedString(@"Difficulty", nil)];
+    row.selectorOptions = @[
+        [XLFormOptionsObject formOptionsObjectWithValue:@(0.1)
+                                            displayText:NSLocalizedString(@"Trivial", nil)],
+        [XLFormOptionsObject formOptionsObjectWithValue:@(1)
+                                            displayText:NSLocalizedString(@"Easy", nil)],
+        [XLFormOptionsObject formOptionsObjectWithValue:@(1.5)
+                                            displayText:NSLocalizedString(@"Medium", nil)],
+        [XLFormOptionsObject formOptionsObjectWithValue:@(2)
+                                            displayText:NSLocalizedString(@"Hard", nil)]
+    ];
+    row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(1)
+                                                    displayText:NSLocalizedString(@"Easy", nil)];
     row.required = YES;
     row.selectorTitle = NSLocalizedString(@"Select Difficulty", nil);
     [section addFormRow:row];
-    
+
     self.form = formDescriptor;
 }
 
--(void)fillForm {
+- (void)fillForm {
     if (self.formFilled) {
         return;
     }
     XLFormSectionDescriptor *section;
     XLFormRowDescriptor *row;
-    
+
     if (self.editTask) {
-        self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Edit %@", nil), self.readableTaskType];
+        self.navigationItem.title =
+            [NSString stringWithFormat:NSLocalizedString(@"Edit %@", nil), self.readableTaskType];
     } else {
-        self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Add %@", nil), self.readableTaskType];
+        self.navigationItem.title =
+            [NSString stringWithFormat:NSLocalizedString(@"Add %@", nil), self.readableTaskType];
     }
-    
+
     if (![self.taskType isEqualToString:@"habit"]) {
-        section = [XLFormSectionDescriptor formSectionWithTitle:@"Checklist" sectionOptions:XLFormSectionOptionCanReorder | XLFormSectionOptionCanInsert | XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
+        section = [XLFormSectionDescriptor
+            formSectionWithTitle:@"Checklist"
+                  sectionOptions:XLFormSectionOptionCanReorder | XLFormSectionOptionCanInsert |
+                                 XLFormSectionOptionCanDelete
+               sectionInsertMode:XLFormSectionInsertModeButton];
         section.multivaluedAddButton.title = NSLocalizedString(@"Add a new checklist item", nil);
         section.multivaluedTag = @"checklist";
         // Set up row template
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText];
-        [[row cellConfig] setObject:NSLocalizedString(@"Add a new checklist item", nil) forKey:@"textField.placeholder"];
+        row =
+            [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText];
+        [[row cellConfig] setObject:NSLocalizedString(@"Add a new checklist item", nil)
+                             forKey:@"textField.placeholder"];
         section.multivaluedRowTemplate = row;
         [self.form addFormSection:section];
     }
-    
+
     if ([self.taskType isEqualToString:@"habit"]) {
         section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Actions", nil)];
         [self.form addFormSection:section];
-        
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"up" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Positive (+)", nil)];
+
+        row =
+            [XLFormRowDescriptor formRowDescriptorWithTag:@"up"
+                                                  rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                    title:NSLocalizedString(@"Positive (+)", nil)];
         row.value = [NSNumber numberWithBool:YES];
         [section addFormRow:row];
-        
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"down" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Negative (-)", nil)];
+
+        row =
+            [XLFormRowDescriptor formRowDescriptorWithTag:@"down"
+                                                  rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                    title:NSLocalizedString(@"Negative (-)", nil)];
         row.value = [NSNumber numberWithBool:YES];
         [section addFormRow:row];
     }
@@ -119,7 +145,10 @@
     }
     if ([self.taskType isEqualToString:@"daily"]) {
         section = [self.form formSectionAtIndex:0];
-        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"startDate" rowType:XLFormRowDescriptorTypeDateInline title:@"Start Date"];
+        XLFormRowDescriptor *row =
+            [XLFormRowDescriptor formRowDescriptorWithTag:@"startDate"
+                                                  rowType:XLFormRowDescriptorTypeDateInline
+                                                    title:@"Start Date"];
         NSDate *date = [NSDate new];
         NSCalendar *calendar = [NSCalendar currentCalendar];
         NSDateComponents *components = [calendar components:(NSHourCalendarUnit) fromDate:date];
@@ -129,54 +158,71 @@
         }
         row.value = date;
         [section addFormRow:row];
-        
+
         section = [XLFormSectionDescriptor formSectionWithTitle:@""];
         [self.form addFormSection:section];
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"frequency" rowType:XLFormRowDescriptorTypeSelectorPush title:NSLocalizedString(@"Frequency", nil)];
-        row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@"daily" displayText:NSLocalizedString(@"Every x days", nil)],
-                                [XLFormOptionsObject formOptionsObjectWithValue:@"weekly" displayText:NSLocalizedString(@"On certain days of the week", nil)]
-                                ];
-        row.value = [XLFormOptionsObject formOptionsObjectWithValue:@"weekly" displayText:NSLocalizedString(@"Weekly", nil)];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"frequency"
+                                                    rowType:XLFormRowDescriptorTypeSelectorPush
+                                                      title:NSLocalizedString(@"Frequency", nil)];
+        row.selectorOptions = @[
+            [XLFormOptionsObject
+                formOptionsObjectWithValue:@"daily"
+                               displayText:NSLocalizedString(@"Every x days", nil)],
+            [XLFormOptionsObject
+                formOptionsObjectWithValue:@"weekly"
+                               displayText:NSLocalizedString(@"On certain days of the week", nil)]
+        ];
+        row.value =
+            [XLFormOptionsObject formOptionsObjectWithValue:@"weekly"
+                                                displayText:NSLocalizedString(@"Weekly", nil)];
         row.required = YES;
         row.selectorTitle = NSLocalizedString(@"Select Frequency", nil);
         [section addFormRow:row];
         if (!self.editTask) {
             [self setFrequencyRows:@"weekly"];
         }
-    
+
         rowType = XLFormRowDescriptorTypeTime;
     }
-    
+
     if ([self.taskType isEqualToString:@"todo"]) {
-        self.duedateSection = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Due Date", nil)];
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"hasDueDate" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Has a due date", nil)];
+        self.duedateSection =
+            [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Due Date", nil)];
+        row = [XLFormRowDescriptor
+            formRowDescriptorWithTag:@"hasDueDate"
+                             rowType:XLFormRowDescriptorTypeBooleanCheck
+                               title:NSLocalizedString(@"Has a due date", nil)];
         row.value = [NSNumber numberWithBool:NO];
         [self.duedateSection addFormRow:row];
         [self.form addFormSection:self.duedateSection];
-        
+
         rowType = XLFormRowDescriptorTypeDateTime;
     }
-    
+
     if (![self.taskType isEqualToString:@"habit"]) {
-        section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Reminders", nil)
-                                                 sectionOptions:XLFormSectionOptionCanInsert | XLFormSectionOptionCanDelete sectionInsertMode:XLFormSectionInsertModeButton];
+        section = [XLFormSectionDescriptor
+            formSectionWithTitle:NSLocalizedString(@"Reminders", nil)
+                  sectionOptions:XLFormSectionOptionCanInsert | XLFormSectionOptionCanDelete
+               sectionInsertMode:XLFormSectionInsertModeButton];
         section.multivaluedAddButton.title = NSLocalizedString(@"Add a new reminder", nil);
         section.multivaluedTag = @"reminders";
         [self.form addFormSection:section];
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"reminder" rowType:rowType title:@""];
         section.multivaluedRowTemplate = row;
     }
-    
+
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Tags", nil)];
     [self.form addFormSection:section];
     [self fetchTags];
     for (Tag *tag in self.tags) {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:[NSString stringWithFormat:@"tag.%@", tag.id] rowType:XLFormRowDescriptorTypeBooleanCheck title:tag.name];
+        row = [XLFormRowDescriptor
+            formRowDescriptorWithTag:[NSString stringWithFormat:@"tag.%@", tag.id]
+                             rowType:XLFormRowDescriptorTypeBooleanCheck
+                               title:tag.name];
         row.value = [NSNumber numberWithBool:[self.activeTags containsObject:tag]];
         [section addFormRow:row];
-        
     }
-    
+
     self.formFilled = YES;
 }
 
@@ -184,97 +230,118 @@
     if (!self.formFilled) {
         [self fillForm];
     }
-    [self.form formRowWithTag:@"text"].value = [self.task.text stringByReplacingEmojiCheatCodesWithUnicode];
-    [self.form formRowWithTag:@"notes"].value = [self.task.notes stringByReplacingEmojiCheatCodesWithUnicode];
-    
+    [self.form formRowWithTag:@"text"].value =
+        [self.task.text stringByReplacingEmojiCheatCodesWithUnicode];
+    [self.form formRowWithTag:@"notes"].value =
+        [self.task.notes stringByReplacingEmojiCheatCodesWithUnicode];
+
     if ([self.task.priority floatValue] == 0.1f) {
-        [self.form formRowWithTag:@"priority"].value = [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority displayText:NSLocalizedString(@"Trivial", nil)];
+        [self.form formRowWithTag:@"priority"].value =
+            [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority
+                                                displayText:NSLocalizedString(@"Trivial", nil)];
     } else if ([self.task.priority floatValue] == 1) {
-        [self.form formRowWithTag:@"priority"].value = [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority displayText:NSLocalizedString(@"Easy", nil)];
+        [self.form formRowWithTag:@"priority"].value =
+            [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority
+                                                displayText:NSLocalizedString(@"Easy", nil)];
     } else if ([self.task.priority floatValue] == 1.5f) {
-        [self.form formRowWithTag:@"priority"].value = [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority displayText:NSLocalizedString(@"Medium", nil)];
+        [self.form formRowWithTag:@"priority"].value =
+            [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority
+                                                displayText:NSLocalizedString(@"Medium", nil)];
 
     } else if ([self.task.priority floatValue] == 2) {
-        [self.form formRowWithTag:@"priority"].value = [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority displayText:NSLocalizedString(@"Hard", nil)];
+        [self.form formRowWithTag:@"priority"].value =
+            [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority
+                                                displayText:NSLocalizedString(@"Hard", nil)];
     }
-    
+
     if (![self.taskType isEqualToString:@"habit"]) {
         XLFormSectionDescriptor *section = [self.form formSectionAtIndex:1];
-        
+
         for (ChecklistItem *item in self.task.checklist) {
-            XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:item.id rowType:XLFormRowDescriptorTypeText];
-            [[row cellConfig] setObject:NSLocalizedString(@"Add a new checklist item", nil) forKey:@"textField.placeholder"];
+            XLFormRowDescriptor *row =
+                [XLFormRowDescriptor formRowDescriptorWithTag:item.id
+                                                      rowType:XLFormRowDescriptorTypeText];
+            [[row cellConfig] setObject:NSLocalizedString(@"Add a new checklist item", nil)
+                                 forKey:@"textField.placeholder"];
             row.value = item.text;
             [section addFormRow:row];
         }
-        
+
         NSString *rowType;
         if ([self.task.type isEqualToString:@"daily"]) {
             rowType = XLFormRowDescriptorTypeTime;
         } else {
             rowType = XLFormRowDescriptorTypeDateTime;
         }
-        
+
         section = [self.form formSectionAtIndex:3];
         for (Reminder *item in self.task.reminders) {
-            XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowType title:@""];
+            XLFormRowDescriptor *row =
+                [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowType title:@""];
             row.value = item.time;
             [section addFormRow:row];
         }
     }
-    
+
     if ([self.taskType isEqualToString:@"habit"]) {
         [self.form formRowWithTag:@"up"].value = self.task.up;
         [self.form formRowWithTag:@"down"].value = self.task.down;
     }
-    
+
     if ([self.taskType isEqualToString:@"daily"]) {
         [self.form formRowWithTag:@"startDate"].value = self.task.startDate;
         [self.form formRowWithTag:@"frequency"].value = self.task.frequency;
     }
-    
+
     if ([self.taskType isEqualToString:@"todo"]) {
         if (self.task.duedate) {
             [self.form formRowWithTag:@"hasDueDate"].value = [NSNumber numberWithBool:YES];
             [self.form formRowWithTag:@"duedate"].value = self.task.duedate;
         }
-        
     }
 
     for (Tag *tag in self.task.tags) {
-        [self.form formRowWithTag:[NSString stringWithFormat:@"tag.%@", tag.id]].value = [NSNumber numberWithBool:YES];
+        [self.form formRowWithTag:[NSString stringWithFormat:@"tag.%@", tag.id]].value =
+            [NSNumber numberWithBool:YES];
     }
 
     [self.tableView reloadData];
 }
 
-- (void) fetchTags {
+- (void)fetchTags {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity =
+        [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    
+
+    NSSortDescriptor *sortDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
+    NSArray *sortDescriptors = @[ sortDescriptor ];
+
     [fetchRequest setSortDescriptors:sortDescriptors];
-    
+
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    
+
     NSError *error;
     self.tags = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
 - (void)showFormValidationError:(NSError *)error {
-    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Validation Error", nil) message:error.localizedDescription delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+    UIAlertView *alertView =
+        [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Validation Error", nil)
+                                   message:error.localizedDescription
+                                  delegate:self
+                         cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                         otherButtonTitles:nil];
     [alertView show];
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     if ([identifier isEqualToString:@"unwindSaveSegue"]) {
-        NSArray * validationErrors = [self formValidationErrors];
-        if (validationErrors.count > 0){
+        NSArray *validationErrors = [self formValidationErrors];
+        if (validationErrors.count > 0) {
             [self showFormValidationError:[validationErrors firstObject]];
             return NO;
         }
@@ -282,16 +349,19 @@
     return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
 
     [self.tableView endEditing:YES];
     if ([segue.identifier isEqualToString:@"unwindSaveSegue"]) {
         NSError *error;
-        if (!self.editTask || (self.editTask && [self.task.managedObjectContext existingObjectWithID:self.task.objectID error:&error] == nil)) {
-            self.task = [NSEntityDescription
-                         insertNewObjectForEntityForName:@"Task"
-                         inManagedObjectContext:self.managedObjectContext];
+        if (!self.editTask ||
+            (self.editTask &&
+             [self.task.managedObjectContext existingObjectWithID:self.task.objectID
+                                                            error:&error] == nil)) {
+            self.task =
+                [NSEntityDescription insertNewObjectForEntityForName:@"Task"
+                                              inManagedObjectContext:self.managedObjectContext];
             self.task.type = self.taskType;
         }
         NSDictionary *formValues = [self.form formValues];
@@ -307,25 +377,26 @@
                 self.task.frequency = [formValues[key] valueData];
                 continue;
             }
-            if ([key  hasPrefix:@"tag."]) {
+            if ([key hasPrefix:@"tag."]) {
                 if (formValues[key] != [NSNull null]) {
                     [tagDictionary setObject:formValues[key] forKey:[key substringFromIndex:4]];
                 } else {
-                    [tagDictionary setObject:[NSNumber numberWithBool:NO] forKey:[key substringFromIndex:4]];
+                    [tagDictionary setObject:[NSNumber numberWithBool:NO]
+                                      forKey:[key substringFromIndex:4]];
                 }
                 continue;
             }
             if ([key isEqualToString:@"checklist"]) {
                 int checklistindex = 0;
-                for (NSString *itemText in  formValues[key]) {
+                for (NSString *itemText in formValues[key]) {
                     if ([itemText length] == 0) {
                         continue;
                     }
                     if ([self.task.checklist count] > checklistindex) {
-                        ((ChecklistItem*)self.task.checklist[checklistindex]).text = itemText;
+                        ((ChecklistItem *)self.task.checklist[checklistindex]).text = itemText;
                     } else {
                         ChecklistItem *newItem = [NSEntityDescription
-                                     insertNewObjectForEntityForName:@"ChecklistItem"
+                            insertNewObjectForEntityForName:@"ChecklistItem"
                                      inManagedObjectContext:self.managedObjectContext];
                         newItem.text = itemText;
                         [self.task addChecklistObject:newItem];
@@ -339,13 +410,13 @@
             }
             if ([key isEqualToString:@"reminders"]) {
                 int reminderindex = 0;
-                for (NSDate *itemTime in  formValues[key]) {
+                for (NSDate *itemTime in formValues[key]) {
                     if ([self.task.reminders count] > reminderindex) {
-                        ((Reminder*)self.task.reminders[reminderindex]).time = itemTime;
+                        ((Reminder *)self.task.reminders[reminderindex]).time = itemTime;
                     } else {
                         Reminder *newItem = [NSEntityDescription
-                                                  insertNewObjectForEntityForName:@"Reminder"
-                                                  inManagedObjectContext:self.managedObjectContext];
+                            insertNewObjectForEntityForName:@"Reminder"
+                                     inManagedObjectContext:self.managedObjectContext];
                         newItem.time = itemTime;
                         newItem.id = [[NSUUID UUID] UUIDString];
                         [self.task addRemindersObject:newItem];
@@ -376,12 +447,16 @@
     }
 }
 
-
-- (void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)formRow oldValue:(id)oldValue newValue:(id)newValue {
+- (void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)formRow
+                                oldValue:(id)oldValue
+                                newValue:(id)newValue {
     if ([formRow.tag isEqualToString:@"hasDueDate"]) {
         NSNumber *value = formRow.value;
         if ([value boolValue]) {
-            XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"duedate" rowType:XLFormRowDescriptorTypeDateInline title:@"Date"];
+            XLFormRowDescriptor *row =
+                [XLFormRowDescriptor formRowDescriptorWithTag:@"duedate"
+                                                      rowType:XLFormRowDescriptorTypeDateInline
+                                                        title:@"Date"];
             row.value = [NSDate new];
             [self.duedateSection addFormRow:row];
         } else {
@@ -389,7 +464,6 @@
         }
     } else if ([formRow.tag isEqualToString:@"frequency"]) {
         [self setFrequencyRows:[formRow.value valueData]];
-        
     }
 }
 
@@ -402,9 +476,9 @@
     [super formRowHasBeenAdded:formRow atIndexPath:indexPath];
 }
 
-- (void)setFrequencyRows:(NSString *) frequencyType {
+- (void)setFrequencyRows:(NSString *)frequencyType {
     XLFormSectionDescriptor *section = [self.form formSectionAtIndex:2];
-    if ([frequencyType  isEqualToString:@"daily"]) {
+    if ([frequencyType isEqualToString:@"daily"]) {
         if (section.formRows.count > 2) {
             [section removeFormRowAtIndex:7];
             [section removeFormRowAtIndex:6];
@@ -416,7 +490,10 @@
         }
         XLFormRowDescriptor *row;
         if (section.formRows.count == 1) {
-            row = [XLFormRowDescriptor formRowDescriptorWithTag:@"everyX" rowType:XLFormRowDescriptorTypeInteger title:NSLocalizedString(@"Repeat every X days", nil)];
+            row = [XLFormRowDescriptor
+                formRowDescriptorWithTag:@"everyX"
+                                 rowType:XLFormRowDescriptorTypeInteger
+                                   title:NSLocalizedString(@"Repeat every X days", nil)];
             [section addFormRow:row];
         } else {
             row = section.formRows[1];
@@ -432,25 +509,40 @@
             [section removeFormRowAtIndex:1];
         }
 
-        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"monday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Monday", nil)];
+        XLFormRowDescriptor *row =
+            [XLFormRowDescriptor formRowDescriptorWithTag:@"monday"
+                                                  rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                    title:NSLocalizedString(@"Monday", nil)];
         row.value = [NSNumber numberWithBool:YES];
         [section addFormRow:row];
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"tuesday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Tuesday", nil)];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"tuesday"
+                                                    rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                      title:NSLocalizedString(@"Tuesday", nil)];
         row.value = [NSNumber numberWithBool:YES];
         [section addFormRow:row];
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"wednesday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Wednesday", nil)];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"wednesday"
+                                                    rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                      title:NSLocalizedString(@"Wednesday", nil)];
         row.value = [NSNumber numberWithBool:YES];
         [section addFormRow:row];
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"thursday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Thursday", nil)];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"thursday"
+                                                    rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                      title:NSLocalizedString(@"Thursday", nil)];
         row.value = [NSNumber numberWithBool:YES];
         [section addFormRow:row];
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"friday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Friday", nil)];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"friday"
+                                                    rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                      title:NSLocalizedString(@"Friday", nil)];
         row.value = [NSNumber numberWithBool:YES];
         [section addFormRow:row];
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"saturday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Saturday", nil)];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"saturday"
+                                                    rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                      title:NSLocalizedString(@"Saturday", nil)];
         row.value = [NSNumber numberWithBool:YES];
         [section addFormRow:row];
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"sunday" rowType:XLFormRowDescriptorTypeBooleanCheck title:NSLocalizedString(@"Sunday", nil)];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"sunday"
+                                                    rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                      title:NSLocalizedString(@"Sunday", nil)];
         row.value = [NSNumber numberWithBool:YES];
         [section addFormRow:row];
         if (self.editTask) {
@@ -478,7 +570,8 @@
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if ([self.taskType isEqualToString:@"daily"]) {
         if (section == 3) {
-            return NSLocalizedString(@"Each reminder notifies on the days the daily is active.", nil);
+            return NSLocalizedString(@"Each reminder notifies on the days the daily is active.",
+                                     nil);
         }
     }
     return nil;

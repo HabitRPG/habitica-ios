@@ -11,13 +11,12 @@
 @implementation HRPGSearchDataManager
 
 + (HRPGSearchDataManager *)sharedManager {
-    
     static HRPGSearchDataManager *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedManager = [[HRPGSearchDataManager alloc]init];
+        sharedManager = [[HRPGSearchDataManager alloc] init];
     });
-    
+
     return sharedManager;
 }
 

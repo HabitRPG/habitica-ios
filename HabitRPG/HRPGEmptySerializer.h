@@ -6,8 +6,7 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-
 #import "RKSerialization.h"
 
-@interface HRPGEmptySerializer : NSObject <RKSerialization>
+@interface HRPGEmptySerializer : NSObject<RKSerialization>
 @end

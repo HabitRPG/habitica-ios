@@ -10,7 +10,8 @@
 #import "User.h"
 #import "HRPGBaseCollectionViewController.h"
 
-@interface HRPGCustomizationCollectionViewController : HRPGBaseCollectionViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
+@interface HRPGCustomizationCollectionViewController
+    : HRPGBaseCollectionViewController<NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
 
 @property(nonatomic, weak) User *user;
 @property(nonatomic, strong) NSString *userKey;

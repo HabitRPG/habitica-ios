@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRPGLoadingViewController : UIViewController <UIViewControllerTransitioningDelegate>
+@interface HRPGLoadingViewController : UIViewController<UIViewControllerTransitioningDelegate>
 
 @property UIImageView *logo;
 @property NSMutableArray *squares;
 @property NSInteger lineCount;
-@property (weak, nonatomic) IBOutlet UIImageView *logoView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property(weak, nonatomic) IBOutlet UIImageView *logoView;
+@property(weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
-@property (nonatomic, copy) void (^loadingFinishedAction)();
+@property(nonatomic, copy) void (^loadingFinishedAction)();
 
 @end

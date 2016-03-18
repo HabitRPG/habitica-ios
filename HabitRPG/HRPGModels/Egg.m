@@ -8,7 +8,6 @@
 
 #import "Egg.h"
 
-
 @implementation Egg
 
 @dynamic text;

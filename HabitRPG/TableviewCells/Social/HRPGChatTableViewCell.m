@@ -12,7 +12,7 @@
 #import "ChatMessageLike.h"
 #import "UIColor+Habitica.h"
 
-@interface HRPGChatTableViewCell()
+@interface HRPGChatTableViewCell ()
 
 @property bool isOwnMessage;
 
@@ -23,73 +23,81 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(displayMenu:)];
+        UITapGestureRecognizer *tapRecognizer =
+            [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(displayMenu:)];
         tapRecognizer.delegate = self;
         tapRecognizer.cancelsTouchesInView = NO;
         [self.contentView removeGestureRecognizer:self.contentView.gestureRecognizers[0]];
         [self addGestureRecognizer:tapRecognizer];
         self.plusOneButton.userInteractionEnabled = YES;
-        UITapGestureRecognizer *buttonTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(plusOneButtonTapped:)];
+        UITapGestureRecognizer *buttonTapRecognizer =
+            [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                    action:@selector(plusOneButtonTapped:)];
         [self.plusOneButton addGestureRecognizer:buttonTapRecognizer];
         [self bringSubviewToFront:self.plusOneButton];
-        
+
         self.messageTextView.textContainerInset = UIEdgeInsetsZero;
         self.messageTextView.contentInset = UIEdgeInsetsZero;
     }
     return self;
 }
 
-
--(BOOL) canPerformAction:(SEL)action withSender:(id)sender {
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
     if (self.isOwnMessage) {
-        return (action == @selector(copy:) || action == @selector(profileMenuItemSelected:) || action == @selector(delete:));
+        return (action == @selector(copy:) || action == @selector(profileMenuItemSelected:) ||
+                action == @selector(delete:));
     } else {
-        return (action == @selector(copy:) || action == @selector(profileMenuItemSelected:) || action == @selector(reply:) || action == @selector(flag:));
+        return (action == @selector(copy:) || action == @selector(profileMenuItemSelected:) ||
+                action == @selector(reply:) || action == @selector(flag:));
     }
 }
 
-- (void) displayMenu:(UITapGestureRecognizer *)gestureRecognizer {
+- (void)displayMenu:(UITapGestureRecognizer *)gestureRecognizer {
     [self becomeFirstResponder];
     UIMenuController *menu = [UIMenuController sharedMenuController];
-    UIMenuItem *profileMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Profile", nil) action:@selector(profileMenuItemSelected:)];
-    UIMenuItem *replyMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Reply", nil) action:@selector(reply:)];
-    UIMenuItem *flagMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Report", nil) action:@selector(flag:)];
-    [menu setMenuItems: @[profileMenuItem, replyMenuItem, flagMenuItem]];
+    UIMenuItem *profileMenuItem =
+        [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Profile", nil)
+                                   action:@selector(profileMenuItemSelected:)];
+    UIMenuItem *replyMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Reply", nil)
+                                                           action:@selector(reply:)];
+    UIMenuItem *flagMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Report", nil)
+                                                          action:@selector(flag:)];
+    [menu setMenuItems:@[ profileMenuItem, replyMenuItem, flagMenuItem ]];
     [menu update];
     [menu setTargetRect:self.frame inView:self.superview];
     [menu setMenuVisible:YES animated:YES];
 }
 
-- (BOOL) canBecomeFirstResponder {
+- (BOOL)canBecomeFirstResponder {
     return YES;
 }
 
--(void) profileMenuItemSelected: (id) sender {
+- (void)profileMenuItemSelected:(id)sender {
     if (self.profileAction) {
         self.profileAction();
     }
 }
 
--(void) copy:(id)sender {
+- (void)copy:(id)sender {
     if (self.messageTextView.attributedText) {
         UIPasteboard *pboard = [UIPasteboard generalPasteboard];
         pboard.string = [self.detailTextLabel.attributedText string];
     }
 }
 
--(void) flag:(id)sender {
+- (void)flag:(id)sender {
     if (self.flagAction) {
         self.flagAction();
     }
 }
 
--(void) reply:(id)sender {
+- (void)reply:(id)sender {
     if (self.replyAction) {
         self.replyAction();
     }
 }
 
--(void) delete:(id)sender {  
+- (void) delete:(id)sender {
     if (self.deleteAction) {
         self.deleteAction();
     }
@@ -104,7 +112,9 @@
     }
 }
 
-- (void)configureForMessage:(ChatMessage *)message withUserID:(NSString *)userID withUsername:(NSString *)username {
+- (void)configureForMessage:(ChatMessage *)message
+                 withUserID:(NSString *)userID
+               withUsername:(NSString *)username {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.backgroundColor = [UIColor whiteColor];
     if (message.user) {
@@ -128,14 +138,16 @@
         self.messageTextView.textColor = [UIColor red50];
         self.plusOneButton.hidden = YES;
     }
-    
+
     self.timeLabel.text = message.timestamp.timeAgoSinceNow;
     self.messageTextView.attributedText = message.attributedText;
-    
+
     self.usernameLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     self.timeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
-    
-    [self.plusOneButton setTitle:[NSString stringWithFormat:@"+%lu", (unsigned long)message.likes.count] forState:UIControlStateNormal];
+
+    [self.plusOneButton
+        setTitle:[NSString stringWithFormat:@"+%lu", (unsigned long)message.likes.count]
+        forState:UIControlStateNormal];
     if (message.likes.count > 0) {
         self.plusOneButton.backgroundColor = [UIColor gray100];
         [self.plusOneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -151,7 +163,8 @@
     }
     [self.plusOneButton setTitleColor:[UIColor purple300] forState:UIControlStateSelected];
     if (message.user) {
-        self.plusOneButtonWidthConstraint.constant = self.plusOneButton.intrinsicContentSize.width + 8;
+        self.plusOneButtonWidthConstraint.constant =
+            self.plusOneButton.intrinsicContentSize.width + 8;
     } else {
         self.plusOneButtonWidthConstraint.constant = 0;
     }
@@ -159,37 +172,39 @@
     if (self.isOwnMessage) {
         self.backgroundColor = [UIColor gray500];
     }
-    if ([message.text rangeOfString:[NSString stringWithFormat:@"@%@", username]].location != NSNotFound) {
+    if ([message.text rangeOfString:[NSString stringWithFormat:@"@%@", username]].location !=
+        NSNotFound) {
         self.backgroundColor = [UIColor purple600];
     }
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+       shouldReceiveTouch:(UITouch *)touch {
     if (CGRectContainsPoint(self.plusOneButton.frame, [touch locationInView:self])) {
-        return NO; // ignore the touch
+        return NO;  // ignore the touch
     }
     if (CGRectContainsPoint(self.messageTextView.frame, [touch locationInView:self])) {
         NSLayoutManager *layoutManager = self.messageTextView.layoutManager;
         CGPoint location = [touch locationInView:self.messageTextView];
         location.x -= self.messageTextView.textContainerInset.left;
         location.y -= self.messageTextView.textContainerInset.top;
-                
+
         NSUInteger characterIndex;
         characterIndex = [layoutManager characterIndexForPoint:location
                                                inTextContainer:self.messageTextView.textContainer
                       fractionOfDistanceBetweenInsertionPoints:NULL];
-        
+
         if (characterIndex < self.messageTextView.textStorage.length) {
-            
             NSRange range;
-            NSDictionary *attributes = [self.messageTextView.textStorage attributesAtIndex:characterIndex effectiveRange:&range];
+            NSDictionary *attributes =
+                [self.messageTextView.textStorage attributesAtIndex:characterIndex
+                                                     effectiveRange:&range];
             if ([attributes objectForKey:@"NSLink"]) {
                 return NO;
             }
-            
         }
     }
-    return YES; // handle the touch
+    return YES;  // handle the touch
 }
 
 @end

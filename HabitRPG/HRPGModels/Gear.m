@@ -29,7 +29,7 @@
     }
 }
 
--(BOOL)isEquippedBy:(User *)user {
+- (BOOL)isEquippedBy:(User *)user {
     if ([self.type isEqualToString:@"weapon"]) {
         if ([user.equipped.weapon isEqualToString:self.key]) {
             return YES;
@@ -46,11 +46,11 @@
         if ([user.equipped.shield isEqualToString:self.key]) {
             return YES;
         }
-    } else if ([self.type isEqualToString:@"headAccessory"])  {
+    } else if ([self.type isEqualToString:@"headAccessory"]) {
         if ([user.equipped.headAccessory isEqualToString:self.key]) {
             return YES;
         }
-    } else if ([self.type isEqualToString:@"back"])  {
+    } else if ([self.type isEqualToString:@"back"]) {
         if ([user.equipped.back isEqualToString:self.key]) {
             return YES;
         }
@@ -63,11 +63,11 @@
             return YES;
         }
     }
-    
+
     return NO;
 }
 
--(BOOL)isCostumeOf:(User *)user {
+- (BOOL)isCostumeOf:(User *)user {
     if ([self.type isEqualToString:@"weapon"]) {
         if ([user.costume.weapon isEqualToString:self.key]) {
             return YES;
@@ -84,11 +84,11 @@
         if ([user.costume.shield isEqualToString:self.key]) {
             return YES;
         }
-    } else if ([self.type isEqualToString:@"headAccessory"])  {
+    } else if ([self.type isEqualToString:@"headAccessory"]) {
         if ([user.costume.headAccessory isEqualToString:self.key]) {
             return YES;
         }
-    } else if ([self.type isEqualToString:@"back"])  {
+    } else if ([self.type isEqualToString:@"back"]) {
         if ([user.costume.back isEqualToString:self.key]) {
             return YES;
         }
@@ -101,7 +101,7 @@
             return YES;
         }
     }
-    
+
     return NO;
 }
 
@@ -112,6 +112,5 @@
     }
     return className;
 }
-
 
 @end

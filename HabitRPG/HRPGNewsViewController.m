@@ -19,15 +19,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://habitica.com/static/new-stuff"]];
+
+    NSURLRequest *request = [NSURLRequest
+        requestWithURL:[NSURL URLWithString:@"https://habitica.com/static/new-stuff"]];
     self.newsWebView.delegate = self;
     [self.newsWebView loadRequest:request];
     [self.loadingIndicator startAnimating];
-    
+
     NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
     [eventProperties setValue:@"navigate" forKey:@"eventAction"];
     [eventProperties setValue:@"navigation" forKey:@"eventCategory"];
@@ -37,16 +38,20 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [UIView animateWithDuration:0.4 animations:^() {
-        self.newsWebView.alpha = 1;
-        self.loadingIndicator.alpha = 0;
-    }];
+    [UIView animateWithDuration:0.4
+                     animations:^() {
+                         self.newsWebView.alpha = 1;
+                         self.loadingIndicator.alpha = 0;
+                     }];
     if ([[self.sharedManager getUser].habitNewStuff boolValue]) {
-        [self.sharedManager updateUser:@{@"flags.newStuff": @NO} onSuccess:^() {
-        }onError:^() {
-        }];
+        [self.sharedManager updateUser:@{
+            @"flags.newStuff" : @NO
+        }
+            onSuccess:^() {
+            }
+            onError:^(){
+            }];
     }
 }
-
 
 @end

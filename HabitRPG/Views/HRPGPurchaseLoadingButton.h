@@ -18,11 +18,11 @@ typedef enum {
 
 @interface HRPGPurchaseLoadingButton : UIView
 
-@property (nonatomic) NSString *text;
-@property (nonatomic) NSString *confirmText;
-@property (nonatomic) NSString *doneText;
-@property (nonatomic) UIColor *tintColor;
-@property (nonatomic) HRPGPurchaseButtonState state;
-@property (nonatomic, copy) void (^onTouchEvent)(HRPGPurchaseLoadingButton *purchaseButton);
+@property(nonatomic) NSString *text;
+@property(nonatomic) NSString *confirmText;
+@property(nonatomic) NSString *doneText;
+@property(nonatomic) UIColor *tintColor;
+@property(nonatomic) HRPGPurchaseButtonState state;
+@property(nonatomic, copy) void (^onTouchEvent)(HRPGPurchaseLoadingButton *purchaseButton);
 
 @end

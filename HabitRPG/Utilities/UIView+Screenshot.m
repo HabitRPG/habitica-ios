@@ -12,15 +12,14 @@
 
 - (UIImage *)pb_takeScreenshot {
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [UIScreen mainScreen].scale);
-    
+
     [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
-    
+
     // old style [self.layer renderInContext:UIGraphicsGetCurrentContext()];
-    
+
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
 }
 
 @end
-

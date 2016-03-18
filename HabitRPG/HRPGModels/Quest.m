@@ -8,7 +8,6 @@
 
 #import "Quest.h"
 
-
 @implementation Quest
 
 @dynamic bossHp;

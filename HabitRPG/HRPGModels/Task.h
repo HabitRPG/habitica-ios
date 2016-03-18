@@ -11,19 +11,19 @@
 
 @class ChecklistItem, Tag, User, Reminder;
 
-typedef NS_ENUM(NSInteger, TaskHabitFilterType){
+typedef NS_ENUM(NSInteger, TaskHabitFilterType) {
     TaskHabitFilterTypeAll,
     TaskHabitFilterTypeWeak,
     TaskHabitFilterTypeStrong
 };
 
-typedef NS_ENUM(NSInteger, TaskDailyFilterType){
+typedef NS_ENUM(NSInteger, TaskDailyFilterType) {
     TaskDailyFilterTypeAll,
     TaskDailyFilterTypeDue,
     TaskDailyFilterTypeGrey
 };
 
-typedef NS_ENUM(NSInteger, TaskToDoFilterType){
+typedef NS_ENUM(NSInteger, TaskToDoFilterType) {
     TaskToDoFilterTypeActive,
     TaskToDoFilterTypeDated,
     TaskToDoFilterTypeDone
@@ -58,10 +58,11 @@ typedef NS_ENUM(NSInteger, TaskToDoFilterType){
 @property(nonatomic, retain) NSOrderedSet *checklist;
 @property(nonatomic, retain) NSSet *tags;
 @property(nonatomic, retain) NSOrderedSet *reminders;
-@property(nonatomic, getter = getTagDictionary, setter = setTagDictionary:) NSDictionary *tagDictionary;
+@property(nonatomic, getter=getTagDictionary, setter=setTagDictionary:) NSDictionary *tagDictionary;
 @property(nonatomic, retain) User *user;
 
-//Temporary variable to store whether or not the task is currently being checked or not. Used to preved doubletapping on a daily and receiving twice the bonus
+// Temporary variable to store whether or not the task is currently being checked or not. Used to
+// preved doubletapping on a daily and receiving twice the bonus
 @property(nonatomic, retain) NSNumber *currentlyChecking;
 @end
 
@@ -108,9 +109,9 @@ typedef NS_ENUM(NSInteger, TaskToDoFilterType){
 - (BOOL)dueOnDate:(NSDate *)date;
 - (BOOL)dueOnDate:(NSDate *)date withOffset:(NSInteger)offset;
 
-- (UIColor*) taskColor;
-- (UIColor*) lightTaskColor;
+- (UIColor *)taskColor;
+- (UIColor *)lightTaskColor;
 
-+ (NSArray*)predicatesForTaskType:(NSString *)taskType withFilterType:(NSInteger)filterType;
++ (NSArray *)predicatesForTaskType:(NSString *)taskType withFilterType:(NSInteger)filterType;
 
 @end

@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseCollectionViewController.h"
 
-@interface HRPGMountViewController : HRPGBaseCollectionViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
+@interface HRPGMountViewController
+    : HRPGBaseCollectionViewController<NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
 
-@property (nonatomic) NSString *mountName;
-@property (nonatomic) NSString *mountType;
-@property (nonatomic) NSString *mountColor;
+@property(nonatomic) NSString *mountName;
+@property(nonatomic) NSString *mountType;
+@property(nonatomic) NSString *mountColor;
 @end

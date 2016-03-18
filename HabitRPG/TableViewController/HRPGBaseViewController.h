@@ -10,10 +10,10 @@
 #import "HRPGManager.h"
 #import "TutorialStepsProtocol.h"
 
-@interface HRPGBaseViewController : UITableViewController <TutorialStepsProtocol>
+@interface HRPGBaseViewController : UITableViewController<TutorialStepsProtocol>
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic) HRPGManager *sharedManager;
+@property(nonatomic) HRPGManager *sharedManager;
 @property CGFloat viewWidth;
 @property NSString *readableScreenName;
 
@@ -24,6 +24,6 @@
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 
-- (BOOL) isIndexPathVisible:(NSIndexPath *)indexPath;
+- (BOOL)isIndexPathVisible:(NSIndexPath *)indexPath;
 
 @end

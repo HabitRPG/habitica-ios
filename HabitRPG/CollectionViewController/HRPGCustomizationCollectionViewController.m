@@ -15,7 +15,7 @@
 #import "HRPGPurchaseButton.h"
 
 @interface HRPGCustomizationCollectionViewController ()
-@property (nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property(nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property UIBarButtonItem *navigationButton;
 @property CGSize screenSize;
 @property id selectedCustomization;
@@ -25,13 +25,13 @@
 
 @implementation HRPGCustomizationCollectionViewController
 
-static NSString * const reuseIdentifier = @"Cell";
+static NSString *const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.screenSize = [[UIScreen mainScreen] bounds].size;
-    
+
     if ([self.type isEqualToString:@"background"]) {
         self.setPrice = [NSNumber numberWithInt:15];
     } else {
@@ -51,58 +51,76 @@ static NSString * const reuseIdentifier = @"Cell";
     return [[self.fetchedResultsController sections] count];
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section {
+    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.type isEqualToString:@"background"]) {
         return CGSizeMake(141.0f, 147.0f);
     } else {
-        return CGSizeMake((self.screenSize.width-46)/4, 75.0f);
+        return CGSizeMake((self.screenSize.width - 46) / 4, 75.0f);
     }
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionCell" forIndexPath:indexPath];
-    UILabel *label = (UILabel*)[headerView viewWithTag:1];
-    label.text = [[[[[[self.fetchedResultsController sections][indexPath.section] name] stringByReplacingOccurrencesOfString:@"Shirts" withString:@""] stringByReplacingOccurrencesOfString:@"Skins" withString:@""] stringByReplacingOccurrencesOfString:@"backgrounds" withString:@""] uppercaseString];
-    HRPGPurchaseButton *purchaseButton = (HRPGPurchaseButton*)[headerView viewWithTag:2];
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind
+                                 atIndexPath:(NSIndexPath *)indexPath {
+    UICollectionReusableView *headerView =
+        [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                           withReuseIdentifier:@"SectionCell"
+                                                  forIndexPath:indexPath];
+    UILabel *label = (UILabel *)[headerView viewWithTag:1];
+    label.text = [[[[[[self.fetchedResultsController sections][indexPath.section] name]
+        stringByReplacingOccurrencesOfString:@"Shirts"
+                                  withString:@""] stringByReplacingOccurrencesOfString:@"Skins"
+                                                                             withString:@""]
+        stringByReplacingOccurrencesOfString:@"backgrounds"
+                                  withString:@""] uppercaseString];
+    HRPGPurchaseButton *purchaseButton = (HRPGPurchaseButton *)[headerView viewWithTag:2];
     BOOL purchasable = NO;
     NSString *setString = @"";
     if ([self.entityName isEqualToString:@"Customization"]) {
-        for (Customization *customization in [[self.fetchedResultsController sections][indexPath.section] objects]) {
-            if ([customization.purchasable boolValue] && ![customization.purchased boolValue]){
+        for (Customization *customization in
+             [[self.fetchedResultsController sections][indexPath.section] objects]) {
+            if ([customization.purchasable boolValue] && ![customization.purchased boolValue]) {
                 purchasable = YES;
             }
             setString = [setString stringByAppendingFormat:@"%@,", [customization getPath]];
         }
     } else {
         for (Gear *gear in [[self.fetchedResultsController sections][indexPath.section] objects]) {
-            if (!gear.owned){
+            if (!gear.owned) {
                 purchasable = YES;
             }
             setString = [setString stringByAppendingFormat:@"items.gear.owned.%@,", gear.key];
         }
     }
-    setString = [setString stringByPaddingToLength:setString.length-1 withString:@"" startingAtIndex:0];
+    setString =
+        [setString stringByPaddingToLength:setString.length - 1 withString:@"" startingAtIndex:0];
     if (purchasable) {
         purchaseButton.hidden = false;
-        [purchaseButton addTarget:self action:@selector(purchaseSet:) forControlEvents:UIControlEventTouchUpInside];
+        [purchaseButton addTarget:self
+                           action:@selector(purchaseSet:)
+                 forControlEvents:UIControlEventTouchUpInside];
         purchaseButton.setPath = setString;
-        [purchaseButton setTitle:[NSString stringWithFormat:NSLocalizedString(@" Unlock Set for %@ Gems ", nil), self.setPrice] forState:UIControlStateNormal];
+        [purchaseButton
+            setTitle:[NSString stringWithFormat:NSLocalizedString(@" Unlock Set for %@ Gems ", nil),
+                                                self.setPrice]
+            forState:UIControlStateNormal];
     } else {
         purchaseButton.hidden = true;
     }
-    
+
     return headerView;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellName;
 
     if ([self.entityName isEqualToString:@"Customization"]) {
@@ -120,45 +138,58 @@ static NSString * const reuseIdentifier = @"Cell";
             cellName = @"LockedCell";
         }
     }
-    
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellName forIndexPath:indexPath];
+
+    UICollectionViewCell *cell =
+        [collectionView dequeueReusableCellWithReuseIdentifier:cellName forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath animated:NO];
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView
+    didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *actionString = NSLocalizedString(@"Use", nil);
     NSString *titleString;
     NSInteger tag = 0;
     if ([self.entityName isEqualToString:@"Customization"]) {
         Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        
+
         if (![customization.purchased boolValue] && [customization.price integerValue] > 0) {
-            titleString = [NSString stringWithFormat:NSLocalizedString(@"This item can be purchased for %@ Gems", nil), customization.price];
-            actionString = [NSString stringWithFormat:NSLocalizedString(@"Purchase for %@ Gems", nil), customization.price];
+            titleString = [NSString
+                stringWithFormat:NSLocalizedString(@"This item can be purchased for %@ Gems", nil),
+                                 customization.price];
+            actionString =
+                [NSString stringWithFormat:NSLocalizedString(@"Purchase for %@ Gems", nil),
+                                           customization.price];
             tag = 1;
         }
         self.selectedCustomization = customization;
 
     } else {
         Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        
+
         if (!gear.owned) {
-            titleString = [NSString stringWithFormat:NSLocalizedString(@"This item can be purchased for 2 Gems", nil)];
-            actionString = [NSString stringWithFormat:NSLocalizedString(@"Purchase for 2 Gems", nil)];
+            titleString = [NSString
+                stringWithFormat:NSLocalizedString(@"This item can be purchased for 2 Gems", nil)];
+            actionString =
+                [NSString stringWithFormat:NSLocalizedString(@"Purchase for 2 Gems", nil)];
             tag = 1;
         }
         self.selectedCustomization = gear;
     }
-    
-    
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:titleString delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:actionString, nil];
+
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:titleString
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                         destructiveButtonTitle:nil
+                                              otherButtonTitles:actionString, nil];
     popup.tag = tag;
-    
+
     // get the selected cell so that the popup can be displayed near it on the iPad
-    UICollectionViewCell *selectedCell = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    UICollectionViewCell *selectedCell =
+        [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
     CGRect rectIPad = [self.collectionView convertRect:selectedCell.frame toView:self.view];
-    // using the following form rather than [popup showInView:[UIApplication sharedApplication].keyWindow]] to make it compatible with both iPhone and iPad
+    // using the following form rather than [popup showInView:[UIApplication
+    // sharedApplication].keyWindow]] to make it compatible with both iPhone and iPad
     [popup showFromRect:rectIPad inView:self.view animated:YES];
 }
 
@@ -166,78 +197,103 @@ static NSString * const reuseIdentifier = @"Cell";
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
-    
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:self.entityName
+                                              inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
 
-    NSSortDescriptor *typeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"set" ascending:YES];
+    NSSortDescriptor *typeSortDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:@"set" ascending:YES];
     NSArray *sortDescriptors;
     if ([self.entityName isEqualToString:@"Customization"]) {
         if (self.group) {
-            [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"(purchasable == true || purchased == true || price == 0) && type == %@ && group == %@", self.type, self.group]];
+            [fetchRequest
+                setPredicate:[NSPredicate predicateWithFormat:@"(purchasable == true || purchased "
+                                                              @"== true || price == 0) && type == "
+                                                              @"%@ && group == %@",
+                                                              self.type, self.group]];
         } else {
-            [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"(purchasable == true || purchased == true || price == 0) && type == %@", self.type]];
+            [fetchRequest
+                setPredicate:[NSPredicate predicateWithFormat:@"(purchasable == true || purchased "
+                                                              @"== true || price == 0) && type == "
+                                                              @"%@",
+                                                              self.type]];
         }
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-        sortDescriptors = @[typeSortDescriptor, sortDescriptor];
+        NSSortDescriptor *sortDescriptor =
+            [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        sortDescriptors = @[ typeSortDescriptor, sortDescriptor ];
     } else {
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"set == 'animal' && type == 'headAccessory'"]];
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
-        sortDescriptors = @[typeSortDescriptor, sortDescriptor];
+        [fetchRequest
+            setPredicate:[NSPredicate
+                             predicateWithFormat:@"set == 'animal' && type == 'headAccessory'"]];
+        NSSortDescriptor *sortDescriptor =
+            [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
+        sortDescriptors = @[ typeSortDescriptor, sortDescriptor ];
     }
-    
-    
+
     [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"set" cacheName:nil];
+
+    NSFetchedResultsController *aFetchedResultsController =
+        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                            managedObjectContext:self.managedObjectContext
+                                              sectionNameKeyPath:@"set"
+                                                       cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
-    
+
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    
+
     return _fetchedResultsController;
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     UICollectionView *collectionView = self.collectionView;
-    
+
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            [collectionView insertItemsAtIndexPaths:@[newIndexPath]];
+            [collectionView insertItemsAtIndexPaths:@[ newIndexPath ]];
             break;
-            
+
         case NSFetchedResultsChangeDelete:
-            [collectionView deleteItemsAtIndexPaths:@[indexPath]];
+            [collectionView deleteItemsAtIndexPaths:@[ indexPath ]];
             break;
-            
+
         case NSFetchedResultsChangeUpdate:
-            [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+            [self.collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
             break;
-            
+
         case NSFetchedResultsChangeMove:
-            [collectionView deleteItemsAtIndexPaths:@[indexPath]];
-            [collectionView insertItemsAtIndexPaths:@[newIndexPath]];
+            [collectionView deleteItemsAtIndexPaths:@[ indexPath ]];
+            [collectionView insertItemsAtIndexPaths:@[ newIndexPath ]];
             break;
     }
 }
 
-- (void)configureCell:(UICollectionViewCell*)cell atIndexPath:(NSIndexPath *)indexPath animated:(BOOL) animated {
+- (void)configureCell:(UICollectionViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+             animated:(BOOL)animated {
     if ([self.entityName isEqualToString:@"Customization"]) {
         Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
-        [self.sharedManager setImage:[customization getImageNameForUser:self.user] withFormat:@"png" onView:imageView];
+        UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
+        [self.sharedManager setImage:[customization getImageNameForUser:self.user]
+                          withFormat:@"png"
+                              onView:imageView];
     } else {
         Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        UIImageView *imageView = (UIImageView*)[cell viewWithTag:1];
-        [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", gear.key] withFormat:@"png" onView:imageView];
+        UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
+        [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", gear.key]
+                          withFormat:@"png"
+                              onView:imageView];
     }
 }
 
@@ -246,38 +302,51 @@ static NSString * const reuseIdentifier = @"Cell";
         case 0:
             if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
                 if ([self.entityName isEqualToString:@"Customization"]) {
-                    [self.sharedManager updateUser:@{self.userKey: [self.selectedCustomization valueForKey:@"name"]} onSuccess:^() {
-                        
-                    }onError:^() {
-                        
-                    }];
+                    [self.sharedManager updateUser:@{
+                        self.userKey : [self.selectedCustomization valueForKey:@"name"]
+                    }
+                        onSuccess:^() {
+
+                        }
+                        onError:^(){
+
+                        }];
                 } else {
-                    [self.sharedManager equipObject:[self.selectedCustomization valueForKey:@"key"] withType:self.userKey onSuccess:^{
-                    } onError:^{
-                        
-                    }];
+                    [self.sharedManager equipObject:[self.selectedCustomization valueForKey:@"key"]
+                        withType:self.userKey
+                        onSuccess:^{
+                        }
+                        onError:^{
+
+                        }];
                 }
             }
             break;
         case 1:
             if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
                 if ([self.entityName isEqualToString:@"Customization"]) {
-                    if ([self.user.balance floatValue] < [[self.selectedCustomization valueForKey:@"price"] floatValue] / 4) {
+                    if ([self.user.balance floatValue] <
+                        [[self.selectedCustomization valueForKey:@"price"] floatValue] / 4) {
                         [self displayGemPurchaseView];
                         return;
                     }
-                    [self.sharedManager unlockPath:[self.selectedCustomization getPath] onSuccess:^() {
-                    }onError:^() {
-                    }];
+                    [self.sharedManager unlockPath:[self.selectedCustomization getPath]
+                        onSuccess:^() {
+                        }
+                        onError:^(){
+                        }];
                 } else {
                     if ([self.user.balance floatValue] < 0.5) {
                         [self displayGemPurchaseView];
                         return;
                     }
-                    [self.sharedManager purchaseItem:[self.selectedCustomization valueForKey:@"key"] fromType:@"gear" onSuccess:^() {
-                        [self.collectionView reloadData];
-                    }onError:^() {
-                    }];
+                    [self.sharedManager purchaseItem:[self.selectedCustomization valueForKey:@"key"]
+                        fromType:@"gear"
+                        onSuccess:^() {
+                            [self.collectionView reloadData];
+                        }
+                        onError:^(){
+                        }];
                 }
             }
             break;
@@ -287,28 +356,42 @@ static NSString * const reuseIdentifier = @"Cell";
                     [self displayGemPurchaseView];
                     return;
                 }
-                [self.sharedManager unlockPath:self.selectedSetPath onSuccess:^() {
-                    [self.collectionView reloadData];
-                }onError:^() {
-                }];
+                [self.sharedManager unlockPath:self.selectedSetPath
+                    onSuccess:^() {
+                        [self.collectionView reloadData];
+                    }
+                    onError:^(){
+                    }];
             }
             break;
         default:
             break;
     }
-
 }
 
 - (void)purchaseSet:(HRPGPurchaseButton *)button {
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"This set can be unlocked for %@ Gems", nil), self.setPrice] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:NSLocalizedString(@"Unlock for %@ Gems", nil), self.setPrice], nil];
+    UIActionSheet *popup = [[UIActionSheet alloc]
+                 initWithTitle:[NSString
+                                   stringWithFormat:NSLocalizedString(
+                                                        @"This set can be unlocked for %@ Gems",
+                                                        nil),
+                                                    self.setPrice]
+                      delegate:self
+             cancelButtonTitle:@"Cancel"
+        destructiveButtonTitle:nil
+             otherButtonTitles:[NSString
+                                   stringWithFormat:NSLocalizedString(@"Unlock for %@ Gems", nil),
+                                                    self.setPrice],
+                               nil];
     popup.tag = 2;
     [popup showInView:[UIApplication sharedApplication].keyWindow];
     self.selectedSetPath = button.setPath;
 }
 
-- (void) displayGemPurchaseView {
+- (void)displayGemPurchaseView {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
+    UINavigationController *navigationController = (UINavigationController *)[storyboard
+        instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 

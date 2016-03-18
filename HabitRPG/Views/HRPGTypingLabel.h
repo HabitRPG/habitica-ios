@@ -10,8 +10,8 @@
 
 @interface HRPGTypingLabel : UITextView
 
-@property (nonatomic) CGFloat typingSpeed;
+@property(nonatomic) CGFloat typingSpeed;
 
-@property (nonatomic, copy) void (^finishedAction)();
+@property(nonatomic, copy) void (^finishedAction)();
 
 @end

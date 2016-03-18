@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSNumber (abbreviation)
--(NSString *) abbreviateNumber;
+- (NSString *)abbreviateNumber;
 
 @end

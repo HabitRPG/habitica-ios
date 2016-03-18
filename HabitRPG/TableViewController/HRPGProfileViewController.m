@@ -18,7 +18,7 @@
 
 @interface HRPGProfileViewController ()
 
-@property (nonatomic) User *user;
+@property(nonatomic) User *user;
 
 @end
 
@@ -32,7 +32,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (![currentUserID isEqualToString:[keyChain stringForKey:@"id"]]) {
-        //user has changed. Reload data.
+        // user has changed. Reload data.
         currentUserID = [keyChain stringForKey:@"id"];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", currentUserID];
         [self.fetchedResultsController.fetchRequest setPredicate:predicate];
@@ -49,7 +49,8 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
+    self.tableView.tableHeaderView = [[UIView alloc]
+        initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
 
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
@@ -59,41 +60,54 @@ NIKFontAwesomeIconFactory *iconFactory;
         username = self.user.username;
         userLevel = [self.user.level integerValue];
     } else {
-        //User does not exist in database. Fetch it.
+        // User does not exist in database. Fetch it.
         [self refresh];
     }
 
     iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     iconFactory.square = YES;
     iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
-    
-    UILabel* footerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 170)];
-    footerView.text = [NSString stringWithFormat:NSLocalizedString(@"Hey! You are awesome!\nVersion %@ (%@)", nil), [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
+
+    UILabel *footerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 170)];
+    footerView.text = [NSString
+        stringWithFormat:NSLocalizedString(@"Hey! You are awesome!\nVersion %@ (%@)", nil),
+                         [[[NSBundle mainBundle] infoDictionary]
+                             objectForKey:@"CFBundleShortVersionString"],
+                         [[NSBundle mainBundle]
+                             objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]];
     footerView.textColor = [UIColor lightGrayColor];
     footerView.textAlignment = NSTextAlignmentCenter;
     footerView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     footerView.numberOfLines = 0;
     self.tableView.tableFooterView = footerView;
-    
-    HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentInset],0,0,0);
-    [self.tableView setContentInset:(UIEdgeInsetsMake([navigationController getContentInset], 0, -150, 0))];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPartyData:) name:@"partyUpdated"  object:nil];
+
+    HRPGTopHeaderNavigationController *navigationController =
+        (HRPGTopHeaderNavigationController *)self.navigationController;
+    self.tableView.scrollIndicatorInsets =
+        UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0);
+    [self.tableView
+        setContentInset:(UIEdgeInsetsMake([navigationController getContentInset], 0, -150, 0))];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reloadPartyData:)
+                                                 name:@"partyUpdated"
+                                               object:nil];
 }
 
 - (void)refresh {
     [self.sharedManager fetchUser:^() {
         [self.refreshControl endRefreshing];
-        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
-    }                     onError:^() {
-        [self.refreshControl endRefreshing];
-    }];
+        [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:1 inSection:1] ]
+                              withRowAnimation:UITableViewRowAnimationFade];
+    }
+        onError:^() {
+            [self.refreshControl endRefreshing];
+        }];
 }
 
-
 - (void)reloadPartyData:(id)sender {
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:1 inSection:1] ]
+                          withRowAnimation:UITableViewRowAnimationFade];
 }
 
 #pragma mark - Table view data source
@@ -105,8 +119,9 @@ NIKFontAwesomeIconFactory *iconFactory;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            //Below level 10 users don't have spells
-            if ([self.user.level integerValue] < 10 || [self.user.preferences.disableClass boolValue]) {
+            // Below level 10 users don't have spells
+            if ([self.user.level integerValue] < 10 ||
+                [self.user.preferences.disableClass boolValue]) {
                 return 0;
             } else {
                 return 1;
@@ -121,8 +136,6 @@ NIKFontAwesomeIconFactory *iconFactory;
             return 0;
     }
 }
-
-
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
@@ -140,13 +153,13 @@ NIKFontAwesomeIconFactory *iconFactory;
     }
 }
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return nil;
     }
-    iconFactory.colors = @[[UIColor darkGrayColor]];
+    iconFactory.colors = @[ [UIColor darkGrayColor] ];
     iconFactory.size = 16.f;
-    
+
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 37.5)];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, 14, 290, 17)];
     label.font = [UIFont systemFontOfSize:14];
@@ -155,7 +168,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     iconView.contentMode = UIViewContentModeCenter;
     [view addSubview:label];
     [view addSubview:iconView];
-    
+
     label.text = [[self tableView:tableView titleForHeaderInSection:section] uppercaseString];
     if (section == 1) {
         iconView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconUsers];
@@ -173,22 +186,26 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 0) {
-        if (![self.user.selectedClass boolValue] && ![self.user.preferences.disableClass boolValue]) {
+        if (![self.user.selectedClass boolValue] &&
+            ![self.user.preferences.disableClass boolValue]) {
             [self performSegueWithIdentifier:@"SelectClassSegue" sender:self];
         } else {
             [self performSegueWithIdentifier:@"SpellSegue" sender:self];
         }
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
-        UIViewController *tavernViewController = (UIViewController *)[secondStoryBoard instantiateViewControllerWithIdentifier:@"TavernViewController"];
+        UIViewController *tavernViewController = (UIViewController *)[secondStoryBoard
+            instantiateViewControllerWithIdentifier:@"TavernViewController"];
         [self.navigationController pushViewController:tavernViewController animated:YES];
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
-        UIViewController *partyViewController = (UIViewController *)[secondStoryBoard instantiateViewControllerWithIdentifier:@"PartyViewController"];
+        UIViewController *partyViewController = (UIViewController *)[secondStoryBoard
+            instantiateViewControllerWithIdentifier:@"PartyViewController"];
         [self.navigationController pushViewController:partyViewController animated:YES];
     } else if (indexPath.section == 1 && indexPath.item == 2) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
-        UIViewController *guildsViewController = (UIViewController *)[secondStoryBoard instantiateViewControllerWithIdentifier:@"GuildsOverviewViewController"];
+        UIViewController *guildsViewController = (UIViewController *)[secondStoryBoard
+            instantiateViewControllerWithIdentifier:@"GuildsOverviewViewController"];
         [self.navigationController pushViewController:guildsViewController animated:YES];
     } else if (indexPath.section == 2 && indexPath.item == 0) {
         [self performSegueWithIdentifier:@"CustomizationSegue" sender:self];
@@ -219,16 +236,19 @@ NIKFontAwesomeIconFactory *iconFactory;
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *title = nil;
     NSString *accessibilityLabel = nil;
     NSString *cellName = @"Cell";
     BOOL showIndicator = NO;
     if (indexPath.section == 0 && indexPath.item == 0) {
-        if (![self.user.selectedClass boolValue] && ![self.user.preferences.disableClass boolValue]) {
+        if (![self.user.selectedClass boolValue] &&
+            ![self.user.preferences.disableClass boolValue]) {
             title = NSLocalizedString(@"Select Class", nil);
         } else {
-            if ([self.user.hclass isEqualToString:@"wizard"] || [self.user.hclass isEqualToString:@"healer"]) {
+            if ([self.user.hclass isEqualToString:@"wizard"] ||
+                [self.user.hclass isEqualToString:@"healer"]) {
                 title = NSLocalizedString(@"Cast Spells", nil);
             } else {
                 title = NSLocalizedString(@"Use Skills", nil);
@@ -278,23 +298,23 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else if (indexPath.section == 3 && indexPath.item == 3) {
         title = NSLocalizedString(@"About", nil);
     }
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
+
+    UITableViewCell *cell =
+        [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
     if (accessibilityLabel) {
         cell.accessibilityLabel = accessibilityLabel;
     }
-    UILabel *label = (UILabel *) [cell viewWithTag:1];
+    UILabel *label = (UILabel *)[cell viewWithTag:1];
     label.text = title;
-    UIImageView *indicatorView = (UIImageView *) [cell viewWithTag:2];
+    UIImageView *indicatorView = (UIImageView *)[cell viewWithTag:2];
     indicatorView.hidden = !showIndicator;
     if (showIndicator) {
-        iconFactory.colors = @[[UIColor purple200]];
+        iconFactory.colors = @[ [UIColor purple200] ];
         iconFactory.size = 13.0f;
         indicatorView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconCircle];
     }
     return cell;
 }
-
 
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
@@ -302,7 +322,8 @@ NIKFontAwesomeIconFactory *iconFactory;
     }
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User"
+                                              inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
 
     keyChain = [PDKeychainBindings sharedKeychainBindings];
@@ -310,11 +331,15 @@ NIKFontAwesomeIconFactory *iconFactory;
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", currentUserID]];
 
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
-    NSArray *sortDescriptors = @[sortDescriptor];
+    NSArray *sortDescriptors = @[ sortDescriptor ];
 
     [fetchRequest setSortDescriptors:sortDescriptors];
 
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"username" cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController =
+        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                            managedObjectContext:self.managedObjectContext
+                                              sectionNameKeyPath:@"username"
+                                                       cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
@@ -327,32 +352,40 @@ NIKFontAwesomeIconFactory *iconFactory;
     return _fetchedResultsController;
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+- (void)controller:(NSFetchedResultsController *)controller
+  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex
+     forChangeType:(NSFetchedResultsChangeType)type {
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
     switch (type) {
         case NSFetchedResultsChangeInsert: {
-            self.user = (User *) [self.fetchedResultsController objectAtIndexPath:newIndexPath];
+            self.user = (User *)[self.fetchedResultsController objectAtIndexPath:newIndexPath];
             username = self.user.username;
             [tableView reloadData];
             break;
         }
         case NSFetchedResultsChangeUpdate: {
-            self.user = (User *) [self.fetchedResultsController objectAtIndexPath:newIndexPath];
+            self.user = (User *)[self.fetchedResultsController objectAtIndexPath:newIndexPath];
             username = self.user.username;
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
-            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:3]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:3] ]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
         }
         case NSFetchedResultsChangeDelete: {
             username = nil;
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
         }
         case NSFetchedResultsChangeMove:
             break;
@@ -366,10 +399,11 @@ NIKFontAwesomeIconFactory *iconFactory;
 - (User *)user {
     if ([[self.fetchedResultsController sections] count] > 0) {
         if ([[self.fetchedResultsController sections][0] numberOfObjects] > 0) {
-            _user = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+            _user = [self.fetchedResultsController
+                objectAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
         }
     }
-    
+
     return _user;
 }
 

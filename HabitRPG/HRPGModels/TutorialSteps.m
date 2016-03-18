@@ -11,9 +11,12 @@
 
 @implementation TutorialSteps
 
-+ (TutorialSteps *)markStep:(NSString *)identifier withType:(NSString *)type withContext:(NSManagedObjectContext *)context {
++ (TutorialSteps *)markStep:(NSString *)identifier
+                   withType:(NSString *)type
+                withContext:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"TutorialSteps" inManagedObjectContext:context];
+    NSEntityDescription *entity =
+        [NSEntityDescription entityForName:@"TutorialSteps" inManagedObjectContext:context];
     [request setEntity:entity];
     [request setPredicate:[NSPredicate predicateWithFormat:@"identifier = %@", identifier]];
     NSError *errorFetch = nil;
@@ -22,14 +25,14 @@
     if (array.count == 1) {
         step = array[0];
     } else if (array.count > 1) {
-        for (int index = 0; index < array.count-1; index++) {
+        for (int index = 0; index < array.count - 1; index++) {
             TutorialSteps *deleteStep = array[index];
             [context deleteObject:deleteStep];
         }
-        step = array[array.count-1];
+        step = array[array.count - 1];
     } else {
         step = [NSEntityDescription insertNewObjectForEntityForName:@"TutorialSteps"
-                                                                inManagedObjectContext:context];
+                                             inManagedObjectContext:context];
         step.identifier = identifier;
     }
     step.type = type;
@@ -37,7 +40,10 @@
     return step;
 }
 
-+ (TutorialSteps *)markStep:(NSString *)identifier asSeen:(BOOL)wasSeen withType:(NSString *)type withContext:(NSManagedObjectContext *)context {
++ (TutorialSteps *)markStep:(NSString *)identifier
+                     asSeen:(BOOL)wasSeen
+                   withType:(NSString *)type
+                withContext:(NSManagedObjectContext *)context {
     TutorialSteps *step = [TutorialSteps markStep:identifier withType:type withContext:context];
     step.wasShown = [NSNumber numberWithBool:wasSeen];
     return step;

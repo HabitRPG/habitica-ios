@@ -10,17 +10,18 @@
 #import "User.h"
 #import "HRPGAvatarSetupViewController.h"
 
-@interface HRPGTaskSetupTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface HRPGTaskSetupTableViewController
+    : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property NSInteger currentStep;
 @property User *user;
 @property NSManagedObjectContext *managedObjectContext;
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property(weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (weak, nonatomic) IBOutlet UIButton *skipButton;
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
-@property (weak, nonatomic) IBOutlet UIButton *nextButton;
+@property(weak, nonatomic) IBOutlet UIButton *skipButton;
+@property(weak, nonatomic) IBOutlet UIButton *backButton;
+@property(weak, nonatomic) IBOutlet UIButton *nextButton;
 @property BOOL shouldDismiss;
 
 @end

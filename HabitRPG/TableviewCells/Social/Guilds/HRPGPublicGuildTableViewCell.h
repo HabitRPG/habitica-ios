@@ -10,16 +10,15 @@
 #import "Group.h"
 
 @interface HRPGPublicGuildTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *memberCountLabel;
-@property (weak, nonatomic) IBOutlet UIButton *joinLeaveButton;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *joinLeaveButtonWidthConstraint;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property(weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property(weak, nonatomic) IBOutlet UILabel *memberCountLabel;
+@property(weak, nonatomic) IBOutlet UIButton *joinLeaveButton;
+@property(weak, nonatomic) IBOutlet NSLayoutConstraint *joinLeaveButtonWidthConstraint;
+@property(weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
-- (void) configureForGuild:(Group *)guild;
+- (void)configureForGuild:(Group *)guild;
 
-@property (nonatomic, copy) void (^joinAction)();
-@property (nonatomic, copy) void (^leaveAction)();
-
+@property(nonatomic, copy) void (^joinAction)();
+@property(nonatomic, copy) void (^leaveAction)();
 
 @end

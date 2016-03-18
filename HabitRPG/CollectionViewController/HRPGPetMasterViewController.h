@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseCollectionViewController.h"
 
-@interface HRPGPetMasterViewController : HRPGBaseCollectionViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
-
+@interface HRPGPetMasterViewController
+    : HRPGBaseCollectionViewController<NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
 
 @end

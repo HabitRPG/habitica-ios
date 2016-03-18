@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseCollectionViewController.h"
 
-@interface HRPGPetViewController : HRPGBaseCollectionViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
+@interface HRPGPetViewController
+    : HRPGBaseCollectionViewController<NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
 
-@property (nonatomic) NSString *petName;
-@property (nonatomic) NSString *petType;
-@property (nonatomic) NSString *petColor;
+@property(nonatomic) NSString *petName;
+@property(nonatomic) NSString *petType;
+@property(nonatomic) NSString *petColor;
 
 @end

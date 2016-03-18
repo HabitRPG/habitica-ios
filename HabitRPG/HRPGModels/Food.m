@@ -9,7 +9,6 @@
 #import "Food.h"
 #import "User.h"
 
-
 @implementation Food
 
 @dynamic article;

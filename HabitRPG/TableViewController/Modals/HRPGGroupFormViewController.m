@@ -20,23 +20,23 @@
 
 @implementation HRPGGroupFormViewController
 
--(id)initWithCoder:(NSCoder *)aDecoder
-{
+- (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    if (self){
-        HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+    if (self) {
+        HRPGAppDelegate *appdelegate =
+            (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
         HRPGManager *sharedManager = appdelegate.sharedManager;
         self.managedObjectContext = sharedManager.getManagedObjectContext;
         [self initializeForm];
     }
-    
+
     NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
     [eventProperties setValue:@"navigate" forKey:@"eventAction"];
     [eventProperties setValue:@"navigation" forKey:@"eventCategory"];
     [eventProperties setValue:@"pageview" forKey:@"hitType"];
     [eventProperties setValue:NSStringFromClass([self class]) forKey:@"page"];
     [[Amplitude instance] logEvent:@"navigate" withEventProperties:eventProperties];
-    
+
     return self;
 }
 
@@ -47,23 +47,28 @@
     }
 }
 
--(void)initializeForm {
-    XLFormDescriptor *formDescriptor = [XLFormDescriptor formDescriptorWithTitle:NSLocalizedString(@"New Party", nil)];
+- (void)initializeForm {
+    XLFormDescriptor *formDescriptor =
+        [XLFormDescriptor formDescriptorWithTitle:NSLocalizedString(@"New Party", nil)];
     formDescriptor.assignFirstResponderOnShow = YES;
-    
+
     XLFormSectionDescriptor *section;
     XLFormRowDescriptor *row;
-    
+
     section = [XLFormSectionDescriptor formSectionWithTitle:@"Party"];
     [formDescriptor addFormSection:section];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"name" rowType:XLFormRowDescriptorTypeText title:NSLocalizedString(@"Name", nil)];
+
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"name"
+                                                rowType:XLFormRowDescriptorTypeText
+                                                  title:NSLocalizedString(@"Name", nil)];
     row.required = YES;
     [section addFormRow:row];
-    
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"hdescription" rowType:XLFormRowDescriptorTypeTextView title:NSLocalizedString(@"Description", nil)];
+
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"hdescription"
+                                                rowType:XLFormRowDescriptorTypeTextView
+                                                  title:NSLocalizedString(@"Description", nil)];
     [section addFormRow:row];
-    
+
     self.form = formDescriptor;
 }
 - (void)fillEditForm {
@@ -75,14 +80,19 @@
 }
 
 - (void)showFormValidationError:(NSError *)error {
-    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Validation Error", nil) message:error.localizedDescription delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+    UIAlertView *alertView =
+        [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Validation Error", nil)
+                                   message:error.localizedDescription
+                                  delegate:self
+                         cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                         otherButtonTitles:nil];
     [alertView show];
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     if ([identifier isEqualToString:@"unwindSaveSegue"]) {
-        NSArray * validationErrors = [self formValidationErrors];
-        if (validationErrors.count > 0){
+        NSArray *validationErrors = [self formValidationErrors];
+        if (validationErrors.count > 0) {
             [self showFormValidationError:[validationErrors firstObject]];
             return NO;
         }
@@ -90,15 +100,15 @@
     return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
-    
+
     [self.tableView endEditing:YES];
     if ([segue.identifier isEqualToString:@"unwindSaveSegue"]) {
         if (!self.editGroup) {
-            self.group = [NSEntityDescription
-                           insertNewObjectForEntityForName:@"Group"
-                           inManagedObjectContext:self.managedObjectContext];
+            self.group =
+                [NSEntityDescription insertNewObjectForEntityForName:@"Group"
+                                              inManagedObjectContext:self.managedObjectContext];
             self.group.type = self.groupType;
         }
         NSDictionary *formValues = [self.form formValues];

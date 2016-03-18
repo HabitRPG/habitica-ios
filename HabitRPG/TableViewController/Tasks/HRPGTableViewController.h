@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
 
-@interface HRPGTableViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate>
+@interface HRPGTableViewController : HRPGBaseViewController<NSFetchedResultsControllerDelegate>
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue;
 
@@ -17,20 +17,19 @@
 
 - (UIView *)viewWithIcon:(UIImage *)image;
 
-- (void) tableView:(UITableView *)tableView expandTaskAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tableView:(UITableView *)tableView expandTaskAtIndexPath:(NSIndexPath *)indexPath;
 
-- (Task*) taskAtIndexPath:(NSIndexPath*)indexPath;
-- (NSIndexPath*)indexPathForTaskWithOffset:(NSIndexPath*) indexPath;
+- (Task *)taskAtIndexPath:(NSIndexPath *)indexPath;
+- (NSIndexPath *)indexPathForTaskWithOffset:(NSIndexPath *)indexPath;
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-- (NSPredicate*) getPredicate;
+- (NSPredicate *)getPredicate;
 
-- (void) scrollToTaskWithId:(NSString *)taskID;
+- (void)scrollToTaskWithId:(NSString *)taskID;
 
 @property NSInteger filterType;
 @property NSInteger dayStart;
 
-@property NSString* scrollToTaskAfterLoading;
+@property NSString *scrollToTaskAfterLoading;
 
 @end
-

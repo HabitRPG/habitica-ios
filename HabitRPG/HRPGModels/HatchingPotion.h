@@ -14,6 +14,6 @@
 
 @interface HatchingPotion : Item
 
-@property (nonatomic, retain) User *user;
+@property(nonatomic, retain) User *user;
 
 @end

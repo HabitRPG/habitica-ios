@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseCollectionViewController.h"
 
-@interface HRPGMountMasterViewController : HRPGBaseCollectionViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
+@interface HRPGMountMasterViewController
+    : HRPGBaseCollectionViewController<NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
-
 
 @end

@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "HRPGManager.h"
 
-@interface HRPGTabBarController : UITabBarController <NSFetchedResultsControllerDelegate>
+@interface HRPGTabBarController : UITabBarController<NSFetchedResultsControllerDelegate>
 
-@property NSArray *selectedTags;@property (nonatomic)  HRPGManager *sharedManager;
+@property NSArray *selectedTags;
+@property(nonatomic) HRPGManager *sharedManager;
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 

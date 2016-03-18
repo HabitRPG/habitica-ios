@@ -15,26 +15,28 @@ typedef NS_ENUM(NSInteger, HRPGChatTableViewCellType) {
     HRPGChatTableViewCellTypeParty
 };
 
-@interface HRPGChatTableViewCell : UITableViewCell <UIGestureRecognizerDelegate>
+@interface HRPGChatTableViewCell : UITableViewCell<UIGestureRecognizerDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *modIndicatorImageView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *indicatorImageViewWidthConstraint;
-@property (weak, nonatomic) IBOutlet UIView *usernameWrapper;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UITextView *messageTextView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *usernameHeightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *usernameWidthConstraint;
-@property (weak, nonatomic) IBOutlet UIButton *plusOneButton;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *plusOneButtonHeightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *plusOneButtonWidthConstraint;
+@property(weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property(weak, nonatomic) IBOutlet UIImageView *modIndicatorImageView;
+@property(weak, nonatomic) IBOutlet NSLayoutConstraint *indicatorImageViewWidthConstraint;
+@property(weak, nonatomic) IBOutlet UIView *usernameWrapper;
+@property(weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property(weak, nonatomic) IBOutlet UITextView *messageTextView;
+@property(weak, nonatomic) IBOutlet NSLayoutConstraint *usernameHeightConstraint;
+@property(weak, nonatomic) IBOutlet NSLayoutConstraint *usernameWidthConstraint;
+@property(weak, nonatomic) IBOutlet UIButton *plusOneButton;
+@property(weak, nonatomic) IBOutlet NSLayoutConstraint *plusOneButtonHeightConstraint;
+@property(weak, nonatomic) IBOutlet NSLayoutConstraint *plusOneButtonWidthConstraint;
 
-- (void)configureForMessage:(ChatMessage *)message withUserID:(NSString *)userID withUsername:(NSString *)username;
+- (void)configureForMessage:(ChatMessage *)message
+                 withUserID:(NSString *)userID
+               withUsername:(NSString *)username;
 
-@property (nonatomic, copy) void (^profileAction)();
-@property (nonatomic, copy) void (^flagAction)();
-@property (nonatomic, copy) void (^replyAction)();
-@property (nonatomic, copy) void (^deleteAction)();
-@property (nonatomic, copy) void (^plusOneAction)();
+@property(nonatomic, copy) void (^profileAction)();
+@property(nonatomic, copy) void (^flagAction)();
+@property(nonatomic, copy) void (^replyAction)();
+@property(nonatomic, copy) void (^deleteAction)();
+@property(nonatomic, copy) void (^plusOneAction)();
 
 @end

@@ -18,43 +18,55 @@
 @property NSString *typeName;
 @property User *user;
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
+- (void)configureCell:(UITableViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+        withAnimation:(BOOL)animate;
 @end
 
 @implementation HRPGEquipmentViewController
 Gear *selectedGear;
 NSIndexPath *selectedIndex;
 
--(void)viewDidLoad {
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.user = [self.sharedManager getUser];
     self.tutorialIdentifier = @"equipment";
-    
+
     UIView *costumeFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.viewWidth, 68)];
-    
-    UILabel *footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, self.viewWidth-80, 60)];
+
+    UILabel *footerLabel =
+        [[UILabel alloc] initWithFrame:CGRectMake(8, 0, self.viewWidth - 80, 60)];
     footerLabel.text = NSLocalizedString(@"Wear costume", nil);
     [costumeFooterView addSubview:footerLabel];
-    
-    UISwitch *footerSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.viewWidth-59, 14.5, 72, 31)];
+
+    UISwitch *footerSwitch =
+        [[UISwitch alloc] initWithFrame:CGRectMake(self.viewWidth - 59, 14.5, 72, 31)];
     footerSwitch.on = [self.user.preferences.useCostume boolValue];
-    [footerSwitch addTarget:self action:@selector(changeWearingCostume:) forControlEvents:UIControlEventValueChanged];
+    [footerSwitch addTarget:self
+                     action:@selector(changeWearingCostume:)
+           forControlEvents:UIControlEventValueChanged];
     [costumeFooterView addSubview:footerSwitch];
-    
+
     self.tableView.tableFooterView = costumeFooterView;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
     if (tableSelection) {
-        [self.tableView reloadRowsAtIndexPaths:@[tableSelection] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadRowsAtIndexPaths:@[ tableSelection ]
+                              withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     [super viewWillAppear:animated];
 }
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"equipment"]) {
-        return @{@"text": NSLocalizedString(@"When you buy equipment, it appears here. Your Battle Gear affects your stats, and your Costume (if enabled) affects what your avatar wears.", nil)};
+        return @{
+            @"text" : NSLocalizedString(@"When you buy equipment, it appears here. Your Battle "
+                                        @"Gear affects your stats, and your Costume (if enabled) "
+                                        @"affects what your avatar wears.",
+                                        nil)
+        };
     }
     return nil;
 }
@@ -77,8 +89,10 @@ NSIndexPath *selectedIndex;
     return 8;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell =
+        [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
 }
@@ -91,14 +105,14 @@ NSIndexPath *selectedIndex;
     return 60;
 }
 
-
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Gear" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Gear"
+                                              inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
 
@@ -106,12 +120,17 @@ NSIndexPath *selectedIndex;
     predicate = [NSPredicate predicateWithFormat:@"owned == True"];
     [fetchRequest setPredicate:predicate];
 
-    NSSortDescriptor *indexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
+    NSSortDescriptor *indexDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
     NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
-    NSArray *sortDescriptors = @[typeDescriptor, indexDescriptor];
+    NSArray *sortDescriptors = @[ typeDescriptor, indexDescriptor ];
 
     [fetchRequest setSortDescriptors:sortDescriptors];
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController =
+        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                            managedObjectContext:self.managedObjectContext
+                                              sectionNameKeyPath:nil
+                                                       cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
@@ -128,10 +147,12 @@ NSIndexPath *selectedIndex;
     [self.tableView reloadData];
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
-    UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
+- (void)configureCell:(UITableViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+        withAnimation:(BOOL)animate {
+    UILabel *textLabel = (UILabel *)[cell viewWithTag:1];
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-    
+
     NSString *searchedKey;
     NSString *typeName;
     Outfit *outfit;
@@ -152,7 +173,7 @@ NSIndexPath *selectedIndex;
     } else if (indexPath.item == 3) {
         searchedKey = outfit.armor;
         typeName = NSLocalizedString(@"Armor", nil);
-    }  else if (indexPath.item == 4) {
+    } else if (indexPath.item == 4) {
         searchedKey = outfit.body;
         typeName = NSLocalizedString(@"Body", nil);
     } else if (indexPath.item == 5) {
@@ -173,13 +194,15 @@ NSIndexPath *selectedIndex;
         }
     }
     textLabel.text = typeName;
-    UILabel *detailLabel = (UILabel*)[cell viewWithTag:3];
+    UILabel *detailLabel = (UILabel *)[cell viewWithTag:3];
     detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-    UIImageView *imageView = (UIImageView*)[cell viewWithTag:4];
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:4];
     if (searchedGear) {
         detailLabel.text = searchedGear.text;
         detailLabel.textColor = [UIColor blackColor];
-        [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", searchedGear.key] withFormat:@"png" onView:imageView];
+        [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", searchedGear.key]
+                          withFormat:@"png"
+                              onView:imageView];
 
     } else {
         detailLabel.text = NSLocalizedString(@"Nothing Equipped", nil);
@@ -191,14 +214,16 @@ NSIndexPath *selectedIndex;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"EquipmentDetailSegue"]) {
-        HRPGEquipmentDetailViewController *equipmentDetailViewController = (HRPGEquipmentDetailViewController*)segue.destinationViewController;
+        HRPGEquipmentDetailViewController *equipmentDetailViewController =
+            (HRPGEquipmentDetailViewController *)segue.destinationViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         if (indexPath.item == 0) {
             equipmentDetailViewController.type = @"head";
             equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Head", nil);
         } else if (indexPath.item == 1) {
             equipmentDetailViewController.type = @"headAccessory";
-            equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Head Accessory", nil);
+            equipmentDetailViewController.navigationItem.title =
+                NSLocalizedString(@"Head Accessory", nil);
         } else if (indexPath.item == 2) {
             equipmentDetailViewController.type = @"eyewear";
             equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Eyewear", nil);
@@ -218,7 +243,7 @@ NSIndexPath *selectedIndex;
             equipmentDetailViewController.type = @"weapon";
             equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Weapon", nil);
         }
-        
+
         if (indexPath.section == 0) {
             equipmentDetailViewController.equipType = @"equipped";
         } else if (indexPath.section == 1) {
@@ -228,11 +253,15 @@ NSIndexPath *selectedIndex;
 }
 
 - (void)changeWearingCostume:(UISwitch *)switchState {
-    [self.sharedManager updateUser:@{@"preferences.costume": [NSNumber numberWithBool:switchState.on]} onSuccess:^() {
-        switchState.on = [self.user.preferences.useCostume boolValue];
-    }onError:^() {
-        switchState.on = [self.user.preferences.useCostume boolValue];
-    }];
+    [self.sharedManager updateUser:@{
+        @"preferences.costume" : [NSNumber numberWithBool:switchState.on]
+    }
+        onSuccess:^() {
+            switchState.on = [self.user.preferences.useCostume boolValue];
+        }
+        onError:^() {
+            switchState.on = [self.user.preferences.useCostume boolValue];
+        }];
 }
 
 @end

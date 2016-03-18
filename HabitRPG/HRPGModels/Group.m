@@ -32,15 +32,14 @@
 @dynamic memberCount;
 @dynamic balance;
 
--(void)addChatmessagesObject:(ChatMessage *)value {
+- (void)addChatmessagesObject:(ChatMessage *)value {
     NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.chatmessages];
     value.group = self;
     [tempSet addObject:value];
     self.chatmessages = tempSet;
 }
 
-
--(void)addChatmessagesObjectAtFirstPosition:(ChatMessage *)value {
+- (void)addChatmessagesObjectAtFirstPosition:(ChatMessage *)value {
     NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.chatmessages];
     value.group = self;
     [tempSet insertObject:value atIndex:0];

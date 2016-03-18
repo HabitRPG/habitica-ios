@@ -15,10 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Reminder (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSDate *startDate;
-@property (nullable, nonatomic, retain) NSDate *time;
-@property (nullable, nonatomic, retain) Task *task;
-@property (nullable, nonatomic, retain) NSString *id;
+@property(nullable, nonatomic, retain) NSDate *startDate;
+@property(nullable, nonatomic, retain) NSDate *time;
+@property(nullable, nonatomic, retain) Task *task;
+@property(nullable, nonatomic, retain) NSString *id;
 
 @end
 

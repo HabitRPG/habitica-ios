@@ -21,13 +21,13 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         self.size = 26;
-        
-        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+
+        UITapGestureRecognizer *tapRecognizer =
+            [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
         tapRecognizer.numberOfTapsRequired = 1;
         [self addGestureRecognizer:tapRecognizer];
-
     }
-    
+
     return self;
 }
 
@@ -35,12 +35,12 @@
     [self configureForTask:task withOffset:0];
 }
 
-- (void)configureForTask:(Task *)task withOffset:(NSInteger) offset {
+- (void)configureForTask:(Task *)task withOffset:(NSInteger)offset {
     self.boxFillColor = [UIColor colorWithWhite:1.0 alpha:0.7];
     self.checked = [task.completed boolValue] || [task.currentlyChecking boolValue];
     if ([task.type isEqualToString:@"daily"]) {
         self.cornerRadius = 3;
-        
+
         if ([task.completed boolValue]) {
             self.boxBorderColor = [UIColor gray50];
             self.boxFillColor = [UIColor gray400];
@@ -57,9 +57,9 @@
                 self.checkColor = [UIColor gray200];
             }
         }
-        
+
     } else {
-        self.cornerRadius = self.size/2;
+        self.cornerRadius = self.size / 2;
         if ([task.completed boolValue]) {
             self.boxBorderColor = [UIColor gray50];
             self.boxFillColor = [UIColor gray400];
@@ -71,7 +71,7 @@
             self.checkColor = [task taskColor];
         }
     }
-    
+
     [self setNeedsDisplay];
 }
 
@@ -84,12 +84,12 @@
     if ([task.type isEqualToString:@"daily"]) {
         self.cornerRadius = 3;
     } else {
-        self.cornerRadius = self.size/2;
+        self.cornerRadius = self.size / 2;
     }
     [self setNeedsDisplay];
 }
 
-- (void)viewTapped:(UITapGestureRecognizer*)recognizer {
+- (void)viewTapped:(UITapGestureRecognizer *)recognizer {
     self.checked = !self.checked;
     if (self.wasTouched) {
         self.wasTouched();
@@ -101,7 +101,11 @@
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     [self.boxBorderColor setStroke];
     [self.boxFillColor setFill];
-    UIBezierPath *borderPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(self.frame.size.width/2-self.size/2, self.frame.size.height/2-self.size/2, self.size, self.size) cornerRadius:self.cornerRadius];
+    UIBezierPath *borderPath = [UIBezierPath
+        bezierPathWithRoundedRect:CGRectMake(self.frame.size.width / 2 - self.size / 2,
+                                             self.frame.size.height / 2 - self.size / 2, self.size,
+                                             self.size)
+                     cornerRadius:self.cornerRadius];
     [borderPath fill];
     [borderPath setLineWidth:2];
     [borderPath stroke];
@@ -109,13 +113,15 @@
         CGContextBeginPath(ctx);
         CGContextSetLineWidth(ctx, 2);
         CGContextSetStrokeColorWithColor(ctx, [self.checkColor CGColor]);
-        CGContextMoveToPoint(ctx, self.frame.size.width/2-(self.size/3.5), self.frame.size.height/2);
-        CGContextAddLineToPoint(ctx, self.frame.size.width/2-(self.size/8), self.frame.size.height/2+(self.size/5));
-        CGContextAddLineToPoint(ctx, self.frame.size.width/2+(self.size/4), self.frame.size.height/2-(self.size/5));
+        CGContextMoveToPoint(ctx, self.frame.size.width / 2 - (self.size / 3.5),
+                             self.frame.size.height / 2);
+        CGContextAddLineToPoint(ctx, self.frame.size.width / 2 - (self.size / 8),
+                                self.frame.size.height / 2 + (self.size / 5));
+        CGContextAddLineToPoint(ctx, self.frame.size.width / 2 + (self.size / 4),
+                                self.frame.size.height / 2 - (self.size / 5));
         CGContextStrokePath(ctx);
     } else {
     }
 }
-
 
 @end

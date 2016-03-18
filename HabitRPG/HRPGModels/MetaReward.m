@@ -8,7 +8,6 @@
 
 #import "MetaReward.h"
 
-
 @implementation MetaReward
 
 @dynamic buyable;

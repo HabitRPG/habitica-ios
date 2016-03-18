@@ -10,7 +10,7 @@
 
 @interface HRPGSpeechbubbleView : UIView
 
-@property (nonatomic) NSString *text;
-@property (nonatomic) UIColor *textColor;
+@property(nonatomic) NSString *text;
+@property(nonatomic) UIColor *textColor;
 
 @end

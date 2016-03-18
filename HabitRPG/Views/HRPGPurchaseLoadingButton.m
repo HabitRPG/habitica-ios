@@ -19,7 +19,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    
+
     if (self) {
         self.label = [[UILabel alloc] init];
         self.label.layer.borderWidth = 1.0f;
@@ -27,24 +27,26 @@
         self.label.textAlignment = NSTextAlignmentCenter;
         self.loadingView = [[UIActivityIndicatorView alloc] init];
         self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-        
+
         self.tintColor = [UIColor blueColor];
         self.layer.masksToBounds = YES;
         self.text = @"";
         self.confirmText = @"buy";
         self.doneText = @"success";
         self.state = HRPGPurchaseButtonStateLabel;
-        UILongPressGestureRecognizer *tapGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        UILongPressGestureRecognizer *tapGestureRecognizer =
+            [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
         tapGestureRecognizer.minimumPressDuration = 0.001;
         [self addGestureRecognizer:tapGestureRecognizer];
     }
-    
+
     return self;
 }
 
 - (void)layoutSubviews {
     self.label.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    self.loadingView.frame = CGRectMake((self.frame.size.width-self.frame.size.height)/2, 0, self.frame.size.height, self.frame.size.height);
+    self.loadingView.frame = CGRectMake((self.frame.size.width - self.frame.size.height) / 2, 0,
+                                        self.frame.size.height, self.frame.size.height);
 }
 
 - (void)setText:(NSString *)text {
@@ -73,7 +75,7 @@
         self.tintColor = self.originalTintColor;
     }
     _state = state;
-    
+
     switch (state) {
         case HRPGPurchaseButtonStateLabel:
             [self removeLoadingIndicatorFromView];
@@ -101,7 +103,7 @@
             self.tintColor = [UIColor redColor];
             self.label.text = NSLocalizedString(@"ERROR", nil);
             break;
-            
+
         default:
             break;
     }
@@ -136,17 +138,19 @@
 }
 
 - (void)highlightButton {
-    [UIView animateWithDuration:0.2 animations:^() {
-        self.layer.backgroundColor = [self.tintColor CGColor];
-        self.label.textColor = [UIColor whiteColor];
-    }];
+    [UIView animateWithDuration:0.2
+                     animations:^() {
+                         self.layer.backgroundColor = [self.tintColor CGColor];
+                         self.label.textColor = [UIColor whiteColor];
+                     }];
 }
 
 - (void)dehighlightButton {
-    [UIView animateWithDuration:0.2 animations:^() {
-        self.layer.backgroundColor = [[UIColor clearColor] CGColor];
-        self.label.textColor = self.tintColor;
-    }];
+    [UIView animateWithDuration:0.2
+                     animations:^() {
+                         self.layer.backgroundColor = [[UIColor clearColor] CGColor];
+                         self.label.textColor = self.tintColor;
+                     }];
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)tapGestureRecognizer {
@@ -162,7 +166,6 @@
             [self dehighlightButton];
             break;
     }
-
 }
 
 @end

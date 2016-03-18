@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HRPGProgressView : UIView
-@property (nonatomic) NSNumber *progress;
+@property(nonatomic) NSNumber *progress;
 
 @end

@@ -16,7 +16,7 @@
 
 @interface HRPGRewardTableViewCell ()
 
-@property (nonatomic, copy) void (^tapAction)();
+@property(nonatomic, copy) void (^tapAction)();
 
 @end
 
@@ -25,7 +25,7 @@
 - (void)configureForReward:(MetaReward *)reward withGoldOwned:(NSNumber *)gold {
     self.buyView.layer.borderWidth = 1.0;
     self.buyView.layer.cornerRadius = 5.0;
-    
+
     self.titleLabel.text = [reward.text stringByReplacingEmojiCheatCodesWithUnicode];
     self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     if (reward.notes && reward.notes.length > 0) {
@@ -36,20 +36,23 @@
         self.detailLabel.text = nil;
         self.titleNotesConstraint.constant = 0;
     }
-    
+
     self.priceLabel.text = [reward.value stringValue];
     self.priceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     if (self.buyButton.gestureRecognizers.count == 0) {
-        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBuyTap:)];
+        UITapGestureRecognizer *tapGestureRecognizer =
+            [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBuyTap:)];
         [self.buyButton addGestureRecognizer:tapGestureRecognizer];
     }
-    if ([reward.value floatValue] < 1 && [reward.value floatValue] > 0) {
+    if ([reward.value floatValue]<1 && [reward.value floatValue]> 0) {
         self.coinImageView.image = [UIImage imageNamed:@"silver_coin"];
-        self.priceLabel.text = [NSString stringWithFormat:@"%.f", (([reward.value floatValue] - [reward.value integerValue]) * 100)];
+        self.priceLabel.text = [NSString
+            stringWithFormat:@"%.f",
+                             (([reward.value floatValue] - [reward.value integerValue]) * 100)];
     } else {
         self.coinImageView.image = [UIImage imageNamed:@"gold_coin"];
     }
-    
+
     if ([gold floatValue] > [reward.value floatValue]) {
         self.buyView.layer.borderColor = [[UIColor purple300] CGColor];
         self.titleLabel.textColor = [UIColor blackColor];
@@ -69,18 +72,24 @@
     }
 }
 
-- (void) handleBuyTap: (UITapGestureRecognizer *)recognizer {
+- (void)handleBuyTap:(UITapGestureRecognizer *)recognizer {
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         if (self.tapAction) {
             self.tapAction();
         }
-        [UIView animateWithDuration:0.15 animations:^() {
-            self.buyView.backgroundColor = [UIColor purple500];
-        }completion:^(BOOL completed) {
-            [UIView animateWithDuration:0.15 delay:0.15 options:UIViewAnimationOptionAllowUserInteraction animations:^() {
-                self.buyView.backgroundColor = [UIColor clearColor];
-            }completion:nil];
-        }];
+        [UIView animateWithDuration:0.15
+            animations:^() {
+                self.buyView.backgroundColor = [UIColor purple500];
+            }
+            completion:^(BOOL completed) {
+                [UIView animateWithDuration:0.15
+                                      delay:0.15
+                                    options:UIViewAnimationOptionAllowUserInteraction
+                                 animations:^() {
+                                     self.buyView.backgroundColor = [UIColor clearColor];
+                                 }
+                                 completion:nil];
+            }];
     }
 }
 

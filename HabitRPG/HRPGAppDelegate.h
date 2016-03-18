@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HRPGManager.h"
 
-@interface HRPGAppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
+@interface HRPGAppDelegate : UIResponder<UIApplicationDelegate, UIAlertViewDelegate>
 
 @property(strong, nonatomic) UIWindow *window;
 @property(strong, nonatomic) HRPGManager *sharedManager;

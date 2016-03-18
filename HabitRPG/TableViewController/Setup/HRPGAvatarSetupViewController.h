@@ -15,7 +15,7 @@ typedef enum HRPGAvatarSetupSteps : NSInteger {
     HRPGAvatarSetupStepsTasks
 } HRPGavatarSetupSteps;
 
-@interface HRPGAvatarSetupViewController : UIViewController <UIScrollViewDelegate>
+@interface HRPGAvatarSetupViewController : UIViewController<UIScrollViewDelegate>
 
 @property NSInteger currentStep;
 @property User *user;

@@ -32,27 +32,31 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:[self getScreenName]];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
-    
+
     NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
     [eventProperties setValue:@"navigate" forKey:@"eventAction"];
     [eventProperties setValue:@"navigation" forKey:@"eventCategory"];
     [eventProperties setValue:@"pageview" forKey:@"hitType"];
     [eventProperties setValue:[self getScreenName] forKey:@"page"];
     [[Amplitude instance] logEvent:@"navigate" withEventProperties:eventProperties];
-    
+
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
-        [self.tableView setContentInset:UIEdgeInsetsMake([navigationController getContentInset],0,0,0)];
-        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentInset],0,0,0);
+        HRPGTopHeaderNavigationController *navigationController =
+            (HRPGTopHeaderNavigationController *)self.navigationController;
+        [self.tableView
+            setContentInset:UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0)];
+        self.tableView.scrollIndicatorInsets =
+            UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0);
         if (navigationController.state == HRPGTopHeaderStateHidden) {
-            [self.tableView setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
+            [self.tableView
+                setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
         }
     }
 
     self.viewWidth = self.view.frame.size.width;
 }
 
-- (NSString *) getScreenName {
+- (NSString *)getScreenName {
     if (self.readableScreenName) {
         return self.readableScreenName;
     } else {
@@ -64,7 +68,7 @@
     return YES;
 }
 
--(void)viewWillLayoutSubviews {
+- (void)viewWillLayoutSubviews {
     CGFloat newWidth = self.view.frame.size.width;
     if (self.viewWidth != newWidth) {
         self.viewWidth = newWidth;
@@ -75,13 +79,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(preferredContentSizeChanged:)
-     name:UIContentSizeCategoryDidChangeNotification
-     object:nil];
-    
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(preferredContentSizeChanged:)
+                                                 name:UIContentSizeCategoryDidChangeNotification
+                                               object:nil];
+
     if (self.refreshControl.isRefreshing) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.refreshControl beginRefreshing];
@@ -90,10 +93,10 @@
     }
     NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
     [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
-    
-    
+
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+        HRPGTopHeaderNavigationController *navigationController =
+            (HRPGTopHeaderNavigationController *)self.navigationController;
         if (self.tableView.contentOffset.y < -[navigationController getContentOffset]) {
             [self.tableView setContentOffset:CGPointMake(0, 0)];
         }
@@ -107,21 +110,25 @@
         HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
         [deathView show];
     }
-    
+
     [self displayTutorialStep:self.sharedManager];
-    
+
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        HRPGTopHeaderNavigationController *navigationController =
+            (HRPGTopHeaderNavigationController *)self.navigationController;
         [navigationController startFollowingScrollView:self.tableView withOffset:0];
-        if (navigationController.state == HRPGTopHeaderStateVisible && self.tableView.contentOffset.y > -[navigationController getContentOffset]) {
-            [navigationController scrollview:self.tableView scrolledToPosition:self.tableView.contentOffset.y];
+        if (navigationController.state == HRPGTopHeaderStateVisible &&
+            self.tableView.contentOffset.y > -[navigationController getContentOffset]) {
+            [navigationController scrollview:self.tableView
+                          scrolledToPosition:self.tableView.contentOffset.y];
         }
     }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        HRPGTopHeaderNavigationController *navigationController =
+            (HRPGTopHeaderNavigationController *)self.navigationController;
         [navigationController scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
     }
 }
@@ -129,7 +136,8 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        HRPGTopHeaderNavigationController *navigationController =
+            (HRPGTopHeaderNavigationController *)self.navigationController;
         [navigationController stopFollowingScrollView];
     }
 }
@@ -148,34 +156,36 @@
 }
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
-    //Skeletton method, so that it can be referenced from IB
+    // Skeletton method, so that it can be referenced from IB
 }
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-    //Skeletton method, so that it can be referenced from IB
+    // Skeletton method, so that it can be referenced from IB
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UIViewController *destViewController = segue.destinationViewController;
     if ([destViewController isKindOfClass:[HRPGNavigationController class]]) {
-        HRPGNavigationController *destNavigationController = (HRPGNavigationController*)destViewController;
+        HRPGNavigationController *destNavigationController =
+            (HRPGNavigationController *)destViewController;
         destNavigationController.sourceViewController = self;
     }
 }
 
 - (BOOL)isIndexPathVisible:(NSIndexPath *)indexPath {
-        NSArray *indexes = [self.tableView indexPathsForVisibleRows];
-        for (NSIndexPath *index in indexes) {
-            if (index.item == indexPath.item && index.section == indexPath.section) {
-                return YES;
-            }
+    NSArray *indexes = [self.tableView indexPathsForVisibleRows];
+    for (NSIndexPath *index in indexes) {
+        if (index.item == indexPath.item && index.section == indexPath.section) {
+            return YES;
         }
-        return NO;
+    }
+    return NO;
 }
 
 - (HRPGManager *)sharedManager {
     if (_sharedManager == nil) {
-        HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+        HRPGAppDelegate *appdelegate =
+            (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
         _sharedManager = appdelegate.sharedManager;
     }
     return _sharedManager;

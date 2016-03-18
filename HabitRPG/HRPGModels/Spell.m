@@ -8,7 +8,6 @@
 
 #import "Spell.h"
 
-
 @implementation Spell
 
 @dynamic key;

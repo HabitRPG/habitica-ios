@@ -10,6 +10,6 @@
 
 @interface HRPGNavigationController : UINavigationController
 
-@property (nonatomic, weak) UIViewController *sourceViewController;
+@property(nonatomic, weak) UIViewController *sourceViewController;
 
 @end

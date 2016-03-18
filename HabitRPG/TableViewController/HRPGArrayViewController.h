@@ -10,7 +10,7 @@
 
 @interface HRPGArrayViewController : UITableViewController
 
-@property (nonatomic) NSArray *items;
+@property(nonatomic) NSArray *items;
 @property NSInteger selectedIndex;
 
 @end

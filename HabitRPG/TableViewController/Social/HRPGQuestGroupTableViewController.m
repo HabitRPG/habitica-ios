@@ -77,7 +77,16 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self isQuestSection:indexPath.section] && indexPath.item == 0) {
         if (self.quest) {
-            CGFloat height = [self.quest.text boundingRectWithSize:CGSizeMake(self.viewWidth-32, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]} context:nil].size.height;
+            CGFloat height =
+                [self.quest.text
+                    boundingRectWithSize:CGSizeMake(self.viewWidth - 32, CGFLOAT_MAX)
+                                 options:NSStringDrawingUsesLineFragmentOrigin
+                              attributes:@{
+                                  NSFontAttributeName :
+                                      [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
+                              }
+                                 context:nil]
+                    .size.height;
             return height + 16;
         }
     }
@@ -92,7 +101,8 @@
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self isQuestSection:indexPath.section]) {
         UITableViewCell *cell;
         NSString *cellname;
@@ -106,9 +116,11 @@
                     cellname = @"SubtitleCell";
                 }
             } else if ([self isActiveBossQuest]) {
-                if ((indexPath.item == 2 && [self listMembers]) || (indexPath.item == 1 && ![self listMembers])) {
+                if ((indexPath.item == 2 && [self listMembers]) ||
+                    (indexPath.item == 1 && ![self listMembers])) {
                     cellname = @"LifeCell";
-                } else if ((indexPath.item == 3 && [self listMembers]) || (indexPath.item == 2 && ![self listMembers])) {
+                } else if ((indexPath.item == 3 && [self listMembers]) ||
+                           (indexPath.item == 2 && ![self listMembers])) {
                     cellname = @"RageCell";
                 }
             } else if ([self isActiveCollectionQuest]) {
@@ -123,13 +135,13 @@
         }
         if (cell == nil) {
             cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
-            
+
             if ([cellname isEqualToString:@"QuestCell"]) {
                 cell.textLabel.text = self.quest.text;
             } else if ([self listMembers] && ((indexPath.section == 1 && indexPath.item == 1))) {
                 cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 int acceptedCount = 0;
-                
+
                 if ([self.group.questActive boolValue]) {
                     for (User *participant in self.group.member) {
                         if ([participant.participateInQuest boolValue]) {
@@ -139,7 +151,9 @@
                     if (acceptedCount == 1) {
                         cell.textLabel.text = NSLocalizedString(@"1 Participant", nil);
                     } else {
-                        cell.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d Participants", nil), acceptedCount];
+                        cell.textLabel.text =
+                            [NSString stringWithFormat:NSLocalizedString(@"%d Participants", nil),
+                                                       acceptedCount];
                     }
                 } else {
                     cell.textLabel.text = NSLocalizedString(@"Participants", nil);
@@ -148,23 +162,31 @@
                             acceptedCount++;
                         }
                     }
-                    cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d out of %d responded", nil), acceptedCount, [self.group.member count]];
-                    
+                    cell.detailTextLabel.text = [NSString
+                        stringWithFormat:NSLocalizedString(@"%d out of %d responded", nil),
+                                         acceptedCount, [self.group.member count]];
                 }
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if ([self isActiveBossQuest]) {
-                if ((indexPath.item == 2 && [self listMembers]) || (indexPath.item == 1 && ![self listMembers])) {
-                    UILabel *lifeLabel = (UILabel *) [cell viewWithTag:1];
-                    lifeLabel.text = [NSString stringWithFormat:@"%@ / %@", self.group.questHP, self.quest.bossHp];
+                if ((indexPath.item == 2 && [self listMembers]) ||
+                    (indexPath.item == 1 && ![self listMembers])) {
+                    UILabel *lifeLabel = (UILabel *)[cell viewWithTag:1];
+                    lifeLabel.text = [NSString
+                        stringWithFormat:@"%@ / %@", self.group.questHP, self.quest.bossHp];
                     lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-                    HRPGProgressView *lifeBar = (HRPGProgressView *) [cell viewWithTag:2];
-                    lifeBar.progress = [NSNumber numberWithFloat:([self.group.questHP floatValue] / [self.quest.bossHp floatValue])];
-                } else if ((indexPath.item == 3 && [self listMembers]) || (indexPath.item == 2 && ![self listMembers])) {
-                    UILabel *lifeLabel = (UILabel *) [cell viewWithTag:1];
-                    lifeLabel.text = [NSString stringWithFormat:@"%@ / %@", self.group.questRage, self.quest.bossRage];
+                    HRPGProgressView *lifeBar = (HRPGProgressView *)[cell viewWithTag:2];
+                    lifeBar.progress = [NSNumber numberWithFloat:([self.group.questHP floatValue] /
+                                                                  [self.quest.bossHp floatValue])];
+                } else if ((indexPath.item == 3 && [self listMembers]) ||
+                           (indexPath.item == 2 && ![self listMembers])) {
+                    UILabel *lifeLabel = (UILabel *)[cell viewWithTag:1];
+                    lifeLabel.text = [NSString
+                        stringWithFormat:@"%@ / %@", self.group.questRage, self.quest.bossRage];
                     lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-                    HRPGProgressView *lifeBar = (HRPGProgressView *) [cell viewWithTag:2];
-                    lifeBar.progress = [NSNumber numberWithFloat:([self.group.questRage floatValue] / [self.quest.bossRage floatValue])];
+                    HRPGProgressView *lifeBar = (HRPGProgressView *)[cell viewWithTag:2];
+                    lifeBar.progress =
+                        [NSNumber numberWithFloat:([self.group.questRage floatValue] /
+                                                   [self.quest.bossRage floatValue])];
                 }
             } else if ([self isActiveCollectionQuest]) {
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -176,7 +198,8 @@
                     cell.textLabel.textColor = [UIColor blackColor];
                 }
                 cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@/%@", collect.collectCount, collect.count];
+                cell.detailTextLabel.text =
+                    [NSString stringWithFormat:@"%@/%@", collect.collectCount, collect.count];
                 cell.detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
             }
         }
@@ -193,11 +216,11 @@
     return [self displayQuestSection] && section == 1;
 }
 
-- (bool) isActiveCollectionQuest {
+- (bool)isActiveCollectionQuest {
     return [self.group.questActive boolValue] && [self.quest.bossHp integerValue] == 0;
 }
 
-- (bool) isActiveBossQuest {
+- (bool)isActiveBossQuest {
     return [self.group.questActive boolValue] && [self.group.questHP integerValue] > 0;
 }
 
@@ -226,7 +249,8 @@
         return _quest;
     }
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Quest" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Quest"
+                                              inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", self.group.questKey]];
     NSError *error;
@@ -237,17 +261,20 @@
             [self.sharedManager fetchContent:^() {
                 self.quest = nil;
                 [self.tableView reloadData];
-            } onError:^() {
-                
-            }];
+            }
+                onError:^(){
+
+                }];
         }
     }
     return _quest;
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    if ([self.tableView numberOfRowsInSection:1] != [self tableView:self.tableView numberOfRowsInSection:1]) {
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+    if ([self.tableView numberOfRowsInSection:1] !=
+        [self tableView:self.tableView numberOfRowsInSection:1]) {
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1]
+                      withRowAnimation:UITableViewRowAnimationFade];
     }
     [super controllerDidChangeContent:controller];
 }

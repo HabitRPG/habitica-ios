@@ -31,14 +31,16 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellname = @"Cell";
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
+    UITableViewCell *cell =
+        [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     cell.textLabel.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
     cell.backgroundColor = [task lightTaskColor];
     return cell;
@@ -46,13 +48,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    float width = self.viewWidth-40;
+    float width = self.viewWidth - 40;
     NSInteger height = [task.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                                options:NSStringDrawingUsesLineFragmentOrigin
                                             attributes:@{
-                                                    NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+                                                NSFontAttributeName : [UIFont
+                                                    preferredFontForTextStyle:UIFontTextStyleBody]
                                             }
-                                               context:nil].size.height + 45;
+                                               context:nil]
+                           .size.height +
+                       45;
     if (task.duedate) {
         height = height + 5;
     }
@@ -61,8 +66,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    HRPGSpellTabBarController *tabBarController = (HRPGSpellTabBarController *) self.parentViewController;
-    Task *task = (Task *) [self.fetchedResultsController objectAtIndexPath:indexPath];
+    HRPGSpellTabBarController *tabBarController =
+        (HRPGSpellTabBarController *)self.parentViewController;
+    Task *task = (Task *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     tabBarController.taskID = task.id;
     [tabBarController castSpell];
 }
@@ -73,7 +79,8 @@
     }
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task"
+                                              inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
 
     [fetchRequest setFetchBatchSize:20];
@@ -85,12 +92,17 @@
     }
     [fetchRequest setPredicate:predicate];
 
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
+    NSSortDescriptor *sortDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
+    NSArray *sortDescriptors = @[ sortDescriptor ];
 
     [fetchRequest setSortDescriptors:sortDescriptors];
 
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController =
+        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                            managedObjectContext:self.managedObjectContext
+                                              sectionNameKeyPath:nil
+                                                       cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
@@ -102,6 +114,5 @@
 
     return _fetchedResultsController;
 }
-
 
 @end

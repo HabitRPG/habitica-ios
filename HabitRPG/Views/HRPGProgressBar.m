@@ -19,12 +19,12 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    
+
     if (self) {
         self.barColor = [UIColor blackColor];
         self.backgroundColor = [UIColor clearColor];
     }
-    
+
     return self;
 }
 
@@ -51,11 +51,13 @@
     if (self.maxValue == 0 || percent < 0) {
         percent = 0;
     }
-    UIBezierPath *fillPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width*percent, rect.size.height) cornerRadius:8.0f];
+    UIBezierPath *fillPath = [UIBezierPath
+        bezierPathWithRoundedRect:CGRectMake(rect.origin.x, rect.origin.y,
+                                             rect.size.width * percent, rect.size.height)
+                     cornerRadius:8.0f];
     CGContextSetFillColorWithColor(context, [self.barColor CGColor]);
     [trackPath addClip];
     [fillPath fill];
 }
-
 
 @end

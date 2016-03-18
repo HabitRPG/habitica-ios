@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
 
-@interface HRPGSpellViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate>
+@interface HRPGSpellViewController : HRPGBaseViewController<NSFetchedResultsControllerDelegate>
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-
 
 @end

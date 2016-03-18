@@ -29,7 +29,6 @@
 + (UIColor *)red500;
 + (UIColor *)red600;
 
-
 + (UIColor *)orange10;
 + (UIColor *)orange50;
 + (UIColor *)orange100;
@@ -63,7 +62,6 @@
 + (UIColor *)gray500;
 + (UIColor *)gray600;
 
-
-- (UIColor*)blendWithColor:(UIColor*)color2 alpha:(CGFloat)alpha2;
+- (UIColor *)blendWithColor:(UIColor *)color2 alpha:(CGFloat)alpha2;
 
 @end

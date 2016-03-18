@@ -27,22 +27,29 @@
     self.readableName = NSLocalizedString(@"Habit", nil);
     self.typeName = @"habit";
     [super viewDidLoad];
-    
+
     self.tutorialIdentifier = @"habits";
 }
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"habits"]) {
-        return @{@"text": NSLocalizedString(@"Complete Positive Habits to earn gold and experience! Negative Habits will hurt your avatar if you tap them, so avoid them in real life!", nil)};
+        return @{
+            @"text" : NSLocalizedString(@"Complete Positive Habits to earn gold and experience! "
+                                        @"Negative Habits will hurt your avatar if you tap them, "
+                                        @"so avoid them in real life!",
+                                        nil)
+        };
     }
     return [super getDefinitonForTutorial:tutorialIdentifier];
 }
 
-- (void)configureCell:(HRPGHabitTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
+- (void)configureCell:(HRPGHabitTableViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+        withAnimation:(BOOL)animate {
     Task *task = [self taskAtIndexPath:indexPath];
-    
+
     [cell configureForTask:task];
-    
+
     [cell.buttons onUpAction:^() {
         [self.sharedManager upDownTask:task direction:@"up" onSuccess:nil onError:nil];
     }];

@@ -19,25 +19,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (self.group.questKey != nil && ![self.group.questActive boolValue] && self.user.participateInQuest == nil) {
+    if (self.group.questKey != nil && ![self.group.questActive boolValue] &&
+        self.user.participateInQuest == nil) {
         self.navigationItem.title = NSLocalizedString(@"Quest Invitation", nil);
         self.navigationItem.rightBarButtonItem = nil;
     } else {
         self.navigationItem.title = NSLocalizedString(@"Quest Detail", nil);
-        if ([self.group.questActive boolValue] && [self.group.questLeader isEqualToString:self.user.id]) {
+        if ([self.group.questActive boolValue] &&
+            [self.group.questLeader isEqualToString:self.user.id]) {
             self.navigationItem.rightBarButtonItem.title = NSLocalizedString(@"Abort", nil);
             self.navigationItem.rightBarButtonItem.tintColor = [UIColor red100];
-        } else if ([self.group.questActive boolValue] || ![self.group.questLeader isEqualToString:self.user.id]) {
+        } else if ([self.group.questActive boolValue] ||
+                   ![self.group.questLeader isEqualToString:self.user.id]) {
             self.navigationItem.rightBarButtonItem = nil;
         }
     }
 }
 
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if ((![self.isWorldQuest boolValue]) && self.group.questKey != nil && ![self.group.questActive boolValue] && self.user.participateInQuest == nil) {
+    if ((![self.isWorldQuest boolValue]) && self.group.questKey != nil &&
+        ![self.group.questActive boolValue] && self.user.participateInQuest == nil) {
         return 2;
     } else {
         return 1;
@@ -60,43 +63,60 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 0) {
         return [self.quest.text boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
-                                              options:NSStringDrawingUsesLineFragmentOrigin
-                                           attributes:@{
-                                                        NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
-                                                        }
-                                              context:nil].size.height + 16;
+                                             options:NSStringDrawingUsesLineFragmentOrigin
+                                          attributes:@{
+                                              NSFontAttributeName : [UIFont
+                                                  preferredFontForTextStyle:UIFontTextStyleHeadline]
+                                          }
+                                             context:nil]
+                   .size.height +
+               16;
     } else if (indexPath.section == 0 && indexPath.item == 1) {
         return self.bossImage.size.height;
     } else if (indexPath.section == 0 && indexPath.item == 2) {
         UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-        NSString *html = [NSString stringWithFormat:@"<span style=\"font-family: Helvetica Neue; font-size: %ld;margin:0\">%@</span>", (long) [[NSNumber numberWithFloat:font.pointSize] integerValue], self.quest.notes];
+        NSString *html = [NSString
+            stringWithFormat:
+                @"<span style=\"font-family: Helvetica Neue; font-size: %ld;margin:0\">%@</span>",
+                (long)[[NSNumber numberWithFloat:font.pointSize] integerValue], self.quest.notes];
         NSError *err;
         NSAttributedString *attributedText = [[NSAttributedString alloc]
-                                initWithData:[html dataUsingEncoding:NSUTF8StringEncoding]
-                                options:@{NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType}
-                                documentAttributes:nil
-                                error:&err];
+                  initWithData:[html dataUsingEncoding:NSUTF8StringEncoding]
+                       options:@{
+                           NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType
+                       }
+            documentAttributes:nil
+                         error:&err];
         return ceilf([attributedText boundingRectWithSize:CGSizeMake(300.0f, CGFLOAT_MAX)
-                                            options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-                                            context:nil].size.height) + 60;
+                                                  options:(NSStringDrawingUsesLineFragmentOrigin |
+                                                           NSStringDrawingUsesFontLeading)
+                                                  context:nil]
+                         .size.height) +
+               60;
     }
     return 44;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 0) {
-        [self.sharedManager acceptQuest:self.group.id withQuest:nil useForce:NO onSuccess:^(){
-        }                   onError:^(){
-        }];
+        [self.sharedManager acceptQuest:self.group.id
+            withQuest:nil
+            useForce:NO
+            onSuccess:^() {
+            }
+            onError:^(){
+            }];
         if (self.wasPushed) {
             [self.tableView reloadData];
         } else {
             [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
         }
     } else if (indexPath.section == 1 && indexPath.item == 1) {
-        [self.sharedManager rejectQuest:self.group.id onSuccess:^(){
-        }                   onError:^(){
-        }];
+        [self.sharedManager rejectQuest:self.group.id
+            onSuccess:^() {
+            }
+            onError:^(){
+            }];
         if (self.wasPushed) {
             [self.tableView reloadData];
         } else {
@@ -107,7 +127,8 @@
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier;
     if (indexPath.section == 0 && indexPath.item == 0) {
         cellIdentifier = @"titleCell";
@@ -123,73 +144,102 @@
         cellIdentifier = @"asklaterCell";
     }
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell =
+        [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
 
     if (indexPath.section == 0 && indexPath.item == 0) {
         cell.textLabel.text = self.quest.text;
         cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
     } else if (indexPath.section == 0 && indexPath.item == 1) {
         if (self.bossImage) {
-            UIImageView *imageView = (UIImageView*) [cell viewWithTag:1];
+            UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
             imageView.image = self.bossImage;
 
         } else {
             SDWebImageManager *manager = [SDWebImageManager sharedManager];
-            __weak UIImageView *imageView = (UIImageView*) [cell viewWithTag:1];
-            [manager downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://habitica-assets.s3.amazonaws.com/mobileApp/images/quest_%@.png", self.quest.key]] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {} completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                if (image) {
-                    self.bossImage = image;
-                    imageView.image = self.bossImage;
+            __weak UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
+            [manager
+                downloadImageWithURL:[NSURL URLWithString:[NSString
+                                                              stringWithFormat:@"https://"
+                                                                               @"habitica-assets."
+                                                                               @"s3.amazonaws.com/"
+                                                                               @"mobileApp/images/"
+                                                                               @"quest_%@.png",
+                                                                               self.quest.key]]
+                options:0
+                progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                 }
-            }];
+                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType,
+                            BOOL finished, NSURL *imageURL) {
+                    if (image) {
+                        self.bossImage = image;
+                        imageView.image = self.bossImage;
+                    }
+                }];
         }
         cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
     } else if (indexPath.section == 0 && indexPath.item == 2) {
-        UITextView *textView = (UITextView *) [cell viewWithTag:1];
+        UITextView *textView = (UITextView *)[cell viewWithTag:1];
         NSError *err = nil;
         UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-        NSString *html = [NSString stringWithFormat:@"<span style=\"font-family: Helvetica Neue; font-size: %ld;margin:0\">%@</span>", (long) [[NSNumber numberWithFloat:font.pointSize] integerValue], self.quest.notes];
+        NSString *html = [NSString
+            stringWithFormat:
+                @"<span style=\"font-family: Helvetica Neue; font-size: %ld;margin:0\">%@</span>",
+                (long)[[NSNumber numberWithFloat:font.pointSize] integerValue], self.quest.notes];
         textView.attributedText = [[NSAttributedString alloc]
-                initWithData:[html dataUsingEncoding:NSUTF8StringEncoding]
-                                   options:@{NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType,
-                                             NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
-          documentAttributes:nil
-                       error:&err];
+                  initWithData:[html dataUsingEncoding:NSUTF8StringEncoding]
+                       options:@{
+                           NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType,
+                           NSCharacterEncodingDocumentAttribute : @(NSUTF8StringEncoding)
+                       }
+            documentAttributes:nil
+                         error:&err];
         cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
     }
     return cell;
 }
 
-
 - (IBAction)forceQuestBegin:(id)sender {
     NSString *message;
     if ([self.group.questActive boolValue]) {
-        message = NSLocalizedString(@"When you abort a quest, all progress will be lost and the quest scroll will be put back into your inventory.", nil);
+        message = NSLocalizedString(@"When you abort a quest, all progress will be lost and the "
+                                    @"quest scroll will be put back into your inventory.",
+                                    nil);
     } else {
-        message = NSLocalizedString(@"Once a quest is started, no other party members can join the quest.", nil);
+        message = NSLocalizedString(
+            @"Once a quest is started, no other party members can join the quest.", nil);
     }
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Are you sure?", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"No", nil) otherButtonTitles:NSLocalizedString(@"Yes", nil), nil];
+    UIAlertView *alertView =
+        [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Are you sure?", nil)
+                                   message:message
+                                  delegate:self
+                         cancelButtonTitle:NSLocalizedString(@"No", nil)
+                         otherButtonTitles:NSLocalizedString(@"Yes", nil), nil];
     [alertView show];
 }
-
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
         if ([self.group.questActive boolValue]) {
-            [self.sharedManager abortQuest:self.group.id onSuccess:^(){
-                [self.navigationController popViewControllerAnimated:YES];
-            } onError:^(){
-                self.navigationItem.rightBarButtonItem.enabled = YES;
-            }];
+            [self.sharedManager abortQuest:self.group.id
+                onSuccess:^() {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+                onError:^() {
+                    self.navigationItem.rightBarButtonItem.enabled = YES;
+                }];
         } else {
-            [self.sharedManager acceptQuest:self.group.id withQuest:nil useForce:YES onSuccess:^(){
-                [self.navigationController popViewControllerAnimated:YES];
-            } onError:^(){
-                self.navigationItem.rightBarButtonItem.enabled = YES;
-            }];
+            [self.sharedManager acceptQuest:self.group.id
+                withQuest:nil
+                useForce:YES
+                onSuccess:^() {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+                onError:^() {
+                    self.navigationItem.rightBarButtonItem.enabled = YES;
+                }];
         }
-
     }
 }
 

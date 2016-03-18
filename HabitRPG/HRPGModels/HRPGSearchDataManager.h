@@ -12,6 +12,6 @@
 
 + (HRPGSearchDataManager *)sharedManager;
 
-@property (nonatomic, copy) NSString *searchString;
+@property(nonatomic, copy) NSString *searchString;
 
 @end

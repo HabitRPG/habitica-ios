@@ -8,7 +8,6 @@
 
 #import "BuyableItem.h"
 
-
 @implementation BuyableItem
 
 @dynamic canBuy;

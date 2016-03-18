@@ -15,8 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TutorialSteps : NSManagedObject
 
-+ (TutorialSteps *) markStep:(NSString *)identifier asSeen:(BOOL)wasSeen withType:(NSString *)type withContext:(NSManagedObjectContext *)context;
-+ (TutorialSteps *) markStep:(NSString *)identifier withType:(NSString *)type withContext:(NSManagedObjectContext *)context;
++ (TutorialSteps *)markStep:(NSString *)identifier
+                     asSeen:(BOOL)wasSeen
+                   withType:(NSString *)type
+                withContext:(NSManagedObjectContext *)context;
++ (TutorialSteps *)markStep:(NSString *)identifier
+                   withType:(NSString *)type
+                withContext:(NSManagedObjectContext *)context;
 
 @end
 

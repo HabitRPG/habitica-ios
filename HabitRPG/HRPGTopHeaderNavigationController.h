@@ -14,14 +14,14 @@ typedef enum HRPGTopHeaderState : NSInteger {
     HRPGTopHeaderStateScrolling
 } HRPGTopHeaderState;
 
-@interface HRPGTopHeaderNavigationController : UINavigationController <UIGestureRecognizerDelegate>
+@interface HRPGTopHeaderNavigationController : UINavigationController<UIGestureRecognizerDelegate>
 
-- (CGFloat) getContentInset;
-- (CGFloat) getContentOffset;
-@property (nonatomic) HRPGTopHeaderState state;
+- (CGFloat)getContentInset;
+- (CGFloat)getContentOffset;
+@property(nonatomic) HRPGTopHeaderState state;
 
-- (void)startFollowingScrollView:(UIScrollView *)scrollView withOffset:(CGFloat) scrolloffset;
+- (void)startFollowingScrollView:(UIScrollView *)scrollView withOffset:(CGFloat)scrolloffset;
 - (void)stopFollowingScrollView;
-- (void) scrollview:(UIScrollView *)scrollView scrolledToPosition:(CGFloat)position;
+- (void)scrollview:(UIScrollView *)scrollView scrolledToPosition:(CGFloat)position;
 
 @end
