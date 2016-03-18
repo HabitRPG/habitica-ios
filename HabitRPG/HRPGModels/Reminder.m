@@ -93,7 +93,9 @@
         localNotification.userInfo = @{@"ID": self.id};
     }
     localNotification.soundName = UILocalNotificationDefaultSoundName;
-    localNotification.category = @"completeCategory";
+    if ([localNotification respondsToSelector:@selector(setCategory:)]) {
+        localNotification.category = @"completeCategory";
+    }
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 

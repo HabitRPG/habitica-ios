@@ -297,7 +297,9 @@
         }
         UINavigationController *displayedNavigationController = tabBarController.selectedViewController;
         HRPGTableViewController *displayedTableViewController = (HRPGTableViewController *)displayedNavigationController.topViewController;
-        displayedTableViewController.scrollToTaskAfterLoading = taskID;
+        if ([displayedNavigationController respondsToSelector:@selector(setScrollToTaskAfterLoading:)]) {
+            displayedTableViewController.scrollToTaskAfterLoading = taskID;
+        }
     } else if ([self.window.rootViewController isKindOfClass:[HRPGLoadingViewController class]]) {
         HRPGLoadingViewController *loadingViewController = (HRPGLoadingViewController *)self.window.rootViewController;
         loadingViewController.loadingFinishedAction = ^() {

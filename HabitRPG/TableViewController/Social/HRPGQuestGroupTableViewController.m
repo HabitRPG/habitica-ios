@@ -108,7 +108,7 @@
             } else if ([self isActiveBossQuest]) {
                 if ((indexPath.item == 2 && [self listMembers]) || (indexPath.item == 1 && ![self listMembers])) {
                     cellname = @"LifeCell";
-                } else if (indexPath.item == 2) {
+                } else if ((indexPath.item == 3 && [self listMembers]) || (indexPath.item == 2 && ![self listMembers])) {
                     cellname = @"RageCell";
                 }
             } else if ([self isActiveCollectionQuest]) {
@@ -159,7 +159,7 @@
                     lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
                     HRPGProgressView *lifeBar = (HRPGProgressView *) [cell viewWithTag:2];
                     lifeBar.progress = [NSNumber numberWithFloat:([self.group.questHP floatValue] / [self.quest.bossHp floatValue])];
-                } else if (indexPath.item == 2) {
+                } else if ((indexPath.item == 3 && [self listMembers]) || (indexPath.item == 2 && ![self listMembers])) {
                     UILabel *lifeLabel = (UILabel *) [cell viewWithTag:1];
                     lifeLabel.text = [NSString stringWithFormat:@"%@ / %@", self.group.questRage, self.quest.bossRage];
                     lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];

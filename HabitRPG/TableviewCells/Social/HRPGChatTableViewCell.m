@@ -159,9 +159,8 @@
     if (self.isOwnMessage) {
         self.backgroundColor = [UIColor gray500];
     }
-    if ([message.text containsString:[NSString stringWithFormat:@"@%@", username]]) {
+    if ([message.text rangeOfString:[NSString stringWithFormat:@"@%@", username]].location != NSNotFound) {
         self.backgroundColor = [UIColor purple600];
-    } else {
     }
 }
 
