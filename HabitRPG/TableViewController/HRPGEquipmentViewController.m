@@ -21,27 +21,15 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
 @end
 
-@implementation HRPGEquipmentViewController
-Gear *selectedGear;
-NSIndexPath *selectedIndex;
+@implementation HRPGEquipmentViewController {
+    Gear *selectedGear;
+    NSIndexPath *selectedIndex;
+}
 
 -(void)viewDidLoad {
     [super viewDidLoad];
     self.user = [self.sharedManager getUser];
     self.tutorialIdentifier = @"equipment";
-    
-    UIView *costumeFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.viewWidth, 68)];
-    
-    UILabel *footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, self.viewWidth-80, 60)];
-    footerLabel.text = NSLocalizedString(@"Wear costume", nil);
-    [costumeFooterView addSubview:footerLabel];
-    
-    UISwitch *footerSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.viewWidth-59, 14.5, 72, 31)];
-    footerSwitch.on = [self.user.preferences.useCostume boolValue];
-    [footerSwitch addTarget:self action:@selector(changeWearingCostume:) forControlEvents:UIControlEventValueChanged];
-    [costumeFooterView addSubview:footerSwitch];
-    
-    self.tableView.tableFooterView = costumeFooterView;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,24 +49,41 @@ NSIndexPath *selectedIndex;
 
 #pragma mark - Table view data source
 
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return NSLocalizedString(@"Battle Gear", nil);
-    } else {
+    } else if (section == 2) {
         return NSLocalizedString(@"Costume", nil);
+    } else {
+        return @"";//switch control
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    //section for the wear custom switch
+    if (section == 1) {
+        return 1;
+    }
+    
     return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    UITableViewCell *cell;
+    
+    //section for the wear custom switch
+    if (indexPath.section == 1) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Switch" forIndexPath:indexPath];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    }
+    
+    
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
 }
@@ -129,62 +134,76 @@ NSIndexPath *selectedIndex;
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
-    UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
-    textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-    
-    NSString *searchedKey;
-    NSString *typeName;
-    Outfit *outfit;
-    if (indexPath.section == 0) {
-        outfit = self.user.equipped;
-    } else {
-        outfit = self.user.costume;
-    }
-    if (indexPath.item == 0) {
-        searchedKey = outfit.head;
-        typeName = NSLocalizedString(@"Head", nil);
-    } else if (indexPath.item == 1) {
-        searchedKey = outfit.headAccessory;
-        typeName = NSLocalizedString(@"Head Accessory", nil);
-    } else if (indexPath.item == 2) {
-        searchedKey = outfit.eyewear;
-        typeName = NSLocalizedString(@"Eyewear", nil);
-    } else if (indexPath.item == 3) {
-        searchedKey = outfit.armor;
-        typeName = NSLocalizedString(@"Armor", nil);
-    }  else if (indexPath.item == 4) {
-        searchedKey = outfit.body;
-        typeName = NSLocalizedString(@"Body", nil);
-    } else if (indexPath.item == 5) {
-        searchedKey = outfit.back;
-        typeName = NSLocalizedString(@"Back", nil);
-    } else if (indexPath.item == 6) {
-        searchedKey = outfit.shield;
-        typeName = NSLocalizedString(@"Shield", nil);
-    } else if (indexPath.item == 7) {
-        searchedKey = outfit.weapon;
-        typeName = NSLocalizedString(@"Weapon", nil);
-    }
-    Gear *searchedGear;
-    for (Gear *gear in self.fetchedResultsController.fetchedObjects) {
-        if ([gear.key isEqualToString:searchedKey]) {
-            searchedGear = gear;
-            break;
+    if (indexPath.section == 1) {
+        UISwitch *customSwitch = [cell viewWithTag:9];
+        
+        if (customSwitch.allTargets.count == 0) {
+            [customSwitch addTarget:self action:@selector(changeWearingCostume:) forControlEvents:UIControlEventValueChanged];
         }
-    }
-    textLabel.text = typeName;
-    UILabel *detailLabel = (UILabel*)[cell viewWithTag:3];
-    detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-    UIImageView *imageView = (UIImageView*)[cell viewWithTag:4];
-    if (searchedGear) {
-        detailLabel.text = searchedGear.text;
-        detailLabel.textColor = [UIColor blackColor];
-        [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", searchedGear.key] withFormat:@"png" onView:imageView];
-
+        
+        UILabel *wearCustomLabel = [cell viewWithTag:8];
+        
+        if ([wearCustomLabel.text isEqualToString:@""]) {
+            wearCustomLabel.text = NSLocalizedString(@"Wear costume", nil);
+        }
     } else {
-        detailLabel.text = NSLocalizedString(@"Nothing Equipped", nil);
-        detailLabel.textColor = [UIColor grayColor];
-        imageView.image = nil;
+        UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
+        textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+        
+        NSString *searchedKey;
+        NSString *typeName;
+        Outfit *outfit;
+        if (indexPath.section == 0) {
+            outfit = self.user.equipped;
+        } else  {
+            outfit = self.user.costume;
+        }
+        if (indexPath.item == 0) {
+            searchedKey = outfit.head;
+            typeName = NSLocalizedString(@"Head", nil);
+        } else if (indexPath.item == 1) {
+            searchedKey = outfit.headAccessory;
+            typeName = NSLocalizedString(@"Head Accessory", nil);
+        } else if (indexPath.item == 2) {
+            searchedKey = outfit.eyewear;
+            typeName = NSLocalizedString(@"Eyewear", nil);
+        } else if (indexPath.item == 3) {
+            searchedKey = outfit.armor;
+            typeName = NSLocalizedString(@"Armor", nil);
+        }  else if (indexPath.item == 4) {
+            searchedKey = outfit.body;
+            typeName = NSLocalizedString(@"Body", nil);
+        } else if (indexPath.item == 5) {
+            searchedKey = outfit.back;
+            typeName = NSLocalizedString(@"Back", nil);
+        } else if (indexPath.item == 6) {
+            searchedKey = outfit.shield;
+            typeName = NSLocalizedString(@"Shield", nil);
+        } else if (indexPath.item == 7) {
+            searchedKey = outfit.weapon;
+            typeName = NSLocalizedString(@"Weapon", nil);
+        }
+        Gear *searchedGear;
+        for (Gear *gear in self.fetchedResultsController.fetchedObjects) {
+            if ([gear.key isEqualToString:searchedKey]) {
+                searchedGear = gear;
+                break;
+            }
+        }
+        textLabel.text = typeName;
+        UILabel *detailLabel = (UILabel*)[cell viewWithTag:3];
+        detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+        UIImageView *imageView = (UIImageView*)[cell viewWithTag:4];
+        if (searchedGear) {
+            detailLabel.text = searchedGear.text;
+            detailLabel.textColor = [UIColor blackColor];
+            [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", searchedGear.key] withFormat:@"png" onView:imageView];
+
+        } else {
+            detailLabel.text = NSLocalizedString(@"Nothing Equipped", nil);
+            detailLabel.textColor = [UIColor grayColor];
+            imageView.image = nil;
+        }
     }
 }
 
