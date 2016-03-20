@@ -11,10 +11,10 @@
 
 @interface HRPGQuestGroupTableViewController : HRPGGroupTableViewController
 
-@property (nonatomic) Quest *quest;
+@property(nonatomic) Quest *quest;
 
-- (bool) canInviteToQuest;
+- (bool)canInviteToQuest;
 
-- (bool) displayQuestSection;
-- (bool) isQuestSection:(NSInteger)section;
+- (bool)displayQuestSection;
+- (bool)isQuestSection:(NSInteger)section;
 @end

@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
 
     NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
@@ -31,8 +31,10 @@
 
     UIImage *calendarImage = [factory createImageForIcon:NIKFontAwesomeIconCalendarO];
 
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(calendarImage.size.width, calendarImage.size.height), NO, 0.0f);
-    [calendarImage drawInRect:CGRectMake(0, 0, calendarImage.size.width, calendarImage.size.height)];
+    UIGraphicsBeginImageContextWithOptions(
+        CGSizeMake(calendarImage.size.width, calendarImage.size.height), NO, 0.0f);
+    [calendarImage
+        drawInRect:CGRectMake(0, 0, calendarImage.size.width, calendarImage.size.height)];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd"];
     NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
@@ -68,22 +70,27 @@
     }
 }
 
-
 - (void)castSpell {
-    [self.sharedManager castSpell:self.spell.key withTargetType:self.spell.target onTarget:self.taskID onSuccess:^() {
-        [self.sourceTableView reloadData];
-    }                     onError:^() {
+    [self.sharedManager castSpell:self.spell.key
+        withTargetType:self.spell.target
+        onTarget:self.taskID
+        onSuccess:^() {
+            [self.sourceTableView reloadData];
+        }
+        onError:^(){
 
-    }];
-    [self dismissViewControllerAnimated:YES completion:^() {
+        }];
+    [self dismissViewControllerAnimated:YES
+                             completion:^(){
 
-    }];
+                             }];
 }
 
 - (IBAction)cancelAction:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^() {
+    [self dismissViewControllerAnimated:YES
+                             completion:^(){
 
-    }];
+                             }];
 }
 
 @end

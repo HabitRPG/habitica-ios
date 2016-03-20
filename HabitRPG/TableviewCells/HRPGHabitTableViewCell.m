@@ -14,8 +14,8 @@
     [super configureForTask:task];
     [self.buttons configureForTask:task];
     self.rightBorderView.backgroundColor = [task lightTaskColor];
-    
-    //Until we save the TaskHistory just set the last action to be hidden
+
+    // Until we save the TaskHistory just set the last action to be hidden
     self.notesLastActionConstraint.constant = 0;
 }
 
@@ -23,8 +23,10 @@
     self.buttons.translatesAutoresizingMaskIntoConstraints = YES;
     self.buttons.frame = CGRectMake(0, 0, self.buttons.frame.size.width, self.frame.size.height);
     self.rightBorderView.translatesAutoresizingMaskIntoConstraints = YES;
-    self.rightBorderView.frame = CGRectMake(self.frame.size.width-self.rightBorderView.frame.size.width, 0, self.rightBorderView.frame.size.width, self.frame.size.height);
-    
+    self.rightBorderView.frame =
+        CGRectMake(self.frame.size.width - self.rightBorderView.frame.size.width, 0,
+                   self.rightBorderView.frame.size.width, self.frame.size.height);
+
     [super layoutSubviews];
 }
 

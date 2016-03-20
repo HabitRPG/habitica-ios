@@ -9,10 +9,9 @@
 #import "HRPGCheckedTableViewCell.h"
 
 @interface HRPGDailyTableViewCell : HRPGCheckedTableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *streakLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *notesStreakSeparator;
+@property(weak, nonatomic) IBOutlet UILabel *streakLabel;
+@property(weak, nonatomic) IBOutlet NSLayoutConstraint *notesStreakSeparator;
 
-
-- (void)configureForTask:(Task *) task withOffset:(NSInteger) offset;
+- (void)configureForTask:(Task *)task withOffset:(NSInteger)offset;
 
 @end

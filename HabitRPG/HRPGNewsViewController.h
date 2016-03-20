@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "HRPGManager.h"
 
-@interface HRPGNewsViewController : UIViewController <UIWebViewDelegate>
-@property (weak, nonatomic) IBOutlet UIWebView *newsWebView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@interface HRPGNewsViewController : UIViewController<UIWebViewDelegate>
+@property(weak, nonatomic) IBOutlet UIWebView *newsWebView;
+@property(weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 
 @property HRPGManager *sharedManager;
 

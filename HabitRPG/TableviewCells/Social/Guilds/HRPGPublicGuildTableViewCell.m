@@ -10,7 +10,7 @@
 #import "Group.h"
 #import "UIColor+Habitica.h"
 
-@interface HRPGPublicGuildTableViewCell()
+@interface HRPGPublicGuildTableViewCell ()
 
 @property bool isMember;
 
@@ -23,19 +23,23 @@
     self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     self.descriptionLabel.text = guild.hdescription;
     self.descriptionLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.memberCountLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%@ Members", nil), guild.memberCount];
+    self.memberCountLabel.text =
+        [NSString stringWithFormat:NSLocalizedString(@"%@ Members", nil), guild.memberCount];
     self.memberCountLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     if ([guild.isMember boolValue]) {
         self.joinLeaveButton.backgroundColor = [UIColor red10];
-        [self.joinLeaveButton setTitle:NSLocalizedString(@"Leave", nil) forState:UIControlStateNormal];
+        [self.joinLeaveButton setTitle:NSLocalizedString(@"Leave", nil)
+                              forState:UIControlStateNormal];
     } else {
         self.joinLeaveButton.backgroundColor = [UIColor green10];
-        [self.joinLeaveButton setTitle:NSLocalizedString(@"Join", nil) forState:UIControlStateNormal];
+        [self.joinLeaveButton setTitle:NSLocalizedString(@"Join", nil)
+                              forState:UIControlStateNormal];
     }
     self.isMember = guild.isMember;
     self.joinLeaveButton.layer.cornerRadius = 5;
-    self.joinLeaveButtonWidthConstraint.constant = self.joinLeaveButton.intrinsicContentSize.width + 20;
-    
+    self.joinLeaveButtonWidthConstraint.constant =
+        self.joinLeaveButton.intrinsicContentSize.width + 20;
+
     [self setNeedsLayout];
 }
 
@@ -50,6 +54,5 @@
         }
     }
 }
-
 
 @end

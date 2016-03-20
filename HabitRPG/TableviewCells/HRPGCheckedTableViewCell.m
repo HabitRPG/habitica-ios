@@ -41,7 +41,7 @@
         self.checklistSeparator.hidden = YES;
         self.checklistIndicatorWidth.constant = 6.0;
     }
-    
+
     if ([task.completed boolValue]) {
         self.backgroundColor = [UIColor gray500];
         self.checklistIndicator.backgroundColor = [UIColor gray100];
@@ -50,11 +50,11 @@
         self.backgroundColor = [UIColor whiteColor];
         self.titleLabel.textColor = [UIColor blackColor];
     }
-    
+
     [self.checklistIndicator layoutIfNeeded];
 }
 
-- (void)configureForItem:(ChecklistItem *)item forTask:(Task *)task{
+- (void)configureForItem:(ChecklistItem *)item forTask:(Task *)task {
     if ([task.completed boolValue]) {
         self.backgroundColor = [UIColor gray500];
         self.checklistIndicator.backgroundColor = [UIColor gray100];
@@ -69,7 +69,7 @@
     self.checklistIndicator.hidden = YES;
     self.subtitleLabel.text = nil;
     self.titleNoteConstraint.constant = 0;
-    
+
     self.tagImageView.hidden = YES;
     self.reminderImageView.hidden = YES;
     self.tagReminderConstraint.constant = 0;
@@ -79,8 +79,10 @@
     self.checkBox.translatesAutoresizingMaskIntoConstraints = YES;
     self.checkBox.frame = CGRectMake(0, 0, self.checkBox.frame.size.width, self.frame.size.height);
     self.checklistIndicator.translatesAutoresizingMaskIntoConstraints = YES;
-    self.checklistIndicator.frame = CGRectMake(self.frame.size.width-self.checklistIndicatorWidth.constant, 0, self.checklistIndicatorWidth.constant, self.frame.size.height);
-    
+    self.checklistIndicator.frame =
+        CGRectMake(self.frame.size.width - self.checklistIndicatorWidth.constant, 0,
+                   self.checklistIndicatorWidth.constant, self.frame.size.height);
+
     [super layoutSubviews];
 }
 

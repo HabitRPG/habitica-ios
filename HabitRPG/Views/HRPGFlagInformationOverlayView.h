@@ -10,13 +10,13 @@
 
 @interface HRPGFlagInformationOverlayView : UIView
 
-@property (nonatomic) NSString *username;
-@property (nonatomic) NSString *message;
+@property(nonatomic) NSString *username;
+@property(nonatomic) NSString *message;
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UITextView *messageTextView;
-@property (weak, nonatomic) IBOutlet UITextView *explanationTextView;
+@property(weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property(weak, nonatomic) IBOutlet UITextView *messageTextView;
+@property(weak, nonatomic) IBOutlet UITextView *explanationTextView;
 
-@property (nonatomic, copy) void (^flagAction)();
+@property(nonatomic, copy) void (^flagAction)();
 
 @end

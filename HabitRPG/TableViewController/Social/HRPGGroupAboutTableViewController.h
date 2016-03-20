@@ -10,7 +10,7 @@
 #import "HRPGBaseViewController.h"
 #import "Group.h"
 
-@interface HRPGGroupAboutTableViewController : HRPGBaseViewController <UIAlertViewDelegate>
+@interface HRPGGroupAboutTableViewController : HRPGBaseViewController<UIAlertViewDelegate>
 
 @property Group *group;
 @property BOOL isLeader;

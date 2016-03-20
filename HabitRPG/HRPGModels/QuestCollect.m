@@ -8,7 +8,6 @@
 
 #import "QuestCollect.h"
 
-
 @implementation QuestCollect
 
 @dynamic count;

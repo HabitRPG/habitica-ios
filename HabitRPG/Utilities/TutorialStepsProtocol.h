@@ -7,12 +7,12 @@
 //
 #import "HRPGExplanationView.h"
 
-@protocol TutorialStepsProtocol <NSObject>
+@protocol TutorialStepsProtocol<NSObject>
 
 @property NSString *tutorialIdentifier;
 @property NSArray *coachMarks;
 @property BOOL displayedTutorialStep;
-@property (nonatomic) HRPGManager *sharedManager;
+@property(nonatomic) HRPGManager *sharedManager;
 @property HRPGExplanationView *activeTutorialView;
 
 @optional

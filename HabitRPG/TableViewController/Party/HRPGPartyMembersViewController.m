@@ -22,7 +22,9 @@
 @property NSString *sortKey;
 @property BOOL sortAscending;
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
+- (void)configureCell:(UITableViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+        withAnimation:(BOOL)animate;
 @end
 
 @implementation HRPGPartyMembersViewController
@@ -47,10 +49,8 @@ NSString *partyID;
     }
 
     [super viewDidLoad];
-    
-    [self setUpInvitationButton];
-    
 
+    [self setUpInvitationButton];
 }
 
 #pragma mark - Table view data source
@@ -60,12 +60,14 @@ NSString *partyID;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell =
+        [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
 }
@@ -74,7 +76,7 @@ NSString *partyID;
     return 100;
 }
 
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
 }
 
@@ -84,7 +86,8 @@ NSString *partyID;
     }
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User"
+                                              inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
 
@@ -92,12 +95,17 @@ NSString *partyID;
     predicate = [NSPredicate predicateWithFormat:@"party.id == %@", partyID];
     [fetchRequest setPredicate:predicate];
 
-    NSSortDescriptor *idDescriptor = [[NSSortDescriptor alloc] initWithKey:self.sortKey ascending:self.sortAscending];
-    NSArray *sortDescriptors = @[idDescriptor];
+    NSSortDescriptor *idDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:self.sortKey ascending:self.sortAscending];
+    NSArray *sortDescriptors = @[ idDescriptor ];
 
     [fetchRequest setSortDescriptors:sortDescriptors];
 
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController =
+        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                            managedObjectContext:self.managedObjectContext
+                                              sectionNameKeyPath:nil
+                                                       cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
@@ -110,53 +118,64 @@ NSString *partyID;
     return _fetchedResultsController;
 }
 
-
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView beginUpdates];
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+- (void)controller:(NSFetchedResultsController *)controller
+  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex
+     forChangeType:(NSFetchedResultsChangeType)type {
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
             break;
 
         case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
             break;
-            
+
         case NSFetchedResultsChangeUpdate:
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
-            
+
         case NSFetchedResultsChangeMove:
             break;
-            
     }
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
 
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
+                             withRowAnimation:UITableViewRowAnimationFade];
             break;
 
         case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
+                             withRowAnimation:UITableViewRowAnimationFade];
             break;
 
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath]
+                    atIndexPath:indexPath
+                  withAnimation:YES];
             break;
 
         case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
+                             withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
@@ -165,28 +184,29 @@ NSString *partyID;
     [self.tableView endUpdates];
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
+- (void)configureCell:(UITableViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+        withAnimation:(BOOL)animate {
     User *user = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *textLabel = (UILabel *) [cell viewWithTag:1];
+    UILabel *textLabel = (UILabel *)[cell viewWithTag:1];
     textLabel.text = user.username;
-    UIImageView *avatarView = (UIImageView *) [cell viewWithTag:2];
+    UIImageView *avatarView = (UIImageView *)[cell viewWithTag:2];
     avatarView.image = nil;
     [user setAvatarOnImageView:avatarView withPetMount:NO onlyHead:NO useForce:NO];
-    
-    HRPGLabeledProgressBar *healthLabel = (HRPGLabeledProgressBar *) [cell viewWithTag:3];
+
+    HRPGLabeledProgressBar *healthLabel = (HRPGLabeledProgressBar *)[cell viewWithTag:3];
     healthLabel.color = [UIColor red100];
     healthLabel.icon = [UIImage imageNamed:@"icon_health"];
     healthLabel.value = user.health;
     healthLabel.maxValue = [NSNumber numberWithInt:50];
-    
-    UILabel *levelLabel = (UILabel *) [cell viewWithTag:5];
+
+    UILabel *levelLabel = (UILabel *)[cell viewWithTag:5];
     levelLabel.text = [NSString stringWithFormat:@"LVL %@", user.level];
-    UILabel *classLabel = (UILabel *) [cell viewWithTag:6];
+    UILabel *classLabel = (UILabel *)[cell viewWithTag:6];
     classLabel.text = user.hclass;
     [classLabel.layer setCornerRadius:5.0f];
     classLabel.backgroundColor = [user classColor];
 }
-
 
 #pragma mark - Navigation
 
@@ -194,22 +214,26 @@ NSString *partyID;
     if ([segue.identifier isEqualToString:@"UserProfileSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         User *user = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        HRPGUserProfileViewController *userProfileViewController = (HRPGUserProfileViewController*) segue.destinationViewController;
+        HRPGUserProfileViewController *userProfileViewController =
+            (HRPGUserProfileViewController *)segue.destinationViewController;
         userProfileViewController.userID = user.id;
         userProfileViewController.username = user.username;
     }
     [super prepareForSegue:segue sender:sender];
-    
 }
 
 - (void)setUpInvitationButton {
     if (self.isLeader) {
-        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Invite", nil) style:UIBarButtonItemStylePlain target:self action:@selector(openInvitationForm)];
+        UIBarButtonItem *barButton =
+            [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Invite", nil)
+                                             style:UIBarButtonItemStylePlain
+                                            target:self
+                                            action:@selector(openInvitationForm)];
         self.navigationItem.rightBarButtonItem = barButton;
     }
 }
 
-- (void) openInvitationForm {
+- (void)openInvitationForm {
     [self performSegueWithIdentifier:@"InvitationSegue" sender:self];
 }
 
@@ -217,13 +241,17 @@ NSString *partyID;
 }
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-    HRPGInviteMembersViewController *formViewController = (HRPGInviteMembersViewController *) segue.sourceViewController;
-    [self.sharedManager inviteMembers:formViewController.members withInvitationType:formViewController.invitationType toGroupWithID:self.partyID onSuccess:^() {
-        
-    }onError:^() {
-        
-    }];
-}
+    HRPGInviteMembersViewController *formViewController =
+        (HRPGInviteMembersViewController *)segue.sourceViewController;
+    [self.sharedManager inviteMembers:formViewController.members
+        withInvitationType:formViewController.invitationType
+        toGroupWithID:self.partyID
+        onSuccess:^() {
 
+        }
+        onError:^(){
+
+        }];
+}
 
 @end

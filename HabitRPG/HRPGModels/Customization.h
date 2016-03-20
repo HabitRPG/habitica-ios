@@ -13,17 +13,17 @@
 
 @interface Customization : NSManagedObject
 
-@property (nonatomic, retain) NSString * group;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * notes;
-@property (nonatomic, retain) NSNumber * price;
-@property (nonatomic, retain) NSNumber * purchased;
-@property (nonatomic, retain) NSNumber * purchasable;
-@property (nonatomic, retain) NSString * set;
-@property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSString * type;
-@property (nonatomic, retain) User *owner;
+@property(nonatomic, retain) NSString *group;
+@property(nonatomic, retain) NSString *name;
+@property(nonatomic, retain) NSString *notes;
+@property(nonatomic, retain) NSNumber *price;
+@property(nonatomic, retain) NSNumber *purchased;
+@property(nonatomic, retain) NSNumber *purchasable;
+@property(nonatomic, retain) NSString *set;
+@property(nonatomic, retain) NSString *text;
+@property(nonatomic, retain) NSString *type;
+@property(nonatomic, retain) User *owner;
 
-- (NSString*) getImageNameForUser:(User*) user;
-- (NSString*) getPath;
+- (NSString *)getImageNameForUser:(User *)user;
+- (NSString *)getPath;
 @end

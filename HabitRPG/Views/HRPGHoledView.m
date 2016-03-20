@@ -12,26 +12,25 @@
 
 - (instancetype)init {
     self = [super init];
-    
+
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         self.userInteractionEnabled = NO;
         [self setContentMode:UIViewContentModeRedraw];
     }
-    
+
     return self;
 }
 
 - (void)drawRect:(CGRect)rect {
     [self.dimColor setFill];
     UIRectFill(rect);
-    
+
     if (!CGRectIsEmpty(self.highlightedFrame)) {
-        CGRect holeRectIntersection = CGRectIntersection( self.highlightedFrame, rect );
+        CGRect holeRectIntersection = CGRectIntersection(self.highlightedFrame, rect);
         [[UIColor clearColor] setFill];
         UIRectFill(holeRectIntersection);
     }
-    
 }
 
 @end

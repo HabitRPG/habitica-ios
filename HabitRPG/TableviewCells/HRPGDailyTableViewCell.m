@@ -23,7 +23,8 @@
         }
     }
     if ([task.streak integerValue] > 0) {
-        self.streakLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Current streak: %@", nil), task.streak];
+        self.streakLabel.text =
+            [NSString stringWithFormat:NSLocalizedString(@"Current streak: %@", nil), task.streak];
         self.streakLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2];
         self.notesStreakSeparator.constant = 6.0;
     } else {

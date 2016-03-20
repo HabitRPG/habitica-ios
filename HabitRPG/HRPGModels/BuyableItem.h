@@ -10,9 +10,8 @@
 #import <CoreData/CoreData.h>
 #import "Item.h"
 
-
 @interface BuyableItem : Item
 
-@property (nonatomic, retain) NSNumber * canBuy;
+@property(nonatomic, retain) NSNumber *canBuy;
 
 @end

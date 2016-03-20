@@ -9,7 +9,7 @@
 #import "HRPGBaseViewController.h"
 #import "Food.h"
 
-@interface HRPGFeedViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate>
+@interface HRPGFeedViewController : HRPGBaseViewController<NSFetchedResultsControllerDelegate>
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property(nonatomic) Food *selectedFood;

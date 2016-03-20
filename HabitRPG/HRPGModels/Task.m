@@ -64,14 +64,16 @@
     NSCalendar *calendar = [NSCalendar currentCalendar];
     if (self.startDate) {
         NSDate *startDateAtMidnight;
-        [calendar rangeOfUnit:NSCalendarUnitDay startDate:&startDateAtMidnight
-                     interval:NULL forDate:self.startDate];
+        [calendar rangeOfUnit:NSCalendarUnitDay
+                    startDate:&startDateAtMidnight
+                     interval:NULL
+                      forDate:self.startDate];
         if ([self.startDate compare:[NSDate date]] == NSOrderedDescending) {
             return NO;
         }
     }
-    //get today + the custom offset the user uses
-    NSDate *dateWithOffset = [date dateByAddingTimeInterval:-(offset*60*60)];
+    // get today + the custom offset the user uses
+    NSDate *dateWithOffset = [date dateByAddingTimeInterval:-(offset * 60 * 60)];
     if ([self.frequency isEqualToString:@"daily"]) {
         NSDate *startDate = [NSDate date];
         if (self.startDate) {
@@ -80,15 +82,15 @@
         if ([self.everyX integerValue] == 0) {
             return true;
         }
-        return ([[dateWithOffset daysSinceDate:startDate] integerValue] % [self.everyX integerValue]) == 0;
+        return ([[dateWithOffset daysSinceDate:startDate] integerValue] %
+                [self.everyX integerValue]) == 0;
     } else {
-        
-            NSDateFormatter *df = [[NSDateFormatter alloc] init];
-            [df setDateFormat:@"EEEE"];
-            NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier: @"en_US"];
-            df.locale = locale;
-            NSString *dateString = [df stringFromDate:dateWithOffset];
-            return [[self valueForKey:[dateString lowercaseString]] boolValue];
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"EEEE"];
+        NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+        df.locale = locale;
+        NSString *dateString = [df stringFromDate:dateWithOffset];
+        return [[self valueForKey:[dateString lowercaseString]] boolValue];
     }
     return YES;
 }
@@ -120,17 +122,19 @@
 }
 
 - (NSDictionary *)getTagDictionary {
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *managedObjectContext = appdelegate.sharedManager.getManagedObjectContext;
-    
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *managedObjectContext =
+        appdelegate.sharedManager.getManagedObjectContext;
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
+    NSEntityDescription *entity =
+        [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
 
     NSError *error;
     NSArray *tags = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
+
     NSMutableDictionary *tagDictionary = [NSMutableDictionary dictionary];
     for (Tag *tag in tags) {
         if ([self.tags containsObject:tag]) {
@@ -146,17 +150,19 @@
     if (tagsDictionary.count == 0) {
         return;
     }
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *managedObjectContext = appdelegate.sharedManager.getManagedObjectContext;
-    
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *managedObjectContext =
+        appdelegate.sharedManager.getManagedObjectContext;
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
+    NSEntityDescription *entity =
+        [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
 
     NSError *error;
     NSArray *tags = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
+
     for (Tag *tag in tags) {
         NSNumber *val = tagsDictionary[tag.id];
         if (val != nil && ![val isKindOfClass:[NSNull class]]) {
@@ -173,7 +179,7 @@
     }
 }
 
-- (UIColor*) taskColor {
+- (UIColor *)taskColor {
     NSInteger intValue = [self.value integerValue];
     if (intValue < -20) {
         return [UIColor darkRed50];
@@ -192,7 +198,7 @@
     }
 }
 
-- (UIColor*) lightTaskColor {
+- (UIColor *)lightTaskColor {
     NSInteger intValue = [self.value integerValue];
     if (intValue < -20) {
         return [UIColor darkRed100];
@@ -211,50 +217,63 @@
     }
 }
 
-+ (NSArray*)predicatesForTaskType:(NSString *) taskType withFilterType:(NSInteger)filterType {
++ (NSArray *)predicatesForTaskType:(NSString *)taskType withFilterType:(NSInteger)filterType {
     if ([taskType isEqual:@"habit"]) {
         switch (filterType) {
             case TaskHabitFilterTypeAll: {
-                return @[[NSPredicate predicateWithFormat:@"type=='habit'"]];
+                return @[ [NSPredicate predicateWithFormat:@"type=='habit'"] ];
             }
             case TaskHabitFilterTypeWeak: {
-                return @[[NSPredicate predicateWithFormat:@"type=='habit' && value <= 0"]];
+                return @[ [NSPredicate predicateWithFormat:@"type=='habit' && value <= 0"] ];
             }
             case TaskHabitFilterTypeStrong: {
-                return @[[NSPredicate predicateWithFormat:@"type=='habit' && value > 0"]];
+                return @[ [NSPredicate predicateWithFormat:@"type=='habit' && value > 0"] ];
             }
         }
     } else if ([taskType isEqual:@"daily"]) {
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         [df setDateFormat:@"EEEE"];
-        NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier: @"en_US"];
+        NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
         df.locale = locale;
         NSString *dateString = [df stringFromDate:[NSDate date]];
         switch (filterType) {
             case TaskDailyFilterTypeAll: {
-                return @[[NSPredicate predicateWithFormat:@"type=='daily'"]];
+                return @[ [NSPredicate predicateWithFormat:@"type=='daily'"] ];
             }
             case TaskDailyFilterTypeDue: {
-                NSArray *predicates = @[[NSPredicate predicateWithFormat:@"type=='daily' && completed == NO"]];
-                predicates = [predicates arrayByAddingObject:[NSPredicate predicateWithFormat:@"(frequency == 'weekly' && %K == YES) || (frequency == 'daily')", [dateString lowercaseString]]];
+                NSArray *predicates =
+                    @[ [NSPredicate predicateWithFormat:@"type=='daily' && completed == NO"] ];
+                predicates = [predicates
+                    arrayByAddingObject:[NSPredicate
+                                            predicateWithFormat:@"(frequency == 'weekly' && %K == "
+                                                                @"YES) || (frequency == 'daily')",
+                                                                [dateString lowercaseString]]];
                 return predicates;
             }
             case TaskDailyFilterTypeGrey: {
-                NSArray *predicates = @[[NSPredicate predicateWithFormat:@"type=='daily'"]];
-                predicates = [predicates arrayByAddingObject:[NSPredicate predicateWithFormat:@"completed == YES || (frequency == 'weekly' && %K == NO) || (frequency == 'daily')", [dateString lowercaseString]]];
+                NSArray *predicates = @[ [NSPredicate predicateWithFormat:@"type=='daily'"] ];
+                predicates = [predicates
+                    arrayByAddingObject:[NSPredicate
+                                            predicateWithFormat:@"completed == YES || (frequency "
+                                                                @"== 'weekly' && %K == NO) || "
+                                                                @"(frequency == 'daily')",
+                                                                [dateString lowercaseString]]];
                 return predicates;
             }
         }
     } else if ([taskType isEqual:@"todo"]) {
         switch (filterType) {
             case TaskToDoFilterTypeActive: {
-                return @[[NSPredicate predicateWithFormat:@"type=='todo' && completed==NO"]];
+                return @[ [NSPredicate predicateWithFormat:@"type=='todo' && completed==NO"] ];
             }
             case TaskToDoFilterTypeDated: {
-                return @[[NSPredicate predicateWithFormat:@"type=='todo' && completed==NO && duedate!=nil"]];
+                return @[
+                    [NSPredicate
+                        predicateWithFormat:@"type=='todo' && completed==NO && duedate!=nil"]
+                ];
             }
             case TaskToDoFilterTypeDone: {
-                return @[[NSPredicate predicateWithFormat:@"type=='todo' && completed==YES"]];
+                return @[ [NSPredicate predicateWithFormat:@"type=='todo' && completed==YES"] ];
             }
         }
     }
@@ -263,27 +282,33 @@
 
 - (void)didSave {
     if ([CSSearchableIndex class]) {
-        NSString *domainIdenntifier = [NSString stringWithFormat:@"com.habitrpg.habitica.tasks.%@", self.type];
-        NSString *uniqueIdentifier = [NSString stringWithFormat:@"%@.%@", domainIdenntifier, self.id];
+        NSString *domainIdenntifier =
+            [NSString stringWithFormat:@"com.habitrpg.habitica.tasks.%@", self.type];
+        NSString *uniqueIdentifier =
+            [NSString stringWithFormat:@"%@.%@", domainIdenntifier, self.id];
         if (self.inserted || self.updated) {
             CSSearchableItemAttributeSet *attributeSet;
             attributeSet = [[CSSearchableItemAttributeSet alloc]
-                            initWithItemContentType:(NSString *)kUTTypeImage];
-            
+                initWithItemContentType:(NSString *)kUTTypeImage];
+
             attributeSet.title = [self.text stringByReplacingEmojiCheatCodesWithUnicode];
-            attributeSet.contentDescription = [self.notes stringByReplacingEmojiCheatCodesWithUnicode];
-            
-            CSSearchableItem *item = [[CSSearchableItem alloc]
-                                      initWithUniqueIdentifier:uniqueIdentifier
-                                      domainIdentifier:domainIdenntifier
-                                      attributeSet:attributeSet];
-            
-            [[CSSearchableIndex defaultSearchableIndex] indexSearchableItems:@[item]
-                                                           completionHandler: ^(NSError * __nullable error) {
-                                                           }];
+            attributeSet.contentDescription =
+                [self.notes stringByReplacingEmojiCheatCodesWithUnicode];
+
+            CSSearchableItem *item =
+                [[CSSearchableItem alloc] initWithUniqueIdentifier:uniqueIdentifier
+                                                  domainIdentifier:domainIdenntifier
+                                                      attributeSet:attributeSet];
+
+            [[CSSearchableIndex defaultSearchableIndex]
+                indexSearchableItems:@[ item ]
+                   completionHandler:^(NSError *__nullable error){
+                   }];
         } else if (self.deleted) {
-            [[CSSearchableIndex defaultSearchableIndex] deleteSearchableItemsWithIdentifiers:@[uniqueIdentifier] completionHandler:^(NSError * _Nullable error) {
-            }];
+            [[CSSearchableIndex defaultSearchableIndex]
+                deleteSearchableItemsWithIdentifiers:@[ uniqueIdentifier ]
+                                   completionHandler:^(NSError *_Nullable error){
+                                   }];
         }
     }
 }
@@ -299,11 +324,15 @@
 }
 
 - (void)observeCompleted {
-    [self addObserver:self forKeyPath:@"completed"
-              options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:NULL];
+    [self addObserver:self
+           forKeyPath:@"completed"
+              options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew)
+              context:NULL];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
                        context:(void *)context {
     if ([keyPath isEqualToString:@"completed"]) {
         NSNumber *oldValue = [change objectForKey:NSKeyValueChangeOldKey];

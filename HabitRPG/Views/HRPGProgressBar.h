@@ -12,9 +12,9 @@
 
 @property UIColor *barColor;
 
-- (void) setBarValue:(CGFloat) value animated:(BOOL)animated;
-- (CGFloat) getBarValue;
+- (void)setBarValue:(CGFloat)value animated:(BOOL)animated;
+- (CGFloat)getBarValue;
 
-- (void) setMaxBarValue:(CGFloat) maxValue;
+- (void)setMaxBarValue:(CGFloat)maxValue;
 
 @end

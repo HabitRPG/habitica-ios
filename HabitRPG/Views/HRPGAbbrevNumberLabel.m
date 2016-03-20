@@ -20,11 +20,13 @@
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.roundingIncrement = [NSNumber numberWithDouble:0.01];
     formatter.numberStyle = NSNumberFormatterDecimalStyle;
-    text = [NSString stringWithFormat:@"%@%@", [formatter stringFromNumber:[NSNumber numberWithDouble:value]], [self abbreviationForCounter:counter]];
+    text = [NSString
+        stringWithFormat:@"%@%@", [formatter stringFromNumber:[NSNumber numberWithDouble:value]],
+                         [self abbreviationForCounter:counter]];
     super.text = text;
 }
 
-- (NSString*)abbreviationForCounter:(int)counter {
+- (NSString *)abbreviationForCounter:(int)counter {
     switch (counter) {
         case 1:
             return @"k";
@@ -38,7 +40,7 @@
         case 4:
             return @"t";
             break;
-            
+
         default:
             return @"";
             break;

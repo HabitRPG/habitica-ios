@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ChatMessageLike (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *userID;
-@property (nullable, nonatomic, retain) ChatMessage *message;
+@property(nullable, nonatomic, retain) NSString *userID;
+@property(nullable, nonatomic, retain) ChatMessage *message;
 
 @end
 

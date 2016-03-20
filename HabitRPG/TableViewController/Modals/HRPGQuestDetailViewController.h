@@ -12,7 +12,7 @@
 #import "User.h"
 #import "HRPGBaseViewController.h"
 
-@interface HRPGQuestDetailViewController : HRPGBaseViewController <UIAlertViewDelegate>
+@interface HRPGQuestDetailViewController : HRPGBaseViewController<UIAlertViewDelegate>
 
 @property Quest *quest;
 @property Group *group;

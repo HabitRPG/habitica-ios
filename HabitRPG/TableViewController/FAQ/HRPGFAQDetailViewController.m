@@ -19,15 +19,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self configureMarkdownAttributes];
-    
+
     self.questionLabel.text = self.faq.question;
     self.answerTextView.attributedText = [self renderMarkdown:[self.faq getRelevantAnswer]];
     self.answerTextView.textContainerInset = UIEdgeInsetsMake(0, 16, 16, 16);
-    
+
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
+        HRPGTopHeaderNavigationController *navigationController =
+            (HRPGTopHeaderNavigationController *)self.navigationController;
         if (navigationController.state != HRPGTopHeaderStateHidden) {
             [navigationController scrollview:nil scrolledToPosition:0];
         }

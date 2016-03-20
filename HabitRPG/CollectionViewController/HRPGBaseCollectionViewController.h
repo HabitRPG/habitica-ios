@@ -10,10 +10,10 @@
 #import "HRPGManager.h"
 #import "TutorialStepsProtocol.h"
 
-@interface HRPGBaseCollectionViewController : UICollectionViewController <TutorialStepsProtocol>
+@interface HRPGBaseCollectionViewController : UICollectionViewController<TutorialStepsProtocol>
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic)  HRPGManager *sharedManager;
+@property(nonatomic) HRPGManager *sharedManager;
 @property CGFloat screenWidth;
 @property BOOL hidesTopBar;
 @property NSString *readableScreenName;

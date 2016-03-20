@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
 
-@interface HRPGPartyMembersViewController : HRPGBaseViewController <NSFetchedResultsControllerDelegate>
+@interface HRPGPartyMembersViewController
+    : HRPGBaseViewController<NSFetchedResultsControllerDelegate>
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 

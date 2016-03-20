@@ -14,7 +14,9 @@
 @interface HRPGSpellViewController ()
 @property User *user;
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
+- (void)configureCell:(UITableViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+        withAnimation:(BOOL)animate;
 @end
 
 @implementation HRPGSpellViewController
@@ -24,7 +26,8 @@
     self.user = [self.sharedManager getUser];
     self.tutorialIdentifier = @"skills";
 
-    if ([self.user.hclass isEqualToString:@"wizard"] || [self.user.hclass isEqualToString:@"healer"]) {
+    if ([self.user.hclass isEqualToString:@"wizard"] ||
+        [self.user.hclass isEqualToString:@"healer"]) {
         self.navigationItem.title = NSLocalizedString(@"Cast Spells", nil);
     } else {
         self.navigationItem.title = NSLocalizedString(@"Use Skills", nil);
@@ -33,7 +36,14 @@
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"skills"]) {
-        return @{@"text": NSLocalizedString(@"Skills are special abilities that have powerful effects! Tap on a skill to use it. It will cost Mana (the blue bar), which you earn by checking in every day and by completing your real-life tasks. Check out the FAQ in the menu for more info!", nil)};
+        return @{
+            @"text" :
+                NSLocalizedString(@"Skills are special abilities that have powerful effects! Tap "
+                                  @"on a skill to use it. It will cost Mana (the blue bar), which "
+                                  @"you earn by checking in every day and by completing your "
+                                  @"real-life tasks. Check out the FAQ in the menu for more info!",
+                                  nil)
+        };
     }
     return nil;
 }
@@ -45,12 +55,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell =
+        [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
 }
@@ -65,44 +77,64 @@
     if ([self.user.magic integerValue] >= [spell.mana integerValue]) {
         if ([spell.target isEqualToString:@"task"]) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"spellTaskNavigationController"];
+            UINavigationController *navigationController = (UINavigationController *)[storyboard
+                instantiateViewControllerWithIdentifier:@"spellTaskNavigationController"];
 
-            [self presentViewController:navigationController animated:YES completion:^() {
-                HRPGSpellTabBarController *tabBarController = (HRPGSpellTabBarController *) navigationController.topViewController;
-                tabBarController.spell = spell;
-                tabBarController.sourceTableView = self.tableView;
-            }];
+            [self presentViewController:navigationController
+                               animated:YES
+                             completion:^() {
+                                 HRPGSpellTabBarController *tabBarController =
+                                     (HRPGSpellTabBarController *)
+                                         navigationController.topViewController;
+                                 tabBarController.spell = spell;
+                                 tabBarController.sourceTableView = self.tableView;
+                             }];
         } else {
-            [self.sharedManager castSpell:spell.key withTargetType:spell.target onTarget:nil onSuccess:^() {
-                [tableView reloadData];
-            } onError:nil];
+            [self.sharedManager castSpell:spell.key
+                           withTargetType:spell.target
+                                 onTarget:nil
+                                onSuccess:^() {
+                                    [tableView reloadData];
+                                }
+                                  onError:nil];
         }
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     float height = 30.0f;
-    float width = self.viewWidth-43;
+    float width = self.viewWidth - 43;
     Spell *spell = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    width = width - [[NSString stringWithFormat:@"%ld MP", (long) [spell.mana integerValue]] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
-                                                                                                          options:NSStringDrawingUsesLineFragmentOrigin
-                                                                                                       attributes:@{
-                                                                                                               NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
-                                                                                                       }
-                                                                                                          context:nil].size.width;
-    height = height + [spell.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
-                                               options:NSStringDrawingUsesLineFragmentOrigin
-                                            attributes:@{
-                                                    NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]
-                                            }
-                                               context:nil].size.height;
+    width = width -
+            [[NSString stringWithFormat:@"%ld MP", (long)[spell.mana integerValue]]
+                boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
+                             options:NSStringDrawingUsesLineFragmentOrigin
+                          attributes:@{
+                              NSFontAttributeName :
+                                  [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+                          }
+                             context:nil]
+                .size.width;
+    height = height +
+             [spell.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                      options:NSStringDrawingUsesLineFragmentOrigin
+                                   attributes:@{
+                                       NSFontAttributeName : [UIFont
+                                           preferredFontForTextStyle:UIFontTextStyleHeadline]
+                                   }
+                                      context:nil]
+                 .size.height;
     if ([spell.notes length] > 0) {
-        height = height + [spell.notes boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
-                                                    options:NSStringDrawingUsesLineFragmentOrigin
-                                                 attributes:@{
-                                                         NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
-                                                 }
-                                                    context:nil].size.height;
+        height = height +
+                 [spell.notes
+                     boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                  options:NSStringDrawingUsesLineFragmentOrigin
+                               attributes:@{
+                                   NSFontAttributeName :
+                                       [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
+                               }
+                                  context:nil]
+                     .size.height;
     }
     return height;
 }
@@ -113,19 +145,26 @@
     }
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Spell" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Spell"
+                                              inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
-    
+
     User *user = [self.sharedManager getUser];
     NSString *classname = [NSString stringWithFormat:@"spells.%@", user.dirtyClass];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"klass == %@ && level <= %@", classname, user.level]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"klass == %@ && level <= %@",
+                                                                classname, user.level]];
 
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"level" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
+    NSSortDescriptor *sortDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:@"level" ascending:YES];
+    NSArray *sortDescriptors = @[ sortDescriptor ];
     [fetchRequest setSortDescriptors:sortDescriptors];
 
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController =
+        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                            managedObjectContext:self.managedObjectContext
+                                              sectionNameKeyPath:nil
+                                                       cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
@@ -138,52 +177,64 @@
     return _fetchedResultsController;
 }
 
-
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView beginUpdates];
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+- (void)controller:(NSFetchedResultsController *)controller
+  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex
+     forChangeType:(NSFetchedResultsChangeType)type {
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
             break;
 
         case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
             break;
-            
+
         case NSFetchedResultsChangeUpdate:
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
-            
+
         case NSFetchedResultsChangeMove:
             break;
     }
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
 
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
+                             withRowAnimation:UITableViewRowAnimationFade];
             break;
 
         case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
+                             withRowAnimation:UITableViewRowAnimationFade];
             break;
 
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withAnimation:YES];
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath]
+                    atIndexPath:indexPath
+                  withAnimation:YES];
             break;
 
         case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
+                             withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
@@ -192,11 +243,13 @@
     [self.tableView endUpdates];
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
+- (void)configureCell:(UITableViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+        withAnimation:(BOOL)animate {
     Spell *spell = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *nameLabel = (UILabel *) [cell viewWithTag:1];
-    UILabel *detailLabel = (UILabel *) [cell viewWithTag:2];
-    UILabel *manaLabel = (UILabel *) [cell viewWithTag:3];
+    UILabel *nameLabel = (UILabel *)[cell viewWithTag:1];
+    UILabel *detailLabel = (UILabel *)[cell viewWithTag:2];
+    UILabel *manaLabel = (UILabel *)[cell viewWithTag:3];
     nameLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     manaLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
@@ -215,7 +268,6 @@
         manaLabel.textColor = [UIColor lightGrayColor];
     }
 }
-
 
 #pragma mark - Navigation
 

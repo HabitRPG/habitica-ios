@@ -10,9 +10,9 @@
 
 @interface UIViewController (Markdown)
 
-- (void) configureMarkdownAttributes;
+- (void)configureMarkdownAttributes;
 
-- (NSMutableAttributedString *) renderMarkdown:(NSString *)text;
+- (NSMutableAttributedString *)renderMarkdown:(NSString *)text;
 
 @property NSMutableDictionary *attributes;
 

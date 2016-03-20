@@ -11,7 +11,8 @@
 #import "Preferences.h"
 #import "Outfit.h"
 
-@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, TutorialSteps, ImprovementCategory;
+@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, TutorialSteps,
+    ImprovementCategory;
 
 @interface User : NSManagedObject
 
@@ -28,8 +29,8 @@
 @property(nonatomic, retain) NSString *email;
 @property(nonatomic, retain) NSNumber *experience;
 @property(nonatomic, retain) NSNumber *gold;
-@property(nonatomic, retain, getter = getCleanedClassName) NSString *hclass;
-@property(nonatomic, readonly, getter = getDirtyClassName) NSString *dirtyClass;
+@property(nonatomic, retain, getter=getCleanedClassName) NSString *hclass;
+@property(nonatomic, readonly, getter=getDirtyClassName) NSString *dirtyClass;
 @property(nonatomic, retain) NSNumber *health;
 @property(nonatomic, retain) NSString *id;
 @property(nonatomic, retain) NSString *invitedParty;
@@ -70,9 +71,9 @@
 @property(nonatomic, retain) Outfit *costume;
 @property(nonatomic, retain) Outfit *equipped;
 
-
-@property(nonatomic, retain, setter = setPetCountFromArray:) NSDictionary *petCountArray;
-@property(nonatomic, retain, setter = setCustomizationsDictionary:) NSDictionary *customizationsDictionary;
+@property(nonatomic, retain, setter=setPetCountFromArray:) NSDictionary *petCountArray;
+@property(nonatomic, retain, setter=setCustomizationsDictionary:)
+    NSDictionary *customizationsDictionary;
 @end
 
 @interface User (CoreDataGeneratedAccessors)
@@ -151,18 +152,29 @@
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView useForce:(BOOL)force;
 
-- (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead useForce:(BOOL)force;
-- (void)setAvatarOnImageView:(UIImageView *)imageView withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead withBackground:(BOOL)withBackground useForce:(BOOL)force;
-- (void)getAvatarImage:(void (^)(UIImage *))successBlock withPetMount:(BOOL)withPetMount onlyHead:(BOOL)onlyHead withBackground:(BOOL)withBackground useForce:(BOOL)force;
-- (UIColor*)classColor;
+- (void)setAvatarOnImageView:(UIImageView *)imageView
+                withPetMount:(BOOL)withPetMount
+                    onlyHead:(BOOL)onlyHead
+                    useForce:(BOOL)force;
+- (void)setAvatarOnImageView:(UIImageView *)imageView
+                withPetMount:(BOOL)withPetMount
+                    onlyHead:(BOOL)onlyHead
+              withBackground:(BOOL)withBackground
+                    useForce:(BOOL)force;
+- (void)getAvatarImage:(void (^)(UIImage *))successBlock
+          withPetMount:(BOOL)withPetMount
+              onlyHead:(BOOL)onlyHead
+        withBackground:(BOOL)withBackground
+              useForce:(BOOL)force;
+- (UIColor *)classColor;
 
-- (UIColor*)contributorColor;
+- (UIColor *)contributorColor;
 
-- (NSArray*)equippedArray;
+- (NSArray *)equippedArray;
 
 - (NSString *)hashedValueForAccountName;
 
-- (BOOL)hasSeenTutorialStepWithIdentifier:(NSString *) identifier;
+- (BOOL)hasSeenTutorialStepWithIdentifier:(NSString *)identifier;
 
 - (void)addIosTutorialStepsObject:(TutorialSteps *)value;
 - (void)addIosTutorialSteps:(NSSet *)values;

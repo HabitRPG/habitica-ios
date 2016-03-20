@@ -8,7 +8,6 @@
 
 #import "FAQ.h"
 
-
 @implementation FAQ
 
 @dynamic question;

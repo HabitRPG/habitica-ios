@@ -9,16 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "KLCPopup.h"
 
-@interface HRPGImageOverlayView : UIView <UIGestureRecognizerDelegate>
+@interface HRPGImageOverlayView : UIView<UIGestureRecognizerDelegate>
 
-- (void)displayImageWithName:(NSString*)imageName;
-- (void)displayImage:(UIImage*)image;
+- (void)displayImageWithName:(NSString *)imageName;
+- (void)displayImage:(UIImage *)image;
 
-@property (nonatomic) CGFloat height;
-@property (nonatomic) CGFloat width;
+@property(nonatomic) CGFloat height;
+@property(nonatomic) CGFloat width;
 
-@property (nonatomic, setter = setDescriptionText:) NSString *descriptionText;
-@property (nonatomic, setter = setDetailText:) NSString *detailText;
+@property(nonatomic, setter=setDescriptionText:) NSString *descriptionText;
+@property(nonatomic, setter=setDetailText:) NSString *detailText;
 
 @property UIImageView *ImageView;
 

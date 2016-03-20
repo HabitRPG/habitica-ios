@@ -19,16 +19,16 @@
 
 - (instancetype)init {
     self = [super init];
-    
+
     if (self) {
         self.typingSpeed = 0.03;
         self.editable = NO;
         self.userInteractionEnabled = NO;
         self.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         self.backgroundColor = [UIColor clearColor];
-        self.contentInset = UIEdgeInsetsMake(0,0,0,0);
+        self.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }
-    
+
     return self;
 }
 
@@ -42,7 +42,7 @@
                                     repeats:YES];
 }
 
-- (void) updateText:(NSTimer *)timer {
+- (void)updateText:(NSTimer *)timer {
     self.index++;
     if (self.index > self.setText.length) {
         [timer invalidate];

@@ -8,7 +8,6 @@
 
 #import "ChatMessage.h"
 
-
 @implementation ChatMessage
 
 @dynamic id;
@@ -23,7 +22,7 @@
 @dynamic likes;
 @dynamic attributedText;
 
--(UIColor *)contributorColor {
+- (UIColor *)contributorColor {
     if ([self.contributorLevel integerValue] == 1) {
         return [UIColor colorWithRed:0.941 green:0.380 blue:0.549 alpha:1.000];
     } else if ([self.contributorLevel integerValue] == 2) {

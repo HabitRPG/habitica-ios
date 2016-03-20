@@ -23,7 +23,7 @@
 @dynamic type;
 @dynamic owner;
 
--(NSString *)getImageNameForUser:(User *)user {
+- (NSString *)getImageNameForUser:(User *)user {
     if ([self.type isEqualToString:@"skin"]) {
         if ([user.preferences.sleep boolValue]) {
             return [NSString stringWithFormat:@"skin_%@_sleep", self.name];
@@ -40,12 +40,14 @@
             if ([user.preferences.hairBangs isEqualToString:@"0"]) {
                 return [NSString stringWithFormat:@"hair_bangs_1_%@", self.name];
             } else {
-                return [NSString stringWithFormat:@"hair_bangs_%@_%@", user.preferences.hairBangs, self.name];
+                return [NSString
+                    stringWithFormat:@"hair_bangs_%@_%@", user.preferences.hairBangs, self.name];
             }
         } else if ([self.group isEqualToString:@"flower"]) {
-                return [NSString stringWithFormat:@"hair_flower_%@", self.name];
+            return [NSString stringWithFormat:@"hair_flower_%@", self.name];
         } else {
-            return [NSString stringWithFormat:@"hair_%@_%@_%@", self.group, self.name, user.preferences.hairColor];
+            return [NSString stringWithFormat:@"hair_%@_%@_%@", self.group, self.name,
+                                              user.preferences.hairColor];
         }
     } else if ([self.type isEqualToString:@"background"]) {
         return [NSString stringWithFormat:@"background_%@", self.name];

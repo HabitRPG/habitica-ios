@@ -10,7 +10,7 @@
 #import "HRPGManager.h"
 #import "TutorialStepsProtocol.h"
 
-@interface UIViewController (TutorialSteps) <TutorialStepsProtocol>
+@interface UIViewController (TutorialSteps)<TutorialStepsProtocol>
 
 - (void)displayTutorialStep:(HRPGManager *)sharedManager;
 

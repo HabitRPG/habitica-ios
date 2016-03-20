@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HRPGAnimationLoadingController : NSObject <UIViewControllerAnimatedTransitioning>
+@interface HRPGAnimationLoadingController : NSObject<UIViewControllerAnimatedTransitioning>
 
 @end

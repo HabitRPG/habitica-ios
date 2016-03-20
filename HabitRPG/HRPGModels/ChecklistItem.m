@@ -8,7 +8,6 @@
 
 #import "ChecklistItem.h"
 
-
 @implementation ChecklistItem
 
 @dynamic completed;

@@ -11,8 +11,8 @@
 
 @interface HRPGHabitTableViewCell : HRPGTaskTableViewCell
 
-@property (weak, nonatomic) IBOutlet HRPGHabitButtons *buttons;
-@property (weak, nonatomic) IBOutlet UIView *rightBorderView;
-@property (weak, nonatomic) IBOutlet UILabel *lastactionLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *notesLastActionConstraint;
+@property(weak, nonatomic) IBOutlet HRPGHabitButtons *buttons;
+@property(weak, nonatomic) IBOutlet UIView *rightBorderView;
+@property(weak, nonatomic) IBOutlet UILabel *lastactionLabel;
+@property(weak, nonatomic) IBOutlet NSLayoutConstraint *notesLastActionConstraint;
 @end

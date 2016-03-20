@@ -14,21 +14,25 @@
 
 @implementation HRPGNavigationController
 
-
-
-- (UIViewController *)viewControllerForUnwindSegueAction:(SEL)action fromViewController:(UIViewController *)fromViewController withSender:(id)sender
-{
-    if ([self.sourceViewController canPerformUnwindSegueAction:action fromViewController:fromViewController withSender:sender])
+- (UIViewController *)viewControllerForUnwindSegueAction:(SEL)action
+                                      fromViewController:(UIViewController *)fromViewController
+                                              withSender:(id)sender {
+    if ([self.sourceViewController canPerformUnwindSegueAction:action
+                                            fromViewController:fromViewController
+                                                    withSender:sender])
         return self.sourceViewController;
-    for(UIViewController *vc in self.viewControllers){
+    for (UIViewController *vc in self.viewControllers) {
         // Always use -canPerformUnwindSegueAction:fromViewController:withSender:
         // to determine if a view controller wants to handle an unwind action.
-        if ([vc canPerformUnwindSegueAction:action fromViewController:fromViewController withSender:sender])
+        if ([vc canPerformUnwindSegueAction:action
+                         fromViewController:fromViewController
+                                 withSender:sender])
             return vc;
     }
-    
-    
-    return [super viewControllerForUnwindSegueAction:action fromViewController:fromViewController withSender:sender];
+
+    return [super viewControllerForUnwindSegueAction:action
+                                  fromViewController:fromViewController
+                                          withSender:sender];
 }
 
 @end

@@ -10,6 +10,6 @@
 
 @interface HRPGHintView : UIView
 
--(void)pulseToSize: (float) value withDuration:(float) duration;
--(void)continueAnimating;
+- (void)pulseToSize:(float)value withDuration:(float)duration;
+- (void)continueAnimating;
 @end

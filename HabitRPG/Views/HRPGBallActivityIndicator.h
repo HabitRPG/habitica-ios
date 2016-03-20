@@ -10,7 +10,7 @@
 
 @interface HRPGBallActivityIndicator : UIView
 
-@property (nonatomic) UIColor *ballColor;
+@property(nonatomic) UIColor *ballColor;
 @property CGFloat stepDuration;
 @property CGFloat springDampening;
 @property CGFloat springVelocity;

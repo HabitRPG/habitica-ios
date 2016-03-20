@@ -55,7 +55,8 @@
 }
 
 - (void)startDisplayLink {
-    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(handleDisplayLink:)];
+    self.displayLink =
+        [CADisplayLink displayLinkWithTarget:self selector:@selector(handleDisplayLink:)];
     [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 }
 
@@ -65,8 +66,7 @@
 }
 
 - (void)handleDisplayLink:(CADisplayLink *)displayLink {
-    if (!self.firstTimestamp)
-        self.firstTimestamp = displayLink.timestamp;
+    if (!self.firstTimestamp) self.firstTimestamp = displayLink.timestamp;
 
     NSTimeInterval elapsed = (displayLink.timestamp - self.firstTimestamp);
     CGFloat elapsedFraction = fmod(elapsed, self.roundTime);
@@ -83,7 +83,8 @@
     [indicatorPath addArcWithCenter:center
                              radius:radius
                          startAngle:startAngle + (animAngle * interval)
-                           endAngle:startAngle + (animAngle * interval) + (self.indicatorLength / 100.0) * endAngle
+                           endAngle:startAngle + (animAngle * interval) +
+                                    (self.indicatorLength / 100.0) * endAngle
                           clockwise:YES];
     return indicatorPath;
 }
@@ -93,11 +94,14 @@
 
     CGPoint center = CGPointMake(rect.size.width / 2, rect.size.height / 2);
     float radius = (rect.size.width - self.strokeWidth) / 2;
-    [backgroundPath addArcWithCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
+    [backgroundPath addArcWithCenter:center
+                              radius:radius
+                          startAngle:startAngle
+                            endAngle:endAngle
+                           clockwise:YES];
     backgroundPath.lineWidth = self.strokeWidth;
     [self.backgroundStrokeColor setStroke];
     [backgroundPath stroke];
 }
-
 
 @end

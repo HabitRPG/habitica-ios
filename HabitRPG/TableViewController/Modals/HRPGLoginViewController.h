@@ -10,7 +10,9 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "EAIntroView.h"
 
-@interface HRPGLoginViewController : UITableViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, FBSDKLoginButtonDelegate, EAIntroDelegate>
+@interface HRPGLoginViewController
+    : UITableViewController<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate,
+                            FBSDKLoginButtonDelegate, EAIntroDelegate>
 @property BOOL hideCancelButton;
 @property(weak, nonatomic) UITextField *usernameField;
 @property(weak, nonatomic) UITextField *emailField;
@@ -19,7 +21,7 @@
 @property(weak, nonatomic) UITableViewCell *loginCell;
 @property(weak, nonatomic) UIActivityIndicatorView *activityIndicator;
 @property(weak, nonatomic) UILabel *loginLabel;
-@property (weak, nonatomic) UIButton *onePasswordButton;
+@property(weak, nonatomic) UIButton *onePasswordButton;
 
 @property BOOL isRootViewController;
 @property BOOL shouldDismissOnNextAppear;

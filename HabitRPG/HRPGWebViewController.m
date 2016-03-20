@@ -18,23 +18,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.webView.delegate = self;
-    
-    [self.webView.scrollView setContentInset:UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height,0,0,0)];
-    self.webView.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height,0,0,0);
+
+    [self.webView.scrollView
+        setContentInset:UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height,
+                                         0, 0, 0)];
+    self.webView.scrollView.scrollIndicatorInsets =
+        UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height, 0, 0, 0);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    
-    NSURL* nsUrl = [NSURL URLWithString:self.url];
-    NSURLRequest* request = [NSURLRequest requestWithURL:nsUrl cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:30];
+    NSURL *nsUrl = [NSURL URLWithString:self.url];
+    NSURLRequest *request =
+        [NSURLRequest requestWithURL:nsUrl
+                         cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
+                     timeoutInterval:30];
     [self.webView loadRequest:request];
 }
 
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    
 }
 
 @end

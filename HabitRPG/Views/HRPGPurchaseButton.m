@@ -12,11 +12,11 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    
+
     if (self) {
         self.layer.cornerRadius = 5.0f;
     }
-    
+
     return self;
 }
 

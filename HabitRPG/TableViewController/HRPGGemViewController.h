@@ -13,6 +13,6 @@
 
 @property BOOL displayNoGemLabel;
 
-@property (nonatomic) HRPGManager *sharedManager;
+@property(nonatomic) HRPGManager *sharedManager;
 
 @end

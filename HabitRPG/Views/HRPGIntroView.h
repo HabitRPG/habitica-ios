@@ -11,10 +11,10 @@
 
 @interface HRPGIntroView : NSObject
 
-- (HRPGIntroView *)initWithFrame:(CGRect) frame;
+- (HRPGIntroView *)initWithFrame:(CGRect)frame;
 
-- (void) displayInView:(UIView *)view;
+- (void)displayInView:(UIView *)view;
 
-- (void) setDelegate:(id<EAIntroDelegate>) delegate;
+- (void)setDelegate:(id<EAIntroDelegate>)delegate;
 
 @end

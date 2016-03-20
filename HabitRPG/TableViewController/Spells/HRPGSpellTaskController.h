@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
 
-@interface HRPGSpellTaskController : HRPGBaseViewController <NSFetchedResultsControllerDelegate>
+@interface HRPGSpellTaskController : HRPGBaseViewController<NSFetchedResultsControllerDelegate>
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property(strong, nonatomic) NSString *taskType;
 @end
-

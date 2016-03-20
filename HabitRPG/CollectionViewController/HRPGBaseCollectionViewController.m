@@ -27,39 +27,45 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:[self getScreenName]];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
-    
+
     NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
     [eventProperties setValue:@"navigate" forKey:@"eventAction"];
     [eventProperties setValue:@"navigation" forKey:@"eventCategory"];
     [eventProperties setValue:@"pageview" forKey:@"hitType"];
     [eventProperties setValue:[self getScreenName] forKey:@"page"];
     [[Amplitude instance] logEvent:@"navigate" withEventProperties:eventProperties];
-    
+
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    if ([keyChain stringForKey:@"id"] == nil || [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
+    if ([keyChain stringForKey:@"id"] == nil ||
+        [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UINavigationController *navigationController = (UINavigationController *) [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+        UINavigationController *navigationController = (UINavigationController *)[storyboard
+            instantiateViewControllerWithIdentifier:@"loginNavigationController"];
         [self presentViewController:navigationController animated:NO completion:nil];
     }
-    
+
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
-        [self.collectionView setContentInset:UIEdgeInsetsMake([navigationController getContentInset],0,0,0)];
-        self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([navigationController getContentInset],0,0,0);
+        HRPGTopHeaderNavigationController *navigationController =
+            (HRPGTopHeaderNavigationController *)self.navigationController;
+        [self.collectionView
+            setContentInset:UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0)];
+        self.collectionView.scrollIndicatorInsets =
+            UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0);
         if (navigationController.state == HRPGTopHeaderStateHidden) {
-            [self.collectionView setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
+            [self.collectionView
+                setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
         }
     }
-    
+
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     self.screenWidth = screenRect.size.width;
 }
 
-- (NSString *) getScreenName {
+- (NSString *)getScreenName {
     if (self.readableScreenName) {
         return self.readableScreenName;
     } else {
@@ -69,18 +75,22 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(preferredContentSizeChanged:)
-     name:UIContentSizeCategoryDidChangeNotification
-     object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(preferredContentSizeChanged:)
+                                                 name:UIContentSizeCategoryDidChangeNotification
+                                               object:nil];
+
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController*) self.navigationController;
-        if (navigationController.state == HRPGTopHeaderStateHidden && self.collectionView.contentOffset.y < self.collectionView.contentInset.top-[navigationController getContentOffset]) {
-            [self.collectionView setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
+        HRPGTopHeaderNavigationController *navigationController =
+            (HRPGTopHeaderNavigationController *)self.navigationController;
+        if (navigationController.state == HRPGTopHeaderStateHidden &&
+            self.collectionView.contentOffset.y <
+                self.collectionView.contentInset.top - [navigationController getContentOffset]) {
+            [self.collectionView
+                setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
         } else if (navigationController.state == HRPGTopHeaderStateVisible) {
-            [navigationController scrollview:self.collectionView scrolledToPosition:self.collectionView.contentOffset.y];
+            [navigationController scrollview:self.collectionView
+                          scrolledToPosition:self.collectionView.contentOffset.y];
         }
     }
 }
@@ -93,20 +103,23 @@
         [deathView show];
     }
     [self displayTutorialStep:self.sharedManager];
-    
-    HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+
+    HRPGTopHeaderNavigationController *navigationController =
+        (HRPGTopHeaderNavigationController *)self.navigationController;
     [navigationController startFollowingScrollView:self.collectionView withOffset:0];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+    HRPGTopHeaderNavigationController *navigationController =
+        (HRPGTopHeaderNavigationController *)self.navigationController;
     [navigationController stopFollowingScrollView];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController = (HRPGTopHeaderNavigationController *) self.navigationController;
+        HRPGTopHeaderNavigationController *navigationController =
+            (HRPGTopHeaderNavigationController *)self.navigationController;
         [navigationController scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
     }
 }
@@ -119,17 +132,19 @@
     [self.collectionView reloadData];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UIViewController *destViewController = segue.destinationViewController;
     if ([destViewController isKindOfClass:[HRPGNavigationController class]]) {
-        HRPGNavigationController *destNavigationController = (HRPGNavigationController*)destViewController;
+        HRPGNavigationController *destNavigationController =
+            (HRPGNavigationController *)destViewController;
         destNavigationController.sourceViewController = self;
     }
 }
 
 - (HRPGManager *)sharedManager {
     if (_sharedManager == nil) {
-        HRPGAppDelegate *appdelegate = (HRPGAppDelegate *) [[UIApplication sharedApplication] delegate];
+        HRPGAppDelegate *appdelegate =
+            (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
         _sharedManager = appdelegate.sharedManager;
     }
     return _sharedManager;
@@ -141,6 +156,5 @@
     }
     return _managedObjectContext;
 }
-
 
 @end

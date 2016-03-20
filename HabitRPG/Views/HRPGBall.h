@@ -10,6 +10,6 @@
 
 @interface HRPGBall : UIView
 
-@property (nonatomic) UIColor *ballColor;
+@property(nonatomic) UIColor *ballColor;
 
 @end

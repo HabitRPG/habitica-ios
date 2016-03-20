@@ -18,7 +18,9 @@
 @property NSString *typeName;
 @property User *user;
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate;
+- (void)configureCell:(UITableViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+        withAnimation:(BOOL)animate;
 @end
 
 @implementation HRPGEquipmentViewController {
@@ -26,7 +28,7 @@
     NSIndexPath *selectedIndex;
 }
 
--(void)viewDidLoad {
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.user = [self.sharedManager getUser];
     self.tutorialIdentifier = @"equipment";
@@ -35,14 +37,20 @@
 - (void)viewWillAppear:(BOOL)animated {
     NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
     if (tableSelection) {
-        [self.tableView reloadRowsAtIndexPaths:@[tableSelection] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadRowsAtIndexPaths:@[ tableSelection ]
+                              withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     [super viewWillAppear:animated];
 }
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"equipment"]) {
-        return @{@"text": NSLocalizedString(@"When you buy equipment, it appears here. Your Battle Gear affects your stats, and your Costume (if enabled) affects what your avatar wears.", nil)};
+        return @{
+            @"text" : NSLocalizedString(@"When you buy equipment, it appears here. Your Battle "
+                                        @"Gear affects your stats, and your Costume (if enabled) "
+                                        @"affects what your avatar wears.",
+                                        nil)
+        };
     }
     return nil;
 }
@@ -96,14 +104,14 @@
     return 60;
 }
 
-
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Gear" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Gear"
+                                              inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
 
@@ -111,12 +119,17 @@
     predicate = [NSPredicate predicateWithFormat:@"owned == True"];
     [fetchRequest setPredicate:predicate];
 
-    NSSortDescriptor *indexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
+    NSSortDescriptor *indexDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
     NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
-    NSArray *sortDescriptors = @[typeDescriptor, indexDescriptor];
+    NSArray *sortDescriptors = @[ typeDescriptor, indexDescriptor ];
 
     [fetchRequest setSortDescriptors:sortDescriptors];
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController =
+        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                            managedObjectContext:self.managedObjectContext
+                                              sectionNameKeyPath:nil
+                                                       cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
@@ -210,14 +223,16 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"EquipmentDetailSegue"]) {
-        HRPGEquipmentDetailViewController *equipmentDetailViewController = (HRPGEquipmentDetailViewController*)segue.destinationViewController;
+        HRPGEquipmentDetailViewController *equipmentDetailViewController =
+            (HRPGEquipmentDetailViewController *)segue.destinationViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         if (indexPath.item == 0) {
             equipmentDetailViewController.type = @"head";
             equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Head", nil);
         } else if (indexPath.item == 1) {
             equipmentDetailViewController.type = @"headAccessory";
-            equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Head Accessory", nil);
+            equipmentDetailViewController.navigationItem.title =
+                NSLocalizedString(@"Head Accessory", nil);
         } else if (indexPath.item == 2) {
             equipmentDetailViewController.type = @"eyewear";
             equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Eyewear", nil);
@@ -237,7 +252,7 @@
             equipmentDetailViewController.type = @"weapon";
             equipmentDetailViewController.navigationItem.title = NSLocalizedString(@"Weapon", nil);
         }
-        
+
         if (indexPath.section == 0) {
             equipmentDetailViewController.equipType = @"equipped";
         } else if (indexPath.section == 1) {
@@ -247,11 +262,15 @@
 }
 
 - (void)changeWearingCostume:(UISwitch *)switchState {
-    [self.sharedManager updateUser:@{@"preferences.costume": [NSNumber numberWithBool:switchState.on]} onSuccess:^() {
-        switchState.on = [self.user.preferences.useCostume boolValue];
-    }onError:^() {
-        switchState.on = [self.user.preferences.useCostume boolValue];
-    }];
+    [self.sharedManager updateUser:@{
+        @"preferences.costume" : [NSNumber numberWithBool:switchState.on]
+    }
+        onSuccess:^() {
+            switchState.on = [self.user.preferences.useCostume boolValue];
+        }
+        onError:^() {
+            switchState.on = [self.user.preferences.useCostume boolValue];
+        }];
 }
 
 @end

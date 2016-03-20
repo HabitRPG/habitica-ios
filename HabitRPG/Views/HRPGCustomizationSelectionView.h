@@ -11,11 +11,11 @@
 
 @interface HRPGCustomizationSelectionView : UIView
 
-@property (nonatomic) NSString *selectedItem;
-@property (nonatomic) NSArray *items;
+@property(nonatomic) NSString *selectedItem;
+@property(nonatomic) NSArray *items;
 @property User *user;
 @property CGFloat verticalCutoff;
 
-@property (nonatomic, copy) void (^selectionAction)(Customization *selectedCustomization);
+@property(nonatomic, copy) void (^selectionAction)(Customization *selectedCustomization);
 
 @end

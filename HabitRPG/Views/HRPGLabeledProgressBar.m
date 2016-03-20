@@ -13,7 +13,6 @@
 
 @end
 
-
 @implementation HRPGLabeledProgressBar
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -27,17 +26,17 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    
+
     if (self) {
         [self initViews];
     }
-    
+
     return self;
 }
 
-- (void) initViews {
+- (void)initViews {
     self.color = [UIColor blackColor];
-    
+
     self.progressBar = [[HRPGProgressBar alloc] init];
     [self addSubview:self.progressBar];
     self.iconView = [[UIImageView alloc] init];
@@ -57,7 +56,7 @@
 
 - (void)setColor:(UIColor *)color {
     _color = color;
-    
+
     self.progressBar.barColor = color;
     self.iconView.tintColor = color;
 }
@@ -89,11 +88,13 @@
     [self updateViewFrames];
 }
 
-- (void) setLabelViewText {
+- (void)setLabelViewText {
     if ([self.value floatValue] < 1) {
-        self.labelView.text = [NSString stringWithFormat:@"%.1f / %@", [self.value floatValue], self.maxValue];
+        self.labelView.text =
+            [NSString stringWithFormat:@"%.1f / %@", [self.value floatValue], self.maxValue];
     } else {
-        self.labelView.text = [NSString stringWithFormat:@"%ld / %@", (long) [self.value integerValue], self.maxValue];
+        self.labelView.text =
+            [NSString stringWithFormat:@"%ld / %@", (long)[self.value integerValue], self.maxValue];
     }
 }
 
@@ -103,11 +104,12 @@
     self.labelView.font = [UIFont systemFontOfSize:fontSize];
     [self updateViewFrames];
 }
-- (void) updateViewFrames {
+- (void)updateViewFrames {
     self.iconView.frame = CGRectMake(0, 0, 16, 16);
-    self.progressBar.frame = CGRectMake(31, 0, self.frame.size.width-31, 16);
-    self.labelView.frame = CGRectMake(33, 18, (self.frame.size.width-33)/2, self.fontSize+1);
-    self.typeView.frame = CGRectMake((self.frame.size.width+33)/2, 18, (self.frame.size.width-33)/2, self.fontSize+1);
+    self.progressBar.frame = CGRectMake(31, 0, self.frame.size.width - 31, 16);
+    self.labelView.frame = CGRectMake(33, 18, (self.frame.size.width - 33) / 2, self.fontSize + 1);
+    self.typeView.frame = CGRectMake((self.frame.size.width + 33) / 2, 18,
+                                     (self.frame.size.width - 33) / 2, self.fontSize + 1);
 }
 
 - (void)layoutSubviews {

@@ -11,7 +11,6 @@
 
 @implementation Reminder
 
-
 - (void)willSave {
     if (self.hasChanges) {
         if (self.inserted) {
@@ -26,25 +25,26 @@
     [super didSave];
 }
 
-- (void) removeAllNotifications {
+- (void)removeAllNotifications {
     UIApplication *sharedApplication = [UIApplication sharedApplication];
-    for(UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
-        if([[reminder.userInfo objectForKey:@"ID"] isEqualToString:self.id]) {
+    for (UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
+        if ([[reminder.userInfo objectForKey:@"ID"] isEqualToString:self.id]) {
             [sharedApplication cancelLocalNotification:reminder];
         }
     }
 }
 
-- (void) removeTodaysNotifications {
+- (void)removeTodaysNotifications {
     UIApplication *sharedApplication = [UIApplication sharedApplication];
-    for(UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
-        if([[reminder.userInfo objectForKey:@"ID"] isEqualToString:self.id] && [self isSameDayWithDate1:[NSDate date] date2:reminder.fireDate]) {
+    for (UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
+        if ([[reminder.userInfo objectForKey:@"ID"] isEqualToString:self.id] &&
+            [self isSameDayWithDate1:[NSDate date] date2:reminder.fireDate]) {
             [sharedApplication cancelLocalNotification:reminder];
         }
     }
 }
 
-- (void) scheduleReminders {
+- (void)scheduleReminders {
     if (self.task) {
         if ([self.task.completed boolValue]) {
             return;
@@ -66,47 +66,55 @@
     }
 }
 
-- (void) scheduleForDay:(NSDate *) day {
+- (void)scheduleForDay:(NSDate *)day {
     NSDate *fireDate;
     if (day) {
         NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        NSDateComponents *dateComponents = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:day];
-        NSDateComponents *timeComponents = [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:self.time];
+        NSDateComponents *dateComponents =
+            [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
+                        fromDate:day];
+        NSDateComponents *timeComponents =
+            [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit
+                                            fromDate:self.time];
         [dateComponents setHour:timeComponents.hour];
         [dateComponents setMinute:timeComponents.minute];
         fireDate = [calendar dateFromComponents:dateComponents];
     } else {
         fireDate = self.time;
     }
-    
+
     if ([fireDate compare:[NSDate date]] != NSOrderedDescending) {
         return;
     }
-    
-    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     localNotification.fireDate = fireDate;
     localNotification.alertBody = self.task.text;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     if (self.task) {
-        localNotification.userInfo = @{@"ID": self.id, @"taskID": self.task.id, @"taskType": self.task.type};
+        localNotification.userInfo =
+            @{ @"ID" : self.id,
+               @"taskID" : self.task.id,
+               @"taskType" : self.task.type };
     } else {
-        localNotification.userInfo = @{@"ID": self.id};
+        localNotification.userInfo = @{ @"ID" : self.id };
     }
     localNotification.soundName = UILocalNotificationDefaultSoundName;
-    localNotification.category = @"completeCategory";
+    if ([localNotification respondsToSelector:@selector(setCategory:)]) {
+        localNotification.category = @"completeCategory";
+    }
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 
-- (BOOL)isSameDayWithDate1:(NSDate*)date1 date2:(NSDate*)date2 {
-    NSCalendar* calendar = [NSCalendar currentCalendar];
-    
-    unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
-    NSDateComponents* comp1 = [calendar components:unitFlags fromDate:date1];
-    NSDateComponents* comp2 = [calendar components:unitFlags fromDate:date2];
-    
-    return [comp1 day]   == [comp2 day] &&
-    [comp1 month] == [comp2 month] &&
-    [comp1 year]  == [comp2 year];
+- (BOOL)isSameDayWithDate1:(NSDate *)date1 date2:(NSDate *)date2 {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+
+    unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSDateComponents *comp1 = [calendar components:unitFlags fromDate:date1];
+    NSDateComponents *comp2 = [calendar components:unitFlags fromDate:date2];
+
+    return [comp1 day] == [comp2 day] && [comp1 month] == [comp2 month] &&
+           [comp1 year] == [comp2 year];
 }
 
 @end

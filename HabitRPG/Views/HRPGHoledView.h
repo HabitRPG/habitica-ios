@@ -10,7 +10,7 @@
 
 @interface HRPGHoledView : UIView
 
-@property (nonatomic) UIColor *dimColor;
-@property (nonatomic) CGRect highlightedFrame;
+@property(nonatomic) UIColor *dimColor;
+@property(nonatomic) CGRect highlightedFrame;
 
 @end

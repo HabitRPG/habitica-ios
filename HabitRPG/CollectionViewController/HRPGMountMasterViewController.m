@@ -19,13 +19,13 @@
 #import "HRPGTopHeaderNavigationController.h"
 
 @interface HRPGMountMasterViewController ()
-@property (nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic) NSArray *eggs;
-@property (nonatomic) NSArray *hatchingPotions;
-@property (nonatomic) NSString *selectedMount;
-@property (nonatomic) NSString *selectedType;
-@property (nonatomic) NSString *selectedColor;
-@property (nonatomic) NSArray *sortedPets;
+@property(nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property(nonatomic) NSArray *eggs;
+@property(nonatomic) NSArray *hatchingPotions;
+@property(nonatomic) NSString *selectedMount;
+@property(nonatomic) NSString *selectedType;
+@property(nonatomic) NSString *selectedColor;
+@property(nonatomic) NSArray *sortedPets;
 @property UIBarButtonItem *navigationButton;
 @property NSInteger groupByKey;
 @property CGSize screenSize;
@@ -40,19 +40,22 @@ NSUserDefaults *defaults;
     self.groupByKey = [defaults integerForKey:@"groupMountsBy"];
 
     self.screenSize = [[UIScreen mainScreen] bounds].size;
-    
+
     NSError *error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Egg" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity =
+        [NSEntityDescription entityForName:@"Egg" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     self.eggs = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     fetchRequest = [[NSFetchRequest alloc] init];
-    entity = [NSEntityDescription entityForName:@"HatchingPotion" inManagedObjectContext:self.managedObjectContext];
+    entity = [NSEntityDescription entityForName:@"HatchingPotion"
+                         inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-    self.hatchingPotions = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    self.hatchingPotions =
+        [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
-- (Egg*) eggWithKey:(NSString*)key {
+- (Egg *)eggWithKey:(NSString *)key {
     for (Egg *egg in self.eggs) {
         if ([egg.key isEqualToString:key]) {
             return egg;
@@ -61,7 +64,7 @@ NSUserDefaults *defaults;
     return nil;
 }
 
-- (NSString*) eggNameWithKey:(NSString*)key {
+- (NSString *)eggNameWithKey:(NSString *)key {
     for (Egg *egg in self.eggs) {
         if ([egg.key isEqualToString:key]) {
             return egg.mountText;
@@ -70,7 +73,7 @@ NSUserDefaults *defaults;
     return key;
 }
 
-- (NSString*) hatchingPotionNameWithKey:(NSString*)key {
+- (NSString *)hatchingPotionNameWithKey:(NSString *)key {
     for (HatchingPotion *hPotion in self.hatchingPotions) {
         if ([hPotion.key isEqualToString:key]) {
             return hPotion.text;
@@ -87,11 +90,13 @@ NSUserDefaults *defaults;
     return [[self.fetchedResultsController sections] count];
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section {
     return [self.sortedPets[section] count];
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)collectionView:(UICollectionView *)collectionView
+    shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *petArray = self.sortedPets[indexPath.section][indexPath.item];
     Pet *namePet = [petArray firstObject];
     for (Pet *pet in petArray) {
@@ -114,30 +119,41 @@ NSUserDefaults *defaults;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = 136.0f;
-    height = height + [@" " boundingRectWithSize:CGSizeMake(140.0f, MAXFLOAT)
-                                         options:NSStringDrawingUsesLineFragmentOrigin
-                                      attributes:@{
-                                                   NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]
-                                                   }
-                                         context:nil].size.height*3;
-    height = height + [@" " boundingRectWithSize:CGSizeMake(140.0f, MAXFLOAT)
-                                         options:NSStringDrawingUsesLineFragmentOrigin
-                                      attributes:@{
-                                                   NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
-                                                   }
-                                         context:nil].size.height;
+    height = height +
+             [@" " boundingRectWithSize:CGSizeMake(140.0f, MAXFLOAT)
+                                options:NSStringDrawingUsesLineFragmentOrigin
+                             attributes:@{
+                                 NSFontAttributeName :
+                                     [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]
+                             }
+                                context:nil]
+                     .size.height *
+                 3;
+    height = height +
+             [@" " boundingRectWithSize:CGSizeMake(140.0f, MAXFLOAT)
+                                options:NSStringDrawingUsesLineFragmentOrigin
+                             attributes:@{
+                                 NSFontAttributeName :
+                                     [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
+                             }
+                                context:nil]
+                 .size.height;
     if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
-        return CGSizeMake(self.screenSize.width/3-20, height);
+        return CGSizeMake(self.screenSize.width / 3 - 20, height);
     }
-    return CGSizeMake(self.screenSize.width/2-15, height);
+    return CGSizeMake(self.screenSize.width / 2 - 15, height);
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionCell" forIndexPath:indexPath];
-    UILabel *label = (UILabel*)[headerView viewWithTag:1];
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind
+                                 atIndexPath:(NSIndexPath *)indexPath {
+    UICollectionReusableView *headerView =
+        [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                           withReuseIdentifier:@"SectionCell"
+                                                  forIndexPath:indexPath];
+    UILabel *label = (UILabel *)[headerView viewWithTag:1];
     NSString *sectionName = [[self.fetchedResultsController sections][indexPath.section] name];
     if ([sectionName isEqualToString:@"questPets"]) {
         label.text = NSLocalizedString(@"Quest Pets", nil);
@@ -149,32 +165,36 @@ NSUserDefaults *defaults;
     return headerView;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell =
+        [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
-
-- (NSArray*)sortedPets {
+- (NSArray *)sortedPets {
     if (_sortedPets) {
         return _sortedPets;
     }
-    
+
     NSMutableArray *newSortedPets = [NSMutableArray array];
-    for (id <NSFetchedResultsSectionInfo> sectionInfo in self.fetchedResultsController.sections) {
+    for (id<NSFetchedResultsSectionInfo> sectionInfo in self.fetchedResultsController.sections) {
         NSMutableArray *sectionArray = [NSMutableArray array];
         [newSortedPets addObject:sectionArray];
         for (Pet *pet in [sectionInfo objects]) {
             NSArray *nameParts = [pet.key componentsSeparatedByString:@"-"];
-            if ([nameParts[0] isEqualToString:@"Turkey"] || ([pet.type isEqualToString:@" "] && ![pet.asMount boolValue])) {
+            if ([nameParts[0] isEqualToString:@"Turkey"] ||
+                ([pet.type isEqualToString:@" "] && ![pet.asMount boolValue])) {
                 continue;
             }
             NSMutableArray *petArray;
             for (NSMutableArray *oldPetArray in sectionArray) {
                 if (oldPetArray) {
                     Pet *oldPet = [oldPetArray firstObject];
-                    if ([nameParts[self.groupByKey] isEqualToString:[oldPet.key componentsSeparatedByString:@"-"][self.groupByKey]]) {
+                    if ([nameParts[self.groupByKey]
+                            isEqualToString:[oldPet.key componentsSeparatedByString:@"-"]
+                                                [self.groupByKey]]) {
                         petArray = oldPetArray;
                         break;
                     }
@@ -195,42 +215,51 @@ NSUserDefaults *defaults;
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
-    
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Pet" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity =
+        [NSEntityDescription entityForName:@"Pet" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-    
+
     [fetchRequest setFetchBatchSize:20];
-    
-    NSSortDescriptor *typeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
+
+    NSSortDescriptor *typeSortDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
-    NSArray *sortDescriptors = @[typeSortDescriptor, sortDescriptor];
-    
+    NSArray *sortDescriptors = @[ typeSortDescriptor, sortDescriptor ];
+
     [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"type" cacheName:nil];
+
+    NSFetchedResultsController *aFetchedResultsController =
+        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                            managedObjectContext:self.managedObjectContext
+                                              sectionNameKeyPath:@"type"
+                                                       cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
-    
+
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    
+
     return _fetchedResultsController;
 }
-
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+- (void)controller:(NSFetchedResultsController *)controller
+  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex
+     forChangeType:(NSFetchedResultsChangeType)type {
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
 }
 
@@ -238,11 +267,11 @@ NSUserDefaults *defaults;
     [self.collectionView reloadData];
 }
 
-- (void)configureCell:(UICollectionViewCell*)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)configureCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSArray *petArray = self.sortedPets[indexPath.section][indexPath.item];
-    UILabel *label = (UILabel*)[cell viewWithTag:1];
-    UIImageView *imageView = (UIImageView*)[cell viewWithTag:2];
-    UILabel *progressLabel = (UILabel*)[cell viewWithTag:3];
+    UILabel *label = (UILabel *)[cell viewWithTag:1];
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:2];
+    UILabel *progressLabel = (UILabel *)[cell viewWithTag:3];
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     progressLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     NSString *petType;
@@ -262,16 +291,16 @@ NSUserDefaults *defaults;
     }
     if (self.groupByKey) {
         if (petColor == nil) {
-            petColor = [((Pet*)[petArray firstObject]).key componentsSeparatedByString:@"-"][1];
+            petColor = [((Pet *)[petArray firstObject]).key componentsSeparatedByString:@"-"][1];
         }
         label.text = [self hatchingPotionNameWithKey:petColor];
     } else {
         if (petType == nil) {
-            petType = [((Pet*)[petArray firstObject]).key componentsSeparatedByString:@"-"][0];
+            petType = [((Pet *)[petArray firstObject]).key componentsSeparatedByString:@"-"][0];
         }
         label.text = [self eggNameWithKey:petType];
     }
-    
+
     if (mounted > 0) {
         [namePet setMountOnImageView:imageView];
         imageView.contentMode = UIViewContentModeScaleToFill;
@@ -281,26 +310,29 @@ NSUserDefaults *defaults;
         imageView.contentMode = UIViewContentModeCenter;
         imageView.alpha = 0.3f;
     }
-    
-    progressLabel.text = [NSString stringWithFormat:@"%d/%lu", mounted, (unsigned long)[petArray count]];
+
+    progressLabel.text =
+        [NSString stringWithFormat:@"%d/%lu", mounted, (unsigned long)[petArray count]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UIViewController *destViewController = segue.destinationViewController;
     if ([destViewController isKindOfClass:[HRPGNavigationController class]]) {
-        HRPGNavigationController *destNavigationController = (HRPGNavigationController*)destViewController;
+        HRPGNavigationController *destNavigationController =
+            (HRPGNavigationController *)destViewController;
         destNavigationController.sourceViewController = self;
     }
     if ([segue.identifier isEqualToString:@"GroupBySegue"]) {
-        UINavigationController *navController = (UINavigationController*)segue.destinationViewController;
-        HRPGArrayViewController *arrayViewController = (HRPGArrayViewController*)navController.topViewController;
-        arrayViewController.items = @[
-                                      NSLocalizedString(@"Mount Type", nil),
-                                      NSLocalizedString(@"Color", nil)
-                                      ];
+        UINavigationController *navController =
+            (UINavigationController *)segue.destinationViewController;
+        HRPGArrayViewController *arrayViewController =
+            (HRPGArrayViewController *)navController.topViewController;
+        arrayViewController.items =
+            @[ NSLocalizedString(@"Mount Type", nil), NSLocalizedString(@"Color", nil) ];
         arrayViewController.selectedIndex = [defaults integerForKey:@"groupMountsBy"];
     } else if (![segue.identifier isEqualToString:@"PetSegue"]) {
-        HRPGMountViewController *petController = (HRPGMountViewController*)segue.destinationViewController;
+        HRPGMountViewController *petController =
+            (HRPGMountViewController *)segue.destinationViewController;
         petController.mountName = self.selectedMount;
         petController.mountType = self.selectedType;
         petController.mountColor = self.selectedColor;
@@ -308,7 +340,8 @@ NSUserDefaults *defaults;
 }
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-    HRPGArrayViewController *arrayViewController = (HRPGArrayViewController*)segue.sourceViewController;
+    HRPGArrayViewController *arrayViewController =
+        (HRPGArrayViewController *)segue.sourceViewController;
     [defaults setInteger:arrayViewController.selectedIndex forKey:@"groupMountsBy"];
     self.groupByKey = arrayViewController.selectedIndex;
     self.selectedMount = nil;

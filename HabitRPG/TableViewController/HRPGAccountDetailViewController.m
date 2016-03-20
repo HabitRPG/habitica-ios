@@ -45,14 +45,21 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (section == 1) {
-        return NSLocalizedString(@"Copy these for use in third party applications. However, think of your API Token like a password, and do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github.", nil);
+        return NSLocalizedString(@"Copy these for use in third party applications. However, think "
+                                 @"of your API Token like a password, and do not share it "
+                                 @"publicly. You may occasionally be asked for your User ID, but "
+                                 @"never post your API Token where others can see it, including "
+                                 @"on Github.",
+                                 nil);
     }
     return nil;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell =
+        [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+
     if (indexPath.section == 0) {
         if (indexPath.item == 0) {
             cell.textLabel.text = NSLocalizedString(@"Login name", nil);
@@ -78,13 +85,14 @@
             cell.detailTextLabel.text = [keyChain stringForKey:@"key"];
         }
     }
-    
+
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    HRPGCopyTableViewCell *cell = (HRPGCopyTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    HRPGCopyTableViewCell *cell =
+        (HRPGCopyTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     [cell selectedCell];
 }
 

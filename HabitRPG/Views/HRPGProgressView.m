@@ -18,7 +18,8 @@
 - (void)drawRect:(CGRect)rect {
     rect = self.bounds;
 
-    CGRect coloredRect = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, self.progressBarHeight);
+    CGRect coloredRect =
+        CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, self.progressBarHeight);
     coloredRect.size.width *= [self.progress floatValue];
     CGContextRef context = UIGraphicsGetCurrentContext();
 
@@ -41,6 +42,5 @@
     _progress = progress;
     [self setNeedsDisplay];
 }
-
 
 @end

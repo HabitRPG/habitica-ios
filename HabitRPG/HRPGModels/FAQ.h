@@ -9,15 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-
 @interface FAQ : NSManagedObject
 
-@property (nonatomic, retain) NSString * question;
-@property (nonatomic, retain) NSString * iosAnswer;
-@property (nonatomic, retain) NSString * webAnswer;
-@property (nonatomic, retain) NSString * mobileAnswer;
-@property (nonatomic, retain) NSNumber * index;
+@property(nonatomic, retain) NSString *question;
+@property(nonatomic, retain) NSString *iosAnswer;
+@property(nonatomic, retain) NSString *webAnswer;
+@property(nonatomic, retain) NSString *mobileAnswer;
+@property(nonatomic, retain) NSNumber *index;
 
-- (NSString*) getRelevantAnswer;
+- (NSString *)getRelevantAnswer;
 
 @end

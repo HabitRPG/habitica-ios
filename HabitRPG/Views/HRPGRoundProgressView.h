@@ -16,6 +16,6 @@
 @property NSInteger indicatorLength;
 @property CGFloat roundTime;
 
--(void)beginAnimating;
+- (void)beginAnimating;
 
 @end
