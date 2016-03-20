@@ -104,13 +104,17 @@ PODS:
   - RestKit/Testing (0.26.0):
     - RestKit/Network
   - RKValueTransformers (1.1.2)
-  - SDWebImage (3.7.5):
-    - SDWebImage/Core (= 3.7.5)
-  - SDWebImage/Core (3.7.5)
   - SOCKit (1.1)
   - TransitionKit (2.2.1)
   - VTAcknowledgementsViewController (0.17)
   - XLForm (3.1.1)
+  - YYCache (1.0.1)
+  - YYImage (1.0.1):
+    - YYImage/Core (= 1.0.1)
+  - YYImage/Core (1.0.1)
+  - YYWebImage (1.0.1):
+    - YYCache
+    - YYImage
 
 DEPENDENCIES:
   - Amplitude-iOS (~> 3.5.0)
@@ -131,9 +135,9 @@ DEPENDENCIES:
   - pop
   - RestKit (~> 0.26)
   - RestKit/Testing
-  - SDWebImage
   - VTAcknowledgementsViewController
   - XLForm
+  - YYWebImage (~> 1.0.1)
 
 EXTERNAL SOURCES:
   AttributedMarkdown:
@@ -182,12 +186,14 @@ SPEC CHECKSUMS:
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   RestKit: 112fba5bd1f97598aac0db7981863d5fdc0263a2
   RKValueTransformers: 66ac5e4f077fdbe3496e792d89eeff4c3eb67701
-  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   VTAcknowledgementsViewController: 6056f5f5e5ed995bbf0581bed6ddd29355ca9a80
   XLForm: c9ee7e0f859341279bfd894f9589a9d25c23e4df
+  YYCache: e0c7321955a0a112a7daaf7b3e42a8dd110bafab
+  YYImage: b41b45bc5f32bfcdf67bdfb9c09da9e9832357c0
+  YYWebImage: 8a22da9ec4d95064afa75a5c756c5d6f19d1b660
 
-PODFILE CHECKSUM: 5f8dcc101acd3317dbcc9ecc6bf41ba296c8b036
+PODFILE CHECKSUM: aa63eb5d2bed8554ee58231b09b4d0a31572408c
 
 COCOAPODS: 1.0.0.beta.3

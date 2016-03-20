@@ -9,7 +9,7 @@
 #import "HRPGFeedViewController.h"
 #import "HRPGAppDelegate.h"
 #import "Food.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIImage+YYWebImage.h>
 
 @interface HRPGFeedViewController ()
 @end

@@ -8,7 +8,7 @@
 
 #import "HRPGQuestDetailViewController.h"
 #import "HRPGAppDelegate.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <YYWebImage.h>
 #import "UIColor+Habitica.h"
 
 @interface HRPGQuestDetailViewController ()
@@ -156,26 +156,29 @@
             imageView.image = self.bossImage;
 
         } else {
-            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            YYWebImageManager *manager = [YYWebImageManager sharedManager];
             __weak UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
             [manager
-                downloadImageWithURL:[NSURL URLWithString:[NSString
-                                                              stringWithFormat:@"https://"
-                                                                               @"habitica-assets."
-                                                                               @"s3.amazonaws.com/"
-                                                                               @"mobileApp/images/"
-                                                                               @"quest_%@.png",
-                                                                               self.quest.key]]
-                options:0
-                progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                }
-                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType,
-                            BOOL finished, NSURL *imageURL) {
-                    if (image) {
-                        self.bossImage = image;
-                        imageView.image = self.bossImage;
-                    }
-                }];
+                requestImageWithURL:[NSURL URLWithString:[NSString
+                                                             stringWithFormat:@"https://"
+                                                                              @"habitica-assets."
+                                                                              @"s3.amazonaws.com/"
+                                                                              @"mobileApp/images/"
+                                                                              @"quest_%@.png",
+                                                                              self.quest.key]]
+                            options:0
+                           progress:nil
+                          transform:nil
+                         completion:^(UIImage *_Nullable image, NSURL *_Nonnull url,
+                                      YYWebImageFromType from, YYWebImageStage stage,
+                                      NSError *_Nullable error) {
+                             if (image) {
+                                 dispatch_async(dispatch_get_main_queue(), ^{
+                                     self.bossImage = image;
+                                     imageView.image = self.bossImage;
+                                 });
+                             }
+                         }];
         }
         cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
     } else if (indexPath.section == 0 && indexPath.item == 2) {

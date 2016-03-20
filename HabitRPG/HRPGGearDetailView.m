@@ -7,7 +7,7 @@
 //
 
 #import "HRPGGearDetailView.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIImage+YYWebImage.h>
 #import "MetaReward.h"
 #import "KLCPopup.h"
 #import "UIColor+Habitica.h"

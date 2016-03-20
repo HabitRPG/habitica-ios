@@ -7,7 +7,7 @@
 //
 
 #import "HRPGGroupTableViewController.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIImage+YYWebImage.h>
 #import <DTAttributedTextView.h>
 #import "UIViewController+Markdown.h"
 #import "HRPGChatTableViewCell.h"

@@ -12,7 +12,7 @@
 #import "User.h"
 #import "Gear.h"
 #import "HRPGCustomizationCollectionViewController.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIImage+YYWebImage.h>
 
 @interface HRPGCustomizationsOverviewController ()
 @property NSString *readableName;

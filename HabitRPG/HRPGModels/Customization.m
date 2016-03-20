@@ -8,7 +8,6 @@
 
 #import "Customization.h"
 #import "User.h"
-#import <SDWebImageManager.h>
 
 @implementation Customization
 

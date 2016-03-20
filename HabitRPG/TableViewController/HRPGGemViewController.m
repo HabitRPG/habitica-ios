@@ -10,7 +10,7 @@
 #import "HRPGPurchaseLoadingButton.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGManager.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIImage+YYWebImage.h>
 #import <CargoBay.h>
 #import "UIColor+Habitica.h"
 #import "MRProgress.h"
