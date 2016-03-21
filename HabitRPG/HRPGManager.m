@@ -4132,7 +4132,7 @@ NSString *currentUser;
           onView:(UIImageView *)imageView {
     imageView.image = [UIImage imageNamed:@"Placeholder"];
     [self getImage:imageName
-        withFormat:@"png"
+        withFormat:format
          onSuccess:^(UIImage *image) {
              imageView.image = image;
          }
