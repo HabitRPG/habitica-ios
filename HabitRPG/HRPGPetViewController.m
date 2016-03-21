@@ -275,8 +275,12 @@
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     imageView.alpha = 1;
     if ([pet.trained boolValue]) {
+        NSString *format = @"png";
+        if ([pet.key isEqualToString:@"Wolf-Cerberus"]) {
+            format = @"gif";
+        }
         [self.sharedManager setImage:[NSString stringWithFormat:@"Pet-%@", pet.key]
-                          withFormat:@"png"
+                          withFormat:format
                               onView:imageView];
 
         if ([pet.trained integerValue] == -1) {
