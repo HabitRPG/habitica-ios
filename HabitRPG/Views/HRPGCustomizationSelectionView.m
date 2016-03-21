@@ -104,13 +104,12 @@ CGFloat viewSize = 60;
                                                              [item getImageNameForUser:self.user]]]
                         options:0
                        progress:nil
-                      transform:nil
+         transform:^UIImage *_Nullable(UIImage *_Nonnull image, NSURL *_Nonnull url) {
+             return [YYImage imageWithData:[image yy_imageDataRepresentation] scale:1.0];
+         }
                      completion:^(UIImage *_Nullable image, NSURL *_Nonnull url,
                                   YYWebImageFromType from, YYWebImageStage stage,
                                   NSError *_Nullable error) {
-                         image = [UIImage imageWithCGImage:image.CGImage
-                                                     scale:1.0
-                                               orientation:UIImageOrientationUp];
                          if (image) {
                              dispatch_async(dispatch_get_main_queue(), ^{
                                  view.image = image;
