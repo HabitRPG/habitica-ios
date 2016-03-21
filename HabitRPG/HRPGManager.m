@@ -4106,26 +4106,25 @@ NSString *currentUser;
                                                                          @"amazonaws.com/"
                                                                          @"mobileApp/images/%@.%@",
                                                                          imageName, format]]
-                    options:0
-                   progress:nil
-     transform:^UIImage *_Nullable(UIImage *_Nonnull image, NSURL *_Nonnull url) {
-         return [YYImage imageWithData:[image yy_imageDataRepresentation] scale:1.0];
-     }
-                 completion:^(UIImage *_Nullable image, NSURL *_Nonnull url,
-                              YYWebImageFromType from, YYWebImageStage stage,
-                              NSError *_Nullable error) {
-                     if (image) {
-                         dispatch_async(dispatch_get_main_queue(), ^{
-                             successBlock(image);
-                         });
-                     } else {
-                         if (errorBlock) {
-                             errorBlock();
-                         }
-                         NSLog(@"%@: %@", imageName, error);
-                     }
+        options:0
+        progress:nil
+        transform:^UIImage *_Nullable(UIImage *_Nonnull image, NSURL *_Nonnull url) {
+            return [YYImage imageWithData:[image yy_imageDataRepresentation] scale:1.0];
+        }
+        completion:^(UIImage *_Nullable image, NSURL *_Nonnull url, YYWebImageFromType from,
+                     YYWebImageStage stage, NSError *_Nullable error) {
+            if (image) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    successBlock(image);
+                });
+            } else {
+                if (errorBlock) {
+                    errorBlock();
+                }
+                NSLog(@"%@: %@", imageName, error);
+            }
 
-                 }];
+        }];
 }
 
 - (void)setImage:(NSString *)imageName
