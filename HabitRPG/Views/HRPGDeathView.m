@@ -50,21 +50,20 @@
         [manager
             requestImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/"
                                                      @"mobileApp/images/GrimReaper.png"]
-                        options:0
-                       progress:nil
-         transform:^UIImage *_Nullable(UIImage *_Nonnull image, NSURL *_Nonnull url) {
-             return [YYImage imageWithData:[image yy_imageDataRepresentation] scale:1.0];
-         }
-                     completion:^(UIImage *_Nullable image, NSURL *_Nonnull url,
-                                  YYWebImageFromType from, YYWebImageStage stage,
-                                  NSError *_Nullable error) {
-                         if (image) {
-                             dispatch_async(dispatch_get_main_queue(), ^{
-                                 self.deathImageView.image = image;
-                             });
-                         }
+            options:0
+            progress:nil
+            transform:^UIImage *_Nullable(UIImage *_Nonnull image, NSURL *_Nonnull url) {
+                return [YYImage imageWithData:[image yy_imageDataRepresentation] scale:1.0];
+            }
+            completion:^(UIImage *_Nullable image, NSURL *_Nonnull url, YYWebImageFromType from,
+                         YYWebImageStage stage, NSError *_Nullable error) {
+                if (image) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.deathImageView.image = image;
+                    });
+                }
 
-                     }];
+            }];
         self.deathImageView.alpha = 0;
         [self addSubview:self.deathImageView];
 
