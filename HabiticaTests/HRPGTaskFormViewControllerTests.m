@@ -63,8 +63,7 @@
     UITableView *tableView = self.viewController.tableView;
     XCTAssertEqual(tableView.numberOfSections, 5);
     XCTAssertEqual([tableView numberOfRowsInSection:0], 4);
-    XCTAssertEqual([tableView numberOfRowsInSection:2], 1);
-    XCTAssertEqual([tableView numberOfRowsInSection:3], 7);
+    XCTAssertEqual([tableView numberOfRowsInSection:2], 8);
 }
 
 - (void) testThatItCreatesNewFormForTodos {
@@ -76,7 +75,7 @@
     
     //then
     UITableView *tableView = self.viewController.tableView;
-    XCTAssertEqual(tableView.numberOfSections, 4);
+    XCTAssertEqual(tableView.numberOfSections, 5);
 }
 
 - (void) testThatItCreatesEditFormForHabits {
@@ -154,7 +153,7 @@
     //then
     XLFormDescriptor *form = self.viewController.form;
     NSDictionary *formData = [form formValues];
-    XCTAssertEqual(self.viewController.tableView.numberOfSections, 4);
+    XCTAssertEqual(self.viewController.tableView.numberOfSections, 5);
     XCTAssertEqualObjects([formData[@"text"] valueData], @"test");
     XCTAssertEqualObjects([formData[@"notes"] valueData], @"notes");
     XCTAssertEqualObjects([formData[@"priority"] valueData], [NSNumber numberWithFloat:1.5]);
@@ -180,7 +179,7 @@
     //then
     XLFormDescriptor *form = self.viewController.form;
     NSDictionary *formData = [form formValues];
-    XCTAssertEqual(self.viewController.tableView.numberOfSections, 4);
+    XCTAssertEqual(self.viewController.tableView.numberOfSections, 5);
     XCTAssertEqualObjects([formData[@"text"] valueData], @"test");
     XCTAssertEqualObjects([formData[@"notes"] valueData], @"notes");
     XCTAssertEqualObjects([formData[@"priority"] valueData], [NSNumber numberWithFloat:1.5]);
@@ -207,7 +206,7 @@
     
     //then
     UITableView *tableView = self.viewController.tableView;
-    XCTAssertEqual(tableView.numberOfSections, 4);
+    XCTAssertEqual(tableView.numberOfSections, 5);
     XCTAssertEqual([tableView numberOfRowsInSection:2], 2);
     
     //when
@@ -215,9 +214,7 @@
     
     //then
     XCTAssertEqual(tableView.numberOfSections, 5);
-    XCTAssertEqual([tableView numberOfRowsInSection:2], 1);
-    XCTAssertEqual([tableView numberOfRowsInSection:3], 7);
-    
+    XCTAssertEqual([tableView numberOfRowsInSection:2], 8);
     
 }
 
