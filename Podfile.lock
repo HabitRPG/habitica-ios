@@ -67,19 +67,19 @@ PODS:
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
   - NSString+Emoji (0.2.0)
-  - OHHTTPStubs (4.7.0):
-    - OHHTTPStubs/Default (= 4.7.0)
-  - OHHTTPStubs/Core (4.7.0)
-  - OHHTTPStubs/Default (4.7.0):
+  - OHHTTPStubs (4.8.0):
+    - OHHTTPStubs/Default (= 4.8.0)
+  - OHHTTPStubs/Core (4.8.0)
+  - OHHTTPStubs/Default (4.8.0):
     - OHHTTPStubs/Core
     - OHHTTPStubs/JSON
     - OHHTTPStubs/NSURLSession
     - OHHTTPStubs/OHPathHelpers
-  - OHHTTPStubs/JSON (4.7.0):
+  - OHHTTPStubs/JSON (4.8.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/NSURLSession (4.7.0):
+  - OHHTTPStubs/NSURLSession (4.8.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/OHPathHelpers (4.7.0)
+  - OHHTTPStubs/OHPathHelpers (4.8.0)
   - PDKeychainBindingsController (0.0.1)
   - pop (1.0.9)
   - RestKit (0.26.0):
@@ -103,7 +103,7 @@ PODS:
     - TransitionKit (~> 2.2)
   - RestKit/Testing (0.26.0):
     - RestKit/Network
-  - RKValueTransformers (1.1.2)
+  - RKValueTransformers (1.1.3)
   - SOCKit (1.1)
   - TransitionKit (2.2.1)
   - VTAcknowledgementsViewController (0.17)
@@ -181,11 +181,11 @@ SPEC CHECKSUMS:
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   NSString+Emoji: 127da93993ac7c01eadb2edbb039cda89a1369f4
-  OHHTTPStubs: d2bf6a0f407620d67e75a1d3f12d86a2b1dd15c0
+  OHHTTPStubs: b393565822317305b87a1440d4c7aff131679f66
   PDKeychainBindingsController: fa8cb3cf99f2ea9240d61066ed0549f34e2cec3c
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   RestKit: 112fba5bd1f97598aac0db7981863d5fdc0263a2
-  RKValueTransformers: 66ac5e4f077fdbe3496e792d89eeff4c3eb67701
+  RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   VTAcknowledgementsViewController: 6056f5f5e5ed995bbf0581bed6ddd29355ca9a80
