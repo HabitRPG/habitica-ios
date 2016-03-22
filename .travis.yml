@@ -1,8 +1,8 @@
 language: objective-c
 rvm: 2.2.2
 before_install:
-  - gem install cocoapods -v '>= 1.0.0.beta'
-
+  - gem install cocoapods -v '>= 1.0.0.beta' --no-rdoc --no-ri --no-document
+  - pod setup
 matrix:
  include:
   - osx_image: xcode6.1
