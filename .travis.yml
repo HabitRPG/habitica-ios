@@ -1,4 +1,6 @@
 language: objective-c
+before_install:
+  - gem install cocoapods -v '0.39.0' --no-rdoc --no-ri --no-document
 matrix:
  include:
   - osx_image: xcode6.1
