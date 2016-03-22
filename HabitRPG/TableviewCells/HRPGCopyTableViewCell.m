@@ -11,9 +11,10 @@
 @implementation HRPGCopyTableViewCell
 
 - (void)copy:(id)sender {
-    if (self.detailTextLabel.text) {
+    NSString *text = self.detailTextLabel.text;
+    if (text) {
         UIPasteboard *pboard = [UIPasteboard generalPasteboard];
-        pboard.string = self.detailTextLabel.text;
+        pboard.string = text;
     }
 }
 
