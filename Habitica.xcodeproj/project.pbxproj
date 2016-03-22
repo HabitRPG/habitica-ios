@@ -1258,12 +1258,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D944618B1AB34F5C0015215E /* Build configuration list for PBXNativeTarget "HabiticaTests" */;
 			buildPhases = (
-				6992AA14F29A6357120A21A1 /* Check Pods Manifest.lock */,
+				6992AA14F29A6357120A21A1 /* 📦 Check Pods Manifest.lock */,
 				D944617F1AB34F5C0015215E /* Sources */,
 				D94461801AB34F5C0015215E /* Frameworks */,
 				D94461811AB34F5C0015215E /* Resources */,
-				CAC33FCF49D4A93D53AF498F /* Embed Pods Frameworks */,
-				349CB2090A4A050BDB3C347B /* Copy Pods Resources */,
+				CAC33FCF49D4A93D53AF498F /* 📦 Embed Pods Frameworks */,
+				349CB2090A4A050BDB3C347B /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1279,13 +1279,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "Habitica" */;
 			buildPhases = (
-				007923A6107F2803D806E4AE /* Check Pods Manifest.lock */,
+				007923A6107F2803D806E4AE /* 📦 Check Pods Manifest.lock */,
 				D9EB4E8718CB4A9400BB2094 /* Sources */,
 				D9EB4E8818CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8918CB4A9400BB2094 /* Resources */,
 				D940A7E01B0CF7E900370F2E /* ShellScript */,
-				9134C996D72DCF63C6CF68A7 /* Embed Pods Frameworks */,
-				356A574454191CCC185C28C2 /* Copy Pods Resources */,
+				9134C996D72DCF63C6CF68A7 /* 📦 Embed Pods Frameworks */,
+				356A574454191CCC185C28C2 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1393,14 +1393,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		007923A6107F2803D806E4AE /* Check Pods Manifest.lock */ = {
+		007923A6107F2803D806E4AE /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1408,14 +1408,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		349CB2090A4A050BDB3C347B /* Copy Pods Resources */ = {
+		349CB2090A4A050BDB3C347B /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1423,14 +1423,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		356A574454191CCC185C28C2 /* Copy Pods Resources */ = {
+		356A574454191CCC185C28C2 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1438,14 +1438,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica/Pods-Habitica-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6992AA14F29A6357120A21A1 /* Check Pods Manifest.lock */ = {
+		6992AA14F29A6357120A21A1 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1453,14 +1453,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		9134C996D72DCF63C6CF68A7 /* Embed Pods Frameworks */ = {
+		9134C996D72DCF63C6CF68A7 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1468,14 +1468,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CAC33FCF49D4A93D53AF498F /* Embed Pods Frameworks */ = {
+		CAC33FCF49D4A93D53AF498F /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

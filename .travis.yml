@@ -2,6 +2,7 @@ language: objective-c
 rvm: 2.2.2
 before_install:
   - gem install cocoapods -v '>= 1.0.0.beta'
+
 matrix:
  include:
   - osx_image: xcode6.1

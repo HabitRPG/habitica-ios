@@ -120,7 +120,7 @@ DEPENDENCIES:
   - DateTools
   - DTCoreText
   - EAIntroView
-  - FLEX
+  - FLEX (~> 2.0)
   - FontAwesomeIconFactory
   - Google/Analytics (~> 1.0.0)
   - KLCPopup
@@ -188,6 +188,6 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: 6056f5f5e5ed995bbf0581bed6ddd29355ca9a80
   XLForm: c9ee7e0f859341279bfd894f9589a9d25c23e4df
 
-PODFILE CHECKSUM: 5f8dcc101acd3317dbcc9ecc6bf41ba296c8b036
+PODFILE CHECKSUM: dc21045b69a0411c0fc757aa237223f9a742a05d
 
-COCOAPODS: 1.0.0.beta.3
+COCOAPODS: 1.0.0.beta.6

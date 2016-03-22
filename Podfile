@@ -11,7 +11,7 @@ pod 'SDWebImage'
 pod 'DateTools'
 pod 'NSString+Emoji'
 pod 'XLForm'
-pod 'FLEX'
+pod 'FLEX', '~> 2.0', :configurations => ['Debug']
 pod 'pop'
 pod 'DTCoreText'
 pod 'CargoBay', :git => 'https://github.com/segiddins/CargoBay.git', :branch => 'v1'
