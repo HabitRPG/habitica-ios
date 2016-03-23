@@ -8,7 +8,7 @@
 
 #import "HRPGImageOverlayView.h"
 #import <pop/POP.h>
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <YYWebImage.h>
 
 @interface HRPGImageOverlayView ()
 @property UILabel *label;
@@ -98,24 +98,26 @@
 }
 
 - (void)displayImageWithName:(NSString *)imageName {
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    YYWebImageManager *manager = [YYWebImageManager sharedManager];
     [manager
-        downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://"
-                                                                             @"habitica-assets.s3."
-                                                                             @"amazonaws.com/"
-                                                                             @"mobileApp/images/%@",
-                                                                             imageName]]
-                     options:0
-                    progress:nil
-                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType,
-                               BOOL finished, NSURL *imageURL) {
-                       image = [UIImage imageWithCGImage:image.CGImage
-                                                   scale:1.0
-                                             orientation:UIImageOrientationUp];
-                       if (image) {
-                           self.ImageView.image = image;
-                       }
-                   }];
+        requestImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://"
+                                                                            @"habitica-assets.s3."
+                                                                            @"amazonaws.com/"
+                                                                            @"mobileApp/images/%@",
+                                                                            imageName]]
+        options:0
+        progress:nil
+        transform:^UIImage *_Nullable(UIImage *_Nonnull image, NSURL *_Nonnull url) {
+            return [YYImage imageWithData:[image yy_imageDataRepresentation] scale:1.0];
+        }
+        completion:^(UIImage *_Nullable image, NSURL *_Nonnull url, YYWebImageFromType from,
+                     YYWebImageStage stage, NSError *_Nullable error) {
+            if (image) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.ImageView.image = image;
+                });
+            }
+        }];
 }
 
 - (void)displayImage:(UIImage *)image {

@@ -298,6 +298,7 @@ NSUserDefaults *defaults;
     UILabel *progressLabel = (UILabel *)[cell viewWithTag:3];
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     progressLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+    NSString *petKey;
     NSString *petType;
     NSString *petColor;
     int trained = 0;
@@ -305,6 +306,7 @@ NSUserDefaults *defaults;
     for (Pet *pet in petArray) {
         if (pet.trained) {
             if (petType == nil) {
+                petKey = pet.key;
                 petType = [pet.key componentsSeparatedByString:@"-"][0];
                 petColor = [pet.key componentsSeparatedByString:@"-"][1];
             }
@@ -324,8 +326,12 @@ NSUserDefaults *defaults;
     }
 
     if (trained > 0) {
-        [self.sharedManager setImage:[NSString stringWithFormat:@"Pet-%@-%@", petType, petColor]
-                          withFormat:@"png"
+        NSString *format = @"png";
+        if ([petKey isEqualToString:@"Wolf-Cerberus"]) {
+            format = @"gif";
+        }
+        [self.sharedManager setImage:[NSString stringWithFormat:@"Pet-%@", petKey]
+                          withFormat:format
                               onView:imageView];
 
         imageView.alpha = 1;

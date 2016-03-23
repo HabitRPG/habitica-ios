@@ -7,7 +7,7 @@
 //
 
 #import "HRPGDeathView.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <YYWebImage.h>
 #import "HRPGAppDelegate.h"
 #import "HRPGManager.h"
 
@@ -46,21 +46,24 @@
         self.deathImageView = [[UIImageView alloc]
             initWithFrame:CGRectMake(screenRect.size.width / 2 - 57,
                                      screenRect.size.height / 2 - 96, 114, 132)];
-        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        YYWebImageManager *manager = [YYWebImageManager sharedManager];
         [manager
-            downloadImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/"
-                                                      @"mobileApp/images/GrimReaper.png"]
-                         options:0
-                        progress:nil
-                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType,
-                                   BOOL finished, NSURL *imageURL) {
-                           image = [UIImage imageWithCGImage:image.CGImage
-                                                       scale:1.0
-                                                 orientation:UIImageOrientationUp];
-                           if (image) {
-                               self.deathImageView.image = image;
-                           }
-                       }];
+            requestImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/"
+                                                     @"mobileApp/images/GrimReaper.png"]
+            options:0
+            progress:nil
+            transform:^UIImage *_Nullable(UIImage *_Nonnull image, NSURL *_Nonnull url) {
+                return [YYImage imageWithData:[image yy_imageDataRepresentation] scale:1.0];
+            }
+            completion:^(UIImage *_Nullable image, NSURL *_Nonnull url, YYWebImageFromType from,
+                         YYWebImageStage stage, NSError *_Nullable error) {
+                if (image) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.deathImageView.image = image;
+                    });
+                }
+
+            }];
         self.deathImageView.alpha = 0;
         [self addSubview:self.deathImageView];
 

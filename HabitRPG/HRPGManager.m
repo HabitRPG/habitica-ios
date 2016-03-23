@@ -20,7 +20,7 @@
 #import "Gear.h"
 #import "Reward.h"
 #import "Quest.h"
-#import <SDWebImageManager.h>
+#import <YYWebImage.h>
 #import "HRPGUserBuyResponse.h"
 #import "HRPGEmptySerializer.h"
 #import "HRPGNetworkIndicatorController.h"
@@ -4099,29 +4099,32 @@ NSString *currentUser;
         format = @"png";
     }
 
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    YYWebImageManager *manager = [YYWebImageManager sharedManager];
     [manager
-        downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://"
-                                                                             @"habitica-assets.s3."
-                                                                             @"amazonaws.com/"
-                                                                             @"mobileApp/images/"
-                                                                             @"%@.%@",
-                                                                             imageName, format]]
+        requestImageWithURL:[NSURL
+                                URLWithString:[NSString stringWithFormat:@"https://"
+                                                                         @"habitica-assets.s3."
+                                                                         @"amazonaws.com/"
+                                                                         @"mobileApp/images/%@.%@",
+                                                                         imageName, format]]
         options:0
-        progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        progress:nil
+        transform:^UIImage *_Nullable(UIImage *_Nonnull image, NSURL *_Nonnull url) {
+            return [YYImage imageWithData:[image yy_imageDataRepresentation] scale:1.0];
         }
-        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
-                    NSURL *imageURL) {
-            image =
-                [UIImage imageWithCGImage:image.CGImage scale:1.0 orientation:UIImageOrientationUp];
+        completion:^(UIImage *_Nullable image, NSURL *_Nonnull url, YYWebImageFromType from,
+                     YYWebImageStage stage, NSError *_Nullable error) {
             if (image) {
-                successBlock(image);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    successBlock(image);
+                });
             } else {
                 if (errorBlock) {
                     errorBlock();
                 }
                 NSLog(@"%@: %@", imageName, error);
             }
+
         }];
 }
 
@@ -4130,7 +4133,7 @@ NSString *currentUser;
           onView:(UIImageView *)imageView {
     imageView.image = [UIImage imageNamed:@"Placeholder"];
     [self getImage:imageName
-        withFormat:@"png"
+        withFormat:format
          onSuccess:^(UIImage *image) {
              imageView.image = image;
          }
@@ -4138,7 +4141,7 @@ NSString *currentUser;
 }
 
 - (UIImage *)getCachedImage:(NSString *)imageName {
-    UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:imageName];
+    UIImage *image = [[YYImageCache sharedCache] getImageForKey:imageName];
     if (image) {
         return image;
     } else {
@@ -4149,7 +4152,7 @@ NSString *currentUser;
 - (void)setCachedImage:(UIImage *)image
               withName:(NSString *)imageName
              onSuccess:(void (^)())successBlock {
-    [[SDImageCache sharedImageCache] storeImage:image forKey:imageName];
+    [[YYImageCache sharedCache] setImage:image forKey:imageName];
     successBlock();
 }
 
