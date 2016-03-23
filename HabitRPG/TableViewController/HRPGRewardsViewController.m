@@ -43,18 +43,6 @@
     self.refreshControl = refresh;
 
     self.user = self.sharedManager.user;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(reloadAllData:)
-                                                 name:@"shouldReloadAllData"
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(startClearing:)
-                                                 name:@"startClearingData"
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(finishedClearing:)
-                                                 name:@"finishedClearingData"
-                                               object:nil];
     self.tutorialIdentifier = @"rewards";
 
     [self.sharedManager fetchBuyableRewards:nil onError:nil];
@@ -62,8 +50,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
-    [self.tableView reloadData];
 }
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
@@ -92,20 +78,6 @@
             [self.refreshControl endRefreshing];
             [self.sharedManager displayNetworkError];
         }];
-}
-
-- (void)reloadAllData:(NSNotification *)notification {
-    _fetchedResultsController = nil;
-    [self.tableView reloadData];
-}
-
-- (void)startClearing:(NSNotification *)notification {
-    self.disableFetchedResultsControllerUpdates = YES;
-}
-
-- (void)finishedClearing:(NSNotification *)notification {
-    self.disableFetchedResultsControllerUpdates = NO;
-    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source

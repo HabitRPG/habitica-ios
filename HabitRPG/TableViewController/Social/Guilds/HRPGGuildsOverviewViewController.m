@@ -248,7 +248,18 @@
         [self.sharedManager fetchGroups:@"public"
                               onSuccess:^() {
                                   _suggestedGuilds = nil;
-                                  [self.tableView reloadData];
+                                  if ([self.tableView numberOfSections] != [self numberOfSectionsInTableView:self.tableView]) {
+                                      if ([self.tableView numberOfSections] < 3) {
+                                          [self.tableView insertSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+                                      } else {
+                                          [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+                                      }
+                                  } else {
+                                      if ([self numberOfSectionsInTableView:self.tableView] == 3) {
+                                          [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+                                      }
+                                  }
+                                  
                               }
                                 onError:nil];
     }
