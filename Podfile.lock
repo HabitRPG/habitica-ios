@@ -124,7 +124,7 @@ DEPENDENCIES:
   - DateTools
   - DTCoreText
   - EAIntroView
-  - FLEX
+  - FLEX (~> 2.0)
   - FontAwesomeIconFactory
   - Google/Analytics (~> 1.0.0)
   - KLCPopup
@@ -194,6 +194,6 @@ SPEC CHECKSUMS:
   YYImage: b41b45bc5f32bfcdf67bdfb9c09da9e9832357c0
   YYWebImage: 8a22da9ec4d95064afa75a5c756c5d6f19d1b660
 
-PODFILE CHECKSUM: aa63eb5d2bed8554ee58231b09b4d0a31572408c
+PODFILE CHECKSUM: 0a945eccd14207337261803739045c9108f690eb
 
-COCOAPODS: 1.0.0.beta.3
+COCOAPODS: 1.0.0.beta.6
