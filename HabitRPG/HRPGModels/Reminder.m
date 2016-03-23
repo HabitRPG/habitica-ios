@@ -91,7 +91,7 @@
     localNotification.fireDate = fireDate;
     localNotification.alertBody = self.task.text;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    if (self.task) {
+    if (self.task.type && self.task.id) {
         localNotification.userInfo =
             @{ @"ID" : self.id,
                @"taskID" : self.task.id,
