@@ -33,6 +33,7 @@
 #import "HRPGBatchOperation.h"
 #import "UIColor+Habitica.h"
 #import "Amplitude.h"
+#import <Crashlytics/Crashlytics.h>
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
@@ -1830,6 +1831,8 @@ NSString *currentUser;
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:@"&uid" value:self.user.id];
     [[Amplitude instance] setUserId:currentUser];
+    [[Crashlytics sharedInstance] setUserIdentifier:currentUser];
+    [[Crashlytics sharedInstance] setUserName:currentUser];
 }
 
 - (void)clearLoginCredentials {
