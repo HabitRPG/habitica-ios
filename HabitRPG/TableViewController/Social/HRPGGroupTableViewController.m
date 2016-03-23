@@ -109,7 +109,6 @@
 - (void)setGroup:(Group *)group {
     _group = group;
     self.navigationItem.title = group.name;
-    [self.tableView reloadData];
 }
 
 - (void)joinGroup {
@@ -294,11 +293,14 @@
                              withRowAnimation:UITableViewRowAnimationFade];
             break;
 
-        case NSFetchedResultsChangeUpdate:
-            [self configureChatMessageCell:[tableView cellForRowAtIndexPath:indexPath]
-                               atIndexPath:indexPath];
+        case NSFetchedResultsChangeUpdate: {
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            if ([cell isKindOfClass:[NSString class]]) {
+                [self configureChatMessageCell:(HRPGChatTableViewCell *)cell
+                                   atIndexPath:indexPath];
+            }
             break;
-
+        }
         case NSFetchedResultsChangeMove:
             [tableView deleteRowsAtIndexPaths:@[ indexPath ]
                              withRowAnimation:UITableViewRowAnimationFade];
