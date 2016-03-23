@@ -20,6 +20,7 @@
 @property(nonatomic) BOOL formFilled;
 @property(nonatomic) XLFormSectionDescriptor *duedateSection;
 @property NSInteger customDayStart;
+@property (nonatomic, strong) NSString *allocationMode;
 @end
 
 @implementation HRPGFormViewController
@@ -31,6 +32,7 @@
             (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
         HRPGManager *sharedManager = appdelegate.sharedManager;
         User *user = [sharedManager getUser];
+        self.allocationMode = user.preferences.allocationMode;
         self.customDayStart = [user.preferences.dayStart integerValue];
         self.managedObjectContext = sharedManager.getManagedObjectContext;
         [self initializeForm];
@@ -85,7 +87,28 @@
     row.required = YES;
     row.selectorTitle = NSLocalizedString(@"Select Difficulty", nil);
     [section addFormRow:row];
-
+    
+    if ([self.allocationMode isEqualToString:@"taskbased"]) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"attribute"
+                                                    rowType:XLFormRowDescriptorTypeSelectorPush
+                                                      title:NSLocalizedString(@"Attributes", nil)];
+        row.selectorOptions = @[
+            [XLFormOptionsObject formOptionsObjectWithValue:@"str"
+                                                displayText:NSLocalizedString(@"Physical", nil)],
+            [XLFormOptionsObject formOptionsObjectWithValue:@"int"
+                                                displayText:NSLocalizedString(@"Mental", nil)],
+            [XLFormOptionsObject formOptionsObjectWithValue:@"con"
+                                                displayText:NSLocalizedString(@"Social", nil)],
+            [XLFormOptionsObject formOptionsObjectWithValue:@"per"
+                                                displayText:NSLocalizedString(@"Other", nil)]
+        ];
+        row.value = [XLFormOptionsObject formOptionsObjectWithValue:@"str"
+                                                        displayText:NSLocalizedString(@"Physical", nil)];
+        row.required = YES;
+        row.selectorTitle = NSLocalizedString(@"Select Attributes", nil);
+        [section addFormRow:row];
+    }
+    
     self.form = formDescriptor;
 }
 
@@ -247,13 +270,30 @@
         [self.form formRowWithTag:@"priority"].value =
             [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority
                                                 displayText:NSLocalizedString(@"Medium", nil)];
-
     } else if ([self.task.priority floatValue] == 2) {
         [self.form formRowWithTag:@"priority"].value =
             [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority
                                                 displayText:NSLocalizedString(@"Hard", nil)];
     }
-
+    
+    if ([self.task.attribute isEqualToString:@"str"]) {
+        [self.form formRowWithTag:@"attribute"].value =
+            [XLFormOptionsObject formOptionsObjectWithValue:self.task.attribute
+                                                displayText:NSLocalizedString(@"Physical", nil)];
+    }else if ([self.task.attribute isEqualToString:@"int"]){
+        [self.form formRowWithTag:@"attribute"].value =
+            [XLFormOptionsObject formOptionsObjectWithValue:self.task.attribute
+                                                displayText:NSLocalizedString(@"Mental", nil)];
+    }else if ([self.task.attribute isEqualToString:@"con"]){
+        [self.form formRowWithTag:@"attribute"].value =
+            [XLFormOptionsObject formOptionsObjectWithValue:self.task.attribute
+                                                displayText:NSLocalizedString(@"Social", nil)];
+    }else if ([self.task.attribute isEqualToString:@"per"]){
+        [self.form formRowWithTag:@"attribute"].value =
+            [XLFormOptionsObject formOptionsObjectWithValue:self.task.attribute
+                                                displayText:NSLocalizedString(@"Other", nil)];
+    }
+    
     if (![self.taskType isEqualToString:@"habit"]) {
         XLFormSectionDescriptor *section = [self.form formSectionAtIndex:1];
 
@@ -439,6 +479,11 @@
             if ([key isEqualToString:@"priority"]) {
                 XLFormOptionsObject *value = formValues[key];
                 self.task.priority = value.valueData;
+                continue;
+            }
+            if ([key isEqualToString:@"attribute"]) {
+                XLFormOptionsObject *value = formValues[key];
+                self.task.attribute = value.valueData;
                 continue;
             }
             [self.task setValue:formValues[key] forKeyPath:key];

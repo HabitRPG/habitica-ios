@@ -604,6 +604,7 @@ NSString *currentUser;
                             inManagedObjectStore:managedObjectStore];
     [preferencesMapping addAttributeMappingsFromDictionary:@{
         @"@parent._id" : @"userID",
+        @"allocationMode" : @"allocationMode",
         @"dayStart" : @"dayStart",
         @"disableClasses" : @"disableClass",
         @"sleep" : @"sleep",
