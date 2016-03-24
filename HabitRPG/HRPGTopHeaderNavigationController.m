@@ -152,6 +152,9 @@
     if ((newYPos + frame.size.height) > self.bgViewOffset) {
         [self setState:HRPGTopHeaderStateVisible];
     } else {
+        if (self.state == HRPGTopHeaderStateHidden) {
+            return;
+        }
         [self setState:HRPGTopHeaderStateHidden];
     }
     frame.origin = CGPointMake(frame.origin.x, newYPos);
