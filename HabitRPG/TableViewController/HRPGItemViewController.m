@@ -40,6 +40,25 @@ float textWidth;
 
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     textWidth = screenRect.size.width - 118;
+    
+    [self clearDuplicates];
+}
+
+- (void)clearDuplicates {
+    NSMutableArray *duplicates = [NSMutableArray array];
+    NSArray *items = self.fetchedResultsController.fetchedObjects;
+    for (int i = 1; i < items.count; i++) {
+        if ([((Item *)items[i]).key isEqualToString:((Item *)items[i-1]).key]) {
+            [duplicates addObject:items[i]];
+        }
+    }
+    if (duplicates.count > 0) {
+        for (Item *item in duplicates) {
+            [self.managedObjectContext deleteObject:item];
+        }
+        NSError *error;
+        [self.managedObjectContext save:&error];
+    }
 }
 
 - (void)fetchExistingPetsWithPartName:(NSString *)string {
