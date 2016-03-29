@@ -5,6 +5,9 @@
 "%.2f Gold" = "%.2f de oro";
 
 /* No comment provided by engineer. */
+"%@ Members" = "%@ miembros";
+
+/* No comment provided by engineer. */
 "%d Participants" = "%d participantes";
 
 /* No comment provided by engineer. */
@@ -14,13 +17,7 @@
 "%ld Filters" = "%ld filtros";
 
 /* No comment provided by engineer. */
-"%lu Members" = "%lu miembros";
-
-/* No comment provided by engineer. */
 "1 Filter" = "1 filtro";
-
-/* No comment provided by engineer. */
-"1 Member" = "1 miembro";
 
 /* No comment provided by engineer. */
 "1 Participant" = "1 participante";
@@ -74,6 +71,12 @@
 "Add a new checklist item" = "Añadir nuevo elemento de lista";
 
 /* No comment provided by engineer. */
+"Add a new reminder" = "Añadir recordatorio";
+
+/* No comment provided by engineer. */
+"Add an Email" = "Añadir correo";
+
+/* No comment provided by engineer. */
 "All" = "Todo";
 
 /* No comment provided by engineer. */
@@ -92,9 +95,6 @@
 
 /* No comment provided by engineer. */
 "Armor" = "Armadura";
-
-/* No comment provided by engineer. */
-"As you complete real-world tasks, you now have a random chance of finding eggs and potions. Combine them to hatch pets" = "Ahora, cuando realices tareas en el mundo real, puede que te toquen huevos y pociones. Combínalos para criar mascotas.";
 
 /* No comment provided by engineer. */
 "Attributes" = "Atributos";
@@ -139,9 +139,6 @@
 "Body" = "Cuerpo";
 
 /* No comment provided by engineer. */
-"Can't be bothered with classes? Want to choose later? Opt out - you'll be a warrior and your points handled automatically. You can enable classes later under Settings." = "¿Te dan igual las clases? ¿Quieres decidirlo más adelante? No elijas nada; seguirás siendo guerrero y tus puntos se asignarán automáticamente. Cuando quieras, puedes activar las clases en los Ajustes.";
-
-/* No comment provided by engineer. */
 "Cancel" = "Cancelar";
 
 /* No comment provided by engineer. */
@@ -163,9 +160,6 @@
 "Choose a skin color!" = "Elige un color de piel";
 
 /* No comment provided by engineer. */
-"Choose to become a Warrior, Mage, Healer, or Rogue! Each class has unique equipment and skills. Tap the (?) to learn more!" = "Decide si quieres ser guerrero, mago, sanador o pícaro. Cada clase tiene un equipamiento y unas habilidades particulares. Para más información, pulsa (?).";
-
-/* No comment provided by engineer. */
 "Choose your outfit! (You'll unlock more outfits soon.)" = "¡Elige tu atuendo! (Pronto desbloquearás más atuendos).";
 
 /* No comment provided by engineer. */
@@ -175,22 +169,19 @@
 "Clear Cache" = "Borrar la caché";
 
 /* No comment provided by engineer. */
+"Close" = "Cerrar";
+
+/* No comment provided by engineer. */
 "Color" = "Color";
 
 /* No comment provided by engineer. */
-"Complete Positive Habits to earn gold and experience! Negative Habits will hurt your avatar if you tap them, so avoid them in real life!" = "Cumple los hábitos positivos para ganar oro y experiencia. Los hábitos negativos hacen daño al avatar al pulsarlos: ¡evítalos en la vida real!";
+"Complete" = "Completadas";
 
 /* No comment provided by engineer. */
 "Complete Team Project" = "Terminar proyecto de equipo";
 
 /* No comment provided by engineer. */
-"Complete your To-Dos in real life, then check them off for GOLD and EXPERIENCE so you can earn Rewards and unlock new features!" = "Realiza tus tareas pendientes en la vida real y, luego, márcalas aquí para conseguir ORO y EXPERIENCIA, con los que obtendrás recompensas y ¡desbloquearás nuevas funciones!";
-
-/* No comment provided by engineer. */
 "Connection Error" = "Error de conexión";
-
-/* No comment provided by engineer. */
-"Copy these for use in third party applications. However, think of your API Token like a password, and do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github." = "Copia estos datos para usarlos en aplicaciones externas, pero ten en cuenta que el token de la API es como una contraseña y no debes compartirlo públicamente. Puede que, de vez en cuando, te pidan tu n.º de usuario, pero no publiques nunca tu token de la API en ningún lugar donde puedan verlo otras personas, incluido Github.";
 
 /* No comment provided by engineer. */
 "Costume" = "Disfraz";
@@ -205,6 +196,9 @@
 "Current streak: %@" = "Racha de momento: %@";
 
 /* No comment provided by engineer. */
+"Custom Day Start" = "Inicio de día personalizado";
+
+/* No comment provided by engineer. */
 "Customize Avatar" = "Personalizar avatar";
 
 /* No comment provided by engineer. */
@@ -217,10 +211,10 @@
 "Dated" = "Con fecha";
 
 /* No comment provided by engineer. */
-"Declined" = "Rechazado";
+"Day Start" = "Inicio de día";
 
 /* No comment provided by engineer. */
-"Defeat your repeating Daily tasks to gain gold and experience. Danger! Dailies will hurt your avatar if you don't complete them in time." = "Vence a tus tareas diarias una y otra vez para ganar oro y experiencia. Pero ¡ten cuidado! Si no las realizas a tiempo, harán daño a tu avatar.";
+"Declined" = "Rechazado";
 
 /* No comment provided by engineer. */
 "Description" = "Descripción";
@@ -256,6 +250,9 @@
 "ERROR" = "ERROR";
 
 /* No comment provided by engineer. */
+"Each reminder notifies on the days the daily is active." = "Cada recordatorio te avisa los días que está activa esa tarea diaria.";
+
+/* No comment provided by engineer. */
 "Earn items by completing tasks and leveling up. Tap on an item to use it!" = "Consigue objetos realizando tareas y subiendo de nivel. Para usar un objeto, púlsalo.";
 
 /* No comment provided by engineer. */
@@ -274,16 +271,28 @@
 "Edit Reward" = "Editar recompensa";
 
 /* No comment provided by engineer. */
+"Email" = "Correo electrónico";
+
+/* No comment provided by engineer. */
+"Email / Username" = "Correo o nombre de usuario";
+
+/* No comment provided by engineer. */
 "Email already taken." = "Ese correo electrónico ya se está usando.";
 
 /* No comment provided by engineer. */
-"Enter" = "Entrar";
+"Emails" = "Correos";
+
+/* No comment provided by engineer. */
+"Enter" = "Entra";
 
 /* No comment provided by engineer. */
 "Equip" = "Llevar";
 
 /* No comment provided by engineer. */
 "Equipment" = "Equipamiento";
+
+/* No comment provided by engineer. */
+"Equipment pieces remaining: %d" = "Piezas de equipamiento restantes: %d";
 
 /* No comment provided by engineer. */
 "Error" = "Error";
@@ -328,9 +337,6 @@
 "Finish creative project" = "Terminar proyecto creativo";
 
 /* No comment provided by engineer. */
-"First, you need an avatar in the game to represent you! The things you do in real life will affect your avatar's health, experience level, and gold." = "Antes que nada, necesitas un avatar en el juego para que te represente. Las cosas que hagas en la vida real afectarán a la salud, el grado de experiencia y el oro de tu avatar.";
-
-/* No comment provided by engineer. */
 "Floss" = "Usar hilo dental";
 
 /* No comment provided by engineer. */
@@ -343,7 +349,10 @@
 "Friday" = "viernes";
 
 /* No comment provided by engineer. */
-"Gems are purchased with real money, which makes it possible for Habitica to release new updates. Gems can be used to buy special items and backgrounds. Thank you for supporting us!" = "Las gemas se compran con dinero real: gracias a él, Habitica puede ir actualizándose. Las gemas se pueden usar para comprar objetos y fondos especiales. ¡Gracias por tu apoyo!";
+"Gems" = "Gemas";
+
+/* No comment provided by engineer. */
+"Get Social and Fight Monsters" = "Socializa y lucha contra monstruos";
 
 /* No comment provided by engineer. */
 "Go Back" = "Volver";
@@ -353,6 +362,9 @@
 
 /* No comment provided by engineer. */
 "Grey" = "Gris";
+
+/* No comment provided by engineer. */
+"Guilds" = "Gremios";
 
 /* No comment provided by engineer. */
 "Habit" = "Hábito";
@@ -380,9 +392,6 @@
 
 /* No comment provided by engineer. */
 "Healer" = "Sanador";
-
-/* No comment provided by engineer. */
-"Healers stand impervious against harm, and extend that protection to others. Missed Dailies and bad Habits don't faze them much, and they have ways to recover Health from failure. Play a Healer if you enjoy assisting others in your Party, or if the idea of cheating Death through hard work inspires you!" = "Los sanadores se mantienen impertérritos ante los daños y ofrecen esa protección a los demás. Las tareas diarias sin cumplir y los hábitos negativos no les quitan el sueño, y tienen maneras de recuperar la salud cuando algo va mal. Juega como sanador si te gusta ayudar a los otros miembros del grupo o si te atrae la idea de esquivar a la Muerte con tu esfuerzo.";
 
 /* No comment provided by engineer. */
 "Health" = "Salud";
@@ -414,6 +423,9 @@ Versión %1$@ (%2$@)";
 "Inventory" = "Inventario";
 
 /* No comment provided by engineer. */
+"Invitation Type" = "Tipo de invitación";
+
+/* No comment provided by engineer. */
 "Invite" = "Invitar";
 
 /* No comment provided by engineer. */
@@ -429,10 +441,19 @@ Versión %1$@ (%2$@)";
 "Items" = "Artículos";
 
 /* No comment provided by engineer. */
-"Join Party" = "Unirse a un grupo";
+"Join" = "Unirse";
 
 /* No comment provided by engineer. */
 "Last logged in" = "Último inicio de sesión";
+
+/* No comment provided by engineer. */
+"Leader" = "Líder";
+
+/* No comment provided by engineer. */
+"Leave" = "Salir";
+
+/* No comment provided by engineer. */
+"Leave Group" = "Salir del grupo";
 
 /* No comment provided by engineer. */
 "Leave a Review" = "Escribir una reseña";
@@ -468,9 +489,6 @@ Versión %1$@ (%2$@)";
 "Mage" = "Mago";
 
 /* No comment provided by engineer. */
-"Mages learn swiftly, gaining Experience and Levels faster than other classes. They also get a great deal of Mana for using special abilities. Play a Mage if you enjoy the tactical game aspects of Habit, or if you are strongly motivated by leveling up and unlocking advanced features!" = "Los magos aprenden rápido y tardan menos que otras clases en ganar experiencia y subir de nivel. Además, disponen de una gran cantidad de maná para usar sus habilidades especiales. Juega como mago si disfrutas con los aspectos estratégicos de Habitica, o si lo que más te motiva es subir de nivel y desbloquear funciones avanzadas.";
-
-/* No comment provided by engineer. */
 "Maintenance" = "Mantenimiento";
 
 /* No comment provided by engineer. */
@@ -483,7 +501,7 @@ Versión %1$@ (%2$@)";
 "Member Since" = "Miembro desde";
 
 /* No comment provided by engineer. */
-"Mental" = "Mentales";
+"Mental" = "Mental";
 
 /* No comment provided by engineer. */
 "Menu" = "Menú";
@@ -505,6 +523,9 @@ Versión %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Mustache" = "Bigote";
+
+/* No comment provided by engineer. */
+"My Guilds" = "Mis gremios";
 
 /* No comment provided by engineer. */
 "Name" = "Nombre";
@@ -552,16 +573,13 @@ Versión %1$@ (%2$@)";
 "Organize Closet" = "Ordenar el armario";
 
 /* No comment provided by engineer. */
-"Other" = "Otro";
+"Other" = "Otros";
 
 /* No comment provided by engineer. */
 "Participants" = "Participantes";
 
 /* No comment provided by engineer. */
 "Party" = "Grupo";
-
-/* No comment provided by engineer. */
-"Party Invitation" = "Invitación a grupo";
 
 /* No comment provided by engineer. */
 "Passwords don't match." = "Las contraseñas no coinciden.";
@@ -576,13 +594,19 @@ Versión %1$@ (%2$@)";
 "Pets" = "Mascotas";
 
 /* No comment provided by engineer. */
-"Physical" = "Físicos";
+"Physical" = "Físico";
 
 /* No comment provided by engineer. */
 "Positive (+)" = "Positivo (+)";
 
 /* No comment provided by engineer. */
 "Process email" = "Procesar correo electrónico";
+
+/* No comment provided by engineer. */
+"Profile" = "Perfil";
+
+/* No comment provided by engineer. */
+"Public Guilds" = "Gremios públicos";
 
 /* No comment provided by engineer. */
 "Purchase for %@ Gems" = "Comprar por %@ gemas";
@@ -624,7 +648,19 @@ Versión %1$@ (%2$@)";
 "Reminder" = "Recordatorio";
 
 /* No comment provided by engineer. */
+"Reminders" = "Recordatorios";
+
+/* No comment provided by engineer. */
 "Repeat every X days" = "Repetir cada X días";
+
+/* No comment provided by engineer. */
+"Reply" = "Responder";
+
+/* No comment provided by engineer. */
+"Report" = "Notificar";
+
+/* No comment provided by engineer. */
+"Report %@ for violation?" = "¿Informar de %@ por infracción?";
 
 /* No comment provided by engineer. */
 "Report a bug" = "Informar de un error";
@@ -639,9 +675,6 @@ Versión %1$@ (%2$@)";
 "Rogue" = "Pícaro";
 
 /* No comment provided by engineer. */
-"Rogues love to accumulate wealth, gaining more Gold than anyone else, and are adept at finding random items. Their iconic Stealth ability lets them duck the consequences of missed Dailies. Play a Rogue if you find strong motivation from Rewards and Achievements, striving for loot and badges!" = "A los pícaros les encanta acumular riquezas: ganan más oro que ninguna otra clase y son expertos en encontrar artículos por azar. Su habilidad más característica, la del sigilo, les permite eludir las consecuencias de no completar las tareas diarias. Juega como pícaro si lo que más te motiva es conseguir recompensas, logros, botines e insignias.";
-
-/* No comment provided by engineer. */
 "Saturday" = "sábado";
 
 /* No comment provided by engineer. */
@@ -651,7 +684,7 @@ Versión %1$@ (%2$@)";
 "School" = "Colegio";
 
 /* No comment provided by engineer. */
-"Select Attributes" = "Elegir atributos";
+"Select Attributes" = "Seleccionar atributos";
 
 /* No comment provided by engineer. */
 "Select Class" = "Elegir clase";
@@ -702,13 +735,6 @@ Versión %1$@ (%2$@)";
 "Special Pets" = "Mascotas especiales";
 
 /* No comment provided by engineer. */
-"Splendid! Now let's set up your tasks so that you can start earning experience and gold.
-
-To start, which parts of your life do you want to improve?" = "¡Fantástico! Ahora, vamos a configurar tus tareas para que puedas empezar a ganar experiencia y oro.
-
-Para empezar, ¿qué aspectos de tu vida quieres mejorar?";
-
-/* No comment provided by engineer. */
 "Stretching" = "Estiramientos";
 
 /* No comment provided by engineer. */
@@ -721,13 +747,16 @@ Para empezar, ¿qué aspectos de tu vida quieres mejorar?";
 "Study/Procrastinate" = "Estudiar/vaguear";
 
 /* No comment provided by engineer. */
+"Suggested Guilds" = "Gremios sugeridos";
+
+/* No comment provided by engineer. */
 "Sunday" = "domingo";
 
 /* No comment provided by engineer. */
 "Tags" = "Etiquetas";
 
 /* No comment provided by engineer. */
-"Tap a task to edit it. Swipe left to delete it." = "Para editar una tarea, púlsala. Para eliminarla, desliza el dedo hacia la izquierda.";
+"Tap a task to edit it and add reminders. Swipe left to delete it." = "Pulsa en una tarea para editarla y añadir recordatorios. Deslízala hacia la izquierda para eliminarla.";
 
 /* No comment provided by engineer. */
 "Tap to add a new task." = "Pulsa aquí para añadir una tarea.";
@@ -739,7 +768,13 @@ Para empezar, ¿qué aspectos de tu vida quieres mejorar?";
 "Tap to continue" = "Pulsa para continuar";
 
 /* No comment provided by engineer. */
+"Tap to edit task, change notification time, or delete." = "Pulsa para editar la tarea, cambiar la hora de notificación o eliminarla.";
+
+/* No comment provided by engineer. */
 "Tap to filter tasks." = "Pulsa para filtrar las tareas.";
+
+/* No comment provided by engineer. */
+"Tap to invite friends and view party members." = "Pulsa para invitar a tus amigos y ver los miembros del grupo.";
 
 /* No comment provided by engineer. */
 "Tavern" = "Taberna";
@@ -754,21 +789,6 @@ Para empezar, ¿qué aspectos de tu vida quieres mejorar?";
 "The authentication process was cancelled." = "Se canceló el proceso de autenticación.";
 
 /* No comment provided by engineer. */
-"The following lines help us find and squash the Bug you encountered. Please do not delete/change them.
-" = "Las siguientes líneas nos ayudarán a localizar y aniquilar el error que has encontrado: no las borres ni las cambies.
-";
-
-/* No comment provided by engineer. */
-"There comes a point in the life of every habitican, where they have to decide their path.
-
-What will yours be?" = "Todos los habitantes de Habitica llegan a un momento de la vida en el que tienen que decidir su destino.
-
-¿Cuál será el tuyo?";
-
-/* No comment provided by engineer. */
-"There is no internet connection. You will not be able to perform any actions." = "No hay conexión a internet. No podrás realizar ninguna acción.";
-
-/* No comment provided by engineer. */
 "There seems to be a problem with the server. Try again later" = "Parece que hay un problema con el servidor. Vuelve a intentarlo más tarde.";
 
 /* No comment provided by engineer. */
@@ -776,12 +796,6 @@ What will yours be?" = "Todos los habitantes de Habitica llegan a un momento de 
 
 /* No comment provided by engineer. */
 "There was an error with the authentication. Try again later" = "Error de autenticación. Vuelve a intentarlo más tarde.";
-
-/* No comment provided by engineer. */
-"These are your Rewards! Earn gold by completing real-world Habits, Dailies, and To-Dos. Then spend it on in-game Rewards or custom real-world Rewards!" = "¡Estas son tus recompensas! Gana oro completando hábitos, tareas diarias y tareas pendientes en tu vida real. Con él, podrás comprar recompensas dentro del juego o tus propias recompensas en el mundo real.";
-
-/* No comment provided by engineer. */
-"This is where you and your friends can hold each other accountable to your goals and fight monsters with your tasks!" = "Aquí es donde tus amigos y tú podéis rendir cuentas de vuestros objetivos y combatir monstruos con vuestras tareas.";
 
 /* No comment provided by engineer. */
 "This item can be purchased for %@ Gems" = "Este artículo se puede comprar por %@ gemas";
@@ -829,6 +843,9 @@ What will yours be?" = "Todos los habitantes de Habitica llegan a un momento de 
 "User ID" = "N.º de usuario";
 
 /* No comment provided by engineer. */
+"Username" = "Nombre de usuario";
+
+/* No comment provided by engineer. */
 "Username already taken." = "Ese nombre de usuario ya se está usando.";
 
 /* No comment provided by engineer. */
@@ -844,13 +861,13 @@ What will yours be?" = "Todos los habitantes de Habitica llegan a un momento de 
 "View Source Code" = "Ver código fuente";
 
 /* No comment provided by engineer. */
+"Visibility" = "Visibilidad";
+
+/* No comment provided by engineer. */
 "Wakey Wakey!" = "¡Arriba!";
 
 /* No comment provided by engineer. */
 "Warrior" = "Guerrero";
-
-/* No comment provided by engineer. */
-"Warriors score more and better \"critical hits\", which randomly give bonus Gold, Experience, and drop chance for scoring a task. They also deal heavy damage to boss monsters. Play a Warrior if you find motivation from unpredictable jackpot-style rewards, or want to dish out the hurt in boss Quests!" = "Los guerreros obtienen «rachas críticas» mejores y más frecuentes, que aportan oro y experiencia adicionales de forma aleatoria, y tienen más probabilidades de conseguir artículos al completar tareas. Además, hacen mucho daño a los monstruos. Juega como guerrero si lo que más te motiva es obtener recompensas aleatorias e impredecibles, o si disfrutas poniendo en su sitio a los monstruos de las misiones.";
 
 /* No comment provided by engineer. */
 "Wash Dishes" = "Lavar los platos";
@@ -880,16 +897,7 @@ What will yours be?" = "Todos los habitantes de Habitica llegan a un momento de 
 "Welcome" = "Hola";
 
 /* No comment provided by engineer. */
-"Welcome to Habitica, where advancing in the game will improve your real life! As you accomplish real-world goals, you'll unlock equipment, pets, quests, and more." = "¡Te damos la bienvenida a Habitica, un juego en el que, al progresar, mejorarás tu vida real! A medida que cumplas tus objetivos en el mundo real, desbloquearás equipamiento, mascotas, misiones y mucho más.";
-
-/* No comment provided by engineer. */
-"Welcome to the Tavern, a public, all-ages chatroom! Here you can chat about productivity and ask questions. Have fun!" = "Esta es la Taberna, un lugar público donde conversar con gente de todas las edades. Aquí, puedes hablar de productividad y consultar tus dudas. ¡Que te diviertas!";
-
-/* No comment provided by engineer. */
-"When you abort a quest, all progress will be lost and the quest scroll will be put back into your inventory." = "Si anulas una misión, se perderá todo el progreso y volverás a encontrar en tu inventario el pergamino de la misión.";
-
-/* No comment provided by engineer. */
-"When you buy equipment, it appears here. Your Battle Gear affects your stats, and your Costume (if enabled) affects what your avatar wears." = "Cuando compres equipamiento, aparecerá aquí. Tu equipo de batalla afecta a tus estadísticas, y el disfraz (si lo activas) afecta al atuendo del avatar.";
+"Welcome to Habitica" = "Te damos la bienvenida a Habitica";
 
 /* No comment provided by engineer. */
 "Work" = "Trabajo";
@@ -899,9 +907,6 @@ What will yours be?" = "Todos los habitantes de Habitica llegan a un momento de 
 
 /* No comment provided by engineer. */
 "Work project" = "Proyecto de trabajo";
-
-/* No comment provided by engineer. */
-"World Quest" = "Misión mundial";
 
 /* No comment provided by engineer. */
 "Yes" = "Sí";
@@ -922,16 +927,10 @@ What will yours be?" = "Todos los habitantes de Habitica llegan a un momento de 
 "You have no food" = "No tienes alimentos";
 
 /* No comment provided by engineer. */
-"You rummage in the Armoire and find %@. What's that doing in here?" = "Rebuscando en el ropero, encuentras esto: %@. ¿Qué hace aquí?";
-
-/* No comment provided by engineer. */
 "You will become a %@." = "Serás un %@.";
 
 /* No comment provided by engineer. */
 "You wrestle with the Armoire and gain %@ Experience. Take that!" = "Luchando con el ropero, obtienes %@ de experiencia. ¡Ahí lo llevas!";
-
-/* No comment provided by engineer. */
-"You've lost a Level, all your Gold, and a random piece of Equipment. Arise, Habiteer, and try again! Curb those negative Habits, be vigilant in completion of Dailies, and hold death at arm's length with a Health Potion if you falter!" = "Has bajado un nivel y has perdido todo tu oro y un artículo de equipamiento al azar. ¡Ponte en pie, habítico, e inténtalo una vez más! Domina tus hábitos negativos, cumple con tus tareas diarias y, si flaqueas, ¡mantén alejada a la Muerte con una poción de salud!";
 
 /* No comment provided by engineer. */
 "Your pet eats the %@ but doesn't seem to enjoy it." = "%@... La mascota se lo come, pero no parece que le guste mucho.";
