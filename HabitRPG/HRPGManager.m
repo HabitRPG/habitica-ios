@@ -1710,10 +1710,8 @@ NSString *currentUser;
             [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
         if ([fetchedObjects count] > 0) {
             self.user = fetchedObjects[0];
-            [self setTimezoneOffset];
         } else {
             [self fetchUser:^() {
-                [self setTimezoneOffset];
             }
                 onError:^(){
 
@@ -1985,14 +1983,17 @@ NSString *currentUser;
                     if ([fetchedObjects count] > 0) {
                         self.user = fetchedObjects[0];
                     }
+                    
 
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged"
                                                                         object:nil];
                 }
-                if (![[defaults stringForKey:@"contentLanguage"]
-                        isEqualToString:fetchedUser.preferences.language]) {
-                    [self fetchContent:nil onError:nil];
-                }
+                
+            }
+            [self setTimezoneOffset];
+            if (![[defaults stringForKey:@"contentLanguage"]
+                  isEqualToString:self.user.preferences.language]) {
+                [self fetchContent:nil onError:nil];
             }
             NSError *executeError = nil;
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
