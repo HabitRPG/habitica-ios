@@ -152,7 +152,7 @@
 
         UILabel *label = (UILabel *)[cell viewWithTag:1];
         UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:2];
-        UIImageView *imageView = (UIImageView *)[cell viewWithTag:3];
+        UIView *avatarView = (UIView *)[cell viewWithTag:3];
 
         label.text = [item objectAtIndex:0];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
@@ -160,7 +160,7 @@
         descriptionLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         User *classUser = [item objectAtIndex:2];
 
-        [classUser setAvatarOnImageView:imageView withPetMount:YES onlyHead:NO useForce:NO];
+        [classUser setAvatarSubview:avatarView showsBackground:NO showsMount:YES showsPet:YES];
 
         return cell;
     }
