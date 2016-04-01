@@ -22,7 +22,7 @@
 @property(weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
 @property UIImageView *justinView;
-@property(weak, nonatomic) IBOutlet UIImageView *avatarView;
+@property(weak, nonatomic) IBOutlet UIView *avatarView;
 
 @property UILabel *welcomeLabel;
 @property HRPGTypingLabel *welcomeDescriptionLabel;
@@ -323,11 +323,7 @@
 }
 
 - (void)setupCustomizationStep {
-    [self.user setAvatarOnImageView:self.avatarView
-                       withPetMount:NO
-                           onlyHead:NO
-                     withBackground:NO
-                           useForce:NO];
+    [self.user setAvatarSubview:self.avatarView showsBackground:NO showsMount:NO showsPet:NO];
     self.avatarView.contentMode = UIViewContentModeCenter;
     self.avatarView.userInteractionEnabled = NO;
     __weak HRPGAvatarSetupViewController *weakSelf = self;
@@ -357,11 +353,10 @@
                                            predicateWithFormat:@"price == 0 && type == 'skin'"]];
     self.skinSelectionView.selectionAction = ^(Customization *selectedItem) {
         weakSelf.user.preferences.skin = selectedItem.name;
-        [weakSelf.user setAvatarOnImageView:weakSelf.avatarView
-                               withPetMount:NO
-                                   onlyHead:NO
-                             withBackground:NO
-                                   useForce:YES];
+        [weakSelf.user setAvatarSubview:weakSelf.avatarView
+                        showsBackground:NO
+                             showsMount:NO
+                               showsPet:NO];
     };
     [self.mainScrollView addSubview:self.skinSelectionView];
 
@@ -385,11 +380,10 @@
                                            predicateWithFormat:@"price == 0 && type == 'shirt'"]];
     self.shirtSelectionView.selectionAction = ^(Customization *selectedItem) {
         weakSelf.user.preferences.shirt = selectedItem.name;
-        [weakSelf.user setAvatarOnImageView:weakSelf.avatarView
-                               withPetMount:NO
-                                   onlyHead:NO
-                             withBackground:NO
-                                   useForce:YES];
+        [weakSelf.user setAvatarSubview:weakSelf.avatarView
+                        showsBackground:NO
+                             showsMount:NO
+                               showsPet:NO];
     };
     [self.mainScrollView addSubview:self.shirtSelectionView];
     self.bodySizeView = [[UISegmentedControl alloc] initWithItems:@[ @"Slim", @"Broad" ]];
@@ -423,11 +417,10 @@
             [NSPredicate predicateWithFormat:@"price == 0 && type == 'hair' && group == 'base'"]];
     self.hairBaseSelectionView.selectionAction = ^(Customization *selectedItem) {
         weakSelf.user.preferences.hairBase = selectedItem.name;
-        [weakSelf.user setAvatarOnImageView:weakSelf.avatarView
-                               withPetMount:NO
-                                   onlyHead:NO
-                             withBackground:NO
-                                   useForce:YES];
+        [weakSelf.user setAvatarSubview:weakSelf.avatarView
+                        showsBackground:NO
+                             showsMount:NO
+                               showsPet:NO];
     };
     [self.mainScrollView addSubview:self.hairBaseSelectionView];
     self.hairBangsSelectionView = [[HRPGCustomizationSelectionView alloc] init];
@@ -439,11 +432,10 @@
             [NSPredicate predicateWithFormat:@"price == 0 && type == 'hair' && group == 'bangs'"]];
     self.hairBangsSelectionView.selectionAction = ^(Customization *selectedItem) {
         weakSelf.user.preferences.hairBangs = selectedItem.name;
-        [weakSelf.user setAvatarOnImageView:weakSelf.avatarView
-                               withPetMount:NO
-                                   onlyHead:NO
-                             withBackground:NO
-                                   useForce:YES];
+        [weakSelf.user setAvatarSubview:weakSelf.avatarView
+                        showsBackground:NO
+                             showsMount:NO
+                               showsPet:NO];
     };
     [self.mainScrollView addSubview:self.hairBangsSelectionView];
 
@@ -467,11 +459,10 @@
             [NSPredicate predicateWithFormat:@"price == 0 && type == 'hair' && group == 'color'"]];
     self.hairColorSelectionView.selectionAction = ^(Customization *selectedItem) {
         weakSelf.user.preferences.hairColor = selectedItem.name;
-        [weakSelf.user setAvatarOnImageView:weakSelf.avatarView
-                               withPetMount:NO
-                                   onlyHead:NO
-                             withBackground:NO
-                                   useForce:YES];
+        [weakSelf.user setAvatarSubview:weakSelf.avatarView
+                        showsBackground:NO
+                             showsMount:NO
+                               showsPet:NO];
     };
     [self.mainScrollView addSubview:self.hairColorSelectionView];
 
@@ -484,11 +475,10 @@
             [NSPredicate predicateWithFormat:@"price == 0 && type == 'hair' && group == 'flower'"]];
     self.hairFlowerSelectionView.selectionAction = ^(Customization *selectedItem) {
         weakSelf.user.preferences.hairFlower = selectedItem.name;
-        [weakSelf.user setAvatarOnImageView:weakSelf.avatarView
-                               withPetMount:NO
-                                   onlyHead:NO
-                             withBackground:NO
-                                   useForce:YES];
+        [weakSelf.user setAvatarSubview:weakSelf.avatarView
+                        showsBackground:NO
+                             showsMount:NO
+                               showsPet:NO];
     };
     [self.mainScrollView addSubview:self.hairFlowerSelectionView];
 
@@ -563,11 +553,7 @@
     } else {
         self.user.preferences.size = @"broad";
     }
-    [self.user setAvatarOnImageView:self.avatarView
-                       withPetMount:NO
-                           onlyHead:NO
-                     withBackground:NO
-                           useForce:YES];
+    [self.user setAvatarSubview:self.avatarView showsBackground:NO showsMount:NO showsPet:NO];
 }
 
 - (NSArray *)getCustomizationsWithPredicate:(NSPredicate *)predicate {
