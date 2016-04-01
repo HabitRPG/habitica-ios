@@ -3985,30 +3985,26 @@ NSString *currentUser;
 
                                                   }];
     } else {
-        [self.user getAvatarImage:^(UIImage *image) {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                HRPGImageOverlayView *overlayView = [[HRPGImageOverlayView alloc] init];
-                [overlayView displayImage:image];
-                overlayView.height = 177;
-                overlayView.width = 200;
-                overlayView.descriptionText = NSLocalizedString(@"Level up!", nil);
-                overlayView.detailText =
-                    [NSString stringWithFormat:NSLocalizedString(@"You are now Level %ld", nil),
-                                               (long)([self.user.level integerValue])];
-
-                KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
-                                                        showType:KLCPopupShowTypeBounceIn
-                                                     dismissType:KLCPopupDismissTypeBounceOut
-                                                        maskType:KLCPopupMaskTypeDimmed
-                                        dismissOnBackgroundTouch:YES
-                                           dismissOnContentTouch:YES];
-                [popup show];
-            }];
-        }
-                     withPetMount:YES
-                         onlyHead:NO
-                   withBackground:YES
-                         useForce:NO];
+        HRPGImageOverlayView *overlayView = [[HRPGImageOverlayView alloc] init];
+        overlayView.height = 177;
+        overlayView.width = 200;
+        [self.user setAvatarSubview:overlayView.ImageView
+                    showsBackground:YES
+                         showsMount:YES
+                           showsPet:YES];
+        overlayView.descriptionText = NSLocalizedString(@"Level up!", nil);
+        overlayView.detailText =
+        [NSString stringWithFormat:NSLocalizedString(@"You are now Level %ld", nil),
+         (long)([self.user.level integerValue])];
+        
+        KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
+                                                showType:KLCPopupShowTypeBounceIn
+                                             dismissType:KLCPopupDismissTypeBounceOut
+                                                maskType:KLCPopupMaskTypeDimmed
+                                dismissOnBackgroundTouch:YES
+                                   dismissOnContentTouch:YES];
+        
+        [popup show];
     }
 }
 
