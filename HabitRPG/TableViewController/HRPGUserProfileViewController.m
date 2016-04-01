@@ -271,8 +271,8 @@
         } else {
             magicLabel.hidden = YES;
         }
-        UIImageView *imageView = (UIImageView *)[cell viewWithTag:8];
-        [user setAvatarOnImageView:imageView useForce:force];
+        UIView *avatarView = (UIView *)[cell viewWithTag:8];
+        [user setAvatarSubview:avatarView showsBackground:YES showsMount:YES showsPet:YES];
     }
 }
 
