@@ -12,6 +12,7 @@
 #import <CommonCrypto/CommonCrypto.h>
 #import "UIColor+Habitica.h"
 #import "TutorialSteps.h"
+#import <YYWebImage.h>
 
 @interface User ()
 @property(nonatomic) NSDate *lastImageGeneration;
@@ -548,6 +549,172 @@
     });
 }
 
+- (void)setAvatarSubview:(UIView *)view
+         showsBackground:(BOOL)showsBackground
+              showsMount:(BOOL)showsMount
+                showsPet:(BOOL)showsPet {
+    // clear existing subviews
+    [view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+
+    UIView *avatarView =
+        [self getAvatarViewShowsBackground:showsBackground showsMount:showsMount showsPet:showsPet];
+
+    if (!avatarView) {
+        return;
+    }
+
+    [view addSubview:avatarView];
+
+    // center avatar view constraints
+    [view addConstraint:[NSLayoutConstraint constraintWithItem:avatarView
+                                                     attribute:NSLayoutAttributeCenterX
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:view
+                                                     attribute:NSLayoutAttributeCenterX
+                                                    multiplier:1.0
+                                                      constant:0]];
+    [view addConstraint:[NSLayoutConstraint constraintWithItem:avatarView
+                                                     attribute:NSLayoutAttributeCenterY
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:view
+                                                     attribute:NSLayoutAttributeCenterY
+                                                    multiplier:1.0
+                                                      constant:0]];
+
+    // aspect fit view constraints
+    [view addConstraint:[NSLayoutConstraint constraintWithItem:avatarView
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationLessThanOrEqual
+                                                        toItem:view
+                                                     attribute:NSLayoutAttributeWidth
+                                                    multiplier:1.0
+                                                      constant:0]];
+    [view addConstraint:[NSLayoutConstraint constraintWithItem:avatarView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationLessThanOrEqual
+                                                        toItem:view
+                                                     attribute:NSLayoutAttributeHeight
+                                                    multiplier:1.0
+                                                      constant:0]];
+    NSLayoutConstraint *widthConstraint =
+        [NSLayoutConstraint constraintWithItem:avatarView
+                                     attribute:NSLayoutAttributeWidth
+                                     relatedBy:NSLayoutRelationEqual
+                                        toItem:view
+                                     attribute:NSLayoutAttributeWidth
+                                    multiplier:1.0
+                                      constant:0];
+    widthConstraint.priority = UILayoutPriorityDefaultHigh;
+    [view addConstraint:widthConstraint];
+
+    NSLayoutConstraint *heightConstraint =
+        [NSLayoutConstraint constraintWithItem:avatarView
+                                     attribute:NSLayoutAttributeHeight
+                                     relatedBy:NSLayoutRelationEqual
+                                        toItem:view
+                                     attribute:NSLayoutAttributeHeight
+                                    multiplier:1.0
+                                      constant:0];
+    heightConstraint.priority = UILayoutPriorityDefaultHigh;
+    [view addConstraint:heightConstraint];
+}
+
+- (UIView *)getAvatarViewShowsBackground:(BOOL)showsBackground
+                              showsMount:(BOOL)showsMount
+                                showsPet:(BOOL)showsPet {
+    if (!self.preferences.skin) {
+        return nil;
+    }
+
+    UIView *avatarView = [[UIView alloc] initWithFrame:CGRectZero];
+    CGSize boxSize = (showsBackground || showsMount || showsPet) ? CGSizeMake(140.0, 147.0)
+                                                                 : CGSizeMake(90.0, 90.0);
+
+    avatarView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    // keep avatar view size ratio
+    [avatarView addConstraint:[NSLayoutConstraint constraintWithItem:avatarView
+                                                           attribute:NSLayoutAttributeHeight
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:avatarView
+                                                           attribute:NSLayoutAttributeWidth
+                                                          multiplier:boxSize.height / boxSize.width
+                                                            constant:0]];
+
+    Outfit *outfit = [self.preferences.useCostume boolValue] ? self.costume : self.equipped;
+
+    // avatar view layer availability @YES or @NO
+    NSDictionary *viewDictionary = @{
+        @"background" : @(showsBackground && self.preferences.background.length),
+        @"mount-body" : @(showsMount && self.currentMount.length),
+        @"back" : @(outfit.back.length && [self _isAvailableGear:outfit.back]),
+        @"skin" : @YES,
+        @"shirt" : @YES,
+        @"armor" : @(outfit.armor.length && [self _isAvailableGear:outfit.armor]),
+        @"body" : @(outfit.body.length && [self _isAvailableGear:outfit.body]),
+        @"head_0" : @YES,
+        @"hair-base" : @(self.preferences.hairBase.integerValue),
+        @"hair-bangs" : @(self.preferences.hairBangs.integerValue),
+        @"hair-mustache" : @(self.preferences.hairMustache.integerValue),
+        @"hair-beard" : @(self.preferences.hairBeard.integerValue),
+        @"eyewear" : @(outfit.eyewear.length && [self _isAvailableGear:outfit.eyewear]),
+        @"head" : @(outfit.head.length && [self _isAvailableGear:outfit.head]),
+        @"head-accessory" :
+            @(outfit.headAccessory.length && [self _isAvailableGear:outfit.headAccessory]),
+        @"hair-flower" : @(self.preferences.hairFlower.integerValue),
+        @"shield" : @(outfit.shield.length && [self _isAvailableGear:outfit.shield]),
+        @"weapon" : @(outfit.weapon.length && [self _isAvailableGear:outfit.weapon]),
+        @"mount-head" : @(showsMount && self.currentMount.length),
+        @"zzz" : self.preferences.sleep ?: @NO,
+        @"pet" : @(showsPet && self.currentPet.length)
+    };
+
+    // avatar view layer order
+    NSArray *viewOrder = @[
+        @"background",
+        @"mount-body",
+        @"back",
+        @"skin",
+        @"shirt",
+        @"skin",
+        @"shirt",
+        @"armor",
+        @"body",
+        @"head_0",
+        @"hair-base",
+        @"hair-bangs",
+        @"hair-mustache",
+        @"hair-beard",
+        @"eyewear",
+        @"head",
+        @"head-accessory",
+        @"hair-flower",
+        @"shield",
+        @"weapon",
+        @"mount-head",
+        @"zzz",
+        @"pet"
+    ];
+
+    // get file dictionary here so it will only be loaded once per avatar view
+    NSDictionary *filenameDictionary = [self _getFilenameDictionary];
+    NSDictionary *formatDictionary = [self _getFileFormatDictionary];
+
+    // generate avatar view layers
+    [viewOrder enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
+        // check if view layer is enabled
+        if (((NSNumber *)viewDictionary[obj]).boolValue) {
+            [self _createAvatarSubviewForType:(NSString *)obj
+                                    superview:avatarView
+                                         size:boxSize
+                       withFilenameDictionary:filenameDictionary
+                     withFileFormatDictionary:formatDictionary];
+        }
+    }];
+
+    return avatarView;
+}
+
 - (UIColor *)classColor {
     if ([self.hclass isEqualToString:@"warrior"]) {
         return [UIColor red100];
@@ -753,6 +920,327 @@
 
     if (self.maxMagic.integerValue == 0) {
     }
+}
+
+#pragma mark - Private Methods
+
+- (NSDictionary *)_getFilenameDictionary {
+    Outfit *outfit = [self.preferences.useCostume boolValue] ? self.costume : self.equipped;
+    return @{
+        @"background" : [NSString stringWithFormat:@"background_%@", self.preferences.background],
+        @"mount-body" : [NSString stringWithFormat:@"Mount_Body_%@", self.currentMount],
+        @"back" : outfit.back ?: [NSNull null],
+        @"skin" : ([self.preferences.sleep boolValue])
+                      ? [NSString stringWithFormat:@"skin_%@_sleep", self.preferences.skin]
+                      : [NSString stringWithFormat:@"skin_%@", self.preferences.skin],
+        @"shirt" : [NSString
+            stringWithFormat:@"%@_shirt_%@", self.preferences.size, self.preferences.shirt],
+        @"armor" : [NSString stringWithFormat:@"%@_%@", self.preferences.size, outfit.armor],
+        @"body" : outfit.body ?: [NSNull null],
+        @"head_0" : @"head_0",
+        @"hair-base" : [NSString stringWithFormat:@"hair_base_%@_%@", self.preferences.hairBase,
+                                                  self.preferences.hairColor],
+        @"hair-bangs" : [NSString stringWithFormat:@"hair_bangs_%@_%@", self.preferences.hairBangs,
+                                                   self.preferences.hairColor],
+        @"hair-mustache" :
+            [NSString stringWithFormat:@"hair_mustache_%@_%@", self.preferences.hairMustache,
+                                       self.preferences.hairColor],
+        @"hair-beard" : [NSString stringWithFormat:@"hair_beard_%@_%@", self.preferences.hairBeard,
+                                                   self.preferences.hairColor],
+        @"eyewear" : outfit.eyewear ?: [NSNull null],
+        @"head" : outfit.head ?: [NSNull null],
+        @"head-accessory" : outfit.headAccessory ?: [NSNull null],
+        @"hair-flower" : [NSString stringWithFormat:@"hair_flower_%@", self.preferences.hairFlower],
+        @"shield" : outfit.shield ?: [NSNull null],
+        @"weapon" : outfit.weapon ?: [NSNull null],
+        @"mount-head" : [NSString stringWithFormat:@"Mount_Head_%@", self.currentMount],
+        @"zzz" : @"zzz",
+        @"pet" : [NSString stringWithFormat:@"Pet-%@", self.currentPet]
+    };
+}
+
+- (NSDictionary *)_getFileFormatDictionary {
+    return @{
+        @"head_special_0" : @"gif",
+        @"head_special_1" : @"gif",
+        @"shield_special_0" : @"gif",
+        @"weapon_special_0" : @"gif",
+        @"weapon_special_critical" : @"gif",
+        @"Pet-Wolf-Cerberus" : @"gif"
+    };
+}
+
+- (NSURL *)_getImageURL:(nonnull NSString *)type
+      withFilenameDictionary:(nonnull NSDictionary *)filenameDictionary
+    withFileFormatDictionary:(nonnull NSDictionary *)formatDictionary {
+    NSString *rootUrl = @"https://habitica-assets.s3.amazonaws.com/"
+                        @"mobileApp/images/";
+
+    NSString *filename = filenameDictionary[type];
+    NSString *format = (formatDictionary[filename]) ? formatDictionary[filename] : @"png";
+
+    // NOTE: URL might be incorrect, and should be logged later after request response
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@.%@", rootUrl, filename, format]];
+}
+
+- (void)_setDefaultConstraintsForType:(nonnull NSString *)type
+                            superview:(nonnull UIView *)superview
+                              subview:(nonnull UIView *)subview
+                                 size:(CGSize)size {
+    superview.translatesAutoresizingMaskIntoConstraints = NO;
+    subview.translatesAutoresizingMaskIntoConstraints = NO;
+
+    void (^background)(UIView *, UIView *, CGSize) =
+        ^(UIView *superview, UIView *subview, CGSize size) {
+            [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
+                                                                  attribute:NSLayoutAttributeWidth
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:superview
+                                                                  attribute:NSLayoutAttributeWidth
+                                                                 multiplier:1.0
+                                                                   constant:0]];
+            [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
+                                                                  attribute:NSLayoutAttributeHeight
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:superview
+                                                                  attribute:NSLayoutAttributeHeight
+                                                                 multiplier:1.0
+                                                                   constant:0]];
+            [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
+                                                                  attribute:NSLayoutAttributeTop
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:superview
+                                                                  attribute:NSLayoutAttributeTop
+                                                                 multiplier:1.0
+                                                                   constant:0]];
+            [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
+                                                                  attribute:NSLayoutAttributeLeading
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:superview
+                                                                  attribute:NSLayoutAttributeLeading
+                                                                 multiplier:1.0
+                                                                   constant:0]];
+        };
+
+    void (^mount)(UIView *, UIView *, CGSize) = ^(UIView *superview, UIView *subview, CGSize size) {
+        [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
+                                                              attribute:NSLayoutAttributeLeading
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:superview
+                                                              attribute:NSLayoutAttributeTrailing
+                                                             multiplier:25.0 / size.width
+                                                               constant:0]];
+        [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
+                                                              attribute:NSLayoutAttributeTop
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:superview
+                                                              attribute:NSLayoutAttributeBottom
+                                                             multiplier:18.0 / size.height
+                                                               constant:0]];
+    };
+
+    void (^character)(UIView *, UIView *, CGSize) =
+        ^(UIView *superview, UIView *subview, CGSize size) {
+            [superview
+                addConstraint:[NSLayoutConstraint
+                                  constraintWithItem:subview
+                                           attribute:NSLayoutAttributeLeading
+                                           relatedBy:NSLayoutRelationEqual
+                                              toItem:superview
+                                           attribute:(size.width > 90.0) ? NSLayoutAttributeTrailing
+                                                                         : NSLayoutAttributeLeading
+                                          multiplier:(size.width > 90.0) ? 25.0 / size.width : 1.0
+                                            constant:0]];
+            [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
+                                                                  attribute:NSLayoutAttributeTop
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:superview
+                                                                  attribute:NSLayoutAttributeTop
+                                                                 multiplier:1.0
+                                                                   constant:0]];
+        };
+
+    void (^pet)(UIView *, UIView *, CGSize) = ^(UIView *superview, UIView *subview, CGSize size) {
+        [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
+                                                              attribute:NSLayoutAttributeBottom
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:superview
+                                                              attribute:NSLayoutAttributeBottom
+                                                             multiplier:1.0
+                                                               constant:0]];
+        [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
+                                                              attribute:NSLayoutAttributeLeading
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:superview
+                                                              attribute:NSLayoutAttributeLeading
+                                                             multiplier:1.0
+                                                               constant:0]];
+    };
+
+    void (^weaponSpecialCritical)(UIView *, UIView *, CGSize) =
+        ^(UIView *superview, UIView *subview, CGSize size) {
+            [superview addConstraint:[NSLayoutConstraint
+                                         constraintWithItem:subview
+                                                  attribute:NSLayoutAttributeLeading
+                                                  relatedBy:NSLayoutRelationEqual
+                                                     toItem:superview
+                                                  attribute:NSLayoutAttributeTrailing
+                                                 multiplier:(size.width > 90.0) ? 13.0 / size.width
+                                                                                : -12 / size.width
+                                                   constant:0]];
+            [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
+                                                                  attribute:NSLayoutAttributeTop
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:superview
+                                                                  attribute:NSLayoutAttributeBottom
+                                                                 multiplier:12.0 / size.height
+                                                                   constant:0]];
+        };
+
+    NSDictionary *constraintsDictionary = @{
+        @"background" : background,
+        @"mount-body" : mount,
+        @"back" : character,
+        @"skin" : character,
+        @"shirt" : character,
+        @"armor" : character,
+        @"body" : character,
+        @"head_0" : character,
+        @"hair-base" : character,
+        @"hair-bangs" : character,
+        @"hair-mustache" : character,
+        @"hair-beard" : character,
+        @"eyewear" : character,
+        @"head" : character,
+        @"head-accessory" : character,
+        @"hair-flower" : character,
+        @"shield" : character,
+        @"weapon" : character,
+        @"mount-head" : mount,
+        @"zzz" : character,
+        @"pet" : pet,
+        @"weapon_special_critical" : weaponSpecialCritical
+    };
+
+    // [category]:[item]
+    // allow item specific constraints to replace category constraints if defined
+    // eg. weapon:weapon_special_critical
+    NSArray *typeArray = [type componentsSeparatedByString:@":"];
+
+    if (typeArray.count > 1 && constraintsDictionary[typeArray[1]]) {
+        ((void (^)(UIView *superview, UIView *subview,
+                   CGSize size))constraintsDictionary[typeArray[1]])(superview, subview, size);
+    } else if (constraintsDictionary[typeArray[0]]) {
+        ((void (^)(UIView *superview, UIView *subview,
+                   CGSize size))constraintsDictionary[typeArray[0]])(superview, subview, size);
+    }
+}
+
+- (void)_setConstraintsForLoadedImage:(nonnull UIImage *)image
+                                 type:(nonnull NSString *)type
+                            superview:(nonnull UIView *)superview
+                              subview:(nonnull UIView *)subview
+                                 size:(CGSize)size {
+    superview.translatesAutoresizingMaskIntoConstraints = NO;
+    subview.translatesAutoresizingMaskIntoConstraints = NO;
+
+    void (^keepRatio)(UIImage *, UIView *, UIView *, CGSize) =
+        ^(UIImage *image, UIView *superview, UIView *subview, CGSize size) {
+            [subview addConstraint:[NSLayoutConstraint
+                                       constraintWithItem:subview
+                                                attribute:NSLayoutAttributeHeight
+                                                relatedBy:NSLayoutRelationEqual
+                                                   toItem:subview
+                                                attribute:NSLayoutAttributeWidth
+                                               multiplier:image.size.height / image.size.width
+                                                 constant:0]];
+            [superview
+                addConstraint:[NSLayoutConstraint constraintWithItem:subview
+                                                           attribute:NSLayoutAttributeWidth
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:superview
+                                                           attribute:NSLayoutAttributeWidth
+                                                          multiplier:image.size.width / size.width
+                                                            constant:0]];
+        };
+
+    NSDictionary *constraintsDictionary = @{
+        @"background" : [NSNull null],
+        @"mount-body" : keepRatio,
+        @"back" : keepRatio,
+        @"skin" : keepRatio,
+        @"shirt" : keepRatio,
+        @"armor" : keepRatio,
+        @"body" : keepRatio,
+        @"head_0" : keepRatio,
+        @"hair-base" : keepRatio,
+        @"hair-bangs" : keepRatio,
+        @"hair-mustache" : keepRatio,
+        @"hair-beard" : keepRatio,
+        @"eyewear" : keepRatio,
+        @"head" : keepRatio,
+        @"head-accessory" : keepRatio,
+        @"hair-flower" : keepRatio,
+        @"shield" : keepRatio,
+        @"weapon" : keepRatio,
+        @"mount-head" : keepRatio,
+        @"zzz" : keepRatio,
+        @"pet" : keepRatio
+    };
+
+    NSArray *typeArray = [type componentsSeparatedByString:@":"];
+
+    if (typeArray.count > 1 && constraintsDictionary[typeArray[1]]) {
+        ((void (^)(UIImage *, UIView *, UIView *, CGSize))constraintsDictionary[typeArray[1]])(
+            image, superview, subview, size);
+    } else if (constraintsDictionary[typeArray[0]]) {
+        ((void (^)(UIImage *, UIView *, UIView *, CGSize))constraintsDictionary[typeArray[0]])(
+            image, superview, subview, size);
+    }
+}
+
+- (void)_createAvatarSubviewForType:(nonnull NSString *)type
+                          superview:(nonnull UIView *)superview
+                               size:(CGSize)size
+             withFilenameDictionary:(nonnull NSDictionary *)filenameDictionary
+           withFileFormatDictionary:(nonnull NSDictionary *)formatDictionary {
+    UIImageView *view = [YYAnimatedImageView new];
+    [superview addSubview:view];
+
+    NSString *filename = filenameDictionary[type];
+    NSString *constraintTypeString =
+        (filename.length) ? [NSString stringWithFormat:@"%@:%@", type, filename] : type;
+
+    [view yy_setImageWithURL:[self _getImageURL:type
+                                   withFilenameDictionary:filenameDictionary
+                                 withFileFormatDictionary:formatDictionary]
+        placeholder:nil
+        options:YYWebImageOptionShowNetworkActivity
+        progress:nil
+        transform:^UIImage *_Nullable(UIImage *_Nonnull image, NSURL *_Nonnull url) {
+            return [YYImage imageWithData:[image yy_imageDataRepresentation] scale:1.0];
+        }
+        completion:^(UIImage *_Nullable image, NSURL *_Nonnull url, YYWebImageFromType from,
+                     YYWebImageStage stage, NSError *_Nullable error) {
+            if (image) {
+                [self _setConstraintsForLoadedImage:image
+                                               type:constraintTypeString
+                                          superview:superview
+                                            subview:view
+                                               size:size];
+            } else {
+                NSLog(@"%@: %@", url, error);
+            }
+        }];
+
+    [self _setDefaultConstraintsForType:constraintTypeString
+                              superview:superview
+                                subview:view
+                                   size:size];
+}
+
+- (BOOL)_isAvailableGear:(nonnull NSString *)gearName {
+    return [gearName rangeOfString:@"_base_0"].location == NSNotFound;
 }
 
 @end

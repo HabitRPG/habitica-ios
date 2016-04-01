@@ -166,6 +166,13 @@
               onlyHead:(BOOL)onlyHead
         withBackground:(BOOL)withBackground
               useForce:(BOOL)force;
+- (void)setAvatarSubview:(UIView *)view
+         showsBackground:(BOOL)showsBackground
+              showsMount:(BOOL)showsMount
+                showsPet:(BOOL)showsPet;
+- (UIView *)getAvatarViewShowsBackground:(BOOL)showsBackground
+                              showsMount:(BOOL)showsMount
+                                showsPet:(BOOL)showsPet;
 - (UIColor *)classColor;
 
 - (UIColor *)contributorColor;
