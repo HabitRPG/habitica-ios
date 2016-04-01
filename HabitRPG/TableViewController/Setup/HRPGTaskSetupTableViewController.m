@@ -22,7 +22,7 @@
 @property NSMutableArray *taskGroups;
 
 @property UIView *headerView;
-@property UIImageView *avatarView;
+@property UIView *avatarView;
 @property NSDictionary *tasks;
 @property(weak, nonatomic) IBOutlet UIView *gradientView;
 
@@ -276,9 +276,9 @@
     titleView.text = title;
     [self.headerView addSubview:titleView];
 
-    self.avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 20, 90, height)];
+    self.avatarView = [[UIView alloc] initWithFrame:CGRectMake(10, 20, 90, height)];
     self.avatarView.contentMode = UIViewContentModeCenter;
-    [self.user setAvatarOnImageView:self.avatarView withPetMount:NO onlyHead:NO useForce:NO];
+    [self.user setAvatarSubview:self.avatarView showsBackground:NO showsMount:NO showsPet:NO];
     [self.headerView addSubview:self.avatarView];
 
     self.tableView.tableHeaderView = self.headerView;
