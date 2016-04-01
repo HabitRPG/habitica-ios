@@ -13,6 +13,7 @@
 #import "UIColor+Habitica.h"
 #import "TutorialSteps.h"
 #import <YYWebImage.h>
+#import <Masonry.h>
 
 @interface User ()
 @property(nonatomic) NSDate *lastImageGeneration;
@@ -91,57 +92,17 @@
     [view addSubview:avatarView];
 
     // center avatar view constraints
-    [view addConstraint:[NSLayoutConstraint constraintWithItem:avatarView
-                                                     attribute:NSLayoutAttributeCenterX
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:view
-                                                     attribute:NSLayoutAttributeCenterX
-                                                    multiplier:1.0
-                                                      constant:0]];
-    [view addConstraint:[NSLayoutConstraint constraintWithItem:avatarView
-                                                     attribute:NSLayoutAttributeCenterY
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:view
-                                                     attribute:NSLayoutAttributeCenterY
-                                                    multiplier:1.0
-                                                      constant:0]];
+    [avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(view);
+    }];
 
     // aspect fit view constraints
-    [view addConstraint:[NSLayoutConstraint constraintWithItem:avatarView
-                                                     attribute:NSLayoutAttributeWidth
-                                                     relatedBy:NSLayoutRelationLessThanOrEqual
-                                                        toItem:view
-                                                     attribute:NSLayoutAttributeWidth
-                                                    multiplier:1.0
-                                                      constant:0]];
-    [view addConstraint:[NSLayoutConstraint constraintWithItem:avatarView
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationLessThanOrEqual
-                                                        toItem:view
-                                                     attribute:NSLayoutAttributeHeight
-                                                    multiplier:1.0
-                                                      constant:0]];
-    NSLayoutConstraint *widthConstraint =
-        [NSLayoutConstraint constraintWithItem:avatarView
-                                     attribute:NSLayoutAttributeWidth
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:view
-                                     attribute:NSLayoutAttributeWidth
-                                    multiplier:1.0
-                                      constant:0];
-    widthConstraint.priority = UILayoutPriorityDefaultHigh;
-    [view addConstraint:widthConstraint];
-
-    NSLayoutConstraint *heightConstraint =
-        [NSLayoutConstraint constraintWithItem:avatarView
-                                     attribute:NSLayoutAttributeHeight
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:view
-                                     attribute:NSLayoutAttributeHeight
-                                    multiplier:1.0
-                                      constant:0];
-    heightConstraint.priority = UILayoutPriorityDefaultHigh;
-    [view addConstraint:heightConstraint];
+    [avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.lessThanOrEqualTo(view.mas_width);
+        make.height.lessThanOrEqualTo(view.mas_height);
+        make.width.equalTo(view.mas_width).priorityHigh();
+        make.height.equalTo(view.mas_height).priorityHigh();
+    }];
 }
 
 - (UIView *)getAvatarViewShowsBackground:(BOOL)showsBackground
@@ -155,16 +116,10 @@
     CGSize boxSize = (showsBackground || showsMount || showsPet) ? CGSizeMake(140.0, 147.0)
                                                                  : CGSizeMake(90.0, 90.0);
 
-    avatarView.translatesAutoresizingMaskIntoConstraints = NO;
-
     // keep avatar view size ratio
-    [avatarView addConstraint:[NSLayoutConstraint constraintWithItem:avatarView
-                                                           attribute:NSLayoutAttributeHeight
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:avatarView
-                                                           attribute:NSLayoutAttributeWidth
-                                                          multiplier:boxSize.height / boxSize.width
-                                                            constant:0]];
+    [avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(avatarView.mas_width).multipliedBy(boxSize.height / boxSize.width);
+    }];
 
     Outfit *outfit = [self.preferences.useCostume boolValue] ? self.costume : self.equipped;
 
@@ -512,114 +467,43 @@
                             superview:(nonnull UIView *)superview
                               subview:(nonnull UIView *)subview
                                  size:(CGSize)size {
-    superview.translatesAutoresizingMaskIntoConstraints = NO;
-    subview.translatesAutoresizingMaskIntoConstraints = NO;
-
     void (^background)(UIView *, UIView *, CGSize) =
         ^(UIView *superview, UIView *subview, CGSize size) {
-            [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
-                                                                  attribute:NSLayoutAttributeWidth
-                                                                  relatedBy:NSLayoutRelationEqual
-                                                                     toItem:superview
-                                                                  attribute:NSLayoutAttributeWidth
-                                                                 multiplier:1.0
-                                                                   constant:0]];
-            [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
-                                                                  attribute:NSLayoutAttributeHeight
-                                                                  relatedBy:NSLayoutRelationEqual
-                                                                     toItem:superview
-                                                                  attribute:NSLayoutAttributeHeight
-                                                                 multiplier:1.0
-                                                                   constant:0]];
-            [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
-                                                                  attribute:NSLayoutAttributeTop
-                                                                  relatedBy:NSLayoutRelationEqual
-                                                                     toItem:superview
-                                                                  attribute:NSLayoutAttributeTop
-                                                                 multiplier:1.0
-                                                                   constant:0]];
-            [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
-                                                                  attribute:NSLayoutAttributeLeading
-                                                                  relatedBy:NSLayoutRelationEqual
-                                                                     toItem:superview
-                                                                  attribute:NSLayoutAttributeLeading
-                                                                 multiplier:1.0
-                                                                   constant:0]];
+            [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.edges.equalTo(superview);
+            }];
         };
 
     void (^mount)(UIView *, UIView *, CGSize) = ^(UIView *superview, UIView *subview, CGSize size) {
-        [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
-                                                              attribute:NSLayoutAttributeLeading
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:superview
-                                                              attribute:NSLayoutAttributeTrailing
-                                                             multiplier:25.0 / size.width
-                                                               constant:0]];
-        [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
-                                                              attribute:NSLayoutAttributeTop
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:superview
-                                                              attribute:NSLayoutAttributeBottom
-                                                             multiplier:18.0 / size.height
-                                                               constant:0]];
+        [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.equalTo(superview.mas_trailing).multipliedBy(25.0 / size.width);
+            make.top.equalTo(superview.mas_bottom).multipliedBy(18.0 / size.height);
+        }];
     };
 
     void (^character)(UIView *, UIView *, CGSize) =
         ^(UIView *superview, UIView *subview, CGSize size) {
-            [superview
-                addConstraint:[NSLayoutConstraint
-                                  constraintWithItem:subview
-                                           attribute:NSLayoutAttributeLeading
-                                           relatedBy:NSLayoutRelationEqual
-                                              toItem:superview
-                                           attribute:(size.width > 90.0) ? NSLayoutAttributeTrailing
-                                                                         : NSLayoutAttributeLeading
-                                          multiplier:(size.width > 90.0) ? 25.0 / size.width : 1.0
-                                            constant:0]];
-            [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
-                                                                  attribute:NSLayoutAttributeTop
-                                                                  relatedBy:NSLayoutRelationEqual
-                                                                     toItem:superview
-                                                                  attribute:NSLayoutAttributeTop
-                                                                 multiplier:1.0
-                                                                   constant:0]];
+            [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.leading.equalTo((size.width > 90.0) ? superview.mas_trailing
+                                                         : superview.mas_leading)
+                    .multipliedBy((size.width > 90.0) ? 25.0 / size.width : 1.0);
+                make.top.equalTo(superview);
+            }];
         };
 
     void (^pet)(UIView *, UIView *, CGSize) = ^(UIView *superview, UIView *subview, CGSize size) {
-        [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
-                                                              attribute:NSLayoutAttributeBottom
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:superview
-                                                              attribute:NSLayoutAttributeBottom
-                                                             multiplier:1.0
-                                                               constant:0]];
-        [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
-                                                              attribute:NSLayoutAttributeLeading
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:superview
-                                                              attribute:NSLayoutAttributeLeading
-                                                             multiplier:1.0
-                                                               constant:0]];
+        [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.leading.equalTo(superview);
+        }];
     };
 
     void (^weaponSpecialCritical)(UIView *, UIView *, CGSize) =
         ^(UIView *superview, UIView *subview, CGSize size) {
-            [superview addConstraint:[NSLayoutConstraint
-                                         constraintWithItem:subview
-                                                  attribute:NSLayoutAttributeLeading
-                                                  relatedBy:NSLayoutRelationEqual
-                                                     toItem:superview
-                                                  attribute:NSLayoutAttributeTrailing
-                                                 multiplier:(size.width > 90.0) ? 13.0 / size.width
-                                                                                : -12 / size.width
-                                                   constant:0]];
-            [superview addConstraint:[NSLayoutConstraint constraintWithItem:subview
-                                                                  attribute:NSLayoutAttributeTop
-                                                                  relatedBy:NSLayoutRelationEqual
-                                                                     toItem:superview
-                                                                  attribute:NSLayoutAttributeBottom
-                                                                 multiplier:12.0 / size.height
-                                                                   constant:0]];
+            [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.leading.equalTo(superview.mas_trailing)
+                    .multipliedBy((size.width > 90.0) ? 13.0 / size.width : -12 / size.width);
+                make.top.equalTo(superview.mas_bottom).multipliedBy(12.0 / size.height);
+            }];
         };
 
     NSDictionary *constraintsDictionary = @{
@@ -666,27 +550,13 @@
                             superview:(nonnull UIView *)superview
                               subview:(nonnull UIView *)subview
                                  size:(CGSize)size {
-    superview.translatesAutoresizingMaskIntoConstraints = NO;
-    subview.translatesAutoresizingMaskIntoConstraints = NO;
-
     void (^keepRatio)(UIImage *, UIView *, UIView *, CGSize) =
         ^(UIImage *image, UIView *superview, UIView *subview, CGSize size) {
-            [subview addConstraint:[NSLayoutConstraint
-                                       constraintWithItem:subview
-                                                attribute:NSLayoutAttributeHeight
-                                                relatedBy:NSLayoutRelationEqual
-                                                   toItem:subview
-                                                attribute:NSLayoutAttributeWidth
-                                               multiplier:image.size.height / image.size.width
-                                                 constant:0]];
-            [superview
-                addConstraint:[NSLayoutConstraint constraintWithItem:subview
-                                                           attribute:NSLayoutAttributeWidth
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:superview
-                                                           attribute:NSLayoutAttributeWidth
-                                                          multiplier:image.size.width / size.width
-                                                            constant:0]];
+            [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.height.equalTo(subview.mas_width)
+                    .multipliedBy(image.size.height / image.size.width);
+                make.width.equalTo(superview.mas_width).multipliedBy(image.size.width / size.width);
+            }];
         };
 
     NSDictionary *constraintsDictionary = @{
