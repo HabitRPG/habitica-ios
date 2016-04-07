@@ -51,6 +51,13 @@
         self.titleLabel.textColor = [UIColor blackColor];
     }
 
+    self.titleLabel.backgroundColor = self.backgroundColor;
+    self.subtitleLabel.backgroundColor = self.backgroundColor;
+    self.textWrapperView.backgroundColor = self.backgroundColor;
+    self.reminderImageView.backgroundColor = self.backgroundColor;
+    self.tagImageView.backgroundColor = self.backgroundColor;
+    self.iconWrapperView.backgroundColor = self.backgroundColor;
+
     [self.checklistIndicator layoutIfNeeded];
 }
 

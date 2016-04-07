@@ -31,6 +31,8 @@
         self.streakLabel.text = nil;
         self.notesStreakSeparator.constant = 0;
     }
+    
+    self.streakLabel.backgroundColor = self.backgroundColor;
 }
 
 - (void)configureForItem:(ChecklistItem *)item forTask:(Task *)task {
