@@ -7,10 +7,7 @@
 //
 
 #import "UIViewController+TutorialSteps.h"
-#import "HRPGExplanationView.h"
-#import "HRPGManager.h"
 #import "TutorialSteps.h"
-#import "HRPGHintView.h"
 #import "Amplitude.h"
 
 @implementation UIViewController (TutorialSteps)

@@ -7,10 +7,8 @@
 //
 
 #import "HRPGPartyMembersViewController.h"
-#import "HRPGAppDelegate.h"
 #import "HRPGUserProfileViewController.h"
 #import "HRPGLabeledProgressBar.h"
-#import "User.h"
 #import "HRPGInviteMembersViewController.h"
 #import "UIColor+Habitica.h"
 #import "UIViewController+TutorialSteps.h"

@@ -8,7 +8,6 @@
 
 #import "HRPGTopHeaderNavigationController.h"
 #import "HRPGUserTopHeader.h"
-#import <pop/POP.h>
 #import "UIColor+Habitica.h"
 
 @interface HRPGTopHeaderNavigationController ()

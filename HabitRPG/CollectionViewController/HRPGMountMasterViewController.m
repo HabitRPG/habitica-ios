@@ -8,15 +8,10 @@
 
 #import "HRPGMountMasterViewController.h"
 #import "HRPGMountViewController.h"
-#import "HRPGAppDelegate.h"
-#import "HRPGFeedViewController.h"
-#import "HRPGManager.h"
-#import "Pet.h"
 #import "Egg.h"
 #import "HatchingPotion.h"
 #import "HRPGArrayViewController.h"
 #import "HRPGNavigationController.h"
-#import "HRPGTopHeaderNavigationController.h"
 
 @interface HRPGMountMasterViewController ()
 @property(nonatomic) NSFetchedResultsController *fetchedResultsController;

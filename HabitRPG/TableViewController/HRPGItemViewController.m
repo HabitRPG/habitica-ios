@@ -7,16 +7,10 @@
 //
 
 #import "HRPGItemViewController.h"
-#import "HRPGAppDelegate.h"
-#import "Item.h"
 #import "Quest.h"
 #import "HatchingPotion.h"
 #import "Egg.h"
-#import "Group.h"
-#import "User.h"
-#import "Pet.h"
 #import "HRPGImageOverlayView.h"
-#import "KLCPopup.h"
 
 @interface HRPGItemViewController ()
 @property Item *selectedItem;

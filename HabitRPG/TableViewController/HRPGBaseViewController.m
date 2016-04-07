@@ -7,16 +7,11 @@
 //
 
 #import "HRPGBaseViewController.h"
-#import "HRPGManager.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGRoundProgressView.h"
 #import "HRPGDeathView.h"
 #import "HRPGNavigationController.h"
 #import "HRPGTopHeaderNavigationController.h"
-#import <CoreText/CoreText.h>
 #import <Google/Analytics.h>
-#import "HRPGExplanationView.h"
-#import "TutorialSteps.h"
 #import "UIViewController+TutorialSteps.h"
 #import "Amplitude.h"
 

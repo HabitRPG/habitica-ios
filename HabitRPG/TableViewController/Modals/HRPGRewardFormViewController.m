@@ -7,12 +7,9 @@
 //
 
 #import "HRPGRewardFormViewController.h"
-#import "ChecklistItem.h"
 #import "NSString+Emoji.h"
-#import "Tag.h"
 #import "XLForm.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
 #import "Amplitude.h"
 
 @interface HRPGRewardFormViewController ()

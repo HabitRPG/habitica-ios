@@ -7,14 +7,9 @@
 //
 
 #import "HRPGGroupTableViewController.h"
-#import <UIImage+YYWebImage.h>
-#import <DTAttributedTextView.h>
 #import "UIViewController+Markdown.h"
-#import "HRPGChatTableViewCell.h"
-#import "User.h"
 #import "HRPGMessageViewController.h"
 #import "HRPGUserProfileViewController.h"
-#import "HRPGMessageViewController.h"
 #import "HRPGFlagInformationOverlayView.h"
 #import <KLCPopup.h>
 #import "HRPGPartyMembersViewController.h"

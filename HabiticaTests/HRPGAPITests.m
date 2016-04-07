@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "HabiticaTests.h"
-#import "HRPGManager.h"
-#import "Reward.h"
 
 @interface HRPGAPITests : HabiticaTests
 

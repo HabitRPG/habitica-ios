@@ -9,13 +9,10 @@
 #import "HRPGAppDelegate.h"
 #import "HRPGTableViewController.h"
 #import "HRPGTabBarController.h"
-#import "HRPGTableViewController.h"
 #import "CRToast.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-#import <CargoBay.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Google/Analytics.h>
 #import <CoreSpotlight/CoreSpotlight.h>
 #import "Reminder.h"

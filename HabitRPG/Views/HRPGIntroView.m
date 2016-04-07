@@ -7,8 +7,6 @@
 //
 
 #import "HRPGIntroView.h"
-#import "EAIntroView.h"
-#import "UIColor+Habitica.h"
 
 @interface HRPGIntroView ()
 

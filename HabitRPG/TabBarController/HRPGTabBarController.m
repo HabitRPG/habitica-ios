@@ -8,12 +8,7 @@
 
 #import "HRPGTabBarController.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
-#import "User.h"
-#import "Task.h"
 #import "NIKFontAwesomeIconFactory.h"
-#import "NIKFontAwesomeIconFactory+iOS.h"
-#import "PDKeychainBindings.h"
 #import "UIColor+Habitica.h"
 #if DEBUG
 #import "FLEXManager.h"

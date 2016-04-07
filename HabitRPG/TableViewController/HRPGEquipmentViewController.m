@@ -7,11 +7,8 @@
 //
 
 #import "HRPGEquipmentViewController.h"
-#import "HRPGAppDelegate.h"
 #import "Gear.h"
-#import "User.h"
 #import "HRPGEquipmentDetailViewController.h"
-#import <UIImage+YYWebImage.h>
 
 @interface HRPGEquipmentViewController ()
 @property NSString *readableName;

@@ -8,15 +8,10 @@
 
 #import "HRPGPetMasterViewController.h"
 #import "HRPGPetViewController.h"
-#import "HRPGAppDelegate.h"
-#import "HRPGFeedViewController.h"
-#import "HRPGManager.h"
-#import "Pet.h"
 #import "Egg.h"
 #import "HatchingPotion.h"
 #import "HRPGArrayViewController.h"
 #import "HRPGNavigationController.h"
-#import "HRPGTopHeaderNavigationController.h"
 #import "UIColor+Habitica.h"
 
 @interface HRPGPetMasterViewController ()

@@ -7,8 +7,6 @@
 //
 
 #import "HRPGUserProfileViewController.h"
-#import "HRPGManager.h"
-#import "User.h"
 #import "HRPGLabeledProgressBar.h"
 #import "UIColor+Habitica.h"
 #import "UIViewController+Markdown.h"

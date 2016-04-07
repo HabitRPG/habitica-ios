@@ -7,7 +7,6 @@
 //
 
 #import "HRPGLabeledProgressBar.h"
-#import "HRPGProgressBar.h"
 
 @interface HRPGLabeledProgressBar ()
 

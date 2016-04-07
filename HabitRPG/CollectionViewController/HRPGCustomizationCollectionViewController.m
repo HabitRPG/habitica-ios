@@ -7,9 +7,6 @@
 //
 
 #import "HRPGCustomizationCollectionViewController.h"
-#import "HRPGManager.H"
-#import "HRPGAppDelegate.h"
-#import "HRPGTopHeaderNavigationController.h"
 #import "Customization.h"
 #import "Gear.h"
 #import "HRPGPurchaseButton.h"

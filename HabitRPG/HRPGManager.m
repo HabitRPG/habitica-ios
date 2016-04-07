@@ -14,9 +14,6 @@
 #import "HRPGLoginData.h"
 #import <PDKeychainBindings.h>
 #import <NIKFontAwesomeIconFactory.h>
-#import <NIKFontAwesomeIconFactory+iOS.h>
-#import "Group.h"
-#import "Item.h"
 #import "Gear.h"
 #import "Reward.h"
 #import "Quest.h"
@@ -24,12 +21,10 @@
 #import "HRPGUserBuyResponse.h"
 #import "HRPGEmptySerializer.h"
 #import "HRPGNetworkIndicatorController.h"
-#import "RestKit/Network/RKPathMatcher.h"
 #import "Customization.h"
 #import "HRPGDeathView.h"
 #import <Google/Analytics.h>
 #import "HRPGImageOverlayView.h"
-#import "KLCPopup.h"
 #import "HRPGBatchOperation.h"
 #import "UIColor+Habitica.h"
 #import "Amplitude.h"

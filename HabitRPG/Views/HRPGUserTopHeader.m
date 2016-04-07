@@ -8,8 +8,6 @@
 
 #import "HRPGUserTopHeader.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
-#import "User.h"
 #import <PDKeychainBindings.h>
 #import "HRPGLabeledProgressBar.h"
 #import "UIColor+Habitica.h"

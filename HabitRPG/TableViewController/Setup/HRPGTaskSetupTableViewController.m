@@ -8,10 +8,7 @@
 
 #import "HRPGTaskSetupTableViewController.h"
 #import <Google/Analytics.h>
-#import "Task.h"
-#import "ChecklistItem.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
 #import "HRPGCheckBoxView.h"
 #import "UIColor+Habitica.h"
 #import "HRPGBatchOperation.h"

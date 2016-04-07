@@ -7,14 +7,8 @@
 //
 
 #import "HRPGRewardsViewController.h"
-#import "HRPGAppDelegate.h"
-#import <PDKeychainBindings.h>
-#import "Gear.h"
-#import "User.h"
 #import "Reward.h"
-#import <NSString+Emoji.h>
 #import "HRPGRewardFormViewController.h"
-#import <POPSpringAnimation.h>
 #import "HRPGNavigationController.h"
 #import "HRPGRewardTableViewCell.h"
 #import "HRPGGearDetailView.h"

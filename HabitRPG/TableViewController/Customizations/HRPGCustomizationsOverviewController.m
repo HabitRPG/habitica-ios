@@ -7,12 +7,9 @@
 //
 
 #import "HRPGCustomizationsOverviewController.h"
-#import "HRPGAppDelegate.h"
 #import "Customization.h"
-#import "User.h"
 #import "Gear.h"
 #import "HRPGCustomizationCollectionViewController.h"
-#import <UIImage+YYWebImage.h>
 
 @interface HRPGCustomizationsOverviewController ()
 @property NSString *readableName;

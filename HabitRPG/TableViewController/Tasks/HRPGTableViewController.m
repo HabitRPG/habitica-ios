@@ -7,16 +7,12 @@
 //
 
 #import "HRPGTableViewController.h"
-#import "HRPGAppDelegate.h"
 #import "HRPGFormViewController.h"
-#import "Tag.h"
 #import "HRPGFilterViewController.h"
 #import "HRPGTabBarController.h"
 #import "HRPGNavigationController.h"
-#import <POPSpringAnimation.h>
 #import "NSString+Emoji.h"
 #import "HRPGSearchDataManager.h"
-#import "NSDate+DaysSince.h"
 
 @interface HRPGTableViewController ()<UISearchBarDelegate>
 @property NSString *readableName;

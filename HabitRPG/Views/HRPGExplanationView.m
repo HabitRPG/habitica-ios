@@ -9,7 +9,6 @@
 #import "HRPGExplanationView.h"
 #import "HRPGSpeechBubbleView.h"
 #import "HRPGHoledView.h"
-#import "HRPGHintView.h"
 
 @interface HRPGExplanationView ()
 

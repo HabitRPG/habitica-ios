@@ -10,12 +10,9 @@
 #import "Google/Analytics.h"
 #import <PDKeychainBindings.h>
 #import "HRPGAppDelegate.h"
-#import "HRPGRoundProgressView.h"
 #import "HRPGDeathView.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "HRPGNavigationController.h"
-#import "HRPGExplanationView.h"
-#import "TutorialSteps.h"
 #import "UIViewcontroller+TutorialSteps.h"
 #import "Amplitude.h"
 

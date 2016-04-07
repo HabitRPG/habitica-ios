@@ -9,7 +9,6 @@
 #import "HRPGDeathView.h"
 #import <YYWebImage.h>
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
 
 @interface HRPGDeathView ()
 @property(weak) HRPGManager *sharedManager;

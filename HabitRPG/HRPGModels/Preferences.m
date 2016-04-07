@@ -7,7 +7,6 @@
 //
 
 #import "Preferences.h"
-#import "User.h"
 
 @implementation Preferences
 

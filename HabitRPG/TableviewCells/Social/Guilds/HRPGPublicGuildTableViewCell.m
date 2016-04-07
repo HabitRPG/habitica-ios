@@ -7,7 +7,6 @@
 //
 
 #import "HRPGPublicGuildTableViewCell.h"
-#import "Group.h"
 #import "UIColor+Habitica.h"
 
 @interface HRPGPublicGuildTableViewCell ()

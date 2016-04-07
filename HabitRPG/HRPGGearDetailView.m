@@ -7,10 +7,8 @@
 //
 
 #import "HRPGGearDetailView.h"
-#import <UIImage+YYWebImage.h>
-#import "MetaReward.h"
 #import "KLCPopup.h"
-#import "UIColor+Habitica.h"
+
 static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_tl,
                                                    CGFloat radius_tr, CGFloat radius_bl,
                                                    CGFloat radius_br) {

@@ -7,11 +7,8 @@
 //
 
 #import "HRPGGroupFormViewController.h"
-#import "Group.h"
-#import "NSString+Emoji.h"
 #import "XLForm.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
 #import "Amplitude.h"
 
 @interface HRPGGroupFormViewController ()

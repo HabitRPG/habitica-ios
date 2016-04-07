@@ -8,8 +8,6 @@
 
 #import "HRPGChatTableViewCell.h"
 #import <DateTools/DateTools.h>
-#import "User.h"
-#import "ChatMessageLike.h"
 #import "UIColor+Habitica.h"
 
 @interface HRPGChatTableViewCell ()

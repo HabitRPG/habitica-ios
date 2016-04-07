@@ -8,8 +8,6 @@
 
 #import "HRPGGuildsOverviewViewController.h"
 #import "HRPGGroupTableViewController.h"
-#import "User.h"
-#import "ImprovementCategory.h"
 
 @interface HRPGGuildsOverviewViewController ()
 

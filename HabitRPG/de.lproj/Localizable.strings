@@ -148,7 +148,7 @@
 "Chat" = "Chat";
 
 /* No comment provided by engineer. */
-"Check in with team" = "Sich mit dem team absprechen";
+"Check in with team" = "Mit dem Team absprechen";
 
 /* No comment provided by engineer. */
 "Choose a hair color!" = "Wähle eine Haarfarbe aus!";
@@ -253,7 +253,7 @@
 "Each reminder notifies on the days the daily is active." = "Erinnerungen werden an aktiven Tagen einer täglichen Aufgabe angezeigt";
 
 /* No comment provided by engineer. */
-"Earn items by completing tasks and leveling up. Tap on an item to use it!" = "Verdiene Gegenstände indem du Aufgaben bewältigst und Level erhälst. Währe ein Item aus um es zu benutzen!";
+"Earn items by completing tasks and leveling up. Tap on an item to use it!" = "Verdiene Gegenstände indem du Aufgaben bewältigst und Level aufsteigst. Währe einen Gegenstand aus um ihn zu benutzen!";
 
 /* No comment provided by engineer. */
 "Easy" = "Einfach";
@@ -708,7 +708,7 @@ Version %1$@ (%2$@)";
 "Set up workout schedule" = "Trainingsplan aufstellen";
 
 /* No comment provided by engineer. */
-"Settings" = "EInstellungen";
+"Settings" = "Einstellungen";
 
 /* No comment provided by engineer. */
 "Shield" = "Schild";

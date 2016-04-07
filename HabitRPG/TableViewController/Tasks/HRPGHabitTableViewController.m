@@ -7,9 +7,6 @@
 //
 
 #import "HRPGHabitTableViewController.h"
-#import "Task.h"
-#import "HRPGManager.h"
-#import "UIColor+LighterDarker.h"
 #import "HRPGHabitButtons.h"
 #import "HRPGHabitTableViewCell.h"
 

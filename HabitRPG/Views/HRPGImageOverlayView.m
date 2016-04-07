@@ -7,7 +7,6 @@
 //
 
 #import "HRPGImageOverlayView.h"
-#import <pop/POP.h>
 #import <YYWebImage.h>
 
 @interface HRPGImageOverlayView ()

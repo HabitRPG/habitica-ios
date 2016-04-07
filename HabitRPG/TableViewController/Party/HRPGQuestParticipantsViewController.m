@@ -7,7 +7,6 @@
 //
 
 #import "HRPGQuestParticipantsViewController.h"
-#import "HRPGAppDelegate.h"
 #import "UIColor+Habitica.h"
 
 @interface HRPGQuestParticipantsViewController ()

@@ -7,7 +7,6 @@
 //
 
 #import "ChatMessageLike.h"
-#import "ChatMessage.h"
 
 @implementation ChatMessageLike
 

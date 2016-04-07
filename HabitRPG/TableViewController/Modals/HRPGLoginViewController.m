@@ -10,9 +10,7 @@
 #import "HRPGManager.h"
 #import "HRPGAppDelegate.h"
 #import "OnePasswordExtension.h"
-#import "HRPGTabBarController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "MRProgress.h"
 #import "CRToast.h"
 #import <Google/Analytics.h>

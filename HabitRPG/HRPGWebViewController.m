@@ -7,7 +7,6 @@
 //
 
 #import "HRPGWebViewController.h"
-#import "HRPGTopHeaderNavigationController.h"
 
 @interface HRPGWebViewController ()
 @property BOOL shouldReshowTopHeader;

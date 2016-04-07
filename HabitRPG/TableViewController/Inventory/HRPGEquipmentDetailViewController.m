@@ -7,9 +7,7 @@
 //
 
 #import "HRPGEquipmentDetailViewController.h"
-#import "HRPGAppDelegate.h"
 #import "Gear.h"
-#import "User.h"
 
 @interface HRPGEquipmentDetailViewController ()
 @property User *user;
@@ -30,7 +28,7 @@ float textWidth;
 
     CGRect screenRect = [[UIScreen mainScreen] bounds];
 
-    textWidth = screenRect.size.width - 73.0;
+    textWidth = (float) (screenRect.size.width - 73.0);
 }
 
 #pragma mark - Table view data source
@@ -40,11 +38,11 @@ float textWidth;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[self.fetchedResultsController sections][section] name];
+    return [[self.fetchedResultsController sections][(NSUInteger) section] name];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][(NSUInteger) section];
     return [sectionInfo numberOfObjects];
 }
 

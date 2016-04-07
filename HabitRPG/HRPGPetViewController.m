@@ -7,14 +7,9 @@
 //
 
 #import "HRPGPetViewController.h"
-#import "HRPGAppDelegate.h"
 #import "HRPGFeedViewController.h"
-#import "HRPGManager.h"
-#import "Pet.h"
 #import "Egg.h"
 #import "HatchingPotion.h"
-#import "HRPGNavigationController.h"
-#import "HRPGTopHeaderNavigationController.h"
 #import <pop/POP.h>
 #import "UIViewcontroller+TutorialSteps.h"
 
