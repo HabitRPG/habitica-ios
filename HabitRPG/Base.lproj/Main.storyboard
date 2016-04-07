@@ -3228,7 +3228,7 @@
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="OZY-o0-CAc"/>
                         <barButtonItem title="Clear" id="hIC-Qf-w8a">
-                            <color key="tintColor" red="0.34901961679999999" green="0.68627452850000004" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                            <color key="tintColor" red="0.9686274528503418" green="0.30588236451148987" blue="0.32156863808631897" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="clearTags:" destination="CZc-T4-a1C" id="GA7-07-5qy"/>
                             </connections>
