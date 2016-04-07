@@ -240,20 +240,14 @@
                     inManagedObjectContext:[self.sharedManager getManagedObjectContext]];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"reminders.@count != 0 && (type == 'daily' || (type == 'todo && completed = NO))"]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"reminders.@count != 0 && (type == 'daily' || (type == 'todo && completed == NO))"]];
     NSError *error;
     NSArray *tasks = [[self.sharedManager getManagedObjectContext] executeFetchRequest:fetchRequest
                                                                                  error:&error];
 
-    for (int day = 0; day < 6; day++) {
-        for (Task *task in tasks) {
-            NSDate *checkedDate = [NSDate dateWithTimeIntervalSinceNow:(day * 86400)];
-            if ([task.type isEqualToString:@"daily"] && ![task dueOnDate:checkedDate]) {
-                continue;
-            }
-            for (Reminder *reminder in task.reminders) {
-                [reminder scheduleForDay:checkedDate];
-            }
+    for (Task *task in tasks) {
+        for (Reminder *reminder in task.reminders) {
+            [reminder scheduleReminders];
         }
     }
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastReminderSchedule"];
