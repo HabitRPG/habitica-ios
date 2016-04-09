@@ -7,12 +7,9 @@
 //
 
 #import "HRPGLoadingViewController.h"
-#import "UIColor+Habitica.h"
 #import <PDKeychainBindings.h>
 #import "HRPGLoginViewController.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
-#import "User.h"
 #import "HRPGAvatarSetupViewController.h"
 
 @interface HRPGLoadingViewController ()

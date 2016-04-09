@@ -12,7 +12,6 @@
 #import "Tag.h"
 #import "XLForm.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
 #import "Reminder.h"
 
 @interface HRPGFormViewController ()

@@ -7,8 +7,6 @@
 //
 
 #import "HRPGMessageViewController.h"
-#import "ChatMessage.h"
-#import "User.h"
 #import "HRPGManager.h"
 #import "HRPGAppDelegate.h"
 #import "Amplitude.h"

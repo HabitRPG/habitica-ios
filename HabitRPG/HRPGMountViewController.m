@@ -7,12 +7,8 @@
 //
 
 #import "HRPGMountViewController.h"
-#import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
-#import "Pet.h"
 #import "Egg.h"
 #import "HatchingPotion.h"
-#import "HRPGTopHeaderNavigationController.h"
 
 @interface HRPGMountViewController ()
 @property(nonatomic) NSFetchedResultsController *fetchedResultsController;

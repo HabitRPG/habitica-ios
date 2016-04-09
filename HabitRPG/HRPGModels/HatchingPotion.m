@@ -7,7 +7,6 @@
 //
 
 #import "HatchingPotion.h"
-#import "User.h"
 
 @implementation HatchingPotion
 

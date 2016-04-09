@@ -8,7 +8,6 @@
 
 #import "Pet.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
 
 @implementation Pet
 

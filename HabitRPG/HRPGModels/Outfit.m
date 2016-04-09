@@ -7,7 +7,6 @@
 //
 
 #import "Outfit.h"
-#import "User.h"
 
 @implementation Outfit
 

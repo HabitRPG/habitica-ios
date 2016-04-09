@@ -7,7 +7,6 @@
 //
 
 #import "HRPGTaskTableViewCell.h"
-#import "Task.h"
 #import "NSString+Emoji.h"
 #import "UIColor+Habitica.h"
 

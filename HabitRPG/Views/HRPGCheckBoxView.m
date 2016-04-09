@@ -7,7 +7,6 @@
 //
 
 #import "HRPGCheckBoxView.h"
-#import <pop/POP.h>
 #import "UIColor+Habitica.h"
 
 @interface HRPGCheckBoxView ()

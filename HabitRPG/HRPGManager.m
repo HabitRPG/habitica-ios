@@ -14,9 +14,6 @@
 #import "HRPGLoginData.h"
 #import <PDKeychainBindings.h>
 #import <NIKFontAwesomeIconFactory.h>
-#import <NIKFontAwesomeIconFactory+iOS.h>
-#import "Group.h"
-#import "Item.h"
 #import "Gear.h"
 #import "Reward.h"
 #import "Quest.h"
@@ -24,12 +21,10 @@
 #import "HRPGUserBuyResponse.h"
 #import "HRPGEmptySerializer.h"
 #import "HRPGNetworkIndicatorController.h"
-#import "RestKit/Network/RKPathMatcher.h"
 #import "Customization.h"
 #import "HRPGDeathView.h"
 #import <Google/Analytics.h>
 #import "HRPGImageOverlayView.h"
-#import "KLCPopup.h"
 #import "HRPGBatchOperation.h"
 #import "UIColor+Habitica.h"
 #import "Amplitude.h"
@@ -1710,10 +1705,8 @@ NSString *currentUser;
             [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
         if ([fetchedObjects count] > 0) {
             self.user = fetchedObjects[0];
-            [self setTimezoneOffset];
         } else {
             [self fetchUser:^() {
-                [self setTimezoneOffset];
             }
                 onError:^(){
 
@@ -1985,14 +1978,17 @@ NSString *currentUser;
                     if ([fetchedObjects count] > 0) {
                         self.user = fetchedObjects[0];
                     }
+                    
 
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged"
                                                                         object:nil];
                 }
-                if (![[defaults stringForKey:@"contentLanguage"]
-                        isEqualToString:fetchedUser.preferences.language]) {
-                    [self fetchContent:nil onError:nil];
-                }
+                
+            }
+            [self setTimezoneOffset];
+            if (![[defaults stringForKey:@"contentLanguage"]
+                  isEqualToString:self.user.preferences.language]) {
+                [self fetchContent:nil onError:nil];
             }
             NSError *executeError = nil;
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];

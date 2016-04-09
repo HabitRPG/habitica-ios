@@ -7,8 +7,6 @@
 //
 
 #import "HRPGHabitButtons.h"
-#import <pop/POP.h>
-#import "Task.h"
 #import "UIColor+LighterDarker.h"
 
 @interface HRPGHabitButtons ()

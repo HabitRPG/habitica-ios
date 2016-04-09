@@ -7,7 +7,6 @@
 //
 
 #import "HRPGSpellViewController.h"
-#import "HRPGAppDelegate.h"
 #import "Spell.h"
 #import "HRPGSpellTabBarController.h"
 

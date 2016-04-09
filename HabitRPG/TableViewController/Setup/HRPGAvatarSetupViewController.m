@@ -8,7 +8,6 @@
 
 #import "HRPGAvatarSetupViewController.h"
 #import "HRPGCustomizationSelectionView.h"
-#import <UIImage+YYWebImage.h>
 #import "UIColor+Habitica.h"
 #import "Customization.h"
 #import "HRPGTaskSetupTableViewController.h"

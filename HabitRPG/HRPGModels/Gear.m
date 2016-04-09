@@ -7,7 +7,6 @@
 //
 
 #import "Gear.h"
-#import "User.h"
 
 @implementation Gear
 

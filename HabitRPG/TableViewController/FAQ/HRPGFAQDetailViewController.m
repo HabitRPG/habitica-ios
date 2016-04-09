@@ -7,7 +7,6 @@
 //
 
 #import "HRPGFAQDetailViewController.h"
-#import <CoreText/CoreText.h>
 #import "UIViewController+Markdown.h"
 #import "HRPGTopHeaderNavigationController.h"
 

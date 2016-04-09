@@ -60,6 +60,8 @@
         self.dueLabel.text = nil;
         self.notesDueSeparator.constant = 0;
     }
+    
+    self.dueLabel.backgroundColor = self.backgroundColor;
 }
 
 - (void)configureForItem:(ChecklistItem *)item forTask:(Task *)task {

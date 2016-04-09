@@ -8,14 +8,8 @@
 
 #import "HRPGClassTableViewController.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
-#import "HRPGTopHeaderNavigationController.h"
-#import "User.h"
 #import "HRPGWebViewController.h"
 #import "NIKFontAwesomeIconFactory.h"
-#import "NIKFontAwesomeIconFactory+iOS.h"
-#import "TutorialSteps.h"
-#import "HRPGExplanationView.h"
 #import "UIViewcontroller+TutorialSteps.h"
 #import <Google/Analytics.h>
 #import "UIColor+Habitica.h"

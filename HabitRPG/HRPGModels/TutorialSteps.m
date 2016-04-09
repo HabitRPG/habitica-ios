@@ -7,7 +7,6 @@
 //
 
 #import "TutorialSteps.h"
-#import "User.h"
 
 @implementation TutorialSteps
 

@@ -7,7 +7,6 @@
 //
 
 #import "HRPGSpellTaskController.h"
-#import "Task.h"
 #import "NSString+Emoji.h"
 #import "HRPGSpellTabBarController.h"
 

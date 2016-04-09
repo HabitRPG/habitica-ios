@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Phillip Thelen. All rights reserved.
 //
 
-#import "NSDate+DaysSince.h"
-
 @implementation NSDate (Screenshot)
 
 - (NSNumber *)daysSinceDate:(NSDate *)date {

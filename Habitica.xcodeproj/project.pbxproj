@@ -40,9 +40,9 @@
 		D939B5F61BD8FBD50015AEB6 /* HRPGBatchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D939B5F51BD8FBD50015AEB6 /* HRPGBatchOperation.m */; };
 		D940A7E31B0CF80100370F2E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D940A7E11B0CF80100370F2E /* Fabric.framework */; };
 		D940A7E41B0CF80100370F2E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D940A7E21B0CF80100370F2E /* Crashlytics.framework */; };
+		D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D942B53A1CAAE6B1009AB756 /* Social.storyboard */; };
 		D9436AC11C63A4BB008D1171 /* UIViewController+Markdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D9436AC01C63A4BB008D1171 /* UIViewController+Markdown.m */; };
 		D9436AC91C64F880008D1171 /* HRPGGuildsOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9436AC81C64F880008D1171 /* HRPGGuildsOverviewViewController.m */; };
-		D9436ACB1C64FDF2008D1171 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9436ACA1C64FDF2008D1171 /* Social.storyboard */; };
 		D94461911AB355940015215E /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
 		D946E5C21B30A89500806BE6 /* NSDAte+NSDateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = D946E5C11B30A89500806BE6 /* NSDAte+NSDateMock.m */; };
 		D946E5C41B30A9D700806BE6 /* HRPGTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D946E5C31B30A9D700806BE6 /* HRPGTaskTests.m */; };
@@ -290,11 +290,17 @@
 		D939B5F51BD8FBD50015AEB6 /* HRPGBatchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBatchOperation.m; sourceTree = "<group>"; };
 		D940A7E11B0CF80100370F2E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		D940A7E21B0CF80100370F2E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		D942B5391CAAE6B1009AB756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Social.storyboard; sourceTree = "<group>"; };
+		D942B53C1CAAE6C0009AB756 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Social.strings; sourceTree = "<group>"; };
+		D942B53E1CAAE6C6009AB756 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Social.strings; sourceTree = "<group>"; };
+		D942B5401CAAE6C8009AB756 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Social.strings; sourceTree = "<group>"; };
+		D942B5421CAAE6CB009AB756 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Social.strings; sourceTree = "<group>"; };
+		D942B5441CAAE6CD009AB756 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Social.strings; sourceTree = "<group>"; };
+		D942B5461CAAE6CE009AB756 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Social.strings; sourceTree = "<group>"; };
 		D9436ABF1C63A4BB008D1171 /* UIViewController+Markdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Markdown.h"; sourceTree = "<group>"; };
 		D9436AC01C63A4BB008D1171 /* UIViewController+Markdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Markdown.m"; sourceTree = "<group>"; };
 		D9436AC71C64F880008D1171 /* HRPGGuildsOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGuildsOverviewViewController.h; sourceTree = "<group>"; };
 		D9436AC81C64F880008D1171 /* HRPGGuildsOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGuildsOverviewViewController.m; sourceTree = "<group>"; };
-		D9436ACA1C64FDF2008D1171 /* Social.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Social.storyboard; sourceTree = "<group>"; };
 		D94461831AB34F5C0015215E /* HabiticaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabiticaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94461861AB34F5C0015215E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D94461871AB34F5C0015215E /* HabiticaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabiticaTests.m; sourceTree = "<group>"; };
@@ -359,6 +365,17 @@
 		D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGNavigationController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D976D23E1B98FA940032BC41 /* UIColor+Habitica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Habitica.h"; path = "../UIColor+Habitica.h"; sourceTree = "<group>"; };
 		D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIColor.Habitica.m; path = ../UIColor.Habitica.m; sourceTree = "<group>"; };
+		D976DEBE1CB65BDE002BB69F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D976DEBF1CB65BF6002BB69F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		D976DEC01CB65BF6002BB69F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		D976DEC11CB65BF6002BB69F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D976DEC21CB65BF6002BB69F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Social.strings"; sourceTree = "<group>"; };
+		D976DEC31CB65BF7002BB69F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		D976DEC41CB65C05002BB69F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		D976DEC51CB65C05002BB69F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		D976DEC61CB65C05002BB69F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D976DEC71CB65C05002BB69F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Social.strings"; sourceTree = "<group>"; };
+		D976DEC81CB65C06002BB69F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		D979AD101AF3CF0700D59FAE /* HabitRPG 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 3.xcdatamodel"; sourceTree = "<group>"; };
 		D979AD111AF3CF6C00D59FAE /* Customization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customization.h; sourceTree = "<group>"; };
 		D979AD121AF3CF6C00D59FAE /* Customization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customization.m; sourceTree = "<group>"; };
@@ -561,6 +578,9 @@
 		D9D44C101B0A0C73000732B4 /* HRPGGGuidelinesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGGuidelinesViewController.m; sourceTree = "<group>"; };
 		D9D4A3AC1BBED941008AD861 /* HRPGTaskSetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGTaskSetupTableViewController.h; path = Setup/HRPGTaskSetupTableViewController.h; sourceTree = "<group>"; };
 		D9D4A3AD1BBED941008AD861 /* HRPGTaskSetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGTaskSetupTableViewController.m; path = Setup/HRPGTaskSetupTableViewController.m; sourceTree = "<group>"; };
+		D9D795F71CAAE64E00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D9D795F81CAAE64E00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D9D795F91CAAE64F00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		D9D96EFE194B87FF00796FE7 /* HRPGPetMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGPetMasterViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9D96EFF194B87FF00796FE7 /* HRPGPetMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGPetMasterViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9D96F01194B96FD00796FE7 /* HRPGMountMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGMountMasterViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -1199,7 +1219,7 @@
 				D98830D31BADD4220018594D /* HRPGLoadingViewController.h */,
 				D98830D41BADD4220018594D /* HRPGLoadingViewController.m */,
 				D9C31DB11C6501090096F4EC /* Main.storyboard */,
-				D9436ACA1C64FDF2008D1171 /* Social.storyboard */,
+				D942B53A1CAAE6B1009AB756 /* Social.storyboard */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */,
 				D9EB4E9518CB4A9400BB2094 /* Supporting Files */,
@@ -1333,6 +1353,11 @@
 				en,
 				Base,
 				cs,
+				fr,
+				zh,
+				es,
+				de,
+				da,
 			);
 			mainGroup = D9EB4E8218CB4A9400BB2094;
 			productRefGroup = D9EB4E8C18CB4A9400BB2094 /* Products */;
@@ -1372,7 +1397,7 @@
 			files = (
 				D90EA03E19D60B53001EABE4 /* RewardIntro.png in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
-				D9436ACB1C64FDF2008D1171 /* Social.storyboard in Resources */,
+				D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
 				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
@@ -1693,6 +1718,9 @@
 				D90576991BD8326F009BB7BC /* cs */,
 				D939B5F01BD832B30015AEB6 /* zh */,
 				D99B82181BD9545800E770B7 /* de */,
+				D9D795F81CAAE64E00112D38 /* fr */,
+				D976DEC01CB65BF6002BB69F /* zh-Hans */,
+				D976DEC51CB65C05002BB69F /* pt-BR */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1705,8 +1733,27 @@
 				D905769A1BD8326F009BB7BC /* cs */,
 				D939B5F11BD832B30015AEB6 /* zh */,
 				D99B82191BD9545A00E770B7 /* de */,
+				D976DEBE1CB65BDE002BB69F /* fr */,
+				D976DEC11CB65BF6002BB69F /* zh-Hans */,
+				D976DEC61CB65C05002BB69F /* pt-BR */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D942B53A1CAAE6B1009AB756 /* Social.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D942B5391CAAE6B1009AB756 /* Base */,
+				D942B53C1CAAE6C0009AB756 /* fr */,
+				D942B53E1CAAE6C6009AB756 /* zh */,
+				D942B5401CAAE6C8009AB756 /* es */,
+				D942B5421CAAE6CB009AB756 /* de */,
+				D942B5441CAAE6CD009AB756 /* da */,
+				D942B5461CAAE6CE009AB756 /* cs */,
+				D976DEC21CB65BF6002BB69F /* zh-Hans */,
+				D976DEC71CB65C05002BB69F /* pt-BR */,
+			);
+			name = Social.storyboard;
 			sourceTree = "<group>";
 		};
 		D9C31DB11C6501090096F4EC /* Main.storyboard */ = {
@@ -1718,6 +1765,9 @@
 				D9C0E5141C6502C50062C89A /* es */,
 				D9C0E5151C6502FD0062C89A /* cs */,
 				D9C0E5161C6503790062C89A /* zh */,
+				D9D795F91CAAE64F00112D38 /* fr */,
+				D976DEC31CB65BF7002BB69F /* zh-Hans */,
+				D976DEC81CB65C06002BB69F /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1731,6 +1781,9 @@
 				D90576981BD8326F009BB7BC /* cs */,
 				D939B5EF1BD832B20015AEB6 /* zh */,
 				D99B82171BD9545800E770B7 /* de */,
+				D9D795F71CAAE64E00112D38 /* fr */,
+				D976DEBF1CB65BF6002BB69F /* zh-Hans */,
+				D976DEC41CB65C05002BB69F /* pt-BR */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

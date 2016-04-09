@@ -7,7 +7,6 @@
 //
 
 #import "HRPGTavernTableViewController.h"
-#import <UIImage+YYWebImage.h>
 #import <CRToast.h>
 #import "UIColor+Habitica.h"
 

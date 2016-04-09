@@ -7,7 +7,6 @@
 //
 
 #import "HRPGQuestDetailViewController.h"
-#import "HRPGAppDelegate.h"
 #import <YYWebImage.h>
 #import "UIColor+Habitica.h"
 

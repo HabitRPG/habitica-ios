@@ -7,11 +7,7 @@
 //
 
 #import "HRPGRewardTableViewCell.h"
-#import "MetaReward.h"
-#import "Gear.h"
-#import "Reward.h"
 #import "UIColor+Habitica.h"
-#import <UIImage+YYWebImage.h>
 #import "NSString+Emoji.h"
 
 @interface HRPGRewardTableViewCell ()

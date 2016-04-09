@@ -7,7 +7,6 @@
 //
 
 #import "HRPGGroupAboutTableViewController.h"
-#import "Group.h"
 #import "UIViewController+Markdown.h"
 #import <DTAttributedTextView.h>
 #import "HRPGGroupFormViewController.h"

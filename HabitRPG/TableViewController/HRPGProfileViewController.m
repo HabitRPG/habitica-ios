@@ -7,10 +7,7 @@
 //
 
 #import "HRPGProfileViewController.h"
-#import "HRPGAppDelegate.h"
 #import "HRPGTopHeaderNavigationController.h"
-#import "Group.h"
-#import "VTAcknowledgementsViewController.h"
 #import <PDKeychainBindings.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>

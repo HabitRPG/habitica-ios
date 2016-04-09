@@ -486,6 +486,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="buttons" destination="Uos-LF-Ppi" id="xt5-c4-zuP"/>
+                                    <outlet property="iconWrapperView" destination="5mS-gH-wy1" id="hg1-7M-82G"/>
                                     <outlet property="lastactionLabel" destination="cO1-yS-tAh" id="dE3-ic-LHR"/>
                                     <outlet property="notesLastActionConstraint" destination="2uc-u8-xlr" id="eqA-VA-fHM"/>
                                     <outlet property="reminderImageView" destination="1Cz-uy-Wc9" id="VMp-zf-wOm"/>
@@ -495,6 +496,7 @@
                                     <outlet property="tagImageView" destination="K57-G2-HLv" id="iql-kZ-pQZ"/>
                                     <outlet property="tagImageViewHeightConstraint" destination="Nbu-WO-Ns1" id="TSL-n9-Aga"/>
                                     <outlet property="tagReminderConstraint" destination="xPq-J3-wtY" id="CQo-5a-5tK"/>
+                                    <outlet property="textWrapperView" destination="dc9-97-6uF" id="xfb-mh-cwa"/>
                                     <outlet property="titleLabel" destination="VHe-vJ-XFS" id="lWR-22-qv5"/>
                                     <outlet property="titleNoteConstraint" destination="Cep-aB-Qas" id="ROE-Wa-EEW"/>
                                 </connections>
@@ -735,6 +737,7 @@
                                     <outlet property="checklistIndicator" destination="L43-nJ-Zxc" id="fZX-XO-m4p"/>
                                     <outlet property="checklistIndicatorWidth" destination="5Jz-3B-z2G" id="79a-GP-dFC"/>
                                     <outlet property="checklistSeparator" destination="CZ0-zQ-lJQ" id="rIq-K2-oGg"/>
+                                    <outlet property="iconWrapperView" destination="03P-7d-h2i" id="HD6-Gx-HOv"/>
                                     <outlet property="notesStreakSeparator" destination="wnA-pQ-b1r" id="bsG-gX-5L3"/>
                                     <outlet property="reminderImageView" destination="Hh8-V2-JsF" id="gKk-NM-ZHE"/>
                                     <outlet property="reminderImageViewHeightConstraint" destination="PFk-nr-hEF" id="cgX-9E-XJW"/>
@@ -743,6 +746,7 @@
                                     <outlet property="tagImageView" destination="5nI-IU-ATL" id="OzI-20-peC"/>
                                     <outlet property="tagImageViewHeightConstraint" destination="eb9-Hm-jVE" id="HER-d9-Epk"/>
                                     <outlet property="tagReminderConstraint" destination="qQx-xV-Vev" id="5D3-md-6hG"/>
+                                    <outlet property="textWrapperView" destination="MrU-hM-ysT" id="lzc-hl-lmG"/>
                                     <outlet property="titleLabel" destination="c4g-ej-s0n" id="W81-VS-EfH"/>
                                     <outlet property="titleNoteConstraint" destination="Jw9-Jk-jlz" id="fZb-ni-DZJ"/>
                                 </connections>
@@ -982,6 +986,7 @@
                                     <outlet property="checklistIndicatorWidth" destination="WKf-Cw-8hU" id="zcB-yn-GfJ"/>
                                     <outlet property="checklistSeparator" destination="Cxc-Tj-m4Y" id="729-ZX-8fa"/>
                                     <outlet property="dueLabel" destination="UjD-CT-rve" id="xPP-a6-hcm"/>
+                                    <outlet property="iconWrapperView" destination="9DZ-BI-nFo" id="1yS-Us-BNX"/>
                                     <outlet property="notesDueSeparator" destination="Svh-vg-nnH" id="OiT-pK-vNP"/>
                                     <outlet property="reminderImageView" destination="EPv-2T-flf" id="SYK-Vt-jQ7"/>
                                     <outlet property="reminderImageViewHeightConstraint" destination="pYm-az-EFo" id="tzK-Cz-829"/>
@@ -989,6 +994,7 @@
                                     <outlet property="tagImageView" destination="yJU-0w-73M" id="aXZ-l1-1tc"/>
                                     <outlet property="tagImageViewHeightConstraint" destination="Z0F-Lq-fVm" id="loC-nX-yf7"/>
                                     <outlet property="tagReminderConstraint" destination="vFn-BL-4iX" id="f2q-18-b1O"/>
+                                    <outlet property="textWrapperView" destination="7Lj-rA-2aE" id="Ibh-hD-eCY"/>
                                     <outlet property="titleLabel" destination="tLi-BI-Peu" id="UaZ-kz-L9i"/>
                                     <outlet property="titleNoteConstraint" destination="96g-Fc-pcn" id="9tR-P3-JOK"/>
                                 </connections>
@@ -3222,7 +3228,7 @@
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="OZY-o0-CAc"/>
                         <barButtonItem title="Clear" id="hIC-Qf-w8a">
-                            <color key="tintColor" red="0.34901961679999999" green="0.68627452850000004" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                            <color key="tintColor" red="0.9686274528503418" green="0.30588236451148987" blue="0.32156863808631897" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="clearTags:" destination="CZc-T4-a1C" id="GA7-07-5qy"/>
                             </connections>
@@ -3863,11 +3869,11 @@
     <inferredMetricsTieBreakers>
         <segue reference="DYS-RQ-id7"/>
         <segue reference="67a-aB-Ubi"/>
-        <segue reference="E5i-VS-PGN"/>
-        <segue reference="njg-A8-lDq"/>
+        <segue reference="HFM-OL-cM8"/>
+        <segue reference="iSa-66-Wjc"/>
         <segue reference="sPD-XR-ORt"/>
-        <segue reference="aWZ-FG-z5O"/>
         <segue reference="OZd-8c-sWC"/>
+        <segue reference="aWZ-FG-z5O"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.52939999999999998" green="0.25879999999999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

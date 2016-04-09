@@ -7,14 +7,9 @@
 //
 
 #import "HRPGToDoTableViewController.h"
-#import "Task.h"
-#import "HRPGManager.h"
 #import "ChecklistItem.h"
-#import "NSString+Emoji.h"
-#import "UIColor+LighterDarker.h"
 #import "HRPGCheckBoxView.h"
 #import "HRPGToDoTableViewCell.h"
-#import "Reminder.h"
 
 @interface HRPGToDoTableViewController ()
 @property NSString *readableName;
