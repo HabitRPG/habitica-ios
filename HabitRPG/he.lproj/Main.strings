@@ -1,0 +1,174 @@
+/* Class = "UILabel"; text = "Unlocks at lvl 3"; ObjectID = "2yp-6U-Xpz"; */
+"2yp-6U-Xpz.text" = "משתחרר ברמה 3";
+
+/* Class = "UITabBarItem"; title = "Habits"; ObjectID = "3G8-SH-Shd"; */
+"3G8-SH-Shd.title" = "הרגלים";
+
+/* Class = "UINavigationItem"; title = "Equipment"; ObjectID = "3bv-D6-Dzj"; */
+"3bv-D6-Dzj.title" = "ציוד";
+
+/* Class = "UINavigationItem"; title = "Pets"; ObjectID = "4dW-yC-5Ar"; */
+"4dW-yC-5Ar.title" = "חיות מחמד";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "5AI-vM-jzp"; */
+"5AI-vM-jzp.normalTitle" = "חזור";
+
+/* Class = "UILabel"; text = "Size"; ObjectID = "5KS-In-70X"; */
+"5KS-In-70X.text" = "גודל";
+
+/* Class = "UINavigationItem"; title = "Add Tag"; ObjectID = "6kN-kK-ybL"; */
+"6kN-kK-ybL.title" = "הוסיפו תגית";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "7QR-Cq-K2a"; */
+"7QR-Cq-K2a.title" = "סנן";
+
+/* Class = "UINavigationItem"; title = "Items"; ObjectID = "7Sa-Zz-2NE"; */
+"7Sa-Zz-2NE.title" = "פריטים";
+
+/* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "8QD-xr-Tcj"; */
+"8QD-xr-Tcj.title" = "חיות רכיבה";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9b7-Yf-yJs"; */
+"9b7-Yf-yJs.text" = "תווית";
+
+/* Class = "UIButton"; normalTitle = "Finish"; ObjectID = "63H-Fj-Vls"; */
+"63H-Fj-Vls.normalTitle" = "סיים";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
+"970-3u-C37.title" = "אודות";
+
+/* Class = "UIButton"; normalTitle = " Unlock Set for 5 gems "; ObjectID = "AQN-pU-u81"; */
+"AQN-pU-u81.normalTitle" = "שחררו סט בעבור 5 אבני חן";
+
+/* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "Aco-n2-RnG"; */
+"Aco-n2-RnG.title" = "יומיות";
+
+/* Class = "UITabBarItem"; title = "Habits"; ObjectID = "CTh-zS-7ZY"; */
+"CTh-zS-7ZY.title" = "הרגלים";
+
+/* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "DQC-ay-MKP"; */
+"DQC-ay-MKP.placeholder" = "חיזרו על הסיסמה";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "FYR-h9-UfW"; */
+"FYR-h9-UfW.normalTitle" = "חזור";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "IRA-55-1g8"; */
+"IRA-55-1g8.normalTitle" = "הבא";
+
+/* Class = "UINavigationItem"; title = "News"; ObjectID = "Jni-km-FCZ"; */
+"Jni-km-FCZ.title" = "חדשות";
+
+/* Class = "UINavigationItem"; title = "Spells"; ObjectID = "K1m-Oj-jYN"; */
+"K1m-Oj-jYN.title" = "קסמים";
+
+/* Class = "UINavigationItem"; title = "Customize Avatar"; ObjectID = "K4K-zl-tiU"; */
+"K4K-zl-tiU.title" = "התאם דמות";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "KkO-6T-Qmx"; */
+"KkO-6T-Qmx.text" = "כותרת";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "MlA-iN-6gR"; */
+"MlA-iN-6gR.text" = "התחבר";
+
+/* Class = "UINavigationItem"; title = "Rewards"; ObjectID = "Mlq-VF-kA3"; */
+"Mlq-VF-kA3.title" = "פרסים";
+
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "Np7-ws-fF6"; */
+"Np7-ws-fF6.title" = "משימות";
+
+/* Class = "UINavigationItem"; title = "Filter by tags"; ObjectID = "RJ8-HL-bIH"; */
+"RJ8-HL-bIH.title" = "סנן לפי תגיות";
+
+/* Class = "UILabel"; text = "No data yet"; ObjectID = "Spy-XJ-HaY"; */
+"Spy-XJ-HaY.text" = "אין נתונים עדיין";
+
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "TXB-iK-KhP"; */
+"TXB-iK-KhP.title" = "משימות";
+
+/* Class = "UINavigationItem"; title = "To-Dos"; ObjectID = "Tis-dF-qId"; */
+"Tis-dF-qId.title" = "משימות";
+
+/* Class = "UINavigationItem"; title = "Habits"; ObjectID = "Ueo-OS-iQj"; */
+"Ueo-OS-iQj.title" = "הרגלים";
+
+/* Class = "UIBarButtonItem"; title = "Register"; ObjectID = "XUX-eN-jCp"; */
+"XUX-eN-jCp.title" = "הרשם";
+
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "Y9b-tv-h4L"; */
+"Y9b-tv-h4L.title" = "קבץ לפי";
+
+/* Class = "UINavigationItem"; title = "Choose Task"; ObjectID = "Yuh-D9-NY5"; */
+"Yuh-D9-NY5.title" = "בחר משימה";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "c6L-Nt-YPn"; */
+"c6L-Nt-YPn.placeholder" = "דואר אלקטרוני";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "ciB-Fl-be7"; */
+"ciB-Fl-be7.text" = "תת-כותרת";
+
+/* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "hIC-Qf-w8a"; */
+"hIC-Qf-w8a.title" = "נקה";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "hnF-ml-Qfo"; */
+"hnF-ml-Qfo.title" = "פרופיל";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "hnb-Ox-m1C"; */
+"hnb-Ox-m1C.title" = "הגדרות";
+
+/* Class = "UITabBarItem"; title = "Menu"; ObjectID = "hyj-Mf-lvH"; */
+"hyj-Mf-lvH.title" = "תפריט";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "imx-7O-EEy"; */
+"imx-7O-EEy.text" = "תווית";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "lJN-5G-qrz"; */
+"lJN-5G-qrz.title" = "סנן";
+
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "mdo-xN-SW4"; */
+"mdo-xN-SW4.title" = "קבץ לפי";
+
+/* Class = "UIBarButtonItem"; title = "?"; ObjectID = "obl-zo-g8m"; */
+"obl-zo-g8m.title" = "?";
+
+/* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "pdW-W9-wj6"; */
+"pdW-W9-wj6.title" = "יומיות";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "r2M-pt-ZEv"; */
+"r2M-pt-ZEv.title" = "סנן";
+
+/* Class = "UITextField"; placeholder = "Email / Username"; ObjectID = "r6h-y4-Yj6"; */
+"r6h-y4-Yj6.placeholder" = "מייל / שם משתמש";
+
+/* Class = "UILabel"; text = "No completed To-Dos"; ObjectID = "rRE-Ue-tyN"; */
+"rRE-Ue-tyN.text" = "אין משימות שהושלמו";
+
+/* Class = "UISegmentedControl"; sMQ-xU-ZOd.segmentTitles[0] = "Slim"; ObjectID = "sMQ-xU-ZOd"; */
+"sMQ-xU-ZOd.segmentTitles[0]" = "רזה";
+
+/* Class = "UISegmentedControl"; sMQ-xU-ZOd.segmentTitles[1] = "Broad"; ObjectID = "sMQ-xU-ZOd"; */
+"sMQ-xU-ZOd.segmentTitles[1]" = "רחב";
+
+/* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "si7-7p-nZ9"; */
+"si7-7p-nZ9.title" = "חיות רכיבה";
+
+/* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "sni-tf-k5c"; */
+"sni-tf-k5c.title" = "שאלות נפוצות";
+
+/* Class = "UIBarButtonItem"; title = "Decide later"; ObjectID = "v0E-Hd-n5W"; */
+"v0E-Hd-n5W.title" = "החלט מאוחר יותר";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "wUf-yh-Qus"; */
+"wUf-yh-Qus.placeholder" = "סיסמה";
+
+/* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
+"xZ9-Ng-9se.title" = "האכל חיית מחמד";
+
+/* Class = "UITabBarItem"; title = "Rewards"; ObjectID = "zFI-xr-RjT"; */
+"zFI-xr-RjT.title" = "פרסים";
+
+/* Class = "UINavigationItem"; title = "Pets"; ObjectID = "zdm-Oo-gvg"; */
+"zdm-Oo-gvg.title" = "חיות מחמד";
+
+/* Class = "UINavigationItem"; title = "Dailies"; ObjectID = "zec-6L-pJk"; */
+"zec-6L-pJk.title" = "יומיות";
+

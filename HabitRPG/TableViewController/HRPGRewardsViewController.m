@@ -136,6 +136,16 @@
                                   context:nil]
                      .size.height;
     }
+    if ([reward.key isEqualToString:@"armoire"]) {
+        height = height + [[self getArmoireFillStatus]
+                           boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                           options:NSStringDrawingUsesLineFragmentOrigin
+                           attributes:@{
+                                        NSFontAttributeName :
+                                            [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
+                                        }
+                           context:nil].size.height;
+    }
     if (height < 87) {
         return 87;
     }

@@ -240,7 +240,7 @@
                     inManagedObjectContext:[self.sharedManager getManagedObjectContext]];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"reminders.@count != 0 && (type == 'daily' || (type == 'todo && completed == NO))"]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"reminders.@count != 0 && (type == 'daily' || (type == 'todo' && completed == NO))"]];
     NSError *error;
     NSArray *tasks = [[self.sharedManager getManagedObjectContext] executeFetchRequest:fetchRequest
                                                                                  error:&error];

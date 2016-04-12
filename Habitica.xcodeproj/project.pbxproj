@@ -404,6 +404,11 @@
 		D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGEquipmentViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D97CCDBA19A7AFFA00DA128A /* HRPGArrayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGArrayViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGArrayViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D97D39E61CB83ED500514F44 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D97D39E71CB83ED600514F44 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D97D39E81CB83ED600514F44 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Social.strings; sourceTree = "<group>"; };
+		D97D39E91CB83ED600514F44 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Main.strings; sourceTree = "<group>"; };
+		D97D39EA1CB83ED700514F44 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D980373719956E46004C8871 /* HRPGEquipmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = HRPGEquipmentDetailViewController.h; path = Inventory/HRPGEquipmentDetailViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = HRPGEquipmentDetailViewController.m; path = Inventory/HRPGEquipmentDetailViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D987393A19687F3E002A2426 /* NSNumber+abbreviation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+abbreviation.h"; path = "HabitRPG/Utilities/NSNumber+abbreviation.h"; sourceTree = SOURCE_ROOT; };
@@ -1721,6 +1726,7 @@
 				D9D795F81CAAE64E00112D38 /* fr */,
 				D976DEC01CB65BF6002BB69F /* zh-Hans */,
 				D976DEC51CB65C05002BB69F /* pt-BR */,
+				D97D39E71CB83ED600514F44 /* he */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1736,6 +1742,7 @@
 				D976DEBE1CB65BDE002BB69F /* fr */,
 				D976DEC11CB65BF6002BB69F /* zh-Hans */,
 				D976DEC61CB65C05002BB69F /* pt-BR */,
+				D97D39EA1CB83ED700514F44 /* he */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1752,6 +1759,7 @@
 				D942B5461CAAE6CE009AB756 /* cs */,
 				D976DEC21CB65BF6002BB69F /* zh-Hans */,
 				D976DEC71CB65C05002BB69F /* pt-BR */,
+				D97D39E81CB83ED600514F44 /* he */,
 			);
 			name = Social.storyboard;
 			sourceTree = "<group>";
@@ -1768,6 +1776,7 @@
 				D9D795F91CAAE64F00112D38 /* fr */,
 				D976DEC31CB65BF7002BB69F /* zh-Hans */,
 				D976DEC81CB65C06002BB69F /* pt-BR */,
+				D97D39E91CB83ED600514F44 /* he */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1784,6 +1793,7 @@
 				D9D795F71CAAE64E00112D38 /* fr */,
 				D976DEBF1CB65BF6002BB69F /* zh-Hans */,
 				D976DEC41CB65C05002BB69F /* pt-BR */,
+				D97D39E61CB83ED500514F44 /* he */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
