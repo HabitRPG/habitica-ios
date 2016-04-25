@@ -29,6 +29,7 @@
 #import "UIColor+Habitica.h"
 #import "Amplitude.h"
 #import <Crashlytics/Crashlytics.h>
+#import "HRPGSharingManager.h"
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
@@ -2291,6 +2292,7 @@ NSString *currentUser;
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
             HRPGTaskResponse *taskResponse = (HRPGTaskResponse *)[mappingResult firstObject];
+            [self displayLevelUpNotification];
 
             if ([task.managedObjectContext existingObjectWithID:task.objectID
                                                           error:&executeError] != nil) {
@@ -3968,14 +3970,15 @@ NSString *currentUser;
         onError:^(){
 
         }];
+    
     if ([self.user.level integerValue] == 10 && ![self.user.preferences.disableClass boolValue]) {
         HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
-        UINavigationController *selectClassNavigationController =
+        UIViewController *activeViewController = del.window.rootViewController;UINavigationController *selectClassNavigationController =
             [del.window.rootViewController.storyboard
                 instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
         selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
 
-        [del.window.rootViewController presentViewController:selectClassNavigationController
+        [activeViewController presentViewController:selectClassNavigationController
                                                     animated:YES
                                                   completion:^(){
 
@@ -3983,21 +3986,33 @@ NSString *currentUser;
     } else {
         [self.user getAvatarImage:^(UIImage *image) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                HRPGImageOverlayView *overlayView = [[HRPGImageOverlayView alloc] init];
+                NSArray *nibViews =
+                [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView" owner:self options:nil];
+                HRPGImageOverlayView *overlayView = [nibViews objectAtIndex:0];
                 [overlayView displayImage:image];
-                overlayView.height = 177;
-                overlayView.width = 200;
-                overlayView.descriptionText = NSLocalizedString(@"Level up!", nil);
-                overlayView.detailText =
-                    [NSString stringWithFormat:NSLocalizedString(@"You are now Level %ld", nil),
+                overlayView.imageWidth = 140;
+                overlayView.imageHeight = 147;
+                overlayView.titleText = NSLocalizedString(@"You gained a level!", nil);
+                overlayView.descriptionText =
+                    [NSString stringWithFormat:NSLocalizedString(@"By accomplishing your real-life goals, you've grown to Level %ld", nil),
                                                (long)([self.user.level integerValue])];
-
+                overlayView.dismissButtonText = NSLocalizedString(@"Huzzah!", nil);
+                overlayView.shareAction = ^() {
+                    HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
+                    UIViewController *activeViewController = del.window.rootViewController.presentedViewController;
+                    [HRPGSharingManager shareItems:@[
+                                                     [[NSString stringWithFormat:NSLocalizedString(@"I got to level %ld in Habitica by improving my real-life habits!", nil), (long)([self.user.level integerValue])] stringByAppendingString:@" https://habitica.com/social/level-up"],
+                                                     image]
+                      withPresentingViewController:activeViewController];
+                };
+                [overlayView sizeToFit];
+                
                 KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
                                                         showType:KLCPopupShowTypeBounceIn
                                                      dismissType:KLCPopupDismissTypeBounceOut
                                                         maskType:KLCPopupMaskTypeDimmed
                                         dismissOnBackgroundTouch:YES
-                                           dismissOnContentTouch:YES];
+                                           dismissOnContentTouch:NO];
                 [popup show];
             }];
         }
