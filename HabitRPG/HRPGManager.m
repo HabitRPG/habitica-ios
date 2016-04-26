@@ -30,6 +30,7 @@
 #import "Amplitude.h"
 #import <Crashlytics/Crashlytics.h>
 #import "HRPGSharingManager.h"
+#import "UIView+Screenshot.h"
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
@@ -3989,38 +3990,41 @@ NSString *currentUser;
 
                                                   }];
     } else {
-        HRPGImageOverlayView *overlayView = [[HRPGImageOverlayView alloc] init];
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                NSArray *nibViews =
-                [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView" owner:self options:nil];
-                HRPGImageOverlayView *overlayView = [nibViews objectAtIndex:0];
-                [overlayView displayImage:image];
-                overlayView.imageWidth = 140;
-                overlayView.imageHeight = 147;
-                overlayView.titleText = NSLocalizedString(@"You gained a level!", nil);
-                overlayView.descriptionText =
-                    [NSString stringWithFormat:NSLocalizedString(@"By accomplishing your real-life goals, you've grown to Level %ld", nil),
-                                               (long)([self.user.level integerValue])];
-                overlayView.dismissButtonText = NSLocalizedString(@"Huzzah!", nil);
-                overlayView.shareAction = ^() {
-                    HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
-                    UIViewController *activeViewController = del.window.rootViewController.presentedViewController;
-                    [HRPGSharingManager shareItems:@[
-                                                     [[NSString stringWithFormat:NSLocalizedString(@"I got to level %ld in Habitica by improving my real-life habits!", nil), (long)([self.user.level integerValue])] stringByAppendingString:@" https://habitica.com/social/level-up"],
-         (long)([self.user.level integerValue])];
-                                                     image]
-                      withPresentingViewController:activeViewController];
-                };
-                [overlayView sizeToFit];
-                
-                KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
-                                                        showType:KLCPopupShowTypeBounceIn
-                                                     dismissType:KLCPopupDismissTypeBounceOut
-                                                        maskType:KLCPopupMaskTypeDimmed
-                                        dismissOnBackgroundTouch:YES
-                                           dismissOnContentTouch:NO];
-                [popup show];
-        [popup show];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            NSArray *nibViews =
+            [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView" owner:self options:nil];
+            HRPGImageOverlayView *overlayView = [nibViews objectAtIndex:0];
+            [self.user setAvatarSubview:overlayView.imageView
+                        showsBackground:YES
+                             showsMount:YES
+                               showsPet:YES];
+            overlayView.imageWidth = 140;
+            overlayView.imageHeight = 147;
+            overlayView.titleText = NSLocalizedString(@"You gained a level!", nil);
+            overlayView.descriptionText =
+            [NSString stringWithFormat:NSLocalizedString(@"By accomplishing your real-life goals, you've grown to Level %ld", nil),
+             (long)([self.user.level integerValue])];
+            overlayView.dismissButtonText = NSLocalizedString(@"Huzzah!", nil);
+            __weak HRPGImageOverlayView *weakOverlay = overlayView;
+            overlayView.shareAction = ^() {
+                HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
+                UIViewController *activeViewController = del.window.rootViewController.presentedViewController;
+                [HRPGSharingManager shareItems:@[
+                                                 [[NSString stringWithFormat:NSLocalizedString(@"I got to level %ld in Habitica by improving my real-life habits!", nil), (long)([self.user.level integerValue])] stringByAppendingString:@" https://habitica.com/social/level-up"],
+                                                 [weakOverlay.imageView pb_takeScreenshot]]
+                  withPresentingViewController:activeViewController];
+            };
+            [overlayView sizeToFit];
+            
+            KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
+                                                    showType:KLCPopupShowTypeBounceIn
+                                                 dismissType:KLCPopupDismissTypeBounceOut
+                                                    maskType:KLCPopupMaskTypeDimmed
+                                    dismissOnBackgroundTouch:YES
+                                       dismissOnContentTouch:NO];
+            [popup show];
+            [popup show];
+        }];
     }
 }
 

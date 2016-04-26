@@ -38,7 +38,7 @@ PODS:
   - ISO8601DateFormatterValueTransformer (0.6.1):
     - RKValueTransformers (~> 1.1.0)
   - KLCPopup (1.0)
-  - Masonry (1.0.0)
+  - Masonry (0.6.4)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -129,7 +129,7 @@ DEPENDENCIES:
   - FontAwesomeIconFactory
   - Google/Analytics (~> 1.0.0)
   - KLCPopup
-  - Masonry (~> 1.0)
+  - Masonry
   - MRProgress
   - NSString+Emoji
   - OHHTTPStubs
@@ -158,7 +158,7 @@ CHECKOUT OPTIONS:
     :commit: 333b13622ff465539d124a7537b18d4677a6b397
     :git: https://github.com/segiddins/CargoBay.git
   CRToast:
-    :commit: 4168fcdd5d45934ec6ab4d5d98cbe5b9308febff
+    :commit: 6ce2ff330fced16e4d8be89b18dd2f3e229f0df6
     :git: https://github.com/cruffenach/CRToast
 
 SPEC CHECKSUMS:
@@ -181,7 +181,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
-  Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
+  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   NSString+Emoji: 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: b393565822317305b87a1440d4c7aff131679f66
@@ -197,6 +197,6 @@ SPEC CHECKSUMS:
   YYImage: b41b45bc5f32bfcdf67bdfb9c09da9e9832357c0
   YYWebImage: 8a22da9ec4d95064afa75a5c756c5d6f19d1b660
 
-PODFILE CHECKSUM: 07b530b17f812927ca920397c22546be14fe5e2b
+PODFILE CHECKSUM: 788249cd6301a03436216ab6c8506a13b4cb32c5
 
 COCOAPODS: 1.0.0.beta.6

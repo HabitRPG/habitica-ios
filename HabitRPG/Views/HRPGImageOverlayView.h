@@ -20,7 +20,7 @@
 @property(nonatomic) NSString *titleText;
 @property(nonatomic) NSString *descriptionText;
 
-@property UIImageView *ImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @property (nonatomic) NSString *dismissButtonText;
 @property (nonatomic) void (^shareAction)();

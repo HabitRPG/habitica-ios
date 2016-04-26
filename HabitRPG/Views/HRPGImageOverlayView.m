@@ -66,7 +66,6 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
 }
 
 @interface HRPGImageOverlayView ()
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewWidth;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
@@ -143,14 +142,14 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
                      YYWebImageStage stage, NSError *_Nullable error) {
             if (image) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.ImageView.image = image;
+                    self.imageView.image = image;
                 });
             }
         }];
 }
 
 - (void)displayImage:(UIImage *)image {
-    self.ImageView.image = image;
+    self.imageView.image = image;
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
