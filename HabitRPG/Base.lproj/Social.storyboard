@@ -1123,13 +1123,13 @@ Invite friends now to earn a Quest Scroll!</string>
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r7M-p0-7Or">
+                                        <view userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r7M-p0-7Or">
                                             <rect key="frame" x="8" y="5" width="90" height="90"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="r7M-p0-7Or" secondAttribute="height" multiplier="1:1" id="cHc-fG-I98"/>
                                                 <constraint firstAttribute="width" constant="90" id="eWV-Iv-v8T"/>
                                             </constraints>
-                                        </imageView>
+                                        </view>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udH-26-xah">
                                             <rect key="frame" x="106" y="10" width="456" height="20"/>
                                             <constraints>
@@ -1317,13 +1317,13 @@ Invite friends now to earn a Quest Scroll!</string>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" tag="8" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WBQ-iv-nmE">
+                                        <view userInteractionEnabled="NO" tag="8" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WBQ-iv-nmE">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="147"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="147" id="6EA-WH-yjN"/>
                                                 <constraint firstAttribute="width" constant="140" id="JeJ-NG-u7i"/>
                                             </constraints>
-                                        </imageView>
+                                        </view>
                                         <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eri-z8-zzt" customClass="HRPGLabeledProgressBar">
                                             <rect key="frame" x="148" y="10" width="444" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -12,6 +12,8 @@
 #import <CommonCrypto/CommonCrypto.h>
 #import "UIColor+Habitica.h"
 #import "TutorialSteps.h"
+#import <YYWebImage.h>
+#import <Masonry.h>
 
 @interface User ()
 @property(nonatomic) NSDate *lastImageGeneration;
@@ -73,479 +75,124 @@
 @dynamic equipped;
 @dynamic costume;
 
-- (void)setAvatarOnImageView:(UIImageView *)imageView useForce:(BOOL)force {
-    [self setAvatarOnImageView:imageView
-                  withPetMount:YES
-                      onlyHead:NO
-                withBackground:YES
-                      useForce:force];
-}
+- (void)setAvatarSubview:(UIView *)view
+         showsBackground:(BOOL)showsBackground
+              showsMount:(BOOL)showsMount
+                showsPet:(BOOL)showsPet {
+    // clear existing subviews
+    [view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
-- (void)setAvatarOnImageView:(UIImageView *)imageView
-                withPetMount:(BOOL)withPetMount
-                    onlyHead:(BOOL)onlyHead
-                    useForce:(BOOL)force {
-    [self setAvatarOnImageView:imageView
-                  withPetMount:withPetMount
-                      onlyHead:onlyHead
-                withBackground:NO
-                      useForce:force];
-}
+    UIView *avatarView =
+        [self getAvatarViewShowsBackground:showsBackground showsMount:showsMount showsPet:showsPet];
 
-- (void)setAvatarOnImageView:(UIImageView *)imageView
-                withPetMount:(BOOL)withPetMount
-                    onlyHead:(BOOL)onlyHead
-              withBackground:(BOOL)withBackground
-                    useForce:(BOOL)force {
-    [self getAvatarImage:^(UIImage *image) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            imageView.image = image;
-        });
-    }
-            withPetMount:withPetMount
-                onlyHead:onlyHead
-          withBackground:withBackground
-                useForce:force];
-}
-
-- (void)getAvatarImage:(void (^)(UIImage *))successBlock
-          withPetMount:(BOOL)withPetMount
-              onlyHead:(BOOL)onlyHead
-        withBackground:(BOOL)withBackground
-              useForce:(BOOL)force {
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-    HRPGManager *sharedManager = appdelegate.sharedManager;
-    /*
-    NSString *cachedImageName;
-    UIImage *cachedImage;
-    if (withPetMount && !onlyHead) {
-        cachedImageName = [NSString stringWithFormat:@"%@_full", self.username];
-    } else if (!withPetMount && !onlyHead) {
-        cachedImageName = [NSString stringWithFormat:@"%@_noPetMount", self.username];
-    } else {
-        cachedImageName = [NSString stringWithFormat:@"%@_head", self.username];
-    }
-    cachedImage = [sharedManager getCachedImage:cachedImageName];
-    if (cachedImage && ( !force || [[NSDate date] timeIntervalSinceDate:self.lastImageGeneration] <
-    2)) {
-        if (withPetMount && !onlyHead && [self.lastLogin isEqualToDate:self.lastAvatarFull]) {
-            successBlock(cachedImage);
-            return;
-        } else if (!withPetMount && !onlyHead && [self.lastLogin
-    isEqualToDate:self.lastAvatarNoPet]) {
-            successBlock(cachedImage);
-            return;
-        } else if ([self.lastLogin isEqualToDate:self.lastAvatarHead]) {
-            successBlock(cachedImage);
-            return;
-        }
-    }
-    */
-    if (self.preferences.skin == nil) {
+    if (!avatarView) {
         return;
     }
 
-    NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:20];
-    for (int i = 0; i <= 19; i++) {
-        [imageArray addObject:[NSNull null]];
-    }
-    int currentLayer = 0;
+    [view addSubview:avatarView];
 
-    __block UIImage *background = nil;
-    __block UIImage *currentPet = nil;
-    __block UIImage *currentMount = nil;
-    __block UIImage *currentMountHead = nil;
-    dispatch_group_t group = dispatch_group_create();
+    // center avatar view constraints
+    [avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(view);
+    }];
 
-    if (withBackground && self.preferences.background && self.preferences.background.length > 0) {
-        dispatch_group_enter(group);
-        [sharedManager
-            getImage:[NSString stringWithFormat:@"background_%@", self.preferences.background]
-            withFormat:nil
-            onSuccess:^(UIImage *image) {
-                background = image;
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
+    // aspect fit view constraints
+    [avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.lessThanOrEqualTo(view.mas_width);
+        make.height.lessThanOrEqualTo(view.mas_height);
+        make.width.equalTo(view.mas_width).priorityHigh();
+        make.height.equalTo(view.mas_height).priorityHigh();
+    }];
+}
+
+- (UIView *)getAvatarViewShowsBackground:(BOOL)showsBackground
+                              showsMount:(BOOL)showsMount
+                                showsPet:(BOOL)showsPet {
+    if (!self.preferences.skin) {
+        return nil;
     }
+
+    UIView *avatarView = [[UIView alloc] initWithFrame:CGRectZero];
+    CGSize boxSize = (showsBackground || showsMount || showsPet) ? CGSizeMake(140.0, 147.0)
+                                                                 : CGSizeMake(90.0, 90.0);
+
+    // keep avatar view size ratio
+    [avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(avatarView.mas_width).multipliedBy(boxSize.height / boxSize.width);
+    }];
+
     Outfit *outfit = [self.preferences.useCostume boolValue] ? self.costume : self.equipped;
-    if (![outfit.back isEqualToString:@"back_base_0"] && outfit.back) {
-        NSString *format = nil;
-        dispatch_group_enter(group);
-        currentLayer++;  // bump up current layer to 1 for skin
-        [sharedManager getImage:[NSString stringWithFormat:@"%@", outfit.back]
-            withFormat:format
-            onSuccess:^(UIImage *image) {
-                // back accessory goes into layer 0, even though we incremented currentLayer
-                [imageArray replaceObjectAtIndex:0 withObject:image];
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
 
-    dispatch_group_enter(group);
-    NSString *skinString = [NSString stringWithFormat:@"skin_%@", self.preferences.skin];
-    if ([self.preferences.sleep boolValue]) {
-        skinString = [skinString stringByAppendingString:@"_sleep"];
-    }
-    [sharedManager getImage:skinString
-        withFormat:nil
-        onSuccess:^(UIImage *image) {
-            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-            dispatch_group_leave(group);
+    // avatar view layer availability @YES or @NO
+    NSDictionary *viewDictionary = @{
+        @"background" : @(showsBackground && self.preferences.background.length),
+        @"mount-body" : @(showsMount && self.currentMount.length),
+        @"back" : @(outfit.back.length && [self _isAvailableGear:outfit.back]),
+        @"skin" : @YES,
+        @"shirt" : @YES,
+        @"armor" : @(outfit.armor.length && [self _isAvailableGear:outfit.armor]),
+        @"body" : @(outfit.body.length && [self _isAvailableGear:outfit.body]),
+        @"head_0" : @YES,
+        @"hair-base" : @(self.preferences.hairBase.integerValue),
+        @"hair-bangs" : @(self.preferences.hairBangs.integerValue),
+        @"hair-mustache" : @(self.preferences.hairMustache.integerValue),
+        @"hair-beard" : @(self.preferences.hairBeard.integerValue),
+        @"eyewear" : @(outfit.eyewear.length && [self _isAvailableGear:outfit.eyewear]),
+        @"head" : @(outfit.head.length && [self _isAvailableGear:outfit.head]),
+        @"head-accessory" :
+            @(outfit.headAccessory.length && [self _isAvailableGear:outfit.headAccessory]),
+        @"hair-flower" : @(self.preferences.hairFlower.integerValue),
+        @"shield" : @(outfit.shield.length && [self _isAvailableGear:outfit.shield]),
+        @"weapon" : @(outfit.weapon.length && [self _isAvailableGear:outfit.weapon]),
+        @"mount-head" : @(showsMount && self.currentMount.length),
+        @"zzz" : self.preferences.sleep ?: @NO,
+        @"pet" : @(showsPet && self.currentPet.length)
+    };
+
+    // avatar view layer order
+    NSArray *viewOrder = @[
+        @"background",
+        @"mount-body",
+        @"back",
+        @"skin",
+        @"shirt",
+        @"skin",
+        @"shirt",
+        @"armor",
+        @"body",
+        @"head_0",
+        @"hair-base",
+        @"hair-bangs",
+        @"hair-mustache",
+        @"hair-beard",
+        @"eyewear",
+        @"head",
+        @"head-accessory",
+        @"hair-flower",
+        @"shield",
+        @"weapon",
+        @"mount-head",
+        @"zzz",
+        @"pet"
+    ];
+
+    // get file dictionary here so it will only be loaded once per avatar view
+    NSDictionary *filenameDictionary = [self _getFilenameDictionary];
+    NSDictionary *formatDictionary = [self _getFileFormatDictionary];
+
+    // generate avatar view layers
+    [viewOrder enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
+        // check if view layer is enabled
+        if (((NSNumber *)viewDictionary[obj]).boolValue) {
+            [self _createAvatarSubviewForType:(NSString *)obj
+                                    superview:avatarView
+                                         size:boxSize
+                       withFilenameDictionary:filenameDictionary
+                     withFileFormatDictionary:formatDictionary];
         }
-        onError:^() {
-            dispatch_group_leave(group);
-        }];
+    }];
 
-    dispatch_group_enter(group);
-    currentLayer++;
-    [sharedManager getImage:[NSString stringWithFormat:@"%@_shirt_%@", self.preferences.size,
-                                                       self.preferences.shirt]
-        withFormat:nil
-        onSuccess:^(UIImage *image) {
-            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-            dispatch_group_leave(group);
-        }
-        onError:^() {
-            dispatch_group_leave(group);
-        }];
-
-    dispatch_group_enter(group);
-    currentLayer++;
-    [sharedManager getImage:[NSString stringWithFormat:@"head_0"]
-        withFormat:nil
-        onSuccess:^(UIImage *image) {
-            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-            dispatch_group_leave(group);
-        }
-        onError:^() {
-            dispatch_group_leave(group);
-        }];
-
-    if (![outfit.armor isEqualToString:@"armor_base_0"] && outfit.armor) {
-        NSString *format = nil;
-        if ([outfit.armor isEqualToString:@"armor_special_0"] ||
-            [outfit.armor isEqualToString:@"armor_special_1"]) {
-            format = @"gif";
-        }
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager
-            getImage:[NSString stringWithFormat:@"%@_%@", self.preferences.size, outfit.armor]
-            withFormat:format
-            onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    if (![outfit.body isEqualToString:@"body_base_0"] && outfit.body) {
-        NSString *format = nil;
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"%@", outfit.body]
-            withFormat:format
-            onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    if ([self.preferences.hairBase integerValue] != 0) {
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager
-            getImage:[NSString stringWithFormat:@"hair_base_%@_%@", self.preferences.hairBase,
-                                                self.preferences.hairColor]
-            withFormat:nil
-            onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    if ([self.preferences.hairBangs integerValue] != 0) {
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager
-            getImage:[NSString stringWithFormat:@"hair_bangs_%@_%@", self.preferences.hairBangs,
-                                                self.preferences.hairColor]
-            withFormat:nil
-            onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    if ([self.preferences.hairMustache integerValue] != 0) {
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"hair_mustache_%@_%@",
-                                                           self.preferences.hairMustache,
-                                                           self.preferences.hairColor]
-            withFormat:nil
-            onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    if ([self.preferences.hairBeard integerValue] != 0) {
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager
-            getImage:[NSString stringWithFormat:@"hair_beard_%@_%@", self.preferences.hairBeard,
-                                                self.preferences.hairColor]
-            withFormat:nil
-            onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    if (![outfit.eyewear isEqualToString:@"eyewear_base_0"] && outfit.eyewear) {
-        NSString *format = nil;
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"%@", outfit.eyewear]
-            withFormat:format
-            onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    if (![outfit.head isEqualToString:@"head_base_0"] && outfit.head) {
-        NSString *format = nil;
-        if ([outfit.head isEqualToString:@"head_special_0"] ||
-            [outfit.head isEqualToString:@"head_special_1"]) {
-            format = @"gif";
-        }
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager getImage:outfit.head
-            withFormat:format
-            onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    if (outfit.headAccessory && ![outfit.headAccessory isEqualToString:@"headAccessory_base_0"] &&
-        outfit.headAccessory) {
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager getImage:outfit.headAccessory
-            withFormat:nil
-            onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    if ([self.preferences.hairFlower integerValue] != 0) {
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager
-            getImage:[NSString stringWithFormat:@"hair_flower_%@", self.preferences.hairFlower]
-            withFormat:nil
-            onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    if (!onlyHead && ![outfit.shield isEqualToString:@"shield_base_0"] && outfit.shield) {
-        NSString *format = nil;
-        if ([outfit.shield isEqualToString:@"shield_special_0"]) {
-            format = @"gif";
-        }
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager getImage:outfit.shield
-            withFormat:format
-            onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-    if (!onlyHead && ![outfit.weapon isEqualToString:@"weapon_base_0"] && outfit.weapon) {
-        NSString *format = nil;
-        if ([outfit.weapon isEqualToString:@"weapon_special_0"] ||
-            [outfit.weapon isEqualToString:@"weapon_special_critical"]) {
-            format = @"gif";
-        }
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager getImage:outfit.weapon
-            withFormat:format
-            onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    if ([self.preferences.sleep boolValue]) {
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager getImage:@"zzz"
-            withFormat:nil
-            onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    if (withPetMount && self.currentPet && self.currentPet.length > 0) {
-        dispatch_group_enter(group);
-        currentLayer++;
-        NSString *format = nil;
-        if ([self.currentPet isEqualToString:@"Wolf-Cerberus"]) {
-            format = @"gif";
-        }
-        [sharedManager getImage:[NSString stringWithFormat:@"Pet-%@", self.currentPet]
-            withFormat:format
-            onSuccess:^(UIImage *image) {
-                currentPet = image;
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    if (withPetMount && self.currentMount && self.currentMount.length > 0) {
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"Mount_Head_%@", self.currentMount]
-            withFormat:nil
-            onSuccess:^(UIImage *image) {
-                currentMountHead = image;
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    if (withPetMount && self.currentMount && self.currentMount.length > 0) {
-        dispatch_group_enter(group);
-        currentLayer++;
-        [sharedManager getImage:[NSString stringWithFormat:@"Mount_Body_%@", self.currentMount]
-            withFormat:nil
-            onSuccess:^(UIImage *image) {
-                currentMount = image;
-                dispatch_group_leave(group);
-            }
-            onError:^() {
-                dispatch_group_leave(group);
-            }];
-    }
-
-    dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        int yoffset = 18;
-        int xoffset = 25;
-        float width = 140.0f;
-        float height = 147.0f;
-        if (!withPetMount) {
-            xoffset = 0;
-            width = 90.0f;
-            height = 90.0f;
-            yoffset = 0;
-        }
-        if (onlyHead) {
-            xoffset = -29.0f;
-            width = 55.0f;
-            height = 55.0f;
-            yoffset = -6.0f;
-        }
-
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), NO, 0.0f);
-
-        if (withBackground && self.preferences.background &&
-            self.preferences.background.length > 0) {
-            [background drawInRect:CGRectMake(0, 0, background.size.width, background.size.height)];
-        }
-
-        if (withPetMount && self.currentMount && self.currentMount.length > 0) {
-            yoffset = 0;
-            [currentMount
-                drawInRect:CGRectMake(25, 18, currentMount.size.width, currentMount.size.height)];
-        }
-        for (id item in imageArray) {
-            if (item != [NSNull null]) {
-                UIImage *addImage = (UIImage *)item;
-                [addImage drawInRect:CGRectMake(xoffset, yoffset, addImage.size.width,
-                                                addImage.size.height)];
-            }
-        }
-        if (withPetMount && self.currentMount && self.currentMount.length > 0) {
-            [currentMountHead drawInRect:CGRectMake(25, 18, currentMountHead.size.width,
-                                                    currentMountHead.size.height)];
-        }
-        if (withPetMount && self.currentPet) {
-            [currentPet
-                drawInRect:CGRectMake(0, 43, currentPet.size.width, currentPet.size.height)];
-        }
-
-        UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        successBlock(resultImage);
-        /*[sharedManager setCachedImage:resultImage withName:cachedImageName onSuccess:^() {
-            if (withPetMount && !onlyHead) {
-                self.lastAvatarFull = [self.lastLogin copy];
-            } else if (!withPetMount && !onlyHead) {
-                self.lastAvatarNoPet = [self.lastLogin copy];
-            } else {
-                self.lastAvatarHead = [self.lastLogin copy];
-            }
-            self.lastImageGeneration = [NSDate date];
-        }];*/
-    });
+    return avatarView;
 }
 
 - (UIColor *)classColor {
@@ -753,6 +400,242 @@
 
     if (self.maxMagic.integerValue == 0) {
     }
+}
+
+#pragma mark - Private Methods
+
+- (NSDictionary *)_getFilenameDictionary {
+    Outfit *outfit = [self.preferences.useCostume boolValue] ? self.costume : self.equipped;
+    return @{
+        @"background" : [NSString stringWithFormat:@"background_%@", self.preferences.background],
+        @"mount-body" : [NSString stringWithFormat:@"Mount_Body_%@", self.currentMount],
+        @"back" : outfit.back ?: [NSNull null],
+        @"skin" : ([self.preferences.sleep boolValue])
+                      ? [NSString stringWithFormat:@"skin_%@_sleep", self.preferences.skin]
+                      : [NSString stringWithFormat:@"skin_%@", self.preferences.skin],
+        @"shirt" : [NSString
+            stringWithFormat:@"%@_shirt_%@", self.preferences.size, self.preferences.shirt],
+        @"armor" : [NSString stringWithFormat:@"%@_%@", self.preferences.size, outfit.armor],
+        @"body" : outfit.body ?: [NSNull null],
+        @"head_0" : @"head_0",
+        @"hair-base" : [NSString stringWithFormat:@"hair_base_%@_%@", self.preferences.hairBase,
+                                                  self.preferences.hairColor],
+        @"hair-bangs" : [NSString stringWithFormat:@"hair_bangs_%@_%@", self.preferences.hairBangs,
+                                                   self.preferences.hairColor],
+        @"hair-mustache" :
+            [NSString stringWithFormat:@"hair_mustache_%@_%@", self.preferences.hairMustache,
+                                       self.preferences.hairColor],
+        @"hair-beard" : [NSString stringWithFormat:@"hair_beard_%@_%@", self.preferences.hairBeard,
+                                                   self.preferences.hairColor],
+        @"eyewear" : outfit.eyewear ?: [NSNull null],
+        @"head" : outfit.head ?: [NSNull null],
+        @"head-accessory" : outfit.headAccessory ?: [NSNull null],
+        @"hair-flower" : [NSString stringWithFormat:@"hair_flower_%@", self.preferences.hairFlower],
+        @"shield" : outfit.shield ?: [NSNull null],
+        @"weapon" : outfit.weapon ?: [NSNull null],
+        @"mount-head" : [NSString stringWithFormat:@"Mount_Head_%@", self.currentMount],
+        @"zzz" : @"zzz",
+        @"pet" : [NSString stringWithFormat:@"Pet-%@", self.currentPet]
+    };
+}
+
+- (NSDictionary *)_getFileFormatDictionary {
+    return @{
+        @"head_special_0" : @"gif",
+        @"head_special_1" : @"gif",
+        @"shield_special_0" : @"gif",
+        @"weapon_special_0" : @"gif",
+        @"weapon_special_critical" : @"gif",
+        @"Pet-Wolf-Cerberus" : @"gif"
+    };
+}
+
+- (NSURL *)_getImageURL:(nonnull NSString *)type
+      withFilenameDictionary:(nonnull NSDictionary *)filenameDictionary
+    withFileFormatDictionary:(nonnull NSDictionary *)formatDictionary {
+    NSString *rootUrl = @"https://habitica-assets.s3.amazonaws.com/"
+                        @"mobileApp/images/";
+
+    NSString *filename = filenameDictionary[type];
+    NSString *format = (formatDictionary[filename]) ? formatDictionary[filename] : @"png";
+
+    // NOTE: URL might be incorrect, and should be logged later after request response
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@.%@", rootUrl, filename, format]];
+}
+
+- (void)_setDefaultConstraintsForType:(nonnull NSString *)type
+                            superview:(nonnull UIView *)superview
+                              subview:(nonnull UIView *)subview
+                                 size:(CGSize)size {
+    void (^background)(UIView *, UIView *, CGSize) =
+        ^(UIView *superview, UIView *subview, CGSize size) {
+            [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.edges.equalTo(superview);
+            }];
+        };
+
+    void (^mount)(UIView *, UIView *, CGSize) = ^(UIView *superview, UIView *subview, CGSize size) {
+        [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.equalTo(superview.mas_trailing).multipliedBy(25.0 / size.width);
+            make.top.equalTo(superview.mas_bottom).multipliedBy(18.0 / size.height);
+        }];
+    };
+
+    void (^character)(UIView *, UIView *, CGSize) =
+        ^(UIView *superview, UIView *subview, CGSize size) {
+            [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.leading.equalTo((size.width > 90.0) ? superview.mas_trailing
+                                                         : superview.mas_leading)
+                    .multipliedBy((size.width > 90.0) ? 25.0 / size.width : 1.0);
+                make.top.equalTo(superview);
+            }];
+        };
+
+    void (^pet)(UIView *, UIView *, CGSize) = ^(UIView *superview, UIView *subview, CGSize size) {
+        [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.leading.equalTo(superview);
+        }];
+    };
+
+    void (^weaponSpecialCritical)(UIView *, UIView *, CGSize) =
+        ^(UIView *superview, UIView *subview, CGSize size) {
+            [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.leading.equalTo(superview.mas_trailing)
+                    .multipliedBy((size.width > 90.0) ? 13.0 / size.width : -12 / size.width);
+                make.top.equalTo(superview.mas_bottom).multipliedBy(12.0 / size.height);
+            }];
+        };
+
+    NSDictionary *constraintsDictionary = @{
+        @"background" : background,
+        @"mount-body" : mount,
+        @"back" : character,
+        @"skin" : character,
+        @"shirt" : character,
+        @"armor" : character,
+        @"body" : character,
+        @"head_0" : character,
+        @"hair-base" : character,
+        @"hair-bangs" : character,
+        @"hair-mustache" : character,
+        @"hair-beard" : character,
+        @"eyewear" : character,
+        @"head" : character,
+        @"head-accessory" : character,
+        @"hair-flower" : character,
+        @"shield" : character,
+        @"weapon" : character,
+        @"mount-head" : mount,
+        @"zzz" : character,
+        @"pet" : pet,
+        @"weapon_special_critical" : weaponSpecialCritical
+    };
+
+    // [category]:[item]
+    // allow item specific constraints to replace category constraints if defined
+    // eg. weapon:weapon_special_critical
+    NSArray *typeArray = [type componentsSeparatedByString:@":"];
+
+    if (typeArray.count > 1 && constraintsDictionary[typeArray[1]]) {
+        ((void (^)(UIView *superview, UIView *subview,
+                   CGSize size))constraintsDictionary[typeArray[1]])(superview, subview, size);
+    } else if (constraintsDictionary[typeArray[0]]) {
+        ((void (^)(UIView *superview, UIView *subview,
+                   CGSize size))constraintsDictionary[typeArray[0]])(superview, subview, size);
+    }
+}
+
+- (void)_setConstraintsForLoadedImage:(nonnull UIImage *)image
+                                 type:(nonnull NSString *)type
+                            superview:(nonnull UIView *)superview
+                              subview:(nonnull UIView *)subview
+                                 size:(CGSize)size {
+    void (^keepRatio)(UIImage *, UIView *, UIView *, CGSize) =
+        ^(UIImage *image, UIView *superview, UIView *subview, CGSize size) {
+            [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.height.equalTo(subview.mas_width)
+                    .multipliedBy(image.size.height / image.size.width);
+                make.width.equalTo(superview.mas_width).multipliedBy(image.size.width / size.width);
+            }];
+        };
+
+    NSDictionary *constraintsDictionary = @{
+        @"background" : [NSNull null],
+        @"mount-body" : keepRatio,
+        @"back" : keepRatio,
+        @"skin" : keepRatio,
+        @"shirt" : keepRatio,
+        @"armor" : keepRatio,
+        @"body" : keepRatio,
+        @"head_0" : keepRatio,
+        @"hair-base" : keepRatio,
+        @"hair-bangs" : keepRatio,
+        @"hair-mustache" : keepRatio,
+        @"hair-beard" : keepRatio,
+        @"eyewear" : keepRatio,
+        @"head" : keepRatio,
+        @"head-accessory" : keepRatio,
+        @"hair-flower" : keepRatio,
+        @"shield" : keepRatio,
+        @"weapon" : keepRatio,
+        @"mount-head" : keepRatio,
+        @"zzz" : keepRatio,
+        @"pet" : keepRatio
+    };
+
+    NSArray *typeArray = [type componentsSeparatedByString:@":"];
+
+    if (typeArray.count > 1 && constraintsDictionary[typeArray[1]]) {
+        ((void (^)(UIImage *, UIView *, UIView *, CGSize))constraintsDictionary[typeArray[1]])(
+            image, superview, subview, size);
+    } else if (constraintsDictionary[typeArray[0]]) {
+        ((void (^)(UIImage *, UIView *, UIView *, CGSize))constraintsDictionary[typeArray[0]])(
+            image, superview, subview, size);
+    }
+}
+
+- (void)_createAvatarSubviewForType:(nonnull NSString *)type
+                          superview:(nonnull UIView *)superview
+                               size:(CGSize)size
+             withFilenameDictionary:(nonnull NSDictionary *)filenameDictionary
+           withFileFormatDictionary:(nonnull NSDictionary *)formatDictionary {
+    UIImageView *view = [YYAnimatedImageView new];
+    [superview addSubview:view];
+
+    NSString *filename = filenameDictionary[type];
+    NSString *constraintTypeString =
+        (filename.length) ? [NSString stringWithFormat:@"%@:%@", type, filename] : type;
+
+    [view yy_setImageWithURL:[self _getImageURL:type
+                                   withFilenameDictionary:filenameDictionary
+                                 withFileFormatDictionary:formatDictionary]
+        placeholder:nil
+        options:YYWebImageOptionShowNetworkActivity
+        progress:nil
+        transform:^UIImage *_Nullable(UIImage *_Nonnull image, NSURL *_Nonnull url) {
+            return [YYImage imageWithData:[image yy_imageDataRepresentation] scale:1.0];
+        }
+        completion:^(UIImage *_Nullable image, NSURL *_Nonnull url, YYWebImageFromType from,
+                     YYWebImageStage stage, NSError *_Nullable error) {
+            if (image) {
+                [self _setConstraintsForLoadedImage:image
+                                               type:constraintTypeString
+                                          superview:superview
+                                            subview:view
+                                               size:size];
+            } else {
+                NSLog(@"%@: %@", url, error);
+            }
+        }];
+
+    [self _setDefaultConstraintsForType:constraintTypeString
+                              superview:superview
+                                subview:view
+                                   size:size];
+}
+
+- (BOOL)_isAvailableGear:(nonnull NSString *)gearName {
+    return [gearName rangeOfString:@"_base_0"].location == NSNotFound;
 }
 
 @end

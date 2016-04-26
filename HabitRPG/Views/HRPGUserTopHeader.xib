@@ -182,7 +182,7 @@
                         <constraint firstAttribute="trailing" secondItem="KDH-jE-dkP" secondAttribute="trailing" constant="8" id="k7k-IL-2pT"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UWI-d8-sGn">
+                <view userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UWI-d8-sGn">
                     <rect key="frame" x="0.0" y="0.0" width="110" height="115"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="115" id="538-Gt-fjD">
@@ -192,7 +192,7 @@
                             <variation key="heightClass=regular-widthClass=regular" constant="140"/>
                         </constraint>
                     </constraints>
-                </imageView>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -217,7 +217,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="avatarImageView" destination="UWI-d8-sGn" id="u9c-2i-E3b"/>
+                <outlet property="avatarView" destination="UWI-d8-sGn" id="u9c-2i-E3b"/>
                 <outlet property="classImageView" destination="0wH-g6-8n6" id="li4-lc-Pun"/>
                 <outlet property="experienceLabel" destination="BEm-of-HXC" id="AEF-d8-Rwc"/>
                 <outlet property="gemLabel" destination="I8k-bx-NRC" id="ej6-jh-hCd"/>

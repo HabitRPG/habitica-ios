@@ -14,7 +14,7 @@
 
 @interface HRPGUserTopHeader ()
 
-@property(weak, nonatomic) IBOutlet UIImageView *avatarImageView;
+@property(weak, nonatomic) IBOutlet UIView *avatarView;
 
 @property(weak, nonatomic) IBOutlet HRPGLabeledProgressBar *healthLabel;
 
@@ -149,11 +149,7 @@ NSInteger rowOffset = 16;
 
 - (void)setData {
     self.user = [self getUser];
-    [self.user setAvatarOnImageView:self.avatarImageView
-                       withPetMount:YES
-                           onlyHead:NO
-                     withBackground:YES
-                           useForce:YES];
+    [self.user setAvatarSubview:self.avatarView showsBackground:YES showsMount:YES showsPet:YES];
     self.healthLabel.value = self.user.health;
     if ([self.user.maxHealth integerValue] > 0) {
         self.healthLabel.maxValue = self.user.maxHealth;

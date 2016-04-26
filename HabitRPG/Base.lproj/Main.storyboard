@@ -80,12 +80,12 @@
                                     <action selector="nextStep:" destination="oYX-uo-fPD" eventType="touchUpInside" id="2PQ-Vc-65q"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EHI-Bs-o2d">
+                            <view userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EHI-Bs-o2d">
                                 <rect key="frame" x="20" y="40" width="560" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="p9N-Ej-2ky"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcz-t6-WqN">
                                 <rect key="frame" x="0.0" y="490" width="600" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2796,12 +2796,12 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZH9-se-4sr">
+                                        <view userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZH9-se-4sr">
                                             <rect key="frame" x="-8" y="0.0" width="140" height="214"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="140" id="pkT-vT-XC3"/>
                                             </constraints>
-                                        </imageView>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egQ-dd-7eK">
                                             <rect key="frame" x="140" y="16" width="452" height="190"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>

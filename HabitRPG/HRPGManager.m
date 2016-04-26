@@ -3989,7 +3989,7 @@ NSString *currentUser;
 
                                                   }];
     } else {
-        [self.user getAvatarImage:^(UIImage *image) {
+        HRPGImageOverlayView *overlayView = [[HRPGImageOverlayView alloc] init];
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 NSArray *nibViews =
                 [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView" owner:self options:nil];
@@ -4007,6 +4007,7 @@ NSString *currentUser;
                     UIViewController *activeViewController = del.window.rootViewController.presentedViewController;
                     [HRPGSharingManager shareItems:@[
                                                      [[NSString stringWithFormat:NSLocalizedString(@"I got to level %ld in Habitica by improving my real-life habits!", nil), (long)([self.user.level integerValue])] stringByAppendingString:@" https://habitica.com/social/level-up"],
+         (long)([self.user.level integerValue])];
                                                      image]
                       withPresentingViewController:activeViewController];
                 };
@@ -4019,12 +4020,7 @@ NSString *currentUser;
                                         dismissOnBackgroundTouch:YES
                                            dismissOnContentTouch:NO];
                 [popup show];
-            }];
-        }
-                     withPetMount:YES
-                         onlyHead:NO
-                   withBackground:YES
-                         useForce:NO];
+        [popup show];
     }
 }
 
