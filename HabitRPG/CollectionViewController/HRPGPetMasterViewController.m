@@ -121,15 +121,23 @@ NSUserDefaults *defaults;
     shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *petArray = self.sortedPets[indexPath.section][indexPath.item];
     Pet *namePet = [petArray firstObject];
+
+    // unset selected Pet info before resetting
+    self.selectedPet = nil;
+    self.selectedColor = nil;
+    self.selectedType = nil;
+
+    // Rules:
+    // when "Group By: Pet Type" (groupByKey = 0)
+    // selectedPet != nil and selectedColor = nil
+    // when "Group By: Color" (groupByKey = 1)
+    // selectedPet = nil and selectedColor != nil
     for (Pet *pet in petArray) {
         if (pet.trained) {
             if (self.groupByKey) {
                 self.selectedColor = [namePet.key componentsSeparatedByString:@"-"][1];
             } else {
                 self.selectedPet = [namePet.key componentsSeparatedByString:@"-"][0];
-                if ([namePet.type isEqualToString:@" "]) {
-                    self.selectedColor = [namePet.key componentsSeparatedByString:@"-"][1];
-                }
             }
             self.selectedType = namePet.type;
             return YES;
