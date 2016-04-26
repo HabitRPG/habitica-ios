@@ -16,14 +16,16 @@
 @dynamic asMount;
 @dynamic type;
 
-- (void)setMountOnImageView:(UIImageView *)imageView {
+- (void)getMountImage:(void (^)(UIImage *))successBlock {
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
     HRPGManager *sharedManager = appdelegate.sharedManager;
     NSString *cachedImageName = [NSString stringWithFormat:@"%@_Mount", self.key];
     UIImage *cachedImage;
     cachedImage = [sharedManager getCachedImage:cachedImageName];
     if (cachedImage) {
-        imageView.image = cachedImage;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            successBlock(cachedImage);
+        });
         return;
     }
     __block UIImage *currentMount = nil;
@@ -62,13 +64,19 @@
         UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         dispatch_async(dispatch_get_main_queue(), ^{
-            imageView.image = resultImage;
+            successBlock(resultImage);
         });
         [sharedManager setCachedImage:resultImage
                              withName:cachedImageName
                             onSuccess:^(){
                             }];
     });
+}
+
+- (void)setMountOnImageView:(UIImageView *)imageView {
+    [self getMountImage:^(UIImage *image) {
+            imageView.image = image;
+    }];
 }
 
 - (BOOL)likesFood:(Food *)food {

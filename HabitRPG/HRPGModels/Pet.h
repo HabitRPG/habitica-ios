@@ -13,9 +13,12 @@
 @interface Pet : NSManagedObject
 
 @property(nonatomic, retain) NSString *key;
+@property(nonatomic, retain) NSString *nicePetName;
+@property(nonatomic, retain) NSString *niceMountName;
 @property(nonatomic, retain) NSNumber *trained;
 @property(nonatomic, retain) NSNumber *asMount;
 @property(nonatomic, retain) NSString *type;
+- (void)getMountImage:(void (^)(UIImage *))successBlock;
 - (void)setMountOnImageView:(UIImageView *)imageView;
 - (BOOL)likesFood:(Food *)food;
 

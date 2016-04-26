@@ -51,30 +51,35 @@
         [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
-- (NSString *)eggWithKey:(NSString *)key {
+- (Egg *)eggWithKey:(NSString *)key {
     for (Egg *egg in self.eggs) {
         if ([egg.key isEqualToString:key]) {
-            return egg.mountText;
+            return egg;
         }
     }
-    return key;
+    return nil;
 }
 
-- (NSString *)hatchingPotionWithKey:(NSString *)key {
+- (HatchingPotion *)hatchingPotionWithKey:(NSString *)key {
     for (HatchingPotion *hatchingPotion in self.hatchingPotions) {
         if ([hatchingPotion.key isEqualToString:key]) {
-            return hatchingPotion.text;
+            return hatchingPotion;
         }
     }
-    return key;
+    return nil;
 }
 
 - (NSString *)niceMountName:(Pet *)mount {
     NSArray *nameParts = [mount.key componentsSeparatedByString:@"-"];
 
-    NSString *niceMountName = [self eggWithKey:nameParts[0]];
-    NSString *niceHatchingPotionName = [self hatchingPotionWithKey:nameParts[1]];
-
+    NSString *niceMountName = [self eggWithKey:nameParts[0]].mountText;
+    if (!niceMountName) {
+        niceMountName = nameParts[0];
+    }
+    NSString *niceHatchingPotionName = [self hatchingPotionWithKey:nameParts[1]].text;
+    if (!niceHatchingPotionName) {
+        niceHatchingPotionName = nameParts[1];
+    }
     return [NSString stringWithFormat:@"%@ %@", niceHatchingPotionName, niceMountName];
 }
 
@@ -239,7 +244,10 @@
     Pet *mount = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
     UILabel *label = (UILabel *)[cell viewWithTag:2];
-    label.text = [self niceMountName:mount];
+    if (!mount.niceMountName) {
+        mount.niceMountName = [self niceMountName:mount];
+    }
+    label.text = mount.niceMountName;
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     if ([mount.asMount boolValue]) {
         [mount setMountOnImageView:imageView];

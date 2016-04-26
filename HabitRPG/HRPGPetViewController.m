@@ -58,30 +58,49 @@
     [self displayTutorialStep:self.sharedManager];
 }
 
-- (NSString *)eggWithKey:(NSString *)key {
+- (Egg *)eggWithKey:(NSString *)key {
     for (Egg *egg in self.eggs) {
         if ([egg.key isEqualToString:key]) {
-            return egg.text;
+            return egg;
         }
     }
-    return key;
+    return nil;
 }
 
-- (NSString *)hatchingPotionWithKey:(NSString *)key {
+- (HatchingPotion *)hatchingPotionWithKey:(NSString *)key {
     for (HatchingPotion *hatchingPotion in self.hatchingPotions) {
         if ([hatchingPotion.key isEqualToString:key]) {
-            return hatchingPotion.text;
+            return hatchingPotion;
         }
     }
-    return key;
+    return nil;
+}
+
+- (NSString *)niceMountName:(Pet *)mount {
+    NSArray *nameParts = [mount.key componentsSeparatedByString:@"-"];
+    
+    NSString *niceMountName = [self eggWithKey:nameParts[0]].mountText;
+    if (!niceMountName) {
+        niceMountName = nameParts[0];
+    }
+    NSString *niceHatchingPotionName = [self hatchingPotionWithKey:nameParts[1]].text;
+    if (!niceHatchingPotionName) {
+        niceHatchingPotionName = nameParts[1];
+    }
+    return [NSString stringWithFormat:@"%@ %@", niceHatchingPotionName, niceMountName];
 }
 
 - (NSString *)nicePetName:(Pet *)pet {
     NSArray *nameParts = [pet.key componentsSeparatedByString:@"-"];
 
-    NSString *nicePetName = [self eggWithKey:nameParts[0]];
-    NSString *niceHatchingPotionName = [self hatchingPotionWithKey:nameParts[1]];
-
+    NSString *nicePetName = [self eggWithKey:nameParts[0]].text;
+    if (!nicePetName) {
+        nicePetName = nameParts[0];
+    }
+    NSString *niceHatchingPotionName = [self hatchingPotionWithKey:nameParts[1]].text;
+    if (!niceHatchingPotionName) {
+        niceHatchingPotionName = nameParts[1];
+    }
     return [NSString stringWithFormat:@"%@ %@", niceHatchingPotionName, nicePetName];
 }
 
@@ -266,7 +285,10 @@
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
     UIProgressView *progressView = (UIProgressView *)[cell viewWithTag:2];
     UILabel *label = (UILabel *)[cell viewWithTag:3];
-    label.text = [self nicePetName:pet];
+    if (!pet.nicePetName) {
+        pet.nicePetName = [self nicePetName:pet];
+    }
+    label.text = pet.nicePetName;
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     imageView.alpha = 1;
     if ([pet.trained boolValue]) {
@@ -341,6 +363,7 @@
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGFeedViewController *feedController = (HRPGFeedViewController *)[segue sourceViewController];
     Food *food = feedController.selectedFood;
+    self.selectedPet.niceMountName = [self niceMountName:self.selectedPet];
     [self.sharedManager feedPet:self.selectedPet
         withFood:food
         onSuccess:^() {

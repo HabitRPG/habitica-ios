@@ -498,19 +498,15 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
+    RKObjectMapping *feedMapping =
+    [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [feedMapping addAttributeMappingsFromArray:@[@"value"]];
     responseDescriptor = [RKResponseDescriptor
-        responseDescriptorWithMapping:emptyStringMapping
+        responseDescriptorWithMapping:feedMapping
                                method:RKRequestMethodPOST
                           pathPattern:@"/api/v2/user/inventory/feed/:pet/:food"
                               keyPath:nil
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
-    responseDescriptor = [RKResponseDescriptor
-        responseDescriptorWithMapping:emptyStringMapping
-                               method:RKRequestMethodPOST
-                          pathPattern:@"/api/v2/user/inventory/feed/:pet/:food"
-                              keyPath:nil
-                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassServerError)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
     RKEntityMapping *entityMapping =
@@ -3679,32 +3675,41 @@ NSString *currentUser;
         path:[NSString stringWithFormat:@"/api/v2/user/inventory/feed/%@/%@", pet.key, food.key]
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            [self fetchUser:^() {
-                NSError *executeError = nil;
-                [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                NSString *preferenceString;
-                if ([pet likesFood:food]) {
-                    preferenceString = NSLocalizedString(@"Your pet really likes the %@", nil);
-                } else {
-                    preferenceString = NSLocalizedString(
-                        @"Your pet eats the %@ but doesn't seem to enjoy it.", nil);
-                }
-                NSDictionary *options = @{
-                    kCRToastTextKey : [NSString stringWithFormat:preferenceString, food.text],
-                    kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                    kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                    kCRToastBackgroundColorKey : [UIColor yellow10],
-                };
-                [CRToastManager showNotificationWithOptions:options
-                                            completionBlock:^{
-                                            }];
-                if (successBlock) {
-                    successBlock();
-                }
-                [self.networkIndicatorController endNetworking];
-                return;
+            NSDictionary *result = [mappingResult firstObject];
+            NSNumber *petStatus = [result objectForKey:@"value"];
+            
+            NSError *executeError = nil;
+            pet.trained = petStatus;
+            food.owned = [NSNumber numberWithInteger:[food.owned integerValue]-1];
+            [[self managedObjectContext] saveToPersistentStore:&executeError];
+            
+            NSString *preferenceString;
+            if ([pet likesFood:food]) {
+                preferenceString = NSLocalizedString(@"Your pet really likes the %@", nil);
+            } else {
+                preferenceString = NSLocalizedString(
+                                                     @"Your pet eats the %@ but doesn't seem to enjoy it.", nil);
             }
-                    onError:nil];
+            NSDictionary *options = @{
+                                      kCRToastTextKey : [NSString stringWithFormat:preferenceString, food.text],
+                                      kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                                      kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                                      kCRToastBackgroundColorKey : [UIColor yellow10],
+                                      };
+            [CRToastManager showNotificationWithOptions:options
+                                        completionBlock:^{
+                                        }];
+            if ([[result objectForKey:@"value"] integerValue] == -1) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self displayMountRaisedNotification:pet];
+                });
+                [self fetchUser:nil onError:nil];
+            }
+            
+            if (successBlock) {
+                successBlock();
+            }
+            [self.networkIndicatorController endNetworking];
             return;
 
         }
@@ -4090,6 +4095,39 @@ NSString *currentUser;
         onError:^(){
 
         }];
+}
+
+- (void)displayMountRaisedNotification:(Pet *)mount {
+    [mount getMountImage:^(UIImage *image) {
+        NSArray *nibViews =
+        [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView" owner:self options:nil];
+        HRPGImageOverlayView *overlayView = [nibViews objectAtIndex:0];
+        [overlayView displayImage:image];
+        overlayView.imageWidth = 105;
+        overlayView.imageHeight = 105;
+        overlayView.titleText = NSLocalizedString(@"You raised a mount!", nil);
+        overlayView.descriptionText =
+        [NSString stringWithFormat:NSLocalizedString(@"By completing your tasks, you've earned a faithful steed!", nil),
+         (long)([self.user.level integerValue])];
+        overlayView.dismissButtonText = NSLocalizedString(@"Huzzah!", nil);
+        overlayView.shareAction = ^() {
+            HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
+            UIViewController *activeViewController = del.window.rootViewController.presentedViewController;
+            [HRPGSharingManager shareItems:@[
+                                             [[NSString stringWithFormat:NSLocalizedString(@"I just gained a %@ mount in Habitica by completing my real-life tasks!", nil), mount.niceMountName] stringByAppendingString:@" https://habitica.com/social/raise-mount"],
+                                             image]
+              withPresentingViewController:activeViewController];
+        };
+        [overlayView sizeToFit];
+        
+        KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
+                                                showType:KLCPopupShowTypeBounceIn
+                                             dismissType:KLCPopupDismissTypeBounceOut
+                                                maskType:KLCPopupMaskTypeDimmed
+                                dismissOnBackgroundTouch:YES
+                                   dismissOnContentTouch:NO];
+        [popup show];
+    }];
 }
 
 - (void)displayNoGemAlert {
