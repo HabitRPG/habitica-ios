@@ -21,6 +21,7 @@
 		D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03A19D60B53001EABE4 /* TodoIntro.png */; };
 		D90EA03E19D60B53001EABE4 /* RewardIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03B19D60B53001EABE4 /* RewardIntro.png */; };
 		D914398A1BAF14C40006999E /* UIImage+withColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D91439891BAF14C40006999E /* UIImage+withColor.m */; };
+		D914890D1CD23A900015B42D /* HRPGMaintenanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D914890B1CD23A900015B42D /* HRPGMaintenanceViewController.m */; };
 		D91CCACD1BCD9068001C6A0C /* HRPGHoledView.m in Sources */ = {isa = PBXBuildFile; fileRef = D91CCACC1BCD9068001C6A0C /* HRPGHoledView.m */; };
 		D91CCAD01BCF11CC001C6A0C /* HRPGUserTopHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D91CCACF1BCF11CC001C6A0C /* HRPGUserTopHeader.xib */; };
 		D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */; };
@@ -252,6 +253,8 @@
 		D90EA03B19D60B53001EABE4 /* RewardIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RewardIntro.png; sourceTree = "<group>"; };
 		D91439881BAF14C40006999E /* UIImage+withColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+withColor.h"; path = "HabitRPG/UIImage+withColor.h"; sourceTree = SOURCE_ROOT; };
 		D91439891BAF14C40006999E /* UIImage+withColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+withColor.m"; path = "HabitRPG/UIImage+withColor.m"; sourceTree = SOURCE_ROOT; };
+		D914890A1CD23A900015B42D /* HRPGMaintenanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGMaintenanceViewController.h; sourceTree = "<group>"; };
+		D914890B1CD23A900015B42D /* HRPGMaintenanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGMaintenanceViewController.m; sourceTree = "<group>"; };
 		D915F8621915BEE50037D04D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D915F8641915BF0D0037D04D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D91CCACB1BCD9068001C6A0C /* HRPGHoledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGHoledView.h; sourceTree = "<group>"; };
@@ -697,6 +700,15 @@
 				D90EA03619D60421001EABE4 /* HabitIntro.png */,
 			);
 			name = "Intro Images";
+			sourceTree = "<group>";
+		};
+		D91489091CD23A600015B42D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D914890A1CD23A900015B42D /* HRPGMaintenanceViewController.h */,
+				D914890B1CD23A900015B42D /* HRPGMaintenanceViewController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		D92CDAE118CB83C40006C242 /* TableViewController */ = {
@@ -1215,6 +1227,7 @@
 		D9EB4E9418CB4A9400BB2094 /* Habitica */ = {
 			isa = PBXGroup;
 			children = (
+				D91489091CD23A600015B42D /* ViewController */,
 				D9B5C0EB18D6321400C8D1B7 /* Models */,
 				D92CDAE118CB83C40006C242 /* TableViewController */,
 				D9C2570D1B9B4BFB00839F48 /* TableviewCells */,
@@ -1659,6 +1672,7 @@
 				D9C257161B9B4C5100839F48 /* HRPGCheckedTableViewCell.m in Sources */,
 				D92CDADD18CB79E50006C242 /* HRPGTableViewController.m in Sources */,
 				D9C257261B9DC26D00839F48 /* HRPGFAQTableViewController.m in Sources */,
+				D914890D1CD23A900015B42D /* HRPGMaintenanceViewController.m in Sources */,
 				D95D03931C74AA5500D6BFB3 /* Preferences+CoreDataProperties.m in Sources */,
 				D9B5C0E118D602FC00C8D1B7 /* Group.m in Sources */,
 				D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */,
