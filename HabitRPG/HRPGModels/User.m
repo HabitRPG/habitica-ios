@@ -12,6 +12,7 @@
 #import <CommonCrypto/CommonCrypto.h>
 #import "UIColor+Habitica.h"
 #import "TutorialSteps.h"
+#import "Flags.h"
 
 @interface User ()
 @property(nonatomic) NSDate *lastImageGeneration;
@@ -19,16 +20,12 @@
 
 @implementation User
 
-@dynamic armoireEnabled;
-@dynamic armoireEmpty;
-@dynamic acceptedCommunityGuidelines;
 @dynamic balance;
 @dynamic blurb;
 @dynamic contributorLevel;
 @dynamic contributorText;
 @dynamic currentMount;
 @dynamic currentPet;
-@dynamic dropsEnabled;
 @dynamic email;
 @dynamic experience;
 @dynamic gold;
@@ -37,14 +34,12 @@
 @dynamic id;
 @dynamic invitedParty;
 @dynamic invitedPartyName;
-@dynamic itemsEnabled;
 @dynamic level;
 @dynamic magic;
 @dynamic maxHealth;
 @dynamic maxMagic;
 @dynamic memberSince;
 @dynamic nextLevel;
-@dynamic habitNewStuff;
 @dynamic participateInQuest;
 @dynamic username;
 @dynamic groups;
@@ -66,12 +61,12 @@
 @synthesize petCount = _petCount;
 @synthesize customizationsDictionary;
 @synthesize lastImageGeneration;
-@dynamic iosTutorialSteps;
-@dynamic commonTutorialSteps;
+
 
 @dynamic preferences;
 @dynamic equipped;
 @dynamic costume;
+@dynamic flags;
 
 - (void)setAvatarOnImageView:(UIImageView *)imageView useForce:(BOOL)force {
     [self setAvatarOnImageView:imageView
@@ -729,12 +724,12 @@
 }
 
 - (BOOL)hasSeenTutorialStepWithIdentifier:(NSString *)identifier {
-    for (TutorialSteps *tutorialStep in self.iosTutorialSteps) {
+    for (TutorialSteps *tutorialStep in self.flags.iOSTutorialSteps) {
         if ([tutorialStep.identifier isEqualToString:identifier]) {
             return [tutorialStep.wasShown boolValue];
         }
     }
-    for (TutorialSteps *tutorialStep in self.commonTutorialSteps) {
+    for (TutorialSteps *tutorialStep in self.flags.commonTutorialSteps) {
         if ([tutorialStep.identifier isEqualToString:identifier]) {
             return [tutorialStep.wasShown boolValue];
         }

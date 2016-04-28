@@ -258,7 +258,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
     NSString *predicateString = @"type == 'reward' || type == 'potion' ||buyable == true";
-    if ([self.user.armoireEnabled boolValue]) {
+    if ([self.user.flags.armoireEnabled boolValue]) {
         predicateString = [predicateString stringByAppendingString:@" || type == 'armoire'"];
     }
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:predicateString]];

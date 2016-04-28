@@ -13,6 +13,7 @@
 #import "XLForm.h"
 #import "MRProgress.h"
 #import "UIColor+Habitica.h"
+#import "HRPGClassTableViewController.h"
 
 @interface HRPGSettingsViewController ()
 @property HRPGManager *sharedManager;
@@ -106,6 +107,21 @@ User *user;
                                                 rowType:XLFormRowDescriptorTypeInfo
                                                   title:NSLocalizedString(@"Account Details", nil)];
     [section addFormRow:row];
+
+    if ([user.level integerValue] > 10) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"selectClass"
+                                                    rowType:XLFormRowDescriptorTypeInfo
+                                                      title:nil];
+        if ([user.flags.classSelected boolValue] && ![user.preferences.disableClass boolValue]) {
+            row.title = NSLocalizedString(@"Change Class", nil);
+            row.value = [NSString stringWithFormat:NSLocalizedString(@"%@ Gems", nil), @3];
+        } else if ([user.preferences.disableClass boolValue]) {
+            row.title = NSLocalizedString(@"Enable Class System", nil);
+        } else if (![user.flags.classSelected boolValue]) {
+            row.title = NSLocalizedString(@"Select Class", nil);
+        }
+        [section addFormRow:row];
+    }
 
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"logout"
                                                 rowType:XLFormRowDescriptorTypeButton
@@ -278,6 +294,17 @@ User *user;
 
     if ([formRow.tag isEqual:@"accountDetail"]) {
         [self performSegueWithIdentifier:@"AccountDetailSegue" sender:self];
+    } else if ([formRow.tag isEqualToString:@"selectClass"]) {
+        if (user.flags.classSelected) {
+            UIAlertView *confirmationAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Are you sure?", nil)
+                                                               message:NSLocalizedString(@"This will reset your character's class and allocated points (you'll get them all back to re-allocate), and costs 3 gems.", nil)
+                                                              delegate:self
+                                                              cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                                     otherButtonTitles:NSLocalizedString(@"Change Class", nil), nil];
+            [confirmationAlert show];
+        } else {
+            [self displayClassSelectionViewController];
+        }
     } else if ([formRow.tag isEqual:@"logout"]) {
         [self logoutUser];
         [self deselectFormRow:formRow];
@@ -337,6 +364,24 @@ User *user;
                                  nil);
     }
     return [super tableView:tableView titleForFooterInSection:section];
+}
+
+- (void) displayClassSelectionViewController {
+    UINavigationController *selectClassNavigationController = [self.storyboard
+                                                               instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
+    selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
+    HRPGClassTableViewController *classTableViewController = (HRPGClassTableViewController *)selectClassNavigationController.topViewController;
+    classTableViewController.shouldResetClass = !user.flags.classSelected || user.preferences.disableClass;
+    [self presentViewController:selectClassNavigationController
+                       animated:YES
+                     completion:^(){
+                     }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [self displayClassSelectionViewController];
+    }
 }
 
 @end

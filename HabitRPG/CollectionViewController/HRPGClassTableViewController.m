@@ -19,6 +19,8 @@
 @property CGSize screenSize;
 @property NSArray *classesArray;
 @property User *user;
+
+@property BOOL classWasUnset;
 @end
 
 @implementation HRPGClassTableViewController
@@ -26,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tutorialIdentifier = @"classes";
+    self.classWasUnset = NO;
 
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:NSStringFromClass([self class])];
@@ -54,6 +57,12 @@
         [iconFactory createImageForIcon:NIKFontAwesomeIconQuestionCircle];
 
     [self loadClassesArray];
+    
+    if (self.shouldResetClass) {
+        [self.sharedManager changeClass:nil onSuccess:^{
+            self.classWasUnset = YES;
+        } onError:nil];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -221,6 +230,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (self.shouldResetClass && !self.classWasUnset) {
+        return;
+    }
+    
     self.selectedIndex = indexPath;
     if (indexPath.item == 4) {
         if ([UIAlertController class]) {
@@ -432,8 +446,7 @@
                                                                           }];
                     }
                 }
-                onError:^(){
-                }];
+                onError:nil];
         } else {
             [self.sharedManager changeClass:self.classesArray[self.selectedIndex.item][3]
                 onSuccess:^() {
@@ -456,8 +469,7 @@
                             }
                         }];
                 }
-                onError:^(){
-                }];
+                onError:nil];
         }
         [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
     }
