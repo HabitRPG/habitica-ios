@@ -482,7 +482,7 @@
     }
 
     dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        int yoffset = 18;
+        int yoffset = 22;
         int xoffset = 25;
         float width = 140.0f;
         float height = 147.0f;

@@ -2309,7 +2309,6 @@ NSString *currentUser;
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
             HRPGTaskResponse *taskResponse = (HRPGTaskResponse *)[mappingResult firstObject];
-            [self displayLevelUpNotification];
 
             if ([task.managedObjectContext existingObjectWithID:task.objectID
                                                           error:&executeError] != nil) {
