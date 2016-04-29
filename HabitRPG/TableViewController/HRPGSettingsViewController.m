@@ -70,6 +70,7 @@ User *user;
             (HRPGTopHeaderNavigationController *)self.navigationController;
         [navigationController startFollowingScrollView:self.tableView withOffset:0];
     }
+    [super viewDidAppear:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

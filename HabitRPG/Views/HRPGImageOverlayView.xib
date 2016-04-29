@@ -19,7 +19,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hom-8w-fcY">
-                    <rect key="frame" x="0.0" y="550" width="299.5" height="50"/>
+                    <rect key="frame" x="0.0" y="550" width="300" height="50"/>
                     <color key="backgroundColor" red="0.96862745098039216" green="0.93725490196078431" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="f49-YF-v9i"/>
@@ -32,7 +32,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBs-Sk-VLO">
-                    <rect key="frame" x="300" y="550" width="299.5" height="50"/>
+                    <rect key="frame" x="300" y="550" width="300" height="50"/>
                     <color key="backgroundColor" red="0.96862745100000003" green="0.93725490199999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="PlG-qT-kem"/>

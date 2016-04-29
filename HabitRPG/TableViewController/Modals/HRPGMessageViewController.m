@@ -60,6 +60,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super viewDidDisappear:YES];
 }
 
 - (void)keyboardChanged:(NSNotification *)notification {

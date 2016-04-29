@@ -83,7 +83,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     if (self.shouldDismissOnNextAppear) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }

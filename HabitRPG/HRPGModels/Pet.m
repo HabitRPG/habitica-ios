@@ -15,6 +15,8 @@
 @dynamic trained;
 @dynamic asMount;
 @dynamic type;
+@dynamic nicePetName;
+@dynamic niceMountName;
 
 - (void)getMountImage:(void (^)(UIImage *))successBlock {
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
