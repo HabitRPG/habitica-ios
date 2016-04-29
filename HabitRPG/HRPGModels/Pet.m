@@ -66,10 +66,12 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             successBlock(resultImage);
         });
-        [sharedManager setCachedImage:resultImage
-                             withName:cachedImageName
-                            onSuccess:^(){
-                            }];
+        if (currentMount && currentMountHead) {
+            [sharedManager setCachedImage:resultImage
+                                 withName:cachedImageName
+                                onSuccess:^(){
+                                }];
+        }
     });
 }
 

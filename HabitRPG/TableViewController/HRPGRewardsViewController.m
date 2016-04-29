@@ -359,8 +359,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)configureCell:(HRPGRewardTableViewCell *)cell
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate {
-    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
-
+    MetaReward *reward;
+    if ([[self.fetchedResultsController sections] count] > [indexPath section]){
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:[indexPath section]];
+        if ([sectionInfo numberOfObjects] > [indexPath row]){
+            reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        }
+    }
+    
+    if (!reward) {
+        return;
+    }
+    
     [cell configureForReward:reward withGoldOwned:self.user.gold];
 
     NSString *imageName;

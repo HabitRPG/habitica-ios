@@ -78,8 +78,11 @@
 
 - (void)copy:(id)sender {
     if (self.messageTextView.attributedText) {
-        UIPasteboard *pboard = [UIPasteboard generalPasteboard];
-        pboard.string = [self.detailTextLabel.attributedText string];
+        NSString *message = [self.detailTextLabel.attributedText string];
+        if (message) {
+            UIPasteboard *pboard = [UIPasteboard generalPasteboard];
+            pboard.string = message;
+        }
     }
 }
 

@@ -501,8 +501,7 @@
 
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), NO, 0.0f);
 
-        if (withBackground && self.preferences.background &&
-            self.preferences.background.length > 0) {
+        if (withBackground && background) {
             [background drawInRect:CGRectMake(0, 0, background.size.width, background.size.height)];
         }
 
