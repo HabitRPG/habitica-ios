@@ -104,6 +104,10 @@
 - (void)setGroup:(Group *)group {
     _group = group;
     self.navigationItem.title = group.name;
+
+    if (self.tableView.numberOfSections != [self numberOfSectionsInTableView:self.tableView]) {
+        [self.tableView reloadData];
+    }
 }
 
 - (void)joinGroup {
