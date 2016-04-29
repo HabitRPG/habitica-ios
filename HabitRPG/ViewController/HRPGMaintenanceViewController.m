@@ -45,6 +45,7 @@
         
         self.titleLabel = [[UILabel alloc] init];
         self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:self.titleLabel];
         
         self.imageView = [[UIImageView alloc] init];
@@ -53,7 +54,8 @@
         
         self.descriptionTextView = [[UITextView alloc] init];
         self.descriptionTextView.scrollEnabled = NO;
-        self.descriptionTextView.selectable = NO;
+        self.descriptionTextView.editable = NO;
+        self.descriptionTextView.dataDetectorTypes = UIDataDetectorTypeLink;
         [self.contentView addSubview:self.descriptionTextView];
         
         self.appstoreButton = [[UIButton alloc] init];

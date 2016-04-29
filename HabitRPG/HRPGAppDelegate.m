@@ -345,7 +345,7 @@
 }
 
 - (void)checkMaintenanceScreen {
-    NSURL *url = [NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/endpoint/maintenance-ios.json"];
+    NSURL *url = [NSURL URLWithString:@"http://localhost:8000/maintenance-ios.json"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSDictionary *data = (NSDictionary *)JSON;

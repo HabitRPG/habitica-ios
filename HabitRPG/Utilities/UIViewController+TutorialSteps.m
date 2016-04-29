@@ -105,7 +105,7 @@
     if ([type isEqualToString:@"common"]) {
         [[self.sharedManager user].flags addCommonTutorialStepsObject:step];
     } else {
-        [[self.sharedManager user].flags addIosTutorialStepsObject:step];
+        [[self.sharedManager user].flags addIOSTutorialStepsObject:step];
     }
 
     NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];

@@ -15,9 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Flags : NSManagedObject
 
-- (void)addIosTutorialStepsObject:(TutorialSteps *)value;
-- (void)addIosTutorialSteps:(NSSet *)values;
-- (void)removeIosTutorialSteps:(NSSet *)values;
+- (void)addIOSTutorialStepsObject:(TutorialSteps *)value;
+- (void)addIOSTutorialSteps:(NSSet *)values;
+- (void)removeIOSTutorialSteps:(NSSet *)values;
 
 - (void)addCommonTutorialStepsObject:(TutorialSteps *)value;
 - (void)addCommonTutorialSteps:(NSSet *)values;
