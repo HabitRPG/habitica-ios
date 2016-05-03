@@ -36,17 +36,17 @@
     }
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *managedObjectContext =
-    appdelegate.sharedManager.getManagedObjectContext;
-    
+        appdelegate.sharedManager.getManagedObjectContext;
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
     NSEntityDescription *entity =
-    [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
+        [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
-    
+
     NSError *error;
     NSArray *tags = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
+
     for (Tag *tag in tags) {
         if ([tagArray containsObject:tag.id]) {
             if (![self.tags containsObject:tag]) {

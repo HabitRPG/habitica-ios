@@ -28,7 +28,7 @@ float textWidth;
 
     CGRect screenRect = [[UIScreen mainScreen] bounds];
 
-    textWidth = (float) (screenRect.size.width - 73.0);
+    textWidth = (float)(screenRect.size.width - 73.0);
 }
 
 #pragma mark - Table view data source
@@ -38,11 +38,12 @@ float textWidth;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[self.fetchedResultsController sections][(NSUInteger) section] name];
+    return [[self.fetchedResultsController sections][(NSUInteger)section] name];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][(NSUInteger) section];
+    id<NSFetchedResultsSectionInfo> sectionInfo =
+        [self.fetchedResultsController sections][(NSUInteger)section];
     return [sectionInfo numberOfObjects];
 }
 
@@ -162,9 +163,9 @@ float textWidth;
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
@@ -187,10 +188,10 @@ float textWidth;
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
 
     switch (type) {
@@ -227,9 +228,9 @@ float textWidth;
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate {
     Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *textLabel = (UILabel *)[cell viewWithTag:1];
-    UILabel *detailTextLabel = (UILabel *)[cell viewWithTag:2];
-    UIImageView *imageView = (UIImageView *)[cell viewWithTag:3];
+    UILabel *textLabel = [cell viewWithTag:1];
+    UILabel *detailTextLabel = [cell viewWithTag:2];
+    UIImageView *imageView = [cell viewWithTag:3];
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     textLabel.text = gear.text;
     detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
@@ -238,7 +239,7 @@ float textWidth;
                       withFormat:@"png"
                           onView:imageView];
 
-    UILabel *equippedLabel = (UILabel *)[cell viewWithTag:4];
+    UILabel *equippedLabel = [cell viewWithTag:4];
     equippedLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     equippedLabel.textAlignment = NSTextAlignmentRight;
     if ([self.equipType isEqualToString:@"equipped"]) {

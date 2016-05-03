@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Phillip Thelen. All rights reserved.
 //
 
-#import "HRPGTaskTableViewCell.h"
-#import "HRPGCheckBoxView.h"
 #import "ChecklistItem.h"
+#import "HRPGCheckBoxView.h"
+#import "HRPGTaskTableViewCell.h"
 #import "Task.h"
 
 @interface HRPGCheckedTableViewCell : HRPGTaskTableViewCell

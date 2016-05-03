@@ -30,9 +30,9 @@ static NSString *const reuseIdentifier = @"Cell";
     self.screenSize = [[UIScreen mainScreen] bounds].size;
 
     if ([self.type isEqualToString:@"background"]) {
-        self.setPrice = [NSNumber numberWithInt:15];
+        self.setPrice = @15;
     } else {
-        self.setPrice = [NSNumber numberWithInt:5];
+        self.setPrice = @5;
     }
 }
 
@@ -55,8 +55,8 @@ static NSString *const reuseIdentifier = @"Cell";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+                    layout:(UICollectionViewLayout *)collectionViewLayout
+    sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.type isEqualToString:@"background"]) {
         return CGSizeMake(141.0f, 147.0f);
     } else {
@@ -71,14 +71,14 @@ static NSString *const reuseIdentifier = @"Cell";
         [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                                            withReuseIdentifier:@"SectionCell"
                                                   forIndexPath:indexPath];
-    UILabel *label = (UILabel *)[headerView viewWithTag:1];
+    UILabel *label = [headerView viewWithTag:1];
     label.text = [[[[[[self.fetchedResultsController sections][indexPath.section] name]
         stringByReplacingOccurrencesOfString:@"Shirts"
                                   withString:@""] stringByReplacingOccurrencesOfString:@"Skins"
                                                                              withString:@""]
         stringByReplacingOccurrencesOfString:@"backgrounds"
                                   withString:@""] uppercaseString];
-    HRPGPurchaseButton *purchaseButton = (HRPGPurchaseButton *)[headerView viewWithTag:2];
+    HRPGPurchaseButton *purchaseButton = [headerView viewWithTag:2];
     BOOL purchasable = NO;
     NSString *setString = @"";
     if ([self.entityName isEqualToString:@"Customization"]) {
@@ -250,10 +250,10 @@ static NSString *const reuseIdentifier = @"Cell";
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UICollectionView *collectionView = self.collectionView;
 
     switch (type) {
@@ -281,13 +281,13 @@ static NSString *const reuseIdentifier = @"Cell";
              animated:(BOOL)animated {
     if ([self.entityName isEqualToString:@"Customization"]) {
         Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
+        UIImageView *imageView = [cell viewWithTag:1];
         [self.sharedManager setImage:[customization getImageNameForUser:self.user]
                           withFormat:@"png"
                               onView:imageView];
     } else {
         Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
+        UIImageView *imageView = [cell viewWithTag:1];
         [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", gear.key]
                           withFormat:@"png"
                               onView:imageView];
@@ -387,8 +387,8 @@ static NSString *const reuseIdentifier = @"Cell";
 
 - (void)displayGemPurchaseView {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *navigationController = (UINavigationController *)[storyboard
-        instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
+    UINavigationController *navigationController =
+        [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 

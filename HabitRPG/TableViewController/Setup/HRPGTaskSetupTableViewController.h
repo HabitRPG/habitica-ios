@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "User.h"
 #import "HRPGAvatarSetupViewController.h"
+#import "User.h"
 
 @interface HRPGTaskSetupTableViewController
     : UIViewController<UITableViewDataSource, UITableViewDelegate>

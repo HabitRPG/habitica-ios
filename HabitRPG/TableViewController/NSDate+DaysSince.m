@@ -24,7 +24,7 @@
     NSDateComponents *difference =
         [calendar components:NSCalendarUnitDay fromDate:fromDate toDate:toDate options:0];
 
-    return [NSNumber numberWithInteger:[difference day]];
+    return @([difference day]);
 }
 
 @end

@@ -7,13 +7,13 @@
 //
 
 #import "HRPGSettingsViewController.h"
-#import "HRPGAppDelegate.h"
 #import <PDKeychainBindings.h>
+#import "HRPGAppDelegate.h"
+#import "HRPGClassTableViewController.h"
 #import "HRPGTopHeaderNavigationController.h"
-#import "XLForm.h"
 #import "MRProgress.h"
 #import "UIColor+Habitica.h"
-#import "HRPGClassTableViewController.h"
+#import "XLForm.h"
 
 @interface HRPGSettingsViewController ()
 @property HRPGManager *sharedManager;
@@ -52,11 +52,7 @@ User *user;
         setContentInset:UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0)];
     self.tableView.scrollIndicatorInsets =
         UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0);
-    if (navigationController.state == HRPGTopHeaderStateHidden) {
-        [self.tableView setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
-    } else {
-        [self.tableView setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
-    }
+    [self.tableView setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reloadAllData:)
@@ -127,7 +123,7 @@ User *user;
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"logout"
                                                 rowType:XLFormRowDescriptorTypeButton
                                                   title:NSLocalizedString(@"Log Out", nil)];
-    [row.cellConfigAtConfigure setObject:[UIColor red100] forKey:@"textLabel.textColor"];
+    row.cellConfigAtConfigure[@"textLabel.textColor"] = [UIColor red100];
     [section addFormRow:row];
 
     self.reminderSection =
@@ -138,7 +134,7 @@ User *user;
                                                   title:NSLocalizedString(@"Daily Reminder", nil)];
     [self.reminderSection addFormRow:row];
     if ([defaults boolForKey:@"dailyReminderActive"]) {
-        row.value = [NSNumber numberWithBool:YES];
+        row.value = @YES;
         [self showDatePicker];
     }
 
@@ -182,7 +178,7 @@ User *user;
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"clearCache"
                                                 rowType:XLFormRowDescriptorTypeButton
                                                   title:NSLocalizedString(@"Clear Cache", nil)];
-    [row.cellConfigAtConfigure setObject:[UIColor red100] forKey:@"textLabel.textColor"];
+    row.cellConfigAtConfigure[@"textLabel.textColor"] = [UIColor red100];
     [section addFormRow:row];
 
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"reloadContent"
@@ -243,9 +239,8 @@ User *user;
                                   UIStoryboard *storyboard =
                                       [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                   UINavigationController *navigationController =
-                                      (UINavigationController *)[storyboard
-                                          instantiateViewControllerWithIdentifier:
-                                              @"loginNavigationController"];
+                                      [storyboard instantiateViewControllerWithIdentifier:
+                                                      @"loginNavigationController"];
                                   [self presentViewController:navigationController
                                                      animated:YES
                                                    completion:nil];
@@ -297,11 +292,15 @@ User *user;
         [self performSegueWithIdentifier:@"AccountDetailSegue" sender:self];
     } else if ([formRow.tag isEqualToString:@"selectClass"]) {
         if (user.flags.classSelected) {
-            UIAlertView *confirmationAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Are you sure?", nil)
-                                                               message:NSLocalizedString(@"This will reset your character's class and allocated points (you'll get them all back to re-allocate), and costs 3 gems.", nil)
-                                                              delegate:self
-                                                              cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                                     otherButtonTitles:NSLocalizedString(@"Change Class", nil), nil];
+            UIAlertView *confirmationAlert = [[UIAlertView alloc]
+                    initWithTitle:NSLocalizedString(@"Are you sure?", nil)
+                          message:NSLocalizedString(@"This will reset your character's class and "
+                                                    @"allocated points (you'll get them all back "
+                                                    @"to re-allocate), and costs 3 gems.",
+                                                    nil)
+                         delegate:self
+                cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                otherButtonTitles:NSLocalizedString(@"Change Class", nil), nil];
             [confirmationAlert show];
         } else {
             [self displayClassSelectionViewController];
@@ -326,7 +325,7 @@ User *user;
         if ([[rowDescriptor.value valueData] boolValue]) {
             [defaults setBool:YES forKey:@"dailyReminderActive"];
             [self showDatePicker];
-        } else if ([[oldValue valueData] isEqualToNumber:@(0)] == NO &&
+        } else if (![[oldValue valueData] isEqualToNumber:@(0)] &&
                    [[newValue valueData] isEqualToNumber:@(0)]) {
             [defaults setBool:NO forKey:@"dailyReminderActive"];
             [self hideDatePicker];
@@ -367,12 +366,14 @@ User *user;
     return [super tableView:tableView titleForFooterInSection:section];
 }
 
-- (void) displayClassSelectionViewController {
+- (void)displayClassSelectionViewController {
     UINavigationController *selectClassNavigationController = [self.storyboard
-                                                               instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
+        instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
     selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
-    HRPGClassTableViewController *classTableViewController = (HRPGClassTableViewController *)selectClassNavigationController.topViewController;
-    classTableViewController.shouldResetClass = !user.flags.classSelected || user.preferences.disableClass;
+    HRPGClassTableViewController *classTableViewController =
+        (HRPGClassTableViewController *)selectClassNavigationController.topViewController;
+    classTableViewController.shouldResetClass =
+        !user.flags.classSelected || user.preferences.disableClass;
     [self presentViewController:selectClassNavigationController
                        animated:YES
                      completion:^(){

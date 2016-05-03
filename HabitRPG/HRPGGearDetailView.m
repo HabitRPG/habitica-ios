@@ -80,11 +80,7 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
     self.priceLabel.text = [reward.value stringValue];
     self.descriptionText = reward.notes;
 
-    if ([reward.value floatValue] > gold) {
-        self.buyButton.enabled = NO;
-    } else {
-        self.buyButton.enabled = YES;
-    }
+    self.buyButton.enabled = [reward.value floatValue] <= gold;
 
     if ([reward.key isEqualToString:@"armoire"]) {
         self.descriptionText =

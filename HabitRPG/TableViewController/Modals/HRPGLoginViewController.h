@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <UIKit/UIKit.h>
 #import "EAIntroView.h"
 
 @interface HRPGLoginViewController

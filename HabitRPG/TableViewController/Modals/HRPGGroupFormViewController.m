@@ -7,9 +7,9 @@
 //
 
 #import "HRPGGroupFormViewController.h"
-#import "XLForm.h"
-#import "HRPGAppDelegate.h"
 #import "Amplitude.h"
+#import "HRPGAppDelegate.h"
+#import "XLForm.h"
 
 @interface HRPGGroupFormViewController ()
 

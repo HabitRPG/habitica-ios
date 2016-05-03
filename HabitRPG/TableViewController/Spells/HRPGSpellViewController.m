@@ -7,8 +7,8 @@
 //
 
 #import "HRPGSpellViewController.h"
-#import "Spell.h"
 #import "HRPGSpellTabBarController.h"
+#import "Spell.h"
 
 @interface HRPGSpellViewController ()
 @property User *user;
@@ -76,7 +76,7 @@
     if ([self.user.magic integerValue] >= [spell.mana integerValue]) {
         if ([spell.target isEqualToString:@"task"]) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UINavigationController *navigationController = (UINavigationController *)[storyboard
+            UINavigationController *navigationController = [storyboard
                 instantiateViewControllerWithIdentifier:@"spellTaskNavigationController"];
 
             [self presentViewController:navigationController
@@ -181,9 +181,9 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
@@ -206,10 +206,10 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
 
     switch (type) {
@@ -246,9 +246,9 @@
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate {
     Spell *spell = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *nameLabel = (UILabel *)[cell viewWithTag:1];
-    UILabel *detailLabel = (UILabel *)[cell viewWithTag:2];
-    UILabel *manaLabel = (UILabel *)[cell viewWithTag:3];
+    UILabel *nameLabel = [cell viewWithTag:1];
+    UILabel *detailLabel = [cell viewWithTag:2];
+    UILabel *manaLabel = [cell viewWithTag:3];
     nameLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     manaLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];

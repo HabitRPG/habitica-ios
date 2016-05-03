@@ -7,12 +7,12 @@
 //
 
 #import "HRPGTableViewController.h"
-#import "HRPGFormViewController.h"
 #import "HRPGFilterViewController.h"
-#import "HRPGTabBarController.h"
+#import "HRPGFormViewController.h"
 #import "HRPGNavigationController.h"
-#import "NSString+Emoji.h"
 #import "HRPGSearchDataManager.h"
+#import "HRPGTabBarController.h"
+#import "NSString+Emoji.h"
 
 @interface HRPGTableViewController ()<UISearchBarDelegate>
 @property NSString *readableName;
@@ -268,15 +268,13 @@ BOOL editable;
     commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
      forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        if (editingStyle == UITableViewCellEditingStyleDelete) {
-            Task *task = [self taskAtIndexPath:indexPath];
-            [self.sharedManager deleteTask:task
-                onSuccess:^() {
-                }
-                onError:^(){
+        Task *task = [self taskAtIndexPath:indexPath];
+        [self.sharedManager deleteTask:task
+            onSuccess:^() {
+            }
+            onError:^(){
 
-                }];
-        }
+            }];
     }
 }
 
@@ -391,8 +389,7 @@ BOOL editable;
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
     if ([segue.identifier isEqualToString:@"UnwindTagSegue"]) {
-        HRPGFilterViewController *tagViewController =
-            (HRPGFilterViewController *)segue.sourceViewController;
+        HRPGFilterViewController *tagViewController = segue.sourceViewController;
         HRPGTabBarController *tabBarController = (HRPGTabBarController *)self.tabBarController;
         tabBarController.selectedTags = tagViewController.selectedTags;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"taskFilterChanged" object:nil];
@@ -400,8 +397,7 @@ BOOL editable;
 }
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-    HRPGFormViewController *formViewController =
-        (HRPGFormViewController *)segue.sourceViewController;
+    HRPGFormViewController *formViewController = segue.sourceViewController;
     if (formViewController.editTask) {
         [self.sharedManager updateTask:formViewController.task onSuccess:nil onError:nil];
     } else {
@@ -445,9 +441,9 @@ BOOL editable;
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
@@ -470,10 +466,10 @@ BOOL editable;
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
 
     switch (type) {
@@ -529,8 +525,8 @@ BOOL editable;
 }
 
 - (void)tableView:(UITableView *)tableView
-  willDisplayCell:(UITableViewCell *)cell
-forRowAtIndexPath:(NSIndexPath *)indexPath {
+      willDisplayCell:(UITableViewCell *)cell
+    forRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
         [cell setSeparatorInset:UIEdgeInsetsZero];
     }
@@ -771,8 +767,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         }
     } else if ([segue.identifier isEqualToString:@"FilterSegue"]) {
         HRPGTabBarController *tabBarController = (HRPGTabBarController *)self.tabBarController;
-        HRPGNavigationController *navigationController =
-            (HRPGNavigationController *)segue.destinationViewController;
+        HRPGNavigationController *navigationController = segue.destinationViewController;
         navigationController.sourceViewController = self;
         HRPGFilterViewController *filterController =
             (HRPGFilterViewController *)navigationController.topViewController;

@@ -7,14 +7,14 @@
 //
 
 #import "Task.h"
-#import "ChecklistItem.h"
-#import "Tag.h"
-#import "HRPGAppDelegate.h"
-#import "UIColor+Habitica.h"
-#import "NSDate+DaysSince.h"
 #import <CoreSpotlight/CoreSpotlight.h>
+#import "ChecklistItem.h"
+#import "HRPGAppDelegate.h"
+#import "NSDate+DaysSince.h"
 #import "NSString+Emoji.h"
 #import "Reminder.h"
+#import "Tag.h"
+#import "UIColor+Habitica.h"
 
 @implementation Task
 
@@ -247,10 +247,8 @@
                 return @[ [NSPredicate predicateWithFormat:@"type=='todo' && completed==NO"] ];
             }
             case TaskToDoFilterTypeDated: {
-                return @[
-                    [NSPredicate
-                        predicateWithFormat:@"type=='todo' && completed==NO && duedate!=nil"]
-                ];
+                return @[ [NSPredicate
+                    predicateWithFormat:@"type=='todo' && completed==NO && duedate!=nil"] ];
             }
             case TaskToDoFilterTypeDone: {
                 return @[ [NSPredicate predicateWithFormat:@"type=='todo' && completed==YES"] ];
@@ -315,8 +313,8 @@
                         change:(NSDictionary *)change
                        context:(void *)context {
     if ([keyPath isEqualToString:@"completed"]) {
-        NSNumber *oldValue = [change objectForKey:NSKeyValueChangeOldKey];
-        NSNumber *newValue = [change objectForKey:NSKeyValueChangeNewKey];
+        NSNumber *oldValue = change[NSKeyValueChangeOldKey];
+        NSNumber *newValue = change[NSKeyValueChangeNewKey];
         if ([newValue boolValue] != [oldValue boolValue]) {
             for (Reminder *reminder in self.reminders) {
                 if ([newValue boolValue]) {

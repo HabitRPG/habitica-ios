@@ -7,19 +7,19 @@
 //
 
 #import "HRPGAppDelegate.h"
-#import "HRPGTableViewController.h"
-#import "HRPGTabBarController.h"
-#import "CRToast.h"
-#import <Fabric/Fabric.h>
+#import <CoreSpotlight/CoreSpotlight.h>
 #import <Crashlytics/Crashlytics.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <Fabric/Fabric.h>
 #import <Google/Analytics.h>
-#import <CoreSpotlight/CoreSpotlight.h>
-#import "Reminder.h"
-#import "Amplitude.h"
-#import "HRPGLoadingViewController.h"
 #import "AFNetworking.h"
+#import "Amplitude.h"
+#import "CRToast.h"
+#import "HRPGLoadingViewController.h"
 #import "HRPGMaintenanceViewController.h"
+#import "HRPGTabBarController.h"
+#import "HRPGTableViewController.h"
+#import "Reminder.h"
 
 @interface HRPGAppDelegate ()
 
@@ -91,7 +91,7 @@
     }
 
     UILocalNotification *notification =
-            launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];
+        launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];
     if (notification) {
         [self displayTaskWithId:[notification.userInfo valueForKey:@"taskID"]
                        fromType:[notification.userInfo valueForKey:@"taskType"]];
@@ -132,7 +132,7 @@
             onError:^(){
             }];
     }
-    
+
     [self checkMaintenanceScreen];
 }
 
@@ -153,9 +153,9 @@
 }
 
 - (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
+              openURL:(NSURL *)url
+    sourceApplication:(NSString *)sourceApplication
+           annotation:(id)annotation {
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication
@@ -244,7 +244,9 @@
                     inManagedObjectContext:[self.sharedManager getManagedObjectContext]];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"reminders.@count != 0 && (type == 'daily' || (type == 'todo' && completed == NO))"]];
+    [fetchRequest
+        setPredicate:[NSPredicate predicateWithFormat:@"reminders.@count != 0 && (type == 'daily' "
+                                                      @"|| (type == 'todo' && completed == NO))"]];
     NSError *error;
     NSArray *tasks = [[self.sharedManager getManagedObjectContext] executeFetchRequest:fetchRequest
                                                                                  error:&error];
@@ -347,42 +349,59 @@
 - (void)checkMaintenanceScreen {
     NSURL *url = [NSURL URLWithString:@"http://localhost:8000/maintenance-ios.json"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        NSDictionary *data = (NSDictionary *)JSON;
-        BOOL activeMaintenance = [data[@"activeMaintenance"] boolValue];
-        if (activeMaintenance) {
-            [self displayMaintenanceScreen:data isDeprecated:NO];
-        } else {
-            UIViewController *presentedController = self.window.rootViewController.presentedViewController;
-            if ([presentedController.presentedViewController isKindOfClass:[HRPGMaintenanceViewController class]]) {
-                [presentedController.presentedViewController dismissViewControllerAnimated:YES completion:nil];
-            }
-            if (data[@"minBuild"]) {
-                NSString *build = [[NSBundle mainBundle] infoDictionary][(NSString *) kCFBundleVersionKey];
-                if ([data[@"minBuild"] integerValue] > [build integerValue]) {
-                    NSURL *url = [NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/endpoint/deprecation-ios.json"];
-                    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-                    AFJSONRequestOperation *deprecationOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                        NSDictionary *data = (NSDictionary *)JSON;
-                        [self displayMaintenanceScreen:data isDeprecated:YES];
-                    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                    }];
-                    [deprecationOperation start];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation
+        JSONRequestOperationWithRequest:request
+        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+            NSDictionary *data = (NSDictionary *)JSON;
+            BOOL activeMaintenance = [data[@"activeMaintenance"] boolValue];
+            if (activeMaintenance) {
+                [self displayMaintenanceScreen:data isDeprecated:NO];
+            } else {
+                UIViewController *presentedController =
+                    self.window.rootViewController.presentedViewController;
+                if ([presentedController.presentedViewController
+                        isKindOfClass:[HRPGMaintenanceViewController class]]) {
+                    [presentedController.presentedViewController dismissViewControllerAnimated:YES
+                                                                                    completion:nil];
+                }
+                if (data[@"minBuild"]) {
+                    NSString *build =
+                        [[NSBundle mainBundle] infoDictionary][(NSString *)kCFBundleVersionKey];
+                    if ([data[@"minBuild"] integerValue] > [build integerValue]) {
+                        NSURL *url =
+                            [NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/"
+                                                 @"mobileApp/endpoint/deprecation-ios.json"];
+                        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+                        AFJSONRequestOperation *deprecationOperation = [AFJSONRequestOperation
+                            JSONRequestOperationWithRequest:request
+                            success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                NSDictionary *data = (NSDictionary *)JSON;
+                                [self displayMaintenanceScreen:data isDeprecated:YES];
+                            }
+                            failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
+                                      NSError *error, id JSON){
+                            }];
+                        [deprecationOperation start];
+                    }
                 }
             }
         }
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-    }];
+        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
+        }];
     [operation start];
 }
 
-- (void) displayMaintenanceScreen:(NSDictionary *)data isDeprecated:(BOOL) isDeprecated {
+- (void)displayMaintenanceScreen:(NSDictionary *)data isDeprecated:(BOOL)isDeprecated {
     UIViewController *presentedController = self.window.rootViewController.presentedViewController;
-    if (![presentedController.presentedViewController isKindOfClass:[HRPGMaintenanceViewController class]]) {
-        HRPGMaintenanceViewController *maintenanceViewController = [[HRPGMaintenanceViewController alloc] init];
+    if (![presentedController.presentedViewController
+            isKindOfClass:[HRPGMaintenanceViewController class]]) {
+        HRPGMaintenanceViewController *maintenanceViewController =
+            [[HRPGMaintenanceViewController alloc] init];
         [maintenanceViewController setMaintenanceData:data];
         maintenanceViewController.isDeprecatedApp = isDeprecated;
-        [presentedController presentViewController:maintenanceViewController animated:YES completion:nil];
+        [presentedController presentViewController:maintenanceViewController
+                                          animated:YES
+                                        completion:nil];
     }
 }
 

@@ -7,14 +7,14 @@
 //
 
 #import "HRPGGroupTableViewController.h"
-#import "UIViewController+Markdown.h"
-#import "HRPGMessageViewController.h"
-#import "HRPGUserProfileViewController.h"
-#import "HRPGFlagInformationOverlayView.h"
 #import <KLCPopup.h>
-#import "HRPGPartyMembersViewController.h"
+#import "HRPGFlagInformationOverlayView.h"
 #import "HRPGGroupAboutTableViewController.h"
+#import "HRPGMessageViewController.h"
+#import "HRPGPartyMembersViewController.h"
+#import "HRPGUserProfileViewController.h"
 #import "UIColor+Habitica.h"
+#import "UIViewController+Markdown.h"
 
 @interface HRPGGroupTableViewController ()
 @property NSString *replyMessage;
@@ -63,7 +63,7 @@
             [self.refreshControl endRefreshing];
             [self fetchGroup];
             if (![self.groupID isEqualToString:@"00000000-0000-4000-A000-000000000000"]) {
-                self.group.unreadMessages = [NSNumber numberWithBool:NO];
+                self.group.unreadMessages = @NO;
                 [self.sharedManager chatSeen:self.group.id];
             }
         }
@@ -139,7 +139,6 @@
         } else {
             return 1;
         }
-        return 2;
     } else if (section == [self chatSectionIndex] - 1) {
         return 1;
     } else if (section == [self chatSectionIndex]) {
@@ -222,8 +221,7 @@
         UIActivityIndicatorView *activityIndicator = [cell viewWithTag:1];
         [activityIndicator startAnimating];
     } else if ([cellname isEqualToString:@"MembersCell"]) {
-        cell.detailTextLabel.text =
-            [NSString stringWithFormat:@"%@", self.group.memberCount];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.group.memberCount];
     }
     return cell;
 }
@@ -267,16 +265,16 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
     indexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:[self chatSectionIndex]];
     newIndexPath = [NSIndexPath indexPathForRow:newIndexPath.row inSection:[self chatSectionIndex]];
@@ -294,8 +292,7 @@
         case NSFetchedResultsChangeUpdate: {
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             if ([cell isKindOfClass:[NSString class]]) {
-                [self configureChatMessageCell:(HRPGChatTableViewCell *)cell
-                                   atIndexPath:indexPath];
+                [self configureChatMessageCell:(HRPGChatTableViewCell *)cell atIndexPath:indexPath];
             }
             break;
         }
@@ -319,8 +316,7 @@
     [self.tableView
         deselectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:[self chatSectionIndex] - 1]
                       animated:YES];
-    HRPGMessageViewController *messageController =
-        (HRPGMessageViewController *)[segue sourceViewController];
+    HRPGMessageViewController *messageController = [segue sourceViewController];
     [self.sharedManager chatMessage:messageController.messageView.text
                           withGroup:self.groupID
                           onSuccess:^() {
@@ -337,7 +333,7 @@
 
 - (IBAction)unwindToAcceptGuidelines:(UIStoryboardSegue *)segue {
     [self.sharedManager updateUser:@{
-        @"flags.communityGuidelinesAccepted" : [NSNumber numberWithBool:YES]
+        @"flags.communityGuidelinesAccepted" : @YES
     }
         onSuccess:^() {
             [self performSegueWithIdentifier:@"MessageSegue" sender:self];
@@ -349,13 +345,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"MembersSegue"]) {
-        HRPGPartyMembersViewController *membersViewController =
-            (HRPGPartyMembersViewController *)segue.destinationViewController;
+        HRPGPartyMembersViewController *membersViewController = segue.destinationViewController;
         membersViewController.isLeader = [self.group.leader.id isEqualToString:self.user.id];
         membersViewController.partyID = self.group.id;
     } else if ([segue.identifier isEqualToString:@"AboutSegue"]) {
-        HRPGGroupAboutTableViewController *aboutViewController =
-            (HRPGGroupAboutTableViewController *)segue.destinationViewController;
+        HRPGGroupAboutTableViewController *aboutViewController = segue.destinationViewController;
         aboutViewController.isLeader = [self.group.leader.id isEqualToString:self.user.id];
         aboutViewController.group = self.group;
     }
@@ -380,7 +374,7 @@
         NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"HRPGFlagInformationOverlayView"
                                                           owner:self
                                                         options:nil];
-        HRPGFlagInformationOverlayView *overlayView = [nibViews objectAtIndex:0];
+        HRPGFlagInformationOverlayView *overlayView = nibViews[0];
         overlayView.username = message.user;
         overlayView.message = message.text;
         overlayView.flagAction = ^() {

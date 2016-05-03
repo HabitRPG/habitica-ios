@@ -285,7 +285,7 @@ NSInteger const AppExtensionErrorCodeUnexpectedData = 6;
     if ([webView isKindOfClass:[UIWebView class]]) {
         [self fillLoginIntoUIWebView:webView
                    webViewController:viewController
-                              sender:(id)sender
+                              sender:sender
                           completion:^(BOOL success, NSError *error) {
                               if (completion) {
                                   completion(success, error);
@@ -296,7 +296,7 @@ NSInteger const AppExtensionErrorCodeUnexpectedData = 6;
     else if ([webView isKindOfClass:[WKWebView class]]) {
         [self fillLoginIntoWKWebView:webView
                    forViewController:viewController
-                              sender:(id)sender
+                              sender:sender
                           completion:^(BOOL success, NSError *error) {
                               if (completion) {
                                   completion(success, error);

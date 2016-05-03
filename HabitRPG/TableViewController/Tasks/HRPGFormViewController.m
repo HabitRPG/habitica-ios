@@ -8,18 +8,18 @@
 
 #import "HRPGFormViewController.h"
 #import "ChecklistItem.h"
+#import "HRPGAppDelegate.h"
 #import "NSString+Emoji.h"
+#import "Reminder.h"
 #import "Tag.h"
 #import "XLForm.h"
-#import "HRPGAppDelegate.h"
-#import "Reminder.h"
 
 @interface HRPGFormViewController ()
 @property(nonatomic) NSArray *tags;
 @property(nonatomic) BOOL formFilled;
 @property(nonatomic) XLFormSectionDescriptor *duedateSection;
 @property NSInteger customDayStart;
-@property (nonatomic, strong) NSString *allocationMode;
+@property(nonatomic, strong) NSString *allocationMode;
 @end
 
 @implementation HRPGFormViewController
@@ -86,7 +86,7 @@
     row.required = YES;
     row.selectorTitle = NSLocalizedString(@"Select Difficulty", nil);
     [section addFormRow:row];
-    
+
     if ([self.allocationMode isEqualToString:@"taskbased"]) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"attribute"
                                                     rowType:XLFormRowDescriptorTypeSelectorPush
@@ -101,13 +101,14 @@
             [XLFormOptionsObject formOptionsObjectWithValue:@"per"
                                                 displayText:NSLocalizedString(@"Other", nil)]
         ];
-        row.value = [XLFormOptionsObject formOptionsObjectWithValue:@"str"
-                                                        displayText:NSLocalizedString(@"Physical", nil)];
+        row.value =
+            [XLFormOptionsObject formOptionsObjectWithValue:@"str"
+                                                displayText:NSLocalizedString(@"Physical", nil)];
         row.required = YES;
         row.selectorTitle = NSLocalizedString(@"Select Attributes", nil);
         [section addFormRow:row];
     }
-    
+
     self.form = formDescriptor;
 }
 
@@ -137,8 +138,8 @@
         // Set up row template
         row =
             [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText];
-        [[row cellConfig] setObject:NSLocalizedString(@"Add a new checklist item", nil)
-                             forKey:@"textField.placeholder"];
+        [row cellConfig][@"textField.placeholder"] =
+            NSLocalizedString(@"Add a new checklist item", nil);
         section.multivaluedRowTemplate = row;
         [self.form addFormSection:section];
     }
@@ -151,14 +152,14 @@
             [XLFormRowDescriptor formRowDescriptorWithTag:@"up"
                                                   rowType:XLFormRowDescriptorTypeBooleanCheck
                                                     title:NSLocalizedString(@"Positive (+)", nil)];
-        row.value = [NSNumber numberWithBool:YES];
+        row.value = @YES;
         [section addFormRow:row];
 
         row =
             [XLFormRowDescriptor formRowDescriptorWithTag:@"down"
                                                   rowType:XLFormRowDescriptorTypeBooleanCheck
                                                     title:NSLocalizedString(@"Negative (-)", nil)];
-        row.value = [NSNumber numberWithBool:YES];
+        row.value = @YES;
         [section addFormRow:row];
     }
     NSString *rowType;
@@ -214,7 +215,7 @@
             formRowDescriptorWithTag:@"hasDueDate"
                              rowType:XLFormRowDescriptorTypeBooleanCheck
                                title:NSLocalizedString(@"Has a due date", nil)];
-        row.value = [NSNumber numberWithBool:NO];
+        row.value = @NO;
         [self.duedateSection addFormRow:row];
         [self.form addFormSection:self.duedateSection];
 
@@ -241,7 +242,7 @@
             formRowDescriptorWithTag:[NSString stringWithFormat:@"tag.%@", tag.id]
                              rowType:XLFormRowDescriptorTypeBooleanCheck
                                title:tag.name];
-        row.value = [NSNumber numberWithBool:[self.activeTags containsObject:tag]];
+        row.value = @([self.activeTags containsObject:tag]);
         [section addFormRow:row];
     }
 
@@ -274,25 +275,25 @@
             [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority
                                                 displayText:NSLocalizedString(@"Hard", nil)];
     }
-    
+
     if ([self.task.attribute isEqualToString:@"str"]) {
         [self.form formRowWithTag:@"attribute"].value =
             [XLFormOptionsObject formOptionsObjectWithValue:self.task.attribute
                                                 displayText:NSLocalizedString(@"Physical", nil)];
-    }else if ([self.task.attribute isEqualToString:@"int"]){
+    } else if ([self.task.attribute isEqualToString:@"int"]) {
         [self.form formRowWithTag:@"attribute"].value =
             [XLFormOptionsObject formOptionsObjectWithValue:self.task.attribute
                                                 displayText:NSLocalizedString(@"Mental", nil)];
-    }else if ([self.task.attribute isEqualToString:@"con"]){
+    } else if ([self.task.attribute isEqualToString:@"con"]) {
         [self.form formRowWithTag:@"attribute"].value =
             [XLFormOptionsObject formOptionsObjectWithValue:self.task.attribute
                                                 displayText:NSLocalizedString(@"Social", nil)];
-    }else if ([self.task.attribute isEqualToString:@"per"]){
+    } else if ([self.task.attribute isEqualToString:@"per"]) {
         [self.form formRowWithTag:@"attribute"].value =
             [XLFormOptionsObject formOptionsObjectWithValue:self.task.attribute
                                                 displayText:NSLocalizedString(@"Other", nil)];
     }
-    
+
     if (![self.taskType isEqualToString:@"habit"]) {
         XLFormSectionDescriptor *section = [self.form formSectionAtIndex:1];
 
@@ -300,8 +301,8 @@
             XLFormRowDescriptor *row =
                 [XLFormRowDescriptor formRowDescriptorWithTag:item.id
                                                       rowType:XLFormRowDescriptorTypeText];
-            [[row cellConfig] setObject:NSLocalizedString(@"Add a new checklist item", nil)
-                                 forKey:@"textField.placeholder"];
+            [row cellConfig][@"textField.placeholder"] =
+                NSLocalizedString(@"Add a new checklist item", nil);
             row.value = item.text;
             [section addFormRow:row];
         }
@@ -334,14 +335,13 @@
 
     if ([self.taskType isEqualToString:@"todo"]) {
         if (self.task.duedate) {
-            [self.form formRowWithTag:@"hasDueDate"].value = [NSNumber numberWithBool:YES];
+            [self.form formRowWithTag:@"hasDueDate"].value = @YES;
             [self.form formRowWithTag:@"duedate"].value = self.task.duedate;
         }
     }
 
     for (Tag *tag in self.task.tags) {
-        [self.form formRowWithTag:[NSString stringWithFormat:@"tag.%@", tag.id]].value =
-            [NSNumber numberWithBool:YES];
+        [self.form formRowWithTag:[NSString stringWithFormat:@"tag.%@", tag.id]].value = @YES;
     }
 
     [self.tableView reloadData];

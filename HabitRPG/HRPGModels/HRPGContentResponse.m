@@ -5,8 +5,6 @@
 
 #import "HRPGContentResponse.h"
 
-
 @implementation HRPGContentResponse {
-
 }
 @end

@@ -51,7 +51,7 @@
     if (self.group && indexPath.section == 0 && indexPath.item == 0) {
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         UIView *textWrapper = [cell viewWithTag:1];
-        UIActivityIndicatorView *indicator = (UIActivityIndicatorView *)[cell viewWithTag:3];
+        UIActivityIndicatorView *indicator = [cell viewWithTag:3];
         [indicator startAnimating];
         [UIView animateWithDuration:0.4
             animations:^() {
@@ -96,7 +96,7 @@
         UITableViewCell *cell =
             [tableView dequeueReusableCellWithIdentifier:@"InnCell" forIndexPath:indexPath];
         UIView *textWrapper = [cell viewWithTag:1];
-        UILabel *label = (UILabel *)[cell viewWithTag:2];
+        UILabel *label = [cell viewWithTag:2];
         if ([self.user.preferences.sleep boolValue]) {
             label.text = NSLocalizedString(@"Reactivate your Dailies", nil);
             label.textColor = [UIColor red100];
@@ -104,12 +104,12 @@
             label.text = NSLocalizedString(@"Pause your Dailies", nil);
             label.textColor = [UIColor green100];
         }
-        UIActivityIndicatorView *indicator = (UIActivityIndicatorView *)[cell viewWithTag:3];
+        UIActivityIndicatorView *indicator = [cell viewWithTag:3];
         textWrapper.hidden = NO;
         label.hidden = NO;
         indicator.hidden = YES;
 
-        UIImageView *innImageView = (UIImageView *)[cell viewWithTag:4];
+        UIImageView *innImageView = [cell viewWithTag:4];
         NSString *url = @"npc_daniel";
         if ([self.group.worldDmgTavern boolValue]) {
             url = @"npc_daniel_broken";

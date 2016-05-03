@@ -7,13 +7,13 @@
 //
 
 #import "HRPGClassTableViewController.h"
+#import <Google/Analytics.h>
+#import "Amplitude.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGWebViewController.h"
 #import "NIKFontAwesomeIconFactory.h"
-#import "UIViewcontroller+TutorialSteps.h"
-#import <Google/Analytics.h>
 #import "UIColor+Habitica.h"
-#import "Amplitude.h"
+#import "UIViewcontroller+TutorialSteps.h"
 
 @interface HRPGClassTableViewController ()
 @property CGSize screenSize;
@@ -57,11 +57,13 @@
         [iconFactory createImageForIcon:NIKFontAwesomeIconQuestionCircle];
 
     [self loadClassesArray];
-    
+
     if (self.shouldResetClass) {
-        [self.sharedManager changeClass:nil onSuccess:^{
-            self.classWasUnset = YES;
-        } onError:nil];
+        [self.sharedManager changeClass:nil
+                              onSuccess:^{
+                                  self.classWasUnset = YES;
+                              }
+                                onError:nil];
     }
 }
 
@@ -151,17 +153,17 @@
         UITableViewCell *cell =
             [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-        NSArray *item = [self.classesArray objectAtIndex:indexPath.item];
+        NSArray *item = self.classesArray[indexPath.item];
 
-        UILabel *label = (UILabel *)[cell viewWithTag:1];
-        UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:2];
-        UIImageView *imageView = (UIImageView *)[cell viewWithTag:3];
+        UILabel *label = [cell viewWithTag:1];
+        UILabel *descriptionLabel = [cell viewWithTag:2];
+        UIImageView *imageView = [cell viewWithTag:3];
 
-        label.text = [item objectAtIndex:0];
+        label.text = item[0];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-        descriptionLabel.text = [item objectAtIndex:1];
+        descriptionLabel.text = item[1];
         descriptionLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-        User *classUser = [item objectAtIndex:2];
+        User *classUser = item[2];
 
         [classUser setAvatarOnImageView:imageView withPetMount:YES onlyHead:NO useForce:NO];
 
@@ -230,11 +232,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (self.shouldResetClass && !self.classWasUnset) {
         return;
     }
-    
+
     self.selectedIndex = indexPath;
     if (indexPath.item == 4) {
         if ([UIAlertController class]) {
@@ -327,8 +328,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"HelpSegue"]) {
-        HRPGWebViewController *webViewController =
-            (HRPGWebViewController *)segue.destinationViewController;
+        HRPGWebViewController *webViewController = segue.destinationViewController;
         webViewController.url = @"http://habitrpg.wikia.com/wiki/Class_System";
     }
 }
@@ -363,8 +363,7 @@
                              @"you find motivation from unpredictable jackpot-style rewards, or "
                              @"want to dish out the hurt in boss Quests!",
                              nil),
-           warrior,
-           @"warrior"
+           warrior, @"warrior"
         ],
         @[
            NSLocalizedString(@"Mage", nil),
@@ -374,8 +373,7 @@
                              @"aspects of Habit, or if you are strongly motivated by leveling up "
                              @"and unlocking advanced features!",
                              nil),
-           mage,
-           @"wizard"
+           mage, @"wizard"
         ],
         @[
            NSLocalizedString(@"Rogue", nil),
@@ -385,8 +383,7 @@
                              @"Rogue if you find strong motivation from Rewards and Achievements, "
                              @"striving for loot and badges!",
                              nil),
-           rogue,
-           @"rogue"
+           rogue, @"rogue"
         ],
         @[
            NSLocalizedString(@"Healer", nil),
@@ -396,8 +393,7 @@
                              @"you enjoy assisting others in your Party, or if the idea of "
                              @"cheating Death through hard work inspires you!",
                              nil),
-           healer,
-           @"healer"
+           healer, @"healer"
         ],
     ];
 }
@@ -405,16 +401,15 @@
 - (User *)setUpClassUserWithClass:(NSString *)className {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"User"
                                               inManagedObjectContext:self.managedObjectContext];
-    User *user =
-        (User *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    User *user = [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
     entity = [NSEntityDescription entityForName:@"Preferences"
                          inManagedObjectContext:self.managedObjectContext];
-    user.preferences = (Preferences *)[[NSManagedObject alloc] initWithEntity:entity
-                                               insertIntoManagedObjectContext:nil];
+    user.preferences =
+        [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
     entity = [NSEntityDescription entityForName:@"Outfit"
                          inManagedObjectContext:self.managedObjectContext];
-    user.equipped = (Outfit *)[[NSManagedObject alloc] initWithEntity:entity
-                                       insertIntoManagedObjectContext:nil];
+    user.equipped =
+        [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
     user.username = [self.user.username stringByAppendingString:className];
     user.preferences.skin = self.user.preferences.skin;
     user.preferences.hairBangs = self.user.preferences.hairBangs;
@@ -437,39 +432,41 @@
                 @"preferences.disableClasses" : @YES,
                 @"flags.classSelected" : @YES
             }
-                onSuccess:^() {
-                    if (self.navigationController.viewControllers.count > 1) {
-                        [self.navigationController popViewControllerAnimated:YES];
-                    } else {
-                        [self.presentingViewController dismissViewControllerAnimated:YES
-                                                                          completion:^(){
-                                                                          }];
-                    }
-                }
-                onError:nil];
+                                 onSuccess:^() {
+                                     if (self.navigationController.viewControllers.count > 1) {
+                                         [self.navigationController popViewControllerAnimated:YES];
+                                     } else {
+                                         [self.presentingViewController
+                                             dismissViewControllerAnimated:YES
+                                                                completion:^(){
+                                                                }];
+                                     }
+                                 }
+                                   onError:nil];
         } else {
-            [self.sharedManager changeClass:self.classesArray[self.selectedIndex.item][3]
-                onSuccess:^() {
-                    [self.sharedManager fetchUser:^() {
-                        if (self.navigationController.viewControllers.count > 1) {
-                            [self.navigationController popViewControllerAnimated:YES];
-                        } else {
-                            [self.presentingViewController dismissViewControllerAnimated:YES
-                                                                              completion:^(){
-                                                                              }];
-                        }
-                    }
-                        onError:^() {
-                            if (self.navigationController.viewControllers.count > 1) {
-                                [self.navigationController popViewControllerAnimated:YES];
-                            } else {
-                                [self.presentingViewController dismissViewControllerAnimated:YES
-                                                                                  completion:^(){
-                                                                                  }];
-                            }
-                        }];
-                }
-                onError:nil];
+            [self.sharedManager
+                changeClass:self.classesArray[self.selectedIndex.item][3]
+                  onSuccess:^() {
+                      [self.sharedManager fetchUser:^() {
+                          if (self.navigationController.viewControllers.count > 1) {
+                              [self.navigationController popViewControllerAnimated:YES];
+                          } else {
+                              [self.presentingViewController dismissViewControllerAnimated:YES
+                                                                                completion:^(){
+                                                                                }];
+                          }
+                      }
+                          onError:^() {
+                              if (self.navigationController.viewControllers.count > 1) {
+                                  [self.navigationController popViewControllerAnimated:YES];
+                              } else {
+                                  [self.presentingViewController dismissViewControllerAnimated:YES
+                                                                                    completion:^(){
+                                                                                    }];
+                              }
+                          }];
+                  }
+                    onError:nil];
         }
         [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
     }

@@ -7,11 +7,11 @@
 //
 
 #import "HRPGPetMasterViewController.h"
-#import "HRPGPetViewController.h"
 #import "Egg.h"
-#import "HatchingPotion.h"
 #import "HRPGArrayViewController.h"
 #import "HRPGNavigationController.h"
+#import "HRPGPetViewController.h"
+#import "HatchingPotion.h"
 #import "UIColor+Habitica.h"
 
 @interface HRPGPetMasterViewController ()
@@ -147,8 +147,8 @@ NSUserDefaults *defaults;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+                    layout:(UICollectionViewLayout *)collectionViewLayout
+    sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = 121.0f;
     height = height +
              [@" " boundingRectWithSize:CGSizeMake(90.0f, MAXFLOAT)
@@ -182,7 +182,7 @@ NSUserDefaults *defaults;
         [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                                            withReuseIdentifier:@"SectionCell"
                                                   forIndexPath:indexPath];
-    UILabel *label = (UILabel *)[headerView viewWithTag:1];
+    UILabel *label = [headerView viewWithTag:1];
     NSString *sectionName = [[self.fetchedResultsController sections][indexPath.section] name];
     if ([sectionName isEqualToString:@"questPets"]) {
         label.text = NSLocalizedString(@"Quest Pets", nil);
@@ -278,16 +278,16 @@ NSUserDefaults *defaults;
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
@@ -296,9 +296,9 @@ NSUserDefaults *defaults;
 
 - (void)configureCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSArray *petArray = self.sortedPets[indexPath.section][indexPath.item];
-    UILabel *label = (UILabel *)[cell viewWithTag:1];
-    UIImageView *imageView = (UIImageView *)[cell viewWithTag:2];
-    UILabel *progressLabel = (UILabel *)[cell viewWithTag:3];
+    UILabel *label = [cell viewWithTag:1];
+    UIImageView *imageView = [cell viewWithTag:2];
+    UILabel *progressLabel = [cell viewWithTag:3];
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     progressLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     NSString *petKey;
@@ -361,16 +361,14 @@ NSUserDefaults *defaults;
         destNavigationController.sourceViewController = self;
     }
     if ([segue.identifier isEqualToString:@"GroupBySegue"]) {
-        UINavigationController *navController =
-            (UINavigationController *)segue.destinationViewController;
+        UINavigationController *navController = segue.destinationViewController;
         HRPGArrayViewController *arrayViewController =
             (HRPGArrayViewController *)navController.topViewController;
         arrayViewController.items =
             @[ NSLocalizedString(@"Pet Type", nil), NSLocalizedString(@"Color", nil) ];
         arrayViewController.selectedIndex = [defaults integerForKey:@"groupPetsBy"];
     } else if (![segue.identifier isEqualToString:@"PetSegue"]) {
-        HRPGPetViewController *petController =
-            (HRPGPetViewController *)segue.destinationViewController;
+        HRPGPetViewController *petController = segue.destinationViewController;
         petController.petName = self.selectedPet;
         petController.petType = self.selectedType;
         petController.petColor = self.selectedColor;
@@ -378,8 +376,7 @@ NSUserDefaults *defaults;
 }
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-    HRPGArrayViewController *arrayViewController =
-        (HRPGArrayViewController *)segue.sourceViewController;
+    HRPGArrayViewController *arrayViewController = segue.sourceViewController;
     [defaults setInteger:arrayViewController.selectedIndex forKey:@"groupPetsBy"];
     self.groupByKey = arrayViewController.selectedIndex;
     self.selectedPet = nil;

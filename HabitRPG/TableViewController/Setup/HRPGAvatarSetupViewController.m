@@ -7,15 +7,15 @@
 //
 
 #import "HRPGAvatarSetupViewController.h"
-#import "HRPGCustomizationSelectionView.h"
-#import "UIColor+Habitica.h"
-#import "Customization.h"
-#import "HRPGTaskSetupTableViewController.h"
-#import "HRPGManager.h"
-#import "HRPGAppDelegate.h"
-#import "HRPGTypingLabel.h"
 #import <Google/Analytics.h>
 #import "Amplitude.h"
+#import "Customization.h"
+#import "HRPGAppDelegate.h"
+#import "HRPGCustomizationSelectionView.h"
+#import "HRPGManager.h"
+#import "HRPGTaskSetupTableViewController.h"
+#import "HRPGTypingLabel.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGAvatarSetupViewController ()
 @property(weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
@@ -494,8 +494,8 @@
 
     CAGradientLayer *layer = [CAGradientLayer layer];
     layer.frame = self.gradientView.bounds;
-    layer.colors = [NSArray arrayWithObjects:(id)[UIColor whiteColor].CGColor,
-                                             (id)[UIColor colorWithWhite:1 alpha:0].CGColor, nil];
+    layer.colors =
+        @[ (id)[UIColor whiteColor].CGColor, (id)[UIColor colorWithWhite:1 alpha:0].CGColor ];
     layer.startPoint = CGPointMake(1.0f, 0.75f);
     layer.endPoint = CGPointMake(1.0f, 0.0f);
     [self.gradientView.layer insertSublayer:layer atIndex:0];

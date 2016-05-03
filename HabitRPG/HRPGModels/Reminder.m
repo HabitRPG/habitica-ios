@@ -28,7 +28,7 @@
 - (void)removeAllNotifications {
     UIApplication *sharedApplication = [UIApplication sharedApplication];
     for (UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
-        if ([[reminder.userInfo objectForKey:@"ID"] isEqualToString:self.id]) {
+        if ([reminder.userInfo[@"ID"] isEqualToString:self.id]) {
             [sharedApplication cancelLocalNotification:reminder];
         }
     }
@@ -37,7 +37,7 @@
 - (void)removeTodaysNotifications {
     UIApplication *sharedApplication = [UIApplication sharedApplication];
     for (UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
-        if ([[reminder.userInfo objectForKey:@"ID"] isEqualToString:self.id] &&
+        if ([reminder.userInfo[@"ID"] isEqualToString:self.id] &&
             [self isSameDayWithDate1:[NSDate date] date2:reminder.fireDate]) {
             [sharedApplication cancelLocalNotification:reminder];
         }

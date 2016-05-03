@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XLFormViewController.h"
 #import "Group.h"
+#import "XLFormViewController.h"
 
 @interface HRPGGroupFormViewController : XLFormViewController
 

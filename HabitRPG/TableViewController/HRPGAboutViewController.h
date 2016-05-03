@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Phillip Thelen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
 
 @interface HRPGAboutViewController : HRPGBaseViewController<MFMailComposeViewControllerDelegate>

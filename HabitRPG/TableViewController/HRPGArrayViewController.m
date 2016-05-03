@@ -41,7 +41,7 @@
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView
-  willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.selectedIndex = indexPath.item;
     [tableView reloadRowsAtIndexPaths:@[ indexPath ]
                      withRowAnimation:UITableViewRowAnimationAutomatic];

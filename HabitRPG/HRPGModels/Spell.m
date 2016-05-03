@@ -20,7 +20,9 @@
 
 - (void)setKlass:(NSString *)klass {
     [self willChangeValueForKey:@"klass"];
-    [self setPrimitiveValue:[klass stringByReplacingOccurrencesOfString:@"data.spells." withString:@""] forKey:@"klass"];
+    [self setPrimitiveValue:[klass stringByReplacingOccurrencesOfString:@"data.spells."
+                                                             withString:@""]
+                     forKey:@"klass"];
     [self didChangeValueForKey:@"klass"];
 }
 

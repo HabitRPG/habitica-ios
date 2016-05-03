@@ -7,36 +7,37 @@
 //
 
 #import "HRPGManager.h"
-#import "HRPGAppDelegate.h"
-#import "CRToast.h"
-#import "HRPGTaskResponse.h"
-#import "HRPGLoginData.h"
-#import <PDKeychainBindings.h>
-#import <NIKFontAwesomeIconFactory.h>
-#import "Gear.h"
-#import "Reward.h"
-#import "Quest.h"
-#import <YYWebImage.h>
-#import "HRPGUserBuyResponse.h"
-#import "HRPGEmptySerializer.h"
-#import "HRPGNetworkIndicatorController.h"
-#import "Customization.h"
-#import "HRPGDeathView.h"
-#import <Google/Analytics.h>
-#import "HRPGImageOverlayView.h"
-#import "HRPGBatchOperation.h"
-#import "UIColor+Habitica.h"
-#import "Amplitude.h"
 #import <Crashlytics/Crashlytics.h>
-#import "HRPGSharingManager.h"
+#import <Google/Analytics.h>
+#import <NIKFontAwesomeIconFactory.h>
+#import <PDKeychainBindings.h>
+#import <YYWebImage.h>
+#import "Amplitude.h"
+#import "CRToast.h"
+#import "Customization.h"
+#import "Gear.h"
+#import "HRPGAppDelegate.h"
+#import "HRPGBatchOperation.h"
 #import "HRPGContentResponse.h"
+#import "HRPGDeathView.h"
+#import "HRPGEmptySerializer.h"
+#import "HRPGImageOverlayView.h"
+#import "HRPGLoginData.h"
+#import "HRPGNetworkIndicatorController.h"
+#import "HRPGSharingManager.h"
+#import "HRPGTaskResponse.h"
+#import "HRPGUserBuyResponse.h"
+#import "Quest.h"
+#import "Reward.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
 @property HRPGNetworkIndicatorController *networkIndicatorController;
 @end
 
-@implementation HRPGManager {}
+@implementation HRPGManager {
+}
 @synthesize managedObjectContext;
 RKManagedObjectStore *managedObjectStore;
 NSUserDefaults *defaults;
@@ -78,11 +79,10 @@ NSString *currentUser;
 
         NSString *storePath =
             [RKApplicationDataDirectory() stringByAppendingPathComponent:@"HabitRPG.sqlite"];
-        NSDictionary *options =
-                @{NSMigratePersistentStoresAutomaticallyOption :
-                        @YES,
-                        NSInferMappingModelAutomaticallyOption :
-                        @YES};
+        NSDictionary *options = @{
+            NSMigratePersistentStoresAutomaticallyOption : @YES,
+            NSInferMappingModelAutomaticallyOption : @YES
+        };
         NSPersistentStore *persistentStore =
             [managedObjectStore addSQLitePersistentStoreAtPath:storePath
                                         fromSeedDatabaseAtPath:nil
@@ -106,22 +106,22 @@ NSString *currentUser;
 
 #ifdef DEBUG
     NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
-    NSString *CUSTOM_DOMAIN = [info objectForKey:@"CustomDomain"];
-    NSString *DISABLE_SSL = [info objectForKey:@"DisableSSL"];
+    NSString *CUSTOM_DOMAIN = info[@"CustomDomain"];
+    NSString *DISABLE_SSL = info[@"DisableSSL"];
 
     if (CUSTOM_DOMAIN.length == 0) {
-        CUSTOM_DOMAIN = @"habitica.com";
+        CUSTOM_DOMAIN = @"192.168.42.21:3000/";
     }
 
     if ([DISABLE_SSL isEqualToString:@"true"]) {
         ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
     } else {
-        ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
+        ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
     }
 #else
-    ROOT_URL = @"https://habitica.com";
+    ROOT_URL = @"https://habitica.com/";
 #endif
-    
+
     ROOT_URL = [ROOT_URL stringByAppendingString:@"api/v3/"];
 
     // Set the default store shared instance
@@ -205,22 +205,22 @@ NSString *currentUser;
                                                                        toKeyPath:@"reminders"
                                                                      withMapping:remindersMapping]];
 
-    [[RKObjectManager sharedManager]
-            .router.routeSet addRoute:[RKRoute routeWithClass:[Task class]
-                                                  pathPattern:@"tasks/:id"
-                                                       method:RKRequestMethodGET]];
-    [[RKObjectManager sharedManager]
-            .router.routeSet addRoute:[RKRoute routeWithClass:[Task class]
-                                                  pathPattern:@"tasks/:id"
-                                                       method:RKRequestMethodPUT]];
-    [[RKObjectManager sharedManager]
-            .router.routeSet addRoute:[RKRoute routeWithClass:[Task class]
-                                                  pathPattern:@"tasks/user"
-                                                       method:RKRequestMethodPOST]];
-    [[RKObjectManager sharedManager]
-            .router.routeSet addRoute:[RKRoute routeWithClass:[Task class]
-                                                  pathPattern:@"tasks/:id"
-                                                       method:RKRequestMethodDELETE]];
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithClass:[Task class]
+                             pathPattern:@"tasks/:id"
+                                  method:RKRequestMethodGET]];
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithClass:[Task class]
+                             pathPattern:@"tasks/:id"
+                                  method:RKRequestMethodPUT]];
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithClass:[Task class]
+                             pathPattern:@"tasks/user"
+                                  method:RKRequestMethodPOST]];
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithClass:[Task class]
+                             pathPattern:@"tasks/:id"
+                                  method:RKRequestMethodDELETE]];
 
     RKObjectMapping *taskRequestMapping =
         [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
@@ -288,10 +288,10 @@ NSString *currentUser;
                                                    method:RKRequestMethodPUT];
     [objectManager addRequestDescriptor:requestDescriptor];
 
-    [[RKObjectManager sharedManager]
-            .router.routeSet addRoute:[RKRoute routeWithName:@"taskdirection"
-                                                 pathPattern:@"tasks/:id/score/:direction"
-                                                      method:RKRequestMethodPOST]];
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithName:@"taskdirection"
+                            pathPattern:@"tasks/:id/score/:direction"
+                                 method:RKRequestMethodPOST]];
     responseDescriptor = [RKResponseDescriptor
         responseDescriptorWithMapping:taskMapping
                                method:RKRequestMethodPOST
@@ -304,49 +304,49 @@ NSString *currentUser;
                                                                    method:RKRequestMethodPOST];
     [objectManager addResponseDescriptor:responseDescriptor];
     [objectManager addRequestDescriptor:requestDescriptor];
-    
+
     RKEntityMapping *rewardMapping =
-    [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
+        [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
     [rewardMapping addAttributeMappingsFromDictionary:@{
-                                                        @"_id" : @"key",
-                                                        @"text" : @"text",
-                                                        @"dateCreated" : @"dateCreated",
-                                                        @"value" : @"value",
-                                                        @"type" : @"type",
-                                                        @"notes" : @"notes",
-                                                        @"@metadata.mapping.collectionIndex" : @"order",
-                                                        @"tags" : @"tagArray"
-                                                        }];
+        @"_id" : @"key",
+        @"text" : @"text",
+        @"dateCreated" : @"dateCreated",
+        @"value" : @"value",
+        @"type" : @"type",
+        @"notes" : @"notes",
+        @"@metadata.mapping.collectionIndex" : @"order",
+        @"tags" : @"tagArray"
+    }];
     rewardMapping.identificationAttributes = @[ @"key" ];
-    
+
     RKObjectMapping *rewardRequestMapping =
-    [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+        [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
     [rewardRequestMapping addAttributeMappingsFromDictionary:@{
-                                                               @"key" : @"_id",
-                                                               @"text" : @"text",
-                                                               @"value" : @"value",
-                                                               @"notes" : @"notes",
-                                                               @"type" : @"type",
-                                                               @"tagArray" : @"tags"
-                                                               }];
-    
-    [[RKObjectManager sharedManager]
-     .router.routeSet addRoute:[RKRoute routeWithClass:[Reward class]
-                                           pathPattern:@"tasks/:key"
-                                                method:RKRequestMethodGET]];
-    [[RKObjectManager sharedManager]
-     .router.routeSet addRoute:[RKRoute routeWithClass:[Reward class]
-                                           pathPattern:@"tasks/:key"
-                                                method:RKRequestMethodPUT]];
-    [[RKObjectManager sharedManager]
-     .router.routeSet addRoute:[RKRoute routeWithClass:[Reward class]
-                                           pathPattern:@"tasks/user"
-                                                method:RKRequestMethodPOST]];
-    [[RKObjectManager sharedManager]
-     .router.routeSet addRoute:[RKRoute routeWithClass:[Reward class]
-                                           pathPattern:@"tasks/:key"
-                                                method:RKRequestMethodDELETE]];
-    
+        @"key" : @"_id",
+        @"text" : @"text",
+        @"value" : @"value",
+        @"notes" : @"notes",
+        @"type" : @"type",
+        @"tagArray" : @"tags"
+    }];
+
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithClass:[Reward class]
+                             pathPattern:@"tasks/:key"
+                                  method:RKRequestMethodGET]];
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithClass:[Reward class]
+                             pathPattern:@"tasks/:key"
+                                  method:RKRequestMethodPUT]];
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithClass:[Reward class]
+                             pathPattern:@"tasks/user"
+                                  method:RKRequestMethodPOST]];
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithClass:[Reward class]
+                             pathPattern:@"tasks/:key"
+                                  method:RKRequestMethodDELETE]];
+
     requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:rewardRequestMapping
                                                               objectClass:[Reward class]
                                                               rootKeyPath:nil
@@ -357,28 +357,29 @@ NSString *currentUser;
                                                               rootKeyPath:nil
                                                                    method:RKRequestMethodPUT];
     [objectManager addRequestDescriptor:requestDescriptor];
-    
+
     RKDynamicMapping *dynamicTaskMapping = [RKDynamicMapping new];
-    [dynamicTaskMapping setObjectMappingForRepresentationBlock:^RKObjectMapping *(id representation) {
-        if ([[representation valueForKey:@"type"] isEqualToString:@"reward"]) {
-            return rewardMapping;
-        } else {
-            return taskMapping;
-        }
-    }];
+    [dynamicTaskMapping
+        setObjectMappingForRepresentationBlock:^RKObjectMapping *(id representation) {
+            if ([[representation valueForKey:@"type"] isEqualToString:@"reward"]) {
+                return rewardMapping;
+            } else {
+                return taskMapping;
+            }
+        }];
     responseDescriptor = [RKResponseDescriptor
-                          responseDescriptorWithMapping:dynamicTaskMapping
-                          method:RKRequestMethodGET
+        responseDescriptorWithMapping:dynamicTaskMapping
+                               method:RKRequestMethodGET
                           pathPattern:@"tasks/user"
-                          keyPath:@"data"
+                              keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     responseDescriptor = [RKResponseDescriptor
-                          responseDescriptorWithMapping:dynamicTaskMapping
-                          method:RKRequestMethodPOST
+        responseDescriptorWithMapping:dynamicTaskMapping
+                               method:RKRequestMethodPOST
                           pathPattern:@"tasks/clearCompletedTodos"
-                          keyPath:@"data"
+                              keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
@@ -546,9 +547,8 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
-    RKObjectMapping *feedMapping =
-    [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-    [feedMapping addAttributeMappingsFromDictionary:@{@"data": @"value"}];
+    RKObjectMapping *feedMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [feedMapping addAttributeMappingsFromDictionary:@{ @"data" : @"value" }];
     responseDescriptor = [RKResponseDescriptor
         responseDescriptorWithMapping:feedMapping
                                method:RKRequestMethodPOST
@@ -560,40 +560,40 @@ NSString *currentUser;
     RKEntityMapping *entityMapping =
         [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     [entityMapping addAttributeMappingsFromDictionary:@{
-            @"_id" : @"id",
-            @"balance" : @"balance",
-            @"profile.name" : @"username",
-            @"auth.local.email" : @"email",
-            @"stats.lvl" : @"level",
-            @"stats.gp" : @"gold",
-            @"stats.exp" : @"experience",
-            @"stats.mp" : @"magic",
-            @"stats.hp" : @"health",
-            @"stats.class" : @"hclass",
-            @"items.currentPet" : @"currentPet",
-            @"items.currentMount" : @"currentMount",
-            @"auth.timestamps.loggedin" : @"lastLogin",
-            @"stats.con" : @"constitution",
-            @"stats.int" : @"intelligence",
-            @"stats.per" : @"perception",
-            @"stats.str" : @"strength",
-            @"stats.buff.con" : @"buffConstitution",
-            @"stats.buff.int" : @"buffIntelligence",
-            @"stats.buff.per" : @"buffPerception",
-            @"stats.buff.str" : @"buffStrength",
-            @"stats.training.con" : @"trainingConstitution",
-            @"stats.training.int" : @"trainingIntelligence",
-            @"stats.training.per" : @"trainingPerception",
-            @"stats.training.str" : @"trainingStrength",
-            @"contributor.level" : @"contributorLevel",
-            @"contributor.text" : @"contributorText",
-            @"contributor.contributions" : @"contributions",
-            @"party.order" : @"partyOrder",
-            @"party._id": @"partyID",
-            @"items.pets" : @"petCountArray",
-            @"purchased" : @"customizationsDictionary",
-            @"invitations.party.id" : @"invitedParty",
-            @"invitations.party.name" : @"invitedPartyName"
+        @"_id" : @"id",
+        @"balance" : @"balance",
+        @"profile.name" : @"username",
+        @"auth.local.email" : @"email",
+        @"stats.lvl" : @"level",
+        @"stats.gp" : @"gold",
+        @"stats.exp" : @"experience",
+        @"stats.mp" : @"magic",
+        @"stats.hp" : @"health",
+        @"stats.class" : @"hclass",
+        @"items.currentPet" : @"currentPet",
+        @"items.currentMount" : @"currentMount",
+        @"auth.timestamps.loggedin" : @"lastLogin",
+        @"stats.con" : @"constitution",
+        @"stats.int" : @"intelligence",
+        @"stats.per" : @"perception",
+        @"stats.str" : @"strength",
+        @"stats.buff.con" : @"buffConstitution",
+        @"stats.buff.int" : @"buffIntelligence",
+        @"stats.buff.per" : @"buffPerception",
+        @"stats.buff.str" : @"buffStrength",
+        @"stats.training.con" : @"trainingConstitution",
+        @"stats.training.int" : @"trainingIntelligence",
+        @"stats.training.per" : @"trainingPerception",
+        @"stats.training.str" : @"trainingStrength",
+        @"contributor.level" : @"contributorLevel",
+        @"contributor.text" : @"contributorText",
+        @"contributor.contributions" : @"contributions",
+        @"party.order" : @"partyOrder",
+        @"party._id" : @"partyID",
+        @"items.pets" : @"petCountArray",
+        @"purchased" : @"customizationsDictionary",
+        @"invitations.party.id" : @"invitedParty",
+        @"invitations.party.name" : @"invitedPartyName"
     }];
     entityMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping *userTagMapping =
@@ -616,14 +616,7 @@ NSString *currentUser;
         @"@metadata.mapping.rootKeyPath" : @"type"
     }];
     [userOutfitMapping addAttributeMappingsFromArray:@[
-        @"armor",
-        @"back",
-        @"body",
-        @"eyewear",
-        @"head",
-        @"headAccessory",
-        @"shield",
-        @"weapon"
+        @"armor", @"back", @"body", @"eyewear", @"head", @"headAccessory", @"shield", @"weapon"
     ]];
     [entityMapping addPropertyMapping:[RKRelationshipMapping
                                           relationshipMappingFromKeyPath:@"items.gear.costume"
@@ -679,23 +672,22 @@ NSString *currentUser;
                                                   withMapping:improvementCategoryMapping]];
 
     RKEntityMapping *flagsMapping =
-    [RKEntityMapping mappingForEntityForName:@"Flags"
-                        inManagedObjectStore:managedObjectStore];
+        [RKEntityMapping mappingForEntityForName:@"Flags" inManagedObjectStore:managedObjectStore];
     [flagsMapping addAttributeMappingsFromDictionary:@{
-                                                             @"@parent._id" : @"userID",
-                                                             @"newStuff" : @"habitNewStuff",
-                                                             @"dropsEnabled" : @"dropsEnabled",
-                                                             @"itemsEnabled" : @"itemsEnabled",
-                                                             @"classSelected" : @"classSelected",
-                                                             @"armoireEnabled" : @"armoireEnabled",
-                                                             @"armoireEmpty" : @"armoireEmpty",
-                                                             @"communityGuidelinesAccepted" : @"communityGuidelinesAccepted",
-                                                             }];
+        @"@parent._id" : @"userID",
+        @"newStuff" : @"habitNewStuff",
+        @"dropsEnabled" : @"dropsEnabled",
+        @"itemsEnabled" : @"itemsEnabled",
+        @"classSelected" : @"classSelected",
+        @"armoireEnabled" : @"armoireEnabled",
+        @"armoireEmpty" : @"armoireEmpty",
+        @"communityGuidelinesAccepted" : @"communityGuidelinesAccepted",
+    }];
     flagsMapping.identificationAttributes = @[ @"userID" ];
-    [entityMapping addPropertyMapping:[RKRelationshipMapping
-                                       relationshipMappingFromKeyPath:@"flags"
-                                       toKeyPath:@"flags"
-                                       withMapping:flagsMapping]];
+    [entityMapping
+        addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"flags"
+                                                                       toKeyPath:@"flags"
+                                                                     withMapping:flagsMapping]];
 
     RKEntityMapping *gearOwnedMapping =
         [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
@@ -797,13 +789,13 @@ NSString *currentUser;
     }];
     tutorialsSeenMapping.identificationAttributes = @[ @"identifier" ];
     [flagsMapping addPropertyMapping:[RKRelationshipMapping
-                                          relationshipMappingFromKeyPath:@"tutorial.ios"
-                                                               toKeyPath:@"iOSTutorialSteps"
-                                                             withMapping:tutorialsSeenMapping]];
+                                         relationshipMappingFromKeyPath:@"tutorial.ios"
+                                                              toKeyPath:@"iOSTutorialSteps"
+                                                            withMapping:tutorialsSeenMapping]];
     [flagsMapping addPropertyMapping:[RKRelationshipMapping
-                                          relationshipMappingFromKeyPath:@"tutorial.common"
-                                                               toKeyPath:@"commonTutorialSteps"
-                                                             withMapping:tutorialsSeenMapping]];
+                                         relationshipMappingFromKeyPath:@"tutorial.common"
+                                                              toKeyPath:@"commonTutorialSteps"
+                                                            withMapping:tutorialsSeenMapping]];
 
     responseDescriptor = [RKResponseDescriptor
         responseDescriptorWithMapping:entityMapping
@@ -830,11 +822,11 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
 
     responseDescriptor = [RKResponseDescriptor
-            responseDescriptorWithMapping:entityMapping
-                                   method:RKRequestMethodPOST
-                              pathPattern:@"user/disable-classes"
-                                  keyPath:@"data"
-                              statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        responseDescriptorWithMapping:entityMapping
+                               method:RKRequestMethodPOST
+                          pathPattern:@"user/disable-classes"
+                              keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
     responseDescriptor = [RKResponseDescriptor
@@ -1129,27 +1121,27 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
 
     responseDescriptor = [RKResponseDescriptor
-            responseDescriptorWithMapping:entityMapping
-                                   method:RKRequestMethodPOST
-                              pathPattern:@"groups/:id/quests/invite/:questKey"
-                                  keyPath:@"data"
-                              statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        responseDescriptorWithMapping:entityMapping
+                               method:RKRequestMethodPOST
+                          pathPattern:@"groups/:id/quests/invite/:questKey"
+                              keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
     responseDescriptor = [RKResponseDescriptor
-            responseDescriptorWithMapping:entityMapping
-                                   method:RKRequestMethodPOST
-                              pathPattern:@"groups/:id/quests/force-start"
-                                  keyPath:@"data"
-                              statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        responseDescriptorWithMapping:entityMapping
+                               method:RKRequestMethodPOST
+                          pathPattern:@"groups/:id/quests/force-start"
+                              keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
     responseDescriptor = [RKResponseDescriptor
-            responseDescriptorWithMapping:entityMapping
-                                   method:RKRequestMethodPOST
-                              pathPattern:@"groups/:id/quests/cancel"
-                                  keyPath:@"data"
-                              statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        responseDescriptorWithMapping:entityMapping
+                               method:RKRequestMethodPOST
+                          pathPattern:@"groups/:id/quests/cancel"
+                              keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
     responseDescriptor = [RKResponseDescriptor
@@ -1186,22 +1178,22 @@ NSString *currentUser;
         @"leader.id" : @"leader"
     }];
 
-    [[RKObjectManager sharedManager]
-            .router.routeSet addRoute:[RKRoute routeWithClass:[Group class]
-                                                  pathPattern:@"groups/:id"
-                                                       method:RKRequestMethodGET]];
-    [[RKObjectManager sharedManager]
-            .router.routeSet addRoute:[RKRoute routeWithClass:[Group class]
-                                                  pathPattern:@"groups/:id"
-                                                       method:RKRequestMethodPUT]];
-    [[RKObjectManager sharedManager]
-            .router.routeSet addRoute:[RKRoute routeWithClass:[Group class]
-                                                  pathPattern:@"groups"
-                                                       method:RKRequestMethodPOST]];
-    [[RKObjectManager sharedManager]
-            .router.routeSet addRoute:[RKRoute routeWithClass:[Group class]
-                                                  pathPattern:@"groups/:id"
-                                                       method:RKRequestMethodDELETE]];
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithClass:[Group class]
+                             pathPattern:@"groups/:id"
+                                  method:RKRequestMethodGET]];
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithClass:[Group class]
+                             pathPattern:@"groups/:id"
+                                  method:RKRequestMethodPUT]];
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithClass:[Group class]
+                             pathPattern:@"groups"
+                                  method:RKRequestMethodPOST]];
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithClass:[Group class]
+                             pathPattern:@"groups/:id"
+                                  method:RKRequestMethodDELETE]];
 
     requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:groupRequestMapping
                                                               objectClass:[Group class]
@@ -1246,14 +1238,14 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
-    [[RKObjectManager sharedManager]
-            .router.routeSet addRoute:[RKRoute routeWithClass:[ChatMessage class]
-                                                  pathPattern:@"groups/:group.id/chat"
-                                                       method:RKRequestMethodPOST]];
-    [[RKObjectManager sharedManager]
-            .router.routeSet addRoute:[RKRoute routeWithClass:[ChatMessage class]
-                                                  pathPattern:@"groups/:group.id/chat/:id"
-                                                       method:RKRequestMethodDELETE]];
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithClass:[ChatMessage class]
+                             pathPattern:@"groups/:group.id/chat"
+                                  method:RKRequestMethodPOST]];
+    [[RKObjectManager sharedManager].router.routeSet
+        addRoute:[RKRoute routeWithClass:[ChatMessage class]
+                             pathPattern:@"groups/:group.id/chat/:id"
+                                  method:RKRequestMethodDELETE]];
 
     RKEntityMapping *memberMapping =
         [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
@@ -1322,11 +1314,11 @@ NSString *currentUser;
             return memberMapping;
         }];
     responseDescriptor = [RKResponseDescriptor
-            responseDescriptorWithMapping:memberMapping
-                                   method:RKRequestMethodAny
-                              pathPattern:@"groups/:id/members"
-                                  keyPath:@"data"
-                              statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        responseDescriptorWithMapping:memberMapping
+                               method:RKRequestMethodAny
+                          pathPattern:@"groups/:id/members"
+                              keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     [entityMapping addPropertyMapping:[RKRelationshipMapping
                                           relationshipMappingFromKeyPath:@"leader"
@@ -1741,22 +1733,46 @@ NSString *currentUser;
         }];
     }];
     operation.completionBlock = ^{
-            [[NSURLCache sharedURLCache] removeAllCachedResponses];
-            NSError *error;
-            [[self getManagedObjectContext] saveToPersistentStore:&error];
-            if (!error) {
-                BOOL success = [[self getManagedObjectContext] save:&error];
-                if (!success) RKLogWarning(@"Failed saving managed object context: %@", error);
-                [self fetchContent:^() {
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        NSError *error;
+        [[self getManagedObjectContext] saveToPersistentStore:&error];
+        if (!error) {
+            BOOL success = [[self getManagedObjectContext] save:&error];
+            if (!success) RKLogWarning(@"Failed saving managed object context: %@", error);
+            [self fetchContent:^() {
+                NSError *error;
+                [[self getManagedObjectContext] processPendingChanges];
+                [[self getManagedObjectContext] saveToPersistentStore:&error];
+                if (withUserData) {
+                    [self fetchUser:^() {
+                        completitionBlock();
+                        [[NSNotificationCenter defaultCenter]
+                            postNotificationName:@"finishedClearingData"
+                                          object:nil];
+                    }
+                        onError:^() {
+                            [[NSNotificationCenter defaultCenter]
+                                postNotificationName:@"finishedClearingData"
+                                              object:nil];
+                            completitionBlock();
+                        }];
+                } else {
+                    [[NSNotificationCenter defaultCenter]
+                        postNotificationName:@"finishedClearingData"
+                                      object:nil];
+                    completitionBlock();
+                }
+            }
+                onError:^() {
                     NSError *error;
                     [[self getManagedObjectContext] processPendingChanges];
                     [[self getManagedObjectContext] saveToPersistentStore:&error];
                     if (withUserData) {
                         [self fetchUser:^() {
-                            completitionBlock();
                             [[NSNotificationCenter defaultCenter]
                                 postNotificationName:@"finishedClearingData"
                                               object:nil];
+                            completitionBlock();
                         }
                             onError:^() {
                                 [[NSNotificationCenter defaultCenter]
@@ -1770,33 +1786,9 @@ NSString *currentUser;
                                           object:nil];
                         completitionBlock();
                     }
-                }
-                    onError:^() {
-                        NSError *error;
-                        [[self getManagedObjectContext] processPendingChanges];
-                        [[self getManagedObjectContext] saveToPersistentStore:&error];
-                        if (withUserData) {
-                            [self fetchUser:^() {
-                                [[NSNotificationCenter defaultCenter]
-                                    postNotificationName:@"finishedClearingData"
-                                                  object:nil];
-                                completitionBlock();
-                            }
-                                onError:^() {
-                                    [[NSNotificationCenter defaultCenter]
-                                        postNotificationName:@"finishedClearingData"
-                                                      object:nil];
-                                    completitionBlock();
-                                }];
-                        } else {
-                            [[NSNotificationCenter defaultCenter]
-                                postNotificationName:@"finishedClearingData"
-                                              object:nil];
-                            completitionBlock();
-                        }
-                    }];
-            }
-        };
+                }];
+        }
+    };
     [operation start];
 }
 
@@ -1808,9 +1800,8 @@ NSString *currentUser;
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
     currentUser = [keyChain stringForKey:@"id"];
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-user" value:currentUser];
-    [[RKObjectManager sharedManager]
-            .HTTPClient setDefaultHeader:@"x-api-key"
-                                   value:[keyChain stringForKey:@"key"]];
+    [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-key"
+                                                           value:[keyChain stringForKey:@"key"]];
 
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:@"&uid" value:self.user.id];
@@ -1828,11 +1819,11 @@ NSString *currentUser;
     NSInteger offset = -[[NSTimeZone localTimeZone] secondsFromGMT] / 60;
     if (self.user.preferences) {
         if (!self.user.preferences.timezoneOffset ||
-                offset != [self.user.preferences.timezoneOffset integerValue]) {
+            offset != [self.user.preferences.timezoneOffset integerValue]) {
             self.user.preferences.timezoneOffset = @(offset);
             [self updateUser:@{
-                            @"preferences.timezoneOffset" : @(offset)
-                    }
+                @"preferences.timezoneOffset" : @(offset)
+            }
                    onSuccess:nil
                      onError:nil];
         }
@@ -1870,8 +1861,8 @@ NSString *currentUser;
                                                              error:&error];
             NSData *jsonData = [content dataUsingEncoding:NSUTF8StringEncoding];
             NSDictionary *customizations =
-                [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions
-                                                  error:&error][@"customizations"];
+                [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error]
+                    [@"customizations"];
             NSMutableArray *identifiers = [NSMutableArray arrayWithCapacity:1];
 
             NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -1953,7 +1944,9 @@ NSString *currentUser;
     [self fetchUser:YES onSuccess:successBlock onError:errorBlock];
 }
 
-- (void)fetchUser:(BOOL)includeTasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+- (void)fetchUser:(BOOL)includeTasks
+        onSuccess:(void (^)())successBlock
+          onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] getObjectsAtPath:@"user"
@@ -1975,16 +1968,14 @@ NSString *currentUser;
                     if ([fetchedObjects count] > 0) {
                         self.user = fetchedObjects[0];
                     }
-                    
 
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged"
                                                                         object:nil];
                 }
-                
             }
             [self setTimezoneOffset];
             if (![[defaults stringForKey:@"contentLanguage"]
-                  isEqualToString:self.user.preferences.language]) {
+                    isEqualToString:self.user.preferences.language]) {
                 [self fetchContent:nil onError:nil];
             }
             NSError *executeError = nil;
@@ -2100,7 +2091,7 @@ NSString *currentUser;
     } else {
         url = @"user/disable-classes";
     }
-    
+
     [[RKObjectManager sharedManager] postObject:nil
         path:url
         parameters:nil
@@ -2241,8 +2232,7 @@ NSString *currentUser;
             onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
-    [[RKObjectManager sharedManager]
-        getObjectsAtPath:[@"members/" stringByAppendingString:memberId]
+    [[RKObjectManager sharedManager] getObjectsAtPath:[@"members/" stringByAppendingString:memberId]
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
@@ -2302,15 +2292,16 @@ NSString *currentUser;
                 // Set experience to the amount, that was missing for the next level. So that the
                 // notification
                 // displays the correct amount of experience gained
-                self.user.experience = @([self.user.experience floatValue] -
-                        [self.user.nextLevel floatValue]);
+                self.user.experience =
+                    @([self.user.experience floatValue] - [self.user.nextLevel floatValue]);
             }
             self.user.level = taskResponse.level ? taskResponse.level : self.user.level;
 
-            NSNumber *expDiff = @([taskResponse.experience floatValue] -
-                    [self.user.experience floatValue]);
+            NSNumber *expDiff =
+                @([taskResponse.experience floatValue] - [self.user.experience floatValue]);
             self.user.experience = taskResponse.experience;
-            NSNumber *healthDiff = @([taskResponse.health floatValue] - [self.user.health floatValue]);
+            NSNumber *healthDiff =
+                @([taskResponse.health floatValue] - [self.user.health floatValue]);
             self.user.health = taskResponse.health ? taskResponse.health : self.user.health;
             NSNumber *magicDiff = @([taskResponse.magic floatValue] - [self.user.magic floatValue]);
             self.user.magic = taskResponse.magic ? taskResponse.magic : self.user.magic;
@@ -2378,13 +2369,8 @@ NSString *currentUser;
             }
             if (successBlock) {
                 successBlock(@[
-                    healthDiff,
-                    expDiff,
-                    self.user.gold,
-                    self.user.health,
-                    self.user.experience,
-                    nextLevel,
-                    magicDiff
+                    healthDiff, expDiff, self.user.gold, self.user.health, self.user.experience,
+                    nextLevel, magicDiff
                 ]);
             }
             [self.networkIndicatorController endNetworking];
@@ -2420,8 +2406,8 @@ NSString *currentUser;
                 // Set experience to the amount, that was missing for the next level. So that the
                 // notification
                 // displays the correct amount of experience gained
-                self.user.experience = @([self.user.experience floatValue] -
-                        [self.user.nextLevel floatValue]);
+                self.user.experience =
+                    @([self.user.experience floatValue] - [self.user.nextLevel floatValue]);
             }
             self.user.level = taskResponse.level;
             self.user.experience = taskResponse.experience;
@@ -2811,8 +2797,7 @@ NSString *currentUser;
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
             } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                RKErrorMessage *errorMessage =
-                    [error userInfo][RKObjectMapperErrorObjectsKey][0];
+                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
                 if (errorBlock) {
                     errorBlock(errorMessage.errorMessage);
                 }
@@ -2937,8 +2922,7 @@ NSString *currentUser;
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
             } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                RKErrorMessage *errorMessage =
-                    [error userInfo][RKObjectMapperErrorObjectsKey][0];
+                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
                 [self displayError:errorMessage.errorMessage];
             } else {
                 [self displayNetworkError];
@@ -3016,8 +3000,7 @@ NSString *currentUser;
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
             } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                RKErrorMessage *errorMessage =
-                    [error userInfo][RKObjectMapperErrorObjectsKey][0];
+                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
                 [self displayError:errorMessage.errorMessage];
             } else {
                 [self displayNetworkError];
@@ -3125,8 +3108,7 @@ NSString *currentUser;
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
             } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                RKErrorMessage *errorMessage =
-                    [error userInfo][RKObjectMapperErrorObjectsKey][0];
+                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
                 [self displayError:errorMessage.errorMessage];
             } else {
                 [self displayNetworkError];
@@ -3140,10 +3122,10 @@ NSString *currentUser;
 }
 
 - (void)castSpell:(NSString *)spell
-   withTargetType:(NSString *)targetType
-         onTarget:(NSString *)target
-        onSuccess:(void (^)())successBlock
-          onError:(void (^)())errorBlock {
+    withTargetType:(NSString *)targetType
+          onTarget:(NSString *)target
+         onSuccess:(void (^)())successBlock
+           onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     NSString *url = nil;
@@ -3151,11 +3133,10 @@ NSString *currentUser;
     CGFloat gold = [self.user.gold floatValue];
     NSInteger mana = [self.user.magic integerValue];
     if (target) {
-        url = [NSString stringWithFormat:@"user/class/cast/%@?targetType=%@&targetId=%@",
-                                         spell, targetType, target];
+        url = [NSString stringWithFormat:@"user/class/cast/%@?targetType=%@&targetId=%@", spell,
+                                         targetType, target];
     } else {
-        url = [NSString
-            stringWithFormat:@"user/class/cast/%@?targetType=%@", spell, targetType];
+        url = [NSString stringWithFormat:@"user/class/cast/%@?targetType=%@", spell, targetType];
     }
     [[RKObjectManager sharedManager] postObject:nil
         path:url
@@ -3212,8 +3193,7 @@ NSString *currentUser;
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
             } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                RKErrorMessage *errorMessage =
-                    [error userInfo][RKObjectMapperErrorObjectsKey][0];
+                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
                 [self displayError:errorMessage.errorMessage];
             } else {
                 [self displayNetworkError];
@@ -3313,100 +3293,100 @@ NSString *currentUser;
 }
 
 - (void)cancelQuest:(NSString *)group
-         onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock {
+          onSuccess:(void (^)())successBlock
+            onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
-                                           path:[NSString stringWithFormat:@"groups/%@/quests/cancel", group]
-                                     parameters:nil
-                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            NSError *executeError = nil;
-                                            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                                            if (successBlock) {
-                                                successBlock();
-                                            }
-                                            [self.networkIndicatorController endNetworking];
-                                            return;
-                                        }
-                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                [self displayServerError];
-                                            } else {
-                                                [self displayNetworkError];
-                                            }
-                                            if (errorBlock) {
-                                                errorBlock();
-                                            }
-                                            [self.networkIndicatorController endNetworking];
-                                            return;
-                                        }];
+        path:[NSString stringWithFormat:@"groups/%@/quests/cancel", group]
+        parameters:nil
+        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            NSError *executeError = nil;
+            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+            if (successBlock) {
+                successBlock();
+            }
+            [self.networkIndicatorController endNetworking];
+            return;
+        }
+        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                [self displayServerError];
+            } else {
+                [self displayNetworkError];
+            }
+            if (errorBlock) {
+                errorBlock();
+            }
+            [self.networkIndicatorController endNetworking];
+            return;
+        }];
 }
 
 - (void)forceStartQuest:(NSString *)group
-         onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock {
+              onSuccess:(void (^)())successBlock
+                onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
-                                           path:[NSString stringWithFormat:@"groups/%@/quests/force-start", group]
-                                     parameters:nil
-                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            NSError *executeError = nil;
-                                            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                                            if (successBlock) {
-                                                successBlock();
-                                            }
-                                            [self.networkIndicatorController endNetworking];
-                                            return;
-                                        }
-                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                [self displayServerError];
-                                            } else {
-                                                [self displayNetworkError];
-                                            }
-                                            if (errorBlock) {
-                                                errorBlock();
-                                            }
-                                            [self.networkIndicatorController endNetworking];
-                                            return;
-                                        }];
+        path:[NSString stringWithFormat:@"groups/%@/quests/force-start", group]
+        parameters:nil
+        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            NSError *executeError = nil;
+            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+            if (successBlock) {
+                successBlock();
+            }
+            [self.networkIndicatorController endNetworking];
+            return;
+        }
+        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                [self displayServerError];
+            } else {
+                [self displayNetworkError];
+            }
+            if (errorBlock) {
+                errorBlock();
+            }
+            [self.networkIndicatorController endNetworking];
+            return;
+        }];
 }
 
 - (void)inviteToQuest:(NSString *)group
             withQuest:(Quest *)quest
-         onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock {
+            onSuccess:(void (^)())successBlock
+              onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
-                                           path:[NSString stringWithFormat:@"groups/%@/quests/invite/%@", group, quest.key]
-                                     parameters:nil
-                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            if (quest) {
-                                                quest.owned = @([quest.owned intValue] - 1);
-                                            }
-                                            NSError *executeError = nil;
-                                            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                                            if (successBlock) {
-                                                successBlock();
-                                            }
-                                            [self.networkIndicatorController endNetworking];
-                                            return;
-                                        }
-                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                [self displayServerError];
-                                            } else {
-                                                [self displayNetworkError];
-                                            }
-                                            if (errorBlock) {
-                                                errorBlock();
-                                            }
-                                            [self.networkIndicatorController endNetworking];
-                                            return;
-                                        }];
+        path:[NSString stringWithFormat:@"groups/%@/quests/invite/%@", group, quest.key]
+        parameters:nil
+        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            if (quest) {
+                quest.owned = @([quest.owned intValue] - 1);
+            }
+            NSError *executeError = nil;
+            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+            if (successBlock) {
+                successBlock();
+            }
+            [self.networkIndicatorController endNetworking];
+            return;
+        }
+        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                [self displayServerError];
+            } else {
+                [self displayNetworkError];
+            }
+            if (errorBlock) {
+                errorBlock();
+            }
+            [self.networkIndicatorController endNetworking];
+            return;
+        }];
 }
 
 - (void)createGroup:(Group *)group
@@ -3473,10 +3453,10 @@ NSString *currentUser;
 }
 
 - (void)inviteMembers:(NSArray *)members
-   withInvitationType:(NSString *)invitationType
-        toGroupWithID:(NSString *)group
-            onSuccess:(void (^)())successBlock
-              onError:(void (^)())errorBlock {
+    withInvitationType:(NSString *)invitationType
+         toGroupWithID:(NSString *)group
+             onSuccess:(void (^)())successBlock
+               onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
@@ -3600,41 +3580,42 @@ NSString *currentUser;
         }];
 }
 
-- (void)fetchGroupMembers:(Group *)group lastID:(NSString *)lastID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+- (void)fetchGroupMembers:(Group *)group
+                   lastID:(NSString *)lastID
+                onSuccess:(void (^)())successBlock
+                  onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     NSString *path;
     if (lastID) {
-        path = [NSString stringWithFormat:
-                @"groups/%@/members", group.id];
+        path = [NSString stringWithFormat:@"groups/%@/members", group.id];
     } else {
-        [NSString stringWithFormat:
-                @"groups/%@/members", group.id];
+        [NSString stringWithFormat:@"groups/%@/members", group.id];
     }
 
     [[RKObjectManager sharedManager] postObject:nil
-                                           path:path
-                                     parameters:nil
-                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            NSError *executeError = nil;
-                                            if (successBlock) {
-                                                successBlock();
-                                            }
-                                            [self.networkIndicatorController endNetworking];
-                                            return;
-                                        }
-                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                [self displayServerError];
-                                            } else {
-                                                [self displayNetworkError];
-                                            }
-                                            if (errorBlock) {
-                                                errorBlock();
-                                            }
-                                            [self.networkIndicatorController endNetworking];
-                                            return;
-                                        }];
+        path:path
+        parameters:nil
+        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            NSError *executeError = nil;
+            if (successBlock) {
+                successBlock();
+            }
+            [self.networkIndicatorController endNetworking];
+            return;
+        }
+        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                [self displayServerError];
+            } else {
+                [self displayNetworkError];
+            }
+            if (errorBlock) {
+                errorBlock();
+            }
+            [self.networkIndicatorController endNetworking];
+            return;
+        }];
 }
 
 - (void)chatMessage:(NSString *)message
@@ -3644,9 +3625,10 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
-        path:[NSString stringWithFormat:
-                           @"groups/%@/chat", groupID]
-        parameters:@{@"message": message}
+        path:[NSString stringWithFormat:@"groups/%@/chat", groupID]
+        parameters:@{
+            @"message" : message
+        }
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
@@ -3781,25 +3763,25 @@ NSString *currentUser;
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSDictionary *result = [mappingResult firstObject];
             NSNumber *petStatus = result[@"value"];
-            
+
             NSError *executeError = nil;
             pet.trained = petStatus;
             food.owned = @([food.owned integerValue] - 1);
             [[self managedObjectContext] saveToPersistentStore:&executeError];
-            
+
             NSString *preferenceString;
             if ([pet likesFood:food]) {
                 preferenceString = NSLocalizedString(@"Your pet really likes the %@", nil);
             } else {
-                preferenceString = NSLocalizedString(
-                                                     @"Your pet eats the %@ but doesn't seem to enjoy it.", nil);
+                preferenceString =
+                    NSLocalizedString(@"Your pet eats the %@ but doesn't seem to enjoy it.", nil);
             }
             NSDictionary *options = @{
-                                      kCRToastTextKey : [NSString stringWithFormat:preferenceString, food.text],
-                                      kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                                      kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                                      kCRToastBackgroundColorKey : [UIColor yellow10],
-                                      };
+                kCRToastTextKey : [NSString stringWithFormat:preferenceString, food.text],
+                kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                kCRToastBackgroundColorKey : [UIColor yellow10],
+            };
             [CRToastManager showNotificationWithOptions:options
                                         completionBlock:^{
                                         }];
@@ -3809,7 +3791,7 @@ NSString *currentUser;
                 });
                 [self fetchUser:nil onError:nil];
             }
-            
+
             if (successBlock) {
                 successBlock();
             }
@@ -3897,8 +3879,7 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
-        path:[NSString
-                 stringWithFormat:@"user/purchase/%@/%@", itemType, itemName]
+        path:[NSString stringWithFormat:@"user/purchase/%@/%@", itemType, itemName]
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             [self fetchUser:^() {
@@ -4079,43 +4060,56 @@ NSString *currentUser;
         onError:^(){
 
         }];
-    
+
     if ([self.user.level integerValue] == 10 && ![self.user.preferences.disableClass boolValue]) {
         HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
-        UIViewController *activeViewController = del.window.rootViewController;UINavigationController *selectClassNavigationController =
+        UIViewController *activeViewController = del.window.rootViewController;
+        UINavigationController *selectClassNavigationController =
             [del.window.rootViewController.storyboard
                 instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
         selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
 
         [activeViewController presentViewController:selectClassNavigationController
-                                                    animated:YES
-                                                  completion:^(){
+                                           animated:YES
+                                         completion:^(){
 
-                                                  }];
+                                         }];
     } else {
         [self.user getAvatarImage:^(UIImage *image) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                NSArray *nibViews =
-                [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView" owner:self options:nil];
+                NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView"
+                                                                  owner:self
+                                                                options:nil];
                 HRPGImageOverlayView *overlayView = nibViews[0];
                 [overlayView displayImage:image];
                 overlayView.imageWidth = 140;
                 overlayView.imageHeight = 147;
                 overlayView.titleText = NSLocalizedString(@"You gained a level!", nil);
-                overlayView.descriptionText =
-                    [NSString stringWithFormat:NSLocalizedString(@"By accomplishing your real-life goals, you've grown to Level %ld", nil),
-                                               (long)([self.user.level integerValue])];
+                overlayView.descriptionText = [NSString
+                    stringWithFormat:
+                        NSLocalizedString(
+                            @"By accomplishing your real-life goals, you've grown to Level %ld",
+                            nil),
+                        (long)([self.user.level integerValue])];
                 overlayView.dismissButtonText = NSLocalizedString(@"Huzzah!", nil);
                 overlayView.shareAction = ^() {
-                    HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
-                    UIViewController *activeViewController = del.window.rootViewController.presentedViewController;
+                    HRPGAppDelegate *del =
+                        (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
+                    UIViewController *activeViewController =
+                        del.window.rootViewController.presentedViewController;
                     [HRPGSharingManager shareItems:@[
-                                                     [[NSString stringWithFormat:NSLocalizedString(@"I got to level %ld in Habitica by improving my real-life habits!", nil), (long)([self.user.level integerValue])] stringByAppendingString:@" https://habitica.com/social/level-up"],
-                                                     image]
-                      withPresentingViewController:activeViewController];
+                        [[NSString
+                            stringWithFormat:NSLocalizedString(@"I got to level %ld in Habitica by "
+                                                               @"improving my real-life habits!",
+                                                               nil),
+                                             (long)([self.user.level integerValue])]
+                            stringByAppendingString:@" https://habitica.com/social/level-up"],
+                        image
+                    ]
+                        withPresentingViewController:activeViewController];
                 };
                 [overlayView sizeToFit];
-                
+
                 KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
                                                         showType:KLCPopupShowTypeBounceIn
                                                      dismissType:KLCPopupDismissTypeBounceOut
@@ -4139,13 +4133,14 @@ NSString *currentUser;
     NSString *content;
     if (healthDiff > 0) {
         notificationColor = [UIColor green10];
-        content =
-                [NSString stringWithFormat:NSLocalizedString(@"Health: +%.1f\nMana: -%ld", nil), healthDiff, (long) manaDiff];
+        content = [NSString stringWithFormat:NSLocalizedString(@"Health: +%.1f\nMana: -%ld", nil),
+                                             healthDiff, (long)manaDiff];
     } else if (goldDiff > 0) {
         notificationColor = [UIColor green10];
-        content = [NSString stringWithFormat:NSLocalizedString(@"Gold: +%.1f\nMana: -%ld", nil), goldDiff, (long) manaDiff];
+        content = [NSString stringWithFormat:NSLocalizedString(@"Gold: +%.1f\nMana: -%ld", nil),
+                                             goldDiff, (long)manaDiff];
     } else {
-        content = [NSString stringWithFormat:NSLocalizedString(@"Mana: -%ld", nil), (long) manaDiff];
+        content = [NSString stringWithFormat:NSLocalizedString(@"Mana: -%ld", nil), (long)manaDiff];
     }
     NSDictionary *options = @{
         kCRToastTextKey : content,
@@ -4205,26 +4200,34 @@ NSString *currentUser;
 - (void)displayMountRaisedNotification:(Pet *)mount {
     [mount getMountImage:^(UIImage *image) {
         NSArray *nibViews =
-        [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView" owner:self options:nil];
+            [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView" owner:self options:nil];
         HRPGImageOverlayView *overlayView = nibViews[0];
         [overlayView displayImage:image];
         overlayView.imageWidth = 105;
         overlayView.imageHeight = 105;
         overlayView.titleText = NSLocalizedString(@"You raised a mount!", nil);
-        overlayView.descriptionText =
-        [NSString stringWithFormat:NSLocalizedString(@"By completing your tasks, you've earned a faithful steed!", nil),
-         (long)([self.user.level integerValue])];
+        overlayView.descriptionText = [NSString
+            stringWithFormat:NSLocalizedString(
+                                 @"By completing your tasks, you've earned a faithful steed!", nil),
+                             (long)([self.user.level integerValue])];
         overlayView.dismissButtonText = NSLocalizedString(@"Huzzah!", nil);
         overlayView.shareAction = ^() {
             HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
-            UIViewController *activeViewController = del.window.rootViewController.presentedViewController;
+            UIViewController *activeViewController =
+                del.window.rootViewController.presentedViewController;
             [HRPGSharingManager shareItems:@[
-                                             [[NSString stringWithFormat:NSLocalizedString(@"I just gained a %@ mount in Habitica by completing my real-life tasks!", nil), mount.niceMountName] stringByAppendingString:@" https://habitica.com/social/raise-mount"],
-                                             image]
-              withPresentingViewController:activeViewController];
+                [[NSString
+                    stringWithFormat:NSLocalizedString(@"I just gained a %@ mount in Habitica by "
+                                                       @"completing my real-life tasks!",
+                                                       nil),
+                                     mount.niceMountName]
+                    stringByAppendingString:@" https://habitica.com/social/raise-mount"],
+                image
+            ]
+                withPresentingViewController:activeViewController];
         };
         [overlayView sizeToFit];
-        
+
         KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
                                                 showType:KLCPopupShowTypeBounceIn
                                              dismissType:KLCPopupDismissTypeBounceOut
@@ -4237,8 +4240,8 @@ NSString *currentUser;
 
 - (void)displayNoGemAlert {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *navigationController = [storyboard
-        instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
+    UINavigationController *navigationController =
+        [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
     UIViewController *viewController =
         [UIApplication sharedApplication].keyWindow.rootViewController;
     [viewController presentViewController:navigationController animated:YES completion:nil];
@@ -4266,7 +4269,7 @@ NSString *currentUser;
                                                                          imageName, format]]
         options:0
         progress:nil
-        transform:^(UIImage *_Nullable image, NSURL *_Nonnull url) {
+        transform:^UIImage *_Nullable(UIImage *_Nullable image, NSURL *_Nonnull url) {
             return [YYImage imageWithData:[image yy_imageDataRepresentation] scale:1.0];
         }
         completion:^(UIImage *_Nullable image, NSURL *_Nonnull url, YYWebImageFromType from,

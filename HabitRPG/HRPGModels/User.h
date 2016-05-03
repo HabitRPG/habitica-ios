@@ -6,14 +6,13 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "Preferences.h"
-#import "Outfit.h"
+#import <Foundation/Foundation.h>
 #import "Flags.h"
+#import "Outfit.h"
+#import "Preferences.h"
 
-@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization,
-    ImprovementCategory, Flags;
+@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, ImprovementCategory, Flags;
 
 @interface User : NSManagedObject
 

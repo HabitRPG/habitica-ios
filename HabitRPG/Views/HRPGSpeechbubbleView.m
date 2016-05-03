@@ -7,9 +7,9 @@
 //
 
 #import "HRPGSpeechbubbleView.h"
+#import "HRPGExplanationView.h"
 #import "HRPGTypingLabel.h"
 #import "UIColor+Habitica.h"
-#import "HRPGExplanationView.h"
 
 @interface HRPGSpeechbubbleView ()
 

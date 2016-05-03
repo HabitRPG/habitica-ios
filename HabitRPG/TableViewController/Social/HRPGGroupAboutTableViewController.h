@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HRPGBaseViewController.h"
 #import "Group.h"
+#import "HRPGBaseViewController.h"
 
 @interface HRPGGroupAboutTableViewController : HRPGBaseViewController<UIAlertViewDelegate>
 

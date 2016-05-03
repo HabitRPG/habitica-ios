@@ -34,11 +34,12 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[self.fetchedResultsController sections][(NSUInteger) section] name];
+    return [[self.fetchedResultsController sections][(NSUInteger)section] name];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][(NSUInteger) section];
+    id<NSFetchedResultsSectionInfo> sectionInfo =
+        [self.fetchedResultsController sections][(NSUInteger)section];
     return [sectionInfo numberOfObjects];
 }
 
@@ -57,12 +58,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSInteger height =
-            (NSInteger) ([item.text boundingRectWithSize:CGSizeMake(260.0f, MAXFLOAT)
-                                                 options:NSStringDrawingUsesLineFragmentOrigin
-                                              attributes:@{
-                                                      NSFontAttributeName : [UIFont systemFontOfSize:18.0f]
-                                              }
-                                                 context:nil]
+        (NSInteger)([item.text boundingRectWithSize:CGSizeMake(260.0f, MAXFLOAT)
+                                            options:NSStringDrawingUsesLineFragmentOrigin
+                                         attributes:@{
+                                             NSFontAttributeName : [UIFont systemFontOfSize:18.0f]
+                                         }
+                                            context:nil]
                         .size.height +
                     22);
     if (height < 60) {
@@ -72,7 +73,7 @@
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView
-  willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.selectedFood = [self.fetchedResultsController objectAtIndexPath:indexPath];
     return indexPath;
 }
@@ -119,9 +120,9 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
@@ -144,10 +145,10 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
 
     switch (type) {

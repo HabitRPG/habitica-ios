@@ -7,16 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <RestKit/CoreData/RKManagedObjectStore.h>
+#import "ChatMessage.h"
+#import "Food.h"
+#import "Group.h"
+#import "MetaReward.h"
+#import "Pet.h"
 #import "Task.h"
 #import "User.h"
-#import "MetaReward.h"
-#import "ChatMessage.h"
-#import "item.h"
-#import <RestKit/CoreData/RKManagedObjectStore.h>
 #import "User.h"
-#import "Group.h"
-#import "Pet.h"
-#import "Food.h"
+#import "item.h"
 
 @interface HRPGManager : NSObject
 
@@ -30,7 +30,9 @@
 - (void)fetchTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock;
-- (void)fetchUser:(BOOL)includeTasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+- (void)fetchUser:(BOOL)includeTasks
+        onSuccess:(void (^)())successBlock
+          onError:(void (^)())errorBlock;
 
 - (void)updateUser:(NSDictionary *)newValues
          onSuccess:(void (^)())successBlock
@@ -108,10 +110,10 @@
          onError:(void (^)())errorBlock;
 
 - (void)castSpell:(NSString *)spell
-   withTargetType:(NSString *)targetType
-         onTarget:(NSString *)target
-        onSuccess:(void (^)())successBlock
-          onError:(void (^)())errorBlock;
+    withTargetType:(NSString *)targetType
+          onTarget:(NSString *)target
+         onSuccess:(void (^)())successBlock
+           onError:(void (^)())errorBlock;
 
 - (void)acceptQuest:(NSString *)group
           onSuccess:(void (^)())successBlock
@@ -126,19 +128,17 @@
            onError:(void (^)())errorBlock;
 
 - (void)cancelQuest:(NSString *)group
-         onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock;
-
+          onSuccess:(void (^)())successBlock
+            onError:(void (^)())errorBlock;
 
 - (void)forceStartQuest:(NSString *)group
-         onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock;
-
+              onSuccess:(void (^)())successBlock
+                onError:(void (^)())errorBlock;
 
 - (void)inviteToQuest:(NSString *)group
             withQuest:(Quest *)quest
-         onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock;
+            onSuccess:(void (^)())successBlock
+              onError:(void (^)())errorBlock;
 
 - (void)createGroup:(Group *)group
           onSuccess:(void (^)())successBlock
@@ -154,10 +154,10 @@
                   onError:(void (^)())errorBlock;
 
 - (void)inviteMembers:(NSArray *)members
-   withInvitationType:(NSString *)invitationType
-        toGroupWithID:(NSString *)group
-            onSuccess:(void (^)())successBlock
-              onError:(void (^)())errorBlock;
+    withInvitationType:(NSString *)invitationType
+         toGroupWithID:(NSString *)group
+             onSuccess:(void (^)())successBlock
+               onError:(void (^)())errorBlock;
 
 - (void)joinGroup:(NSString *)group
          withType:(NSString *)type

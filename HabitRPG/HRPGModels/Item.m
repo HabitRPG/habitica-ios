@@ -20,7 +20,8 @@
 
 - (void)setType:(NSString *)type {
     [self willChangeValueForKey:@"type"];
-    [self setPrimitiveValue:[type stringByReplacingOccurrencesOfString:@"data." withString:@""] forKey:@"type"];
+    [self setPrimitiveValue:[type stringByReplacingOccurrencesOfString:@"data." withString:@""]
+                     forKey:@"type"];
     [self didChangeValueForKey:@"type"];
 }
 

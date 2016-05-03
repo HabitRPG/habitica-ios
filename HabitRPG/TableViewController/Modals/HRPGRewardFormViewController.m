@@ -7,10 +7,10 @@
 //
 
 #import "HRPGRewardFormViewController.h"
+#import "Amplitude.h"
+#import "HRPGAppDelegate.h"
 #import "NSString+Emoji.h"
 #import "XLForm.h"
-#import "HRPGAppDelegate.h"
-#import "Amplitude.h"
 
 @interface HRPGRewardFormViewController ()
 @property(nonatomic) NSArray *tags;
@@ -95,8 +95,7 @@
     [self.form formRowWithTag:@"value"].value = self.reward.value;
 
     for (Tag *tag in self.reward.tags) {
-        [self.form formRowWithTag:[NSString stringWithFormat:@"tag.%@", tag.id]].value =
-            [NSNumber numberWithBool:YES];
+        [self.form formRowWithTag:[NSString stringWithFormat:@"tag.%@", tag.id]].value = @YES;
     }
 
     [self.tableView reloadData];

@@ -77,7 +77,7 @@
         NSString *html = [NSString
             stringWithFormat:
                 @"<span style=\"font-family: Helvetica Neue; font-size: %ld;margin:0\">%@</span>",
-                (long)[[NSNumber numberWithFloat:font.pointSize] integerValue], self.quest.notes];
+                (long)[@(font.pointSize) integerValue], self.quest.notes];
         NSError *err;
         NSAttributedString *attributedText = [[NSAttributedString alloc]
                   initWithData:[html dataUsingEncoding:NSUTF8StringEncoding]
@@ -149,12 +149,12 @@
         cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
     } else if (indexPath.section == 0 && indexPath.item == 1) {
         if (self.bossImage) {
-            UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
+            UIImageView *imageView = [cell viewWithTag:1];
             imageView.image = self.bossImage;
 
         } else {
             YYWebImageManager *manager = [YYWebImageManager sharedManager];
-            __weak UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
+            __weak UIImageView *imageView = [cell viewWithTag:1];
             [manager
                 requestImageWithURL:[NSURL URLWithString:[NSString
                                                              stringWithFormat:@"https://"
@@ -179,13 +179,13 @@
         }
         cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
     } else if (indexPath.section == 0 && indexPath.item == 2) {
-        UITextView *textView = (UITextView *)[cell viewWithTag:1];
+        UITextView *textView = [cell viewWithTag:1];
         NSError *err = nil;
         UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         NSString *html = [NSString
             stringWithFormat:
                 @"<span style=\"font-family: Helvetica Neue; font-size: %ld;margin:0\">%@</span>",
-                (long)[[NSNumber numberWithFloat:font.pointSize] integerValue], self.quest.notes];
+                (long)[@(font.pointSize) integerValue], self.quest.notes];
         textView.attributedText = [[NSAttributedString alloc]
                   initWithData:[html dataUsingEncoding:NSUTF8StringEncoding]
                        options:@{

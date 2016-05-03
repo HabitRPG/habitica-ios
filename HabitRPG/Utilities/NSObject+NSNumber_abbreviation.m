@@ -29,8 +29,7 @@
                 NSString *numberString = [self floatToString:number];
 
                 // Add the letter for the abbreviation
-                abbrevNum =
-                    [NSString stringWithFormat:@"%@%@", numberString, [abbrev objectAtIndex:i]];
+                abbrevNum = [NSString stringWithFormat:@"%@%@", numberString, abbrev[i]];
             }
         }
     } else {

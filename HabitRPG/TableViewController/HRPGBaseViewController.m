@@ -7,13 +7,13 @@
 //
 
 #import "HRPGBaseViewController.h"
+#import <Google/Analytics.h>
+#import "Amplitude.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGDeathView.h"
 #import "HRPGNavigationController.h"
 #import "HRPGTopHeaderNavigationController.h"
-#import <Google/Analytics.h>
 #import "UIViewController+TutorialSteps.h"
-#import "Amplitude.h"
 
 @interface HRPGBaseViewController ()
 @property UIBarButtonItem *navigationButton;

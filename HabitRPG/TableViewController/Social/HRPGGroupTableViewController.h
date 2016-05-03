@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Group.h"
-#import "User.h"
 #import "HRPGBaseViewController.h"
 #import "HRPGChatTableViewCell.h"
+#import "User.h"
 
 @interface HRPGGroupTableViewController
     : HRPGBaseViewController<NSFetchedResultsControllerDelegate, UIActionSheetDelegate,

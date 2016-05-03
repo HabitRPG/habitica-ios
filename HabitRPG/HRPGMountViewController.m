@@ -98,8 +98,8 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+                    layout:(UICollectionViewLayout *)collectionViewLayout
+    sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = 130.0f;
     height = height +
              [@" " boundingRectWithSize:CGSizeMake(135.0f, MAXFLOAT)
@@ -124,7 +124,7 @@
         [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                                            withReuseIdentifier:@"SectionCell"
                                                   forIndexPath:indexPath];
-    UILabel *label = (UILabel *)[headerView viewWithTag:1];
+    UILabel *label = [headerView viewWithTag:1];
     NSString *sectionName = [[self.fetchedResultsController sections][indexPath.section] name];
     if ([sectionName isEqualToString:@"questPets"]) {
         label.text = NSLocalizedString(@"Quest Mounts", nil);
@@ -221,26 +221,26 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UICollectionView *collectionView = self.collectionView;
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [collectionView insertItemsAtIndexPaths:@[ newIndexPath ]];
             break;
-            
+
         case NSFetchedResultsChangeDelete:
             [collectionView deleteItemsAtIndexPaths:@[ indexPath ]];
             break;
-            
+
         case NSFetchedResultsChangeUpdate:
             [self configureCell:[collectionView cellForItemAtIndexPath:indexPath]
                     atIndexPath:indexPath];
@@ -259,8 +259,8 @@
 
 - (void)configureCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Pet *mount = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
-    UILabel *label = (UILabel *)[cell viewWithTag:2];
+    UIImageView *imageView = [cell viewWithTag:1];
+    UILabel *label = [cell viewWithTag:2];
     if (!mount.niceMountName) {
         mount.niceMountName = [self niceMountName:mount];
     }

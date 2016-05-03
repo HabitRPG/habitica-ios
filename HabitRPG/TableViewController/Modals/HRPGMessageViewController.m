@@ -7,9 +7,9 @@
 //
 
 #import "HRPGMessageViewController.h"
-#import "HRPGManager.h"
-#import "HRPGAppDelegate.h"
 #import "Amplitude.h"
+#import "HRPGAppDelegate.h"
+#import "HRPGManager.h"
 
 @interface HRPGMessageViewController ()
 @property HRPGManager *sharedManager;
@@ -65,8 +65,7 @@
 
 - (void)keyboardChanged:(NSNotification *)notification {
     CGSize keyboardSize =
-        [self.view convertRect:[[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey]
-                                   CGRectValue]
+        [self.view convertRect:[[notification userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue]
                         toView:nil]
             .size;
     self.bottomOffsetConstraint.constant = keyboardSize.height;

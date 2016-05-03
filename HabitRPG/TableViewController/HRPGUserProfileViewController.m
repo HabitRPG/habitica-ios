@@ -95,7 +95,7 @@
                 [self configureCell:cell atIndexPath:indexPath];
                 break;
             case 1: {
-                UITextView *textView = (UITextView *)[cell viewWithTag:1];
+                UITextView *textView = [cell viewWithTag:1];
                 textView.attributedText = [self renderMarkdown:self.user.blurb];
                 break;
             }
@@ -178,9 +178,9 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
@@ -203,10 +203,10 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
 
     switch (type) {
@@ -239,25 +239,25 @@
               usForce:(BOOL)force {
     if (indexPath.section == 0 && indexPath.item == 0) {
         User *user = (User *)[self.fetchedResultsController objectAtIndexPath:indexPath];
-        UILabel *levelLabel = (UILabel *)[cell viewWithTag:1];
+        UILabel *levelLabel = [cell viewWithTag:1];
         levelLabel.text =
             [NSString stringWithFormat:NSLocalizedString(@"Level %@", nil), user.level];
 
-        HRPGLabeledProgressBar *healthLabel = (HRPGLabeledProgressBar *)[cell viewWithTag:2];
+        HRPGLabeledProgressBar *healthLabel = [cell viewWithTag:2];
         healthLabel.color = [UIColor red100];
         healthLabel.icon = [UIImage imageNamed:@"icon_health"];
         healthLabel.type = NSLocalizedString(@"Health", nil);
         healthLabel.value = user.health;
-        healthLabel.maxValue = [NSNumber numberWithInt:50];
+        healthLabel.maxValue = @50;
 
-        HRPGLabeledProgressBar *experienceLabel = (HRPGLabeledProgressBar *)[cell viewWithTag:3];
+        HRPGLabeledProgressBar *experienceLabel = [cell viewWithTag:3];
         experienceLabel.color = [UIColor yellow100];
         experienceLabel.icon = [UIImage imageNamed:@"icon_experience"];
         experienceLabel.type = NSLocalizedString(@"Experience", nil);
         experienceLabel.value = user.experience;
         experienceLabel.maxValue = user.nextLevel;
 
-        HRPGLabeledProgressBar *magicLabel = (HRPGLabeledProgressBar *)[cell viewWithTag:4];
+        HRPGLabeledProgressBar *magicLabel = [cell viewWithTag:4];
 
         if ([user.level integerValue] >= 10) {
             magicLabel.color = [UIColor blue100];
@@ -269,7 +269,7 @@
         } else {
             magicLabel.hidden = YES;
         }
-        UIImageView *imageView = (UIImageView *)[cell viewWithTag:8];
+        UIImageView *imageView = [cell viewWithTag:8];
         [user setAvatarOnImageView:imageView useForce:force];
     }
 }

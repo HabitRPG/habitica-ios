@@ -7,8 +7,8 @@
 //
 
 #import "HRPGCheckedTableViewCell.h"
-#import "UIColor+Habitica.h"
 #import "NSString+Emoji.h"
+#import "UIColor+Habitica.h"
 
 @implementation HRPGCheckedTableViewCell
 
@@ -26,7 +26,7 @@
                 checkedCount++;
             }
         }
-        self.checklistDoneLabel.text = [[NSNumber numberWithInt:checkedCount] stringValue];
+        self.checklistDoneLabel.text = [@(checkedCount) stringValue];
         self.checklistAllLabel.text = [checklistCount stringValue];
         if (checkedCount == [checklistCount integerValue]) {
             self.checklistIndicator.backgroundColor = [UIColor gray100];

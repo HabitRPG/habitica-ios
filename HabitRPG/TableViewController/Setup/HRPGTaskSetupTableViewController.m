@@ -8,11 +8,11 @@
 
 #import "HRPGTaskSetupTableViewController.h"
 #import <Google/Analytics.h>
+#import "Amplitude.h"
 #import "HRPGAppDelegate.h"
+#import "HRPGBatchOperation.h"
 #import "HRPGCheckBoxView.h"
 #import "UIColor+Habitica.h"
-#import "HRPGBatchOperation.h"
-#import "Amplitude.h"
 
 @interface HRPGTaskSetupTableViewController ()
 
@@ -44,43 +44,41 @@
     NSError *error;
     [self.managedObjectContext saveToPersistentStore:&error];
 
-    self.taskGroups =
-        [NSMutableArray arrayWithObjects:@{
-            @"text" : NSLocalizedString(@"Work", nil),
-            @"identifier" : @"work",
+    self.taskGroups = [@[
+        @{ @"text" : NSLocalizedString(@"Work", nil),
+           @"identifier" : @"work",
+           @"isActive" : @NO },
+        @{
+            @"text" : NSLocalizedString(@"Exercise", nil),
+            @"identifier" : @"exercise",
             @"isActive" : @NO
         },
-                                         @{
-                                             @"text" : NSLocalizedString(@"Exercise", nil),
-                                             @"identifier" : @"exercise",
-                                             @"isActive" : @NO
-                                         },
-                                         @{
-                                             @"text" : NSLocalizedString(@"Health + Wellness", nil),
-                                             @"identifier" : @"healthWellness",
-                                             @"isActive" : @NO
-                                         },
-                                         @{
-                                             @"text" : NSLocalizedString(@"School", nil),
-                                             @"identifier" : @"school",
-                                             @"isActive" : @NO
-                                         },
-                                         @{
-                                             @"text" : NSLocalizedString(@"Teams", nil),
-                                             @"identifier" : @"teams",
-                                             @"isActive" : @NO
-                                         },
-                                         @{
-                                             @"text" : NSLocalizedString(@"Chores", nil),
-                                             @"identifier" : @"chores",
-                                             @"isActive" : @NO
-                                         },
-                                         @{
-                                             @"text" : NSLocalizedString(@"Creativity", nil),
-                                             @"identifier" : @"creativity",
-                                             @"isActive" : @NO
-                                         },
-                                         nil];
+        @{
+            @"text" : NSLocalizedString(@"Health + Wellness", nil),
+            @"identifier" : @"healthWellness",
+            @"isActive" : @NO
+        },
+        @{
+            @"text" : NSLocalizedString(@"School", nil),
+            @"identifier" : @"school",
+            @"isActive" : @NO
+        },
+        @{
+            @"text" : NSLocalizedString(@"Teams", nil),
+            @"identifier" : @"teams",
+            @"isActive" : @NO
+        },
+        @{
+            @"text" : NSLocalizedString(@"Chores", nil),
+            @"identifier" : @"chores",
+            @"isActive" : @NO
+        },
+        @{
+            @"text" : NSLocalizedString(@"Creativity", nil),
+            @"identifier" : @"creativity",
+            @"isActive" : @NO
+        }
+    ] mutableCopy];
 
     self.tasks = @{
         @"work" : @[
@@ -285,8 +283,8 @@
 
     CAGradientLayer *layer = [CAGradientLayer layer];
     layer.frame = self.gradientView.bounds;
-    layer.colors = [NSArray arrayWithObjects:(id)[UIColor whiteColor].CGColor,
-                                             (id)[UIColor colorWithWhite:1 alpha:0].CGColor, nil];
+    layer.colors =
+        @[ (id)[UIColor whiteColor].CGColor, (id)[UIColor colorWithWhite:1 alpha:0].CGColor ];
     layer.startPoint = CGPointMake(1.0f, 0.75f);
     layer.endPoint = CGPointMake(1.0f, 0.0f);
     [self.gradientView.layer insertSublayer:layer atIndex:0];
@@ -307,8 +305,8 @@
     UITableViewCell *cell =
         [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     NSDictionary *taskGroup = self.taskGroups[indexPath.item];
-    UILabel *textLabel = (UILabel *)[cell viewWithTag:1];
-    HRPGCheckBoxView *checkboxView = (HRPGCheckBoxView *)[cell viewWithTag:2];
+    UILabel *textLabel = [cell viewWithTag:1];
+    HRPGCheckBoxView *checkboxView = [cell viewWithTag:2];
     textLabel.text = taskGroup[@"text"];
     checkboxView.cornerRadius = checkboxView.size / 2;
     if ([taskGroup[@"isActive"] boolValue]) {
@@ -329,7 +327,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSMutableDictionary *mutableDict = [self.taskGroups[indexPath.item] mutableCopy];
-    mutableDict[@"isActive"] = [NSNumber numberWithBool:!([mutableDict[@"isActive"] boolValue])];
+    mutableDict[@"isActive"] = @(!([mutableDict[@"isActive"] boolValue]));
     self.taskGroups[indexPath.item] = mutableDict;
     [self.tableView reloadRowsAtIndexPaths:@[ indexPath ]
                           withRowAnimation:UITableViewRowAnimationNone];

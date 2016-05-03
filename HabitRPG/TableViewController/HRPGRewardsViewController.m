@@ -7,12 +7,12 @@
 //
 
 #import "HRPGRewardsViewController.h"
-#import "Reward.h"
-#import "HRPGRewardFormViewController.h"
-#import "HRPGNavigationController.h"
-#import "HRPGRewardTableViewCell.h"
 #import "HRPGGearDetailView.h"
+#import "HRPGNavigationController.h"
+#import "HRPGRewardFormViewController.h"
+#import "HRPGRewardTableViewCell.h"
 #import "KLCPopup.h"
+#import "Reward.h"
 
 @interface HRPGRewardsViewController ()
 @property NSString *readableName;
@@ -134,14 +134,16 @@
                      .size.height;
     }
     if ([reward.key isEqualToString:@"armoire"]) {
-        height = height + [[self getArmoireFillStatus]
-                           boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
-                           options:NSStringDrawingUsesLineFragmentOrigin
-                           attributes:@{
-                                        NSFontAttributeName :
-                                            [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
-                                        }
-                           context:nil].size.height;
+        height = height +
+                 [[self getArmoireFillStatus]
+                     boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                  options:NSStringDrawingUsesLineFragmentOrigin
+                               attributes:@{
+                                   NSFontAttributeName :
+                                       [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
+                               }
+                                  context:nil]
+                     .size.height;
     }
     if (height < 87) {
         return 87;
@@ -151,10 +153,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    if ([reward.type isEqualToString:@"reward"]) {
-        return YES;
-    }
-    return NO;
+    return [reward.type isEqualToString:@"reward"];
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -182,7 +181,7 @@
     } else {
         NSArray *nibViews =
             [[NSBundle mainBundle] loadNibNamed:@"HRPGGearDetailView" owner:self options:nil];
-        HRPGGearDetailView *gearView = [nibViews objectAtIndex:0];
+        HRPGGearDetailView *gearView = nibViews[0];
         [gearView configureForReward:reward withGold:[self.user.gold floatValue]];
         gearView.buyAction = ^() {
             if ([reward isKindOfClass:[Reward class]]) {
@@ -213,8 +212,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView
-  willDisplayCell:(UITableViewCell *)cell
-forRowAtIndexPath:(NSIndexPath *)indexPath {
+      willDisplayCell:(UITableViewCell *)cell
+    forRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
         [cell setSeparatorInset:UIEdgeInsetsZero];
     }
@@ -292,9 +291,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
@@ -317,10 +316,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
 
     switch (type) {
@@ -353,17 +352,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)configureCell:(HRPGRewardTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     MetaReward *reward;
-    if ([[self.fetchedResultsController sections] count] > [indexPath section]){
-        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][(NSUInteger) [indexPath section]];
-        if ([sectionInfo numberOfObjects] > [indexPath row]){
+    if ([[self.fetchedResultsController sections] count] > [indexPath section]) {
+        id<NSFetchedResultsSectionInfo> sectionInfo =
+            [self.fetchedResultsController sections][(NSUInteger)[indexPath section]];
+        if ([sectionInfo numberOfObjects] > [indexPath row]) {
             reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
         }
     }
-    
+
     if (!reward) {
         return;
     }
-    
+
     [cell configureForReward:reward withGoldOwned:self.user.gold];
 
     if (![reward isKindOfClass:[Reward class]]) {
@@ -385,7 +385,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                 getReward:reward.key
                 onSuccess:^() {
                     for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
-                        [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+                        [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath]
+                                atIndexPath:indexPath];
                     }
                 }
                   onError:nil];
@@ -395,7 +396,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                 onSuccess:^() {
                     [self.sharedManager fetchBuyableRewards:nil onError:nil];
                     for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
-                        [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+                        [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath]
+                                atIndexPath:indexPath];
                     }
                 }
                 onError:^() {
@@ -426,8 +428,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-    HRPGRewardFormViewController *formViewController =
-        (HRPGRewardFormViewController *)segue.sourceViewController;
+    HRPGRewardFormViewController *formViewController = segue.sourceViewController;
     if (formViewController.editReward) {
         [self.sharedManager updateReward:formViewController.reward onSuccess:nil onError:nil];
     } else {

@@ -79,7 +79,7 @@
 
 - (void)setMountOnImageView:(UIImageView *)imageView {
     [self getMountImage:^(UIImage *image) {
-            imageView.image = image;
+        imageView.image = image;
     }];
 }
 

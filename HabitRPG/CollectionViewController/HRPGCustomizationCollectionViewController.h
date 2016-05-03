@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "User.h"
 #import "HRPGBaseCollectionViewController.h"
+#import "User.h"
 
 @interface HRPGCustomizationCollectionViewController
     : HRPGBaseCollectionViewController<NSFetchedResultsControllerDelegate, UIActionSheetDelegate>

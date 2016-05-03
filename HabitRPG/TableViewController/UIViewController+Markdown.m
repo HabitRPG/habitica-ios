@@ -7,9 +7,9 @@
 //
 
 #import "UIViewController+Markdown.h"
+#import "UIColor+Habitica.h"
 #import "markdown_lib.h"
 #import "markdown_peg.h"
-#import "UIColor+Habitica.h"
 
 @implementation UIViewController (Markdown)
 
@@ -23,7 +23,7 @@
         NSFontAttributeName : plainFont,
     };
 
-    [self.attributes setObject:plainAttributes forKey:@(PLAIN)];
+    self.attributes[@(PLAIN)] = plainAttributes;
 
     // p
 
@@ -37,71 +37,65 @@
         NSParagraphStyleAttributeName : pParagraphStyle,
     };
 
-    [self.attributes setObject:pAttributes forKey:@(PARA)];
+    self.attributes[@(PARA)] = pAttributes;
 
     // h1
     UIFont *h1Font = [UIFont boldSystemFontOfSize:24.0f];
-    [self.attributes setObject:@{ NSFontAttributeName : h1Font } forKey:@(H1)];
+    self.attributes[@(H1)] = @{NSFontAttributeName : h1Font};
 
     // h2
     UIFont *h2Font = [UIFont boldSystemFontOfSize:18.0f];
-    [self.attributes setObject:@{ NSFontAttributeName : h2Font } forKey:@(H2)];
+    self.attributes[@(H2)] = @{NSFontAttributeName : h2Font};
 
     // h3
     UIFont *h3Font = [UIFont boldSystemFontOfSize:17.0f];
-    [self.attributes setObject:@{ NSFontAttributeName : h3Font } forKey:@(H3)];
+    self.attributes[@(H3)] = @{NSFontAttributeName : h3Font};
 
     // em
     UIFont *emFont = [UIFont italicSystemFontOfSize:14.0f];
-    [self.attributes setObject:@{ NSFontAttributeName : emFont } forKey:@(EMPH)];
+    self.attributes[@(EMPH)] = @{NSFontAttributeName : emFont};
 
     // strong
     UIFont *strongFont = [UIFont boldSystemFontOfSize:14.0f];
-    [self.attributes setObject:@{ NSFontAttributeName : strongFont } forKey:@(STRONG)];
+    self.attributes[@(STRONG)] = @{NSFontAttributeName : strongFont};
 
     // ul
     NSMutableParagraphStyle *listParagraphStyle = [[NSMutableParagraphStyle alloc] init];
     listParagraphStyle.headIndent = 16.0;
-    [self.attributes setObject:@{
-        NSFontAttributeName : paragraphFont,
-        NSParagraphStyleAttributeName : listParagraphStyle
-    }
-                        forKey:@(BULLETLIST)];
+    self.attributes[@(BULLETLIST)] =
+        @{NSFontAttributeName : paragraphFont, NSParagraphStyleAttributeName : listParagraphStyle};
 
     // li
     NSMutableParagraphStyle *listItemParagraphStyle = [[NSMutableParagraphStyle alloc] init];
     listItemParagraphStyle.headIndent = 16.0;
-    [self.attributes setObject:@{
+    self.attributes[@(LISTITEM)] = @{
         NSFontAttributeName : paragraphFont,
         NSParagraphStyleAttributeName : listItemParagraphStyle
-    }
-                        forKey:@(LISTITEM)];
+    };
 
     // a
     UIColor *linkColor = [UIColor purple400];
-    [self.attributes setObject:@{ NSForegroundColorAttributeName : linkColor } forKey:@(LINK)];
+    self.attributes[@(LINK)] = @{NSForegroundColorAttributeName : linkColor};
 
     // blockquote
     NSMutableParagraphStyle *blockquoteParagraphStyle = [[NSMutableParagraphStyle alloc] init];
     blockquoteParagraphStyle.headIndent = 16.0;
     blockquoteParagraphStyle.tailIndent = 16.0;
     blockquoteParagraphStyle.firstLineHeadIndent = 16.0;
-    [self.attributes setObject:@{
+    self.attributes[@(BLOCKQUOTE)] = @{
         NSFontAttributeName : [emFont fontWithSize:18.0],
         NSParagraphStyleAttributeName : pParagraphStyle
-    }
-                        forKey:@(BLOCKQUOTE)];
+    };
 
     // verbatim (code)
     NSMutableParagraphStyle *verbatimParagraphStyle = [[NSMutableParagraphStyle alloc] init];
     verbatimParagraphStyle.headIndent = 12.0;
     verbatimParagraphStyle.firstLineHeadIndent = 12.0;
     UIFont *verbatimFont = [UIFont fontWithName:@"CourierNewPSMT" size:14.0];
-    [self.attributes setObject:@{
+    self.attributes[@(VERBATIM)] = @{
         NSFontAttributeName : verbatimFont,
         NSParagraphStyleAttributeName : verbatimParagraphStyle
-    }
-                        forKey:@(VERBATIM)];
+    };
 }
 
 - (NSMutableAttributedString *)renderMarkdown:(NSString *)text {

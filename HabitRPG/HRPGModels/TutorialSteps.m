@@ -44,7 +44,7 @@
                    withType:(NSString *)type
                 withContext:(NSManagedObjectContext *)context {
     TutorialSteps *step = [TutorialSteps markStep:identifier withType:type withContext:context];
-    step.wasShown = [NSNumber numberWithBool:wasSeen];
+    step.wasShown = @(wasSeen);
     return step;
 }
 

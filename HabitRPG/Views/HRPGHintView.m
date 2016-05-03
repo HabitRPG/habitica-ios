@@ -49,7 +49,7 @@
     self.duration = duration;
     CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     pulseAnimation.duration = duration;
-    pulseAnimation.toValue = [NSNumber numberWithFloat:value];
+    pulseAnimation.toValue = @(value);
     ;
     pulseAnimation.timingFunction =
         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -60,7 +60,7 @@
 
     CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacityAnimation.duration = duration;
-    opacityAnimation.toValue = [NSNumber numberWithFloat:0.0];
+    opacityAnimation.toValue = @0.0F;
     ;
     opacityAnimation.timingFunction =
         [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];

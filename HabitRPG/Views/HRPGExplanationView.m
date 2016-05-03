@@ -7,8 +7,8 @@
 //
 
 #import "HRPGExplanationView.h"
-#import "HRPGSpeechBubbleView.h"
 #import "HRPGHoledView.h"
+#import "HRPGSpeechBubbleView.h"
 
 @interface HRPGExplanationView ()
 

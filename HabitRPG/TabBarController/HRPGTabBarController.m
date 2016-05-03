@@ -139,7 +139,7 @@
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-    UINavigationController *navController = (UINavigationController *)self.selectedViewController;
+    UINavigationController *navController = self.selectedViewController;
     if (navController.topViewController.isEditing) {
         [navController.topViewController setEditing:NO animated:YES];
     }
@@ -171,10 +171,10 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     [self updateDailyBadge];
 }
 

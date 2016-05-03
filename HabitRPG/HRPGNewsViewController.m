@@ -7,8 +7,8 @@
 //
 
 #import "HRPGNewsViewController.h"
-#import "HRPGAppDelegate.h"
 #import "Amplitude.h"
+#import "HRPGAppDelegate.h"
 
 @interface HRPGNewsViewController ()
 

@@ -7,11 +7,11 @@
 //
 
 #import "HRPGGemViewController.h"
-#import "HRPGPurchaseLoadingButton.h"
-#import "HRPGAppDelegate.h"
 #import <CargoBay.h>
-#import "UIColor+Habitica.h"
+#import "HRPGAppDelegate.h"
+#import "HRPGPurchaseLoadingButton.h"
 #import "MRProgress.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGGemViewController ()
 @property(weak, nonatomic) IBOutlet UILabel *notEnoughGemsLabel;
@@ -31,8 +31,7 @@
     self.gemImageView.image = [UIImage imageNamed:@"Gem"];
 
     self.identifiers = @[
-        @"com.habitrpg.ios.Habitica.4gems",
-        @"com.habitrpg.ios.Habitica.21gems",
+        @"com.habitrpg.ios.Habitica.4gems", @"com.habitrpg.ios.Habitica.21gems",
         @"com.habitrpg.ios.Habitica.42gems"
     ];
     self.products = [NSMutableDictionary dictionaryWithCapacity:self.identifiers.count];
@@ -63,7 +62,7 @@
                 }
                 UITableViewCell *cell = [self.tableView
                     cellForRowAtIndexPath:[NSIndexPath indexPathForItem:count inSection:0]];
-                purchaseButton = (HRPGPurchaseLoadingButton *)[cell viewWithTag:2];
+                purchaseButton = [cell viewWithTag:2];
                 switch (transaction.transactionState) {
                     // Call the appropriate custom method for the transaction state.
                     case SKPaymentTransactionStatePurchasing:
@@ -134,8 +133,8 @@
     UITableViewCell *cell =
         [self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    UILabel *titleLabel = (UILabel *)[cell viewWithTag:1];
-    HRPGPurchaseLoadingButton *purchaseButton = (HRPGPurchaseLoadingButton *)[cell viewWithTag:2];
+    UILabel *titleLabel = [cell viewWithTag:1];
+    HRPGPurchaseLoadingButton *purchaseButton = [cell viewWithTag:2];
 
     titleLabel.text = product.localizedTitle;
 

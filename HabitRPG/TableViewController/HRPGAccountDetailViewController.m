@@ -90,8 +90,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    HRPGCopyTableViewCell *cell =
-        (HRPGCopyTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    HRPGCopyTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [cell selectedCell];
 }
 

@@ -200,7 +200,7 @@
             NSDictionary *attributes =
                 [self.messageTextView.textStorage attributesAtIndex:characterIndex
                                                      effectiveRange:&range];
-            if ([attributes objectForKey:@"NSLink"]) {
+            if (attributes[@"NSLink"]) {
                 return NO;
             }
         }

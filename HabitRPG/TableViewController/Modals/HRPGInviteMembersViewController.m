@@ -7,9 +7,9 @@
 //
 
 #import "HRPGInviteMembersViewController.h"
-#import "XLForm.h"
-#import "HRPGAppDelegate.h"
 #import "Amplitude.h"
+#import "HRPGAppDelegate.h"
+#import "XLForm.h"
 
 @interface HRPGInviteMembersViewController ()
 
@@ -79,8 +79,7 @@
     section.multivaluedTag = @"userIDs";
     // Set up row template
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText];
-    [[row cellConfig] setObject:NSLocalizedString(@"Add a User ID", nil)
-                         forKey:@"textField.placeholder"];
+    [row cellConfig][@"textField.placeholder"] = NSLocalizedString(@"Add a User ID", nil);
     section.multivaluedRowTemplate = row;
     [section addFormRow:row];
     [self.form addFormSection:section];
@@ -99,8 +98,7 @@
     section.multivaluedTag = @"emails";
     // Set up row template
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText];
-    [[row cellConfig] setObject:NSLocalizedString(@"Add an Email", nil)
-                         forKey:@"textField.placeholder"];
+    [row cellConfig][@"textField.placeholder"] = NSLocalizedString(@"Add an Email", nil);
     section.multivaluedRowTemplate = row;
     [section addFormRow:row];
     [self.form addFormSection:section];

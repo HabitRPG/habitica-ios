@@ -7,8 +7,8 @@
 //
 
 #import "HRPGFAQDetailViewController.h"
-#import "UIViewController+Markdown.h"
 #import "HRPGTopHeaderNavigationController.h"
+#import "UIViewController+Markdown.h"
 
 @interface HRPGFAQDetailViewController ()
 @property NSMutableDictionary *attributes;

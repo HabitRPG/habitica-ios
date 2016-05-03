@@ -60,7 +60,7 @@
         self.dueLabel.text = nil;
         self.notesDueSeparator.constant = 0;
     }
-    
+
     self.dueLabel.backgroundColor = self.backgroundColor;
 }
 

@@ -38,16 +38,17 @@
             } else {
                 [self.refreshControl endRefreshing];
             }
-        } onError:^{
-            [self.refreshControl endRefreshing];
-        }];
+        }
+            onError:^{
+                [self.refreshControl endRefreshing];
+            }];
         return;
     }
     [self.sharedManager fetchGroup:@"party"
         onSuccess:^() {
             [self.refreshControl endRefreshing];
             [self fetchGroup];
-            self.group.unreadMessages = [NSNumber numberWithBool:NO];
+            self.group.unreadMessages = @NO;
             [self.sharedManager chatSeen:self.group.id];
         }
         onError:^() {
@@ -112,11 +113,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (!self.group) {
         if (self.user.invitedParty) {
-            if (indexPath.item == 0) {
-                return 44;
-            } else {
-                return 44;
-            }
+            return 44;
         } else {
             if (indexPath.section == 2 && indexPath.item == 0) {
                 return 100;
@@ -187,7 +184,7 @@
             }
         } else {
             if (indexPath.section == 2 && indexPath.item == 0) {
-                UILabel *userIDLabel = (UILabel *)[cell viewWithTag:1];
+                UILabel *userIDLabel = [cell viewWithTag:1];
                 userIDLabel.text = self.user.id;
             }
         }
@@ -200,8 +197,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"GroupFormSegue"]) {
         if (!self.group) {
-            UINavigationController *navigationController =
-                (UINavigationController *)segue.destinationViewController;
+            UINavigationController *navigationController = segue.destinationViewController;
             HRPGGroupFormViewController *partyFormViewController =
                 (HRPGGroupFormViewController *)navigationController.topViewController;
             partyFormViewController.editGroup = NO;
@@ -235,8 +231,7 @@
 }
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-    HRPGGroupFormViewController *formViewController =
-        (HRPGGroupFormViewController *)segue.sourceViewController;
+    HRPGGroupFormViewController *formViewController = segue.sourceViewController;
     if (formViewController.editGroup) {
         [self.sharedManager updateGroup:formViewController.group onSuccess:nil onError:nil];
     } else {

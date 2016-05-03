@@ -7,8 +7,8 @@
 //
 
 #import "HRPGUserTopHeader.h"
-#import "HRPGAppDelegate.h"
 #import <PDKeychainBindings.h>
+#import "HRPGAppDelegate.h"
 #import "HRPGLabeledProgressBar.h"
 #import "UIColor+Habitica.h"
 
@@ -187,8 +187,7 @@ NSInteger rowOffset = 16;
                                    NSLocalizedString([self.user.hclass capitalizedString], nil)];
     self.classImageView.image =
         [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@", self.user.hclass]];
-    self.gemLabel.text =
-        [[NSNumber numberWithFloat:[self.user.balance floatValue] * 4] stringValue];
+    self.gemLabel.text = [@([self.user.balance floatValue] * 4) stringValue];
 
     self.goldLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.user.gold integerValue]];
     int silver = ([self.user.gold floatValue] - [self.user.gold integerValue]) * 100;
@@ -196,10 +195,10 @@ NSInteger rowOffset = 16;
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     [self setData];
 }
 
@@ -221,8 +220,8 @@ NSInteger rowOffset = 16;
 
 - (void)showGemView {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *navigationController = (UINavigationController *)[storyboard
-        instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
+    UINavigationController *navigationController =
+        [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
     UIViewController *viewController =
         [UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController;
     if (!viewController.isViewLoaded || !viewController.view.window) {

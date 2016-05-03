@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Phillip Thelen. All rights reserved.
 //
 
-#import "HRPGTaskTableViewCell.h"
 #import "HRPGHabitButtons.h"
+#import "HRPGTaskTableViewCell.h"
 
 @interface HRPGHabitTableViewCell : HRPGTaskTableViewCell
 

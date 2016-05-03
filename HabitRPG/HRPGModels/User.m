@@ -7,12 +7,12 @@
 //
 
 #import "User.h"
-#import "HRPGAppDelegate.h"
-#import "Customization.h"
 #import <CommonCrypto/CommonCrypto.h>
-#import "UIColor+Habitica.h"
-#import "TutorialSteps.h"
+#import "Customization.h"
 #import "Flags.h"
+#import "HRPGAppDelegate.h"
+#import "TutorialSteps.h"
+#import "UIColor+Habitica.h"
 
 @interface User ()
 @property(nonatomic) NSDate *lastImageGeneration;
@@ -62,7 +62,6 @@
 @synthesize petCount = _petCount;
 @synthesize customizationsDictionary;
 @synthesize lastImageGeneration;
-
 
 @dynamic preferences;
 @dynamic equipped;
@@ -175,7 +174,7 @@
             withFormat:format
             onSuccess:^(UIImage *image) {
                 // back accessory goes into layer 0, even though we incremented currentLayer
-                [imageArray replaceObjectAtIndex:0 withObject:image];
+                imageArray[0] = image;
                 dispatch_group_leave(group);
             }
             onError:^() {
@@ -191,7 +190,7 @@
     [sharedManager getImage:skinString
         withFormat:nil
         onSuccess:^(UIImage *image) {
-            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            imageArray[currentLayer] = image;
             dispatch_group_leave(group);
         }
         onError:^() {
@@ -204,7 +203,7 @@
                                                        self.preferences.shirt]
         withFormat:nil
         onSuccess:^(UIImage *image) {
-            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            imageArray[currentLayer] = image;
             dispatch_group_leave(group);
         }
         onError:^() {
@@ -216,7 +215,7 @@
     [sharedManager getImage:[NSString stringWithFormat:@"head_0"]
         withFormat:nil
         onSuccess:^(UIImage *image) {
-            [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+            imageArray[currentLayer] = image;
             dispatch_group_leave(group);
         }
         onError:^() {
@@ -235,7 +234,7 @@
             getImage:[NSString stringWithFormat:@"%@_%@", self.preferences.size, outfit.armor]
             withFormat:format
             onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+                imageArray[currentLayer] = image;
                 dispatch_group_leave(group);
             }
             onError:^() {
@@ -250,7 +249,7 @@
         [sharedManager getImage:[NSString stringWithFormat:@"%@", outfit.body]
             withFormat:format
             onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+                imageArray[currentLayer] = image;
                 dispatch_group_leave(group);
             }
             onError:^() {
@@ -266,7 +265,7 @@
                                                 self.preferences.hairColor]
             withFormat:nil
             onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+                imageArray[currentLayer] = image;
                 dispatch_group_leave(group);
             }
             onError:^() {
@@ -282,7 +281,7 @@
                                                 self.preferences.hairColor]
             withFormat:nil
             onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+                imageArray[currentLayer] = image;
                 dispatch_group_leave(group);
             }
             onError:^() {
@@ -298,7 +297,7 @@
                                                            self.preferences.hairColor]
             withFormat:nil
             onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+                imageArray[currentLayer] = image;
                 dispatch_group_leave(group);
             }
             onError:^() {
@@ -314,7 +313,7 @@
                                                 self.preferences.hairColor]
             withFormat:nil
             onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+                imageArray[currentLayer] = image;
                 dispatch_group_leave(group);
             }
             onError:^() {
@@ -329,7 +328,7 @@
         [sharedManager getImage:[NSString stringWithFormat:@"%@", outfit.eyewear]
             withFormat:format
             onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+                imageArray[currentLayer] = image;
                 dispatch_group_leave(group);
             }
             onError:^() {
@@ -348,7 +347,7 @@
         [sharedManager getImage:outfit.head
             withFormat:format
             onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+                imageArray[currentLayer] = image;
                 dispatch_group_leave(group);
             }
             onError:^() {
@@ -363,7 +362,7 @@
         [sharedManager getImage:outfit.headAccessory
             withFormat:nil
             onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+                imageArray[currentLayer] = image;
                 dispatch_group_leave(group);
             }
             onError:^() {
@@ -378,7 +377,7 @@
             getImage:[NSString stringWithFormat:@"hair_flower_%@", self.preferences.hairFlower]
             withFormat:nil
             onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+                imageArray[currentLayer] = image;
                 dispatch_group_leave(group);
             }
             onError:^() {
@@ -396,7 +395,7 @@
         [sharedManager getImage:outfit.shield
             withFormat:format
             onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+                imageArray[currentLayer] = image;
                 dispatch_group_leave(group);
             }
             onError:^() {
@@ -414,7 +413,7 @@
         [sharedManager getImage:outfit.weapon
             withFormat:format
             onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+                imageArray[currentLayer] = image;
                 dispatch_group_leave(group);
             }
             onError:^() {
@@ -428,7 +427,7 @@
         [sharedManager getImage:@"zzz"
             withFormat:nil
             onSuccess:^(UIImage *image) {
-                [imageArray replaceObjectAtIndex:currentLayer withObject:image];
+                imageArray[currentLayer] = image;
                 dispatch_group_leave(group);
             }
             onError:^() {
@@ -581,7 +580,7 @@
 }
 
 - (void)setPetCountFromArray:(NSArray *)petArray {
-    _petCount = [NSNumber numberWithInt:(int)[petArray count]];
+    _petCount = @((int)[petArray count]);
 }
 
 - (void)setCustomizationsDictionary:(NSDictionary *)customizationDictionary {
@@ -739,11 +738,10 @@
 
 - (void)willSave {
     if (self.nextLevel.integerValue == 0) {
-        self.nextLevel = [NSNumber
-            numberWithFloat:lroundf((([self.level floatValue] * [self.level floatValue] * 0.25) +
-                                     10 * [self.level floatValue] + 139.75) /
-                                    10) *
-                            10];
+        self.nextLevel = @(lroundf((([self.level floatValue] * [self.level floatValue] * 0.25) +
+                                    10 * [self.level floatValue] + 139.75) /
+                                   10) *
+                           10);
     }
 
     if (self.maxMagic.integerValue == 0) {

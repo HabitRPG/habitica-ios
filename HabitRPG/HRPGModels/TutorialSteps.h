@@ -6,8 +6,8 @@
 //  Copyright © 2015 Phillip Thelen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <Foundation/Foundation.h>
 
 @class User;
 

@@ -7,8 +7,8 @@
 //
 
 #import "UIViewController+TutorialSteps.h"
-#import "TutorialSteps.h"
 #import "Amplitude.h"
+#import "TutorialSteps.h"
 
 @implementation UIViewController (TutorialSteps)
 
@@ -139,8 +139,7 @@
         NSError *error;
         [self.sharedManager.getManagedObjectContext saveToPersistentStore:&error];
         [self.sharedManager updateUser:@{
-            [NSString stringWithFormat:@"flags.tutorial.%@.%@", type, step.identifier] :
-                [NSNumber numberWithBool:wasSeen]
+            [NSString stringWithFormat:@"flags.tutorial.%@.%@", type, step.identifier] : @(wasSeen)
         }
                              onSuccess:nil
                                onError:nil];

@@ -54,7 +54,6 @@
 
 #pragma mark - Table view data source
 
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
@@ -65,30 +64,30 @@
     } else if (section == 2) {
         return NSLocalizedString(@"Costume", nil);
     } else {
-        return @"";//switch control
+        return @"";  // switch control
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //section for the wear custom switch
+    // section for the wear custom switch
     if (section == 1) {
         return 1;
     }
-    
+
     return 8;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
-    
-    //section for the wear custom switch
+
+    // section for the wear custom switch
     if (indexPath.section == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Switch" forIndexPath:indexPath];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     }
-    
-    
+
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
 }
@@ -143,29 +142,33 @@
     [self.tableView reloadData];
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate {
+- (void)configureCell:(UITableViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+        withAnimation:(BOOL)animate {
     if (indexPath.section == 1) {
         UISwitch *customSwitch = [cell viewWithTag:9];
-        
+
         if (customSwitch.allTargets.count == 0) {
-            [customSwitch addTarget:self action:@selector(changeWearingCostume:) forControlEvents:UIControlEventValueChanged];
+            [customSwitch addTarget:self
+                             action:@selector(changeWearingCostume:)
+                   forControlEvents:UIControlEventValueChanged];
         }
-        
+
         UILabel *wearCustomLabel = [cell viewWithTag:8];
-        
+
         if ([wearCustomLabel.text isEqualToString:@""]) {
             wearCustomLabel.text = NSLocalizedString(@"Wear costume", nil);
         }
     } else {
-        UILabel *textLabel = (UILabel*)[cell viewWithTag:1];
+        UILabel *textLabel = [cell viewWithTag:1];
         textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-        
+
         NSString *searchedKey;
         NSString *typeName;
         Outfit *outfit;
         if (indexPath.section == 0) {
             outfit = self.user.equipped;
-        } else  {
+        } else {
             outfit = self.user.costume;
         }
         if (indexPath.item == 0) {
@@ -180,7 +183,7 @@
         } else if (indexPath.item == 3) {
             searchedKey = outfit.armor;
             typeName = NSLocalizedString(@"Armor", nil);
-        }  else if (indexPath.item == 4) {
+        } else if (indexPath.item == 4) {
             searchedKey = outfit.body;
             typeName = NSLocalizedString(@"Body", nil);
         } else if (indexPath.item == 5) {
@@ -201,13 +204,15 @@
             }
         }
         textLabel.text = typeName;
-        UILabel *detailLabel = (UILabel*)[cell viewWithTag:3];
+        UILabel *detailLabel = [cell viewWithTag:3];
         detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-        UIImageView *imageView = (UIImageView*)[cell viewWithTag:4];
+        UIImageView *imageView = [cell viewWithTag:4];
         if (searchedGear) {
             detailLabel.text = searchedGear.text;
             detailLabel.textColor = [UIColor blackColor];
-            [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", searchedGear.key] withFormat:@"png" onView:imageView];
+            [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", searchedGear.key]
+                              withFormat:@"png"
+                                  onView:imageView];
 
         } else {
             detailLabel.text = NSLocalizedString(@"Nothing Equipped", nil);
@@ -221,7 +226,7 @@
     [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"EquipmentDetailSegue"]) {
         HRPGEquipmentDetailViewController *equipmentDetailViewController =
-            (HRPGEquipmentDetailViewController *)segue.destinationViewController;
+            segue.destinationViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         if (indexPath.item == 0) {
             equipmentDetailViewController.type = @"head";
@@ -260,7 +265,7 @@
 
 - (void)changeWearingCostume:(UISwitch *)switchState {
     [self.sharedManager updateUser:@{
-        @"preferences.costume" : [NSNumber numberWithBool:switchState.on]
+        @"preferences.costume" : @(switchState.on)
     }
         onSuccess:^() {
             switchState.on = [self.user.preferences.useCostume boolValue];

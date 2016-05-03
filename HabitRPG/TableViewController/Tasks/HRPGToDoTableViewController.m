@@ -68,11 +68,11 @@
         [cell configureForItem:item forTask:task];
         cell.checkBox.wasTouched = ^() {
             if (![task.currentlyChecking boolValue]) {
-                item.currentlyChecking = [NSNumber numberWithBool:YES];
-                item.completed = [NSNumber numberWithBool:![item.completed boolValue]];
+                item.currentlyChecking = @YES;
+                item.completed = @(![item.completed boolValue]);
                 [self.sharedManager updateTask:task
                     onSuccess:^() {
-                        item.currentlyChecking = [NSNumber numberWithBool:NO];
+                        item.currentlyChecking = @NO;
                         if ([self isIndexPathVisible:indexPath]) {
                             [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
                         }
@@ -90,7 +90,7 @@
                         }
                     }
                     onError:^() {
-                        item.currentlyChecking = [NSNumber numberWithBool:NO];
+                        item.currentlyChecking = @NO;
                     }];
             }
         };
@@ -98,15 +98,15 @@
         [cell configureForTask:task];
         cell.checkBox.wasTouched = ^() {
             if (![task.currentlyChecking boolValue]) {
-                task.currentlyChecking = [NSNumber numberWithBool:YES];
+                task.currentlyChecking = @YES;
                 NSString *actionName = [task.completed boolValue] ? @"down" : @"up";
                 [self.sharedManager upDownTask:task
                     direction:actionName
                     onSuccess:^(NSArray *valuesArray) {
-                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        task.currentlyChecking = @NO;
                     }
                     onError:^() {
-                        task.currentlyChecking = [NSNumber numberWithBool:NO];
+                        task.currentlyChecking = @NO;
                     }];
             }
         };

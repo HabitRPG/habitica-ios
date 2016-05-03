@@ -31,7 +31,7 @@
         self.streakLabel.text = nil;
         self.notesStreakSeparator.constant = 0;
     }
-    
+
     self.streakLabel.backgroundColor = self.backgroundColor;
 }
 

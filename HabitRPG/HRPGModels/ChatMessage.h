@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "User.h"
+#import <Foundation/Foundation.h>
 #import "ChatMessageLike.h"
+#import "User.h"
 
 @class Group;
 

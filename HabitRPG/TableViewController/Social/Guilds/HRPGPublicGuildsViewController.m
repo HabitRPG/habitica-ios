@@ -162,8 +162,8 @@
             break;
 
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:(HRPGPublicGuildTableViewCell *)[tableView
-                                    cellForRowAtIndexPath:indexPath]
+            [self configureCell:[tableView
+                            cellForRowAtIndexPath:indexPath]
                     atIndexPath:indexPath];
             break;
 
@@ -197,7 +197,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         Group *guild = [self.fetchedResultsController objectAtIndexPath:indexPath];
         HRPGGroupTableViewController *guildViewController =
-            (HRPGGroupTableViewController *)segue.destinationViewController;
+                segue.destinationViewController;
         guildViewController.groupID = guild.id;
     }
 }

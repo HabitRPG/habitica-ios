@@ -7,10 +7,10 @@
 //
 
 #import "HRPGPetViewController.h"
-#import "HRPGFeedViewController.h"
-#import "Egg.h"
-#import "HatchingPotion.h"
 #import <pop/POP.h>
+#import "Egg.h"
+#import "HRPGFeedViewController.h"
+#import "HatchingPotion.h"
 #import "UIViewcontroller+TutorialSteps.h"
 
 @interface HRPGPetViewController ()
@@ -78,7 +78,7 @@
 
 - (NSString *)niceMountName:(Pet *)mount {
     NSArray *nameParts = [mount.key componentsSeparatedByString:@"-"];
-    
+
     NSString *niceMountName = [self eggWithKey:nameParts[0]].mountText;
     if (!niceMountName) {
         niceMountName = nameParts[0];
@@ -115,8 +115,8 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+                    layout:(UICollectionViewLayout *)collectionViewLayout
+    sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = 121.0f;
     height = height +
              [@" " boundingRectWithSize:CGSizeMake(90.0f, MAXFLOAT)
@@ -246,10 +246,10 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UICollectionView *collectionView = self.collectionView;
 
     switch (type) {
@@ -282,9 +282,9 @@
           atIndexPath:(NSIndexPath *)indexPath
              animated:(BOOL)animated {
     Pet *pet = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
-    UIProgressView *progressView = (UIProgressView *)[cell viewWithTag:2];
-    UILabel *label = (UILabel *)[cell viewWithTag:3];
+    UIImageView *imageView = [cell viewWithTag:1];
+    UIProgressView *progressView = [cell viewWithTag:2];
+    UILabel *label = [cell viewWithTag:3];
     if (!pet.nicePetName) {
         pet.nicePetName = [self nicePetName:pet];
     }
@@ -361,7 +361,7 @@
 }
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-    HRPGFeedViewController *feedController = (HRPGFeedViewController *)[segue sourceViewController];
+    HRPGFeedViewController *feedController = [segue sourceViewController];
     Food *food = feedController.selectedFood;
     self.selectedPet.niceMountName = [self niceMountName:self.selectedPet];
     [self.sharedManager feedPet:self.selectedPet

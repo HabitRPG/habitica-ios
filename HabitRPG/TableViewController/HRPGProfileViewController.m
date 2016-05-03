@@ -7,10 +7,10 @@
 //
 
 #import "HRPGProfileViewController.h"
-#import "HRPGTopHeaderNavigationController.h"
-#import <PDKeychainBindings.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
+#import <PDKeychainBindings.h>
+#import "HRPGTopHeaderNavigationController.h"
 #import "UIColor+Habitica.h"
 
 @interface HRPGProfileViewController ()
@@ -68,8 +68,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     UILabel *footerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 170)];
     footerView.text = [NSString
         stringWithFormat:NSLocalizedString(@"Hey! You are awesome!\nVersion %@ (%@)", nil),
-                         [[[NSBundle mainBundle] infoDictionary]
-                             objectForKey:@"CFBundleShortVersionString"],
+                         [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"],
                          [[NSBundle mainBundle]
                              objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]];
     footerView.textColor = [UIColor lightGrayColor];
@@ -138,7 +137,6 @@ NIKFontAwesomeIconFactory *iconFactory;
     switch (section) {
         case 0:
             return nil;
-            break;
         case 1:
             return NSLocalizedString(@"Social", nil);
         case 2:
@@ -191,17 +189,17 @@ NIKFontAwesomeIconFactory *iconFactory;
         }
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
-        UIViewController *tavernViewController = (UIViewController *)[secondStoryBoard
-            instantiateViewControllerWithIdentifier:@"TavernViewController"];
+        UIViewController *tavernViewController =
+            [secondStoryBoard instantiateViewControllerWithIdentifier:@"TavernViewController"];
         [self.navigationController pushViewController:tavernViewController animated:YES];
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
-        UIViewController *partyViewController = (UIViewController *)[secondStoryBoard
-            instantiateViewControllerWithIdentifier:@"PartyViewController"];
+        UIViewController *partyViewController =
+            [secondStoryBoard instantiateViewControllerWithIdentifier:@"PartyViewController"];
         [self.navigationController pushViewController:partyViewController animated:YES];
     } else if (indexPath.section == 1 && indexPath.item == 2) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
-        UIViewController *guildsViewController = (UIViewController *)[secondStoryBoard
+        UIViewController *guildsViewController = [secondStoryBoard
             instantiateViewControllerWithIdentifier:@"GuildsOverviewViewController"];
         [self.navigationController pushViewController:guildsViewController animated:YES];
     } else if (indexPath.section == 2 && indexPath.item == 0) {
@@ -301,9 +299,9 @@ NIKFontAwesomeIconFactory *iconFactory;
     if (accessibilityLabel) {
         cell.accessibilityLabel = accessibilityLabel;
     }
-    UILabel *label = (UILabel *)[cell viewWithTag:1];
+    UILabel *label = [cell viewWithTag:1];
     label.text = title;
-    UIImageView *indicatorView = (UIImageView *)[cell viewWithTag:2];
+    UIImageView *indicatorView = [cell viewWithTag:2];
     indicatorView.hidden = !showIndicator;
     if (showIndicator) {
         iconFactory.colors = @[ [UIColor purple200] ];
@@ -350,16 +348,16 @@ NIKFontAwesomeIconFactory *iconFactory;
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
     switch (type) {
         case NSFetchedResultsChangeInsert: {

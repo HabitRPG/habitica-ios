@@ -75,7 +75,7 @@ NSIndexPath *selectedIndex;
     if (indexPath.section == 0 && indexPath.item == 0) {
         UITableViewCell *cell =
             [tableView dequeueReusableCellWithIdentifier:@"SizeCell" forIndexPath:indexPath];
-        UISegmentedControl *sizeControl = (UISegmentedControl *)[cell viewWithTag:1];
+        UISegmentedControl *sizeControl = [cell viewWithTag:1];
         if ([self.user.preferences.size isEqualToString:@"slim"]) {
             [sizeControl setSelectedSegmentIndex:0];
         } else {
@@ -150,17 +150,17 @@ NSIndexPath *selectedIndex;
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
     [self.tableView reloadData];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
     [tableView reloadData];
 }
@@ -172,7 +172,7 @@ NSIndexPath *selectedIndex;
 - (void)configureCell:(UITableViewCell *)cell
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate {
-    UILabel *textLabel = (UILabel *)[cell viewWithTag:1];
+    UILabel *textLabel = [cell viewWithTag:1];
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
 
     NSString *searchedKey;
@@ -237,9 +237,9 @@ NSIndexPath *selectedIndex;
     }
 
     textLabel.text = typeName;
-    UILabel *detailLabel = (UILabel *)[cell viewWithTag:2];
+    UILabel *detailLabel = [cell viewWithTag:2];
     detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-    UIImageView *imageView = (UIImageView *)[cell viewWithTag:3];
+    UIImageView *imageView = [cell viewWithTag:3];
 
     if ([searchedType isEqualToString:@"ear"]) {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -309,7 +309,7 @@ NSIndexPath *selectedIndex;
     [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"DetailSegue"]) {
         HRPGCustomizationCollectionViewController *destViewController =
-            (HRPGCustomizationCollectionViewController *)segue.destinationViewController;
+            segue.destinationViewController;
         destViewController.user = self.user;
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         destViewController.entityName = @"Customization";

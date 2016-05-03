@@ -7,12 +7,12 @@
 //
 
 #import "HRPGGroupAboutTableViewController.h"
-#import "UIViewController+Markdown.h"
 #import <DTAttributedTextView.h>
 #import "HRPGGroupFormViewController.h"
 #import "HRPGGroupTableViewController.h"
-#import "UIColor+Habitica.h"
 #import "HRPGProfileViewController.h"
+#import "UIColor+Habitica.h"
+#import "UIViewController+Markdown.h"
 
 @interface HRPGGroupAboutTableViewController ()
 @property NSString *replyMessage;
@@ -167,8 +167,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"GroupFormSegue"]) {
-        UINavigationController *navigationController =
-            (UINavigationController *)segue.destinationViewController;
+        UINavigationController *navigationController = segue.destinationViewController;
         HRPGGroupFormViewController *groupFormController =
             (HRPGGroupFormViewController *)navigationController.topViewController;
         groupFormController.editGroup = YES;
@@ -180,8 +179,7 @@
 }
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-    HRPGGroupFormViewController *formViewController =
-        (HRPGGroupFormViewController *)segue.sourceViewController;
+    HRPGGroupFormViewController *formViewController = segue.sourceViewController;
     [self.sharedManager
         updateGroup:formViewController.group
           onSuccess:^() {

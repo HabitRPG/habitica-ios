@@ -8,9 +8,9 @@
 
 #import "HRPGQuestGroupTableViewController.h"
 #import "HRPGProgressView.h"
-#import "QuestCollect.h"
-#import "HRPGQuestParticipantsViewController.h"
 #import "HRPGQuestDetailViewController.h"
+#import "HRPGQuestParticipantsViewController.h"
+#import "QuestCollect.h"
 
 @interface HRPGQuestGroupTableViewController ()
 
@@ -133,75 +133,70 @@
                 cellname = @"QuestCell";
             }
         }
-        if (cell == nil) {
-            cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
+        if ([cellname isEqualToString:@"QuestCell"]) {
+            cell.textLabel.text = self.quest.text;
+        } else if ([self listMembers] && ((indexPath.section == 1 && indexPath.item == 1))) {
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            int acceptedCount = 0;
 
-            if ([cellname isEqualToString:@"QuestCell"]) {
-                cell.textLabel.text = self.quest.text;
-            } else if ([self listMembers] && ((indexPath.section == 1 && indexPath.item == 1))) {
-                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-                int acceptedCount = 0;
-
-                if ([self.group.questActive boolValue]) {
-                    for (User *participant in self.group.member) {
-                        if ([participant.participateInQuest boolValue]) {
-                            acceptedCount++;
-                        }
+            if ([self.group.questActive boolValue]) {
+                for (User *participant in self.group.member) {
+                    if ([participant.participateInQuest boolValue]) {
+                        acceptedCount++;
                     }
-                    if (acceptedCount == 1) {
-                        cell.textLabel.text = NSLocalizedString(@"1 Participant", nil);
-                    } else {
-                        cell.textLabel.text =
-                            [NSString stringWithFormat:NSLocalizedString(@"%d Participants", nil),
-                                                       acceptedCount];
-                    }
+                }
+                if (acceptedCount == 1) {
+                    cell.textLabel.text = NSLocalizedString(@"1 Participant", nil);
                 } else {
-                    cell.textLabel.text = NSLocalizedString(@"Participants", nil);
-                    for (User *participant in self.group.member) {
-                        if (participant.participateInQuest != nil) {
-                            acceptedCount++;
-                        }
+                    cell.textLabel.text = [NSString
+                        stringWithFormat:NSLocalizedString(@"%d Participants", nil), acceptedCount];
+                }
+            } else {
+                cell.textLabel.text = NSLocalizedString(@"Participants", nil);
+                for (User *participant in self.group.member) {
+                    if (participant.participateInQuest != nil) {
+                        acceptedCount++;
                     }
-                    cell.detailTextLabel.text = [NSString
-                        stringWithFormat:NSLocalizedString(@"%d out of %d responded", nil),
-                                         acceptedCount, [self.group.member count]];
                 }
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            } else if ([self isActiveBossQuest]) {
-                if ((indexPath.item == 2 && [self listMembers]) ||
-                    (indexPath.item == 1 && ![self listMembers])) {
-                    UILabel *lifeLabel = (UILabel *)[cell viewWithTag:1];
-                    lifeLabel.text = [NSString
-                        stringWithFormat:@"%@ / %@", self.group.questHP, self.quest.bossHp];
-                    lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-                    HRPGProgressView *lifeBar = (HRPGProgressView *)[cell viewWithTag:2];
-                    lifeBar.progress = [NSNumber numberWithFloat:([self.group.questHP floatValue] /
-                                                                  [self.quest.bossHp floatValue])];
-                } else if ((indexPath.item == 3 && [self listMembers]) ||
-                           (indexPath.item == 2 && ![self listMembers])) {
-                    UILabel *lifeLabel = (UILabel *)[cell viewWithTag:1];
-                    lifeLabel.text = [NSString
-                        stringWithFormat:@"%@ / %@", self.group.questRage, self.quest.bossRage];
-                    lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-                    HRPGProgressView *lifeBar = (HRPGProgressView *)[cell viewWithTag:2];
-                    lifeBar.progress =
-                        [NSNumber numberWithFloat:([self.group.questRage floatValue] /
-                                                   [self.quest.bossRage floatValue])];
-                }
-            } else if ([self isActiveCollectionQuest]) {
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                QuestCollect *collect = self.quest.collect[indexPath.item - 2];
-                cell.textLabel.text = collect.text;
-                if ([collect.count integerValue] == [collect.collectCount integerValue]) {
-                    cell.textLabel.textColor = [UIColor grayColor];
-                } else {
-                    cell.textLabel.textColor = [UIColor blackColor];
-                }
-                cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
                 cell.detailTextLabel.text =
-                    [NSString stringWithFormat:@"%@/%@", collect.collectCount, collect.count];
-                cell.detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+                    [NSString stringWithFormat:NSLocalizedString(@"%d out of %d responded", nil),
+                                               acceptedCount, [self.group.member count]];
             }
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        } else if ([self isActiveBossQuest]) {
+            if ((indexPath.item == 2 && [self listMembers]) ||
+                (indexPath.item == 1 && ![self listMembers])) {
+                UILabel *lifeLabel = [cell viewWithTag:1];
+                lifeLabel.text =
+                    [NSString stringWithFormat:@"%@ / %@", self.group.questHP, self.quest.bossHp];
+                lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+                HRPGProgressView *lifeBar = [cell viewWithTag:2];
+                lifeBar.progress =
+                    @([self.group.questHP floatValue] / [self.quest.bossHp floatValue]);
+            } else if ((indexPath.item == 3 && [self listMembers]) ||
+                       (indexPath.item == 2 && ![self listMembers])) {
+                UILabel *lifeLabel = [cell viewWithTag:1];
+                lifeLabel.text = [NSString
+                    stringWithFormat:@"%@ / %@", self.group.questRage, self.quest.bossRage];
+                lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+                HRPGProgressView *lifeBar = [cell viewWithTag:2];
+                lifeBar.progress =
+                    @([self.group.questRage floatValue] / [self.quest.bossRage floatValue]);
+            }
+        } else if ([self isActiveCollectionQuest]) {
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            QuestCollect *collect = self.quest.collect[indexPath.item - 2];
+            cell.textLabel.text = collect.text;
+            if ([collect.count integerValue] == [collect.collectCount integerValue]) {
+                cell.textLabel.textColor = [UIColor grayColor];
+            } else {
+                cell.textLabel.textColor = [UIColor blackColor];
+            }
+            cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+            cell.detailTextLabel.text =
+                [NSString stringWithFormat:@"%@/%@", collect.collectCount, collect.count];
+            cell.detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         }
         return cell;
     }
@@ -235,8 +230,8 @@
         qdViewcontroller.quest = self.quest;
         qdViewcontroller.group = self.group;
         qdViewcontroller.user = self.user;
-        qdViewcontroller.hideAskLater = [NSNumber numberWithBool:YES];
-        qdViewcontroller.wasPushed = [NSNumber numberWithBool:YES];
+        qdViewcontroller.hideAskLater = @YES;
+        qdViewcontroller.wasPushed = @YES;
     }
 }
 

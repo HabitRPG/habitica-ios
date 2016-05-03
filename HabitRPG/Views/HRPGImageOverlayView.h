@@ -22,7 +22,7 @@
 
 @property UIImageView *ImageView;
 
-@property (nonatomic) NSString *dismissButtonText;
-@property (nonatomic) void (^shareAction)();
+@property(nonatomic) NSString *dismissButtonText;
+@property(nonatomic) void (^shareAction)();
 
 @end

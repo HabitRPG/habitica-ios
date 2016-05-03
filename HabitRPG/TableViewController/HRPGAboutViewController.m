@@ -7,9 +7,9 @@
 //
 
 #import "HRPGAboutViewController.h"
-#import "HRPGTopHeaderNavigationController.h"
-#import <sys/utsname.h>
 #import <VTAcknowledgementsViewController.h>
+#import <sys/utsname.h>
+#import "HRPGTopHeaderNavigationController.h"
 
 @interface HRPGAboutViewController ()
 
@@ -74,8 +74,8 @@
     } else if (indexPath.item == 7) {
         cell.textLabel.text = NSLocalizedString(@"Version", nil);
         NSString *appVersionString = [NSString
-            stringWithFormat:@"%@ (%@)", [[[NSBundle mainBundle] infoDictionary]
-                                             objectForKey:@"CFBundleShortVersionString"],
+            stringWithFormat:@"%@ (%@)",
+                             [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"],
                              [[NSBundle mainBundle]
                                  objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]];
         cell.detailTextLabel.text = appVersionString;
@@ -192,8 +192,8 @@
                                                                    encoding:NSUTF8StringEncoding]]];
     [informationString
         appendString:[NSString stringWithFormat:NSLocalizedString(@"App Version: %@\n", nil),
-                                                [[[NSBundle mainBundle] infoDictionary]
-                                                    objectForKey:@"CFBundleShortVersionString"]]];
+                                                [[NSBundle mainBundle] infoDictionary]
+                                                    [@"CFBundleShortVersionString"]]];
     [informationString appendString:[NSString stringWithFormat:@"User UUID: %@\n",
                                                                [self.sharedManager getUser].id]];
 

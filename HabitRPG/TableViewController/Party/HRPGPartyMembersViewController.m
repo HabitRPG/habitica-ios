@@ -7,9 +7,9 @@
 //
 
 #import "HRPGPartyMembersViewController.h"
-#import "HRPGUserProfileViewController.h"
-#import "HRPGLabeledProgressBar.h"
 #import "HRPGInviteMembersViewController.h"
+#import "HRPGLabeledProgressBar.h"
+#import "HRPGUserProfileViewController.h"
 #import "UIColor+Habitica.h"
 #import "UIViewController+TutorialSteps.h"
 
@@ -87,7 +87,8 @@
     [fetchRequest setFetchBatchSize:20];
 
     NSPredicate *predicate;
-    predicate = [NSPredicate predicateWithFormat:@"party.id == %@", [self.sharedManager getUser].partyID];
+    predicate =
+        [NSPredicate predicateWithFormat:@"party.id == %@", [self.sharedManager getUser].partyID];
     [fetchRequest setPredicate:predicate];
 
     NSSortDescriptor *idDescriptor =
@@ -118,9 +119,9 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
@@ -143,10 +144,10 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
 
     switch (type) {
@@ -183,21 +184,21 @@
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate {
     User *user = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *textLabel = (UILabel *)[cell viewWithTag:1];
+    UILabel *textLabel = [cell viewWithTag:1];
     textLabel.text = user.username;
-    UIImageView *avatarView = (UIImageView *)[cell viewWithTag:2];
+    UIImageView *avatarView = [cell viewWithTag:2];
     avatarView.image = nil;
     [user setAvatarOnImageView:avatarView withPetMount:NO onlyHead:NO useForce:NO];
 
-    HRPGLabeledProgressBar *healthLabel = (HRPGLabeledProgressBar *)[cell viewWithTag:3];
+    HRPGLabeledProgressBar *healthLabel = [cell viewWithTag:3];
     healthLabel.color = [UIColor red100];
     healthLabel.icon = [UIImage imageNamed:@"icon_health"];
     healthLabel.value = user.health;
-    healthLabel.maxValue = [NSNumber numberWithInt:50];
+    healthLabel.maxValue = @50;
 
-    UILabel *levelLabel = (UILabel *)[cell viewWithTag:5];
+    UILabel *levelLabel = [cell viewWithTag:5];
     levelLabel.text = [NSString stringWithFormat:@"LVL %@", user.level];
-    UILabel *classLabel = (UILabel *)[cell viewWithTag:6];
+    UILabel *classLabel = [cell viewWithTag:6];
     classLabel.text = user.hclass;
     [classLabel.layer setCornerRadius:5.0f];
     classLabel.backgroundColor = [user classColor];
@@ -209,8 +210,7 @@
     if ([segue.identifier isEqualToString:@"UserProfileSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         User *user = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        HRPGUserProfileViewController *userProfileViewController =
-            (HRPGUserProfileViewController *)segue.destinationViewController;
+        HRPGUserProfileViewController *userProfileViewController = segue.destinationViewController;
         userProfileViewController.userID = user.id;
         userProfileViewController.username = user.username;
     }
@@ -236,8 +236,7 @@
 }
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-    HRPGInviteMembersViewController *formViewController =
-        (HRPGInviteMembersViewController *)segue.sourceViewController;
+    HRPGInviteMembersViewController *formViewController = segue.sourceViewController;
     [self.sharedManager inviteMembers:formViewController.members
         withInvitationType:formViewController.invitationType
         toGroupWithID:self.partyID

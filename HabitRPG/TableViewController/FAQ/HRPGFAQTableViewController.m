@@ -134,9 +134,9 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
@@ -159,10 +159,10 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
 
     switch (type) {
@@ -212,15 +212,12 @@
         for (TutorialSteps *step in [self.sharedManager user].flags.iOSTutorialSteps) {
             step.wasShown = @NO;
             step.shownInView = nil;
-            [steps setObject:@NO
-                      forKey:[NSString stringWithFormat:@"flags.tutorial.ios.%@", step.identifier]];
+            steps[[NSString stringWithFormat:@"flags.tutorial.ios.%@", step.identifier]] = @NO;
         }
         for (TutorialSteps *step in [self.sharedManager user].flags.commonTutorialSteps) {
             step.wasShown = @NO;
             step.shownInView = nil;
-            [steps
-                setObject:@NO
-                   forKey:[NSString stringWithFormat:@"flags.tutorial.common.%@", step.identifier]];
+            steps[[NSString stringWithFormat:@"flags.tutorial.common.%@", step.identifier]] = @NO;
         }
         NSError *error;
         [self.managedObjectContext saveToPersistentStore:&error];
@@ -230,8 +227,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"FAQDetailSegue"]) {
-        HRPGFAQDetailViewController *detailViewController =
-            (HRPGFAQDetailViewController *)segue.destinationViewController;
+        HRPGFAQDetailViewController *detailViewController = segue.destinationViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         FAQ *faq = [self.fetchedResultsController objectAtIndexPath:indexPath];
         detailViewController.faq = faq;

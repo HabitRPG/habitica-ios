@@ -10,8 +10,8 @@
 
 @interface HRPGMaintenanceViewController : UIViewController
 
-- (void)setMaintenanceData:(NSDictionary *) data;
+- (void)setMaintenanceData:(NSDictionary *)data;
 
-@property (nonatomic) BOOL isDeprecatedApp;
+@property(nonatomic) BOOL isDeprecatedApp;
 
 @end

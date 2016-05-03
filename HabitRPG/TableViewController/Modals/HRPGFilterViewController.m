@@ -7,9 +7,9 @@
 //
 
 #import "HRPGFilterViewController.h"
-#import "Tag.h"
 #import <NIKFontAwesomeIconFactory.h>
 #import "HRPGCheckBoxView.h"
+#import "Tag.h"
 #import "UIColor+Habitica.h"
 
 @interface HRPGFilterViewController ()
@@ -49,20 +49,17 @@
         [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
     if ([self.taskType isEqualToString:@"habit"]) {
         self.filterTypeControl = [[UISegmentedControl alloc] initWithItems:@[
-            NSLocalizedString(@"All", nil),
-            NSLocalizedString(@"Weak", nil),
+            NSLocalizedString(@"All", nil), NSLocalizedString(@"Weak", nil),
             NSLocalizedString(@"Strong", nil)
         ]];
     } else if ([self.taskType isEqualToString:@"daily"]) {
         self.filterTypeControl = [[UISegmentedControl alloc] initWithItems:@[
-            NSLocalizedString(@"All", nil),
-            NSLocalizedString(@"Due", nil),
+            NSLocalizedString(@"All", nil), NSLocalizedString(@"Due", nil),
             NSLocalizedString(@"Grey", nil)
         ]];
     } else if ([self.taskType isEqualToString:@"todo"]) {
         self.filterTypeControl = [[UISegmentedControl alloc] initWithItems:@[
-            NSLocalizedString(@"Active", nil),
-            NSLocalizedString(@"Dated", nil),
+            NSLocalizedString(@"Active", nil), NSLocalizedString(@"Dated", nil),
             NSLocalizedString(@"Done", nil)
         ]];
     }
@@ -178,9 +175,9 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
@@ -203,10 +200,10 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
 
     switch (type) {
@@ -243,10 +240,10 @@
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate {
     Tag *tag = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *textLabel = (UILabel *)[cell viewWithTag:1];
+    UILabel *textLabel = [cell viewWithTag:1];
     textLabel.text = tag.name;
 
-    HRPGCheckBoxView *checkboxView = (HRPGCheckBoxView *)[cell viewWithTag:2];
+    HRPGCheckBoxView *checkboxView = [cell viewWithTag:2];
     checkboxView.cornerRadius = checkboxView.size / 2;
     if ([self.areTagsSelected[indexPath.item] boolValue]) {
         checkboxView.checkColor = [UIColor colorWithWhite:1.0 alpha:0.7];
@@ -261,14 +258,13 @@
     [checkboxView setNeedsDisplay];
 
     if (tag.challenge) {
-        UIImageView *imageView = (UIImageView *)[cell viewWithTag:3];
+        UIImageView *imageView = [cell viewWithTag:3];
         imageView.image = [self.iconFactory createImageForIcon:NIKFontAwesomeIconBullhorn];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.areTagsSelected[indexPath.item] =
-        [NSNumber numberWithBool:![self.areTagsSelected[indexPath.item] boolValue]];
+    self.areTagsSelected[indexPath.item] = @(![self.areTagsSelected[indexPath.item] boolValue]);
     [self.tableView reloadRowsAtIndexPaths:@[ indexPath ]
                           withRowAnimation:UITableViewRowAnimationNone];
 }

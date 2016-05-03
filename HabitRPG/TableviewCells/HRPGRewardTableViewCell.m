@@ -7,8 +7,8 @@
 //
 
 #import "HRPGRewardTableViewCell.h"
-#import "UIColor+Habitica.h"
 #import "NSString+Emoji.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGRewardTableViewCell ()
 

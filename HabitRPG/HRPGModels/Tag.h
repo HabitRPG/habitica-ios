@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <Foundation/Foundation.h>
 
 @class Task, User;
 

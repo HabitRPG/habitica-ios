@@ -7,17 +7,17 @@
 //
 
 #import "HRPGLoginViewController.h"
-#import "HRPGManager.h"
-#import "HRPGAppDelegate.h"
-#import "OnePasswordExtension.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import "MRProgress.h"
-#import "CRToast.h"
 #import <Google/Analytics.h>
+#import "Amplitude.h"
+#import "CRToast.h"
+#import "HRPGAppDelegate.h"
 #import "HRPGAvatarSetupViewController.h"
 #import "HRPGIntroView.h"
+#import "HRPGManager.h"
+#import "MRProgress.h"
+#import "OnePasswordExtension.h"
 #import "UIColor+Habitica.h"
-#import "Amplitude.h"
 
 @interface HRPGLoginViewController ()
 @property HRPGManager *sharedManager;
@@ -139,33 +139,33 @@
         if (indexPath.item == 0) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"UsernameCell"
                                                    forIndexPath:indexPath];
-            self.usernameField = (UITextField *)[cell viewWithTag:1];
+            self.usernameField = [cell viewWithTag:1];
         } else if (self.isRegistering && indexPath.item == 1) {
             cell =
                 [tableView dequeueReusableCellWithIdentifier:@"EmailCell" forIndexPath:indexPath];
-            self.emailField = (UITextField *)[cell viewWithTag:1];
+            self.emailField = [cell viewWithTag:1];
         } else if (indexPath.item == 1 || indexPath.item == 2) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"PasswordCell"
                                                    forIndexPath:indexPath];
-            self.passwordField = (UITextField *)[cell viewWithTag:1];
-            self.onePasswordButton = (UIButton *)[cell viewWithTag:3];
+            self.passwordField = [cell viewWithTag:1];
+            self.onePasswordButton = [cell viewWithTag:3];
             [self.onePasswordButton
                 setHidden:![[OnePasswordExtension sharedExtension] isAppExtensionAvailable]];
         } else if (self.isRegistering && indexPath.item == 3) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"RepeatPasswordCell"
                                                    forIndexPath:indexPath];
-            self.repeatPasswordField = (UITextField *)[cell viewWithTag:1];
+            self.repeatPasswordField = [cell viewWithTag:1];
         }
     } else if (indexPath.section == 1) {
         cell =
             [tableView dequeueReusableCellWithIdentifier:@"LoginButtonCell" forIndexPath:indexPath];
         self.loginCell = cell;
-        self.loginLabel = (UILabel *)[cell viewWithTag:1];
-        self.activityIndicator = (UIActivityIndicatorView *)[cell viewWithTag:2];
+        self.loginLabel = [cell viewWithTag:1];
+        self.activityIndicator = [cell viewWithTag:2];
     } else if (indexPath.section == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"FacebookButtonCell"
                                                forIndexPath:indexPath];
-        self.fbLoginButton = (FBSDKLoginButton *)[cell viewWithTag:1];
+        self.fbLoginButton = [cell viewWithTag:1];
         self.fbLoginButton.delegate = self;
     }
 
@@ -179,7 +179,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 0) {
-        [self loginUser:0];
+        [self loginUser:nil];
     }
 }
 

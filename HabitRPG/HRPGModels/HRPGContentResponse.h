@@ -5,7 +5,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface HRPGContentResponse : NSObject
 
 @property NSArray *gear;
@@ -16,6 +15,5 @@
 @property NSArray *armoire;
 @property NSArray *quests;
 @property NSArray *backgrounds;
-
 
 @end

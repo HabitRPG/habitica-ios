@@ -10,9 +10,13 @@
 
 @implementation HRPGSharingManager
 
-+ (void) shareItems:(NSArray *)items withPresentingViewController:(UIViewController *)presentingViewController {
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
-    [presentingViewController presentViewController:activityViewController animated:YES completion:nil];
++ (void)shareItems:(NSArray *)items
+    withPresentingViewController:(UIViewController *)presentingViewController {
+    UIActivityViewController *activityViewController =
+        [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+    [presentingViewController presentViewController:activityViewController
+                                           animated:YES
+                                         completion:nil];
 }
 
 @end

@@ -7,14 +7,14 @@
 //
 
 #import "HRPGBaseCollectionViewController.h"
-#import "Google/Analytics.h"
 #import <PDKeychainBindings.h>
+#import "Amplitude.h"
+#import "Google/Analytics.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGDeathView.h"
-#import "HRPGTopHeaderNavigationController.h"
 #import "HRPGNavigationController.h"
+#import "HRPGTopHeaderNavigationController.h"
 #import "UIViewcontroller+TutorialSteps.h"
-#import "Amplitude.h"
 
 @interface HRPGBaseCollectionViewController ()
 
@@ -40,8 +40,8 @@
     if ([keyChain stringForKey:@"id"] == nil ||
         [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UINavigationController *navigationController = (UINavigationController *)[storyboard
-            instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+        UINavigationController *navigationController =
+            [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
         [self presentViewController:navigationController animated:NO completion:nil];
     }
 

@@ -7,12 +7,12 @@
 //
 
 #import "HRPGItemViewController.h"
-#import "HRPGAppDelegate.h"
-#import "Quest.h"
-#import "HatchingPotion.h"
 #import "Egg.h"
+#import "HRPGAppDelegate.h"
 #import "HRPGImageOverlayView.h"
 #import "HRPGSharingManager.h"
+#import "HatchingPotion.h"
+#import "Quest.h"
 
 @interface HRPGItemViewController ()
 @property Item *selectedItem;
@@ -36,7 +36,7 @@ float textWidth;
 
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     textWidth = screenRect.size.width - 118;
-    
+
     [self clearDuplicates];
 }
 
@@ -44,7 +44,7 @@ float textWidth;
     NSMutableArray *duplicates = [NSMutableArray array];
     NSArray *items = self.fetchedResultsController.fetchedObjects;
     for (int i = 1; i < items.count; i++) {
-        if ([((Item *)items[i]).key isEqualToString:((Item *)items[i-1]).key]) {
+        if ([((Item *)items[i]).key isEqualToString:((Item *)items[i - 1]).key]) {
             [duplicates addObject:items[i]];
         }
     }
@@ -143,18 +143,20 @@ float textWidth;
         return 0;
     }
     NSInteger height = 24;
-    if (indexPath.item < self.fetchedResultsController.sections[indexPath.section].numberOfObjects) {
+    if (indexPath.item <
+        self.fetchedResultsController.sections[indexPath.section].numberOfObjects) {
         Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        height = height + [item.text boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT)
-                                                   options:NSStringDrawingUsesLineFragmentOrigin
-                                                attributes:@{
-                                                             NSFontAttributeName : [UIFont
-                                                                                    preferredFontForTextStyle:UIFontTextStyleBody]
-                                                             }
-                                                   context:nil]
-        .size.height;
+        height = height +
+                 [item.text boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT)
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                      attributes:@{
+                                          NSFontAttributeName :
+                                              [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+                                      }
+                                         context:nil]
+                     .size.height;
     }
-    
+
     if (height < 60) {
         return 60;
     }
@@ -180,40 +182,56 @@ float textWidth;
             potionName = item.key;
         }
         [self.sharedManager
-         hatchEgg:eggName
-         withPotion:potionName
-         onSuccess:^() {
-             [self.sharedManager getImage:[NSString stringWithFormat:@"Pet-%@-%@",
-                                           eggName, potionName] withFormat:nil onSuccess:^(UIImage *image) {
-                 NSArray *nibViews =
-                 [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView" owner:self options:nil];
-                 HRPGImageOverlayView *overlayView = [nibViews objectAtIndex:0];
-                 [overlayView displayImage:image];
-                 overlayView.imageWidth = 81;
-                 overlayView.imageHeight = 99;
-                 overlayView.descriptionText =
-                 [NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil),
-                  potionName, eggName];
-                 overlayView.dismissButtonText = NSLocalizedString(@"Close", nil);
-                 overlayView.shareAction = ^() {
-                     HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
-                     UIViewController *activeViewController = del.window.rootViewController.presentedViewController;
-                     [HRPGSharingManager shareItems:@[
-                                                      [[NSString stringWithFormat:NSLocalizedString(@"I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!", nil), potionName, eggName] stringByAppendingString:@" https://habitica.com/social/hatch-pet"],
-                                                      image]
-                       withPresentingViewController:activeViewController];
-                 };
-                 [overlayView sizeToFit];
-                 KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
-                                                         showType:KLCPopupShowTypeBounceIn
-                                                      dismissType:KLCPopupDismissTypeBounceOut
-                                                         maskType:KLCPopupMaskTypeDimmed
-                                         dismissOnBackgroundTouch:YES
-                                            dismissOnContentTouch:YES];
-                 [popup show];
-             } onError:nil];
-         }
-         onError:nil];
+              hatchEgg:eggName
+            withPotion:potionName
+             onSuccess:^() {
+                 [self.sharedManager
+                       getImage:[NSString stringWithFormat:@"Pet-%@-%@", eggName, potionName]
+                     withFormat:nil
+                      onSuccess:^(UIImage *image) {
+                          NSArray *nibViews =
+                              [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView"
+                                                            owner:self
+                                                          options:nil];
+                          HRPGImageOverlayView *overlayView = nibViews[0];
+                          [overlayView displayImage:image];
+                          overlayView.imageWidth = 81;
+                          overlayView.imageHeight = 99;
+                          overlayView.descriptionText = [NSString
+                              stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil),
+                                               potionName, eggName];
+                          overlayView.dismissButtonText = NSLocalizedString(@"Close", nil);
+                          overlayView.shareAction = ^() {
+                              HRPGAppDelegate *del =
+                                  (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
+                              UIViewController *activeViewController =
+                                  del.window.rootViewController.presentedViewController;
+                              [HRPGSharingManager shareItems:@[
+                                  [[NSString stringWithFormat:NSLocalizedString(
+                                                                  @"I just hatched a %@ %@ pet in "
+                                                                  @"Habitica by completing my "
+                                                                  @"real-life tasks!",
+                                                                  nil),
+                                                              potionName, eggName]
+                                      stringByAppendingString:
+                                          @" https://habitica.com/social/hatch-pet"],
+                                  image
+                              ]
+                                  withPresentingViewController:activeViewController];
+                          };
+                          [overlayView sizeToFit];
+                          KLCPopup *popup =
+                              [KLCPopup popupWithContentView:overlayView
+                                                    showType:KLCPopupShowTypeBounceIn
+                                                 dismissType:KLCPopupDismissTypeBounceOut
+                                                    maskType:KLCPopupMaskTypeDimmed
+                                    dismissOnBackgroundTouch:YES
+                                       dismissOnContentTouch:YES];
+                          [popup show];
+                      }
+                        onError:nil];
+             }
+               onError:nil];
 
         [self endHatching];
         return;
@@ -300,9 +318,9 @@ float textWidth;
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type {
+    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+             atIndex:(NSUInteger)sectionIndex
+       forChangeType:(NSFetchedResultsChangeType)type {
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
@@ -325,10 +343,10 @@ float textWidth;
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
+    didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+      forChangeType:(NSFetchedResultsChangeType)type
+       newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
 
     switch (type) {
@@ -410,10 +428,10 @@ float textWidth;
         return;
     }
     Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *textLabel = (UILabel *)[cell viewWithTag:1];
+    UILabel *textLabel = [cell viewWithTag:1];
     textLabel.text = item.text;
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    UILabel *detailTextLabel = (UILabel *)[cell viewWithTag:2];
+    UILabel *detailTextLabel = [cell viewWithTag:2];
     detailTextLabel.text = [NSString stringWithFormat:@"%@", item.owned];
     detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [detailTextLabel sizeToFit];
