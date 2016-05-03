@@ -18,7 +18,7 @@
 @property(nonatomic, retain) NSDate *dateCreated;
 @property(nonatomic, retain) User *user;
 @property(nonatomic, retain) NSSet *tags;
-@property(nonatomic, getter=getTagDictionary, setter=setTagDictionary:) NSDictionary *tagDictionary;
+@property(nonatomic) NSArray *tagArray;
 
 - (void)addTagsObject:(Tag *)value;
 

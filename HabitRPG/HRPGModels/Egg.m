@@ -17,7 +17,6 @@
 @dynamic key;
 @dynamic notes;
 @dynamic mountText;
-@dynamic type;
 @dynamic dialog;
 
 @end

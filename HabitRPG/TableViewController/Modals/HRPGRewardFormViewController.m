@@ -155,17 +155,16 @@
             self.reward.type = @"reward";
         }
         NSDictionary *formValues = [self.form formValues];
-        NSMutableDictionary *tagDictionary = [NSMutableDictionary dictionary];
+        NSMutableArray *tagArray = [NSMutableArray array];
         for (NSString *key in formValues) {
             if ([key isEqualToString:@"hasDueDate"]) {
                 continue;
             }
             if ([key hasPrefix:@"tag."]) {
                 if (formValues[key] != [NSNull null]) {
-                    [tagDictionary setObject:formValues[key] forKey:[key substringFromIndex:4]];
-                } else {
-                    [tagDictionary setObject:[NSNumber numberWithBool:NO]
-                                      forKey:[key substringFromIndex:4]];
+                    if ([formValues[key] boolValue]) {
+                        [tagArray addObject:[key substringFromIndex:4]];
+                    }
                 }
                 continue;
             }
@@ -181,7 +180,7 @@
             }
             [self.reward setValue:formValues[key] forKeyPath:key];
         }
-        self.reward.tagDictionary = tagDictionary;
+        self.reward.tagArray = tagArray;
     }
 }
 

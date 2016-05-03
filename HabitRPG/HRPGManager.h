@@ -30,6 +30,7 @@
 - (void)fetchTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock;
+- (void)fetchUser:(BOOL)includeTasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)updateUser:(NSDictionary *)newValues
          onSuccess:(void (^)())successBlock
@@ -113,8 +114,6 @@
           onError:(void (^)())errorBlock;
 
 - (void)acceptQuest:(NSString *)group
-          withQuest:(Quest *)quest
-           useForce:(Boolean)force
           onSuccess:(void (^)())successBlock
             onError:(void (^)())errorBlock;
 
@@ -126,6 +125,21 @@
          onSuccess:(void (^)())successBlock
            onError:(void (^)())errorBlock;
 
+- (void)cancelQuest:(NSString *)group
+         onSuccess:(void (^)())successBlock
+           onError:(void (^)())errorBlock;
+
+
+- (void)forceStartQuest:(NSString *)group
+         onSuccess:(void (^)())successBlock
+           onError:(void (^)())errorBlock;
+
+
+- (void)inviteToQuest:(NSString *)group
+            withQuest:(Quest *)quest
+         onSuccess:(void (^)())successBlock
+           onError:(void (^)())errorBlock;
+
 - (void)createGroup:(Group *)group
           onSuccess:(void (^)())successBlock
             onError:(void (^)())errorBlock;
@@ -133,6 +147,11 @@
 - (void)updateGroup:(Group *)group
           onSuccess:(void (^)())successBlock
             onError:(void (^)())errorBlock;
+
+- (void)fetchGroupMembers:(Group *)group
+                   lastID:(NSString *)lastID
+                onSuccess:(void (^)())successBlock
+                  onError:(void (^)())errorBlock;
 
 - (void)inviteMembers:(NSArray *)members
    withInvitationType:(NSString *)invitationType

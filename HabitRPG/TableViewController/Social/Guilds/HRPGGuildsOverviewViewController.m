@@ -165,7 +165,7 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Group *guild = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *titleLabel = (UILabel *)[cell viewWithTag:1];
+    UILabel *titleLabel = [cell viewWithTag:1];
     titleLabel.text = guild.name;
 }
 
@@ -173,7 +173,7 @@
     if ([segue.identifier isEqualToString:@"ShowGuildSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         HRPGGroupTableViewController *tableviewController =
-            (HRPGGroupTableViewController *)segue.destinationViewController;
+                segue.destinationViewController;
         if (indexPath.section == 0) {
             Group *guild = [self.fetchedResultsController objectAtIndexPath:indexPath];
             tableviewController.groupID = guild.id;
@@ -219,7 +219,7 @@
     };
 
     for (ImprovementCategory *category in self.user.preferences.improvementCategories) {
-        NSArray *guildsList = [taskGroups objectForKey:category.identifier];
+        NSArray *guildsList = taskGroups[category.identifier];
         for (NSString *guildID in guildsList) {
             if (![memberGuildIds containsObject:guildID]) {
                 [guilds addObject:guildID];
@@ -243,7 +243,7 @@
     _suggestedGuilds = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 
     if (_suggestedGuilds.count < guilds.count) {
-        [self.sharedManager fetchGroups:@"public"
+        [self.sharedManager fetchGroups:@"publicGuilds"
                               onSuccess:^() {
                                   _suggestedGuilds = nil;
                                   if ([self.tableView numberOfSections] != [self numberOfSectionsInTableView:self.tableView]) {

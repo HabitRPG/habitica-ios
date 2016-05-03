@@ -57,6 +57,7 @@
 @property(nonatomic, retain) NSString *partyOrder;
 @property(nonatomic, retain) NSNumber *partyPosition;
 @property(nonatomic, retain) NSNumber *petCount;
+@property(nonatomic, retain) NSString *partyID;
 
 @property(nonatomic, retain) Preferences *preferences;
 @property(nonatomic, retain) Outfit *costume;

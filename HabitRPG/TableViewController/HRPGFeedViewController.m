@@ -34,11 +34,11 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[self.fetchedResultsController sections][section] name];
+    return [[self.fetchedResultsController sections][(NSUInteger) section] name];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][(NSUInteger) section];
     return [sectionInfo numberOfObjects];
 }
 
@@ -46,7 +46,7 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell =
         [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
+    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
@@ -57,14 +57,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSInteger height =
-        [item.text boundingRectWithSize:CGSizeMake(260.0f, MAXFLOAT)
-                                options:NSStringDrawingUsesLineFragmentOrigin
-                             attributes:@{
-                                 NSFontAttributeName : [UIFont systemFontOfSize:18.0f]
-                             }
-                                context:nil]
-            .size.height +
-        22;
+            (NSInteger) ([item.text boundingRectWithSize:CGSizeMake(260.0f, MAXFLOAT)
+                                                 options:NSStringDrawingUsesLineFragmentOrigin
+                                              attributes:@{
+                                                      NSFontAttributeName : [UIFont systemFontOfSize:18.0f]
+                                              }
+                                                 context:nil]
+                        .size.height +
+                    22);
     if (height < 60) {
         return 60;
     }
@@ -162,9 +162,7 @@
             break;
 
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath]
-                    atIndexPath:indexPath
-                  withAnimation:YES];
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
 
         case NSFetchedResultsChangeMove:
@@ -180,14 +178,12 @@
     [self.tableView endUpdates];
 }
 
-- (void)configureCell:(UITableViewCell *)cell
-          atIndexPath:(NSIndexPath *)indexPath
-        withAnimation:(BOOL)animate {
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Food *food = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *textLabel = (UILabel *)[cell viewWithTag:1];
+    UILabel *textLabel = [cell viewWithTag:1];
     textLabel.text = food.text;
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    UILabel *detailTextLabel = (UILabel *)[cell viewWithTag:2];
+    UILabel *detailTextLabel = [cell viewWithTag:2];
     detailTextLabel.text = [NSString stringWithFormat:@"%@", food.owned];
     detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [detailTextLabel sizeToFit];

@@ -18,4 +18,10 @@
 @dynamic dialog;
 @dynamic type;
 
+- (void)setType:(NSString *)type {
+    [self willChangeValueForKey:@"type"];
+    [self setPrimitiveValue:[type stringByReplacingOccurrencesOfString:@"data." withString:@""] forKey:@"type"];
+    [self didChangeValueForKey:@"type"];
+}
+
 @end

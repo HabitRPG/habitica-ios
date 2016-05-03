@@ -103,7 +103,7 @@
 
     HRPGTopHeaderNavigationController *navigationController =
         (HRPGTopHeaderNavigationController *)self.navigationController;
-    [navigationController startFollowingScrollView:self.collectionView withOffset:0];
+    [navigationController startFollowingScrollView:self.collectionView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

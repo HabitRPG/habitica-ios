@@ -20,7 +20,7 @@
     self = [super initWithCoder:aDecoder];
 
     if (self) {
-        self.groupID = @"habitrpg";
+        self.groupID = @"00000000-0000-4000-A000-000000000000";
         self.tutorialIdentifier = @"tavern";
     }
 

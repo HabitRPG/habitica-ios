@@ -32,14 +32,15 @@
 
 - (void)refresh {
     if (!self.groupID) {
-        [self.sharedManager fetchGroups:@"party"
-            onSuccess:^() {
-                if (self.groupID) {
-                    [self refresh];
-                }
+        [self.sharedManager fetchUser:^{
+            if (self.user.partyID) {
+                [self refresh];
+            } else {
+                [self.refreshControl endRefreshing];
             }
-            onError:^(){
-            }];
+        } onError:^{
+            [self.refreshControl endRefreshing];
+        }];
         return;
     }
     [self.sharedManager fetchGroup:@"party"
@@ -56,7 +57,7 @@
 }
 
 - (NSString *)groupID {
-    return [self.defaults objectForKey:@"partyID"];
+    return self.user.partyID;
 }
 
 - (CGRect)getFrameForCoachmark:(NSString *)coachMarkIdentifier {

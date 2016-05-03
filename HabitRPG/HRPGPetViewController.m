@@ -141,7 +141,7 @@
         [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                                            withReuseIdentifier:@"SectionCell"
                                                   forIndexPath:indexPath];
-    UILabel *label = (UILabel *)[headerView viewWithTag:1];
+    UILabel *label = [headerView viewWithTag:1];
     NSString *sectionName = [[self.fetchedResultsController sections][indexPath.section] name];
     if ([sectionName isEqualToString:@"questPets"]) {
         label.text = NSLocalizedString(@"Quest Pets", nil);

@@ -26,11 +26,8 @@
 @end
 
 @implementation HRPGPartyMembersViewController
-NSString *partyID;
 
 - (void)viewDidLoad {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    partyID = [defaults objectForKey:@"partyID"];
     NSString *orderSetting = [self.sharedManager getUser].partyOrder;
     if ([orderSetting isEqualToString:@"level"]) {
         self.sortKey = @"level";
@@ -90,7 +87,7 @@ NSString *partyID;
     [fetchRequest setFetchBatchSize:20];
 
     NSPredicate *predicate;
-    predicate = [NSPredicate predicateWithFormat:@"party.id == %@", partyID];
+    predicate = [NSPredicate predicateWithFormat:@"party.id == %@", [self.sharedManager getUser].partyID];
     [fetchRequest setPredicate:predicate];
 
     NSSortDescriptor *idDescriptor =

@@ -319,6 +319,7 @@
         <attribute name="memberSince" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="nextLevel" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="participateInQuest" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="partyID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="partyOrder" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="partyPosition" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="perception" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -382,6 +383,6 @@
         <element name="Task" positionX="0" positionY="0" width="128" height="465"/>
         <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
         <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="1065"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1080"/>
     </elements>
 </model>

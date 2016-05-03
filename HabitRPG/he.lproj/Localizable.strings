@@ -944,3 +944,7 @@ Version %@ (%@)" = "הי! אתה מגניב!
 /* No comment provided by engineer. */
 "equipped" = "מצוייד";
 
+
+"Health: +%.1f\nMana: -%ld" = "Health: +%.1f\nMana: -%ld";
+"Gold: +%.1f\nMana: -%ld" = "Gold: +%.1f\nMana: -%ld";
+"Mana: -%ld" = "Mana: -%ld";

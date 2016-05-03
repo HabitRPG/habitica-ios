@@ -62,7 +62,7 @@
         onSuccess:^() {
             [self.refreshControl endRefreshing];
             [self fetchGroup];
-            if (![self.groupID isEqualToString:@"habitrpg"]) {
+            if (![self.groupID isEqualToString:@"00000000-0000-4000-A000-000000000000"]) {
                 self.group.unreadMessages = [NSNumber numberWithBool:NO];
                 [self.sharedManager chatSeen:self.group.id];
             }
@@ -87,7 +87,7 @@
         self.group = results[0];
 
         if (![self.group.isMember boolValue] && [self.group.type isEqualToString:@"guild"] &&
-            ![self.groupID isEqualToString:@"habitrpg"]) {
+            ![self.groupID isEqualToString:@"00000000-0000-4000-A000-000000000000"]) {
             UIBarButtonItem *barButton =
                 [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Join", nil)
                                                  style:UIBarButtonItemStylePlain
@@ -219,12 +219,11 @@
     if (indexPath.section == [self chatSectionIndex]) {
         [self configureChatMessageCell:(HRPGChatTableViewCell *)cell atIndexPath:indexPath];
     } else if ([cellname isEqualToString:@"LoadingCell"]) {
-        UIActivityIndicatorView *activityIndicator =
-            (UIActivityIndicatorView *)[cell viewWithTag:1];
+        UIActivityIndicatorView *activityIndicator = [cell viewWithTag:1];
         [activityIndicator startAnimating];
     } else if ([cellname isEqualToString:@"MembersCell"]) {
         cell.detailTextLabel.text =
-            [NSString stringWithFormat:@"%lu", (unsigned long)[self.group.member count]];
+            [NSString stringWithFormat:@"%@", self.group.memberCount];
     }
     return cell;
 }

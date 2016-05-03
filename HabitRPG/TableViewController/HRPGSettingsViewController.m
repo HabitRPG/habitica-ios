@@ -68,7 +68,7 @@ User *user;
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController =
             (HRPGTopHeaderNavigationController *)self.navigationController;
-        [navigationController startFollowingScrollView:self.tableView withOffset:0];
+        [navigationController startFollowingScrollView:self.tableView];
     }
     [super viewDidAppear:YES];
 }

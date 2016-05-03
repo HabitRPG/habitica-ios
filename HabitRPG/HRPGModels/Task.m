@@ -121,33 +121,16 @@
     self.reminders = tempSet;
 }
 
-- (NSDictionary *)getTagDictionary {
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *managedObjectContext =
-        appdelegate.sharedManager.getManagedObjectContext;
-
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
-    NSEntityDescription *entity =
-        [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
-    [fetchRequest setEntity:entity];
-
-    NSError *error;
-    NSArray *tags = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-
-    NSMutableDictionary *tagDictionary = [NSMutableDictionary dictionary];
-    for (Tag *tag in tags) {
-        if ([self.tags containsObject:tag]) {
-            [tagDictionary setObject:[NSNumber numberWithBool:YES] forKey:tag.id];
-        } else {
-            [tagDictionary setObject:[NSNumber numberWithBool:NO] forKey:tag.id];
-        }
+- (NSArray *)getTagArray {
+    NSMutableArray *tagArray = [NSMutableArray array];
+    for (Tag *tag in self.tags) {
+        [tagArray addObject:tag.id];
     }
-    return tagDictionary;
+    return tagArray;
 }
 
-- (void)setTagDictionary:(NSDictionary *)tagsDictionary {
-    if (tagsDictionary.count == 0) {
+- (void)setTagArray:(NSArray *)tagArray {
+    if (tagArray.count == 0) {
         return;
     }
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -164,16 +147,13 @@
     NSArray *tags = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 
     for (Tag *tag in tags) {
-        NSNumber *val = tagsDictionary[tag.id];
-        if (val != nil && ![val isKindOfClass:[NSNull class]]) {
-            if ([val boolValue]) {
-                if (![self.tags containsObject:tag]) {
-                    [self addTagsObject:tag];
-                }
-            } else {
-                if ([self.tags containsObject:tag]) {
-                    [self removeTagsObject:tag];
-                }
+        if ([tagArray containsObject:tag.id]) {
+            if (![self.tags containsObject:tag]) {
+                [self addTagsObject:tag];
+            }
+        } else {
+            if ([self.tags containsObject:tag]) {
+                [self removeTagsObject:tag];
             }
         }
     }

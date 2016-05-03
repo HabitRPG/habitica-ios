@@ -22,12 +22,7 @@
 - (CGFloat)bgViewOffset;
 
 @property UIScrollView *scrollableView;
-@property CGFloat scrolloffset;
 @property UIPanGestureRecognizer *gestureRecognizer;
-@property(nonatomic) CGFloat previousScrollViewYOffset;
-@property CGFloat delayDistance;
-@property CGFloat maxDelay;
-@property HRPGTopHeaderState previousState;
 @property CGFloat headerYPosition;
 @end
 
@@ -44,7 +39,7 @@
 
     NSArray *nibViews =
         [[NSBundle mainBundle] loadNibNamed:@"HRPGUserTopHeader" owner:self options:nil];
-    self.topHeader = [nibViews objectAtIndex:0];
+    self.topHeader = nibViews[0];
     self.state = HRPGTopHeaderStateVisible;
     self.backgroundView = [[UIView alloc] init];
     self.backgroundView.backgroundColor = [UIColor gray600];
@@ -60,7 +55,6 @@
     [self.view insertSubview:self.upperBackgroundView belowSubview:self.navigationBar];
     [self.view insertSubview:self.backgroundView belowSubview:self.upperBackgroundView];
 
-    self.maxDelay = 150;
     self.headerYPosition = [self bgViewOffset];
 }
 
@@ -73,22 +67,6 @@
     self.bottomBorderView.frame =
         CGRectMake(0, self.backgroundView.frame.size.height - 6, parentFrame.size.width, 6);
     self.topHeader.frame = CGRectMake(0, 0, parentFrame.size.width, self.topHeaderHeight - 6);
-}
-
-- (void)stoppedScrolling:(CGFloat)delta {
-    CGRect frame = self.backgroundView.frame;
-    if (frame.origin.y < [self bgViewOffset] && frame.origin.y > -frame.size.height) {
-        if (self.previousState == HRPGTopHeaderStateHidden) {
-            [self showHeader];
-        } else {
-            if (self.scrollableView.contentOffset.y > -self.bgViewOffset) {
-                [self hideHeader];
-
-            } else {
-                [self showHeader];
-            }
-        }
-    }
 }
 
 - (void)showHeader {
@@ -124,13 +102,12 @@
         }];
 }
 
-- (void)startFollowingScrollView:(UIScrollView *)scrollView withOffset:(CGFloat)scrolloffset {
+- (void)startFollowingScrollView:(UIScrollView *)scrollView {
     if (self.scrollableView) {
         [self stopFollowingScrollView];
     }
 
     self.scrollableView = scrollView;
-    self.scrolloffset = scrolloffset;
 }
 
 - (void)stopFollowingScrollView {
@@ -224,9 +201,6 @@
 }
 
 - (void)setState:(HRPGTopHeaderState)state {
-    if (state != _state) {
-        self.previousState = _state;
-    }
     _state = state;
 }
 

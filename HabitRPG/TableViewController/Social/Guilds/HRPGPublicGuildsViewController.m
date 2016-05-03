@@ -34,7 +34,7 @@
 }
 
 - (void)refresh {
-    [self.sharedManager fetchGroups:@"public"
+    [self.sharedManager fetchGroups:@"publicGuilds"
         onSuccess:^() {
             [self.refreshControl endRefreshing];
         }

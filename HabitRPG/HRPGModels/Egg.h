@@ -18,7 +18,6 @@
 @property(nonatomic, retain) NSString *key;
 @property(nonatomic, retain) NSString *notes;
 @property(nonatomic, retain) NSString *mountText;
-@property(nonatomic, retain) NSString *type;
 @property(nonatomic, retain) NSString *dialog;
 
 @end

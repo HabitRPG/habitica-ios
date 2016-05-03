@@ -58,7 +58,7 @@ typedef NS_ENUM(NSInteger, TaskToDoFilterType) {
 @property(nonatomic, retain) NSOrderedSet *checklist;
 @property(nonatomic, retain) NSSet *tags;
 @property(nonatomic, retain) NSOrderedSet *reminders;
-@property(nonatomic, getter=getTagDictionary, setter=setTagDictionary:) NSDictionary *tagDictionary;
+@property(nonatomic) NSArray *tagArray;
 @property(nonatomic, retain) User *user;
 
 // Temporary variable to store whether or not the task is currently being checked or not. Used to

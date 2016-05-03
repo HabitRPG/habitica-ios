@@ -945,3 +945,7 @@ Hvad er din?";
 /* No comment provided by engineer. */
 "equipped" = "i brug";
 
+
+"Health: +%.1f\nMana: -%ld" = "Health: +%.1f\nMana: -%ld";
+"Gold: +%.1f\nMana: -%ld" = "Gold: +%.1f\nMana: -%ld";
+"Mana: -%ld" = "Mana: -%ld";

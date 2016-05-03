@@ -944,3 +944,7 @@ Versión %1$@ (%2$@)";
 /* No comment provided by engineer. */
 "equipped" = "puesto";
 
+
+"Health: +%.1f\nMana: -%ld" = "Health: +%.1f\nMana: -%ld";
+"Gold: +%.1f\nMana: -%ld" = "Gold: +%.1f\nMana: -%ld";
+"Mana: -%ld" = "Mana: -%ld";

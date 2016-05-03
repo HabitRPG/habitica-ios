@@ -101,7 +101,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     User *user = [self.sharedManager getUser];
-    if (user && [user.health floatValue] <= 0) {
+    if (user && user.health && [user.health floatValue] <= 0) {
         HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
         [deathView show];
     }
@@ -111,7 +111,7 @@
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController =
             (HRPGTopHeaderNavigationController *)self.navigationController;
-        [navigationController startFollowingScrollView:self.tableView withOffset:0];
+        [navigationController startFollowingScrollView:self.tableView];
         if (navigationController.state == HRPGTopHeaderStateVisible &&
             self.tableView.contentOffset.y > -[navigationController getContentOffset]) {
             [navigationController scrollview:self.tableView

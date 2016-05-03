@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.webView = (UIWebView *)[self.view viewWithTag:1];
+    self.webView = [self.view viewWithTag:1];
     NSURL *nsUrl = [NSURL URLWithString:@"https://habitica.com/static/community-guidelines"];
     NSURLRequest *request =
         [NSURLRequest requestWithURL:nsUrl

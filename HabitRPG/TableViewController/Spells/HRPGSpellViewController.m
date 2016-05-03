@@ -150,7 +150,7 @@
     [fetchRequest setFetchBatchSize:20];
 
     User *user = [self.sharedManager getUser];
-    NSString *classname = [NSString stringWithFormat:@"spells.%@", user.dirtyClass];
+    NSString *classname = [NSString stringWithFormat:@"%@", user.dirtyClass];
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"klass == %@ && level <= %@",
                                                                 classname, user.level]];
 

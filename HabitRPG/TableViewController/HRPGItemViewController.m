@@ -368,11 +368,7 @@ float textWidth;
     } else if (buttonIndex == 0 && [self.selectedItem isKindOfClass:[Quest class]]) {
         User *user = [self.sharedManager getUser];
         Quest *quest = (Quest *)self.selectedItem;
-        [self.sharedManager acceptQuest:user.party.id
-                              withQuest:quest
-                               useForce:NO
-                              onSuccess:nil
-                                onError:nil];
+        [self.sharedManager inviteToQuest:user.partyID withQuest:quest onSuccess:nil onError:nil];
     } else if (buttonIndex == 1 && ![self.selectedItem isKindOfClass:[Quest class]]) {
         if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
             NSPredicate *predicate =

@@ -91,7 +91,7 @@
     }
 
     UILocalNotification *notification =
-        [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+            launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];
     if (notification) {
         [self displayTaskWithId:[notification.userInfo valueForKey:@"taskID"]
                        fromType:[notification.userInfo valueForKey:@"taskType"]];
@@ -233,7 +233,7 @@
 - (void)rescheduleTaskReminders {
     UIApplication *sharedApplication = [UIApplication sharedApplication];
     for (UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
-        if ([reminder.userInfo objectForKey:@"ID"] != nil) {
+        if (reminder.userInfo[@"ID"] != nil) {
             [sharedApplication cancelLocalNotification:reminder];
         }
     }
@@ -296,7 +296,7 @@
         [[self.sharedManager getManagedObjectContext] executeFetchRequest:fetchRequest
                                                                     error:&error];
     if (fetchedObjects != nil && fetchedObjects.count == 1) {
-        Task *task = [fetchedObjects objectAtIndex:0];
+        Task *task = fetchedObjects[0];
         if (![task.completed boolValue]) {
             [self.sharedManager upDownTask:task
                 direction:@"up"
@@ -349,7 +349,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSDictionary *data = (NSDictionary *)JSON;
-        BOOL activeMaintenance = [[data objectForKey:@"activeMaintenance"] boolValue];
+        BOOL activeMaintenance = [data[@"activeMaintenance"] boolValue];
         if (activeMaintenance) {
             [self displayMaintenanceScreen:data isDeprecated:NO];
         } else {
@@ -357,9 +357,9 @@
             if ([presentedController.presentedViewController isKindOfClass:[HRPGMaintenanceViewController class]]) {
                 [presentedController.presentedViewController dismissViewControllerAnimated:YES completion:nil];
             }
-            if ([data objectForKey:@"minBuild"]) {
-                NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
-                if ([[data objectForKey:@"minBuild"] integerValue] > [build integerValue]) {
+            if (data[@"minBuild"]) {
+                NSString *build = [[NSBundle mainBundle] infoDictionary][(NSString *) kCFBundleVersionKey];
+                if ([data[@"minBuild"] integerValue] > [build integerValue]) {
                     NSURL *url = [NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/mobileApp/endpoint/deprecation-ios.json"];
                     NSURLRequest *request = [NSURLRequest requestWithURL:url];
                     AFJSONRequestOperation *deprecationOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {

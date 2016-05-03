@@ -945,3 +945,7 @@ What will yours be?" = "每一位 habitica 人都會遇到一個重要的時刻�
 /* No comment provided by engineer. */
 "equipped" = "已裝備";
 
+
+"Health: +%.1f\nMana: -%ld" = "Health: +%.1f\nMana: -%ld";
+"Gold: +%.1f\nMana: -%ld" = "Gold: +%.1f\nMana: -%ld";
+"Mana: -%ld" = "Mana: -%ld";

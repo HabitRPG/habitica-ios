@@ -23,9 +23,6 @@
 @property BOOL disableFetchedResultsControllerUpdates;
 @property User *user;
 
-- (void)configureCell:(UITableViewCell *)cell
-          atIndexPath:(NSIndexPath *)indexPath
-        withAnimation:(BOOL)animate;
 @end
 
 @implementation HRPGRewardsViewController
@@ -94,7 +91,7 @@
 
     HRPGRewardTableViewCell *cell =
         [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
+    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
@@ -338,9 +335,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             break;
 
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath]
-                    atIndexPath:indexPath
-                  withAnimation:YES];
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
 
         case NSFetchedResultsChangeMove:
@@ -356,12 +351,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView endUpdates];
 }
 
-- (void)configureCell:(HRPGRewardTableViewCell *)cell
-          atIndexPath:(NSIndexPath *)indexPath
-        withAnimation:(BOOL)animate {
+- (void)configureCell:(HRPGRewardTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     MetaReward *reward;
     if ([[self.fetchedResultsController sections] count] > [indexPath section]){
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:[indexPath section]];
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][(NSUInteger) [indexPath section]];
         if ([sectionInfo numberOfObjects] > [indexPath row]){
             reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
         }
@@ -373,16 +366,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [cell configureForReward:reward withGoldOwned:self.user.gold];
 
-    NSString *imageName;
-    if ([reward.key isEqualToString:@"potion"]) {
-        imageName = @"shop_potion";
-    } else if ([reward.key isEqualToString:@"armoire"]) {
-        imageName = @"shop_armoire";
-        cell.detailLabel.text = [self getArmoireFillStatus];
-    } else if (![reward.key isEqualToString:@"reward"]) {
-        imageName = [NSString stringWithFormat:@"shop_%@", reward.key];
+    if (![reward isKindOfClass:[Reward class]]) {
+        NSString *imageName;
+        if ([reward.key isEqualToString:@"potion"]) {
+            imageName = @"shop_potion";
+        } else if ([reward.key isEqualToString:@"armoire"]) {
+            imageName = @"shop_armoire";
+            cell.detailLabel.text = [self getArmoireFillStatus];
+        } else if (![reward.key isEqualToString:@"reward"]) {
+            imageName = [NSString stringWithFormat:@"shop_%@", reward.key];
+        }
+        [self.sharedManager setImage:imageName withFormat:@"png" onView:cell.shopImageView];
     }
-    [self.sharedManager setImage:imageName withFormat:@"png" onView:cell.shopImageView];
 
     [cell onPurchaseTap:^() {
         if ([reward isKindOfClass:[Reward class]]) {
@@ -390,9 +385,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                 getReward:reward.key
                 onSuccess:^() {
                     for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
-                        [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath]
-                                atIndexPath:indexPath
-                              withAnimation:NO];
+                        [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
                     }
                 }
                   onError:nil];
@@ -402,9 +395,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                 onSuccess:^() {
                     [self.sharedManager fetchBuyableRewards:nil onError:nil];
                     for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
-                        [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath]
-                                atIndexPath:indexPath
-                              withAnimation:NO];
+                        [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
                     }
                 }
                 onError:^() {

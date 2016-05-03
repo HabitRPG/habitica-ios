@@ -404,7 +404,7 @@
             self.task.type = self.taskType;
         }
         NSDictionary *formValues = [self.form formValues];
-        NSMutableDictionary *tagDictionary = [NSMutableDictionary dictionary];
+        NSMutableArray *tagArray = [NSMutableArray array];
         for (NSString *key in formValues) {
             if ([key isEqualToString:@"hasDueDate"]) {
                 if (![formValues[key] boolValue]) {
@@ -418,10 +418,9 @@
             }
             if ([key hasPrefix:@"tag."]) {
                 if (formValues[key] != [NSNull null]) {
-                    [tagDictionary setObject:formValues[key] forKey:[key substringFromIndex:4]];
-                } else {
-                    [tagDictionary setObject:[NSNumber numberWithBool:NO]
-                                      forKey:[key substringFromIndex:4]];
+                    if ([formValues[key] boolValue]) {
+                        [tagArray addObject:[key substringFromIndex:4]];
+                    }
                 }
                 continue;
             }
@@ -487,7 +486,7 @@
             }
             [self.task setValue:formValues[key] forKeyPath:key];
         }
-        self.task.tagDictionary = tagDictionary;
+        self.task.tagArray = tagArray;
     }
 }
 
@@ -545,7 +544,7 @@
         if (self.editTask) {
             row.value = self.task.everyX;
         } else {
-            row.value = [NSNumber numberWithInt:1];
+            row.value = @1;
         }
         row.required = YES;
     } else {
@@ -557,37 +556,37 @@
             [XLFormRowDescriptor formRowDescriptorWithTag:@"monday"
                                                   rowType:XLFormRowDescriptorTypeBooleanCheck
                                                     title:NSLocalizedString(@"Monday", nil)];
-        row.value = [NSNumber numberWithBool:YES];
+        row.value = @YES;
         [section addFormRow:row];
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"tuesday"
                                                     rowType:XLFormRowDescriptorTypeBooleanCheck
                                                       title:NSLocalizedString(@"Tuesday", nil)];
-        row.value = [NSNumber numberWithBool:YES];
+        row.value = @YES;
         [section addFormRow:row];
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"wednesday"
                                                     rowType:XLFormRowDescriptorTypeBooleanCheck
                                                       title:NSLocalizedString(@"Wednesday", nil)];
-        row.value = [NSNumber numberWithBool:YES];
+        row.value = @YES;
         [section addFormRow:row];
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"thursday"
                                                     rowType:XLFormRowDescriptorTypeBooleanCheck
                                                       title:NSLocalizedString(@"Thursday", nil)];
-        row.value = [NSNumber numberWithBool:YES];
+        row.value = @YES;
         [section addFormRow:row];
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"friday"
                                                     rowType:XLFormRowDescriptorTypeBooleanCheck
                                                       title:NSLocalizedString(@"Friday", nil)];
-        row.value = [NSNumber numberWithBool:YES];
+        row.value = @YES;
         [section addFormRow:row];
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"saturday"
                                                     rowType:XLFormRowDescriptorTypeBooleanCheck
                                                       title:NSLocalizedString(@"Saturday", nil)];
-        row.value = [NSNumber numberWithBool:YES];
+        row.value = @YES;
         [section addFormRow:row];
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"sunday"
                                                     rowType:XLFormRowDescriptorTypeBooleanCheck
                                                       title:NSLocalizedString(@"Sunday", nil)];
-        row.value = [NSNumber numberWithBool:YES];
+        row.value = @YES;
         [section addFormRow:row];
         if (self.editTask) {
             [self.form formRowWithTag:@"monday"].value = self.task.monday;

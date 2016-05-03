@@ -99,8 +99,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 0) {
         [self.sharedManager acceptQuest:self.group.id
-            withQuest:nil
-            useForce:NO
             onSuccess:^() {
             }
             onError:^(){
@@ -232,9 +230,7 @@
                     self.navigationItem.rightBarButtonItem.enabled = YES;
                 }];
         } else {
-            [self.sharedManager acceptQuest:self.group.id
-                withQuest:nil
-                useForce:YES
+            [self.sharedManager forceStartQuest:self.group.id
                 onSuccess:^() {
                     [self.navigationController popViewControllerAnimated:YES];
                 }

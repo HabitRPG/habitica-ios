@@ -944,3 +944,7 @@ Version %@ (%@)" = "嘿！你真棒！
 /* No comment provided by engineer. */
 "equipped" = "已装备";
 
+
+"Health: +%.1f\nMana: -%ld" = "Health: +%.1f\nMana: -%ld";
+"Gold: +%.1f\nMana: -%ld" = "Gold: +%.1f\nMana: -%ld";
+"Mana: -%ld" = "Mana: -%ld";

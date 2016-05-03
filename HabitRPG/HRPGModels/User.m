@@ -58,6 +58,7 @@
 @dynamic lastAvatarHead;
 @dynamic partyOrder;
 @dynamic partyPosition;
+@dynamic partyID;
 @synthesize petCount = _petCount;
 @synthesize customizationsDictionary;
 @synthesize lastImageGeneration;

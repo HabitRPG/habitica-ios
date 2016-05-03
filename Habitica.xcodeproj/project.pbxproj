@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F475A6C4057F32ECA307875 /* libPods-HabiticaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60871FDACDB1B08408FA4FE3 /* libPods-HabiticaTests.a */; };
 		98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */; };
+		CF54FEE0D3F7F352ECA56F23 /* HRPGContentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CF54FD820D81110D9EF4756E /* HRPGContentResponse.m */; };
 		D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */; };
 		D902AD8A1B540AE30098A1BD /* HRPGBaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */; };
 		D905766F1BD7F581009BB7BC /* HRPGHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = D905766E1BD7F581009BB7BC /* HRPGHintView.m */; };
@@ -228,6 +229,8 @@
 		98A4DBEE1B643BC100A9E2A8 /* HRPGSearchDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSearchDataManager.h; sourceTree = "<group>"; };
 		98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSearchDataManager.m; sourceTree = "<group>"; };
 		A11A64FF1BAC9FC30037D41C /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
+		CF54F3C3C288710775DDD5A9 /* HRPGContentResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGContentResponse.h; sourceTree = "<group>"; };
+		CF54FD820D81110D9EF4756E /* HRPGContentResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGContentResponse.m; sourceTree = "<group>"; };
 		D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D902AD881B540AE30098A1BD /* HRPGBaseCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBaseCollectionViewController.h; sourceTree = "<group>"; };
 		D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBaseCollectionViewController.m; sourceTree = "<group>"; };
@@ -493,6 +496,7 @@
 		D9A28F701B08DF58002907E0 /* HRPGPurchaseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPurchaseButton.h; sourceTree = "<group>"; };
 		D9A28F711B08DF58002907E0 /* HRPGPurchaseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPurchaseButton.m; sourceTree = "<group>"; };
 		D9A50E991A868DE400FC8B1A /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "HabitRPG/Launch Screen.xib"; sourceTree = SOURCE_ROOT; };
+		D9AAABBA1CD8E3B6000FD9E8 /* HabitRPG 26.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 26.xcdatamodel"; sourceTree = "<group>"; };
 		D9ADD3491943BB16006202C1 /* HRPGFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGFeedViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9ADD34A1943BB16006202C1 /* HRPGFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGFeedViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9ADD34C1943BBB6006202C1 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Food.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -894,6 +898,8 @@
 				98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */,
 				D939B5F41BD8FBD50015AEB6 /* HRPGBatchOperation.h */,
 				D939B5F51BD8FBD50015AEB6 /* HRPGBatchOperation.m */,
+				CF54FD820D81110D9EF4756E /* HRPGContentResponse.m */,
+				CF54F3C3C288710775DDD5A9 /* HRPGContentResponse.h */,
 			);
 			name = Models;
 			path = HRPGModels;
@@ -1316,12 +1322,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D944618B1AB34F5C0015215E /* Build configuration list for PBXNativeTarget "HabiticaTests" */;
 			buildPhases = (
-				6992AA14F29A6357120A21A1 /* 📦 Check Pods Manifest.lock */,
+				6992AA14F29A6357120A21A1 /* uD83DuDCE6 Check Pods Manifest.lock */,
 				D944617F1AB34F5C0015215E /* Sources */,
 				D94461801AB34F5C0015215E /* Frameworks */,
 				D94461811AB34F5C0015215E /* Resources */,
-				CAC33FCF49D4A93D53AF498F /* 📦 Embed Pods Frameworks */,
-				349CB2090A4A050BDB3C347B /* 📦 Copy Pods Resources */,
+				CAC33FCF49D4A93D53AF498F /* uD83DuDCE6 Embed Pods Frameworks */,
+				349CB2090A4A050BDB3C347B /* uD83DuDCE6 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1337,13 +1343,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "Habitica" */;
 			buildPhases = (
-				007923A6107F2803D806E4AE /* 📦 Check Pods Manifest.lock */,
+				007923A6107F2803D806E4AE /* uD83DuDCE6 Check Pods Manifest.lock */,
 				D9EB4E8718CB4A9400BB2094 /* Sources */,
 				D9EB4E8818CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8918CB4A9400BB2094 /* Resources */,
 				D940A7E01B0CF7E900370F2E /* ShellScript */,
-				9134C996D72DCF63C6CF68A7 /* 📦 Embed Pods Frameworks */,
-				356A574454191CCC185C28C2 /* 📦 Copy Pods Resources */,
+				9134C996D72DCF63C6CF68A7 /* uD83DuDCE6 Embed Pods Frameworks */,
+				356A574454191CCC185C28C2 /* uD83DuDCE6 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1457,14 +1463,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		007923A6107F2803D806E4AE /* 📦 Check Pods Manifest.lock */ = {
+		007923A6107F2803D806E4AE /* uD83DuDCE6 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "uD83DuDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1472,14 +1478,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		349CB2090A4A050BDB3C347B /* 📦 Copy Pods Resources */ = {
+		349CB2090A4A050BDB3C347B /* uD83DuDCE6 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "uD83DuDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1487,14 +1493,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		356A574454191CCC185C28C2 /* 📦 Copy Pods Resources */ = {
+		356A574454191CCC185C28C2 /* uD83DuDCE6 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "uD83DuDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1502,14 +1508,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica/Pods-Habitica-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6992AA14F29A6357120A21A1 /* 📦 Check Pods Manifest.lock */ = {
+		6992AA14F29A6357120A21A1 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "uD83DuDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1517,14 +1523,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		9134C996D72DCF63C6CF68A7 /* 📦 Embed Pods Frameworks */ = {
+		9134C996D72DCF63C6CF68A7 /* uD83DuDCE6 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "uD83DuDCE6 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1532,14 +1538,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CAC33FCF49D4A93D53AF498F /* 📦 Embed Pods Frameworks */ = {
+		CAC33FCF49D4A93D53AF498F /* uD83DuDCE6 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "uD83DuDCE6 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1733,6 +1739,7 @@
 				D9D96F00194B87FF00796FE7 /* HRPGPetMasterViewController.m in Sources */,
 				D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */,
 				D9ADD3511943BC0E006202C1 /* BuyableItem.m in Sources */,
+				CF54FEE0D3F7F352ECA56F23 /* HRPGContentResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2299,6 +2306,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D9AAABBA1CD8E3B6000FD9E8 /* HabitRPG 26.xcdatamodel */,
 				D94E0AD81CCF9B8800B60210 /* HabitRPG 25.xcdatamodel */,
 				D9D197141CA2DEA10006E186 /* HabitRPG 24.xcdatamodel */,
 				D967756F1C7C819300BF4AAB /* HabitRPG 23.xcdatamodel */,
@@ -2325,7 +2333,7 @@
 				D9B27ED71AE4C138008914D7 /* HabitRPG 2.xcdatamodel */,
 				D967755519F1379800A21F45 /* HabitRPG.xcdatamodel */,
 			);
-			currentVersion = D94E0AD81CCF9B8800B60210 /* HabitRPG 25.xcdatamodel */;
+			currentVersion = D9AAABBA1CD8E3B6000FD9E8 /* HabitRPG 26.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
