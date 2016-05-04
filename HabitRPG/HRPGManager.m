@@ -29,6 +29,7 @@
 #import "UIColor+Habitica.h"
 #import "Amplitude.h"
 #import <Crashlytics/Crashlytics.h>
+#import "HRPGSharingManager.h"
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
@@ -497,19 +498,15 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
+    RKObjectMapping *feedMapping =
+    [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [feedMapping addAttributeMappingsFromArray:@[@"value"]];
     responseDescriptor = [RKResponseDescriptor
-        responseDescriptorWithMapping:emptyStringMapping
+        responseDescriptorWithMapping:feedMapping
                                method:RKRequestMethodPOST
                           pathPattern:@"/api/v2/user/inventory/feed/:pet/:food"
                               keyPath:nil
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
-    responseDescriptor = [RKResponseDescriptor
-        responseDescriptorWithMapping:emptyStringMapping
-                               method:RKRequestMethodPOST
-                          pathPattern:@"/api/v2/user/inventory/feed/:pet/:food"
-                              keyPath:nil
-                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassServerError)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
     RKEntityMapping *entityMapping =
@@ -545,13 +542,6 @@ NSString *currentUser;
         @"contributor.contributions" : @"contributions",
         @"party.order" : @"partyOrder",
         @"items.pets" : @"petCountArray",
-        @"flags.newStuff" : @"habitNewStuff",
-        @"flags.dropsEnabled" : @"dropsEnabled",
-        @"flags.itemsEnabled" : @"itemsEnabled",
-        @"flags.classSelected" : @"selectedClass",
-        @"flags.armoireEnabled" : @"armoireEnabled",
-        @"flags.armoireEmpty" : @"armoireEmpty",
-        @"flags.communityGuidelinesAccepted" : @"acceptedCommunityGuidelines",
         @"purchased" : @"customizationsDictionary",
         @"invitations.party.id" : @"invitedParty",
         @"invitations.party.name" : @"invitedPartyName"
@@ -639,6 +629,27 @@ NSString *currentUser;
                                                     toKeyPath:@"improvementCategories"
                                                   withMapping:improvementCategoryMapping]];
 
+    RKEntityMapping *flagsMapping =
+    [RKEntityMapping mappingForEntityForName:@"Flags"
+                        inManagedObjectStore:managedObjectStore];
+    [flagsMapping addAttributeMappingsFromDictionary:@{
+                                                             @"@parent._id" : @"userID",
+                                                             @"newStuff" : @"habitNewStuff",
+                                                             @"dropsEnabled" : @"dropsEnabled",
+                                                             @"itemsEnabled" : @"itemsEnabled",
+                                                             @"classSelected" : @"classSelected",
+                                                             @"armoireEnabled" : @"armoireEnabled",
+                                                             @"armoireEmpty" : @"armoireEmpty",
+                                                             @"communityGuidelinesAccepted" : @"communityGuidelinesAccepted",
+                                                             }];
+    flagsMapping.identificationAttributes = @[ @"userID" ];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping
+                                       relationshipMappingFromKeyPath:@"flags"
+                                       toKeyPath:@"flags"
+                                       withMapping:flagsMapping]];
+    
+    
+    
     RKEntityMapping *rewardMapping =
         [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
     [rewardMapping addAttributeMappingsFromDictionary:@{
@@ -795,12 +806,12 @@ NSString *currentUser;
         @"@metadata.mapping.rootKeyPath" : @"type"
     }];
     tutorialsSeenMapping.identificationAttributes = @[ @"identifier" ];
-    [entityMapping addPropertyMapping:[RKRelationshipMapping
-                                          relationshipMappingFromKeyPath:@"flags.tutorial.ios"
-                                                               toKeyPath:@"iosTutorialSteps"
+    [flagsMapping addPropertyMapping:[RKRelationshipMapping
+                                          relationshipMappingFromKeyPath:@"tutorial.ios"
+                                                               toKeyPath:@"iOSTutorialSteps"
                                                              withMapping:tutorialsSeenMapping]];
-    [entityMapping addPropertyMapping:[RKRelationshipMapping
-                                          relationshipMappingFromKeyPath:@"flags.tutorial.common"
+    [flagsMapping addPropertyMapping:[RKRelationshipMapping
+                                          relationshipMappingFromKeyPath:@"tutorial.common"
                                                                toKeyPath:@"commonTutorialSteps"
                                                              withMapping:tutorialsSeenMapping]];
 
@@ -1835,7 +1846,7 @@ NSString *currentUser;
 
 - (void)setTimezoneOffset {
     NSInteger offset = -[[NSTimeZone localTimeZone] secondsFromGMT] / 60;
-    if ([self.user.preferences.timezoneOffset integerValue] &&
+    if (!self.user.preferences.timezoneOffset ||
         offset != [self.user.preferences.timezoneOffset integerValue]) {
         self.user.preferences.timezoneOffset = [NSNumber numberWithInteger:offset];
         [self updateUser:@{
@@ -2093,8 +2104,15 @@ NSString *currentUser;
             onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
+    NSString *url;
+    if (newClass) {
+        url = [NSString stringWithFormat:@"/api/v2/user/class/change?class=%@", newClass];
+    } else {
+        url = @"/api/v2/user/class/change";
+    }
+    
     [[RKObjectManager sharedManager] postObject:nil
-        path:[NSString stringWithFormat:@"/api/v2/user/class/change?class=%@", newClass]
+        path:url
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
@@ -3677,32 +3695,41 @@ NSString *currentUser;
         path:[NSString stringWithFormat:@"/api/v2/user/inventory/feed/%@/%@", pet.key, food.key]
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            [self fetchUser:^() {
-                NSError *executeError = nil;
-                [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                NSString *preferenceString;
-                if ([pet likesFood:food]) {
-                    preferenceString = NSLocalizedString(@"Your pet really likes the %@", nil);
-                } else {
-                    preferenceString = NSLocalizedString(
-                        @"Your pet eats the %@ but doesn't seem to enjoy it.", nil);
-                }
-                NSDictionary *options = @{
-                    kCRToastTextKey : [NSString stringWithFormat:preferenceString, food.text],
-                    kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                    kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                    kCRToastBackgroundColorKey : [UIColor yellow10],
-                };
-                [CRToastManager showNotificationWithOptions:options
-                                            completionBlock:^{
-                                            }];
-                if (successBlock) {
-                    successBlock();
-                }
-                [self.networkIndicatorController endNetworking];
-                return;
+            NSDictionary *result = [mappingResult firstObject];
+            NSNumber *petStatus = [result objectForKey:@"value"];
+            
+            NSError *executeError = nil;
+            pet.trained = petStatus;
+            food.owned = [NSNumber numberWithInteger:[food.owned integerValue]-1];
+            [[self managedObjectContext] saveToPersistentStore:&executeError];
+            
+            NSString *preferenceString;
+            if ([pet likesFood:food]) {
+                preferenceString = NSLocalizedString(@"Your pet really likes the %@", nil);
+            } else {
+                preferenceString = NSLocalizedString(
+                                                     @"Your pet eats the %@ but doesn't seem to enjoy it.", nil);
             }
-                    onError:nil];
+            NSDictionary *options = @{
+                                      kCRToastTextKey : [NSString stringWithFormat:preferenceString, food.text],
+                                      kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                                      kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                                      kCRToastBackgroundColorKey : [UIColor yellow10],
+                                      };
+            [CRToastManager showNotificationWithOptions:options
+                                        completionBlock:^{
+                                        }];
+            if ([[result objectForKey:@"value"] integerValue] == -1) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self displayMountRaisedNotification:pet];
+                });
+                [self fetchUser:nil onError:nil];
+            }
+            
+            if (successBlock) {
+                successBlock();
+            }
+            [self.networkIndicatorController endNetworking];
             return;
 
         }
@@ -3968,38 +3995,62 @@ NSString *currentUser;
         onError:^(){
 
         }];
+    
     if ([self.user.level integerValue] == 10 && ![self.user.preferences.disableClass boolValue]) {
         HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
-        UINavigationController *selectClassNavigationController =
+        UIViewController *activeViewController = del.window.rootViewController;UINavigationController *selectClassNavigationController =
             [del.window.rootViewController.storyboard
                 instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
         selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
 
-        [del.window.rootViewController presentViewController:selectClassNavigationController
+        [activeViewController presentViewController:selectClassNavigationController
                                                     animated:YES
                                                   completion:^(){
 
                                                   }];
     } else {
-        HRPGImageOverlayView *overlayView = [[HRPGImageOverlayView alloc] init];
-        overlayView.height = 177;
-        overlayView.width = 200;
+        NSArray *nibViews =
+            [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView" owner:self options:nil];
+        HRPGImageOverlayView *overlayView = [nibViews objectAtIndex:0];
+        overlayView.imageWidth = 140;
+        overlayView.imageHeight = 147;
         [self.user setAvatarSubview:overlayView.ImageView
                     showsBackground:YES
                          showsMount:YES
                            showsPet:YES];
-        overlayView.descriptionText = NSLocalizedString(@"Level up!", nil);
-        overlayView.detailText =
-        [NSString stringWithFormat:NSLocalizedString(@"You are now Level %ld", nil),
-         (long)([self.user.level integerValue])];
-        
+        overlayView.titleText = NSLocalizedString(@"You gained a level!", nil);
+        overlayView.descriptionText = [NSString
+            stringWithFormat:
+                NSLocalizedString(
+                    @"By accomplishing your real-life goals, you've grown to Level %ld", nil),
+                (long)([self.user.level integerValue])];
+        overlayView.dismissButtonText = NSLocalizedString(@"Huzzah!", nil);
+        UIImageView *__weak weakAvatarView = overlayView.ImageView;
+        overlayView.shareAction = ^() {
+            HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
+            UIViewController *activeViewController =
+                del.window.rootViewController.presentedViewController;
+            [HRPGSharingManager shareItems:@[
+                [[NSString
+                    stringWithFormat:
+                        NSLocalizedString(
+                            @"I got to level %ld in Habitica by improving my real-life habits!",
+                            nil),
+                        (long)([self.user.level integerValue])]
+                    stringByAppendingString:@" https://habitica.com/social/level-up"],
+                [HRPGSharingManager takeSnapshotOfView:weakAvatarView]
+            ]
+                withPresentingViewController:activeViewController];
+        };
+        [overlayView sizeToFit];
+
         KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
                                                 showType:KLCPopupShowTypeBounceIn
                                              dismissType:KLCPopupDismissTypeBounceOut
                                                 maskType:KLCPopupMaskTypeDimmed
                                 dismissOnBackgroundTouch:YES
-                                   dismissOnContentTouch:YES];
-        
+                                   dismissOnContentTouch:NO];
+
         [popup show];
     }
 }
@@ -4071,6 +4122,39 @@ NSString *currentUser;
         onError:^(){
 
         }];
+}
+
+- (void)displayMountRaisedNotification:(Pet *)mount {
+    [mount getMountImage:^(UIImage *image) {
+        NSArray *nibViews =
+        [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView" owner:self options:nil];
+        HRPGImageOverlayView *overlayView = [nibViews objectAtIndex:0];
+        [overlayView displayImage:image];
+        overlayView.imageWidth = 105;
+        overlayView.imageHeight = 105;
+        overlayView.titleText = NSLocalizedString(@"You raised a mount!", nil);
+        overlayView.descriptionText =
+        [NSString stringWithFormat:NSLocalizedString(@"By completing your tasks, you've earned a faithful steed!", nil),
+         (long)([self.user.level integerValue])];
+        overlayView.dismissButtonText = NSLocalizedString(@"Huzzah!", nil);
+        overlayView.shareAction = ^() {
+            HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
+            UIViewController *activeViewController = del.window.rootViewController.presentedViewController;
+            [HRPGSharingManager shareItems:@[
+                                             [[NSString stringWithFormat:NSLocalizedString(@"I just gained a %@ mount in Habitica by completing my real-life tasks!", nil), mount.niceMountName] stringByAppendingString:@" https://habitica.com/social/raise-mount"],
+                                             image]
+              withPresentingViewController:activeViewController];
+        };
+        [overlayView sizeToFit];
+        
+        KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
+                                                showType:KLCPopupShowTypeBounceIn
+                                             dismissType:KLCPopupDismissTypeBounceOut
+                                                maskType:KLCPopupMaskTypeDimmed
+                                dismissOnBackgroundTouch:YES
+                                   dismissOnContentTouch:NO];
+        [popup show];
+    }];
 }
 
 - (void)displayNoGemAlert {

@@ -10,22 +10,19 @@
 #import <CoreData/CoreData.h>
 #import "Preferences.h"
 #import "Outfit.h"
+#import "Flags.h"
 
-@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, TutorialSteps,
-    ImprovementCategory;
+@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization,
+    ImprovementCategory, Flags;
 
 @interface User : NSManagedObject
 
-@property(nonatomic, retain) NSNumber *armoireEnabled;
-@property(nonatomic, retain) NSNumber *armoireEmpty;
-@property(nonatomic, retain) NSNumber *acceptedCommunityGuidelines;
 @property(nonatomic, retain) NSNumber *balance;
 @property(nonatomic, retain) NSString *blurb;
 @property(nonatomic, retain) NSNumber *contributorLevel;
 @property(nonatomic, retain) NSString *contributorText;
 @property(nonatomic, retain) NSString *currentMount;
 @property(nonatomic, retain) NSString *currentPet;
-@property(nonatomic, retain) NSNumber *dropsEnabled;
 @property(nonatomic, retain) NSString *email;
 @property(nonatomic, retain) NSNumber *experience;
 @property(nonatomic, retain) NSNumber *gold;
@@ -35,14 +32,12 @@
 @property(nonatomic, retain) NSString *id;
 @property(nonatomic, retain) NSString *invitedParty;
 @property(nonatomic, retain) NSString *invitedPartyName;
-@property(nonatomic, retain) NSNumber *itemsEnabled;
 @property(nonatomic, retain) NSNumber *level;
 @property(nonatomic, retain) NSNumber *magic;
 @property(nonatomic, retain) NSNumber *maxHealth;
 @property(nonatomic, retain) NSNumber *maxMagic;
 @property(nonatomic, retain) NSDate *memberSince;
 @property(nonatomic, retain) NSNumber *nextLevel;
-@property(nonatomic, retain) NSNumber *habitNewStuff;
 @property(nonatomic, retain) NSNumber *participateInQuest;
 @property(nonatomic, retain) NSString *username;
 @property(nonatomic, retain) NSSet *groups;
@@ -59,17 +54,14 @@
 @property(nonatomic, retain) NSDate *lastAvatarFull;
 @property(nonatomic, retain) NSDate *lastAvatarNoPet;
 @property(nonatomic, retain) NSDate *lastAvatarHead;
-@property(nonatomic, retain) NSNumber *selectedClass;
 @property(nonatomic, retain) NSString *partyOrder;
 @property(nonatomic, retain) NSNumber *partyPosition;
 @property(nonatomic, retain) NSNumber *petCount;
 
-@property(nonatomic, retain) NSSet *iosTutorialSteps;
-@property(nonatomic, retain) NSSet *commonTutorialSteps;
-
 @property(nonatomic, retain) Preferences *preferences;
 @property(nonatomic, retain) Outfit *costume;
 @property(nonatomic, retain) Outfit *equipped;
+@property(nonatomic, retain) Flags *flags;
 
 @property(nonatomic, retain, setter=setPetCountFromArray:) NSDictionary *petCountArray;
 @property(nonatomic, retain, setter=setCustomizationsDictionary:)
@@ -167,11 +159,4 @@
 
 - (BOOL)hasSeenTutorialStepWithIdentifier:(NSString *)identifier;
 
-- (void)addIosTutorialStepsObject:(TutorialSteps *)value;
-- (void)addIosTutorialSteps:(NSSet *)values;
-- (void)removeIosTutorialSteps:(NSSet *)values;
-
-- (void)addCommonTutorialStepsObject:(TutorialSteps *)value;
-- (void)addCommonTutorialSteps:(NSSet *)values;
-- (void)removeCommonTutorialSteps:(NSSet *)values;
 @end

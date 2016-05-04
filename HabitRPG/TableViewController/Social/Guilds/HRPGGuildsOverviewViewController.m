@@ -106,7 +106,7 @@
         [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                             managedObjectContext:self.managedObjectContext
                                               sectionNameKeyPath:nil
-                                                       cacheName:@"guildsList"];
+                                                       cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 

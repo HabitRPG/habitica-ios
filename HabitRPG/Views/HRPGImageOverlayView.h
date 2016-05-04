@@ -14,12 +14,15 @@
 - (void)displayImageWithName:(NSString *)imageName;
 - (void)displayImage:(UIImage *)image;
 
-@property(nonatomic) CGFloat height;
-@property(nonatomic) CGFloat width;
+@property(nonatomic) CGFloat imageHeight;
+@property(nonatomic) CGFloat imageWidth;
 
-@property(nonatomic, setter=setDescriptionText:) NSString *descriptionText;
-@property(nonatomic, setter=setDetailText:) NSString *detailText;
+@property(nonatomic) NSString *titleText;
+@property(nonatomic) NSString *descriptionText;
 
 @property UIImageView *ImageView;
+
+@property (nonatomic) NSString *dismissButtonText;
+@property (nonatomic) void (^shareAction)();
 
 @end

@@ -40,8 +40,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.group && indexPath.section == 0 && indexPath.item == 0) {
-        return 123;
+    if (indexPath.section == 0 && indexPath.item == 0) {
+        return 124;
     } else {
         return [super tableView:tableView heightForRowAtIndexPath:indexPath];
     }
@@ -50,12 +50,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.group && indexPath.section == 0 && indexPath.item == 0) {
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        UILabel *label = (UILabel *)[cell viewWithTag:1];
-        UIActivityIndicatorView *indicator = (UIActivityIndicatorView *)[cell viewWithTag:2];
+        UIView *textWrapper = [cell viewWithTag:1];
+        UIActivityIndicatorView *indicator = (UIActivityIndicatorView *)[cell viewWithTag:3];
         [indicator startAnimating];
         [UIView animateWithDuration:0.4
             animations:^() {
-                label.hidden = YES;
+                textWrapper.hidden = YES;
                 indicator.hidden = NO;
             }
             completion:^(BOOL completed) {
@@ -95,19 +95,21 @@
     if (indexPath.section == 0 && indexPath.item == 0) {
         UITableViewCell *cell =
             [tableView dequeueReusableCellWithIdentifier:@"InnCell" forIndexPath:indexPath];
-        UILabel *label = (UILabel *)[cell viewWithTag:1];
+        UIView *textWrapper = [cell viewWithTag:1];
+        UILabel *label = (UILabel *)[cell viewWithTag:2];
         if ([self.user.preferences.sleep boolValue]) {
-            label.text = NSLocalizedString(@"Leave the Inn", nil);
+            label.text = NSLocalizedString(@"Reactivate your Dailies", nil);
             label.textColor = [UIColor red100];
         } else {
-            label.text = NSLocalizedString(@"Rest in the Inn", nil);
+            label.text = NSLocalizedString(@"Pause your Dailies", nil);
             label.textColor = [UIColor green100];
         }
-        UIActivityIndicatorView *indicator = (UIActivityIndicatorView *)[cell viewWithTag:2];
+        UIActivityIndicatorView *indicator = (UIActivityIndicatorView *)[cell viewWithTag:3];
+        textWrapper.hidden = NO;
         label.hidden = NO;
         indicator.hidden = YES;
 
-        UIImageView *innImageView = (UIImageView *)[cell viewWithTag:3];
+        UIImageView *innImageView = (UIImageView *)[cell viewWithTag:4];
         NSString *url = @"npc_daniel";
         if ([self.group.worldDmgTavern boolValue]) {
             url = @"npc_daniel_broken";

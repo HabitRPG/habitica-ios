@@ -103,9 +103,9 @@
                               animated:YES];
     }
     if ([type isEqualToString:@"common"]) {
-        [[self.sharedManager user] addCommonTutorialStepsObject:step];
+        [[self.sharedManager user].flags addCommonTutorialStepsObject:step];
     } else {
-        [[self.sharedManager user] addIosTutorialStepsObject:step];
+        [[self.sharedManager user].flags addIOSTutorialStepsObject:step];
     }
 
     NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];

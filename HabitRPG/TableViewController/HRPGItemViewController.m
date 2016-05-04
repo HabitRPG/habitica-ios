@@ -7,10 +7,12 @@
 //
 
 #import "HRPGItemViewController.h"
+#import "HRPGAppDelegate.h"
 #import "Quest.h"
 #import "HatchingPotion.h"
 #import "Egg.h"
 #import "HRPGImageOverlayView.h"
+#import "HRPGSharingManager.h"
 
 @interface HRPGItemViewController ()
 @property Item *selectedItem;
@@ -140,16 +142,19 @@ float textWidth;
     if ([sectionInfo numberOfObjects] < indexPath.item) {
         return 0;
     }
-    Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSInteger height = [item.text boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT)
-                                               options:NSStringDrawingUsesLineFragmentOrigin
-                                            attributes:@{
-                                                NSFontAttributeName : [UIFont
-                                                    preferredFontForTextStyle:UIFontTextStyleBody]
-                                            }
-                                               context:nil]
-                           .size.height +
-                       24;
+    NSInteger height = 24;
+    if (indexPath.item < self.fetchedResultsController.sections[indexPath.section].numberOfObjects) {
+        Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        height = height + [item.text boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT)
+                                                   options:NSStringDrawingUsesLineFragmentOrigin
+                                                attributes:@{
+                                                             NSFontAttributeName : [UIFont
+                                                                                    preferredFontForTextStyle:UIFontTextStyleBody]
+                                                             }
+                                                   context:nil]
+        .size.height;
+    }
+    
     if (height < 60) {
         return 60;
     }
@@ -165,52 +170,51 @@ float textWidth;
                 return;
             }
         }
+        NSString *eggName;
+        NSString *potionName;
         if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
-            [self.sharedManager
-                  hatchEgg:item.key
-                withPotion:self.selectedItem.key
-                 onSuccess:^() {
-                     HRPGImageOverlayView *overlayView = [[HRPGImageOverlayView alloc] init];
-                     [overlayView
-                         displayImageWithName:[NSString stringWithFormat:@"Pet-%@-%@.png", item.key,
-                                                                         self.selectedItem.key]];
-                     overlayView.descriptionText =
-                         [NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil),
-                                                    self.selectedItem.text, item.key];
-
-                     KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
-                                                             showType:KLCPopupShowTypeBounceIn
-                                                          dismissType:KLCPopupDismissTypeBounceOut
-                                                             maskType:KLCPopupMaskTypeDimmed
-                                             dismissOnBackgroundTouch:YES
-                                                dismissOnContentTouch:YES];
-                     [popup show];
-                 }
-                   onError:nil];
+            eggName = item.key;
+            potionName = self.selectedItem.key;
         } else {
-            [self.sharedManager
-                  hatchEgg:self.selectedItem.key
-                withPotion:item.key
-                 onSuccess:^() {
-                     HRPGImageOverlayView *overlayView = [[HRPGImageOverlayView alloc] init];
-                     [overlayView
-                         displayImageWithName:[NSString stringWithFormat:@"Pet-%@-%@.png",
-                                                                         self.selectedItem.key,
-                                                                         item.key]];
-                     overlayView.descriptionText =
-                         [NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil),
-                                                    item.key, self.selectedItem.text];
-
-                     KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
-                                                             showType:KLCPopupShowTypeBounceIn
-                                                          dismissType:KLCPopupDismissTypeBounceOut
-                                                             maskType:KLCPopupMaskTypeDimmed
-                                             dismissOnBackgroundTouch:YES
-                                                dismissOnContentTouch:YES];
-                     [popup show];
-                 }
-                   onError:nil];
+            eggName = self.selectedItem.key;
+            potionName = item.key;
         }
+        [self.sharedManager
+         hatchEgg:eggName
+         withPotion:potionName
+         onSuccess:^() {
+             [self.sharedManager getImage:[NSString stringWithFormat:@"Pet-%@-%@",
+                                           eggName, potionName] withFormat:nil onSuccess:^(UIImage *image) {
+                 NSArray *nibViews =
+                 [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView" owner:self options:nil];
+                 HRPGImageOverlayView *overlayView = [nibViews objectAtIndex:0];
+                 [overlayView displayImage:image];
+                 overlayView.imageWidth = 81;
+                 overlayView.imageHeight = 99;
+                 overlayView.descriptionText =
+                 [NSString stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil),
+                  potionName, eggName];
+                 overlayView.dismissButtonText = NSLocalizedString(@"Close", nil);
+                 overlayView.shareAction = ^() {
+                     HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
+                     UIViewController *activeViewController = del.window.rootViewController.presentedViewController;
+                     [HRPGSharingManager shareItems:@[
+                                                      [[NSString stringWithFormat:NSLocalizedString(@"I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!", nil), potionName, eggName] stringByAppendingString:@" https://habitica.com/social/hatch-pet"],
+                                                      image]
+                       withPresentingViewController:activeViewController];
+                 };
+                 [overlayView sizeToFit];
+                 KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
+                                                         showType:KLCPopupShowTypeBounceIn
+                                                      dismissType:KLCPopupDismissTypeBounceOut
+                                                         maskType:KLCPopupMaskTypeDimmed
+                                         dismissOnBackgroundTouch:YES
+                                            dismissOnContentTouch:YES];
+                 [popup show];
+             } onError:nil];
+         }
+         onError:nil];
+
         [self endHatching];
         return;
     }

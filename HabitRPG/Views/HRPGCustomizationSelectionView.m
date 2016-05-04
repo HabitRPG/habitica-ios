@@ -38,7 +38,6 @@ CGFloat viewSize = 60;
         (self.frame.size.width - (perRowCount * viewSize + (perRowCount - 1) * alignedSpace)) / 2;
     NSInteger count = 0;
     for (UIImageView *view in self.views) {
-        NSInteger yOffset = 0;
         NSInteger column = count;
         NSInteger row = 0;
         CGFloat thisXOffset = xOffset;
@@ -46,7 +45,6 @@ CGFloat viewSize = 60;
             row = count / perRowCount;
 
             column = count - (row * perRowCount);
-            yOffset = (viewSize + space) * row;
         }
         if ((NSInteger)(self.views.count - ((row + 1) * perRowCount)) < 0) {
             NSInteger inThisRow = self.views.count - ((row)*perRowCount);
