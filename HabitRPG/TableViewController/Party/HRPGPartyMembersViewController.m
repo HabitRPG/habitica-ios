@@ -47,7 +47,7 @@
 
     [self setUpInvitationButton];
 
-    [self.sharedManager fetchGroupMembers:[self.sharedManager getUser].partyID lastID:nil withPublicFields:YES onSuccess:nil onError:nil];
+    [self.sharedManager fetchGroupMembers:[self.sharedManager getUser].partyID lastID:nil withPublicFields:YES fetchAll:YES onSuccess:nil onError:nil];
 }
 
 #pragma mark - Table view data source

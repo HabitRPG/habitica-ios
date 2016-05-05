@@ -119,7 +119,7 @@ NSString *currentUser;
         ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
     }
 #else
-    ROOT_URL = @"https://habitica.com/";
+    ROOT_URL = @"https://habitica-v3.herokuapp.com/";
 #endif
 
     ROOT_URL = [ROOT_URL stringByAppendingString:@"api/v3/"];
@@ -3581,7 +3581,12 @@ NSString *currentUser;
         }];
 }
 
-- (void)fetchGroupMembers:(NSString *)groupID lastID:(NSString *)lastID withPublicFields:(BOOL)withPublicFields onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+- (void)fetchGroupMembers:(NSString *)groupID
+                   lastID:(NSString *)lastID
+         withPublicFields:(BOOL)withPublicFields
+                 fetchAll:(BOOL)fetchAll
+                onSuccess:(void (^)())successBlock
+                  onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -3596,8 +3601,12 @@ NSString *currentUser;
         path:[NSString stringWithFormat:@"groups/%@/members", groupID]
         parameters:parameters
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            if (successBlock) {
-                successBlock();
+            if ([mappingResult array].count < 30 && fetchAll) {
+                [self fetchGroupMembers:groupID lastID:[[mappingResult array] lastObject] withPublicFields:withPublicFields fetchAll:YES onSuccess:successBlock onError:errorBlock];
+            } else {
+                if (successBlock) {
+                    successBlock();
+                }
             }
             [self.networkIndicatorController endNetworking];
             return;

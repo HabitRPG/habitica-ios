@@ -151,6 +151,7 @@
 - (void)fetchGroupMembers:(NSString *)groupID
                    lastID:(NSString *)lastID
          withPublicFields:(BOOL)withPublicFields
+                 fetchAll:(BOOL)fetchAll
                 onSuccess:(void (^)())successBlock
                   onError:(void (^)())errorBlock;
 
