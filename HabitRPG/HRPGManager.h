@@ -148,8 +148,9 @@
           onSuccess:(void (^)())successBlock
             onError:(void (^)())errorBlock;
 
-- (void)fetchGroupMembers:(Group *)group
+- (void)fetchGroupMembers:(NSString *)groupID
                    lastID:(NSString *)lastID
+         withPublicFields:(BOOL)withPublicFields
                 onSuccess:(void (^)())successBlock
                   onError:(void (^)())errorBlock;
 

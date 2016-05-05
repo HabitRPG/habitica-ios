@@ -1282,6 +1282,7 @@ NSString *currentUser;
         @"contributor.text" : @"contributorText",
         @"@metadata.mapping.collectionIndex" : @"partyPosition",
         @"party.order" : @"partyOrder",
+        @"party._id" : @"partyID",
         @"items.pets" : @"petCountArray"
     }];
     memberMapping.identificationAttributes = @[ @"id" ];
@@ -3580,24 +3581,21 @@ NSString *currentUser;
         }];
 }
 
-- (void)fetchGroupMembers:(Group *)group
-                   lastID:(NSString *)lastID
-                onSuccess:(void (^)())successBlock
-                  onError:(void (^)())errorBlock {
+- (void)fetchGroupMembers:(NSString *)groupID lastID:(NSString *)lastID withPublicFields:(BOOL)withPublicFields onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
-    NSString *path;
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     if (lastID) {
-        path = [NSString stringWithFormat:@"groups/%@/members", group.id];
-    } else {
-        [NSString stringWithFormat:@"groups/%@/members", group.id];
+        parameters[@"lastId"] = lastID;
+    }
+    if (withPublicFields) {
+        parameters[@"includeAllPublicFields"] = @"true";
     }
 
-    [[RKObjectManager sharedManager] postObject:nil
-        path:path
-        parameters:nil
+    [[RKObjectManager sharedManager] getObject:nil
+        path:[NSString stringWithFormat:@"groups/%@/members", groupID]
+        parameters:parameters
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            NSError *executeError = nil;
             if (successBlock) {
                 successBlock();
             }
