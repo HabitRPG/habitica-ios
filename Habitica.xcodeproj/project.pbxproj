@@ -142,6 +142,7 @@
 		D9AEA8A11C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEA8A01C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m */; };
 		D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */; };
 		D9AEEA731ACEDD470076951B /* HRPGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */; };
+		D9AEF8E41CE4CCA5006914CB /* HRPGURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEF8E31CE4CCA5006914CB /* HRPGURLParser.m */; };
 		D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */; };
 		D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */; };
 		D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0B018CCD1EA00C8D1B7 /* Task.m */; };
@@ -514,6 +515,8 @@
 		D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGClassTableViewController.m; path = ../CollectionViewController/HRPGClassTableViewController.m; sourceTree = "<group>"; };
 		D9AEEA711ACEDD470076951B /* HRPGWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGWebViewController.h; sourceTree = "<group>"; };
 		D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGWebViewController.m; sourceTree = "<group>"; };
+		D9AEF8E21CE4CCA5006914CB /* HRPGURLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGURLParser.h; path = HabitRPG/Utilities/HRPGURLParser.h; sourceTree = SOURCE_ROOT; };
+		D9AEF8E31CE4CCA5006914CB /* HRPGURLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGURLParser.m; path = HabitRPG/Utilities/HRPGURLParser.m; sourceTree = SOURCE_ROOT; };
 		D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTabBarController.m; sourceTree = "<group>"; };
 		D9B27ED71AE4C138008914D7 /* HabitRPG 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 2.xcdatamodel"; sourceTree = "<group>"; };
 		D9B326771CD969D700973440 /* HabitRPG 26.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 26.xcdatamodel"; sourceTree = "<group>"; };
@@ -704,7 +707,7 @@
 				D90EA03B19D60B53001EABE4 /* RewardIntro.png */,
 				D90EA03619D60421001EABE4 /* HabitIntro.png */,
 			);
-			name = "Intro Images";
+			path = "Intro Images";
 			sourceTree = "<group>";
 		};
 		D91489091CD23A600015B42D /* ViewController */ = {
@@ -849,9 +852,10 @@
 				D9CD2DD61BCAC00300B1304B /* TutorialStepsProtocol.h */,
 				D9E9E0C21CCE55DA006D94A2 /* HRPGSharingManager.h */,
 				D9E9E0C31CCE55DA006D94A2 /* HRPGSharingManager.m */,
+				D9AEF8E21CE4CCA5006914CB /* HRPGURLParser.h */,
+				D9AEF8E31CE4CCA5006914CB /* HRPGURLParser.m */,
 			);
-			name = Utilities;
-			path = TableViewController;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		D9ADD3531943BE33006202C1 /* TabBarController */ = {
@@ -1705,6 +1709,7 @@
 				D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */,
 				D98F5DDD1C6E1D030035CBEC /* HRPGTavernTableViewController.m in Sources */,
 				D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */,
+				D9AEF8E41CE4CCA5006914CB /* HRPGURLParser.m in Sources */,
 				D98AD54E19437D9400AF6174 /* Pet.m in Sources */,
 				D9C89CF61B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m in Sources */,
 				D9436AC11C63A4BB008D1171 /* UIViewController+Markdown.m in Sources */,

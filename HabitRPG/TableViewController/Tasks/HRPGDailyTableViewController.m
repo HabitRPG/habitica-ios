@@ -62,28 +62,29 @@
             if (![task.currentlyChecking boolValue]) {
                 item.currentlyChecking = @YES;
                 item.completed = @(![item.completed boolValue]);
-                [self.sharedManager updateTask:task
-                    onSuccess:^() {
-                        item.currentlyChecking = @NO;
-                        if ([self isIndexPathVisible:indexPath]) {
-                            [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
-                        }
-                        NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
-                        if ([self isIndexPathVisible:taskPath]) {
-                            NSArray *paths;
-                            if (indexPath.item != taskPath.item) {
-                                paths = @[ indexPath, taskPath ];
-                            } else {
-                                paths = @[ indexPath ];
-                            }
-                            [self.tableView
-                                reloadRowsAtIndexPaths:paths
-                                      withRowAnimation:UITableViewRowAnimationAutomatic];
-                        }
-                    }
-                    onError:^() {
-                        item.currentlyChecking = @NO;
-                    }];
+                [self.sharedManager scoreChecklistItem:task
+                                         checklistItem:item
+                                             onSuccess:^() {
+                                                 item.currentlyChecking = @NO;
+                                                 if ([self isIndexPathVisible:indexPath]) {
+                                                     [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                                                 }
+                                                 NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
+                                                 if ([self isIndexPathVisible:taskPath]) {
+                                                     NSArray *paths;
+                                                     if (indexPath.item != taskPath.item) {
+                                                         paths = @[ indexPath, taskPath ];
+                                                     } else {
+                                                         paths = @[ indexPath ];
+                                                     }
+                                                     [self.tableView
+                                                      reloadRowsAtIndexPaths:paths
+                                                      withRowAnimation:UITableViewRowAnimationAutomatic];
+                                                 }
+                                             }
+                                               onError:^() {
+                                                   item.currentlyChecking = @NO;
+                                               }];
             }
 
         };

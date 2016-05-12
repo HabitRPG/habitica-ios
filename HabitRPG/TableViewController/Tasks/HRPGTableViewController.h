@@ -11,6 +11,8 @@
 
 @interface HRPGTableViewController : HRPGBaseViewController<NSFetchedResultsControllerDelegate>
 
+- (void)refresh;
+
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue;
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue;
@@ -31,5 +33,7 @@
 @property NSInteger dayStart;
 
 @property NSString *scrollToTaskAfterLoading;
+
+- (void)didChangeFilter:(NSNotification *)notification;
 
 @end

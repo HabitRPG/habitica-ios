@@ -28,6 +28,7 @@
 - (void)fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)fetchTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
+- (void)fetchCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock;
 - (void)fetchUser:(BOOL)includeTasks
@@ -62,6 +63,11 @@
          direction:(NSString *)withDirection
          onSuccess:(void (^)(NSArray *valuesArray))successBlock
            onError:(void (^)())errorBlock;
+
+- (void)scoreChecklistItem:(Task *)task
+             checklistItem:(ChecklistItem *)item
+                 onSuccess:(void (^)())successBlock
+                   onError:(void (^)())errorBlock;
 
 - (void)getReward:(NSString *)rewardID
         onSuccess:(void (^)())successBlock

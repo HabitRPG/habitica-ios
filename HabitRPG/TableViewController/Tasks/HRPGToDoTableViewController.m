@@ -38,6 +38,10 @@
     self.tutorialIdentifier = @"todos";
 }
 
+- (void)refresh {
+    [super refresh];
+    [self.sharedManager fetchCompletedTasks:nil onError:nil];
+}
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"todos"]) {
         return @{
@@ -137,6 +141,15 @@
     CGPoint p = [gesture locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
     [self tableView:self.tableView expandTaskAtIndexPath:indexPath];
+}
+
+- (void)didChangeFilter:(NSNotification *)notification {
+    [super didChangeFilter:notification];
+    if (self.filterType == TaskToDoFilterTypeDone) {
+        if ([self.fetchedResultsController fetchedObjects].count == 0) {
+            [self.sharedManager fetchCompletedTasks:nil onError:nil];
+        }
+    }
 }
 
 @end

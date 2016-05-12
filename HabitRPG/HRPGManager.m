@@ -29,7 +29,9 @@
 #import "HRPGUserBuyResponse.h"
 #import "Quest.h"
 #import "Reward.h"
+#import "ChecklistItem.h"
 #import "UIColor+Habitica.h"
+#import "HRPGURLParser.h"
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
@@ -382,6 +384,14 @@ NSString *currentUser;
                               keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:taskMapping
+                          method:RKRequestMethodPOST
+                          pathPattern:@"tasks/:id/checklist/:checklistId/score"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
 
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher =
@@ -409,6 +419,22 @@ NSString *currentUser;
                               parsedArguments:&argsDict];
         if (match) {
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+            
+            HRPGURLParser *parser = [[HRPGURLParser alloc] initWithURLString:[URL absoluteString]];
+            NSString *typeQuery = [parser valueForVariable:@"type"];
+            if (typeQuery) {
+                if ([typeQuery isEqualToString:@"habits"]) {
+                    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"type == 'habit'"]];
+                }else if ([typeQuery isEqualToString:@"dailies"]) {
+                    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"type == 'daily'"]];
+                } else if ([typeQuery isEqualToString:@"todos"]) {
+                    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"type == 'todo' && completed == NO"]];
+                } else if ([typeQuery isEqualToString:@"completedTodos"]) {
+                    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"type == 'todo' && completed == YES"]];
+                }
+            } else {
+                [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"(type == 'todo' && completed == NO) || type != 'todo'"]];
+            }
             return fetchRequest;
         }
 
@@ -1941,6 +1967,32 @@ NSString *currentUser;
         }];
 }
 
+- (void)fetchCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager]
+     getObjectsAtPath:@"tasks/user?type=completedTodos"
+     parameters:nil
+     success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+         NSError *executeError = nil;
+         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+         [defaults setObject:[NSDate date] forKey:@"lastTaskFetch"];
+         [defaults synchronize];
+         if (successBlock) {
+             successBlock();
+         }
+         [self.networkIndicatorController endNetworking];
+         return;
+     }
+     failure:^(RKObjectRequestOperation *operation, NSError *error) {
+         if (errorBlock) {
+             errorBlock();
+         }
+         [self.networkIndicatorController endNetworking];
+         return;
+     }];
+}
+
 - (void)fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self fetchUser:YES onSuccess:successBlock onError:errorBlock];
 }
@@ -2390,6 +2442,32 @@ NSString *currentUser;
             return;
         }];
 }
+
+- (void)scoreChecklistItem:(Task *)task checklistItem:(ChecklistItem *)item onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    [[RKObjectManager sharedManager]
+     postObject:nil
+     path:[NSString stringWithFormat:@"tasks/%@/checklist/%@/score", task.id, item.id]
+     parameters:nil
+     success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+         if (successBlock) {
+             successBlock();
+         }
+         [self.networkIndicatorController endNetworking];
+         return;
+     }
+     failure:^(RKObjectRequestOperation *operation, NSError *error) {
+         if (operation.HTTPRequestOperation.response.statusCode == 503) {
+             [self displayServerError];
+         } else {
+             [self displayNetworkError];
+         }
+         if (errorBlock) {
+             errorBlock();
+         }
+         [self.networkIndicatorController endNetworking];
+         return;
+     }];}
 
 - (void)getReward:(NSString *)rewardID
         onSuccess:(void (^)())successBlock
