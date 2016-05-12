@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="w3K-rB-cob">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="w3K-rB-cob">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -2092,16 +2092,24 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddv-E0-ZJX">
-                                            <rect key="frame" x="8" y="10" width="241" height="39"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddv-E0-ZJX">
+                                            <rect key="frame" x="8" y="8" width="519" height="43.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <switch opaque="NO" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xc-DA-Akh">
-                                            <rect key="frame" x="302" y="14" width="51" height="31"/>
+                                        <switch opaque="NO" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xc-DA-Akh">
+                                            <rect key="frame" x="543" y="14" width="51" height="31"/>
                                         </switch>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="8xc-DA-Akh" secondAttribute="trailing" id="2Mg-lR-Jen"/>
+                                        <constraint firstItem="ddv-E0-ZJX" firstAttribute="leading" secondItem="DS2-vy-Z4G" secondAttribute="leadingMargin" id="35o-s3-SOO"/>
+                                        <constraint firstItem="8xc-DA-Akh" firstAttribute="leading" secondItem="ddv-E0-ZJX" secondAttribute="trailing" constant="16" id="DfE-7G-DB7"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ddv-E0-ZJX" secondAttribute="bottom" id="UgW-2S-5oP"/>
+                                        <constraint firstItem="8xc-DA-Akh" firstAttribute="centerY" secondItem="DS2-vy-Z4G" secondAttribute="centerY" id="k5J-RT-RWr"/>
+                                        <constraint firstItem="ddv-E0-ZJX" firstAttribute="top" secondItem="DS2-vy-Z4G" secondAttribute="topMargin" id="lib-7w-wE0"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="53" minY="0.0" maxX="0.0" maxY="0.0"/>
