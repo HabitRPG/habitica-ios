@@ -40,7 +40,11 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd"];
     NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
-    NSDictionary *textAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:12]};
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    style.alignment = NSTextAlignmentLeft;
+    NSDictionary *textAttributes = @{
+                                     NSFontAttributeName : [UIFont systemFontOfSize:12],
+                                     NSParagraphStyleAttributeName : style};
     CGSize size = [dateString sizeWithAttributes:textAttributes];
     int offset = (calendarImage.size.width - size.width) / 2;
     [dateString drawInRect:CGRectMake(offset + 0.5f, 8, 20, 20) withAttributes:textAttributes];

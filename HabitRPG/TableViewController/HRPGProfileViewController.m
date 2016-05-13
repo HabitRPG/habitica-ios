@@ -154,12 +154,22 @@ NIKFontAwesomeIconFactory *iconFactory;
     }
     iconFactory.colors = @[ [UIColor darkGrayColor] ];
     iconFactory.size = 16.f;
+    
+    CGRect labelFrame = CGRectMake(30, 14, 290, 17);
+    CGRect iconFrame = CGRectMake(9, 14, 16, 16);
+    
+    if ([UIApplication instancesRespondToSelector:@selector(userInterfaceLayoutDirection)]) {
+        if ([UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft) {
+            labelFrame = CGRectMake(9, 14, self.viewWidth-39, 17);
+            iconFrame = CGRectMake(self.viewWidth-25, 14, 16, 16);
+        }
+    }
 
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 37.5)];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, 14, 290, 17)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.viewWidth, 37.5)];
+    UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
     label.font = [UIFont systemFontOfSize:14];
     label.textColor = [UIColor darkGrayColor];
-    UIImageView *iconView = [[UIImageView alloc] initWithFrame:CGRectMake(9, 14, 16, 16)];
+    UIImageView *iconView = [[UIImageView alloc] initWithFrame:iconFrame];
     iconView.contentMode = UIViewContentModeCenter;
     [view addSubview:label];
     [view addSubview:iconView];

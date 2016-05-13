@@ -19,15 +19,4 @@
     self.notesLastActionConstraint.constant = 0;
 }
 
-- (void)layoutSubviews {
-    self.buttons.translatesAutoresizingMaskIntoConstraints = YES;
-    self.buttons.frame = CGRectMake(0, 0, self.buttons.frame.size.width, self.frame.size.height);
-    self.rightBorderView.translatesAutoresizingMaskIntoConstraints = YES;
-    self.rightBorderView.frame =
-        CGRectMake(self.frame.size.width - self.rightBorderView.frame.size.width, 0,
-                   self.rightBorderView.frame.size.width, self.frame.size.height);
-
-    [super layoutSubviews];
-}
-
 @end
