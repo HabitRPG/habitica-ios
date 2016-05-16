@@ -113,10 +113,7 @@
                                     objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
     if (lastContentFetch == nil || [lastContentFetch timeIntervalSinceNow] < -604800 || ![lastContentFetchVersion isEqualToString:currentBuildNumber]) {
         [[NSUserDefaults standardUserDefaults] setObject:currentBuildNumber forKey:@"lastContentFetchVersion"];
-        [self.sharedManager fetchContent:^() {
-        }
-            onError:^(){
-            }];
+        [self.sharedManager fetchContent:nil onError:nil];
     }
     NSArray *scheduledNotifications =
         [NSArray arrayWithArray:application.scheduledLocalNotifications];

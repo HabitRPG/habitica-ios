@@ -409,6 +409,23 @@ NSString *currentUser;
 
         return nil;
     }];
+    
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher =
+        [RKPathMatcher pathMatcherWithPattern:@"content"];
+        
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:[URL relativePath]
+                         tokenizeQueryStrings:NO
+                              parsedArguments:&argsDict];
+        if (match) {
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Customization"];
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"type=='background'"];
+            return fetchRequest;
+        }
+        
+        return nil;
+    }];
 
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"tasks/user"];
@@ -1628,26 +1645,16 @@ NSString *currentUser;
     [backgroundMapping addAttributeMappingsFromDictionary:@{
         @"(name).text" : @"text",
         @"(name).notes" : @"notes",
+        @"(name).set.key" : @"set",
+        @"(name).price" : @"price",
+        @"@metadata.mapping.rootKeyPath" : @"type"
     }];
-    backgroundMapping.identificationAttributes = @[ @"name", @"notes" ];
-    RKDynamicMapping *dynamicMapping = [RKDynamicMapping new];
-    dynamicMapping.forceCollectionMapping = YES;
-    [dynamicMapping setObjectMappingForRepresentationBlock:^RKObjectMapping *(id representation) {
-        RKObjectMapping *testListMapping =
-            [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-        [testListMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"setName"];
-        [testListMapping addPropertyMapping:[RKRelationshipMapping
-                                                relationshipMappingFromKeyPath:@"(setName)"
-                                                                     toKeyPath:@"backgrounds"
-                                                                   withMapping:backgroundMapping]];
-
-        return testListMapping;
-    }];
+    backgroundMapping.identificationAttributes = @[ @"name" ];
     responseDescriptor = [RKResponseDescriptor
-        responseDescriptorWithMapping:dynamicMapping
+        responseDescriptorWithMapping:backgroundMapping
                                method:RKRequestMethodGET
                           pathPattern:@"content"
-                              keyPath:@"data.backgrounds"
+                              keyPath:@"data.appearances.background"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
