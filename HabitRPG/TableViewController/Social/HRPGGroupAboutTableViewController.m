@@ -189,6 +189,7 @@
                       (HRPGGroupTableViewController *)self.presentingViewController;
                   [vc fetchGroup];
                   self.group = vc.group;
+                  [self.tableView reloadData];
               }
           }
             onError:nil];

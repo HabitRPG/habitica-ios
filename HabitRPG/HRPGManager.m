@@ -3510,7 +3510,7 @@ NSString *currentUser;
             onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
-    [[RKObjectManager sharedManager] postObject:group
+    [[RKObjectManager sharedManager] putObject:group
         path:[NSString stringWithFormat:@"groups/%@", group.id]
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -3684,8 +3684,9 @@ NSString *currentUser;
         path:[NSString stringWithFormat:@"groups/%@/members", groupID]
         parameters:parameters
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            if ([mappingResult array].count < 30 && fetchAll) {
-                [self fetchGroupMembers:groupID lastID:[[mappingResult array] lastObject] withPublicFields:withPublicFields fetchAll:YES onSuccess:successBlock onError:errorBlock];
+            if ([mappingResult array].count == 30 && fetchAll) {
+                User *lastUser = [[mappingResult array] lastObject];
+                [self fetchGroupMembers:groupID lastID:lastUser.id withPublicFields:withPublicFields fetchAll:YES onSuccess:successBlock onError:errorBlock];
             } else {
                 if (successBlock) {
                     successBlock();
