@@ -997,11 +997,11 @@ NSString *currentUser;
 
     RKObjectMapping *buyMapping = [RKObjectMapping mappingForClass:[HRPGUserBuyResponse class]];
     [buyMapping addAttributeMappingsFromDictionary:@{
-        @"stats.lvl" : @"level",
-        @"stats.gp" : @"gold",
-        @"stats.exp" : @"experience",
-        @"stats.mp" : @"magic",
-        @"stats.hp" : @"health",
+        @"lvl" : @"level",
+        @"gp" : @"gold",
+        @"exp" : @"experience",
+        @"mp" : @"magic",
+        @"hp" : @"health",
         @"items.gear.equipped.headAccessory" : @"equippedHeadAccessory",
         @"items.gear.equipped.armor" : @"equippedArmor",
         @"items.gear.equipped.back" : @"equippedBack",
@@ -1030,7 +1030,7 @@ NSString *currentUser;
     responseDescriptor = [RKResponseDescriptor
         responseDescriptorWithMapping:buyMapping
                                method:RKRequestMethodPOST
-                          pathPattern:@"user/buy/:id"
+                          pathPattern:@"user/buy/:key"
                               keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -2960,9 +2960,14 @@ NSString *currentUser;
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
             HRPGUserBuyResponse *response = [mappingResult firstObject];
-            self.user.health = response.health;
-            NSNumber *goldDiff = @([response.gold floatValue] - [self.user.gold floatValue]);
-            self.user.gold = response.gold;
+            self.user.health = response.health ? response.health : self.user.health;
+            NSNumber *goldDiff;
+            if (response.gold) {
+                goldDiff = @([response.gold floatValue] - [self.user.gold floatValue]);
+            } else {
+                goldDiff = reward.value;
+            }
+            self.user.gold = response.gold ? response.gold : self.user.gold;
 
             if (response.armoireType) {
                 NSString *text;
@@ -2979,13 +2984,13 @@ NSString *currentUser;
             } else {
                 [self displayRewardNotification:goldDiff];
             }
-            self.user.magic = response.magic;
-            self.user.equipped.armor = response.equippedArmor;
-            self.user.equipped.back = response.equippedBack;
-            self.user.equipped.head = response.equippedHead;
-            self.user.equipped.headAccessory = response.equippedHeadAccessory;
-            self.user.equipped.shield = response.equippedShield;
-            self.user.equipped.weapon = response.equippedWeapon;
+            self.user.magic = response.magic ? response.magic : self.user.magic;
+            self.user.equipped.armor = response.equippedArmor ? response.equippedArmor : self.user.equipped.armor;
+            self.user.equipped.back = response.equippedBack ? response.equippedBack : self.user.equipped.back;
+            self.user.equipped.head = response.equippedHead ? response.equippedHead : self.user.equipped.head;
+            self.user.equipped.headAccessory = response.equippedHeadAccessory ? response.equippedHeadAccessory : self.user.equipped.headAccessory;
+            self.user.equipped.shield = response.equippedShield ? response.equippedShield : self.user.equipped.shield;
+            self.user.equipped.weapon = response.equippedWeapon ? response.equippedWeapon : self.user.equipped.weapon;
             if ([reward isKindOfClass:[Gear class]]) {
                 Gear *gear = (Gear *)reward;
                 gear.owned = YES;
