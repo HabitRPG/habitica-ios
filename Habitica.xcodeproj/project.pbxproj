@@ -72,6 +72,7 @@
 		D95D039B1C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D95D03981C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.m */; };
 		D95D039C1C74E3E900D6BFB3 /* ImprovementCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D95D039A1C74E3E900D6BFB3 /* ImprovementCategory.m */; };
 		D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D96038361930F90E0025EAEC /* HRPGMessageViewController.m */; };
+		D96447B41CE9FF0D009D7950 /* HRPGResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D96447B31CE9FF0D009D7950 /* HRPGResponseMessage.m */; };
 		D96576C31BAF539000CCA28E /* HRPGGearDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D96576C21BAF539000CCA28E /* HRPGGearDetailView.m */; };
 		D96576C51BAF53D400CCA28E /* HRPGGearDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D96576C41BAF53D400CCA28E /* HRPGGearDetailView.xib */; };
 		D9660D751AB23F150084CE37 /* HRPGTopHeaderNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9660D741AB23F150084CE37 /* HRPGTopHeaderNavigationController.m */; };
@@ -360,6 +361,8 @@
 		D95D039A1C74E3E900D6BFB3 /* ImprovementCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImprovementCategory.m; sourceTree = "<group>"; };
 		D96038351930F90E0025EAEC /* HRPGMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGMessageViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D96038361930F90E0025EAEC /* HRPGMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGMessageViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D96447B21CE9FF0D009D7950 /* HRPGResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGResponseMessage.h; sourceTree = "<group>"; };
+		D96447B31CE9FF0D009D7950 /* HRPGResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGResponseMessage.m; sourceTree = "<group>"; };
 		D96576C11BAF539000CCA28E /* HRPGGearDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGGearDetailView.h; path = ../HRPGGearDetailView.h; sourceTree = "<group>"; };
 		D96576C21BAF539000CCA28E /* HRPGGearDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGGearDetailView.m; path = ../HRPGGearDetailView.m; sourceTree = "<group>"; };
 		D96576C41BAF53D400CCA28E /* HRPGGearDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HRPGGearDetailView.xib; path = ../HRPGGearDetailView.xib; sourceTree = "<group>"; };
@@ -905,6 +908,8 @@
 				D939B5F51BD8FBD50015AEB6 /* HRPGBatchOperation.m */,
 				CF54FD820D81110D9EF4756E /* HRPGContentResponse.m */,
 				CF54F3C3C288710775DDD5A9 /* HRPGContentResponse.h */,
+				D96447B21CE9FF0D009D7950 /* HRPGResponseMessage.h */,
+				D96447B31CE9FF0D009D7950 /* HRPGResponseMessage.m */,
 			);
 			name = Models;
 			path = HRPGModels;
@@ -1719,6 +1724,7 @@
 				D97C71E118ECA7050089FDC6 /* ChatMessage.m in Sources */,
 				D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */,
 				D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */,
+				D96447B41CE9FF0D009D7950 /* HRPGResponseMessage.m in Sources */,
 				D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */,
 				D902AD8A1B540AE30098A1BD /* HRPGBaseCollectionViewController.m in Sources */,
 				D9C2572A1B9DC4E900839F48 /* HRPGFAQDetailViewController.m in Sources */,

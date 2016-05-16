@@ -173,18 +173,24 @@ float textWidth;
             }
         }
         NSString *eggName;
+        NSString *eggDisplayName;
         NSString *potionName;
+        NSString *potionDisplayName;
         if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
             eggName = item.key;
+            eggDisplayName = item.text;
             potionName = self.selectedItem.key;
+            potionDisplayName = self.selectedItem.text;
         } else {
             eggName = self.selectedItem.key;
+            eggDisplayName = self.selectedItem.text;
             potionName = item.key;
+            potionDisplayName = item.text;
         }
         [self.sharedManager
               hatchEgg:eggName
             withPotion:potionName
-             onSuccess:^() {
+             onSuccess:^(NSString *message) {
                  [self.sharedManager
                        getImage:[NSString stringWithFormat:@"Pet-%@-%@", eggName, potionName]
                      withFormat:nil
@@ -199,7 +205,7 @@ float textWidth;
                           overlayView.imageHeight = 99;
                           overlayView.descriptionText = [NSString
                               stringWithFormat:NSLocalizedString(@"You hatched a %@ %@!", nil),
-                                               potionName, eggName];
+                                               potionDisplayName, eggDisplayName];
                           overlayView.dismissButtonText = NSLocalizedString(@"Close", nil);
                           overlayView.shareAction = ^() {
                               HRPGAppDelegate *del =
@@ -212,7 +218,7 @@ float textWidth;
                                                                   @"Habitica by completing my "
                                                                   @"real-life tasks!",
                                                                   nil),
-                                                              potionName, eggName]
+                                                              potionDisplayName, eggDisplayName]
                                       stringByAppendingString:
                                           @" https://habitica.com/social/hatch-pet"],
                                   image

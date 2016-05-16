@@ -32,6 +32,7 @@
 #import "ChecklistItem.h"
 #import "UIColor+Habitica.h"
 #import "HRPGURLParser.h"
+#import "HRPGResponseMessage.h"
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
@@ -1710,6 +1711,18 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
     [objectManager addResponseDescriptor:errorResponseDescriptor];
 
+    RKObjectMapping *messageMapping = [RKObjectMapping mappingForClass:[HRPGResponseMessage class]];
+    [messageMapping
+     addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:@"message"
+                                                              toKeyPath:@"message"]];
+    RKResponseDescriptor *messageResponseDescriptor = [RKResponseDescriptor
+                                                     responseDescriptorWithMapping:messageMapping
+                                                     method:RKRequestMethodAny
+                                                     pathPattern:nil
+                                                     keyPath:nil
+                                                     statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:messageResponseDescriptor];
+    
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-client" value:@"habitica-ios"];
 
     [self setCredentials];
@@ -2991,7 +3004,7 @@ NSString *currentUser;
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
-            HRPGUserBuyResponse *response = [mappingResult firstObject];
+            HRPGUserBuyResponse *response = [mappingResult dictionary][@"data"];
             self.user.health = response.health ? response.health : self.user.health;
             NSNumber *goldDiff;
             if (response.gold) {
@@ -3002,16 +3015,10 @@ NSString *currentUser;
             self.user.gold = response.gold ? response.gold : self.user.gold;
 
             if (response.armoireType) {
-                NSString *text;
-                if (response.armoireArticle) {
-                    text = [NSString
-                        stringWithFormat:@"%@ %@", response.armoireArticle, response.armoireText];
-                } else {
-                    text = response.armoireText;
-                }
+                HRPGResponseMessage *message = [mappingResult dictionary][[NSNull null]];
                 [self displayArmoireNotification:response.armoireType
                                          withKey:response.armoireKey
-                                        withText:text
+                                        withText:message.message
                                        withValue:response.armoireValue];
             } else {
                 [self displayRewardNotification:goldDiff];
@@ -3185,7 +3192,7 @@ NSString *currentUser;
 
 - (void)hatchEgg:(NSString *)egg
       withPotion:(NSString *)hPotion
-       onSuccess:(void (^)())successBlock
+       onSuccess:(void * (^)(NSString *message))successBlock
          onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
@@ -3214,8 +3221,9 @@ NSString *currentUser;
             self.user.currentMount = response.currentMount;
             self.user.currentPet = response.currentPet;
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+            HRPGResponseMessage *message = [mappingResult dictionary][[NSNull null]];
             if (successBlock) {
-                successBlock();
+                successBlock(message.message);
             }
             [self.networkIndicatorController endNetworking];
             return;
@@ -4112,11 +4120,7 @@ NSString *currentUser;
                          withValue:(NSNumber *)value {
     if ([type isEqualToString:@"experience"]) {
         NSDictionary *options = @{
-            kCRToastTextKey : [NSString
-                stringWithFormat:
-                    NSLocalizedString(
-                        @"You wrestle with the Armoire and gain %@ Experience. Take that!", nil),
-                    value],
+            kCRToastTextKey : text,
             kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
             kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
             kCRToastBackgroundColorKey : [UIColor yellow10],
@@ -4132,11 +4136,7 @@ NSString *currentUser;
             onSuccess:^(UIImage *image) {
                 UIColor *notificationColor = [UIColor blue10];
                 NSDictionary *options = @{
-                    kCRToastTextKey : [NSString
-                        stringWithFormat:NSLocalizedString(@"You rummage in the Armoire and find "
-                                                           @"%@. What's that doing in here?",
-                                                           nil),
-                                         text],
+                    kCRToastTextKey : text,
                     kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                     kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
                     kCRToastBackgroundColorKey : notificationColor,
@@ -4155,12 +4155,7 @@ NSString *currentUser;
             onSuccess:^(UIImage *image) {
                 UIColor *notificationColor = [UIColor green10];
                 NSDictionary *options = @{
-                    kCRToastTextKey : [NSString
-                        stringWithFormat:
-                            NSLocalizedString(
-                                @"You found a piece of rare Equipment in the Armoire: %@! Awesome!",
-                                nil),
-                            text],
+                    kCRToastTextKey : text,
                     kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                     kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
                     kCRToastBackgroundColorKey : notificationColor,

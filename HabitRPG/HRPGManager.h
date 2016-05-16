@@ -115,7 +115,7 @@
 
 - (void)hatchEgg:(NSString *)egg
       withPotion:(NSString *)hPotion
-       onSuccess:(void (^)())successBlock
+       onSuccess:(void (^)(NSString *message))successBlock
          onError:(void (^)())errorBlock;
 
 - (void)castSpell:(NSString *)spell
