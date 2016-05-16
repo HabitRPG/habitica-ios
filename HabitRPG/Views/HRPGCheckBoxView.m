@@ -36,7 +36,7 @@
 
 - (void)configureForTask:(Task *)task withOffset:(NSInteger)offset {
     self.boxFillColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-    self.checked = [task.completed boolValue] || [task.currentlyChecking boolValue];
+    self.checked = [task.completed boolValue];
     if ([task.type isEqualToString:@"daily"]) {
         self.cornerRadius = 3;
 
