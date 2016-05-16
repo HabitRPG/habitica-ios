@@ -12,4 +12,12 @@
 
 // Insert code here to add functionality to your managed object subclass
 
+- (NSString *)language {
+    NSString *language = [self primitiveValueForKey:@"language"];
+    if (!language) {
+        language = @"en";
+    }
+    return language;
+}
+
 @end
