@@ -29,6 +29,7 @@
 @property(weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
 @property(weak, nonatomic) IBOutlet UIImageView *classImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *classImageViewWidthConstraint;
 
 @property(weak, nonatomic) IBOutlet UILabel *goldLabel;
 @property(weak, nonatomic) IBOutlet UILabel *silverLabel;
@@ -182,11 +183,21 @@ NSInteger rowOffset = 16;
         self.usernameLabel.textColor = self.user.contributorColor;
         self.levelLabel.textColor = self.user.contributorColor;
     }
-    self.levelLabel.text =
+    if (![self.user.preferences.disableClass boolValue]) {
+        self.levelLabel.text =
         [NSString stringWithFormat:NSLocalizedString(@"Level %@ %@", nil), self.user.level,
-                                   NSLocalizedString([self.user.hclass capitalizedString], nil)];
-    self.classImageView.image =
+         NSLocalizedString([self.user.hclass capitalizedString], nil)];
+        self.classImageView.image =
         [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@", self.user.hclass]];
+        self.classImageViewWidthConstraint.constant = 36;
+    } else {
+        self.levelLabel.text =
+        [NSString stringWithFormat:NSLocalizedString(@"Level %@", nil), self.user.level];
+        self.classImageView.image = nil;
+        self.classImageViewWidthConstraint.constant = 0;
+    }
+    
+    
     self.gemLabel.text = [@([self.user.balance floatValue] * 4) stringValue];
 
     self.goldLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.user.gold integerValue]];

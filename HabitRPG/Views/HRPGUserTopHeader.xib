@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -219,6 +219,7 @@
             <connections>
                 <outlet property="avatarImageView" destination="UWI-d8-sGn" id="u9c-2i-E3b"/>
                 <outlet property="classImageView" destination="0wH-g6-8n6" id="li4-lc-Pun"/>
+                <outlet property="classImageViewWidthConstraint" destination="ehs-7W-t4k" id="lKZ-0G-gln"/>
                 <outlet property="experienceLabel" destination="BEm-of-HXC" id="AEF-d8-Rwc"/>
                 <outlet property="gemLabel" destination="I8k-bx-NRC" id="ej6-jh-hCd"/>
                 <outlet property="gemView" destination="KDH-jE-dkP" id="gdd-K3-mWD"/>

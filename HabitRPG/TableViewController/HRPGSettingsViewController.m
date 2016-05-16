@@ -291,7 +291,7 @@ User *user;
     if ([formRow.tag isEqual:@"accountDetail"]) {
         [self performSegueWithIdentifier:@"AccountDetailSegue" sender:self];
     } else if ([formRow.tag isEqualToString:@"selectClass"]) {
-        if (user.flags.classSelected) {
+        if ([user.flags.classSelected boolValue] && ![user.preferences.disableClass boolValue]) {
             UIAlertView *confirmationAlert = [[UIAlertView alloc]
                     initWithTitle:NSLocalizedString(@"Are you sure?", nil)
                           message:NSLocalizedString(@"This will reset your character's class and "

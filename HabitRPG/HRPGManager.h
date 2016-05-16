@@ -47,6 +47,9 @@
           onSuccess:(void (^)())successBlock
             onError:(void (^)())errorBlock;
 
+- (void)disableClasses:(void (^)())successBlock
+               onError:(void (^)())errorBlock;
+
 - (void)fetchGroup:(NSString *)groupID
          onSuccess:(void (^)())successBlock
            onError:(void (^)())errorBlock;

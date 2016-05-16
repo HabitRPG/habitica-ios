@@ -2149,15 +2149,13 @@ NSString *currentUser;
     if (newClass) {
         url = [NSString stringWithFormat:@"user/change-class?class=%@", newClass];
     } else {
-        url = @"user/disable-classes";
+        url = @"user/change-class";
     }
 
     [[RKObjectManager sharedManager] postObject:nil
         path:url
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            NSError *executeError = nil;
-            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
             if (successBlock) {
                 successBlock();
             }
@@ -2176,6 +2174,33 @@ NSString *currentUser;
             [self.networkIndicatorController endNetworking];
             return;
         }];
+}
+
+- (void)disableClasses:(void (^)())successBlock
+            onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:@"user/disable-classes"
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            if (successBlock) {
+                                                successBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                                [self displayServerError];
+                                            } else {
+                                                [self displayNetworkError];
+                                            }
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
 }
 
 - (void)fetchGroup:(NSString *)groupID
