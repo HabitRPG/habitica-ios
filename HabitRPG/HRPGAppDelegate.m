@@ -108,7 +108,11 @@
     // Update Content if it wasn't updated in the last week.
     NSDate *lastContentFetch =
         [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetch"];
-    if (lastContentFetch == nil || [lastContentFetch timeIntervalSinceNow] < -604800) {
+    NSString *lastContentFetchVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetchVersion"];
+    NSString *currentBuildNumber = [[NSBundle mainBundle]
+                                    objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
+    if (lastContentFetch == nil || [lastContentFetch timeIntervalSinceNow] < -604800 || ![lastContentFetchVersion isEqualToString:currentBuildNumber]) {
+        [[NSUserDefaults standardUserDefaults] setObject:currentBuildNumber forKey:@"lastContentFetchVersion"];
         [self.sharedManager fetchContent:^() {
         }
             onError:^(){
