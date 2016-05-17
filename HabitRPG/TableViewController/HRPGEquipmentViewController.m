@@ -153,6 +153,8 @@
                              action:@selector(changeWearingCostume:)
                    forControlEvents:UIControlEventValueChanged];
         }
+        
+        [customSwitch setOn:[self.user.preferences.useCostume boolValue] animated:NO];
 
         UILabel *wearCustomLabel = [cell viewWithTag:8];
 
