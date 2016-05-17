@@ -68,7 +68,7 @@
                     startDate:&startDateAtMidnight
                      interval:NULL
                       forDate:self.startDate];
-        if ([self.startDate compare:[NSDate date]] == NSOrderedDescending) {
+        if ([startDateAtMidnight compare:[NSDate date]] == NSOrderedDescending) {
             return NO;
         }
     }

@@ -37,7 +37,7 @@
                     [self performSegueWithIdentifier:@"InitialSegue" sender:self];
                 }];
         } else {
-            [self performSegueWithIdentifier:@"SetupSegue" sender:self];
+            [self performSegueWithIdentifier:@"InitialSegue" sender:self];
         }
     }
     [super viewDidAppear:YES];
