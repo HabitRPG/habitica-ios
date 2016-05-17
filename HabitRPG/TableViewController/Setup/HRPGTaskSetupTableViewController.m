@@ -10,7 +10,6 @@
 #import <Google/Analytics.h>
 #import "Amplitude.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGBatchOperation.h"
 #import "HRPGCheckBoxView.h"
 #import "UIColor+Habitica.h"
 
@@ -337,7 +336,7 @@
     NSError *error;
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
     HRPGManager *manager = appdelegate.sharedManager;
-    NSMutableArray *actions = [NSMutableArray array];
+    NSMutableArray *tasks = [NSMutableArray array];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     for (NSDictionary *taskGroup in self.taskGroups) {
@@ -351,15 +350,12 @@
                     mutableTaskDictionary[@"notes"] = NSLocalizedString(
                         @"Tap to edit task, change notification time, or delete.", nil);
                 }
-                HRPGBatchOperation *batchOperation = [[HRPGBatchOperation alloc] init];
-                batchOperation.op = @"addTask";
-                batchOperation.body = mutableTaskDictionary;
-                [actions addObject:batchOperation];
+                [tasks addObject:mutableTaskDictionary];
             }
         }
     }
 
-    [manager batchUpdateUser:actions onSuccess:nil onError:nil];
+    [manager createTasks:tasks onSuccess:nil onError:nil];
 
     [self.managedObjectContext saveToPersistentStore:&error];
 

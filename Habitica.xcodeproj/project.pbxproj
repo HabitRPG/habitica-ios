@@ -41,7 +41,6 @@
 		D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */; };
 		D92D40D91ABF123800E30339 /* HRPGHabitButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = D92D40D81ABF123800E30339 /* HRPGHabitButtons.m */; };
 		D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */ = {isa = PBXBuildFile; fileRef = D93422B81AB792B5003AFCDE /* UIColor+LighterDarker.m */; };
-		D939B5F61BD8FBD50015AEB6 /* HRPGBatchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D939B5F51BD8FBD50015AEB6 /* HRPGBatchOperation.m */; };
 		D940A7E31B0CF80100370F2E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D940A7E11B0CF80100370F2E /* Fabric.framework */; };
 		D940A7E41B0CF80100370F2E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D940A7E21B0CF80100370F2E /* Crashlytics.framework */; };
 		D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D942B53A1CAAE6B1009AB756 /* Social.storyboard */; };
@@ -302,8 +301,6 @@
 		D939B5EF1BD832B20015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D939B5F01BD832B30015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D939B5F11BD832B30015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D939B5F41BD8FBD50015AEB6 /* HRPGBatchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBatchOperation.h; sourceTree = "<group>"; };
-		D939B5F51BD8FBD50015AEB6 /* HRPGBatchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBatchOperation.m; sourceTree = "<group>"; };
 		D940A7E11B0CF80100370F2E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		D940A7E21B0CF80100370F2E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		D942B5391CAAE6B1009AB756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Social.storyboard; sourceTree = "<group>"; };
@@ -904,8 +901,6 @@
 				D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */,
 				98A4DBEE1B643BC100A9E2A8 /* HRPGSearchDataManager.h */,
 				98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */,
-				D939B5F41BD8FBD50015AEB6 /* HRPGBatchOperation.h */,
-				D939B5F51BD8FBD50015AEB6 /* HRPGBatchOperation.m */,
 				CF54FD820D81110D9EF4756E /* HRPGContentResponse.m */,
 				CF54F3C3C288710775DDD5A9 /* HRPGContentResponse.h */,
 				D96447B21CE9FF0D009D7950 /* HRPGResponseMessage.h */,
@@ -1737,7 +1732,6 @@
 				D98F5DBE1C6A1D770035CBEC /* HRPGChatTableViewCell.m in Sources */,
 				D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */,
 				D9F16E391BBC536500CA3E02 /* HRPGCustomizationSelectionView.m in Sources */,
-				D939B5F61BD8FBD50015AEB6 /* HRPGBatchOperation.m in Sources */,
 				D905766F1BD7F581009BB7BC /* HRPGHintView.m in Sources */,
 				D9C2571C1B9B4F4A00839F48 /* HRPGToDoTableViewCell.m in Sources */,
 				D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */,

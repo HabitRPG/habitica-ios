@@ -17,7 +17,6 @@
 #import "Customization.h"
 #import "Gear.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGBatchOperation.h"
 #import "HRPGContentResponse.h"
 #import "HRPGDeathView.h"
 #import "HRPGEmptySerializer.h"
@@ -992,26 +991,6 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
-    RKObjectMapping *batchOperationMapping =
-        [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-    [batchOperationMapping addAttributeMappingsFromDictionary:@{
-        @"op" : @"op",
-        @"body" : @"body"
-    }];
-
-    requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:batchOperationMapping
-                                                              objectClass:[HRPGBatchOperation class]
-                                                              rootKeyPath:nil
-                                                                   method:RKRequestMethodPOST];
-    [objectManager addRequestDescriptor:requestDescriptor];
-
-    responseDescriptor = [RKResponseDescriptor
-        responseDescriptorWithMapping:entityMapping
-                               method:RKRequestMethodPOST
-                          pathPattern:@"user/batch-update"
-                              keyPath:@"data"
-                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
 
     RKObjectMapping *buyMapping = [RKObjectMapping mappingForClass:[HRPGUserBuyResponse class]];
     [buyMapping addAttributeMappingsFromDictionary:@{
@@ -2116,43 +2095,6 @@ NSString *currentUser;
         }];
 }
 
-- (void)batchUpdateUser:(NSArray *)actions
-              onSuccess:(void (^)())successBlock
-                onError:(void (^)())errorBlock {
-    [self.networkIndicatorController beginNetworking];
-
-    [[RKObjectManager sharedManager] postObject:actions
-        path:@"user/batch-update"
-        parameters:nil
-        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            // TODO: API currently does not return maxHealth, maxMP and toNextLevel. To set them to
-            // correct values, fetch again until this is fixed.
-            [self fetchUser:^() {
-                NSError *executeError = nil;
-                [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                if (successBlock) {
-                    successBlock();
-                }
-            }
-                onError:^(){
-                }];
-            [self.networkIndicatorController endNetworking];
-            return;
-        }
-        failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
-            if (errorBlock) {
-                errorBlock();
-            }
-            [self.networkIndicatorController endNetworking];
-            return;
-        }];
-}
-
 - (void)changeClass:(NSString *)newClass
           onSuccess:(void (^)())successBlock
             onError:(void (^)())errorBlock {
@@ -2584,6 +2526,30 @@ NSString *currentUser;
             [self.networkIndicatorController endNetworking];
             return;
         }];
+}
+
+- (void)createTasks:(NSArray *)tasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:tasks
+                                           path:nil
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            NSError *executeError = nil;
+                                            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                            if (successBlock) {
+                                                successBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
 }
 
 - (void)updateTask:(Task *)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {

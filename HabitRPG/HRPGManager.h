@@ -39,10 +39,6 @@
          onSuccess:(void (^)())successBlock
            onError:(void (^)())errorBlock;
 
-- (void)batchUpdateUser:(NSArray *)actions
-              onSuccess:(void (^)())successBlock
-                onError:(void (^)())errorBlock;
-
 - (void)changeClass:(NSString *)newClass
           onSuccess:(void (^)())successBlock
             onError:(void (^)())errorBlock;
@@ -77,6 +73,8 @@
           onError:(void (^)())errorBlock;
 
 - (void)createTask:(Task *)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
+- (void)createTasks:(NSArray *)tasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)updateTask:(Task *)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
