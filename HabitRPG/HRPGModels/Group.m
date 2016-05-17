@@ -27,6 +27,7 @@
 @dynamic chatmessages;
 @dynamic leader;
 @dynamic member;
+@dynamic questParticipants;
 @dynamic collectStatus;
 @dynamic isMember;
 @dynamic memberCount;

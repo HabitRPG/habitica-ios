@@ -141,7 +141,7 @@
             int acceptedCount = 0;
 
             if ([self.group.questActive boolValue]) {
-                for (User *participant in self.group.member) {
+                for (User *participant in self.group.questParticipants) {
                     if ([participant.participateInQuest boolValue]) {
                         acceptedCount++;
                     }

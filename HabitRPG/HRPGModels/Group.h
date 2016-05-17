@@ -30,6 +30,7 @@
 @property(nonatomic, retain) NSOrderedSet *chatmessages;
 @property(nonatomic, retain) User *leader;
 @property(nonatomic, retain) NSSet *member;
+@property(nonatomic, retain) NSSet *questParticipants;
 @property(nonatomic, retain) NSSet *collectStatus;
 @property(nonatomic, retain) NSNumber *isMember;
 @property(nonatomic, retain) NSNumber *memberCount;
