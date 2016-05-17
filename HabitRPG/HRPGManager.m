@@ -178,7 +178,6 @@ NSString *currentUser;
         @"repeat.f" : @"friday",
         @"repeat.s" : @"saturday",
         @"repeat.su" : @"sunday",
-        @"@metadata.mapping.collectionIndex" : @"order",
         @"date" : @"duedate",
         @"tags" : @"tagArray",
         @"everyX" : @"everyX",
@@ -840,6 +839,33 @@ NSString *currentUser;
                                                               toKeyPath:@"commonTutorialSteps"
                                                             withMapping:tutorialsSeenMapping]];
 
+    RKEntityMapping *taskOrderMapping = [RKEntityMapping mappingForEntityForName:@"Task" inManagedObjectStore:managedObjectStore];
+    [taskOrderMapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:nil toKeyPath:@"id"]];
+    [taskOrderMapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:@"@metadata.mapping.collectionIndex" toKeyPath:@"order"]];
+    taskOrderMapping.identificationAttributes = @[ @"id" ];
+    
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:taskOrderMapping
+                          method:RKRequestMethodAny
+                          pathPattern:@"user"
+                          keyPath:@"data.tasksOrder.habits"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:taskOrderMapping
+                          method:RKRequestMethodAny
+                          pathPattern:@"user"
+                          keyPath:@"data.tasksOrder.todos"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:taskOrderMapping
+                          method:RKRequestMethodAny
+                          pathPattern:@"user"
+                          keyPath:@"data.tasksOrder.dailys"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     responseDescriptor = [RKResponseDescriptor
         responseDescriptorWithMapping:entityMapping
                                method:RKRequestMethodPOST
