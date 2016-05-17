@@ -357,8 +357,8 @@
 
 - (void)configureChatMessageCell:(HRPGChatTableViewCell *)cell
                      atIndexPath:(NSIndexPath *)indexPath {
-    indexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
-    ChatMessage *message = [self.chatMessagesFRC objectAtIndexPath:indexPath];
+    NSIndexPath *objectIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+    ChatMessage *message = [self.chatMessagesFRC objectAtIndexPath:objectIndexPath];
     if (!message.attributedText) {
         message.attributedText = [self renderMarkdown:message.text];
     }
@@ -405,7 +405,9 @@
     };
 
     cell.plusOneAction = ^() {
-        [self.sharedManager likeMessage:message withGroup:self.groupID onSuccess:nil onError:nil];
+        [self.sharedManager likeMessage:message withGroup:self.groupID onSuccess:^() {
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        } onError:nil];
     };
 
     cell.deleteAction = ^() {
