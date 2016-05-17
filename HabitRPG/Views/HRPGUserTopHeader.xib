@@ -71,22 +71,22 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="KDH-jE-dkP">
-                            <rect key="frame" x="566" y="15" width="26" height="15"/>
+                            <rect key="frame" x="566" y="6.5" width="26" height="32"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gem" translatesAutoresizingMaskIntoConstraints="NO" id="QSJ-ss-yRa">
-                                    <rect key="frame" x="0.0" y="1" width="18" height="13"/>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gem" translatesAutoresizingMaskIntoConstraints="NO" id="QSJ-ss-yRa">
+                                    <rect key="frame" x="0.0" y="1" width="18" height="30"/>
                                     <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="18" id="fUQ-H2-s81"/>
-                                        <constraint firstAttribute="height" constant="13" id="zfs-mL-7IP"/>
+                                        <constraint firstAttribute="height" constant="30" id="zfs-mL-7IP"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8k-bx-NRC" customClass="HRPGAbbrevNumberLabel">
-                                    <rect key="frame" x="26" y="0.0" width="0.0" height="15"/>
+                                    <rect key="frame" x="26" y="0.0" width="0.0" height="32"/>
                                     <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" priority="500" constant="125" id="9PW-BD-k05"/>
-                                        <constraint firstAttribute="height" constant="15" id="UYH-g1-GGR"/>
+                                        <constraint firstAttribute="height" constant="32" id="UYH-g1-GGR"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -101,7 +101,7 @@
                                 <constraint firstAttribute="bottom" secondItem="I8k-bx-NRC" secondAttribute="bottom" id="Mhs-hd-4jS"/>
                                 <constraint firstItem="QSJ-ss-yRa" firstAttribute="top" secondItem="KDH-jE-dkP" secondAttribute="top" constant="1" id="fTA-Xb-LOA"/>
                                 <constraint firstItem="I8k-bx-NRC" firstAttribute="leading" secondItem="QSJ-ss-yRa" secondAttribute="trailing" constant="8" id="q1n-WS-gAW"/>
-                                <constraint firstAttribute="height" constant="15" id="rvD-Sb-oJ1"/>
+                                <constraint firstAttribute="height" constant="32" id="rvD-Sb-oJ1"/>
                                 <constraint firstItem="QSJ-ss-yRa" firstAttribute="leading" secondItem="KDH-jE-dkP" secondAttribute="leading" id="x8Q-RD-q9M"/>
                             </constraints>
                         </view>
