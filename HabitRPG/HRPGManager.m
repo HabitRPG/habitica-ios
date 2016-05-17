@@ -2557,9 +2557,9 @@ NSString *currentUser;
 - (void)createTasks:(NSArray *)tasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     
-    [[RKObjectManager sharedManager] postObject:tasks
-                                           path:nil
-                                     parameters:nil
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:@"tasks/user"
+                                     parameters:tasks
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             NSError *executeError = nil;
                                             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
