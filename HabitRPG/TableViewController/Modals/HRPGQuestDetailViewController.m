@@ -173,6 +173,7 @@
                                  dispatch_async(dispatch_get_main_queue(), ^{
                                      self.bossImage = image;
                                      imageView.image = self.bossImage;
+                                     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                                  });
                              }
                          }];
