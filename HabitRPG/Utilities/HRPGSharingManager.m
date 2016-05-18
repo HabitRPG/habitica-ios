@@ -11,9 +11,18 @@
 @implementation HRPGSharingManager
 
 + (void)shareItems:(NSArray *)items
-    withPresentingViewController:(UIViewController *)presentingViewController {
+withPresentingViewController:(UIViewController *)presentingViewController
+    withSourceView:(UIView *)sourceView{
     UIActivityViewController *activityViewController =
-        [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+    [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+    if ( [activityViewController respondsToSelector:@selector(popoverPresentationController)] ) {
+        // iOS8
+        if (sourceView) {
+            activityViewController.popoverPresentationController.sourceView = sourceView;
+        } else {
+            activityViewController.popoverPresentationController.sourceView = presentingViewController.view;
+        }
+    }
     [presentingViewController presentViewController:activityViewController
                                            animated:YES
                                          completion:nil];

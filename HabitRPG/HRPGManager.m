@@ -4216,7 +4216,8 @@ NSString *currentUser;
                             stringByAppendingString:@" https://habitica.com/social/level-up"],
                         image
                     ]
-                        withPresentingViewController:activeViewController];
+                        withPresentingViewController:activeViewController
+                     withSourceView:nil];
                 };
                 [overlayView sizeToFit];
 
@@ -4334,7 +4335,8 @@ NSString *currentUser;
                     stringByAppendingString:@" https://habitica.com/social/raise-mount"],
                 image
             ]
-                withPresentingViewController:activeViewController];
+                withPresentingViewController:activeViewController
+             withSourceView:nil];
         };
         [overlayView sizeToFit];
 

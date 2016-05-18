@@ -223,7 +223,7 @@ float textWidth;
                                           @" https://habitica.com/social/hatch-pet"],
                                   image
                               ]
-                                  withPresentingViewController:activeViewController];
+                                withPresentingViewController:activeViewController withSourceView:[self.tableView cellForRowAtIndexPath:indexPath]];
                           };
                           [overlayView sizeToFit];
                           KLCPopup *popup =
