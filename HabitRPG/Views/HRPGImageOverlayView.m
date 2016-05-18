@@ -153,13 +153,10 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
-    [self dismissPresentingPopup];
     if (self.shareAction) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.4 * NSEC_PER_SEC),
-                       dispatch_get_main_queue(), ^{
-                           self.shareAction();
-                       });
+        self.shareAction();
     }
+    [self dismissPresentingPopup];
 }
 
 - (IBAction)dismissButtonPressed:(id)sender {
