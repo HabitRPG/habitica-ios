@@ -121,11 +121,23 @@ NSString *currentUser;
         ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
     }
 #else
-    ROOT_URL = @"https://v3.habitica.com/";
+    if ([[NSDate dateWithTimeIntervalSince1970:1463781600] compare:[NSDate date]] == NSOrderedAscending) {
+        ROOT_URL = @"https://habitica.com/";
+    } else {
+        ROOT_URL = @"https://v3.habitica.com/";
+    }
 #endif
+    
+    if ([[NSDate dateWithTimeIntervalSince1970:1463781600] compare:[NSDate date]] == NSOrderedAscending) {
+        ROOT_URL = @"https://habitica.com/";
+    } else {
+        ROOT_URL = @"https://v3.habitica.com/";
+    }
 
     ROOT_URL = [ROOT_URL stringByAppendingString:@"api/v3/"];
 
+    
+    
     // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
     RKObjectManager *objectManager =
