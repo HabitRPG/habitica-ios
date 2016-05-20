@@ -127,12 +127,6 @@ NSString *currentUser;
         ROOT_URL = @"https://v3.habitica.com/";
     }
 #endif
-    
-    if ([[NSDate dateWithTimeIntervalSince1970:1463781600] compare:[NSDate date]] == NSOrderedAscending) {
-        ROOT_URL = @"https://habitica.com/";
-    } else {
-        ROOT_URL = @"https://v3.habitica.com/";
-    }
 
     ROOT_URL = [ROOT_URL stringByAppendingString:@"api/v3/"];
 
@@ -3978,15 +3972,9 @@ NSString *currentUser;
             [self fetchUser:^() {
                 NSError *executeError = nil;
                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                if ([[mappingResult.array[0] valueForKey:@"ok"] boolValue]) {
-                    if (successBlock) {
-                        successBlock();
-                    }
-                } else {
-                    if (errorBlock) {
-                        errorBlock();
-                    }
-                }
+                 if (successBlock) {
+                     successBlock();
+                 }
                 [self.networkIndicatorController endNetworking];
                 return;
             }

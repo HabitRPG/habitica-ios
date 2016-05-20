@@ -14,7 +14,7 @@ pod 'XLForm'
 pod 'FLEX', '~> 2.0', :configurations => ['Debug']
 pod 'pop'
 pod 'DTCoreText'
-pod 'CargoBay', :git => 'https://github.com/segiddins/CargoBay.git', :branch => 'v1'
+pod 'CargoBay', :git => 'https://github.com/vIiRuS/CargoBay.git', :branch => 'v1'
 pod 'MRProgress'
 pod 'Google/Analytics', '~> 1.0.0'
 pod 'VTAcknowledgementsViewController'
