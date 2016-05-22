@@ -592,12 +592,12 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
 
     RKObjectMapping *feedMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-    [feedMapping addAttributeMappingsFromDictionary:@{ @"data" : @"value" }];
+    [feedMapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:nil toKeyPath:@"value"]];
     responseDescriptor = [RKResponseDescriptor
         responseDescriptorWithMapping:feedMapping
                                method:RKRequestMethodPOST
                           pathPattern:@"user/feed/:pet/:food"
-                              keyPath:nil
+                              keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
@@ -3886,7 +3886,7 @@ NSString *currentUser;
         path:[NSString stringWithFormat:@"user/feed/%@/%@", pet.key, food.key]
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            NSDictionary *result = [mappingResult firstObject];
+            NSDictionary *result = [mappingResult dictionary][@"data"];
             NSNumber *petStatus = result[@"value"];
 
             NSError *executeError = nil;
