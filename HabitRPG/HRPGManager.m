@@ -112,7 +112,7 @@ NSString *currentUser;
     NSString *DISABLE_SSL = info[@"DisableSSL"];
 
     if (CUSTOM_DOMAIN.length == 0) {
-        CUSTOM_DOMAIN = @"v3.habitica.com/";
+        CUSTOM_DOMAIN = @"habitica.com/";
     }
 
     if ([DISABLE_SSL isEqualToString:@"true"]) {
@@ -121,11 +121,7 @@ NSString *currentUser;
         ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
     }
 #else
-    if ([[NSDate dateWithTimeIntervalSince1970:1463781600] compare:[NSDate date]] == NSOrderedAscending) {
-        ROOT_URL = @"https://habitica.com/";
-    } else {
-        ROOT_URL = @"https://v3.habitica.com/";
-    }
+    ROOT_URL = @"https://habitica.com/";
 #endif
 
     ROOT_URL = [ROOT_URL stringByAppendingString:@"api/v3/"];
