@@ -32,6 +32,7 @@
 #import "UIColor+Habitica.h"
 #import "HRPGURLParser.h"
 #import "HRPGResponseMessage.h"
+#import "NSString+StripHTML.h"
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
@@ -4108,7 +4109,7 @@ NSString *currentUser;
                          withValue:(NSNumber *)value {
     if ([type isEqualToString:@"experience"]) {
         NSDictionary *options = @{
-            kCRToastTextKey : text,
+            kCRToastTextKey : [text stringByStrippingHTML],
             kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
             kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
             kCRToastBackgroundColorKey : [UIColor yellow10],
@@ -4124,7 +4125,7 @@ NSString *currentUser;
             onSuccess:^(UIImage *image) {
                 UIColor *notificationColor = [UIColor blue10];
                 NSDictionary *options = @{
-                    kCRToastTextKey : text,
+                    kCRToastTextKey : [text stringByStrippingHTML],
                     kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                     kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
                     kCRToastBackgroundColorKey : notificationColor,
@@ -4143,7 +4144,7 @@ NSString *currentUser;
             onSuccess:^(UIImage *image) {
                 UIColor *notificationColor = [UIColor green10];
                 NSDictionary *options = @{
-                    kCRToastTextKey : text,
+                    kCRToastTextKey : [text stringByStrippingHTML],
                     kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                     kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
                     kCRToastBackgroundColorKey : notificationColor,
