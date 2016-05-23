@@ -521,7 +521,7 @@ NSString *currentUser;
         @"_tmp.drop.type" : @"dropType",
         @"_tmp.drop.dialog" : @"dropNote"
     }];
-
+    [upDownMapping setAssignsDefaultValueForMissingAttributes:NO];
     responseDescriptor = [RKResponseDescriptor
         responseDescriptorWithMapping:upDownMapping
                                method:RKRequestMethodPOST
@@ -938,7 +938,7 @@ NSString *currentUser;
         @"currentPet" : @"currentPet",
         @"currentMount" : @"currentMount",
     }];
-    equipMapping.assignsDefaultValueForMissingAttributes = YES;
+    equipMapping.assignsDefaultValueForMissingAttributes = NO;
     responseDescriptor = [RKResponseDescriptor
         responseDescriptorWithMapping:equipMapping
                                method:RKRequestMethodPOST
@@ -2259,7 +2259,7 @@ NSString *currentUser;
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
             if ([groupType isEqualToString:@"party"]) {
-                Group *party = (Group *)[mappingResult firstObject];
+                Group *party = (Group *)[mappingResult dictionary][@"data"];
                 [self getUser].partyID = party.id;
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged"
                                                                     object:party];
@@ -2349,7 +2349,7 @@ NSString *currentUser;
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
-            HRPGTaskResponse *taskResponse = (HRPGTaskResponse *)[mappingResult firstObject];
+            HRPGTaskResponse *taskResponse = (HRPGTaskResponse *)[mappingResult dictionary][@"data"];
 
             if ([task.managedObjectContext existingObjectWithID:task.objectID
                                                           error:&executeError] != nil) {
@@ -2394,7 +2394,7 @@ NSString *currentUser;
                 }
             }
 
-            if (self.user && [self.user.health floatValue] <= 0) {
+            if (self.user && self.user.health && [self.user.health floatValue] <= 0) {
                 HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
                 [deathView show];
             }
@@ -2495,7 +2495,7 @@ NSString *currentUser;
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
-            HRPGTaskResponse *taskResponse = (HRPGTaskResponse *)[mappingResult firstObject];
+            HRPGTaskResponse *taskResponse = (HRPGTaskResponse *)[mappingResult dictionary][@"data"];
             if ([self.user.level integerValue] < [taskResponse.level integerValue]) {
                 [self displayLevelUpNotification];
                 // Set experience to the amount, that was missing for the next level. So that the
@@ -2504,10 +2504,10 @@ NSString *currentUser;
                 self.user.experience =
                     @([self.user.experience floatValue] - [self.user.nextLevel floatValue]);
             }
-            self.user.level = taskResponse.level;
-            self.user.experience = taskResponse.experience;
-            self.user.health = taskResponse.health;
-            self.user.magic = taskResponse.magic;
+            self.user.level = taskResponse.level ? taskResponse.level : self.user.level;
+            self.user.experience = taskResponse.experience ? taskResponse.experience : self.user.experience;
+            self.user.health = taskResponse.health ? taskResponse.health : self.user.experience;
+            self.user.magic = taskResponse.magic ? taskResponse.magic : self.user.magic;
 
             NSNumber *goldDiff = @([taskResponse.gold floatValue] - [self.user.gold floatValue]);
             self.user.gold = taskResponse.gold;
@@ -2816,7 +2816,7 @@ NSString *currentUser;
         path:@"user/auth/local/login"
         parameters:params
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            HRPGLoginData *loginData = (HRPGLoginData *)[mappingResult firstObject];
+            HRPGLoginData *loginData = (HRPGLoginData *)[mappingResult dictionary][@"data"];
             PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
             [keyChain setString:loginData.id forKey:@"id"];
             [keyChain setString:loginData.key forKey:@"key"];
@@ -2856,7 +2856,7 @@ NSString *currentUser;
         path:@"user/auth/social"
         parameters:params
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            HRPGLoginData *loginData = (HRPGLoginData *)[mappingResult firstObject];
+            HRPGLoginData *loginData = (HRPGLoginData *)[mappingResult dictionary][@"data"];
             PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
             [keyChain setString:loginData.id forKey:@"id"];
             [keyChain setString:loginData.key forKey:@"key"];
@@ -2966,12 +2966,15 @@ NSString *currentUser;
         path:@"user/revive"
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            NSError *executeError = nil;
-            self.user.health = @50;
-            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-            if (successBlock) {
-                successBlock();
-            }
+            [self fetchUser:^{
+                if (successBlock) {
+                    successBlock();
+                }
+            } onError:^{
+                if (successBlock) {
+                    successBlock();
+                }
+            }];
             [self.networkIndicatorController endNetworking];
             return;
         }
@@ -3004,19 +3007,17 @@ NSString *currentUser;
             NSNumber *goldDiff;
             if (response.gold) {
                 goldDiff = @([response.gold floatValue] - [self.user.gold floatValue]);
+                self.user.gold = response.gold;
             } else {
                 goldDiff = reward.value;
+                self.user.gold = [NSNumber numberWithFloat:[self.user.gold floatValue] - [goldDiff floatValue]];
             }
-            self.user.gold = response.gold ? response.gold : self.user.gold;
-
-            if (response.armoireType) {
-                HRPGResponseMessage *message = [mappingResult dictionary][[NSNull null]];
-                [self displayArmoireNotification:response.armoireType
-                                         withKey:response.armoireKey
-                                        withText:message.message
-                                       withValue:response.armoireValue];
+            if (response.experience) {
+                self.user.experience = response.experience;
             } else {
-                [self displayRewardNotification:goldDiff];
+                if ([response.armoireType isEqualToString:@"experience"]) {
+                    self.user.experience = [NSNumber numberWithFloat:[self.user.experience floatValue] + [response.armoireValue floatValue]];
+                }
             }
             self.user.magic = response.magic ? response.magic : self.user.magic;
             self.user.equipped.armor = response.equippedArmor ? response.equippedArmor : self.user.equipped.armor;
@@ -3028,6 +3029,16 @@ NSString *currentUser;
             if ([reward isKindOfClass:[Gear class]]) {
                 Gear *gear = (Gear *)reward;
                 gear.owned = YES;
+            }
+            
+            if (response.armoireType) {
+                HRPGResponseMessage *message = [mappingResult dictionary][[NSNull null]];
+                [self displayArmoireNotification:response.armoireType
+                                         withKey:response.armoireKey
+                                        withText:message.message
+                                       withValue:response.armoireValue];
+            } else {
+                [self displayRewardNotification:goldDiff];
             }
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
             if (successBlock) {
@@ -3096,16 +3107,16 @@ NSString *currentUser;
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
-            HRPGUserBuyResponse *response = [mappingResult firstObject];
-            self.user.health = response.health;
-            self.user.gold = response.gold;
-            self.user.magic = response.magic;
-            self.user.equipped.armor = response.equippedArmor;
-            self.user.equipped.back = response.equippedBack;
-            self.user.equipped.head = response.equippedHead;
-            self.user.equipped.headAccessory = response.equippedHeadAccessory;
-            self.user.equipped.shield = response.equippedShield;
-            self.user.equipped.weapon = response.equippedWeapon;
+            HRPGUserBuyResponse *response = [mappingResult dictionary][@"data"];
+            self.user.health = response.health ? response.health : self.user.health;
+            self.user.gold = response.gold ? response.health : self.user.gold;
+            self.user.magic = response.magic ? response.health : self.user.magic;
+            self.user.equipped.armor = response.equippedArmor ? response.equippedArmor : self.user.equipped.armor;
+            self.user.equipped.back = response.equippedBack ? response.equippedBack : self.user.equipped.back;
+            self.user.equipped.head = response.equippedHead ? response.equippedHead : self.user.equipped.head;
+            self.user.equipped.headAccessory = response.equippedHeadAccessory ? response.equippedHeadAccessory : self.user.equipped.headAccessory;
+            self.user.equipped.shield = response.equippedShield ? response.equippedShield : self.user.equipped.shield;
+            self.user.equipped.weapon = response.equippedWeapon ? response.equippedWeapon : self.user.equipped.weapon;
             item.owned = @([item.owned intValue] - 1);
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
             if (successBlock) {
