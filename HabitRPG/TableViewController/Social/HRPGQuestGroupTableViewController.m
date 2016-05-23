@@ -149,19 +149,22 @@
                 if (acceptedCount == 1) {
                     cell.textLabel.text = NSLocalizedString(@"1 Participant", nil);
                 } else {
+                    if (!acceptedCount) {
+                        acceptedCount = 0;
+                    }
                     cell.textLabel.text = [NSString
                         stringWithFormat:NSLocalizedString(@"%d Participants", nil), acceptedCount];
                 }
             } else {
                 cell.textLabel.text = NSLocalizedString(@"Participants", nil);
-                for (User *participant in self.group.member) {
+                for (User *participant in self.group.questParticipants) {
                     if (participant.participateInQuest != nil) {
                         acceptedCount++;
                     }
                 }
                 cell.detailTextLabel.text =
                     [NSString stringWithFormat:NSLocalizedString(@"%d out of %d responded", nil),
-                                               acceptedCount, [self.group.member count]];
+                                               acceptedCount, [self.group.questParticipants count]];
             }
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if ([self isActiveBossQuest]) {
