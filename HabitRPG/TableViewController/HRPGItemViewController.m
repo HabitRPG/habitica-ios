@@ -142,21 +142,18 @@ float textWidth;
     if ([sectionInfo numberOfObjects] < indexPath.item) {
         return 0;
     }
+    Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSInteger height = 24;
-    if (indexPath.item <
-        self.fetchedResultsController.sections[indexPath.section].numberOfObjects) {
-        Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        height = height +
-                 [item.text boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT)
-                                         options:NSStringDrawingUsesLineFragmentOrigin
-                                      attributes:@{
-                                          NSFontAttributeName :
-                                              [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+    height = height +
+    [item.text boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT)
+                            options:NSStringDrawingUsesLineFragmentOrigin
+                         attributes:@{
+                                      NSFontAttributeName :
+                                          [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                       }
-                                         context:nil]
-                     .size.height;
-    }
-
+                            context:nil]
+    .size.height;
+    
     if (height < 60) {
         return 60;
     }
