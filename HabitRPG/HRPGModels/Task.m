@@ -131,9 +131,6 @@
 }
 
 - (void)setTagArray:(NSArray *)tagArray {
-    if (tagArray.count == 0) {
-        return;
-    }
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *managedObjectContext =
         appdelegate.sharedManager.getManagedObjectContext;
