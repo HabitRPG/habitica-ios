@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger, TaskToDoFilterType) {
 
 @property(nonatomic, retain) NSString *attribute;
 @property(nonatomic, retain) NSNumber *completed;
+@property(nonatomic, retain) NSString *challengeID;
 @property(nonatomic, retain) NSDate *dateCreated;
 @property(nonatomic, retain) NSDate *duedate;
 @property(nonatomic, retain) NSNumber *down;

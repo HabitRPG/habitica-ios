@@ -20,6 +20,7 @@
 
 @dynamic attribute;
 @dynamic completed;
+@dynamic challengeID;
 @dynamic dateCreated;
 @dynamic down;
 @dynamic id;

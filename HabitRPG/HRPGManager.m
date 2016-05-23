@@ -185,7 +185,8 @@ NSString *currentUser;
         @"tags" : @"tagArray",
         @"everyX" : @"everyX",
         @"frequency" : @"frequency",
-        @"startDate" : @"startDate"
+        @"startDate" : @"startDate",
+        @"challenge.id" : @"challengeID"
     }];
     taskMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping *checklistItemMapping =

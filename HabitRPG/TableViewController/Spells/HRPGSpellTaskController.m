@@ -42,6 +42,12 @@
         [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     cell.textLabel.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
     cell.backgroundColor = [task lightTaskColor];
+    if (task.challengeID) {
+        cell.detailTextLabel.text = NSLocalizedString(@"Can't cast a spell on a challenge task.", nil);
+        cell.backgroundColor = [UIColor lightGrayColor];
+    } else {
+        cell.detailTextLabel.text = nil;
+    }
     return cell;
 }
 
@@ -65,9 +71,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    Task *task = (Task *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    if (task.challengeID) {
+        return;
+    }
     HRPGSpellTabBarController *tabBarController =
         (HRPGSpellTabBarController *)self.parentViewController;
-    Task *task = (Task *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     tabBarController.taskID = task.id;
     [tabBarController castSpell];
 }
