@@ -11,5 +11,6 @@
 @interface HRPGSharingManager : NSObject
 
 + (void) shareItems:(NSArray *)items withPresentingViewController:(UIViewController *)presentingViewController;
++ (UIImage *)takeSnapshotOfView:(UIView *)view;
 
 @end

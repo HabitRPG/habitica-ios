@@ -115,7 +115,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     self.overlayView =
         [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
 }

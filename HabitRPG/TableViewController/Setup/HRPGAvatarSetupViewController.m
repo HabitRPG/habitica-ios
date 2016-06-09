@@ -118,6 +118,7 @@
     }
 
     [self.mainScrollView flashScrollIndicators];
+    [super viewDidAppear:YES];
 }
 
 - (void)viewWillLayoutSubviews {

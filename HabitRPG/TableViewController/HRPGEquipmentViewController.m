@@ -252,7 +252,7 @@
 
         if (indexPath.section == 0) {
             equipmentDetailViewController.equipType = @"equipped";
-        } else if (indexPath.section == 1) {
+        } else if (indexPath.section == 2) {
             equipmentDetailViewController.equipType = @"costume";
         }
     }

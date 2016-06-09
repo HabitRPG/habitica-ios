@@ -40,12 +40,14 @@
             [self performSegueWithIdentifier:@"InitialSegue" sender:self];
         }
     }
+    [super viewDidAppear:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     if (self.loadingFinishedAction) {
         self.loadingFinishedAction();
     }
+    [super viewDidDisappear:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

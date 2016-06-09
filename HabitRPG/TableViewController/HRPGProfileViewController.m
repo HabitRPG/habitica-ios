@@ -183,7 +183,7 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 0) {
-        if (![self.user.selectedClass boolValue] &&
+        if (![self.user.flags.classSelected boolValue] &&
             ![self.user.preferences.disableClass boolValue]) {
             [self performSegueWithIdentifier:@"SelectClassSegue" sender:self];
         } else {
@@ -211,13 +211,13 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else if (indexPath.section == 2 && indexPath.item == 2) {
         [self performSegueWithIdentifier:@"ItemSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 3) {
-        if ([self.user.itemsEnabled boolValue]) {
+        if ([self.user.flags.itemsEnabled boolValue]) {
             [self performSegueWithIdentifier:@"PetSegue" sender:self];
         } else {
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
     } else if (indexPath.section == 2 && indexPath.item == 4) {
-        if ([self.user.itemsEnabled boolValue]) {
+        if ([self.user.flags.itemsEnabled boolValue]) {
             [self performSegueWithIdentifier:@"MountSegue" sender:self];
         } else {
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -240,7 +240,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     NSString *cellName = @"Cell";
     BOOL showIndicator = NO;
     if (indexPath.section == 0 && indexPath.item == 0) {
-        if (![self.user.selectedClass boolValue] &&
+        if (![self.user.flags.classSelected boolValue] &&
             ![self.user.preferences.disableClass boolValue]) {
             title = NSLocalizedString(@"Select Class", nil);
         } else {
@@ -272,19 +272,19 @@ NIKFontAwesomeIconFactory *iconFactory;
         title = NSLocalizedString(@"Items", nil);
     } else if (indexPath.section == 2 && indexPath.item == 3) {
         title = NSLocalizedString(@"Pets", nil);
-        if (![self.user.itemsEnabled boolValue]) {
+        if (![self.user.flags.itemsEnabled boolValue]) {
             cellName = @"LockedCell";
         }
     } else if (indexPath.section == 2 && indexPath.item == 4) {
         title = NSLocalizedString(@"Mounts", nil);
-        if (![self.user.itemsEnabled boolValue]) {
+        if (![self.user.flags.itemsEnabled boolValue]) {
             cellName = @"LockedCell";
         }
     } else if (indexPath.section == 3 && indexPath.item == 0) {
         title = NSLocalizedString(@"News", nil);
         User *user = self.user;
         if (user) {
-            if ([user.habitNewStuff boolValue]) {
+            if ([user.flags.habitNewStuff boolValue]) {
                 showIndicator = YES;
             }
         }

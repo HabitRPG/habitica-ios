@@ -82,7 +82,7 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
 - (void)sizeToFit {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
-    CGFloat width = screenRect.size.width - 80;
+    CGFloat width = screenRect.size.width - 60;
     
     if (width > 500) {
         width = 500;
@@ -93,6 +93,7 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
     // top margin, title-image margin, image, image-notes margin, notes-buttons margin, button
     // height
     CGFloat height = 20 + 16 + self.imageViewHeight.constant + 16 + 16 + 50 + 40;
+    [self.titleLabel sizeToFit];
     height = height + self.titleLabel.frame.size.height;
     
     height = height +

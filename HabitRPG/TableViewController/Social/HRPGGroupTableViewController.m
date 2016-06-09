@@ -104,6 +104,10 @@
 - (void)setGroup:(Group *)group {
     _group = group;
     self.navigationItem.title = group.name;
+
+    if (self.tableView.numberOfSections != [self numberOfSectionsInTableView:self.tableView]) {
+        [self.tableView reloadData];
+    }
 }
 
 - (void)joinGroup {
@@ -184,7 +188,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == [self chatSectionIndex] - 1) {
-        if ([[self.sharedManager getUser].acceptedCommunityGuidelines boolValue]) {
+        if ([[self.sharedManager getUser].flags.communityGuidelinesAccepted boolValue]) {
             [self performSegueWithIdentifier:@"MessageSegue" sender:self];
         } else {
             [self performSegueWithIdentifier:@"GuidelinesSegue" sender:self];

@@ -52,6 +52,23 @@
         <attribute name="question" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="webAnswer" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Flags" representedClassName="Flags" syncable="YES">
+        <attribute name="armoireEmpty" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="armoireEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="armoireOpened" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="classSelected" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="communityGuidelinesAccepted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="cronCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dropsEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="habitNewStuff" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="itemsEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="rebirthEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="welcomed" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="commonTutorialSteps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TutorialSteps" inverseName="commonUser" inverseEntity="TutorialSteps" syncable="YES"/>
+        <relationship name="iOSTutorialSteps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TutorialSteps" inverseName="iosUser" inverseEntity="TutorialSteps" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="flags" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="Food" representedClassName="Food" parentEntity="BuyableItem" syncable="YES">
         <attribute name="article" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
@@ -257,8 +274,8 @@
         <attribute name="shownInView" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wasShown" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <relationship name="commonUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="commonTutorialSteps" inverseEntity="User" syncable="YES"/>
-        <relationship name="iosUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="iosTutorialSteps" inverseEntity="User" syncable="YES"/>
+        <relationship name="commonUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flags" inverseName="commonTutorialSteps" inverseEntity="Flags" syncable="YES"/>
+        <relationship name="iosUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flags" inverseName="iOSTutorialSteps" inverseEntity="Flags" syncable="YES"/>
     </entity>
     <entity name="UnreadMessages" syncable="YES">
         <attribute name="groupID" optional="YES" attributeType="String" syncable="YES"/>
@@ -266,9 +283,6 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="unreadMessages" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
-        <attribute name="acceptedCommunityGuidelines" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="armoireEmpty" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="armoireEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="balance" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="blurb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="buffConstitution" optional="YES" attributeType="Integer 16" syncable="YES"/>
@@ -286,7 +300,6 @@
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="experience" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="gold" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="habitNewStuff" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="hclass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="health" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -311,7 +324,6 @@
         <attribute name="perception" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="petCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="petCountArray" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="selectedClass" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="strength" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="trainingConstitution" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="trainingIntelligence" optional="YES" attributeType="Integer 16" syncable="YES"/>
@@ -320,11 +332,10 @@
         <attribute name="unallocatedPoints" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChatMessage" inverseName="userObject" inverseEntity="ChatMessage" syncable="YES"/>
-        <relationship name="commonTutorialSteps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TutorialSteps" inverseName="commonUser" inverseEntity="TutorialSteps" syncable="YES"/>
         <relationship name="costume" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Outfit" inverseName="userCostume" inverseEntity="Outfit" syncable="YES"/>
         <relationship name="equipped" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Outfit" inverseName="userEquipped" inverseEntity="Outfit" syncable="YES"/>
+        <relationship name="flags" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Flags" inverseName="user" inverseEntity="Flags" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="groupMembers" inverseEntity="Group" syncable="YES"/>
-        <relationship name="iosTutorialSteps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TutorialSteps" inverseName="iosUser" inverseEntity="TutorialSteps" syncable="YES"/>
         <relationship name="leadedParty" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="leader" inverseEntity="Group" syncable="YES"/>
         <relationship name="ownedEggs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Egg" inverseName="user" inverseEntity="Egg" syncable="YES"/>
         <relationship name="ownedFood" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="user" inverseEntity="Food" syncable="YES"/>
@@ -336,9 +347,9 @@
         <relationship name="party" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="member" inverseEntity="Group" syncable="YES"/>
         <relationship name="preferences" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Preferences" inverseName="user" inverseEntity="Preferences" syncable="YES"/>
         <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="questParticipants" inverseEntity="Group" syncable="YES"/>
-        <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reward" inverseName="user" inverseEntity="Reward" syncable="YES"/>
-        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="user" inverseEntity="Tag" syncable="YES"/>
-        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="user" inverseEntity="Task" syncable="YES"/>
+        <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Reward" inverseName="user" inverseEntity="Reward" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tag" inverseName="user" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="user" inverseEntity="Task" syncable="YES"/>
         <relationship name="unreadMessages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="UnreadMessages" inverseName="user" inverseEntity="UnreadMessages" syncable="YES"/>
     </entity>
     <elements>
@@ -349,7 +360,6 @@
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Customization" positionX="0" positionY="0" width="128" height="180"/>
         <element name="Egg" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="FAQ" positionX="0" positionY="0" width="128" height="120"/>
         <element name="Food" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Gear" positionX="0" positionY="0" width="128" height="225"/>
         <element name="Group" positionX="0" positionY="0" width="128" height="390"/>
@@ -370,6 +380,8 @@
         <element name="Task" positionX="0" positionY="0" width="128" height="465"/>
         <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
         <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="1155"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1065"/>
+        <element name="Flags" positionX="9" positionY="153" width="128" height="270"/>
+        <element name="FAQ" positionX="27" positionY="135" width="128" height="120"/>
     </elements>
 </model>

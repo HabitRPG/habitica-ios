@@ -209,13 +209,13 @@
     } else {
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         NSMutableDictionary *steps = [NSMutableDictionary dictionary];
-        for (TutorialSteps *step in [self.sharedManager user].iosTutorialSteps) {
+        for (TutorialSteps *step in [self.sharedManager user].flags.iOSTutorialSteps) {
             step.wasShown = @NO;
             step.shownInView = nil;
             [steps setObject:@NO
                       forKey:[NSString stringWithFormat:@"flags.tutorial.ios.%@", step.identifier]];
         }
-        for (TutorialSteps *step in [self.sharedManager user].commonTutorialSteps) {
+        for (TutorialSteps *step in [self.sharedManager user].flags.commonTutorialSteps) {
             step.wasShown = @NO;
             step.shownInView = nil;
             [steps

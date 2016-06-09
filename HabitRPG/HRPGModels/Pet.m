@@ -15,6 +15,8 @@
 @dynamic trained;
 @dynamic asMount;
 @dynamic type;
+@dynamic nicePetName;
+@dynamic niceMountName;
 
 - (void)getMountImage:(void (^)(UIImage *))successBlock {
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -66,10 +68,12 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             successBlock(resultImage);
         });
-        [sharedManager setCachedImage:resultImage
-                             withName:cachedImageName
-                            onSuccess:^(){
-                            }];
+        if (currentMount && currentMountHead) {
+            [sharedManager setCachedImage:resultImage
+                                 withName:cachedImageName
+                                onSuccess:^(){
+                                }];
+        }
     });
 }
 

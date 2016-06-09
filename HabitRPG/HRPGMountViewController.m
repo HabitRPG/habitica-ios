@@ -220,9 +220,6 @@
     return _fetchedResultsController;
 }
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-}
-
 - (void)controller:(NSFetchedResultsController *)controller
   didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex
@@ -234,10 +231,30 @@
        atIndexPath:(NSIndexPath *)indexPath
      forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
-}
+    UICollectionView *collectionView = self.collectionView;
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [collectionView insertItemsAtIndexPaths:@[ newIndexPath ]];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [collectionView deleteItemsAtIndexPaths:@[ indexPath ]];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[collectionView cellForItemAtIndexPath:indexPath]
+                    atIndexPath:indexPath];
+            break;
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.collectionView reloadData];
+        case NSFetchedResultsChangeMove:
+            if (indexPath.item != newIndexPath.item) {
+                [collectionView deleteItemsAtIndexPaths:@[ indexPath ]];
+                [collectionView insertItemsAtIndexPaths:@[ newIndexPath ]];
+            } else {
+                [self.collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
+            }
+            break;
+    }
 }
 
 - (void)configureCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {

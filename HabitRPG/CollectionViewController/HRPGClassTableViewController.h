@@ -22,4 +22,6 @@
 @property BOOL displayedTutorialStep;
 @property HRPGExplanationView *activeTutorialView;
 
+@property BOOL shouldResetClass;
+
 @end
