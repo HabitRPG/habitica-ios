@@ -188,9 +188,8 @@
     User *user = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *textLabel = [cell viewWithTag:1];
     textLabel.text = user.username;
-    UIImageView *avatarView = [cell viewWithTag:2];
-    avatarView.image = nil;
-    [user setAvatarOnImageView:avatarView withPetMount:NO onlyHead:NO useForce:NO];
+    UIView *avatarView = (UIView *)[cell viewWithTag:2];
+    [user setAvatarSubview:avatarView showsBackground:NO showsMount:NO showsPet:NO];
 
     HRPGLabeledProgressBar *healthLabel = [cell viewWithTag:3];
     healthLabel.color = [UIColor red100];

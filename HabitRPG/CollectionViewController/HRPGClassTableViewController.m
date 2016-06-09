@@ -13,6 +13,7 @@
 #import "HRPGWebViewController.h"
 #import "NIKFontAwesomeIconFactory.h"
 #import "UIColor+Habitica.h"
+#import "Amplitude.h"
 #import "UIViewcontroller+TutorialSteps.h"
 
 @interface HRPGClassTableViewController ()
@@ -155,9 +156,9 @@
 
         NSArray *item = self.classesArray[indexPath.item];
 
-        UILabel *label = [cell viewWithTag:1];
-        UILabel *descriptionLabel = [cell viewWithTag:2];
-        UIImageView *imageView = [cell viewWithTag:3];
+        UILabel *label = (UILabel *)[cell viewWithTag:1];
+        UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:2];
+        UIView *avatarView = (UIView *)[cell viewWithTag:3];
 
         label.text = item[0];
         label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
@@ -165,7 +166,7 @@
         descriptionLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         User *classUser = item[2];
 
-        [classUser setAvatarOnImageView:imageView withPetMount:YES onlyHead:NO useForce:NO];
+        [classUser setAvatarSubview:avatarView showsBackground:NO showsMount:YES showsPet:YES];
 
         return cell;
     }
