@@ -11,6 +11,7 @@
 #import "Flags.h"
 #import "Outfit.h"
 #import "Preferences.h"
+#import "PushDevice.h"
 
 @class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, ImprovementCategory, Flags;
 
@@ -57,6 +58,7 @@
 @property(nonatomic, retain) NSNumber *partyPosition;
 @property(nonatomic, retain) NSNumber *petCount;
 @property(nonatomic, retain) NSString *partyID;
+@property(nonatomic, retain) NSSet *pushDevices;
 
 @property(nonatomic, retain) Preferences *preferences;
 @property(nonatomic, retain) Outfit *costume;

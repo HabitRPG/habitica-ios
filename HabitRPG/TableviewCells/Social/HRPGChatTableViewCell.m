@@ -13,7 +13,7 @@
 @interface HRPGChatTableViewCell ()
 
 @property bool isOwnMessage;
-
+@property bool isPrivateMessage;
 @end
 
 @implementation HRPGChatTableViewCell
@@ -45,8 +45,14 @@
         return (action == @selector(copy:) || action == @selector(profileMenuItemSelected:) ||
                 action == @selector(delete:));
     } else {
-        return (action == @selector(copy:) || action == @selector(profileMenuItemSelected:) ||
-                action == @selector(reply:) || action == @selector(flag:));
+        if (self.isPrivateMessage) {
+            return (action == @selector(copy:) || action == @selector(profileMenuItemSelected:) ||
+                    action == @selector(delete:));
+        } else {
+            return (action == @selector(copy:) || action == @selector(profileMenuItemSelected:) ||
+                    action == @selector(reply:) || action == @selector(flag:));
+        }
+        
     }
 }
 
@@ -56,11 +62,18 @@
     UIMenuItem *profileMenuItem =
         [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Profile", nil)
                                    action:@selector(profileMenuItemSelected:)];
-    UIMenuItem *replyMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Reply", nil)
-                                                           action:@selector(reply:)];
-    UIMenuItem *flagMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Report", nil)
-                                                          action:@selector(flag:)];
-    [menu setMenuItems:@[ profileMenuItem, replyMenuItem, flagMenuItem ]];
+    NSMutableArray *menuItems = [NSMutableArray arrayWithObjects:profileMenuItem, nil];
+    if (self.replyAction) {
+        UIMenuItem *replyMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Reply", nil)
+                                                               action:@selector(reply:)];
+        [menuItems addObject:replyMenuItem];
+    }
+    if (self.flagAction) {
+        UIMenuItem *flagMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Report", nil)
+                                                              action:@selector(flag:)];
+        [menuItems addObject:flagMenuItem];
+    }
+    [menu setMenuItems:menuItems];
     [menu update];
     [menu setTargetRect:self.frame inView:self.superview];
     [menu setMenuVisible:YES animated:YES];
@@ -116,12 +129,13 @@
 - (void)configureForMessage:(ChatMessage *)message
                  withUserID:(NSString *)userID
                withUsername:(NSString *)username {
+    self.isPrivateMessage = NO;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.backgroundColor = [UIColor whiteColor];
     if (message.user) {
         self.usernameWrapper.hidden = NO;
         self.usernameLabel.text = message.user;
-        self.usernameWrapper.backgroundColor = [message contributorColor];
+        self.usernameWrapper.backgroundColor = [self contributorColor:[message.contributorLevel integerValue]];
         self.indicatorImageViewWidthConstraint.constant = 21;
         if ([message.contributorLevel integerValue] == 8) {
             self.modIndicatorImageView.image = [UIImage imageNamed:@"star"];
@@ -179,6 +193,47 @@
     }
 }
 
+- (void)configureForInboxMessage:(InboxMessage *)message
+                        withUser:(User *)thisUser {
+    self.isPrivateMessage = YES;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.backgroundColor = [UIColor whiteColor];
+    self.usernameWrapper.hidden = NO;
+    NSInteger contributorLevel;
+    if ([message.sent boolValue]) {
+        self.usernameLabel.text = thisUser.username;
+        contributorLevel = [thisUser.contributorLevel integerValue];
+    } else {
+        self.usernameLabel.text = message.username;
+        contributorLevel = [message.contributorLevel integerValue];
+    }
+    self.usernameWrapper.backgroundColor = [self contributorColor:contributorLevel];
+    self.indicatorImageViewWidthConstraint.constant = 21;
+    if (contributorLevel == 8) {
+        self.modIndicatorImageView.image = [UIImage imageNamed:@"star"];
+    } else if (contributorLevel == 9) {
+        self.modIndicatorImageView.image = [UIImage imageNamed:@"crown"];
+    } else {
+        self.modIndicatorImageView.image = nil;
+        self.indicatorImageViewWidthConstraint.constant = 8;
+    }
+    self.messageTextView.textColor = [UIColor blackColor];
+
+    self.timeLabel.text = message.timestamp.timeAgoSinceNow;
+    self.messageTextView.attributedText = message.attributedText;
+    
+    self.usernameLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    self.timeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+
+    self.plusOneButton.hidden = YES;
+    self.plusOneButtonWidthConstraint.constant = 0;
+    
+    self.isOwnMessage = [message.sent boolValue];
+    if (self.isOwnMessage) {
+        self.backgroundColor = [UIColor gray500];
+    }
+}
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
        shouldReceiveTouch:(UITouch *)touch {
     if (CGRectContainsPoint(self.plusOneButton.frame, [touch locationInView:self])) {
@@ -206,6 +261,32 @@
         }
     }
     return YES;  // handle the touch
+}
+
+
+- (UIColor *)contributorColor:(NSInteger)contributorLevel {
+    switch (contributorLevel) {
+        case 1:
+            return [UIColor colorWithRed:0.941 green:0.380 blue:0.549 alpha:1.000];
+        case 2:
+            return [UIColor colorWithRed:0.659 green:0.118 blue:0.141 alpha:1.000];
+        case 3:
+            return [UIColor colorWithRed:0.984 green:0.098 blue:0.031 alpha:1.000];
+        case 4:
+            return [UIColor colorWithRed:0.992 green:0.506 blue:0.031 alpha:1.000];
+        case 5:
+            return [UIColor colorWithRed:0.806 green:0.779 blue:0.284 alpha:1.000];
+        case 6:
+            return [UIColor colorWithRed:0.333 green:1.000 blue:0.035 alpha:1.000];
+        case 7:
+            return [UIColor colorWithRed:0.071 green:0.592 blue:1.000 alpha:1.000];
+        case 8:
+            return [UIColor colorWithRed:0.055 green:0.000 blue:0.876 alpha:1.000];
+        case 9:
+            return [UIColor colorWithRed:0.455 green:0.000 blue:0.486 alpha:1.000];
+        default:
+            return [UIColor grayColor];
+    }
 }
 
 @end

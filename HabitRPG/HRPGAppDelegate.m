@@ -20,6 +20,9 @@
 #import "HRPGTabBarController.h"
 #import "HRPGTableViewController.h"
 #import "Reminder.h"
+#import "HRPGInboxChatViewController.h"
+#import "HRPGPartyTableViewController.h"
+#import "HRPGQuestDetailViewController.h"
 
 @interface HRPGAppDelegate ()
 
@@ -97,6 +100,11 @@
                        fromType:[notification.userInfo valueForKey:@"taskType"]];
     }
 
+    NSDictionary *userInfo = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+    if(userInfo) {
+        [self handlePushNotification:userInfo];
+    }
+    
     return YES;
 }
 
@@ -206,7 +214,33 @@
           forLocalNotification:(UILocalNotification *)notification
              completionHandler:(void (^)())completionHandler {
     if ([identifier isEqualToString:@"completeAction"]) {
-        [self completeTaskWithId:[notification.userInfo valueForKey:@"taskID"]];
+        [self completeTaskWithId:[notification.userInfo valueForKey:@"taskID"] completionHandler:completionHandler];
+    }
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {
+    [self application:application handleActionWithIdentifier:identifier forRemoteNotification:userInfo withResponseInfo:@{} completionHandler:completionHandler];
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void (^)())completionHandler {
+    if ([identifier isEqualToString:@"acceptAction"]) {
+        [self.sharedManager acceptQuest:[self.sharedManager getUser].partyID onSuccess:^() {
+            completionHandler();
+        } onError:^() {
+            completionHandler();
+        }];
+    } else if ([identifier isEqualToString:@"rejectAction"]) {
+        [self.sharedManager rejectQuest:[self.sharedManager getUser].partyID onSuccess:^() {
+            completionHandler();
+        } onError:^() {
+            completionHandler();
+        }];
+    } else if ([identifier isEqualToString:@"replyAction"]) {
+        [self.sharedManager privateMessage:responseInfo[UIUserNotificationActionResponseTypedTextKey] toUserWithID:userInfo[@"replyTo"] onSuccess:^() {
+            completionHandler();
+        } onError:^() {
+            completionHandler();
+        }];
     }
 }
 
@@ -230,6 +264,40 @@
         [message show];
     }
 }
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
+        [self handlePushNotification:userInfo];
+    }
+}
+
+- (void)handlePushNotification:(NSDictionary *)userInfo {
+    UINavigationController *displayedNavigationController = [self displayTabAtIndex:4];
+    if (displayedNavigationController) {
+        if ([userInfo[@"identifier"] isEqualToString:@"newPM"] || [userInfo[@"identifier"] isEqualToString:@"giftedGems"] || [userInfo[@"identifier"] isEqualToString:@"giftedSubscription"]) {
+            HRPGInboxChatViewController *inboxChatViewController = (HRPGInboxChatViewController *)[self loadViewController:@"InboxChatViewController" fromStoryboard:@"Social"];
+            inboxChatViewController.userID = userInfo[@"replyTo"];
+            [displayedNavigationController pushViewController:inboxChatViewController animated:YES];
+        } else if ([userInfo[@"identifier"] isEqualToString:@"invitedParty"] || [userInfo[@"identifier"] isEqualToString:@"questStarted"]) {
+            HRPGPartyTableViewController *partyViewController = (HRPGPartyTableViewController *)[self loadViewController:@"PartyViewController" fromStoryboard:@"Social"];
+            [displayedNavigationController pushViewController:partyViewController animated:YES];
+        } else if ([userInfo[@"identifier"] isEqualToString:@"invitedGuild"]) {
+            HRPGGroupTableViewController *guildViewController = (HRPGGroupTableViewController *)[self loadViewController:@"GroupTableViewController" fromStoryboard:@"Social"];
+            guildViewController.groupID = userInfo[@"groupID"];
+            [displayedNavigationController pushViewController:guildViewController animated:YES];
+        } else if ([userInfo[@"identifier"] isEqualToString:@"questInvitation"]) {
+            HRPGQuestDetailViewController *questDetailViewController = (HRPGQuestDetailViewController *)[self loadViewController:@"QuestDetailViewController" fromStoryboard:@"Social"];
+            [displayedNavigationController pushViewController:questDetailViewController animated:YES];
+        }
+    } else if ([self.window.rootViewController isKindOfClass:[HRPGLoadingViewController class]]) {
+        HRPGLoadingViewController *loadingViewController =
+        (HRPGLoadingViewController *)self.window.rootViewController;
+        loadingViewController.loadingFinishedAction = ^() {
+            [self handlePushNotification:userInfo];
+        };
+    }
+}
+
 
 - (void)rescheduleTaskReminders {
     UIApplication *sharedApplication = [UIApplication sharedApplication];
@@ -269,7 +337,6 @@
         completeAction.identifier = @"completeAction";
         completeAction.title = NSLocalizedString(@"Complete", nil);
         completeAction.activationMode = UIUserNotificationActivationModeBackground;
-        completeAction.destructive = NO;
         completeAction.authenticationRequired = NO;
         UIMutableUserNotificationCategory *completeCategory =
             [[UIMutableUserNotificationCategory alloc] init];
@@ -277,14 +344,60 @@
         [completeCategory setActions:@[ completeAction ]
                           forContext:UIUserNotificationActionContextDefault];
 
+        UIMutableUserNotificationAction *acceptAction =
+        [[UIMutableUserNotificationAction alloc] init];
+        acceptAction.identifier = @"acceptAction";
+        acceptAction.title = NSLocalizedString(@"Accept", nil);
+        acceptAction.activationMode = UIUserNotificationActivationModeBackground;
+        acceptAction.authenticationRequired = NO;
+        UIMutableUserNotificationAction *rejectAction =
+        [[UIMutableUserNotificationAction alloc] init];
+        rejectAction.identifier = @"rejectAction";
+        rejectAction.title = NSLocalizedString(@"Reject", nil);
+        rejectAction.activationMode = UIUserNotificationActivationModeBackground;
+        rejectAction.destructive = YES;
+        rejectAction.authenticationRequired = NO;
+        UIMutableUserNotificationCategory *questInviteCategory =
+        [[UIMutableUserNotificationCategory alloc] init];
+        questInviteCategory.identifier = @"questInvitation";
+        [questInviteCategory setActions:@[ acceptAction, rejectAction ]
+                          forContext:UIUserNotificationActionContextDefault];
+        
+        UIMutableUserNotificationAction *replyAction =
+        [[UIMutableUserNotificationAction alloc] init];
+        replyAction.identifier = @"replyAction";
+        replyAction.title = NSLocalizedString(@"Reply", nil);
+        replyAction.activationMode = UIUserNotificationActivationModeBackground;
+        replyAction.authenticationRequired = NO;
+        if ([UIMutableUserNotificationAction instancesRespondToSelector:@selector(setBehavior:)]) {
+            replyAction.behavior = UIUserNotificationActionBehaviorTextInput;
+        }
+        UIMutableUserNotificationCategory *privateMessageCategory =
+        [[UIMutableUserNotificationCategory alloc] init];
+        privateMessageCategory.identifier = @"newPM";
+        [privateMessageCategory setActions:@[ replyAction ]
+                          forContext:UIUserNotificationActionContextDefault];
+        
         UIUserNotificationSettings *settings =
             [UIUserNotificationSettings settingsForTypes:types
-                                              categories:[NSSet setWithObject:completeCategory]];
+                                              categories:[NSSet setWithObjects:completeCategory, questInviteCategory, privateMessageCategory, nil]];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     }
 }
 
-- (void)completeTaskWithId:(NSString *)taskID {
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+    if (notificationSettings != UIUserNotificationTypeNone) {
+        [application registerForRemoteNotifications];
+    }
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"PushNotificationDeviceToken"];
+}
+
+- (void)completeTaskWithId:(NSString *)taskID completionHandler:(void (^)())completionHandler {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity =
         [NSEntityDescription entityForName:@"Task"
@@ -304,10 +417,14 @@
             [self.sharedManager upDownTask:task
                 direction:@"up"
                 onSuccess:^(NSArray *valuesArray) {
-                    return;
+                    if (completionHandler) {
+                        completionHandler();
+                    };
                 }
                 onError:^() {
-                    return;
+                    if (completionHandler) {
+                        completionHandler();
+                    };
                 }];
         }
     }
@@ -315,23 +432,20 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        [self completeTaskWithId:self.notifiedTaskID];
+        [self completeTaskWithId:self.notifiedTaskID completionHandler:nil];
     }
 }
 
 - (void)displayTaskWithId:(NSString *)taskID fromType:(nullable NSString *)taskType {
-    id presentedController = self.window.rootViewController.presentedViewController;
-    if ([presentedController isKindOfClass:[HRPGTabBarController class]]) {
-        HRPGTabBarController *tabBarController = (HRPGTabBarController *)presentedController;
-        if ([taskType isEqualToString:@"habit"]) {
-            [tabBarController setSelectedIndex:0];
-        } else if ([taskType isEqualToString:@"daily"]) {
-            [tabBarController setSelectedIndex:1];
-        } else if ([taskType isEqualToString:@"todo"]) {
-            [tabBarController setSelectedIndex:2];
-        }
-        UINavigationController *displayedNavigationController =
-            tabBarController.selectedViewController;
+    UINavigationController *displayedNavigationController;
+    if ([taskType isEqualToString:@"habit"]) {
+        displayedNavigationController = [self displayTabAtIndex:0];
+    } else if ([taskType isEqualToString:@"daily"]) {
+        displayedNavigationController = [self displayTabAtIndex:1];
+    } else if ([taskType isEqualToString:@"todo"]) {
+        displayedNavigationController = [self displayTabAtIndex:2];
+    }
+    if (displayedNavigationController) {
         HRPGTableViewController *displayedTableViewController =
             (HRPGTableViewController *)displayedNavigationController.topViewController;
         if ([displayedNavigationController
@@ -404,6 +518,22 @@
                                           animated:YES
                                         completion:nil];
     }
+}
+
+- (UINavigationController *)displayTabAtIndex:(int)index {
+    id presentedController = self.window.rootViewController.presentedViewController;
+    if ([presentedController isKindOfClass:[HRPGTabBarController class]]) {
+        HRPGTabBarController *tabBarController = (HRPGTabBarController *)presentedController;
+        [tabBarController setSelectedIndex:index];
+        return tabBarController.selectedViewController;
+    } else {
+        return nil;
+    }
+}
+
+- (UIViewController *)loadViewController:(NSString *)name fromStoryboard:(NSString *)storyboardName {
+    UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    return [secondStoryBoard instantiateViewControllerWithIdentifier:name];
 }
 
 @end

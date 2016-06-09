@@ -17,6 +17,7 @@
 #import "User.h"
 #import "User.h"
 #import "item.h"
+#import "InboxMessage.h"
 
 @interface HRPGManager : NSObject
 
@@ -204,8 +205,17 @@
           onSuccess:(void (^)())successBlock
             onError:(void (^)())errorBlock;
 
+- (void)privateMessage:(NSString *)message
+          toUserWithID:(NSString *)userID
+          onSuccess:(void (^)())successBlock
+            onError:(void (^)())errorBlock;
+
 - (void)deleteMessage:(ChatMessage *)message
             withGroup:(NSString *)groupID
+            onSuccess:(void (^)())successBlock
+              onError:(void (^)())errorBlock;
+
+- (void)deletePrivateMessage:(InboxMessage *)message
             onSuccess:(void (^)())successBlock
               onError:(void (^)())errorBlock;
 
@@ -232,6 +242,9 @@
             fromType:(NSString *)itemType
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock;
+
+- (void)removePushDevice:(void (^)())successBlock
+                 onError:(void (^)())errorBlock;
 
 - (NSManagedObjectContext *)getManagedObjectContext;
 

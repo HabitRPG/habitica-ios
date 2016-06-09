@@ -28,6 +28,4 @@
 
 @property NSAttributedString *attributedText;
 
-- (UIColor *)contributorColor;
-
 @end

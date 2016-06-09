@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ChatMessage.h"
+#import "InboxMessage.h"
 
 typedef NS_ENUM(NSInteger, HRPGChatTableViewCellType) {
     HRPGChatTableViewCellTypeGroup,
@@ -32,6 +33,9 @@ typedef NS_ENUM(NSInteger, HRPGChatTableViewCellType) {
 - (void)configureForMessage:(ChatMessage *)message
                  withUserID:(NSString *)userID
                withUsername:(NSString *)username;
+
+- (void)configureForInboxMessage:(InboxMessage *)message
+                        withUser:(User *)thisUser;
 
 @property(nonatomic, copy) void (^profileAction)();
 @property(nonatomic, copy) void (^flagAction)();

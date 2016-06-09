@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HRPGProgressBar.h"
 
+IB_DESIGNABLE
 @interface HRPGLabeledProgressBar : UIView
 
 @property UIImageView *iconView;

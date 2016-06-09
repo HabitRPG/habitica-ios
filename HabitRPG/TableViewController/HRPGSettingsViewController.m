@@ -222,30 +222,43 @@ User *user;
     MRProgressOverlayView *overlayView = [MRProgressOverlayView
         showOverlayAddedTo:self.navigationController.parentViewController.view
                   animated:YES];
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    [keyChain setString:@"" forKey:@"id"];
-    [keyChain setString:@"" forKey:@"key"];
-    [defaults setObject:@"" forKey:@"partyID"];
-    [defaults setObject:@"" forKey:@"habitFilter"];
-    [defaults setObject:@"" forKey:@"dailyFilter"];
-    [defaults setObject:@"" forKey:@"todoFilter"];
-    [self.sharedManager clearLoginCredentials];
-
-    [self.sharedManager
-        resetSavedDatabase:YES
-                onComplete:^() {
-                    [overlayView dismiss:YES
-                              completion:^() {
-                                  UIStoryboard *storyboard =
-                                      [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                  UINavigationController *navigationController =
-                                      [storyboard instantiateViewControllerWithIdentifier:
-                                                      @"loginNavigationController"];
-                                  [self presentViewController:navigationController
-                                                     animated:YES
-                                                   completion:nil];
-                              }];
-                }];
+    
+    void (^logoutBlock)() = ^() {
+        PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
+        [keyChain setString:@"" forKey:@"id"];
+        [keyChain setString:@"" forKey:@"key"];
+        [defaults setObject:@"" forKey:@"partyID"];
+        [defaults setObject:@"" forKey:@"habitFilter"];
+        [defaults setObject:@"" forKey:@"dailyFilter"];
+        [defaults setObject:@"" forKey:@"todoFilter"];
+        [self.sharedManager clearLoginCredentials];
+        
+        [self.sharedManager
+         resetSavedDatabase:YES
+         onComplete:^() {
+             [overlayView dismiss:YES
+                       completion:^() {
+                           UIStoryboard *storyboard =
+                           [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                           UINavigationController *navigationController =
+                           [storyboard instantiateViewControllerWithIdentifier:
+                            @"loginNavigationController"];
+                           [self presentViewController:navigationController
+                                              animated:YES
+                                            completion:nil];
+                       }];
+         }];
+    };
+    
+    if ([defaults stringForKey:@"PushNotificationDeviceToken"]) {
+        [self.sharedManager removePushDevice:^{
+            logoutBlock();
+        } onError:^{
+            logoutBlock();
+        }];
+    } else {
+        logoutBlock();
+    }
 }
 
 - (void)resetCache {

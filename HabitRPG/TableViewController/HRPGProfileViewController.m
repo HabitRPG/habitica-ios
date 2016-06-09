@@ -199,10 +199,15 @@ NIKFontAwesomeIconFactory *iconFactory;
         }
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
+        UIViewController *inboxViewController =
+        [secondStoryBoard instantiateViewControllerWithIdentifier:@"InboxViewController"];
+        [self.navigationController pushViewController:inboxViewController animated:YES];
+    } else if (indexPath.section == 1 && indexPath.item == 1) {
+        UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
         UIViewController *tavernViewController =
             [secondStoryBoard instantiateViewControllerWithIdentifier:@"TavernViewController"];
         [self.navigationController pushViewController:tavernViewController animated:YES];
-    } else if (indexPath.section == 1 && indexPath.item == 1) {
+    } else if (indexPath.section == 1 && indexPath.item == 2) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
         UIViewController *partyViewController =
             [secondStoryBoard instantiateViewControllerWithIdentifier:@"PartyViewController"];
@@ -260,8 +265,10 @@ NIKFontAwesomeIconFactory *iconFactory;
             }
         }
     } else if (indexPath.section == 1 && indexPath.item == 0) {
-        title = NSLocalizedString(@"Tavern", nil);
+        title = NSLocalizedString(@"Inbox", nil);
     } else if (indexPath.section == 1 && indexPath.item == 1) {
+        title = NSLocalizedString(@"Tavern", nil);
+    } else if (indexPath.section == 1 && indexPath.item == 2) {
         title = NSLocalizedString(@"Party", nil);
         accessibilityLabel = title;
         User *user = self.user;

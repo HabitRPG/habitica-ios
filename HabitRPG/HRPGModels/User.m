@@ -63,6 +63,8 @@
 @dynamic partyOrder;
 @dynamic partyPosition;
 @dynamic partyID;
+@dynamic pushDevices;
+
 @synthesize petCount = _petCount;
 @synthesize customizationsDictionary;
 @synthesize lastImageGeneration;

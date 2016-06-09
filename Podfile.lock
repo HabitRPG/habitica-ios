@@ -105,6 +105,7 @@ PODS:
   - RestKit/Testing (0.26.0):
     - RestKit/Network
   - RKValueTransformers (1.1.3)
+  - SlackTextViewController (1.9.3)
   - SOCKit (1.1)
   - TransitionKit (2.2.1)
   - VTAcknowledgementsViewController (1.0)
@@ -137,6 +138,7 @@ DEPENDENCIES:
   - pop
   - RestKit (~> 0.26)
   - RestKit/Testing
+  - SlackTextViewController
   - VTAcknowledgementsViewController
   - XLForm
   - YYWebImage (~> 1.0.1)
@@ -189,6 +191,7 @@ SPEC CHECKSUMS:
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   RestKit: 112fba5bd1f97598aac0db7981863d5fdc0263a2
   RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
+  SlackTextViewController: bd2a34c188d4f7dec93cf42388f38551263fac82
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   VTAcknowledgementsViewController: a67fcf112d2530b6073a32fb6f60b8190e0265e4
@@ -197,6 +200,6 @@ SPEC CHECKSUMS:
   YYImage: b41b45bc5f32bfcdf67bdfb9c09da9e9832357c0
   YYWebImage: 8da75a611fd0d2e0f58a273f9ca0bc731614cb0d
 
-PODFILE CHECKSUM: 774e43eb941f75ad73ff8ad06720440f72512e32
+PODFILE CHECKSUM: be0f5521367ce269fe9acad5aa375f47edd35810
 
 COCOAPODS: 1.0.0

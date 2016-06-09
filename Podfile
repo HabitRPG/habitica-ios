@@ -23,6 +23,7 @@ pod 'EAIntroView'
 pod 'AttributedMarkdown', :git => 'https://github.com/dreamwieber/AttributedMarkdown.git'
 pod 'Amplitude-iOS', '~> 3.5.0'
 pod 'Masonry'
+pod "SlackTextViewController"
 
 target 'HabiticaTests' do
     inherit! :search_paths

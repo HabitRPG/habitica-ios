@@ -41,6 +41,7 @@
 #import "HRPGURLParser.h"
 #import "HRPGResponseMessage.h"
 #import "NSString+StripHTML.h"
+#import "PushDevice.h"
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
@@ -647,7 +648,9 @@ NSString *currentUser;
         @"items.pets" : @"petCountArray",
         @"purchased" : @"customizationsDictionary",
         @"invitations.party.id" : @"invitedParty",
-        @"invitations.party.name" : @"invitedPartyName"
+        @"invitations.party.name" : @"invitedPartyName",
+        @"inbox.optOut" : @"inboxOptOut",
+        @"inbox.newMessages" : @"inboxNewMessages"
     }];
     entityMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping *userTagMapping =
@@ -877,6 +880,41 @@ NSString *currentUser;
                           keyPath:@"data.tasksOrder.dailys"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    
+    RKEntityMapping *inboxMessageMapping = [RKEntityMapping mappingForEntityForName:@"InboxMessage"
+                                                       inManagedObjectStore:managedObjectStore];
+    [inboxMessageMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"id"];
+    [inboxMessageMapping setForceCollectionMapping:YES];
+    [inboxMessageMapping setIdentificationAttributes:@[@"id"]];
+    [inboxMessageMapping addAttributeMappingsFromDictionary:@{
+                                                      @"(id).text" : @"text",
+                                                      @"(id).timestamp" : @"timestamp",
+                                                      @"(id).user" : @"username",
+                                                      @"(id).uuid" : @"userID",
+                                                      @"(id).sent" : @"sent",
+                                                      @"(id).contributor.level" : @"contributorLevel",
+                                                      @"(id).contributor.text" : @"contributorText",
+                                                      @"(id).backer.tier" : @"backerLevel",
+                                                      @"(id).backer.npc" : @"backerNpc",
+                                                      @"(id).sort" : @"sort"
+                                                      }];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping
+                                       relationshipMappingFromKeyPath:@"inbox.messages"
+                                       toKeyPath:@"inboxMessages"
+                                       withMapping:inboxMessageMapping]];
+    
+    RKEntityMapping *pushDeviceMapping = [RKEntityMapping mappingForEntityForName:@"PushDevice"
+                                                               inManagedObjectStore:managedObjectStore];
+    [pushDeviceMapping setForceCollectionMapping:YES];
+    [pushDeviceMapping setIdentificationAttributes:@[@"regId"]];
+    [pushDeviceMapping addAttributeMappingsFromDictionary:@{
+                                                              @"regId" : @"regId",
+                                                              @"type" : @"type"
+                                                              }];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping
+                                       relationshipMappingFromKeyPath:@"pushDevices"
+                                       toKeyPath:@"pushDevices"
+                                       withMapping:pushDeviceMapping]];
     
     responseDescriptor = [RKResponseDescriptor
         responseDescriptorWithMapping:entityMapping
@@ -2068,6 +2106,19 @@ NSString *currentUser;
                     isEqualToString:self.user.preferences.language]) {
                 [self fetchContent:nil onError:nil];
             }
+            if ([defaults stringForKey:@"PushNotificationDeviceToken"]) {
+                NSString *token = [defaults stringForKey:@"PushNotificationDeviceToken"];
+                bool addDevice = YES;
+                for (PushDevice *device in fetchedUser.pushDevices) {
+                    if ([device.regId isEqualToString:token]) {
+                        addDevice = NO;
+                        break;
+                    }
+                }
+                if (addDevice) {
+                    [self addPushDevice:token onSuccess:nil onError:nil];
+                }
+            }
             NSError *executeError = nil;
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
             [defaults setObject:[NSDate date] forKey:@"lastTaskFetch"];
@@ -2990,6 +3041,16 @@ NSString *currentUser;
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
+            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+                [self fetchUser:^{
+                    if (successBlock) {
+                        successBlock();
+                    }
+                } onError:^{
+                    if (errorBlock) {
+                        errorBlock();
+                    }
+                }];
             } else {
                 [self displayNetworkError];
             }
@@ -3800,6 +3861,34 @@ NSString *currentUser;
         }];
 }
 
+- (void)privateMessage:(NSString *)message toUserWithID:(NSString *)userID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:@"members/send-private-message"
+                                     parameters:@{
+                                                  @"message" : message,
+                                                  @"toUserId" : userID
+                                                  }
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            [self fetchUser:successBlock onError:errorBlock];
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                                [self displayServerError];
+                                            } else {
+                                                [self displayNetworkError];
+                                            }
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
+}
+
 - (void)deleteMessage:(ChatMessage *)message
             withGroup:(NSString *)groupID
             onSuccess:(void (^)())successBlock
@@ -3830,6 +3919,37 @@ NSString *currentUser;
             [self.networkIndicatorController endNetworking];
             return;
         }];
+}
+
+- (void)deletePrivateMessage:(InboxMessage *)message
+            onSuccess:(void (^)())successBlock
+              onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] deleteObject:message
+                                             path:[NSString stringWithFormat:@"user/messages/%@", message.id]
+                                       parameters:nil
+                                          success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                              NSError *executeError = nil;
+                                              [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                              if (successBlock) {
+                                                  successBlock();
+                                              }
+                                              [self.networkIndicatorController endNetworking];
+                                              return;
+                                          }
+                                          failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                              if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                                  [self displayServerError];
+                                              } else {
+                                                  [self displayNetworkError];
+                                              }
+                                              if (errorBlock) {
+                                                  errorBlock();
+                                              }
+                                              [self.networkIndicatorController endNetworking];
+                                              return;
+                                          }];
 }
 
 - (void)likeMessage:(ChatMessage *)message
@@ -4046,6 +4166,66 @@ NSString *currentUser;
             [self.networkIndicatorController endNetworking];
             return;
         }];
+}
+
+- (void)addPushDevice:(NSString *)token
+           onSuccess:(void (^)())successBlock
+             onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:@"user/add-push-device"
+                                     parameters:@{
+                                                  @"regId": token,
+                                                  @"type": @"ios"
+                                                  }
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                                [self displayServerError];
+                                            } else {
+                                                [self displayNetworkError];
+                                            }
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
+}
+
+- (void)removePushDevice:(void (^)())successBlock
+              onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    if ([defaults stringForKey:@"PushNotificationDeviceToken"]) {
+        NSString *token = [defaults stringForKey:@"PushNotificationDeviceToken"];
+        [defaults removeObjectForKey:@"PushNotificationDeviceToken"];
+    
+        [[RKObjectManager sharedManager] getObject:nil
+                                           path:[@"user/remove-push-device/" stringByAppendingString:token]
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            if (successBlock) {
+                                                successBlock();
+                                            }
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                                [self displayServerError];
+                                            } else {
+                                                [self displayNetworkError];
+                                            }
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
+    }
 }
 
 - (void)displayNetworkError {
