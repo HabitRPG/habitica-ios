@@ -202,6 +202,11 @@
         <relationship name="improvementCategories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ImprovementCategory" inverseName="preferences" inverseEntity="ImprovementCategory" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="preferences" inverseEntity="User" syncable="YES"/>
     </entity>
+    <entity name="PushDevice" representedClassName="PushDevice" syncable="YES">
+        <attribute name="regId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="pushDevices" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="Quest" representedClassName="Quest" parentEntity="BuyableItem" syncable="YES">
         <attribute name="bossDef" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="bossHp" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -355,7 +360,7 @@
         <relationship name="equipped" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Outfit" inverseName="userEquipped" inverseEntity="Outfit" syncable="YES"/>
         <relationship name="flags" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Flags" inverseName="user" inverseEntity="Flags" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="groupMembers" inverseEntity="Group" syncable="YES"/>
-        <relationship name="inboxMessages" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InboxMessage" inverseName="user" inverseEntity="InboxMessage" syncable="YES"/>
+        <relationship name="inboxMessages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="InboxMessage" inverseName="user" inverseEntity="InboxMessage" syncable="YES"/>
         <relationship name="leadedParty" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="leader" inverseEntity="Group" syncable="YES"/>
         <relationship name="ownedEggs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Egg" inverseName="user" inverseEntity="Egg" syncable="YES"/>
         <relationship name="ownedFood" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="user" inverseEntity="Food" syncable="YES"/>
@@ -366,6 +371,7 @@
         <relationship name="ownedQuests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Quest" inverseName="user" inverseEntity="Quest" syncable="YES"/>
         <relationship name="party" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="member" inverseEntity="Group" syncable="YES"/>
         <relationship name="preferences" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Preferences" inverseName="user" inverseEntity="Preferences" syncable="YES"/>
+        <relationship name="pushDevices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PushDevice" inverseName="owner" inverseEntity="PushDevice" syncable="YES"/>
         <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="questParticipants" inverseEntity="Group" syncable="YES"/>
         <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Reward" inverseName="user" inverseEntity="Reward" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tag" inverseName="user" inverseEntity="Tag" syncable="YES"/>
@@ -403,6 +409,7 @@
         <element name="Task" positionX="0" positionY="0" width="128" height="480"/>
         <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
         <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="1125"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1140"/>
+        <element name="PushDevice" positionX="18" positionY="162" width="128" height="90"/>
     </elements>
 </model>

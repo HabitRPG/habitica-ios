@@ -186,6 +186,8 @@
 		D9D5935D1D00523800D6C388 /* InboxMessage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D5935A1D00523800D6C388 /* InboxMessage+CoreDataProperties.m */; };
 		D9D5935E1D00523800D6C388 /* InboxMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D5935C1D00523800D6C388 /* InboxMessage.m */; };
 		D9D593611D0058AE00D6C388 /* HRPGInboxChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D593601D0058AE00D6C388 /* HRPGInboxChatViewController.m */; };
+		D9D593661D008C7500D6C388 /* PushDevice+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D593631D008C7500D6C388 /* PushDevice+CoreDataProperties.m */; };
+		D9D593671D008C7500D6C388 /* PushDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D593651D008C7500D6C388 /* PushDevice.m */; };
 		D9D96F00194B87FF00796FE7 /* HRPGPetMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D96EFF194B87FF00796FE7 /* HRPGPetMasterViewController.m */; };
 		D9D96F03194B96FD00796FE7 /* HRPGMountMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D96F02194B96FD00796FE7 /* HRPGMountMasterViewController.m */; };
 		D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E918561AA3A70D005E378B /* HRPGCheckBoxView.m */; };
@@ -604,6 +606,10 @@
 		D9D5935C1D00523800D6C388 /* InboxMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InboxMessage.m; sourceTree = "<group>"; };
 		D9D5935F1D0058AE00D6C388 /* HRPGInboxChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGInboxChatViewController.h; sourceTree = "<group>"; };
 		D9D593601D0058AE00D6C388 /* HRPGInboxChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGInboxChatViewController.m; sourceTree = "<group>"; };
+		D9D593621D008C7500D6C388 /* PushDevice+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PushDevice+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D9D593631D008C7500D6C388 /* PushDevice+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PushDevice+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D9D593641D008C7500D6C388 /* PushDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushDevice.h; sourceTree = "<group>"; };
+		D9D593651D008C7500D6C388 /* PushDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushDevice.m; sourceTree = "<group>"; };
 		D9D795F71CAAE64E00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9D795F81CAAE64E00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9D795F91CAAE64F00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -1053,6 +1059,10 @@
 		D9C3D01D19509E4C00D22A4A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				D9D593621D008C7500D6C388 /* PushDevice+CoreDataProperties.h */,
+				D9D593631D008C7500D6C388 /* PushDevice+CoreDataProperties.m */,
+				D9D593641D008C7500D6C388 /* PushDevice.h */,
+				D9D593651D008C7500D6C388 /* PushDevice.m */,
 				D9D593591D00523800D6C388 /* InboxMessage+CoreDataProperties.h */,
 				D9D5935A1D00523800D6C388 /* InboxMessage+CoreDataProperties.m */,
 				D9D5935B1D00523800D6C388 /* InboxMessage.h */,
@@ -1411,6 +1421,9 @@
 							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -1729,6 +1742,7 @@
 				D9B8C1201AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m in Sources */,
 				D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */,
 				D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */,
+				D9D593671D008C7500D6C388 /* PushDevice.m in Sources */,
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
 				D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */,
 				D98AD5541943986100AF6174 /* HRPGMountViewController.m in Sources */,
@@ -1811,6 +1825,7 @@
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
 				D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */,
 				D92761611CCFBEAD0049ECAC /* Flags+CoreDataProperties.m in Sources */,
+				D9D593661D008C7500D6C388 /* PushDevice+CoreDataProperties.m in Sources */,
 				D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */,
 				D9FC1A781BC28C5F00B97D23 /* HRPGExplanationView.m in Sources */,
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,

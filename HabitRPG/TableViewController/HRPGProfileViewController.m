@@ -199,9 +199,9 @@ NIKFontAwesomeIconFactory *iconFactory;
         }
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
-        UIViewController *tavernViewController =
+        UIViewController *inboxViewController =
         [secondStoryBoard instantiateViewControllerWithIdentifier:@"InboxViewController"];
-        [self.navigationController pushViewController:tavernViewController animated:YES];
+        [self.navigationController pushViewController:inboxViewController animated:YES];
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
         UIViewController *tavernViewController =

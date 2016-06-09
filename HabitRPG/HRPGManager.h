@@ -243,6 +243,9 @@
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock;
 
+- (void)removePushDevice:(void (^)())successBlock
+                 onError:(void (^)())errorBlock;
+
 - (NSManagedObjectContext *)getManagedObjectContext;
 
 - (void)displayNetworkError;
