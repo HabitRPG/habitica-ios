@@ -123,7 +123,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                 return 1;
             }
         case 1:
-            return 3;
+            return 4;
         case 2:
             return 5;
         case 3:
@@ -212,7 +212,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         UIViewController *partyViewController =
             [secondStoryBoard instantiateViewControllerWithIdentifier:@"PartyViewController"];
         [self.navigationController pushViewController:partyViewController animated:YES];
-    } else if (indexPath.section == 1 && indexPath.item == 2) {
+    } else if (indexPath.section == 1 && indexPath.item == 3) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
         UIViewController *guildsViewController = [secondStoryBoard
             instantiateViewControllerWithIdentifier:@"GuildsOverviewViewController"];
@@ -277,7 +277,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                 showIndicator = YES;
             }
         }
-    } else if (indexPath.section == 1 && indexPath.item == 2) {
+    } else if (indexPath.section == 1 && indexPath.item == 3) {
         title = NSLocalizedString(@"Guilds", nil);
     } else if (indexPath.section == 2 && indexPath.item == 0) {
         title = NSLocalizedString(@"Customize Avatar", nil);

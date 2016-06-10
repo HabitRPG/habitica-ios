@@ -186,6 +186,7 @@
             [self _createAvatarSubviewForType:(NSString *)obj
                                     superview:avatarView
                                          size:boxSize
+                                     hasMount:((NSNumber *)viewDictionary[@"mount-head"]).boolValue
                        withFilenameDictionary:filenameDictionary
                      withFileFormatDictionary:formatDictionary];
         }
@@ -443,6 +444,10 @@
         @"head_special_1" : @"gif",
         @"shield_special_0" : @"gif",
         @"weapon_special_0" : @"gif",
+        @"slim_armor_special_0" : @"gif",
+        @"slim_armor_special_1" : @"gif",
+        @"broad_armor_special_0" : @"gif",
+        @"broad_armor_special_1" : @"gif",
         @"weapon_special_critical" : @"gif",
         @"Pet-Wolf-Cerberus" : @"gif"
     };
@@ -464,7 +469,8 @@
 - (void)_setDefaultConstraintsForType:(nonnull NSString *)type
                             superview:(nonnull UIView *)superview
                               subview:(nonnull UIView *)subview
-                                 size:(CGSize)size {
+                                 size:(CGSize)size
+                             hasMount:(BOOL)hasMount {
     void (^background)(UIView *, UIView *, CGSize) =
         ^(UIView *superview, UIView *subview, CGSize size) {
             [subview mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -485,7 +491,7 @@
                 make.leading.equalTo((size.width > 90.0) ? superview.mas_trailing
                                                          : superview.mas_leading)
                     .multipliedBy((size.width > 90.0) ? 25.0 / size.width : 1.0);
-                make.top.equalTo(superview);
+                make.top.equalTo(superview).offset(hasMount ? 0.0 : 18.0);
             }];
         };
 
@@ -495,7 +501,7 @@
         }];
     };
 
-    void (^weaponSpecialCritical)(UIView *, UIView *, CGSize) =
+    void (^weaponSpecial)(UIView *, UIView *, CGSize) =
         ^(UIView *superview, UIView *subview, CGSize size) {
             [subview mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.leading.equalTo(superview.mas_trailing)
@@ -503,6 +509,25 @@
                 make.top.equalTo(superview.mas_bottom).multipliedBy(12.0 / size.height);
             }];
         };
+    
+    void (^weaponSpecial1)(UIView *, UIView *, CGSize) =
+    ^(UIView *superview, UIView *subview, CGSize size) {
+        [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.equalTo(superview.mas_trailing)
+            .multipliedBy((size.width > 90.0) ? 13.0 / size.width : -12 / size.width);
+            make.top.equalTo(superview).offset(hasMount ? 3.0 : 21.0);
+        }];
+    };
+    
+    void (^headSpecial)(UIView *, UIView *, CGSize) =
+    ^(UIView *superview, UIView *subview, CGSize size) {
+        [subview mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.equalTo((size.width > 90.0) ? superview.mas_trailing
+                                 : superview.mas_leading)
+            .multipliedBy((size.width > 90.0) ? 25.0 / size.width : 1.0);
+            make.top.equalTo(superview).offset(hasMount ? 3.0 : 21.0);
+        }];
+    };
 
     NSDictionary *constraintsDictionary = @{
         @"background" : background,
@@ -526,7 +551,10 @@
         @"mount-head" : mount,
         @"zzz" : character,
         @"pet" : pet,
-        @"weapon_special_critical" : weaponSpecialCritical
+        @"weapon_special_critical" : weaponSpecial,
+        @"weapon_special_1" : weaponSpecial1,
+        @"head_special_0" : headSpecial,
+        @"head_special_1" : headSpecial
     };
 
     // [category]:[item]
@@ -595,6 +623,7 @@
 - (void)_createAvatarSubviewForType:(nonnull NSString *)type
                           superview:(nonnull UIView *)superview
                                size:(CGSize)size
+                           hasMount:(BOOL)hasMount
              withFilenameDictionary:(nonnull NSDictionary *)filenameDictionary
            withFileFormatDictionary:(nonnull NSDictionary *)formatDictionary {
     UIImageView *view = [YYAnimatedImageView new];
@@ -629,7 +658,8 @@
     [self _setDefaultConstraintsForType:constraintTypeString
                               superview:superview
                                 subview:view
-                                   size:size];
+                                   size:size
+                               hasMount:hasMount];
 }
 
 - (BOOL)_isAvailableGear:(nonnull NSString *)gearName {
