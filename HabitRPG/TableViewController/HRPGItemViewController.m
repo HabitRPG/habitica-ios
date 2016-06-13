@@ -142,7 +142,7 @@ float textWidth;
     if ([sectionInfo numberOfObjects] < indexPath.item) {
         return 0;
     }
-    Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Item *item = [sectionInfo objects][indexPath.item];
     NSInteger height = 24;
     height = height +
     [item.text boundingRectWithSize:CGSizeMake(textWidth, MAXFLOAT)

@@ -47,7 +47,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return [self.fetchedResultsController fetchedObjects].count;
+        id<NSFetchedResultsSectionInfo> sectionInfo =
+        [self.fetchedResultsController sections][(NSUInteger)section];
+        return [sectionInfo numberOfObjects];
     } else if (section == 1) {
         return 1;
     } else {
