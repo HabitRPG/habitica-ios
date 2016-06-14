@@ -3677,7 +3677,7 @@ NSString *currentUser;
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 400) {
+            } else if (operation.HTTPRequestOperation.response.statusCode == 400 || operation.HTTPRequestOperation.response.statusCode == 404) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invitation Error"
                                                                 message:error.localizedDescription
                                                                delegate:nil

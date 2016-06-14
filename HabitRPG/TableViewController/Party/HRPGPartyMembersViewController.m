@@ -219,14 +219,12 @@
 }
 
 - (void)setUpInvitationButton {
-    if (self.isLeader) {
-        UIBarButtonItem *barButton =
-            [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Invite", nil)
-                                             style:UIBarButtonItemStylePlain
-                                            target:self
-                                            action:@selector(openInvitationForm)];
-        self.navigationItem.rightBarButtonItem = barButton;
-    }
+    UIBarButtonItem *barButton =
+    [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Invite", nil)
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(openInvitationForm)];
+    self.navigationItem.rightBarButtonItem = barButton;
 }
 
 - (void)openInvitationForm {
