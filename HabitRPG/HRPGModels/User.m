@@ -484,6 +484,11 @@
             make.top.equalTo(superview.mas_bottom).multipliedBy(18.0 / size.height);
         }];
     };
+    
+    CGFloat topOffset = 0.0;
+    if (!hasMount && size.height > 90.0) {
+        topOffset = 18.0;
+    }
 
     void (^character)(UIView *, UIView *, CGSize) =
         ^(UIView *superview, UIView *subview, CGSize size) {
@@ -491,7 +496,7 @@
                 make.leading.equalTo((size.width > 90.0) ? superview.mas_trailing
                                                          : superview.mas_leading)
                     .multipliedBy((size.width > 90.0) ? 25.0 / size.width : 1.0);
-                make.top.equalTo(superview).offset(hasMount ? 0.0 : 18.0);
+                make.top.equalTo(superview).offset(topOffset);
             }];
         };
 
@@ -515,7 +520,7 @@
         [subview mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leading.equalTo(superview.mas_trailing)
             .multipliedBy((size.width > 90.0) ? 13.0 / size.width : -12 / size.width);
-            make.top.equalTo(superview).offset(hasMount ? 3.0 : 21.0);
+            make.top.equalTo(superview).offset(topOffset+3.0);
         }];
     };
     
@@ -525,7 +530,7 @@
             make.leading.equalTo((size.width > 90.0) ? superview.mas_trailing
                                  : superview.mas_leading)
             .multipliedBy((size.width > 90.0) ? 25.0 / size.width : 1.0);
-            make.top.equalTo(superview).offset(hasMount ? 3.0 : 21.0);
+            make.top.equalTo(superview).offset(topOffset+3.0);
         }];
     };
 
