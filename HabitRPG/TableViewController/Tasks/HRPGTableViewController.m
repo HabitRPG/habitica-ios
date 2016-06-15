@@ -89,11 +89,12 @@ BOOL editable;
     if (self.openedIndexPath) {
         [self tableView:self.tableView expandTaskAtIndexPath:self.openedIndexPath];
     }
+    __weak HRPGTableViewController *weakSelf = self;
     [self.sharedManager fetchUser:^() {
-        [self.refreshControl endRefreshing];
+        [weakSelf.refreshControl endRefreshing];
     }
         onError:^() {
-            [self.refreshControl endRefreshing];
+            [weakSelf.refreshControl endRefreshing];
         }];
 }
 
@@ -270,11 +271,7 @@ BOOL editable;
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         Task *task = [self taskAtIndexPath:indexPath];
         [self.sharedManager deleteTask:task
-            onSuccess:^() {
-            }
-            onError:^(){
-
-            }];
+            onSuccess:nil onError:nil];
     }
 }
 

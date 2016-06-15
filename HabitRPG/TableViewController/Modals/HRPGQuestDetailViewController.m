@@ -99,10 +99,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 0) {
         [self.sharedManager acceptQuest:self.group.id
-            onSuccess:^() {
-            }
-            onError:^(){
-            }];
+            onSuccess:nil onError:nil];
         if (self.wasPushed) {
             [self.tableView reloadData];
         } else {
@@ -110,10 +107,7 @@
         }
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         [self.sharedManager rejectQuest:self.group.id
-            onSuccess:^() {
-            }
-            onError:^(){
-            }];
+            onSuccess:nil onError:nil];
         if (self.wasPushed) {
             [self.tableView reloadData];
         } else {
@@ -222,21 +216,22 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
+        __weak HRPGQuestDetailViewController *weakSelf = self;
         if ([self.group.questActive boolValue]) {
             [self.sharedManager abortQuest:self.group.id
                 onSuccess:^() {
-                    [self.navigationController popViewControllerAnimated:YES];
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
                 }
                 onError:^() {
-                    self.navigationItem.rightBarButtonItem.enabled = YES;
+                    weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
                 }];
         } else {
             [self.sharedManager forceStartQuest:self.group.id
                 onSuccess:^() {
-                    [self.navigationController popViewControllerAnimated:YES];
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
                 }
                 onError:^() {
-                    self.navigationItem.rightBarButtonItem.enabled = YES;
+                    weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
                 }];
         }
     }

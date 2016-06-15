@@ -56,18 +56,19 @@
 }
 
 - (void)refresh {
+    __weak HRPGRewardsViewController *weakSelf;
     [self.sharedManager fetchUser:^() {
-        [self.sharedManager fetchBuyableRewards:^{
-            [self.refreshControl endRefreshing];
+        [weakSelf.sharedManager fetchBuyableRewards:^{
+            [weakSelf.refreshControl endRefreshing];
         }
             onError:^{
-                [self.refreshControl endRefreshing];
-                [self.sharedManager displayNetworkError];
+                [weakSelf.refreshControl endRefreshing];
+                [weakSelf.sharedManager displayNetworkError];
             }];
     }
         onError:^() {
-            [self.refreshControl endRefreshing];
-            [self.sharedManager displayNetworkError];
+            [weakSelf.refreshControl endRefreshing];
+            [weakSelf.sharedManager displayNetworkError];
         }];
 }
 
@@ -163,11 +164,7 @@
         MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
         if ([reward isKindOfClass:[Reward class]]) {
             [self.sharedManager deleteReward:(Reward *)reward
-                onSuccess:^() {
-                }
-                onError:^(){
-
-                }];
+                                   onSuccess:nil onError:nil];
         }
     }
 }
@@ -183,11 +180,12 @@
             [[NSBundle mainBundle] loadNibNamed:@"HRPGGearDetailView" owner:self options:nil];
         HRPGGearDetailView *gearView = nibViews[0];
         [gearView configureForReward:reward withGold:[self.user.gold floatValue]];
+        __weak HRPGRewardsViewController *weakSelf = self;
         gearView.buyAction = ^() {
             if ([reward isKindOfClass:[Reward class]]) {
-                [self.sharedManager getReward:reward.key onSuccess:nil onError:nil];
+                [weakSelf.sharedManager getReward:reward.key onSuccess:nil onError:nil];
             } else {
-                [self.sharedManager buyObject:reward onSuccess:nil onError:nil];
+                [weakSelf.sharedManager buyObject:reward onSuccess:nil onError:nil];
             }
         };
         NSString *imageName;
@@ -379,31 +377,32 @@
         [self.sharedManager setImage:imageName withFormat:@"png" onView:cell.shopImageView];
     }
 
+    __weak HRPGRewardsViewController *weakSelf;
     [cell onPurchaseTap:^() {
         if ([reward isKindOfClass:[Reward class]]) {
-            [self.sharedManager
+            [weakSelf.sharedManager
                 getReward:reward.key
                 onSuccess:^() {
                     for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
-                        [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath]
+                        [weakSelf configureCell:[self.tableView cellForRowAtIndexPath:indexPath]
                                 atIndexPath:indexPath];
                     }
                 }
                   onError:nil];
         } else {
             reward.buyable = @NO;
-            [self.sharedManager buyObject:reward
+            [weakSelf.sharedManager buyObject:reward
                 onSuccess:^() {
-                    [self.sharedManager fetchBuyableRewards:nil onError:nil];
+                    [weakSelf.sharedManager fetchBuyableRewards:nil onError:nil];
                     for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
-                        [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath]
+                        [weakSelf configureCell:[self.tableView cellForRowAtIndexPath:indexPath]
                                 atIndexPath:indexPath];
                     }
                 }
                 onError:^() {
                     reward.buyable = @YES;
                     NSError *error;
-                    [self.managedObjectContext save:&error];
+                    [weakSelf.managedObjectContext save:&error];
                 }];
         }
     }];

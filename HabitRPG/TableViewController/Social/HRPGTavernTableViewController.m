@@ -62,9 +62,10 @@
                 if (completed) {
                 }
             }];
+        __weak HRPGTavernTableViewController *weakSelf = self;
         [self.sharedManager sleepInn:^() {
             NSString *notificationText;
-            if ([self.user.preferences.sleep boolValue]) {
+            if ([weakSelf.user.preferences.sleep boolValue]) {
                 notificationText = NSLocalizedString(@"Sleep tight!", nil);
             } else {
                 notificationText = NSLocalizedString(@"Wakey Wakey!", nil);
@@ -77,11 +78,11 @@
             [CRToastManager showNotificationWithOptions:options
                                         completionBlock:^{
                                         }];
-            [self.tableView reloadRowsAtIndexPaths:@[ indexPath ]
+            [weakSelf.tableView reloadRowsAtIndexPaths:@[ indexPath ]
                                   withRowAnimation:UITableViewRowAnimationFade];
         }
             onError:^() {
-                [self.tableView reloadRowsAtIndexPaths:@[ indexPath ]
+                [weakSelf.tableView reloadRowsAtIndexPaths:@[ indexPath ]
                                       withRowAnimation:UITableViewRowAnimationFade];
             }];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];

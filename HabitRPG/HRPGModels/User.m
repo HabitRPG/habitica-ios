@@ -619,7 +619,7 @@
     if (typeArray.count > 1 && constraintsDictionary[typeArray[1]]) {
         ((void (^)(UIImage *, UIView *, UIView *, CGSize))constraintsDictionary[typeArray[1]])(
             image, superview, subview, size);
-    } else if (constraintsDictionary[typeArray[0]]) {
+    } else if (constraintsDictionary[typeArray[0]] && constraintsDictionary[typeArray[0]] != [NSNull null]) {
         ((void (^)(UIImage *, UIView *, UIView *, CGSize))constraintsDictionary[typeArray[0]])(
             image, superview, subview, size);
     }

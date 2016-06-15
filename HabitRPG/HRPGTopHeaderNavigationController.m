@@ -94,7 +94,6 @@
         delay:0
         options:UIViewAnimationOptionCurveEaseOut
         animations:^() {
-
             self.backgroundView.frame = frame;
             [self setNavigationBarColors:1];
         }

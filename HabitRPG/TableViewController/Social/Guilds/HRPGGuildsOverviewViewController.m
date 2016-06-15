@@ -28,12 +28,13 @@
 }
 
 - (void)refresh {
+    __weak HRPGGuildsOverviewViewController *weakSelf = self;
     [self.sharedManager fetchGroups:@"guilds"
         onSuccess:^() {
-            [self.refreshControl endRefreshing];
+            [weakSelf.refreshControl endRefreshing];
         }
         onError:^() {
-            [self.refreshControl endRefreshing];
+            [weakSelf.refreshControl endRefreshing];
         }];
 }
 
@@ -245,18 +246,19 @@
     _suggestedGuilds = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 
     if (_suggestedGuilds.count < guilds.count) {
+        __weak HRPGGuildsOverviewViewController *weakSelf = self;
         [self.sharedManager fetchGroups:@"publicGuilds"
                               onSuccess:^() {
                                   _suggestedGuilds = nil;
-                                  if ([self.tableView numberOfSections] != [self numberOfSectionsInTableView:self.tableView]) {
-                                      if ([self.tableView numberOfSections] < 3) {
-                                          [self.tableView insertSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+                                  if ([weakSelf.tableView numberOfSections] != [weakSelf numberOfSectionsInTableView:weakSelf.tableView]) {
+                                      if ([weakSelf.tableView numberOfSections] < 3) {
+                                          [weakSelf.tableView insertSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
                                       } else {
-                                          [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+                                          [weakSelf.tableView deleteSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
                                       }
                                   } else {
-                                      if ([self numberOfSectionsInTableView:self.tableView] == 3) {
-                                          [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+                                      if ([weakSelf numberOfSectionsInTableView:self.tableView] == 3) {
+                                          [weakSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
                                       }
                                   }
                                   

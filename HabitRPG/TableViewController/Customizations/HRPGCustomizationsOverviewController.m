@@ -378,12 +378,7 @@ NSIndexPath *selectedIndex;
     [self.sharedManager updateUser:@{
         @"preferences.size" : newSize
     }
-        onSuccess:^() {
-
-        }
-        onError:^(){
-
-        }];
+        onSuccess:nil onError:nil];
 }
 
 @end

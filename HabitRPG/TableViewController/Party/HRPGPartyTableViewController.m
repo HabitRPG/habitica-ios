@@ -31,29 +31,37 @@
 }
 
 - (void)refresh {
+    __weak HRPGPartyTableViewController *weakSelf = self;
     if (!self.groupID) {
         [self.sharedManager fetchUser:^{
-            if (self.user.partyID) {
-                [self refresh];
-            } else {
-                [self.refreshControl endRefreshing];
+            if (weakSelf) {
+                if (weakSelf.user.partyID) {
+                    [weakSelf refresh];
+                } else {
+                    [weakSelf.refreshControl endRefreshing];
+                }
             }
-        }
-            onError:^{
-                [self.refreshControl endRefreshing];
+        } onError:^{
+                if (weakSelf) {
+                    [weakSelf.refreshControl endRefreshing];
+                }
             }];
         return;
     }
     [self.sharedManager fetchGroup:@"party"
         onSuccess:^() {
-            [self.refreshControl endRefreshing];
-            [self fetchGroup];
-            self.group.unreadMessages = @NO;
-            [self.sharedManager chatSeen:self.group.id];
+            if (weakSelf) {
+                [weakSelf.refreshControl endRefreshing];
+                [weakSelf fetchGroup];
+                weakSelf.group.unreadMessages = @NO;
+                [weakSelf.sharedManager chatSeen:self.group.id];
+            }
         }
         onError:^() {
-            [self.refreshControl endRefreshing];
-            [self.sharedManager displayNetworkError];
+            if (weakSelf) {
+                [weakSelf.refreshControl endRefreshing];
+                [weakSelf.sharedManager displayNetworkError];
+            }
         }];
 }
 
@@ -130,15 +138,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.user.invitedParty && !self.group) {
         if (indexPath.item == 1) {
+            __weak HRPGPartyTableViewController *weakSelf = self;
             [self.sharedManager joinGroup:self.user.invitedParty
                 withType:@"party"
                 onSuccess:^() {
-                    [self fetchGroup];
-                    [self.tableView reloadData];
+                    [weakSelf fetchGroup];
+                    [weakSelf.tableView reloadData];
                 }
-                onError:^(){
-
-                }];
+                onError:nil];
         } else if (indexPath.item == 2) {
             // TODO
         }
@@ -235,10 +242,11 @@
     if (formViewController.editGroup) {
         [self.sharedManager updateGroup:formViewController.group onSuccess:nil onError:nil];
     } else {
+        __weak HRPGPartyTableViewController *weakSelf = self;
         [self.sharedManager createGroup:formViewController.group
                               onSuccess:^() {
-                                  [self fetchGroup];
-                                  [self.tableView reloadData];
+                                  [weakSelf fetchGroup];
+                                  [weakSelf.tableView reloadData];
                               }
                                 onError:nil];
     }

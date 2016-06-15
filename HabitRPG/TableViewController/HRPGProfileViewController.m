@@ -91,13 +91,14 @@ NIKFontAwesomeIconFactory *iconFactory;
 }
 
 - (void)refresh {
+    __weak HRPGProfileViewController *weakSelf = self;
     [self.sharedManager fetchUser:^() {
-        [self.refreshControl endRefreshing];
-        [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:1 inSection:1] ]
+        [weakSelf.refreshControl endRefreshing];
+        [weakSelf.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:1 inSection:1] ]
                               withRowAnimation:UITableViewRowAnimationFade];
     }
         onError:^() {
-            [self.refreshControl endRefreshing];
+            [weakSelf.refreshControl endRefreshing];
         }];
 }
 

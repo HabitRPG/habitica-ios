@@ -302,20 +302,11 @@ static NSString *const reuseIdentifier = @"Cell";
                     [self.sharedManager updateUser:@{
                         self.userKey : [self.selectedCustomization valueForKey:@"name"]
                     }
-                        onSuccess:^() {
-
-                        }
-                        onError:^(){
-
-                        }];
+                        onSuccess:nil onError:nil];
                 } else {
                     [self.sharedManager equipObject:[self.selectedCustomization valueForKey:@"key"]
                         withType:self.userKey
-                        onSuccess:^{
-                        }
-                        onError:^{
-
-                        }];
+                        onSuccess:nil onError:nil];
                 }
             }
             break;
@@ -328,22 +319,21 @@ static NSString *const reuseIdentifier = @"Cell";
                         return;
                     }
                     [self.sharedManager unlockPath:[self.selectedCustomization getPath]
-                        onSuccess:^() {
-                        }
-                        onError:^(){
-                        }];
+                        onSuccess:nil onError:nil];
                 } else {
                     if ([self.user.balance floatValue] < 0.5) {
                         [self displayGemPurchaseView];
                         return;
                     }
+                    __weak HRPGCustomizationCollectionViewController *weakSelf = self;
                     [self.sharedManager purchaseItem:[self.selectedCustomization valueForKey:@"key"]
                         fromType:@"gear"
                         onSuccess:^() {
-                            [self.collectionView reloadData];
+                            if (weakSelf) {
+                                [weakSelf.collectionView reloadData];
+                            }
                         }
-                        onError:^(){
-                        }];
+                        onError:nil];
                 }
             }
             break;
@@ -353,12 +343,13 @@ static NSString *const reuseIdentifier = @"Cell";
                     [self displayGemPurchaseView];
                     return;
                 }
+                __weak HRPGCustomizationCollectionViewController *weakSelf = self;
                 [self.sharedManager unlockPath:self.selectedSetPath
                     onSuccess:^() {
-                        [self.collectionView reloadData];
-                    }
-                    onError:^(){
-                    }];
+                        if (weakSelf) {
+                            [weakSelf.collectionView reloadData];
+                        }
+                    } onError:nil];
             }
             break;
         default:

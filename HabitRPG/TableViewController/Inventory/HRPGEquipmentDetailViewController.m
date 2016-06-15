@@ -266,29 +266,30 @@ float textWidth;
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     [self.tableView deselectRowAtIndexPath:selectedIndex animated:YES];
     if (buttonIndex == 0) {
+        __weak HRPGEquipmentDetailViewController *weakSelf = self;
         [self.sharedManager
             equipObject:selectedGear.key
                withType:self.equipType
               onSuccess:^() {
-                  if (self.equippedIndex && (self.equippedIndex.item != selectedIndex.item ||
-                                             self.equippedIndex.section != selectedIndex.section)) {
-                      [self.tableView reloadRowsAtIndexPaths:@[ selectedIndex, self.equippedIndex ]
+                  if (weakSelf.equippedIndex && (weakSelf.equippedIndex.item != selectedIndex.item ||
+                                             weakSelf.equippedIndex.section != selectedIndex.section)) {
+                      [weakSelf.tableView reloadRowsAtIndexPaths:@[ selectedIndex, weakSelf.equippedIndex ]
                                             withRowAnimation:UITableViewRowAnimationFade];
                   } else {
-                      [self.tableView reloadRowsAtIndexPaths:@[ selectedIndex ]
+                      [weakSelf.tableView reloadRowsAtIndexPaths:@[ selectedIndex ]
                                             withRowAnimation:UITableViewRowAnimationFade];
                   }
-                  if ([self.equipType isEqualToString:@"equipped"]) {
-                      if ([selectedGear isEquippedBy:self.user]) {
-                          self.equippedIndex = selectedIndex;
+                  if ([weakSelf.equipType isEqualToString:@"equipped"]) {
+                      if ([selectedGear isEquippedBy:weakSelf.user]) {
+                          weakSelf.equippedIndex = selectedIndex;
                       } else {
-                          self.equippedIndex = nil;
+                          weakSelf.equippedIndex = nil;
                       }
                   } else {
-                      if ([selectedGear isCostumeOf:self.user]) {
-                          self.equippedIndex = selectedIndex;
+                      if ([selectedGear isCostumeOf:weakSelf.user]) {
+                          weakSelf.equippedIndex = selectedIndex;
                       } else {
-                          self.equippedIndex = nil;
+                          weakSelf.equippedIndex = nil;
                       }
                   }
               }

@@ -22,12 +22,7 @@
     [super viewDidLoad];
 
     [self.sharedManager fetchMember:self.userID
-        onSuccess:^() {
-
-        }
-        onError:^(){
-
-        }];
+        onSuccess:nil onError:nil];
 
     self.navigationItem.title = self.username;
     [self configureMarkdownAttributes];

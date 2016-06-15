@@ -30,11 +30,12 @@
         if ([manager getUser].username.length == 0) {
             self.activityIndicator.alpha = 1;
             [self.activityIndicator startAnimating];
+            __weak HRPGLoadingViewController *weakSelf = self;
             [manager fetchUser:^() {
-                [self performSegueWithIdentifier:@"InitialSegue" sender:self];
+                [weakSelf performSegueWithIdentifier:@"InitialSegue" sender:self];
             }
                 onError:^() {
-                    [self performSegueWithIdentifier:@"InitialSegue" sender:self];
+                    [weakSelf performSegueWithIdentifier:@"InitialSegue" sender:self];
                 }];
         } else {
             [self performSegueWithIdentifier:@"InitialSegue" sender:self];

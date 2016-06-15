@@ -217,49 +217,50 @@
                      }];
     [self.passwordField resignFirstResponder];
     [self.usernameField resignFirstResponder];
+    __weak HRPGLoginViewController *weakSelf = self;
     if (self.isRegistering) {
         [self.emailField resignFirstResponder];
         [self.repeatPasswordField resignFirstResponder];
 
-        [_sharedManager registerUser:self.usernameField.text
+        [self.sharedManager registerUser:self.usernameField.text
             withPassword:self.passwordField.text
             withEmail:self.emailField.text
             onSuccess:^() {
-                [_sharedManager setCredentials];
-                [_sharedManager fetchUser:^() {
+                [weakSelf.sharedManager setCredentials];
+                [weakSelf.sharedManager fetchUser:^() {
                     [[NSNotificationCenter defaultCenter]
                         postNotificationName:@"shouldReloadAllData"
                                       object:nil];
-                    [self performSegueWithIdentifier:@"SetupSegue" sender:self];
+                    [weakSelf performSegueWithIdentifier:@"SetupSegue" sender:weakSelf];
                 }
                     onError:^() {
-                        [self performSegueWithIdentifier:@"SetupSegue" sender:self];
+                        [weakSelf performSegueWithIdentifier:@"SetupSegue" sender:weakSelf];
 
                     }];
             }
             onError:^(NSString *errorMessage) {
                 if ([errorMessage isEqualToString:@"Email already taken"]) {
-                    self.navigationItem.prompt = NSLocalizedString(@"Email already taken.", nil);
-                    [self.emailField becomeFirstResponder];
+                    weakSelf.navigationItem.prompt = NSLocalizedString(@"Email already taken.", nil);
+                    [weakSelf.emailField becomeFirstResponder];
                 } else if ([errorMessage isEqualToString:@"Username already taken"]) {
-                    self.navigationItem.prompt = NSLocalizedString(@"Username already taken.", nil);
-                    [self.usernameField becomeFirstResponder];
+                    weakSelf.navigationItem.prompt = NSLocalizedString(@"Username already taken.", nil);
+                    [weakSelf.usernameField becomeFirstResponder];
                 } else {
-                    self.navigationItem.prompt = errorMessage;
+                    weakSelf.navigationItem.prompt = errorMessage;
                 }
-                [self showLoginLabel];
+                [weakSelf showLoginLabel];
             }];
     } else {
-        [_sharedManager loginUser:self.usernameField.text
+        [self.sharedManager loginUser:self.usernameField.text
             withPassword:self.passwordField.text
             onSuccess:^() {
-                [self onSuccessfullLogin];
+                [weakSelf onSuccessfullLogin];
             }
             onError:^() {
-                self.navigationItem.prompt =
+                weakSelf.navigationItem.prompt =
                     NSLocalizedString(@"Invalid username or password", nil);
-                [self.usernameField becomeFirstResponder];
-                [self showLoginLabel];
+                [weakSelf.usernameField becomeFirstResponder];
+                [weakSelf showLoginLabel];
             }];
     }
 }
@@ -418,7 +419,7 @@
 }
 
 - (void)onSuccessfullLogin {
-    [_sharedManager setCredentials];
+    [self.sharedManager setCredentials];
 
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"behaviour"
@@ -432,20 +433,21 @@
     [eventProperties setValue:@"event" forKey:@"hitType"];
     [[Amplitude instance] logEvent:@"login" withEventProperties:eventProperties];
 
-    [_sharedManager fetchUser:^() {
+    __weak HRPGLoginViewController *weakSelf = self;
+    [self.sharedManager fetchUser:^() {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"shouldReloadAllData"
                                                             object:nil];
-        if (self.isRootViewController) {
-            [self performSegueWithIdentifier:@"MainSegue" sender:self];
+        if (weakSelf.isRootViewController) {
+            [weakSelf performSegueWithIdentifier:@"MainSegue" sender:weakSelf];
         } else {
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
         }
     }
         onError:^() {
-            if (self.isRootViewController) {
-                [self performSegueWithIdentifier:@"MainSegue" sender:self];
+            if (weakSelf.isRootViewController) {
+                [weakSelf performSegueWithIdentifier:@"MainSegue" sender:weakSelf];
             } else {
-                [self dismissViewControllerAnimated:YES completion:nil];
+                [weakSelf dismissViewControllerAnimated:YES completion:nil];
             }
         }];
 }

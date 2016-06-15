@@ -216,16 +216,17 @@
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate {
     InboxMessage *message = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    __weak HRPGInboxChatViewController *weakSelf = self;
     cell.profileAction = ^() {
         HRPGUserProfileViewController *profileViewController =
-        [self.storyboard instantiateViewControllerWithIdentifier:@"UserProfileViewController"];
+        [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"UserProfileViewController"];
         profileViewController.userID = message.userID;
         profileViewController.username = message.username;
-        [self.navigationController pushViewController:profileViewController animated:YES];
+        [weakSelf.navigationController pushViewController:profileViewController animated:YES];
     };
     
     cell.deleteAction = ^() {
-        [self.sharedManager deletePrivateMessage:message onSuccess:nil onError:nil];
+        [weakSelf.sharedManager deletePrivateMessage:message onSuccess:nil onError:nil];
     };
     
     [cell configureForInboxMessage:message withUser:self.user];

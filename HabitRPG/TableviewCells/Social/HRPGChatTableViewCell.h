@@ -37,10 +37,10 @@ typedef NS_ENUM(NSInteger, HRPGChatTableViewCellType) {
 - (void)configureForInboxMessage:(InboxMessage *)message
                         withUser:(User *)thisUser;
 
-@property(nonatomic, copy) void (^profileAction)();
-@property(nonatomic, copy) void (^flagAction)();
-@property(nonatomic, copy) void (^replyAction)();
-@property(nonatomic, copy) void (^deleteAction)();
-@property(nonatomic, copy) void (^plusOneAction)();
+@property(nonatomic) void (^profileAction)();
+@property(nonatomic) void (^flagAction)();
+@property(nonatomic) void (^replyAction)();
+@property(nonatomic) void (^deleteAction)();
+@property(nonatomic) void (^plusOneAction)();
 
 @end

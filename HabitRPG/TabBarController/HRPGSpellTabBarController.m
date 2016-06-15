@@ -70,26 +70,20 @@
 }
 
 - (void)castSpell {
+    __weak HRPGSpellTabBarController *weakSelf = self;
     [self.sharedManager castSpell:self.spell.key
         withTargetType:self.spell.target
         onTarget:self.taskID
         onSuccess:^() {
-            [self.sourceTableView reloadData];
-        }
-        onError:^(){
-
-        }];
+            [weakSelf.sourceTableView reloadData];
+        } onError:nil];
     [self dismissViewControllerAnimated:YES
-                             completion:^(){
-
-                             }];
+                             completion:nil];
 }
 
 - (IBAction)cancelAction:(id)sender {
     [self dismissViewControllerAnimated:YES
-                             completion:^(){
-
-                             }];
+                             completion:nil];
 }
 
 @end

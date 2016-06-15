@@ -147,13 +147,16 @@ CGFloat viewSize = 60;
 - (void)itemSelected:(UITapGestureRecognizer *)recognizer {
     self.selectionAction(self.items[recognizer.view.tag]);
     self.selectedItem = ((Customization *)self.items[recognizer.view.tag]).name;
+    __weak HRPGCustomizationSelectionView *weakSelf = self;
     [UIView animateWithDuration:0.3
         delay:0.0
         usingSpringWithDamping:0.8
         initialSpringVelocity:0.5
         options:UIViewAnimationOptionCurveLinear
         animations:^() {
-            self.selectedView.frame = ((UIView *)self.views[recognizer.view.tag]).frame;
+            if (weakSelf) {
+                weakSelf.selectedView.frame = ((UIView *)weakSelf.views[recognizer.view.tag]).frame;
+            }
         }
         completion:^(BOOL completed){
 

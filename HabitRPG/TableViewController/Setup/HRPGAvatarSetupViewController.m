@@ -511,13 +511,7 @@
     }
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
     HRPGManager *manager = appdelegate.sharedManager;
-    [manager updateUser:updateDict
-        onSuccess:^() {
-
-        }
-        onError:^(){
-
-        }];
+    [manager updateUser:updateDict onSuccess:nil onError:nil];
 
     if (self.currentStep != HRPGAvatarSetupStepsAvatar) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -571,15 +565,16 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+    __weak HRPGAvatarSetupViewController *weakSelf = self;
     if (bottomEdge >= scrollView.contentSize.height) {
         [UIView animateWithDuration:0.2
                          animations:^() {
-                             self.arrowView.alpha = 0;
+                             weakSelf.arrowView.alpha = 0;
                          }];
     } else if (self.arrowView.alpha == 0) {
         [UIView animateWithDuration:0.2
                          animations:^() {
-                             self.arrowView.alpha = 1;
+                             weakSelf.arrowView.alpha = 1;
                          }];
     }
 }

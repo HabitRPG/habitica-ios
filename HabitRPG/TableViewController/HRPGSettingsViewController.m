@@ -222,7 +222,7 @@ User *user;
     MRProgressOverlayView *overlayView = [MRProgressOverlayView
         showOverlayAddedTo:self.navigationController.parentViewController.view
                   animated:YES];
-    
+    __weak HRPGSettingsViewController *weakSelf = self;
     void (^logoutBlock)() = ^() {
         PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
         [keyChain setString:@"" forKey:@"id"];
@@ -231,9 +231,9 @@ User *user;
         [defaults setObject:@"" forKey:@"habitFilter"];
         [defaults setObject:@"" forKey:@"dailyFilter"];
         [defaults setObject:@"" forKey:@"todoFilter"];
-        [self.sharedManager clearLoginCredentials];
+        [weakSelf.sharedManager clearLoginCredentials];
         
-        [self.sharedManager
+        [weakSelf.sharedManager
          resetSavedDatabase:YES
          onComplete:^() {
              [overlayView dismiss:YES
@@ -243,7 +243,7 @@ User *user;
                            UINavigationController *navigationController =
                            [storyboard instantiateViewControllerWithIdentifier:
                             @"loginNavigationController"];
-                           [self presentViewController:navigationController
+                           [weakSelf presentViewController:navigationController
                                               animated:YES
                                             completion:nil];
                        }];

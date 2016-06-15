@@ -256,13 +256,11 @@
     if ([result count] > 0) {
         _quest = result[0];
         if (!_quest.text) {
+            __weak HRPGQuestGroupTableViewController *weakSelf;
             [self.sharedManager fetchContent:^() {
-                self.quest = nil;
-                [self.tableView reloadData];
-            }
-                onError:^(){
-
-                }];
+                weakSelf.quest = nil;
+                [weakSelf.tableView reloadData];
+            } onError:nil];
         }
     }
     return _quest;

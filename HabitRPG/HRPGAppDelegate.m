@@ -136,10 +136,7 @@
 
     User *user = [self.sharedManager getUser];
     if (user) {
-        [self.sharedManager fetchUser:^() {
-        }
-            onError:^(){
-            }];
+        [self.sharedManager fetchUser:nil onError:nil];
     }
 
     [self checkMaintenanceScreen];
@@ -292,8 +289,9 @@
     } else if ([self.window.rootViewController isKindOfClass:[HRPGLoadingViewController class]]) {
         HRPGLoadingViewController *loadingViewController =
         (HRPGLoadingViewController *)self.window.rootViewController;
+        __weak HRPGAppDelegate *weakSelf = self;
         loadingViewController.loadingFinishedAction = ^() {
-            [self handlePushNotification:userInfo];
+            [weakSelf handlePushNotification:userInfo];
         };
     }
 }
@@ -455,8 +453,9 @@
     } else if ([self.window.rootViewController isKindOfClass:[HRPGLoadingViewController class]]) {
         HRPGLoadingViewController *loadingViewController =
             (HRPGLoadingViewController *)self.window.rootViewController;
+        __weak HRPGAppDelegate *weakSelf = self;
         loadingViewController.loadingFinishedAction = ^() {
-            [self displayTaskWithId:taskID fromType:taskType];
+            [weakSelf displayTaskWithId:taskID fromType:taskType];
         };
     }
 }

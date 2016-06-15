@@ -1791,11 +1791,7 @@ NSString *currentUser;
         if ([fetchedObjects count] > 0) {
             self.user = fetchedObjects[0];
         } else {
-            [self fetchUser:^() {
-            }
-                onError:^(){
-
-                }];
+            [self fetchUser:nil onError:nil];
         }
     }
 
@@ -2165,8 +2161,7 @@ NSString *currentUser;
                     successBlock();
                 }
             }
-                onError:^(){
-                }];
+                onError:nil];
             [self.networkIndicatorController endNetworking];
             return;
         }
@@ -2289,12 +2284,7 @@ NSString *currentUser;
             }
             if (operation.HTTPRequestOperation.response.statusCode == 200) {
                 [self fetchGroups:@"party"
-                    onSuccess:^() {
-
-                    }
-                    onError:^(){
-
-                    }];
+                    onSuccess:nil onError:nil];
                 return;
             }
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
@@ -2966,8 +2956,7 @@ NSString *currentUser;
                         successBlock();
                     }
                 }
-                onError:^(){
-                }];
+                onError:nil];
 
             [self.networkIndicatorController endNetworking];
             return;
@@ -3148,8 +3137,7 @@ NSString *currentUser;
                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
                 successBlock();
             }
-                onError:^(){
-                }];
+                onError:nil];
             [self.networkIndicatorController endNetworking];
             return;
         }
@@ -4361,12 +4349,7 @@ NSString *currentUser;
 }
 
 - (void)displayLevelUpNotification {
-    [self fetchUser:^() {
-        
-    }
-            onError:^(){
-                
-            }];
+    [self fetchUser:nil onError:nil];
     
     if ([self.user.level integerValue] == 10 && ![self.user.preferences.disableClass boolValue]) {
         HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;

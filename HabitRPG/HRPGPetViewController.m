@@ -341,17 +341,17 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
+        __weak HRPGPetViewController *weakSelf;
         [self.sharedManager equipObject:self.selectedPet.key
             withType:@"pet"
             onSuccess:^() {
-                if ([self.equippedPetName isEqualToString:self.selectedPet.key]) {
-                    self.equippedPetName = nil;
+                if ([weakSelf.equippedPetName isEqualToString:weakSelf.selectedPet.key]) {
+                    weakSelf.equippedPetName = nil;
                 } else {
-                    self.equippedPetName = self.selectedPet.key;
+                    weakSelf.equippedPetName = weakSelf.selectedPet.key;
                 }
             }
-            onError:^(){
-            }];
+            onError:nil];
     } else if (actionSheet.numberOfButtons > 2 && buttonIndex == 1) {
         [self performSegueWithIdentifier:@"FeedSegue" sender:self];
     }
@@ -366,10 +366,7 @@
     self.selectedPet.niceMountName = [self niceMountName:self.selectedPet];
     [self.sharedManager feedPet:self.selectedPet
         withFood:food
-        onSuccess:^() {
-        }
-        onError:^(){
-        }];
+        onSuccess:nil onError:nil];
 }
 
 @end

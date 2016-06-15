@@ -239,12 +239,7 @@
     [self.sharedManager inviteMembers:formViewController.members
         withInvitationType:formViewController.invitationType
         toGroupWithID:self.partyID
-        onSuccess:^() {
-
-        }
-        onError:^(){
-
-        }];
+        onSuccess:nil onError:nil];
 }
 
 @end

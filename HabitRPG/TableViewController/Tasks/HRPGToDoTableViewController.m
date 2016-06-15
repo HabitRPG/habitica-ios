@@ -60,7 +60,7 @@
     Task *task = [self taskAtIndexPath:indexPath];
 
     cell.dateFormatter = self.dateFormatter;
-
+    __weak HRPGToDoTableViewController *weakSelf = self;
     if (self.openedIndexPath && self.openedIndexPath.item < indexPath.item &&
         indexPath.item <= (self.openedIndexPath.item + self.indexOffset)) {
         int currentOffset = (int)(indexPath.item - self.openedIndexPath.item - 1);
@@ -74,21 +74,21 @@
             if (![task.currentlyChecking boolValue]) {
                 item.currentlyChecking = @YES;
                 item.completed = @(![item.completed boolValue]);
-                [self.sharedManager updateTask:task
+                [weakSelf.sharedManager updateTask:task
                     onSuccess:^() {
                         item.currentlyChecking = @NO;
-                        if ([self isIndexPathVisible:indexPath]) {
-                            [self configureCell:cell atIndexPath:indexPath withAnimation:YES];
+                        if ([weakSelf isIndexPathVisible:indexPath]) {
+                            [weakSelf configureCell:cell atIndexPath:indexPath withAnimation:YES];
                         }
                         NSIndexPath *taskPath = [self indexPathForTaskWithOffset:indexPath];
-                        if ([self isIndexPathVisible:taskPath]) {
+                        if ([weakSelf isIndexPathVisible:taskPath]) {
                             NSArray *paths;
                             if (indexPath.item != taskPath.item) {
                                 paths = @[ indexPath, taskPath ];
                             } else {
                                 paths = @[ indexPath ];
                             }
-                            [self.tableView
+                            [weakSelf.tableView
                                 reloadRowsAtIndexPaths:paths
                                       withRowAnimation:UITableViewRowAnimationAutomatic];
                         }
@@ -104,7 +104,7 @@
             if (![task.currentlyChecking boolValue]) {
                 task.currentlyChecking = @YES;
                 NSString *actionName = [task.completed boolValue] ? @"down" : @"up";
-                [self.sharedManager upDownTask:task
+                [weakSelf.sharedManager upDownTask:task
                     direction:actionName
                     onSuccess:^(NSArray *valuesArray) {
                         task.currentlyChecking = @NO;
@@ -124,17 +124,10 @@
 }
 
 - (void)clearCompletedTasks:(UITapGestureRecognizer *)tapRecognizer {
+    __weak HRPGToDoTableViewController *weakSelf = self;
     [self.sharedManager clearCompletedTasks:^() {
-        [self.sharedManager fetchUser:^() {
-
-        }
-            onError:^(){
-
-            }];
-    }
-        onError:^(){
-
-        }];
+        [weakSelf.sharedManager fetchUser:nil onError:nil];
+    } onError:nil];
 }
 
 - (void)expandSelectedCell:(UITapGestureRecognizer *)gesture {

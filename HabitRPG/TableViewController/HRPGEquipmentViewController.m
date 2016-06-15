@@ -266,14 +266,15 @@
 }
 
 - (void)changeWearingCostume:(UISwitch *)switchState {
+    __weak HRPGEquipmentViewController *weakSelf = self;
     [self.sharedManager updateUser:@{
         @"preferences.costume" : @(switchState.on)
     }
         onSuccess:^() {
-            switchState.on = [self.user.preferences.useCostume boolValue];
+            switchState.on = [weakSelf.user.preferences.useCostume boolValue];
         }
         onError:^() {
-            switchState.on = [self.user.preferences.useCostume boolValue];
+            switchState.on = [weakSelf.user.preferences.useCostume boolValue];
         }];
 }
 

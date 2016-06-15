@@ -105,12 +105,12 @@
 }
 
 - (void)joinGroup {
+    __weak HRPGGroupAboutTableViewController *weakSelf = self;
     [self.sharedManager joinGroup:self.group.id
                          withType:self.group.type
                         onSuccess:^() {
-                            self.navigationItem.rightBarButtonItem = nil;
-                        }
-                          onError:nil];
+                            weakSelf.navigationItem.rightBarButtonItem = nil;
+                        } onError:nil];
 }
 
 #pragma mark - Table view data source
@@ -180,29 +180,30 @@
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGGroupFormViewController *formViewController = segue.sourceViewController;
+    __weak HRPGGroupAboutTableViewController *weakSelf = self;
     [self.sharedManager
         updateGroup:formViewController.group
           onSuccess:^() {
-              if ([self.presentingViewController
+              if ([weakSelf.presentingViewController
                           .class isSubclassOfClass:HRPGGroupTableViewController.class]) {
                   HRPGGroupTableViewController *vc =
-                      (HRPGGroupTableViewController *)self.presentingViewController;
+                      (HRPGGroupTableViewController *)weakSelf.presentingViewController;
                   [vc fetchGroup];
                   self.group = vc.group;
                   [self.tableView reloadData];
               }
-          }
-            onError:nil];
+          } onError:nil];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
+        __weak HRPGGroupAboutTableViewController *weakSelf = self;
         [self.sharedManager
             leaveGroup:self.group
               withType:self.group.type
              onSuccess:^() {
                  for (UIViewController *aViewController in
-                      [NSMutableArray arrayWithArray:[self.navigationController viewControllers]]) {
+                      [NSMutableArray arrayWithArray:[weakSelf.navigationController viewControllers]]) {
                      if ([aViewController isKindOfClass:[HRPGProfileViewController class]]) {
                          [self.navigationController popToViewController:aViewController
                                                                animated:NO];

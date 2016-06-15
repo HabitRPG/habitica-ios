@@ -46,10 +46,7 @@
         [self.sharedManager updateUser:@{
             @"flags.newStuff" : @NO
         }
-            onSuccess:^() {
-            }
-            onError:^(){
-            }];
+            onSuccess:nil onError:nil];
     }
 }
 

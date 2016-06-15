@@ -47,11 +47,12 @@
 
     [cell configureForTask:task];
 
+    __weak HRPGHabitTableViewController *weakSelf = self;
     [cell.buttons onUpAction:^() {
-        [self.sharedManager upDownTask:task direction:@"up" onSuccess:nil onError:nil];
+        [weakSelf.sharedManager upDownTask:task direction:@"up" onSuccess:nil onError:nil];
     }];
     [cell.buttons onDownAction:^() {
-        [self.sharedManager upDownTask:task direction:@"down" onSuccess:nil onError:nil];
+        [weakSelf.sharedManager upDownTask:task direction:@"down" onSuccess:nil onError:nil];
     }];
 }
 

@@ -279,13 +279,14 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
+        __weak HRPGMountViewController *weakSelf = self;
         [self.sharedManager equipObject:self.selectedMount.key
             withType:@"mount"
             onSuccess:^() {
-                if ([self.equippedMountName isEqualToString:self.selectedMount.key]) {
-                    self.equippedMountName = nil;
+                if ([weakSelf.equippedMountName isEqualToString:weakSelf.selectedMount.key]) {
+                    weakSelf.equippedMountName = nil;
                 } else {
-                    self.equippedMountName = self.selectedMount.key;
+                    weakSelf.equippedMountName = weakSelf.selectedMount.key;
                 }
             }
             onError:^(){

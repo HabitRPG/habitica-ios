@@ -303,11 +303,11 @@
                             [self alertView:nil clickedButtonAtIndex:1];
                         }];
             [alertController addAction:confirmAction];
-
+            __weak HRPGClassTableViewController *weakSelf = self;
             [self presentViewController:alertController
                                animated:YES
                              completion:^() {
-                                 [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+                                 [weakSelf.tableView deselectRowAtIndexPath:indexPath animated:YES];
                              }];
         } else {
             UIAlertView *message = [[UIAlertView alloc]
@@ -428,15 +428,15 @@
     if (buttonIndex == 0) {
         [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
     } else {
+        __weak HRPGClassTableViewController *weakSelf = self;
         if (self.selectedIndex.item == 4) {
             [self.sharedManager disableClasses:^() {
-                                     if (self.navigationController.viewControllers.count > 1) {
-                                         [self.navigationController popViewControllerAnimated:YES];
+                                     if (weakSelf.navigationController.viewControllers.count > 1) {
+                                         [weakSelf.navigationController popViewControllerAnimated:YES];
                                      } else {
-                                         [self.presentingViewController
+                                         [weakSelf.presentingViewController
                                              dismissViewControllerAnimated:YES
-                                                                completion:^(){
-                                                                }];
+                                                                completion:^(){}];
                                      }
                                  }
                                    onError:nil];
@@ -444,22 +444,21 @@
             [self.sharedManager
                 changeClass:self.classesArray[self.selectedIndex.item][3]
                   onSuccess:^() {
-                      [self.sharedManager fetchUser:^() {
-                          if (self.navigationController.viewControllers.count > 1) {
-                              [self.navigationController popViewControllerAnimated:YES];
+                      [weakSelf.sharedManager fetchUser:^() {
+                          if (weakSelf.navigationController.viewControllers.count > 1) {
+                              [weakSelf.navigationController popViewControllerAnimated:YES];
                           } else {
-                              [self.presentingViewController dismissViewControllerAnimated:YES
+                              [weakSelf.presentingViewController dismissViewControllerAnimated:YES
                                                                                 completion:^(){
                                                                                 }];
                           }
                       }
                           onError:^() {
-                              if (self.navigationController.viewControllers.count > 1) {
-                                  [self.navigationController popViewControllerAnimated:YES];
+                              if (weakSelf.navigationController.viewControllers.count > 1) {
+                                  [weakSelf.navigationController popViewControllerAnimated:YES];
                               } else {
-                                  [self.presentingViewController dismissViewControllerAnimated:YES
-                                                                                    completion:^(){
-                                                                                    }];
+                                  [weakSelf.presentingViewController dismissViewControllerAnimated:YES
+                                                                                    completion:^(){}];
                               }
                           }];
                   }
