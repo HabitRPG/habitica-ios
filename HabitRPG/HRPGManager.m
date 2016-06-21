@@ -1260,7 +1260,7 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
 
     responseDescriptor = [RKResponseDescriptor
-        responseDescriptorWithMapping:entityMapping
+        responseDescriptorWithMapping:emptyMapping
                                method:RKRequestMethodPOST
                           pathPattern:@"groups/:id/invite"
                               keyPath:@"data"
@@ -3688,7 +3688,7 @@ NSString *currentUser;
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 400 || operation.HTTPRequestOperation.response.statusCode == 404) {
+            } else if (operation.HTTPRequestOperation.response.statusCode == 400 || operation.HTTPRequestOperation.response.statusCode == 404 || operation.HTTPRequestOperation.response.statusCode == 401) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invitation Error", nil)
                                                                 message:error.localizedDescription
                                                                delegate:nil

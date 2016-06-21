@@ -239,7 +239,14 @@
     [self.sharedManager inviteMembers:formViewController.members
         withInvitationType:formViewController.invitationType
         toGroupWithID:self.partyID
-        onSuccess:nil onError:nil];
+                            onSuccess:^() {
+                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invitation Successful", nil)
+                                                                                message:NSLocalizedString(@"The users were invited to your party", nil)
+                                                                               delegate:nil
+                                                                      cancelButtonTitle:@"OK"
+                                                                      otherButtonTitles:nil];
+                                [alert show];
+                            } onError:nil];
 }
 
 @end
