@@ -369,7 +369,7 @@
     if (!message.attributedText) {
         message.attributedText = [self renderMarkdown:message.text];
     }
-    [cell configureForMessage:message withUserID:self.user.id withUsername:self.user.username];
+    [cell configureForMessage:message withUserID:self.user.id withUsername:self.user.username isModerator:([self.user.contributorLevel intValue] >= 8)];
     __weak HRPGGroupTableViewController *weakSelf = self;
     cell.profileAction = ^() {
         HRPGUserProfileViewController *profileViewController =

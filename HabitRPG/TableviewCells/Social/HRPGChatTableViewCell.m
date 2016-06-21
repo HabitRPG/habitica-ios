@@ -12,8 +12,9 @@
 
 @interface HRPGChatTableViewCell ()
 
-@property bool isOwnMessage;
-@property bool isPrivateMessage;
+@property BOOL isOwnMessage;
+@property BOOL isPrivateMessage;
+@property BOOL isModerator;
 @end
 
 @implementation HRPGChatTableViewCell
@@ -41,19 +42,14 @@
 }
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
-    if (self.isOwnMessage) {
-        return (action == @selector(copy:) || action == @selector(profileMenuItemSelected:) ||
-                action == @selector(delete:));
-    } else {
-        if (self.isPrivateMessage) {
-            return (action == @selector(copy:) || action == @selector(profileMenuItemSelected:) ||
-                    action == @selector(delete:));
-        } else {
-            return (action == @selector(copy:) || action == @selector(profileMenuItemSelected:) ||
-                    action == @selector(reply:) || action == @selector(flag:));
-        }
-        
+    BOOL returnValue = (action == @selector(copy:) || action == @selector(profileMenuItemSelected:));
+    if (self.isOwnMessage || self.isModerator || self.isPrivateMessage) {
+        returnValue =  (returnValue || action == @selector(delete:));
     }
+    if (!self.isOwnMessage) {
+        returnValue = (returnValue || action == @selector(reply:) || action == @selector(flag:));
+    }
+    return returnValue;
 }
 
 - (void)displayMenu:(UITapGestureRecognizer *)gestureRecognizer {
@@ -128,10 +124,12 @@
 
 - (void)configureForMessage:(ChatMessage *)message
                  withUserID:(NSString *)userID
-               withUsername:(NSString *)username {
+               withUsername:(NSString *)username
+                isModerator:(BOOL)isModerator {
     self.isPrivateMessage = NO;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.backgroundColor = [UIColor whiteColor];
+    self.isModerator = isModerator;
     if (message.user) {
         self.usernameWrapper.hidden = NO;
         self.usernameLabel.text = message.user;

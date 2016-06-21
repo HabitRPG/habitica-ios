@@ -32,7 +32,8 @@ typedef NS_ENUM(NSInteger, HRPGChatTableViewCellType) {
 
 - (void)configureForMessage:(ChatMessage *)message
                  withUserID:(NSString *)userID
-               withUsername:(NSString *)username;
+               withUsername:(NSString *)username
+                isModerator:(BOOL)isModerator;
 
 - (void)configureForInboxMessage:(InboxMessage *)message
                         withUser:(User *)thisUser;
