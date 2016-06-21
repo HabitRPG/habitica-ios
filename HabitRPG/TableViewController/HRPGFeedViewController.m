@@ -90,7 +90,7 @@
     [fetchRequest setFetchBatchSize:20];
 
     NSPredicate *predicate;
-    predicate = [NSPredicate predicateWithFormat:@"owned > 0"];
+    predicate = [NSPredicate predicateWithFormat:@"owned > 0 && text != ''"];
     [fetchRequest setPredicate:predicate];
 
     NSSortDescriptor *indexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
