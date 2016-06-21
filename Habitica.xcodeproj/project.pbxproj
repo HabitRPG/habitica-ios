@@ -770,6 +770,8 @@
 				D98F5DD91C6E17280035CBEC /* HRPGQuestGroupTableViewController.m */,
 				D9AEA89F1C733BFA00FE6158 /* HRPGGroupAboutTableViewController.h */,
 				D9AEA8A01C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m */,
+				D99DEC8D190914AD00FFD2B9 /* HRPGQuestDetailViewController.h */,
+				D99DEC8E190914AD00FFD2B9 /* HRPGQuestDetailViewController.m */,
 				D9E365501930D58900C056F1 /* Party */,
 				D9436AC31C64F6E5008D1171 /* Guilds */,
 			);
@@ -1185,8 +1187,6 @@
 		D9E365501930D58900C056F1 /* Party */ = {
 			isa = PBXGroup;
 			children = (
-				D99DEC8D190914AD00FFD2B9 /* HRPGQuestDetailViewController.h */,
-				D99DEC8E190914AD00FFD2B9 /* HRPGQuestDetailViewController.m */,
 				D98F5DD51C6CFFC60035CBEC /* HRPGPartyTableViewController.h */,
 				D98F5DD61C6CFFC60035CBEC /* HRPGPartyTableViewController.m */,
 				D98F5AED1905C090002F8223 /* HRPGQuestParticipantsViewController.h */,

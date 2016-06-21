@@ -14,4 +14,7 @@
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
+@property(strong) NSString *itemType;
+@property BOOL shouldDismissAfterAction;
+
 @end

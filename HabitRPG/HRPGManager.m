@@ -518,6 +518,22 @@ NSString *currentUser;
 
         return nil;
     }];
+    
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"groups/:id/members"];
+        
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:[URL relativePath]
+                         tokenizeQueryStrings:YES
+                              parsedArguments:&argsDict];
+        if (match) {
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"partyID == %@", argsDict[@"id"]];
+            return fetchRequest;
+        }
+        
+        return nil;
+    }];
 
     RKObjectMapping *upDownMapping = [RKObjectMapping mappingForClass:[HRPGTaskResponse class]];
     [upDownMapping addAttributeMappingsFromDictionary:@{
@@ -3566,6 +3582,13 @@ NSString *currentUser;
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
+            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invitation Error"
+                                                                message:error.localizedDescription
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
             } else {
                 [self displayNetworkError];
             }
@@ -3666,7 +3689,7 @@ NSString *currentUser;
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
             } else if (operation.HTTPRequestOperation.response.statusCode == 400 || operation.HTTPRequestOperation.response.statusCode == 404) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invitation Error"
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invitation Error", nil)
                                                                 message:error.localizedDescription
                                                                delegate:nil
                                                       cancelButtonTitle:@"OK"
@@ -3769,7 +3792,6 @@ NSString *currentUser;
 }
 
 - (void)fetchGroupMembers:(NSString *)groupID
-                   lastID:(NSString *)lastID
          withPublicFields:(BOOL)withPublicFields
                  fetchAll:(BOOL)fetchAll
                 onSuccess:(void (^)())successBlock
@@ -3777,9 +3799,6 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
 
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    if (lastID) {
-        parameters[@"lastId"] = lastID;
-    }
     if (withPublicFields) {
         parameters[@"includeAllPublicFields"] = @"true";
     }
@@ -3790,7 +3809,7 @@ NSString *currentUser;
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             if ([mappingResult array].count == 30 && fetchAll) {
                 User *lastUser = [[mappingResult array] lastObject];
-                [self fetchGroupMembers:groupID lastID:lastUser.id withPublicFields:withPublicFields fetchAll:YES onSuccess:successBlock onError:errorBlock];
+                [self fetchGroupMembers:groupID withPublicFields:withPublicFields fetchAll:YES onSuccess:successBlock onError:errorBlock];
             } else {
                 if (successBlock) {
                     successBlock();
@@ -4162,7 +4181,7 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
     
     [[RKObjectManager sharedManager] postObject:nil
-                                           path:@"user/add-push-device"
+                                           path:@"user/push-devices"
                                      parameters:@{
                                                   @"regId": token,
                                                   @"type": @"ios"
@@ -4192,8 +4211,8 @@ NSString *currentUser;
         NSString *token = [defaults stringForKey:@"PushNotificationDeviceToken"];
         [defaults removeObjectForKey:@"PushNotificationDeviceToken"];
     
-        [[RKObjectManager sharedManager] getObject:nil
-                                           path:[@"user/remove-push-device/" stringByAppendingString:token]
+        [[RKObjectManager sharedManager] deleteObject:nil
+                                           path:[@"user/push-devices/" stringByAppendingString:token]
                                      parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             if (successBlock) {

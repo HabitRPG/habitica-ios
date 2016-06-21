@@ -8,6 +8,7 @@
 
 #import "HRPGPartyTableViewController.h"
 #import "HRPGGroupFormViewController.h"
+#import "HRPGItemViewController.h"
 
 @interface HRPGPartyTableViewController ()
 @property NSUserDefaults *defaults;
@@ -55,6 +56,7 @@
                 [weakSelf fetchGroup];
                 weakSelf.group.unreadMessages = @NO;
                 [weakSelf.sharedManager chatSeen:self.group.id];
+                [self reloadQuest];
             }
         }
         onError:^() {
@@ -155,6 +157,13 @@
     if (!self.group) {
         return;
     }
+    
+    if (!self.quest) {
+        if (indexPath.section == 1 && indexPath.item == 0) {
+            [self openQuestSelection];
+        }
+    }
+    
     return [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
@@ -250,6 +259,17 @@
                               }
                                 onError:nil];
     }
+}
+
+- (void) openQuestSelection {
+    
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *itemNavigationController =
+    [storyBoard instantiateViewControllerWithIdentifier:@"ItemNavigationController"];
+    HRPGItemViewController *itemViewController = (HRPGItemViewController *)itemNavigationController.topViewController;
+    itemViewController.itemType = @"quests";
+    itemViewController.shouldDismissAfterAction = YES;
+    [self.navigationController presentViewController:itemNavigationController animated:YES completion:nil];
 }
 
 @end

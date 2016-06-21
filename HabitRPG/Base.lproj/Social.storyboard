@@ -531,11 +531,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="No active quest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q1q-8Q-sgW">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Invite Party to new quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q1q-8Q-sgW">
                                             <rect key="frame" x="15" y="0.0" width="570" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="0.44783601159999997" green="0.1084804982" blue="0.99846321339999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -605,7 +605,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="left" text="Create new Party" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="grW-d9-FRm">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="left" text="Create new Party" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="grW-d9-FRm">
                                             <rect key="frame" x="15" y="0.0" width="570" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -1882,12 +1882,12 @@ Invite friends now to earn a Quest Scroll!</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="636-nl-5aS"/>
+        <segue reference="CUP-gn-Xug"/>
+        <segue reference="2KU-R3-vSq"/>
+        <segue reference="EV0-ra-m7s"/>
         <segue reference="kns-o3-fej"/>
+        <segue reference="jBF-PN-2IP"/>
         <segue reference="bEM-KI-Si8"/>
-        <segue reference="b7A-2J-zBB"/>
-        <segue reference="0iv-RI-hdf"/>
-        <segue reference="JbW-A7-g5K"/>
-        <segue reference="eAi-GT-mbk"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.4478360116481781" green="0.10848049819469452" blue="0.9984632134437561" alpha="1" colorSpace="calibratedRGB"/>
 </document>

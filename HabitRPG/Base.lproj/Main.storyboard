@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="w3K-rB-cob">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="w3K-rB-cob">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -2929,6 +2929,22 @@
             </objects>
             <point key="canvasLocation" x="294.375" y="6567.5"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ruf-6E-0Qa">
+            <objects>
+                <navigationController storyboardIdentifier="ItemNavigationController" id="c1T-s0-hTA" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="znX-dI-fQE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="sS8-cF-myv" kind="relationship" relationship="rootViewController" id="vFt-wX-7j8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e3B-Pt-L9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4471" y="2521"/>
+        </scene>
         <!--Items-->
         <scene sceneID="hkB-oV-wsF">
             <objects>
@@ -2978,11 +2994,21 @@
                             <outlet property="delegate" destination="sS8-cF-myv" id="bIM-MF-xHF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Items" id="7Sa-Zz-2NE"/>
+                    <navigationItem key="navigationItem" title="Items" id="7Sa-Zz-2NE">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="DLa-xG-L7z">
+                            <connections>
+                                <segue destination="rCI-5x-i71" kind="unwind" unwindAction="unwindToList:" id="VBL-yy-Rwq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="DLa-xG-L7z" id="qsR-Ng-DFz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tgy-p9-JH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rCI-5x-i71" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4573.125" y="2383.75"/>
+            <point key="canvasLocation" x="5196" y="2071"/>
         </scene>
         <!--Choose Task-->
         <scene sceneID="oWJ-eh-rJ0">
@@ -3891,13 +3917,14 @@
         <image name="tag" width="17" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ffA-qm-0SO"/>
+        <segue reference="E5i-VS-PGN"/>
         <segue reference="ydi-dk-kDU"/>
+        <segue reference="ffA-qm-0SO"/>
         <segue reference="sPD-XR-ORt"/>
         <segue reference="aWZ-FG-z5O"/>
-        <segue reference="OZd-8c-sWC"/>
-        <segue reference="E5i-VS-PGN"/>
+        <segue reference="DAI-nh-Ljl"/>
         <segue reference="njg-A8-lDq"/>
+        <segue reference="vFt-wX-7j8"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.52939999999999998" green="0.25879999999999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -13,6 +13,8 @@
 
 @property(nonatomic) Quest *quest;
 
+- (void)reloadQuest;
+
 - (bool)canInviteToQuest;
 
 - (bool)displayQuestSection;

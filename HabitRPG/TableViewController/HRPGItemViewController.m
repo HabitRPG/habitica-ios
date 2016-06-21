@@ -20,6 +20,7 @@
 @property BOOL isHatching;
 @property NSArray *existingPets;
 @property UIBarButtonItem *backButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 
 - (void)configureCell:(UITableViewCell *)cell
           atIndexPath:(NSIndexPath *)indexPath
@@ -37,23 +38,32 @@ float textWidth;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     textWidth = screenRect.size.width - 118;
 
-    [self clearDuplicates];
+    [self clearFaultyItems];
+    
+    if (!self.itemType) {
+        [self.navigationItem setRightBarButtonItem:nil];
+    }
 }
 
-- (void)clearDuplicates {
-    NSMutableArray *duplicates = [NSMutableArray array];
-    NSArray *items = self.fetchedResultsController.fetchedObjects;
-    for (int i = 1; i < items.count; i++) {
-        if ([((Item *)items[i]).key isEqualToString:((Item *)items[i - 1]).key]) {
-            [duplicates addObject:items[i]];
-        }
-    }
-    if (duplicates.count > 0) {
-        for (Item *item in duplicates) {
+- (void)clearFaultyItems {
+    //An issue with RestKit can cause items to accidentally be inserted twice.
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item"
+                                              inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setFetchBatchSize:20];
+    
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"text == ''"];
+    NSError *error;
+    NSArray<Item *> *items = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (items.count > 0) {
+        for (Item *item in items) {
             [self.managedObjectContext deleteObject:item];
         }
         NSError *error;
         [self.managedObjectContext save:&error];
+        
+        [self.sharedManager fetchUser:nil onError:nil];
     }
 }
 
@@ -231,6 +241,9 @@ float textWidth;
                                     dismissOnBackgroundTouch:YES
                                        dismissOnContentTouch:YES];
                           [popup show];
+                          if (self.shouldDismissAfterAction) {
+                              [self dismissViewControllerAnimated:YES completion:nil];
+                          }
                       }
                         onError:nil];
              }
@@ -284,7 +297,11 @@ float textWidth;
     [fetchRequest setFetchBatchSize:20];
 
     NSPredicate *predicate;
-    predicate = [NSPredicate predicateWithFormat:@"owned > 0"];
+    if (self.itemType) {
+        predicate = [NSPredicate predicateWithFormat:@"owned > 0 && text != '' && type == %@", self.itemType];
+    } else {
+        predicate = [NSPredicate predicateWithFormat:@"owned > 0 && text != ''"];
+    }
     [fetchRequest setPredicate:predicate];
 
     // Edit the sort key as appropriate.
@@ -389,7 +406,11 @@ float textWidth;
     } else if (buttonIndex == 0 && [self.selectedItem isKindOfClass:[Quest class]]) {
         User *user = [self.sharedManager getUser];
         Quest *quest = (Quest *)self.selectedItem;
-        [self.sharedManager inviteToQuest:user.partyID withQuest:quest onSuccess:nil onError:nil];
+        [self.sharedManager inviteToQuest:user.partyID withQuest:quest onSuccess:^() {
+            if (self.shouldDismissAfterAction) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+        }onError:nil];
     } else if (buttonIndex == 1 && ![self.selectedItem isKindOfClass:[Quest class]]) {
         if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
             NSPredicate *predicate =

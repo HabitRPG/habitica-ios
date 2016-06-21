@@ -12,6 +12,7 @@
 
 @interface HRPGQuestDetailViewController ()
 @property UIImage *bossImage;
+@property BOOL hasResponded;
 @end
 
 @implementation HRPGQuestDetailViewController
@@ -37,9 +38,17 @@
 
 #pragma mark - Table view data source
 
+- (BOOL)shouldShowResponseOptions {
+    return (![self.isWorldQuest boolValue]) && self.group.questKey != nil &&
+    ![self.group.questActive boolValue] && self.user.participateInQuest == nil && !self.hasResponded;
+}
+
+- (int)questDetailSection {
+    return [self shouldShowResponseOptions] ? 1 : 0;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if ((![self.isWorldQuest boolValue]) && self.group.questKey != nil &&
-        ![self.group.questActive boolValue] && self.user.participateInQuest == nil) {
+    if ([self shouldShowResponseOptions]) {
         return 2;
     } else {
         return 1;
@@ -47,20 +56,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return 3;
-        case 1:
-            if ([self.hideAskLater boolValue]) {
-                return 2;
-            }
-            return 3;
+    if (section == 0 && [self shouldShowResponseOptions]) {
+        if ([self.hideAskLater boolValue]) {
+            return 2;
+        }
+        return 3;
+    } else {
+        return 3;
     }
-    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0 && indexPath.item == 0) {
+    int questDetailSection = [self questDetailSection];
+    if (indexPath.section == questDetailSection && indexPath.item == 0) {
         return [self.quest.text boundingRectWithSize:CGSizeMake(280.0f, MAXFLOAT)
                                              options:NSStringDrawingUsesLineFragmentOrigin
                                           attributes:@{
@@ -70,9 +78,9 @@
                                              context:nil]
                    .size.height +
                16;
-    } else if (indexPath.section == 0 && indexPath.item == 1) {
+    } else if (indexPath.section == questDetailSection && indexPath.item == 1) {
         return self.bossImage.size.height;
-    } else if (indexPath.section == 0 && indexPath.item == 2) {
+    } else if (indexPath.section == questDetailSection && indexPath.item == 2) {
         UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         NSString *html = [NSString
             stringWithFormat:
@@ -97,51 +105,57 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1 && indexPath.item == 0) {
-        [self.sharedManager acceptQuest:self.group.id
-            onSuccess:nil onError:nil];
-        if (self.wasPushed) {
-            [self.tableView reloadData];
-        } else {
+    if (indexPath.section != [self questDetailSection]) {
+        if (indexPath.section == 0 && indexPath.item == 0) {
+            [self.sharedManager acceptQuest:self.group.id
+                                  onSuccess:^() {
+                                      self.hasResponded = YES;
+                                      if (self.wasPushed) {
+                                          [self.tableView reloadData];
+                                      } else {
+                                          [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
+                                      }
+                                  } onError:nil];
+        } else if (indexPath.section == 0 && indexPath.item == 1) {
+            [self.sharedManager rejectQuest:self.group.id
+                                  onSuccess:^() {
+                                      self.hasResponded = YES;
+                                      if (self.wasPushed) {
+                                          [self.tableView reloadData];
+                                      } else {
+                                          [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
+                                      }
+                                  } onError:nil];
+        } else if (indexPath.section == 0 && indexPath.item == 2) {
             [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
         }
-    } else if (indexPath.section == 1 && indexPath.item == 1) {
-        [self.sharedManager rejectQuest:self.group.id
-            onSuccess:nil onError:nil];
-        if (self.wasPushed) {
-            [self.tableView reloadData];
-        } else {
-            [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
-        }
-    } else if (indexPath.section == 1 && indexPath.item == 2) {
-        [self.sourceViewcontroller dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier;
-    if (indexPath.section == 0 && indexPath.item == 0) {
+    if (indexPath.section == [self questDetailSection] && indexPath.item == 0) {
         cellIdentifier = @"titleCell";
-    } else if (indexPath.section == 0 && indexPath.item == 1) {
+    } else if (indexPath.section == [self questDetailSection] && indexPath.item == 1) {
         cellIdentifier = @"bossImageCell";
-    } else if (indexPath.section == 0 && indexPath.item == 2) {
+    } else if (indexPath.section == [self questDetailSection] && indexPath.item == 2) {
         cellIdentifier = @"descriptionCell";
-    } else if (indexPath.section == 1 && indexPath.item == 0) {
+    } else if (indexPath.section == 0 && indexPath.item == 0) {
         cellIdentifier = @"acceptCell";
-    } else if (indexPath.section == 1 && indexPath.item == 1) {
+    } else if (indexPath.section == 0 && indexPath.item == 1) {
         cellIdentifier = @"rejectCell";
-    } else if (indexPath.section == 1 && indexPath.item == 2) {
+    } else if (indexPath.section == 0 && indexPath.item == 2) {
         cellIdentifier = @"asklaterCell";
     }
 
     UITableViewCell *cell =
         [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
 
-    if (indexPath.section == 0 && indexPath.item == 0) {
+    if (indexPath.section == [self questDetailSection] && indexPath.item == 0) {
         cell.textLabel.text = self.quest.text;
         cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
-    } else if (indexPath.section == 0 && indexPath.item == 1) {
+    } else if (indexPath.section == [self questDetailSection] && indexPath.item == 1) {
         if (self.bossImage) {
             UIImageView *imageView = [cell viewWithTag:1];
             imageView.image = self.bossImage;
@@ -173,7 +187,7 @@
                          }];
         }
         cell.separatorInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, cell.bounds.size.width);
-    } else if (indexPath.section == 0 && indexPath.item == 2) {
+    } else if (indexPath.section == [self questDetailSection] && indexPath.item == 2) {
         UITextView *textView = [cell viewWithTag:1];
         NSError *err = nil;
         UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];

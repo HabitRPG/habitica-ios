@@ -30,6 +30,28 @@
     return NO;
 }
 
+- (void)refresh {
+    __weak HRPGGroupTableViewController *weakSelf = self;
+    [self.sharedManager fetchGroup:self.groupID
+                         onSuccess:^() {
+                             if (weakSelf) {
+                                 [weakSelf.refreshControl endRefreshing];
+                                 [weakSelf fetchGroup];
+                                 if (![weakSelf.groupID isEqualToString:@"00000000-0000-4000-A000-000000000000"]) {
+                                     weakSelf.group.unreadMessages = @NO;
+                                     [weakSelf.sharedManager chatSeen:weakSelf.group.id];
+                                 }
+                                 [self reloadQuest];
+                             }
+                         }
+                           onError:^() {
+                               if (weakSelf) {
+                                   [weakSelf.refreshControl endRefreshing];
+                                   [weakSelf.sharedManager displayNetworkError];
+                               }
+                           }];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (self.group && [self displayQuestSection]) {
         return 4;
@@ -264,6 +286,12 @@
         }
     }
     return _quest;
+}
+
+- (void)reloadQuest {
+    self.quest = nil;
+    [self quest];
+    [self.tableView reloadData];
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
