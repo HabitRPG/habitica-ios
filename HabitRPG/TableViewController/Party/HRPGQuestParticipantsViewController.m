@@ -77,7 +77,7 @@
     if ([self.group.questActive boolValue]) {
         predicate = [NSPredicate predicateWithFormat:@"participateInQuest == YES"];
     } else {
-        predicate = [NSPredicate predicateWithFormat:@"party.id == %@", self.group.id];
+        predicate = [NSPredicate predicateWithFormat:@"partyID == %@", self.group.id];
     }
     [fetchRequest setPredicate:predicate];
 
