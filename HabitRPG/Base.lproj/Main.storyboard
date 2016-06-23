@@ -1042,35 +1042,35 @@
             <point key="canvasLocation" x="1993" y="885"/>
         </scene>
         <!--Form View Controller-->
-        <scene sceneID="gDV-ik-tUY">
+        <scene sceneID="nNw-r8-3vS">
             <objects>
-                <tableViewController id="IL8-2o-kb1" customClass="HRPGFormViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="CtV-nK-4bK">
+                <viewController id="5Mb-b4-jEY" customClass="HRPGFormViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C88-Gi-7qf"/>
+                        <viewControllerLayoutGuide type="bottom" id="rBl-70-dAi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zuN-1D-G0o">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="5Ym-xL-KTz">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="RqV-rk-yaU">
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GOc-QP-HkZ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eKF-lb-8J3">
                             <connections>
-                                <segue destination="xc7-Za-ehU" kind="unwind" unwindAction="unwindToList:" id="dcg-Qh-qgr"/>
+                                <segue destination="c4v-YL-G9e" kind="unwind" unwindAction="unwindToList:" id="MXA-de-BZb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="2iA-DC-iar">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="SLb-r7-7qb">
                             <connections>
-                                <segue destination="xc7-Za-ehU" kind="unwind" identifier="unwindSaveSegue" unwindAction="unwindToListSave:" id="I5t-q5-BDG"/>
+                                <segue destination="c4v-YL-G9e" kind="unwind" identifier="unwindSaveSegue" unwindAction="unwindToListSave:" id="JTj-MH-Db2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="cancelButton" destination="RqV-rk-yaU" id="F0v-y3-kKI"/>
-                        <outlet property="doneButton" destination="2iA-DC-iar" id="5TL-OG-Wf2"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g2O-Ma-v7v" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="xc7-Za-ehU" userLabel="Exit" sceneMemberID="exit"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tcx-tt-A11" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="c4v-YL-G9e" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4638" y="-807"/>
+            <point key="canvasLocation" x="4691" y="-807"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qll-T6-t9b">
@@ -1080,7 +1080,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="IL8-2o-kb1" kind="relationship" relationship="rootViewController" id="fYk-tE-3MD"/>
+                        <segue destination="5Mb-b4-jEY" kind="relationship" relationship="rootViewController" id="SZM-Su-hf3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AfN-TP-8DY" userLabel="First Responder" sceneMemberID="firstResponder"/>
