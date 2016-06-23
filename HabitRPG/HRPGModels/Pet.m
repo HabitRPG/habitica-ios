@@ -57,7 +57,7 @@
         }];
 
     dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(105, 105), NO, 0.0f);
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(currentMount.size.width, currentMount.size.height), NO, 0.0f);
         [currentMount
             drawInRect:CGRectMake(0, 0, currentMount.size.width, currentMount.size.height)];
         [currentMountHead
