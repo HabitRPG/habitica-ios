@@ -1825,6 +1825,9 @@ NSString *currentUser;
 
 - (void)resetSavedDatabase:(BOOL)withUserData onComplete:(void (^)())completitionBlock {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"startClearingData" object:nil];
+    YYImageCache *cache = [YYWebImageManager sharedManager].cache;
+    [cache.memoryCache removeAllObjects];
+    [cache.diskCache removeAllObjects];
     NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
         [[self getManagedObjectContext] performBlockAndWait:^{
             NSError *error = nil;
