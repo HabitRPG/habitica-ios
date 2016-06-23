@@ -184,7 +184,7 @@ NSUserDefaults *defaults;
                                                   forIndexPath:indexPath];
     UILabel *label = [headerView viewWithTag:1];
     NSString *sectionName = [[self.fetchedResultsController sections][indexPath.section] name];
-    if ([sectionName isEqualToString:@"questPets"]) {
+    if ([sectionName isEqualToString:@"questPets"] || [sectionName isEqualToString:@"data.questPets"]) {
         label.text = NSLocalizedString(@"Quest Pets", nil);
     } else if ([sectionName isEqualToString:@" "]) {
         label.text = NSLocalizedString(@"Special Pets", nil);
