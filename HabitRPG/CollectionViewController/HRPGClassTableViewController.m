@@ -96,7 +96,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return NSLocalizedString(@"There comes a point in the life of every habitican, where they have "
+    return NSLocalizedString(@"There comes a point in the life of every habitican, when they have "
                              @"to decide their path.\n\nWhat will yours be?",
                              nil);
 }
