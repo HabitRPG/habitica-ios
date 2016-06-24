@@ -269,7 +269,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         title = NSLocalizedString(@"Inbox", nil);
         User *user = self.user;
         if (user) {
-            if ([user.inboxNewMessages boolValue]) {
+            if ([user.inboxNewMessages integerValue] > 0) {
                 showIndicator = YES;
             }
         }
@@ -328,7 +328,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     UIImageView *indicatorView = [cell viewWithTag:2];
     indicatorView.hidden = !showIndicator;
     if (showIndicator) {
-        iconFactory.colors = @[ [UIColor purple200] ];
+        iconFactory.colors = @[ [UIColor purple400] ];
         iconFactory.size = 13.0f;
         indicatorView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconCircle];
     }

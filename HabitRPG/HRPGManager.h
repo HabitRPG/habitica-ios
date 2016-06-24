@@ -179,6 +179,8 @@
            onError:(void (^)())errorBlock;
 
 - (void)chatSeen:(NSString *)group;
+- (void)markInboxSeen:(void (^)())successBlock
+              onError:(void (^)())errorBlock;
 
 - (void)loginUser:(NSString *)username
      withPassword:(NSString *)password

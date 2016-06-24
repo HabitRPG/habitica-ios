@@ -792,6 +792,28 @@
             </objects>
             <point key="canvasLocation" x="2805" y="63"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="w06-Bd-ZSd">
+            <objects>
+                <viewController id="rnp-jn-Sbn" customClass="HRPGSettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bY0-6L-Wg2"/>
+                        <viewControllerLayoutGuide type="bottom" id="gl0-Rw-NE4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="swP-J2-b8e">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="uSK-A3-t5d"/>
+                    <connections>
+                        <segue destination="oWJ-UN-iB6" kind="show" identifier="AccountDetailSegue" id="cKe-PQ-RiM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TUq-ef-mfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2805" y="758"/>
+        </scene>
         <!--To-Dos-->
         <scene sceneID="d7F-oT-WJq">
             <objects>
@@ -1070,7 +1092,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tcx-tt-A11" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="c4v-YL-G9e" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4691" y="-807"/>
+            <point key="canvasLocation" x="4353" y="-807"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qll-T6-t9b">
@@ -1261,7 +1283,6 @@
                     <connections>
                         <segue destination="KDA-vj-fqc" kind="show" identifier="SpellSegue" id="Hrn-PD-GvG"/>
                         <segue destination="fQG-OL-hM9" kind="show" identifier="EquipmentSegue" id="v29-UF-PPv"/>
-                        <segue destination="yfw-7p-kgC" kind="show" identifier="SettingsSegue" id="Z1y-RE-Sif"/>
                         <segue destination="sS8-cF-myv" kind="show" identifier="ItemSegue" id="ETz-qE-xC2"/>
                         <segue destination="iyK-dS-pks" kind="show" identifier="PetSegue" id="SJ5-Ku-SRj"/>
                         <segue destination="k4g-ZO-Buh" kind="show" identifier="MountSegue" id="9n8-9E-H49"/>
@@ -1270,24 +1291,12 @@
                         <segue destination="r5L-RV-Ig6" kind="show" identifier="AboutSegue" id="V5t-v4-xQG"/>
                         <segue destination="Eg1-Bx-Zdn" kind="show" identifier="CustomizationSegue" id="w7r-aq-PPf"/>
                         <segue destination="Kau-eC-iCv" kind="show" identifier="FAQSegue" id="Ndm-2R-Hd2"/>
+                        <segue destination="rnp-jn-Sbn" kind="show" identifier="SettingsSegue" id="m7Q-TK-tXy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVG-cg-SZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1993" y="1751"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="a4z-YN-ZvJ">
-            <objects>
-                <tableViewController id="yfw-7p-kgC" customClass="HRPGSettingsViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Settings" id="hnb-Ox-m1C"/>
-                    <connections>
-                        <segue destination="oWJ-UN-iB6" kind="show" identifier="AccountDetailSegue" id="jdg-9P-joZ"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wje-7F-htq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2853.75" y="731.25"/>
         </scene>
         <!--About-->
         <scene sceneID="Whw-Wx-8Rx">

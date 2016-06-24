@@ -618,6 +618,14 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:emptyStringMapping
+                          method:RKRequestMethodPOST
+                          pathPattern:@"user/mark-pms-read"
+                          keyPath:nil
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     RKObjectMapping *feedMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
     [feedMapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:nil toKeyPath:@"value"]];
     responseDescriptor = [RKResponseDescriptor
@@ -3449,6 +3457,36 @@ NSString *currentUser;
             [self.networkIndicatorController endNetworking];
             return;
         }];
+}
+
+- (void)markInboxSeen:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:@"user/mark-pms-read"
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            [self getUser].inboxNewMessages = 0;
+                                            NSError *executeError = nil;
+                                            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                            [self.networkIndicatorController endNetworking];
+                                            if (successBlock) {
+                                                successBlock();
+                                            }
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                                [self displayServerError];
+                                            } else {
+                                                [self displayNetworkError];
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            return;
+                                        }];
 }
 
 - (void)rejectQuest:(NSString *)group

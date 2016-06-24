@@ -125,7 +125,7 @@ User *user;
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"logout"
                                                 rowType:XLFormRowDescriptorTypeButton
                                                   title:NSLocalizedString(@"Log Out", nil)];
-    row.cellConfigAtConfigure[@"textLabel.textColor"] = [UIColor red100];
+    [row.cellConfig setObject:[UIColor red100] forKey:@"textLabel.textColor"];
     [section addFormRow:row];
 
     self.reminderSection =
@@ -134,6 +134,7 @@ User *user;
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"useReminder"
                                                 rowType:XLFormRowDescriptorTypeBooleanSwitch
                                                   title:NSLocalizedString(@"Daily Reminder", nil)];
+    [row.cellConfig setObject:[UIColor purple400] forKey:@"self.tintColor"];
     [self.reminderSection addFormRow:row];
     if ([defaults boolForKey:@"dailyReminderActive"]) {
         row.value = @YES;
@@ -146,6 +147,7 @@ User *user;
         [XLFormRowDescriptor formRowDescriptorWithTag:@"dayStart"
                                               rowType:XLFormRowDescriptorTypeSelectorPickerView
                                                 title:NSLocalizedString(@"Custom Day Start", nil)];
+    [row.cellConfig setObject:[UIColor purple400] forKey:@"self.tintColor"];
     [section addFormRow:row];
 
     NSMutableArray *hourOptions = [NSMutableArray arrayWithCapacity:23];
@@ -178,6 +180,7 @@ User *user;
     [formDescriptor addFormSection:section];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"disablePushNotifications" rowType:XLFormRowDescriptorTypeBooleanSwitch title:NSLocalizedString(@"Disable all Push Notifications", nil)];
     row.value = [XLFormOptionsObject formOptionsOptionForValue:user.preferences.pushNotifications.unsubscribeFromAll fromOptions:nil];
+    [row.cellConfig setObject:[UIColor purple400] forKey:@"self.tintColor"];
     [section addFormRow:row];
     self.pushNotificationRow =
     [XLFormRowDescriptor formRowDescriptorWithTag:@"pushNotifications"
@@ -185,10 +188,12 @@ User *user;
                                             title:NSLocalizedString(@"Push Notifications", nil)];
     [self setPushNotificationSelections];
     self.pushNotificationRow.valueTransformer = [HRPGPushNotificationSettingValueTransformer class];
+    [row.cellConfig setObject:[UIColor purple400] forKey:@"self.tintColor"];
     [section addFormRow:self.pushNotificationRow];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"disableInbox" rowType:XLFormRowDescriptorTypeBooleanSwitch title:NSLocalizedString(@"Disable Private Messages", nil)];
     row.value = [XLFormOptionsObject formOptionsOptionForValue:user.inboxOptOut fromOptions:nil];
+    [row.cellConfig setObject:[UIColor purple400] forKey:@"self.tintColor"];
     [section addFormRow:row];
     
     
@@ -199,11 +204,13 @@ User *user;
                                                 rowType:XLFormRowDescriptorTypeButton
                                                   title:NSLocalizedString(@"Clear Cache", nil)];
     row.cellConfigAtConfigure[@"textLabel.textColor"] = [UIColor red100];
+    [row.cellConfig setObject:[UIColor purple400] forKey:@"textLabel.textColor"];
     [section addFormRow:row];
 
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"reloadContent"
                                                 rowType:XLFormRowDescriptorTypeButton
                                                   title:NSLocalizedString(@"Reload Content", nil)];
+    [row.cellConfig setObject:[UIColor purple400] forKey:@"textLabel.textColor"];
     [section addFormRow:row];
 
     self.form = formDescriptor;
