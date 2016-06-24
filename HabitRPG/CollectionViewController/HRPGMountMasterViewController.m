@@ -151,11 +151,11 @@ NSUserDefaults *defaults;
     UILabel *label = [headerView viewWithTag:1];
     NSString *sectionName = [[self.fetchedResultsController sections][indexPath.section] name];
     if ([sectionName isEqualToString:@"questPets"]) {
-        label.text = NSLocalizedString(@"Quest Pets", nil);
+        label.text = NSLocalizedString(@"Quest Mounts", nil);
     } else if ([sectionName isEqualToString:@" "]) {
-        label.text = NSLocalizedString(@"Special Pets", nil);
+        label.text = NSLocalizedString(@"Special Mounts", nil);
     } else {
-        label.text = NSLocalizedString(@"Base Pets", nil);
+        label.text = NSLocalizedString(@"Base Mounts", nil);
     }
     return headerView;
 }
