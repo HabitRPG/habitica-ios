@@ -4417,7 +4417,8 @@ NSString *currentUser;
                                               stringByAppendingString:@" https://habitica.com/social/level-up"],
                                              [HRPGSharingManager takeSnapshotOfView:weakAvatarView]
                                              ]
-              withPresentingViewController:activeViewController];
+              withPresentingViewController:activeViewController
+             withSourceView:nil];
         };
         [overlayView sizeToFit];
         
