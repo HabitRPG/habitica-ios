@@ -79,7 +79,11 @@
                    .size.height +
                16;
     } else if (indexPath.section == questDetailSection && indexPath.item == 1) {
-        return self.bossImage.size.height;
+        if (self.bossImage.size.width*2 > self.viewWidth) {
+            return ((self.viewWidth-20)/self.bossImage.size.width) * self.bossImage.size.height;
+        } else {
+            return self.bossImage.size.height*2;
+        }
     } else if (indexPath.section == questDetailSection && indexPath.item == 2) {
         UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         NSString *html = [NSString
