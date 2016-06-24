@@ -23,6 +23,8 @@
 #import "HRPGInboxChatViewController.h"
 #import "HRPGPartyTableViewController.h"
 #import "HRPGQuestDetailViewController.h"
+#import "UIColor+Habitica.h"
+
 
 @interface HRPGAppDelegate ()
 
@@ -58,14 +60,14 @@
         kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop),
         kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
         kCRToastNotificationPresentationTypeKey : @(CRToastPresentationTypeCover),
-        kCRToastTimeIntervalKey : @(1.0),
-        kCRToastAnimationInTimeIntervalKey : @(0.2),
-        kCRToastAnimationOutTimeIntervalKey : @(0.2),
+        kCRToastTimeIntervalKey : @(1.5),
+        kCRToastAnimationInTimeIntervalKey : @(0.25),
+        kCRToastAnimationOutTimeIntervalKey : @(0.25),
         kCRToastFontKey : [UIFont systemFontOfSize:17],
         kCRToastInteractionRespondersKey : @[ blankResponder ]
     }];
 
-    [self configureNotifications];
+    [self configureNotifications:application];
 
     [self cleanAndRefresh:application];
 
@@ -265,6 +267,8 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
         [self handlePushNotification:userInfo];
+    } else if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+        [self displayPushNotificationInApp:userInfo];
     }
 }
 
@@ -326,7 +330,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastReminderSchedule"];
 }
 
-- (void)configureNotifications {
+- (void)configureNotifications:(UIApplication *)application {
     if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationType types = UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
 
@@ -380,6 +384,8 @@
             [UIUserNotificationSettings settingsForTypes:types
                                               categories:[NSSet setWithObjects:completeCategory, questInviteCategory, privateMessageCategory, nil]];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    } else {
+        [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
     }
 }
 
@@ -533,6 +539,19 @@
 - (UIViewController *)loadViewController:(NSString *)name fromStoryboard:(NSString *)storyboardName {
     UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     return [secondStoryBoard instantiateViewControllerWithIdentifier:name];
+}
+
+- (void)displayPushNotificationInApp:(NSDictionary *)userInfo {
+    NSString *text = userInfo[@"aps"][@"alert"];
+    NSDictionary *options = @{
+                              kCRToastTextKey : text,
+                              kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastBackgroundColorKey : [UIColor purple200],
+                              kCRToastTimeIntervalKey: @(2.5)
+                              };
+    [CRToastManager showNotificationWithOptions:options
+                                completionBlock:^{
+                                }];
 }
 
 @end
