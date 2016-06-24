@@ -151,7 +151,7 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
             .size.height;
 
     if (height > screenRect.size.height - 60) {
-        height = screenRect.size.height;
+        height = screenRect.size.height - 60;
     }
 
     self.frame = CGRectMake(0, 0, width, height);

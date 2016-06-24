@@ -397,7 +397,7 @@
                                              dismissType:KLCPopupDismissTypeBounceOut
                                                 maskType:KLCPopupMaskTypeDimmed
                                 dismissOnBackgroundTouch:YES
-                                   dismissOnContentTouch:YES];
+                                   dismissOnContentTouch:NO];
         [popup show];
     };
     cell.replyAction = ^() {
