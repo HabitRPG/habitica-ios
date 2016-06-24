@@ -55,6 +55,22 @@
             </objects>
             <point key="canvasLocation" x="1773" y="15"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Bi9-YF-GrW">
+            <objects>
+                <navigationController id="jza-oe-b8O" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mt7-2s-336">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mn5-kI-z18" kind="relationship" relationship="rootViewController" id="C12-ty-sO4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fl4-09-mFB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1773" y="-664"/>
+        </scene>
         <!--Inbox Chat View Controller-->
         <scene sceneID="gjn-F4-vcp">
             <objects>
@@ -68,10 +84,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ISx-wl-NdC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="5Pc-Ev-m7m">
+                            <connections>
+                                <segue destination="Z4q-U6-KaZ" kind="unwind" unwindAction="unwindToList:" id="zfc-1F-u37"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGu-0a-Eqo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Z4q-U6-KaZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2435" y="15"/>
+            <point key="canvasLocation" x="2611" y="15"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G4S-sI-syf">
@@ -1541,7 +1565,13 @@ Invite friends now to earn a Quest Scroll!</string>
                             <outlet property="delegate" destination="MTH-Re-wqo" id="8kS-QG-5UE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="GzV-Hd-Xry"/>
+                    <navigationItem key="navigationItem" id="GzV-Hd-Xry">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="4jT-np-7Wu">
+                            <connections>
+                                <segue destination="jza-oe-b8O" kind="presentation" identifier="WriteMessageSegue" id="2EH-Sz-Osv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plR-qj-Mu3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1881,12 +1911,13 @@ Invite friends now to earn a Quest Scroll!</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="636-nl-5aS"/>
-        <segue reference="CUP-gn-Xug"/>
-        <segue reference="2KU-R3-vSq"/>
-        <segue reference="EV0-ra-m7s"/>
-        <segue reference="kns-o3-fej"/>
         <segue reference="jBF-PN-2IP"/>
+        <segue reference="2KU-R3-vSq"/>
+        <segue reference="CUP-gn-Xug"/>
+        <segue reference="kns-o3-fej"/>
+        <segue reference="636-nl-5aS"/>
+        <segue reference="EV0-ra-m7s"/>
+        <segue reference="C12-ty-sO4"/>
         <segue reference="bEM-KI-Si8"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.4478360116481781" green="0.10848049819469452" blue="0.9984632134437561" alpha="1" colorSpace="calibratedRGB"/>

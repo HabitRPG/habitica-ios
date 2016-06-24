@@ -10,6 +10,7 @@
 #import "HRPGLabeledProgressBar.h"
 #import "UIColor+Habitica.h"
 #import "UIViewController+Markdown.h"
+#import "HRPGInboxChatViewController.h"
 
 @interface HRPGUserProfileViewController ()
 @property(nonatomic, readonly, getter=getUser) User *user;
@@ -168,61 +169,9 @@
     return _fetchedResultsController;
 }
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller
-    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-             atIndex:(NSUInteger)sectionIndex
-       forChangeType:(NSFetchedResultsChangeType)type {
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeUpdate:
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationAutomatic];
-            break;
-
-        case NSFetchedResultsChangeMove:
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller
-    didChangeObject:(id)anObject
-        atIndexPath:(NSIndexPath *)indexPath
-      forChangeType:(NSFetchedResultsChangeType)type
-       newIndexPath:(NSIndexPath *)newIndexPath {
-    UITableView *tableView = self.tableView;
-
-    switch (type) {
-        case NSFetchedResultsChangeInsert: {
-            [tableView reloadData];
-            break;
-        }
-        case NSFetchedResultsChangeUpdate: {
-            [tableView reloadData];
-            break;
-        }
-        case NSFetchedResultsChangeDelete: {
-            break;
-        }
-        case NSFetchedResultsChangeMove:
-            break;
-    }
-}
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView endUpdates];
+    [self.tableView reloadData];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -266,6 +215,16 @@
         }
         UIView *avatarView = (UIView *)[cell viewWithTag:8];
         [user setAvatarSubview:avatarView showsBackground:YES showsMount:YES showsPet:YES];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"WriteMessageSegue"]) {
+        UINavigationController *destinationNavigationController = segue.destinationViewController;
+        HRPGInboxChatViewController *chatViewController = (HRPGInboxChatViewController *)destinationNavigationController.topViewController;
+        chatViewController.userID = self.userID;
+        chatViewController.username = self.username;
+        chatViewController.isPresentedModally = YES;
     }
 }
 

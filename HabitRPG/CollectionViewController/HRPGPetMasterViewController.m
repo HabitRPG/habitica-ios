@@ -68,7 +68,7 @@ NSUserDefaults *defaults;
         return @{
             @"text" :
                 NSLocalizedString(@"As you complete real-world tasks, you now have a random chance "
-                                  @"of finding eggs and potions. Combine them to hatch pets",
+                                  @"of finding eggs and potions. Combine them to hatch pets!",
                                   nil)
         };
     } else if ([tutorialIdentifier isEqualToString:@"groupPets"]) {

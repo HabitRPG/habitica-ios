@@ -43,12 +43,16 @@
     UINib *nib = [UINib nibWithNibName:@"ChatMessageCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"ChatMessageCell"];
     
-    self.navigationItem.title = self.username;
+    self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Write to %@", nil), self.username];
     
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController =
         (HRPGTopHeaderNavigationController *)self.navigationController;
         [navigationController scrollview:self.scrollView scrolledToPosition:0];
+    }
+    
+    if (!self.isPresentedModally) {
+        self.navigationItem.rightBarButtonItem = nil;
     }
 }
 
