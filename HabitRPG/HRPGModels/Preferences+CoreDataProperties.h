@@ -10,6 +10,7 @@
 //
 
 #import "Preferences.h"
+#import "PushNotifications.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -35,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nullable, nonatomic, retain) NSString *userID;
 @property(nullable, nonatomic, retain) User *user;
 @property(nonatomic, retain) NSSet *improvementCategories;
+@property(nonatomic, retain) PushNotifications *pushNotifications;
 
 @end
 

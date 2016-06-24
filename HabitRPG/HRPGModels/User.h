@@ -59,6 +59,8 @@
 @property(nonatomic, retain) NSNumber *petCount;
 @property(nonatomic, retain) NSString *partyID;
 @property(nonatomic, retain) NSSet *pushDevices;
+@property(nonatomic, retain) NSNumber *inboxOptOut;
+@property(nonatomic, retain) NSNumber *inboxNewMessages;
 
 @property(nonatomic, retain) Preferences *preferences;
 @property(nonatomic, retain) Outfit *costume;

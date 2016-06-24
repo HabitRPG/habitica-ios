@@ -119,6 +119,9 @@
 		D98F5DDA1C6E17280035CBEC /* HRPGQuestGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DD91C6E17280035CBEC /* HRPGQuestGroupTableViewController.m */; };
 		D98F5DDD1C6E1D030035CBEC /* HRPGTavernTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DDC1C6E1D030035CBEC /* HRPGTavernTableViewController.m */; };
 		D994B1491AD9177D008AE188 /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = D994B1481AD9177D008AE188 /* UIView+Screenshot.m */; };
+		D995D5961D1D499D00D5251C /* PushNotifications+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D995D5931D1D499D00D5251C /* PushNotifications+CoreDataProperties.m */; };
+		D995D5971D1D499D00D5251C /* PushNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = D995D5951D1D499D00D5251C /* PushNotifications.m */; };
+		D995D59A1D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D995D5991D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m */; };
 		D998FD951ADAC1FF00E9A26F /* HRPGAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D998FD941ADAC1FF00E9A26F /* HRPGAboutViewController.m */; };
 		D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D99BC43019D4C34A006DC132 /* 1Password.xcassets */; };
 		D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */; };
@@ -467,6 +470,13 @@
 		D98F5DDC1C6E1D030035CBEC /* HRPGTavernTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTavernTableViewController.m; sourceTree = "<group>"; };
 		D994B1471AD9177D008AE188 /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Screenshot.h"; path = "HabitRPG/Utilities/UIView+Screenshot.h"; sourceTree = SOURCE_ROOT; };
 		D994B1481AD9177D008AE188 /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Screenshot.m"; path = "HabitRPG/Utilities/UIView+Screenshot.m"; sourceTree = SOURCE_ROOT; };
+		D995D5911D1D44E700D5251C /* HabitRPG 30.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 30.xcdatamodel"; sourceTree = "<group>"; };
+		D995D5921D1D499D00D5251C /* PushNotifications+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PushNotifications+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D995D5931D1D499D00D5251C /* PushNotifications+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PushNotifications+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D995D5941D1D499D00D5251C /* PushNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotifications.h; sourceTree = "<group>"; };
+		D995D5951D1D499D00D5251C /* PushNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotifications.m; sourceTree = "<group>"; };
+		D995D5981D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPushNotificationSettingValueTransformer.h; sourceTree = "<group>"; };
+		D995D5991D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPushNotificationSettingValueTransformer.m; sourceTree = "<group>"; };
 		D998FD931ADAC1FF00E9A26F /* HRPGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAboutViewController.h; sourceTree = "<group>"; };
 		D998FD941ADAC1FF00E9A26F /* HRPGAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAboutViewController.m; sourceTree = "<group>"; };
 		D99B82171BD9545800E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -863,6 +873,8 @@
 				D9AEF8E31CE4CCA5006914CB /* HRPGURLParser.m */,
 				D9ADD3521CF3169B001D005B /* NSString+StripHTML.h */,
 				D9ADD3531CF3169B001D005B /* NSString+StripHTML.m */,
+				D995D5981D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.h */,
+				D995D5991D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1061,6 +1073,10 @@
 		D9C3D01D19509E4C00D22A4A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				D995D5921D1D499D00D5251C /* PushNotifications+CoreDataProperties.h */,
+				D995D5931D1D499D00D5251C /* PushNotifications+CoreDataProperties.m */,
+				D995D5941D1D499D00D5251C /* PushNotifications.h */,
+				D995D5951D1D499D00D5251C /* PushNotifications.m */,
 				D9D593621D008C7500D6C388 /* PushDevice+CoreDataProperties.h */,
 				D9D593631D008C7500D6C388 /* PushDevice+CoreDataProperties.m */,
 				D9D593641D008C7500D6C388 /* PushDevice.h */,
@@ -1793,6 +1809,7 @@
 				D9C257101B9B4C2D00839F48 /* HRPGTaskTableViewCell.m in Sources */,
 				D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */,
 				D9660D751AB23F150084CE37 /* HRPGTopHeaderNavigationController.m in Sources */,
+				D995D5961D1D499D00D5251C /* PushNotifications+CoreDataProperties.m in Sources */,
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
 				D92CDAE018CB83B90006C242 /* HRPGHabitTableViewController.m in Sources */,
 				D9C0E51A1C6510B40062C89A /* HRPGPublicGuildsViewController.m in Sources */,
@@ -1821,6 +1838,7 @@
 				D92D40D91ABF123800E30339 /* HRPGHabitButtons.m in Sources */,
 				D9D5935E1D00523800D6C388 /* InboxMessage.m in Sources */,
 				D9ADD3541CF3169B001D005B /* NSString+StripHTML.m in Sources */,
+				D995D5971D1D499D00D5251C /* PushNotifications.m in Sources */,
 				D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */,
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
 				D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */,
@@ -1839,6 +1857,7 @@
 				D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */,
 				D95D03961C74AA5500D6BFB3 /* Outfit.m in Sources */,
 				D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */,
+				D995D59A1D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m in Sources */,
 				D98F5DDD1C6E1D030035CBEC /* HRPGTavernTableViewController.m in Sources */,
 				D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */,
 				D9AEF8E41CE4CCA5006914CB /* HRPGURLParser.m in Sources */,
@@ -2444,6 +2463,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D995D5911D1D44E700D5251C /* HabitRPG 30.xcdatamodel */,
 				D9D593541D0047CC00D6C388 /* HabitRPG 29.xcdatamodel */,
 				D9ADD3551CF34506001D005B /* HabitRPG 28.xcdatamodel */,
 				D9AAABBA1CD8E3B6000FD9E8 /* HabitRPG 27.xcdatamodel */,
@@ -2455,7 +2475,7 @@
 				D98F5DC41C6A43D20035CBEC /* HabitRPG 21.xcdatamodel */,
 				D9C0E5171C650D1D0062C89A /* HabitRPG 20.xcdatamodel */,
 			);
-			currentVersion = D9D593541D0047CC00D6C388 /* HabitRPG 29.xcdatamodel */;
+			currentVersion = D995D5911D1D44E700D5251C /* HabitRPG 30.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

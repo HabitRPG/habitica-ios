@@ -267,6 +267,12 @@ NIKFontAwesomeIconFactory *iconFactory;
         }
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         title = NSLocalizedString(@"Inbox", nil);
+        User *user = self.user;
+        if (user) {
+            if ([user.inboxNewMessages boolValue]) {
+                showIndicator = YES;
+            }
+        }
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         title = NSLocalizedString(@"Tavern", nil);
     } else if (indexPath.section == 1 && indexPath.item == 2) {

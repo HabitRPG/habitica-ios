@@ -32,5 +32,6 @@
 @dynamic userID;
 @dynamic user;
 @dynamic improvementCategories;
+@dynamic pushNotifications;
 
 @end

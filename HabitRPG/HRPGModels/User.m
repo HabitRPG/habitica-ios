@@ -64,6 +64,8 @@
 @dynamic partyPosition;
 @dynamic partyID;
 @dynamic pushDevices;
+@dynamic inboxOptOut;
+@dynamic inboxNewMessages;
 
 @synthesize petCount = _petCount;
 @synthesize customizationsDictionary;

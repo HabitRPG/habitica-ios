@@ -14,11 +14,13 @@
 #import "MRProgress.h"
 #import "UIColor+Habitica.h"
 #import "XLForm.h"
+#import "HRPGPushNotificationSettingValueTransformer.h"
 
 @interface HRPGSettingsViewController ()
 @property HRPGManager *sharedManager;
 @property NSManagedObjectContext *managedObjectContext;
 @property XLFormSectionDescriptor *reminderSection;
+@property XLFormRowDescriptor *pushNotificationRow;
 @end
 
 @implementation HRPGSettingsViewController
@@ -172,6 +174,24 @@ User *user;
                                                      dateStyle:NSDateFormatterNoStyle
                                                      timeStyle:NSDateFormatterShortStyle]];
 
+    section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Social", nil)];
+    [formDescriptor addFormSection:section];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"disablePushNotifications" rowType:XLFormRowDescriptorTypeBooleanSwitch title:NSLocalizedString(@"Disable all Push Notifications", nil)];
+    row.value = [XLFormOptionsObject formOptionsOptionForValue:user.preferences.pushNotifications.unsubscribeFromAll fromOptions:nil];
+    [section addFormRow:row];
+    self.pushNotificationRow =
+    [XLFormRowDescriptor formRowDescriptorWithTag:@"pushNotifications"
+                                          rowType:XLFormRowDescriptorTypeMultipleSelector
+                                            title:NSLocalizedString(@"Push Notifications", nil)];
+    [self setPushNotificationSelections];
+    self.pushNotificationRow.valueTransformer = [HRPGPushNotificationSettingValueTransformer class];
+    [section addFormRow:self.pushNotificationRow];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"disableInbox" rowType:XLFormRowDescriptorTypeBooleanSwitch title:NSLocalizedString(@"Disable Private Messages", nil)];
+    row.value = [XLFormOptionsObject formOptionsOptionForValue:user.inboxOptOut fromOptions:nil];
+    [section addFormRow:row];
+    
+    
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Maintenance", nil)];
     [formDescriptor addFormSection:section];
 
@@ -216,6 +236,55 @@ User *user;
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+}
+
+- (void)setPushNotificationSelections {
+    NSArray *selectorOptions = @[
+                                 [XLFormOptionsObject formOptionsObjectWithValue:@"wonChallenge"
+                                                                     displayText:NSLocalizedString(@"You won a Challenge!", nil)],
+                                 [XLFormOptionsObject formOptionsObjectWithValue:@"newPM"
+                                                                     displayText:NSLocalizedString(@"Received Private Message", nil)],
+                                 [XLFormOptionsObject formOptionsObjectWithValue:@"giftedGems"
+                                                                     displayText:NSLocalizedString(@"Gifted Gems", nil)],
+                                 [XLFormOptionsObject formOptionsObjectWithValue:@"giftedSubscription"
+                                                                     displayText:NSLocalizedString(@"Gifted Subscription", nil)],
+                                 [XLFormOptionsObject formOptionsObjectWithValue:@"invitedParty"
+                                                                     displayText:NSLocalizedString(@"Invited To Party", nil)],
+                                 [XLFormOptionsObject formOptionsObjectWithValue:@"invitedGuild"
+                                                                     displayText:NSLocalizedString(@"Invited To Guild", nil)],
+                                 [XLFormOptionsObject formOptionsObjectWithValue:@"questStarted"
+                                                                     displayText:NSLocalizedString(@"Your Quest has Begun", nil)],
+                                 [XLFormOptionsObject formOptionsObjectWithValue:@"invitedQuest"
+                                                                     displayText:NSLocalizedString(@"Invited To Quest", nil)],
+                                 ];
+    self.pushNotificationRow.selectorOptions = selectorOptions;
+    
+    NSMutableArray *valueOptions = [NSMutableArray arrayWithCapacity:8];
+    if ([user.preferences.pushNotifications.wonChallenge boolValue]) {
+        [valueOptions addObject:selectorOptions[0]];
+    }
+    if ([user.preferences.pushNotifications.newPM boolValue]) {
+        [valueOptions addObject:selectorOptions[1]];
+    }
+    if ([user.preferences.pushNotifications.giftedGems boolValue]) {
+        [valueOptions addObject:selectorOptions[2]];
+    }
+    if ([user.preferences.pushNotifications.giftedSubscription boolValue]) {
+        [valueOptions addObject:selectorOptions[3]];
+    }
+    if ([user.preferences.pushNotifications.invitedParty boolValue]) {
+        [valueOptions addObject:selectorOptions[4]];
+    }
+    if ([user.preferences.pushNotifications.invitedGuild boolValue]) {
+        [valueOptions addObject:selectorOptions[5]];
+    }
+    if ([user.preferences.pushNotifications.questStarted boolValue]) {
+        [valueOptions addObject:selectorOptions[6]];
+    }
+    if ([user.preferences.pushNotifications.invitedQuest boolValue]) {
+        [valueOptions addObject:selectorOptions[7]];
+    }
+    self.pushNotificationRow.value = valueOptions;
 }
 
 - (void)logoutUser {
@@ -353,6 +422,29 @@ User *user;
         }
                              onSuccess:nil
                                onError:nil];
+    } else if ([rowDescriptor.tag isEqualToString:@"disablePushNotifications"]) {
+        self.pushNotificationRow.disabled = newValue;
+        [self updateFormRow:self.pushNotificationRow];
+        PushNotifications *pushNotifications = user.preferences.pushNotifications;
+        pushNotifications.unsubscribeFromAll = newValue;
+        [self changePushNotificationSettings:pushNotifications];
+    } else if ([rowDescriptor.tag isEqualToString:@"pushNotifications"]) {
+        NSArray *values = self.formValues[@"pushNotifications"];
+        PushNotifications *pushNotifications = user.preferences.pushNotifications;
+        NSMutableArray *newValues = [NSMutableArray arrayWithCapacity:values.count];
+        for (XLFormOptionsObject *value in values) {
+            [newValues addObject:value.valueData];
+        }
+        for (XLFormOptionsObject *selector in self.pushNotificationRow.selectorOptions) {
+            if ([newValues containsObject:selector.valueData]) {
+                [pushNotifications setValue:@YES forKey:selector.valueData];
+            } else {
+                [pushNotifications setValue:@NO forKey:selector.valueData];
+            }
+        }
+        [self changePushNotificationSettings:pushNotifications];
+    } else if ([rowDescriptor.tag isEqualToString:@"disableInbox"]) {
+        [self.sharedManager updateUser:@{@"inbox.optOut": newValue} onSuccess:nil onError:nil];
     }
 }
 
@@ -397,6 +489,20 @@ User *user;
     if (buttonIndex == 1) {
         [self displayClassSelectionViewController];
     }
+}
+
+- (void)changePushNotificationSettings:(PushNotifications *)newValues {
+    [self.sharedManager updateUser:@{
+                                     @"preferences.pushNotifications.giftedGems": newValues.giftedGems,
+                                     @"preferences.pushNotifications.giftedSubscription": newValues.giftedSubscription,
+                                     @"preferences.pushNotifications.invitedGuild": newValues.invitedGuild,
+                                     @"preferences.pushNotifications.invitedParty": newValues.invitedParty,
+                                     @"preferences.pushNotifications.invitedQuest": newValues.invitedQuest,
+                                     @"preferences.pushNotifications.newPM": newValues.newPM,
+                                     @"preferences.pushNotifications.questStarted": newValues.questStarted,
+                                     @"preferences.pushNotifications.wonChallenge": newValues.wonChallenge,
+                                     @"preferences.pushNotifications.unsubscribeFromAll": newValues.unsubscribeFromAll
+                                     }onSuccess:nil onError:nil];
 }
 
 @end

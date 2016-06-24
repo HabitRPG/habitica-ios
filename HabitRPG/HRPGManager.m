@@ -744,6 +744,21 @@ NSString *currentUser;
                                                     toKeyPath:@"improvementCategories"
                                                   withMapping:improvementCategoryMapping]];
 
+    RKEntityMapping *pushNotificationsMapping = [RKEntityMapping mappingForEntityForName:@"PushNotifications" inManagedObjectStore:managedObjectStore];
+    [pushNotificationsMapping addAttributeMappingsFromArray:@[
+                                                              @"giftedGems",
+                                                              @"giftedSubscription",
+                                                              @"invitedGuild",
+                                                              @"invitedParty",
+                                                              @"invitedQuest",
+                                                              @"newPM",
+                                                              @"questStarted",
+                                                              @"wonChallenge",
+                                                              @"unsubscribeFromAll"
+                                                              ]];
+    [pushNotificationsMapping addAttributeMappingsFromDictionary:@{@"@parent.@parent._id" : @"userID"}];
+    [preferencesMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"pushNotifications" toKeyPath:@"pushNotifications" withMapping:pushNotificationsMapping]];
+    
     RKEntityMapping *flagsMapping =
         [RKEntityMapping mappingForEntityForName:@"Flags" inManagedObjectStore:managedObjectStore];
     [flagsMapping addAttributeMappingsFromDictionary:@{
@@ -900,7 +915,6 @@ NSString *currentUser;
     RKEntityMapping *inboxMessageMapping = [RKEntityMapping mappingForEntityForName:@"InboxMessage"
                                                        inManagedObjectStore:managedObjectStore];
     [inboxMessageMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"id"];
-    [inboxMessageMapping setForceCollectionMapping:YES];
     [inboxMessageMapping setIdentificationAttributes:@[@"id"]];
     [inboxMessageMapping addAttributeMappingsFromDictionary:@{
                                                       @"(id).text" : @"text",
