@@ -922,6 +922,7 @@ NSString *currentUser;
     
     RKEntityMapping *inboxMessageMapping = [RKEntityMapping mappingForEntityForName:@"InboxMessage"
                                                        inManagedObjectStore:managedObjectStore];
+    [inboxMessageMapping setForceCollectionMapping:YES];
     [inboxMessageMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"id"];
     [inboxMessageMapping setIdentificationAttributes:@[@"id"]];
     [inboxMessageMapping addAttributeMappingsFromDictionary:@{
