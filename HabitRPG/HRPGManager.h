@@ -125,23 +125,23 @@
 
 - (void)acceptQuest:(NSString *)group
           onSuccess:(void (^)())successBlock
-            onError:(void (^)())errorBlock;
+            onError:(void (^)(NSString *errorMessage))errorBlock;
 
 - (void)rejectQuest:(NSString *)group
           onSuccess:(void (^)())successBlock
-            onError:(void (^)())errorBlock;
+            onError:(void (^)(NSString *errorMessage))errorBlock;
 
 - (void)abortQuest:(NSString *)group
          onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock;
+           onError:(void (^)(NSString *errorMessage))errorBlock;
 
 - (void)cancelQuest:(NSString *)group
           onSuccess:(void (^)())successBlock
-            onError:(void (^)())errorBlock;
+            onError:(void (^)(NSString *errorMessage))errorBlock;
 
 - (void)forceStartQuest:(NSString *)group
               onSuccess:(void (^)())successBlock
-                onError:(void (^)())errorBlock;
+                onError:(void (^)(NSString *errorMessage))errorBlock;
 
 - (void)inviteToQuest:(NSString *)group
             withQuest:(Quest *)quest

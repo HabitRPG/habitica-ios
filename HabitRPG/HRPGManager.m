@@ -3296,10 +3296,7 @@ NSString *currentUser;
         }];
 }
 
-- (void)hatchEgg:(NSString *)egg
-      withPotion:(NSString *)hPotion
-       onSuccess:(void * (^)(NSString *message))successBlock
-         onError:(void (^)())errorBlock {
+- (void)hatchEgg:(NSString *)egg withPotion:(NSString *)hPotion onSuccess:(void (^)(NSString *))successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:Nil
@@ -3404,7 +3401,7 @@ NSString *currentUser;
 
 - (void)acceptQuest:(NSString *)group
           onSuccess:(void (^)())successBlock
-            onError:(void (^)())errorBlock {
+            onError:(void (^)(NSString * errorMessage))errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
@@ -3429,7 +3426,11 @@ NSString *currentUser;
                 [self displayNetworkError];
             }
             if (errorBlock) {
-                errorBlock();
+                NSString *errorMessage = @"";
+                if (((NSArray *)[error userInfo][RKObjectMapperErrorObjectsKey]).count > 0) {
+                    errorMessage = ((RKErrorMessage *)[error userInfo][RKObjectMapperErrorObjectsKey][0]).errorMessage;
+                }
+                errorBlock(errorMessage);
             }
             [self.networkIndicatorController endNetworking];
             return;
@@ -3492,7 +3493,7 @@ NSString *currentUser;
 
 - (void)rejectQuest:(NSString *)group
           onSuccess:(void (^)())successBlock
-            onError:(void (^)())errorBlock {
+            onError:(void (^)(NSString *errorMessage))errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
@@ -3514,7 +3515,11 @@ NSString *currentUser;
                 [self displayNetworkError];
             }
             if (errorBlock) {
-                errorBlock();
+                NSString *errorMessage = @"";
+                if (((NSArray *)[error userInfo][RKObjectMapperErrorObjectsKey]).count > 0) {
+                    errorMessage = ((RKErrorMessage *)[error userInfo][RKObjectMapperErrorObjectsKey][0]).errorMessage;
+                }
+                errorBlock(errorMessage);
             }
             [self.networkIndicatorController endNetworking];
             return;
@@ -3523,7 +3528,7 @@ NSString *currentUser;
 
 - (void)abortQuest:(NSString *)group
          onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock {
+           onError:(void (^)(NSString *errorMessage))errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
@@ -3545,7 +3550,11 @@ NSString *currentUser;
                 [self displayNetworkError];
             }
             if (errorBlock) {
-                errorBlock();
+                NSString *errorMessage = @"";
+                if (((NSArray *)[error userInfo][RKObjectMapperErrorObjectsKey]).count > 0) {
+                    errorMessage = ((RKErrorMessage *)[error userInfo][RKObjectMapperErrorObjectsKey][0]).errorMessage;
+                }
+                errorBlock(errorMessage);
             }
             [self.networkIndicatorController endNetworking];
             return;
@@ -3554,7 +3563,7 @@ NSString *currentUser;
 
 - (void)cancelQuest:(NSString *)group
           onSuccess:(void (^)())successBlock
-            onError:(void (^)())errorBlock {
+            onError:(void (^)(NSString *errorMessage))errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
@@ -3576,7 +3585,11 @@ NSString *currentUser;
                 [self displayNetworkError];
             }
             if (errorBlock) {
-                errorBlock();
+                NSString *errorMessage = @"";
+                if (((NSArray *)[error userInfo][RKObjectMapperErrorObjectsKey]).count > 0) {
+                    errorMessage = ((RKErrorMessage *)[error userInfo][RKObjectMapperErrorObjectsKey][0]).errorMessage;
+                }
+                errorBlock(errorMessage);
             }
             [self.networkIndicatorController endNetworking];
             return;
@@ -3585,7 +3598,7 @@ NSString *currentUser;
 
 - (void)forceStartQuest:(NSString *)group
               onSuccess:(void (^)())successBlock
-                onError:(void (^)())errorBlock {
+                onError:(void (^)(NSString *errorMessage))errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
@@ -3607,7 +3620,11 @@ NSString *currentUser;
                 [self displayNetworkError];
             }
             if (errorBlock) {
-                errorBlock();
+                NSString *errorMessage = @"";
+                if (((NSArray *)[error userInfo][RKObjectMapperErrorObjectsKey]).count > 0) {
+                    errorMessage = ((RKErrorMessage *)[error userInfo][RKObjectMapperErrorObjectsKey][0]).errorMessage;
+                }
+                errorBlock(errorMessage);
             }
             [self.networkIndicatorController endNetworking];
             return;
@@ -3863,13 +3880,8 @@ NSString *currentUser;
         path:[NSString stringWithFormat:@"groups/%@/members", groupID]
         parameters:parameters
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            if ([mappingResult array].count == 30 && fetchAll) {
-                User *lastUser = [[mappingResult array] lastObject];
-                [self fetchGroupMembers:groupID withPublicFields:withPublicFields fetchAll:YES onSuccess:successBlock onError:errorBlock];
-            } else {
-                if (successBlock) {
-                    successBlock();
-                }
+            if (successBlock) {
+                successBlock();
             }
             [self.networkIndicatorController endNetworking];
             return;

@@ -225,22 +225,34 @@
     if ([identifier isEqualToString:@"acceptAction"]) {
         [self.sharedManager acceptQuest:[self.sharedManager getUser].partyID onSuccess:^() {
             completionHandler();
-        } onError:^() {
+        } onError:^(NSString *errorMessage) {
+            [self displayLocalNotificationWithMessage:errorMessage withApplication:application];
             completionHandler();
         }];
     } else if ([identifier isEqualToString:@"rejectAction"]) {
         [self.sharedManager rejectQuest:[self.sharedManager getUser].partyID onSuccess:^() {
             completionHandler();
-        } onError:^() {
+        } onError:^(NSString *errorMessage) {
+            [self displayLocalNotificationWithMessage:errorMessage withApplication:application];
             completionHandler();
         }];
     } else if ([identifier isEqualToString:@"replyAction"]) {
         [self.sharedManager privateMessage:responseInfo[UIUserNotificationActionResponseTypedTextKey] toUserWithID:userInfo[@"replyTo"] onSuccess:^() {
             completionHandler();
         } onError:^() {
+            [self displayLocalNotificationWithMessage:NSLocalizedString(@"Your message could not be sent.", nil) withApplication:application];
             completionHandler();
         }];
     }
+}
+
+- (void) displayLocalNotificationWithMessage:(NSString *)message withApplication:(UIApplication *)application {
+    UILocalNotification *notification = [[UILocalNotification alloc]init];
+    [notification setAlertBody:[NSString stringWithFormat:NSLocalizedString(@"There was an error with your request: %@", nil), message]];
+    [notification setFireDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    [notification setTimeZone:[NSTimeZone  defaultTimeZone]];
+    [application setScheduledLocalNotifications:[NSArray arrayWithObject:notification]];
+
 }
 
 - (void)application:(UIApplication *)application

@@ -39,8 +39,7 @@
 #pragma mark - Table view data source
 
 - (BOOL)shouldShowResponseOptions {
-    return (![self.isWorldQuest boolValue]) && self.group.questKey != nil &&
-    ![self.group.questActive boolValue] && self.user.participateInQuest == nil && !self.hasResponded;
+    return true;
 }
 
 - (int)questDetailSection {
@@ -240,7 +239,7 @@
                 onSuccess:^() {
                     [weakSelf.navigationController popViewControllerAnimated:YES];
                 }
-                onError:^() {
+                onError:^(NSString *errorMessage) {
                     weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
                 }];
         } else {
@@ -248,7 +247,7 @@
                 onSuccess:^() {
                     [weakSelf.navigationController popViewControllerAnimated:YES];
                 }
-                onError:^() {
+                onError:^(NSString *errorMessage) {
                     weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
                 }];
         }
