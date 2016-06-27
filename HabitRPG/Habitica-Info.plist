@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>139</string>
+	<string>142</string>
 	<key>CustomDomain</key>
 	<string>${CUSTOM_DOMAIN}</string>
 	<key>DisableSSL</key>
@@ -53,6 +53,8 @@
 	<string>128307497299777</string>
 	<key>FacebookDisplayName</key>
 	<string>Habitica</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -186,6 +188,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-    <key>ITSAppUsesNonExemptEncryption</key><false/>
 </dict>
 </plist>
