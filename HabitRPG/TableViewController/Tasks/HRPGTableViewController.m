@@ -103,7 +103,7 @@ BOOL editable;
     HRPGTabBarController *tabBarController = (HRPGTabBarController *)self.tabBarController;
 
     [predicateArray addObjectsFromArray:[Task predicatesForTaskType:self.typeName
-                                                     withFilterType:self.filterType]];
+                                                     withFilterType:self.filterType withOffset:self.dayStart]];
 
     if ([tabBarController.selectedTags count] > 0) {
         [predicateArray

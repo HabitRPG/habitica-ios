@@ -113,6 +113,6 @@ typedef NS_ENUM(NSInteger, TaskToDoFilterType) {
 - (UIColor *)taskColor;
 - (UIColor *)lightTaskColor;
 
-+ (NSArray *)predicatesForTaskType:(NSString *)taskType withFilterType:(NSInteger)filterType;
++ (NSArray *)predicatesForTaskType:(NSString *)taskType withFilterType:(NSInteger)filterType withOffset:(NSInteger)offset;
 
 @end

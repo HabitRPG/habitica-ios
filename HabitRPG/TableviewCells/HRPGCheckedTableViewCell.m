@@ -14,7 +14,6 @@
 
 - (void)configureForTask:(Task *)task {
     [super configureForTask:task];
-    [self.checkBox configureForTask:task];
     self.checklistIndicator.backgroundColor = [task lightTaskColor];
     self.checklistIndicator.hidden = NO;
     self.checklistIndicator.translatesAutoresizingMaskIntoConstraints = NO;

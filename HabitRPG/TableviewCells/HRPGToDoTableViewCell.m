@@ -13,6 +13,7 @@
 
 - (void)configureForTask:(Task *)task {
     [super configureForTask:task];
+    [self.checkBox configureForTask:task];
 
     if (task.duedate) {
         self.dueLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2];

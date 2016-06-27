@@ -195,7 +195,7 @@
     }
 }
 
-+ (NSArray *)predicatesForTaskType:(NSString *)taskType withFilterType:(NSInteger)filterType {
++ (NSArray *)predicatesForTaskType:(NSString *)taskType withFilterType:(NSInteger)filterType withOffset:(NSInteger)offset {
     if ([taskType isEqual:@"habit"]) {
         switch (filterType) {
             case TaskHabitFilterTypeAll: {
@@ -213,7 +213,8 @@
         [df setDateFormat:@"EEEE"];
         NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
         df.locale = locale;
-        NSString *dateString = [df stringFromDate:[NSDate date]];
+        NSDate *dateWithOffset = [[NSDate date] dateByAddingTimeInterval:-(offset * 60 * 60)];
+        NSString *dateString = [df stringFromDate:dateWithOffset];
         switch (filterType) {
             case TaskDailyFilterTypeAll: {
                 return @[ [NSPredicate predicateWithFormat:@"type=='daily'"] ];
