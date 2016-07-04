@@ -1523,6 +1523,8 @@ NSString *currentUser;
         [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
     [gearMapping addAttributeMappingsFromDictionary:@{
         @"key" : @"key",
+        @"text" : @"text",
+        @"notes" : @"notes",
         @"con" : @"con",
         @"value" : @"value",
         @"type" : @"type",

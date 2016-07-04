@@ -56,20 +56,18 @@
 }
 
 - (void)refresh {
-    __weak HRPGRewardsViewController *weakSelf;
+    __weak HRPGRewardsViewController *weakSelf = self;
     [self.sharedManager fetchUser:^() {
         [weakSelf.sharedManager fetchBuyableRewards:^{
             [weakSelf.refreshControl endRefreshing];
-        }
-            onError:^{
-                [weakSelf.refreshControl endRefreshing];
-                [weakSelf.sharedManager displayNetworkError];
-            }];
-    }
-        onError:^() {
+        } onError:^{
             [weakSelf.refreshControl endRefreshing];
             [weakSelf.sharedManager displayNetworkError];
         }];
+    } onError:^() {
+        [weakSelf.refreshControl endRefreshing];
+        [weakSelf.sharedManager displayNetworkError];
+    }];
 }
 
 #pragma mark - Table view data source
@@ -377,7 +375,7 @@
         [self.sharedManager setImage:imageName withFormat:@"png" onView:cell.shopImageView];
     }
 
-    __weak HRPGRewardsViewController *weakSelf;
+    __weak HRPGRewardsViewController *weakSelf = self;
     [cell onPurchaseTap:^() {
         if ([reward isKindOfClass:[Reward class]]) {
             [weakSelf.sharedManager
@@ -393,11 +391,12 @@
             reward.buyable = @NO;
             [weakSelf.sharedManager buyObject:reward
                 onSuccess:^() {
-                    [weakSelf.sharedManager fetchBuyableRewards:nil onError:nil];
-                    for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
-                        [weakSelf configureCell:[self.tableView cellForRowAtIndexPath:indexPath]
-                                atIndexPath:indexPath];
-                    }
+                    [weakSelf.sharedManager fetchBuyableRewards:^() {
+                        for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
+                            [weakSelf configureCell:[self.tableView cellForRowAtIndexPath:indexPath]
+                                        atIndexPath:indexPath];
+                        }
+                    } onError:nil];
                 }
                 onError:^() {
                     reward.buyable = @YES;

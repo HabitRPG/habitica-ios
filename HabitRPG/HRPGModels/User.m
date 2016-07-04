@@ -86,7 +86,7 @@
     UIView *avatarView =
         [self getAvatarViewShowsBackground:showsBackground showsMount:showsMount showsPet:showsPet];
 
-    if (!avatarView) {
+    if (!avatarView || !view) {
         return;
     }
 
