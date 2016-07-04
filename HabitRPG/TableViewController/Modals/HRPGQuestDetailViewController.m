@@ -39,7 +39,8 @@
 #pragma mark - Table view data source
 
 - (BOOL)shouldShowResponseOptions {
-    return true;
+    return (![self.isWorldQuest boolValue]) && self.group.questKey != nil &&
+    ![self.group.questActive boolValue] && self.user.participateInQuest == nil && !self.hasResponded;
 }
 
 - (int)questDetailSection {

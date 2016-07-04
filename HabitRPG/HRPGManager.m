@@ -3421,7 +3421,7 @@ NSString *currentUser;
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+            } else if (operation.HTTPRequestOperation.response.statusCode == 401 || operation.HTTPRequestOperation.response.statusCode == 400) {
                 RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
                 [self displayError:errorMessage.errorMessage];
             } else {
@@ -3513,6 +3513,9 @@ NSString *currentUser;
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
+            } else if (operation.HTTPRequestOperation.response.statusCode == 401 || operation.HTTPRequestOperation.response.statusCode == 400) {
+                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
+                [self displayError:errorMessage.errorMessage];
             } else {
                 [self displayNetworkError];
             }
@@ -3548,6 +3551,9 @@ NSString *currentUser;
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
+            } else if (operation.HTTPRequestOperation.response.statusCode == 401 || operation.HTTPRequestOperation.response.statusCode == 400) {
+                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
+                [self displayError:errorMessage.errorMessage];
             } else {
                 [self displayNetworkError];
             }
@@ -3583,6 +3589,9 @@ NSString *currentUser;
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
+            } else if (operation.HTTPRequestOperation.response.statusCode == 401 || operation.HTTPRequestOperation.response.statusCode == 400) {
+                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
+                [self displayError:errorMessage.errorMessage];
             } else {
                 [self displayNetworkError];
             }
@@ -3618,6 +3627,9 @@ NSString *currentUser;
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
+            } else if (operation.HTTPRequestOperation.response.statusCode == 401 || operation.HTTPRequestOperation.response.statusCode == 400) {
+                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
+                [self displayError:errorMessage.errorMessage];
             } else {
                 [self displayNetworkError];
             }
