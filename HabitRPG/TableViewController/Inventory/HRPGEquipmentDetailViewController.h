@@ -10,9 +10,7 @@
 #import "HRPGBaseViewController.h"
 
 @interface HRPGEquipmentDetailViewController
-    : HRPGBaseViewController<NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
-
-@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+    : HRPGBaseViewController<UIActionSheetDelegate>
 
 @property NSString *type;
 @property NSString *equipType;

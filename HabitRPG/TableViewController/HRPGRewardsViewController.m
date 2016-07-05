@@ -13,6 +13,7 @@
 #import "HRPGRewardTableViewCell.h"
 #import "KLCPopup.h"
 #import "Reward.h"
+#import "HRPGCoreDataDataSource.h"
 
 @interface HRPGRewardsViewController ()
 @property NSString *readableName;
@@ -20,15 +21,15 @@
 @property NSIndexPath *openedIndexPath;
 @property int indexOffset;
 @property Reward *editedReward;
-@property BOOL disableFetchedResultsControllerUpdates;
 @property User *user;
-
+@property HRPGCoreDataDataSource *dataSource;
 @end
 
 @implementation HRPGRewardsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupTableView];
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
@@ -39,10 +40,42 @@
     [self.sharedManager fetchBuyableRewards:nil onError:nil];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)setupTableView {
+    __weak HRPGRewardsViewController *weakSelf = self;
+    TableViewCellConfigureBlock configureCell = ^(HRPGRewardTableViewCell *cell, MetaReward *reward, NSIndexPath *indexPath) {
+        [weakSelf configureCell:cell withReward:reward];
+    };
+    FetchRequestConfigureBlock configureFetchRequest = ^(NSFetchRequest *fetchRequest) {
+        NSString *predicateString = @"type == 'reward' || type == 'potion' ||buyable == true";
+        if ([weakSelf.user.flags.armoireEnabled boolValue]) {
+            predicateString = [predicateString stringByAppendingString:@" || type == 'armoire'"];
+        }
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:predicateString]];
+        
+        NSSortDescriptor *keyDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
+        NSSortDescriptor *orderDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
+        NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:NO];
+        NSSortDescriptor *rewardTypeDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:@"rewardType" ascending:YES];
+        NSArray *sortDescriptors =
+        @[ rewardTypeDescriptor, typeDescriptor, orderDescriptor, keyDescriptor ];
+        [fetchRequest setSortDescriptors:sortDescriptors];
+    };
+    self.dataSource= [[HRPGCoreDataDataSource alloc] initWithManagedObjectContext:self.managedObjectContext
+                                                                       entityName:@"MetaReward"
+                                                                   cellIdentifier:@"Cell"
+                                                               configureCellBlock:configureCell
+                                                                fetchRequestBlock:configureFetchRequest
+                                                                    asDelegateFor:self.tableView];
+    self.dataSource.cellIdentifierBlock = ^(MetaReward *reward, NSIndexPath *indexPath) {
+        NSString *cellIdentifier = @"Cell";
+        if (![reward isKindOfClass:[Reward class]]) {
+            cellIdentifier = @"ImageCell";
+        }
+        return cellIdentifier;
+    };
 }
-
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"rewards"]) {
         return @{
@@ -70,34 +103,10 @@
     }];
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.fetchedResultsController sections].count;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.fetchedResultsController.sections[section].numberOfObjects;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSString *cellName = @"Cell";
-    if (![reward isKindOfClass:[Reward class]]) {
-        cellName = @"ImageCell";
-    }
-
-    HRPGRewardTableViewCell *cell =
-        [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
-    return cell;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     float height = 40.0f;
     float width = self.viewWidth - 127;
-    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    MetaReward *reward = [self.dataSource itemAtIndexPath:indexPath];
     if ([reward isKindOfClass:[Reward class]]) {
         width = self.viewWidth - 77;
     }
@@ -151,7 +160,7 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    MetaReward *reward = [self.dataSource itemAtIndexPath:indexPath];
     return [reward.type isEqualToString:@"reward"];
 }
 
@@ -159,7 +168,7 @@
     commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
      forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        MetaReward *reward = [self.dataSource itemAtIndexPath:indexPath];
         if ([reward isKindOfClass:[Reward class]]) {
             [self.sharedManager deleteReward:(Reward *)reward
                                    onSuccess:nil onError:nil];
@@ -169,7 +178,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    MetaReward *reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    MetaReward *reward = [self.dataSource itemAtIndexPath:indexPath];
     if ([reward isKindOfClass:[Reward class]]) {
         self.editedReward = (Reward *)reward;
         [self performSegueWithIdentifier:@"FormSegue" sender:self];
@@ -239,123 +248,8 @@
     }
 }
 
-- (NSFetchedResultsController *)fetchedResultsController {
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
 
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"MetaReward"
-                                              inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setFetchBatchSize:20];
-    NSString *predicateString = @"type == 'reward' || type == 'potion' ||buyable == true";
-    if ([self.user.flags.armoireEnabled boolValue]) {
-        predicateString = [predicateString stringByAppendingString:@" || type == 'armoire'"];
-    }
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:predicateString]];
-
-    NSSortDescriptor *keyDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
-    NSSortDescriptor *orderDescriptor =
-        [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
-    NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:NO];
-    NSSortDescriptor *rewardTypeDescriptor =
-        [[NSSortDescriptor alloc] initWithKey:@"rewardType" ascending:YES];
-    NSArray *sortDescriptors =
-        @[ rewardTypeDescriptor, typeDescriptor, orderDescriptor, keyDescriptor ];
-    [fetchRequest setSortDescriptors:sortDescriptors];
-
-    NSFetchedResultsController *aFetchedResultsController =
-        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                            managedObjectContext:self.managedObjectContext
-                                              sectionNameKeyPath:nil
-                                                       cacheName:nil];
-    aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
-
-    NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-
-    return _fetchedResultsController;
-}
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller
-    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-             atIndex:(NSUInteger)sectionIndex
-       forChangeType:(NSFetchedResultsChangeType)type {
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeUpdate:
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationAutomatic];
-            break;
-
-        case NSFetchedResultsChangeMove:
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller
-    didChangeObject:(id)anObject
-        atIndexPath:(NSIndexPath *)indexPath
-      forChangeType:(NSFetchedResultsChangeType)type
-       newIndexPath:(NSIndexPath *)newIndexPath {
-    UITableView *tableView = self.tableView;
-
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
-
-        case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView endUpdates];
-}
-
-- (void)configureCell:(HRPGRewardTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    MetaReward *reward;
-    if ([[self.fetchedResultsController sections] count] > [indexPath section]) {
-        id<NSFetchedResultsSectionInfo> sectionInfo =
-            [self.fetchedResultsController sections][(NSUInteger)[indexPath section]];
-        if ([sectionInfo numberOfObjects] > [indexPath row]) {
-            reward = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        }
-    }
-
+- (void)configureCell:(HRPGRewardTableViewCell *)cell withReward:(MetaReward *)reward {
     if (!reward) {
         return;
     }
@@ -382,8 +276,7 @@
                 getReward:reward.key
                 onSuccess:^() {
                     for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
-                        [weakSelf configureCell:[self.tableView cellForRowAtIndexPath:indexPath]
-                                atIndexPath:indexPath];
+                        [weakSelf configureCell:[self.tableView cellForRowAtIndexPath:indexPath] withReward:[self.dataSource itemAtIndexPath:indexPath]];
                     }
                 }
                   onError:nil];
@@ -393,8 +286,7 @@
                 onSuccess:^() {
                     [weakSelf.sharedManager fetchBuyableRewards:^() {
                         for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
-                            [weakSelf configureCell:[self.tableView cellForRowAtIndexPath:indexPath]
-                                        atIndexPath:indexPath];
+                            [weakSelf configureCell:[self.tableView cellForRowAtIndexPath:indexPath] withReward:[self.dataSource itemAtIndexPath:indexPath]];
                         }
                     } onError:nil];
                 }

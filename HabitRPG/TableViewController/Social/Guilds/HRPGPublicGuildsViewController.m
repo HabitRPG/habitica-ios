@@ -9,17 +9,19 @@
 #import "HRPGPublicGuildsViewController.h"
 #import "HRPGPublicGuildTableViewCell.h"
 #import "HRPGGroupTableViewController.h"
+#import "HRPGCoreDataDataSource.h"
 
 @interface HRPGPublicGuildsViewController ()
 @property(nonatomic, strong) UISearchBar *searchBar;
 @property(nonatomic, strong) NSString *searchValue;
-
+@property HRPGCoreDataDataSource *dataSource;
 @end
 
 @implementation HRPGPublicGuildsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupTableView];
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
@@ -33,6 +35,37 @@
     [self refresh];
 }
 
+- (void)setupTableView {
+    
+    __weak HRPGPublicGuildsViewController *weakSelf = self;
+    TableViewCellConfigureBlock configureCell = ^(HRPGPublicGuildTableViewCell *cell, Group *guild, NSIndexPath *indexPath) {
+        [weakSelf configureCell:cell withGuild:guild];
+    };
+    FetchRequestConfigureBlock configureFetchRequest = ^(NSFetchRequest *fetchRequest) {
+        NSPredicate *predicate;
+        if (weakSelf.searchValue) {
+            predicate = [NSPredicate
+                    predicateWithFormat:
+                    @"type == 'guild' && ((name CONTAINS[cd] %@) || (hdescription CONTAINS[cd] %@))",
+                    weakSelf.searchValue, weakSelf.searchValue];
+        } else {
+            predicate = [NSPredicate predicateWithFormat:@"type == 'guild'"];
+        }
+        [fetchRequest setPredicate:predicate];
+        
+        NSSortDescriptor *sortDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:@"memberCount" ascending:NO];
+        NSArray *sortDescriptors = @[ sortDescriptor ];
+        [fetchRequest setSortDescriptors:sortDescriptors];
+    };
+    self.dataSource= [[HRPGCoreDataDataSource alloc] initWithManagedObjectContext:self.managedObjectContext
+                                                                       entityName:@"Group"
+                                                                   cellIdentifier:@"Cell"
+                                                               configureCellBlock:configureCell
+                                                                fetchRequestBlock:configureFetchRequest
+                                                                    asDelegateFor:self.tableView];
+}
+
 - (void)refresh {
     __weak HRPGPublicGuildsViewController *weakSelf = self;
     [self.sharedManager fetchGroups:@"publicGuilds"
@@ -44,35 +77,8 @@
         }];
 }
 
-- (NSPredicate *)getPredicate {
-    if (self.searchValue) {
-        return [NSPredicate
-            predicateWithFormat:
-                @"type == 'guild' && ((name CONTAINS[cd] %@) || (hdescription CONTAINS[cd] %@))",
-                self.searchValue, self.searchValue];
-    } else {
-        return [NSPredicate predicateWithFormat:@"type == 'guild'"];
-    }
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.fetchedResultsController fetchedObjects].count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell =
-        [self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    [self configureCell:(HRPGPublicGuildTableViewCell *)cell atIndexPath:indexPath];
-    return cell;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Group *guild = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Group *guild = [self.dataSource itemAtIndexPath:indexPath];
 
     CGFloat width = self.viewWidth - 24;
     CGFloat titleWidth =
@@ -108,81 +114,7 @@
     return height;
 }
 
-- (NSFetchedResultsController *)fetchedResultsController {
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
-
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group"
-                                              inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setPredicate:[self getPredicate]];
-
-    NSSortDescriptor *sortDescriptor =
-        [[NSSortDescriptor alloc] initWithKey:@"memberCount" ascending:NO];
-    NSArray *sortDescriptors = @[ sortDescriptor ];
-    [fetchRequest setSortDescriptors:sortDescriptors];
-
-    NSFetchedResultsController *aFetchedResultsController =
-        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                            managedObjectContext:self.managedObjectContext
-                                              sectionNameKeyPath:nil
-                                                       cacheName:nil];
-    aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
-
-    NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-
-    return _fetchedResultsController;
-}
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath {
-    UITableView *tableView = self.tableView;
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView
-                            cellForRowAtIndexPath:indexPath]
-                    atIndexPath:indexPath];
-            break;
-
-        case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView endUpdates];
-}
-
-- (void)configureCell:(HRPGPublicGuildTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Group *guild = [self.fetchedResultsController objectAtIndexPath:indexPath];
+- (void)configureCell:(HRPGPublicGuildTableViewCell *)cell withGuild:(Group *)guild {
     [cell configureForGuild:guild];
     __weak HRPGPublicGuildsViewController *weakSelf = self;
     cell.joinAction = ^() {
@@ -197,7 +129,7 @@
     if ([segue.identifier isEqualToString:@"ShowGuildSegue"]) {
         UITableViewCell *cell = (UITableViewCell *)sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        Group *guild = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        Group *guild = [self.dataSource itemAtIndexPath:indexPath];
         HRPGGroupTableViewController *guildViewController =
                 segue.destinationViewController;
         guildViewController.groupID = guild.id;
@@ -216,11 +148,7 @@
         self.searchValue = nil;
     }
 
-    [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
-    NSError *error;
-    [self.fetchedResultsController performFetch:&error];
-
-    [self.tableView reloadData];
+    [self.dataSource reconfigureFetchRequest];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -239,13 +167,9 @@
 
     self.searchValue = nil;
 
-    [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
-    NSError *error;
-    [self.fetchedResultsController performFetch:&error];
+    [self.dataSource reconfigureFetchRequest];
 
     [searchBar resignFirstResponder];
-
-    [self.tableView reloadData];
 }
 
 @end

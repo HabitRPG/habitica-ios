@@ -10,9 +10,7 @@
 #import "HRPGBaseViewController.h"
 
 @interface HRPGPartyMembersViewController
-    : HRPGBaseViewController<NSFetchedResultsControllerDelegate>
-
-@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+    : HRPGBaseViewController
 
 @property BOOL isLeader;
 @property NSString *partyID;

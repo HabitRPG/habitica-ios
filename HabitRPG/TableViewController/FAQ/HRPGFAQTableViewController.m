@@ -10,11 +10,13 @@
 #import "FAQ.h"
 #import "HRPGFAQDetailViewController.h"
 #import "TutorialSteps.h"
+#import "HRPGCoreDataDataSource.h"
 
 @interface HRPGFAQTableViewController ()
 
 @property(nonatomic, strong) UISearchBar *searchBar;
-
+@property NSString *searchText;
+@property(nonatomic) HRPGCoreDataDataSource *dataSource;
 @end
 
 @implementation HRPGFAQTableViewController
@@ -29,44 +31,37 @@
     self.tableView.tableHeaderView = self.searchBar;
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+- (void) setupTableView {
+    __weak HRPGFAQTableViewController *weakSelf = self;
+    TableViewCellConfigureBlock configureCell = ^(UITableViewCell *cell, FAQ *faq, NSIndexPath *indexPath) {
+        cell.textLabel.text = faq.question;
+    };
+    FetchRequestConfigureBlock configureFetchRequest = ^(NSFetchRequest *fetchRequest) {
+        if (weakSelf.searchText) {
+            NSPredicate *predicate =
+            [NSPredicate predicateWithFormat:@"question CONTAINS[cd] %@", weakSelf.searchText];
+            
+            [fetchRequest setPredicate:predicate];
+        }
+        
+        NSSortDescriptor *indexDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
+        NSArray *sortDescriptors = @[ indexDescriptor ];
+        
+        [fetchRequest setSortDescriptors:sortDescriptors];
+    };
+    self.dataSource= [[HRPGCoreDataDataSource alloc] initWithManagedObjectContext:self.managedObjectContext
+                                                                       entityName:@"FAQ"
+                                                                   cellIdentifier:@"Cell"
+                                                               configureCellBlock:configureCell
+                                                                fetchRequestBlock:configureFetchRequest
+                                                                    asDelegateFor:self.tableView];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        id<NSFetchedResultsSectionInfo> sectionInfo =
-            [self.fetchedResultsController sections][section];
-        return [sectionInfo numberOfObjects];
-    } else {
-        return 1;
-    }
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell =
-        [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    if (indexPath.section == 0) {
-        [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    } else {
-        cell.textLabel.text = NSLocalizedString(@"Reset Justins Tips", nil);
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    return cell;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        FAQ *faq = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        FAQ *faq = [self.dataSource itemAtIndexPath:indexPath];
 
         CGFloat width = self.viewWidth - 51;
 
@@ -93,113 +88,6 @@
         height = height + 32;
         return height;
     }
-}
-
-- (NSFetchedResultsController *)fetchedResultsController {
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
-
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity =
-        [NSEntityDescription entityForName:@"FAQ" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setFetchBatchSize:20];
-
-    NSSortDescriptor *indexDescriptor =
-        [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
-    NSArray *sortDescriptors = @[ indexDescriptor ];
-
-    [fetchRequest setSortDescriptors:sortDescriptors];
-
-    NSFetchedResultsController *aFetchedResultsController =
-        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                            managedObjectContext:self.managedObjectContext
-                                              sectionNameKeyPath:nil
-                                                       cacheName:nil];
-    aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
-
-    NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-
-    return _fetchedResultsController;
-}
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller
-    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-             atIndex:(NSUInteger)sectionIndex
-       forChangeType:(NSFetchedResultsChangeType)type {
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeUpdate:
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationAutomatic];
-            break;
-
-        case NSFetchedResultsChangeMove:
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller
-    didChangeObject:(id)anObject
-        atIndexPath:(NSIndexPath *)indexPath
-      forChangeType:(NSFetchedResultsChangeType)type
-       newIndexPath:(NSIndexPath *)newIndexPath {
-    UITableView *tableView = self.tableView;
-
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath]
-                    atIndexPath:indexPath
-                  withAnimation:YES];
-            break;
-
-        case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView endUpdates];
-}
-
-- (void)configureCell:(UITableViewCell *)cell
-          atIndexPath:(NSIndexPath *)indexPath
-        withAnimation:(BOOL)animate {
-    FAQ *faq = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = faq.question;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -229,7 +117,7 @@
     if ([segue.identifier isEqualToString:@"FAQDetailSegue"]) {
         HRPGFAQDetailViewController *detailViewController = segue.destinationViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        FAQ *faq = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        FAQ *faq = [self.dataSource itemAtIndexPath:indexPath];
         detailViewController.faq = faq;
     }
 }
@@ -240,14 +128,8 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSPredicate *predicate =
-        [NSPredicate predicateWithFormat:@"question CONTAINS[cd] %@", searchText];
-
-    [self.fetchedResultsController.fetchRequest setPredicate:predicate];
-    NSError *error;
-    [self.fetchedResultsController performFetch:&error];
-
-    [self.tableView reloadData];
+    self.searchText = searchText;
+    [self.dataSource reconfigureFetchRequest];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -263,14 +145,10 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     self.searchBar.text = @"";
     [searchBar setShowsCancelButton:NO animated:YES];
-
-    [self.fetchedResultsController.fetchRequest setPredicate:nil];
-    NSError *error;
-    [self.fetchedResultsController performFetch:&error];
-
+    self.searchText = nil;
+    [self.dataSource reconfigureFetchRequest];
+    
     [searchBar resignFirstResponder];
-
-    [self.tableView reloadData];
 }
 
 @end

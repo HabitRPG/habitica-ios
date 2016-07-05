@@ -10,9 +10,7 @@
 #import "HRPGBaseViewController.h"
 
 @interface HRPGItemViewController
-    : HRPGBaseViewController<NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
-
-@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+    : HRPGBaseViewController<UIActionSheetDelegate>
 
 @property(strong) NSString *itemType;
 @property BOOL shouldDismissAfterAction;

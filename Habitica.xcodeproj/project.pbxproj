@@ -41,6 +41,7 @@
 		D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */; };
 		D92D40D91ABF123800E30339 /* HRPGHabitButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = D92D40D81ABF123800E30339 /* HRPGHabitButtons.m */; };
 		D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */ = {isa = PBXBuildFile; fileRef = D93422B81AB792B5003AFCDE /* UIColor+LighterDarker.m */; };
+		D93D79721D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D93D79711D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m */; };
 		D940A7E31B0CF80100370F2E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D940A7E11B0CF80100370F2E /* Fabric.framework */; };
 		D940A7E41B0CF80100370F2E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D940A7E21B0CF80100370F2E /* Crashlytics.framework */; };
 		D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D942B53A1CAAE6B1009AB756 /* Social.storyboard */; };
@@ -305,6 +306,8 @@
 		D939B5EF1BD832B20015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D939B5F01BD832B30015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D939B5F11BD832B30015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D93D79701D2BC7AD00AFE014 /* HRPGCoreDataDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCoreDataDataSource.h; sourceTree = "<group>"; };
+		D93D79711D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCoreDataDataSource.m; sourceTree = "<group>"; };
 		D940A7E11B0CF80100370F2E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		D940A7E21B0CF80100370F2E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		D942B5391CAAE6B1009AB756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Social.storyboard; sourceTree = "<group>"; };
@@ -766,6 +769,15 @@
 				D9E365511930D59D00C056F1 /* Tasks */,
 			);
 			path = TableViewController;
+			sourceTree = "<group>";
+		};
+		D93D796C1D2BC73200AFE014 /* TableViewDataSources */ = {
+			isa = PBXGroup;
+			children = (
+				D93D79701D2BC7AD00AFE014 /* HRPGCoreDataDataSource.h */,
+				D93D79711D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m */,
+			);
+			path = TableViewDataSources;
 			sourceTree = "<group>";
 		};
 		D9436AC21C64F6DC008D1171 /* Social */ = {
@@ -1282,6 +1294,7 @@
 			children = (
 				D91489091CD23A600015B42D /* ViewController */,
 				D9B5C0EB18D6321400C8D1B7 /* Models */,
+				D93D796C1D2BC73200AFE014 /* TableViewDataSources */,
 				D92CDAE118CB83C40006C242 /* TableViewController */,
 				D9C2570D1B9B4BFB00839F48 /* TableviewCells */,
 				D9C000311928F85E003D4E4C /* Views */,
@@ -1788,6 +1801,7 @@
 				D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */,
 				D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */,
 				D9ADD3631944FDBE006202C1 /* HRPGFilterViewController.m in Sources */,
+				D93D79721D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m in Sources */,
 				D94FEDEE1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m in Sources */,
 				D96C86CB1BB0546400E4C134 /* HRPGCopyLabel.m in Sources */,
 				D92C60FC1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m in Sources */,

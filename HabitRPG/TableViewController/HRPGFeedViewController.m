@@ -7,56 +7,46 @@
 //
 
 #import "HRPGFeedViewController.h"
-
+#import "HRPGCoreDataDataSource.h"
 @interface HRPGFeedViewController ()
+
+@property HRPGCoreDataDataSource *dataSource;
+
 @end
 
 @implementation HRPGFeedViewController
 
-#pragma mark - Table view data source
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-
-    if ([[self.fetchedResultsController fetchedObjects] count] == 0) {
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        UILabel *emptyLabel = [[UILabel alloc] initWithFrame:self.tableView.frame];
-        emptyLabel.text = NSLocalizedString(@"You have no food", nil);
-        emptyLabel.textAlignment = NSTextAlignmentCenter;
-        emptyLabel.textColor = [UIColor lightGrayColor];
-        emptyLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-        [self.navigationController.view addSubview:emptyLabel];
-    }
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self setupTableView];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[self.fetchedResultsController sections] count];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[self.fetchedResultsController sections][(NSUInteger)section] name];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id<NSFetchedResultsSectionInfo> sectionInfo =
-        [self.fetchedResultsController sections][(NSUInteger)section];
-    return [sectionInfo numberOfObjects];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell =
-        [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
-    return cell;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
+- (void) setupTableView {
+    __weak HRPGFeedViewController *weakSelf = self;
+    TableViewCellConfigureBlock configureCell = ^(UITableViewCell *cell, Food *food, NSIndexPath *indexPath) {
+        [weakSelf configureCell:cell withFood:food];
+    };
+    FetchRequestConfigureBlock configureFetchRequest = ^(NSFetchRequest *fetchRequest) {
+        NSPredicate *predicate;
+        predicate = [NSPredicate predicateWithFormat:@"owned > 0 && text != ''"];
+        [fetchRequest setPredicate:predicate];
+        
+        NSSortDescriptor *indexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
+        NSArray *sortDescriptors = @[ indexDescriptor ];
+        
+        [fetchRequest setSortDescriptors:sortDescriptors];
+    };
+    self.dataSource= [[HRPGCoreDataDataSource alloc] initWithManagedObjectContext:self.managedObjectContext
+                                                                       entityName:@"Food"
+                                                                   cellIdentifier:@"Cell"
+                                                               configureCellBlock:configureCell
+                                                                fetchRequestBlock:configureFetchRequest
+                                                                    asDelegateFor:self.tableView];
+    self.dataSource.emptyText = NSLocalizedString(@"You have no food", nil);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Item *item = [self.dataSource itemAtIndexPath:indexPath];
     NSInteger height =
         (NSInteger)([item.text boundingRectWithSize:CGSizeMake(260.0f, MAXFLOAT)
                                             options:NSStringDrawingUsesLineFragmentOrigin
@@ -74,113 +64,12 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView
     willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.selectedFood = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    self.selectedFood = [self.dataSource itemAtIndexPath:indexPath];
     return indexPath;
 }
 
-- (NSFetchedResultsController *)fetchedResultsController {
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
 
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Food"
-                                              inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setFetchBatchSize:20];
-
-    NSPredicate *predicate;
-    predicate = [NSPredicate predicateWithFormat:@"owned > 0 && text != ''"];
-    [fetchRequest setPredicate:predicate];
-
-    NSSortDescriptor *indexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES];
-    NSArray *sortDescriptors = @[ indexDescriptor ];
-
-    [fetchRequest setSortDescriptors:sortDescriptors];
-
-    NSFetchedResultsController *aFetchedResultsController =
-        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                            managedObjectContext:self.managedObjectContext
-                                              sectionNameKeyPath:nil
-                                                       cacheName:nil];
-    aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
-
-    NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-
-    return _fetchedResultsController;
-}
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller
-    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-             atIndex:(NSUInteger)sectionIndex
-       forChangeType:(NSFetchedResultsChangeType)type {
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeUpdate:
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationAutomatic];
-            break;
-
-        case NSFetchedResultsChangeMove:
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller
-    didChangeObject:(id)anObject
-        atIndexPath:(NSIndexPath *)indexPath
-      forChangeType:(NSFetchedResultsChangeType)type
-       newIndexPath:(NSIndexPath *)newIndexPath {
-    UITableView *tableView = self.tableView;
-
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
-
-        case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView endUpdates];
-}
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Food *food = [self.fetchedResultsController objectAtIndexPath:indexPath];
+- (void)configureCell:(UITableViewCell *)cell withFood:(Food *)food {
     UILabel *textLabel = [cell viewWithTag:1];
     textLabel.text = food.text;
     textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
