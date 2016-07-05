@@ -500,15 +500,15 @@ User *user;
 
 - (void)changePushNotificationSettings:(PushNotifications *)newValues {
     [self.sharedManager updateUser:@{
-                                     @"preferences.pushNotifications.giftedGems": newValues.giftedGems,
-                                     @"preferences.pushNotifications.giftedSubscription": newValues.giftedSubscription,
-                                     @"preferences.pushNotifications.invitedGuild": newValues.invitedGuild,
-                                     @"preferences.pushNotifications.invitedParty": newValues.invitedParty,
-                                     @"preferences.pushNotifications.invitedQuest": newValues.invitedQuest,
-                                     @"preferences.pushNotifications.newPM": newValues.newPM,
-                                     @"preferences.pushNotifications.questStarted": newValues.questStarted,
-                                     @"preferences.pushNotifications.wonChallenge": newValues.wonChallenge,
-                                     @"preferences.pushNotifications.unsubscribeFromAll": newValues.unsubscribeFromAll
+                                     @"preferences.pushNotifications.giftedGems": newValues.giftedGems ? newValues.giftedGems : @NO,
+                                     @"preferences.pushNotifications.giftedSubscription": newValues.giftedSubscription ? newValues.giftedSubscription : @NO,
+                                     @"preferences.pushNotifications.invitedGuild": newValues.invitedGuild ? newValues.invitedGuild : @NO,
+                                     @"preferences.pushNotifications.invitedParty": newValues.invitedParty ? newValues.invitedParty : @NO,
+                                     @"preferences.pushNotifications.invitedQuest": newValues.invitedQuest ? newValues.invitedQuest : @NO,
+                                     @"preferences.pushNotifications.newPM": newValues.newPM ? newValues.newPM : @NO,
+                                     @"preferences.pushNotifications.questStarted": newValues.questStarted ? newValues.questStarted : @NO,
+                                     @"preferences.pushNotifications.wonChallenge": newValues.wonChallenge ? newValues.wonChallenge : @NO,
+                                     @"preferences.pushNotifications.unsubscribeFromAll": newValues.unsubscribeFromAll ? newValues.unsubscribeFromAll : @NO
                                      }onSuccess:nil onError:nil];
 }
 

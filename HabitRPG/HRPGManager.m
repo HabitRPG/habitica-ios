@@ -3177,9 +3177,9 @@ NSString *currentUser;
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             [self fetchUser:^() {
-                NSError *executeError = nil;
-                [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                successBlock();
+                if (successBlock) {
+                    successBlock();
+                }
             }
                 onError:nil];
             [self.networkIndicatorController endNetworking];
