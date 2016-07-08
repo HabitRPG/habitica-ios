@@ -29,7 +29,7 @@ If you require `sudo` to install gems (i.e. you are using the MacOS
 system ruby):
 
 ```
-$ sudo gem install cocoapods:'>=1.0.0.beta'
+$ sudo gem install cocoapods:'>=1.0'
 $ pod install
 ```
 
