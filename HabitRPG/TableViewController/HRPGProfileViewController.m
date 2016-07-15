@@ -126,7 +126,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         case 1:
             return 4;
         case 2:
-            return 5;
+            return 6;
         case 3:
             return 4;
         default:
@@ -219,18 +219,20 @@ NIKFontAwesomeIconFactory *iconFactory;
             instantiateViewControllerWithIdentifier:@"GuildsOverviewViewController"];
         [self.navigationController pushViewController:guildsViewController animated:YES];
     } else if (indexPath.section == 2 && indexPath.item == 0) {
-        [self performSegueWithIdentifier:@"CustomizationSegue" sender:self];
+        [self performSegueWithIdentifier:@"ShopsSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 1) {
-        [self performSegueWithIdentifier:@"EquipmentSegue" sender:self];
+        [self performSegueWithIdentifier:@"CustomizationSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 2) {
-        [self performSegueWithIdentifier:@"ItemSegue" sender:self];
+        [self performSegueWithIdentifier:@"EquipmentSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 3) {
+        [self performSegueWithIdentifier:@"ItemSegue" sender:self];
+    } else if (indexPath.section == 2 && indexPath.item == 4) {
         if ([self.user.flags.itemsEnabled boolValue]) {
             [self performSegueWithIdentifier:@"PetSegue" sender:self];
         } else {
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
-    } else if (indexPath.section == 2 && indexPath.item == 4) {
+    } else if (indexPath.section == 2 && indexPath.item == 5) {
         if ([self.user.flags.itemsEnabled boolValue]) {
             [self performSegueWithIdentifier:@"MountSegue" sender:self];
         } else {
@@ -287,17 +289,19 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else if (indexPath.section == 1 && indexPath.item == 3) {
         title = NSLocalizedString(@"Guilds", nil);
     } else if (indexPath.section == 2 && indexPath.item == 0) {
-        title = NSLocalizedString(@"Customize Avatar", nil);
+        title = NSLocalizedString(@"Shops", nil);
     } else if (indexPath.section == 2 && indexPath.item == 1) {
-        title = NSLocalizedString(@"Equipment", nil);
+        title = NSLocalizedString(@"Customize Avatar", nil);
     } else if (indexPath.section == 2 && indexPath.item == 2) {
-        title = NSLocalizedString(@"Items", nil);
+        title = NSLocalizedString(@"Equipment", nil);
     } else if (indexPath.section == 2 && indexPath.item == 3) {
+        title = NSLocalizedString(@"Items", nil);
+    } else if (indexPath.section == 2 && indexPath.item == 4) {
         title = NSLocalizedString(@"Pets", nil);
         if (![self.user.flags.itemsEnabled boolValue]) {
             cellName = @"LockedCell";
         }
-    } else if (indexPath.section == 2 && indexPath.item == 4) {
+    } else if (indexPath.section == 2 && indexPath.item == 5) {
         title = NSLocalizedString(@"Mounts", nil);
         if (![self.user.flags.itemsEnabled boolValue]) {
             cellName = @"LockedCell";

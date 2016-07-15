@@ -244,8 +244,22 @@
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock;
 
+- (void)purchaseHourglassItem:(NSString *)itemName
+            fromType:(NSString *)itemType
+           onSuccess:(void (^)())successBlock
+             onError:(void (^)())errorBlock;
+
+- (void)purchaseMysterySet:(NSString *)key
+                 onSuccess:(void (^)())successBlock
+                   onError:(void (^)())errorBlock;
+
 - (void)removePushDevice:(void (^)())successBlock
                  onError:(void (^)())errorBlock;
+
+- (void)fetchShopInventory:(NSString *)shopInventory
+                 onSuccess:(void (^)())successBlock
+                   onError:(void (^)())errorBlock;
+
 
 - (NSManagedObjectContext *)getManagedObjectContext;
 

@@ -30,6 +30,14 @@
 		D922F0B11925314500B197EA /* HRPGNetworkIndicatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0B01925314500B197EA /* HRPGNetworkIndicatorController.m */; };
 		D92761611CCFBEAD0049ECAC /* Flags+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D927615E1CCFBEAD0049ECAC /* Flags+CoreDataProperties.m */; };
 		D92761621CCFBEAD0049ECAC /* Flags.m in Sources */ = {isa = PBXBuildFile; fileRef = D92761601CCFBEAD0049ECAC /* Flags.m */; };
+		D92A08481D33EC38000F8B66 /* HRPGShopOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A08471D33EC38000F8B66 /* HRPGShopOverviewViewController.m */; };
+		D92A084B1D33FA08000F8B66 /* HRPGShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A084A1D33FA08000F8B66 /* HRPGShopViewController.m */; };
+		D92A08591D3520D8000F8B66 /* Shop+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A084E1D3520D8000F8B66 /* Shop+CoreDataProperties.m */; };
+		D92A085A1D3520D8000F8B66 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A08501D3520D8000F8B66 /* Shop.m */; };
+		D92A085B1D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A08521D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m */; };
+		D92A085C1D3520D8000F8B66 /* ShopCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A08541D3520D8000F8B66 /* ShopCategory.m */; };
+		D92A085D1D3520D8000F8B66 /* ShopItem+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A08561D3520D8000F8B66 /* ShopItem+CoreDataProperties.m */; };
+		D92A085E1D3520D8000F8B66 /* ShopItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A08581D3520D8000F8B66 /* ShopItem.m */; };
 		D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C0C401B8745DF000AF799 /* HRPGAPITests.m */; };
 		D92C0C441B8749DF000AF799 /* HabiticaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D94461871AB34F5C0015215E /* HabiticaTests.m */; };
 		D92C60F81BD3F28A005F68CC /* HRPGAccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C60F71BD3F28A005F68CC /* HRPGAccountDetailViewController.m */; };
@@ -282,6 +290,23 @@
 		D927615E1CCFBEAD0049ECAC /* Flags+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Flags+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D927615F1CCFBEAD0049ECAC /* Flags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flags.h; sourceTree = "<group>"; };
 		D92761601CCFBEAD0049ECAC /* Flags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flags.m; sourceTree = "<group>"; };
+		D92A08461D33EC38000F8B66 /* HRPGShopOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopOverviewViewController.h; sourceTree = "<group>"; };
+		D92A08471D33EC38000F8B66 /* HRPGShopOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopOverviewViewController.m; sourceTree = "<group>"; };
+		D92A08491D33FA08000F8B66 /* HRPGShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopViewController.h; sourceTree = "<group>"; };
+		D92A084A1D33FA08000F8B66 /* HRPGShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopViewController.m; sourceTree = "<group>"; };
+		D92A084C1D3519DF000F8B66 /* HabitRPG 31.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 31.xcdatamodel"; sourceTree = "<group>"; };
+		D92A084D1D3520D8000F8B66 /* Shop+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Shop+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D92A084E1D3520D8000F8B66 /* Shop+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Shop+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D92A084F1D3520D8000F8B66 /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
+		D92A08501D3520D8000F8B66 /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shop.m; sourceTree = "<group>"; };
+		D92A08511D3520D8000F8B66 /* ShopCategory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShopCategory+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D92A08521D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ShopCategory+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D92A08531D3520D8000F8B66 /* ShopCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCategory.h; sourceTree = "<group>"; };
+		D92A08541D3520D8000F8B66 /* ShopCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCategory.m; sourceTree = "<group>"; };
+		D92A08551D3520D8000F8B66 /* ShopItem+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShopItem+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D92A08561D3520D8000F8B66 /* ShopItem+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ShopItem+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D92A08571D3520D8000F8B66 /* ShopItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopItem.h; sourceTree = "<group>"; };
+		D92A08581D3520D8000F8B66 /* ShopItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopItem.m; sourceTree = "<group>"; };
 		D92C0C401B8745DF000AF799 /* HRPGAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAPITests.m; sourceTree = "<group>"; };
 		D92C0C421B8748CD000AF799 /* HabiticaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HabiticaTests.h; sourceTree = "<group>"; };
 		D92C60F61BD3F28A005F68CC /* HRPGAccountDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAccountDetailViewController.h; sourceTree = "<group>"; };
@@ -429,8 +454,8 @@
 		D97D39E81CB83ED600514F44 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Social.strings; sourceTree = "<group>"; };
 		D97D39E91CB83ED600514F44 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Main.strings; sourceTree = "<group>"; };
 		D97D39EA1CB83ED700514F44 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D980373719956E46004C8871 /* HRPGEquipmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = HRPGEquipmentDetailViewController.h; path = Inventory/HRPGEquipmentDetailViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = HRPGEquipmentDetailViewController.m; path = Inventory/HRPGEquipmentDetailViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D980373719956E46004C8871 /* HRPGEquipmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGEquipmentDetailViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGEquipmentDetailViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D987393A19687F3E002A2426 /* NSNumber+abbreviation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+abbreviation.h"; path = "HabitRPG/Utilities/NSNumber+abbreviation.h"; sourceTree = SOURCE_ROOT; };
 		D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+abbreviation.m"; path = "HabitRPG/Utilities/NSNumber+abbreviation.m"; sourceTree = SOURCE_ROOT; };
 		D98768F41AFFB85100336978 /* blade-equipResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "blade-equipResponse.json"; path = "HabiticaTests/Fixtures/blade-equipResponse.json"; sourceTree = SOURCE_ROOT; };
@@ -734,6 +759,17 @@
 				D914890B1CD23A900015B42D /* HRPGMaintenanceViewController.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D92A08451D33EB94000F8B66 /* Shops */ = {
+			isa = PBXGroup;
+			children = (
+				D92A08461D33EC38000F8B66 /* HRPGShopOverviewViewController.h */,
+				D92A08471D33EC38000F8B66 /* HRPGShopOverviewViewController.m */,
+				D92A08491D33FA08000F8B66 /* HRPGShopViewController.h */,
+				D92A084A1D33FA08000F8B66 /* HRPGShopViewController.m */,
+			);
+			path = Shops;
 			sourceTree = "<group>";
 		};
 		D92CDAE118CB83C40006C242 /* TableViewController */ = {
@@ -1070,6 +1106,7 @@
 		D9C3D01C19509E3800D22A4A /* Inventory */ = {
 			isa = PBXGroup;
 			children = (
+				D92A08451D33EB94000F8B66 /* Shops */,
 				D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */,
 				D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */,
 				D980373719956E46004C8871 /* HRPGEquipmentDetailViewController.h */,
@@ -1079,12 +1116,24 @@
 				D9ADD3491943BB16006202C1 /* HRPGFeedViewController.h */,
 				D9ADD34A1943BB16006202C1 /* HRPGFeedViewController.m */,
 			);
-			name = Inventory;
+			path = Inventory;
 			sourceTree = "<group>";
 		};
 		D9C3D01D19509E4C00D22A4A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				D92A084D1D3520D8000F8B66 /* Shop+CoreDataProperties.h */,
+				D92A084E1D3520D8000F8B66 /* Shop+CoreDataProperties.m */,
+				D92A084F1D3520D8000F8B66 /* Shop.h */,
+				D92A08501D3520D8000F8B66 /* Shop.m */,
+				D92A08511D3520D8000F8B66 /* ShopCategory+CoreDataProperties.h */,
+				D92A08521D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m */,
+				D92A08531D3520D8000F8B66 /* ShopCategory.h */,
+				D92A08541D3520D8000F8B66 /* ShopCategory.m */,
+				D92A08551D3520D8000F8B66 /* ShopItem+CoreDataProperties.h */,
+				D92A08561D3520D8000F8B66 /* ShopItem+CoreDataProperties.m */,
+				D92A08571D3520D8000F8B66 /* ShopItem.h */,
+				D92A08581D3520D8000F8B66 /* ShopItem.m */,
 				D995D5921D1D499D00D5251C /* PushNotifications+CoreDataProperties.h */,
 				D995D5931D1D499D00D5251C /* PushNotifications+CoreDataProperties.m */,
 				D995D5941D1D499D00D5251C /* PushNotifications.h */,
@@ -1780,6 +1829,7 @@
 				D9A1A27E1BA593D900903567 /* HRPGRewardTableViewCell.m in Sources */,
 				D9B5C0B118CCD1EA00C8D1B7 /* Task.m in Sources */,
 				D9D593611D0058AE00D6C388 /* HRPGInboxChatViewController.m in Sources */,
+				D92A085A1D3520D8000F8B66 /* Shop.m in Sources */,
 				D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */,
 				D979AD1A1AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m in Sources */,
 				D9F16E361BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m in Sources */,
@@ -1833,6 +1883,7 @@
 				D9C0E51F1C6516C50062C89A /* HRPGPublicGuildTableViewCell.m in Sources */,
 				D95D039C1C74E3E900D6BFB3 /* ImprovementCategory.m in Sources */,
 				D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */,
+				D92A085C1D3520D8000F8B66 /* ShopCategory.m in Sources */,
 				D9D0451C1C2B1AEC00630244 /* Reminder.m in Sources */,
 				D94FEDEB1BB314B10046A52E /* HRPGGroupFormViewController.m in Sources */,
 				D95CBD481BBC0EDA002F4498 /* UIView+Pulse.m in Sources */,
@@ -1840,6 +1891,7 @@
 				D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */,
 				D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */,
 				D9660D781AB248030084CE37 /* HRPGUserTopHeader.m in Sources */,
+				D92A08481D33EC38000F8B66 /* HRPGShopOverviewViewController.m in Sources */,
 				D9C257161B9B4C5100839F48 /* HRPGCheckedTableViewCell.m in Sources */,
 				D92CDADD18CB79E50006C242 /* HRPGTableViewController.m in Sources */,
 				D9C257261B9DC26D00839F48 /* HRPGFAQTableViewController.m in Sources */,
@@ -1855,13 +1907,16 @@
 				D995D5971D1D499D00D5251C /* PushNotifications.m in Sources */,
 				D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */,
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
+				D92A085E1D3520D8000F8B66 /* ShopItem.m in Sources */,
 				D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */,
+				D92A08591D3520D8000F8B66 /* Shop+CoreDataProperties.m in Sources */,
 				D92761611CCFBEAD0049ECAC /* Flags+CoreDataProperties.m in Sources */,
 				D9D593661D008C7500D6C388 /* PushDevice+CoreDataProperties.m in Sources */,
 				D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */,
 				D9FC1A781BC28C5F00B97D23 /* HRPGExplanationView.m in Sources */,
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
 				D9B5C0E718D62CC700C8D1B7 /* HRPGLoginViewController.m in Sources */,
+				D92A085D1D3520D8000F8B66 /* ShopItem+CoreDataProperties.m in Sources */,
 				D99EAB621BF375F7003C1C62 /* HRPGIntroView.m in Sources */,
 				D98F5DC91C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m in Sources */,
 				D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */,
@@ -1881,6 +1936,8 @@
 				D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */,
 				D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */,
 				D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */,
+				D92A084B1D33FA08000F8B66 /* HRPGShopViewController.m in Sources */,
+				D92A085B1D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m in Sources */,
 				D97C71E118ECA7050089FDC6 /* ChatMessage.m in Sources */,
 				D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */,
 				D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */,
@@ -2477,6 +2534,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D92A084C1D3519DF000F8B66 /* HabitRPG 31.xcdatamodel */,
 				D995D5911D1D44E700D5251C /* HabitRPG 30.xcdatamodel */,
 				D9D593541D0047CC00D6C388 /* HabitRPG 29.xcdatamodel */,
 				D9ADD3551CF34506001D005B /* HabitRPG 28.xcdatamodel */,
@@ -2489,7 +2547,7 @@
 				D98F5DC41C6A43D20035CBEC /* HabitRPG 21.xcdatamodel */,
 				D9C0E5171C650D1D0062C89A /* HabitRPG 20.xcdatamodel */,
 			);
-			currentVersion = D995D5911D1D44E700D5251C /* HabitRPG 30.xcdatamodel */;
+			currentVersion = D92A084C1D3519DF000F8B66 /* HabitRPG 31.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

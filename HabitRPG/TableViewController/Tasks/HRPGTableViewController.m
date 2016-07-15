@@ -322,13 +322,7 @@ BOOL editable;
                           }
                              context:nil]
                 .size.height;
-        if (notesHeight <
-            [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2].lineHeight * 3) {
-            height = height + notesHeight;
-        } else {
-            height =
-                height + [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2].lineHeight * 3;
-        }
+        
     }
 
     if ([task.type isEqualToString:@"daily"] && [task.streak integerValue] > 0) {

@@ -42,6 +42,7 @@
 #import "HRPGResponseMessage.h"
 #import "NSString+StripHTML.h"
 #import "PushDevice.h"
+#import "Shop.h"
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
@@ -534,6 +535,38 @@ NSString *currentUser;
         
         return nil;
     }];
+    
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"shops/:identifier"];
+        
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:[URL relativePath]
+                         tokenizeQueryStrings:YES
+                              parsedArguments:&argsDict];
+        if (match) {
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"ShopItem"];
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@", argsDict[@"identifier"]];
+            return fetchRequest;
+        }
+        
+        return nil;
+    }];
+    
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"shops/:identifier"];
+        
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:[URL relativePath]
+                         tokenizeQueryStrings:YES
+                              parsedArguments:&argsDict];
+        if (match) {
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"ShopCategory"];
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"shop.identifier == %@", argsDict[@"identifier"]];
+            return fetchRequest;
+        }
+        
+        return nil;
+    }];
 
     RKObjectMapping *upDownMapping = [RKObjectMapping mappingForClass:[HRPGTaskResponse class]];
     [upDownMapping addAttributeMappingsFromDictionary:@{
@@ -674,7 +707,8 @@ NSString *currentUser;
         @"invitations.party.id" : @"invitedParty",
         @"invitations.party.name" : @"invitedPartyName",
         @"inbox.optOut" : @"inboxOptOut",
-        @"inbox.newMessages" : @"inboxNewMessages"
+        @"inbox.newMessages" : @"inboxNewMessages",
+        @"purchased.plan.consecutive.trinkets" : @"hourglasses"
     }];
     entityMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping *userTagMapping =
@@ -1818,6 +1852,36 @@ NSString *currentUser;
                                                      keyPath:nil
                                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:messageResponseDescriptor];
+    
+    RKEntityMapping *shopMapping = [RKEntityMapping mappingForEntityForName:@"Shop"
+                                                       inManagedObjectStore:managedObjectStore];
+    [shopMapping addAttributeMappingsFromArray:@[@"text", @"identifier", @"notes", @"imageName", @"purchaseAll"]];
+    shopMapping.identificationAttributes = @[ @"identifier" ];
+    RKEntityMapping *shopCategoryMapping = [RKEntityMapping mappingForEntityForName:@"ShopCategory" inManagedObjectStore:managedObjectStore];
+    [shopCategoryMapping addAttributeMappingsFromArray:@[@"text", @"identifier", @"notes", @"purchaseAll"]];
+    [shopCategoryMapping addAttributeMappingsFromDictionary:@{@"@metadata.mapping.collectionIndex": @"index"}];
+    shopCategoryMapping.identificationAttributes = @[ @"identifier" ];
+    [shopMapping
+     addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"categories"
+                                                                    toKeyPath:@"categories"
+                                                                  withMapping:shopCategoryMapping]];
+    RKEntityMapping *shopItemMapping = [RKEntityMapping mappingForEntityForName:@"ShopItem" inManagedObjectStore:managedObjectStore];
+    [shopItemMapping addAttributeMappingsFromArray:@[@"text", @"key", @"notes", @"type", @"value", @"currency", @"locked", @"purchaseType"]];
+    [shopItemMapping addAttributeMappingsFromDictionary:@{@"@metadata.mapping.collectionIndex": @"index",
+                                                          @"class": @"imageName"}];
+    shopItemMapping.identificationAttributes = @[ @"key", @"purchaseType" ];
+    [shopCategoryMapping
+     addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items"
+                                                                    toKeyPath:@"items"
+                                                                  withMapping:shopItemMapping]];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:shopMapping
+                          method:RKRequestMethodGET
+                          pathPattern:@"shops/:shopUrl"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-client" value:@"habitica-ios"];
 
@@ -4246,6 +4310,9 @@ NSString *currentUser;
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
+            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
+                [self displayError:errorMessage.errorMessage];
             } else {
                 [self displayNetworkError];
             }
@@ -4255,6 +4322,83 @@ NSString *currentUser;
             [self.networkIndicatorController endNetworking];
             return;
         }];
+}
+
+- (void)purchaseHourglassItem:(NSString *)itemName
+            fromType:(NSString *)itemType
+           onSuccess:(void (^)())successBlock
+             onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:[NSString stringWithFormat:@"user/purchase-hourglass/%@/%@", itemType, itemName]
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            [self fetchUser:^() {
+                                                NSError *executeError = nil;
+                                                [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                                if (successBlock) {
+                                                    successBlock();
+                                                }
+                                                [self.networkIndicatorController endNetworking];
+                                                return;
+                                            }
+                                                    onError:nil];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                                [self displayServerError];
+                                            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+                                                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
+                                                [self displayError:errorMessage.errorMessage];
+                                            } else {
+                                                [self displayNetworkError];
+                                            }
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
+}
+
+- (void)purchaseMysterySet:(NSString *)key
+                    onSuccess:(void (^)())successBlock
+                      onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:[NSString stringWithFormat:@"user/buy-mystery-set/%@", key]
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            [self fetchUser:^() {
+                                                NSError *executeError = nil;
+                                                [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                                if (successBlock) {
+                                                    successBlock();
+                                                }
+                                                [self.networkIndicatorController endNetworking];
+                                                return;
+                                            }
+                                                    onError:nil];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                                [self displayServerError];
+                                            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+                                                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
+                                                [self displayError:errorMessage.errorMessage];
+                                            } else {
+                                                [self displayNetworkError];
+                                            }
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
 }
 
 - (void)addPushDevice:(NSString *)token
@@ -4315,6 +4459,45 @@ NSString *currentUser;
                                             return;
                                         }];
     }
+}
+
+- (void)fetchShopInventory:(NSString *)shopInventory onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    NSString *url = @"shops/";
+    if ([shopInventory isEqualToString:MarketKey]) {
+        url = [url stringByAppendingString:@"market"];
+    } else if ([shopInventory isEqualToString:QuestsShopKey]) {
+        url = [url stringByAppendingString:@"quests"];
+    } else if ([shopInventory isEqualToString:SeasonalShopKey]) {
+        url = [url stringByAppendingString:@"seasonal"];
+    } else if ([shopInventory isEqualToString:TimeTravelersShopKey]) {
+        url = [url stringByAppendingString:@"time-travelers"];
+    } else {
+        return;
+    }
+    [[RKObjectManager sharedManager] getObject:nil
+                                           path:url
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            [self.networkIndicatorController endNetworking];
+                                            if (successBlock) {
+                                                successBlock();
+                                            }
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                                [self displayServerError];
+                                            } else {
+                                                [self displayNetworkError];
+                                            }
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
 }
 
 - (void)displayNetworkError {

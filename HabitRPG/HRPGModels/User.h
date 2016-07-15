@@ -61,6 +61,7 @@
 @property(nonatomic, retain) NSSet *pushDevices;
 @property(nonatomic, retain) NSNumber *inboxOptOut;
 @property(nonatomic, retain) NSNumber *inboxNewMessages;
+@property(nonatomic, retain) NSNumber *hourglasses;
 
 @property(nonatomic, retain) Preferences *preferences;
 @property(nonatomic, retain) Outfit *costume;

@@ -66,6 +66,7 @@
 @dynamic pushDevices;
 @dynamic inboxOptOut;
 @dynamic inboxNewMessages;
+@dynamic hourglasses;
 
 @synthesize petCount = _petCount;
 @synthesize customizationsDictionary;

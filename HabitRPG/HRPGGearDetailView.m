@@ -90,6 +90,22 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
     }
 }
 
+- (void)configureForShopItem:(ShopItem *)item withCurrencyAmount:(CGFloat)currencyAmount {
+    self.titleLabel.text = item.text;
+    self.priceLabel.text = [item.value stringValue];
+    self.descriptionText = item.notes;
+    
+    if ([item.currency isEqualToString:@"gems"]) {
+        self.currencyImageView.image = [UIImage imageNamed:@"Gem"];
+    } else if ([item.currency isEqualToString:@"hourglasses"]) {
+        self.currencyImageView.image = [UIImage imageNamed:@"hourglass"];
+    } else {
+        self.currencyImageView.image = [UIImage imageNamed:@"gold_coin"];
+    }
+    
+    self.buyButton.enabled = [item.value floatValue] <= currencyAmount && ![item.locked boolValue];
+}
+
 - (void)sizeToFit {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
 

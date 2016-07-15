@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "MetaReward.h"
+#import "ShopItem.h"
 
 @interface HRPGRewardTableViewCell : UITableViewCell
 
 - (void)configureForReward:(MetaReward *)reward withGoldOwned:(NSNumber *)gold;
+
+- (void)configureForShopItem:(ShopItem *)shopItem withCurrencyOwned:(NSNumber *)currencyAmount;
+
 
 @property(weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property(weak, nonatomic) IBOutlet UILabel *detailLabel;

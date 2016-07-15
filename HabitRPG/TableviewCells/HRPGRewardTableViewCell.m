@@ -9,6 +9,7 @@
 #import "HRPGRewardTableViewCell.h"
 #import "NSString+Emoji.h"
 #import "UIColor+Habitica.h"
+#import "NSString+StripHTML.h"
 
 @interface HRPGRewardTableViewCell ()
 
@@ -68,6 +69,59 @@
     }
 }
 
+- (void)configureForShopItem:(ShopItem *)shopItem withCurrencyOwned:(NSNumber *)currencyAmount {
+    self.buyView.layer.borderWidth = 1.0;
+    self.buyView.layer.cornerRadius = 5.0;
+    
+    self.titleLabel.text = shopItem.text;
+    self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    if (shopItem.notes && shopItem.notes.length > 0) {
+        self.detailLabel.text = [shopItem.notes stringByStrippingHTML];
+        self.detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+        self.titleNotesConstraint.constant = 4.0;
+    } else {
+        self.detailLabel.text = nil;
+        self.titleNotesConstraint.constant = 0;
+    }
+    
+    self.priceLabel.text = [shopItem.value stringValue];
+    self.priceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    if (self.buyButton.gestureRecognizers.count == 0) {
+        UITapGestureRecognizer *tapGestureRecognizer =
+        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBuyTap:)];
+        [self.buyButton addGestureRecognizer:tapGestureRecognizer];
+    }
+    if ([shopItem.currency isEqualToString:@"gems"]) {
+        self.coinImageView.image = [UIImage imageNamed:@"Gem"];
+    } else {
+        self.coinImageView.image = [UIImage imageNamed:@"gold_coin"];
+    }
+    
+    if ([shopItem.category.purchaseAll boolValue]) {
+        self.buyButton.hidden = YES;
+    } else {
+        self.buyButton.hidden = NO;
+    }
+    
+    if ([currencyAmount floatValue] > [shopItem.value floatValue] && ![shopItem.locked boolValue]) {
+        self.buyView.layer.borderColor = [[UIColor purple300] CGColor];
+        self.titleLabel.textColor = [UIColor blackColor];
+        self.detailLabel.textColor = [UIColor gray50];
+        self.priceLabel.textColor = [UIColor purple300];
+        self.imageView.alpha = 1.0;
+        self.backgroundColor = [UIColor whiteColor];
+        self.buyButton.userInteractionEnabled = YES;
+    } else {
+        self.buyView.layer.borderColor = [[UIColor gray50] CGColor];
+        self.titleLabel.textColor = [UIColor gray50];
+        self.detailLabel.textColor = [UIColor gray50];
+        self.priceLabel.textColor = [UIColor gray50];
+        self.imageView.alpha = 0.8;
+        self.backgroundColor = [UIColor gray500];
+        self.buyButton.userInteractionEnabled = NO;
+    }
+}
+
 - (void)handleBuyTap:(UITapGestureRecognizer *)recognizer {
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         if (self.tapAction) {
@@ -75,7 +129,7 @@
         }
         [UIView animateWithDuration:0.15
             animations:^() {
-                self.buyView.backgroundColor = [UIColor purple500];
+                self.buyView.backgroundColor = [UIColor purple300];
             }
             completion:^(BOOL completed) {
                 [UIView animateWithDuration:0.15
