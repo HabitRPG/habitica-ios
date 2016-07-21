@@ -4661,7 +4661,7 @@ NSString *currentUser;
         overlayView.descriptionText = [NSString
                                        stringWithFormat:
                                        NSLocalizedString(
-                                                         @"By accomplishing your real-life goals, you've grown to Level %ld", nil),
+                                                         @"By accomplishing your real-life goals, you've grown to Level %ld!", nil),
                                        (long)([self.user.level integerValue])];
         overlayView.dismissButtonText = NSLocalizedString(@"Huzzah!", nil);
         UIImageView *__weak weakAvatarView = overlayView.imageView;
