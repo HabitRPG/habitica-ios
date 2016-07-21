@@ -24,6 +24,7 @@ typedef NSString*(^CellIdentifierBlock)(id item, NSIndexPath *indexPath);
                      asDelegateFor:(UITableView *)tableView;
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath;
+- (id)cellAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)reconfigureFetchRequest;
 

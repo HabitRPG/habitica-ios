@@ -89,6 +89,10 @@
     return item;
 }
 
+- (id)cellAtIndexPath:(NSIndexPath *)indexPath {
+    return [self tableView:self.tableView cellForRowAtIndexPath:indexPath];
+}
+
 - (void)reconfigureFetchRequest {
     if (self.fetchRequestBlock) {
         self.fetchRequestBlock(self.fetchedResultsController.fetchRequest);
