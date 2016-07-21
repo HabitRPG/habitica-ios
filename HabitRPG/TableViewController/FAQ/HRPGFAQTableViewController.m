@@ -11,6 +11,7 @@
 #import "HRPGFAQDetailViewController.h"
 #import "TutorialSteps.h"
 #import "HRPGCoreDataDataSource.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGFAQTableViewController ()
 
@@ -24,11 +25,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self setupTableView];
+    
     self.searchBar =
         [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 44)];
     self.searchBar.placeholder = @"Search";
     self.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchBar;
+    
+    UIButton *resetTutorialButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 70)];
+    [resetTutorialButton setTitle:NSLocalizedString(@"Reset Justins Tips", nil) forState:UIControlStateNormal];
+    [resetTutorialButton setTitleColor:[UIColor purple400] forState:UIControlStateNormal];
+    [resetTutorialButton addTarget:self action:@selector(resetTutorials) forControlEvents:UIControlEventTouchUpInside];
+    self.tableView.tableFooterView = resetTutorialButton;
 }
 
 - (void) setupTableView {
@@ -91,26 +100,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
         [self performSegueWithIdentifier:@"FAQDetailSegue"
                                   sender:[self.tableView cellForRowAtIndexPath:indexPath]];
-    } else {
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-        NSMutableDictionary *steps = [NSMutableDictionary dictionary];
-        for (TutorialSteps *step in [self.sharedManager user].flags.iOSTutorialSteps) {
-            step.wasShown = @NO;
-            step.shownInView = nil;
-            steps[[NSString stringWithFormat:@"flags.tutorial.ios.%@", step.identifier]] = @NO;
-        }
-        for (TutorialSteps *step in [self.sharedManager user].flags.commonTutorialSteps) {
-            step.wasShown = @NO;
-            step.shownInView = nil;
-            steps[[NSString stringWithFormat:@"flags.tutorial.common.%@", step.identifier]] = @NO;
-        }
-        NSError *error;
-        [self.managedObjectContext saveToPersistentStore:&error];
-        [self.sharedManager updateUser:steps onSuccess:nil onError:nil];
-    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -149,6 +140,23 @@
     [self.dataSource reconfigureFetchRequest];
     
     [searchBar resignFirstResponder];
+}
+
+- (void)resetTutorials {
+    NSMutableDictionary *steps = [NSMutableDictionary dictionary];
+    for (TutorialSteps *step in [self.sharedManager user].flags.iOSTutorialSteps) {
+        step.wasShown = @NO;
+        step.shownInView = nil;
+        steps[[NSString stringWithFormat:@"flags.tutorial.ios.%@", step.identifier]] = @NO;
+    }
+    for (TutorialSteps *step in [self.sharedManager user].flags.commonTutorialSteps) {
+        step.wasShown = @NO;
+        step.shownInView = nil;
+        steps[[NSString stringWithFormat:@"flags.tutorial.common.%@", step.identifier]] = @NO;
+    }
+    NSError *error;
+    [self.managedObjectContext saveToPersistentStore:&error];
+    [self.sharedManager updateUser:steps onSuccess:nil onError:nil];
 }
 
 @end
