@@ -20,6 +20,7 @@
 
 @property HRPGCoreDataDataSource *dataSource;
 
+@property (weak, nonatomic) IBOutlet UIView *tableHeaderView;
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 @property (weak, nonatomic) IBOutlet UILabel *shopDescription;
 
@@ -42,6 +43,12 @@
     [self setupTableView];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    
+}
+
 - (void)refresh {
     __weak HRPGShopViewController *weakSelf = self;
     [self.sharedManager fetchShopInventory:self.shopIdentifier onSuccess:^() {
@@ -62,7 +69,7 @@
         NSSortDescriptor *indexDescriptor =
         [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
         NSSortDescriptor *categoryIndexDescriptor =
-        [[NSSortDescriptor alloc] initWithKey:@"category.index" ascending:YES];
+        [[NSSortDescriptor alloc] initWithKey:@"category.text" ascending:YES];
         NSArray *sortDescriptors = @[ categoryIndexDescriptor, indexDescriptor ];
         
         [fetchRequest setSortDescriptors:sortDescriptors];
@@ -73,7 +80,7 @@
                                                                configureCellBlock:configureCell
                                                                 fetchRequestBlock:configureFetchRequest
                                                                     asDelegateFor:self.tableView];
-    self.dataSource.sectionNameKeyPath = @"category.index";
+    self.dataSource.sectionNameKeyPath = @"category.text";
 }
 
 - (void) fetchShopInformation {
@@ -95,7 +102,21 @@
 - (void) updateShopInformationViews {
     [self.sharedManager setImage:self.shop.imageName withFormat:@"png" onView:self.headerImageView];
     self.navigationItem.title = self.shop.text;
-    self.shopDescription.text = [self.shop.notes stringByStrippingHTML];
+    NSString *notes = [self.shop.notes stringByStrippingHTML];
+    self.shopDescription.text = notes;
+    CGFloat newHeight = [notes boundingRectWithSize:CGSizeMake(self.shopDescription.frame.size.width, MAXFLOAT)
+                                                       options:NSStringDrawingUsesLineFragmentOrigin
+                                                    attributes:@{
+                                                                 NSFontAttributeName : [UIFont
+                                                                                        preferredFontForTextStyle:UIFontTextStyleSubheadline]
+                                                                 }
+                                                       context:nil].size.height;
+    if (newHeight > 138) {
+        CGRect frame = self.tableHeaderView.frame;
+        frame.size.height = newHeight;
+        self.tableHeaderView.frame = frame;
+        [self.tableView setTableHeaderView:self.tableHeaderView];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
