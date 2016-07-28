@@ -97,7 +97,7 @@
         self.coinImageView.image = [UIImage imageNamed:@"gold_coin"];
     }
     
-    if ([shopItem.category.purchaseAll boolValue]) {
+    if ([shopItem.category.purchaseAll boolValue] || shopItem.unlockCondition) {
         self.buyButton.hidden = YES;
     } else {
         self.buyButton.hidden = NO;

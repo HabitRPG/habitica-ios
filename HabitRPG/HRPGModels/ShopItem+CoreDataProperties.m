@@ -2,7 +2,7 @@
 //  ShopItem+CoreDataProperties.m
 //  Habitica
 //
-//  Created by Phillip Thelen on 14/07/16.
+//  Created by Phillip Thelen on 28/07/16.
 //  Copyright © 2016 Phillip Thelen. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -19,10 +19,11 @@
 @dynamic key;
 @dynamic locked;
 @dynamic notes;
-@dynamic text;
-@dynamic value;
-@dynamic type;
 @dynamic purchaseType;
+@dynamic text;
+@dynamic type;
+@dynamic value;
+@dynamic unlockCondition;
 @dynamic category;
 
 @end

@@ -22,4 +22,12 @@
     }
 }
 
+- (NSString *)readableUnlockCondition {
+    if ([self.unlockCondition isEqualToString:@"party invite"]) {
+        return NSLocalizedString(@"Invite Friends", nil);
+    } else {
+        return nil;
+    }
+}
+
 @end

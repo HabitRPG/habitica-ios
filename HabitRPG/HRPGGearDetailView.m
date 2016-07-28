@@ -92,18 +92,26 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
 
 - (void)configureForShopItem:(ShopItem *)item withCurrencyAmount:(CGFloat)currencyAmount {
     self.titleLabel.text = item.text;
-    self.priceLabel.text = [item.value stringValue];
     self.descriptionText = item.notes;
     
-    if ([item.currency isEqualToString:@"gems"]) {
-        self.currencyImageView.image = [UIImage imageNamed:@"Gem"];
-    } else if ([item.currency isEqualToString:@"hourglasses"]) {
-        self.currencyImageView.image = [UIImage imageNamed:@"hourglass"];
+    if (item.unlockCondition) {
+        self.currencyImageView.image = nil;
+        self.buyButton.enabled = NO;
+        
+        [self.buyButton setTitle:[item readableUnlockCondition] forState:UIControlStateNormal];
     } else {
-        self.currencyImageView.image = [UIImage imageNamed:@"gold_coin"];
+        self.priceLabel.text = [item.value stringValue];
+
+        if ([item.currency isEqualToString:@"gems"]) {
+            self.currencyImageView.image = [UIImage imageNamed:@"Gem"];
+        } else if ([item.currency isEqualToString:@"hourglasses"]) {
+            self.currencyImageView.image = [UIImage imageNamed:@"hourglass"];
+        } else {
+            self.currencyImageView.image = [UIImage imageNamed:@"gold_coin"];
+        }
+        self.buyButton.enabled = [item.value floatValue] <= currencyAmount && ![item.locked boolValue];
     }
     
-    self.buyButton.enabled = [item.value floatValue] <= currencyAmount && ![item.locked boolValue];
 }
 
 - (void)sizeToFit {

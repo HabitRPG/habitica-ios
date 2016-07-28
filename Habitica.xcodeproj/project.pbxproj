@@ -505,6 +505,7 @@
 		D995D5951D1D499D00D5251C /* PushNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotifications.m; sourceTree = "<group>"; };
 		D995D5981D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPushNotificationSettingValueTransformer.h; sourceTree = "<group>"; };
 		D995D5991D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPushNotificationSettingValueTransformer.m; sourceTree = "<group>"; };
+		D99786E31D4A1FD80044EC03 /* HabitRPG 32.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 32.xcdatamodel"; sourceTree = "<group>"; };
 		D998FD931ADAC1FF00E9A26F /* HRPGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAboutViewController.h; sourceTree = "<group>"; };
 		D998FD941ADAC1FF00E9A26F /* HRPGAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAboutViewController.m; sourceTree = "<group>"; };
 		D99B82171BD9545800E770B7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2534,6 +2535,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D99786E31D4A1FD80044EC03 /* HabitRPG 32.xcdatamodel */,
 				D92A084C1D3519DF000F8B66 /* HabitRPG 31.xcdatamodel */,
 				D995D5911D1D44E700D5251C /* HabitRPG 30.xcdatamodel */,
 				D9D593541D0047CC00D6C388 /* HabitRPG 29.xcdatamodel */,
@@ -2547,7 +2549,7 @@
 				D98F5DC41C6A43D20035CBEC /* HabitRPG 21.xcdatamodel */,
 				D9C0E5171C650D1D0062C89A /* HabitRPG 20.xcdatamodel */,
 			);
-			currentVersion = D92A084C1D3519DF000F8B66 /* HabitRPG 31.xcdatamodel */;
+			currentVersion = D99786E31D4A1FD80044EC03 /* HabitRPG 32.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
