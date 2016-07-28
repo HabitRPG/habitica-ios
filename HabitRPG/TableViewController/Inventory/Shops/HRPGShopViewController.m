@@ -180,12 +180,34 @@
         ownedCurrency = self.user.gold;
     }
     [cell configureForShopItem:shopItem withCurrencyOwned:ownedCurrency];
+
     
     __weak HRPGShopViewController *weakSelf = self;
     [cell onPurchaseTap:^() {
         weakSelf.selectedIndex = indexPath;
+        
+        NSString *currencyString;
+        if ([shopItem.currency isEqualToString:@"gems"]) {
+            if ([shopItem.value integerValue] == 1) {
+                currencyString = NSLocalizedString(@"gem", @"Singular");
+            } else {
+                currencyString = NSLocalizedString(@"gems", @"Plural");
+            }
+        } else if ([shopItem.currency isEqualToString:@"gold"]) {
+            if ([shopItem.value integerValue] == 1) {
+                currencyString = NSLocalizedString(@"gold", @"Singular");
+            } else {
+                currencyString = NSLocalizedString(@"gems", @"Plural");
+            }
+        } else if ([shopItem.currency isEqualToString:@"hourglasses"]) {
+            if ([shopItem.value integerValue] == 1) {
+                currencyString = NSLocalizedString(@"hourglass", @"Singular");
+            } else {
+                currencyString = NSLocalizedString(@"hourglasses", @"Plural");
+            }
+        }
         UIAlertView *confirmationAlert = [[UIAlertView alloc]
-                                          initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Buy %@ for %@ %@", nil), shopItem.text, shopItem.value, shopItem.currency]
+                                          initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Buy %@ for %@ %@?", nil), shopItem.text, shopItem.value, currencyString]
                                           message:nil
                                           delegate:self
                                           cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
@@ -235,7 +257,7 @@
 - (void)buyItem:(ShopItem *)item {
     __weak HRPGShopViewController *weakSelf = self;
     if (![self.shopIdentifier isEqualToString:TimeTravelersShopKey]) {
-        [self.sharedManager purchaseItem:item.key fromType:item.purchaseType onSuccess:^() {
+        [self.sharedManager purchaseItem:item onSuccess:^() {
             [weakSelf refresh];
         } onError:nil];
     } else {
@@ -244,7 +266,7 @@
                 [weakSelf refresh];
             } onError:nil];
         } else {
-            [self.sharedManager purchaseHourglassItem:item.key fromType:item.purchaseType onSuccess:^() {
+            [self.sharedManager purchaseHourglassItem:item onSuccess:^() {
                 [weakSelf refresh];
             } onError:nil];
         }
