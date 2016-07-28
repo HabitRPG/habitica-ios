@@ -18,6 +18,7 @@
 #import "User.h"
 #import "item.h"
 #import "InboxMessage.h"
+#import "ShopItem.h"
 
 @interface HRPGManager : NSObject
 
@@ -239,13 +240,11 @@
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock;
 
-- (void)purchaseItem:(NSString *)itemName
-            fromType:(NSString *)itemType
+- (void)purchaseItem:(ShopItem *)item
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock;
 
-- (void)purchaseHourglassItem:(NSString *)itemName
-            fromType:(NSString *)itemType
+- (void)purchaseHourglassItem:(ShopItem *)item
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock;
 

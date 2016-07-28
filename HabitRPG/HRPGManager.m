@@ -4285,19 +4285,19 @@ NSString *currentUser;
         }];
 }
 
-- (void)purchaseItem:(NSString *)itemName
-            fromType:(NSString *)itemType
+- (void)purchaseItem:(ShopItem *)item
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
-        path:[NSString stringWithFormat:@"user/purchase/%@/%@", itemType, itemName]
+        path:[NSString stringWithFormat:@"user/purchase/%@/%@", item.purchaseType, item.key]
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             [self fetchUser:^() {
                 NSError *executeError = nil;
                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                [self displayPurchaseNotification:[NSString stringWithFormat:NSLocalizedString(@"You purchased %@", nil), item.text] withImage:item.imageName];
                 if (successBlock) {
                     successBlock();
                 }
@@ -4324,19 +4324,19 @@ NSString *currentUser;
         }];
 }
 
-- (void)purchaseHourglassItem:(NSString *)itemName
-            fromType:(NSString *)itemType
+- (void)purchaseHourglassItem:(ShopItem *)item
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     
     [[RKObjectManager sharedManager] postObject:nil
-                                           path:[NSString stringWithFormat:@"user/purchase-hourglass/%@/%@", itemType, itemName]
+                                           path:[NSString stringWithFormat:@"user/purchase-hourglass/%@/%@", item.purchaseType, item.key]
                                      parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [self fetchUser:^() {
                                                 NSError *executeError = nil;
                                                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                                [self displayPurchaseNotification:[NSString stringWithFormat:NSLocalizedString(@"You purchased %@", nil), item.text] withImage:item.imageName];
                                                 if (successBlock) {
                                                     successBlock();
                                                 }
@@ -4375,6 +4375,7 @@ NSString *currentUser;
                                             [self fetchUser:^() {
                                                 NSError *executeError = nil;
                                                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                                [self displayPurchaseNotification:NSLocalizedString(@"You purchased the set.", nil) withImage:nil];
                                                 if (successBlock) {
                                                     successBlock();
                                                 }
@@ -4764,6 +4765,41 @@ NSString *currentUser;
         onError:^(){
 
         }];
+}
+
+- (void)displayPurchaseNotification:(NSString *)text
+                       withImage:(NSString *)imageName {
+    if (imageName) {
+    [self getImage:imageName
+        withFormat:@"png"
+         onSuccess:^(UIImage *image) {
+             UIColor *notificationColor = [UIColor blue10];
+             NSDictionary *options = @{
+                                       kCRToastTextKey : text,
+                                       kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                                       kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                                       kCRToastBackgroundColorKey : notificationColor,
+                                       kCRToastImageKey : image
+                                       };
+             [CRToastManager showNotificationWithOptions:options
+                                         completionBlock:^{
+                                         }];
+         }
+           onError:^(){
+               
+           }];
+    } else {
+        UIColor *notificationColor = [UIColor blue10];
+        NSDictionary *options = @{
+                                  kCRToastTextKey : text,
+                                  kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                                  kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                                  kCRToastBackgroundColorKey : notificationColor,
+                                  };
+        [CRToastManager showNotificationWithOptions:options
+                                    completionBlock:^{
+                                    }];
+    }
 }
 
 - (void)displayMountRaisedNotification:(Pet *)mount {
