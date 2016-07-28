@@ -44,7 +44,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -71,13 +71,13 @@
                 titleLabel.text = NSLocalizedString(@"Quests", nil);
                 break;
             }
-            case 2: {
+            /*case 2: {
                 [self.sharedManager setImage:@"npc_timetravelers_active" withFormat:@"png" onView:imageView];
                 titleLabel.text = NSLocalizedString(@"Time Travelers", nil);
                 descriptionLabel.text = NSLocalizedString(@"", nil);
                 break;
-            }
-            case 3: {
+            }*/
+            case 2: {
                 [self.sharedManager setImage:@"seasonalshop_open" withFormat:@"png" onView:imageView];
                 titleLabel.text = NSLocalizedString(@"Seasonal Shop", nil);
                 descriptionLabel.text = NSLocalizedString(@"", nil);
@@ -150,10 +150,10 @@
         case 1:
             return QuestsShopKey;
             break;
-        case 2:
+        /*case 2:
             return TimeTravelersShopKey;
-            break;
-        case 3:
+            break;*/
+        case 2:
             return SeasonalShopKey;
             break;
         default:

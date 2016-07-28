@@ -4190,7 +4190,7 @@ NSString *currentUser;
 
             NSString *preferenceString;
             if ([pet likesFood:food]) {
-                preferenceString = NSLocalizedString(@"Your pet really likes the %@", nil);
+                preferenceString = NSLocalizedString(@"Your pet really likes the %@!", nil);
             } else {
                 preferenceString =
                     NSLocalizedString(@"Your pet eats the %@ but doesn't seem to enjoy it.", nil);

@@ -132,6 +132,10 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
                                                 context:nil]
                  .size.height;
 
+    if (height > screenRect.size.height - 60) {
+        height = screenRect.size.height - 60;
+    }
+    
     self.frame = CGRectMake(0, 0, width, height);
     UIImage *mask = MTDContextCreateRoundedMask(self.bounds, 8.0, 8.0, 8.0, 8.0);
     CALayer *layerMask = [CALayer layer];
