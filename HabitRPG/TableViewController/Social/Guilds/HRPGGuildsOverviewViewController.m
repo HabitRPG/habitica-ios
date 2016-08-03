@@ -166,8 +166,19 @@
     [self.tableView endUpdates];
 }
 
+- (id)guildAtIndexPath:(NSIndexPath *)indexPath {
+    id item  = nil;
+    if ([[self.fetchedResultsController sections] count] > [indexPath section]){
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:[indexPath section]];
+        if ([sectionInfo numberOfObjects] > [indexPath row]){
+            item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        }
+    }
+    return item;
+}
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Group *guild = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Group *guild = [self guildAtIndexPath:indexPath];
     UILabel *titleLabel = [cell viewWithTag:1];
     titleLabel.text = guild.name;
 }
