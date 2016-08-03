@@ -30,4 +30,8 @@
     }
 }
 
+- (BOOL)canBuy:(NSNumber *)currencyAmount {
+    return [currencyAmount floatValue] >= [self.value floatValue] && ![self.locked boolValue];
+}
+
 @end

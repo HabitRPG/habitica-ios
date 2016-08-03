@@ -103,7 +103,7 @@
         self.buyButton.hidden = NO;
     }
     
-    if ([currencyAmount floatValue] > [shopItem.value floatValue] && ![shopItem.locked boolValue]) {
+    if ([shopItem.currency isEqualToString:@"gems"] || [shopItem canBuy:currencyAmount]) {
         self.buyView.layer.borderColor = [[UIColor purple300] CGColor];
         self.titleLabel.textColor = [UIColor blackColor];
         self.detailLabel.textColor = [UIColor gray50];

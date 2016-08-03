@@ -252,6 +252,10 @@
                  onSuccess:(void (^)())successBlock
                    onError:(void (^)())errorBlock;
 
+- (void)purchaseQuest:(ShopItem *)item
+            onSuccess:(void (^)())successBlock
+              onError:(void (^)())errorBlock;
+
 - (void)removePushDevice:(void (^)())successBlock
                  onError:(void (^)())errorBlock;
 

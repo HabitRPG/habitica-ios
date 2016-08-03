@@ -4403,6 +4403,45 @@ NSString *currentUser;
                                         }];
 }
 
+- (void)purchaseQuest:(ShopItem *)item
+                    onSuccess:(void (^)())successBlock
+                      onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:[NSString stringWithFormat:@"user/buy-quest/%@", item.key]
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            [self fetchUser:^() {
+                                                NSError *executeError = nil;
+                                                [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                                [self displayPurchaseNotification:[NSString stringWithFormat:NSLocalizedString(@"You purchased %@", nil), item.text] withImage:item.imageName];
+                                                if (successBlock) {
+                                                    successBlock();
+                                                }
+                                                [self.networkIndicatorController endNetworking];
+                                                return;
+                                            }
+                                                    onError:nil];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                                [self displayServerError];
+                                            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+                                                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
+                                                [self displayError:errorMessage.errorMessage];
+                                            } else {
+                                                [self displayNetworkError];
+                                            }
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
+}
+
 - (void)addPushDevice:(NSString *)token
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock {

@@ -256,22 +256,39 @@
 }
 
 - (void)buyItem:(ShopItem *)item {
-    __weak HRPGShopViewController *weakSelf = self;
-    if (![self.shopIdentifier isEqualToString:TimeTravelersShopKey]) {
-        [self.sharedManager purchaseItem:item onSuccess:^() {
-            [weakSelf refresh];
-        } onError:nil];
+    if ([item.currency isEqualToString:@"gems"] && ![item canBuy:[NSNumber numberWithFloat:[self.user.balance floatValue]*4]]) {
+        [self displayGemPurchaseView];
     } else {
-        if ([item.purchaseType isEqualToString:@"gear"]) {
-            [self.sharedManager purchaseMysterySet:item.category.identifier onSuccess:^() {
-                [weakSelf refresh];
-            } onError:nil];
+        __weak HRPGShopViewController *weakSelf = self;
+        if (![self.shopIdentifier isEqualToString:TimeTravelersShopKey]) {
+            if ([item.purchaseType isEqualToString:@"quests"] && [item.currency isEqualToString:@"gold"]) {
+                [self.sharedManager purchaseQuest:item onSuccess:^() {
+                    [weakSelf refresh];
+                } onError:nil];
+            } else {
+                [self.sharedManager purchaseItem:item onSuccess:^() {
+                    [weakSelf refresh];
+                } onError:nil];
+            }
         } else {
-            [self.sharedManager purchaseHourglassItem:item onSuccess:^() {
-                [weakSelf refresh];
-            } onError:nil];
+            if ([item.purchaseType isEqualToString:@"gear"]) {
+                [self.sharedManager purchaseMysterySet:item.category.identifier onSuccess:^() {
+                    [weakSelf refresh];
+                } onError:nil];
+            } else {
+                [self.sharedManager purchaseHourglassItem:item onSuccess:^() {
+                    [weakSelf refresh];
+                } onError:nil];
+            }
         }
     }
+}
+
+- (void)displayGemPurchaseView {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *navigationController =
+    [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 @end

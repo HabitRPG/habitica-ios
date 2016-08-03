@@ -12,8 +12,6 @@
 
 @interface HRPGGroupFormViewController : XLFormViewController
 
-@property(weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
-@property(weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property(weak, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property Group *group;

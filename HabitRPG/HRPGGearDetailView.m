@@ -109,7 +109,7 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
         } else {
             self.currencyImageView.image = [UIImage imageNamed:@"gold_coin"];
         }
-        self.buyButton.enabled = [item.value floatValue] <= currencyAmount && ![item.locked boolValue];
+        self.buyButton.enabled = [item.currency isEqualToString:@"gems"] || [item canBuy:[NSNumber numberWithFloat:currencyAmount]];
     }
     
 }
