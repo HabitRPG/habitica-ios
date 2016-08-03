@@ -1208,37 +1208,6 @@ Invite friends now to earn a Quest Scroll!</string>
             </objects>
             <point key="canvasLocation" x="2890" y="3884"/>
         </scene>
-        <!--Group Form View Controller-->
-        <scene sceneID="beX-MK-xCn">
-            <objects>
-                <tableViewController storyboardIdentifier="CreateParty" id="REi-Tf-6GT" customClass="HRPGGroupFormViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="GPB-de-PjG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <connections>
-                            <outlet property="dataSource" destination="REi-Tf-6GT" id="oYa-qY-Nsr"/>
-                            <outlet property="delegate" destination="REi-Tf-6GT" id="Ixv-8N-u7w"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="q86-SZ-kWo">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Od4-Wm-8Qw">
-                            <connections>
-                                <segue destination="T0f-f3-r7c" kind="unwind" unwindAction="unwindToList:" id="BBY-Ni-cr7"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="N8Q-Mz-vSl">
-                            <connections>
-                                <segue destination="T0f-f3-r7c" kind="unwind" identifier="unwindSaveSegue" unwindAction="unwindToListSave:" id="Cvb-ts-3yN"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hrq-su-BMN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="T0f-f3-r7c" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="4328" y="2121"/>
-        </scene>
         <!--Members-->
         <scene sceneID="g8Z-ZM-3o1">
             <objects>
@@ -1754,12 +1723,45 @@ Invite friends now to earn a Quest Scroll!</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="REi-Tf-6GT" kind="relationship" relationship="rootViewController" id="R4D-14-fvK"/>
+                        <segue destination="aAd-ab-J0L" kind="relationship" relationship="rootViewController" id="IIv-Ri-V4c"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="as2-pa-9g6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3603" y="2121"/>
+        </scene>
+        <!--Group Form View Controller-->
+        <scene sceneID="xU2-vl-6p2">
+            <objects>
+                <viewController id="aAd-ab-J0L" customClass="HRPGGroupFormViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cEK-dX-h5V"/>
+                        <viewControllerLayoutGuide type="bottom" id="OBD-14-Ohx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="COl-Gy-d3l">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="NyA-xu-3YJ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="MUt-m9-ApC">
+                            <connections>
+                                <segue destination="QRa-gH-d0t" kind="unwind" unwindAction="unwindToList:" id="QDB-fX-Iag"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="1hp-j0-3jW">
+                            <connections>
+                                <segue destination="QRa-gH-d0t" kind="unwind" unwindAction="unwindToListSave:" id="owN-oi-ROR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="djb-42-9In" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="QRa-gH-d0t" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4328" y="2121"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oPz-d7-ciS">
