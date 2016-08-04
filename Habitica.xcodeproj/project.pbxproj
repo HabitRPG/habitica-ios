@@ -677,6 +677,7 @@
 		D9F16E351BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGAvatarSetupViewController.m; path = Setup/HRPGAvatarSetupViewController.m; sourceTree = "<group>"; };
 		D9F16E371BBC536500CA3E02 /* HRPGCustomizationSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCustomizationSelectionView.h; sourceTree = "<group>"; };
 		D9F16E381BBC536500CA3E02 /* HRPGCustomizationSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCustomizationSelectionView.m; sourceTree = "<group>"; };
+		D9FBC0F11D538B5C008C9EF4 /* HRPGCoreDataDatasourceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGCoreDataDatasourceDelegate.h; sourceTree = "<group>"; };
 		D9FC1A761BC28C5F00B97D23 /* HRPGExplanationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGExplanationView.h; sourceTree = "<group>"; };
 		D9FC1A771BC28C5F00B97D23 /* HRPGExplanationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGExplanationView.m; sourceTree = "<group>"; };
 		D9FC1A791BC28D7100B97D23 /* HRPGSpeechbubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpeechbubbleView.h; sourceTree = "<group>"; };
@@ -813,6 +814,7 @@
 			children = (
 				D93D79701D2BC7AD00AFE014 /* HRPGCoreDataDataSource.h */,
 				D93D79711D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m */,
+				D9FBC0F11D538B5C008C9EF4 /* HRPGCoreDataDatasourceDelegate.h */,
 			);
 			path = TableViewDataSources;
 			sourceTree = "<group>";

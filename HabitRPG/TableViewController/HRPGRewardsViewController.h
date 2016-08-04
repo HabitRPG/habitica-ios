@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
+#import "HRPGCoreDataDataSourceDelegate.h"
 
-@interface HRPGRewardsViewController : HRPGBaseViewController
+@interface HRPGRewardsViewController : HRPGBaseViewController <HRPGCoreDataDataSourceDelegate>
 
 @end

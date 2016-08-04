@@ -68,6 +68,7 @@
                                                                configureCellBlock:configureCell
                                                                 fetchRequestBlock:configureFetchRequest
                                                                     asDelegateFor:self.tableView];
+    self.dataSource.delegate = self;
     self.dataSource.cellIdentifierBlock = ^(MetaReward *reward, NSIndexPath *indexPath) {
         NSString *cellIdentifier = @"Cell";
         if (![reward isKindOfClass:[Reward class]]) {
@@ -159,20 +160,16 @@
     return height;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     MetaReward *reward = [self.dataSource itemAtIndexPath:indexPath];
     return [reward.type isEqualToString:@"reward"];
 }
 
-- (void)tableView:(UITableView *)tableView
-    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-     forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        MetaReward *reward = [self.dataSource itemAtIndexPath:indexPath];
-        if ([reward isKindOfClass:[Reward class]]) {
-            [self.sharedManager deleteReward:(Reward *)reward
-                                   onSuccess:nil onError:nil];
-        }
+- (void)deleteItemAtIndexPath:(NSIndexPath *)indexPath {
+    MetaReward *reward = [self.dataSource itemAtIndexPath:indexPath];
+    if ([reward isKindOfClass:[Reward class]]) {
+        [self.sharedManager deleteReward:(Reward *)reward
+                               onSuccess:nil onError:nil];
     }
 }
 

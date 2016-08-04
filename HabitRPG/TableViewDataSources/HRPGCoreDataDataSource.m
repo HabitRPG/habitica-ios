@@ -122,6 +122,17 @@
     return [sectionInfo numberOfObjects];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    BOOL b = [self.delegate canEditRowAtIndexPath:indexPath];
+    return b;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.delegate deleteItemAtIndexPath:indexPath];
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id item = [self itemAtIndexPath:indexPath];
     NSString *cellIdentifier = self.cellIdentifier;

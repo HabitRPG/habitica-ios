@@ -6,6 +6,8 @@
 //  Copyright © 2016 Phillip Thelen. All rights reserved.
 //
 
+#import "HRPGCoreDataDatasourceDelegate.h"
+
 typedef void (^TableViewCellConfigureBlock)(id cell, id item, NSIndexPath *indexPath);
 typedef void (^FetchRequestConfigureBlock)(NSFetchRequest *fetchRequestBlock);
 typedef NSString*(^CellIdentifierBlock)(id item, NSIndexPath *indexPath);
@@ -15,6 +17,7 @@ typedef NSString*(^CellIdentifierBlock)(id item, NSIndexPath *indexPath);
 @property NSString *sectionNameKeyPath;
 @property NSString *emptyText;
 @property CellIdentifierBlock cellIdentifierBlock;
+@property (weak) id<HRPGCoreDataDataSourceDelegate> delegate;
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
                         entityName:(NSString *)entityName
