@@ -175,7 +175,7 @@
                         acceptedCount = 0;
                     }
                     cell.textLabel.text = [NSString
-                        stringWithFormat:NSLocalizedString(@"%d Participants", nil), acceptedCount];
+                        stringWithFormat:NSLocalizedString(@"%@ Participants", nil), [NSNumber numberWithInt:acceptedCount]];
                 }
             } else {
                 cell.textLabel.text = NSLocalizedString(@"Participants", nil);
