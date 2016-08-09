@@ -9,6 +9,8 @@
 #import "HRPGAccountDetailViewController.h"
 #import <PDKeychainBindings.h>
 #import "HRPGCopyTableViewCell.h"
+#import "HRPGQRCodeView.h"
+#import "UIView+Screenshot.h"
 
 @interface HRPGAccountDetailViewController ()
 
@@ -24,26 +26,30 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
+        return 1;
+    } else if (section == 1) {
         return 3;
     }
     return 2;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
+    if (section == 1) {
         return NSLocalizedString(@"Authentication", @"Noun");
-    } else {
+    } else if (section == 2) {
         return NSLocalizedString(@"API", nil);
+    } else {
+        return nil;
     }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    if (section == 1) {
+    if (section == 2) {
         return NSLocalizedString(@"Copy these for use in third party applications. However, think "
                                  @"of your API Token like a password, and do not share it "
                                  @"publicly. You may occasionally be asked for your User ID, but "
@@ -54,17 +60,30 @@
     return nil;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return self.view.frame.size.width < 500 ? self.view.frame.size.width : 500;
+    } else {
+        return 45;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell =
-        [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    UITableViewCell *cell;
 
     if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"QRCodeCell" forIndexPath:indexPath];
+        HRPGQRCodeView *qrCodeView = [cell viewWithTag:1];
+        qrCodeView.text = [@"https://habitica.com/static/front/#?memberId=" stringByAppendingString:self.user.id];
+        [qrCodeView setAvatarViewWithUser:self.user];
+    } else if (indexPath.section == 1) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         if (indexPath.item == 0) {
             cell.textLabel.text = NSLocalizedString(@"Login name", nil);
             cell.detailTextLabel.text = self.user.username;
         } else if (indexPath.item == 1) {
-            cell.textLabel.text = NSLocalizedString(@"email", nil);
+            cell.textLabel.text = NSLocalizedString(@"Email", nil);
             cell.detailTextLabel.text = self.user.email;
         } else if (indexPath.item == 2) {
             cell.textLabel.text = NSLocalizedString(@"Login Method", nil);
@@ -74,7 +93,8 @@
                 cell.detailTextLabel.text = @"Facebook";
             }
         }
-    } else if (indexPath.section == 1) {
+    } else if (indexPath.section == 2) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
         if (indexPath.item == 0) {
             cell.textLabel.text = NSLocalizedString(@"User ID", nil);
@@ -89,9 +109,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    HRPGCopyTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [cell selectedCell];
+    if (indexPath.section > 0) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        HRPGCopyTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell selectedCell];
+    }
 }
 
 @end

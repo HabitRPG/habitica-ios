@@ -10,8 +10,11 @@
 #import "Amplitude.h"
 #import "HRPGAppDelegate.h"
 #import "XLForm.h"
+#import "HRPGQRCodeScannerViewController.h"
 
 @interface HRPGInviteMembersViewController ()
+
+@property XLFormSectionDescriptor *uuidSection;
 
 @end
 
@@ -67,20 +70,25 @@
 }
 
 - (void)initializeUIDSection {
-    XLFormSectionDescriptor *section;
     XLFormRowDescriptor *row;
 
-    section = [XLFormSectionDescriptor
+    self.uuidSection = [XLFormSectionDescriptor
         formSectionWithTitle:nil
               sectionOptions:XLFormSectionOptionCanReorder | XLFormSectionOptionCanInsert |
                              XLFormSectionOptionCanDelete
            sectionInsertMode:XLFormSectionInsertModeButton];
-    section.multivaluedAddButton.title = NSLocalizedString(@"Add a User ID", nil);
-    section.multivaluedTag = @"userIDs";
+    self.uuidSection.multivaluedAddButton.title = NSLocalizedString(@"Add a User ID", nil);
+    self.uuidSection.multivaluedTag = @"userIDs";
     // Set up row template
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText];
     [row cellConfig][@"textField.placeholder"] = NSLocalizedString(@"Add a User ID", nil);
-    section.multivaluedRowTemplate = row;
+    self.uuidSection.multivaluedRowTemplate = row;
+    [self.uuidSection addFormRow:row];
+    [self.form addFormSection:self.uuidSection];
+    
+    XLFormSectionDescriptor *section = [XLFormSectionDescriptor formSectionWithTitle:nil];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"qrcodebutton" rowType:XLFormRowDescriptorTypeButton];
+    row.title = NSLocalizedString(@"Scan QR Code", nil);
     [section addFormRow:row];
     [self.form addFormSection:section];
 }
@@ -104,10 +112,22 @@
     [self.form addFormSection:section];
 }
 
+- (void)didSelectFormRow:(XLFormRowDescriptor *)formRow {
+    if ([formRow.tag isEqualToString:@"qrcodebutton"]) {
+        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *navController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ScanQRCodeNavController"];
+        [self presentViewController:navController animated:YES completion:nil];
+    }
+    [self deselectFormRow:formRow];
+}
+
 - (void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)formRow
                                 oldValue:(id)oldValue
                                 newValue:(id)newValue {
     if ([formRow.tag isEqualToString:@"type"]) {
+        if (self.form.formSections.count == 3) {
+            [self.form removeFormSectionAtIndex:2];
+        }
         [self.form removeFormSectionAtIndex:1];
         NSString *invitationType = [[self.form formValues][@"type"] valueData];
         if ([invitationType isEqualToString:@"uuids"]) {
@@ -134,6 +154,17 @@
             }
             self.members = members;
         }
+    }
+}
+
+- (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
+    HRPGQRCodeScannerViewController *scannerViewController = segue.sourceViewController;
+    if (scannerViewController.scannedCode) {
+        NSString *code = scannerViewController.scannedCode;
+        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:nil];
+        [row cellConfig][@"textField.placeholder"] = NSLocalizedString(@"Add a User ID", nil);
+        row.value = scannerViewController.scannedCode;
+        [self.uuidSection addFormRow:row];
     }
 }
 

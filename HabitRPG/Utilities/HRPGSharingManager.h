@@ -13,6 +13,5 @@
 + (void)shareItems:(NSArray *)items
     withPresentingViewController:(UIViewController *)presentingViewController
     withSourceView:(UIView *)sourceView;
-+ (UIImage *)takeSnapshotOfView:(UIView *)view;
 
 @end

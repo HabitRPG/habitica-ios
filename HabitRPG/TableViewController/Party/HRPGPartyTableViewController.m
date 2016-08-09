@@ -9,6 +9,7 @@
 #import "HRPGPartyTableViewController.h"
 #import "HRPGGroupFormViewController.h"
 #import "HRPGItemViewController.h"
+#import "HRPGQRCodeView.h"
 
 @interface HRPGPartyTableViewController ()
 @property NSUserDefaults *defaults;
@@ -103,21 +104,21 @@
     if (self.group) {
         return [super tableView:tableView numberOfRowsInSection:section];
     } else {
-    }
-    switch (section) {
-        case 0:
-            if (self.user.invitedParty) {
-                return 3;
-            } else {
+        switch (section) {
+            case 0:
+                if (self.user.invitedParty) {
+                    return 3;
+                } else {
+                    return 1;
+                }
+            case 1:
                 return 1;
+            case 2: {
+                return 2;
             }
-        case 1:
-            return 1;
-        case 2: {
-            return 1;
+            default:
+                return 0;
         }
-        default:
-            return 0;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -131,6 +132,8 @@
                 return 60;
             } else if (indexPath.section == 0 && indexPath.item == 0) {
                 return 100;
+            } else if (indexPath.section == 2 && indexPath.item == 1) {
+                return self.view.frame.size.width < 500 ? self.view.frame.size.width : 500;
             }
         }
     }
@@ -180,6 +183,8 @@
         } else {
             if (indexPath.section == 2 && indexPath.item == 0) {
                 cellname = @"JoinPartyCell";
+            } else if (indexPath.section == 2 && indexPath.item == 1) {
+                cellname = @"QRCodeCell";
             } else if (indexPath.section == 1 && indexPath.item == 0) {
                 cellname = @"CreatePartyCell";
             } else if (indexPath.section == 0 && indexPath.item == 0) {
@@ -202,6 +207,10 @@
             if (indexPath.section == 2 && indexPath.item == 0) {
                 UILabel *userIDLabel = [cell viewWithTag:1];
                 userIDLabel.text = self.user.id;
+            } else if (indexPath.section == 2 && indexPath.item == 1) {
+                HRPGQRCodeView *qrCodeView = [cell viewWithTag:1];
+                qrCodeView.text = self.user.id;
+                [qrCodeView setAvatarViewWithUser:self.user];
             }
         }
         return cell;

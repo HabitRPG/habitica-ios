@@ -94,7 +94,7 @@
     [view addSubview:avatarView];
 
     // center avatar view constraints
-    [avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [avatarView mas_makeConstraints:^(MASConstraintMaker *make) { 
         make.center.equalTo(view);
     }];
 

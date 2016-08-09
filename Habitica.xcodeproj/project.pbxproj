@@ -47,6 +47,8 @@
 		D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE318CB83EF0006C242 /* HRPGDailyTableViewController.m */; };
 		D92CDAE718CB84000006C242 /* HRPGToDoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */; };
 		D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */; };
+		D92D26141D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92D26131D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m */; };
+		D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D92D26151D58EF00001FD977 /* AVFoundation.framework */; };
 		D92D40D91ABF123800E30339 /* HRPGHabitButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = D92D40D81ABF123800E30339 /* HRPGHabitButtons.m */; };
 		D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */ = {isa = PBXBuildFile; fileRef = D93422B81AB792B5003AFCDE /* UIColor+LighterDarker.m */; };
 		D93D79721D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D93D79711D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m */; };
@@ -202,6 +204,7 @@
 		D9D593671D008C7500D6C388 /* PushDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D593651D008C7500D6C388 /* PushDevice.m */; };
 		D9D96F00194B87FF00796FE7 /* HRPGPetMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D96EFF194B87FF00796FE7 /* HRPGPetMasterViewController.m */; };
 		D9D96F03194B96FD00796FE7 /* HRPGMountMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D96F02194B96FD00796FE7 /* HRPGMountMasterViewController.m */; };
+		D9D9EF981D54E51C00FC89C1 /* HRPGQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D9EF971D54E51C00FC89C1 /* HRPGQRCodeView.m */; };
 		D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E918561AA3A70D005E378B /* HRPGCheckBoxView.m */; };
 		D9E9E0C41CCE55DA006D94A2 /* HRPGSharingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E9E0C31CCE55DA006D94A2 /* HRPGSharingManager.m */; };
 		D9E9E0C81CCE64A3006D94A2 /* HRPGImageOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */; };
@@ -323,6 +326,9 @@
 		D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGToDoTableViewController.m; sourceTree = "<group>"; };
 		D92CDAE818CB8C130006C242 /* HRPGFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGFormViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D92CDAE918CB8C130006C242 /* HRPGFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGFormViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D92D26121D58EEBA001FD977 /* HRPGQRCodeScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGQRCodeScannerViewController.h; sourceTree = "<group>"; };
+		D92D26131D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGQRCodeScannerViewController.m; sourceTree = "<group>"; };
+		D92D26151D58EF00001FD977 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D92D40D71ABF123800E30339 /* HRPGHabitButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGHabitButtons.h; sourceTree = "<group>"; };
 		D92D40D81ABF123800E30339 /* HRPGHabitButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGHabitButtons.m; sourceTree = "<group>"; };
 		D93136CE1C650283009869DF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -656,6 +662,8 @@
 		D9D96EFF194B87FF00796FE7 /* HRPGPetMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGPetMasterViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9D96F01194B96FD00796FE7 /* HRPGMountMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGMountMasterViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9D96F02194B96FD00796FE7 /* HRPGMountMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGMountMasterViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D9D9EF961D54E51C00FC89C1 /* HRPGQRCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGQRCodeView.h; sourceTree = "<group>"; };
+		D9D9EF971D54E51C00FC89C1 /* HRPGQRCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGQRCodeView.m; sourceTree = "<group>"; };
 		D9E918551AA3A70D005E378B /* HRPGCheckBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCheckBoxView.h; sourceTree = "<group>"; };
 		D9E918561AA3A70D005E378B /* HRPGCheckBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCheckBoxView.m; sourceTree = "<group>"; };
 		D9E9E0C21CCE55DA006D94A2 /* HRPGSharingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSharingManager.h; sourceTree = "<group>"; };
@@ -712,6 +720,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */,
 				D9CD2DBE1BC7FBB500B1304B /* CoreSpotlight.framework in Frameworks */,
 				D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */,
 				D958E2B01915D41400186A08 /* Security.framework in Frameworks */,
@@ -1049,6 +1058,8 @@
 				D91CCACF1BCF11CC001C6A0C /* HRPGUserTopHeader.xib */,
 				D95CBD461BBC0EDA002F4498 /* UIView+Pulse.h */,
 				D95CBD471BBC0EDA002F4498 /* UIView+Pulse.m */,
+				D9D9EF961D54E51C00FC89C1 /* HRPGQRCodeView.h */,
+				D9D9EF971D54E51C00FC89C1 /* HRPGQRCodeView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1260,6 +1271,8 @@
 				D94FEDEA1BB314B10046A52E /* HRPGGroupFormViewController.m */,
 				D94FEDEC1BB6DA8E0046A52E /* HRPGInviteMembersViewController.h */,
 				D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */,
+				D92D26121D58EEBA001FD977 /* HRPGQRCodeScannerViewController.h */,
+				D92D26131D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -1320,6 +1333,7 @@
 		D9EB4E8D18CB4A9400BB2094 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D92D26151D58EF00001FD977 /* AVFoundation.framework */,
 				D9CD2DBD1BC7FBB500B1304B /* CoreSpotlight.framework */,
 				D99EA7411B8667C90048BF6A /* libOCMock.a */,
 				D90576701BD80275009BB7BC /* FBSDKCoreKit.framework */,
@@ -1866,6 +1880,7 @@
 				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
 				D91CCACD1BCD9068001C6A0C /* HRPGHoledView.m in Sources */,
 				D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */,
+				D9D9EF981D54E51C00FC89C1 /* HRPGQRCodeView.m in Sources */,
 				D9C257131B9B4C4100839F48 /* HRPGHabitTableViewCell.m in Sources */,
 				D95D03951C74AA5500D6BFB3 /* Outfit+CoreDataProperties.m in Sources */,
 				D914398A1BAF14C40006999E /* UIImage+withColor.m in Sources */,
@@ -1969,6 +1984,7 @@
 				D94AADB0192973CD00546C8E /* HabitRPG.xcdatamodeld in Sources */,
 				D9D96F00194B87FF00796FE7 /* HRPGPetMasterViewController.m in Sources */,
 				D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */,
+				D92D26141D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m in Sources */,
 				D9ADD3511943BC0E006202C1 /* BuyableItem.m in Sources */,
 				CF54FEE0D3F7F352ECA56F23 /* HRPGContentResponse.m in Sources */,
 			);

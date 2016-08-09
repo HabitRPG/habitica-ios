@@ -43,6 +43,7 @@
 #import "NSString+StripHTML.h"
 #import "PushDevice.h"
 #import "Shop.h"
+#import "UIView+ScreenShot.h"
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
@@ -123,13 +124,13 @@ NSString *currentUser;
     NSString *DISABLE_SSL = info[@"DisableSSL"];
 
     if (CUSTOM_DOMAIN.length == 0) {
-        CUSTOM_DOMAIN = @"localhost:3000/";
+        CUSTOM_DOMAIN = @"habitica.com/";
     }
 
     if ([DISABLE_SSL isEqualToString:@"true"]) {
         ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
     } else {
-        ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
+        ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
     }
 #else
     ROOT_URL = @"https://habitica.com/";
@@ -4718,7 +4719,7 @@ NSString *currentUser;
                                                                  nil),
                                                (long)([self.user.level integerValue])]
                                               stringByAppendingString:@" https://habitica.com/social/level-up"],
-                                             [HRPGSharingManager takeSnapshotOfView:weakAvatarView]
+                                             [weakAvatarView pb_takeScreenshot]
                                              ]
               withPresentingViewController:activeViewController
              withSourceView:nil];
