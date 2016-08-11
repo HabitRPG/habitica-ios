@@ -11,6 +11,7 @@
 #import "HRPGAppDelegate.h"
 #import "XLForm.h"
 #import "HRPGQRCodeScannerViewController.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGInviteMembersViewController ()
 
@@ -63,6 +64,7 @@
     row.value = [XLFormOptionsObject formOptionsObjectWithValue:@"emails"
                                                     displayText:NSLocalizedString(@"Emails", nil)];
     row.title = NSLocalizedString(@"Invitation Type", nil);
+    [row.cellConfig setObject:[UIColor purple400] forKey:@"self.tintColor"];
     [section addFormRow:row];
     [formDescriptor addFormSection:section];
 
@@ -82,6 +84,7 @@
     // Set up row template
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText];
     [row cellConfig][@"textField.placeholder"] = NSLocalizedString(@"Add a User ID", nil);
+    [row.cellConfig setObject:[UIColor purple400] forKey:@"textLabel.textColor"];
     self.uuidSection.multivaluedRowTemplate = row;
     [self.uuidSection addFormRow:row];
     [self.form addFormSection:self.uuidSection];
@@ -89,6 +92,7 @@
     XLFormSectionDescriptor *section = [XLFormSectionDescriptor formSectionWithTitle:nil];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"qrcodebutton" rowType:XLFormRowDescriptorTypeButton];
     row.title = NSLocalizedString(@"Scan QR Code", nil);
+    [row.cellConfig setObject:[UIColor purple400] forKey:@"textLabel.textColor"];
     [section addFormRow:row];
     [self.form addFormSection:section];
 }

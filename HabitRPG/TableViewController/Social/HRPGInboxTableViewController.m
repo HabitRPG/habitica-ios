@@ -9,10 +9,12 @@
 #import "HRPGInboxTableViewController.h"
 #import "InboxMessage.h"
 #import "HRPGInboxChatViewController.h"
+#import "HRPGChoosePMRecipientViewController.h"
 
 @interface HRPGInboxTableViewController ()
 
 @property NSArray<InboxMessage *> *inboxMessages;
+@property NSString *recipientUserID;
 
 @end
 
@@ -33,6 +35,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.sharedManager markInboxSeen:nil onError:nil];
+    [super viewDidAppear:animated];
 }
 
 #pragma mark - Table view data source
@@ -121,14 +124,28 @@
     cell.detailTextLabel.text = message.text;
 }
 
+- (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
+    HRPGChoosePMRecipientViewController *recipientViewController = segue.sourceViewController;
+    if (recipientViewController.userID) {
+        self.recipientUserID = recipientViewController.userID;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * 5), dispatch_get_main_queue(), ^{
+            [self performSegueWithIdentifier:@"ChatSegue" sender:self];
+        });
+    }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ChatSegue"]) {
         HRPGInboxChatViewController *chatViewController = (HRPGInboxChatViewController *)segue.destinationViewController;
-        UITableViewCell *cell = sender;
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        InboxMessage *message = [self.inboxMessages objectAtIndex:indexPath.item];
-        chatViewController.userID = message.userID;
-        chatViewController.username = message.username;
+        if (sender == self) {
+            chatViewController.userID = self.recipientUserID;
+        } else {
+            UITableViewCell *cell = sender;
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+            InboxMessage *message = [self.inboxMessages objectAtIndex:indexPath.item];
+            chatViewController.userID = message.userID;
+            chatViewController.username = message.username;
+        }
     }
 }
 

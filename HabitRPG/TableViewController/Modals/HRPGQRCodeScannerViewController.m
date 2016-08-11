@@ -7,6 +7,7 @@
 //
 
 #import "HRPGQRCodeScannerViewController.h"
+#import "NSString+UUID.h"
 
 @interface HRPGQRCodeScannerViewController ()
 
@@ -167,7 +168,7 @@
         if([current isKindOfClass:[AVMetadataMachineReadableCodeObject class]]) {
             if (self.scannedCode == nil) {
                 self.scannedCode = [((AVMetadataMachineReadableCodeObject *) current) stringValue];
-                if ([self isValidUUID:self.scannedCode]) {
+                if ([self.scannedCode isValidUUID]) {
                     [self performSegueWithIdentifier:@"ScannedCodeSegue" sender:self];
                 } else {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invalid Habitica User ID", nil)
@@ -186,15 +187,6 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     self.scannedCode = nil;
-}
-
--(BOOL)isValidUUID : (NSString *)UUIDString
-{
-    NSUUID* UUID = [[NSUUID alloc] initWithUUIDString:UUIDString];
-    if(UUID)
-        return true;
-    else
-        return false;
 }
 
 @end

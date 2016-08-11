@@ -28,6 +28,7 @@
 		D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */; };
 		D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0AD19217C2300B197EA /* HRPGEmptySerializer.m */; };
 		D922F0B11925314500B197EA /* HRPGNetworkIndicatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0B01925314500B197EA /* HRPGNetworkIndicatorController.m */; };
+		D92503BE1D5C9219006C9388 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = D92503BD1D5C9219006C9388 /* NSString+UUID.m */; };
 		D92761611CCFBEAD0049ECAC /* Flags+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D927615E1CCFBEAD0049ECAC /* Flags+CoreDataProperties.m */; };
 		D92761621CCFBEAD0049ECAC /* Flags.m in Sources */ = {isa = PBXBuildFile; fileRef = D92761601CCFBEAD0049ECAC /* Flags.m */; };
 		D92A08481D33EC38000F8B66 /* HRPGShopOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A08471D33EC38000F8B66 /* HRPGShopOverviewViewController.m */; };
@@ -51,6 +52,7 @@
 		D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D92D26151D58EF00001FD977 /* AVFoundation.framework */; };
 		D92D40D91ABF123800E30339 /* HRPGHabitButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = D92D40D81ABF123800E30339 /* HRPGHabitButtons.m */; };
 		D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */ = {isa = PBXBuildFile; fileRef = D93422B81AB792B5003AFCDE /* UIColor+LighterDarker.m */; };
+		D93432571D5A2B9500025412 /* HRPGChoosePMRecipientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D93432561D5A2B9500025412 /* HRPGChoosePMRecipientViewController.m */; };
 		D93D79721D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D93D79711D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m */; };
 		D940A7E31B0CF80100370F2E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D940A7E11B0CF80100370F2E /* Fabric.framework */; };
 		D940A7E41B0CF80100370F2E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D940A7E21B0CF80100370F2E /* Crashlytics.framework */; };
@@ -289,6 +291,8 @@
 		D922F0AD19217C2300B197EA /* HRPGEmptySerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGEmptySerializer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D922F0AF1925314500B197EA /* HRPGNetworkIndicatorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGNetworkIndicatorController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D922F0B01925314500B197EA /* HRPGNetworkIndicatorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGNetworkIndicatorController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D92503BC1D5C9219006C9388 /* NSString+UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UUID.h"; sourceTree = "<group>"; };
+		D92503BD1D5C9219006C9388 /* NSString+UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UUID.m"; sourceTree = "<group>"; };
 		D927615D1CCFBEAD0049ECAC /* Flags+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Flags+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D927615E1CCFBEAD0049ECAC /* Flags+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Flags+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D927615F1CCFBEAD0049ECAC /* Flags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flags.h; sourceTree = "<group>"; };
@@ -334,6 +338,8 @@
 		D93136CE1C650283009869DF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		D93422B71AB792B5003AFCDE /* UIColor+LighterDarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+LighterDarker.h"; path = "HabitRPG/UIColor+LighterDarker.h"; sourceTree = SOURCE_ROOT; };
 		D93422B81AB792B5003AFCDE /* UIColor+LighterDarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+LighterDarker.m"; path = "HabitRPG/UIColor+LighterDarker.m"; sourceTree = SOURCE_ROOT; };
+		D93432551D5A2B9400025412 /* HRPGChoosePMRecipientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGChoosePMRecipientViewController.h; sourceTree = "<group>"; };
+		D93432561D5A2B9500025412 /* HRPGChoosePMRecipientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGChoosePMRecipientViewController.m; sourceTree = "<group>"; };
 		D939B5EF1BD832B20015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D939B5F01BD832B30015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D939B5F11BD832B30015AEB6 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -935,6 +941,8 @@
 				D9ADD3531CF3169B001D005B /* NSString+StripHTML.m */,
 				D995D5981D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.h */,
 				D995D5991D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m */,
+				D92503BC1D5C9219006C9388 /* NSString+UUID.h */,
+				D92503BD1D5C9219006C9388 /* NSString+UUID.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1273,6 +1281,8 @@
 				D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */,
 				D92D26121D58EEBA001FD977 /* HRPGQRCodeScannerViewController.h */,
 				D92D26131D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m */,
+				D93432551D5A2B9400025412 /* HRPGChoosePMRecipientViewController.h */,
+				D93432561D5A2B9500025412 /* HRPGChoosePMRecipientViewController.m */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -1823,6 +1833,7 @@
 				D92761621CCFBEAD0049ECAC /* Flags.m in Sources */,
 				D99DEC87190836D400FFD2B9 /* Item.m in Sources */,
 				D9C89CF31B1DE3A200A599B0 /* HRPGGemViewController.m in Sources */,
+				D93432571D5A2B9500025412 /* HRPGChoosePMRecipientViewController.m in Sources */,
 				98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */,
 				D9D0451B1C2B1AEC00630244 /* Reminder+CoreDataProperties.m in Sources */,
 				D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */,
@@ -1956,6 +1967,7 @@
 				D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */,
 				D92A084B1D33FA08000F8B66 /* HRPGShopViewController.m in Sources */,
 				D92A085B1D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m in Sources */,
+				D92503BE1D5C9219006C9388 /* NSString+UUID.m in Sources */,
 				D97C71E118ECA7050089FDC6 /* ChatMessage.m in Sources */,
 				D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */,
 				D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */,
