@@ -2799,6 +2799,28 @@ NSString *currentUser;
         }];
 }
 
+- (void)moveTask:(Task *)task toPosition:(NSNumber *)position onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:[NSString stringWithFormat:@"tasks/%@/move/to/%@", task.id, position]
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            NSError *executeError = nil;
+                                            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                            if (successBlock) {
+                                                successBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
+}
+
 - (void)createReward:(Reward *)reward
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock {

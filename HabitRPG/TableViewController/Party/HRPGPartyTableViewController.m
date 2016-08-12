@@ -11,6 +11,7 @@
 #import "HRPGItemViewController.h"
 #import "HRPGQRCodeView.h"
 #import "HRPGSharingManager.h"
+#import "UIView+Screenshot.h"
 
 @interface HRPGPartyTableViewController ()
 @property NSUserDefaults *defaults;
@@ -212,8 +213,10 @@
                 HRPGQRCodeView *qrCodeView = [cell viewWithTag:1];
                 qrCodeView.text = self.user.id;
                 [qrCodeView setAvatarViewWithUser:self.user];
+                __weak HRPGPartyTableViewController *weakSelf = self;
+                __weak HRPGQRCodeView *weakQRCodeView = qrCodeView;
                 qrCodeView.shareAction = ^() {
-                    [HRPGSharingManager shareItems:@[[qrCodeView pb_takeScreenshot]] withPresentingViewController:weakSelf withSourceView:qrCodeView];
+                    [HRPGSharingManager shareItems:@[[weakQRCodeView pb_takeScreenshot]] withPresentingViewController:weakSelf withSourceView:weakQRCodeView];
                 };
             }
         }

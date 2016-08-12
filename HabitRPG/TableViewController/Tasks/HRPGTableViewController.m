@@ -13,6 +13,7 @@
 #import "HRPGSearchDataManager.h"
 #import "HRPGTabBarController.h"
 #import "NSString+Emoji.h"
+#import <POP/POP.h>
 
 @interface HRPGTableViewController ()<UISearchBarDelegate>
 @property NSString *readableName;
@@ -26,6 +27,9 @@
 - (void)configureCell:(UITableViewCell *)cell
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate;
+
+@property BOOL userDrivenDataUpdate;
+
 @end
 
 @implementation HRPGTableViewController
@@ -57,6 +61,10 @@ BOOL editable;
         self.extraCellSpacing = 8;
     }
     self.dayStart = [[self.sharedManager getUser].preferences.dayStart integerValue];
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
+                                               initWithTarget:self action:@selector(longPressGestureRecognized:)];
+    [self.tableView addGestureRecognizer:longPress];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -82,6 +90,110 @@ BOOL editable;
     if (self.scrollToTaskAfterLoading) {
         [self scrollToTaskWithId:self.scrollToTaskAfterLoading];
         self.scrollToTaskAfterLoading = nil;
+    }
+}
+
+- (IBAction)longPressGestureRecognized:(id)sender {
+    
+    UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *)sender;
+    UIGestureRecognizerState state = longPress.state;
+    
+    CGPoint location = [longPress locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+    
+    static UIView       *snapshot = nil;        ///< A snapshot of the row user is moving.
+    static NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begins.
+    
+    switch (state) {
+        case UIGestureRecognizerStateBegan: {
+            if (indexPath) {
+                sourceIndexPath = indexPath;
+                
+                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+                
+                snapshot = [self customSnapshoFromView:cell];
+                
+                __block CGPoint center = cell.center;
+                snapshot.center = center;
+                snapshot.alpha = 0.0;
+                [self.tableView addSubview:snapshot];
+                [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:0.25 initialSpringVelocity:0.75 options:0 animations:^{
+                    center.y = location.y;
+                    snapshot.center = center;
+                    snapshot.transform = CGAffineTransformMakeScale(1.075, 1.075);
+                    snapshot.alpha = 0.98;
+                    cell.alpha = 0.0;
+                } completion:^(BOOL finished) {
+                    cell.hidden = YES;
+                }];
+            }
+            break;
+        }
+            
+        case UIGestureRecognizerStateChanged: {
+            CGPoint center = snapshot.center;
+            center.y = location.y;
+            snapshot.center = center;
+            
+            if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
+                self.userDrivenDataUpdate = YES;
+                Task *sourceTask = [self.fetchedResultsController objectAtIndexPath:sourceIndexPath];
+                Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+                NSNumber *sourceOrder = sourceTask.order;
+                sourceTask.order = task.order;
+                task.order = sourceOrder;
+                
+                NSError *error;
+                [self.managedObjectContext save:&error];
+                
+                [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:indexPath];
+                sourceIndexPath = indexPath;
+                self.userDrivenDataUpdate = NO;
+            }
+            break;
+        }
+            
+        default: {
+            Task *task = [self.fetchedResultsController objectAtIndexPath:sourceIndexPath];
+            [self.sharedManager moveTask:task toPosition:task.order onSuccess:nil onError:nil];
+            
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
+            cell.alpha = 0.0;
+            
+            [snapshot pop_removeAllAnimations];
+            POPSpringAnimation *centerAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+            centerAnim.toValue = [NSValue valueWithCGPoint:cell.center];
+            centerAnim.springSpeed = 10;
+            centerAnim.springBounciness = 6;
+            POPSpringAnimation *scaleAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+            scaleAnim.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0, 1.0)];
+            scaleAnim.springBounciness = 6;
+            scaleAnim.springSpeed = 10;
+            POPSpringAnimation *shadowAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerShadowOpacity];
+            shadowAnim.toValue = @(0.0);
+            
+            centerAnim.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+                cell.alpha = 1.0;
+                cell.hidden = NO;
+                sourceIndexPath = nil;
+                [snapshot removeFromSuperview];
+                snapshot = nil;
+            };
+            
+            [snapshot pop_addAnimation:centerAnim forKey:kPOPViewCenter];
+            [snapshot pop_addAnimation:scaleAnim forKey:kPOPViewScaleXY];
+            [snapshot.layer pop_addAnimation:shadowAnim forKey:kPOPLayerShadowOpacity];
+            
+            [UIView animateWithDuration:2.0 delay:0.0 usingSpringWithDamping:0.5 initialSpringVelocity:1.0 options:0 animations:^{
+                
+                snapshot.transform = CGAffineTransformIdentity;
+            } completion:^(BOOL finished) {
+                
+                
+            }];
+            
+            break;
+        }
     }
 }
 
@@ -434,6 +546,7 @@ BOOL editable;
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    if (self.userDrivenDataUpdate) return;
     [self.tableView beginUpdates];
 }
 
@@ -441,6 +554,7 @@ BOOL editable;
     didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
              atIndex:(NSUInteger)sectionIndex
        forChangeType:(NSFetchedResultsChangeType)type {
+    if (self.userDrivenDataUpdate) return;
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
@@ -467,6 +581,7 @@ BOOL editable;
         atIndexPath:(NSIndexPath *)indexPath
       forChangeType:(NSFetchedResultsChangeType)type
        newIndexPath:(NSIndexPath *)newIndexPath {
+    if (self.userDrivenDataUpdate) return;
     UITableView *tableView = self.tableView;
 
     switch (type) {
@@ -518,6 +633,7 @@ BOOL editable;
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    if (self.userDrivenDataUpdate) return;
     [self.tableView endUpdates];
 }
 
@@ -771,6 +887,25 @@ BOOL editable;
         filterController.selectedTags = [tabBarController.selectedTags mutableCopy];
         filterController.taskType = self.typeName;
     }
+}
+
+- (UIView *)customSnapshoFromView:(UIView *)inputView {
+    
+    // Make an image from the input view.
+    UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, NO, 0);
+    [inputView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // Create an image view.
+    UIView *snapshot = [[UIImageView alloc] initWithImage:image];
+    snapshot.layer.masksToBounds = NO;
+    snapshot.layer.cornerRadius = 0.0;
+    snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
+    snapshot.layer.shadowRadius = 5.0;
+    snapshot.layer.shadowOpacity = 0.4;
+    
+    return snapshot;
 }
 
 @end

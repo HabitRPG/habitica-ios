@@ -82,6 +82,8 @@
 
 - (void)deleteTask:(Task *)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)moveTask:(Task *)task toPosition:(NSNumber *)position onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 - (void)createReward:(Reward *)reward
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock;
