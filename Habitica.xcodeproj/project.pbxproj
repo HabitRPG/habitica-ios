@@ -174,6 +174,7 @@
 		D9B8C1281AFFB5D500634B5A /* blade.json in Resources */ = {isa = PBXBuildFile; fileRef = D9B8C1271AFFB5D500634B5A /* blade.json */; };
 		D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */; };
 		D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */; };
+		D9BB28411D5CF3C7003894A8 /* HRPGDailyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE318CB83EF0006C242 /* HRPGDailyTableViewController.m */; };
 		D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */; };
 		D9C0E51A1C6510B40062C89A /* HRPGPublicGuildsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C0E5191C6510B40062C89A /* HRPGPublicGuildsViewController.m */; };
 		D9C0E51F1C6516C50062C89A /* HRPGPublicGuildTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C0E51E1C6516C50062C89A /* HRPGPublicGuildTableViewCell.m */; };
@@ -1808,6 +1809,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9BB28411D5CF3C7003894A8 /* HRPGDailyTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

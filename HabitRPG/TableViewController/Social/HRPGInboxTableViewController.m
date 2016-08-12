@@ -128,10 +128,13 @@
     HRPGChoosePMRecipientViewController *recipientViewController = segue.sourceViewController;
     if (recipientViewController.userID) {
         self.recipientUserID = recipientViewController.userID;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * 5), dispatch_get_main_queue(), ^{
-            [self performSegueWithIdentifier:@"ChatSegue" sender:self];
-        });
+        [self performSelector:@selector(performChatSegue) withObject:nil afterDelay:2];
+
     }
+}
+
+- (void)performChatSegue {
+    [self performSegueWithIdentifier:@"ChatSegue" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
