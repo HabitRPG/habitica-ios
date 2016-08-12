@@ -38,7 +38,7 @@ BOOL editable;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.coachMarks = @[ @"addTask", @"editTask", @"filterTask" ];
+    self.coachMarks = @[ @"addTask", @"editTask", @"filterTask", @"reorderTask" ];
 
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
@@ -150,6 +150,7 @@ BOOL editable;
                 sourceIndexPath = indexPath;
                 self.userDrivenDataUpdate = NO;
             }
+            
             break;
         }
             
@@ -314,6 +315,23 @@ BOOL editable;
                                            context:nil]
                               .size.width;
         return CGRectMake(5, 20, width + 6, 44);
+    } else if ([coachMarkIdentifier isEqualToString:@"reorderTask"]) {
+        if ([self.tableView numberOfRowsInSection:0] > 0) {
+            NSArray *visibleCells = [self.tableView indexPathsForVisibleRows];
+            
+            UITableViewCell *cell;
+            for (NSIndexPath *indexPath in visibleCells) {
+                cell = [self.tableView cellForRowAtIndexPath:indexPath];
+                CGRect frame = [self.tableView
+                                convertRect:cell.frame
+                                toView:self.parentViewController.parentViewController.view];
+                if (frame.origin.y >= self.tableView.contentInset.top) {
+                    return frame;
+                }
+            }
+            return [self.tableView convertRect:cell.frame
+                                        toView:self.parentViewController.parentViewController.view];
+        }
     }
     return CGRectZero;
 }
@@ -328,8 +346,9 @@ BOOL editable;
         };
     } else if ([tutorialIdentifier isEqualToString:@"filterTask"]) {
         return @{ @"text" : NSLocalizedString(@"Tap to filter tasks.", nil) };
+    } else if ([tutorialIdentifier isEqualToString:@"reorderTask"]) {
+        return @{@"text" : NSLocalizedString(@"You can press long on a task to lift it up and move it!", nil)};
     }
-
     return nil;
 }
 
