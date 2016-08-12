@@ -15,4 +15,6 @@
 
 - (void)setAvatarViewWithUser:(User *)user;
 
+@property (nonatomic) void (^shareAction)();
+
 @end

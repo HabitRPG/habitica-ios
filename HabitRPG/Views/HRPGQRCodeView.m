@@ -26,6 +26,9 @@
     self.qrCodeView.contentMode = UIViewContentModeCenter;
     [self addSubview:self.qrCodeView];
     
+    UIGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    [self addGestureRecognizer:tapGestureRecognizer];
+    
     return self;
 }
 
@@ -92,6 +95,12 @@
     UIGraphicsEndImageContext();
     CGImageRelease(cgImage);
     return scaledImage;
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)recognizer {
+    if (self.shareAction) {
+        self.shareAction();
+    }
 }
 
 @end

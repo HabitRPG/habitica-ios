@@ -11,6 +11,7 @@
 #import "HRPGCopyTableViewCell.h"
 #import "HRPGQRCodeView.h"
 #import "UIView+Screenshot.h"
+#import "HRPGSharingManager.h"
 
 @interface HRPGAccountDetailViewController ()
 
@@ -77,6 +78,10 @@
         HRPGQRCodeView *qrCodeView = [cell viewWithTag:1];
         qrCodeView.text = [@"https://habitica.com/static/front/#?memberId=" stringByAppendingString:self.user.id];
         [qrCodeView setAvatarViewWithUser:self.user];
+        __weak HRPGAccountDetailViewController *weakSelf = self;
+        qrCodeView.shareAction = ^() {
+            [HRPGSharingManager shareItems:@[[qrCodeView pb_takeScreenshot]] withPresentingViewController:weakSelf withSourceView:qrCodeView];
+        };
     } else if (indexPath.section == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         if (indexPath.item == 0) {
