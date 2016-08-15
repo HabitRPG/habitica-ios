@@ -7,6 +7,7 @@
 //
 
 #import "HRPGQRCodeView.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGQRCodeView ()
 
@@ -35,10 +36,10 @@
 - (void)layoutSubviews {
     self.qrCodeView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     [self setQrCode];
-    CGFloat avatarSize = self.scaling * 11;
+    CGFloat avatarSize = 6 * 13;
     self.avatarView.frame = CGRectMake((self.qrCodeView.frame.size.width-avatarSize)/2, (self.qrCodeView.frame.size.height-avatarSize)/2, avatarSize, avatarSize);
     CGFloat innerSize = avatarSize-10;
-    self.wrapperView.frame = CGRectMake(-innerSize, -(innerSize/2), avatarSize*2, avatarSize*2);
+    self.wrapperView.frame = CGRectMake(-41, -16, avatarSize*1.5, avatarSize*1.5);
     self.outerWrapperView.frame = CGRectMake(5, 5, innerSize, innerSize);
 }
 
@@ -52,10 +53,11 @@
         [self.avatarView removeFromSuperview];
     }
     self.avatarView = [[UIView alloc] init];
-    self.avatarView.backgroundColor = [UIColor whiteColor];
+    self.avatarView.backgroundColor = [UIColor purple100];
     self.wrapperView = [[UIView alloc] init];
     self.outerWrapperView = [[UIView alloc] init];
     self.outerWrapperView.clipsToBounds = YES;
+    self.outerWrapperView.backgroundColor = [UIColor whiteColor];
     [user setAvatarSubview:self.wrapperView showsBackground:NO showsMount:NO showsPet:NO];
     [self.outerWrapperView addSubview:self.wrapperView];
     [self.avatarView addSubview:self.outerWrapperView];
@@ -81,15 +83,21 @@
     // Render the CIImage into a CGImage
     CGImageRef cgImage = [[CIContext contextWithOptions:nil] createCGImage:image fromRect:image.extent];
     
-    self.scaling = self.frame.size.width / image.extent.size.width;
-    CGFloat imagesize = image.extent.size.width * self.scaling;
-    // Now we'll rescale using CoreGraphics
-    UIGraphicsBeginImageContext(CGSizeMake(imagesize, imagesize));
+    CGRect rect = CGRectMake(0, 0, 306, 306);
+    UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
-    // We don't want to interpolate (since we've got a pixel-correct image)
+    CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
+    CGContextFillRect(context, rect);
     CGContextSetInterpolationQuality(context, kCGInterpolationNone);
-    CGContextDrawImage(context, CGContextGetClipBoundingBox(context), cgImage);
-    // Get the image out
+    CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(cgImage),
+                                        CGImageGetHeight(cgImage),
+                                        CGImageGetBitsPerComponent(cgImage),
+                                        CGImageGetBitsPerPixel(cgImage),
+                                        CGImageGetBytesPerRow(cgImage),
+                                        CGImageGetDataProvider(cgImage), NULL, false);
+    CGContextClipToMask(context, rect, mask);
+    CGContextSetFillColorWithColor(context, [[UIColor purple100] CGColor]);
+    CGContextFillRect(context, rect);
     UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
     // Tidy up
     UIGraphicsEndImageContext();

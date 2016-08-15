@@ -135,7 +135,7 @@
             } else if (indexPath.section == 0 && indexPath.item == 0) {
                 return 100;
             } else if (indexPath.section == 2 && indexPath.item == 1) {
-                return self.view.frame.size.width < 500 ? self.view.frame.size.width : 500;
+                return self.view.frame.size.width < 320 ? self.view.frame.size.width : 320;
             }
         }
     }

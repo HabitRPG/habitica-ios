@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -891,34 +891,36 @@ Invite friends now to earn a Quest Scroll!</string>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="QRCodeCell" id="IiI-O5-sxe" customClass="HRPGCopyTableViewCell">
-                                <rect key="frame" x="0.0" y="847" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="QRCodeCell" rowHeight="320" id="vCW-pD-da8" customClass="HRPGCopyTableViewCell">
+                                <rect key="frame" x="0.0" y="847" width="600" height="320"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IiI-O5-sxe" id="j4l-aN-F7y">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vCW-pD-da8" id="TiE-E2-H9Q">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="319"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJJ-cd-2wi" customClass="HRPGQRCodeView">
-                                            <rect key="frame" x="287" y="8" width="27" height="27"/>
+                                        <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3t-Et-oaZ" customClass="HRPGQRCodeView">
+                                            <rect key="frame" x="147" y="7" width="306" height="306"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="vJJ-cd-2wi" secondAttribute="height" multiplier="1:1" id="hvd-Y6-jMe"/>
+                                                <constraint firstAttribute="height" constant="306" id="5ik-xP-KC1"/>
+                                                <constraint firstAttribute="width" constant="306" id="gXV-Ym-Q0P"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="vJJ-cd-2wi" firstAttribute="centerX" secondItem="j4l-aN-F7y" secondAttribute="centerX" id="YY8-s8-L3E"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="vJJ-cd-2wi" secondAttribute="bottom" id="ZUn-Ow-dZk"/>
-                                        <constraint firstItem="vJJ-cd-2wi" firstAttribute="leading" secondItem="j4l-aN-F7y" secondAttribute="leadingMargin" id="aZD-6R-l9g"/>
-                                        <constraint firstItem="vJJ-cd-2wi" firstAttribute="top" secondItem="j4l-aN-F7y" secondAttribute="topMargin" id="dOM-0O-yha"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="vJJ-cd-2wi" secondAttribute="bottom" id="sax-SY-9r7"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="vJJ-cd-2wi" secondAttribute="trailing" id="xzB-0e-xTe"/>
+                                        <constraint firstItem="c3t-Et-oaZ" firstAttribute="top" secondItem="TiE-E2-H9Q" secondAttribute="topMargin" id="44q-2V-b8G"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="c3t-Et-oaZ" secondAttribute="bottom" id="G5N-g9-K9i"/>
+                                        <constraint firstItem="c3t-Et-oaZ" firstAttribute="centerX" secondItem="TiE-E2-H9Q" secondAttribute="centerX" id="K9L-HI-CKl"/>
+                                        <constraint firstItem="c3t-Et-oaZ" firstAttribute="leading" secondItem="TiE-E2-H9Q" secondAttribute="leadingMargin" id="Lke-c2-Vo8"/>
+                                        <constraint firstItem="c3t-Et-oaZ" firstAttribute="centerY" secondItem="TiE-E2-H9Q" secondAttribute="centerY" id="Z3F-2A-H16"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="c3t-Et-oaZ" secondAttribute="trailing" id="tuD-yV-HhP"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="aZD-6R-l9g"/>
-                                            <exclude reference="sax-SY-9r7"/>
-                                            <exclude reference="xzB-0e-xTe"/>
+                                            <exclude reference="G5N-g9-K9i"/>
+                                            <exclude reference="44q-2V-b8G"/>
+                                            <exclude reference="Lke-c2-Vo8"/>
+                                            <exclude reference="tuD-yV-HhP"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>

@@ -63,7 +63,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return self.view.frame.size.width < 500 ? self.view.frame.size.width : 500;
+        return self.view.frame.size.width < 320 ? self.view.frame.size.width : 320;
     } else {
         return 45;
     }
