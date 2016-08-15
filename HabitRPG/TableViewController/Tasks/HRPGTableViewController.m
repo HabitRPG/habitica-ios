@@ -29,6 +29,8 @@
         withAnimation:(BOOL)animate;
 
 @property BOOL userDrivenDataUpdate;
+@property NSTimer *scrollTimer;
+@property CGFloat autoScrollSpeed;
 
 @end
 
@@ -151,6 +153,24 @@ BOOL editable;
                 self.userDrivenDataUpdate = NO;
             }
             
+            CGFloat positionInTableView = [self.view convertPoint:center fromView:snapshot.superview].y - self.tableView.contentOffset.y;
+            CGFloat bottomThreshhold = self.tableView.frame.size.height - 120;
+            CGFloat topThreshhold = self.tableView.frame.origin.y + 120;
+            if (positionInTableView > bottomThreshhold) {
+                if (self.autoScrollSpeed == 0) {
+                    [self startAutoScrolling];
+                }
+                self.autoScrollSpeed = ((positionInTableView-bottomThreshhold)/120) * 10;
+                
+            } else if (positionInTableView < topThreshhold) {
+                if (self.autoScrollSpeed == 0) {
+                    [self startAutoScrolling];
+                }
+                self.autoScrollSpeed = ((positionInTableView-topThreshhold)/120) * 10;
+            } else {
+                self.autoScrollSpeed = 0;
+            }
+            
             break;
         }
             
@@ -179,6 +199,7 @@ BOOL editable;
                 sourceIndexPath = nil;
                 [snapshot removeFromSuperview];
                 snapshot = nil;
+                self.autoScrollSpeed = 0;
             };
             
             [snapshot pop_addAnimation:centerAnim forKey:kPOPViewCenter];
@@ -347,7 +368,7 @@ BOOL editable;
     } else if ([tutorialIdentifier isEqualToString:@"filterTask"]) {
         return @{ @"text" : NSLocalizedString(@"Tap to filter tasks.", nil) };
     } else if ([tutorialIdentifier isEqualToString:@"reorderTask"]) {
-        return @{@"text" : NSLocalizedString(@"You can press long on a task to lift it up and move it!", nil)};
+        return @{@"text" : NSLocalizedString(@"Hold down on a task to drag it around.", nil)};
     }
     return nil;
 }
@@ -925,6 +946,25 @@ BOOL editable;
     snapshot.layer.shadowOpacity = 0.4;
     
     return snapshot;
+}
+
+- (void) startAutoScrolling {
+    if (self.scrollTimer == nil) {
+        self.scrollTimer = [NSTimer scheduledTimerWithTimeInterval:(0.03)
+                                                          target:self selector:@selector(autoscrollTimer) userInfo:nil repeats:YES];
+    }
+}
+
+- (void) autoscrollTimer {
+    if (self.autoScrollSpeed == 0) {
+        [self.scrollTimer invalidate];
+        self.scrollTimer = nil;
+    } else {
+        CGPoint scrollPoint = CGPointMake(self.tableView.contentOffset.x, self.tableView.contentOffset.y+self.autoScrollSpeed);
+        if (scrollPoint.y > -self.tableView.contentInset.top && scrollPoint.y < (self.tableView.contentSize.height - self.tableView.frame.size.height)) {
+            [self.tableView setContentOffset:scrollPoint animated:NO];
+        }
+    }
 }
 
 @end
