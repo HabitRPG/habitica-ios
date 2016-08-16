@@ -211,7 +211,7 @@
                 userIDLabel.text = self.user.id;
             } else if (indexPath.section == 2 && indexPath.item == 1) {
                 HRPGQRCodeView *qrCodeView = [cell viewWithTag:1];
-                qrCodeView.text = self.user.id;
+                qrCodeView.userID = self.user.id;
                 [qrCodeView setAvatarViewWithUser:self.user];
                 __weak HRPGPartyTableViewController *weakSelf = self;
                 __weak HRPGQRCodeView *weakQRCodeView = qrCodeView;

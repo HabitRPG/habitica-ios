@@ -167,7 +167,7 @@
     for(AVMetadataObject *current in metadataObjects) {
         if([current isKindOfClass:[AVMetadataMachineReadableCodeObject class]]) {
             if (self.scannedCode == nil) {
-                self.scannedCode = [((AVMetadataMachineReadableCodeObject *) current) stringValue];
+                self.scannedCode = [self getScannedUUID:[((AVMetadataMachineReadableCodeObject *) current) stringValue]];
                 if ([self.scannedCode isValidUUID]) {
                     [self performSegueWithIdentifier:@"ScannedCodeSegue" sender:self];
                 } else {
@@ -187,6 +187,10 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     self.scannedCode = nil;
+}
+
+- (NSString *)getScannedUUID:(NSString *)scannedData {
+    return [scannedData stringByReplacingOccurrencesOfString:@"https://habitica.com/qr-code/user/" withString:@""];
 }
 
 @end

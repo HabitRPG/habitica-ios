@@ -76,7 +76,7 @@
     if (indexPath.section == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"QRCodeCell" forIndexPath:indexPath];
         HRPGQRCodeView *qrCodeView = [cell viewWithTag:1];
-        qrCodeView.text = [@"https://habitica.com/static/front/#?memberId=" stringByAppendingString:self.user.id];
+        qrCodeView.userID = self.user.id;
         [qrCodeView setAvatarViewWithUser:self.user];
         __weak HRPGAccountDetailViewController *weakSelf = self;
         __weak HRPGQRCodeView *weakQRCodeView = qrCodeView;

@@ -43,8 +43,8 @@
     self.outerWrapperView.frame = CGRectMake(5, 5, innerSize, innerSize);
 }
 
-- (void)setText:(NSString *)text {
-    _text = text;
+- (void)setUserID:(NSString *)userID {
+    _userID = userID;
     [self setQrCode];
 }
 
@@ -67,7 +67,7 @@
 
 - (void)setQrCode {
     
-    NSData *stringData = [self.text dataUsingEncoding:NSISOLatin1StringEncoding];
+    NSData *stringData = [[@"https://habitica.com/qr-code/user/" stringByAppendingString:self.userID] dataUsingEncoding:NSISOLatin1StringEncoding];
     
     // Create the filter
     CIFilter *qrFilter = [CIFilter filterWithName:@"CIQRCodeGenerator"];

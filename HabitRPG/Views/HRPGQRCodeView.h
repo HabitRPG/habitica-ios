@@ -11,7 +11,7 @@
 
 @interface HRPGQRCodeView : UIView
 
-@property (nonatomic) NSString *text;
+@property (nonatomic) NSString *userID;
 
 - (void)setAvatarViewWithUser:(User *)user;
 
