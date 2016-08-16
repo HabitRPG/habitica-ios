@@ -8,6 +8,7 @@
 
 #import "HRPGGearDetailView.h"
 #import "KLCPopup.h"
+#import "NSString+StripHTML.h"
 
 static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_tl,
                                                    CGFloat radius_tr, CGFloat radius_bl,
@@ -66,15 +67,6 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
 
 @implementation HRPGGearDetailView
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-
-    if (self) {
-    }
-
-    return self;
-}
-
 - (void)configureForReward:(MetaReward *)reward withGold:(CGFloat)gold {
     self.titleLabel.text = reward.text;
     self.priceLabel.text = [reward.value stringValue];
@@ -92,7 +84,7 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
 
 - (void)configureForShopItem:(ShopItem *)item withCurrencyAmount:(CGFloat)currencyAmount {
     self.titleLabel.text = item.text;
-    self.descriptionText = item.notes;
+    self.descriptionText = [item.notes stringByStrippingHTML];
     
     if (item.unlockCondition) {
         self.currencyImageView.image = nil;
@@ -111,7 +103,11 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
         }
         self.buyButton.enabled = [item.currency isEqualToString:@"gems"] || [item canBuy:[NSNumber numberWithFloat:currencyAmount]];
     }
-    
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self.descriptionLabel setContentOffset:CGPointZero animated:NO];
 }
 
 - (void)sizeToFit {
