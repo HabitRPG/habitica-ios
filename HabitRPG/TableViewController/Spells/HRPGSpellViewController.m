@@ -72,6 +72,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     Spell *spell = [self.dataSource itemAtIndexPath:indexPath];
+    __weak HRPGSpellViewController *weakSelf = self;
     if ([self.user.magic integerValue] >= [spell.mana integerValue]) {
         if ([spell.target isEqualToString:@"task"]) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -92,7 +93,7 @@
                            withTargetType:spell.target
                                  onTarget:nil
                                 onSuccess:^() {
-                                    [tableView reloadData];
+                                    [weakSelf.tableView reloadData];
                                 }
                                   onError:nil];
         }

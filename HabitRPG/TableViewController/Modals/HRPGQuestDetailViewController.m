@@ -167,6 +167,7 @@
         } else {
             YYWebImageManager *manager = [YYWebImageManager sharedManager];
             __weak UIImageView *imageView = [cell viewWithTag:1];
+            __weak HRPGQuestDetailViewController *weakSelf = self;
             [manager
                 requestImageWithURL:[NSURL URLWithString:[NSString
                                                              stringWithFormat:@"https://"
@@ -183,9 +184,13 @@
                                       NSError *_Nullable error) {
                              if (image) {
                                  dispatch_async(dispatch_get_main_queue(), ^{
-                                     self.bossImage = image;
-                                     imageView.image = self.bossImage;
-                                     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                                     weakSelf.bossImage = image;
+                                     imageView.image = weakSelf.bossImage;
+                                     NSIndexPath *newIndexPath = indexPath;
+                                     if ([weakSelf.tableView numberOfSections] <= indexPath.section) {
+                                         newIndexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section];
+                                     }
+                                     [weakSelf.tableView reloadRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                                  });
                              }
                          }];
