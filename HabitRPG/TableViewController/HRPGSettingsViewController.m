@@ -424,11 +424,7 @@ User *user;
         [self reminderTimeChanged:[rowDescriptor.value valueData]];
     } else if ([rowDescriptor.tag isEqualToString:@"dayStart"]) {
         XLFormOptionsObject *value = (XLFormOptionsObject *)newValue;
-        [self.sharedManager updateUser:@{
-            @"preferences.dayStart" : value.valueData
-        }
-                             onSuccess:nil
-                               onError:nil];
+        [self.sharedManager changeDayStartTime:value.valueData onSuccess:nil onError:nil];
     } else if ([rowDescriptor.tag isEqualToString:@"disablePushNotifications"]) {
         self.pushNotificationRow.disabled = newValue;
         [self updateFormRow:self.pushNotificationRow];

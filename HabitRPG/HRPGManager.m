@@ -3489,6 +3489,35 @@ NSString *currentUser;
         }];
 }
 
+- (void)changeDayStartTime:(NSNumber *)dayStart onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [[RKObjectManager sharedManager]
+     postObject:nil
+     path:@"user/custom-day-start"
+     parameters:@{@"dayStart": dayStart}
+     success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+         [self getUser].preferences.dayStart = dayStart;
+         NSError *executeError = nil;
+         [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+         if (successBlock) {
+             successBlock();
+         }
+         [self.networkIndicatorController endNetworking];
+         return;
+     }
+     failure:^(RKObjectRequestOperation *operation, NSError *error) {
+         if (operation.HTTPRequestOperation.response.statusCode == 503) {
+             [self displayServerError];
+         } else {
+             [self displayNetworkError];
+         }
+         if (errorBlock) {
+             errorBlock();
+         }
+         [self.networkIndicatorController endNetworking];
+         return;
+     }];
+}
+
 - (void)acceptQuest:(NSString *)group
           onSuccess:(void (^)())successBlock
             onError:(void (^)(NSString * errorMessage))errorBlock {

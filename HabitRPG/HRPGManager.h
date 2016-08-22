@@ -126,6 +126,10 @@
          onSuccess:(void (^)())successBlock
            onError:(void (^)())errorBlock;
 
+- (void)changeDayStartTime:(NSNumber *)dayStart
+                 onSuccess:(void (^)())successBlock
+                   onError:(void (^)())errorBlock;
+
 - (void)acceptQuest:(NSString *)group
           onSuccess:(void (^)())successBlock
             onError:(void (^)(NSString *errorMessage))errorBlock;
