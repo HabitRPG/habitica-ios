@@ -77,15 +77,20 @@
 @dynamic costume;
 @dynamic flags;
 
+- (void)setAvatarSubview:(UIView *)view showsBackground:(BOOL)showsBackground showsMount:(BOOL)showsMount showsPet:(BOOL)showsPet {
+    [self setAvatarSubview:view showsBackground:showsBackground showsMount:showsMount showsPet:showsPet isFainted:NO];
+}
+
 - (void)setAvatarSubview:(UIView *)view
          showsBackground:(BOOL)showsBackground
               showsMount:(BOOL)showsMount
-                showsPet:(BOOL)showsPet {
+                showsPet:(BOOL)showsPet
+               isFainted:(BOOL)isFainted {
     // clear existing subviews
     [view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
     UIView *avatarView =
-        [self getAvatarViewShowsBackground:showsBackground showsMount:showsMount showsPet:showsPet];
+        [self getAvatarViewShowsBackground:showsBackground showsMount:showsMount showsPet:showsPet isFainted:isFainted];
 
     if (!avatarView || !view) {
         return;
@@ -109,7 +114,14 @@
 
 - (UIView *)getAvatarViewShowsBackground:(BOOL)showsBackground
                               showsMount:(BOOL)showsMount
-                                showsPet:(BOOL)showsPet {
+                                showsPet:(BOOL)showsPet{
+    return [self getAvatarViewShowsBackground:showsBackground showsMount:showsMount showsPet:showsPet isFainted:NO];
+}
+
+- (UIView *)getAvatarViewShowsBackground:(BOOL)showsBackground
+                              showsMount:(BOOL)showsMount
+                                showsPet:(BOOL)showsPet
+                               isFainted:(BOOL)isFainted  {
     if (!self.preferences.skin) {
         return nil;
     }
@@ -147,7 +159,8 @@
         @"shield" : @(outfit.shield.length && [self _isAvailableGear:outfit.shield]),
         @"weapon" : @(outfit.weapon.length && [self _isAvailableGear:outfit.weapon]),
         @"mount-head" : @(showsMount && self.currentMount.length),
-        @"zzz" : self.preferences.sleep ?: @NO,
+        @"zzz" : [self.preferences.sleep boolValue] && !isFainted ? @YES : @NO,
+        @"knockout" : isFainted ? @YES : @NO,
         @"pet" : @(showsPet && self.currentPet.length)
     };
 
@@ -175,6 +188,7 @@
         @"weapon",
         @"mount-head",
         @"zzz",
+        @"knockout",
         @"pet"
     ];
 
@@ -437,6 +451,7 @@
         @"weapon" : outfit.weapon ?: [NSNull null],
         @"mount-head" : [NSString stringWithFormat:@"Mount_Head_%@", self.currentMount],
         @"zzz" : @"zzz",
+        @"knockout" : @"knockout",
         @"pet" : [NSString stringWithFormat:@"Pet-%@", self.currentPet]
     };
 }
@@ -558,6 +573,7 @@
         @"weapon" : character,
         @"mount-head" : mount,
         @"zzz" : character,
+        @"knockout" : character,
         @"pet" : pet,
         @"weapon_special_critical" : weaponSpecial,
         @"weapon_special_1" : weaponSpecial1,

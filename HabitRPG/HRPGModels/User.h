@@ -154,6 +154,17 @@
 - (UIView *)getAvatarViewShowsBackground:(BOOL)showsBackground
                               showsMount:(BOOL)showsMount
                                 showsPet:(BOOL)showsPet;
+
+- (void)setAvatarSubview:(UIView *)view
+         showsBackground:(BOOL)showsBackground
+              showsMount:(BOOL)showsMount
+                showsPet:(BOOL)showsPet
+               isFainted:(BOOL)isFainted;
+- (UIView *)getAvatarViewShowsBackground:(BOOL)showsBackground
+                              showsMount:(BOOL)showsMount
+                                showsPet:(BOOL)showsPet
+                               isFainted:(BOOL)isFainted;
+
 - (UIColor *)classColor;
 
 - (UIColor *)contributorColor;

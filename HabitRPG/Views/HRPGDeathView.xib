@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HRPGDeathView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refill Health &amp; Try Again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxV-Za-6X9">
+                    <rect key="frame" x="0.0" y="559" width="600" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="bPW-vF-4r2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                    <color key="textColor" red="0.44783601159999997" green="0.1084804982" blue="0.99846321339999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gwa-ZK-hE5">
+                    <rect key="frame" x="50" y="167" width="500" height="266"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You ran out of Health!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBh-ep-V0f">
+                            <rect key="frame" x="0.0" y="0.0" width="500" height="26"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="500" constant="21" id="oMy-ZV-gOh"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOV-OM-bmO">
+                            <rect key="frame" x="0.0" y="225" width="500" height="41"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="500" constant="21" id="Nzd-I1-bpC"/>
+                            </constraints>
+                            <string key="text">You lost a Level, your Gold, and a piece of Equipment, but you can get them all back with hard work! Good luck--you'll do great.</string>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't despair!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNl-0m-81s">
+                            <rect key="frame" x="0.0" y="204" width="500" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="500" constant="21" id="4o6-9A-o7S"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ilf-pB-byZ" customClass="HRPGLabeledProgressBar">
+                            <rect key="frame" x="0.0" y="42" width="500" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="rdL-92-sPj"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4KX-TZ-jpu">
+                            <rect key="frame" x="205" y="98" width="90" height="90"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="90" id="NLl-12-jM7"/>
+                                <constraint firstAttribute="width" constant="90" id="jWy-r6-EAP"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="OOV-OM-bmO" firstAttribute="leading" secondItem="Gwa-ZK-hE5" secondAttribute="leading" id="0Hn-Gf-L9U"/>
+                        <constraint firstAttribute="trailing" secondItem="eBh-ep-V0f" secondAttribute="trailing" id="2bL-mc-yMT"/>
+                        <constraint firstAttribute="bottom" secondItem="OOV-OM-bmO" secondAttribute="bottom" id="5XK-3e-CI2"/>
+                        <constraint firstAttribute="trailing" secondItem="FNl-0m-81s" secondAttribute="trailing" id="9fP-iJ-cdT"/>
+                        <constraint firstItem="eBh-ep-V0f" firstAttribute="leading" secondItem="Gwa-ZK-hE5" secondAttribute="leading" id="CSS-d4-Zps"/>
+                        <constraint firstItem="Ilf-pB-byZ" firstAttribute="top" secondItem="eBh-ep-V0f" secondAttribute="bottom" constant="16" id="F6W-ID-JD8"/>
+                        <constraint firstAttribute="height" priority="500" constant="500" id="IjV-Bt-VJW"/>
+                        <constraint firstItem="Ilf-pB-byZ" firstAttribute="leading" secondItem="Gwa-ZK-hE5" secondAttribute="leading" id="VvP-F1-Nuw"/>
+                        <constraint firstItem="4KX-TZ-jpu" firstAttribute="top" secondItem="Ilf-pB-byZ" secondAttribute="bottom" constant="16" id="W1J-C8-0Zn"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="YYJ-C6-1SV"/>
+                        <constraint firstItem="eBh-ep-V0f" firstAttribute="top" secondItem="Gwa-ZK-hE5" secondAttribute="top" id="ZtX-If-XzP"/>
+                        <constraint firstItem="FNl-0m-81s" firstAttribute="top" secondItem="4KX-TZ-jpu" secondAttribute="bottom" constant="16" id="dWl-Jy-Uhv"/>
+                        <constraint firstAttribute="trailing" secondItem="OOV-OM-bmO" secondAttribute="trailing" id="fAK-mP-wNc"/>
+                        <constraint firstItem="4KX-TZ-jpu" firstAttribute="centerX" secondItem="Gwa-ZK-hE5" secondAttribute="centerX" id="jDa-Tn-16f"/>
+                        <constraint firstAttribute="trailing" secondItem="Ilf-pB-byZ" secondAttribute="trailing" id="mn8-j9-yjh"/>
+                        <constraint firstItem="OOV-OM-bmO" firstAttribute="top" secondItem="FNl-0m-81s" secondAttribute="bottom" id="sUv-AS-E9Y"/>
+                        <constraint firstItem="FNl-0m-81s" firstAttribute="leading" secondItem="Gwa-ZK-hE5" secondAttribute="leading" id="ziL-xT-Hyh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="qxV-Za-6X9" secondAttribute="bottom" constant="20" id="69N-ms-WBD"/>
+                <constraint firstAttribute="trailing" secondItem="Gwa-ZK-hE5" secondAttribute="trailing" priority="999" constant="40" id="7fp-ax-8lV"/>
+                <constraint firstItem="Gwa-ZK-hE5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="DLw-4q-5bR"/>
+                <constraint firstItem="Gwa-ZK-hE5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="999" constant="40" id="EVS-Bv-WzC"/>
+                <constraint firstItem="qxV-Za-6X9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Rb8-oy-Mme"/>
+                <constraint firstAttribute="trailing" secondItem="qxV-Za-6X9" secondAttribute="trailing" id="YiK-Hj-2Tv"/>
+                <constraint firstItem="Gwa-ZK-hE5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rCi-yy-80G"/>
+            </constraints>
+            <connections>
+                <outlet property="avatarView" destination="4KX-TZ-jpu" id="QmR-2X-NBe"/>
+                <outlet property="containerView" destination="Gwa-ZK-hE5" id="QhN-fn-Dh0"/>
+                <outlet property="healthView" destination="Ilf-pB-byZ" id="u6s-z2-4tz"/>
+                <outlet property="tryAgainLabel" destination="qxV-Za-6X9" id="9u1-9a-HWg"/>
+            </connections>
+        </view>
+    </objects>
+</document>

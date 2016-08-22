@@ -9,86 +9,48 @@
 #import "HRPGDeathView.h"
 #import <YYWebImage.h>
 #import "HRPGAppDelegate.h"
+#import "HRPGLabeledProgressBar.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGDeathView ()
 @property(weak) HRPGManager *sharedManager;
-@property UILabel *diedLabel;
-@property UIImageView *deathImageView;
-@property UILabel *deathText;
-@property UILabel *tapLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet HRPGLabeledProgressBar *healthView;
+@property (weak, nonatomic) IBOutlet UIView *avatarView;
+@property (weak, nonatomic) IBOutlet UILabel *tryAgainLabel;
+
 @end
 
 @implementation HRPGDeathView
 
-- (id)init {
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    self = [super initWithFrame:CGRectMake(0, 0, screenRect.size.width, screenRect.size.height)];
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    
     if (self) {
-        self.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
         UITapGestureRecognizer *singleFingerTap =
             [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss:)];
         [self addGestureRecognizer:singleFingerTap];
-
-        HRPGAppDelegate *appdelegate =
-            (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-        self.sharedManager = appdelegate.sharedManager;
-
-        self.diedLabel =
-            [[UILabel alloc] initWithFrame:CGRectMake(0, screenRect.size.height / 2 - 150,
-                                                      screenRect.size.width, 30)];
-        self.diedLabel.font = [UIFont boldSystemFontOfSize:25];
-        self.diedLabel.text = NSLocalizedString(@"You Died", nil);
-        self.diedLabel.alpha = 0;
-        self.diedLabel.textAlignment = NSTextAlignmentCenter;
-        [self addSubview:self.diedLabel];
-
-        self.deathImageView = [[UIImageView alloc]
-            initWithFrame:CGRectMake(screenRect.size.width / 2 - 57,
-                                     screenRect.size.height / 2 - 96, 114, 132)];
-        YYWebImageManager *manager = [YYWebImageManager sharedManager];
-        [manager
-            requestImageWithURL:[NSURL URLWithString:@"https://habitica-assets.s3.amazonaws.com/"
-                                                     @"mobileApp/images/GrimReaper.png"]
-            options:0
-            progress:nil
-            transform:^UIImage *_Nullable(UIImage *_Nonnull image, NSURL *_Nonnull url) {
-                return [YYImage imageWithData:[image yy_imageDataRepresentation] scale:1.0];
-            }
-            completion:^(UIImage *_Nullable image, NSURL *_Nonnull url, YYWebImageFromType from,
-                         YYWebImageStage stage, NSError *_Nullable error) {
-                if (image) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        self.deathImageView.image = image;
-                    });
-                }
-
-            }];
-        self.deathImageView.alpha = 0;
-        [self addSubview:self.deathImageView];
-
-        self.deathText =
-            [[UILabel alloc] initWithFrame:CGRectMake(10, screenRect.size.height / 2 + 50,
-                                                      screenRect.size.width - 20, 120)];
-        self.deathText.font = [UIFont systemFontOfSize:14];
-        self.deathText.text = NSLocalizedString(
-            @"You've lost a Level, all your Gold, and a random piece of Equipment. Arise, "
-            @"Habiteer, and try again! Curb those negative Habits, be vigilant in completion of "
-            @"Dailies, and hold death at arm's length with a Health Potion if you falter!",
-            nil);
-        self.deathText.alpha = 0;
-        self.deathText.numberOfLines = 0;
-        self.deathText.textAlignment = NSTextAlignmentCenter;
-        [self addSubview:self.deathText];
-
-        self.tapLabel = [[UILabel alloc]
-            initWithFrame:CGRectMake(0, screenRect.size.height - 60, screenRect.size.width, 30)];
-        self.tapLabel.font = [UIFont boldSystemFontOfSize:14];
-        self.tapLabel.text = NSLocalizedString(@"Tap to continue", nil);
-        self.tapLabel.alpha = 0;
-        self.tapLabel.textAlignment = NSTextAlignmentCenter;
-        [self addSubview:self.tapLabel];
+        
+        self.frame = [[UIScreen mainScreen] bounds];
+        [self setNeedsLayout];
     }
     return self;
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.healthView.color = [UIColor red100];
+    self.healthView.icon = [UIImage imageNamed:@"icon_health"];
+    self.healthView.type = NSLocalizedString(@"Health", nil);
+    self.healthView.value = @0;
+    self.healthView.maxValue = @50;
+    
+    HRPGAppDelegate *appdelegate =
+    (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
+    HRPGManager *sharedManager = appdelegate.sharedManager;
+    User *user = [sharedManager getUser];
+    [user setAvatarSubview:self.avatarView showsBackground:NO showsMount:NO showsPet:NO isFainted:YES];
 }
 
 - (void)show {
@@ -101,22 +63,16 @@
         completion:^(BOOL competed) {
             [UIView animateWithDuration:1.0f
                              animations:^() {
-                                 self.deathImageView.alpha = 1;
+                                 self.containerView.alpha = 1;
                              }];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC),
                            dispatch_get_main_queue(), ^{
                                [UIView animateWithDuration:1.0f
                                                 animations:^() {
-                                                    self.deathText.alpha = 1;
-                                                    self.diedLabel.alpha = 1;
-                                                    self.tapLabel.alpha = 1;
+                                                    self.tryAgainLabel.alpha = 1;
                                                 }];
                            });
-
         }];
-}
-
-- (void)show:(void (^)())onHide {
 }
 
 - (void)dismiss:(UITapGestureRecognizer *)recognizer {

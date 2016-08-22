@@ -100,9 +100,11 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
     User *user = [self.sharedManager getUser];
     if (user && user.health && [user.health floatValue] <= 0) {
-        HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HRPGDeathView" owner:self options:nil];
+        HRPGDeathView *deathView = (HRPGDeathView *)[nib objectAtIndex:0];
         [deathView show];
     }
 
