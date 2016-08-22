@@ -142,6 +142,7 @@
 		D99DEC87190836D400FFD2B9 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC86190836D400FFD2B9 /* Item.m */; };
 		D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D99DEC88190842CA00FFD2B9 /* Placeholder.png */; };
 		D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC8E190914AD00FFD2B9 /* HRPGQuestDetailViewController.m */; };
+		D99E42681D6B1FD500811B6D /* HRPGDeathView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D99E42671D6B1FD500811B6D /* HRPGDeathView.xib */; };
 		D99EA73D1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D99EA73C1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m */; };
 		D99EA7421B8667C90048BF6A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D99EA7411B8667C90048BF6A /* libOCMock.a */; };
 		D99EAB621BF375F7003C1C62 /* HRPGIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = D99EAB611BF375F7003C1C62 /* HRPGIntroView.m */; };
@@ -534,6 +535,7 @@
 		D99DEC88190842CA00FFD2B9 /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
 		D99DEC8D190914AD00FFD2B9 /* HRPGQuestDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGQuestDetailViewController.h; path = ../Modals/HRPGQuestDetailViewController.h; sourceTree = "<group>"; };
 		D99DEC8E190914AD00FFD2B9 /* HRPGQuestDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGQuestDetailViewController.m; path = ../Modals/HRPGQuestDetailViewController.m; sourceTree = "<group>"; };
+		D99E42671D6B1FD500811B6D /* HRPGDeathView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGDeathView.xib; sourceTree = "<group>"; };
 		D99EA73C1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTaskFormViewControllerTests.m; sourceTree = "<group>"; };
 		D99EA7411B8667C90048BF6A /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = OCMock/libOCMock.a; sourceTree = "<group>"; };
 		D99EAB601BF375F7003C1C62 /* HRPGIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGIntroView.h; sourceTree = "<group>"; };
@@ -1027,6 +1029,7 @@
 				D9F16E381BBC536500CA3E02 /* HRPGCustomizationSelectionView.m */,
 				D9D2172F198D509000023367 /* HRPGDeathView.h */,
 				D9D21730198D509000023367 /* HRPGDeathView.m */,
+				D99E42671D6B1FD500811B6D /* HRPGDeathView.xib */,
 				D9FC1A761BC28C5F00B97D23 /* HRPGExplanationView.h */,
 				D9FC1A771BC28C5F00B97D23 /* HRPGExplanationView.m */,
 				D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */,
@@ -1600,6 +1603,7 @@
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
 				D905768A1BD83241009BB7BC /* Localizable.strings in Resources */,
 				D9C31DB31C6501090096F4EC /* Main.storyboard in Resources */,
+				D99E42681D6B1FD500811B6D /* HRPGDeathView.xib in Resources */,
 				D98F5DD11C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib in Resources */,
 				D979AD1C1AF3EF6E00D59FAE /* customizations.json in Resources */,
 				D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */,
