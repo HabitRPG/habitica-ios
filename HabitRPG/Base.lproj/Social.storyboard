@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Inbox-->
@@ -138,12 +139,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ISx-wl-NdC">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="5Pc-Ev-m7m">
-                            <connections>
-                                <segue destination="Z4q-U6-KaZ" kind="unwind" unwindAction="unwindToList:" id="zfc-1F-u37"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="done" id="5Pc-Ev-m7m">
+                                <connections>
+                                    <segue destination="Z4q-U6-KaZ" kind="unwind" unwindAction="unwindToList:" id="zfc-1F-u37"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Profile" id="61t-W4-ftz">
+                                <connections>
+                                    <segue destination="MTH-Re-wqo" kind="show" identifier="UserProfileSegue" id="Hfa-0k-B92"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneBarButton" destination="5Pc-Ev-m7m" id="eqV-O8-IAW"/>
+                        <outlet property="profileBarButton" destination="61t-W4-ftz" id="yWG-yP-KCq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGu-0a-Eqo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Z4q-U6-KaZ" userLabel="Exit" sceneMemberID="exit"/>
@@ -917,8 +929,8 @@ Invite friends now to earn a Quest Scroll!</string>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="G5N-g9-K9i"/>
                                             <exclude reference="44q-2V-b8G"/>
+                                            <exclude reference="G5N-g9-K9i"/>
                                             <exclude reference="Lke-c2-Vo8"/>
                                             <exclude reference="tuD-yV-HhP"/>
                                         </mask>
@@ -1991,14 +2003,14 @@ Invite friends now to earn a Quest Scroll!</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wif-V9-Mcy"/>
-        <segue reference="bEM-KI-Si8"/>
-        <segue reference="2KU-R3-vSq"/>
         <segue reference="kns-o3-fej"/>
-        <segue reference="636-nl-5aS"/>
+        <segue reference="CUP-gn-Xug"/>
         <segue reference="EV0-ra-m7s"/>
         <segue reference="jBF-PN-2IP"/>
-        <segue reference="CUP-gn-Xug"/>
+        <segue reference="2KU-R3-vSq"/>
+        <segue reference="Hfa-0k-B92"/>
+        <segue reference="wif-V9-Mcy"/>
+        <segue reference="bEM-KI-Si8"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.4478360116481781" green="0.10848049819469452" blue="0.9984632134437561" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *backerNpc;
 @property (nullable, nonatomic, retain) NSNumber *contributorLevel;
 @property (nullable, nonatomic, retain) NSString *contributorText;
+@property (nullable, nonatomic, retain) NSNumber *sending;
 @property (nullable, nonatomic, retain) User *user;
 @property NSAttributedString *attributedText;
 

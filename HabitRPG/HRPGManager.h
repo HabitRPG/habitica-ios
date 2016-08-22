@@ -213,7 +213,7 @@
           onSuccess:(void (^)())successBlock
             onError:(void (^)())errorBlock;
 
-- (void)privateMessage:(NSString *)message
+- (void)privateMessage:(InboxMessage *)message
           toUserWithID:(NSString *)userID
           onSuccess:(void (^)())successBlock
             onError:(void (^)())errorBlock;

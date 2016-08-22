@@ -22,6 +22,8 @@
 @property UITextView *sizeTextView;
 @property NSMutableDictionary *attributes;
 @property CGFloat viewWidth;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *profileBarButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
 @end
 
 @implementation HRPGInboxChatViewController
@@ -43,16 +45,51 @@
     UINib *nib = [UINib nibWithNibName:@"ChatMessageCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"ChatMessageCell"];
     
+    [self setNavigationTitle];
+    if (self.username == nil || [self.username length] == 0) {
+        [self fetchMemberWithNetworkFallback:YES];
+    }
+    
+    if (self.isPresentedModally) {
+        [self.navigationItem setRightBarButtonItems:@[self.doneBarButton] animated:NO];
+    } else {
+        [self.navigationItem setRightBarButtonItems:@[self.profileBarButton] animated:NO];
+    }
+}
+
+- (void)setNavigationTitle {
     if (self.username) {
         self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Write to %@", nil), self.username];
     } else {
         self.navigationItem.title = NSLocalizedString(@"Write Message", nil);
     }
+}
+
+- (void)fetchMemberWithNetworkFallback:(BOOL)fallback {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User"
+                                              inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
     
-    if (!self.isPresentedModally) {
-        self.navigationItem.rightBarButtonItem = nil;
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", self.userID]];
+    
+    NSError *error;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (results.count > 1) {
+        User *member = results[0];
+        self.username = member.username;
+        [self setNavigationTitle];
+    } else {
+        if (fallback) {
+            __weak HRPGInboxChatViewController *weakSelf = self;
+            [self.sharedManager fetchMember:self.userID onSuccess:^{
+                [weakSelf fetchMemberWithNetworkFallback:NO];
+            } onError:nil];
+        }
+        
     }
 }
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -101,7 +138,16 @@
     // This little trick validates any pending auto-correction or auto-spelling just after hitting the 'Send' button
     [self.textView refreshFirstResponder];
     
-    [self.sharedManager privateMessage:[self.textView.text copy] toUserWithID:self.userID onSuccess:nil onError:nil];
+    InboxMessage *message = [self.managedObjectContext insertNewObjectForEntityForName:@"InboxMessage"];
+    message.text = [self.textView.text copy];
+    message.timestamp = [NSDate date];
+    message.userID = self.userID;
+    message.username = self.username;
+    message.sent = [NSNumber numberWithBool:YES];
+    message.sending = [NSNumber numberWithBool:YES];
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    [self.sharedManager privateMessage:message toUserWithID:self.userID onSuccess:nil onError:nil];
     
     [super didPressRightButton:sender];
 }
@@ -241,6 +287,16 @@
     };
     
     [cell configureForInboxMessage:message withUser:self.user];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"UserProfileSegue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        HRPGUserProfileViewController *userProfileViewController = segue.destinationViewController;
+        userProfileViewController.userID = self.userID;
+        userProfileViewController.username = self.username;
+    }
+    [super prepareForSegue:segue sender:sender];
 }
 
 - (HRPGManager *)sharedManager {

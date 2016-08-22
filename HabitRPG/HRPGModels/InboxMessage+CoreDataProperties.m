@@ -26,5 +26,6 @@
 @dynamic contributorText;
 @dynamic user;
 @dynamic attributedText;
+@dynamic sending;
 
 @end

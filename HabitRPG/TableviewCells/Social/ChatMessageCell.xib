@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -96,20 +96,32 @@
                             <action selector="plusOneButtonTapped:" destination="XSH-GM-86g" eventType="touchUpInside" id="L8H-P3-5Yl"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Sending..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYN-F9-bwS">
+                        <rect key="frame" x="79" y="8" width="53" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" priority="500" constant="42" id="1Y2-2J-WaH"/>
+                            <constraint firstAttribute="height" priority="500" constant="21" id="umA-NM-Nfl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="G67-MT-zkQ" firstAttribute="leading" secondItem="QoR-9C-CZD" secondAttribute="leadingMargin" id="A0Z-uS-8Ih"/>
+                    <constraint firstItem="oYN-F9-bwS" firstAttribute="leading" secondItem="M9t-Rq-xRV" secondAttribute="trailing" constant="8" id="DhI-Mr-wj3"/>
                     <constraint firstItem="G67-MT-zkQ" firstAttribute="trailing" secondItem="QoR-9C-CZD" secondAttribute="trailingMargin" id="E01-4e-a9v"/>
                     <constraint firstItem="M9t-Rq-xRV" firstAttribute="leading" secondItem="QoR-9C-CZD" secondAttribute="leadingMargin" id="EX8-Ye-H77"/>
                     <constraint firstItem="mW0-An-OWm" firstAttribute="top" secondItem="QoR-9C-CZD" secondAttribute="topMargin" id="JKy-tO-Emp"/>
                     <constraint firstItem="mW0-An-OWm" firstAttribute="leading" secondItem="h3I-XE-4oR" secondAttribute="trailing" constant="8" id="Nhh-SC-ZDF"/>
-                    <constraint firstItem="h3I-XE-4oR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="M9t-Rq-xRV" secondAttribute="trailing" constant="8" id="QFb-Jf-fjp"/>
                     <constraint firstItem="h3I-XE-4oR" firstAttribute="top" secondItem="QoR-9C-CZD" secondAttribute="topMargin" id="Quw-aM-EkM"/>
                     <constraint firstItem="mW0-An-OWm" firstAttribute="trailing" secondItem="QoR-9C-CZD" secondAttribute="trailingMargin" id="TfU-7J-2q3"/>
                     <constraint firstItem="mW0-An-OWm" firstAttribute="bottom" secondItem="M9t-Rq-xRV" secondAttribute="bottom" id="flZ-IW-iff"/>
                     <constraint firstItem="G67-MT-zkQ" firstAttribute="bottom" secondItem="QoR-9C-CZD" secondAttribute="bottomMargin" constant="8" id="gwB-R6-QMj"/>
+                    <constraint firstItem="oYN-F9-bwS" firstAttribute="top" secondItem="QoR-9C-CZD" secondAttribute="topMargin" id="hEH-sc-eLb"/>
                     <constraint firstItem="M9t-Rq-xRV" firstAttribute="top" secondItem="QoR-9C-CZD" secondAttribute="topMargin" id="idc-kP-0GS"/>
                     <constraint firstItem="G67-MT-zkQ" firstAttribute="top" secondItem="mW0-An-OWm" secondAttribute="bottom" id="qJc-Ou-DKD"/>
+                    <constraint firstItem="h3I-XE-4oR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oYN-F9-bwS" secondAttribute="trailing" constant="8" id="qgc-t5-P5J"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -118,6 +130,7 @@
                 <outlet property="modIndicatorImageView" destination="mUy-cg-gjU" id="QAM-eO-aL7"/>
                 <outlet property="plusOneButton" destination="mW0-An-OWm" id="VmZ-WM-krF"/>
                 <outlet property="plusOneButtonWidthConstraint" destination="RrQ-5G-Yvc" id="Z0k-Qr-eb4"/>
+                <outlet property="sendingLabel" destination="oYN-F9-bwS" id="hf0-aC-UwZ"/>
                 <outlet property="timeLabel" destination="h3I-XE-4oR" id="6x3-jR-fek"/>
                 <outlet property="usernameHeightConstraint" destination="3Cf-1w-rqF" id="ZYo-bl-6nE"/>
                 <outlet property="usernameLabel" destination="Uex-yT-vhN" id="mcm-gd-6hL"/>

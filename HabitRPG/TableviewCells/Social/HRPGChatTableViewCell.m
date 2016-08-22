@@ -189,6 +189,8 @@
         NSNotFound) {
         self.backgroundColor = [UIColor purple600];
     }
+    
+    self.sendingLabel.hidden = YES;
 }
 
 - (void)configureForInboxMessage:(InboxMessage *)message
@@ -230,6 +232,8 @@
     if (self.isOwnMessage) {
         self.backgroundColor = [UIColor gray500];
     }
+    
+    self.sendingLabel.hidden = ![message.sending boolValue];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer

@@ -501,6 +501,21 @@ NSString *currentUser;
 
         return nil;
     }];
+    
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"user"];
+        
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:[URL relativePath]
+                         tokenizeQueryStrings:NO
+                              parsedArguments:&argsDict];
+        if (match) {
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"InboxMessage"];
+            return fetchRequest;
+        }
+        
+        return nil;
+    }];
 
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"groups"];
@@ -4067,17 +4082,21 @@ NSString *currentUser;
         }];
 }
 
-- (void)privateMessage:(NSString *)message toUserWithID:(NSString *)userID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+- (void)privateMessage:(InboxMessage *)message toUserWithID:(NSString *)userID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     
     [[RKObjectManager sharedManager] postObject:nil
                                            path:@"members/send-private-message"
                                      parameters:@{
-                                                  @"message" : message,
+                                                  @"message" : message.text,
                                                   @"toUserId" : userID
                                                   }
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            [self fetchUser:successBlock onError:errorBlock];
+                                            [self fetchUser:^{
+                                                if (successBlock) {
+                                                    successBlock();
+                                                }
+                                            } onError:errorBlock];
                                             [self.networkIndicatorController endNetworking];
                                             return;
                                         }
