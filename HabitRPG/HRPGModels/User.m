@@ -26,6 +26,14 @@
 
 @dynamic balance;
 @dynamic blurb;
+@dynamic buffStrength;
+@dynamic buffPerception;
+@dynamic buffConstitution;
+@dynamic buffIntelligence;
+@dynamic strength;
+@dynamic intelligence;
+@dynamic constitution;
+@dynamic perception;
 @dynamic contributorLevel;
 @dynamic contributorText;
 @dynamic currentMount;

@@ -160,6 +160,7 @@
         <attribute name="armor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="back" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="chair" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eyewear" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="head" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="headAccessory" optional="YES" attributeType="String" syncable="YES"/>
@@ -442,7 +443,7 @@
         <element name="InboxMessage" positionX="9" positionY="153" width="128" height="255"/>
         <element name="Item" positionX="0" positionY="0" width="128" height="150"/>
         <element name="MetaReward" positionX="0" positionY="0" width="128" height="165"/>
-        <element name="Outfit" positionX="0" positionY="0" width="128" height="225"/>
+        <element name="Outfit" positionX="0" positionY="0" width="128" height="240"/>
         <element name="Pet" positionX="0" positionY="0" width="128" height="165"/>
         <element name="Potion" positionX="0" positionY="0" width="128" height="45"/>
         <element name="Preferences" positionX="0" positionY="0" width="128" height="360"/>

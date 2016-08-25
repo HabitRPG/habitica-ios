@@ -28,4 +28,5 @@
 - (BOOL)isEquippedBy:(User *)user;
 - (BOOL)isCostumeOf:(User *)user;
 
+- (NSString *)statsText;
 @end

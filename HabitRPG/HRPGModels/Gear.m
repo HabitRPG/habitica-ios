@@ -112,4 +112,22 @@
     return className;
 }
 
+-(NSString *)statsText {
+    NSMutableArray *statsComponents = [NSMutableArray array];
+    if ([self.intelligence intValue] > 0) {
+        [statsComponents addObject:[NSString stringWithFormat:NSLocalizedString(@"INT %@", nil), self.intelligence]];
+    }
+    if ([self.con intValue] > 0) {
+        [statsComponents addObject:[NSString stringWithFormat:NSLocalizedString(@"CON %@", nil), self.con]];
+    }
+    if ([self.str intValue] > 0) {
+        [statsComponents addObject:[NSString stringWithFormat:NSLocalizedString(@"STR %@", nil), self.str]];
+    }
+    if ([self.per intValue] > 0) {
+        [statsComponents addObject:[NSString stringWithFormat:NSLocalizedString(@"PER %@", nil), self.per]];
+    }
+    
+    return [statsComponents componentsJoinedByString:@", "];
+}
+
 @end

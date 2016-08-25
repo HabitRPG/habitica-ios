@@ -19,6 +19,14 @@
 
 @property(nonatomic, retain) NSNumber *balance;
 @property(nonatomic, retain) NSString *blurb;
+@property(nonatomic, retain) NSNumber *buffStrength;
+@property(nonatomic, retain) NSNumber *buffIntelligence;
+@property(nonatomic, retain) NSNumber *buffConstitution;
+@property(nonatomic, retain) NSNumber *buffPerception;
+@property(nonatomic, retain) NSNumber *strength;
+@property(nonatomic, retain) NSNumber *intelligence;
+@property(nonatomic, retain) NSNumber *constitution;
+@property(nonatomic, retain) NSNumber *perception;
 @property(nonatomic, retain) NSNumber *contributorLevel;
 @property(nonatomic, retain) NSString *contributorText;
 @property(nonatomic, retain) NSString *currentMount;

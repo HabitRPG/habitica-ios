@@ -11,10 +11,14 @@
 #import "UIColor+Habitica.h"
 #import "UIViewController+Markdown.h"
 #import "HRPGInboxChatViewController.h"
+#import "Outfit.h"
+#import "Gear.h"
 
 @interface HRPGUserProfileViewController ()
 @property(nonatomic, readonly, getter=getUser) User *user;
 @property NSMutableDictionary *attributes;
+@property NSDictionary *gearDictionary;
+@property BOOL isAttributesExpanded;
 @end
 
 @implementation HRPGUserProfileViewController
@@ -27,6 +31,10 @@
 
     self.navigationItem.title = self.username;
     [self configureMarkdownAttributes];
+    
+    self.isAttributesExpanded = NO;
+    
+    [self createGearDictionary];
 }
 
 - (void)refresh {
@@ -44,9 +52,26 @@
 
 #pragma mark - Table view data source
 
+- (void)createGearDictionary {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Gear"
+                                              inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setFetchBatchSize:20];
+
+    NSError *error;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    NSMutableDictionary *gearDict = [NSMutableDictionary dictionaryWithCapacity:results.count];
+    for (Gear *gear in results) {
+        [gearDict setObject:gear forKey:gear.key];
+    }
+    self.gearDictionary = gearDict;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (self.user) {
-        return 1;
+        return 4;
     }
     return 0;
 }
@@ -55,64 +80,131 @@
     switch (section) {
         case 0:
             return @"";
+        case 1:
+            return NSLocalizedString(@"Battle Gear", nil);
+        case 2:
+            return NSLocalizedString(@"Costume", nil);
         default:
             return @"";
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    switch (section) {
+        case 0:
+            return 4;
+        case 1:
+        case 2:
+            return 8;
+        case 3: {
+            if (self.isAttributesExpanded) {
+                return 7;
+            } else {
+                return 2;
+            }
+        }
+        default:
+            return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellname = @"Cell";
-    if (indexPath.section == 0) {
-        switch (indexPath.item) {
-            case 0:
-                cellname = @"ProfileCell";
-                break;
-            case 1:
-                cellname = @"TextCell";
-                break;
-            case 2:
-                cellname = @"SubtitleCell";
-                break;
-            case 3:
-                cellname = @"SubtitleCell";
-                break;
+    switch (indexPath.section) {
+        case 0:
+            switch (indexPath.item) {
+                case 0:
+                    cellname = @"ProfileCell";
+                    break;
+                case 1:
+                    cellname = @"TextCell";
+                    break;
+                case 2:
+                    cellname = @"SubtitleCell";
+                    break;
+                case 3:
+                    cellname = @"SubtitleCell";
+                    break;
+            }
+            break;
+        case 1:
+        case 2:
+            cellname = @"EquipmentCell";
+            break;
+        case 3: {
+            if (indexPath.item == 0) {
+                cellname = @"AttributeHeaderCell";
+            } else {
+                cellname = @"AttributeCell";
+            }
+            break;
         }
+        default:
+            cellname = @"";
+            break;
     }
     UITableViewCell *cell =
         [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
-    if (indexPath.section == 0) {
-        switch (indexPath.item) {
-            case 0:
-                [self configureCell:cell atIndexPath:indexPath];
-                break;
-            case 1: {
-                UITextView *textView = [cell viewWithTag:1];
-                textView.attributedText = [self renderMarkdown:self.user.blurb];
-                break;
-            }
-            case 2:
-                cell.textLabel.text = NSLocalizedString(@"Member Since", nil);
-                cell.detailTextLabel.text =
+    switch (indexPath.section) {
+        case 0:
+            switch (indexPath.item) {
+                case 0:
+                    [self configureCell:cell atIndexPath:indexPath];
+                    break;
+                case 1: {
+                    UITextView *textView = [cell viewWithTag:1];
+                    textView.attributedText = [self renderMarkdown:self.user.blurb];
+                    break;
+                }
+                case 2:
+                    cell.textLabel.text = NSLocalizedString(@"Member Since", nil);
+                    cell.detailTextLabel.text =
                     [NSDateFormatter localizedStringFromDate:self.user.memberSince
                                                    dateStyle:NSDateFormatterMediumStyle
                                                    timeStyle:NSDateFormatterNoStyle];
-                break;
-            case 3:
-                cell.textLabel.text = NSLocalizedString(@"Last logged in", nil);
-                cell.detailTextLabel.text =
+                    break;
+                case 3:
+                    cell.textLabel.text = NSLocalizedString(@"Last logged in", nil);
+                    cell.detailTextLabel.text =
                     [NSDateFormatter localizedStringFromDate:self.user.lastLogin
                                                    dateStyle:NSDateFormatterMediumStyle
                                                    timeStyle:NSDateFormatterNoStyle];
-                break;
+                    break;
+            }
+            break;
+        case 1:
+        case 2: {
+            Outfit *outfit;
+            if (indexPath.section == 1) {
+                outfit = self.user.equipped;
+            } else {
+                outfit = self.user.costume;
+            }
+            [self configureEquipmentCell:cell atIndex:indexPath.item withOutfit:outfit];
+            break;
+        }
+        case 3: {
+            if (indexPath.item > 0) {
+                [self configureAttributeCell:cell atIndex:indexPath.item];
+            }
         }
     }
     [cell layoutSubviews];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 3) {
+        self.isAttributesExpanded = !self.isAttributesExpanded;
+        NSArray *rowsArray = @[[NSIndexPath indexPathForRow:1 inSection:3], [NSIndexPath indexPathForRow:2 inSection:3], [NSIndexPath indexPathForRow:3 inSection:3], [NSIndexPath indexPathForRow:4 inSection:3], [NSIndexPath indexPathForRow:5 inSection:3]];
+        if (self.isAttributesExpanded) {
+            [self.tableView insertRowsAtIndexPaths:rowsArray withRowAnimation:UITableViewRowAnimationTop];
+        } else {
+            [self.tableView deleteRowsAtIndexPaths:rowsArray withRowAnimation:UITableViewRowAnimationTop];
+        }
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -125,6 +217,8 @@
                                 context:nil]
                    .size.height +
                41;
+    } else if (indexPath.section == 1 || indexPath.section == 2) {
+        return 60;
     } else {
         return 44;
     }
@@ -216,6 +310,234 @@
         UIView *avatarView = (UIView *)[cell viewWithTag:8];
         [user setAvatarSubview:avatarView showsBackground:YES showsMount:YES showsPet:YES];
     }
+}
+
+- (void) configureEquipmentCell:(UITableViewCell *)cell atIndex:(NSInteger)index withOutfit:(Outfit *)outfit {
+    UILabel *typeLabel = [cell viewWithTag:1];
+    UILabel *attrLabel = [cell viewWithTag:2];
+    UILabel *detailTextLabel = [cell viewWithTag:3];
+    UIImageView *imageView = [cell viewWithTag:4];
+    
+    NSString *equipmentKey = nil;
+    NSString *typeName = nil;
+    switch (index) {
+        case 0:
+            equipmentKey = outfit.head;
+            typeName = NSLocalizedString(@"Head", nil);
+            break;
+        case 1:
+            equipmentKey = outfit.headAccessory;
+            typeName = NSLocalizedString(@"Head Accessory", nil);
+            break;
+        case 2:
+            equipmentKey = outfit.eyewear;
+            typeName = NSLocalizedString(@"Eyewear", nil);
+            break;
+        case 3:
+            equipmentKey = outfit.armor;
+            typeName = NSLocalizedString(@"Armor", nil);
+            break;
+        case 4:
+            equipmentKey = outfit.body;
+            typeName = NSLocalizedString(@"Body", nil);
+            break;
+        case 5:
+            equipmentKey = outfit.back;
+            typeName = NSLocalizedString(@"Back", nil);
+            break;
+        case 6:
+            equipmentKey = outfit.shield;
+            typeName = NSLocalizedString(@"Shield", nil);
+            break;
+        case 7:
+            equipmentKey = outfit.weapon;
+            typeName = NSLocalizedString(@"Weapon", nil);
+            break;
+            
+    }
+    
+    typeLabel.text = typeName;
+    if (equipmentKey) {
+        [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", equipmentKey]
+                          withFormat:@"png"
+                              onView:imageView];
+        
+        Gear *gear = [self.gearDictionary objectForKey:equipmentKey];
+        
+        detailTextLabel.text = gear.text;
+        detailTextLabel.textColor = [UIColor blackColor];
+        attrLabel.text = [gear statsText];
+    } else {
+        detailTextLabel.text = NSLocalizedString(@"Nothing equipped", nil);
+        detailTextLabel.textColor = [UIColor grayColor];
+        attrLabel.text = nil;
+    }
+}
+
+- (void)configureAttributeCell:(UITableViewCell *)cell atIndex:(NSInteger)index {
+    UILabel *descriptionLabel = [cell viewWithTag:1];
+    UILabel *strLabel = [cell viewWithTag:2];
+    UILabel *intLabel = [cell viewWithTag:3];
+    UILabel *conLabel = [cell viewWithTag:4];
+    UILabel *perLabel = [cell viewWithTag:5];
+
+    int strValue = 0;
+    int intValue = 0;
+    int conValue = 0;
+    int perValue = 0;
+    
+    if ((index == 1 && !self.isAttributesExpanded) || index == 6) {
+        descriptionLabel.text = nil;
+        NSDictionary *levelValues = [self levelAttributes];
+        NSDictionary *gearValues = [self gearAttributes];
+        NSDictionary *classBonusValues = [self classBonusAttributes];
+        NSDictionary *allocatedValues = [self allocatedAttributes];
+        NSDictionary *buffedValues = [self buffedAttributes];
+        
+        strValue = [levelValues[@"str"] intValue] + [gearValues[@"str"] intValue] + [classBonusValues[@"str"] intValue] + [allocatedValues[@"str"] intValue] + [buffedValues[@"str"] intValue];
+        intValue = [levelValues[@"int"] intValue] + [gearValues[@"int"] intValue] + [classBonusValues[@"int"] intValue] + [allocatedValues[@"int"] intValue] + [buffedValues[@"int"] intValue];
+        conValue = [levelValues[@"con"] intValue] + [gearValues[@"con"] intValue] + [classBonusValues[@"con"] intValue] + [allocatedValues[@"con"] intValue] + [buffedValues[@"con"] intValue];
+        perValue = [levelValues[@"per"] intValue] + [gearValues[@"per"] intValue] + [classBonusValues[@"per"] intValue] + [allocatedValues[@"per"] intValue] + [buffedValues[@"per"] intValue];
+
+    } else if (index == 1) {
+        descriptionLabel.text = NSLocalizedString(@"Level", nil);
+        NSDictionary *values = [self levelAttributes];
+        strValue = [values[@"str"] intValue];
+        intValue = [values[@"int"] intValue];
+        conValue = [values[@"con"] intValue];
+        perValue = [values[@"per"] intValue];
+    } else if (index == 2) {
+        descriptionLabel.text = NSLocalizedString(@"Battle Gear", nil);
+        NSDictionary *values = [self gearAttributes];
+        strValue = [values[@"str"] intValue];
+        intValue = [values[@"int"] intValue];
+        conValue = [values[@"con"] intValue];
+        perValue = [values[@"per"] intValue];
+    } else if (index == 3) {
+        descriptionLabel.text = NSLocalizedString(@"Class-Bonus", nil);
+        NSDictionary *values = [self classBonusAttributes];
+        strValue = [values[@"str"] intValue];
+        intValue = [values[@"int"] intValue];
+        conValue = [values[@"con"] intValue];
+        perValue = [values[@"per"] intValue];
+    } else if (index == 4) {
+        descriptionLabel.text = NSLocalizedString(@"Allocated", nil);
+        NSDictionary *values = [self allocatedAttributes];
+        strValue = [values[@"str"] intValue];
+        intValue = [values[@"int"] intValue];
+        conValue = [values[@"con"] intValue];
+        perValue = [values[@"per"] intValue];
+    } else if (index == 5) {
+        descriptionLabel.text = NSLocalizedString(@"Boosts", nil);
+        NSDictionary *values = [self buffedAttributes];
+        strValue = [values[@"str"] intValue];
+        intValue = [values[@"int"] intValue];
+        conValue = [values[@"con"] intValue];
+        perValue = [values[@"per"] intValue];
+    }
+    
+    strLabel.text = [[NSNumber numberWithInt:strValue] stringValue];
+    intLabel.text = [[NSNumber numberWithInt:intValue] stringValue];
+    conLabel.text = [[NSNumber numberWithInt:conValue] stringValue];
+    perLabel.text = [[NSNumber numberWithInt:perValue] stringValue];
+}
+
+- (NSDictionary *) levelAttributes {
+    return @{
+    @"str": [NSNumber numberWithInt:[self.user.level intValue] * 0.5f],
+    @"int": [NSNumber numberWithInt:[self.user.level intValue] * 0.5f],
+    @"con": [NSNumber numberWithInt:[self.user.level intValue] * 0.5f],
+    @"per": [NSNumber numberWithInt:[self.user.level intValue] * 0.5f]
+    };
+}
+
+- (NSDictionary *) allocatedAttributes {
+    return @{
+             @"str": self.user.strength ? self.user.strength : @0,
+             @"int": self.user.intelligence ? self.user.intelligence : @0,
+             @"con": self.user.constitution ? self.user.constitution : @0,
+             @"per": self.user.perception ? self.user.perception : @0
+             };
+}
+
+- (NSDictionary *) buffedAttributes {
+    return @{
+             @"str": self.user.buffStrength ? self.user.buffStrength : @0,
+             @"int": self.user.buffIntelligence ? self.user.buffIntelligence : @0,
+             @"con": self.user.buffConstitution ? self.user.buffConstitution : @0,
+             @"per": self.user.buffPerception ? self.user.buffPerception : @0
+             };
+}
+
+- (NSDictionary *)gearAttributes {
+    int strValue = 0;
+    int intValue = 0;
+    int conValue = 0;
+    int perValue = 0;
+    for (Gear *gear in [self battleGearList]) {
+        strValue = strValue + [gear.str intValue];
+        intValue = intValue + [gear.intelligence intValue];
+        conValue = conValue + [gear.con intValue];
+        perValue = perValue + [gear.per intValue];
+    }
+    return @{
+             @"str": [NSNumber numberWithInt:strValue],
+             @"int": [NSNumber numberWithInt:intValue],
+             @"con": [NSNumber numberWithInt:conValue],
+             @"per": [NSNumber numberWithInt:perValue]
+             };
+}
+
+- (NSDictionary *)classBonusAttributes {
+    int strValue = 0;
+    int intValue = 0;
+    int conValue = 0;
+    int perValue = 0;
+    for (Gear *gear in [self battleGearList]) {
+        if ([gear.klass isEqualToString:self.user.hclass]) {
+            strValue = strValue + [gear.str intValue];
+            intValue = intValue + [gear.intelligence intValue];
+            conValue = conValue + [gear.con intValue];
+            perValue = perValue + [gear.per intValue];
+        }
+        
+    }
+    return @{
+             @"str": [NSNumber numberWithInt:strValue/2],
+             @"int": [NSNumber numberWithInt:intValue/2],
+             @"con": [NSNumber numberWithInt:conValue/2],
+             @"per": [NSNumber numberWithInt:perValue/2]
+             };
+}
+
+- (NSArray *)battleGearList {
+    NSMutableArray *gearList = [NSMutableArray array];
+    Outfit *battleGear = self.user.equipped;
+    if (battleGear.head) {
+        [gearList addObject:[self.gearDictionary objectForKey:battleGear.head]];
+    }
+    if (battleGear.headAccessory) {
+        [gearList addObject:[self.gearDictionary objectForKey:battleGear.headAccessory]];
+    }
+    if (battleGear.eyewear) {
+        [gearList addObject:[self.gearDictionary objectForKey:battleGear.eyewear]];
+    }
+    if (battleGear.armor) {
+        [gearList addObject:[self.gearDictionary objectForKey:battleGear.armor]];
+    }
+    if (battleGear.body) {
+        [gearList addObject:[self.gearDictionary objectForKey:battleGear.body]];
+    }
+    if (battleGear.back) {
+        [gearList addObject:[self.gearDictionary objectForKey:battleGear.back]];
+    }
+    if (battleGear.shield) {
+        [gearList addObject:[self.gearDictionary objectForKey:battleGear.shield]];
+    }
+    if (battleGear.weapon) {
+        [gearList addObject:[self.gearDictionary objectForKey:battleGear.weapon]];
+    }
+    return gearList;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
