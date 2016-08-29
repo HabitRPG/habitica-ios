@@ -122,10 +122,15 @@ NSString *currentUser;
     NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
     NSString *CUSTOM_DOMAIN = info[@"CustomDomain"];
     NSString *DISABLE_SSL = info[@"DisableSSL"];
-
+    
     if (CUSTOM_DOMAIN.length == 0) {
         CUSTOM_DOMAIN = @"habitica.com/";
     }
+    
+    if (![[CUSTOM_DOMAIN substringFromIndex: [CUSTOM_DOMAIN length] - 1]  isEqual: @"/"]) {
+        CUSTOM_DOMAIN = [CUSTOM_DOMAIN stringByAppendingString:@"/"];
+    }
+    
 
     if ([DISABLE_SSL isEqualToString:@"true"]) {
         ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
