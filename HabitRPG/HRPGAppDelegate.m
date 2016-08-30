@@ -84,6 +84,7 @@
 
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"dailyReminderActive"];
         [[NSUserDefaults standardUserDefaults] setValue:newDate forKey:@"dailyReminderTime"];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"appBadgeActive"];
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
         UILocalNotification *localNotification = [[UILocalNotification alloc] init];
         localNotification.fireDate = newDate;
