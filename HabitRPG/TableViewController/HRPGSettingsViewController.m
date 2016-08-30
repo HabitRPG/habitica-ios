@@ -153,7 +153,7 @@ User *user;
     if ([defaults boolForKey:@"appBadgeActive"]) {
       row.value = @YES;
     }
-    
+
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Day Start", nil)];
     [formDescriptor addFormSection:section];
     row =
