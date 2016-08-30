@@ -526,6 +526,9 @@ User *user;
 
 - (void)changeAppBadgeSettings:(BOOL *)newValue {
     [self.sharedManager changeUseAppBadge: newValue];
+    if (!newValue) {
+      [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    }
 }
 
 @end
