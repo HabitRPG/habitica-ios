@@ -122,15 +122,15 @@ NSString *currentUser;
     NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
     NSString *CUSTOM_DOMAIN = info[@"CustomDomain"];
     NSString *DISABLE_SSL = info[@"DisableSSL"];
-    
+
     if (CUSTOM_DOMAIN.length == 0) {
         CUSTOM_DOMAIN = @"habitica.com/";
     }
-    
+
     if (![[CUSTOM_DOMAIN substringFromIndex: [CUSTOM_DOMAIN length] - 1]  isEqual: @"/"]) {
         CUSTOM_DOMAIN = [CUSTOM_DOMAIN stringByAppendingString:@"/"];
     }
-    
+
 
     if ([DISABLE_SSL isEqualToString:@"true"]) {
         ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
@@ -143,8 +143,8 @@ NSString *currentUser;
 
     ROOT_URL = [ROOT_URL stringByAppendingString:@"api/v3/"];
 
-    
-    
+
+
     // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
     RKObjectManager *objectManager =
@@ -403,7 +403,7 @@ NSString *currentUser;
                               keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     responseDescriptor = [RKResponseDescriptor
                           responseDescriptorWithMapping:taskMapping
                           method:RKRequestMethodPOST
@@ -428,11 +428,11 @@ NSString *currentUser;
 
         return nil;
     }];
-    
+
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher =
         [RKPathMatcher pathMatcherWithPattern:@"content"];
-        
+
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:[URL relativePath]
                          tokenizeQueryStrings:NO
@@ -442,7 +442,7 @@ NSString *currentUser;
             fetchRequest.predicate = [NSPredicate predicateWithFormat:@"type=='background'"];
             return fetchRequest;
         }
-        
+
         return nil;
     }];
 
@@ -455,7 +455,7 @@ NSString *currentUser;
                               parsedArguments:&argsDict];
         if (match) {
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
-            
+
             HRPGURLParser *parser = [[HRPGURLParser alloc] initWithURLString:[URL absoluteString]];
             NSString *typeQuery = [parser valueForVariable:@"type"];
             if (typeQuery) {
@@ -506,10 +506,10 @@ NSString *currentUser;
 
         return nil;
     }];
-    
+
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"user"];
-        
+
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:[URL relativePath]
                          tokenizeQueryStrings:NO
@@ -518,7 +518,7 @@ NSString *currentUser;
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"InboxMessage"];
             return fetchRequest;
         }
-        
+
         return nil;
     }];
 
@@ -540,10 +540,10 @@ NSString *currentUser;
 
         return nil;
     }];
-    
+
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"groups/:id/members"];
-        
+
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:[URL relativePath]
                          tokenizeQueryStrings:YES
@@ -553,13 +553,13 @@ NSString *currentUser;
             fetchRequest.predicate = [NSPredicate predicateWithFormat:@"partyID == %@", argsDict[@"id"]];
             return fetchRequest;
         }
-        
+
         return nil;
     }];
-    
+
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"shops/:identifier"];
-        
+
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:[URL relativePath]
                          tokenizeQueryStrings:YES
@@ -569,13 +569,13 @@ NSString *currentUser;
             fetchRequest.predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@", argsDict[@"identifier"]];
             return fetchRequest;
         }
-        
+
         return nil;
     }];
-    
+
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"shops/:identifier"];
-        
+
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:[URL relativePath]
                          tokenizeQueryStrings:YES
@@ -585,7 +585,7 @@ NSString *currentUser;
             fetchRequest.predicate = [NSPredicate predicateWithFormat:@"shop.identifier == %@", argsDict[@"identifier"]];
             return fetchRequest;
         }
-        
+
         return nil;
     }];
 
@@ -679,7 +679,7 @@ NSString *currentUser;
                           keyPath:nil
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     RKObjectMapping *feedMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
     [feedMapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:nil toKeyPath:@"value"]];
     responseDescriptor = [RKResponseDescriptor
@@ -821,7 +821,7 @@ NSString *currentUser;
                                                               ]];
     [pushNotificationsMapping addAttributeMappingsFromDictionary:@{@"@parent.@parent._id" : @"userID"}];
     [preferencesMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"pushNotifications" toKeyPath:@"pushNotifications" withMapping:pushNotificationsMapping]];
-    
+
     RKEntityMapping *flagsMapping =
         [RKEntityMapping mappingForEntityForName:@"Flags" inManagedObjectStore:managedObjectStore];
     [flagsMapping addAttributeMappingsFromDictionary:@{
@@ -952,7 +952,7 @@ NSString *currentUser;
     [taskOrderMapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:nil toKeyPath:@"id"]];
     [taskOrderMapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:@"@metadata.mapping.collectionIndex" toKeyPath:@"order"]];
     taskOrderMapping.identificationAttributes = @[ @"id" ];
-    
+
     responseDescriptor = [RKResponseDescriptor
                           responseDescriptorWithMapping:taskOrderMapping
                           method:RKRequestMethodAny
@@ -974,7 +974,7 @@ NSString *currentUser;
                           keyPath:@"data.tasksOrder.dailys"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
+
     RKEntityMapping *inboxMessageMapping = [RKEntityMapping mappingForEntityForName:@"InboxMessage"
                                                        inManagedObjectStore:managedObjectStore];
     [inboxMessageMapping setForceCollectionMapping:YES];
@@ -996,7 +996,7 @@ NSString *currentUser;
                                        relationshipMappingFromKeyPath:@"inbox.messages"
                                        toKeyPath:@"inboxMessages"
                                        withMapping:inboxMessageMapping]];
-    
+
     RKEntityMapping *pushDeviceMapping = [RKEntityMapping mappingForEntityForName:@"PushDevice"
                                                                inManagedObjectStore:managedObjectStore];
     [pushDeviceMapping setForceCollectionMapping:YES];
@@ -1009,7 +1009,7 @@ NSString *currentUser;
                                        relationshipMappingFromKeyPath:@"pushDevices"
                                        toKeyPath:@"pushDevices"
                                        withMapping:pushDeviceMapping]];
-    
+
     responseDescriptor = [RKResponseDescriptor
         responseDescriptorWithMapping:entityMapping
                                method:RKRequestMethodPOST
@@ -1873,7 +1873,7 @@ NSString *currentUser;
                                                      keyPath:nil
                                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:messageResponseDescriptor];
-    
+
     RKEntityMapping *shopMapping = [RKEntityMapping mappingForEntityForName:@"Shop"
                                                        inManagedObjectStore:managedObjectStore];
     [shopMapping addAttributeMappingsFromArray:@[@"text", @"identifier", @"notes", @"imageName", @"purchaseAll"]];
@@ -1903,8 +1903,8 @@ NSString *currentUser;
                           keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    
-    
+
+
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-client" value:@"habitica-ios"];
 
     [self setCredentials];
@@ -2170,7 +2170,7 @@ NSString *currentUser;
 
 - (void)fetchCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager]
      getObjectsAtPath:@"tasks/user?type=completedTodos"
      parameters:nil
@@ -2739,7 +2739,7 @@ NSString *currentUser;
 
 - (void)createTasks:(NSArray *)tasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil
                                            path:@"tasks/user"
                                      parameters:tasks
@@ -3241,7 +3241,7 @@ NSString *currentUser;
                 Gear *gear = (Gear *)reward;
                 gear.owned = YES;
             }
-            
+
             if (response.armoireType) {
                 HRPGResponseMessage *message = [mappingResult dictionary][[NSNull null]];
                 [self displayArmoireNotification:response.armoireType
@@ -3602,7 +3602,7 @@ NSString *currentUser;
 
 - (void)markInboxSeen:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil
                                            path:@"user/mark-pms-read"
                                      parameters:nil
@@ -4089,7 +4089,7 @@ NSString *currentUser;
 
 - (void)privateMessage:(InboxMessage *)message toUserWithID:(NSString *)userID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil
                                            path:@"members/send-private-message"
                                      parameters:@{
@@ -4155,7 +4155,7 @@ NSString *currentUser;
             onSuccess:(void (^)())successBlock
               onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] deleteObject:message
                                              path:[NSString stringWithFormat:@"user/messages/%@", message.id]
                                        parameters:nil
@@ -4405,7 +4405,7 @@ NSString *currentUser;
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil
                                            path:[NSString stringWithFormat:@"user/purchase-hourglass/%@/%@", item.purchaseType, item.key]
                                      parameters:nil
@@ -4444,7 +4444,7 @@ NSString *currentUser;
                     onSuccess:(void (^)())successBlock
                       onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil
                                            path:[NSString stringWithFormat:@"user/buy-mystery-set/%@", key]
                                      parameters:nil
@@ -4483,7 +4483,7 @@ NSString *currentUser;
                     onSuccess:(void (^)())successBlock
                       onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil
                                            path:[NSString stringWithFormat:@"user/buy-quest/%@", item.key]
                                      parameters:nil
@@ -4522,7 +4522,7 @@ NSString *currentUser;
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     [[RKObjectManager sharedManager] postObject:nil
                                            path:@"user/push-devices"
                                      parameters:@{
@@ -4549,11 +4549,11 @@ NSString *currentUser;
 - (void)removePushDevice:(void (^)())successBlock
               onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     if ([defaults stringForKey:@"PushNotificationDeviceToken"]) {
         NSString *token = [defaults stringForKey:@"PushNotificationDeviceToken"];
         [defaults removeObjectForKey:@"PushNotificationDeviceToken"];
-    
+
         [[RKObjectManager sharedManager] deleteObject:nil
                                            path:[@"user/push-devices/" stringByAppendingString:token]
                                      parameters:nil
@@ -4580,7 +4580,7 @@ NSString *currentUser;
 
 - (void)fetchShopInventory:(NSString *)shopInventory onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
+
     NSString *url = @"shops/";
     if ([shopInventory isEqualToString:MarketKey]) {
         url = [url stringByAppendingString:@"market"];
@@ -4751,18 +4751,18 @@ NSString *currentUser;
 
 - (void)displayLevelUpNotification {
     [self fetchUser:nil onError:nil];
-    
+
     if ([self.user.level integerValue] == 10 && ![self.user.preferences.disableClass boolValue]) {
         HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
         UIViewController *activeViewController = del.window.rootViewController;UINavigationController *selectClassNavigationController =
         [del.window.rootViewController.storyboard
          instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
         selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
-        
+
         [activeViewController presentViewController:selectClassNavigationController
                                            animated:YES
                                          completion:^(){
-                                             
+
                                          }];
     } else {
         NSArray *nibViews =
@@ -4800,14 +4800,14 @@ NSString *currentUser;
              withSourceView:nil];
         };
         [overlayView sizeToFit];
-        
+
         KLCPopup *popup = [KLCPopup popupWithContentView:overlayView
                                                 showType:KLCPopupShowTypeBounceIn
                                              dismissType:KLCPopupDismissTypeBounceOut
                                                 maskType:KLCPopupMaskTypeDimmed
                                 dismissOnBackgroundTouch:YES
                                    dismissOnContentTouch:NO];
-        
+
         [popup show];
     }
 }
@@ -4902,7 +4902,7 @@ NSString *currentUser;
                                          }];
          }
            onError:^(){
-               
+
            }];
     } else {
         UIColor *notificationColor = [UIColor blue10];
@@ -5036,6 +5036,10 @@ NSString *currentUser;
              onSuccess:(void (^)())successBlock {
     [[YYImageCache sharedCache] setImage:image forKey:imageName];
     successBlock();
+}
+
+- (void)changeUseAppBadge:(BOOL *)newUseAppBadge {
+    self.useAppBadge = newUseAppBadge;
 }
 
 @end

@@ -433,6 +433,9 @@ User *user;
             [self hideDatePicker];
             [[UIApplication sharedApplication] cancelAllLocalNotifications];
         }
+    } else if ([rowDescriptor.tag isEqualToString:@"useAppBadge"]) {
+        [self changeAppBadgeSettings:[newValue boolValue]];
+        [defaults setBool:[newValue boolValue] forKey:@"appBadgeActive"];
     } else if ([rowDescriptor.tag isEqualToString:@"reminderDate"]) {
         [self reminderTimeChanged:[rowDescriptor.value valueData]];
     } else if ([rowDescriptor.tag isEqualToString:@"dayStart"]) {
@@ -519,6 +522,10 @@ User *user;
                                      @"preferences.pushNotifications.wonChallenge": newValues.wonChallenge ? newValues.wonChallenge : @NO,
                                      @"preferences.pushNotifications.unsubscribeFromAll": newValues.unsubscribeFromAll ? newValues.unsubscribeFromAll : @NO
                                      }onSuccess:nil onError:nil];
+}
+
+- (void)changeAppBadgeSettings:(BOOL *)newValue {
+    [self.sharedManager changeUseAppBadge: newValue];
 }
 
 @end

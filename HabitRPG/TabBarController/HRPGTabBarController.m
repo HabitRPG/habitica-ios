@@ -161,6 +161,8 @@
 - (void)updateDailyBadge {
     UITabBarItem *dailyItem = self.tabBar.items[1];
     NSInteger badgeCount = 0;
+    NSInteger appBadgeCount = 0;
+    
     for (Task *task in self.fetchedResultsController.fetchedObjects) {
         if ([task dueTodayWithOffset:[[self.sharedManager getUser]
                                              .preferences.dayStart integerValue]]) {
@@ -172,7 +174,12 @@
     } else {
         dailyItem.badgeValue = nil;
     }
-    [UIApplication sharedApplication].applicationIconBadgeNumber = badgeCount;
+
+    if (self.sharedManager.useAppBadge) {
+      appBadgeCount = badgeCount;
+    }
+
+    [UIApplication sharedApplication].applicationIconBadgeNumber = appBadgeCount;
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
