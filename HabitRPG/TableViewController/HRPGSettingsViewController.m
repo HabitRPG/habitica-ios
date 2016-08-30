@@ -143,11 +143,11 @@ User *user;
     }
 
     self.appBadgeSection =
-      [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"App Badge Notification", nil)];
+      [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Notification Badge", nil)];
     [formDescriptor addFormSection:self.appBadgeSection];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"useAppBadge"
                                              rowType:XLFormRowDescriptorTypeBooleanSwitch
-                                               title:NSLocalizedString(@"App badge Notification", nil)];
+                                               title:NSLocalizedString(@"Display Notification Badge", nil)];
     [row.cellConfig setObject:[UIColor purple400] forKey:@"self.tintColor"];
     [self.appBadgeSection addFormRow:row];
     if ([defaults boolForKey:@"appBadgeActive"]) {
