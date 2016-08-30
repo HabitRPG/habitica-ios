@@ -106,7 +106,7 @@
     if(userInfo) {
         [self handlePushNotification:userInfo];
     }
-    
+
     return YES;
 }
 
@@ -344,7 +344,7 @@
 
 - (void)configureNotifications:(UIApplication *)application {
     if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
-        UIUserNotificationType types = UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        UIUserNotificationType types = UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;
 
         UIMutableUserNotificationAction *completeAction =
             [[UIMutableUserNotificationAction alloc] init];
@@ -376,7 +376,7 @@
         questInviteCategory.identifier = @"questInvitation";
         [questInviteCategory setActions:@[ acceptAction, rejectAction ]
                           forContext:UIUserNotificationActionContextDefault];
-        
+
         UIMutableUserNotificationAction *replyAction =
         [[UIMutableUserNotificationAction alloc] init];
         replyAction.identifier = @"replyAction";
@@ -391,7 +391,7 @@
         privateMessageCategory.identifier = @"newPM";
         [privateMessageCategory setActions:@[ replyAction ]
                           forContext:UIUserNotificationActionContextDefault];
-        
+
         UIUserNotificationSettings *settings =
             [UIUserNotificationSettings settingsForTypes:types
                                               categories:[NSSet setWithObjects:completeCategory, questInviteCategory, privateMessageCategory, nil]];

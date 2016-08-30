@@ -172,6 +172,7 @@
     } else {
         dailyItem.badgeValue = nil;
     }
+    [UIApplication sharedApplication].applicationIconBadgeNumber = badgeCount;
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
