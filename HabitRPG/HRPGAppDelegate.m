@@ -24,7 +24,7 @@
 #import "HRPGPartyTableViewController.h"
 #import "HRPGQuestDetailViewController.h"
 #import "UIColor+Habitica.h"
-
+#import <Keys/HabiticaKeys.h>
 
 @interface HRPGAppDelegate ()
 
@@ -45,7 +45,9 @@
     NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
     [[GAI sharedInstance] setTrackUncaughtExceptions:YES];
 
-    [[Amplitude instance] initializeApiKey:@"e8d4c24b3d6ef3ee73eeba715023dd43"];
+    HabiticaKeys *keys = [[HabiticaKeys alloc] init];
+    
+    [[Amplitude instance] initializeApiKey:keys.amplitudeApiKey];
 
     // Notifications
     CRToastInteractionResponder *blankResponder = [CRToastInteractionResponder
@@ -164,6 +166,12 @@
               openURL:(NSURL *)url
     sourceApplication:(NSString *)sourceApplication
            annotation:(id)annotation {
+    
+    if ([_currentAuthorizationFlow resumeAuthorizationFlowWithURL:url]) {
+        _currentAuthorizationFlow = nil;
+        return YES;
+    }
+    
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication

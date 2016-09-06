@@ -48,7 +48,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.group && indexPath.section == 0 && indexPath.item == 0) {
+    if (indexPath.section == 0 && indexPath.item == 0) {
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         UIView *textWrapper = [cell viewWithTag:1];
         UIActivityIndicatorView *indicator = [cell viewWithTag:3];

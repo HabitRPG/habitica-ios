@@ -75,6 +75,8 @@
 @dynamic inboxOptOut;
 @dynamic inboxNewMessages;
 @dynamic hourglasses;
+@dynamic facebookID;
+@dynamic googleID;
 
 @synthesize petCount = _petCount;
 @synthesize customizationsDictionary;

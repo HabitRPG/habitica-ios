@@ -194,6 +194,7 @@
         onSuccess:(void (^)())successBlock
           onError:(void (^)())errorBlock;
 - (void)loginUserSocial:(NSString *)userID
+            withNetwork:(NSString *)network
         withAccessToken:(NSString *)accessToken
               onSuccess:(void (^)())successBlock
                 onError:(void (^)())errorBlock;

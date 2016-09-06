@@ -701,6 +701,8 @@ NSString *currentUser;
         @"items.currentPet" : @"currentPet",
         @"items.currentMount" : @"currentMount",
         @"auth.timestamps.loggedin" : @"lastLogin",
+        @"auth.facebook.id": @"facebookID",
+        @"auth.google.id" : @"googleID",
         @"stats.con" : @"constitution",
         @"stats.int" : @"intelligence",
         @"stats.per" : @"perception",
@@ -994,7 +996,6 @@ NSString *currentUser;
     
     RKEntityMapping *pushDeviceMapping = [RKEntityMapping mappingForEntityForName:@"PushDevice"
                                                                inManagedObjectStore:managedObjectStore];
-    [pushDeviceMapping setForceCollectionMapping:YES];
     [pushDeviceMapping setIdentificationAttributes:@[@"regId"]];
     [pushDeviceMapping addAttributeMappingsFromDictionary:@{
                                                               @"regId" : @"regId",
@@ -3040,13 +3041,14 @@ NSString *currentUser;
 }
 
 - (void)loginUserSocial:(NSString *)userID
+            withNetwork:(NSString *)network
         withAccessToken:(NSString *)accessToken
               onSuccess:(void (^)())successBlock
-                onError:(void (^)())errorBlock {
+                onError:(void (^)())errorBlock{
     [self.networkIndicatorController beginNetworking];
 
     NSDictionary *params = @{
-        @"network" : @"facebook",
+        @"network" : network,
         @"authResponse" : @{@"access_token" : accessToken, @"client_id" : userID}
     };
     [[RKObjectManager sharedManager] postObject:Nil

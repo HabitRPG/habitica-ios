@@ -92,12 +92,18 @@
             cell.textLabel.text = NSLocalizedString(@"Email", nil);
             cell.detailTextLabel.text = self.user.email;
         } else if (indexPath.item == 2) {
-            cell.textLabel.text = NSLocalizedString(@"Login Method", nil);
+            cell.textLabel.text = NSLocalizedString(@"Login Methods", nil);
+            NSMutableArray *loginMethods = [NSMutableArray arrayWithCapacity:3];
             if (self.user.email) {
-                cell.detailTextLabel.text = NSLocalizedString(@"Local", nil);
-            } else {
-                cell.detailTextLabel.text = @"Facebook";
+                [loginMethods addObject:NSLocalizedString(@"Local", nil)];
             }
+            if (self.user.facebookID) {
+                [loginMethods addObject:@"Facebook"];
+            }
+            if (self.user.googleID) {
+                [loginMethods addObject:@"Google"];
+            }
+            cell.detailTextLabel.text = [loginMethods componentsJoinedByString:@", "];
         }
     } else if (indexPath.section == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];

@@ -1,5 +1,13 @@
 platform :ios, '7.0'
 
+plugin 'cocoapods-keys', {
+  :keys => [
+    "GoogleClient",
+    "GoogleRedirectUrl",
+    "AmplitudeApiKey"
+  ]
+}
+
 target 'Habitica' do
 pod 'CRToast', :git => 'https://github.com/cruffenach/CRToast'
 pod 'FontAwesomeIconFactory'
@@ -24,6 +32,7 @@ pod 'AttributedMarkdown', :git => 'https://github.com/dreamwieber/AttributedMark
 pod 'Amplitude-iOS', '~> 3.5.0'
 pod 'Masonry'
 pod "SlackTextViewController"
+pod 'AppAuth'
 
 target 'HabiticaTests' do
     inherit! :search_paths

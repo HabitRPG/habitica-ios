@@ -16,7 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.webView.delegate = self;
+    if (self.webDelegate) {
+        self.webView.delegate = self.webDelegate;
+    }
 
     [self.webView.scrollView
         setContentInset:UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height,
@@ -28,9 +30,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    NSURL *nsUrl = [NSURL URLWithString:self.url];
     NSURLRequest *request =
-        [NSURLRequest requestWithURL:nsUrl
+        [NSURLRequest requestWithURL:self.url
                          cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
                      timeoutInterval:30];
     [self.webView loadRequest:request];

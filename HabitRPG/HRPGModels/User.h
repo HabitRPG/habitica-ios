@@ -70,6 +70,9 @@
 @property(nonatomic, retain) NSNumber *inboxOptOut;
 @property(nonatomic, retain) NSNumber *inboxNewMessages;
 @property(nonatomic, retain) NSNumber *hourglasses;
+@property(nonatomic, retain) NSString *facebookID;
+@property(nonatomic, retain) NSString *googleID;
+
 
 @property(nonatomic, retain) Preferences *preferences;
 @property(nonatomic, retain) Outfit *costume;

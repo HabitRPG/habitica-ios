@@ -10,7 +10,8 @@
 
 @interface HRPGWebViewController : UIViewController<UIWebViewDelegate>
 
-@property NSString *url;
+@property NSURL *url;
+@property(weak, nonatomic) NSObject<UIWebViewDelegate> *webDelegate;
 @property(weak, nonatomic) IBOutlet UIWebView *webView;
 @property(weak, nonatomic) IBOutlet UIBarButtonItem *shareButton;
 

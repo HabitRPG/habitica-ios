@@ -18,6 +18,9 @@
 #import "MRProgress.h"
 #import "OnePasswordExtension.h"
 #import "UIColor+Habitica.h"
+#import <AppAuth.h>
+#import "HRPGWebViewController.h"
+#import <Keys/HabiticaKeys.h>
 
 @interface HRPGLoginViewController ()
 @property HRPGManager *sharedManager;
@@ -27,6 +30,8 @@
 @property UIView *headerView;
 @property UIImageView *gryphonView;
 @property UIImageView *logoView;
+
+@property(nonatomic, strong, nullable) OIDAuthState *authState;
 
 @end
 
@@ -102,7 +107,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -167,6 +172,10 @@
                                                forIndexPath:indexPath];
         self.fbLoginButton = [cell viewWithTag:1];
         self.fbLoginButton.delegate = self;
+    } else if (indexPath.section == 3) {
+        cell =
+        [tableView dequeueReusableCellWithIdentifier:@"GoogleLoginButtonCell" forIndexPath:indexPath];
+        self.loginCell = cell;
     }
 
     UIView *wrapperView = [cell viewWithTag:9];
@@ -180,6 +189,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.item == 0) {
         [self loginUser:nil];
+    } else if (indexPath.section == 3 && indexPath.item == 0) {
+        [self loginGoogleUser:nil];
     }
 }
 
@@ -263,6 +274,56 @@
                 [weakSelf showLoginLabel];
             }];
     }
+}
+
+- (IBAction)loginGoogleUser:(id)sender {
+    NSURL *authorizationEndpoint =
+    [NSURL URLWithString:@"https://accounts.google.com/o/oauth2/v2/auth"];
+    NSURL *tokenEndpoint =
+    [NSURL URLWithString:@"https://www.googleapis.com/oauth2/v4/token"];
+    
+    OIDServiceConfiguration *configuration =
+    [[OIDServiceConfiguration alloc]
+     initWithAuthorizationEndpoint:authorizationEndpoint
+     tokenEndpoint:tokenEndpoint];
+    HabiticaKeys *keys = [[HabiticaKeys alloc] init];
+
+    OIDAuthorizationRequest *request =
+    [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
+                                                  clientId:keys.googleClient
+                                                    scopes:@[OIDScopeOpenID,
+                                                             OIDScopeProfile]
+                                               redirectURL:[NSURL URLWithString:keys.googleRedirectUrl]
+                                              responseType:OIDResponseTypeCode
+                                      additionalParameters:nil]; 
+    
+    // performs authentication request
+    HRPGAppDelegate *appDelegate =
+    (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
+    __weak HRPGLoginViewController *weakSelf = self;
+    appDelegate.currentAuthorizationFlow =
+    [OIDAuthState authStateByPresentingAuthorizationRequest:request
+                                   presentingViewController:self
+                                                   callback:^(OIDAuthState *_Nullable authState,
+                                                              NSError *_Nullable error) {
+                                                       if (authState) {
+                                                           
+                                                           __weak MRProgressOverlayView *overlayView =
+                                                           [MRProgressOverlayView showOverlayAddedTo:weakSelf.navigationController.view animated:YES];
+                                                           [weakSelf.sharedManager loginUserSocial:@"" withNetwork:@"google" withAccessToken:authState.lastTokenResponse.accessToken onSuccess:^{
+                                                               overlayView.mode = MRProgressOverlayViewModeCheckmark;
+                                                               dispatch_time_t popTime =
+                                                               dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC));
+                                                               dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
+                                                                   [overlayView dismiss:YES];
+                                                               });
+                                                               [weakSelf onSuccessfullLogin];
+                                                           } onError:nil];
+                                                           [self setAuthState:authState];
+                                                       } else {
+                                                           [self setAuthState:nil];
+                                                       }
+                                                   }];
 }
 
 - (IBAction)onePasswordButtonSelected:(id)sender {
@@ -396,10 +457,11 @@
                                     completionBlock:^{
                                     }];
     } else {
-        MRProgressOverlayView *overlayView =
+        __weak MRProgressOverlayView *overlayView =
             [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
         [self.sharedManager loginUserSocial:[FBSDKAccessToken currentAccessToken].userID
-            withAccessToken:[FBSDKAccessToken currentAccessToken].tokenString
+          withNetwork:@"facebook"
+                            withAccessToken:[FBSDKAccessToken currentAccessToken].tokenString
             onSuccess:^() {
                 overlayView.mode = MRProgressOverlayViewModeCheckmark;
                 dispatch_time_t popTime =
