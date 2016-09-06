@@ -3530,7 +3530,7 @@
         <scene sceneID="8q0-MG-Oh7">
             <objects>
                 <tableViewController id="CZc-T4-a1C" customClass="HRPGFilterViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ub3-f1-o3K">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ub3-f1-o3K">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3615,6 +3615,12 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem systemItem="edit" id="JJm-wH-dvH">
+                            <color key="tintColor" red="0.44783601159999997" green="0.1084804982" blue="0.99846321339999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="editButtonTapped:" destination="CZc-T4-a1C" id="weX-8k-PPG"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="OZY-o0-CAc"/>
                         <barButtonItem title="Clear" id="hIC-Qf-w8a">
                             <color key="tintColor" red="0.9686274528503418" green="0.30588236451148987" blue="0.32156863808631897" alpha="1" colorSpace="deviceRGB"/>
@@ -3629,6 +3635,11 @@
                                 <segue destination="Rot-qR-0bj" kind="unwind" identifier="UnwindTagSegue" unwindAction="unwindToList:" id="MrB-cc-ysf"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="O21-kC-ShH">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="CZc-T4-a1C" id="zuR-x6-Olu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
@@ -3636,47 +3647,6 @@
                 <exit id="Rot-qR-0bj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1035" y="5827"/>
-        </scene>
-        <!--Add Tag-->
-        <scene sceneID="BdN-sH-gGK">
-            <objects>
-                <tableViewController id="EI9-NL-AJb" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JsT-mH-Dc1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="UUb-i5-irR">
-                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UUb-i5-irR" id="P1s-Qf-oNG">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="EI9-NL-AJb" id="YdO-rE-LVc"/>
-                            <outlet property="delegate" destination="EI9-NL-AJb" id="w1Q-Eg-0dG"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Add Tag" id="6kN-kK-ybL">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="USb-1a-Umt">
-                            <connections>
-                                <segue destination="Tx9-42-R19" kind="unwind" unwindAction="unwindToList:" id="KrO-PA-8Bj"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="drk-nK-6co">
-                            <connections>
-                                <segue destination="Tx9-42-R19" kind="unwind" unwindAction="unwindToListSave:" id="UAy-nc-3Fm"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JOH-DM-ayG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Tx9-42-R19" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="2566.875" y="5827.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Qs-Im-7zO">
@@ -4214,24 +4184,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VqI-0M-zUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4779.375" y="3272.5"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="oen-WF-nbs">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rUr-zL-kV2" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iCp-6a-WWc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="EI9-NL-AJb" kind="relationship" relationship="rootViewController" id="2q5-8U-hyo"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R58-3N-XlV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1796.25" y="5827.5"/>
         </scene>
         <!--Rewards-->
         <scene sceneID="ADP-AR-Pd2">

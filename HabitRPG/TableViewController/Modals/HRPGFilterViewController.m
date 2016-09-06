@@ -19,6 +19,8 @@
 @property UIView *headerView;
 @property UISegmentedControl *filterTypeControl;
 @property NSMutableArray *areTagsSelected;
+
+@property Tag *editedTag;
 @end
 
 @implementation HRPGFilterViewController
@@ -119,7 +121,7 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
+    return YES;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -208,11 +210,13 @@
 
     switch (type) {
         case NSFetchedResultsChangeInsert:
+            [self.areTagsSelected addObject:@NO];
             [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
                              withRowAnimation:UITableViewRowAnimationFade];
             break;
 
         case NSFetchedResultsChangeDelete:
+            [self.areTagsSelected removeObjectAtIndex:indexPath.item];
             [tableView deleteRowsAtIndexPaths:@[ indexPath ]
                              withRowAnimation:UITableViewRowAnimationFade];
             break;
@@ -264,9 +268,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.areTagsSelected[indexPath.item] = @(![self.areTagsSelected[indexPath.item] boolValue]);
-    [self.tableView reloadRowsAtIndexPaths:@[ indexPath ]
-                          withRowAnimation:UITableViewRowAnimationNone];
+    if (self.isEditing) {
+        Tag *tag = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [self showFormAlertForTag:tag];
+    } else {
+        self.areTagsSelected[indexPath.item] = @(![self.areTagsSelected[indexPath.item] boolValue]);
+        [self.tableView reloadRowsAtIndexPaths:@[ indexPath ]
+                              withRowAnimation:UITableViewRowAnimationNone];
+    }
+
 }
 
 - (IBAction)clearTags:(id)sender {
@@ -300,6 +310,68 @@
                   forKey:[NSString stringWithFormat:@"%@Filter", self.taskType]];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"taskFilterChanged" object:nil];
+}
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Tag *tag = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [self.sharedManager deleteTag:tag
+                             onSuccess:nil onError:nil];
+    }
+}
+
+- (IBAction)editButtonTapped:(id)sender {
+    [self setEditing:YES animated:YES];
+}
+
+- (IBAction)addButtonTapped:(id)sender {
+    [self showFormAlert];
+}
+
+- (void)showFormAlert {
+    [self showFormAlertForTag:nil];
+}
+
+- (void)showFormAlertForTag:(Tag *)tag {
+    NSString *title = nil;
+    if (tag) {
+        title = NSLocalizedString(@"Edit Tag", nil);
+    } else {
+        title = NSLocalizedString(@"Create Tag", nil);
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:nil
+                                                   delegate:self
+                                          cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                          otherButtonTitles:NSLocalizedString(@"Save", nil), nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    if (tag) {
+        UITextField *textField = [alert textFieldAtIndex:0];
+        textField.text = tag.name;
+        self.editedTag = tag;
+    } else {
+        self.editedTag = nil;
+    }
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    NSString *newTagName = textField.text;
+    if (self.editedTag) {
+        self.editedTag.name = newTagName;
+        [self.sharedManager updateTag:self.editedTag onSuccess:nil onError:nil];
+        self.editedTag = nil;
+    } else {
+        Tag *newTag =
+        [NSEntityDescription insertNewObjectForEntityForName:@"Tag"
+                                      inManagedObjectContext:self.managedObjectContext];
+        newTag.name = newTagName;
+        newTag.order = [NSNumber numberWithInteger:self.fetchedResultsController.fetchedObjects.count];
+        [self.sharedManager createTag:newTag onSuccess:nil onError:nil];
+    }
 }
 
 @end

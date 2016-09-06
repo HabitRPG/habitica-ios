@@ -78,6 +78,7 @@ NSString *currentUser;
 }
 
 - (void)loadObjectManager:(RKManagedObjectStore *)existingManagedObjectStore {
+    RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
     NSError *error = nil;
     NSURL *modelURL =
         [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"HabitRPG" ofType:@"momd"]];
@@ -742,6 +743,53 @@ NSString *currentUser;
         addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tags"
                                                                        toKeyPath:@"tags"
                                                                      withMapping:userTagMapping]];
+    
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:userTagMapping
+                          method:RKRequestMethodPOST
+                          pathPattern:@"tags"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:userTagMapping
+                          method:RKRequestMethodPOST
+                          pathPattern:@"tags/:id"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+
+    RKObjectMapping *tagRequestMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [tagRequestMapping addAttributeMappingsFromDictionary:@{
+                                                         @"id" : @"id",
+                                                         @"name" : @"name",
+                                                         @"challenge" : @"challenge",
+                                                         }];
+    
+    [[RKObjectManager sharedManager].router.routeSet
+     addRoute:[RKRoute routeWithClass:[Tag class]
+                          pathPattern:@"tags/:id"
+                               method:RKRequestMethodPUT]];
+    [[RKObjectManager sharedManager].router.routeSet
+     addRoute:[RKRoute routeWithClass:[Tag class]
+                          pathPattern:@"tags"
+                               method:RKRequestMethodPOST]];
+    [[RKObjectManager sharedManager].router.routeSet
+     addRoute:[RKRoute routeWithClass:[Tag class]
+                          pathPattern:@"tags/:id"
+                               method:RKRequestMethodDELETE]];
+    
+    requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:tagRequestMapping
+                                                              objectClass:[Tag class]
+                                                              rootKeyPath:nil
+                                                                   method:RKRequestMethodPOST];
+    [objectManager addRequestDescriptor:requestDescriptor];
+    requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:tagRequestMapping
+                                                              objectClass:[Tag class]
+                                                              rootKeyPath:nil
+                                                                   method:RKRequestMethodPUT];
+    [objectManager addRequestDescriptor:requestDescriptor];
+    
     RKEntityMapping *userOutfitMapping =
         [RKEntityMapping mappingForEntityForName:@"Outfit" inManagedObjectStore:managedObjectStore];
     [userOutfitMapping addAttributeMappingsFromDictionary:@{
@@ -2923,6 +2971,95 @@ NSString *currentUser;
             [self.networkIndicatorController endNetworking];
             return;
         }];
+}
+
+
+- (void)createTag:(Tag *)tag
+           onSuccess:(void (^)())successBlock
+             onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:tag
+                                           path:@"tags"
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            NSError *executeError = nil;
+                                            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                            if (successBlock) {
+                                                successBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
+}
+
+- (void)updateTag:(Tag *)tag
+           onSuccess:(void (^)())successBlock
+             onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] putObject:tag
+                                          path:nil
+                                    parameters:nil
+                                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                           NSError *executeError = nil;
+                                           [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                           if (successBlock) {
+                                               successBlock();
+                                           }
+                                           [self.networkIndicatorController endNetworking];
+                                           return;
+                                       }
+                                       failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                           if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                               [self displayServerError];
+                                           } else {
+                                               [self displayNetworkError];
+                                           }
+                                           if (errorBlock) {
+                                               errorBlock();
+                                           }
+                                           [self.networkIndicatorController endNetworking];
+                                           return;
+                                       }];
+}
+
+- (void)deleteTag:(Tag *)tag
+           onSuccess:(void (^)())successBlock
+             onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] deleteObject:tag
+                                             path:nil
+                                       parameters:nil
+                                          success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                              NSError *executeError = nil;
+                                              [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                              if (successBlock) {
+                                                  successBlock();
+                                              }
+                                              [self.networkIndicatorController endNetworking];
+                                              return;
+                                          }
+                                          failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                              if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                                  [self displayServerError];
+                                              } else {
+                                                  [self displayNetworkError];
+                                              }
+                                              if (errorBlock) {
+                                                  errorBlock();
+                                              }
+                                              [self.networkIndicatorController endNetworking];
+                                              return;
+                                          }];
 }
 
 - (void)fetchBuyableRewards:(void (^)())successBlock onError:(void (^)())errorBlock {

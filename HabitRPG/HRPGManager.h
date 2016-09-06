@@ -96,6 +96,18 @@
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock;
 
+- (void)createTag:(Tag *)tag
+           onSuccess:(void (^)())successBlock
+             onError:(void (^)())errorBlock;
+
+- (void)updateTag:(Tag *)tag
+           onSuccess:(void (^)())successBlock
+             onError:(void (^)())errorBlock;
+
+- (void)deleteTag:(Tag *)tag
+           onSuccess:(void (^)())successBlock
+             onError:(void (^)())errorBlock;
+
 - (void)fetchBuyableRewards:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)clearCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock;

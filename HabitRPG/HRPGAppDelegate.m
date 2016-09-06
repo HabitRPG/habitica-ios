@@ -68,6 +68,9 @@
         kCRToastFontKey : [UIFont systemFontOfSize:17],
         kCRToastInteractionRespondersKey : @[ blankResponder ]
     }];
+    
+    [[UIView appearanceWhenContainedIn:[UIAlertView class], nil] setTintColor:[UIColor purple400]];
+    [[UIView appearanceWhenContainedIn:[UIAlertController class], nil] setTintColor:[UIColor purple400]];
 
     [self configureNotifications:application];
 
