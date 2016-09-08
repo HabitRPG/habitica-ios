@@ -188,7 +188,7 @@
                                      imageView.image = weakSelf.bossImage;
                                      NSIndexPath *newIndexPath = indexPath;
                                      if ([weakSelf.tableView numberOfSections] <= indexPath.section) {
-                                         newIndexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section];
+                                         newIndexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section-1];
                                      }
                                      [weakSelf.tableView reloadRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                                  });
