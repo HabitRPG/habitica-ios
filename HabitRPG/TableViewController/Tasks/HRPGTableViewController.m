@@ -97,6 +97,10 @@ BOOL editable;
 
 - (IBAction)longPressGestureRecognized:(id)sender {
     
+    if (self.openedIndexPath) {
+        [self tableView:self.tableView expandTaskAtIndexPath:self.openedIndexPath];
+    }
+    
     UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *)sender;
     UIGestureRecognizerState state = longPress.state;
     

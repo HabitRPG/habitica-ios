@@ -78,7 +78,6 @@ NSString *currentUser;
 }
 
 - (void)loadObjectManager:(RKManagedObjectStore *)existingManagedObjectStore {
-    RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
     NSError *error = nil;
     NSURL *modelURL =
         [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"HabitRPG" ofType:@"momd"]];
