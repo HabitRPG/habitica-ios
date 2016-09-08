@@ -289,14 +289,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"UnwindTagSegue"]) {
         int counter = 0;
+        [self.selectedTags removeAllObjects];
         for (Tag *tag in [self.fetchedResultsController fetchedObjects]) {
             if ([self.areTagsSelected[counter] boolValue]) {
                 if (![self.selectedTags containsObject:tag]) {
                     [self.selectedTags addObject:tag];
-                }
-            } else {
-                if ([self.selectedTags containsObject:tag]) {
-                    [self.selectedTags removeObject:tag];
                 }
             }
             counter++;
