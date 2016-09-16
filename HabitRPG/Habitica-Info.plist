@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.5.3</string>
+	<string>1.5.4</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -29,9 +29,17 @@
 				<string>com.googleusercontent.apps.293904580953-4f67764kfhvea5jprnvq3sds93m5kljb</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.1035232791481-52r7ooftqamsdgrnb4n8ogg15bv5bs8b</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>153</string>
+	<string>154</string>
 	<key>CustomDomain</key>
 	<string>${CUSTOM_DOMAIN}</string>
 	<key>DisableSSL</key>
