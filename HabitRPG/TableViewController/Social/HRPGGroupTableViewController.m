@@ -174,8 +174,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == [self chatSectionIndex]) {
-        ChatMessage *message = [self.chatMessagesFRC
-            objectAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
+        ChatMessage *message = [self chatMessageAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
         if (!message.attributedText) {
             message.attributedText = [self renderMarkdown:message.text];
         }
@@ -365,7 +364,7 @@
 - (void)configureChatMessageCell:(HRPGChatTableViewCell *)cell
                      atIndexPath:(NSIndexPath *)indexPath {
     NSIndexPath *objectIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
-    ChatMessage *message = [self.chatMessagesFRC objectAtIndexPath:objectIndexPath];
+    ChatMessage *message = [self chatMessageAtIndexPath:objectIndexPath];
     if (!message.attributedText) {
         message.attributedText = [self renderMarkdown:message.text];
     }
@@ -421,6 +420,17 @@
     cell.deleteAction = ^() {
         [weakSelf.sharedManager deleteMessage:message withGroup:weakSelf.groupID onSuccess:nil onError:nil];
     };
+}
+
+- (id)chatMessageAtIndexPath:(NSIndexPath *)indexPath {
+    id item  = nil;
+    if ([[self.chatMessagesFRC sections] count] > [indexPath section]){
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.chatMessagesFRC sections] objectAtIndex:[indexPath section]];
+        if ([sectionInfo numberOfObjects] > [indexPath row]){
+            item = [self.chatMessagesFRC objectAtIndexPath:indexPath];
+        }
+    }
+    return item;
 }
 
 @end

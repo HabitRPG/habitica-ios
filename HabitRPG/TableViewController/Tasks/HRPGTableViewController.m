@@ -143,8 +143,8 @@ BOOL editable;
             
             if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
                 self.userDrivenDataUpdate = YES;
-                Task *sourceTask = [self.fetchedResultsController objectAtIndexPath:sourceIndexPath];
-                Task *task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+                Task *sourceTask = [self taskAtIndexPath:sourceIndexPath];
+                Task *task = [self taskAtIndexPath:indexPath];
                 NSNumber *sourceOrder = sourceTask.order;
                 sourceTask.order = task.order;
                 task.order = sourceOrder;
@@ -179,7 +179,7 @@ BOOL editable;
         }
             
         default: {
-            Task *task = [self.fetchedResultsController objectAtIndexPath:sourceIndexPath];
+            Task *task = [self taskAtIndexPath:sourceIndexPath];
             [self.sharedManager moveTask:task toPosition:task.order onSuccess:nil onError:nil];
             
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
