@@ -138,7 +138,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellIdentifier;
+    NSString *cellIdentifier = nil;
     if (indexPath.section == [self questDetailSection] && indexPath.item == 0) {
         cellIdentifier = @"titleCell";
     } else if (indexPath.section == [self questDetailSection] && indexPath.item == 1) {
@@ -151,6 +151,9 @@
         cellIdentifier = @"rejectCell";
     } else if (indexPath.section == 0 && indexPath.item == 2) {
         cellIdentifier = @"asklaterCell";
+    }
+    if (cellIdentifier == nil) {
+        return nil;
     }
 
     UITableViewCell *cell =

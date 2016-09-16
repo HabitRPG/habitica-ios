@@ -103,8 +103,10 @@ NIKFontAwesomeIconFactory *iconFactory;
 }
 
 - (void)reloadPartyData:(id)sender {
+    [self.tableView beginUpdates];
     [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:1 inSection:1] ]
                           withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
 }
 
 #pragma mark - Table view data source
