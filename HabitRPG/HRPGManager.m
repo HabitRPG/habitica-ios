@@ -4027,11 +4027,18 @@ NSString *currentUser;
                onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
+    if (members == nil) {
+        if (errorBlock != nil) {
+            errorBlock();
+            return;
+        }
+    }
+    
     [[RKObjectManager sharedManager] postObject:nil
         path:[NSString stringWithFormat:@"groups/%@/invite", group]
         parameters:@{
             invitationType : members,
-            @"inviter" : self.user.username
+            @"inviter" : self.user.username != nil ? self.user.username : @""
         }
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
