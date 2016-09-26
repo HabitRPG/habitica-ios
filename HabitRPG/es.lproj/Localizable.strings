@@ -5,10 +5,13 @@
 "%.2f Gold" = "%.2f de oro";
 
 /* No comment provided by engineer. */
+"%@ Gems" = "%@ gemas";
+
+/* No comment provided by engineer. */
 "%@ Members" = "%@ miembros";
 
 /* No comment provided by engineer. */
-"%d Participants" = "%d participantes";
+"%@ Participants" = "%@ participantes";
 
 /* No comment provided by engineer. */
 "%d out of %d responded" = "Respondidos: %1$d de %2$d";
@@ -80,6 +83,9 @@
 "All" = "Todo";
 
 /* No comment provided by engineer. */
+"Allocated" = "Asignado";
+
+/* No comment provided by engineer. */
 "Animal Ears" = "Orejas de animales";
 
 /* 1Password App Extension Error Message */
@@ -139,10 +145,22 @@
 "Body" = "Cuerpo";
 
 /* No comment provided by engineer. */
+"Buy" = "Comprar";
+
+/* No comment provided by engineer. */
+"By completing your tasks, you've earned a faithful steed!" = "Cumpliendo tus tareas, has ganado un fiel corcel";
+
+/* No comment provided by engineer. */
+"CON %@" = "CON %@";
+
+/* No comment provided by engineer. */
 "Cancel" = "Cancelar";
 
 /* No comment provided by engineer. */
 "Cast Spells" = "Lanzar hechizos";
+
+/* No comment provided by engineer. */
+"Change Class" = "Cambiar de clase";
 
 /* No comment provided by engineer. */
 "Chat" = "Chat";
@@ -199,7 +217,7 @@
 "Custom Day Start" = "Inicio de día personalizado";
 
 /* No comment provided by engineer. */
-"Customize Avatar" = "Personalizar avatar";
+"Customize Avatar" = "Personalizar personaje";
 
 /* No comment provided by engineer. */
 "Daily" = "diarias";
@@ -281,6 +299,9 @@
 
 /* No comment provided by engineer. */
 "Emails" = "Correos";
+
+/* No comment provided by engineer. */
+"Enable Class System" = "Activar sistema de clases";
 
 /* No comment provided by engineer. */
 "Enter" = "Entra";
@@ -408,10 +429,22 @@ Version %@ (%@)" = "¡Me caes bien!
 Versión %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
+"Huzzah!" = "¡Viva!";
+
+/* No comment provided by engineer. */
+"I got to level %ld in Habitica by improving my real-life habits!" = "¡He subido al nivel %ld en Habitica al mejorar mis hábitos en la vida real!";
+
+/* No comment provided by engineer. */
 "I want to become a %@" = "Quiero ser %@";
 
 /* No comment provided by engineer. */
 "I want to opt-out" = "No quiero elegir";
+
+/* No comment provided by engineer. */
+"INT %@" = "INT %@";
+
+/* No comment provided by engineer. */
+"Inbox" = "Bandeja de entrada";
 
 /* No comment provided by engineer. */
 "Invalid E-Mail Address." = "Dirección de correo electrónico no válida";
@@ -427,6 +460,9 @@ Versión %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Invite" = "Invitar";
+
+/* No comment provided by engineer. */
+"Invite Friends" = "Invitar a Amigos";
 
 /* No comment provided by engineer. */
 "Invite Members" = "Invitar a miembros";
@@ -459,16 +495,13 @@ Versión %1$@ (%2$@)";
 "Leave a Review" = "Escribir una reseña";
 
 /* No comment provided by engineer. */
-"Leave the Inn" = "Salir de la Posada";
+"Level" = "Nivel";
 
 /* No comment provided by engineer. */
 "Level %@" = "Nivel %@";
 
 /* No comment provided by engineer. */
 "Level %@ %@" = "Nivel %1$@ %2$@";
-
-/* No comment provided by engineer. */
-"Level up!" = "¡Has subido de nivel!";
 
 /* No comment provided by engineer. */
 "Local" = "Local";
@@ -478,9 +511,6 @@ Versión %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Log in" = "Iniciar sesión";
-
-/* No comment provided by engineer. */
-"Login Method" = "Método de inicio de sesión";
 
 /* No comment provided by engineer. */
 "Login name" = "Nombre de inicio de sesión";
@@ -493,6 +523,9 @@ Versión %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Mana" = "Maná";
+
+/* No comment provided by engineer. */
+"Market" = "Mercado";
 
 /* No comment provided by engineer. */
 "Medium" = "Medio";
@@ -576,6 +609,9 @@ Versión %1$@ (%2$@)";
 "Other" = "Otros";
 
 /* No comment provided by engineer. */
+"PER %@" = "PER %@";
+
+/* No comment provided by engineer. */
 "Participants" = "Participantes";
 
 /* No comment provided by engineer. */
@@ -630,6 +666,9 @@ Versión %1$@ (%2$@)";
 "Quest Pets" = "Mascotas de misiones";
 
 /* No comment provided by engineer. */
+"Quests" = "Misiones";
+
+/* No comment provided by engineer. */
 "Register" = "Registrarse";
 
 /* No comment provided by engineer. */
@@ -669,13 +708,16 @@ Versión %1$@ (%2$@)";
 "Reset Justins Tips" = "Restablecer consejos de Justin";
 
 /* No comment provided by engineer. */
-"Rest in the Inn" = "Descansar en la Posada";
-
-/* No comment provided by engineer. */
 "Rogue" = "Pícaro";
 
 /* No comment provided by engineer. */
+"STR %@" = "FUE %@";
+
+/* No comment provided by engineer. */
 "Saturday" = "sábado";
+
+/* No comment provided by engineer. */
+"Save" = "Guardar";
 
 /* No comment provided by engineer. */
 "Schedule check-up" = "Pedir cita con el médico";
@@ -715,6 +757,9 @@ Versión %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Shirt" = "Camisa";
+
+/* No comment provided by engineer. */
+"Shops" = "Tiendas";
 
 /* No comment provided by engineer. */
 "Size" = "Tamaño";
@@ -763,9 +808,6 @@ Versión %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Tap to change how your pets are grouped." = "Pulsa para cambiar la forma de agrupar las mascotas.";
-
-/* No comment provided by engineer. */
-"Tap to continue" = "Pulsa para continuar";
 
 /* No comment provided by engineer. */
 "Tap to edit task, change notification time, or delete." = "Pulsa para editar la tarea, cambiar la hora de notificación o eliminarla.";
@@ -912,13 +954,7 @@ Versión %1$@ (%2$@)";
 "Yes" = "Sí";
 
 /* No comment provided by engineer. */
-"You Died" = "Has muerto";
-
-/* No comment provided by engineer. */
-"You are now Level %ld" = "Ahora estás en el nivel %ld";
-
-/* No comment provided by engineer. */
-"You found a piece of rare Equipment in the Armoire: %@! Awesome!" = "Has encontrado en el ropero un artículo de equipamiento excepcional: ¡%@!";
+"You gained a level!" = "¡Has subido de nivel!";
 
 /* No comment provided by engineer. */
 "You hatched a %@ %@!" = "¡Ha nacido un %2$@ %1$@!";
@@ -927,24 +963,23 @@ Versión %1$@ (%2$@)";
 "You have no food" = "No tienes alimentos";
 
 /* No comment provided by engineer. */
-"You will become a %@." = "Serás un %@.";
+"You raised a mount!" = "¡Has conseguido una montura!";
 
 /* No comment provided by engineer. */
-"You wrestle with the Armoire and gain %@ Experience. Take that!" = "Luchando con el ropero, obtienes %@ de experiencia. ¡Ahí lo llevas!";
+"You will become a %@." = "Serás un %@.";
 
 /* No comment provided by engineer. */
 "Your pet eats the %@ but doesn't seem to enjoy it." = "%@... La mascota se lo come, pero no parece que le guste mucho.";
 
 /* No comment provided by engineer. */
-"Your pet really likes the %@" = "¡%@! ¡A la mascota le encanta!";
-
-/* No comment provided by engineer. */
-"email" = "Correo electrónico";
-
-/* No comment provided by engineer. */
 "equipped" = "puesto";
 
+/* Singular */
+"gem" = "gema";
 
-"Health: +%.1f\nMana: -%ld" = "Health: +%.1f\nMana: -%ld";
-"Gold: +%.1f\nMana: -%ld" = "Gold: +%.1f\nMana: -%ld";
-"Mana: -%ld" = "Mana: -%ld";
+/* Plural */
+"gems" = "gemas";
+
+/* Singular */
+"gold" = "Oro";
+

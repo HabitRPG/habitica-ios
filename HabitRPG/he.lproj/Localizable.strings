@@ -5,10 +5,10 @@
 "%.2f Gold" = "%.2f זהב";
 
 /* No comment provided by engineer. */
-"%@ Members" = "%@ חברים";
+"%@ Gems" = "%@ אבני חן";
 
 /* No comment provided by engineer. */
-"%d Participants" = "%d משתתפים";
+"%@ Members" = "%@ חברים";
 
 /* No comment provided by engineer. */
 "%d out of %d responded" = "%1$d מתוך %2$d השיבו";
@@ -139,10 +139,16 @@
 "Body" = "גוף";
 
 /* No comment provided by engineer. */
+"By completing your tasks, you've earned a faithful steed!" = "על ידי השלמת המשימות שלכם, הרווחתם חיית רכיבה נאמנה!";
+
+/* No comment provided by engineer. */
 "Cancel" = "בטל";
 
 /* No comment provided by engineer. */
 "Cast Spells" = "הטל קסמים";
+
+/* No comment provided by engineer. */
+"Change Class" = "החליפו מקצוע";
 
 /* No comment provided by engineer. */
 "Chat" = "צ׳אט";
@@ -283,6 +289,9 @@
 "Emails" = "מיילים";
 
 /* No comment provided by engineer. */
+"Enable Class System" = "אפשרו את מערכת המקצועות";
+
+/* No comment provided by engineer. */
 "Enter" = "הכנס";
 
 /* No comment provided by engineer. */
@@ -408,6 +417,12 @@ Version %@ (%@)" = "הי! אתה מגניב!
 גרסה %1$! (%2$@)";
 
 /* No comment provided by engineer. */
+"Huzzah!" = "ישששש!";
+
+/* No comment provided by engineer. */
+"I got to level %ld in Habitica by improving my real-life habits!" = "הגעתי לדרגה %ld בהאביטיקה על ידי שיפור ההרגלים בחיים האמיתיים שלי!";
+
+/* No comment provided by engineer. */
 "I want to become a %@" = "אני רוצה להפוך להיות %@";
 
 /* No comment provided by engineer. */
@@ -459,16 +474,10 @@ Version %@ (%@)" = "הי! אתה מגניב!
 "Leave a Review" = "השאר משוב";
 
 /* No comment provided by engineer. */
-"Leave the Inn" = "עזוב את האכסניה";
-
-/* No comment provided by engineer. */
 "Level %@" = "שלב %@";
 
 /* No comment provided by engineer. */
 "Level %@ %@" = "דרגה %1$@ %2$@";
-
-/* No comment provided by engineer. */
-"Level up!" = "עלה רמה!";
 
 /* No comment provided by engineer. */
 "Local" = "מקומי";
@@ -478,9 +487,6 @@ Version %@ (%@)" = "הי! אתה מגניב!
 
 /* No comment provided by engineer. */
 "Log in" = "התחבר";
-
-/* No comment provided by engineer. */
-"Login Method" = "צורת התחברות";
 
 /* No comment provided by engineer. */
 "Login name" = "שם משתמש";
@@ -669,9 +675,6 @@ Version %@ (%@)" = "הי! אתה מגניב!
 "Reset Justins Tips" = "אפס את הטיפים של ג׳סטין";
 
 /* No comment provided by engineer. */
-"Rest in the Inn" = "נוח באכסניה";
-
-/* No comment provided by engineer. */
 "Rogue" = "נוכל";
 
 /* No comment provided by engineer. */
@@ -763,9 +766,6 @@ Version %@ (%@)" = "הי! אתה מגניב!
 
 /* No comment provided by engineer. */
 "Tap to change how your pets are grouped." = "לחץ כדי לשנות כיצד חיות המחמד שלך מסודרות.";
-
-/* No comment provided by engineer. */
-"Tap to continue" = "הקש להמשך";
 
 /* No comment provided by engineer. */
 "Tap to edit task, change notification time, or delete." = "ליחצו על משימה כדי לערוך אותה, לשנות זמני התראות, או למחוק אותה.";
@@ -912,13 +912,7 @@ Version %@ (%@)" = "הי! אתה מגניב!
 "Yes" = "כן";
 
 /* No comment provided by engineer. */
-"You Died" = "נהרגת";
-
-/* No comment provided by engineer. */
-"You are now Level %ld" = "אתם כעת ברמה %ld";
-
-/* No comment provided by engineer. */
-"You found a piece of rare Equipment in the Armoire: %@! Awesome!" = "מצאת חתיכה של ציוד עתיק בארמואר: %@! מגניב!";
+"You gained a level!" = "הרווחתם דרגה!";
 
 /* No comment provided by engineer. */
 "You hatched a %@ %@!" = "הבקעת %1$@ %2$@!";
@@ -927,24 +921,14 @@ Version %@ (%@)" = "הי! אתה מגניב!
 "You have no food" = "אין לך אוכל";
 
 /* No comment provided by engineer. */
-"You will become a %@." = "אתה תהפוך ל%@.";
+"You raised a mount!" = "גידלתם חיית רכיבה!";
 
 /* No comment provided by engineer. */
-"You wrestle with the Armoire and gain %@ Experience. Take that!" = "אתה נאבק בארמואר וזוכה ב %@ נקודות ניסיון. קבל!";
+"You will become a %@." = "אתה תהפוך ל%@.";
 
 /* No comment provided by engineer. */
 "Your pet eats the %@ but doesn't seem to enjoy it." = "חיית המחמד שלך אוכלת את ה%@ אך נראה שהיא לא נהנית.";
 
 /* No comment provided by engineer. */
-"Your pet really likes the %@" = "חיית המחמד שלך ממש אוהבת את ה%@";
-
-/* No comment provided by engineer. */
-"email" = "מייל";
-
-/* No comment provided by engineer. */
 "equipped" = "מצוייד";
 
-
-"Health: +%.1f\nMana: -%ld" = "Health: +%.1f\nMana: -%ld";
-"Gold: +%.1f\nMana: -%ld" = "Gold: +%.1f\nMana: -%ld";
-"Mana: -%ld" = "Mana: -%ld";

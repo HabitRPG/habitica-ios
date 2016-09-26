@@ -16,9 +16,6 @@
 /* Class = "UILabel"; text = "Size"; ObjectID = "5KS-In-70X"; */
 "5KS-In-70X.text" = "Tamanho";
 
-/* Class = "UINavigationItem"; title = "Add Tag"; ObjectID = "6kN-kK-ybL"; */
-"6kN-kK-ybL.title" = "Adicionar etiqueta";
-
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "7QR-Cq-K2a"; */
 "7QR-Cq-K2a.title" = "Filtrar";
 
@@ -52,6 +49,9 @@
 /* Class = "UIButton"; normalTitle = "Back"; ObjectID = "FYR-h9-UfW"; */
 "FYR-h9-UfW.normalTitle" = "Voltar";
 
+/* Class = "UINavigationItem"; title = "Scan Code"; ObjectID = "HJa-qf-ea2"; */
+"HJa-qf-ea2.title" = "Escanear Código";
+
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "IRA-55-1g8"; */
 "IRA-55-1g8.normalTitle" = "Próximo";
 
@@ -67,6 +67,9 @@
 /* Class = "UILabel"; text = "Title"; ObjectID = "KkO-6T-Qmx"; */
 "KkO-6T-Qmx.text" = "Título";
 
+/* Class = "UILabel"; text = "Login with Google"; ObjectID = "M1V-nF-Eg7"; */
+"M1V-nF-Eg7.text" = "Entrar com o Google";
+
 /* Class = "UILabel"; text = "Login"; ObjectID = "MlA-iN-6gR"; */
 "MlA-iN-6gR.text" = "Acessar";
 
@@ -75,6 +78,9 @@
 
 /* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "Np7-ws-fF6"; */
 "Np7-ws-fF6.title" = "Tarefas";
+
+/* Class = "UINavigationItem"; title = "Shops"; ObjectID = "QIL-Wo-vmp"; */
+"QIL-Wo-vmp.title" = "Lojas";
 
 /* Class = "UINavigationItem"; title = "Filter by tags"; ObjectID = "RJ8-HL-bIH"; */
 "RJ8-HL-bIH.title" = "Filtrar por etiquetas";
@@ -109,11 +115,11 @@
 /* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "hIC-Qf-w8a"; */
 "hIC-Qf-w8a.title" = "Limpar";
 
+/* Class = "UILabel"; text = "Label"; ObjectID = "hd1-sx-QKa"; */
+"hd1-sx-QKa.text" = "Etiqueta";
+
 /* Class = "UINavigationItem"; title = "Profile"; ObjectID = "hnF-ml-Qfo"; */
 "hnF-ml-Qfo.title" = "Perfil";
-
-/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "hnb-Ox-m1C"; */
-"hnb-Ox-m1C.title" = "Configurações";
 
 /* Class = "UITabBarItem"; title = "Menu"; ObjectID = "hyj-Mf-lvH"; */
 "hyj-Mf-lvH.title" = "Menu";
@@ -154,8 +160,8 @@
 /* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "sni-tf-k5c"; */
 "sni-tf-k5c.title" = "FAQ";
 
-/* Class = "UIBarButtonItem"; title = "Decide later"; ObjectID = "v0E-Hd-n5W"; */
-"v0E-Hd-n5W.title" = "Decidir depois";
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "uSK-A3-t5d"; */
+"uSK-A3-t5d.title" = "Configurações";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "wUf-yh-Qus"; */
 "wUf-yh-Qus.placeholder" = "Senha";

@@ -5,10 +5,10 @@
 "%.2f Gold" = "%.2f 金币";
 
 /* No comment provided by engineer. */
-"%@ Members" = "%@ 成员";
+"%@ Gems" = "%@宝石";
 
 /* No comment provided by engineer. */
-"%d Participants" = "%d位参与者";
+"%@ Members" = "%@ 成员";
 
 /* No comment provided by engineer. */
 "%d out of %d responded" = "%2$d 位中的 %1$d 位做出了答复";
@@ -139,10 +139,22 @@
 "Body" = "身体";
 
 /* No comment provided by engineer. */
+"Boosts" = "加速";
+
+/* No comment provided by engineer. */
+"Buy" = "购买";
+
+/* No comment provided by engineer. */
+"By completing your tasks, you've earned a faithful steed!" = "通过完成您的任务，您已得到了一匹忠诚的战马！";
+
+/* No comment provided by engineer. */
 "Cancel" = "取消";
 
 /* No comment provided by engineer. */
 "Cast Spells" = "施展法术";
+
+/* No comment provided by engineer. */
+"Change Class" = "改变职业";
 
 /* No comment provided by engineer. */
 "Chat" = "聊天";
@@ -190,6 +202,9 @@
 "Couldn't connect to the server. Check your network connection" = "无法连接到服务器。请检查网络连接";
 
 /* No comment provided by engineer. */
+"Create Tag" = "创建标签";
+
+/* No comment provided by engineer. */
 "Creativity" = "创造力";
 
 /* No comment provided by engineer. */
@@ -221,6 +236,12 @@
 
 /* No comment provided by engineer. */
 "Difficulty" = "难度";
+
+/* No comment provided by engineer. */
+"Disable Private Messages" = "关闭私人消息";
+
+/* No comment provided by engineer. */
+"Disable all Push Notifications" = "关闭推送通知";
 
 /* No comment provided by engineer. */
 "Do homework" = "做作业";
@@ -271,6 +292,9 @@
 "Edit Reward" = "编辑奖励";
 
 /* No comment provided by engineer. */
+"Edit Tag" = "编辑标签";
+
+/* No comment provided by engineer. */
 "Email" = "电子邮件";
 
 /* No comment provided by engineer. */
@@ -281,6 +305,9 @@
 
 /* No comment provided by engineer. */
 "Emails" = "电子邮件";
+
+/* No comment provided by engineer. */
+"Enable Class System" = "开启职业系统";
 
 /* No comment provided by engineer. */
 "Enter" = "进入";
@@ -408,13 +435,28 @@ Version %@ (%@)" = "嘿！你真棒！
 版本 %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
+"Hold down on a task to drag it around." = "你可以长按一个任务来拖动它";
+
+/* No comment provided by engineer. */
+"Huzzah!" = "吼啊~！";
+
+/* No comment provided by engineer. */
+"I got to level %ld in Habitica by improving my real-life habits!" = "我在Habitica中通过改善我现实生活中的习惯到达了%ld级！";
+
+/* No comment provided by engineer. */
 "I want to become a %@" = "我想成为 %@";
 
 /* No comment provided by engineer. */
 "I want to opt-out" = "我暂时不想选择";
 
 /* No comment provided by engineer. */
+"Inbox" = "收件箱";
+
+/* No comment provided by engineer. */
 "Invalid E-Mail Address." = "无效的电子邮件地址。";
+
+/* No comment provided by engineer. */
+"Invalid Habitica User ID" = "Habitica User ID错误";
 
 /* No comment provided by engineer. */
 "Invalid username or password" = "用户名或密码错误";
@@ -459,16 +501,10 @@ Version %@ (%@)" = "嘿！你真棒！
 "Leave a Review" = "撰写评论";
 
 /* No comment provided by engineer. */
-"Leave the Inn" = "离开客栈";
-
-/* No comment provided by engineer. */
 "Level %@" = "%@ 级";
 
 /* No comment provided by engineer. */
 "Level %@ %@" = "%1$@ %2$@ 级";
-
-/* No comment provided by engineer. */
-"Level up!" = "升级！";
 
 /* No comment provided by engineer. */
 "Local" = "本地";
@@ -478,9 +514,6 @@ Version %@ (%@)" = "嘿！你真棒！
 
 /* No comment provided by engineer. */
 "Log in" = "登录";
-
-/* No comment provided by engineer. */
-"Login Method" = "登录方式";
 
 /* No comment provided by engineer. */
 "Login name" = "登录名";
@@ -669,9 +702,6 @@ Version %@ (%@)" = "嘿！你真棒！
 "Reset Justins Tips" = "重设Justin的提示";
 
 /* No comment provided by engineer. */
-"Rest in the Inn" = "在客栈休息";
-
-/* No comment provided by engineer. */
 "Rogue" = "盗贼";
 
 /* No comment provided by engineer. */
@@ -763,9 +793,6 @@ Version %@ (%@)" = "嘿！你真棒！
 
 /* No comment provided by engineer. */
 "Tap to change how your pets are grouped." = "点击以改变宠物分组方式。";
-
-/* No comment provided by engineer. */
-"Tap to continue" = "点击此处继续";
 
 /* No comment provided by engineer. */
 "Tap to edit task, change notification time, or delete." = "点击编辑任务、更改通知时间或者删除。";
@@ -912,13 +939,7 @@ Version %@ (%@)" = "嘿！你真棒！
 "Yes" = "是";
 
 /* No comment provided by engineer. */
-"You Died" = "你死了";
-
-/* No comment provided by engineer. */
-"You are now Level %ld" = "您现在是 %ld 级";
-
-/* No comment provided by engineer. */
-"You found a piece of rare Equipment in the Armoire: %@! Awesome!" = "您从衣橱中获得了稀有装备 %@！真棒！";
+"You gained a level!" = "你升级了！";
 
 /* No comment provided by engineer. */
 "You hatched a %@ %@!" = "您孵化了 %1$@ %2$@!";
@@ -927,24 +948,14 @@ Version %@ (%@)" = "嘿！你真棒！
 "You have no food" = "你没有任何食物";
 
 /* No comment provided by engineer. */
-"You will become a %@." = "您将成为 %@。";
+"You raised a mount!" = "你培养了一匹坐骑";
 
 /* No comment provided by engineer. */
-"You wrestle with the Armoire and gain %@ Experience. Take that!" = "您和衣橱打斗了一番并获得了%@经验值。拿好嘞！";
+"You will become a %@." = "您将成为 %@。";
 
 /* No comment provided by engineer. */
 "Your pet eats the %@ but doesn't seem to enjoy it." = "你的宠物吃了 %@ ，但好像并不喜欢。";
 
 /* No comment provided by engineer. */
-"Your pet really likes the %@" = "你的宠物很喜欢你给的 %@ ！";
-
-/* No comment provided by engineer. */
-"email" = "电子邮件";
-
-/* No comment provided by engineer. */
 "equipped" = "已装备";
 
-
-"Health: +%.1f\nMana: -%ld" = "Health: +%.1f\nMana: -%ld";
-"Gold: +%.1f\nMana: -%ld" = "Gold: +%.1f\nMana: -%ld";
-"Mana: -%ld" = "Mana: -%ld";

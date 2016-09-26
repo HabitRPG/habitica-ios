@@ -40,9 +40,6 @@
 /* Class = "UILabel"; text = "Members"; ObjectID = "OG6-95-cJg"; */
 "OG6-95-cJg.text" = "חברים";
 
-/* Class = "UILabel"; text = "No active quest"; ObjectID = "Q1q-8Q-sgW"; */
-"Q1q-8Q-sgW.text" = "אין הרפתקאות פעילות";
-
 /* Class = "UIBarButtonItem"; title = "Accept Guidelines"; ObjectID = "Qsp-FO-gTG"; */
 "Qsp-FO-gTG.title" = "קבלת הנחיות";
 
@@ -55,9 +52,6 @@
 /* Class = "UILabel"; text = "Write Message"; ObjectID = "WNb-BJ-2TY"; */
 "WNb-BJ-2TY.text" = "כתבו הודעה";
 
-/* Class = "UILabel"; text = "Subtitle"; ObjectID = "Zn4-yO-HSS"; */
-"Zn4-yO-HSS.text" = "כותרת משנה";
-
 /* Class = "UILabel"; text = "Want to join a party? Give them your User ID:"; ObjectID = "aFq-c1-alj"; */
 "aFq-c1-alj.text" = "רוצים להצטרף לחבורה? תנו להם את מזהה המשתמש שלכם:";
 
@@ -68,9 +62,6 @@
 
 /* Class = "UINavigationItem"; title = "Guilds"; ObjectID = "c0I-zN-kPF"; */
 "c0I-zN-kPF.title" = "גילדות";
-
-/* Class = "UILabel"; text = "Leave the Inn"; ObjectID = "c3c-Jm-9HB"; */
-"c3c-Jm-9HB.text" = "עזבו את האכסנייה";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "cHf-h0-50k"; */
 "cHf-h0-50k.text" = "תווית";

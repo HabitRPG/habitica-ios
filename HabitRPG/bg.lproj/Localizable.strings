@@ -1,0 +1,1127 @@
+/* No comment provided by engineer. */
+" Unlock Set for %@ Gems " = " Отключване на комплекта за %@ диаманта ";
+
+/* No comment provided by engineer. */
+"%.2f Gold" = "%.2f злато";
+
+/* No comment provided by engineer. */
+"%@ Gems" = "%@ диаманта";
+
+/* No comment provided by engineer. */
+"%@ Members" = "%@ членове";
+
+/* No comment provided by engineer. */
+"%@ Participants" = "%@ участници";
+
+/* No comment provided by engineer. */
+"%d out of %d responded" = "%1$d от %2$d са отговорили";
+
+/* more than one filter */
+"%ld Filters" = "%ld филтъра";
+
+/* No comment provided by engineer. */
+"1 Filter" = "1 филтър";
+
+/* No comment provided by engineer. */
+"1 Participant" = "1 участник";
+
+/* 1Password App Extension Error Message */
+"1Password Extension was cancelled by the user" = "Разширението на „1Password“ беше отказано от потребителя";
+
+/* No comment provided by engineer. */
+"10 min cardio" = "10 мин аеробни упражнения";
+
+/* No comment provided by engineer. */
+"10 minutes cleaning" = "10 мин чистене";
+
+/* No comment provided by engineer. */
+"API" = "ППИ";
+
+/* No comment provided by engineer. */
+"API Key" = "Ключ за ППИ";
+
+/* No comment provided by engineer. */
+"Abort" = "Прекъсване";
+
+/* No comment provided by engineer. */
+"About" = "Относно";
+
+/* No comment provided by engineer. */
+"Accept" = "Приемане";
+
+/* No comment provided by engineer. */
+"Accepted" = "Прието";
+
+/* No comment provided by engineer. */
+"Account Details" = "Подробности за профила";
+
+/* No comment provided by engineer. */
+"Acknowledgements" = "Благодарности";
+
+/* No comment provided by engineer. */
+"Actions" = "Действия";
+
+/* No comment provided by engineer. */
+"Active" = "Незавършени";
+
+/* No comment provided by engineer. */
+"Add %@" = "Добавяне на %@";
+
+/* No comment provided by engineer. */
+"Add a User ID" = "Добавяне на потр. ид.";
+
+/* No comment provided by engineer. */
+"Add a new checklist item" = "Добавяне на нова подзадача";
+
+/* No comment provided by engineer. */
+"Add a new reminder" = "Добавяне на ново напомняне";
+
+/* No comment provided by engineer. */
+"Add an Email" = "Добавяне на е-поща";
+
+/* No comment provided by engineer. */
+"All" = "Всички";
+
+/* No comment provided by engineer. */
+"Allocated" = "Разпределени";
+
+/* No comment provided by engineer. */
+"Animal Ears" = "Животински уши";
+
+/* 1Password App Extension Error Message */
+"App Extension API is not available in this version of iOS" = "ППИ за разширения на приложението не е наличен в тази версия на iOS";
+
+/* No comment provided by engineer. */
+"App Version: %@
+" = "Версия на приложението: %@
+";
+
+/* No comment provided by engineer. */
+"Are you sure?" = "Сигурен/на ли сте?";
+
+/* No comment provided by engineer. */
+"Armor" = "Броня";
+
+/* No comment provided by engineer. */
+"Attributes" = "Атрибути";
+
+/* Noun */
+"Authentication" = "Удостоверяване";
+
+/* No comment provided by engineer. */
+"Authentication Cancelled" = "Удостоверяването е отказано";
+
+/* No comment provided by engineer. */
+"Authentication Error" = "Грешка при удостоверяването";
+
+/* No comment provided by engineer. */
+"Back" = "Назад";
+
+/* No comment provided by engineer. */
+"Background" = "Фон";
+
+/* No comment provided by engineer. */
+"Bangs" = "Бретон";
+
+/* No comment provided by engineer. */
+"Base" = "Основа";
+
+/* No comment provided by engineer. */
+"Base Mounts" = "Обикновени превози";
+
+/* No comment provided by engineer. */
+"Base Pets" = "Обикновени любимци";
+
+/* No comment provided by engineer. */
+"Battle Gear" = "Бойно снаряжение";
+
+/* No comment provided by engineer. */
+"Beard" = "Брада";
+
+/* No comment provided by engineer. */
+"Become a %@" = "Станете %@";
+
+/* No comment provided by engineer. */
+"Body" = "Тяло";
+
+/* No comment provided by engineer. */
+"Boosts" = "Подсилки";
+
+/* No comment provided by engineer. */
+"Buy" = "Купуване";
+
+/* No comment provided by engineer. */
+"Buy %@ for %@ %@?" = "Купуване на %1$@ за %2$@ %3$@?";
+
+/* No comment provided by engineer. */
+"By accomplishing your real-life goals, you've grown to Level %ld!" = "Изпълнявайки целите си в истинския живот, Вие достигнахте ниво %ld!";
+
+/* No comment provided by engineer. */
+"By completing your tasks, you've earned a faithful steed!" = "Изпълнявайки задачите си, Вие спечелихте верен жребец!";
+
+/* No comment provided by engineer. */
+"CON %@" = "ЯКО %@";
+
+/* No comment provided by engineer. */
+"Can't cast a spell on a challenge task." = "Не може да правите заклинания върху задачи от предизвикателства.";
+
+/* No comment provided by engineer. */
+"Cancel" = "Отказ";
+
+/* No comment provided by engineer. */
+"Cast Spells" = "Изпълняване на заклинания";
+
+/* No comment provided by engineer. */
+"Change Class" = "Промяна на класа";
+
+/* No comment provided by engineer. */
+"Chat" = "Чат";
+
+/* No comment provided by engineer. */
+"Check in with team" = "Да проверя какво прави екипът";
+
+/* No comment provided by engineer. */
+"Choose a hair color!" = "Изберете цвят за косата!";
+
+/* No comment provided by engineer. */
+"Choose a hairstyle!" = "Изберете прическа!";
+
+/* No comment provided by engineer. */
+"Choose a skin color!" = "Изберете цвят за кожата!";
+
+/* No comment provided by engineer. */
+"Choose your outfit! (You'll unlock more outfits soon.)" = "Изберете облеклото си! (Скоро ще отключоте още облекла.)";
+
+/* No comment provided by engineer. */
+"Chores" = "Домакинска работа";
+
+/* No comment provided by engineer. */
+"Class-Bonus" = "Класов бонус";
+
+/* No comment provided by engineer. */
+"Clear Cache" = "Изчистване на кеша";
+
+/* No comment provided by engineer. */
+"Close" = "Затваряне";
+
+/* No comment provided by engineer. */
+"Color" = "Цвят";
+
+/* No comment provided by engineer. */
+"Complete" = "Завършване";
+
+/* No comment provided by engineer. */
+"Complete Team Project" = "Да завърша екипния проект";
+
+/* No comment provided by engineer. */
+"Connection Error" = "Грешка при свързването";
+
+/* No comment provided by engineer. */
+"Costume" = "Костюм";
+
+/* No comment provided by engineer. */
+"Couldn't connect to the server. Check your network connection" = "Неуспешно свързване със сървъра. Проверете връзката си с мрежата";
+
+/* No comment provided by engineer. */
+"Create Tag" = "Създаване на етикет";
+
+/* No comment provided by engineer. */
+"Creativity" = "Изобретателност";
+
+/* No comment provided by engineer. */
+"Current streak: %@" = "Текуща серия: %@";
+
+/* No comment provided by engineer. */
+"Custom Day Start" = "Персонализирано начало на деня";
+
+/* No comment provided by engineer. */
+"Customize Avatar" = "Персонализиране на героя";
+
+/* No comment provided by engineer. */
+"Daily" = "Ежедневна задача";
+
+/* No comment provided by engineer. */
+"Daily Reminder" = "Ежедневно напомняне";
+
+/* No comment provided by engineer. */
+"Dated" = "Закъснели";
+
+/* No comment provided by engineer. */
+"Day Start" = "Начало на деня";
+
+/* No comment provided by engineer. */
+"Declined" = "Отказано";
+
+/* No comment provided by engineer. */
+"Description" = "Описание";
+
+/* No comment provided by engineer. */
+"Difficulty" = "Трудност";
+
+/* No comment provided by engineer. */
+"Disable Private Messages" = "Забраняване на личните съобщения";
+
+/* No comment provided by engineer. */
+"Disable all Push Notifications" = "Забраняване на всички известия";
+
+/* No comment provided by engineer. */
+"Do homework" = "Да напиша домашното си";
+
+/* No comment provided by engineer. */
+"Done" = "Завършени";
+
+/* No comment provided by engineer. */
+"Due" = "За изпълнение";
+
+/* No comment provided by engineer. */
+"Due %@" = "Срок: %@";
+
+/* No comment provided by engineer. */
+"Due Date" = "Крайна дата";
+
+/* No comment provided by engineer. */
+"Due in %d days" = "Краен срок — след %d дни";
+
+/* No comment provided by engineer. */
+"Due today" = "Краен срок — днес";
+
+/* No comment provided by engineer. */
+"Due tomorrow" = "Краен срок — утре";
+
+/* No comment provided by engineer. */
+"ERROR" = "ГРЕШКА";
+
+/* No comment provided by engineer. */
+"Each reminder notifies on the days the daily is active." = "Всяко напомняне Ви подсеща в дните, в които ежедневната задача трябва да бъде изпълнена.";
+
+/* No comment provided by engineer. */
+"Earn items by completing tasks and leveling up. Tap on an item to use it!" = "Печелете предмети като изпълнявате задачи и качвате нива. Докоснете предмет, за да го използвате!";
+
+/* No comment provided by engineer. */
+"Easy" = "Лесно";
+
+/* No comment provided by engineer. */
+"Eat healthy/junk food" = "Да ям полезна/вредна храна";
+
+/* No comment provided by engineer. */
+"Edit %@" = "Редактиране на %@";
+
+/* No comment provided by engineer. */
+"Edit Party" = "Редактиране на групата";
+
+/* No comment provided by engineer. */
+"Edit Reward" = "Редактиране на наградата";
+
+/* No comment provided by engineer. */
+"Edit Tag" = "Редактиране на етикета";
+
+/* No comment provided by engineer. */
+"Email" = "E-поща";
+
+/* No comment provided by engineer. */
+"Email / Username" = "Е-поща / потребителско име";
+
+/* No comment provided by engineer. */
+"Email already taken." = "Е-пощата вече се използва.";
+
+/* No comment provided by engineer. */
+"Emails" = "Е-писма";
+
+/* No comment provided by engineer. */
+"Enable Class System" = "Включване на класовата система";
+
+/* No comment provided by engineer. */
+"Enter" = "Вход";
+
+/* No comment provided by engineer. */
+"Equip" = "Екипиране";
+
+/* No comment provided by engineer. */
+"Equipment" = "Екипировка";
+
+/* No comment provided by engineer. */
+"Equipment pieces remaining: %d" = "Оставащи предмети: %d";
+
+/* No comment provided by engineer. */
+"Error" = "Грешка";
+
+/* No comment provided by engineer. */
+"Every x days" = "На всеки Х дни";
+
+/* No comment provided by engineer. */
+"Exercise" = "Упражнения";
+
+/* No comment provided by engineer. */
+"Experience" = "Опит";
+
+/* No comment provided by engineer. */
+"Eyewear" = "Предмет за очи";
+
+/* 1Password App Extension Error Message */
+"Failed to contacting the 1Password App Extension" = "Неуспешно свързване с разширението на „1Password“";
+
+/* 1Password App Extension Error Message */
+"Failed to execute script that collects web page information" = "Неуспешно изпълнение на скрипта, който събира информация от страницата";
+
+/* 1Password App Extension Error Message */
+"Failed to fill web page because script could not be evaluated" = "Неуспешно попълване на страницата, тъй като скриптът не може да бъде изпълнен";
+
+/* 1Password App Extension Error Message */
+"Failed to fill web page because script is missing" = "Неуспешно попълване на страницата, тъй като скриптът липсва";
+
+/* 1Password App Extension Error Message */
+"Failed to parse information returned by 1Password App Extension" = "Неуспешно прочитане на информацията, върната от разширението на „1Password“";
+
+/* No comment provided by engineer. */
+"Feed" = "Хранене";
+
+/* No comment provided by engineer. */
+"Filter" = "Филтриране";
+
+/* No comment provided by engineer. */
+"Finish assignment for class " = "Да напиша домашното за училище";
+
+/* No comment provided by engineer. */
+"Finish creative project" = "Да завърша проекта си";
+
+/* No comment provided by engineer. */
+"Floss" = "Да изчистя зъбите си с конец";
+
+/* No comment provided by engineer. */
+"Flower" = "Цвете";
+
+/* No comment provided by engineer. */
+"Frequency" = "Честота";
+
+/* No comment provided by engineer. */
+"Friday" = "Петък";
+
+/* No comment provided by engineer. */
+"Gems" = "Диаманти";
+
+/* No comment provided by engineer. */
+"Get Social and Fight Monsters" = "Общност и битки с чудовища";
+
+/* No comment provided by engineer. */
+"Gifted Gems" = "Подарени диаманти";
+
+/* No comment provided by engineer. */
+"Gifted Subscription" = "Подарен абонамент";
+
+/* No comment provided by engineer. */
+"Go Back" = "Назад";
+
+/* No comment provided by engineer. */
+"Gold: +%.1f
+Mana: -%ld" = "Злато: +%1$.1f
+Мана: -%2$ld";
+
+/* No comment provided by engineer. */
+"Got it" = "Разбрано";
+
+/* No comment provided by engineer. */
+"Grey" = "Изпълнени";
+
+/* No comment provided by engineer. */
+"Guilds" = "Гилдии";
+
+/* No comment provided by engineer. */
+"Habit" = "Навик";
+
+/* No comment provided by engineer. */
+"Hair" = "Коса";
+
+/* No comment provided by engineer. */
+"Hard" = "Трудно";
+
+/* No comment provided by engineer. */
+"Has a due date" = "Има краен срок";
+
+/* No comment provided by engineer. */
+"Hatch Egg" = "Излюпване на яйце";
+
+/* No comment provided by engineer. */
+"Hatch with Potion" = "Излюпване с отвара";
+
+/* No comment provided by engineer. */
+"Head" = "Глава";
+
+/* No comment provided by engineer. */
+"Head Accessory" = "Аксесоар за глава";
+
+/* No comment provided by engineer. */
+"Healer" = "Лечител";
+
+/* No comment provided by engineer. */
+"Health" = "Здраве";
+
+/* No comment provided by engineer. */
+"Health + Wellness" = "Здравословно състояние";
+
+/* No comment provided by engineer. */
+"Health: +%.1f
+Mana: -%ld" = "Здраве: +%1$.1f
+Мана: -%2$ld";
+
+/* No comment provided by engineer. */
+"Help & FAQ" = "Помощ и ЧЗВ";
+
+/* No comment provided by engineer. */
+"Hey! You are awesome!
+Version %@ (%@)" = "Хей! Вие сте страхотен/на!
+Версия %1$@ (%2$@)";
+
+/* No comment provided by engineer. */
+"Hold down on a task to drag it around." = "Задръжте пръст върху задача, за да я преместите.";
+
+/* No comment provided by engineer. */
+"Huzzah!" = "Ура!";
+
+/* No comment provided by engineer. */
+"I got to level %ld in Habitica by improving my real-life habits!" = "Достигнах ниво %ld в Хабитика, като подобрих навиците си в истинския живот!";
+
+/* No comment provided by engineer. */
+"I want to become a %@" = "Искам да стана %@";
+
+/* No comment provided by engineer. */
+"I want to opt-out" = "Искам да се откажа";
+
+/* No comment provided by engineer. */
+"INT %@" = "ИНТ %@";
+
+/* No comment provided by engineer. */
+"Inbox" = "Входяща поща";
+
+/* No comment provided by engineer. */
+"Invalid E-Mail Address." = "Грешен адрес на е-поща.";
+
+/* No comment provided by engineer. */
+"Invalid Habitica User ID" = "Грешен потребителски ид.";
+
+/* No comment provided by engineer. */
+"Invalid username or password" = "Грешно потребителско име или парола";
+
+/* No comment provided by engineer. */
+"Inventory" = "Чанта";
+
+/* No comment provided by engineer. */
+"Invitation Error" = "Грешка в покатана";
+
+/* No comment provided by engineer. */
+"Invitation Successful" = "Поканата е успешна";
+
+/* No comment provided by engineer. */
+"Invitation Type" = "Вид на поканата";
+
+/* No comment provided by engineer. */
+"Invite" = "Покана";
+
+/* No comment provided by engineer. */
+"Invite Friends" = "Канене на приятели";
+
+/* No comment provided by engineer. */
+"Invite Members" = "Канене на членове";
+
+/* No comment provided by engineer. */
+"Invite Party" = "Канене на групата";
+
+/* No comment provided by engineer. */
+"Invited To Guild" = "Покана в гилдия";
+
+/* No comment provided by engineer. */
+"Invited To Party" = "Покана в група";
+
+/* No comment provided by engineer. */
+"Invited To Quest" = "Покана за мисия";
+
+/* No comment provided by engineer. */
+"Invited to %@" = "Покана за %@";
+
+/* No comment provided by engineer. */
+"Items" = "Предмети";
+
+/* No comment provided by engineer. */
+"Join" = "Присъединяване";
+
+/* No comment provided by engineer. */
+"Last logged in" = "Последно влизане на";
+
+/* No comment provided by engineer. */
+"Leader" = "Водач";
+
+/* No comment provided by engineer. */
+"Leave" = "Напускане";
+
+/* No comment provided by engineer. */
+"Leave Group" = "Напускане на групата";
+
+/* No comment provided by engineer. */
+"Leave a Review" = "Напишете рецензия";
+
+/* No comment provided by engineer. */
+"Level" = "Ниво";
+
+/* No comment provided by engineer. */
+"Level %@" = "Ниво %@";
+
+/* No comment provided by engineer. */
+"Level %@ %@" = "Ниво %1$@ %2$@";
+
+/* No comment provided by engineer. */
+"Local" = "Местно";
+
+/* No comment provided by engineer. */
+"Log Out" = "Изход";
+
+/* No comment provided by engineer. */
+"Log in" = "Вход";
+
+/* No comment provided by engineer. */
+"Login Methods" = "Начини на влизане";
+
+/* No comment provided by engineer. */
+"Login name" = "Потребителско име";
+
+/* No comment provided by engineer. */
+"Mage" = "Магьосник";
+
+/* No comment provided by engineer. */
+"Maintenance" = "Профилактика";
+
+/* No comment provided by engineer. */
+"Mana" = "Мана";
+
+/* No comment provided by engineer. */
+"Mana: -%ld" = "Мана: -%ld";
+
+/* No comment provided by engineer. */
+"Market" = "Паза";
+
+/* No comment provided by engineer. */
+"Medium" = "Средно";
+
+/* No comment provided by engineer. */
+"Member Since" = "Потребител от";
+
+/* No comment provided by engineer. */
+"Mental" = "Умствена";
+
+/* No comment provided by engineer. */
+"Menu" = "Меню";
+
+/* No comment provided by engineer. */
+"Monday" = "Понеделник";
+
+/* No comment provided by engineer. */
+"Most important task" = "Най-важната задача";
+
+/* No comment provided by engineer. */
+"Mount" = "Превоз";
+
+/* No comment provided by engineer. */
+"Mount Type" = "Вид на превоза";
+
+/* No comment provided by engineer. */
+"Mounts" = "Превози";
+
+/* No comment provided by engineer. */
+"Mustache" = "Мустак";
+
+/* No comment provided by engineer. */
+"My Guilds" = "Моите гилдии";
+
+/* No comment provided by engineer. */
+"Name" = "Име";
+
+/* No comment provided by engineer. */
+"Negative (-)" = "Отрицателен (-)";
+
+/* No comment provided by engineer. */
+"Network error" = "Мрежова грешка";
+
+/* No comment provided by engineer. */
+"New Party" = "Нова група";
+
+/* No comment provided by engineer. */
+"New Reward" = "Нова награда";
+
+/* No comment provided by engineer. */
+"News" = "Новини";
+
+/* No comment provided by engineer. */
+"No" = "Не";
+
+/* No comment provided by engineer. */
+"Notes" = "Бележки";
+
+/* No comment provided by engineer. */
+"Nothing Equipped" = "Няма нищо екипирано";
+
+/* No comment provided by engineer. */
+"Nothing Set" = "Няма нищо";
+
+/* No comment provided by engineer. */
+"Nothing equipped" = "Няма нищо екипирано";
+
+/* No comment provided by engineer. */
+"OK" = "Добре";
+
+/* No comment provided by engineer. */
+"On certain days of the week" = "В определени дни от седмицата";
+
+/* No comment provided by engineer. */
+"Once a quest is started, no other party members can join the quest." = "След като мисията започне, никой повече няма да може да се присъедини към нея.";
+
+/* No comment provided by engineer. */
+"Open App Store page" = "Отваряне на страницата в магазина";
+
+/* No comment provided by engineer. */
+"Opt-Out" = "Отказване";
+
+/* No comment provided by engineer. */
+"Organize Closet" = "Да подредя килера";
+
+/* No comment provided by engineer. */
+"Other" = "Други";
+
+/* No comment provided by engineer. */
+"PER %@" = "УСЕ %@";
+
+/* No comment provided by engineer. */
+"Participants" = "Участници";
+
+/* No comment provided by engineer. */
+"Party" = "Група";
+
+/* No comment provided by engineer. */
+"Passwords don't match." = "Паролите не съвпадат.";
+
+/* No comment provided by engineer. */
+"Pause your Dailies" = "Пауза на ежедневните";
+
+/* No comment provided by engineer. */
+"Pending" = "В очакване";
+
+/* No comment provided by engineer. */
+"Pet Type" = "Вид на любимеца";
+
+/* No comment provided by engineer. */
+"Pets" = "Любимци";
+
+/* No comment provided by engineer. */
+"Physical" = "Физическа";
+
+/* No comment provided by engineer. */
+"Positive (+)" = "Положителен (+)";
+
+/* No comment provided by engineer. */
+"Process email" = "Обработка на е-поща";
+
+/* No comment provided by engineer. */
+"Profile" = "Профил";
+
+/* No comment provided by engineer. */
+"Public Guilds" = "Обществени гилдии";
+
+/* No comment provided by engineer. */
+"Purchase for %@ Gems" = "Купуване за %@ диаманта";
+
+/* No comment provided by engineer. */
+"Purchase for 2 Gems" = "Купуване за 2 диаманта";
+
+/* No comment provided by engineer. */
+"Push Notifications" = "Известия";
+
+/* No comment provided by engineer. */
+"Quest" = "Мисия";
+
+/* No comment provided by engineer. */
+"Quest Detail" = "Подробности за мисията";
+
+/* No comment provided by engineer. */
+"Quest Invitation" = "Покана за мисия";
+
+/* No comment provided by engineer. */
+"Quest Mounts" = "Превози от мисии";
+
+/* No comment provided by engineer. */
+"Quest Pets" = "Любимци от мисии";
+
+/* No comment provided by engineer. */
+"Quests" = "Мисии";
+
+/* No comment provided by engineer. */
+"Reactivate your Dailies" = "Включване на ежедневните";
+
+/* No comment provided by engineer. */
+"Received Private Message" = "Получихте лично съобщение";
+
+/* No comment provided by engineer. */
+"Recipient" = "Получател";
+
+/* No comment provided by engineer. */
+"Register" = "Регистрация";
+
+/* No comment provided by engineer. */
+"Reject" = "Отхвърляне";
+
+/* No comment provided by engineer. */
+"Reload Content" = "Презареждане на съдържанието";
+
+/* No comment provided by engineer. */
+"Remember to check off your Dailies!" = "Не забравяйте да изпълнявате ежедневните си задачи!";
+
+/* No comment provided by engineer. */
+"Remind me tomorrow" = "Напомнете ми утре";
+
+/* No comment provided by engineer. */
+"Reminder" = "Напомняне";
+
+/* No comment provided by engineer. */
+"Reminders" = "Напямняния";
+
+/* No comment provided by engineer. */
+"Repeat every X days" = "Повтаряне на всеки Х дни";
+
+/* No comment provided by engineer. */
+"Reply" = "Отговор";
+
+/* No comment provided by engineer. */
+"Report" = "Докладване";
+
+/* No comment provided by engineer. */
+"Report %@ for violation?" = "Докладване на %@ за нарушение?";
+
+/* No comment provided by engineer. */
+"Report a bug" = "Докладване на проблем";
+
+/* No comment provided by engineer. */
+"Reset Justins Tips" = "Нулиране на съветите на Джъстин";
+
+/* No comment provided by engineer. */
+"Rogue" = "Мошеник";
+
+/* No comment provided by engineer. */
+"STR %@" = "СИЛ %@";
+
+/* No comment provided by engineer. */
+"Saturday" = "Събота";
+
+/* No comment provided by engineer. */
+"Save" = "Запазване";
+
+/* No comment provided by engineer. */
+"Scan QR Code" = "Сканиране на QR-код";
+
+/* No comment provided by engineer. */
+"Schedule check-up" = "Да се запиша за преглед";
+
+/* No comment provided by engineer. */
+"School" = "Училище";
+
+/* No comment provided by engineer. */
+"Seasonal Shop" = "Сезонен магазин";
+
+/* No comment provided by engineer. */
+"Select Attributes" = "Изберете атрибути";
+
+/* No comment provided by engineer. */
+"Select Class" = "Изберете клас";
+
+/* No comment provided by engineer. */
+"Select Difficulty" = "Изберете трудност";
+
+/* No comment provided by engineer. */
+"Select Frequency" = "Изберете честота";
+
+/* No comment provided by engineer. */
+"Sell (%@ Gold)" = "Продаване (%@ злато)";
+
+/* No comment provided by engineer. */
+"Send feedback" = "Изпращане на отзиви";
+
+/* No comment provided by engineer. */
+"Server error" = "Сървърна грешка";
+
+/* No comment provided by engineer. */
+"Set up workout schedule" = "Да организирам тренировките си";
+
+/* No comment provided by engineer. */
+"Settings" = "Настройки";
+
+/* No comment provided by engineer. */
+"Shield" = "Щит";
+
+/* No comment provided by engineer. */
+"Shirt" = "Риза";
+
+/* No comment provided by engineer. */
+"Shops" = "Магазини";
+
+/* No comment provided by engineer. */
+"Size" = "Размер";
+
+/* No comment provided by engineer. */
+"Skin" = "Кожа";
+
+/* No comment provided by engineer. */
+"Sleep tight!" = "Лека нощ!";
+
+/* No comment provided by engineer. */
+"Social" = "Общност";
+
+/* No comment provided by engineer. */
+"Special Mounts" = "Специални превози";
+
+/* No comment provided by engineer. */
+"Special Pets" = "Специални любимци";
+
+/* No comment provided by engineer. */
+"Stretching" = "Разтягане";
+
+/* No comment provided by engineer. */
+"Strong" = "Устойчиви";
+
+/* No comment provided by engineer. */
+"Study a master of the craft" = "Да се уча от майстор в занаята";
+
+/* No comment provided by engineer. */
+"Study/Procrastinate" = "Учене/отлагане";
+
+/* No comment provided by engineer. */
+"Suggested Guilds" = "Предложени гилдии";
+
+/* No comment provided by engineer. */
+"Sunday" = "Неделя";
+
+/* No comment provided by engineer. */
+"Tags" = "Етикети";
+
+/* No comment provided by engineer. */
+"Tap a task to edit it and add reminders. Swipe left to delete it." = "Докоснете задача, за да я редактирате или добавите напомняния. Плъзнете я наляво, за да я изтриете.";
+
+/* No comment provided by engineer. */
+"Tap to add a new task." = "Докоснете за добавяне на нова задача.";
+
+/* No comment provided by engineer. */
+"Tap to change how your pets are grouped." = "Докоснете за промяна на групирането на любимците си.";
+
+/* No comment provided by engineer. */
+"Tap to edit task, change notification time, or delete." = "Докоснете, за да редактирате задача, да промените времето на известяване или да я изтриете.";
+
+/* No comment provided by engineer. */
+"Tap to filter tasks." = "Докоснете, за да филтрирате задачите.";
+
+/* No comment provided by engineer. */
+"Tap to invite friends and view party members." = "Докоснете, за да поканите приятели или да видите членовете на групата си.";
+
+/* No comment provided by engineer. */
+"Tavern" = "Кръчма";
+
+/* No comment provided by engineer. */
+"Teams" = "Екипи";
+
+/* No comment provided by engineer. */
+"Text" = "Текст";
+
+/* No comment provided by engineer. */
+"The authentication process was cancelled." = "Процесът на удостоверяване беше прекъснат.";
+
+/* No comment provided by engineer. */
+"The scanned QR-Code did not contain a valid Habitica User ID." = "Сканираният QR-код не съдържа правилен потребителски идентификатор за Хабитика.";
+
+/* No comment provided by engineer. */
+"The users were invited to your party" = "Потребителите бяха поканени в групата Ви";
+
+/* No comment provided by engineer. */
+"There seems to be a problem with the server. Try again later" = "Изглежда има проблем със сървъра. Опитайте отново по-късно.";
+
+/* No comment provided by engineer. */
+"There was an error verifying your purchase" = "Възникна грешка при потвърждаването на покупката Ви";
+
+/* No comment provided by engineer. */
+"There was an error with the authentication. Try again later" = "Възникна грешка с удостоверяването. Опитайте отново по.късно";
+
+/* No comment provided by engineer. */
+"There was an error with your request: %@" = "Имаше грешка със заявката Ви: %@";
+
+/* No comment provided by engineer. */
+"This item can be purchased for %@ Gems" = "Този предмет може да бъде купен за %@ диаманта";
+
+/* No comment provided by engineer. */
+"This item can be purchased for 2 Gems" = "Този предмет може да бъде купен за 2 диаманта";
+
+/* No comment provided by engineer. */
+"This set can be unlocked for %@ Gems" = "Този комплект може да бъде отключен за %@ диаманта";
+
+/* No comment provided by engineer. */
+"Thursday" = "Четвъртък";
+
+/* No comment provided by engineer. */
+"Time Travelers" = "Пътешественици във времето";
+
+/* No comment provided by engineer. */
+"To-Do" = "Задача";
+
+/* No comment provided by engineer. */
+"Trivial" = "Елементарно";
+
+/* No comment provided by engineer. */
+"Tuesday" = "Вторник";
+
+/* No comment provided by engineer. */
+"Unequip" = "Разекипиране";
+
+/* No comment provided by engineer. */
+"Unlock for %@ Gems" = "Отключване за %@ диаманта";
+
+/* No comment provided by engineer. */
+"Unmount" = "Слизане";
+
+/* No comment provided by engineer. */
+"Update team on status" = "Да уведомя екипа за напредъка си";
+
+/* No comment provided by engineer. */
+"Use" = "Използване";
+
+/* No comment provided by engineer. */
+"Use Skills" = "Използване на умения";
+
+/* No comment provided by engineer. */
+"User" = "Потребител";
+
+/* No comment provided by engineer. */
+"User ID" = "Потр. идент.";
+
+/* No comment provided by engineer. */
+"Username" = "Потребителско име";
+
+/* No comment provided by engineer. */
+"Username already taken." = "Потребителското име е заето.";
+
+/* No comment provided by engineer. */
+"Validation Error" = "Грешка при проверката";
+
+/* No comment provided by engineer. */
+"Value" = "Стойност";
+
+/* No comment provided by engineer. */
+"Version" = "Версия";
+
+/* No comment provided by engineer. */
+"View Source Code" = "Преглед на изходния код";
+
+/* No comment provided by engineer. */
+"Visibility" = "Видимост";
+
+/* No comment provided by engineer. */
+"Wakey Wakey!" = "Събудете се!";
+
+/* No comment provided by engineer. */
+"Warrior" = "Воин";
+
+/* No comment provided by engineer. */
+"Wash Dishes" = "Да измия чиниите";
+
+/* No comment provided by engineer. */
+"We love open source software." = "Ние обичаме софтуера с отворен код.";
+
+/* No comment provided by engineer. */
+"Weak" = "Неустойчиви";
+
+/* No comment provided by engineer. */
+"Weapon" = "Оръжие";
+
+/* No comment provided by engineer. */
+"Wear costume" = "Носене на костюм";
+
+/* No comment provided by engineer. */
+"Website" = "Уеб сайт";
+
+/* No comment provided by engineer. */
+"Wednesday" = "Сряда";
+
+/* No comment provided by engineer. */
+"Weekly" = "Ежеседмична";
+
+/* No comment provided by engineer. */
+"Welcome" = "Добре дошли";
+
+/* No comment provided by engineer. */
+"Welcome to Habitica" = "Добре дошли в Хабитика";
+
+/* No comment provided by engineer. */
+"Work" = "Работа";
+
+/* No comment provided by engineer. */
+"Work on creative project" = "Да работя по проекта си";
+
+/* No comment provided by engineer. */
+"Work project" = "Работен проект";
+
+/* No comment provided by engineer. */
+"Write Message" = "Напишете съобщение";
+
+/* No comment provided by engineer. */
+"Write to %@" = "Пишете на %@";
+
+/* No comment provided by engineer. */
+"Yes" = "Да";
+
+/* No comment provided by engineer. */
+"You gained a level!" = "Вдигнахте ниво!";
+
+/* No comment provided by engineer. */
+"You hatched a %@ %@!" = "Вие излюпихте %1$@ %2$@!";
+
+/* No comment provided by engineer. */
+"You have no food" = "Нямате храна";
+
+/* No comment provided by engineer. */
+"You have to specify a valid Habitica User ID as recipient." = "Трябва да посочите като получател правилен потр. ид. за Хабитика.";
+
+/* No comment provided by engineer. */
+"You purchased %@" = "Вие закупихте %@";
+
+/* No comment provided by engineer. */
+"You purchased the set." = "Вие закупихте комплекта.";
+
+/* No comment provided by engineer. */
+"You raised a mount!" = "Вие отгледахте превоз!";
+
+/* No comment provided by engineer. */
+"You will become a %@." = "Вие ще станете %@.";
+
+/* No comment provided by engineer. */
+"You won a Challenge!" = "Вие спечелихте предизвикателство!";
+
+/* No comment provided by engineer. */
+"Your Quest has Begun" = "Мисията Ви започна";
+
+/* No comment provided by engineer. */
+"Your message could not be sent." = "Съобщението Ви не може да бъде изпратено.";
+
+/* No comment provided by engineer. */
+"Your pet eats the %@ but doesn't seem to enjoy it." = "Вие дадохте %@ на любимеца си, но това никак не му/ѝ хареса.";
+
+/* No comment provided by engineer. */
+"Your pet really likes the %@!" = "Любимецът Ви много харесва %@!";
+
+/* No comment provided by engineer. */
+"equipped" = "екипирано";
+
+/* Singular */
+"gem" = "диамант";
+
+/* Plural */
+"gems" = "диаманти";
+
+/* Singular */
+"gold" = "злато";
+
+/* Singular */
+"hourglass" = "пясъчен часовник";
+
+/* Plural */
+"hourglasses" = "пясъчни часовници";
+

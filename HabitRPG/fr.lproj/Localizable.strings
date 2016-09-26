@@ -5,10 +5,13 @@
 "%.2f Gold" = "%.2f or";
 
 /* No comment provided by engineer. */
-"%@ Members" = "%@ Membres";
+"%@ Gems" = "%@ Gemmes";
 
 /* No comment provided by engineer. */
-"%d Participants" = "%d participants";
+"%@ Members" = "%@ membres";
+
+/* No comment provided by engineer. */
+"%@ Participants" = "%@ Participants";
 
 /* No comment provided by engineer. */
 "%d out of %d responded" = "%1$d des %2$d ont répondu";
@@ -20,10 +23,10 @@
 "1 Filter" = "1 filtre";
 
 /* No comment provided by engineer. */
-"1 Participant" = "1 participant";
+"1 Participant" = "1 participant•e";
 
 /* 1Password App Extension Error Message */
-"1Password Extension was cancelled by the user" = "L'utilisateur a annulé l'extension 1Password";
+"1Password Extension was cancelled by the user" = "L'utilisateur•trice a annulé l'extension 1Password";
 
 /* No comment provided by engineer. */
 "10 min cardio" = "10 min de cardio";
@@ -80,10 +83,13 @@
 "All" = "Tous";
 
 /* No comment provided by engineer. */
+"Allocated" = "Alloué(s)";
+
+/* No comment provided by engineer. */
 "Animal Ears" = "Oreilles d'animaux";
 
 /* 1Password App Extension Error Message */
-"App Extension API is not available in this version of iOS" = "L'extension API de l'application n'est pas disponible dans cette version d'iOS";
+"App Extension API is not available in this version of iOS" = "L'API de l'extension d'application n'est pas disponible dans cette version d'iOS";
 
 /* No comment provided by engineer. */
 "App Version: %@
@@ -109,7 +115,7 @@
 "Authentication Error" = "Erreur d'authentification";
 
 /* No comment provided by engineer. */
-"Back" = "Retour";
+"Back" = "Dos";
 
 /* No comment provided by engineer. */
 "Background" = "Arrière-plan";
@@ -139,10 +145,34 @@
 "Body" = "Corps";
 
 /* No comment provided by engineer. */
+"Boosts" = "Renforce";
+
+/* No comment provided by engineer. */
+"Buy" = "Acheter";
+
+/* No comment provided by engineer. */
+"Buy %@ for %@ %@?" = "Acheter %1$@ pour %2$@ %3$@ ?";
+
+/* No comment provided by engineer. */
+"By accomplishing your real-life goals, you've grown to Level %ld!" = "En accomplissant vos tâches quotidiennes, vous avez atteint le niveau %ld !";
+
+/* No comment provided by engineer. */
+"By completing your tasks, you've earned a faithful steed!" = "En accomplissant vos tâches, vous avez gagné un fidèle coursier.";
+
+/* No comment provided by engineer. */
+"CON %@" = "CON %@";
+
+/* No comment provided by engineer. */
+"Can't cast a spell on a challenge task." = "Impossible de lancer un sort sur la tâche d'un défi.";
+
+/* No comment provided by engineer. */
 "Cancel" = "Annuler";
 
 /* No comment provided by engineer. */
 "Cast Spells" = "Lancer des sorts";
+
+/* No comment provided by engineer. */
+"Change Class" = "Changer de classe";
 
 /* No comment provided by engineer. */
 "Chat" = "Discussion";
@@ -166,6 +196,9 @@
 "Chores" = "Tâches ménagères";
 
 /* No comment provided by engineer. */
+"Class-Bonus" = "Bonus de classe";
+
+/* No comment provided by engineer. */
 "Clear Cache" = "Effacer le cache";
 
 /* No comment provided by engineer. */
@@ -175,7 +208,7 @@
 "Color" = "Couleur";
 
 /* No comment provided by engineer. */
-"Complete" = "Compléter";
+"Complete" = "Terminer";
 
 /* No comment provided by engineer. */
 "Complete Team Project" = "Finir un projet d'équipe";
@@ -188,6 +221,9 @@
 
 /* No comment provided by engineer. */
 "Couldn't connect to the server. Check your network connection" = "Impossible de se connecter au serveur. Veuillez vérifier votre connexion réseau.";
+
+/* No comment provided by engineer. */
+"Create Tag" = "Créer une étiquette";
 
 /* No comment provided by engineer. */
 "Creativity" = "Créativité";
@@ -211,7 +247,7 @@
 "Dated" = "Datées";
 
 /* No comment provided by engineer. */
-"Day Start" = "Début de journée";
+"Day Start" = "Début de la journée";
 
 /* No comment provided by engineer. */
 "Declined" = "Refusé";
@@ -221,6 +257,12 @@
 
 /* No comment provided by engineer. */
 "Difficulty" = "Difficulté";
+
+/* No comment provided by engineer. */
+"Disable Private Messages" = "Désactiver les messages privés";
+
+/* No comment provided by engineer. */
+"Disable all Push Notifications" = "Désactiver les notifications Push";
 
 /* No comment provided by engineer. */
 "Do homework" = "Faire ses devoirs";
@@ -238,19 +280,19 @@
 "Due Date" = "Date d'échéance";
 
 /* No comment provided by engineer. */
-"Due in %d days" = "À faire dans %d jours";
+"Due in %d days" = "À faire d'ici %d jours";
 
 /* No comment provided by engineer. */
 "Due today" = "À faire aujourd'hui";
 
 /* No comment provided by engineer. */
-"Due tomorrow" = "À faire demain";
+"Due tomorrow" = "À faire d'ici demain";
 
 /* No comment provided by engineer. */
 "ERROR" = "ERREUR";
 
 /* No comment provided by engineer. */
-"Each reminder notifies on the days the daily is active." = "Chaque rappel vous envoie une notification les jours où la Quotidienne est active.";
+"Each reminder notifies on the days the daily is active." = "Vous recevrez une notification pour chaque rappel, les jours où la Quotidienne est active.";
 
 /* No comment provided by engineer. */
 "Earn items by completing tasks and leveling up. Tap on an item to use it!" = "Gagnez des objets en accomplissant des tâches et en atteignant le niveau supérieur. Touchez un objet pour l'utiliser !";
@@ -271,16 +313,22 @@
 "Edit Reward" = "Modifier la Récompense";
 
 /* No comment provided by engineer. */
+"Edit Tag" = "Modifier l'étiquette";
+
+/* No comment provided by engineer. */
 "Email" = "Courriel";
 
 /* No comment provided by engineer. */
 "Email / Username" = "Courriel / Nom d'utilisateur";
 
 /* No comment provided by engineer. */
-"Email already taken." = "Courriel déjà utilisé.";
+"Email already taken." = "Courriel déjà pris.";
 
 /* No comment provided by engineer. */
 "Emails" = "Courriels";
+
+/* No comment provided by engineer. */
+"Enable Class System" = "Activer le système de classes";
 
 /* No comment provided by engineer. */
 "Enter" = "Entrer";
@@ -292,7 +340,7 @@
 "Equipment" = "Équipement";
 
 /* No comment provided by engineer. */
-"Equipment pieces remaining: %d" = "Pièces d'Équipement restantes : %d";
+"Equipment pieces remaining: %d" = "Pièces d'équipement restantes : %d";
 
 /* No comment provided by engineer. */
 "Error" = "Erreur";
@@ -310,16 +358,16 @@
 "Eyewear" = "Lunettes";
 
 /* 1Password App Extension Error Message */
-"Failed to contacting the 1Password App Extension" = "Échec de contact avec l'extension de l'application 1Password";
+"Failed to contacting the 1Password App Extension" = "Échec de connexion avec l'extension de l'application 1Password";
 
 /* 1Password App Extension Error Message */
 "Failed to execute script that collects web page information" = "Échec de l'exécution du script qui collecte les informations des pages Web";
 
 /* 1Password App Extension Error Message */
-"Failed to fill web page because script could not be evaluated" = "Impossible de remplir la page Web, car le script n'a pas pu être évalué";
+"Failed to fill web page because script could not be evaluated" = "Échec de remplissage de la page Web, impossible d'évaluer le script";
 
 /* 1Password App Extension Error Message */
-"Failed to fill web page because script is missing" = "Impossible de remplir la page Web, car le script est manquant";
+"Failed to fill web page because script is missing" = "Échec de remplissage de la page Web, script manquant";
 
 /* 1Password App Extension Error Message */
 "Failed to parse information returned by 1Password App Extension" = "Échec d'analyse des informations retournées par l'extension de l'application 1Password";
@@ -352,13 +400,24 @@
 "Gems" = "Gemmes";
 
 /* No comment provided by engineer. */
-"Get Social and Fight Monsters" = "Échanger avec des amis et combattez des monstres";
+"Get Social and Fight Monsters" = "Échangez avec des amis et combattez des monstres";
+
+/* No comment provided by engineer. */
+"Gifted Gems" = "Gemmes Offertes";
+
+/* No comment provided by engineer. */
+"Gifted Subscription" = "Abonnement Offert";
 
 /* No comment provided by engineer. */
 "Go Back" = "Retour";
 
 /* No comment provided by engineer. */
-"Got it" = "Compris";
+"Gold: +%.1f
+Mana: -%ld" = "Or : +%1$.1f
+Mana : -%2$ld";
+
+/* No comment provided by engineer. */
+"Got it" = "J'ai compris";
 
 /* No comment provided by engineer. */
 "Grey" = "Grisées";
@@ -376,7 +435,7 @@
 "Hard" = "Difficile";
 
 /* No comment provided by engineer. */
-"Has a due date" = "Date d'échéance";
+"Has a due date" = "A une date d'échéance";
 
 /* No comment provided by engineer. */
 "Hatch Egg" = "Faire éclore l'oeuf";
@@ -400,12 +459,26 @@
 "Health + Wellness" = "Santé + bien-être";
 
 /* No comment provided by engineer. */
-"Help & FAQ" = "Aide & FAQ";
+"Health: +%.1f
+Mana: -%ld" = "Santé : +%1$.1f
+Mana : -%2$ld";
+
+/* No comment provided by engineer. */
+"Help & FAQ" = "Aide et FAQ";
 
 /* No comment provided by engineer. */
 "Hey! You are awesome!
 Version %@ (%@)" = "Hé ! Vous êtes formidable !
 Version %1$@ (%2$@)";
+
+/* No comment provided by engineer. */
+"Hold down on a task to drag it around." = "Restez appuyé sur une tâche pour la déplacer.";
+
+/* No comment provided by engineer. */
+"Huzzah!" = "Hourra !";
+
+/* No comment provided by engineer. */
+"I got to level %ld in Habitica by improving my real-life habits!" = "J'ai atteint le niveau %ld à Habitica en améliorant mes habitudes !";
 
 /* No comment provided by engineer. */
 "I want to become a %@" = "Je veux devenir un %@";
@@ -414,13 +487,28 @@ Version %1$@ (%2$@)";
 "I want to opt-out" = "Je ne veux pas choisir";
 
 /* No comment provided by engineer. */
+"INT %@" = "INT %@";
+
+/* No comment provided by engineer. */
+"Inbox" = "Boîte de Réception";
+
+/* No comment provided by engineer. */
 "Invalid E-Mail Address." = "Courriel non valide";
 
 /* No comment provided by engineer. */
-"Invalid username or password" = "Non d'utilisateur ou mot de passe invalide";
+"Invalid Habitica User ID" = "Identifiant Habitica invalide";
+
+/* No comment provided by engineer. */
+"Invalid username or password" = "Nom d'utilisateur ou mot de passe invalide";
 
 /* No comment provided by engineer. */
 "Inventory" = "Inventaire";
+
+/* No comment provided by engineer. */
+"Invitation Error" = "Erreur d'invitation";
+
+/* No comment provided by engineer. */
+"Invitation Successful" = "Invitation envoyée !";
 
 /* No comment provided by engineer. */
 "Invitation Type" = "Type d'invitation";
@@ -429,10 +517,22 @@ Version %1$@ (%2$@)";
 "Invite" = "Inviter";
 
 /* No comment provided by engineer. */
+"Invite Friends" = "Inviter des amis";
+
+/* No comment provided by engineer. */
 "Invite Members" = "Inviter des membres";
 
 /* No comment provided by engineer. */
 "Invite Party" = "Inviter l'équipe";
+
+/* No comment provided by engineer. */
+"Invited To Guild" = "Invitation dans une guilde";
+
+/* No comment provided by engineer. */
+"Invited To Party" = "Invitation dans une équipe";
+
+/* No comment provided by engineer. */
+"Invited To Quest" = "Invitation dans une quête";
 
 /* No comment provided by engineer. */
 "Invited to %@" = "Invitation à %@";
@@ -459,16 +559,13 @@ Version %1$@ (%2$@)";
 "Leave a Review" = "Laisser un commentaire";
 
 /* No comment provided by engineer. */
-"Leave the Inn" = "Quitter l'Auberge";
+"Level" = "Niveau";
 
 /* No comment provided by engineer. */
 "Level %@" = "Niveau %@";
 
 /* No comment provided by engineer. */
 "Level %@ %@" = "Niveau %1$@ %2$@";
-
-/* No comment provided by engineer. */
-"Level up!" = "Montée de niveau !";
 
 /* No comment provided by engineer. */
 "Local" = "Local";
@@ -480,7 +577,7 @@ Version %1$@ (%2$@)";
 "Log in" = "Connexion";
 
 /* No comment provided by engineer. */
-"Login Method" = "Méthode de connexion";
+"Login Methods" = "Méthode de connexion";
 
 /* No comment provided by engineer. */
 "Login name" = "Nom d'utilisateur";
@@ -493,6 +590,12 @@ Version %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Mana" = "Mana";
+
+/* No comment provided by engineer. */
+"Mana: -%ld" = "Mana : -%ld";
+
+/* No comment provided by engineer. */
+"Market" = "Marché";
 
 /* No comment provided by engineer. */
 "Medium" = "Moyen";
@@ -552,19 +655,25 @@ Version %1$@ (%2$@)";
 "Notes" = "Notes";
 
 /* No comment provided by engineer. */
-"Nothing Equipped" = "Aucun Équipement utilisé";
+"Nothing Equipped" = "Aucun équipement utilisé";
 
 /* No comment provided by engineer. */
 "Nothing Set" = "Rien d'installer";
 
 /* No comment provided by engineer. */
+"Nothing equipped" = "Aucun équipement utilisé";
+
+/* No comment provided by engineer. */
 "OK" = "D'accord";
 
 /* No comment provided by engineer. */
-"On certain days of the week" = "Certain jours de la semaine";
+"On certain days of the week" = "Certains jours de la semaine";
 
 /* No comment provided by engineer. */
 "Once a quest is started, no other party members can join the quest." = "Une fois la Quête commencée, aucun autre membre de l'équipe ne peut la rejoindre.";
+
+/* No comment provided by engineer. */
+"Open App Store page" = "Ouvrir la page de l'App Store";
 
 /* No comment provided by engineer. */
 "Opt-Out" = "Ne pas choisir";
@@ -576,6 +685,9 @@ Version %1$@ (%2$@)";
 "Other" = "Autres";
 
 /* No comment provided by engineer. */
+"PER %@" = "PER %@";
+
+/* No comment provided by engineer. */
 "Participants" = "Participants";
 
 /* No comment provided by engineer. */
@@ -583,6 +695,9 @@ Version %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Passwords don't match." = "Les mots de passe ne correspondent pas.";
+
+/* No comment provided by engineer. */
+"Pause your Dailies" = "Faire une pause dans vos quotidiennes";
 
 /* No comment provided by engineer. */
 "Pending" = "En attente";
@@ -615,10 +730,13 @@ Version %1$@ (%2$@)";
 "Purchase for 2 Gems" = "Acheter pour 2 Gemmes";
 
 /* No comment provided by engineer. */
+"Push Notifications" = "Notifications Push";
+
+/* No comment provided by engineer. */
 "Quest" = "Quête";
 
 /* No comment provided by engineer. */
-"Quest Detail" = "Détail de la Quête";
+"Quest Detail" = "Détails de la Quête";
 
 /* No comment provided by engineer. */
 "Quest Invitation" = "Invitation à une Quête";
@@ -628,6 +746,18 @@ Version %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Quest Pets" = "Familiers de Quête";
+
+/* No comment provided by engineer. */
+"Quests" = "Quêtes";
+
+/* No comment provided by engineer. */
+"Reactivate your Dailies" = "Réactiver vo quotidiennes";
+
+/* No comment provided by engineer. */
+"Received Private Message" = "Message Privé Reçu";
+
+/* No comment provided by engineer. */
+"Recipient" = "Destinataire";
 
 /* No comment provided by engineer. */
 "Register" = "Inscription";
@@ -669,13 +799,19 @@ Version %1$@ (%2$@)";
 "Reset Justins Tips" = "Réinitialiser les conseils de Justin";
 
 /* No comment provided by engineer. */
-"Rest in the Inn" = "Se reposer à l'Auberge";
-
-/* No comment provided by engineer. */
 "Rogue" = "Voleur";
 
 /* No comment provided by engineer. */
+"STR %@" = "FOR %@";
+
+/* No comment provided by engineer. */
 "Saturday" = "Samedi";
+
+/* No comment provided by engineer. */
+"Save" = "Enregistrer";
+
+/* No comment provided by engineer. */
+"Scan QR Code" = "Scannez le code QR";
 
 /* No comment provided by engineer. */
 "Schedule check-up" = "Planifier la vérification";
@@ -684,16 +820,19 @@ Version %1$@ (%2$@)";
 "School" = "École";
 
 /* No comment provided by engineer. */
+"Seasonal Shop" = "Boutique Saisonnière";
+
+/* No comment provided by engineer. */
 "Select Attributes" = "Sélectionner les attributs";
 
 /* No comment provided by engineer. */
-"Select Class" = "Choisir la Classe";
+"Select Class" = "Sélectionner la Classe";
 
 /* No comment provided by engineer. */
-"Select Difficulty" = "Sélectionnez la difficulté";
+"Select Difficulty" = "Sélectionner la difficulté";
 
 /* No comment provided by engineer. */
-"Select Frequency" = "Sélectionnez la fréquence";
+"Select Frequency" = "Sélectionner la fréquence";
 
 /* No comment provided by engineer. */
 "Sell (%@ Gold)" = "Vendre (%@ or)";
@@ -715,6 +854,9 @@ Version %1$@ (%2$@)";
 
 /* No comment provided by engineer. */
 "Shirt" = "Tenue";
+
+/* No comment provided by engineer. */
+"Shops" = "Boutiques";
 
 /* No comment provided by engineer. */
 "Size" = "Taille";
@@ -756,25 +898,22 @@ Version %1$@ (%2$@)";
 "Tags" = "Étiquettes";
 
 /* No comment provided by engineer. */
-"Tap a task to edit it and add reminders. Swipe left to delete it." = "Tapez une tâche pour la modifier et ajouter des rappels. Glissez vers la gauche pour la supprimer.";
+"Tap a task to edit it and add reminders. Swipe left to delete it." = "Appuyez sur une tâche pour la modifier et pour ajouter des rappels. Glissez vers la gauche pour la supprimer.";
 
 /* No comment provided by engineer. */
-"Tap to add a new task." = "Touchez pour ajouter une nouvelle tâche.";
+"Tap to add a new task." = "Appuyez pour ajouter une nouvelle tâche.";
 
 /* No comment provided by engineer. */
-"Tap to change how your pets are grouped." = "Touchez pour changer la façon dont vos Familiers sont regroupés.";
+"Tap to change how your pets are grouped." = "Appuyez pour changer la façon dont vos Familiers sont regroupés.";
 
 /* No comment provided by engineer. */
-"Tap to continue" = "Touchez pour continuer";
+"Tap to edit task, change notification time, or delete." = "Appuyez pour modifier une tâche, en changer l'heure de notification ou la supprimer.";
 
 /* No comment provided by engineer. */
-"Tap to edit task, change notification time, or delete." = "Tapez pour modifier une tâche, en changer l'heure de notification ou la supprimer.";
+"Tap to filter tasks." = "Appuyez pour filtrer les tâches";
 
 /* No comment provided by engineer. */
-"Tap to filter tasks." = "Touchez pour filtrer les tâches";
-
-/* No comment provided by engineer. */
-"Tap to invite friends and view party members." = "Touchez pour inviter des amis et voir les membres de l'équipe.";
+"Tap to invite friends and view party members." = "Appuyez pour inviter des amis et voir les membres de l'équipe.";
 
 /* No comment provided by engineer. */
 "Tavern" = "Taverne";
@@ -789,25 +928,37 @@ Version %1$@ (%2$@)";
 "The authentication process was cancelled." = "Le processus d'authentification a été annulé.";
 
 /* No comment provided by engineer. */
-"There seems to be a problem with the server. Try again later" = "Il semble qu'il y ait un problème avec le serveur. Réessayez plus tard.";
+"The scanned QR-Code did not contain a valid Habitica User ID." = "Le QR code ne contenait pas d'identifiant Habitica valide.";
+
+/* No comment provided by engineer. */
+"The users were invited to your party" = "Les membres ont été invités dans votre équipe";
+
+/* No comment provided by engineer. */
+"There seems to be a problem with the server. Try again later" = "Il semble qu'il y ait un problème avec le serveur. Veuillez réessayer plus tard.";
 
 /* No comment provided by engineer. */
 "There was an error verifying your purchase" = "Il y a eu une erreur lors de la vérification de votre achat.";
 
 /* No comment provided by engineer. */
-"There was an error with the authentication. Try again later" = "Il y a eu une erreur lors de l'authentification. Réessayez plus tard.";
+"There was an error with the authentication. Try again later" = "Il y a eu une erreur lors de l'authentification. Veuillez réessayer plus tard.";
+
+/* No comment provided by engineer. */
+"There was an error with your request: %@" = "Il y a eu une erreur avec votre requête : %@";
 
 /* No comment provided by engineer. */
 "This item can be purchased for %@ Gems" = "Cet objet peut être acheté pour %@ Gemmes";
 
 /* No comment provided by engineer. */
-"This item can be purchased for 2 Gems" = "Cet ensemble peut être acheté pour 2 Gemmes";
+"This item can be purchased for 2 Gems" = "Cet objet peut être acheté pour 2 Gemmes";
 
 /* No comment provided by engineer. */
 "This set can be unlocked for %@ Gems" = "Cet ensemble peut être débloqué pour %@ Gemmes";
 
 /* No comment provided by engineer. */
 "Thursday" = "Jeudi";
+
+/* No comment provided by engineer. */
+"Time Travelers" = "Voyageurs Temporels";
 
 /* No comment provided by engineer. */
 "To-Do" = "À Faire";
@@ -909,16 +1060,16 @@ Version %1$@ (%2$@)";
 "Work project" = "Travailler sur un projet";
 
 /* No comment provided by engineer. */
+"Write Message" = "Écrire un message";
+
+/* No comment provided by engineer. */
+"Write to %@" = "Écrire à %@";
+
+/* No comment provided by engineer. */
 "Yes" = "Oui";
 
 /* No comment provided by engineer. */
-"You Died" = "Vous êtes mort·e";
-
-/* No comment provided by engineer. */
-"You are now Level %ld" = "Vous êtes maintenant au Niveau %ld";
-
-/* No comment provided by engineer. */
-"You found a piece of rare Equipment in the Armoire: %@! Awesome!" = "Vous avez trouvé une pièce d'Équipement rare dans l'Armoire : %@ ! Génial !";
+"You gained a level!" = "Vous avez gagné un niveau !";
 
 /* No comment provided by engineer. */
 "You hatched a %@ %@!" = "Vous avez fait éclore un %2$@ %1$@ !";
@@ -927,24 +1078,50 @@ Version %1$@ (%2$@)";
 "You have no food" = "Vous n'avez pas de Nourriture";
 
 /* No comment provided by engineer. */
+"You have to specify a valid Habitica User ID as recipient." = "Vous avez indiqué un identifiant Habitica valide comme destinataire.";
+
+/* No comment provided by engineer. */
+"You purchased %@" = "Vous avez acheté %@";
+
+/* No comment provided by engineer. */
+"You purchased the set." = "Vous avez acheté cet ensemble.";
+
+/* No comment provided by engineer. */
+"You raised a mount!" = "Vous avez obtenu une monture !";
+
+/* No comment provided by engineer. */
 "You will become a %@." = "Vous allez devenir un %@.";
 
 /* No comment provided by engineer. */
-"You wrestle with the Armoire and gain %@ Experience. Take that!" = "Vous luttez contre l'Armoire et gagnez %@ points d'expérience. Prends ça !";
+"You won a Challenge!" = "Vous avez gagné un défi !";
+
+/* No comment provided by engineer. */
+"Your Quest has Begun" = "Votre quête a commencé";
+
+/* No comment provided by engineer. */
+"Your message could not be sent." = "Votre message n'a pas pu être envoyé.";
 
 /* No comment provided by engineer. */
 "Your pet eats the %@ but doesn't seem to enjoy it." = "Votre Familier mange : &@.  Il n'a pas l'air d'aimer ça...";
 
 /* No comment provided by engineer. */
-"Your pet really likes the %@" = "Votre Familier apprécie vraiment : %@";
-
-/* No comment provided by engineer. */
-"email" = "courriel";
+"Your pet really likes the %@!" = "Votre Familier apprécie vraiment %@ !";
 
 /* No comment provided by engineer. */
 "equipped" = "équipé";
 
+/* Singular */
+"gem" = "gemme";
 
-"Health: +%.1f\nMana: -%ld" = "Health: +%.1f\nMana: -%ld";
-"Gold: +%.1f\nMana: -%ld" = "Gold: +%.1f\nMana: -%ld";
-"Mana: -%ld" = "Mana: -%ld";
+/* Plural */
+"gems" = "gemmes";
+
+/* Singular */
+"gold" = "or";
+
+/* Singular */
+"hourglass" = "sablier";
+
+/* Plural */
+"hourglasses" = "sabliers";
+

@@ -16,9 +16,6 @@
 /* Class = "UILabel"; text = "Size"; ObjectID = "5KS-In-70X"; */
 "5KS-In-70X.text" = "גודל";
 
-/* Class = "UINavigationItem"; title = "Add Tag"; ObjectID = "6kN-kK-ybL"; */
-"6kN-kK-ybL.title" = "הוסיפו תגית";
-
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "7QR-Cq-K2a"; */
 "7QR-Cq-K2a.title" = "סנן";
 
@@ -112,9 +109,6 @@
 /* Class = "UINavigationItem"; title = "Profile"; ObjectID = "hnF-ml-Qfo"; */
 "hnF-ml-Qfo.title" = "פרופיל";
 
-/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "hnb-Ox-m1C"; */
-"hnb-Ox-m1C.title" = "הגדרות";
-
 /* Class = "UITabBarItem"; title = "Menu"; ObjectID = "hyj-Mf-lvH"; */
 "hyj-Mf-lvH.title" = "תפריט";
 
@@ -153,9 +147,6 @@
 
 /* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "sni-tf-k5c"; */
 "sni-tf-k5c.title" = "שאלות נפוצות";
-
-/* Class = "UIBarButtonItem"; title = "Decide later"; ObjectID = "v0E-Hd-n5W"; */
-"v0E-Hd-n5W.title" = "החלט מאוחר יותר";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "wUf-yh-Qus"; */
 "wUf-yh-Qus.placeholder" = "סיסמה";

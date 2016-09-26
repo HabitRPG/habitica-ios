@@ -1,0 +1,180 @@
+/* Class = "UILabel"; text = "Unlocks at lvl 3"; ObjectID = "2yp-6U-Xpz"; */
+"2yp-6U-Xpz.text" = "Открывается на 3 уровне";
+
+/* Class = "UITabBarItem"; title = "Habits"; ObjectID = "3G8-SH-Shd"; */
+"3G8-SH-Shd.title" = "Привычки";
+
+/* Class = "UINavigationItem"; title = "Equipment"; ObjectID = "3bv-D6-Dzj"; */
+"3bv-D6-Dzj.title" = "Экипировка";
+
+/* Class = "UINavigationItem"; title = "Pets"; ObjectID = "4dW-yC-5Ar"; */
+"4dW-yC-5Ar.title" = "Питомцы";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "5AI-vM-jzp"; */
+"5AI-vM-jzp.normalTitle" = "Назад";
+
+/* Class = "UILabel"; text = "Size"; ObjectID = "5KS-In-70X"; */
+"5KS-In-70X.text" = "Размер";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "7QR-Cq-K2a"; */
+"7QR-Cq-K2a.title" = "Фильтр";
+
+/* Class = "UINavigationItem"; title = "Items"; ObjectID = "7Sa-Zz-2NE"; */
+"7Sa-Zz-2NE.title" = "Предметы";
+
+/* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "8QD-xr-Tcj"; */
+"8QD-xr-Tcj.title" = "Скакуны";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9b7-Yf-yJs"; */
+"9b7-Yf-yJs.text" = "Метка";
+
+/* Class = "UIButton"; normalTitle = "Finish"; ObjectID = "63H-Fj-Vls"; */
+"63H-Fj-Vls.normalTitle" = "Завершить";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
+"970-3u-C37.title" = "Насчет";
+
+/* Class = "UIButton"; normalTitle = " Unlock Set for 5 gems "; ObjectID = "AQN-pU-u81"; */
+"AQN-pU-u81.normalTitle" = "Открыть набор за 5 самоцветов";
+
+/* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "Aco-n2-RnG"; */
+"Aco-n2-RnG.title" = "Ежедневное";
+
+/* Class = "UITabBarItem"; title = "Habits"; ObjectID = "CTh-zS-7ZY"; */
+"CTh-zS-7ZY.title" = "Привычки";
+
+/* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "DQC-ay-MKP"; */
+"DQC-ay-MKP.placeholder" = "Повторить пароль";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "FYR-h9-UfW"; */
+"FYR-h9-UfW.normalTitle" = "Назад";
+
+/* Class = "UINavigationItem"; title = "Scan Code"; ObjectID = "HJa-qf-ea2"; */
+"HJa-qf-ea2.title" = "Сканировать код";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "IRA-55-1g8"; */
+"IRA-55-1g8.normalTitle" = "Далее";
+
+/* Class = "UINavigationItem"; title = "News"; ObjectID = "Jni-km-FCZ"; */
+"Jni-km-FCZ.title" = "Новости";
+
+/* Class = "UINavigationItem"; title = "Spells"; ObjectID = "K1m-Oj-jYN"; */
+"K1m-Oj-jYN.title" = "Заклинания";
+
+/* Class = "UINavigationItem"; title = "Customize Avatar"; ObjectID = "K4K-zl-tiU"; */
+"K4K-zl-tiU.title" = "Изменить аватар";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "KkO-6T-Qmx"; */
+"KkO-6T-Qmx.text" = "Заголовок";
+
+/* Class = "UILabel"; text = "Login with Google"; ObjectID = "M1V-nF-Eg7"; */
+"M1V-nF-Eg7.text" = "Авторизоваться через Google";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "MlA-iN-6gR"; */
+"MlA-iN-6gR.text" = "Логин";
+
+/* Class = "UINavigationItem"; title = "Rewards"; ObjectID = "Mlq-VF-kA3"; */
+"Mlq-VF-kA3.title" = "Награды";
+
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "Np7-ws-fF6"; */
+"Np7-ws-fF6.title" = "Задачи";
+
+/* Class = "UINavigationItem"; title = "Shops"; ObjectID = "QIL-Wo-vmp"; */
+"QIL-Wo-vmp.title" = "Магазины";
+
+/* Class = "UINavigationItem"; title = "Filter by tags"; ObjectID = "RJ8-HL-bIH"; */
+"RJ8-HL-bIH.title" = "Сортировать по тегам";
+
+/* Class = "UILabel"; text = "No data yet"; ObjectID = "Spy-XJ-HaY"; */
+"Spy-XJ-HaY.text" = "Данные недоступны";
+
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "TXB-iK-KhP"; */
+"TXB-iK-KhP.title" = "Задачи";
+
+/* Class = "UINavigationItem"; title = "To-Dos"; ObjectID = "Tis-dF-qId"; */
+"Tis-dF-qId.title" = "Задачи";
+
+/* Class = "UINavigationItem"; title = "Habits"; ObjectID = "Ueo-OS-iQj"; */
+"Ueo-OS-iQj.title" = "Привычки";
+
+/* Class = "UIBarButtonItem"; title = "Register"; ObjectID = "XUX-eN-jCp"; */
+"XUX-eN-jCp.title" = "Регистрация";
+
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "Y9b-tv-h4L"; */
+"Y9b-tv-h4L.title" = "Сгруппировать по";
+
+/* Class = "UINavigationItem"; title = "Choose Task"; ObjectID = "Yuh-D9-NY5"; */
+"Yuh-D9-NY5.title" = "Выбрать задание";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "c6L-Nt-YPn"; */
+"c6L-Nt-YPn.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "ciB-Fl-be7"; */
+"ciB-Fl-be7.text" = "Подзаголовок";
+
+/* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "hIC-Qf-w8a"; */
+"hIC-Qf-w8a.title" = "Очистить";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hd1-sx-QKa"; */
+"hd1-sx-QKa.text" = "Метка";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "hnF-ml-Qfo"; */
+"hnF-ml-Qfo.title" = "Профиль";
+
+/* Class = "UITabBarItem"; title = "Menu"; ObjectID = "hyj-Mf-lvH"; */
+"hyj-Mf-lvH.title" = "Меню";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "imx-7O-EEy"; */
+"imx-7O-EEy.text" = "Метка";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "lJN-5G-qrz"; */
+"lJN-5G-qrz.title" = "Фильтр";
+
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "mdo-xN-SW4"; */
+"mdo-xN-SW4.title" = "Сгруппировать по";
+
+/* Class = "UIBarButtonItem"; title = "?"; ObjectID = "obl-zo-g8m"; */
+"obl-zo-g8m.title" = "?";
+
+/* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "pdW-W9-wj6"; */
+"pdW-W9-wj6.title" = "Ежедневные задания";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "r2M-pt-ZEv"; */
+"r2M-pt-ZEv.title" = "Фильтр";
+
+/* Class = "UITextField"; placeholder = "Email / Username"; ObjectID = "r6h-y4-Yj6"; */
+"r6h-y4-Yj6.placeholder" = "Email / Имя пользователя";
+
+/* Class = "UILabel"; text = "No completed To-Dos"; ObjectID = "rRE-Ue-tyN"; */
+"rRE-Ue-tyN.text" = "Нет завершенных задач";
+
+/* Class = "UISegmentedControl"; sMQ-xU-ZOd.segmentTitles[0] = "Slim"; ObjectID = "sMQ-xU-ZOd"; */
+"sMQ-xU-ZOd.segmentTitles[0]" = "Стройное";
+
+/* Class = "UISegmentedControl"; sMQ-xU-ZOd.segmentTitles[1] = "Broad"; ObjectID = "sMQ-xU-ZOd"; */
+"sMQ-xU-ZOd.segmentTitles[1]" = "Тучное";
+
+/* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "si7-7p-nZ9"; */
+"si7-7p-nZ9.title" = "Скакуны";
+
+/* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "sni-tf-k5c"; */
+"sni-tf-k5c.title" = "ЧаВо";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "uSK-A3-t5d"; */
+"uSK-A3-t5d.title" = "Настройки";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "wUf-yh-Qus"; */
+"wUf-yh-Qus.placeholder" = "Пароль";
+
+/* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
+"xZ9-Ng-9se.title" = "Покормить";
+
+/* Class = "UITabBarItem"; title = "Rewards"; ObjectID = "zFI-xr-RjT"; */
+"zFI-xr-RjT.title" = "Награды";
+
+/* Class = "UINavigationItem"; title = "Pets"; ObjectID = "zdm-Oo-gvg"; */
+"zdm-Oo-gvg.title" = "Питомцы";
+
+/* Class = "UINavigationItem"; title = "Dailies"; ObjectID = "zec-6L-pJk"; */
+"zec-6L-pJk.title" = "Ежедневное";
+
