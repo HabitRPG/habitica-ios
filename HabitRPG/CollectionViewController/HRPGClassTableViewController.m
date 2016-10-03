@@ -330,7 +330,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"HelpSegue"]) {
         HRPGWebViewController *webViewController = segue.destinationViewController;
-        webViewController.url = @"http://habitrpg.wikia.com/wiki/Class_System";
+        webViewController.url = [NSURL URLWithString:@"http://habitrpg.wikia.com/wiki/Class_System"];
     }
 }
 

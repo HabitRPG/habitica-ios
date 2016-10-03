@@ -19,7 +19,6 @@
 #import "OnePasswordExtension.h"
 #import "UIColor+Habitica.h"
 #import <AppAuth.h>
-#import "HRPGWebViewController.h"
 #import <Keys/HabiticaKeys.h>
 
 @interface HRPGLoginViewController ()
