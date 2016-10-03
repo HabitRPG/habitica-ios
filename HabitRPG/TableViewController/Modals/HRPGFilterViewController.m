@@ -19,6 +19,10 @@
 @property UIView *headerView;
 @property UISegmentedControl *filterTypeControl;
 @property NSMutableArray *areTagsSelected;
+@property (nonatomic) IBOutlet UIBarButtonItem *editButton;
+@property (nonatomic) IBOutlet UIBarButtonItem *clearButton;
+@property (nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property (nonatomic) IBOutlet UIBarButtonItem *toolBarSpace;
 
 @property Tag *editedTag;
 @end
@@ -77,6 +81,8 @@
     [self.headerView addSubview:self.filterTypeControl];
 
     self.tableView.tableHeaderView = self.headerView;
+    
+    [self doneButtonTapped:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -321,7 +327,14 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)editButtonTapped:(id)sender {
     [self setEditing:YES animated:YES];
+    self.toolbarItems = @[self.doneButton];
 }
+
+- (IBAction)doneButtonTapped:(id)sender {
+    [self setEditing:NO animated:YES];
+    self.toolbarItems = @[self.editButton, self.toolBarSpace, self.clearButton];
+}
+
 
 - (IBAction)addButtonTapped:(id)sender {
     [self showFormAlert];
