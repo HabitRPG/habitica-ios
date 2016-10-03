@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -29,7 +29,7 @@
                                 <constraint firstAttribute="height" priority="500" constant="21" id="oMy-ZV-gOh"/>
                             </constraints>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You lost a Level, your Gold, and a piece of Equipment, but you can get them all back with hard work!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOV-OM-bmO">
@@ -38,7 +38,7 @@
                                 <constraint firstAttribute="height" priority="500" constant="21" id="Nzd-I1-bpC"/>
                             </constraints>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't despair!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNl-0m-81s">
@@ -47,7 +47,7 @@
                                 <constraint firstAttribute="height" priority="500" constant="21" id="4o6-9A-o7S"/>
                             </constraints>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ilf-pB-byZ" customClass="HRPGLabeledProgressBar">
@@ -71,7 +71,7 @@
                                 <constraint firstAttribute="height" priority="500" constant="21" id="cFS-Yg-LW0"/>
                             </constraints>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -105,6 +105,9 @@
                         </mask>
                     </variation>
                 </view>
+                <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VZc-HV-b5e">
+                    <rect key="frame" x="290" y="559" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
@@ -112,14 +115,17 @@
                 <constraint firstAttribute="trailing" secondItem="Gwa-ZK-hE5" secondAttribute="trailing" priority="999" constant="40" id="7fp-ax-8lV"/>
                 <constraint firstItem="Gwa-ZK-hE5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="DLw-4q-5bR"/>
                 <constraint firstItem="Gwa-ZK-hE5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="999" constant="40" id="EVS-Bv-WzC"/>
+                <constraint firstItem="VZc-HV-b5e" firstAttribute="centerY" secondItem="qxV-Za-6X9" secondAttribute="centerY" id="KxR-g1-lM7"/>
                 <constraint firstItem="qxV-Za-6X9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Rb8-oy-Mme"/>
                 <constraint firstAttribute="trailing" secondItem="qxV-Za-6X9" secondAttribute="trailing" id="YiK-Hj-2Tv"/>
+                <constraint firstItem="VZc-HV-b5e" firstAttribute="centerX" secondItem="qxV-Za-6X9" secondAttribute="centerX" id="Zpq-vS-9E9"/>
                 <constraint firstItem="Gwa-ZK-hE5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rCi-yy-80G"/>
             </constraints>
             <connections>
                 <outlet property="avatarView" destination="4KX-TZ-jpu" id="QmR-2X-NBe"/>
                 <outlet property="containerView" destination="Gwa-ZK-hE5" id="QhN-fn-Dh0"/>
                 <outlet property="healthView" destination="Ilf-pB-byZ" id="u6s-z2-4tz"/>
+                <outlet property="loadingIndicator" destination="VZc-HV-b5e" id="ffB-qZ-4Q0"/>
                 <outlet property="tryAgainLabel" destination="qxV-Za-6X9" id="9u1-9a-HWg"/>
             </connections>
         </view>

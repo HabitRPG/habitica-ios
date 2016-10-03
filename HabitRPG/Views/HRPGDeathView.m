@@ -19,7 +19,8 @@
 @property (weak, nonatomic) IBOutlet HRPGLabeledProgressBar *healthView;
 @property (weak, nonatomic) IBOutlet UIView *avatarView;
 @property (weak, nonatomic) IBOutlet UILabel *tryAgainLabel;
-
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property UITapGestureRecognizer *reviveGestureRecognizer;
 @end
 
 @implementation HRPGDeathView
@@ -28,9 +29,9 @@
     self = [super initWithCoder:aDecoder];
     
     if (self) {
-        UITapGestureRecognizer *singleFingerTap =
+        self.reviveGestureRecognizer =
             [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss:)];
-        [self addGestureRecognizer:singleFingerTap];
+        [self addGestureRecognizer:self.reviveGestureRecognizer];
         
         self.frame = [[UIScreen mainScreen] bounds];
         [self setNeedsLayout];
@@ -48,8 +49,8 @@
     
     HRPGAppDelegate *appdelegate =
     (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-    HRPGManager *sharedManager = appdelegate.sharedManager;
-    User *user = [sharedManager getUser];
+    self.sharedManager = appdelegate.sharedManager;
+    User *user = [self.sharedManager getUser];
     [user setAvatarSubview:self.avatarView showsBackground:NO showsMount:NO showsPet:NO isFainted:YES];
 }
 
@@ -76,7 +77,22 @@
 }
 
 - (void)dismiss:(UITapGestureRecognizer *)recognizer {
-    [self dismiss];
+    [self revive];
+}
+
+- (void) revive {
+    [self removeGestureRecognizer:self.reviveGestureRecognizer];
+    [UIView animateWithDuration:0.3f
+                     animations:^() {
+                         [self.loadingIndicator startAnimating];
+                         self.loadingIndicator.alpha = 1;
+                         self.tryAgainLabel.alpha = 0;
+                     }];
+    [self.sharedManager reviveUser:^() {
+        [self dismiss];
+    } onError:^(){
+        [self dismiss];
+    }];
 }
 
 - (void)dismiss {
@@ -86,11 +102,6 @@
         }
         completion:^(BOOL completed) {
             [self removeFromSuperview];
-        }];
-
-    [_sharedManager reviveUser:^() {
-    }
-        onError:^(){
         }];
 }
 
