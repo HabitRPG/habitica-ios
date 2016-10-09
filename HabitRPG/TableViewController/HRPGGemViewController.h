@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HRPGManager.h"
 
-@interface HRPGGemViewController : UITableViewController
+@interface HRPGGemViewController : UICollectionViewController
 
 @property BOOL displayNoGemLabel;
 

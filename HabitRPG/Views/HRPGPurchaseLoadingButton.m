@@ -7,6 +7,7 @@
 //
 
 #import "HRPGPurchaseLoadingButton.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGPurchaseLoadingButton ()
 
@@ -25,10 +26,11 @@
         self.label.layer.borderWidth = 1.0f;
         self.label.layer.cornerRadius = 5.0f;
         self.label.textAlignment = NSTextAlignmentCenter;
+        self.label.textColor = [UIColor whiteColor];
         self.loadingView = [[UIActivityIndicatorView alloc] init];
-        self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+        self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
 
-        self.tintColor = [UIColor blueColor];
+        self.tintColor = [UIColor purple300];
         self.layer.masksToBounds = YES;
         self.text = @"";
         self.confirmText = @"buy";
@@ -38,6 +40,7 @@
             [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
         tapGestureRecognizer.minimumPressDuration = 0.001;
         [self addGestureRecognizer:tapGestureRecognizer];
+        self.userInteractionEnabled = YES;
     }
 
     return self;
@@ -111,7 +114,7 @@
 
 - (void)setTintColor:(UIColor *)tintColor {
     _tintColor = tintColor;
-    self.label.textColor = tintColor;
+    self.label.layer.backgroundColor = [tintColor CGColor];
     self.label.layer.borderColor = [tintColor CGColor];
 }
 

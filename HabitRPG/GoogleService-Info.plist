@@ -8,5 +8,19 @@
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.habitrpg.ios.Habitica</string>
+        <key>PROJECT_ID</key>
+        <string>habitica-e34e3</string>
+        <key>IS_ADS_ENABLED</key>
+        <false/>
+        <key>IS_ANALYTICS_ENABLED</key>
+        <true/>
+        <key>IS_APPINVITE_ENABLED</key>
+        <false/>
+        <key>IS_GCM_ENABLED</key>
+        <false/>
+        <key>IS_SIGNIN_ENABLED</key>
+        <false/>
+        <key>GOOGLE_APP_ID</key>
+        <string>1:293904580953:ios:2d51dbddce3ceb45</string>
 </dict>
 </plist>

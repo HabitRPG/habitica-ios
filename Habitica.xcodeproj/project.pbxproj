@@ -177,6 +177,8 @@
 		D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */; };
 		D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */; };
 		D9BB28411D5CF3C7003894A8 /* HRPGDailyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE318CB83EF0006C242 /* HRPGDailyTableViewController.m */; };
+		D9BE05821DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BE05811DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m */; };
+		D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BE05831DA6ADE70074D3B7 /* GemPurchaseView.xib */; };
 		D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */; };
 		D9C0E51A1C6510B40062C89A /* HRPGPublicGuildsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C0E5191C6510B40062C89A /* HRPGPublicGuildsViewController.m */; };
 		D9C0E51F1C6516C50062C89A /* HRPGPublicGuildTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C0E51E1C6516C50062C89A /* HRPGPublicGuildTableViewCell.m */; };
@@ -632,6 +634,9 @@
 		D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGProgressBar.m; sourceTree = "<group>"; };
 		D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLabeledProgressBar.h; sourceTree = "<group>"; };
 		D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLabeledProgressBar.m; sourceTree = "<group>"; };
+		D9BE05801DA6ADDB0074D3B7 /* HRPGGemPurchaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGGemPurchaseView.h; path = ../Views/HRPGGemPurchaseView.h; sourceTree = "<group>"; };
+		D9BE05811DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGGemPurchaseView.m; path = ../Views/HRPGGemPurchaseView.m; sourceTree = "<group>"; };
+		D9BE05831DA6ADE70074D3B7 /* GemPurchaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GemPurchaseView.xib; path = ../Views/GemPurchaseView.xib; sourceTree = "<group>"; };
 		D9C0002E1928F83E003D4E4C /* HRPGRoundProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGRoundProgressView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGRoundProgressView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9C0E5141C6502C50062C89A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
@@ -1132,6 +1137,9 @@
 		D9C2570D1B9B4BFB00839F48 /* TableviewCells */ = {
 			isa = PBXGroup;
 			children = (
+				D9BE05801DA6ADDB0074D3B7 /* HRPGGemPurchaseView.h */,
+				D9BE05811DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m */,
+				D9BE05831DA6ADE70074D3B7 /* GemPurchaseView.xib */,
 				D9C0E51B1C6515AD0062C89A /* Social */,
 				D92C60FA1BD3FAC1005F68CC /* HRPGCopyTableViewCell.h */,
 				D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */,
@@ -1630,6 +1638,7 @@
 				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
 				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
 				D96576C51BAF53D400CCA28E /* HRPGGearDetailView.xib in Resources */,
+				D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				D91CCAD01BCF11CC001C6A0C /* HRPGUserTopHeader.xib in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
@@ -1973,6 +1982,7 @@
 				D998FD951ADAC1FF00E9A26F /* HRPGAboutViewController.m in Sources */,
 				D92D40D91ABF123800E30339 /* HRPGHabitButtons.m in Sources */,
 				D9D5935E1D00523800D6C388 /* InboxMessage.m in Sources */,
+				D9BE05821DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m in Sources */,
 				D9ADD3541CF3169B001D005B /* NSString+StripHTML.m in Sources */,
 				D995D5971D1D499D00D5251C /* PushNotifications.m in Sources */,
 				D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */,
@@ -2482,7 +2492,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -2564,7 +2574,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <RestKit/CoreData/RKManagedObjectStore.h>
+#import <RestKit/CoreData.h>
 #import "ChatMessage.h"
 #import "Food.h"
 #import "Group.h"

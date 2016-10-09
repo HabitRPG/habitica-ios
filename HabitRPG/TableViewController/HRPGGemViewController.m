@@ -12,6 +12,7 @@
 #import "HRPGPurchaseLoadingButton.h"
 #import "MRProgress.h"
 #import "UIColor+Habitica.h"
+#import "HRPGGemPurchaseView.h"
 
 @interface HRPGGemViewController ()
 @property(weak, nonatomic) IBOutlet UILabel *notEnoughGemsLabel;
@@ -28,11 +29,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    UINib *nib = [UINib nibWithNibName:@"GemPurchaseView" bundle:nil];
+    [[self collectionView] registerNib:nib forCellWithReuseIdentifier:@"Cell"];
+    
     self.gemImageView.image = [UIImage imageNamed:@"Gem"];
 
     self.identifiers = @[
         @"com.habitrpg.ios.Habitica.4gems", @"com.habitrpg.ios.Habitica.21gems",
-        @"com.habitrpg.ios.Habitica.42gems"
+        @"com.habitrpg.ios.Habitica.42gems", @"com.habitrpg.ios.Habitica.84gems"
     ];
     self.products = [NSMutableDictionary dictionaryWithCapacity:self.identifiers.count];
 
@@ -41,7 +45,7 @@
             for (SKProduct *product in products) {
                 self.products[product.productIdentifier] = product;
             }
-            [self.tableView reloadData];
+            [self.collectionView reloadData];
             [self.overlayView dismiss:YES];
         }
         failure:^(NSError *error) {
@@ -60,9 +64,9 @@
                     }
                     count++;
                 }
-                UITableViewCell *cell = [self.tableView
-                    cellForRowAtIndexPath:[NSIndexPath indexPathForItem:count inSection:0]];
-                purchaseButton = [cell viewWithTag:2];
+                HRPGGemPurchaseView *cell = (HRPGGemPurchaseView *) [self.collectionView
+                    cellForItemAtIndexPath:[NSIndexPath indexPathForItem:count inSection:0]];
+                purchaseButton = cell.purchaseButton;
                 switch (transaction.transactionState) {
                     // Call the appropriate custom method for the transaction state.
                     case SKPaymentTransactionStatePurchasing:
@@ -92,20 +96,6 @@
         }];
 
     [[SKPaymentQueue defaultQueue] addTransactionObserver:[CargoBay sharedManager]];
-
-    self.headerView =
-        [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 150)];
-    UILabel *titleLabel =
-        [[UILabel alloc] initWithFrame:CGRectMake(8, 0, self.view.frame.size.width - 16,
-                                                  self.headerView.frame.size.height)];
-    titleLabel.text =
-        NSLocalizedString(@"Gems are purchased with real money, which makes it possible for "
-                          @"Habitica to release new updates. Gems can be used to buy special "
-                          @"items and backgrounds. Thank you for supporting us!",
-                          nil);
-    titleLabel.numberOfLines = 0;
-    [self.headerView addSubview:titleLabel];
-    self.tableView.tableHeaderView = self.headerView;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -119,33 +109,40 @@
         [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.products.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake((self.view.frame.size.width/2)-36, 200);
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SKProduct *product = self.products[self.identifiers[indexPath.item]];
-    UITableViewCell *cell =
-        [self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    UILabel *titleLabel = [cell viewWithTag:1];
-    HRPGPurchaseLoadingButton *purchaseButton = [cell viewWithTag:2];
-
-    titleLabel.text = product.localizedTitle;
-
+    HRPGGemPurchaseView *cell =
+    [self.collectionView  dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     [numberFormatter setLocale:product.priceLocale];
-    purchaseButton.text = [numberFormatter stringFromNumber:product.price];
-    purchaseButton.state = HRPGPurchaseButtonStateLabel;
-    purchaseButton.tintColor = [UIColor purple400];
-    purchaseButton.onTouchEvent = ^void(HRPGPurchaseLoadingButton *purchaseButton) {
+    [cell setPrice:[numberFormatter stringFromNumber:product.price]];
+    
+    if ([product.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.4gems"]) {
+        [cell setGemAmount:4];
+    } else if ([product.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.21gems"]) {
+        [cell setGemAmount:21];
+    } else if ([product.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.42gems"]) {
+        [cell setGemAmount:42];
+    } else if ([product.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.84gems"]) {
+        [cell setGemAmount:84];
+    }
+    
+    [cell setPurchaseTap:^void(HRPGPurchaseLoadingButton *purchaseButton) {
         switch (purchaseButton.state) {
             case HRPGPurchaseButtonStateError:
             case HRPGPurchaseButtonStateLabel:
@@ -155,14 +152,36 @@
             case HRPGPurchaseButtonStateDone:
                 [self dismissViewControllerAnimated:YES
                                          completion:^(){
-
+                                             
                                          }];
             default:
                 break;
         }
-    };
-
+    }];
+    
     return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    NSString *identifier = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        identifier = @"HeaderView";
+    }
+    
+    if (kind == UICollectionElementKindSectionFooter) {
+        identifier = @"FooterView";
+    }
+    
+    return [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:identifier forIndexPath:indexPath];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    SKProduct *product = self.products[self.identifiers[indexPath.item]];
+    HRPGGemPurchaseView *cell = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    
+    cell.purchaseButton.state = HRPGPurchaseButtonStateLoading;
+    [self purchaseGems:product withButton:cell.purchaseButton];
 }
 
 - (HRPGManager *)sharedManager {

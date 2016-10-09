@@ -10,7 +10,6 @@
 #import <XCTest/XCTest.h>
 #import "HabiticaTests.h"
 #import <RestKit/RestKit.h>
-#import <RestKit/Testing.h>
 #import "HRPGManager.h"
 #import <OHHTTPStubs.h>
 #import <PDKeychainBindings.h>

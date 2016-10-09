@@ -148,7 +148,7 @@ NSString *currentUser;
 
     [RKObjectManager setSharedManager:objectManager];
     [RKObjectManager sharedManager].requestSerializationMIMEType = RKMIMETypeJSON;
-    [objectManager.HTTPClient setReachabilityStatusChangeBlock:^(
+    /*[objectManager.HTTPClient setReachabilityStatusChangeBlock:^(
                                   AFNetworkReachabilityStatus status) {
         if (status == AFNetworkReachabilityStatusUnknown) {
             return;
@@ -165,7 +165,7 @@ NSString *currentUser;
 
             [alertView show];
         }
-    }];
+    }];*/
 
     RKValueTransformer *transformer = [HRPGManager millisecondsSince1970ToDateValueTransformer];
     [[RKValueTransformer defaultValueTransformer] insertValueTransformer:transformer atIndex:0];

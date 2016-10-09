@@ -1,4 +1,4 @@
-platform :ios, '7.0'
+platform :ios, '8.4'
 
 plugin 'cocoapods-keys', {
   :keys => [
@@ -11,11 +11,10 @@ plugin 'cocoapods-keys', {
 target 'Habitica' do
 pod 'CRToast', :git => 'https://github.com/cruffenach/CRToast'
 pod 'FontAwesomeIconFactory'
-pod 'RestKit', '~> 0.26'
-pod 'RestKit/Testing'
+pod 'RestKit', :git => 'https://github.com/RestKit/RestKit.git', :commit => '13d98d5a6a5e06656ad040013dcae149b7cf8b99'
 pod 'PDKeychainBindingsController', '~> 0.0.1'
 pod 'VTAcknowledgementsViewController'
-pod 'YYWebImage', '~> 1.0.1'
+pod 'YYWebImage', '~> 1.0.5'
 pod 'DateTools'
 pod 'NSString+Emoji'
 pod 'XLForm'
@@ -24,12 +23,12 @@ pod 'pop'
 pod 'DTCoreText'
 pod 'CargoBay', :git => 'https://github.com/vIiRuS/CargoBay.git', :branch => 'v1'
 pod 'MRProgress'
-pod 'Google/Analytics', '~> 1.0.0'
+pod 'Google/Analytics'
 pod 'VTAcknowledgementsViewController'
 pod 'KLCPopup'
 pod 'EAIntroView'
 pod 'AttributedMarkdown', :git => 'https://github.com/dreamwieber/AttributedMarkdown.git'
-pod 'Amplitude-iOS', '~> 3.5.0'
+pod 'Amplitude-iOS', '~> 3.8.5'
 pod 'Masonry'
 pod "SlackTextViewController"
 pod 'AppAuth'
