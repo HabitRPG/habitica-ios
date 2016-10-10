@@ -1,20 +1,17 @@
 //
-//  HRPGTopHeaderNavigationController.m
+//  HRPGGemHeaderNavigationController.m
 //  Habitica
 //
-//  Created by viirus on 12.03.15.
-//  Copyright (c) 2015 Phillip Thelen. All rights reserved.
+//  Created by Phillip Thelen on 10/10/16.
+//  Copyright © 2016 Phillip Thelen. All rights reserved.
 //
 
-#import "HRPGTopHeaderNavigationController.h"
-#import "HRPGUserTopHeader.h"
+#import "HRPGGemHeaderNavigationController.h"
 #import "UIColor+Habitica.h"
 
-@interface HRPGTopHeaderNavigationController ()
-
+@interface HRPGGemHeaderNavigationController ()
 @property(nonatomic, strong) UIView *headerView;
 @property(nonatomic, strong) UIView *backgroundView;
-@property(nonatomic, strong) UIView *bottomBorderView;
 @property(nonatomic, strong) UIView *upperBackgroundView;
 @property(nonatomic, readonly) CGFloat topHeaderHeight;
 
@@ -26,35 +23,33 @@
 @property CGFloat headerYPosition;
 @end
 
-@implementation HRPGTopHeaderNavigationController
+@implementation HRPGGemHeaderNavigationController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.translucent = YES;
     self.view.backgroundColor = [UIColor clearColor];
     self.navigationBar.backgroundColor = [UIColor clearColor];
-
-    NSArray *nibViews =
-        [[NSBundle mainBundle] loadNibNamed:@"HRPGUserTopHeader" owner:self options:nil];
-    self.headerView = nibViews[0];
+    
+    UIImageView *headerImageView = [[UIImageView alloc] init];
+    headerImageView.image = [UIImage imageNamed:@"support_art"];
+    headerImageView.contentMode = UIViewContentModeCenter;
+    self.headerView = headerImageView;
     self.state = HRPGTopHeaderStateVisible;
     self.backgroundView = [[UIView alloc] init];
-    self.backgroundView.backgroundColor = [UIColor gray600];
-
-    self.bottomBorderView = [[UIView alloc] init];
-    [self.bottomBorderView setBackgroundColor:[UIColor gray400]];
-
+    self.backgroundView.backgroundColor = [UIColor whiteColor];
+    
     self.upperBackgroundView = [[UIView alloc] init];
-    [self.upperBackgroundView setBackgroundColor:[UIColor gray600]];
-
-    [self.backgroundView addSubview:self.bottomBorderView];
+    [self.upperBackgroundView setBackgroundColor:[UIColor whiteColor]];
+    
     [self.backgroundView addSubview:self.headerView];
     [self.view insertSubview:self.upperBackgroundView belowSubview:self.navigationBar];
     [self.view insertSubview:self.backgroundView belowSubview:self.upperBackgroundView];
-
+    
     self.headerYPosition = [self bgViewOffset];
 }
 
@@ -62,11 +57,9 @@
     [super viewWillLayoutSubviews];
     CGRect parentFrame = self.view.frame;
     self.backgroundView.frame =
-        CGRectMake(0, self.headerYPosition, parentFrame.size.width, self.topHeaderHeight);
+    CGRectMake(0, self.headerYPosition, parentFrame.size.width, self.topHeaderHeight);
     self.upperBackgroundView.frame = CGRectMake(0, 0, parentFrame.size.width, [self bgViewOffset]);
-    self.bottomBorderView.frame =
-        CGRectMake(0, self.backgroundView.frame.size.height - 6, parentFrame.size.width, 6);
-    self.headerView.frame = CGRectMake(0, 0, parentFrame.size.width, self.topHeaderHeight - 6);
+    self.headerView.frame = CGRectMake(0, 0, parentFrame.size.width, self.topHeaderHeight);
 }
 
 - (void)showHeader {
@@ -75,14 +68,14 @@
     frame.origin.y = [self bgViewOffset];
     self.headerYPosition = frame.origin.y;
     [UIView animateWithDuration:0.3
-        delay:0
-        options:UIViewAnimationOptionCurveEaseOut
-        animations:^() {
-            self.backgroundView.frame = frame;
-            [self setNavigationBarColors:0];
-        }
-        completion:^(BOOL completed){
-        }];
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^() {
+                         self.backgroundView.frame = frame;
+                         [self setNavigationBarColors:0];
+                     }
+                     completion:^(BOOL completed){
+                     }];
 }
 
 - (void)hideHeader {
@@ -91,21 +84,21 @@
     frame.origin.y = -frame.size.height;
     self.headerYPosition = frame.origin.y;
     [UIView animateWithDuration:0.3
-        delay:0
-        options:UIViewAnimationOptionCurveEaseOut
-        animations:^() {
-            self.backgroundView.frame = frame;
-            [self setNavigationBarColors:1];
-        }
-        completion:^(BOOL completed){
-        }];
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^() {
+                         self.backgroundView.frame = frame;
+                         [self setNavigationBarColors:1];
+                     }
+                     completion:^(BOOL completed){
+                     }];
 }
 
 - (void)startFollowingScrollView:(UIScrollView *)scrollView {
     if (self.scrollableView) {
         [self stopFollowingScrollView];
     }
-
+    
     self.scrollableView = scrollView;
 }
 
@@ -141,13 +134,13 @@
 
 - (void)setNavigationBarColors:(CGFloat)alpha {
     self.upperBackgroundView.backgroundColor =
-        [[UIColor gray600] blendWithColor:[UIColor purple300] alpha:alpha];
+    [[UIColor gray600] blendWithColor:[UIColor purple300] alpha:alpha];
     self.navigationBar.tintColor =
-        [[UIColor purple400] blendWithColor:[UIColor gray600] alpha:alpha];
+    [[UIColor purple400] blendWithColor:[UIColor whiteColor] alpha:alpha];
     self.navigationBar.titleTextAttributes = @{
-        NSForegroundColorAttributeName :
-            [[UIColor blackColor] blendWithColor:[UIColor whiteColor] alpha:alpha]
-    };
+                                               NSForegroundColorAttributeName :
+                                                   [[UIColor blackColor] blendWithColor:[UIColor whiteColor] alpha:alpha]
+                                               };
     if (self.navigationBar.barStyle == UIBarStyleDefault && alpha > 0.5) {
         self.navigationBar.barStyle = UIBarStyleBlack;
         [self setNeedsStatusBarAppearanceUpdate];
@@ -159,15 +152,11 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return self.navigationBar.barStyle == UIBarStyleBlack ? UIStatusBarStyleLightContent
-                                                          : UIStatusBarStyleDefault;
+    : UIStatusBarStyleDefault;
 }
 
 - (CGFloat)topHeaderHeight {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        return 200;
-    } else {
-        return 168;
-    }
+        return 100;
 }
 
 #pragma mark - Helpers
@@ -194,13 +183,14 @@
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-    shouldRecognizeSimultaneouslyWithGestureRecognizer:
-        (UIGestureRecognizer *)otherGestureRecognizer {
+shouldRecognizeSimultaneouslyWithGestureRecognizer:
+(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
 }
 
 - (void)setState:(HRPGTopHeaderState)state {
     _state = state;
 }
+
 
 @end

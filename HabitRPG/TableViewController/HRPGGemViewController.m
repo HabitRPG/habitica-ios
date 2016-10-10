@@ -13,6 +13,7 @@
 #import "MRProgress.h"
 #import "UIColor+Habitica.h"
 #import "HRPGGemPurchaseView.h"
+#import "HRPGGemHeaderNavigationController.h"
 
 @interface HRPGGemViewController ()
 @property(weak, nonatomic) IBOutlet UILabel *notEnoughGemsLabel;
@@ -34,6 +35,17 @@
     
     self.gemImageView.image = [UIImage imageNamed:@"Gem"];
 
+    HRPGTopHeaderNavigationController *navigationController =
+    (HRPGTopHeaderNavigationController *)self.navigationController;
+    [self.collectionView
+     setContentInset:UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0)];
+    self.collectionView.scrollIndicatorInsets =
+    UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0);
+    if (navigationController.state == HRPGTopHeaderStateHidden) {
+        [self.collectionView
+         setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
+    }
+    
     self.identifiers = @[
         @"com.habitrpg.ios.Habitica.4gems", @"com.habitrpg.ios.Habitica.21gems",
         @"com.habitrpg.ios.Habitica.42gems", @"com.habitrpg.ios.Habitica.84gems"
@@ -98,8 +110,24 @@
     [[SKPaymentQueue defaultQueue] addTransactionObserver:[CargoBay sharedManager]];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    HRPGGemHeaderNavigationController *navigationController =
+    (HRPGGemHeaderNavigationController *)self.navigationController;
+    [navigationController startFollowingScrollView:self.collectionView];
+    if (navigationController.state == HRPGTopHeaderStateVisible &&
+        self.collectionView.contentOffset.y > -[navigationController getContentOffset]) {
+        [navigationController scrollview:self.collectionView
+                      scrolledToPosition:self.collectionView.contentOffset.y];
+    }
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:[CargoBay sharedManager]];
+    
+    HRPGGemHeaderNavigationController *navigationController =
+    (HRPGGemHeaderNavigationController *)self.navigationController;
+    [navigationController stopFollowingScrollView];
+    
     [super viewWillDisappear:animated];
 }
 
@@ -107,6 +135,12 @@
     [super viewWillAppear:animated];
     self.overlayView =
         [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    HRPGGemHeaderNavigationController *navigationController =
+    (HRPGGemHeaderNavigationController *)self.navigationController;
+    [navigationController scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {

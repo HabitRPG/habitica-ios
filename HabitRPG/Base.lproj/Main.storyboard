@@ -2919,11 +2919,11 @@
             </objects>
             <point key="canvasLocation" x="1014.375" y="8036.25"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Gem Header Navigation Controller-->
         <scene sceneID="xVP-nc-WPW">
             <objects>
-                <navigationController storyboardIdentifier="PurchaseGemNavController" id="Ne7-W6-6zE" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="t9n-14-0tP">
+                <navigationController storyboardIdentifier="PurchaseGemNavController" id="Ne7-W6-6zE" customClass="HRPGGemHeaderNavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="t9n-14-0tP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
