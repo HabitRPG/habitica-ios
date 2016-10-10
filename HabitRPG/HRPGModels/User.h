@@ -12,17 +12,14 @@
 #import "Outfit.h"
 #import "Preferences.h"
 #import "PushDevice.h"
+#import "Buff+CoreDataClass.h"
 
-@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, ImprovementCategory, Flags;
+@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, ImprovementCategory, Flags, Buff;
 
 @interface User : NSManagedObject
 
 @property(nonatomic, retain) NSNumber *balance;
 @property(nonatomic, retain) NSString *blurb;
-@property(nonatomic, retain) NSNumber *buffStrength;
-@property(nonatomic, retain) NSNumber *buffIntelligence;
-@property(nonatomic, retain) NSNumber *buffConstitution;
-@property(nonatomic, retain) NSNumber *buffPerception;
 @property(nonatomic, retain) NSNumber *strength;
 @property(nonatomic, retain) NSNumber *intelligence;
 @property(nonatomic, retain) NSNumber *constitution;
@@ -78,6 +75,7 @@
 @property(nonatomic, retain) Outfit *costume;
 @property(nonatomic, retain) Outfit *equipped;
 @property(nonatomic, retain) Flags *flags;
+@property(nonatomic, retain) Buff *buff;
 
 @property(nonatomic, retain, setter=setPetCountFromArray:) NSDictionary *petCountArray;
 @property(nonatomic, retain, setter=setCustomizationsDictionary:)

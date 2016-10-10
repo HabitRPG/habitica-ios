@@ -26,10 +26,6 @@
 
 @dynamic balance;
 @dynamic blurb;
-@dynamic buffStrength;
-@dynamic buffPerception;
-@dynamic buffConstitution;
-@dynamic buffIntelligence;
 @dynamic strength;
 @dynamic intelligence;
 @dynamic constitution;
@@ -86,6 +82,7 @@
 @dynamic equipped;
 @dynamic costume;
 @dynamic flags;
+@dynamic buff;
 
 - (void)setAvatarSubview:(UIView *)view showsBackground:(BOOL)showsBackground showsMount:(BOOL)showsMount showsPet:(BOOL)showsPet {
     [self setAvatarSubview:view showsBackground:showsBackground showsMount:showsMount showsPet:showsPet isFainted:NO];
@@ -168,6 +165,7 @@
         @"hair-flower" : @(self.preferences.hairFlower.integerValue),
         @"shield" : @(outfit.shield.length && [self _isAvailableGear:outfit.shield]),
         @"weapon" : @(outfit.weapon.length && [self _isAvailableGear:outfit.weapon]),
+        @"visual-buff" : [self getVisualBuff].length ? @YES : @NO,
         @"mount-head" : @(showsMount && self.currentMount.length),
         @"zzz" : [self.preferences.sleep boolValue] && !isFainted ? @YES : @NO,
         @"knockout" : isFainted ? @YES : @NO,
@@ -175,32 +173,47 @@
     };
 
     // avatar view layer order
-    NSArray *viewOrder = @[
-        @"background",
-        @"mount-body",
-        @"back",
-        @"skin",
-        @"shirt",
-        @"skin",
-        @"shirt",
-        @"armor",
-        @"body",
-        @"head_0",
-        @"hair-base",
-        @"hair-bangs",
-        @"hair-mustache",
-        @"hair-beard",
-        @"eyewear",
-        @"head",
-        @"head-accessory",
-        @"hair-flower",
-        @"shield",
-        @"weapon",
-        @"mount-head",
-        @"zzz",
-        @"knockout",
-        @"pet"
-    ];
+    NSArray *viewOrder = nil;
+  
+    if ([self getVisualBuff].length > 0) {
+        viewOrder = @[
+                      @"background",
+                      @"mount-body",
+                      @"visual-buff",
+                      @"mount-head",
+                      @"zzz",
+                      @"knockout",
+                      @"pet"
+                      ];
+    } else {
+        viewOrder = @[
+                      @"background",
+                      @"mount-body",
+                      @"back",
+                      @"skin",
+                      @"shirt",
+                      @"skin",
+                      @"shirt",
+                      @"armor",
+                      @"body",
+                      @"head_0",
+                      @"hair-base",
+                      @"hair-bangs",
+                      @"hair-mustache",
+                      @"hair-beard",
+                      @"eyewear",
+                      @"head",
+                      @"head-accessory",
+                      @"hair-flower",
+                      @"shield",
+                      @"weapon",
+                      @"visual-buff",
+                      @"mount-head",
+                      @"zzz",
+                      @"knockout",
+                      @"pet"
+                      ];
+    }
 
     // get file dictionary here so it will only be loaded once per avatar view
     NSDictionary *filenameDictionary = [self _getFilenameDictionary];
@@ -459,6 +472,7 @@
         @"hair-flower" : [NSString stringWithFormat:@"hair_flower_%@", self.preferences.hairFlower],
         @"shield" : outfit.shield ?: [NSNull null],
         @"weapon" : outfit.weapon ?: [NSNull null],
+        @"visual-buff" : [self getVisualBuff],
         @"mount-head" : [NSString stringWithFormat:@"Mount_Head_%@", self.currentMount],
         @"zzz" : @"zzz",
         @"knockout" : @"knockout",
@@ -582,6 +596,7 @@
         @"shield" : character,
         @"weapon" : character,
         @"mount-head" : mount,
+        @"visual-buff" : character,
         @"zzz" : character,
         @"knockout" : character,
         @"pet" : pet,
@@ -638,6 +653,7 @@
         @"hair-flower" : keepRatio,
         @"shield" : keepRatio,
         @"weapon" : keepRatio,
+        @"visual-buff" : keepRatio,
         @"mount-head" : keepRatio,
         @"zzz" : keepRatio,
         @"pet" : keepRatio
@@ -698,6 +714,22 @@
 
 - (BOOL)_isAvailableGear:(nonnull NSString *)gearName {
     return [gearName rangeOfString:@"_base_0"].location == NSNotFound;
+}
+
+- (NSString *) getVisualBuff {
+    if ([self.buff.seafoam boolValue]) {
+        return @"seafoam_star";
+    }
+    if ([self.buff.shinySeed boolValue]) {
+        return [@"avatar_floral_" stringByAppendingString:self.hclass];
+    }
+    if ([self.buff.spookySparkles boolValue]) {
+        return @"ghost";
+    }
+    if ([self.buff.snowball boolValue]) {
+        return @"snowman";
+    }
+    return @"";
 }
 
 @end

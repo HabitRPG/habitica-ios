@@ -707,10 +707,6 @@ NSString *currentUser;
         @"stats.int" : @"intelligence",
         @"stats.per" : @"perception",
         @"stats.str" : @"strength",
-        @"stats.buff.con" : @"buffConstitution",
-        @"stats.buff.int" : @"buffIntelligence",
-        @"stats.buff.per" : @"buffPerception",
-        @"stats.buff.str" : @"buffStrength",
         @"stats.training.con" : @"trainingConstitution",
         @"stats.training.int" : @"trainingIntelligence",
         @"stats.training.per" : @"trainingPerception",
@@ -884,6 +880,27 @@ NSString *currentUser;
                                                                        toKeyPath:@"flags"
                                                                      withMapping:flagsMapping]];
 
+    RKEntityMapping *buffMapping =
+    [RKEntityMapping mappingForEntityForName:@"Buff" inManagedObjectStore:managedObjectStore];
+    [buffMapping addAttributeMappingsFromDictionary:@{
+                                                      @"@parent.@parent._id" : @"userID",
+                                                      @"int" : @"intelligence",
+                                                      @"str" : @"strength",
+                                                      @"per" : @"perception",
+                                                      @"con" : @"constitution",
+                                                      @"spookySparkles" : @"spookySparkles",
+                                                      @"seafoam" : @"seafoam",
+                                                      @"snowball" : @"snowball",
+                                                      @"shinySeed" : @"shinySeed",
+                                                      @"streak" : @"streak",
+                                                      }];
+    buffMapping.identificationAttributes = @[ @"userID" ];
+    [entityMapping
+     addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"stats.buffs"
+                                                                    toKeyPath:@"buff"
+                                                                  withMapping:buffMapping]];
+
+    
     RKEntityMapping *gearOwnedMapping =
         [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
     gearOwnedMapping.forceCollectionMapping = YES;
@@ -1506,10 +1523,6 @@ NSString *currentUser;
         @"stats.int" : @"intelligence",
         @"stats.per" : @"perception",
         @"stats.str" : @"strength",
-        @"stats.buff.con" : @"buffConstitution",
-        @"stats.buff.int" : @"buffIntelligence",
-        @"stats.buff.per" : @"buffPerception",
-        @"stats.buff.str" : @"buffStrength",
         @"stats.training.con" : @"trainingConstitution",
         @"stats.training.int" : @"trainingIntelligence",
         @"stats.training.per" : @"trainingPerception",
@@ -1536,6 +1549,11 @@ NSString *currentUser;
                                           relationshipMappingFromKeyPath:@"preferences"
                                                                toKeyPath:@"preferences"
                                                              withMapping:preferencesMapping]];
+    
+    [memberMapping
+     addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"stats.buffs"
+                                                                    toKeyPath:@"buff"
+                                                                  withMapping:buffMapping]];
 
     RKEntityMapping *memberIdMapping =
         [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];

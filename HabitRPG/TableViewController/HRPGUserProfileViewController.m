@@ -462,10 +462,10 @@
 
 - (NSDictionary *) buffedAttributes {
     return @{
-             @"str": self.user.buffStrength ? self.user.buffStrength : @0,
-             @"int": self.user.buffIntelligence ? self.user.buffIntelligence : @0,
-             @"con": self.user.buffConstitution ? self.user.buffConstitution : @0,
-             @"per": self.user.buffPerception ? self.user.buffPerception : @0
+             @"str": self.user.buff.strength ? self.user.buff.strength : @0,
+             @"int": self.user.buff.intelligence ? self.user.buff.intelligence : @0,
+             @"con": self.user.buff.constitution ? self.user.buff.constitution : @0,
+             @"per": self.user.buff.perception ? self.user.buff.perception : @0
              };
 }
 
