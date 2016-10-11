@@ -10,6 +10,9 @@
 #import "HRPGSpellTabBarController.h"
 #import "Spell.h"
 #import "HRPGCoreDataDataSource.h"
+#import "HRPGSpellTableViewCell.h"
+#import "HRPGSpellUserTableViewController.h"
+
 @interface HRPGSpellViewController ()
 @property User *user;
 @property HRPGCoreDataDataSource *dataSource;
@@ -33,18 +36,17 @@
 
 - (void) setupTableView {
     __weak HRPGSpellViewController *weakSelf = self;
-    TableViewCellConfigureBlock configureCell = ^(UITableViewCell *cell, Spell *skill, NSIndexPath *indexPath) {
+    TableViewCellConfigureBlock configureCell = ^(HRPGSpellTableViewCell *cell, Spell *skill, NSIndexPath *indexPath) {
         [weakSelf configureCell:cell withSkill:skill withAnimation:YES];
     };
     FetchRequestConfigureBlock configureFetchRequest = ^(NSFetchRequest *fetchRequest) {
-        User *user = [weakSelf.sharedManager getUser];
-        NSString *classname = [NSString stringWithFormat:@"%@", user.dirtyClass];
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"klass == %@ && level <= %@",
-                                    classname, user.level]];
+        [fetchRequest setPredicate:[weakSelf predicate]];
         
-        NSSortDescriptor *sortDescriptor =
+        NSSortDescriptor *classSortDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:@"klass" ascending:NO];
+        NSSortDescriptor *levelSortDescriptor =
         [[NSSortDescriptor alloc] initWithKey:@"level" ascending:YES];
-        NSArray *sortDescriptors = @[ sortDescriptor ];
+        NSArray *sortDescriptors = @[ classSortDescriptor, levelSortDescriptor ];
         [fetchRequest setSortDescriptors:sortDescriptors];
     };
     self.dataSource= [[HRPGCoreDataDataSource alloc] initWithManagedObjectContext:self.managedObjectContext
@@ -53,6 +55,16 @@
                                                                configureCellBlock:configureCell
                                                                 fetchRequestBlock:configureFetchRequest
                                                                     asDelegateFor:self.tableView];
+    self.dataSource.sectionNameKeyPath = @"klass";
+    self.dataSource.haveEmptyHeaderTitles = YES;
+    self.dataSource.emptyText = NSLocalizedString(@"You don't have any spells yet. Continue completing your tasks and level up to unlock some!", nil);
+}
+
+- (NSPredicate *)predicate {
+    User *user = [self.sharedManager getUser];
+    NSString *classname = [NSString stringWithFormat:@"%@", user.dirtyClass];
+    return [NSPredicate predicateWithFormat:@"(klass == %@ && level <= %@) || (klass=='special' && key IN %@)",
+            classname, user.level, [user.specialItems ownedTransformationItemIDs]];
 }
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
@@ -88,8 +100,21 @@
                                  tabBarController.spell = spell;
                                  tabBarController.sourceTableView = self.tableView;
                              }];
+        } else if ([spell.target isEqualToString:@"user"]) {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UINavigationController *navigationController = [storyboard
+                                                            instantiateViewControllerWithIdentifier:@"SpellUserNavigationController"];
+            [self presentViewController:navigationController
+                               animated:YES
+                             completion:^() {
+                                 HRPGSpellUserTableViewController *tabBarController =
+                                 (HRPGSpellUserTableViewController *)
+                                 navigationController.topViewController;
+                                 tabBarController.spell = spell;
+                             }];
+
         } else {
-            [self.sharedManager castSpell:spell.key
+            [self.sharedManager castSpell:spell
                            withTargetType:spell.target
                                  onTarget:nil
                                 onSuccess:^() {
@@ -102,7 +127,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     float height = 30.0f;
-    float width = self.viewWidth - 43;
+    float width = self.viewWidth - 83;
     Spell *spell = [self.dataSource itemAtIndexPath:indexPath];
     width = width -
             [[NSString stringWithFormat:@"%ld MP", (long)[spell.mana integerValue]]
@@ -138,29 +163,15 @@
     return height;
 }
 
-- (void)configureCell:(UITableViewCell *)cell
+- (void)configureCell:(HRPGSpellTableViewCell *)cell
           withSkill:(Spell *)skill
         withAnimation:(BOOL)animate {
-    UILabel *nameLabel = [cell viewWithTag:1];
-    UILabel *detailLabel = [cell viewWithTag:2];
-    UILabel *manaLabel = [cell viewWithTag:3];
-    nameLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-    detailLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-    manaLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    nameLabel.text = skill.text;
-    detailLabel.text = skill.notes;
-    manaLabel.text = [NSString stringWithFormat:@"%@ MP", skill.mana];
-    if ([self.user.magic integerValue] >= [skill.mana integerValue]) {
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-        nameLabel.textColor = [UIColor darkTextColor];
-        detailLabel.textColor = [UIColor darkTextColor];
-        manaLabel.textColor = [UIColor darkTextColor];
-    } else {
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        nameLabel.textColor = [UIColor lightGrayColor];
-        detailLabel.textColor = [UIColor lightGrayColor];
-        manaLabel.textColor = [UIColor lightGrayColor];
+    NSNumber *ownedSpecials = nil;
+    if ([skill.klass isEqualToString:@"special"]) {
+        ownedSpecials = [self.user.specialItems valueForKey:skill.key];
     }
+    [cell configureForSpell:skill withMagic:self.user.magic withOwned:ownedSpecials];
+    [self.sharedManager setImage:[@"shop_" stringByAppendingString:skill.key] withFormat:@"png" onView:cell.spellImageView];
 }
 
 #pragma mark - Navigation
@@ -169,4 +180,14 @@
     [super prepareForSegue:segue sender:sender];
 }
 
+
+- (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
+    if ([segue.identifier isEqualToString:@"CastUserSpellSegue"]) {
+        HRPGSpellUserTableViewController *userViewController = (HRPGSpellUserTableViewController *) segue.sourceViewController;
+        [self.sharedManager castSpell:userViewController.spell withTargetType:@"user" onTarget:userViewController.userID onSuccess:^{
+            [self.tableView reloadData];
+        } onError:nil];
+        
+    }
+}
 @end

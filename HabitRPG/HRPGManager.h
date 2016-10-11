@@ -19,6 +19,7 @@
 #import "item.h"
 #import "InboxMessage.h"
 #import "ShopItem.h"
+#import "Spell.h"
 
 @interface HRPGManager : NSObject
 
@@ -132,7 +133,7 @@
        onSuccess:(void (^)(NSString *message))successBlock
          onError:(void (^)())errorBlock;
 
-- (void)castSpell:(NSString *)spell
+- (void)castSpell:(Spell *)spell
     withTargetType:(NSString *)targetType
           onTarget:(NSString *)target
          onSuccess:(void (^)())successBlock

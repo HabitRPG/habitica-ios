@@ -300,6 +300,19 @@
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ShopCategory" inverseName="items" inverseEntity="ShopCategory" syncable="YES"/>
     </entity>
+    <entity name="SpecialItems" representedClassName="SpecialItems" syncable="YES">
+        <attribute name="birthday" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="greeting" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="nye" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="seafoam" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="shinySeed" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="snowball" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="spookySparkles" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="thankyou" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valentine" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="specialItems" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="Spell" representedClassName="Spell" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="klass" optional="YES" attributeType="String" syncable="YES"/>
@@ -433,6 +446,7 @@
         <relationship name="pushDevices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PushDevice" inverseName="owner" inverseEntity="PushDevice" syncable="YES"/>
         <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="questParticipants" inverseEntity="Group" syncable="YES"/>
         <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Reward" inverseName="user" inverseEntity="Reward" syncable="YES"/>
+        <relationship name="specialItems" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SpecialItems" inverseName="user" inverseEntity="SpecialItems" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tag" inverseName="user" inverseEntity="Tag" syncable="YES"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="user" inverseEntity="Task" syncable="YES"/>
         <relationship name="unreadMessages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="UnreadMessages" inverseName="user" inverseEntity="UnreadMessages" syncable="YES"/>
@@ -474,6 +488,7 @@
         <element name="Task" positionX="0" positionY="0" width="128" height="480"/>
         <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
         <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="1140"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1155"/>
+        <element name="SpecialItems" positionX="18" positionY="162" width="128" height="210"/>
     </elements>
 </model>

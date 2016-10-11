@@ -900,6 +900,25 @@ NSString *currentUser;
                                                                     toKeyPath:@"buff"
                                                                   withMapping:buffMapping]];
 
+    RKEntityMapping *specialItemsMapping =
+    [RKEntityMapping mappingForEntityForName:@"SpecialItems" inManagedObjectStore:managedObjectStore];
+    [specialItemsMapping addAttributeMappingsFromDictionary:@{
+                                                      @"@parent.@parent._id" : @"userID",
+                                                      @"spookySparkles" : @"spookySparkles",
+                                                      @"seafoam" : @"seafoam",
+                                                      @"snowball" : @"snowball",
+                                                      @"shinySeed" : @"shinySeed",
+                                                      @"valentine" : @"valentine",
+                                                      @"nye" : @"nye",
+                                                      @"greeting" : @"greeting",
+                                                      @"thankyou" : @"thankyou",
+                                                      @"birthday" : @"birthday"
+                                                      }];
+    specialItemsMapping.identificationAttributes = @[ @"userID" ];
+    [entityMapping
+     addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.special"
+                                                                    toKeyPath:@"specialItems"
+                                                                  withMapping:specialItemsMapping]];
     
     RKEntityMapping *gearOwnedMapping =
         [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
@@ -1768,6 +1787,13 @@ NSString *currentUser;
                                method:RKRequestMethodGET
                           pathPattern:@"content"
                               keyPath:@"data.spells.rogue"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:spellMapping
+                          method:RKRequestMethodGET
+                          pathPattern:@"content"
+                          keyPath:@"data.spells.special"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
@@ -3609,7 +3635,7 @@ NSString *currentUser;
         }];
 }
 
-- (void)castSpell:(NSString *)spell
+- (void)castSpell:(Spell *)spell
     withTargetType:(NSString *)targetType
           onTarget:(NSString *)target
          onSuccess:(void (^)())successBlock
@@ -3621,7 +3647,7 @@ NSString *currentUser;
     CGFloat gold = [self.user.gold floatValue];
     NSInteger mana = [self.user.magic integerValue];
     if (target) {
-        url = [NSString stringWithFormat:@"user/class/cast/%@?targetType=%@&targetId=%@", spell,
+        url = [NSString stringWithFormat:@"user/class/cast/%@?targetType=%@&targetId=%@", spell.key,
                                          targetType, target];
     } else {
         url = [NSString stringWithFormat:@"user/class/cast/%@?targetType=%@", spell, targetType];
@@ -3633,9 +3659,13 @@ NSString *currentUser;
             [self fetchUser:^() {
                 NSError *executeError = nil;
                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                [self displaySpellNotification:(mana - [self.user.magic integerValue])
-                                withHealthDiff:([self.user.health floatValue] - health)
-                                  withGoldDiff:([self.user.gold floatValue] - gold)];
+                if ([spell.klass isEqualToString:@"special"]) {
+                    [self displayTransformationItemNotification:spell.text];
+                } else {
+                    [self displaySpellNotification:(mana - [self.user.magic integerValue])
+                                    withHealthDiff:([self.user.health floatValue] - health)
+                                      withGoldDiff:([self.user.gold floatValue] - gold)];
+                }
                 if (successBlock) {
                     successBlock();
                 }
@@ -5125,6 +5155,19 @@ NSString *currentUser;
     UIViewController *viewController =
         [UIApplication sharedApplication].keyWindow.rootViewController;
     [viewController presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)displayTransformationItemNotification:(NSString *)itemName {
+    UIColor *notificationColor = [UIColor blue10];
+    NSDictionary *options = @{
+                              kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You used %@", nil), itemName],
+                              kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastBackgroundColorKey : notificationColor,
+                              };
+    [CRToastManager showNotificationWithOptions:options
+                                completionBlock:^{
+                                }];
 }
 
 - (User *)getUser {

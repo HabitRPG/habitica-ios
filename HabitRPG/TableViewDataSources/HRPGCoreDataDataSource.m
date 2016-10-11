@@ -109,7 +109,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (self.sectionNameKeyPath) {
+    if (self.sectionNameKeyPath && !self.haveEmptyHeaderTitles) {
         return [[self.fetchedResultsController sections][(NSUInteger)section] name];
     } else {
         return nil;
@@ -222,13 +222,13 @@
 
 - (void)configureEmptyLabel {
     if ([[self.fetchedResultsController fetchedObjects] count] == 0 && self.emptyLabel == nil) {
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    UILabel *emptyLabel = [[UILabel alloc] initWithFrame:self.tableView.frame];
-    emptyLabel.text = self.emptyText;
-    emptyLabel.textAlignment = NSTextAlignmentCenter;
-    emptyLabel.textColor = [UIColor lightGrayColor];
-    emptyLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-    [self.tableView addSubview:emptyLabel];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        UILabel *emptyLabel = [[UILabel alloc] initWithFrame:self.tableView.frame];
+        emptyLabel.text = self.emptyText;
+        emptyLabel.textAlignment = NSTextAlignmentCenter;
+        emptyLabel.textColor = [UIColor lightGrayColor];
+        emptyLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+        [self.tableView addSubview:emptyLabel];
     } else if ([[self.fetchedResultsController fetchedObjects] count] > 0 && self.emptyLabel) {
         [self.emptyLabel removeFromSuperview];
     }

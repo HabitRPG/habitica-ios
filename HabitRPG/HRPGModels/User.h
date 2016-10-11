@@ -13,8 +13,9 @@
 #import "Preferences.h"
 #import "PushDevice.h"
 #import "Buff+CoreDataClass.h"
+#import "SpecialItems+CoreDataClass.h"
 
-@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, ImprovementCategory, Flags, Buff;
+@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, ImprovementCategory;
 
 @interface User : NSManagedObject
 
@@ -76,6 +77,7 @@
 @property(nonatomic, retain) Outfit *equipped;
 @property(nonatomic, retain) Flags *flags;
 @property(nonatomic, retain) Buff *buff;
+@property(nonatomic, retain) SpecialItems *specialItems;
 
 @property(nonatomic, retain, setter=setPetCountFromArray:) NSDictionary *petCountArray;
 @property(nonatomic, retain, setter=setCustomizationsDictionary:)

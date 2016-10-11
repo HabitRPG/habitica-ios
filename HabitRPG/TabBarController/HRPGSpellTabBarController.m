@@ -71,7 +71,7 @@
 
 - (void)castSpell {
     __weak HRPGSpellTabBarController *weakSelf = self;
-    [self.sharedManager castSpell:self.spell.key
+    [self.sharedManager castSpell:self.spell
         withTargetType:self.spell.target
         onTarget:self.taskID
         onSuccess:^() {

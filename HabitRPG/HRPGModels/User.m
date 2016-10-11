@@ -83,6 +83,7 @@
 @dynamic costume;
 @dynamic flags;
 @dynamic buff;
+@dynamic specialItems;
 
 - (void)setAvatarSubview:(UIView *)view showsBackground:(BOOL)showsBackground showsMount:(BOOL)showsMount showsPet:(BOOL)showsPet {
     [self setAvatarSubview:view showsBackground:showsBackground showsMount:showsMount showsPet:showsPet isFainted:NO];
