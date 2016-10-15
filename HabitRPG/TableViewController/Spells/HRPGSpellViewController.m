@@ -63,8 +63,14 @@
 - (NSPredicate *)predicate {
     User *user = [self.sharedManager getUser];
     NSString *classname = [NSString stringWithFormat:@"%@", user.dirtyClass];
-    return [NSPredicate predicateWithFormat:@"(klass == %@ && level <= %@) || (klass=='special' && key IN %@)",
+    NSArray *ownedTransoformationIDs = [user.specialItems ownedTransformationItemIDs];
+    if (ownedTransoformationIDs == nil) {
+        return [NSPredicate predicateWithFormat:@"klass == %@ && level <= %@",
+                classname, user.level];
+    } else {
+        return [NSPredicate predicateWithFormat:@"(klass == %@ && level <= %@) || (klass=='special' && key IN %@)",
             classname, user.level, [user.specialItems ownedTransformationItemIDs]];
+    }
 }
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {

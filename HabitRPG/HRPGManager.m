@@ -3650,7 +3650,7 @@ NSString *currentUser;
         url = [NSString stringWithFormat:@"user/class/cast/%@?targetType=%@&targetId=%@", spell.key,
                                          targetType, target];
     } else {
-        url = [NSString stringWithFormat:@"user/class/cast/%@?targetType=%@", spell, targetType];
+        url = [NSString stringWithFormat:@"user/class/cast/%@?targetType=%@", spell.key, targetType];
     }
     [[RKObjectManager sharedManager] postObject:nil
         path:url
