@@ -102,6 +102,10 @@
     [self.tableView reloadData];
 }
 
+- (NSInteger)numberOfSections {
+    return [self.fetchedResultsController sections].count;
+}
+
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="167"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPL-dL-APd">
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SfB-zM-e3r">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="162" id="8jj-wN-VZ4"/>
+                        <constraint firstAttribute="height" constant="138" id="XJF-sQ-Vzo"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7k6-GD-5r2">
+                    <subviews>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dov-vA-RKV">
+                            <constraints>
+                                <constraint firstAttribute="width" priority="500" constant="60" id="bX0-AL-Emi"/>
+                            </constraints>
+                            <inset key="contentEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
+                            <state key="normal" title="Open Shop">
+                                <color key="titleColor" red="0.44783601159999997" green="0.1084804982" blue="0.99846321339999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="H6G-Q7-hm1"/>
+                        <constraint firstItem="Dov-vA-RKV" firstAttribute="centerX" secondItem="7k6-GD-5r2" secondAttribute="centerX" id="VFr-4S-nNQ"/>
+                        <constraint firstAttribute="bottom" secondItem="Dov-vA-RKV" secondAttribute="bottom" id="cek-Sg-tps"/>
+                        <constraint firstItem="Dov-vA-RKV" firstAttribute="top" secondItem="7k6-GD-5r2" secondAttribute="top" id="yfV-mO-dJ8"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="7k6-GD-5r2" secondAttribute="trailing" constant="8" id="4k2-cg-5h7"/>
+                <constraint firstItem="LPL-dL-APd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="58F-2q-29M"/>
+                <constraint firstItem="SfB-zM-e3r" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="IbG-kL-iI0"/>
+                <constraint firstItem="7k6-GD-5r2" firstAttribute="top" secondItem="LPL-dL-APd" secondAttribute="bottom" id="brG-Fn-6W2"/>
+                <constraint firstItem="SfB-zM-e3r" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="cbq-Ug-uow"/>
+                <constraint firstItem="7k6-GD-5r2" firstAttribute="bottom" secondItem="SfB-zM-e3r" secondAttribute="bottom" id="iTj-ta-1pF"/>
+                <constraint firstItem="7k6-GD-5r2" firstAttribute="leading" secondItem="SfB-zM-e3r" secondAttribute="trailing" constant="8" id="oBk-RI-zXt"/>
+                <constraint firstItem="LPL-dL-APd" firstAttribute="leading" secondItem="SfB-zM-e3r" secondAttribute="trailing" constant="8" id="pge-Rg-Lcu"/>
+                <constraint firstAttribute="trailing" secondItem="LPL-dL-APd" secondAttribute="trailing" constant="8" id="uCg-2g-6S8"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="34.5" y="-191.5"/>
+        </view>
+    </objects>
+</document>

@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
+#import "HRPGCoreDataDataSourceDelegate.h"
 
 @interface HRPGItemViewController
-    : HRPGBaseViewController<UIActionSheetDelegate>
+    : HRPGBaseViewController<UIActionSheetDelegate, HRPGCoreDataDataSourceDelegate>
 
 @property(strong) NSString *itemType;
 @property BOOL shouldDismissAfterAction;

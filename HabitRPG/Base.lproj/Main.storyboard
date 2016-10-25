@@ -1498,7 +1498,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="60" id="gG2-Pp-DsE" userLabel="Cell" customClass="HRPGRewardTableViewCell">
-                                <rect key="frame" x="0.0" y="258" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="257.5" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gG2-Pp-DsE" id="9fV-aW-Dkv">
                                     <frame key="frameInset" width="375" height="59"/>
@@ -2760,13 +2760,13 @@
         <scene sceneID="QbV-9U-Vv1">
             <objects>
                 <tableViewController id="cVq-Fh-1Yu" customClass="HRPGFeedViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mJC-fk-DDR">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="mJC-fk-DDR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Nrx-0W-z8E">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nrx-0W-z8E" id="6dP-XB-lK7">
                                     <frame key="frameInset" width="375" height="43"/>
@@ -2814,6 +2814,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="oRO-nF-eAZ" kind="show" identifier="ShowShopSegue" id="gXy-LN-VI3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OdM-ul-yrc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="neK-n6-0WI" userLabel="Exit" sceneMemberID="exit"/>
@@ -3512,6 +3515,7 @@ your account, including:</string>
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="DLa-xG-L7z" id="qsR-Ng-DFz"/>
+                        <segue destination="oRO-nF-eAZ" kind="show" identifier="ShowShopSegue" id="dro-Sw-cHB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tgy-p9-JH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4543,14 +4547,15 @@ your account, including:</string>
         <image name="tag" width="17" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ydi-dk-kDU"/>
         <segue reference="ffA-qm-0SO"/>
-        <segue reference="njg-A8-lDq"/>
-        <segue reference="E5i-VS-PGN"/>
-        <segue reference="ETz-qE-xC2"/>
+        <segue reference="ydi-dk-kDU"/>
         <segue reference="sPD-XR-ORt"/>
-        <segue reference="aWZ-FG-z5O"/>
+        <segue reference="ETz-qE-xC2"/>
         <segue reference="OZd-8c-sWC"/>
+        <segue reference="gXy-LN-VI3"/>
+        <segue reference="aWZ-FG-z5O"/>
+        <segue reference="E5i-VS-PGN"/>
+        <segue reference="njg-A8-lDq"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

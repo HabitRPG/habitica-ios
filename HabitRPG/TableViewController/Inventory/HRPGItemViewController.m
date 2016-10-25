@@ -14,6 +14,10 @@
 #import "HatchingPotion.h"
 #import "Quest.h"
 #import "HRPGCoreDataDataSource.h"
+#import <QuartzCore/QuartzCore.h>
+#import "UIColor+Habitica.h"
+#import "HRPGShopViewController.h"
+#import "Shop.h"
 
 @interface HRPGItemViewController ()
 @property Item *selectedItem;
@@ -24,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property HRPGCoreDataDataSource *dataSource;
 
+@property NSString *shopIdentifier;
 @end
 
 @implementation HRPGItemViewController
@@ -74,6 +79,40 @@ float textWidth;
                                                                 fetchRequestBlock:configureFetchRequest
                                                                     asDelegateFor:self.tableView];
     self.dataSource.sectionNameKeyPath = @"type";
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section+1 == [self.dataSource numberOfSections]) {
+        return 180.0;
+    } else {
+        return [self.tableView sectionFooterHeight];
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    if (section+1 == [self.dataSource numberOfSections]) {
+        UIView *view = [[[NSBundle mainBundle] loadNibNamed:@"ShopAdFooter" owner:self options:nil] lastObject];
+        UIImageView *imageView = [view viewWithTag:1];
+        UILabel *label = [view viewWithTag:2];
+        UIButton *openShopButton = [view viewWithTag:3];
+        
+        openShopButton.layer.borderColor = [UIColor purple400].CGColor;
+        openShopButton.layer.borderWidth = 1.0;
+        openShopButton.layer.cornerRadius = 5;
+        
+        if (self.isHatching) {
+            [self.sharedManager setImage:@"npc_alex" withFormat:nil onView:imageView];
+            label.text = NSLocalizedString(@"Not getting the right drops? Check out the Market to buy just the things you need!", nil);
+            [openShopButton addTarget:self action:@selector(openMarket:) forControlEvents:UIControlEventTouchUpInside];
+        } else {
+            [self.sharedManager setImage:@"npc_ian" withFormat:nil onView:imageView];
+            label.text = NSLocalizedString(@"Looking for more adventures? Visit Ian to buy more quest scrolls!", nil);
+            [openShopButton addTarget:self action:@selector(openQuestShop:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        return view;
+    } else {
+        return nil;
+    }
 }
 
 - (void)clearFaultyItems {
@@ -344,6 +383,23 @@ float textWidth;
                 break;
             }
         }
+    }
+}
+
+- (void)openQuestShop:(UIButton *)button {
+    self.shopIdentifier = QuestsShopKey;
+    [self performSegueWithIdentifier:@"ShowShopSegue" sender:self];
+}
+
+- (void)openMarket:(UIButton *)button {
+    self.shopIdentifier = MarketKey;
+    [self performSegueWithIdentifier:@"ShowShopSegue" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowShopSegue"]) {
+        HRPGShopViewController *shopViewController = segue.destinationViewController;
+        shopViewController.shopIdentifier = self.shopIdentifier;
     }
 }
 

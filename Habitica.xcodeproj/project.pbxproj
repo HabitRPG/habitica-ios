@@ -178,6 +178,8 @@
 		D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */; };
 		D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */; };
 		D9BB28411D5CF3C7003894A8 /* HRPGDailyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE318CB83EF0006C242 /* HRPGDailyTableViewController.m */; };
+		D9BBF32C1DBD127A00C4114C /* HRPGShopAdFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */; };
+		D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */; };
 		D9BE05821DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BE05811DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m */; };
 		D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BE05831DA6ADE70074D3B7 /* GemPurchaseView.xib */; };
 		D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */; };
@@ -644,6 +646,9 @@
 		D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGProgressBar.m; sourceTree = "<group>"; };
 		D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLabeledProgressBar.h; sourceTree = "<group>"; };
 		D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLabeledProgressBar.m; sourceTree = "<group>"; };
+		D9BBF32A1DBD127A00C4114C /* HRPGShopAdFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopAdFooter.h; sourceTree = "<group>"; };
+		D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopAdFooter.m; sourceTree = "<group>"; };
+		D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopAdFooter.xib; sourceTree = "<group>"; };
 		D9BE05801DA6ADDB0074D3B7 /* HRPGGemPurchaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGGemPurchaseView.h; path = ../Views/HRPGGemPurchaseView.h; sourceTree = "<group>"; };
 		D9BE05811DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGGemPurchaseView.m; path = ../Views/HRPGGemPurchaseView.m; sourceTree = "<group>"; };
 		D9BE05831DA6ADE70074D3B7 /* GemPurchaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GemPurchaseView.xib; path = ../Views/GemPurchaseView.xib; sourceTree = "<group>"; };
@@ -1133,6 +1138,9 @@
 				D95CBD471BBC0EDA002F4498 /* UIView+Pulse.m */,
 				D9D9EF961D54E51C00FC89C1 /* HRPGQRCodeView.h */,
 				D9D9EF971D54E51C00FC89C1 /* HRPGQRCodeView.m */,
+				D9BBF32A1DBD127A00C4114C /* HRPGShopAdFooter.h */,
+				D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */,
+				D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1675,6 +1683,7 @@
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
 				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
 				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
+				D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */,
 				D96576C51BAF53D400CCA28E /* HRPGGearDetailView.xib in Resources */,
 				D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
@@ -2028,6 +2037,7 @@
 				D9E46B0D1DAC08BE00E390D7 /* HRPGSpellTableViewCell.m in Sources */,
 				D9ADD3541CF3169B001D005B /* NSString+StripHTML.m in Sources */,
 				D995D5971D1D499D00D5251C /* PushNotifications.m in Sources */,
+				D9BBF32C1DBD127A00C4114C /* HRPGShopAdFooter.m in Sources */,
 				D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */,
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
 				D92A085E1D3520D8000F8B66 /* ShopItem.m in Sources */,

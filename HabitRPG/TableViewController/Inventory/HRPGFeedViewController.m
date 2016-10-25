@@ -8,9 +8,14 @@
 
 #import "HRPGFeedViewController.h"
 #import "HRPGCoreDataDataSource.h"
+#import "UIColor+Habitica.h"
+#import "HRPGShopViewController.h"
+#import "Shop.h"
+
 @interface HRPGFeedViewController ()
 
 @property HRPGCoreDataDataSource *dataSource;
+@property NSString *shopIdentifier;
 
 @end
 
@@ -82,6 +87,46 @@
                           onView:cell.imageView];
 
     cell.imageView.contentMode = UIViewContentModeCenter;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section+1 == [self.dataSource numberOfSections]) {
+        return 180.0;
+    } else {
+        return [self.tableView sectionFooterHeight];
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    if (section+1 == [self.dataSource numberOfSections]) {
+        UIView *view = [[[NSBundle mainBundle] loadNibNamed:@"ShopAdFooter" owner:self options:nil] lastObject];
+        UIImageView *imageView = [view viewWithTag:1];
+        UILabel *label = [view viewWithTag:2];
+        UIButton *openShopButton = [view viewWithTag:3];
+        
+        openShopButton.layer.borderColor = [UIColor purple400].CGColor;
+        openShopButton.layer.borderWidth = 1.0;
+        openShopButton.layer.cornerRadius = 5;
+        
+        [self.sharedManager setImage:@"npc_alex" withFormat:nil onView:imageView];
+        label.text = NSLocalizedString(@"Not getting the right drops? Check out the Market to buy just the things you need!", nil);
+        [openShopButton addTarget:self action:@selector(openMarket:) forControlEvents:UIControlEventTouchUpInside];
+        return view;
+    } else {
+        return nil;
+    }
+}
+
+- (void)openMarket:(UIButton *)button {
+    self.shopIdentifier = MarketKey;
+    [self performSegueWithIdentifier:@"ShowShopSegue" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowShopSegue"]) {
+        HRPGShopViewController *shopViewController = segue.destinationViewController;
+        shopViewController.shopIdentifier = self.shopIdentifier;
+    }
 }
 
 @end
