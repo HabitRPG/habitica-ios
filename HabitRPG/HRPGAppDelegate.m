@@ -126,6 +126,8 @@
         }
     }
     
+    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    
     return YES;
 }
 
@@ -589,6 +591,16 @@
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{
                                 }];
+}
+
+-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+    
+    [self.sharedManager fetchTasks:^{
+        completionHandler(UIBackgroundFetchResultNewData);
+    } onError:^{
+        completionHandler(UIBackgroundFetchResultFailed);
+    }];
+    
 }
 
 @end
