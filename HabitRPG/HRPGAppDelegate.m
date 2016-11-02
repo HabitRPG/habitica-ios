@@ -89,17 +89,18 @@
 
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"dailyReminderActive"];
         [[NSUserDefaults standardUserDefaults] setValue:newDate forKey:@"dailyReminderTime"];
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"appBadgeActive"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"appBadgeActive"];
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
         UILocalNotification *localNotification = [[UILocalNotification alloc] init];
         localNotification.fireDate = newDate;
-        localNotification.repeatInterval = NSDayCalendarUnit;
+        localNotification.repeatInterval = NSCalendarUnitDay;
         localNotification.alertBody =
             NSLocalizedString(@"Remember to check off your Dailies!", nil);
         localNotification.soundName = UILocalNotificationDefaultSoundName;
         localNotification.timeZone = [NSTimeZone defaultTimeZone];
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     }
+    [self.sharedManager changeUseAppBadge:[[NSUserDefaults standardUserDefaults] boolForKey:@"appBadgeActive"]];
 
     UILocalNotification *notification =
         launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];

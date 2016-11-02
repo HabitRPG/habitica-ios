@@ -251,7 +251,7 @@ User *user;
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     localNotification.fireDate = date;
-    localNotification.repeatInterval = NSDayCalendarUnit;
+    localNotification.repeatInterval = NSCalendarUnitDay;
     localNotification.alertBody = NSLocalizedString(@"Remember to check off your Dailies!", nil);
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
@@ -524,7 +524,7 @@ User *user;
                                      }onSuccess:nil onError:nil];
 }
 
-- (void)changeAppBadgeSettings:(BOOL *)newValue {
+- (void)changeAppBadgeSettings:(BOOL)newValue {
     [self.sharedManager changeUseAppBadge: newValue];
     if (!newValue) {
       [UIApplication sharedApplication].applicationIconBadgeNumber = 0;

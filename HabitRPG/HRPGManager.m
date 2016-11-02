@@ -5244,7 +5244,7 @@ NSString *currentUser;
     successBlock();
 }
 
-- (void)changeUseAppBadge:(BOOL *)newUseAppBadge {
+- (void)changeUseAppBadge:(BOOL)newUseAppBadge {
     self.useAppBadge = newUseAppBadge;
 }
 

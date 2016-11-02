@@ -25,7 +25,7 @@
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property(nonatomic, strong) User *user;
-@property(nonatomic) BOOL *useAppBadge;
+@property(nonatomic) BOOL useAppBadge;
 
 - (void)loadObjectManager:(RKManagedObjectStore *)existingManagedObjectStore;
 
@@ -315,6 +315,6 @@
                           withGoldDiff:(NSNumber *)goldDiff
                          withMagicDiff:(NSNumber *)magicDiff;
 
-- (void)changeUseAppBadge:(BOOL *)useAppBadge;
+- (void)changeUseAppBadge:(BOOL)useAppBadge;
 
 @end
