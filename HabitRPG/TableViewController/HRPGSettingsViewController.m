@@ -20,6 +20,7 @@
 @property HRPGManager *sharedManager;
 @property NSManagedObjectContext *managedObjectContext;
 @property XLFormSectionDescriptor *reminderSection;
+@property XLFormSectionDescriptor *appBadgeSection;
 @property XLFormRowDescriptor *pushNotificationRow;
 @end
 
@@ -141,6 +142,18 @@ User *user;
         [self showDatePicker];
     }
 
+    self.appBadgeSection =
+      [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Notification Badge", nil)];
+    [formDescriptor addFormSection:self.appBadgeSection];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"useAppBadge"
+                                             rowType:XLFormRowDescriptorTypeBooleanSwitch
+                                               title:NSLocalizedString(@"Display Notification Badge", nil)];
+    [row.cellConfig setObject:[UIColor purple400] forKey:@"self.tintColor"];
+    [self.appBadgeSection addFormRow:row];
+    if ([defaults boolForKey:@"appBadgeActive"]) {
+      row.value = @YES;
+    }
+
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Day Start", nil)];
     [formDescriptor addFormSection:section];
     row =
@@ -190,13 +203,13 @@ User *user;
     self.pushNotificationRow.valueTransformer = [HRPGPushNotificationSettingValueTransformer class];
     [row.cellConfig setObject:[UIColor purple400] forKey:@"self.tintColor"];
     [section addFormRow:self.pushNotificationRow];
-    
+
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"disableInbox" rowType:XLFormRowDescriptorTypeBooleanSwitch title:NSLocalizedString(@"Disable Private Messages", nil)];
     row.value = [XLFormOptionsObject formOptionsOptionForValue:user.inboxOptOut fromOptions:nil];
     [row.cellConfig setObject:[UIColor purple400] forKey:@"self.tintColor"];
     [section addFormRow:row];
-    
-    
+
+
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Maintenance", nil)];
     [formDescriptor addFormSection:section];
 
@@ -265,7 +278,7 @@ User *user;
                                                                      displayText:NSLocalizedString(@"Invited To Quest", nil)],
                                  ];
     self.pushNotificationRow.selectorOptions = selectorOptions;
-    
+
     NSMutableArray *valueOptions = [NSMutableArray arrayWithCapacity:8];
     if ([user.preferences.pushNotifications.wonChallenge boolValue]) {
         [valueOptions addObject:selectorOptions[0]];
@@ -308,7 +321,7 @@ User *user;
         [defaults setObject:@"" forKey:@"dailyFilter"];
         [defaults setObject:@"" forKey:@"todoFilter"];
         [weakSelf.sharedManager clearLoginCredentials];
-        
+
         [weakSelf.sharedManager
          resetSavedDatabase:YES
          onComplete:^() {
@@ -325,7 +338,7 @@ User *user;
                        }];
          }];
     };
-    
+
     if ([defaults stringForKey:@"PushNotificationDeviceToken"]) {
         [self.sharedManager removePushDevice:^{
             logoutBlock();
@@ -420,6 +433,9 @@ User *user;
             [self hideDatePicker];
             [[UIApplication sharedApplication] cancelAllLocalNotifications];
         }
+    } else if ([rowDescriptor.tag isEqualToString:@"useAppBadge"]) {
+        [self changeAppBadgeSettings:[newValue boolValue]];
+        [defaults setBool:[newValue boolValue] forKey:@"appBadgeActive"];
     } else if ([rowDescriptor.tag isEqualToString:@"reminderDate"]) {
         [self reminderTimeChanged:[rowDescriptor.value valueData]];
     } else if ([rowDescriptor.tag isEqualToString:@"dayStart"]) {
@@ -465,7 +481,7 @@ User *user;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    if (section == 2) {
+    if (section == 3) {
         return NSLocalizedString(@"Habitica defaults to check and reset your Dailies at midnight "
                                  @"in your own time zone each day. You can customize that time "
                                  @"here.",
@@ -506,6 +522,13 @@ User *user;
                                      @"preferences.pushNotifications.wonChallenge": newValues.wonChallenge ? newValues.wonChallenge : @NO,
                                      @"preferences.pushNotifications.unsubscribeFromAll": newValues.unsubscribeFromAll ? newValues.unsubscribeFromAll : @NO
                                      }onSuccess:nil onError:nil];
+}
+
+- (void)changeAppBadgeSettings:(BOOL *)newValue {
+    [self.sharedManager changeUseAppBadge: newValue];
+    if (!newValue) {
+      [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    }
 }
 
 @end
