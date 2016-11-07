@@ -159,9 +159,11 @@
         [self rescheduleTaskReminders];
     }
 
-    User *user = [self.sharedManager getUser];
-    if (user) {
-        [self.sharedManager fetchUser:nil onError:nil];
+    if (application.applicationState == UIApplicationStateActive) {
+        User *user = [self.sharedManager getUser];
+        if (user) {
+            [self.sharedManager fetchUser:nil onError:nil];
+        }
     }
 
     [self checkMaintenanceScreen];
@@ -372,7 +374,6 @@
 }
 
 - (void)configureNotifications:(UIApplication *)application {
-    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationType types = UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;
 
         UIMutableUserNotificationAction *completeAction =
@@ -425,9 +426,6 @@
             [UIUserNotificationSettings settingsForTypes:types
                                               categories:[NSSet setWithObjects:completeCategory, questInviteCategory, privateMessageCategory, nil]];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-    } else {
-        [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
-    }
 }
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {

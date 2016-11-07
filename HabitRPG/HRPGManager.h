@@ -20,6 +20,7 @@
 #import "InboxMessage.h"
 #import "ShopItem.h"
 #import "Spell.h"
+#import "HRPGNotification.h"
 
 @interface HRPGManager : NSObject
 
@@ -281,6 +282,10 @@
                  onError:(void (^)())errorBlock;
 
 - (void)fetchShopInventory:(NSString *)shopInventory
+                 onSuccess:(void (^)())successBlock
+                   onError:(void (^)())errorBlock;
+
+- (void)markNotificationRead:(HRPGNotification *)notification
                  onSuccess:(void (^)())successBlock
                    onError:(void (^)())errorBlock;
 

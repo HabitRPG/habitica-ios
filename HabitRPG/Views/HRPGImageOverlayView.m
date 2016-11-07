@@ -159,6 +159,9 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
 }
 
 - (IBAction)dismissButtonPressed:(id)sender {
+    if (self.dismissAction) {
+        self.dismissAction();
+    }
     [self dismissPresentingPopup];
 }
 
@@ -172,6 +175,28 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
 
 - (void)setDismissButtonText:(NSString *)dismissButtonText {
     [self.dismissButton setTitle:dismissButtonText forState:UIControlStateNormal];
+}
+
+- (void)setAchievementWithName:(NSString *)achievementName {
+    YYWebImageManager *manager = [YYWebImageManager sharedManager];
+    [manager
+     requestImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://"
+                                               @"habitica-assets.s3."
+                                               @"amazonaws.com/"
+                                               @"mobileApp/images/%@2x.png",
+                                               achievementName]]
+     options:0
+     progress:nil
+     transform:nil
+     completion:^(UIImage *_Nullable image, NSURL *_Nonnull url, YYWebImageFromType from,
+                  YYWebImageStage stage, NSError *_Nullable error) {
+         if (image) {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 self.leftAchievementView.image = image;
+                 self.rightAchievementView.image = image;
+             });
+         }
+     }];
 }
 
 @end

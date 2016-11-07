@@ -44,10 +44,13 @@
 #import "PushDevice.h"
 #import "Shop.h"
 #import "UIView+ScreenShot.h"
+#import "HRPGNotification.h"
+#import "HRPGNotificationManager.h"
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
 @property HRPGNetworkIndicatorController *networkIndicatorController;
+@property HRPGNotificationManager *notificationManager;
 @end
 
 @implementation HRPGManager {
@@ -78,6 +81,7 @@ NSString *currentUser;
 }
 
 - (void)loadObjectManager:(RKManagedObjectStore *)existingManagedObjectStore {
+    self.notificationManager = [[HRPGNotificationManager alloc] initWithSharedManager:self];
     NSError *error = nil;
     NSURL *modelURL =
         [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"HabitRPG" ofType:@"momd"]];
@@ -124,7 +128,7 @@ NSString *currentUser;
     NSString *DISABLE_SSL = info[@"DisableSSL"];
 
     if (CUSTOM_DOMAIN.length == 0) {
-        CUSTOM_DOMAIN = @"habitica.com/";
+        CUSTOM_DOMAIN = @"localhost:3000/";
     }
 
     if (![[CUSTOM_DOMAIN substringFromIndex: [CUSTOM_DOMAIN length] - 1]  isEqual: @"/"]) {
@@ -135,7 +139,7 @@ NSString *currentUser;
     if ([DISABLE_SSL isEqualToString:@"true"]) {
         ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
     } else {
-        ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
+        ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
     }
 #else
     ROOT_URL = @"https://habitica.com/";
@@ -1954,17 +1958,22 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
     [objectManager addResponseDescriptor:errorResponseDescriptor];
 
-    RKObjectMapping *messageMapping = [RKObjectMapping mappingForClass:[HRPGResponseMessage class]];
-    [messageMapping
-     addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:@"message"
-                                                              toKeyPath:@"message"]];
-    RKResponseDescriptor *messageResponseDescriptor = [RKResponseDescriptor
-                                                     responseDescriptorWithMapping:messageMapping
+    RKObjectMapping *notificationMapping = [RKObjectMapping mappingForClass:[HRPGNotification class]];
+    [notificationMapping setForceCollectionMapping:YES];
+    [notificationMapping addAttributeMappingsFromDictionary:@{
+                                                              @"type": @"type",
+                                                              @"id": @"id",
+                                                              @"createdAt": @"createdAt",
+                                                              @"data": @"data"
+                                                              }];
+    RKResponseDescriptor *notificationResponseDescriptor = [RKResponseDescriptor
+                                                     responseDescriptorWithMapping:notificationMapping
                                                      method:RKRequestMethodAny
                                                      pathPattern:nil
-                                                     keyPath:nil
+                                                     keyPath:@"notifications"
                                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:messageResponseDescriptor];
+    [objectManager addResponseDescriptor:notificationResponseDescriptor];
+
 
     RKEntityMapping *shopMapping = [RKEntityMapping mappingForEntityForName:@"Shop"
                                                        inManagedObjectStore:managedObjectStore];
@@ -2348,6 +2357,7 @@ NSString *currentUser;
                     successBlock();
                 }
             }
+            [self handleNotifications:[mappingResult dictionary][@"notifications"]];
             [self.networkIndicatorController endNetworking];
             return;
         }
@@ -2384,6 +2394,7 @@ NSString *currentUser;
                 }
             }
                 onError:nil];
+            [self handleNotifications:[mappingResult dictionary][@"notifications"]];
             [self.networkIndicatorController endNetworking];
             return;
         }
@@ -2489,6 +2500,7 @@ NSString *currentUser;
                                                                         object:party];
                 }
             }
+            [self handleNotifications:[mappingResult dictionary][@"notifications"]];
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
             if (successBlock) {
                 successBlock();
@@ -2714,6 +2726,7 @@ NSString *currentUser;
                     nextLevel, magicDiff
                 ]);
             }
+            [self handleNotifications:[mappingResult dictionary][@"notifications"]];
             [self.networkIndicatorController endNetworking];
             return;
         }
@@ -2741,6 +2754,7 @@ NSString *currentUser;
          if (successBlock) {
              successBlock();
          }
+         [self handleNotifications:[mappingResult dictionary][@"notifications"]];
          [self.networkIndicatorController endNetworking];
          return;
      }
@@ -4810,6 +4824,31 @@ NSString *currentUser;
                                         }];
 }
 
+- (void)markNotificationRead:(HRPGNotification *)notification onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    [[RKObjectManager sharedManager] postObject:nil
+                                             path:[NSString stringWithFormat:@"notifications/%@/read", notification.id]
+                                       parameters:nil
+                                          success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                              if (successBlock) {
+                                                  successBlock();
+                                              }
+                                              return;
+                                          }
+                                          failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                              if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                                  [self displayServerError];
+                                              } else {
+                                                  [self displayNetworkError];
+                                              }
+                                              if (errorBlock) {
+                                                  errorBlock();
+                                              }
+                                              [self.networkIndicatorController endNetworking];
+                                              return;
+                                          }];
+}
+
 - (void)displayNetworkError {
     NSDictionary *options = @{
         kCRToastTextKey : NSLocalizedString(@"Network error", nil),
@@ -5246,6 +5285,10 @@ NSString *currentUser;
 
 - (void)changeUseAppBadge:(BOOL)newUseAppBadge {
     self.useAppBadge = newUseAppBadge;
+}
+
+- (void)handleNotifications:(NSArray *)notifications {
+    [self.notificationManager enqueueNotifications:notifications];
 }
 
 @end
