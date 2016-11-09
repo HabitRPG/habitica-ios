@@ -34,7 +34,7 @@
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 
-    self.user = self.sharedManager.user;
+    self.user = [self.sharedManager getUser];
     self.tutorialIdentifier = @"rewards";
 
     [self.sharedManager fetchBuyableRewards:nil onError:nil];

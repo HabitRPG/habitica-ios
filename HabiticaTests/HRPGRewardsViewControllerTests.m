@@ -31,7 +31,6 @@ NSArray *gearTypes;
     
     self.viewController = [[HRPGRewardsViewController alloc] initWithCoder:nil];
     [self initializeCoreDataStorage];
-    self.sharedManager.user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[self.sharedManager getManagedObjectContext]];
     self.viewController.sharedManager = self.sharedManager;
     [self loadTestData];
 }

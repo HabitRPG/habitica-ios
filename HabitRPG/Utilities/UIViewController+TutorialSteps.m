@@ -26,7 +26,7 @@
         return;
     }
     if (self.tutorialIdentifier && !self.displayedTutorialStep) {
-        if (![[sharedManager user] hasSeenTutorialStepWithIdentifier:self.tutorialIdentifier]) {
+        if (![[sharedManager getUser] hasSeenTutorialStepWithIdentifier:self.tutorialIdentifier]) {
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             NSString *defaultsKey =
                 [NSString stringWithFormat:@"tutorial%@", self.tutorialIdentifier];
@@ -44,7 +44,7 @@
 
     if (self.coachMarks && !self.displayedTutorialStep) {
         for (NSString *coachMark in self.coachMarks) {
-            if (![[sharedManager user] hasSeenTutorialStepWithIdentifier:coachMark]) {
+            if (![[sharedManager getUser] hasSeenTutorialStepWithIdentifier:coachMark]) {
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 NSString *defaultsKey = [NSString stringWithFormat:@"tutorial%@", coachMark];
                 NSDate *nextAppearance = [defaults valueForKey:defaultsKey];
@@ -103,9 +103,9 @@
                               animated:YES];
     }
     if ([type isEqualToString:@"common"]) {
-        [[self.sharedManager user].flags addCommonTutorialStepsObject:step];
+        [[self.sharedManager getUser].flags addCommonTutorialStepsObject:step];
     } else {
-        [[self.sharedManager user].flags addIOSTutorialStepsObject:step];
+        [[self.sharedManager getUser].flags addIOSTutorialStepsObject:step];
     }
 
     NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
