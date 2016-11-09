@@ -52,7 +52,7 @@ NSIndexPath *selectedIndex;
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return NSLocalizedString(@"Body", nil);
+        return nil;
     } else if (section == 1) {
         return NSLocalizedString(@"Hair", nil);
     } else {
@@ -62,7 +62,7 @@ NSIndexPath *selectedIndex;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return 4;
+        return 5;
     } else if (section == 1) {
         return 6;
     } else {
@@ -200,6 +200,10 @@ NSIndexPath *selectedIndex;
             }
             searchedType = @"ear";
             typeName = NSLocalizedString(@"Animal Ears", nil);
+        } else if (indexPath.item == 4) {
+            searchedKey = self.user.preferences.chair;
+            searchedType = @"chair";
+            typeName = NSLocalizedString(@"Wheelchair", nil);
         }
     } else if (indexPath.section == 1) {
         searchedType = @"hair";
@@ -328,6 +332,9 @@ NSIndexPath *selectedIndex;
                     destViewController.userKey = @"equipped";
                 }
                 destViewController.type = @"ear";
+            } else if (indexPath.item == 4) {
+                destViewController.userKey = @"preferences.chair";
+                destViewController.type = @"chair";
             }
         } else if (indexPath.section == 1) {
             destViewController.type = @"hair";

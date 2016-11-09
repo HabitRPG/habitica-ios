@@ -824,9 +824,30 @@
       "price": 2,
       "purchasable": true,
       "set": "animalSkins"
-    },
-
-
-
-  ]
+                     },
+                     {"name": "black",
+                     "type": "chair",
+                     "price": 0,
+                     },
+                     {"name": "blue",
+                     "type": "chair",
+                     "price": 0,
+                     },
+                     {"name": "green",
+                     "type": "chair",
+                     "price": 0,
+                     },
+                     {"name": "pink",
+                     "type": "chair",
+                     "price": 0,
+                     },
+                     {"name": "red",
+                     "type": "chair",
+                     "price": 0,
+                     },
+                     {"name": "yellow",
+                     "type": "chair",
+                     "price": 0,
+                     },
+    ]
 }

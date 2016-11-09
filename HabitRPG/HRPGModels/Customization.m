@@ -50,6 +50,8 @@
         }
     } else if ([self.type isEqualToString:@"background"]) {
         return [NSString stringWithFormat:@"background_%@", self.name];
+    } else if ([self.type isEqualToString:@"chair"]) {
+        return [@"chair_" stringByAppendingString:self.name];
     }
     return @"";
 }
