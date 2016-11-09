@@ -33,5 +33,6 @@
 @dynamic user;
 @dynamic improvementCategories;
 @dynamic pushNotifications;
+@dynamic chair;
 
 @end

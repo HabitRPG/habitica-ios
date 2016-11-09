@@ -835,6 +835,7 @@ NSString *currentUser;
         @"costume" : @"useCostume",
         @"language" : @"language",
         @"timezoneOffset" : @"timezoneOffset",
+        @"chair": @"chair"
     }];
     preferencesMapping.identificationAttributes = @[ @"userID" ];
     [entityMapping addPropertyMapping:[RKRelationshipMapping

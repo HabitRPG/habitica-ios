@@ -149,6 +149,7 @@
     NSDictionary *viewDictionary = @{
         @"background" : @(showsBackground && self.preferences.background.length),
         @"mount-body" : @(showsMount && self.currentMount.length),
+        @"chair" : @(self.preferences.chair.length),
         @"back" : @(outfit.back.length && [self _isAvailableGear:outfit.back]),
         @"skin" : @YES,
         @"shirt" : @YES,
@@ -190,6 +191,7 @@
         viewOrder = @[
                       @"background",
                       @"mount-body",
+                      @"chair",
                       @"back",
                       @"skin",
                       @"shirt",
@@ -449,6 +451,7 @@
     return @{
         @"background" : [NSString stringWithFormat:@"background_%@", self.preferences.background],
         @"mount-body" : [NSString stringWithFormat:@"Mount_Body_%@", self.currentMount],
+        @"chair" : [NSString stringWithFormat:@"chair_%@", self.preferences.chair],
         @"back" : outfit.back ?: [NSNull null],
         @"skin" : ([self.preferences.sleep boolValue])
                       ? [NSString stringWithFormat:@"skin_%@_sleep", self.preferences.skin]
@@ -580,6 +583,7 @@
     NSDictionary *constraintsDictionary = @{
         @"background" : background,
         @"mount-body" : mount,
+        @"chair" : character,
         @"back" : character,
         @"skin" : character,
         @"shirt" : character,
@@ -638,6 +642,7 @@
     NSDictionary *constraintsDictionary = @{
         @"background" : [NSNull null],
         @"mount-body" : keepRatio,
+        @"chair" : keepRatio,
         @"back" : keepRatio,
         @"skin" : keepRatio,
         @"shirt" : keepRatio,
