@@ -110,7 +110,7 @@ float textWidth;
     popup.tag = 1;
 
     // get the selected cell so that the popup can be displayed near it on the iPad
-    UITableViewCell *selectedCell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
 
     CGRect rectIPad = CGRectMake(selectedCell.frame.origin.x, selectedCell.frame.origin.y,
                                  selectedCell.frame.size.width, selectedCell.frame.size.height);

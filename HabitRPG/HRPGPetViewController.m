@@ -186,7 +186,7 @@
 
     // get the selected cell so that the popup can be displayed near it on the iPad
     UICollectionViewCell *selectedCell =
-        [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
+        [self.collectionView cellForItemAtIndexPath:indexPath];
 
     CGRect rectIPad = CGRectMake(selectedCell.frame.origin.x,
                                  selectedCell.frame.origin.y + selectedCell.frame.size.height,
