@@ -93,7 +93,7 @@
             [NSString stringWithFormat:@"%.1f / %@", [self.value floatValue], self.maxValue];
     } else {
         self.labelView.text =
-            [NSString stringWithFormat:@"%ld / %@", (long)[self.value integerValue], self.maxValue];
+            [NSString stringWithFormat:@"%ld / %@", (long)ceil([self.value integerValue]), self.maxValue];
     }
 }
 
