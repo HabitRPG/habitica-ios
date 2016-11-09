@@ -5090,7 +5090,9 @@ NSString *currentUser;
                        withType:(NSString *)type
                        withNote:(NSString *)note {
     NSString *description;
-    if ([[type lowercaseString] isEqualToString:@"food"]) {
+    if (name == nil) {
+        description = [NSString stringWithFormat:@"You found %@!", key];
+    } else if ([[type lowercaseString] isEqualToString:@"food"]) {
         description = [NSString stringWithFormat:@"You found %@!", name];
     } else {
         description = [NSString stringWithFormat:@"You found a %@ %@!", name, type];
