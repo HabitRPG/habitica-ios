@@ -496,16 +496,17 @@
     [self.managedObjectContext saveToPersistentStore:&error];
 
     NSDictionary *updateDict;
+    Preferences *prefs = self.user.preferences;
     switch (self.currentStep) {
         case HRPGAvatarSetupStepsAvatar:
             updateDict = @{
-                @"preferences.skin" : self.user.preferences.skin,
-                @"preferences.shirt" : self.user.preferences.shirt,
-                @"preferences.size" : self.user.preferences.size,
-                @"preferences.hair.base" : self.user.preferences.hairBase,
-                @"preferences.hair.bangs" : self.user.preferences.hairBangs,
-                @"preferences.hair.color" : self.user.preferences.hairColor,
-                @"preferences.hair.flower" : self.user.preferences.hairFlower
+                @"preferences.skin" : prefs.skin ? prefs.skin : @"",
+                @"preferences.shirt" : prefs.shirt ? prefs.shirt : @"",
+                @"preferences.size" : prefs.size ? prefs.size : @"",
+                @"preferences.hair.base" : prefs.hairBase ? prefs.hairBase : @"",
+                @"preferences.hair.bangs" : prefs.hairBangs ? prefs.hairBangs : @"",
+                @"preferences.hair.color" : prefs.hairColor ? prefs.hairColor : @"",
+                @"preferences.hair.flower" : prefs.hairFlower ? prefs.hairFlower : @""
             };
             break;
     }
