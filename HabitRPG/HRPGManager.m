@@ -3153,12 +3153,15 @@ NSString *currentUser;
                 [[[self getManagedObjectContext] executeFetchRequest:fetch error:&executeError]
                     mutableCopy];
             NSArray *buyableGear = [mappingResult array];
-            for (Gear *gear in buyableGear) {
-                if (![gear.buyable boolValue]) {
-                    gear.buyable = @YES;
-                }
-                if ([oldBuyableGear containsObject:gear]) {
-                    [oldBuyableGear removeObject:gear];
+            for (NSObject *obj in buyableGear) {
+                if ([obj isKindOfClass:[Gear class]]) {
+                    Gear *gear = (Gear *)obj;
+                    if (![gear.buyable boolValue]) {
+                        gear.buyable = @YES;
+                    }
+                    if ([oldBuyableGear containsObject:gear]) {
+                        [oldBuyableGear removeObject:gear];
+                    }
                 }
             }
             for (Gear *gear in oldBuyableGear) {
