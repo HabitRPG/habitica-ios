@@ -63,10 +63,6 @@
     HRPGBaseNotificationView *notificationView = nil;
     if ([self.currentNotification.type isEqualToString:@"DROPS_ENABLED"]) {
         notificationView = [[HRPGDropsEnabledNotification alloc] init];
-    } else if ([self.currentNotification.type isEqualToString:@"STREAK_ACHIEVEMENT"]) {
-        HRPGStreakAchievementNotification *notif = [[HRPGStreakAchievementNotification alloc] init];
-        notif.user = [self.sharedManager getUser];
-        notificationView = notif;
     }
     
     if (notificationView == nil) {

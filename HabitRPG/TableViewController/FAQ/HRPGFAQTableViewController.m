@@ -144,12 +144,12 @@
 
 - (void)resetTutorials {
     NSMutableDictionary *steps = [NSMutableDictionary dictionary];
-    for (TutorialSteps *step in [self.sharedManager getUser].flags.iOSTutorialSteps) {
+    for (TutorialSteps *step in [self.sharedManager user].flags.iOSTutorialSteps) {
         step.wasShown = @NO;
         step.shownInView = nil;
         steps[[NSString stringWithFormat:@"flags.tutorial.ios.%@", step.identifier]] = @NO;
     }
-    for (TutorialSteps *step in [self.sharedManager getUser].flags.commonTutorialSteps) {
+    for (TutorialSteps *step in [self.sharedManager user].flags.commonTutorialSteps) {
         step.wasShown = @NO;
         step.shownInView = nil;
         steps[[NSString stringWithFormat:@"flags.tutorial.common.%@", step.identifier]] = @NO;

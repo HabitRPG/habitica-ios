@@ -119,7 +119,7 @@
         [navigationController scrollview:self.collectionView
                       scrolledToPosition:self.collectionView.contentOffset.y];
     }
-    [self viewDidAppear:animated];
+    [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

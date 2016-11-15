@@ -25,6 +25,7 @@
 @interface HRPGManager : NSObject
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property(nonatomic, strong) User *user;
 @property(nonatomic) BOOL useAppBadge;
 
 - (void)loadObjectManager:(RKManagedObjectStore *)existingManagedObjectStore;
