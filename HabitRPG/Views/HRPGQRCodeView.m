@@ -96,12 +96,14 @@
                                         CGImageGetBytesPerRow(cgImage),
                                         CGImageGetDataProvider(cgImage), NULL, false);
     CGContextClipToMask(context, rect, mask);
-    CGContextSetFillColorWithColor(context, [[UIColor purple100] CGColor]);
+    CGColorRef color = [[UIColor purple100] CGColor];
+    CGContextSetFillColorWithColor(context, color);
     CGContextFillRect(context, rect);
     UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
     // Tidy up
     UIGraphicsEndImageContext();
     CGImageRelease(cgImage);
+    CGColorRelease(color);
     return scaledImage;
 }
 

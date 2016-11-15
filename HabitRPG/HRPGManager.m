@@ -1960,6 +1960,18 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
     [objectManager addResponseDescriptor:errorResponseDescriptor];
 
+    RKObjectMapping *messageMapping = [RKObjectMapping mappingForClass:[HRPGResponseMessage class]];
+    [messageMapping
+     addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:@"message"
+                                                              toKeyPath:@"message"]];
+    RKResponseDescriptor *messageResponseDescriptor = [RKResponseDescriptor
+                                                       responseDescriptorWithMapping:messageMapping
+                                                       method:RKRequestMethodAny
+                                                       pathPattern:nil
+                                                       keyPath:nil
+                                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:messageResponseDescriptor];
+    
     RKObjectMapping *notificationMapping = [RKObjectMapping mappingForClass:[HRPGNotification class]];
     [notificationMapping setForceCollectionMapping:YES];
     [notificationMapping addAttributeMappingsFromDictionary:@{
@@ -2623,7 +2635,7 @@ NSString *currentUser;
 
 - (void)upDownTask:(Task *)task
          direction:(NSString *)withDirection
-         onSuccess:(void (^)(NSArray *valuesArray))successBlock
+         onSuccess:(void (^)())successBlock
            onError:(void (^)())errorBlock {
     if (task.id == nil || [task.id isEqualToString:@""]) {
         // Task is not saved on the server yet. Sending a request now would create a new empty
@@ -2726,17 +2738,8 @@ NSString *currentUser;
                 }
             }
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-            NSNumber *nextLevel;
-            if (user.nextLevel) {
-                nextLevel = user.nextLevel;
-            } else {
-                nextLevel = @0;
-            }
             if (successBlock) {
-                successBlock(@[
-                    healthDiff, expDiff, user.gold, user.health, user.experience,
-                    nextLevel, magicDiff
-                ]);
+                successBlock();
             }
             [self handleNotifications:[mappingResult dictionary][@"notifications"]];
             [self.networkIndicatorController endNetworking];

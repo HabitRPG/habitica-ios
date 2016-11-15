@@ -64,7 +64,7 @@
 
 - (void)upDownTask:(Task *)task
          direction:(NSString *)withDirection
-         onSuccess:(void (^)(NSArray *valuesArray))successBlock
+         onSuccess:(void (^)())successBlock
            onError:(void (^)())errorBlock;
 
 - (void)scoreChecklistItem:(Task *)task

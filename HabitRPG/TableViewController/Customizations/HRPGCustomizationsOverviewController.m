@@ -335,6 +335,7 @@ NSIndexPath *selectedIndex;
             } else if (indexPath.item == 4) {
                 destViewController.userKey = @"preferences.chair";
                 destViewController.type = @"chair";
+                destViewController.allowUnset = YES;
             }
         } else if (indexPath.section == 1) {
             destViewController.type = @"hair";
@@ -370,6 +371,7 @@ NSIndexPath *selectedIndex;
         } else {
             destViewController.userKey = @"preferences.background";
             destViewController.type = @"background";
+            destViewController.allowUnset = YES;
         }
     }
 }

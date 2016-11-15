@@ -459,7 +459,7 @@
         if (![task.completed boolValue]) {
             [self.sharedManager upDownTask:task
                 direction:@"up"
-                onSuccess:^(NSArray *valuesArray) {
+                onSuccess:^() {
                     if (completionHandler) {
                         completionHandler();
                     };

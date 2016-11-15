@@ -164,7 +164,6 @@
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGQRCodeScannerViewController *scannerViewController = segue.sourceViewController;
     if (scannerViewController.scannedCode) {
-        NSString *code = scannerViewController.scannedCode;
         XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText title:nil];
         [row cellConfig][@"textField.placeholder"] = NSLocalizedString(@"Add a User ID", nil);
         row.value = scannerViewController.scannedCode;

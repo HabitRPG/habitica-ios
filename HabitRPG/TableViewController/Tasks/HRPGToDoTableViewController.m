@@ -106,7 +106,7 @@
                 NSString *actionName = [task.completed boolValue] ? @"down" : @"up";
                 [weakSelf.sharedManager upDownTask:task
                     direction:actionName
-                    onSuccess:^(NSArray *valuesArray) {
+                    onSuccess:^() {
                         task.currentlyChecking = @NO;
                     }
                     onError:^() {

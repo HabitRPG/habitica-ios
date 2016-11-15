@@ -18,5 +18,6 @@
 @property(nonatomic, strong) NSString *type;
 @property(nonatomic, strong) NSString *group;
 @property(nonatomic, strong) NSString *entityName;
+@property BOOL allowUnset;
 
 @end
