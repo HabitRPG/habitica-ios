@@ -66,7 +66,6 @@
 }
 
 - (void)setQrCode {
-    
     NSData *stringData = [[@"https://habitica.com/qr-code/user/" stringByAppendingString:self.userID] dataUsingEncoding:NSISOLatin1StringEncoding];
     
     // Create the filter
@@ -103,7 +102,6 @@
     // Tidy up
     UIGraphicsEndImageContext();
     CGImageRelease(cgImage);
-    CGColorRelease(color);
     return scaledImage;
 }
 
