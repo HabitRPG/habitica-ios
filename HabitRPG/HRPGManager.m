@@ -2562,14 +2562,20 @@ NSString *currentUser;
                                                                     object:party];
             } else if ([groupType isEqualToString:@"guilds"]) {
                 NSArray *guilds = [mappingResult array];
-                for (Group *guild in guilds) {
-                    guild.type = @"guild";
-                    guild.isMember = @YES;
+                for (NSObject *obj in guilds) {
+                    if ([obj isKindOfClass:[Group class]]) {
+                        Group *guild = (Group *) obj;
+                        guild.type = @"guild";
+                        guild.isMember = @YES;
+                    }
                 }
             } else if ([groupType isEqualToString:@"publicGuilds"]) {
                 NSArray *guilds = [mappingResult array];
-                for (Group *guild in guilds) {
-                    guild.type = @"guild";
+                for (NSObject *obj in guilds) {
+                    if ([obj isKindOfClass:[Group class]]) {
+                        Group *guild = (Group *) obj;
+                        guild.type = @"guild";
+                    }
                 }
             }
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
