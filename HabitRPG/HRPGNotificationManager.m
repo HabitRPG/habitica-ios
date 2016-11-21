@@ -10,6 +10,7 @@
 #import "HRPGBaseNotificationView.h"
 #import "HRPGDropsEnabledNotification.h"
 #import "HRPGStreakAchievementNotification.h"
+#import "HRPGLoginIncentiveNotification.h"
 
 @interface HRPGNotificationManager ()
 
@@ -63,17 +64,20 @@
     HRPGBaseNotificationView *notificationView = nil;
     if ([self.currentNotification.type isEqualToString:@"DROPS_ENABLED"]) {
         notificationView = [[HRPGDropsEnabledNotification alloc] init];
+    } else if ([self.currentNotification.type isEqualToString:@""]) {
+        notificationView = [[HRPGLoginIncentiveNotification alloc] init];
     }
     
     if (notificationView == nil) {
         self.currentNotification = nil;
+        [self displayNextNotification];
         return;
     }
     
     __weak HRPGNotificationManager *weakSelf = self;
     notificationView.notification = self.currentNotification;
+    [self.sharedManager markNotificationRead:self.currentNotification onSuccess:nil onError:nil];
     [notificationView displayNotification:^{
-        [self.sharedManager markNotificationRead:self.currentNotification onSuccess:nil onError:nil];
         weakSelf.currentNotification = nil;
         [weakSelf displayNextNotification];
     }];

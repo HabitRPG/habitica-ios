@@ -19,6 +19,9 @@
 		D90576731BD80275009BB7BC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90576711BD80275009BB7BC /* FBSDKLoginKit.framework */; };
 		D90576851BD83240009BB7BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D90576871BD83240009BB7BC /* InfoPlist.strings */; };
 		D905768A1BD83241009BB7BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D905768C1BD83241009BB7BC /* Localizable.strings */; };
+		D905D08A1DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D905D0891DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m */; };
+		D905D08C1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D905D08B1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib */; };
+		D905D08F1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D905D08E1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m */; };
 		D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03619D60421001EABE4 /* HabitIntro.png */; };
 		D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03919D60B53001EABE4 /* DailyIntro.png */; };
 		D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = D90EA03A19D60B53001EABE4 /* TodoIntro.png */; };
@@ -296,6 +299,11 @@
 		D90576981BD8326F009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D90576991BD8326F009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D905769A1BD8326F009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D905D0881DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLoginIncentiveNotification.h; sourceTree = "<group>"; };
+		D905D0891DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLoginIncentiveNotification.m; sourceTree = "<group>"; };
+		D905D08B1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGLoginIncentiveOverlayView.xib; sourceTree = "<group>"; };
+		D905D08D1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLoginIncentiveOverlayView.h; sourceTree = "<group>"; };
+		D905D08E1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLoginIncentiveOverlayView.m; sourceTree = "<group>"; };
 		D90EA03619D60421001EABE4 /* HabitIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HabitIntro.png; sourceTree = "<group>"; };
 		D90EA03919D60B53001EABE4 /* DailyIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DailyIntro.png; sourceTree = "<group>"; };
 		D90EA03A19D60B53001EABE4 /* TodoIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TodoIntro.png; sourceTree = "<group>"; };
@@ -996,6 +1004,8 @@
 				D96C85441DCBAC90003E3616 /* HRPGStreakAchievementNotification.m */,
 				D96C85401DCB6501003E3616 /* HRPGDropsEnabledNotification.h */,
 				D96C85411DCB6501003E3616 /* HRPGDropsEnabledNotification.m */,
+				D905D0881DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.h */,
+				D905D0891DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -1150,6 +1160,9 @@
 				D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */,
 				D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */,
 				D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */,
+				D905D08D1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.h */,
+				D905D08E1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m */,
+				D905D08B1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib */,
 				D99EAB601BF375F7003C1C62 /* HRPGIntroView.h */,
 				D99EAB611BF375F7003C1C62 /* HRPGIntroView.m */,
 				D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */,
@@ -1723,6 +1736,7 @@
 				D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
+				D905D08C1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib in Resources */,
 				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
 				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
 				D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */,
@@ -2033,6 +2047,7 @@
 				D92C60F81BD3F28A005F68CC /* HRPGAccountDetailViewController.m in Sources */,
 				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
 				D96C853F1DCB631B003E3616 /* HRPGBaseNotificationView.m in Sources */,
+				D905D08F1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m in Sources */,
 				D91CCACD1BCD9068001C6A0C /* HRPGHoledView.m in Sources */,
 				D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */,
 				D9D9EF981D54E51C00FC89C1 /* HRPGQRCodeView.m in Sources */,
@@ -2093,6 +2108,7 @@
 				D92761611CCFBEAD0049ECAC /* Flags+CoreDataProperties.m in Sources */,
 				D9D593661D008C7500D6C388 /* PushDevice+CoreDataProperties.m in Sources */,
 				D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */,
+				D905D08A1DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m in Sources */,
 				D9FC1A781BC28C5F00B97D23 /* HRPGExplanationView.m in Sources */,
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
 				D9B5C0E718D62CC700C8D1B7 /* HRPGLoginViewController.m in Sources */,
