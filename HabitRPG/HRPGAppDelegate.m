@@ -114,20 +114,6 @@
         [self handlePushNotification:userInfo];
     }
     
-    if ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] == NSOrderedAscending) {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"iOS7AlertShown"]) {
-            UIAlertView *message =
-            [[UIAlertView alloc] initWithTitle:nil
-                                       message:NSLocalizedString(@"This is the final Habitica update for iOS 7. The app will continue to work, but we can only support future updates for iOS 8+. Thank you for understanding!", nil)
-                                      delegate:self
-                             cancelButtonTitle:NSLocalizedString(@"Close", nil)
-                             otherButtonTitles:nil];
-            message.delegate = self;
-            [message show];
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"iOS7AlertShown"];
-        }
-    }
-    
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
     return YES;
