@@ -69,12 +69,12 @@
 - (void)scheduleForDay:(NSDate *)day {
     NSDate *fireDate;
     if (day) {
-        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         NSDateComponents *dateComponents =
             [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
                         fromDate:day];
         NSDateComponents *timeComponents =
-            [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit
+            [[NSCalendar currentCalendar] components:NSCalendarUnitHour | NSCalendarUnitMinute
                                             fromDate:self.time];
         [dateComponents setHour:timeComponents.hour];
         [dateComponents setMinute:timeComponents.minute];
@@ -109,7 +109,7 @@
 - (BOOL)isSameDayWithDate1:(NSDate *)date1 date2:(NSDate *)date2 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
 
-    unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
     NSDateComponents *comp1 = [calendar components:unitFlags fromDate:date1];
     NSDateComponents *comp2 = [calendar components:unitFlags fromDate:date2];
 

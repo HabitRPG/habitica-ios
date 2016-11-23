@@ -115,6 +115,8 @@
             cell.textLabel.text = NSLocalizedString(@"API Key", nil);
             cell.detailTextLabel.text = [keyChain stringForKey:@"key"];
         }
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     }
 
     return cell;

@@ -174,7 +174,7 @@
                                                     title:@"Start Date"];
         NSDate *date = [NSDate new];
         NSCalendar *calendar = [NSCalendar currentCalendar];
-        NSDateComponents *components = [calendar components:(NSHourCalendarUnit) fromDate:date];
+        NSDateComponents *components = [calendar components:(NSCalendarUnitHour) fromDate:date];
         if (components.hour < self.customDayStart) {
             [components setHour:-24];
             date = [calendar dateByAddingComponents:components toDate:date options:0];

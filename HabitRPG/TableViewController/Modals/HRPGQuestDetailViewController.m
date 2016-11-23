@@ -151,9 +151,8 @@
         cellIdentifier = @"rejectCell";
     } else if (indexPath.section == 0 && indexPath.item == 2) {
         cellIdentifier = @"asklaterCell";
-    }
-    if (cellIdentifier == nil) {
-        return nil;
+    } else {
+        cellIdentifier = @"titleCell";
     }
 
     UITableViewCell *cell =

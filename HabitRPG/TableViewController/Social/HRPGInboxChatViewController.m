@@ -291,7 +291,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"UserProfileSegue"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         HRPGUserProfileViewController *userProfileViewController = segue.destinationViewController;
         userProfileViewController.userID = self.userID;
         userProfileViewController.username = self.username;

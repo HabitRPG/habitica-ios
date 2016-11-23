@@ -175,6 +175,9 @@
         cell =
         [tableView dequeueReusableCellWithIdentifier:@"GoogleLoginButtonCell" forIndexPath:indexPath];
         self.loginCell = cell;
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"UsernameCell"
+                                               forIndexPath:indexPath];
     }
 
     UIView *wrapperView = [cell viewWithTag:9];

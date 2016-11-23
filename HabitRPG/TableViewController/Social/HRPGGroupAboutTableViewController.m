@@ -161,6 +161,8 @@
             [tableView dequeueReusableCellWithIdentifier:@"RightDetailCell" forIndexPath:indexPath];
         cell.textLabel.text = NSLocalizedString(@"Visibility", nil);
         cell.detailTextLabel.text = [self.group.privacy localizedCapitalizedString];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     }
     return cell;
 }

@@ -2030,7 +2030,14 @@ NSString *currentUser;
         NSArray *fetchedObjects =
             [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
         if ([fetchedObjects count] > 0) {
-            self.user = fetchedObjects[0];
+            self.user = [fetchedObjects lastObject];
+            if ([fetchedObjects count] > 1) {
+                NSDictionary *userInfo = @{
+                                           NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedString(@"Invalid number of user objects: %d", nil), [fetchedObjects count]],
+                                           };
+                NSError *error = [NSError errorWithDomain:NSSQLiteErrorDomain code:-10 userInfo:userInfo];
+                [CrashlyticsKit recordError:error];
+            }
         } else {
             [self fetchUser:nil onError:nil];
         }
@@ -2335,6 +2342,13 @@ NSString *currentUser;
                                                                       error:&error];
                     if ([fetchedObjects count] > 0) {
                         self.user = fetchedObjects[0];
+                        if ([fetchedObjects count] > 1) {
+                            NSDictionary *userInfo = @{
+                                                       NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedString(@"Invalid number of user objects: %d", nil), [fetchedObjects count]],
+                                                       };
+                            NSError *error = [NSError errorWithDomain:NSSQLiteErrorDomain code:-10 userInfo:userInfo];
+                            [CrashlyticsKit recordError:error];
+                        }
                     }
 
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged"
@@ -4107,11 +4121,11 @@ NSString *currentUser;
                onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
-    if (members == nil) {
+    if (members == nil || invitationType == nil) {
         if (errorBlock != nil) {
             errorBlock();
-            return;
         }
+        return;
     }
     
     [[RKObjectManager sharedManager] postObject:nil

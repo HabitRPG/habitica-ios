@@ -89,6 +89,7 @@ NSInteger rowOffset = 16;
     [self.gemView addGestureRecognizer:recognizer];
 
     [self setData];
+    [super awakeFromNib];
 }
 
 - (void)dealloc {
