@@ -74,8 +74,6 @@
 
     [self configureNotifications:application];
 
-    [self cleanAndRefresh:application];
-
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"wasLaunchedBefore"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"wasLaunchedBefore"];
 
@@ -119,7 +117,7 @@
     return YES;
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
+- (void)applicationDidBecomeActive:(UIApplication *)application {
     [self cleanAndRefresh:application];
 }
 
@@ -130,7 +128,7 @@
     NSString *lastContentFetchVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetchVersion"];
     NSString *currentBuildNumber = [[NSBundle mainBundle]
                                     objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
-    if (lastContentFetch == nil || [lastContentFetch timeIntervalSinceNow] < -604800 || ![lastContentFetchVersion isEqualToString:currentBuildNumber]) {
+    if (lastContentFetch == nil || [lastContentFetch timeIntervalSinceNow] < -82800 || ![lastContentFetchVersion isEqualToString:currentBuildNumber]) {
         [[NSUserDefaults standardUserDefaults] setObject:currentBuildNumber forKey:@"lastContentFetchVersion"];
         [self.sharedManager fetchContent:nil onError:nil];
     }
@@ -145,10 +143,13 @@
         [self rescheduleTaskReminders];
     }
 
-    if (application.applicationState == UIApplicationStateActive) {
+    if (application.applicationState == UIApplicationStateActive || application.applicationState == UIApplicationStateInactive) {
         User *user = [self.sharedManager getUser];
         if (user) {
-            [self.sharedManager fetchUser:nil onError:nil];
+            NSDate *lastUserFetch = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastTaskFetch"];
+            if ([lastUserFetch timeIntervalSinceNow] < -300) {
+                [self.sharedManager fetchUser:nil onError:nil];
+            }
         }
     }
 
