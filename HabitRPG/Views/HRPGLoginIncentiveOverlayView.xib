@@ -28,7 +28,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="qXx-0D-fAR"/>
                     </constraints>
-                    <state key="normal" title="See you Tomorrow">
+                    <state key="normal" title="See you tomorrow">
                         <color key="titleColor" red="0.44783601159999997" green="0.1084804982" blue="0.99846321339999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <state key="disabled">

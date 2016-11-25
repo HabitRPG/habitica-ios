@@ -189,14 +189,14 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
 }
 
 - (void)setReward:(NSDictionary *)rewardInfo withMessage:(NSString *)message withDaysUntilNext:(NSNumber *)daysUntil {
-    self.titleText = NSLocalizedString(@"You unlocked Check-In prize!", nil);
+    self.titleText = NSLocalizedString(@"You unlocked Check-In Prize!", nil);
     self.descriptionText = message;
     [self displayImageWithName:[rewardInfo[@"key"] stringByAppendingString:@".png"]];
     [self setNextUnlock:daysUntil];
 }
 
 - (void)setNoRewardWithMessage:(NSString *)message withDaysUntilNext:(NSNumber *)daysUntil {
-    self.titleText = NSLocalizedString(@"Your Check-In counter went up!", nil);
+    self.titleText = NSLocalizedString(@"Your Check-In Counter went up!", nil);
     self.descriptionText = message;
     [self displayImageWithName:@"inventory_present_11.png"];
     [self setNextUnlock:daysUntil];
