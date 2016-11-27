@@ -825,6 +825,10 @@
       "purchasable": true,
       "set": "animalSkins"
                      },
+                     {"name": "none",
+                     "type": "chair",
+                     "price": 0,
+                     },
                      {"name": "black",
                      "type": "chair",
                      "price": 0,
