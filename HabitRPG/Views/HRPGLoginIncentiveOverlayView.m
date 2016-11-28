@@ -188,10 +188,10 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
     self.buttonSeparator.hidden = YES;
 }
 
-- (void)setReward:(NSDictionary *)rewardInfo withMessage:(NSString *)message withDaysUntilNext:(NSNumber *)daysUntil {
-    self.titleText = NSLocalizedString(@"You unlocked Check-In Prize!", nil);
+- (void)setReward:(NSString *)imageName withTitle:(NSString *)title withMessage:(NSString *)message withDaysUntilNext:(NSNumber *)daysUntil {
+    self.titleText = title;
     self.descriptionText = message;
-    [self displayImageWithName:[rewardInfo[@"key"] stringByAppendingString:@".png"]];
+    [self displayImageWithName:[imageName stringByAppendingString:@".png"]];
     [self setNextUnlock:daysUntil];
 }
 

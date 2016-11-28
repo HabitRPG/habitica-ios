@@ -18,7 +18,7 @@
     HRPGLoginIncentiveOverlayView *overlayView = [nibViews objectAtIndex:0];
 
     if (self.notification.data[@"reward"]) {
-        [overlayView setReward:self.notification.data[@"reward"] withMessage:self.notification.data[@"message"] withDaysUntilNext:self.notification.data[@"nextRewardAt"]];
+        [overlayView setReward:self.notification.data[@"rewardKey"][0] withTitle:self.notification.data[@"message"] withMessage:[NSString stringWithFormat:NSLocalizedString(@"You have earned a %@ for being committed to improving your life.", nil), self.notification.data[@"rewardText"]] withDaysUntilNext:self.notification.data[@"nextRewardAt"]];
     } else {
         [overlayView setNoRewardWithMessage:self.notification.data[@"message"] withDaysUntilNext:self.notification.data[@"nextRewardAt"]];
     }

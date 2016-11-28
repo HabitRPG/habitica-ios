@@ -10,7 +10,7 @@
 
 @interface HRPGLoginIncentiveOverlayView : UIView
 
-- (void)setReward:(NSDictionary *)rewardInfo withMessage:(NSString *)message withDaysUntilNext:(NSNumber *) daysUntil;
+- (void)setReward:(NSString *)imageName withTitle:(NSString *)title withMessage:(NSString *)message withDaysUntilNext:(NSNumber *) daysUntil;
 - (void)setNoRewardWithMessage:(NSString *)message withDaysUntilNext:(NSNumber *) daysUntil;
 
 @property(nonatomic) CGFloat imageHeight;

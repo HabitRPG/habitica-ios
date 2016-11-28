@@ -1977,7 +1977,7 @@ NSString *currentUser;
                                                               @"type": @"type",
                                                               @"id": @"id",
                                                               @"createdAt": @"createdAt",
-                                                              @"data": @"data"
+                                                              @"data": @"data",
                                                               }];
     RKResponseDescriptor *notificationResponseDescriptor = [RKResponseDescriptor
                                                      responseDescriptorWithMapping:notificationMapping
@@ -2341,7 +2341,7 @@ NSString *currentUser;
                         [[self getManagedObjectContext] executeFetchRequest:fetchRequest
                                                                       error:&error];
                     if ([fetchedObjects count] > 0) {
-                        self.user = fetchedObjects[0];
+                        self.user = [fetchedObjects lastObject];
                         if ([fetchedObjects count] > 1) {
                             NSDictionary *userInfo = @{
                                                        NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedString(@"Invalid number of user objects: %d", nil), [fetchedObjects count]],
@@ -2380,6 +2380,7 @@ NSString *currentUser;
             if (includeTasks) {
                 [self fetchTasks:successBlock onError:errorBlock];
             } else {
+                [[self getManagedObjectContext] saveToPersistentStore:&executeError];
                 if (successBlock) {
                     successBlock();
                 }
