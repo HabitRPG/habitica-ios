@@ -32,6 +32,7 @@ pod 'Amplitude-iOS', '~> 3.8.5'
 pod 'Masonry'
 pod "SlackTextViewController"
 pod 'AppAuth'
+pod 'SeedsSDK', '0.4.2'
 
 target 'HabiticaTests' do
     inherit! :search_paths

@@ -14,6 +14,8 @@
 #import "UIColor+Habitica.h"
 #import "HRPGGemPurchaseView.h"
 #import "HRPGGemHeaderNavigationController.h"
+#import "Seeds.h"
+#import <Keys/HabiticaKeys.h>
 
 @interface HRPGGemViewController ()
 @property(weak, nonatomic) IBOutlet UILabel *notEnoughGemsLabel;
@@ -23,12 +25,15 @@
 @property(nonatomic) NSArray *identifiers;
 @property(nonatomic) UIView *headerView;
 @property MRProgressOverlayView *overlayView;
+@property NSString *seedsInterstitialKey;
 @end
 
 @implementation HRPGGemViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    HabiticaKeys *keys = [[HabiticaKeys alloc] init];
 
     UINib *nib = [UINib nibWithNibName:@"GemPurchaseView" bundle:nil];
     [[self collectionView] registerNib:nib forCellWithReuseIdentifier:@"Cell"];
@@ -108,6 +113,19 @@
         }];
 
     [[SKPaymentQueue defaultQueue] addTransactionObserver:[CargoBay sharedManager]];
+    
+#ifdef DEBUG
+    [[Seeds sharedInstance] start:keys.seedsDevApiKey withHost:@"https://dash.playseeds.com"];
+    self.seedsInterstitialKey = keys.seedsDevGemsInterstitial;
+#else
+    [[Seeds sharedInstance] start:keys.seedsReleaseApiKey withHost:@"https://dash.playseeds.com"];
+    self.seedsInterstitialKey = keys.seedsReleaseGemsInterstitial;
+#endif
+    [Seeds.sharedInstance requestInAppMessage:self.seedsInterstitialKey];
+    
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(collectionViewWasTapped:)];
+    [self.collectionView addGestureRecognizer:tap];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -157,6 +175,8 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    __weak HRPGGemViewController *weakSelf = self;
+
     SKProduct *product = self.products[self.identifiers[indexPath.item]];
     HRPGGemPurchaseView *cell =
     [self.collectionView  dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
@@ -167,6 +187,8 @@
     [numberFormatter setLocale:product.priceLocale];
     [cell setPrice:[numberFormatter stringFromNumber:product.price]];
     
+    [cell showSeedsPromo:NO];
+    
     if ([product.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.4gems"]) {
         [cell setGemAmount:4];
     } else if ([product.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.21gems"]) {
@@ -175,6 +197,7 @@
         [cell setGemAmount:42];
     } else if ([product.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.84gems"]) {
         [cell setGemAmount:84];
+        [cell showSeedsPromo:YES];
     }
     
     [cell setPurchaseTap:^void(HRPGPurchaseLoadingButton *purchaseButton) {
@@ -182,10 +205,10 @@
             case HRPGPurchaseButtonStateError:
             case HRPGPurchaseButtonStateLabel:
                 purchaseButton.state = HRPGPurchaseButtonStateLoading;
-                [self purchaseGems:product withButton:purchaseButton];
+                [weakSelf purchaseGems:product withButton:purchaseButton];
                 break;
             case HRPGPurchaseButtonStateDone:
-                [self dismissViewControllerAnimated:YES
+                [weakSelf dismissViewControllerAnimated:YES
                                          completion:^(){
                                              
                                          }];
@@ -266,6 +289,8 @@
                             [currentQueue finishTransaction:(SKPaymentTransaction *)obj];
                         }];
                     purchaseButton.state = HRPGPurchaseButtonStateDone;
+                    
+                    //[[Seeds sharedInstance] recordSeedsIAPEvent:@"ITEM" price:19.99];
                 }
                 onError:^() {
                     [self handleInvalidReceipt:transaction withButton:purchaseButton];
@@ -289,6 +314,37 @@
 
     [alertView show];
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+}
+
+- (void)seedsInAppMessageClicked:(NSString*)messageId {
+    SKProduct *gemsProduct = nil;
+    for (SKProduct *product in self.products) {
+        if ([product.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.84gems"]) {
+            gemsProduct = product;
+            break;
+        }
+    }
+    [self purchaseGems:gemsProduct withButton:nil];
+}
+
+- (void)showInterstitial: (NSString*)messageId withContext:(NSString*)context {
+    if ([Seeds.sharedInstance isInAppMessageLoaded:messageId])
+        [Seeds.sharedInstance showInAppMessage:messageId in:self withContext: context];
+    else
+        // Skip the interstitial showing this time and try to reload the interstitial
+        [Seeds.sharedInstance requestInAppMessage:messageId];
+}
+
+- (void)collectionViewWasTapped:(UITapGestureRecognizer *)tap {
+    CGPoint tapLocation = [tap locationInView:self.collectionView];
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:tapLocation];
+    if (indexPath) {
+        HRPGGemPurchaseView *cell = (HRPGGemPurchaseView *)[self.collectionView cellForItemAtIndexPath:indexPath];
+        CGRect mySubviewRectInCollectionViewCoorSys = [self.collectionView convertRect:cell.seeds_promo.frame fromView:cell];
+        if (CGRectContainsPoint(mySubviewRectInCollectionViewCoorSys, tapLocation)) {
+            [self showInterstitial:self.seedsInterstitialKey withContext:@"store"];
+        }
+    }
 }
 
 @end

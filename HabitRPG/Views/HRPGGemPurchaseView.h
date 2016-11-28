@@ -16,6 +16,9 @@
 
 - (void) setPurchaseTap:(void (^)(HRPGPurchaseLoadingButton *button))purchaseTap;
 
+- (void)showSeedsPromo:(BOOL)showPromo;
+
 @property (weak, nonatomic) IBOutlet HRPGPurchaseLoadingButton *purchaseButton;
+@property (weak, nonatomic) IBOutlet UIImageView *seeds_promo;
 
 @end

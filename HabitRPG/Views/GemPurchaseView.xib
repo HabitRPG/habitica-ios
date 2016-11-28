@@ -1,66 +1,92 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HRPGGemPurchaseView">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gems" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZt-Wf-rfp">
-                    <constraints>
-                        <constraint firstAttribute="height" priority="500" constant="21" id="cER-RY-PVx"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                    <color key="textColor" red="0.16078431904315948" green="0.58431375026702881" blue="0.80392158031463623" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CD-7L-CWx">
-                    <constraints>
-                        <constraint firstAttribute="height" priority="500" constant="21" id="guv-Pb-kSg"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                    <color key="textColor" red="0.16078431904315948" green="0.58431375026702881" blue="0.80392158031463623" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="21_gems" translatesAutoresizingMaskIntoConstraints="NO" id="aHI-TN-dVp"/>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oA3-c2-Kf1" customClass="HRPGPurchaseLoadingButton">
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="9W0-QJ-zlK"/>
-                    </constraints>
-                </view>
-            </subviews>
-            <color key="backgroundColor" red="0.6248476505279541" green="0.47318360209465027" blue="0.9988446831703186" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XB3-4A-WOm" customClass="HRPGGemPurchaseView">
+            <rect key="frame" x="0.0" y="0.0" width="290" height="261"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="290" height="261"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gems" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZt-Wf-rfp">
+                        <rect key="frame" x="0.0" y="150" width="290" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="S04-tk-jCU"/>
+                            <constraint firstAttribute="height" priority="500" constant="21" id="cER-RY-PVx"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                        <color key="textColor" red="0.16078431904315948" green="0.58431375026702881" blue="0.80392158031463623" alpha="1" colorSpace="deviceRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="21_gems" translatesAutoresizingMaskIntoConstraints="NO" id="aHI-TN-dVp">
+                        <rect key="frame" x="0.0" y="0.0" width="290" height="129"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oA3-c2-Kf1" customClass="HRPGPurchaseLoadingButton">
+                        <rect key="frame" x="8" y="223" width="274" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="9W0-QJ-zlK"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seeds_promo" translatesAutoresizingMaskIntoConstraints="NO" id="PrB-ws-N1Y">
+                        <rect key="frame" x="0.0" y="187" width="290" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="36P-4T-Ien"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CD-7L-CWx">
+                        <rect key="frame" x="0.0" y="129" width="290" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="500" constant="21" id="guv-Pb-kSg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                        <color key="textColor" red="0.16078431904315948" green="0.58431375026702881" blue="0.80392158031463623" alpha="1" colorSpace="deviceRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
             <constraints>
-                <constraint firstItem="iZt-Wf-rfp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1vI-ks-aUR"/>
-                <constraint firstAttribute="trailing" secondItem="aHI-TN-dVp" secondAttribute="trailing" id="2fV-sD-LtY"/>
-                <constraint firstItem="iZt-Wf-rfp" firstAttribute="top" secondItem="8CD-7L-CWx" secondAttribute="bottom" id="8dd-BY-9h8"/>
-                <constraint firstItem="aHI-TN-dVp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KSH-za-uW0"/>
-                <constraint firstAttribute="trailing" secondItem="iZt-Wf-rfp" secondAttribute="trailing" id="WOK-6L-8eo"/>
-                <constraint firstAttribute="bottom" secondItem="oA3-c2-Kf1" secondAttribute="bottom" constant="14" id="YDR-Xa-CNH"/>
-                <constraint firstItem="8CD-7L-CWx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aMH-wR-Fsg"/>
-                <constraint firstItem="8CD-7L-CWx" firstAttribute="top" secondItem="aHI-TN-dVp" secondAttribute="bottom" constant="8" id="eQZ-Fl-CX9"/>
-                <constraint firstItem="oA3-c2-Kf1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="gpJ-dn-Kvd"/>
-                <constraint firstItem="oA3-c2-Kf1" firstAttribute="top" secondItem="iZt-Wf-rfp" secondAttribute="bottom" constant="8" id="hYR-dh-ZWg"/>
-                <constraint firstAttribute="trailing" secondItem="oA3-c2-Kf1" secondAttribute="trailing" constant="16" id="i1g-Wi-nGo"/>
-                <constraint firstAttribute="trailing" secondItem="8CD-7L-CWx" secondAttribute="trailing" id="piE-Bf-4R7"/>
-                <constraint firstItem="aHI-TN-dVp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="wol-0Z-ddL"/>
+                <constraint firstItem="8CD-7L-CWx" firstAttribute="top" secondItem="aHI-TN-dVp" secondAttribute="bottom" id="07d-TX-fQv"/>
+                <constraint firstAttribute="trailing" secondItem="iZt-Wf-rfp" secondAttribute="trailing" id="BVA-oC-gQG"/>
+                <constraint firstAttribute="bottom" secondItem="oA3-c2-Kf1" secondAttribute="bottom" constant="8" id="ECN-tW-7j8"/>
+                <constraint firstItem="aHI-TN-dVp" firstAttribute="top" secondItem="XB3-4A-WOm" secondAttribute="top" id="Ggk-wq-lk4"/>
+                <constraint firstAttribute="trailing" secondItem="PrB-ws-N1Y" secondAttribute="trailing" id="KWI-PD-edO"/>
+                <constraint firstItem="oA3-c2-Kf1" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" constant="8" id="WUk-BY-f9O"/>
+                <constraint firstItem="iZt-Wf-rfp" firstAttribute="top" secondItem="8CD-7L-CWx" secondAttribute="bottom" id="aWt-eB-lYN"/>
+                <constraint firstAttribute="trailing" secondItem="aHI-TN-dVp" secondAttribute="trailing" id="dq0-oc-6b6"/>
+                <constraint firstItem="iZt-Wf-rfp" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" id="nwy-Af-PoQ"/>
+                <constraint firstAttribute="trailing" secondItem="oA3-c2-Kf1" secondAttribute="trailing" constant="8" id="sfQ-1J-kqd"/>
+                <constraint firstItem="8CD-7L-CWx" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" id="t6E-D9-ABN"/>
+                <constraint firstAttribute="trailing" secondItem="8CD-7L-CWx" secondAttribute="trailing" id="u1T-tA-31A"/>
+                <constraint firstItem="oA3-c2-Kf1" firstAttribute="top" secondItem="PrB-ws-N1Y" secondAttribute="bottom" constant="8" id="w1G-Sa-mrc"/>
+                <constraint firstItem="aHI-TN-dVp" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" id="xiw-nf-llb"/>
+                <constraint firstItem="PrB-ws-N1Y" firstAttribute="top" secondItem="iZt-Wf-rfp" secondAttribute="bottom" constant="16" id="xqI-gM-TH2"/>
+                <constraint firstItem="PrB-ws-N1Y" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" id="yrD-Lz-Ulh"/>
             </constraints>
+            <size key="customSize" width="290" height="261"/>
             <connections>
-                <outlet property="amountLabel" destination="8CD-7L-CWx" id="l4d-Tn-1I6"/>
-                <outlet property="imageView" destination="aHI-TN-dVp" id="356-I1-OUi"/>
-                <outlet property="purchaseButton" destination="oA3-c2-Kf1" id="s41-3H-mxW"/>
+                <outlet property="amountLabel" destination="8CD-7L-CWx" id="uXR-9n-amd"/>
+                <outlet property="imageView" destination="aHI-TN-dVp" id="wbE-Wj-Ko4"/>
+                <outlet property="promoGemsSpace" destination="xqI-gM-TH2" id="cup-jK-FTr"/>
+                <outlet property="promoHeight" destination="36P-4T-Ien" id="iKI-6s-M7e"/>
+                <outlet property="purchaseButton" destination="oA3-c2-Kf1" id="jts-hj-6dE"/>
+                <outlet property="seeds_promo" destination="PrB-ws-N1Y" id="TU8-KJ-mdh"/>
             </connections>
-            <point key="canvasLocation" x="34.5" y="66.5"/>
-        </view>
+            <point key="canvasLocation" x="154" y="599.5"/>
+        </collectionViewCell>
     </objects>
     <resources>
         <image name="21_gems" width="47" height="54"/>
+        <image name="seeds_promo" width="241" height="56"/>
     </resources>
 </document>

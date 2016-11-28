@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "HRPGManager.h"
+#import "SeedsInAppMessageDelegate.h"
 
-@interface HRPGGemViewController : UICollectionViewController
+@interface HRPGGemViewController : UICollectionViewController <SeedsInAppMessageDelegate>
 
 @property BOOL displayNoGemLabel;
 
