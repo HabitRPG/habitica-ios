@@ -122,8 +122,8 @@
     self.seedsInterstitialKey = keys.seedsReleaseGemsInterstitial;
 #endif
     [Seeds.sharedInstance requestInAppMessage:self.seedsInterstitialKey];
-    
-    
+    Seeds.sharedInstance.inAppMessageDelegate = self;
+
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(collectionViewWasTapped:)];
     [self.collectionView addGestureRecognizer:tap];
 }
@@ -317,13 +317,7 @@
 }
 
 - (void)seedsInAppMessageClicked:(NSString*)messageId {
-    SKProduct *gemsProduct = nil;
-    for (SKProduct *product in self.products) {
-        if ([product.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.84gems"]) {
-            gemsProduct = product;
-            break;
-        }
-    }
+    SKProduct *gemsProduct = self.products[@"com.habitrpg.ios.Habitica.84gems"];
     [self purchaseGems:gemsProduct withButton:nil];
 }
 
