@@ -171,7 +171,12 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((self.view.frame.size.width/2)-36, 200);
+    SKProduct *product = self.products[self.identifiers[indexPath.item]];
+    CGFloat height = 200.0;
+    if ([product.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.84gems"]) {
+        height = height + 28;
+    }
+    return CGSizeMake((self.view.frame.size.width/2)-36, height);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -289,8 +294,16 @@
                             [currentQueue finishTransaction:(SKPaymentTransaction *)obj];
                         }];
                     purchaseButton.state = HRPGPurchaseButtonStateDone;
+                    if ([transaction.payment.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.4gems"]) {
+                        [[Seeds sharedInstance] recordIAPEvent:transaction.payment.productIdentifier price:0.99];
+                    } else if ([transaction.payment.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.21gems"]) {
+                        [[Seeds sharedInstance] recordIAPEvent:transaction.payment.productIdentifier price:4.99];
+                    } else if ([transaction.payment.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.42gems"]) {
+                        [[Seeds sharedInstance] recordIAPEvent:transaction.payment.productIdentifier price:9.99];
+                    } else if ([transaction.payment.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.84gems"]) {
+                        [[Seeds sharedInstance] recordSeedsIAPEvent:transaction.payment.productIdentifier price:19.99];
+                    }
                     
-                    //[[Seeds sharedInstance] recordSeedsIAPEvent:@"ITEM" price:19.99];
                 }
                 onError:^() {
                     [self handleInvalidReceipt:transaction withButton:purchaseButton];
@@ -319,6 +332,10 @@
 - (void)seedsInAppMessageClicked:(NSString*)messageId {
     SKProduct *gemsProduct = self.products[@"com.habitrpg.ios.Habitica.84gems"];
     [self purchaseGems:gemsProduct withButton:nil];
+}
+
+- (void)seedsInAppMessageDismissed:(NSString *)messageId {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 }
 
 - (void)showInterstitial: (NSString*)messageId withContext:(NSString*)context {
