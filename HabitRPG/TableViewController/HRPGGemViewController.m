@@ -25,7 +25,8 @@
 @property(nonatomic) NSArray *identifiers;
 @property(nonatomic) UIView *headerView;
 @property MRProgressOverlayView *overlayView;
-@property NSString *seedsInterstitialKey;
+@property NSString *seedsGemsInterstitialKey;
+@property NSString *seedsShareInterstitialKey;
 @end
 
 @implementation HRPGGemViewController
@@ -116,12 +117,15 @@
     
 #ifdef DEBUG
     [[Seeds sharedInstance] start:keys.seedsDevApiKey withHost:@"https://dash.playseeds.com"];
-    self.seedsInterstitialKey = keys.seedsDevGemsInterstitial;
+    self.seedsGemsInterstitialKey = keys.seedsDevGemsInterstitial;
+    self.seedsShareInterstitialKey = keys.seedsDevShareInterstitial;
 #else
     [[Seeds sharedInstance] start:keys.seedsReleaseApiKey withHost:@"https://dash.playseeds.com"];
-    self.seedsInterstitialKey = keys.seedsReleaseGemsInterstitial;
+    self.seedsGemsInterstitialKey = keys.seedsReleaseGemsInterstitial;
+    self.seedsShareInterstitialKey = keys.seedsReleaseShareInterstitial;
 #endif
-    [Seeds.sharedInstance requestInAppMessage:self.seedsInterstitialKey];
+    [Seeds.sharedInstance requestInAppMessage:self.seedsGemsInterstitialKey];
+    [Seeds.sharedInstance requestInAppMessage:self.seedsShareInterstitialKey];
     Seeds.sharedInstance.inAppMessageDelegate = self;
 
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(collectionViewWasTapped:)];
@@ -302,6 +306,7 @@
                         [[Seeds sharedInstance] recordIAPEvent:transaction.payment.productIdentifier price:9.99];
                     } else if ([transaction.payment.productIdentifier isEqualToString:@"com.habitrpg.ios.Habitica.84gems"]) {
                         [[Seeds sharedInstance] recordSeedsIAPEvent:transaction.payment.productIdentifier price:19.99];
+                        [self showInterstitial:self.seedsShareInterstitialKey withContext:@"store"];
                     }
                     
                 }
@@ -353,7 +358,7 @@
         HRPGGemPurchaseView *cell = (HRPGGemPurchaseView *)[self.collectionView cellForItemAtIndexPath:indexPath];
         CGRect mySubviewRectInCollectionViewCoorSys = [self.collectionView convertRect:cell.seeds_promo.frame fromView:cell];
         if (CGRectContainsPoint(mySubviewRectInCollectionViewCoorSys, tapLocation)) {
-            [self showInterstitial:self.seedsInterstitialKey withContext:@"store"];
+            [self showInterstitial:self.seedsGemsInterstitialKey withContext:@"store"];
         }
     }
 }
