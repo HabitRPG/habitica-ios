@@ -7,7 +7,7 @@
 //
 
 #import "HRPGSettingsViewController.h"
-#import <PDKeychainBindings.h>
+#import "PDKeychainBindings.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGClassTableViewController.h"
 #import "HRPGTopHeaderNavigationController.h"

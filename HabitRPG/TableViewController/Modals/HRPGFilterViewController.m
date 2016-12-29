@@ -7,7 +7,7 @@
 //
 
 #import "HRPGFilterViewController.h"
-#import <NIKFontAwesomeIconFactory.h>
+#import "NIKFontAwesomeIconFactory.h"
 #import "HRPGCheckBoxView.h"
 #import "Tag.h"
 #import "UIColor+Habitica.h"

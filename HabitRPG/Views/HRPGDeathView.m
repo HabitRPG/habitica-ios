@@ -7,7 +7,7 @@
 //
 
 #import "HRPGDeathView.h"
-#import <YYWebImage.h>
+#import "YYWebImage.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGLabeledProgressBar.h"
 #import "UIColor+Habitica.h"

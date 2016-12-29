@@ -12,10 +12,10 @@
 #import "HRPGTaskResponse.h"
 #import "HRPGLoginData.h"
 #import <Google/Analytics.h>
-#import <NIKFontAwesomeIconFactory.h>
-#import <PDKeychainBindings.h>
+#import "NIKFontAwesomeIconFactory.h"
+#import "PDKeychainBindings.h"
 #import "Gear.h"
-#import <YYWebImage.h>
+#import "YYWebImage.h"
 #import "Amplitude.h"
 #import "HRPGEmptySerializer.h"
 #import "CRToast.h"

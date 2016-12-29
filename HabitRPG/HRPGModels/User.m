@@ -12,8 +12,8 @@
 #import <CommonCrypto/CommonCrypto.h>
 #import "Customization.h"
 #import "Flags.h"
-#import <YYWebImage.h>
-#import <Masonry.h>
+#import "YYWebImage.h"
+#import "Masonry.h"
 #import "HRPGAppDelegate.h"
 #import "TutorialSteps.h"
 #import "UIColor+Habitica.h"

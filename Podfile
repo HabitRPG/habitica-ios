@@ -1,4 +1,5 @@
 platform :ios, '8.4'
+use_frameworks!
 
 plugin 'cocoapods-keys', {
   :keys => [
@@ -33,6 +34,8 @@ pod 'Masonry'
 pod "SlackTextViewController"
 pod 'AppAuth'
 pod 'SeedsSDK', '0.4.2'
+
+pod 'ReactiveCocoa', '5.0.0-alpha.6'
 
 target 'HabiticaTests' do
     inherit! :search_paths

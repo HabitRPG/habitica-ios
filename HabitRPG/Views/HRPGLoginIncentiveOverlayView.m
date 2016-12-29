@@ -7,7 +7,7 @@
 //
 
 #import "HRPGLoginIncentiveOverlayView.h"
-#import <YYWebImage.h>
+#import "YYWebImage.h"
 #import "KLCPopup.h"
 
 static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_tl,

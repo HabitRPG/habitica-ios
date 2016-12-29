@@ -7,7 +7,7 @@
 //
 
 #import "HRPGUserTopHeader.h"
-#import <PDKeychainBindings.h>
+#import "PDKeychainBindings.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGLabeledProgressBar.h"
 #import "UIColor+Habitica.h"

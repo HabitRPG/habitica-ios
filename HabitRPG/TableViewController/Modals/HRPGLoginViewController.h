@@ -9,7 +9,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <UIKit/UIKit.h>
 #import "EAIntroView.h"
-#import <AppAuth.h>
+#import "AppAuth.h"
 
 @interface HRPGLoginViewController
     : UITableViewController<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate,

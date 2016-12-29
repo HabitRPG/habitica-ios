@@ -7,7 +7,7 @@
 //
 
 #import "HRPGAccountDetailViewController.h"
-#import <PDKeychainBindings.h>
+#import "PDKeychainBindings.h"
 #import "HRPGCopyTableViewCell.h"
 #import "HRPGQRCodeView.h"
 #import "UIView+Screenshot.h"

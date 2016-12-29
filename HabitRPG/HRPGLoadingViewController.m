@@ -7,10 +7,10 @@
 //
 
 #import "HRPGLoadingViewController.h"
-#import <PDKeychainBindings.h>
+#import "PDKeychainBindings.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGAvatarSetupViewController.h"
-#import "HRPGLoginViewController.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGLoadingViewController ()
 @end
@@ -54,8 +54,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"LoginSegue"]) {
         UINavigationController *navigationViewController = segue.destinationViewController;
-        HRPGLoginViewController *loginViewController =
-            (HRPGLoginViewController *)navigationViewController.topViewController;
+        LoginTableViewController *loginViewController =
+            (LoginTableViewController *)navigationViewController.topViewController;
         loginViewController.isRootViewController = YES;
     } else if ([segue.identifier isEqualToString:@"SetupSegue"]) {
         UINavigationController *navController = segue.destinationViewController;

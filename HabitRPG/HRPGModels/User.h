@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Phillip Thelen. All rights reserved.
 //
 
-#import <CoreData/CoreData.h>
-#import <Foundation/Foundation.h>
 #import "Flags.h"
 #import "Outfit.h"
 #import "Preferences.h"
@@ -15,7 +13,7 @@
 #import "Buff+CoreDataClass.h"
 #import "SpecialItems+CoreDataClass.h"
 
-@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, ImprovementCategory;
+@class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, ImprovementCategory, UIView, UIColor, UIImage, UIImageView;
 
 @interface User : NSManagedObject
 

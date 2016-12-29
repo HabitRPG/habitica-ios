@@ -7,7 +7,7 @@
 //
 
 #import "HRPGGemViewController.h"
-#import <CargoBay.h>
+#import "CargoBay.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGPurchaseLoadingButton.h"
 #import "MRProgress.h"

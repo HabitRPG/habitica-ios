@@ -7,7 +7,7 @@
 //
 
 #import "HRPGSpellTabBarController.h"
-#import <NIKFontAwesomeIconFactory.h>
+#import "NIKFontAwesomeIconFactory.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGSpellTaskController.h"
 #import "UIColor+Habitica.h"

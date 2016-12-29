@@ -7,7 +7,7 @@
 //
 
 #import "HRPGGroupTableViewController.h"
-#import <KLCPopup.h>
+#import "KLCPopup.h"
 #import "HRPGFlagInformationOverlayView.h"
 #import "HRPGGroupAboutTableViewController.h"
 #import "HRPGMessageViewController.h"

@@ -7,7 +7,7 @@
 //
 
 #import "HRPGTavernTableViewController.h"
-#import <CRToast.h>
+#import "CRToast.h"
 #import "UIColor+Habitica.h"
 
 @interface HRPGTavernTableViewController ()

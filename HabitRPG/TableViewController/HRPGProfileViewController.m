@@ -9,7 +9,7 @@
 #import "HRPGProfileViewController.h"
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
-#import <PDKeychainBindings.h>
+#import "PDKeychainBindings.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "UIColor+Habitica.h"
 

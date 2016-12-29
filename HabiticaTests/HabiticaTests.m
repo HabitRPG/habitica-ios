@@ -11,8 +11,7 @@
 #import "HabiticaTests.h"
 #import <RestKit/RestKit.h>
 #import "HRPGManager.h"
-#import <OHHTTPStubs.h>
-#import <PDKeychainBindings.h>
+#import "OHHTTPStubs.h"
 
 
 @implementation HabiticaTests
@@ -22,9 +21,6 @@
 
 - (void)initializeCoreDataStorage {
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:@"com.habitrpg.ios.Habitica"];
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    [keyChain removeObjectForKey:@"id"];
-    [keyChain removeObjectForKey:@"key"];
     
     self.sharedManager = [[HRPGManager alloc] init];
     NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"HabitRPG" ofType:@"momd"]];

@@ -7,7 +7,7 @@
 //
 
 #import "HRPGAboutViewController.h"
-#import <VTAcknowledgementsViewController.h>
+#import "VTAcknowledgementsViewController.h"
 #import <sys/utsname.h>
 #import "HRPGTopHeaderNavigationController.h"
 

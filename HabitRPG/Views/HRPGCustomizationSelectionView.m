@@ -7,7 +7,7 @@
 //
 
 #import "HRPGCustomizationSelectionView.h"
-#import <YYWebImage.h>
+#import "YYWebImage.h"
 #import "Customization.h"
 #import "UIColor+Habitica.h"
 

@@ -7,7 +7,7 @@
 //
 
 #import "HRPGBaseCollectionViewController.h"
-#import <PDKeychainBindings.h>
+#import "PDKeychainBindings.h"
 #import "Amplitude.h"
 #import "Google/Analytics.h"
 #import "HRPGAppDelegate.h"
