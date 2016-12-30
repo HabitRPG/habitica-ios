@@ -27,6 +27,11 @@ PODS:
   - EAIntroView (2.9.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
   - FirebaseAnalytics (3.4.3):
     - FirebaseCore (~> 3.4)
     - FirebaseInstanceID (~> 1.0)
@@ -146,6 +151,7 @@ DEPENDENCIES:
   - DateTools
   - DTCoreText
   - EAIntroView
+  - FBSnapshotTestCase
   - FLEX (~> 2.0)
   - FontAwesomeIconFactory
   - Google/Analytics
@@ -205,6 +211,7 @@ SPEC CHECKSUMS:
   DTFoundation: 0ef29c70a9814e15518694862bd739347abe2a50
   EAIntroView: 76f68cc56242f2e25359419e6ecc2344ee7e1756
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   FirebaseAnalytics: 02d0aed8c6246a9c8683ac3e9825c67ceb657bde
   FirebaseCore: 5a885548bbc5f0c410b04f8e9ac9d73ff1221907
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
@@ -239,6 +246,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 1433a448364d2a3b139a98b2298a92164a402b51
+PODFILE CHECKSUM: 75f0fee8e3aee79b658f9967ff73e85fc98f3d74
 
 COCOAPODS: 1.1.1

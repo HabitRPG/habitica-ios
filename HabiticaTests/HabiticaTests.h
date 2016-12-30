@@ -8,8 +8,9 @@
 
 #import <XCTest/XCTest.h>
 #import "HRPGManager.h"
+#import "FBSnapshotTestCase/FBSnapshotTestCase.h"
 
-@interface HabiticaTests : XCTestCase
+@interface HabiticaTests : FBSnapshotTestCase
 @property HRPGManager *sharedManager;
 
 -(void)initializeCoreDataStorage;

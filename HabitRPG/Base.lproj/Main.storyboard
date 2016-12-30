@@ -363,7 +363,7 @@
                                             </constraints>
                                         </view>
                                         <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q23-1t-1Fl">
-                                            <rect key="frame" x="369" y="0.0" width="6" height="72"/>
+                                            <rect key="frame" x="369" y="0.0" width="6" height="71"/>
                                             <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="6" id="KEp-dA-60g"/>
@@ -4058,7 +4058,7 @@ your account, including:</string>
         <!--Login Table View Controller-->
         <scene sceneID="bKI-3w-7pv">
             <objects>
-                <viewController id="d4N-vO-Oyt" customClass="LoginTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginTableViewController" id="d4N-vO-Oyt" customClass="LoginTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y0R-b6-d2F"/>
                         <viewControllerLayoutGuide type="bottom" id="OMI-ag-XWx"/>
@@ -4120,6 +4120,11 @@ your account, including:</string>
                                             <constraint firstItem="v6c-Hq-ilP" firstAttribute="leading" secondItem="gvb-ur-P5D" secondAttribute="leading" constant="16" id="hBU-NL-KFL"/>
                                             <constraint firstAttribute="centerY" secondItem="v6c-Hq-ilP" secondAttribute="centerY" id="yNp-OQ-jIi"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxb-c9-aVM">
                                         <rect key="frame" x="16" y="204" width="343" height="44"/>
@@ -4157,6 +4162,11 @@ your account, including:</string>
                                             <constraint firstAttribute="bottom" secondItem="ohm-Ft-Ck8" secondAttribute="bottom" constant="8" id="w09-64-NvH"/>
                                             <constraint firstAttribute="trailing" secondItem="ygf-Tc-H5C" secondAttribute="trailing" id="xZS-hb-Us1"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6E-v3-cNG">
                                         <rect key="frame" x="16" y="260" width="343" height="44"/>
@@ -4205,6 +4215,11 @@ your account, including:</string>
                                             <constraint firstAttribute="bottom" secondItem="7Hu-Eh-e9D" secondAttribute="bottom" id="nqU-E7-7pb"/>
                                             <constraint firstItem="7Hu-Eh-e9D" firstAttribute="top" secondItem="l6E-v3-cNG" secondAttribute="top" id="vWv-83-DfC"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4X0-Wk-hFp">
                                         <rect key="frame" x="16" y="316" width="343" height="44"/>
@@ -4243,6 +4258,11 @@ your account, including:</string>
                                             <constraint firstAttribute="bottom" secondItem="TO7-Zg-5ch" secondAttribute="bottom" id="ww0-DZ-8sR"/>
                                             <constraint firstItem="TO7-Zg-5ch" firstAttribute="top" secondItem="4X0-Wk-hFp" secondAttribute="top" id="xvV-4b-qHz"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uqe-gb-0Yv">
                                         <rect key="frame" x="16" y="376" width="343" height="44"/>
@@ -4271,6 +4291,11 @@ your account, including:</string>
                                             <constraint firstAttribute="height" constant="44" id="iYm-V4-X6R"/>
                                             <constraint firstItem="Xr6-f4-5Ra" firstAttribute="top" secondItem="uqe-gb-0Yv" secondAttribute="top" id="xFF-NF-RPE"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3T-Zl-acf">
                                         <rect key="frame" x="16" y="500" width="343" height="44"/>
@@ -4297,6 +4322,11 @@ your account, including:</string>
                                             <constraint firstItem="M1V-nF-Eg7" firstAttribute="top" secondItem="n3T-Zl-acf" secondAttribute="top" id="jil-OO-Ehq"/>
                                             <constraint firstAttribute="centerY" secondItem="wGH-MW-hTd" secondAttribute="centerY" id="oQM-kR-db8"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbf-BQ-bUU">
                                         <rect key="frame" x="16" y="444" width="343" height="44"/>
@@ -4335,12 +4365,16 @@ your account, including:</string>
                                     <constraint firstItem="n3T-Zl-acf" firstAttribute="width" secondItem="gvb-ur-P5D" secondAttribute="width" id="MFV-45-v84"/>
                                     <constraint firstAttribute="bottom" secondItem="n3T-Zl-acf" secondAttribute="bottom" constant="24" id="NK3-ro-U5f"/>
                                     <constraint firstItem="0eE-PK-9cB" firstAttribute="width" secondItem="JsR-R3-3oT" secondAttribute="width" constant="-32" id="R09-Lp-5O8"/>
-                                    <constraint firstItem="gbf-BQ-bUU" firstAttribute="top" secondItem="uqe-gb-0Yv" secondAttribute="bottom" constant="24" id="YlI-Xx-Qae"/>
+                                    <constraint firstItem="gbf-BQ-bUU" firstAttribute="top" secondItem="uqe-gb-0Yv" secondAttribute="bottom" constant="24" id="YlI-Xx-Qae">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="32"/>
+                                    </constraint>
                                     <constraint firstItem="uqe-gb-0Yv" firstAttribute="centerX" secondItem="JsR-R3-3oT" secondAttribute="centerX" id="Z5f-xw-l87"/>
                                     <constraint firstAttribute="width" secondItem="gvb-ur-P5D" secondAttribute="width" priority="999" constant="32" id="ZKa-Re-wxC"/>
                                     <constraint firstItem="l6E-v3-cNG" firstAttribute="centerX" secondItem="JsR-R3-3oT" secondAttribute="centerX" id="ZYK-6h-Yna"/>
                                     <constraint firstItem="uqe-gb-0Yv" firstAttribute="top" secondItem="4X0-Wk-hFp" secondAttribute="bottom" constant="16" id="alJ-fU-xJ2"/>
-                                    <constraint firstItem="0eE-PK-9cB" firstAttribute="top" secondItem="JsR-R3-3oT" secondAttribute="top" id="bcm-TK-aYr"/>
+                                    <constraint firstItem="0eE-PK-9cB" firstAttribute="top" secondItem="JsR-R3-3oT" secondAttribute="top" id="bcm-TK-aYr">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="32"/>
+                                    </constraint>
                                     <constraint firstItem="0eE-PK-9cB" firstAttribute="centerX" secondItem="JsR-R3-3oT" secondAttribute="centerX" id="c49-IT-q8n"/>
                                     <constraint firstItem="dxb-c9-aVM" firstAttribute="centerX" secondItem="JsR-R3-3oT" secondAttribute="centerX" id="cQ5-VZ-lfG"/>
                                     <constraint firstItem="NJC-ld-Ju8" firstAttribute="top" secondItem="0eE-PK-9cB" secondAttribute="bottom" id="ce8-27-lgx"/>
@@ -4349,7 +4383,9 @@ your account, including:</string>
                                     <constraint firstItem="uqe-gb-0Yv" firstAttribute="width" secondItem="gvb-ur-P5D" secondAttribute="width" id="jX6-YE-0va"/>
                                     <constraint firstItem="gbf-BQ-bUU" firstAttribute="centerX" secondItem="JsR-R3-3oT" secondAttribute="centerX" id="lyY-Ul-Gls"/>
                                     <constraint firstAttribute="trailing" secondItem="uqe-gb-0Yv" secondAttribute="trailing" constant="16" id="ruH-oh-U33"/>
-                                    <constraint firstItem="gvb-ur-P5D" firstAttribute="top" secondItem="NJC-ld-Ju8" secondAttribute="bottom" constant="8" id="ukO-EJ-tcq"/>
+                                    <constraint firstItem="gvb-ur-P5D" firstAttribute="top" secondItem="NJC-ld-Ju8" secondAttribute="bottom" constant="8" id="ukO-EJ-tcq">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="16"/>
+                                    </constraint>
                                     <constraint firstItem="l6E-v3-cNG" firstAttribute="top" secondItem="dxb-c9-aVM" secondAttribute="bottom" constant="12" id="vgQ-gE-KbA"/>
                                 </constraints>
                             </scrollView>
@@ -4361,6 +4397,11 @@ your account, including:</string>
                             <constraint firstItem="OMI-ag-XWx" firstAttribute="top" secondItem="JsR-R3-3oT" secondAttribute="bottom" id="Skf-L2-diY"/>
                             <constraint firstItem="JsR-R3-3oT" firstAttribute="top" secondItem="W2o-0P-N0l" secondAttribute="top" id="qYS-xJ-FK0"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="6mh-Jq-YDB">
                         <barButtonItem key="rightBarButtonItem" title="Register" id="vnb-B7-Ow5"/>
@@ -4423,7 +4464,7 @@ your account, including:</string>
         <!--Navigation Controller-->
         <scene sceneID="pak-rs-9QE">
             <objects>
-                <navigationController storyboardIdentifier="loginNavigationController" definesPresentationContext="YES" id="zXJ-qo-nbI" customClass="HRPGNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNavigationController" definesPresentationContext="YES" id="zXJ-qo-nbI" customClass="HRPGNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="e6j-HK-n20">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>

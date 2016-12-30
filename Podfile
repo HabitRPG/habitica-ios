@@ -40,6 +40,7 @@ pod 'ReactiveCocoa', '5.0.0-alpha.6'
 target 'HabiticaTests' do
     inherit! :search_paths
     pod 'OHHTTPStubs'    
+    pod 'FBSnapshotTestCase'
 end
 
 end

@@ -80,6 +80,8 @@
 		D957043E1E151C1C004F6804 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957043D1E151C1C004F6804 /* LoginViewModelTests.swift */; };
 		D95704431E1528F2004F6804 /* Event-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95704421E1528F2004F6804 /* Event-Extensions.swift */; };
 		D95704471E153767004F6804 /* TestObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95704461E153767004F6804 /* TestObserver.swift */; };
+		D957044B1E1585DB004F6804 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957044A1E1585DB004F6804 /* LoginViewControllerTests.swift */; };
+		D957044D1E1589AB004F6804 /* TraitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957044C1E1589AB004F6804 /* TraitController.swift */; };
 		D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D958E2AC1915D40600186A08 /* CoreText.framework */; };
 		D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D915F8621915BEE50037D04D /* QuartzCore.framework */; };
 		D958E2B01915D41400186A08 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D958E2AF1915D41400186A08 /* Security.framework */; };
@@ -423,6 +425,8 @@
 		D957043D1E151C1C004F6804 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		D95704421E1528F2004F6804 /* Event-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event-Extensions.swift"; sourceTree = "<group>"; };
 		D95704461E153767004F6804 /* TestObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestObserver.swift; sourceTree = "<group>"; };
+		D957044A1E1585DB004F6804 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
+		D957044C1E1589AB004F6804 /* TraitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraitController.swift; sourceTree = "<group>"; };
 		D958E2AC1915D40600186A08 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		D958E2AF1915D41400186A08 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D95CBD461BBC0EDA002F4498 /* UIView+Pulse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Pulse.h"; sourceTree = "<group>"; };
@@ -1030,6 +1034,7 @@
 			isa = PBXGroup;
 			children = (
 				D957043D1E151C1C004F6804 /* LoginViewModelTests.swift */,
+				D957044A1E1585DB004F6804 /* LoginViewControllerTests.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1038,6 +1043,7 @@
 			isa = PBXGroup;
 			children = (
 				D95704461E153767004F6804 /* TestObserver.swift */,
+				D957044C1E1589AB004F6804 /* TraitController.swift */,
 			);
 			name = TestHelpers;
 			sourceTree = "<group>";
@@ -2037,7 +2043,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D957044B1E1585DB004F6804 /* LoginViewControllerTests.swift in Sources */,
 				D95704431E1528F2004F6804 /* Event-Extensions.swift in Sources */,
+				D957044D1E1589AB004F6804 /* TraitController.swift in Sources */,
 				D957043E1E151C1C004F6804 /* LoginViewModelTests.swift in Sources */,
 				D92C0C441B8749DF000AF799 /* HabiticaTests.m in Sources */,
 				D946E5C41B30A9D700806BE6 /* HRPGTaskTests.m in Sources */,
