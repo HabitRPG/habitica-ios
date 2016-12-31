@@ -33,6 +33,12 @@ class LoginTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        self.navigationController?.navigationBar.backgroundColor = .clear
+        
         authTypeButton.target = self
         authTypeButton.action = #selector(authTypeButtonTapped)
         usernameTextField.addTarget(self, action: #selector(usernameTextFieldChanged(textField:)), for: .editingChanged)
@@ -45,6 +51,10 @@ class LoginTableViewController: UIViewController {
         self.viewModel.inputs.onePassword(
             isAvailable: OnePasswordExtension.shared().isAppExtensionAvailable()
         )
+        
+        if self.isRootViewController {
+            UIApplication.shared.setStatusBarHidden(true, with: .fade)
+        }
     }
 
     func bindViewModel() {

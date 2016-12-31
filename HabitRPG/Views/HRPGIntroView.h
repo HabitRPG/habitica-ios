@@ -6,7 +6,6 @@
 //  Copyright © 2015 Phillip Thelen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "EAIntroView.h"
 
 @interface HRPGIntroView : NSObject

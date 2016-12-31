@@ -21,7 +21,7 @@
     PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
     if ([keyChain stringForKey:@"id"] == nil ||
         [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
-        [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+        [self performSegueWithIdentifier:@"IntroSegue" sender:self];
     } else {
         HRPGAppDelegate *appDelegate =
             (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];

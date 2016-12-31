@@ -101,6 +101,7 @@
 		D9660D781AB248030084CE37 /* HRPGUserTopHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */; };
 		D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D966557318FB129F0014C09D /* HRPGSettingsViewController.m */; };
 		D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */; };
+		D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96BFC4B1E181B4A00266EEF /* IntroViewController.swift */; };
 		D96C853F1DCB631B003E3616 /* HRPGBaseNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D96C853E1DCB631B003E3616 /* HRPGBaseNotificationView.m */; };
 		D96C85421DCB6501003E3616 /* HRPGDropsEnabledNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D96C85411DCB6501003E3616 /* HRPGDropsEnabledNotification.m */; };
 		D96C85451DCBAC90003E3616 /* HRPGStreakAchievementNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D96C85441DCBAC90003E3616 /* HRPGStreakAchievementNotification.m */; };
@@ -460,6 +461,7 @@
 		D96760C61B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAbbrevNumberLabel.h; sourceTree = "<group>"; };
 		D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAbbrevNumberLabel.m; sourceTree = "<group>"; };
 		D967756F1C7C819300BF4AAB /* HabitRPG 23.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 23.xcdatamodel"; sourceTree = "<group>"; };
+		D96BFC4B1E181B4A00266EEF /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		D96C853D1DCB631B003E3616 /* HRPGBaseNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBaseNotificationView.h; sourceTree = "<group>"; };
 		D96C853E1DCB631B003E3616 /* HRPGBaseNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBaseNotificationView.m; sourceTree = "<group>"; };
 		D96C85401DCB6501003E3616 /* HRPGDropsEnabledNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGDropsEnabledNotification.h; sourceTree = "<group>"; };
@@ -1048,6 +1050,14 @@
 			name = TestHelpers;
 			sourceTree = "<group>";
 		};
+		D96BFC4D1E181B5500266EEF /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				D96BFC4B1E181B4A00266EEF /* IntroViewController.swift */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
 		D96C853C1DCB61EE003E3616 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -1116,6 +1126,7 @@
 		D9A63A311E1031FD0083ADC4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D96BFC4D1E181B5500266EEF /* Intro */,
 				D9A63A371E104F6C0083ADC4 /* Login */,
 			);
 			path = UI;
@@ -2123,6 +2134,7 @@
 				D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */,
 				D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */,
 				D9D593581D004CC900D6C388 /* HRPGInboxTableViewController.m in Sources */,
+				D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */,
 				D92C60F81BD3F28A005F68CC /* HRPGAccountDetailViewController.m in Sources */,
 				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
 				D96C853F1DCB631B003E3616 /* HRPGBaseNotificationView.m in Sources */,
