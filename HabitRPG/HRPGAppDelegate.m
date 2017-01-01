@@ -25,6 +25,7 @@
 #import "HRPGQuestDetailViewController.h"
 #import "UIColor+Habitica.h"
 #import <Keys/HabiticaKeys.h>
+#import "AppAuth.h"
 
 @interface HRPGAppDelegate ()
 

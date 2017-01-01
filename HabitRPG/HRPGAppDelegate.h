@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "HRPGManager.h"
-#import "AppAuth.h"
+
+@protocol OIDAuthorizationFlowSession;
 
 @interface HRPGAppDelegate : UIResponder<UIApplicationDelegate, UIAlertViewDelegate>
 

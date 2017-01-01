@@ -15,8 +15,6 @@
 		D903B7891DCA2BE6001F2893 /* HRPGNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D903B7881DCA2BE6001F2893 /* HRPGNotification.m */; };
 		D903B78C1DCA4C25001F2893 /* HRPGNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D903B78B1DCA4C25001F2893 /* HRPGNotificationManager.m */; };
 		D905766F1BD7F581009BB7BC /* HRPGHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = D905766E1BD7F581009BB7BC /* HRPGHintView.m */; };
-		D90576721BD80275009BB7BC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90576701BD80275009BB7BC /* FBSDKCoreKit.framework */; };
-		D90576731BD80275009BB7BC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90576711BD80275009BB7BC /* FBSDKLoginKit.framework */; };
 		D90576851BD83240009BB7BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D90576871BD83240009BB7BC /* InfoPlist.strings */; };
 		D905768A1BD83241009BB7BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D905768C1BD83241009BB7BC /* Localizable.strings */; };
 		D905D08A1DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D905D0891DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m */; };
@@ -102,6 +100,8 @@
 		D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D966557318FB129F0014C09D /* HRPGSettingsViewController.m */; };
 		D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */; };
 		D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96BFC4B1E181B4A00266EEF /* IntroViewController.swift */; };
+		D96BFC4F1E191D7200266EEF /* UIAlertController-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */; };
+		D96BFC511E1930A500266EEF /* Signal-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96BFC501E1930A500266EEF /* Signal-Extensions.swift */; };
 		D96C853F1DCB631B003E3616 /* HRPGBaseNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D96C853E1DCB631B003E3616 /* HRPGBaseNotificationView.m */; };
 		D96C85421DCB6501003E3616 /* HRPGDropsEnabledNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D96C85411DCB6501003E3616 /* HRPGDropsEnabledNotification.m */; };
 		D96C85451DCBAC90003E3616 /* HRPGStreakAchievementNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D96C85441DCBAC90003E3616 /* HRPGStreakAchievementNotification.m */; };
@@ -188,7 +188,6 @@
 		D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0CE18D5F4D400C8D1B7 /* Tag.m */; };
 		D9B5C0E118D602FC00C8D1B7 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E018D602FC00C8D1B7 /* Group.m */; };
 		D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E318D610E300C8D1B7 /* HRPGTaskResponse.m */; };
-		D9B5C0E718D62CC700C8D1B7 /* HRPGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */; };
 		D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */; };
 		D9B8C1201AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B8C11F1AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m */; };
 		D9B8C1281AFFB5D500634B5A /* blade.json in Resources */ = {isa = PBXBuildFile; fileRef = D9B8C1271AFFB5D500634B5A /* blade.json */; };
@@ -462,6 +461,8 @@
 		D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAbbrevNumberLabel.m; sourceTree = "<group>"; };
 		D967756F1C7C819300BF4AAB /* HabitRPG 23.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 23.xcdatamodel"; sourceTree = "<group>"; };
 		D96BFC4B1E181B4A00266EEF /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController-Extensions.swift"; sourceTree = "<group>"; };
+		D96BFC501E1930A500266EEF /* Signal-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Signal-Extensions.swift"; sourceTree = "<group>"; };
 		D96C853D1DCB631B003E3616 /* HRPGBaseNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBaseNotificationView.h; sourceTree = "<group>"; };
 		D96C853E1DCB631B003E3616 /* HRPGBaseNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBaseNotificationView.m; sourceTree = "<group>"; };
 		D96C85401DCB6501003E3616 /* HRPGDropsEnabledNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGDropsEnabledNotification.h; sourceTree = "<group>"; };
@@ -680,8 +681,6 @@
 		D9B5C0E018D602FC00C8D1B7 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Group.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9B5C0E218D610E200C8D1B7 /* HRPGTaskResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTaskResponse.h; sourceTree = "<group>"; };
 		D9B5C0E318D610E300C8D1B7 /* HRPGTaskResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTaskResponse.m; sourceTree = "<group>"; };
-		D9B5C0E518D62CC700C8D1B7 /* HRPGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGLoginViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGLoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9B5C0E818D6320C00C8D1B7 /* HRPGLoginData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGLoginData.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGLoginData.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9B8C11E1AFE70F900634B5A /* HRPGCustomizationCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCustomizationCollectionViewController.h; sourceTree = "<group>"; };
@@ -845,12 +844,10 @@
 				D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */,
 				D958E2B01915D41400186A08 /* Security.framework in Frameworks */,
 				D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */,
-				D90576731BD80275009BB7BC /* FBSDKLoginKit.framework in Frameworks */,
 				D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */,
 				D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */,
 				D940A7E31B0CF80100370F2E /* Fabric.framework in Frameworks */,
 				D940A7E41B0CF80100370F2E /* Crashlytics.framework in Frameworks */,
-				D90576721BD80275009BB7BC /* FBSDKCoreKit.framework in Frameworks */,
 				D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */,
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
 				D9C89CF91B1F0E6C00A599B0 /* StoreKit.framework in Frameworks */,
@@ -1020,6 +1017,8 @@
 			children = (
 				D95704381E106C11004F6804 /* LocalizedString.swift */,
 				D95704421E1528F2004F6804 /* Event-Extensions.swift */,
+				D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */,
+				D96BFC501E1930A500266EEF /* Signal-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1488,8 +1487,6 @@
 			children = (
 				D9ADD3611944FDBE006202C1 /* HRPGFilterViewController.h */,
 				D9ADD3621944FDBE006202C1 /* HRPGFilterViewController.m */,
-				D9B5C0E518D62CC700C8D1B7 /* HRPGLoginViewController.h */,
-				D9B5C0E618D62CC700C8D1B7 /* HRPGLoginViewController.m */,
 				D96038351930F90E0025EAEC /* HRPGMessageViewController.h */,
 				D96038361930F90E0025EAEC /* HRPGMessageViewController.m */,
 				D97B8F5B1AE6CD3C00C6447D /* HRPGRewardFormViewController.h */,
@@ -2108,6 +2105,7 @@
 				D979AD1A1AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m in Sources */,
 				D9F16E361BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
+				D96BFC511E1930A500266EEF /* Signal-Extensions.swift in Sources */,
 				D9436AC91C64F880008D1171 /* HRPGGuildsOverviewViewController.m in Sources */,
 				D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */,
 				D9D21731198D509100023367 /* HRPGDeathView.m in Sources */,
@@ -2203,7 +2201,6 @@
 				D905D08A1DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m in Sources */,
 				D9FC1A781BC28C5F00B97D23 /* HRPGExplanationView.m in Sources */,
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
-				D9B5C0E718D62CC700C8D1B7 /* HRPGLoginViewController.m in Sources */,
 				D92A085D1D3520D8000F8B66 /* ShopItem+CoreDataProperties.m in Sources */,
 				D99EAB621BF375F7003C1C62 /* HRPGIntroView.m in Sources */,
 				D98F5DC91C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m in Sources */,
@@ -2242,6 +2239,7 @@
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
 				D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */,
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
+				D96BFC4F1E191D7200266EEF /* UIAlertController-Extensions.swift in Sources */,
 				D9AEA8A11C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m in Sources */,
 				D98F5DBE1C6A1D770035CBEC /* HRPGChatTableViewCell.m in Sources */,
 				D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */,

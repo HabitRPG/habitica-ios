@@ -331,7 +331,7 @@ User *user;
                            [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                            UINavigationController *navigationController =
                            [storyboard instantiateViewControllerWithIdentifier:
-                            @"loginNavigationController"];
+                            @"LoginNavigationController"];
                            [weakSelf presentViewController:navigationController
                                               animated:YES
                                             completion:nil];

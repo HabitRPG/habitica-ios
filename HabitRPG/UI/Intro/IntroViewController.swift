@@ -100,4 +100,11 @@ class IntroViewController: UIViewController, EAIntroDelegate {
         self.performSegue(withIdentifier: "LoginSegue", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LoginSegue" {
+            let navigationController = segue.destination as! UINavigationController
+            let loginViewController = navigationController.topViewController as! LoginTableViewController
+            loginViewController.isRootViewController = true
+        }
+    }
 }

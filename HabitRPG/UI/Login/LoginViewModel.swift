@@ -9,6 +9,8 @@
 import ReactiveCocoa
 import ReactiveSwift
 import Result
+import AppAuth
+import Keys
 
 enum LoginViewAuthType {
     case Login
@@ -22,9 +24,19 @@ protocol  LoginViewModelInputs {
     func emailChanged(email: String?)
     func usernameChanged(username: String?)
     func passwordChanged(password: String?)
+    func passwordDoneEditing()
     func passwordRepeatChanged(passwordRepeat: String?)
-    
+    func passwordRepeatDoneEditing()
+
     func onePassword(isAvailable: Bool)
+    
+    func loginButtonPressed()
+    func googleLoginButtonPressed()
+    
+    func onSuccessfulLogin()
+    
+    func setSharedManager(sharedManager: HRPGManager?)
+    func setViewController(viewController: LoginTableViewController)
 }
 
 protocol LoginViewModelOutputs {
@@ -38,6 +50,11 @@ protocol LoginViewModelOutputs {
     var passwordRepeatFieldVisibility: Signal<Bool, NoError> { get }
     
     var onePasswordButtonHidden: Signal<Bool, NoError> { get }
+    
+    var showError: Signal<String, NoError> { get }
+    var showNextViewController: Signal<String, NoError> { get }
+    
+    var loadingIndicatorVisibility: Signal<Bool, NoError> { get }
 }
 
 protocol LoginViewModelType {
@@ -48,6 +65,14 @@ protocol LoginViewModelType {
 class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOutputs {
     
     init() {
+        let authValues = Signal.combineLatest(
+            self.authTypeProperty.signal.skipNil(),
+            self.emailChangedProperty.signal.skipNil(),
+            self.usernameChangedProperty.signal.skipNil(),
+            self.passwordChangedProperty.signal.skipNil(),
+            self.passwordRepeatChangedProperty.signal.skipNil()
+        )
+        
         self.authTypeButtonTitle = self.authTypeProperty.signal.skipNil().map { value in
             switch value {
             case .Login:
@@ -87,13 +112,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.emailFieldVisibility = isRegistering;
         self.passwordRepeatFieldVisibility = isRegistering;
         
-        self.isFormValid = Signal.combineLatest(
-            self.authTypeProperty.signal.skipNil(),
-            self.emailChangedProperty.signal.skipNil(),
-            self.usernameChangedProperty.signal.skipNil(),
-            self.passwordChangedProperty.signal.skipNil(),
-            self.passwordRepeatChangedProperty.signal.skipNil()
-        ).map(isValid)
+        self.isFormValid = authValues.map(isValid)
         
         self.emailChangedProperty.value = ""
         self.usernameChangedProperty.value = ""
@@ -103,6 +122,22 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.onePasswordButtonHidden = self.onePasswordAvailable.signal.map { value in
             return !value
         }
+        let (showNextViewControllerSignal, showNextViewControllerObserver) = Signal<(), NoError>.pipe()
+        self.showNextViewControllerObserver = showNextViewControllerObserver
+        self.showNextViewController = Signal.merge(
+            showNextViewControllerSignal,
+            self.onSuccessfulLoginProperty.signal
+            ).combineLatest(with: self.authTypeProperty.signal)
+        .map({ (_, authType) -> String in
+            if authType == .Login {
+                return "MainSegue"
+            } else {
+                return "SetupSegue"
+            }
+        })
+        (self.showError, self.showErrorObserver) = Signal.pipe()
+        
+        (self.loadingIndicatorVisibility, self.loadingIndicatorVisibilityObserver) = Signal<Bool, NoError>.pipe()
     }
     
     private let authTypeProperty = MutableProperty<LoginViewAuthType?>(nil)
@@ -133,14 +168,82 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.passwordChangedProperty.value = password
     }
     
+    private let passwordDoneEditingProperty = MutableProperty(())
+    func passwordDoneEditing() {
+        self.passwordDoneEditingProperty.value = ()
+    }
+    
     private let passwordRepeatChangedProperty = MutableProperty<String?>(nil)
     func passwordRepeatChanged(passwordRepeat: String?) {
         self.passwordRepeatChangedProperty.value = passwordRepeat
     }
     
+    private let passwordRepeatDoneEditingProperty = MutableProperty(())
+    func passwordRepeatDoneEditing() {
+        self.passwordRepeatDoneEditingProperty.value = ()
+    }
+    
     private let onePasswordAvailable = MutableProperty<Bool>(false)
     func onePassword(isAvailable: Bool) {
         self.onePasswordAvailable.value = isAvailable;
+    }
+    
+    func loginButtonPressed() {
+        if isValid(authType: self.authTypeProperty.value!, email: self.emailChangedProperty.value!, username: self.usernameChangedProperty.value!, password: self.passwordChangedProperty.value!, passwordRepeat: self.passwordRepeatChangedProperty.value!) {
+            self.loadingIndicatorVisibilityObserver.send(value: true)
+            if self.authTypeProperty.value == .Login {
+                self.sharedManager?.loginUser(self.usernameChangedProperty.value, withPassword: self.passwordChangedProperty.value, onSuccess: {
+                    self.onSuccessfulLogin()
+                }, onError: {
+                    self.loadingIndicatorVisibilityObserver.send(value: false)
+                    self.showErrorObserver.send(value: "Invalid username or password".localized)
+                })
+            } else {
+                self.sharedManager?.registerUser(self.usernameChangedProperty.value, withPassword: self.passwordChangedProperty.value, withEmail: self.emailChangedProperty.value, onSuccess: { 
+                    self.onSuccessfulLogin()
+                }, onError: {
+                    self.loadingIndicatorVisibilityObserver.send(value: false)
+                })
+            }
+        }
+    }
+    
+    private let googleLoginButtonPressedProperty = MutableProperty(())
+    func googleLoginButtonPressed() {
+        let authorizationEndpoint = NSURL(string: "https://accounts.google.com/o/oauth2/v2/auth")
+        let tokenEndpoint = NSURL(string: "https://www.googleapis.com/oauth2/v4/token")
+        
+        let configuration = OIDServiceConfiguration(authorizationEndpoint: authorizationEndpoint as! URL, tokenEndpoint: tokenEndpoint as! URL)
+        let keys = HabiticaKeys();
+        
+        let request = OIDAuthorizationRequest.init(configuration: configuration, clientId: keys.googleClient(), scopes:[OIDScopeOpenID, OIDScopeProfile], redirectURL: NSURL(string: keys.googleRedirectUrl()) as! URL, responseType: OIDResponseTypeCode, additionalParameters: nil)
+        
+        // performs authentication request
+        let appDelegate = UIApplication.shared.delegate as! HRPGAppDelegate
+        appDelegate.currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request, presenting:self.viewController!, callback: {[weak self] (authState, error) in
+            if (authState != nil) {
+                self?.sharedManager?.loginUserSocial("", withNetwork: "google", withAccessToken: authState?.lastTokenResponse?.accessToken, onSuccess: { 
+                    self?.onSuccessfulLogin()
+                }, onError: { 
+                    
+                })
+            }
+        })
+    }
+    
+    private let onSuccessfulLoginProperty = MutableProperty(())
+    func onSuccessfulLogin() {
+        self.onSuccessfulLoginProperty.value = ()
+    }
+    
+    private var sharedManager: HRPGManager?
+    func setSharedManager(sharedManager: HRPGManager?) {
+        self.sharedManager = sharedManager
+    }
+    
+    private weak var viewController: LoginTableViewController?
+    func setViewController(viewController: LoginTableViewController) {
+        self.viewController = viewController
     }
 
     
@@ -151,7 +254,14 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     internal var emailFieldVisibility: Signal<Bool, NoError>
     internal var passwordRepeatFieldVisibility: Signal<Bool, NoError>
     internal var onePasswordButtonHidden: Signal<Bool, NoError>
+    internal var showError: Signal<String, NoError>
+    internal var showNextViewController: Signal<String, NoError>
+    internal var loadingIndicatorVisibility: Signal<Bool, NoError>
     
+    private var showNextViewControllerObserver: Observer<(), NoError>
+    private var showErrorObserver: Observer<String, NoError>
+    private var loadingIndicatorVisibilityObserver: Observer<Bool, NoError>
+
     internal var inputs: LoginViewModelInputs { return self }
     internal var outputs: LoginViewModelOutputs { return self }
 }

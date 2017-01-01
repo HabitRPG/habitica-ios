@@ -6,3 +6,4 @@
 #import "HRPGBaseViewController.h"
 #import "UIColor+Habitica.h"
 #import "OnePasswordExtension.h"
+#import "HRPGAppDelegate.h"

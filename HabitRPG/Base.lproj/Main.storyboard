@@ -4304,24 +4304,23 @@ your account, including:</string>
                                             <activityIndicatorView opaque="NO" alpha="0.0" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wGH-MW-hTd">
                                                 <rect key="frame" x="153" y="4" width="37" height="37"/>
                                             </activityIndicatorView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login with Google" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1V-nF-Eg7">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ky-qu-Dkz">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
-                                                <color key="tintColor" red="0.3803921569" green="0.20000000000000001" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <state key="normal" title="Login with Google">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.82745098039215681" green="0.20784313725490197" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="M1V-nF-Eg7" secondAttribute="trailing" id="9Ec-PL-0sF"/>
-                                            <constraint firstItem="M1V-nF-Eg7" firstAttribute="leading" secondItem="n3T-Zl-acf" secondAttribute="leading" id="BPB-mu-aU0"/>
                                             <constraint firstItem="wGH-MW-hTd" firstAttribute="top" secondItem="n3T-Zl-acf" secondAttribute="top" constant="4" id="EjT-Gz-U7y"/>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="U1p-1F-kT3"/>
-                                            <constraint firstAttribute="bottom" secondItem="M1V-nF-Eg7" secondAttribute="bottom" id="UaQ-pw-GSm"/>
                                             <constraint firstAttribute="centerX" secondItem="wGH-MW-hTd" secondAttribute="centerX" id="Xvl-v9-CMM"/>
-                                            <constraint firstItem="M1V-nF-Eg7" firstAttribute="top" secondItem="n3T-Zl-acf" secondAttribute="top" id="jil-OO-Ehq"/>
+                                            <constraint firstItem="6ky-qu-Dkz" firstAttribute="leading" secondItem="n3T-Zl-acf" secondAttribute="leading" id="gpR-wP-3ps"/>
                                             <constraint firstAttribute="centerY" secondItem="wGH-MW-hTd" secondAttribute="centerY" id="oQM-kR-db8"/>
+                                            <constraint firstAttribute="trailing" secondItem="6ky-qu-Dkz" secondAttribute="trailing" id="ryL-fG-lMg"/>
+                                            <constraint firstItem="6ky-qu-Dkz" firstAttribute="top" secondItem="n3T-Zl-acf" secondAttribute="top" id="z6e-ab-AFG"/>
+                                            <constraint firstAttribute="bottom" secondItem="6ky-qu-Dkz" secondAttribute="bottom" id="zbs-Mx-hlc"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -4412,6 +4411,8 @@ your account, including:</string>
                         <outlet property="emailFieldHeight" destination="8TB-kx-1pF" id="AuT-jG-bnt"/>
                         <outlet property="emailFieldTopSpacing" destination="iMJ-Kx-soN" id="zqZ-at-Jk0"/>
                         <outlet property="emailTextField" destination="ygf-Tc-H5C" id="wSi-Ab-02U"/>
+                        <outlet property="googleLoginButton" destination="6ky-qu-Dkz" id="Mbm-ut-Fw2"/>
+                        <outlet property="loginActivityIndicator" destination="nGo-gR-YlA" id="jV0-Mi-qtM"/>
                         <outlet property="loginButton" destination="Xr6-f4-5Ra" id="HPJ-TG-55x"/>
                         <outlet property="loginButtonBackground" destination="uqe-gb-0Yv" id="GyF-WM-tCT"/>
                         <outlet property="onePasswordButton" destination="JS3-ye-6Uv" id="wfc-ei-1rw"/>
@@ -4421,8 +4422,8 @@ your account, including:</string>
                         <outlet property="passwordTextField" destination="7Hu-Eh-e9D" id="CPC-2L-siA"/>
                         <outlet property="usernameTextField" destination="fbB-fg-xoz" id="hCS-pZ-hAy"/>
                         <segue destination="qJn-bG-4Bw" kind="show" identifier="OauthWebViewSegue" id="06A-gd-xrW"/>
-                        <segue destination="8YX-ce-x5E" kind="presentation" id="rra-1P-ecu"/>
-                        <segue destination="vVF-2L-yft" kind="presentation" id="STm-pf-BaS"/>
+                        <segue destination="8YX-ce-x5E" kind="presentation" identifier="MainSegue" id="rra-1P-ecu"/>
+                        <segue destination="vVF-2L-yft" kind="presentation" identifier="SetupSegue" id="STm-pf-BaS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XlD-ds-LLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4653,7 +4654,7 @@ your account, including:</string>
         <image name="tag" width="17" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DYS-RQ-id7"/>
+        <segue reference="rra-1P-ecu"/>
         <segue reference="O64-Xo-CqB"/>
         <segue reference="STm-pf-BaS"/>
         <segue reference="ETz-qE-xC2"/>
