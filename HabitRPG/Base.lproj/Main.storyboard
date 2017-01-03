@@ -621,7 +621,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L43-nJ-Zxc">
-                                            <rect key="frame" x="338" y="0.0" width="37" height="90"/>
+                                            <rect key="frame" x="338" y="0.0" width="37" height="89"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooX-yq-TjG">
                                                     <rect key="frame" x="0.0" y="23" width="37" height="21"/>
@@ -845,7 +845,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdT-m4-LwY">
-                                            <rect key="frame" x="338" y="0.0" width="37" height="90"/>
+                                            <rect key="frame" x="338" y="0.0" width="37" height="89"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bui-MX-ogH">
                                                     <rect key="frame" x="0.0" y="23" width="37" height="21"/>
@@ -1159,7 +1159,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQf-WK-CPE" customClass="HRPGQRCodeView">
-                                            <rect key="frame" x="34.5" y="7" width="306" height="306"/>
+                                            <rect key="frame" x="35" y="7" width="306" height="306"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="306" id="aIt-MW-I94"/>
@@ -2468,7 +2468,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddv-E0-ZJX">
-                                            <rect key="frame" x="8" y="8" width="294" height="44"/>
+                                            <rect key="frame" x="8" y="8" width="294" height="43"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -4077,20 +4077,23 @@ your account, including:</string>
                                             <constraint firstAttribute="height" constant="85" id="bp4-dS-q9t"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_text" translatesAutoresizingMaskIntoConstraints="NO" id="NJC-ld-Ju8">
-                                        <rect key="frame" x="105" y="85" width="165" height="55"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_text" translatesAutoresizingMaskIntoConstraints="NO" id="NJC-ld-Ju8">
+                                        <rect key="frame" x="105" y="85" width="165" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="165" id="rc9-wF-Ey8"/>
-                                            <constraint firstAttribute="height" constant="55" id="tvE-rO-cti"/>
+                                            <constraint firstAttribute="height" constant="45" id="tvE-rO-cti"/>
                                         </constraints>
                                     </imageView>
                                     <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvb-ur-P5D">
-                                        <rect key="frame" x="16" y="148" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="146" width="343" height="44"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Email / Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fbB-fg-xoz">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Email / Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fbB-fg-xoz">
                                                 <rect key="frame" x="69" y="0.0" width="274" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="d4N-vO-Oyt" id="fJT-ys-QRu"/>
+                                                </connections>
                                             </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_username" translatesAutoresizingMaskIntoConstraints="NO" id="v6c-Hq-ilP">
                                                 <rect key="frame" x="16" y="12" width="20" height="20"/>
@@ -4128,12 +4131,15 @@ your account, including:</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxb-c9-aVM">
-                                        <rect key="frame" x="16" y="204" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="202" width="343" height="44"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ygf-Tc-H5C">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ygf-Tc-H5C">
                                                 <rect key="frame" x="69" y="0.0" width="274" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="d4N-vO-Oyt" id="8q7-wE-KEY"/>
+                                                </connections>
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_email" translatesAutoresizingMaskIntoConstraints="NO" id="zMB-8y-JSN">
                                                 <rect key="frame" x="16" y="0.0" width="20" height="44"/>
@@ -4170,7 +4176,7 @@ your account, including:</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6E-v3-cNG">
-                                        <rect key="frame" x="16" y="260" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="258" width="343" height="44"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H05-jS-F4A">
                                                 <rect key="frame" x="52" y="8" width="1" height="28"/>
@@ -4186,7 +4192,7 @@ your account, including:</string>
                                                     <constraint firstAttribute="height" constant="20" id="q4m-X0-N0Q"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" alpha="0.5" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JS3-ye-6Uv">
+                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JS3-ye-6Uv">
                                                 <rect key="frame" x="308" y="9" width="27" height="27"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="27" id="Kug-2p-oMt"/>
@@ -4194,10 +4200,13 @@ your account, including:</string>
                                                 </constraints>
                                                 <state key="normal" image="onepassword-button"/>
                                             </button>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7Hu-Eh-e9D">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7Hu-Eh-e9D">
                                                 <rect key="frame" x="69" y="0.0" width="231" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="d4N-vO-Oyt" id="0T3-rM-ek9"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4223,7 +4232,7 @@ your account, including:</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4X0-Wk-hFp">
-                                        <rect key="frame" x="16" y="316" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="314" width="343" height="44"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_password" translatesAutoresizingMaskIntoConstraints="NO" id="QaC-QA-sYo">
                                                 <rect key="frame" x="16" y="0.0" width="20" height="44"/>
@@ -4238,10 +4247,13 @@ your account, including:</string>
                                                     <constraint firstAttribute="width" constant="1" id="pat-Fc-X1v"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Repeat Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-Zg-5ch">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Repeat Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-Zg-5ch">
                                                 <rect key="frame" x="69" y="0.0" width="274" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="d4N-vO-Oyt" id="DeQ-Oa-vd8"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4266,7 +4278,7 @@ your account, including:</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uqe-gb-0Yv">
-                                        <rect key="frame" x="16" y="376" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="374" width="343" height="44"/>
                                         <subviews>
                                             <activityIndicatorView opaque="NO" alpha="0.0" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="nGo-gR-YlA">
                                                 <rect key="frame" x="153" y="4" width="37" height="37"/>
@@ -4299,7 +4311,7 @@ your account, including:</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3T-Zl-acf">
-                                        <rect key="frame" x="16" y="500" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="498" width="343" height="44"/>
                                         <subviews>
                                             <activityIndicatorView opaque="NO" alpha="0.0" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wGH-MW-hTd">
                                                 <rect key="frame" x="153" y="4" width="37" height="37"/>
@@ -4329,7 +4341,7 @@ your account, including:</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbf-BQ-bUU">
-                                        <rect key="frame" x="16" y="444" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="442" width="343" height="44"/>
                                         <subviews>
                                             <activityIndicatorView opaque="NO" alpha="0.0" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EDv-Zz-Vbq">
                                                 <rect key="frame" x="162" y="12" width="20" height="20"/>
@@ -4363,10 +4375,10 @@ your account, including:</string>
                                     <constraint firstItem="n3T-Zl-acf" firstAttribute="top" secondItem="gbf-BQ-bUU" secondAttribute="bottom" constant="12" id="FRT-PV-NER"/>
                                     <constraint firstItem="4X0-Wk-hFp" firstAttribute="width" secondItem="gvb-ur-P5D" secondAttribute="width" id="IA5-bs-rAo"/>
                                     <constraint firstItem="n3T-Zl-acf" firstAttribute="width" secondItem="gvb-ur-P5D" secondAttribute="width" id="MFV-45-v84"/>
-                                    <constraint firstAttribute="bottom" secondItem="n3T-Zl-acf" secondAttribute="bottom" constant="24" id="NK3-ro-U5f"/>
+                                    <constraint firstAttribute="bottom" secondItem="n3T-Zl-acf" secondAttribute="bottom" constant="80" id="NK3-ro-U5f"/>
                                     <constraint firstItem="0eE-PK-9cB" firstAttribute="width" secondItem="JsR-R3-3oT" secondAttribute="width" constant="-32" id="R09-Lp-5O8"/>
                                     <constraint firstItem="gbf-BQ-bUU" firstAttribute="top" secondItem="uqe-gb-0Yv" secondAttribute="bottom" constant="24" id="YlI-Xx-Qae">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="32"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="64"/>
                                     </constraint>
                                     <constraint firstItem="uqe-gb-0Yv" firstAttribute="centerX" secondItem="JsR-R3-3oT" secondAttribute="centerX" id="Z5f-xw-l87"/>
                                     <constraint firstAttribute="width" secondItem="gvb-ur-P5D" secondAttribute="width" priority="999" constant="32" id="ZKa-Re-wxC"/>
@@ -4383,8 +4395,8 @@ your account, including:</string>
                                     <constraint firstItem="uqe-gb-0Yv" firstAttribute="width" secondItem="gvb-ur-P5D" secondAttribute="width" id="jX6-YE-0va"/>
                                     <constraint firstItem="gbf-BQ-bUU" firstAttribute="centerX" secondItem="JsR-R3-3oT" secondAttribute="centerX" id="lyY-Ul-Gls"/>
                                     <constraint firstAttribute="trailing" secondItem="uqe-gb-0Yv" secondAttribute="trailing" constant="16" id="ruH-oh-U33"/>
-                                    <constraint firstItem="gvb-ur-P5D" firstAttribute="top" secondItem="NJC-ld-Ju8" secondAttribute="bottom" constant="8" id="ukO-EJ-tcq">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="16"/>
+                                    <constraint firstItem="gvb-ur-P5D" firstAttribute="top" secondItem="NJC-ld-Ju8" secondAttribute="bottom" constant="16" id="ukO-EJ-tcq">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="32"/>
                                     </constraint>
                                     <constraint firstItem="l6E-v3-cNG" firstAttribute="top" secondItem="dxb-c9-aVM" secondAttribute="bottom" constant="12" id="vgQ-gE-KbA"/>
                                 </constraints>

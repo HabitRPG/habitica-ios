@@ -29,6 +29,7 @@ protocol  LoginViewModelInputs {
     func passwordRepeatDoneEditing()
 
     func onePassword(isAvailable: Bool)
+    func onePasswordTapped()
     
     func loginButtonPressed()
     func googleLoginButtonPressed()
@@ -48,8 +49,16 @@ protocol LoginViewModelOutputs {
     
     var emailFieldVisibility: Signal<Bool, NoError> { get }
     var passwordRepeatFieldVisibility: Signal<Bool, NoError> { get }
+    var passwordFieldReturnButtonIsDone: Signal<Bool, NoError> { get }
     
     var onePasswordButtonHidden: Signal<Bool, NoError> { get }
+    var onePasswordFindLogin: Signal<(), NoError> { get }
+    
+    var emailText: Signal<String, NoError> { get }
+    var usernameText: Signal<String, NoError> { get }
+    var passwordText: Signal<String, NoError> { get }
+    var passwordRepeatText: Signal<String, NoError> { get }
+
     
     var showError: Signal<String, NoError> { get }
     var showNextViewController: Signal<String, NoError> { get }
@@ -67,10 +76,10 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     init() {
         let authValues = Signal.combineLatest(
             self.authTypeProperty.signal.skipNil(),
-            self.emailChangedProperty.signal.skipNil(),
-            self.usernameChangedProperty.signal.skipNil(),
-            self.passwordChangedProperty.signal.skipNil(),
-            self.passwordRepeatChangedProperty.signal.skipNil()
+            Signal.merge(self.emailChangedProperty.signal, self.prefillEmailProperty.signal),
+            Signal.merge(self.usernameChangedProperty.signal, self.prefillUsernameProperty.signal),
+            Signal.merge(self.passwordChangedProperty.signal, self.prefillPasswordProperty.signal),
+            Signal.merge(self.passwordRepeatChangedProperty.signal, self.prefillPasswordRepeatProperty.signal)
         )
         
         self.authTypeButtonTitle = self.authTypeProperty.signal.skipNil().map { value in
@@ -111,6 +120,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         
         self.emailFieldVisibility = isRegistering;
         self.passwordRepeatFieldVisibility = isRegistering;
+        self.passwordFieldReturnButtonIsDone = isRegistering.map({ value -> Bool in
+            return !value
+        });
         
         self.isFormValid = authValues.map(isValid)
         
@@ -119,9 +131,16 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.passwordChangedProperty.value = ""
         self.passwordRepeatChangedProperty.value = ""
         
+        self.usernameText = self.prefillUsernameProperty.signal
+        self.emailText = self.prefillEmailProperty.signal
+        self.passwordText = self.prefillPasswordProperty.signal
+        self.passwordRepeatText = self.prefillPasswordRepeatProperty.signal
+        
         self.onePasswordButtonHidden = self.onePasswordAvailable.signal.map { value in
             return !value
         }
+        self.onePasswordFindLogin = self.onePasswordTappedProperty.signal
+        
         let (showNextViewControllerSignal, showNextViewControllerObserver) = Signal<(), NoError>.pipe()
         self.showNextViewControllerObserver = showNextViewControllerObserver
         self.showNextViewController = Signal.merge(
@@ -153,19 +172,25 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.authTypeProperty.value = authType
     }
     
-    private let emailChangedProperty = MutableProperty<String?>(nil)
+    private let emailChangedProperty = MutableProperty<String>("")
     func emailChanged(email: String?) {
-        self.emailChangedProperty.value = email
+        if email != nil {
+            self.emailChangedProperty.value = email!
+        }
     }
 
-    private let usernameChangedProperty = MutableProperty<String?>(nil)
+    private let usernameChangedProperty = MutableProperty<String>("")
     func usernameChanged(username: String?) {
-        self.usernameChangedProperty.value = username
+        if username != nil {
+            self.usernameChangedProperty.value = username!
+        }
     }
     
-    private let passwordChangedProperty = MutableProperty<String?>(nil)
+    private let passwordChangedProperty = MutableProperty<String>("")
     func passwordChanged(password: String?) {
-        self.passwordChangedProperty.value = password
+        if password != nil {
+            self.passwordChangedProperty.value = password!
+        }
     }
     
     private let passwordDoneEditingProperty = MutableProperty(())
@@ -173,9 +198,11 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.passwordDoneEditingProperty.value = ()
     }
     
-    private let passwordRepeatChangedProperty = MutableProperty<String?>(nil)
+    private let passwordRepeatChangedProperty = MutableProperty<String>("")
     func passwordRepeatChanged(passwordRepeat: String?) {
-        self.passwordRepeatChangedProperty.value = passwordRepeat
+        if passwordRepeat != nil {
+            self.passwordRepeatChangedProperty.value = passwordRepeat!
+        }
     }
     
     private let passwordRepeatDoneEditingProperty = MutableProperty(())
@@ -188,8 +215,23 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.onePasswordAvailable.value = isAvailable;
     }
     
+    private let onePasswordTappedProperty = MutableProperty(())
+    func onePasswordTapped() {
+        self.onePasswordTappedProperty.value = ()
+    }
+    
+    private let prefillUsernameProperty = MutableProperty<String>("")
+    private let prefillEmailProperty = MutableProperty<String>("")
+    private let prefillPasswordProperty = MutableProperty<String>("")
+    private let prefillPasswordRepeatProperty = MutableProperty<String>("")
+    public func onePasswordFoundLogin(username: String, password: String) {
+        self.prefillUsernameProperty.value = username
+        self.prefillPasswordProperty.value = password
+        self.prefillPasswordRepeatProperty.value = password
+    }
+    
     func loginButtonPressed() {
-        if isValid(authType: self.authTypeProperty.value!, email: self.emailChangedProperty.value!, username: self.usernameChangedProperty.value!, password: self.passwordChangedProperty.value!, passwordRepeat: self.passwordRepeatChangedProperty.value!) {
+        if isValid(authType: self.authTypeProperty.value!, email: self.emailChangedProperty.value, username: self.usernameChangedProperty.value, password: self.passwordChangedProperty.value, passwordRepeat: self.passwordRepeatChangedProperty.value) {
             self.loadingIndicatorVisibilityObserver.send(value: true)
             if self.authTypeProperty.value == .Login {
                 self.sharedManager?.loginUser(self.usernameChangedProperty.value, withPassword: self.passwordChangedProperty.value, onSuccess: {
@@ -233,7 +275,12 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     
     private let onSuccessfulLoginProperty = MutableProperty(())
     func onSuccessfulLogin() {
-        self.onSuccessfulLoginProperty.value = ()
+        self.sharedManager?.setCredentials()
+        self.sharedManager?.fetchUser({[weak self] _ in
+            self?.onSuccessfulLoginProperty.value = ()
+        }, onError: {[weak self] _ in
+            self?.onSuccessfulLoginProperty.value = ()
+        })
     }
     
     private var sharedManager: HRPGManager?
@@ -246,17 +293,23 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.viewController = viewController
     }
 
-    
     internal var authTypeButtonTitle: Signal<String, NoError>
     internal var loginButtonTitle: Signal<String, NoError>
     internal var usernameFieldTitle: Signal<String, NoError>
     internal var isFormValid: Signal<Bool, NoError>
     internal var emailFieldVisibility: Signal<Bool, NoError>
     internal var passwordRepeatFieldVisibility: Signal<Bool, NoError>
+    internal var passwordFieldReturnButtonIsDone: Signal<Bool, NoError>
     internal var onePasswordButtonHidden: Signal<Bool, NoError>
     internal var showError: Signal<String, NoError>
     internal var showNextViewController: Signal<String, NoError>
     internal var loadingIndicatorVisibility: Signal<Bool, NoError>
+    internal var onePasswordFindLogin: Signal<(), NoError>
+    
+    internal var emailText: Signal<String, NoError>
+    internal var usernameText: Signal<String, NoError>
+    internal var passwordText: Signal<String, NoError>
+    internal var passwordRepeatText: Signal<String, NoError>
     
     private var showNextViewControllerObserver: Observer<(), NoError>
     private var showErrorObserver: Observer<String, NoError>

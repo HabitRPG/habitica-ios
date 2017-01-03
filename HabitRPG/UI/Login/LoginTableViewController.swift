@@ -12,7 +12,7 @@ import ReactiveSwift
 import FBSDKLoginKit
 import CRToast
 
-class LoginTableViewController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginTableViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate {
     
     public var isRootViewController = false
     
@@ -57,6 +57,7 @@ class LoginTableViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         googleLoginButton.addTarget(self, action: #selector(googleLoginButtonPressed), for: .touchUpInside)
+        onePasswordButton.addTarget(self, action: #selector(onePasswordButtonPressed), for: .touchUpInside)
 
         bindViewModel()
         self.viewModel.setAuthType(authType: LoginViewAuthType.Login)
@@ -75,30 +76,44 @@ class LoginTableViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     func bindViewModel() {
         self.authTypeButton.reactive.title <~ self.viewModel.outputs.authTypeButtonTitle
-        self.viewModel.outputs.usernameFieldTitle.observeValues { value in
-            self.usernameTextField.placeholder = value
+        self.viewModel.outputs.usernameFieldTitle.observeValues {[weak self] value in
+            self?.usernameTextField.placeholder = value
         }
         self.loginButton.reactive.title <~ self.viewModel.outputs.loginButtonTitle
         self.loginButton.reactive.isEnabled <~ self.viewModel.outputs.isFormValid
         
-        self.viewModel.outputs.emailFieldVisibility.observeValues { (value) in
-            if (value) {
-                self.showField(fieldHeightConstraint: self.emailFieldHeight, spacingHeightConstraint:self.emailFieldTopSpacing)
-                self.emailTextField.isEnabled = true
+        self.usernameTextField.reactive.text <~ self.viewModel.outputs.usernameText
+        self.emailTextField.reactive.text <~ self.viewModel.outputs.emailText
+        self.passwordTextField.reactive.text <~ self.viewModel.outputs.passwordText
+        self.passwordRepeatTextField.reactive.text <~ self.viewModel.outputs.passwordRepeatText
+        
+        self.viewModel.outputs.emailFieldVisibility.observeValues {[weak self] value in
+            if value {
+                self?.showField(fieldHeightConstraint: (self?.emailFieldHeight)!, spacingHeightConstraint:(self?.emailFieldTopSpacing)!)
+                self?.emailTextField.isEnabled = true
             } else {
-                self.hideField(fieldHeightConstraint: self.emailFieldHeight, spacingHeightConstraint:self.emailFieldTopSpacing)
-                self.emailTextField.isEnabled = false
+                self?.hideField(fieldHeightConstraint: (self?.emailFieldHeight)!, spacingHeightConstraint:(self?.emailFieldTopSpacing)!)
+                self?.emailTextField.isEnabled = false
             }
         }
-        self.viewModel.outputs.passwordRepeatFieldVisibility.observeValues { (value) in
-            if (value) {
-                self.showField(fieldHeightConstraint: self.passwordRepeatFieldHeight, spacingHeightConstraint:self.passwordRepeatFieldTopSpacing)
-                self.passwordRepeatTextField.isEnabled = true
+        self.viewModel.outputs.passwordRepeatFieldVisibility.observeValues {[weak self] value in
+            if value {
+                self?.showField(fieldHeightConstraint: (self?.passwordRepeatFieldHeight)!, spacingHeightConstraint:(self?.passwordRepeatFieldTopSpacing)!)
+                self?.passwordRepeatTextField.isEnabled = true
             } else {
-                self.hideField(fieldHeightConstraint: self.passwordRepeatFieldHeight, spacingHeightConstraint:self.passwordRepeatFieldTopSpacing)
-                self.passwordRepeatTextField.isEnabled = false
+                self?.hideField(fieldHeightConstraint: (self?.passwordRepeatFieldHeight)!, spacingHeightConstraint:(self?.passwordRepeatFieldTopSpacing)!)
+                self?.passwordRepeatTextField.isEnabled = false
             }
         }
+        
+        self.viewModel.outputs.passwordFieldReturnButtonIsDone.observeValues{[weak self] value in
+            if value {
+                self?.passwordTextField.returnKeyType = .done
+            } else {
+                self?.passwordTextField.returnKeyType = .next
+            }
+        }
+        
         self.onePasswordButton.reactive.isHidden <~ self.viewModel.outputs.onePasswordButtonHidden
     
         self.viewModel.outputs.showError
@@ -116,21 +131,34 @@ class LoginTableViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
         }
         self.viewModel.outputs.loadingIndicatorVisibility
-        .observeValues { isVisible in
+        .observeValues {[weak self] isVisible in
             if isVisible {
-                self.loginActivityIndicator.startAnimating()
+                self?.loginActivityIndicator.startAnimating()
                 UIView.animate(withDuration: 0.5, animations: { 
-                    self.loginButton.alpha = 0
-                    self.loginActivityIndicator.alpha = 1
+                    self?.loginButton.alpha = 0
+                    self?.loginActivityIndicator.alpha = 1
                 })
             } else {
                 UIView.animate(withDuration: 0.5, animations: { 
-                    self.loginButton.alpha = 1
-                    self.loginActivityIndicator.alpha = 0
+                    self?.loginButton.alpha = 1
+                    self?.loginActivityIndicator.alpha = 0
                 }, completion: { (_) in
-                    self.loginActivityIndicator.stopAnimating()
+                    self?.loginActivityIndicator.stopAnimating()
                 })
             }
+        }
+        
+        self.viewModel.outputs.onePasswordFindLogin.observeValues {[weak self] _ in
+            OnePasswordExtension.shared().findLogin(forURLString: "https://habitica.com", for: self!, sender: self?.onePasswordButton, completion: { (data, error) in
+                guard let loginData = data else {
+                    return
+                }
+                let username = loginData[AppExtensionUsernameKey] ?? ""
+                let password = loginData[AppExtensionPasswordKey] ?? ""
+                
+                self?.viewModel.onePasswordFoundLogin(username: username as! String, password: password as! String)
+            })
+
         }
     }
 
@@ -177,20 +205,24 @@ class LoginTableViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func loginButtonPressed() {
-        self.viewModel.loginButtonPressed()
+        self.viewModel.inputs.loginButtonPressed()
     }
     
     func googleLoginButtonPressed() {
-        self.viewModel.googleLoginButtonPressed()
+        self.viewModel.inputs.googleLoginButtonPressed()
+    }
+    
+    func onePasswordButtonPressed() {
+        self.viewModel.inputs.onePasswordTapped()
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if (error != nil) {
             self.present(UIAlertController.genericError(message: "There was an error with the authentication. Try again later", title: "Authentication Error"), animated: true, completion: nil)
         } else if (!result.isCancelled) {
-            self.sharedManager?.loginUserSocial(FBSDKAccessToken.current().userID, withNetwork: "facebook", withAccessToken: FBSDKAccessToken.current().tokenString, onSuccess: { 
-                
-            }, onError: { 
+            self.sharedManager?.loginUserSocial(FBSDKAccessToken.current().userID, withNetwork: "facebook", withAccessToken: FBSDKAccessToken.current().tokenString, onSuccess: {[weak self] _ in
+                self?.viewModel.inputs.onSuccessfulLogin()
+            }, onError: {
                 
             })
         }
@@ -198,5 +230,21 @@ class LoginTableViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.returnKeyType == .next {
+            guard let next = textField.superview?.superview?.viewWithTag(textField.tag+1) as? UITextField else {
+                return false
+            }
+            if (next.isEnabled) {
+                next.becomeFirstResponder()
+            } else {
+                let _ = self.textFieldShouldReturn(next)
+            }
+        } else if textField.returnKeyType == .done {
+            textField.resignFirstResponder()
+        }
+        return true;
     }
 }
