@@ -5,7 +5,13 @@ plugin 'cocoapods-keys', {
   :keys => [
     "GoogleClient",
     "GoogleRedirectUrl",
-    "AmplitudeApiKey"
+    "AmplitudeApiKey",
+    "SeedsDevApiKey",
+    "SeedsReleaseApiKey",
+    "SeedsDevGemsInterstitial",
+    "SeedsReleaseGemsInterstitial",
+    "SeedsReleaseShareInterstitial",
+    "SeedsDevShareInterstitial"
   ]
 }
 
