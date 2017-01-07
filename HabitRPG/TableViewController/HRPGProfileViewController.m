@@ -333,11 +333,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     label.text = title;
     UIImageView *indicatorView = [cell viewWithTag:2];
     indicatorView.hidden = !showIndicator;
-    if (showIndicator) {
-        iconFactory.colors = @[ [UIColor purple400] ];
-        iconFactory.size = 13.0f;
-        indicatorView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconCircle];
-    }
+    indicatorView.layer.cornerRadius = indicatorView.frame.size.height / 2;
     return cell;
 }
 

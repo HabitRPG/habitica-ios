@@ -16,6 +16,9 @@
 
 @interface HRPGTabBarController ()
 
+@property(strong, nonatomic) NSFetchedResultsController *taskFetchedResultsController;
+@property(strong, nonatomic) NSFetchedResultsController *userFetchedResultsController;
+
 @end
 
 @implementation HRPGTabBarController
@@ -26,12 +29,7 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO
                                             withAnimation:UIStatusBarAnimationFade];
 
-    NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-
-    UITabBarItem *item0 = self.tabBar.items[0];
-    item0.image = [factory createImageForIcon:NIKFontAwesomeIconArrowsV];
-
-    UIImage *calendarImage = [factory createImageForIcon:NIKFontAwesomeIconCalendarO];
+    UIImage *calendarImage = [UIImage imageNamed:@"tabbar_dailies"];
 
     UIGraphicsBeginImageContextWithOptions(
         CGSizeMake(calendarImage.size.width, calendarImage.size.height), NO, 0.0f);
@@ -43,29 +41,29 @@
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     style.alignment = NSTextAlignmentLeft;
     NSDictionary *textAttributes = @{
-                                     NSFontAttributeName : [UIFont systemFontOfSize:12],
+                                     NSFontAttributeName : [UIFont systemFontOfSize:11],
                                      NSParagraphStyleAttributeName : style};
     CGSize size = [dateString sizeWithAttributes:textAttributes];
     int offset = (calendarImage.size.width - size.width) / 2;
-    [dateString drawInRect:CGRectMake(offset + 0.5f, 8, 20, 20) withAttributes:textAttributes];
+    [dateString drawInRect:CGRectMake(offset + 1, 12, 20, 20) withAttributes:textAttributes];
     UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
 
-    UITabBarItem *item1 = self.tabBar.items[1];
-    item1.image = resultImage;
-
-    UITabBarItem *item2 = self.tabBar.items[2];
-    item2.image = [factory createImageForIcon:NIKFontAwesomeIconCheckSquareO];
-
-    UITabBarItem *item3 = self.tabBar.items[3];
-    item3.image = [factory createImageForIcon:NIKFontAwesomeIconTrophy];
-
-    UITabBarItem *item4 = self.tabBar.items[4];
-    item4.image = [factory createImageForIcon:NIKFontAwesomeIconBars];
-
+    UITabBarItem *dailyItem = self.tabBar.items[1];
+    dailyItem.image = resultImage;
+    
+    if ([dailyItem respondsToSelector:@selector(setBadgeColor:)]) {
+        for (UITabBarItem *item in self.tabBar.items) {
+            item.badgeColor = [UIColor red50];
+        }
+    }
     [self.tabBar setTintColor:[UIColor purple400]];
 
-    [self updateDailyBadge];
+    
+    [self updateTaskBadgeCount];
+    [self updateUserBadges];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeUserID) name:@"userChanged" object:nil];
 
 #if DEBUG
     UISwipeGestureRecognizer *swipe =
@@ -77,9 +75,9 @@
 #endif
 }
 
-- (NSFetchedResultsController *)fetchedResultsController {
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
+- (NSFetchedResultsController *)taskFetchedResultsController {
+    if (_taskFetchedResultsController != nil) {
+        return _taskFetchedResultsController;
     }
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -91,10 +89,10 @@
     NSPredicate *predicate;
     HRPGTabBarController *tabBarController = (HRPGTabBarController *)self.tabBarController;
     if (tabBarController.selectedTags == nil || [tabBarController.selectedTags count] == 0) {
-        predicate = [NSPredicate predicateWithFormat:@"type=='daily' && completed==NO"];
+        predicate = [NSPredicate predicateWithFormat:@"type!='habit' && completed==NO"];
     } else {
         predicate = [NSPredicate
-            predicateWithFormat:@"type=='daily' && completed==NO && ANY tags IN[cd] %@",
+            predicateWithFormat:@"type!='habit' && completed==NO && ANY tags IN[cd] %@",
                                 self.selectedTags];
     }
     [fetchRequest setPredicate:predicate];
@@ -104,7 +102,6 @@
     NSSortDescriptor *dateDescriptor =
         [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:NO];
     NSArray *sortDescriptors;
-    NSString *sectionKey;
     sortDescriptors = @[ orderDescriptor, dateDescriptor ];
 
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -112,18 +109,53 @@
     NSFetchedResultsController *aFetchedResultsController =
         [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                             managedObjectContext:self.managedObjectContext
-                                              sectionNameKeyPath:sectionKey
+                                              sectionNameKeyPath:nil
                                                        cacheName:nil];
     aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
+    self.taskFetchedResultsController = aFetchedResultsController;
 
     NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
+    if (![self.taskFetchedResultsController performFetch:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
 
-    return _fetchedResultsController;
+    return _taskFetchedResultsController;
+}
+
+- (NSFetchedResultsController *)userFetchedResultsController {
+    if (_userFetchedResultsController != nil) {
+        return _userFetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User"
+                                              inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", [self.sharedManager getUser].id];
+    [fetchRequest setPredicate:predicate];
+    
+    NSSortDescriptor *sortDescriptor =
+    [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
+    [fetchRequest setSortDescriptors:@[ sortDescriptor ]];
+    
+    NSFetchedResultsController *aFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:self.managedObjectContext
+                                          sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    aFetchedResultsController.delegate = self;
+    self.userFetchedResultsController = aFetchedResultsController;
+    
+    NSError *error = nil;
+    if (![self.userFetchedResultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return _userFetchedResultsController;
 }
 
 - (HRPGManager *)sharedManager {
@@ -158,28 +190,76 @@
 }
 #endif
 
-- (void)updateDailyBadge {
+- (void)updateTaskBadgeCount {
     UITabBarItem *dailyItem = self.tabBar.items[1];
-    NSInteger badgeCount = 0;
+    UITabBarItem *todoItem = self.tabBar.items[2];
+    NSInteger dailyBadgeCount = 0;
+    NSInteger todoBadgeCount = 0;
     NSInteger appBadgeCount = 0;
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *today = [NSDate date];
     
-    for (Task *task in self.fetchedResultsController.fetchedObjects) {
-        if ([task dueTodayWithOffset:[[self.sharedManager getUser]
-                                             .preferences.dayStart integerValue]]) {
-            badgeCount++;
+    for (Task *task in self.taskFetchedResultsController.fetchedObjects) {
+        if ([task.type isEqualToString:@"daily"]) {
+            if ([task dueTodayWithOffset:[[self.sharedManager getUser]
+                                          .preferences.dayStart integerValue]]) {
+                dailyBadgeCount++;
+            }
+        } else {
+            if (task.duedate) {
+                NSDateComponents *differenceValue = [calendar components:NSCalendarUnitDay
+                                                                fromDate:today
+                                                                  toDate:task.duedate
+                                                                 options:0];
+                if ([differenceValue day] <= 0) {
+                    todoBadgeCount++;
+                }
+            }
         }
     }
-    if (badgeCount > 0) {
-        dailyItem.badgeValue = [NSString stringWithFormat:@"%ld", (long)badgeCount];
+    if (dailyBadgeCount > 0) {
+        dailyItem.badgeValue = [NSString stringWithFormat:@"%ld", (long)dailyBadgeCount];
     } else {
         dailyItem.badgeValue = nil;
     }
+    
+    if (todoBadgeCount > 0) {
+        todoItem.badgeValue = [NSString stringWithFormat:@"%ld", (long)todoBadgeCount];
+    } else {
+        todoItem.badgeValue = nil;
+    }
 
     if (self.sharedManager.useAppBadge) {
-      appBadgeCount = badgeCount;
+      appBadgeCount = dailyBadgeCount + todoBadgeCount;
     }
 
     [UIApplication sharedApplication].applicationIconBadgeNumber = appBadgeCount;
+}
+
+- (void)updateUserBadges {
+    User *user = [[self.userFetchedResultsController fetchedObjects] lastObject];
+    NSInteger badgeCount = 0;
+    UITabBarItem *menuItem = self.tabBar.items[4];
+
+    if (user) {
+        if ([user.flags.habitNewStuff boolValue]) {
+            badgeCount++;
+        }
+        if ([user.party.unreadMessages boolValue]) {
+            badgeCount++;
+        }
+    }
+    
+    if (badgeCount > 0) {
+        menuItem.badgeValue = [NSString stringWithFormat:@"%ld", (long)badgeCount];
+    } else {
+        menuItem.badgeValue = nil;
+    }
+}
+
+- (void)changeUserID {
+    _userFetchedResultsController = nil;
+    [self updateUserBadges];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
@@ -187,7 +267,11 @@
         atIndexPath:(NSIndexPath *)indexPath
       forChangeType:(NSFetchedResultsChangeType)type
        newIndexPath:(NSIndexPath *)newIndexPath {
-    [self updateDailyBadge];
+    if (controller == self.taskFetchedResultsController) {
+        [self updateTaskBadgeCount];
+    } else {
+        [self updateUserBadges];
+    }
 }
 
 - (BOOL)prefersStatusBarHidden {

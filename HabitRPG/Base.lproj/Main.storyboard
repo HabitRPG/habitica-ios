@@ -1230,25 +1230,25 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mY-LD-ILX">
-                                            <rect key="frame" x="20" y="11" width="301" height="21"/>
+                                            <rect key="frame" x="20" y="11" width="298" height="21"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fNf-oV-N8K">
-                                            <rect key="frame" x="329" y="15" width="13" height="13"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <view clipsSubviews="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y81-RX-OwJ">
+                                            <rect key="frame" x="326" y="13" width="16" height="16"/>
+                                            <color key="backgroundColor" red="0.94901961088180542" green="0.18823529779911041" blue="0.20784313976764679" alpha="1" colorSpace="deviceRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="13" id="DEC-3Y-Ge6"/>
-                                                <constraint firstAttribute="width" secondItem="fNf-oV-N8K" secondAttribute="height" multiplier="1:1" id="dbq-Vj-BbY"/>
+                                                <constraint firstAttribute="height" constant="16" id="1dc-A0-aHW"/>
+                                                <constraint firstAttribute="width" secondItem="y81-RX-OwJ" secondAttribute="height" multiplier="1:1" id="IH2-lI-nWU"/>
                                             </constraints>
-                                        </imageView>
+                                        </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="y81-RX-OwJ" secondAttribute="trailing" id="1NH-tG-2bW"/>
+                                        <constraint firstItem="y81-RX-OwJ" firstAttribute="centerY" secondItem="Wng-vv-ZBj" secondAttribute="centerY" id="4nV-Mv-AF3"/>
                                         <constraint firstItem="7mY-LD-ILX" firstAttribute="leading" secondItem="Wng-vv-ZBj" secondAttribute="leading" constant="20" id="7nR-Rx-gFj"/>
-                                        <constraint firstItem="fNf-oV-N8K" firstAttribute="leading" secondItem="7mY-LD-ILX" secondAttribute="trailing" constant="8" id="bjg-fn-di0"/>
-                                        <constraint firstAttribute="trailing" secondItem="fNf-oV-N8K" secondAttribute="trailing" id="fjg-lD-Iro"/>
-                                        <constraint firstAttribute="centerY" secondItem="fNf-oV-N8K" secondAttribute="centerY" id="grR-3z-52j"/>
+                                        <constraint firstItem="y81-RX-OwJ" firstAttribute="leading" secondItem="7mY-LD-ILX" secondAttribute="trailing" constant="8" id="BCy-SB-SV0"/>
                                         <constraint firstItem="7mY-LD-ILX" firstAttribute="top" secondItem="Wng-vv-ZBj" secondAttribute="top" constant="11" id="tnp-Rw-8tc"/>
                                         <constraint firstAttribute="bottom" secondItem="7mY-LD-ILX" secondAttribute="bottom" constant="11" id="yh4-O8-3li"/>
                                     </constraints>
@@ -1306,6 +1306,7 @@
                                             </constraints>
                                         </imageView>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.97647058963775635" green="0.97647058963775635" blue="0.97647058963775635" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="2yp-6U-Xpz" secondAttribute="bottom" constant="3" id="1kE-M0-20z"/>
                                         <constraint firstItem="2yp-6U-Xpz" firstAttribute="trailing" secondItem="PWW-Go-gmX" secondAttribute="trailingMargin" id="6nM-M6-IJQ"/>
@@ -4009,7 +4010,7 @@ your account, including:</string>
         <scene sceneID="Vp9-dg-sDn">
             <objects>
                 <navigationController restorationIdentifier="ProfileNavigationController" definesPresentationContext="YES" id="JSb-MY-Gwo" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Menu" id="hyj-Mf-lvH"/>
+                    <tabBarItem key="tabBarItem" title="Menu" image="tabbar_menu" id="hyj-Mf-lvH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Gph-cu-5tJ">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -4026,7 +4027,7 @@ your account, including:</string>
         <scene sceneID="xdc-Uc-O5P">
             <objects>
                 <navigationController restorationIdentifier="TodoNavigationController" definesPresentationContext="YES" id="F9m-od-YIG" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="To-Dos" id="Np7-ws-fF6"/>
+                    <tabBarItem key="tabBarItem" title="To-Dos" image="tabbar_todos" id="Np7-ws-fF6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mXU-6R-4bg">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -4528,7 +4529,7 @@ your account, including:</string>
         <scene sceneID="0w6-RO-vbL">
             <objects>
                 <navigationController restorationIdentifier="HabitNavigationController" definesPresentationContext="YES" id="ZPa-UZ-Rgq" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Habits" id="3G8-SH-Shd"/>
+                    <tabBarItem key="tabBarItem" title="Habits" image="tabbar_habits" id="3G8-SH-Shd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qQq-gV-VmG">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -4565,7 +4566,7 @@ your account, including:</string>
         <scene sceneID="ADP-AR-Pd2">
             <objects>
                 <navigationController restorationIdentifier="RewardNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="tYf-ZM-zIQ" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Rewards" id="zFI-xr-RjT"/>
+                    <tabBarItem key="tabBarItem" title="Rewards" image="tabbar_rewards" id="zFI-xr-RjT"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="qZ5-Dx-RNg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="n1T-X7-pMj">
@@ -4663,6 +4664,10 @@ your account, including:</string>
         <image name="logo_text" width="165" height="55"/>
         <image name="onepassword-button" width="27" height="27"/>
         <image name="reminder" width="17" height="18"/>
+        <image name="tabbar_habits" width="36" height="28"/>
+        <image name="tabbar_menu" width="36" height="28"/>
+        <image name="tabbar_rewards" width="36" height="28"/>
+        <image name="tabbar_todos" width="36" height="28"/>
         <image name="tag" width="17" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
