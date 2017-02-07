@@ -11,9 +11,8 @@
 
 @interface HRPGHabitButtons : UIView
 
-- (void)configureForTask:(Task *)task;
+- (void)configureForTask:(Task *)task isNegative:(BOOL)isNegative;
 
-- (void)onUpAction:(void (^)())actionBlock;
-- (void)onDownAction:(void (^)())actionBlock;
+- (void)action:(void (^)())actionBlock;
 
 @end

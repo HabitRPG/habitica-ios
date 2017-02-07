@@ -59,7 +59,7 @@
         withAnimation:(BOOL)animate {
     Task *task = [self taskAtIndexPath:indexPath];
 
-    cell.dateFormatter = self.dateFormatter;
+    cell.taskDetailLine.dateFormatter = self.dateFormatter;
     __weak HRPGToDoTableViewController *weakSelf = self;
     if (self.openedIndexPath && self.openedIndexPath.item < indexPath.item &&
         indexPath.item <= (self.openedIndexPath.item + self.indexOffset)) {

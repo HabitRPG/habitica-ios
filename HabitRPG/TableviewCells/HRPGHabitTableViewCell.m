@@ -12,8 +12,8 @@
 
 - (void)configureForTask:(Task *)task {
     [super configureForTask:task];
-    [self.buttons configureForTask:task];
-    self.rightBorderView.backgroundColor = [task lightTaskColor];
+    [self.plusButton configureForTask:task isNegative:NO];
+    [self.minusButton configureForTask:task isNegative:YES];
 
     // Until we save the TaskHistory just set the last action to be hidden
     self.notesLastActionConstraint.constant = 0;

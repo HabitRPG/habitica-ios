@@ -125,6 +125,8 @@
 		D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */; };
 		D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */; };
 		D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */; };
+		D984D5841E48E57C006E84F8 /* TaskDetailLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D984D5831E48E57C006E84F8 /* TaskDetailLineView.xib */; };
+		D984D5861E48E5CF006E84F8 /* TaskDetailLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D984D5851E48E5CF006E84F8 /* TaskDetailLineView.swift */; };
 		D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */ = {isa = PBXBuildFile; fileRef = D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */; };
 		D98768F51AFFB85100336978 /* blade-equipResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = D98768F41AFFB85100336978 /* blade-equipResponse.json */; };
 		D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98830D41BADD4220018594D /* HRPGLoadingViewController.m */; };
@@ -525,6 +527,8 @@
 		D97D39EA1CB83ED700514F44 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D980373719956E46004C8871 /* HRPGEquipmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGEquipmentDetailViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGEquipmentDetailViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D984D5831E48E57C006E84F8 /* TaskDetailLineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDetailLineView.xib; sourceTree = "<group>"; };
+		D984D5851E48E5CF006E84F8 /* TaskDetailLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailLineView.swift; sourceTree = "<group>"; };
 		D986FBBD1DAFA27200C297DB /* Habitica.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Habitica.entitlements; sourceTree = SOURCE_ROOT; };
 		D987393A19687F3E002A2426 /* NSNumber+abbreviation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+abbreviation.h"; path = "HabitRPG/Utilities/NSNumber+abbreviation.h"; sourceTree = SOURCE_ROOT; };
 		D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+abbreviation.m"; path = "HabitRPG/Utilities/NSNumber+abbreviation.m"; sourceTree = SOURCE_ROOT; };
@@ -1271,6 +1275,8 @@
 				D9BBF32A1DBD127A00C4114C /* HRPGShopAdFooter.h */,
 				D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */,
 				D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */,
+				D984D5831E48E57C006E84F8 /* TaskDetailLineView.xib */,
+				D984D5851E48E5CF006E84F8 /* TaskDetailLineView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1830,6 +1836,7 @@
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
 				D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */,
 				D9E9E0C81CCE64A3006D94A2 /* HRPGImageOverlayView.xib in Resources */,
+				D984D5841E48E57C006E84F8 /* TaskDetailLineView.xib in Resources */,
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
 				D905768A1BD83241009BB7BC /* Localizable.strings in Resources */,
 				D9C31DB31C6501090096F4EC /* Main.storyboard in Resources */,
@@ -2168,6 +2175,7 @@
 				D95CBD481BBC0EDA002F4498 /* UIView+Pulse.m in Sources */,
 				D96C85481DCCD8BC003E3616 /* UIWindow+VisibleController.m in Sources */,
 				D98F5DC11C6A1DA60035CBEC /* HRPGGroupTableViewController.m in Sources */,
+				D984D5861E48E5CF006E84F8 /* TaskDetailLineView.swift in Sources */,
 				D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */,
 				D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */,
 				D9660D781AB248030084CE37 /* HRPGUserTopHeader.m in Sources */,

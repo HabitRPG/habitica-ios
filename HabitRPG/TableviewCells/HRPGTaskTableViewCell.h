@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Task.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGTaskTableViewCell : UITableViewCell
 
@@ -17,11 +18,6 @@
 @property(weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 @property(weak, nonatomic) IBOutlet NSLayoutConstraint *titleNoteConstraint;
 @property(weak, nonatomic) IBOutlet UIView *textWrapperView;
-@property(weak, nonatomic) IBOutlet UIImageView *tagImageView;
-@property(weak, nonatomic) IBOutlet UIImageView *reminderImageView;
-@property(weak, nonatomic) IBOutlet NSLayoutConstraint *tagImageViewHeightConstraint;
-@property(weak, nonatomic) IBOutlet NSLayoutConstraint *reminderImageViewHeightConstraint;
-@property(weak, nonatomic) IBOutlet NSLayoutConstraint *tagReminderConstraint;
-@property(weak, nonatomic) IBOutlet UIView *iconWrapperView;
+@property (weak, nonatomic) IBOutlet TaskDetailLineView *taskDetailLine;
 
 @end

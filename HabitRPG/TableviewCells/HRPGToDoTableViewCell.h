@@ -12,6 +12,5 @@
 @property(weak, nonatomic) IBOutlet UILabel *dueLabel;
 @property(weak, nonatomic) IBOutlet NSLayoutConstraint *notesDueSeparator;
 
-@property NSDateFormatter *dateFormatter;
 
 @end

@@ -20,7 +20,8 @@ class IntroViewController: UIViewController, EAIntroDelegate {
         page1.title = "Welcome to Habitica".localized
         page1.titlePositionY = titleposition;
         page1.titleFont = UIFont.boldSystemFont(ofSize: 20.0)
-        page1.desc = "Join over 900,000 people having fun while getting things done. Create an avatar and track your real-life tasks.".localized
+        let userCount = "2,000,000"
+        page1.desc = "Join over \(userCount) people having fun while getting things done. Create an avatar and track your real-life tasks.".localized
         page1.descPositionY = titleposition - 24
         page1.descFont = UIFont.systemFont(ofSize: 14.0);
         page1.titleIconView = UIImageView(image: #imageLiteral(resourceName: "IntroPage1"))

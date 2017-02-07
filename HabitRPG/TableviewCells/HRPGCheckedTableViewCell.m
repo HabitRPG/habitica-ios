@@ -53,9 +53,6 @@
     self.titleLabel.backgroundColor = self.backgroundColor;
     self.subtitleLabel.backgroundColor = self.backgroundColor;
     self.textWrapperView.backgroundColor = self.backgroundColor;
-    self.reminderImageView.backgroundColor = self.backgroundColor;
-    self.tagImageView.backgroundColor = self.backgroundColor;
-    self.iconWrapperView.backgroundColor = self.backgroundColor;
 
     [self.checklistIndicator layoutIfNeeded];
 }
@@ -75,10 +72,6 @@
     self.checklistIndicator.hidden = YES;
     self.subtitleLabel.text = nil;
     self.titleNoteConstraint.constant = 0;
-
-    self.tagImageView.hidden = YES;
-    self.reminderImageView.hidden = YES;
-    self.tagReminderConstraint.constant = 0;
 }
 
 @end
