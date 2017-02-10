@@ -13,6 +13,7 @@
 #import "NSDate+DaysSince.h"
 #import "NSString+Emoji.h"
 #import "Reminder.h"
+#import "TaskHistory+CoreDataClass.h"
 #import "Tag.h"
 #import "UIColor+Habitica.h"
 
@@ -47,6 +48,7 @@
 @dynamic everyX;
 @dynamic frequency;
 @dynamic startDate;
+@dynamic history;
 @synthesize currentlyChecking;
 
 - (BOOL)dueToday {
@@ -120,6 +122,19 @@
     NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.reminders];
     [tempSet removeObject:value];
     self.reminders = tempSet;
+}
+
+- (void)addHistoryObject:(TaskHistory *)value {
+    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.history];
+    value.task = self;
+    [tempSet addObject:value];
+    self.history = tempSet;
+}
+
+- (void)removeHistoryObject:(TaskHistory *)value {
+    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.history];
+    [tempSet removeObject:value];
+    self.history = tempSet;
 }
 
 - (NSArray *)getTagArray {

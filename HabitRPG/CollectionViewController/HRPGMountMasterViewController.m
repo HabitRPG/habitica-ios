@@ -87,7 +87,7 @@ NSUserDefaults *defaults;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-    return [self.sortedPets[section] count];
+    return [(NSArray *)self.sortedPets[section] count];
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView

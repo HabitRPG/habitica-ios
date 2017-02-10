@@ -323,6 +323,19 @@
         <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
     </entity>
+    <entity name="SubscriptionPlan" representedClassName="SubscriptionPlan" syncable="YES">
+        <attribute name="consecutiveTrinkets" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="count" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="customerId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateTerminated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="gemCapExtra" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="gemsBought" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="owner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="paymentMethod" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="planId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="subscriptionPlan" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES">
         <attribute name="challenge" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -359,9 +372,15 @@
         <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="wednesday" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="checklist" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ChecklistItem" inverseName="task" inverseEntity="ChecklistItem" syncable="YES"/>
-        <relationship name="reminders" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Reminder" inverseName="task" inverseEntity="Reminder" syncable="YES"/>
+        <relationship name="history" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TaskHistory" inverseName="task" inverseEntity="TaskHistory" syncable="YES"/>
+        <relationship name="reminders" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Reminder" inverseName="task" inverseEntity="Reminder" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="tasks" inverseEntity="Tag" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tasks" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="TaskHistory" representedClassName="TaskHistory" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="task" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="history" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="TutorialSteps" representedClassName="TutorialSteps" syncable="YES">
         <attribute name="identifier" attributeType="String" indexed="YES" syncable="YES"/>
@@ -394,7 +413,6 @@
         <attribute name="googleID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hclass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="health" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="hourglasses" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="inboxNewMessages" optional="YES" attributeType="Integer 16" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="inboxOptOut" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
@@ -448,6 +466,7 @@
         <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="questParticipants" inverseEntity="Group" syncable="YES"/>
         <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Reward" inverseName="user" inverseEntity="Reward" syncable="YES"/>
         <relationship name="specialItems" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SpecialItems" inverseName="user" inverseEntity="SpecialItems" syncable="YES"/>
+        <relationship name="subscriptionPlan" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SubscriptionPlan" inverseName="user" inverseEntity="SubscriptionPlan" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tag" inverseName="user" inverseEntity="Tag" syncable="YES"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="user" inverseEntity="Task" syncable="YES"/>
         <relationship name="unreadMessages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="UnreadMessages" inverseName="user" inverseEntity="UnreadMessages" syncable="YES"/>
@@ -486,8 +505,10 @@
         <element name="ShopItem" positionX="27" positionY="171" width="128" height="225"/>
         <element name="SpecialItems" positionX="18" positionY="162" width="128" height="210"/>
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="SubscriptionPlan" positionX="9" positionY="153" width="128" height="210"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="Task" positionX="0" positionY="0" width="128" height="480"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="495"/>
+        <element name="TaskHistory" positionX="18" positionY="162" width="128" height="90"/>
         <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
         <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
         <element name="User" positionX="0" positionY="0" width="128" height="1155"/>

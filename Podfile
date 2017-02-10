@@ -44,7 +44,9 @@ pod 'SeedsSDK', '0.4.2'
 pod 'FacebookCore'
 pod 'FacebookLogin'
 
-pod 'ReactiveCocoa', '= 5.0.0-rc.1'
+pod 'ReactiveCocoa', '= 5.0.0'
+
+pod 'SwiftyStoreKit'
 
 target 'HabiticaTests' do
     inherit! :search_paths

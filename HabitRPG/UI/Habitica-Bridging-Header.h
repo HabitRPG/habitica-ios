@@ -7,3 +7,5 @@
 #import "UIColor+Habitica.h"
 #import "OnePasswordExtension.h"
 #import "HRPGAppDelegate.h"
+#import "HRPGGemHeaderNavigationController.h"
+#import "SubscriptionPlan+CoreDataClass.h"

@@ -14,9 +14,11 @@
 @property(nonatomic, strong) UIView *backgroundView;
 @property(nonatomic, strong) UIView *upperBackgroundView;
 @property(nonatomic, readonly) CGFloat topHeaderHeight;
+@property(nonatomic, strong) UISegmentedControl *segmentedControl;
 
 - (CGFloat)statusBarHeight;
 - (CGFloat)bgViewOffset;
+- (CGFloat)bgHiddenPosition;
 
 @property UIScrollView *scrollableView;
 @property UIPanGestureRecognizer *gestureRecognizer;
@@ -46,7 +48,16 @@
     self.upperBackgroundView = [[UIView alloc] init];
     [self.upperBackgroundView setBackgroundColor:[UIColor whiteColor]];
     
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"Gems", nil), NSLocalizedString(@"Subscription", nil)]];
+    [self.segmentedControl sizeToFit];
+    self.segmentedControl.tintColor = [UIColor purple300];
+    self.segmentedControl.selectedSegmentIndex = 0;
+    [self.segmentedControl addTarget:self
+                         action:@selector(viewControllerChanged:)
+               forControlEvents:UIControlEventValueChanged];
+    
     [self.backgroundView addSubview:self.headerView];
+    [self.backgroundView addSubview:self.segmentedControl];
     [self.view insertSubview:self.upperBackgroundView belowSubview:self.navigationBar];
     [self.view insertSubview:self.backgroundView belowSubview:self.upperBackgroundView];
     
@@ -55,11 +66,14 @@
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
+    CGRect segmentedFrame = self.segmentedControl.frame;
     CGRect parentFrame = self.view.frame;
     self.backgroundView.frame =
-    CGRectMake(0, self.headerYPosition, parentFrame.size.width, self.topHeaderHeight);
+    CGRectMake(0, self.headerYPosition, parentFrame.size.width, self.topHeaderHeight+self.segmentControlHeight);
     self.upperBackgroundView.frame = CGRectMake(0, 0, parentFrame.size.width, [self bgViewOffset]);
     self.headerView.frame = CGRectMake(0, 0, parentFrame.size.width, self.topHeaderHeight);
+    CGFloat segmentOffset = (parentFrame.size.width-segmentedFrame.size.width)/2;
+    self.segmentedControl.frame = CGRectMake(segmentOffset, self.topHeaderHeight, segmentedFrame.size.width, segmentedFrame.size.height);
 }
 
 - (void)showHeader {
@@ -72,7 +86,6 @@
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^() {
                          self.backgroundView.frame = frame;
-                         [self setNavigationBarColors:0];
                      }
                      completion:^(BOOL completed){
                      }];
@@ -81,14 +94,13 @@
 - (void)hideHeader {
     self.state = HRPGTopHeaderStateHidden;
     CGRect frame = self.backgroundView.frame;
-    frame.origin.y = -frame.size.height;
+    frame.origin.y = self.bgHiddenPosition;
     self.headerYPosition = frame.origin.y;
     [UIView animateWithDuration:0.3
                           delay:0
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^() {
                          self.backgroundView.frame = frame;
-                         [self setNavigationBarColors:1];
                      }
                      completion:^(BOOL completed){
                      }];
@@ -116,8 +128,10 @@
     CGFloat newYPos = -position - frame.size.height;
     if (newYPos > self.bgViewOffset) {
         newYPos = self.bgViewOffset;
+    } else if (newYPos < self.bgHiddenPosition) {
+        newYPos = self.bgHiddenPosition;
     }
-    if ((newYPos + frame.size.height) > self.bgViewOffset) {
+    if ((newYPos + frame.size.height) > self.bgHiddenPosition) {
         [self setState:HRPGTopHeaderStateVisible];
     } else {
         if (self.state == HRPGTopHeaderStateHidden) {
@@ -128,27 +142,8 @@
     frame.origin = CGPointMake(frame.origin.x, newYPos);
     self.headerYPosition = frame.origin.y;
     self.backgroundView.frame = frame;
-    CGFloat alpha = -((frame.origin.y - [self bgViewOffset]) / frame.size.height);
-    [self setNavigationBarColors:alpha];
 }
 
-- (void)setNavigationBarColors:(CGFloat)alpha {
-    self.upperBackgroundView.backgroundColor =
-    [[UIColor gray600] blendWithColor:[UIColor purple300] alpha:alpha];
-    self.navigationBar.tintColor =
-    [[UIColor purple400] blendWithColor:[UIColor whiteColor] alpha:alpha];
-    self.navigationBar.titleTextAttributes = @{
-                                               NSForegroundColorAttributeName :
-                                                   [[UIColor blackColor] blendWithColor:[UIColor whiteColor] alpha:alpha]
-                                               };
-    if (self.navigationBar.barStyle == UIBarStyleDefault && alpha > 0.5) {
-        self.navigationBar.barStyle = UIBarStyleBlack;
-        [self setNeedsStatusBarAppearanceUpdate];
-    } else if (self.navigationBar.barStyle == UIBarStyleBlack && alpha < 0.5) {
-        self.navigationBar.barStyle = UIBarStyleDefault;
-        [self setNeedsStatusBarAppearanceUpdate];
-    }
-}
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return self.navigationBar.barStyle == UIBarStyleBlack ? UIStatusBarStyleLightContent
@@ -159,9 +154,35 @@
         return 100;
 }
 
+- (CGFloat)segmentControlHeight {
+    return self.segmentedControl.frame.size.height + 12;
+}
+
+- (void)showGemPurchaseViewController {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController =
+    [storyboard instantiateViewControllerWithIdentifier:@"GemPurchaseViewController"];
+    [self setViewControllers:@[viewController] animated:NO];
+}
+
+- (void)showSubscriptionViewController {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController =
+    [storyboard instantiateViewControllerWithIdentifier:@"SubscriptionViewController"];
+    [self setViewControllers:@[viewController] animated:NO];
+}
+
+- (void)viewControllerChanged:(UISegmentedControl *)segmentedControl {
+    if (segmentedControl.selectedSegmentIndex == 0) {
+        [self showGemPurchaseViewController];
+    } else {
+        [self showSubscriptionViewController];
+    }
+}
+
 #pragma mark - Helpers
 - (CGFloat)getContentInset {
-    return self.topHeaderHeight;
+    return self.topHeaderHeight + self.segmentControlHeight;
 }
 
 - (CGFloat)statusBarHeight {
@@ -180,6 +201,10 @@
 
 - (CGFloat)bgViewOffset {
     return self.statusBarHeight + self.navigationBar.frame.size.height;
+}
+
+- (CGFloat)bgHiddenPosition {
+    return self.bgViewOffset-self.topHeaderHeight;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer

@@ -76,6 +76,9 @@
             for (SKPaymentTransaction *transaction in transactions) {
                 HRPGPurchaseLoadingButton *purchaseButton;
                 NSInteger count = 0;
+                if (![self.identifiers containsObject:transaction.payment.productIdentifier]) {
+                    return;
+                }
                 for (NSString *identifier in self.identifiers) {
                     if ([identifier isEqualToString:transaction.payment.productIdentifier]) {
                         break;

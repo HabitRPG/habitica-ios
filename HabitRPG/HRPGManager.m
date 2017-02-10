@@ -229,7 +229,16 @@ NSString *currentUser;
         addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"reminders"
                                                                        toKeyPath:@"reminders"
                                                                      withMapping:remindersMapping]];
-
+    RKEntityMapping *historyMapping =
+    [RKEntityMapping mappingForEntityForName:@"TaskHistory"
+                        inManagedObjectStore:managedObjectStore];
+    [historyMapping addAttributeMappingsFromArray:@[ @"value", @"date" ]];
+    historyMapping.identificationAttributes = @[ @"date" ];
+    
+//    [taskMapping
+//     addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"history"
+//                                                                    toKeyPath:@"history"
+//                                                                  withMapping:historyMapping]];
     [[RKObjectManager sharedManager].router.routeSet
         addRoute:[RKRoute routeWithClass:[Task class]
                              pathPattern:@"tasks/:id"
@@ -731,7 +740,6 @@ NSString *currentUser;
         @"invitations.party.name" : @"invitedPartyName",
         @"inbox.optOut" : @"inboxOptOut",
         @"inbox.newMessages" : @"inboxNewMessages",
-        @"purchased.plan.consecutive.trinkets" : @"hourglasses"
     }];
     entityMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping *userTagMapping =
@@ -841,6 +849,19 @@ NSString *currentUser;
                                           relationshipMappingFromKeyPath:@"preferences"
                                                                toKeyPath:@"preferences"
                                                              withMapping:preferencesMapping]];
+    
+    RKEntityMapping *subscriptionMapping = [RKEntityMapping mappingForEntityForName:@"SubscriptionPlan" inManagedObjectStore:managedObjectStore];
+    [subscriptionMapping addAttributeMappingsFromDictionary:@{
+                                                              @"customerId": @"customerId",
+                                                              @"dateCreated": @"dateCreated",
+                                                              @"dateTerminated": @"dateTerminated",
+                                                              @"planId": @"planId",
+                                                              @"paymentMethod": @"paymentMethod",
+                                                              @"consecutive.trinkets": @"consecutiveTrinkets",
+                                                              @"consecutive.gemCapExtra": @"gemCapExtra",
+                                                              }];
+    subscriptionMapping.identificationAttributes = @[ @"customerId" ];
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"purchased.plan" toKeyPath:@"subscriptionPlan" withMapping:subscriptionMapping]];
 
     RKEntityMapping *improvementCategoryMapping =
         [RKEntityMapping mappingForEntityForName:@"ImprovementCategory"

@@ -12,6 +12,7 @@
 #import "PushDevice.h"
 #import "Buff+CoreDataClass.h"
 #import "SpecialItems+CoreDataClass.h"
+#import "SubscriptionPlan+CoreDataClass.h"
 
 @class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, ImprovementCategory, UIView, UIColor, UIImage, UIImageView;
 
@@ -65,10 +66,9 @@
 @property(nonatomic, retain) NSSet *pushDevices;
 @property(nonatomic, retain) NSNumber *inboxOptOut;
 @property(nonatomic, retain) NSNumber *inboxNewMessages;
-@property(nonatomic, retain) NSNumber *hourglasses;
 @property(nonatomic, retain) NSString *facebookID;
 @property(nonatomic, retain) NSString *googleID;
-
+@property(nonatomic, retain) SubscriptionPlan *subscriptionPlan;
 
 @property(nonatomic, retain) Preferences *preferences;
 @property(nonatomic, retain) Outfit *costume;

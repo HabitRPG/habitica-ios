@@ -227,7 +227,7 @@
     if ([item.currency isEqualToString:@"gems"]) {
         ownedCurrency = (4*[self.user.balance floatValue]);
     } else if ([item.currency isEqualToString:@"hourglasses"]) {
-        ownedCurrency = [self.user.hourglasses floatValue];
+        ownedCurrency = [self.user.subscriptionPlan.consecutiveTrinkets floatValue];
     } else {
         ownedCurrency = [self.user.gold floatValue];
     }

@@ -127,6 +127,9 @@
 		D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */; };
 		D984D5841E48E57C006E84F8 /* TaskDetailLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D984D5831E48E57C006E84F8 /* TaskDetailLineView.xib */; };
 		D984D5861E48E5CF006E84F8 /* TaskDetailLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D984D5851E48E5CF006E84F8 /* TaskDetailLineView.swift */; };
+		D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D984D58A1E4A1F59006E84F8 /* SubscriptionViewController.swift */; };
+		D984D58D1E4A2F2D006E84F8 /* SubscriptionOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D984D58C1E4A2F2D006E84F8 /* SubscriptionOptionView.swift */; };
+		D984D58F1E4A2F41006E84F8 /* SubscriptionOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D984D58E1E4A2F41006E84F8 /* SubscriptionOptionView.xib */; };
 		D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */ = {isa = PBXBuildFile; fileRef = D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */; };
 		D98768F51AFFB85100336978 /* blade-equipResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = D98768F41AFFB85100336978 /* blade-equipResponse.json */; };
 		D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98830D41BADD4220018594D /* HRPGLoadingViewController.m */; };
@@ -219,6 +222,14 @@
 		D9C89CF91B1F0E6C00A599B0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9C89CF81B1F0E6C00A599B0 /* StoreKit.framework */; };
 		D9CD2DBE1BC7FBB500B1304B /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CD2DBD1BC7FBB500B1304B /* CoreSpotlight.framework */; };
 		D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */; };
+		D9CE903E1E4CAE6700702578 /* TaskHistory+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CE90371E4CAE6700702578 /* TaskHistory+CoreDataClass.m */; };
+		D9CE903F1E4CAE6700702578 /* TaskHistory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CE90391E4CAE6700702578 /* TaskHistory+CoreDataProperties.m */; };
+		D9CE90401E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CE903B1E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.m */; };
+		D9CE90411E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CE903D1E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.m */; };
+		D9CE90431E4CDC9100702578 /* SubscriptionDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9CE90421E4CDC9100702578 /* SubscriptionDetailView.xib */; };
+		D9CE90451E4CDD6200702578 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CE90441E4CDD6200702578 /* PillView.swift */; };
+		D9CE90471E4CDF3F00702578 /* Designable-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CE90461E4CDF3F00702578 /* Designable-Extensions.swift */; };
+		D9CE90491E4DCF7D00702578 /* SubscriptionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CE90481E4DCF7D00702578 /* SubscriptionDetailView.swift */; };
 		D9D0451B1C2B1AEC00630244 /* Reminder+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D045181C2B1AEC00630244 /* Reminder+CoreDataProperties.m */; };
 		D9D0451C1C2B1AEC00630244 /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D0451A1C2B1AEC00630244 /* Reminder.m */; };
 		D9D21731198D509100023367 /* HRPGDeathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D21730198D509000023367 /* HRPGDeathView.m */; };
@@ -529,6 +540,9 @@
 		D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGEquipmentDetailViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D984D5831E48E57C006E84F8 /* TaskDetailLineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDetailLineView.xib; sourceTree = "<group>"; };
 		D984D5851E48E5CF006E84F8 /* TaskDetailLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailLineView.swift; sourceTree = "<group>"; };
+		D984D58A1E4A1F59006E84F8 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
+		D984D58C1E4A2F2D006E84F8 /* SubscriptionOptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionOptionView.swift; sourceTree = "<group>"; };
+		D984D58E1E4A2F41006E84F8 /* SubscriptionOptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscriptionOptionView.xib; sourceTree = "<group>"; };
 		D986FBBD1DAFA27200C297DB /* Habitica.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Habitica.entitlements; sourceTree = SOURCE_ROOT; };
 		D987393A19687F3E002A2426 /* NSNumber+abbreviation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+abbreviation.h"; path = "HabitRPG/Utilities/NSNumber+abbreviation.h"; sourceTree = SOURCE_ROOT; };
 		D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+abbreviation.m"; path = "HabitRPG/Utilities/NSNumber+abbreviation.m"; sourceTree = SOURCE_ROOT; };
@@ -741,6 +755,19 @@
 		D9CD2DD31BCAA6F700B1304B /* UIViewController+TutorialSteps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+TutorialSteps.h"; path = "HabitRPG/Utilities/UIViewController+TutorialSteps.h"; sourceTree = SOURCE_ROOT; };
 		D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+TutorialSteps.m"; path = "HabitRPG/Utilities/UIViewController+TutorialSteps.m"; sourceTree = SOURCE_ROOT; };
 		D9CD2DD61BCAC00300B1304B /* TutorialStepsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TutorialStepsProtocol.h; path = HabitRPG/Utilities/TutorialStepsProtocol.h; sourceTree = SOURCE_ROOT; };
+		D9CE90351E4CADD000702578 /* HabitRPG 37.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 37.xcdatamodel"; sourceTree = "<group>"; };
+		D9CE90361E4CAE6700702578 /* TaskHistory+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskHistory+CoreDataClass.h"; sourceTree = "<group>"; };
+		D9CE90371E4CAE6700702578 /* TaskHistory+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskHistory+CoreDataClass.m"; sourceTree = "<group>"; };
+		D9CE90381E4CAE6700702578 /* TaskHistory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskHistory+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D9CE90391E4CAE6700702578 /* TaskHistory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskHistory+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D9CE903A1E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SubscriptionPlan+CoreDataClass.h"; sourceTree = "<group>"; };
+		D9CE903B1E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SubscriptionPlan+CoreDataClass.m"; sourceTree = "<group>"; };
+		D9CE903C1E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SubscriptionPlan+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D9CE903D1E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SubscriptionPlan+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D9CE90421E4CDC9100702578 /* SubscriptionDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscriptionDetailView.xib; sourceTree = "<group>"; };
+		D9CE90441E4CDD6200702578 /* PillView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
+		D9CE90461E4CDF3F00702578 /* Designable-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Designable-Extensions.swift"; sourceTree = "<group>"; };
+		D9CE90481E4DCF7D00702578 /* SubscriptionDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailView.swift; sourceTree = "<group>"; };
 		D9D045171C2B1AEC00630244 /* Reminder+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Reminder+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D9D045181C2B1AEC00630244 /* Reminder+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reminder+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D9D045191C2B1AEC00630244 /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
@@ -1023,6 +1050,7 @@
 				D95704421E1528F2004F6804 /* Event-Extensions.swift */,
 				D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */,
 				D96BFC501E1930A500266EEF /* Signal-Extensions.swift */,
+				D9CE90461E4CDF3F00702578 /* Designable-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1086,6 +1114,14 @@
 			path = Customizations;
 			sourceTree = "<group>";
 		};
+		D984D5871E49F9D9006E84F8 /* Purchases */ = {
+			isa = PBXGroup;
+			children = (
+				D984D58A1E4A1F59006E84F8 /* SubscriptionViewController.swift */,
+			);
+			path = Purchases;
+			sourceTree = "<group>";
+		};
 		D987393919687E46002A2426 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -1129,6 +1165,7 @@
 		D9A63A311E1031FD0083ADC4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D984D5871E49F9D9006E84F8 /* Purchases */,
 				D96BFC4D1E181B5500266EEF /* Intro */,
 				D9A63A371E104F6C0083ADC4 /* Login */,
 			);
@@ -1277,6 +1314,7 @@
 				D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */,
 				D984D5831E48E57C006E84F8 /* TaskDetailLineView.xib */,
 				D984D5851E48E5CF006E84F8 /* TaskDetailLineView.swift */,
+				D9CE90441E4CDD6200702578 /* PillView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1324,6 +1362,10 @@
 				D9A1A27D1BA593D900903567 /* HRPGRewardTableViewCell.m */,
 				D9E46B0B1DAC08BE00E390D7 /* HRPGSpellTableViewCell.h */,
 				D9E46B0C1DAC08BE00E390D7 /* HRPGSpellTableViewCell.m */,
+				D984D58C1E4A2F2D006E84F8 /* SubscriptionOptionView.swift */,
+				D984D58E1E4A2F41006E84F8 /* SubscriptionOptionView.xib */,
+				D9CE90421E4CDC9100702578 /* SubscriptionDetailView.xib */,
+				D9CE90481E4DCF7D00702578 /* SubscriptionDetailView.swift */,
 			);
 			path = TableviewCells;
 			sourceTree = "<group>";
@@ -1358,6 +1400,14 @@
 		D9C3D01D19509E4C00D22A4A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				D9CE90361E4CAE6700702578 /* TaskHistory+CoreDataClass.h */,
+				D9CE90371E4CAE6700702578 /* TaskHistory+CoreDataClass.m */,
+				D9CE90381E4CAE6700702578 /* TaskHistory+CoreDataProperties.h */,
+				D9CE90391E4CAE6700702578 /* TaskHistory+CoreDataProperties.m */,
+				D9CE903A1E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.h */,
+				D9CE903B1E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.m */,
+				D9CE903C1E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.h */,
+				D9CE903D1E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.m */,
 				D9E46AFF1DABCD9100E390D7 /* Buff+CoreDataClass.h */,
 				D9E46B001DABCD9100E390D7 /* Buff+CoreDataClass.m */,
 				D9E46B011DABCD9100E390D7 /* Buff+CoreDataProperties.h */,
@@ -1830,12 +1880,14 @@
 				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
 				D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */,
 				D96576C51BAF53D400CCA28E /* HRPGGearDetailView.xib in Resources */,
+				D9CE90431E4CDC9100702578 /* SubscriptionDetailView.xib in Resources */,
 				D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				D91CCAD01BCF11CC001C6A0C /* HRPGUserTopHeader.xib in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
 				D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */,
 				D9E9E0C81CCE64A3006D94A2 /* HRPGImageOverlayView.xib in Resources */,
+				D984D58F1E4A2F41006E84F8 /* SubscriptionOptionView.xib in Resources */,
 				D984D5841E48E57C006E84F8 /* TaskDetailLineView.xib in Resources */,
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
 				D905768A1BD83241009BB7BC /* Localizable.strings in Resources */,
@@ -2097,6 +2149,7 @@
 				D9B8C1201AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m in Sources */,
 				D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */,
 				D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */,
+				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
 				D9D593671D008C7500D6C388 /* PushDevice.m in Sources */,
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
 				D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */,
@@ -2159,6 +2212,7 @@
 				D9C257101B9B4C2D00839F48 /* HRPGTaskTableViewCell.m in Sources */,
 				D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */,
 				D9660D751AB23F150084CE37 /* HRPGTopHeaderNavigationController.m in Sources */,
+				D9CE90401E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.m in Sources */,
 				D995D5961D1D499D00D5251C /* PushNotifications+CoreDataProperties.m in Sources */,
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
 				D92CDAE018CB83B90006C242 /* HRPGHabitTableViewController.m in Sources */,
@@ -2188,6 +2242,7 @@
 				D95D03931C74AA5500D6BFB3 /* Preferences+CoreDataProperties.m in Sources */,
 				D9B5C0E118D602FC00C8D1B7 /* Group.m in Sources */,
 				D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */,
+				D9CE90411E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.m in Sources */,
 				D9A28F721B08DF58002907E0 /* HRPGPurchaseButton.m in Sources */,
 				D998FD951ADAC1FF00E9A26F /* HRPGAboutViewController.m in Sources */,
 				D92D40D91ABF123800E30339 /* HRPGHabitButtons.m in Sources */,
@@ -2199,6 +2254,7 @@
 				D9BBF32C1DBD127A00C4114C /* HRPGShopAdFooter.m in Sources */,
 				D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */,
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
+				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,
 				D92A085E1D3520D8000F8B66 /* ShopItem.m in Sources */,
 				D903B78C1DCA4C25001F2893 /* HRPGNotificationManager.m in Sources */,
 				D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */,
@@ -2214,6 +2270,7 @@
 				D98F5DC91C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m in Sources */,
 				D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */,
 				D98F5AEC190566CA002F8223 /* User.m in Sources */,
+				D9CE90491E4DCF7D00702578 /* SubscriptionDetailView.swift in Sources */,
 				D9C7C1F318E280DE0083F4E4 /* HRPGRewardsViewController.m in Sources */,
 				D92CDAE718CB84000006C242 /* HRPGToDoTableViewController.m in Sources */,
 				D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */,
@@ -2225,17 +2282,20 @@
 				D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */,
 				D9AEF8E41CE4CCA5006914CB /* HRPGURLParser.m in Sources */,
 				D9A63A341E10328A0083ADC4 /* LoginTableViewController.swift in Sources */,
+				D9CE903E1E4CAE6700702578 /* TaskHistory+CoreDataClass.m in Sources */,
 				D98AD54E19437D9400AF6174 /* Pet.m in Sources */,
 				D9C89CF61B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m in Sources */,
 				D9436AC11C63A4BB008D1171 /* UIViewController+Markdown.m in Sources */,
 				D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */,
 				D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */,
 				D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */,
+				D9CE903F1E4CAE6700702578 /* TaskHistory+CoreDataProperties.m in Sources */,
 				D92A084B1D33FA08000F8B66 /* HRPGShopViewController.m in Sources */,
 				D92A085B1D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m in Sources */,
 				D92503BE1D5C9219006C9388 /* NSString+UUID.m in Sources */,
 				D97C71E118ECA7050089FDC6 /* ChatMessage.m in Sources */,
 				D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */,
+				D9CE90471E4CDF3F00702578 /* Designable-Extensions.swift in Sources */,
 				D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */,
 				D96447B41CE9FF0D009D7950 /* HRPGResponseMessage.m in Sources */,
 				D9E46B0A1DABE97200E390D7 /* SpecialItems+CoreDataProperties.m in Sources */,
@@ -2246,6 +2306,7 @@
 				D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */,
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
 				D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */,
+				D984D58D1E4A2F2D006E84F8 /* SubscriptionOptionView.swift in Sources */,
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
 				D96BFC4F1E191D7200266EEF /* UIAlertController-Extensions.swift in Sources */,
 				D9AEA8A11C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m in Sources */,
@@ -2911,6 +2972,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D9CE90351E4CADD000702578 /* HabitRPG 37.xcdatamodel */,
 				D97AC21D1DD39D6300BEB5A9 /* HabitRPG 36.xcdatamodel */,
 				D9E46AFE1DABCD7300E390D7 /* HabitRPG 35.xcdatamodel */,
 				D9A9BEFE1D797D3C00520973 /* HabitRPG 34.xcdatamodel */,
@@ -2929,7 +2991,7 @@
 				D98F5DC41C6A43D20035CBEC /* HabitRPG 21.xcdatamodel */,
 				D9C0E5171C650D1D0062C89A /* HabitRPG 20.xcdatamodel */,
 			);
-			currentVersion = D97AC21D1DD39D6300BEB5A9 /* HabitRPG 36.xcdatamodel */;
+			currentVersion = D9CE90351E4CADD000702578 /* HabitRPG 37.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -70,9 +70,9 @@
 @dynamic pushDevices;
 @dynamic inboxOptOut;
 @dynamic inboxNewMessages;
-@dynamic hourglasses;
 @dynamic facebookID;
 @dynamic googleID;
+@dynamic subscriptionPlan;
 
 @synthesize petCount = _petCount;
 @synthesize customizationsDictionary;
