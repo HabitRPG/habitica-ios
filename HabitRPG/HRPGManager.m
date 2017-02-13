@@ -128,7 +128,7 @@ NSString *currentUser;
     NSString *DISABLE_SSL = info[@"DisableSSL"];
 
     if (CUSTOM_DOMAIN.length == 0) {
-        CUSTOM_DOMAIN = @"habitica.com/";
+        CUSTOM_DOMAIN = @"192.168.178.21:3000/";
     }
 
     if (![[CUSTOM_DOMAIN substringFromIndex: [CUSTOM_DOMAIN length] - 1]  isEqual: @"/"]) {
@@ -139,7 +139,7 @@ NSString *currentUser;
     if ([DISABLE_SSL isEqualToString:@"true"]) {
         ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
     } else {
-        ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
+        ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
     }
 #else
     ROOT_URL = @"https://habitica.com/";
@@ -4616,6 +4616,45 @@ NSString *currentUser;
             [self.networkIndicatorController endNetworking];
             return;
         }];
+}
+
+-(void)subscribe:(NSString *)sku withReceipt:(NSString *)receipt onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"behaviour"
+                                                          action:@"subscribe"
+                                                           label:nil
+                                                           value:nil] build]];
+    
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:@"iap/ios/subscribe"
+                                     parameters:@{@"sku": sku, @"receipt":receipt}
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            [self fetchUser:^() {
+                                                NSError *executeError = nil;
+                                                [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                                if (successBlock) {
+                                                    successBlock();
+                                                }
+                                                [self.networkIndicatorController endNetworking];
+                                                return;
+                                            }
+                                                    onError:nil];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                                [self displayServerError];
+                                            } else {
+                                                [self displayNetworkError];
+                                            }
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
 }
 
 - (void)purchaseItem:(ShopItem *)item

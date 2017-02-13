@@ -1,7 +1,7 @@
 PODS:
   - AFNetworking (1.3.4)
   - Amplitude-iOS (3.8.5)
-  - AppAuth (0.4.2)
+  - AppAuth (0.7.1)
   - AttributedMarkdown (0.9.2)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
@@ -12,14 +12,14 @@ PODS:
   - CargoBay (1.0.0):
     - AFNetworking (~> 1.3)
   - CRToast (0.0.9)
-  - DateTools (1.7.0)
-  - DTCoreText (1.6.18):
-    - DTCoreText/Core (= 1.6.18)
+  - DateTools (2.0.0)
+  - DTCoreText (1.6.19):
+    - DTCoreText/Core (= 1.6.19)
     - DTFoundation/Core (~> 1.7.5)
     - DTFoundation/DTAnimatedGIF (~> 1.7.5)
     - DTFoundation/DTHTMLParser (~> 1.7.5)
     - DTFoundation/UIKit (~> 1.7.5)
-  - DTCoreText/Core (1.6.18):
+  - DTCoreText/Core (1.6.19):
     - DTFoundation/Core (~> 1.7.5)
     - DTFoundation/DTAnimatedGIF (~> 1.7.5)
     - DTFoundation/DTHTMLParser (~> 1.7.5)
@@ -30,7 +30,7 @@ PODS:
     - DTFoundation/Core
   - DTFoundation/UIKit (1.7.11):
     - DTFoundation/Core
-  - EAIntroView (2.9.0):
+  - EAIntroView (2.10.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
   - FacebookCore (0.2.0):
@@ -41,24 +41,25 @@ PODS:
     - FacebookCore (~> 0.2)
     - FBSDKCoreKit (~> 4.15)
     - FBSDKLoginKit (~> 4.15)
-  - FBSDKCoreKit (4.18.0):
+  - FBSDKCoreKit (4.19.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.18.0):
+  - FBSDKLoginKit (4.19.0):
     - FBSDKCoreKit
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - FirebaseAnalytics (3.4.3):
+  - FirebaseAnalytics (3.6.0):
     - FirebaseCore (~> 3.4)
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleSymbolUtilities (~> 1.1)
-    - GoogleUtilities (~> 1.3)
-  - FirebaseCore (3.4.3):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (3.4.7):
     - GoogleInterchangeUtilities (~> 1.2)
-    - GoogleUtilities (~> 1.2)
+    - GoogleSymbolUtilities (~> 1.1)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseInstanceID (1.0.8)
   - FLEX (2.4.0)
   - FontAwesomeIconFactory (2.1.1)
@@ -71,8 +72,9 @@ PODS:
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleSymbolUtilities (1.1.2)
-  - GoogleUtilities (1.3.2):
-    - GoogleSymbolUtilities (~> 1.1)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
   - ISO8601DateFormatterValueTransformer (0.6.1):
     - RKValueTransformers (~> 1.1.0)
   - Keys (1.0.0)
@@ -107,19 +109,19 @@ PODS:
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
   - NSString+Emoji (0.2.0)
-  - OHHTTPStubs (5.2.1):
-    - OHHTTPStubs/Default (= 5.2.1)
-  - OHHTTPStubs/Core (5.2.1)
-  - OHHTTPStubs/Default (5.2.1):
+  - OHHTTPStubs (5.2.3):
+    - OHHTTPStubs/Default (= 5.2.3)
+  - OHHTTPStubs/Core (5.2.3)
+  - OHHTTPStubs/Default (5.2.3):
     - OHHTTPStubs/Core
     - OHHTTPStubs/JSON
     - OHHTTPStubs/NSURLSession
     - OHHTTPStubs/OHPathHelpers
-  - OHHTTPStubs/JSON (5.2.1):
+  - OHHTTPStubs/JSON (5.2.3):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/NSURLSession (5.2.1):
+  - OHHTTPStubs/NSURLSession (5.2.3):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/OHPathHelpers (5.2.1)
+  - OHHTTPStubs/OHPathHelpers (5.2.3)
   - PDKeychainBindingsController (0.0.1)
   - pop (1.0.9)
   - ReactiveCocoa (5.0.0):
@@ -151,8 +153,8 @@ PODS:
   - SOCKit (1.1)
   - SwiftyStoreKit (0.7.1)
   - TransitionKit (2.2.1)
-  - VTAcknowledgementsViewController (1.1)
-  - XLForm (3.2.0)
+  - VTAcknowledgementsViewController (1.2.1)
+  - XLForm (3.3.0)
   - YYCache (1.0.4)
   - YYImage (1.0.4):
     - YYImage/Core (= 1.0.4)
@@ -215,7 +217,7 @@ CHECKOUT OPTIONS:
     :commit: 60fee59c70227085afe547edb3016e2656171fc6
     :git: https://github.com/vIiRuS/CargoBay.git
   CRToast:
-    :commit: 6ce2ff330fced16e4d8be89b18dd2f3e229f0df6
+    :commit: 82ff49ca70569075467368de8b10450204fd84e9
     :git: https://github.com/cruffenach/CRToast
   RestKit:
     :commit: 13d98d5a6a5e06656ad040013dcae149b7cf8b99
@@ -224,23 +226,23 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
   Amplitude-iOS: de7cfde0c791d05fb0e0f82bd34cbd3585ccd63f
-  AppAuth: 292151ac22065106b0bee6b80e3be29c95bda0fc
+  AppAuth: c56d352b0d50bb34dbb302d7ba50b20aa6b6ae89
   AttributedMarkdown: ac5060667280be8cc8ee33a46c73e4ec6b17ca1a
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CargoBay: d0ab6070553bb49ef61e6b5a036c0091936cc3be
   CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
-  DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
-  DTCoreText: 04b4d14e11c18fd95163108887feb39638cca4fe
+  DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
+  DTCoreText: 184cc2f460c2177108e8700dfb0eb1b1cb72c99d
   DTFoundation: 0ef29c70a9814e15518694862bd739347abe2a50
-  EAIntroView: 76f68cc56242f2e25359419e6ecc2344ee7e1756
+  EAIntroView: 3494b7bbd1212e3a4f7e8d16194a1b00e7b9abb2
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
-  FBSDKCoreKit: 15fef8804a4629f98c6f4e55e81a76c9d725d85e
-  FBSDKLoginKit: 6773073e970b2b15fb12e451ce7f11da0532b880
+  FBSDKCoreKit: 894b2b6eda6a4c8c4204e92e59cc355709ef045c
+  FBSDKLoginKit: 83ca4d8f12a2022570af9fd6aacf27f6b425b99f
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  FirebaseAnalytics: 02d0aed8c6246a9c8683ac3e9825c67ceb657bde
-  FirebaseCore: 5a885548bbc5f0c410b04f8e9ac9d73ff1221907
+  FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
+  FirebaseCore: 46afaf2c2e0419ea7d3acfb08cf26a461a75fe85
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
   FontAwesomeIconFactory: bb9ce26d3dd13044854a82d380023c8e7d3ebf1a
@@ -248,14 +250,14 @@ SPEC CHECKSUMS:
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
-  GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   NSString+Emoji: 127da93993ac7c01eadb2edbb039cda89a1369f4
-  OHHTTPStubs: 3a42f25c00563b71355ac73112ba2324e9e6cef4
+  OHHTTPStubs: e238cd5b66d8efa51c861db45895de8fe079f4a7
   PDKeychainBindingsController: fa8cb3cf99f2ea9240d61066ed0549f34e2cec3c
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   ReactiveCocoa: 60ef0da915b4f70c34ebecc3f4fb8f96af0e53d6
@@ -268,12 +270,12 @@ SPEC CHECKSUMS:
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   SwiftyStoreKit: 3db119f5c6fcb8c36c7b4e8ac703a5319dc2bcfe
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
-  VTAcknowledgementsViewController: 44da49d57a1dbf414e653688793a130d24af151e
-  XLForm: 2250b4e96ab8ffa5f3355838c79edd90de451782
+  VTAcknowledgementsViewController: e1de80f2c0ce31cc7e1c6f1c8aaeec2770371f09
+  XLForm: d5c391dfc62865927b5bcab0a5a0dbfb3e02b0ec
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: eaff0cb2a74f12fecb4650418d43c919a96ba459
+PODFILE CHECKSUM: 6699340a5076f51b1a528ce907b73a279276b3e6
 
 COCOAPODS: 1.2.0

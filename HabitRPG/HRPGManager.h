@@ -262,6 +262,12 @@
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock;
 
+- (void)subscribe:(NSString *)sku
+      withReceipt:(NSString *)receipt
+        onSuccess:(void (^)())successBlock
+          onError:(void (^)())errorBlock;
+
+
 - (void)purchaseItem:(ShopItem *)item
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock;

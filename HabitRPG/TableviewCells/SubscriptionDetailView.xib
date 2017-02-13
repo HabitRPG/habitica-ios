@@ -23,7 +23,7 @@
                         <rect key="frame" x="8" y="8" width="359" height="49"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUI-EY-fp6" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="327" y="18.5" width="24" height="12"/>
+                                <rect key="frame" x="351" y="25" width="0.0" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="500" constant="42" id="3HB-gE-e5C"/>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="eWH-wr-hQg"/>
@@ -33,10 +33,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="MSO-HL-HIC">
-                                <rect key="frame" x="8" y="12" width="311" height="25"/>
+                                <rect key="frame" x="8" y="12" width="335" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Subscription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpY-Fh-gfY">
-                                        <rect key="frame" x="0.0" y="0.0" width="311" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="b1J-WV-a6C"/>
                                         </constraints>
@@ -45,7 +45,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oo1-hg-RlW">
-                                        <rect key="frame" x="0.0" y="25" width="311" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="25" width="335" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="cka-bB-Yjk"/>
                                         </constraints>
@@ -113,10 +113,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qHc-g1-oMW">
-                        <rect key="frame" x="8" y="134" width="359" height="140.5"/>
+                        <rect key="frame" x="8" y="134" width="359" height="105"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Bonuses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIq-Y7-W8V">
-                                <rect key="frame" x="8" y="12" width="135" height="20.5"/>
+                                <rect key="frame" x="8" y="12" width="135" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="ntd-tx-i2g"/>
                                 </constraints>
@@ -125,10 +125,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dE1-Dt-Y1B">
-                                <rect key="frame" x="8" y="32.5" width="343" height="28"/>
+                                <rect key="frame" x="8" y="33" width="343" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Months subscribed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh5-nl-ZNE">
-                                        <rect key="frame" x="0.0" y="4" width="311" height="21"/>
+                                        <rect key="frame" x="0.0" y="-2" width="335" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="2sj-wI-Bw1"/>
                                         </constraints>
@@ -137,7 +137,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8s-Ed-6hX" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="319" y="8" width="24" height="12"/>
+                                        <rect key="frame" x="343" y="8" width="0.0" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="width" priority="500" constant="42" id="Wv7-Iu-rxX"/>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="kIo-lZ-IFs"/>
@@ -159,10 +159,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8e-ql-IBs">
-                                <rect key="frame" x="8" y="68.5" width="343" height="28"/>
+                                <rect key="frame" x="8" y="57" width="343" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Months gem cap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVA-l8-UYK">
-                                        <rect key="frame" x="0.0" y="4" width="311" height="21"/>
+                                        <rect key="frame" x="0.0" y="-2" width="335" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="rb9-yI-1yq"/>
                                         </constraints>
@@ -171,7 +171,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8e3-ov-uYH" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="319" y="8" width="24" height="12"/>
+                                        <rect key="frame" x="343" y="8" width="0.0" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="Vr9-3d-a0t"/>
                                             <constraint firstAttribute="width" priority="500" constant="42" id="fZ7-d7-VHs"/>
@@ -193,10 +193,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9GG-mJ-fXm">
-                                <rect key="frame" x="8" y="104.5" width="343" height="28"/>
+                                <rect key="frame" x="8" y="81" width="343" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Mystic Hourglasses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umo-Eu-qyG">
-                                        <rect key="frame" x="0.0" y="4" width="311" height="21"/>
+                                        <rect key="frame" x="0.0" y="-2" width="335" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="ryt-9J-Kq9"/>
                                         </constraints>
@@ -205,7 +205,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCK-2t-7KY" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="319" y="8" width="24" height="12"/>
+                                        <rect key="frame" x="343" y="8" width="0.0" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="width" priority="500" constant="42" id="Ev5-sC-qak"/>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="mzf-4v-yKH"/>
@@ -245,7 +245,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFw-6x-aHN">
-                        <rect key="frame" x="8" y="282.5" width="359" height="83"/>
+                        <rect key="frame" x="8" y="247" width="359" height="83"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancel Subscription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVf-lL-2BL">
                                 <rect key="frame" x="8" y="8" width="343" height="21"/>

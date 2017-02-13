@@ -11,7 +11,8 @@ plugin 'cocoapods-keys', {
     "SeedsDevGemsInterstitial",
     "SeedsReleaseGemsInterstitial",
     "SeedsReleaseShareInterstitial",
-    "SeedsDevShareInterstitial"
+    "SeedsDevShareInterstitial",
+    "ItunesSharedSecret"
   ]
 }
 

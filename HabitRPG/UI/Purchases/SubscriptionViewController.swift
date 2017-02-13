@@ -9,12 +9,37 @@
 import UIKit
 import SwiftyStoreKit
 import StoreKit
+import Keys
 
 class SubscriptionViewController: HRPGBaseViewController {
 
+    let identifiers = ["subscription1month", "com.habitrpg.ios.habitica.subscription.3month",
+                       "com.habitrpg.ios.habitica.subscription.6month", "com.habitrpg.ios.habitica.subscription.12month"
+    ]
+    
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
     var user: User?
+    let appleValidator: AppleReceiptValidator
+    let itunesSharedSecret = HabiticaKeys().itunesSharedSecret()
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        #if DEBUG
+            appleValidator = AppleReceiptValidator(service: .sandbox)
+        #else
+            appleValidator = AppleReceiptValidator(service: .production)
+        #endif
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        #if DEBUG
+            appleValidator = AppleReceiptValidator(service: .sandbox)
+        #else
+            appleValidator = AppleReceiptValidator(service: .production)
+        #endif
+        super.init(coder: aDecoder)
+    }
     
     var isSubscribed = false
     
@@ -39,41 +64,76 @@ class SubscriptionViewController: HRPGBaseViewController {
             if user.subscriptionPlan.isActive() {
                 isSubscribed = true
             } else {
-                restorePurchases()
+                checkForExistingSubscription()
+            }
+        }
+        
+        SwiftyStoreKit.completeTransactions(atomically: false) { products in
+            SwiftyStoreKit.verifyReceipt(using: self.appleValidator, password: self.itunesSharedSecret) { result in
+                switch result {
+                case .success(let receipt):
+                    for product in products {
+                        if product.transaction.transactionState == .purchased || product.transaction.transactionState == .restored {
+                            if product.needsFinishTransaction {
+                                if self.isSubscription(product.productId) {
+                                    if self.isValidSubscription(product.productId, receipt: receipt) {
+                                        self.activateSubscription(product.productId, receipt: receipt) { status in
+                                            if status {
+                                                SwiftyStoreKit.finishTransaction(product.transaction)
+                                            }
+                                        }
+                                    } else {
+                                        SwiftyStoreKit.finishTransaction(product.transaction)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                default:
+                    return
+                }
             }
         }
     }
     
     func retrieveProductList() {
-        let identifiers = ["subscription1month", "com.habitrpg.ios.habitica.subscription.3month",
-                           "com.habitrpg.ios.habitica.subscription.6month", "com.habitrpg.ios.habitica.subscription.12month"
-        ]
         SwiftyStoreKit.retrieveProductsInfo(Set(identifiers)) { (result) in
             self.products = Array(result.retrievedProducts)
             self.products?.sort(by: { (product1, product2) -> Bool in
-                return identifiers.index(of: product1.productIdentifier)! < identifiers.index(of: product2.productIdentifier)!
+                return self.identifiers.index(of: product1.productIdentifier)! < self.identifiers.index(of: product2.productIdentifier)!
             })
             self.tableView.reloadData()
         }
     }
     
-    func restorePurchases() {
-        SwiftyStoreKit.restorePurchases(atomically: false) { results in
-            if results.restoreFailedProducts.count > 0 {
-                print("Restore Failed: \(results.restoreFailedProducts)")
-            }
-            else if results.restoredProducts.count > 0 {
-                for product in results.restoredProducts {
-                    // fetch content from your server, then:
-                    if product.needsFinishTransaction {
-                        SwiftyStoreKit.finishTransaction(product.transaction)
+    func checkForExistingSubscription() {
+        SwiftyStoreKit.refreshReceipt { (result) in
+            switch result {
+            case .success( _):
+                SwiftyStoreKit.verifyReceipt(using: self.appleValidator, password: self.itunesSharedSecret) { result in
+                    switch result {
+                    case .success(let verifiedReceipt):
+                        guard let purchases = verifiedReceipt["latest_receipt_info"] as? [ReceiptInfo] else {
+                            return
+                        }
+                        for purchase in purchases {
+                            let identifier = purchase["product_id"] as! String
+                            if self.isValidSubscription(identifier, receipt: verifiedReceipt) {
+                                self.activateSubscription(identifier, receipt: verifiedReceipt) {status in
+                                    if status {
+                                        return
+                                    }
+                                }
+                            }
+                        }
+                    case .error(let error):
+                        print("Receipt verification failed: \(error)")
                     }
                 }
-                print("Restore Success: \(results.restoredProducts)")
+            case .error(let error):
+                print("Receipt refreshing failed: \(error)")
             }
-            else {
-                print("Nothing to Restore")
-            }
+
         }
     }
     
@@ -198,33 +258,64 @@ class SubscriptionViewController: HRPGBaseViewController {
         SwiftyStoreKit.purchaseProduct(identifier, atomically: false) { result in
             switch result {
             case .success(let product):
-                let appleValidator = AppleReceiptValidator(service: .sandbox)
-                SwiftyStoreKit.verifyReceipt(using: appleValidator, password: "your-shared-secret") { result in
-                    switch result {
-                    case .success(let receipt):
-                        // Verify the purchase of a Subscription
-                        let purchaseResult = SwiftyStoreKit.verifySubscription(
-                            productId: identifier,
-                            inReceipt: receipt,
-                            validUntil: Date()
-                        )
-                        switch purchaseResult {
-                        case .purchased(let expiresDate):
-                            print("Product is valid until \(expiresDate)")
-                        case .expired(let expiresDate):
-                            print("Product is expired since \(expiresDate)")
-                        case .notPurchased:
-                            print("The user has never purchased this product")
-                        }
-                        
-                    case .error(let error):
-                        print("Receipt verification failed: \(error)")
-                    }
-                }
+                self.verifyAndSubscribe(product)
                 print("Purchase Success: \(product.productId)")
             case .error(let error):
                 print("Purchase Failed: \(error)")
             }
+        }
+    }
+    
+    func verifyAndSubscribe(_ product: Product) {
+        SwiftyStoreKit.verifyReceipt(using: appleValidator, password: self.itunesSharedSecret) { result in
+            switch result {
+            case .success(let receipt):
+                // Verify the purchase of a Subscription
+                if self.isValidSubscription(product.productId, receipt: receipt) {
+                    self.activateSubscription(product.productId, receipt: receipt) { status in
+                        if (status) {
+                            if product.needsFinishTransaction {
+                                SwiftyStoreKit.finishTransaction(product.transaction)
+                            }
+                        }
+                    }
+                }
+            case .error(let error):
+                print("Receipt verification failed: \(error)")
+            }
+        }
+    }
+    
+    func activateSubscription(_ identifier: String, receipt: ReceiptInfo, completion: @escaping (Bool) -> Void) {
+        self.sharedManager.subscribe(identifier, withReceipt:receipt["latest_receipt"] as! String!, onSuccess: {
+            completion(true)
+            self.isSubscribed = true
+            self.tableView.reloadData()
+        }, onError: {
+            completion(false)
+        })
+    }
+    
+    func isSubscription(_ identifier: String) -> Bool {
+        return  self.identifiers.contains(identifier)
+    }
+    
+    func isValidSubscription(_ identifier: String, receipt: ReceiptInfo) -> Bool {
+        if !isSubscription(identifier) {
+            return false
+        }
+        let purchaseResult = SwiftyStoreKit.verifySubscription(
+            productId: identifier,
+            inReceipt: receipt,
+            validUntil: Date()
+        )
+        switch purchaseResult {
+        case .purchased(_):
+            return true
+        case .expired(_):
+            return false
+        case .notPurchased:
+            return false
         }
     }
 }
