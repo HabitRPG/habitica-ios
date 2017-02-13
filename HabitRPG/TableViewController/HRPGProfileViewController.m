@@ -128,7 +128,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         case 1:
             return 4;
         case 2:
-            return 6;
+            return 7;
         case 3:
             return 4;
         default:
@@ -240,6 +240,16 @@ NIKFontAwesomeIconFactory *iconFactory;
         } else {
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
+    } else if (indexPath.section == 2 && indexPath.item == 6) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UINavigationController *navigationController =
+        [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
+        UIViewController *viewController =
+        [UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController;
+        if (!viewController.isViewLoaded || !viewController.view.window) {
+            viewController = viewController.presentedViewController;
+        }
+        [viewController presentViewController:navigationController animated:YES completion:nil];
     } else if (indexPath.section == 3 && indexPath.item == 0) {
         [self performSegueWithIdentifier:@"NewsSegue" sender:self];
     } else if (indexPath.section == 3 && indexPath.item == 1) {
@@ -308,6 +318,8 @@ NIKFontAwesomeIconFactory *iconFactory;
         if (![self.user.flags.itemsEnabled boolValue]) {
             cellName = @"LockedCell";
         }
+    } else if (indexPath.section == 2 && indexPath.item == 6) {
+        title = NSLocalizedString(@"Gems & Subscriptions", nil);
     } else if (indexPath.section == 3 && indexPath.item == 0) {
         title = NSLocalizedString(@"News", nil);
         User *user = self.user;
