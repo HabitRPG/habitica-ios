@@ -13,6 +13,7 @@ import Keys
 
 class SubscriptionViewController: HRPGBaseViewController {
 
+    @IBOutlet weak var restorePurchaseButton: UIButton!
     let identifiers = ["subscription1month", "com.habitrpg.ios.habitica.subscription.3month",
                        "com.habitrpg.ios.habitica.subscription.6month", "com.habitrpg.ios.habitica.subscription.12month"
     ]
@@ -63,8 +64,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         if let user = self.user {
             if user.subscriptionPlan.isActive() {
                 isSubscribed = true
-            } else {
-                checkForExistingSubscription()
+                restorePurchaseButton.isHidden = true
             }
         }
         
@@ -106,7 +106,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         }
     }
     
-    func checkForExistingSubscription() {
+    @IBAction func checkForExistingSubscription(_ sender: Any) {
         SwiftyStoreKit.refreshReceipt { (result) in
             switch result {
             case .success( _):
@@ -187,7 +187,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         } else if isOptionSection(indexPath.section) {
             return 96
         } else if isDetailSection(indexPath.section) {
-            return 500;
+            return 550;
         }
         return 50
     }

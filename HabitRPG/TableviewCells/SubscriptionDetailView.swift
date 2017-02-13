@@ -43,7 +43,8 @@ class SubscriptionDetailView: UITableViewCell {
         hourGlassCountPill.text = plan.consecutiveTrinkets?.stringValue
         
         if plan.paymentMethod == "Apple" {
-            
+            cancelDescriptionLabel.text = "No longer want to subscribe? You can manage your subscription from iTunes.".localized
+            cancelDescriptionButton.setTitle("Open iTunes".localized, for: .normal)
         } else {
             cancelDescriptionLabel.text = "No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.".localized
             cancelDescriptionButton.setTitle("Open Habitica Website".localized, for: .normal)
