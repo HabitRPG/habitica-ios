@@ -1688,17 +1688,6 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
-    gearMapping = [gearMapping copy];
-    gearMapping.forceCollectionMapping = NO;
-    
-    responseDescriptor = [RKResponseDescriptor
-                          responseDescriptorWithMapping:gearMapping
-                          method:RKRequestMethodPOST
-                          pathPattern:@"user/open-mystery-item"
-                          keyPath:@"data"
-                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
-
     gearMapping =
         [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
     [gearMapping addAttributeMappingsFromDictionary:@{
@@ -1725,6 +1714,14 @@ NSString *currentUser;
                                method:RKRequestMethodGET
                           pathPattern:@"user/inventory/buy"
                               keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:gearMapping
+                          method:RKRequestMethodPOST
+                          pathPattern:@"user/open-mystery-item"
+                          keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
@@ -3633,6 +3630,7 @@ NSString *currentUser;
                                                     successBlock();
                                                 }
                                             }];
+                                            [self displayMysteryItemNotification:[mappingResult dictionary][@"data"]];
                                             [self.networkIndicatorController endNetworking];
                                             return;
                                         }
@@ -5350,6 +5348,26 @@ NSString *currentUser;
     UIViewController *viewController =
         [UIApplication sharedApplication].keyWindow.rootViewController;
     [viewController presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)displayMysteryItemNotification:(Gear *)gear {
+    [self getImage:[NSString stringWithFormat:@"shop_%@", gear.key]
+        withFormat:@"png"
+         onSuccess:^(UIImage *image) {
+             NSDictionary *options = @{
+                                       kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You received a %@", nil), gear.text],
+                                       kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                                       kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
+                                       kCRToastBackgroundColorKey : [UIColor blue10],
+                                       kCRToastImageKey : image
+                                       };
+             [CRToastManager showNotificationWithOptions:options
+                                         completionBlock:^{
+                                         }];
+         }
+           onError:^(){
+               
+           }];
 }
 
 - (void)displayTransformationItemNotification:(NSString *)itemName {

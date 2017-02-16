@@ -23,6 +23,7 @@ class SubscriptionViewController: HRPGBaseViewController {
     var user: User?
     let appleValidator: AppleReceiptValidator
     let itunesSharedSecret = HabiticaKeys().itunesSharedSecret()
+    var expandedList = [Bool](repeating: false, count: 4)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         #if DEBUG
@@ -51,6 +52,8 @@ class SubscriptionViewController: HRPGBaseViewController {
         self.tableView.register(optionNib, forCellReuseIdentifier: "OptionCell")
         let detailNib = UINib.init(nibName: "SubscriptionDetailView", bundle: nil)
         self.tableView.register(detailNib, forCellReuseIdentifier: "DetailCell")
+        let infoNib = UINib.init(nibName: "SubscriptionInformationCell", bundle: nil)
+        self.tableView.register(infoNib, forCellReuseIdentifier: "InformationCell")
         
         let navigationController = self.navigationController as! HRPGGemHeaderNavigationController
         let inset = UIEdgeInsets(top: navigationController.getContentInset(), left: 0, bottom: 0, right: 0)
@@ -162,8 +165,8 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isDescriptionSection(section) {
-            return 0
+        if isInformationSection(section) {
+            return 4
         } else if isOptionSection(section) {
             guard let products = self.products else {
                 return 0
@@ -182,8 +185,17 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if isDescriptionSection(indexPath.section) {
-            return 50
+        if isInformationSection(indexPath.section) {
+            if self.expandedList[indexPath.item] {
+                let description = SubscriptionInformation.descriptions[indexPath.item] as NSString
+                let height = 90 + description.boundingRect(with: CGSize.init(width: self.viewWidth-80, height: CGFloat.infinity),
+                                                     options: NSStringDrawingOptions.usesLineFragmentOrigin,
+                                                     attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body)],
+                                                     context: nil).size.height
+                return height;
+            } else {
+                return 50
+            }
         } else if isOptionSection(indexPath.section) {
             return 96
         } else if isDetailSection(indexPath.section) {
@@ -205,7 +217,18 @@ class SubscriptionViewController: HRPGBaseViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell?
-        if self.isOptionSection(indexPath.section) {
+        if self.isInformationSection(indexPath.section) {
+            let c = tableView.dequeueReusableCell(withIdentifier: "InformationCell", for: indexPath) as! SubscriptionInformationCell
+            c.titleLabel.text = SubscriptionInformation.titles[indexPath.item]
+            c.descriptionTextView.text = SubscriptionInformation.descriptions[indexPath.item]
+            c.isExpanded = self.expandedList[indexPath.item]
+            c.setExpandIcon(self.expandedList[indexPath.item])
+            c.expandButtonPressedAction = { [weak self] isExpanded in
+                self?.expandedList[indexPath.item] = isExpanded
+                self?.tableView.reloadRows(at: [indexPath], with: .none)
+            }
+            cell = c
+        } else if self.isOptionSection(indexPath.section) {
             let c = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath) as! SubscriptionOptionView
             let product = self.products?[indexPath.item]
             c.priceLabel.text = product?.localizedPrice
@@ -235,7 +258,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         return cell!;
     }
     
-    func isDescriptionSection(_ section: Int) -> Bool {
+    func isInformationSection(_ section: Int) -> Bool {
         return section == 0
     }
     
