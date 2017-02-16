@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MetaReward.h"
-#import "ShopItem.h"
+#import "ShopItem+CoreDataClass.h"
 
 @interface HRPGRewardTableViewCell : UITableViewCell
 
@@ -25,6 +25,8 @@
 @property(weak, nonatomic) IBOutlet UIView *buyView;
 @property(weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property(weak, nonatomic) IBOutlet UIImageView *coinImageView;
+@property (weak, nonatomic) IBOutlet UILabel *itemsLeftLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *itemLeftSpacing;
 
 - (void)onPurchaseTap:(void (^)())actionBlock;
 

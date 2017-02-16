@@ -10,7 +10,8 @@
 //
 
 #import "ShopCategory.h"
-#import "ShopItem.h"
+
+@class ShopItem;
 
 NS_ASSUME_NONNULL_BEGIN
 

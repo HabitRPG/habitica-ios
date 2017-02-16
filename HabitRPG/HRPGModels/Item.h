@@ -18,5 +18,6 @@
 @property(nonatomic, retain) NSNumber *value;
 @property(nonatomic, retain) NSString *dialog;
 @property(nonatomic, retain) NSString *type;
+@property(nonatomic, retain) NSNumber *isSubscriberItem;
 
 @end

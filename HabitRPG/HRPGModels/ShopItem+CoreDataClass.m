@@ -1,14 +1,13 @@
 //
-//  ShopItem.m
+//  ShopItem+CoreDataClass.m
 //  Habitica
 //
-//  Created by Phillip Thelen on 12/07/16.
-//  Copyright © 2016 Phillip Thelen. All rights reserved.
+//  Created by Phillip Thelen on 14/02/2017.
+//  Copyright © 2017 Phillip Thelen. All rights reserved.
 //
 
-#import "ShopItem.h"
+#import "ShopItem+CoreDataClass.h"
 #import "ShopCategory.h"
-
 @implementation ShopItem
 
 - (NSString *)imageName {

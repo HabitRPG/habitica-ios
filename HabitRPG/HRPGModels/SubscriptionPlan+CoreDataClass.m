@@ -18,5 +18,16 @@
     return 25 + self.gemCapExtra.intValue;
 }
 
+- (NSInteger)gemsLeft {
+    return self.totalGemCap - [self.gemsBought integerValue];
+}
+
+- (void)setMysteryItemsArray:(NSArray *)mysteryItemsArray {
+    self.mysteryItemCount = [NSNumber numberWithInteger:mysteryItemsArray.count];
+}
+
+- (NSArray *)mysteryItemsArray {
+    return nil;
+}
 
 @end

@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *paymentMethod;
 @property (nullable, nonatomic, copy) NSString *planId;
 @property (nullable, nonatomic, retain) User *user;
+@property (nullable, nonatomic, copy) NSNumber *mysteryItemCount;
 
 @end
 

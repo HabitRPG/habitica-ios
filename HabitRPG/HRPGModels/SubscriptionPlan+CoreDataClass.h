@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (Boolean) isActive;
 @property (readonly) NSInteger totalGemCap;
+@property (readonly) NSInteger gemsLeft;
+
+@property (retain) NSArray *mysteryItemsArray;
 
 @end
 

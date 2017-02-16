@@ -18,7 +18,7 @@
 #import "User.h"
 #import "item.h"
 #import "InboxMessage.h"
-#import "ShopItem.h"
+#import "ShopItem+CoreDataClass.h"
 #import "Spell.h"
 #import "HRPGNotification.h"
 
@@ -124,6 +124,8 @@
            onError:(void (^)())errorBlock;
 
 - (void)sellItem:(Item *)item onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+
+- (void)openMysteryItem:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)equipObject:(NSString *)key
            withType:(NSString *)type

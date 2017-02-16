@@ -152,6 +152,7 @@
     </entity>
     <entity name="Item" representedClassName="Item" isAbstract="YES" syncable="YES">
         <attribute name="dialog" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isSubscriberItem" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="owned" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -291,6 +292,8 @@
         <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isSubscriberItem" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="itemsLeft" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locked" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
@@ -331,6 +334,7 @@
         <attribute name="dateTerminated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="gemCapExtra" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="gemsBought" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="mysteryItemCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="owner" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="paymentMethod" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="planId" optional="YES" attributeType="String" syncable="YES"/>
@@ -488,7 +492,7 @@
         <element name="HatchingPotion" positionX="0" positionY="0" width="128" height="60"/>
         <element name="ImprovementCategory" positionX="0" positionY="0" width="128" height="90"/>
         <element name="InboxMessage" positionX="9" positionY="153" width="128" height="255"/>
-        <element name="Item" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="Item" positionX="0" positionY="0" width="128" height="165"/>
         <element name="MetaReward" positionX="0" positionY="0" width="128" height="165"/>
         <element name="Outfit" positionX="0" positionY="0" width="128" height="240"/>
         <element name="Pet" positionX="0" positionY="0" width="128" height="165"/>
@@ -502,10 +506,10 @@
         <element name="Reward" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Shop" positionX="9" positionY="153" width="128" height="120"/>
         <element name="ShopCategory" positionX="18" positionY="162" width="128" height="150"/>
-        <element name="ShopItem" positionX="27" positionY="171" width="128" height="225"/>
+        <element name="ShopItem" positionX="27" positionY="171" width="128" height="255"/>
         <element name="SpecialItems" positionX="18" positionY="162" width="128" height="210"/>
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="SubscriptionPlan" positionX="9" positionY="153" width="128" height="210"/>
+        <element name="SubscriptionPlan" positionX="9" positionY="153" width="128" height="225"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Task" positionX="0" positionY="0" width="128" height="495"/>
         <element name="TaskHistory" positionX="18" positionY="162" width="128" height="90"/>

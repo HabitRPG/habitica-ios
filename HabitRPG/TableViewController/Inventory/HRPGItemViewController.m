@@ -58,10 +58,16 @@ float textWidth;
     };
     FetchRequestConfigureBlock configureFetchRequest = ^(NSFetchRequest *fetchRequest) {
         NSPredicate *predicate;
+        NSString *predicateString = @"owned > 0 && text != ''";
+        
+        if (![weakSelf.sharedManager getUser].subscriptionPlan.isActive) {
+            predicateString = [predicateString stringByAppendingString:@" && isSubscriberItem != YES"];
+        }
+        
         if (self.itemType) {
-            predicate = [NSPredicate predicateWithFormat:@"owned > 0 && text != '' && type == %@", weakSelf.itemType];
+            predicate = [NSPredicate predicateWithFormat:@"%@ && type == %@", predicateString, weakSelf.itemType];
         } else {
-            predicate = [NSPredicate predicateWithFormat:@"owned > 0 && text != ''"];
+            predicate = [NSPredicate predicateWithFormat:predicateString];
         }
         [fetchRequest setPredicate:predicate];
         
@@ -123,10 +129,17 @@ float textWidth;
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
     
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"text == ''"];
     NSError *error;
     NSArray<Item *> *items = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    if (items.count > 0) {
+    NSMutableArray<Item *> *duplicateItems = [NSMutableArray arrayWithCapacity:items.count/2];
+    
+    for (int pos = 1; pos < items.count; pos++) {
+        if ([items[pos].key isEqualToString:items[pos-1].key]) {
+            [duplicateItems addObject:items[pos]];
+        }
+    }
+    
+    if (duplicateItems.count > 0) {
         for (Item *item in items) {
             [self.managedObjectContext deleteObject:item];
         }
@@ -296,6 +309,9 @@ float textWidth;
         extraItem = NSLocalizedString(@"Hatch Egg", nil);
     } else if ([item isKindOfClass:[Egg class]]) {
         extraItem = NSLocalizedString(@"Hatch with Potion", nil);
+    } else if ([item.key isEqualToString:@"inventory_present"]) {
+        extraItem = NSLocalizedString(@"Open", nil);
+        destructiveButton = nil;
     }
 
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil
@@ -328,6 +344,8 @@ float textWidth;
                 [self dismissViewControllerAnimated:YES completion:nil];
             }
         }onError:nil];
+    } else if (buttonIndex == 0 && [self.selectedItem.key isEqualToString:@"inventory_present"]) {
+        [self.sharedManager openMysteryItem:nil onError:nil];
     } else if (buttonIndex == 1 && ![self.selectedItem isKindOfClass:[Quest class]]) {
         self.isHatching = YES;
         if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
@@ -358,6 +376,9 @@ float textWidth;
     NSString *imageName;
     if ([item.type isEqualToString:@"quests"]) {
         imageName = @"inventory_quest_scroll";
+    } else if ([item.key isEqualToString:@"inventory_present"]) {
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitMonth fromDate:[NSDate date]];
+        imageName = [NSString stringWithFormat:@"inventory_present_%02ld", (long)[components month]];
     } else {
         NSString *type;
         if ([item.type isEqualToString:@"eggs"]) {

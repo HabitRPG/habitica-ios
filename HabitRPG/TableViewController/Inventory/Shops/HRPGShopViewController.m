@@ -8,7 +8,7 @@
 
 #import "HRPGShopViewController.h"
 #import "HRPGCoreDataDataSource.h"
-#import "ShopItem.h"
+#import "ShopItem+CoreDataClass.h"
 #import "Shop.h"
 #import "HRPGRewardTableViewCell.h"
 #import "User.h"
@@ -63,7 +63,11 @@
     };
     FetchRequestConfigureBlock configureFetchRequest = ^(NSFetchRequest *fetchRequest) {
         NSPredicate *predicate;
-        predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@", weakSelf.shopIdentifier];
+        if (weakSelf.user.subscriptionPlan.isActive) {
+            predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@", weakSelf.shopIdentifier];
+        } else {
+            predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@ && isSubscriberItem != YES", weakSelf.shopIdentifier];
+        }
         [fetchRequest setPredicate:predicate];
         
         NSSortDescriptor *indexDescriptor =

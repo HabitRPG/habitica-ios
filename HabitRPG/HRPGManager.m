@@ -46,6 +46,7 @@
 #import "UIView+ScreenShot.h"
 #import "HRPGNotification.h"
 #import "HRPGNotificationManager.h"
+#import "ShopItem+CoreDataClass.h"
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
@@ -579,7 +580,7 @@ NSString *currentUser;
                               parsedArguments:&argsDict];
         if (match) {
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"ShopItem"];
-            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@", argsDict[@"identifier"]];
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@ && isSubscriberItem != YES", argsDict[@"identifier"]];
             return fetchRequest;
         }
 
@@ -859,6 +860,8 @@ NSString *currentUser;
                                                               @"paymentMethod": @"paymentMethod",
                                                               @"consecutive.trinkets": @"consecutiveTrinkets",
                                                               @"consecutive.gemCapExtra": @"gemCapExtra",
+                                                              @"gemsBought": @"gemsBought",
+                                                              @"mysteryItems": @"mysteryItemsArray"
                                                               }];
     subscriptionMapping.identificationAttributes = @[ @"customerId" ];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"purchased.plan" toKeyPath:@"subscriptionPlan" withMapping:subscriptionMapping]];
@@ -1684,6 +1687,17 @@ NSString *currentUser;
                               keyPath:@"data.gear.flat"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    
+    gearMapping = [gearMapping copy];
+    gearMapping.forceCollectionMapping = NO;
+    
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:gearMapping
+                          method:RKRequestMethodPOST
+                          pathPattern:@"user/open-mystery-item"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
 
     gearMapping =
         [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
@@ -2268,6 +2282,7 @@ NSString *currentUser;
             }
 
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+            
             [defaults setObject:[NSDate date] forKey:@"lastContentFetch"];
             [defaults synchronize];
             if (successBlock) {
@@ -2398,6 +2413,10 @@ NSString *currentUser;
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
             [defaults setObject:[NSDate date] forKey:@"lastTaskFetch"];
             [defaults synchronize];
+            
+            if (fetchedUser.subscriptionPlan.isActive) {
+                [self updateMysteryItemCount];
+            }
             if (includeTasks) {
                 [self fetchTasks:successBlock onError:errorBlock];
             } else {
@@ -2406,6 +2425,7 @@ NSString *currentUser;
                     successBlock();
                 }
             }
+            self.user = fetchedUser;
             [self handleNotifications:[mappingResult dictionary][@"notifications"]];
             [self.networkIndicatorController endNetworking];
             return;
@@ -3595,6 +3615,42 @@ NSString *currentUser;
             [self.networkIndicatorController endNetworking];
             return;
         }];
+}
+
+- (void)openMysteryItem:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:Nil
+                                           path:@"user/open-mystery-item"
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            [self fetchUser:^{
+                                                if (successBlock) {
+                                                    successBlock();
+                                                }
+                                            } onError:^{
+                                                if (successBlock) {
+                                                    successBlock();
+                                                }
+                                            }];
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
+                                                [self displayServerError];
+                                            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
+                                                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
+                                                [self displayError:errorMessage.errorMessage];
+                                            } else {
+                                                [self displayNetworkError];
+                                            }
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
 }
 
 - (void)equipObject:(NSString *)key
@@ -4893,6 +4949,11 @@ NSString *currentUser;
                                      parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [self.networkIndicatorController endNetworking];
+                                            
+                                            if ([shopInventory isEqualToString:MarketKey]) {
+                                                [self insertSubscriberShopItems];
+                                            }
+                                            
                                             if (successBlock) {
                                                 successBlock();
                                             }
@@ -5379,6 +5440,130 @@ NSString *currentUser;
 
 - (void)handleNotifications:(NSArray *)notifications {
     [self.notificationManager enqueueNotifications:notifications];
+}
+
+- (void)insertSubscriberShopItems {
+    NSError *error;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest
+     setEntity:[NSEntityDescription entityForName:@"Shop"
+                           inManagedObjectContext:[self getManagedObjectContext]]];
+    NSArray *existingShops =
+    [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    
+    Shop *market = nil;
+    
+    for (Shop *shop in existingShops) {
+        if ([shop.identifier isEqualToString:@"market"]) {
+            market = shop;
+            break;
+        }
+    }
+    
+    if (!market) {
+        market = [NSEntityDescription insertNewObjectForEntityForName:@"Shop" inManagedObjectContext:[self getManagedObjectContext]];
+        market.identifier = @"market";
+        [[self getManagedObjectContext] saveToPersistentStore:&error];
+    }
+    
+    fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest
+     setEntity:[NSEntityDescription entityForName:@"ShopCategory"
+                           inManagedObjectContext:[self getManagedObjectContext]]];
+    NSArray *existingCategories =
+    [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+
+    ShopCategory *specialCategory = nil;
+    
+    for (ShopCategory *category in existingCategories) {
+        if ([category.identifier isEqualToString:@"special"]) {
+            specialCategory = category;
+            break;
+        }
+    }
+    
+    if (!specialCategory) {
+        specialCategory = [NSEntityDescription insertNewObjectForEntityForName:@"ShopCategory" inManagedObjectContext:[self getManagedObjectContext]];
+        specialCategory.text = NSLocalizedString(@"Special", nil);
+        specialCategory.identifier = @"special";
+        specialCategory.index = @99;
+    }
+    NSMutableOrderedSet *categories = [NSMutableOrderedSet orderedSetWithOrderedSet:market.categories];
+    [categories addObject:specialCategory];
+    market.categories = categories;
+    specialCategory.shop = market;
+    [[self getManagedObjectContext] saveToPersistentStore:&error];
+    
+    fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest
+     setEntity:[NSEntityDescription entityForName:@"ShopItem"
+                           inManagedObjectContext:[self getManagedObjectContext]]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"isSubscriberItem = YES"]];
+    NSArray *existingItems =
+    [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+
+    ShopItem *gem = nil;
+    
+    for (ShopItem *item in existingItems) {
+        if ([item.key isEqualToString:@"gem"]) {
+            gem = item;
+            break;
+        }
+    }
+    
+    if (!gem) {
+        gem = [NSEntityDescription insertNewObjectForEntityForName:@"ShopItem" inManagedObjectContext:[self getManagedObjectContext]];
+        gem.key = @"gem";
+        gem.text = NSLocalizedString(@"Gem", nil);
+        gem.notes = NSLocalizedString(@"Because you subscribe to Habitica, you can purchase a number of Gems each month using Gold.", nil);
+        gem.imageName = @"gem_shop";
+        gem.purchaseType = @"gems";
+        gem.currency = @"gold";
+        gem.value = @20;
+        gem.isSubscriberItem = @YES;
+    }
+
+    gem.itemsLeft = [NSNumber numberWithInteger:self.user.subscriptionPlan.gemsLeft];
+    
+    NSMutableOrderedSet *items = [NSMutableOrderedSet orderedSetWithOrderedSet:specialCategory.items];
+    
+    [items addObject:gem];
+    
+    specialCategory.items = items;
+    
+    gem.category = specialCategory;
+    
+    [[self getManagedObjectContext] saveToPersistentStore:&error];
+}
+
+- (void) updateMysteryItemCount {
+    NSError *error;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest
+     setEntity:[NSEntityDescription entityForName:@"Item"
+                           inManagedObjectContext:[self getManagedObjectContext]]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"isSubscriberItem = YES"]];
+    NSArray *existingItems = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    
+    Item *mysteryPresent = nil;
+    
+    for (Item *item in existingItems) {
+        if ([item.key isEqualToString:@"inventory_present"]) {
+            mysteryPresent = item;
+            break;
+        }
+    }
+    
+    if (!mysteryPresent) {
+        mysteryPresent = [NSEntityDescription insertNewObjectForEntityForName:@"Item" inManagedObjectContext:[self getManagedObjectContext]];
+        mysteryPresent.key = @"inventory_present";
+        mysteryPresent.text = NSLocalizedString(@"Mystery Item", nil);
+        mysteryPresent.notes = NSLocalizedString(@"Each month, subscribers will receive a mystery item. This is usually released about one week before the end of the month.", nil);
+        mysteryPresent.isSubscriberItem = @YES;
+        mysteryPresent.type = @"special";
+    }
+    mysteryPresent.owned = self.user.subscriptionPlan.mysteryItemCount;
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MetaReward.h"
-#import "ShopItem.h"
+#import "ShopItem+CoreDataClass.h"
 
 @interface HRPGGearDetailView : UIView
 

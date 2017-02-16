@@ -120,6 +120,14 @@
         self.backgroundColor = [UIColor gray500];
         self.buyButton.userInteractionEnabled = NO;
     }
+    
+    if (shopItem.itemsLeft) {
+        self.itemsLeftLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%@ left", nil), shopItem.itemsLeft];
+        self.itemLeftSpacing.constant = 4;
+    } else {
+        self.itemsLeftLabel.text = nil;
+        self.itemLeftSpacing.constant = 0;
+    }
 }
 
 - (void)handleBuyTap:(UITapGestureRecognizer *)recognizer {

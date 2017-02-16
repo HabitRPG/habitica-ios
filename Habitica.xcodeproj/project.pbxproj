@@ -41,7 +41,6 @@
 		D92A085B1D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A08521D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m */; };
 		D92A085C1D3520D8000F8B66 /* ShopCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A08541D3520D8000F8B66 /* ShopCategory.m */; };
 		D92A085D1D3520D8000F8B66 /* ShopItem+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A08561D3520D8000F8B66 /* ShopItem+CoreDataProperties.m */; };
-		D92A085E1D3520D8000F8B66 /* ShopItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A08581D3520D8000F8B66 /* ShopItem.m */; };
 		D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C0C401B8745DF000AF799 /* HRPGAPITests.m */; };
 		D92C0C441B8749DF000AF799 /* HabiticaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D94461871AB34F5C0015215E /* HabiticaTests.m */; };
 		D92C60F81BD3F28A005F68CC /* HRPGAccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C60F71BD3F28A005F68CC /* HRPGAccountDetailViewController.m */; };
@@ -159,6 +158,7 @@
 		D998FD951ADAC1FF00E9A26F /* HRPGAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D998FD941ADAC1FF00E9A26F /* HRPGAboutViewController.m */; };
 		D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D99BC43019D4C34A006DC132 /* 1Password.xcassets */; };
 		D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */; };
+		D99CDDDD1E5368E400ABD85F /* ShopItem+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D99CDDDC1E5368E400ABD85F /* ShopItem+CoreDataClass.m */; };
 		D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */; };
 		D99DEC87190836D400FFD2B9 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC86190836D400FFD2B9 /* Item.m */; };
 		D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D99DEC88190842CA00FFD2B9 /* Placeholder.png */; };
@@ -364,8 +364,6 @@
 		D92A08541D3520D8000F8B66 /* ShopCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCategory.m; sourceTree = "<group>"; };
 		D92A08551D3520D8000F8B66 /* ShopItem+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShopItem+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D92A08561D3520D8000F8B66 /* ShopItem+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ShopItem+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D92A08571D3520D8000F8B66 /* ShopItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopItem.h; sourceTree = "<group>"; };
-		D92A08581D3520D8000F8B66 /* ShopItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopItem.m; sourceTree = "<group>"; };
 		D92C0C401B8745DF000AF799 /* HRPGAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAPITests.m; sourceTree = "<group>"; };
 		D92C0C421B8748CD000AF799 /* HabiticaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HabiticaTests.h; sourceTree = "<group>"; };
 		D92C60F61BD3F28A005F68CC /* HRPGAccountDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAccountDetailViewController.h; sourceTree = "<group>"; };
@@ -604,6 +602,8 @@
 		D99BC43019D4C34A006DC132 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
 		D99BC43119D4C34A006DC132 /* OnePasswordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
 		D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
+		D99CDDDB1E5368E400ABD85F /* ShopItem+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShopItem+CoreDataClass.h"; sourceTree = "<group>"; };
+		D99CDDDC1E5368E400ABD85F /* ShopItem+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ShopItem+CoreDataClass.m"; sourceTree = "<group>"; };
 		D99DEC821908313D00FFD2B9 /* HRPGItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGItemViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGItemViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D99DEC85190836D400FFD2B9 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
@@ -1400,6 +1400,8 @@
 		D9C3D01D19509E4C00D22A4A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				D99CDDDB1E5368E400ABD85F /* ShopItem+CoreDataClass.h */,
+				D99CDDDC1E5368E400ABD85F /* ShopItem+CoreDataClass.m */,
 				D9CE90361E4CAE6700702578 /* TaskHistory+CoreDataClass.h */,
 				D9CE90371E4CAE6700702578 /* TaskHistory+CoreDataClass.m */,
 				D9CE90381E4CAE6700702578 /* TaskHistory+CoreDataProperties.h */,
@@ -1490,8 +1492,6 @@
 				D92A08541D3520D8000F8B66 /* ShopCategory.m */,
 				D92A08511D3520D8000F8B66 /* ShopCategory+CoreDataProperties.h */,
 				D92A08521D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m */,
-				D92A08571D3520D8000F8B66 /* ShopItem.h */,
-				D92A08581D3520D8000F8B66 /* ShopItem.m */,
 				D92A08551D3520D8000F8B66 /* ShopItem+CoreDataProperties.h */,
 				D92A08561D3520D8000F8B66 /* ShopItem+CoreDataProperties.m */,
 				D9E46B051DABE97200E390D7 /* SpecialItems+CoreDataClass.h */,
@@ -2255,7 +2255,7 @@
 				D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */,
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
 				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,
-				D92A085E1D3520D8000F8B66 /* ShopItem.m in Sources */,
+				D99CDDDD1E5368E400ABD85F /* ShopItem+CoreDataClass.m in Sources */,
 				D903B78C1DCA4C25001F2893 /* HRPGNotificationManager.m in Sources */,
 				D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */,
 				D92A08591D3520D8000F8B66 /* Shop+CoreDataProperties.m in Sources */,

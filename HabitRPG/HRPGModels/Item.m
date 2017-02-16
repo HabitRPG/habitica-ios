@@ -17,6 +17,7 @@
 @dynamic value;
 @dynamic dialog;
 @dynamic type;
+@dynamic isSubscriberItem;
 
 - (void)setType:(NSString *)type {
     [self willChangeValueForKey:@"type"];

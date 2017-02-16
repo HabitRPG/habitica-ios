@@ -25,5 +25,6 @@
 @dynamic paymentMethod;
 @dynamic planId;
 @dynamic user;
+@dynamic mysteryItemCount;
 
 @end
