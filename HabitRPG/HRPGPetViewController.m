@@ -172,7 +172,7 @@
     } else if ([self.equippedPetName isEqualToString:pet.key]) {
         equipString = NSLocalizedString(@"Unequip", nil);
     }
-    if ((pet.asMount) || ([pet.type isEqualToString:@" "])) {
+    if (![pet isFeedable]) {
         feedString = nil;
     }
 

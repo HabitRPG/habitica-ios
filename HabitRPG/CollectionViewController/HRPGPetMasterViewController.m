@@ -109,7 +109,7 @@ NSUserDefaults *defaults;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [[self.fetchedResultsController sections] count];
+    return self.sortedPets.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
@@ -186,8 +186,10 @@ NSUserDefaults *defaults;
     NSString *sectionName = [[self.fetchedResultsController sections][indexPath.section] name];
     if ([sectionName isEqualToString:@"questPets"] || [sectionName isEqualToString:@"data.questPets"]) {
         label.text = NSLocalizedString(@"Quest Pets", nil);
-    } else if ([sectionName isEqualToString:@" "]) {
+    } else if ([sectionName isEqualToString:@"specialPets"]) {
         label.text = NSLocalizedString(@"Special Pets", nil);
+    } else if ([sectionName isEqualToString:@"premiumPets"]) {
+        label.text = NSLocalizedString(@"Premium Pets", nil);
     } else {
         label.text = NSLocalizedString(@"Base Pets", nil);
     }
@@ -209,9 +211,8 @@ NSUserDefaults *defaults;
     NSMutableArray *newSortedPets = [NSMutableArray array];
     for (id<NSFetchedResultsSectionInfo> sectionInfo in self.fetchedResultsController.sections) {
         NSMutableArray *sectionArray = [NSMutableArray array];
-        [newSortedPets addObject:sectionArray];
         for (Pet *pet in [sectionInfo objects]) {
-            if ([pet.type isEqualToString:@" "] && ![pet.trained boolValue]) {
+            if ([pet.type isEqualToString:@"specialPets"] && ![pet.trained boolValue]) {
                 continue;
             }
             NSArray *nameParts = [pet.key componentsSeparatedByString:@"-"];
@@ -232,6 +233,9 @@ NSUserDefaults *defaults;
                 [sectionArray addObject:petArray];
             }
             [petArray addObject:pet];
+        }
+        if (sectionArray.count > 0) {
+            [newSortedPets addObject:sectionArray];
         }
     }
     _sortedPets = newSortedPets;

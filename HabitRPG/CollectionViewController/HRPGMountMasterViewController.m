@@ -82,7 +82,7 @@ NSUserDefaults *defaults;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [[self.fetchedResultsController sections] count];
+    return self.sortedPets.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
@@ -100,7 +100,7 @@ NSUserDefaults *defaults;
                 self.selectedColor = [namePet.key componentsSeparatedByString:@"-"][1];
             } else {
                 self.selectedMount = [namePet.key componentsSeparatedByString:@"-"][0];
-                if ([namePet.type isEqualToString:@" "]) {
+                if ([namePet.type isEqualToString:@"specialPets"]) {
                     self.selectedColor = [namePet.key componentsSeparatedByString:@"-"][1];
                 }
             }
@@ -152,8 +152,10 @@ NSUserDefaults *defaults;
     NSString *sectionName = [[self.fetchedResultsController sections][indexPath.section] name];
     if ([sectionName isEqualToString:@"questPets"]) {
         label.text = NSLocalizedString(@"Quest Mounts", nil);
-    } else if ([sectionName isEqualToString:@" "]) {
+    } else if ([sectionName isEqualToString:@"specialPets"]) {
         label.text = NSLocalizedString(@"Special Mounts", nil);
+    } else if ([sectionName isEqualToString:@"premiumPets"]) {
+        label.text = NSLocalizedString(@"Premium Pets", nil);
     } else {
         label.text = NSLocalizedString(@"Base Mounts", nil);
     }
@@ -176,11 +178,10 @@ NSUserDefaults *defaults;
     NSMutableArray *newSortedPets = [NSMutableArray array];
     for (id<NSFetchedResultsSectionInfo> sectionInfo in self.fetchedResultsController.sections) {
         NSMutableArray *sectionArray = [NSMutableArray array];
-        [newSortedPets addObject:sectionArray];
         for (Pet *pet in [sectionInfo objects]) {
             NSArray *nameParts = [pet.key componentsSeparatedByString:@"-"];
             if ([nameParts[0] isEqualToString:@"Turkey"] ||
-                ([pet.type isEqualToString:@" "] && ![pet.asMount boolValue])) {
+                ([pet.type isEqualToString:@"specialPets"] && ![pet.asMount boolValue])) {
                 continue;
             }
             NSMutableArray *petArray;
@@ -200,6 +201,9 @@ NSUserDefaults *defaults;
                 [sectionArray addObject:petArray];
             }
             [petArray addObject:pet];
+        }
+        if (sectionArray.count > 0) {
+            [newSortedPets addObject:sectionArray];
         }
     }
     _sortedPets = newSortedPets;

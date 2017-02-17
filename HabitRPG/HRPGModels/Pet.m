@@ -91,9 +91,13 @@
 - (void)setType:(NSString *)type {
     [self willChangeValueForKey:@"type"];
     [self setPrimitiveValue:[type stringByReplacingOccurrencesOfString:@"data."
-                                                             withString:@""]
+                                                            withString:@""]
                      forKey:@"type"];
     [self didChangeValueForKey:@"type"];
+}
+
+- (BOOL)isFeedable {
+    return !((self.asMount) || ([self.type isEqualToString:@"specialPets"]));
 }
 
 @end

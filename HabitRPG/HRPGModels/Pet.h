@@ -21,5 +21,6 @@
 - (void)getMountImage:(void (^)(UIImage *))successBlock;
 - (void)setMountOnImageView:(UIImageView *)imageView;
 - (BOOL)likesFood:(Food *)food;
+- (BOOL)isFeedable;
 
 @end

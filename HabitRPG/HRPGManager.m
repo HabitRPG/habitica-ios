@@ -1959,6 +1959,20 @@ NSString *currentUser;
                               keyPath:@"data.questPets"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:petMapping
+                          method:RKRequestMethodGET
+                          pathPattern:@"content"
+                          keyPath:@"data.specialPets"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:petMapping
+                          method:RKRequestMethodGET
+                          pathPattern:@"content"
+                          keyPath:@"data.premiumPets"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
 
     RKEntityMapping *faqMapping =
         [RKEntityMapping mappingForEntityForName:@"FAQ" inManagedObjectStore:managedObjectStore];
