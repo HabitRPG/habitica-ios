@@ -19,5 +19,6 @@
 @property(weak, nonatomic) IBOutlet NSLayoutConstraint *titleNoteConstraint;
 @property(weak, nonatomic) IBOutlet UIView *textWrapperView;
 @property (weak, nonatomic) IBOutlet TaskDetailLineView *taskDetailLine;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *taskDetailSpacing;
 
 @end

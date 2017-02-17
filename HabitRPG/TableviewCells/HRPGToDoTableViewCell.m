@@ -14,14 +14,10 @@
 - (void)configureForTask:(Task *)task {
     [super configureForTask:task];
     [self.checkBox configureForTask:task];
-
-    self.dueLabel.backgroundColor = self.backgroundColor;
 }
 
 - (void)configureForItem:(ChecklistItem *)item forTask:(Task *)task {
     [super configureForItem:item forTask:task];
-    self.dueLabel.text = nil;
-    self.notesDueSeparator.constant = 0;
 }
 
 @end

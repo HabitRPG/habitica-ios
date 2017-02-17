@@ -323,7 +323,7 @@ User *user;
         [weakSelf.sharedManager clearLoginCredentials];
 
         [weakSelf.sharedManager
-         resetSavedDatabase:YES
+         resetSavedDatabase:NO
          onComplete:^() {
              [overlayView dismiss:YES
                        completion:^() {

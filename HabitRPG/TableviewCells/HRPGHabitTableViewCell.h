@@ -13,7 +13,4 @@
 
 @property(weak, nonatomic) IBOutlet HRPGHabitButtons *plusButton;
 @property (weak, nonatomic) IBOutlet HRPGHabitButtons *minusButton;
-
-@property(weak, nonatomic) IBOutlet UILabel *lastactionLabel;
-@property(weak, nonatomic) IBOutlet NSLayoutConstraint *notesLastActionConstraint;
 @end

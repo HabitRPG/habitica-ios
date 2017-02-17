@@ -32,7 +32,11 @@
 
     [self.taskDetailLine configureWithTask:task];
     if (self.taskDetailLine.hasContent) {
-        
+        self.taskDetailLine.hidden = NO;
+        self.taskDetailSpacing.constant = 4;
+    } else {
+        self.taskDetailLine.hidden = YES;
+        self.taskDetailSpacing.constant = 0;
     }
     
     [self setNeedsLayout];

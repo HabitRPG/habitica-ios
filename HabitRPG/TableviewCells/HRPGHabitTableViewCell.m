@@ -14,9 +14,6 @@
     [super configureForTask:task];
     [self.plusButton configureForTask:task isNegative:NO];
     [self.minusButton configureForTask:task isNegative:YES];
-
-    // Until we save the TaskHistory just set the last action to be hidden
-    self.notesLastActionConstraint.constant = 0;
 }
 
 @end

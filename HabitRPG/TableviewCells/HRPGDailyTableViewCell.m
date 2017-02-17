@@ -22,23 +22,10 @@
             self.checklistIndicator.backgroundColor = [UIColor gray100];
         }
     }
-    if ([task.streak integerValue] > 0) {
-        self.streakLabel.text =
-            [NSString stringWithFormat:NSLocalizedString(@"Current streak: %@", nil), task.streak];
-        self.streakLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2];
-        self.notesStreakSeparator.constant = 6.0;
-    } else {
-        self.streakLabel.text = nil;
-        self.notesStreakSeparator.constant = 0;
-    }
-
-    self.streakLabel.backgroundColor = self.backgroundColor;
 }
 
 - (void)configureForItem:(ChecklistItem *)item forTask:(Task *)task {
     [super configureForItem:item forTask:task];
-    self.streakLabel.text = nil;
-    self.notesStreakSeparator.constant = 0;
 }
 
 @end

@@ -38,7 +38,7 @@
         self.checklistDoneLabel.hidden = YES;
         self.checklistAllLabel.hidden = YES;
         self.checklistSeparator.hidden = YES;
-        self.checklistIndicatorWidth.constant = 6.0;
+        self.checklistIndicatorWidth.constant = 0;
     }
 
     if ([task.completed boolValue]) {
@@ -72,6 +72,9 @@
     self.checklistIndicator.hidden = YES;
     self.subtitleLabel.text = nil;
     self.titleNoteConstraint.constant = 0;
+    
+    self.taskDetailLine.hidden = YES;
+    self.taskDetailSpacing.constant = 0;
 }
 
 @end

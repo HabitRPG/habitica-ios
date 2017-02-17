@@ -447,14 +447,14 @@ BOOL editable;
         return 0.1;
     }
     float width;
-    NSInteger height = 30;
+    NSInteger height = 35;
     if ([task.checklist count] > 0) {
-        width = self.viewWidth - 125;
+        width = self.viewWidth - 120;
     } else {
         width = self.viewWidth - 94;
     }
-    if ([task.type isEqualToString:@"daily"]) {
-        width = width - 25;
+    if ([task.type isEqualToString:@"habit"]) {
+        width = self.viewWidth - 132;
     }
     height = height +
              [[task.text stringByReplacingEmojiCheatCodesWithUnicode]
