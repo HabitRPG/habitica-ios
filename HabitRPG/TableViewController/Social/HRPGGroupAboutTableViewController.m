@@ -131,7 +131,7 @@
     if (indexPath.item == 0) {
         self.sizeTextView.attributedString = [self renderMarkdown:self.group.hdescription];
         CGSize suggestedSize = [self.sizeTextView.attributedTextContentView
-            suggestedFrameSizeToFitEntireStringConstraintedToWidth:self.viewWidth - 24];
+            suggestedFrameSizeToFitEntireStringConstraintedToWidth:self.viewWidth - 48];
         CGFloat rowHeight = suggestedSize.height + 24;
         return rowHeight;
     } else {

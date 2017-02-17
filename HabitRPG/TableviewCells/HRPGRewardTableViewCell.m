@@ -121,7 +121,7 @@
         self.buyButton.userInteractionEnabled = NO;
     }
     
-    if (shopItem.itemsLeft) {
+    if (shopItem.itemsLeft && [shopItem.isSubscriberItem boolValue]) {
         self.itemsLeftLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%@ left", nil), shopItem.itemsLeft];
         self.itemLeftSpacing.constant = 4;
     } else {
