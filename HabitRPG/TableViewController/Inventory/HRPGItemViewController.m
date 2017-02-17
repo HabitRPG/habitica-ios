@@ -65,7 +65,7 @@ float textWidth;
         }
         
         if (self.itemType) {
-            predicate = [NSPredicate predicateWithFormat:@"%@ && type == %@", predicateString, weakSelf.itemType];
+            predicate = [NSPredicate predicateWithFormat:[predicateString stringByAppendingString:@" && type == %@"], weakSelf.itemType];
         } else {
             predicate = [NSPredicate predicateWithFormat:predicateString];
         }
