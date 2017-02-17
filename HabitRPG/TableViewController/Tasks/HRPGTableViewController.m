@@ -566,6 +566,7 @@ BOOL editable;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task"
                                               inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setReturnsObjectsAsFaults:NO];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
     [fetchRequest setPredicate:[self getPredicate]];
