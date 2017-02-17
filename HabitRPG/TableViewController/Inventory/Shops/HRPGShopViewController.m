@@ -201,7 +201,7 @@
             if ([shopItem.value integerValue] == 1) {
                 currencyString = NSLocalizedString(@"gold", @"Singular");
             } else {
-                currencyString = NSLocalizedString(@"gems", @"Plural");
+                currencyString = NSLocalizedString(@"gold", @"Plural");
             }
         } else if ([shopItem.currency isEqualToString:@"hourglasses"]) {
             if ([shopItem.value integerValue] == 1) {
