@@ -3504,6 +3504,8 @@ NSString *currentUser;
             } else {
                 if ([response.armoireType isEqualToString:@"experience"]) {
                     self.user.experience = [NSNumber numberWithFloat:[self.user.experience floatValue] + [response.armoireValue floatValue]];
+                } else {
+                    [self fetchUser:nil onError:nil];
                 }
             }
             self.user.magic = response.magic ? response.magic : self.user.magic;
