@@ -2442,11 +2442,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -2479,11 +2475,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -2515,11 +2507,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -2542,11 +2530,7 @@ NSString *currentUser;
                                             return;
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                [self displayServerError];
-                                            } else {
-                                                [self displayNetworkError];
-                                            }
+                                            [self handleNetworkError:operation withError:error];
                                             if (errorBlock) {
                                                 errorBlock();
                                             }
@@ -2601,11 +2585,7 @@ NSString *currentUser;
                     onSuccess:nil onError:nil];
                 return;
             }
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
 
             [self.networkIndicatorController endNetworking];
             return;
@@ -2653,11 +2633,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -2683,11 +2659,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -2808,11 +2780,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -2836,11 +2804,7 @@ NSString *currentUser;
          return;
      }
      failure:^(RKObjectRequestOperation *operation, NSError *error) {
-         if (operation.HTTPRequestOperation.response.statusCode == 503) {
-             [self displayServerError];
-         } else {
-             [self displayNetworkError];
-         }
+         [self handleNetworkError:operation withError:error];
          if (errorBlock) {
              errorBlock();
          }
@@ -2883,11 +2847,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -2912,6 +2872,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -2936,6 +2897,7 @@ NSString *currentUser;
                                             return;
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            [self handleNetworkError:operation withError:error];
                                             if (errorBlock) {
                                                 errorBlock();
                                             }
@@ -2960,11 +2922,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -2989,11 +2947,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3042,6 +2996,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3068,11 +3023,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3099,11 +3050,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3131,6 +3078,7 @@ NSString *currentUser;
                                             return;
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            [self handleNetworkError:operation withError:error];
                                             if (errorBlock) {
                                                 errorBlock();
                                             }
@@ -3157,11 +3105,7 @@ NSString *currentUser;
                                            return;
                                        }
                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                           if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                               [self displayServerError];
-                                           } else {
-                                               [self displayNetworkError];
-                                           }
+                                           [self handleNetworkError:operation withError:error];
                                            if (errorBlock) {
                                                errorBlock();
                                            }
@@ -3188,11 +3132,7 @@ NSString *currentUser;
                                               return;
                                           }
                                           failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                              if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                  [self displayServerError];
-                                              } else {
-                                                  [self displayNetworkError];
-                                              }
+                                              [self handleNetworkError:operation withError:error];
                                               if (errorBlock) {
                                                   errorBlock();
                                               }
@@ -3240,11 +3180,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3269,11 +3205,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3305,12 +3237,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3346,12 +3273,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3423,11 +3345,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3537,14 +3455,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
-                [self displayError:errorMessage.errorMessage];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3572,13 +3483,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                [self displayNoGemAlert];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3614,14 +3519,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
-                [self displayError:errorMessage.errorMessage];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3651,14 +3549,7 @@ NSString *currentUser;
                                             return;
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                [self displayServerError];
-                                            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                                                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
-                                                [self displayError:errorMessage.errorMessage];
-                                            } else {
-                                                [self displayNetworkError];
-                                            }
+                                            [self handleNetworkError:operation withError:error];
                                             if (errorBlock) {
                                                 errorBlock();
                                             }
@@ -3705,14 +3596,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
-                [self displayError:errorMessage.errorMessage];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3757,14 +3641,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
-                [self displayError:errorMessage.errorMessage];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3815,11 +3692,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -3844,11 +3717,7 @@ NSString *currentUser;
          return;
      }
      failure:^(RKObjectRequestOperation *operation, NSError *error) {
-         if (operation.HTTPRequestOperation.response.statusCode == 503) {
-             [self displayServerError];
-         } else {
-             [self displayNetworkError];
-         }
+         [self handleNetworkError:operation withError:error];
          if (errorBlock) {
              errorBlock();
          }
@@ -3875,14 +3744,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 401 || operation.HTTPRequestOperation.response.statusCode == 400) {
-                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
-                [self displayError:errorMessage.errorMessage];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 NSString *errorMessage = @"";
                 if (((NSArray *)[error userInfo][RKObjectMapperErrorObjectsKey]).count > 0) {
@@ -3909,11 +3771,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             [self.networkIndicatorController endNetworking];
             return;
         }];
@@ -3936,11 +3794,7 @@ NSString *currentUser;
                                             return;
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                [self displayServerError];
-                                            } else {
-                                                [self displayNetworkError];
-                                            }
+                                            [self handleNetworkError:operation withError:error];
                                             [self.networkIndicatorController endNetworking];
                                             if (errorBlock) {
                                                 errorBlock();
@@ -3967,14 +3821,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 401 || operation.HTTPRequestOperation.response.statusCode == 400) {
-                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
-                [self displayError:errorMessage.errorMessage];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 NSString *errorMessage = @"";
                 if (((NSArray *)[error userInfo][RKObjectMapperErrorObjectsKey]).count > 0) {
@@ -4005,14 +3852,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 401 || operation.HTTPRequestOperation.response.statusCode == 400) {
-                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
-                [self displayError:errorMessage.errorMessage];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 NSString *errorMessage = @"";
                 if (((NSArray *)[error userInfo][RKObjectMapperErrorObjectsKey]).count > 0) {
@@ -4043,14 +3883,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 401 || operation.HTTPRequestOperation.response.statusCode == 400) {
-                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
-                [self displayError:errorMessage.errorMessage];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 NSString *errorMessage = @"";
                 if (((NSArray *)[error userInfo][RKObjectMapperErrorObjectsKey]).count > 0) {
@@ -4081,14 +3914,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 401 || operation.HTTPRequestOperation.response.statusCode == 400) {
-                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
-                [self displayError:errorMessage.errorMessage];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 NSString *errorMessage = @"";
                 if (((NSArray *)[error userInfo][RKObjectMapperErrorObjectsKey]).count > 0) {
@@ -4123,18 +3949,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invitation Error"
-                                                                message:error.localizedDescription
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-                [alert show];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -4167,6 +3982,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -4193,11 +4009,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -4236,18 +4048,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 400 || operation.HTTPRequestOperation.response.statusCode == 404 || operation.HTTPRequestOperation.response.statusCode == 401) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invitation Error", nil)
-                                                                message:error.localizedDescription
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-                [alert show];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -4287,11 +4088,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -4328,11 +4125,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -4364,11 +4157,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -4400,11 +4189,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -4432,11 +4217,7 @@ NSString *currentUser;
                                             return;
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                [self displayServerError];
-                                            } else {
-                                                [self displayNetworkError];
-                                            }
+                                            [self handleNetworkError:operation withError:error];
                                             if (errorBlock) {
                                                 errorBlock();
                                             }
@@ -4464,11 +4245,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -4495,11 +4272,7 @@ NSString *currentUser;
                                               return;
                                           }
                                           failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                              if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                  [self displayServerError];
-                                              } else {
-                                                  [self displayNetworkError];
-                                              }
+                                              [self handleNetworkError:operation withError:error];
                                               if (errorBlock) {
                                                   errorBlock();
                                               }
@@ -4527,11 +4300,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -4560,11 +4329,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -4622,23 +4387,7 @@ NSString *currentUser;
 
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (!operation.HTTPRequestOperation.response ||
-                operation.HTTPRequestOperation.response.statusCode == 502 ||
-                operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self fetchUser:^() {
-                    NSError *executeError = nil;
-                    [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                    if (successBlock) {
-                        successBlock();
-                    }
-                    [self.networkIndicatorController endNetworking];
-                    return;
-                }
-                        onError:nil];
-                return;
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -4750,14 +4499,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                [self displayServerError];
-            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
-                [self displayError:errorMessage.errorMessage];
-            } else {
-                [self displayNetworkError];
-            }
+            [self handleNetworkError:operation withError:error];
             if (errorBlock) {
                 errorBlock();
             }
@@ -4789,14 +4531,7 @@ NSString *currentUser;
                                             return;
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                [self displayServerError];
-                                            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                                                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
-                                                [self displayError:errorMessage.errorMessage];
-                                            } else {
-                                                [self displayNetworkError];
-                                            }
+                                            [self handleNetworkError:operation withError:error];
                                             if (errorBlock) {
                                                 errorBlock();
                                             }
@@ -4828,14 +4563,7 @@ NSString *currentUser;
                                             return;
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                [self displayServerError];
-                                            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                                                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
-                                                [self displayError:errorMessage.errorMessage];
-                                            } else {
-                                                [self displayNetworkError];
-                                            }
+                                            [self handleNetworkError:operation withError:error];
                                             if (errorBlock) {
                                                 errorBlock();
                                             }
@@ -4867,14 +4595,7 @@ NSString *currentUser;
                                             return;
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                [self displayServerError];
-                                            } else if (operation.HTTPRequestOperation.response.statusCode == 401) {
-                                                RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
-                                                [self displayError:errorMessage.errorMessage];
-                                            } else {
-                                                [self displayNetworkError];
-                                            }
+                                            [self handleNetworkError:operation withError:error];
                                             if (errorBlock) {
                                                 errorBlock();
                                             }
@@ -4898,11 +4619,6 @@ NSString *currentUser;
                                             return;
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                [self displayServerError];
-                                            } else {
-                                                [self displayNetworkError];
-                                            }
                                             if (errorBlock) {
                                                 errorBlock();
                                             }
@@ -4929,11 +4645,6 @@ NSString *currentUser;
                                             return;
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                [self displayServerError];
-                                            } else {
-                                                [self displayNetworkError];
-                                            }
                                             if (errorBlock) {
                                                 errorBlock();
                                             }
@@ -4974,11 +4685,7 @@ NSString *currentUser;
                                             return;
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                [self displayServerError];
-                                            } else {
-                                                [self displayNetworkError];
-                                            }
+                                            [self handleNetworkError:operation withError:error];
                                             if (errorBlock) {
                                                 errorBlock();
                                             }
@@ -4999,11 +4706,7 @@ NSString *currentUser;
                                               return;
                                           }
                                           failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                              if (operation.HTTPRequestOperation.response.statusCode == 503) {
-                                                  [self displayServerError];
-                                              } else {
-                                                  [self displayNetworkError];
-                                              }
+                                              [self handleNetworkError:operation withError:error];
                                               if (errorBlock) {
                                                   errorBlock();
                                               }
@@ -5474,6 +5177,17 @@ NSString *currentUser;
 
 - (void)handleNotifications:(NSArray *)notifications {
     [self.notificationManager enqueueNotifications:notifications];
+}
+
+- (void)handleNetworkError:(RKObjectRequestOperation *)operation withError:(NSError *)error {
+    RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
+    if (operation.HTTPRequestOperation.response.statusCode == 503) {
+        [self displayServerError];
+    } else if (errorMessage) {
+        [self displayError:errorMessage.errorMessage];
+    } else {
+        [self displayNetworkError];
+    }
 }
 
 - (void)insertSubscriberShopItems {
