@@ -7,7 +7,6 @@
 //
 
 #import "TaskHistory+CoreDataClass.h"
-#import "Task.h"
 @implementation TaskHistory
 
 @end

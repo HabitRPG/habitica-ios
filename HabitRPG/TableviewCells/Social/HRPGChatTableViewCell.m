@@ -58,7 +58,7 @@
     UIMenuItem *profileMenuItem =
         [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Profile", nil)
                                    action:@selector(profileMenuItemSelected:)];
-    NSMutableArray *menuItems = [NSMutableArray arrayWithObjects:profileMenuItem, nil];
+    NSMutableArray *menuItems = [@[profileMenuItem] mutableCopy];
     if (self.replyAction) {
         UIMenuItem *replyMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Reply", nil)
                                                                action:@selector(reply:)];

@@ -9,7 +9,7 @@
 #import "ChecklistItem.h"
 #import "HRPGCheckBoxView.h"
 #import "HRPGTaskTableViewCell.h"
-#import "Task.h"
+#import "Task+CoreDataClass.h"
 
 @interface HRPGCheckedTableViewCell : HRPGTaskTableViewCell
 @property(weak, nonatomic) IBOutlet HRPGCheckBoxView *checkBox;

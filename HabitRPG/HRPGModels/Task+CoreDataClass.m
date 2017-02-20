@@ -1,54 +1,25 @@
 //
-//  Task.m
-//  HabitRPG
+//  Task+CoreDataClass.m
+//  Habitica
 //
-//  Created by Phillip Thelen on 23/03/14.
-//  Copyright (c) 2014 Phillip Thelen. All rights reserved.
+//  Created by Phillip Thelen on 17/02/2017.
+//  Copyright © 2017 Phillip Thelen. All rights reserved.
 //
 
-#import "Task.h"
-#import <CoreSpotlight/CoreSpotlight.h>
+#import "Task+CoreDataClass.h"
 #import "ChecklistItem.h"
-#import "HRPGAppDelegate.h"
+#import "Reminder.h"
+#import "Tag.h"
+#import "TaskHistory+CoreDataClass.h"
+#import "User.h"
+#import "UIColor+Habitica.h"
 #import "NSDate+DaysSince.h"
 #import "NSString+Emoji.h"
-#import "Reminder.h"
-#import "TaskHistory+CoreDataClass.h"
-#import "Tag.h"
-#import "UIColor+Habitica.h"
+#import <CoreSpotlight/CoreSpotlight.h>
+#import "HRPGAppDelegate.h"
 
 @implementation Task
 
-@dynamic attribute;
-@dynamic completed;
-@dynamic challengeID;
-@dynamic dateCreated;
-@dynamic down;
-@dynamic id;
-@dynamic notes;
-@dynamic order;
-@dynamic priority;
-@dynamic streak;
-@dynamic text;
-@dynamic type;
-@dynamic up;
-@dynamic value;
-@dynamic monday;
-@dynamic tuesday;
-@dynamic wednesday;
-@dynamic thursday;
-@dynamic friday;
-@dynamic saturday;
-@dynamic sunday;
-@dynamic checklist;
-@dynamic tags;
-@dynamic reminders;
-@dynamic user;
-@dynamic duedate;
-@dynamic everyX;
-@dynamic frequency;
-@dynamic startDate;
-@dynamic history;
 @synthesize currentlyChecking;
 
 - (BOOL)dueToday {
@@ -98,46 +69,7 @@
     return YES;
 }
 
-- (void)addChecklistObject:(ChecklistItem *)value {
-    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.checklist];
-    value.task = self;
-    [tempSet addObject:value];
-    self.checklist = tempSet;
-}
-
-- (void)removeChecklistObject:(ChecklistItem *)value {
-    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.checklist];
-    [tempSet removeObject:value];
-    self.checklist = tempSet;
-}
-
-- (void)addRemindersObject:(Reminder *)value {
-    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.reminders];
-    value.task = self;
-    [tempSet addObject:value];
-    self.reminders = tempSet;
-}
-
-- (void)removeRemindersObject:(Reminder *)value {
-    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.reminders];
-    [tempSet removeObject:value];
-    self.reminders = tempSet;
-}
-
-- (void)addHistoryObject:(TaskHistory *)value {
-    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.history];
-    value.task = self;
-    [tempSet addObject:value];
-    self.history = tempSet;
-}
-
-- (void)removeHistoryObject:(TaskHistory *)value {
-    NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.history];
-    [tempSet removeObject:value];
-    self.history = tempSet;
-}
-
-- (NSArray *)getTagArray {
+- (NSArray *)tagArray {
     NSMutableArray *tagArray = [NSMutableArray array];
     for (Tag *tag in self.tags) {
         [tagArray addObject:tag.id];
@@ -148,17 +80,17 @@
 - (void)setTagArray:(NSArray *)tagArray {
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *managedObjectContext =
-        appdelegate.sharedManager.getManagedObjectContext;
-
+    appdelegate.sharedManager.getManagedObjectContext;
+    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
     NSEntityDescription *entity =
-        [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
+    [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
-
+    
     NSError *error;
     NSArray *tags = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-
+    
     for (Tag *tag in tags) {
         if ([tagArray containsObject:tag.id]) {
             if (![self.tags containsObject:tag]) {
@@ -236,22 +168,22 @@
             }
             case TaskDailyFilterTypeDue: {
                 NSArray *predicates =
-                    @[ [NSPredicate predicateWithFormat:@"type=='daily' && completed == NO"] ];
+                @[ [NSPredicate predicateWithFormat:@"type=='daily' && completed == NO"] ];
                 predicates = [predicates
-                    arrayByAddingObject:[NSPredicate
-                                            predicateWithFormat:@"(frequency == 'weekly' && %K == "
-                                                                @"YES) || (frequency == 'daily')",
-                                                                [dateString lowercaseString]]];
+                              arrayByAddingObject:[NSPredicate
+                                                   predicateWithFormat:@"(frequency == 'weekly' && %K == "
+                                                   @"YES) || (frequency == 'daily')",
+                                                   [dateString lowercaseString]]];
                 return predicates;
             }
             case TaskDailyFilterTypeGrey: {
                 NSArray *predicates = @[ [NSPredicate predicateWithFormat:@"type=='daily'"] ];
                 predicates = [predicates
-                    arrayByAddingObject:[NSPredicate
-                                            predicateWithFormat:@"completed == YES || (frequency "
-                                                                @"== 'weekly' && %K == NO) || "
-                                                                @"(frequency == 'daily')",
-                                                                [dateString lowercaseString]]];
+                              arrayByAddingObject:[NSPredicate
+                                                   predicateWithFormat:@"completed == YES || (frequency "
+                                                   @"== 'weekly' && %K == NO) || "
+                                                   @"(frequency == 'daily')",
+                                                   [dateString lowercaseString]]];
                 return predicates;
             }
         }
@@ -262,7 +194,7 @@
             }
             case TaskToDoFilterTypeDated: {
                 return @[ [NSPredicate
-                    predicateWithFormat:@"type=='todo' && completed==NO && duedate!=nil"] ];
+                           predicateWithFormat:@"type=='todo' && completed==NO && duedate!=nil"] ];
             }
             case TaskToDoFilterTypeDone: {
                 return @[ [NSPredicate predicateWithFormat:@"type=='todo' && completed==YES"] ];
@@ -275,32 +207,32 @@
 - (void)didSave {
     if ([CSSearchableIndex class]) {
         NSString *domainIdenntifier =
-            [NSString stringWithFormat:@"com.habitrpg.habitica.tasks.%@", self.type];
+        [NSString stringWithFormat:@"com.habitrpg.habitica.tasks.%@", self.type];
         NSString *uniqueIdentifier =
-            [NSString stringWithFormat:@"%@.%@", domainIdenntifier, self.id];
+        [NSString stringWithFormat:@"%@.%@", domainIdenntifier, self.id];
         if (self.inserted || self.updated) {
             CSSearchableItemAttributeSet *attributeSet;
             attributeSet = [[CSSearchableItemAttributeSet alloc]
-                initWithItemContentType:(NSString *)kUTTypeImage];
-
+                            initWithItemContentType:(NSString *)kUTTypeImage];
+            
             attributeSet.title = [self.text stringByReplacingEmojiCheatCodesWithUnicode];
             attributeSet.contentDescription =
-                [self.notes stringByReplacingEmojiCheatCodesWithUnicode];
-
+            [self.notes stringByReplacingEmojiCheatCodesWithUnicode];
+            
             CSSearchableItem *item =
-                [[CSSearchableItem alloc] initWithUniqueIdentifier:uniqueIdentifier
-                                                  domainIdentifier:domainIdenntifier
-                                                      attributeSet:attributeSet];
-
+            [[CSSearchableItem alloc] initWithUniqueIdentifier:uniqueIdentifier
+                                              domainIdentifier:domainIdenntifier
+                                                  attributeSet:attributeSet];
+            
             [[CSSearchableIndex defaultSearchableIndex]
-                indexSearchableItems:@[ item ]
-                   completionHandler:^(NSError *__nullable error){
-                   }];
+             indexSearchableItems:@[ item ]
+             completionHandler:^(NSError *__nullable error){
+             }];
         } else if (self.deleted) {
             [[CSSearchableIndex defaultSearchableIndex]
-                deleteSearchableItemsWithIdentifiers:@[ uniqueIdentifier ]
-                                   completionHandler:^(NSError *_Nullable error){
-                                   }];
+             deleteSearchableItemsWithIdentifiers:@[ uniqueIdentifier ]
+             completionHandler:^(NSError *_Nullable error){
+             }];
         }
     }
 }
@@ -349,5 +281,6 @@
 - (void)willTurnIntoFault {
     [self removeObserver:self forKeyPath:@"completed"];
 }
+
 
 @end

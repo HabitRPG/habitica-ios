@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Task.h"
+#import "Task+CoreDataClass.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGTaskTableViewCell : UITableViewCell

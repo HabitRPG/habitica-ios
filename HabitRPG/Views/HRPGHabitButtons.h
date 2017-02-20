@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Task.h"
+#import "Task+CoreDataClass.h"
 
 @interface HRPGHabitButtons : UIView
 
