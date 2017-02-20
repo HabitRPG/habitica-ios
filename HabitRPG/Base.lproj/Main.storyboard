@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="w3K-rB-cob">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="w3K-rB-cob">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1378,7 +1378,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="cYv-xS-Y9G">
-                                            <rect key="frame" x="64" y="19" width="210" height="23"/>
+                                            <rect key="frame" x="64" y="18" width="210" height="23"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgy-ay-oSG">
                                                     <rect key="frame" x="0.0" y="0.0" width="210" height="0.0"/>
@@ -2945,7 +2945,7 @@ your account, including:</string>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmc-Sz-mph">
-                                    <rect key="frame" x="8" y="69" width="359" height="74"/>
+                                    <rect key="frame" x="8" y="69" width="359" height="75.5"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="Ns1-9T-eqn"/>
                                     </constraints>
@@ -2966,7 +2966,7 @@ your account, including:</string>
                                             <attributes>
                                                 <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
                                                 <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="12" name="SFUIText-Regular"/>
+                                                <font key="NSFont" metaFont="cellTitle"/>
                                                 <real key="NSKern" value="0.0"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="6" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops/>
@@ -2980,7 +2980,7 @@ your account, including:</string>
                                             <attributes>
                                                 <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
                                                 <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="12" name="SFUIText-Regular"/>
+                                                <font key="NSFont" metaFont="cellTitle"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="6" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops/>
                                                 </paragraphStyle>
@@ -3002,7 +3002,7 @@ your account, including:</string>
                                             <attributes>
                                                 <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
                                                 <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="12" name="SFUIText-Regular"/>
+                                                <font key="NSFont" metaFont="cellTitle"/>
                                                 <real key="NSKern" value="0.0"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops/>
@@ -3016,7 +3016,7 @@ your account, including:</string>
                                             <attributes>
                                                 <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
                                                 <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="12" name="SFUIText-Regular"/>
+                                                <font key="NSFont" metaFont="cellTitle"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops/>
                                                 </paragraphStyle>
@@ -3038,7 +3038,7 @@ your account, including:</string>
                                             <attributes>
                                                 <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
                                                 <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="12" name="SFUIText-Regular"/>
+                                                <font key="NSFont" metaFont="cellTitle"/>
                                                 <real key="NSKern" value="0.0"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops/>
@@ -3052,7 +3052,7 @@ your account, including:</string>
                                             <attributes>
                                                 <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
                                                 <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="12" name="SFUIText-Regular"/>
+                                                <font key="NSFont" metaFont="cellTitle"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops/>
                                                 </paragraphStyle>
@@ -3074,7 +3074,7 @@ your account, including:</string>
                                             <attributes>
                                                 <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
                                                 <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="12" name="SFUIText-Regular"/>
+                                                <font key="NSFont" metaFont="cellTitle"/>
                                                 <real key="NSKern" value="0.0"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops/>
@@ -3086,7 +3086,7 @@ your account, including:</string>
                                             <attributes>
                                                 <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
                                                 <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="12" name="SFUIText-Regular"/>
+                                                <font key="NSFont" metaFont="cellTitle"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops/>
                                                 </paragraphStyle>
@@ -4004,7 +4004,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="1983" y="63"/>
         </scene>
-        <!--Login Table View Controller-->
+        <!--Delegate-->
         <scene sceneID="bKI-3w-7pv">
             <objects>
                 <viewController storyboardIdentifier="LoginTableViewController" id="d4N-vO-Oyt" customClass="LoginTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -4297,6 +4297,9 @@ and helps keep Habitica running</string>
                                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6r-kV-wnh" customClass="FBSDKLoginButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="d4N-vO-Oyt" id="aoH-w8-ar5"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
