@@ -16,13 +16,6 @@ plugin 'cocoapods-keys', {
   ]
 }
 
-def swift_dependencies
-  # Facebook
-  pod 'FBSDKCoreKit', '~> 4'
-  pod 'FBSDKLoginKit', '~> 4'
-  pod 'FBSDKShareKit', '~> 4'
-end
-
 target 'Habitica' do
 pod 'CRToast', :git => 'https://github.com/cruffenach/CRToast'
 pod 'FontAwesomeIconFactory'
@@ -49,10 +42,13 @@ pod "SlackTextViewController"
 pod 'AppAuth'
 pod 'SeedsSDK', '0.4.2'
 
+pod 'FBSDKCoreKit', '~> 4'
+pod 'FBSDKLoginKit', '~> 4'
+pod 'FBSDKShareKit', '~> 4'
+
 pod 'ReactiveCocoa', '= 5.0.0'
 
 pod 'SwiftyStoreKit'
-swift_dependencies
 
 target 'HabiticaTests' do
     inherit! :search_paths
