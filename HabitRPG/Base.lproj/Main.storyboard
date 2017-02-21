@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="w3K-rB-cob">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="w3K-rB-cob">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -373,6 +373,7 @@
                                                         <constraint firstAttribute="height" priority="500" constant="15" id="ZG4-SH-Bu7"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                    <color key="textColor" white="0.0" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhU-O0-Jyc" userLabel="Subtitle">
@@ -515,6 +516,7 @@
                                                         <constraint firstAttribute="height" priority="500" constant="15" id="ICV-g6-PdU"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                    <color key="textColor" white="0.0" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haZ-wz-eyi" userLabel="Subtitle">
@@ -762,6 +764,7 @@
                                                         <constraint firstAttribute="height" priority="500" constant="15" id="fbO-XD-e22"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                    <color key="textColor" white="0.0" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOh-0K-gad" userLabel="Subtitle">
@@ -1617,13 +1620,13 @@
         <scene sceneID="M9m-tL-yO2">
             <objects>
                 <tableViewController id="8ft-Gj-Y0Y" customClass="HRPGRewardsViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="d3i-Bq-HWt">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="d3i-Bq-HWt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="60" id="KYp-An-GW7" customClass="HRPGRewardTableViewCell">
-                                <rect key="frame" x="0.0" y="56" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KYp-An-GW7" id="niM-jA-6Dd">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
@@ -1681,7 +1684,7 @@
                                                         <constraint firstAttribute="height" priority="500" constant="21" id="ONn-HG-349"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYh-oR-3co">
@@ -1727,7 +1730,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImageCell" rowHeight="60" id="Lxa-gY-1km" customClass="HRPGRewardTableViewCell">
-                                <rect key="frame" x="0.0" y="116" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lxa-gY-1km" id="hk4-9R-7Rc">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
@@ -1785,7 +1788,7 @@
                                                         <constraint firstAttribute="height" priority="500" constant="21" id="WUo-GQ-Uqd"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6Q-55-OOa">
@@ -4616,16 +4619,16 @@ and helps keep Habitica running</string>
         <image name="tabbar_todos" width="36" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="STm-pf-BaS"/>
         <segue reference="O64-Xo-CqB"/>
+        <segue reference="STm-pf-BaS"/>
         <segue reference="rra-1P-ecu"/>
+        <segue reference="jeD-LQ-1O1"/>
+        <segue reference="04Z-5H-zfF"/>
         <segue reference="sPD-XR-ORt"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="aWZ-FG-z5O"/>
         <segue reference="DAI-nh-Ljl"/>
         <segue reference="gXy-LN-VI3"/>
-        <segue reference="iSa-66-Wjc"/>
-        <segue reference="HFM-OL-cM8"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -27,7 +27,6 @@
 + (UIColor *)red50;
 + (UIColor *)red100;
 + (UIColor *)red500;
-+ (UIColor *)red600;
 
 + (UIColor *)orange10;
 + (UIColor *)orange50;
