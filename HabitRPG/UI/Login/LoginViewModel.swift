@@ -11,6 +11,7 @@ import ReactiveSwift
 import Result
 import AppAuth
 import Keys
+import FBSDKLoginKit
 
 enum LoginViewAuthType {
     case Login
@@ -259,7 +260,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         let configuration = OIDServiceConfiguration(authorizationEndpoint: authorizationEndpoint as! URL, tokenEndpoint: tokenEndpoint as! URL)
         let keys = HabiticaKeys();
         
-        let request = OIDAuthorizationRequest.init(configuration: configuration, clientId: keys.googleClient(), scopes:[OIDScopeOpenID, OIDScopeProfile], redirectURL: NSURL(string: keys.googleRedirectUrl()) as! URL, responseType: OIDResponseTypeCode, additionalParameters: nil)
+        let request = OIDAuthorizationRequest.init(configuration: configuration, clientId: keys.googleClient, scopes:[OIDScopeOpenID, OIDScopeProfile], redirectURL: NSURL(string: keys.googleRedirectUrl) as! URL, responseType: OIDResponseTypeCode, additionalParameters: nil)
         
         // performs authentication request
         let appDelegate = UIApplication.shared.delegate as! HRPGAppDelegate
@@ -286,16 +287,21 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     
     private let facebookLoginButtonPressedProperty = MutableProperty(())
     func facebookLoginButtonPressed() {
-        
-        if (error != nil) {
-            self.present(UIAlertController.genericError(message: "There was an error with the authentication. Try again later", title: "Authentication Error"), animated: true, completion: nil)
-        } else if (!result.isCancelled) {
-            self.sharedManager?.loginUserSocial(FBSDKAccessToken.current().userID, withNetwork: "facebook", withAccessToken: FBSDKAccessToken.current().tokenString, onSuccess: {[weak self] _ in
-                self?.viewModel.inputs.onSuccessfulLogin()
+        let fbManager = FBSDKLoginManager()
+        fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: viewController) { [weak self] (result, error) in
+            if error != nil || result?.isCancelled == false {
+                // If there is an error or the user cancelled login
+                
+            } else if let userId = result?.token.userID, let token = result?.token.tokenString {
+                self?.sharedManager?.loginUserSocial(userId, withNetwork: "facebook", withAccessToken: token, onSuccess: {
+                    self?.onSuccessfulLogin()
                 }, onError: {
                     
-            })
+                })
+            }
         }
+//        if (error != nil) {
+//            self.present(UIAlertController.genericError(message: "There was an error with the authentication. Try again later", title: "Authentication Error"), animated: true, completion: nil)
     }
     
     private var sharedManager: HRPGManager?
