@@ -11,6 +11,7 @@ import ReactiveSwift
 import Result
 import AppAuth
 import Keys
+import FBSDKLoginKit
 
 enum LoginViewAuthType {
     case Login
@@ -286,16 +287,21 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     
     private let facebookLoginButtonPressedProperty = MutableProperty(())
     func facebookLoginButtonPressed() {
-        
-        if (error != nil) {
-            self.present(UIAlertController.genericError(message: "There was an error with the authentication. Try again later", title: "Authentication Error"), animated: true, completion: nil)
-        } else if (!result.isCancelled) {
-            self.sharedManager?.loginUserSocial(FBSDKAccessToken.current().userID, withNetwork: "facebook", withAccessToken: FBSDKAccessToken.current().tokenString, onSuccess: {[weak self] _ in
-                self?.viewModel.inputs.onSuccessfulLogin()
+        let fbManager = FBSDKLoginManager()
+        fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: viewController) { [weak self] (result, error) in
+            if error != nil || result?.isCancelled == false {
+                // If there is an error or the user cancelled login
+                
+            } else if let userId = result?.token.userID, let token = result?.token.tokenString {
+                self?.sharedManager?.loginUserSocial(userId, withNetwork: "facebook", withAccessToken: token, onSuccess: {
+                    self?.onSuccessfulLogin()
                 }, onError: {
                     
-            })
+                })
+            }
         }
+//        if (error != nil) {
+//            self.present(UIAlertController.genericError(message: "There was an error with the authentication. Try again later", title: "Authentication Error"), animated: true, completion: nil)
     }
     
     private var sharedManager: HRPGManager?
