@@ -9,10 +9,9 @@
 import UIKit
 import ReactiveCocoa
 import ReactiveSwift
-import FBSDKLoginKit
 import CRToast
 
-class LoginTableViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate {
+class LoginTableViewController: UIViewController, UITextFieldDelegate {
     
     public var isRootViewController = false
     
@@ -25,6 +24,7 @@ class LoginTableViewController: UIViewController, FBSDKLoginButtonDelegate, UITe
     @IBOutlet weak var loginButtonBackground: UIView!
     @IBOutlet weak var onePasswordButton: UIButton!
     @IBOutlet weak var googleLoginButton: UIButton!
+    @IBOutlet weak var facebookLoginButton: UIButton!
     
     @IBOutlet weak var emailFieldHeight: NSLayoutConstraint!
     @IBOutlet weak var emailFieldTopSpacing: NSLayoutConstraint!
@@ -57,6 +57,8 @@ class LoginTableViewController: UIViewController, FBSDKLoginButtonDelegate, UITe
         
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         googleLoginButton.addTarget(self, action: #selector(googleLoginButtonPressed), for: .touchUpInside)
+        facebookLoginButton.addTarget(self, action: #selector(facebookLoginButtonPressed), for: .touchUpInside)
+        
         onePasswordButton.addTarget(self, action: #selector(onePasswordButtonPressed), for: .touchUpInside)
 
         bindViewModel()
@@ -212,24 +214,12 @@ class LoginTableViewController: UIViewController, FBSDKLoginButtonDelegate, UITe
         self.viewModel.inputs.googleLoginButtonPressed()
     }
     
-    func onePasswordButtonPressed() {
-        self.viewModel.inputs.onePasswordTapped()
+    func facebookLoginButtonPressed() {
+        self.viewModel.inputs.facebookLoginButtonPressed()
     }
     
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        if (error != nil) {
-            self.present(UIAlertController.genericError(message: "There was an error with the authentication. Try again later", title: "Authentication Error"), animated: true, completion: nil)
-        } else if (!result.isCancelled) {
-            self.sharedManager?.loginUserSocial(FBSDKAccessToken.current().userID, withNetwork: "facebook", withAccessToken: FBSDKAccessToken.current().tokenString, onSuccess: {[weak self] _ in
-                self?.viewModel.inputs.onSuccessfulLogin()
-            }, onError: {
-                
-            })
-        }
-    }
-        
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        
+    func onePasswordButtonPressed() {
+        self.viewModel.inputs.onePasswordTapped()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
