@@ -33,7 +33,8 @@ protocol  LoginViewModelInputs {
     
     func loginButtonPressed()
     func googleLoginButtonPressed()
-    
+    func facebookLoginButtonPressed()
+  
     func onSuccessfulLogin()
     
     func setSharedManager(sharedManager: HRPGManager?)
@@ -281,6 +282,20 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         }, onError: {[weak self] _ in
             self?.onSuccessfulLoginProperty.value = ()
         })
+    }
+    
+    private let facebookLoginButtonPressedProperty = MutableProperty(())
+    func facebookLoginButtonPressed() {
+        
+        if (error != nil) {
+            self.present(UIAlertController.genericError(message: "There was an error with the authentication. Try again later", title: "Authentication Error"), animated: true, completion: nil)
+        } else if (!result.isCancelled) {
+            self.sharedManager?.loginUserSocial(FBSDKAccessToken.current().userID, withNetwork: "facebook", withAccessToken: FBSDKAccessToken.current().tokenString, onSuccess: {[weak self] _ in
+                self?.viewModel.inputs.onSuccessfulLogin()
+                }, onError: {
+                    
+            })
+        }
     }
     
     private var sharedManager: HRPGManager?
