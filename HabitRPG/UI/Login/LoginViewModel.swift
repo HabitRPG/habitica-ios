@@ -289,7 +289,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     func facebookLoginButtonPressed() {
         let fbManager = FBSDKLoginManager()
         fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: viewController) { [weak self] (result, error) in
-            if error != nil || result?.isCancelled == false {
+            if error != nil || result?.isCancelled == true {
                 // If there is an error or the user cancelled login
                 
             } else if let userId = result?.token.userID, let token = result?.token.tokenString {
