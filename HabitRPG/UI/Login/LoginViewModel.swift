@@ -268,8 +268,8 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             if (authState != nil) {
                 self?.sharedManager?.loginUserSocial("", withNetwork: "google", withAccessToken: authState?.lastTokenResponse?.accessToken, onSuccess: { 
                     self?.onSuccessfulLogin()
-                }, onError: { 
-                    
+                }, onError: {
+                  self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
                 })
             }
         })
@@ -296,12 +296,10 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                 self?.sharedManager?.loginUserSocial(userId, withNetwork: "facebook", withAccessToken: token, onSuccess: {
                     self?.onSuccessfulLogin()
                 }, onError: {
-                    
+                    self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
                 })
             }
         }
-//        if (error != nil) {
-//            self.present(UIAlertController.genericError(message: "There was an error with the authentication. Try again later", title: "Authentication Error"), animated: true, completion: nil)
     }
     
     private var sharedManager: HRPGManager?
