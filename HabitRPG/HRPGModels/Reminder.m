@@ -7,7 +7,7 @@
 //
 
 #import "Reminder.h"
-#import "Task.h"
+#import "Task+CoreDataClass.h"
 
 @implementation Reminder
 

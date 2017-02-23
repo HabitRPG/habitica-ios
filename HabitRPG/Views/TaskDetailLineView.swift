@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DateTools
 
 @IBDesignable
 class TaskDetailLineView: UIView {
@@ -75,14 +76,14 @@ class TaskDetailLineView: UIView {
     
     public func configure(task: Task) {
         hasContent = false
-        setTag(enabled: task.tags.count > 0)
-        setReminder(enabled: task.reminders.count > 0)
+        //setTag(enabled: task > 0)
+        setReminder(enabled: (task.reminders?.count)! > 0)
         setChallenge(enabled: task.challengeID != nil)
-        setStreak(count: task.streak.intValue)
+        setStreak(count: (task.streak?.intValue)!)
         
         if task.type == "habit" {
             setCalendarIcon(enabled: false)
-            detailLabel.isHidden = true
+            setLastCompleted(task: task);
         } else if task.type == "daily" {
             setCalendarIcon(enabled: false)
             detailLabel.isHidden = true
@@ -127,13 +128,13 @@ class TaskDetailLineView: UIView {
                 return;
             }
 
-            if task.duedate.compare(today!) == .orderedAscending {
+            if task.duedate?.compare(today!) == .orderedAscending {
                 setCalendarIcon(enabled: true, isUrgent: true)
                 self.detailLabel.textColor = .red10()
-                self.detailLabel.text = "Due \(formatter.string(from: task.duedate))".localized
+                self.detailLabel.text = "Due \(formatter.string(from: task.duedate!))".localized
             } else {
                 detailLabel.textColor = .gray50();
-                let differenceValue = calendar.dateComponents([.day], from: today!, to: task.duedate)
+                let differenceValue = calendar.dateComponents([.day], from: today!, to: task.duedate!)
                 if differenceValue.day! < 7 {
                     if differenceValue.day! == 0{
                         setCalendarIcon(enabled: true, isUrgent: true)
@@ -148,7 +149,7 @@ class TaskDetailLineView: UIView {
                     }
                 } else {
                     setCalendarIcon(enabled: true)
-                    self.detailLabel.text = "Due \(formatter.string(from: task.duedate))".localized
+                    self.detailLabel.text = "Due \(formatter.string(from: task.duedate!))".localized
                 }
             }
         } else {
@@ -171,6 +172,18 @@ class TaskDetailLineView: UIView {
             streakIconViewWidth.constant = 0
             streakIconLabelSpacing.constant = 0
             detailStreakSpacing.constant = 0
+        }
+    }
+
+    private func setLastCompleted(task: Task) {
+        if let history = task.history {
+            if let historyEntry = history.lastObject as? TaskHistory {
+                if (historyEntry.date!.timeIntervalSinceNow > -300.0) {
+                    detailLabel.text = "Done just now".localized
+                } else {
+                    detailLabel.text = "Done \(NSDate.shortTimeAgo(since: historyEntry.date)!) ago".localized
+                }
+            }
         }
     }
     

@@ -41,17 +41,14 @@
         self.cornerRadius = 3;
 
         if ([task.completed boolValue]) {
-            self.boxBorderColor = [UIColor gray50];
             self.boxFillColor = [UIColor gray400];
             self.backgroundColor = [UIColor gray100];
             self.checkColor = [UIColor gray200];
         } else {
             if ([task dueTodayWithOffset:offset]) {
                 self.backgroundColor = [task lightTaskColor];
-                self.boxBorderColor = [task taskColor];
                 self.checkColor = [task taskColor];
             } else {
-                self.boxBorderColor = [UIColor gray50];
                 self.backgroundColor = [UIColor gray100];
                 self.checkColor = [UIColor gray200];
             }
@@ -60,12 +57,10 @@
     } else {
         self.cornerRadius = self.size / 2;
         if ([task.completed boolValue]) {
-            self.boxBorderColor = [UIColor gray50];
             self.boxFillColor = [UIColor gray400];
             self.backgroundColor = [UIColor gray100];
             self.checkColor = [UIColor gray200];
         } else {
-            self.boxBorderColor = [task taskColor];
             self.backgroundColor = [task lightTaskColor];
             self.checkColor = [task taskColor];
         }
@@ -77,7 +72,6 @@
 - (void)configureForChecklistItem:(ChecklistItem *)item forTask:(Task *)task {
     self.checked = [item.completed boolValue] || [item.currentlyChecking boolValue];
     self.backgroundColor = [UIColor clearColor];
-    self.boxBorderColor = [UIColor gray50];
     self.boxFillColor = [UIColor gray400];
     self.checkColor = [UIColor gray200];
     if ([task.type isEqualToString:@"daily"]) {
@@ -98,7 +92,6 @@
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    [self.boxBorderColor setStroke];
     [self.boxFillColor setFill];
     UIBezierPath *borderPath = [UIBezierPath
         bezierPathWithRoundedRect:CGRectMake(self.frame.size.width / 2 - self.size / 2,
@@ -106,8 +99,6 @@
                                              self.size)
                      cornerRadius:self.cornerRadius];
     [borderPath fill];
-    [borderPath setLineWidth:2];
-    [borderPath stroke];
     if (self.checked) {
         CGContextBeginPath(ctx);
         CGContextSetLineWidth(ctx, 2);

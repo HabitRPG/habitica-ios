@@ -6,8 +6,8 @@
 //  Copyright © 2016 Phillip Thelen. All rights reserved.
 //
 
+#import <KLCPopup/KLCPopup.h>
 #import "HRPGGroupTableViewController.h"
-#import "KLCPopup.h"
 #import "HRPGFlagInformationOverlayView.h"
 #import "HRPGGroupAboutTableViewController.h"
 #import "HRPGMessageViewController.h"

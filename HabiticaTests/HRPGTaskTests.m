@@ -10,7 +10,7 @@
 #import <XCTest/XCTest.h>
 #import "NSDate+NSDateMock.h"
 #import <objc/runtime.h>
-#import "Task.h"
+#import "Task+CoreDataClass.h"
 
 void SwizzleClassMethod(Class c, SEL orig, SEL new) {
     

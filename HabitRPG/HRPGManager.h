@@ -13,7 +13,7 @@
 #import "Group.h"
 #import "MetaReward.h"
 #import "Pet.h"
-#import "Task.h"
+#import "Task+CoreDataClass.h"
 #import "User.h"
 #import "User.h"
 #import "item.h"

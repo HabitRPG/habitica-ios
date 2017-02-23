@@ -49,7 +49,7 @@
         [self.label addGestureRecognizer:tapRecognizer];
         self.backgroundColor = [task lightTaskColor];
         
-        self.roundedView.backgroundColor = [task taskColor];
+        self.roundedView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
     } else {
         if (isNegative) {
              UIImage *image = [UIImage imageNamed:@"minus_gray"];

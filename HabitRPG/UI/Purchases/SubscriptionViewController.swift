@@ -22,7 +22,7 @@ class SubscriptionViewController: HRPGBaseViewController {
     var selectedSubscriptionPlan: SKProduct?
     var user: User?
     let appleValidator: AppleReceiptValidator
-    let itunesSharedSecret = HabiticaKeys().itunesSharedSecret()
+    let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
     var expandedList = [Bool](repeating: false, count: 4)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
