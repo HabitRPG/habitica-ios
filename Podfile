@@ -46,7 +46,6 @@ target 'Habitica' do
 
   pod 'FBSDKCoreKit', '~> 4'
   pod 'FBSDKLoginKit', '~> 4'
-  pod 'FBSDKShareKit', '~> 4'
 
   pod 'ReactiveCocoa', '= 5.0.0'
 
