@@ -37,8 +37,6 @@ PODS:
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.19.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.19.0):
-    - FBSDKCoreKit
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
@@ -168,7 +166,6 @@ DEPENDENCIES:
   - EAIntroView
   - FBSDKCoreKit (~> 4)
   - FBSDKLoginKit (~> 4)
-  - FBSDKShareKit (~> 4)
   - FBSnapshotTestCase
   - FLEX (~> 2.0)
   - FontAwesomeIconFactory
@@ -233,7 +230,6 @@ SPEC CHECKSUMS:
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   FBSDKCoreKit: 894b2b6eda6a4c8c4204e92e59cc355709ef045c
   FBSDKLoginKit: 83ca4d8f12a2022570af9fd6aacf27f6b425b99f
-  FBSDKShareKit: 5953758366278430dc322d5cdc906db361ed7f81
   FBSnapshotTestCase: '094f9f314decbabe373b87cc339bea235a63e07a'
   FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
   FirebaseCore: 46afaf2c2e0419ea7d3acfb08cf26a461a75fe85
@@ -270,6 +266,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 20ceb82b3ede5ed6992682f813cee57c1e421851
+PODFILE CHECKSUM: 0d2abb960f16926c2374dfa79dde09e44a8dd2ad
 
 COCOAPODS: 1.2.0
