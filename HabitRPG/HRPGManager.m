@@ -2053,6 +2053,26 @@ NSString *currentUser;
                           keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    
+    RKEntityMapping *challengeMapping = [RKEntityMapping mappingForEntityForName:@"Challenge" inManagedObjectStore:managedObjectStore];
+    [challengeMapping addAttributeMappingsFromArray:@[@"id", @"name", @"prize", @"shortName", @"createdAt", @"updatedAt", @"memberCount", @"official"]];
+    [challengeMapping addAttributeMappingsFromDictionary:@{
+                                                           @"description": @"notes",
+                                                           @"leader.id": @"leaderId",
+                                                           @"leader.profile.name": @"leaderName",
+                                                           }];
+    
+    RKEntityMapping *groupMapping = [RKEntityMapping mappingForEntityForName:@"Group" inManagedObjectStore:managedObjectStore];
+    [groupMapping addAttributeMappingsFromArray:@[@"id", @"name"]];
+    [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"group" toKeyPath:@"group" withMapping:groupMapping]];
+    
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:challengeMapping
+                          method:RKRequestMethodGET
+                          pathPattern:@"challenges/user"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
 
 
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-client" value:@"habitica-ios"];
@@ -2656,6 +2676,31 @@ NSString *currentUser;
             [self.networkIndicatorController endNetworking];
             return;
         }];
+}
+
+- (void)fetchChallenges:(void (^)())successBlock
+            onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"challenges/user"
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  NSError *executeError = nil;
+                                                  [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                                  if (successBlock) {
+                                                      successBlock();
+                                                  }
+                                                  [self.networkIndicatorController endNetworking];
+                                                  return;
+                                              }
+                                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  [self handleNetworkError:operation withError:error];
+                                                  if (errorBlock) {
+                                                      errorBlock();
+                                                  }
+                                                  [self.networkIndicatorController endNetworking];
+                                                  return;
+                                              }];
 }
 
 - (void)upDownTask:(Task *)task

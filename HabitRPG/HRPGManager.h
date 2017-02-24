@@ -63,6 +63,9 @@
           onSuccess:(void (^)())successBlock
             onError:(void (^)())errorBlock;
 
+- (void)fetchChallenges:(void (^)())successBlock
+                onError:(void (^)())errorBlock;
+
 - (void)upDownTask:(Task *)task
          direction:(NSString *)withDirection
          onSuccess:(void (^)())successBlock

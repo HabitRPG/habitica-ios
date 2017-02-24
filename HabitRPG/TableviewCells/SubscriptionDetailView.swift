@@ -25,10 +25,10 @@ class SubscriptionDetailView: UITableViewCell {
     public func setPlan(_ plan: SubscriptionPlan) {
         if plan.isActive() {
             statusPill.text = "Active".localized
-            statusPill.setPillColor(.green50())
+            statusPill.pillColor = .green50()
         } else {
             statusPill.text = "Inactive".localized
-            statusPill.setPillColor(.red10())
+            statusPill.pillColor = .red10()
         }
         typeLabel.text = plan.planId
         paymentMethodLabel.text = plan.paymentMethod

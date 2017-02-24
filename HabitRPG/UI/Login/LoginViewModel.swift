@@ -260,7 +260,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         let configuration = OIDServiceConfiguration(authorizationEndpoint: authorizationEndpoint as! URL, tokenEndpoint: tokenEndpoint as! URL)
         let keys = HabiticaKeys();
         
-        let request = OIDAuthorizationRequest.init(configuration: configuration, clientId: keys.googleClient, scopes:[OIDScopeOpenID, OIDScopeProfile], redirectURL: NSURL(string: keys.googleRedirectUrl) as! URL, responseType: OIDResponseTypeCode, additionalParameters: nil)
+        let request = OIDAuthorizationRequest.init(configuration: configuration, clientId: keys.googleClient(), scopes:[OIDScopeOpenID, OIDScopeProfile], redirectURL: NSURL(string: keys.googleRedirectUrl()) as! URL, responseType: OIDResponseTypeCode, additionalParameters: nil)
         
         // performs authentication request
         let appDelegate = UIApplication.shared.delegate as! HRPGAppDelegate

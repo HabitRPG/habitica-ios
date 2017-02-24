@@ -126,7 +126,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                 return 1;
             }
         case 1:
-            return 4;
+            return 5;
         case 2:
             return 7;
         case 3:
@@ -218,8 +218,13 @@ NIKFontAwesomeIconFactory *iconFactory;
     } else if (indexPath.section == 1 && indexPath.item == 3) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
         UIViewController *guildsViewController = [secondStoryBoard
-            instantiateViewControllerWithIdentifier:@"GuildsOverviewViewController"];
+                                                  instantiateViewControllerWithIdentifier:@"GuildsOverviewViewController"];
         [self.navigationController pushViewController:guildsViewController animated:YES];
+    } else if (indexPath.section == 1 && indexPath.item == 4) {
+        UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
+        UIViewController *challengeViewController = [secondStoryBoard
+                                                  instantiateViewControllerWithIdentifier:@"ChallengeTableViewController"];
+        [self.navigationController pushViewController:challengeViewController animated:YES];
     } else if (indexPath.section == 2 && indexPath.item == 0) {
         [self performSegueWithIdentifier:@"ShopsSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 1) {
@@ -300,6 +305,8 @@ NIKFontAwesomeIconFactory *iconFactory;
         }
     } else if (indexPath.section == 1 && indexPath.item == 3) {
         title = NSLocalizedString(@"Guilds", nil);
+    } else if (indexPath.section == 1 && indexPath.item == 4) {
+        title = NSLocalizedString(@"Challenges", nil);
     } else if (indexPath.section == 2 && indexPath.item == 0) {
         title = NSLocalizedString(@"Shops", nil);
     } else if (indexPath.section == 2 && indexPath.item == 1) {
