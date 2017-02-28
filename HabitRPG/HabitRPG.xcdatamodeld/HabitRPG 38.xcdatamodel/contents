@@ -30,6 +30,7 @@
         <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="challenges" inverseEntity="Group" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="challenges" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="ChatMessage" representedClassName="ChatMessage" syncable="YES">
         <attribute name="attributedText" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
@@ -465,6 +466,7 @@
         <attribute name="unallocatedPoints" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="buff" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Buff" inverseName="user" inverseEntity="Buff" syncable="YES"/>
+        <relationship name="challenges" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Challenge" inverseName="user" inverseEntity="Challenge" syncable="YES"/>
         <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChatMessage" inverseName="userObject" inverseEntity="ChatMessage" syncable="YES"/>
         <relationship name="costume" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Outfit" inverseName="userCostume" inverseEntity="Outfit" syncable="YES"/>
         <relationship name="equipped" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Outfit" inverseName="userEquipped" inverseEntity="Outfit" syncable="YES"/>
@@ -494,7 +496,7 @@
         <element name="Armoire" positionX="0" positionY="0" width="128" height="45"/>
         <element name="Buff" positionX="9" positionY="153" width="128" height="210"/>
         <element name="BuyableItem" positionX="0" positionY="0" width="128" height="60"/>
-        <element name="Challenge" positionX="9" positionY="153" width="128" height="225"/>
+        <element name="Challenge" positionX="9" positionY="153" width="128" height="240"/>
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="240"/>
         <element name="ChatMessageLike" positionX="0" positionY="0" width="128" height="75"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
@@ -531,6 +533,6 @@
         <element name="TaskHistory" positionX="18" positionY="162" width="128" height="90"/>
         <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
         <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="1155"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1170"/>
     </elements>
 </model>

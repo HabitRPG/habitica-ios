@@ -8,6 +8,7 @@
 
 #import "HRPGPublicGuildTableViewCell.h"
 #import "UIColor+Habitica.h"
+#import "NSString+Emoji.h"
 
 @interface HRPGPublicGuildTableViewCell ()
 
@@ -18,7 +19,7 @@
 @implementation HRPGPublicGuildTableViewCell
 
 - (void)configureForGuild:(Group *)guild {
-    self.titleLabel.text = guild.name;
+    self.titleLabel.text = [guild.name stringByReplacingEmojiCheatCodesWithUnicode];
     self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     self.descriptionLabel.text = guild.hdescription;
     self.descriptionLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];

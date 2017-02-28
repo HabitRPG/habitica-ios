@@ -1237,27 +1237,27 @@ Invite friends now to earn a Quest Scroll!</string>
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="137"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evc-UL-HyC">
-                                            <rect key="frame" x="8" y="8" width="320" height="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evc-UL-HyC">
+                                            <rect key="frame" x="8" y="8" width="351" height="0.0"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="27" id="VaP-E4-B1M"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.20000000300000001" green="0.086274512110000007" blue="0.37647059560000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMJ-Hk-a6I">
-                                            <rect key="frame" x="336" y="8" width="31" height="14"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMJ-Hk-a6I">
+                                            <rect key="frame" x="367" y="8" width="0.0" height="0.0"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="15" id="T7R-F9-jIG"/>
                                                 <constraint firstAttribute="width" priority="500" constant="42" id="eMt-wj-bcX"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.49014008050000002" green="0.49022829530000001" blue="0.49013447760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vel-gj-dLr">
-                                            <rect key="frame" x="307" y="32" width="60" height="40"/>
+                                            <rect key="frame" x="307" y="12" width="60" height="40"/>
                                             <color key="backgroundColor" red="0.15054459869861603" green="0.7714228630065918" blue="0.48786658048629761" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="RHS-MZ-wYb"/>
@@ -1270,10 +1270,10 @@ Invite friends now to earn a Quest Scroll!</string>
                                                 <action selector="joinLeaveButtonTapped:" destination="L6F-UF-L9a" eventType="touchUpInside" id="ni7-Ze-JZU"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHf-h0-50k">
-                                            <rect key="frame" x="8" y="36" width="291" height="93"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHf-h0-50k">
+                                            <rect key="frame" x="8" y="16" width="291" height="113"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.49014008050000002" green="0.49022829530000001" blue="0.49013447760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -2147,27 +2147,27 @@ Invite friends now to earn a Quest Scroll!</string>
         <scene sceneID="Zhw-TJ-o2n">
             <objects>
                 <tableViewController storyboardIdentifier="ChallengeTableViewController" id="BE2-xn-Wwl" customClass="ChallengeTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="28" sectionFooterHeight="28" id="SWx-Y1-cyG">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" id="SWx-Y1-cyG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="135" id="hld-Hh-p5B" customClass="ChallengeTableViewCell" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="135"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="86" id="hld-Hh-p5B" customClass="ChallengeTableViewCell" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hld-Hh-p5B" id="zvn-ju-pB3">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChallengeGemIcon" translatesAutoresizingMaskIntoConstraints="NO" id="6Ep-Id-SCW">
-                                            <rect key="frame" x="12" y="44.5" width="38" height="46"/>
+                                            <rect key="frame" x="12" y="20" width="38" height="46"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="38" id="Efe-jg-No4"/>
                                                 <constraint firstAttribute="height" constant="46" id="fbW-UN-9Yr"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1z-Ob-USk">
-                                            <rect key="frame" x="12" y="71" width="38" height="21"/>
+                                            <rect key="frame" x="12" y="46.5" width="38" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="k9a-l3-PSd"/>
                                             </constraints>
@@ -2176,7 +2176,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1R-w3-c3R">
-                                            <rect key="frame" x="66" y="46.5" width="293" height="42"/>
+                                            <rect key="frame" x="66" y="16" width="293" height="53.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDH-bO-pZg">
                                                     <rect key="frame" x="0.0" y="0.0" width="293" height="0.0"/>
@@ -2197,10 +2197,10 @@ Invite friends now to earn a Quest Scroll!</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ux2-MM-8yQ">
-                                                    <rect key="frame" x="0.0" y="8" width="293" height="4"/>
+                                                    <rect key="frame" x="0.0" y="8" width="293" height="15.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfN-3L-YMk">
-                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="4"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="15.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" priority="500" constant="42" id="UBQ-ja-AQ9"/>
                                                                 <constraint firstAttribute="height" priority="500" constant="21" id="vLw-6V-4pc"/>
@@ -2210,20 +2210,20 @@ Invite friends now to earn a Quest Scroll!</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uwJ-zk-JI5">
-                                                            <rect key="frame" x="8" y="2" width="1" height="0.0"/>
+                                                            <rect key="frame" x="8" y="2" width="1" height="11.5"/>
                                                             <color key="backgroundColor" red="0.50190365314483643" green="0.50199371576309204" blue="0.50189799070358276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="1" id="2Vd-Pq-8Q1"/>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MX0-vl-EMO">
-                                                            <rect key="frame" x="43.5" y="0.0" width="249.5" height="4"/>
+                                                            <rect key="frame" x="43.5" y="0.0" width="249.5" height="15.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                             <color key="textColor" red="0.50190365309999996" green="0.50199371579999996" blue="0.50189799069999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MemberCountIcon" translatesAutoresizingMaskIntoConstraints="NO" id="3OZ-2i-fOp">
-                                                            <rect key="frame" x="17.5" y="0.0" width="22" height="4"/>
+                                                            <rect key="frame" x="17.5" y="0.0" width="22" height="15.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="22" id="Hgc-7Q-5uj"/>
                                                             </constraints>
@@ -2248,10 +2248,10 @@ Invite friends now to earn a Quest Scroll!</string>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQb-xF-oUg">
-                                                    <rect key="frame" x="0.0" y="20" width="293" height="22"/>
+                                                    <rect key="frame" x="0.0" y="31.5" width="293" height="22"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Cn6-3X-i7r" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="83.5" height="22"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="75.5" height="22"/>
                                                             <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" priority="500" constant="60" id="Fao-rF-1qx"/>
@@ -2275,7 +2275,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="RvD-OK-24y" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                                            <rect key="frame" x="91.5" y="0.0" width="114.5" height="22"/>
+                                                            <rect key="frame" x="83.5" y="0.0" width="106.5" height="22"/>
                                                             <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" priority="500" constant="60" id="dja-it-hkk"/>
@@ -2336,13 +2336,15 @@ Invite friends now to earn a Quest Scroll!</string>
                                         <constraint firstItem="H1R-w3-c3R" firstAttribute="trailing" secondItem="zvn-ju-pB3" secondAttribute="trailingMargin" constant="-8" id="EUa-v3-svo"/>
                                         <constraint firstItem="h1z-Ob-USk" firstAttribute="centerY" secondItem="zvn-ju-pB3" secondAttribute="centerY" constant="14" id="KzY-UB-uqD"/>
                                         <constraint firstItem="6Ep-Id-SCW" firstAttribute="leading" secondItem="zvn-ju-pB3" secondAttribute="leading" constant="12" id="Su2-po-lOZ"/>
+                                        <constraint firstItem="H1R-w3-c3R" firstAttribute="top" secondItem="zvn-ju-pB3" secondAttribute="topMargin" constant="8" id="UTO-LS-eFO"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="H1R-w3-c3R" secondAttribute="bottom" constant="8" id="cti-nV-YHp"/>
                                         <constraint firstItem="6Ep-Id-SCW" firstAttribute="centerY" secondItem="zvn-ju-pB3" secondAttribute="centerY" id="fkt-O2-Myi"/>
                                         <constraint firstItem="H1R-w3-c3R" firstAttribute="leading" secondItem="h1z-Ob-USk" secondAttribute="trailing" constant="16" id="h68-Mj-H0F"/>
-                                        <constraint firstItem="H1R-w3-c3R" firstAttribute="centerY" secondItem="zvn-ju-pB3" secondAttribute="centerY" id="zex-QD-K3b"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="badgesHeight" destination="Xgh-s8-Pjj" id="5xb-Xs-0y8"/>
+                                    <outlet property="badgesOffset" destination="sY9-nJ-JD8" id="Yca-jc-S9f"/>
                                     <outlet property="groupLabel" destination="xRx-ga-v7Y" id="jeI-fu-8ne"/>
                                     <outlet property="leaderLabel" destination="ZfN-3L-YMk" id="9et-Zq-FBI"/>
                                     <outlet property="memberCountLabel" destination="MX0-vl-EMO" id="V47-mu-Slc"/>

@@ -13,6 +13,7 @@
 @interface HRPGTopHeaderNavigationController ()
 
 @property(nonatomic, strong) UIView *headerView;
+@property(nonatomic, strong) UIView *alternativeHeaderView;
 @property(nonatomic, strong) UIView *backgroundView;
 @property(nonatomic, strong) UIView *bottomBorderView;
 @property(nonatomic, strong) UIView *upperBackgroundView;
@@ -62,11 +63,14 @@
     [super viewWillLayoutSubviews];
     CGRect parentFrame = self.view.frame;
     self.backgroundView.frame =
-        CGRectMake(0, self.headerYPosition, parentFrame.size.width, self.topHeaderHeight);
+        CGRectMake(0, self.headerYPosition, parentFrame.size.width, self.topHeaderHeight+6);
     self.upperBackgroundView.frame = CGRectMake(0, 0, parentFrame.size.width, [self bgViewOffset]);
     self.bottomBorderView.frame =
         CGRectMake(0, self.backgroundView.frame.size.height - 6, parentFrame.size.width, 6);
-    self.headerView.frame = CGRectMake(0, 0, parentFrame.size.width, self.topHeaderHeight - 6);
+    self.headerView.frame = CGRectMake(0, 0, parentFrame.size.width, self.topHeaderHeight);
+    if (self.alternativeHeaderView) {
+        self.alternativeHeaderView.frame = CGRectMake(0, 0, parentFrame.size.width, self.alternativeHeaderView.intrinsicContentSize.height);
+    }
 }
 
 - (void)showHeader {
@@ -163,16 +167,33 @@
 }
 
 - (CGFloat)topHeaderHeight {
+    if (self.alternativeHeaderView) {
+        return self.alternativeHeaderView.intrinsicContentSize.height;
+    }
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         return 200;
     } else {
-        return 168;
+        return 162;
     }
+}
+
+- (void)setAlternativeHeaderView:(UIView *)alternativeHeaderView {
+    _alternativeHeaderView = alternativeHeaderView;
+    [self.headerView removeFromSuperview];
+    [self.backgroundView addSubview:self.alternativeHeaderView];
+    [self viewWillLayoutSubviews];
+}
+
+- (void)removeAlternativeHeaderView {
+    [self.alternativeHeaderView removeFromSuperview];
+    self.alternativeHeaderView = nil;
+    [self.backgroundView addSubview:self.headerView];
+    [self viewWillLayoutSubviews];
 }
 
 #pragma mark - Helpers
 - (CGFloat)getContentInset {
-    return self.topHeaderHeight;
+    return self.topHeaderHeight+self.bottomBorderView.frame.size.height;
 }
 
 - (CGFloat)statusBarHeight {

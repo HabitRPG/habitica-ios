@@ -76,6 +76,8 @@
 		D9525F981E5F405400C529B8 /* Challenge+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D9525F951E5F405400C529B8 /* Challenge+CoreDataClass.m */; };
 		D9525F991E5F405400C529B8 /* Challenge+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9525F971E5F405400C529B8 /* Challenge+CoreDataProperties.m */; };
 		D9525F9B1E5F559600C529B8 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */; };
+		D9525F9D1E64739900C529B8 /* PaddedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9525F9C1E64739900C529B8 /* PaddedView.swift */; };
+		D9525F9F1E65A18300C529B8 /* EmojifiedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9525F9E1E65A18300C529B8 /* EmojifiedString.swift */; };
 		D95704391E106C11004F6804 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95704381E106C11004F6804 /* LocalizedString.swift */; };
 		D957043E1E151C1C004F6804 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957043D1E151C1C004F6804 /* LoginViewModelTests.swift */; };
 		D95704431E1528F2004F6804 /* Event-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95704421E1528F2004F6804 /* Event-Extensions.swift */; };
@@ -443,6 +445,8 @@
 		D9525F961E5F405400C529B8 /* Challenge+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Challenge+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D9525F971E5F405400C529B8 /* Challenge+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Challenge+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
+		D9525F9C1E64739900C529B8 /* PaddedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedView.swift; sourceTree = "<group>"; };
+		D9525F9E1E65A18300C529B8 /* EmojifiedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojifiedString.swift; sourceTree = "<group>"; };
 		D95704381E106C11004F6804 /* LocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		D957043C1E151C1C004F6804 /* HabiticaTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HabiticaTests-Bridging-Header.h"; path = "UI/Login/HabiticaTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		D957043D1E151C1C004F6804 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
@@ -1066,6 +1070,7 @@
 				D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */,
 				D96BFC501E1930A500266EEF /* Signal-Extensions.swift */,
 				D9CE90461E4CDF3F00702578 /* Designable-Extensions.swift */,
+				D9525F9E1E65A18300C529B8 /* EmojifiedString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1332,6 +1337,7 @@
 				D984D5831E48E57C006E84F8 /* TaskDetailLineView.xib */,
 				D984D5851E48E5CF006E84F8 /* TaskDetailLineView.swift */,
 				D9CE90441E4CDD6200702578 /* PillView.swift */,
+				D9525F9C1E64739900C529B8 /* PaddedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2201,6 +2207,7 @@
 				D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */,
 				D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */,
 				D9D21731198D509100023367 /* HRPGDeathView.m in Sources */,
+				D9525F9F1E65A18300C529B8 /* EmojifiedString.swift in Sources */,
 				D9525F981E5F405400C529B8 /* Challenge+CoreDataClass.m in Sources */,
 				D98F5DDA1C6E17280035CBEC /* HRPGQuestGroupTableViewController.m in Sources */,
 				D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */,
@@ -2275,6 +2282,7 @@
 				D9E46AFD1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m in Sources */,
 				D9C257261B9DC26D00839F48 /* HRPGFAQTableViewController.m in Sources */,
 				D914890D1CD23A900015B42D /* HRPGMaintenanceViewController.m in Sources */,
+				D9525F9D1E64739900C529B8 /* PaddedView.swift in Sources */,
 				D95D03931C74AA5500D6BFB3 /* Preferences+CoreDataProperties.m in Sources */,
 				D9B5C0E118D602FC00C8D1B7 /* Group.m in Sources */,
 				D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */,

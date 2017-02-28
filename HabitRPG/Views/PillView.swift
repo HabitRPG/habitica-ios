@@ -108,6 +108,12 @@ class PillView: UIView {
         }
     }
     
+    override var isHidden: Bool {
+        didSet {
+            self.invalidateIntrinsicContentSize()
+        }
+    }
+    
     private let label: UILabel
     private let iconView: UIImageView;
     
@@ -135,10 +141,10 @@ class PillView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.iconView.frame = CGRect(x: 6, y: 0, width: 15, height: self.frame.size.height)
+        self.iconView.frame = CGRect(x: 8, y: 0, width: 15, height: self.frame.size.height)
         var labelOffset = CGFloat(0)
         if icon != nil {
-            labelOffset = CGFloat(25)
+            labelOffset = CGFloat(27)
         }
         self.label.frame = CGRect(x: labelOffset, y: 0, width: self.frame.size.width-labelOffset, height: self.frame.size.height)
         if self.isCircular {
@@ -156,7 +162,7 @@ class PillView: UIView {
                 return CGSize(width: 0, height: 0)
             }
             let originalSize = self.label.intrinsicContentSize
-            var width = originalSize.width+24
+            var width = originalSize.width+16
             let height = originalSize.height+12
             if icon != nil {
                 width += 15+4

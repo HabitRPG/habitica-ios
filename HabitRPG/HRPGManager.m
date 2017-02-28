@@ -731,6 +731,7 @@ NSString *currentUser;
         @"invitations.party.name" : @"invitedPartyName",
         @"inbox.optOut" : @"inboxOptOut",
         @"inbox.newMessages" : @"inboxNewMessages",
+        @"challenges" : @"challengeArray"
     }];
     entityMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping *userTagMapping =

@@ -10,6 +10,7 @@
 #import "HRPGPublicGuildTableViewCell.h"
 #import "HRPGGroupTableViewController.h"
 #import "HRPGCoreDataDataSource.h"
+#import "NSString+Emoji.h"
 
 @interface HRPGPublicGuildsViewController ()
 @property(nonatomic, strong) UISearchBar *searchBar;
@@ -102,8 +103,7 @@
                               }
                                  context:nil]
             .size.height;
-    height = height +
-             [guild.hdescription boundingRectWithSize:CGSizeMake(titleWidth, MAXFLOAT)
+    CGFloat descriptionHeight = [guild.hdescription boundingRectWithSize:CGSizeMake(titleWidth, MAXFLOAT)
                                               options:NSStringDrawingUsesLineFragmentOrigin
                                            attributes:@{
                                                NSFontAttributeName : [UIFont
@@ -111,6 +111,13 @@
                                            }
                                               context:nil]
                  .size.height;
+    if (descriptionHeight <
+        [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2].lineHeight * 6) {
+        height = height + descriptionHeight;
+    } else {
+        height =
+        height + [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2].lineHeight * 6;
+    }
     return height;
 }
 

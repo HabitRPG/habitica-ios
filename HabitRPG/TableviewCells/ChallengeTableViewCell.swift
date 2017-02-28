@@ -18,26 +18,36 @@ class ChallengeTableViewCell: UITableViewCell {
     @IBOutlet weak var officialBadge: PillView!
     @IBOutlet weak var participatingBadge: PillView!
     @IBOutlet weak var officialParticipatingSpacing: NSLayoutConstraint!
+    @IBOutlet weak var badgesOffset: NSLayoutConstraint!
     @IBOutlet weak var badgesHeight: NSLayoutConstraint!
     
     func setChallenge(_ challenge: Challenge) {
         self.prizeLabel.text = challenge.prize?.stringValue
-        self.nameLabel.text = challenge.name
+        self.nameLabel.text = challenge.name?.unicodeEmoji
         
-        self.groupLabel.text = challenge.group?.name
+        self.groupLabel.text = challenge.group?.name.unicodeEmoji
         
         if let leaderName = challenge.leaderName {
-            self.leaderLabel.text = "By \(leaderName)".localized
+            self.leaderLabel.text = "By \(leaderName.unicodeEmoji)".localized
         }
         self.memberCountLabel.text = challenge.memberCount?.stringValue
         
         let official = challenge.official?.boolValue ?? false
         self.officialBadge.isHidden = !official
-        self.officialBadge.setNeedsLayout()
         if official {
             officialParticipatingSpacing.constant = 8
         } else {
             officialParticipatingSpacing.constant = 0
+        }
+        
+        self.participatingBadge.isHidden = challenge.user == nil
+        
+        if (self.officialBadge.isHidden && self.participatingBadge.isHidden) {
+            self.badgesHeight.constant = 0
+            self.badgesOffset.constant = 0
+        } else {
+            self.badgesHeight.constant = 22
+            self.badgesOffset.constant = 8
         }
     }
 }

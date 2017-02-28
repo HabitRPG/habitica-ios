@@ -8,6 +8,7 @@
 
 #import "HRPGGuildsOverviewViewController.h"
 #import "HRPGGroupTableViewController.h"
+#import "NSString+Emoji.h"
 
 @interface HRPGGuildsOverviewViewController ()
 
@@ -180,7 +181,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Group *guild = [self guildAtIndexPath:indexPath];
     UILabel *titleLabel = [cell viewWithTag:1];
-    titleLabel.text = guild.name;
+    titleLabel.text = [guild.name stringByReplacingEmojiCheatCodesWithUnicode];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender {

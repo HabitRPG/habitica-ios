@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Group;
+@class Group, User;
 
 NS_ASSUME_NONNULL_BEGIN
 

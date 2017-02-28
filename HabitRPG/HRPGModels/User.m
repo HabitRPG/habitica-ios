@@ -84,6 +84,7 @@
 @dynamic flags;
 @dynamic buff;
 @dynamic specialItems;
+@dynamic challenges;
 
 - (void)setAvatarSubview:(UIView *)view showsBackground:(BOOL)showsBackground showsMount:(BOOL)showsMount showsPet:(BOOL)showsPet {
     [self setAvatarSubview:view showsBackground:showsBackground showsMount:showsMount showsPet:showsPet isFainted:NO];
@@ -277,6 +278,41 @@
 
 - (void)setPetCountFromArray:(NSArray *)petArray {
     _petCount = @((int)[petArray count]);
+}
+
+- (NSArray *)challengeArray {
+    NSMutableArray *challengeArray = [NSMutableArray array];
+    for (Challenge *challenge in self.challenges) {
+        [challengeArray addObject:challenge.id];
+    }
+    return challengeArray;
+}
+
+- (void)setChallengeArray:(NSArray *)challengeArray {
+    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *managedObjectContext =
+    appdelegate.sharedManager.getManagedObjectContext;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity =
+    [NSEntityDescription entityForName:@"Challenge" inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *challenges = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    for (Challenge *challenge in challenges) {
+        if ([challengeArray containsObject:challenge.id]) {
+            if (![self.challenges containsObject:challenge]) {
+                [self addChallengesObject:challenge];
+            }
+        } else {
+            if ([self.challenges containsObject:challenge]) {
+                [self removeChallengesObject:challenge];
+                challenge.user = nil;
+            }
+        }
+    }
 }
 
 - (void)setCustomizationsDictionary:(NSDictionary *)customizationDictionary {

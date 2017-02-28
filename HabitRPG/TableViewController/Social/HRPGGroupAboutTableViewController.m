@@ -13,6 +13,7 @@
 #import "HRPGProfileViewController.h"
 #import "UIColor+Habitica.h"
 #import "UIViewController+Markdown.h"
+#import "NSString+Emoji.h"
 
 @interface HRPGGroupAboutTableViewController ()
 @property NSString *replyMessage;
@@ -149,7 +150,7 @@
         cell =
             [tableView dequeueReusableCellWithIdentifier:@"RightDetailCell" forIndexPath:indexPath];
         cell.textLabel.text = NSLocalizedString(@"Leader", nil);
-        cell.detailTextLabel.text = self.group.leader.username;
+        cell.detailTextLabel.text = [self.group.leader.username stringByReplacingEmojiCheatCodesWithUnicode];
     } else if (indexPath.item == 2) {
         cell =
             [tableView dequeueReusableCellWithIdentifier:@"RightDetailCell" forIndexPath:indexPath];

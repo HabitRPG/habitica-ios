@@ -13,6 +13,7 @@
 #import "Buff+CoreDataClass.h"
 #import "SpecialItems+CoreDataClass.h"
 #import "SubscriptionPlan+CoreDataClass.h"
+#import "Challenge+CoreDataClass.h"
 
 @class Egg, Gear, Group, Quest, Reward, Tag, Task, Customization, ImprovementCategory, UIView, UIColor, UIImage, UIImageView;
 
@@ -76,10 +77,13 @@
 @property(nonatomic, retain) Flags *flags;
 @property(nonatomic, retain) Buff *buff;
 @property(nonatomic, retain) SpecialItems *specialItems;
+@property(nonatomic, retain) NSSet *challenges;
 
 @property(nonatomic, retain, setter=setPetCountFromArray:) NSDictionary *petCountArray;
 @property(nonatomic, retain, setter=setCustomizationsDictionary:)
     NSDictionary *customizationsDictionary;
+@property(nonatomic) NSArray *challengeArray;
+
 @end
 
 @interface User (CoreDataGeneratedAccessors)
@@ -139,6 +143,14 @@
 - (void)addTags:(NSSet *)values;
 
 - (void)removeTags:(NSSet *)values;
+
+- (void)addChallengesObject:(Challenge *)value;
+
+- (void)removeChallengesObject:(Challenge *)value;
+
+- (void)addChallenges:(NSSet *)values;
+
+- (void)removeChallenges:(NSSet *)values;
 
 - (void)addTasksObject:(Task *)value;
 

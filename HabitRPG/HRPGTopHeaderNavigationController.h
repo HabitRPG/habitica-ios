@@ -24,4 +24,6 @@ typedef enum HRPGTopHeaderState : NSInteger {
 - (void)stopFollowingScrollView;
 - (void)scrollview:(UIScrollView *)scrollView scrolledToPosition:(CGFloat)position;
 
+- (void)setAlternativeHeaderView:(UIView *)alternativeHeaderView;
+- (void)removeAlternativeHeaderView;
 @end

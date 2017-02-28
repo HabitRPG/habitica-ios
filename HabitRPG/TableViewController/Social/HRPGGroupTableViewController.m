@@ -15,6 +15,7 @@
 #import "HRPGUserProfileViewController.h"
 #import "UIColor+Habitica.h"
 #import "UIViewController+Markdown.h"
+#import "NSString+Emoji.h"
 
 @interface HRPGGroupTableViewController ()
 @property NSString *replyMessage;
@@ -108,7 +109,7 @@
 
 - (void)setGroup:(Group *)group {
     _group = group;
-    self.navigationItem.title = group.name;
+    self.navigationItem.title = [group.name stringByReplacingEmojiCheatCodesWithUnicode];
 
     if (self.tableView.numberOfSections != [self numberOfSectionsInTableView:self.tableView]) {
         [self.tableView reloadData];
@@ -165,7 +166,7 @@
         return nil;
     }
     if (section == 0) {
-        return self.group.name;
+        return [self.group.name stringByReplacingEmojiCheatCodesWithUnicode];
     } else if (section == [self chatSectionIndex] - 1) {
         return NSLocalizedString(@"Chat", nil);
     }

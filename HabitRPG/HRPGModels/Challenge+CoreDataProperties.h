@@ -2,7 +2,7 @@
 //  Challenge+CoreDataProperties.h
 //  Habitica
 //
-//  Created by Phillip Thelen on 23/02/2017.
+//  Created by Phillip Thelen on 24/02/2017.
 //  Copyright © 2017 Phillip Thelen. All rights reserved.
 //
 
@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *shortName;
 @property (nullable, nonatomic, copy) NSDate *updatedAt;
 @property (nullable, nonatomic, retain) Group *group;
+@property (nullable, nonatomic, retain) User *user;
 
 @end
 

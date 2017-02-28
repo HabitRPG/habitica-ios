@@ -2,7 +2,7 @@
 //  Challenge+CoreDataProperties.m
 //  Habitica
 //
-//  Created by Phillip Thelen on 23/02/2017.
+//  Created by Phillip Thelen on 24/02/2017.
 //  Copyright © 2017 Phillip Thelen. All rights reserved.
 //
 
@@ -26,5 +26,6 @@
 @dynamic shortName;
 @dynamic updatedAt;
 @dynamic group;
+@dynamic user;
 
 @end
