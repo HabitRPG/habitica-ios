@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class ChecklistItem, Reminder, Tag, TaskHistory, User;
+@class ChecklistItem, Reminder, Tag, User;
 
 NS_ASSUME_NONNULL_BEGIN
 

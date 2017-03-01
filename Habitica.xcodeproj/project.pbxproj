@@ -221,8 +221,6 @@
 		D9C89CF91B1F0E6C00A599B0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9C89CF81B1F0E6C00A599B0 /* StoreKit.framework */; };
 		D9CD2DBE1BC7FBB500B1304B /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CD2DBD1BC7FBB500B1304B /* CoreSpotlight.framework */; };
 		D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */; };
-		D9CE903E1E4CAE6700702578 /* TaskHistory+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CE90371E4CAE6700702578 /* TaskHistory+CoreDataClass.m */; };
-		D9CE903F1E4CAE6700702578 /* TaskHistory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CE90391E4CAE6700702578 /* TaskHistory+CoreDataProperties.m */; };
 		D9CE90401E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CE903B1E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.m */; };
 		D9CE90411E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CE903D1E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.m */; };
 		D9CE90431E4CDC9100702578 /* SubscriptionDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9CE90421E4CDC9100702578 /* SubscriptionDetailView.xib */; };
@@ -758,10 +756,6 @@
 		D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+TutorialSteps.m"; path = "HabitRPG/Utilities/UIViewController+TutorialSteps.m"; sourceTree = SOURCE_ROOT; };
 		D9CD2DD61BCAC00300B1304B /* TutorialStepsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TutorialStepsProtocol.h; path = HabitRPG/Utilities/TutorialStepsProtocol.h; sourceTree = SOURCE_ROOT; };
 		D9CE90351E4CADD000702578 /* HabitRPG 37.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 37.xcdatamodel"; sourceTree = "<group>"; };
-		D9CE90361E4CAE6700702578 /* TaskHistory+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskHistory+CoreDataClass.h"; sourceTree = "<group>"; };
-		D9CE90371E4CAE6700702578 /* TaskHistory+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskHistory+CoreDataClass.m"; sourceTree = "<group>"; };
-		D9CE90381E4CAE6700702578 /* TaskHistory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TaskHistory+CoreDataProperties.h"; sourceTree = "<group>"; };
-		D9CE90391E4CAE6700702578 /* TaskHistory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TaskHistory+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D9CE903A1E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SubscriptionPlan+CoreDataClass.h"; sourceTree = "<group>"; };
 		D9CE903B1E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SubscriptionPlan+CoreDataClass.m"; sourceTree = "<group>"; };
 		D9CE903C1E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SubscriptionPlan+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -774,6 +768,7 @@
 		D9D045181C2B1AEC00630244 /* Reminder+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reminder+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D9D045191C2B1AEC00630244 /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
 		D9D0451A1C2B1AEC00630244 /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
+		D9D17CC81E66EE3600AD9232 /* HabitRPG 38.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 38.xcdatamodel"; sourceTree = "<group>"; };
 		D9D197141CA2DEA10006E186 /* HabitRPG 24.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 24.xcdatamodel"; sourceTree = "<group>"; };
 		D9D2172F198D509000023367 /* HRPGDeathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGDeathView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9D21730198D509000023367 /* HRPGDeathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGDeathView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -1418,10 +1413,6 @@
 				D9F1E3F01E576E430034D0F4 /* Task+CoreDataProperties.m */,
 				D99CDDDB1E5368E400ABD85F /* ShopItem+CoreDataClass.h */,
 				D99CDDDC1E5368E400ABD85F /* ShopItem+CoreDataClass.m */,
-				D9CE90361E4CAE6700702578 /* TaskHistory+CoreDataClass.h */,
-				D9CE90371E4CAE6700702578 /* TaskHistory+CoreDataClass.m */,
-				D9CE90381E4CAE6700702578 /* TaskHistory+CoreDataProperties.h */,
-				D9CE90391E4CAE6700702578 /* TaskHistory+CoreDataProperties.m */,
 				D9CE903A1E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.h */,
 				D9CE903B1E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.m */,
 				D9CE903C1E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.h */,
@@ -2300,14 +2291,12 @@
 				D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */,
 				D9AEF8E41CE4CCA5006914CB /* HRPGURLParser.m in Sources */,
 				D9A63A341E10328A0083ADC4 /* LoginTableViewController.swift in Sources */,
-				D9CE903E1E4CAE6700702578 /* TaskHistory+CoreDataClass.m in Sources */,
 				D98AD54E19437D9400AF6174 /* Pet.m in Sources */,
 				D9C89CF61B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m in Sources */,
 				D9436AC11C63A4BB008D1171 /* UIViewController+Markdown.m in Sources */,
 				D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */,
 				D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */,
 				D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */,
-				D9CE903F1E4CAE6700702578 /* TaskHistory+CoreDataProperties.m in Sources */,
 				D92A084B1D33FA08000F8B66 /* HRPGShopViewController.m in Sources */,
 				D92A085B1D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m in Sources */,
 				D92503BE1D5C9219006C9388 /* NSString+UUID.m in Sources */,
@@ -2990,6 +2979,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D9D17CC81E66EE3600AD9232 /* HabitRPG 38.xcdatamodel */,
 				D9CE90351E4CADD000702578 /* HabitRPG 37.xcdatamodel */,
 				D97AC21D1DD39D6300BEB5A9 /* HabitRPG 36.xcdatamodel */,
 				D9E46AFE1DABCD7300E390D7 /* HabitRPG 35.xcdatamodel */,
@@ -3009,7 +2999,7 @@
 				D98F5DC41C6A43D20035CBEC /* HabitRPG 21.xcdatamodel */,
 				D9C0E5171C650D1D0062C89A /* HabitRPG 20.xcdatamodel */,
 			);
-			currentVersion = D9CE90351E4CADD000702578 /* HabitRPG 37.xcdatamodel */;
+			currentVersion = D9D17CC81E66EE3600AD9232 /* HabitRPG 38.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

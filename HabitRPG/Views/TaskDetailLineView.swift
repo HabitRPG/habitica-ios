@@ -176,15 +176,7 @@ class TaskDetailLineView: UIView {
     }
 
     private func setLastCompleted(task: Task) {
-        if let history = task.history {
-            if let historyEntry = history.lastObject as? TaskHistory {
-                if (historyEntry.date!.timeIntervalSinceNow > -300.0) {
-                    detailLabel.text = "Done just now".localized
-                } else {
-                    detailLabel.text = "Done \(NSDate.shortTimeAgo(since: historyEntry.date)!) ago".localized
-                }
-            }
-        }
+        //Removed because storing task history was causing sync issues
     }
     
     private func setChallenge(enabled: Bool) {

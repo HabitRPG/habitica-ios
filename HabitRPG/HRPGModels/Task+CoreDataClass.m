@@ -10,7 +10,6 @@
 #import "ChecklistItem.h"
 #import "Reminder.h"
 #import "Tag.h"
-#import "TaskHistory+CoreDataClass.h"
 #import "User.h"
 #import "UIColor+Habitica.h"
 #import "NSDate+DaysSince.h"

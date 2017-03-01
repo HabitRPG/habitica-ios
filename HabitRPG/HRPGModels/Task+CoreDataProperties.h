@@ -41,7 +41,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSNumber *value;
 @property (nullable, nonatomic, copy) NSNumber *wednesday;
 @property (nullable, nonatomic, retain) NSOrderedSet<ChecklistItem *> *checklist;
-@property (nullable, nonatomic, retain) NSOrderedSet<TaskHistory *> *history;
 @property (nullable, nonatomic, retain) NSOrderedSet<Reminder *> *reminders;
 @property (nullable, nonatomic, retain) NSSet<Tag *> *tags;
 @property (nullable, nonatomic, retain) User *user;
@@ -60,17 +59,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeChecklistObject:(ChecklistItem *)value;
 - (void)addChecklist:(NSOrderedSet<ChecklistItem *> *)values;
 - (void)removeChecklist:(NSOrderedSet<ChecklistItem *> *)values;
-
-- (void)insertObject:(TaskHistory *)value inHistoryAtIndex:(NSUInteger)idx;
-- (void)removeObjectFromHistoryAtIndex:(NSUInteger)idx;
-- (void)insertHistory:(NSArray<TaskHistory *> *)value atIndexes:(NSIndexSet *)indexes;
-- (void)removeHistoryAtIndexes:(NSIndexSet *)indexes;
-- (void)replaceObjectInHistoryAtIndex:(NSUInteger)idx withObject:(TaskHistory *)value;
-- (void)replaceHistoryAtIndexes:(NSIndexSet *)indexes withHistory:(NSArray<TaskHistory *> *)values;
-- (void)addHistoryObject:(TaskHistory *)value;
-- (void)removeHistoryObject:(TaskHistory *)value;
-- (void)addHistory:(NSOrderedSet<TaskHistory *> *)values;
-- (void)removeHistory:(NSOrderedSet<TaskHistory *> *)values;
 
 - (void)insertObject:(Reminder *)value inRemindersAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromRemindersAtIndex:(NSUInteger)idx;

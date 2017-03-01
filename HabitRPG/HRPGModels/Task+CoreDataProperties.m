@@ -40,7 +40,6 @@
 @dynamic value;
 @dynamic wednesday;
 @dynamic checklist;
-@dynamic history;
 @dynamic reminders;
 @dynamic tags;
 @dynamic user;

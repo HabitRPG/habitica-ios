@@ -47,7 +47,6 @@
 #import "HRPGNotification.h"
 #import "HRPGNotificationManager.h"
 #import "ShopItem+CoreDataClass.h"
-#import "TaskHistory+CoreDataClass.h"
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
@@ -231,15 +230,6 @@ NSString *currentUser;
         addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"reminders"
                                                                        toKeyPath:@"reminders"
                                                                      withMapping:remindersMapping]];
-    RKEntityMapping *historyMapping =
-    [RKEntityMapping mappingForEntityForName:@"TaskHistory"
-                        inManagedObjectStore:managedObjectStore];
-    [historyMapping addAttributeMappingsFromArray:@[ @"value", @"date" ]];
-    
-    [taskMapping
-     addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"history"
-                                                                    toKeyPath:@"history"
-                                                                  withMapping:historyMapping]];
     [[RKObjectManager sharedManager].router.routeSet
         addRoute:[RKRoute routeWithClass:[Task class]
                              pathPattern:@"tasks/:id"
@@ -2697,11 +2687,6 @@ NSString *currentUser;
                                                           error:&executeError] != nil) {
                 task.value = @([task.value floatValue] + [taskResponse.delta floatValue]);
             }
-            TaskHistory *historyEntry = [NSEntityDescription insertNewObjectForEntityForName:@"TaskHistory" inManagedObjectContext:[self getManagedObjectContext]];
-            historyEntry.date = [NSDate date];
-            historyEntry.value = task.value;
-            historyEntry.task = task;
-            [task addHistoryObject:historyEntry];
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
 
             if ([self.user.level integerValue] < [taskResponse.level integerValue]) {
