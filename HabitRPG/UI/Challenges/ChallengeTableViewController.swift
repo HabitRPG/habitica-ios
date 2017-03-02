@@ -8,8 +8,11 @@
 
 import UIKit
 
-class ChallengeTableViewController: HRPGBaseViewController {
+class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate {
 
+    var selectedChallenge: Challenge?
+    var searchText: String?
+    
     var dataSource: HRPGCoreDataDataSource?
 
     var showOnlyUserChallenges = true
@@ -35,11 +38,16 @@ class ChallengeTableViewController: HRPGBaseViewController {
         navController.setAlternativeHeaderView(segmentedWrapper)
         self.tableView.contentInset = UIEdgeInsets(top: navController.getContentInset(), left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
         self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: navController.getContentInset(), left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
+        let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+        searchbar.placeholder = NSLocalizedString("Search", comment: "")
+        searchbar.delegate = self
+        self.tableView.tableHeaderView = searchbar
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         let navController = self.navigationController as! HRPGTopHeaderNavigationController
         navController.removeAlternativeHeaderView()
+        super.viewWillDisappear(animated)
     }
     
     func configureTableView() {
@@ -64,10 +72,25 @@ class ChallengeTableViewController: HRPGBaseViewController {
             guard let weakSelf = self else {
                 return;
             }
+            var searchFormat: String = ""
+            if let searchText = weakSelf.searchText {
+                if searchText.characters.count > 0 {
+                    searchFormat = "((name CONTAINS[cd] \'\(searchText)\') OR (notes CONTAINS[cd] \'\(searchText)\'))"
+                }
+            }
             if weakSelf.showOnlyUserChallenges {
-                fetchRequest?.predicate = NSPredicate(format: "user.id == %@", weakSelf.sharedManager.getUser().id)
+                if searchFormat.characters.count > 0 {
+                    searchFormat = searchFormat.appending(" && user.id == %@")
+                } else {
+                    searchFormat = "user.id == %@"
+                }
+                fetchRequest?.predicate = NSPredicate(format: searchFormat, weakSelf.sharedManager.getUser().id)
             } else {
-                fetchRequest?.predicate = nil
+                if searchFormat.characters.count > 0 {
+                    fetchRequest?.predicate = NSPredicate(format: searchFormat)
+                } else {
+                    fetchRequest?.predicate = nil
+                }
             }
             } as FetchRequestConfigureBlock
         self.dataSource = HRPGCoreDataDataSource(managedObjectContext: self.managedObjectContext, entityName: "Challenge", cellIdentifier: "Cell", configureCellBlock: configureCell, fetchRequest: configureFetchRequest, asDelegateFor: self.tableView)
@@ -79,4 +102,23 @@ class ChallengeTableViewController: HRPGBaseViewController {
         self.tableView.reloadData()
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedChallenge = self.dataSource?.item(at: indexPath) as! Challenge?
+        if (showOnlyUserChallenges) {
+            self.performSegue(withIdentifier: "ChallengeDetailSegue", sender: self)
+        } else {
+            
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let challengeDetailViewController = segue.destination as! ChallengeDetailTableViewController
+        challengeDetailViewController.challengeId = self.selectedChallenge?.id
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchText = searchText;
+        self.dataSource?.reconfigureFetchRequest()
+        self.tableView.reloadData()
+    }
 }

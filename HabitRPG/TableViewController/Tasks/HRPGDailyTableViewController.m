@@ -45,6 +45,10 @@
     return [super getDefinitonForTutorial:tutorialIdentifier];
 }
 
+- (NSString *)getCellNibName {
+    return @"HRPGDailyTableViewCell";
+}
+
 - (void)configureCell:(HRPGDailyTableViewCell *)cell
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate {

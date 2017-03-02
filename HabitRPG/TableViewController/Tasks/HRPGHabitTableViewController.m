@@ -56,4 +56,8 @@
     }];
 }
 
+- (NSString *)getCellNibName {
+    return @"HRPGHabitTableViewCell";
+}
+
 @end

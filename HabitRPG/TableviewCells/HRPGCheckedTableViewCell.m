@@ -9,6 +9,7 @@
 #import "HRPGCheckedTableViewCell.h"
 #import "NSString+Emoji.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @implementation HRPGCheckedTableViewCell
 

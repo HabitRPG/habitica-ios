@@ -10,6 +10,7 @@
 #import "ChecklistItem.h"
 #import "HRPGCheckBoxView.h"
 #import "HRPGToDoTableViewCell.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGToDoTableViewController ()
 @property NSString *readableName;
@@ -52,6 +53,10 @@
         };
     }
     return [super getDefinitonForTutorial:tutorialIdentifier];
+}
+
+- (NSString *)getCellNibName {
+    return @"HRPGToDoTableViewCell";
 }
 
 - (void)configureCell:(HRPGToDoTableViewCell *)cell

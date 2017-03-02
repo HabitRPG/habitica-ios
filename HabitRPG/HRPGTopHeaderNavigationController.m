@@ -178,15 +178,21 @@
 }
 
 - (void)setAlternativeHeaderView:(UIView *)alternativeHeaderView {
+    [self removeAlternativeHeaderView];
     _alternativeHeaderView = alternativeHeaderView;
     [self.headerView removeFromSuperview];
     [self.backgroundView addSubview:self.alternativeHeaderView];
+    self.alternativeHeaderView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.alternativeHeaderView.intrinsicContentSize.height);
+    [self.alternativeHeaderView layoutSubviews];
     [self viewWillLayoutSubviews];
 }
 
 - (void)removeAlternativeHeaderView {
+    if (self.alternativeHeaderView == nil) {
+        return;
+    }
     [self.alternativeHeaderView removeFromSuperview];
-    self.alternativeHeaderView = nil;
+    _alternativeHeaderView = nil;
     [self.backgroundView addSubview:self.headerView];
     [self viewWillLayoutSubviews];
 }

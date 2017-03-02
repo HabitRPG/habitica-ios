@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Task+CoreDataClass.h"
-#import "Habitica-Swift.h"
+
+@class TaskDetailLineView;
 
 @interface HRPGTaskTableViewCell : UITableViewCell
 

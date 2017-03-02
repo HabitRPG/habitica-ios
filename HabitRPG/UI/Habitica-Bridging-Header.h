@@ -12,3 +12,4 @@
 #import "TaskHistory+CoreDataClass.h"
 #import "HRPGCoreDataDataSource.h"
 #import "Challenge+CoreDataClass.h"
+#import "HRPGTaskTableViewCell.h"

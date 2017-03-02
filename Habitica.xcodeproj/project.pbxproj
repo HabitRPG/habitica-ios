@@ -234,6 +234,14 @@
 		D9CE90491E4DCF7D00702578 /* SubscriptionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CE90481E4DCF7D00702578 /* SubscriptionDetailView.swift */; };
 		D9D0451B1C2B1AEC00630244 /* Reminder+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D045181C2B1AEC00630244 /* Reminder+CoreDataProperties.m */; };
 		D9D0451C1C2B1AEC00630244 /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D0451A1C2B1AEC00630244 /* Reminder.m */; };
+		D9D17CCA1E6705EE00AD9232 /* ChallengeDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CC91E6705EE00AD9232 /* ChallengeDetailTableViewController.swift */; };
+		D9D17CCC1E6736A600AD9232 /* ChallengeDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCB1E6736A600AD9232 /* ChallengeDetailHeaderView.swift */; };
+		D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */; };
+		D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */; };
+		D9D17CD21E6898E400AD9232 /* HRPGHabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD11E6898E400AD9232 /* HRPGHabitTableViewCell.xib */; };
+		D9D17CD41E68995000AD9232 /* HRPGDailyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD31E68995000AD9232 /* HRPGDailyTableViewCell.xib */; };
+		D9D17CD61E6899A800AD9232 /* HRPGToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD51E6899A800AD9232 /* HRPGToDoTableViewCell.xib */; };
+		D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */; };
 		D9D21731198D509100023367 /* HRPGDeathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D21730198D509000023367 /* HRPGDeathView.m */; };
 		D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D44C101B0A0C73000732B4 /* HRPGGGuidelinesViewController.m */; };
 		D9D4A3AE1BBED941008AD861 /* HRPGTaskSetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D4A3AD1BBED941008AD861 /* HRPGTaskSetupTableViewController.m */; };
@@ -782,7 +790,14 @@
 		D9D045181C2B1AEC00630244 /* Reminder+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reminder+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D9D045191C2B1AEC00630244 /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
 		D9D0451A1C2B1AEC00630244 /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
+		D9D17CC91E6705EE00AD9232 /* ChallengeDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailTableViewController.swift; sourceTree = "<group>"; };
+		D9D17CCB1E6736A600AD9232 /* ChallengeDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailHeaderView.swift; sourceTree = "<group>"; };
+		D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeDetailHeaderView.xib; sourceTree = "<group>"; };
+		D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Extensions.swift"; sourceTree = "<group>"; };
+		D9D17CD11E6898E400AD9232 /* HRPGHabitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGHabitTableViewCell.xib; sourceTree = "<group>"; };
 		D9D17CC81E66EE3600AD9232 /* HabitRPG 38.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 38.xcdatamodel"; sourceTree = "<group>"; };
+		D9D17CD51E6899A800AD9232 /* HRPGToDoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGToDoTableViewCell.xib; sourceTree = "<group>"; };
+		D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGRewardTableViewCell.xib; sourceTree = "<group>"; };
 		D9D197141CA2DEA10006E186 /* HabitRPG 24.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 24.xcdatamodel"; sourceTree = "<group>"; };
 		D9D2172F198D509000023367 /* HRPGDeathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGDeathView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9D21730198D509000023367 /* HRPGDeathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGDeathView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -1071,6 +1086,7 @@
 				D96BFC501E1930A500266EEF /* Signal-Extensions.swift */,
 				D9CE90461E4CDF3F00702578 /* Designable-Extensions.swift */,
 				D9525F9E1E65A18300C529B8 /* EmojifiedString.swift */,
+				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1338,6 +1354,8 @@
 				D984D5851E48E5CF006E84F8 /* TaskDetailLineView.swift */,
 				D9CE90441E4CDD6200702578 /* PillView.swift */,
 				D9525F9C1E64739900C529B8 /* PaddedView.swift */,
+				D9D17CCB1E6736A600AD9232 /* ChallengeDetailHeaderView.swift */,
+				D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1375,14 +1393,18 @@
 				D9C2570F1B9B4C2D00839F48 /* HRPGTaskTableViewCell.m */,
 				D9C257111B9B4C4100839F48 /* HRPGHabitTableViewCell.h */,
 				D9C257121B9B4C4100839F48 /* HRPGHabitTableViewCell.m */,
+				D9D17CD11E6898E400AD9232 /* HRPGHabitTableViewCell.xib */,
 				D9C257141B9B4C5100839F48 /* HRPGCheckedTableViewCell.h */,
 				D9C257151B9B4C5100839F48 /* HRPGCheckedTableViewCell.m */,
 				D9C257171B9B4EF600839F48 /* HRPGDailyTableViewCell.h */,
 				D9C257181B9B4EF600839F48 /* HRPGDailyTableViewCell.m */,
+				D9D17CD31E68995000AD9232 /* HRPGDailyTableViewCell.xib */,
 				D9C2571A1B9B4F4A00839F48 /* HRPGToDoTableViewCell.h */,
 				D9C2571B1B9B4F4A00839F48 /* HRPGToDoTableViewCell.m */,
+				D9D17CD51E6899A800AD9232 /* HRPGToDoTableViewCell.xib */,
 				D9A1A27C1BA593D900903567 /* HRPGRewardTableViewCell.h */,
 				D9A1A27D1BA593D900903567 /* HRPGRewardTableViewCell.m */,
+				D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */,
 				D9E46B0B1DAC08BE00E390D7 /* HRPGSpellTableViewCell.h */,
 				D9E46B0C1DAC08BE00E390D7 /* HRPGSpellTableViewCell.m */,
 				D984D58C1E4A2F2D006E84F8 /* SubscriptionOptionView.swift */,
@@ -1557,6 +1579,7 @@
 			isa = PBXGroup;
 			children = (
 				D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */,
+				D9D17CC91E6705EE00AD9232 /* ChallengeDetailTableViewController.swift */,
 			);
 			path = Challenges;
 			sourceTree = "<group>";
@@ -1910,17 +1933,22 @@
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
 				D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
+				D9D17CD41E68995000AD9232 /* HRPGDailyTableViewCell.xib in Resources */,
+				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
 				D905D08C1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib in Resources */,
 				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
 				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
 				D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */,
+				D9D17CD61E6899A800AD9232 /* HRPGToDoTableViewCell.xib in Resources */,
 				D96576C51BAF53D400CCA28E /* HRPGGearDetailView.xib in Resources */,
 				D9CE90431E4CDC9100702578 /* SubscriptionDetailView.xib in Resources */,
 				D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */,
+				D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				D91CCAD01BCF11CC001C6A0C /* HRPGUserTopHeader.xib in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
+				D9D17CD21E6898E400AD9232 /* HRPGHabitTableViewCell.xib in Resources */,
 				D9F1E3EA1E55DCFB0034D0F4 /* SubscriptionInformationCell.xib in Resources */,
 				D90EA03C19D60B53001EABE4 /* DailyIntro.png in Resources */,
 				D9E9E0C81CCE64A3006D94A2 /* HRPGImageOverlayView.xib in Resources */,
@@ -2188,6 +2216,7 @@
 				D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */,
 				D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */,
 				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
+				D9D17CCC1E6736A600AD9232 /* ChallengeDetailHeaderView.swift in Sources */,
 				D9D593671D008C7500D6C388 /* PushDevice.m in Sources */,
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
 				D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */,
@@ -2199,6 +2228,7 @@
 				D9D593611D0058AE00D6C388 /* HRPGInboxChatViewController.m in Sources */,
 				D92A085A1D3520D8000F8B66 /* Shop.m in Sources */,
 				D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */,
+				D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */,
 				D979AD1A1AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m in Sources */,
 				D9F16E361BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
@@ -2242,6 +2272,7 @@
 				D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */,
 				D9D9EF981D54E51C00FC89C1 /* HRPGQRCodeView.m in Sources */,
 				D9E46B031DABCD9100E390D7 /* Buff+CoreDataClass.m in Sources */,
+				D9D17CCA1E6705EE00AD9232 /* ChallengeDetailTableViewController.swift in Sources */,
 				D9C257131B9B4C4100839F48 /* HRPGHabitTableViewCell.m in Sources */,
 				D95D03951C74AA5500D6BFB3 /* Outfit+CoreDataProperties.m in Sources */,
 				D914398A1BAF14C40006999E /* UIImage+withColor.m in Sources */,

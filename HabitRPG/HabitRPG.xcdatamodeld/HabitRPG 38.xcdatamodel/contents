@@ -30,7 +30,11 @@
         <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="challenges" inverseEntity="Group" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChallengeTask" inverseName="challenge" inverseEntity="ChallengeTask" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="challenges" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="ChallengeTask" syncable="YES">
+        <relationship name="challenge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Challenge" inverseName="tasks" inverseEntity="Challenge" syncable="YES"/>
     </entity>
     <entity name="ChatMessage" representedClassName="ChatMessage" syncable="YES">
         <attribute name="attributedText" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
@@ -496,7 +500,7 @@
         <element name="Armoire" positionX="0" positionY="0" width="128" height="45"/>
         <element name="Buff" positionX="9" positionY="153" width="128" height="210"/>
         <element name="BuyableItem" positionX="0" positionY="0" width="128" height="60"/>
-        <element name="Challenge" positionX="9" positionY="153" width="128" height="240"/>
+        <element name="Challenge" positionX="9" positionY="153" width="128" height="255"/>
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="240"/>
         <element name="ChatMessageLike" positionX="0" positionY="0" width="128" height="75"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
@@ -534,5 +538,6 @@
         <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
         <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
         <element name="User" positionX="0" positionY="0" width="128" height="1170"/>
+        <element name="ChallengeTask" positionX="9" positionY="153" width="128" height="60"/>
     </elements>
 </model>

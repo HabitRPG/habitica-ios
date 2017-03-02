@@ -40,6 +40,10 @@ BOOL editable;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UINib *nib = [UINib nibWithNibName:[self getCellNibName] bundle:nil];
+    [[self tableView] registerNib:nib forCellReuseIdentifier:@"Cell"];
+    
     self.coachMarks = @[ @"addTask", @"editTask", @"filterTask", @"reorderTask" ];
 
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
@@ -67,6 +71,10 @@ BOOL editable;
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
                                                initWithTarget:self action:@selector(longPressGestureRecognized:)];
     [self.tableView addGestureRecognizer:longPress];
+}
+
+- (NSString *)getCellNibName {
+    return nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

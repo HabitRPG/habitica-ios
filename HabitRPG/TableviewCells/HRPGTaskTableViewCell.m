@@ -9,6 +9,7 @@
 #import "HRPGTaskTableViewCell.h"
 #import "NSString+Emoji.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @implementation HRPGTaskTableViewCell
 

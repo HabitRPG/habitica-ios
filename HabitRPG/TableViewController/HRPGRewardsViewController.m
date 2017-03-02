@@ -29,6 +29,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    UINib *nib = [UINib nibWithNibName:@"HRPGRewardTableViewCell" bundle:nil];
+    [[self tableView] registerNib:nib forCellReuseIdentifier:@"Cell"];
+    
     [self setupTableView];
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
@@ -69,13 +73,6 @@
                                                                 fetchRequestBlock:configureFetchRequest
                                                                     asDelegateFor:self.tableView];
     self.dataSource.delegate = self;
-    self.dataSource.cellIdentifierBlock = ^(MetaReward *reward, NSIndexPath *indexPath) {
-        NSString *cellIdentifier = @"Cell";
-        if (![reward isKindOfClass:[Reward class]]) {
-            cellIdentifier = @"ImageCell";
-        }
-        return cellIdentifier;
-    };
 }
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"rewards"]) {
@@ -254,7 +251,7 @@
     [cell configureForReward:reward withGoldOwned:self.user.gold];
 
     if (![reward isKindOfClass:[Reward class]]) {
-        NSString *imageName;
+        NSString *imageName = nil;
         if ([reward.key isEqualToString:@"potion"]) {
             imageName = @"shop_potion";
         } else if ([reward.key isEqualToString:@"armoire"]) {
@@ -263,7 +260,11 @@
         } else if (![reward.key isEqualToString:@"reward"]) {
             imageName = [NSString stringWithFormat:@"shop_%@", reward.key];
         }
-        [self.sharedManager setImage:imageName withFormat:@"png" onView:cell.shopImageView];
+        if (imageName) {
+            [self.sharedManager setImage:imageName withFormat:@"png" onView:cell.shopImageView];
+        } else {
+            cell.shopImageView.image = nil;
+        }
     }
 
     __weak HRPGRewardsViewController *weakSelf = self;
