@@ -1335,11 +1335,20 @@ Invite friends now to earn a Quest Scroll!</string>
                             <outlet property="delegate" destination="UVz-HW-Tqj" id="Hmb-LX-Xb8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="9Ej-2z-PxV"/>
+                    <navigationItem key="navigationItem" id="9Ej-2z-PxV">
+                        <barButtonItem key="rightBarButtonItem" title="Leave" id="8I3-3f-XWz">
+                            <connections>
+                                <action selector="joinLeaveTapped:" destination="UVz-HW-Tqj" id="wAf-PV-bIX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="joinLeaveButton" destination="8I3-3f-XWz" id="Tce-tp-iOF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0kd-Gx-ciV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1626" y="5029"/>
+            <point key="canvasLocation" x="1593" y="5030"/>
         </scene>
         <!--Members-->
         <scene sceneID="g8Z-ZM-3o1">
@@ -2276,10 +2285,10 @@ Invite friends now to earn a Quest Scroll!</string>
                                                         <constraint firstItem="ZfN-3L-YMk" firstAttribute="top" secondItem="Ux2-MM-8yQ" secondAttribute="top" id="xgK-1k-ZBz"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQb-xF-oUg">
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQb-xF-oUg">
                                                     <rect key="frame" x="0.0" y="32" width="293" height="22"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Cn6-3X-i7r" customClass="PillView" customModule="Habitica" customModuleProvider="target">
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Cn6-3X-i7r" customClass="PillView" customModule="Habitica" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="75.5" height="22"/>
                                                             <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
@@ -2303,7 +2312,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
-                                                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="RvD-OK-24y" customClass="PillView" customModule="Habitica" customModuleProvider="target">
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="RvD-OK-24y" customClass="PillView" customModule="Habitica" customModuleProvider="target">
                                                             <rect key="frame" x="83.5" y="0.0" width="106.5" height="22"/>
                                                             <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>

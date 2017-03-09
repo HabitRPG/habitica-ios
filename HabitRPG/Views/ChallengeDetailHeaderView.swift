@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Down
 
 class ChallengeDetailHeaderView: UIView {
 
@@ -14,13 +15,19 @@ class ChallengeDetailHeaderView: UIView {
     @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var memberCountLabel: UILabel!
     @IBOutlet weak var gemCountLabel: UILabel!
+    var showMoreAction: (() -> ())?
 
     @IBAction func showMoreTapped(_ sender: Any) {
+        if let action = self.showMoreAction {
+            action()
+        }
     }
     
     func set(challenge: Challenge) {
         nameLabel.text = challenge.name?.unicodeEmoji
-        notesLabel.text = challenge.notes?.unicodeEmoji
+        if let notes = challenge.notes {
+            notesLabel.attributedText = try? Down(markdownString: notes.unicodeEmoji).toHabiticaAttributedString()
+        }
         memberCountLabel.text = challenge.memberCount?.stringValue
         gemCountLabel.text = challenge.prize?.stringValue
     }

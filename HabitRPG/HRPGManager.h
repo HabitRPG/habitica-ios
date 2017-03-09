@@ -66,6 +66,16 @@
 - (void)fetchChallenges:(void (^)())successBlock
                 onError:(void (^)())errorBlock;
 
+- (void)joinChallenge:(Challenge *)challenge
+            onSuccess:(void (^)())successBlock
+              onError:(void (^)())errorBlock;
+
+- (void)leaveChallenge:(Challenge *)challenge
+             keepTasks:(Boolean)keepTasks
+            onSuccess:(void (^)())successBlock
+              onError:(void (^)())errorBlock;
+
+
 - (void)upDownTask:(Task *)task
          direction:(NSString *)withDirection
          onSuccess:(void (^)())successBlock

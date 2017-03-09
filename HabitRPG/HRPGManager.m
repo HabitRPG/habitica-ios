@@ -592,6 +592,21 @@ NSString *currentUser;
 
         return nil;
     }];
+    
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"challenges/user"];
+        
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:[URL relativePath]
+                         tokenizeQueryStrings:YES
+                              parsedArguments:&argsDict];
+        if (match) {
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Challenge"];
+            return fetchRequest;
+        }
+        
+        return nil;
+    }];
 
     RKObjectMapping *upDownMapping = [RKObjectMapping mappingForClass:[HRPGTaskResponse class]];
     [upDownMapping addAttributeMappingsFromDictionary:@{
@@ -2074,6 +2089,20 @@ NSString *currentUser;
                           keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:challengeMapping
+                          method:RKRequestMethodPOST
+                          pathPattern:@"challenges/:id/join"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:challengeMapping
+                          method:RKRequestMethodPOST
+                          pathPattern:@"challenges/:id/leave"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
 
 
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-client" value:@"habitica-ios"];
@@ -2702,6 +2731,66 @@ NSString *currentUser;
                                                   [self.networkIndicatorController endNetworking];
                                                   return;
                                               }];
+}
+
+
+- (void)joinChallenge:(Challenge *)challenge onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:[NSString stringWithFormat:@"challenges/%@/join", challenge.id]
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            NSError *executeError = nil;
+                                            [self fetchUser:nil onError:nil];
+                                            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                            if (successBlock) {
+                                                successBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            [self handleNetworkError:operation withError:error];
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
+}
+
+- (void)leaveChallenge:(Challenge *)challenge keepTasks:(Boolean)keepTasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    NSDictionary *body = nil;
+    if (keepTasks) {
+        body = @{@"keep": @"keep-all"};
+    } else {
+        body = @{@"keep": @"remove-all"};
+    }
+    
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:[NSString stringWithFormat:@"challenges/%@/leave", challenge.id]
+                                     parameters:body
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            NSError *executeError = nil;
+                                            challenge.user = nil;
+                                            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                            if (successBlock) {
+                                                successBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            [self handleNetworkError:operation withError:error];
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
 }
 
 - (void)upDownTask:(Task *)task

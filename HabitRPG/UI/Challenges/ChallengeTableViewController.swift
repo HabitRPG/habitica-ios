@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import PopupDialog
+import ReactiveSwift
+import ReactiveCocoa
 
 class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate {
 
@@ -14,19 +17,35 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate 
     var searchText: String?
     
     var dataSource: HRPGCoreDataDataSource?
-
+    var joinInteractor: JoinChallengeInteractor?
+    var leaveInteractor: LeaveChallengeInteractor?
+    private let (lifetime, token) = Lifetime.make()
+    private var disposable: CompositeDisposable = CompositeDisposable()
+    
     var showOnlyUserChallenges = true
+    
+    var displayedAlert: ChallengeDetailAlert?
     
     let segmentedFilterControl = UISegmentedControl(items: [NSLocalizedString("My Challenges", comment: ""), NSLocalizedString("Public Challenges", comment: "")])
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.joinInteractor = JoinChallengeInteractor(self.sharedManager)
+        self.leaveInteractor = LeaveChallengeInteractor(self.sharedManager, presentingViewController: self)
+        
         self.configureTableView()
         self.sharedManager.fetchChallenges(nil, onError: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let subscriber = Observer<Bool, NSError>(value: {[weak self] in
+            self?.handleJoinLeave(isMember: $0)
+        })
+        disposable = CompositeDisposable()
+        disposable.add(self.joinInteractor?.reactive.observe(subscriber, during: self.lifetime))
+        disposable.add(self.leaveInteractor?.reactive.observe(subscriber, during: self.lifetime))
+        
         self.segmentedFilterControl.selectedSegmentIndex = 0
         self.segmentedFilterControl.tintColor = UIColor.purple300()
         self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
@@ -47,6 +66,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate 
     override func viewWillDisappear(_ animated: Bool) {
         let navController = self.navigationController as! HRPGTopHeaderNavigationController
         navController.removeAlternativeHeaderView()
+        disposable.dispose()
         super.viewWillDisappear(animated)
     }
     
@@ -107,7 +127,32 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate 
         if (showOnlyUserChallenges) {
             self.performSegue(withIdentifier: "ChallengeDetailSegue", sender: self)
         } else {
-            
+            let viewController = ChallengeDetailAlert(nibName: "ChallengeDetailAlert", bundle: Bundle.main)
+            viewController.challenge = self.selectedChallenge
+            viewController.joinLeaveAction = {[weak self] isMember in
+                guard let challenge = self?.selectedChallenge else {
+                    return;
+                }
+                if let weakSelf = self {
+                    if isMember {
+                        weakSelf.joinInteractor?.run(with: challenge)
+                    } else {
+                        weakSelf.leaveInteractor?.run(with: challenge)
+                    }
+                }
+            }
+            let popup = PopupDialog(viewController: viewController) {[weak self] in
+                self?.displayedAlert = nil
+                self?.tableView.deselectRow(at: indexPath, animated: true)
+            }
+            self.displayedAlert = viewController
+            self.present(popup, animated: true, completion: nil)
+        }
+    }
+    
+    func handleJoinLeave(isMember: Bool) {
+        if let alert = displayedAlert {
+            alert.isMember = isMember
         }
     }
     

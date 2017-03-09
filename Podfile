@@ -47,10 +47,14 @@ target 'Habitica' do
   pod 'FBSDKCoreKit', '~> 4'
   pod 'FBSDKLoginKit', '~> 4'
 
-  pod 'ReactiveCocoa', '= 5.0.0'
+  pod 'ReactiveCocoa', '~> 5.0.0'
 
   pod 'SwiftyStoreKit'
 
+  pod 'Down'
+
+  pod 'PopupDialog', :git => 'https://github.com/Orderella/PopupDialog.git', :branch => 'development'
+  
   target 'HabiticaTests' do
       inherit! :search_paths
       pod 'OHHTTPStubs'    

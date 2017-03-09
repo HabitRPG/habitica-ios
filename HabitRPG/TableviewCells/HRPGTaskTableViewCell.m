@@ -18,7 +18,7 @@
     self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     self.titleLabel.textColor = [UIColor blackColor];
     self.subtitleLabel.textColor = [UIColor gray50];
-
+    
     NSString *trimmedNotes =
         [task.notes stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 

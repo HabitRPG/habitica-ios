@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ReactiveSwift
+import PopupDialog
 
 class ChallengeDetailTableViewController: HRPGBaseViewController {
 
@@ -17,8 +19,19 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
     var dataSource: HRPGCoreDataDataSource?
     weak var navController: HRPGTopHeaderNavigationController?
     
+    var joinInteractor: JoinChallengeInteractor?
+    var leaveInteractor: LeaveChallengeInteractor?
+    private let (lifetime, token) = Lifetime.make()
+    private var disposable: CompositeDisposable = CompositeDisposable()
+    
+    var displayedAlert: ChallengeDetailAlert?
+    @IBOutlet weak var joinLeaveButton: UIBarButtonItem!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.joinInteractor = JoinChallengeInteractor(self.sharedManager)
+        self.leaveInteractor = LeaveChallengeInteractor(self.sharedManager, presentingViewController: self)
         
         fetchChallenge()
         
@@ -28,6 +41,28 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
         registerCell(fromNib: "HRPGRewardTableViewCell", withName: "reward")
         
         configureTableView()
+        
+        headerView.showMoreAction = {
+            let viewController = ChallengeDetailAlert(nibName: "ChallengeDetailAlert", bundle: Bundle.main)
+            viewController.challenge = self.challenge
+            viewController.joinLeaveAction = {[weak self] isMember in
+                guard let challenge = self?.challenge else {
+                    return;
+                }
+                if let weakSelf = self {
+                    if isMember {
+                        weakSelf.joinInteractor?.run(with: challenge)
+                    } else {
+                        weakSelf.leaveInteractor?.run(with: challenge)
+                    }
+                }
+            }
+            let popup = PopupDialog(viewController: viewController) {[weak self] in
+                self?.displayedAlert = nil
+            }
+            self.displayedAlert = viewController
+            self.present(popup, animated: true, completion: nil)
+        }
     }
     
     private func registerCell(fromNib nibName: String, withName: String) {
@@ -38,6 +73,13 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let subscriber = Observer<Bool, NSError>(value: {[weak self] in
+            self?.handleJoinLeave(isMember: $0)
+        })
+        disposable = CompositeDisposable()
+        disposable.add(self.joinInteractor?.reactive.observe(subscriber, during: self.lifetime))
+        disposable.add(self.leaveInteractor?.reactive.observe(subscriber, during: self.lifetime))
+        
         self.navController = self.navigationController as? HRPGTopHeaderNavigationController
         guard let navController = self.navController else {
             return
@@ -51,12 +93,14 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
         if let navController = self.navController {
             navController.removeAlternativeHeaderView()
         }
+        disposable.dispose()
         super.viewWillDisappear(animated)
     }
     
     // MARK: - Table view data source
 
     func configureTableView() {
+        tableView.backgroundColor = UIColor.gray500()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 90
         let configureCell = {(c, object, indexPath) in
@@ -85,10 +129,14 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
         } as CellIdentifierBlock
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 48
+    }
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 58))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 38))
         view.backgroundColor = UIColor.gray500()
-        let label = UILabel(frame: CGRect(x: 0, y: 25, width: self.view.frame.size.width, height: 21))
+        let label = UILabel(frame: CGRect(x: 0, y: 20, width: self.view.frame.size.width, height: 21))
         label.textColor = UIColor.gray200()
         let sectionName = self.dataSource?.tableView(self.tableView, titleForHeaderInSection: section)
         if sectionName == "habit" {
@@ -106,6 +154,30 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
         return view
     }
     
+    @IBAction func joinLeaveTapped(_ sender: UIBarButtonItem) {
+        if let challenge = self.challenge {
+            if challenge.user?.id == sharedManager.user.id {
+                self.leaveInteractor?.run(with: challenge)
+            } else {
+                self.joinInteractor?.run(with: challenge)
+            }
+        }
+    }
+    
+    func handleJoinLeave(isMember: Bool) {
+        if let alert = displayedAlert {
+            alert.isMember = isMember
+        }
+        
+        if isMember {
+            joinLeaveButton.title = NSLocalizedString("Leave", comment: "")
+            joinLeaveButton.tintColor = .red100()
+        } else{
+            joinLeaveButton.title = NSLocalizedString("Join", comment: "")
+            joinLeaveButton.tintColor = .green100()
+        }
+    }
+    
     func fetchChallenge() {
         guard let challengeId = self.challengeId else {
             return;
@@ -120,6 +192,7 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
                 let challenge = challenges[0]
                 self.tableView.reloadData()
                 self.headerView.set(challenge: challenge)
+                handleJoinLeave(isMember: ((challenge.user?.id) != nil))
                 self.challenge = challenge
             }
         } catch {
