@@ -104,13 +104,13 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 90
         let configureCell = {(c, object, indexPath) in
-            guard let cell = c as! HRPGTaskTableViewCell? else {
+            guard let cell = c as! TaskTableViewCell? else {
                 return;
             }
             guard let task = object as! Task? else {
                 return;
             }
-            cell.configure(for: task)
+            cell.configure(task: task)
             } as TableViewCellConfigureBlock
         let configureFetchRequest = {[weak self] fetchRequest in
             fetchRequest?.sortDescriptors = [NSSortDescriptor(key: "type", ascending: false), NSSortDescriptor(key: "order", ascending: false)]

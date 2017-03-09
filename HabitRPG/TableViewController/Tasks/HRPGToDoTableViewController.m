@@ -9,7 +9,6 @@
 #import "HRPGToDoTableViewController.h"
 #import "ChecklistItem.h"
 #import "HRPGCheckBoxView.h"
-#import "HRPGToDoTableViewCell.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGToDoTableViewController ()
@@ -56,10 +55,10 @@
 }
 
 - (NSString *)getCellNibName {
-    return @"HRPGToDoTableViewCell";
+    return @"ToDoTableViewCell";
 }
 
-- (void)configureCell:(HRPGToDoTableViewCell *)cell
+- (void)configureCell:(ToDoTableViewCell *)cell
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate {
     Task *task = [self taskAtIndexPath:indexPath];
@@ -74,7 +73,7 @@
         if ([task.checklist count] > currentOffset) {
             item = task.checklist[currentOffset];
         }
-        [cell configureForItem:item forTask:task];
+        [cell configureWithChecklistItem:item task:task];
         cell.checkBox.wasTouched = ^() {
             if (![task.currentlyChecking boolValue]) {
                 item.currentlyChecking = @YES;
@@ -104,7 +103,7 @@
             }
         };
     } else {
-        [cell configureForTask:task];
+        [cell configureWithTask:task];
         cell.checkBox.wasTouched = ^() {
             if (![task.currentlyChecking boolValue]) {
                 task.currentlyChecking = @YES;

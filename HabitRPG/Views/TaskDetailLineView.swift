@@ -76,7 +76,7 @@ class TaskDetailLineView: UIView {
     
     public func configure(task: Task) {
         hasContent = false
-        //setTag(enabled: task > 0)
+        setTag(enabled: task.tagArray.count > 0)
         setReminder(enabled: (task.reminders?.count)! > 0)
         setChallenge(enabled: task.challengeID != nil)
         setStreak(count: (task.streak?.intValue)!)

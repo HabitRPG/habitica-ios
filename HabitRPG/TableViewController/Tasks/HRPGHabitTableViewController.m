@@ -8,7 +8,7 @@
 
 #import "HRPGHabitTableViewController.h"
 #import "HRPGHabitButtons.h"
-#import "HRPGHabitTableViewCell.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGHabitTableViewController ()
 @property NSString *readableName;
@@ -40,12 +40,12 @@
     return [super getDefinitonForTutorial:tutorialIdentifier];
 }
 
-- (void)configureCell:(HRPGHabitTableViewCell *)cell
+- (void)configureCell:(HabitTableViewCell *)cell
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate {
     Task *task = [self taskAtIndexPath:indexPath];
 
-    [cell configureForTask:task];
+    [cell configureWithTask:task];
 
     __weak HRPGHabitTableViewController *weakSelf = self;
     [cell.plusButton action:^() {
@@ -57,7 +57,7 @@
 }
 
 - (NSString *)getCellNibName {
-    return @"HRPGHabitTableViewCell";
+    return @"HabitTableViewCell";
 }
 
 @end

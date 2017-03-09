@@ -9,7 +9,7 @@
 #import "HRPGDailyTableViewController.h"
 #import "ChecklistItem.h"
 #import "HRPGCheckBoxView.h"
-#import "HRPGDailyTableViewCell.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGDailyTableViewController ()
 @property NSString *readableName;
@@ -46,10 +46,10 @@
 }
 
 - (NSString *)getCellNibName {
-    return @"HRPGDailyTableViewCell";
+    return @"DailyTableViewCell";
 }
 
-- (void)configureCell:(HRPGDailyTableViewCell *)cell
+- (void)configureCell:(DailyTableViewCell *)cell
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate {
     Task *task = [self taskAtIndexPath:indexPath];
@@ -61,7 +61,7 @@
         if ([task.checklist count] > currentOffset) {
             item = task.checklist[currentOffset];
         }
-        [cell configureForItem:item forTask:task];
+        [cell configureWithChecklistItem:item task:task];
         cell.checkBox.wasTouched = ^() {
             if (![task.currentlyChecking boolValue]) {
                 item.currentlyChecking = @YES;
@@ -93,7 +93,7 @@
 
         };
     } else {
-        [cell configureForTask:task withOffset:self.dayStart];
+        [cell configureWithTask:task offset:self.dayStart];
         cell.checkBox.wasTouched = ^() {
             if (![task.currentlyChecking boolValue]) {
                 task.currentlyChecking = @YES;
