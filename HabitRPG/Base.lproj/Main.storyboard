@@ -3157,25 +3157,17 @@ your account, including:</string>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="0ge-iM-ebO">
-                            <rect key="frame" x="0.0" y="164" width="375" height="222"/>
+                            <rect key="frame" x="0.0" y="164" width="375" height="308"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart_large" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-qV-Dif">
-                                    <rect key="frame" x="8" y="8" width="359" height="36"/>
+                                    <rect key="frame" x="8" y="44.5" width="359" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="WMy-Bc-rwq"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5k-go-mwg">
-                                    <rect key="frame" x="8" y="52" width="359" height="41"/>
-                                    <string key="text">Subscribing supports the developers 
-and helps keep Habitica running</string>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.27450981736183167" green="0.65490198135375977" blue="0.85098040103912354" alpha="1" colorSpace="deviceRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P89-QO-UcF">
-                                    <rect key="frame" x="0.0" y="176" width="375" height="30"/>
+                                    <rect key="frame" x="0.0" y="262" width="375" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="FRr-fd-XWw"/>
                                     </constraints>
@@ -3184,18 +3176,39 @@ and helps keep Habitica running</string>
                                         <action selector="checkForExistingSubscription:" destination="32f-nw-z2z" eventType="touchUpInside" id="hjk-6R-qg5"/>
                                     </connections>
                                 </button>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lA-HR-ThY">
+                                    <rect key="frame" x="8" y="0.0" width="359" height="36.5"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="28" id="Nvl-9T-i7B"/>
+                                    </constraints>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.30233895705521474" colorSpace="calibratedRGB"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                </textView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5k-go-mwg">
+                                    <rect key="frame" x="8" y="88.5" width="359" height="41"/>
+                                    <string key="text">Subscribing supports the developers 
+and helps keep Habitica running</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.27450981736183167" green="0.65490198135375977" blue="0.85098040103912354" alpha="1" colorSpace="deviceRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="qWw-qV-Dif" secondAttribute="trailing" constant="8" id="5aa-Kf-1bE"/>
                                 <constraint firstItem="V5k-go-mwg" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="8" id="7zl-d0-mjK"/>
-                                <constraint firstItem="qWw-qV-Dif" firstAttribute="top" secondItem="0ge-iM-ebO" secondAttribute="top" constant="8" id="8MR-KT-n3F"/>
                                 <constraint firstItem="V5k-go-mwg" firstAttribute="top" secondItem="qWw-qV-Dif" secondAttribute="bottom" constant="8" id="9uL-17-PV3"/>
                                 <constraint firstAttribute="trailing" secondItem="V5k-go-mwg" secondAttribute="trailing" constant="8" id="B8s-XZ-5BU"/>
                                 <constraint firstItem="qWw-qV-Dif" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="8" id="BdZ-Ny-hd3"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="V5k-go-mwg" secondAttribute="bottom" constant="16" id="C2j-ma-EGd"/>
+                                <constraint firstItem="2lA-HR-ThY" firstAttribute="top" secondItem="0ge-iM-ebO" secondAttribute="top" id="DeT-FE-ykG"/>
                                 <constraint firstAttribute="bottom" secondItem="P89-QO-UcF" secondAttribute="bottom" constant="16" id="Eah-64-bm3"/>
+                                <constraint firstItem="2lA-HR-ThY" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="8" id="GCz-y3-YAR"/>
                                 <constraint firstItem="P89-QO-UcF" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" id="ZfF-fg-lmt"/>
+                                <constraint firstAttribute="trailing" secondItem="2lA-HR-ThY" secondAttribute="trailing" constant="8" id="gOt-we-wOj"/>
+                                <constraint firstItem="qWw-qV-Dif" firstAttribute="top" secondItem="2lA-HR-ThY" secondAttribute="bottom" constant="8" id="gui-rC-ejx"/>
                                 <constraint firstAttribute="trailing" secondItem="P89-QO-UcF" secondAttribute="trailing" id="nik-bX-WWV"/>
                             </constraints>
                         </view>

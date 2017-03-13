@@ -47,7 +47,16 @@ class SubscriptionViewController: HRPGBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let termsView = self.tableView.tableFooterView?.viewWithTag(2) as! UITextView
+        let termsAttributedText = NSMutableAttributedString(string: "Subscriptions auto renew at the end of their duration, unless you cancel. By continuing you accept the Terms of Use and Privacy Policy")
+        termsAttributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.gray50(), range: NSRange(location: 0, length: termsAttributedText.length))
+        let termsRange = termsAttributedText.mutableString.range(of: "Terms of Use")
+        termsAttributedText.addAttributes([NSLinkAttributeName: "https://habitica.com/static/terms"], range: termsRange)
+        let privacyRange = termsAttributedText.mutableString.range(of: "Privacy Policy")
+        termsAttributedText.addAttributes([NSLinkAttributeName: "https://habitica.com/static/privacy"], range: privacyRange)
+        termsView.attributedText = termsAttributedText
+        
         let optionNib = UINib.init(nibName: "SubscriptionOptionView", bundle: nil)
         self.tableView.register(optionNib, forCellReuseIdentifier: "OptionCell")
         let detailNib = UINib.init(nibName: "SubscriptionDetailView", bundle: nil)
