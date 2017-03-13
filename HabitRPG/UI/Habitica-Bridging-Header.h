@@ -9,7 +9,6 @@
 #import "HRPGAppDelegate.h"
 #import "HRPGGemHeaderNavigationController.h"
 #import "SubscriptionPlan+CoreDataClass.h"
-#import "TaskHistory+CoreDataClass.h"
 #import "HRPGCoreDataDataSource.h"
 #import "Challenge+CoreDataClass.h"
 #import "ChecklistItem.h"

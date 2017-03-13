@@ -3734,7 +3734,7 @@ and helps keep Habitica running</string>
                                                 <connections>
                                                     <outlet property="delegate" destination="d4N-vO-Oyt" id="aoH-w8-ar5"/>
                                                 </connections>
-                                            </view>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.22979888319969177" green="0.34771856665611267" blue="0.5954393744468689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

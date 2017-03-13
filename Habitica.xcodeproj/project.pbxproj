@@ -209,9 +209,10 @@
 		D9BB45591E71AFAF0002AE2E /* Down-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45581E71AFAF0002AE2E /* Down-Extensions.swift */; };
 		D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB455A1E71C52F0002AE2E /* TaskTableViewCell.swift */; };
 		D9BB455D1E71C8C70002AE2E /* CheckedTableViewcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */; };
-		D9BB455F1E71CD5C0002AE2E /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB455E1E71CD5C0002AE2E /* ToDoTableViewCell.swift */; };
 		D9BB45611E71CD850002AE2E /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45601E71CD850002AE2E /* DailyTableViewCell.swift */; };
 		D9BB45631E71CE910002AE2E /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45621E71CE910002AE2E /* HabitTableViewCell.swift */; };
+		D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BB45C91E76DF260002AE2E /* DailyTableViewCell.xib */; };
+		D9BB45CC1E76E0FC0002AE2E /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45CB1E76E0FC0002AE2E /* ToDoTableViewCell.swift */; };
 		D9BBF32C1DBD127A00C4114C /* HRPGShopAdFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */; };
 		D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */; };
 		D9BE05821DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BE05811DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m */; };
@@ -243,7 +244,7 @@
 		D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */; };
 		D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */; };
 		D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */; };
-		D9D17CD41E68995000AD9232 /* DailyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD31E68995000AD9232 /* DailyTableViewCell.xib */; };
+		D9D17CD41E68995000AD9232 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */; };
 		D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */; };
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
@@ -453,7 +454,6 @@
 		D94FEDEA1BB314B10046A52E /* HRPGGroupFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGroupFormViewController.m; sourceTree = "<group>"; };
 		D94FEDEC1BB6DA8E0046A52E /* HRPGInviteMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGInviteMembersViewController.h; path = HabitRPG/TableViewController/Modals/HRPGInviteMembersViewController.h; sourceTree = SOURCE_ROOT; };
 		D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGInviteMembersViewController.m; path = HabitRPG/TableViewController/Modals/HRPGInviteMembersViewController.m; sourceTree = SOURCE_ROOT; };
-		D9525F931E5F3FF600C529B8 /* HabitRPG 38.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 38.xcdatamodel"; sourceTree = "<group>"; };
 		D9525F941E5F405400C529B8 /* Challenge+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Challenge+CoreDataClass.h"; sourceTree = "<group>"; };
 		D9525F951E5F405400C529B8 /* Challenge+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Challenge+CoreDataClass.m"; sourceTree = "<group>"; };
 		D9525F961E5F405400C529B8 /* Challenge+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Challenge+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -742,9 +742,10 @@
 		D9BB45581E71AFAF0002AE2E /* Down-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Down-Extensions.swift"; sourceTree = "<group>"; };
 		D9BB455A1E71C52F0002AE2E /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckedTableViewcell.swift; sourceTree = "<group>"; };
-		D9BB455E1E71CD5C0002AE2E /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		D9BB45601E71CD850002AE2E /* DailyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
 		D9BB45621E71CE910002AE2E /* HabitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
+		D9BB45C91E76DF260002AE2E /* DailyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyTableViewCell.xib; sourceTree = "<group>"; };
+		D9BB45CB1E76E0FC0002AE2E /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		D9BBF32A1DBD127A00C4114C /* HRPGShopAdFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopAdFooter.h; sourceTree = "<group>"; };
 		D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopAdFooter.m; sourceTree = "<group>"; };
 		D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopAdFooter.xib; sourceTree = "<group>"; };
@@ -795,13 +796,13 @@
 		D9D045181C2B1AEC00630244 /* Reminder+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reminder+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D9D045191C2B1AEC00630244 /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
 		D9D0451A1C2B1AEC00630244 /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
+		D9D17CC81E66EE3600AD9232 /* HabitRPG 38.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 38.xcdatamodel"; sourceTree = "<group>"; };
 		D9D17CC91E6705EE00AD9232 /* ChallengeDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailTableViewController.swift; sourceTree = "<group>"; };
 		D9D17CCB1E6736A600AD9232 /* ChallengeDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailHeaderView.swift; sourceTree = "<group>"; };
 		D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeDetailHeaderView.xib; sourceTree = "<group>"; };
 		D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Extensions.swift"; sourceTree = "<group>"; };
-		D9D17CD11E6898E400AD9232 /* HRPGHabitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGHabitTableViewCell.xib; sourceTree = "<group>"; };
-		D9D17CC81E66EE3600AD9232 /* HabitRPG 38.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 38.xcdatamodel"; sourceTree = "<group>"; };
-		D9D17CD51E6899A800AD9232 /* HRPGToDoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGToDoTableViewCell.xib; sourceTree = "<group>"; };
+		D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HabitTableViewCell.xib; sourceTree = "<group>"; };
+		D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoTableViewCell.xib; sourceTree = "<group>"; };
 		D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGRewardTableViewCell.xib; sourceTree = "<group>"; };
 		D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeDetailAlert.xib; sourceTree = "<group>"; };
 		D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailAlert.swift; sourceTree = "<group>"; };
@@ -1421,9 +1422,8 @@
 				D9BB45621E71CE910002AE2E /* HabitTableViewCell.swift */,
 				D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */,
 				D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */,
+				D9BB45C91E76DF260002AE2E /* DailyTableViewCell.xib */,
 				D9BB45601E71CD850002AE2E /* DailyTableViewCell.swift */,
-				D9D17CD31E68995000AD9232 /* DailyTableViewCell.xib */,
-				D9BB455E1E71CD5C0002AE2E /* ToDoTableViewCell.swift */,
 				D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */,
 				D9A1A27C1BA593D900903567 /* HRPGRewardTableViewCell.h */,
 				D9A1A27D1BA593D900903567 /* HRPGRewardTableViewCell.m */,
@@ -1437,6 +1437,7 @@
 				D9F1E3E71E55DCEB0034D0F4 /* SubscriptionInformationCell.swift */,
 				D9F1E3E91E55DCFB0034D0F4 /* SubscriptionInformationCell.xib */,
 				D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */,
+				D9BB45CB1E76E0FC0002AE2E /* ToDoTableViewCell.swift */,
 			);
 			path = TableviewCells;
 			sourceTree = "<group>";
@@ -1957,7 +1958,8 @@
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
 				D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
-				D9D17CD41E68995000AD9232 /* DailyTableViewCell.xib in Resources */,
+				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
 				D905D08C1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib in Resources */,
@@ -2356,6 +2358,7 @@
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,
 				D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */,
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
+				D9BB45CC1E76E0FC0002AE2E /* ToDoTableViewCell.swift in Sources */,
 				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,
 				D99CDDDD1E5368E400ABD85F /* ShopItem+CoreDataClass.m in Sources */,
 				D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */,
