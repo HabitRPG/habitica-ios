@@ -2,12 +2,13 @@
 //  Challenge+CoreDataProperties.h
 //  Habitica
 //
-//  Created by Phillip Thelen on 24/02/2017.
+//  Created by Phillip Thelen on 14/03/2017.
 //  Copyright © 2017 Phillip Thelen. All rights reserved.
 //
 
 #import "Challenge+CoreDataClass.h"
 
+@class ChallengeTask;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,7 +28,35 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *shortName;
 @property (nullable, nonatomic, copy) NSDate *updatedAt;
 @property (nullable, nonatomic, retain) Group *group;
+@property (nullable, nonatomic, retain) NSSet<ChallengeTask *> *habits;
 @property (nullable, nonatomic, retain) User *user;
+@property (nullable, nonatomic, retain) NSSet<ChallengeTask *> *dailies;
+@property (nullable, nonatomic, retain) NSSet<ChallengeTask *> *todos;
+@property (nullable, nonatomic, retain) NSSet<ChallengeTask *> *rewards;
+
+@end
+
+@interface Challenge (CoreDataGeneratedAccessors)
+
+- (void)addHabitsObject:(ChallengeTask *)value;
+- (void)removeHabitsObject:(ChallengeTask *)value;
+- (void)addHabits:(NSSet<ChallengeTask *> *)values;
+- (void)removeHabits:(NSSet<ChallengeTask *> *)values;
+
+- (void)addDailiesObject:(ChallengeTask *)value;
+- (void)removeDailiesObject:(ChallengeTask *)value;
+- (void)addDailies:(NSSet<ChallengeTask *> *)values;
+- (void)removeDailies:(NSSet<ChallengeTask *> *)values;
+
+- (void)addTodosObject:(ChallengeTask *)value;
+- (void)removeTodosObject:(ChallengeTask *)value;
+- (void)addTodos:(NSSet<ChallengeTask *> *)values;
+- (void)removeTodos:(NSSet<ChallengeTask *> *)values;
+
+- (void)addRewardsObject:(ChallengeTask *)value;
+- (void)removeRewardsObject:(ChallengeTask *)value;
+- (void)addRewards:(NSSet<ChallengeTask *> *)values;
+- (void)removeRewards:(NSSet<ChallengeTask *> *)values;
 
 @end
 

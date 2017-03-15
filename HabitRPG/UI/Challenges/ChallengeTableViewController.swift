@@ -128,6 +128,9 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate 
             self.performSegue(withIdentifier: "ChallengeDetailSegue", sender: self)
         } else {
             let viewController = ChallengeDetailAlert(nibName: "ChallengeDetailAlert", bundle: Bundle.main)
+            self.sharedManager.fetchChallengeTasks(self.selectedChallenge, onSuccess: {[weak self] () in
+                viewController.challenge = self?.selectedChallenge
+            }, onError: nil)
             viewController.challenge = self.selectedChallenge
             viewController.joinLeaveAction = {[weak self] isMember in
                 guard let challenge = self?.selectedChallenge else {

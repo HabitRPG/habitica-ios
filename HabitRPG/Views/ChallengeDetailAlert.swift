@@ -19,14 +19,17 @@ class ChallengeDetailAlert: UIViewController {
     @IBOutlet weak var joinLeaveButton: UIButton!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var habitsList: ChallengeTaskListView!
+    @IBOutlet weak var dailiesList: ChallengeTaskListView!
+    @IBOutlet weak var todosList: ChallengeTaskListView!
+    @IBOutlet weak var rewardsList: ChallengeTaskListView!
+    
     var joinLeaveAction: ((Bool) -> ())?
     
     var challenge: Challenge? {
         didSet {
-            if viewIsLoaded {
-                if let challenge = self.challenge {
-                    configureForChallenge(challenge)
-                }
+            if let challenge = self.challenge {
+                configure(challenge)
             }
         }
     }
@@ -52,7 +55,7 @@ class ChallengeDetailAlert: UIViewController {
         super.viewDidLoad()
         viewIsLoaded = true
         if let challenge = self.challenge {
-            configureForChallenge(challenge)
+            configure(challenge)
         }
     }
     
@@ -61,7 +64,10 @@ class ChallengeDetailAlert: UIViewController {
         self.heightConstraint.constant = (self.view.window?.frame.size.height)! - 200
     }
     
-    private func configureForChallenge(_ challenge: Challenge) {
+    private func configure(_ challenge: Challenge, showTasks: Bool = true) {
+        if !viewIsLoaded {
+            return
+        }
         nameLabel.text = challenge.name?.unicodeEmoji
         if let notes = challenge.notes {
             let markdownString = try? Down(markdownString: notes.unicodeEmoji).toHabiticaAttributedString()
@@ -71,7 +77,21 @@ class ChallengeDetailAlert: UIViewController {
         gemLabel.text = challenge.prize?.stringValue
         memberCountLabel.text = challenge.memberCount?.stringValue
         isMember = challenge.user != nil
+        
+        habitsList.configure(tasks: challenge.habits?.sorted(by: { (first, second) -> Bool in
+            (first.order?.intValue)! < (second.order?.intValue)!
+        }))
+        dailiesList.configure(tasks: challenge.dailies?.sorted(by: { (first, second) -> Bool in
+            (first.order?.intValue)! < (second.order?.intValue)!
+        }))
+        todosList.configure(tasks: challenge.todos?.sorted(by: { (first, second) -> Bool in
+            (first.order?.intValue)! < (second.order?.intValue)!
+        }))
+        rewardsList.configure(tasks: challenge.rewards?.sorted(by: { (first, second) -> Bool in
+            (first.order?.intValue)! < (second.order?.intValue)!
+        }))
     }
+    
     @IBAction func joinLeaveTapped(_ sender: Any) {
         if let action = joinLeaveAction {
             action(!isMember)

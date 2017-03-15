@@ -11,13 +11,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeDetailAlert" customModule="Habitica" customModuleProvider="target">
             <connections>
+                <outlet property="dailiesList" destination="cNn-KB-9md" id="xxI-K1-OEb"/>
                 <outlet property="gemLabel" destination="mhO-4B-H9B" id="EHa-sB-WXt"/>
+                <outlet property="habitsList" destination="y0U-Hw-A58" id="2Y9-3g-3yZ"/>
                 <outlet property="heightConstraint" destination="AEH-iG-EFt" id="cJf-o1-QsY"/>
                 <outlet property="joinLeaveButton" destination="QWw-F6-yzC" id="XhM-qW-iTZ"/>
                 <outlet property="memberCountLabel" destination="Ete-qG-iTS" id="kUG-IQ-X0E"/>
                 <outlet property="nameLabel" destination="QCR-vG-vQ4" id="PKK-cX-mQV"/>
                 <outlet property="notesLabel" destination="hsm-eu-6RS" id="9jK-7r-Y0H"/>
                 <outlet property="ownerLabel" destination="nyh-2v-Ant" id="wFf-TW-cd8"/>
+                <outlet property="rewardsList" destination="wpd-n8-SEk" id="mXM-N9-Ffr"/>
+                <outlet property="todosList" destination="08n-L1-b7L" id="y2X-I7-eFD"/>
                 <outlet property="view" destination="EcV-jd-P9L" id="Nls-og-dF1"/>
             </connections>
         </placeholder>
@@ -30,7 +34,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="713.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="405"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="CHALLENGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNc-dr-oWo">
                                     <rect key="frame" x="16" y="20" width="343" height="15"/>
@@ -69,31 +73,73 @@
                                     <color key="textColor" red="0.3803921639919281" green="0.20000000298023224" blue="0.70588237047195435" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0U-Hw-A58">
-                                    <rect key="frame" x="16" y="205.5" width="343" height="500"/>
+                                <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="y0U-Hw-A58" customClass="ChallengeTaskListView" customModule="Habitica" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="205.5" width="343" height="40"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="500" id="A83-G0-FhD"/>
+                                        <constraint firstAttribute="height" priority="500" constant="40" id="A83-G0-FhD"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="taskType" value="habit"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="cNn-KB-9md" customClass="ChallengeTaskListView" customModule="Habitica" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="253" width="343" height="40"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="40" id="XSU-y8-FKp"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="taskType" value="daily"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="08n-L1-b7L" customClass="ChallengeTaskListView" customModule="Habitica" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="301" width="343" height="40"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="40" id="xJy-1W-Y6O"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="taskType" value="todo"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="wpd-n8-SEk" customClass="ChallengeTaskListView" customModule="Habitica" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="349" width="343" height="40"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="40" id="iq5-iL-Z3G"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="taskType" value="reward"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="nyh-2v-Ant" firstAttribute="top" secondItem="hsm-eu-6RS" secondAttribute="bottom" constant="8" id="19K-um-ydd"/>
+                                <constraint firstAttribute="trailing" secondItem="cNn-KB-9md" secondAttribute="trailing" constant="16" id="1Ld-xL-9z0"/>
                                 <constraint firstAttribute="trailing" secondItem="QCR-vG-vQ4" secondAttribute="trailing" constant="16" id="322-Kc-w8d"/>
+                                <constraint firstItem="08n-L1-b7L" firstAttribute="top" secondItem="cNn-KB-9md" secondAttribute="bottom" constant="8" id="7sb-60-WGk"/>
                                 <constraint firstItem="QCR-vG-vQ4" firstAttribute="top" secondItem="SNc-dr-oWo" secondAttribute="bottom" constant="8" id="8OO-Jl-fSW"/>
                                 <constraint firstItem="hsm-eu-6RS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Cf7-4x-ZVe"/>
                                 <constraint firstItem="nyh-2v-Ant" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="DuZ-13-Qvc"/>
                                 <constraint firstAttribute="trailing" secondItem="hsm-eu-6RS" secondAttribute="trailing" constant="16" id="EtN-ch-c0J"/>
+                                <constraint firstItem="08n-L1-b7L" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="GBj-KA-3GW"/>
                                 <constraint firstAttribute="trailing" secondItem="nyh-2v-Ant" secondAttribute="trailing" constant="16" id="HIA-0a-3Tx"/>
                                 <constraint firstItem="hsm-eu-6RS" firstAttribute="top" secondItem="QCR-vG-vQ4" secondAttribute="bottom" constant="8" id="I0Y-GU-2Jo"/>
-                                <constraint firstAttribute="bottom" secondItem="y0U-Hw-A58" secondAttribute="bottom" constant="8" id="IiV-Ve-JtN"/>
                                 <constraint firstItem="y0U-Hw-A58" firstAttribute="top" secondItem="nyh-2v-Ant" secondAttribute="bottom" constant="8" id="N7H-Nc-R1w"/>
                                 <constraint firstItem="QCR-vG-vQ4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Nwq-bf-1vp"/>
+                                <constraint firstItem="wpd-n8-SEk" firstAttribute="top" secondItem="08n-L1-b7L" secondAttribute="bottom" constant="8" id="Obi-do-JAm"/>
+                                <constraint firstAttribute="trailing" secondItem="08n-L1-b7L" secondAttribute="trailing" constant="16" id="RdV-Mt-Kmb"/>
+                                <constraint firstAttribute="trailing" secondItem="wpd-n8-SEk" secondAttribute="trailing" constant="16" id="Xq8-JK-NuF"/>
+                                <constraint firstAttribute="bottom" secondItem="wpd-n8-SEk" secondAttribute="bottom" constant="16" id="Z6S-Od-OXM"/>
+                                <constraint firstItem="cNn-KB-9md" firstAttribute="top" secondItem="y0U-Hw-A58" secondAttribute="bottom" constant="8" id="bVd-PZ-TkG"/>
                                 <constraint firstAttribute="trailing" secondItem="y0U-Hw-A58" secondAttribute="trailing" constant="16" id="bhA-yo-2Ux"/>
                                 <constraint firstItem="SNc-dr-oWo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="biR-C7-9zk"/>
+                                <constraint firstItem="wpd-n8-SEk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="dH4-l4-O2m"/>
                                 <constraint firstItem="y0U-Hw-A58" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="hAg-us-dH7"/>
                                 <constraint firstAttribute="trailing" secondItem="SNc-dr-oWo" secondAttribute="trailing" constant="16" id="hJ6-e0-I0z"/>
+                                <constraint firstItem="cNn-KB-9md" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ox2-CH-E70"/>
                                 <constraint firstItem="SNc-dr-oWo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="wU5-2P-DNf"/>
                             </constraints>
                         </view>

@@ -76,6 +76,10 @@
               onError:(void (^)())errorBlock;
 
 
+- (void)fetchChallengeTasks:(Challenge *)challenge
+             onSuccess:(void (^)())successBlock
+               onError:(void (^)())errorBlock;
+
 - (void)upDownTask:(Task *)task
          direction:(NSString *)withDirection
          onSuccess:(void (^)())successBlock

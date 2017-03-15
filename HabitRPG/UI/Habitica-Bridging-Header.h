@@ -11,6 +11,7 @@
 #import "SubscriptionPlan+CoreDataClass.h"
 #import "HRPGCoreDataDataSource.h"
 #import "Challenge+CoreDataClass.h"
+#import "ChallengeTask+CoreDataClass.h"
 #import "ChecklistItem.h"
 #import "HRPGCheckBoxView.h"
 #import "HRPGHabitButtons.h"

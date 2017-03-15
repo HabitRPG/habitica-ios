@@ -2024,7 +2024,6 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:messageResponseDescriptor];
     
     RKObjectMapping *notificationMapping = [RKObjectMapping mappingForClass:[HRPGNotification class]];
-    [notificationMapping setForceCollectionMapping:YES];
     [notificationMapping addAttributeMappingsFromDictionary:@{
                                                               @"type": @"type",
                                                               @"id": @"id",
@@ -2082,6 +2081,17 @@ NSString *currentUser;
     [groupMapping addAttributeMappingsFromArray:@[@"id", @"name"]];
     [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"group" toKeyPath:@"group" withMapping:groupMapping]];
     
+    RKEntityMapping *challengeTaskOrderMapping = [RKEntityMapping mappingForEntityForName:@"ChallengeTask" inManagedObjectStore:managedObjectStore];
+    [challengeTaskOrderMapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:nil toKeyPath:@"id"]];
+    [challengeTaskOrderMapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:@"@metadata.mapping.collectionIndex" toKeyPath:@"order"]];
+    challengeTaskOrderMapping.identificationAttributes = @[ @"id" ];
+    
+    [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tasksOrder.habits" toKeyPath:@"habits" withMapping:challengeTaskOrderMapping]];
+    [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tasksOrder.dailies" toKeyPath:@"dailies" withMapping:challengeTaskOrderMapping]];
+    [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tasksOrder.todos" toKeyPath:@"todos" withMapping:challengeTaskOrderMapping]];
+    [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tasksOrder.rewards" toKeyPath:@"rewards" withMapping:challengeTaskOrderMapping]];
+
+    
     responseDescriptor = [RKResponseDescriptor
                           responseDescriptorWithMapping:challengeMapping
                           method:RKRequestMethodGET
@@ -2100,6 +2110,17 @@ NSString *currentUser;
                           responseDescriptorWithMapping:challengeMapping
                           method:RKRequestMethodPOST
                           pathPattern:@"challenges/:id/leave"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    RKEntityMapping *challengeTaskMapping = [RKEntityMapping mappingForEntityForName:@"ChallengeTask" inManagedObjectStore:managedObjectStore];
+    [challengeTaskMapping addAttributeMappingsFromArray:@[@"id", @"up", @"down", @"text", @"type"]];
+    challengeTaskMapping.identificationAttributes = @[@"id"];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:challengeTaskMapping
+                          method:RKRequestMethodGET
+                          pathPattern:@"tasks/challenge/:id/"
                           keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -2791,6 +2812,31 @@ NSString *currentUser;
                                             [self.networkIndicatorController endNetworking];
                                             return;
                                         }];
+}
+
+- (void)fetchChallengeTasks:(Challenge *)challenge onSuccess:(void (^)())successBlock
+                onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"tasks/challenge/%@/", challenge.id]
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  NSError *executeError = nil;
+                                                  [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                                  if (successBlock) {
+                                                      successBlock();
+                                                  }
+                                                  [self.networkIndicatorController endNetworking];
+                                                  return;
+                                              }
+                                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  [self handleNetworkError:operation withError:error];
+                                                  if (errorBlock) {
+                                                      errorBlock();
+                                                  }
+                                                  [self.networkIndicatorController endNetworking];
+                                                  return;
+                                              }];
 }
 
 - (void)upDownTask:(Task *)task
