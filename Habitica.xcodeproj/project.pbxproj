@@ -216,6 +216,9 @@
 		D9BB45D11E7713E80002AE2E /* ChallengeTask+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45CE1E7713E80002AE2E /* ChallengeTask+CoreDataClass.m */; };
 		D9BB45D21E7713E80002AE2E /* ChallengeTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45D01E7713E80002AE2E /* ChallengeTask+CoreDataProperties.m */; };
 		D9BB45D41E7849B40002AE2E /* ChallengeTaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45D31E7849B40002AE2E /* ChallengeTaskListView.swift */; };
+		D9BB45D61E79968B0002AE2E /* ChallengeFilterAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45D51E79968B0002AE2E /* ChallengeFilterAlert.swift */; };
+		D9BB45D81E7998710002AE2E /* ChallengeFilterAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BB45D71E7998710002AE2E /* ChallengeFilterAlert.xib */; };
+		D9BB45DA1E79A02C0002AE2E /* LabeledCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */; };
 		D9BBF32C1DBD127A00C4114C /* HRPGShopAdFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */; };
 		D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */; };
 		D9BE05821DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BE05811DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m */; };
@@ -754,6 +757,9 @@
 		D9BB45CF1E7713E80002AE2E /* ChallengeTask+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChallengeTask+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D9BB45D01E7713E80002AE2E /* ChallengeTask+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ChallengeTask+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D9BB45D31E7849B40002AE2E /* ChallengeTaskListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTaskListView.swift; sourceTree = "<group>"; };
+		D9BB45D51E79968B0002AE2E /* ChallengeFilterAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFilterAlert.swift; sourceTree = "<group>"; };
+		D9BB45D71E7998710002AE2E /* ChallengeFilterAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeFilterAlert.xib; sourceTree = "<group>"; };
+		D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledCheckboxView.swift; sourceTree = "<group>"; };
 		D9BBF32A1DBD127A00C4114C /* HRPGShopAdFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopAdFooter.h; sourceTree = "<group>"; };
 		D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopAdFooter.m; sourceTree = "<group>"; };
 		D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopAdFooter.xib; sourceTree = "<group>"; };
@@ -1393,7 +1399,10 @@
 				D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */,
 				D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */,
 				D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */,
+				D9BB45D51E79968B0002AE2E /* ChallengeFilterAlert.swift */,
+				D9BB45D71E7998710002AE2E /* ChallengeFilterAlert.xib */,
 				D9BB45D31E7849B40002AE2E /* ChallengeTaskListView.swift */,
+				D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1970,6 +1979,7 @@
 				D90EA03E19D60B53001EABE4 /* RewardIntro.png in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
 				D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */,
+				D9BB45D81E7998710002AE2E /* ChallengeFilterAlert.xib in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
@@ -2256,6 +2266,7 @@
 				D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */,
 				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
 				D9D17CCC1E6736A600AD9232 /* ChallengeDetailHeaderView.swift in Sources */,
+				D9BB45D61E79968B0002AE2E /* ChallengeFilterAlert.swift in Sources */,
 				D9D593671D008C7500D6C388 /* PushDevice.m in Sources */,
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
 				D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */,
@@ -2366,6 +2377,7 @@
 				D9D5935E1D00523800D6C388 /* InboxMessage.m in Sources */,
 				D9BE05821DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m in Sources */,
 				D9E46B0D1DAC08BE00E390D7 /* HRPGSpellTableViewCell.m in Sources */,
+				D9BB45DA1E79A02C0002AE2E /* LabeledCheckboxView.swift in Sources */,
 				D9ADD3541CF3169B001D005B /* NSString+StripHTML.m in Sources */,
 				D995D5971D1D499D00D5251C /* PushNotifications.m in Sources */,
 				D9BBF32C1DBD127A00C4114C /* HRPGShopAdFooter.m in Sources */,

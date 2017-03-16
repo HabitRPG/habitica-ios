@@ -35,10 +35,10 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
         
         fetchChallenge()
         
-        registerCell(fromNib: "HRPGHabitTableViewCell", withName: "habit")
-        registerCell(fromNib: "HRPGDailyTableViewCell", withName: "daily")
-        registerCell(fromNib: "HRPGToDoTableViewCell", withName: "todo")
-        registerCell(fromNib: "HRPGRewardTableViewCell", withName: "reward")
+        registerCell(fromNib: "HabitTableViewCell", withName: "habit")
+        registerCell(fromNib: "DailyTableViewCell", withName: "daily")
+        registerCell(fromNib: "ToDoTableViewCell", withName: "todo")
+        registerCell(fromNib: "RewardTableViewCell", withName: "reward")
         
         configureTableView()
         
