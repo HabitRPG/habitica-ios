@@ -13,6 +13,7 @@
 #import "Reminder.h"
 #import "Tag.h"
 #import "XLForm.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGFormViewController ()
 @property(nonatomic) NSArray *tags;
@@ -20,6 +21,8 @@
 @property(nonatomic) XLFormSectionDescriptor *duedateSection;
 @property NSInteger customDayStart;
 @property(nonatomic, strong) NSString *allocationMode;
+
+@property BOOL enableRepeatables;
 @end
 
 @implementation HRPGFormViewController
@@ -41,6 +44,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    ConfigRepository *configRepository = [[ConfigRepository alloc] init];
+    self.enableRepeatables = [configRepository boolWithVariable:ConfigVariableEnableRepeatables];
     if (!self.formFilled) {
         [self fillForm];
     }
@@ -163,9 +168,6 @@
         [section addFormRow:row];
     }
     NSString *rowType;
-    if ([self.task.type isEqualToString:@"daily"]) {
-    } else {
-    }
     if ([self.taskType isEqualToString:@"daily"]) {
         section = [self.form formSectionAtIndex:0];
         XLFormRowDescriptor *row =
@@ -182,29 +184,41 @@
         row.value = date;
         [section addFormRow:row];
 
-        section = [XLFormSectionDescriptor formSectionWithTitle:@""];
-        [self.form addFormSection:section];
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"frequency"
-                                                    rowType:XLFormRowDescriptorTypeSelectorPush
-                                                      title:NSLocalizedString(@"Frequency", nil)];
-        row.selectorOptions = @[
-            [XLFormOptionsObject
-                formOptionsObjectWithValue:@"daily"
-                               displayText:NSLocalizedString(@"Every x days", nil)],
-            [XLFormOptionsObject
-                formOptionsObjectWithValue:@"weekly"
-                               displayText:NSLocalizedString(@"On certain days of the week", nil)]
-        ];
-        row.value =
+        if (self.enableRepeatables) {
+            section = [XLFormSectionDescriptor formSectionWithTitle:@""];
+            [self.form addFormSection:section];
+            row = [XLFormRowDescriptor formRowDescriptorWithTag:@"frequency"
+                                                        rowType:XLFormRowDescriptorTypeSelectorPush
+                                                          title:NSLocalizedString(@"Frequency", nil)];
+            row.selectorOptions = @[
+                                    [XLFormOptionsObject
+                                     formOptionsObjectWithValue:@"daily"
+                                     displayText:NSLocalizedString(@"Daily", nil)],
+                                    [XLFormOptionsObject
+                                     formOptionsObjectWithValue:@"weekly"
+                                     displayText:NSLocalizedString(@"Weekly", nil)],
+                                    [XLFormOptionsObject
+                                     formOptionsObjectWithValue:@"monthlly"
+                                     displayText:NSLocalizedString(@"Monthly", nil)],
+                                    [XLFormOptionsObject
+                                     formOptionsObjectWithValue:@"yearly"
+                                     displayText:NSLocalizedString(@"Yearly", nil)]
+                                    ];
+            row.value =
             [XLFormOptionsObject formOptionsObjectWithValue:@"weekly"
                                                 displayText:NSLocalizedString(@"Weekly", nil)];
-        row.required = YES;
-        row.selectorTitle = NSLocalizedString(@"Select Frequency", nil);
-        [section addFormRow:row];
-        if (!self.editTask) {
-            [self setFrequencyRows:@"weekly"];
+            row.required = YES;
+            row.selectorTitle = NSLocalizedString(@"Select Frequency", nil);
+            [section addFormRow:row];
+            
+            row = [XLFormRowDescriptor
+                   formRowDescriptorWithTag:@"everyX"
+                   rowType:XLFormRowDescriptorTypeInteger
+                   title:NSLocalizedString(@"Repeat every", nil)];
+            [section addFormRow:row];
+        } else {
+            [self setOldDailyOptions];
         }
-
         rowType = XLFormRowDescriptorTypeTime;
     }
 
@@ -345,6 +359,33 @@
     }
 
     [self.tableView reloadData];
+}
+
+- (void)setOldDailyOptions {
+    XLFormSectionDescriptor *section;
+    XLFormRowDescriptor *row;
+    section = [XLFormSectionDescriptor formSectionWithTitle:@""];
+    [self.form addFormSection:section];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"frequency"
+                                                rowType:XLFormRowDescriptorTypeSelectorPush
+                                                  title:NSLocalizedString(@"Frequency", nil)];
+    row.selectorOptions = @[
+                            [XLFormOptionsObject
+                             formOptionsObjectWithValue:@"daily"
+                             displayText:NSLocalizedString(@"Every x days", nil)],
+                            [XLFormOptionsObject
+                             formOptionsObjectWithValue:@"weekly"
+                             displayText:NSLocalizedString(@"On certain days of the week", nil)]
+                            ];
+    row.value =
+    [XLFormOptionsObject formOptionsObjectWithValue:@"weekly"
+                                        displayText:NSLocalizedString(@"Weekly", nil)];
+    row.required = YES;
+    row.selectorTitle = NSLocalizedString(@"Select Frequency", nil);
+    [section addFormRow:row];
+    if (!self.editTask) {
+        [self setOldFrequencyRows:@"weekly"];
+    }
 }
 
 - (void)fetchTags {
@@ -506,7 +547,11 @@
             [self.form removeFormRowWithTag:@"duedate"];
         }
     } else if ([formRow.tag isEqualToString:@"frequency"]) {
-        [self setFrequencyRows:[formRow.value valueData]];
+        if (self.enableRepeatables) {
+            
+        } else {
+            [self setOldFrequencyRows:[formRow.value valueData]];
+        }
     }
 }
 
@@ -520,9 +565,13 @@
 }
 
 - (void)setFrequencyRows:(NSString *)frequencyType {
+
+}
+
+- (void)setOldFrequencyRows:(NSString *)frequencyType {
     XLFormSectionDescriptor *section = [self.form formSectionAtIndex:2];
-    if ([frequencyType isEqualToString:@"daily"]) {
-        if (section.formRows.count > 2) {
+    if (![frequencyType isEqualToString:@"weekly"]) {
+        if (section.formRows.count > 3) {
             [section removeFormRowAtIndex:7];
             [section removeFormRowAtIndex:6];
             [section removeFormRowAtIndex:5];
@@ -531,22 +580,6 @@
             [section removeFormRowAtIndex:2];
             [section removeFormRowAtIndex:1];
         }
-        XLFormRowDescriptor *row;
-        if (section.formRows.count == 1) {
-            row = [XLFormRowDescriptor
-                formRowDescriptorWithTag:@"everyX"
-                                 rowType:XLFormRowDescriptorTypeInteger
-                                   title:NSLocalizedString(@"Repeat every X days", nil)];
-            [section addFormRow:row];
-        } else {
-            row = section.formRows[1];
-        }
-        if (self.editTask) {
-            row.value = self.task.everyX;
-        } else {
-            row.value = @1;
-        }
-        row.required = YES;
     } else {
         if (section.formRows.count > 1) {
             [section removeFormRowAtIndex:1];

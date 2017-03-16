@@ -93,7 +93,7 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Mxr-wB-rfG" customClass="TZStackView" customModule="PopupDialog">
-                                    <rect key="frame" x="16" y="54" width="343" height="41"/>
+                                    <rect key="frame" x="16" y="62" width="343" height="25"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="128" id="s87-Ti-iWi"/>
@@ -153,12 +153,12 @@
                                 <constraint firstItem="bnc-7M-J7M" firstAttribute="leading" secondItem="Zbu-Lv-kTO" secondAttribute="leading" constant="16" id="anf-LX-hpp"/>
                                 <constraint firstItem="NYk-ki-ylf" firstAttribute="height" secondItem="Uut-nF-9j5" secondAttribute="height" id="blh-ha-J6G"/>
                                 <constraint firstItem="Uut-nF-9j5" firstAttribute="leading" secondItem="Zbu-Lv-kTO" secondAttribute="leading" constant="16" id="cQV-OE-FNj"/>
-                                <constraint firstItem="Mxr-wB-rfG" firstAttribute="top" secondItem="LPc-9t-cGp" secondAttribute="bottom" constant="4" id="dhO-4d-fGG"/>
+                                <constraint firstItem="Mxr-wB-rfG" firstAttribute="top" secondItem="LPc-9t-cGp" secondAttribute="bottom" constant="12" id="dhO-4d-fGG"/>
                                 <constraint firstAttribute="trailing" secondItem="Mxr-wB-rfG" secondAttribute="trailing" constant="16" id="dyQ-i8-K5I"/>
                                 <constraint firstItem="obx-BP-Btf" firstAttribute="top" secondItem="bnc-7M-J7M" secondAttribute="bottom" constant="8" id="eUb-Ej-2ta"/>
                                 <constraint firstItem="tn7-Ob-POT" firstAttribute="leading" secondItem="Zbu-Lv-kTO" secondAttribute="leading" constant="16" id="hjK-RF-4Ll"/>
                                 <constraint firstAttribute="trailing" secondItem="tn7-Ob-POT" secondAttribute="trailing" constant="16" id="pgj-XF-1DN"/>
-                                <constraint firstItem="wWF-8E-u3J" firstAttribute="top" secondItem="Mxr-wB-rfG" secondAttribute="bottom" constant="8" id="x8h-MP-cMm"/>
+                                <constraint firstItem="wWF-8E-u3J" firstAttribute="top" secondItem="Mxr-wB-rfG" secondAttribute="bottom" constant="16" id="x8h-MP-cMm"/>
                                 <constraint firstItem="obx-BP-Btf" firstAttribute="leading" secondItem="Zbu-Lv-kTO" secondAttribute="leading" constant="16" id="yr8-9E-VZP"/>
                                 <constraint firstItem="Uut-nF-9j5" firstAttribute="top" secondItem="Zbu-Lv-kTO" secondAttribute="top" constant="20" id="zkf-d6-PZh"/>
                             </constraints>

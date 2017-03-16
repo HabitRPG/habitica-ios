@@ -219,6 +219,7 @@
 		D9BB45D61E79968B0002AE2E /* ChallengeFilterAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45D51E79968B0002AE2E /* ChallengeFilterAlert.swift */; };
 		D9BB45D81E7998710002AE2E /* ChallengeFilterAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BB45D71E7998710002AE2E /* ChallengeFilterAlert.xib */; };
 		D9BB45DA1E79A02C0002AE2E /* LabeledCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */; };
+		D9BB45DD1E7AE5240002AE2E /* ConfigRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45DC1E7AE5240002AE2E /* ConfigRepository.swift */; };
 		D9BBF32C1DBD127A00C4114C /* HRPGShopAdFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */; };
 		D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */; };
 		D9BE05821DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BE05811DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m */; };
@@ -760,6 +761,8 @@
 		D9BB45D51E79968B0002AE2E /* ChallengeFilterAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFilterAlert.swift; sourceTree = "<group>"; };
 		D9BB45D71E7998710002AE2E /* ChallengeFilterAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeFilterAlert.xib; sourceTree = "<group>"; };
 		D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledCheckboxView.swift; sourceTree = "<group>"; };
+		D9BB45DC1E7AE5240002AE2E /* ConfigRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigRepository.swift; sourceTree = "<group>"; };
+		D9BB45DE1E7B3C950002AE2E /* HabitRPG 39.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 39.xcdatamodel"; sourceTree = "<group>"; };
 		D9BBF32A1DBD127A00C4114C /* HRPGShopAdFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopAdFooter.h; sourceTree = "<group>"; };
 		D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopAdFooter.m; sourceTree = "<group>"; };
 		D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopAdFooter.xib; sourceTree = "<group>"; };
@@ -1326,6 +1329,14 @@
 			path = ../HabitRPGTests;
 			sourceTree = "<group>";
 		};
+		D9BB45DB1E7AE23E0002AE2E /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				D9BB45DC1E7AE5240002AE2E /* ConfigRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1746,6 +1757,7 @@
 		D9EB4E9418CB4A9400BB2094 /* Habitica */ = {
 			isa = PBXGroup;
 			children = (
+				D9BB45DB1E7AE23E0002AE2E /* Repositories */,
 				D97ED0AB1E6DBB5F006C2A26 /* Interactors */,
 				D95704371E106BF3004F6804 /* Extensions */,
 				D9A63A311E1031FD0083ADC4 /* UI */,
@@ -2299,6 +2311,7 @@
 				D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */,
 				D9E46B041DABCD9100E390D7 /* Buff+CoreDataProperties.m in Sources */,
 				D95D03941C74AA5500D6BFB3 /* Preferences.m in Sources */,
+				D9BB45DD1E7AE5240002AE2E /* ConfigRepository.swift in Sources */,
 				D979AD131AF3CF6C00D59FAE /* Customization.m in Sources */,
 				D9FC1A861BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m in Sources */,
 				D9D4A3AE1BBED941008AD861 /* HRPGTaskSetupTableViewController.m in Sources */,
@@ -3107,6 +3120,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D9BB45DE1E7B3C950002AE2E /* HabitRPG 39.xcdatamodel */,
 				D9D17CC81E66EE3600AD9232 /* HabitRPG 38.xcdatamodel */,
 				D9CE90351E4CADD000702578 /* HabitRPG 37.xcdatamodel */,
 				D97AC21D1DD39D6300BEB5A9 /* HabitRPG 36.xcdatamodel */,
@@ -3127,7 +3141,7 @@
 				D98F5DC41C6A43D20035CBEC /* HabitRPG 21.xcdatamodel */,
 				D9C0E5171C650D1D0062C89A /* HabitRPG 20.xcdatamodel */,
 			);
-			currentVersion = D9D17CC81E66EE3600AD9232 /* HabitRPG 38.xcdatamodel */;
+			currentVersion = D9BB45DE1E7B3C950002AE2E /* HabitRPG 39.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

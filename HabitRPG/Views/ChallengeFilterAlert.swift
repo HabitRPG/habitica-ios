@@ -47,7 +47,7 @@ class ChallengeFilterAlert: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         groupListView.axis = .vertical
-        groupListView.spacing = 8
+        groupListView.spacing = 12
         
         ownedButton.isChecked = showOwned
         notOwnedButton.isChecked = showNotOwned

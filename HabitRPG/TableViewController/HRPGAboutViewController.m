@@ -10,11 +10,13 @@
 #import "VTAcknowledgementsViewController.h"
 #import <sys/utsname.h>
 #import "HRPGTopHeaderNavigationController.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGAboutViewController ()
 
 @property UIView *headerView;
 @property NSIndexPath *selectedIndex;
+@property NSString *supportEmail;
 
 @end
 
@@ -33,6 +35,9 @@
     [self.headerView addSubview:headerImageView];
 
     self.tableView.tableHeaderView = self.headerView;
+    
+    ConfigRepository *configRepository = [[ConfigRepository alloc] init];
+    self.supportEmail = [configRepository stringWithVariable:ConfigVariableSupportEmail];
 }
 
 #pragma mark - Table view data source
@@ -98,7 +103,7 @@
                 MFMailComposeViewController *composeViewController =
                     [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
                 [composeViewController setMailComposeDelegate:self];
-                [composeViewController setToRecipients:@[ @"mobile@habitica.com" ]];
+                [composeViewController setToRecipients:@[ self.supportEmail ] ];
                 [composeViewController setSubject:@"[iOS] Feedback"];
                 [self presentViewController:composeViewController animated:YES completion:nil];
             }
@@ -109,7 +114,7 @@
                 MFMailComposeViewController *composeViewController =
                     [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
                 [composeViewController setMailComposeDelegate:self];
-                [composeViewController setToRecipients:@[ @"mobile@habitica.com" ]];
+                [composeViewController setToRecipients:@[ self.supportEmail ]];
                 [composeViewController setSubject:@"[iOS] Bugreport"];
                 [composeViewController setMessageBody:[self createDeviceInformationString]
                                                isHTML:NO];

@@ -26,6 +26,7 @@
 #import "UIColor+Habitica.h"
 #import <Keys/HabiticaKeys.h>
 #import "AppAuth.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGAppDelegate ()
 
@@ -155,6 +156,7 @@
     }
 
     [self checkMaintenanceScreen];
+    [[[ConfigRepository alloc] init] fetchremoteConfig];
 }
 
 - (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder {
