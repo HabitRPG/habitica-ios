@@ -61,7 +61,7 @@ float textWidth;
         NSString *predicateString = @"owned > 0 && text != ''";
         
         if (![weakSelf.sharedManager getUser].subscriptionPlan.isActive) {
-            predicateString = [predicateString stringByAppendingString:@" && isSubscriberItem != YES"];
+            predicateString = [predicateString stringByAppendingString:@" && (isSubscriberItem == nil || isSubscriberItem != YES)"];
         }
         
         if (self.itemType) {
