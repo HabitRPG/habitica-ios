@@ -66,7 +66,7 @@
         if (weakSelf.user.subscriptionPlan.isActive) {
             predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@", weakSelf.shopIdentifier];
         } else {
-            predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@ && isSubscriberItem != YES", weakSelf.shopIdentifier];
+            predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@ && (isSubscriberItem == nil || isSubscriberItem != YES)", weakSelf.shopIdentifier];
         }
         [fetchRequest setPredicate:predicate];
         
