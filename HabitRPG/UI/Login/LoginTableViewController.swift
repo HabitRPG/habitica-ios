@@ -114,6 +114,14 @@ class LoginTableViewController: UIViewController, FBSDKLoginButtonDelegate, UITe
             }
         }
         
+        self.viewModel.outputs.passwordRepeatFieldReturnButtonIsDone.observeValues{[weak self] value in
+            if value {
+                self?.passwordRepeatTextField.returnKeyType = .done
+            } else {
+                self?.passwordRepeatTextField.returnKeyType = .next
+            }
+        }
+        
         self.onePasswordButton.reactive.isHidden <~ self.viewModel.outputs.onePasswordButtonHidden
     
         self.viewModel.outputs.showError

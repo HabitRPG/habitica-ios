@@ -50,6 +50,7 @@ protocol LoginViewModelOutputs {
     var emailFieldVisibility: Signal<Bool, NoError> { get }
     var passwordRepeatFieldVisibility: Signal<Bool, NoError> { get }
     var passwordFieldReturnButtonIsDone: Signal<Bool, NoError> { get }
+    var passwordRepeatFieldReturnButtonIsDone: Signal<Bool, NoError> { get }
     
     var onePasswordButtonHidden: Signal<Bool, NoError> { get }
     var onePasswordFindLogin: Signal<(), NoError> { get }
@@ -122,6 +123,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.passwordRepeatFieldVisibility = isRegistering;
         self.passwordFieldReturnButtonIsDone = isRegistering.map({ value -> Bool in
             return !value
+        });
+        self.passwordRepeatFieldReturnButtonIsDone = isRegistering.map({ value -> Bool in
+            return value
         });
         
         self.isFormValid = authValues.map(isValid)
@@ -300,6 +304,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     internal var emailFieldVisibility: Signal<Bool, NoError>
     internal var passwordRepeatFieldVisibility: Signal<Bool, NoError>
     internal var passwordFieldReturnButtonIsDone: Signal<Bool, NoError>
+    internal var passwordRepeatFieldReturnButtonIsDone: Signal<Bool, NoError>
     internal var onePasswordButtonHidden: Signal<Bool, NoError>
     internal var showError: Signal<String, NoError>
     internal var showNextViewController: Signal<String, NoError>
