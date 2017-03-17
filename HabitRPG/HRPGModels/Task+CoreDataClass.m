@@ -21,6 +21,18 @@
 
 @synthesize currentlyChecking;
 
+- (void)addChecklistObject:(ChecklistItem *)value {
+    NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.checklist];
+    [tempSet addObject:value];
+    self.checklist = tempSet;
+}
+
+- (void)removeChecklistObject:(ChecklistItem *)value {
+    NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.checklist];
+    [tempSet removeObject:value];
+    self.checklist = tempSet;
+}
+
 - (BOOL)dueToday {
     return [self dueOnDate:[NSDate date] withOffset:0];
 }
