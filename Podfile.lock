@@ -139,6 +139,7 @@ PODS:
   - SeedsSDK (0.4.2)
   - SlackTextViewController (1.9.5)
   - SOCKit (1.1)
+  - SwiftLint (0.16.1)
   - SwiftyStoreKit (0.8.2)
   - TransitionKit (2.2.1)
   - VTAcknowledgementsViewController (1.2.1)
@@ -181,6 +182,7 @@ DEPENDENCIES:
   - RestKit (from `https://github.com/RestKit/RestKit.git`, commit `13d98d5a6a5e06656ad040013dcae149b7cf8b99`)
   - SeedsSDK (= 0.4.2)
   - SlackTextViewController
+  - SwiftLint
   - SwiftyStoreKit
   - VTAcknowledgementsViewController
   - XLForm
@@ -264,6 +266,7 @@ SPEC CHECKSUMS:
   SeedsSDK: e49ba4528e0d9e2eaae6b4d2fb5a6d19e0954eb8
   SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
+  SwiftLint: b8b683208cc09640898f16318a7a452274e91f61
   SwiftyStoreKit: 901059a0058e808a2a3b36c3a6de886e4c6f8f6e
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   VTAcknowledgementsViewController: e1de80f2c0ce31cc7e1c6f1c8aaeec2770371f09
@@ -272,6 +275,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: f40aa2fee27ef1dcab50ddb8860625ae8ebe712e
+PODFILE CHECKSUM: a783750642f1cc0d9e287d550d1119d328c18741
 
 COCOAPODS: 1.2.0
