@@ -14,7 +14,7 @@ import Alamofire
     
     func name() -> String {
         switch self {
-            case .enableRepeatables: return "enabaleRepeatables"
+            case .enableRepeatables: return "enableRepeatables"
         case .supportEmail: return "supportEmail"
         }
     }

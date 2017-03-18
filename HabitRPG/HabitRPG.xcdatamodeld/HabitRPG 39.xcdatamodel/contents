@@ -407,15 +407,9 @@
         <attribute name="wednesday" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="weeksOfMonth" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="checklist" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ChecklistItem" inverseName="task" inverseEntity="ChecklistItem" syncable="YES"/>
-        <relationship name="history" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TaskHistory" inverseName="task" inverseEntity="TaskHistory" syncable="YES"/>
         <relationship name="reminders" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Reminder" inverseName="task" inverseEntity="Reminder" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="tasks" inverseEntity="Tag" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tasks" inverseEntity="User" syncable="YES"/>
-    </entity>
-    <entity name="TaskHistory" representedClassName="TaskHistory" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="task" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="history" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="TutorialSteps" representedClassName="TutorialSteps" syncable="YES">
         <attribute name="identifier" attributeType="String" indexed="YES" syncable="YES"/>
@@ -545,8 +539,7 @@
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
         <element name="SubscriptionPlan" positionX="9" positionY="153" width="128" height="225"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="Task" positionX="0" positionY="0" width="128" height="525"/>
-        <element name="TaskHistory" positionX="18" positionY="162" width="128" height="90"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="510"/>
         <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
         <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
         <element name="User" positionX="0" positionY="0" width="128" height="1170"/>

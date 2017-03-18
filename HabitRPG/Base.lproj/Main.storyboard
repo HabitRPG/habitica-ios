@@ -2601,6 +2601,7 @@ your account, including:</string>
                                         <constraint firstAttribute="height" priority="500" constant="28" id="Nvl-9T-i7B"/>
                                     </constraints>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.30233895705521474" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                 </textView>
@@ -3074,7 +3075,7 @@ and helps keep Habitica running</string>
         <scene sceneID="vLJ-DI-TYv">
             <objects>
                 <navigationController storyboardIdentifier="SpellUserNavigationController" id="Rfc-Mw-2vi" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WV0-L0-HaY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WV0-L0-HaY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3438,7 +3439,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="1983" y="63"/>
         </scene>
-        <!--Login Table View Controller-->
+        <!--Delegate-->
         <scene sceneID="bKI-3w-7pv">
             <objects>
                 <viewController storyboardIdentifier="LoginTableViewController" id="d4N-vO-Oyt" customClass="LoginTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -3728,9 +3729,14 @@ and helps keep Habitica running</string>
                                             <activityIndicatorView opaque="NO" alpha="0.0" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EDv-Zz-Vbq">
                                                 <rect key="frame" x="162" y="12" width="20" height="20"/>
                                             </activityIndicatorView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bwt-Bt-mjm">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bwt-Bt-mjm" customClass="FBSDKLoginButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="d4N-vO-Oyt" id="aoH-w8-ar5"/>
                                                 </connections>
@@ -3761,7 +3767,7 @@ and helps keep Habitica running</string>
                                     <constraint firstItem="n3T-Zl-acf" firstAttribute="top" secondItem="gbf-BQ-bUU" secondAttribute="bottom" constant="12" id="FRT-PV-NER"/>
                                     <constraint firstItem="4X0-Wk-hFp" firstAttribute="width" secondItem="gvb-ur-P5D" secondAttribute="width" id="IA5-bs-rAo"/>
                                     <constraint firstItem="n3T-Zl-acf" firstAttribute="width" secondItem="gvb-ur-P5D" secondAttribute="width" id="MFV-45-v84"/>
-                                    <constraint firstAttribute="bottom" secondItem="n3T-Zl-acf" secondAttribute="bottom" constant="80" id="NK3-ro-U5f"/>
+                                    <constraint firstAttribute="bottom" secondItem="n3T-Zl-acf" secondAttribute="bottom" constant="90" id="NK3-ro-U5f"/>
                                     <constraint firstItem="0eE-PK-9cB" firstAttribute="width" secondItem="JsR-R3-3oT" secondAttribute="width" constant="-32" id="R09-Lp-5O8"/>
                                     <constraint firstItem="gbf-BQ-bUU" firstAttribute="top" secondItem="uqe-gb-0Yv" secondAttribute="bottom" constant="24" id="YlI-Xx-Qae">
                                         <variation key="heightClass=regular-widthClass=regular" constant="64"/>
@@ -3780,11 +3786,13 @@ and helps keep Habitica running</string>
                                     <constraint firstItem="dxb-c9-aVM" firstAttribute="top" secondItem="gvb-ur-P5D" secondAttribute="bottom" constant="12" id="iMJ-Kx-soN"/>
                                     <constraint firstItem="uqe-gb-0Yv" firstAttribute="width" secondItem="gvb-ur-P5D" secondAttribute="width" id="jX6-YE-0va"/>
                                     <constraint firstItem="gbf-BQ-bUU" firstAttribute="centerX" secondItem="JsR-R3-3oT" secondAttribute="centerX" id="lyY-Ul-Gls"/>
+                                    <constraint firstItem="uqe-gb-0Yv" firstAttribute="height" secondItem="n3T-Zl-acf" secondAttribute="height" id="riB-0O-ii3"/>
                                     <constraint firstAttribute="trailing" secondItem="uqe-gb-0Yv" secondAttribute="trailing" constant="16" id="ruH-oh-U33"/>
                                     <constraint firstItem="gvb-ur-P5D" firstAttribute="top" secondItem="NJC-ld-Ju8" secondAttribute="bottom" constant="16" id="ukO-EJ-tcq">
                                         <variation key="heightClass=regular-widthClass=regular" constant="32"/>
                                     </constraint>
                                     <constraint firstItem="l6E-v3-cNG" firstAttribute="top" secondItem="dxb-c9-aVM" secondAttribute="bottom" constant="12" id="vgQ-gE-KbA"/>
+                                    <constraint firstItem="uqe-gb-0Yv" firstAttribute="height" secondItem="gbf-BQ-bUU" secondAttribute="height" id="vmX-5l-Kyb"/>
                                 </constraints>
                             </scrollView>
                         </subviews>

@@ -2,7 +2,7 @@
 //  Task+CoreDataProperties.m
 //  Habitica
 //
-//  Created by Phillip Thelen on 16/03/2017.
+//  Created by Phillip Thelen on 17/03/2017.
 //  Copyright © 2017 Phillip Thelen. All rights reserved.
 //
 
@@ -18,6 +18,7 @@
 @dynamic challengeID;
 @dynamic completed;
 @dynamic dateCreated;
+@dynamic daysOfMonth;
 @dynamic down;
 @dynamic duedate;
 @dynamic everyX;
@@ -39,10 +40,8 @@
 @dynamic up;
 @dynamic value;
 @dynamic wednesday;
-@dynamic daysOfMonth;
 @dynamic weeksOfMonth;
 @dynamic checklist;
-@dynamic history;
 @dynamic reminders;
 @dynamic tags;
 @dynamic user;
