@@ -1,13 +1,5 @@
 language: objective-c
 cache: cocoapods
-install:
-  - rvm install ruby-2.2.2
-  - gem install cocoapods
-  - gem install xcpretty -N
-  - gem install cocoapods-keys -v 1.7.0
-  - brew update
-  - brew install swiftlint || true
-  - pod install
 matrix:
  include:
   - osx_image: xcode6.4
