@@ -6,13 +6,14 @@ before_install:
   - pod setup
 matrix:
  include:
-  - osx_image: xcode6.1
-    env: SDK=iphonesimulator7.1
   - osx_image: xcode6.4
     env: SDK=iphonesimulator8.4
   - osx_image: xcode7.3
     env: SDK=iphonesimulator9.3
+  - osx_image: xcode8.2
+    env: SDK=iphonesimulator10.1
 
 script:
   - xctool -workspace Habitica.xcworkspace -scheme Habitica -sdk $SDK ONLY_ACTIVE_ARCH=NO
   - xctool test -workspace Habitica.xcworkspace -scheme HabiticaTests -sdk $SDK ONLY_ACTIVE_ARCH=NO
+  - swiftlint
