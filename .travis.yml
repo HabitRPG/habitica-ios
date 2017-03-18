@@ -1,5 +1,4 @@
 language: objective-c
-rvm: 2.2.2
 cache: cocoapods
 matrix:
  include:
