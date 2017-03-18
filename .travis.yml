@@ -8,6 +8,7 @@ install:
   - gem install cocoapods-keys -v 1.7.0
   - brew update
   - brew install swiftlint || true
+  - pod repo update
   - pod install
 env:
   global:
