@@ -2289,7 +2289,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                     <rect key="frame" x="0.0" y="31" width="293" height="22"/>
                                                     <subviews>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Cn6-3X-i7r" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="75.5" height="22"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="22"/>
                                                             <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" priority="500" constant="60" id="Fao-rF-1qx"/>
@@ -2313,7 +2313,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="RvD-OK-24y" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                                            <rect key="frame" x="83.5" y="0.0" width="106.5" height="22"/>
+                                                            <rect key="frame" x="68" y="0.0" width="60" height="22"/>
                                                             <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" priority="500" constant="60" id="dja-it-hkk"/>

@@ -1,8 +1,8 @@
 PODS:
   - AFNetworking (1.3.4)
   - Alamofire (4.4.0)
-  - Amplitude-iOS (3.8.5)
-  - AppAuth (0.8.0)
+  - Amplitude-iOS (3.14.1)
+  - AppAuth (0.8.1)
   - AttributedMarkdown (0.9.2)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
@@ -14,7 +14,7 @@ PODS:
     - AFNetworking (~> 1.3)
   - CRToast (0.0.9)
   - DateTools (2.0.0)
-  - Down (0.3.2)
+  - Down (0.3.3)
   - DTCoreText (1.6.20):
     - DTCoreText/Core (= 1.6.20)
     - DTFoundation/Core (~> 1.7.5)
@@ -35,9 +35,9 @@ PODS:
   - EAIntroView (2.10.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
-  - FBSDKCoreKit (4.20.0):
+  - FBSDKCoreKit (4.20.2):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.20.0):
+  - FBSDKLoginKit (4.20.2):
     - FBSDKCoreKit
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
@@ -48,7 +48,7 @@ PODS:
     - FirebaseCore (~> 3.5)
     - FirebaseInstanceID (~> 1.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseCore (3.5.1):
+  - FirebaseCore (3.5.2):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseInstanceID (1.0.9)
   - FLEX (2.4.0)
@@ -136,11 +136,11 @@ PODS:
     - TransitionKit (~> 2.2)
   - Result (3.2.1)
   - RKValueTransformers (1.1.3)
-  - SeedsSDK (0.4.2)
+  - SeedsSDK (0.4.6)
   - SlackTextViewController (1.9.5)
   - SOCKit (1.1)
   - SwiftLint (0.16.1)
-  - SwiftyStoreKit (0.8.2)
+  - SwiftyStoreKit (0.8.4)
   - TransitionKit (2.2.1)
   - VTAcknowledgementsViewController (1.2.1)
   - XLForm (3.3.0)
@@ -154,7 +154,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
-  - Amplitude-iOS (~> 3.8.5)
+  - Amplitude-iOS (~> 3.14.1)
   - AppAuth
   - AttributedMarkdown (from `https://github.com/dreamwieber/AttributedMarkdown.git`)
   - CargoBay (from `https://github.com/vIiRuS/CargoBay.git`, branch `v1`)
@@ -180,7 +180,7 @@ DEPENDENCIES:
   - PopupDialog (from `https://github.com/Orderella/PopupDialog.git`, branch `development`)
   - ReactiveCocoa (~> 5.0.0)
   - RestKit (from `https://github.com/RestKit/RestKit.git`, commit `13d98d5a6a5e06656ad040013dcae149b7cf8b99`)
-  - SeedsSDK (= 0.4.2)
+  - SeedsSDK (= 0.4.6)
   - SlackTextViewController
   - SwiftLint
   - SwiftyStoreKit
@@ -213,7 +213,7 @@ CHECKOUT OPTIONS:
     :commit: 60fee59c70227085afe547edb3016e2656171fc6
     :git: https://github.com/vIiRuS/CargoBay.git
   CRToast:
-    :commit: 82ff49ca70569075467368de8b10450204fd84e9
+    :commit: fea2562333505d41291e2bc8262518c63a257446
     :git: https://github.com/cruffenach/CRToast
   PopupDialog:
     :commit: 4015f15eb0aa01c15d3b112f3e61755fdce1aaec
@@ -225,23 +225,23 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
-  Amplitude-iOS: de7cfde0c791d05fb0e0f82bd34cbd3585ccd63f
-  AppAuth: 37b3235b3c3da8f4f070a09dab5a7d15276decc3
+  Amplitude-iOS: 4a3c8807b2ea5369dc11e87e23825bff01e5a922
+  AppAuth: 34db36bac669e7a16758c6765625bb5d2663e3ad
   AttributedMarkdown: ac5060667280be8cc8ee33a46c73e4ec6b17ca1a
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CargoBay: d0ab6070553bb49ef61e6b5a036c0091936cc3be
   CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
-  Down: afcfa1a49381b19733b67074bf239789edfa8ad4
+  Down: 58673c371d292a573daaef43537a0d9174c2eb78
   DTCoreText: 51904f2374af443e0d270d6fdc76035ab6f9ef8a
   DTFoundation: 26a164ef510877387906fb92bff524a792db4bf8
   EAIntroView: 3494b7bbd1212e3a4f7e8d16194a1b00e7b9abb2
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
-  FBSDKCoreKit: 2d16979b28fe28c2b95af0d275ad5f9703c6c8de
-  FBSDKLoginKit: a9d9391506c687e2304a590bf9312837fce7f375
+  FBSDKCoreKit: 82eac696eb6157da5f4266c3a241f00e9bd72471
+  FBSDKLoginKit: 2211bede07c83391349eacc1fd86cf6d9289ce38
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
-  FirebaseCore: 225d40532489835a034b8f4e2c9c87fbf4f615a2
+  FirebaseCore: a024587e43778508700af8c6b1209f7c4516ba02
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
   FontAwesomeIconFactory: bb9ce26d3dd13044854a82d380023c8e7d3ebf1a
@@ -263,11 +263,11 @@ SPEC CHECKSUMS:
   RestKit: 9539fb2ca8cd53431a1fdc7f55bba4af3646cfa9
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
   RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
-  SeedsSDK: e49ba4528e0d9e2eaae6b4d2fb5a6d19e0954eb8
+  SeedsSDK: caeda3e1732a6b2ba41aad3f01bfee2584b2ec94
   SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   SwiftLint: b8b683208cc09640898f16318a7a452274e91f61
-  SwiftyStoreKit: 901059a0058e808a2a3b36c3a6de886e4c6f8f6e
+  SwiftyStoreKit: b235756bd6e541cafbed6e75d28b29b8a1c1caef
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   VTAcknowledgementsViewController: e1de80f2c0ce31cc7e1c6f1c8aaeec2770371f09
   XLForm: d5c391dfc62865927b5bcab0a5a0dbfb3e02b0ec
@@ -275,6 +275,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: a783750642f1cc0d9e287d550d1119d328c18741
+PODFILE CHECKSUM: b1afbb921342de0843a763ccf5c91edb08dc5293
 
 COCOAPODS: 1.2.0

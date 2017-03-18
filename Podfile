@@ -38,11 +38,11 @@ target 'Habitica' do
   pod 'KLCPopup'
   pod 'EAIntroView'
   pod 'AttributedMarkdown', :git => 'https://github.com/dreamwieber/AttributedMarkdown.git'
-  pod 'Amplitude-iOS', '~> 3.8.5'
+  pod 'Amplitude-iOS', '~> 3.14.1'
   pod 'Masonry'
   pod "SlackTextViewController"
   pod 'AppAuth'
-  pod 'SeedsSDK', '0.4.2'
+  pod 'SeedsSDK', '0.4.6'
 
   pod 'FBSDKCoreKit', '~> 4'
   pod 'FBSDKLoginKit', '~> 4'
