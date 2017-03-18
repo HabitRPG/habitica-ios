@@ -1,6 +1,6 @@
 language: objective-c
 cache: cocoapods
-osx_image:xcode8.2
+osx_image: xcode8.2
 env:
   global:
     - GoogleClient=123
