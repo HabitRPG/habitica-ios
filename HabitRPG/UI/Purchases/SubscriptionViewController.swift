@@ -13,18 +13,18 @@ import Keys
 
 class SubscriptionViewController: HRPGBaseViewController {
 
-    @IBOutlet weak var restorePurchaseButton: UIButton!
+    @IBOutlet weak private var restorePurchaseButton: UIButton!
     let identifiers = ["subscription1month", "com.habitrpg.ios.habitica.subscription.3month",
                        "com.habitrpg.ios.habitica.subscription.6month", "com.habitrpg.ios.habitica.subscription.12month"
     ]
-    
+
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
     var user: User?
     let appleValidator: AppleReceiptValidator
     let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
     var expandedList = [Bool](repeating: false, count: 4)
-    
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         #if DEBUG
             appleValidator = AppleReceiptValidator(service: .sandbox)
@@ -33,7 +33,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         #endif
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         #if DEBUG
             appleValidator = AppleReceiptValidator(service: .sandbox)
@@ -42,37 +42,39 @@ class SubscriptionViewController: HRPGBaseViewController {
         #endif
         super.init(coder: aDecoder)
     }
-    
+
     var isSubscribed = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let termsView = self.tableView.tableFooterView?.viewWithTag(2) as! UITextView
-        let termsAttributedText = NSMutableAttributedString(string: "Subscriptions auto renew at the end of their duration, unless you cancel. By continuing you accept the Terms of Use and Privacy Policy")
-        termsAttributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.gray50(), range: NSRange(location: 0, length: termsAttributedText.length))
-        let termsRange = termsAttributedText.mutableString.range(of: "Terms of Use")
-        termsAttributedText.addAttributes([NSLinkAttributeName: "https://habitica.com/static/terms"], range: termsRange)
-        let privacyRange = termsAttributedText.mutableString.range(of: "Privacy Policy")
-        termsAttributedText.addAttributes([NSLinkAttributeName: "https://habitica.com/static/privacy"], range: privacyRange)
-        termsView.attributedText = termsAttributedText
-        
+
+        if let termsView = self.tableView.tableFooterView?.viewWithTag(2) as? UITextView {
+            let termsAttributedText = NSMutableAttributedString(string: "Subscriptions auto renew at the end of their duration, unless you cancel. " +
+                "By continuing you accept the Terms of Use and Privacy Policy")
+            termsAttributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.gray50(), range: NSRange(location: 0, length: termsAttributedText.length))
+            let termsRange = termsAttributedText.mutableString.range(of: "Terms of Use")
+            termsAttributedText.addAttributes([NSLinkAttributeName: "https://habitica.com/static/terms"], range: termsRange)
+            let privacyRange = termsAttributedText.mutableString.range(of: "Privacy Policy")
+            termsAttributedText.addAttributes([NSLinkAttributeName: "https://habitica.com/static/privacy"], range: privacyRange)
+            termsView.attributedText = termsAttributedText
+        }
         let optionNib = UINib.init(nibName: "SubscriptionOptionView", bundle: nil)
         self.tableView.register(optionNib, forCellReuseIdentifier: "OptionCell")
         let detailNib = UINib.init(nibName: "SubscriptionDetailView", bundle: nil)
         self.tableView.register(detailNib, forCellReuseIdentifier: "DetailCell")
         let infoNib = UINib.init(nibName: "SubscriptionInformationCell", bundle: nil)
         self.tableView.register(infoNib, forCellReuseIdentifier: "InformationCell")
-        
-        let navigationController = self.navigationController as! HRPGGemHeaderNavigationController
-        let inset = UIEdgeInsets(top: navigationController.getContentInset(), left: 0, bottom: 0, right: 0)
-        self.tableView.contentInset = inset
-        self.tableView.scrollIndicatorInsets = inset
-        
+
+        if let navigationController = self.navigationController as? HRPGGemHeaderNavigationController {
+            let inset = UIEdgeInsets(top: navigationController.getContentInset(), left: 0, bottom: 0, right: 0)
+            self.tableView.contentInset = inset
+            self.tableView.scrollIndicatorInsets = inset
+        }
         retrieveProductList()
-        
+        completionHandler()
+
         self.user = self.sharedManager.getUser()
-        
+
         if let user = self.user {
             if user.subscriptionPlan == nil {
                 return
@@ -82,7 +84,9 @@ class SubscriptionViewController: HRPGBaseViewController {
                 restorePurchaseButton.isHidden = true
             }
         }
-        
+    }
+
+    func completionHandler() {
         SwiftyStoreKit.completeTransactions(atomically: false) { products in
             SwiftyStoreKit.verifyReceipt(using: self.appleValidator, password: self.itunesSharedSecret()) { result in
                 switch result {
@@ -110,17 +114,23 @@ class SubscriptionViewController: HRPGBaseViewController {
             }
         }
     }
-    
+
     func retrieveProductList() {
         SwiftyStoreKit.retrieveProductsInfo(Set(identifiers)) { (result) in
             self.products = Array(result.retrievedProducts)
             self.products?.sort(by: { (product1, product2) -> Bool in
-                return self.identifiers.index(of: product1.productIdentifier)! < self.identifiers.index(of: product2.productIdentifier)!
+                guard let firstIndex = self.identifiers.index(of: product1.productIdentifier) else {
+                    return false
+                }
+                guard let secondIndex = self.identifiers.index(of: product2.productIdentifier) else {
+                    return true
+                }
+                return firstIndex < secondIndex
             })
             self.tableView.reloadData()
         }
     }
-    
+
     @IBAction func checkForExistingSubscription(_ sender: Any) {
         SwiftyStoreKit.refreshReceipt { (result) in
             switch result {
@@ -132,11 +142,12 @@ class SubscriptionViewController: HRPGBaseViewController {
                             return
                         }
                         for purchase in purchases {
-                            let identifier = purchase["product_id"] as! String
-                            if self.isValidSubscription(identifier, receipt: verifiedReceipt) {
-                                self.activateSubscription(identifier, receipt: verifiedReceipt) {status in
-                                    if status {
-                                        return
+                            if let identifier = purchase["product_id"] as? String {
+                                if self.isValidSubscription(identifier, receipt: verifiedReceipt) {
+                                    self.activateSubscription(identifier, receipt: verifiedReceipt) {status in
+                                        if status {
+                                            return
+                                        }
                                     }
                                 }
                             }
@@ -151,31 +162,31 @@ class SubscriptionViewController: HRPGBaseViewController {
 
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         if let navigationController = self.navigationController as? HRPGGemHeaderNavigationController {
             navigationController.start(following: self.tableView)
         }
         super.viewDidAppear(animated)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         if let navigationController = self.navigationController as? HRPGGemHeaderNavigationController {
             navigationController.stopFollowingScrollView()
         }
         super.viewWillDisappear(animated)
     }
-    
+
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let navigationController = self.navigationController as? HRPGGemHeaderNavigationController {
             navigationController.scrollview(scrollView, scrolledToPosition: scrollView.contentOffset.y)
         }
     }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isInformationSection(section) {
             return 4
@@ -190,10 +201,10 @@ class SubscriptionViewController: HRPGBaseViewController {
             if isSubscribed || self.products == nil || self.products?.count == 0 {
                 return 0
             } else {
-                return 1;
+                return 1
             }
         }
-        
+
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -204,50 +215,57 @@ class SubscriptionViewController: HRPGBaseViewController {
                                                      options: NSStringDrawingOptions.usesLineFragmentOrigin,
                                                      attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body)],
                                                      context: nil).size.height
-                return height;
+                return height
             } else {
                 return 50
             }
         } else if isOptionSection(indexPath.section) {
             return 96
         } else if isDetailSection(indexPath.section) {
-            return 550;
+            return 550
         }
         return 50
     }
-    
+
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if !isOptionSection(indexPath.section) {
             return nil
         }
         return indexPath
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedSubscriptionPlan = (self.products?[indexPath.item]);
+        self.selectedSubscriptionPlan = (self.products?[indexPath.item])
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell?
+        var returnedCell: UITableViewCell?
         if self.isInformationSection(indexPath.section) {
-            let c = tableView.dequeueReusableCell(withIdentifier: "InformationCell", for: indexPath) as! SubscriptionInformationCell
-            c.titleLabel.text = SubscriptionInformation.titles[indexPath.item]
-            c.descriptionTextView.text = SubscriptionInformation.descriptions[indexPath.item]
-            c.isExpanded = self.expandedList[indexPath.item]
-            c.setExpandIcon(self.expandedList[indexPath.item])
-            c.expandButtonPressedAction = { [weak self] isExpanded in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "InformationCell", for: indexPath) as? SubscriptionInformationCell else {
+                fatalError()
+            }
+            cell.title = SubscriptionInformation.titles[indexPath.item]
+            cell.descriptionText = SubscriptionInformation.descriptions[indexPath.item]
+            cell.isExpanded = self.expandedList[indexPath.item]
+            cell.setExpandIcon(self.expandedList[indexPath.item])
+            cell.expandButtonPressedAction = { [weak self] isExpanded in
                 self?.expandedList[indexPath.item] = isExpanded
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
             }
-            cell = c
+            returnedCell = cell
         } else if self.isOptionSection(indexPath.section) {
-            let c = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath) as! SubscriptionOptionView
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath) as? SubscriptionOptionView else {
+                fatalError()
+            }
+
             let product = self.products?[indexPath.item]
-            c.priceLabel.text = product?.localizedPrice
-            c.titleLabel.text = product?.localizedTitle
-            cell = c
+            cell.priceLabel.text = product?.localizedPrice
+            cell.titleLabel.text = product?.localizedTitle
+            returnedCell = cell
         } else if self.isDetailSection(indexPath.section) {
-            let c = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! SubscriptionDetailView
+            guard let c = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as? SubscriptionDetailView else {
+                fatalError()
+            }
             if let user = self.user {
                 c.setPlan(user.subscriptionPlan)
                 c.cancelSubscriptionAction = {
@@ -257,38 +275,38 @@ class SubscriptionViewController: HRPGBaseViewController {
                     } else {
                         url = URL(string: "https://habitica.com")
                     }
-                    if url != nil {
-                        UIApplication.shared.openURL(url!)
+                    if let applicationUrl = url {
+                        UIApplication.shared.openURL(applicationUrl)
                     }
                 }
             }
-            cell = c
+            returnedCell = c
         } else if indexPath.section == tableView.numberOfSections-1 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "SubscribeButtonCell", for: indexPath)
+            returnedCell = tableView.dequeueReusableCell(withIdentifier: "SubscribeButtonCell", for: indexPath)
         }
-        cell?.selectionStyle = .none
-        return cell!;
+        returnedCell?.selectionStyle = .none
+        return returnedCell ?? UITableViewCell()
     }
-    
+
     func isInformationSection(_ section: Int) -> Bool {
         return section == 0
     }
-    
+
     func isOptionSection(_ section: Int) -> Bool {
         return !isSubscribed && section == 1
     }
-    
+
     func isDetailSection(_ section: Int) -> Bool {
         return isSubscribed && section == 1
     }
-    
+
     @IBAction func subscribeButtonPressed(_ sender: Any) {
         self.subscribeToPlan()
     }
-    
+
     func subscribeToPlan() {
         guard let identifier = self.selectedSubscriptionPlan?.productIdentifier else {
-            return;
+            return
         }
         SwiftyStoreKit.purchaseProduct(identifier, atomically: false) { result in
             switch result {
@@ -300,7 +318,7 @@ class SubscriptionViewController: HRPGBaseViewController {
             }
         }
     }
-    
+
     func verifyAndSubscribe(_ product: Product) {
         SwiftyStoreKit.verifyReceipt(using: appleValidator, password: self.itunesSharedSecret()) { result in
             switch result {
@@ -308,7 +326,7 @@ class SubscriptionViewController: HRPGBaseViewController {
                 // Verify the purchase of a Subscription
                 if self.isValidSubscription(product.productId, receipt: receipt) {
                     self.activateSubscription(product.productId, receipt: receipt) { status in
-                        if (status) {
+                        if status {
                             if product.needsFinishTransaction {
                                 SwiftyStoreKit.finishTransaction(product.transaction)
                             }
@@ -320,21 +338,23 @@ class SubscriptionViewController: HRPGBaseViewController {
             }
         }
     }
-    
+
     func activateSubscription(_ identifier: String, receipt: ReceiptInfo, completion: @escaping (Bool) -> Void) {
-        self.sharedManager.subscribe(identifier, withReceipt:receipt["latest_receipt"] as! String!, onSuccess: {
-            completion(true)
-            self.isSubscribed = true
-            self.tableView.reloadData()
-        }, onError: {
-            completion(false)
-        })
+        if let lastReceipt = receipt["latest_receipt"] as? String {
+            self.sharedManager.subscribe(identifier, withReceipt:lastReceipt, onSuccess: {
+                completion(true)
+                self.isSubscribed = true
+                self.tableView.reloadData()
+            }, onError: {
+                completion(false)
+            })
+        }
     }
-    
+
     func isSubscription(_ identifier: String) -> Bool {
         return  self.identifiers.contains(identifier)
     }
-    
+
     func isValidSubscription(_ identifier: String, receipt: ReceiptInfo) -> Bool {
         if !isSubscription(identifier) {
             return false

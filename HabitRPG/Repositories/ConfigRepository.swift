@@ -9,23 +9,27 @@
 import Foundation
 import Alamofire
 
-@objc enum ConfigVariable: Int {
+@objc
+enum ConfigVariable: Int {
     case enableRepeatables, supportEmail
-    
+
     func name() -> String {
+        // swiftlint:disable switch_case_on_newline
         switch self {
-            case .enableRepeatables: return "enableRepeatables"
+        case .enableRepeatables: return "enableRepeatables"
         case .supportEmail: return "supportEmail"
         }
+        // swiftlint:enable switch_case_on_newline
     }
 }
 
-@objc class ConfigRepository: NSObject {
-    
+@objc
+class ConfigRepository: NSObject {
+
     private static let configUrl = "https://s3.amazonaws.com/habitica-assets/mobileApp/endpoint/config-ios.json"
     private static let configVariables: [ConfigVariable] = [.enableRepeatables, .supportEmail]
     private let userConfig = UserDefaults.standard
-    
+
     func fetchremoteConfig() {
         Alamofire.request(ConfigRepository.configUrl).responseJSON { response in
             if let JSON = response.result.value as? [String: Any] {
@@ -35,19 +39,19 @@ import Alamofire
             }
         }
     }
-    
+
     func bool(variable: ConfigVariable) -> Bool {
         return userConfig.bool(forKey: variable.name())
     }
-    
+
     func string(variable: ConfigVariable) -> String? {
         return userConfig.string(forKey: variable.name())
     }
-    
+
     func bool(variable: ConfigVariable, defaultValue: String) -> String {
         return userConfig.string(forKey: variable.name()) ?? defaultValue
     }
-    
+
     func integer(variable: ConfigVariable) -> Int {
         return userConfig.integer(forKey: variable.name())
     }

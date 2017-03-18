@@ -9,10 +9,12 @@
 import UIKit
 
 class HabitTableViewCell: TaskTableViewCell {
-    
+
+    //swiftlint:disable:next private_outlet
     @IBOutlet weak var plusButton: HRPGHabitButtons!
+    //swiftlint:disable:next private_outlet
     @IBOutlet weak var minusButton: HRPGHabitButtons!
-    
+
     override func configure(task: Task) {
         super.configure(task: task)
         self.plusButton.configure(for: task, isNegative: false)

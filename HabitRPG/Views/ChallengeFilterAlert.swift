@@ -14,41 +14,41 @@ protocol ChallengeFilterChangedDelegate: class {
 }
 
 class ChallengeFilterAlert: UIViewController {
-    
-    @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var allGroupsButton: UIButton!
-    @IBOutlet weak var NoGroupsButton: UIButton!
-    @IBOutlet weak var groupListView: TZStackView!
-    @IBOutlet weak var ownedButton: LabeledCheckboxView!
-    @IBOutlet weak var notOwnedButton: LabeledCheckboxView!
-    
-    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
-    
-    weak var delegate: ChallengeFilterChangedDelegate? = nil
+
+    @IBOutlet weak private var doneButton: UIButton!
+    @IBOutlet weak private var allGroupsButton: UIButton!
+    @IBOutlet weak private var noGroupsButton: UIButton!
+    @IBOutlet weak private var groupListView: TZStackView!
+    @IBOutlet weak private var ownedButton: LabeledCheckboxView!
+    @IBOutlet weak private var notOwnedButton: LabeledCheckboxView!
+
+    @IBOutlet weak private var heightConstraint: NSLayoutConstraint!
+
+    weak var delegate: ChallengeFilterChangedDelegate?
 
     var managedObjectContext: NSManagedObjectContext?
-    
+
     var showOwned = true
     var showNotOwned = true
     var shownGuilds = [String]()
-    
+
     var initShownGuilds = false
-    
+
     var groups = [Group]()
-    
+
     init() {
         super.init(nibName: "ChallengeFilterAlert", bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         groupListView.axis = .vertical
         groupListView.spacing = 12
-        
+
         ownedButton.isChecked = showOwned
         notOwnedButton.isChecked = showNotOwned
         ownedButton.checkedAction = {[weak self] isChecked in
@@ -59,15 +59,17 @@ class ChallengeFilterAlert: UIViewController {
             self?.showNotOwned = isChecked
             self?.updateDelegate()
         }
-        
+
         fetchGroups()
     }
-    
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.heightConstraint.constant = (self.view.window?.frame.size.height)! - 200
+        if let window = self.view.window {
+        self.heightConstraint.constant = window.frame.size.height - 200
+        }
     }
-    
+
     @IBAction func doneTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -76,33 +78,40 @@ class ChallengeFilterAlert: UIViewController {
         for group in groups {
             shownGuilds.append(group.id)
         }
-        for view in groupListView.arrangedSubviews as! [LabeledCheckboxView] {
-            view.isChecked = true
+        if let subviews = groupListView.arrangedSubviews as? [LabeledCheckboxView] {
+            for view in subviews {
+                view.isChecked = true
+            }
         }
         updateDelegate()
     }
-    
+
     @IBAction func noGroupsTapped(_ sender: Any) {
         shownGuilds.removeAll()
-        for view in groupListView.arrangedSubviews as! [LabeledCheckboxView] {
-            view.isChecked = false
+        if let subviews = groupListView.arrangedSubviews as? [LabeledCheckboxView] {
+            for view in subviews {
+                view.isChecked = false
+            }
         }
         updateDelegate()
     }
-    
+
     private func updateDelegate() {
         delegate?.challengeFilterChanged(showOwned: self.ownedButton.isChecked, showNotOwned: self.notOwnedButton.isChecked, shownGuilds: shownGuilds)
     }
-    
+
     func fetchGroups() {
         if let managedObjectContext = self.managedObjectContext {
             let entity = NSEntityDescription.entity(forEntityName: "Group", in: managedObjectContext)
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
-            fetchRequest.entity = entity;
+            fetchRequest.entity = entity
             fetchRequest.predicate = NSPredicate(format: "challenges.@count > 0")
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
             do {
-                self.groups = try managedObjectContext.fetch(fetchRequest) as! [Group]
+                guard let groups = try managedObjectContext.fetch(fetchRequest) as? [Group] else {
+                    return
+                }
+                self.groups = groups
                 if groups.count > 0 {
                     for group in groups {
                         let groupView = LabeledCheckboxView(frame: CGRect.zero)

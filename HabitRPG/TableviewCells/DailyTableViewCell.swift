@@ -11,7 +11,7 @@ import Foundation
 class DailyTableViewCell: CheckedTableViewCell {
     func configure(task: Task, offset: Int) {
         super.configure(task: task)
-        if !(task.completed?.boolValue)! {
+        if !(task.completed?.boolValue ?? false) {
             if task.dueToday(withOffset: offset) {
                 self.titleLabel.textColor = .black
             } else {

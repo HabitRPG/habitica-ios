@@ -10,17 +10,16 @@ import UIKit
 
 class SubscriptionDetailView: UITableViewCell {
 
+    @IBOutlet weak private var statusPill: PillView!
+    @IBOutlet weak private var typeLabel: UILabel!
+    @IBOutlet weak private var paymentMethodLabel: UILabel!
+    @IBOutlet weak private var monthsSubscribedPill: PillView!
+    @IBOutlet weak private var gemCapPill: PillView!
+    @IBOutlet weak private var hourGlassCountPill: PillView!
+    @IBOutlet weak private var cancelDescriptionLabel: UILabel!
+    @IBOutlet weak private var cancelDescriptionButton: UIButton!
 
-    @IBOutlet weak var statusPill: PillView!
-    @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var paymentMethodLabel: UILabel!
-    @IBOutlet weak var monthsSubscribedPill: PillView!
-    @IBOutlet weak var gemCapPill: PillView!
-    @IBOutlet weak var hourGlassCountPill: PillView!
-    @IBOutlet weak var cancelDescriptionLabel: UILabel!
-    @IBOutlet weak var cancelDescriptionButton: UIButton!
-    
-    var cancelSubscriptionAction: (() -> ())?
+    var cancelSubscriptionAction: (() -> Void)?
 
     public func setPlan(_ plan: SubscriptionPlan) {
         if plan.isActive() {
@@ -32,7 +31,7 @@ class SubscriptionDetailView: UITableViewCell {
         }
         typeLabel.text = plan.planId
         paymentMethodLabel.text = plan.paymentMethod
-        
+
         if plan.count == 0 {
             monthsSubscribedPill.text = "1 Month".localized
         } else {
@@ -41,7 +40,7 @@ class SubscriptionDetailView: UITableViewCell {
 
         gemCapPill.text = String(plan.totalGemCap)
         hourGlassCountPill.text = plan.consecutiveTrinkets?.stringValue
-        
+
         if plan.paymentMethod == "Apple" {
             cancelDescriptionLabel.text = "No longer want to subscribe? You can manage your subscription from iTunes.".localized
             cancelDescriptionButton.setTitle("Open iTunes".localized, for: .normal)
@@ -51,8 +50,8 @@ class SubscriptionDetailView: UITableViewCell {
         }
     }
     @IBAction func cancelButtonPressed(_ sender: Any) {
-        if self.cancelSubscriptionAction != nil {
-            self.cancelSubscriptionAction!()
+        if let action = self.cancelSubscriptionAction {
+            action()
         }
     }
 }

@@ -11,18 +11,18 @@ import Down
 
 class ChallengeDetailHeaderView: UIView {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var notesLabel: UILabel!
-    @IBOutlet weak var memberCountLabel: UILabel!
-    @IBOutlet weak var gemCountLabel: UILabel!
-    var showMoreAction: (() -> ())?
+    @IBOutlet weak private var nameLabel: UILabel!
+    @IBOutlet weak private var notesLabel: UILabel!
+    @IBOutlet weak private var memberCountLabel: UILabel!
+    @IBOutlet weak private var gemCountLabel: UILabel!
+    var showMoreAction: (() -> Void)?
 
     @IBAction func showMoreTapped(_ sender: Any) {
         if let action = self.showMoreAction {
             action()
         }
     }
-    
+
     func set(challenge: Challenge) {
         nameLabel.text = challenge.name?.unicodeEmoji
         if let notes = challenge.notes {
@@ -31,7 +31,7 @@ class ChallengeDetailHeaderView: UIView {
         memberCountLabel.text = challenge.memberCount?.stringValue
         gemCountLabel.text = challenge.prize?.stringValue
     }
-    
+
     override var intrinsicContentSize: CGSize {
         let size = super.intrinsicContentSize
         var height = size.height

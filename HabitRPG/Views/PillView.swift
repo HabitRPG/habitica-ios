@@ -16,9 +16,8 @@ enum PillStyle {
 
 @IBDesignable
 class PillView: UIView {
-    
-    @IBInspectable
-    var text: String? {
+
+    @IBInspectable var text: String? {
         get {
             return self.label.text
         }
@@ -26,9 +25,8 @@ class PillView: UIView {
             self.label.text = newValue
         }
     }
-    
-    @IBInspectable
-    var icon: UIImage? {
+
+    @IBInspectable var icon: UIImage? {
         didSet {
             icon?.withRenderingMode(.alwaysTemplate)
             self.iconView.image = icon
@@ -39,9 +37,8 @@ class PillView: UIView {
             }
         }
     }
-    
-    @IBInspectable
-    var hasBorder: Bool = false {
+
+    @IBInspectable var hasBorder: Bool = false {
         didSet {
             if hasBorder {
                 self.layer.borderWidth = 1
@@ -50,34 +47,30 @@ class PillView: UIView {
             }
         }
     }
-    
-    @IBInspectable
-    var isCircular: Bool = true {
+
+    @IBInspectable var isCircular: Bool = true {
         didSet {
             self.setNeedsLayout()
         }
     }
-    
-    @IBInspectable
-    var hasRoundedCorners: Bool = false {
+
+    @IBInspectable var hasRoundedCorners: Bool = false {
         didSet {
             self.setNeedsLayout()
         }
     }
-    
-    @IBInspectable
-    var borderColor: UIColor = UIColor.gray200() {
+
+    @IBInspectable var borderColor: UIColor = UIColor.gray200() {
         didSet {
             self.layer.borderColor = borderColor.cgColor
         }
     }
-    
-    @IBInspectable
-    var pillColor: UIColor = UIColor.gray400() {
+
+    @IBInspectable var pillColor: UIColor = UIColor.gray400() {
         didSet {
             layer.backgroundColor = pillColor.cgColor
-            
-            if (self.automaticTextColor) {
+
+            if self.automaticTextColor {
                 var red: CGFloat = 0
                 var green: CGFloat = 0
                 var blue: CGFloat = 0
@@ -92,45 +85,43 @@ class PillView: UIView {
             }
         }
     }
-    
-    @IBInspectable
-    var textColor: UIColor = UIColor.black {
+
+    @IBInspectable var textColor: UIColor = UIColor.black {
         didSet {
             self.label.textColor = textColor
             self.iconView.tintColor = textColor
         }
     }
-    
-    @IBInspectable
-    var automaticTextColor: Bool = true {
+
+    @IBInspectable var automaticTextColor: Bool = true {
         didSet {
             self.setNeedsLayout()
         }
     }
-    
+
     override var isHidden: Bool {
         didSet {
             self.invalidateIntrinsicContentSize()
         }
     }
-    
+
     private let label: UILabel
-    private let iconView: UIImageView;
-    
+    private let iconView: UIImageView
+
     override init(frame: CGRect) {
         self.label = UILabel()
         self.iconView = UIImageView()
         super.init(frame: frame)
         setupView()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         self.label = UILabel()
         self.iconView = UIImageView()
         super.init(coder: aDecoder)
         setupView()
     }
-    
+
     func setupView() {
         self.addSubview(self.label)
         self.addSubview(self.iconView)
@@ -138,7 +129,7 @@ class PillView: UIView {
         self.label.font = UIFont.preferredFont(forTextStyle: .caption1)
         self.iconView.contentMode = .center
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         self.iconView.frame = CGRect(x: 8, y: 0, width: 15, height: self.frame.size.height)
@@ -155,9 +146,8 @@ class PillView: UIView {
             layer.cornerRadius = 0
         }
     }
-    
+
     override var intrinsicContentSize: CGSize {
-        get {
             if self.isHidden {
                 return CGSize(width: 0, height: 0)
             }
@@ -168,7 +158,6 @@ class PillView: UIView {
                 width += 15+4
             }
             return CGSize(width: width, height: height)
-        }
     }
 
 }

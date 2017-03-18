@@ -11,99 +11,95 @@ import DateTools
 
 @IBDesignable
 class TaskDetailLineView: UIView {
-    
-    private let SPACING: CGFloat = 12
-    private let ICON_SIZE: CGFloat = 18
-    
-    @IBOutlet weak var calendarIconView: UIImageView!
-    @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var streakIconView: UIImageView!
-    @IBOutlet weak var streakLabel: UILabel!
-    @IBOutlet weak var challengeIconView: UIImageView!
-    @IBOutlet weak var reminderIconView: UIImageView!
-    @IBOutlet weak var tagIconView: UIImageView!
-    
-    @IBOutlet weak var calendarIconViewWidth: NSLayoutConstraint!
-    @IBOutlet weak var streakIconViewWidth: NSLayoutConstraint!
-    @IBOutlet weak var challengeIconViewWidth: NSLayoutConstraint!
-    @IBOutlet weak var reminderIconViewWidth: NSLayoutConstraint!
-    @IBOutlet weak var tagIconViewWidth: NSLayoutConstraint!
-    
-    @IBOutlet weak var calendarDetailSpacing: NSLayoutConstraint!
-    @IBOutlet weak var detailStreakSpacing: NSLayoutConstraint!
-    @IBOutlet weak var streakIconLabelSpacing: NSLayoutConstraint!
-    @IBOutlet weak var streakChallengeSpacing: NSLayoutConstraint!
-    @IBOutlet weak var challengeReminderSpacing: NSLayoutConstraint!
-    @IBOutlet weak var reminderTagSpacing: NSLayoutConstraint!
-    
-    var contentView : UIView?
-    
-    var dateFormatter : DateFormatter?
-    
+
+    private static let spacing: CGFloat = 12
+    private static let iconSize: CGFloat = 18
+
+    @IBOutlet weak private var calendarIconView: UIImageView!
+    @IBOutlet weak private var detailLabel: UILabel!
+    @IBOutlet weak private var streakIconView: UIImageView!
+    @IBOutlet weak private var streakLabel: UILabel!
+    @IBOutlet weak private var challengeIconView: UIImageView!
+    @IBOutlet weak private var reminderIconView: UIImageView!
+    @IBOutlet weak private var tagIconView: UIImageView!
+
+    @IBOutlet weak private var calendarIconViewWidth: NSLayoutConstraint!
+    @IBOutlet weak private var streakIconViewWidth: NSLayoutConstraint!
+    @IBOutlet weak private var challengeIconViewWidth: NSLayoutConstraint!
+    @IBOutlet weak private var reminderIconViewWidth: NSLayoutConstraint!
+    @IBOutlet weak private var tagIconViewWidth: NSLayoutConstraint!
+
+    @IBOutlet weak private var calendarDetailSpacing: NSLayoutConstraint!
+    @IBOutlet weak private var detailStreakSpacing: NSLayoutConstraint!
+    @IBOutlet weak private var streakIconLabelSpacing: NSLayoutConstraint!
+    @IBOutlet weak private var streakChallengeSpacing: NSLayoutConstraint!
+    @IBOutlet weak private var challengeReminderSpacing: NSLayoutConstraint!
+    @IBOutlet weak private var reminderTagSpacing: NSLayoutConstraint!
+
+    var contentView: UIView?
+
+    var dateFormatter: DateFormatter?
+
     var hasContent = true
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetup()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         xibSetup()
     }
-    
+
     func xibSetup() {
-        contentView = loadViewFromNib()
-        
-        // use bounds not frame or it'll be offset
-        contentView!.frame = bounds
-        
-        // Make the view stretch with containing view
-        contentView!.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-        
-        // Adding custom subview on top of our view (over any custom drawing > see note below)
-        addSubview(contentView!)
+        if let view = loadViewFromNib() {
+            self.contentView = view
+            view.frame = bounds
+            view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+            addSubview(view)
+        }
     }
-    
-    func loadViewFromNib() -> UIView! {
-        
+
+    func loadViewFromNib() -> UIView? {
+
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as? UIView
+
         return view
     }
-    
+
     public func configure(task: Task) {
         hasContent = false
         setTag(enabled: task.tagArray.count > 0)
         setReminder(enabled: (task.reminders?.count ?? 0) > 0)
         setChallenge(enabled: task.challengeID != nil)
         setStreak(count: task.streak?.intValue ?? 0)
-        
+
         if task.type == "habit" {
             setCalendarIcon(enabled: false)
-            setLastCompleted(task: task);
+            setLastCompleted(task: task)
         } else if task.type == "daily" {
             setCalendarIcon(enabled: false)
             detailLabel.isHidden = true
         } else if task.type == "todo" {
             setDueDate(task: task)
         }
-        
+
         hasContent = !tagIconView.isHidden || !reminderIconView.isHidden || !challengeIconView.isHidden || !streakIconView.isHidden || !detailLabel.isHidden
-        
+
         self.invalidateIntrinsicContentSize()
     }
-    
+
     private func setCalendarIcon(enabled: Bool) {
         setCalendarIcon(enabled: enabled, isUrgent: false)
     }
-    
+
     private func setCalendarIcon(enabled: Bool, isUrgent: Bool) {
         calendarIconView.isHidden = !enabled
         if enabled {
-            calendarIconViewWidth.constant = ICON_SIZE
+            calendarIconViewWidth.constant = TaskDetailLineView.iconSize
             calendarDetailSpacing.constant = 4
             if isUrgent {
                 calendarIconView.image = #imageLiteral(resourceName: "calendar_red")
@@ -115,57 +111,62 @@ class TaskDetailLineView: UIView {
             calendarDetailSpacing.constant = 0
         }
     }
-    
+
     private func setDueDate(task: Task) {
-        if task.duedate != nil {
+        if let duedate = task.duedate {
             detailLabel.isHidden = false
             let calendar = Calendar.current
             var components = calendar.dateComponents([.year, .month, .day], from: Date())
             components.hour = 0
-            let today = calendar.date(from: components)
-            
+            guard let today = calendar.date(from: components) else {
+                return
+            }
             guard let formatter = dateFormatter else {
-                return;
+                return
             }
 
-            if task.duedate?.compare(today!) == .orderedAscending {
+            if duedate.compare(today) == .orderedAscending {
                 setCalendarIcon(enabled: true, isUrgent: true)
                 self.detailLabel.textColor = .red10()
-                self.detailLabel.text = "Due \(formatter.string(from: task.duedate!))".localized
+                self.detailLabel.text = "Due \(formatter.string(from: duedate))".localized
             } else {
-                detailLabel.textColor = .gray50();
-                let differenceValue = calendar.dateComponents([.day], from: today!, to: task.duedate!)
-                if differenceValue.day! < 7 {
-                    if differenceValue.day! == 0{
+                detailLabel.textColor = .gray50()
+                guard let differenceInDays = calendar.dateComponents([.day], from: today, to: duedate).day else {
+                    return
+                }
+                if differenceInDays < 7 {
+                    if differenceInDays == 0 {
                         setCalendarIcon(enabled: true, isUrgent: true)
-                        detailLabel.textColor = .red10();
-                        detailLabel.text = "Due today".localized;
-                    } else if differenceValue.day! == 1 {
+                        detailLabel.textColor = .red10()
+                        detailLabel.text = "Due today".localized
+                    } else if differenceInDays == 1 {
                         setCalendarIcon(enabled: true)
-                        detailLabel.text = "Due tomorrow".localized;
+                        detailLabel.text = "Due tomorrow".localized
                     } else {
                         setCalendarIcon(enabled: true)
-                        detailLabel.text = "Due in \(differenceValue.day) days".localized
+                        detailLabel.text = "Due in \(differenceInDays) days".localized
                     }
                 } else {
-                    setCalendarIcon(enabled: true)
-                    self.detailLabel.text = "Due \(formatter.string(from: task.duedate!))".localized
+                    if let duedate = task.duedate {
+                        setCalendarIcon(enabled: true)
+                        self.detailLabel.text = "Due \(formatter.string(from: duedate))".localized
+                    }
                 }
             }
         } else {
             detailLabel.isHidden = true
-            detailLabel.text = nil;
+            detailLabel.text = nil
             setCalendarIcon(enabled: false)
         }
     }
-    
+
     private func setStreak(count: Int) {
         if count > 0 {
             streakLabel.text = String(count)
             streakIconView.isHidden = false
             streakIconViewWidth.constant = 12
             streakIconLabelSpacing.constant = 4
-            detailStreakSpacing.constant = SPACING
+            detailStreakSpacing.constant = TaskDetailLineView.spacing
         } else {
             streakLabel.text = nil
             streakIconView.isHidden = true
@@ -178,34 +179,34 @@ class TaskDetailLineView: UIView {
     private func setLastCompleted(task: Task) {
         //Removed because storing task history was causing sync issues
     }
-    
+
     private func setChallenge(enabled: Bool) {
         challengeIconView.isHidden = !enabled
         if enabled {
-            challengeIconViewWidth.constant = ICON_SIZE
-            streakChallengeSpacing.constant = SPACING
+            challengeIconViewWidth.constant = TaskDetailLineView.iconSize
+            streakChallengeSpacing.constant = TaskDetailLineView.spacing
         } else {
             challengeIconViewWidth.constant = 0
             streakChallengeSpacing.constant = 0
         }
     }
-    
+
     private func setReminder(enabled: Bool) {
         reminderIconView.isHidden = !enabled
         if enabled {
-            reminderIconViewWidth.constant = ICON_SIZE
-            challengeReminderSpacing.constant = SPACING
+            reminderIconViewWidth.constant = TaskDetailLineView.iconSize
+            challengeReminderSpacing.constant = TaskDetailLineView.spacing
         } else {
             reminderIconViewWidth.constant = 0
             challengeReminderSpacing.constant = 0
         }
     }
-    
+
     private func setTag(enabled: Bool) {
         tagIconView.isHidden = !enabled
         if enabled {
-            tagIconViewWidth.constant = ICON_SIZE
-            reminderTagSpacing.constant = SPACING
+            tagIconViewWidth.constant = TaskDetailLineView.iconSize
+            reminderTagSpacing.constant = TaskDetailLineView.spacing
         } else {
             tagIconViewWidth.constant = 0
             reminderTagSpacing.constant = 0
@@ -214,14 +215,14 @@ class TaskDetailLineView: UIView {
 
     override public var intrinsicContentSize: CGSize {
         var size = super.intrinsicContentSize
-        
+
         if hasContent {
             size.height = 18
         } else {
             size.height = 0
         }
-        
+
         return size
     }
-    
+
 }

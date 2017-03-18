@@ -10,23 +10,22 @@ import Foundation
 import ReactiveSwift
 
 class Interactor<Input, Output> {
-    
+
     var reactive: Signal<Output, NSError>
     private let observer: Observer<Input, NSError>
-    
+
     init() {
         let (reactive, observer) = Signal<Input, NSError>.pipe()
         self.observer = observer
         self.reactive = Signal<Output, NSError>.never
         self.reactive = configure(signal: reactive)
     }
-    
+
     func configure(signal: Signal<Input, NSError>) -> Signal<Output, NSError> {
         fatalError("Subclasses need to implement the `configure(signal:)` method.")
         return Signal<Output, NSError>.never
     }
-    
-    
+
     func run(with: Input) {
         observer.send(value: with)
     }

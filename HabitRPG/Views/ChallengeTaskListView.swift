@@ -10,22 +10,21 @@ import Foundation
 
 @IBDesignable
 class ChallengeTaskListView: UIView {
-    
+
     static let verticalSpacing = CGFloat(integerLiteral: 12)
-    static let borderColor = UIColor.gray400()!
-    
+    static let borderColor = UIColor.gray400() ?? .gray
+
     let titleLabel = UILabel()
     let borderView = UIView()
-    
+
     var taskViews = [UIView]()
-    
-    @IBInspectable
-    var taskType: String? {
+
+    @IBInspectable var taskType: String? {
         didSet {
             updateTitle()
         }
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.addSubview(titleLabel)
@@ -34,13 +33,13 @@ class ChallengeTaskListView: UIView {
         borderView.layer.borderColor = ChallengeTaskListView.borderColor.cgColor
         borderView.layer.borderWidth = 1
     }
-    
+
     func configure(tasks: [ChallengeTask]?) {
         removeAllTaskViews()
-        if tasks == nil {
-            return;
+        guard let tasks = tasks else {
+            return
         }
-        for (index, task) in tasks!.enumerated() {
+        for (index, task) in tasks.enumerated() {
             let taskView = createTaskView(task: task, isFirst: index == 0)
             self.addSubview(taskView)
             taskViews.append(taskView)
@@ -49,7 +48,7 @@ class ChallengeTaskListView: UIView {
         self.setNeedsLayout()
         self.invalidateIntrinsicContentSize()
     }
-    
+
     override func layoutSubviews() {
         let frame = self.frame
         var titleHeight = titleLabel.sizeThatFits(frame.size).height
@@ -58,22 +57,23 @@ class ChallengeTaskListView: UIView {
         var nextTaskViewPos = titleHeight
         let labelSize = CGSize(width: frame.size.width-80, height: frame.size.height)
         for taskView in taskViews {
-            let label = taskView.viewWithTag(1)
-            let height = label!.sizeThatFits(labelSize).height
-            taskView.frame = CGRect(x: 0, y: nextTaskViewPos, width: frame.size.width, height: height+ChallengeTaskListView.verticalSpacing*2)
-            label?.frame = CGRect(x: 40, y: ChallengeTaskListView.verticalSpacing, width: frame.size.width-80, height: height)
-            if let plusImageView = taskView.viewWithTag(2) {
-                plusImageView.frame = CGRect(x: 0, y: 0, width: 40, height: height+ChallengeTaskListView.verticalSpacing*2)
+            if let label = taskView.viewWithTag(1) {
+                let height = label.sizeThatFits(labelSize).height
+                label.frame = CGRect(x: 40, y: ChallengeTaskListView.verticalSpacing, width: frame.size.width-80, height: height)
+                taskView.frame = CGRect(x: 0, y: nextTaskViewPos, width: frame.size.width, height: height+ChallengeTaskListView.verticalSpacing*2)
+                if let plusImageView = taskView.viewWithTag(2) {
+                    plusImageView.frame = CGRect(x: 0, y: 0, width: 40, height: height+ChallengeTaskListView.verticalSpacing*2)
+                }
+                if let minusImageView = taskView.viewWithTag(3) {
+                    minusImageView.frame = CGRect(x: frame.size.width-40, y: 0, width: 40, height: height+ChallengeTaskListView.verticalSpacing*2)
+                }
+                nextTaskViewPos += height+ChallengeTaskListView.verticalSpacing*2
             }
-            if let minusImageView = taskView.viewWithTag(3) {
-                minusImageView.frame = CGRect(x: frame.size.width-40, y: 0, width: 40, height: height+ChallengeTaskListView.verticalSpacing*2)
-            }
-            nextTaskViewPos += height+ChallengeTaskListView.verticalSpacing*2
         }
         borderView.frame = CGRect(x: 0, y: titleHeight, width: frame.size.width, height: nextTaskViewPos-titleHeight)
         super.layoutSubviews()
     }
-    
+
     override var intrinsicContentSize: CGSize {
         if taskViews.count == 0 {
             return CGSize.zero
@@ -81,19 +81,20 @@ class ChallengeTaskListView: UIView {
         var height = titleLabel.intrinsicContentSize.height + 8
         let labelSize = CGSize(width: frame.size.width-80, height: frame.size.height)
         for taskView in taskViews {
-            let label = taskView.viewWithTag(1) as? UILabel
-            height += label!.sizeThatFits(labelSize).height+ChallengeTaskListView.verticalSpacing*2
+            if let label = taskView.viewWithTag(1) as? UILabel {
+                height += label.sizeThatFits(labelSize).height+ChallengeTaskListView.verticalSpacing*2
+            }
         }
         return CGSize(width: self.frame.size.width, height: height)
     }
-    
+
     private func removeAllTaskViews() {
         for view in taskViews {
             view.removeFromSuperview()
         }
         taskViews.removeAll()
     }
-    
+
     private func createTaskView(task: ChallengeTask, isFirst: Bool) -> UIView {
         let taskView = UIView()
         let titleView = UILabel()
@@ -108,25 +109,25 @@ class ChallengeTaskListView: UIView {
         titleView.numberOfLines = 0
         titleView.font = UIFont.preferredFont(forTextStyle: .caption1)
         titleView.textColor = UIColor(white: 0, alpha: 0.5)
-        if (task.type == "habit") {
+        if task.type == "habit" {
             let plusImageView = UIImageView(image: #imageLiteral(resourceName: "plus_gray"))
             plusImageView.tag = 2
             plusImageView.contentMode = .center
             taskView.addSubview(plusImageView)
-            if task.up?.boolValue == nil || !(task.up?.boolValue)! {
+            if task.up?.boolValue ?? false {
                 plusImageView.alpha = 0.3
             }
             let minusImageView = UIImageView(image: #imageLiteral(resourceName: "minus_gray"))
             minusImageView.tag = 3
             minusImageView.contentMode = .center
             taskView.addSubview(minusImageView)
-            if task.down?.boolValue == nil || !(task.down?.boolValue)! {
+            if task.down?.boolValue ?? false {
                 minusImageView.alpha = 0.3
             }
         }
         return taskView
     }
-    
+
     private func updateTitle() {
         titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         titleLabel.textColor = UIColor(white: 0, alpha: 0.5)
@@ -144,7 +145,9 @@ class ChallengeTaskListView: UIView {
             default:
                 title = ""
             }
-            self.titleLabel.text = "\(taskViews.count) \(title!)"
+            if let title = title {
+                self.titleLabel.text = "\(taskViews.count) \(title)"
+            }
         }
     }
 }

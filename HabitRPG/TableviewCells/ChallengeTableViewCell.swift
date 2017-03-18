@@ -10,28 +10,28 @@ import UIKit
 
 class ChallengeTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var prizeLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var groupLabel: UILabel!
-    @IBOutlet weak var leaderLabel: UILabel!
-    @IBOutlet weak var memberCountLabel: UILabel!
-    @IBOutlet weak var officialBadge: PillView!
-    @IBOutlet weak var participatingBadge: PillView!
-    @IBOutlet weak var officialParticipatingSpacing: NSLayoutConstraint!
-    @IBOutlet weak var badgesOffset: NSLayoutConstraint!
-    @IBOutlet weak var badgesHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak private var prizeLabel: UILabel!
+    @IBOutlet weak private var nameLabel: UILabel!
+    @IBOutlet weak private var groupLabel: UILabel!
+    @IBOutlet weak private var leaderLabel: UILabel!
+    @IBOutlet weak private var memberCountLabel: UILabel!
+    @IBOutlet weak private var officialBadge: PillView!
+    @IBOutlet weak private var participatingBadge: PillView!
+    @IBOutlet weak private var officialParticipatingSpacing: NSLayoutConstraint!
+    @IBOutlet weak private var badgesOffset: NSLayoutConstraint!
+    @IBOutlet weak private var badgesHeight: NSLayoutConstraint!
+
     func setChallenge(_ challenge: Challenge) {
         self.prizeLabel.text = challenge.prize?.stringValue
         self.nameLabel.text = challenge.name?.unicodeEmoji
-        
+
         self.groupLabel.text = challenge.group?.name.unicodeEmoji
-        
+
         if let leaderName = challenge.leaderName {
             self.leaderLabel.text = "By \(leaderName.unicodeEmoji)".localized
         }
         self.memberCountLabel.text = challenge.memberCount?.stringValue
-        
+
         let official = challenge.official?.boolValue ?? false
         self.officialBadge.isHidden = !official
         if official {
@@ -39,10 +39,10 @@ class ChallengeTableViewCell: UITableViewCell {
         } else {
             officialParticipatingSpacing.constant = 0
         }
-        
+
         self.participatingBadge.isHidden = challenge.user == nil
-        
-        if (self.officialBadge.isHidden && self.participatingBadge.isHidden) {
+
+        if self.officialBadge.isHidden && self.participatingBadge.isHidden {
             self.badgesHeight.constant = 0
             self.badgesOffset.constant = 0
         } else {

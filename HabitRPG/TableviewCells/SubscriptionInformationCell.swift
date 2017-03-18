@@ -10,22 +10,42 @@ import UIKit
 
 class SubscriptionInformationCell: UITableViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var expandButton: UIButton!
-    @IBOutlet weak var descriptionTextView: UITextView!
-    
-    var expandButtonPressedAction: ((Bool) -> ())?
-    
+    @IBOutlet weak private var titleLabel: UILabel!
+    @IBOutlet weak private var expandButton: UIButton!
+    @IBOutlet weak private var descriptionTextView: UITextView!
+
+    var expandButtonPressedAction: ((Bool) -> Void)?
+
     var isExpanded = false
+
+    var title: String {
+        set {
+            titleLabel.text = newValue
+        }
+
+        get {
+            return titleLabel.text ?? ""
+        }
+    }
+
+    var descriptionText: String {
+        set {
+            descriptionTextView.text = newValue
+        }
+
+        get {
+            return descriptionTextView.text ?? ""
+        }
+    }
 
     @IBAction func expandButtonPressed(_ sender: Any) {
         isExpanded = !isExpanded
-        if expandButtonPressedAction != nil {
-            expandButtonPressedAction!(isExpanded)
+        if let action = expandButtonPressedAction {
+            action(isExpanded)
         }
         self.setExpandIcon(isExpanded)
     }
-    
+
     func setExpandIcon(_ isExpanded: Bool) {
         if isExpanded {
             expandButton.setImage(#imageLiteral(resourceName: "carret_up"), for: .normal)

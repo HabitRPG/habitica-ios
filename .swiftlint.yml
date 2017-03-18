@@ -28,13 +28,3 @@ type_name:
     error: 50
   excluded: iPhone # excluded via string
 reporter: "emoji"
-
-custom_rules:
-  use_camelcase:
-    included: ".*.swift"
-    name: "use camelCase"
-    regex: "*._*.*$"
-    match_kinds:
-      - parameter
-      - identifier
-    severity: error

@@ -10,9 +10,11 @@ import UIKit
 
 class SubscriptionOptionView: UITableViewCell {
 
+    //swiftlint:disable private_outlet
     @IBOutlet weak var selectionView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    //swiftlint:enable private_outlet
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         let animDuration = 0.3

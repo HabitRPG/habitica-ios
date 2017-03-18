@@ -1891,6 +1891,7 @@
 				356A574454191CCC185C28C2 /* [CP] Copy Pods Resources */,
 				33CD4301B52F7B90A552FAC3 /* 📦 Embed Pods Frameworks */,
 				4A2213241AEC5E5EE392C74C /* 📦 Copy Pods Resources */,
+				D97AEBC81E7D7622007FD4A2 /* Lint */,
 			);
 			buildRules = (
 			);
@@ -2221,6 +2222,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "bin/xcode-build-phase/fabric.sh";
+		};
+		D97AEBC81E7D7622007FD4A2 /* Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Lint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" lint --reporter xcode";
 		};
 /* End PBXShellScriptBuildPhase section */
 

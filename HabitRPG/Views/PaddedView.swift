@@ -14,16 +14,18 @@ class PaddedView: UIView {
     var verticalPadding: CGFloat = 4.0
     var containedView: UIView? {
         willSet(newView) {
-            if (containedView != nil) {
-                containedView?.removeFromSuperview()
+            if let containedView = containedView {
+                containedView.removeFromSuperview()
             }
-            self.addSubview(newView!)
+            if let newView = newView {
+                self.addSubview(newView)
+            }
         }
     }
-    
+
     override func layoutSubviews() {
-        if containedView != nil {
-        containedView!.frame = CGRect(x: horizontalPadding, y: verticalPadding, width: self.frame.size.width-self.horizontalPadding*2, height: self.frame.size.height-self.verticalPadding*2)
+        if let containedView = containedView {
+        containedView.frame = CGRect(x: horizontalPadding, y: verticalPadding, width: self.frame.size.width-self.horizontalPadding*2, height: self.frame.size.height-self.verticalPadding*2)
         }
     }
 
@@ -33,5 +35,5 @@ class PaddedView: UIView {
         }
         return CGSize()
     }
-    
+
 }

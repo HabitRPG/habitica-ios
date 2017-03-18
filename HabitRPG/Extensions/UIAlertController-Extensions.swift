@@ -4,7 +4,7 @@ import UIKit
 import FBSDKLoginKit
 
 public extension UIAlertController {
-    
+
     public static func alert(title: String? = nil,
                              message: String? = nil,
                              handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
@@ -20,10 +20,10 @@ public extension UIAlertController {
                 handler: handler
             )
         )
-        
+
         return alertController
     }
-    
+
     public static func genericError(message: String, title: String = "Error") -> UIAlertController {
         let alertController = UIAlertController(
             title: title.localized,
@@ -37,7 +37,7 @@ public extension UIAlertController {
                 handler: nil
             )
         )
-        
+
         return alertController
     }
 

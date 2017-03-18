@@ -4312,10 +4312,7 @@ and helps keep Habitica running</string>
                                                 <userDefinedRuntimeAttributes>
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="d4N-vO-Oyt" id="aoH-w8-ar5"/>
                                                 </state>
                                             </button>
                                         </subviews>

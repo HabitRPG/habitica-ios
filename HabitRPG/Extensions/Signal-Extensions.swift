@@ -5,5 +5,4 @@ import Result
 
 public extension Signal {
 
-    
 }
