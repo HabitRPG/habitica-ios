@@ -11,6 +11,7 @@ import ReactiveSwift
 import Result
 import AppAuth
 import Keys
+import FBSDKLoginKit
 
 enum LoginViewAuthType {
     case Login
@@ -33,6 +34,7 @@ protocol  LoginViewModelInputs {
     
     func loginButtonPressed()
     func googleLoginButtonPressed()
+    func facebookLoginButtonPressed()
     
     func onSuccessfulLogin()
     
@@ -270,11 +272,28 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             if (authState != nil) {
                 self?.sharedManager?.loginUserSocial("", withNetwork: "google", withAccessToken: authState?.lastTokenResponse?.accessToken, onSuccess: { 
                     self?.onSuccessfulLogin()
-                }, onError: { 
-                    
+                }, onError: {
+                    self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
                 })
             }
         })
+    }
+    
+    private let facebookLoginButtonPressedProperty = MutableProperty(())
+    func facebookLoginButtonPressed() {
+        let fbManager = FBSDKLoginManager()
+        fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: viewController) { [weak self] (result, error) in
+            if error != nil || result?.isCancelled == true {
+                // If there is an error or the user cancelled login
+                
+            } else if let userId = result?.token.userID, let token = result?.token.tokenString {
+                self?.sharedManager?.loginUserSocial(userId, withNetwork: "facebook", withAccessToken: token, onSuccess: {
+                    self?.onSuccessfulLogin()
+                }, onError: {
+                    self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
+                })
+            }
+        }
     }
     
     private let onSuccessfulLoginProperty = MutableProperty(())
