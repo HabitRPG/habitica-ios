@@ -1,6 +1,14 @@
 language: objective-c
 cache: cocoapods
 osx_image: xcode8.2
+install:
+  - rvm install ruby-2.2.2
+  - gem install cocoapods
+  - gem install xcpretty -N
+  - gem install cocoapods-keys -v 1.7.0
+  - brew update
+  - brew install swiftlint || true
+  - pod install
 env:
   global:
     - GoogleClient=123
@@ -17,7 +25,6 @@ env:
     - SDK=iphonesimulator8.4
     - SDK=iphonesimulator9.3
     - SDK=iphonesimulator10.1
-
 script:
   - xctool -workspace Habitica.xcworkspace -scheme Habitica -sdk $SDK ONLY_ACTIVE_ARCH=NO
   - xctool test -workspace Habitica.xcworkspace -scheme HabiticaTests -sdk $SDK ONLY_ACTIVE_ARCH=NO
