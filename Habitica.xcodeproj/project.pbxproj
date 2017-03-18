@@ -479,7 +479,6 @@
 		D958E2AF1915D41400186A08 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D95CBD461BBC0EDA002F4498 /* UIView+Pulse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Pulse.h"; sourceTree = "<group>"; };
 		D95CBD471BBC0EDA002F4498 /* UIView+Pulse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Pulse.m"; sourceTree = "<group>"; };
-		D95D038A1C74A3E100D6BFB3 /* HabitRPG 22.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 22.xcdatamodel"; sourceTree = "<group>"; };
 		D95D038B1C74AA5500D6BFB3 /* Preferences+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Preferences+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D95D038C1C74AA5500D6BFB3 /* Preferences+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Preferences+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D95D038D1C74AA5500D6BFB3 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
@@ -507,7 +506,6 @@
 		D966557318FB129F0014C09D /* HRPGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSettingsViewController.m; sourceTree = "<group>"; };
 		D96760C61B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAbbrevNumberLabel.h; sourceTree = "<group>"; };
 		D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAbbrevNumberLabel.m; sourceTree = "<group>"; };
-		D967756F1C7C819300BF4AAB /* HabitRPG 23.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 23.xcdatamodel"; sourceTree = "<group>"; };
 		D96BFC4B1E181B4A00266EEF /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController-Extensions.swift"; sourceTree = "<group>"; };
 		D96BFC501E1930A500266EEF /* Signal-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Signal-Extensions.swift"; sourceTree = "<group>"; };
@@ -610,7 +608,6 @@
 		D98F5DBF1C6A1DA60035CBEC /* HRPGGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGroupTableViewController.h; sourceTree = "<group>"; };
 		D98F5DC01C6A1DA60035CBEC /* HRPGGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGroupTableViewController.m; sourceTree = "<group>"; };
 		D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMessageCell.xib; sourceTree = "<group>"; };
-		D98F5DC41C6A43D20035CBEC /* HabitRPG 21.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 21.xcdatamodel"; sourceTree = "<group>"; };
 		D98F5DC51C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChatMessageLike+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D98F5DC61C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ChatMessageLike+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D98F5DC71C6A45800035CBEC /* ChatMessageLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageLike.h; sourceTree = "<group>"; };
@@ -774,7 +771,6 @@
 		D9C0E5141C6502C50062C89A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		D9C0E5151C6502FD0062C89A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Main.strings; sourceTree = "<group>"; };
 		D9C0E5161C6503790062C89A /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Main.strings; sourceTree = "<group>"; };
-		D9C0E5171C650D1D0062C89A /* HabitRPG 20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 20.xcdatamodel"; sourceTree = "<group>"; };
 		D9C0E5181C6510B40062C89A /* HRPGPublicGuildsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPublicGuildsViewController.h; sourceTree = "<group>"; };
 		D9C0E5191C6510B40062C89A /* HRPGPublicGuildsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPublicGuildsViewController.m; sourceTree = "<group>"; };
 		D9C0E51D1C6516C50062C89A /* HRPGPublicGuildTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPublicGuildTableViewCell.h; sourceTree = "<group>"; };
@@ -823,7 +819,6 @@
 		D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGRewardTableViewCell.xib; sourceTree = "<group>"; };
 		D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeDetailAlert.xib; sourceTree = "<group>"; };
 		D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailAlert.swift; sourceTree = "<group>"; };
-		D9D197141CA2DEA10006E186 /* HabitRPG 24.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 24.xcdatamodel"; sourceTree = "<group>"; };
 		D9D2172F198D509000023367 /* HRPGDeathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGDeathView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9D21730198D509000023367 /* HRPGDeathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGDeathView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9D44C0F1B0A0C73000732B4 /* HRPGGGuidelinesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGGuidelinesViewController.h; sourceTree = "<group>"; };
@@ -3150,11 +3145,6 @@
 				D9AAABBA1CD8E3B6000FD9E8 /* HabitRPG 27.xcdatamodel */,
 				D9B326771CD969D700973440 /* HabitRPG 26.xcdatamodel */,
 				D94E0AD81CCF9B8800B60210 /* HabitRPG 25.xcdatamodel */,
-				D9D197141CA2DEA10006E186 /* HabitRPG 24.xcdatamodel */,
-				D967756F1C7C819300BF4AAB /* HabitRPG 23.xcdatamodel */,
-				D95D038A1C74A3E100D6BFB3 /* HabitRPG 22.xcdatamodel */,
-				D98F5DC41C6A43D20035CBEC /* HabitRPG 21.xcdatamodel */,
-				D9C0E5171C650D1D0062C89A /* HabitRPG 20.xcdatamodel */,
 			);
 			currentVersion = D9BB45DE1E7B3C950002AE2E /* HabitRPG 39.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;

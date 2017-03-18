@@ -34,5 +34,6 @@
 @dynamic improvementCategories;
 @dynamic pushNotifications;
 @dynamic chair;
+@dynamic allocationMode;
 
 @end

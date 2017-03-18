@@ -61,7 +61,7 @@
         }
     } else {
         if ([self.time compare:[NSDate date]] == NSOrderedDescending) {
-            [self scheduleForDay:nil];
+            [self scheduleForDay:self.time];
         }
     }
 }

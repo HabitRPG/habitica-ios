@@ -95,6 +95,14 @@ float textWidth;
     }
 }
 
+- (BOOL)canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return false;
+}
+
+- (void)deleteItemAtIndexPath:(NSIndexPath *)indexPath {
+    return;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     if (section+1 == [self.dataSource numberOfSections]) {
         UIView *view = [[[NSBundle mainBundle] loadNibNamed:@"ShopAdFooter" owner:self options:nil] lastObject];

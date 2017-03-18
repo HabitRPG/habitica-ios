@@ -402,15 +402,15 @@
 - (User *)setUpClassUserWithClass:(NSString *)className {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"User"
                                               inManagedObjectContext:self.managedObjectContext];
-    User *user = [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    User *user = (User *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
     entity = [NSEntityDescription entityForName:@"Preferences"
                          inManagedObjectContext:self.managedObjectContext];
     user.preferences =
-        [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+        (Preferences *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
     entity = [NSEntityDescription entityForName:@"Outfit"
                          inManagedObjectContext:self.managedObjectContext];
     user.equipped =
-        [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+        (Outfit *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
     user.username = [self.user.username stringByAppendingString:className];
     user.preferences.skin = self.user.preferences.skin;
     user.preferences.hairBangs = self.user.preferences.hairBangs;
