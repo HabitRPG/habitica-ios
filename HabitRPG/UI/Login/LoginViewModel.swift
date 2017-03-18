@@ -306,6 +306,16 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         }
     }
     
+    private let onSuccessfulLoginProperty = MutableProperty(())
+    func onSuccessfulLogin() {
+        self.sharedManager?.setCredentials()
+        self.sharedManager?.fetchUser({[weak self] _ in
+            self?.onSuccessfulLoginProperty.value = ()
+        }, onError: {[weak self] _ in
+            self?.onSuccessfulLoginProperty.value = ()
+        })
+    }
+    
     private var sharedManager: HRPGManager?
     func setSharedManager(sharedManager: HRPGManager?) {
         self.sharedManager = sharedManager

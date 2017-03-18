@@ -222,12 +222,12 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         self.viewModel.inputs.googleLoginButtonPressed()
     }
     
-    func facebookLoginButtonPressed() {
-        self.viewModel.inputs.facebookLoginButtonPressed()
-    }
-    
     func onePasswordButtonPressed() {
         self.viewModel.inputs.onePasswordTapped()
+    }
+    
+    func facebookLoginButtonPressed() {
+        self.viewModel.inputs.facebookLoginButtonPressed()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -74,6 +74,9 @@ class SubscriptionViewController: HRPGBaseViewController {
         self.user = self.sharedManager.getUser()
         
         if let user = self.user {
+            if user.subscriptionPlan == nil {
+                return
+            }
             if user.subscriptionPlan.isActive() {
                 isSubscribed = true
                 restorePurchaseButton.isHidden = true
