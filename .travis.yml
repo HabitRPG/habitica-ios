@@ -1,12 +1,10 @@
 language: objective-c
 cache: cocoapods
-env:
-  - LC_CTYPE=en_US.UTF-8 LANG=en_US.UTF-8
 install:
   - rvm install ruby-2.2.2
   - gem install cocoapods
   - gem install xcpretty -N
-  - gem install cocoapods-keys
+  - gem install cocoapods-keys -v 1.7.0
   - brew update
   - brew install swiftlint || true
   - pod install
