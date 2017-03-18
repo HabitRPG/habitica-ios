@@ -553,7 +553,7 @@
 
 - (NSArray *)getCustomizationsWithPredicate:(NSPredicate *)predicate {
     if (self.managedObjectContext == nil) {
-        return;
+        return [[NSArray alloc] init];
     }
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Customization"
