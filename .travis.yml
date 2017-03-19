@@ -30,5 +30,5 @@ env:
     - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=10.2"
 script:
   - set -o pipefail
-  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" test ONLY_ACTIVE_ARCH=NO | xcpretty -f `xcpretty-travis-formatter`
+  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator10.2 test ONLY_ACTIVE_ARCH=NO | xcpretty -c
   - swiftlint
