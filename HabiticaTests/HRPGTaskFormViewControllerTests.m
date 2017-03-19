@@ -47,7 +47,7 @@
     //then
     UITableView *tableView = self.viewController.tableView;
     XLFormDescriptor *formDescriptor = self.viewController.form;
-    XCTAssertEqual([tableView numberOfRowsInSection:0], 4);
+    XCTAssertEqual([tableView numberOfRowsInSection:0], 3);
     XCTAssertEqual(tableView.numberOfSections, 3);
     XCTAssert([((XLFormSectionDescriptor*)formDescriptor.formSections[1]).title isEqualToString:@"Actions"]);
 }
@@ -62,7 +62,7 @@
     //then
     UITableView *tableView = self.viewController.tableView;
     XCTAssertEqual(tableView.numberOfSections, 5);
-    XCTAssertEqual([tableView numberOfRowsInSection:0], 5);
+    XCTAssertEqual([tableView numberOfRowsInSection:0], 4);
     XCTAssertEqual([tableView numberOfRowsInSection:2], 8);
 }
 
@@ -76,7 +76,7 @@
     //then
     UITableView *tableView = self.viewController.tableView;
     XCTAssertEqual(tableView.numberOfSections, 5);
-    XCTAssertEqual([tableView numberOfRowsInSection:0], 4);
+    XCTAssertEqual([tableView numberOfRowsInSection:0], 3);
 }
 
 - (void) testThatItCreatesEditFormForHabits {
