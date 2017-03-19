@@ -5,6 +5,7 @@ install:
   - rvm install ruby-2.2.2
   - gem install cocoapods
   - gem install xcpretty -N
+  - gem install xcpretty-travis-formatter
   - gem install cocoapods-keys -v 1.7.0
   - brew update
   - brew install swiftlint || true
@@ -24,10 +25,10 @@ env:
     - SeedsDevShareInterstitial=123
     - ItunesSharedSecret=123
   matrix:
-    - DESTINATION='platform=iOS Simulator,name=iPhone 6,OS=8.4'
-    - DESTINATION='platform=iOS Simulator,name=iPhone 6,OS=9.3'
-    - DESTINATION='platform=iOS Simulator,name=iPhone 6,OS=10.2'
+    - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=8.4"
+    - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=9.3"
+    - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=10.2"
 script:
   - set -o pipefail
-  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination $DESTINATION test ONLY_ACTIVE_ARCH=NO | xcpretty -c
+  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination $DESTINATION test ONLY_ACTIVE_ARCH=NO | xcpretty -f `xcpretty-travis-formatter`
   - swiftlint
