@@ -17,9 +17,16 @@
 #import <CoreSpotlight/CoreSpotlight.h>
 #import "HRPGAppDelegate.h"
 
+@interface Task ()
+
+@property BOOL observesCompleted;
+
+@end
+
 @implementation Task
 
 @synthesize currentlyChecking;
+@synthesize observesCompleted;
 
 - (void)addChecklistObject:(ChecklistItem *)value {
     NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.checklist];
@@ -259,6 +266,7 @@
 }
 
 - (void)observeCompleted {
+    self.observesCompleted = YES;
     [self addObserver:self
            forKeyPath:@"completed"
               options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew)
@@ -290,7 +298,10 @@
 }
 
 - (void)willTurnIntoFault {
-    [self removeObserver:self forKeyPath:@"completed"];
+    if (self.observesCompleted) {
+        [self removeObserver:self forKeyPath:@"completed"];
+        self.observesCompleted = NO;
+    }
 }
 
 

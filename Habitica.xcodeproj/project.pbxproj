@@ -111,6 +111,8 @@
 		D96C85451DCBAC90003E3616 /* HRPGStreakAchievementNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D96C85441DCBAC90003E3616 /* HRPGStreakAchievementNotification.m */; };
 		D96C85481DCCD8BC003E3616 /* UIWindow+VisibleController.m in Sources */ = {isa = PBXBuildFile; fileRef = D96C85471DCCD8BC003E3616 /* UIWindow+VisibleController.m */; };
 		D96C86CB1BB0546400E4C134 /* HRPGCopyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96C86CA1BB0546400E4C134 /* HRPGCopyLabel.m */; };
+		D9709A4E1E7F13330005F35B /* ChallengeTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9709A4D1E7F13330005F35B /* ChallengeTableViewControllerTests.swift */; };
+		D9709A501E7F17150005F35B /* TaskDetailLineViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9709A4F1E7F17150005F35B /* TaskDetailLineViewTests.swift */; };
 		D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */; };
 		D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */; };
 		D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */ = {isa = PBXBuildFile; fileRef = D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */; };
@@ -519,6 +521,8 @@
 		D96C85471DCCD8BC003E3616 /* UIWindow+VisibleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+VisibleController.m"; sourceTree = "<group>"; };
 		D96C86C91BB0546400E4C134 /* HRPGCopyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCopyLabel.h; sourceTree = "<group>"; };
 		D96C86CA1BB0546400E4C134 /* HRPGCopyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCopyLabel.m; sourceTree = "<group>"; };
+		D9709A4D1E7F13330005F35B /* ChallengeTableViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewControllerTests.swift; sourceTree = "<group>"; };
+		D9709A4F1E7F17150005F35B /* TaskDetailLineViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailLineViewTests.swift; sourceTree = "<group>"; };
 		D9722B1819B7AEA1009D8AD3 /* HRPGNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGNewsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGNewsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9722B7E19BD041E009D8AD3 /* HRPGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGNavigationController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -1115,6 +1119,8 @@
 		D957043A1E151BE5004F6804 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D9709A4C1E7F130F0005F35B /* Challenges */,
+				D9709A481E7F00320005F35B /* Tasks */,
 				D957043B1E151BF7004F6804 /* Login */,
 			);
 			path = UI;
@@ -1159,6 +1165,22 @@
 				D905D0891DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m */,
 			);
 			path = Notifications;
+			sourceTree = "<group>";
+		};
+		D9709A481E7F00320005F35B /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				D9709A4F1E7F17150005F35B /* TaskDetailLineViewTests.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		D9709A4C1E7F130F0005F35B /* Challenges */ = {
+			isa = PBXGroup;
+			children = (
+				D9709A4D1E7F13330005F35B /* ChallengeTableViewControllerTests.swift */,
+			);
+			path = Challenges;
 			sourceTree = "<group>";
 		};
 		D979AD171AF3E69800D59FAE /* Customizations */ = {
@@ -2257,6 +2279,8 @@
 				D95704471E153767004F6804 /* TestObserver.swift in Sources */,
 				D946E5C21B30A89500806BE6 /* NSDAte+NSDateMock.m in Sources */,
 				D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */,
+				D9709A501E7F17150005F35B /* TaskDetailLineViewTests.swift in Sources */,
+				D9709A4E1E7F13330005F35B /* ChallengeTableViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,13 +15,13 @@ class TaskDetailLineView: UIView {
     private static let spacing: CGFloat = 12
     private static let iconSize: CGFloat = 18
 
-    @IBOutlet weak private var calendarIconView: UIImageView!
-    @IBOutlet weak private var detailLabel: UILabel!
-    @IBOutlet weak private var streakIconView: UIImageView!
-    @IBOutlet weak private var streakLabel: UILabel!
-    @IBOutlet weak private var challengeIconView: UIImageView!
-    @IBOutlet weak private var reminderIconView: UIImageView!
-    @IBOutlet weak private var tagIconView: UIImageView!
+    @IBOutlet weak var calendarIconView: UIImageView!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var streakIconView: UIImageView!
+    @IBOutlet weak var streakLabel: UILabel!
+    @IBOutlet weak var challengeIconView: UIImageView!
+    @IBOutlet weak var reminderIconView: UIImageView!
+    @IBOutlet weak var tagIconView: UIImageView!
 
     @IBOutlet weak private var calendarIconViewWidth: NSLayoutConstraint!
     @IBOutlet weak private var streakIconViewWidth: NSLayoutConstraint!
@@ -178,6 +178,7 @@ class TaskDetailLineView: UIView {
 
     private func setLastCompleted(task: Task) {
         //Removed because storing task history was causing sync issues
+        detailLabel.isHidden = true
     }
 
     private func setChallenge(enabled: Bool) {

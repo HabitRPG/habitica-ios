@@ -15,3 +15,5 @@
 #import "ChecklistItem.h"
 #import "HRPGCheckBoxView.h"
 #import "HRPGHabitButtons.h"
+#import "Reminder.h"
+#import "Tag.h"

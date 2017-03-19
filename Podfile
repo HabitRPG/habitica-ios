@@ -60,6 +60,7 @@ target 'Habitica' do
   target 'HabiticaTests' do
       inherit! :search_paths
       pod 'OHHTTPStubs'    
+      pod 'Nimble', '~> 6.0.0'
       pod 'FBSnapshotTestCase', :git => 'https://github.com/alanzeino/ios-snapshot-test-case.git', :commit => 'f97dd8e423a382eb61387564120e56a69bc98285'
   end
 end
