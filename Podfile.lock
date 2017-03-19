@@ -165,7 +165,7 @@ DEPENDENCIES:
   - EAIntroView
   - FBSDKCoreKit (~> 4)
   - FBSDKLoginKit (~> 4)
-  - FBSnapshotTestCase
+  - FBSnapshotTestCase (from `https://github.com/alanzeino/ios-snapshot-test-case.git`, commit `f97dd8e423a382eb61387564120e56a69bc98285`)
   - FLEX (~> 2.0)
   - FontAwesomeIconFactory
   - Google/Analytics
@@ -196,6 +196,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/vIiRuS/CargoBay.git
   CRToast:
     :git: https://github.com/cruffenach/CRToast
+  FBSnapshotTestCase:
+    :commit: f97dd8e423a382eb61387564120e56a69bc98285
+    :git: https://github.com/alanzeino/ios-snapshot-test-case.git
   Keys:
     :path: Pods/CocoaPodsKeys
   PopupDialog:
@@ -215,6 +218,9 @@ CHECKOUT OPTIONS:
   CRToast:
     :commit: fea2562333505d41291e2bc8262518c63a257446
     :git: https://github.com/cruffenach/CRToast
+  FBSnapshotTestCase:
+    :commit: f97dd8e423a382eb61387564120e56a69bc98285
+    :git: https://github.com/alanzeino/ios-snapshot-test-case.git
   PopupDialog:
     :commit: 4015f15eb0aa01c15d3b112f3e61755fdce1aaec
     :git: https://github.com/Orderella/PopupDialog.git
@@ -275,6 +281,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: b1afbb921342de0843a763ccf5c91edb08dc5293
+PODFILE CHECKSUM: bf652b3cc095f85721d64c0f9bba6480980b5b35
 
 COCOAPODS: 1.2.0
