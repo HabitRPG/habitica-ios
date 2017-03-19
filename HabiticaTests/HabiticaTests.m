@@ -19,6 +19,10 @@
 - (void) setUpStubs {
 }
 
+- (void)setUp {
+    [super setUp];
+}
+
 - (void)initializeCoreDataStorage {
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:@"com.habitrpg.ios.Habitica"];
     

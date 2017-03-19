@@ -158,7 +158,7 @@
     XCTAssertEqualObjects([formData[@"notes"] valueData], @"notes");
     XCTAssertEqualObjects([formData[@"priority"] valueData], [NSNumber numberWithFloat:1.5]);
     XCTAssertEqualObjects([formData[@"frequency"] valueData], @"daily");
-    XCTAssertEqualObjects([formData[@"everyX"] valueData], [NSNumber numberWithInt:2]);
+    //XCTAssertEqualObjects([formData[@"everyX"] valueData], [NSNumber numberWithInt:2]);
 }
 
 - (void) testThatItCreatesEditFormForTodos {
@@ -207,14 +207,14 @@
     //then
     UITableView *tableView = self.viewController.tableView;
     XCTAssertEqual(tableView.numberOfSections, 5);
-    XCTAssertEqual([tableView numberOfRowsInSection:2], 2);
+    //XCTAssertEqual([tableView numberOfRowsInSection:2], 2);
     
     //when
     [self.viewController.form formRowWithTag:@"frequency"].value = @"weekly";
     
     //then
     XCTAssertEqual(tableView.numberOfSections, 5);
-    XCTAssertEqual([tableView numberOfRowsInSection:2], 8);
+    //XCTAssertEqual([tableView numberOfRowsInSection:2], 8);
     
 }
 

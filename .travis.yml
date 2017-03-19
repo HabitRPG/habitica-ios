@@ -1,18 +1,35 @@
 language: objective-c
-rvm: 2.2.2
 cache: cocoapods
-before_install:
-  - gem install cocoapods -v '>= 1.0.0.beta' --no-rdoc --no-ri --no-document
-  - pod setup
-matrix:
- include:
-  - osx_image: xcode6.1
-    env: SDK=iphonesimulator7.1
-  - osx_image: xcode6.4
-    env: SDK=iphonesimulator8.4
-  - osx_image: xcode7.3
-    env: SDK=iphonesimulator9.3
-
+osx_image: xcode8.2
+install:
+  - rvm install ruby-2.2.2
+  - gem install cocoapods
+  - gem install xcpretty -N
+  - gem install xcpretty-travis-formatter
+  - gem install cocoapods-keys -v 1.7.0
+  - brew update
+  - brew install swiftlint || true
+  - brew upgrade swiftlint || true
+  - pod repo update
+  - pod install
+env:
+  global:
+    - GoogleClient=123
+    - GoogleRedirectUrl=123
+    - AmplitudeApiKey=123
+    - SeedsDevApiKey=123
+    - SeedsReleaseApiKey=123
+    - SeedsDevGemsInterstitial=123
+    - SeedsReleaseGemsInterstitial=123
+    - SeedsReleaseShareInterstitial=123
+    - SeedsDevShareInterstitial=123
+    - ItunesSharedSecret=123
+    - FB_REFERENCE_IMAGE_DIR="./ReferenceImages_32"
+  matrix:
+    - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=8.4"
+    - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=9.3"
+    - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=10.1"
 script:
-  - xctool -workspace Habitica.xcworkspace -scheme Habitica -sdk $SDK ONLY_ACTIVE_ARCH=NO
-  - xctool test -workspace Habitica.xcworkspace -scheme HabiticaTests -sdk $SDK ONLY_ACTIVE_ARCH=NO
+  - set -o pipefail
+  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator10.2 test ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
+  - swiftlint
