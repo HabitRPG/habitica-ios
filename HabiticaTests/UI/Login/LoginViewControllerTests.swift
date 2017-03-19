@@ -25,7 +25,7 @@ class LoginViewControllerTests: HabiticaTests {
         let _ = self.loginViewController?.view
         self.loginViewController?.bindViewModel()
         
-        self.recordMode = true
+        self.recordMode = false
     }
     
     override func tearDown() {
