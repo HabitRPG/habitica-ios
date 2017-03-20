@@ -33,4 +33,5 @@ script:
   - set -o pipefail
   - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator10.2 clean build build-for-testing ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
   - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator10.2 test-without-building ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
+  - find /Users/travis/Library/Developer/Xcode/DerivedData/Habitica* -type f | grep "Logs/Test" | grep -i ".log" | xargs cat {}
   - swiftlint
