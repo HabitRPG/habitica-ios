@@ -1,5 +1,5 @@
 disabled_rules:
-  - private_outlets
+  - private_outlet
 opt_in_rules:
   - attributes
   - conditional_returns_on_newline
