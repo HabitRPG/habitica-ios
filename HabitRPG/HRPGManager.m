@@ -209,7 +209,8 @@ NSString *currentUser;
         @"startDate" : @"startDate",
         @"challenge.id" : @"challengeID",
         @"daysOfMonth" : @"daysOfMonth",
-        @"weekOfMonth" : @"weekOfMonth"
+        @"weeksOfMonth" : @"weeksOfMonth",
+        @"isDue": @"isDue"
     }];
     taskMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping *checklistItemMapping =
@@ -277,7 +278,7 @@ NSString *currentUser;
         @"frequency" : @"frequency",
         @"startDate" : @"startDate",
         @"daysOfMonth" : @"daysOfMonth",
-        @"weekOfMonth" : @"weekOfMonth"
+        @"weeksOfMonth" : @"weeksOfMonth"
     }];
     RKObjectMapping *checklistItemRequestMapping =
         [RKObjectMapping mappingForClass:[NSMutableDictionary class]];

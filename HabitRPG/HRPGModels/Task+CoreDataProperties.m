@@ -45,5 +45,5 @@
 @dynamic reminders;
 @dynamic tags;
 @dynamic user;
-
+@dynamic isDue;
 @end

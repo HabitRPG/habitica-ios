@@ -21,8 +21,9 @@
 @property(nonatomic) XLFormSectionDescriptor *duedateSection;
 @property NSInteger customDayStart;
 @property(nonatomic, strong) NSString *allocationMode;
+@property TaskRepeatablesSummaryInteractor *summaryInteractor;
 
-@property BOOL enableRepeatables;
+@property(nonatomic) NSNumber *enableRepeatables;
 @end
 
 @implementation HRPGFormViewController
@@ -37,6 +38,7 @@
         self.allocationMode = user.preferences.allocationMode;
         self.customDayStart = [user.preferences.dayStart integerValue];
         self.managedObjectContext = sharedManager.getManagedObjectContext;
+        self.summaryInteractor = [[TaskRepeatablesSummaryInteractor alloc] init];
         [self initializeForm];
     }
     return self;
@@ -44,8 +46,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    ConfigRepository *configRepository = [[ConfigRepository alloc] init];
-    self.enableRepeatables = [configRepository boolWithVariable:ConfigVariableEnableRepeatables];
     if (!self.formFilled) {
         [self fillForm];
     }
@@ -184,7 +184,7 @@
         row.value = date;
         [section addFormRow:row];
 
-        if (self.enableRepeatables) {
+        if ([self.enableRepeatables boolValue]) {
             section = [XLFormSectionDescriptor formSectionWithTitle:@""];
             [self.form addFormSection:section];
             row = [XLFormRowDescriptor formRowDescriptorWithTag:@"frequency"
@@ -198,7 +198,7 @@
                                      formOptionsObjectWithValue:@"weekly"
                                      displayText:NSLocalizedString(@"Weekly", nil)],
                                     [XLFormOptionsObject
-                                     formOptionsObjectWithValue:@"monthlly"
+                                     formOptionsObjectWithValue:@"monthly"
                                      displayText:NSLocalizedString(@"Monthly", nil)],
                                     [XLFormOptionsObject
                                      formOptionsObjectWithValue:@"yearly"
@@ -213,9 +213,10 @@
             
             row = [XLFormRowDescriptor
                    formRowDescriptorWithTag:@"everyX"
-                   rowType:XLFormRowDescriptorTypeInteger
+                   rowType:XLFormRowDescriptorTypeStepCounter
                    title:NSLocalizedString(@"Repeat every", nil)];
             [section addFormRow:row];
+            [self setFrequencyRows:@"weekly" fromOldValue:nil];
         } else {
             [self setOldDailyOptions];
         }
@@ -345,6 +346,7 @@
     if ([self.taskType isEqualToString:@"daily"]) {
         [self.form formRowWithTag:@"startDate"].value = self.task.startDate;
         [self.form formRowWithTag:@"frequency"].value = self.task.frequency;
+        [self.form formRowWithTag:@"everyX"].value = self.task.everyX;
     }
 
     if ([self.taskType isEqualToString:@"todo"]) {
@@ -525,6 +527,20 @@
                 self.task.attribute = value.valueData;
                 continue;
             }
+            if ([key isEqualToString:@"repeatsOn"]) {
+                XLFormOptionsObject *value = formValues[key];
+                NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitWeekOfMonth fromDate:((XLFormOptionsObject *)formValues[@"startDate"]).valueData];
+                NSMutableSet *daysOfMonth = [[NSMutableSet alloc] init];
+                NSMutableSet *weeksOfMonth = [[NSMutableSet alloc] init];
+                if ([value.valueData isEqualToString:@"daysOfMonth"]) {
+                    [daysOfMonth addObject:[NSNumber numberWithInteger:components.day]];
+                } else {
+                    [weeksOfMonth addObject:[NSNumber numberWithInteger:components.weekOfMonth]];
+                }
+                self.task.daysOfMonth = daysOfMonth;
+                self.task.weeksOfMonth = weeksOfMonth;
+                continue;
+            }
             [self.task setValue:formValues[key] forKeyPath:key];
         }
         self.task.tagArray = tagArray;
@@ -547,12 +563,17 @@
             [self.form removeFormRowWithTag:@"duedate"];
         }
     } else if ([formRow.tag isEqualToString:@"frequency"]) {
-        if (self.enableRepeatables) {
-            
+        if ([self.enableRepeatables boolValue]) {
+            if ([[oldValue class] isSubclassOfClass:[XLFormOptionsObject class]]) {
+                [self setFrequencyRows:[formRow.value valueData] fromOldValue:((XLFormOptionsObject *)oldValue).formValue];
+            } else {
+                [self setFrequencyRows:[formRow.value valueData] fromOldValue:oldValue];
+            }
         } else {
             [self setOldFrequencyRows:[formRow.value valueData]];
         }
     }
+    [self.tableView footerViewForSection:2].textLabel.text = [self tableView:self.tableView titleForFooterInSection:2];
 }
 
 - (void)formRowHasBeenAdded:(XLFormRowDescriptor *)formRow atIndexPath:(NSIndexPath *)indexPath {
@@ -566,6 +587,102 @@
 
 - (void)setFrequencyRows:(NSString *)frequencyType {
 
+}
+
+- (void)setFrequencyRows:(NSString *)frequencyType fromOldValue:(NSString *)oldFrequencyType {
+    if ([frequencyType isEqualToString:oldFrequencyType]) {
+        return;
+    }
+    XLFormSectionDescriptor *section = [self.form formSectionAtIndex:2];
+    if ([oldFrequencyType isEqualToString:@"weekly"]) {
+        [section removeFormRowAtIndex:7];
+        [section removeFormRowAtIndex:7];
+        [section removeFormRowAtIndex:6];
+        [section removeFormRowAtIndex:5];
+        [section removeFormRowAtIndex:4];
+        [section removeFormRowAtIndex:3];
+        [section removeFormRowAtIndex:2];
+    } else if ([oldFrequencyType isEqualToString:@"monthly"]) {
+        [section removeFormRowAtIndex:2];
+    }
+    
+    if ([frequencyType isEqualToString:@"weekly"]) {
+        XLFormRowDescriptor *row =
+        [XLFormRowDescriptor formRowDescriptorWithTag:@"monday"
+                                              rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                title:NSLocalizedString(@"Monday", nil)];
+        row.value = @YES;
+        [section addFormRow:row];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"tuesday"
+                                                    rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                      title:NSLocalizedString(@"Tuesday", nil)];
+        row.value = @YES;
+        [section addFormRow:row];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"wednesday"
+                                                    rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                      title:NSLocalizedString(@"Wednesday", nil)];
+        row.value = @YES;
+        [section addFormRow:row];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"thursday"
+                                                    rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                      title:NSLocalizedString(@"Thursday", nil)];
+        row.value = @YES;
+        [section addFormRow:row];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"friday"
+                                                    rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                      title:NSLocalizedString(@"Friday", nil)];
+        row.value = @YES;
+        [section addFormRow:row];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"saturday"
+                                                    rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                      title:NSLocalizedString(@"Saturday", nil)];
+        row.value = @YES;
+        [section addFormRow:row];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"sunday"
+                                                    rowType:XLFormRowDescriptorTypeBooleanCheck
+                                                      title:NSLocalizedString(@"Sunday", nil)];
+        row.value = @YES;
+        [section addFormRow:row];
+        if (self.editTask) {
+            [self.form formRowWithTag:@"monday"].value = self.task.monday;
+            [self.form formRowWithTag:@"tuesday"].value = self.task.tuesday;
+            [self.form formRowWithTag:@"wednesday"].value = self.task.wednesday;
+            [self.form formRowWithTag:@"thursday"].value = self.task.thursday;
+            [self.form formRowWithTag:@"friday"].value = self.task.friday;
+            [self.form formRowWithTag:@"saturday"].value = self.task.saturday;
+            [self.form formRowWithTag:@"sunday"].value = self.task.sunday;
+        }
+    } else if ([frequencyType isEqualToString:@"monthly"]) {
+        XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"repeatsOn"
+                                                    rowType:XLFormRowDescriptorTypeSelectorPush
+                                                      title:NSLocalizedString(@"RepeatsOn", nil)];
+        row.selectorOptions = @[
+                                [XLFormOptionsObject
+                                 formOptionsObjectWithValue:@"daysOfMonth"
+                                 displayText:NSLocalizedString(@"Day of the Month", nil)],
+                                [XLFormOptionsObject
+                                 formOptionsObjectWithValue:@"weeksOfMonth"
+                                 displayText:NSLocalizedString(@"Week of the Month", nil)]
+                                ];
+        row.required = YES;
+        row.selectorTitle = NSLocalizedString(@"Repeats On", nil);
+        if (self.editTask) {
+            if (self.task.weeksOfMonth.count > 0) {
+                row.value =
+                [XLFormOptionsObject formOptionsObjectWithValue:@"weeksOfMonth"
+                                                    displayText:NSLocalizedString(@"Week of the Month", nil)];
+            } else {
+                row.value =
+                [XLFormOptionsObject formOptionsObjectWithValue:@"daysOfMonth"
+                                                    displayText:NSLocalizedString(@"Day of the Month", nil)];
+            }
+        } else{
+            row.value =
+            [XLFormOptionsObject formOptionsObjectWithValue:@"daysOfMonth"
+                                                displayText:NSLocalizedString(@"Day of the Month", nil)];
+        }
+        [section addFormRow:row];
+    }
 }
 
 - (void)setOldFrequencyRows:(NSString *)frequencyType {
@@ -645,12 +762,32 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if ([self.taskType isEqualToString:@"daily"]) {
+        if (section == 2) {
+            NSDictionary<NSString *, XLFormOptionsObject *> *values = [self.form formValues];
+            NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitWeekOfMonth fromDate:values[@"startDate"].valueData];
+            NSMutableSet *daysOfMonth = [[NSMutableSet alloc] init];
+            NSMutableSet *weeksOfMonth = [[NSMutableSet alloc] init];
+            if ([values[@"repeatsOn"].valueData isEqualToString:@"daysOfMonth"]) {
+                [daysOfMonth addObject:[NSNumber numberWithInteger:components.day]];
+            } else {
+                [weeksOfMonth addObject:[NSNumber numberWithInteger:components.weekOfMonth]];
+            }
+            return [self.summaryInteractor repeatablesSummaryWithFrequency:values[@"frequency"].valueData everyX:values[@"everyX"].valueData monday:values[@"monday"].valueData tuesday:values[@"tuesday"].valueData wednesday:values[@"wednesday"].valueData thursday:values[@"thursday"].valueData friday:values[@"friday"].valueData saturday:values[@"saturday"].valueData sunday:values[@"sunday"].valueData startDate:values[@"startDate"].valueData daysOfMonth:daysOfMonth weeksOfMonth:weeksOfMonth];
+        }
         if (section == 3) {
             return NSLocalizedString(@"Each reminder notifies on the days the daily is active.",
                                      nil);
         }
     }
     return nil;
+}
+
+- (NSNumber *)enableRepeatables {
+    if (_enableRepeatables == nil) {
+        ConfigRepository *configRepository = [[ConfigRepository alloc] init];
+        _enableRepeatables = [NSNumber numberWithBool: [configRepository boolWithVariable:ConfigVariableEnableRepeatables]];
+    }
+    return _enableRepeatables;
 }
 
 @end

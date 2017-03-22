@@ -19,7 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *challengeID;
 @property (nullable, nonatomic, copy) NSNumber *completed;
 @property (nullable, nonatomic, copy) NSDate *dateCreated;
-@property (nullable, nonatomic, copy) NSNumber *daysOfMonth;
 @property (nullable, nonatomic, copy) NSNumber *down;
 @property (nullable, nonatomic, copy) NSDate *duedate;
 @property (nullable, nonatomic, copy) NSNumber *everyX;
@@ -41,11 +40,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSNumber *up;
 @property (nullable, nonatomic, copy) NSNumber *value;
 @property (nullable, nonatomic, copy) NSNumber *wednesday;
-@property (nullable, nonatomic, copy) NSNumber *weeksOfMonth;
 @property (nullable, nonatomic, retain) NSOrderedSet<ChecklistItem *> *checklist;
 @property (nullable, nonatomic, retain) NSOrderedSet<Reminder *> *reminders;
 @property (nullable, nonatomic, retain) NSSet<Tag *> *tags;
 @property (nullable, nonatomic, retain) User *user;
+@property (nullable, nonatomic, retain) NSSet<NSNumber *> *daysOfMonth;
+@property (nullable, nonatomic, retain) NSSet<NSNumber *> *weeksOfMonth;
+@property (nullable, nonatomic, copy) NSNumber *isDue;
 
 @end
 

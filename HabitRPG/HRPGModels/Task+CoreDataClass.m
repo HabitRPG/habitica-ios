@@ -41,10 +41,16 @@
 }
 
 - (BOOL)dueToday {
+    if (self.isDue) {
+        return [self.isDue boolValue];
+    }
     return [self dueOnDate:[NSDate date] withOffset:0];
 }
 
 - (BOOL)dueTodayWithOffset:(NSInteger)offset {
+    if (self.isDue) {
+        return [self.isDue boolValue];
+    }
     return [self dueOnDate:[NSDate date] withOffset:offset];
 }
 
@@ -304,5 +310,8 @@
     }
 }
 
+- (BOOL)allWeekdaysInactive {
+    return ![self.monday boolValue] && ![self.tuesday boolValue] && ![self.wednesday boolValue] && ![self.thursday boolValue] && ![self.friday boolValue] && ![self.saturday boolValue] && ![self.sunday boolValue];
+}
 
 @end
