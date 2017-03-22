@@ -16,6 +16,7 @@
 #import "UIColor+Habitica.h"
 #import "UIViewController+Markdown.h"
 #import "NSString+Emoji.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGGroupTableViewController ()
 @property NSString *replyMessage;
@@ -141,9 +142,9 @@
     }
     if (section == 0) {
         if ([self listMembers]) {
-            return 2;
+            return 3;
         } else {
-            return 1;
+            return 2;
         }
     } else if (section == [self chatSectionIndex] - 1) {
         return 1;
@@ -198,7 +199,7 @@
             [self performSegueWithIdentifier:@"GuidelinesSegue" sender:self];
         }
     } else if (indexPath.section == 0) {
-        if (indexPath.item == 1) {
+        if (indexPath.item == 1 && self.listMembers) {
             [self performSegueWithIdentifier:@"MembersSegue" sender:self];
         }
     }
@@ -211,8 +212,10 @@
         cellname = @"LoadingCell";
     } else if (indexPath.section == 0 && indexPath.item == 0) {
         cellname = @"AboutCell";
-    } else if (indexPath.section == 0 && indexPath.item == 1) {
+    } else if (indexPath.section == 0 && indexPath.item == 1 && self.listMembers) {
         cellname = @"MembersCell";
+    } else if (indexPath.section == 0) {
+        cellname = @"ChallengeCell";
     } else if (indexPath.section == [self chatSectionIndex] - 1) {
         cellname = @"ComposeCell";
     } else if (indexPath.section == [self chatSectionIndex]) {
@@ -359,6 +362,10 @@
         HRPGGroupAboutTableViewController *aboutViewController = segue.destinationViewController;
         aboutViewController.isLeader = [self.group.leader.id isEqualToString:self.user.id];
         aboutViewController.group = self.group;
+    } else if ([segue.identifier isEqualToString:@"ChallengeSegue"]) {
+        ChallengeTableViewController *viewController = segue.destinationViewController;
+        viewController.shownGuilds = @[self.groupID];
+        viewController.showOnlyUserChallenges = NO;
     }
 }
 

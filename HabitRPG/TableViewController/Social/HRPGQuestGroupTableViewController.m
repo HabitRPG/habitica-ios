@@ -89,7 +89,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 1) {
+    if ([self isQuestSection:section]) {
         return NSLocalizedString(@"Quest", nil);
     } else {
         return [super tableView:tableView titleForHeaderInSection:section];

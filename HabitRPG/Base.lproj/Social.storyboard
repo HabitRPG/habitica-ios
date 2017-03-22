@@ -71,7 +71,7 @@
         <scene sceneID="Bi9-YF-GrW">
             <objects>
                 <navigationController id="jza-oe-b8O" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Mt7-2s-336">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mt7-2s-336">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -87,7 +87,7 @@
         <scene sceneID="p7g-2a-sQ3">
             <objects>
                 <navigationController id="hQu-VZ-lTI" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="54r-sm-b3w">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="54r-sm-b3w">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -478,6 +478,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="BE2-xn-Wwl" kind="show" identifier="ChallengeSegue" id="Jab-rS-wPn"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -785,6 +788,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="BE2-xn-Wwl" kind="show" identifier="ChallengeSegue" id="VPE-S9-CFY"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AboutCell" textLabel="nEX-pd-oIw" style="IBUITableViewCellStyleDefault" id="7N9-uP-ACw">
                                 <rect key="frame" x="0.0" y="525" width="375" height="44"/>
@@ -971,7 +977,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <scene sceneID="amF-HH-oTT">
             <objects>
                 <navigationController id="qu8-iE-4IX" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TVx-i3-Nky">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TVx-i3-Nky">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1122,6 +1128,9 @@ Invite friends now to earn a Quest Scroll!</string>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="BE2-xn-Wwl" kind="show" identifier="ChallengeSegue" id="vfM-rh-2w8"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComposeCell" textLabel="FhD-If-CW1" style="IBUITableViewCellStyleDefault" id="QTk-SC-ubY">
                                 <rect key="frame" x="0.0" y="188" width="375" height="44"/>
@@ -1491,7 +1500,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <scene sceneID="gY1-P4-oJL">
             <objects>
                 <navigationController id="Jki-T5-YYo" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P6Z-Sa-pCR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="P6Z-Sa-pCR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1744,25 +1753,25 @@ Invite friends now to earn a Quest Scroll!</string>
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UW2-4B-VmD">
-                                            <rect key="frame" x="266" y="8" width="46" height="43"/>
+                                            <rect key="frame" x="265" y="8" width="47" height="43"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BC2-y5-4ct">
-                                            <rect key="frame" x="211" y="8" width="47" height="43"/>
+                                            <rect key="frame" x="210" y="8" width="47" height="43"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYf-YU-rBc">
-                                            <rect key="frame" x="156" y="8" width="47" height="43"/>
+                                            <rect key="frame" x="155" y="8" width="47" height="43"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jL-2P-CX4">
-                                            <rect key="frame" x="8" y="8" width="140" height="43"/>
+                                            <rect key="frame" x="8" y="8" width="139" height="43"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -1815,25 +1824,25 @@ Invite friends now to earn a Quest Scroll!</string>
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjI-Lf-q1I">
-                                            <rect key="frame" x="266" y="8" width="46" height="43"/>
+                                            <rect key="frame" x="265" y="8" width="47" height="43"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGe-8Z-aDa">
-                                            <rect key="frame" x="211" y="8" width="47" height="43"/>
+                                            <rect key="frame" x="210" y="8" width="47" height="43"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbO-Mk-igC">
-                                            <rect key="frame" x="156" y="8" width="47" height="43"/>
+                                            <rect key="frame" x="155" y="8" width="47" height="43"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attributes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="325-ui-y7c">
-                                            <rect key="frame" x="8" y="8" width="140" height="43"/>
+                                            <rect key="frame" x="8" y="8" width="139" height="43"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -2037,7 +2046,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <scene sceneID="ABN-Ii-mA7">
             <objects>
                 <navigationController storyboardIdentifier="questInvitationNavigationController" definesPresentationContext="YES" id="vpY-l5-lSn" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7pG-ma-iGW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7pG-ma-iGW">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2428,7 +2437,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <scene sceneID="aUa-L4-h0K">
             <objects>
                 <navigationController storyboardIdentifier="MessageViewController" definesPresentationContext="YES" id="dI6-k2-5eY" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1JH-f4-g6g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1JH-f4-g6g">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2500,14 +2509,15 @@ Invite friends now to earn a Quest Scroll!</string>
         <image name="pillGryphon" width="14" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EV0-ra-m7s"/>
-        <segue reference="kns-o3-fej"/>
+        <segue reference="Jab-rS-wPn"/>
         <segue reference="CPW-wy-yYL"/>
-        <segue reference="iDb-uT-KNf"/>
         <segue reference="qzm-Ef-Hlu"/>
+        <segue reference="6R8-Nh-Pn7"/>
+        <segue reference="iDb-uT-KNf"/>
         <segue reference="C12-ty-sO4"/>
         <segue reference="bEM-KI-Si8"/>
-        <segue reference="eAi-GT-mbk"/>
+        <segue reference="kns-o3-fej"/>
+        <segue reference="EV0-ra-m7s"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.4478360116481781" green="0.10848049819469452" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
