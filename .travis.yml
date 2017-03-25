@@ -9,7 +9,7 @@ install:
   - gem install cocoapods-keys -v 1.7.0
   - brew update
   - brew install swiftlint || true
-  - brew upgrade swiftlint || true
+  - brew outdated swiftlint || brew upgrade swiftlint
   - bundle exec pod repo update
   - bundle exec pod install
 env:
@@ -26,8 +26,8 @@ env:
     - ItunesSharedSecret=123
     - FB_REFERENCE_IMAGE_DIR="./ReferenceImages_32"
   matrix:
-    - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=8.4"
-    - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=9.3"
+#    - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=8.4"
+#    - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=9.3"
     - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=10.1"
 script:
   - set -o pipefail
