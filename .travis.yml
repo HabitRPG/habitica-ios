@@ -2,7 +2,7 @@ language: objective-c
 cache: cocoapods
 osx_image: xcode8.2
 install:
-  - rvm install ruby-2.2.2
+  - rvm use ruby-2.2.4
   - gem install cocoapods
   - gem install xcpretty -N
   - gem install xcpretty-travis-formatter
