@@ -56,6 +56,7 @@ target 'Habitica' do
   pod 'PopupDialog', :git => 'https://github.com/Orderella/PopupDialog.git', :branch => 'development'
   pod 'Alamofire', '~> 4.4'
   pod 'SwiftLint'
+  pod 'Eureka'
   
   target 'HabiticaTests' do
       inherit! :search_paths

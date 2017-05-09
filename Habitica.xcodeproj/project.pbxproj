@@ -115,6 +115,7 @@
 		D9709A501E7F17150005F35B /* TaskDetailLineViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9709A4F1E7F17150005F35B /* TaskDetailLineViewTests.swift */; };
 		D9709A541E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9709A531E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift */; };
 		D9709A581E8053A00005F35B /* TaskRepeatablesSummaryInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9709A571E8053A00005F35B /* TaskRepeatablesSummaryInteractorTests.swift */; };
+		D9709A5A1E82E4470005F35B /* ChallengeFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9709A591E82E4470005F35B /* ChallengeFormViewController.swift */; };
 		D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */; };
 		D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */; };
 		D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */ = {isa = PBXBuildFile; fileRef = D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */; };
@@ -527,6 +528,7 @@
 		D9709A4F1E7F17150005F35B /* TaskDetailLineViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailLineViewTests.swift; sourceTree = "<group>"; };
 		D9709A531E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRepeatablesSummaryInteractor.swift; sourceTree = "<group>"; };
 		D9709A571E8053A00005F35B /* TaskRepeatablesSummaryInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRepeatablesSummaryInteractorTests.swift; sourceTree = "<group>"; };
+		D9709A591E82E4470005F35B /* ChallengeFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeFormViewController.swift; path = ../../Interactors/Challenges/ChallengeFormViewController.swift; sourceTree = "<group>"; };
 		D9722B1819B7AEA1009D8AD3 /* HRPGNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGNewsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGNewsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9722B7E19BD041E009D8AD3 /* HRPGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGNavigationController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -1690,6 +1692,7 @@
 		D9E02EC41E5E02E7002CFCE2 /* Challenges */ = {
 			isa = PBXGroup;
 			children = (
+				D9709A591E82E4470005F35B /* ChallengeFormViewController.swift */,
 				D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */,
 				D9D17CC91E6705EE00AD9232 /* ChallengeDetailTableViewController.swift */,
 			);
@@ -2290,7 +2293,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" lint --reporter xcode";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2307,6 +2310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9709A5A1E82E4470005F35B /* ChallengeFormViewController.swift in Sources */,
 				D957044B1E1585DB004F6804 /* LoginViewControllerTests.swift in Sources */,
 				D95704431E1528F2004F6804 /* Event-Extensions.swift in Sources */,
 				D957044D1E1589AB004F6804 /* TraitController.swift in Sources */,
