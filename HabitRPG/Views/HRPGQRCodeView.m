@@ -66,6 +66,9 @@
 }
 
 - (void)setQrCode {
+    if (self.userID == nil) {
+        return;
+    }
     NSData *stringData = [[@"https://habitica.com/qr-code/user/" stringByAppendingString:self.userID] dataUsingEncoding:NSISOLatin1StringEncoding];
     
     // Create the filter

@@ -268,7 +268,7 @@
             break;
 
         case NSFetchedResultsChangeMove:
-            if (indexPath.item != newIndexPath.item) {
+            if (indexPath.item != newIndexPath.item && newIndexPath) {
                 [collectionView deleteItemsAtIndexPaths:@[ indexPath ]];
                 [collectionView insertItemsAtIndexPaths:@[ newIndexPath ]];
             } else {

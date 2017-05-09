@@ -837,8 +837,10 @@ BOOL editable;
                                    atIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     for (int i = 1; i <= offset; i++) {
-        [array addObject:[NSIndexPath indexPathForItem:indexPath.item + i
-                                             inSection:indexPath.section]];
+        if (indexPath.item + i < [self.tableView numberOfRowsInSection:indexPath.section]) {
+            [array addObject:[NSIndexPath indexPathForItem:indexPath.item + i
+                                                 inSection:indexPath.section]];
+        }
     }
     return array;
 }

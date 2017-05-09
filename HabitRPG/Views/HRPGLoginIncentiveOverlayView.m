@@ -123,7 +123,7 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
 }
 
 - (void)setNextUnlock:(NSNumber *)nextUnlock {
-    if ([nextUnlock integerValue] == 1) {
+    if (![nextUnlock isEqual:[NSNull null]] && [nextUnlock integerValue] == 1) {
         self.nextUnlockLabel.text = NSLocalizedString(@"Your next prize unlocks in 1 Check-In.", nil);
     } else {
         self.nextUnlockLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Your next prize unlocks in %@ Check-Ins", nil), nextUnlock];
