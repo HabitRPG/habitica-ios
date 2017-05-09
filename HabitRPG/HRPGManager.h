@@ -16,7 +16,7 @@
 #import "Task+CoreDataClass.h"
 #import "User.h"
 #import "User.h"
-#import "item.h"
+#import "Item.h"
 #import "InboxMessage.h"
 #import "ShopItem+CoreDataClass.h"
 #import "Spell.h"

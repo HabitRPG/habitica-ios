@@ -12,7 +12,7 @@ import Down
 class ChallengeDetailHeaderView: UIView {
 
     @IBOutlet weak private var nameLabel: UILabel!
-    @IBOutlet weak private var notesLabel: UILabel!
+    @IBOutlet weak private var notesLabel: UITextView!
     @IBOutlet weak private var memberCountLabel: UILabel!
     @IBOutlet weak private var gemCountLabel: UILabel!
     var showMoreAction: (() -> Void)?
@@ -24,6 +24,9 @@ class ChallengeDetailHeaderView: UIView {
     }
 
     func set(challenge: Challenge) {
+        notesLabel.textContainer.maximumNumberOfLines = 5;
+        notesLabel.textContainer.lineBreakMode = .byTruncatingTail;
+        
         nameLabel.text = challenge.name?.unicodeEmoji
         if let notes = challenge.notes {
             notesLabel.attributedText = try? Down(markdownString: notes.unicodeEmoji).toHabiticaAttributedString()

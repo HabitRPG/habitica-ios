@@ -12,7 +12,7 @@ import Down
 class ChallengeDetailAlert: UIViewController {
 
     @IBOutlet weak private var nameLabel: UILabel!
-    @IBOutlet weak private var notesLabel: UILabel!
+    @IBOutlet weak private var notesLabel: UITextView!
     @IBOutlet weak private var ownerLabel: UILabel!
     @IBOutlet weak private var gemLabel: UILabel!
     @IBOutlet weak private var memberCountLabel: UILabel!
