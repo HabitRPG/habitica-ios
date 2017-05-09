@@ -40,6 +40,18 @@
     self.checklist = tempSet;
 }
 
+- (void)addRemindersObject:(Reminder *)value {
+    NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.reminders];
+    [tempSet addObject:value];
+    self.reminders = tempSet;
+}
+
+- (void)removeRemindersObject:(Reminder *)value {
+    NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.reminders];
+    [tempSet removeObject:value];
+    self.reminders = tempSet;
+}
+
 - (BOOL)dueToday {
     if (self.isDue) {
         return [self.isDue boolValue];
