@@ -242,6 +242,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.prefillPasswordRepeatProperty.value = password
     }
 
+    //swiftlint:disable large_tuple
     private let authValuesProperty: Property<(authType: LoginViewAuthType, email: String, username: String, password: String, passwordRepeat: String)?>
     func loginButtonPressed() {
         guard let (authType, email, username, password, passwordRepeat) = self.authValuesProperty.value else {

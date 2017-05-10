@@ -24,9 +24,9 @@ class ChallengeDetailHeaderView: UIView {
     }
 
     func set(challenge: Challenge) {
-        notesLabel.textContainer.maximumNumberOfLines = 5;
-        notesLabel.textContainer.lineBreakMode = .byTruncatingTail;
-        
+        notesLabel.textContainer.maximumNumberOfLines = 5
+        notesLabel.textContainer.lineBreakMode = .byTruncatingTail
+
         nameLabel.text = challenge.name?.unicodeEmoji
         if let notes = challenge.notes {
             notesLabel.attributedText = try? Down(markdownString: notes.unicodeEmoji).toHabiticaAttributedString()

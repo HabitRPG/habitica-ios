@@ -2293,7 +2293,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" lint --reporter xcode";
 		};
 /* End PBXShellScriptBuildPhase section */
 

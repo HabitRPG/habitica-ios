@@ -45,7 +45,7 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
         headerView?.showMoreAction = {
             let viewController = ChallengeDetailAlert(nibName: "ChallengeDetailAlert", bundle: Bundle.main)
             self.sharedManager.fetchChallengeTasks(self.challenge, onSuccess: {[weak self] () in
-                viewController.challenge = self?.selectedChallenge
+                viewController.challenge = self?.challenge
                 }, onError: nil)
             viewController.challenge = self.challenge
             viewController.joinLeaveAction = {[weak self] isMember in
