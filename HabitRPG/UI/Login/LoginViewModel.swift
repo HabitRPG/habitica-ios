@@ -14,8 +14,8 @@ import Keys
 import FBSDKLoginKit
 
 enum LoginViewAuthType {
-    case Login
-    case Register
+    case login
+    case register
 }
 
 protocol  LoginViewModelInputs {
@@ -89,36 +89,36 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
 
         self.authTypeButtonTitle = self.authTypeProperty.signal.skipNil().map { value in
             switch value {
-            case .Login:
+            case .login:
                 return "Register".localized
-            case .Register:
+            case .register:
                 return "Login".localized
             }
         }
 
         self.loginButtonTitle = self.authTypeProperty.signal.skipNil().map { value in
             switch value {
-            case .Login:
+            case .login:
                 return "Login".localized
-            case .Register:
+            case .register:
                 return "Register".localized
             }
         }
 
         self.usernameFieldTitle = self.authTypeProperty.signal.skipNil().map { value in
             switch value {
-            case .Login:
+            case .login:
                 return "Email / Username".localized
-            case .Register:
+            case .register:
                 return "Username".localized
             }
         }
 
         let isRegistering = self.authTypeProperty.signal.skipNil().map { value -> Bool in
             switch value {
-            case .Login:
+            case .login:
                 return false
-            case .Register:
+            case .register:
                 return true
             }
         }
@@ -156,7 +156,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             self.onSuccessfulLoginProperty.signal
             ).combineLatest(with: self.authTypeProperty.signal)
         .map({ (_, authType) -> String in
-            if authType == .Login {
+            if authType == .login {
                 return "MainSegue"
             } else {
                 return "SetupSegue"
@@ -173,10 +173,10 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
 
     private let authTypeProperty = MutableProperty<LoginViewAuthType?>(nil)
     internal func authTypeChanged() {
-        if authTypeProperty.value == LoginViewAuthType.Login {
-            authTypeProperty.value = LoginViewAuthType.Register
+        if authTypeProperty.value == LoginViewAuthType.login {
+            authTypeProperty.value = LoginViewAuthType.register
         } else {
-            authTypeProperty.value = LoginViewAuthType.Login
+            authTypeProperty.value = LoginViewAuthType.login
         }
     }
 
@@ -255,7 +255,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                    password: password,
                    passwordRepeat: passwordRepeat) {
             self.loadingIndicatorVisibilityObserver.send(value: true)
-            if self.authTypeProperty.value == .Login {
+            if self.authTypeProperty.value == .login {
                 self.sharedManager?.loginUser(self.usernameChangedProperty.value, withPassword: self.passwordChangedProperty.value, onSuccess: {
                     self.onSuccessfulLogin()
                 }, onError: {
@@ -380,7 +380,7 @@ func isValid(authType: LoginViewAuthType, email: String, username: String, passw
         return false
     }
 
-    if authType == .Register {
+    if authType == .register {
         if !isValidEmail(email: email) {
             return false
         }
