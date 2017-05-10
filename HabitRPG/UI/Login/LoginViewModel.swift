@@ -85,6 +85,8 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             Signal.merge(self.passwordRepeatChangedProperty.signal, self.prefillPasswordRepeatProperty.signal)
         )
 
+        self.authValuesProperty = Property(initial: nil, then: authValues.map { $0 })
+
         self.authTypeButtonTitle = self.authTypeProperty.signal.skipNil().map { value in
             switch value {
             case .Login:
@@ -240,15 +242,17 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.prefillPasswordRepeatProperty.value = password
     }
 
+    private let authValuesProperty: Property<(authType: LoginViewAuthType, email: String, username: String, password: String, passwordRepeat: String)?>
     func loginButtonPressed() {
-        guard let authType = self.authTypeProperty.value else {
+        guard let (authType, email, username, password, passwordRepeat) = self.authValuesProperty.value else {
             return
         }
+
         if isValid(authType: authType,
-                   email: self.emailChangedProperty.value,
-                   username: self.usernameChangedProperty.value,
-                   password: self.passwordChangedProperty.value,
-                   passwordRepeat: self.passwordRepeatChangedProperty.value) {
+                   email: email,
+                   username: username,
+                   password: password,
+                   passwordRepeat: passwordRepeat) {
             self.loadingIndicatorVisibilityObserver.send(value: true)
             if self.authTypeProperty.value == .Login {
                 self.sharedManager?.loginUser(self.usernameChangedProperty.value, withPassword: self.passwordChangedProperty.value, onSuccess: {
