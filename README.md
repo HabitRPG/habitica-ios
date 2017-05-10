@@ -33,7 +33,7 @@ $ sudo gem install cocoapods-keys
 $ pod install
 ```
 
-During installation, cocoapods-keys will prompt for some of the keys used in the proyect. Use any random value for debugging, the real values are only required when uploading a final build to the app store.
+During installation, cocoapods-keys will prompt for some of the keys used in the project. Use any random value for debugging, the real values are only required when uploading a final build to the app store.
 
 CocoaPods requires that you open the *Habitica.xcworkspace*.
 
