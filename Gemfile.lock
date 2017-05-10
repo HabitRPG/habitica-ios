@@ -55,7 +55,7 @@ GEM
     fuzzy_match (2.0.4)
     gh_inspector (1.0.2)
     i18n (0.7.0)
-    json (1.8.3)
+    json (1.8.6)
     minitest (5.9.0)
     molinillo (0.5.6)
     nanaimo (0.2.3)
@@ -82,4 +82,4 @@ DEPENDENCIES
   cocoapods-keys (>= 1.7.0)
 
 BUNDLED WITH
-   1.12.5
+   1.14.6
