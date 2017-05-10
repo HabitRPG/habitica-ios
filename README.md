@@ -1,4 +1,4 @@
-# Habitica for iOS
+# Habitica for iOS [![Build Status](https://travis-ci.org/HabitRPG/habitica-ios.svg?branch=master)](https://travis-ci.org/HabitRPG/habitica-ios)
 
 Native iOS app for [Habitica](https://habitica.com/).
 
