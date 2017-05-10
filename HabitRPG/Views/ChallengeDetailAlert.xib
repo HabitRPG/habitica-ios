@@ -34,7 +34,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="348"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="364"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="CHALLENGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNc-dr-oWo">
                                     <rect key="frame" x="16" y="20" width="343" height="15"/>
@@ -46,16 +46,26 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Read a book by or about a person in your field of study" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCR-vG-vQ4">
-                                    <rect key="frame" x="16" y="43" width="343" height="42.5"/>
+                                    <rect key="frame" x="16" y="43" width="343" height="54.5"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="rMb-Mn-M1v"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Bla Bla Bla" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="74R-xc-xus">
+                                    <rect key="frame" x="16" y="105" width="343" height="33"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="21" id="afG-WJ-bAy"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                                </textView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyh-2v-Ant">
-                                    <rect key="frame" x="16" y="122" width="343" height="18"/>
+                                    <rect key="frame" x="16" y="138" width="343" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="TYc-kU-yjm"/>
                                     </constraints>
@@ -64,7 +74,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="y0U-Hw-A58" customClass="ChallengeTaskListView" customModule="Habitica" customModuleProvider="target">
-                                    <rect key="frame" x="16" y="148" width="343" height="40"/>
+                                    <rect key="frame" x="16" y="164" width="343" height="40"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="40" id="A83-G0-FhD"/>
@@ -74,7 +84,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="cNn-KB-9md" customClass="ChallengeTaskListView" customModule="Habitica" customModuleProvider="target">
-                                    <rect key="frame" x="16" y="196" width="343" height="40"/>
+                                    <rect key="frame" x="16" y="212" width="343" height="40"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="40" id="XSU-y8-FKp"/>
@@ -84,7 +94,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="08n-L1-b7L" customClass="ChallengeTaskListView" customModule="Habitica" customModuleProvider="target">
-                                    <rect key="frame" x="16" y="244" width="343" height="40"/>
+                                    <rect key="frame" x="16" y="260" width="343" height="40"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="40" id="xJy-1W-Y6O"/>
@@ -94,7 +104,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="wpd-n8-SEk" customClass="ChallengeTaskListView" customModule="Habitica" customModuleProvider="target">
-                                    <rect key="frame" x="16" y="292" width="343" height="40"/>
+                                    <rect key="frame" x="16" y="308" width="343" height="40"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="40" id="iq5-iL-Z3G"/>
@@ -103,16 +113,6 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="taskType" value="reward"/>
                                     </userDefinedRuntimeAttributes>
                                 </view>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="74R-xc-xus">
-                                    <rect key="frame" x="16" y="93" width="343" height="21"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" priority="500" constant="21" id="afG-WJ-bAy"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
-                                </textView>
                             </subviews>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -138,7 +138,7 @@
                                 <constraint firstAttribute="trailing" secondItem="SNc-dr-oWo" secondAttribute="trailing" constant="16" id="hJ6-e0-I0z"/>
                                 <constraint firstItem="74R-xc-xus" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="jXN-UT-KDA"/>
                                 <constraint firstItem="nyh-2v-Ant" firstAttribute="top" secondItem="74R-xc-xus" secondAttribute="bottom" id="mpp-AO-CS0"/>
-                                <constraint firstItem="74R-xc-xus" firstAttribute="top" secondItem="QCR-vG-vQ4" secondAttribute="bottom" constant="7.5" id="opZ-kj-BZo"/>
+                                <constraint firstItem="74R-xc-xus" firstAttribute="top" secondItem="QCR-vG-vQ4" secondAttribute="bottom" constant="16" id="opZ-kj-BZo"/>
                                 <constraint firstItem="cNn-KB-9md" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ox2-CH-E70"/>
                                 <constraint firstItem="SNc-dr-oWo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="wU5-2P-DNf"/>
                             </constraints>
