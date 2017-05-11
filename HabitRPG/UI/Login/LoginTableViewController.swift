@@ -62,7 +62,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         onePasswordButton.addTarget(self, action: #selector(onePasswordButtonPressed), for: .touchUpInside)
 
         bindViewModel()
-        self.viewModel.setAuthType(authType: LoginViewAuthType.Login)
+        self.viewModel.setAuthType(authType: LoginViewAuthType.login)
         self.viewModel.inputs.onePassword(
             isAvailable: OnePasswordExtension.shared().isAppExtensionAvailable()
         )
