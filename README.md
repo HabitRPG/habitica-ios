@@ -25,13 +25,15 @@ $ bundle install
 $ bundle exec pod install
 ```
 
-If you require `sudo` to install gems (i.e. you are using the MacOS
-system ruby):
+As an alternative, it is possible to install the dependendencies manually. Use `sudo` if required to install gems (i.e. you are using the MacOS system ruby):
 
 ```
-$ sudo gem install cocoapods:'>=1.0'
+$ sudo gem install cocoapods:'>=1.2'
+$ sudo gem install cocoapods-keys
 $ pod install
 ```
+
+During installation, cocoapods-keys will prompt for some of the keys used in the project. Use any random value for debugging, the real values are only required when uploading a final build to the app store.
 
 CocoaPods requires that you open the *Habitica.xcworkspace*.
 
