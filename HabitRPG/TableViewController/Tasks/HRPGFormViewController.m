@@ -573,7 +573,10 @@
             [self setOldFrequencyRows:[formRow.value valueData]];
         }
     }
+    [self.tableView beginUpdates];
     [self.tableView footerViewForSection:2].textLabel.text = [self tableView:self.tableView titleForFooterInSection:2];
+    [[self.tableView footerViewForSection:2].textLabel sizeThatFits:CGSizeMake(self.tableView.frame.size.width, CGFLOAT_MAX)];
+    [self.tableView endUpdates];
 }
 
 - (void)formRowHasBeenAdded:(XLFormRowDescriptor *)formRow atIndexPath:(NSIndexPath *)indexPath {
@@ -583,10 +586,6 @@
         }
     }
     [super formRowHasBeenAdded:formRow atIndexPath:indexPath];
-}
-
-- (void)setFrequencyRows:(NSString *)frequencyType {
-
 }
 
 - (void)setFrequencyRows:(NSString *)frequencyType fromOldValue:(NSString *)oldFrequencyType {
@@ -697,6 +696,22 @@
             [section removeFormRowAtIndex:2];
             [section removeFormRowAtIndex:1];
         }
+        XLFormRowDescriptor *row;
+        if (section.formRows.count == 1) {
+            row = [XLFormRowDescriptor
+                   formRowDescriptorWithTag:@"everyX"
+                   rowType:XLFormRowDescriptorTypeInteger
+                   title:NSLocalizedString(@"Repeat every X days", nil)];
+            [section addFormRow:row];
+        } else {
+            row = section.formRows[1];
+        }
+        if (self.editTask) {
+            row.value = self.task.everyX;
+        } else {
+            row.value = @1;
+        }
+        row.required = YES;
     } else {
         if (section.formRows.count > 1) {
             [section removeFormRowAtIndex:1];
