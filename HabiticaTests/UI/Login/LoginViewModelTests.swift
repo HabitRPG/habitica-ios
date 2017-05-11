@@ -38,21 +38,21 @@ class LoginViewModelTests: HabiticaTests {
     }
     
     func testShowsEmptyLoginForm() {
-        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.Login)
+        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.login)
         self.isFormValidObserver.assertLastValue(value: false)
         self.emailVisibilityObserver.assertLastValue(value: false)
         self.passwordRepeatVisibilityObserver.assertLastValue(value: false)
     }
     
     func testShowsEmptyRegisterForm() {
-        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.Register)
+        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.register)
         self.isFormValidObserver.assertLastValue(value: false)
         self.emailVisibilityObserver.assertLastValue(value: true)
         self.passwordRepeatVisibilityObserver.assertLastValue(value: true)
     }
     
     func testValidatesLoginForm() {
-        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.Login)
+        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.login)
         self.isFormValidObserver.assertLastValue(value: false)
         self.viewModel.inputs.usernameChanged(username: "test")
         self.viewModel.inputs.passwordChanged(password: "test")
@@ -61,7 +61,7 @@ class LoginViewModelTests: HabiticaTests {
     }
     
     func testValidatesRegisterForm() {
-        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.Register)
+        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.register)
         self.isFormValidObserver.assertLastValue(value: false)
         self.viewModel.inputs.usernameChanged(username: "test")
         self.viewModel.inputs.emailChanged(email: "test@test.com")
@@ -72,7 +72,7 @@ class LoginViewModelTests: HabiticaTests {
     }
     
     func testInvalidatesRegisterFormNonmatchingPasswords() {
-        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.Register)
+        self.viewModel.inputs.setAuthType(authType: LoginViewAuthType.register)
         self.isFormValidObserver.assertLastValue(value: false)
         self.viewModel.inputs.usernameChanged(username: "test")
         self.viewModel.inputs.emailChanged(email: "test@test.com")

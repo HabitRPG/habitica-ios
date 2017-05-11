@@ -30,10 +30,8 @@ class CheckedTableViewCell: TaskTableViewCell {
         if checklistCount > 0 {
             var checkedCount = 0
             if let checklist = task.checklist?.array as? [ChecklistItem] {
-                for item in checklist {
-                    if item.completed.boolValue {
-                        checkedCount += 1
-                    }
+                for item in checklist where item.completed.boolValue {
+                    checkedCount += 1
                 }
             }
             self.checklistDoneLabel.text = "\(checkedCount)"

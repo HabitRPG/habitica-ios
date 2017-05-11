@@ -263,7 +263,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
             if next.isEnabled {
                 next.becomeFirstResponder()
             } else {
-                let _ = self.textFieldShouldReturn(next)
+                _ = self.textFieldShouldReturn(next)
             }
         } else if textField.returnKeyType == .done {
             textField.resignFirstResponder()
