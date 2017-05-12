@@ -46,4 +46,5 @@
 @dynamic tags;
 @dynamic user;
 @dynamic isDue;
+@dynamic nextDue;
 @end

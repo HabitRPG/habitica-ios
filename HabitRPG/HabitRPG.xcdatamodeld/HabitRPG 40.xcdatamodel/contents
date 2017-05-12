@@ -383,7 +383,7 @@
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES">
         <attribute name="attribute" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="challengeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="challengeID" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="completed" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="daysOfMonth" optional="YES" attributeType="Transformable" syncable="YES"/>
@@ -395,6 +395,7 @@
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isDue" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="monday" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="nextDue" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="priority" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
@@ -543,7 +544,7 @@
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
         <element name="SubscriptionPlan" positionX="9" positionY="153" width="128" height="225"/>
         <element name="Tag" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="Task" positionX="0" positionY="0" width="128" height="525"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="540"/>
         <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
         <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
         <element name="User" positionX="0" positionY="0" width="128" height="1170"/>

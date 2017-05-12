@@ -84,6 +84,21 @@
     }
     // get today + the custom offset the user uses
     NSDate *dateWithOffset = [date dateByAddingTimeInterval:-(offset * 60 * 60)];
+    if ([[dateWithOffset daysSinceDate:[NSDate date]] integerValue] == 0) {
+        if (self.isDue) {
+            return [self.isDue boolValue];
+        }
+    } else if (self.nextDue) {
+        NSDateFormatter * dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+        for (NSString *dateString in self.nextDue) {
+            NSDate *date = [dateFormatter dateFromString:dateString];
+            if ([[dateWithOffset daysSinceDate:date] integerValue] == 0) {
+                return YES;
+            }
+        }
+        return NO;
+    }
     if ([self.frequency isEqualToString:@"daily"]) {
         NSDate *startDate = [NSDate date];
         if (self.startDate) {

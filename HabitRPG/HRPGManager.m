@@ -129,7 +129,7 @@ NSString *currentUser;
     NSString *DISABLE_SSL = info[@"DisableSSL"];
 
     if (CUSTOM_DOMAIN.length == 0) {
-        CUSTOM_DOMAIN = @"habitica.com/";
+        CUSTOM_DOMAIN = @"localhost:3000/";
     }
 
     if (![[CUSTOM_DOMAIN substringFromIndex: [CUSTOM_DOMAIN length] - 1]  isEqual: @"/"]) {
@@ -140,7 +140,7 @@ NSString *currentUser;
     if ([DISABLE_SSL isEqualToString:@"true"]) {
         ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
     } else {
-        ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
+        ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
     }
 #else
     ROOT_URL = @"https://habitica.com/";
@@ -210,7 +210,8 @@ NSString *currentUser;
         @"challenge.id" : @"challengeID",
         @"daysOfMonth" : @"daysOfMonth",
         @"weeksOfMonth" : @"weeksOfMonth",
-        @"isDue": @"isDue"
+        @"isDue": @"isDue",
+        @"nextDue": @"nextDue"
     }];
     taskMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping *checklistItemMapping =
