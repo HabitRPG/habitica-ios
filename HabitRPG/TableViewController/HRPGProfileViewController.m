@@ -249,8 +249,7 @@ NIKFontAwesomeIconFactory *iconFactory;
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UINavigationController *navigationController =
         [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
-        UIViewController *viewController =
-        [UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController;
+        UIViewController *viewController = self;
         if (!viewController.isViewLoaded || !viewController.view.window) {
             viewController = viewController.presentedViewController;
         }
