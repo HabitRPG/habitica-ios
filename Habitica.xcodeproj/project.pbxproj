@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */; };
+		2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */; };
+		2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */; };
+		2980E60D1EEA39DF005B7100 /* YesterdailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */; };
+		29B388DF1EEF4FBD00A72950 /* MorningNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B388DE1EEF4FBD00A72950 /* MorningNotification.swift */; };
 		823F7132DD74058859184F61 /* Pods_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */; };
 		98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */; };
 		CF54FEE0D3F7F352ECA56F23 /* HRPGContentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CF54FD820D81110D9EF4756E /* HRPGContentResponse.m */; };
@@ -324,6 +329,11 @@
 
 /* Begin PBXFileReference section */
 		281AC256BB298E2B402BE5DF /* Pods-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailiesDialogView.xib; sourceTree = "<group>"; };
+		2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailiesDialogView.swift; sourceTree = "<group>"; };
+		2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailyTaskCell.swift; sourceTree = "<group>"; };
+		2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyTaskCell.xib; sourceTree = "<group>"; };
+		29B388DE1EEF4FBD00A72950 /* MorningNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorningNotification.swift; sourceTree = "<group>"; };
 		2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
 		2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC569DB4F5A31ED940986A5 /* Pods-Habitica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.release.xcconfig"; sourceTree = "<group>"; };
@@ -1171,6 +1181,7 @@
 				D96C85411DCB6501003E3616 /* HRPGDropsEnabledNotification.m */,
 				D905D0881DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.h */,
 				D905D0891DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m */,
+				29B388DE1EEF4FBD00A72950 /* MorningNotification.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -1418,6 +1429,8 @@
 				D9D2172F198D509000023367 /* HRPGDeathView.h */,
 				D9D21730198D509000023367 /* HRPGDeathView.m */,
 				D99E42671D6B1FD500811B6D /* HRPGDeathView.xib */,
+				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
+				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				D9FC1A761BC28C5F00B97D23 /* HRPGExplanationView.h */,
 				D9FC1A771BC28C5F00B97D23 /* HRPGExplanationView.m */,
 				D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */,
@@ -1525,6 +1538,8 @@
 				D9F1E3E71E55DCEB0034D0F4 /* SubscriptionInformationCell.swift */,
 				D9F1E3E91E55DCFB0034D0F4 /* SubscriptionInformationCell.xib */,
 				D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */,
+				2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */,
+				2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */,
 			);
 			path = TableviewCells;
 			sourceTree = "<group>";
@@ -2052,6 +2067,7 @@
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
 				D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */,
 				D9BB45D81E7998710002AE2E /* ChallengeFilterAlert.xib in Resources */,
+				2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
@@ -2083,6 +2099,7 @@
 				D98F5DD11C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib in Resources */,
 				D979AD1C1AF3EF6E00D59FAE /* customizations.json in Resources */,
 				D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */,
+				2980E60D1EEA39DF005B7100 /* YesterdailyTaskCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2236,7 +2253,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CAC33FCF49D4A93D53AF498F /* [CP] Embed Pods Frameworks */ = {
@@ -2266,7 +2283,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D940A7E01B0CF7E900370F2E /* ShellScript */ = {
@@ -2449,6 +2466,7 @@
 				D96C85481DCCD8BC003E3616 /* UIWindow+VisibleController.m in Sources */,
 				D98F5DC11C6A1DA60035CBEC /* HRPGGroupTableViewController.m in Sources */,
 				D984D5861E48E5CF006E84F8 /* TaskDetailLineView.swift in Sources */,
+				2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */,
 				D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */,
 				D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */,
 				D9660D781AB248030084CE37 /* HRPGUserTopHeader.m in Sources */,
@@ -2542,7 +2560,9 @@
 				D905766F1BD7F581009BB7BC /* HRPGHintView.m in Sources */,
 				D9C000301928F83E003D4E4C /* HRPGRoundProgressView.m in Sources */,
 				D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */,
+				2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */,
 				D9BB45D21E7713E80002AE2E /* ChallengeTask+CoreDataProperties.m in Sources */,
+				29B388DF1EEF4FBD00A72950 /* MorningNotification.swift in Sources */,
 				D97C71E718F32FED0089FDC6 /* Potion.m in Sources */,
 				D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */,
 				D98F5DD71C6CFFC60035CBEC /* HRPGPartyTableViewController.m in Sources */,
@@ -2709,7 +2729,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = HabitRPGUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = net.pherth.ios.HabitRPGUITests;
@@ -2731,7 +2751,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = HabitRPGUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = net.pherth.ios.HabitRPGUITests;
@@ -2801,7 +2821,7 @@
 					"\"$(PROJECT_DIR)/OCMock\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2873,7 +2893,7 @@
 					"\"$(PROJECT_DIR)/OCMock\"",
 				);
 				INFOPLIST_FILE = HabiticaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2928,7 +2948,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2967,7 +2987,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3027,7 +3047,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -3117,7 +3137,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",

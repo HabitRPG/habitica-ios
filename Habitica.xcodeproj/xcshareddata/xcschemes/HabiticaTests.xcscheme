@@ -38,6 +38,16 @@
                ReferencedContainer = "container:Habitica.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D90576771BD82DB8009BB7BC"
+               BuildableName = "HabitRPGUITests.xctest"
+               BlueprintName = "HabitRPGUITests"
+               ReferencedContainer = "container:Habitica.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

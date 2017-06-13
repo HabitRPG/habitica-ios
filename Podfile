@@ -1,4 +1,4 @@
-platform :ios, '8.4'
+platform :ios, '9.3'
 use_frameworks!
 
 plugin 'cocoapods-keys', {
@@ -47,7 +47,7 @@ target 'Habitica' do
   pod 'FBSDKCoreKit', '~> 4'
   pod 'FBSDKLoginKit', '~> 4'
 
-  pod 'ReactiveCocoa', '~> 5.0.0'
+  pod 'ReactiveCocoa', '~> 5.0.3'
 
   pod 'SwiftyStoreKit'
 
@@ -57,7 +57,7 @@ target 'Habitica' do
   pod 'Alamofire', '~> 4.4'
   pod 'SwiftLint'
   pod 'Eureka'
-  
+
   target 'HabiticaTests' do
       inherit! :search_paths
       pod 'OHHTTPStubs'    
