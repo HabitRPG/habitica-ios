@@ -14,6 +14,7 @@
 #import "HRPGNavigationController.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "UIViewController+TutorialSteps.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGBaseViewController ()
 @property UIBarButtonItem *navigationButton;
@@ -49,6 +50,8 @@
     }
 
     self.viewWidth = self.view.frame.size.width;
+    
+    [YesterdailiesDialogView showDialogWithPresenter:self sharedManager:self.sharedManager];
 }
 
 - (NSString *)getScreenName {

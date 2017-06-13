@@ -116,6 +116,8 @@
     
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
+    id presentedController = self.window.rootViewController.presentedViewController;
+    
     return YES;
 }
 

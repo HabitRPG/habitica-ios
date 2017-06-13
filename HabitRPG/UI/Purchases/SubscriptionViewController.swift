@@ -132,34 +132,26 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     @IBAction func checkForExistingSubscription(_ sender: Any) {
-        SwiftyStoreKit.refreshReceipt { (result) in
+        SwiftyStoreKit.verifyReceipt(using: self.appleValidator, password: self.itunesSharedSecret()) { result in
             switch result {
-            case .success( _):
-                SwiftyStoreKit.verifyReceipt(using: self.appleValidator, password: self.itunesSharedSecret()) { result in
-                    switch result {
-                    case .success(let verifiedReceipt):
-                        guard let purchases = verifiedReceipt["latest_receipt_info"] as? [ReceiptInfo] else {
-                            return
-                        }
-                        for purchase in purchases {
-                            if let identifier = purchase["product_id"] as? String {
-                                if self.isValidSubscription(identifier, receipt: verifiedReceipt) {
-                                    self.activateSubscription(identifier, receipt: verifiedReceipt) {status in
-                                        if status {
-                                            return
-                                        }
-                                    }
+            case .success(let verifiedReceipt):
+                guard let purchases = verifiedReceipt["latest_receipt_info"] as? [ReceiptInfo] else {
+                    return
+                }
+                for purchase in purchases {
+                    if let identifier = purchase["product_id"] as? String {
+                        if self.isValidSubscription(identifier, receipt: verifiedReceipt) {
+                            self.activateSubscription(identifier, receipt: verifiedReceipt) {status in
+                                if status {
+                                    return
                                 }
                             }
                         }
-                    case .error(let error):
-                        print("Receipt verification failed: \(error)")
                     }
                 }
             case .error(let error):
-                print("Receipt refreshing failed: \(error)")
+                print("Receipt verification failed: \(error)")
             }
-
         }
     }
 
@@ -319,7 +311,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         }
     }
 
-    func verifyAndSubscribe(_ product: Product) {
+    func verifyAndSubscribe(_ product: PurchaseDetails) {
         SwiftyStoreKit.verifyReceipt(using: appleValidator, password: self.itunesSharedSecret()) { result in
             switch result {
             case .success(let receipt):

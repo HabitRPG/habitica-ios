@@ -17,3 +17,4 @@
 #import "HRPGHabitButtons.h"
 #import "Reminder.h"
 #import "Tag.h"
+#import "HRPGBaseNotificationView.h"

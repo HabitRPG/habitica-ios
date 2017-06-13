@@ -49,8 +49,8 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
             self?.handleJoinLeave(isMember: $0)
         })
         disposable = CompositeDisposable()
-        disposable.add(self.joinInteractor?.reactive.observe(subscriber, during: self.lifetime))
-        disposable.add(self.leaveInteractor?.reactive.observe(subscriber, during: self.lifetime))
+        disposable.add(self.joinInteractor?.reactive.take(during: self.lifetime).observe(subscriber))
+        disposable.add(self.leaveInteractor?.reactive.take(during: self.lifetime).observe(subscriber))
 
         self.segmentedFilterControl.selectedSegmentIndex = 0
         self.segmentedFilterControl.tintColor = UIColor.purple300()

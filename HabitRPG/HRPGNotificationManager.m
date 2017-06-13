@@ -11,6 +11,7 @@
 #import "HRPGDropsEnabledNotification.h"
 #import "HRPGStreakAchievementNotification.h"
 #import "HRPGLoginIncentiveNotification.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGNotificationManager ()
 
