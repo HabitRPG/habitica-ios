@@ -43,13 +43,13 @@
     self.headerView = nibViews[0];
     self.state = HRPGTopHeaderStateVisible;
     self.backgroundView = [[UIView alloc] init];
-    self.backgroundView.backgroundColor = [UIColor gray600];
+    self.backgroundView.backgroundColor = [UIColor gray700];
 
     self.bottomBorderView = [[UIView alloc] init];
-    [self.bottomBorderView setBackgroundColor:[UIColor gray400]];
+    [self.bottomBorderView setBackgroundColor:[UIColor gray600]];
 
     self.upperBackgroundView = [[UIView alloc] init];
-    [self.upperBackgroundView setBackgroundColor:[UIColor gray600]];
+    [self.upperBackgroundView setBackgroundColor:[UIColor whiteColor]];
 
     [self.backgroundView addSubview:self.bottomBorderView];
     [self.backgroundView addSubview:self.headerView];
@@ -145,9 +145,9 @@
 
 - (void)setNavigationBarColors:(CGFloat)alpha {
     self.upperBackgroundView.backgroundColor =
-        [[UIColor gray600] blendWithColor:[UIColor purple300] alpha:alpha];
+        [[UIColor whiteColor] blendWithColor:[UIColor purple300] alpha:alpha];
     self.navigationBar.tintColor =
-        [[UIColor purple400] blendWithColor:[UIColor gray600] alpha:alpha];
+        [[UIColor purple400] blendWithColor:[UIColor whiteColor] alpha:alpha];
     self.navigationBar.titleTextAttributes = @{
         NSForegroundColorAttributeName :
             [[UIColor blackColor] blendWithColor:[UIColor whiteColor] alpha:alpha]

@@ -48,6 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSSet<NSNumber *> *weeksOfMonth;
 @property (nullable, nonatomic, copy) NSNumber *isDue;
 @property (nullable, nonatomic, retain) NSSet<NSDate *> *nextDue;
+@property (nullable, nonatomic, copy) NSNumber *yesterDaily;
 
 @end
 

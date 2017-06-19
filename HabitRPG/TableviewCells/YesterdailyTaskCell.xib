@@ -18,32 +18,43 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEb-Gy-kcr">
                     <rect key="frame" x="4" y="4" width="367" height="110"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smX-DQ-aVi">
-                            <rect key="frame" x="71" y="20" width="276" height="70"/>
-                            <constraints>
-                                <constraint firstAttribute="height" priority="500" constant="21" id="syd-va-1mv"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nHz-xk-7l0" customClass="HRPGCheckBoxView">
-                            <rect key="frame" x="0.0" y="0.0" width="55" height="110"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="55" id="YLu-un-ve3"/>
-                            </constraints>
-                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aL8-jo-YbE">
+                            <rect key="frame" x="0.0" y="0.0" width="367" height="110"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="c4v-nt-dW6">
+                                    <rect key="frame" x="0.0" y="0.0" width="367" height="110"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nHz-xk-7l0" customClass="HRPGCheckBoxView">
+                                            <rect key="frame" x="0.0" y="0.0" width="55" height="110"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="55" id="cfk-sm-rc7"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smX-DQ-aVi">
+                                            <rect key="frame" x="71" y="0.0" width="296" height="110"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="aGX-8W-tOa"/>
+                                                <constraint firstAttribute="height" priority="500" constant="21" id="syd-va-1mv"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3eq-BG-244">
+                                    <rect key="frame" x="0.0" y="110" width="367" height="0.0"/>
+                                </stackView>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="smX-DQ-aVi" firstAttribute="leading" secondItem="nHz-xk-7l0" secondAttribute="trailing" constant="16" id="9sd-2V-tKb"/>
-                        <constraint firstItem="nHz-xk-7l0" firstAttribute="top" secondItem="JEb-Gy-kcr" secondAttribute="top" id="E5N-C8-m6H"/>
-                        <constraint firstAttribute="bottom" secondItem="nHz-xk-7l0" secondAttribute="bottom" id="GCu-41-ihh"/>
-                        <constraint firstItem="smX-DQ-aVi" firstAttribute="top" secondItem="JEb-Gy-kcr" secondAttribute="top" constant="20" id="NCm-lP-IUq"/>
-                        <constraint firstAttribute="trailing" secondItem="smX-DQ-aVi" secondAttribute="trailing" constant="20" id="T6X-sa-TFs"/>
-                        <constraint firstItem="nHz-xk-7l0" firstAttribute="leading" secondItem="JEb-Gy-kcr" secondAttribute="leading" id="ai4-S4-ecF"/>
-                        <constraint firstAttribute="bottom" secondItem="smX-DQ-aVi" secondAttribute="bottom" constant="20" id="c4p-i6-mDs"/>
+                        <constraint firstAttribute="bottom" secondItem="aL8-jo-YbE" secondAttribute="bottom" id="m9Z-Rj-m0M"/>
+                        <constraint firstItem="aL8-jo-YbE" firstAttribute="top" secondItem="JEb-Gy-kcr" secondAttribute="top" id="oi8-2X-Ynu"/>
+                        <constraint firstAttribute="trailing" secondItem="aL8-jo-YbE" secondAttribute="trailing" id="rPg-x9-t8t"/>
+                        <constraint firstItem="aL8-jo-YbE" firstAttribute="leading" secondItem="JEb-Gy-kcr" secondAttribute="leading" id="uYn-6x-YIm"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -52,7 +63,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="JEb-Gy-kcr" secondAttribute="trailing" constant="4" id="8pV-O0-BES"/>
                 <constraint firstItem="JEb-Gy-kcr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="d5r-An-A6Q"/>
@@ -62,6 +73,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="checkbox" destination="nHz-xk-7l0" id="B32-pl-9mN"/>
+                <outlet property="checklistStackview" destination="3eq-BG-244" id="ohw-35-Vee"/>
                 <outlet property="titleTextView" destination="smX-DQ-aVi" id="Svw-Bv-gJM"/>
                 <outlet property="wrapperView" destination="JEb-Gy-kcr" id="PCr-n6-sW2"/>
             </connections>

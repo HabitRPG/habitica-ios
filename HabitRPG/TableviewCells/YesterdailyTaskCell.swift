@@ -14,6 +14,9 @@ class YesterdailyTaskCell: UITableViewCell {
     @IBOutlet weak var checkbox: HRPGCheckBoxView!
     @IBOutlet weak var titleTextView: UILabel!
     @IBOutlet weak var checklistStackview: UIStackView!
+    
+    var onChecklistItemChecked: ((ChecklistItem) -> Void)?
+    var checklistItems: [ChecklistItem]?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,16 +27,27 @@ class YesterdailyTaskCell: UITableViewCell {
 
     func configure(task: Task) {
         checkbox.configure(for: task)
-        titleTextView.text = task.text
-        
+        titleTextView.text = task.text?.unicodeEmoji
+
         checklistStackview.subviews.forEach { view in
             view.removeFromSuperview()
         }
-        task.checklist?.forEach { item in
-            let checklistItem = item as? ChecklistItem
-            let label = UILabel()
-            label.text = checklistItem?.text
-            checklistStackview.addArrangedSubview(label)
+        
+        guard let checklist = task.checklist else {
+            return
+        }
+        checklistItems = checklist.array as? [ChecklistItem]
+        for item in checklist {
+            if let view = UIView.fromNib(nibName: "YesterdailyChecklistItem"), let checklistItem = item as? ChecklistItem {
+                let label = view.viewWithTag(2) as? UILabel
+                label?.text = checklistItem.text.unicodeEmoji
+                let checkbox = view.viewWithTag(1) as? HRPGCheckBoxView
+                checkbox?.configure(for: checklistItem, for: task)
+                checkbox?.backgroundColor = UIColor.gray700()
+                checklistStackview.addArrangedSubview(view)
+                let recognizer = UITapGestureRecognizer(target: self, action:#selector(YesterdailyTaskCell.handleChecklistTap(recognizer:)))
+                view.addGestureRecognizer(recognizer)
+            }
         }
     }
 
@@ -41,4 +55,13 @@ class YesterdailyTaskCell: UITableViewCell {
         super.layoutSubviews()
     }
 
+    func handleChecklistTap(recognizer: UITapGestureRecognizer) {
+        for (index, view) in checklistStackview.arrangedSubviews.enumerated() where view == recognizer.view {
+            if let checked = self.onChecklistItemChecked, let item = checklistItems?[index] {
+                checked(item)
+            }
+            return
+        }
+    }
+    
 }

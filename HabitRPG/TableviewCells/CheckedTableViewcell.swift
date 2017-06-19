@@ -37,7 +37,7 @@ class CheckedTableViewCell: TaskTableViewCell {
             self.checklistDoneLabel.text = "\(checkedCount)"
             self.checklistAllLabel.text = "\(checklistCount)"
             if checkedCount == checklistCount {
-                self.checklistIndicator.backgroundColor = .gray100()
+                self.checklistIndicator.backgroundColor = .gray500()
             }
             self.checklistDoneLabel.isHidden = false
             self.checklistAllLabel.isHidden = false
@@ -51,9 +51,8 @@ class CheckedTableViewCell: TaskTableViewCell {
         }
 
         if task.completed?.boolValue ?? false {
-            self.backgroundColor = .gray500()
-            self.checklistIndicator.backgroundColor = .gray100()
-            self.titleLabel.textColor = .gray50()
+            self.checklistIndicator.backgroundColor = .gray500()
+            self.titleLabel.textColor = .gray100()
         } else {
             self.backgroundColor = .white
             self.titleLabel.textColor = .black
@@ -68,9 +67,8 @@ class CheckedTableViewCell: TaskTableViewCell {
 
     func configure(checklistItem: ChecklistItem, task: Task) {
         if task.completed?.boolValue ?? false {
-            self.backgroundColor = .gray500()
-            self.checklistIndicator.backgroundColor = .gray100()
-            self.titleLabel.textColor = .gray50()
+            self.checklistIndicator.backgroundColor = .gray500()
+            self.titleLabel.textColor = .gray100()
         } else {
             self.backgroundColor = .white
             self.titleLabel.textColor = .black

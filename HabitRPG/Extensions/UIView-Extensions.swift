@@ -9,8 +9,9 @@
 import Foundation
 
 extension UIView {
-    class func fromNib<T: UIView>() -> T? {
-        guard let nibs = Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil) else {
+    
+    class func fromNib<T: UIView>(nibName: String? = nil) -> T? {
+        guard let nibs = Bundle.main.loadNibNamed(nibName ?? String(describing: T.self), owner: nil, options: nil) else {
             return nil
         }
         guard let view = nibs[0] as? T else {

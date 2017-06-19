@@ -148,27 +148,42 @@
     return [UIColor colorWithRed:248.0f / 255.0f green:78.0f / 255.0f blue:82.0f / 255.0f alpha:1.0f];
 }
 
++ (UIColor *)gray10 {
+    return [UIColor colorWithRed:52.0f / 255.0f green:49.0f / 255.0f blue:58.0f / 255.0f alpha:1.0f];
+}
+
 + (UIColor *)gray50 {
-    return [UIColor colorWithRed:0.5765 green:0.5765 blue:0.5765 alpha:1.0];
+    return [UIColor colorWithRed:78.0f / 255.0f green:74.0f / 255.0f blue:87.0f / 255.0f alpha:1.0f];
 }
+
 + (UIColor *)gray100 {
-    return [UIColor colorWithRed:0.7059 green:0.7059 blue:0.7059 alpha:1.0];
+    return [UIColor colorWithRed:104.0f / 255.0f green:98.0f / 255.0f blue:116.0f / 255.0f alpha:1.0f];
 }
+
 + (UIColor *)gray200 {
-    return [UIColor colorWithRed:0.7098 green:0.7098 blue:0.7098 alpha:1.0];
+    return [UIColor colorWithRed:135.0f / 255.0f green:129.0f / 255.0f blue:144.0f / 255.0f alpha:1.0f];
 }
+
 + (UIColor *)gray300 {
-    return [UIColor colorWithRed:0.8373 green:0.8373 blue:0.8373 alpha:1.0];
+    return [UIColor colorWithRed:165.0f / 255.0f green:161.0f / 255.0f blue:172.0f / 255.0f alpha:1.0f];
 }
+
 + (UIColor *)gray400 {
-    return [UIColor colorWithRed:0.9373 green:0.9373 blue:0.9373 alpha:1.0];
+    return [UIColor colorWithRed:195.0f / 255.0f green:192.0f / 255.0f blue:199.0f / 255.0f alpha:1.0f];
 }
+
 + (UIColor *)gray500 {
-    return [UIColor colorWithRed:0.9765 green:0.9765 blue:0.9765 alpha:1.0];
+    return [UIColor colorWithRed:225.0f / 255.0f green:224.0f / 255.0f blue:227.0f / 255.0f alpha:1.0f];
 }
+
 + (UIColor *)gray600 {
-    return [UIColor colorWithRed:0.9961 green:0.9961 blue:0.9961 alpha:1.0];
+    return [UIColor colorWithRed:237.0f / 255.0f green:236.0f / 255.0f blue:238.0f / 255.0f alpha:1.0f];
 }
+
++ (UIColor *)gray700 {
+    return [UIColor colorWithWhite:249.0f / 255.0f alpha:1.0f];
+}
+
 
 // http://stackoverflow.com/a/18903483/1315039
 - (UIColor *)blendWithColor:(UIColor *)color2 alpha:(CGFloat)alpha2 {

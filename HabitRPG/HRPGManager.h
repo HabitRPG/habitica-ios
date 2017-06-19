@@ -314,6 +314,10 @@
                  onSuccess:(void (^)())successBlock
                    onError:(void (^)())errorBlock;
 
+- (void)runCron:(NSArray<Task *> *)completedTasks
+      onSuccess:(void (^)())successBlock
+        onError:(void (^)())errorBlock;
+
 
 - (NSManagedObjectContext *)getManagedObjectContext;
 

@@ -47,4 +47,5 @@
 @dynamic user;
 @dynamic isDue;
 @dynamic nextDue;
+@dynamic yesterDaily;
 @end

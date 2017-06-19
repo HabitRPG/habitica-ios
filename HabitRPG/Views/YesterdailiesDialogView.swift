@@ -31,9 +31,20 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         let viewController = YesterdailiesDialogView(nibName: "YesterdailiesDialogView", bundle: Bundle.main)
         viewController.sharedManager = sharedManager
         viewController.user = sharedManager.getUser()
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+        fetchRequest.predicate = NSPredicate(format: "type == 'daily' && completed == false && isDue == true && yesterDaily == true")
+        do {
+            viewController.tasks = try sharedManager.getManagedObjectContext().fetch(fetchRequest) as? [Task]
+        } catch {
+            viewController.tasks = []
+        }
+
+        if viewController.tasks?.count == 0 || sharedManager.getUser().didCronRunToday() {
+            return
+        }
         let popup = PopupDialog(viewController: viewController)
         presenter.present(popup, animated: true) {
-            viewController.handleDismiss()
         }
     }
 
@@ -47,14 +58,6 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         yesterdailiesTableView.register(nib, forCellReuseIdentifier: "Cell")
         yesterdailiesTableView.rowHeight = UITableViewAutomaticDimension
         yesterdailiesTableView.estimatedRowHeight = 60
-
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
-        fetchRequest.predicate = NSPredicate(format: "type == 'daily' && completed == false && isDue == true")
-        do {
-            tasks = try sharedManager?.getManagedObjectContext().fetch(fetchRequest) as? [Task]
-        } catch {
-            tasks = []
-        }
 
         updateTitleBanner()
         updateCheckinScreen()
@@ -83,6 +86,9 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
             cell?.checkbox.wasTouched = {[weak self] in
                 self?.checkedCell(indexPath)
             }
+            cell?.onChecklistItemChecked = {[weak self] item in
+                self?.checkChecklistItem(indexPath, item: item)
+            }
         }
         return cell ?? UITableViewCell()
     }
@@ -96,6 +102,11 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
             tasks[indexPath.item].completed = NSNumber(booleanLiteral: !(tasks[indexPath.item].completed?.boolValue ?? true))
             self.yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
         }
+    }
+    
+    private func checkChecklistItem(_ indexPath: IndexPath, item: ChecklistItem) {
+        item.completed = NSNumber(booleanLiteral: !(item.completed?.boolValue ?? true))
+        self.yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
     }
 
     func updateTitleBanner() {
@@ -115,6 +126,12 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func handleDismiss() {
-
+        var completedTasks = [Task]()
+        if let tasks = self.tasks {
+            for task in tasks where task.completed?.boolValue ?? false {
+                completedTasks.append(task)
+            }
+        }
+        sharedManager?.runCron(completedTasks, onSuccess: nil, onError: nil)
     }
 }

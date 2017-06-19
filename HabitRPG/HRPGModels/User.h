@@ -70,6 +70,7 @@
 @property(nonatomic, retain) NSString *facebookID;
 @property(nonatomic, retain) NSString *googleID;
 @property(nonatomic, retain) SubscriptionPlan *subscriptionPlan;
+@property(nonatomic, retain) NSDate *lastCron;
 
 @property(nonatomic, retain) Preferences *preferences;
 @property(nonatomic, retain) Outfit *costume;
@@ -195,5 +196,7 @@
 - (NSString *)hashedValueForAccountName;
 
 - (BOOL)hasSeenTutorialStepWithIdentifier:(NSString *)identifier;
+
+- (BOOL)didCronRunToday;
 
 @end

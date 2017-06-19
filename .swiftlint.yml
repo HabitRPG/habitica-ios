@@ -23,6 +23,8 @@ large_tuple:
   - 3
   - 4
 force_unwrapping: error
+trailing_whitespace:
+  ignores_empty_lines: true
 type_name:
   min_length: 4 # only warning
   max_length: # warning and error

@@ -25,6 +25,8 @@
             [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
         tapRecognizer.numberOfTapsRequired = 1;
         [self addGestureRecognizer:tapRecognizer];
+        
+        self.userInteractionEnabled = false;
     }
 
     return self;
@@ -41,16 +43,16 @@
         self.cornerRadius = 3;
 
         if ([task.completed boolValue]) {
-            self.boxFillColor = [UIColor gray400];
-            self.backgroundColor = [UIColor gray100];
-            self.checkColor = [UIColor gray200];
+            self.boxFillColor = [UIColor gray300];
+            self.backgroundColor = [UIColor gray500];
+            self.checkColor = [UIColor gray50];
         } else {
             if ([task dueTodayWithOffset:offset]) {
                 self.backgroundColor = [task lightTaskColor];
                 self.checkColor = [task taskColor];
             } else {
-                self.backgroundColor = [UIColor gray100];
-                self.checkColor = [UIColor gray200];
+                self.backgroundColor = [UIColor gray500];
+                self.checkColor = [UIColor gray50];
             }
         }
 
@@ -58,8 +60,8 @@
         self.cornerRadius = self.size / 2;
         if ([task.completed boolValue]) {
             self.boxFillColor = [UIColor gray400];
-            self.backgroundColor = [UIColor gray100];
-            self.checkColor = [UIColor gray200];
+            self.backgroundColor = [UIColor gray500];
+            self.checkColor = [UIColor gray50];
         } else {
             self.backgroundColor = [task lightTaskColor];
             self.checkColor = [task taskColor];
@@ -83,11 +85,11 @@
 }
 
 - (void)viewTapped:(UITapGestureRecognizer *)recognizer {
-    self.checked = !self.checked;
     if (self.wasTouched) {
+        self.checked = !self.checked;
         self.wasTouched();
+        [self setNeedsDisplay];
     }
-    [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -111,6 +113,13 @@
                                 self.frame.size.height / 2 - (self.size / 5));
         CGContextStrokePath(ctx);
     } else {
+    }
+}
+
+- (void)setWasTouched:(void (^)(void))wasTouched {
+    _wasTouched = wasTouched;
+    if (wasTouched != nil) {
+        self.userInteractionEnabled = true;
     }
 }
 

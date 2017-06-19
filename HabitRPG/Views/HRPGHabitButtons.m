@@ -58,7 +58,7 @@
             self.label.image = [UIImage imageNamed:@"plus_gray"];
         }
         self.label.contentMode = UIViewContentModeCenter;
-        self.backgroundColor = [UIColor gray500];
+        self.backgroundColor = [UIColor gray700];
         self.roundedView.layer.borderWidth = 1;
         self.roundedView.layer.borderColor = [UIColor gray300].CGColor;
     }

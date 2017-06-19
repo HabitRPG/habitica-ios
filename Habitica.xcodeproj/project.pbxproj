@@ -12,6 +12,7 @@
 		2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */; };
 		2980E60D1EEA39DF005B7100 /* YesterdailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */; };
 		29B388DF1EEF4FBD00A72950 /* MorningNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B388DE1EEF4FBD00A72950 /* MorningNotification.swift */; };
+		29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */; };
 		823F7132DD74058859184F61 /* Pods_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */; };
 		98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */; };
 		CF54FEE0D3F7F352ECA56F23 /* HRPGContentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CF54FD820D81110D9EF4756E /* HRPGContentResponse.m */; };
@@ -334,6 +335,8 @@
 		2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailyTaskCell.swift; sourceTree = "<group>"; };
 		2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyTaskCell.xib; sourceTree = "<group>"; };
 		29B388DE1EEF4FBD00A72950 /* MorningNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorningNotification.swift; sourceTree = "<group>"; };
+		29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyChecklistItem.xib; sourceTree = "<group>"; };
+		29B388E21EF3D40600A72950 /* HabitRPG 41.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 41.xcdatamodel"; sourceTree = "<group>"; };
 		2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
 		2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC569DB4F5A31ED940986A5 /* Pods-Habitica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.release.xcconfig"; sourceTree = "<group>"; };
@@ -1540,6 +1543,7 @@
 				D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */,
 				2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */,
 				2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */,
+				29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */,
 			);
 			path = TableviewCells;
 			sourceTree = "<group>";
@@ -2082,6 +2086,7 @@
 				D96576C51BAF53D400CCA28E /* HRPGGearDetailView.xib in Resources */,
 				D9CE90431E4CDC9100702578 /* SubscriptionDetailView.xib in Resources */,
 				D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */,
+				29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */,
 				D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				D91CCAD01BCF11CC001C6A0C /* HRPGUserTopHeader.xib in Resources */,
@@ -3219,6 +3224,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				29B388E21EF3D40600A72950 /* HabitRPG 41.xcdatamodel */,
 				D9A99ECA1EC5C9000070A27E /* HabitRPG 40.xcdatamodel */,
 				D9BB45DE1E7B3C950002AE2E /* HabitRPG 39.xcdatamodel */,
 				D9D17CC81E66EE3600AD9232 /* HabitRPG 38.xcdatamodel */,
@@ -3236,7 +3242,7 @@
 				D9B326771CD969D700973440 /* HabitRPG 26.xcdatamodel */,
 				D94E0AD81CCF9B8800B60210 /* HabitRPG 25.xcdatamodel */,
 			);
-			currentVersion = D9A99ECA1EC5C9000070A27E /* HabitRPG 40.xcdatamodel */;
+			currentVersion = 29B388E21EF3D40600A72950 /* HabitRPG 41.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -60,6 +60,7 @@
 + (UIColor *)gray400;
 + (UIColor *)gray500;
 + (UIColor *)gray600;
++ (UIColor *)gray700;
 
 - (UIColor *)blendWithColor:(UIColor *)color2 alpha:(CGFloat)alpha2;
 

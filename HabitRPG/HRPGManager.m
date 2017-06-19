@@ -211,7 +211,8 @@ NSString *currentUser;
         @"daysOfMonth" : @"daysOfMonth",
         @"weeksOfMonth" : @"weeksOfMonth",
         @"isDue": @"isDue",
-        @"nextDue": @"nextDue"
+        @"nextDue": @"nextDue",
+        @"yesterDaily": @"yesterDaily"
     }];
     taskMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping *checklistItemMapping =
@@ -279,7 +280,8 @@ NSString *currentUser;
         @"frequency" : @"frequency",
         @"startDate" : @"startDate",
         @"daysOfMonth" : @"daysOfMonth",
-        @"weeksOfMonth" : @"weeksOfMonth"
+        @"weeksOfMonth" : @"weeksOfMonth",
+        @"yesterDaily": @"yesterDaily"
     }];
     RKObjectMapping *checklistItemRequestMapping =
         [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
@@ -752,7 +754,8 @@ NSString *currentUser;
         @"invitations.party.name" : @"invitedPartyName",
         @"inbox.optOut" : @"inboxOptOut",
         @"inbox.newMessages" : @"inboxNewMessages",
-        @"challenges" : @"challengeArray"
+        @"challenges" : @"challengeArray",
+        @"lastCron": @"lastCron"
     }];
     entityMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping *userTagMapping =
@@ -4879,6 +4882,7 @@ NSString *currentUser;
                                              path:[NSString stringWithFormat:@"notifications/%@/read", notification.id]
                                        parameters:nil
                                           success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                              [self.networkIndicatorController endNetworking];
                                               if (successBlock) {
                                                   successBlock();
                                               }
@@ -4892,6 +4896,29 @@ NSString *currentUser;
                                               [self.networkIndicatorController endNetworking];
                                               return;
                                           }];
+}
+
+- (void)runCron:(NSArray<Task *> *)completedTasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self getUser].lastCron = [NSDate date];
+    if (completedTasks.count > 0) {
+        Task *task = [completedTasks lastObject];
+        [self upDownTask:task direction:@"up" onSuccess:^{
+            [self runCron:[completedTasks subarrayWithRange:NSMakeRange(0, completedTasks.count-1)] onSuccess:successBlock onError:errorBlock];
+        } onError:errorBlock];
+    } else {
+        [self.networkIndicatorController beginNetworking];
+        [[RKObjectManager sharedManager] postObject:nil path:@"cron" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [self.networkIndicatorController endNetworking];
+            [self fetchUser:successBlock onError:errorBlock];
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [self handleNetworkError:operation withError:error];
+            if (errorBlock) {
+                errorBlock();
+            }
+            [self.networkIndicatorController endNetworking];
+            return;
+        }];
+    }
 }
 
 - (void)displayNetworkError {
