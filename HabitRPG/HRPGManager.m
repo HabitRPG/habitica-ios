@@ -2510,7 +2510,7 @@ NSString *currentUser;
             }
             self.user = fetchedUser;
             
-            [YesterdailiesDialogView showDialogWithSharedManager:self];
+            [YesterdailiesDialogView showDialogWithSharedManager:self user:fetchedUser];
             [self handleNotifications:[mappingResult dictionary][@"notifications"]];
             [self.networkIndicatorController endNetworking];
             return;

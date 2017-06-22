@@ -777,7 +777,7 @@
 }
 
 - (BOOL)didCronRunToday {
-    return !self.needsCron;
+    return ![self.needsCron boolValue];
 }
 
 @end

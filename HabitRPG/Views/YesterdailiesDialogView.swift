@@ -27,10 +27,14 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     var tasks: [Task]?
     var user: User?
 
-    static func showDialog(sharedManager: HRPGManager) {
+    static func showDialog(sharedManager: HRPGManager, user: User) {
         let viewController = YesterdailiesDialogView(nibName: "YesterdailiesDialogView", bundle: Bundle.main)
         viewController.sharedManager = sharedManager
-        viewController.user = sharedManager.getUser()
+        viewController.user = user
+
+        if sharedManager.getUser().didCronRunToday() {
+            return
+        }
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
         fetchRequest.predicate = NSPredicate(format: "type == 'daily' && completed == false && isDue == true && yesterDaily == true")
@@ -39,9 +43,8 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         } catch {
             viewController.tasks = []
         }
-
-        if viewController.tasks?.count == 0 || sharedManager.getUser().didCronRunToday() {
-            sharedManager.runCron(nil, onSuccess: nil, onError: nil);
+        if viewController.tasks?.count == 0 {
+            sharedManager.runCron(nil, onSuccess: nil, onError: nil)
             return
         }
         let popup = PopupDialog(viewController: viewController)
