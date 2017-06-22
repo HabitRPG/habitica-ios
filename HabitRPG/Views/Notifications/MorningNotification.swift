@@ -20,7 +20,7 @@ class MorningNotificationwait: HRPGBaseNotificationView {
             }
 
             if let sharedManager = self.sharedManager {
-                YesterdailiesDialogView.showDialog(presenter: topController, sharedManager: sharedManager)
+                YesterdailiesDialogView.showDialog(sharedManager: sharedManager)
             }
         }
     }

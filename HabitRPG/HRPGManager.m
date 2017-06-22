@@ -47,6 +47,7 @@
 #import "HRPGNotification.h"
 #import "HRPGNotificationManager.h"
 #import "ShopItem+CoreDataClass.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
@@ -129,7 +130,7 @@ NSString *currentUser;
     NSString *DISABLE_SSL = info[@"DisableSSL"];
 
     if (CUSTOM_DOMAIN.length == 0) {
-        CUSTOM_DOMAIN = @"habitica.com/";
+        CUSTOM_DOMAIN = @"habitrpg-beta.herokuapp.com/";
     }
 
     if (![[CUSTOM_DOMAIN substringFromIndex: [CUSTOM_DOMAIN length] - 1]  isEqual: @"/"]) {
@@ -143,7 +144,7 @@ NSString *currentUser;
         ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
     }
 #else
-    ROOT_URL = @"https://habitica.com/";
+    ROOT_URL = @"https://habitrpg-beta.herokuapp.com/";
 #endif
 
     ROOT_URL = [ROOT_URL stringByAppendingString:@"api/v3/"];
@@ -755,7 +756,8 @@ NSString *currentUser;
         @"inbox.optOut" : @"inboxOptOut",
         @"inbox.newMessages" : @"inboxNewMessages",
         @"challenges" : @"challengeArray",
-        @"lastCron": @"lastCron"
+        @"lastCron": @"lastCron",
+        @"needsCron": @"needsCron"
     }];
     entityMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping *userTagMapping =
@@ -2507,6 +2509,8 @@ NSString *currentUser;
                 }
             }
             self.user = fetchedUser;
+            
+            [YesterdailiesDialogView showDialogWithSharedManager:self];
             [self handleNotifications:[mappingResult dictionary][@"notifications"]];
             [self.networkIndicatorController endNetworking];
             return;

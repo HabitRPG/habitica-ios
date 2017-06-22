@@ -50,8 +50,6 @@
     }
 
     self.viewWidth = self.view.frame.size.width;
-    
-    [YesterdailiesDialogView showDialogWithPresenter:self sharedManager:self.sharedManager];
 }
 
 - (NSString *)getScreenName {

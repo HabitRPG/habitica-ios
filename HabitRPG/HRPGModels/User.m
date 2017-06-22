@@ -74,6 +74,7 @@
 @dynamic googleID;
 @dynamic subscriptionPlan;
 @dynamic lastCron;
+@dynamic needsCron;
 
 @synthesize petCount = _petCount;
 @synthesize customizationsDictionary;
@@ -776,15 +777,7 @@
 }
 
 - (BOOL)didCronRunToday {
-    if (self.lastCron == nil) {
-        return true;
-    }
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                        fromDate:self.lastCron
-                                                          toDate:[NSDate date]
-                                                         options:0];
-    return [components day] < 1;
+    return !self.needsCron;
 }
 
 @end

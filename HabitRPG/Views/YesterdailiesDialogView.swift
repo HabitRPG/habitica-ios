@@ -27,7 +27,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     var tasks: [Task]?
     var user: User?
 
-    static func showDialog(presenter: UIViewController, sharedManager: HRPGManager) {
+    static func showDialog(sharedManager: HRPGManager) {
         let viewController = YesterdailiesDialogView(nibName: "YesterdailiesDialogView", bundle: Bundle.main)
         viewController.sharedManager = sharedManager
         viewController.user = sharedManager.getUser()
@@ -41,10 +41,16 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         }
 
         if viewController.tasks?.count == 0 || sharedManager.getUser().didCronRunToday() {
+            sharedManager.runCron(nil, onSuccess: nil, onError: nil);
             return
         }
         let popup = PopupDialog(viewController: viewController)
-        presenter.present(popup, animated: true) {
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            topController.present(popup, animated: true) {
+            }
         }
     }
 
