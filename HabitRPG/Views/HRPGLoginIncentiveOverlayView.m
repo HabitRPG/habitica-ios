@@ -131,6 +131,11 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
 }
 
 - (void)displayImageWithName:(NSString *)imageName {
+    
+    if ([imageName containsString:@"armor_"]) {
+        imageName = [@"slim_" stringByAppendingString:imageName];
+    }
+    
     YYWebImageManager *manager = [YYWebImageManager sharedManager];
     [manager
      requestImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://"
