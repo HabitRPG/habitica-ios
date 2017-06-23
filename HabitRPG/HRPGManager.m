@@ -2501,8 +2501,11 @@ NSString *currentUser;
                 [self updateMysteryItemCount];
             }
             if (includeTasks) {
-                [self fetchTasks:successBlock onError:errorBlock];
+                [self fetchTasks:^() {
+                    [YesterdailiesDialogView showDialogWithSharedManager:self user:fetchedUser];
+                }onError:errorBlock];
             } else {
+                [YesterdailiesDialogView showDialogWithSharedManager:self user:fetchedUser];
                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
                 if (successBlock) {
                     successBlock();
@@ -2510,7 +2513,6 @@ NSString *currentUser;
             }
             self.user = fetchedUser;
             
-            [YesterdailiesDialogView showDialogWithSharedManager:self user:fetchedUser];
             [self handleNotifications:[mappingResult dictionary][@"notifications"]];
             [self.networkIndicatorController endNetworking];
             return;
