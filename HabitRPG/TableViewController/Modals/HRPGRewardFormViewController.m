@@ -68,7 +68,7 @@
     [section addFormRow:row];
 
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"value"
-                                                rowType:XLFormRowDescriptorTypeNumber
+                                                rowType:XLFormRowDescriptorTypeInteger
                                                   title:NSLocalizedString(@"Value", nil)];
     row.required = YES;
     [section addFormRow:row];
