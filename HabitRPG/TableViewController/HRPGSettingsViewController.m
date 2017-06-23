@@ -496,12 +496,8 @@ User *user;
     selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
     HRPGClassTableViewController *classTableViewController =
         (HRPGClassTableViewController *)selectClassNavigationController.topViewController;
-    classTableViewController.shouldResetClass =
-        !user.flags.classSelected || user.preferences.disableClass;
-    [self presentViewController:selectClassNavigationController
-                       animated:YES
-                     completion:^(){
-                     }];
+    classTableViewController.shouldResetClass = [user.flags.classSelected boolValue] || [user.preferences.disableClass boolValue];
+    [self presentViewController:selectClassNavigationController animated:YES completion:^(){}];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

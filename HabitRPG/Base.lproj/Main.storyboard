@@ -914,7 +914,7 @@
         <scene sceneID="Qll-T6-t9b">
             <objects>
                 <navigationController definesPresentationContext="YES" id="TLp-c7-ouI" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wpi-h3-bV7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wpi-h3-bV7">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2111,7 +2111,7 @@
         <scene sceneID="20L-hn-jXz">
             <objects>
                 <collectionViewController id="l5S-RX-jq2" customClass="HRPGCustomizationCollectionViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="tcw-ht-irZ">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tcw-ht-irZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2328,7 +2328,7 @@
         <scene sceneID="Ntu-Ub-BnA">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="k4g-ZO-Buh" customClass="HRPGMountMasterViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="uMo-F9-k66">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="uMo-F9-k66">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2426,7 +2426,7 @@
         <scene sceneID="U2z-Dp-QKQ">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="LGJ-iF-vTZ" customClass="HRPGMountViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Jyn-1Y-gwc">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Jyn-1Y-gwc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2485,7 +2485,7 @@
         <scene sceneID="12D-16-Ge5">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="iyK-dS-pks" customClass="HRPGPetMasterViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="0uY-w8-R73">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="0uY-w8-R73">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2582,7 +2582,7 @@
         <scene sceneID="hyi-ES-K3e">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="OMM-QF-DNw" customClass="HRPGPetViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="0NF-w0-Ru8">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="0NF-w0-Ru8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2877,7 +2877,7 @@
         <scene sceneID="xVP-nc-WPW">
             <objects>
                 <navigationController storyboardIdentifier="PurchaseGemNavController" id="Ne7-W6-6zE" customClass="HRPGGemHeaderNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="t9n-14-0tP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="t9n-14-0tP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2893,7 +2893,7 @@
         <scene sceneID="KJ7-Ra-M0o">
             <objects>
                 <collectionViewController storyboardIdentifier="GemPurchaseViewController" id="0F5-C1-rPv" customClass="HRPGGemViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="CgT-fS-CrK">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="CgT-fS-CrK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3274,7 +3274,7 @@ and helps keep Habitica running</string>
         <scene sceneID="zXE-Rb-Ijy">
             <objects>
                 <navigationController storyboardIdentifier="ScanQRCodeNavController" id="YnE-Mq-Rpu" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hj3-fO-gIa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hj3-fO-gIa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3319,7 +3319,7 @@ and helps keep Habitica running</string>
         <scene sceneID="EKs-yn-VUc">
             <objects>
                 <navigationController storyboardIdentifier="SelectClassNavigationController" id="o94-7a-EOq" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kct-nb-9PY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kct-nb-9PY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3414,6 +3414,11 @@ and helps keep Habitica running</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="7y1-ng-Z7N">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9g9-mP-YcI">
+                            <connections>
+                                <segue destination="BLS-Kk-Pc6" kind="unwind" unwindAction="unwindToList:" id="6I4-nj-prd"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="?" id="obl-zo-g8m">
                             <connections>
                                 <segue destination="wZU-Fa-eCi" kind="show" identifier="HelpSegue" id="GTg-7t-9tX"/>
@@ -3422,6 +3427,7 @@ and helps keep Habitica running</string>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Zz-Pr-Eqx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="BLS-Kk-Pc6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1014.375" y="7282.5"/>
         </scene>
@@ -3470,7 +3476,7 @@ and helps keep Habitica running</string>
         <scene sceneID="Nw2-wB-jb0">
             <objects>
                 <navigationController definesPresentationContext="YES" id="2Kp-xG-Crg" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bb5-m2-Nwx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bb5-m2-Nwx">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3486,7 +3492,7 @@ and helps keep Habitica running</string>
         <scene sceneID="ruf-6E-0Qa">
             <objects>
                 <navigationController storyboardIdentifier="ItemNavigationController" id="c1T-s0-hTA" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="znX-dI-fQE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="znX-dI-fQE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3658,7 +3664,7 @@ and helps keep Habitica running</string>
         <scene sceneID="vLJ-DI-TYv">
             <objects>
                 <navigationController storyboardIdentifier="SpellUserNavigationController" id="Rfc-Mw-2vi" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WV0-L0-HaY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WV0-L0-HaY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3809,7 +3815,7 @@ and helps keep Habitica running</string>
         <scene sceneID="Khf-yu-jYt">
             <objects>
                 <navigationController storyboardIdentifier="spellTaskNavigationController" definesPresentationContext="YES" id="3xO-lf-NoI" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="se8-RR-m5d">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="se8-RR-m5d">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3959,7 +3965,7 @@ and helps keep Habitica running</string>
         <scene sceneID="9Qs-Im-7zO">
             <objects>
                 <navigationController storyboardIdentifier="tagNavigationController" definesPresentationContext="YES" id="6vN-Em-JCA" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="biY-dp-rGo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="biY-dp-rGo">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3976,7 +3982,7 @@ and helps keep Habitica running</string>
             <objects>
                 <navigationController restorationIdentifier="ProfileNavigationController" definesPresentationContext="YES" id="JSb-MY-Gwo" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Menu" image="tabbar_menu" id="hyj-Mf-lvH"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Gph-cu-5tJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gph-cu-5tJ">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3993,7 +3999,7 @@ and helps keep Habitica running</string>
             <objects>
                 <navigationController restorationIdentifier="TodoNavigationController" definesPresentationContext="YES" id="F9m-od-YIG" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="To-Dos" image="tabbar_todos" id="Np7-ws-fF6"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mXU-6R-4bg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mXU-6R-4bg">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4010,7 +4016,7 @@ and helps keep Habitica running</string>
             <objects>
                 <navigationController restorationIdentifier="DailyNavigationController" definesPresentationContext="YES" id="szj-Xo-0pc" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dailies" id="pdW-W9-wj6"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Tc8-JW-aRd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tc8-JW-aRd">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4484,7 +4490,7 @@ and helps keep Habitica running</string>
         <scene sceneID="pak-rs-9QE">
             <objects>
                 <navigationController storyboardIdentifier="LoginNavigationController" definesPresentationContext="YES" id="zXJ-qo-nbI" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="e6j-HK-n20">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="e6j-HK-n20">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -4502,7 +4508,7 @@ and helps keep Habitica running</string>
             <objects>
                 <navigationController restorationIdentifier="HabitNavigationController" definesPresentationContext="YES" id="ZPa-UZ-Rgq" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Habits" image="tabbar_habits" id="3G8-SH-Shd"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qQq-gV-VmG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qQq-gV-VmG">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4521,7 +4527,7 @@ and helps keep Habitica running</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tLB-b1-3s8" customClass="HRPGNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="GEg-Ct-SF3"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AhC-6Z-AYO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AhC-6Z-AYO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4541,7 +4547,7 @@ and helps keep Habitica running</string>
                     <tabBarItem key="tabBarItem" title="Rewards" image="tabbar_rewards" id="zFI-xr-RjT"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="qZ5-Dx-RNg"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="n1T-X7-pMj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="n1T-X7-pMj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4589,7 +4595,7 @@ and helps keep Habitica running</string>
         <scene sceneID="5Un-yC-qQm">
             <objects>
                 <navigationController definesPresentationContext="YES" id="IOk-9k-SGo" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fUl-qS-mY6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fUl-qS-mY6">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4606,7 +4612,7 @@ and helps keep Habitica running</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="vVF-2L-yft" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ghi-ex-tfu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ghi-ex-tfu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

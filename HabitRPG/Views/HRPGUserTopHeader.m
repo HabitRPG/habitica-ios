@@ -162,7 +162,7 @@ NSInteger rowOffset = 16;
         self.experienceLabel.maxValue = self.user.nextLevel;
     }
 
-    if ([self.user.level integerValue] >= 10) {
+    if ([self.user.level integerValue] >= 10 && ![self.user.preferences.disableClass boolValue]) {
         self.magicLabel.value = self.user.magic;
         if ([self.user.maxMagic integerValue] > 0) {
             self.magicLabel.maxValue = self.user.maxMagic;
