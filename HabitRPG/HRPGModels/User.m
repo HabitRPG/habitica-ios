@@ -75,6 +75,7 @@
 @dynamic subscriptionPlan;
 @dynamic lastCron;
 @dynamic needsCron;
+@dynamic loginIncentives;
 
 @synthesize petCount = _petCount;
 @synthesize customizationsDictionary;

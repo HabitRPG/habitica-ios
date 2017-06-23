@@ -69,7 +69,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgP-Ii-oSg">
                             <rect key="frame" x="0.0" y="100" width="343" height="128"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Check off any dailies you did yesterday:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cnh-f6-c1z">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Check off any Dailies you did yesterday:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cnh-f6-c1z">
                                     <rect key="frame" x="8" y="8" width="327" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="yjG-Eg-d2A"/>
@@ -172,7 +172,7 @@
                     <constraints>
                         <constraint firstAttribute="height" priority="500" constant="50" id="n11-lc-Fn1"/>
                     </constraints>
-                    <state key="normal" title="Stary my day">
+                    <state key="normal" title="Start my day">
                         <color key="titleColor" red="0.60586214065551758" green="0.3846261203289032" blue="0.99835687875747681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>

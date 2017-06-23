@@ -72,6 +72,7 @@
 @property(nonatomic, retain) SubscriptionPlan *subscriptionPlan;
 @property(nonatomic, retain) NSDate *lastCron;
 @property(nonatomic, retain) NSNumber *needsCron;
+@property(nonatomic, retain) NSNumber *loginIncentives;
 
 @property(nonatomic, retain) Preferences *preferences;
 @property(nonatomic, retain) Outfit *costume;

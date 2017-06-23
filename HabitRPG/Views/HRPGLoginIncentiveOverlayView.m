@@ -95,7 +95,7 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
     [self layoutSubviews];
     // top margin, title-image margin, image, image-notes margin, notes-buttons margin, button
     // height
-    CGFloat height = 20 + 16 + self.imageViewHeight.constant + 16 + 16 + 50 + 40;
+    CGFloat height = 20 + 16 + self.imageViewHeight.constant + 16 + 16 + 50 + 150;
     [self.titleLabel sizeToFit];
     height = height + self.titleLabel.frame.size.height;
     [self.descriptionView sizeToFit];
@@ -122,11 +122,11 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
     self.descriptionView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
-- (void)setNextUnlock:(NSNumber *)nextUnlock {
-    if (![nextUnlock isEqual:[NSNull null]] && [nextUnlock integerValue] == 1) {
+- (void)setNextUnlock:(NSInteger)nextUnlock {
+    if (nextUnlock == 1) {
         self.nextUnlockLabel.text = NSLocalizedString(@"Your next prize unlocks in 1 Check-In.", nil);
     } else {
-        self.nextUnlockLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Your next prize unlocks in %@ Check-Ins", nil), nextUnlock];
+        self.nextUnlockLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Your next prize unlocks in %d Check-Ins", nil), nextUnlock];
     }
 }
 
@@ -188,19 +188,11 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
     self.buttonSeparator.hidden = YES;
 }
 
-- (void)setReward:(NSString *)imageName withTitle:(NSString *)title withMessage:(NSString *)message withDaysUntilNext:(NSNumber *)daysUntil {
+- (void)setReward:(NSString *)imageName withTitle:(NSString *)title withMessage:(NSString *)message withDaysUntilNext:(NSInteger)daysUntil {
     self.titleText = title;
     self.descriptionText = message;
     [self displayImageWithName:[imageName stringByAppendingString:@".png"]];
     [self setNextUnlock:daysUntil];
-}
-
-- (void)setNoRewardWithMessage:(NSString *)message withDaysUntilNext:(NSNumber *)daysUntil {
-    self.titleText = NSLocalizedString(@"Your Check-In Counter went up!", nil);
-    self.descriptionText = message;
-    [self displayImageWithName:@"inventory_present_11.png"];
-    [self setNextUnlock:daysUntil];
-    [self hideShareButton];
 }
 
 @end

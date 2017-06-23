@@ -757,7 +757,8 @@ NSString *currentUser;
         @"inbox.newMessages" : @"inboxNewMessages",
         @"challenges" : @"challengeArray",
         @"lastCron": @"lastCron",
-        @"needsCron": @"needsCron"
+        @"needsCron": @"needsCron",
+        @"loginIncentives": @"loginIncentives"
     }];
     entityMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping *userTagMapping =
@@ -2503,6 +2504,9 @@ NSString *currentUser;
             if (includeTasks) {
                 [self fetchTasks:^() {
                     [YesterdailiesDialogView showDialogWithSharedManager:self user:fetchedUser];
+                    if (successBlock) {
+                        successBlock();
+                    }
                 }onError:errorBlock];
             } else {
                 [YesterdailiesDialogView showDialogWithSharedManager:self user:fetchedUser];

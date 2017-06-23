@@ -56,15 +56,17 @@
         self.detailLabel.textColor = [UIColor gray50];
         self.priceLabel.textColor = [UIColor purple300];
         self.imageView.alpha = 1.0;
+        self.coinImageView.alpha = 1.0;
         self.backgroundColor = [UIColor whiteColor];
         self.buyButton.userInteractionEnabled = YES;
     } else {
-        self.buyView.layer.borderColor = [[UIColor gray50] CGColor];
-        self.titleLabel.textColor = [UIColor gray50];
-        self.detailLabel.textColor = [UIColor gray50];
-        self.priceLabel.textColor = [UIColor gray50];
-        self.imageView.alpha = 0.8;
-        self.backgroundColor = [UIColor gray500];
+        self.buyView.layer.borderColor = [[UIColor gray100] CGColor];
+        self.titleLabel.textColor = [UIColor gray100];
+        self.detailLabel.textColor = [UIColor gray100];
+        self.priceLabel.textColor = [UIColor gray100];
+        self.imageView.alpha = 0.6;
+        self.coinImageView.alpha = 0.6;
+        self.backgroundColor = [UIColor gray700];
         self.buyButton.userInteractionEnabled = NO;
     }
 }
@@ -109,15 +111,17 @@
         self.detailLabel.textColor = [UIColor gray50];
         self.priceLabel.textColor = [UIColor purple300];
         self.imageView.alpha = 1.0;
+        self.coinImageView.alpha = 1.0;
         self.backgroundColor = [UIColor whiteColor];
         self.buyButton.userInteractionEnabled = YES;
     } else {
-        self.buyView.layer.borderColor = [[UIColor gray50] CGColor];
-        self.titleLabel.textColor = [UIColor gray50];
-        self.detailLabel.textColor = [UIColor gray50];
-        self.priceLabel.textColor = [UIColor gray50];
-        self.imageView.alpha = 0.8;
-        self.backgroundColor = [UIColor gray500];
+        self.buyView.layer.borderColor = [[UIColor gray100] CGColor];
+        self.titleLabel.textColor = [UIColor gray100];
+        self.detailLabel.textColor = [UIColor gray100];
+        self.priceLabel.textColor = [UIColor gray100];
+        self.imageView.alpha = 0.6;
+        self.coinImageView.alpha = 0.6;
+        self.backgroundColor = [UIColor gray700];
         self.buyButton.userInteractionEnabled = NO;
     }
     

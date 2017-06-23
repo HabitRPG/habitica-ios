@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "HRPGBaseNotificationView.h"
+#import "User.h"
 
 @interface HRPGLoginIncentiveNotification : HRPGBaseNotificationView
+
+@property User *user;
 
 @end

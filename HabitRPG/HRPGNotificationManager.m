@@ -66,7 +66,10 @@
     if ([self.currentNotification.type isEqualToString:@"DROPS_ENABLED"]) {
         notificationView = [[HRPGDropsEnabledNotification alloc] init];
     } else if ([self.currentNotification.type isEqualToString:@"LOGIN_INCENTIVE"]) {
-        notificationView = [[HRPGLoginIncentiveNotification alloc] init];
+        HRPGLoginIncentiveNotification *notification = [[HRPGLoginIncentiveNotification alloc] init];
+        notification.user = [self.sharedManager getUser];
+        notificationView = notification;
+        
     }
     
     if (notificationView == nil) {
