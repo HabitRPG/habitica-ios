@@ -49,7 +49,6 @@
         NSDictionary *options = @{
                                   kCRToastTextKey : NSLocalizedString(@"Check-in", nil),
                                   kCRToastSubtitleTextKey: nextUnlock,
-                                  kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
                                   kCRToastBackgroundColorKey : [UIColor blue100],
                                   };
         [CRToastManager showNotificationWithOptions:options
