@@ -70,7 +70,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7w-ji-YUr">
                             <rect key="frame" x="16" y="128" width="343" height="21"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="21" id="v5C-3K-0mJ"/>
+                                <constraint firstAttribute="height" priority="500" constant="21" id="v5C-3K-0mJ"/>
                             </constraints>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                             <color key="textColor" red="0.29613816739999999" green="0.69819062949999999" blue="0.92155146600000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

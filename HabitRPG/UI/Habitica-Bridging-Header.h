@@ -18,3 +18,4 @@
 #import "Reminder.h"
 #import "Tag.h"
 #import "HRPGBaseNotificationView.h"
+#import "HRPGTabBarController.h"

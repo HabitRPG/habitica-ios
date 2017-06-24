@@ -44,7 +44,7 @@
         if (nextRewardIn== 1) {
             nextUnlock = NSLocalizedString(@"Your next prize unlocks in 1 Check-In.", nil);
         } else {
-            nextUnlock = [NSString stringWithFormat:NSLocalizedString(@"Your next prize unlocks in %@ Check-Ins", nil), nextUnlock];
+            nextUnlock = [NSString stringWithFormat:NSLocalizedString(@"Your next prize unlocks in %d Check-Ins", nil), nextRewardIn];
         }
         NSDictionary *options = @{
                                   kCRToastTextKey : NSLocalizedString(@"Check-in", nil),

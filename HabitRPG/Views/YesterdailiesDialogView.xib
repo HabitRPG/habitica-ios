@@ -38,7 +38,7 @@
                                 <constraint firstAttribute="height" priority="500" constant="21" id="AOC-mJ-iQh"/>
                             </constraints>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Next prize unlocks in 20 Check-ins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVk-F2-Prf">
@@ -47,11 +47,10 @@
                                 <constraint firstAttribute="height" priority="500" constant="21" id="Jlm-JW-k6z"/>
                             </constraints>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.31309956312179565" green="0.70654755830764771" blue="0.91485899686813354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.97592383623123169" green="0.97666221857070923" blue="0.97603815793991089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="xVk-F2-Prf" secondAttribute="trailing" constant="20" id="KUj-Dk-bfL"/>
                         <constraint firstItem="xVk-F2-Prf" firstAttribute="top" secondItem="hBP-nw-3qD" secondAttribute="bottom" constant="4" id="e8Q-yu-4cO"/>

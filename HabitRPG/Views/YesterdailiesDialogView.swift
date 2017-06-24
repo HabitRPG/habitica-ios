@@ -52,7 +52,9 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
-            topController.present(popup, animated: true) {
+            if let controller = topController as? HRPGTabBarController {
+                controller.present(popup, animated: true) {
+                }
             }
         }
     }

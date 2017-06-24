@@ -96,12 +96,10 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
     // top margin, title-image margin, image, image-notes margin, notes-buttons margin, button
     // height
     CGFloat height = 20 + 16 + self.imageViewHeight.constant + 16 + 16 + 50 + 150;
-    [self.titleLabel sizeToFit];
-    height = height + self.titleLabel.frame.size.height;
-    [self.descriptionView sizeToFit];
-    height = height + self.descriptionView.frame.size.height;
-    [self.nextUnlockLabel sizeToFit];
-    height = height + self.nextUnlockLabel.frame.size.height;
+    height = height + [self.titleLabel textRectForBounds:CGRectMake(0.0, 0.0, width, CGFLOAT_MAX) limitedToNumberOfLines:0].size.height;
+    height = height + [self.descriptionView textRectForBounds:CGRectMake(0.0, 0.0, width, CGFLOAT_MAX) limitedToNumberOfLines:0].size.height;
+    height = height + [self.nextUnlockLabel textRectForBounds:CGRectMake(0.0, 0.0, width, CGFLOAT_MAX) limitedToNumberOfLines:0].size.height;
+
     
     self.frame = CGRectMake(0, 0, width, height);
     UIImage *mask = MTDContextCreateRoundedMask(self.bounds, 8.0, 8.0, 8.0, 8.0);
