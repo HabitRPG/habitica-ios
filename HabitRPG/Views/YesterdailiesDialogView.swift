@@ -38,6 +38,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
         fetchRequest.predicate = NSPredicate(format: "type == 'daily' && completed == false && isDue == true && yesterDaily == true")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
         do {
             viewController.tasks = try sharedManager.getManagedObjectContext().fetch(fetchRequest) as? [Task]
         } catch {
