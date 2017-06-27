@@ -35,7 +35,7 @@ class SubscriptionDetailView: UITableViewCell {
         if plan.count == 0 {
             monthsSubscribedPill.text = "1 Month".localized
         } else {
-            monthsSubscribedPill.text = "\(plan.count) Months".localized
+            monthsSubscribedPill.text = "\(plan.count ?? 0) Months".localized
         }
 
         gemCapPill.text = String(plan.totalGemCap)
