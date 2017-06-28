@@ -474,7 +474,7 @@ NSString *currentUser;
             if (typeQuery) {
                 if ([typeQuery isEqualToString:@"habits"]) {
                     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"type == 'habit'"]];
-                }else if ([typeQuery isEqualToString:@"dailies"]) {
+                }else if ([typeQuery isEqualToString:@"dailys"]) {
                     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"type == 'daily'"]];
                 } else if ([typeQuery isEqualToString:@"todos"]) {
                     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"type == 'todo' && completed == NO"]];
@@ -2385,9 +2385,23 @@ NSString *currentUser;
 }
 
 - (void)fetchTasks:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self fetchTasksForDay:nil onSuccess:successBlock onError:errorBlock];
+}
+
+- (void)fetchTasksForDay:(NSDate *)dueDate
+               onSuccess:(void (^)())successBlock
+                 onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"tasks/user"
+    NSString *url = @"tasks/user";
+    if (dueDate) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"YYYY-MM-dd";
+        url = [url stringByAppendingString:@"?type=dailys&dueDate="];
+        url = [url stringByAppendingString:[formatter stringFromDate:dueDate]];
+    }
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:url
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;

@@ -16,11 +16,11 @@
     if (self != nil) {
         NSString *string = url;
         NSScanner *scanner = [NSScanner scannerWithString:string];
-        [scanner setCharactersToBeSkipped:[NSCharacterSet characterSetWithCharactersInString:@"&amp;?"]];
+        [scanner setCharactersToBeSkipped:[NSCharacterSet characterSetWithCharactersInString:@"&?"]];
         NSString *tempString;
         NSMutableArray *vars = [NSMutableArray new];
         [scanner scanUpToString:@"?" intoString:nil];       //ignore the beginning of the string and skip to the vars
-        while ([scanner scanUpToString:@"&amp;" intoString:&tempString]) {
+        while ([scanner scanUpToString:@"&" intoString:&tempString]) {
             [vars addObject:[tempString copy]];
         }
         self.variables = vars;

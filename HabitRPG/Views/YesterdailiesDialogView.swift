@@ -35,29 +35,32 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         if sharedManager.getUser().didCronRunToday() {
             return
         }
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
-        fetchRequest.predicate = NSPredicate(format: "type == 'daily' && completed == false && isDue == true && yesterDaily == true")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
-        do {
-            viewController.tasks = try sharedManager.getManagedObjectContext().fetch(fetchRequest) as? [Task]
-        } catch {
-            viewController.tasks = []
-        }
-        if viewController.tasks?.count == 0 {
-            sharedManager.runCron(nil, onSuccess: nil, onError: nil)
-            return
-        }
-        let popup = PopupDialog(viewController: viewController)
-        if var topController = UIApplication.shared.keyWindow?.rootViewController {
-            while let presentedViewController = topController.presentedViewController {
-                topController = presentedViewController
+        let today = Date()
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)
+        sharedManager .fetchTasks(forDay: yesterday, onSuccess: {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+            fetchRequest.predicate = NSPredicate(format: "type == 'daily' && completed == false && isDue == true && yesterDaily == true")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
+            do {
+                viewController.tasks = try sharedManager.getManagedObjectContext().fetch(fetchRequest) as? [Task]
+            } catch {
+                viewController.tasks = []
             }
-            if let controller = topController as? HRPGTabBarController {
-                controller.present(popup, animated: true) {
+            if viewController.tasks?.count == 0 {
+                sharedManager.runCron(nil, onSuccess: nil, onError: nil)
+                return
+            }
+            let popup = PopupDialog(viewController: viewController)
+            if var topController = UIApplication.shared.keyWindow?.rootViewController {
+                while let presentedViewController = topController.presentedViewController {
+                    topController = presentedViewController
+                }
+                if let controller = topController as? HRPGTabBarController {
+                    controller.present(popup, animated: true) {
+                    }
                 }
             }
-        }
+        }, onError: nil)
     }
 
     override func viewDidLoad() {

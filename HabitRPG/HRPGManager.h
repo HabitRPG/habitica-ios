@@ -33,6 +33,9 @@
 - (void)fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)fetchTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
+- (void)fetchTasksForDay:(NSDate *)dueDate
+               onSuccess:(void (^)())successBlock
+                 onError:(void (^)())errorBlock;
 - (void)fetchCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock;
