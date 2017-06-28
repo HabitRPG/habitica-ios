@@ -130,7 +130,7 @@ NSString *currentUser;
     NSString *DISABLE_SSL = info[@"DisableSSL"];
 
     if (CUSTOM_DOMAIN.length == 0) {
-        CUSTOM_DOMAIN = @"habitrpg-beta.herokuapp.com/";
+        CUSTOM_DOMAIN = @"habitica.com/";
     }
 
     if (![[CUSTOM_DOMAIN substringFromIndex: [CUSTOM_DOMAIN length] - 1]  isEqual: @"/"]) {
@@ -144,7 +144,7 @@ NSString *currentUser;
         ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
     }
 #else
-    ROOT_URL = @"https://habitrpg-beta.herokuapp.com/";
+    ROOT_URL = @"https://habitica.com/";
 #endif
 
     ROOT_URL = [ROOT_URL stringByAppendingString:@"api/v3/"];
