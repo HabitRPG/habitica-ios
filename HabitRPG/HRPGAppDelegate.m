@@ -585,13 +585,13 @@
 }
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
-    
-    [self.sharedManager fetchTasks:^{
-        completionHandler(UIBackgroundFetchResultNewData);
-    } onError:^{
-        completionHandler(UIBackgroundFetchResultFailed);
-    }];
-    
+    if (self.sharedManager.hasAuthentication) {
+        [self.sharedManager fetchTasks:^{
+            completionHandler(UIBackgroundFetchResultNewData);
+        } onError:^{
+            completionHandler(UIBackgroundFetchResultFailed);
+        }];
+    }
 }
 
 @end

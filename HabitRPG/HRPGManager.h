@@ -27,6 +27,7 @@
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property(nonatomic, strong) User *user;
 @property(nonatomic) BOOL useAppBadge;
+@property(nonatomic, readonly) BOOL hasAuthentication;
 
 - (void)loadObjectManager:(RKManagedObjectStore *)existingManagedObjectStore;
 

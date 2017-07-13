@@ -2278,6 +2278,10 @@ NSString *currentUser;
     [[Crashlytics sharedInstance] setUserName:currentUser];
 }
 
+- (BOOL)hasAuthentication {
+    return (currentUser != nil && currentUser.length > 0);
+}
+
 - (void)clearLoginCredentials {
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-user" value:@""];
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-key" value:@""];
