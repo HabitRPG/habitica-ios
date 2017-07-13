@@ -573,10 +573,12 @@
             [self setOldFrequencyRows:[formRow.value valueData]];
         }
     }
-    [self.tableView beginUpdates];
-    [self.tableView footerViewForSection:2].textLabel.text = [self tableView:self.tableView titleForFooterInSection:2];
-    [[self.tableView footerViewForSection:2].textLabel sizeThatFits:CGSizeMake(self.tableView.frame.size.width, CGFLOAT_MAX)];
-    [self.tableView endUpdates];
+    if (![formRow.tag isEqualToString:@"reminder"] && formRow.tag != nil) {
+        [self.tableView beginUpdates];
+        [self.tableView footerViewForSection:2].textLabel.text = [self tableView:self.tableView titleForFooterInSection:2];
+        [[self.tableView footerViewForSection:2].textLabel sizeThatFits:CGSizeMake(self.tableView.frame.size.width, CGFLOAT_MAX)];
+        [self.tableView endUpdates];
+    }
 }
 
 - (void)formRowHasBeenAdded:(XLFormRowDescriptor *)formRow atIndexPath:(NSIndexPath *)indexPath {

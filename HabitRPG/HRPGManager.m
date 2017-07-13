@@ -2400,7 +2400,7 @@ NSString *currentUser;
     NSString *url = @"tasks/user";
     if (dueDate) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = @"YYYY-MM-dd";
+        formatter.dateFormat = @"YYYY-MM-dd'T'HH:mm:ssXXX";
         url = [url stringByAppendingString:@"?type=dailys&dueDate="];
         url = [url stringByAppendingString:[formatter stringFromDate:dueDate]];
     }
