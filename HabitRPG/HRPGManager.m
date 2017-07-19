@@ -2403,6 +2403,7 @@ NSString *currentUser;
         formatter.dateFormat = @"YYYY-MM-dd'T'HH:mm:ssXXX";
         url = [url stringByAppendingString:@"?type=dailys&dueDate="];
         url = [url stringByAppendingString:[formatter stringFromDate:dueDate]];
+        url = [url stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     }
     
     [[RKObjectManager sharedManager] getObjectsAtPath:url
