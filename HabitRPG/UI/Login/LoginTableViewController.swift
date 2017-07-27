@@ -15,21 +15,23 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
 
     public var isRootViewController = false
 
-    @IBOutlet weak private var authTypeButton: UIBarButtonItem!
-    @IBOutlet weak private var usernameTextField: UITextField!
-    @IBOutlet weak private var emailTextField: UITextField!
-    @IBOutlet weak private var passwordTextField: UITextField!
-    @IBOutlet weak private var passwordRepeatTextField: UITextField!
+    @IBOutlet weak private var usernameField: LoginEntryView!
+    @IBOutlet weak private var emailField: LoginEntryView!
+    @IBOutlet weak private var passwordField: LoginEntryView!
+    @IBOutlet weak private var passwordRepeatField: LoginEntryView!
     @IBOutlet weak private var loginButton: UIButton!
-    @IBOutlet weak private var loginButtonBackground: UIView!
     @IBOutlet weak private var onePasswordButton: UIButton!
     @IBOutlet weak private var googleLoginButton: UIButton!
     @IBOutlet weak private var facebookLoginButton: UIButton!
+    @IBOutlet weak private var registerBeginButton: UIButton!
+    @IBOutlet weak private var loginBeginButton: UIButton!
+    @IBOutlet weak var backgroundScrollView: UIScrollView!
+    @IBOutlet weak var formContainer: UIStackView!
+    @IBOutlet weak var beginButtonContainer: UIStackView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var gradientView: GradientView!
 
-    @IBOutlet weak private var emailFieldHeight: NSLayoutConstraint!
-    @IBOutlet weak private var emailFieldTopSpacing: NSLayoutConstraint!
-    @IBOutlet weak private var passwordRepeatFieldHeight: NSLayoutConstraint!
-    @IBOutlet weak private var passwordRepeatFieldTopSpacing: NSLayoutConstraint!
+    @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak private var loginActivityIndicator: UIActivityIndicatorView!
 
     private let viewModel = LoginViewModel()
@@ -43,37 +45,76 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         self.viewModel.inputs.setSharedManager(sharedManager: self.sharedManager)
         self.viewModel.inputs.setViewController(viewController: self)
 
-        self.configureNavigationBar()
-
-        authTypeButton.target = self
-        authTypeButton.action = #selector(authTypeButtonTapped)
-        usernameTextField.addTarget(self, action: #selector(usernameTextFieldChanged(textField:)), for: .editingChanged)
-        emailTextField.addTarget(self, action: #selector(emailTextFieldChanged(textField:)), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(passwordTextFieldChanged(textField:)), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(passwordTextFieldChanged(textField:)), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(passwordTextFieldDoneEditing(textField:)), for: .editingDidEnd)
-        passwordRepeatTextField.addTarget(self, action: #selector(passwordRepeatTextFieldChanged(textField:)), for: .editingChanged)
-        passwordRepeatTextField.addTarget(self, action: #selector(passwordRepeatTextFieldDoneEditing(textField:)), for: .editingDidEnd)
+        loginBeginButton.addTarget(self, action: #selector(loginBeginButtonPressed), for: .touchUpInside)
+        registerBeginButton.addTarget(self, action: #selector(registerBeginButtonPressed), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        usernameField.entryView.addTarget(self, action: #selector(usernameTextFieldChanged(textField:)), for: .editingChanged)
+        emailField.entryView.addTarget(self, action: #selector(emailTextFieldChanged(textField:)), for: .editingChanged)
+        passwordField.entryView.addTarget(self, action: #selector(passwordTextFieldChanged(textField:)), for: .editingChanged)
+        passwordField.entryView.addTarget(self, action: #selector(passwordTextFieldChanged(textField:)), for: .editingChanged)
+        passwordField.entryView.addTarget(self, action: #selector(passwordTextFieldDoneEditing(textField:)), for: .editingDidEnd)
+        passwordRepeatField.entryView.addTarget(self, action: #selector(passwordRepeatTextFieldChanged(textField:)), for: .editingChanged)
+        passwordRepeatField.entryView.addTarget(self, action: #selector(passwordRepeatTextFieldDoneEditing(textField:)), for: .editingDidEnd)
 
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         googleLoginButton.addTarget(self, action: #selector(googleLoginButtonPressed), for: .touchUpInside)
         facebookLoginButton.addTarget(self, action: #selector(facebookLoginButtonPressed), for: .touchUpInside)
 
         onePasswordButton.addTarget(self, action: #selector(onePasswordButtonPressed), for: .touchUpInside)
-
+        
+        self.viewModel.setAuthType(authType: LoginViewAuthType.none)
         bindViewModel()
-        self.viewModel.setAuthType(authType: LoginViewAuthType.login)
         self.viewModel.inputs.onePassword(
             isAvailable: OnePasswordExtension.shared().isAppExtensionAvailable()
         )
     }
-
-    private func configureNavigationBar() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-        self.navigationController?.navigationBar.backgroundColor = .clear
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        initialUISetup()
+    }
+    
+    private func initialUISetup() {
+        let buttonBackground = #imageLiteral(resourceName: "LoginButton").resizableImage(withCapInsets: UIEdgeInsets(top: 21, left: 21, bottom: 21, right: 21))
+        loginButton.setBackgroundImage(buttonBackground, for: .normal)
+        facebookLoginButton.setBackgroundImage(buttonBackground, for: .normal)
+        googleLoginButton.setBackgroundImage(buttonBackground, for: .normal)
+        
+        backgroundScrollView.layoutIfNeeded()
+        let contentOffset = CGPoint(x: 0, y: backgroundScrollView.contentSize.height-view.frame.size.height)
+        backgroundScrollView.contentOffset = contentOffset
+        formContainer.arrangedSubviews.forEach({ (view) in
+            view.alpha = 0
+        })
+        backButton.alpha = 0
+        
+        generateStars()
+    }
+    
+    private func generateStars() {
+        generateStars(largeCount: 1, mediumCount: 12, smallCount: 25)
+    }
+    
+    private func generateStars(largeCount: Int, mediumCount: Int, smallCount: Int) {
+        for _ in 1...largeCount {
+            generateStar(#imageLiteral(resourceName: "StarLarge"))
+        }
+        for _ in 1...mediumCount {
+            generateStar(#imageLiteral(resourceName: "StarMedium"))
+        }
+        for _ in 1...smallCount {
+            generateStar(#imageLiteral(resourceName: "StarSmall"))
+        }
+    }
+    
+    private func generateStar(_ image: UIImage) {
+        let imageView = UIImageView()
+        imageView.image = image
+        
+        imageView.frame.origin = CGPoint(x: Int(arc4random_uniform(UInt32(backgroundScrollView.contentSize.width)) + 1),
+                                         y: Int(arc4random_uniform(UInt32(backgroundScrollView.contentSize.height)) + 1))
+        imageView.frame.size = image.size
+        backgroundScrollView.insertSubview(imageView, aboveSubview: gradientView)
     }
 
     func bindViewModel() {
@@ -84,7 +125,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         setupOnePassword()
 
         self.viewModel.outputs.usernameFieldTitle.observeValues {[weak self] value in
-            self?.usernameTextField.placeholder = value
+            self?.usernameField.placeholderText = value
         }
 
         self.viewModel.outputs.showError
@@ -108,23 +149,15 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         .observeValues {[weak self] isVisible in
             if isVisible {
                 self?.loginActivityIndicator.startAnimating()
-                UIView.animate(withDuration: 0.5, animations: {
-                    self?.loginButton.alpha = 0
-                    self?.loginActivityIndicator.alpha = 1
-                })
+                self?.loginActivityIndicator.isHidden = false
             } else {
-                UIView.animate(withDuration: 0.5, animations: {
-                    self?.loginButton.alpha = 1
-                    self?.loginActivityIndicator.alpha = 0
-                }, completion: { (_) in
-                    self?.loginActivityIndicator.stopAnimating()
-                })
+                self?.loginActivityIndicator.isHidden = true
+                self?.loginActivityIndicator.stopAnimating()
             }
         }
     }
 
     func setupButtons() {
-        self.authTypeButton.reactive.title <~ self.viewModel.outputs.authTypeButtonTitle
         self.loginButton.reactive.title <~ self.viewModel.outputs.loginButtonTitle
         self.loginButton.reactive.isEnabled <~ self.viewModel.outputs.isFormValid
     }
@@ -135,11 +168,11 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             if value {
-                weakSelf.showField(fieldHeightConstraint: weakSelf.emailFieldHeight, spacingHeightConstraint:weakSelf.emailFieldTopSpacing)
-                weakSelf.emailTextField.isEnabled = true
+                weakSelf.emailField.isHidden = false
+                weakSelf.emailField.entryView.isEnabled = true
             } else {
-                weakSelf.hideField(fieldHeightConstraint: weakSelf.emailFieldHeight, spacingHeightConstraint:weakSelf.emailFieldTopSpacing)
-                weakSelf.emailTextField.isEnabled = false
+                weakSelf.emailField.isHidden = true
+                weakSelf.emailField.entryView.isEnabled = false
             }
         }
         self.viewModel.outputs.passwordRepeatFieldVisibility.observeValues {[weak self] value in
@@ -147,11 +180,91 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             if value {
-                weakSelf.showField(fieldHeightConstraint: weakSelf.passwordRepeatFieldHeight, spacingHeightConstraint:weakSelf.passwordRepeatFieldTopSpacing)
-                weakSelf.passwordRepeatTextField.isEnabled = true
+                weakSelf.passwordRepeatField.isHidden = false
+                weakSelf.passwordRepeatField.entryView.isEnabled = true
             } else {
-                weakSelf.hideField(fieldHeightConstraint: weakSelf.passwordRepeatFieldHeight, spacingHeightConstraint:weakSelf.passwordRepeatFieldTopSpacing)
-                weakSelf.passwordRepeatTextField.isEnabled = false
+                weakSelf.passwordRepeatField.isHidden = true
+                weakSelf.passwordRepeatField.entryView.isEnabled = false
+            }
+        }
+        
+        self.viewModel.outputs.formVisibility.observeValues {[weak self] (value) in
+            guard let weakSelf = self else {
+                return
+            }
+            if value {
+                weakSelf.formContainer.isHidden = false
+                for (position, view) in weakSelf.formContainer.arrangedSubviews.enumerated() {
+                    UIView.animate(withDuration: 0.4, delay: 1+0.1*Double(position), options: [], animations: {
+                        view.alpha = 1
+                    })
+                }
+            } else {
+                UIView.animate(withDuration: 0.4, animations: {
+                    weakSelf.formContainer.arrangedSubviews.forEach({ (view) in
+                        view.alpha = 0
+                    })
+                }, completion: { (_) in
+                    weakSelf.formContainer.isHidden = true
+                })
+            }
+            
+        }
+        self.viewModel.outputs.beginButtonsVisibility.observeValues {[weak self] (value) in
+            guard let weakSelf = self else {
+                return
+            }
+            if value {
+                weakSelf.beginButtonContainer.isHidden = false
+            }
+            if weakSelf.viewModel.currentAuthType == .login {
+                UIView.animate(withDuration: 0.4, delay: 0.6, options: [], animations: {
+                    weakSelf.beginButtonContainer.arrangedSubviews[1].alpha = 0
+                }, completion: { (_) in
+                    weakSelf.beginButtonContainer.isHidden = !value
+                })
+                UIView.animate(withDuration: 0.4, animations: {
+                    weakSelf.beginButtonContainer.arrangedSubviews[0].alpha = 0
+                })
+            } else if weakSelf.viewModel.currentAuthType == .register {
+                UIView.animate(withDuration: 0.4, delay: 0.6, options: [], animations: {
+                    weakSelf.beginButtonContainer.arrangedSubviews[0].alpha = 0
+                }, completion: { (_) in
+                    weakSelf.beginButtonContainer.isHidden = !value
+                })
+                UIView.animate(withDuration: 0.4, animations: {
+                    weakSelf.beginButtonContainer.arrangedSubviews[1].alpha = 0
+                })
+            } else {
+                UIView.animate(withDuration: 0.4, delay: 0.6, options: [], animations: {
+                    weakSelf.beginButtonContainer.arrangedSubviews[0].alpha = 1
+                    weakSelf.beginButtonContainer.arrangedSubviews[1].alpha = 1
+                })
+            }
+            
+        }
+        self.viewModel.outputs.backButtonVisibility.observeValues {[weak self] (value) in
+            guard let weakSelf = self else {
+                return
+            }
+            UIView.animate(withDuration: 0.8, delay: value ? 1 : 0, options: [], animations: {
+                weakSelf.backButton.alpha = value ? 1 : 0
+            }, completion: nil)
+        }
+        self.viewModel.outputs.backgroundScrolledToTop.observeValues {[weak self] (value) in
+            guard let weakSelf = self else {
+                return
+            }
+            var contentOffset: CGPoint?
+            if value {
+                contentOffset = CGPoint(x: 0, y: 0)
+            } else {
+                contentOffset = CGPoint(x: 0, y: weakSelf.backgroundScrollView.contentSize.height-weakSelf.view.frame.size.height)
+            }
+            if let offset = contentOffset {
+                UIView.animate(withDuration: 1, animations: {
+                    weakSelf.backgroundScrollView.contentOffset = offset
+                })
             }
         }
     }
@@ -159,26 +272,26 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     func setupReturnTypes() {
         self.viewModel.outputs.passwordFieldReturnButtonIsDone.observeValues {[weak self] value in
             if value {
-                self?.passwordTextField.returnKeyType = .done
+                self?.passwordField.entryView.returnKeyType = .done
             } else {
-                self?.passwordTextField.returnKeyType = .next
+                self?.passwordField.entryView.returnKeyType = .next
             }
         }
 
         self.viewModel.outputs.passwordRepeatFieldReturnButtonIsDone.observeValues {[weak self] value in
             if value {
-                self?.passwordRepeatTextField.returnKeyType = .done
+                self?.passwordRepeatField.entryView.returnKeyType = .done
             } else {
-                self?.passwordRepeatTextField.returnKeyType = .next
+                self?.passwordRepeatField.entryView.returnKeyType = .next
             }
         }
     }
 
     func setupTextInput() {
-        self.usernameTextField.reactive.text <~ self.viewModel.outputs.usernameText
-        self.emailTextField.reactive.text <~ self.viewModel.outputs.emailText
-        self.passwordTextField.reactive.text <~ self.viewModel.outputs.passwordText
-        self.passwordRepeatTextField.reactive.text <~ self.viewModel.outputs.passwordRepeatText
+        self.usernameField.entryView.reactive.text <~ self.viewModel.outputs.usernameText
+        self.emailField.entryView.reactive.text <~ self.viewModel.outputs.emailText
+        self.passwordField.entryView.reactive.text <~ self.viewModel.outputs.passwordText
+        self.passwordRepeatField.entryView.reactive.text <~ self.viewModel.outputs.passwordRepeatText
     }
 
     func setupOnePassword() {
@@ -197,8 +310,14 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    func authTypeButtonTapped() {
-        self.viewModel.inputs.authTypeChanged()
+    func loginBeginButtonPressed() {
+        self.viewModel.inputs.setAuthType(authType: .login)
+    }
+    func registerBeginButtonPressed() {
+        self.viewModel.inputs.setAuthType(authType: .register)
+    }
+    func backButtonPressed() {
+        self.viewModel.inputs.setAuthType(authType: .none)
     }
 
     func usernameTextFieldChanged(textField: UITextField) {

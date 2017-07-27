@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginEntryView" customModule="Habitica" customModuleProvider="target">
+            <connections>
+                <outlet property="bottomBorder" destination="Ifu-fg-37R" id="I4L-jG-ukf"/>
+                <outlet property="entryView" destination="JgA-lk-ft1" id="ikN-QZ-no7"/>
+                <outlet property="iconView" destination="Bb7-YH-fgG" id="gvo-f9-oB7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="471" height="66"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JgA-lk-ft1">
+                    <rect key="frame" x="12" y="22.5" width="422" height="21"/>
+                    <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Vuj-EU-6Vn"/>
+                    </connections>
+                </textField>
+                <view alpha="0.14999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifu-fg-37R">
+                    <rect key="frame" x="0.0" y="64" width="471" height="2"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="rFy-c9-DJr"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bb7-YH-fgG">
+                    <rect key="frame" x="442" y="23" width="17" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="17" id="Ptd-p6-MH2"/>
+                        <constraint firstAttribute="height" constant="20" id="xkX-kl-WGN"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Ifu-fg-37R" secondAttribute="trailing" id="1PV-fp-5pE"/>
+                <constraint firstAttribute="bottom" secondItem="Ifu-fg-37R" secondAttribute="bottom" id="3Hm-ir-246"/>
+                <constraint firstItem="Bb7-YH-fgG" firstAttribute="leading" secondItem="JgA-lk-ft1" secondAttribute="trailing" constant="8" id="7d7-ba-hb4"/>
+                <constraint firstItem="JgA-lk-ft1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="Cuv-oZ-fMY"/>
+                <constraint firstItem="Ifu-fg-37R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="X4J-aC-HVS"/>
+                <constraint firstItem="Bb7-YH-fgG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Yuk-d0-2Gg"/>
+                <constraint firstAttribute="trailing" secondItem="Bb7-YH-fgG" secondAttribute="trailing" constant="12" id="ku4-xr-kJw"/>
+                <constraint firstItem="JgA-lk-ft1" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="yfo-Gc-xQr"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="73.5" y="-248"/>
+        </view>
+    </objects>
+</document>

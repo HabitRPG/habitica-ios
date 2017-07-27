@@ -328,10 +328,10 @@ User *user;
              [overlayView dismiss:YES
                        completion:^() {
                            UIStoryboard *storyboard =
-                           [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                           [UIStoryboard storyboardWithName:@"Intro" bundle:nil];
                            UINavigationController *navigationController =
                            [storyboard instantiateViewControllerWithIdentifier:
-                            @"LoginNavigationController"];
+                            @"LoginTableViewController"];
                            [weakSelf presentViewController:navigationController
                                               animated:YES
                                             completion:nil];

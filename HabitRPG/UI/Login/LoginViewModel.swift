@@ -14,6 +14,7 @@ import Keys
 import FBSDKLoginKit
 
 enum LoginViewAuthType {
+    case none
     case login
     case register
 }
@@ -64,8 +65,15 @@ protocol LoginViewModelOutputs {
 
     var showError: Signal<String, NoError> { get }
     var showNextViewController: Signal<String, NoError> { get }
+    
+    var formVisibility: Signal<Bool, NoError> { get }
+    var beginButtonsVisibility: Signal<Bool, NoError> { get }
+    var backButtonVisibility: Signal<Bool, NoError> { get }
+    var backgroundScrolledToTop: Signal<Bool, NoError> { get }
 
     var loadingIndicatorVisibility: Signal<Bool, NoError> { get }
+    
+    var currentAuthType: LoginViewAuthType { get }
 }
 
 protocol LoginViewModelType {
@@ -78,7 +86,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     //swiftlint:disable function_body_length
     init() {
         let authValues = Signal.combineLatest(
-            self.authTypeProperty.signal.skipNil(),
+            self.authTypeProperty.signal,
             Signal.merge(self.emailChangedProperty.signal, self.prefillEmailProperty.signal),
             Signal.merge(self.usernameChangedProperty.signal, self.prefillUsernameProperty.signal),
             Signal.merge(self.passwordChangedProperty.signal, self.prefillPasswordProperty.signal),
@@ -87,41 +95,49 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
 
         self.authValuesProperty = Property(initial: nil, then: authValues.map { $0 })
 
-        self.authTypeButtonTitle = self.authTypeProperty.signal.skipNil().map { value in
+        self.authTypeButtonTitle = self.authTypeProperty.signal.map { value -> String? in
             switch value {
             case .login:
                 return "Register".localized
             case .register:
                 return "Login".localized
+            case .none:
+                return nil
             }
-        }
+        }.skipNil()
 
-        self.loginButtonTitle = self.authTypeProperty.signal.skipNil().map { value in
+        self.loginButtonTitle = self.authTypeProperty.signal.map { value -> String? in
             switch value {
             case .login:
                 return "Login".localized
             case .register:
                 return "Register".localized
+            case .none:
+                return nil
             }
-        }
+        }.skipNil()
 
-        self.usernameFieldTitle = self.authTypeProperty.signal.skipNil().map { value in
+        self.usernameFieldTitle = self.authTypeProperty.signal.map { value -> String? in
             switch value {
             case .login:
                 return "Email / Username".localized
             case .register:
                 return "Username".localized
+            case .none:
+                return nil
             }
-        }
+        }.skipNil()
 
-        let isRegistering = self.authTypeProperty.signal.skipNil().map { value -> Bool in
+        let isRegistering = self.authTypeProperty.signal.map { value -> Bool? in
             switch value {
             case .login:
                 return false
             case .register:
                 return true
+            case .none:
+                return nil
             }
-        }
+        }.skipNil()
 
         self.emailFieldVisibility = isRegistering
         self.passwordRepeatFieldVisibility = isRegistering
@@ -144,8 +160,10 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.passwordText = self.prefillPasswordProperty.signal
         self.passwordRepeatText = self.prefillPasswordRepeatProperty.signal
 
-        self.onePasswordButtonHidden = self.onePasswordAvailable.signal.map { value in
-            return !value
+        self.onePasswordButtonHidden = self.onePasswordAvailable.signal
+            .combineLatest(with: self.authTypeProperty.signal)
+            .map { (isAvailable, authType) in
+            return !isAvailable || authType == .none
         }
         self.onePasswordFindLogin = self.onePasswordTappedProperty.signal
 
@@ -165,13 +183,26 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         (self.showError, self.showErrorObserver) = Signal.pipe()
 
         (self.loadingIndicatorVisibility, self.loadingIndicatorVisibilityObserver) = Signal<Bool, NoError>.pipe()
+        
+        self.formVisibility = self.authTypeProperty.signal.map({ (authType) -> Bool in
+            return authType != .none
+        })
+        self.beginButtonsVisibility = self.authTypeProperty.signal.map({ (authType) -> Bool in
+            return authType == .none
+        })
+        self.backButtonVisibility = self.authTypeProperty.signal.map({ (authType) -> Bool in
+            return authType != .none
+        })
+        self.backgroundScrolledToTop = self.authTypeProperty.signal.map({ (authType) -> Bool in
+            return authType != .none
+        })
     }
 
     func setDefaultValues() {
 
     }
 
-    private let authTypeProperty = MutableProperty<LoginViewAuthType?>(nil)
+    private let authTypeProperty = MutableProperty<LoginViewAuthType>(LoginViewAuthType.none)
     internal func authTypeChanged() {
         if authTypeProperty.value == LoginViewAuthType.login {
             authTypeProperty.value = LoginViewAuthType.register
@@ -360,6 +391,11 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     internal var showNextViewController: Signal<String, NoError>
     internal var loadingIndicatorVisibility: Signal<Bool, NoError>
     internal var onePasswordFindLogin: Signal<(), NoError>
+    
+    internal var formVisibility: Signal<Bool, NoError>
+    internal var beginButtonsVisibility: Signal<Bool, NoError>
+    internal var backButtonVisibility: Signal<Bool, NoError>
+    var backgroundScrolledToTop: Signal<Bool, NoError>
 
     internal var emailText: Signal<String, NoError>
     internal var usernameText: Signal<String, NoError>
@@ -372,6 +408,12 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
 
     internal var inputs: LoginViewModelInputs { return self }
     internal var outputs: LoginViewModelOutputs { return self }
+    
+    var currentAuthType: LoginViewAuthType {
+        get {
+            return authTypeProperty.value
+        }
+    }
 }
 
 func isValid(authType: LoginViewAuthType, email: String, username: String, password: String, passwordRepeat: String) -> Bool {

@@ -41,7 +41,7 @@ class LoginViewControllerTests: HabiticaTests {
     }
     
     func testLoginScreen_Register() {
-        self.loginViewController!.authTypeButtonTapped()
+        self.loginViewController!.registerBeginButtonPressed()
         TraitController.defaultTraitConfigs.forEach { (device, orientation) in
             let (sparent, _) = traitControllers(device: device, orientation: orientation, child: self.navigationController!)
             FBSnapshotVerifyView(sparent.view, identifier: "\(device)_\(orientation)")
