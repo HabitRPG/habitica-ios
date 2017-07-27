@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "SAMPLE SLIDE1e copy.png",
+      "filename" : "intro_1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "intro_1-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "intro_1-2.png",
       "scale" : "3x"
     }
   ],
