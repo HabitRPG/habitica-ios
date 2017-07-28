@@ -167,10 +167,14 @@
     if (self.alternativeHeaderView) {
         return self.alternativeHeaderView.intrinsicContentSize.height;
     }
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        return 200;
+    if (self.state != HRPGTopHeaderStateHidden) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            return 200;
+        } else {
+            return 162;
+        }
     } else {
-        return 162;
+        return 0;
     }
 }
 

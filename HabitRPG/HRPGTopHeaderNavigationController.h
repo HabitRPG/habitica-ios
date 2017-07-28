@@ -26,4 +26,7 @@ typedef enum HRPGTopHeaderState : NSInteger {
 
 - (void)setAlternativeHeaderView:(UIView *)alternativeHeaderView;
 - (void)removeAlternativeHeaderView;
+
+- (void)showHeader;
+- (void)hideHeader;
 @end

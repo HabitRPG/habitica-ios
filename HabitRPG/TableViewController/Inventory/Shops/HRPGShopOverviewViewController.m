@@ -10,6 +10,8 @@
 #import "HRPGShopViewController.h"
 #import "Shop.h"
 #import "NSString+StripHTML.h"
+#import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGShopOverviewViewController ()
 
@@ -22,6 +24,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupShopDictionary];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [((HRPGTopHeaderNavigationController *)self.navigationController) stopFollowingScrollView];
 }
 
 - (void)setupShopDictionary {
@@ -39,98 +46,14 @@
     }
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+- (CAGradientLayer *)gradientLayer {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
     
-    UIImageView *imageView = [cell viewWithTag:1];
-    UILabel *titleLabel = [cell viewWithTag:2];
-    UILabel *descriptionLabel = [cell viewWithTag:3];
+    gradient.colors = @[(id)[UIColor clearColor].CGColor, (id)[UIColor purple50].CGColor];
+    gradient.startPoint = CGPointMake(0.5, 0);
+    gradient.endPoint = CGPointMake(1, 0);
     
-    Shop *shop = self.shopDictionary[[self identifierAtIndex:indexPath.item]];
-    if (shop) {
-        [self.sharedManager setImage:shop.imageName withFormat:nil onView:imageView];
-        titleLabel.text = shop.text;
-        descriptionLabel.text = [shop.notes stringByStrippingHTML];
-    } else {
-        switch (indexPath.item) {
-            case 0: {
-                [self.sharedManager setImage:@"npc_alex" withFormat:@"png" onView:imageView];
-                titleLabel.text = NSLocalizedString(@"Market", nil);
-                break;
-            }
-            case 1: {
-                [self.sharedManager setImage:@"npc_ian" withFormat:@"png" onView:imageView];
-                titleLabel.text = NSLocalizedString(@"Quests", nil);
-                break;
-            }
-            /*case 2: {
-                [self.sharedManager setImage:@"npc_timetravelers_active" withFormat:@"png" onView:imageView];
-                titleLabel.text = NSLocalizedString(@"Time Travelers", nil);
-                descriptionLabel.text = NSLocalizedString(@"", nil);
-                break;
-            }*/
-            case 2: {
-                [self.sharedManager setImage:@"seasonalshop_open" withFormat:@"png" onView:imageView];
-                titleLabel.text = NSLocalizedString(@"Seasonal Shop", nil);
-                descriptionLabel.text = NSLocalizedString(@"", nil);
-                break;
-            }
-        }
-        __weak HRPGShopOverviewViewController *weakSelf = self;
-        [self.sharedManager fetchShopInventory:[self identifierAtIndex:indexPath.item] onSuccess:^{
-            [weakSelf setupShopDictionary];
-            [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        } onError:nil];
-    }
-    
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Shop *shop = self.shopDictionary[[self identifierAtIndex:indexPath.item]];
-    float height = 60.0f;
-    float width = self.viewWidth - 127;
-    height = height +
-    [shop.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
-                                options:NSStringDrawingUsesLineFragmentOrigin
-                             attributes:@{
-                                          NSFontAttributeName : [UIFont
-                                                                 preferredFontForTextStyle:UIFontTextStyleHeadline]
-                                          }
-                                context:nil]
-    .size.height;
-    if ([[shop.notes stringByStrippingHTML] length] > 0) {
-        NSInteger notesHeight =
-        [[shop.notes stringByStrippingHTML]
-         boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
-         options:NSStringDrawingUsesLineFragmentOrigin
-         attributes:@{
-                      NSFontAttributeName :
-                          [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
-                      }
-         context:nil]
-        .size.height;
-        
-        if (notesHeight <
-            [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2].lineHeight * 5) {
-            height = height + notesHeight;
-        } else {
-            height =
-            height + [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2].lineHeight * 5;
-        }
-    }
-    if (height < 138) {
-        return 138;
-    }
-    return height;
+    return gradient;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -150,15 +73,119 @@
         case 1:
             return QuestsShopKey;
             break;
-        /*case 2:
-            return TimeTravelersShopKey;
-            break;*/
         case 2:
             return SeasonalShopKey;
+            break;
+        case 3:
+            return TimeTravelersShopKey;
             break;
         default:
             return nil;
     }
+}
+
+- (NSString *)titleForIndex:(NSIndexPath *)indexPath {
+    NSString *title = @"";
+    
+    Shop *shop = self.shopDictionary[[self identifierAtIndex:indexPath.item]];
+    if (shop) {
+        title = shop.text;
+    } else {
+        switch (indexPath.item) {
+            case 0: {
+                title = NSLocalizedString(@"Market", nil);
+                break;
+            }
+            case 1: {
+                title = NSLocalizedString(@"Quests", nil);
+                break;
+            }
+            case 2: {
+                title = NSLocalizedString(@"Seasonal Shop", nil);
+                break;
+            }
+            case 3: {
+                title = NSLocalizedString(@"Time Travelers", nil);
+                break;
+            }
+        }
+        __weak HRPGShopOverviewViewController *weakSelf = self;
+        [self.sharedManager fetchShopInventory:[self identifierAtIndex:indexPath.item] onSuccess:^{
+            [weakSelf setupShopDictionary];
+            [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        } onError:nil];
+    }
+    
+    return title;
+}
+
+- (UIImage *)imageForIndex:(NSIndexPath *)indexPath {
+    UIImage *image;
+    switch (indexPath.item) {
+        case 0: {
+            image = [UIImage imageNamed:@"market_summer_splash_banner"];
+            break;
+        }
+        case 1: {
+            image = [UIImage imageNamed:@"quest_shop_summer_splash_banner"];
+            break;
+        }
+        case 2: {
+            image = [UIImage imageNamed:@"seasonal_shop_summer_splash_banner"];
+            break;
+        }
+        case 3: {
+            image = [UIImage imageNamed:@"timetravelers_summer_splash_banner"];
+            break;
+        }
+    }
+    
+    return image;
+}
+
+#pragma mark - table view
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 4;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    HRPGShopUserHeaderView *view = [[NSBundle mainBundle] loadNibNamed:@"HRPGShopUserHeaderView" owner:self options:nil][0];
+    
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
+    return 70;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    UILabel *titleLabel = [cell viewWithTag:2];
+    UILabel *descriptionLabel = [cell viewWithTag:3];
+    GradientImageView *gradientImageView = [cell viewWithTag:4];
+    
+    gradientImageView.gradient = [self gradientLayer];
+    
+    titleLabel.text = [self titleForIndex:indexPath];
+    
+    Shop *shop = self.shopDictionary[[self identifierAtIndex:indexPath.item]];
+    if (shop.isNew) {
+        descriptionLabel.text = NSLocalizedString(@"New Stock!", nil);
+    }
+    
+    gradientImageView.image = [self imageForIndex:indexPath];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [UIScreen mainScreen].bounds.size.width * 122.0/375.0;
 }
 
 @end

@@ -226,6 +226,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                   instantiateViewControllerWithIdentifier:@"ChallengeTableViewController"];
         [self.navigationController pushViewController:challengeViewController animated:YES];
     } else if (indexPath.section == 2 && indexPath.item == 0) {
+        if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) [((HRPGTopHeaderNavigationController *)self.navigationController) hideHeader];
         [self performSegueWithIdentifier:@"ShopsSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 1) {
         [self performSegueWithIdentifier:@"CustomizationSegue" sender:self];
