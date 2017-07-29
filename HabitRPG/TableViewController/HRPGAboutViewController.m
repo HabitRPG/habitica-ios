@@ -142,20 +142,17 @@
                 [VTAcknowledgementsViewController acknowledgementsViewController];
             viewController.headerText = NSLocalizedString(@"We love open source software.", nil);
 
-            if ([self.navigationController
-                    isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-                HRPGTopHeaderNavigationController *navigationController =
-                    (HRPGTopHeaderNavigationController *)self.navigationController;
+            if (self.topHeaderNavigationController) {
                 [viewController.tableView
-                    setContentInset:UIEdgeInsetsMake([navigationController getContentInset], 0, 0,
+                    setContentInset:UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0,
                                                      0)];
                 viewController.tableView.scrollIndicatorInsets =
-                    UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0);
-                if (navigationController.state == HRPGTopHeaderStateHidden) {
+                    UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0);
+                if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden) {
                     [viewController.tableView
                         setContentOffset:CGPointMake(0,
                                                      self.tableView.contentInset.top -
-                                                         [navigationController getContentOffset])];
+                                                         [self.topHeaderNavigationController getContentOffset])];
                 }
             }
 

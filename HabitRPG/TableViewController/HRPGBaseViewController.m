@@ -14,6 +14,7 @@
 #import "HRPGNavigationController.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "UIViewController+TutorialSteps.h"
+#import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGBaseViewController ()
@@ -36,16 +37,14 @@
     [eventProperties setValue:[self getScreenName] forKey:@"page"];
     [[Amplitude instance] logEvent:@"navigate" withEventProperties:eventProperties];
 
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController =
-            (HRPGTopHeaderNavigationController *)self.navigationController;
+    if (self.topHeaderNavigationController) {
         [self.tableView
-            setContentInset:UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0)];
+            setContentInset:UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0)];
         self.tableView.scrollIndicatorInsets =
-            UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0);
-        if (navigationController.state == HRPGTopHeaderStateHidden) {
+            UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0);
+        if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden) {
             [self.tableView
-                setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
+                setContentOffset:CGPointMake(0, -[self.topHeaderNavigationController getContentOffset])];
         }
     }
 
@@ -90,10 +89,8 @@
     NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
     [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
 
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController =
-            (HRPGTopHeaderNavigationController *)self.navigationController;
-        if (self.tableView.contentOffset.y < -[navigationController getContentOffset]) {
+    if (self.topHeaderNavigationController) {
+        if (self.tableView.contentOffset.y < -[self.topHeaderNavigationController getContentOffset]) {
             [self.tableView setContentOffset:CGPointMake(0, 0)];
         }
     }
@@ -111,32 +108,26 @@
 
     [self displayTutorialStep:self.sharedManager];
 
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController =
-            (HRPGTopHeaderNavigationController *)self.navigationController;
-        [navigationController startFollowingScrollView:self.tableView];
-        if (navigationController.state == HRPGTopHeaderStateVisible &&
-            self.tableView.contentOffset.y > -[navigationController getContentOffset]) {
-            [navigationController scrollview:self.tableView
-                          scrolledToPosition:self.tableView.contentOffset.y];
+    if (self.topHeaderNavigationController) {
+        [self.topHeaderNavigationController startFollowingScrollView:self.tableView];
+        if (self.topHeaderNavigationController.state == HRPGTopHeaderStateVisible &&
+            self.tableView.contentOffset.y > -[self.topHeaderNavigationController getContentOffset]) {
+            [self.topHeaderNavigationController scrollview:self.tableView
+                                        scrolledToPosition:self.tableView.contentOffset.y];
         }
     }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController =
-            (HRPGTopHeaderNavigationController *)self.navigationController;
-        [navigationController scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
+    if (self.topHeaderNavigationController) {
+        [self.topHeaderNavigationController scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController =
-            (HRPGTopHeaderNavigationController *)self.navigationController;
-        [navigationController stopFollowingScrollView];
+    if (self.topHeaderNavigationController) {
+        [self.topHeaderNavigationController stopFollowingScrollView];
     }
 }
 
@@ -194,6 +185,10 @@
         _managedObjectContext = self.sharedManager.getManagedObjectContext;
     }
     return _managedObjectContext;
+}
+
+- (HRPGTopHeaderNavigationController *)topHeaderNavigationController {
+    return [self hrpgTopHeaderNavigationController];
 }
 
 @end

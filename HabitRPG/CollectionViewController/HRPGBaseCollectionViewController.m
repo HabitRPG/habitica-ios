@@ -15,6 +15,7 @@
 #import "HRPGNavigationController.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "UIViewcontroller+TutorialSteps.h"
+#import "UIViewController+HRPGTopHeaderNavigationController.h"
 
 @interface HRPGBaseCollectionViewController ()
 
@@ -45,16 +46,14 @@
         [self presentViewController:navigationController animated:NO completion:nil];
     }
 
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController =
-            (HRPGTopHeaderNavigationController *)self.navigationController;
+    if (self.topHeaderNavigationController) {
         [self.collectionView
-            setContentInset:UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0)];
+            setContentInset:UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0)];
         self.collectionView.scrollIndicatorInsets =
-            UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0);
-        if (navigationController.state == HRPGTopHeaderStateHidden) {
+            UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0);
+        if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden) {
             [self.collectionView
-                setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
+                setContentOffset:CGPointMake(0, -[self.topHeaderNavigationController getContentOffset])];
         }
     }
 
@@ -77,16 +76,14 @@
                                                  name:UIContentSizeCategoryDidChangeNotification
                                                object:nil];
 
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController =
-            (HRPGTopHeaderNavigationController *)self.navigationController;
-        if (navigationController.state == HRPGTopHeaderStateHidden &&
+    if (self.topHeaderNavigationController) {
+        if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden &&
             self.collectionView.contentOffset.y <
-                self.collectionView.contentInset.top - [navigationController getContentOffset]) {
+                self.collectionView.contentInset.top - [self.topHeaderNavigationController getContentOffset]) {
             [self.collectionView
-                setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
-        } else if (navigationController.state == HRPGTopHeaderStateVisible) {
-            [navigationController scrollview:self.collectionView
+                setContentOffset:CGPointMake(0, -[self.topHeaderNavigationController getContentOffset])];
+        } else if (self.topHeaderNavigationController.state == HRPGTopHeaderStateVisible) {
+            [self.topHeaderNavigationController scrollview:self.collectionView
                           scrolledToPosition:self.collectionView.contentOffset.y];
         }
     }
@@ -101,23 +98,17 @@
     }
     [self displayTutorialStep:self.sharedManager];
 
-    HRPGTopHeaderNavigationController *navigationController =
-        (HRPGTopHeaderNavigationController *)self.navigationController;
-    [navigationController startFollowingScrollView:self.collectionView];
+    [self.topHeaderNavigationController startFollowingScrollView:self.collectionView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    HRPGTopHeaderNavigationController *navigationController =
-        (HRPGTopHeaderNavigationController *)self.navigationController;
-    [navigationController stopFollowingScrollView];
+    [self.topHeaderNavigationController stopFollowingScrollView];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController =
-            (HRPGTopHeaderNavigationController *)self.navigationController;
-        [navigationController scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
+    if (self.topHeaderNavigationController) {
+        [self.topHeaderNavigationController scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
     }
 }
 
@@ -152,6 +143,10 @@
         _managedObjectContext = self.sharedManager.getManagedObjectContext;
     }
     return _managedObjectContext;
+}
+
+- (HRPGTopHeaderNavigationController *)topHeaderNavigationController {
+    return [self topHeaderNavigationController];
 }
 
 @end
