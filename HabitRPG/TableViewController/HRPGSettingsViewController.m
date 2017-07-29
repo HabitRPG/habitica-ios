@@ -15,6 +15,7 @@
 #import "UIColor+Habitica.h"
 #import "XLForm.h"
 #import "HRPGPushNotificationSettingValueTransformer.h"
+#import "UIViewController+HRPGTopHeaderNavigationController.h"
 
 @interface HRPGSettingsViewController ()
 @property HRPGManager *sharedManager;
@@ -49,13 +50,11 @@ User *user;
     HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.sharedManager = appdelegate.sharedManager;
 
-    HRPGTopHeaderNavigationController *navigationController =
-        (HRPGTopHeaderNavigationController *)self.navigationController;
     [self.tableView
-        setContentInset:UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0)];
+        setContentInset:UIEdgeInsetsMake([[self hrpgTopHeaderNavigationController] getContentInset], 0, 0, 0)];
     self.tableView.scrollIndicatorInsets =
-        UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0);
-    [self.tableView setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
+        UIEdgeInsetsMake([[self hrpgTopHeaderNavigationController] getContentInset], 0, 0, 0);
+    [self.tableView setContentOffset:CGPointMake(0, -[[self hrpgTopHeaderNavigationController] getContentOffset])];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reloadAllData:)
@@ -64,28 +63,22 @@ User *user;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController =
-            (HRPGTopHeaderNavigationController *)self.navigationController;
-        [navigationController startFollowingScrollView:self.tableView];
+    if ([self hrpgTopHeaderNavigationController]) {
+        [[self hrpgTopHeaderNavigationController] startFollowingScrollView:self.tableView];
     }
     [super viewDidAppear:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController =
-            (HRPGTopHeaderNavigationController *)self.navigationController;
-        [navigationController stopFollowingScrollView];
+    if ([self hrpgTopHeaderNavigationController]) {
+        [[self hrpgTopHeaderNavigationController] stopFollowingScrollView];
     }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController =
-            (HRPGTopHeaderNavigationController *)self.navigationController;
-        [navigationController scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
+    if ([self hrpgTopHeaderNavigationController]) {
+        [[self hrpgTopHeaderNavigationController] scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
     }
 }
 

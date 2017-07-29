@@ -84,7 +84,7 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
         disposable.add(self.joinInteractor?.reactive.observe(subscriber, during: self.lifetime))
         disposable.add(self.leaveInteractor?.reactive.observe(subscriber, during: self.lifetime))
 
-        self.navController = self.navigationController as? HRPGTopHeaderNavigationController
+        self.navController = self.topHeaderNavigationController
         guard let navController = self.navController else {
             return
         }

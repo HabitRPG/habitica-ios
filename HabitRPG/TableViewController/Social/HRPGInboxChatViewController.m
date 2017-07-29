@@ -15,6 +15,7 @@
 #import "HRPGUserProfileViewController.h"
 #import "HRPGFlagInformationOverlayView.h"
 #import "KLCPopup.h"
+#import "UIViewController+HRPGTopHeaderNavigationController.h"
 
 @interface HRPGInboxChatViewController ()
 
@@ -93,10 +94,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        HRPGTopHeaderNavigationController *navigationController =
-        (HRPGTopHeaderNavigationController *)self.navigationController;
-        [navigationController scrollview:self.scrollView scrolledToPosition:0];
+    if ([self hrpgTopHeaderNavigationController]) {
+        [[self hrpgTopHeaderNavigationController] scrollview:self.scrollView scrolledToPosition:0];
     }
 }
 

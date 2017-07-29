@@ -16,6 +16,7 @@
 #import "HRPGGemHeaderNavigationController.h"
 #import "Seeds.h"
 #import <Keys/HabiticaKeys.h>
+#import "UIViewController+HRPGTopHeaderNavigationController.h"
 
 @interface HRPGGemViewController ()
 @property(weak, nonatomic) IBOutlet UILabel *notEnoughGemsLabel;
@@ -41,15 +42,13 @@
     
     self.gemImageView.image = [UIImage imageNamed:@"Gem"];
 
-    HRPGTopHeaderNavigationController *navigationController =
-    (HRPGTopHeaderNavigationController *)self.navigationController;
     [self.collectionView
-     setContentInset:UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0)];
+     setContentInset:UIEdgeInsetsMake([[self hrpgTopHeaderNavigationController] getContentInset], 0, 0, 0)];
     self.collectionView.scrollIndicatorInsets =
-    UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0);
-    if (navigationController.state == HRPGTopHeaderStateHidden) {
+    UIEdgeInsetsMake([[self hrpgTopHeaderNavigationController] getContentInset], 0, 0, 0);
+    if ([self hrpgTopHeaderNavigationController].state == HRPGTopHeaderStateHidden) {
         [self.collectionView
-         setContentOffset:CGPointMake(0, -[navigationController getContentOffset])];
+         setContentOffset:CGPointMake(0, -[[self hrpgTopHeaderNavigationController] getContentOffset])];
     }
     
     self.identifiers = @[

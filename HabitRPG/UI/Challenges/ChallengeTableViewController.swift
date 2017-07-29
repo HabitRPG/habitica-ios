@@ -59,7 +59,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         let segmentedWrapper = PaddedView()
         segmentedWrapper.containedView = self.segmentedFilterControl
 
-        if let navController = self.navigationController as? HRPGTopHeaderNavigationController {
+        if let navController = self.topHeaderNavigationController {
             navController.setAlternativeHeaderView(segmentedWrapper)
             self.tableView.contentInset = UIEdgeInsets(top: navController.getContentInset(), left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
             self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: navController.getContentInset(), left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
@@ -80,7 +80,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        if let navController = self.navigationController as? HRPGTopHeaderNavigationController {
+        if let navController = self.topHeaderNavigationController {
             navController.removeAlternativeHeaderView()
         }
         disposable.dispose()

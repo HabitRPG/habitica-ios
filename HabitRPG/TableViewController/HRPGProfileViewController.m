@@ -44,6 +44,15 @@ NIKFontAwesomeIconFactory *iconFactory;
     self.navigationItem.title = NSLocalizedString(@"Menu", nil);
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (self.topHeaderNavigationController.shouldHideTopHeader) {
+        self.topHeaderNavigationController.shouldHideTopHeader = NO;
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.tableHeaderView = [[UIView alloc]
@@ -226,7 +235,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                                   instantiateViewControllerWithIdentifier:@"ChallengeTableViewController"];
         [self.navigationController pushViewController:challengeViewController animated:YES];
     } else if (indexPath.section == 2 && indexPath.item == 0) {
-        if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) [((HRPGTopHeaderNavigationController *)self.navigationController) hideHeader];
+        self.topHeaderNavigationController.shouldHideTopHeader = YES;
         [self performSegueWithIdentifier:@"ShopsSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 1) {
         [self performSegueWithIdentifier:@"CustomizationSegue" sender:self];

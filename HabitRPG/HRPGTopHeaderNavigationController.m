@@ -17,7 +17,6 @@
 @property(nonatomic, strong) UIView *backgroundView;
 @property(nonatomic, strong) UIView *bottomBorderView;
 @property(nonatomic, strong) UIView *upperBackgroundView;
-@property(nonatomic, readonly) CGFloat topHeaderHeight;
 
 - (CGFloat)statusBarHeight;
 - (CGFloat)bgViewOffset;
@@ -61,10 +60,11 @@
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     CGRect parentFrame = self.view.frame;
-    self.backgroundView.frame = CGRectMake(0, self.headerYPosition, parentFrame.size.width, self.topHeaderHeight + 2);
+    self.backgroundView.frame = CGRectMake(0, self.headerYPosition, parentFrame.size.width, [self topHeaderHeight] + 2);
     self.upperBackgroundView.frame = CGRectMake(0, 0, parentFrame.size.width, [self bgViewOffset]);
     self.bottomBorderView.frame = CGRectMake(0, self.backgroundView.frame.size.height - 2, parentFrame.size.width, 2);
-    self.headerView.frame = CGRectMake(0, 0, parentFrame.size.width, self.topHeaderHeight);
+    self.bottomBorderView.frame = CGRectMake(0, self.backgroundView.frame.size.height - 2, parentFrame.size.width, 2);
+    self.headerView.frame = CGRectMake(0, 0, parentFrame.size.width, [self topHeaderHeight]);
     if (self.alternativeHeaderView) {
         self.alternativeHeaderView.frame = CGRectMake(0, 0, parentFrame.size.width, self.alternativeHeaderView.intrinsicContentSize.height);
     }
@@ -167,14 +167,14 @@
     if (self.alternativeHeaderView) {
         return self.alternativeHeaderView.intrinsicContentSize.height;
     }
-    if (self.state != HRPGTopHeaderStateHidden) {
+    if (self.shouldHideTopHeader) {
+        return -8;
+    } else {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             return 200;
         } else {
             return 162;
         }
-    } else {
-        return 0;
     }
 }
 
@@ -200,7 +200,7 @@
 
 #pragma mark - Helpers
 - (CGFloat)getContentInset {
-    return self.topHeaderHeight+self.bottomBorderView.frame.size.height;
+    return [self topHeaderHeight] + self.bottomBorderView.frame.size.height;
 }
 
 - (CGFloat)statusBarHeight {
@@ -227,8 +227,17 @@
     return YES;
 }
 
-- (void)setState:(HRPGTopHeaderState)state {
-    _state = state;
+- (void)setShouldHideTopHeader:(BOOL)shouldHideTopHeader{
+    if (_shouldHideTopHeader != shouldHideTopHeader) {
+        _shouldHideTopHeader = shouldHideTopHeader;
+        if (shouldHideTopHeader) {
+            [self hideHeader];
+        }else{
+            [self showHeader];
+            [self.view setNeedsLayout];
+            [self.view layoutIfNeeded];
+        }
+    }
 }
 
 @end

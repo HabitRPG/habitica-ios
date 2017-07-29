@@ -19,6 +19,7 @@ typedef enum HRPGTopHeaderState : NSInteger {
 - (CGFloat)getContentInset;
 - (CGFloat)getContentOffset;
 @property(nonatomic) HRPGTopHeaderState state;
+@property (nonatomic) BOOL shouldHideTopHeader;
 
 - (void)startFollowingScrollView:(UIScrollView *)scrollView;
 - (void)stopFollowingScrollView;
@@ -26,7 +27,4 @@ typedef enum HRPGTopHeaderState : NSInteger {
 
 - (void)setAlternativeHeaderView:(UIView *)alternativeHeaderView;
 - (void)removeAlternativeHeaderView;
-
-- (void)showHeader;
-- (void)hideHeader;
 @end
