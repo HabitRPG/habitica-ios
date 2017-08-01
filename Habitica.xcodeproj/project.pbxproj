@@ -13,6 +13,9 @@
 		2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */; };
 		2980E60D1EEA39DF005B7100 /* YesterdailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */; };
 		29AAA15D1F2A3AA600029737 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15C1F2A3AA600029737 /* GradientView.swift */; };
+		29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */; };
+		29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29AAA1601F2B597400029737 /* SpeechbubbleView.xib */; };
+		29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA1621F2B6D2000029737 /* SetupViewController.swift */; };
 		29B388DF1EEF4FBD00A72950 /* MorningNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B388DE1EEF4FBD00A72950 /* MorningNotification.swift */; };
 		29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */; };
 		29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */; };
@@ -340,6 +343,9 @@
 		2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailyTaskCell.swift; sourceTree = "<group>"; };
 		2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyTaskCell.xib; sourceTree = "<group>"; };
 		29AAA15C1F2A3AA600029737 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechbubbleView.swift; sourceTree = "<group>"; };
+		29AAA1601F2B597400029737 /* SpeechbubbleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeechbubbleView.xib; sourceTree = "<group>"; };
+		29AAA1621F2B6D2000029737 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		29AF6B9E1EFC2D11001C8F16 /* HabitRPG 42.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 42.xcdatamodel"; sourceTree = "<group>"; };
 		29B388DE1EEF4FBD00A72950 /* MorningNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorningNotification.swift; sourceTree = "<group>"; };
 		29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyChecklistItem.xib; sourceTree = "<group>"; };
@@ -974,6 +980,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29AAA1641F2B6D2400029737 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				29AAA1621F2B6D2000029737 /* SetupViewController.swift */,
+			);
+			name = Setup;
+			sourceTree = "<group>";
+		};
 		B4CD8E50098CF9B62A999CCD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1328,6 +1342,7 @@
 				D984D5871E49F9D9006E84F8 /* Purchases */,
 				D96BFC4D1E181B5500266EEF /* Intro */,
 				D9A63A371E104F6C0083ADC4 /* Login */,
+				29AAA1641F2B6D2400029737 /* Setup */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1479,6 +1494,8 @@
 				D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */,
 				D9FC1A791BC28D7100B97D23 /* HRPGSpeechbubbleView.h */,
 				D9FC1A7A1BC28D7100B97D23 /* HRPGSpeechbubbleView.m */,
+				29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */,
+				29AAA1601F2B597400029737 /* SpeechbubbleView.xib */,
 				D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */,
 				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
 				D9660D761AB248030084CE37 /* HRPGUserTopHeader.h */,
@@ -2083,6 +2100,7 @@
 				2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
 				29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */,
@@ -2403,6 +2421,7 @@
 				D92A085A1D3520D8000F8B66 /* Shop.m in Sources */,
 				D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */,
 				D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */,
+				29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */,
 				D979AD1A1AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m in Sources */,
 				D9F16E361BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
@@ -2524,6 +2543,7 @@
 				D9FC1A781BC28C5F00B97D23 /* HRPGExplanationView.m in Sources */,
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
 				D92A085D1D3520D8000F8B66 /* ShopItem+CoreDataProperties.m in Sources */,
+				29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */,
 				D9709A541E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift in Sources */,
 				D98F5DC91C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m in Sources */,
 				D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */,

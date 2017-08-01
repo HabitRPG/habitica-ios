@@ -19,3 +19,4 @@
 #import "Tag.h"
 #import "HRPGBaseNotificationView.h"
 #import "HRPGTabBarController.h"
+#import "HRPGTypingLabel.h"

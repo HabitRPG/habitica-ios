@@ -16,7 +16,6 @@
 @property HRPGTypingLabel *textLabel;
 @property UIButton *dismissButton;
 @property UIButton *remindAgainButton;
-@property UIImageView *backgroundView;
 @end
 
 @implementation HRPGSpeechbubbleView
@@ -25,34 +24,34 @@
     self = [super init];
 
     if (self) {
-        self.backgroundView = [[UIImageView alloc]
-            initWithImage:[[UIImage imageNamed:@"speech_bubble"]
-                              resizableImageWithCapInsets:UIEdgeInsetsMake(12, 40, 28, 12)]];
-        [self addSubview:self.backgroundView];
+        self.backgroundColor = [UIColor whiteColor];
+        self.layer.cornerRadius = 4;
         self.textLabel = [[HRPGTypingLabel alloc] init];
         __weak HRPGSpeechbubbleView *weakSelf = self;
         self.textLabel.finishedAction = ^() {
             [weakSelf displayButtons];
         };
         [self addSubview:self.textLabel];
-        self.dismissButton = [[UIButton alloc] init];
-        [self.dismissButton setTitle:NSLocalizedString(@"Got it", nil)
-                            forState:UIControlStateNormal];
-        [self.dismissButton setTitleColor:[UIColor purple400] forState:UIControlStateNormal];
-        self.dismissButton.alpha = 0;
-        [self.dismissButton addTarget:self
-                               action:@selector(dismissButtonPressed:)
-                     forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.dismissButton];
-        self.remindAgainButton = [[UIButton alloc] init];
-        [self.remindAgainButton setTitle:NSLocalizedString(@"Remind me tomorrow", nil)
+        if (!self.hideButtons) {
+            self.dismissButton = [[UIButton alloc] init];
+            [self.dismissButton setTitle:NSLocalizedString(@"Got it", nil)
                                 forState:UIControlStateNormal];
-        [self.remindAgainButton setTitleColor:[UIColor purple400] forState:UIControlStateNormal];
-        self.remindAgainButton.alpha = 0;
-        [self.remindAgainButton addTarget:self
-                                   action:@selector(remindAgainButtonPressed:)
+            [self.dismissButton setTitleColor:[UIColor purple400] forState:UIControlStateNormal];
+            self.dismissButton.alpha = 0;
+            [self.dismissButton addTarget:self
+                                   action:@selector(dismissButtonPressed:)
                          forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.remindAgainButton];
+            [self addSubview:self.dismissButton];
+            self.remindAgainButton = [[UIButton alloc] init];
+            [self.remindAgainButton setTitle:NSLocalizedString(@"Remind me tomorrow", nil)
+                                    forState:UIControlStateNormal];
+            [self.remindAgainButton setTitleColor:[UIColor purple400] forState:UIControlStateNormal];
+            self.remindAgainButton.alpha = 0;
+            [self.remindAgainButton addTarget:self
+                                       action:@selector(remindAgainButtonPressed:)
+                             forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:self.remindAgainButton];
+        }
         self.textColor = [UIColor blackColor];
     }
 
@@ -61,10 +60,11 @@
 
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
-    self.backgroundView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-    self.dismissButton.frame = CGRectMake(8, frame.size.height - 54, frame.size.width - 16, 30);
-    self.remindAgainButton.frame =
+    if (!self.hideButtons) {
+        self.dismissButton.frame = CGRectMake(8, frame.size.height - 54, frame.size.width - 16, 30);
+        self.remindAgainButton.frame =
         CGRectMake(8, self.dismissButton.frame.origin.y - 38, frame.size.width - 16, 30);
+    }
     self.textLabel.frame =
         CGRectMake(8, 0, frame.size.width - 16, self.remindAgainButton.frame.origin.y);
 }
@@ -80,18 +80,33 @@
 }
 
 - (void)displayButtons {
-    [UIView animateWithDuration:0.3
-                     animations:^() {
-                         self.remindAgainButton.alpha = 1;
-                     }];
-    [UIView animateWithDuration:0.3
-                          delay:0.2
-                        options:UIViewAnimationOptionCurveLinear
-                     animations:^() {
-                         self.dismissButton.alpha = 1;
-                     }
-                     completion:nil];
+    if (!self.hideButtons) {
+        [UIView animateWithDuration:0.3
+                         animations:^() {
+                             self.remindAgainButton.alpha = 1;
+                         }];
+        [UIView animateWithDuration:0.3
+                              delay:0.2
+                            options:UIViewAnimationOptionCurveLinear
+                         animations:^() {
+                             self.dismissButton.alpha = 1;
+                         }
+                         completion:nil];
+    }
 }
+
+- (void)setHideButtons:(BOOL)hideButtons {
+    _hideButtons = hideButtons;
+    if (self.dismissButton) {
+        [self.dismissButton removeFromSuperview];
+        self.dismissButton = nil;
+    }
+    if (self.remindAgainButton) {
+        [self.remindAgainButton removeFromSuperview];
+        self.remindAgainButton = nil;
+    }
+}
+
 
 - (void)dismissButtonPressed:(UIButton *)button {
     if ([self.superview isKindOfClass:[HRPGExplanationView class]]) {

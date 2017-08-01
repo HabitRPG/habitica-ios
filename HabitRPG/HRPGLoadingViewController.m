@@ -38,7 +38,7 @@
                     [weakSelf performSegueWithIdentifier:@"InitialSegue" sender:self];
                 }];
         } else {
-            [self performSegueWithIdentifier:@"InitialSegue" sender:self];
+            [self performSegueWithIdentifier:@"SetupSegue" sender:self];
         }
     }
     [super viewDidAppear:YES];
@@ -58,15 +58,7 @@
             (LoginTableViewController *)navigationViewController.topViewController;
         loginViewController.isRootViewController = YES;
     } else if ([segue.identifier isEqualToString:@"SetupSegue"]) {
-        UINavigationController *navController = segue.destinationViewController;
-        HRPGAvatarSetupViewController *avatarSetupViewController =
-            (HRPGAvatarSetupViewController *)navController.topViewController;
-        HRPGAppDelegate *appdelegate =
-            (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-        HRPGManager *manager = appdelegate.sharedManager;
-        User *user = [manager getUser];
-        avatarSetupViewController.user = user;
-        avatarSetupViewController.managedObjectContext = manager.getManagedObjectContext;
+
     }
 }
 

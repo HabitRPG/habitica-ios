@@ -1,0 +1,23 @@
+{
+    "images": [
+        {
+            "idiom": "universal", 
+            "scale": "1x", 
+            "filename": "creator_hair_base_3_blond@1x.png"
+        }, 
+        {
+            "idiom": "universal", 
+            "scale": "2x", 
+            "filename": "creator_hair_base_3_blond@2x.png"
+        }, 
+        {
+            "idiom": "universal", 
+            "scale": "3x", 
+            "filename": "creator_hair_base_3_blond@3x.png"
+        }
+    ], 
+    "info": {
+        "version": 1, 
+        "author": "xcode"
+    }
+}
