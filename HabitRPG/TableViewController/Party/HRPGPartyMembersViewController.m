@@ -27,7 +27,7 @@
 @implementation HRPGPartyMembersViewController
 
 - (void)viewDidLoad {
-    NSString *orderSetting = [self.sharedManager getUser].partyOrder;
+    NSString *orderSetting = [[HRPGManager sharedManager] getUser].partyOrder;
     if ([orderSetting isEqualToString:@"level"]) {
         self.sortKey = @"level";
         self.sortAscending = NO;
@@ -48,7 +48,7 @@
 
     [self setUpInvitationButton];
 
-    [self.sharedManager fetchGroupMembers:[self.sharedManager getUser].partyID withPublicFields:YES fetchAll:YES onSuccess:nil onError:nil];
+    [[HRPGManager sharedManager] fetchGroupMembers:[[HRPGManager sharedManager] getUser].partyID withPublicFields:YES fetchAll:YES onSuccess:nil onError:nil];
 }
 
 - (void)setupTableView {
@@ -59,7 +59,7 @@
     FetchRequestConfigureBlock configureFetchRequest = ^(NSFetchRequest *fetchRequest) {
         NSPredicate *predicate;
         predicate =
-        [NSPredicate predicateWithFormat:@"partyID == %@", [weakSelf.sharedManager getUser].partyID];
+        [NSPredicate predicateWithFormat:@"partyID == %@", [[HRPGManager sharedManager] getUser].partyID];
         [fetchRequest setPredicate:predicate];
         
         NSSortDescriptor *idDescriptor =
@@ -134,7 +134,7 @@
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGInviteMembersViewController *formViewController = segue.sourceViewController;
-    [self.sharedManager inviteMembers:formViewController.members
+    [[HRPGManager sharedManager] inviteMembers:formViewController.members
         withInvitationType:formViewController.invitationType
         toGroupWithID:self.partyID
                             onSuccess:^() {

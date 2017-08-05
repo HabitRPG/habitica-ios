@@ -7,6 +7,8 @@
 //
 
 #import "HRPGMountViewController.h"
+#import "HRPGManager.h"
+#import "Pet.h"
 #import "Egg.h"
 #import "HatchingPotion.h"
 
@@ -25,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.equippedMountName = [self.sharedManager getUser].currentMount;
+    self.equippedMountName = [[HRPGManager sharedManager]getUser].currentMount;
 
     self.screenSize = [[UIScreen mainScreen] bounds].size;
 
@@ -271,7 +273,7 @@
         imageView.contentMode = UIViewContentModeScaleToFill;
         imageView.alpha = 1;
     } else {
-        [self.sharedManager setImage:@"PixelPaw" withFormat:@"png" onView:imageView];
+        [[HRPGManager sharedManager] setImage:@"PixelPaw" withFormat:@"png" onView:imageView];
         imageView.contentMode = UIViewContentModeCenter;
         imageView.alpha = 0.3f;
     }
@@ -280,7 +282,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
         __weak HRPGMountViewController *weakSelf = self;
-        [self.sharedManager equipObject:self.selectedMount.key
+        [[HRPGManager sharedManager] equipObject:self.selectedMount.key
             withType:@"mount"
             onSuccess:^() {
                 if ([weakSelf.equippedMountName isEqualToString:weakSelf.selectedMount.key]) {

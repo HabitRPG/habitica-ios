@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.user = [self.sharedManager getUser];
+    self.user = [[HRPGManager sharedManager] getUser];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

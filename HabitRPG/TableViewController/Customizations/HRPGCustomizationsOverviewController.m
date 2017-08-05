@@ -27,7 +27,7 @@ NSIndexPath *selectedIndex;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.user = [self.sharedManager getUser];
+    self.user = [[HRPGManager sharedManager] getUser];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -266,14 +266,14 @@ NSIndexPath *selectedIndex;
             detailLabel.text = equippedEar.text;
             detailLabel.textColor = [UIColor blackColor];
             imageView.contentMode = UIViewContentModeCenter;
-            [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", equippedEar.key]
+            [[HRPGManager sharedManager] setImage:[NSString stringWithFormat:@"shop_%@", equippedEar.key]
                               withFormat:@"png"
                                   onView:imageView];
             imageView.alpha = 1.0;
         } else {
             detailLabel.text = NSLocalizedString(@"Nothing Set", nil);
             detailLabel.textColor = [UIColor grayColor];
-            [self.sharedManager setImage:@"head_0" withFormat:@"png" onView:imageView];
+            [[HRPGManager sharedManager] setImage:@"head_0" withFormat:@"png" onView:imageView];
             imageView.alpha = 0.4;
         }
     } else {
@@ -296,14 +296,14 @@ NSIndexPath *selectedIndex;
             detailLabel.text = [searchedCustomization.name capitalizedString];
             detailLabel.textColor = [UIColor blackColor];
             imageView.contentMode = UIViewContentModeBottomRight;
-            [self.sharedManager setImage:[searchedCustomization getImageNameForUser:self.user]
+            [[HRPGManager sharedManager] setImage:[searchedCustomization getImageNameForUser:self.user]
                               withFormat:@"png"
                                   onView:imageView];
             imageView.alpha = 1.0;
         } else {
             detailLabel.text = NSLocalizedString(@"Nothing Set", nil);
             detailLabel.textColor = [UIColor grayColor];
-            [self.sharedManager setImage:@"head_0" withFormat:@"png" onView:imageView];
+            [[HRPGManager sharedManager] setImage:@"head_0" withFormat:@"png" onView:imageView];
             imageView.alpha = 0.4;
         }
     }
@@ -384,7 +384,7 @@ NSIndexPath *selectedIndex;
         newSize = @"broad";
     }
 
-    [self.sharedManager updateUser:@{
+    [[HRPGManager sharedManager] updateUser:@{
         @"preferences.size" : newSize
     }
         onSuccess:nil onError:nil];

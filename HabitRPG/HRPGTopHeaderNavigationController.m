@@ -96,7 +96,9 @@
         options:UIViewAnimationOptionCurveEaseOut
         animations:^() {
             self.backgroundView.frame = frame;
-            [self setNavigationBarColors:1];
+            if (!self.shouldHideTopHeader) {
+                [self setNavigationBarColors:1];
+            }
         }
         completion:^(BOOL completed){
         }];

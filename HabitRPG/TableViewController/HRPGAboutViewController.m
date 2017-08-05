@@ -197,7 +197,7 @@
                                                 [[NSBundle mainBundle] infoDictionary]
                                                     [@"CFBundleShortVersionString"]]];
     [informationString appendString:[NSString stringWithFormat:@"User UUID: %@\n",
-                                                               [self.sharedManager getUser].id]];
+                                                               [[HRPGManager sharedManager] getUser].id]];
 
     return informationString;
 }

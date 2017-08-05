@@ -34,7 +34,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self.sharedManager markInboxSeen:nil onError:nil];
+    [[HRPGManager sharedManager] markInboxSeen:nil onError:nil];
     [super viewDidAppear:animated];
 }
 

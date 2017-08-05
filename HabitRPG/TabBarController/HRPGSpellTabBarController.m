@@ -8,20 +8,16 @@
 
 #import "HRPGSpellTabBarController.h"
 #import "NIKFontAwesomeIconFactory.h"
-#import "HRPGAppDelegate.h"
 #import "HRPGSpellTaskController.h"
 #import "UIColor+Habitica.h"
 
 @interface HRPGSpellTabBarController ()
-@property HRPGManager *sharedManager;
 @end
 
 @implementation HRPGSpellTabBarController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.sharedManager = appdelegate.sharedManager;
 
     NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
 
@@ -70,12 +66,11 @@
 }
 
 - (void)castSpell {
-    __weak HRPGSpellTabBarController *weakSelf = self;
-    [self.sharedManager castSpell:self.spell
+    [[HRPGManager sharedManager] castSpell:self.spell
         withTargetType:self.spell.target
         onTarget:self.taskID
         onSuccess:^() {
-            [weakSelf.sourceTableView reloadData];
+            [self.sourceTableView reloadData];
         } onError:nil];
     [self dismissViewControllerAnimated:YES
                              completion:nil];

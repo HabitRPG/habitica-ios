@@ -16,7 +16,6 @@
 @dynamic displayedTutorialStep;
 @dynamic tutorialIdentifier;
 @dynamic coachMarks;
-@dynamic sharedManager;
 @dynamic activeTutorialView;
 
 - (void)displayTutorialStep:(HRPGManager *)sharedManager {
@@ -76,7 +75,7 @@
              withTutorialType:(NSString *)type {
     TutorialSteps *step = [TutorialSteps markStep:identifier
                                          withType:type
-                                      withContext:self.sharedManager.getManagedObjectContext];
+                                      withContext:[HRPGManager sharedManager].getManagedObjectContext];
     NSString *className = NSStringFromClass([self class]);
     if ([step.wasShown boolValue]) {
         return;
@@ -88,7 +87,7 @@
     step.shownInView = className;
     step.wasShown = @YES;
     NSError *error;
-    [self.sharedManager.getManagedObjectContext saveToPersistentStore:&error];
+    [[HRPGManager sharedManager].getManagedObjectContext saveToPersistentStore:&error];
 
     NSDictionary *tutorialDefinition = [self getDefinitonForTutorial:identifier];
     TutorialStepView *tutorialStepView = [[TutorialStepView alloc] init];
@@ -105,9 +104,9 @@
         [tutorialStepView displayOnView:self.parentViewController.parentViewController.view animated:YES];
     }
     if ([type isEqualToString:@"common"]) {
-        [[self.sharedManager user].flags addCommonTutorialStepsObject:step];
+        [[[HRPGManager sharedManager] user].flags addCommonTutorialStepsObject:step];
     } else {
-        [[self.sharedManager user].flags addIOSTutorialStepsObject:step];
+        [[[HRPGManager sharedManager] user].flags addIOSTutorialStepsObject:step];
     }
 
     NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
@@ -133,10 +132,12 @@
         [eventProperties setValue:@YES forKey:@"complete"];
         [[Amplitude instance] logEvent:@"tutorial" withEventProperties:eventProperties];
         NSError *error;
-        [self.sharedManager.getManagedObjectContext saveToPersistentStore:&error];
-        [self.sharedManager updateUser:@{
-            [NSString stringWithFormat:@"flags.tutorial.%@.%@", type, step.identifier] : @YES
-        } onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager].getManagedObjectContext saveToPersistentStore:&error];
+        [[HRPGManager sharedManager] updateUser:@{
+            [NSString stringWithFormat:@"flags.tutorial.%@.%@", type, step.identifier] : @(wasSeen)
+        }
+                             onSuccess:nil
+                               onError:nil];
     };
 }
 

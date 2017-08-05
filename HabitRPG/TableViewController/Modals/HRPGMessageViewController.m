@@ -12,7 +12,6 @@
 #import "HRPGManager.h"
 
 @interface HRPGMessageViewController ()
-@property HRPGManager *sharedManager;
 @property(weak, nonatomic) IBOutlet NSLayoutConstraint *bottomOffsetConstraint;
 
 @end
@@ -22,9 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.sharedManager = appdelegate.sharedManager;
-    self.managedObjectContext = self.sharedManager.getManagedObjectContext;
+    self.managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardChanged:)

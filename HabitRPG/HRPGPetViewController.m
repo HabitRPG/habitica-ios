@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.equippedPetName = [self.sharedManager getUser].currentPet;
+    self.equippedPetName = [[HRPGManager sharedManager] getUser].currentPet;
 
     self.screenSize = [[UIScreen mainScreen] bounds].size;
 
@@ -55,7 +55,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self displayTutorialStep:self.sharedManager];
+    [self displayTutorialStep:[HRPGManager sharedManager]];
 }
 
 - (Egg *)eggWithKey:(NSString *)key {
@@ -296,7 +296,7 @@
         if ([pet.key isEqualToString:@"Wolf-Cerberus"]) {
             format = @"gif";
         }
-        [self.sharedManager setImage:[NSString stringWithFormat:@"Pet-%@", pet.key]
+        [[HRPGManager sharedManager] setImage:[NSString stringWithFormat:@"Pet-%@", pet.key]
                           withFormat:format
                               onView:imageView];
 
@@ -304,7 +304,7 @@
             imageView.alpha = 0.3f;
         }
     } else {
-        [self.sharedManager setImage:@"PixelPaw" withFormat:@"png" onView:imageView];
+        [[HRPGManager sharedManager] setImage:@"PixelPaw" withFormat:@"png" onView:imageView];
         imageView.alpha = 0.3f;
     }
 
@@ -342,7 +342,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
         __weak HRPGPetViewController *weakSelf;
-        [self.sharedManager equipObject:self.selectedPet.key
+        [[HRPGManager sharedManager] equipObject:self.selectedPet.key
             withType:@"pet"
             onSuccess:^() {
                 if ([weakSelf.equippedPetName isEqualToString:weakSelf.selectedPet.key]) {
@@ -364,7 +364,7 @@
     HRPGFeedViewController *feedController = [segue sourceViewController];
     Food *food = feedController.selectedFood;
     self.selectedPet.niceMountName = [self niceMountName:self.selectedPet];
-    [self.sharedManager feedPet:self.selectedPet
+    [[HRPGManager sharedManager] feedPet:self.selectedPet
         withFood:food
         onSuccess:nil onError:nil];
 }

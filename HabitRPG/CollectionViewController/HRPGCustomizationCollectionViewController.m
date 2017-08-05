@@ -7,6 +7,7 @@
 //
 
 #import "HRPGCustomizationCollectionViewController.h"
+#import "HRPGManager.h"
 #import "Customization.h"
 #import "Gear.h"
 #import "HRPGPurchaseButton.h"
@@ -282,13 +283,13 @@ static NSString *const reuseIdentifier = @"Cell";
     if ([self.entityName isEqualToString:@"Customization"]) {
         Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
         UIImageView *imageView = [cell viewWithTag:1];
-        [self.sharedManager setImage:[customization getImageNameForUser:self.user]
+        [[HRPGManager sharedManager] setImage:[customization getImageNameForUser:self.user]
                           withFormat:@"png"
                               onView:imageView];
     } else {
         Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
         UIImageView *imageView = [cell viewWithTag:1];
-        [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", gear.key]
+        [[HRPGManager sharedManager] setImage:[NSString stringWithFormat:@"shop_%@", gear.key]
                           withFormat:@"png"
                               onView:imageView];
     }
@@ -299,12 +300,12 @@ static NSString *const reuseIdentifier = @"Cell";
         case 0:
             if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
                 if ([self.entityName isEqualToString:@"Customization"]) {
-                    [self.sharedManager updateUser:@{
+                    [[HRPGManager sharedManager] updateUser:@{
                         self.userKey : [self.selectedCustomization valueForKey:@"name"]
                     }
                         onSuccess:nil onError:nil];
                 } else {
-                    [self.sharedManager equipObject:[self.selectedCustomization valueForKey:@"key"]
+                    [[HRPGManager sharedManager] equipObject:[self.selectedCustomization valueForKey:@"key"]
                         withType:self.userKey
                         onSuccess:nil onError:nil];
                 }
@@ -318,7 +319,7 @@ static NSString *const reuseIdentifier = @"Cell";
                         [self displayGemPurchaseView];
                         return;
                     }
-                    [self.sharedManager unlockPath:[self.selectedCustomization getPath]
+                    [[HRPGManager sharedManager] unlockPath:[self.selectedCustomization getPath]
                         onSuccess:nil onError:nil];
                 } else {
                     if ([self.user.balance floatValue] < 0.5) {
@@ -326,7 +327,7 @@ static NSString *const reuseIdentifier = @"Cell";
                         return;
                     }
                     __weak HRPGCustomizationCollectionViewController *weakSelf = self;
-                    [self.sharedManager purchaseItem:self.selectedCustomization
+                    [[HRPGManager sharedManager] purchaseItem:self.selectedCustomization
                         onSuccess:^() {
                             if (weakSelf) {
                                 [weakSelf.collectionView reloadData];
@@ -343,7 +344,7 @@ static NSString *const reuseIdentifier = @"Cell";
                     return;
                 }
                 __weak HRPGCustomizationCollectionViewController *weakSelf = self;
-                [self.sharedManager unlockPath:self.selectedSetPath
+                [[HRPGManager sharedManager] unlockPath:self.selectedSetPath
                     onSuccess:^() {
                         if (weakSelf) {
                             [weakSelf.collectionView reloadData];

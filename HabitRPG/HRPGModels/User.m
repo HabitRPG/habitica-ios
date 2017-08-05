@@ -7,7 +7,7 @@
 //
 
 #import "User.h"
-#import "HRPGAppDelegate.h"
+#import "HRPGManager.h"
 #import "Customization.h"
 #import <CommonCrypto/CommonCrypto.h>
 #import "Customization.h"
@@ -292,9 +292,8 @@
 }
 
 - (void)setChallengeArray:(NSArray *)challengeArray {
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *managedObjectContext =
-    appdelegate.sharedManager.getManagedObjectContext;
+    [HRPGManager sharedManager].getManagedObjectContext;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity =
@@ -324,9 +323,8 @@
     }
     NSMutableDictionary *dict = [customizationDictionary mutableCopy];
 
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *managedObjectContext =
-        appdelegate.sharedManager.getManagedObjectContext;
+        [HRPGManager sharedManager].getManagedObjectContext;
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.

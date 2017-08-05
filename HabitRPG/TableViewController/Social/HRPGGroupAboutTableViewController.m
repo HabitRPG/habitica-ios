@@ -107,7 +107,7 @@
 
 - (void)joinGroup {
     __weak HRPGGroupAboutTableViewController *weakSelf = self;
-    [self.sharedManager joinGroup:self.group.id
+    [[HRPGManager sharedManager] joinGroup:self.group.id
                          withType:self.group.type
                         onSuccess:^() {
                             weakSelf.navigationItem.rightBarButtonItem = nil;
@@ -184,7 +184,7 @@
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGGroupFormViewController *formViewController = segue.sourceViewController;
     __weak HRPGGroupAboutTableViewController *weakSelf = self;
-    [self.sharedManager
+    [[HRPGManager sharedManager]
         updateGroup:formViewController.group
           onSuccess:^() {
               if ([weakSelf.presentingViewController
@@ -201,7 +201,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         __weak HRPGGroupAboutTableViewController *weakSelf = self;
-        [self.sharedManager
+        [[HRPGManager sharedManager]
             leaveGroup:self.group
               withType:self.group.type
              onSuccess:^() {

@@ -60,7 +60,7 @@ float textWidth;
         NSPredicate *predicate;
         NSString *predicateString = @"owned > 0 && text != ''";
         
-        if (![weakSelf.sharedManager getUser].subscriptionPlan.isActive) {
+        if (![[HRPGManager sharedManager] getUser].subscriptionPlan.isActive) {
             predicateString = [predicateString stringByAppendingString:@" && (isSubscriberItem == nil || isSubscriberItem != YES)"];
         }
         
@@ -115,11 +115,11 @@ float textWidth;
         openShopButton.layer.cornerRadius = 5;
         
         if (self.isHatching) {
-            [self.sharedManager setImage:@"npc_alex" withFormat:nil onView:imageView];
+            [[HRPGManager sharedManager] setImage:@"npc_alex" withFormat:nil onView:imageView];
             label.text = NSLocalizedString(@"Not getting the right drops? Check out the Market to buy just the things you need!", nil);
             [openShopButton addTarget:self action:@selector(openMarket:) forControlEvents:UIControlEventTouchUpInside];
         } else {
-            [self.sharedManager setImage:@"npc_ian" withFormat:nil onView:imageView];
+            [[HRPGManager sharedManager] setImage:@"npc_ian" withFormat:nil onView:imageView];
             label.text = NSLocalizedString(@"Looking for more adventures? Visit Ian to buy more quest scrolls!", nil);
             [openShopButton addTarget:self action:@selector(openQuestShop:) forControlEvents:UIControlEventTouchUpInside];
         }
@@ -154,7 +154,7 @@ float textWidth;
         NSError *error;
         [self.managedObjectContext save:&error];
         
-        [self.sharedManager fetchUser:nil onError:nil];
+        [[HRPGManager sharedManager] fetchUser:nil onError:nil];
     }
 }
 
@@ -249,11 +249,11 @@ float textWidth;
             potionName = item.key;
             potionDisplayName = item.text;
         }
-        [self.sharedManager
+        [[HRPGManager sharedManager]
               hatchEgg:eggName
             withPotion:potionName
              onSuccess:^(NSString *message) {
-                 [self.sharedManager
+                 [[HRPGManager sharedManager]
                        getImage:[NSString stringWithFormat:@"Pet-%@-%@", eggName, potionName]
                      withFormat:nil
                       onSuccess:^(UIImage *image) {
@@ -343,17 +343,17 @@ float textWidth;
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
     if (buttonIndex == actionSheet.destructiveButtonIndex) {
-        [self.sharedManager sellItem:self.selectedItem onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager] sellItem:self.selectedItem onSuccess:nil onError:nil];
     } else if (buttonIndex == 0 && [self.selectedItem isKindOfClass:[Quest class]]) {
-        User *user = [self.sharedManager getUser];
+        User *user = [[HRPGManager sharedManager] getUser];
         Quest *quest = (Quest *)self.selectedItem;
-        [self.sharedManager inviteToQuest:user.partyID withQuest:quest onSuccess:^() {
+        [[HRPGManager sharedManager] inviteToQuest:user.partyID withQuest:quest onSuccess:^() {
             if (self.shouldDismissAfterAction) {
                 [self dismissViewControllerAnimated:YES completion:nil];
             }
         }onError:nil];
     } else if (buttonIndex == 0 && [self.selectedItem.key isEqualToString:@"inventory_present"]) {
-        [self.sharedManager openMysteryItem:nil onError:nil];
+        [[HRPGManager sharedManager] openMysteryItem:nil onError:nil];
     } else if (buttonIndex == 1 && ![self.selectedItem isKindOfClass:[Quest class]]) {
         self.isHatching = YES;
         if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
@@ -398,7 +398,7 @@ float textWidth;
         }
         imageName = [NSString stringWithFormat:@"Pet_%@_%@", type, item.key];
     }
-    [self.sharedManager setImage:imageName withFormat:@"png" onView:cell.imageView];
+    [[HRPGManager sharedManager] setImage:imageName withFormat:@"png" onView:cell.imageView];
     cell.imageView.contentMode = UIViewContentModeCenter;
     cell.imageView.alpha = 1;
     textLabel.alpha = 1;

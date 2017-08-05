@@ -13,6 +13,4 @@
 @property(weak, nonatomic) IBOutlet UIWebView *newsWebView;
 @property(weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 
-@property HRPGManager *sharedManager;
-
 @end

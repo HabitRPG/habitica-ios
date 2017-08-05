@@ -62,6 +62,16 @@ RKManagedObjectStore *managedObjectStore;
 NSUserDefaults *defaults;
 NSString *currentUser;
 
++ (HRPGManager *)sharedManager {
+    static HRPGManager *sharedManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedManager = [[self alloc] init];
+        [sharedManager loadObjectManager:nil];
+    });
+    return sharedManager;
+}
+
 + (RKValueTransformer *)millisecondsSince1970ToDateValueTransformer {
     return [RKBlockValueTransformer
         valueTransformerWithValidationBlock:^BOOL(__unsafe_unretained Class sourceClass,

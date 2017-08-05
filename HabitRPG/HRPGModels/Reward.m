@@ -7,7 +7,7 @@
 //
 
 #import "Reward.h"
-#import "HRPGAppDelegate.h"
+#import "HRPGManager.h"
 
 @implementation Reward
 
@@ -34,9 +34,8 @@
     if (tagArray.count == 0) {
         return;
     }
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *managedObjectContext =
-        appdelegate.sharedManager.getManagedObjectContext;
+        [HRPGManager sharedManager].getManagedObjectContext;
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.

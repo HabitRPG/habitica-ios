@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.user = [self.sharedManager getUser];
+    self.user = [[HRPGManager sharedManager] getUser];
     self.tutorialIdentifier = @"equipment";
 }
 
@@ -212,7 +212,7 @@
         if (searchedGear) {
             detailLabel.text = searchedGear.text;
             detailLabel.textColor = [UIColor blackColor];
-            [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", searchedGear.key]
+            [[HRPGManager sharedManager] setImage:[NSString stringWithFormat:@"shop_%@", searchedGear.key]
                               withFormat:@"png"
                                   onView:imageView];
 
@@ -267,7 +267,7 @@
 
 - (void)changeWearingCostume:(UISwitch *)switchState {
     __weak HRPGEquipmentViewController *weakSelf = self;
-    [self.sharedManager updateUser:@{
+    [[HRPGManager sharedManager] updateUser:@{
         @"preferences.costume" : @(switchState.on)
     }
         onSuccess:^() {

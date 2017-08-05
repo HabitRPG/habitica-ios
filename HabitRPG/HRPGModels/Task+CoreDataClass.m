@@ -15,7 +15,7 @@
 #import "NSDate+DaysSince.h"
 #import "NSString+Emoji.h"
 #import <CoreSpotlight/CoreSpotlight.h>
-#import "HRPGAppDelegate.h"
+#import "HRPGManager.h"
 
 @interface Task ()
 
@@ -129,9 +129,8 @@
 }
 
 - (void)setTagArray:(NSArray *)tagArray {
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *managedObjectContext =
-    appdelegate.sharedManager.getManagedObjectContext;
+    [HRPGManager sharedManager].getManagedObjectContext;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.

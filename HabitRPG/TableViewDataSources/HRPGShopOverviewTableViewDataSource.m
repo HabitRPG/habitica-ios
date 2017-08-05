@@ -32,11 +32,7 @@
         [self.delegate needsShopRefreshForIdentifier:identifier at:indexPath];
     }
     
-    if (![identifier isEqualToString:QuestsShopKey]) {
-        cell.backgroundImageView.contentMode = UIViewContentModeScaleToFill;
-    }else{
-        cell.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
-    }
+    cell.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 - (NSString *)titleForIdentifier:(NSString *)identifier {
@@ -53,7 +49,7 @@
 }
 
 - (UIImage *)bgImageForIdentifier:(NSString *)identifier {
-    return [UIImage imageNamed:[self shopBgImageNames][identifier]];
+    return [[UIImage imageNamed:[self shopBgImageNames][identifier]] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
 }
 
 - (UIImage *)characterImageForIdentifier:(NSString *)identifier {

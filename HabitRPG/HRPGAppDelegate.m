@@ -106,11 +106,11 @@
     }
 
     if (application.applicationState == UIApplicationStateActive || application.applicationState == UIApplicationStateInactive) {
-        User *user = [self.sharedManager getUser];
+        User *user = [[HRPGManager sharedManager] getUser];
         if (user) {
             NSDate *lastUserFetch = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastTaskFetch"];
             if ([lastUserFetch timeIntervalSinceNow] < -300) {
-                [self.sharedManager fetchUser:^() {
+                [[HRPGManager sharedManager] fetchUser:^() {
                     [self loadContent];
                 } onError:^() {
                     [self loadContent];
@@ -141,14 +141,6 @@
 
 - (BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder {
     return YES;
-}
-
-- (HRPGManager *)sharedManager {
-    if (_sharedManager == nil) {
-        _sharedManager = [[HRPGManager alloc] init];
-        [_sharedManager loadObjectManager:nil];
-    }
-    return _sharedManager;
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -220,21 +212,21 @@
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void (^)())completionHandler {
     if ([identifier isEqualToString:@"acceptAction"]) {
-        [self.sharedManager acceptQuest:[self.sharedManager getUser].partyID onSuccess:^() {
+        [[HRPGManager sharedManager] acceptQuest:[[HRPGManager sharedManager] getUser].partyID onSuccess:^() {
             completionHandler();
         } onError:^(NSString *errorMessage) {
             [self displayLocalNotificationWithMessage:errorMessage withApplication:application];
             completionHandler();
         }];
     } else if ([identifier isEqualToString:@"rejectAction"]) {
-        [self.sharedManager rejectQuest:[self.sharedManager getUser].partyID onSuccess:^() {
+        [[HRPGManager sharedManager] rejectQuest:[[HRPGManager sharedManager] getUser].partyID onSuccess:^() {
             completionHandler();
         } onError:^(NSString *errorMessage) {
             [self displayLocalNotificationWithMessage:errorMessage withApplication:application];
             completionHandler();
         }];
     } else if ([identifier isEqualToString:@"replyAction"]) {
-        [self.sharedManager privateMessage:responseInfo[UIUserNotificationActionResponseTypedTextKey] toUserWithID:userInfo[@"replyTo"] onSuccess:^() {
+        [[HRPGManager sharedManager] privateMessage:responseInfo[UIUserNotificationActionResponseTypedTextKey] toUserWithID:userInfo[@"replyTo"] onSuccess:^() {
             completionHandler();
         } onError:^() {
             [self displayLocalNotificationWithMessage:NSLocalizedString(@"Your message could not be sent.", nil) withApplication:application];
@@ -327,14 +319,14 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity =
         [NSEntityDescription entityForName:@"Task"
-                    inManagedObjectContext:[self.sharedManager getManagedObjectContext]];
+                    inManagedObjectContext:[[HRPGManager sharedManager] getManagedObjectContext]];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
     [fetchRequest
         setPredicate:[NSPredicate predicateWithFormat:@"reminders.@count != 0 && (type == 'daily' "
                                                       @"|| (type == 'todo' && completed == NO))"]];
     NSError *error;
-    NSArray *tasks = [[self.sharedManager getManagedObjectContext] executeFetchRequest:fetchRequest
+    NSArray *tasks = [[[HRPGManager sharedManager] getManagedObjectContext] executeFetchRequest:fetchRequest
                                                                                  error:&error];
 
     for (Task *task in tasks) {
@@ -416,7 +408,7 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity =
         [NSEntityDescription entityForName:@"Task"
-                    inManagedObjectContext:[self.sharedManager getManagedObjectContext]];
+                    inManagedObjectContext:[[HRPGManager sharedManager] getManagedObjectContext]];
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id = %@", taskID]];
     [fetchRequest
@@ -424,12 +416,12 @@
 
     NSError *error;
     NSArray *fetchedObjects =
-        [[self.sharedManager getManagedObjectContext] executeFetchRequest:fetchRequest
+        [[[HRPGManager sharedManager] getManagedObjectContext] executeFetchRequest:fetchRequest
                                                                     error:&error];
     if (fetchedObjects != nil && fetchedObjects.count == 1) {
         Task *task = fetchedObjects[0];
         if (![task.completed boolValue]) {
-            [self.sharedManager upDownTask:task
+            [[HRPGManager sharedManager] upDownTask:task
                 direction:@"up"
                 onSuccess:^() {
                     if (completionHandler) {
@@ -567,7 +559,7 @@
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     if (self.sharedManager.hasAuthentication) {
-        [self.sharedManager fetchTasks:^{
+        [[HRPGManager sharedManager] fetchTasks:^{
             completionHandler(UIBackgroundFetchResultNewData);
         } onError:^{
             completionHandler(UIBackgroundFetchResultFailed);

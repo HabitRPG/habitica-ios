@@ -32,7 +32,7 @@
             [user setAvatarSubview:avatarView showsBackground:NO showsMount:NO showsPet:NO];
         };
         FetchRequestConfigureBlock configureFetchRequest = ^(NSFetchRequest *fetchRequest) {
-            NSString *partyID = [weakSelf.sharedManager getUser].partyID;
+            NSString *partyID = [[HRPGManager sharedManager] getUser].partyID;
             [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"partyID == %@", partyID]];
             NSSortDescriptor *levelSortDescriptor =
             [[NSSortDescriptor alloc] initWithKey:@"level" ascending:YES];

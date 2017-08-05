@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.user = [self.sharedManager getUser];
+    self.user = [[HRPGManager sharedManager] getUser];
     [self setupTableView];
     self.tutorialIdentifier = @"skills";
 
@@ -61,7 +61,7 @@
 }
 
 - (NSPredicate *)predicate {
-    User *user = [self.sharedManager getUser];
+    User *user = [[HRPGManager sharedManager] getUser];
     NSString *classname = [NSString stringWithFormat:@"%@", user.dirtyClass];
     NSArray *ownedTransoformationIDs = [user.specialItems ownedTransformationItemIDs];
     if (ownedTransoformationIDs == nil) {
@@ -120,7 +120,7 @@
                              }];
 
         } else {
-            [self.sharedManager castSpell:spell
+            [[HRPGManager sharedManager] castSpell:spell
                            withTargetType:spell.target
                                  onTarget:nil
                                 onSuccess:^() {
@@ -177,7 +177,7 @@
         ownedSpecials = [self.user.specialItems valueForKey:skill.key];
     }
     [cell configureForSpell:skill withMagic:self.user.magic withOwned:ownedSpecials];
-    [self.sharedManager setImage:[@"shop_" stringByAppendingString:skill.key] withFormat:@"png" onView:cell.spellImageView];
+    [[HRPGManager sharedManager] setImage:[@"shop_" stringByAppendingString:skill.key] withFormat:@"png" onView:cell.spellImageView];
 }
 
 #pragma mark - Navigation
@@ -190,7 +190,7 @@
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     if ([segue.identifier isEqualToString:@"CastUserSpellSegue"]) {
         HRPGSpellUserTableViewController *userViewController = (HRPGSpellUserTableViewController *) segue.sourceViewController;
-        [self.sharedManager castSpell:userViewController.spell withTargetType:@"user" onTarget:userViewController.userID onSuccess:^{
+        [[HRPGManager sharedManager] castSpell:userViewController.spell withTargetType:@"user" onTarget:userViewController.userID onSuccess:^{
             [self.tableView reloadData];
         } onError:nil];
         

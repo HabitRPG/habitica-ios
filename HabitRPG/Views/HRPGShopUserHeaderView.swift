@@ -17,7 +17,7 @@ class HRPGShopUserHeaderView: UIView, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var goldCountView: HRPGGoldCountView!
     
     lazy var manager: HRPGManager? = {
-        (UIApplication.shared.delegate as? HRPGAppDelegate)?.sharedManager
+        HRPGManager.shared()
     }()
     lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? = {
         return self.createFetchedResultsController()

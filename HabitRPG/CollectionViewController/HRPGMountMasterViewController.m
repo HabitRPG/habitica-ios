@@ -7,7 +7,9 @@
 //
 
 #import "HRPGMountMasterViewController.h"
+#import "Pet.h"
 #import "Egg.h"
+#import "HRPGManager.h"
 #import "HRPGArrayViewController.h"
 #import "HRPGMountViewController.h"
 #import "HRPGNavigationController.h"
@@ -305,7 +307,7 @@ NSUserDefaults *defaults;
         imageView.contentMode = UIViewContentModeScaleToFill;
         imageView.alpha = 1;
     } else {
-        [self.sharedManager setImage:@"PixelPaw" withFormat:@"png" onView:imageView];
+        [[HRPGManager sharedManager] setImage:@"PixelPaw" withFormat:@"png" onView:imageView];
         imageView.contentMode = UIViewContentModeCenter;
         imageView.alpha = 0.3f;
     }

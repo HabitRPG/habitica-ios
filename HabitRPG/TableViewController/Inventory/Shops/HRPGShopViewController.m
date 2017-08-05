@@ -7,26 +7,28 @@
 //
 
 #import "HRPGShopViewController.h"
-#import "HRPGCoreDataDataSource.h"
-#import "ShopItem+CoreDataClass.h"
 #import "Shop.h"
-#import "HRPGRewardTableViewCell.h"
+#import "ShopItem+CoreDataClass.h"
 #import "User.h"
 #import "HRPGGearDetailView.h"
 #import "KLCPopup.h"
 #import "NSString+StripHTML.h"
+#import "Habitica-Swift.h"
+#import "HRPGShopViewModel.h"
 
-@interface HRPGShopViewController ()
+@interface HRPGShopViewController () <HRPGShopCollectionViewDataSourceDelegate>
 
-@property HRPGCoreDataDataSource *dataSource;
+@property (weak, nonatomic) IBOutlet UIImageView *shopBackgroundImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *shopForegroundImageView;
+@property (weak, nonatomic) IBOutlet UILabel *shopNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *notesLabel;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (weak, nonatomic) IBOutlet UIView *tableHeaderView;
-@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
-@property (weak, nonatomic) IBOutlet UILabel *shopDescription;
+@property (nonatomic) HRPGShopCollectionViewDataSource *dataSource;
+@property (nonatomic) HRPGShopViewModel *viewModel;
 
 @property User *user;
 
-@property Shop *shop;
 @property NSIndexPath *selectedIndex;
 
 @end
@@ -36,263 +38,109 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.user = [self.sharedManager getUser];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    [self fetchShopInformation];
+    [self setupCollectionView];
+    
+    self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier];
+    
     [self refresh];
-    [self setupTableView];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
+    [self setupNavBar];
     
+    User *user = [[HRPGManager sharedManager] getUser];
+    if (user && user.health && user.health.floatValue <= 0) {
+        [[HRPGDeathView new] show];
+    }
 }
 
 - (void)refresh {
-    __weak HRPGShopViewController *weakSelf = self;
-    [self.sharedManager fetchShopInventory:self.shopIdentifier onSuccess:^() {
-        [weakSelf fetchShopInformation];
+    [[HRPGManager sharedManager] fetchShopInventory:self.shopIdentifier onSuccess:^() {
+        [self.viewModel fetchShopInformationForIdentifier:self.shopIdentifier];
+        if (self.viewModel.shop) {
+            [self updateShopInformationViews];
+        }
+        self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier];
+        [self.collectionView reloadData];
     }onError:nil];
 }
 
-- (void)setupTableView {
-    __weak HRPGShopViewController *weakSelf = self;
-    TableViewCellConfigureBlock configureCell = ^(HRPGRewardTableViewCell *cell, ShopItem *shopItem, NSIndexPath *indexPath) {
-        [weakSelf configureCell:cell withShopItem:shopItem atIndexPath:indexPath];
-    };
-    FetchRequestConfigureBlock configureFetchRequest = ^(NSFetchRequest *fetchRequest) {
-        NSPredicate *predicate;
-        if (weakSelf.user.subscriptionPlan.isActive) {
-            predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@", weakSelf.shopIdentifier];
-        } else {
-            predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@ && (isSubscriberItem == nil || isSubscriberItem != YES)", weakSelf.shopIdentifier];
-        }
-        [fetchRequest setPredicate:predicate];
-        
-        NSSortDescriptor *indexDescriptor =
-        [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
-        NSSortDescriptor *categoryIndexDescriptor =
-        [[NSSortDescriptor alloc] initWithKey:@"category.text" ascending:YES];
-        NSArray *sortDescriptors = @[ categoryIndexDescriptor, indexDescriptor ];
-        
-        [fetchRequest setSortDescriptors:sortDescriptors];
-    };
-    self.dataSource= [[HRPGCoreDataDataSource alloc] initWithManagedObjectContext:self.managedObjectContext
-                                                                       entityName:@"ShopItem"
-                                                                   cellIdentifier:@"Cell"
-                                                               configureCellBlock:configureCell
-                                                                fetchRequestBlock:configureFetchRequest
-                                                                    asDelegateFor:self.tableView];
-    self.dataSource.sectionNameKeyPath = @"category.text";
+- (void)setupNavBar {
+    HRPGGemCountView *gems = [HRPGGemCountView new];
+    gems.countLabel.text = [NSString stringWithFormat:@"%i", ([[NSNumber numberWithFloat:4.f * [[[HRPGManager sharedManager] getUser].balance floatValue]] intValue])];
+    
+    HRPGGoldCountView *gold = [HRPGGoldCountView new];
+    gold.countLabel.text = [NSString stringWithFormat:@"%i", [[[HRPGManager sharedManager] getUser].gold intValue]];
+    
+    UIBarButtonItem *gemsBarItem = [[UIBarButtonItem alloc] initWithCustomView:gems];
+    UIBarButtonItem *goldBarItem = [[UIBarButtonItem alloc] initWithCustomView:gold];
+    self.navigationItem.rightBarButtonItems = @[goldBarItem, gemsBarItem];
 }
 
-- (void) fetchShopInformation {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Shop"
-                                              inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
+- (void)setupCollectionView {
+    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    collectionViewLayout.sectionInset = UIEdgeInsetsMake(0, 8, 0, 8);
+    self.collectionView.collectionViewLayout = collectionViewLayout;
     
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"identifier == %@", self.shopIdentifier]];
+    self.dataSource = [HRPGShopCollectionViewDataSource new];
+    self.dataSource.delegate = self;
+    self.dataSource.collectionView = self.collectionView;
     
-    NSError *error;
-    NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    if (results.count > 0) {
-        self.shop = results[0];
-        [self updateShopInformationViews];
-    }
+    self.collectionView.dataSource = self.dataSource;
+    self.collectionView.delegate = self.dataSource;
 }
 
 - (void) updateShopInformationViews {
-    [self.sharedManager setImage:self.shop.imageName withFormat:@"png" onView:self.headerImageView];
-    self.navigationItem.title = self.shop.text;
-    NSString *notes = [self.shop.notes stringByStrippingHTML];
-    self.shopDescription.text = notes;
-    CGFloat newHeight = [notes boundingRectWithSize:CGSizeMake(self.shopDescription.frame.size.width, MAXFLOAT)
-                                                       options:NSStringDrawingUsesLineFragmentOrigin
-                                                    attributes:@{
-                                                                 NSFontAttributeName : [UIFont
-                                                                                        preferredFontForTextStyle:UIFontTextStyleSubheadline]
-                                                                 }
-                                                       context:nil].size.height;
-    if (newHeight > 138) {
-        CGRect frame = self.tableHeaderView.frame;
-        frame.size.height = newHeight;
-        self.tableHeaderView.frame = frame;
-        [self.tableView setTableHeaderView:self.tableHeaderView];
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    float height = 60.0f;
-    float width = self.viewWidth - 127;
-    ShopItem *shopItem = [self.dataSource itemAtIndexPath:indexPath];
-    width = width -
-    [[NSString stringWithFormat:@"%ld", (long)[shopItem.value integerValue]]
-     boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
-     options:NSStringDrawingUsesLineFragmentOrigin
-     attributes:@{
-                  NSFontAttributeName :
-                      [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
-                  }
-     context:nil]
-    .size.width;
-    height = height +
-    [shopItem.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
-                              options:NSStringDrawingUsesLineFragmentOrigin
-                           attributes:@{
-                                        NSFontAttributeName : [UIFont
-                                                               preferredFontForTextStyle:UIFontTextStyleHeadline]
-                                        }
-                              context:nil]
-    .size.height;
-    if ([shopItem.notes length] > 0) {
-        NSInteger notesHeight =
-        [shopItem.notes
-         boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
-         options:NSStringDrawingUsesLineFragmentOrigin
-         attributes:@{
-                      NSFontAttributeName :
-                          [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
-                      }
-         context:nil]
-        .size.height;
-        
-        if (notesHeight <
-            [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2].lineHeight * 5) {
-            height = height + notesHeight;
-        } else {
-            height =
-            height + [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2].lineHeight * 5;
-        }
-    }
-    if (height < 87) {
-        return 87;
-    }
-    return height;
-}
-
-- (void) configureCell:(HRPGRewardTableViewCell *)cell withShopItem:(ShopItem *)shopItem atIndexPath:(NSIndexPath *)indexPath {
+    self.shopBackgroundImageView.image = [[UIImage imageNamed:[self shopBgImageNames][self.shopIdentifier]] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
+    self.shopForegroundImageView.image = [UIImage imageNamed:[self shopCharacterImageNames][self.shopIdentifier]];
     
-    if (shopItem.imageName) {
-        [self.sharedManager setImage:shopItem.imageName withFormat:@"png" onView:cell.shopImageView];
-    }
-    NSNumber *ownedCurrency;
-    if ([shopItem.currency isEqualToString:@"gems"]) {
-        ownedCurrency = [NSNumber numberWithFloat:(4*[self.user.balance floatValue])];
-    } else {
-        ownedCurrency = self.user.gold;
-    }
-    [cell configureForShopItem:shopItem withCurrencyOwned:ownedCurrency];
-
+    self.navigationItem.title = self.viewModel.shop.text;
+    self.shopNameLabel.text = self.viewModel.shop.text;
     
-    __weak HRPGShopViewController *weakSelf = self;
-    [cell onPurchaseTap:^() {
-        weakSelf.selectedIndex = indexPath;
-        
-        NSString *currencyString;
-        if ([shopItem.currency isEqualToString:@"gems"]) {
-            if ([shopItem.value integerValue] == 1) {
-                currencyString = NSLocalizedString(@"gem", @"Singular");
-            } else {
-                currencyString = NSLocalizedString(@"gems", @"Plural");
-            }
-        } else if ([shopItem.currency isEqualToString:@"gold"]) {
-            if ([shopItem.value integerValue] == 1) {
-                currencyString = NSLocalizedString(@"gold", @"Singular");
-            } else {
-                currencyString = NSLocalizedString(@"gold", @"Plural");
-            }
-        } else if ([shopItem.currency isEqualToString:@"hourglasses"]) {
-            if ([shopItem.value integerValue] == 1) {
-                currencyString = NSLocalizedString(@"hourglass", @"Singular");
-            } else {
-                currencyString = NSLocalizedString(@"hourglasses", @"Plural");
-            }
-        }
-        UIAlertView *confirmationAlert = [[UIAlertView alloc]
-                                          initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Buy %@ for %@ %@?", nil), shopItem.text, shopItem.value, currencyString]
-                                          message:nil
-                                          delegate:self
-                                          cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                          otherButtonTitles:NSLocalizedString(@"Buy", nil), nil];
-        [confirmationAlert show];
-    }];
+    NSString *notes = [self.viewModel.shop.notes stringByStrippingHTML];
+    self.notesLabel.text = notes;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ShopItem *item = [self.dataSource itemAtIndexPath:indexPath];
-    
-    NSArray *nibViews =
-    [[NSBundle mainBundle] loadNibNamed:@"HRPGGearDetailView" owner:self options:nil];
-    HRPGGearDetailView *gearView = nibViews[0];
-    CGFloat ownedCurrency;
-    if ([item.currency isEqualToString:@"gems"]) {
-        ownedCurrency = (4*[self.user.balance floatValue]);
-    } else if ([item.currency isEqualToString:@"hourglasses"]) {
-        ownedCurrency = [self.user.subscriptionPlan.consecutiveTrinkets floatValue];
-    } else {
-        ownedCurrency = [self.user.gold floatValue];
-    }
-    [gearView configureForShopItem:item withCurrencyAmount:ownedCurrency];
-    __weak HRPGShopViewController *weakSelf = self;
-    gearView.buyAction = ^() {
-        [weakSelf buyItem:item];
-    };
-    [self.sharedManager setImage:item.imageName withFormat:@"png" onView:gearView.imageView];
-    [gearView sizeToFit];
-    
-    KLCPopup *popup = [KLCPopup popupWithContentView:gearView
-                                            showType:KLCPopupShowTypeBounceIn
-                                         dismissType:KLCPopupDismissTypeBounceOut
-                                            maskType:KLCPopupMaskTypeDimmed
-                            dismissOnBackgroundTouch:YES
-                               dismissOnContentTouch:NO];
-    [popup show];
+- (NSDictionary *)shopBgImageNames {
+    return @{
+             MarketKey: @"market_summer_splash_banner_bg",
+             QuestsShopKey: @"quest_shop_summer_splash_banner",
+             SeasonalShopKey: @"seasonal_shop_summer_splash_banner_bg",
+             TimeTravelersShopKey: @"timetravelers_summer_splash_banner_bg"
+             };
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
-    if (buttonIndex == 1) {
-        [self buyItem:[self.dataSource itemAtIndexPath:self.selectedIndex]];
-    }
+- (NSDictionary *)shopCharacterImageNames {
+    return @{
+             MarketKey: @"market_summer_splash_banner_booth",
+             QuestsShopKey: @"",
+             SeasonalShopKey: @"seasonal_shop_summer_splash_banner_booth",
+             TimeTravelersShopKey: @"timetravelers_summer_splash_banner_booth"
+             };
 }
 
-- (void)buyItem:(ShopItem *)item {
-    if ([item.currency isEqualToString:@"gems"] && ![item canBuy:[NSNumber numberWithFloat:[self.user.balance floatValue]*4]]) {
-        [self displayGemPurchaseView];
-    } else {
-        __weak HRPGShopViewController *weakSelf = self;
-        if (![self.shopIdentifier isEqualToString:TimeTravelersShopKey]) {
-            if ([item.purchaseType isEqualToString:@"quests"] && [item.currency isEqualToString:@"gold"]) {
-                [self.sharedManager purchaseQuest:item onSuccess:^() {
-                    [weakSelf refresh];
-                } onError:nil];
-            } else {
-                [self.sharedManager purchaseItem:item onSuccess:^() {
-                    [weakSelf refresh];
-                } onError:nil];
-            }
-        } else {
-            if ([item.purchaseType isEqualToString:@"gear"]) {
-                [self.sharedManager purchaseMysterySet:item.category.identifier onSuccess:^() {
-                    [weakSelf refresh];
-                } onError:nil];
-            } else {
-                [self.sharedManager purchaseHourglassItem:item onSuccess:^() {
-                    [weakSelf refresh];
-                } onError:nil];
-            }
-        }
-    }
+- (void)configureEmptyLabel {
+    self.collectionView.hidden = YES;
 }
 
-- (void)displayGemPurchaseView {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *navigationController =
-    [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
-    [self presentViewController:navigationController animated:YES completion:nil];
+- (void)didSelectItem:(ShopItem *)item {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BuyModal" bundle:nil];
+    HRPGBuyItemModalViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"HRPGBuyItemModalViewController"];
+    vc.item = item;
+    vc.shopIdentifier = self.shopIdentifier;
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark - lazy loaders
+
+- (HRPGShopViewModel *)viewModel {
+    if (!_viewModel) _viewModel = [HRPGShopViewModel new];
+    return _viewModel;
 }
 
 @end

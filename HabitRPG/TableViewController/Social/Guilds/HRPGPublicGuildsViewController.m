@@ -69,7 +69,7 @@
 
 - (void)refresh {
     __weak HRPGPublicGuildsViewController *weakSelf = self;
-    [self.sharedManager fetchGroups:@"publicGuilds"
+    [[HRPGManager sharedManager] fetchGroups:@"publicGuilds"
         onSuccess:^() {
             [weakSelf.refreshControl endRefreshing];
         }
@@ -123,12 +123,11 @@
 
 - (void)configureCell:(HRPGPublicGuildTableViewCell *)cell withGuild:(Group *)guild {
     [cell configureForGuild:guild];
-    __weak HRPGPublicGuildsViewController *weakSelf = self;
     cell.joinAction = ^() {
-        [weakSelf.sharedManager joinGroup:guild.id withType:guild.type onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager] joinGroup:guild.id withType:guild.type onSuccess:nil onError:nil];
     };
     cell.leaveAction = ^() {
-        [weakSelf.sharedManager leaveGroup:guild withType:guild.type onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager] leaveGroup:guild withType:guild.type onSuccess:nil onError:nil];
     };
 }
 

@@ -8,12 +8,11 @@
 
 #import "HRPGDeathView.h"
 #import "YYWebImage.h"
-#import "HRPGAppDelegate.h"
 #import "HRPGLabeledProgressBar.h"
 #import "UIColor+Habitica.h"
+#import "HRPGManager.h"
 
 @interface HRPGDeathView ()
-@property(weak) HRPGManager *sharedManager;
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet HRPGLabeledProgressBar *healthView;
@@ -47,10 +46,7 @@
     self.healthView.value = @0;
     self.healthView.maxValue = @50;
     
-    HRPGAppDelegate *appdelegate =
-    (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.sharedManager = appdelegate.sharedManager;
-    User *user = [self.sharedManager getUser];
+    User *user = [[HRPGManager sharedManager] getUser];
     [user setAvatarSubview:self.avatarView showsBackground:NO showsMount:NO showsPet:NO isFainted:YES];
 }
 
@@ -88,7 +84,7 @@
                          self.loadingIndicator.alpha = 1;
                          self.tryAgainLabel.alpha = 0;
                      }];
-    [self.sharedManager reviveUser:^() {
+    [[HRPGManager sharedManager] reviveUser:^() {
         [self dismiss];
     } onError:^(){
         [self dismiss];

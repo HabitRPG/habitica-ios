@@ -76,7 +76,7 @@
 }
 
 - (void)needsShopRefreshForIdentifier:(NSString *)identifier at:(NSIndexPath *)indexPath {
-    [self.sharedManager fetchShopInventory:identifier onSuccess:^{
+    [[HRPGManager sharedManager] fetchShopInventory:identifier onSuccess:^{
         [self setupShopDictionary];
         [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } onError:nil];

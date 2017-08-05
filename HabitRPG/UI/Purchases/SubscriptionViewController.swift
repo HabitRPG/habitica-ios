@@ -73,7 +73,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         retrieveProductList()
         completionHandler()
 
-        self.user = self.sharedManager.getUser()
+        self.user = HRPGManager.shared().getUser()
 
         if let user = self.user {
             if user.subscriptionPlan == nil {
@@ -333,7 +333,7 @@ class SubscriptionViewController: HRPGBaseViewController {
 
     func activateSubscription(_ identifier: String, receipt: ReceiptInfo, completion: @escaping (Bool) -> Void) {
         if let lastReceipt = receipt["latest_receipt"] as? String {
-            self.sharedManager.subscribe(identifier, withReceipt:lastReceipt, onSuccess: {
+            HRPGManager.shared().subscribe(identifier, withReceipt:lastReceipt, onSuccess: {
                 completion(true)
                 self.isSubscribed = true
                 self.tableView.reloadData()

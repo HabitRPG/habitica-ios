@@ -12,7 +12,6 @@
 @interface HRPGTabBarController : UITabBarController<NSFetchedResultsControllerDelegate>
 
 @property NSArray *selectedTags;
-@property(nonatomic) HRPGManager *sharedManager;
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @end
