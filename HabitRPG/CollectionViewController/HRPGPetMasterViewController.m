@@ -7,6 +7,8 @@
 //
 
 #import "HRPGPetMasterViewController.h"
+#import "HRPGManager.h"
+#import "Pet.h"
 #import "Egg.h"
 #import "HRPGArrayViewController.h"
 #import "HRPGNavigationController.h"
@@ -337,13 +339,13 @@ NSUserDefaults *defaults;
         if ([petKey isEqualToString:@"Wolf-Cerberus"]) {
             format = @"gif";
         }
-        [self.sharedManager setImage:[NSString stringWithFormat:@"Pet-%@", petKey]
+        [[HRPGManager sharedManager] setImage:[NSString stringWithFormat:@"Pet-%@", petKey]
                           withFormat:format
                               onView:imageView];
 
         imageView.alpha = 1;
     } else {
-        [self.sharedManager setImage:@"PixelPaw" withFormat:@"png" onView:imageView];
+        [[HRPGManager sharedManager] setImage:@"PixelPaw" withFormat:@"png" onView:imageView];
 
         imageView.alpha = 0.3f;
     }

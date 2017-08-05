@@ -42,10 +42,8 @@
     [eventProperties setValue:NSStringFromClass([self class]) forKey:@"page"];
     [[Amplitude instance] logEvent:@"navigate" withEventProperties:eventProperties];
 
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.sharedManager = appdelegate.sharedManager;
-    self.managedObjectContext = self.sharedManager.getManagedObjectContext;
-    self.user = [self.sharedManager getUser];
+    self.managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
+    self.user = [[HRPGManager sharedManager] getUser];
 
     self.clearsSelectionOnViewWillAppear = NO;
 
@@ -60,7 +58,7 @@
     [self loadClassesArray];
 
     if (self.shouldResetClass) {
-        [self.sharedManager changeClass:nil
+        [[HRPGManager sharedManager] changeClass:nil
                               onSuccess:^{
                                   self.classWasUnset = YES;
                               }
@@ -70,7 +68,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self displayTutorialStep:self.sharedManager];
+    [self displayTutorialStep:[HRPGManager sharedManager]];
 }
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
@@ -428,36 +426,35 @@
     if (buttonIndex == 0) {
         [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
     } else {
-        __weak HRPGClassTableViewController *weakSelf = self;
         if (self.selectedIndex.item == 4) {
-            [self.sharedManager disableClasses:^() {
-                                     if (weakSelf.navigationController.viewControllers.count > 1) {
-                                         [weakSelf.navigationController popViewControllerAnimated:YES];
+            [[HRPGManager sharedManager] disableClasses:^() {
+                                     if (self.navigationController.viewControllers.count > 1) {
+                                         [self.navigationController popViewControllerAnimated:YES];
                                      } else {
-                                         [weakSelf.presentingViewController
+                                         [self.presentingViewController
                                              dismissViewControllerAnimated:YES
                                                                 completion:^(){}];
                                      }
                                  }
                                    onError:nil];
         } else {
-            [self.sharedManager
+            [[HRPGManager sharedManager]
                 changeClass:self.classesArray[self.selectedIndex.item][3]
                   onSuccess:^() {
-                      [weakSelf.sharedManager fetchUser:^() {
-                          if (weakSelf.navigationController.viewControllers.count > 1) {
-                              [weakSelf.navigationController popViewControllerAnimated:YES];
+                      [[HRPGManager sharedManager] fetchUser:^() {
+                          if (self.navigationController.viewControllers.count > 1) {
+                              [self.navigationController popViewControllerAnimated:YES];
                           } else {
-                              [weakSelf.presentingViewController dismissViewControllerAnimated:YES
+                              [self.presentingViewController dismissViewControllerAnimated:YES
                                                                                 completion:^(){
                                                                                 }];
                           }
                       }
                           onError:^() {
-                              if (weakSelf.navigationController.viewControllers.count > 1) {
-                                  [weakSelf.navigationController popViewControllerAnimated:YES];
+                              if (self.navigationController.viewControllers.count > 1) {
+                                  [self.navigationController popViewControllerAnimated:YES];
                               } else {
-                                  [weakSelf.presentingViewController dismissViewControllerAnimated:YES
+                                  [self.presentingViewController dismissViewControllerAnimated:YES
                                                                                     completion:^(){}];
                               }
                           }];

@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HRPGManager.h"
 
 @protocol OIDAuthorizationFlowSession;
 
 @interface HRPGAppDelegate : UIResponder<UIApplicationDelegate, UIAlertViewDelegate>
 
 @property(strong, nonatomic, nullable) UIWindow *window;
-@property(strong, nonatomic, nullable) HRPGManager *sharedManager;
 
 @property(nonatomic, strong, nullable)id<OIDAuthorizationFlowSession> currentAuthorizationFlow;
 @end

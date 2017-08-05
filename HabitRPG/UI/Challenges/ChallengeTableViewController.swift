@@ -13,6 +13,8 @@ import ReactiveCocoa
 
 class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate, ChallengeFilterChangedDelegate {
 
+    var sharedManager: HRPGManager!
+    
     var selectedChallenge: Challenge?
     var searchText: String?
 

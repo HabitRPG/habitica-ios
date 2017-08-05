@@ -8,7 +8,7 @@
 
 #import "HRPGRewardFormViewController.h"
 #import "Amplitude.h"
-#import "HRPGAppDelegate.h"
+#import "HRPGManager.h"
 #import "NSString+Emoji.h"
 #import "XLForm.h"
 
@@ -21,10 +21,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        HRPGAppDelegate *appdelegate =
-            (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-        HRPGManager *sharedManager = appdelegate.sharedManager;
-        self.managedObjectContext = sharedManager.getManagedObjectContext;
+        self.managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
         [self initializeForm];
     }
 

@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.sharedManager fetchMember:self.userID
+    [[HRPGManager sharedManager] fetchMember:self.userID
         onSuccess:nil onError:nil];
 
     self.navigationItem.title = self.username;
@@ -358,7 +358,7 @@
     
     typeLabel.text = typeName;
     if (equipmentKey) {
-        [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", equipmentKey]
+        [[HRPGManager sharedManager] setImage:[NSString stringWithFormat:@"shop_%@", equipmentKey]
                           withFormat:@"png"
                               onView:imageView];
         

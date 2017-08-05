@@ -31,23 +31,22 @@
 }
 
 - (void)refresh {
-    __weak HRPGGroupTableViewController *weakSelf = self;
-    [self.sharedManager fetchGroup:self.groupID
+    [[HRPGManager sharedManager] fetchGroup:self.groupID
                          onSuccess:^() {
-                             if (weakSelf) {
-                                 [weakSelf.refreshControl endRefreshing];
-                                 [weakSelf fetchGroup];
-                                 if (![weakSelf.groupID isEqualToString:@"00000000-0000-4000-A000-000000000000"]) {
-                                     weakSelf.group.unreadMessages = @NO;
-                                     [weakSelf.sharedManager chatSeen:weakSelf.group.id];
+                             if (self) {
+                                 [self.refreshControl endRefreshing];
+                                 [self fetchGroup];
+                                 if (![self.groupID isEqualToString:@"00000000-0000-4000-A000-000000000000"]) {
+                                     self.group.unreadMessages = @NO;
+                                     [[HRPGManager sharedManager] chatSeen:self.group.id];
                                  }
                                  [self reloadQuest];
                              }
                          }
                            onError:^() {
-                               if (weakSelf) {
-                                   [weakSelf.refreshControl endRefreshing];
-                                   [weakSelf.sharedManager displayNetworkError];
+                               if (self) {
+                                   [self.refreshControl endRefreshing];
+                                   [[HRPGManager sharedManager] displayNetworkError];
                                }
                            }];
 }
@@ -278,10 +277,9 @@
     if ([result count] > 0) {
         _quest = result[0];
         if (!_quest.text) {
-            __weak HRPGQuestGroupTableViewController *weakSelf;
-            [self.sharedManager fetchContent:^() {
-                weakSelf.quest = nil;
-                [weakSelf.tableView reloadData];
+            [[HRPGManager sharedManager] fetchContent:^() {
+                self.quest = nil;
+                [self.tableView reloadData];
             } onError:nil];
         }
     }

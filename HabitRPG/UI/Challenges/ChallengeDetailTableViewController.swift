@@ -31,8 +31,8 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.joinInteractor = JoinChallengeInteractor(self.sharedManager)
-        self.leaveInteractor = LeaveChallengeInteractor(self.sharedManager, presentingViewController: self)
+        self.joinInteractor = JoinChallengeInteractor(HRPGManager.shared())
+        self.leaveInteractor = LeaveChallengeInteractor(HRPGManager.shared(), presentingViewController: self)
 
         fetchChallenge()
 
@@ -45,7 +45,7 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
 
         headerView?.showMoreAction = {
             let viewController = ChallengeDetailAlert(nibName: "ChallengeDetailAlert", bundle: Bundle.main)
-            self.sharedManager.fetchChallengeTasks(self.challenge, onSuccess: {[weak self] () in
+            HRPGManager.shared().fetchChallengeTasks(self.challenge, onSuccess: {[weak self] () in
                 viewController.challenge = self?.challenge
                 }, onError: nil)
             viewController.challenge = self.challenge
@@ -165,7 +165,7 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
 
     @IBAction func joinLeaveTapped(_ sender: UIBarButtonItem) {
         if let challenge = self.challenge {
-            if challenge.user?.id == sharedManager.user.id {
+            if challenge.user?.id == HRPGManager.shared().user.id {
                 self.leaveInteractor?.run(with: challenge)
             } else {
                 self.joinInteractor?.run(with: challenge)

@@ -43,8 +43,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let delegate = UIApplication.shared.delegate as? HRPGAppDelegate
-        self.sharedManager = delegate?.sharedManager
+        self.sharedManager = HRPGManager.shared()
         self.viewModel.inputs.setSharedManager(sharedManager: self.sharedManager)
         self.viewModel.inputs.setViewController(viewController: self)
 

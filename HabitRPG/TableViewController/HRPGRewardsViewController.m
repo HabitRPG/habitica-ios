@@ -38,10 +38,10 @@
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 
-    self.user = self.sharedManager.user;
+    self.user = [HRPGManager sharedManager].user;
     self.tutorialIdentifier = @"rewards";
 
-    [self.sharedManager fetchBuyableRewards:nil onError:nil];
+    [[HRPGManager sharedManager] fetchBuyableRewards:nil onError:nil];
 }
 
 - (void)setupTableView {
@@ -85,17 +85,16 @@
 }
 
 - (void)refresh {
-    __weak HRPGRewardsViewController *weakSelf = self;
-    [self.sharedManager fetchUser:^() {
-        [weakSelf.sharedManager fetchBuyableRewards:^{
-            [weakSelf.refreshControl endRefreshing];
+    [[HRPGManager sharedManager] fetchUser:^() {
+        [[HRPGManager sharedManager] fetchBuyableRewards:^{
+            [self.refreshControl endRefreshing];
         } onError:^{
-            [weakSelf.refreshControl endRefreshing];
-            [weakSelf.sharedManager displayNetworkError];
+            [self.refreshControl endRefreshing];
+            [[HRPGManager sharedManager] displayNetworkError];
         }];
     } onError:^() {
-        [weakSelf.refreshControl endRefreshing];
-        [weakSelf.sharedManager displayNetworkError];
+        [self.refreshControl endRefreshing];
+        [[HRPGManager sharedManager] displayNetworkError];
     }];
 }
 
@@ -163,7 +162,7 @@
 - (void)deleteItemAtIndexPath:(NSIndexPath *)indexPath {
     MetaReward *reward = [self.dataSource itemAtIndexPath:indexPath];
     if ([reward isKindOfClass:[Reward class]]) {
-        [self.sharedManager deleteReward:(Reward *)reward
+        [[HRPGManager sharedManager] deleteReward:(Reward *)reward
                                onSuccess:nil onError:nil];
     }
 }
@@ -179,12 +178,11 @@
             [[NSBundle mainBundle] loadNibNamed:@"HRPGGearDetailView" owner:self options:nil];
         HRPGGearDetailView *gearView = nibViews[0];
         [gearView configureForReward:reward withGold:[self.user.gold floatValue]];
-        __weak HRPGRewardsViewController *weakSelf = self;
         gearView.buyAction = ^() {
             if ([reward isKindOfClass:[Reward class]]) {
-                [weakSelf.sharedManager getReward:reward.key onSuccess:nil onError:nil];
+                [[HRPGManager sharedManager] getReward:reward.key onSuccess:nil onError:nil];
             } else {
-                [weakSelf.sharedManager buyObject:reward onSuccess:nil onError:nil];
+                [[HRPGManager sharedManager] buyObject:reward onSuccess:nil onError:nil];
             }
         };
         NSString *imageName;
@@ -195,7 +193,7 @@
         } else if (![reward.key isEqualToString:@"reward"]) {
             imageName = [NSString stringWithFormat:@"shop_%@", reward.key];
         }
-        [self.sharedManager setImage:imageName withFormat:@"png" onView:gearView.imageView];
+        [[HRPGManager sharedManager] setImage:imageName withFormat:@"png" onView:gearView.imageView];
         [gearView sizeToFit];
 
         KLCPopup *popup = [KLCPopup popupWithContentView:gearView
@@ -259,7 +257,7 @@
             imageName = [NSString stringWithFormat:@"shop_%@", reward.key];
         }
         if (imageName) {
-            [self.sharedManager setImage:imageName withFormat:@"png" onView:cell.shopImageView];
+            [[HRPGManager sharedManager] setImage:imageName withFormat:@"png" onView:cell.shopImageView];
         } else {
             cell.shopImageView.image = nil;
         }
@@ -270,7 +268,7 @@
     __weak HRPGRewardsViewController *weakSelf = self;
     [cell onPurchaseTap:^() {
         if ([reward isKindOfClass:[Reward class]]) {
-            [weakSelf.sharedManager
+            [[HRPGManager sharedManager]
                 getReward:reward.key
                 onSuccess:^() {
                     for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
@@ -280,9 +278,9 @@
                   onError:nil];
         } else {
             reward.buyable = @NO;
-            [weakSelf.sharedManager buyObject:reward
+            [[HRPGManager sharedManager] buyObject:reward
                 onSuccess:^() {
-                    [weakSelf.sharedManager fetchBuyableRewards:^() {
+                    [[HRPGManager sharedManager] fetchBuyableRewards:^() {
                         for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows]) {
                             [weakSelf configureCell:[self.tableView cellForRowAtIndexPath:indexPath] withReward:[self.dataSource itemAtIndexPath:indexPath]];
                         }
@@ -318,9 +316,9 @@
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGRewardFormViewController *formViewController = segue.sourceViewController;
     if (formViewController.editReward) {
-        [self.sharedManager updateReward:formViewController.reward onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager] updateReward:formViewController.reward onSuccess:nil onError:nil];
     } else {
-        [self.sharedManager createReward:formViewController.reward onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager] createReward:formViewController.reward onSuccess:nil onError:nil];
     }
 }
 

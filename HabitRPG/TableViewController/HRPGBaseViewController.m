@@ -8,8 +8,7 @@
 
 #import "HRPGBaseViewController.h"
 #import <Google/Analytics.h>
-#import "Amplitude.h"
-#import "HRPGAppDelegate.h"
+#import "Amplitude+HRPGHelpers.h"
 #import "HRPGDeathView.h"
 #import "HRPGNavigationController.h"
 #import "HRPGTopHeaderNavigationController.h"
@@ -30,12 +29,7 @@
     [tracker set:kGAIScreenName value:[self getScreenName]];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 
-    NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
-    [eventProperties setValue:@"navigate" forKey:@"eventAction"];
-    [eventProperties setValue:@"navigation" forKey:@"eventCategory"];
-    [eventProperties setValue:@"pageview" forKey:@"hitType"];
-    [eventProperties setValue:[self getScreenName] forKey:@"page"];
-    [[Amplitude instance] logEvent:@"navigate" withEventProperties:eventProperties];
+    [[Amplitude instance] logNavigateEventForClass:NSStringFromClass([self class])];
 
     if (self.topHeaderNavigationController) {
         [self.tableView
@@ -99,14 +93,14 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    User *user = [self.sharedManager getUser];
+    User *user = [[HRPGManager sharedManager] getUser];
     if (user && user.health && [user.health floatValue] <= 0) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HRPGDeathView" owner:self options:nil];
         HRPGDeathView *deathView = (HRPGDeathView *)[nib objectAtIndex:0];
         [deathView show];
     }
 
-    [self displayTutorialStep:self.sharedManager];
+    [self displayTutorialStep:[HRPGManager sharedManager]];
 
     if (self.topHeaderNavigationController) {
         [self.topHeaderNavigationController startFollowingScrollView:self.tableView];
@@ -171,18 +165,9 @@
     return NO;
 }
 
-- (HRPGManager *)sharedManager {
-    if (_sharedManager == nil) {
-        HRPGAppDelegate *appdelegate =
-            (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-        _sharedManager = appdelegate.sharedManager;
-    }
-    return _sharedManager;
-}
-
 - (NSManagedObjectContext *)managedObjectContext {
     if (_managedObjectContext == nil) {
-        _managedObjectContext = self.sharedManager.getManagedObjectContext;
+        _managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
     }
     return _managedObjectContext;
 }

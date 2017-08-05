@@ -8,7 +8,7 @@
 
 #import "HRPGFormViewController.h"
 #import "ChecklistItem.h"
-#import "HRPGAppDelegate.h"
+
 #import "NSString+Emoji.h"
 #import "Reminder.h"
 #import "Tag.h"
@@ -31,13 +31,10 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        HRPGAppDelegate *appdelegate =
-            (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-        HRPGManager *sharedManager = appdelegate.sharedManager;
-        User *user = [sharedManager getUser];
+        User *user = [[HRPGManager sharedManager] getUser];
         self.allocationMode = user.preferences.allocationMode;
         self.customDayStart = [user.preferences.dayStart integerValue];
-        self.managedObjectContext = sharedManager.getManagedObjectContext;
+        self.managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
         self.summaryInteractor = [[TaskRepeatablesSummaryInteractor alloc] init];
         [self initializeForm];
     }

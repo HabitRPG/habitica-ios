@@ -63,7 +63,7 @@
                 }
             }];
         __weak HRPGTavernTableViewController *weakSelf = self;
-        [self.sharedManager sleepInn:^() {
+        [[HRPGManager sharedManager] sleepInn:^() {
             NSString *notificationText;
             if ([weakSelf.user.preferences.sleep boolValue]) {
                 notificationText = NSLocalizedString(@"Sleep tight!", nil);
@@ -115,7 +115,7 @@
         if ([self.group.worldDmgTavern boolValue]) {
             url = @"npc_daniel_broken";
         }
-        [self.sharedManager setImage:url withFormat:@"png" onView:innImageView];
+        [[HRPGManager sharedManager] setImage:url withFormat:@"png" onView:innImageView];
         return cell;
     } else {
         return [super tableView:tableView cellForRowAtIndexPath:indexPath];

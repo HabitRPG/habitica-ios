@@ -50,6 +50,15 @@
 		494E53FE1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E53FD1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m */; };
 		494E54011F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54001F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m */; };
 		494E54041F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54031F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m */; };
+		494E540B1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E540A1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift */; };
+		494E54101F2EEF810003683C /* Amplitude+HRPGHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E540F1F2EEF810003683C /* Amplitude+HRPGHelpers.m */; };
+		494E54131F2EF7100003683C /* HRPGCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54121F2EF7100003683C /* HRPGCollectionViewController.m */; };
+		494E54151F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E54141F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift */; };
+		494E54181F30214B0003683C /* HRPGCurrencyItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E54171F30214B0003683C /* HRPGCurrencyItemCollectionViewCell.swift */; };
+		494E54221F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */; };
+		494E54251F3124890003683C /* HRPGShopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54241F3124890003683C /* HRPGShopViewModel.m */; };
+		49DCB7991F3407B30079FDD0 /* BuyModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */; };
+		49DCB79B1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */; };
 		823F7132DD74058859184F61 /* Pods_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */; };
 		98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */; };
 		CF54FEE0D3F7F352ECA56F23 /* HRPGContentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CF54FD820D81110D9EF4756E /* HRPGContentResponse.m */; };
@@ -412,6 +421,18 @@
 		494E54001F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAGradientLayer+HRPGShopGradient.m"; sourceTree = "<group>"; };
 		494E54021F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopOverviewTableViewDataSource.h; sourceTree = "<group>"; };
 		494E54031F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopOverviewTableViewDataSource.m; sourceTree = "<group>"; };
+		494E540A1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		494E540E1F2EEF810003683C /* Amplitude+HRPGHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Amplitude+HRPGHelpers.h"; sourceTree = "<group>"; };
+		494E540F1F2EEF810003683C /* Amplitude+HRPGHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Amplitude+HRPGHelpers.m"; sourceTree = "<group>"; };
+		494E54111F2EF7100003683C /* HRPGCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCollectionViewController.h; sourceTree = "<group>"; };
+		494E54121F2EF7100003683C /* HRPGCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCollectionViewController.m; sourceTree = "<group>"; };
+		494E54141F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGFetchedResultsCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		494E54171F30214B0003683C /* HRPGCurrencyItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGCurrencyItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopSectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		494E54231F3124890003683C /* HRPGShopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopViewModel.h; sourceTree = "<group>"; };
+		494E54241F3124890003683C /* HRPGShopViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopViewModel.m; sourceTree = "<group>"; };
+		49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BuyModal.storyboard; sourceTree = "<group>"; };
+		49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGBuyItemModalViewController.swift; sourceTree = "<group>"; };
 		98A4DBEE1B643BC100A9E2A8 /* HRPGSearchDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSearchDataManager.h; sourceTree = "<group>"; };
 		98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSearchDataManager.m; sourceTree = "<group>"; };
 		A11A64FF1BAC9FC30037D41C /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
@@ -471,8 +492,8 @@
 		D92761601CCFBEAD0049ECAC /* Flags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flags.m; sourceTree = "<group>"; };
 		D92A08461D33EC38000F8B66 /* HRPGShopOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopOverviewViewController.h; sourceTree = "<group>"; };
 		D92A08471D33EC38000F8B66 /* HRPGShopOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopOverviewViewController.m; sourceTree = "<group>"; };
-		D92A08491D33FA08000F8B66 /* HRPGShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopViewController.h; sourceTree = "<group>"; };
-		D92A084A1D33FA08000F8B66 /* HRPGShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopViewController.m; sourceTree = "<group>"; };
+		D92A08491D33FA08000F8B66 /* HRPGShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGShopViewController.h; path = ../TableViewController/Inventory/Shops/HRPGShopViewController.h; sourceTree = "<group>"; };
+		D92A084A1D33FA08000F8B66 /* HRPGShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGShopViewController.m; path = ../TableViewController/Inventory/Shops/HRPGShopViewController.m; sourceTree = "<group>"; };
 		D92A084C1D3519DF000F8B66 /* HabitRPG 31.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 31.xcdatamodel"; sourceTree = "<group>"; };
 		D92A084D1D3520D8000F8B66 /* Shop+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Shop+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D92A084E1D3520D8000F8B66 /* Shop+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Shop+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -1033,6 +1054,34 @@
 				297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */,
 			);
 			name = Setup;
+		494E54051F2D7F9E0003683C /* TVDataSources */ = {
+			isa = PBXGroup;
+			children = (
+				D93D79701D2BC7AD00AFE014 /* HRPGCoreDataDataSource.h */,
+				D93D79711D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m */,
+				D9FBC0F11D538B5C008C9EF4 /* HRPGCoreDataDatasourceDelegate.h */,
+				494E54021F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.h */,
+				494E54031F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m */,
+			);
+			name = TVDataSources;
+			sourceTree = "<group>";
+		};
+		494E54061F2D7FAB0003683C /* CVDataSources */ = {
+			isa = PBXGroup;
+			children = (
+				494E540A1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift */,
+				494E54141F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift */,
+			);
+			name = CVDataSources;
+			sourceTree = "<group>";
+		};
+		494E54161F3020DF0003683C /* Collection View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				494E54171F30214B0003683C /* HRPGCurrencyItemCollectionViewCell.swift */,
+				494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */,
+			);
+			name = "Collection View Cells";
 			sourceTree = "<group>";
 		};
 		B4CD8E50098CF9B62A999CCD /* Pods */ = {
@@ -1062,6 +1111,8 @@
 			children = (
 				D914890A1CD23A900015B42D /* HRPGMaintenanceViewController.h */,
 				D914890B1CD23A900015B42D /* HRPGMaintenanceViewController.m */,
+				D92A08491D33FA08000F8B66 /* HRPGShopViewController.h */,
+				D92A084A1D33FA08000F8B66 /* HRPGShopViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1071,8 +1122,6 @@
 			children = (
 				D92A08461D33EC38000F8B66 /* HRPGShopOverviewViewController.h */,
 				D92A08471D33EC38000F8B66 /* HRPGShopOverviewViewController.m */,
-				D92A08491D33FA08000F8B66 /* HRPGShopViewController.h */,
-				D92A084A1D33FA08000F8B66 /* HRPGShopViewController.m */,
 			);
 			path = Shops;
 			sourceTree = "<group>";
@@ -1111,15 +1160,13 @@
 			path = TableViewController;
 			sourceTree = "<group>";
 		};
-		D93D796C1D2BC73200AFE014 /* TableViewDataSources */ = {
+		D93D796C1D2BC73200AFE014 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				D93D79701D2BC7AD00AFE014 /* HRPGCoreDataDataSource.h */,
-				D93D79711D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m */,
-				D9FBC0F11D538B5C008C9EF4 /* HRPGCoreDataDatasourceDelegate.h */,
-				494E54021F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.h */,
-				494E54031F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m */,
+				494E54051F2D7F9E0003683C /* TVDataSources */,
+				494E54061F2D7FAB0003683C /* CVDataSources */,
 			);
+			name = DataSources;
 			path = TableViewDataSources;
 			sourceTree = "<group>";
 		};
@@ -1386,6 +1433,8 @@
 				494E53FD1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m */,
 				494E53FF1F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.h */,
 				494E54001F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m */,
+				494E540E1F2EEF810003683C /* Amplitude+HRPGHelpers.h */,
+				494E540F1F2EEF810003683C /* Amplitude+HRPGHelpers.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1425,6 +1474,8 @@
 		D9ADD3571943C13F006202C1 /* Collection View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				494E54111F2EF7100003683C /* HRPGCollectionViewController.h */,
+				494E54121F2EF7100003683C /* HRPGCollectionViewController.m */,
 				D902AD881B540AE30098A1BD /* HRPGBaseCollectionViewController.h */,
 				D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */,
 				D98AD54919437A3500AF6174 /* HRPGPetViewController.h */,
@@ -1462,6 +1513,8 @@
 				D903B7881DCA2BE6001F2893 /* HRPGNotification.m */,
 				D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */,
 				29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */,
+				494E54231F3124890003683C /* HRPGShopViewModel.h */,
+				494E54241F3124890003683C /* HRPGShopViewModel.m */,
 			);
 			name = Models;
 			path = HRPGModels;
@@ -1837,6 +1890,7 @@
 				D92D26131D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m */,
 				D93432551D5A2B9400025412 /* HRPGChoosePMRecipientViewController.h */,
 				D93432561D5A2B9500025412 /* HRPGChoosePMRecipientViewController.m */,
+				49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -1930,9 +1984,10 @@
 				D986FBBD1DAFA27200C297DB /* Habitica.entitlements */,
 				D91489091CD23A600015B42D /* ViewController */,
 				D9B5C0EB18D6321400C8D1B7 /* Models */,
-				D93D796C1D2BC73200AFE014 /* TableViewDataSources */,
+				D93D796C1D2BC73200AFE014 /* DataSources */,
 				D92CDAE118CB83C40006C242 /* TableViewController */,
 				D9C2570D1B9B4BFB00839F48 /* TableviewCells */,
+				494E54161F3020DF0003683C /* Collection View Cells */,
 				D9C000311928F85E003D4E4C /* Views */,
 				D9ADD3531943BE33006202C1 /* TabBarController */,
 				D9ADD3571943C13F006202C1 /* Collection View Controller */,
@@ -1965,6 +2020,7 @@
 				D9C31DB11C6501090096F4EC /* Main.storyboard */,
 				49005B6F1F17E7AC004830D9 /* Shops.storyboard */,
 				49005B6D1F17DDF9004830D9 /* Shop.storyboard */,
+				49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */,
 				D942B53A1CAAE6B1009AB756 /* Social.storyboard */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				297AF81F1F29EF0D003B7194 /* Intro.storyboard */,
@@ -2149,6 +2205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D90EA03E19D60B53001EABE4 /* RewardIntro.png in Resources */,
+				49DCB7991F3407B30079FDD0 /* BuyModal.storyboard in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
 				D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */,
 				D9BB45D81E7998710002AE2E /* ChallengeFilterAlert.xib in Resources */,
@@ -2466,6 +2523,7 @@
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
 				D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */,
 				D9B8C1201AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m in Sources */,
+				494E54251F3124890003683C /* HRPGShopViewModel.m in Sources */,
 				D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */,
 				D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */,
 				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
@@ -2609,8 +2667,10 @@
 				D99CDDDD1E5368E400ABD85F /* ShopItem+CoreDataClass.m in Sources */,
 				D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */,
 				D903B78C1DCA4C25001F2893 /* HRPGNotificationManager.m in Sources */,
+				494E540B1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift in Sources */,
 				D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */,
 				D92A08591D3520D8000F8B66 /* Shop+CoreDataProperties.m in Sources */,
+				494E54181F30214B0003683C /* HRPGCurrencyItemCollectionViewCell.swift in Sources */,
 				D92761611CCFBEAD0049ECAC /* Flags+CoreDataProperties.m in Sources */,
 				D9D593661D008C7500D6C388 /* PushDevice+CoreDataProperties.m in Sources */,
 				D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */,
@@ -2627,6 +2687,7 @@
 				D92CDAE718CB84000006C242 /* HRPGToDoTableViewController.m in Sources */,
 				2932821A1F39E28000D42961 /* TypingTextViewController.swift in Sources */,
 				D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */,
+				494E54101F2EEF810003683C /* Amplitude+HRPGHelpers.m in Sources */,
 				D95D03961C74AA5500D6BFB3 /* Outfit.m in Sources */,
 				29255E4D1F3E25910094A3E3 /* CGRect-Extensions.swift in Sources */,
 				D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */,
@@ -2643,6 +2704,7 @@
 				D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */,
 				49005B781F180DB9004830D9 /* HRPGSilverCountView.swift in Sources */,
 				D9BB455D1E71C8C70002AE2E /* CheckedTableViewcell.swift in Sources */,
+				494E54151F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift in Sources */,
 				D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */,
 				D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */,
 				D92A084B1D33FA08000F8B66 /* HRPGShopViewController.m in Sources */,
@@ -2677,6 +2739,7 @@
 				D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */,
 				2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */,
 				D9BB45D21E7713E80002AE2E /* ChallengeTask+CoreDataProperties.m in Sources */,
+				494E54221F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift in Sources */,
 				29B388DF1EEF4FBD00A72950 /* MorningNotification.swift in Sources */,
 				D97C71E718F32FED0089FDC6 /* Potion.m in Sources */,
 				D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */,
@@ -2684,12 +2747,14 @@
 				D98AD5511943904F00AF6174 /* HatchingPotion.m in Sources */,
 				D97C71F018F32FEF0089FDC6 /* MetaReward.m in Sources */,
 				D94AADB0192973CD00546C8E /* HabitRPG.xcdatamodeld in Sources */,
+				49DCB79B1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift in Sources */,
 				D9D96F00194B87FF00796FE7 /* HRPGPetMasterViewController.m in Sources */,
 				D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */,
 				29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */,
 				D92D26141D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m in Sources */,
 				D9ADD3511943BC0E006202C1 /* BuyableItem.m in Sources */,
 				293282141F389CC000D42961 /* SetupCustomizationItemView.swift in Sources */,
+				494E54131F2EF7100003683C /* HRPGCollectionViewController.m in Sources */,
 				D9BB45D41E7849B40002AE2E /* ChallengeTaskListView.swift in Sources */,
 				D9A63A361E1032BD0083ADC4 /* LoginViewModel.swift in Sources */,
 				CF54FEE0D3F7F352ECA56F23 /* HRPGContentResponse.m in Sources */,

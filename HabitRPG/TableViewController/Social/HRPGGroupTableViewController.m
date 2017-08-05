@@ -53,29 +53,28 @@
 
     [self configureMarkdownAttributes];
 
-    self.user = [self.sharedManager getUser];
+    self.user = [[HRPGManager sharedManager] getUser];
 
     [self fetchGroup];
     [self refresh];
 }
 
 - (void)refresh {
-    __weak HRPGGroupTableViewController *weakSelf = self;
-    [self.sharedManager fetchGroup:self.groupID
+    [[HRPGManager sharedManager] fetchGroup:self.groupID
         onSuccess:^() {
-            if (weakSelf) {
-                [weakSelf.refreshControl endRefreshing];
-                [weakSelf fetchGroup];
-                if (![weakSelf.groupID isEqualToString:@"00000000-0000-4000-A000-000000000000"]) {
-                    weakSelf.group.unreadMessages = @NO;
-                    [weakSelf.sharedManager chatSeen:weakSelf.group.id];
+            if (self) {
+                [self.refreshControl endRefreshing];
+                [self fetchGroup];
+                if (![self.groupID isEqualToString:@"00000000-0000-4000-A000-000000000000"]) {
+                    self.group.unreadMessages = @NO;
+                    [[HRPGManager sharedManager] chatSeen:self.group.id];
                 }
             }
         }
         onError:^() {
-            if (weakSelf) {
-                [weakSelf.refreshControl endRefreshing];
-                [weakSelf.sharedManager displayNetworkError];
+            if (self) {
+                [self.refreshControl endRefreshing];
+                [[HRPGManager sharedManager] displayNetworkError];
             }
         }];
 }
@@ -118,11 +117,10 @@
 }
 
 - (void)joinGroup {
-    __weak HRPGGroupTableViewController *weakSelf = self;
-    [self.sharedManager joinGroup:self.group.id
+    [[HRPGManager sharedManager] joinGroup:self.group.id
                          withType:self.group.type
                         onSuccess:^() {
-                            weakSelf.navigationItem.rightBarButtonItem = nil;
+                            self.navigationItem.rightBarButtonItem = nil;
                         } onError:nil];
 }
 
@@ -193,7 +191,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == [self chatSectionIndex] - 1) {
-        if ([[self.sharedManager getUser].flags.communityGuidelinesAccepted boolValue]) {
+        if ([[[HRPGManager sharedManager] getUser].flags.communityGuidelinesAccepted boolValue]) {
             [self performSegueWithIdentifier:@"MessageSegue" sender:self];
         } else {
             [self performSegueWithIdentifier:@"GuidelinesSegue" sender:self];
@@ -325,16 +323,15 @@
         deselectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:[self chatSectionIndex] - 1]
                       animated:YES];
     HRPGMessageViewController *messageController = [segue sourceViewController];
-    __weak HRPGGroupTableViewController *weakSelf = self;
-    [self.sharedManager chatMessage:messageController.messageView.text
+    [[HRPGManager sharedManager] chatMessage:messageController.messageView.text
                           withGroup:self.groupID
                           onSuccess:^() {
-                              [weakSelf.sharedManager fetchGroup:weakSelf.groupID
+                              [[HRPGManager sharedManager] fetchGroup:self.groupID
                                   onSuccess:^() {
-                                      [weakSelf fetchGroup];
+                                      [self fetchGroup];
                                   }
                                   onError:^() {
-                                      [weakSelf.sharedManager displayNetworkError];
+                                      [[HRPGManager sharedManager] displayNetworkError];
                                   }];
                           }
                             onError:nil];
@@ -342,7 +339,7 @@
 
 - (IBAction)unwindToAcceptGuidelines:(UIStoryboardSegue *)segue {
     __weak HRPGGroupTableViewController *weakSelf = self;
-    [self.sharedManager updateUser:@{
+    [[HRPGManager sharedManager] updateUser:@{
         @"flags.communityGuidelinesAccepted" : @YES
     }
         onSuccess:^() {
@@ -377,24 +374,23 @@
         message.attributedText = [self renderMarkdown:message.text];
     }
     [cell configureForMessage:message withUserID:self.user.id withUsername:self.user.username isModerator:([self.user.contributorLevel intValue] >= 8)];
-    __weak HRPGGroupTableViewController *weakSelf = self;
     cell.profileAction = ^() {
         HRPGUserProfileViewController *profileViewController =
-            [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"UserProfileViewController"];
+            [self.storyboard instantiateViewControllerWithIdentifier:@"UserProfileViewController"];
         profileViewController.userID = message.uuid;
         profileViewController.username = message.user;
-        [weakSelf.navigationController pushViewController:profileViewController animated:YES];
+        [self.navigationController pushViewController:profileViewController animated:YES];
     };
     cell.flagAction = ^() {
         NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"HRPGFlagInformationOverlayView"
-                                                          owner:weakSelf
+                                                          owner:self
                                                         options:nil];
         HRPGFlagInformationOverlayView *overlayView = nibViews[0];
         overlayView.username = message.user;
         overlayView.message = message.text;
         overlayView.flagAction = ^() {
-            [weakSelf.sharedManager flagMessage:message
-                                  withGroup:weakSelf.groupID
+            [[HRPGManager sharedManager] flagMessage:message
+                                  withGroup:self.groupID
                                   onSuccess:nil
                                     onError:nil];
         };
@@ -410,23 +406,23 @@
     cell.replyAction = ^() {
         NSString *replyMessage = [NSString stringWithFormat:@"@%@ ", message.user];
         UINavigationController *messageNavigationController =
-            [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"MessageViewController"];
+            [self.storyboard instantiateViewControllerWithIdentifier:@"MessageViewController"];
         HRPGMessageViewController *messageViewController =
             (HRPGMessageViewController *)messageNavigationController.topViewController;
         messageViewController.presetText = replyMessage;
-        [weakSelf.navigationController presentViewController:messageNavigationController
+        [self.navigationController presentViewController:messageNavigationController
                                                 animated:YES
                                               completion:nil];
     };
 
     cell.plusOneAction = ^() {
-        [weakSelf.sharedManager likeMessage:message withGroup:weakSelf.groupID onSuccess:^() {
-            [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [[HRPGManager sharedManager] likeMessage:message withGroup:self.groupID onSuccess:^() {
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         } onError:nil];
     };
 
     cell.deleteAction = ^() {
-        [weakSelf.sharedManager deleteMessage:message withGroup:weakSelf.groupID onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager] deleteMessage:message withGroup:self.groupID onSuccess:nil onError:nil];
     };
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "Pet.h"
-#import "HRPGAppDelegate.h"
+#import "HRPGManager.h"
 
 @implementation Pet
 
@@ -19,11 +19,9 @@
 @dynamic niceMountName;
 
 - (void)getMountImage:(void (^)(UIImage *))successBlock {
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-    HRPGManager *sharedManager = appdelegate.sharedManager;
     NSString *cachedImageName = [NSString stringWithFormat:@"%@_Mount", self.key];
     UIImage *cachedImage;
-    cachedImage = [sharedManager getCachedImage:cachedImageName];
+    cachedImage = [[HRPGManager sharedManager] getCachedImage:cachedImageName];
     if (cachedImage) {
         dispatch_async(dispatch_get_main_queue(), ^{
             successBlock(cachedImage);
@@ -35,7 +33,7 @@
     dispatch_group_t group = dispatch_group_create();
 
     dispatch_group_enter(group);
-    [sharedManager getImage:[NSString stringWithFormat:@"Mount_Head_%@", self.key]
+    [[HRPGManager sharedManager] getImage:[NSString stringWithFormat:@"Mount_Head_%@", self.key]
         withFormat:nil
         onSuccess:^(UIImage *image) {
             currentMountHead = image;
@@ -46,7 +44,7 @@
         }];
 
     dispatch_group_enter(group);
-    [sharedManager getImage:[NSString stringWithFormat:@"Mount_Body_%@", self.key]
+    [[HRPGManager sharedManager] getImage:[NSString stringWithFormat:@"Mount_Body_%@", self.key]
         withFormat:nil
         onSuccess:^(UIImage *image) {
             currentMount = image;
@@ -69,7 +67,7 @@
             successBlock(resultImage);
         });
         if (currentMount && currentMountHead) {
-            [sharedManager setCachedImage:resultImage
+            [[HRPGManager sharedManager] setCachedImage:resultImage
                                  withName:cachedImageName
                                 onSuccess:^(){
                                 }];

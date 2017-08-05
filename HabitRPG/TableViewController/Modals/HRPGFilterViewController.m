@@ -320,7 +320,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         Tag *tag = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [self.sharedManager deleteTag:tag
+        [[HRPGManager sharedManager] deleteTag:tag
                              onSuccess:nil onError:nil];
     }
 }
@@ -372,7 +372,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *newTagName = textField.text;
     if (self.editedTag) {
         self.editedTag.name = newTagName;
-        [self.sharedManager updateTag:self.editedTag onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager] updateTag:self.editedTag onSuccess:nil onError:nil];
         self.editedTag = nil;
     } else {
         Tag *newTag =
@@ -380,7 +380,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                                       inManagedObjectContext:self.managedObjectContext];
         newTag.name = newTagName;
         newTag.order = [NSNumber numberWithInteger:self.fetchedResultsController.fetchedObjects.count];
-        [self.sharedManager createTag:newTag onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager] createTag:newTag onSuccess:nil onError:nil];
     }
 }
 

@@ -8,7 +8,6 @@
 
 #import "HRPGSettingsViewController.h"
 #import "PDKeychainBindings.h"
-#import "HRPGAppDelegate.h"
 #import "HRPGClassTableViewController.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "MRProgress.h"
@@ -18,7 +17,6 @@
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 
 @interface HRPGSettingsViewController ()
-@property HRPGManager *sharedManager;
 @property NSManagedObjectContext *managedObjectContext;
 @property XLFormSectionDescriptor *reminderSection;
 @property XLFormSectionDescriptor *appBadgeSection;
@@ -32,12 +30,9 @@ User *user;
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        HRPGAppDelegate *appdelegate =
-            (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-        HRPGManager *sharedManager = appdelegate.sharedManager;
-        self.managedObjectContext = sharedManager.getManagedObjectContext;
+        self.managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
         defaults = [NSUserDefaults standardUserDefaults];
-        user = [sharedManager getUser];
+        user = [[HRPGManager sharedManager] getUser];
         self.username = user.username;
 
         [self initializeForm];
@@ -47,8 +42,6 @@ User *user;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.sharedManager = appdelegate.sharedManager;
 
     [self.tableView
         setContentInset:UIEdgeInsetsMake([[self hrpgTopHeaderNavigationController] getContentInset], 0, 0, 0)];
@@ -309,9 +302,9 @@ User *user;
         [defaults setObject:@"" forKey:@"habitFilter"];
         [defaults setObject:@"" forKey:@"dailyFilter"];
         [defaults setObject:@"" forKey:@"todoFilter"];
-        [weakSelf.sharedManager clearLoginCredentials];
+        [[HRPGManager sharedManager] clearLoginCredentials];
 
-        [weakSelf.sharedManager
+        [[HRPGManager sharedManager]
          resetSavedDatabase:NO
          onComplete:^() {
              [overlayView dismiss:YES
@@ -329,7 +322,7 @@ User *user;
     };
 
     if ([defaults stringForKey:@"PushNotificationDeviceToken"]) {
-        [self.sharedManager removePushDevice:^{
+        [[HRPGManager sharedManager] removePushDevice:^{
             logoutBlock();
         } onError:^{
             logoutBlock();
@@ -344,7 +337,7 @@ User *user;
         showOverlayAddedTo:self.navigationController.parentViewController.view
                                           animated:YES];
     [self configureProgressView:overlayView];
-    [self.sharedManager resetSavedDatabase:YES
+    [[HRPGManager sharedManager] resetSavedDatabase:YES
                                 onComplete:^() {
                                     overlayView.mode = MRProgressOverlayViewModeCheckmark;
                                     dispatch_time_t popTime = dispatch_time(
@@ -360,7 +353,7 @@ User *user;
         showOverlayAddedTo:self.navigationController.parentViewController.view
                   animated:YES];
     [self configureProgressView:overlayView];
-    [self.sharedManager fetchContent:^() {
+    [[HRPGManager sharedManager] fetchContent:^() {
         overlayView.mode = MRProgressOverlayViewModeCheckmark;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
@@ -436,7 +429,7 @@ User *user;
         [self reminderTimeChanged:[rowDescriptor.value valueData]];
     } else if ([rowDescriptor.tag isEqualToString:@"dayStart"]) {
         XLFormOptionsObject *value = (XLFormOptionsObject *)newValue;
-        [self.sharedManager changeDayStartTime:value.valueData onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager] changeDayStartTime:value.valueData onSuccess:nil onError:nil];
     } else if ([rowDescriptor.tag isEqualToString:@"disablePushNotifications"]) {
         self.pushNotificationRow.disabled = newValue;
         [self updateFormRow:self.pushNotificationRow];
@@ -459,7 +452,7 @@ User *user;
         }
         [self changePushNotificationSettings:pushNotifications];
     } else if ([rowDescriptor.tag isEqualToString:@"disableInbox"]) {
-        [self.sharedManager updateUser:@{@"inbox.optOut": newValue} onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager] updateUser:@{@"inbox.optOut": newValue} onSuccess:nil onError:nil];
     }
 }
 
@@ -503,7 +496,7 @@ User *user;
 }
 
 - (void)changePushNotificationSettings:(PushNotifications *)newValues {
-    [self.sharedManager updateUser:@{
+    [[HRPGManager sharedManager] updateUser:@{
                                      @"preferences.pushNotifications.giftedGems": newValues.giftedGems ? newValues.giftedGems : @NO,
                                      @"preferences.pushNotifications.giftedSubscription": newValues.giftedSubscription ? newValues.giftedSubscription : @NO,
                                      @"preferences.pushNotifications.invitedGuild": newValues.invitedGuild ? newValues.invitedGuild : @NO,
@@ -517,7 +510,7 @@ User *user;
 }
 
 - (void)changeAppBadgeSettings:(BOOL)newValue {
-    [self.sharedManager changeUseAppBadge: newValue];
+    [[HRPGManager sharedManager] changeUseAppBadge: newValue];
     if (!newValue) {
       [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     }

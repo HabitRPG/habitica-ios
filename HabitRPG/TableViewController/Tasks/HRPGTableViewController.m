@@ -65,7 +65,7 @@ BOOL editable;
         // due to the way ipads are used we want to have a bit of extra spacing
         self.extraCellSpacing = 8;
     }
-    self.dayStart = [[self.sharedManager getUser].preferences.dayStart integerValue];
+    self.dayStart = [[[HRPGManager sharedManager] getUser].preferences.dayStart integerValue];
     
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
                                                initWithTarget:self action:@selector(longPressGestureRecognized:)];
@@ -185,7 +185,7 @@ BOOL editable;
             
         default: {
             Task *task = [self taskAtIndexPath:sourceIndexPath];
-            [self.sharedManager moveTask:task toPosition:task.order onSuccess:nil onError:nil];
+            [[HRPGManager sharedManager] moveTask:task toPosition:task.order onSuccess:nil onError:nil];
             
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
             cell.alpha = 0.0;
@@ -230,7 +230,7 @@ BOOL editable;
 
 - (void)refresh {
     __weak HRPGTableViewController *weakSelf = self;
-    [self.sharedManager fetchUser:^() {
+    [[HRPGManager sharedManager] fetchUser:^() {
         [weakSelf.refreshControl endRefreshing];
     } onError:^() {
         [weakSelf.refreshControl endRefreshing];
@@ -415,7 +415,7 @@ BOOL editable;
      forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         Task *task = [self taskAtIndexPath:indexPath];
-        [self.sharedManager deleteTask:task
+        [[HRPGManager sharedManager] deleteTask:task
             onSuccess:nil onError:nil];
     }
 }
@@ -442,9 +442,9 @@ BOOL editable;
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGFormViewController *formViewController = segue.sourceViewController;
     if (formViewController.editTask) {
-        [self.sharedManager updateTask:formViewController.task onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager] updateTask:formViewController.task onSuccess:nil onError:nil];
     } else {
-        [self.sharedManager createTask:formViewController.task onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager] createTask:formViewController.task onSuccess:nil onError:nil];
     }
 }
 

@@ -8,7 +8,7 @@
 
 #import "HRPGNewsViewController.h"
 #import "Amplitude.h"
-#import "HRPGAppDelegate.h"
+#import "HRPGManager.h"
 
 @interface HRPGNewsViewController ()
 
@@ -18,9 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    HRPGAppDelegate *appdelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.sharedManager = appdelegate.sharedManager;
 
     NSURLRequest *request = [NSURLRequest
         requestWithURL:[NSURL URLWithString:@"https://habitica.com/static/new-stuff"]];
@@ -42,8 +39,8 @@
                          self.newsWebView.alpha = 1;
                          self.loadingIndicator.alpha = 0;
                      }];
-    if ([[self.sharedManager getUser].flags.habitNewStuff boolValue]) {
-        [self.sharedManager updateUser:@{
+    if ([[[HRPGManager sharedManager] getUser].flags.habitNewStuff boolValue]) {
+        [[HRPGManager sharedManager] updateUser:@{
             @"flags.newStuff" : @NO
         }
             onSuccess:nil onError:nil];

@@ -8,7 +8,6 @@
 
 #import "HRPGGemViewController.h"
 #import "CargoBay.h"
-#import "HRPGAppDelegate.h"
 #import "HRPGPurchaseLoadingButton.h"
 #import "MRProgress.h"
 #import "UIColor+Habitica.h"
@@ -255,15 +254,6 @@
     [self purchaseGems:product withButton:cell.purchaseButton];
 }
 
-- (HRPGManager *)sharedManager {
-    if (_sharedManager == nil) {
-        HRPGAppDelegate *appdelegate =
-            (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-        _sharedManager = appdelegate.sharedManager;
-    }
-    return _sharedManager;
-}
-
 - (IBAction)cancelButtonPress:(UIBarButtonItem *)sender {
     [self.navigationController dismissViewControllerAnimated:YES
                                                   completion:^(){
@@ -276,7 +266,7 @@
         self.navigationItem.leftBarButtonItem.enabled = NO;
         SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:product];
         payment.quantity = 1;
-        payment.applicationUsername = [[self.sharedManager getUser] hashedValueForAccountName];
+        payment.applicationUsername = [[[HRPGManager sharedManager] getUser] hashedValueForAccountName];
         [[SKPaymentQueue defaultQueue] addPayment:payment];
     } else {
         purchaseButton.state = HRPGPurchaseButtonStateError;
@@ -294,7 +284,7 @@
             NSDictionary *receiptDict = @{
                 @"transaction" : @{@"receipt" : [receiptData base64EncodedStringWithOptions:0]}
             };
-            [self.sharedManager purchaseGems:receiptDict
+            [[HRPGManager sharedManager] purchaseGems:receiptDict
                 onSuccess:^() {
                     SKPaymentQueue *currentQueue = [SKPaymentQueue defaultQueue];
                     [currentQueue.transactions

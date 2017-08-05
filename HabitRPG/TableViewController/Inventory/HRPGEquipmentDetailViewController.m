@@ -22,7 +22,7 @@ NSIndexPath *selectedIndex;
 float textWidth;
 
 - (void)viewDidLoad {
-    self.user = [self.sharedManager getUser];
+    self.user = [[HRPGManager sharedManager] getUser];
     [super viewDidLoad];
     [self setupTableView];
 
@@ -131,7 +131,7 @@ float textWidth;
     textLabel.text = gear.text;
     detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     detailTextLabel.text = gear.notes;
-    [self.sharedManager setImage:[NSString stringWithFormat:@"shop_%@", gear.key]
+    [[HRPGManager sharedManager] setImage:[NSString stringWithFormat:@"shop_%@", gear.key]
                       withFormat:@"png"
                           onView:imageView];
 
@@ -163,7 +163,7 @@ float textWidth;
     [self.tableView deselectRowAtIndexPath:selectedIndex animated:YES];
     if (buttonIndex == 0) {
         __weak HRPGEquipmentDetailViewController *weakSelf = self;
-        [self.sharedManager
+        [[HRPGManager sharedManager]
             equipObject:selectedGear.key
                withType:self.equipType
               onSuccess:^() {

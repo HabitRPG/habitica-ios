@@ -29,6 +29,8 @@
 @property(nonatomic) BOOL useAppBadge;
 @property(nonatomic, readonly) BOOL hasAuthentication;
 
++ (HRPGManager *)sharedManager;
+
 - (void)loadObjectManager:(RKManagedObjectStore *)existingManagedObjectStore;
 
 - (void)fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock;

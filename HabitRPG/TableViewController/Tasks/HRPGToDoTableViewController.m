@@ -37,7 +37,7 @@
 
 - (void)refresh {
     [super refresh];
-    [self.sharedManager fetchCompletedTasks:nil onError:nil];
+    [[HRPGManager sharedManager] fetchCompletedTasks:nil onError:nil];
 }
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"todos"]) {
@@ -104,9 +104,8 @@
 }
 
 - (void)clearCompletedTasks:(UITapGestureRecognizer *)tapRecognizer {
-    __weak HRPGToDoTableViewController *weakSelf = self;
-    [self.sharedManager clearCompletedTasks:^() {
-        [weakSelf.sharedManager fetchUser:nil onError:nil];
+    [[HRPGManager sharedManager] clearCompletedTasks:^() {
+        [[HRPGManager sharedManager] fetchUser:nil onError:nil];
     } onError:nil];
 }
 
@@ -114,7 +113,7 @@
     [super didChangeFilter:notification];
     if (self.filterType == TaskToDoFilterTypeDone) {
         if ([self.fetchedResultsController fetchedObjects].count == 0) {
-            [self.sharedManager fetchCompletedTasks:nil onError:nil];
+            [[HRPGManager sharedManager] fetchCompletedTasks:nil onError:nil];
         }
     }
 }

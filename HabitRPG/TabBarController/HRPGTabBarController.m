@@ -7,7 +7,6 @@
 //
 
 #import "HRPGTabBarController.h"
-#import "HRPGAppDelegate.h"
 #import "NIKFontAwesomeIconFactory.h"
 #import "UIColor+Habitica.h"
 #import "TutorialSteps.h"
@@ -138,7 +137,7 @@
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", [self.sharedManager getUser].id];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", [[HRPGManager sharedManager] getUser].id];
     [fetchRequest setPredicate:predicate];
     
     NSSortDescriptor *sortDescriptor =
@@ -196,18 +195,9 @@
     return _userFetchedResultsController;
 }
 
-- (HRPGManager *)sharedManager {
-    if (_sharedManager == nil) {
-        HRPGAppDelegate *appdelegate =
-            (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-        _sharedManager = appdelegate.sharedManager;
-    }
-    return _sharedManager;
-}
-
 - (NSManagedObjectContext *)managedObjectContext {
     if (_managedObjectContext == nil) {
-        _managedObjectContext = self.sharedManager.getManagedObjectContext;
+        _managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
     }
     return _managedObjectContext;
 }
@@ -243,7 +233,7 @@
     
     for (Task *task in self.taskFetchedResultsController.fetchedObjects) {
         if ([task.type isEqualToString:@"daily"]) {
-            if ([task dueTodayWithOffset:[[self.sharedManager getUser]
+            if ([task dueTodayWithOffset:[[[HRPGManager sharedManager] getUser]
                                           .preferences.dayStart integerValue]]) {
                 dailyBadgeCount++;
             }
@@ -294,7 +284,7 @@
         rewardItem.badgeValue = nil;
     }
 
-    if (self.sharedManager.useAppBadge) {
+    if ([HRPGManager sharedManager].useAppBadge) {
       appBadgeCount = dailyBadgeCount + todoBadgeCount;
     }
 

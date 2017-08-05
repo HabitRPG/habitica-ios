@@ -8,7 +8,6 @@
 
 #import "HRPGUserTopHeader.h"
 #import "PDKeychainBindings.h"
-#import "HRPGAppDelegate.h"
 #import "HRPGLabeledProgressBar.h"
 #import "UIColor+Habitica.h"
 
@@ -132,18 +131,9 @@ NSInteger rowOffset = 16;
     return _fetchedResultsController;
 }
 
-- (HRPGManager *)sharedManager {
-    if (_sharedManager == nil) {
-        HRPGAppDelegate *appdelegate =
-            (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-        _sharedManager = appdelegate.sharedManager;
-    }
-    return _sharedManager;
-}
-
 - (NSManagedObjectContext *)managedObjectContext {
     if (_managedObjectContext == nil) {
-        _managedObjectContext = self.sharedManager.getManagedObjectContext;
+        _managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
     }
     return _managedObjectContext;
 }

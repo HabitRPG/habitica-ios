@@ -35,37 +35,36 @@
 }
 
 - (void)refresh {
-    __weak HRPGPartyTableViewController *weakSelf = self;
     if (!self.groupID) {
-        [self.sharedManager fetchUser:^{
-            if (weakSelf) {
-                if (weakSelf.user.partyID) {
-                    [weakSelf refresh];
+        [[HRPGManager sharedManager] fetchUser:^{
+            if (self) {
+                if (self.user.partyID) {
+                    [self refresh];
                 } else {
-                    [weakSelf.refreshControl endRefreshing];
+                    [self.refreshControl endRefreshing];
                 }
             }
         } onError:^{
-                if (weakSelf) {
-                    [weakSelf.refreshControl endRefreshing];
+                if (self) {
+                    [self.refreshControl endRefreshing];
                 }
             }];
         return;
     }
-    [self.sharedManager fetchGroup:@"party"
+    [[HRPGManager sharedManager] fetchGroup:@"party"
         onSuccess:^() {
-            if (weakSelf) {
-                [weakSelf.refreshControl endRefreshing];
-                [weakSelf fetchGroup];
-                weakSelf.group.unreadMessages = @NO;
-                [weakSelf.sharedManager chatSeen:self.group.id];
+            if (self) {
+                [self.refreshControl endRefreshing];
+                [self fetchGroup];
+                self.group.unreadMessages = @NO;
+                [[HRPGManager sharedManager] chatSeen:self.group.id];
                 [self reloadQuest];
             }
         }
         onError:^() {
-            if (weakSelf) {
-                [weakSelf.refreshControl endRefreshing];
-                [weakSelf.sharedManager displayNetworkError];
+            if (self) {
+                [self.refreshControl endRefreshing];
+                [[HRPGManager sharedManager] displayNetworkError];
             }
         }];
 }
@@ -145,12 +144,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.user.invitedParty && !self.group) {
         if (indexPath.item == 1) {
-            __weak HRPGPartyTableViewController *weakSelf = self;
-            [self.sharedManager joinGroup:self.user.invitedParty
+            [[HRPGManager sharedManager] joinGroup:self.user.invitedParty
                 withType:@"party"
                 onSuccess:^() {
-                    [weakSelf fetchGroup];
-                    [weakSelf.tableView reloadData];
+                    [self fetchGroup];
+                    [self.tableView reloadData];
                 }
                 onError:nil];
         } else if (indexPath.item == 2) {
@@ -265,13 +263,12 @@
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGGroupFormViewController *formViewController = segue.sourceViewController;
     if (formViewController.editGroup) {
-        [self.sharedManager updateGroup:formViewController.group onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager] updateGroup:formViewController.group onSuccess:nil onError:nil];
     } else {
-        __weak HRPGPartyTableViewController *weakSelf = self;
-        [self.sharedManager createGroup:formViewController.group
+        [[HRPGManager sharedManager] createGroup:formViewController.group
                               onSuccess:^() {
-                                  [weakSelf fetchGroup];
-                                  [weakSelf.tableView reloadData];
+                                  [self fetchGroup];
+                                  [self.tableView reloadData];
                               }
                                 onError:nil];
     }

@@ -17,6 +17,5 @@
 @property BOOL isPresentedModally;
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-@property(nonatomic) HRPGManager *sharedManager;
 
 @end

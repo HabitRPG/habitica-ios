@@ -82,7 +82,7 @@
     detailTextLabel.text = [NSString stringWithFormat:@"%@", food.owned];
     detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [detailTextLabel sizeToFit];
-    [self.sharedManager setImage:[NSString stringWithFormat:@"Pet_Food_%@", food.key]
+    [[HRPGManager sharedManager] setImage:[NSString stringWithFormat:@"Pet_Food_%@", food.key]
                       withFormat:@"png"
                           onView:cell.imageView];
 
@@ -108,7 +108,7 @@
         openShopButton.layer.borderWidth = 1.0;
         openShopButton.layer.cornerRadius = 5;
         
-        [self.sharedManager setImage:@"npc_alex" withFormat:nil onView:imageView];
+        [[HRPGManager sharedManager] setImage:@"npc_alex" withFormat:nil onView:imageView];
         label.text = NSLocalizedString(@"Not getting the right drops? Check out the Market to buy just the things you need!", nil);
         [openShopButton addTarget:self action:@selector(openMarket:) forControlEvents:UIControlEventTouchUpInside];
         return view;

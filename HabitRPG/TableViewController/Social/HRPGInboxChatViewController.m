@@ -7,7 +7,6 @@
 //
 
 #import "HRPGInboxChatViewController.h"
-#import "HRPGAppDelegate.h"
 #import "InboxMessage.h"
 #import "UIViewController+Markdown.h"
 #import "HRPGChatTableViewCell.h"
@@ -41,7 +40,7 @@
     [self configureMarkdownAttributes];
     self.viewWidth = self.view.frame.size.width;
 
-    self.user = [self.sharedManager getUser];
+    self.user = [[HRPGManager sharedManager] getUser];
     
     UINib *nib = [UINib nibWithNibName:@"ChatMessageCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"ChatMessageCell"];
@@ -82,9 +81,8 @@
         [self setNavigationTitle];
     } else {
         if (fallback) {
-            __weak HRPGInboxChatViewController *weakSelf = self;
-            [self.sharedManager fetchMember:self.userID onSuccess:^{
-                [weakSelf fetchMemberWithNetworkFallback:NO];
+            [[HRPGManager sharedManager] fetchMember:self.userID onSuccess:^{
+                [self fetchMemberWithNetworkFallback:NO];
             } onError:nil];
         }
         
@@ -146,7 +144,7 @@
     message.sending = [NSNumber numberWithBool:YES];
     NSError *error;
     [self.managedObjectContext save:&error];
-    [self.sharedManager privateMessage:message toUserWithID:self.userID onSuccess:nil onError:nil];
+    [[HRPGManager sharedManager] privateMessage:message toUserWithID:self.userID onSuccess:nil onError:nil];
     
     [super didPressRightButton:sender];
 }
@@ -282,7 +280,7 @@
     };
     
     cell.deleteAction = ^() {
-        [weakSelf.sharedManager deletePrivateMessage:message onSuccess:nil onError:nil];
+        [[HRPGManager sharedManager] deletePrivateMessage:message onSuccess:nil onError:nil];
     };
     
     [cell configureForInboxMessage:message withUser:self.user];
@@ -297,18 +295,9 @@
     [super prepareForSegue:segue sender:sender];
 }
 
-- (HRPGManager *)sharedManager {
-    if (_sharedManager == nil) {
-        HRPGAppDelegate *appdelegate =
-        (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-        _sharedManager = appdelegate.sharedManager;
-    }
-    return _sharedManager;
-}
-
 - (NSManagedObjectContext *)managedObjectContext {
     if (_managedObjectContext == nil) {
-        _managedObjectContext = self.sharedManager.getManagedObjectContext;
+        _managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
     }
     return _managedObjectContext;
 }

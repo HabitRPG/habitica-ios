@@ -111,7 +111,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section != [self questDetailSection]) {
         if (indexPath.section == 0 && indexPath.item == 0) {
-            [self.sharedManager acceptQuest:self.group.id
+            [[HRPGManager sharedManager] acceptQuest:self.group.id
                                   onSuccess:^() {
                                       self.hasResponded = YES;
                                       if (self.wasPushed) {
@@ -121,7 +121,7 @@
                                       }
                                   } onError:nil];
         } else if (indexPath.section == 0 && indexPath.item == 1) {
-            [self.sharedManager rejectQuest:self.group.id
+            [[HRPGManager sharedManager] rejectQuest:self.group.id
                                   onSuccess:^() {
                                       self.hasResponded = YES;
                                       if (self.wasPushed) {
@@ -243,7 +243,7 @@
         self.navigationItem.rightBarButtonItem.enabled = NO;
         __weak HRPGQuestDetailViewController *weakSelf = self;
         if ([self.group.questActive boolValue]) {
-            [self.sharedManager abortQuest:self.group.id
+            [[HRPGManager sharedManager] abortQuest:self.group.id
                 onSuccess:^() {
                     [weakSelf.navigationController popViewControllerAnimated:YES];
                 }
@@ -251,7 +251,7 @@
                     weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
                 }];
         } else {
-            [self.sharedManager forceStartQuest:self.group.id
+            [[HRPGManager sharedManager] forceStartQuest:self.group.id
                 onSuccess:^() {
                     [weakSelf.navigationController popViewControllerAnimated:YES];
                 }

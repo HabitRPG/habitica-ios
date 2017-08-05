@@ -7,24 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HRPGManager.h"
 #import "TutorialStepsProtocol.h"
-@class HRPGTopHeaderNavigationController;
+#import "HRPGCollectionViewController.h"
 
-@interface HRPGBaseCollectionViewController : UICollectionViewController<TutorialStepsProtocol>
+@interface HRPGBaseCollectionViewController : HRPGCollectionViewController<TutorialStepsProtocol>
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-@property(nonatomic) HRPGManager *sharedManager;
 @property CGFloat screenWidth;
 @property BOOL hidesTopBar;
-@property NSString *readableScreenName;
 
 @property NSString *tutorialIdentifier;
 @property NSArray *coachMarks;
 @property BOOL displayedTutorialStep;
 @property TutorialStepView *activeTutorialView;
-
-@property (nonatomic, readonly) HRPGTopHeaderNavigationController *topHeaderNavigationController;
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 

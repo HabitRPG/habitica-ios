@@ -144,19 +144,19 @@
 
 - (void)resetTutorials {
     NSMutableDictionary *steps = [NSMutableDictionary dictionary];
-    for (TutorialSteps *step in [self.sharedManager user].flags.iOSTutorialSteps) {
+    for (TutorialSteps *step in [[HRPGManager sharedManager] user].flags.iOSTutorialSteps) {
         step.wasShown = @NO;
         step.shownInView = nil;
         steps[[NSString stringWithFormat:@"flags.tutorial.ios.%@", step.identifier]] = @NO;
     }
-    for (TutorialSteps *step in [self.sharedManager user].flags.commonTutorialSteps) {
+    for (TutorialSteps *step in [[HRPGManager sharedManager] user].flags.commonTutorialSteps) {
         step.wasShown = @NO;
         step.shownInView = nil;
         steps[[NSString stringWithFormat:@"flags.tutorial.common.%@", step.identifier]] = @NO;
     }
     NSError *error;
     [self.managedObjectContext saveToPersistentStore:&error];
-    [self.sharedManager updateUser:steps onSuccess:nil onError:nil];
+    [[HRPGManager sharedManager] updateUser:steps onSuccess:nil onError:nil];
 }
 
 @end

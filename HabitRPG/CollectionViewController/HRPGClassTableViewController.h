@@ -15,7 +15,6 @@
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
-@property(nonatomic) HRPGManager *sharedManager;
 @property NSIndexPath *selectedIndex;
 @property NSString *tutorialIdentifier;
 @property NSArray *coachMarks;
