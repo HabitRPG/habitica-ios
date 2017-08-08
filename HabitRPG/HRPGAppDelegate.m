@@ -125,16 +125,6 @@
 }
 
 - (void)cleanAndRefresh:(UIApplication *)application {
-    // Update Content if it wasn't updated in the last week.
-    NSDate *lastContentFetch =
-        [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetch"];
-    NSString *lastContentFetchVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetchVersion"];
-    NSString *currentBuildNumber = [[NSBundle mainBundle]
-                                    objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
-    if (lastContentFetch == nil || [lastContentFetch timeIntervalSinceNow] < -82800 || ![lastContentFetchVersion isEqualToString:currentBuildNumber]) {
-        [[NSUserDefaults standardUserDefaults] setObject:currentBuildNumber forKey:@"lastContentFetchVersion"];
-        [self.sharedManager fetchContent:nil onError:nil];
-    }
     NSArray *scheduledNotifications =
         [NSArray arrayWithArray:application.scheduledLocalNotifications];
     application.scheduledLocalNotifications = scheduledNotifications;
@@ -151,13 +141,29 @@
         if (user) {
             NSDate *lastUserFetch = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastTaskFetch"];
             if ([lastUserFetch timeIntervalSinceNow] < -300) {
-                [self.sharedManager fetchUser:nil onError:nil];
+                [self.sharedManager fetchUser:^() {
+                    [self loadContent];
+                } onError:^() {
+                    [self loadContent];
+                }];
             }
         }
     }
 
     [self checkMaintenanceScreen];
     [[[ConfigRepository alloc] init] fetchremoteConfig];
+}
+
+- (void)loadContent {
+    NSDate *lastContentFetch =
+    [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetch"];
+    NSString *lastContentFetchVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetchVersion"];
+    NSString *currentBuildNumber = [[NSBundle mainBundle]
+                                    objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
+    if (lastContentFetch == nil || [lastContentFetch timeIntervalSinceNow] < -82800 || ![lastContentFetchVersion isEqualToString:currentBuildNumber]) {
+        [[NSUserDefaults standardUserDefaults] setObject:currentBuildNumber forKey:@"lastContentFetchVersion"];
+        [self.sharedManager fetchContent:nil onError:nil];
+    }
 }
 
 - (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder {
