@@ -31,6 +31,8 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var gradientView: GradientView!
     @IBOutlet weak var formBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logoFormSpacing: NSLayoutConstraint!
+    @IBOutlet weak var logoHeight: NSLayoutConstraint!
 
     @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak private var loginActivityIndicator: UIActivityIndicatorView!
@@ -50,13 +52,13 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         registerBeginButton.addTarget(self, action: #selector(registerBeginButtonPressed), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         usernameField.entryView.addTarget(self, action: #selector(usernameTextFieldChanged(textField:)), for: .editingChanged)
-        usernameField.entryView.delegate = self
+        usernameField.delegate = self
         emailField.entryView.addTarget(self, action: #selector(emailTextFieldChanged(textField:)), for: .editingChanged)
-        emailField.entryView.delegate = self
+        emailField.delegate = self
         passwordField.entryView.addTarget(self, action: #selector(passwordTextFieldChanged(textField:)), for: .editingChanged)
-        passwordField.entryView.delegate = self
+        passwordField.delegate = self
         passwordRepeatField.entryView.addTarget(self, action: #selector(passwordRepeatTextFieldChanged(textField:)), for: .editingChanged)
-        passwordRepeatField.entryView.delegate = self
+        passwordRepeatField.delegate = self
 
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         googleLoginButton.addTarget(self, action: #selector(googleLoginButtonPressed), for: .touchUpInside)
@@ -203,19 +205,29 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             if value {
+                weakSelf.logoHeight.constant = 80
+                weakSelf.logoFormSpacing.constant = 40
                 weakSelf.formContainer.isHidden = false
                 for (position, view) in weakSelf.formContainer.arrangedSubviews.enumerated() {
                     UIView.animate(withDuration: 0.4, delay: 1+0.1*Double(position), options: [], animations: {
                         view.alpha = 1
                     })
                 }
+                UIView.animate(withDuration: 0.6, animations: {
+                    weakSelf.view.layoutIfNeeded()
+                })
             } else {
+                weakSelf.logoHeight.constant = 112
+                weakSelf.logoFormSpacing.constant = 8
                 UIView.animate(withDuration: 0.4, animations: {
                     weakSelf.formContainer.arrangedSubviews.forEach({ (view) in
                         view.alpha = 0
                     })
                 }, completion: { (_) in
                     weakSelf.formContainer.isHidden = true
+                })
+                UIView.animate(withDuration: 0.4, delay: 0.4, options: [], animations: {
+                    weakSelf.view.layoutIfNeeded()
                 })
             }
             
@@ -246,7 +258,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
                     weakSelf.beginButtonContainer.arrangedSubviews[1].alpha = 0
                 })
             } else {
-                UIView.animate(withDuration: 0.4, delay: 0.6, options: [], animations: {
+                UIView.animate(withDuration: 0.4, delay: 0.8, options: [], animations: {
                     weakSelf.beginButtonContainer.arrangedSubviews[0].alpha = 1
                     weakSelf.beginButtonContainer.arrangedSubviews[1].alpha = 1
                 })

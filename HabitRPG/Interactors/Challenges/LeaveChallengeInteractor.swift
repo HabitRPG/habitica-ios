@@ -40,10 +40,10 @@ class LeaveChallengeInteractor: Interactor<Challenge, Bool> {
         let alert = UIAlertController(title: NSLocalizedString("Leave Challenge?", comment: ""),
                                       message: NSLocalizedString("Do you want to leave the challenge and keep or delete the tasks?", comment: ""),
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Yes, keep tasks", comment: ""), style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Keep tasks", comment: ""), style: .default, handler: { (_) in
             observer.send(value: (true, true, challenge))
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Yes, delete tasks", comment: ""), style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Delete tasks", comment: ""), style: .default, handler: { (_) in
             observer.send(value: (true, false, challenge))
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (_) in

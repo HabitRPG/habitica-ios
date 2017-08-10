@@ -22,11 +22,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JgA-lk-ft1">
-                    <rect key="frame" x="12" y="22.5" width="422" height="21"/>
+                    <rect key="frame" x="12" y="22.5" width="419" height="21"/>
                     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="Vuj-EU-6Vn"/>
                     </connections>
@@ -39,9 +39,9 @@
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bb7-YH-fgG">
-                    <rect key="frame" x="442" y="23" width="17" height="20"/>
+                    <rect key="frame" x="439" y="23" width="20" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="17" id="Ptd-p6-MH2"/>
+                        <constraint firstAttribute="width" constant="20" id="Ptd-p6-MH2"/>
                         <constraint firstAttribute="height" constant="20" id="xkX-kl-WGN"/>
                     </constraints>
                 </imageView>

@@ -60,7 +60,10 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     @IBOutlet weak var randomizeButton: UIButton!
     @IBOutlet weak var subCategoryContainer: UIStackView!
     @IBOutlet weak var contentContainer: UIStackView!
+    
     @IBOutlet var contentCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contentHeight: NSLayoutConstraint!
+    @IBOutlet weak var categoryHeight: NSLayoutConstraint!
     
     var sharedManager: HRPGManager?
     var user: User?
@@ -104,6 +107,11 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         
         let randomizeGesture = UITapGestureRecognizer(target: self, action: #selector(randomizeButtonTapped))
         randomizeButton.addGestureRecognizer(randomizeGesture)
+        
+        if self.view.frame.size.height <= 568 {
+            contentHeight.constant = 120
+            categoryHeight.constant = 85
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

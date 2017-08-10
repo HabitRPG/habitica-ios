@@ -32,16 +32,24 @@
             [self.activityIndicator startAnimating];
             __weak HRPGLoadingViewController *weakSelf = self;
             [manager fetchUser:^() {
-                [weakSelf performSegueWithIdentifier:@"InitialSegue" sender:self];
-            }
-                onError:^() {
-                    [weakSelf performSegueWithIdentifier:@"InitialSegue" sender:self];
+                [weakSelf segueForLoggedInUser];
+            } onError:^() {
+                    [weakSelf segueForLoggedInUser];
                 }];
         } else {
-            [self performSegueWithIdentifier:@"InitialSegue" sender:self];
+            [self segueForLoggedInUser];
         }
     }
     [super viewDidAppear:YES];
+}
+
+- (void)segueForLoggedInUser {
+    bool isInSetup = [[NSUserDefaults standardUserDefaults] boolForKey:@"isInSetup"];
+    if (isInSetup) {
+        [self performSegueWithIdentifier:@"SetupSegue" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"InitialSegue" sender:self];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -57,8 +65,6 @@
         LoginTableViewController *loginViewController =
             (LoginTableViewController *)navigationViewController.topViewController;
         loginViewController.isRootViewController = YES;
-    } else if ([segue.identifier isEqualToString:@"SetupSegue"]) {
-
     }
 }
 

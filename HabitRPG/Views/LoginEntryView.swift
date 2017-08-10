@@ -22,6 +22,8 @@ class LoginEntryView: UIView, UITextFieldDelegate {
         }
     }
     
+    weak public var delegate: UITextFieldDelegate?
+    
     @IBInspectable var icon: UIImage? {
         didSet {
             iconView.image = icon
@@ -78,15 +80,21 @@ class LoginEntryView: UIView, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.3) {
             self.bottomBorder.alpha = 1.0
-
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.3) {
             self.bottomBorder.alpha = 0.15
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let function = self.delegate?.textFieldShouldReturn {
+            return function(textField)
+        }
+        return false
     }
 }

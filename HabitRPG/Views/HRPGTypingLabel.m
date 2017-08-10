@@ -22,7 +22,7 @@
     self = [super init];
 
     if (self) {
-        self.typingSpeed = 0.2;
+        self.typingSpeed = 0.06;
         self.editable = NO;
         self.userInteractionEnabled = NO;
         self.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
@@ -39,7 +39,9 @@
 
 - (void)setText:(NSString *)text startAnimating:(BOOL)startAnimating {
     UIColor *color = [UIColor clearColor];
-    NSDictionary *attrs = @{ NSForegroundColorAttributeName : color };
+    NSDictionary *attrs = @{ NSForegroundColorAttributeName : color,
+                             NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline],
+                             };
     self.setText = [[[NSAttributedString alloc] initWithString:text attributes:attrs] mutableCopy];
     super.attributedText = self.setText;
     if (startAnimating) {

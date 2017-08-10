@@ -12,6 +12,7 @@ import MRProgress
 class SetupViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var pageIndicatorContainer: UIStackView!
+    @IBOutlet weak var pageIndicatorHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var welcomeView: UIView!
     @IBOutlet weak var avatarSetupView: UIView!
@@ -42,6 +43,17 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         avatarSetupView.alpha = 0
         taskSetupView.isHidden = true
         taskSetupView.alpha = 0
+        
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: "isInSetup")
+        let currentSetupStep = defaults.integer(forKey: "currentSetupStep")
+        if currentSetupStep != 0 {
+            scrollToPage(currentSetupStep)
+        }
+        
+        if self.view.frame.size.height <= 480 {
+            pageIndicatorHeightConstraint.constant = 42
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,7 +66,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         let currentPage = getCurrentPage()
         updateIndicator(currentPage)
     }
-    
+
     func updateIndicator(_ currentPage: Int) {
         for (index, element) in pageIndicatorContainer.arrangedSubviews.enumerated() {
             if let indicatorView = element as? UIImageView {
@@ -87,6 +99,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollToPage(_ page: Int) {
+        UserDefaults.standard.set(page, forKey: "currentSetupStep")
         if currentpage > page {
             let oldpage = currentpage
             UIView.animate(withDuration: 0.2, animations: {[weak self] in
@@ -108,10 +121,8 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         updateIndicator(page)
         
         if page <= 0 {
-            previousButtonTextView.text = nil
             previousButtonImageView.tintColor = UIColor.purple100()
         } else {
-            previousButtonTextView.text = NSLocalizedString("Previous", comment: "")
             previousButtonImageView.tintColor = UIColor.white
         }
         if page >= 2 {
@@ -122,6 +133,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func completeSetup() {
+        UserDefaults.standard.set(false, forKey: "isInSetup")
         if let viewController = taskSetupViewController {
             var tasks = [[String: Any]]()
             for taskCategory in viewController.selectedCategories {
