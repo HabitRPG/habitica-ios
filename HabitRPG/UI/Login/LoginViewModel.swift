@@ -26,9 +26,7 @@ protocol  LoginViewModelInputs {
     func emailChanged(email: String?)
     func usernameChanged(username: String?)
     func passwordChanged(password: String?)
-    func passwordDoneEditing()
     func passwordRepeatChanged(passwordRepeat: String?)
-    func passwordRepeatDoneEditing()
 
     func onePassword(isAvailable: Bool)
     func onePasswordTapped()
@@ -175,7 +173,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             ).combineLatest(with: self.authTypeProperty.signal)
         .map({ (_, authType) -> String in
             if authType == .login {
-                return "MainSegue"
+                return "SetupSegue"
             } else {
                 return "SetupSegue"
             }
@@ -236,21 +234,11 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         }
     }
 
-    private let passwordDoneEditingProperty = MutableProperty(())
-    func passwordDoneEditing() {
-        self.passwordDoneEditingProperty.value = ()
-    }
-
     private let passwordRepeatChangedProperty = MutableProperty<String>("")
     func passwordRepeatChanged(passwordRepeat: String?) {
         if passwordRepeat != nil {
             self.passwordRepeatChangedProperty.value = passwordRepeat ?? ""
         }
-    }
-
-    private let passwordRepeatDoneEditingProperty = MutableProperty(())
-    func passwordRepeatDoneEditing() {
-        self.passwordRepeatDoneEditingProperty.value = ()
     }
 
     private let onePasswordAvailable = MutableProperty<Bool>(false)

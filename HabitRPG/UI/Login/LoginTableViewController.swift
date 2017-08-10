@@ -30,6 +30,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var beginButtonContainer: UIStackView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var gradientView: GradientView!
+    @IBOutlet weak var formBottomConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak private var loginActivityIndicator: UIActivityIndicatorView!
@@ -49,12 +50,13 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         registerBeginButton.addTarget(self, action: #selector(registerBeginButtonPressed), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         usernameField.entryView.addTarget(self, action: #selector(usernameTextFieldChanged(textField:)), for: .editingChanged)
+        usernameField.entryView.delegate = self
         emailField.entryView.addTarget(self, action: #selector(emailTextFieldChanged(textField:)), for: .editingChanged)
+        emailField.entryView.delegate = self
         passwordField.entryView.addTarget(self, action: #selector(passwordTextFieldChanged(textField:)), for: .editingChanged)
-        passwordField.entryView.addTarget(self, action: #selector(passwordTextFieldChanged(textField:)), for: .editingChanged)
-        passwordField.entryView.addTarget(self, action: #selector(passwordTextFieldDoneEditing(textField:)), for: .editingDidEnd)
+        passwordField.entryView.delegate = self
         passwordRepeatField.entryView.addTarget(self, action: #selector(passwordRepeatTextFieldChanged(textField:)), for: .editingChanged)
-        passwordRepeatField.entryView.addTarget(self, action: #selector(passwordRepeatTextFieldDoneEditing(textField:)), for: .editingDidEnd)
+        passwordRepeatField.entryView.delegate = self
 
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         googleLoginButton.addTarget(self, action: #selector(googleLoginButtonPressed), for: .touchUpInside)
@@ -72,6 +74,14 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initialUISetup()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(notification:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(notification:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
     
     private func initialUISetup() {
@@ -318,6 +328,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     }
     func backButtonPressed() {
         self.viewModel.inputs.setAuthType(authType: .none)
+        self.view.endEditing(false)
     }
 
     func usernameTextFieldChanged(textField: UITextField) {
@@ -331,15 +342,9 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     func passwordTextFieldChanged(textField: UITextField) {
         self.viewModel.inputs.passwordChanged(password: textField.text)
     }
-    func passwordTextFieldDoneEditing(textField: UITextField) {
-        self.viewModel.inputs.passwordDoneEditing()
-    }
 
     func passwordRepeatTextFieldChanged(textField: UITextField) {
         self.viewModel.inputs.passwordRepeatChanged(passwordRepeat: textField.text)
-    }
-    func passwordRepeatTextFieldDoneEditing(textField: UITextField) {
-        self.viewModel.inputs.passwordRepeatDoneEditing()
     }
 
     func showField(fieldHeightConstraint: NSLayoutConstraint, spacingHeightConstraint: NSLayoutConstraint) {
@@ -376,17 +381,54 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.returnKeyType == .next {
-            guard let next = textField.superview?.superview?.viewWithTag(textField.tag+1) as? UITextField else {
+            guard let parentView = textField.superview?.superview else {
                 return false
             }
-            if next.isEnabled {
-                next.becomeFirstResponder()
-            } else {
-                _ = self.textFieldShouldReturn(next)
+            guard var index = formContainer.arrangedSubviews.index(of: parentView) else {
+                return false
             }
+            while true {
+                index += 1
+                guard let next = formContainer.arrangedSubviews[index] as? LoginEntryView else {
+                    return false
+                }
+                if !next.isHidden {
+                    next.entryView.becomeFirstResponder()
+                    return true
+                }
+            }
+
         } else if textField.returnKeyType == .done {
             textField.resignFirstResponder()
         }
         return true
+    }
+    
+    func keyboardWillShowNotification(notification: NSNotification) {
+        updateBottomLayoutConstraint(notification: notification)
+    }
+    
+    func keyboardWillHideNotification(notification: NSNotification) {
+        updateBottomLayoutConstraint(notification: notification)
+    }
+    
+    func updateBottomLayoutConstraint(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else {
+            return
+        }
+
+        guard let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+            let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            var rawAnimationCurve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.uint32Value else {
+            return
+        }
+        let convertedKeyboardEndFrame = view.convert(keyboardEndFrame, from: view.window)
+        rawAnimationCurve = rawAnimationCurve << 16
+        let animationCurve = UIViewAnimationOptions.init(rawValue: UInt(rawAnimationCurve))
+        formBottomConstraint.constant = view.bounds.maxY - convertedKeyboardEndFrame.minY
+        
+        UIView.animate(withDuration: animationDuration, delay: 0.0, options: [.beginFromCurrentState, animationCurve], animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
 }
