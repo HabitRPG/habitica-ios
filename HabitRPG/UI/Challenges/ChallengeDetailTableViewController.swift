@@ -24,8 +24,9 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
     private let (lifetime, token) = Lifetime.make()
     private var disposable: CompositeDisposable = CompositeDisposable()
 
-    var displayedAlert: ChallengeDetailAlert?
+    weak var displayedAlert: ChallengeDetailAlert?
     @IBOutlet weak private var joinLeaveButton: UIBarButtonItem!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
