@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import MRProgress
 
 class SetupViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var pageIndicatorContainer: UIStackView!
-    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var welcomeView: UIView!
+    @IBOutlet weak var avatarSetupView: UIView!
+    @IBOutlet weak var taskSetupView: UIView!
     
     @IBOutlet weak var nextButtonView: UIStackView!
     @IBOutlet weak var nextButtonTextView: UILabel!
@@ -21,6 +25,11 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var previousButtonTextView: UILabel!
     @IBOutlet weak var previousButtonImageView: UIImageView!
     
+    var views: [UIView] = []
+    var viewControllers: [TypingTextViewController] = []
+    var taskSetupViewController: TaskSetupViewController?
+    var currentpage = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +37,17 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         nextButtonView.addGestureRecognizer(nextGesture)
         let previousGesture = UITapGestureRecognizer(target: self, action: #selector(scrollToPreviousPage))
         previousButtonView.addGestureRecognizer(previousGesture)
+        views = [welcomeView, avatarSetupView, taskSetupView]
+        avatarSetupView.isHidden = true
+        avatarSetupView.alpha = 0
+        taskSetupView.isHidden = true
+        taskSetupView.alpha = 0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        viewControllers[0].startTyping()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -48,11 +68,12 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func getCurrentPage() -> Int {
-        return Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+        return currentpage
     }
     
     func scrollToNextPage() {
         if getCurrentPage() >= 2 {
+            completeSetup()
             return
         }
         scrollToPage(getCurrentPage()+1)
@@ -66,8 +87,24 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollToPage(_ page: Int) {
-        let floatPage = CGFloat(page)
-        scrollView.setContentOffset(CGPoint(x: scrollView.frame.size.width*floatPage, y: 0), animated: true)
+        if currentpage > page {
+            let oldpage = currentpage
+            UIView.animate(withDuration: 0.2, animations: {[weak self] in
+                    self?.views[oldpage].alpha = 0
+            }, completion: {[weak self] _ in
+                    self?.views[oldpage].isHidden = true
+            })
+        } else {
+            views[page].isHidden = false
+            UIView.animate(withDuration: 0.2, animations: {[weak self] in
+                self?.views[page].alpha = 1
+            })
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.6) {[weak self] in
+            self?.viewControllers[page].startTyping()
+        }
+        currentpage = page
+        
         updateIndicator(page)
         
         if page <= 0 {
@@ -81,6 +118,58 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
             nextButtonTextView.text = NSLocalizedString("Finish", comment: "")
         } else {
             nextButtonTextView.text = NSLocalizedString("Next", comment: "")
+        }
+    }
+    
+    func completeSetup() {
+        if let viewController = taskSetupViewController {
+            var tasks = [[String: Any]]()
+            for taskCategory in viewController.selectedCategories {
+                tasks.append(contentsOf: taskCategory.getTasks())
+            }
+            if tasks.count == 0 {
+                showMainView()
+                return
+            }
+            if let delegate = UIApplication.shared.delegate as? HRPGAppDelegate {
+                let sharedManager = delegate.sharedManager
+                MRProgressOverlayView.showOverlayAdded(to: self.view, title: NSLocalizedString("Finishing things up", comment: ""), mode: .indeterminate, animated: true)
+                sharedManager?.createTasks(tasks, onSuccess: {[weak self] in
+                    self?.showMainView()
+                }, onError: {[weak self] in
+                    self?.showMainView()
+                })
+                return
+            }
+        }
+        showMainView()
+    }
+    
+    func showMainView() {
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+        performSegue(withIdentifier: "MainSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? TypingTextViewController {
+            if segue.identifier == "WelcomeSegue" {
+                viewControllers.insert(viewController, at: 0)
+            } else if segue.identifier == "AvatarSegue" {
+                if viewControllers.count < 1 {
+                    viewControllers.append(viewController)
+                } else {
+                    viewControllers.insert(viewController, at: 1)
+                }
+            } else if segue.identifier == "TaskSegue" {
+                if viewControllers.count < 2 {
+                    viewControllers.append(viewController)
+                } else {
+                    viewControllers.insert(viewController, at: 2)
+                }
+                if let taskSetupViewController = viewController as? TaskSetupViewController {
+                    self.taskSetupViewController = taskSetupViewController
+                }
+            }
         }
     }
 }

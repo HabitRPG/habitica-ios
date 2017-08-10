@@ -47,6 +47,10 @@
 - (void)updateUser:(NSDictionary *)newValues
          onSuccess:(void (^)())successBlock
            onError:(void (^)())errorBlock;
+- (void)updateUser:(NSDictionary *)newValues
+       refetchUser:(BOOL)refetchUser
+         onSuccess:(void (^)())successBlock
+           onError:(void (^)())errorBlock;
 
 - (void)changeClass:(NSString *)newClass
           onSuccess:(void (^)())successBlock

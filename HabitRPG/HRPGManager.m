@@ -2553,6 +2553,9 @@ NSString *currentUser;
 - (void)updateUser:(NSDictionary *)newValues
          onSuccess:(void (^)())successBlock
            onError:(void (^)())errorBlock {
+}
+
+- (void)updateUser:(NSDictionary *)newValues refetchUser:(BOOL)refetchUser onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] putObject:nil
@@ -2561,14 +2564,19 @@ NSString *currentUser;
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             // TODO: API currently does not return maxHealth, maxMP and toNextLevel. To set them to
             // correct values, fetch again until this is fixed.
-            [self fetchUser:^() {
-                NSError *executeError = nil;
-                [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+            if (refetchUser) {
+                [self fetchUser:NO onSuccess:^() {
+                    NSError *executeError = nil;
+                    [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                    if (successBlock) {
+                        successBlock();
+                    }
+                } onError:nil];
+            } else {
                 if (successBlock) {
                     successBlock();
                 }
             }
-                onError:nil];
             [self handleNotifications:[mappingResult dictionary][@"notifications"]];
             [self.networkIndicatorController endNetworking];
             return;

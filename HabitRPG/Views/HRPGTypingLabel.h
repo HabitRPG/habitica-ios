@@ -14,4 +14,9 @@
 
 @property(nonatomic, copy) void (^finishedAction)();
 
+
+- (void)setText:(NSString *)text startAnimating:(BOOL)startAnimating;
+
+- (void)startAnimating;
+
 @end

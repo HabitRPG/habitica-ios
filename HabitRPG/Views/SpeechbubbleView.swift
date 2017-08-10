@@ -8,7 +8,6 @@
 
 import Foundation
 
-@IBDesignable
 class SpeechbubbleView: UIView {
     
     @IBInspectable var npcName: String? {
@@ -19,7 +18,7 @@ class SpeechbubbleView: UIView {
     
     @IBInspectable var text: String? {
         didSet {
-            textView.text = text
+            textView.setText(text, startAnimating: false)
         }
     }
     
@@ -57,6 +56,10 @@ class SpeechbubbleView: UIView {
         let view = nib.instantiate(withOwner: self, options: nil)[0] as? UIView
         
         return view
+    }
+    
+    func animateTextView() {
+        textView.startAnimating()
     }
     
 }

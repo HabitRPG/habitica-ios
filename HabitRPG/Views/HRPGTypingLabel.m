@@ -7,11 +7,12 @@
 //
 
 #import "HRPGTypingLabel.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGTypingLabel ()
 
 @property NSInteger index;
-@property NSString *setText;
+@property NSMutableAttributedString *setText;
 
 @end
 
@@ -21,7 +22,7 @@
     self = [super init];
 
     if (self) {
-        self.typingSpeed = 0.03;
+        self.typingSpeed = 0.2;
         self.editable = NO;
         self.userInteractionEnabled = NO;
         self.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
@@ -33,7 +34,20 @@
 }
 
 - (void)setText:(NSString *)text {
-    self.setText = text;
+    [self setText:text startAnimating:YES];
+}
+
+- (void)setText:(NSString *)text startAnimating:(BOOL)startAnimating {
+    UIColor *color = [UIColor clearColor];
+    NSDictionary *attrs = @{ NSForegroundColorAttributeName : color };
+    self.setText = [[[NSAttributedString alloc] initWithString:text attributes:attrs] mutableCopy];
+    super.attributedText = self.setText;
+    if (startAnimating) {
+        [self startAnimating];
+    }
+}
+
+- (void)startAnimating {
     self.index = 0;
     [NSTimer scheduledTimerWithTimeInterval:self.typingSpeed
                                      target:self
@@ -51,7 +65,8 @@
             self.finishedAction();
         }
     } else {
-        super.text = [self.setText substringToIndex:self.index];
+        [self.setText addAttribute:NSForegroundColorAttributeName value:[UIColor gray50] range:NSMakeRange(0,self.index )];
+        super.attributedText = self.setText;
     }
 }
 
