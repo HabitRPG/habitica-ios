@@ -105,6 +105,7 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
     @IBOutlet weak var choresCategoryButtton: UIButton!
     @IBOutlet weak var creativityCategoryButton: UIButton!
     @IBOutlet weak var speechBubbleView: SpeechbubbleView!
+    @IBOutlet weak var containerHeight: NSLayoutConstraint!
     
     let buttonBackground = #imageLiteral(resourceName: "DiamondButton").resizableImage(withCapInsets: UIEdgeInsets(top: 18, left: 15, bottom: 18, right: 15)).withRenderingMode(.alwaysTemplate)
     
@@ -122,6 +123,10 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
             user?.setAvatarSubview(avatarView, showsBackground: false, showsMount: false, showsPet: false)
         }
         initButtons()
+    
+        if self.view.frame.size.height <= 568 {
+            containerHeight.constant = 205
+        }
     }
     
     func initButtons() {

@@ -692,6 +692,7 @@
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creator_active_pixel_arrow_left" translatesAutoresizingMaskIntoConstraints="NO" id="to6-5d-yRx">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="47"/>
+                                                <color key="tintColor" red="0.26366946099999999" green="0.1574202478" blue="0.45384562020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdJ-jq-8D1">
                                                 <rect key="frame" x="48" y="0.0" width="4.5" height="47"/>
@@ -1076,7 +1077,7 @@
                                     <constraint firstAttribute="width" constant="20" id="nsz-6f-tVd"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creator_purple_bg" translatesAutoresizingMaskIntoConstraints="NO" id="yg5-dQ-Nyt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creator_hills_bg" translatesAutoresizingMaskIntoConstraints="NO" id="yg5-dQ-Nyt">
                                 <rect key="frame" x="50.5" y="90" width="219" height="105"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="105" id="Uui-yf-275"/>
@@ -1175,7 +1176,7 @@
                                 <rect key="frame" x="0.0" y="283" width="320" height="230"/>
                                 <color key="backgroundColor" red="0.31081205610000001" green="0.16604828830000001" blue="0.57755351070000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" priority="501" constant="230" id="3NJ-5E-Z9c"/>
+                                    <constraint firstAttribute="height" priority="502" constant="230" id="3NJ-5E-Z9c"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="175" id="gVH-4x-q6A"/>
                                 </constraints>
                             </view>
@@ -1306,7 +1307,7 @@
                         <constraints>
                             <constraint firstItem="LWL-u9-7SG" firstAttribute="top" secondItem="lFU-n3-BVG" secondAttribute="bottom" id="7w5-b4-9X3"/>
                             <constraint firstItem="SPy-W3-rEl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ibT-2i-z2m" secondAttribute="bottom" constant="4" id="BSc-eC-3QV"/>
-                            <constraint firstItem="hU8-o6-KJ5" firstAttribute="top" secondItem="SPy-W3-rEl" secondAttribute="bottom" constant="4" id="FtB-N0-ays"/>
+                            <constraint firstItem="hU8-o6-KJ5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SPy-W3-rEl" secondAttribute="bottom" constant="4" id="FtB-N0-ays"/>
                             <constraint firstItem="lFU-n3-BVG" firstAttribute="top" secondItem="hU8-o6-KJ5" secondAttribute="bottom" priority="501" constant="12" id="GZ2-eJ-hXB"/>
                             <constraint firstItem="Nbh-0B-Rqy" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="lFU-n3-BVG" secondAttribute="bottom" constant="-4" id="MQl-Et-m2H"/>
                             <constraint firstItem="hU8-o6-KJ5" firstAttribute="leading" secondItem="yXS-GH-6cu" secondAttribute="leadingMargin" id="NJO-z9-cwn"/>
@@ -1329,6 +1330,7 @@
                     <connections>
                         <outlet property="avatarView" destination="ucL-Th-No2" id="gw0-yT-F7t"/>
                         <outlet property="choresCategoryButtton" destination="kJd-TG-HlB" id="vBA-lI-Izd"/>
+                        <outlet property="containerHeight" destination="3NJ-5E-Z9c" id="eUI-bF-gwO"/>
                         <outlet property="creativityCategoryButton" destination="r9x-6o-A2F" id="G2I-1Q-r3N"/>
                         <outlet property="exerciseCategoryButton" destination="YG9-k8-OkO" id="YHl-qt-fj9"/>
                         <outlet property="healthCategoryButton" destination="UOx-cX-pif" id="lRB-2q-S3X"/>
@@ -1340,7 +1342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iem-tB-wWT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-90" y="-848"/>
+            <point key="canvasLocation" x="-90" y="-848.76760563380287"/>
         </scene>
     </scenes>
     <resources>
@@ -1363,6 +1365,7 @@
         <image name="category_skin" width="38" height="37"/>
         <image name="creator_active_pixel_arrow_left" width="40" height="40"/>
         <image name="creator_active_pixel_arrow_right" width="40" height="40"/>
+        <image name="creator_hills_bg" width="219" height="105"/>
         <image name="creator_purple_bg" width="219" height="105"/>
         <image name="gold_coin" width="18" height="18"/>
         <image name="icon_experience" width="18" height="18"/>
@@ -1381,6 +1384,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="5Hb-dX-OsZ"/>
         <segue reference="6ya-X1-F2T"/>
-        <segue reference="aKA-6e-Im9"/>
+        <segue reference="mhd-Im-RcK"/>
     </inferredMetricsTieBreakers>
 </document>

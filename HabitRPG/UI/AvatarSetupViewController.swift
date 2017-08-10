@@ -276,7 +276,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
             for item in content {
                 let view = SetupCustomizationItemView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
                 view.setItem(item)
-                view.setActive(isCustomizationActive(item), animated: false)
+                view.isActive = isCustomizationActive(item)
                 let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(setupCustomizationTapped(_:)))
                 view.addGestureRecognizer(tapGestureRecognizer)
                 contentContainer.addArrangedSubview(view)
@@ -286,34 +286,49 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     }
     
     func setupCustomizationTapped(_ sender: UITapGestureRecognizer) {
-        guard let view = sender.view else {
+        guard let view = sender.view as? SetupCustomizationItemView else {
             return
         }
         guard let activeIndex = contentContainer.arrangedSubviews.index(of: view) else {
             return
         }
-        let activeCustomization = content[activeIndex]
-        if activeCustomization.path == "glasses" {
+        
+        if let oldSelectedView = getSelectedView() {
+            oldSelectedView.isActive = false
+        }
+        view.isActive = true
+        
+        let newCustomization = content[activeIndex]
+        if newCustomization.path == "glasses" {
             var key: String?
-            if activeCustomization.key.characters.count == 0 {
+            if newCustomization.key.characters.count == 0 {
                 key = user?.equipped.eyewear
             } else {
-                key = activeCustomization.key
+                key = newCustomization.key
             }
             self.sharedManager?.equipObject(key, withType: "equipped", onSuccess: {[weak self] in
                 self?.updateActiveCustomizations()
                 }, onError: nil)
         } else {
-            self.sharedManager?.updateUser(["preferences."+activeCustomization.path: activeCustomization.key], refetchUser: false, onSuccess: {[weak self] in
+            self.sharedManager?.updateUser(["preferences."+newCustomization.path: newCustomization.key], refetchUser: false, onSuccess: {[weak self] in
                 self?.updateActiveCustomizations()
                 }, onError: nil)
         }
     }
     
+    private func getSelectedView() -> SetupCustomizationItemView? {
+        for view in contentContainer.arrangedSubviews {
+            if let itemView = view as? SetupCustomizationItemView, itemView.isActive {
+                return itemView
+            }
+        }
+        return nil
+    }
+    
     private func updateActiveCustomizations() {
         for (index, item) in content.enumerated() {
             if let contentView = contentContainer.arrangedSubviews[index] as? SetupCustomizationItemView {
-                contentView.setActive(isCustomizationActive(item), animated: false)
+                contentView.isActive = isCustomizationActive(item)
             }
         }
         

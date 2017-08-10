@@ -48,7 +48,7 @@
     if (isInSetup) {
         [self performSegueWithIdentifier:@"SetupSegue" sender:self];
     } else {
-        [self performSegueWithIdentifier:@"InitialSegue" sender:self];
+        [self performSegueWithIdentifier:@"SetupSegue" sender:self];
     }
 }
 

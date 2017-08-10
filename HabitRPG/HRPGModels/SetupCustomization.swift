@@ -65,7 +65,7 @@ public class SetupCustomization {
     }
     
     static func createFlower(key: String, icon: UIImage?) -> SetupCustomization {
-        return SetupCustomization(key: key, path: "flower", text: nil, category: .extras, subcategory: .flower, icon: icon)
+        return SetupCustomization(key: key, path: "hair.flower", text: nil, category: .extras, subcategory: .flower, icon: icon)
     }
     
     static func createWheelchair(key: String, icon: UIImage?) -> SetupCustomization {

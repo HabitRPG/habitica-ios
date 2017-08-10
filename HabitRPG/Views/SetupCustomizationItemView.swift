@@ -14,7 +14,11 @@ class SetupCustomizationItemView: UIView {
     @IBOutlet weak var labelView: UILabel!
     @IBOutlet weak var borderView: UIView!
     
-    private var isActive = false
+    var isActive = false {
+        didSet {
+            updateViewsForActivity()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,17 +62,6 @@ class SetupCustomizationItemView: UIView {
         }
     }
     
-    func setActive(_ isActive: Bool, animated: Bool) {
-        self.isActive = isActive
-        if animated {
-            UIView.animate(withDuration: 0.2, animations: {[weak self] in
-                self?.updateViewsForActivity()
-            })
-        } else {
-            updateViewsForActivity()
-        }
-    }
-
     private func updateViewsForActivity() {
         if isActive {
             borderView.layer.borderWidth = 4

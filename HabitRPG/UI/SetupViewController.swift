@@ -48,6 +48,10 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         defaults.set(true, forKey: "isInSetup")
         let currentSetupStep = defaults.integer(forKey: "currentSetupStep")
         if currentSetupStep != 0 {
+            if currentSetupStep > 1 {
+                avatarSetupView.alpha = 1
+                avatarSetupView.isHidden = false
+            }
             scrollToPage(currentSetupStep)
         }
         
