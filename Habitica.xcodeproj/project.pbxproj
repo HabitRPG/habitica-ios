@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E421F3DD2120094A3E3 /* TutorialStepView.swift */; };
+		29255E451F3DD3ED0094A3E3 /* TutorialStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29255E441F3DD3ED0094A3E3 /* TutorialStepView.xib */; };
 		293282141F389CC000D42961 /* SetupCustomizationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282131F389CC000D42961 /* SetupCustomizationItemView.swift */; };
 		293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */; };
 		293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282171F39E1A400D42961 /* WelcomeViewController.swift */; };
@@ -318,8 +320,6 @@
 		D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */; };
 		D9F1E3F11E576E430034D0F4 /* Task+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3EE1E576E430034D0F4 /* Task+CoreDataClass.m */; };
 		D9F1E3F21E576E430034D0F4 /* Task+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3F01E576E430034D0F4 /* Task+CoreDataProperties.m */; };
-		D9FC1A781BC28C5F00B97D23 /* HRPGExplanationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A771BC28C5F00B97D23 /* HRPGExplanationView.m */; };
-		D9FC1A7B1BC28D7100B97D23 /* HRPGSpeechbubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A7A1BC28D7100B97D23 /* HRPGSpeechbubbleView.m */; };
 		D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */; };
 		D9FC1A861BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A831BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m */; };
 		D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A851BC2D8A300B97D23 /* TutorialSteps.m */; };
@@ -345,6 +345,8 @@
 
 /* Begin PBXFileReference section */
 		281AC256BB298E2B402BE5DF /* Pods-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		29255E421F3DD2120094A3E3 /* TutorialStepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialStepView.swift; sourceTree = "<group>"; };
+		29255E441F3DD3ED0094A3E3 /* TutorialStepView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialStepView.xib; sourceTree = "<group>"; };
 		293282131F389CC000D42961 /* SetupCustomizationItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationItemView.swift; sourceTree = "<group>"; };
 		293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupCustomizationItemView.xib; sourceTree = "<group>"; };
 		293282171F39E1A400D42961 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -945,10 +947,6 @@
 		D9F1E3EF1E576E430034D0F4 /* Task+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Task+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D9F1E3F01E576E430034D0F4 /* Task+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Task+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D9FBC0F11D538B5C008C9EF4 /* HRPGCoreDataDatasourceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGCoreDataDatasourceDelegate.h; sourceTree = "<group>"; };
-		D9FC1A761BC28C5F00B97D23 /* HRPGExplanationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGExplanationView.h; sourceTree = "<group>"; };
-		D9FC1A771BC28C5F00B97D23 /* HRPGExplanationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGExplanationView.m; sourceTree = "<group>"; };
-		D9FC1A791BC28D7100B97D23 /* HRPGSpeechbubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpeechbubbleView.h; sourceTree = "<group>"; };
-		D9FC1A7A1BC28D7100B97D23 /* HRPGSpeechbubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpeechbubbleView.m; sourceTree = "<group>"; };
 		D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTypingLabel.h; sourceTree = "<group>"; };
 		D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTypingLabel.m; sourceTree = "<group>"; };
 		D9FC1A821BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TutorialSteps+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -1466,6 +1464,7 @@
 				D9BB45D51E79968B0002AE2E /* ChallengeFilterAlert.swift */,
 				D9BB45D71E7998710002AE2E /* ChallengeFilterAlert.xib */,
 				D9BB45D31E7849B40002AE2E /* ChallengeTaskListView.swift */,
+				29AAA15C1F2A3AA600029737 /* GradientView.swift */,
 				D96760C61B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.h */,
 				D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */,
 				D9ADD35B19447057006202C1 /* HRPGBall.h */,
@@ -1479,10 +1478,6 @@
 				D9D2172F198D509000023367 /* HRPGDeathView.h */,
 				D9D21730198D509000023367 /* HRPGDeathView.m */,
 				D99E42671D6B1FD500811B6D /* HRPGDeathView.xib */,
-				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
-				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
-				D9FC1A761BC28C5F00B97D23 /* HRPGExplanationView.h */,
-				D9FC1A771BC28C5F00B97D23 /* HRPGExplanationView.m */,
 				D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */,
 				D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */,
 				D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */,
@@ -1517,29 +1512,30 @@
 				D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */,
 				D9BBF32A1DBD127A00C4114C /* HRPGShopAdFooter.h */,
 				D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */,
-				D9FC1A791BC28D7100B97D23 /* HRPGSpeechbubbleView.h */,
-				D9FC1A7A1BC28D7100B97D23 /* HRPGSpeechbubbleView.m */,
-				29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */,
-				29AAA1601F2B597400029737 /* SpeechbubbleView.xib */,
 				D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */,
 				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
 				D9660D761AB248030084CE37 /* HRPGUserTopHeader.h */,
 				D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */,
 				D91CCACF1BCF11CC001C6A0C /* HRPGUserTopHeader.xib */,
 				D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */,
+				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
+				29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */,
 				D96C853C1DCB61EE003E3616 /* Notifications */,
 				D9525F9C1E64739900C529B8 /* PaddedView.swift */,
 				D9CE90441E4CDD6200702578 /* PillView.swift */,
-				D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */,
-				D984D5851E48E5CF006E84F8 /* TaskDetailLineView.swift */,
-				D984D5831E48E57C006E84F8 /* TaskDetailLineView.xib */,
-				D95CBD461BBC0EDA002F4498 /* UIView+Pulse.h */,
-				D95CBD471BBC0EDA002F4498 /* UIView+Pulse.m */,
-				29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */,
-				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
-				29AAA15C1F2A3AA600029737 /* GradientView.swift */,
 				293282131F389CC000D42961 /* SetupCustomizationItemView.swift */,
 				293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */,
+				D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */,
+				29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */,
+				29AAA1601F2B597400029737 /* SpeechbubbleView.xib */,
+				D984D5851E48E5CF006E84F8 /* TaskDetailLineView.swift */,
+				D984D5831E48E57C006E84F8 /* TaskDetailLineView.xib */,
+				29255E421F3DD2120094A3E3 /* TutorialStepView.swift */,
+				29255E441F3DD3ED0094A3E3 /* TutorialStepView.xib */,
+				D95CBD461BBC0EDA002F4498 /* UIView+Pulse.h */,
+				D95CBD471BBC0EDA002F4498 /* UIView+Pulse.m */,
+				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
+				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2140,6 +2136,7 @@
 				D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */,
 				D96576C51BAF53D400CCA28E /* HRPGGearDetailView.xib in Resources */,
 				D9CE90431E4CDC9100702578 /* SubscriptionDetailView.xib in Resources */,
+				29255E451F3DD3ED0094A3E3 /* TutorialStepView.xib in Resources */,
 				D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */,
 				29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */,
 				D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */,
@@ -2411,7 +2408,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9FC1A7B1BC28D7100B97D23 /* HRPGSpeechbubbleView.m in Sources */,
 				D9C2572D1B9DC58700839F48 /* FAQ.m in Sources */,
 				D92761621CCFBEAD0049ECAC /* Flags.m in Sources */,
 				297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */,
@@ -2551,6 +2547,7 @@
 				D998FD951ADAC1FF00E9A26F /* HRPGAboutViewController.m in Sources */,
 				D92D40D91ABF123800E30339 /* HRPGHabitButtons.m in Sources */,
 				D9D5935E1D00523800D6C388 /* InboxMessage.m in Sources */,
+				29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */,
 				D9BE05821DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m in Sources */,
 				D9E46B0D1DAC08BE00E390D7 /* HRPGSpellTableViewCell.m in Sources */,
 				D9BB45DA1E79A02C0002AE2E /* LabeledCheckboxView.swift in Sources */,
@@ -2572,7 +2569,6 @@
 				D9D593661D008C7500D6C388 /* PushDevice+CoreDataProperties.m in Sources */,
 				D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */,
 				D905D08A1DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m in Sources */,
-				D9FC1A781BC28C5F00B97D23 /* HRPGExplanationView.m in Sources */,
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
 				D92A085D1D3520D8000F8B66 /* ShopItem+CoreDataProperties.m in Sources */,
 				29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */,

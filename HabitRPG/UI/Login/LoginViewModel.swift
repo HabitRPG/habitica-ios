@@ -173,7 +173,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             ).combineLatest(with: self.authTypeProperty.signal)
         .map({ (_, authType) -> String in
             if authType == .login {
-                return "SetupSegue"
+                return "MainSegue"
             } else {
                 return "SetupSegue"
             }

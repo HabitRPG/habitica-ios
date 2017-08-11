@@ -169,15 +169,10 @@ User *user;
     [dateFormatter setDateFormat:@"HH:mm:ss"];
     for (int hour = 0; hour < 24; hour++) {
         NSDate *date = [dateFormatter dateFromString:[NSString stringWithFormat:@"%d:00:00", hour]];
-        [hourOptions
-            addObject:
-                [XLFormOptionsObject
-                    formOptionsObjectWithValue:@(hour)
-                                   displayText:
-                                       [NSDateFormatter
-                                           localizedStringFromDate:date
-                                                         dateStyle:NSDateFormatterNoStyle
-                                                         timeStyle:NSDateFormatterShortStyle]]];
+        [hourOptions addObject: [XLFormOptionsObject formOptionsObjectWithValue:@(hour)
+                                                                    displayText:[NSDateFormatter localizedStringFromDate:date
+                                                                                                               dateStyle:NSDateFormatterNoStyle
+                                                                                                               timeStyle:NSDateFormatterShortStyle]]];
     }
     row.selectorOptions = hourOptions;
     NSDate *currentDayStart = [dateFormatter

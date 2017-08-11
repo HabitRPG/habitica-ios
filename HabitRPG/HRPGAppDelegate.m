@@ -115,8 +115,6 @@
     
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
-    id presentedController = self.window.rootViewController.presentedViewController;
-    
     return YES;
 }
 
@@ -313,6 +311,12 @@
 }
 
 - (void)handlePushNotification:(NSDictionary *)userInfo {
+    NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
+    [eventProperties setValue:@"navigate" forKey:@"eventAction"];
+    [eventProperties setValue:@"navigation" forKey:@"eventCategory"];
+    [eventProperties setValue:userInfo[@"identifier"] forKey:@"identifier"];
+    [[Amplitude instance] logEvent:@"open notification" withEventProperties:eventProperties];
+    
     UINavigationController *displayedNavigationController = [self displayTabAtIndex:4];
     if (displayedNavigationController) {
         if ([userInfo[@"identifier"] isEqualToString:@"newPM"] || [userInfo[@"identifier"] isEqualToString:@"giftedGems"] || [userInfo[@"identifier"] isEqualToString:@"giftedSubscription"]) {

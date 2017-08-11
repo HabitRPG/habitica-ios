@@ -20,3 +20,5 @@
 #import "HRPGBaseNotificationView.h"
 #import "HRPGTabBarController.h"
 #import "HRPGTypingLabel.h"
+#import "HRPGHoledView.h"
+#import "HRPGHintView.h"

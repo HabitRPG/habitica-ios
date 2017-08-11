@@ -31,10 +31,10 @@
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"habits"]) {
         return @{
-            @"text" : NSLocalizedString(@"Complete Positive Habits to earn gold and experience! "
-                                        @"Negative Habits will hurt your avatar if you tap them, "
-                                        @"so avoid them in real life!",
-                                        nil)
+                 @"textList" : @[NSLocalizedString(@"First up is Habits. They can be positive Habits you want to improve or negative Habits you want to quit.", nil),
+                                 NSLocalizedString(@"Every time you do a positive Habit, tap the + to get experience and gold!", nil),
+                                 NSLocalizedString(@"If you slip up and do a negative Habit, tapping the - will reduce your avatar’s health to help you stay accountable.", nil),
+                                 NSLocalizedString(@"Give it a shot! You can explore the other task types through the bottom navigation.", nil)]
         };
     }
     return [super getDefinitonForTutorial:tutorialIdentifier];

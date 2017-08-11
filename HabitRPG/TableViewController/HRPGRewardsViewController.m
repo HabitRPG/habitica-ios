@@ -77,10 +77,8 @@
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"rewards"]) {
         return @{
-            @"text" : NSLocalizedString(@"These are your Rewards! Earn gold by completing "
-                                        @"real-world Habits, Dailies, and To-Dos. Then spend it "
-                                        @"on in-game Rewards or custom real-world Rewards!",
-                                        nil)
+            @"textList" : @[NSLocalizedString(@"Buy gear for your avatar with the gold you earn!", nil),
+                            NSLocalizedString(@"You can also make real-world Custom Rewards based on what motivates you.", nil)]
         };
     }
     return nil;

@@ -36,10 +36,8 @@
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"dailies"]) {
         return @{
-            @"text" : NSLocalizedString(@"Defeat your repeating Daily tasks to gain gold and "
-                                        @"experience. Danger! Dailies will hurt your avatar if "
-                                        @"you don't complete them in time.",
-                                        nil)
+            @"textList" : @[NSLocalizedString(@"Make Dailies for time sensitive tasks that need to be done on a regular schedule.", nil),
+                            NSLocalizedString(@"Be careful — if you miss one, your avatar will take damage overnight. Checking them off consistently brings great rewards!", nil)]
         };
     }
     return [super getDefinitonForTutorial:tutorialIdentifier];

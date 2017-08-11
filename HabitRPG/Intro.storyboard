@@ -797,6 +797,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="Oh, you must be new here. I’m Justin, I’ll be your guide in Habitica.   To start, you’ll need to create an avatar."/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="npcName" value="Justin"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasNpcImage" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="justin" translatesAutoresizingMaskIntoConstraints="NO" id="k0x-FF-wLh">

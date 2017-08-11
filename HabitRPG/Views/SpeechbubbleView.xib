@@ -11,8 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SpeechbubbleView" customModule="Habitica" customModuleProvider="target">
             <connections>
+                <outlet property="caretView" destination="XE1-au-Li7" id="w7m-j8-OW9"/>
                 <outlet property="namePlateBackgroundView" destination="EI4-Ve-fvl" id="hok-Nc-pL4"/>
                 <outlet property="namePlateView" destination="n0u-ls-fMO" id="iSb-mT-8UW"/>
+                <outlet property="npcImageView" destination="XNb-cD-XfI" id="5E6-Zb-EXy"/>
                 <outlet property="textView" destination="6xy-H0-35V" id="aHy-5O-4DB"/>
             </connections>
         </placeholder>
@@ -21,8 +23,15 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="justin_textbox" translatesAutoresizingMaskIntoConstraints="NO" id="XNb-cD-XfI">
+                    <rect key="frame" x="311" y="0.0" width="48" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="3CY-aO-abs"/>
+                        <constraint firstAttribute="width" constant="48" id="XHl-K3-ePh"/>
+                    </constraints>
+                </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6xy-H0-35V" customClass="HRPGTypingLabel">
-                    <rect key="frame" x="0.0" y="13" width="375" height="654"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="615"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="500" constant="128" id="GWl-8M-oj6"/>
@@ -31,13 +40,13 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nameplate" translatesAutoresizingMaskIntoConstraints="NO" id="EI4-Ve-fvl">
-                    <rect key="frame" x="24" y="0.0" width="43" height="25"/>
+                    <rect key="frame" x="24" y="31" width="43" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="be5-I1-p8y"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0u-ls-fMO">
-                    <rect key="frame" x="45.5" y="2" width="0.0" height="21"/>
+                    <rect key="frame" x="45.5" y="33" width="0.0" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" priority="500" constant="42" id="MAl-AC-5cl"/>
                         <constraint firstAttribute="height" constant="21" id="wL6-03-9Ck"/>
@@ -46,22 +55,36 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speechbubble_caret" translatesAutoresizingMaskIntoConstraints="NO" id="XE1-au-Li7">
+                    <rect key="frame" x="174.5" y="652" width="26" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="7MA-qA-5gl"/>
+                        <constraint firstAttribute="height" constant="15" id="KOY-Nr-EFp"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="EI4-Ve-fvl" firstAttribute="top" secondItem="6xy-H0-35V" secondAttribute="top" constant="-13" id="13T-mQ-5CA"/>
+                <constraint firstAttribute="trailing" secondItem="XNb-cD-XfI" secondAttribute="trailing" constant="16" id="3Bh-md-rYo"/>
                 <constraint firstAttribute="trailing" secondItem="6xy-H0-35V" secondAttribute="trailing" id="7fa-TC-vxD"/>
                 <constraint firstItem="6xy-H0-35V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FGa-oV-Gau"/>
+                <constraint firstAttribute="bottom" secondItem="XE1-au-Li7" secondAttribute="bottom" id="FjY-B0-nSc"/>
+                <constraint firstItem="6xy-H0-35V" firstAttribute="top" secondItem="XNb-cD-XfI" secondAttribute="bottom" id="GI1-ZK-079"/>
                 <constraint firstItem="n0u-ls-fMO" firstAttribute="centerY" secondItem="EI4-Ve-fvl" secondAttribute="centerY" id="HDH-xY-C8y"/>
                 <constraint firstItem="EI4-Ve-fvl" firstAttribute="width" secondItem="n0u-ls-fMO" secondAttribute="width" constant="43" id="Oxq-Jg-cfn"/>
-                <constraint firstItem="6xy-H0-35V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="13" id="iLz-h6-dto"/>
+                <constraint firstItem="XNb-cD-XfI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WWB-Me-Ylk"/>
                 <constraint firstItem="EI4-Ve-fvl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="ku7-l6-Umd"/>
-                <constraint firstAttribute="bottom" secondItem="6xy-H0-35V" secondAttribute="bottom" id="mHA-7D-4Ne"/>
+                <constraint firstAttribute="bottom" secondItem="6xy-H0-35V" secondAttribute="bottom" constant="8" id="mHA-7D-4Ne"/>
                 <constraint firstItem="n0u-ls-fMO" firstAttribute="centerX" secondItem="EI4-Ve-fvl" secondAttribute="centerX" id="qFp-YJ-SK0"/>
+                <constraint firstItem="XE1-au-Li7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="qSU-Yc-PLH"/>
             </constraints>
+            <point key="canvasLocation" x="36.5" y="111.5"/>
         </view>
     </objects>
     <resources>
         <image name="Nameplate" width="41" height="25"/>
+        <image name="justin_textbox" width="48" height="63"/>
+        <image name="speechbubble_caret" width="26" height="15"/>
     </resources>
 </document>

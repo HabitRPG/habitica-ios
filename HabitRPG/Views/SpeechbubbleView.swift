@@ -22,9 +22,27 @@ class SpeechbubbleView: UIView {
         }
     }
     
+    @IBInspectable var hasNpcImage: Bool = true {
+        didSet {
+            if hasNpcImage {
+                npcImageView.image = npcImage
+            } else {
+                npcImageView.image = nil
+            }
+        }
+    }
+    
+    @IBInspectable var npcImage: UIImage? {
+        didSet {
+            npcImageView.image = npcImage
+        }
+    }
+    
     @IBOutlet weak var namePlateView: UILabel!
     @IBOutlet weak var textView: HRPGTypingLabel!
     @IBOutlet weak var namePlateBackgroundView: UIImageView!
+    @IBOutlet weak var npcImageView: UIImageView!
+    @IBOutlet weak var caretView: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

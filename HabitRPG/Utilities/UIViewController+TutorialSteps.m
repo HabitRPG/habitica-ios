@@ -9,6 +9,7 @@
 #import "UIViewController+TutorialSteps.h"
 #import "Amplitude.h"
 #import "TutorialSteps.h"
+#import "Habitica-Swift.h"
 
 @implementation UIViewController (TutorialSteps)
 
@@ -90,17 +91,18 @@
     [self.sharedManager.getManagedObjectContext saveToPersistentStore:&error];
 
     NSDictionary *tutorialDefinition = [self getDefinitonForTutorial:identifier];
-    HRPGExplanationView *explanationView = [[HRPGExplanationView alloc] init];
-    self.activeTutorialView = explanationView;
-    explanationView.speechBubbleText = tutorialDefinition[@"text"];
-    if (!CGRectIsEmpty(frame)) {
-        explanationView.highlightedFrame = frame;
-        [explanationView displayHintOnView:self.parentViewController.view
-                           withDisplayView:self.parentViewController.parentViewController.view
-                                  animated:YES];
+    TutorialStepView *tutorialStepView = [[TutorialStepView alloc] init];
+    self.activeTutorialView = tutorialStepView;
+    if (tutorialDefinition[@"textList"]) {
+        [tutorialStepView setTextsWithList:tutorialDefinition[@"textList"]];
     } else {
-        [explanationView displayOnView:self.parentViewController.parentViewController.view
-                              animated:YES];
+        [tutorialStepView setText:tutorialDefinition[@"text"]];
+    }
+    if (!CGRectIsEmpty(frame)) {
+        tutorialStepView.highlightedFrame = frame;
+        [tutorialStepView displayHintOnView:self.parentViewController.view displayView:self.parentViewController.parentViewController.view animated:YES];
+    } else {
+        [tutorialStepView displayOnView:self.parentViewController.parentViewController.view animated:YES];
     }
     if ([type isEqualToString:@"common"]) {
         [[self.sharedManager user].flags addCommonTutorialStepsObject:step];
@@ -118,31 +120,23 @@
     [eventProperties setValue:@NO forKey:@"complete"];
     [[Amplitude instance] logEvent:@"tutorial" withEventProperties:eventProperties];
 
-    explanationView.dismissAction = ^(BOOL wasSeen) {
+    tutorialStepView.dismissAction = ^() {
         self.activeTutorialView = nil;
-
-        if (!wasSeen) {
-            // Show it again the next day
-            NSDate *nextAppearance = [[NSDate date] dateByAddingTimeInterval:86400];
-            [defaults setValue:nextAppearance forKey:defaultsKey];
-        } else {
-            NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
-            [eventProperties setValue:@"tutorial" forKey:@"eventAction"];
-            [eventProperties setValue:@"behaviour" forKey:@"eventCategory"];
-            [eventProperties setValue:@"event" forKey:@"event"];
-            [eventProperties setValue:[step.identifier stringByAppendingString:@"-iOS"]
-                               forKey:@"eventLabel"];
-            [eventProperties setValue:step.identifier forKey:@"eventValue"];
-            [eventProperties setValue:@YES forKey:@"complete"];
-            [[Amplitude instance] logEvent:@"tutorial" withEventProperties:eventProperties];
-        }
+        
+        NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
+        [eventProperties setValue:@"tutorial" forKey:@"eventAction"];
+        [eventProperties setValue:@"behaviour" forKey:@"eventCategory"];
+        [eventProperties setValue:@"event" forKey:@"event"];
+        [eventProperties setValue:[step.identifier stringByAppendingString:@"-iOS"]
+                           forKey:@"eventLabel"];
+        [eventProperties setValue:step.identifier forKey:@"eventValue"];
+        [eventProperties setValue:@YES forKey:@"complete"];
+        [[Amplitude instance] logEvent:@"tutorial" withEventProperties:eventProperties];
         NSError *error;
         [self.sharedManager.getManagedObjectContext saveToPersistentStore:&error];
         [self.sharedManager updateUser:@{
-            [NSString stringWithFormat:@"flags.tutorial.%@.%@", type, step.identifier] : @(wasSeen)
-        }
-                             onSuccess:nil
-                               onError:nil];
+            [NSString stringWithFormat:@"flags.tutorial.%@.%@", type, step.identifier] : @YES
+        } onSuccess:nil onError:nil];
     };
 }
 

@@ -45,10 +45,9 @@
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"todos"]) {
         return @{
-            @"text" : NSLocalizedString(@"Complete your To-Dos in real life, then check them off "
-                                        @"for GOLD and EXPERIENCE so you can earn Rewards and "
-                                        @"unlock new features!",
-                                        nil)
+            @"textList" : @[NSLocalizedString(@"Use To-dos to keep track of tasks you need to do just once.", nil),
+                            NSLocalizedString(@"If your To-do has to be done by a certain time, set a due date. Looks like you can check one off — go ahead!", nil)]
+                            
         };
     }
     return [super getDefinitonForTutorial:tutorialIdentifier];

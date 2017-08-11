@@ -103,14 +103,12 @@ NSString *currentUser;
             NSMigratePersistentStoresAutomaticallyOption : @YES,
             NSInferMappingModelAutomaticallyOption : @YES
         };
-        NSPersistentStore *persistentStore =
-            [managedObjectStore addSQLitePersistentStoreAtPath:storePath
-                                        fromSeedDatabaseAtPath:nil
-                                             withConfiguration:nil
-                                                       options:options
-                                                         error:&error];
 
-        NSAssert(persistentStore, @"Failed to add persistent store with error: %@", error);
+        NSAssert([managedObjectStore addSQLitePersistentStoreAtPath:storePath
+                                             fromSeedDatabaseAtPath:nil
+                                                  withConfiguration:nil
+                                                            options:options
+                                                              error:&error], @"Failed to add persistent store with error: %@", error);
 
         // Create the managed object contexts
         [managedObjectStore createManagedObjectContexts];
@@ -2553,6 +2551,7 @@ NSString *currentUser;
 - (void)updateUser:(NSDictionary *)newValues
          onSuccess:(void (^)())successBlock
            onError:(void (^)())errorBlock {
+    [self updateUser:newValues refetchUser:YES onSuccess:successBlock onError:errorBlock];
 }
 
 - (void)updateUser:(NSDictionary *)newValues refetchUser:(BOOL)refetchUser onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
