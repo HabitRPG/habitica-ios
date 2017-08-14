@@ -17,4 +17,8 @@
 @interface HRPGShopOverviewTableViewDataSource : NSObject<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, weak) id<HRPGShopOverviewTableViewDataSourceDelegate> delegate;
 @property (nonatomic) NSDictionary *shopDictionary;
+
++ (NSDictionary *)shopBgImageNames;
++ (NSDictionary *)shopCharacterImageNames;
++ (NSDictionary *)shopNames;
 @end

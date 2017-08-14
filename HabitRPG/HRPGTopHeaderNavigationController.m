@@ -234,7 +234,7 @@
         _shouldHideTopHeader = shouldHideTopHeader;
         if (shouldHideTopHeader) {
             [self hideHeader];
-        }else{
+        } else {
             [self showHeader];
             [self.view setNeedsLayout];
             [self.view layoutIfNeeded];

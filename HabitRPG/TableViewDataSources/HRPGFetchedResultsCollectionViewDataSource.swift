@@ -26,9 +26,10 @@ class HRPGFetchedResultsCollectionViewDataSource: NSObject, UICollectionViewData
         return UICollectionViewCell()
     }
     
-    //MARK: FetchedResultsController delegate
+    // MARK: FetchedResultsController delegate
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo,
+                    atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         let indexSet = NSIndexSet(index: sectionIndex) as IndexSet
         switch type {
         case NSFetchedResultsChangeType.insert:

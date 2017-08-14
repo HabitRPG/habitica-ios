@@ -27,3 +27,5 @@
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "HRPGDeathView.h"
 #import "Amplitude+HRPGHelpers.h"
+#import "HRPGShopOverviewTableViewDataSource.h"
+#import "NSString+StripHTML.h"
