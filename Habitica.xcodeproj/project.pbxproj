@@ -49,7 +49,6 @@
 		49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */; };
 		49005B741F180CA6004830D9 /* HRPGGoldCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B731F180CA6004830D9 /* HRPGGoldCountView.swift */; };
 		49005B761F180DA4004830D9 /* HRPGGemCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B751F180DA4004830D9 /* HRPGGemCountView.swift */; };
-		49005B781F180DB9004830D9 /* HRPGSilverCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B771F180DB9004830D9 /* HRPGSilverCountView.swift */; };
 		49005B7A1F180DD1004830D9 /* HRPGHourglassCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B791F180DD1004830D9 /* HRPGHourglassCountView.swift */; };
 		49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */; };
 		49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */; };
@@ -67,6 +66,15 @@
 		494E54251F3124890003683C /* HRPGShopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54241F3124890003683C /* HRPGShopViewModel.m */; };
 		49DCB7991F3407B30079FDD0 /* BuyModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */; };
 		49DCB79B1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */; };
+		49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */; };
+		49DCB7B01F3923F20079FDD0 /* HRPGSimpleShopItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7AF1F3923F20079FDD0 /* HRPGSimpleShopItemView.xib */; };
+		49DCB7B21F3E6D400079FDD0 /* HRPGSingleOptionModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7B11F3E6D400079FDD0 /* HRPGSingleOptionModalViewController.swift */; };
+		49DCB7B61F3F64B40079FDD0 /* HRPGShopModalBgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7B51F3F64B40079FDD0 /* HRPGShopModalBgView.swift */; };
+		49DCB7B81F3F64D40079FDD0 /* HRPGShopModalBgView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7B71F3F64D40079FDD0 /* HRPGShopModalBgView.xib */; };
+		49DCB7BA1F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7B91F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib */; };
+		49DCB7BC1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7BB1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift */; };
+		49DCB7C21F40D7F10079FDD0 /* HRPGShopBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7C11F40D7F00079FDD0 /* HRPGShopBannerView.swift */; };
+		49DCB7C41F40D80B0079FDD0 /* HRPGShopBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7C31F40D80B0079FDD0 /* HRPGShopBannerView.xib */; };
 		823F7132DD74058859184F61 /* Pods_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */; };
 		98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */; };
 		CF54FEE0D3F7F352ECA56F23 /* HRPGContentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CF54FD820D81110D9EF4756E /* HRPGContentResponse.m */; };
@@ -427,7 +435,6 @@
 		49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGCurrencyCountView.swift; sourceTree = "<group>"; };
 		49005B731F180CA6004830D9 /* HRPGGoldCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGGoldCountView.swift; sourceTree = "<group>"; };
 		49005B751F180DA4004830D9 /* HRPGGemCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGGemCountView.swift; sourceTree = "<group>"; };
-		49005B771F180DB9004830D9 /* HRPGSilverCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGSilverCountView.swift; sourceTree = "<group>"; };
 		49005B791F180DD1004830D9 /* HRPGHourglassCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGHourglassCountView.swift; sourceTree = "<group>"; };
 		49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopUserHeaderView.swift; sourceTree = "<group>"; };
 		49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopUserHeaderView.xib; sourceTree = "<group>"; };
@@ -451,6 +458,15 @@
 		494E54241F3124890003683C /* HRPGShopViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopViewModel.m; sourceTree = "<group>"; };
 		49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BuyModal.storyboard; sourceTree = "<group>"; };
 		49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGBuyItemModalViewController.swift; sourceTree = "<group>"; };
+		49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGSimpleShopItemView.swift; sourceTree = "<group>"; };
+		49DCB7AF1F3923F20079FDD0 /* HRPGSimpleShopItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGSimpleShopItemView.xib; sourceTree = "<group>"; };
+		49DCB7B11F3E6D400079FDD0 /* HRPGSingleOptionModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HRPGSingleOptionModalViewController.swift; path = HabitRPG/ViewController/HRPGSingleOptionModalViewController.swift; sourceTree = SOURCE_ROOT; };
+		49DCB7B51F3F64B40079FDD0 /* HRPGShopModalBgView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopModalBgView.swift; sourceTree = "<group>"; };
+		49DCB7B71F3F64D40079FDD0 /* HRPGShopModalBgView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopModalBgView.xib; sourceTree = "<group>"; };
+		49DCB7B91F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGCloseableShopModalView.xib; sourceTree = "<group>"; };
+		49DCB7BB1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGCloseableShopModalView.swift; sourceTree = "<group>"; };
+		49DCB7C11F40D7F00079FDD0 /* HRPGShopBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopBannerView.swift; sourceTree = "<group>"; };
+		49DCB7C31F40D80B0079FDD0 /* HRPGShopBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopBannerView.xib; sourceTree = "<group>"; };
 		98A4DBEE1B643BC100A9E2A8 /* HRPGSearchDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSearchDataManager.h; sourceTree = "<group>"; };
 		98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSearchDataManager.m; sourceTree = "<group>"; };
 		A11A64FF1BAC9FC30037D41C /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
@@ -1137,6 +1153,44 @@
 			name = "Collection View Cells";
 			sourceTree = "<group>";
 		};
+		49DCB7B31F3F5E820079FDD0 /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				D96576C11BAF539000CCA28E /* HRPGGearDetailView.h */,
+				D96576C21BAF539000CCA28E /* HRPGGearDetailView.m */,
+				D96576C41BAF53D400CCA28E /* HRPGGearDetailView.xib */,
+				D9A28F701B08DF58002907E0 /* HRPGPurchaseButton.h */,
+				D9A28F711B08DF58002907E0 /* HRPGPurchaseButton.m */,
+				D9C89CF41B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.h */,
+				D9C89CF51B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m */,
+				D9BBF32A1DBD127A00C4114C /* HRPGShopAdFooter.h */,
+				D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */,
+				49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */,
+				49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */,
+				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
+				49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */,
+				49DCB7AF1F3923F20079FDD0 /* HRPGSimpleShopItemView.xib */,
+				49DCB7B51F3F64B40079FDD0 /* HRPGShopModalBgView.swift */,
+				49DCB7B71F3F64D40079FDD0 /* HRPGShopModalBgView.xib */,
+				49DCB7BB1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift */,
+				49DCB7B91F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib */,
+				49DCB7C11F40D7F00079FDD0 /* HRPGShopBannerView.swift */,
+				49DCB7C31F40D80B0079FDD0 /* HRPGShopBannerView.xib */,
+			);
+			name = Shop;
+			sourceTree = "<group>";
+		};
+		49DCB7B41F3F5EF00079FDD0 /* Currency */ = {
+			isa = PBXGroup;
+			children = (
+				49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */,
+				49005B731F180CA6004830D9 /* HRPGGoldCountView.swift */,
+				49005B751F180DA4004830D9 /* HRPGGemCountView.swift */,
+				49005B791F180DD1004830D9 /* HRPGHourglassCountView.swift */,
+			);
+			name = Currency;
+			sourceTree = "<group>";
+		};
 		B4CD8E50098CF9B62A999CCD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1596,6 +1650,9 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				49DCB7B41F3F5EF00079FDD0 /* Currency */,
+				49DCB7B31F3F5E820079FDD0 /* Shop */,
+				D96C853C1DCB61EE003E3616 /* Notifications */,
 				D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */,
 				D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */,
 				D9D17CCB1E6736A600AD9232 /* ChallengeDetailHeaderView.swift */,
@@ -1616,9 +1673,6 @@
 				D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */,
 				D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */,
 				D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */,
-				D96576C11BAF539000CCA28E /* HRPGGearDetailView.h */,
-				D96576C21BAF539000CCA28E /* HRPGGearDetailView.m */,
-				D96576C41BAF53D400CCA28E /* HRPGGearDetailView.xib */,
 				D92D40D71ABF123800E30339 /* HRPGHabitButtons.h */,
 				D92D40D81ABF123800E30339 /* HRPGHabitButtons.m */,
 				D905766D1BD7F581009BB7BC /* HRPGHintView.h */,
@@ -1637,14 +1691,14 @@
 				D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */,
 				D9884B4319168AF00078BC7C /* HRPGProgressView.h */,
 				D9884B4419168AF00078BC7C /* HRPGProgressView.m */,
-				D9A28F701B08DF58002907E0 /* HRPGPurchaseButton.h */,
-				D9A28F711B08DF58002907E0 /* HRPGPurchaseButton.m */,
-				D9C89CF41B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.h */,
-				D9C89CF51B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m */,
 				D9D9EF961D54E51C00FC89C1 /* HRPGQRCodeView.h */,
 				D9D9EF971D54E51C00FC89C1 /* HRPGQRCodeView.m */,
 				D9BBF32A1DBD127A00C4114C /* HRPGShopAdFooter.h */,
 				D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */,
+				D9C0002E1928F83E003D4E4C /* HRPGRoundProgressView.h */,
+				D9C0002F1928F83E003D4E4C /* HRPGRoundProgressView.m */,
+				D9FC1A791BC28D7100B97D23 /* HRPGSpeechbubbleView.h */,
+				D9FC1A7A1BC28D7100B97D23 /* HRPGSpeechbubbleView.m */,
 				D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */,
 				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
 				D9660D761AB248030084CE37 /* HRPGUserTopHeader.h */,
@@ -1950,6 +2004,7 @@
 				D93432551D5A2B9400025412 /* HRPGChoosePMRecipientViewController.h */,
 				D93432561D5A2B9500025412 /* HRPGChoosePMRecipientViewController.m */,
 				49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */,
+				49DCB7B11F3E6D400079FDD0 /* HRPGSingleOptionModalViewController.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -2277,7 +2332,9 @@
 				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
 				29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */,
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
+				49DCB7C41F40D80B0079FDD0 /* HRPGShopBannerView.xib in Resources */,
 				D905D08C1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib in Resources */,
+				49DCB7B81F3F64D40079FDD0 /* HRPGShopModalBgView.xib in Resources */,
 				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
 				49005B701F17E7AC004830D9 /* Shops.storyboard in Resources */,
 				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
@@ -2292,7 +2349,9 @@
 				29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */,
 				D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
+				49DCB7B01F3923F20079FDD0 /* HRPGSimpleShopItemView.xib in Resources */,
 				D91CCAD01BCF11CC001C6A0C /* HRPGUserTopHeader.xib in Resources */,
+				49DCB7BA1F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib in Resources */,
 				49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
 				D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */,
@@ -2614,6 +2673,7 @@
 				D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */,
 				D9D21731198D509100023367 /* HRPGDeathView.m in Sources */,
 				D9525F9F1E65A18300C529B8 /* EmojifiedString.swift in Sources */,
+				49DCB7B61F3F64B40079FDD0 /* HRPGShopModalBgView.swift in Sources */,
 				D9BB45D11E7713E80002AE2E /* ChallengeTask+CoreDataClass.m in Sources */,
 				D9525F981E5F405400C529B8 /* Challenge+CoreDataClass.m in Sources */,
 				D98F5DDA1C6E17280035CBEC /* HRPGQuestGroupTableViewController.m in Sources */,
@@ -2653,6 +2713,7 @@
 				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
 				D96C853F1DCB631B003E3616 /* HRPGBaseNotificationView.m in Sources */,
 				D905D08F1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m in Sources */,
+				49DCB7B21F3E6D400079FDD0 /* HRPGSingleOptionModalViewController.swift in Sources */,
 				D91CCACD1BCD9068001C6A0C /* HRPGHoledView.m in Sources */,
 				D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */,
 				D9D9EF981D54E51C00FC89C1 /* HRPGQRCodeView.m in Sources */,
@@ -2733,6 +2794,7 @@
 				D99CDDDD1E5368E400ABD85F /* ShopItem+CoreDataClass.m in Sources */,
 				D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */,
 				D903B78C1DCA4C25001F2893 /* HRPGNotificationManager.m in Sources */,
+				49DCB7C21F40D7F10079FDD0 /* HRPGShopBannerView.swift in Sources */,
 				494E540B1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift in Sources */,
 				D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */,
 				D92A08591D3520D8000F8B66 /* Shop+CoreDataProperties.m in Sources */,
@@ -2768,7 +2830,6 @@
 				D9C89CF61B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m in Sources */,
 				D9436AC11C63A4BB008D1171 /* UIViewController+Markdown.m in Sources */,
 				D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */,
-				49005B781F180DB9004830D9 /* HRPGSilverCountView.swift in Sources */,
 				D9BB455D1E71C8C70002AE2E /* CheckedTableViewcell.swift in Sources */,
 				494E54151F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift in Sources */,
 				D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */,
@@ -2790,6 +2851,7 @@
 				D9ADD34E1943BBB6006202C1 /* Food.m in Sources */,
 				D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */,
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
+				49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */,
 				D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */,
 				D984D58D1E4A2F2D006E84F8 /* SubscriptionOptionView.swift in Sources */,
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
@@ -2824,6 +2886,7 @@
 				D9BB45D41E7849B40002AE2E /* ChallengeTaskListView.swift in Sources */,
 				D9A63A361E1032BD0083ADC4 /* LoginViewModel.swift in Sources */,
 				CF54FEE0D3F7F352ECA56F23 /* HRPGContentResponse.m in Sources */,
+				49DCB7BC1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift in Sources */,
 				D97ED0AE1E6DBB97006C2A26 /* JoinChallengeInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

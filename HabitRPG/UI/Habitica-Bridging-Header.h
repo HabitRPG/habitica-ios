@@ -27,6 +27,8 @@
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "HRPGDeathView.h"
 #import "Amplitude+HRPGHelpers.h"
+#import "HRPGShopOverviewTableViewDataSource.h"
+#import "NSString+StripHTML.h"
 #import "Reward.h"
 #import "HRPGBaseCollectionViewController.h"
 #import "InAppReward+CoreDataClass.h"

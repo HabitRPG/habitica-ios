@@ -8,7 +8,7 @@
 
 #import "HRPGCollectionViewController.h"
 
-@interface HRPGShopViewController : UIViewController <UIAlertViewDelegate>
+@interface HRPGShopViewController : HRPGCollectionViewController <UIAlertViewDelegate>
 
 @property NSString *shopIdentifier;
 

@@ -18,11 +18,7 @@
 
 @interface HRPGShopViewController () <HRPGShopCollectionViewDataSourceDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *shopBackgroundImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *shopForegroundImageView;
-@property (weak, nonatomic) IBOutlet UILabel *shopNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *notesLabel;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic) HRPGShopBannerView *shopBannerView;
 
 @property (nonatomic) HRPGShopCollectionViewDataSource *dataSource;
 @property (nonatomic) HRPGShopViewModel *viewModel;
@@ -52,17 +48,28 @@
     
     [self setupNavBar];
     
+    [self.topHeaderNavigationController setAlternativeHeaderView:self.shopBannerView];
+    [self.topHeaderNavigationController startFollowingScrollView:self.collectionView];
+    self.topHeaderNavigationController.shouldHideTopHeader = NO;
+    
     User *user = [[HRPGManager sharedManager] getUser];
     if (user && user.health && user.health.floatValue <= 0) {
         [[HRPGDeathView new] show];
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    self.topHeaderNavigationController.shouldHideTopHeader = YES;
+    [self.topHeaderNavigationController stopFollowingScrollView];
+    [self.topHeaderNavigationController removeAlternativeHeaderView];
+}
+
 - (void)refresh {
     [[HRPGManager sharedManager] fetchShopInventory:self.shopIdentifier onSuccess:^() {
         [self.viewModel fetchShopInformationForIdentifier:self.shopIdentifier];
         if (self.viewModel.shop) {
-            [self updateShopInformationViews];
+            self.navigationItem.title = self.viewModel.shop.text;
+            self.shopBannerView.shop = self.viewModel.shop;
         }
         self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier];
         [self.collectionView reloadData];
@@ -82,7 +89,8 @@
 }
 
 - (void)setupCollectionView {
-    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    collectionViewLayout.itemSize = CGSizeMake(80, 108);
     collectionViewLayout.sectionInset = UIEdgeInsetsMake(0, 8, 0, 8);
     self.collectionView.collectionViewLayout = collectionViewLayout;
     
@@ -92,35 +100,6 @@
     
     self.collectionView.dataSource = self.dataSource;
     self.collectionView.delegate = self.dataSource;
-}
-
-- (void) updateShopInformationViews {
-    self.shopBackgroundImageView.image = [[UIImage imageNamed:[self shopBgImageNames][self.shopIdentifier]] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
-    self.shopForegroundImageView.image = [UIImage imageNamed:[self shopCharacterImageNames][self.shopIdentifier]];
-    
-    self.navigationItem.title = self.viewModel.shop.text;
-    self.shopNameLabel.text = self.viewModel.shop.text;
-    
-    NSString *notes = [self.viewModel.shop.notes stringByStrippingHTML];
-    self.notesLabel.text = notes;
-}
-
-- (NSDictionary *)shopBgImageNames {
-    return @{
-             MarketKey: @"market_summer_splash_banner_bg",
-             QuestsShopKey: @"quest_shop_summer_splash_banner",
-             SeasonalShopKey: @"seasonal_shop_summer_splash_banner_bg",
-             TimeTravelersShopKey: @"timetravelers_summer_splash_banner_bg"
-             };
-}
-
-- (NSDictionary *)shopCharacterImageNames {
-    return @{
-             MarketKey: @"market_summer_splash_banner_booth",
-             QuestsShopKey: @"",
-             SeasonalShopKey: @"seasonal_shop_summer_splash_banner_booth",
-             TimeTravelersShopKey: @"timetravelers_summer_splash_banner_booth"
-             };
 }
 
 - (void)configureEmptyLabel {
@@ -141,6 +120,11 @@
 - (HRPGShopViewModel *)viewModel {
     if (!_viewModel) _viewModel = [HRPGShopViewModel new];
     return _viewModel;
+}
+
+- (HRPGShopBannerView *)shopBannerView {
+    if (!_shopBannerView) _shopBannerView = [[HRPGShopBannerView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 165)];
+    return _shopBannerView;
 }
 
 @end

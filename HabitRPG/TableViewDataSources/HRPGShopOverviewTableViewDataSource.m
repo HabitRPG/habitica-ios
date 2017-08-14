@@ -42,41 +42,41 @@
     if (shop) {
         title = shop.text;
     } else {
-        title = NSLocalizedString([self shopNames][identifier], nil);
+        title = NSLocalizedString([HRPGShopOverviewTableViewDataSource shopNames][identifier], nil);
     }
     
     return title;
 }
 
 - (UIImage *)bgImageForIdentifier:(NSString *)identifier {
-    return [[UIImage imageNamed:[self shopBgImageNames][identifier]] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
+    return [[UIImage imageNamed:[HRPGShopOverviewTableViewDataSource shopBgImageNames][identifier]] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
 }
 
 - (UIImage *)characterImageForIdentifier:(NSString *)identifier {
-    return [UIImage imageNamed:[self shopCharacterImageNames][identifier]];
+    return [UIImage imageNamed:[HRPGShopOverviewTableViewDataSource shopCharacterImageNames][identifier]];
 }
 
 #pragma mark - temporary asset sources
 
-- (NSDictionary *)shopBgImageNames {
++ (NSDictionary *)shopBgImageNames {
     return @{
              MarketKey: @"market_summer_splash_banner_bg",
-             QuestsShopKey: @"quest_shop_summer_splash_banner",
+             QuestsShopKey: @"summer_coral_background",
              SeasonalShopKey: @"seasonal_shop_summer_splash_banner_bg",
              TimeTravelersShopKey: @"timetravelers_summer_splash_banner_bg"
              };
 }
 
-- (NSDictionary *)shopCharacterImageNames {
++ (NSDictionary *)shopCharacterImageNames {
     return @{
              MarketKey: @"market_summer_splash_banner_booth",
-             QuestsShopKey: @"",
+             QuestsShopKey: @"summer_ian_scene",
              SeasonalShopKey: @"seasonal_shop_summer_splash_banner_booth",
              TimeTravelersShopKey: @"timetravelers_summer_splash_banner_booth"
              };
 }
 
-- (NSDictionary *)shopNames {
++ (NSDictionary *)shopNames {
     return @{
              MarketKey: @"Market",
              QuestsShopKey: @"Quests",
