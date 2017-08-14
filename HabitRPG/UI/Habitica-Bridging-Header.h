@@ -22,3 +22,4 @@
 #import "HRPGTypingLabel.h"
 #import "HRPGHoledView.h"
 #import "HRPGHintView.h"
+#import <Google/Analytics.h>

@@ -23,19 +23,11 @@
         [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
         [self performSegueWithIdentifier:@"IntroSegue" sender:self];
     } else {
-        HRPGAppDelegate *appDelegate =
-            (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
+        HRPGAppDelegate *appDelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
         HRPGManager *manager = appDelegate.sharedManager;
 
         if ([manager getUser].username.length == 0) {
-            self.activityIndicator.alpha = 1;
-            [self.activityIndicator startAnimating];
-            __weak HRPGLoadingViewController *weakSelf = self;
-            [manager fetchUser:^() {
-                [weakSelf segueForLoggedInUser];
-            } onError:^() {
-                    [weakSelf segueForLoggedInUser];
-                }];
+            [self segueForLoggedInUser];
         } else {
             [self segueForLoggedInUser];
         }

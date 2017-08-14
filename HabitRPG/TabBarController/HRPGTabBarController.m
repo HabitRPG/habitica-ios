@@ -10,6 +10,7 @@
 #import "HRPGAppDelegate.h"
 #import "NIKFontAwesomeIconFactory.h"
 #import "UIColor+Habitica.h"
+#import "TutorialSteps.h"
 #if DEBUG
 #import "FLEXManager.h"
 #endif
@@ -18,6 +19,7 @@
 
 @property(strong, nonatomic) NSFetchedResultsController *taskFetchedResultsController;
 @property(strong, nonatomic) NSFetchedResultsController *userFetchedResultsController;
+@property(strong, nonatomic) NSFetchedResultsController *tutorialFetchedResultsController;
 
 @end
 
@@ -25,9 +27,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [[UIApplication sharedApplication] setStatusBarHidden:NO
-                                            withAnimation:UIStatusBarAnimationFade];
+    
+    NSOperatingSystemVersion ios10 = (NSOperatingSystemVersion){10, 0, 0};
+    if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios10]) {
+        [UITabBarItem appearance].badgeColor = [UIColor purple400];
+    }
 
     UIImage *calendarImage = [UIImage imageNamed:@"tabbar_dailies"];
 
@@ -158,6 +162,40 @@
     return _userFetchedResultsController;
 }
 
+- (NSFetchedResultsController *)tutorialFetchedResultsController {
+    if (_tutorialFetchedResultsController != nil) {
+        return _tutorialFetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"TutorialSteps"
+                                              inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"wasShown == false && identifier IN %@", @[@"habiits", @"dailies", @"todos", @"rewards"]];
+    [fetchRequest setPredicate:predicate];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"identifier" ascending:YES];
+    [fetchRequest setSortDescriptors:@[ sortDescriptor ]];
+    
+    NSFetchedResultsController *aFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:self.managedObjectContext
+                                          sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    aFetchedResultsController.delegate = self;
+    self.tutorialFetchedResultsController = aFetchedResultsController;
+    
+    NSError *error = nil;
+    if (![self.tutorialFetchedResultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return _userFetchedResultsController;
+}
+
 - (HRPGManager *)sharedManager {
     if (_sharedManager == nil) {
         HRPGAppDelegate *appdelegate =
@@ -191,10 +229,14 @@
 #endif
 
 - (void)updateTaskBadgeCount {
+    UITabBarItem *habitItem = self.tabBar.items[0];
     UITabBarItem *dailyItem = self.tabBar.items[1];
     UITabBarItem *todoItem = self.tabBar.items[2];
+    UITabBarItem *rewardItem = self.tabBar.items[3];
+    NSInteger habitBadgeCount = 0;
     NSInteger dailyBadgeCount = 0;
     NSInteger todoBadgeCount = 0;
+    NSInteger rewardBadgeCount = 0;
     NSInteger appBadgeCount = 0;
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *today = [NSDate date];
@@ -217,6 +259,23 @@
             }
         }
     }
+    for (TutorialSteps *step in self.tutorialFetchedResultsController.fetchedObjects) {
+        if ([step.identifier isEqualToString:@"habits"]) {
+            habitBadgeCount += 1;
+        } else if ([step.identifier isEqualToString:@"dailies"]) {
+            dailyBadgeCount += 1;
+        } else if ([step.identifier isEqualToString:@"todos"]) {
+            todoBadgeCount += 1;
+        } else if ([step.identifier isEqualToString:@"rewards"]) {
+            rewardBadgeCount += 1;
+        }
+    }
+    if (habitBadgeCount > 0) {
+        habitItem.badgeValue = [NSString stringWithFormat:@"%ld", (long)habitBadgeCount];
+    } else {
+        habitItem.badgeValue = nil;
+    }
+    
     if (dailyBadgeCount > 0) {
         dailyItem.badgeValue = [NSString stringWithFormat:@"%ld", (long)dailyBadgeCount];
     } else {
@@ -227,6 +286,12 @@
         todoItem.badgeValue = [NSString stringWithFormat:@"%ld", (long)todoBadgeCount];
     } else {
         todoItem.badgeValue = nil;
+    }
+    
+    if (rewardBadgeCount > 0) {
+        rewardItem.badgeValue = [NSString stringWithFormat:@"%ld", (long)rewardBadgeCount];
+    } else {
+        rewardItem.badgeValue = nil;
     }
 
     if (self.sharedManager.useAppBadge) {
@@ -267,10 +332,10 @@
         atIndexPath:(NSIndexPath *)indexPath
       forChangeType:(NSFetchedResultsChangeType)type
        newIndexPath:(NSIndexPath *)newIndexPath {
-    if (controller == self.taskFetchedResultsController) {
-        [self updateTaskBadgeCount];
-    } else {
+    if (controller == self.userFetchedResultsController) {
         [self updateUserBadges];
+    } else {
+        [self updateTaskBadgeCount];
     }
 }
 

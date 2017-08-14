@@ -151,7 +151,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
             guard let weakSelf = self else {
                 return
             }
-            if weakSelf.isRootViewController {
+            if weakSelf.isRootViewController || segueName == "SetupSegue" {
                 weakSelf.performSegue(withIdentifier: segueName, sender: self)
             } else {
                 weakSelf.dismiss(animated: true, completion:nil)

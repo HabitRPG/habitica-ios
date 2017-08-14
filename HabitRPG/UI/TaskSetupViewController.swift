@@ -9,7 +9,7 @@
 import UIKit
 
 enum SetupTaskCategory {
-    case work, exercise, health, school, teams, chores, creativity
+    case work, exercise, health, school, selfcare, chores, creativity
 
     //siwftlint:disable:next identifier_name
     func createSampleHabit(_ text: String, up: Bool, down: Bool) -> [String: Any] {
@@ -21,11 +21,12 @@ enum SetupTaskCategory {
         ]
     }
     
-    func createSampleDaily(_ text: String) -> [String: Any] {
+    func createSampleDaily(_ text: String, notes: String) -> [String: Any] {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return [
             "text": text,
+            "notes": notes,
             "startDate": dateFormatter.string(from: Date()),
             "monday": true,
             "tuesday": true,
@@ -38,10 +39,11 @@ enum SetupTaskCategory {
         ]
     }
     
-    func createSampleToDo(_ text: String) -> [String: Any] {
+    func createSampleToDo(_ text: String, notes: String) -> [String: Any] {
         return [
             "text": text,
-            "type": "todo"
+            "type": "todo",
+            "notes": notes
         ]
     }
     
@@ -50,44 +52,44 @@ enum SetupTaskCategory {
         case .work:
             return [
                 createSampleHabit(NSLocalizedString("Process email", comment: ""), up: true, down: false),
-                createSampleDaily(NSLocalizedString("Most important task", comment: "")),
-                createSampleToDo(NSLocalizedString("Work project", comment: ""))
+                createSampleDaily(NSLocalizedString("Worked on today’s most important task", comment: ""), notes: NSLocalizedString("Tap to specify your most important task", comment: "")),
+                createSampleToDo(NSLocalizedString("Complete work project", comment: ""), notes: NSLocalizedString("Tap to specify the name of your current project + set a due date!", comment: ""))
             ]
         case .exercise:
             return [
                 createSampleHabit(NSLocalizedString("10 min cardio", comment: ""), up: true, down: false),
-                createSampleDaily(NSLocalizedString("Stretching", comment: "")),
-                createSampleToDo(NSLocalizedString("Set up workout schedule", comment: ""))
+                createSampleDaily(NSLocalizedString("Daily workout routine", comment: ""), notes: NSLocalizedString("Tap to choose your schedule and specify exercises!", comment: "")),
+                createSampleToDo(NSLocalizedString("Set up workout schedule", comment: ""), notes: NSLocalizedString("Tap to add a checklist!", comment: ""))
             ]
         case .health:
             return [
                 createSampleHabit(NSLocalizedString("Eat health/junk food", comment: ""), up: true, down: true),
-                createSampleDaily(NSLocalizedString("Floss", comment: "")),
-                createSampleToDo(NSLocalizedString("Schedule check-up", comment: ""))
+                createSampleDaily(NSLocalizedString("Floss", comment: ""), notes: NSLocalizedString("Tap to make any changes!", comment: "")),
+                createSampleToDo(NSLocalizedString("Schedule check-up", comment: ""), notes: NSLocalizedString("Tap to add checklists!", comment: ""))
             ]
         case .school:
             return [
                 createSampleHabit(NSLocalizedString("Study/Procrastinate", comment: ""), up: true, down: true),
-                createSampleDaily(NSLocalizedString("Do homework", comment: "")),
-                createSampleToDo(NSLocalizedString("Finish assignment for class", comment: ""))
+                createSampleDaily(NSLocalizedString("Do homework", comment: ""), notes: NSLocalizedString("Tap to specify your most important task", comment: "")),
+                createSampleToDo(NSLocalizedString("Finish assignment for class", comment: ""), notes: NSLocalizedString("Tap to specify your most important task", comment: ""))
             ]
-        case .teams:
+        case .selfcare:
             return [
-                createSampleHabit(NSLocalizedString("Check in with team", comment: ""), up: true, down: false),
-                createSampleDaily(NSLocalizedString("Update team on status", comment: "")),
-                createSampleToDo(NSLocalizedString("Complete team project", comment: ""))
+                createSampleHabit(NSLocalizedString("Take a short break", comment: ""), up: true, down: false),
+                createSampleDaily(NSLocalizedString("5 minutes of quiet breathing", comment: ""), notes: NSLocalizedString("Tap to choose your schedule!", comment: "")),
+                createSampleToDo(NSLocalizedString("Engage in a fun activity", comment: ""), notes: NSLocalizedString("Tap to specify what you plan to do!", comment: ""))
             ]
         case .chores:
             return [
                 createSampleHabit(NSLocalizedString("10 minutes cleaning", comment: ""), up: true, down: false),
-                createSampleDaily(NSLocalizedString("Wash dishes", comment: "")),
-                createSampleToDo(NSLocalizedString("Organize closet", comment: ""))
+                createSampleDaily(NSLocalizedString("Wash dishes", comment: ""), notes: NSLocalizedString("Tap to choose your schedule!", comment: "")),
+                createSampleToDo(NSLocalizedString("Organize clutter", comment: ""), notes: NSLocalizedString("Tap to specify the cluttered area!", comment: ""))
             ]
         case .creativity:
             return [
                 createSampleHabit(NSLocalizedString("Study a master of the craft", comment: ""), up: true, down: false),
-                createSampleDaily(NSLocalizedString("Work on creative project", comment: "")),
-                createSampleToDo(NSLocalizedString("Finish creative project", comment: ""))
+                createSampleDaily(NSLocalizedString("Work on creative project", comment: ""), notes: NSLocalizedString("Tap to specify the name of your current project + set the schedule!", comment: "")),
+                createSampleToDo(NSLocalizedString("Finish creative project", comment: ""), notes: NSLocalizedString("Tap to specify the name of your project", comment: ""))
             ]
         }
     }
@@ -166,7 +168,7 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
                 category = .school
                 break
             case teamCategoryButton:
-                category = .teams
+                category = .selfcare
                 break
             case choresCategoryButtton:
                 category = .chores
@@ -223,7 +225,7 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
         case schoolCategoryButton:
             return selectedCategories.contains(.school)
         case teamCategoryButton:
-            return selectedCategories.contains(.teams)
+            return selectedCategories.contains(.selfcare)
         case choresCategoryButtton:
             return selectedCategories.contains(.chores)
         case creativityCategoryButton:

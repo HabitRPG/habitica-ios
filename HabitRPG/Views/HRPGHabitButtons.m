@@ -60,7 +60,7 @@
         self.label.contentMode = UIViewContentModeCenter;
         self.backgroundColor = [UIColor gray700];
         self.roundedView.layer.borderWidth = 1;
-        self.roundedView.layer.borderColor = [UIColor gray300].CGColor;
+        self.roundedView.layer.borderColor = [UIColor gray400].CGColor;
     }
 }
 

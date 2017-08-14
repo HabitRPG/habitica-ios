@@ -103,12 +103,14 @@ NSString *currentUser;
             NSMigratePersistentStoresAutomaticallyOption : @YES,
             NSInferMappingModelAutomaticallyOption : @YES
         };
+        NSPersistentStore *persistentStore =
+            [managedObjectStore addSQLitePersistentStoreAtPath:storePath
+                                        fromSeedDatabaseAtPath:nil
+                                             withConfiguration:nil
+                                                       options:options
+                                                         error:&error];
 
-        NSAssert([managedObjectStore addSQLitePersistentStoreAtPath:storePath
-                                             fromSeedDatabaseAtPath:nil
-                                                  withConfiguration:nil
-                                                            options:options
-                                                              error:&error], @"Failed to add persistent store with error: %@", error);
+        NSAssert(persistentStore, @"Failed to add persistent store with error: %@", error);
 
         // Create the managed object contexts
         [managedObjectStore createManagedObjectContexts];

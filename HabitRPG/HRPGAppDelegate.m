@@ -31,6 +31,7 @@
 @interface HRPGAppDelegate ()
 
 @property NSString *notifiedTaskID;
+@property HabiticaAppDelegate *swiftAppDelegate;
 
 @end
 
@@ -38,18 +39,11 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Crash reports
-    [Fabric with:@[ CrashlyticsKit ]];
-
-    // Google Analytics
-    NSError *configureError;
-    [[GGLContext sharedInstance] configureWithError:&configureError];
-    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
-    [[GAI sharedInstance] setTrackUncaughtExceptions:YES];
-
-    HabiticaKeys *keys = [[HabiticaKeys alloc] init];
+    self.swiftAppDelegate = [[HabiticaAppDelegate alloc] init];
     
-    [[Amplitude instance] initializeApiKey:keys.amplitudeApiKey];
+    [self.swiftAppDelegate setupLogging];
+    [self.swiftAppDelegate setupAnalytics];
+    [self.swiftAppDelegate setupPopups];
 
     // Notifications
     CRToastInteractionResponder *blankResponder = [CRToastInteractionResponder
@@ -75,30 +69,7 @@
 
     [self configureNotifications:application];
 
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"wasLaunchedBefore"]) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"wasLaunchedBefore"];
-
-        NSDate *oldDate = [NSDate date];
-        unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        NSDateComponents *comps = [calendar components:unitFlags fromDate:oldDate];
-        comps.hour = 19;
-        comps.minute = 00;
-        NSDate *newDate = [calendar dateFromComponents:comps];
-
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"dailyReminderActive"];
-        [[NSUserDefaults standardUserDefaults] setValue:newDate forKey:@"dailyReminderTime"];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"appBadgeActive"];
-        [[UIApplication sharedApplication] cancelAllLocalNotifications];
-        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-        localNotification.fireDate = newDate;
-        localNotification.repeatInterval = NSCalendarUnitDay;
-        localNotification.alertBody =
-            NSLocalizedString(@"Remember to check off your Dailies!", nil);
-        localNotification.soundName = UILocalNotificationDefaultSoundName;
-        localNotification.timeZone = [NSTimeZone defaultTimeZone];
-        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-    }
+    [self.swiftAppDelegate handleInitialLaunch];
     [self.sharedManager changeUseAppBadge:[[NSUserDefaults standardUserDefaults] boolForKey:@"appBadgeActive"]];
 
     UILocalNotification *notification =

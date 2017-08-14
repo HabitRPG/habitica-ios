@@ -84,12 +84,12 @@ class SetupCustomizationRepository {
     
     private static func getSkins() -> [SetupCustomization] {
         return [
+            SetupCustomization.createSkin(key: "915533", color: UIColor("#915533") ),
             SetupCustomization.createSkin(key: "ddc994", color: UIColor("#ddc994") ),
             SetupCustomization.createSkin(key: "f5a76e", color: UIColor("#f5a76e") ),
             SetupCustomization.createSkin(key: "ea8349", color: UIColor("#ea8349") ),
             SetupCustomization.createSkin(key: "c06534", color: UIColor("#c06534") ),
             SetupCustomization.createSkin(key: "98461a", color: UIColor("#98461a") ),
-            SetupCustomization.createSkin(key: "915533", color: UIColor("#915533") ),
             SetupCustomization.createSkin(key: "c3e1dc", color: UIColor("#c3e1dc") ),
             SetupCustomization.createSkin(key: "6bd049", color: UIColor("#6bd049") )
         ]

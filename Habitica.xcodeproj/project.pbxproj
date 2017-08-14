@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E421F3DD2120094A3E3 /* TutorialStepView.swift */; };
 		29255E451F3DD3ED0094A3E3 /* TutorialStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29255E441F3DD3ED0094A3E3 /* TutorialStepView.xib */; };
+		29255E471F3E14920094A3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E461F3E14920094A3E3 /* AppDelegate.swift */; };
+		29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E481F3E1B0F0094A3E3 /* ToastView.swift */; };
+		29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E4A1F3E236C0094A3E3 /* ToastManager.swift */; };
+		29255E4D1F3E25910094A3E3 /* CGRect-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */; };
 		293282141F389CC000D42961 /* SetupCustomizationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282131F389CC000D42961 /* SetupCustomizationItemView.swift */; };
 		293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */; };
 		293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282171F39E1A400D42961 /* WelcomeViewController.swift */; };
@@ -347,6 +351,10 @@
 		281AC256BB298E2B402BE5DF /* Pods-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		29255E421F3DD2120094A3E3 /* TutorialStepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialStepView.swift; sourceTree = "<group>"; };
 		29255E441F3DD3ED0094A3E3 /* TutorialStepView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialStepView.xib; sourceTree = "<group>"; };
+		29255E461F3E14920094A3E3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		29255E481F3E1B0F0094A3E3 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		29255E4A1F3E236C0094A3E3 /* ToastManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
+		29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect-Extensions.swift"; sourceTree = "<group>"; };
 		293282131F389CC000D42961 /* SetupCustomizationItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationItemView.swift; sourceTree = "<group>"; };
 		293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupCustomizationItemView.xib; sourceTree = "<group>"; };
 		293282171F39E1A400D42961 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -1175,6 +1183,7 @@
 				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
 				D9BB45581E71AFAF0002AE2E /* Down-Extensions.swift */,
 				29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */,
+				29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1536,6 +1545,8 @@
 				D95CBD471BBC0EDA002F4498 /* UIView+Pulse.m */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
+				29255E481F3E1B0F0094A3E3 /* ToastView.swift */,
+				29255E4A1F3E236C0094A3E3 /* ToastManager.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1563,35 +1574,35 @@
 		D9C2570D1B9B4BFB00839F48 /* TableviewCells */ = {
 			isa = PBXGroup;
 			children = (
-				D9BE05801DA6ADDB0074D3B7 /* HRPGGemPurchaseView.h */,
-				D9BE05811DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m */,
-				D9BE05831DA6ADE70074D3B7 /* GemPurchaseView.xib */,
-				D9C0E51B1C6515AD0062C89A /* Social */,
-				D92C60FA1BD3FAC1005F68CC /* HRPGCopyTableViewCell.h */,
-				D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */,
-				D9BB455A1E71C52F0002AE2E /* TaskTableViewCell.swift */,
-				D9BB45621E71CE910002AE2E /* HabitTableViewCell.swift */,
-				D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */,
+				D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */,
 				D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */,
 				D9BB45601E71CD850002AE2E /* DailyTableViewCell.swift */,
 				D9BB45C91E76DF260002AE2E /* DailyTableViewCell.xib */,
-				D9BB45CB1E76E0FC0002AE2E /* ToDoTableViewCell.swift */,
-				D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */,
+				D9BE05831DA6ADE70074D3B7 /* GemPurchaseView.xib */,
+				D9BB45621E71CE910002AE2E /* HabitTableViewCell.swift */,
+				D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */,
+				D92C60FA1BD3FAC1005F68CC /* HRPGCopyTableViewCell.h */,
+				D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */,
+				D9BE05801DA6ADDB0074D3B7 /* HRPGGemPurchaseView.h */,
+				D9BE05811DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m */,
 				D9A1A27C1BA593D900903567 /* HRPGRewardTableViewCell.h */,
 				D9A1A27D1BA593D900903567 /* HRPGRewardTableViewCell.m */,
 				D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */,
 				D9E46B0B1DAC08BE00E390D7 /* HRPGSpellTableViewCell.h */,
 				D9E46B0C1DAC08BE00E390D7 /* HRPGSpellTableViewCell.m */,
-				D984D58C1E4A2F2D006E84F8 /* SubscriptionOptionView.swift */,
-				D984D58E1E4A2F41006E84F8 /* SubscriptionOptionView.xib */,
-				D9CE90421E4CDC9100702578 /* SubscriptionDetailView.xib */,
+				D9C0E51B1C6515AD0062C89A /* Social */,
 				D9CE90481E4DCF7D00702578 /* SubscriptionDetailView.swift */,
+				D9CE90421E4CDC9100702578 /* SubscriptionDetailView.xib */,
 				D9F1E3E71E55DCEB0034D0F4 /* SubscriptionInformationCell.swift */,
 				D9F1E3E91E55DCFB0034D0F4 /* SubscriptionInformationCell.xib */,
-				D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */,
+				D984D58C1E4A2F2D006E84F8 /* SubscriptionOptionView.swift */,
+				D984D58E1E4A2F41006E84F8 /* SubscriptionOptionView.xib */,
+				D9BB455A1E71C52F0002AE2E /* TaskTableViewCell.swift */,
+				D9BB45CB1E76E0FC0002AE2E /* ToDoTableViewCell.swift */,
+				D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */,
+				29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */,
 				2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */,
 				2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */,
-				29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */,
 			);
 			path = TableviewCells;
 			sourceTree = "<group>";
@@ -1899,6 +1910,7 @@
 				D987393919687E46002A2426 /* Utilities */,
 				D9EB4E9D18CB4A9400BB2094 /* HRPGAppDelegate.h */,
 				D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */,
+				29255E461F3E14920094A3E3 /* AppDelegate.swift */,
 				D922F0AF1925314500B197EA /* HRPGNetworkIndicatorController.h */,
 				D922F0B01925314500B197EA /* HRPGNetworkIndicatorController.m */,
 				D9B5C0AC18CCC87A00C8D1B7 /* HRPGManager.h */,
@@ -2469,8 +2481,10 @@
 				297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */,
 				D95D03941C74AA5500D6BFB3 /* Preferences.m in Sources */,
 				D9BB45DD1E7AE5240002AE2E /* ConfigRepository.swift in Sources */,
+				29255E471F3E14920094A3E3 /* AppDelegate.swift in Sources */,
 				D979AD131AF3CF6C00D59FAE /* Customization.m in Sources */,
 				D9FC1A861BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m in Sources */,
+				29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */,
 				D9D4A3AE1BBED941008AD861 /* HRPGTaskSetupTableViewController.m in Sources */,
 				D94AADB4192A30F900546C8E /* Spell.m in Sources */,
 				D9ADD35D19447057006202C1 /* HRPGBall.m in Sources */,
@@ -2489,6 +2503,7 @@
 				D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */,
 				D9D593581D004CC900D6C388 /* HRPGInboxTableViewController.m in Sources */,
 				D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */,
+				29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */,
 				D92C60F81BD3F28A005F68CC /* HRPGAccountDetailViewController.m in Sources */,
 				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
 				D96C853F1DCB631B003E3616 /* HRPGBaseNotificationView.m in Sources */,
@@ -2582,6 +2597,7 @@
 				2932821A1F39E28000D42961 /* TypingTextViewController.swift in Sources */,
 				D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */,
 				D95D03961C74AA5500D6BFB3 /* Outfit.m in Sources */,
+				29255E4D1F3E25910094A3E3 /* CGRect-Extensions.swift in Sources */,
 				D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */,
 				D98C62BC1DACF933005661CC /* HRPGSpellUserTableViewController.m in Sources */,
 				D995D59A1D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m in Sources */,

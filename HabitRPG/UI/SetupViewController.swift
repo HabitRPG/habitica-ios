@@ -43,6 +43,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         avatarSetupView.alpha = 0
         taskSetupView.isHidden = true
         taskSetupView.alpha = 0
+        previousButtonImageView.tintColor = UIColor.purple100()
         
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "isInSetup")
@@ -138,18 +139,25 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     
     func completeSetup() {
         UserDefaults.standard.set(false, forKey: "isInSetup")
+        UserDefaults.standard.set(0, forKey: "currentSetupStep")
         if let viewController = taskSetupViewController {
             var tasks = [[String: Any]]()
             for taskCategory in viewController.selectedCategories {
                 tasks.append(contentsOf: taskCategory.getTasks())
             }
+            tasks.append([
+                    "text": NSLocalizedString("Reward yourself", comment: ""),
+                    "notes": NSLocalizedString("Watch TV, play a game, eat a treat, it’s up to you!", comment: ""),
+                    "value": 20,
+                    "type": "reward"
+                ])
             if tasks.count == 0 {
                 showMainView()
                 return
             }
             if let delegate = UIApplication.shared.delegate as? HRPGAppDelegate {
                 let sharedManager = delegate.sharedManager
-                MRProgressOverlayView.showOverlayAdded(to: self.view, title: NSLocalizedString("Finishing things up", comment: ""), mode: .indeterminate, animated: true)
+                MRProgressOverlayView.showOverlayAdded(to: self.view, title: NSLocalizedString("Teleporting to Habitica", comment: ""), mode: .indeterminate, animated: true)
                 sharedManager?.createTasks(tasks, onSuccess: {[weak self] in
                     self?.showMainView()
                 }, onError: {[weak self] in

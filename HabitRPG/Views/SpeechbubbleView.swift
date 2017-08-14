@@ -38,6 +38,12 @@ class SpeechbubbleView: UIView {
         }
     }
     
+    @IBInspectable var hasAdditionalText: Bool = false {
+        didSet {
+            caretView.isHidden = !hasAdditionalText
+        }
+    }
+    
     @IBOutlet weak var namePlateView: UILabel!
     @IBOutlet weak var textView: HRPGTypingLabel!
     @IBOutlet weak var namePlateBackgroundView: UIImageView!

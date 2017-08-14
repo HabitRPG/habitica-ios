@@ -111,6 +111,7 @@ class TutorialStepView: UIView {
     
     func setTexts(list: [String]) {
         if list.count > 0 {
+            speechbubbleView.caretView.isHidden = false
             textList = list
             setText(textList.removeFirst())
             speechbubbleView.animateTextView()
