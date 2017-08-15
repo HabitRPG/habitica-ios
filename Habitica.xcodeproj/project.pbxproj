@@ -290,7 +290,6 @@
 		D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */; };
 		D9D21731198D509100023367 /* HRPGDeathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D21730198D509000023367 /* HRPGDeathView.m */; };
 		D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D44C101B0A0C73000732B4 /* HRPGGGuidelinesViewController.m */; };
-		D9D4A3AE1BBED941008AD861 /* HRPGTaskSetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D4A3AD1BBED941008AD861 /* HRPGTaskSetupTableViewController.m */; };
 		D9D593581D004CC900D6C388 /* HRPGInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D593571D004CC900D6C388 /* HRPGInboxTableViewController.m */; };
 		D9D5935D1D00523800D6C388 /* InboxMessage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D5935A1D00523800D6C388 /* InboxMessage+CoreDataProperties.m */; };
 		D9D5935E1D00523800D6C388 /* InboxMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D5935C1D00523800D6C388 /* InboxMessage.m */; };
@@ -317,7 +316,6 @@
 		D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4E9A18CB4A9400BB2094 /* main.m */; };
 		D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */; };
 		D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */; };
-		D9F16E361BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F16E351BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m */; };
 		D9F16E391BBC536500CA3E02 /* HRPGCustomizationSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F16E381BBC536500CA3E02 /* HRPGCustomizationSelectionView.m */; };
 		D9F1E3E81E55DCEC0034D0F4 /* SubscriptionInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3E71E55DCEB0034D0F4 /* SubscriptionInformationCell.swift */; };
 		D9F1E3EA1E55DCFB0034D0F4 /* SubscriptionInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F1E3E91E55DCFB0034D0F4 /* SubscriptionInformationCell.xib */; };
@@ -888,8 +886,6 @@
 		D9D21730198D509000023367 /* HRPGDeathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGDeathView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9D44C0F1B0A0C73000732B4 /* HRPGGGuidelinesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGGuidelinesViewController.h; sourceTree = "<group>"; };
 		D9D44C101B0A0C73000732B4 /* HRPGGGuidelinesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGGuidelinesViewController.m; sourceTree = "<group>"; };
-		D9D4A3AC1BBED941008AD861 /* HRPGTaskSetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGTaskSetupTableViewController.h; path = Setup/HRPGTaskSetupTableViewController.h; sourceTree = "<group>"; };
-		D9D4A3AD1BBED941008AD861 /* HRPGTaskSetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGTaskSetupTableViewController.m; path = Setup/HRPGTaskSetupTableViewController.m; sourceTree = "<group>"; };
 		D9D593541D0047CC00D6C388 /* HabitRPG 29.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 29.xcdatamodel"; sourceTree = "<group>"; };
 		D9D593561D004CC900D6C388 /* HRPGInboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGInboxTableViewController.h; sourceTree = "<group>"; };
 		D9D593571D004CC900D6C388 /* HRPGInboxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGInboxTableViewController.m; sourceTree = "<group>"; };
@@ -943,8 +939,6 @@
 		D9EB4E9E18CB4A9400BB2094 /* HRPGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D9EB4EB318CB4A9400BB2094 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		D9F16E341BBC502C00CA3E02 /* HRPGAvatarSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGAvatarSetupViewController.h; path = Setup/HRPGAvatarSetupViewController.h; sourceTree = "<group>"; };
-		D9F16E351BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGAvatarSetupViewController.m; path = Setup/HRPGAvatarSetupViewController.m; sourceTree = "<group>"; };
 		D9F16E371BBC536500CA3E02 /* HRPGCustomizationSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCustomizationSelectionView.h; sourceTree = "<group>"; };
 		D9F16E381BBC536500CA3E02 /* HRPGCustomizationSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCustomizationSelectionView.m; sourceTree = "<group>"; };
 		D9F1E3E71E55DCEB0034D0F4 /* SubscriptionInformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionInformationCell.swift; sourceTree = "<group>"; };
@@ -1087,7 +1081,6 @@
 				D9E3654F1930D45500C056F1 /* Modals */,
 				D9E3654E1930D44300C056F1 /* Spells */,
 				D9C257231B9DC23700839F48 /* FAQ */,
-				D9F16E331BBC500E00CA3E02 /* Setup */,
 				D9E365511930D59D00C056F1 /* Tasks */,
 			);
 			path = TableViewController;
@@ -1960,17 +1953,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D9F16E331BBC500E00CA3E02 /* Setup */ = {
-			isa = PBXGroup;
-			children = (
-				D9F16E341BBC502C00CA3E02 /* HRPGAvatarSetupViewController.h */,
-				D9F16E351BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m */,
-				D9D4A3AC1BBED941008AD861 /* HRPGTaskSetupTableViewController.h */,
-				D9D4A3AD1BBED941008AD861 /* HRPGTaskSetupTableViewController.m */,
-			);
-			name = Setup;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2461,7 +2443,6 @@
 				D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */,
 				29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */,
 				D979AD1A1AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m in Sources */,
-				D9F16E361BBC502C00CA3E02 /* HRPGAvatarSetupViewController.m in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
 				D96BFC511E1930A500266EEF /* Signal-Extensions.swift in Sources */,
 				D9436AC91C64F880008D1171 /* HRPGGuildsOverviewViewController.m in Sources */,
@@ -2485,7 +2466,6 @@
 				D979AD131AF3CF6C00D59FAE /* Customization.m in Sources */,
 				D9FC1A861BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m in Sources */,
 				29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */,
-				D9D4A3AE1BBED941008AD861 /* HRPGTaskSetupTableViewController.m in Sources */,
 				D94AADB4192A30F900546C8E /* Spell.m in Sources */,
 				D9ADD35D19447057006202C1 /* HRPGBall.m in Sources */,
 				D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */,

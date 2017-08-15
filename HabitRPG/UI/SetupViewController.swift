@@ -26,13 +26,22 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var previousButtonTextView: UILabel!
     @IBOutlet weak var previousButtonImageView: UIImageView!
     
+    var sharedManager: HRPGManager?
+    
     var views: [UIView] = []
     var viewControllers: [TypingTextViewController] = []
     var taskSetupViewController: TaskSetupViewController?
     var currentpage = 0
     
+    var createdTags = [SetupTaskCategory:Tag]()
+    var tagsToCreate = [Tag]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let delegate = UIApplication.shared.delegate as? HRPGAppDelegate {
+            self.sharedManager = delegate.sharedManager
+        }
         
         let nextGesture = UITapGestureRecognizer(target: self, action: #selector(scrollToNextPage))
         nextButtonView.addGestureRecognizer(nextGesture)
@@ -140,33 +149,57 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     func completeSetup() {
         UserDefaults.standard.set(false, forKey: "isInSetup")
         UserDefaults.standard.set(0, forKey: "currentSetupStep")
+        MRProgressOverlayView.showOverlayAdded(to: self.view, title: NSLocalizedString("Teleporting to Habitica", comment: ""), mode: .indeterminate, animated: true)
+        if let viewController = taskSetupViewController, let manager = sharedManager {
+            for taskCategory in viewController.selectedCategories {
+                tagsToCreate.append(taskCategory.getTag(managedObjectContext: manager.getManagedObjectContext()))
+            }
+        }
+        createTag {[weak self] in
+            self?.createTasks {
+                self?.showMainView()
+            }
+        }
+    }
+    
+    private func createTag(_ completeFunc: @escaping () -> Void) {
+        if tagsToCreate.count == 0 {
+            completeFunc()
+            return
+        }
+        let taskCategory = tagsToCreate.removeFirst()
+        sharedManager?.createTag(taskCategory, onSuccess: {[weak self] tag in
+            self?.createdTags[.work] = tag
+            self?.createTag(completeFunc)
+        }, onError: {[weak self] in
+            self?.createTag(completeFunc)
+        })
+    }
+    
+    private func createTasks(_ completeFunc: @escaping () -> Void) {
         if let viewController = taskSetupViewController {
             var tasks = [[String: Any]]()
             for taskCategory in viewController.selectedCategories {
-                tasks.append(contentsOf: taskCategory.getTasks())
+                tasks.append(contentsOf: taskCategory.getTasks(tagId: createdTags[taskCategory]?.id))
             }
             tasks.append([
-                    "text": NSLocalizedString("Reward yourself", comment: ""),
-                    "notes": NSLocalizedString("Watch TV, play a game, eat a treat, it’s up to you!", comment: ""),
-                    "value": 20,
-                    "type": "reward"
+                "text": NSLocalizedString("Reward yourself", comment: ""),
+                "notes": NSLocalizedString("Watch TV, play a game, eat a treat, it’s up to you!", comment: ""),
+                "value": 20,
+                "type": "reward"
                 ])
             if tasks.count == 0 {
-                showMainView()
+                completeFunc()
                 return
             }
-            if let delegate = UIApplication.shared.delegate as? HRPGAppDelegate {
-                let sharedManager = delegate.sharedManager
-                MRProgressOverlayView.showOverlayAdded(to: self.view, title: NSLocalizedString("Teleporting to Habitica", comment: ""), mode: .indeterminate, animated: true)
-                sharedManager?.createTasks(tasks, onSuccess: {[weak self] in
-                    self?.showMainView()
-                }, onError: {[weak self] in
-                    self?.showMainView()
-                })
-                return
-            }
+            self.sharedManager?.createTasks(tasks, onSuccess: {
+                completeFunc()
+            }, onError: {
+                completeFunc()
+            })
+        } else {
+            completeFunc()
         }
-        showMainView()
     }
     
     func showMainView() {

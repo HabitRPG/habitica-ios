@@ -3281,7 +3281,7 @@ NSString *currentUser;
 
 
 - (void)createTag:(Tag *)tag
-           onSuccess:(void (^)())successBlock
+           onSuccess:(void (^)(Tag *tag))successBlock
              onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     
@@ -3291,8 +3291,9 @@ NSString *currentUser;
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             NSError *executeError = nil;
                                             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                            Tag *tag = (Tag *)[mappingResult dictionary][@"data"];
                                             if (successBlock) {
-                                                successBlock();
+                                                successBlock(tag);
                                             }
                                             [self.networkIndicatorController endNetworking];
                                             return;

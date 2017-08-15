@@ -12,7 +12,6 @@ class WelcomeViewController: UIViewController, TypingTextViewController {
     
     @IBOutlet weak var speechbubbleView: SpeechbubbleView!
     
-    
     func startTyping() {
         speechbubbleView.animateTextView()
     }

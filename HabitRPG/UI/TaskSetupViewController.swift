@@ -12,19 +12,25 @@ enum SetupTaskCategory {
     case work, exercise, health, school, selfcare, chores, creativity
 
     //siwftlint:disable:next identifier_name
-    func createSampleHabit(_ text: String, up: Bool, down: Bool) -> [String: Any] {
-        return [
+    func createSampleHabit(_ text: String, tagId: String?, up: Bool, down: Bool) -> [String: Any] {
+        var task = [
             "text": text,
             "up": up,
             "down": down,
             "type": "habit"
-        ]
+        ] as [String : Any]
+        if let id = tagId {
+            task["tags"] = [
+                id: true
+            ]
+        }
+        return task
     }
     
-    func createSampleDaily(_ text: String, notes: String) -> [String: Any] {
+    func createSampleDaily(_ text: String, tagId: String?, notes: String) -> [String: Any] {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return [
+        var task = [
             "text": text,
             "notes": notes,
             "startDate": dateFormatter.string(from: Date()),
@@ -35,63 +41,99 @@ enum SetupTaskCategory {
             "friday": true,
             "saturday": true,
             "sunday": true,
-            "type": "daily"
-        ]
+            "type": "daily",
+        ] as [String : Any]
+        if let id = tagId {
+            task["tags"] = [
+                id: true
+            ]
+        }
+        return task
     }
     
-    func createSampleToDo(_ text: String, notes: String) -> [String: Any] {
-        return [
+    func createSampleToDo(_ text: String, tagId: String?, notes: String) -> [String: Any] {
+        var task = [
             "text": text,
             "type": "todo",
-            "notes": notes
-        ]
+            "notes": notes,
+        ] as [String : Any]
+        if let id = tagId {
+            task["tags"] = [
+                id: true
+            ]
+        }
+        return task
     }
     
-    func getTasks() -> [[String:Any]] {
+    func getTasks(tagId: String?) -> [[String:Any]] {
         switch self {
         case .work:
             return [
-                createSampleHabit(NSLocalizedString("Process email", comment: ""), up: true, down: false),
-                createSampleDaily(NSLocalizedString("Worked on today’s most important task", comment: ""), notes: NSLocalizedString("Tap to specify your most important task", comment: "")),
-                createSampleToDo(NSLocalizedString("Complete work project", comment: ""), notes: NSLocalizedString("Tap to specify the name of your current project + set a due date!", comment: ""))
+                createSampleHabit(NSLocalizedString("Process email", comment: ""), tagId: tagId, up: true, down: false),
+                createSampleDaily(NSLocalizedString("Worked on today’s most important task", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: "")),
+                createSampleToDo(NSLocalizedString("Complete work project", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify the name of your current project + set a due date!", comment: ""))
             ]
         case .exercise:
             return [
-                createSampleHabit(NSLocalizedString("10 min cardio", comment: ""), up: true, down: false),
-                createSampleDaily(NSLocalizedString("Daily workout routine", comment: ""), notes: NSLocalizedString("Tap to choose your schedule and specify exercises!", comment: "")),
-                createSampleToDo(NSLocalizedString("Set up workout schedule", comment: ""), notes: NSLocalizedString("Tap to add a checklist!", comment: ""))
+                createSampleHabit(NSLocalizedString("10 minutes cardio", comment: ""), tagId: tagId, up: true, down: false),
+                createSampleDaily(NSLocalizedString("Daily workout routine", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule and specify exercises!", comment: "")),
+                createSampleToDo(NSLocalizedString("Set up workout schedule", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to add a checklist!", comment: ""))
             ]
         case .health:
             return [
-                createSampleHabit(NSLocalizedString("Eat health/junk food", comment: ""), up: true, down: true),
-                createSampleDaily(NSLocalizedString("Floss", comment: ""), notes: NSLocalizedString("Tap to make any changes!", comment: "")),
-                createSampleToDo(NSLocalizedString("Schedule check-up", comment: ""), notes: NSLocalizedString("Tap to add checklists!", comment: ""))
+                createSampleHabit(NSLocalizedString("Eat health/junk food", comment: ""), tagId: tagId, up: true, down: true),
+                createSampleDaily(NSLocalizedString("Floss", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to make any changes!", comment: "")),
+                createSampleToDo(NSLocalizedString("Brainstorm a healthy change", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to add checklists!", comment: ""))
             ]
         case .school:
             return [
-                createSampleHabit(NSLocalizedString("Study/Procrastinate", comment: ""), up: true, down: true),
-                createSampleDaily(NSLocalizedString("Do homework", comment: ""), notes: NSLocalizedString("Tap to specify your most important task", comment: "")),
-                createSampleToDo(NSLocalizedString("Finish assignment for class", comment: ""), notes: NSLocalizedString("Tap to specify your most important task", comment: ""))
+                createSampleHabit(NSLocalizedString("Study/Procrastinate", comment: ""), tagId: tagId, up: true, down: true),
+                createSampleDaily(NSLocalizedString("Do homework", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: "")),
+                createSampleToDo(NSLocalizedString("Finish assignment for class", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: ""))
             ]
         case .selfcare:
             return [
-                createSampleHabit(NSLocalizedString("Take a short break", comment: ""), up: true, down: false),
-                createSampleDaily(NSLocalizedString("5 minutes of quiet breathing", comment: ""), notes: NSLocalizedString("Tap to choose your schedule!", comment: "")),
-                createSampleToDo(NSLocalizedString("Engage in a fun activity", comment: ""), notes: NSLocalizedString("Tap to specify what you plan to do!", comment: ""))
+                createSampleHabit(NSLocalizedString("Take a short break", comment: ""), tagId: tagId, up: true, down: false),
+                createSampleDaily(NSLocalizedString("5 minutes of quiet breathing", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule!", comment: "")),
+                createSampleToDo(NSLocalizedString("Engage in a fun activity", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify what you plan to do!", comment: ""))
             ]
         case .chores:
             return [
-                createSampleHabit(NSLocalizedString("10 minutes cleaning", comment: ""), up: true, down: false),
-                createSampleDaily(NSLocalizedString("Wash dishes", comment: ""), notes: NSLocalizedString("Tap to choose your schedule!", comment: "")),
-                createSampleToDo(NSLocalizedString("Organize clutter", comment: ""), notes: NSLocalizedString("Tap to specify the cluttered area!", comment: ""))
+                createSampleHabit(NSLocalizedString("10 minutes cleaning", comment: ""), tagId: tagId, up: true, down: false),
+                createSampleDaily(NSLocalizedString("Wash dishes", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule!", comment: "")),
+                createSampleToDo(NSLocalizedString("Organize clutter", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify the cluttered area!", comment: ""))
             ]
         case .creativity:
             return [
-                createSampleHabit(NSLocalizedString("Study a master of the craft", comment: ""), up: true, down: false),
-                createSampleDaily(NSLocalizedString("Work on creative project", comment: ""), notes: NSLocalizedString("Tap to specify the name of your current project + set the schedule!", comment: "")),
-                createSampleToDo(NSLocalizedString("Finish creative project", comment: ""), notes: NSLocalizedString("Tap to specify the name of your project", comment: ""))
+                createSampleHabit(NSLocalizedString("Practiced a new creative technique", comment: ""), tagId: tagId, up: true, down: false),
+                createSampleDaily(NSLocalizedString("Work on creative project", comment: ""), tagId: tagId,
+                                  notes: NSLocalizedString("Tap to specify the name of your current project + set the schedule!", comment: "")),
+                createSampleToDo(NSLocalizedString("Finish creative project", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify the name of your project", comment: ""))
             ]
         }
+    }
+    
+    func getTag(managedObjectContext: NSManagedObjectContext) -> Tag {
+        if let tag = NSEntityDescription.insertNewObject(forEntityName: "Tag", into: managedObjectContext) as? Tag {
+            switch self {
+            case .work:
+                tag.name = NSLocalizedString("Work", comment: "")
+            case .exercise:
+                tag.name = NSLocalizedString("Exercise", comment: "")
+            case .health:
+                tag.name = NSLocalizedString("Health", comment: "")
+            case .school:
+                tag.name = NSLocalizedString("School", comment: "")
+            case .selfcare:
+                tag.name = NSLocalizedString("Selfcare", comment: "")
+            case .chores:
+                tag.name = NSLocalizedString("Chores", comment: "")
+            case .creativity:
+                tag.name = NSLocalizedString("Creativity", comment: "")
+            }
+            return tag
+        }
+        return Tag()
     }
 }
 

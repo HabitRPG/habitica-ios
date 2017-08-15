@@ -9,7 +9,6 @@
 #import "HRPGLoadingViewController.h"
 #import "PDKeychainBindings.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGAvatarSetupViewController.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGLoadingViewController ()
@@ -40,7 +39,7 @@
     if (isInSetup) {
         [self performSegueWithIdentifier:@"SetupSegue" sender:self];
     } else {
-        [self performSegueWithIdentifier:@"InitialSegue" sender:self];
+        [self performSegueWithIdentifier:@"SetupSegue" sender:self];
     }
 }
 

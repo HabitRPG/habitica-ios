@@ -36,7 +36,7 @@
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"dailies"]) {
         return @{
-            @"textList" : @[NSLocalizedString(@"Make Dailies for time sensitive tasks that need to be done on a regular schedule.", nil),
+            @"textList" : @[NSLocalizedString(@"Make Dailies for time-sensitive tasks that need to be done on a regular schedule.", nil),
                             NSLocalizedString(@"Be careful — if you miss one, your avatar will take damage overnight. Checking them off consistently brings great rewards!", nil)]
         };
     }

@@ -125,7 +125,7 @@
              onError:(void (^)())errorBlock;
 
 - (void)createTag:(Tag *)tag
-           onSuccess:(void (^)())successBlock
+           onSuccess:(void (^)(Tag *tag))successBlock
              onError:(void (^)())errorBlock;
 
 - (void)updateTag:(Tag *)tag

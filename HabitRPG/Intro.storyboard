@@ -795,7 +795,7 @@
                                     <constraint firstAttribute="height" priority="501" constant="80" id="zMJ-Rw-L7q"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Oh, you must be new here. I’m Justin, I’ll be your guide in Habitica.   To start, you’ll need to create an avatar."/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Oh, you must be new here. I’m Justin, your guide in Habitica.   To start, you’ll need to create an avatar."/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="npcName" value="Justin"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hasNpcImage" value="NO"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hasAdditionalText" value="NO"/>
