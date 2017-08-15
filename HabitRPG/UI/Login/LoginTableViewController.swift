@@ -377,6 +377,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
 
     func loginButtonPressed() {
         self.viewModel.inputs.loginButtonPressed()
+        self.view.endEditing(true)
     }
 
     func googleLoginButtonPressed() {

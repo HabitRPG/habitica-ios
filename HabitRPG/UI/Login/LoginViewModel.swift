@@ -284,8 +284,11 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             } else {
                 self.sharedManager?.registerUser(self.usernameChangedProperty.value, withPassword: self.passwordChangedProperty.value, withEmail: self.emailChangedProperty.value, onSuccess: {
                     self.onSuccessfulLogin()
-                }, onError: {
+                }, onError: { errorMessage in
                     self.loadingIndicatorVisibilityObserver.send(value: false)
+                    if let message = errorMessage {
+                        self.showErrorObserver.send(value: message)
+                    }
                 })
             }
         }
@@ -321,7 +324,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                 if authState != nil {
                     self?.sharedManager?.loginUserSocial("", withNetwork: "google", withAccessToken: authState?.lastTokenResponse?.accessToken, onSuccess: {
                         self?.onSuccessfulLogin()
-                    }, onError: {
+                    }, onError: { _ in
                         self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
                     })
                 }
@@ -349,7 +352,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             } else if let userId = result?.token.userID, let token = result?.token.tokenString {
                 self?.sharedManager?.loginUserSocial(userId, withNetwork: "facebook", withAccessToken: token, onSuccess: {
                     self?.onSuccessfulLogin()
-                }, onError: {
+                }, onError: { _ in
                     self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
                 })
             }

@@ -3507,7 +3507,7 @@ NSString *currentUser;
         withPassword:(NSString *)password
            withEmail:(NSString *)email
            onSuccess:(void (^)())successBlock
-             onError:(void (^)())errorBlock {
+             onError:(void (^)(NSString *errorMessage))errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     NSDictionary *params = @{

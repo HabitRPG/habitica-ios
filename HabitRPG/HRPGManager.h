@@ -239,12 +239,12 @@
             withNetwork:(NSString *)network
         withAccessToken:(NSString *)accessToken
               onSuccess:(void (^)())successBlock
-                onError:(void (^)())errorBlock;
+                onError:(void (^)(NSString *errorMessage))errorBlock;
 - (void)registerUser:(NSString *)username
         withPassword:(NSString *)password
            withEmail:(NSString *)email
            onSuccess:(void (^)())successBlock
-             onError:(void (^)())errorBlock;
+             onError:(void (^)(NSString *errorMessage))errorBlock;
 - (void)clearLoginCredentials;
 
 - (void)sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock;
