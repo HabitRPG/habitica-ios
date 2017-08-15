@@ -17,6 +17,8 @@ IB_DESIGNABLE
 @property UILabel *typeView;
 @property HRPGProgressBar *progressBar;
 
+@property BOOL isActive;
+
 @property(nonatomic) UIColor *color;
 @property(nonatomic) NSNumber *maxValue;
 @property(nonatomic) NSNumber *value;

@@ -15,7 +15,6 @@
 @property(nonatomic, strong) UIView *headerView;
 @property(nonatomic, strong) UIView *alternativeHeaderView;
 @property(nonatomic, strong) UIView *backgroundView;
-@property(nonatomic, strong) UIView *bottomBorderView;
 @property(nonatomic, strong) UIView *upperBackgroundView;
 @property(nonatomic, readonly) CGFloat topHeaderHeight;
 
@@ -45,13 +44,8 @@
     self.backgroundView = [[UIView alloc] init];
     self.backgroundView.backgroundColor = [UIColor gray700];
 
-    self.bottomBorderView = [[UIView alloc] init];
-    [self.bottomBorderView setBackgroundColor:[UIColor gray600]];
-
     self.upperBackgroundView = [[UIView alloc] init];
     [self.upperBackgroundView setBackgroundColor:[UIColor whiteColor]];
-
-    [self.backgroundView addSubview:self.bottomBorderView];
     [self.backgroundView addSubview:self.headerView];
     [self.view insertSubview:self.upperBackgroundView belowSubview:self.navigationBar];
     [self.view insertSubview:self.backgroundView belowSubview:self.upperBackgroundView];
@@ -63,10 +57,8 @@
     [super viewWillLayoutSubviews];
     CGRect parentFrame = self.view.frame;
     self.backgroundView.frame =
-        CGRectMake(0, self.headerYPosition, parentFrame.size.width, self.topHeaderHeight+6);
+        CGRectMake(0, self.headerYPosition, parentFrame.size.width, self.topHeaderHeight);
     self.upperBackgroundView.frame = CGRectMake(0, 0, parentFrame.size.width, [self bgViewOffset]);
-    self.bottomBorderView.frame =
-        CGRectMake(0, self.backgroundView.frame.size.height - 6, parentFrame.size.width, 6);
     self.headerView.frame = CGRectMake(0, 0, parentFrame.size.width, self.topHeaderHeight);
     if (self.alternativeHeaderView) {
         self.alternativeHeaderView.frame = CGRectMake(0, 0, parentFrame.size.width, self.alternativeHeaderView.intrinsicContentSize.height);
@@ -199,7 +191,7 @@
 
 #pragma mark - Helpers
 - (CGFloat)getContentInset {
-    return self.topHeaderHeight+self.bottomBorderView.frame.size.height;
+    return self.topHeaderHeight;
 }
 
 - (CGFloat)statusBarHeight {

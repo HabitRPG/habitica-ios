@@ -32,7 +32,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *classImageViewWidthConstraint;
 
 @property(weak, nonatomic) IBOutlet UILabel *goldLabel;
-@property(weak, nonatomic) IBOutlet UILabel *silverLabel;
 @property(weak, nonatomic) IBOutlet UILabel *gemLabel;
 @property(weak, nonatomic) IBOutlet UIView *gemView;
 @property User *user;
@@ -167,9 +166,11 @@ NSInteger rowOffset = 16;
         if ([self.user.maxMagic integerValue] > 0) {
             self.magicLabel.maxValue = self.user.maxMagic;
         }
-        self.magicLabel.hidden = NO;
+        self.magicLabel.isActive = YES;
     } else {
-        self.magicLabel.hidden = YES;
+        self.magicLabel.isActive = NO;
+        self.magicLabel.value = @0;
+        self.magicLabel.labelView.text = NSLocalizedString(@"Unlocks at level 10", nil);
     }
 
     self.usernameLabel.text = self.user.username;
@@ -197,9 +198,7 @@ NSInteger rowOffset = 16;
     
     self.gemLabel.text = [@([self.user.balance floatValue] * 4) stringValue];
 
-    self.goldLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.user.gold integerValue]];
-    int silver = ([self.user.gold floatValue] - [self.user.gold integerValue]) * 100;
-    self.silverLabel.text = [NSString stringWithFormat:@"%d", silver];
+    self.goldLabel.text = [NSString stringWithFormat:@"%@", self.user.gold];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller

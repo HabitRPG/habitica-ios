@@ -116,4 +116,16 @@
     [self updateViewFrames];
 }
 
+- (void)setIsActive:(BOOL)isActive {
+    if (isActive) {
+        self.alpha = 1.0;
+    } else {
+        self.alpha = 0.4;
+    }
+}
+
+- (BOOL)isActive {
+    return true;
+}
+
 @end
