@@ -71,6 +71,9 @@ BOOL editable;
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
                                                initWithTarget:self action:@selector(longPressGestureRecognized:)];
     [self.tableView addGestureRecognizer:longPress];
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44;
 }
 
 - (NSString *)getCellNibName {
@@ -437,98 +440,6 @@ BOOL editable;
         [self.sharedManager deleteTask:task
             onSuccess:nil onError:nil];
     }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section > [self.fetchedResultsController sections].count - 1) {
-        return 44;
-    }
-
-    Task *task = [self taskAtIndexPath:indexPath];
-
-    // TODO: if we find a way to filter due dailies in predicate remove this
-    if ([task.type isEqualToString:@"daily"] &&
-        indexPath.item + 1 < [self.fetchedResultsController fetchedObjects].count &&
-        ((self.filterType == TaskDailyFilterTypeDue && ![task dueTodayWithOffset:self.dayStart]) ||
-         (self.filterType == TaskDailyFilterTypeGrey && [task dueTodayWithOffset:self.dayStart] &&
-          ![task.completed boolValue]))) {
-        return 0.1;
-    }
-    float width;
-    NSInteger height = 35;
-    if ([task.checklist count] > 0) {
-        width = self.viewWidth - 120;
-    } else {
-        width = self.viewWidth - 94;
-    }
-    if ([task.type isEqualToString:@"habit"]) {
-        width = self.viewWidth - 132;
-    }
-    height = height +
-             [[task.text stringByReplacingEmojiCheatCodesWithUnicode]
-                 boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
-                              options:NSStringDrawingUsesLineFragmentOrigin
-                           attributes:@{
-                               NSFontAttributeName :
-                                   [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
-                           }
-                              context:nil]
-                 .size.height;
-    if (task.notes) {
-        NSInteger notesHeight =
-            [[task.notes stringByReplacingEmojiCheatCodesWithUnicode]
-                boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
-                             options:NSStringDrawingUsesLineFragmentOrigin |
-                                     NSStringDrawingUsesFontLeading
-                          attributes:@{
-                              NSFontAttributeName :
-                                  [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2]
-                          }
-                             context:nil]
-                .size.height;
-        if (notesHeight <
-            [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2].lineHeight * 3) {
-            height = height + notesHeight;
-        } else {
-            height =
-            height + [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2].lineHeight * 3;
-        }
-    }
-
-    if ([task.type isEqualToString:@"daily"] && [task.streak integerValue] > 0) {
-        NSString *text =
-            [NSString stringWithFormat:NSLocalizedString(@"Current streak: %@", nil), task.streak];
-        height = height +
-                 [text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
-                                    options:NSStringDrawingUsesLineFragmentOrigin |
-                                            NSStringDrawingUsesFontLeading
-                                 attributes:@{
-                                     NSFontAttributeName :
-                                         [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2]
-                                 }
-                                    context:nil]
-                     .size.height;
-    } else if ([task.type isEqualToString:@"todo"]) {
-        height = height +
-                 [@"" boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
-                                    options:NSStringDrawingUsesLineFragmentOrigin |
-                                            NSStringDrawingUsesFontLeading
-                                 attributes:@{
-                                     NSFontAttributeName :
-                                         [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2]
-                                 }
-                                    context:nil]
-                     .size.height;
-    }
-
-    height = height + self.extraCellSpacing;
-    if (task.duedate) {
-        height = height + 5;
-    }
-    if (height <= 70) {
-        return 70;
-    }
-    return height;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -43,16 +43,16 @@
         self.cornerRadius = 3;
 
         if ([task.completed boolValue]) {
-            self.boxFillColor = [UIColor gray300];
+            self.boxFillColor = [UIColor gray400];
             self.backgroundColor = [UIColor gray500];
-            self.checkColor = [UIColor gray50];
+            self.checkColor = [UIColor gray200];
         } else {
             if ([task dueTodayWithOffset:offset]) {
                 self.backgroundColor = [task lightTaskColor];
                 self.checkColor = [task taskColor];
             } else {
-                self.backgroundColor = [UIColor gray500];
-                self.checkColor = [UIColor gray50];
+                self.backgroundColor = [UIColor gray600];
+                self.checkColor = [UIColor gray200];
             }
         }
 
@@ -60,8 +60,8 @@
         self.cornerRadius = self.size / 2;
         if ([task.completed boolValue]) {
             self.boxFillColor = [UIColor gray400];
-            self.backgroundColor = [UIColor gray500];
-            self.checkColor = [UIColor gray50];
+            self.backgroundColor = [UIColor gray600];
+            self.checkColor = [UIColor gray200];
         } else {
             self.backgroundColor = [task lightTaskColor];
             self.checkColor = [task taskColor];
@@ -74,7 +74,7 @@
 - (void)configureForChecklistItem:(ChecklistItem *)item forTask:(Task *)task {
     self.checked = [item.completed boolValue] || [item.currentlyChecking boolValue];
     self.backgroundColor = [UIColor clearColor];
-    self.boxFillColor = [UIColor gray400];
+    self.boxFillColor = [UIColor gray500];
     self.checkColor = [UIColor gray200];
     if ([task.type isEqualToString:@"daily"]) {
         self.cornerRadius = 3;

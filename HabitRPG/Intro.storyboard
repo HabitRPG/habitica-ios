@@ -130,7 +130,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="QC8-Jd-4Uw">
-                                        <rect key="frame" x="16" y="190" width="288" height="397"/>
+                                        <rect key="frame" x="16" y="190" width="288" height="348"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u44-DM-dLI" customClass="LoginEntryView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="40"/>
@@ -192,24 +192,24 @@
                                                 </state>
                                             </button>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="KQj-IJ-ThB">
-                                                <rect key="frame" x="0.0" y="252" width="288" height="37"/>
+                                                <rect key="frame" x="0.0" y="246" width="288" height="0.0"/>
                                             </activityIndicatorView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8sd-aG-gHH">
-                                                <rect key="frame" x="0.0" y="301" width="288" height="8"/>
+                                                <rect key="frame" x="0.0" y="252" width="288" height="8"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="8" id="kOg-I2-lxs"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xka-dX-nD0">
-                                                <rect key="frame" x="0.0" y="321" width="288" height="32"/>
+                                                <rect key="frame" x="0.0" y="272" width="288" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Login with Facebook">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYX-yC-fON">
-                                                <rect key="frame" x="0.0" y="365" width="288" height="32"/>
+                                                <rect key="frame" x="0.0" y="316" width="288" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Login with Google"/>
                                             </button>

@@ -53,6 +53,7 @@
 + (UIColor *)blue100;
 + (UIColor *)blue500;
 
++ (UIColor *)gray10;
 + (UIColor *)gray50;
 + (UIColor *)gray100;
 + (UIColor *)gray200;

@@ -15,10 +15,10 @@ class CheckedTableViewCell: TaskTableViewCell {
     @IBOutlet weak var checkBox: HRPGCheckBoxView!
     //swiftlint:disable:next private_outlet
     @IBOutlet weak var checklistIndicator: UIView!
-    @IBOutlet weak private var checklistDoneLabel: UILabel!
-    @IBOutlet weak private var checklistAllLabel: UILabel!
-    @IBOutlet weak private var checklistSeparator: UIView!
-    @IBOutlet weak private var checklistIndicatorWidth: NSLayoutConstraint!
+    @IBOutlet weak var checklistDoneLabel: UILabel!
+    @IBOutlet weak var checklistAllLabel: UILabel!
+    @IBOutlet weak var checklistSeparator: UIView!
+    @IBOutlet weak var checklistIndicatorWidth: NSLayoutConstraint!
 
     override func configure(task: Task) {
         super.configure(task: task)
@@ -36,8 +36,14 @@ class CheckedTableViewCell: TaskTableViewCell {
             }
             self.checklistDoneLabel.text = "\(checkedCount)"
             self.checklistAllLabel.text = "\(checklistCount)"
+            self.checklistDoneLabel.textColor = .white
+            self.checklistAllLabel.textColor = .white
+            self.checklistSeparator.backgroundColor = .white
             if checkedCount == checklistCount {
                 self.checklistIndicator.backgroundColor = .gray500()
+                self.checklistDoneLabel.textColor = .gray100()
+                self.checklistAllLabel.textColor = .gray100()
+                self.checklistSeparator.backgroundColor = .gray100()
             }
             self.checklistDoneLabel.isHidden = false
             self.checklistAllLabel.isHidden = false
@@ -52,15 +58,15 @@ class CheckedTableViewCell: TaskTableViewCell {
 
         if task.completed?.boolValue ?? false {
             self.checklistIndicator.backgroundColor = .gray500()
-            self.titleLabel.textColor = .gray100()
+            self.titleLabel.textColor = .gray300()
+            self.backgroundColor = .gray600()
         } else {
             self.backgroundColor = .white
-            self.titleLabel.textColor = .black
+            self.titleLabel.textColor = .gray10()
         }
 
         self.titleLabel.backgroundColor = self.backgroundColor
         self.subtitleLabel.backgroundColor = self.backgroundColor
-        self.textWrapperView.backgroundColor = self.backgroundColor
 
         self.checklistIndicator.layoutIfNeeded()
     }
@@ -78,10 +84,8 @@ class CheckedTableViewCell: TaskTableViewCell {
         self.checkBox.configure(for: checklistItem, for: task)
         self.checklistIndicator.isHidden = true
         self.subtitleLabel.text = nil
-        self.titleNoteConstraint.constant = 0
 
         self.taskDetailLine.isHidden = true
-        self.taskDetailSpacing.constant = 0
     }
 
 }
