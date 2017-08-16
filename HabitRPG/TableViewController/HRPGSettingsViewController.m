@@ -305,7 +305,8 @@ User *user;
 - (void)logoutUser {
     MRProgressOverlayView *overlayView = [MRProgressOverlayView
         showOverlayAddedTo:self.navigationController.parentViewController.view
-                  animated:YES];
+                                          animated:YES];
+    [self configureProgressView:overlayView];
     __weak HRPGSettingsViewController *weakSelf = self;
     void (^logoutBlock)() = ^() {
         PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
@@ -348,7 +349,8 @@ User *user;
 - (void)resetCache {
     MRProgressOverlayView *overlayView = [MRProgressOverlayView
         showOverlayAddedTo:self.navigationController.parentViewController.view
-                  animated:YES];
+                                          animated:YES];
+    [self configureProgressView:overlayView];
     [self.sharedManager resetSavedDatabase:YES
                                 onComplete:^() {
                                     overlayView.mode = MRProgressOverlayViewModeCheckmark;
@@ -364,6 +366,7 @@ User *user;
     MRProgressOverlayView *overlayView = [MRProgressOverlayView
         showOverlayAddedTo:self.navigationController.parentViewController.view
                   animated:YES];
+    [self configureProgressView:overlayView];
     [self.sharedManager fetchContent:^() {
         overlayView.mode = MRProgressOverlayViewModeCheckmark;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC));
@@ -380,6 +383,11 @@ User *user;
                 [overlayView dismiss:YES];
             });
         }];
+}
+
+- (void)configureProgressView:(MRProgressOverlayView *)overlayView {
+    [overlayView setTintColor:[UIColor purple400]];
+    [overlayView setBackgroundColor:[[UIColor purple50] colorWithAlphaComponent:0.6]];
 }
 
 - (void)didSelectFormRow:(XLFormRowDescriptor *)formRow {

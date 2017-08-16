@@ -161,6 +161,8 @@
     [super viewWillAppear:animated];
     self.overlayView =
         [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
+    [self.overlayView setTintColor:[UIColor purple400]];
+    [self.overlayView setBackgroundColor:[[UIColor purple50] colorWithAlphaComponent:0.6]];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

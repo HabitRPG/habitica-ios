@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -71,7 +71,7 @@
         <scene sceneID="Bi9-YF-GrW">
             <objects>
                 <navigationController id="jza-oe-b8O" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Mt7-2s-336">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mt7-2s-336">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -87,7 +87,7 @@
         <scene sceneID="p7g-2a-sQ3">
             <objects>
                 <navigationController id="hQu-VZ-lTI" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="54r-sm-b3w">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="54r-sm-b3w">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -171,7 +171,7 @@
         <scene sceneID="G4S-sI-syf">
             <objects>
                 <navigationController storyboardIdentifier="InboxNavigationViewController" id="07o-eS-nNQ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JdR-7G-nlt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JdR-7G-nlt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -187,7 +187,7 @@
         <scene sceneID="o2G-h7-0FB">
             <objects>
                 <navigationController storyboardIdentifier="TavernNavigationViewController" id="dMb-sr-5MN" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2be-FU-1J8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2be-FU-1J8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -503,7 +503,7 @@
         <scene sceneID="Ad9-wI-iiJ">
             <objects>
                 <navigationController storyboardIdentifier="PartyNavigationViewController" id="SxV-sR-3AL" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0Fj-LL-eYa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0Fj-LL-eYa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -977,7 +977,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <scene sceneID="amF-HH-oTT">
             <objects>
                 <navigationController id="qu8-iE-4IX" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TVx-i3-Nky">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TVx-i3-Nky">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1501,7 +1501,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <scene sceneID="gY1-P4-oJL">
             <objects>
                 <navigationController id="Jki-T5-YYo" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="P6Z-Sa-pCR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P6Z-Sa-pCR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2047,7 +2047,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <scene sceneID="ABN-Ii-mA7">
             <objects>
                 <navigationController storyboardIdentifier="questInvitationNavigationController" definesPresentationContext="YES" id="vpY-l5-lSn" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7pG-ma-iGW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7pG-ma-iGW">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2064,7 +2064,7 @@ Invite friends now to earn a Quest Scroll!</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Ye-yE-okG" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1W3-Az-jfk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1W3-Az-jfk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2115,7 +2115,7 @@ Invite friends now to earn a Quest Scroll!</string>
             <objects>
                 <navigationController navigationBarHidden="YES" id="qim-an-Lm9" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="D6q-kU-EGb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="D6q-kU-EGb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2422,7 +2422,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <scene sceneID="naS-vc-IRN">
             <objects>
                 <navigationController storyboardIdentifier="ChallengeNavigationViewController" id="dON-DT-k7p" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Hf8-3d-Loz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hf8-3d-Loz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2438,7 +2438,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <scene sceneID="aUa-L4-h0K">
             <objects>
                 <navigationController storyboardIdentifier="MessageViewController" definesPresentationContext="YES" id="dI6-k2-5eY" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1JH-f4-g6g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1JH-f4-g6g">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -149,7 +149,9 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     func completeSetup() {
         UserDefaults.standard.set(false, forKey: "isInSetup")
         UserDefaults.standard.set(0, forKey: "currentSetupStep")
-        MRProgressOverlayView.showOverlayAdded(to: self.view, title: NSLocalizedString("Teleporting to Habitica", comment: ""), mode: .indeterminate, animated: true)
+        let overlayView = MRProgressOverlayView.showOverlayAdded(to: self.view, title: NSLocalizedString("Teleporting to Habitica", comment: ""), mode: .indeterminate, animated: true)
+        overlayView?.setTintColor(UIColor.purple400())
+        overlayView?.backgroundColor = UIColor.purple50().withAlphaComponent(0.6)
         if let viewController = taskSetupViewController, let manager = sharedManager {
             for taskCategory in viewController.selectedCategories {
                 tagsToCreate.append(taskCategory.getTag(managedObjectContext: manager.getManagedObjectContext()))
