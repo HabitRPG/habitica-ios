@@ -48,4 +48,6 @@
 @dynamic isDue;
 @dynamic nextDue;
 @dynamic yesterDaily;
+@dynamic counterUp;
+@dynamic counterDown;
 @end

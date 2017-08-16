@@ -213,7 +213,9 @@ NSString *currentUser;
         @"weeksOfMonth" : @"weeksOfMonth",
         @"isDue": @"isDue",
         @"nextDue": @"nextDue",
-        @"yesterDaily": @"yesterDaily"
+        @"yesterDaily": @"yesterDaily",
+        @"counterUp": @"counterUp",
+        @"counterDown": @"counterDown"
     }];
     taskMapping.identificationAttributes = @[ @"id" ];
     RKEntityMapping *checklistItemMapping =
@@ -2944,15 +2946,22 @@ NSString *currentUser;
                               withExperienceDiff:expDiff
                                     withGoldDiff:goldDiff
                                    withMagicDiff:magicDiff];
-            if ([task.type isEqual:@"daily"] || [task.type isEqual:@"todo"]) {
-                task.completed = @([withDirection isEqual:@"up"]);
+            if ([task.type isEqualToString:@"daily"] || [task.type isEqualToString:@"todo"]) {
+                task.completed = @([withDirection isEqualToString:@"up"]);
             }
 
-            if ([task.type isEqual:@"daily"]) {
+            if ([task.type isEqualToString:@"daily"]) {
                 if ([withDirection isEqualToString:@"up"]) {
                     task.streak = @([task.streak integerValue] + 1);
                 } else if ([task.streak integerValue] > 0) {
                     task.streak = @([task.streak integerValue] - 1);
+                }
+            }
+            if ([task.type isEqualToString:@"habit"]) {
+                if ([withDirection isEqualToString:@"up"]) {
+                    task.counterUp = @([task.counterUp integerValue] + 1);
+                } else {
+                    task.counterDown = @([task.counterDown integerValue] + 1);
                 }
             }
 

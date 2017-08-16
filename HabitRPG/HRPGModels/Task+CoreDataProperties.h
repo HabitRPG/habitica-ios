@@ -49,6 +49,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSNumber *isDue;
 @property (nullable, nonatomic, retain) NSSet<NSDate *> *nextDue;
 @property (nullable, nonatomic, copy) NSNumber *yesterDaily;
+@property (nullable, nonatomic, copy) NSNumber *counterUp;
+@property (nullable, nonatomic, copy) NSNumber *counterDown;
 
 @end
 

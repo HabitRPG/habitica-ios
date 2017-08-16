@@ -362,6 +362,7 @@
 		2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailiesDialogView.swift; sourceTree = "<group>"; };
 		2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailyTaskCell.swift; sourceTree = "<group>"; };
 		2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyTaskCell.xib; sourceTree = "<group>"; };
+		29A46C2F1F444E4C0036A04E /* HabitRPG 44.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 44.xcdatamodel"; sourceTree = "<group>"; };
 		29AAA15C1F2A3AA600029737 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechbubbleView.swift; sourceTree = "<group>"; };
 		29AAA1601F2B597400029737 /* SpeechbubbleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeechbubbleView.xib; sourceTree = "<group>"; };
@@ -3266,6 +3267,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				29A46C2F1F444E4C0036A04E /* HabitRPG 44.xcdatamodel */,
 				297997721EFD387F00F5F13E /* HabitRPG 43.xcdatamodel */,
 				29AF6B9E1EFC2D11001C8F16 /* HabitRPG 42.xcdatamodel */,
 				29B388E21EF3D40600A72950 /* HabitRPG 41.xcdatamodel */,
@@ -3286,7 +3288,7 @@
 				D9B326771CD969D700973440 /* HabitRPG 26.xcdatamodel */,
 				D94E0AD81CCF9B8800B60210 /* HabitRPG 25.xcdatamodel */,
 			);
-			currentVersion = 297997721EFD387F00F5F13E /* HabitRPG 43.xcdatamodel */;
+			currentVersion = 29A46C2F1F444E4C0036A04E /* HabitRPG 44.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

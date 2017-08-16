@@ -177,8 +177,23 @@ class TaskDetailLineView: UIView {
     }
 
     private func setLastCompleted(task: Task) {
-        //Removed because storing task history was causing sync issues
-        detailLabel.isHidden = true
+        var counterString = ""
+        
+        if task.up?.boolValue ?? false && task.down?.boolValue ?? false {
+            counterString = "+\(task.counterUp ?? 0) | -\(task.counterDown ?? 0)"
+        } else if task.up?.boolValue ?? false {
+            counterString = "\(task.counterUp ?? 0)"
+        } else {
+            counterString = "\(task.counterDown ?? 0)"
+        }
+        
+        if counterString.characters.count > 0 {
+            streakLabel.text = counterString
+            streakIconView.isHidden = false
+            streakIconViewWidth.constant = 12
+            streakIconLabelSpacing.constant = 4
+            detailStreakSpacing.constant = TaskDetailLineView.spacing
+        }
     }
 
     private func setChallenge(enabled: Bool) {

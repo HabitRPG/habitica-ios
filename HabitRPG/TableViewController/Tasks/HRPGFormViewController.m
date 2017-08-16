@@ -150,6 +150,25 @@
     }
 
     if ([self.taskType isEqualToString:@"habit"]) {
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"frequency" rowType:XLFormRowDescriptorTypeSelectorPush title:NSLocalizedString(@"Counter resets every", nil)];
+        row.selectorOptions = @[
+                                [XLFormOptionsObject
+                                 formOptionsObjectWithValue:@"daily"
+                                 displayText:NSLocalizedString(@"Day", nil)],
+                                [XLFormOptionsObject
+                                 formOptionsObjectWithValue:@"weekly"
+                                 displayText:NSLocalizedString(@"Week", nil)],
+                                [XLFormOptionsObject
+                                 formOptionsObjectWithValue:@"monthly"
+                                 displayText:NSLocalizedString(@"Month", nil)]
+                                ];
+        row.value =
+        [XLFormOptionsObject formOptionsObjectWithValue:@"weekly"
+                                            displayText:NSLocalizedString(@"Week", nil)];
+        row.required = YES;
+        section = [self.form formSectionAtIndex:0];
+        [section addFormRow:row];
+        
         section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Actions", nil)];
         [self.form addFormSection:section];
 
@@ -341,6 +360,7 @@
     if ([self.taskType isEqualToString:@"habit"]) {
         [self.form formRowWithTag:@"up"].value = self.task.up;
         [self.form formRowWithTag:@"down"].value = self.task.down;
+        [self.form formRowWithTag:@"frequency"].value = self.task.frequency;
     }
 
     if ([self.taskType isEqualToString:@"daily"]) {
@@ -591,7 +611,7 @@
 }
 
 - (void)setFrequencyRows:(NSString *)frequencyType fromOldValue:(NSString *)oldFrequencyType {
-    if ([frequencyType isEqualToString:oldFrequencyType]) {
+    if ([frequencyType isEqualToString:oldFrequencyType] || [self.taskType isEqualToString:@"habit"]) {
         return;
     }
     XLFormSectionDescriptor *section = [self.form formSectionAtIndex:2];
