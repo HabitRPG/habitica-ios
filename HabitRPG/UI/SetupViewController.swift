@@ -34,7 +34,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     var currentpage = 0
     
     var createdTags = [SetupTaskCategory:Tag]()
-    var tagsToCreate = [Tag]()
+    var tagsToCreate = [SetupTaskCategory:Tag]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,7 +154,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         overlayView?.backgroundColor = UIColor.purple50().withAlphaComponent(0.6)
         if let viewController = taskSetupViewController, let manager = sharedManager {
             for taskCategory in viewController.selectedCategories {
-                tagsToCreate.append(taskCategory.getTag(managedObjectContext: manager.getManagedObjectContext()))
+                tagsToCreate[taskCategory] = taskCategory.getTag(managedObjectContext: manager.getManagedObjectContext())
             }
         }
         createTag {[weak self] in
@@ -165,17 +165,18 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func createTag(_ completeFunc: @escaping () -> Void) {
-        if tagsToCreate.count == 0 {
+        guard let taskCategory = tagsToCreate.keys.first else {
             completeFunc()
             return
         }
-        let taskCategory = tagsToCreate.removeFirst()
-        sharedManager?.createTag(taskCategory, onSuccess: {[weak self] tag in
-            self?.createdTags[.work] = tag
-            self?.createTag(completeFunc)
-        }, onError: {[weak self] in
-            self?.createTag(completeFunc)
-        })
+        if let tag = tagsToCreate.removeValue(forKey: taskCategory) {
+            sharedManager?.createTag(tag, onSuccess: {[weak self] tag in
+                self?.createdTags[taskCategory] = tag
+                self?.createTag(completeFunc)
+                }, onError: {[weak self] in
+                    self?.createTag(completeFunc)
+            })
+        }
     }
     
     private func createTasks(_ completeFunc: @escaping () -> Void) {

@@ -20,9 +20,7 @@ enum SetupTaskCategory {
             "type": "habit"
         ] as [String : Any]
         if let id = tagId {
-            task["tags"] = [
-                id: true
-            ]
+            task["tags"] = [id]
         }
         return task
     }
@@ -41,12 +39,10 @@ enum SetupTaskCategory {
             "friday": true,
             "saturday": true,
             "sunday": true,
-            "type": "daily",
+            "type": "daily"
         ] as [String : Any]
         if let id = tagId {
-            task["tags"] = [
-                id: true
-            ]
+            task["tags"] = [id]
         }
         return task
     }
@@ -55,12 +51,10 @@ enum SetupTaskCategory {
         var task = [
             "text": text,
             "type": "todo",
-            "notes": notes,
+            "notes": notes
         ] as [String : Any]
         if let id = tagId {
-            task["tags"] = [
-                id: true
-            ]
+            task["tags"] = [id]
         }
         return task
     }
@@ -70,8 +64,10 @@ enum SetupTaskCategory {
         case .work:
             return [
                 createSampleHabit(NSLocalizedString("Process email", comment: ""), tagId: tagId, up: true, down: false),
-                createSampleDaily(NSLocalizedString("Worked on today’s most important task", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: "")),
-                createSampleToDo(NSLocalizedString("Complete work project", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify the name of your current project + set a due date!", comment: ""))
+                createSampleDaily(NSLocalizedString("Worked on today’s most important task", comment: ""),
+                                  tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: "")),
+                createSampleToDo(NSLocalizedString("Complete work project", comment: ""), tagId: tagId,
+                                 notes: NSLocalizedString("Tap to specify the name of your current project + set a due date!", comment: ""))
             ]
         case .exercise:
             return [
@@ -125,7 +121,7 @@ enum SetupTaskCategory {
             case .school:
                 tag.name = NSLocalizedString("School", comment: "")
             case .selfcare:
-                tag.name = NSLocalizedString("Selfcare", comment: "")
+                tag.name = NSLocalizedString("Self-Care", comment: "")
             case .chores:
                 tag.name = NSLocalizedString("Chores", comment: "")
             case .creativity:
