@@ -11,6 +11,8 @@
 
 @interface HRPGCheckBoxView ()
 
+@property UILabel *label;
+
 @end
 
 @implementation HRPGCheckBoxView
@@ -18,18 +20,32 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
-        self.size = 26;
-
-        UITapGestureRecognizer *tapRecognizer =
-            [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
-        tapRecognizer.numberOfTapsRequired = 1;
-        [self addGestureRecognizer:tapRecognizer];
-        
-        self.userInteractionEnabled = false;
+        [self setupView];
     }
-
     return self;
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self setupView];
+    }
+    return self;
+}
+
+- (void) setupView {
+    self.backgroundColor = [UIColor clearColor];
+    self.size = 26;
+    self.padding = 12;
+    self.centerCheckbox = true;
+    self.borderedBox = false;
+    
+    UITapGestureRecognizer *tapRecognizer =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+    tapRecognizer.numberOfTapsRequired = 1;
+    [self addGestureRecognizer:tapRecognizer];
+    
+    self.userInteractionEnabled = false;
 }
 
 - (void)configureForTask:(Task *)task {
@@ -71,16 +87,33 @@
     [self setNeedsDisplay];
 }
 
-- (void)configureForChecklistItem:(ChecklistItem *)item forTask:(Task *)task {
-    self.checked = [item.completed boolValue] || [item.currentlyChecking boolValue];
-    self.backgroundColor = [UIColor clearColor];
-    self.boxFillColor = [UIColor gray500];
-    self.checkColor = [UIColor gray200];
-    if ([task.type isEqualToString:@"daily"]) {
-        self.cornerRadius = 3;
-    } else {
-        self.cornerRadius = self.size / 2;
+- (void)configureForChecklistItem:(ChecklistItem *)item {
+    if (self.label == nil) {
+        self.label = [[UILabel alloc] init];
+        self.label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+        [self addSubview:self.label];
     }
+    self.checked = [item.completed boolValue] || [item.currentlyChecking boolValue];
+
+    if (self.checked) {
+    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:item.text];
+    [attributeString addAttribute:NSStrikethroughStyleAttributeName
+                            value:@2
+                            range:NSMakeRange(0, [attributeString length])];
+    self.label.attributedText = attributeString;
+    } else {
+        self.label.text = item.text;
+    }
+    
+    self.label.textColor = self.checked ? [UIColor gray400] : [UIColor gray100];
+    self.backgroundColor = [UIColor clearColor];
+    self.boxFillColor = self.checked ? [UIColor gray400] : [UIColor clearColor];
+    self.boxBorderColor = self.checked ? nil : [UIColor gray400];
+    self.checkColor = [UIColor gray200];
+    self.cornerRadius = 3;
+    self.centerCheckbox = NO;
+    self.size = 22;
+    self.borderedBox = true;
     [self setNeedsDisplay];
 }
 
@@ -92,24 +125,34 @@
     }
 }
 
+- (void)layoutSubviews {
+    CGFloat leftOffset = self.padding*2 + self.size;
+    self.label.frame = CGRectMake(leftOffset, 0, self.frame.size.width-leftOffset, self.frame.size.height);
+}
+
 - (void)drawRect:(CGRect)rect {
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    [self.boxFillColor setFill];
+    CGFloat horizontalCenter = self.centerCheckbox ? self.frame.size.width / 2 : self.padding + self.size / 2;
     UIBezierPath *borderPath = [UIBezierPath
-        bezierPathWithRoundedRect:CGRectMake(self.frame.size.width / 2 - self.size / 2,
+        bezierPathWithRoundedRect:CGRectMake(horizontalCenter - self.size / 2,
                                              self.frame.size.height / 2 - self.size / 2, self.size,
                                              self.size)
                      cornerRadius:self.cornerRadius];
+    if (self.boxBorderColor != nil) {
+        [self.boxBorderColor setStroke];
+        [borderPath stroke];
+    }
+    [self.boxFillColor setFill];
     [borderPath fill];
     if (self.checked) {
         CGContextBeginPath(ctx);
         CGContextSetLineWidth(ctx, 2);
         CGContextSetStrokeColorWithColor(ctx, [self.checkColor CGColor]);
-        CGContextMoveToPoint(ctx, self.frame.size.width / 2 - (self.size / 3.5),
+        CGContextMoveToPoint(ctx, horizontalCenter - (self.size / 3.5),
                              self.frame.size.height / 2);
-        CGContextAddLineToPoint(ctx, self.frame.size.width / 2 - (self.size / 8),
+        CGContextAddLineToPoint(ctx, horizontalCenter - (self.size / 8),
                                 self.frame.size.height / 2 + (self.size / 5));
-        CGContextAddLineToPoint(ctx, self.frame.size.width / 2 + (self.size / 4),
+        CGContextAddLineToPoint(ctx, horizontalCenter + (self.size / 4),
                                 self.frame.size.height / 2 - (self.size / 5));
         CGContextStrokePath(ctx);
     } else {
@@ -121,6 +164,10 @@
     if (wasTouched != nil) {
         self.userInteractionEnabled = true;
     }
+}
+
+- (CGSize)intrinsicContentSize {
+    return CGSizeMake(self.size+self.padding*2, self.size+self.padding*2);
 }
 
 @end

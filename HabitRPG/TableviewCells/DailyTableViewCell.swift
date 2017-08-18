@@ -17,6 +17,8 @@ class DailyTableViewCell: CheckedTableViewCell {
                 self.checklistDoneLabel.textColor = .gray100()
                 self.checklistAllLabel.textColor = .gray100()
                 self.checklistSeparator.backgroundColor = .gray100()
+                self.checklistLeftBorderView.backgroundColor = .gray500()
+                self.checklistRightBorderView.backgroundColor = .gray500()
             }
         }
     }

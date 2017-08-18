@@ -19,8 +19,6 @@
 
 - (UIView *)viewWithIcon:(UIImage *)image;
 
-- (void)tableView:(UITableView *)tableView expandTaskAtIndexPath:(NSIndexPath *)indexPath;
-
 - (Task *)taskAtIndexPath:(NSIndexPath *)indexPath;
 - (NSIndexPath *)indexPathForTaskWithOffset:(NSIndexPath *)indexPath;
 

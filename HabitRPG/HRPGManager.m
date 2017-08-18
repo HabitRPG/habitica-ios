@@ -144,7 +144,7 @@ NSString *currentUser;
         ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
     }
 #else
-    ROOT_URL = @"https://habitica.com/";
+    ROOT_URL = @"https://habitrpg-staging.herokuapp.com/";
 #endif
 
     ROOT_URL = [ROOT_URL stringByAppendingString:@"api/v3/"];

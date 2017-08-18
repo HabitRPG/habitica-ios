@@ -18,10 +18,13 @@
 @property(nonatomic) UIColor *boxBorderColor;
 @property(nonatomic) UIColor *boxFillColor;
 @property(nonatomic) UIColor *checkColor;
-
+@property(nonatomic) BOOL centerCheckbox;
+@property(nonatomic) CGFloat padding;
+@property(nonatomic) BOOL borderedBox;
+ 
 - (void)configureForTask:(Task *)task;
 - (void)configureForTask:(Task *)task withOffset:(NSInteger)offset;
-- (void)configureForChecklistItem:(ChecklistItem *)item forTask:(Task *)task;
+- (void)configureForChecklistItem:(ChecklistItem *)item;
 
 @property(copy, nonatomic) void (^wasTouched)(void);
 

@@ -11,22 +11,50 @@ import Down
 
 class CheckedTableViewCell: TaskTableViewCell {
 
-    //swiftlint:disable:next private_outlet
     @IBOutlet weak var checkBox: HRPGCheckBoxView!
-    //swiftlint:disable:next private_outlet
     @IBOutlet weak var checklistIndicator: UIView!
     @IBOutlet weak var checklistDoneLabel: UILabel!
     @IBOutlet weak var checklistAllLabel: UILabel!
     @IBOutlet weak var checklistSeparator: UIView!
     @IBOutlet weak var checklistIndicatorWidth: NSLayoutConstraint!
+    @IBOutlet weak var checklistContainer: UIStackView!
+    @IBOutlet weak var checklistLeftBorderView: UIView!
+    @IBOutlet weak var checklistRightBorderView: UIView!
+    
+    weak var task: Task?
+    var isExpanded = false
+    var checklistItemTouched: ((_ item: ChecklistItem) -> Void)?
 
     override func configure(task: Task) {
+        self.task = task
         super.configure(task: task)
         self.checkBox.configure(for: task)
+        
+        handleChecklist(task)
+
+        if task.completed?.boolValue ?? false {
+            self.checklistIndicator.backgroundColor = .gray500()
+            self.titleLabel.textColor = .gray300()
+            self.backgroundColor = .gray600()
+        } else {
+            self.backgroundColor = .white
+            self.titleLabel.textColor = .gray10()
+        }
+
+        self.titleLabel.backgroundColor = self.backgroundColor
+        self.subtitleLabel.backgroundColor = self.backgroundColor
+
+        self.checklistIndicator.layoutIfNeeded()
+    }
+    
+    func handleChecklist(_ task: Task) {
         self.checklistIndicator.backgroundColor = task.lightTaskColor()
+        self.checklistLeftBorderView.backgroundColor = task.taskColor()
+        self.checklistRightBorderView.backgroundColor = task.taskColor()
         self.checklistIndicator.isHidden = false
         self.checklistIndicator.translatesAutoresizingMaskIntoConstraints = false
         let checklistCount = task.checklist?.count ?? 0
+        
         if checklistCount > 0 {
             var checkedCount = 0
             if let checklist = task.checklist?.array as? [ChecklistItem] {
@@ -44,48 +72,36 @@ class CheckedTableViewCell: TaskTableViewCell {
                 self.checklistDoneLabel.textColor = .gray100()
                 self.checklistAllLabel.textColor = .gray100()
                 self.checklistSeparator.backgroundColor = .gray100()
+                self.checklistLeftBorderView.backgroundColor = .gray500()
+                self.checklistRightBorderView.backgroundColor = .gray500()
             }
             self.checklistDoneLabel.isHidden = false
             self.checklistAllLabel.isHidden = false
             self.checklistSeparator.isHidden = false
-            self.checklistIndicatorWidth.constant = 37.0
+            self.checklistIndicatorWidth.constant = 32.0
         } else {
             self.checklistDoneLabel.isHidden = true
             self.checklistAllLabel.isHidden = true
             self.checklistSeparator.isHidden = true
             self.checklistIndicatorWidth.constant = 0
         }
-
-        if task.completed?.boolValue ?? false {
-            self.checklistIndicator.backgroundColor = .gray500()
-            self.titleLabel.textColor = .gray300()
-            self.backgroundColor = .gray600()
-        } else {
-            self.backgroundColor = .white
-            self.titleLabel.textColor = .gray10()
+        
+        checklistContainer.arrangedSubviews.forEach { (view) in
+            view.removeFromSuperview()
         }
-
-        self.titleLabel.backgroundColor = self.backgroundColor
-        self.subtitleLabel.backgroundColor = self.backgroundColor
-
-        self.checklistIndicator.layoutIfNeeded()
-    }
-
-    func configure(checklistItem: ChecklistItem, task: Task) {
-        if task.completed?.boolValue ?? false {
-            self.checklistIndicator.backgroundColor = .gray500()
-            self.titleLabel.textColor = .gray100()
-        } else {
-            self.backgroundColor = .white
-            self.titleLabel.textColor = .black
+        if isExpanded {
+            if let checklist = task.checklist?.array as? [ChecklistItem] {
+                for item in checklist {
+                    let checkbox = HRPGCheckBoxView()
+                    checkbox.configure(for: item)
+                    checklistContainer.addArrangedSubview(checkbox)
+                    checkbox.wasTouched = {[weak self] in
+                        if let action = self?.checklistItemTouched {
+                            action(item)
+                        }
+                    }
+                }
+            }
         }
-        self.titleLabel.text = checklistItem.text.unicodeEmoji
-        self.titleLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        self.checkBox.configure(for: checklistItem, for: task)
-        self.checklistIndicator.isHidden = true
-        self.subtitleLabel.text = nil
-
-        self.taskDetailLine.isHidden = true
     }
-
 }
