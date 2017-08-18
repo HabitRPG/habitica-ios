@@ -7,6 +7,7 @@
 //
 
 #import "HRPGProgressBar.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGProgressBar ()
 
@@ -45,7 +46,7 @@
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     UIBezierPath *trackPath = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:8.0f];
-    CGContextSetFillColorWithColor(context, [[UIColor colorWithWhite:0.8549 alpha:1.0] CGColor]);
+    CGContextSetFillColorWithColor(context, [[UIColor gray600] CGColor]);
     [trackPath fill];
     CGFloat percent = self.value / self.maxValue;
     if (self.maxValue == 0 || percent < 0) {

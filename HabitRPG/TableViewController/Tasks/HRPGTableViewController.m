@@ -14,6 +14,7 @@
 #import "HRPGTabBarController.h"
 #import "NSString+Emoji.h"
 #import <POP/POP.h>
+#import "UIColor+Habitica.h"
 
 @interface HRPGTableViewController ()<UISearchBarDelegate>
 @property NSString *readableName;

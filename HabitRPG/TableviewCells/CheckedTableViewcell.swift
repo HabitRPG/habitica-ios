@@ -69,11 +69,11 @@ class CheckedTableViewCell: TaskTableViewCell {
             self.checklistSeparator.backgroundColor = .white
             if checkedCount == checklistCount {
                 self.checklistIndicator.backgroundColor = .gray500()
-                self.checklistDoneLabel.textColor = .gray100()
-                self.checklistAllLabel.textColor = .gray100()
-                self.checklistSeparator.backgroundColor = .gray100()
-                self.checklistLeftBorderView.backgroundColor = .gray500()
-                self.checklistRightBorderView.backgroundColor = .gray500()
+                self.checklistDoneLabel.textColor = .gray300()
+                self.checklistAllLabel.textColor = .gray300()
+                self.checklistSeparator.backgroundColor = .gray300()
+                self.checklistLeftBorderView.backgroundColor = .gray400()
+                self.checklistRightBorderView.backgroundColor = .gray400()
             }
             self.checklistDoneLabel.isHidden = false
             self.checklistAllLabel.isHidden = false

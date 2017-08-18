@@ -45,11 +45,11 @@
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     style.alignment = NSTextAlignmentLeft;
     NSDictionary *textAttributes = @{
-                                     NSFontAttributeName : [UIFont systemFontOfSize:11],
+                                     NSFontAttributeName : [UIFont systemFontOfSize:10 weight:UIFontWeightSemibold],
                                      NSParagraphStyleAttributeName : style};
     CGSize size = [dateString sizeWithAttributes:textAttributes];
     int offset = (calendarImage.size.width - size.width) / 2;
-    [dateString drawInRect:CGRectMake(offset + 1, 12, 20, 20) withAttributes:textAttributes];
+    [dateString drawInRect:CGRectMake(offset + 1, 13, 20, 20) withAttributes:textAttributes];
     UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
 

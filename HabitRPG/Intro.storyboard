@@ -795,7 +795,7 @@
                                     <constraint firstAttribute="height" priority="501" constant="80" id="zMJ-Rw-L7q"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Oh, you must be new here. I’m Justin, your guide in Habitica.   To start, you’ll need to create an avatar."/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Oh, you must be new here. I’m Justin, your guide to Habitica.   To start, you’ll need to create an avatar."/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="npcName" value="Justin"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hasNpcImage" value="NO"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hasAdditionalText" value="NO"/>
@@ -1047,6 +1047,14 @@
                                             <constraint firstAttribute="bottom" secondItem="I5a-on-3TU" secondAttribute="bottom" id="yXC-pD-fHd"/>
                                         </constraints>
                                     </scrollView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BhD-h7-Ze7">
+                                        <rect key="frame" x="0.0" y="30" width="100" height="2"/>
+                                        <color key="backgroundColor" red="0.60586214065551758" green="0.3846261203289032" blue="0.99835687875747681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="2xB-Vo-yXk"/>
+                                            <constraint firstAttribute="width" constant="100" id="EKE-DZ-0a7"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.26366946099999999" green="0.1574202478" blue="0.45384562020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1054,6 +1062,8 @@
                                     <constraint firstItem="UxY-HK-uXB" firstAttribute="leading" secondItem="FdJ-aY-gbH" secondAttribute="leading" priority="999" constant="16" id="7B3-Bn-eUC"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="AET-Zg-NX6"/>
                                     <constraint firstItem="UxY-HK-uXB" firstAttribute="top" secondItem="FdJ-aY-gbH" secondAttribute="top" id="DQq-KY-dk8"/>
+                                    <constraint firstItem="BhD-h7-Ze7" firstAttribute="leading" secondItem="FdJ-aY-gbH" secondAttribute="leading" id="LCU-3L-QLx"/>
+                                    <constraint firstItem="CTW-Yh-1Cd" firstAttribute="top" secondItem="BhD-h7-Ze7" secondAttribute="bottom" constant="8" id="TYW-TH-ot4"/>
                                     <constraint firstAttribute="bottom" secondItem="CTW-Yh-1Cd" secondAttribute="bottom" id="Yxr-16-fUW"/>
                                     <constraint firstAttribute="trailing" secondItem="CTW-Yh-1Cd" secondAttribute="trailing" id="edr-TD-o1x"/>
                                     <constraint firstAttribute="height" priority="998" constant="130" id="f8b-ol-AL2"/>
@@ -1157,11 +1167,13 @@
                         <outlet property="skinLabel" destination="teJ-1y-V0M" id="Yzz-Ze-G1g"/>
                         <outlet property="speechbubbleView" destination="7xQ-tj-Lvs" id="42a-G1-c3Y"/>
                         <outlet property="subCategoryContainer" destination="UxY-HK-uXB" id="TMS-kO-253"/>
+                        <outlet property="subcategoryIndicatorPosition" destination="LCU-3L-QLx" id="MoH-xJ-3Qj"/>
+                        <outlet property="subcategoryIndicatorWidth" destination="EKE-DZ-0a7" id="xgQ-M4-JU8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eK4-7R-MXs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-810.39999999999998" y="-848.27586206896558"/>
+            <point key="canvasLocation" x="-811.875" y="-848.76760563380287"/>
         </scene>
         <!--Task Setup View Controller-->
         <scene sceneID="3Xn-tX-myt">
@@ -1241,7 +1253,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="tintColor" red="0.21256542205810547" green="0.12433115392923355" blue="0.36635309457778931" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Selfcare" backgroundImage="DiamondButton">
+                                                <state key="normal" title="Self-Care" backgroundImage="DiamondButton">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>

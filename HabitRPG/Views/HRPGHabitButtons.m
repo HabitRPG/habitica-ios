@@ -14,6 +14,7 @@
 
 @property(nonatomic) UIImageView *label;
 @property(nonatomic) UIView *roundedView;
+@property CGFloat buttonSize;
 
 @property(nonatomic, copy) void (^action)();
 @end
@@ -23,6 +24,7 @@
 #pragma mark - Configuration
 
 - (void)configureForTask:(Task *)task isNegative:(BOOL)isNegative {
+    self.buttonSize = 32;
     [self cleanUp];
 
     BOOL isActive = isNegative ? [task.down boolValue] : [task.up boolValue];
@@ -30,7 +32,7 @@
     self.label = [[UIImageView alloc] init];
     [self addSubview:self.label];
     self.roundedView = [[UIView alloc] init];
-    self.roundedView.layer.cornerRadius = 20;
+    self.roundedView.layer.cornerRadius = self.buttonSize/2;
     [self insertSubview:self.roundedView belowSubview:self.label];
 
     if (isActive) {
@@ -49,7 +51,14 @@
         [self.label addGestureRecognizer:tapRecognizer];
         self.backgroundColor = [task lightTaskColor];
         
-        self.roundedView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
+        NSInteger taskValue = task.value.integerValue;
+        if (taskValue >= -10 && taskValue < -1) {
+            self.roundedView.backgroundColor = [UIColor orange10];
+        } else if (taskValue >= -1 && taskValue < 1) {
+            self.roundedView.backgroundColor = [UIColor yellow10];
+        } else {
+            self.roundedView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
+        }
     } else {
         if (isNegative) {
              UIImage *image = [UIImage imageNamed:@"minus_gray"];
@@ -60,7 +69,7 @@
         self.label.contentMode = UIViewContentModeCenter;
         self.backgroundColor = [UIColor gray700];
         self.roundedView.layer.borderWidth = 1;
-        self.roundedView.layer.borderColor = [UIColor gray500].CGColor;
+        self.roundedView.layer.borderColor = [UIColor gray600].CGColor;
     }
 }
 
@@ -80,7 +89,7 @@
     [super layoutSubviews];
     int verticalCenter = self.frame.size.height / 2;
     int horizontalCenter = self.frame.size.width / 2;
-    self.roundedView.frame = CGRectMake(horizontalCenter - 20, verticalCenter - 20, 40, 40);
+    self.roundedView.frame = CGRectMake(horizontalCenter - self.buttonSize/2, verticalCenter - self.buttonSize/2, self.buttonSize, self.buttonSize);
     
     if (self.label) {
         self.label.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);

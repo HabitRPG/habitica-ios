@@ -21,12 +21,12 @@ class TaskTableViewCell: UITableViewCell {
     func configure(task: Task) {
         self.titleLabel.text = task.text?.unicodeEmoji
         self.titleLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        self.titleLabel.textColor = .black
+        self.titleLabel.textColor = .gray10()
         self.subtitleLabel.textColor = .gray200()
 
         if let trimmedNotes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.characters.count > 0 {
             self.subtitleLabel.text = trimmedNotes.unicodeEmoji
-            self.subtitleLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
+            self.subtitleLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
             self.subtitleLabel.isHidden = false
         } else {
             self.subtitleLabel.text = nil

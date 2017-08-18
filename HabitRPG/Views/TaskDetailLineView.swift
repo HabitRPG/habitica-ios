@@ -102,9 +102,9 @@ class TaskDetailLineView: UIView {
             calendarIconViewWidth.constant = TaskDetailLineView.iconSize
             calendarDetailSpacing.constant = 4
             if isUrgent {
-                calendarIconView.image = #imageLiteral(resourceName: "calendar_red")
+                calendarIconView.tintColor = .red100()
             } else {
-                calendarIconView.image = #imageLiteral(resourceName: "calendar")
+                calendarIconView.tintColor = .gray400()
             }
         } else {
             calendarIconViewWidth.constant = 0

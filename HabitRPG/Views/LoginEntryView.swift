@@ -52,6 +52,8 @@ class LoginEntryView: UIView, UITextFieldDelegate {
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var bottomBorder: UIView!
     
+    var gestureRecognizer: UIGestureRecognizer?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetup()
@@ -67,6 +69,13 @@ class LoginEntryView: UIView, UITextFieldDelegate {
             view.frame = bounds
             view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
             addSubview(view)
+            
+            self.gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedView))
+            
+            if let gestureRecognizer = self.gestureRecognizer {
+                self.addGestureRecognizer(gestureRecognizer)
+            }
+            self.isUserInteractionEnabled = true
         }
     }
     
@@ -83,11 +92,17 @@ class LoginEntryView: UIView, UITextFieldDelegate {
         UIView.animate(withDuration: 0.3) {
             self.bottomBorder.alpha = 1.0
         }
+        if let gestureRecognizer = self.gestureRecognizer {
+            self.removeGestureRecognizer(gestureRecognizer)
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.3) {
             self.bottomBorder.alpha = 0.15
+        }
+        if let gestureRecognizer = self.gestureRecognizer {
+            self.addGestureRecognizer(gestureRecognizer)
         }
     }
     
@@ -96,5 +111,9 @@ class LoginEntryView: UIView, UITextFieldDelegate {
             return function(textField)
         }
         return false
+    }
+    
+    func tappedView() {
+        entryView.becomeFirstResponder()
     }
 }

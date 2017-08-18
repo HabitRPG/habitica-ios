@@ -15,6 +15,7 @@
 @property(nonatomic, strong) UIView *headerView;
 @property(nonatomic, strong) UIView *alternativeHeaderView;
 @property(nonatomic, strong) UIView *backgroundView;
+@property(nonatomic, strong) UIView *bottomBorderView;
 @property(nonatomic, strong) UIView *upperBackgroundView;
 @property(nonatomic, readonly) CGFloat topHeaderHeight;
 
@@ -43,10 +44,14 @@
     self.state = HRPGTopHeaderStateVisible;
     self.backgroundView = [[UIView alloc] init];
     self.backgroundView.backgroundColor = [UIColor gray700];
+    
+    self.bottomBorderView = [[UIView alloc] init];
+    [self.bottomBorderView setBackgroundColor:[UIColor gray600]];
 
     self.upperBackgroundView = [[UIView alloc] init];
     [self.upperBackgroundView setBackgroundColor:[UIColor whiteColor]];
     [self.backgroundView addSubview:self.headerView];
+    [self.backgroundView addSubview:self.bottomBorderView];
     [self.view insertSubview:self.upperBackgroundView belowSubview:self.navigationBar];
     [self.view insertSubview:self.backgroundView belowSubview:self.upperBackgroundView];
 
@@ -56,9 +61,9 @@
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     CGRect parentFrame = self.view.frame;
-    self.backgroundView.frame =
-        CGRectMake(0, self.headerYPosition, parentFrame.size.width, self.topHeaderHeight);
+    self.backgroundView.frame = CGRectMake(0, self.headerYPosition, parentFrame.size.width, self.topHeaderHeight + 2);
     self.upperBackgroundView.frame = CGRectMake(0, 0, parentFrame.size.width, [self bgViewOffset]);
+    self.bottomBorderView.frame = CGRectMake(0, self.backgroundView.frame.size.height - 2, parentFrame.size.width, 2);
     self.headerView.frame = CGRectMake(0, 0, parentFrame.size.width, self.topHeaderHeight);
     if (self.alternativeHeaderView) {
         self.alternativeHeaderView.frame = CGRectMake(0, 0, parentFrame.size.width, self.alternativeHeaderView.intrinsicContentSize.height);
@@ -191,7 +196,7 @@
 
 #pragma mark - Helpers
 - (CGFloat)getContentInset {
-    return self.topHeaderHeight;
+    return self.topHeaderHeight+self.bottomBorderView.frame.size.height;
 }
 
 - (CGFloat)statusBarHeight {

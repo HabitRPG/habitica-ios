@@ -276,7 +276,7 @@
     } else if ([self.contributorLevel integerValue] == 9) {
         return [UIColor colorWithRed:0.455 green:0.000 blue:0.486 alpha:1.000];
     }
-    return [UIColor grayColor];
+    return [UIColor gray10];
 }
 
 - (void)setPetCountFromArray:(NSArray *)petArray {

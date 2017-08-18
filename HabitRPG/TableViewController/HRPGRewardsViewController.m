@@ -61,7 +61,7 @@
         [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
         NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:NO];
         NSSortDescriptor *rewardTypeDescriptor =
-        [[NSSortDescriptor alloc] initWithKey:@"rewardType" ascending:YES];
+        [[NSSortDescriptor alloc] initWithKey:@"rewardType" ascending:NO];
         NSArray *sortDescriptors =
         @[ rewardTypeDescriptor, typeDescriptor, orderDescriptor, keyDescriptor ];
         [fetchRequest setSortDescriptors:sortDescriptors];
@@ -263,6 +263,8 @@
         } else {
             cell.shopImageView.image = nil;
         }
+    } else {
+        cell.shopImageView.image = [UIImage imageNamed:@"tabbar_rewards"];
     }
 
     __weak HRPGRewardsViewController *weakSelf = self;

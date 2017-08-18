@@ -64,6 +64,8 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     @IBOutlet var contentCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentHeight: NSLayoutConstraint!
     @IBOutlet weak var categoryHeight: NSLayoutConstraint!
+    @IBOutlet weak var subcategoryIndicatorPosition: NSLayoutConstraint!
+    @IBOutlet weak var subcategoryIndicatorWidth: NSLayoutConstraint!
     
     var sharedManager: HRPGManager?
     var user: User?
@@ -186,6 +188,11 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         }
         
         currentSubcategory = subcategories[0]
+        
+        if let activeIndex = getSubcategoriesForCurrentCategory().index(of: currentSubcategory), let button = subCategoryContainer.arrangedSubviews[activeIndex] as? UIButton {
+            self.view.layoutIfNeeded()
+            updateSubcategoryIndicator(button)
+        }
     }
 
     private func updateCategoryButtons() {
@@ -261,6 +268,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     }
     
     func subcategoryTapped(_ sender: UIButton!) {
+        updateSubcategoryIndicator(sender)
         guard let activeIndex = subCategoryContainer.arrangedSubviews.index(of: sender) else {
             return
         }
@@ -334,6 +342,18 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         
         if let user = self.user {
             user.setAvatarSubview(avatarView, showsBackground: false, showsMount: false, showsPet: false)
+        }
+    }
+    
+    private func updateSubcategoryIndicator(_ button: UIButton) {
+        if let title = button.title(for: .normal), let font = button.titleLabel?.font {
+            let width = title.widthWithConstrainedHeight(CGFloat.greatestFiniteMagnitude, font: font)+30
+            let middle = button.frame.origin.x+16+button.frame.size.width/2
+            self.subcategoryIndicatorPosition.constant = middle - width/2
+            self.subcategoryIndicatorWidth.constant = width
+        }
+        UIView.animate(withDuration: 0.2) {[weak self] in
+            self?.view.layoutIfNeeded()
         }
     }
     

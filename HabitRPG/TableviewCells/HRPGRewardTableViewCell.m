@@ -41,14 +41,7 @@
             [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBuyTap:)];
         [self.buyButton addGestureRecognizer:tapGestureRecognizer];
     }
-    if ([reward.value floatValue]<1 && [reward.value floatValue]> 0) {
-        self.coinImageView.image = [UIImage imageNamed:@"silver_coin"];
-        self.priceLabel.text = [NSString
-            stringWithFormat:@"%.f",
-                             (([reward.value floatValue] - [reward.value integerValue]) * 100)];
-    } else {
-        self.coinImageView.image = [UIImage imageNamed:@"gold_coin"];
-    }
+    self.coinImageView.image = [UIImage imageNamed:@"gold_coin"];
 
     if ([gold floatValue] > [reward.value floatValue]) {
         self.buyView.layer.borderColor = [[UIColor purple300] CGColor];
