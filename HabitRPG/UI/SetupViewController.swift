@@ -191,6 +191,18 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                 "value": 20,
                 "type": "reward"
                 ])
+            tasks.append([
+                "text": NSLocalizedString("Join Habitica (Check me off!)", comment: ""),
+                "notes": NSLocalizedString("You can either complete this To-Do, edit it, or remove it.", comment: ""),
+                "type": "todo"
+                ])
+            tasks.append([
+                "text": NSLocalizedString("Tap here to edit this into a bad habit you'd like to quit", comment: ""),
+                "notes": NSLocalizedString("Or delete it by swiping left", comment: ""),
+                "up": false,
+                "down": true,
+                "type": "habit"
+                ])
             if tasks.count == 0 {
                 completeFunc()
                 return
