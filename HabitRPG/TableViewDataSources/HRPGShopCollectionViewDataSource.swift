@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol HRPGShopCollectionViewDataSourceDelegate {
     func didSelectItem(_ item: ShopItem?)
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
 }
 
 class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSource {
@@ -47,7 +48,13 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
             }
             
             //set image
-            HRPGManager.shared().setImage(item.imageName, withFormat: "png", on: cell.itemImageView)
+            if let imageName = item.imageName {
+                if imageName.contains(" ") {
+                    HRPGManager.shared().setImage(imageName.components(separatedBy: " ")[1], withFormat: "png", on: cell.itemImageView)
+                } else {
+                    HRPGManager.shared().setImage(imageName, withFormat: "png", on: cell.itemImageView)
+                }
+            }
             
             //set optional corner image
             
@@ -59,5 +66,9 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.didSelectItem(fetchedResultsController?.sections?[indexPath.section].objects?[indexPath.item] as? ShopItem)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        delegate?.scrollViewDidScroll(scrollView)
     }
 }

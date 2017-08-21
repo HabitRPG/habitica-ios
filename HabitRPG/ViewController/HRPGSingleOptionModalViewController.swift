@@ -34,10 +34,4 @@ class HRPGSingleOptionModalViewController: UIViewController {
         imageTextView.shopItemTitleLabel.font = UIFont.systemFont(ofSize: 15)
         imageTextView.shopItemTitleLabel.textColor = UIColor.gray200()
     }
-    
-    @IBAction func actionButtonPressed() {
-        let storyboard = UIStoryboard(name: "Main", bundle:nil)
-        let navigationController = storyboard.instantiateViewController(withIdentifier: "PurchaseGemNavController")
-        present(navigationController, animated: true, completion: nil)
-    }
 }

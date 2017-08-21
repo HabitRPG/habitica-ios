@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PIR-jb-93G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PIR-jb-93G">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,10 +23,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="di7-JQ-KmH" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="16" y="183" width="343" height="302"/>
+                                <rect key="frame" x="16" y="256" width="343" height="156"/>
                                 <subviews>
                                     <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="iWo-RG-1tS">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="248"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="102"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X0F-mm-9ZG" customClass="HRPGHourglassCountView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="214" y="8" width="35" height="27"/>
@@ -47,7 +47,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TiK-yj-cOf">
-                                                <rect key="frame" x="0.0" y="198" width="172" height="50"/>
+                                                <rect key="frame" x="0.0" y="52" width="172" height="50"/>
                                                 <color key="backgroundColor" red="0.97647058819999999" green="0.96862745098039216" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="GpK-xG-o2L"/>
@@ -58,7 +58,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMV-ZI-OEC">
-                                                <rect key="frame" x="171" y="198" width="172" height="50"/>
+                                                <rect key="frame" x="171" y="52" width="172" height="50"/>
                                                 <color key="backgroundColor" red="0.97647058823529409" green="0.96862745098039216" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="40H-7f-frc"/>
@@ -100,7 +100,6 @@
                                     <constraint firstItem="iWo-RG-1tS" firstAttribute="leading" secondItem="di7-JQ-KmH" secondAttribute="leading" id="Nu5-e2-CGs"/>
                                     <constraint firstItem="iWo-RG-1tS" firstAttribute="top" secondItem="di7-JQ-KmH" secondAttribute="top" id="iRx-Pa-ZLC"/>
                                     <constraint firstAttribute="bottom" secondItem="iWo-RG-1tS" secondAttribute="bottom" constant="54" id="qVg-PJ-zuf"/>
-                                    <constraint firstAttribute="height" constant="302" id="qcV-vf-Aqo"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -119,17 +118,99 @@
                         <outlet property="goldCountView" destination="mhw-rd-Afi" id="xgk-xS-HHj"/>
                         <outlet property="hourglassCountView" destination="X0F-mm-9ZG" id="lLB-V1-SYc"/>
                         <outlet property="pinButton" destination="TiK-yj-cOf" id="3AC-LQ-u3x"/>
-                        <segue destination="MH9-dz-o73" kind="presentation" identifier="insufficientGems" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="u8d-fK-uyg"/>
+                        <segue destination="MH9-dz-o73" kind="presentation" identifier="insufficientGold" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="u8d-fK-uyg"/>
+                        <segue destination="mJy-hz-jsh" kind="presentation" identifier="insufficientGems" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="zrE-Fe-jVF"/>
+                        <segue destination="H4v-s7-uWa" kind="presentation" identifier="insufficientHourglasses" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="jVb-ok-r5b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84L-qz-qXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="Qeg-Cw-Ytp">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="-434" y="77"/>
         </scene>
-        <!--Single Option Modal View Controller-->
+        <!--Insufficient Gems View Controller-->
+        <scene sceneID="wZ7-VK-NpV">
+            <objects>
+                <viewController id="mJy-hz-jsh" customClass="HRPGInsufficientGemsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oDn-5b-j7G"/>
+                        <viewControllerLayoutGuide type="bottom" id="h9m-1V-pC1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yYx-4g-8hd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRl-EB-mZX" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="16" y="188" width="343" height="290"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not enough Gems" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3v-IP-fUG">
+                                        <rect key="frame" x="99.5" y="15" width="144" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="f5k-Rr-PH2" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="46" width="343" height="139"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="84_gems"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="You'll need more Gems to buy this item!"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6f-ro-Ehm">
+                                        <rect key="frame" x="0.0" y="186" width="343" height="50"/>
+                                        <color key="backgroundColor" red="0.97647058819999999" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Enx-lB-SGa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <state key="normal" title="Purchase Gems"/>
+                                        <connections>
+                                            <action selector="actionButtonPressed" destination="mJy-hz-jsh" eventType="touchUpInside" id="CVW-98-rAr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="C3v-IP-fUG" firstAttribute="centerX" secondItem="GRl-EB-mZX" secondAttribute="centerX" id="1oF-RM-Rcm"/>
+                                    <constraint firstItem="f5k-Rr-PH2" firstAttribute="top" secondItem="GRl-EB-mZX" secondAttribute="top" constant="46" id="3to-7r-b9J"/>
+                                    <constraint firstItem="u6f-ro-Ehm" firstAttribute="leading" secondItem="GRl-EB-mZX" secondAttribute="leading" id="43S-b6-MbI"/>
+                                    <constraint firstAttribute="height" constant="290" id="KO8-zR-per"/>
+                                    <constraint firstItem="f5k-Rr-PH2" firstAttribute="leading" secondItem="GRl-EB-mZX" secondAttribute="leading" id="eeX-Bd-FCq"/>
+                                    <constraint firstAttribute="trailing" secondItem="u6f-ro-Ehm" secondAttribute="trailing" id="gnk-Rw-2in"/>
+                                    <constraint firstAttribute="bottom" secondItem="u6f-ro-Ehm" secondAttribute="bottom" constant="54" id="lPA-9O-Bp2"/>
+                                    <constraint firstItem="C3v-IP-fUG" firstAttribute="top" secondItem="GRl-EB-mZX" secondAttribute="top" constant="15" id="mvb-2F-8G8"/>
+                                    <constraint firstItem="u6f-ro-Ehm" firstAttribute="top" secondItem="f5k-Rr-PH2" secondAttribute="bottom" constant="1" id="poc-Uo-U3I"/>
+                                    <constraint firstAttribute="trailing" secondItem="f5k-Rr-PH2" secondAttribute="trailing" id="zgy-Uj-UF3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="0.59681732379999997" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="GRl-EB-mZX" secondAttribute="trailing" id="4sX-Rf-7m6"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="GRl-EB-mZX" secondAttribute="leading" id="IhD-Wv-2Ul"/>
+                            <constraint firstItem="GRl-EB-mZX" firstAttribute="centerY" secondItem="yYx-4g-8hd" secondAttribute="centerY" id="vi2-d2-auQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="actionButton" destination="u6f-ro-Ehm" id="zb6-Q1-0BY"/>
+                        <outlet property="backgroundModalView" destination="GRl-EB-mZX" id="vOT-kb-1Z9"/>
+                        <outlet property="imageTextView" destination="f5k-Rr-PH2" id="R58-6c-FiL"/>
+                        <outlet property="titleLabel" destination="C3v-IP-fUG" id="nGM-CT-RXQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nxf-1J-VGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="326" y="-258"/>
+        </scene>
+        <!--Insufficient Gold View Controller-->
         <scene sceneID="cWi-pm-kiG">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="MH9-dz-o73" customClass="HRPGSingleOptionModalViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="MH9-dz-o73" customClass="HRPGInsufficientGoldViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5tr-Yz-fF8"/>
                         <viewControllerLayoutGuide type="bottom" id="Q1P-3l-hBT"/>
@@ -139,33 +220,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XMT-e1-oa1" customClass="HRPGShopModalBgView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="16" y="182" width="343" height="302"/>
+                                <rect key="frame" x="16" y="-3467.5" width="343" height="7601"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not enough Gems" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAF-Nb-1hY">
-                                        <rect key="frame" x="99.5" y="15" width="143.5" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not enough Gold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAF-Nb-1hY">
+                                        <rect key="frame" x="104" y="15" width="135" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wl4-Aq-qfJ">
-                                        <rect key="frame" x="0.0" y="252" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="7551" width="343" height="50"/>
                                         <color key="backgroundColor" red="0.97647058819999999" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="pMb-uf-UO2"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <state key="normal" title="Purchase Gems"/>
+                                        <state key="normal" title="Take me back"/>
                                         <connections>
-                                            <action selector="actionButtonPressed" destination="MH9-dz-o73" eventType="touchUpInside" id="sQo-Pp-TXz"/>
-                                            <action selector="buyPressed" destination="PIR-jb-93G" eventType="touchUpInside" id="yfg-dB-pxx"/>
+                                            <action selector="closePressed" destination="MH9-dz-o73" eventType="touchUpInside" id="rep-oM-0BN"/>
                                         </connections>
                                     </button>
                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="JPn-ef-wu2" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="52" width="343" height="198"/>
+                                        <rect key="frame" x="0.0" y="52" width="343" height="7497"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="somanygems"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="You'll need more Gems to buy this item!"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="gold_coin"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="You need to complete more tasks before you can afford this item!"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
@@ -191,17 +271,95 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="actionButton" destination="Wl4-Aq-qfJ" id="jEG-1X-N9p"/>
-                        <outlet property="imageTextView" destination="JPn-ef-wu2" id="GQu-6Y-uJH"/>
-                        <outlet property="titleLabel" destination="MAF-Nb-1hY" id="g2M-Zd-Otw"/>
+                        <outlet property="actionButton" destination="Wl4-Aq-qfJ" id="if3-Mb-J94"/>
+                        <outlet property="imageTextView" destination="JPn-ef-wu2" id="tyu-Cn-7n9"/>
+                        <outlet property="titleLabel" destination="MAF-Nb-1hY" id="9k3-dk-EPn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9IY-XY-972" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="332" y="76.911544227886068"/>
+            <point key="canvasLocation" x="1105" y="77"/>
+        </scene>
+        <!--Insufficient Hourglasses View Controller-->
+        <scene sceneID="IKx-VE-RcY">
+            <objects>
+                <viewController id="H4v-s7-uWa" customClass="HRPGInsufficientHourglassesViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ccg-vi-lXU"/>
+                        <viewControllerLayoutGuide type="bottom" id="R8r-Qm-gts"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X3q-EW-gRp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HsQ-qc-HER" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="16" y="189" width="343" height="290"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not enough Hourglasses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4L-Zx-0jp">
+                                        <rect key="frame" x="73" y="15" width="197" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="8iQ-Ji-0DG" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="46" width="343" height="139"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="hourglass"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="You'll need more Mystic Hourglasses to buy this item!"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4E3-xU-II9">
+                                        <rect key="frame" x="0.0" y="186" width="343" height="50"/>
+                                        <color key="backgroundColor" red="0.97647058819999999" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="S4I-Ib-Kbi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <state key="normal" title="Subscribe for Hourglasses"/>
+                                        <connections>
+                                            <action selector="subscribePressed" destination="H4v-s7-uWa" eventType="touchUpInside" id="tp8-ur-K0n"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="8iQ-Ji-0DG" firstAttribute="top" secondItem="HsQ-qc-HER" secondAttribute="top" constant="46" id="0O8-lF-m4l"/>
+                                    <constraint firstItem="Z4L-Zx-0jp" firstAttribute="top" secondItem="HsQ-qc-HER" secondAttribute="top" constant="15" id="Fmi-A8-aig"/>
+                                    <constraint firstItem="Z4L-Zx-0jp" firstAttribute="centerX" secondItem="HsQ-qc-HER" secondAttribute="centerX" id="atS-Lb-jwz"/>
+                                    <constraint firstAttribute="trailing" secondItem="4E3-xU-II9" secondAttribute="trailing" id="av9-In-iRh"/>
+                                    <constraint firstAttribute="trailing" secondItem="8iQ-Ji-0DG" secondAttribute="trailing" id="b5A-jh-h8J"/>
+                                    <constraint firstItem="8iQ-Ji-0DG" firstAttribute="leading" secondItem="HsQ-qc-HER" secondAttribute="leading" id="fGp-KI-4gr"/>
+                                    <constraint firstAttribute="bottom" secondItem="4E3-xU-II9" secondAttribute="bottom" constant="54" id="oi5-pY-kFT"/>
+                                    <constraint firstItem="4E3-xU-II9" firstAttribute="leading" secondItem="HsQ-qc-HER" secondAttribute="leading" id="pvG-mN-peG"/>
+                                    <constraint firstItem="4E3-xU-II9" firstAttribute="top" secondItem="8iQ-Ji-0DG" secondAttribute="bottom" constant="1" id="uWb-eD-x4O"/>
+                                    <constraint firstAttribute="height" constant="290" id="xEE-Ej-P9q"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="0.59681732379999997" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="HsQ-qc-HER" secondAttribute="trailing" id="QAN-zN-8le"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="HsQ-qc-HER" secondAttribute="leading" id="TVQ-1V-A3V"/>
+                            <constraint firstItem="HsQ-qc-HER" firstAttribute="centerY" secondItem="X3q-EW-gRp" secondAttribute="centerY" id="fH8-72-MTS"/>
+                            <constraint firstItem="HsQ-qc-HER" firstAttribute="centerX" secondItem="X3q-EW-gRp" secondAttribute="centerX" id="fMc-PP-bMe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="actionButton" destination="4E3-xU-II9" id="ebD-1f-AUz"/>
+                        <outlet property="backgroundModalView" destination="HsQ-qc-HER" id="vVT-pz-7GQ"/>
+                        <outlet property="imageTextView" destination="8iQ-Ji-0DG" id="KSm-Qm-slL"/>
+                        <outlet property="titleLabel" destination="Z4L-Zx-0jp" id="nfU-Hy-vxI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kir-XQ-nFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="325.60000000000002" y="441.22938530734638"/>
         </scene>
     </scenes>
     <resources>
-        <image name="somanygems" width="65" height="46"/>
+        <image name="84_gems" width="65" height="63"/>
+        <image name="gold_coin" width="18" height="18"/>
+        <image name="hourglass" width="48" height="51"/>
     </resources>
 </document>

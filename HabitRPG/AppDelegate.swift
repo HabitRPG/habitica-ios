@@ -38,7 +38,7 @@ class HabiticaAppDelegate: NSObject {
         
         let keys = HabiticaKeys()
         
-        Amplitude.instance().initializeApiKey(keys.amplitudeApiKey())
+        Amplitude.instance().initializeApiKey(keys.amplitudeApiKey)
     }
     
     func handleInitialLaunch() {

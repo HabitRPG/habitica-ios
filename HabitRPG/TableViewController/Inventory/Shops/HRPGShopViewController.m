@@ -34,8 +34,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
     [self setupCollectionView];
     
     self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier];
@@ -73,7 +71,7 @@
         }
         self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier];
         [self.collectionView reloadData];
-    }onError:nil];
+    } onError:nil];
 }
 
 - (void)setupNavBar {
@@ -106,6 +104,8 @@
     self.collectionView.hidden = YES;
 }
 
+#pragma mark - data source delegate
+
 - (void)didSelectItem:(ShopItem *)item {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BuyModal" bundle:nil];
     HRPGBuyItemModalViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"HRPGBuyItemModalViewController"];
@@ -113,6 +113,10 @@
     vc.shopIdentifier = self.shopIdentifier;
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self.navigationController presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.topHeaderNavigationController scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
 }
 
 #pragma mark - lazy loaders

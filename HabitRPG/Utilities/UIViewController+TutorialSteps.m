@@ -134,7 +134,7 @@
         NSError *error;
         [[HRPGManager sharedManager].getManagedObjectContext saveToPersistentStore:&error];
         [[HRPGManager sharedManager] updateUser:@{
-            [NSString stringWithFormat:@"flags.tutorial.%@.%@", type, step.identifier] : @(wasSeen)
+            [NSString stringWithFormat:@"flags.tutorial.%@.%@", type, step.identifier] : @YES
         }
                              onSuccess:nil
                                onError:nil];

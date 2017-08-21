@@ -12,7 +12,7 @@
 @property NSString *tutorialIdentifier;
 @property NSArray *coachMarks;
 @property BOOL displayedTutorialStep;
-@property HRPGExplanationView *activeTutorialView;
+@property TutorialStepView *activeTutorialView;
 
 @optional
 - (CGRect)getFrameForCoachmark:(NSString *)coachMarkIdentifier;
