@@ -159,7 +159,11 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         }
         createTag {[weak self] in
             self?.createTasks {
-                self?.showMainView()
+                self?.sharedManager?.fetchUser({ 
+                    self?.showMainView()
+                }, onError: {
+                    self?.showMainView()
+                })
             }
         }
     }

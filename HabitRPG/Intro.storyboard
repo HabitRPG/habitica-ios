@@ -136,7 +136,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="77X-dR-cTN"/>
+                                                    <constraint firstAttribute="height" priority="999" constant="40" id="77X-dR-cTN"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Username"/>
@@ -147,7 +147,7 @@
                                                 <rect key="frame" x="0.0" y="52" width="288" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="pe2-Up-pWb"/>
+                                                    <constraint firstAttribute="height" priority="999" constant="40" id="pe2-Up-pWb"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Email"/>
@@ -161,7 +161,7 @@
                                                 <rect key="frame" x="0.0" y="104" width="288" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="q1W-pm-mfm"/>
+                                                    <constraint firstAttribute="height" priority="999" constant="40" id="q1W-pm-mfm"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Password"/>
@@ -173,7 +173,7 @@
                                                 <rect key="frame" x="0.0" y="156" width="288" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="JKE-t1-Zbl"/>
+                                                    <constraint firstAttribute="height" priority="999" constant="40" id="JKE-t1-Zbl"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Repeat password"/>
@@ -402,6 +402,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="It’s time to have fun while you get things done. Join over 2 million others improving their life one task at a time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neo-od-L7b">
                                                 <rect key="frame" x="30" y="444" width="260" height="54"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="BDV-I6-rmj"/>
                                                     <constraint firstAttribute="height" priority="500" constant="21" id="BE4-Eh-MeE"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -432,8 +433,9 @@
                                             <constraint firstItem="luK-Yb-yjO" firstAttribute="top" secondItem="sLd-7O-WRu" secondAttribute="bottom" constant="28" id="5mV-Gs-aWO"/>
                                             <constraint firstItem="sLd-7O-WRu" firstAttribute="top" secondItem="n39-ny-0cS" secondAttribute="bottom" constant="12" id="BM1-j7-lxu"/>
                                             <constraint firstItem="luK-Yb-yjO" firstAttribute="leading" secondItem="IP3-xk-uI6" secondAttribute="leading" id="FY8-Po-Iri"/>
-                                            <constraint firstItem="neo-od-L7b" firstAttribute="leading" secondItem="IP3-xk-uI6" secondAttribute="leading" constant="30" id="U1s-zI-lF0"/>
-                                            <constraint firstAttribute="trailing" secondItem="neo-od-L7b" secondAttribute="trailing" constant="30" id="XbU-X8-9u9"/>
+                                            <constraint firstItem="neo-od-L7b" firstAttribute="centerX" secondItem="IP3-xk-uI6" secondAttribute="centerX" id="NhI-w5-BFL"/>
+                                            <constraint firstItem="neo-od-L7b" firstAttribute="leading" secondItem="IP3-xk-uI6" secondAttribute="leading" priority="999" constant="30" id="U1s-zI-lF0"/>
+                                            <constraint firstAttribute="trailing" secondItem="neo-od-L7b" secondAttribute="trailing" priority="999" constant="30" id="XbU-X8-9u9"/>
                                             <constraint firstItem="neo-od-L7b" firstAttribute="top" secondItem="luK-Yb-yjO" secondAttribute="bottom" constant="20" id="dC5-z8-iEt"/>
                                             <constraint firstAttribute="trailing" secondItem="n39-ny-0cS" secondAttribute="trailing" constant="30" id="dcv-kB-9OP"/>
                                             <constraint firstItem="n39-ny-0cS" firstAttribute="leading" secondItem="IP3-xk-uI6" secondAttribute="leading" constant="30" id="lRk-Pg-eh6"/>
@@ -452,6 +454,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAw-Xd-Z07">
                                                 <rect key="frame" x="30" y="444" width="260" height="72"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="IqT-s5-yra"/>
                                                     <constraint firstAttribute="height" priority="500" constant="21" id="cbw-ez-cZG"/>
                                                 </constraints>
                                                 <string key="text">Unlock features in the game by checking off your real life tasks. Earn armor, pets, and more as rewards for meeting your goals. </string>
@@ -480,13 +483,14 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.16210195422172546" green="0.58445268869400024" blue="0.80498021841049194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstItem="zAw-Xd-Z07" firstAttribute="centerX" secondItem="qyf-Ny-mhz" secondAttribute="centerX" id="2I5-3Q-3AW"/>
                                             <constraint firstAttribute="trailing" secondItem="fws-Hc-Xqv" secondAttribute="trailing" id="67X-X4-Jeq"/>
                                             <constraint firstAttribute="trailing" secondItem="7wU-9E-BYw" secondAttribute="trailing" constant="30" id="Dtj-CZ-e7L"/>
                                             <constraint firstItem="fws-Hc-Xqv" firstAttribute="centerY" secondItem="qyf-Ny-mhz" secondAttribute="centerY" id="IfY-YY-CGS"/>
                                             <constraint firstItem="fws-Hc-Xqv" firstAttribute="leading" secondItem="qyf-Ny-mhz" secondAttribute="leading" id="KQ3-X3-uck"/>
                                             <constraint firstItem="7wU-9E-BYw" firstAttribute="leading" secondItem="qyf-Ny-mhz" secondAttribute="leading" constant="30" id="LQA-3B-UYW"/>
-                                            <constraint firstAttribute="trailing" secondItem="zAw-Xd-Z07" secondAttribute="trailing" constant="30" id="LZ7-S3-dXE"/>
-                                            <constraint firstItem="zAw-Xd-Z07" firstAttribute="leading" secondItem="qyf-Ny-mhz" secondAttribute="leading" constant="30" id="Sy7-yz-z1w"/>
+                                            <constraint firstAttribute="trailing" secondItem="zAw-Xd-Z07" secondAttribute="trailing" priority="999" constant="30" id="LZ7-S3-dXE"/>
+                                            <constraint firstItem="zAw-Xd-Z07" firstAttribute="leading" secondItem="qyf-Ny-mhz" secondAttribute="leading" priority="999" constant="30" id="Sy7-yz-z1w"/>
                                             <constraint firstItem="C1J-BA-Jk4" firstAttribute="top" secondItem="7wU-9E-BYw" secondAttribute="bottom" constant="12" id="kHg-hG-wDL"/>
                                             <constraint firstItem="fws-Hc-Xqv" firstAttribute="top" secondItem="C1J-BA-Jk4" secondAttribute="bottom" constant="28" id="m21-5b-k4p"/>
                                             <constraint firstAttribute="trailing" secondItem="C1J-BA-Jk4" secondAttribute="trailing" constant="30" id="mLY-xq-j3d"/>
@@ -506,6 +510,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Keep your goals on track with help from your friends. Support each other in life and in battle as you improve together!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLQ-Gm-uoj">
                                                 <rect key="frame" x="30" y="444" width="260" height="72"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="68z-oo-iht"/>
                                                     <constraint firstAttribute="height" priority="500" constant="21" id="omd-fO-jTw"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -539,11 +544,12 @@
                                             <constraint firstItem="8JS-au-qvD" firstAttribute="top" secondItem="Y7i-gL-CVx" secondAttribute="bottom" constant="28" id="F8M-1w-OHk"/>
                                             <constraint firstItem="8JS-au-qvD" firstAttribute="centerY" secondItem="jf4-yy-Yk4" secondAttribute="centerY" id="NvX-ia-I9s"/>
                                             <constraint firstAttribute="trailing" secondItem="Zie-HC-D1t" secondAttribute="trailing" constant="30" id="Qu2-Uk-YhP"/>
-                                            <constraint firstItem="MLQ-Gm-uoj" firstAttribute="leading" secondItem="jf4-yy-Yk4" secondAttribute="leading" constant="30" id="SuO-sr-dWu"/>
+                                            <constraint firstItem="MLQ-Gm-uoj" firstAttribute="leading" secondItem="jf4-yy-Yk4" secondAttribute="leading" priority="999" constant="30" id="SuO-sr-dWu"/>
                                             <constraint firstItem="Y7i-gL-CVx" firstAttribute="leading" secondItem="jf4-yy-Yk4" secondAttribute="leading" constant="30" id="bvG-cX-GCP"/>
-                                            <constraint firstAttribute="trailing" secondItem="MLQ-Gm-uoj" secondAttribute="trailing" constant="30" id="dpu-on-3gL"/>
+                                            <constraint firstAttribute="trailing" secondItem="MLQ-Gm-uoj" secondAttribute="trailing" priority="999" constant="30" id="dpu-on-3gL"/>
                                             <constraint firstItem="MLQ-Gm-uoj" firstAttribute="top" secondItem="8JS-au-qvD" secondAttribute="bottom" constant="20" id="jmE-v1-j3s"/>
                                             <constraint firstItem="8JS-au-qvD" firstAttribute="leading" secondItem="jf4-yy-Yk4" secondAttribute="leading" id="sfx-PP-fSd"/>
+                                            <constraint firstItem="MLQ-Gm-uoj" firstAttribute="centerX" secondItem="jf4-yy-Yk4" secondAttribute="centerX" id="xC0-lH-RIl"/>
                                             <constraint firstItem="Zie-HC-D1t" firstAttribute="leading" secondItem="jf4-yy-Yk4" secondAttribute="leading" constant="30" id="xwg-f4-rF5"/>
                                         </constraints>
                                     </view>
@@ -1398,8 +1404,8 @@
         <image name="onepassword-toolbar" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5Hb-dX-OsZ"/>
+        <segue reference="aKA-6e-Im9"/>
         <segue reference="6ya-X1-F2T"/>
-        <segue reference="mhd-Im-RcK"/>
+        <segue reference="5Hb-dX-OsZ"/>
     </inferredMetricsTieBreakers>
 </document>

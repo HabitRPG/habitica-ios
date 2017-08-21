@@ -359,22 +359,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         self.viewModel.inputs.passwordRepeatChanged(passwordRepeat: textField.text)
     }
 
-    func showField(fieldHeightConstraint: NSLayoutConstraint, spacingHeightConstraint: NSLayoutConstraint) {
-        fieldHeightConstraint.constant = 44
-        spacingHeightConstraint.constant = 12
-        UIView.animate(withDuration: 0.3) {
-            self.view .layoutIfNeeded()
-        }
-    }
-
-    func hideField(fieldHeightConstraint: NSLayoutConstraint, spacingHeightConstraint: NSLayoutConstraint) {
-        fieldHeightConstraint.constant = 0
-        spacingHeightConstraint.constant = 0
-        UIView.animate(withDuration: 0.3) {
-            self.view .layoutIfNeeded()
-        }
-    }
-
     func loginButtonPressed() {
         self.viewModel.inputs.loginButtonPressed()
         self.view.endEditing(true)

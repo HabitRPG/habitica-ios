@@ -39,7 +39,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>225</string>
+	<string>226</string>
 	<key>CustomDomain</key>
 	<string>${CUSTOM_DOMAIN}</string>
 	<key>DisableSSL</key>
@@ -174,7 +174,7 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Intro</string>
 	<key>UIMainStoryboardFile~ipad</key>
-	<string>Main</string>
+	<string>Intro</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -22,10 +22,6 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
         endButton.isHidden = true
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
     func introDidFinish(_ introView: EAIntroView!, wasSkipped: Bool) {
         self.performSegue(withIdentifier: "LoginSegue", sender: self)
     }
