@@ -70,7 +70,7 @@
     [self configureNotifications:application];
 
     [self.swiftAppDelegate handleInitialLaunch];
-    [self.sharedManager changeUseAppBadge:[[NSUserDefaults standardUserDefaults] boolForKey:@"appBadgeActive"]];
+    [[HRPGManager sharedManager] changeUseAppBadge:[[NSUserDefaults standardUserDefaults] boolForKey:@"appBadgeActive"]];
 
     UILocalNotification *notification =
         launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];
@@ -131,7 +131,7 @@
                                     objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
     if (lastContentFetch == nil || [lastContentFetch timeIntervalSinceNow] < -82800 || ![lastContentFetchVersion isEqualToString:currentBuildNumber]) {
         [[NSUserDefaults standardUserDefaults] setObject:currentBuildNumber forKey:@"lastContentFetchVersion"];
-        [self.sharedManager fetchContent:nil onError:nil];
+        [[HRPGManager sharedManager] fetchContent:nil onError:nil];
     }
 }
 
@@ -558,7 +558,7 @@
 }
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
-    if (self.sharedManager.hasAuthentication) {
+    if ([HRPGManager sharedManager].hasAuthentication) {
         [[HRPGManager sharedManager] fetchTasks:^{
             completionHandler(UIBackgroundFetchResultNewData);
         } onError:^{

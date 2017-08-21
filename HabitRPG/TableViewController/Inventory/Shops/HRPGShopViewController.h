@@ -6,9 +6,9 @@
 //  Copyright © 2016 Phillip Thelen. All rights reserved.
 //
 
-#import "HRPGCollectionViewController.h"
+#import "HRPGBaseCollectionViewController.h"
 
-@interface HRPGShopViewController : HRPGCollectionViewController <UIAlertViewDelegate>
+@interface HRPGShopViewController : HRPGBaseCollectionViewController <UIAlertViewDelegate>
 
 @property NSString *shopIdentifier;
 

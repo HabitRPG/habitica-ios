@@ -157,11 +157,9 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let delegate = UIApplication.shared.delegate as? HRPGAppDelegate {
-            sharedManager = delegate.sharedManager
-            user = sharedManager?.getUser()
-            user?.setAvatarSubview(avatarView, showsBackground: false, showsMount: false, showsPet: false)
-        }
+        user = HRPGManager.shared().getUser()
+        user?.setAvatarSubview(avatarView, showsBackground: false, showsMount: false, showsPet: false)
+        
         initButtons()
     
         if self.view.frame.size.height <= 568 {

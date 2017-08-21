@@ -89,11 +89,8 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let delegate = UIApplication.shared.delegate as? HRPGAppDelegate {
-            sharedManager = delegate.sharedManager
-            user = sharedManager?.getUser()
-            user?.setAvatarSubview(avatarView, showsBackground: false, showsMount: false, showsPet: false)
-        }
+        user = HRPGManager.shared().getUser()
+        user?.setAvatarSubview(avatarView, showsBackground: false, showsMount: false, showsPet: false)
         
         let bodyGesture = UITapGestureRecognizer(target: self, action: #selector(setBodyCategory))
         bodyButton.addGestureRecognizer(bodyGesture)

@@ -62,29 +62,52 @@ class HRPGBuyItemModalViewController: UIViewController {
     
     func setupItem() {
         if let contentView = closableShopModal.shopModalBgView.contentView {
-            let itemView = HRPGSimpleShopItemView(frame: contentView.bounds)
-            itemView.shopItemTitleLabel.text = item?.text
-            if let imageName = item?.imageName {
-                HRPGManager.shared().setImage(imageName, withFormat: "png", on: itemView.shopItemImageView)
+            let itemView = HRPGSimpleShopItemView(with: item, for: contentView)
+            if let purchaseType = item?.purchaseType {
+                switch purchaseType {
+                case "quests":
+                    
+                    break
+                case "gear":
+                    if let identifier = shopIdentifier, identifier == TimeTravelersShopKey {
+                        addItemSet(itemView: itemView, to: contentView)
+                    } else {
+                        let statsView = HRPGItemStatsView(frame: CGRect.zero)
+                        addItemAndStats(itemView, statsView, to: contentView)
+                    }
+                    break
+                default:
+                    contentView.addSingleViewWithConstraints(itemView)
+                    break
+                }
             }
-            contentView.addSubview(itemView)
-            contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[itemView]-0-|",
-                                                                      options: NSLayoutFormatOptions(rawValue: 0),
-                                                                      metrics: nil,
-                                                                      views: ["itemView": itemView]))
-            contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[itemView]-0-|",
-                                                                      options: NSLayoutFormatOptions(rawValue: 0),
-                                                                      metrics: nil,
-                                                                      views: ["itemView": itemView]))
             contentView.translatesAutoresizingMaskIntoConstraints = false
-            contentView.setNeedsUpdateConstraints()
-            contentView.updateConstraints()
-            contentView.setNeedsLayout()
-            contentView.layoutIfNeeded()
+            
+            contentView.triggerLayout()
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func addItemAndStats(_ itemView: UIView, _ statsView: UIView, to contentView: UIView) {
+        let views = ["itemView": itemView, "statsView": statsView]
+        contentView.addSubview(itemView)
+        contentView.addSubview(statsView)
+        contentView.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(itemView))
+        contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[statsView]-20-|", views))
+        contentView.addConstraint(NSLayoutConstraint(item: statsView, attribute: NSLayoutAttribute.centerX,
+                                                     relatedBy: NSLayoutRelation.equal, toItem: contentView, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0))
+    }
+    
+    func addItemSet(itemView: UIView, to contentView: UIView) {
+        let scrollView = UIScrollView()
+        let scrollContentView = UIView()
+        
+        scrollContentView.addSubview(itemView)
+        scrollContentView.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(itemView))
+        
+        let firstGearSetItem = HRPGGearSetItem(frame: CGRect.zero)
+        let secondGearSetItem = HRPGGearSetItem(frame: CGRect.zero)
+        let thirdGearSetItem = HRPGGearSetItem(frame: CGRect.zero)
+        let fourthGearSetItem = HRPGGearSetItem(frame: CGRect.zero)
     }
     
     // MARK: actions
@@ -98,11 +121,15 @@ class HRPGBuyItemModalViewController: UIViewController {
                 if shopItem.purchaseType == "gear" {
                     HRPGManager.shared().purchaseMysterySet(shopItem.category?.identifier, onSuccess: {
                         self.dismiss(animated: true, completion: nil)
-                    }, onError: nil)
+                    }, onError: {
+                        self.performSegue(withIdentifier: "insufficientHourglasses", sender: self)
+                    })
                 } else {
                     HRPGManager.shared().purchaseHourglassItem(shopItem, onSuccess: {
                         self.dismiss(animated: true, completion: nil)
-                    }, onError: nil)
+                        }, onError: {
+                            self.performSegue(withIdentifier: "insufficientHourglasses", sender: self)
+                    })
                 }
             } else if relevantCurrency == "gems" && !shopItem.canBuy(NSNumber(value: HRPGManager.shared().getUser().balance.floatValue * 4.0)) {
                 performSegue(withIdentifier: "insufficientGems", sender: self)
@@ -110,11 +137,15 @@ class HRPGBuyItemModalViewController: UIViewController {
                 if relevantCurrency == "gold" && shopItem.purchaseType == "quests" {
                     HRPGManager.shared().purchaseQuest(shopItem, onSuccess: {
                         self.dismiss(animated: true, completion: nil)
-                    }, onError: nil)
+                    }, onError: {
+                        self.performSegue(withIdentifier: "insufficientGold", sender: self)
+                    })
                 } else {
                     HRPGManager.shared().purchaseItem(shopItem, onSuccess: {
                         self.dismiss(animated: true, completion: nil)
-                    }, onError: nil)
+                    }, onError: {
+                        self.performSegue(withIdentifier: "insufficientGold", sender: self)
+                    })
                 }
             }
         }
@@ -122,5 +153,36 @@ class HRPGBuyItemModalViewController: UIViewController {
     
     func closePressed() {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension NSLayoutConstraint {
+    static func defaultVerticalConstraints(_ visualFormat: String, _ views: [String: UIView]) -> [NSLayoutConstraint] {
+        return NSLayoutConstraint.constraints(withVisualFormat: visualFormat,
+                                              options: NSLayoutFormatOptions(rawValue: 0),
+                                              metrics: nil,
+                                              views: views)
+    }
+    
+    static func defaultHorizontalConstraints(_ view: UIView) -> [NSLayoutConstraint] {
+        return NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
+                                              options: NSLayoutFormatOptions(rawValue: 0),
+                                              metrics: nil,
+                                              views: ["view": view])
+    }
+}
+
+extension UIView {
+    func addSingleViewWithConstraints(_ view: UIView) {
+        self.addSubview(view)
+        self.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[view]-0-|", ["view": view]))
+        self.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(view))
+    }
+    
+    func triggerLayout() {
+        self.setNeedsUpdateConstraints()
+        self.updateConstraints()
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
     }
 }

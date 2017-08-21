@@ -39,9 +39,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let delegate = UIApplication.shared.delegate as? HRPGAppDelegate {
-            self.sharedManager = delegate.sharedManager
-        }
+        self.sharedManager = HRPGManager.shared()
         
         let nextGesture = UITapGestureRecognizer(target: self, action: #selector(scrollToNextPage))
         nextButtonView.addGestureRecognizer(nextGesture)

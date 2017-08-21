@@ -71,16 +71,16 @@
         if (![item.currentlyChecking boolValue]) {
             item.currentlyChecking = @YES;
             item.completed = @(![item.completed boolValue]);
-            [self.sharedManager scoreChecklistItem:task
-                                     checklistItem:item
-                                         onSuccess:^() {
-                                             item.currentlyChecking = @NO;
-                                             if ([self isIndexPathVisible:indexPath]) {
-                                                 [self configureCell:weakCell atIndexPath:indexPath withAnimation:YES];
-                                             }
-                                         } onError:^() {
-                                             item.currentlyChecking = @NO;
-                                         }];
+            [[HRPGManager sharedManager] scoreChecklistItem:task
+                                              checklistItem:item
+                                                  onSuccess:^() {
+                                                      item.currentlyChecking = @NO;
+                                                      if ([self isIndexPathVisible:indexPath]) {
+                                                          [self configureCell:weakCell atIndexPath:indexPath withAnimation:YES];
+                                                      }
+                                                  } onError:^() {
+                                                      item.currentlyChecking = @NO;
+                                                  }];
         }
     };
     
@@ -91,14 +91,14 @@
         if (![task.currentlyChecking boolValue]) {
             task.currentlyChecking = @YES;
             NSString *actionName = [task.completed boolValue] ? @"down" : @"up";
-            [weakSelf.sharedManager upDownTask:task
-                                     direction:actionName
-                                     onSuccess:^() {
-                                         task.currentlyChecking = @NO;
-                                     }
-                                       onError:^() {
-                                           task.currentlyChecking = @NO;
-                                       }];
+            [[HRPGManager sharedManager] upDownTask:task
+                                          direction:actionName
+                                          onSuccess:^() {
+                                              task.currentlyChecking = @NO;
+                                          }
+                                            onError:^() {
+                                                task.currentlyChecking = @NO;
+                                            }];
         }
     };
 }

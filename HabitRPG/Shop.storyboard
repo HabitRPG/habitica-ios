@@ -239,7 +239,7 @@
                 <viewControllerPlaceholder storyboardName="BuyModal" id="9Yq-Qs-oym" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Qi-LZ-Pyu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7949" y="888"/>
+            <point key="canvasLocation" x="7936" y="667"/>
         </scene>
     </scenes>
 </document>

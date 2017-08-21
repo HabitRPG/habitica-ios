@@ -15,7 +15,7 @@ class HRPGShopBannerView: UIView {
     @IBOutlet weak var shopNameLabel: UILabel!
     private var _shop: Shop?
     var shop: Shop? {
-        set(newShop){
+        set(newShop) {
             _shop = newShop
             setupShop()
         }
