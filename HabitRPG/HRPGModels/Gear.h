@@ -8,10 +8,9 @@
 
 #import <CoreData/CoreData.h>
 #import <Foundation/Foundation.h>
-#import "MetaReward.h"
 #import "User.h"
 
-@interface Gear : MetaReward
+@interface Gear : NSManagedObject
 
 @property(nonatomic, retain) NSNumber *con;
 @property(nonatomic, retain) NSNumber *index;
@@ -24,6 +23,12 @@
 @property(nonatomic) NSDate *eventEnd;
 @property(nonatomic) NSString *specialClass;
 @property(nonatomic) NSString *set;
+@property(nonatomic) NSString *key;
+@property(nonatomic) NSString *text;
+@property(nonatomic) NSString *notes;
+@property(nonatomic) NSString *type;
+@property(nonatomic) NSNumber *value;
+
 
 - (BOOL)isEquippedBy:(User *)user;
 - (BOOL)isCostumeOf:(User *)user;

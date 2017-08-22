@@ -23,3 +23,6 @@
 #import "HRPGHoledView.h"
 #import "HRPGHintView.h"
 #import <Google/Analytics.h>
+#import "Reward.h"
+#import "HRPGBaseCollectionViewController.h"
+#import "InAppReward+CoreDataClass.h"

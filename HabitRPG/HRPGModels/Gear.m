@@ -21,12 +21,11 @@
 @dynamic eventEnd;
 @dynamic specialClass;
 @dynamic set;
-
-- (void)willSave {
-    if (![self.rewardType isEqualToString:@"gear"]) {
-        self.rewardType = @"gear";
-    }
-}
+@dynamic key;
+@dynamic text;
+@dynamic notes;
+@dynamic type;
+@dynamic value;
 
 - (BOOL)isEquippedBy:(User *)user {
     if ([self.type isEqualToString:@"weapon"]) {

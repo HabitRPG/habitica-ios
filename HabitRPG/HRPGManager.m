@@ -130,7 +130,7 @@ NSString *currentUser;
     NSString *DISABLE_SSL = info[@"DisableSSL"];
 
     if (CUSTOM_DOMAIN.length == 0) {
-        CUSTOM_DOMAIN = @"habitica.com/";
+        CUSTOM_DOMAIN = @"localhost:3000/";
     }
 
     if (![[CUSTOM_DOMAIN substringFromIndex: [CUSTOM_DOMAIN length] - 1]  isEqual: @"/"]) {
@@ -141,7 +141,7 @@ NSString *currentUser;
     if ([DISABLE_SSL isEqualToString:@"true"]) {
         ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
     } else {
-        ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
+        ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
     }
 #else
     ROOT_URL = @"https://habitica.com/";
@@ -1708,31 +1708,27 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
-    gearMapping =
-        [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
-    [gearMapping addAttributeMappingsFromDictionary:@{
-        @"key" : @"key",
-        @"text" : @"text",
-        @"notes" : @"notes",
-        @"con" : @"con",
-        @"value" : @"value",
-        @"type" : @"type",
-        @"klass" : @"klass",
-        @"index" : @"index",
-        @"str" : @"str",
-        @"int" : @"intelligence",
-        @"per" : @"per",
-        @"event.start" : @"eventStart",
-        @"event.end" : @"eventEnd",
-        @"specialClass" : @"specialClass",
-        @"gearSet" : @"set"
-    }];
-    gearMapping.identificationAttributes = @[ @"key" ];
-    gearMapping.assignsDefaultValueForMissingAttributes = NO;
+    RKEntityMapping *inAppRewardsMapping =
+        [RKEntityMapping mappingForEntityForName:@"InAppReward" inManagedObjectStore:managedObjectStore];
+    [inAppRewardsMapping addAttributeMappingsFromArray:@[
+        @"key",
+        @"text",
+        @"notes",
+        @"pinType",
+        @"purchaseType",
+        @"isSuggested",
+        @"locked",
+        @"value",
+        @"currency",
+        @"path"
+    ]];
+    [inAppRewardsMapping addAttributeMappingsFromDictionary:@{@"class": @"imageName"}];
+    inAppRewardsMapping.identificationAttributes = @[ @"key" ];
+    inAppRewardsMapping.assignsDefaultValueForMissingAttributes = NO;
     responseDescriptor = [RKResponseDescriptor
-        responseDescriptorWithMapping:gearMapping
+        responseDescriptorWithMapping:inAppRewardsMapping
                                method:RKRequestMethodGET
-                          pathPattern:@"user/inventory/buy"
+                          pathPattern:@"user/in-app-rewards"
                               keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
@@ -1866,7 +1862,6 @@ NSString *currentUser;
         @"key" : @"key",
         @"value" : @"value",
         @"notes" : @"notes",
-        @"type" : @"type",
     }];
     potionMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor
@@ -1883,7 +1878,6 @@ NSString *currentUser;
         @"key" : @"key",
         @"value" : @"value",
         @"notes" : @"notes",
-        @"type" : @"type",
     }];
     armoireMapping.identificationAttributes = @[ @"key" ];
     responseDescriptor = [RKResponseDescriptor
@@ -3372,35 +3366,10 @@ NSString *currentUser;
 }
 
 - (void)fetchBuyableRewards:(void (^)())successBlock onError:(void (^)())errorBlock {
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"user/inventory/buy"
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"user/in-app-rewards"
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
-
-            NSFetchRequest *fetch = [[NSFetchRequest alloc] init];
-            NSEntityDescription *entity =
-                [NSEntityDescription entityForName:@"Gear"
-                            inManagedObjectContext:[self getManagedObjectContext]];
-            [fetch setEntity:entity];
-            [fetch setPredicate:[NSPredicate predicateWithFormat:@"buyable == true"]];
-            NSMutableArray *oldBuyableGear =
-                [[[self getManagedObjectContext] executeFetchRequest:fetch error:&executeError]
-                    mutableCopy];
-            NSArray *buyableGear = [mappingResult array];
-            for (NSObject *obj in buyableGear) {
-                if ([obj isKindOfClass:[Gear class]]) {
-                    Gear *gear = (Gear *)obj;
-                    if (![gear.buyable boolValue]) {
-                        gear.buyable = @YES;
-                    }
-                    if ([oldBuyableGear containsObject:gear]) {
-                        [oldBuyableGear removeObject:gear];
-                    }
-                }
-            }
-            for (Gear *gear in oldBuyableGear) {
-                gear.buyable = @NO;
-            }
 
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
             if (successBlock) {
