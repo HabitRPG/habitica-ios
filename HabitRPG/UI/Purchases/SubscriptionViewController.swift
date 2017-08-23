@@ -88,7 +88,7 @@ class SubscriptionViewController: HRPGBaseViewController {
 
     func completionHandler() {
         SwiftyStoreKit.completeTransactions(atomically: false) { products in
-            SwiftyStoreKit.verifyReceipt(using: self.appleValidator, password: self.itunesSharedSecret) { result in
+            SwiftyStoreKit.verifyReceipt(using: self.appleValidator, password: self.itunesSharedSecret()) { result in
                 switch result {
                 case .success(let receipt):
                     for product in products {
@@ -132,7 +132,7 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     @IBAction func checkForExistingSubscription(_ sender: Any) {
-        SwiftyStoreKit.verifyReceipt(using: self.appleValidator, password: self.itunesSharedSecret) { result in
+        SwiftyStoreKit.verifyReceipt(using: self.appleValidator, password: self.itunesSharedSecret()) { result in
             switch result {
             case .success(let verifiedReceipt):
                 guard let purchases = verifiedReceipt["latest_receipt_info"] as? [ReceiptInfo] else {
@@ -312,7 +312,7 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     func verifyAndSubscribe(_ product: PurchaseDetails) {
-        SwiftyStoreKit.verifyReceipt(using: appleValidator, password: self.itunesSharedSecret) { result in
+        SwiftyStoreKit.verifyReceipt(using: appleValidator, password: self.itunesSharedSecret()) { result in
             switch result {
             case .success(let receipt):
                 // Verify the purchase of a Subscription
