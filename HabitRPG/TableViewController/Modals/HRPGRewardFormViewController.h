@@ -10,6 +10,7 @@
 #import "Reward.h"
 #import "XLFormViewController.h"
 
+
 @interface HRPGRewardFormViewController : XLFormViewController
 
 @property(weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
 #import "Task+CoreDataClass.h"
-#import "XLFormViewController.h"
+#import <XLForm/XLForm.h>
 
 @interface HRPGFormViewController : XLFormViewController
 

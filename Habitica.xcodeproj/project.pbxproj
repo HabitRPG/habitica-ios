@@ -25,6 +25,7 @@
 		2957B8BA1F4B4B3300E836EF /* InAppRewardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2957B8B91F4B4B3300E836EF /* InAppRewardCell.xib */; };
 		2957B8BC1F4B4DDE00E836EF /* InAppRewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8BB1F4B4DDE00E836EF /* InAppRewardCell.swift */; };
 		2957B8C41F4D922C00E836EF /* CustomRewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */; };
+		2957B8C81F4DCF7800E836EF /* RewardFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C71F4DCF7800E836EF /* RewardFormController.swift */; };
 		297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */; };
 		297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */; };
 		297AF8201F29EF0D003B7194 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 297AF81F1F29EF0D003B7194 /* Intro.storyboard */; };
@@ -411,6 +412,7 @@
 		2957B8B91F4B4B3300E836EF /* InAppRewardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InAppRewardCell.xib; sourceTree = "<group>"; };
 		2957B8BB1F4B4DDE00E836EF /* InAppRewardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppRewardCell.swift; sourceTree = "<group>"; };
 		2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRewardCell.swift; sourceTree = "<group>"; };
+		2957B8C71F4DCF7800E836EF /* RewardFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardFormController.swift; sourceTree = "<group>"; };
 		297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSetupViewController.swift; sourceTree = "<group>"; };
 		297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSetupViewController.swift; sourceTree = "<group>"; };
 		297997721EFD387F00F5F13E /* HabitRPG 43.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 43.xcdatamodel"; sourceTree = "<group>"; };
@@ -1111,6 +1113,7 @@
 			isa = PBXGroup;
 			children = (
 				2957B8B21F4B2D5A00E836EF /* RewardViewController.swift */,
+				2957B8C71F4DCF7800E836EF /* RewardFormController.swift */,
 			);
 			name = Rewards;
 			sourceTree = "<group>";
@@ -1759,6 +1762,8 @@
 			children = (
 				D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */,
 				D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */,
+				2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */,
+				2957B8B71F4B2F6A00E836EF /* CustomRewardCell.xib */,
 				D9BB45601E71CD850002AE2E /* DailyTableViewCell.swift */,
 				D9BB45C91E76DF260002AE2E /* DailyTableViewCell.xib */,
 				D9BE05831DA6ADE70074D3B7 /* GemPurchaseView.xib */,
@@ -1768,11 +1773,14 @@
 				D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */,
 				D9BE05801DA6ADDB0074D3B7 /* HRPGGemPurchaseView.h */,
 				D9BE05811DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m */,
-				D9E46B0B1DAC08BE00E390D7 /* HRPGSpellTableViewCell.h */,
 				D9A1A27C1BA593D900903567 /* HRPGRewardTableViewCell.h */,
 				D9A1A27D1BA593D900903567 /* HRPGRewardTableViewCell.m */,
 				D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */,
+				494E53FA1F2C14980003683C /* HRPGShopsTableViewCell.swift */,
+				D9E46B0B1DAC08BE00E390D7 /* HRPGSpellTableViewCell.h */,
 				D9E46B0C1DAC08BE00E390D7 /* HRPGSpellTableViewCell.m */,
+				2957B8BB1F4B4DDE00E836EF /* InAppRewardCell.swift */,
+				2957B8B91F4B4B3300E836EF /* InAppRewardCell.xib */,
 				D9C0E51B1C6515AD0062C89A /* Social */,
 				D9CE90481E4DCF7D00702578 /* SubscriptionDetailView.swift */,
 				D9CE90421E4CDC9100702578 /* SubscriptionDetailView.xib */,
@@ -1783,14 +1791,9 @@
 				D9BB455A1E71C52F0002AE2E /* TaskTableViewCell.swift */,
 				D9BB45CB1E76E0FC0002AE2E /* ToDoTableViewCell.swift */,
 				D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */,
+				29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */,
 				2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */,
 				2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */,
-				29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */,
-				2957B8B71F4B2F6A00E836EF /* CustomRewardCell.xib */,
-				2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */,
-				2957B8B91F4B4B3300E836EF /* InAppRewardCell.xib */,
-				494E53FA1F2C14980003683C /* HRPGShopsTableViewCell.swift */,
-				2957B8BB1F4B4DDE00E836EF /* InAppRewardCell.swift */,
 			);
 			name = Cells;
 			path = TableviewCells;
@@ -2862,6 +2865,7 @@
 				293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */,
 				D9AEA8A11C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m in Sources */,
 				D98F5DBE1C6A1D770035CBEC /* HRPGChatTableViewCell.m in Sources */,
+				2957B8C81F4DCF7800E836EF /* RewardFormController.swift in Sources */,
 				D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */,
 				D96C85451DCBAC90003E3616 /* HRPGStreakAchievementNotification.m in Sources */,
 				490864301F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift in Sources */,

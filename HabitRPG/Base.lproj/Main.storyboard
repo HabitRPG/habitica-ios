@@ -215,7 +215,7 @@
                                         <rect key="frame" x="0.0" y="28" width="383" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J05-li-dNN" id="jVr-kD-zKG">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="66.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ppy-Da-jeQ" customClass="HRPGCheckBoxView">
@@ -354,7 +354,7 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="voZ-I6-F5G" id="6EL-SK-ylq">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uos-LF-Ppi" customClass="HRPGHabitButtons">
@@ -446,7 +446,7 @@
                                 <rect key="frame" x="0.0" y="94" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FNd-uL-wwy" id="wRg-gQ-Ryi">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Av9-d1-q9n">
@@ -497,7 +497,7 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N5p-4F-k2O" id="rmb-Zq-WLv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Acn-CN-thv" customClass="HRPGCheckBoxView">
@@ -629,7 +629,7 @@
                                 <rect key="frame" x="0.0" y="112" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0MY-oD-5od" id="64o-IQ-j5i">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jHK-TE-zgG">
@@ -702,7 +702,7 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NoV-QG-cbC" id="kRS-Hl-kdQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSZ-zc-32X" customClass="HRPGCheckBoxView">
@@ -840,7 +840,7 @@
                                 <rect key="frame" x="0.0" y="112" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rbs-eI-MDW" id="JTZ-uo-AJY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="No completed To-Dos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rRE-Ue-tyN">
@@ -914,7 +914,7 @@
         <scene sceneID="Qll-T6-t9b">
             <objects>
                 <navigationController definesPresentationContext="YES" id="TLp-c7-ouI" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wpi-h3-bV7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wpi-h3-bV7">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -936,10 +936,10 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="KkO-6T-Qmx" detailTextLabel="ciB-Fl-be7" style="IBUITableViewCellStyleSubtitle" id="WtM-z6-f0u" customClass="HRPGCopyTableViewCell">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WtM-z6-f0u" id="prJ-63-V6l">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KkO-6T-Qmx">
@@ -960,10 +960,10 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="QRCodeCell" rowHeight="320" id="N0w-xc-R7a" customClass="HRPGCopyTableViewCell">
-                                <rect key="frame" x="0.0" y="99.5" width="375" height="320"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="320"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N0w-xc-R7a" id="N3W-Gf-sNt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="319.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="319"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQf-WK-CPE" customClass="HRPGQRCodeView">
@@ -1014,7 +1014,7 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyProfileCell" textLabel="Spy-XJ-HaY" style="IBUITableViewCellStyleDefault" id="yyr-L9-GbT">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yyr-L9-GbT" id="fXl-MT-h7S">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1031,10 +1031,10 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="ugt-ba-bZL">
-                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ugt-ba-bZL" id="Wng-vv-ZBj">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mY-LD-ILX">
@@ -1063,10 +1063,10 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RewardCell" id="0Rn-bL-tBz">
-                                <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="144" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Rn-bL-tBz" id="pqN-yU-SES">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13n-af-wfc">
@@ -1083,10 +1083,10 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LockedCell" id="pc2-9F-939">
-                                <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="188" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pc2-9F-939" id="PWW-Go-gmX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ps-a8-I03">
@@ -1164,7 +1164,7 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eSi-6M-gFT" id="Ga1-su-dOp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4bf-ia-p3m">
@@ -1181,7 +1181,7 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ttF-6V-C54" id="nXi-h9-RZf">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N9q-64-zKB">
@@ -1240,10 +1240,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="117" id="tKR-B6-dxx" customClass="HRPGSpellTableViewCell">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="117"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tKR-B6-dxx" id="pxT-10-PCg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="116.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="116"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fF7-Ba-R5J">
@@ -1379,10 +1379,10 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="Q7p-n7-bvB" style="IBUITableViewCellStyleDefault" id="auC-m1-JmF">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="auC-m1-JmF" id="Byw-OT-Pwn">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q7p-n7-bvB">
@@ -1469,10 +1469,10 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SizeCell" rowHeight="60" id="Tm1-Uc-LMV">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tm1-Uc-LMV" id="CAm-b6-zAq">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sMQ-xU-ZOd">
@@ -1507,10 +1507,10 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="60" id="f81-YA-MSj">
-                                <rect key="frame" x="0.0" y="115.5" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f81-YA-MSj" id="PJy-f8-mMa">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBE-5f-NCC">
@@ -1555,10 +1555,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BackgroundCell" rowHeight="148" id="12o-Et-gC5">
-                                <rect key="frame" x="0.0" y="175.5" width="375" height="148"/>
+                                <rect key="frame" x="0.0" y="176" width="375" height="148"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="12o-Et-gC5" id="O1e-pZ-I9I">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="147.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="147"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuY-LG-irW">
@@ -1618,7 +1618,7 @@
         <scene sceneID="20L-hn-jXz">
             <objects>
                 <collectionViewController id="l5S-RX-jq2" customClass="HRPGCustomizationCollectionViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tcw-ht-irZ">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="tcw-ht-irZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1733,10 +1733,10 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="60" id="GBh-DA-b0R">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GBh-DA-b0R" id="vEO-TY-VP9">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jxE-EY-2tb">
@@ -1791,10 +1791,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Switch" rowHeight="60" id="wuo-1p-V0b">
-                                <rect key="frame" x="0.0" y="115.5" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wuo-1p-V0b" id="DS2-vy-Z4G">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddv-E0-ZJX">
@@ -1835,7 +1835,7 @@
         <scene sceneID="Ntu-Ub-BnA">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="k4g-ZO-Buh" customClass="HRPGMountMasterViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="uMo-F9-k66">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="uMo-F9-k66">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1933,7 +1933,7 @@
         <scene sceneID="U2z-Dp-QKQ">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="LGJ-iF-vTZ" customClass="HRPGMountViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Jyn-1Y-gwc">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Jyn-1Y-gwc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1992,7 +1992,7 @@
         <scene sceneID="12D-16-Ge5">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="iyK-dS-pks" customClass="HRPGPetMasterViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="0uY-w8-R73">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="0uY-w8-R73">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2089,7 +2089,7 @@
         <scene sceneID="hyi-ES-K3e">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="OMM-QF-DNw" customClass="HRPGPetViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="0NF-w0-Ru8">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="0NF-w0-Ru8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2165,10 +2165,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Nrx-0W-z8E">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nrx-0W-z8E" id="6dP-XB-lK7">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yo-02-HXt">
@@ -2232,10 +2232,10 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="60" id="vFx-BY-UBJ">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vFx-BY-UBJ" id="iSs-jo-V7M">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uYF-on-EP6">
@@ -2384,7 +2384,7 @@
         <scene sceneID="xVP-nc-WPW">
             <objects>
                 <navigationController storyboardIdentifier="PurchaseGemNavController" id="Ne7-W6-6zE" customClass="HRPGGemHeaderNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="t9n-14-0tP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="t9n-14-0tP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2400,7 +2400,7 @@
         <scene sceneID="KJ7-Ra-M0o">
             <objects>
                 <collectionViewController storyboardIdentifier="GemPurchaseViewController" id="0F5-C1-rPv" customClass="HRPGGemViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="CgT-fS-CrK">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="CgT-fS-CrK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2781,7 +2781,7 @@ and helps keep Habitica running</string>
         <scene sceneID="zXE-Rb-Ijy">
             <objects>
                 <navigationController storyboardIdentifier="ScanQRCodeNavController" id="YnE-Mq-Rpu" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hj3-fO-gIa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hj3-fO-gIa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2826,7 +2826,7 @@ and helps keep Habitica running</string>
         <scene sceneID="EKs-yn-VUc">
             <objects>
                 <navigationController storyboardIdentifier="SelectClassNavigationController" id="o94-7a-EOq" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kct-nb-9PY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kct-nb-9PY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2848,10 +2848,10 @@ and helps keep Habitica running</string>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="215" id="bSc-89-ggV">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="215"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="215"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bSc-89-ggV" id="SWp-e9-fsT">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="214.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ec-Fo-QsY">
@@ -2891,10 +2891,10 @@ and helps keep Habitica running</string>
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OptOutCell" textLabel="zUe-My-U2S" detailTextLabel="umj-c9-zIx" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="Ffs-NJ-RAz">
-                                <rect key="frame" x="0.0" y="270.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="271" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ffs-NJ-RAz" id="kkZ-nK-lrB">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zUe-My-U2S">
@@ -2983,7 +2983,7 @@ and helps keep Habitica running</string>
         <scene sceneID="Nw2-wB-jb0">
             <objects>
                 <navigationController definesPresentationContext="YES" id="2Kp-xG-Crg" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bb5-m2-Nwx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bb5-m2-Nwx">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2999,7 +2999,7 @@ and helps keep Habitica running</string>
         <scene sceneID="ruf-6E-0Qa">
             <objects>
                 <navigationController storyboardIdentifier="ItemNavigationController" id="c1T-s0-hTA" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="znX-dI-fQE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="znX-dI-fQE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3021,10 +3021,10 @@ and helps keep Habitica running</string>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="LcD-ad-91z">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LcD-ad-91z" id="kL2-IK-3rM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNO-h3-rFn">
@@ -3117,7 +3117,7 @@ and helps keep Habitica running</string>
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NGh-Kf-amr" id="0nb-CC-wXg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhU-da-mlI">
@@ -3171,7 +3171,7 @@ and helps keep Habitica running</string>
         <scene sceneID="vLJ-DI-TYv">
             <objects>
                 <navigationController storyboardIdentifier="SpellUserNavigationController" id="Rfc-Mw-2vi" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WV0-L0-HaY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WV0-L0-HaY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3322,7 +3322,7 @@ and helps keep Habitica running</string>
         <scene sceneID="Khf-yu-jYt">
             <objects>
                 <navigationController storyboardIdentifier="spellTaskNavigationController" definesPresentationContext="YES" id="3xO-lf-NoI" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="se8-RR-m5d">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="se8-RR-m5d">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3347,7 +3347,7 @@ and helps keep Habitica running</string>
                                 <rect key="frame" x="0.0" y="22" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Pc-6g-k8U" id="FzJ-S5-Zsd">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="223" translatesAutoresizingMaskIntoConstraints="NO" id="GcJ-Of-cxA">
@@ -3379,7 +3379,7 @@ and helps keep Habitica running</string>
                                 <rect key="frame" x="0.0" y="82" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v5i-w1-Kbc" id="non-2i-QIv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="183" translatesAutoresizingMaskIntoConstraints="NO" id="qjU-BV-CDx">
@@ -3472,7 +3472,7 @@ and helps keep Habitica running</string>
         <scene sceneID="9Qs-Im-7zO">
             <objects>
                 <navigationController storyboardIdentifier="tagNavigationController" definesPresentationContext="YES" id="6vN-Em-JCA" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="biY-dp-rGo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="biY-dp-rGo">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3489,7 +3489,7 @@ and helps keep Habitica running</string>
             <objects>
                 <navigationController restorationIdentifier="ProfileNavigationController" definesPresentationContext="YES" id="JSb-MY-Gwo" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Menu" image="tabbar_menu" id="hyj-Mf-lvH"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gph-cu-5tJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Gph-cu-5tJ">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3506,7 +3506,7 @@ and helps keep Habitica running</string>
             <objects>
                 <navigationController restorationIdentifier="TodoNavigationController" definesPresentationContext="YES" id="F9m-od-YIG" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="To-Dos" image="tabbar_todos" id="Np7-ws-fF6"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mXU-6R-4bg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mXU-6R-4bg">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3523,7 +3523,7 @@ and helps keep Habitica running</string>
             <objects>
                 <navigationController restorationIdentifier="DailyNavigationController" definesPresentationContext="YES" id="szj-Xo-0pc" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dailies" id="pdW-W9-wj6"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tc8-JW-aRd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Tc8-JW-aRd">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3997,7 +3997,7 @@ and helps keep Habitica running</string>
         <scene sceneID="pak-rs-9QE">
             <objects>
                 <navigationController storyboardIdentifier="LoginNavigationController" definesPresentationContext="YES" id="zXJ-qo-nbI" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="e6j-HK-n20">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="e6j-HK-n20">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -4015,7 +4015,7 @@ and helps keep Habitica running</string>
             <objects>
                 <navigationController restorationIdentifier="HabitNavigationController" definesPresentationContext="YES" id="ZPa-UZ-Rgq" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Habits" image="tabbar_habits" id="3G8-SH-Shd"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qQq-gV-VmG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qQq-gV-VmG">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4034,7 +4034,7 @@ and helps keep Habitica running</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tLB-b1-3s8" customClass="HRPGNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="GEg-Ct-SF3"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AhC-6Z-AYO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AhC-6Z-AYO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4054,7 +4054,7 @@ and helps keep Habitica running</string>
                     <tabBarItem key="tabBarItem" title="Rewards" image="tabbar_rewards" id="zFI-xr-RjT"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="qZ5-Dx-RNg"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="n1T-X7-pMj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="n1T-X7-pMj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4111,47 +4111,47 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="225" y="1906"/>
         </scene>
-        <!--Reward Form View Controller-->
-        <scene sceneID="LHs-h0-RSz">
+        <!--Reward Form Controller-->
+        <scene sceneID="WfQ-0A-0Pn">
             <objects>
-                <tableViewController id="37n-Ag-bn4" customClass="HRPGRewardFormViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="g9Y-aA-qH1">
+                <viewController id="mMl-Xg-j3Q" customClass="RewardFormController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LbT-G2-CNw"/>
+                        <viewControllerLayoutGuide type="bottom" id="jpp-Jf-eAr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1a9-2P-da2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Si0-52-bQk">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="PYk-4a-OMK">
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eJi-1R-8Rh">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ul5-ME-Bxo">
                             <connections>
-                                <segue destination="rgg-AM-q0z" kind="unwind" unwindAction="unwindToList:" id="fbF-CW-Dkk"/>
+                                <segue destination="KBU-oV-QgV" kind="unwind" identifier="unwindSegue" unwindAction="undindToListWithSegue:" id="mQw-6l-wD5"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Peg-zj-HAS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="AeE-Zi-wf0">
                             <connections>
-                                <segue destination="rgg-AM-q0z" kind="unwind" identifier="unwindSaveSegue" unwindAction="unwindToListSave:" id="9Kl-e2-sOh"/>
+                                <segue destination="KBU-oV-QgV" kind="unwind" identifier="unwindSaveSegue" unwindAction="unwindToSaveRewardWithSegue:" id="qcG-N3-t6a"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="cancelButton" destination="PYk-4a-OMK" id="QA2-kA-hIc"/>
-                        <outlet property="doneButton" destination="Peg-zj-HAS" id="zg5-e4-eYj"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EDg-4r-Qw7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="rgg-AM-q0z" userLabel="Exit" sceneMemberID="exit"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jha-7V-UUA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="KBU-oV-QgV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="226" y="2641"/>
+            <point key="canvasLocation" x="343" y="2641"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5Un-yC-qQm">
             <objects>
                 <navigationController definesPresentationContext="YES" id="IOk-9k-SGo" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fUl-qS-mY6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fUl-qS-mY6">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="37n-Ag-bn4" kind="relationship" relationship="rootViewController" id="k70-xe-dcQ"/>
+                        <segue destination="mMl-Xg-j3Q" kind="relationship" relationship="rootViewController" id="13l-Ld-RCQ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uea-va-1RX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4163,7 +4163,7 @@ and helps keep Habitica running</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="vVF-2L-yft" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ghi-ex-tfu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ghi-ex-tfu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
