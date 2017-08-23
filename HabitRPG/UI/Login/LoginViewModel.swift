@@ -303,13 +303,13 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             return
         }
         let keys = HabiticaKeys()
-        guard let redirectUrl = URL(string: keys.googleRedirectUrl()) else {
+        guard let redirectUrl = URL(string: keys.googleRedirectUrl) else {
             return
         }
         let configuration = OIDServiceConfiguration(authorizationEndpoint: authorizationEndpoint, tokenEndpoint: tokenEndpoint)
 
         let request = OIDAuthorizationRequest.init(configuration: configuration,
-                                                   clientId: keys.googleClient(),
+                                                   clientId: keys.googleClient,
                                                    scopes: [OIDScopeOpenID, OIDScopeProfile],
                                                    redirectURL: redirectUrl,
                                                    responseType: OIDResponseTypeCode,
