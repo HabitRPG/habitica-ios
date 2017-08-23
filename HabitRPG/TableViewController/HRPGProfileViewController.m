@@ -49,7 +49,7 @@ NIKFontAwesomeIconFactory *iconFactory;
     
     if (self.topHeaderNavigationController.shouldHideTopHeader) {
         self.topHeaderNavigationController.shouldHideTopHeader = NO;
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
 }
 

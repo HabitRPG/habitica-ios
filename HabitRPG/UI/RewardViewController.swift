@@ -49,7 +49,7 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
     }
     
     func refresh() {
-        self.sharedManager.fetchBuyableRewards({[weak self] in
+        HRPGManager.shared().fetchBuyableRewards({[weak self] in
             self?.refreshControl.endRefreshing()
         }) {[weak self] in
             self?.refreshControl.endRefreshing()
@@ -74,7 +74,7 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InAppRewardCell", for: indexPath)
             if let rewardCell = cell as? InAppRewardCell {
-                rewardCell.configure(reward: self.fetchedResultsController.object(at: indexPath), manager: sharedManager)
+                rewardCell.configure(reward: self.fetchedResultsController.object(at: indexPath), manager: HRPGManager.shared())
             }
             return cell
         }

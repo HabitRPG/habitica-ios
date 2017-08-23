@@ -21,7 +21,6 @@ class ChallengeTableViewControllerTests: HabiticaTests {
         let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: self.sharedManager.getManagedObjectContext()) as! User
         user.id = "userId"
         sharedManager.user = user
-        viewController.sharedManager = sharedManager
     }
     
     override func tearDown() {

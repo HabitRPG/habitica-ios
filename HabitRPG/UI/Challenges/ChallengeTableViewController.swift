@@ -12,8 +12,6 @@ import ReactiveSwift
 import ReactiveCocoa
 
 class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate, ChallengeFilterChangedDelegate {
-
-    var sharedManager: HRPGManager!
     
     var selectedChallenge: Challenge?
     var searchText: String?
@@ -37,11 +35,11 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.joinInteractor = JoinChallengeInteractor(self.sharedManager)
-        self.leaveInteractor = LeaveChallengeInteractor(self.sharedManager, presentingViewController: self)
+        self.joinInteractor = JoinChallengeInteractor()
+        self.leaveInteractor = LeaveChallengeInteractor(presentingViewController: self)
 
         self.configureTableView()
-        self.sharedManager.fetchChallenges(nil, onError: nil)
+        HRPGManager.shared().fetchChallenges(nil, onError: nil)
 
     }
 
@@ -141,7 +139,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
             self.performSegue(withIdentifier: "ChallengeDetailSegue", sender: self)
         } else {
             let viewController = ChallengeDetailAlert(nibName: "ChallengeDetailAlert", bundle: Bundle.main)
-            self.sharedManager.fetchChallengeTasks(self.selectedChallenge, onSuccess: {[weak self] () in
+            HRPGManager.shared().fetchChallengeTasks(self.selectedChallenge, onSuccess: {[weak self] () in
                 viewController.challenge = self?.selectedChallenge
             }, onError: nil)
             viewController.challenge = self.selectedChallenge
@@ -211,7 +209,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         var searchComponents = [String]()
 
         if self.showOwned != self.showNotOwned {
-            let userId = self.sharedManager.getUser().id ?? ""
+            let userId = HRPGManager.shared().getUser().id ?? ""
             if self.showOwned {
                 searchComponents.append("leaderId == \'\(userId)\'")
             } else {
@@ -235,7 +233,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
             }
         }
         if self.showOnlyUserChallenges {
-            let userId = self.sharedManager.getUser().id ?? ""
+            let userId = HRPGManager.shared().getUser().id ?? ""
             searchComponents.append("user.id == \'\(userId)\'")
         }
 

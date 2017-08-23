@@ -10,16 +10,11 @@ import UIKit
 import ReactiveSwift
 
 class JoinChallengeInteractor: Interactor<Challenge, Bool> {
-    let sharedManager: HRPGManager
-
-    init(_ sharedManager: HRPGManager) {
-        self.sharedManager = sharedManager
-    }
 
     override func configure(signal: Signal<Challenge, NSError>) -> Signal<Bool, NSError> {
-        return signal.flatMap(.concat) {[weak self] (challenge) -> Signal<Bool, NSError> in
+        return signal.flatMap(.concat) {(challenge) -> Signal<Bool, NSError> in
             let (signal, observer) = Signal<Bool, NSError>.pipe()
-            self?.sharedManager.join(challenge, onSuccess: {
+            HRPGManager.shared().join(challenge, onSuccess: {
                 observer.send(value: true)
             }, onError: {
                 observer.send(error: NSError())

@@ -10,11 +10,9 @@ import UIKit
 import ReactiveSwift
 
 class LeaveChallengeInteractor: Interactor<Challenge, Bool> {
-    let sharedManager: HRPGManager
     weak var presentingController: UIViewController?
 
-    init(_ sharedManager: HRPGManager, presentingViewController: UIViewController) {
-        self.sharedManager = sharedManager
+    init(presentingViewController: UIViewController) {
         self.presentingController = presentingViewController
     }
 
@@ -27,7 +25,7 @@ class LeaveChallengeInteractor: Interactor<Challenge, Bool> {
                 return shouldLeave
             }.flatMap(.concat) {[weak self] (_, keepTasks, challenge) -> Signal<Bool, NSError> in
                 let (signal, observer) = Signal<Bool, NSError>.pipe()
-                self?.sharedManager.leave(challenge, keepTasks:keepTasks, onSuccess: {
+                HRPGManager.shared().leave(challenge, keepTasks:keepTasks, onSuccess: {
                     observer.send(value: false)
                 }, onError: {
                     observer.send(error: NSError())

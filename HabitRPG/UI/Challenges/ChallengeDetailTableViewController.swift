@@ -27,12 +27,11 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
     weak var displayedAlert: ChallengeDetailAlert?
     @IBOutlet weak private var joinLeaveButton: UIBarButtonItem!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.joinInteractor = JoinChallengeInteractor(HRPGManager.shared())
-        self.leaveInteractor = LeaveChallengeInteractor(HRPGManager.shared(), presentingViewController: self)
+        self.joinInteractor = JoinChallengeInteractor()
+        self.leaveInteractor = LeaveChallengeInteractor(presentingViewController: self)
 
         fetchChallenge()
 
