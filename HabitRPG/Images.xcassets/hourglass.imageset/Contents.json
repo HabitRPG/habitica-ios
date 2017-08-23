@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "inventory_special_trinket.png",
+      "filename" : "currency_hourglass.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "currency_hourglass-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "currency_hourglass-2.png",
       "scale" : "3x"
     }
   ],
