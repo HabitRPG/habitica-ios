@@ -76,7 +76,7 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InAppRewardCell", for: indexPath)
             if let rewardCell = cell as? InAppRewardCell {
-                rewardCell.configure(reward: self.fetchedResultsController.object(at: indexPath), manager: HRPGManager.shared())
+                rewardCell.configure(reward: self.fetchedResultsController.object(at: indexPath))
             }
             return cell
         }
@@ -90,6 +90,7 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
             let storyboard = UIStoryboard(name: "BuyModal", bundle: nil)
             if let viewController = storyboard.instantiateViewController(withIdentifier: "HRPGBuyItemModalViewController") as? HRPGBuyItemModalViewController {
                 viewController.modalTransitionStyle = .crossDissolve
+                viewController.reward = self.fetchedResultsController.object(at: indexPath)
                 self.present(viewController, animated: true, completion: nil)
             }
         }

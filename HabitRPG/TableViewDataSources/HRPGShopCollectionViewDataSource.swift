@@ -32,17 +32,13 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
         if let item = fetchedResultsController?.sections?[indexPath.section].objects?[indexPath.item] as? ShopItem {
-            //set currency
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
             if let itemCell = cell as? InAppRewardCell {
+                itemCell.configure(item: item)
             }
-            
-            return cell
         }
-        
-        return UICollectionViewCell()
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -26,7 +26,7 @@ class InAppRewardCell: UICollectionViewCell {
         }
     }
     
-    func configure(reward: MetaReward, manager: HRPGManager) {
+    func configure(reward: MetaReward) {
         currencyView.amount = reward.value.intValue
         if let inAppReward = reward as? InAppReward {
             imageName = inAppReward.imageName ?? ""
@@ -36,14 +36,14 @@ class InAppRewardCell: UICollectionViewCell {
         } else {
             currencyView.currency = .gold
             if reward.key == "potion" {
-                manager.setImage("shop_potion", withFormat: "png", on: imageView)
+                HRPGManager.shared().setImage("shop_potion", withFormat: "png", on: imageView)
             } else if reward.key == "armoire" {
-                manager.setImage("shop_armoire", withFormat: "png", on: imageView)
+                HRPGManager.shared().setImage("shop_armoire", withFormat: "png", on: imageView)
             }
         }
     }
     
-    func configure(item: ShopItem, manager: HRPGManager) {
+    func configure(item: ShopItem) {
         currencyView.amount = item.value?.intValue ?? 0
         imageName = item.imageName ?? ""
         if let currencyString = item.currency, let currency = Currency(rawValue: currencyString) {
