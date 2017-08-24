@@ -146,6 +146,13 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRl-EB-mZX" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
                                 <rect key="frame" x="16" y="188" width="343" height="290"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="290" id="KO8-zR-per"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CV4-Pe-f0l">
+                                <rect key="frame" x="16" y="188" width="343" height="236"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not enough Gems" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3v-IP-fUG">
                                         <rect key="frame" x="99.5" y="15" width="144" height="21"/>
@@ -153,12 +160,13 @@
                                         <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="f5k-Rr-PH2" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="46" width="343" height="139"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5k-Rr-PH2" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="46" width="343" height="140"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="84_gems"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="You'll need more Gems to buy this item!"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shouldHideNotes" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6f-ro-Ehm">
@@ -176,24 +184,32 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="C3v-IP-fUG" firstAttribute="centerX" secondItem="GRl-EB-mZX" secondAttribute="centerX" id="1oF-RM-Rcm"/>
-                                    <constraint firstItem="f5k-Rr-PH2" firstAttribute="top" secondItem="GRl-EB-mZX" secondAttribute="top" constant="46" id="3to-7r-b9J"/>
-                                    <constraint firstItem="u6f-ro-Ehm" firstAttribute="leading" secondItem="GRl-EB-mZX" secondAttribute="leading" id="43S-b6-MbI"/>
-                                    <constraint firstAttribute="height" constant="290" id="KO8-zR-per"/>
-                                    <constraint firstItem="f5k-Rr-PH2" firstAttribute="leading" secondItem="GRl-EB-mZX" secondAttribute="leading" id="eeX-Bd-FCq"/>
-                                    <constraint firstAttribute="trailing" secondItem="u6f-ro-Ehm" secondAttribute="trailing" id="gnk-Rw-2in"/>
-                                    <constraint firstAttribute="bottom" secondItem="u6f-ro-Ehm" secondAttribute="bottom" constant="54" id="lPA-9O-Bp2"/>
-                                    <constraint firstItem="C3v-IP-fUG" firstAttribute="top" secondItem="GRl-EB-mZX" secondAttribute="top" constant="15" id="mvb-2F-8G8"/>
-                                    <constraint firstItem="u6f-ro-Ehm" firstAttribute="top" secondItem="f5k-Rr-PH2" secondAttribute="bottom" constant="1" id="poc-Uo-U3I"/>
-                                    <constraint firstAttribute="trailing" secondItem="f5k-Rr-PH2" secondAttribute="trailing" id="zgy-Uj-UF3"/>
+                                    <constraint firstItem="f5k-Rr-PH2" firstAttribute="leading" secondItem="CV4-Pe-f0l" secondAttribute="leading" id="01C-e5-4Ow"/>
+                                    <constraint firstItem="u6f-ro-Ehm" firstAttribute="leading" secondItem="CV4-Pe-f0l" secondAttribute="leading" id="0Tq-kI-UQx"/>
+                                    <constraint firstItem="f5k-Rr-PH2" firstAttribute="top" secondItem="CV4-Pe-f0l" secondAttribute="top" constant="46" id="2D2-wk-Z97"/>
+                                    <constraint firstItem="C3v-IP-fUG" firstAttribute="top" secondItem="CV4-Pe-f0l" secondAttribute="top" constant="15" id="Fgn-yr-Rv4"/>
+                                    <constraint firstItem="u6f-ro-Ehm" firstAttribute="top" secondItem="f5k-Rr-PH2" secondAttribute="bottom" id="Kif-FR-gcR"/>
+                                    <constraint firstAttribute="trailing" secondItem="u6f-ro-Ehm" secondAttribute="trailing" id="Lyg-dJ-SHX"/>
+                                    <constraint firstAttribute="trailing" secondItem="f5k-Rr-PH2" secondAttribute="trailing" id="iMK-JD-dJt"/>
+                                    <constraint firstItem="C3v-IP-fUG" firstAttribute="centerX" secondItem="CV4-Pe-f0l" secondAttribute="centerX" id="m4g-ON-Zht"/>
+                                    <constraint firstAttribute="bottom" secondItem="u6f-ro-Ehm" secondAttribute="bottom" id="uL1-Ow-Dbn"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="0.59681732379999997" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="GRl-EB-mZX" secondAttribute="trailing" id="4sX-Rf-7m6"/>
+                            <constraint firstItem="CV4-Pe-f0l" firstAttribute="bottom" secondItem="GRl-EB-mZX" secondAttribute="bottom" constant="-54" id="4zS-XU-DS0"/>
+                            <constraint firstItem="CV4-Pe-f0l" firstAttribute="trailing" secondItem="GRl-EB-mZX" secondAttribute="trailing" id="IMs-2l-hyd"/>
                             <constraint firstAttribute="leadingMargin" secondItem="GRl-EB-mZX" secondAttribute="leading" id="IhD-Wv-2Ul"/>
+                            <constraint firstItem="CV4-Pe-f0l" firstAttribute="top" secondItem="GRl-EB-mZX" secondAttribute="top" id="eOv-3v-Ehm"/>
                             <constraint firstItem="GRl-EB-mZX" firstAttribute="centerY" secondItem="yYx-4g-8hd" secondAttribute="centerY" id="vi2-d2-auQ"/>
+                            <constraint firstItem="CV4-Pe-f0l" firstAttribute="leading" secondItem="GRl-EB-mZX" secondAttribute="leading" id="wnS-7F-i96"/>
                         </constraints>
                     </view>
                     <connections>
@@ -220,7 +236,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XMT-e1-oa1" customClass="HRPGShopModalBgView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="16" y="-3467.5" width="343" height="7601"/>
+                                <rect key="frame" x="16" y="212" width="343" height="243"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not enough Gold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAF-Nb-1hY">
                                         <rect key="frame" x="104" y="15" width="135" height="21"/>
@@ -229,7 +245,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wl4-Aq-qfJ">
-                                        <rect key="frame" x="0.0" y="7551" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="193" width="343" height="50"/>
                                         <color key="backgroundColor" red="0.97647058819999999" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="pMb-uf-UO2"/>
@@ -241,11 +257,15 @@
                                         </connections>
                                     </button>
                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="JPn-ef-wu2" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="52" width="343" height="7497"/>
+                                        <rect key="frame" x="0.0" y="52" width="343" height="139"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="139" id="clb-WV-yX3"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="gold_coin"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="You need to complete more tasks before you can afford this item!"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shouldHideNotes" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
@@ -294,6 +314,13 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HsQ-qc-HER" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
                                 <rect key="frame" x="16" y="189" width="343" height="290"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="290" id="xEE-Ej-P9q"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vg2-zG-ztx">
+                                <rect key="frame" x="16" y="189" width="343" height="236"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not enough Hourglasses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4L-Zx-0jp">
                                         <rect key="frame" x="73" y="15" width="197" height="21"/>
@@ -301,12 +328,13 @@
                                         <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="8iQ-Ji-0DG" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8iQ-Ji-0DG" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="46" width="343" height="139"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="hourglass"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="You'll need more Mystic Hourglasses to buy this item!"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shouldHideNotes" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4E3-xU-II9">
@@ -324,25 +352,33 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="8iQ-Ji-0DG" firstAttribute="top" secondItem="HsQ-qc-HER" secondAttribute="top" constant="46" id="0O8-lF-m4l"/>
-                                    <constraint firstItem="Z4L-Zx-0jp" firstAttribute="top" secondItem="HsQ-qc-HER" secondAttribute="top" constant="15" id="Fmi-A8-aig"/>
-                                    <constraint firstItem="Z4L-Zx-0jp" firstAttribute="centerX" secondItem="HsQ-qc-HER" secondAttribute="centerX" id="atS-Lb-jwz"/>
-                                    <constraint firstAttribute="trailing" secondItem="4E3-xU-II9" secondAttribute="trailing" id="av9-In-iRh"/>
-                                    <constraint firstAttribute="trailing" secondItem="8iQ-Ji-0DG" secondAttribute="trailing" id="b5A-jh-h8J"/>
-                                    <constraint firstItem="8iQ-Ji-0DG" firstAttribute="leading" secondItem="HsQ-qc-HER" secondAttribute="leading" id="fGp-KI-4gr"/>
-                                    <constraint firstAttribute="bottom" secondItem="4E3-xU-II9" secondAttribute="bottom" constant="54" id="oi5-pY-kFT"/>
-                                    <constraint firstItem="4E3-xU-II9" firstAttribute="leading" secondItem="HsQ-qc-HER" secondAttribute="leading" id="pvG-mN-peG"/>
-                                    <constraint firstItem="4E3-xU-II9" firstAttribute="top" secondItem="8iQ-Ji-0DG" secondAttribute="bottom" constant="1" id="uWb-eD-x4O"/>
-                                    <constraint firstAttribute="height" constant="290" id="xEE-Ej-P9q"/>
+                                    <constraint firstItem="Z4L-Zx-0jp" firstAttribute="centerX" secondItem="Vg2-zG-ztx" secondAttribute="centerX" id="3RT-LQ-dXo"/>
+                                    <constraint firstAttribute="bottom" secondItem="4E3-xU-II9" secondAttribute="bottom" id="4ra-9s-RVb"/>
+                                    <constraint firstItem="8iQ-Ji-0DG" firstAttribute="top" secondItem="Vg2-zG-ztx" secondAttribute="top" constant="46" id="GPD-Rc-93b"/>
+                                    <constraint firstAttribute="trailing" secondItem="4E3-xU-II9" secondAttribute="trailing" id="MmT-ir-CGE"/>
+                                    <constraint firstItem="4E3-xU-II9" firstAttribute="leading" secondItem="Vg2-zG-ztx" secondAttribute="leading" id="Z7l-iz-nGC"/>
+                                    <constraint firstItem="4E3-xU-II9" firstAttribute="top" secondItem="8iQ-Ji-0DG" secondAttribute="bottom" constant="1" id="ddc-r8-qwI"/>
+                                    <constraint firstItem="8iQ-Ji-0DG" firstAttribute="leading" secondItem="Vg2-zG-ztx" secondAttribute="leading" id="vLZ-KQ-lht"/>
+                                    <constraint firstItem="Z4L-Zx-0jp" firstAttribute="top" secondItem="Vg2-zG-ztx" secondAttribute="top" constant="15" id="vcj-0k-OTH"/>
+                                    <constraint firstAttribute="trailing" secondItem="8iQ-Ji-0DG" secondAttribute="trailing" id="xYK-oN-CTa"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="0.59681732379999997" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Vg2-zG-ztx" firstAttribute="top" secondItem="HsQ-qc-HER" secondAttribute="top" id="0Tr-fS-nFh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HsQ-qc-HER" secondAttribute="trailing" id="QAN-zN-8le"/>
                             <constraint firstAttribute="leadingMargin" secondItem="HsQ-qc-HER" secondAttribute="leading" id="TVQ-1V-A3V"/>
+                            <constraint firstItem="Vg2-zG-ztx" firstAttribute="bottom" secondItem="HsQ-qc-HER" secondAttribute="bottom" constant="-54" id="eYE-bX-1Eo"/>
                             <constraint firstItem="HsQ-qc-HER" firstAttribute="centerY" secondItem="X3q-EW-gRp" secondAttribute="centerY" id="fH8-72-MTS"/>
                             <constraint firstItem="HsQ-qc-HER" firstAttribute="centerX" secondItem="X3q-EW-gRp" secondAttribute="centerX" id="fMc-PP-bMe"/>
+                            <constraint firstItem="Vg2-zG-ztx" firstAttribute="trailing" secondItem="HsQ-qc-HER" secondAttribute="trailing" id="mVB-ZO-gGF"/>
+                            <constraint firstItem="Vg2-zG-ztx" firstAttribute="leading" secondItem="HsQ-qc-HER" secondAttribute="leading" id="uMW-5N-dkY"/>
                         </constraints>
                     </view>
                     <connections>
@@ -360,6 +396,6 @@
     <resources>
         <image name="84_gems" width="65" height="63"/>
         <image name="gold_coin" width="18" height="18"/>
-        <image name="hourglass" width="48" height="51"/>
+        <image name="hourglass" width="24" height="24"/>
     </resources>
 </document>

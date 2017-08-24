@@ -134,28 +134,28 @@ NSString *currentUser;
 
     NSString *ROOT_URL = nil;
 
-#ifdef DEBUG
-    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
-    NSString *CUSTOM_DOMAIN = info[@"CustomDomain"];
-    NSString *DISABLE_SSL = info[@"DisableSSL"];
-
-    if (CUSTOM_DOMAIN.length == 0) {
-        CUSTOM_DOMAIN = @"localhost:3000/";
-    }
-
-    if (![[CUSTOM_DOMAIN substringFromIndex: [CUSTOM_DOMAIN length] - 1]  isEqual: @"/"]) {
-        CUSTOM_DOMAIN = [CUSTOM_DOMAIN stringByAppendingString:@"/"];
-    }
-
-
-    if ([DISABLE_SSL isEqualToString:@"true"]) {
-        ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
-    } else {
-        ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
-    }
-#else
+//#ifdef DEBUG
+//    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+//    NSString *CUSTOM_DOMAIN = info[@"CustomDomain"];
+//    NSString *DISABLE_SSL = info[@"DisableSSL"];
+//
+//    if (CUSTOM_DOMAIN.length == 0) {
+//        CUSTOM_DOMAIN = @"localhost:3000/";
+//    }
+//
+//    if (![[CUSTOM_DOMAIN substringFromIndex: [CUSTOM_DOMAIN length] - 1]  isEqual: @"/"]) {
+//        CUSTOM_DOMAIN = [CUSTOM_DOMAIN stringByAppendingString:@"/"];
+//    }
+//
+//
+//    if ([DISABLE_SSL isEqualToString:@"true"]) {
+//        ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
+//    } else {
+//        ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
+//    }
+//#else
     ROOT_URL = @"https://habitica.com/";
-#endif
+//#endif
 
     ROOT_URL = [ROOT_URL stringByAppendingString:@"api/v3/"];
 

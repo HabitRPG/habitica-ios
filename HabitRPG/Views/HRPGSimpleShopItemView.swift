@@ -14,6 +14,26 @@ class HRPGSimpleShopItemView: UIView {
     @IBOutlet weak var shopItemTitleLabel: UILabel!
     @IBOutlet weak var shopItemDescriptionLabel: UILabel!
     @IBOutlet weak var notesMargin: NSLayoutConstraint!
+    @IBInspectable var shouldHideNotes: Bool {
+        get {
+            return shopItemDescriptionLabel.isHidden
+        }
+        set(shouldHideNotes) {
+            if shouldHideNotes {
+                self.shopItemDescriptionLabel.isHidden = true
+                if let label = self.shopItemDescriptionLabel {
+                    let constraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal,
+                                                        toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
+                    self.shopItemDescriptionLabel.addConstraint(constraint)
+                    self.notesMargin.constant = 0
+                }
+            } else {
+                self.shopItemDescriptionLabel.isHidden = false
+                self.shopItemDescriptionLabel.removeConstraints(self.shopItemDescriptionLabel.constraints)
+                self.notesMargin.constant = 12
+            }
+        }
+    }
     
     @IBInspectable var image: UIImage? {
         get {
@@ -59,13 +79,9 @@ class HRPGSimpleShopItemView: UIView {
         
         if let notes = item?.notes {
             self.shopItemDescriptionLabel.text = notes
+            self.shouldHideNotes = false
         } else {
-            self.shopItemDescriptionLabel.text = ""
-            if let label = self.shopItemDescriptionLabel {
-                let constraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal,
-                                                    toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
-                self.shopItemDescriptionLabel.addConstraint(constraint)
-            }
+            self.shouldHideNotes = true
         }
     }
     

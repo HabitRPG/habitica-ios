@@ -60,6 +60,7 @@
 		493ECBB51F47A58F0099B1FC /* HRPGItemStatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 493ECBB41F47A58F0099B1FC /* HRPGItemStatsView.xib */; };
 		493ECBB71F47D7E10099B1FC /* HRPGGearSetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493ECBB61F47D7E10099B1FC /* HRPGGearSetItem.swift */; };
 		493ECBB91F47D82A0099B1FC /* HRPGGearSetItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 493ECBB81F47D82A0099B1FC /* HRPGGearSetItem.xib */; };
+		493ECBCB1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493ECBCA1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift */; };
 		494E53FB1F2C14980003683C /* HRPGShopsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E53FA1F2C14980003683C /* HRPGShopsTableViewCell.swift */; };
 		494E53FE1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E53FD1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m */; };
 		494E54011F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54001F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m */; };
@@ -453,6 +454,7 @@
 		493ECBB41F47A58F0099B1FC /* HRPGItemStatsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGItemStatsView.xib; sourceTree = "<group>"; };
 		493ECBB61F47D7E10099B1FC /* HRPGGearSetItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGGearSetItem.swift; sourceTree = "<group>"; };
 		493ECBB81F47D82A0099B1FC /* HRPGGearSetItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGGearSetItem.xib; sourceTree = "<group>"; };
+		493ECBCA1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopsOverviewViewModel.swift; sourceTree = "<group>"; };
 		494E53FA1F2C14980003683C /* HRPGShopsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopsTableViewCell.swift; sourceTree = "<group>"; };
 		494E53FC1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HRPGTopHeaderNavigationController.h"; sourceTree = "<group>"; };
 		494E53FD1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HRPGTopHeaderNavigationController.m"; sourceTree = "<group>"; };
@@ -1139,6 +1141,16 @@
 			name = Shop;
 			sourceTree = "<group>";
 		};
+		493ECBC91F4DD7DD0099B1FC /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				494E54231F3124890003683C /* HRPGShopViewModel.h */,
+				494E54241F3124890003683C /* HRPGShopViewModel.m */,
+				493ECBCA1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift */,
+			);
+			name = "View Models";
+			sourceTree = "<group>";
+		};
 		494E54051F2D7F9E0003683C /* TVDataSources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1605,6 +1617,7 @@
 		D9B5C0EB18D6321400C8D1B7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				493ECBC91F4DD7DD0099B1FC /* View Models */,
 				D9C3D01D19509E4C00D22A4A /* Core Data */,
 				D9B5C0E818D6320C00C8D1B7 /* HRPGLoginData.h */,
 				D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */,
@@ -1622,8 +1635,6 @@
 				D903B7881DCA2BE6001F2893 /* HRPGNotification.m */,
 				D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */,
 				29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */,
-				494E54231F3124890003683C /* HRPGShopViewModel.h */,
-				494E54241F3124890003683C /* HRPGShopViewModel.m */,
 			);
 			name = Models;
 			path = HRPGModels;
@@ -2788,6 +2799,7 @@
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,
 				D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */,
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
+				493ECBCB1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift in Sources */,
 				2957B8BC1F4B4DDE00E836EF /* InAppRewardCell.swift in Sources */,
 				D9BB45CC1E76E0FC0002AE2E /* ToDoTableViewCell.swift in Sources */,
 				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,

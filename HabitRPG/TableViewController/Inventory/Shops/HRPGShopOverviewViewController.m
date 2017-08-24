@@ -15,8 +15,9 @@
 #import "Habitica-Swift.h"
 #import "HRPGShopOverviewTableViewDataSource.h"
 
-@interface HRPGShopOverviewViewController () <HRPGShopOverviewTableViewDataSourceDelegate>
+@interface HRPGShopOverviewViewController () <HRPGShopsOverviewViewModelDelegate>
 @property (nonatomic) NSMutableDictionary *shopDictionary;
+@property (nonatomic) HRPGShopsOverviewViewModel *viewModel;
 @property (nonatomic) HRPGShopOverviewTableViewDataSource *dataSource;
 
 @end
@@ -25,7 +26,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupShopDictionary];
+    
+    self.viewModel.delegate = self;
+    [self.viewModel fetchShops];
+    [self.viewModel refreshShops];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -34,21 +38,7 @@
 }
 
 - (void)setupShopDictionary {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Shop"
-                                              inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    NSError *error;
-    NSArray *shops = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    if (shops) {
-        self.shopDictionary = [NSMutableDictionary dictionaryWithCapacity:shops.count];
-        for (Shop *shop in shops) {
-            [self.shopDictionary setObject:shop forKey:shop.identifier];
-        }
-    }
-    
-    self.dataSource.delegate = self;
-    self.dataSource.shopDictionary = self.shopDictionary;
+    self.dataSource.delegate = self.viewModel;
     
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self.dataSource;
@@ -59,27 +49,15 @@
         UITableViewCell *cell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         HRPGShopViewController *shopViewController = segue.destinationViewController;
-        shopViewController.shopIdentifier = [self identifierAtIndex:indexPath.item];
+        shopViewController.shopIdentifier = [self.viewModel identifierAtIndex:indexPath.item];
     }
 }
 
-#pragma mark - Datasource delegate methods
+#pragma mark - View model delegate methods
 
-- (NSString *)identifierAtIndex:(long)index {
-    switch (index) {
-        case 0: return MarketKey;
-        case 1: return QuestsShopKey;
-        case 2: return SeasonalShopKey;
-        case 3: return TimeTravelersShopKey;
-        default: return nil;
-    }
-}
-
-- (void)needsShopRefreshForIdentifier:(NSString *)identifier at:(NSIndexPath *)indexPath {
-    [[HRPGManager sharedManager] fetchShopInventory:identifier onSuccess:^{
-        [self setupShopDictionary];
-        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } onError:nil];
+- (void)didFetchShops {
+    [self setupShopDictionary];
+    [self.tableView reloadData];
 }
 
 #pragma mark - lazy loaders
@@ -87,6 +65,11 @@
 - (HRPGShopOverviewTableViewDataSource *)dataSource {
     if (!_dataSource) _dataSource = [HRPGShopOverviewTableViewDataSource new];
     return _dataSource;
+}
+
+- (HRPGShopsOverviewViewModel *)viewModel {
+    if (!_viewModel) _viewModel = [HRPGShopsOverviewViewModel new];
+    return _viewModel;
 }
 
 @end

@@ -15,6 +15,7 @@ class HRPGInsufficientGemsViewController: HRPGSingleOptionModalViewController {
         super.viewDidLoad()
         
         backgroundModalView.closeButton.addTarget(self, action: #selector(closePressed), for: UIControlEvents.touchUpInside)
+        backgroundModalView.sendSubview(toBack: backgroundModalView.shopModalBgView)
     }
     
     @IBAction func actionButtonPressed() {

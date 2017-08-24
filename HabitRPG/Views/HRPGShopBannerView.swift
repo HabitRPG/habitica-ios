@@ -67,16 +67,8 @@ class HRPGShopBannerView: UIView {
     
     private func setupShop() {
         if let unwrappedShop = shop, let identifier = unwrappedShop.identifier {
-            if let bgImagesDictionary = HRPGShopOverviewTableViewDataSource.shopBgImageNames() as? [String: String] {
-                if let name = bgImagesDictionary[identifier] {
-                    self.shopBgImageView.image = UIImage(named: name)?.resizableImage(withCapInsets:UIEdgeInsets.zero, resizingMode:UIImageResizingMode.tile)
-                }
-            }
-            if let characterImagesDictionary = HRPGShopOverviewTableViewDataSource.shopCharacterImageNames() as? [String: String] {
-                if let name = characterImagesDictionary[identifier] {
-                    self.shopForegroundImageView.image = UIImage(named: name)
-                }
-            }
+            HRPGManager.shared().setImage(identifier + "_background", withFormat: "png", on: self.shopBgImageView)
+            HRPGManager.shared().setImage(identifier + "_scene", withFormat: "png", on: self.shopForegroundImageView)
             
             self.shopNameLabel.text = unwrappedShop.text
             
