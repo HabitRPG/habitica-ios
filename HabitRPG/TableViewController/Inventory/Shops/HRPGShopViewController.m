@@ -75,11 +75,13 @@
 }
 
 - (void)setupNavBar {
-    HRPGGemCountView *gems = [HRPGGemCountView new];
-    gems.countLabel.text = [NSString stringWithFormat:@"%i", ([[NSNumber numberWithFloat:4.f * [[[HRPGManager sharedManager] getUser].balance floatValue]] intValue])];
+    HRPGCurrencyCountView *gems = [HRPGCurrencyCountView new];
+    [gems setAsGems];
+    gems.amount = [[NSNumber numberWithFloat:4.f * [[[HRPGManager sharedManager] getUser].balance floatValue]] intValue];
     
-    HRPGGoldCountView *gold = [HRPGGoldCountView new];
-    gold.countLabel.text = [NSString stringWithFormat:@"%i", [[[HRPGManager sharedManager] getUser].gold intValue]];
+    HRPGCurrencyCountView *gold = [HRPGCurrencyCountView new];
+    [gold setAsGold];
+    gold.amount = [[[HRPGManager sharedManager] getUser].gold intValue];
     
     UIBarButtonItem *gemsBarItem = [[UIBarButtonItem alloc] initWithCustomView:gems];
     UIBarButtonItem *goldBarItem = [[UIBarButtonItem alloc] initWithCustomView:gold];

@@ -12,9 +12,9 @@ import PDKeychainBindingsController
 class HRPGShopUserHeaderView: UIView, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var userClassImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var hourglassCountView: HRPGHourglassCountView!
-    @IBOutlet weak var gemCountView: HRPGGemCountView!
-    @IBOutlet weak var goldCountView: HRPGGoldCountView!
+    @IBOutlet weak var hourglassCountView: HRPGCurrencyCountView!
+    @IBOutlet weak var gemCountView: HRPGCurrencyCountView!
+    @IBOutlet weak var goldCountView: HRPGCurrencyCountView!
     
     lazy var manager: HRPGManager? = {
         HRPGManager.shared()
@@ -31,6 +31,9 @@ class HRPGShopUserHeaderView: UIView, NSFetchedResultsControllerDelegate {
     }
     
     override func awakeFromNib() {
+        hourglassCountView.currency = .hourglass
+        gemCountView.currency = .gem
+        goldCountView.currency = .gold
         setData()
         super.awakeFromNib()
     }
@@ -52,10 +55,10 @@ class HRPGShopUserHeaderView: UIView, NSFetchedResultsControllerDelegate {
                 userClassImageView.isHidden = true
             }
             
-            goldCountView.countLabel.text = String(describing: user.gold.intValue)
-            gemCountView.countLabel.text = String(describing: Int(user.balance.floatValue * 4.0 as Float))
+            goldCountView.amount = user.gold.intValue
+            gemCountView.amount = Int(user.balance.floatValue * 4.0 as Float)
             if let hourglassCount = user.subscriptionPlan.consecutiveTrinkets?.intValue {
-                hourglassCountView.countLabel.text = String(describing: hourglassCount)
+                hourglassCountView.amount = hourglassCount
             }
         }
     }

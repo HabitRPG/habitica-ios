@@ -16,12 +16,12 @@ class CustomRewardCell: UICollectionViewCell {
     
     func configure(reward: Reward) {
         titleLabel.text = reward.text
-        notesLabel.text = reward.notes
-        if reward.value.stringValue.characters.count > 0 {
+        if reward.notes.characters.count > 0 {
             notesLabel.isHidden = false
-            notesLabel.text = reward.value.stringValue
+            notesLabel.text = reward.notes
         } else {
             notesLabel.isHidden = true
         }
+        amountLabel.text = reward.value.stringValue
     }
 }

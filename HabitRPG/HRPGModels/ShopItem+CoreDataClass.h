@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "ShopCategory.h"
-
+#import "MetaReward.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ShopItem : NSManagedObject
+@interface ShopItem : MetaReward
 
 - (NSString *)readableUnlockCondition;
 - (BOOL)canBuy:(NSNumber *)currencyAmount;

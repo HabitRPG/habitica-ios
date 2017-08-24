@@ -56,6 +56,8 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
         }
     }
     
+    private var editedReward: Reward?
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.fetchedResultsController.sections?.count ?? 0
     }
@@ -74,9 +76,23 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InAppRewardCell", for: indexPath)
             if let rewardCell = cell as? InAppRewardCell {
-                rewardCell.configure(reward: self.fetchedResultsController.object(at: indexPath), manager: HRPGManager.shared())
+                rewardCell.configure(reward: self.fetchedResultsController.object(at: indexPath))
             }
             return cell
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if (indexPath.section == 0), let reward = self.fetchedResultsController.object(at: indexPath) as? Reward {
+            editedReward = reward
+            performSegue(withIdentifier: "FormSegue", sender: self)
+        } else {
+            let storyboard = UIStoryboard(name: "BuyModal", bundle: nil)
+            if let viewController = storyboard.instantiateViewController(withIdentifier: "HRPGBuyItemModalViewController") as? HRPGBuyItemModalViewController {
+                viewController.modalTransitionStyle = .crossDissolve
+                viewController.reward = self.fetchedResultsController.object(at: indexPath)
+                self.present(viewController, animated: true, completion: nil)
+            }
         }
     }
     
@@ -109,6 +125,53 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         } else {
             return UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        guard let indexPath = indexPath, let newIndexPath = newIndexPath else {
+            return
+        }
+        switch type {
+        case .delete:
+            collectionView?.deleteItems(at: [indexPath])
+            break
+        case .insert:
+            collectionView?.insertItems(at: [indexPath])
+            break
+        case .move:
+            collectionView?.moveItem(at: indexPath, to: newIndexPath)
+            break
+        case .update:
+            collectionView?.reloadItems(at: [indexPath])
+            break
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FormSegue", let reward = self.editedReward {
+            guard let destinationController = segue.destination as? UINavigationController else {
+                return
+            }
+            guard let formController = destinationController.topViewController as? RewardFormController else {
+                return
+            }
+
+            formController.editReward = true
+            formController.reward = reward
+            self.editedReward = nil
+        }
+    }
+    
+    @IBAction func undindToList(segue: UIStoryboardSegue) {}
+    
+    @IBAction func unwindToSaveReward(segue: UIStoryboardSegue) {
+        if let sourceViewController = segue.source as? RewardFormController {
+            if sourceViewController.editReward {
+                HRPGManager.shared().update(sourceViewController.reward, onSuccess: nil, onError: nil)
+            } else {
+                HRPGManager.shared().createReward(sourceViewController.reward, onSuccess: nil, onError: nil)
+            }
         }
     }
 }

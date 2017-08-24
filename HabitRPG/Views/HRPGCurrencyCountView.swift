@@ -9,8 +9,22 @@
 import UIKit
 
 class HRPGCurrencyCountView: UIView {
-    let countLabel: UILabel = UILabel()
-    let currencyImageView: UIImageView = UIImageView(image: UIImage(named: "gold_coin"))
+    
+    public var amount = 0 {
+        didSet {
+            countLabel.text = String(describing: amount)
+        }
+    }
+    
+    public var currency = Currency.gold {
+        didSet {
+            currencyImageView.image = currency.getImage()
+            countLabel.textColor = currency.getTextColor()
+        }
+    }
+    
+    private let countLabel: HRPGAbbrevNumberLabel = HRPGAbbrevNumberLabel()
+    private let currencyImageView: UIImageView = UIImageView(image: UIImage(named: "gold_coin"))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,8 +38,6 @@ class HRPGCurrencyCountView: UIView {
         configureViews()
     }
     
-    
-    
     internal func configureViews() {
         translatesAutoresizingMaskIntoConstraints = false
         currencyImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +46,7 @@ class HRPGCurrencyCountView: UIView {
         currencyImageView.contentMode = UIViewContentMode.scaleAspectFit
         
         countLabel.text = "0"
-        countLabel.font = UIFont.systemFont(ofSize: 15.0)
+        countLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
         
         addSubview(countLabel)
         addSubview(currencyImageView)
@@ -50,15 +62,6 @@ class HRPGCurrencyCountView: UIView {
                                               attribute: NSLayoutAttribute.centerY,
                                               multiplier: 1,
                                               constant: 0))
-        
-        currencyImageView.addConstraint(
-            NSLayoutConstraint.init(item: currencyImageView,
-                                    attribute: NSLayoutAttribute.height,
-                                    relatedBy: NSLayoutRelation.equal,
-                                    toItem: nil,
-                                    attribute: NSLayoutAttribute.notAnAttribute,
-                                    multiplier: 1,
-                                    constant: 18))
         currencyImageView.addConstraint(
             NSLayoutConstraint.init(item: currencyImageView,
                                     attribute: NSLayoutAttribute.width,
@@ -72,5 +75,19 @@ class HRPGCurrencyCountView: UIView {
         updateConstraints()
         setNeedsLayout()
         layoutIfNeeded()
+    }
+    
+    
+    //Helper methods since objc can't access swift enums
+    public func setAsGold() {
+        currency = .gold
+    }
+    
+    public func setAsGems() {
+        currency = .gem
+    }
+    
+    public func setAsHourglasses() {
+        currency = .hourglass
     }
 }

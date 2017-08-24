@@ -10,12 +10,13 @@ import UIKit
 
 class HRPGBuyItemModalViewController: UIViewController {
     var item: ShopItem?
+    var reward: MetaReward?
     var shopIdentifier: String?
     
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var hourglassCountView: HRPGHourglassCountView!
-    @IBOutlet weak var gemCountView: HRPGGemCountView!
-    @IBOutlet weak var goldCountView: HRPGGoldCountView!
+    @IBOutlet weak var hourglassCountView: HRPGCurrencyCountView!
+    @IBOutlet weak var gemCountView: HRPGCurrencyCountView!
+    @IBOutlet weak var goldCountView: HRPGCurrencyCountView!
     @IBOutlet weak var pinButton: UIButton!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var closableShopModal: HRPGCloseableShopModalView!
@@ -30,9 +31,8 @@ class HRPGBuyItemModalViewController: UIViewController {
         closableShopModal.closeButton.addTarget(self, action: #selector(closePressed), for: UIControlEvents.touchUpInside)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         refreshBalances()
     }
     
@@ -48,23 +48,32 @@ class HRPGBuyItemModalViewController: UIViewController {
         buyButton.layer.borderWidth = 0.5
         buyButton.layer.borderColor = UIColor.gray400().cgColor
         buyButton.setTitleColor(UIColor.purple400(), for: UIControlState.normal)
+        
+        hourglassCountView.currency = .hourglass
+        gemCountView.currency = .gem
+        goldCountView.currency = .gold
     }
     
     func refreshBalances() {
         if let user = HRPGManager.shared().getUser() {
-            gemCountView.countLabel.text = String(describing: Int(user.balance.floatValue * 4.0))
-            goldCountView.countLabel.text = String(describing: user.gold.intValue)
+            gemCountView.amount = Int(user.balance.floatValue * 4.0)
+            goldCountView.amount = user.gold.intValue
             if let hourglasses = user.subscriptionPlan.consecutiveTrinkets {
-                hourglassCountView.countLabel.text = String(describing: hourglasses.intValue)
+                hourglassCountView.amount = hourglasses.intValue
             }
         }
     }
     
     func setupItem() {
         if let contentView = closableShopModal.shopModalBgView.contentView {
-            let itemView = HRPGSimpleShopItemView(with: item, for: contentView)
-            if let purchaseType = item?.purchaseType {
-                switch purchaseType {
+            var itemView: HRPGSimpleShopItemView?
+            if let item = self.item {
+                itemView = HRPGSimpleShopItemView(withItem: item, for: contentView)
+            } else if let reward = self.reward {
+                itemView = HRPGSimpleShopItemView(withReward: reward, for: contentView)
+            }
+            if let itemView = itemView {
+                switch getPurchaseType() {
                 case "quests":
                     
                     break
@@ -76,6 +85,8 @@ class HRPGBuyItemModalViewController: UIViewController {
                         addItemAndStats(itemView, statsView, to: contentView)
                     }
                     break
+                case "mystery_set":
+                    addItemSet(itemView: itemView, to: contentView)
                 default:
                     contentView.addSingleViewWithConstraints(itemView)
                     break
@@ -84,6 +95,16 @@ class HRPGBuyItemModalViewController: UIViewController {
             contentView.translatesAutoresizingMaskIntoConstraints = false
             
             contentView.triggerLayout()
+        }
+    }
+    
+    func getPurchaseType() -> String {
+        if let shopItem = self.item {
+            return shopItem.purchaseType ?? ""
+        } else if let reward = self.reward as? InAppReward {
+            return reward.purchaseType ?? ""
+        } else {
+            return ""
         }
     }
     

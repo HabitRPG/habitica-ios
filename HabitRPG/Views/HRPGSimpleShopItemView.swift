@@ -63,13 +63,13 @@ class HRPGSimpleShopItemView: UIView {
         setupView()
     }
     
-    init(with item: ShopItem?, for contentView: UIView) {
+    init(withItem item: ShopItem, for contentView: UIView) {
         super.init(frame: contentView.bounds)
         setupView()
         
-        self.shopItemTitleLabel.text = item?.text
+        self.shopItemTitleLabel.text = item.text
         
-        if let imageName = item?.imageName {
+        if let imageName = item.imageName {
             if imageName.contains(" ") {
                 HRPGManager.shared().setImage(imageName.components(separatedBy: " ")[1], withFormat: "png", on: self.shopItemImageView)
             } else {
@@ -77,7 +77,39 @@ class HRPGSimpleShopItemView: UIView {
             }
         }
         
-        if let notes = item?.notes {
+        if let notes = item.notes {
+            self.shopItemDescriptionLabel.text = notes
+        } else {
+            self.shopItemDescriptionLabel.text = ""
+            if let label = self.shopItemDescriptionLabel {
+                let constraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal,
+                                                    toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
+                self.shopItemDescriptionLabel.addConstraint(constraint)
+            }
+        }
+    }
+    
+    init(withReward reward: MetaReward, for contentView: UIView) {
+        super.init(frame: contentView.bounds)
+        setupView()
+        
+        self.shopItemTitleLabel.text = reward.text
+
+        if let inAppReward = reward as? InAppReward {
+            if inAppReward.imageName?.contains(" ") ?? false {
+                HRPGManager.shared().setImage(inAppReward.imageName?.components(separatedBy: " ")[1], withFormat: "png", on: self.shopItemImageView)
+            } else {
+                HRPGManager.shared().setImage(inAppReward.imageName, withFormat: "png", on: self.shopItemImageView)
+            }
+        } else {
+            if reward.key == "potion" {
+                HRPGManager.shared().setImage("shop_potion", withFormat: "png", on: shopItemImageView)
+            } else if reward.key == "armoire" {
+                HRPGManager.shared().setImage("shop_armoire", withFormat: "png", on: shopItemImageView)
+            }
+        }
+        
+        if let notes = reward.notes {
             self.shopItemDescriptionLabel.text = notes
             self.shouldHideNotes = false
         } else {

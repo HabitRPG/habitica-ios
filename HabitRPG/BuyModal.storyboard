@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PIR-jb-93G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PIR-jb-93G">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -28,20 +28,32 @@
                                     <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="iWo-RG-1tS">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="102"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X0F-mm-9ZG" customClass="HRPGHourglassCountView" customModule="Habitica" customModuleProvider="target">
-                                                <rect key="frame" x="214" y="8" width="35" height="27"/>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="X0F-mm-9ZG" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                                                <rect key="frame" x="229" y="12" width="30" height="27"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" priority="500" constant="30" id="08u-bA-HWY"/>
+                                                    <constraint firstAttribute="height" constant="27" id="3II-fP-LWN"/>
+                                                </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IJ2-cU-jHd" customClass="HRPGGemCountView" customModule="Habitica" customModuleProvider="target">
-                                                <rect key="frame" x="257" y="8" width="35" height="27"/>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="IJ2-cU-jHd" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                                                <rect key="frame" x="267" y="12" width="30" height="27"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="27" id="WG7-2j-UoT"/>
+                                                    <constraint firstAttribute="width" priority="500" constant="30" id="nBd-0k-tKA"/>
+                                                </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mhw-rd-Afi" customClass="HRPGGoldCountView" customModule="Habitica" customModuleProvider="target">
-                                                <rect key="frame" x="300" y="8" width="35" height="27"/>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="mhw-rd-Afi" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                                                <rect key="frame" x="305" y="12" width="30" height="27"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="27" id="95M-lM-Pj8"/>
+                                                    <constraint firstAttribute="width" priority="500" constant="30" id="WkU-Nk-Tfs"/>
+                                                </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your balance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9i-sB-wsY">
-                                                <rect key="frame" x="8" y="11" width="116" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your balance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9i-sB-wsY">
+                                                <rect key="frame" x="20" y="16" width="93" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.40784313725490196" green="0.38431372549019605" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -76,7 +88,7 @@
                                             <constraint firstAttribute="bottom" secondItem="TiK-yj-cOf" secondAttribute="bottom" id="AdQ-RB-zqD"/>
                                             <constraint firstAttribute="trailing" secondItem="YMV-ZI-OEC" secondAttribute="trailing" id="BFa-XJ-q76"/>
                                             <constraint firstItem="X0F-mm-9ZG" firstAttribute="top" secondItem="IJ2-cU-jHd" secondAttribute="top" id="Cbp-jO-3yq"/>
-                                            <constraint firstItem="mhw-rd-Afi" firstAttribute="top" secondItem="iWo-RG-1tS" secondAttribute="top" constant="16" id="D6u-Qf-bjX"/>
+                                            <constraint firstItem="mhw-rd-Afi" firstAttribute="top" secondItem="iWo-RG-1tS" secondAttribute="top" constant="12" id="D6u-Qf-bjX"/>
                                             <constraint firstItem="YMV-ZI-OEC" firstAttribute="width" secondItem="TiK-yj-cOf" secondAttribute="width" id="FeD-gG-TC2"/>
                                             <constraint firstAttribute="bottom" secondItem="YMV-ZI-OEC" secondAttribute="bottom" id="Hlg-pR-0iS"/>
                                             <constraint firstItem="IJ2-cU-jHd" firstAttribute="top" secondItem="mhw-rd-Afi" secondAttribute="top" id="LPu-Fa-27f"/>

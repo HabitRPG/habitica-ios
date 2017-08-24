@@ -12,7 +12,6 @@
 #import "NSString+Emoji.h"
 #import "Reminder.h"
 #import "Tag.h"
-#import "XLForm.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGFormViewController ()
@@ -23,7 +22,6 @@
 @property(nonatomic, strong) NSString *allocationMode;
 @property TaskRepeatablesSummaryInteractor *summaryInteractor;
 
-@property(nonatomic) NSNumber *enableRepeatables;
 @end
 
 @implementation HRPGFormViewController
@@ -35,8 +33,8 @@
         self.allocationMode = user.preferences.allocationMode;
         self.customDayStart = [user.preferences.dayStart integerValue];
         self.managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
-        self.summaryInteractor = [[TaskRepeatablesSummaryInteractor alloc] init];
         [self initializeForm];
+        self.summaryInteractor = [[TaskRepeatablesSummaryInteractor alloc] init];
     }
     return self;
 }
@@ -200,42 +198,39 @@
         row.value = date;
         [section addFormRow:row];
 
-        if ([self.enableRepeatables boolValue]) {
-            section = [XLFormSectionDescriptor formSectionWithTitle:@""];
-            [self.form addFormSection:section];
-            row = [XLFormRowDescriptor formRowDescriptorWithTag:@"frequency"
-                                                        rowType:XLFormRowDescriptorTypeSelectorPush
-                                                          title:NSLocalizedString(@"Frequency", nil)];
-            row.selectorOptions = @[
-                                    [XLFormOptionsObject
-                                     formOptionsObjectWithValue:@"daily"
-                                     displayText:NSLocalizedString(@"Daily", nil)],
-                                    [XLFormOptionsObject
-                                     formOptionsObjectWithValue:@"weekly"
-                                     displayText:NSLocalizedString(@"Weekly", nil)],
-                                    [XLFormOptionsObject
-                                     formOptionsObjectWithValue:@"monthly"
-                                     displayText:NSLocalizedString(@"Monthly", nil)],
-                                    [XLFormOptionsObject
-                                     formOptionsObjectWithValue:@"yearly"
-                                     displayText:NSLocalizedString(@"Yearly", nil)]
-                                    ];
-            row.value =
-            [XLFormOptionsObject formOptionsObjectWithValue:@"weekly"
-                                                displayText:NSLocalizedString(@"Weekly", nil)];
-            row.required = YES;
-            row.selectorTitle = NSLocalizedString(@"Select Frequency", nil);
-            [section addFormRow:row];
-            
-            row = [XLFormRowDescriptor
-                   formRowDescriptorWithTag:@"everyX"
-                   rowType:XLFormRowDescriptorTypeStepCounter
-                   title:NSLocalizedString(@"Repeat every", nil)];
-            [section addFormRow:row];
-            [self setFrequencyRows:@"weekly" fromOldValue:nil];
-        } else {
-            [self setOldDailyOptions];
-        }
+        section = [XLFormSectionDescriptor formSectionWithTitle:@""];
+        [self.form addFormSection:section];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"frequency"
+                                                    rowType:XLFormRowDescriptorTypeSelectorPush
+                                                      title:NSLocalizedString(@"Frequency", nil)];
+        row.selectorOptions = @[
+                                [XLFormOptionsObject
+                                 formOptionsObjectWithValue:@"daily"
+                                 displayText:NSLocalizedString(@"Daily", nil)],
+                                [XLFormOptionsObject
+                                 formOptionsObjectWithValue:@"weekly"
+                                 displayText:NSLocalizedString(@"Weekly", nil)],
+                                [XLFormOptionsObject
+                                 formOptionsObjectWithValue:@"monthly"
+                                 displayText:NSLocalizedString(@"Monthly", nil)],
+                                [XLFormOptionsObject
+                                 formOptionsObjectWithValue:@"yearly"
+                                 displayText:NSLocalizedString(@"Yearly", nil)]
+                                ];
+        row.value =
+        [XLFormOptionsObject formOptionsObjectWithValue:@"weekly"
+                                            displayText:NSLocalizedString(@"Weekly", nil)];
+        row.required = YES;
+        row.selectorTitle = NSLocalizedString(@"Select Frequency", nil);
+        [section addFormRow:row];
+        
+        row = [XLFormRowDescriptor
+               formRowDescriptorWithTag:@"everyX"
+               rowType:XLFormRowDescriptorTypeStepCounter
+               title:NSLocalizedString(@"Repeat every", nil)];
+        [section addFormRow:row];
+        [self setFrequencyRows:@"weekly" fromOldValue:nil];
+
         rowType = XLFormRowDescriptorTypeTime;
     }
 
@@ -580,14 +575,10 @@
             [self.form removeFormRowWithTag:@"duedate"];
         }
     } else if ([formRow.tag isEqualToString:@"frequency"]) {
-        if ([self.enableRepeatables boolValue]) {
-            if ([[oldValue class] isSubclassOfClass:[XLFormOptionsObject class]]) {
-                [self setFrequencyRows:[formRow.value valueData] fromOldValue:((XLFormOptionsObject *)oldValue).formValue];
-            } else {
-                [self setFrequencyRows:[formRow.value valueData] fromOldValue:oldValue];
-            }
+        if ([[oldValue class] isSubclassOfClass:[XLFormOptionsObject class]]) {
+            [self setFrequencyRows:[formRow.value valueData] fromOldValue:((XLFormOptionsObject *)oldValue).formValue];
         } else {
-            [self setOldFrequencyRows:[formRow.value valueData]];
+            [self setFrequencyRows:[formRow.value valueData] fromOldValue:oldValue];
         }
     }
     if (![formRow.tag isEqualToString:@"reminder"] && formRow.tag != nil) {
@@ -814,14 +805,6 @@
         }
     }
     return nil;
-}
-
-- (NSNumber *)enableRepeatables {
-    if (_enableRepeatables == nil) {
-        ConfigRepository *configRepository = [[ConfigRepository alloc] init];
-        _enableRepeatables = [NSNumber numberWithBool: [configRepository boolWithVariable:ConfigVariableEnableRepeatables]];
-    }
-    return _enableRepeatables;
 }
 
 @end

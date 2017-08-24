@@ -32,3 +32,4 @@
 #import "Reward.h"
 #import "HRPGBaseCollectionViewController.h"
 #import "InAppReward+CoreDataClass.h"
+#import "HRPGAbbrevNumberLabel.h"
