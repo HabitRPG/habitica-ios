@@ -15,7 +15,8 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
     }()
     
     lazy var fetchedResultsController: NSFetchedResultsController<MetaReward> = {
-        self.fetchRequest.sortDescriptors = [NSSortDescriptor(key: "type", ascending: false)]
+        self.fetchRequest.sortDescriptors = [NSSortDescriptor(key: "type", ascending: false),
+        NSSortDescriptor(key: "order", ascending: true)]
         
         let frc = NSFetchedResultsController(
             fetchRequest: self.fetchRequest,
@@ -67,9 +68,9 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 {
+        if let reward = self.fetchedResultsController.object(at: indexPath) as? Reward {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomRewardCell", for: indexPath)
-            if let rewardCell = cell as? CustomRewardCell, let reward = self.fetchedResultsController.object(at: indexPath) as? Reward {
+            if let rewardCell = cell as? CustomRewardCell {
                 rewardCell.configure(reward: reward)
             }
             return cell
@@ -83,7 +84,7 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if (indexPath.section == 0), let reward = self.fetchedResultsController.object(at: indexPath) as? Reward {
+        if let reward = self.fetchedResultsController.object(at: indexPath) as? Reward {
             editedReward = reward
             performSegue(withIdentifier: "FormSegue", sender: self)
         } else {
@@ -97,7 +98,7 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 0 {
+        if isCustomRewardsSection(indexPath.section) {
             return CGSize(width: self.view.frame.size.width, height: 60)
         } else {
             return CGSize(width: 80, height: 108)
@@ -105,7 +106,7 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        if section == 0 {
+        if isCustomRewardsSection(section) {
             return 0
         } else {
             return 8
@@ -113,7 +114,7 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        if section == 0 {
+        if isCustomRewardsSection(section) {
             return 0
         } else {
             return 8
@@ -121,7 +122,7 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if section == 0 {
+        if isCustomRewardsSection(section) {
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         } else {
             return UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
@@ -129,7 +130,8 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        guard let indexPath = indexPath, let newIndexPath = newIndexPath else {
+        //TODO: Implement correctly
+        /*guard let indexPath = indexPath else {
             return
         }
         switch type {
@@ -140,12 +142,28 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
             collectionView?.insertItems(at: [indexPath])
             break
         case .move:
+            guard let newIndexPath = newIndexPath else {
+                return
+            }
             collectionView?.moveItem(at: indexPath, to: newIndexPath)
             break
         case .update:
             collectionView?.reloadItems(at: [indexPath])
             break
+        }*/
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        collectionView?.reloadData()
+    }
+    
+    func isCustomRewardsSection(_ section: Int) -> Bool {
+        if let section = self.fetchedResultsController.sections?[section], section.numberOfObjects > 0 {
+            if section.objects?.first as? Reward != nil {
+                return true
+            }
         }
+        return false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
