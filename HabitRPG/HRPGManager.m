@@ -2086,7 +2086,7 @@ NSString *currentUser;
                                                                   withMapping:shopCategoryMapping]];
     RKEntityMapping *shopItemMapping = [RKEntityMapping mappingForEntityForName:@"ShopItem" inManagedObjectStore:managedObjectStore];
     [shopItemMapping addAttributeMappingsFromArray:@[@"text", @"key", @"notes", @"type", @"value", @"currency", @"locked", @"purchaseType"]];
-    [shopItemMapping addAttributeMappingsFromDictionary:@{@"@metadata.mapping.collectionIndex": @"index",
+    [shopItemMapping addAttributeMappingsFromDictionary:@{@"@metadata.mapping.collectionIndex": @"order",
                                                           @"class": @"imageName",
                                                           @"unlockCondition.condition": @"unlockCondition"}];
     shopItemMapping.identificationAttributes = @[ @"key", @"purchaseType" ];

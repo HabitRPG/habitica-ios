@@ -10,6 +10,7 @@
 #import "PDKeychainBindings.h"
 #import "HRPGLabeledProgressBar.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGUserTopHeader ()
 
@@ -30,9 +31,9 @@
 @property(weak, nonatomic) IBOutlet UIImageView *classImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *classImageViewWidthConstraint;
 
-@property(weak, nonatomic) IBOutlet UILabel *goldLabel;
-@property(weak, nonatomic) IBOutlet UILabel *gemLabel;
-@property(weak, nonatomic) IBOutlet UIView *gemView;
+
+@property (weak, nonatomic) IBOutlet HRPGCurrencyCountView *gemView;
+@property (weak, nonatomic) IBOutlet HRPGCurrencyCountView *goldView;
 @property User *user;
 
 @end
@@ -81,9 +82,11 @@ NSInteger rowOffset = 16;
         self.experienceLabel.fontSize = 11;
         self.magicLabel.fontSize = 11;
     }
-
-    UIGestureRecognizer *recognizer =
-        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGemView)];
+    
+    [self.goldView setAsGold];
+    [self.gemView setAsGems];
+    
+    UIGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGemView)];
     [self.gemView addGestureRecognizer:recognizer];
 
     [self setData];
@@ -186,9 +189,9 @@ NSInteger rowOffset = 16;
     }
     
     
-    self.gemLabel.text = [@([self.user.balance floatValue] * 4) stringValue];
+    self.gemView.amount = [@([self.user.balance floatValue] * 4) integerValue];
 
-    self.goldLabel.text = [NSString stringWithFormat:@"%@", self.user.gold];
+    self.goldView.amount = [self.user.gold integerValue];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller

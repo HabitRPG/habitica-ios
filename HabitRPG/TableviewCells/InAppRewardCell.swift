@@ -10,27 +10,31 @@ import UIKit
 
 class InAppRewardCell: UICollectionViewCell {
     
-    @IBOutlet weak var currencyView: UIImageView!
-    @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var currencyView: HRPGCurrencyCountView!
+    
+    public var imageName = "" {
+        didSet {
+            if imageName.characters.count == 0 {
+                return
+            }
+            if imageName.contains(" ") {
+                HRPGManager.shared().setImage(imageName.components(separatedBy: " ")[1], withFormat: "png", on: imageView)
+            } else {
+                HRPGManager.shared().setImage(imageName, withFormat: "png", on: imageView)
+            }
+        }
+    }
     
     func configure(reward: MetaReward, manager: HRPGManager) {
-        amountLabel.text = reward.value?.stringValue
+        currencyView.amount = reward.value.intValue
         if let inAppReward = reward as? InAppReward {
-            manager.setImage(inAppReward.imageName, withFormat: "png", on: imageView)
-            if inAppReward.currency == "gold" {
-                currencyView.image = #imageLiteral(resourceName: "gold_coin")
-                amountLabel.textColor = UIColor.yellow10()
-            } else if inAppReward.currency == "gems" {
-                currencyView.image = #imageLiteral(resourceName: "Gem")
-                amountLabel.textColor = UIColor.green10()
-            } else if inAppReward.currency == "hourglasses" {
-                currencyView.image = #imageLiteral(resourceName: "hourglass")
-                amountLabel.textColor = UIColor.blue10()
+            imageName = inAppReward.imageName ?? ""
+            if let currencyString = inAppReward.currency, let currency = Currency(rawValue: currencyString) {
+                currencyView.currency = currency
             }
         } else {
-            currencyView.image = #imageLiteral(resourceName: "gold_coin")
-            amountLabel.textColor = UIColor.yellow10()
+            currencyView.currency = .gold
             if reward.key == "potion" {
                 manager.setImage("shop_potion", withFormat: "png", on: imageView)
             } else if reward.key == "armoire" {
@@ -39,4 +43,11 @@ class InAppRewardCell: UICollectionViewCell {
         }
     }
     
+    func configure(item: ShopItem, manager: HRPGManager) {
+        currencyView.amount = item.value?.intValue ?? 0
+        imageName = item.imageName ?? ""
+        if let currencyString = item.currency, let currency = Currency(rawValue: currencyString) {
+            currencyView.currency = currency
+        }
+    }
 }

@@ -336,7 +336,6 @@
     <entity name="ShopItem" representedClassName="ShopItem" syncable="YES">
         <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="isSubscriberItem" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="itemsLeft" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
@@ -543,6 +542,7 @@
         <element name="Group" positionX="0" positionY="0" width="128" height="390"/>
         <element name="HatchingPotion" positionX="0" positionY="0" width="128" height="60"/>
         <element name="ImprovementCategory" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="InAppReward" positionX="18" positionY="162" width="128" height="150"/>
         <element name="InboxMessage" positionX="9" positionY="153" width="128" height="255"/>
         <element name="Item" positionX="0" positionY="0" width="128" height="165"/>
         <element name="MetaReward" positionX="0" positionY="0" width="128" height="150"/>
@@ -558,7 +558,7 @@
         <element name="Reward" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Shop" positionX="9" positionY="153" width="128" height="120"/>
         <element name="ShopCategory" positionX="18" positionY="162" width="128" height="150"/>
-        <element name="ShopItem" positionX="27" positionY="171" width="128" height="255"/>
+        <element name="ShopItem" positionX="27" positionY="171" width="128" height="240"/>
         <element name="SpecialItems" positionX="18" positionY="162" width="128" height="210"/>
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
         <element name="SubscriptionPlan" positionX="9" positionY="153" width="128" height="225"/>
@@ -567,6 +567,5 @@
         <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
         <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
         <element name="User" positionX="0" positionY="0" width="128" height="1215"/>
-        <element name="InAppReward" positionX="18" positionY="162" width="128" height="150"/>
     </elements>
 </model>

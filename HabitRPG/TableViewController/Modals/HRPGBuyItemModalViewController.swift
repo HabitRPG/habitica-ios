@@ -10,12 +10,13 @@ import UIKit
 
 class HRPGBuyItemModalViewController: UIViewController {
     var item: ShopItem?
+    var reward: InAppReward?
     var shopIdentifier: String?
     
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var hourglassCountView: HRPGHourglassCountView!
-    @IBOutlet weak var gemCountView: HRPGGemCountView!
-    @IBOutlet weak var goldCountView: HRPGGoldCountView!
+    @IBOutlet weak var hourglassCountView: HRPGCurrencyCountView!
+    @IBOutlet weak var gemCountView: HRPGCurrencyCountView!
+    @IBOutlet weak var goldCountView: HRPGCurrencyCountView!
     @IBOutlet weak var pinButton: UIButton!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var closableShopModal: HRPGCloseableShopModalView!
@@ -30,9 +31,8 @@ class HRPGBuyItemModalViewController: UIViewController {
         closableShopModal.closeButton.addTarget(self, action: #selector(closePressed), for: UIControlEvents.touchUpInside)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         refreshBalances()
     }
     
@@ -48,14 +48,18 @@ class HRPGBuyItemModalViewController: UIViewController {
         buyButton.layer.borderWidth = 0.5
         buyButton.layer.borderColor = UIColor.gray400().cgColor
         buyButton.setTitleColor(UIColor.purple400(), for: UIControlState.normal)
+        
+        hourglassCountView.currency = .hourglass
+        gemCountView.currency = .gem
+        goldCountView.currency = .gold
     }
     
     func refreshBalances() {
         if let user = HRPGManager.shared().getUser() {
-            gemCountView.countLabel.text = String(describing: Int(user.balance.floatValue * 4.0))
-            goldCountView.countLabel.text = String(describing: user.gold.intValue)
+            gemCountView.amount = Int(user.balance.floatValue * 4.0)
+            goldCountView.amount = user.gold.intValue
             if let hourglasses = user.subscriptionPlan.consecutiveTrinkets {
-                hourglassCountView.countLabel.text = String(describing: hourglasses.intValue)
+                hourglassCountView.amount = hourglasses.intValue
             }
         }
     }
@@ -63,23 +67,24 @@ class HRPGBuyItemModalViewController: UIViewController {
     func setupItem() {
         if let contentView = closableShopModal.shopModalBgView.contentView {
             let itemView = HRPGSimpleShopItemView(with: item, for: contentView)
-            if let purchaseType = item?.purchaseType {
-                switch purchaseType {
-                case "quests":
-                    
-                    break
-                case "gear":
-                    if let identifier = shopIdentifier, identifier == TimeTravelersShopKey {
-                        addItemSet(itemView: itemView, to: contentView)
-                    } else {
-                        let statsView = HRPGItemStatsView(frame: CGRect.zero)
-                        addItemAndStats(itemView, statsView, to: contentView)
-                    }
-                    break
-                default:
-                    contentView.addSingleViewWithConstraints(itemView)
-                    break
+            let purchaseType = item?.purchaseType ?? reward?.purchaseType ?? ""
+            switch purchaseType {
+            case "quests":
+                
+                break
+            case "gear":
+                if let identifier = shopIdentifier, identifier == TimeTravelersShopKey {
+                    addItemSet(itemView: itemView, to: contentView)
+                } else {
+                    let statsView = HRPGItemStatsView(frame: CGRect.zero)
+                    addItemAndStats(itemView, statsView, to: contentView)
                 }
+                break
+            case "mystery_set":
+                addItemSet(itemView: itemView, to: contentView)
+            default:
+                contentView.addSingleViewWithConstraints(itemView)
+                break
             }
             contentView.translatesAutoresizingMaskIntoConstraints = false
             

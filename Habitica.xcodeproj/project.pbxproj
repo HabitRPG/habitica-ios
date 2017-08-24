@@ -26,6 +26,7 @@
 		2957B8BC1F4B4DDE00E836EF /* InAppRewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8BB1F4B4DDE00E836EF /* InAppRewardCell.swift */; };
 		2957B8C41F4D922C00E836EF /* CustomRewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */; };
 		2957B8C81F4DCF7800E836EF /* RewardFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C71F4DCF7800E836EF /* RewardFormController.swift */; };
+		2957B8CA1F4ED7C800E836EF /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C91F4ED7C800E836EF /* Currency.swift */; };
 		297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */; };
 		297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */; };
 		297AF8201F29EF0D003B7194 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 297AF81F1F29EF0D003B7194 /* Intro.storyboard */; };
@@ -48,9 +49,6 @@
 		49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6D1F17DDF9004830D9 /* Shop.storyboard */; };
 		49005B701F17E7AC004830D9 /* Shops.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6F1F17E7AC004830D9 /* Shops.storyboard */; };
 		49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */; };
-		49005B741F180CA6004830D9 /* HRPGGoldCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B731F180CA6004830D9 /* HRPGGoldCountView.swift */; };
-		49005B761F180DA4004830D9 /* HRPGGemCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B751F180DA4004830D9 /* HRPGGemCountView.swift */; };
-		49005B7A1F180DD1004830D9 /* HRPGHourglassCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B791F180DD1004830D9 /* HRPGHourglassCountView.swift */; };
 		49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */; };
 		49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */; };
 		4904C7401F1ED87400F80723 /* GradientImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C73F1F1ED87400F80723 /* GradientImageView.swift */; };
@@ -69,7 +67,6 @@
 		494E54101F2EEF810003683C /* Amplitude+HRPGHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E540F1F2EEF810003683C /* Amplitude+HRPGHelpers.m */; };
 		494E54131F2EF7100003683C /* HRPGCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54121F2EF7100003683C /* HRPGCollectionViewController.m */; };
 		494E54151F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E54141F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift */; };
-		494E54181F30214B0003683C /* HRPGCurrencyItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E54171F30214B0003683C /* HRPGCurrencyItemCollectionViewCell.swift */; };
 		494E54221F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */; };
 		494E54251F3124890003683C /* HRPGShopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54241F3124890003683C /* HRPGShopViewModel.m */; };
 		49DCB7991F3407B30079FDD0 /* BuyModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */; };
@@ -413,6 +410,8 @@
 		2957B8BB1F4B4DDE00E836EF /* InAppRewardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppRewardCell.swift; sourceTree = "<group>"; };
 		2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRewardCell.swift; sourceTree = "<group>"; };
 		2957B8C71F4DCF7800E836EF /* RewardFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardFormController.swift; sourceTree = "<group>"; };
+		2957B8C91F4ED7C800E836EF /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		2957B8CF1F4EEB7A00E836EF /* HabitRPG 46.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 46.xcdatamodel"; sourceTree = "<group>"; };
 		297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSetupViewController.swift; sourceTree = "<group>"; };
 		297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSetupViewController.swift; sourceTree = "<group>"; };
 		297997721EFD387F00F5F13E /* HabitRPG 43.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 43.xcdatamodel"; sourceTree = "<group>"; };
@@ -442,9 +441,6 @@
 		49005B6D1F17DDF9004830D9 /* Shop.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Shop.storyboard; sourceTree = "<group>"; };
 		49005B6F1F17E7AC004830D9 /* Shops.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Shops.storyboard; sourceTree = "<group>"; };
 		49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGCurrencyCountView.swift; sourceTree = "<group>"; };
-		49005B731F180CA6004830D9 /* HRPGGoldCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGGoldCountView.swift; sourceTree = "<group>"; };
-		49005B751F180DA4004830D9 /* HRPGGemCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGGemCountView.swift; sourceTree = "<group>"; };
-		49005B791F180DD1004830D9 /* HRPGHourglassCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGHourglassCountView.swift; sourceTree = "<group>"; };
 		49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopUserHeaderView.swift; sourceTree = "<group>"; };
 		49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopUserHeaderView.xib; sourceTree = "<group>"; };
 		4904C73F1F1ED87400F80723 /* GradientImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientImageView.swift; sourceTree = "<group>"; };
@@ -468,7 +464,6 @@
 		494E54111F2EF7100003683C /* HRPGCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCollectionViewController.h; sourceTree = "<group>"; };
 		494E54121F2EF7100003683C /* HRPGCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCollectionViewController.m; sourceTree = "<group>"; };
 		494E54141F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGFetchedResultsCollectionViewDataSource.swift; sourceTree = "<group>"; };
-		494E54171F30214B0003683C /* HRPGCurrencyItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGCurrencyItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopSectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		494E54231F3124890003683C /* HRPGShopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopViewModel.h; sourceTree = "<group>"; };
 		494E54241F3124890003683C /* HRPGShopViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopViewModel.m; sourceTree = "<group>"; };
@@ -1166,7 +1161,6 @@
 		494E54161F3020DF0003683C /* Collection View Cells */ = {
 			isa = PBXGroup;
 			children = (
-				494E54171F30214B0003683C /* HRPGCurrencyItemCollectionViewCell.swift */,
 				494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */,
 			);
 			name = "Collection View Cells";
@@ -1627,6 +1621,7 @@
 				29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */,
 				494E54231F3124890003683C /* HRPGShopViewModel.h */,
 				494E54241F3124890003683C /* HRPGShopViewModel.m */,
+				2957B8C91F4ED7C800E836EF /* Currency.swift */,
 			);
 			name = Models;
 			path = HRPGModels;
@@ -1727,9 +1722,6 @@
 				29255E481F3E1B0F0094A3E3 /* ToastView.swift */,
 				29255E4A1F3E236C0094A3E3 /* ToastManager.swift */,
 				49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */,
-				49005B731F180CA6004830D9 /* HRPGGoldCountView.swift */,
-				49005B751F180DA4004830D9 /* HRPGGemCountView.swift */,
-				49005B791F180DD1004830D9 /* HRPGHourglassCountView.swift */,
 				49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */,
 				49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */,
 				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
@@ -1829,34 +1821,20 @@
 		D9C3D01D19509E4C00D22A4A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				2957B8A41F4B071700E836EF /* InAppReward+CoreDataClass.h */,
-				2957B8A51F4B071700E836EF /* InAppReward+CoreDataClass.m */,
-				2957B8A61F4B071700E836EF /* InAppReward+CoreDataProperties.h */,
-				2957B8A71F4B071700E836EF /* InAppReward+CoreDataProperties.m */,
-				D9BB45CD1E7713E80002AE2E /* ChallengeTask+CoreDataClass.h */,
-				D9BB45CE1E7713E80002AE2E /* ChallengeTask+CoreDataClass.m */,
-				D9BB45CF1E7713E80002AE2E /* ChallengeTask+CoreDataProperties.h */,
-				D9BB45D01E7713E80002AE2E /* ChallengeTask+CoreDataProperties.m */,
-				D9525F941E5F405400C529B8 /* Challenge+CoreDataClass.h */,
-				D9525F951E5F405400C529B8 /* Challenge+CoreDataClass.m */,
-				D9525F961E5F405400C529B8 /* Challenge+CoreDataProperties.h */,
-				D9525F971E5F405400C529B8 /* Challenge+CoreDataProperties.m */,
-				D9F1E3ED1E576E430034D0F4 /* Task+CoreDataClass.h */,
-				D9F1E3EE1E576E430034D0F4 /* Task+CoreDataClass.m */,
-				D9F1E3EF1E576E430034D0F4 /* Task+CoreDataProperties.h */,
-				D9F1E3F01E576E430034D0F4 /* Task+CoreDataProperties.m */,
-				D99CDDDB1E5368E400ABD85F /* ShopItem+CoreDataClass.h */,
-				D99CDDDC1E5368E400ABD85F /* ShopItem+CoreDataClass.m */,
-				D9CE903A1E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.h */,
-				D9CE903B1E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.m */,
-				D9CE903C1E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.h */,
-				D9CE903D1E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.m */,
 				D9E46AFF1DABCD9100E390D7 /* Buff+CoreDataClass.h */,
 				D9E46B001DABCD9100E390D7 /* Buff+CoreDataClass.m */,
 				D9E46B011DABCD9100E390D7 /* Buff+CoreDataProperties.h */,
 				D9E46B021DABCD9100E390D7 /* Buff+CoreDataProperties.m */,
 				D9ADD34F1943BC0E006202C1 /* BuyableItem.h */,
 				D9ADD3501943BC0E006202C1 /* BuyableItem.m */,
+				D9525F941E5F405400C529B8 /* Challenge+CoreDataClass.h */,
+				D9525F951E5F405400C529B8 /* Challenge+CoreDataClass.m */,
+				D9525F961E5F405400C529B8 /* Challenge+CoreDataProperties.h */,
+				D9525F971E5F405400C529B8 /* Challenge+CoreDataProperties.m */,
+				D9BB45CD1E7713E80002AE2E /* ChallengeTask+CoreDataClass.h */,
+				D9BB45CE1E7713E80002AE2E /* ChallengeTask+CoreDataClass.m */,
+				D9BB45CF1E7713E80002AE2E /* ChallengeTask+CoreDataProperties.h */,
+				D9BB45D01E7713E80002AE2E /* ChallengeTask+CoreDataProperties.m */,
 				D97C71DF18ECA7050089FDC6 /* ChatMessage.h */,
 				D97C71E018ECA7050089FDC6 /* ChatMessage.m */,
 				D98F5DC71C6A45800035CBEC /* ChatMessageLike.h */,
@@ -1887,6 +1865,10 @@
 				D95D039A1C74E3E900D6BFB3 /* ImprovementCategory.m */,
 				D95D03971C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.h */,
 				D95D03981C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.m */,
+				2957B8A41F4B071700E836EF /* InAppReward+CoreDataClass.h */,
+				2957B8A51F4B071700E836EF /* InAppReward+CoreDataClass.m */,
+				2957B8A61F4B071700E836EF /* InAppReward+CoreDataProperties.h */,
+				2957B8A71F4B071700E836EF /* InAppReward+CoreDataProperties.m */,
 				D9D5935B1D00523800D6C388 /* InboxMessage.h */,
 				D9D5935C1D00523800D6C388 /* InboxMessage.m */,
 				D9D593591D00523800D6C388 /* InboxMessage+CoreDataProperties.h */,
@@ -1933,6 +1915,8 @@
 				D92A08541D3520D8000F8B66 /* ShopCategory.m */,
 				D92A08511D3520D8000F8B66 /* ShopCategory+CoreDataProperties.h */,
 				D92A08521D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m */,
+				D99CDDDB1E5368E400ABD85F /* ShopItem+CoreDataClass.h */,
+				D99CDDDC1E5368E400ABD85F /* ShopItem+CoreDataClass.m */,
 				D92A08551D3520D8000F8B66 /* ShopItem+CoreDataProperties.h */,
 				D92A08561D3520D8000F8B66 /* ShopItem+CoreDataProperties.m */,
 				D9E46B051DABE97200E390D7 /* SpecialItems+CoreDataClass.h */,
@@ -1941,8 +1925,16 @@
 				D9E46B081DABE97200E390D7 /* SpecialItems+CoreDataProperties.m */,
 				D94AADB2192A30F900546C8E /* Spell.h */,
 				D94AADB3192A30F900546C8E /* Spell.m */,
+				D9CE903A1E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.h */,
+				D9CE903B1E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.m */,
+				D9CE903C1E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.h */,
+				D9CE903D1E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.m */,
 				D9B5C0CD18D5F4D400C8D1B7 /* Tag.h */,
 				D9B5C0CE18D5F4D400C8D1B7 /* Tag.m */,
+				D9F1E3ED1E576E430034D0F4 /* Task+CoreDataClass.h */,
+				D9F1E3EE1E576E430034D0F4 /* Task+CoreDataClass.m */,
+				D9F1E3EF1E576E430034D0F4 /* Task+CoreDataProperties.h */,
+				D9F1E3F01E576E430034D0F4 /* Task+CoreDataProperties.m */,
 				D9FC1A841BC2D8A300B97D23 /* TutorialSteps.h */,
 				D9FC1A851BC2D8A300B97D23 /* TutorialSteps.m */,
 				D9FC1A821BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.h */,
@@ -2728,7 +2720,6 @@
 				D914398A1BAF14C40006999E /* UIImage+withColor.m in Sources */,
 				D97ED0B01E6DBC87006C2A26 /* Interactor.swift in Sources */,
 				D9AEEA731ACEDD470076951B /* HRPGWebViewController.m in Sources */,
-				49005B761F180DA4004830D9 /* HRPGGemCountView.swift in Sources */,
 				D9D5935D1D00523800D6C388 /* InboxMessage+CoreDataProperties.m in Sources */,
 				494E53FB1F2C14980003683C /* HRPGShopsTableViewCell.swift in Sources */,
 				49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */,
@@ -2761,6 +2752,7 @@
 				D984D5861E48E5CF006E84F8 /* TaskDetailLineView.swift in Sources */,
 				2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */,
 				4904C7401F1ED87400F80723 /* GradientImageView.swift in Sources */,
+				2957B8CA1F4ED7C800E836EF /* Currency.swift in Sources */,
 				D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */,
 				D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */,
 				D9660D781AB248030084CE37 /* HRPGUserTopHeader.m in Sources */,
@@ -2778,7 +2770,6 @@
 				D9A28F721B08DF58002907E0 /* HRPGPurchaseButton.m in Sources */,
 				D998FD951ADAC1FF00E9A26F /* HRPGAboutViewController.m in Sources */,
 				D92D40D91ABF123800E30339 /* HRPGHabitButtons.m in Sources */,
-				49005B7A1F180DD1004830D9 /* HRPGHourglassCountView.swift in Sources */,
 				D9D5935E1D00523800D6C388 /* InboxMessage.m in Sources */,
 				29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */,
 				494E54011F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m in Sources */,
@@ -2802,7 +2793,6 @@
 				494E540B1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift in Sources */,
 				D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */,
 				D92A08591D3520D8000F8B66 /* Shop+CoreDataProperties.m in Sources */,
-				494E54181F30214B0003683C /* HRPGCurrencyItemCollectionViewCell.swift in Sources */,
 				D92761611CCFBEAD0049ECAC /* Flags+CoreDataProperties.m in Sources */,
 				D9D593661D008C7500D6C388 /* PushDevice+CoreDataProperties.m in Sources */,
 				D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */,
@@ -2843,7 +2833,6 @@
 				D92503BE1D5C9219006C9388 /* NSString+UUID.m in Sources */,
 				D97C71E118ECA7050089FDC6 /* ChatMessage.m in Sources */,
 				D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */,
-				49005B741F180CA6004830D9 /* HRPGGoldCountView.swift in Sources */,
 				D9CE90471E4CDF3F00702578 /* Designable-Extensions.swift in Sources */,
 				D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */,
 				D96447B41CE9FF0D009D7950 /* HRPGResponseMessage.m in Sources */,
@@ -3537,6 +3526,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				2957B8CF1F4EEB7A00E836EF /* HabitRPG 46.xcdatamodel */,
 				2957B8A31F4B054500E836EF /* HabitRPG 45.xcdatamodel */,
 				29A46C2F1F444E4C0036A04E /* HabitRPG 44.xcdatamodel */,
 				297997721EFD387F00F5F13E /* HabitRPG 43.xcdatamodel */,

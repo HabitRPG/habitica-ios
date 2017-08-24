@@ -24,44 +24,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="827-G9-ba1">
                                 <rect key="frame" x="0.0" y="76" width="78" height="32"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="mO7-TX-5sH">
-                                        <rect key="frame" x="22" y="0.0" width="34" height="32"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gold_coin" translatesAutoresizingMaskIntoConstraints="NO" id="GQ0-rh-Mc2">
-                                                <rect key="frame" x="0.0" y="5" width="22" height="22"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="42y-pk-Fs6"/>
-                                                    <constraint firstAttribute="width" constant="22" id="LS9-py-Bga"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sc6-Xz-6nM">
-                                                <rect key="frame" x="26" y="0.0" width="8" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" priority="500" constant="30" id="tDD-h1-0NV"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.99964338541030884" green="0.65008342266082764" blue="0.13880643248558044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="e3y-4x-dBE" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="0.0" width="30" height="32"/>
                                         <color key="backgroundColor" red="0.95549887418746948" green="0.95622259378433228" blue="0.95561093091964722" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="Sc6-Xz-6nM" firstAttribute="leading" secondItem="GQ0-rh-Mc2" secondAttribute="trailing" constant="4" id="Brl-f9-qC2"/>
-                                            <constraint firstAttribute="trailing" secondItem="Sc6-Xz-6nM" secondAttribute="trailing" id="Kl4-z9-fQI"/>
-                                            <constraint firstAttribute="bottom" secondItem="Sc6-Xz-6nM" secondAttribute="bottom" id="R2c-LG-AKG"/>
-                                            <constraint firstItem="Sc6-Xz-6nM" firstAttribute="top" secondItem="mO7-TX-5sH" secondAttribute="top" id="buE-fp-z3I"/>
-                                            <constraint firstAttribute="width" priority="500" constant="50" id="fZR-KH-FUV"/>
-                                            <constraint firstItem="GQ0-rh-Mc2" firstAttribute="leading" secondItem="mO7-TX-5sH" secondAttribute="leading" id="h0O-kf-xQs"/>
-                                            <constraint firstItem="GQ0-rh-Mc2" firstAttribute="centerY" secondItem="mO7-TX-5sH" secondAttribute="centerY" id="mR1-t8-Va4"/>
+                                            <constraint firstAttribute="width" priority="500" constant="30" id="K79-8P-MSu"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95675891637802124" green="0.95692259073257446" blue="0.95674854516983032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="3Cu-3k-KMy"/>
-                                    <constraint firstItem="mO7-TX-5sH" firstAttribute="centerX" secondItem="827-G9-ba1" secondAttribute="centerX" id="DKf-Le-UMh"/>
-                                    <constraint firstAttribute="bottom" secondItem="mO7-TX-5sH" secondAttribute="bottom" id="aqL-I7-cip"/>
-                                    <constraint firstItem="mO7-TX-5sH" firstAttribute="top" secondItem="827-G9-ba1" secondAttribute="top" id="lM8-XE-ZbD"/>
+                                    <constraint firstItem="e3y-4x-dBE" firstAttribute="centerX" secondItem="827-G9-ba1" secondAttribute="centerX" id="E40-5h-PyA"/>
+                                    <constraint firstItem="e3y-4x-dBE" firstAttribute="top" secondItem="827-G9-ba1" secondAttribute="top" id="R60-Ec-Fdg"/>
+                                    <constraint firstAttribute="bottom" secondItem="e3y-4x-dBE" secondAttribute="bottom" id="lg5-YW-TON"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eGb-th-auK">
@@ -97,14 +73,10 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="amountLabel" destination="Sc6-Xz-6nM" id="tx8-md-iPX"/>
-                <outlet property="currencyView" destination="GQ0-rh-Mc2" id="qZm-c3-N0X"/>
+                <outlet property="currencyView" destination="e3y-4x-dBE" id="Bnq-Pt-Hs4"/>
                 <outlet property="imageView" destination="eGb-th-auK" id="zpk-XS-PUB"/>
             </connections>
             <point key="canvasLocation" x="-111" y="-18"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="gold_coin" width="18" height="18"/>
-    </resources>
 </document>

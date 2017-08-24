@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "MetaReward.h"
+#import "ShopItem+CoreDataClass.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface InAppReward : MetaReward
+@interface InAppReward : ShopItem
 
 @end
 
