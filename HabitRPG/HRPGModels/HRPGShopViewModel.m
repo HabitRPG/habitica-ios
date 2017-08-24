@@ -43,11 +43,9 @@
     }
     [fetchRequest setPredicate:predicate];
     
-    NSSortDescriptor *indexDescriptor =
-    [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
-    NSSortDescriptor *categoryIndexDescriptor =
-    [[NSSortDescriptor alloc] initWithKey:@"category.text" ascending:YES];
-    NSArray *sortDescriptors = @[ categoryIndexDescriptor, indexDescriptor ];
+//    NSSortDescriptor *indexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
+    NSSortDescriptor *categoryIndexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"category.text" ascending:YES];
+    NSArray *sortDescriptors = @[ categoryIndexDescriptor/*, indexDescriptor*/ ];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     

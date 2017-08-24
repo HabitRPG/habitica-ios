@@ -13,6 +13,7 @@ class HRPGShopBannerView: UIView {
     @IBOutlet weak var shopForegroundImageView: UIImageView!
     @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var shopNameLabel: UILabel!
+    @IBOutlet weak var shopPlaqueImageView: UIImageView!
     private var _shop: Shop?
     var shop: Shop? {
         set(newShop) {
@@ -51,7 +52,7 @@ class HRPGShopBannerView: UIView {
     
     override var intrinsicContentSize: CGSize {
         get {
-            return CGSize(width: UIScreen.main.bounds.size.width, height: 165)
+            return CGSize(width: UIScreen.main.bounds.size.width, height: 149 + notesLabel.bounds.size.height)
         }
     }
     
@@ -66,6 +67,7 @@ class HRPGShopBannerView: UIView {
     }
     
     private func setupShop() {
+        shopPlaqueImageView.image = UIImage(named: "Nameplate")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))
         if let unwrappedShop = shop, let identifier = unwrappedShop.identifier {
             HRPGManager.shared().setImage(identifier + "_background", withFormat: "png", on: self.shopBgImageView)
             HRPGManager.shared().setImage(identifier + "_scene", withFormat: "png", on: self.shopForegroundImageView)

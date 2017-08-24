@@ -46,7 +46,7 @@
     
     [self setupNavBar];
     
-    [self.topHeaderNavigationController setAlternativeHeaderView:self.shopBannerView];
+//    [self.topHeaderNavigationController setAlternativeHeaderView:self.shopBannerView];
     [self.topHeaderNavigationController startFollowingScrollView:self.collectionView];
     self.topHeaderNavigationController.shouldHideTopHeader = NO;
     
