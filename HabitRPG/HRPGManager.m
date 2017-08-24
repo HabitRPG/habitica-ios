@@ -48,6 +48,7 @@
 #import "HRPGNotificationManager.h"
 #import "ShopItem+CoreDataClass.h"
 #import "Habitica-Swift.h"
+#import <Keys/HabiticaKeys.h>
 
 @interface HRPGManager ()
 @property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
@@ -140,7 +141,7 @@ NSString *currentUser;
     NSString *DISABLE_SSL = info[@"DisableSSL"];
 
     if (CUSTOM_DOMAIN.length == 0) {
-        CUSTOM_DOMAIN = @"localhost:3000/";
+        CUSTOM_DOMAIN = @"habitrpg-staging.herokuapp.com/";
     }
 
     if (![[CUSTOM_DOMAIN substringFromIndex: [CUSTOM_DOMAIN length] - 1]  isEqual: @"/"]) {
@@ -151,7 +152,7 @@ NSString *currentUser;
     if ([DISABLE_SSL isEqualToString:@"true"]) {
         ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
     } else {
-        ROOT_URL = [NSString stringWithFormat:@"http://%@", CUSTOM_DOMAIN];
+        ROOT_URL = [NSString stringWithFormat:@"https://%@", CUSTOM_DOMAIN];
     }
 #else
     ROOT_URL = @"https://habitica.com/";
@@ -1747,7 +1748,10 @@ NSString *currentUser;
         @"currency",
         @"path"
     ]];
-    [inAppRewardsMapping addAttributeMappingsFromDictionary:@{@"class": @"imageName"}];
+    [inAppRewardsMapping addAttributeMappingsFromDictionary:@{
+                                                              @"class": @"imageName",
+                                                              @"@metadata.mapping.collectionIndex": @"order"
+                                                              }];
     inAppRewardsMapping.identificationAttributes = @[ @"key" ];
     inAppRewardsMapping.assignsDefaultValueForMissingAttributes = NO;
     responseDescriptor = [RKResponseDescriptor
@@ -2086,7 +2090,7 @@ NSString *currentUser;
                                                                   withMapping:shopCategoryMapping]];
     RKEntityMapping *shopItemMapping = [RKEntityMapping mappingForEntityForName:@"ShopItem" inManagedObjectStore:managedObjectStore];
     [shopItemMapping addAttributeMappingsFromArray:@[@"text", @"key", @"notes", @"type", @"value", @"currency", @"locked", @"purchaseType"]];
-    [shopItemMapping addAttributeMappingsFromDictionary:@{@"@metadata.mapping.collectionIndex": @"order",
+    [shopItemMapping addAttributeMappingsFromDictionary:@{@"@metadata.mapping.collectionIndex": @"index",
                                                           @"class": @"imageName",
                                                           @"unlockCondition.condition": @"unlockCondition"}];
     shopItemMapping.identificationAttributes = @[ @"key", @"purchaseType" ];
@@ -2291,7 +2295,10 @@ NSString *currentUser;
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-user" value:currentUser];
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-key"
                                                            value:[keyChain stringForKey:@"key"]];
-
+    
+    HabiticaKeys *keys = [[HabiticaKeys alloc] init];
+    [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"Authorization"
+                                                           value:[@"Basic " stringByAppendingString:[keys stagingKey]]];
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:@"&uid" value:self.user.id];
     [[Amplitude instance] setUserId:currentUser];
