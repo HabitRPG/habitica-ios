@@ -15,7 +15,7 @@ class HRPGBuyItemModalViewController: UIViewController {
     let inventoryRepository = InventoryRepository()
     
     @IBOutlet weak var topContentView: UIView!
-    @IBOutlet weak var bottomButtons: UIStackView!
+    @IBOutlet weak var bottomButtons: UIView!
     
     @IBOutlet weak var hourglassCountView: HRPGCurrencyCountView!
     @IBOutlet weak var gemCountView: HRPGCurrencyCountView!

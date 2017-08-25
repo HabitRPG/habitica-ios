@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PIR-jb-93G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PIR-jb-93G">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,66 +25,6 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="di7-JQ-KmH" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
                                 <rect key="frame" x="16" y="206" width="343" height="256"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLq-BF-AiO">
-                                        <rect key="frame" x="0.0" y="154" width="343" height="50"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TiK-yj-cOf">
-                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="50"/>
-                                                <color key="backgroundColor" red="0.97647058819999999" green="0.96862745098039216" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="GpK-xG-o2L"/>
-                                                </constraints>
-                                                <state key="normal" title="Pin to Rewards"/>
-                                                <connections>
-                                                    <action selector="pinPressed" destination="PIR-jb-93G" eventType="touchUpInside" id="j3p-xc-GGo"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3z-QN-KcI">
-                                                <rect key="frame" x="171.5" y="0.0" width="171.5" height="50"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SaL-Vs-PkR">
-                                                        <rect key="frame" x="85" y="0.0" width="2" height="50"/>
-                                                        <color key="backgroundColor" red="0.97597450017929077" green="0.96980291604995728" blue="0.99977797269821167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="2" id="nYp-3B-VF4"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Buy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5D-EL-LRQ">
-                                                        <rect key="frame" x="47" y="0.0" width="31" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" priority="500" constant="42" id="1WG-Zg-4BH"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                        <color key="textColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="few-vN-72G" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
-                                                        <rect key="frame" x="94" y="0.0" width="60" height="50"/>
-                                                        <color key="backgroundColor" red="0.97597450017929077" green="0.96980291604995728" blue="0.99977797269821167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" priority="500" constant="60" id="bZB-jm-BNG"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.97597450017929077" green="0.96980291604995728" blue="0.99977797269821167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstItem="SaL-Vs-PkR" firstAttribute="top" secondItem="e3z-QN-KcI" secondAttribute="top" id="2rV-BU-1dM"/>
-                                                    <constraint firstItem="SaL-Vs-PkR" firstAttribute="centerX" secondItem="e3z-QN-KcI" secondAttribute="centerX" id="308-Ir-V32"/>
-                                                    <constraint firstItem="j5D-EL-LRQ" firstAttribute="top" secondItem="e3z-QN-KcI" secondAttribute="top" id="GBS-98-d7s"/>
-                                                    <constraint firstAttribute="bottom" secondItem="j5D-EL-LRQ" secondAttribute="bottom" id="JFB-yL-FsX"/>
-                                                    <constraint firstItem="few-vN-72G" firstAttribute="top" secondItem="e3z-QN-KcI" secondAttribute="top" id="LxB-fd-WOk"/>
-                                                    <constraint firstAttribute="height" constant="50" id="U5P-8I-TeS"/>
-                                                    <constraint firstItem="few-vN-72G" firstAttribute="leading" secondItem="SaL-Vs-PkR" secondAttribute="trailing" constant="7" id="VUu-hE-VjE"/>
-                                                    <constraint firstAttribute="bottom" secondItem="SaL-Vs-PkR" secondAttribute="bottom" id="eRQ-3T-by9"/>
-                                                    <constraint firstItem="SaL-Vs-PkR" firstAttribute="leading" secondItem="j5D-EL-LRQ" secondAttribute="trailing" constant="7" id="enm-o8-MYM"/>
-                                                    <constraint firstAttribute="bottom" secondItem="few-vN-72G" secondAttribute="bottom" id="jG5-Sc-pn7"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="e3z-QN-KcI" firstAttribute="width" secondItem="TiK-yj-cOf" secondAttribute="width" id="poF-sw-71f"/>
-                                        </constraints>
-                                    </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3P-N6-MBj">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
                                         <subviews>
@@ -98,6 +38,10 @@
                                                             <constraint firstAttribute="width" priority="500" constant="30" id="08u-bA-HWY"/>
                                                             <constraint firstAttribute="height" constant="27" id="3II-fP-LWN"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="rawCurrency" value="hourglasses"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="currencyAdapter" value="hourglasses"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="IJ2-cU-jHd" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="62" y="0.0" width="50" height="27"/>
@@ -106,6 +50,10 @@
                                                             <constraint firstAttribute="height" constant="27" id="WG7-2j-UoT"/>
                                                             <constraint firstAttribute="width" priority="500" constant="30" id="nBd-0k-tKA"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="rawCurrency" value="gems"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="currencyAdapter" value="gems"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="mhw-rd-Afi" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="124" y="0.0" width="50" height="27"/>
@@ -114,6 +62,9 @@
                                                             <constraint firstAttribute="height" constant="27" id="95M-lM-Pj8"/>
                                                             <constraint firstAttribute="width" priority="500" constant="30" id="WkU-Nk-Tfs"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="rawCurrency" value="gold"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
                                             </stackView>
@@ -133,15 +84,98 @@
                                             <constraint firstItem="b9i-sB-wsY" firstAttribute="centerY" secondItem="g3P-N6-MBj" secondAttribute="centerY" id="jk3-uk-5fM"/>
                                         </constraints>
                                     </view>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7w1-M9-yF5">
+                                        <rect key="frame" x="0.0" y="144" width="343" height="58"/>
+                                        <subviews>
+                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLq-BF-AiO">
+                                                <rect key="frame" x="0.0" y="8" width="343" height="50"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TiK-yj-cOf">
+                                                        <rect key="frame" x="0.0" y="0.0" width="171.5" height="50"/>
+                                                        <color key="backgroundColor" red="0.97647058819999999" green="0.96862745098039216" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="GpK-xG-o2L"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Pin to Rewards"/>
+                                                        <connections>
+                                                            <action selector="pinPressed" destination="PIR-jb-93G" eventType="touchUpInside" id="j3p-xc-GGo"/>
+                                                        </connections>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3z-QN-KcI">
+                                                        <rect key="frame" x="171.5" y="0.0" width="171.5" height="50"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SaL-Vs-PkR">
+                                                                <rect key="frame" x="85" y="0.0" width="2" height="50"/>
+                                                                <color key="backgroundColor" red="0.97597450017929077" green="0.96980291604995728" blue="0.99977797269821167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="2" id="nYp-3B-VF4"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Buy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5D-EL-LRQ">
+                                                                <rect key="frame" x="47" y="0.0" width="31" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" priority="500" constant="42" id="1WG-Zg-4BH"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                                <color key="textColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="few-vN-72G" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                                                                <rect key="frame" x="94" y="0.0" width="60" height="50"/>
+                                                                <color key="backgroundColor" red="0.97597450017929077" green="0.96980291604995728" blue="0.99977797269821167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" priority="500" constant="60" id="bZB-jm-BNG"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.97597450017929077" green="0.96980291604995728" blue="0.99977797269821167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="SaL-Vs-PkR" firstAttribute="top" secondItem="e3z-QN-KcI" secondAttribute="top" id="2rV-BU-1dM"/>
+                                                            <constraint firstItem="SaL-Vs-PkR" firstAttribute="centerX" secondItem="e3z-QN-KcI" secondAttribute="centerX" id="308-Ir-V32"/>
+                                                            <constraint firstItem="j5D-EL-LRQ" firstAttribute="top" secondItem="e3z-QN-KcI" secondAttribute="top" id="GBS-98-d7s"/>
+                                                            <constraint firstAttribute="bottom" secondItem="j5D-EL-LRQ" secondAttribute="bottom" id="JFB-yL-FsX"/>
+                                                            <constraint firstItem="few-vN-72G" firstAttribute="top" secondItem="e3z-QN-KcI" secondAttribute="top" id="LxB-fd-WOk"/>
+                                                            <constraint firstAttribute="height" constant="50" id="U5P-8I-TeS"/>
+                                                            <constraint firstItem="few-vN-72G" firstAttribute="leading" secondItem="SaL-Vs-PkR" secondAttribute="trailing" constant="7" id="VUu-hE-VjE"/>
+                                                            <constraint firstAttribute="bottom" secondItem="SaL-Vs-PkR" secondAttribute="bottom" id="eRQ-3T-by9"/>
+                                                            <constraint firstItem="SaL-Vs-PkR" firstAttribute="leading" secondItem="j5D-EL-LRQ" secondAttribute="trailing" constant="7" id="enm-o8-MYM"/>
+                                                            <constraint firstAttribute="bottom" secondItem="few-vN-72G" secondAttribute="bottom" id="jG5-Sc-pn7"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="e3z-QN-KcI" firstAttribute="width" secondItem="TiK-yj-cOf" secondAttribute="width" id="poF-sw-71f"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="lLq-BF-AiO" secondAttribute="trailing" id="CSa-wT-xvK"/>
+                                            <constraint firstAttribute="bottom" secondItem="lLq-BF-AiO" secondAttribute="bottom" id="HuM-0l-dnx"/>
+                                            <constraint firstItem="lLq-BF-AiO" firstAttribute="leading" secondItem="7w1-M9-yF5" secondAttribute="leading" id="dFz-eR-PK8"/>
+                                            <constraint firstItem="lLq-BF-AiO" firstAttribute="top" secondItem="7w1-M9-yF5" secondAttribute="top" constant="8" id="lPo-GT-NVN"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="g3P-N6-MBj" firstAttribute="leading" secondItem="di7-JQ-KmH" secondAttribute="leading" id="7BC-XA-ec7"/>
-                                    <constraint firstItem="lLq-BF-AiO" firstAttribute="leading" secondItem="di7-JQ-KmH" secondAttribute="leading" id="SLE-YU-gBR"/>
+                                    <constraint firstItem="7w1-M9-yF5" firstAttribute="leading" secondItem="di7-JQ-KmH" secondAttribute="leading" id="AuG-OG-Qcq"/>
+                                    <constraint firstAttribute="bottom" secondItem="7w1-M9-yF5" secondAttribute="bottom" constant="54" id="Jzc-Cn-zWx"/>
                                     <constraint firstAttribute="trailing" secondItem="g3P-N6-MBj" secondAttribute="trailing" id="eU2-BY-Y0X"/>
-                                    <constraint firstAttribute="bottom" secondItem="lLq-BF-AiO" secondAttribute="bottom" constant="52" id="lNV-Ci-zpq"/>
-                                    <constraint firstAttribute="trailing" secondItem="lLq-BF-AiO" secondAttribute="trailing" id="mZM-ls-0Nf"/>
                                     <constraint firstItem="g3P-N6-MBj" firstAttribute="top" secondItem="di7-JQ-KmH" secondAttribute="top" id="vHL-AB-uLU"/>
+                                    <constraint firstAttribute="trailing" secondItem="7w1-M9-yF5" secondAttribute="trailing" id="y7C-0u-AZp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -153,7 +187,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bottomButtons" destination="lLq-BF-AiO" id="hbA-sB-LvW"/>
+                        <outlet property="bottomButtons" destination="7w1-M9-yF5" id="qWu-Bf-ysN"/>
                         <outlet property="buyButton" destination="e3z-QN-KcI" id="85Z-iK-947"/>
                         <outlet property="closableShopModal" destination="di7-JQ-KmH" id="hna-9x-zD3"/>
                         <outlet property="currencyCountView" destination="few-vN-72G" id="eqo-2s-TW3"/>
@@ -169,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84L-qz-qXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-434.39999999999998" y="76.911544227886068"/>
+            <point key="canvasLocation" x="-458.39999999999998" y="76.911544227886068"/>
         </scene>
         <!--Insufficient Gems View Controller-->
         <scene sceneID="wZ7-VK-NpV">
@@ -429,7 +463,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kir-XQ-nFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="325.60000000000002" y="441.22938530734638"/>
+            <point key="canvasLocation" x="326" y="441"/>
         </scene>
     </scenes>
     <resources>

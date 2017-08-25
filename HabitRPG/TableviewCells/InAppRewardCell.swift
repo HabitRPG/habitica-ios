@@ -42,6 +42,19 @@ class InAppRewardCell: UICollectionViewCell {
         }
     }
     
+    private var availableUntil: Date? = nil {
+        didSet {
+            if let _ = availableUntil {
+                infoImageView.image = #imageLiteral(resourceName: "item_limited_bubble")
+                infoImageView.isHidden = false
+                infoLabel.isHidden = true
+            } else {
+                infoImageView.isHidden = true
+                infoLabel.isHidden = true
+            }
+        }
+    }
+    
     public var imageName = "" {
         didSet {
             if imageName.characters.count == 0 {

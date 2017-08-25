@@ -121,7 +121,7 @@
     vc.item = item;
     vc.shopIdentifier = self.shopIdentifier;
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    [self.tabBarController presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
