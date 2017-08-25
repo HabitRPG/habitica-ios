@@ -34,6 +34,12 @@
 		2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */; };
 		2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */; };
 		2980E60D1EEA39DF005B7100 /* YesterdailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */; };
+		298119AB1F50251300F9FB39 /* InventoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298119AA1F50251300F9FB39 /* InventoryRepository.swift */; };
+		298119AD1F5040B900F9FB39 /* QuestDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298119AC1F5040B900F9FB39 /* QuestDetailView.xib */; };
+		298119AF1F5040DA00F9FB39 /* QuestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298119AE1F5040DA00F9FB39 /* QuestDetailView.swift */; };
+		298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298119B01F50453100F9FB39 /* QuestGoalView.swift */; };
+		298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298119B41F5048C000F9FB39 /* QuestGoalView.xib */; };
+		299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6211F505DFA00E22935 /* PaddedLabel.swift */; };
 		29AAA15D1F2A3AA600029737 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15C1F2A3AA600029737 /* GradientView.swift */; };
 		29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */; };
 		29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29AAA1601F2B597400029737 /* SpeechbubbleView.xib */; };
@@ -421,6 +427,12 @@
 		2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailiesDialogView.swift; sourceTree = "<group>"; };
 		2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailyTaskCell.swift; sourceTree = "<group>"; };
 		2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyTaskCell.xib; sourceTree = "<group>"; };
+		298119AA1F50251300F9FB39 /* InventoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryRepository.swift; sourceTree = "<group>"; };
+		298119AC1F5040B900F9FB39 /* QuestDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestDetailView.xib; sourceTree = "<group>"; };
+		298119AE1F5040DA00F9FB39 /* QuestDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestDetailView.swift; sourceTree = "<group>"; };
+		298119B01F50453100F9FB39 /* QuestGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestGoalView.swift; sourceTree = "<group>"; };
+		298119B41F5048C000F9FB39 /* QuestGoalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestGoalView.xib; sourceTree = "<group>"; };
+		299BD6211F505DFA00E22935 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		29A46C2F1F444E4C0036A04E /* HabitRPG 44.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 44.xcdatamodel"; sourceTree = "<group>"; };
 		29AAA15C1F2A3AA600029737 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechbubbleView.swift; sourceTree = "<group>"; };
@@ -1200,6 +1212,8 @@
 				493ECBB41F47A58F0099B1FC /* HRPGItemStatsView.xib */,
 				493ECBB61F47D7E10099B1FC /* HRPGGearSetItem.swift */,
 				493ECBB81F47D82A0099B1FC /* HRPGGearSetItem.xib */,
+				298119AC1F5040B900F9FB39 /* QuestDetailView.xib */,
+				298119AE1F5040DA00F9FB39 /* QuestDetailView.swift */,
 			);
 			name = Shop;
 			sourceTree = "<group>";
@@ -1655,6 +1669,7 @@
 			children = (
 				D9BB45DC1E7AE5240002AE2E /* ConfigRepository.swift */,
 				29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */,
+				298119AA1F50251300F9FB39 /* InventoryRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1716,6 +1731,7 @@
 				29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */,
 				D96C853C1DCB61EE003E3616 /* Notifications */,
 				D9525F9C1E64739900C529B8 /* PaddedView.swift */,
+				299BD6211F505DFA00E22935 /* PaddedLabel.swift */,
 				D9CE90441E4CDD6200702578 /* PillView.swift */,
 				293282131F389CC000D42961 /* SetupCustomizationItemView.swift */,
 				293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */,
@@ -1736,6 +1752,8 @@
 				49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */,
 				49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */,
 				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
+				298119B01F50453100F9FB39 /* QuestGoalView.swift */,
+				298119B41F5048C000F9FB39 /* QuestGoalView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2325,6 +2343,7 @@
 				49DCB7991F3407B30079FDD0 /* BuyModal.storyboard in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
 				D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */,
+				298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */,
 				D9BB45D81E7998710002AE2E /* ChallengeFilterAlert.xib in Resources */,
 				2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
@@ -2377,6 +2396,7 @@
 				D979AD1C1AF3EF6E00D59FAE /* customizations.json in Resources */,
 				D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */,
 				2980E60D1EEA39DF005B7100 /* YesterdailyTaskCell.xib in Resources */,
+				298119AD1F5040B900F9FB39 /* QuestDetailView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2653,6 +2673,7 @@
 				D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */,
 				D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */,
 				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
+				298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */,
 				D9D17CCC1E6736A600AD9232 /* ChallengeDetailHeaderView.swift in Sources */,
 				D9BB45D61E79968B0002AE2E /* ChallengeFilterAlert.swift in Sources */,
 				D9D593671D008C7500D6C388 /* PushDevice.m in Sources */,
@@ -2685,6 +2706,7 @@
 				D98F5DDA1C6E17280035CBEC /* HRPGQuestGroupTableViewController.m in Sources */,
 				D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */,
 				D947960A1972C248002CB34C /* HRPGUserProfileViewController.m in Sources */,
+				299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */,
 				D9F1E3E81E55DCEC0034D0F4 /* SubscriptionInformationCell.swift in Sources */,
 				D9D96F03194B96FD00796FE7 /* HRPGMountMasterViewController.m in Sources */,
 				D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */,
@@ -2778,6 +2800,7 @@
 				2957B8A91F4B071700E836EF /* InAppReward+CoreDataProperties.m in Sources */,
 				D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */,
 				D9CE90411E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.m in Sources */,
+				298119AB1F50251300F9FB39 /* InventoryRepository.swift in Sources */,
 				D9A28F721B08DF58002907E0 /* HRPGPurchaseButton.m in Sources */,
 				D998FD951ADAC1FF00E9A26F /* HRPGAboutViewController.m in Sources */,
 				D92D40D91ABF123800E30339 /* HRPGHabitButtons.m in Sources */,
@@ -2849,6 +2872,7 @@
 				D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */,
 				D96447B41CE9FF0D009D7950 /* HRPGResponseMessage.m in Sources */,
 				29F89F1A1F47882A004E5B84 /* String-Extensions.swift in Sources */,
+				298119AF1F5040DA00F9FB39 /* QuestDetailView.swift in Sources */,
 				D9E46B0A1DABE97200E390D7 /* SpecialItems+CoreDataProperties.m in Sources */,
 				D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */,
 				D902AD8A1B540AE30098A1BD /* HRPGBaseCollectionViewController.m in Sources */,

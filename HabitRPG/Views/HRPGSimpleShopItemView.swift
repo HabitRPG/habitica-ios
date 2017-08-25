@@ -95,11 +95,15 @@ class HRPGSimpleShopItemView: UIView {
         
         self.shopItemTitleLabel.text = reward.text
 
+        var purchaseType = ""
         if let inAppReward = reward as? InAppReward {
             if inAppReward.imageName?.contains(" ") ?? false {
                 HRPGManager.shared().setImage(inAppReward.imageName?.components(separatedBy: " ")[1], withFormat: "png", on: self.shopItemImageView)
             } else {
                 HRPGManager.shared().setImage(inAppReward.imageName, withFormat: "png", on: self.shopItemImageView)
+            }
+            if let inAppPurchaseType = inAppReward.purchaseType {
+                purchaseType = inAppPurchaseType
             }
         } else {
             if reward.key == "potion" {
@@ -109,11 +113,15 @@ class HRPGSimpleShopItemView: UIView {
             }
         }
         
-        if let notes = reward.notes {
+        if let notes = reward.notes, purchaseType != "quests" {
             self.shopItemDescriptionLabel.text = notes
-            self.shouldHideNotes = false
         } else {
-            self.shouldHideNotes = true
+            self.shopItemDescriptionLabel.text = ""
+            if let label = self.shopItemDescriptionLabel {
+                let constraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal,
+                                                    toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
+                self.shopItemDescriptionLabel.addConstraint(constraint)
+            }
         }
     }
     
@@ -134,15 +142,6 @@ class HRPGSimpleShopItemView: UIView {
             setNeedsLayout()
             layoutIfNeeded()
         }
-    }
-    
-    // Loads a XIB file into a view and returns this view.
-    private func viewFromNibForClass() -> UIView? {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil).first as? UIView
-        
-        return view
     }
     
 }

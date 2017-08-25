@@ -33,3 +33,5 @@
 #import "HRPGBaseCollectionViewController.h"
 #import "InAppReward+CoreDataClass.h"
 #import "HRPGAbbrevNumberLabel.h"
+#import "Gear.h"
+#import "Quest.h"

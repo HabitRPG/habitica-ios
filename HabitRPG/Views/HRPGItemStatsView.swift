@@ -9,7 +9,6 @@
 import UIKit
 
 class HRPGItemStatsView: UIView {
-    var item: ShopItem?
     @IBOutlet weak var strLabel: UILabel!
     @IBOutlet weak var strStatLabel: UILabel!
     @IBOutlet weak var conLabel: UILabel!
@@ -27,12 +26,6 @@ class HRPGItemStatsView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
-    }
-    
-    override func didMoveToWindow() {
-        if let shopItem = item {
-            
-        }
     }
     
     // MARK: - Private Helper Methods
@@ -53,14 +46,19 @@ class HRPGItemStatsView: UIView {
             layoutIfNeeded()
         }
     }
-    
-    // Loads a XIB file into a view and returns this view.
-    private func viewFromNibForClass() -> UIView? {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil).first as? UIView
-        
-        return view
+
+    public func configure(gear: Gear) {
+        configureFields(descriptionLabel: strLabel, valueLabel: strStatLabel, value: gear.str.intValue)
+        configureFields(descriptionLabel: conLabel, valueLabel: conStatLabel, value: gear.con.intValue)
+        configureFields(descriptionLabel: perLabel, valueLabel: perStatLabel, value: gear.per.intValue)
+        configureFields(descriptionLabel: intLabel, valueLabel: intStatLabel, value: gear.intelligence.intValue)
     }
 
+    private func configureFields(descriptionLabel: UILabel, valueLabel: UILabel, value: Int) {
+        valueLabel.text = "+\(value)"
+        if value == 0 {
+            descriptionLabel.textColor = .gray400()
+            valueLabel.textColor = .gray400()
+        }
+    }
 }

@@ -11,6 +11,7 @@ import UIKit
 @IBDesignable
 class HRPGShopModalBgView: UIView {
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var maxHeightConstraint: NSLayoutConstraint!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,15 +39,5 @@ class HRPGShopModalBgView: UIView {
         
         clipsToBounds = true
         layer.cornerRadius = 12
-    }
-    
-    // Loads a XIB file into a view and returns this view.
-    private func viewFromNibForClass() -> UIView? {
-        
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil).first as? UIView
-        
-        return view
     }
 }

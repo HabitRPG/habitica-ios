@@ -92,7 +92,11 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
             if let viewController = storyboard.instantiateViewController(withIdentifier: "HRPGBuyItemModalViewController") as? HRPGBuyItemModalViewController {
                 viewController.modalTransitionStyle = .crossDissolve
                 viewController.reward = self.fetchedResultsController.object(at: indexPath)
-                self.present(viewController, animated: true, completion: nil)
+                if let tabbarController = self.tabBarController {
+                    tabbarController.present(viewController, animated: true, completion: nil)
+                } else {
+                    present(viewController, animated: true, completion: nil)
+                }
             }
         }
     }

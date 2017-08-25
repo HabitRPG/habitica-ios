@@ -57,16 +57,6 @@ class HRPGShopBannerView: UIView {
         }
     }
     
-    // Loads a XIB file into a view and returns this view.
-    private func viewFromNibForClass() -> UIView? {
-        
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil).first as? UIView
-        
-        return view
-    }
-    
     private func setupShop() {
         shopPlaqueImageView.image = UIImage(named: "Nameplate")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))
         if let unwrappedShop = shop, let identifier = unwrappedShop.identifier {
