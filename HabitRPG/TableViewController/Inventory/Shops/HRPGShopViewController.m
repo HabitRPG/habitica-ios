@@ -34,6 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [self setupCollectionView];
     
     self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier];
@@ -46,9 +48,12 @@
     
     [self setupNavBar];
     
-//    [self.topHeaderNavigationController setAlternativeHeaderView:self.shopBannerView];
+    [self.topHeaderNavigationController setAlternativeHeaderView:self.shopBannerView];
     [self.topHeaderNavigationController startFollowingScrollView:self.collectionView];
     self.topHeaderNavigationController.shouldHideTopHeader = NO;
+    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0);
+    [self.collectionView setContentInset:(UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset] + 64, 0, 60, 0))];
+    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
     
     User *user = [[HRPGManager sharedManager] getUser];
     if (user && user.health && user.health.floatValue <= 0) {
@@ -89,9 +94,11 @@
 }
 
 - (void)setupCollectionView {
+    [self.collectionView registerNib:[UINib nibWithNibName:@"InAppRewardCell" bundle:self.nibBundle] forCellWithReuseIdentifier:@"ItemCell"];
+    
     UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     collectionViewLayout.itemSize = CGSizeMake(80, 108);
-    collectionViewLayout.sectionInset = UIEdgeInsetsMake(0, 8, 0, 8);
+    collectionViewLayout.sectionInset = UIEdgeInsetsMake(0, 8, 20, 8);
     self.collectionView.collectionViewLayout = collectionViewLayout;
     
     self.dataSource = [HRPGShopCollectionViewDataSource new];

@@ -33,9 +33,9 @@
                                                     <rect key="frame" x="0.0" y="1" width="359" height="129"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZHc-A1-33Y">
-                                                    <rect key="frame" x="18" y="-14" width="178" height="166"/>
+                                                    <rect key="frame" x="18" y="8" width="300" height="144"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="178" id="YIS-jA-d4w"/>
+                                                        <constraint firstAttribute="width" constant="300" id="YIS-jA-d4w"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHt-A6-U3W">
@@ -101,7 +101,7 @@
                                                 <constraint firstItem="Zqf-Hz-ESK" firstAttribute="centerY" secondItem="Xx0-SX-V3j" secondAttribute="centerY" id="jGV-mQ-dcp"/>
                                                 <constraint firstItem="FLa-P2-Cfz" firstAttribute="top" secondItem="Xx0-SX-V3j" secondAttribute="top" constant="1" id="kg6-n2-E7D"/>
                                                 <constraint firstAttribute="bottom" secondItem="pgH-7G-5ub" secondAttribute="bottom" id="m5X-3s-QL1"/>
-                                                <constraint firstItem="ZHc-A1-33Y" firstAttribute="top" secondItem="Xx0-SX-V3j" secondAttribute="top" constant="-14" id="mph-dF-A1d"/>
+                                                <constraint firstItem="ZHc-A1-33Y" firstAttribute="top" secondItem="Xx0-SX-V3j" secondAttribute="top" constant="8" id="mph-dF-A1d"/>
                                                 <constraint firstAttribute="trailing" secondItem="Cku-Je-kQu" secondAttribute="trailing" constant="8" id="oT5-lg-8xW"/>
                                                 <constraint firstAttribute="trailing" secondItem="NHt-A6-U3W" secondAttribute="trailing" id="p13-2s-FJU"/>
                                                 <constraint firstItem="pgH-7G-5ub" firstAttribute="top" secondItem="Xx0-SX-V3j" secondAttribute="top" id="s5i-MW-TUA"/>

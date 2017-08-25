@@ -28,7 +28,9 @@
         } else {
             cell.subtitleLabel.text = @"";
         }
-        [[HRPGManager sharedManager] setImage:[NSString stringWithFormat:@"%@_background", identifier] withFormat:@"png" onView:cell.backgroundImageView];
+        [[HRPGManager sharedManager] getImage:[NSString stringWithFormat:@"%@_background", identifier] withFormat:@"png" onSuccess:^(UIImage *image) {
+            cell.backgroundImageView.image = [image resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
+        } onError:nil];
         [[HRPGManager sharedManager] setImage:[NSString stringWithFormat:@"%@_scene", identifier] withFormat:@"png" onView:cell.characterImageView];
     } else {
         [self.delegate refreshShopWithIdentifier:identifier onSuccess:^{
@@ -36,7 +38,7 @@
         } onError:nil];
     }
     
-    cell.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    cell.backgroundImageView.contentMode = UIViewContentModeRedraw;
 }
 
 - (NSString *)titleForIdentifier:(NSString *)identifier {

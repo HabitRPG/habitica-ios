@@ -52,7 +52,8 @@ class HRPGShopBannerView: UIView {
     
     override var intrinsicContentSize: CGSize {
         get {
-            return CGSize(width: UIScreen.main.bounds.size.width, height: 149 + notesLabel.bounds.size.height)
+            notesLabel.sizeToFit()
+            return CGSize(width: UIScreen.main.bounds.size.width, height: 167 + notesLabel.bounds.size.height)
         }
     }
     
@@ -69,7 +70,9 @@ class HRPGShopBannerView: UIView {
     private func setupShop() {
         shopPlaqueImageView.image = UIImage(named: "Nameplate")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))
         if let unwrappedShop = shop, let identifier = unwrappedShop.identifier {
-            HRPGManager.shared().setImage(identifier + "_background", withFormat: "png", on: self.shopBgImageView)
+            HRPGManager.shared().getImage(identifier + "_background", withFormat: "png", onSuccess: { (image) in
+                self.shopBgImageView.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImageResizingMode.tile)
+            }, onError: {})
             HRPGManager.shared().setImage(identifier + "_scene", withFormat: "png", on: self.shopForegroundImageView)
             
             self.shopNameLabel.text = unwrappedShop.text

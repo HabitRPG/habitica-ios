@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SK0-Yv-8jC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SK0-Yv-8jC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -35,10 +35,23 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AzB-B7-6g7">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12206375838926174" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="0.5" id="TaC-P2-5gF"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="leadingMargin" secondItem="JB4-vT-m2S" secondAttribute="leading" id="Cm8-Wa-rp7"/>
                                 <constraint firstItem="JB4-vT-m2S" firstAttribute="centerY" secondItem="70u-KL-mp3" secondAttribute="centerY" id="IJl-Sm-txf"/>
+                                <constraint firstItem="AzB-B7-6g7" firstAttribute="leading" secondItem="70u-KL-mp3" secondAttribute="leadingMargin" constant="-8" id="Mu0-c0-150"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="AzB-B7-6g7" secondAttribute="trailing" constant="-8" id="jop-Yy-JnH"/>
+                                <constraint firstItem="AzB-B7-6g7" firstAttribute="top" secondItem="70u-KL-mp3" secondAttribute="topMargin" constant="-8" id="kg7-3O-3UJ"/>
                             </constraints>
                             <connections>
                                 <outlet property="titleLabel" destination="JB4-vT-m2S" id="HIC-jy-x7H"/>
@@ -55,7 +68,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ceP-31-ohR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7342" y="668"/>
+            <point key="canvasLocation" x="7341.6000000000004" y="667.91604197901052"/>
         </scene>
         <!--BuyModal-->
         <scene sceneID="5eH-NV-hFJ">

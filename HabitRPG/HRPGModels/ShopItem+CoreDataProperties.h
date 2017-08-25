@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, copy) NSString *currency;
 @property (nullable, nonatomic, copy) NSString *imageName;
-@property (nullable, nonatomic, copy) NSNumber *order;
+@property (nullable, nonatomic, copy) NSNumber *index;
 @property (nullable, nonatomic, copy) NSString *key;
 @property (nullable, nonatomic, copy) NSNumber *locked;
 @property (nullable, nonatomic, copy) NSString *notes;

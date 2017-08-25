@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dFg-ct-Ev1" customClass="InAppRewardCell" customModule="Habitica" customModuleProvider="target">
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="dFg-ct-Ev1" customClass="InAppRewardCell" customModule="Habitica" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="86" height="116"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -59,12 +59,31 @@
                             <constraint firstAttribute="width" constant="78" id="zFc-Eq-lBw"/>
                         </constraints>
                     </view>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zk1-te-Not">
+                        <rect key="frame" x="64" y="-6" width="28" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="28" id="OxJ-C4-M1t"/>
+                            <constraint firstAttribute="height" constant="28" id="rIr-Vr-7rU"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQC-S4-QYp">
+                        <rect key="frame" x="64" y="0.0" width="22" height="22"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.97636479139999999" green="0.97653168440000004" blue="0.9763541818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="WTa-dS-7d1" firstAttribute="centerX" secondItem="dFg-ct-Ev1" secondAttribute="centerX" id="9tQ-B2-7Ee"/>
+                <constraint firstItem="jQC-S4-QYp" firstAttribute="bottom" secondItem="Zk1-te-Not" secondAttribute="bottom" id="C2V-Jf-FhN"/>
+                <constraint firstItem="jQC-S4-QYp" firstAttribute="leading" secondItem="Zk1-te-Not" secondAttribute="leading" id="MTW-zQ-ihv"/>
+                <constraint firstAttribute="trailing" secondItem="Zk1-te-Not" secondAttribute="trailing" constant="-6" id="TSk-t8-UGb"/>
                 <constraint firstItem="WTa-dS-7d1" firstAttribute="centerY" secondItem="dFg-ct-Ev1" secondAttribute="centerY" id="azv-jx-owq"/>
+                <constraint firstItem="jQC-S4-QYp" firstAttribute="trailing" secondItem="Zk1-te-Not" secondAttribute="trailing" id="nOv-vy-Ecb"/>
+                <constraint firstItem="Zk1-te-Not" firstAttribute="top" secondItem="dFg-ct-Ev1" secondAttribute="top" constant="-6" id="nis-7l-0Yy"/>
+                <constraint firstItem="jQC-S4-QYp" firstAttribute="top" secondItem="Zk1-te-Not" secondAttribute="top" id="vKc-RZ-9XD"/>
             </constraints>
             <size key="customSize" width="80" height="108"/>
             <userDefinedRuntimeAttributes>
@@ -75,8 +94,10 @@
             <connections>
                 <outlet property="currencyView" destination="e3y-4x-dBE" id="Bnq-Pt-Hs4"/>
                 <outlet property="imageView" destination="eGb-th-auK" id="zpk-XS-PUB"/>
+                <outlet property="infoImageView" destination="Zk1-te-Not" id="ESz-Cn-2gZ"/>
+                <outlet property="infoLabel" destination="jQC-S4-QYp" id="Jdg-MC-vNS"/>
             </connections>
-            <point key="canvasLocation" x="-111" y="-18"/>
+            <point key="canvasLocation" x="-303" y="-23"/>
         </collectionViewCell>
     </objects>
 </document>

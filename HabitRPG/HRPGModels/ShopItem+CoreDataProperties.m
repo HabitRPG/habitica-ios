@@ -16,7 +16,7 @@
 
 @dynamic currency;
 @dynamic imageName;
-@dynamic order;
+@dynamic index;
 @dynamic key;
 @dynamic locked;
 @dynamic notes;

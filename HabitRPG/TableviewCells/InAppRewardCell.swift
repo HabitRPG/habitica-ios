@@ -12,6 +12,8 @@ class InAppRewardCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var currencyView: HRPGCurrencyCountView!
+    @IBOutlet weak var infoImageView: UIImageView!
+    @IBOutlet weak var infoLabel: UILabel!
     
     public var imageName = "" {
         didSet {
@@ -48,6 +50,25 @@ class InAppRewardCell: UICollectionViewCell {
         imageName = item.imageName ?? ""
         if let currencyString = item.currency, let currency = Currency(rawValue: currencyString) {
             currencyView.currency = currency
+        }
+        
+        if let isLocked = item.locked?.boolValue, isLocked {
+            infoImageView.image = #imageLiteral(resourceName: "item_locked_bubble")
+            infoImageView.isHidden = false
+            infoLabel.isHidden = true
+        } else {
+            infoImageView.isHidden = true
+            infoLabel.isHidden = true
+        }
+        
+        if let itemsLeft = item.itemsLeft?.intValue, itemsLeft > 0 {
+            infoImageView.image = #imageLiteral(resourceName: "item_count_bubble")
+            infoImageView.isHidden = false
+            infoLabel.isHidden = false
+            infoLabel.text = String(describing: itemsLeft)
+        } else {
+            infoImageView.isHidden = true
+            infoLabel.isHidden = true
         }
     }
 }
