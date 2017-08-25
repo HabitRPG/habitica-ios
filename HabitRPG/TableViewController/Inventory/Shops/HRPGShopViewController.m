@@ -97,8 +97,8 @@
     [self.collectionView registerNib:[UINib nibWithNibName:@"InAppRewardCell" bundle:self.nibBundle] forCellWithReuseIdentifier:@"ItemCell"];
     
     UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-    collectionViewLayout.itemSize = CGSizeMake(80, 108);
-    collectionViewLayout.sectionInset = UIEdgeInsetsMake(0, 8, 20, 8);
+    collectionViewLayout.itemSize = CGSizeMake(90, 120);
+    collectionViewLayout.sectionInset = UIEdgeInsetsMake(0, 6, 20, 6);
     self.collectionView.collectionViewLayout = collectionViewLayout;
     
     self.dataSource = [HRPGShopCollectionViewDataSource new];

@@ -15,6 +15,33 @@ class InAppRewardCell: UICollectionViewCell {
     @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     
+    private var itemsLeft = 0 {
+        didSet {
+            if itemsLeft > 0 {
+                infoImageView.image = #imageLiteral(resourceName: "item_count_bubble")
+                infoImageView.isHidden = false
+                infoLabel.isHidden = false
+                infoLabel.text = String(describing: itemsLeft)
+            } else {
+                infoImageView.isHidden = true
+                infoLabel.isHidden = true
+            }
+        }
+    }
+    
+    private var isLocked = false {
+        didSet {
+            if isLocked {
+                infoImageView.image = #imageLiteral(resourceName: "item_locked_bubble")
+                infoImageView.isHidden = false
+                infoLabel.isHidden = true
+            } else {
+                infoImageView.isHidden = true
+                infoLabel.isHidden = true
+            }
+        }
+    }
+    
     public var imageName = "" {
         didSet {
             if imageName.characters.count == 0 {
@@ -35,6 +62,7 @@ class InAppRewardCell: UICollectionViewCell {
             if let currencyString = inAppReward.currency, let currency = Currency(rawValue: currencyString) {
                 currencyView.currency = currency
             }
+            isLocked = inAppReward.locked?.boolValue ?? false
         } else {
             currencyView.currency = .gold
             if reward.key == "potion" {
@@ -52,23 +80,8 @@ class InAppRewardCell: UICollectionViewCell {
             currencyView.currency = currency
         }
         
-        if let isLocked = item.locked?.boolValue, isLocked {
-            infoImageView.image = #imageLiteral(resourceName: "item_locked_bubble")
-            infoImageView.isHidden = false
-            infoLabel.isHidden = true
-        } else {
-            infoImageView.isHidden = true
-            infoLabel.isHidden = true
-        }
-        
-        if let itemsLeft = item.itemsLeft?.intValue, itemsLeft > 0 {
-            infoImageView.image = #imageLiteral(resourceName: "item_count_bubble")
-            infoImageView.isHidden = false
-            infoLabel.isHidden = false
-            infoLabel.text = String(describing: itemsLeft)
-        } else {
-            infoImageView.isHidden = true
-            infoLabel.isHidden = true
-        }
+        isLocked = item.locked?.boolValue ?? false
+        itemsLeft = item.itemsLeft?.intValue ?? 0
+
     }
 }

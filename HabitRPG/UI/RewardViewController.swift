@@ -101,31 +101,23 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
         if isCustomRewardsSection(indexPath.section) {
             return CGSize(width: self.view.frame.size.width, height: 60)
         } else {
-            return CGSize(width: 80, height: 108)
+            return CGSize(width: 90, height: 120)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        if isCustomRewardsSection(section) {
-            return 0
-        } else {
-            return 8
-        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        if isCustomRewardsSection(section) {
-            return 0
-        } else {
-            return 8
-        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if isCustomRewardsSection(section) {
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         } else {
-            return UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+            return UIEdgeInsets(top: 12, left: 6, bottom: 12, right: 6)
         }
     }
     
