@@ -16,7 +16,7 @@
 #import "Habitica-Swift.h"
 #import "HRPGShopViewModel.h"
 
-@interface HRPGShopViewController () <HRPGShopCollectionViewDataSourceDelegate>
+@interface HRPGShopViewController () <HRPGShopCollectionViewDataSourceDelegate, HRPGFetchedResultsCollectionViewDataSourceDelegate>
 
 @property (nonatomic) HRPGShopBannerView *shopBannerView;
 
@@ -26,6 +26,7 @@
 @property User *user;
 
 @property NSIndexPath *selectedIndex;
+@property (nonatomic) CGFloat extraHeight;
 
 @end
 
@@ -38,6 +39,7 @@
     
     [self setupCollectionView];
     
+    self.dataSource.fetchedResultsDelegate = self;
     self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier];
     
     [self refresh];
@@ -52,8 +54,11 @@
     [self.topHeaderNavigationController startFollowingScrollView:self.collectionView];
     self.topHeaderNavigationController.shouldHideTopHeader = NO;
     self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0);
-    [self.collectionView setContentInset:(UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset] + 64, 0, 60, 0))];
-    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+    if (!self.extraHeight) {
+        self.extraHeight = self.navigationController.navigationBar.bounds.size.height +
+                            [UIApplication sharedApplication].statusBarFrame.size.height;
+    }
+    [self scrollToTop];
     
     User *user = [[HRPGManager sharedManager] getUser];
     if (user && user.health && user.health.floatValue <= 0) {
@@ -68,15 +73,22 @@
 }
 
 - (void)refresh {
+    [self setupShop];
     [[HRPGManager sharedManager] fetchShopInventory:self.shopIdentifier onSuccess:^() {
-        [self.viewModel fetchShopInformationForIdentifier:self.shopIdentifier];
-        if (self.viewModel.shop) {
-            self.navigationItem.title = self.viewModel.shop.text;
-            self.shopBannerView.shop = self.viewModel.shop;
-        }
-        self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier];
-        [self.collectionView reloadData];
+        [self setupShop];
     } onError:nil];
+}
+
+- (void)setupShop {
+    [self.viewModel fetchShopInformationForIdentifier:self.shopIdentifier];
+    if (self.viewModel.shop) {
+        self.navigationItem.title = self.viewModel.shop.text;
+        self.shopBannerView.shop = self.viewModel.shop;
+        
+        if ([self.viewModel shouldPromptToSubscribe]) [self configureEmpty];
+    }
+    self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier];
+    [self.collectionView reloadData];
 }
 
 - (void)setupNavBar {
@@ -109,8 +121,70 @@
     self.collectionView.delegate = self.dataSource;
 }
 
-- (void)configureEmptyLabel {
-    self.collectionView.hidden = YES;
+- (void)scrollToTop {
+    [self.collectionView setContentInset:(UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset] + self.extraHeight, 0, 60, 0))];
+    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+}
+
+- (void)configureEmpty {
+    HRPGSimpleShopItemView *closedShopInfoView = [[HRPGSimpleShopItemView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 40, 400)];
+    closedShopInfoView.shopItemTitleLabel.textColor = [UIColor gray200];
+    closedShopInfoView.shopItemDescriptionLabel.textColor = [UIColor gray300];
+    
+    UIView *bgView = [[UIView alloc] initWithFrame:self.collectionView.frame];
+    bgView.translatesAutoresizingMaskIntoConstraints = NO;
+    [bgView addConstraint:[NSLayoutConstraint constraintWithItem:bgView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:[UIScreen mainScreen].bounds.size.width]];
+    
+    NSString *imageName;
+    NSString *title;
+    NSString *notes;
+    NSDictionary *views;
+    NSString *visualFormat;
+    if ([self.shopIdentifier isEqualToString:SeasonalShopKey]) {
+        imageName = @"shop_empty_seasonal";
+        title = @"Come back soon!";
+        notes = @"The Grand Galas happen close to the solstices and equinoxes, so check back then to find a fun assortment of special seasonal items!";
+        
+        visualFormat = @"V:|-280-[closedView]";
+        views = @{@"closedView": closedShopInfoView};
+    } else if ([self.shopIdentifier isEqualToString:TimeTravelersShopKey]) {
+        imageName = @"shop_empty_hourglass";
+        title = @"Subscribe for Hourglasses";
+        notes = @"Earn one Mystic Hourglass for every three months of consecutive subscription, then use them to unlock limited edition items, pets, and mounts from the past... and future!";
+        
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 40, 38)];
+        button.backgroundColor = [UIColor gray600];
+        [button setTitleColor:[UIColor purple400] forState:UIControlStateNormal];
+        [button setTitle:@"I want to Subscribe" forState:UIControlStateNormal];
+        [button addConstraint:[NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:38]];
+        button.layer.cornerRadius = 6;
+        button.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        [bgView addSubview:button];
+        [bgView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[button]-20-|" options:0 metrics:nil views:@{@"button": button}]];
+        
+        visualFormat = @"V:|-280-[closedView]-10-[button]";
+        views = @{@"closedView": closedShopInfoView, @"button": button};
+    }
+    
+    [bgView addSubview:closedShopInfoView];
+    [bgView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[closedView]-0-|" options:0 metrics:nil views:@{@"closedView": closedShopInfoView}]];
+    [bgView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:visualFormat
+                                                                   options:0
+                                                                   metrics:nil
+                                                                     views:views]];
+    closedShopInfoView.image = [UIImage imageNamed:imageName];
+    closedShopInfoView.shopItemTitleLabel.text = title;
+    closedShopInfoView.shopItemDescriptionLabel.text = notes;
+    
+    [bgView setNeedsUpdateConstraints];
+    [bgView updateConstraints];
+    [bgView setNeedsLayout];
+    [bgView layoutIfNeeded];
+    
+    self.collectionView.backgroundView = bgView;
+    
+    self.extraHeight = 350;
 }
 
 #pragma mark - data source delegate
@@ -126,6 +200,17 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self.topHeaderNavigationController scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
+    if ([self.viewModel shouldPromptToSubscribe]) {
+        CGFloat alpha = scrollView.contentOffset.y + 350 + [self.topHeaderNavigationController getContentInset] - 80;
+        alpha /= -80;
+        if (alpha > 1) alpha = 1;
+        if (alpha < 0) alpha = 0;
+        self.collectionView.backgroundView.alpha = alpha;
+    }
+}
+
+- (void)onEmptyFetchedResults {
+    [self configureEmpty];
 }
 
 #pragma mark - lazy loaders

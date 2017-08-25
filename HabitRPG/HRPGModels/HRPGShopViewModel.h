@@ -14,6 +14,6 @@
 @property Shop *shop;
 
 - (NSFetchedResultsController *)fetchedShopItemResultsForIdentifier:(NSString *)identifier;
-- (void) fetchShopInformationForIdentifier:(NSString *)identifier;
-
+- (void)fetchShopInformationForIdentifier:(NSString *)identifier;
+- (BOOL)shouldPromptToSubscribe;
 @end

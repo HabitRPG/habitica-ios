@@ -8,9 +8,20 @@
 
 import UIKit
 
+@objc protocol HRPGFetchedResultsCollectionViewDataSourceDelegate {
+    func onEmptyFetchedResults()
+}
+
 class HRPGFetchedResultsCollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate {
     var collectionView: UICollectionView?
-    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
+    weak var fetchedResultsDelegate: HRPGFetchedResultsCollectionViewDataSourceDelegate?
+    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? {
+        didSet {
+            if let results = fetchedResultsController, let sections = results.sections, sections.count == 0 {
+                fetchedResultsDelegate?.onEmptyFetchedResults()
+            }
+        }
+    }
     
     // MARK: Collection view data source and delegate methods
     

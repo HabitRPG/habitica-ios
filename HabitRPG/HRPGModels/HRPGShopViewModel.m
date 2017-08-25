@@ -43,9 +43,9 @@
     }
     [fetchRequest setPredicate:predicate];
     
-//    NSSortDescriptor *indexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
+    NSSortDescriptor *indexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
     NSSortDescriptor *categoryIndexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"category.text" ascending:YES];
-    NSArray *sortDescriptors = @[ categoryIndexDescriptor/*, indexDescriptor*/ ];
+    NSArray *sortDescriptors = @[ categoryIndexDescriptor, indexDescriptor ];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
@@ -62,6 +62,11 @@
     }
     
     return aFetchedResultsController;
+}
+
+- (BOOL)shouldPromptToSubscribe {
+    BOOL isTimeTrav = [self.shop.identifier isEqualToString:TimeTravelersShopKey];
+    return isTimeTrav && ![[HRPGManager sharedManager] getUser].subscriptionPlan;
 }
 
 @end
