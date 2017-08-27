@@ -3460,6 +3460,8 @@ NSString *currentUser;
             if (successBlock) {
                 successBlock();
             }
+            NSLog(@"%@",loginData.id);
+            NSLog(@"%@",loginData.key);
             [self.networkIndicatorController endNetworking];
             return;
         }
