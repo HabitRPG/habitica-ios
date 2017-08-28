@@ -57,13 +57,13 @@
                     <color key="textColor" red="0.5297765136" green="0.50464123490000001" blue="0.56664639709999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fMK-ki-ck2">
+                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fMK-ki-ck2">
                     <rect key="frame" x="16" y="114" width="343" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="500" constant="20" id="Khb-Ur-Tb4"/>
                     </constraints>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Imt-qe-XV9">
+                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Imt-qe-XV9">
                     <rect key="frame" x="16" y="176" width="343" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="500" constant="20" id="9vI-FW-xHj"/>

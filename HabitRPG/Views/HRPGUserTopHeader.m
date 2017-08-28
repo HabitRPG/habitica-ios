@@ -62,15 +62,15 @@ NSInteger rowOffset = 16;
 
 - (void)awakeFromNib {
     self.healthLabel.color = [UIColor red100];
-    self.healthLabel.icon = [UIImage imageNamed:@"icon_health"];
+    self.healthLabel.icon = HabiticaIcons.imageOfHeartLightBg;
     self.healthLabel.type = NSLocalizedString(@"Health", nil);
 
     self.experienceLabel.color = [UIColor yellow100];
-    self.experienceLabel.icon = [UIImage imageNamed:@"icon_experience"];
+    self.experienceLabel.icon = HabiticaIcons.imageOfExperience;
     self.experienceLabel.type = NSLocalizedString(@"Experience", nil);
 
     self.magicLabel.color = [UIColor blue100];
-    self.magicLabel.icon = [UIImage imageNamed:@"icon_magic"];
+    self.magicLabel.icon = HabiticaIcons.imageOfMagic;
     self.magicLabel.type = NSLocalizedString(@"Mana", nil);
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {

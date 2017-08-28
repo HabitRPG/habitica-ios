@@ -16,6 +16,7 @@
 #import "Seeds.h"
 #import <Keys/HabiticaKeys.h>
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
+#import "Habitica-Swift.h";
 
 @interface HRPGGemViewController ()
 @property(weak, nonatomic) IBOutlet UILabel *notEnoughGemsLabel;
@@ -243,7 +244,14 @@
         identifier = @"FooterView";
     }
     
-    return [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:identifier forIndexPath:indexPath];
+    UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:identifier forIndexPath:indexPath];
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        UIImageView *imageView = (UIImageView *) [view viewWithTag:1];
+        imageView.image = HabiticaIcons.imageOfHeartLarge;
+    }
+    
+    return view;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {

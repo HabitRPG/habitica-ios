@@ -10,7 +10,6 @@
 #import "Shop.h"
 #import "ShopItem+CoreDataClass.h"
 #import "User.h"
-#import "HRPGGearDetailView.h"
 #import "KLCPopup.h"
 #import "NSString+StripHTML.h"
 #import "Habitica-Swift.h"

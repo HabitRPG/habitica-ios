@@ -309,7 +309,7 @@
     </entity>
     <entity name="QuestReward" representedClassName="QuestReward" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="onlyOwner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="onlyOwner" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quest" inverseName="itemDrops" inverseEntity="Quest" syncable="YES"/>
@@ -564,6 +564,7 @@
         <element name="PushNotifications" positionX="9" positionY="153" width="128" height="210"/>
         <element name="Quest" positionX="0" positionY="0" width="128" height="255"/>
         <element name="QuestCollect" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="QuestReward" positionX="9" positionY="153" width="128" height="120"/>
         <element name="Reminder" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Reward" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Shop" positionX="9" positionY="153" width="128" height="120"/>
@@ -577,6 +578,5 @@
         <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
         <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
         <element name="User" positionX="0" positionY="0" width="128" height="1215"/>
-        <element name="QuestReward" positionX="9" positionY="153" width="128" height="120"/>
     </elements>
 </model>

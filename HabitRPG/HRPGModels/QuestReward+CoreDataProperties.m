@@ -14,10 +14,10 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"QuestReward"];
 }
 
-@dynamic text;
 @dynamic key;
-@dynamic type;
 @dynamic onlyOwner;
+@dynamic text;
+@dynamic type;
 @dynamic quest;
 
 @end

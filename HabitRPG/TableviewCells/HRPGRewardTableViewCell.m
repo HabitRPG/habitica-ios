@@ -10,6 +10,7 @@
 #import "NSString+Emoji.h"
 #import "UIColor+Habitica.h"
 #import "NSString+StripHTML.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGRewardTableViewCell ()
 
@@ -41,7 +42,7 @@
             [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBuyTap:)];
         [self.buyButton addGestureRecognizer:tapGestureRecognizer];
     }
-    self.coinImageView.image = [UIImage imageNamed:@"gold_coin"];
+    self.coinImageView.image = HabiticaIcons.imageOfGold;
 
     if ([gold floatValue] > [reward.value floatValue]) {
         self.buyView.layer.borderColor = [[UIColor purple300] CGColor];
@@ -87,9 +88,9 @@
         [self.buyButton addGestureRecognizer:tapGestureRecognizer];
     }
     if ([shopItem.currency isEqualToString:@"gems"]) {
-        self.coinImageView.image = [UIImage imageNamed:@"Gem"];
+        self.coinImageView.image = HabiticaIcons.imageOfGem;
     } else {
-        self.coinImageView.image = [UIImage imageNamed:@"gold_coin"];
+        self.coinImageView.image = HabiticaIcons.imageOfGold;
     }
     
     if ([shopItem.category.purchaseAll boolValue] || shopItem.unlockCondition) {

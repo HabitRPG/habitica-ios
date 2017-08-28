@@ -11,6 +11,7 @@
 #import "HRPGLabeledProgressBar.h"
 #import "UIColor+Habitica.h"
 #import "HRPGManager.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGDeathView ()
 
@@ -41,7 +42,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.healthView.color = [UIColor red100];
-    self.healthView.icon = [UIImage imageNamed:@"icon_health"];
+    self.healthView.icon = HabiticaIcons.imageOfHeartLightBg;
     self.healthView.type = NSLocalizedString(@"Health", nil);
     self.healthView.value = @0;
     self.healthView.maxValue = @50;

@@ -55,7 +55,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kff-Ah-KbA">
                         <rect key="frame" x="298" y="0.0" width="48" height="83"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gold_coin" translatesAutoresizingMaskIntoConstraints="NO" id="voU-fj-NTW">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="voU-fj-NTW">
                                 <rect key="frame" x="13" y="19.5" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="kwO-SW-FQ3"/>
@@ -114,9 +114,13 @@
             </connections>
             <point key="canvasLocation" x="-154" y="48.5"/>
         </collectionViewCell>
+        <customObject id="aqV-2O-A4P" customClass="HabiticaIcons" customModule="Habitica" customModuleProvider="target">
+            <connections>
+                <outletCollection property="goldTargets" destination="voU-fj-NTW" collectionClass="NSMutableArray" id="AlB-gq-hu5"/>
+            </connections>
+        </customObject>
     </objects>
     <resources>
-        <image name="gold_coin" width="18" height="18"/>
         <image name="tabbar_rewards" width="32" height="32"/>
     </resources>
 </document>

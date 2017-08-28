@@ -13,6 +13,7 @@
 #import "UIColor+Habitica.h"
 #import "UIViewController+TutorialSteps.h"
 #import "HRPGCoreDataDataSource.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGPartyMembersViewController ()
 @property NSString *readableName;
@@ -91,7 +92,7 @@
 
     HRPGLabeledProgressBar *healthLabel = [cell viewWithTag:3];
     healthLabel.color = [UIColor red100];
-    healthLabel.icon = [UIImage imageNamed:@"icon_health"];
+    healthLabel.icon = HabiticaIcons.imageOfHeartLightBg;
     healthLabel.value = user.health;
     healthLabel.maxValue = @50;
 

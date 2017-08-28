@@ -17,11 +17,11 @@ public enum Currency: String {
     func getImage() -> UIImage {
         switch self {
         case .gold:
-            return #imageLiteral(resourceName: "gold_coin")
+            return HabiticaIcons.imageOfGold
         case .gem:
-            return #imageLiteral(resourceName: "Gem")
+            return HabiticaIcons.imageOfGem
         case .hourglass:
-            return #imageLiteral(resourceName: "hourglass")
+            return HabiticaIcons.imageOfHourglass
         }
     }
     

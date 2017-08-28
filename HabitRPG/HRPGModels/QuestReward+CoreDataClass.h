@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QuestReward : NSManagedObject
 
+- (NSString *) getImageName;
+
 @end
 
 NS_ASSUME_NONNULL_END

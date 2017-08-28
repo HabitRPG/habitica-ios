@@ -13,6 +13,7 @@
 #import "HRPGInboxChatViewController.h"
 #import "Outfit.h"
 #import "Gear.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGUserProfileViewController ()
 @property(nonatomic, readonly, getter=getUser) User *user;
@@ -283,14 +284,14 @@
 
         HRPGLabeledProgressBar *healthLabel = [cell viewWithTag:2];
         healthLabel.color = [UIColor red100];
-        healthLabel.icon = [UIImage imageNamed:@"icon_health"];
+        healthLabel.icon = HabiticaIcons.imageOfHeartLightBg;
         healthLabel.type = NSLocalizedString(@"Health", nil);
         healthLabel.value = user.health;
         healthLabel.maxValue = @50;
 
         HRPGLabeledProgressBar *experienceLabel = [cell viewWithTag:3];
         experienceLabel.color = [UIColor yellow100];
-        experienceLabel.icon = [UIImage imageNamed:@"icon_experience"];
+        experienceLabel.icon = HabiticaIcons.imageOfExperience;
         experienceLabel.type = NSLocalizedString(@"Experience", nil);
         experienceLabel.value = user.experience;
         experienceLabel.maxValue = user.nextLevel;
@@ -299,7 +300,7 @@
 
         if ([user.level integerValue] >= 10) {
             magicLabel.color = [UIColor blue100];
-            magicLabel.icon = [UIImage imageNamed:@"icon_magic"];
+            magicLabel.icon = HabiticaIcons.imageOfMagic;
             magicLabel.type = NSLocalizedString(@"Mana", nil);
             magicLabel.value = user.magic;
             magicLabel.maxValue = user.maxMagic;

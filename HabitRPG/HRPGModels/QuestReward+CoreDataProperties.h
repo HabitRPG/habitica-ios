@@ -15,10 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<QuestReward *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSString *text;
 @property (nullable, nonatomic, copy) NSString *key;
+@property (nullable, nonatomic, copy) NSNumber *onlyOwner;
+@property (nullable, nonatomic, copy) NSString *text;
 @property (nullable, nonatomic, copy) NSString *type;
-@property (nullable, nonatomic, copy) NSString *onlyOwner;
 @property (nullable, nonatomic, retain) Quest *quest;
 
 @end

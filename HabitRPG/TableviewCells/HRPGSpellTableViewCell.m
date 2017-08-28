@@ -8,6 +8,7 @@
 
 #import "HRPGSpellTableViewCell.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGSpellTableViewCell ()
 
@@ -49,7 +50,7 @@
         self.buyButtonIconLabelSpacing.constant = 0;
     } else {
         self.buyButtonLabel.text = [spell.mana stringValue];
-        self.buyButtonIconView.image = [UIImage imageNamed:@"icon_magic"];
+        self.buyButtonIconView.image = HabiticaIcons.imageOfMagic;
         if ([magic integerValue] < [spell.mana integerValue]) {
             self.selectionStyle = UITableViewCellSelectionStyleNone;
             self.titleLabel.textColor = [UIColor lightGrayColor];

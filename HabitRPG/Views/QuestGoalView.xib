@@ -37,17 +37,17 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7c-jL-fja">
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="s7c-jL-fja">
                             <rect key="frame" x="94.5" y="0.0" width="280.5" height="34"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_health" translatesAutoresizingMaskIntoConstraints="NO" id="axU-4V-iqm">
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="axU-4V-iqm">
                                     <rect key="frame" x="0.0" y="0.0" width="13" height="34"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="13" id="o5v-Aw-XOE"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHt-Da-4LB">
-                                    <rect key="frame" x="13" y="0.0" width="267.5" height="34"/>
+                                    <rect key="frame" x="17" y="0.0" width="263.5" height="34"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -148,9 +148,13 @@
             </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="26.5" y="52"/>
         </view>
+        <customObject id="hSR-HU-nmg" customClass="HabiticaIcons" customModule="Habitica" customModuleProvider="target">
+            <connections>
+                <outletCollection property="heartDarkBgTargets" destination="axU-4V-iqm" collectionClass="NSMutableArray" id="ZlC-HF-PUj"/>
+            </connections>
+        </customObject>
     </objects>
     <resources>
         <image name="difficulty_empty" width="12" height="12"/>
-        <image name="icon_health" width="18" height="18"/>
     </resources>
 </document>

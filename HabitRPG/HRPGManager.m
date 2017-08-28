@@ -1884,38 +1884,6 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
-    RKEntityMapping *potionMapping =
-        [RKEntityMapping mappingForEntityForName:@"Potion" inManagedObjectStore:managedObjectStore];
-    [potionMapping addAttributeMappingsFromDictionary:@{
-        @"text" : @"text",
-        @"key" : @"key",
-        @"value" : @"value",
-        @"notes" : @"notes",
-    }];
-    potionMapping.identificationAttributes = @[ @"key" ];
-    responseDescriptor = [RKResponseDescriptor
-        responseDescriptorWithMapping:potionMapping
-                               method:RKRequestMethodGET
-                          pathPattern:@"content"
-                              keyPath:@"data.potion"
-                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
-    RKEntityMapping *armoireMapping = [RKEntityMapping mappingForEntityForName:@"Armoire"
-                                                          inManagedObjectStore:managedObjectStore];
-    [armoireMapping addAttributeMappingsFromDictionary:@{
-        @"text" : @"text",
-        @"key" : @"key",
-        @"value" : @"value",
-        @"notes" : @"notes",
-    }];
-    armoireMapping.identificationAttributes = @[ @"key" ];
-    responseDescriptor = [RKResponseDescriptor
-        responseDescriptorWithMapping:armoireMapping
-                               method:RKRequestMethodGET
-                          pathPattern:@"content"
-                              keyPath:@"data.armoire"
-                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
     RKEntityMapping *questMapping =
         [RKEntityMapping mappingForEntityForName:@"Quest" inManagedObjectStore:managedObjectStore];
     questMapping.forceCollectionMapping = YES;

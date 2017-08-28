@@ -52,12 +52,53 @@ class QuestDetailView: UIView {
         }
         questGoalView.configure(quest: quest)
         
+        if let experience = quest.dropExp?.intValue, experience > 0 {
+            rewardsStackView.addArrangedSubview(makeRewardView(title: NSLocalizedString("\(experience) Experience Points", comment: ""), image: HabiticaIcons.imageOfExperienceReward))
+        }
+        if let gold = quest.dropGp?.intValue, gold > 0 {
+            rewardsStackView.addArrangedSubview(makeRewardView(title: NSLocalizedString("\(gold) Gold", comment: ""), image: HabiticaIcons.imageOfGoldReward))
+        }
+        
+        var hasOwnerRewards = false
         if let items = quest.itemDrops {
             for reward in items {
-                let label = UILabel()
-                label.text = reward.text
-                rewardsStackView.addArrangedSubview(label)
+                let view = makeRewardView(title: reward.text, imageName: reward.getImageName())
+                if reward.onlyOwner?.boolValue ?? false {
+                    ownerRewardsStackView.addArrangedSubview(view)
+                    hasOwnerRewards = true
+                } else {
+                    rewardsStackView.addArrangedSubview(view)
+                }
             }
         }
+        if !hasOwnerRewards {
+            ownerRewardsLabel.isHidden = true
+        }
+    }
+    
+    func makeRewardView(title: String?, imageName: String) -> UIView {
+        if let view = UIView.fromNib(nibName: "QuestDetailRewardView") {
+            if let imageView = view.viewWithTag(1) as? UIImageView {
+                HRPGManager.shared().setImage(imageName, withFormat: "png", on: imageView)
+            }
+            if let label = view.viewWithTag(2) as? UILabel {
+                label.text = title
+            }
+            return view
+        }
+        return UIView()
+    }
+    
+    func makeRewardView(title: String?, image: UIImage) -> UIView {
+        if let view = UIView.fromNib(nibName: "QuestDetailRewardView") {
+            if let imageView = view.viewWithTag(1) as? UIImageView {
+                imageView.image = image
+            }
+            if let label = view.viewWithTag(2) as? UILabel {
+                label.text = title
+            }
+            return view
+        }
+        return UIView()
     }
 }
