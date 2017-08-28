@@ -7,7 +7,7 @@
 //
 
 #import "HRPGGroupTableViewController.h"
-#import "Quest.h"
+#import "Quest+CoreDataClass.h"
 
 @interface HRPGQuestGroupTableViewController : HRPGGroupTableViewController
 

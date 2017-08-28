@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Group.h"
 #import "HRPGBaseViewController.h"
-#import "Quest.h"
+#import "Quest+CoreDataClass.h"
 
 @interface HRPGQuestParticipantsViewController
     : HRPGBaseViewController<NSFetchedResultsControllerDelegate>

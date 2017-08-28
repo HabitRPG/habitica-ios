@@ -12,7 +12,7 @@
 #import "HRPGImageOverlayView.h"
 #import "HRPGSharingManager.h"
 #import "HatchingPotion.h"
-#import "Quest.h"
+#import "Quest+CoreDataClass.h"
 #import "HRPGCoreDataDataSource.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIColor+Habitica.h"

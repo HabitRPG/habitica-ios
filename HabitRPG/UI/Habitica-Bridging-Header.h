@@ -34,4 +34,5 @@
 #import "InAppReward+CoreDataClass.h"
 #import "HRPGAbbrevNumberLabel.h"
 #import "Gear.h"
-#import "Quest.h"
+#import "Quest+CoreDataClass.h"
+#import "QuestReward+CoreDataClass.h"

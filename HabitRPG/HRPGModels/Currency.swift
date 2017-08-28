@@ -28,7 +28,7 @@ public enum Currency: String {
     func getTextColor() -> UIColor {
         switch self {
         case .gold:
-            return .yellow10()
+            return .yellow5()
         case .gem:
             return .green10()
         case .hourglass:

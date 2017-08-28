@@ -34,7 +34,7 @@
 #import "HRPGTaskResponse.h"
 #import "UIView+Screenshot.h"
 #import "HRPGUserBuyResponse.h"
-#import "Quest.h"
+#import "Quest+CoreDataClass.h"
 #import "Reward.h"
 #import "ChecklistItem.h"
 #import "UIColor+Habitica.h"
@@ -1934,6 +1934,20 @@ NSString *currentUser;
                                          relationshipMappingFromKeyPath:@"(key).collect"
                                                               toKeyPath:@"collect"
                                                             withMapping:questCollectMapping]];
+    RKEntityMapping *questItemsMapping =
+    [RKEntityMapping mappingForEntityForName:@"QuestReward"
+                        inManagedObjectStore:managedObjectStore];
+    questItemsMapping.forceCollectionMapping = YES;
+    [questItemsMapping addAttributeMappingsFromArray:@[
+                                                       @"text",
+                                                       @"type",
+                                                       @"key",
+                                                       @"onlyOwner"]];
+    questItemsMapping.identificationAttributes = @[ @"key" ];
+    [questMapping addPropertyMapping:[RKRelationshipMapping
+                                      relationshipMappingFromKeyPath:@"(key).drop.items"
+                                      toKeyPath:@"itemDrops"
+                                      withMapping:questItemsMapping]];
     [questMapping addAttributeMappingsFromDictionary:@{
         @"(key).text" : @"text",
         @"(key).completition" : @"completition",

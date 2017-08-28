@@ -33,6 +33,7 @@
 + (UIColor *)orange100;
 + (UIColor *)orange500;
 
++ (UIColor *)yellow5;
 + (UIColor *)yellow10;
 + (UIColor *)yellow50;
 + (UIColor *)yellow100;

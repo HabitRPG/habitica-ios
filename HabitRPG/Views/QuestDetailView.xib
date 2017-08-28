@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuestDetailView" customModule="Habitica" customModuleProvider="target">
             <connections>
+                <outlet property="ownerRewardsLabel" destination="tPx-bH-EDa" id="t83-vI-2hC"/>
                 <outlet property="ownerRewardsStackView" destination="Imt-qe-XV9" id="JZa-qP-uRi"/>
                 <outlet property="questGoalView" destination="c4o-RZ-fmE" id="Wlh-y9-PBn"/>
                 <outlet property="questTypeLabel" destination="6kB-a3-bZU" id="XLH-tP-FCh"/>

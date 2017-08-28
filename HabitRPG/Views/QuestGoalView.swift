@@ -48,13 +48,13 @@ class QuestGoalView: UIView {
     }
     
     func configure(quest: Quest) {
-        if quest.bossHp.intValue > 0 {
+        if let bossHealth = quest.bossHp?.intValue, bossHealth > 0 {
             healthIcon.isHidden = false
             typeLabel.text = NSLocalizedString("Health", comment: "")
-            goalDetailLabel.text = "\(quest.bossHp.intValue)"
-            rageMeterView.isHidden = quest.bossRage.intValue == 0
+            goalDetailLabel.text = "\(bossHealth)"
+            rageMeterView.isHidden = bossHealth == 0
             typeBackgroundView.backgroundColor = .red100()
-            setQuestDifficulty(quest.bossStr.floatValue)
+            setQuestDifficulty(quest.bossStr?.floatValue ?? 0)
         } else {
             healthIcon.isHidden = true
             typeLabel.text = NSLocalizedString("Collect", comment: "")

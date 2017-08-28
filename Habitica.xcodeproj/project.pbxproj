@@ -40,6 +40,10 @@
 		298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298119B01F50453100F9FB39 /* QuestGoalView.swift */; };
 		298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298119B41F5048C000F9FB39 /* QuestGoalView.xib */; };
 		299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6211F505DFA00E22935 /* PaddedLabel.swift */; };
+		299BD62D1F541EFC00E22935 /* Quest+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6261F541EFC00E22935 /* Quest+CoreDataClass.m */; };
+		299BD62E1F541EFC00E22935 /* Quest+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6281F541EFC00E22935 /* Quest+CoreDataProperties.m */; };
+		299BD62F1F541EFC00E22935 /* QuestReward+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 299BD62A1F541EFC00E22935 /* QuestReward+CoreDataClass.m */; };
+		299BD6301F541EFC00E22935 /* QuestReward+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 299BD62C1F541EFC00E22935 /* QuestReward+CoreDataProperties.m */; };
 		29AAA15D1F2A3AA600029737 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15C1F2A3AA600029737 /* GradientView.swift */; };
 		29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */; };
 		29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29AAA1601F2B597400029737 /* SpeechbubbleView.xib */; };
@@ -203,7 +207,6 @@
 		D979AD1A1AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D979AD191AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m */; };
 		D979AD1C1AF3EF6E00D59FAE /* customizations.json in Resources */ = {isa = PBXBuildFile; fileRef = D979AD1B1AF3EF6E00D59FAE /* customizations.json */; };
 		D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97B8F5C1AE6CD3C00C6447D /* HRPGRewardFormViewController.m */; };
-		D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71DA18EC98A30089FDC6 /* Quest.m */; };
 		D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71DD18EC98A40089FDC6 /* QuestCollect.m */; };
 		D97C71E118ECA7050089FDC6 /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71E018ECA7050089FDC6 /* ChatMessage.m */; };
 		D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */; };
@@ -418,7 +421,6 @@
 		2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRewardCell.swift; sourceTree = "<group>"; };
 		2957B8C71F4DCF7800E836EF /* RewardFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardFormController.swift; sourceTree = "<group>"; };
 		2957B8C91F4ED7C800E836EF /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
-		2957B8CF1F4EEB7A00E836EF /* HabitRPG 46.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 46.xcdatamodel"; sourceTree = "<group>"; };
 		297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSetupViewController.swift; sourceTree = "<group>"; };
 		297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSetupViewController.swift; sourceTree = "<group>"; };
 		297997721EFD387F00F5F13E /* HabitRPG 43.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 43.xcdatamodel"; sourceTree = "<group>"; };
@@ -433,6 +435,15 @@
 		298119B01F50453100F9FB39 /* QuestGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestGoalView.swift; sourceTree = "<group>"; };
 		298119B41F5048C000F9FB39 /* QuestGoalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestGoalView.xib; sourceTree = "<group>"; };
 		299BD6211F505DFA00E22935 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
+		299BD6241F54181A00E22935 /* HabitRPG 46.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 46.xcdatamodel"; sourceTree = "<group>"; };
+		299BD6251F541EFC00E22935 /* Quest+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Quest+CoreDataClass.h"; sourceTree = "<group>"; };
+		299BD6261F541EFC00E22935 /* Quest+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Quest+CoreDataClass.m"; sourceTree = "<group>"; };
+		299BD6271F541EFC00E22935 /* Quest+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Quest+CoreDataProperties.h"; sourceTree = "<group>"; };
+		299BD6281F541EFC00E22935 /* Quest+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Quest+CoreDataProperties.m"; sourceTree = "<group>"; };
+		299BD6291F541EFC00E22935 /* QuestReward+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuestReward+CoreDataClass.h"; sourceTree = "<group>"; };
+		299BD62A1F541EFC00E22935 /* QuestReward+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QuestReward+CoreDataClass.m"; sourceTree = "<group>"; };
+		299BD62B1F541EFC00E22935 /* QuestReward+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuestReward+CoreDataProperties.h"; sourceTree = "<group>"; };
+		299BD62C1F541EFC00E22935 /* QuestReward+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QuestReward+CoreDataProperties.m"; sourceTree = "<group>"; };
 		29A46C2F1F444E4C0036A04E /* HabitRPG 44.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 44.xcdatamodel"; sourceTree = "<group>"; };
 		29AAA15C1F2A3AA600029737 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechbubbleView.swift; sourceTree = "<group>"; };
@@ -719,8 +730,6 @@
 		D97AC21D1DD39D6300BEB5A9 /* HabitRPG 36.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 36.xcdatamodel"; sourceTree = "<group>"; };
 		D97B8F5B1AE6CD3C00C6447D /* HRPGRewardFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGRewardFormViewController.h; sourceTree = "<group>"; };
 		D97B8F5C1AE6CD3C00C6447D /* HRPGRewardFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGRewardFormViewController.m; sourceTree = "<group>"; };
-		D97C71D918EC98A30089FDC6 /* Quest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quest.h; sourceTree = "<group>"; };
-		D97C71DA18EC98A30089FDC6 /* Quest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quest.m; sourceTree = "<group>"; };
 		D97C71DC18EC98A40089FDC6 /* QuestCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestCollect.h; sourceTree = "<group>"; };
 		D97C71DD18EC98A40089FDC6 /* QuestCollect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestCollect.m; sourceTree = "<group>"; };
 		D97C71DF18ECA7050089FDC6 /* ChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ChatMessage.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -1127,6 +1136,48 @@
 			name = Rewards;
 			sourceTree = "<group>";
 		};
+		299BD6311F5420A300E22935 /* Challenges */ = {
+			isa = PBXGroup;
+			children = (
+				D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */,
+				D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */,
+				D9D17CCB1E6736A600AD9232 /* ChallengeDetailHeaderView.swift */,
+				D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */,
+				D9BB45D51E79968B0002AE2E /* ChallengeFilterAlert.swift */,
+				D9BB45D71E7998710002AE2E /* ChallengeFilterAlert.xib */,
+				D9BB45D31E7849B40002AE2E /* ChallengeTaskListView.swift */,
+			);
+			name = Challenges;
+			sourceTree = "<group>";
+		};
+		299BD6321F5420D600E22935 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				D92D40D71ABF123800E30339 /* HRPGHabitButtons.h */,
+				D92D40D81ABF123800E30339 /* HRPGHabitButtons.m */,
+				D984D5851E48E5CF006E84F8 /* TaskDetailLineView.swift */,
+				D984D5831E48E57C006E84F8 /* TaskDetailLineView.xib */,
+			);
+			name = Tasks;
+			sourceTree = "<group>";
+		};
+		299BD6331F5420F000E22935 /* Tutorials */ = {
+			isa = PBXGroup;
+			children = (
+				D905766D1BD7F581009BB7BC /* HRPGHintView.h */,
+				D905766E1BD7F581009BB7BC /* HRPGHintView.m */,
+				D91CCACB1BCD9068001C6A0C /* HRPGHoledView.h */,
+				D91CCACC1BCD9068001C6A0C /* HRPGHoledView.m */,
+				29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */,
+				29AAA1601F2B597400029737 /* SpeechbubbleView.xib */,
+				29255E421F3DD2120094A3E3 /* TutorialStepView.swift */,
+				29255E441F3DD3ED0094A3E3 /* TutorialStepView.xib */,
+				D95CBD461BBC0EDA002F4498 /* UIView+Pulse.h */,
+				D95CBD471BBC0EDA002F4498 /* UIView+Pulse.m */,
+			);
+			name = Tutorials;
+			sourceTree = "<group>";
+		};
 		29AAA1641F2B6D2400029737 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
@@ -1193,42 +1244,39 @@
 		49DCB7B31F3F5E820079FDD0 /* Shop */ = {
 			isa = PBXGroup;
 			children = (
+				49DCB7BB1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift */,
 				49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */,
 				49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */,
 				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
 				298119B01F50453100F9FB39 /* QuestGoalView.swift */,
+				49DCB7B91F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib */,
 				298119B41F5048C000F9FB39 /* QuestGoalView.xib */,
 				D96576C11BAF539000CCA28E /* HRPGGearDetailView.h */,
 				D96576C21BAF539000CCA28E /* HRPGGearDetailView.m */,
 				D96576C41BAF53D400CCA28E /* HRPGGearDetailView.xib */,
+				493ECBB61F47D7E10099B1FC /* HRPGGearSetItem.swift */,
+				493ECBB81F47D82A0099B1FC /* HRPGGearSetItem.xib */,
+				493ECBB21F47A1100099B1FC /* HRPGItemStatsView.swift */,
+				493ECBB41F47A58F0099B1FC /* HRPGItemStatsView.xib */,
 				D9A28F701B08DF58002907E0 /* HRPGPurchaseButton.h */,
 				D9A28F711B08DF58002907E0 /* HRPGPurchaseButton.m */,
 				D9C89CF41B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.h */,
 				D9C89CF51B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m */,
-				49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */,
-				49DCB7AF1F3923F20079FDD0 /* HRPGSimpleShopItemView.xib */,
-				49DCB7B51F3F64B40079FDD0 /* HRPGShopModalBgView.swift */,
-				49DCB7B71F3F64D40079FDD0 /* HRPGShopModalBgView.xib */,
-				49DCB7BB1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift */,
-				49DCB7B91F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib */,
+				D9BBF32A1DBD127A00C4114C /* HRPGShopAdFooter.h */,
+				D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */,
 				49DCB7C11F40D7F00079FDD0 /* HRPGShopBannerView.swift */,
 				49DCB7C31F40D80B0079FDD0 /* HRPGShopBannerView.xib */,
-				493ECBB21F47A1100099B1FC /* HRPGItemStatsView.swift */,
-				493ECBB41F47A58F0099B1FC /* HRPGItemStatsView.xib */,
-				493ECBB61F47D7E10099B1FC /* HRPGGearSetItem.swift */,
-				493ECBB81F47D82A0099B1FC /* HRPGGearSetItem.xib */,
-				298119AC1F5040B900F9FB39 /* QuestDetailView.xib */,
+				49DCB7B51F3F64B40079FDD0 /* HRPGShopModalBgView.swift */,
+				49DCB7B71F3F64D40079FDD0 /* HRPGShopModalBgView.xib */,
+				49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */,
+				49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */,
+				49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */,
+				49DCB7AF1F3923F20079FDD0 /* HRPGSimpleShopItemView.xib */,
 				298119AE1F5040DA00F9FB39 /* QuestDetailView.swift */,
+				298119AC1F5040B900F9FB39 /* QuestDetailView.xib */,
+				D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */,
 			);
 			name = Shop;
-			sourceTree = "<group>";
-		};
-		49DCB7B41F3F5EF00079FDD0 /* Currency */ = {
-			isa = PBXGroup;
-			children = (
-				49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */,
-			);
-			name = Currency;
 			sourceTree = "<group>";
 		};
 		B4CD8E50098CF9B62A999CCD /* Pods */ = {
@@ -1683,15 +1731,8 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				49DCB7B41F3F5EF00079FDD0 /* Currency */,
-				49DCB7B31F3F5E820079FDD0 /* Shop */,
-				D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */,
-				D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */,
-				D9D17CCB1E6736A600AD9232 /* ChallengeDetailHeaderView.swift */,
-				D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */,
-				D9BB45D51E79968B0002AE2E /* ChallengeFilterAlert.swift */,
-				D9BB45D71E7998710002AE2E /* ChallengeFilterAlert.xib */,
-				D9BB45D31E7849B40002AE2E /* ChallengeTaskListView.swift */,
+				299BD6311F5420A300E22935 /* Challenges */,
+				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
 				29AAA15C1F2A3AA600029737 /* GradientView.swift */,
 				D96760C61B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.h */,
 				D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */,
@@ -1699,18 +1740,13 @@
 				D9E918561AA3A70D005E378B /* HRPGCheckBoxView.m */,
 				D96C86C91BB0546400E4C134 /* HRPGCopyLabel.h */,
 				D96C86CA1BB0546400E4C134 /* HRPGCopyLabel.m */,
+				49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */,
 				D9D2172F198D509000023367 /* HRPGDeathView.h */,
 				D9D21730198D509000023367 /* HRPGDeathView.m */,
 				D99E42671D6B1FD500811B6D /* HRPGDeathView.xib */,
 				D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */,
 				D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */,
 				D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */,
-				D92D40D71ABF123800E30339 /* HRPGHabitButtons.h */,
-				D92D40D81ABF123800E30339 /* HRPGHabitButtons.m */,
-				D905766D1BD7F581009BB7BC /* HRPGHintView.h */,
-				D905766E1BD7F581009BB7BC /* HRPGHintView.m */,
-				D91CCACB1BCD9068001C6A0C /* HRPGHoledView.h */,
-				D91CCACC1BCD9068001C6A0C /* HRPGHoledView.m */,
 				D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */,
 				D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */,
 				D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */,
@@ -1725,8 +1761,6 @@
 				D9884B4419168AF00078BC7C /* HRPGProgressView.m */,
 				D9D9EF961D54E51C00FC89C1 /* HRPGQRCodeView.h */,
 				D9D9EF971D54E51C00FC89C1 /* HRPGQRCodeView.m */,
-				D9BBF32A1DBD127A00C4114C /* HRPGShopAdFooter.h */,
-				D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */,
 				D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */,
 				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
 				D9660D761AB248030084CE37 /* HRPGUserTopHeader.h */,
@@ -1736,24 +1770,20 @@
 				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
 				29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */,
 				D96C853C1DCB61EE003E3616 /* Notifications */,
-				D9525F9C1E64739900C529B8 /* PaddedView.swift */,
 				299BD6211F505DFA00E22935 /* PaddedLabel.swift */,
+				D9525F9C1E64739900C529B8 /* PaddedView.swift */,
 				D9CE90441E4CDD6200702578 /* PillView.swift */,
+				298119B01F50453100F9FB39 /* QuestGoalView.swift */,
+				298119B41F5048C000F9FB39 /* QuestGoalView.xib */,
 				293282131F389CC000D42961 /* SetupCustomizationItemView.swift */,
 				293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */,
-				D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */,
-				29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */,
-				29AAA1601F2B597400029737 /* SpeechbubbleView.xib */,
-				D984D5851E48E5CF006E84F8 /* TaskDetailLineView.swift */,
-				D984D5831E48E57C006E84F8 /* TaskDetailLineView.xib */,
-				29255E421F3DD2120094A3E3 /* TutorialStepView.swift */,
-				29255E441F3DD3ED0094A3E3 /* TutorialStepView.xib */,
-				D95CBD461BBC0EDA002F4498 /* UIView+Pulse.h */,
-				D95CBD471BBC0EDA002F4498 /* UIView+Pulse.m */,
+				49DCB7B31F3F5E820079FDD0 /* Shop */,
+				299BD6321F5420D600E22935 /* Tasks */,
+				29255E4A1F3E236C0094A3E3 /* ToastManager.swift */,
+				29255E481F3E1B0F0094A3E3 /* ToastView.swift */,
+				299BD6331F5420F000E22935 /* Tutorials */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
-				29255E481F3E1B0F0094A3E3 /* ToastView.swift */,
-				29255E4A1F3E236C0094A3E3 /* ToastManager.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1926,10 +1956,16 @@
 				D995D5951D1D499D00D5251C /* PushNotifications.m */,
 				D995D5921D1D499D00D5251C /* PushNotifications+CoreDataProperties.h */,
 				D995D5931D1D499D00D5251C /* PushNotifications+CoreDataProperties.m */,
-				D97C71D918EC98A30089FDC6 /* Quest.h */,
-				D97C71DA18EC98A30089FDC6 /* Quest.m */,
+				299BD6251F541EFC00E22935 /* Quest+CoreDataClass.h */,
+				299BD6261F541EFC00E22935 /* Quest+CoreDataClass.m */,
+				299BD6271F541EFC00E22935 /* Quest+CoreDataProperties.h */,
+				299BD6281F541EFC00E22935 /* Quest+CoreDataProperties.m */,
 				D97C71DC18EC98A40089FDC6 /* QuestCollect.h */,
 				D97C71DD18EC98A40089FDC6 /* QuestCollect.m */,
+				299BD6291F541EFC00E22935 /* QuestReward+CoreDataClass.h */,
+				299BD62A1F541EFC00E22935 /* QuestReward+CoreDataClass.m */,
+				299BD62B1F541EFC00E22935 /* QuestReward+CoreDataProperties.h */,
+				299BD62C1F541EFC00E22935 /* QuestReward+CoreDataProperties.m */,
 				D9D045191C2B1AEC00630244 /* Reminder.h */,
 				D9D0451A1C2B1AEC00630244 /* Reminder.m */,
 				D9D045171C2B1AEC00630244 /* Reminder+CoreDataProperties.h */,
@@ -2654,6 +2690,7 @@
 				297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */,
 				D99DEC87190836D400FFD2B9 /* Item.m in Sources */,
 				D9C89CF31B1DE3A200A599B0 /* HRPGGemViewController.m in Sources */,
+				299BD62D1F541EFC00E22935 /* Quest+CoreDataClass.m in Sources */,
 				D93432571D5A2B9500025412 /* HRPGChoosePMRecipientViewController.m in Sources */,
 				D9F1E3F11E576E430034D0F4 /* Task+CoreDataClass.m in Sources */,
 				98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */,
@@ -2686,6 +2723,7 @@
 				D96C85421DCB6501003E3616 /* HRPGDropsEnabledNotification.m in Sources */,
 				D9A1A27E1BA593D900903567 /* HRPGRewardTableViewCell.m in Sources */,
 				2957B8A81F4B071700E836EF /* InAppReward+CoreDataClass.m in Sources */,
+				299BD62F1F541EFC00E22935 /* QuestReward+CoreDataClass.m in Sources */,
 				D9BB45591E71AFAF0002AE2E /* Down-Extensions.swift in Sources */,
 				D9D593611D0058AE00D6C388 /* HRPGInboxChatViewController.m in Sources */,
 				D92A085A1D3520D8000F8B66 /* Shop.m in Sources */,
@@ -2731,7 +2769,6 @@
 				D96C86CB1BB0546400E4C134 /* HRPGCopyLabel.m in Sources */,
 				D92C60FC1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m in Sources */,
 				D95D039B1C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.m in Sources */,
-				D97C71DB18EC98A30089FDC6 /* Quest.m in Sources */,
 				D9BB45631E71CE910002AE2E /* HabitTableViewCell.swift in Sources */,
 				D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */,
 				D9D593581D004CC900D6C388 /* HRPGInboxTableViewController.m in Sources */,
@@ -2760,6 +2797,7 @@
 				D97C71ED18F32FEF0089FDC6 /* Gear.m in Sources */,
 				D95704391E106C11004F6804 /* LocalizedString.swift in Sources */,
 				D9525F991E5F405400C529B8 /* Challenge+CoreDataProperties.m in Sources */,
+				299BD6301F541EFC00E22935 /* QuestReward+CoreDataProperties.m in Sources */,
 				D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */,
 				D9660D751AB23F150084CE37 /* HRPGTopHeaderNavigationController.m in Sources */,
 				49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */,
@@ -2855,6 +2893,7 @@
 				D9AEF8E41CE4CCA5006914CB /* HRPGURLParser.m in Sources */,
 				D9525F9B1E5F559600C529B8 /* ChallengeTableViewCell.swift in Sources */,
 				D9A63A341E10328A0083ADC4 /* LoginTableViewController.swift in Sources */,
+				299BD62E1F541EFC00E22935 /* Quest+CoreDataProperties.m in Sources */,
 				D98AD54E19437D9400AF6174 /* Pet.m in Sources */,
 				D9C89CF61B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m in Sources */,
 				D9436AC11C63A4BB008D1171 /* UIViewController+Markdown.m in Sources */,
@@ -3562,7 +3601,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				2957B8CF1F4EEB7A00E836EF /* HabitRPG 46.xcdatamodel */,
+				299BD6241F54181A00E22935 /* HabitRPG 46.xcdatamodel */,
 				2957B8A31F4B054500E836EF /* HabitRPG 45.xcdatamodel */,
 				29A46C2F1F444E4C0036A04E /* HabitRPG 44.xcdatamodel */,
 				297997721EFD387F00F5F13E /* HabitRPG 43.xcdatamodel */,
@@ -3585,7 +3624,7 @@
 				D9B326771CD969D700973440 /* HabitRPG 26.xcdatamodel */,
 				D94E0AD81CCF9B8800B60210 /* HabitRPG 25.xcdatamodel */,
 			);
-			currentVersion = 2957B8A31F4B054500E836EF /* HabitRPG 45.xcdatamodel */;
+			currentVersion = 299BD6241F54181A00E22935 /* HabitRPG 46.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -11,6 +11,7 @@ import UIKit
 class QuestDetailView: UIView {
     @IBOutlet weak var questTypeLabel: UILabel!
     @IBOutlet weak var rewardsStackView: UIStackView!
+    @IBOutlet weak var ownerRewardsLabel: UILabel!
     @IBOutlet weak var ownerRewardsStackView: UIStackView!
     @IBOutlet weak var questGoalView: QuestGoalView!
     
@@ -44,11 +45,19 @@ class QuestDetailView: UIView {
     }
     
     func configure(quest: Quest) {
-        if quest.bossHp.intValue > 0 {
+        if quest.bossHp?.intValue ?? 0 > 0 {
             questTypeLabel.text = NSLocalizedString("Boss Quest", comment: "")
         } else {
             questTypeLabel.text = NSLocalizedString("Collection Quest", comment: "")
         }
         questGoalView.configure(quest: quest)
+        
+        if let items = quest.itemDrops {
+            for reward in items {
+                let label = UILabel()
+                label.text = reward.text
+                rewardsStackView.addArrangedSubview(label)
+            }
+        }
     }
 }

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Group.h"
 #import "HRPGBaseViewController.h"
-#import "Quest.h"
+#import "Quest+CoreDataClass.h"
 #import "User.h"
 
 @interface HRPGQuestDetailViewController : HRPGBaseViewController<UIAlertViewDelegate>
