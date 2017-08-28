@@ -1340,6 +1340,137 @@ public class HabiticaIcons : NSObject {
 
     }
 
+    @objc dynamic public class func drawDifficultyStars(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 48, height: 12), resizing: ResizingBehavior = .aspectFit, difficulty: CGFloat = 2.5) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+        
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 48, height: 12), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 48, y: resizedFrame.height / 12)
+
+
+
+        //// Variable Declarations
+        let _1StarDifficulty: CGFloat = difficulty >= 1 ? 1 : (difficulty >= 0.5 ? 0.5 : 0)
+        let _2StarDifficulty: CGFloat = difficulty >= 2 ? 1 : (difficulty >= 1.5 ? 0.5 : 0)
+        let _3StarDifficulty: CGFloat = difficulty >= 3 ? 1 : (difficulty >= 2.5 ? 0.5 : 0)
+        let _4StarDifficulty: CGFloat = difficulty >= 4 ? 1 : (difficulty >= 3.5 ? 0.5 : 0)
+
+        //// Symbol Drawing
+        let symbolRect = CGRect(x: 0, y: 0, width: 12, height: 12)
+        context.saveGState()
+        context.clip(to: symbolRect)
+        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+
+        HabiticaIcons.drawDifficultyStar(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, singleDifficulty: _1StarDifficulty)
+        context.restoreGState()
+
+
+        //// Symbol 2 Drawing
+        let symbol2Rect = CGRect(x: 12, y: 0, width: 12, height: 12)
+        context.saveGState()
+        context.clip(to: symbol2Rect)
+        context.translateBy(x: symbol2Rect.minX, y: symbol2Rect.minY)
+
+        HabiticaIcons.drawDifficultyStar(frame: CGRect(origin: .zero, size: symbol2Rect.size), resizing: .stretch, singleDifficulty: _2StarDifficulty)
+        context.restoreGState()
+
+
+        //// Symbol 3 Drawing
+        let symbol3Rect = CGRect(x: 24, y: 0, width: 12, height: 12)
+        context.saveGState()
+        context.clip(to: symbol3Rect)
+        context.translateBy(x: symbol3Rect.minX, y: symbol3Rect.minY)
+
+        HabiticaIcons.drawDifficultyStar(frame: CGRect(origin: .zero, size: symbol3Rect.size), resizing: .stretch, singleDifficulty: _3StarDifficulty)
+        context.restoreGState()
+
+
+        //// Symbol 4 Drawing
+        let symbol4Rect = CGRect(x: 36, y: 0, width: 12, height: 12)
+        context.saveGState()
+        context.clip(to: symbol4Rect)
+        context.translateBy(x: symbol4Rect.minX, y: symbol4Rect.minY)
+
+        HabiticaIcons.drawDifficultyStar(frame: CGRect(origin: .zero, size: symbol4Rect.size), resizing: .stretch, singleDifficulty: _4StarDifficulty)
+        context.restoreGState()
+        
+        context.restoreGState()
+
+    }
+
+    @objc dynamic public class func drawDifficultyStar(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 12, height: 12), resizing: ResizingBehavior = .aspectFit, singleDifficulty: CGFloat = 0) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+        
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 12, height: 12), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 12, y: resizedFrame.height / 12)
+
+
+        //// Color Declarations
+        let fillColor24 = UIColor(red: 1.000, green: 0.651, blue: 0.141, alpha: 1.000)
+        let fillColor25 = UIColor(red: 0.882, green: 0.878, blue: 0.890, alpha: 1.000)
+
+        //// Variable Declarations
+        let isFull = singleDifficulty == 1
+        let isHalf = singleDifficulty == 0.5
+
+        //// Star 3 Drawing
+        let star3Path = UIBezierPath()
+        star3Path.move(to: CGPoint(x: 6, y: 0))
+        star3Path.addLine(to: CGPoint(x: 8.02, y: 3.98))
+        star3Path.addLine(to: CGPoint(x: 12, y: 6))
+        star3Path.addLine(to: CGPoint(x: 8.02, y: 8.02))
+        star3Path.addLine(to: CGPoint(x: 6, y: 12))
+        star3Path.addLine(to: CGPoint(x: 3.98, y: 8.02))
+        star3Path.addLine(to: CGPoint(x: 0, y: 6))
+        star3Path.addLine(to: CGPoint(x: 3.98, y: 3.98))
+        star3Path.close()
+        fillColor25.setFill()
+        star3Path.fill()
+
+
+        if (isFull) {
+            //// Star Drawing
+            let starPath = UIBezierPath()
+            starPath.move(to: CGPoint(x: 6, y: 0))
+            starPath.addLine(to: CGPoint(x: 8.02, y: 3.98))
+            starPath.addLine(to: CGPoint(x: 12, y: 6))
+            starPath.addLine(to: CGPoint(x: 8.02, y: 8.02))
+            starPath.addLine(to: CGPoint(x: 6, y: 12))
+            starPath.addLine(to: CGPoint(x: 3.98, y: 8.02))
+            starPath.addLine(to: CGPoint(x: 0, y: 6))
+            starPath.addLine(to: CGPoint(x: 3.98, y: 3.98))
+            starPath.close()
+            fillColor24.setFill()
+            starPath.fill()
+        }
+
+
+        if (isHalf) {
+            //// Bezier Drawing
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint(x: 6, y: 0))
+            bezierPath.addLine(to: CGPoint(x: 4, y: 4))
+            bezierPath.addLine(to: CGPoint(x: 0, y: 6))
+            bezierPath.addLine(to: CGPoint(x: 4, y: 8))
+            bezierPath.addLine(to: CGPoint(x: 6, y: 12))
+            bezierPath.addLine(to: CGPoint(x: 6, y: 0))
+            bezierPath.close()
+            bezierPath.usesEvenOddFillRule = true
+            fillColor24.setFill()
+            bezierPath.fill()
+        }
+        
+        context.restoreGState()
+
+    }
+
     //// Generated Images
 
     @objc dynamic public class var imageOfExperience: UIImage {
@@ -1494,6 +1625,16 @@ public class HabiticaIcons : NSObject {
         UIGraphicsEndImageContext()
 
         return Cache.imageOfHeartLarge!
+    }
+
+    @objc dynamic public class func imageOfDifficultyStars(difficulty: CGFloat = 2.5) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 48, height: 12), false, 0)
+            HabiticaIcons.drawDifficultyStars(difficulty: difficulty)
+
+        let imageOfDifficultyStars = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return imageOfDifficultyStars
     }
 
     //// Customization Infrastructure

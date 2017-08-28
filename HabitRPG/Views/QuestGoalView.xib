@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuestGoalView">
             <connections>
-                <outlet property="difficultyStackView" destination="rH8-8G-ZB2" id="25e-iG-MZe"/>
+                <outlet property="difficultyImageView" destination="bAY-vY-nCp" id="ddz-tq-P2y"/>
                 <outlet property="goalDetailLabel" destination="BHt-Da-4LB" id="Lb3-TJ-AZp"/>
                 <outlet property="healthIcon" destination="axU-4V-iqm" id="Fhc-kg-034"/>
                 <outlet property="rageMeterView" destination="geE-ui-lhL" id="HRh-Oc-d0R"/>
@@ -78,26 +78,6 @@
                             <color key="textColor" red="0.30608683819999999" green="0.2891013026" blue="0.34288242460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rH8-8G-ZB2">
-                            <rect key="frame" x="94.5" y="0.0" width="60" height="34"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="difficulty_empty" translatesAutoresizingMaskIntoConstraints="NO" id="ke3-0m-Zog">
-                                    <rect key="frame" x="0.0" y="0.0" width="15" height="34"/>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="difficulty_empty" translatesAutoresizingMaskIntoConstraints="NO" id="JzI-mt-6rm">
-                                    <rect key="frame" x="15" y="0.0" width="15" height="34"/>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="difficulty_empty" translatesAutoresizingMaskIntoConstraints="NO" id="5lq-Ce-9sx">
-                                    <rect key="frame" x="30" y="0.0" width="15" height="34"/>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="difficulty_empty" translatesAutoresizingMaskIntoConstraints="NO" id="N5j-Aw-YJ3">
-                                    <rect key="frame" x="45" y="0.0" width="15" height="34"/>
-                                </imageView>
-                            </subviews>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="60" id="nt1-Z4-dyU"/>
-                            </constraints>
-                        </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Rage Meter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geE-ui-lhL" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
                             <rect key="frame" x="301.5" y="7" width="65.5" height="20"/>
                             <color key="backgroundColor" red="0.76070064309999996" green="0.76083260770000005" blue="0.76069229839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -114,16 +94,22 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bAY-vY-nCp">
+                            <rect key="frame" x="95" y="0.0" width="60" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="6Zj-1L-sqZ"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.97636479139999999" green="0.97653168440000004" blue="0.9763541818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="rH8-8G-ZB2" firstAttribute="top" secondItem="W80-bu-Apc" secondAttribute="top" id="HDZ-Tm-vJ6"/>
-                        <constraint firstAttribute="bottom" secondItem="rH8-8G-ZB2" secondAttribute="bottom" id="Hmn-iR-woj"/>
                         <constraint firstItem="HDl-eR-Km6" firstAttribute="leading" secondItem="W80-bu-Apc" secondAttribute="leading" constant="16" id="Ina-sT-xnO"/>
                         <constraint firstAttribute="bottom" secondItem="HDl-eR-Km6" secondAttribute="bottom" id="L8r-8V-QDC"/>
-                        <constraint firstItem="rH8-8G-ZB2" firstAttribute="leading" secondItem="HDl-eR-Km6" secondAttribute="trailing" constant="24" id="Sza-9e-lxj"/>
+                        <constraint firstItem="bAY-vY-nCp" firstAttribute="leading" secondItem="HDl-eR-Km6" secondAttribute="trailing" constant="24" id="SXM-dE-XS2"/>
                         <constraint firstItem="geE-ui-lhL" firstAttribute="centerY" secondItem="W80-bu-Apc" secondAttribute="centerY" id="XBQ-V9-fJQ"/>
                         <constraint firstAttribute="trailing" secondItem="geE-ui-lhL" secondAttribute="trailing" constant="8" id="Z56-N3-pgh"/>
+                        <constraint firstAttribute="bottom" secondItem="bAY-vY-nCp" secondAttribute="bottom" id="esx-Go-DnJ"/>
+                        <constraint firstItem="bAY-vY-nCp" firstAttribute="top" secondItem="W80-bu-Apc" secondAttribute="top" id="nOg-22-jpP"/>
                         <constraint firstItem="HDl-eR-Km6" firstAttribute="top" secondItem="W80-bu-Apc" secondAttribute="top" id="y7T-nN-ZFf"/>
                     </constraints>
                 </view>
@@ -154,7 +140,4 @@
             </connections>
         </customObject>
     </objects>
-    <resources>
-        <image name="difficulty_empty" width="12" height="12"/>
-    </resources>
 </document>

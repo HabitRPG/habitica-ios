@@ -13,7 +13,7 @@ class QuestGoalView: UIView {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var healthIcon: UIImageView!
     @IBOutlet weak var goalDetailLabel: UILabel!
-    @IBOutlet weak var difficultyStackView: UIStackView!
+    @IBOutlet weak var difficultyImageView: UIImageView!
     @IBOutlet weak var rageMeterView: PaddedLabel!
     @IBOutlet weak var typeBackgroundView: UIView!
 
@@ -54,30 +54,14 @@ class QuestGoalView: UIView {
             goalDetailLabel.text = "\(bossHealth)"
             rageMeterView.isHidden = bossHealth == 0
             typeBackgroundView.backgroundColor = .red100()
-            setQuestDifficulty(quest.bossStr?.floatValue ?? 0)
+            difficultyImageView.image = HabiticaIcons.imageOfDifficultyStars(difficulty: CGFloat(quest.bossStr?.floatValue ?? 0))
         } else {
             healthIcon.isHidden = true
             typeLabel.text = NSLocalizedString("Collect", comment: "")
             goalDetailLabel.text = ""
             rageMeterView.isHidden = true
             typeBackgroundView.backgroundColor = .green100()
-            setQuestDifficulty(1)
-        }
-    }
-    
-    func setQuestDifficulty(_ difficulty: Float) {
-        if let difficultyviews = difficultyStackView.arrangedSubviews as? [UIImageView] {
-            for (index, subview) in difficultyviews.enumerated() {
-                if Float(index) <= difficulty {
-                    subview.image = #imageLiteral(resourceName: "difficulty_full")
-                } else {
-                    if Float(index) <= difficulty+0.5 {
-                        subview.image = #imageLiteral(resourceName: "difficulty_half")
-                    } else {
-                        subview.image = #imageLiteral(resourceName: "difficulty_empty")
-                    }
-                }
-            }
+            difficultyImageView.image = HabiticaIcons.imageOfDifficultyStars(difficulty: 1)
         }
     }
 }
