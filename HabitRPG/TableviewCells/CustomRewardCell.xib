@@ -62,7 +62,7 @@
                                     <constraint firstAttribute="height" constant="22" id="tov-6M-DXX"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPB-27-hRy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPB-27-hRy" customClass="HRPGAbbrevNumberLabel">
                                 <rect key="frame" x="4" y="43.5" width="40" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="6vW-kp-s32"/>
@@ -109,16 +109,13 @@
             <size key="customSize" width="346" height="83"/>
             <connections>
                 <outlet property="amountLabel" destination="MPB-27-hRy" id="Kfi-oe-c6s"/>
+                <outlet property="buyButton" destination="Kff-Ah-KbA" id="HCt-YN-Com"/>
+                <outlet property="currencyImageView" destination="voU-fj-NTW" id="oFD-zy-y2o"/>
                 <outlet property="notesLabel" destination="eYM-Wz-v5L" id="XT2-i2-01h"/>
                 <outlet property="titleLabel" destination="2tO-84-pCm" id="265-RW-JxQ"/>
             </connections>
             <point key="canvasLocation" x="-154" y="48.5"/>
         </collectionViewCell>
-        <customObject id="aqV-2O-A4P" customClass="HabiticaIcons" customModule="Habitica" customModuleProvider="target">
-            <connections>
-                <outletCollection property="goldTargets" destination="voU-fj-NTW" collectionClass="NSMutableArray" id="AlB-gq-hu5"/>
-            </connections>
-        </customObject>
     </objects>
     <resources>
         <image name="tabbar_rewards" width="32" height="32"/>

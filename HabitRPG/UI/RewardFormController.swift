@@ -95,6 +95,7 @@ class RewardFormController: XLFormViewController {
         if segue.identifier == "unwindSaveSegue" {
             if !editReward, let reward = NSEntityDescription.insertNewObject(forEntityName: "Reward", into: HRPGManager.shared().getManagedObjectContext()) as? Reward {
                 self.reward = reward
+                reward.type = "reward"
             }
             let formValues = self.form.formValues()
             reward?.text = formValues["text"] as? String ?? ""

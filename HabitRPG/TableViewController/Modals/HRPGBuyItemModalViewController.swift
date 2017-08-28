@@ -22,6 +22,7 @@ class HRPGBuyItemModalViewController: UIViewController {
     @IBOutlet weak var goldCountView: HRPGCurrencyCountView!
     @IBOutlet weak var pinButton: UIButton!
     @IBOutlet weak var buyButton: UIView!
+    @IBOutlet weak var buyLabel: UILabel!
     @IBOutlet weak var currencyCountView: HRPGCurrencyCountView!
     @IBOutlet weak var closableShopModal: HRPGCloseableShopModalView!
 
@@ -53,6 +54,7 @@ class HRPGBuyItemModalViewController: UIViewController {
         
         buyButton.layer.borderWidth = 0.5
         buyButton.layer.borderColor = UIColor.gray400().cgColor
+        currencyCountView.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightSemibold)
         
         hourglassCountView.currency = .hourglass
         gemCountView.currency = .gem
@@ -113,19 +115,72 @@ class HRPGBuyItemModalViewController: UIViewController {
     }
     
     func updateBuyButton() {
+        var isLocked = false
         if let item = self.item {
             if let currencyString = item.currency, let currency = Currency(rawValue: currencyString) {
                 currencyCountView.currency = currency
             }
             currencyCountView.amount = item.value?.intValue ?? 0
+            isLocked = item.locked?.boolValue ?? false
         } else if let reward = self.reward {
             if let inAppReward = reward as? InAppReward, let currencyString = inAppReward.currency, let currency = Currency(rawValue: currencyString) {
                 currencyCountView.currency = currency
+                isLocked = inAppReward.locked?.boolValue ?? false
             } else {
                 currencyCountView.currency = .gold
             }
             currencyCountView.amount = reward.value.intValue
         }
+        if canAfford() && !isLocked {
+            currencyCountView.state = .normal
+        } else {
+            buyLabel.textColor = .gray400()
+            if isLocked {
+                currencyCountView.state = .locked
+            } else {
+                currencyCountView.state = .cantAfford
+            }
+        }
+    }
+    
+    func canAfford() -> Bool {
+        var currency: Currency?
+        var price: Float = 0.0
+        
+        if let item = self.item, let currencyString = item.currency {
+                currency = Currency(rawValue: currencyString)
+            price = item.value?.floatValue ?? 0
+        } else if let inAppReward = reward as? InAppReward, let currencyString = inAppReward.currency {
+            currency = Currency(rawValue: currencyString)
+            price = inAppReward.value?.floatValue ?? 0
+        }
+        
+        if let user = HRPGManager.shared().getUser(), let currency = currency {
+            switch currency {
+            case .gold:
+                return price < user.gold.floatValue
+            case .gem:
+                return price < user.balance.floatValue*4
+            case .hourglass:
+                return price < user.subscriptionPlan.consecutiveTrinkets?.floatValue ?? 0
+            }
+        }
+        
+        return false
+    }
+    
+    func itemIsLocked() -> Bool {
+        var isLocked = false
+        if let item = self.item {
+            isLocked = item.locked?.boolValue ?? false
+        } else if let inAppReward = reward as? InAppReward {
+            isLocked = inAppReward.locked?.boolValue ?? false
+        }
+        return isLocked
+    }
+    
+    func canBuy() -> Bool {
+        return canAfford() && itemIsLocked()
     }
     
     func getPurchaseType() -> String {
@@ -164,6 +219,9 @@ class HRPGBuyItemModalViewController: UIViewController {
     }
     
     func buyPressed() {
+        if itemIsLocked() {
+            return
+        }
         if let shopItem = item, let relevantCurrency = shopItem.currency {
             if let identifier = shopIdentifier, identifier == TimeTravelersShopKey {
                 if shopItem.purchaseType == "gear" {

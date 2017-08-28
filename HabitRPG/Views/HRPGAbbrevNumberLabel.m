@@ -13,7 +13,7 @@
 - (void)setText:(NSString *)text {
     double value = [text doubleValue];
     int counter = 0;
-    while (value > 1000) {
+    while (value >= 1000) {
         counter++;
         value = value / 1000;
     }

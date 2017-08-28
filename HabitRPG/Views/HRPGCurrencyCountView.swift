@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum CurrencyCountViewState {
+    case normal, cantAfford, locked
+}
+
 class HRPGCurrencyCountView: UIView {
     
     public var amount = 0 {
@@ -19,7 +23,23 @@ class HRPGCurrencyCountView: UIView {
     public var currency = Currency.gold {
         didSet {
             currencyImageView.image = currency.getImage()
-            countLabel.textColor = currency.getTextColor()
+            updateStateValues()
+        }
+    }
+    
+    public var state: CurrencyCountViewState = .normal {
+        didSet {
+            updateStateValues()
+        }
+    }
+    
+    public var font: UIFont {
+        get {
+            return countLabel.font
+        }
+        
+        set(newFont) {
+            countLabel.font = newFont
         }
     }
     
@@ -77,6 +97,18 @@ class HRPGCurrencyCountView: UIView {
         layoutIfNeeded()
     }
     
+    private func updateStateValues() {
+        switch state {
+        case .normal:
+            countLabel.textColor = currency.getTextColor()
+            break
+        case .cantAfford:
+            countLabel.textColor = .red100()
+            break
+        case .locked:
+            countLabel.textColor = .gray400()
+        }
+    }
     
     //Helper methods since objc can't access swift enums
     public func setAsGold() {

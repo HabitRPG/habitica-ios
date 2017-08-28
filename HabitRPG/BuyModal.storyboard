@@ -178,6 +178,7 @@
                     <connections>
                         <outlet property="bottomButtons" destination="7w1-M9-yF5" id="qWu-Bf-ysN"/>
                         <outlet property="buyButton" destination="e3z-QN-KcI" id="85Z-iK-947"/>
+                        <outlet property="buyLabel" destination="j5D-EL-LRQ" id="IV9-ti-otW"/>
                         <outlet property="closableShopModal" destination="di7-JQ-KmH" id="hna-9x-zD3"/>
                         <outlet property="currencyCountView" destination="few-vN-72G" id="eqo-2s-TW3"/>
                         <outlet property="gemCountView" destination="IJ2-cU-jHd" id="a6h-Mp-haa"/>

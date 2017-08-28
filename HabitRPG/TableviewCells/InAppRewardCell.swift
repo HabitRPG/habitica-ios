@@ -44,7 +44,7 @@ class InAppRewardCell: UICollectionViewCell {
     
     private var availableUntil: Date? = nil {
         didSet {
-            if let _ = availableUntil {
+            if availableUntil != nil {
                 infoImageView.image = #imageLiteral(resourceName: "item_limited_bubble")
                 infoImageView.isHidden = false
                 infoLabel.isHidden = true
@@ -69,32 +69,63 @@ class InAppRewardCell: UICollectionViewCell {
     }
     
     func configure(reward: MetaReward) {
+        var currency: Currency?
+        let price = reward.value.floatValue
         currencyView.amount = reward.value.intValue
         if let inAppReward = reward as? InAppReward {
             imageName = inAppReward.imageName ?? ""
-            if let currencyString = inAppReward.currency, let currency = Currency(rawValue: currencyString) {
-                currencyView.currency = currency
+            if let currencyString = inAppReward.currency, let thisCurrency = Currency(rawValue: currencyString) {
+                currencyView.currency = thisCurrency
+                currency = thisCurrency
             }
             isLocked = inAppReward.locked?.boolValue ?? false
         } else {
-            currencyView.currency = .gold
+            isLocked = false
+            currency = .gold
             if reward.key == "potion" {
                 HRPGManager.shared().setImage("shop_potion", withFormat: "png", on: imageView)
             } else if reward.key == "armoire" {
                 HRPGManager.shared().setImage("shop_armoire", withFormat: "png", on: imageView)
             }
         }
+        
+        if let currency = currency {
+            setCanAfford(price, currency: currency)
+        }
     }
     
     func configure(item: ShopItem) {
         currencyView.amount = item.value?.intValue ?? 0
         imageName = item.imageName ?? ""
-        if let currencyString = item.currency, let currency = Currency(rawValue: currencyString) {
-            currencyView.currency = currency
-        }
-        
         isLocked = item.locked?.boolValue ?? false
         itemsLeft = item.itemsLeft?.intValue ?? 0
+        if let currencyString = item.currency, let currency = Currency(rawValue: currencyString) {
+            currencyView.currency = currency
+            setCanAfford( item.value?.floatValue ?? 0, currency: currency)
+        }
+    }
+    
+    func setCanAfford(_ price: Float, currency: Currency) {
+        var canAfford = false
 
+        if let user = HRPGManager.shared().getUser() {
+            switch currency {
+            case .gold:
+                canAfford = price < user.gold.floatValue
+                break
+            case .gem:
+                canAfford = price < user.balance.floatValue*4
+                break
+            case .hourglass:
+                canAfford = price < user.subscriptionPlan.consecutiveTrinkets?.floatValue ?? 0
+                break
+            }
+        }
+    
+        if canAfford && !isLocked {
+            currencyView.state = .normal
+        } else {
+            currencyView.state = .locked
+        }
     }
 }
