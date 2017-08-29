@@ -24,6 +24,7 @@
 		2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */; };
 		2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */; };
 		2980E60D1EEA39DF005B7100 /* YesterdailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */; };
+		299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
 		29AAA15D1F2A3AA600029737 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15C1F2A3AA600029737 /* GradientView.swift */; };
 		29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */; };
 		29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29AAA1601F2B597400029737 /* SpeechbubbleView.xib */; };
@@ -363,6 +364,7 @@
 		2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailiesDialogView.swift; sourceTree = "<group>"; };
 		2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailyTaskCell.swift; sourceTree = "<group>"; };
 		2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyTaskCell.xib; sourceTree = "<group>"; };
+		299BD6391F557FE700E22935 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		29A46C2F1F444E4C0036A04E /* HabitRPG 44.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 44.xcdatamodel"; sourceTree = "<group>"; };
 		29AAA15C1F2A3AA600029737 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechbubbleView.swift; sourceTree = "<group>"; };
@@ -1915,6 +1917,7 @@
 				D9D44C101B0A0C73000732B4 /* HRPGGGuidelinesViewController.m */,
 				D98830D31BADD4220018594D /* HRPGLoadingViewController.h */,
 				D98830D41BADD4220018594D /* HRPGLoadingViewController.m */,
+				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
 				D9C31DB11C6501090096F4EC /* Main.storyboard */,
 				D942B53A1CAAE6B1009AB756 /* Social.storyboard */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
@@ -2418,6 +2421,7 @@
 				D9BB45D61E79968B0002AE2E /* ChallengeFilterAlert.swift in Sources */,
 				D9D593671D008C7500D6C388 /* PushDevice.m in Sources */,
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
+				299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */,
 				D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */,
 				D98AD5541943986100AF6174 /* HRPGMountViewController.m in Sources */,
 				D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */,

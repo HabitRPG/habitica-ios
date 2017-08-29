@@ -17,7 +17,6 @@ import Amplitude_iOS
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.
 class HabiticaAppDelegate: NSObject {
     
-    
     func setupPopups() {
         let appearance = PopupDialogOverlayView.appearance()
         appearance.color = UIColor.purple50()
@@ -65,4 +64,5 @@ class HabiticaAppDelegate: NSObject {
             UIApplication.shared.scheduleLocalNotification(localNotification)
         }
     }
+
 }

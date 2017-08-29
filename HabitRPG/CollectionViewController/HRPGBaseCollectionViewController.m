@@ -7,7 +7,6 @@
 //
 
 #import "HRPGBaseCollectionViewController.h"
-#import "PDKeychainBindings.h"
 #import "Amplitude.h"
 #import "Google/Analytics.h"
 #import "HRPGAppDelegate.h"
@@ -35,15 +34,6 @@
     [eventProperties setValue:@"pageview" forKey:@"hitType"];
     [eventProperties setValue:[self getScreenName] forKey:@"page"];
     [[Amplitude instance] logEvent:@"navigate" withEventProperties:eventProperties];
-
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    if ([keyChain stringForKey:@"id"] == nil ||
-        [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UINavigationController *navigationController =
-            [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        [self presentViewController:navigationController animated:NO completion:nil];
-    }
 
     if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
         HRPGTopHeaderNavigationController *navigationController =

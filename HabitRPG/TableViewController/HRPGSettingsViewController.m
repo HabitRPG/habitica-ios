@@ -7,7 +7,6 @@
 //
 
 #import "HRPGSettingsViewController.h"
-#import "PDKeychainBindings.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGClassTableViewController.h"
 #import "HRPGTopHeaderNavigationController.h"
@@ -15,6 +14,7 @@
 #import "UIColor+Habitica.h"
 #import "XLForm.h"
 #import "HRPGPushNotificationSettingValueTransformer.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGSettingsViewController ()
 @property HRPGManager *sharedManager;
@@ -309,9 +309,7 @@ User *user;
     [self configureProgressView:overlayView];
     __weak HRPGSettingsViewController *weakSelf = self;
     void (^logoutBlock)() = ^() {
-        PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-        [keyChain setString:@"" forKey:@"id"];
-        [keyChain setString:@"" forKey:@"key"];
+        [[AuthenticationManager shared] clearAuthenticationForAllUsers];
         [defaults setObject:@"" forKey:@"partyID"];
         [defaults setObject:@"" forKey:@"habitFilter"];
         [defaults setObject:@"" forKey:@"dailyFilter"];

@@ -56,7 +56,7 @@
 
 - (void) setupNoCameraView {
     UILabel *labelNoCam = [[UILabel alloc] init];
-    labelNoCam.text = @"No Camera available";
+    labelNoCam.text = NSLocalizedString(@"No Camera available", nil);
     labelNoCam.textColor = [UIColor blackColor];
     [self.view addSubview:labelNoCam];
     [labelNoCam sizeToFit];

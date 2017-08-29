@@ -207,12 +207,6 @@
             }
         }
     } else if ([taskType isEqual:@"daily"]) {
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"EEEE"];
-        NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-        df.locale = locale;
-        NSDate *dateWithOffset = [[NSDate date] dateByAddingTimeInterval:-(offset * 60 * 60)];
-        NSString *dateString = [df stringFromDate:dateWithOffset];
         switch (filterType) {
             case TaskDailyFilterTypeAll: {
                 return @[ [NSPredicate predicateWithFormat:@"type=='daily'"] ];

@@ -7,10 +7,10 @@
 //
 
 #import "HRPGUserTopHeader.h"
-#import "PDKeychainBindings.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGLabeledProgressBar.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGUserTopHeader ()
 
@@ -106,9 +106,8 @@ NSInteger rowOffset = 16;
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
 
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
     [fetchRequest
-        setPredicate:[NSPredicate predicateWithFormat:@"id == %@", [keyChain stringForKey:@"id"]]];
+        setPredicate:[NSPredicate predicateWithFormat:@"id == %@", [AuthenticationManager shared].currentUserId]];
 
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
     NSArray *sortDescriptors = @[ sortDescriptor ];

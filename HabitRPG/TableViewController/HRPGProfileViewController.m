@@ -9,7 +9,6 @@
 #import "HRPGProfileViewController.h"
 #import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
 #import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
-#import "PDKeychainBindings.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "UIColor+Habitica.h"
 
@@ -23,14 +22,13 @@
 NSString *username;
 NSInteger userLevel;
 NSString *currentUserID;
-PDKeychainBindings *keyChain;
 NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (![currentUserID isEqualToString:[keyChain stringForKey:@"id"]]) {
+    if (![currentUserID isEqualToString:[self.sharedManager getUser].id]) {
         // user has changed. Reload data.
-        currentUserID = [keyChain stringForKey:@"id"];
+        currentUserID = [self.sharedManager getUser].id;
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", currentUserID];
         [self.fetchedResultsController.fetchRequest setPredicate:predicate];
         NSError *error;
@@ -365,9 +363,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                               inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
 
-    keyChain = [PDKeychainBindings sharedKeychainBindings];
-    currentUserID = [keyChain stringForKey:@"id"];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", currentUserID]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", [self.sharedManager getUser].id]];
 
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
     NSArray *sortDescriptors = @[ sortDescriptor ];
