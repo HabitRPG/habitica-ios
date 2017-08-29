@@ -219,22 +219,11 @@
             }
             case TaskDailyFilterTypeDue: {
                 NSArray *predicates =
-                @[ [NSPredicate predicateWithFormat:@"type=='daily' && completed == NO"] ];
-                predicates = [predicates
-                              arrayByAddingObject:[NSPredicate
-                                                   predicateWithFormat:@"(frequency == 'weekly' && %K == "
-                                                   @"YES) || (frequency == 'daily')",
-                                                   [dateString lowercaseString]]];
+                @[ [NSPredicate predicateWithFormat:@"type=='daily' && completed==NO && isDue==YES"] ];
                 return predicates;
             }
             case TaskDailyFilterTypeGrey: {
-                NSArray *predicates = @[ [NSPredicate predicateWithFormat:@"type=='daily'"] ];
-                predicates = [predicates
-                              arrayByAddingObject:[NSPredicate
-                                                   predicateWithFormat:@"completed == YES || (frequency "
-                                                   @"== 'weekly' && %K == NO) || "
-                                                   @"(frequency == 'daily')",
-                                                   [dateString lowercaseString]]];
+                NSArray *predicates = @[ [NSPredicate predicateWithFormat:@"type=='daily' && completed==YES || isDue==NO"] ];
                 return predicates;
             }
         }
