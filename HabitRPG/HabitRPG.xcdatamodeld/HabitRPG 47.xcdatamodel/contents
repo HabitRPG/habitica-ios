@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Xcode 4.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <entity name="Armoire" parentEntity="MetaReward" syncable="YES"/>
     <entity name="Buff" representedClassName="Buff" syncable="YES">
         <attribute name="constitution" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="intelligence" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -240,7 +239,6 @@
         <relationship name="mountOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedMounts" inverseEntity="User" syncable="YES"/>
         <relationship name="petOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedPets" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Potion" representedClassName="Potion" parentEntity="MetaReward" syncable="YES"/>
     <entity name="Preferences" representedClassName="Preferences" syncable="YES">
         <attribute name="allocationMode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="background" optional="YES" attributeType="String" syncable="YES"/>
@@ -288,7 +286,7 @@
         <attribute name="bossHp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="bossName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bossRage" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="bossStr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="bossStr" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="completition" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dropExp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dropGp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -309,7 +307,7 @@
     </entity>
     <entity name="QuestReward" representedClassName="QuestReward" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="onlyOwner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="onlyOwner" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quest" inverseName="itemDrops" inverseEntity="Quest" syncable="YES"/>
@@ -557,7 +555,6 @@
         <element name="MetaReward" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Outfit" positionX="0" positionY="0" width="128" height="240"/>
         <element name="Pet" positionX="0" positionY="0" width="128" height="165"/>
-        <element name="Potion" positionX="0" positionY="0" width="128" height="45"/>
         <element name="Preferences" positionX="0" positionY="0" width="128" height="375"/>
         <element name="PushDevice" positionX="18" positionY="162" width="128" height="90"/>
         <element name="PushNotifications" positionX="9" positionY="153" width="128" height="210"/>
@@ -577,6 +574,5 @@
         <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
         <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
         <element name="User" positionX="0" positionY="0" width="128" height="1215"/>
-        <element name="Armoire" positionX="18" positionY="162" width="128" height="45"/>
     </elements>
 </model>
