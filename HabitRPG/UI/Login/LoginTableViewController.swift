@@ -108,13 +108,13 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     
     private func generateStars(largeCount: Int, mediumCount: Int, smallCount: Int) {
         for _ in 1...largeCount {
-            generateStar(#imageLiteral(resourceName: "StarLarge"))
+            generateStar(HabiticaIcons.imageOfStarLarge)
         }
         for _ in 1...mediumCount {
-            generateStar(#imageLiteral(resourceName: "StarMedium"))
+            generateStar(HabiticaIcons.imageOfStarMedium)
         }
         for _ in 1...smallCount {
-            generateStar(#imageLiteral(resourceName: "StarSmall"))
+            generateStar(HabiticaIcons.imageOfStarSmall)
         }
     }
     
