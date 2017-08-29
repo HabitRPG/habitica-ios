@@ -13,7 +13,6 @@
 #import "HRPGLoginData.h"
 #import <Google/Analytics.h>
 #import "NIKFontAwesomeIconFactory.h"
-#import "PDKeychainBindings.h"
 #import "Gear.h"
 #import "YYWebImage.h"
 #import "Amplitude.h"
@@ -1751,6 +1750,7 @@ NSString *currentUser;
     [inAppRewardsMapping addAttributeMappingsFromDictionary:@{
                                                               @"class": @"imageName",
                                                               @"@metadata.mapping.collectionIndex": @"order"
+        @"gearSet" : @"set"
                                                               }];
     inAppRewardsMapping.identificationAttributes = @[ @"key" ];
     inAppRewardsMapping.assignsDefaultValueForMissingAttributes = NO;
@@ -2272,11 +2272,11 @@ NSString *currentUser;
 }
 
 - (void)setCredentials {
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    currentUser = [keyChain stringForKey:@"id"];
+    AuthenticationManager *authManager = [AuthenticationManager shared];
+    currentUser = authManager.currentUserId;
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-user" value:currentUser];
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-api-key"
-                                                           value:[keyChain stringForKey:@"key"]];
+                                                           value:authManager.currentUserKey];
     
     HabiticaKeys *keys = [[HabiticaKeys alloc] init];
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"Authorization"
@@ -3439,9 +3439,7 @@ NSString *currentUser;
         parameters:params
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             HRPGLoginData *loginData = (HRPGLoginData *)[mappingResult dictionary][@"data"];
-            PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-            [keyChain setString:loginData.id forKey:@"id"];
-            [keyChain setString:loginData.key forKey:@"key"];
+            [[AuthenticationManager shared] setAuthenticationWithUserId:loginData.id key:loginData.key];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged" object:nil];
             if (successBlock) {
                 successBlock();
@@ -3475,9 +3473,7 @@ NSString *currentUser;
         parameters:params
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             HRPGLoginData *loginData = (HRPGLoginData *)[mappingResult dictionary][@"data"];
-            PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-            [keyChain setString:loginData.id forKey:@"id"];
-            [keyChain setString:loginData.key forKey:@"key"];
+            [[AuthenticationManager shared] setAuthenticationWithUserId:loginData.id key:loginData.key];
 
             if (successBlock) {
                 successBlock();

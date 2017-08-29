@@ -248,7 +248,7 @@
         rowType = XLFormRowDescriptorTypeDateTime;
     }
 
-    if (![self.taskType isEqualToString:@"habit"]) {
+    if (![self.taskType isEqualToString:@"habit"] && rowType != nil) {
         section = [XLFormSectionDescriptor
             formSectionWithTitle:NSLocalizedString(@"Reminders", nil)
                   sectionOptions:XLFormSectionOptionCanInsert | XLFormSectionOptionCanDelete

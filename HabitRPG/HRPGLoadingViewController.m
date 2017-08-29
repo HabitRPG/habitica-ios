@@ -7,7 +7,7 @@
 //
 
 #import "HRPGLoadingViewController.h"
-#import "PDKeychainBindings.h"
+#import "HRPGAppDelegate.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGLoadingViewController ()
@@ -16,15 +16,13 @@
 @implementation HRPGLoadingViewController
 
 - (void)viewDidAppear:(BOOL)animated {
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    if ([keyChain stringForKey:@"id"] == nil ||
-        [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
-        [self performSegueWithIdentifier:@"IntroSegue" sender:self];
+    if ([[AuthenticationManager shared] hasAuthentication]) {
+        HRPGAppDelegate *appDelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
     } else {
         if ([[HRPGManager sharedManager] getUser].username.length == 0) {
-            self.activityIndicator.alpha = 1;
-            [self.activityIndicator startAnimating];
-            [[HRPGManager sharedManager] fetchUser:^() {
+        HRPGManager *manager = appDelegate.sharedManager;
+        
+        if ([manager getUser].username.length == 0) {
                 [self performSegueWithIdentifier:@"InitialSegue" sender:self];
             }
                 onError:^() {
@@ -33,6 +31,8 @@
         } else {
             [self segueForLoggedInUser];
         }
+    } else {
+        [self performSegueWithIdentifier:@"IntroSegue" sender:self];
     }
     [super viewDidAppear:YES];
 }

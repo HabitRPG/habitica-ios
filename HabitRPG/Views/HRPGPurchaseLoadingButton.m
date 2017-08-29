@@ -33,8 +33,8 @@
         self.tintColor = [UIColor purple300];
         self.layer.masksToBounds = YES;
         self.text = @"";
-        self.confirmText = @"buy";
-        self.doneText = @"success";
+        self.confirmText = NSLocalizedString(@"buy", nil);
+        self.doneText = NSLocalizedString(@"success", nil);
         self.state = HRPGPurchaseButtonStateLabel;
         UILongPressGestureRecognizer *tapGestureRecognizer =
             [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];

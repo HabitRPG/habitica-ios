@@ -7,11 +7,11 @@
 //
 
 #import "HRPGAccountDetailViewController.h"
-#import "PDKeychainBindings.h"
 #import "HRPGCopyTableViewCell.h"
 #import "HRPGQRCodeView.h"
 #import "UIView+Screenshot.h"
 #import "HRPGSharingManager.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGAccountDetailViewController ()
 
@@ -107,13 +107,13 @@
         }
     } else if (indexPath.section == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-        PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
+        AuthenticationManager *authManager = [AuthenticationManager shared];
         if (indexPath.item == 0) {
             cell.textLabel.text = NSLocalizedString(@"User ID", nil);
             cell.detailTextLabel.text = self.user.id;
         } else if (indexPath.item == 1) {
             cell.textLabel.text = NSLocalizedString(@"API Key", nil);
-            cell.detailTextLabel.text = [keyChain stringForKey:@"key"];
+            cell.detailTextLabel.text = authManager.currentUserKey;
         }
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];

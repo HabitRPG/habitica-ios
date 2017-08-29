@@ -24,6 +24,7 @@ target 'Habitica' do
   # RestKit 0.27, this commit fixes some iOS10 issues
   pod 'RestKit', :git => 'https://github.com/RestKit/RestKit.git', :commit => '13d98d5a6a5e06656ad040013dcae149b7cf8b99'
   pod 'PDKeychainBindingsController', '~> 0.0.1'
+  pod 'KeychainAccess'
   pod 'VTAcknowledgementsViewController'
   pod 'YYWebImage', '~> 1.0.5'
   pod 'DateTools'

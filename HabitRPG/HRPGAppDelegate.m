@@ -41,6 +41,7 @@
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.swiftAppDelegate = [[HabiticaAppDelegate alloc] init];
     
+    [[AuthenticationManager shared] migrateAuthentication];
     [self.swiftAppDelegate setupLogging];
     [self.swiftAppDelegate setupAnalytics];
     [self.swiftAppDelegate setupPopups];
