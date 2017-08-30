@@ -74,7 +74,7 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
                 rewardCell.configure(reward: reward)
                 rewardCell.canAfford = reward.value.floatValue < HRPGManager.shared().getUser().gold.floatValue
                 rewardCell.onBuyButtonTapped = {
-                    HRPGManager.shared().getReward(reward.key, onSuccess: nil, onError: nil)
+                    HRPGManager.shared().getReward(reward.key, withText: reward.text, onSuccess: nil, onError: nil)
                 }
             }
             return cell

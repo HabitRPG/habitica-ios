@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 @objc public enum ToastColor: Int {
-    case blue = 0, green, red
+    case blue = 0, green, red, gray, yellow
     
     func getUIColor() -> UIColor {
         switch self {
@@ -19,6 +19,10 @@ import UIKit
             return UIColor.green100()
         case .red:
             return UIColor.red10()
+        case .gray:
+            return UIColor.gray50()
+        case .yellow:
+            return UIColor.yellow10()
         }
     }
 }
@@ -39,8 +43,12 @@ class ToastManager: NSObject {
             contentView.setNeedsLayout()
             contentView.alpha = 0
             viewController.view.addSubview(contentView)
-            viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": contentView]))
-            viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": contentView]))
+            viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|",
+                                                                              options: NSLayoutFormatOptions(rawValue: 0),
+                                                                              metrics: nil, views: ["view": contentView]))
+            viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
+                                                                              options: NSLayoutFormatOptions(rawValue: 0),
+                                                                              metrics: nil, views: ["view": contentView]))
                 UIView.animate(withDuration: 0.2, animations: { () -> Void in
                     contentView.alpha = 1
                 }) { (_) in if let completionBlock = completion { completionBlock() } }
@@ -68,7 +76,10 @@ class ToastManager: NSObject {
                     if self.displayQueue.count == 0 {
                         return
                     }
-                    self.display(toast: self.displayQueue.removeFirst())
+                    self.displayQueue.removeFirst()
+                    if let toast = self.displayQueue.first {
+                        self.display(toast: toast)
+                    }
                 }
             }
         }
@@ -76,6 +87,7 @@ class ToastManager: NSObject {
     
     private func add(toast: ToastView) {
         if !showingNotification {
+            displayQueue.append((toast))
             display(toast: toast)
         } else {
             displayQueue.append((toast))
@@ -87,7 +99,7 @@ class ToastManager: NSObject {
     }
     
     class func show(text: String, color: ToastColor) {
-        
+        ToastManager.show(toast: ToastView(title: text, background: color))
     }
 }
 
@@ -97,9 +109,12 @@ struct ToastOptions {
     var subtitle: String?
     
     var leftImage: UIImage?
-    var rightImage: UIImage?
     
     var displayDuration = 2.0
 
     var backgroundColor = ToastColor.red
+    
+    var rightIcon: UIImage?
+    var rightText: String?
+    var rightTextColor = UIColor.gray50()
 }

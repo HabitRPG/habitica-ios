@@ -3049,6 +3049,7 @@ NSString *currentUser;
      }];}
 
 - (void)getReward:(NSString *)rewardID
+         withText:(NSString *)text
         onSuccess:(void (^)())successBlock
           onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
@@ -3074,7 +3075,7 @@ NSString *currentUser;
 
             NSNumber *goldDiff = @([taskResponse.gold floatValue] - [self.user.gold floatValue]);
             self.user.gold = taskResponse.gold;
-            [self displayRewardNotification:goldDiff];
+            [self displayRewardNotification:goldDiff withText:@"Test"];
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
             if (successBlock) {
                 successBlock();
@@ -3460,7 +3461,7 @@ NSString *currentUser;
             withNetwork:(NSString *)network
         withAccessToken:(NSString *)accessToken
               onSuccess:(void (^)())successBlock
-                onError:(void (^)())errorBlock{
+                onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     NSDictionary *params = @{
@@ -3607,6 +3608,7 @@ NSString *currentUser;
 
 - (void)buyObject:(NSString *)key
         withValue:(NSNumber *)value
+         withText:(NSString *)text
         onSuccess:(void (^)())successBlock
           onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
@@ -3649,13 +3651,24 @@ NSString *currentUser;
                                          withKey:response.armoireKey
                                         withText:message.message
                                        withValue:response.armoireValue];
+                
+                [self fetchBuyableRewards:^{
+                    if (successBlock) {
+                        successBlock();
+                    }
+                } onError:^{
+                    if (successBlock) {
+                        successBlock();
+                    }
+                }];
             } else {
-                [self displayRewardNotification:goldDiff];
+                [self displayRewardNotification:goldDiff withText:text];
+                if (successBlock) {
+                    successBlock();
+                }
             }
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-            if (successBlock) {
-                successBlock();
-            }
+            
             [self.networkIndicatorController endNetworking];
             return;
         }
@@ -3880,7 +3893,7 @@ NSString *currentUser;
                 NSError *executeError = nil;
                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
                 if ([spell.klass isEqualToString:@"special"]) {
-                    [self displayTransformationItemNotification:spell.text];
+                    [self displayTransformationItemNotification:spell.text withImage:spell.key];
                 } else {
                     [self displaySpellNotification:(mana - [self.user.magic integerValue])
                                     withHealthDiff:([self.user.health floatValue] - health)
@@ -4568,15 +4581,7 @@ NSString *currentUser;
                 preferenceString =
                     NSLocalizedString(@"Your pet eats the %@ but doesn't seem to enjoy it.", nil);
             }
-            NSDictionary *options = @{
-                kCRToastTextKey : [NSString stringWithFormat:preferenceString, food.text],
-                kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                kCRToastBackgroundColorKey : [UIColor yellow10],
-            };
-            [CRToastManager showNotificationWithOptions:options
-                                        completionBlock:^{
-                                        }];
+            [ToastManager showWithText:preferenceString color:ToastColorGray];
             if ([result[@"value"] integerValue] == -1) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self displayMountRaisedNotification:pet];
@@ -5057,55 +5062,21 @@ NSString *currentUser;
                           withText:(NSString *)text
                          withValue:(NSNumber *)value {
     if ([type isEqualToString:@"experience"]) {
-        NSDictionary *options = @{
-            kCRToastTextKey : [text stringByStrippingHTML],
-            kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-            kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-            kCRToastBackgroundColorKey : [UIColor yellow10],
-            kCRToastImageKey :
-                [self.iconFactory createImageForIcon:NIKFontAwesomeIconArrowCircleOUp]
-        };
-        [CRToastManager showNotificationWithOptions:options
-                                    completionBlock:^{
-                                    }];
+        [ToastManager showWithText:[text stringByStrippingHTML] color:ToastColorYellow];
     } else if ([type isEqualToString:@"food"]) {
         [self getImage:[NSString stringWithFormat:@"Pet_Food_%@", key]
             withFormat:@"png"
-            onSuccess:^(UIImage *image) {
-                UIColor *notificationColor = [UIColor blue10];
-                NSDictionary *options = @{
-                    kCRToastTextKey : [text stringByStrippingHTML],
-                    kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                    kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                    kCRToastBackgroundColorKey : notificationColor,
-                    kCRToastImageKey : image
-                };
-                [CRToastManager showNotificationWithOptions:options
-                                            completionBlock:^{
-                                            }];
-            }
-            onError:^(){
-
-            }];
+             onSuccess:^(UIImage *image) {
+                 ToastView *toastView = [[ToastView alloc] initWithTitle:[[text stringByStrippingHTML] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] icon:image background:ToastColorGray];
+                 [ToastManager showWithToast:toastView];
+            } onError:^(){}];
     } else if ([type isEqualToString:@"gear"]) {
         [self getImage:[NSString stringWithFormat:@"shop_%@", key]
             withFormat:@"png"
             onSuccess:^(UIImage *image) {
-                UIColor *notificationColor = [UIColor green10];
-                NSDictionary *options = @{
-                    kCRToastTextKey : [text stringByStrippingHTML],
-                    kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                    kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                    kCRToastBackgroundColorKey : notificationColor,
-                    kCRToastImageKey : image
-                };
-                [CRToastManager showNotificationWithOptions:options
-                                            completionBlock:^{
-                                            }];
-            }
-            onError:^(){
-
-            }];
+                ToastView *toastView = [[ToastView alloc] initWithTitle:[[text stringByStrippingHTML] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] icon:image background:ToastColorGray];
+                [ToastManager showWithToast:toastView];
+            } onError:^(){}];
     }
 }
 
@@ -5188,29 +5159,13 @@ NSString *currentUser;
     } else {
         content = [NSString stringWithFormat:NSLocalizedString(@"Mana: -%ld", nil), (long)manaDiff];
     }
-    NSDictionary *options = @{
-        kCRToastTextKey : content,
-        kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-        kCRToastBackgroundColorKey : notificationColor,
-        kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconCheck]
-    };
-    [CRToastManager showNotificationWithOptions:options
-                                completionBlock:^{
-                                }];
+    ToastView *toastView = [[ToastView alloc] initWithTitle:content rightIcon:HabiticaIcons.imageOfMagic rightText:[NSString stringWithFormat:@"-%ld", (long)manaDiff] rightTextColor:[UIColor blue10] background:ToastColorBlue];
+    [ToastManager showWithToast:toastView];
 }
 
-- (void)displayRewardNotification:(NSNumber *)goldDiff {
-    UIColor *notificationColor = [UIColor yellow10];
-    NSDictionary *options = @{
-        kCRToastTextKey :
-            [NSString stringWithFormat:NSLocalizedString(@"%.2f Gold", nil), [goldDiff floatValue]],
-        kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-        kCRToastBackgroundColorKey : notificationColor,
-        kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconCheck]
-    };
-    [CRToastManager showNotificationWithOptions:options
-                                completionBlock:^{
-                                }];
+- (void)displayRewardNotification:(NSNumber *)goldDiff withText:(NSString *)text {
+    ToastView *toastView = [[ToastView alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Purchased %@", nil), text] rightIcon:HabiticaIcons.imageOfGold rightText:[goldDiff stringValue] rightTextColor:[UIColor yellow5] background:ToastColorGray];
+    [ToastManager showWithToast:toastView];
 }
 
 - (void)displayDropNotification:(NSString *)key
@@ -5219,30 +5174,18 @@ NSString *currentUser;
                        withNote:(NSString *)note {
     NSString *description;
     if (name == nil) {
-        description = [NSString stringWithFormat:@"You found %@!", key];
+        description = [NSString stringWithFormat:NSLocalizedString(@"You found %@!", nil), key];
     } else if ([[type lowercaseString] isEqualToString:@"food"]) {
-        description = [NSString stringWithFormat:@"You found %@!", name];
+        description = [NSString stringWithFormat:NSLocalizedString(@"You found %@!", nil), name];
     } else {
-        description = [NSString stringWithFormat:@"You found a %@ %@!", name, type];
+        description = [NSString stringWithFormat:NSLocalizedString(@"You found a %@ %@!", nil), name, type];
     }
     [self getImage:[NSString stringWithFormat:@"Pet_%@_%@", type, key]
         withFormat:@"png"
-        onSuccess:^(UIImage *image) {
-            UIColor *notificationColor = [UIColor blue10];
-            NSDictionary *options = @{
-                kCRToastTextKey : description,
-                kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                kCRToastBackgroundColorKey : notificationColor,
-                kCRToastImageKey : image
-            };
-            [CRToastManager showNotificationWithOptions:options
-                                        completionBlock:^{
-                                        }];
-        }
-        onError:^(){
-
-        }];
+         onSuccess:^(UIImage *image) {
+             ToastView *toastView = [[ToastView alloc] initWithTitle:description icon:image background:ToastColorGray];
+             [ToastManager showWithToast:toastView];
+        } onError:nil];
 }
 
 - (void)displayPurchaseNotification:(NSString *)text
@@ -5335,33 +5278,16 @@ NSString *currentUser;
     [self getImage:[NSString stringWithFormat:@"shop_%@", gear.key]
         withFormat:@"png"
          onSuccess:^(UIImage *image) {
-             NSDictionary *options = @{
-                                       kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You received a %@", nil), gear.text],
-                                       kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                                       kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                                       kCRToastBackgroundColorKey : [UIColor blue10],
-                                       kCRToastImageKey : image
-                                       };
-             [CRToastManager showNotificationWithOptions:options
-                                         completionBlock:^{
-                                         }];
-         }
-           onError:^(){
-               
-           }];
+             ToastView *toastView = [[ToastView alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"You received a %@", nil), gear.text] icon:image background:ToastColorBlue];
+             [ToastManager showWithToast:toastView];
+         } onError:nil];
 }
 
-- (void)displayTransformationItemNotification:(NSString *)itemName {
-    UIColor *notificationColor = [UIColor blue10];
-    NSDictionary *options = @{
-                              kCRToastTextKey : [NSString stringWithFormat:NSLocalizedString(@"You used %@", nil), itemName],
-                              kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                              kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                              kCRToastBackgroundColorKey : notificationColor,
-                              };
-    [CRToastManager showNotificationWithOptions:options
-                                completionBlock:^{
-                                }];
+- (void)displayTransformationItemNotification:(NSString *)itemName withImage:(NSString *)imageName {
+    [self getImage:[@"shop_" stringByAppendingString:imageName] withFormat:@"png" onSuccess:^(UIImage *image) {
+        ToastView *toastView = [[ToastView alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"You used %@", nil), itemName] icon:image background:ToastColorBlue];
+        [ToastManager showWithToast:toastView];
+    } onError:nil];
 }
 
 - (User *)getUser {

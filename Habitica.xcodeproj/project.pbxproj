@@ -29,6 +29,8 @@
 		2957B8CA1F4ED7C800E836EF /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C91F4ED7C800E836EF /* Currency.swift */; };
 		29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */; };
 		29701FE21F5617900097BBCC /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29701FE11F5617900097BBCC /* ToastView.xib */; };
+		29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FE31F56C2200097BBCC /* IconLabel.swift */; };
+		29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FE51F56DABC0097BBCC /* RoundedView.swift */; };
 		297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */; };
 		297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */; };
 		297AF8201F29EF0D003B7194 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 297AF81F1F29EF0D003B7194 /* Intro.storyboard */; };
@@ -426,6 +428,8 @@
 		2957B8C91F4ED7C800E836EF /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication-Extensions.swift"; sourceTree = "<group>"; };
 		29701FE11F5617900097BBCC /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
+		29701FE31F56C2200097BBCC /* IconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
+		29701FE51F56DABC0097BBCC /* RoundedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSetupViewController.swift; sourceTree = "<group>"; };
 		297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSetupViewController.swift; sourceTree = "<group>"; };
 		297997721EFD387F00F5F13E /* HabitRPG 43.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 43.xcdatamodel"; sourceTree = "<group>"; };
@@ -1744,6 +1748,7 @@
 				49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */,
 				D9D2172F198D509000023367 /* HRPGDeathView.h */,
 				D9D21730198D509000023367 /* HRPGDeathView.m */,
+				29701FE31F56C2200097BBCC /* IconLabel.swift */,
 				D99E42671D6B1FD500811B6D /* HRPGDeathView.xib */,
 				D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */,
 				D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */,
@@ -1773,6 +1778,7 @@
 				D96C853C1DCB61EE003E3616 /* Notifications */,
 				299BD6211F505DFA00E22935 /* PaddedLabel.swift */,
 				D9525F9C1E64739900C529B8 /* PaddedView.swift */,
+				29701FE51F56DABC0097BBCC /* RoundedView.swift */,
 				D9CE90441E4CDD6200702578 /* PillView.swift */,
 				298119B01F50453100F9FB39 /* QuestGoalView.swift */,
 				298119B41F5048C000F9FB39 /* QuestGoalView.xib */,
@@ -2705,6 +2711,7 @@
 				D922F0B11925314500B197EA /* HRPGNetworkIndicatorController.m in Sources */,
 				29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */,
 				D9E46B091DABE97200E390D7 /* SpecialItems+CoreDataClass.m in Sources */,
+				29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */,
 				D903B7891DCA2BE6001F2893 /* HRPGNotification.m in Sources */,
 				D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */,
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
@@ -2862,6 +2869,7 @@
 				493ECBCB1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift in Sources */,
 				2957B8BC1F4B4DDE00E836EF /* InAppRewardCell.swift in Sources */,
 				D9BB45CC1E76E0FC0002AE2E /* ToDoTableViewCell.swift in Sources */,
+				29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */,
 				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,
 				29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */,
 				D99CDDDD1E5368E400ABD85F /* ShopItem+CoreDataClass.m in Sources */,

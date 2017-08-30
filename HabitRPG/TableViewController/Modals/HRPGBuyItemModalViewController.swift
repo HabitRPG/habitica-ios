@@ -298,7 +298,7 @@ class HRPGBuyItemModalViewController: UIViewController {
                         self.performSegue(withIdentifier: "insufficientGold", sender: self)
                     })
                 } else {
-                    HRPGManager.shared().buyObject(key, withValue: value, onSuccess: nil, onError: {
+                    HRPGManager.shared().buyObject(key, withValue: value, withText: text, onSuccess: nil, onError: {
                         self.performSegue(withIdentifier: "insufficientGold", sender: self)
                     })
                 }

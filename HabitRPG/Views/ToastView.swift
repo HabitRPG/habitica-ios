@@ -11,10 +11,10 @@ import UIKit
 class ToastView: UIView {
         
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var mainStackview: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var priceContainer: UIView!
+    @IBOutlet weak var priceIconLabel: IconLabel!
     
     @IBOutlet weak var leftImageView: UIImageView!
     @IBOutlet weak var bottomSpacing: NSLayoutConstraint!
@@ -25,6 +25,9 @@ class ToastView: UIView {
     @IBOutlet weak var leftImageWidth: NSLayoutConstraint!
     @IBOutlet weak var leftImageHeight: NSLayoutConstraint!
     @IBOutlet weak var priceContainerWidth: NSLayoutConstraint!
+    @IBOutlet weak var priceTrailingPadding: NSLayoutConstraint!
+    @IBOutlet weak var priceLeadingPadding: NSLayoutConstraint!
+    @IBOutlet weak var priceIconLabelWidth: NSLayoutConstraint!
     
     var options: ToastOptions = ToastOptions()
     
@@ -40,6 +43,33 @@ class ToastView: UIView {
         self.init(frame: CGRect.zero)
         options.title = title
         options.backgroundColor = background
+        loadOptions()
+    }
+    
+    public convenience init(title: String, subtitle: String, icon: UIImage, background: ToastColor) {
+        self.init(frame: CGRect.zero)
+        options.title = title
+        options.subtitle = subtitle
+        options.leftImage = icon
+        options.backgroundColor = background
+        loadOptions()
+    }
+    
+    public convenience init(title: String, icon: UIImage, background: ToastColor) {
+        self.init(frame: CGRect.zero)
+        options.title = title
+        options.backgroundColor = background
+        options.leftImage = icon
+        loadOptions()
+    }
+    
+    public convenience init(title: String, rightIcon: UIImage, rightText: String, rightTextColor:UIColor, background: ToastColor) {
+        self.init(frame: CGRect.zero)
+        options.title = title
+        options.backgroundColor = background
+        options.rightIcon = rightIcon
+        options.rightText = rightText
+        options.rightTextColor = rightTextColor
         loadOptions()
     }
     
@@ -67,17 +97,9 @@ class ToastView: UIView {
             backgroundView.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
             backgroundView.layer.borderWidth = 1
             
-            setNeedsUpdateConstraints()
-            updateConstraints()
-            setNeedsLayout()
-            layoutIfNeeded()
+            self.isUserInteractionEnabled = false
+            backgroundView.isUserInteractionEnabled = true
         }
-        loadOptions()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        backgroundView.layer.cornerRadius = backgroundView.frame.size.height/2
     }
 
     func loadOptions() {
@@ -113,12 +135,25 @@ class ToastView: UIView {
         if let leftImage = self.options.leftImage {
             leftImageView.isHidden = false
             leftImageView.image = leftImage
-            
-            topSpacing.constant = 6
+            leadingSpacing.constant = 4
+            leftImageWidth.constant = 46
+            leftImageHeight.priority = 999
         } else {
             leftImageView.isHidden = true
             leftImageWidth.constant = 0
             leftImageHeight.priority = 500
+        }
+        
+        if let icon = options.rightIcon, let text = options.rightText, let textColor = options.rightTextColor {
+            priceContainer.isHidden = false
+            priceIconLabel.icon = icon
+            priceIconLabel.text = text
+            priceIconLabel.textColor = textColor
+            trailingSpacing.constant = 0
+            self.backgroundView.layer.borderColor = options.backgroundColor.getUIColor().cgColor
+        } else {
+            priceContainer.isHidden = true
+            priceIconLabel.removeFromSuperview()
         }
         
         priceContainerWidth.constant = 0

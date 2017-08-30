@@ -101,6 +101,7 @@
                    onError:(void (^)())errorBlock;
 
 - (void)getReward:(NSString *)rewardID
+         withText:(NSString *)text
         onSuccess:(void (^)())successBlock
           onError:(void (^)())errorBlock;
 
@@ -144,6 +145,7 @@
 
 - (void)buyObject:(NSString *)key
         withValue:(NSNumber *)value
+         withText:(NSString *)text
         onSuccess:(void (^)())successBlock
           onError:(void (^)())errorBlock;
 
