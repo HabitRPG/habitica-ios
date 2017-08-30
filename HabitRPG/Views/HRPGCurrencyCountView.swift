@@ -101,12 +101,15 @@ class HRPGCurrencyCountView: UIView {
         switch state {
         case .normal:
             countLabel.textColor = currency.getTextColor()
+            currencyImageView.alpha = 1.0
             break
         case .cantAfford:
             countLabel.textColor = .red100()
+            currencyImageView.alpha = 0.3
             break
         case .locked:
             countLabel.textColor = .gray400()
+            currencyImageView.alpha = 0.3
         }
     }
     

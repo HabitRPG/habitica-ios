@@ -73,12 +73,15 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
             if let rewardCell = cell as? CustomRewardCell {
                 rewardCell.configure(reward: reward)
                 rewardCell.canAfford = reward.value.floatValue < HRPGManager.shared().getUser().gold.floatValue
+                rewardCell.onBuyButtonTapped = {
+                    HRPGManager.shared().getReward(reward.key, onSuccess: nil, onError: nil)
+                }
             }
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InAppRewardCell", for: indexPath)
-            if let rewardCell = cell as? InAppRewardCell {
-                rewardCell.configure(reward: self.fetchedResultsController.object(at: indexPath))
+            if let rewardCell = cell as? InAppRewardCell, let reward = self.fetchedResultsController.object(at: indexPath) as? InAppReward {
+                rewardCell.configure(reward: reward)
             }
             return cell
         }
@@ -101,8 +104,6 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
             }
         }
     }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if isCustomRewardsSection(indexPath.section) {

@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSNumber *isSubscriberItem;
 @property (nullable, nonatomic, copy) NSNumber *itemsLeft;
 @property (nullable, nonatomic, retain) ShopCategory *category;
+@property (nullable, nonatomic, copy) NSString *path;
+@property (nullable, nonatomic, copy) NSString *pinType;
 
 @end
 

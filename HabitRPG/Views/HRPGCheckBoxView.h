@@ -24,7 +24,7 @@
  
 - (void)configureForTask:(Task *)task;
 - (void)configureForTask:(Task *)task withOffset:(NSInteger)offset;
-- (void)configureForChecklistItem:(ChecklistItem *)item;
+- (void)configureForChecklistItem:(ChecklistItem *)item withTitle:(BOOL)withTitle;
 
 @property(copy, nonatomic) void (^wasTouched)(void);
 

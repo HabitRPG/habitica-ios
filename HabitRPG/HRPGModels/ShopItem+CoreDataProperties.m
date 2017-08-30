@@ -28,5 +28,7 @@
 @dynamic isSubscriberItem;
 @dynamic itemsLeft;
 @dynamic category;
+@dynamic path;
+@dynamic pinType;
 
 @end

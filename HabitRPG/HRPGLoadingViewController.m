@@ -17,20 +17,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     if ([[AuthenticationManager shared] hasAuthentication]) {
-        HRPGAppDelegate *appDelegate = (HRPGAppDelegate *)[[UIApplication sharedApplication] delegate];
-    } else {
-        if ([[HRPGManager sharedManager] getUser].username.length == 0) {
-        HRPGManager *manager = appDelegate.sharedManager;
-        
-        if ([manager getUser].username.length == 0) {
-                [self performSegueWithIdentifier:@"InitialSegue" sender:self];
-            }
-                onError:^() {
-                    [self performSegueWithIdentifier:@"InitialSegue" sender:self];
-                }];
-        } else {
-            [self segueForLoggedInUser];
-        }
+        [self segueForLoggedInUser];
     } else {
         [self performSegueWithIdentifier:@"IntroSegue" sender:self];
     }

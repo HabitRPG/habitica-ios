@@ -14,11 +14,12 @@ class InAppRewardCell: UICollectionViewCell {
     @IBOutlet weak var currencyView: HRPGCurrencyCountView!
     @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var pinnedIndicatorView: UIImageView!
     
     private var itemsLeft = 0 {
         didSet {
             if itemsLeft > 0 {
-                infoImageView.image = #imageLiteral(resourceName: "item_count_bubble")
+                infoImageView.image = HabiticaIcons.imageOfItemIndicatorNumber
                 infoImageView.isHidden = false
                 infoLabel.isHidden = false
                 infoLabel.text = String(describing: itemsLeft)
@@ -32,7 +33,7 @@ class InAppRewardCell: UICollectionViewCell {
     private var isLocked = false {
         didSet {
             if isLocked {
-                infoImageView.image = #imageLiteral(resourceName: "item_locked_bubble")
+                infoImageView.image = HabiticaIcons.imageOfItemIndicatorLocked
                 infoImageView.isHidden = false
                 infoLabel.isHidden = true
             } else {
@@ -45,7 +46,7 @@ class InAppRewardCell: UICollectionViewCell {
     private var availableUntil: Date? = nil {
         didSet {
             if availableUntil != nil {
-                infoImageView.image = #imageLiteral(resourceName: "item_limited_bubble")
+                infoImageView.image = HabiticaIcons.imageOfItemIndicatorLimited
                 infoImageView.isHidden = false
                 infoLabel.isHidden = true
             } else {
@@ -68,30 +69,27 @@ class InAppRewardCell: UICollectionViewCell {
         }
     }
     
-    func configure(reward: MetaReward) {
-        var currency: Currency?
-        let price = reward.value.floatValue
-        currencyView.amount = reward.value.intValue
-        if let inAppReward = reward as? InAppReward {
-            imageName = inAppReward.imageName ?? ""
-            if let currencyString = inAppReward.currency, let thisCurrency = Currency(rawValue: currencyString) {
-                currencyView.currency = thisCurrency
-                currency = thisCurrency
-            }
-            isLocked = inAppReward.locked?.boolValue ?? false
-        } else {
-            isLocked = false
-            currency = .gold
-            if reward.key == "potion" {
-                HRPGManager.shared().setImage("shop_potion", withFormat: "png", on: imageView)
-            } else if reward.key == "armoire" {
-                HRPGManager.shared().setImage("shop_armoire", withFormat: "png", on: imageView)
-            }
+    public var isPinned = false {
+        didSet {
+            pinnedIndicatorView.isHidden = !isPinned
         }
+    }
+    
+    func configure(reward: InAppReward) {
+        var currency: Currency?
+        let price = reward.value?.floatValue ?? 0
+        currencyView.amount = reward.value?.intValue ?? 0
+        imageName = reward.imageName ?? ""
+        if let currencyString = reward.currency, let thisCurrency = Currency(rawValue: currencyString) {
+            currencyView.currency = thisCurrency
+            currency = thisCurrency
+        }
+        isLocked = reward.locked?.boolValue ?? false
         
         if let currency = currency {
             setCanAfford(price, currency: currency)
         }
+        isPinned = false
     }
     
     func configure(item: ShopItem) {

@@ -27,6 +27,8 @@
 		2957B8C41F4D922C00E836EF /* CustomRewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */; };
 		2957B8C81F4DCF7800E836EF /* RewardFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C71F4DCF7800E836EF /* RewardFormController.swift */; };
 		2957B8CA1F4ED7C800E836EF /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C91F4ED7C800E836EF /* Currency.swift */; };
+		29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */; };
+		29701FE21F5617900097BBCC /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29701FE11F5617900097BBCC /* ToastView.xib */; };
 		297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */; };
 		297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */; };
 		297AF8201F29EF0D003B7194 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 297AF81F1F29EF0D003B7194 /* Intro.storyboard */; };
@@ -34,7 +36,6 @@
 		2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */; };
 		2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */; };
 		2980E60D1EEA39DF005B7100 /* YesterdailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */; };
-		299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
 		298119AB1F50251300F9FB39 /* InventoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298119AA1F50251300F9FB39 /* InventoryRepository.swift */; };
 		298119AD1F5040B900F9FB39 /* QuestDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298119AC1F5040B900F9FB39 /* QuestDetailView.xib */; };
 		298119AF1F5040DA00F9FB39 /* QuestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298119AE1F5040DA00F9FB39 /* QuestDetailView.swift */; };
@@ -47,6 +48,7 @@
 		299BD6301F541EFC00E22935 /* QuestReward+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 299BD62C1F541EFC00E22935 /* QuestReward+CoreDataProperties.m */; };
 		299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */; };
 		299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6361F5457E100E22935 /* HabiticaIcons.swift */; };
+		299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
 		29AAA15D1F2A3AA600029737 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15C1F2A3AA600029737 /* GradientView.swift */; };
 		29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */; };
 		29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29AAA1601F2B597400029737 /* SpeechbubbleView.xib */; };
@@ -422,6 +424,8 @@
 		2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRewardCell.swift; sourceTree = "<group>"; };
 		2957B8C71F4DCF7800E836EF /* RewardFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardFormController.swift; sourceTree = "<group>"; };
 		2957B8C91F4ED7C800E836EF /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication-Extensions.swift"; sourceTree = "<group>"; };
+		29701FE11F5617900097BBCC /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
 		297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSetupViewController.swift; sourceTree = "<group>"; };
 		297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSetupViewController.swift; sourceTree = "<group>"; };
 		297997721EFD387F00F5F13E /* HabitRPG 43.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 43.xcdatamodel"; sourceTree = "<group>"; };
@@ -430,7 +434,6 @@
 		2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailiesDialogView.swift; sourceTree = "<group>"; };
 		2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailyTaskCell.swift; sourceTree = "<group>"; };
 		2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyTaskCell.xib; sourceTree = "<group>"; };
-		299BD6391F557FE700E22935 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		298119AA1F50251300F9FB39 /* InventoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryRepository.swift; sourceTree = "<group>"; };
 		298119AC1F5040B900F9FB39 /* QuestDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestDetailView.xib; sourceTree = "<group>"; };
 		298119AE1F5040DA00F9FB39 /* QuestDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestDetailView.swift; sourceTree = "<group>"; };
@@ -449,6 +452,7 @@
 		299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestDetailRewardView.xib; sourceTree = "<group>"; };
 		299BD6361F5457E100E22935 /* HabiticaIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabiticaIcons.swift; sourceTree = "<group>"; };
 		299BD6381F54961700E22935 /* HabitRPG 47.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 47.xcdatamodel"; sourceTree = "<group>"; };
+		299BD6391F557FE700E22935 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		29A46C2F1F444E4C0036A04E /* HabitRPG 44.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 44.xcdatamodel"; sourceTree = "<group>"; };
 		29AAA15C1F2A3AA600029737 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechbubbleView.swift; sourceTree = "<group>"; };
@@ -1440,6 +1444,7 @@
 				29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */,
 				29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */,
 				29F89F191F47882A004E5B84 /* String-Extensions.swift */,
+				29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1777,6 +1782,7 @@
 				299BD6321F5420D600E22935 /* Tasks */,
 				29255E4A1F3E236C0094A3E3 /* ToastManager.swift */,
 				29255E481F3E1B0F0094A3E3 /* ToastView.swift */,
+				29701FE11F5617900097BBCC /* ToastView.xib */,
 				299BD6331F5420F000E22935 /* Tutorials */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
@@ -2411,6 +2417,7 @@
 				49DCB7BA1F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib in Resources */,
 				49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
+				29701FE21F5617900097BBCC /* ToastView.xib in Resources */,
 				D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */,
 				49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */,
 				D9F1E3EA1E55DCFB0034D0F4 /* SubscriptionInformationCell.xib in Resources */,
@@ -2696,6 +2703,7 @@
 				D9A1A2811BA7029D00903567 /* NSDate+DaysSince.m in Sources */,
 				D9E9E0C41CCE55DA006D94A2 /* HRPGSharingManager.m in Sources */,
 				D922F0B11925314500B197EA /* HRPGNetworkIndicatorController.m in Sources */,
+				29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */,
 				D9E46B091DABE97200E390D7 /* SpecialItems+CoreDataClass.m in Sources */,
 				D903B7891DCA2BE6001F2893 /* HRPGNotification.m in Sources */,
 				D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */,

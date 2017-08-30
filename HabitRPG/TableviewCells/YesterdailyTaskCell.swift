@@ -42,7 +42,7 @@ class YesterdailyTaskCell: UITableViewCell {
                 let label = view.viewWithTag(2) as? UILabel
                 label?.text = checklistItem.text.unicodeEmoji
                 let checkbox = view.viewWithTag(1) as? HRPGCheckBoxView
-                checkbox?.configure(for: checklistItem)
+                checkbox?.configure(for: checklistItem, withTitle:false)
                 checkbox?.backgroundColor = UIColor.gray700()
                 checklistStackview.addArrangedSubview(view)
                 let recognizer = UITapGestureRecognizer(target: self, action:#selector(YesterdailyTaskCell.handleChecklistTap(recognizer:)))

@@ -7,7 +7,6 @@
 //
 
 #import "HRPGCollectionViewController.h"
-#import "PDKeychainBindings.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "Amplitude+HRPGHelpers.h"
@@ -22,15 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    PDKeychainBindings *keyChain = [PDKeychainBindings sharedKeychainBindings];
-    if ([keyChain stringForKey:@"id"] == nil ||
-        [[keyChain stringForKey:@"id"] isEqualToString:@""]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UINavigationController *navigationController =
-        [storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
-        [self presentViewController:navigationController animated:NO completion:nil];
-    }
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:NSStringFromClass([self class])];

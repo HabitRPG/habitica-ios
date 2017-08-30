@@ -69,6 +69,7 @@
     self.topHeaderNavigationController.shouldHideTopHeader = YES;
     [self.topHeaderNavigationController stopFollowingScrollView];
     [self.topHeaderNavigationController removeAlternativeHeaderView];
+    [super viewWillDisappear:animated];
 }
 
 - (void)refresh {

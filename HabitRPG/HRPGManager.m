@@ -1749,8 +1749,7 @@ NSString *currentUser;
     ]];
     [inAppRewardsMapping addAttributeMappingsFromDictionary:@{
                                                               @"class": @"imageName",
-                                                              @"@metadata.mapping.collectionIndex": @"order"
-        @"gearSet" : @"set"
+                                                              @"@metadata.mapping.collectionIndex": @"order",
                                                               }];
     inAppRewardsMapping.identificationAttributes = @[ @"key" ];
     inAppRewardsMapping.assignsDefaultValueForMissingAttributes = NO;
@@ -2071,7 +2070,7 @@ NSString *currentUser;
                                                                     toKeyPath:@"categories"
                                                                   withMapping:shopCategoryMapping]];
     RKEntityMapping *shopItemMapping = [RKEntityMapping mappingForEntityForName:@"ShopItem" inManagedObjectStore:managedObjectStore];
-    [shopItemMapping addAttributeMappingsFromArray:@[@"text", @"key", @"notes", @"type", @"value", @"currency", @"locked", @"purchaseType"]];
+    [shopItemMapping addAttributeMappingsFromArray:@[@"text", @"key", @"notes", @"type", @"value", @"currency", @"locked", @"purchaseType", @"path", @"pinType"]];
     [shopItemMapping addAttributeMappingsFromDictionary:@{@"@metadata.mapping.collectionIndex": @"index",
                                                           @"class": @"imageName",
                                                           @"unlockCondition.condition": @"unlockCondition"}];
@@ -3606,13 +3605,14 @@ NSString *currentUser;
         }];
 }
 
-- (void)buyObject:(MetaReward *)reward
+- (void)buyObject:(NSString *)key
+        withValue:(NSNumber *)value
         onSuccess:(void (^)())successBlock
           onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:Nil
-        path:[NSString stringWithFormat:@"user/buy/%@", reward.key]
+        path:[NSString stringWithFormat:@"user/buy/%@", key]
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
@@ -3623,7 +3623,7 @@ NSString *currentUser;
                 goldDiff = @([response.gold floatValue] - [self.user.gold floatValue]);
                 self.user.gold = response.gold;
             } else {
-                goldDiff = reward.value;
+                goldDiff = value;
                 self.user.gold = [NSNumber numberWithFloat:[self.user.gold floatValue] - [goldDiff floatValue]];
             }
             if (response.experience) {
@@ -3642,10 +3642,6 @@ NSString *currentUser;
             self.user.equipped.headAccessory = response.equippedHeadAccessory ? response.equippedHeadAccessory : self.user.equipped.headAccessory;
             self.user.equipped.shield = response.equippedShield ? response.equippedShield : self.user.equipped.shield;
             self.user.equipped.weapon = response.equippedWeapon ? response.equippedWeapon : self.user.equipped.weapon;
-            if ([reward isKindOfClass:[Gear class]]) {
-                Gear *gear = (Gear *)reward;
-                gear.owned = YES;
-            }
 
             if (response.armoireType) {
                 HRPGResponseMessage *message = [mappingResult dictionary][[NSNull null]];
@@ -4685,19 +4681,22 @@ NSString *currentUser;
                                         }];
 }
 
-- (void)purchaseItem:(ShopItem *)item
+- (void)purchaseItem:(NSString *)key
+    withPurchaseType:(NSString *)purchaseType
+            withText:(NSString *)text
+       withImageName:(NSString *)imageName
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
-        path:[NSString stringWithFormat:@"user/purchase/%@/%@", item.purchaseType, item.key]
+        path:[NSString stringWithFormat:@"user/purchase/%@/%@", purchaseType, key]
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             [self fetchUser:^() {
                 NSError *executeError = nil;
                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                [self displayPurchaseNotification:[NSString stringWithFormat:NSLocalizedString(@"You purchased %@", nil), item.text] withImage:item.imageName];
+                [self displayPurchaseNotification:[NSString stringWithFormat:NSLocalizedString(@"You purchased %@", nil), text] withImage:imageName];
                 if (successBlock) {
                     successBlock();
                 }
@@ -4717,19 +4716,22 @@ NSString *currentUser;
         }];
 }
 
-- (void)purchaseHourglassItem:(ShopItem *)item
+- (void)purchaseHourglassItem:(NSString *)key
+             withPurchaseType:(NSString *)purchaseType
+                     withText:(NSString *)text
+                withImageName:(NSString *)imageName
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
-                                           path:[NSString stringWithFormat:@"user/purchase-hourglass/%@/%@", item.purchaseType, item.key]
+                                           path:[NSString stringWithFormat:@"user/purchase-hourglass/%@/%@", purchaseType, key]
                                      parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [self fetchUser:^() {
                                                 NSError *executeError = nil;
                                                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                                                [self displayPurchaseNotification:[NSString stringWithFormat:NSLocalizedString(@"You purchased %@", nil), item.text] withImage:item.imageName];
+                                                [self displayPurchaseNotification:[NSString stringWithFormat:NSLocalizedString(@"You purchased %@", nil), text] withImage:imageName];
                                                 if (successBlock) {
                                                     successBlock();
                                                 }
@@ -4781,19 +4783,21 @@ NSString *currentUser;
                                         }];
 }
 
-- (void)purchaseQuest:(ShopItem *)item
+- (void)purchaseQuest:(NSString *)key
+             withText:(NSString *)text
+        withImageName:(NSString *)imageName
                     onSuccess:(void (^)())successBlock
                       onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
-                                           path:[NSString stringWithFormat:@"user/buy-quest/%@", item.key]
+                                           path:[NSString stringWithFormat:@"user/buy-quest/%@", key]
                                      parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [self fetchUser:^() {
                                                 NSError *executeError = nil;
                                                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                                                [self displayPurchaseNotification:[NSString stringWithFormat:NSLocalizedString(@"You purchased %@", nil), item.text] withImage:item.imageName];
+                                                [self displayPurchaseNotification:[NSString stringWithFormat:NSLocalizedString(@"You purchased %@", nil), text] withImage:imageName];
                                                 if (successBlock) {
                                                     successBlock();
                                                 }
@@ -4946,6 +4950,32 @@ NSString *currentUser;
             return;
         }];
     }
+}
+
+- (void)togglePinnedItem:(NSString *)pinType withPath:(NSString *)path onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] getObject:nil
+                                           path:[NSString stringWithFormat:@"user/toggle-pinned-item/%@/%@", pinType, path]
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            [self fetchBuyableRewards:^() {
+                                                if (successBlock) {
+                                                    successBlock();
+                                                }
+                                            }
+                                                    onError:nil];
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            [self handleNetworkError:operation withError:error];
+                                            if (errorBlock) {
+                                                errorBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
 }
 
 - (void)displayNetworkError {

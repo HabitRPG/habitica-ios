@@ -33,7 +33,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="Chq-sY-aIf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" red="0.30608683824539185" green="0.28910130262374878" blue="0.3428824245929718" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

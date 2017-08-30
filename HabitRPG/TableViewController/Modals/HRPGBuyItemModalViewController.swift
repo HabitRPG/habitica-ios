@@ -26,6 +26,16 @@ class HRPGBuyItemModalViewController: UIViewController {
     @IBOutlet weak var currencyCountView: HRPGCurrencyCountView!
     @IBOutlet weak var closableShopModal: HRPGCloseableShopModalView!
 
+    private var isPinned: Bool = false {
+        didSet {
+            if isPinned {
+                pinButton.setTitle(NSLocalizedString("Unpin from Rewards", comment: ""), for: .normal)
+            } else {
+                pinButton.setTitle(NSLocalizedString("Pin to Rewards", comment: ""), for: .normal)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -78,6 +88,7 @@ class HRPGBuyItemModalViewController: UIViewController {
                 itemView = HRPGSimpleShopItemView(withItem: item, for: contentView)
             } else if let reward = self.reward {
                 itemView = HRPGSimpleShopItemView(withReward: reward, for: contentView)
+                isPinned = true
             }
             updateBuyButton()
             let key = item?.key ?? reward?.key ?? ""
@@ -216,40 +227,78 @@ class HRPGBuyItemModalViewController: UIViewController {
     // MARK: actions
 
     @IBAction func pinPressed() {
+        var path = ""
+        var pinType = ""
+        if let shopItem = item {
+            path = shopItem.path ?? ""
+            pinType = shopItem.pinType ?? ""
+        } else if let inAppReward = reward as? InAppReward {
+            path = inAppReward.path ?? ""
+            pinType = inAppReward.pinType ?? ""
+        }
+        HRPGManager.shared().togglePinnedItem(pinType, withPath: path, onSuccess: {[weak self] in
+            self?.isPinned = !(self?.isPinned ?? false)
+        }, onError: nil)
     }
     
     func buyPressed() {
         if itemIsLocked() {
             return
         }
-        if let shopItem = item, let relevantCurrency = shopItem.currency {
-            if let identifier = shopIdentifier, identifier == TimeTravelersShopKey {
-                if shopItem.purchaseType == "gear" {
-                    HRPGManager.shared().purchaseMysterySet(shopItem.category?.identifier, onSuccess: {
-                        self.dismiss(animated: true, completion: nil)
-                    }, onError: {
+        var key = ""
+        var purchaseType = ""
+        var text = ""
+        var imageName = ""
+        var currency = Currency.gold
+        var setIdentifier = ""
+        var value: NSNumber = 0
+        if let shopItem = item {
+            key = shopItem.key ?? ""
+            purchaseType = shopItem.purchaseType ?? ""
+            text = shopItem.text ?? ""
+            imageName = shopItem.imageName ?? ""
+            setIdentifier = shopItem.category?.identifier ?? ""
+            value = shopItem.value ?? 0
+            if let currencyString = shopItem.currency, let thisCurrency = Currency(rawValue: currencyString) {
+                currency = thisCurrency
+            }
+        } else if let inAppReward = reward as? InAppReward {
+            key = inAppReward.key ?? ""
+            purchaseType = inAppReward.purchaseType ?? ""
+            text = inAppReward.text ?? ""
+            imageName = inAppReward.imageName ?? ""
+            setIdentifier = inAppReward.key ?? ""
+            value = inAppReward.value ?? 0
+            if let currencyString = inAppReward.currency, let thisCurrency = Currency(rawValue: currencyString) {
+                currency = thisCurrency
+            }
+        }
+        
+        if key != "" {
+            self.dismiss(animated: true, completion: nil)
+            if currency == .hourglass {
+                if purchaseType == "gear" || purchaseType == "mystery_set" {
+                    HRPGManager.shared().purchaseMysterySet(setIdentifier, onSuccess: nil, onError: {
                         self.performSegue(withIdentifier: "insufficientHourglasses", sender: self)
                     })
                 } else {
-                    HRPGManager.shared().purchaseHourglassItem(shopItem, onSuccess: {
-                        self.dismiss(animated: true, completion: nil)
-                        }, onError: {
+                    HRPGManager.shared().purchaseHourglassItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: nil, onError: {
                             self.performSegue(withIdentifier: "insufficientHourglasses", sender: self)
                     })
                 }
-            } else if relevantCurrency == "gems" && !shopItem.canBuy(NSNumber(value: HRPGManager.shared().getUser().balance.floatValue * 4.0)) {
+            } else if currency == .gem && value.floatValue > HRPGManager.shared().getUser().balance.floatValue * 4.0 {
                 performSegue(withIdentifier: "insufficientGems", sender: self)
+            } else if currency == .gem {
+                HRPGManager.shared().purchaseItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: nil, onError: {
+                    self.performSegue(withIdentifier: "insufficientGems", sender: self)
+                })
             } else {
-                if relevantCurrency == "gold" && shopItem.purchaseType == "quests" {
-                    HRPGManager.shared().purchaseQuest(shopItem, onSuccess: {
-                        self.dismiss(animated: true, completion: nil)
-                    }, onError: {
+                if currency == .gold && purchaseType == "quests" {
+                    HRPGManager.shared().purchaseQuest(key, withText: text, withImageName: imageName, onSuccess: nil, onError: {
                         self.performSegue(withIdentifier: "insufficientGold", sender: self)
                     })
                 } else {
-                    HRPGManager.shared().purchaseItem(shopItem, onSuccess: {
-                        self.dismiss(animated: true, completion: nil)
-                    }, onError: {
+                    HRPGManager.shared().buyObject(key, withValue: value, onSuccess: nil, onError: {
                         self.performSegue(withIdentifier: "insufficientGold", sender: self)
                     })
                 }

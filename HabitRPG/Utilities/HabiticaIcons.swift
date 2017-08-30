@@ -46,6 +46,18 @@ public class HabiticaIcons : NSObject {
         static var starLargeTargets: [AnyObject]?
         static var imageOfStarMedium: UIImage?
         static var starMediumTargets: [AnyObject]?
+        static var imageOfPinnedItem: UIImage?
+        static var pinnedItemTargets: [AnyObject]?
+        static var imageOfPinItem: UIImage?
+        static var pinItemTargets: [AnyObject]?
+        static var imageOfUnpinItem: UIImage?
+        static var unpinItemTargets: [AnyObject]?
+        static var imageOfItemIndicatorNumber: UIImage?
+        static var itemIndicatorNumberTargets: [AnyObject]?
+        static var imageOfItemIndicatorLocked: UIImage?
+        static var itemIndicatorLockedTargets: [AnyObject]?
+        static var imageOfItemIndicatorLimited: UIImage?
+        static var itemIndicatorLimitedTargets: [AnyObject]?
     }
 
     //// Drawing Methods
@@ -1833,6 +1845,399 @@ public class HabiticaIcons : NSObject {
 
     }
 
+    @objc dynamic public class func drawPinnedItem(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 16, height: 16), resizing: ResizingBehavior = .aspectFit) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+        
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 16, height: 16), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 16, y: resizedFrame.height / 16)
+
+
+        //// Color Declarations
+        let fillColor35 = UIColor(red: 0.765, green: 0.753, blue: 0.780, alpha: 1.000)
+
+        //// Bezier Drawing
+        let bezierPath = UIBezierPath()
+        bezierPath.move(to: CGPoint(x: 6.12, y: 7.26))
+        bezierPath.addLine(to: CGPoint(x: 10.19, y: 4.19))
+        bezierPath.addLine(to: CGPoint(x: 11.81, y: 5.8))
+        bezierPath.addLine(to: CGPoint(x: 8.74, y: 9.88))
+        bezierPath.addLine(to: CGPoint(x: 6.12, y: 7.26))
+        bezierPath.close()
+        bezierPath.move(to: CGPoint(x: 14.69, y: 5.73))
+        bezierPath.addLine(to: CGPoint(x: 10.27, y: 1.31))
+        bezierPath.addCurve(to: CGPoint(x: 8.79, y: 1.31), controlPoint1: CGPoint(x: 9.86, y: 0.9), controlPoint2: CGPoint(x: 9.2, y: 0.9))
+        bezierPath.addCurve(to: CGPoint(x: 8.72, y: 2.68), controlPoint1: CGPoint(x: 8.42, y: 1.68), controlPoint2: CGPoint(x: 8.4, y: 2.27))
+        bezierPath.addLine(to: CGPoint(x: 4.62, y: 5.77))
+        bezierPath.addLine(to: CGPoint(x: 4.52, y: 5.66))
+        bezierPath.addCurve(to: CGPoint(x: 3.04, y: 5.66), controlPoint1: CGPoint(x: 4.11, y: 5.26), controlPoint2: CGPoint(x: 3.45, y: 5.26))
+        bezierPath.addCurve(to: CGPoint(x: 3.04, y: 7.14), controlPoint1: CGPoint(x: 2.63, y: 6.07), controlPoint2: CGPoint(x: 2.63, y: 6.74))
+        bezierPath.addLine(to: CGPoint(x: 5.23, y: 9.33))
+        bezierPath.addLine(to: CGPoint(x: 2.31, y: 12.21))
+        bezierPath.addCurve(to: CGPoint(x: 2.3, y: 13.69), controlPoint1: CGPoint(x: 1.9, y: 12.62), controlPoint2: CGPoint(x: 1.9, y: 13.28))
+        bezierPath.addCurve(to: CGPoint(x: 3.05, y: 14), controlPoint1: CGPoint(x: 2.51, y: 13.9), controlPoint2: CGPoint(x: 2.78, y: 14))
+        bezierPath.addCurve(to: CGPoint(x: 3.78, y: 13.7), controlPoint1: CGPoint(x: 3.31, y: 14), controlPoint2: CGPoint(x: 3.58, y: 13.9))
+        bezierPath.addLine(to: CGPoint(x: 6.71, y: 10.81))
+        bezierPath.addLine(to: CGPoint(x: 8.9, y: 13))
+        bezierPath.addCurve(to: CGPoint(x: 9.64, y: 13.31), controlPoint1: CGPoint(x: 9.1, y: 13.2), controlPoint2: CGPoint(x: 9.37, y: 13.31))
+        bezierPath.addCurve(to: CGPoint(x: 10.38, y: 13), controlPoint1: CGPoint(x: 9.9, y: 13.31), controlPoint2: CGPoint(x: 10.17, y: 13.2))
+        bezierPath.addCurve(to: CGPoint(x: 10.38, y: 11.52), controlPoint1: CGPoint(x: 10.78, y: 12.59), controlPoint2: CGPoint(x: 10.78, y: 11.93))
+        bezierPath.addLine(to: CGPoint(x: 10.23, y: 11.37))
+        bezierPath.addLine(to: CGPoint(x: 13.32, y: 7.28))
+        bezierPath.addCurve(to: CGPoint(x: 13.95, y: 7.51), controlPoint1: CGPoint(x: 13.51, y: 7.42), controlPoint2: CGPoint(x: 13.73, y: 7.51))
+        bezierPath.addCurve(to: CGPoint(x: 14.69, y: 7.21), controlPoint1: CGPoint(x: 14.22, y: 7.51), controlPoint2: CGPoint(x: 14.49, y: 7.41))
+        bezierPath.addCurve(to: CGPoint(x: 14.69, y: 5.73), controlPoint1: CGPoint(x: 15.1, y: 6.8), controlPoint2: CGPoint(x: 15.1, y: 6.14))
+        bezierPath.addLine(to: CGPoint(x: 14.69, y: 5.73))
+        bezierPath.close()
+        bezierPath.usesEvenOddFillRule = true
+        fillColor35.setFill()
+        bezierPath.fill()
+        
+        context.restoreGState()
+
+    }
+
+    @objc dynamic public class func drawAddRemovePin(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 40, height: 40), resizing: ResizingBehavior = .aspectFit, addPin: Bool = true) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+        
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 40, height: 40), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 40, y: resizedFrame.height / 40)
+
+
+        //// Color Declarations
+        let fillColor2 = UIColor(red: 1.000, green: 0.380, blue: 0.396, alpha: 1.000)
+        let fillColor36 = UIColor(red: 0.380, green: 0.200, blue: 0.706, alpha: 1.000)
+
+        //// Variable Declarations
+        let pinColor = addPin ? fillColor36 : fillColor2
+
+        //// Bezier Drawing
+        let bezierPath = UIBezierPath()
+        bezierPath.move(to: CGPoint(x: 16, y: 11))
+        bezierPath.addLine(to: CGPoint(x: 10, y: 11))
+        pinColor.setStroke()
+        bezierPath.lineWidth = 2
+        bezierPath.lineCapStyle = .round
+        bezierPath.stroke()
+
+
+        if (addPin) {
+            //// Bezier 2 Drawing
+            let bezier2Path = UIBezierPath()
+            bezier2Path.move(to: CGPoint(x: 13, y: 8))
+            bezier2Path.addLine(to: CGPoint(x: 13, y: 14))
+            pinColor.setStroke()
+            bezier2Path.lineWidth = 2
+            bezier2Path.lineCapStyle = .round
+            bezier2Path.stroke()
+        }
+
+
+        //// Bezier 3 Drawing
+        let bezier3Path = UIBezierPath()
+        bezier3Path.move(to: CGPoint(x: 22.42, y: 25.1))
+        bezier3Path.addLine(to: CGPoint(x: 17.9, y: 20.58))
+        bezier3Path.addLine(to: CGPoint(x: 25.57, y: 14.61))
+        bezier3Path.addLine(to: CGPoint(x: 28.39, y: 17.43))
+        bezier3Path.addLine(to: CGPoint(x: 22.42, y: 25.1))
+        bezier3Path.close()
+        bezier3Path.move(to: CGPoint(x: 31.68, y: 17.6))
+        bezier3Path.addLine(to: CGPoint(x: 30.63, y: 16.56))
+        bezier3Path.addCurve(to: CGPoint(x: 30.63, y: 16.56), controlPoint1: CGPoint(x: 30.63, y: 16.56), controlPoint2: CGPoint(x: 30.63, y: 16.56))
+        bezier3Path.addLine(to: CGPoint(x: 26.44, y: 12.37))
+        bezier3Path.addLine(to: CGPoint(x: 25.4, y: 11.32))
+        bezier3Path.addCurve(to: CGPoint(x: 23.84, y: 11.32), controlPoint1: CGPoint(x: 24.97, y: 10.89), controlPoint2: CGPoint(x: 24.27, y: 10.89))
+        bezier3Path.addCurve(to: CGPoint(x: 23.84, y: 12.88), controlPoint1: CGPoint(x: 23.41, y: 11.75), controlPoint2: CGPoint(x: 23.41, y: 12.45))
+        bezier3Path.addLine(to: CGPoint(x: 24, y: 13.05))
+        bezier3Path.addLine(to: CGPoint(x: 16.33, y: 19.01))
+        bezier3Path.addLine(to: CGPoint(x: 15.97, y: 18.65))
+        bezier3Path.addCurve(to: CGPoint(x: 14.42, y: 18.65), controlPoint1: CGPoint(x: 15.54, y: 18.22), controlPoint2: CGPoint(x: 14.85, y: 18.22))
+        bezier3Path.addCurve(to: CGPoint(x: 14.42, y: 20.21), controlPoint1: CGPoint(x: 13.99, y: 19.08), controlPoint2: CGPoint(x: 13.99, y: 19.78))
+        bezier3Path.addLine(to: CGPoint(x: 15.46, y: 21.25))
+        bezier3Path.addLine(to: CGPoint(x: 15.46, y: 21.26))
+        bezier3Path.addLine(to: CGPoint(x: 17.83, y: 23.62))
+        bezier3Path.addLine(to: CGPoint(x: 12.32, y: 29.12))
+        bezier3Path.addCurve(to: CGPoint(x: 12.32, y: 30.68), controlPoint1: CGPoint(x: 11.89, y: 29.55), controlPoint2: CGPoint(x: 11.89, y: 30.25))
+        bezier3Path.addCurve(to: CGPoint(x: 13.1, y: 31), controlPoint1: CGPoint(x: 12.54, y: 30.89), controlPoint2: CGPoint(x: 12.82, y: 31))
+        bezier3Path.addCurve(to: CGPoint(x: 13.88, y: 30.68), controlPoint1: CGPoint(x: 13.38, y: 31), controlPoint2: CGPoint(x: 13.66, y: 30.89))
+        bezier3Path.addLine(to: CGPoint(x: 19.38, y: 25.18))
+        bezier3Path.addLine(to: CGPoint(x: 21.74, y: 27.54))
+        bezier3Path.addCurve(to: CGPoint(x: 21.75, y: 27.54), controlPoint1: CGPoint(x: 21.75, y: 27.54), controlPoint2: CGPoint(x: 21.75, y: 27.54))
+        bezier3Path.addLine(to: CGPoint(x: 22.79, y: 28.58))
+        bezier3Path.addCurve(to: CGPoint(x: 23.57, y: 28.91), controlPoint1: CGPoint(x: 23.01, y: 28.8), controlPoint2: CGPoint(x: 23.29, y: 28.91))
+        bezier3Path.addCurve(to: CGPoint(x: 24.35, y: 28.58), controlPoint1: CGPoint(x: 23.85, y: 28.91), controlPoint2: CGPoint(x: 24.13, y: 28.8))
+        bezier3Path.addCurve(to: CGPoint(x: 24.35, y: 27.03), controlPoint1: CGPoint(x: 24.78, y: 28.15), controlPoint2: CGPoint(x: 24.78, y: 27.46))
+        bezier3Path.addLine(to: CGPoint(x: 23.99, y: 26.67))
+        bezier3Path.addLine(to: CGPoint(x: 29.96, y: 19))
+        bezier3Path.addLine(to: CGPoint(x: 30.12, y: 19.16))
+        bezier3Path.addCurve(to: CGPoint(x: 30.9, y: 19.48), controlPoint1: CGPoint(x: 30.34, y: 19.38), controlPoint2: CGPoint(x: 30.62, y: 19.48))
+        bezier3Path.addCurve(to: CGPoint(x: 31.68, y: 19.16), controlPoint1: CGPoint(x: 31.18, y: 19.48), controlPoint2: CGPoint(x: 31.46, y: 19.38))
+        bezier3Path.addCurve(to: CGPoint(x: 31.68, y: 17.6), controlPoint1: CGPoint(x: 32.11, y: 18.73), controlPoint2: CGPoint(x: 32.11, y: 18.03))
+        bezier3Path.addLine(to: CGPoint(x: 31.68, y: 17.6))
+        bezier3Path.close()
+        bezier3Path.usesEvenOddFillRule = true
+        pinColor.setFill()
+        bezier3Path.fill()
+        
+        context.restoreGState()
+
+    }
+
+    @objc dynamic public class func drawPinItem(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 40, height: 40), resizing: ResizingBehavior = .aspectFit) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+        
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 40, height: 40), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 40, y: resizedFrame.height / 40)
+
+
+        //// Symbol Drawing
+        let symbolRect = CGRect(x: 0, y: 0, width: 40, height: 40)
+        context.saveGState()
+        context.clip(to: symbolRect)
+        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+
+        HabiticaIcons.drawAddRemovePin(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, addPin: true)
+        context.restoreGState()
+        
+        context.restoreGState()
+
+    }
+
+    @objc dynamic public class func drawUnpinItem(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 40, height: 40), resizing: ResizingBehavior = .aspectFit) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+        
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 40, height: 40), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 40, y: resizedFrame.height / 40)
+
+
+        //// Symbol Drawing
+        let symbolRect = CGRect(x: 0, y: 0, width: 40, height: 40)
+        context.saveGState()
+        context.clip(to: symbolRect)
+        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+
+        HabiticaIcons.drawAddRemovePin(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, addPin: false)
+        context.restoreGState()
+        
+        context.restoreGState()
+
+    }
+
+    @objc dynamic public class func drawItemIndicator(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 28, height: 28), resizing: ResizingBehavior = .aspectFit, isLocked: Bool = false, isLimited: Bool = false) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+        
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 28, height: 28), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 28, y: resizedFrame.height / 28)
+        let resizedShadowScale: CGFloat = min(resizedFrame.width / 28, resizedFrame.height / 28)
+
+
+        //// Color Declarations
+        let strokeColor = UIColor(red: 0.380, green: 0.200, blue: 0.706, alpha: 1.000)
+        let fillColor37 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
+        let shadowTint = UIColor(red: 0.102, green: 0.094, blue: 0.114, alpha: 1.000)
+        let fillColor38 = UIColor(red: 1.000, green: 0.580, blue: 0.298, alpha: 1.000)
+        let fillColor39 = UIColor(red: 0.741, green: 0.659, blue: 1.000, alpha: 1.000)
+        let strokeColor2 = UIColor(red: 0.741, green: 0.659, blue: 1.000, alpha: 1.000)
+        let fillColor40 = UIColor(red: 0.647, green: 0.631, blue: 0.675, alpha: 1.000)
+        let indicatorLocked = UIColor(red: 0.929, green: 0.925, blue: 0.933, alpha: 1.000)
+
+        //// Shadow Declarations
+        let shadow = NSShadow()
+        shadow.shadowColor = shadowTint.withAlphaComponent(0.12 * shadowTint.cgColor.alpha)
+        shadow.shadowOffset = CGSize(width: 84, height: 1)
+        shadow.shadowBlurRadius = 1
+
+        //// Variable Declarations
+        let itemIndicatorColor = isLocked ? indicatorLocked : (isLimited ? strokeColor : fillColor38)
+
+        //// Oval Drawing
+        let ovalPath = UIBezierPath(ovalIn: CGRect(x: -82, y: 2, width: 24, height: 24))
+        context.saveGState()
+        context.setShadow(offset: CGSize(width: shadow.shadowOffset.width * resizedShadowScale, height: shadow.shadowOffset.height * resizedShadowScale), blur: shadow.shadowBlurRadius * resizedShadowScale, color: (shadow.shadowColor as! UIColor).cgColor)
+        fillColor37.setFill()
+        ovalPath.fill()
+        context.restoreGState()
+
+
+
+        //// Oval 2 Drawing
+        let oval2Path = UIBezierPath(ovalIn: CGRect(x: 2, y: 2, width: 24, height: 24))
+        itemIndicatorColor.setFill()
+        oval2Path.fill()
+
+
+        if (isLimited) {
+            //// Group 2
+            //// Bezier Drawing
+            let bezierPath = UIBezierPath()
+            bezierPath.move(to: CGPoint(x: 14, y: 6))
+            bezierPath.addCurve(to: CGPoint(x: 6, y: 14), controlPoint1: CGPoint(x: 9.58, y: 6), controlPoint2: CGPoint(x: 6, y: 9.58))
+            bezierPath.addCurve(to: CGPoint(x: 14, y: 22), controlPoint1: CGPoint(x: 6, y: 18.42), controlPoint2: CGPoint(x: 9.58, y: 22))
+            bezierPath.addCurve(to: CGPoint(x: 22, y: 14), controlPoint1: CGPoint(x: 18.42, y: 22), controlPoint2: CGPoint(x: 22, y: 18.42))
+            bezierPath.addCurve(to: CGPoint(x: 14, y: 6), controlPoint1: CGPoint(x: 22, y: 9.58), controlPoint2: CGPoint(x: 18.42, y: 6))
+            bezierPath.close()
+            bezierPath.move(to: CGPoint(x: 14, y: 8))
+            bezierPath.addCurve(to: CGPoint(x: 20, y: 14), controlPoint1: CGPoint(x: 17.31, y: 8), controlPoint2: CGPoint(x: 20, y: 10.69))
+            bezierPath.addCurve(to: CGPoint(x: 14, y: 20), controlPoint1: CGPoint(x: 20, y: 17.31), controlPoint2: CGPoint(x: 17.31, y: 20))
+            bezierPath.addCurve(to: CGPoint(x: 8, y: 14), controlPoint1: CGPoint(x: 10.69, y: 20), controlPoint2: CGPoint(x: 8, y: 17.31))
+            bezierPath.addCurve(to: CGPoint(x: 14, y: 8), controlPoint1: CGPoint(x: 8, y: 10.69), controlPoint2: CGPoint(x: 10.69, y: 8))
+            bezierPath.close()
+            bezierPath.usesEvenOddFillRule = true
+            fillColor39.setFill()
+            bezierPath.fill()
+
+
+            //// Bezier 2 Drawing
+            let bezier2Path = UIBezierPath()
+            bezier2Path.move(to: CGPoint(x: 14, y: 11))
+            bezier2Path.addLine(to: CGPoint(x: 14, y: 14.03))
+            bezier2Path.addLine(to: CGPoint(x: 16, y: 16))
+            strokeColor2.setStroke()
+            bezier2Path.lineWidth = 2
+            bezier2Path.lineCapStyle = .round
+            bezier2Path.stroke()
+
+
+        }
+
+
+        if (isLocked) {
+            //// Bezier 3 Drawing
+            let bezier3Path = UIBezierPath()
+            bezier3Path.move(to: CGPoint(x: 13, y: 16))
+            bezier3Path.addLine(to: CGPoint(x: 15, y: 16))
+            bezier3Path.addLine(to: CGPoint(x: 15, y: 14))
+            bezier3Path.addLine(to: CGPoint(x: 13, y: 14))
+            bezier3Path.addLine(to: CGPoint(x: 13, y: 16))
+            bezier3Path.close()
+            bezier3Path.move(to: CGPoint(x: 17, y: 17))
+            bezier3Path.addLine(to: CGPoint(x: 11, y: 17))
+            bezier3Path.addLine(to: CGPoint(x: 11, y: 13))
+            bezier3Path.addLine(to: CGPoint(x: 12, y: 13))
+            bezier3Path.addLine(to: CGPoint(x: 16, y: 13))
+            bezier3Path.addLine(to: CGPoint(x: 17, y: 13))
+            bezier3Path.addLine(to: CGPoint(x: 17, y: 17))
+            bezier3Path.close()
+            bezier3Path.move(to: CGPoint(x: 14, y: 9))
+            bezier3Path.addCurve(to: CGPoint(x: 16, y: 11), controlPoint1: CGPoint(x: 15.1, y: 9), controlPoint2: CGPoint(x: 16, y: 9.9))
+            bezier3Path.addLine(to: CGPoint(x: 12, y: 11))
+            bezier3Path.addCurve(to: CGPoint(x: 14, y: 9), controlPoint1: CGPoint(x: 12, y: 9.9), controlPoint2: CGPoint(x: 12.9, y: 9))
+            bezier3Path.addLine(to: CGPoint(x: 14, y: 9))
+            bezier3Path.close()
+            bezier3Path.move(to: CGPoint(x: 18, y: 11.28))
+            bezier3Path.addLine(to: CGPoint(x: 18, y: 11))
+            bezier3Path.addCurve(to: CGPoint(x: 14, y: 7), controlPoint1: CGPoint(x: 18, y: 8.79), controlPoint2: CGPoint(x: 16.21, y: 7))
+            bezier3Path.addCurve(to: CGPoint(x: 10, y: 11), controlPoint1: CGPoint(x: 11.79, y: 7), controlPoint2: CGPoint(x: 10, y: 8.79))
+            bezier3Path.addLine(to: CGPoint(x: 10, y: 11.28))
+            bezier3Path.addCurve(to: CGPoint(x: 9, y: 13), controlPoint1: CGPoint(x: 9.4, y: 11.62), controlPoint2: CGPoint(x: 9, y: 12.26))
+            bezier3Path.addLine(to: CGPoint(x: 9, y: 17))
+            bezier3Path.addCurve(to: CGPoint(x: 11, y: 19), controlPoint1: CGPoint(x: 9, y: 18.11), controlPoint2: CGPoint(x: 9.89, y: 19))
+            bezier3Path.addLine(to: CGPoint(x: 17, y: 19))
+            bezier3Path.addCurve(to: CGPoint(x: 19, y: 17), controlPoint1: CGPoint(x: 18.11, y: 19), controlPoint2: CGPoint(x: 19, y: 18.11))
+            bezier3Path.addLine(to: CGPoint(x: 19, y: 13))
+            bezier3Path.addCurve(to: CGPoint(x: 18, y: 11.28), controlPoint1: CGPoint(x: 19, y: 12.26), controlPoint2: CGPoint(x: 18.59, y: 11.62))
+            bezier3Path.addLine(to: CGPoint(x: 18, y: 11.28))
+            bezier3Path.close()
+            bezier3Path.usesEvenOddFillRule = true
+            fillColor40.setFill()
+            bezier3Path.fill()
+        }
+        
+        context.restoreGState()
+
+    }
+
+    @objc dynamic public class func drawItemIndicatorNumber(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 28, height: 28), resizing: ResizingBehavior = .aspectFit) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+        
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 28, height: 28), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 28, y: resizedFrame.height / 28)
+
+
+        //// Symbol Drawing
+        let symbolRect = CGRect(x: 0, y: 0, width: 28, height: 28)
+        context.saveGState()
+        context.clip(to: symbolRect)
+        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+
+        HabiticaIcons.drawItemIndicator(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, isLocked: false, isLimited: false)
+        context.restoreGState()
+        
+        context.restoreGState()
+
+    }
+
+    @objc dynamic public class func drawItemIndicatorLocked(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 28, height: 28), resizing: ResizingBehavior = .aspectFit) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+        
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 28, height: 28), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 28, y: resizedFrame.height / 28)
+
+
+        //// Symbol Drawing
+        let symbolRect = CGRect(x: 0, y: 0, width: 28, height: 28)
+        context.saveGState()
+        context.clip(to: symbolRect)
+        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+
+        HabiticaIcons.drawItemIndicator(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, isLocked: true, isLimited: false)
+        context.restoreGState()
+        
+        context.restoreGState()
+
+    }
+
+    @objc dynamic public class func drawItemIndicatorLimited(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 28, height: 28), resizing: ResizingBehavior = .aspectFit) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+        
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 28, height: 28), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 28, y: resizedFrame.height / 28)
+
+
+        //// Symbol Drawing
+        let symbolRect = CGRect(x: 0, y: 0, width: 28, height: 28)
+        context.saveGState()
+        context.clip(to: symbolRect)
+        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+
+        HabiticaIcons.drawItemIndicator(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch, isLocked: false, isLimited: true)
+        context.restoreGState()
+        
+        context.restoreGState()
+
+    }
+
     //// Generated Images
 
     @objc dynamic public class var imageOfExperience: UIImage {
@@ -2041,6 +2446,90 @@ public class HabiticaIcons : NSObject {
         return Cache.imageOfStarMedium!
     }
 
+    @objc dynamic public class var imageOfPinnedItem: UIImage {
+        if Cache.imageOfPinnedItem != nil {
+            return Cache.imageOfPinnedItem!
+        }
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 16, height: 16), false, 0)
+            HabiticaIcons.drawPinnedItem()
+
+        Cache.imageOfPinnedItem = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return Cache.imageOfPinnedItem!
+    }
+
+    @objc dynamic public class var imageOfPinItem: UIImage {
+        if Cache.imageOfPinItem != nil {
+            return Cache.imageOfPinItem!
+        }
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 40, height: 40), false, 0)
+            HabiticaIcons.drawPinItem()
+
+        Cache.imageOfPinItem = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return Cache.imageOfPinItem!
+    }
+
+    @objc dynamic public class var imageOfUnpinItem: UIImage {
+        if Cache.imageOfUnpinItem != nil {
+            return Cache.imageOfUnpinItem!
+        }
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 40, height: 40), false, 0)
+            HabiticaIcons.drawUnpinItem()
+
+        Cache.imageOfUnpinItem = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return Cache.imageOfUnpinItem!
+    }
+
+    @objc dynamic public class var imageOfItemIndicatorNumber: UIImage {
+        if Cache.imageOfItemIndicatorNumber != nil {
+            return Cache.imageOfItemIndicatorNumber!
+        }
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 28, height: 28), false, 0)
+            HabiticaIcons.drawItemIndicatorNumber()
+
+        Cache.imageOfItemIndicatorNumber = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return Cache.imageOfItemIndicatorNumber!
+    }
+
+    @objc dynamic public class var imageOfItemIndicatorLocked: UIImage {
+        if Cache.imageOfItemIndicatorLocked != nil {
+            return Cache.imageOfItemIndicatorLocked!
+        }
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 28, height: 28), false, 0)
+            HabiticaIcons.drawItemIndicatorLocked()
+
+        Cache.imageOfItemIndicatorLocked = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return Cache.imageOfItemIndicatorLocked!
+    }
+
+    @objc dynamic public class var imageOfItemIndicatorLimited: UIImage {
+        if Cache.imageOfItemIndicatorLimited != nil {
+            return Cache.imageOfItemIndicatorLimited!
+        }
+
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 28, height: 28), false, 0)
+            HabiticaIcons.drawItemIndicatorLimited()
+
+        Cache.imageOfItemIndicatorLimited = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return Cache.imageOfItemIndicatorLimited!
+    }
+
     //// Customization Infrastructure
 
     @objc @IBOutlet dynamic var experienceTargets: [AnyObject]! {
@@ -2179,6 +2668,66 @@ public class HabiticaIcons : NSObject {
             Cache.starMediumTargets = newValue
             for target: AnyObject in newValue {
                 let _ = target.perform(NSSelectorFromString("setImage:"), with: HabiticaIcons.imageOfStarMedium)
+            }
+        }
+    }
+
+    @objc @IBOutlet dynamic var pinnedItemTargets: [AnyObject]! {
+        get { return Cache.pinnedItemTargets }
+        set {
+            Cache.pinnedItemTargets = newValue
+            for target: AnyObject in newValue {
+                let _ = target.perform(NSSelectorFromString("setImage:"), with: HabiticaIcons.imageOfPinnedItem)
+            }
+        }
+    }
+
+    @objc @IBOutlet dynamic var pinItemTargets: [AnyObject]! {
+        get { return Cache.pinItemTargets }
+        set {
+            Cache.pinItemTargets = newValue
+            for target: AnyObject in newValue {
+                let _ = target.perform(NSSelectorFromString("setImage:"), with: HabiticaIcons.imageOfPinItem)
+            }
+        }
+    }
+
+    @objc @IBOutlet dynamic var unpinItemTargets: [AnyObject]! {
+        get { return Cache.unpinItemTargets }
+        set {
+            Cache.unpinItemTargets = newValue
+            for target: AnyObject in newValue {
+                let _ = target.perform(NSSelectorFromString("setImage:"), with: HabiticaIcons.imageOfUnpinItem)
+            }
+        }
+    }
+
+    @objc @IBOutlet dynamic var itemIndicatorNumberTargets: [AnyObject]! {
+        get { return Cache.itemIndicatorNumberTargets }
+        set {
+            Cache.itemIndicatorNumberTargets = newValue
+            for target: AnyObject in newValue {
+                let _ = target.perform(NSSelectorFromString("setImage:"), with: HabiticaIcons.imageOfItemIndicatorNumber)
+            }
+        }
+    }
+
+    @objc @IBOutlet dynamic var itemIndicatorLockedTargets: [AnyObject]! {
+        get { return Cache.itemIndicatorLockedTargets }
+        set {
+            Cache.itemIndicatorLockedTargets = newValue
+            for target: AnyObject in newValue {
+                let _ = target.perform(NSSelectorFromString("setImage:"), with: HabiticaIcons.imageOfItemIndicatorLocked)
+            }
+        }
+    }
+
+    @objc @IBOutlet dynamic var itemIndicatorLimitedTargets: [AnyObject]! {
+        get { return Cache.itemIndicatorLimitedTargets }
+        set {
+            Cache.itemIndicatorLimitedTargets = newValue
+            for target: AnyObject in newValue {
+                let _ = target.perform(NSSelectorFromString("setImage:"), with: HabiticaIcons.imageOfItemIndicatorLimited)
             }
         }
     }

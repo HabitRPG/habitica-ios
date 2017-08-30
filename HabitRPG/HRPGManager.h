@@ -142,7 +142,8 @@
 
 - (void)clearCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)buyObject:(MetaReward *)reward
+- (void)buyObject:(NSString *)key
+        withValue:(NSNumber *)value
         onSuccess:(void (^)())successBlock
           onError:(void (^)())errorBlock;
 
@@ -297,11 +298,17 @@
           onError:(void (^)())errorBlock;
 
 
-- (void)purchaseItem:(ShopItem *)item
+- (void)purchaseItem:(NSString *)key
+    withPurchaseType:(NSString *)purchaseType
+            withText:(NSString *)text
+       withImageName:(NSString *)imageName
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock;
 
-- (void)purchaseHourglassItem:(ShopItem *)item
+- (void)purchaseHourglassItem:(NSString *)key
+             withPurchaseType:(NSString *)purchaseType
+                     withText:(NSString *)text
+                withImageName:(NSString *)imageName
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock;
 
@@ -309,7 +316,9 @@
                  onSuccess:(void (^)())successBlock
                    onError:(void (^)())errorBlock;
 
-- (void)purchaseQuest:(ShopItem *)item
+- (void)purchaseQuest:(NSString *)key
+             withText:(NSString *)text
+        withImageName:(NSString *)imageName
             onSuccess:(void (^)())successBlock
               onError:(void (^)())errorBlock;
 
@@ -361,4 +370,8 @@
 
 - (void)changeUseAppBadge:(BOOL)useAppBadge;
 
+- (void)togglePinnedItem:(NSString *)pinType
+                withPath:(NSString *)path
+               onSuccess:(void (^)())successBlock
+                 onError:(void (^)())errorBlock;
 @end

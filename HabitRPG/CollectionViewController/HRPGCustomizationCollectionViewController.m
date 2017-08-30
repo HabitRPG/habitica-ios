@@ -327,8 +327,8 @@ static NSString *const reuseIdentifier = @"Cell";
                         return;
                     }
                     __weak HRPGCustomizationCollectionViewController *weakSelf = self;
-                    [[HRPGManager sharedManager] purchaseItem:self.selectedCustomization
-                        onSuccess:^() {
+                    Gear *gear = self.selectedCustomization;
+                    [[HRPGManager sharedManager] purchaseItem:gear.key withPurchaseType:gear.type withText:gear.text withImageName:[@"shop_" stringByAppendingString:gear.key] onSuccess:^() {
                             if (weakSelf) {
                                 [weakSelf.collectionView reloadData];
                             }

@@ -26,9 +26,9 @@ NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (![currentUserID isEqualToString:[self.sharedManager getUser].id]) {
+    if (![currentUserID isEqualToString:[HRPGManager.sharedManager getUser].id]) {
         // user has changed. Reload data.
-        currentUserID = [self.sharedManager getUser].id;
+        currentUserID = [HRPGManager.sharedManager getUser].id;
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", currentUserID];
         [self.fetchedResultsController.fetchRequest setPredicate:predicate];
         NSError *error;
@@ -372,7 +372,7 @@ NIKFontAwesomeIconFactory *iconFactory;
                                               inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
 
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", [self.sharedManager getUser].id]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", [HRPGManager.sharedManager getUser].id]];
 
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
     NSArray *sortDescriptors = @[ sortDescriptor ];

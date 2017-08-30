@@ -93,7 +93,7 @@ class CheckedTableViewCell: TaskTableViewCell {
             if let checklist = task.checklist?.array as? [ChecklistItem] {
                 for item in checklist {
                     let checkbox = HRPGCheckBoxView()
-                    checkbox.configure(for: item)
+                    checkbox.configure(for: item, withTitle: true)
                     checklistContainer.addArrangedSubview(checkbox)
                     checkbox.wasTouched = {[weak self] in
                         if let action = self?.checklistItemTouched {

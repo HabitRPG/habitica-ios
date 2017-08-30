@@ -179,12 +179,14 @@ class TaskDetailLineView: UIView {
     private func setLastCompleted(task: Task) {
         var counterString = ""
         
-        if task.up?.boolValue ?? false && task.down?.boolValue ?? false {
-            counterString = "+\(task.counterUp ?? 0) | -\(task.counterDown ?? 0)"
-        } else if task.up?.boolValue ?? false {
-            counterString = "\(task.counterUp ?? 0)"
-        } else {
-            counterString = "\(task.counterDown ?? 0)"
+        let upCounter = task.counterUp?.intValue ?? 0
+        let downCounter = task.counterDown?.intValue ?? 0
+        if task.up?.boolValue ?? false && task.down?.boolValue ?? false && upCounter+downCounter > 0 {
+            counterString = "+\(upCounter) | -\(downCounter)"
+        } else if task.up?.boolValue ?? false && upCounter > 0 {
+            counterString = "\(upCounter)"
+        } else if downCounter > 0 {
+            counterString = "\(downCounter)"
         }
         
         if counterString.characters.count > 0 {

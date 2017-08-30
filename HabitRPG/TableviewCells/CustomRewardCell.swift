@@ -16,16 +16,16 @@ class CustomRewardCell: UICollectionViewCell {
     @IBOutlet weak var amountLabel: HRPGAbbrevNumberLabel!
     @IBOutlet weak var buyButton: UIView!
 
+    var onBuyButtonTapped: (() -> Void)?
+    
     public var canAfford: Bool = false {
         didSet {
             if canAfford {
-                amountLabel.alpha = 1.0
                 currencyImageView.alpha = 1.0
-                buyButton.backgroundColor = .yellow500()
-                amountLabel.textColor = .yellow10()
+                buyButton.backgroundColor = UIColor.yellow500().withAlphaComponent(0.3)
+                amountLabel.textColor = .yellow5()
             } else {
-                amountLabel.alpha = 0.6
-                currencyImageView.alpha = 0.6
+                currencyImageView.alpha = 0.3
                 buyButton.backgroundColor = .gray600()
                 amountLabel.textColor = .gray300()
             }
@@ -35,6 +35,8 @@ class CustomRewardCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         currencyImageView.image = HabiticaIcons.imageOfGold
+        
+        buyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buyButtonTapped)))
     }
     
     func configure(reward: Reward) {
@@ -46,5 +48,11 @@ class CustomRewardCell: UICollectionViewCell {
             notesLabel.isHidden = true
         }
         amountLabel.text = reward.value.stringValue
+    }
+    
+    func buyButtonTapped() {
+        if let action = onBuyButtonTapped {
+            action()
+        }
     }
 }

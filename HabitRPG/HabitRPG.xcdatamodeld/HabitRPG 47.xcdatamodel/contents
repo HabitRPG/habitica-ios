@@ -349,6 +349,8 @@
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locked" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="purchaseType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
@@ -565,7 +567,7 @@
         <element name="Reward" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Shop" positionX="9" positionY="153" width="128" height="120"/>
         <element name="ShopCategory" positionX="18" positionY="162" width="128" height="150"/>
-        <element name="ShopItem" positionX="27" positionY="171" width="128" height="270"/>
+        <element name="ShopItem" positionX="27" positionY="171" width="128" height="300"/>
         <element name="SpecialItems" positionX="18" positionY="162" width="128" height="210"/>
         <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
         <element name="SubscriptionPlan" positionX="9" positionY="153" width="128" height="225"/>
