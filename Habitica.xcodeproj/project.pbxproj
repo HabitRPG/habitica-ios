@@ -10,6 +10,7 @@
 		167D84641F47ADC900B6895E /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D84631F47ADC900B6895E /* NotificationName.swift */; };
 		167D84651F47AF6800B6895E /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D84631F47ADC900B6895E /* NotificationName.swift */; };
 		167D846B1F48A2F200B6895E /* LoginStub.json in Resources */ = {isa = PBXBuildFile; fileRef = 167D846A1F48A2F200B6895E /* LoginStub.json */; };
+		16E908961F537D8000B38523 /* RegisterStub.json in Resources */ = {isa = PBXBuildFile; fileRef = 16E908951F537D8000B38523 /* RegisterStub.json */; };
 		16F482A21F475EA5003DCA79 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F4829F1F475EA5003DCA79 /* Router.swift */; };
 		16F482A31F475EA5003DCA79 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F4829F1F475EA5003DCA79 /* Router.swift */; };
 		16F482A41F475EA5003DCA79 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F482A01F475EA5003DCA79 /* Routes.swift */; };
@@ -357,6 +358,7 @@
 /* Begin PBXFileReference section */
 		167D84631F47ADC900B6895E /* NotificationName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		167D846A1F48A2F200B6895E /* LoginStub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoginStub.json; sourceTree = "<group>"; };
+		16E908951F537D8000B38523 /* RegisterStub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RegisterStub.json; sourceTree = "<group>"; };
 		16F4829F1F475EA5003DCA79 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		16F482A01F475EA5003DCA79 /* Routes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		16F482A11F475EA5003DCA79 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -1010,10 +1012,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		162360761F53745600F1F440 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				167D84691F48A21D00B6895E /* APIStubs */,
+				16F482A81F4779F4003DCA79 /* APIAuthTests.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		167D84691F48A21D00B6895E /* APIStubs */ = {
 			isa = PBXGroup;
 			children = (
 				167D846A1F48A2F200B6895E /* LoginStub.json */,
+				16E908951F537D8000B38523 /* RegisterStub.json */,
 			);
 			name = APIStubs;
 			sourceTree = "<group>";
@@ -1160,7 +1172,7 @@
 		D94461841AB34F5C0015215E /* HabiticaTests */ = {
 			isa = PBXGroup;
 			children = (
-				167D84691F48A21D00B6895E /* APIStubs */,
+				162360761F53745600F1F440 /* API */,
 				D9709A551E80536A0005F35B /* Interactors */,
 				D957043F1E152576004F6804 /* TestHelpers */,
 				D957043C1E151C1C004F6804 /* HabiticaTests-Bridging-Header.h */,
@@ -1173,7 +1185,6 @@
 				D99EA73C1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m */,
 				D946E5C31B30A9D700806BE6 /* HRPGTaskTests.m */,
 				D94461851AB34F5C0015215E /* Supporting Files */,
-				16F482A81F4779F4003DCA79 /* APIAuthTests.swift */,
 			);
 			path = HabiticaTests;
 			sourceTree = "<group>";
@@ -2133,6 +2144,7 @@
 				D94461911AB355940015215E /* user.json in Resources */,
 				D98768F51AFFB85100336978 /* blade-equipResponse.json in Resources */,
 				D94B96A01B8B2CEE00C977C2 /* content-24.8.15.json in Resources */,
+				16E908961F537D8000B38523 /* RegisterStub.json in Resources */,
 				D90576851BD83240009BB7BC /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
