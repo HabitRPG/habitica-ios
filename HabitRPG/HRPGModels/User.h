@@ -201,4 +201,5 @@
 
 - (BOOL)didCronRunToday;
 
+- (BOOL)isSubscribed;
 @end

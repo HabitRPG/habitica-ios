@@ -779,4 +779,8 @@
     return ![self.needsCron boolValue];
 }
 
+- (BOOL)isSubscribed {
+    return self.subscriptionPlan.planId != nil && (self.subscriptionPlan.dateTerminated == nil || [self.subscriptionPlan.dateTerminated compare:[NSDate date]] != NSOrderedDescending);
+}
+
 @end

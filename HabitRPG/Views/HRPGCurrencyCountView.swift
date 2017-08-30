@@ -63,7 +63,7 @@ class HRPGCurrencyCountView: UIView {
         currencyImageView.translatesAutoresizingMaskIntoConstraints = false
         countLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        currencyImageView.contentMode = UIViewContentMode.scaleAspectFit
+        currencyImageView.contentMode = UIViewContentMode.right
         
         countLabel.text = "0"
         countLabel.font = UIFont.preferredFont(forTextStyle: .footnote)

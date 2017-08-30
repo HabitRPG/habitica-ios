@@ -34,6 +34,7 @@
 
 @property (weak, nonatomic) IBOutlet HRPGCurrencyCountView *gemView;
 @property (weak, nonatomic) IBOutlet HRPGCurrencyCountView *goldView;
+@property (weak, nonatomic) IBOutlet HRPGCurrencyCountView *hourglassView;
 @property User *user;
 
 @end
@@ -85,6 +86,7 @@ NSInteger rowOffset = 16;
     
     [self.goldView setAsGold];
     [self.gemView setAsGems];
+    [self.hourglassView setAsHourglasses];
     
     UIGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGemView)];
     [self.gemView addGestureRecognizer:recognizer];
@@ -189,8 +191,9 @@ NSInteger rowOffset = 16;
     
     
     self.gemView.amount = [@([self.user.balance floatValue] * 4) integerValue];
-
     self.goldView.amount = [self.user.gold integerValue];
+    self.hourglassView.amount = [self.user.subscriptionPlan.consecutiveTrinkets integerValue];
+    self.hourglassView.hidden = ![self.user isSubscribed] && [self.user.subscriptionPlan.consecutiveTrinkets integerValue] == 0;
 }
 
 - (void)controller:(NSFetchedResultsController *)controller

@@ -29,16 +29,16 @@
                         <rect key="frame" x="55" y="12" width="235" height="59"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tO-84-pCm">
-                                <rect key="frame" x="0.0" y="0.0" width="235" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="235" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="Chq-sY-aIf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <color key="textColor" red="0.30608683824539185" green="0.28910130262374878" blue="0.3428824245929718" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYM-Wz-v5L">
-                                <rect key="frame" x="0.0" y="20.5" width="235" height="38.5"/>
+                                <rect key="frame" x="0.0" y="18" width="235" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="yC5-jn-G0L"/>
                                 </constraints>

@@ -46,10 +46,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="999" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="999" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="J68-ym-ngp">
-                            <rect key="frame" x="52" y="20" width="484" height="4"/>
+                            <rect key="frame" x="52" y="20" width="456" height="4"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7A-NB-rwz">
-                                    <rect key="frame" x="0.0" y="0.0" width="484" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="456" height="0.0"/>
                                     <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="Hvt-ve-akz"/>
@@ -59,7 +59,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-B2-uxe">
-                                    <rect key="frame" x="0.0" y="4" width="484" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="4" width="456" height="0.0"/>
                                     <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="Ic2-r3-SHc"/>
@@ -82,10 +82,17 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="diH-Q0-CAQ" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
-                            <rect key="frame" x="544" y="4" width="20" height="36"/>
+                            <rect key="frame" x="542" y="4" width="20" height="36"/>
                             <color key="backgroundColor" red="0.97592383623123169" green="0.97666221857070923" blue="0.97603815793991089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="500" constant="20" id="zUC-1N-sUK"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ay5-5r-reE" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="512" y="4" width="20" height="36"/>
+                            <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" priority="500" constant="20" id="4T7-0M-YB1"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -93,14 +100,17 @@
                     <constraints>
                         <constraint firstItem="NYA-2D-ZUB" firstAttribute="top" secondItem="BPv-ZA-fig" secondAttribute="top" constant="4" id="4ET-i7-rsw"/>
                         <constraint firstAttribute="bottom" secondItem="diH-Q0-CAQ" secondAttribute="bottom" constant="4" id="4PJ-rW-nCk"/>
+                        <constraint firstItem="diH-Q0-CAQ" firstAttribute="leading" secondItem="ay5-5r-reE" secondAttribute="trailing" constant="10" id="C3d-8V-TRH"/>
                         <constraint firstItem="0wH-g6-8n6" firstAttribute="leading" secondItem="BPv-ZA-fig" secondAttribute="leading" constant="8" id="D8Z-Cr-FrV"/>
                         <constraint firstItem="0wH-g6-8n6" firstAttribute="centerY" secondItem="BPv-ZA-fig" secondAttribute="centerY" id="F9w-uy-ojq"/>
-                        <constraint firstItem="diH-Q0-CAQ" firstAttribute="leading" secondItem="J68-ym-ngp" secondAttribute="trailing" constant="8" id="Uza-HB-qcv"/>
+                        <constraint firstItem="ay5-5r-reE" firstAttribute="leading" secondItem="J68-ym-ngp" secondAttribute="trailing" constant="4" id="G9S-gl-cfJ"/>
                         <constraint firstItem="J68-ym-ngp" firstAttribute="leading" secondItem="0wH-g6-8n6" secondAttribute="trailing" constant="8" id="Xu3-Dj-Wl2"/>
                         <constraint firstItem="J68-ym-ngp" firstAttribute="centerY" secondItem="BPv-ZA-fig" secondAttribute="centerY" id="ZOu-TG-Gd7"/>
                         <constraint firstItem="diH-Q0-CAQ" firstAttribute="top" secondItem="BPv-ZA-fig" secondAttribute="top" constant="4" id="fcv-kB-F6f"/>
-                        <constraint firstItem="NYA-2D-ZUB" firstAttribute="leading" secondItem="diH-Q0-CAQ" secondAttribute="trailing" constant="8" id="kMl-81-BET"/>
+                        <constraint firstItem="NYA-2D-ZUB" firstAttribute="leading" secondItem="diH-Q0-CAQ" secondAttribute="trailing" constant="10" id="kMl-81-BET"/>
+                        <constraint firstItem="ay5-5r-reE" firstAttribute="top" secondItem="BPv-ZA-fig" secondAttribute="top" constant="4" id="mko-ao-S7m"/>
                         <constraint firstAttribute="bottom" secondItem="NYA-2D-ZUB" secondAttribute="bottom" constant="4" id="qQY-Uk-Z0d"/>
+                        <constraint firstAttribute="bottom" secondItem="ay5-5r-reE" secondAttribute="bottom" constant="4" id="yGE-9k-sQR"/>
                         <constraint firstAttribute="trailing" secondItem="NYA-2D-ZUB" secondAttribute="trailing" constant="8" id="ycy-f0-k5v"/>
                     </constraints>
                 </view>
@@ -143,9 +153,10 @@
                 <outlet property="classImageView" destination="0wH-g6-8n6" id="li4-lc-Pun"/>
                 <outlet property="classImageViewWidthConstraint" destination="ehs-7W-t4k" id="lKZ-0G-gln"/>
                 <outlet property="experienceLabel" destination="BEm-of-HXC" id="AEF-d8-Rwc"/>
-                <outlet property="gemView" destination="NYA-2D-ZUB" id="IpG-te-QWN"/>
-                <outlet property="goldView" destination="diH-Q0-CAQ" id="JnQ-of-tQt"/>
+                <outlet property="gemView" destination="diH-Q0-CAQ" id="EIM-6i-uj1"/>
+                <outlet property="goldView" destination="NYA-2D-ZUB" id="XVr-Tw-Fpn"/>
                 <outlet property="healthLabel" destination="tP1-9i-M3A" id="jg8-ek-SmV"/>
+                <outlet property="hourglassView" destination="ay5-5r-reE" id="Lp8-AQ-lbr"/>
                 <outlet property="levelLabel" destination="AL5-B2-uxe" id="eWm-vr-s8p"/>
                 <outlet property="magicLabel" destination="jkr-YH-kSX" id="oBd-7e-EPe"/>
                 <outlet property="usernameLabel" destination="v7A-NB-rwz" id="Zlz-zg-oml"/>
