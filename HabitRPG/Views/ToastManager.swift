@@ -8,71 +8,63 @@
 import Foundation
 import UIKit
 
-enum ToastColor {
-    case blue, green, red
+@objc public enum ToastColor: Int {
+    case blue = 0, green, red
     
     func getUIColor() -> UIColor {
         switch self {
         case .blue:
-            return UIColor.blue10()
+            return UIColor.blue50()
         case .green:
-            return UIColor.green10()
+            return UIColor.green100()
         case .red:
             return UIColor.red10()
         }
     }
 }
 
-class ToastManager {
+class ToastManager: NSObject {
     
-    lazy var window: UIWindow = {
-        var window = UIWindow(frame: UIScreen.main.bounds)
-        window.backgroundColor = UIColor.clear
-        window.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        window.windowLevel = UIWindowLevelStatusBar
-        window.rootViewController = UIViewController()
-        return window
-    }()
-    
-    class var sharedManager: ToastManager {
-        struct Static {
-            static let instance: ToastManager = ToastManager()
-        }
-        return Static.instance
-    }
-    
+    static let shared = ToastManager()
+
     var displayQueue: [ToastView] = [ToastView]()
     var showingNotification: Bool {
         return displayQueue.count > 0
     }
     
-    private func present(toast: ToastView, completion: ((_ contentView: UIView) -> Void)?) {
-        window.isHidden = false
-        if let viewController = window.rootViewController {
+    private func present(toast: ToastView, completion: (() -> Void)?) {
+        if let viewController = UIApplication.topViewController()?.tabBarController {
             let contentView = toast
-            contentView.frame = CGRect(x: 0, y: -100, width: viewController.view.frame.size.width, height: 100)
+            contentView.frame = CGRect(x: 0, y: 0, width: viewController.view.frame.size.width, height: viewController.view.frame.size.height)
+            contentView.setNeedsLayout()
+            contentView.alpha = 0
             viewController.view.addSubview(contentView)
-                UIView.animate(withDuration: 0.5, animations: { () -> Void in
-                        contentView.frame = contentView.frame.replaceX(newValue: 0).replaceY(newValue: 0)
-                }) { (_) in if let completionBlock = completion { completionBlock(contentView) } }
+            viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": contentView]))
+            viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": contentView]))
+                UIView.animate(withDuration: 0.2, animations: { () -> Void in
+                    contentView.alpha = 1
+                }) { (_) in if let completionBlock = completion { completionBlock() } }
             
         }
     }
     
-    private func dismiss(toast: ToastView, contentView: UIView, completion: (() -> Void)?) {
-        if let viewController = window.rootViewController {
-            UIView.animate(
-            withDuration: 0.5,
+    private func dismiss(toast: ToastView, completion: (() -> Void)?) {
+        UIView.animate(
+            withDuration: 0.2,
             animations: { () -> Void in
-                contentView.frame = CGRect(x: 0, y: -100, width: viewController.view.frame.size.width, height: 100)
-        }) { (_) in if let completionBlock = completion { completionBlock() } }
+                toast.alpha = 0
+        }) { (_) in
+            toast.removeFromSuperview()
+            if let completionBlock = completion {
+                completionBlock()
+            }
         }
-    }
+     }
     
     private func display(toast: ToastView) {
-        present(toast: toast) { contentView in
+        present(toast: toast) {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+toast.options.displayDuration) {
-                self.dismiss(toast: toast, contentView: contentView) { () -> Void in
+                self.dismiss(toast: toast) { () -> Void in
                     if self.displayQueue.count == 0 {
                         return
                     }
@@ -84,7 +76,6 @@ class ToastManager {
     
     private func add(toast: ToastView) {
         if !showingNotification {
-            displayQueue.append((toast))
             display(toast: toast)
         } else {
             displayQueue.append((toast))
@@ -92,7 +83,7 @@ class ToastManager {
     }
     
     class func show(toast: ToastView) {
-        self.sharedManager.add(toast: toast)
+        self.shared.add(toast: toast)
     }
     
     class func show(text: String, color: ToastColor) {

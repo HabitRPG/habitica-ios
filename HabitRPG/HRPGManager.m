@@ -5025,32 +5025,31 @@ NSString *currentUser;
                     withExperienceDiff:(NSNumber *)expDiff
                           withGoldDiff:(NSNumber *)goldDiff
                          withMagicDiff:(NSNumber *)magicDiff {
-    UIColor *notificationColor = [UIColor green10];
+    ToastColor notificationColor = ToastColorGreen;
     NSString *content;
     if ([healthDiff intValue] < 0) {
-        notificationColor = [UIColor red10];
+        notificationColor = ToastColorRed;
         content = [NSString stringWithFormat:@"You lost %.1f health", [healthDiff floatValue] * -1];
         if ([[self getUser].level integerValue] >= 10 && [magicDiff floatValue] > 0) {
             content =
-                [content stringByAppendingFormat:@" and %.1f mana", [magicDiff floatValue] * -1];
+            [content stringByAppendingFormat:@" and %.1f mana", [magicDiff floatValue] * -1];
         }
     } else {
         content = [NSString stringWithFormat:@"You earned %ld experience and %.2f gold",
-                                             (long)[expDiff integerValue], [goldDiff floatValue]];
+                   (long)[expDiff integerValue], [goldDiff floatValue]];
         if ([[self getUser].level integerValue] >= 10 && [magicDiff floatValue] > 0) {
             content =
-                [content stringByAppendingFormat:@" and gained %.1f mana", [magicDiff floatValue]];
+            [content stringByAppendingFormat:@" and gained %.1f mana", [magicDiff floatValue]];
         }
     }
-    NSDictionary *options = @{
-        kCRToastTextKey : content,
-        kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-        kCRToastBackgroundColorKey : notificationColor,
-        kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconCheck]
-    };
-    [CRToastManager showNotificationWithOptions:options
-                                completionBlock:^{
-                                }];
+    
+    if ([[self getUser].level integerValue] >= 10 && [magicDiff floatValue] > 0) {
+        content =
+        [content stringByAppendingFormat:@" and gained %.1f mana", [magicDiff floatValue]];
+    }
+    
+    ToastView *toastView = [[ToastView alloc] initWithTitle:content background:notificationColor];
+    [ToastManager showWithToast:toastView];
 }
 
 - (void)displayArmoireNotification:(NSString *)type
