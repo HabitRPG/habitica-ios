@@ -69,6 +69,7 @@ class IconLabel: UIView {
         iconView.contentMode = UIViewContentMode.center
         
         label.font = UIFont.preferredFont(forTextStyle: .footnote)
+        label.textColor = .white
         
         addSubview(label)
         addSubview(iconView)
@@ -93,6 +94,16 @@ class IconLabel: UIView {
                                     multiplier: 1,
                                     constant: 18))
         
+        let widthConstraint = NSLayoutConstraint.init(item: self,
+                                                      attribute: NSLayoutAttribute.width,
+                                                      relatedBy: NSLayoutRelation.equal,
+                                                      toItem: nil,
+                                                      attribute: NSLayoutAttribute.notAnAttribute,
+                                                      multiplier: 1,
+                                                      constant: 18)
+        widthConstraint.priority = 500
+        self.addConstraint(widthConstraint)
+        
         setNeedsUpdateConstraints()
         updateConstraints()
         setNeedsLayout()
@@ -103,7 +114,8 @@ class IconLabel: UIView {
         if icon == nil || text == nil {
             return CGSize.zero
         } else {
-            return super.intrinsicContentSize
+            let width = 22 + label.intrinsicContentSize.width
+            return CGSize(width: width, height: 20)
         }
     }
 }

@@ -15,6 +15,7 @@ class ToastView: UIView {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var priceContainer: UIView!
     @IBOutlet weak var priceIconLabel: IconLabel!
+    @IBOutlet weak var statsDiffStackView: UIStackView!
     
     @IBOutlet weak var leftImageView: UIImageView!
     @IBOutlet weak var bottomSpacing: NSLayoutConstraint!
@@ -71,6 +72,26 @@ class ToastView: UIView {
         options.rightText = rightText
         options.rightTextColor = rightTextColor
         loadOptions()
+    }
+    
+    public convenience init(healthDiff: Int, magicDiff: Int, expDiff: Int, goldDiff: Int, background: ToastColor) {
+        self.init(frame: CGRect.zero)
+        addStatsView(HabiticaIcons.imageOfHeartDarkBg, diff: healthDiff)
+        addStatsView(HabiticaIcons.imageOfExperience, diff: expDiff)
+        addStatsView(HabiticaIcons.imageOfMagic, diff: magicDiff)
+        addStatsView(HabiticaIcons.imageOfGold, diff: goldDiff)
+        options.backgroundColor = background
+        loadOptions()
+    }
+    
+    private func addStatsView(_ icon: UIImage, diff: Int) {
+        if diff != 0 {
+            let iconLabel = IconLabel()
+            iconLabel.icon = icon
+            iconLabel.text = diff > 0 ? "+\(diff)" : "\(diff)"
+            iconLabel.setContentCompressionResistancePriority(1000, for: .horizontal)
+            statsDiffStackView.addArrangedSubview(iconLabel)
+        }
     }
     
     override init(frame: CGRect) {

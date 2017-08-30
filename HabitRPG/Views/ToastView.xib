@@ -23,6 +23,7 @@
                 <outlet property="priceIconLabelWidth" destination="shY-3I-Gcz" id="glC-VS-wbt"/>
                 <outlet property="priceLeadingPadding" destination="oKV-0A-cvH" id="fqq-o5-poy"/>
                 <outlet property="priceTrailingPadding" destination="NWM-Ld-ksb" id="vUq-2V-SMQ"/>
+                <outlet property="statsDiffStackView" destination="XKx-yH-QI0" id="JaU-su-NH9"/>
                 <outlet property="subtitleLabel" destination="lD7-0L-PQG" id="V1v-Ei-znV"/>
                 <outlet property="titleLabel" destination="jcS-mO-KCf" id="hzA-K0-v33"/>
                 <outlet property="topSpacing" destination="Gdn-z2-m8I" id="cTw-oF-MhJ"/>
@@ -107,20 +108,31 @@
                                 <constraint firstItem="sNP-7x-25G" firstAttribute="leading" secondItem="68M-1i-eli" secondAttribute="leading" constant="8" id="oKV-0A-cvH"/>
                             </constraints>
                         </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XKx-yH-QI0">
+                            <rect key="frame" x="54" y="4" width="259" height="46"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="500" constant="20" id="mb3-Y7-V0u"/>
+                                <constraint firstAttribute="width" priority="500" constant="20" id="rOZ-AB-geC"/>
+                            </constraints>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" red="0.40818792580000002" green="0.38286444539999998" blue="0.4531766176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="68M-1i-eli" firstAttribute="top" secondItem="NPK-t4-F2f" secondAttribute="top" id="1At-IJ-jyj"/>
                         <constraint firstItem="GNY-gD-41u" firstAttribute="leading" secondItem="NPK-t4-F2f" secondAttribute="leading" id="5Wu-dc-KMm"/>
+                        <constraint firstAttribute="bottom" secondItem="XKx-yH-QI0" secondAttribute="bottom" constant="4" id="9FK-eh-HW7"/>
                         <constraint firstItem="pe6-F8-HOG" firstAttribute="leading" secondItem="GNY-gD-41u" secondAttribute="trailing" constant="12" id="ECC-Lr-3u6"/>
+                        <constraint firstItem="XKx-yH-QI0" firstAttribute="leading" secondItem="GNY-gD-41u" secondAttribute="trailing" constant="8" id="F86-2e-JO3"/>
                         <constraint firstItem="pe6-F8-HOG" firstAttribute="top" secondItem="NPK-t4-F2f" secondAttribute="top" id="Gdn-z2-m8I"/>
                         <constraint firstAttribute="bottom" secondItem="pe6-F8-HOG" secondAttribute="bottom" id="JWd-Ae-oU0"/>
+                        <constraint firstItem="XKx-yH-QI0" firstAttribute="top" secondItem="NPK-t4-F2f" secondAttribute="top" constant="4" id="LZx-Hi-qTK"/>
                         <constraint firstItem="GNY-gD-41u" firstAttribute="top" secondItem="NPK-t4-F2f" secondAttribute="top" constant="4" id="ODB-Nm-pmS"/>
                         <constraint firstAttribute="bottom" secondItem="68M-1i-eli" secondAttribute="bottom" id="RAs-iV-EXS"/>
                         <constraint firstAttribute="height" priority="500" constant="30" id="Rxl-ra-jG8"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="YMG-Ub-3oF"/>
                         <constraint firstItem="68M-1i-eli" firstAttribute="leading" secondItem="pe6-F8-HOG" secondAttribute="trailing" constant="12" id="cB8-OD-91c"/>
                         <constraint firstAttribute="trailing" secondItem="68M-1i-eli" secondAttribute="trailing" id="e4v-7u-iPP"/>
+                        <constraint firstItem="68M-1i-eli" firstAttribute="leading" secondItem="XKx-yH-QI0" secondAttribute="trailing" constant="8" id="eFN-v4-RVt"/>
                         <constraint firstAttribute="bottom" secondItem="GNY-gD-41u" secondAttribute="bottom" constant="4" id="lcD-6p-99o"/>
                         <constraint firstAttribute="width" priority="500" constant="50" id="yAS-Vb-7h7"/>
                     </constraints>
@@ -133,6 +145,7 @@
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NPK-t4-F2f" secondAttribute="trailing" constant="16" id="hOO-v1-JxI"/>
                 <constraint firstItem="NPK-t4-F2f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="xqA-kQ-Dce"/>
             </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>
 </document>

@@ -5031,29 +5031,10 @@ NSString *currentUser;
                           withGoldDiff:(NSNumber *)goldDiff
                          withMagicDiff:(NSNumber *)magicDiff {
     ToastColor notificationColor = ToastColorGreen;
-    NSString *content;
     if ([healthDiff intValue] < 0) {
         notificationColor = ToastColorRed;
-        content = [NSString stringWithFormat:@"You lost %.1f health", [healthDiff floatValue] * -1];
-        if ([[self getUser].level integerValue] >= 10 && [magicDiff floatValue] > 0) {
-            content =
-            [content stringByAppendingFormat:@" and %.1f mana", [magicDiff floatValue] * -1];
-        }
-    } else {
-        content = [NSString stringWithFormat:@"You earned %ld experience and %.2f gold",
-                   (long)[expDiff integerValue], [goldDiff floatValue]];
-        if ([[self getUser].level integerValue] >= 10 && [magicDiff floatValue] > 0) {
-            content =
-            [content stringByAppendingFormat:@" and gained %.1f mana", [magicDiff floatValue]];
-        }
     }
-    
-    if ([[self getUser].level integerValue] >= 10 && [magicDiff floatValue] > 0) {
-        content =
-        [content stringByAppendingFormat:@" and gained %.1f mana", [magicDiff floatValue]];
-    }
-    
-    ToastView *toastView = [[ToastView alloc] initWithTitle:content background:notificationColor];
+    ToastView *toastView = [[ToastView alloc] initWithHealthDiff:healthDiff.integerValue magicDiff:magicDiff.integerValue expDiff:expDiff.integerValue goldDiff:goldDiff.integerValue background:notificationColor];
     [ToastManager showWithToast:toastView];
 }
 
