@@ -21,6 +21,11 @@ enum Params {
     static let password = "password"
     static let confirmpassword = "confirmPassword"
     static let email = "email"
+    
+    static let network = "network"
+    static let clientId = "client_id" // userID
+    static let accessToken = "access_token"
+    static let authResponse = "authResponse"
 }
 
 protocol Route {
@@ -50,7 +55,28 @@ struct UserLoginRoute: Route {
     }
 }
 
-// @TODO: Add social login
+struct UserSocialLoginRoute: Route {
+    var method: HTTPMethod = .post
+    
+    var url: URL? {
+        get {
+            let relativePath = Endpoints.loginSocial
+            guard var url = URL(string: Router.baseURLString)
+                else { return nil }
+            url.appendPathComponent(relativePath)
+            return url
+        }
+    }
+    
+    var params: [String: Any]?
+    
+    // Init with params
+    init(userID: String, network: String, accessToken: String) {
+        params = [Params.network: network,
+                  Params.authResponse: [Params.clientId: userID, Params.accessToken: accessToken]
+        ]
+    }
+}
 
 struct UserRegisterRoute: Route {
     var method: HTTPMethod = .post

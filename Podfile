@@ -61,7 +61,6 @@ target 'Habitica' do
 
   pod 'AlamofireObjectMapper', '~> 4.0'
   pod 'SwiftyJSON'
-  pod 'KeychainSwift', '~> 8.0'
 
   target 'HabiticaTests' do
       inherit! :search_paths

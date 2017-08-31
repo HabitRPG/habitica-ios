@@ -91,7 +91,6 @@ struct RepeatableTask {
         }
     }
 
-    //swiftlint:disable:next function_parameter_count
     init(frequency: String?,
          everyX: NSNumber?,
          monday: NSNumber?,

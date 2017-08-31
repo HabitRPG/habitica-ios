@@ -12,8 +12,8 @@ class MorningNotificationwait: HRPGBaseNotificationView {
 
     var sharedManager: HRPGManager?
 
-    //swiftlint:disable:next force_unwrapping
-    override func displayNotification(_ completionBlock: (() -> Void)!) {
+    override func displayNotification(
+        _ completionBlock: (() -> Void)!) {
         if var topController = UIApplication.shared.keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController

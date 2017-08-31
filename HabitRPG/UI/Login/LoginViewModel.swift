@@ -350,11 +350,16 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                 // If there is an error or the user cancelled login
 
             } else if let userId = result?.token.userID, let token = result?.token.tokenString {
-                self?.sharedManager?.loginUserSocial(userId, withNetwork: "facebook", withAccessToken: token, onSuccess: {
+                HRPGAPI.shared.userLoginSocial(userID: userId, network: .facebook, accessToken: token, onSuccess: {
                     self?.onSuccessfulLogin()
-                }, onError: { _ in
-                    self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
+                }, onError: { (error) in
+                    self?.showErrorObserver.send(value: error.localizedDescription)
                 })
+//                self?.sharedManager?.loginUserSocial(userId, withNetwork: "facebook", withAccessToken: token, onSuccess: {
+//                    self?.onSuccessfulLogin()
+//                }, onError: { _ in
+//                    self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
+//                })
             }
         }
     }
