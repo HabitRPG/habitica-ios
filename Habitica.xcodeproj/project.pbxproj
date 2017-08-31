@@ -31,6 +31,8 @@
 		29701FE21F5617900097BBCC /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29701FE11F5617900097BBCC /* ToastView.xib */; };
 		29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FE31F56C2200097BBCC /* IconLabel.swift */; };
 		29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FE51F56DABC0097BBCC /* RoundedView.swift */; };
+		29701FEE1F5848880097BBCC /* Habitica_Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FED1F5848880097BBCC /* Habitica_Snapshots.swift */; };
+		29701FF61F5848A40097BBCC /* SnapshotHelperXcode8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FF51F5848A40097BBCC /* SnapshotHelperXcode8.swift */; };
 		297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */; };
 		297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */; };
 		297AF8201F29EF0D003B7194 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 297AF81F1F29EF0D003B7194 /* Intro.storyboard */; };
@@ -385,6 +387,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		29701FF01F5848890097BBCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9EB4E8318CB4A9400BB2094 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9EB4E8A18CB4A9400BB2094;
+			remoteInfo = Habitica;
+		};
 		D905767D1BD82DB8009BB7BC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D9EB4E8318CB4A9400BB2094 /* Project object */;
@@ -430,6 +439,10 @@
 		29701FE11F5617900097BBCC /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
 		29701FE31F56C2200097BBCC /* IconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
 		29701FE51F56DABC0097BBCC /* RoundedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		29701FEB1F5848880097BBCC /* Habitica Snapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica Snapshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		29701FED1F5848880097BBCC /* Habitica_Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_Snapshots.swift; sourceTree = "<group>"; };
+		29701FEF1F5848890097BBCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29701FF51F5848A40097BBCC /* SnapshotHelperXcode8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelperXcode8.swift; sourceTree = "<group>"; };
 		297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSetupViewController.swift; sourceTree = "<group>"; };
 		297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSetupViewController.swift; sourceTree = "<group>"; };
 		297997721EFD387F00F5F13E /* HabitRPG 43.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 43.xcdatamodel"; sourceTree = "<group>"; };
@@ -1081,6 +1094,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		29701FE81F5848880097BBCC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D90576751BD82DB8009BB7BC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1144,6 +1164,16 @@
 				2957B8C71F4DCF7800E836EF /* RewardFormController.swift */,
 			);
 			name = Rewards;
+			sourceTree = "<group>";
+		};
+		29701FEC1F5848880097BBCC /* Habitica Snapshots */ = {
+			isa = PBXGroup;
+			children = (
+				29701FED1F5848880097BBCC /* Habitica_Snapshots.swift */,
+				29701FF51F5848A40097BBCC /* SnapshotHelperXcode8.swift */,
+				29701FEF1F5848890097BBCC /* Info.plist */,
+			);
+			path = "Habitica Snapshots";
 			sourceTree = "<group>";
 		};
 		299BD6311F5420A300E22935 /* Challenges */ = {
@@ -2112,6 +2142,7 @@
 				A11A64FF1BAC9FC30037D41C /* debug.xcconfig */,
 				D9EB4E9418CB4A9400BB2094 /* Habitica */,
 				D94461841AB34F5C0015215E /* HabiticaTests */,
+				29701FEC1F5848880097BBCC /* Habitica Snapshots */,
 				D9EB4E8D18CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8C18CB4A9400BB2094 /* Products */,
 				B4CD8E50098CF9B62A999CCD /* Pods */,
@@ -2124,6 +2155,7 @@
 				D9EB4E8B18CB4A9400BB2094 /* Habitica.app */,
 				D94461831AB34F5C0015215E /* HabiticaTests.xctest */,
 				D90576781BD82DB8009BB7BC /* HabitRPGUITests.xctest */,
+				29701FEB1F5848880097BBCC /* Habitica Snapshots.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2230,6 +2262,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		29701FEA1F5848880097BBCC /* Habitica Snapshots */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 29701FF41F5848890097BBCC /* Build configuration list for PBXNativeTarget "Habitica Snapshots" */;
+			buildPhases = (
+				29701FE71F5848880097BBCC /* Sources */,
+				29701FE81F5848880097BBCC /* Frameworks */,
+				29701FE91F5848880097BBCC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				29701FF11F5848890097BBCC /* PBXTargetDependency */,
+			);
+			name = "Habitica Snapshots";
+			productName = "Habitica Snapshots";
+			productReference = 29701FEB1F5848880097BBCC /* Habitica Snapshots.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		D90576771BD82DB8009BB7BC /* HabitRPGUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D905767F1BD82DB8009BB7BC /* Build configuration list for PBXNativeTarget "HabitRPGUITests" */;
@@ -2304,9 +2354,16 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HRPG;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Phillip Thelen";
 				TargetAttributes = {
+					29701FEA1F5848880097BBCC = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 9Q9SMRMCNN;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D9EB4E8A18CB4A9400BB2094;
+					};
 					D90576771BD82DB8009BB7BC = {
 						CreatedOnToolsVersion = 7.0.1;
 						TestTargetID = D9EB4E8A18CB4A9400BB2094;
@@ -2355,11 +2412,19 @@
 				D9EB4E8A18CB4A9400BB2094 /* Habitica */,
 				D94461821AB34F5C0015215E /* HabiticaTests */,
 				D90576771BD82DB8009BB7BC /* HabitRPGUITests */,
+				29701FEA1F5848880097BBCC /* Habitica Snapshots */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		29701FE91F5848880097BBCC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D90576761BD82DB8009BB7BC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2659,6 +2724,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		29701FE71F5848880097BBCC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29701FF61F5848A40097BBCC /* SnapshotHelperXcode8.swift in Sources */,
+				29701FEE1F5848880097BBCC /* Habitica_Snapshots.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D90576741BD82DB8009BB7BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2979,6 +3053,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		29701FF11F5848890097BBCC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9EB4E8A18CB4A9400BB2094 /* Habitica */;
+			targetProxy = 29701FF01F5848890097BBCC /* PBXContainerItemProxy */;
+		};
 		D905767E1BD82DB8009BB7BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D9EB4E8A18CB4A9400BB2094 /* Habitica */;
@@ -3115,6 +3194,51 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		29701FF21F5848890097BBCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Habitica Snapshots/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Snapshots";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Habitica;
+			};
+			name = Debug;
+		};
+		29701FF31F5848890097BBCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Habitica Snapshots/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Snapshots";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Habitica;
+			};
+			name = Release;
+		};
 		D90576801BD82DB8009BB7BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3573,6 +3697,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		29701FF41F5848890097BBCC /* Build configuration list for PBXNativeTarget "Habitica Snapshots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29701FF21F5848890097BBCC /* Debug */,
+				29701FF31F5848890097BBCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D905767F1BD82DB8009BB7BC /* Build configuration list for PBXNativeTarget "HabitRPGUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
