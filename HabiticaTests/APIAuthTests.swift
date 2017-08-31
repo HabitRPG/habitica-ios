@@ -26,6 +26,7 @@ class APIAuthTests: QuickSpec {
     override func spec() {
         super.spec()
         httpClient = HRPGAPI.shared
+        
         describe("Login test") {
             context("success") {
                 it("should log in successfully") {
@@ -41,6 +42,9 @@ class APIAuthTests: QuickSpec {
                         self.httpClient.userLogin(username: username, password: password, onSuccess: { response in
                             // Test response does not equal nil
                             expect(response).toNot(beNil())
+                            
+                            expect(AuthenticationManager.shared.currentUserId).toNot(beNil())
+                            expect(AuthenticationManager.shared.currentUserKey).toNot(beNil())
                             
                             // Test Notification to post
                             let testNotification = Notification(name: .userChanged, object: nil)
@@ -92,6 +96,9 @@ class APIAuthTests: QuickSpec {
                         self.httpClient.userRegister(username: username, password: password, confirmPassword: confirmpassword, email: email, onSuccess: { response in
                             // Test response does not equal nil
                             expect(response).toNot(beNil())
+                            
+                            expect(AuthenticationManager.shared.currentUserId).toNot(beNil())
+                            expect(AuthenticationManager.shared.currentUserKey).toNot(beNil())
                             
                             done()
                         }, onError: { error in

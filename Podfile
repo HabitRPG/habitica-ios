@@ -59,7 +59,6 @@ target 'Habitica' do
   pod 'SwiftLint'
   pod 'Eureka'
 
-  pod 'AlamofireObjectMapper', '~> 4.0'
   pod 'SwiftyJSON'
 
   target 'HabiticaTests' do
