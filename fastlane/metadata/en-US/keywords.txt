@@ -1,1 +1,1 @@
-habit,tracker,to do,task,manager,productivity,schedules,gamification,self,improvement,wellness,rpg
+habit,tracker,to do,list,study,fun,productivity,schedules,gamification,self,improvement,wellness,rpg

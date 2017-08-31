@@ -1,58 +1,47 @@
 # Customise this file, documentation can be found here:
-# https://github.com/KrauseFx/fastlane/tree/master/docs
-# All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://docs.fastlane.tools/actions
 # can also be listed using the `fastlane actions` command
 
 # Change the syntax highlighting to Ruby
 # All lines starting with a # are ignored when running `fastlane`
-
-# By default, fastlane will send which actions are used
-# No personal data is shared, more information on https://github.com/fastlane/enhancer
-# Uncomment the following line to opt out
-# opt_out_usage
 
 # If you want to automatically update fastlane if a new version is available:
 # update_fastlane
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "1.33.4"
+fastlane_version "2.54.4"
 
 default_platform :ios
-
 
 platform :ios do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
     cocoapods
     
-    # increment_build_number
-
-    # xctool # run the tests of your app
   end
 
   desc "Runs all the tests"
   lane :test do
-    snapshot
+    scan
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
-    snapshot
-    # sigh
+    # match(type: "appstore") # more information: https://codesigning.guide
     gym # Build your app - more options available
     pilot
 
     # sh "your_script.sh"
-    # You can also use other beta testing services here
+    # You can also use other beta testing services here (run `fastlane actions`)
   end
 
   desc "Deploy a new version to the App Store"
-  lane :deploy do
-    snapshot
-  desc "** Full Markdown** Support: `code`"
-    # sigh
+  lane :release do
+    # match(type: "appstore")
+    # snapshot
     gym # Build your app - more options available
     deliver(force: true)
     # frameit
@@ -62,7 +51,7 @@ platform :ios do
 
   after_all do |lane|
     # This block is called, only if the executed lane was successful
-    
+
     # slack(
     #   message: "Successfully deployed new App Update."
     # )
@@ -77,5 +66,8 @@ platform :ios do
 end
 
 
-# More information about multiple platforms in fastlane: 
-# https://github.com/KrauseFx/fastlane/blob/master/docs/Platforms.md
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://docs.fastlane.tools/actions
+
+# fastlane reports which actions are used. No personal data is recorded. 
+# Learn more at https://github.com/fastlane/fastlane#metrics
