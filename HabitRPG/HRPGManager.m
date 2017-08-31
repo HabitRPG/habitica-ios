@@ -3863,8 +3863,6 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
 
     NSString *url = nil;
-    CGFloat health = [self.user.health floatValue];
-    CGFloat gold = [self.user.gold floatValue];
     NSInteger mana = [self.user.magic integerValue];
     if (target) {
         url = [NSString stringWithFormat:@"user/class/cast/%@?targetType=%@&targetId=%@", spell.key,
@@ -3882,9 +3880,7 @@ NSString *currentUser;
                 if ([spell.klass isEqualToString:@"special"]) {
                     [self displayTransformationItemNotification:spell.text withImage:spell.key];
                 } else {
-                    [self displaySpellNotification:(mana - [self.user.magic integerValue])
-                                    withHealthDiff:([self.user.health floatValue] - health)
-                                      withGoldDiff:([self.user.gold floatValue] - gold)];
+                    [self displaySpellNotification:(mana - [self.user.magic integerValue]) withSpellname:spell.text];
                 }
                 if (successBlock) {
                     successBlock();
@@ -4992,7 +4988,7 @@ NSString *currentUser;
     if ([healthDiff intValue] < 0) {
         notificationColor = ToastColorRed;
     }
-    ToastView *toastView = [[ToastView alloc] initWithHealthDiff:healthDiff.integerValue magicDiff:magicDiff.integerValue expDiff:expDiff.integerValue goldDiff:goldDiff.integerValue background:notificationColor];
+    ToastView *toastView = [[ToastView alloc] initWithHealthDiff:healthDiff.floatValue magicDiff:magicDiff.floatValue expDiff:expDiff.floatValue goldDiff:goldDiff.floatValue background:notificationColor];
     [ToastManager showWithToast:toastView];
 }
 
@@ -5083,21 +5079,8 @@ NSString *currentUser;
 }
 
 - (void)displaySpellNotification:(NSInteger)manaDiff
-                  withHealthDiff:(CGFloat)healthDiff
-                    withGoldDiff:(CGFloat)goldDiff {
-    UIColor *notificationColor = [UIColor red10];
-    NSString *content;
-    if (healthDiff > 0) {
-        notificationColor = [UIColor green10];
-        content = [NSString stringWithFormat:NSLocalizedString(@"Health: +%.1f\nMana: -%ld", nil),
-                                             healthDiff, (long)manaDiff];
-    } else if (goldDiff > 0) {
-        notificationColor = [UIColor green10];
-        content = [NSString stringWithFormat:NSLocalizedString(@"Gold: +%.1f\nMana: -%ld", nil),
-                                             goldDiff, (long)manaDiff];
-    } else {
-        content = [NSString stringWithFormat:NSLocalizedString(@"Mana: -%ld", nil), (long)manaDiff];
-    }
+                   withSpellname:(NSString *)spellName {
+    NSString *content = [NSString stringWithFormat:NSLocalizedString(@"You use %@", nil), spellName];
     ToastView *toastView = [[ToastView alloc] initWithTitle:content rightIcon:HabiticaIcons.imageOfMagic rightText:[NSString stringWithFormat:@"-%ld", (long)manaDiff] rightTextColor:[UIColor blue10] background:ToastColorBlue];
     [ToastManager showWithToast:toastView];
 }

@@ -64,7 +64,7 @@ class ToastView: UIView {
         loadOptions()
     }
     
-    public convenience init(title: String, rightIcon: UIImage, rightText: String, rightTextColor:UIColor, background: ToastColor) {
+    public convenience init(title: String, rightIcon: UIImage, rightText: String, rightTextColor: UIColor, background: ToastColor) {
         self.init(frame: CGRect.zero)
         options.title = title
         options.backgroundColor = background
@@ -74,7 +74,7 @@ class ToastView: UIView {
         loadOptions()
     }
     
-    public convenience init(healthDiff: Int, magicDiff: Int, expDiff: Int, goldDiff: Int, background: ToastColor) {
+    public convenience init(healthDiff: Float, magicDiff: Float, expDiff: Float, goldDiff: Float, background: ToastColor) {
         self.init(frame: CGRect.zero)
         addStatsView(HabiticaIcons.imageOfHeartDarkBg, diff: healthDiff)
         addStatsView(HabiticaIcons.imageOfExperience, diff: expDiff)
@@ -84,11 +84,11 @@ class ToastView: UIView {
         loadOptions()
     }
     
-    private func addStatsView(_ icon: UIImage, diff: Int) {
+    private func addStatsView(_ icon: UIImage, diff: Float) {
         if diff != 0 {
             let iconLabel = IconLabel()
             iconLabel.icon = icon
-            iconLabel.text = diff > 0 ? "+\(diff)" : "\(diff)"
+            iconLabel.text = diff > 0 ? String(format: "+%.2f", diff) : String(format: "%.2f", diff)
             iconLabel.setContentCompressionResistancePriority(1000, for: .horizontal)
             statsDiffStackView.addArrangedSubview(iconLabel)
         }
