@@ -55,6 +55,12 @@
             ReferencedContainer = "container:Habitica.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-CUSTOM_DOMAIN localhost:3000 -DISABLE_SSL true"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

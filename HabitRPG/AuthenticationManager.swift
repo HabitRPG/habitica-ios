@@ -57,6 +57,10 @@ class AuthenticationManager: NSObject {
     }
     
     func hasAuthentication() -> Bool {
+        if UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT") {
+            //If in snapshot mode it should always start fresh on launch
+            return false
+        }
         if let userId = self.currentUserId {
             return userId.characters.count > 0
         }

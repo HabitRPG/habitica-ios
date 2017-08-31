@@ -28,6 +28,32 @@ class Habitica_Snapshots: XCTestCase {
     }
     
     func testExample() {
+        let app = XCUIApplication()
+        
+        app.buttons["Skip"].tap()
+        app.scrollViews.otherElements.containing(.button, identifier:"Register").buttons["Login"].tap()
+        
+        
+        let scrollViewsQuery = app.scrollViews
+        let elementsQuery = scrollViewsQuery.otherElements
+        elementsQuery.textFields["Email / Username"].tap()
+        elementsQuery.textFields["Email / Username"].typeText("maya")
+        
+        
+        let passwordSecureTextField = scrollViewsQuery.otherElements.secureTextFields["Password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("t")
+        scrollViewsQuery.otherElements.containing(.activityIndicator, identifier:"In progress").buttons["Login"].tap()
+        
+        let tabBarsQuery = app.tabBars
+        tabBarsQuery.buttons["Habits"].tap()
+        snapshot("0Habits")
+        tabBarsQuery.buttons["Dailies"].tap()
+        snapshot("1Dailies")
+        
+    }
+    
+    func loginUser() {
         
     }
     
