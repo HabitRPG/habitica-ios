@@ -95,7 +95,6 @@ class APIAuthTests: QuickSpec {
                             
                             done()
                         }, onError: { error in
-                            print(error.localizedDescription,"ERROR")
                             expect(error).to(beNil())
                             done()
                         })

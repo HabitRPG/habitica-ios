@@ -275,20 +275,23 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                    passwordRepeat: passwordRepeat) {
             self.loadingIndicatorVisibilityObserver.send(value: true)
             if self.authTypeProperty.value == .login {
-                self.sharedManager?.loginUser(self.usernameChangedProperty.value, withPassword: self.passwordChangedProperty.value, onSuccess: {
+                HRPGAPI.shared.userLogin(username: username,
+                                         password: password,
+                                         onSuccess: {
                     self.onSuccessfulLogin()
-                }, onError: {
+                }, onError: { (error) in
                     self.loadingIndicatorVisibilityObserver.send(value: false)
-                    self.showErrorObserver.send(value: "Invalid username or password".localized)
+                    self.showErrorObserver.send(value: error.localizedDescription)
                 })
             } else {
-                self.sharedManager?.registerUser(self.usernameChangedProperty.value, withPassword: self.passwordChangedProperty.value, withEmail: self.emailChangedProperty.value, onSuccess: {
+                HRPGAPI.shared.userRegister(username: username,
+                                            password: password,
+                                            confirmPassword: passwordRepeat,
+                                            email: email, onSuccess: {
                     self.onSuccessfulLogin()
-                }, onError: { errorMessage in
+                }, onError: { (error) in
                     self.loadingIndicatorVisibilityObserver.send(value: false)
-                    if let message = errorMessage {
-                        self.showErrorObserver.send(value: message)
-                    }
+                    self.showErrorObserver.send(value: error.localizedDescription)
                 })
             }
         }
@@ -322,11 +325,13 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             }
             appDelegate.currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request, presenting:viewController, callback: {[weak self] (authState, _) in
                 if authState != nil {
-                    self?.sharedManager?.loginUserSocial("", withNetwork: "google", withAccessToken: authState?.lastTokenResponse?.accessToken, onSuccess: {
-                        self?.onSuccessfulLogin()
-                    }, onError: { _ in
-                        self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
-                    })
+                    if let token = authState?.lastTokenResponse?.accessToken {
+                        HRPGAPI.shared.userLoginSocial(userID: "", network: .google, accessToken: token, onSuccess: {
+                            self?.onSuccessfulLogin()
+                        }, onError: { (error) in
+                            self?.showErrorObserver.send(value: error.localizedDescription)
+                        })
+                    }
                 }
             })
         }
@@ -355,11 +360,6 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                 }, onError: { (error) in
                     self?.showErrorObserver.send(value: error.localizedDescription)
                 })
-//                self?.sharedManager?.loginUserSocial(userId, withNetwork: "facebook", withAccessToken: token, onSuccess: {
-//                    self?.onSuccessfulLogin()
-//                }, onError: { _ in
-//                    self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
-//                })
             }
         }
     }

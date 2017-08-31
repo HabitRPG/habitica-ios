@@ -20,11 +20,18 @@ enum JSONKeys {
     static let data = "data"
     static let userId = "id"
     static let apiToken = "apiToken"
+    static let message = "message"
 }
 
-enum APIErrors: Error {
+public enum APIErrors: Error {
     case jsonConversionError
     case errorWithNoErrorResponse
+}
+
+extension APIErrors: LocalizedError {
+    public var errorDescription: String? {
+        return "Unknown Error".localized
+    }
 }
 
 enum Networks: String {
@@ -58,8 +65,15 @@ public class HRPGAPI {
                     return
                 }
                 
-                // Set keychain keys
                 let json = JSON(jsonData)
+                
+                // Check for error messages
+                if let message = json[JSONKeys.message].string {
+                    let error = NSError(domain: message, code: response.response?.statusCode ?? 0, userInfo: nil)
+                    onError?(error)
+                    return
+                }
+                
                 guard let id = json[JSONKeys.data][JSONKeys.userId].string
                     else {
                         onError?(APIErrors.jsonConversionError)
@@ -107,6 +121,14 @@ public class HRPGAPI {
                     
                     // Set keychain keys
                     let json = JSON(jsonData)
+                    
+                    // Check for error messages
+                    if let message = json[JSONKeys.message].string {
+                        let error = NSError(domain: message, code: response.response?.statusCode ?? 0, userInfo: nil)
+                        onError?(error)
+                        return
+                    }
+                    
                     guard let id = json[JSONKeys.data][JSONKeys.userId].string
                         else {
                             onError?(APIErrors.jsonConversionError)
