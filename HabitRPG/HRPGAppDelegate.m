@@ -14,7 +14,6 @@
 #import <Google/Analytics.h>
 #import "AFNetworking.h"
 #import "Amplitude.h"
-#import "CRToast.h"
 #import "HRPGLoadingViewController.h"
 #import "HRPGMaintenanceViewController.h"
 #import "HRPGTabBarController.h"
@@ -45,26 +44,6 @@
     [self.swiftAppDelegate setupLogging];
     [self.swiftAppDelegate setupAnalytics];
     [self.swiftAppDelegate setupPopups];
-
-    // Notifications
-    CRToastInteractionResponder *blankResponder = [CRToastInteractionResponder
-        interactionResponderWithInteractionType:CRToastInteractionTypeAll
-                           automaticallyDismiss:YES
-                                          block:^(CRToastInteractionType interactionType){
-                                          }];
-    [CRToastManager setDefaultOptions:@{
-        kCRToastAnimationInTypeKey : @(CRToastAnimationTypeLinear),
-        kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeLinear),
-        kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
-        kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop),
-        kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
-        kCRToastNotificationPresentationTypeKey : @(CRToastPresentationTypeCover),
-        kCRToastTimeIntervalKey : @(1.5),
-        kCRToastAnimationInTimeIntervalKey : @(0.25),
-        kCRToastAnimationOutTimeIntervalKey : @(0.25),
-        kCRToastFontKey : [UIFont systemFontOfSize:17],
-        kCRToastInteractionRespondersKey : @[ blankResponder ]
-    }];
     
     [[UIView appearanceWhenContainedIn:[UIAlertController class], nil] setTintColor:[UIColor purple400]];
 
@@ -547,15 +526,7 @@
 
 - (void)displayPushNotificationInApp:(NSDictionary *)userInfo {
     NSString *text = userInfo[@"aps"][@"alert"];
-    NSDictionary *options = @{
-                              kCRToastTextKey : text,
-                              kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                              kCRToastBackgroundColorKey : [UIColor purple200],
-                              kCRToastTimeIntervalKey: @(2.5)
-                              };
-    [CRToastManager showNotificationWithOptions:options
-                                completionBlock:^{
-                                }];
+    [ToastManager showWithText:text color:ToastColorPurple];
 }
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{

@@ -7,7 +7,6 @@
 //
 
 #import "HRPGTabBarController.h"
-#import "NIKFontAwesomeIconFactory.h"
 #import "UIColor+Habitica.h"
 #import "TutorialSteps.h"
 #if DEBUG

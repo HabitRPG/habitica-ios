@@ -1,6 +1,6 @@
 //
-//  CRToast.swift
-//  CRToast
+//  ToastManager.Swift
+//  Habitica
 //
 //  Created by Collin Ruffenach on 11/6/14.
 //  Copyright (c) 2014 Notion. All rights reserved.

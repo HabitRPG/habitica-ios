@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 @objc public enum ToastColor: Int {
-    case blue = 0, green, red, gray, yellow
+    case blue = 0, green, red, gray, yellow, purple
     
     func getUIColor() -> UIColor {
         switch self {
@@ -23,6 +23,8 @@ import UIKit
             return UIColor.gray50()
         case .yellow:
             return UIColor.yellow10()
+        case .purple:
+            return UIColor.purple200()
         }
     }
 }
@@ -37,7 +39,10 @@ class ToastManager: NSObject {
     }
     
     private func present(toast: ToastView, completion: (() -> Void)?) {
-        if let viewController = UIApplication.topViewController()?.tabBarController {
+        if var viewController = UIApplication.topViewController() {
+            if let tabbarController = viewController.tabBarController {
+                viewController = tabbarController
+            }
             let contentView = toast
             contentView.frame = CGRect(x: 0, y: 0, width: viewController.view.frame.size.width, height: viewController.view.frame.size.height)
             contentView.setNeedsLayout()
@@ -51,8 +56,13 @@ class ToastManager: NSObject {
                                                                               metrics: nil, views: ["view": contentView]))
                 UIView.animate(withDuration: 0.2, animations: { () -> Void in
                     contentView.alpha = 1
-                }) { (_) in if let completionBlock = completion { completionBlock() } }
-            
+                }) { (_) in
+                    if let completionBlock = completion {
+                        completionBlock()
+                    }
+            }
+        } else {
+            self.displayQueue.removeFirst()
         }
     }
     

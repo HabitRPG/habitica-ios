@@ -9,7 +9,6 @@
 import UIKit
 import ReactiveCocoa
 import ReactiveSwift
-import CRToast
 
 class LoginTableViewController: UIViewController, UITextFieldDelegate {
 

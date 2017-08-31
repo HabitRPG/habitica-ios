@@ -7,7 +7,6 @@
 //
 
 #import "HRPGFilterViewController.h"
-#import "NIKFontAwesomeIconFactory.h"
 #import "HRPGCheckBoxView.h"
 #import "Tag.h"
 #import "UIColor+Habitica.h"
@@ -15,7 +14,6 @@
 @interface HRPGFilterViewController ()
 
 @property(nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property NIKFontAwesomeIconFactory *iconFactory;
 @property UIView *headerView;
 @property UISegmentedControl *filterTypeControl;
 @property NSMutableArray *areTagsSelected;
@@ -44,12 +42,6 @@
             }
         }
     }
-
-    self.iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-    self.iconFactory.square = YES;
-    self.iconFactory.colors = @[ [UIColor darkGrayColor] ];
-    self.iconFactory.strokeColor = [UIColor darkGrayColor];
-    self.iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
 
     self.headerView =
         [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
@@ -269,7 +261,7 @@
 
     if (tag.challenge) {
         UIImageView *imageView = [cell viewWithTag:3];
-        imageView.image = [self.iconFactory createImageForIcon:NIKFontAwesomeIconBullhorn];
+        imageView.image = [UIImage imageNamed:@"challenge"];
     }
 }
 

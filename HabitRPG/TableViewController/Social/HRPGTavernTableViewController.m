@@ -7,8 +7,8 @@
 //
 
 #import "HRPGTavernTableViewController.h"
-#import "CRToast.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGTavernTableViewController ()
 
@@ -70,14 +70,7 @@
             } else {
                 notificationText = NSLocalizedString(@"Wakey Wakey!", nil);
             }
-            NSDictionary *options = @{
-                kCRToastTextKey : notificationText,
-                kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                kCRToastBackgroundColorKey : [UIColor green50]
-            };
-            [CRToastManager showNotificationWithOptions:options
-                                        completionBlock:^{
-                                        }];
+            [ToastManager showWithText:notificationText color:ToastColorGreen];
             [weakSelf.tableView reloadRowsAtIndexPaths:@[ indexPath ]
                                   withRowAnimation:UITableViewRowAnimationFade];
         }

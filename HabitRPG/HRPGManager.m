@@ -8,16 +8,13 @@
 
 #import "HRPGManager.h"
 #import <Crashlytics/Crashlytics.h>
-#import "CRToast.h"
 #import "HRPGTaskResponse.h"
 #import "HRPGLoginData.h"
 #import <Google/Analytics.h>
-#import "NIKFontAwesomeIconFactory.h"
 #import "Gear.h"
 #import "YYWebImage.h"
 #import "Amplitude.h"
 #import "HRPGEmptySerializer.h"
-#import "CRToast.h"
 #import "Customization.h"
 #import "Gear.h"
 #import "HRPGAppDelegate.h"
@@ -50,7 +47,6 @@
 #import <Keys/HabiticaKeys.h>
 
 @interface HRPGManager ()
-@property(nonatomic) NIKFontAwesomeIconFactory *iconFactory;
 @property HRPGNetworkIndicatorController *networkIndicatorController;
 @property HRPGNotificationManager *notificationManager;
 @end
@@ -2169,15 +2165,6 @@ NSString *currentUser;
     }
 
     self.networkIndicatorController = [[HRPGNetworkIndicatorController alloc] init];
-}
-
-- (NIKFontAwesomeIconFactory *)iconFactory {
-    if (_iconFactory == nil) {
-        _iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-        _iconFactory.colors = @[ [UIColor whiteColor] ];
-        _iconFactory.size = 35;
-    }
-    return _iconFactory;
 }
 
 - (void)resetSavedDatabase:(BOOL)withUserData onComplete:(void (^)())completitionBlock {
@@ -4984,46 +4971,17 @@ NSString *currentUser;
 }
 
 - (void)displayNetworkError {
-    NSDictionary *options = @{
-        kCRToastTextKey : NSLocalizedString(@"Network error", nil),
-        kCRToastSubtitleTextKey : NSLocalizedString(
-            @"Couldn't connect to the server. Check your network connection", nil),
-        kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-        kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-        kCRToastBackgroundColorKey : [UIColor red10],
-        kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
-    };
-    [CRToastManager showNotificationWithOptions:options
-                                completionBlock:^{
-                                }];
+    [ToastManager showWithText:NSLocalizedString(@"Couldn't connect to the server. Check your network connection", nil) color:ToastColorRed];
+
 }
 
 - (void)displayServerError {
-    NSDictionary *options = @{
-        kCRToastTextKey : NSLocalizedString(@"Server error", nil),
-        kCRToastSubtitleTextKey :
-            NSLocalizedString(@"There seems to be a problem with the server. Try again later", nil),
-        kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-        kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-        kCRToastBackgroundColorKey : [UIColor red10],
-        kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
-    };
-    [CRToastManager showNotificationWithOptions:options
-                                completionBlock:^{
-                                }];
+    [ToastManager showWithText:NSLocalizedString(@"There seems to be a problem with the server. Try again later", nil) color:ToastColorRed];
+
 }
 
 - (void)displayError:(NSString *)message {
-    NSDictionary *options = @{
-        kCRToastTextKey : message,
-        kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-        kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-        kCRToastBackgroundColorKey : [UIColor red10],
-        kCRToastImageKey : [self.iconFactory createImageForIcon:NIKFontAwesomeIconExclamationCircle]
-    };
-    [CRToastManager showNotificationWithOptions:options
-                                completionBlock:^{
-                                }];
+    [ToastManager showWithText:message color:ToastColorRed];
 }
 
 - (void)displayTaskSuccessNotification:(NSNumber *)healthDiff
@@ -5175,32 +5133,11 @@ NSString *currentUser;
     [self getImage:imageName
         withFormat:@"png"
          onSuccess:^(UIImage *image) {
-             UIColor *notificationColor = [UIColor blue10];
-             NSDictionary *options = @{
-                                       kCRToastTextKey : text,
-                                       kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                                       kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                                       kCRToastBackgroundColorKey : notificationColor,
-                                       kCRToastImageKey : image
-                                       };
-             [CRToastManager showNotificationWithOptions:options
-                                         completionBlock:^{
-                                         }];
-         }
-           onError:^(){
-
-           }];
+             ToastView *toastView = [[ToastView alloc] initWithTitle:text icon:image background:ToastColorBlue];
+             [ToastManager showWithToast:toastView];
+         } onError:nil];
     } else {
-        UIColor *notificationColor = [UIColor blue10];
-        NSDictionary *options = @{
-                                  kCRToastTextKey : text,
-                                  kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
-                                  kCRToastSubtitleTextAlignmentKey : @(NSTextAlignmentLeft),
-                                  kCRToastBackgroundColorKey : notificationColor,
-                                  };
-        [CRToastManager showNotificationWithOptions:options
-                                    completionBlock:^{
-                                    }];
+        [ToastManager showWithText:text color:ToastColorBlue];
     }
 }
 

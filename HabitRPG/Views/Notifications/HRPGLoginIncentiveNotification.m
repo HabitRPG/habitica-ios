@@ -9,8 +9,8 @@
 #import "HRPGLoginIncentiveNotification.h"
 #import "HRPGLoginIncentiveOverlayView.h"
 #import "KLCPopup.h"
-#import "CRToast.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @implementation HRPGLoginIncentiveNotification
 
@@ -46,17 +46,7 @@
         } else {
             nextUnlock = [NSString stringWithFormat:NSLocalizedString(@"Your next prize unlocks in %d Check-Ins", nil), nextRewardIn];
         }
-        NSDictionary *options = @{
-                                  kCRToastTextKey : NSLocalizedString(@"Check-in", nil),
-                                  kCRToastSubtitleTextKey: nextUnlock,
-                                  kCRToastBackgroundColorKey : [UIColor blue100],
-                                  };
-        [CRToastManager showNotificationWithOptions:options
-                                    completionBlock:^{
-                                        if (completionBlock) {
-                                            completionBlock();
-                                        }
-                                    }];
+        [ToastManager showWithText:nextUnlock color:ToastColorBlue];
     }
 }
 

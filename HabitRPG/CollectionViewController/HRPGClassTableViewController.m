@@ -11,7 +11,6 @@
 #import "Amplitude.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGWebViewController.h"
-#import "NIKFontAwesomeIconFactory.h"
 #import "UIColor+Habitica.h"
 #import "Amplitude.h"
 #import "UIViewcontroller+TutorialSteps.h"
@@ -49,11 +48,7 @@
 
     self.screenSize = [[UIScreen mainScreen] bounds].size;
 
-    NIKFontAwesomeIconFactory *iconFactory = [NIKFontAwesomeIconFactory barButtonItemIconFactory];
-    iconFactory.renderingMode = UIImageRenderingModeAlwaysTemplate;
-
-    self.navigationItem.rightBarButtonItem.image =
-        [iconFactory createImageForIcon:NIKFontAwesomeIconQuestionCircle];
+    self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"icon_help"];
 
     [self loadClassesArray];
 

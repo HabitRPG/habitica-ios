@@ -7,8 +7,6 @@
 //
 
 #import "HRPGProfileViewController.h"
-#import <FontAwesomeIconFactory/NIKFontAwesomeIcon.h>
-#import <FontAwesomeIconFactory/NIKFontAwesomeIconFactory+iOS.h>
 #import "HRPGTopHeaderNavigationController.h"
 #import "UIColor+Habitica.h"
 
@@ -22,7 +20,6 @@
 NSString *username;
 NSInteger userLevel;
 NSString *currentUserID;
-NIKFontAwesomeIconFactory *iconFactory;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -67,10 +64,6 @@ NIKFontAwesomeIconFactory *iconFactory;
         // User does not exist in database. Fetch it.
         [self refresh];
     }
-
-    iconFactory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
-    iconFactory.square = YES;
-    iconFactory.renderingMode = UIImageRenderingModeAlwaysOriginal;
 
     UILabel *footerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 170)];
     footerView.text = [NSString
@@ -161,8 +154,6 @@ NIKFontAwesomeIconFactory *iconFactory;
     if (section == 0) {
         return nil;
     }
-    iconFactory.colors = @[ [UIColor darkGrayColor] ];
-    iconFactory.size = 16.f;
     
     CGRect labelFrame = CGRectMake(30, 14, 290, 17);
     CGRect iconFrame = CGRectMake(9, 14, 16, 16);
@@ -184,12 +175,13 @@ NIKFontAwesomeIconFactory *iconFactory;
     [view addSubview:iconView];
 
     label.text = [[self tableView:tableView titleForHeaderInSection:section] uppercaseString];
+    iconView.tintColor = [UIColor darkGrayColor];
     if (section == 1) {
-        iconView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconUsers];
+        iconView.image = [UIImage imageNamed:@"icon_social"];
     } else if (section == 2) {
-        iconView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconSuitcase];
+        iconView.image = [UIImage imageNamed:@"icon_inventory"];
     } else if (section == 3) {
-        iconView.image = [iconFactory createImageForIcon:NIKFontAwesomeIconQuestionCircle];
+        iconView.image = [UIImage imageNamed:@"icon_help"];
     }
     return view;
 }
