@@ -129,11 +129,11 @@ NSString *currentUser;
         initWithManagedObjectContext:managedObjectStore.persistentStoreManagedObjectContext];
 
     NSString *ROOT_URL = nil;
+    defaults = [NSUserDefaults standardUserDefaults];
 
 #ifdef DEBUG
-    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
-    NSString *CUSTOM_DOMAIN = info[@"CustomDomain"];
-    NSString *DISABLE_SSL = info[@"DisableSSL"];
+    NSString *CUSTOM_DOMAIN = [defaults stringForKey:@"CUSTOM_DOMAIN"];
+    NSString *DISABLE_SSL = [defaults stringForKey:@"DISABLE_SSL"];
 
     if (CUSTOM_DOMAIN.length == 0) {
         CUSTOM_DOMAIN = @"habitrpg-staging.herokuapp.com/";
@@ -2143,7 +2143,6 @@ NSString *currentUser;
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-client" value:@"habitica-ios"];
 
     [self setCredentials];
-    defaults = [NSUserDefaults standardUserDefaults];
     if (currentUser != nil && currentUser.length > 0) {
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", currentUser];

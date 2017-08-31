@@ -531,7 +531,6 @@
 		49DCB7C31F40D80B0079FDD0 /* HRPGShopBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopBannerView.xib; sourceTree = "<group>"; };
 		98A4DBEE1B643BC100A9E2A8 /* HRPGSearchDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSearchDataManager.h; sourceTree = "<group>"; };
 		98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSearchDataManager.m; sourceTree = "<group>"; };
-		A11A64FF1BAC9FC30037D41C /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
 		BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabiticaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF54F3C3C288710775DDD5A9 /* HRPGContentResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGContentResponse.h; sourceTree = "<group>"; };
 		CF54FD820D81110D9EF4756E /* HRPGContentResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGContentResponse.m; sourceTree = "<group>"; };
@@ -2139,7 +2138,6 @@
 			isa = PBXGroup;
 			children = (
 				D9B2F2911D99669C001810BD /* Localizable.strings */,
-				A11A64FF1BAC9FC30037D41C /* debug.xcconfig */,
 				D9EB4E9418CB4A9400BB2094 /* Habitica */,
 				D94461841AB34F5C0015215E /* HabiticaTests */,
 				29701FEC1F5848880097BBCC /* Habitica Snapshots */,
@@ -3430,7 +3428,6 @@
 		};
 		D9EB4EC118CB4A9400BB2094 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A11A64FF1BAC9FC30037D41C /* debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
