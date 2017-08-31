@@ -15,7 +15,7 @@
 		16F482A31F475EA5003DCA79 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F4829F1F475EA5003DCA79 /* Router.swift */; };
 		16F482A41F475EA5003DCA79 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F482A01F475EA5003DCA79 /* Routes.swift */; };
 		16F482A51F475EA5003DCA79 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F482A01F475EA5003DCA79 /* Routes.swift */; };
-		16F482A61F475EA5003DCA79 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F482A11F475EA5003DCA79 /* API.swift */; };
+		16F482A61F475EA5003DCA79 /* HRPGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F482A11F475EA5003DCA79 /* HRPGAPI.swift */; };
 		16F482A91F4779F4003DCA79 /* APIAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F482A81F4779F4003DCA79 /* APIAuthTests.swift */; };
 		29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E421F3DD2120094A3E3 /* TutorialStepView.swift */; };
 		29255E451F3DD3ED0094A3E3 /* TutorialStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29255E441F3DD3ED0094A3E3 /* TutorialStepView.xib */; };
@@ -293,7 +293,7 @@
 		D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */; };
 		D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */; };
 		D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */; };
-		D9D17CD41E68995000AD9232 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		D9D17CD41E68995000AD9232 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */; };
 		D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */; };
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
@@ -360,7 +360,7 @@
 		16E908951F537D8000B38523 /* RegisterStub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RegisterStub.json; sourceTree = "<group>"; };
 		16F4829F1F475EA5003DCA79 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		16F482A01F475EA5003DCA79 /* Routes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
-		16F482A11F475EA5003DCA79 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		16F482A11F475EA5003DCA79 /* HRPGAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGAPI.swift; sourceTree = "<group>"; };
 		16F482A81F4779F4003DCA79 /* APIAuthTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAuthTests.swift; sourceTree = "<group>"; };
 		281AC256BB298E2B402BE5DF /* Pods-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		29255E421F3DD2120094A3E3 /* TutorialStepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialStepView.swift; sourceTree = "<group>"; };
@@ -1034,7 +1034,7 @@
 			children = (
 				16F4829F1F475EA5003DCA79 /* Router.swift */,
 				16F482A01F475EA5003DCA79 /* Routes.swift */,
-				16F482A11F475EA5003DCA79 /* API.swift */,
+				16F482A11F475EA5003DCA79 /* HRPGAPI.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -2158,7 +2158,7 @@
 				D9BB45D81E7998710002AE2E /* ChallengeFilterAlert.xib in Resources */,
 				2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
-				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
+				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
@@ -2627,7 +2627,7 @@
 				D979AD131AF3CF6C00D59FAE /* Customization.m in Sources */,
 				D9FC1A861BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m in Sources */,
 				29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */,
-				16F482A61F475EA5003DCA79 /* API.swift in Sources */,
+				16F482A61F475EA5003DCA79 /* HRPGAPI.swift in Sources */,
 				D94AADB4192A30F900546C8E /* Spell.m in Sources */,
 				D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */,
 				D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */,
