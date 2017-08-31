@@ -165,6 +165,25 @@ public class HRPGAPI {
             .responseJSON { response in
                 switch response.result {
                 case .success:
+                    // Make sure we get some JSON data
+                    guard let jsonData = response.result.value as? [String: Any] else {
+                        guard let errorResponse = response.result.error else {
+                            onError?(APIErrors.errorWithNoErrorResponse)
+                            return }
+                        onError?(errorResponse)
+                        return
+                    }
+                    
+                    // Set keychain keys
+                    let json = JSON(jsonData)
+                    
+                    // Check for error messages
+                    if let message = json[JSONKeys.message].string {
+                        let error = NSError(domain: message, code: response.response?.statusCode ?? 0, userInfo: nil)
+                        onError?(error)
+                        return
+                    }
+                    
                     // Register success so Login
                     self.userLogin(username: username, password: password, onSuccess: {
                         onSuccess?()
