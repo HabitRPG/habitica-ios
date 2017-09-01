@@ -2354,7 +2354,7 @@
 				CLASSPREFIX = HRPG;
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = "Phillip Thelen";
+				ORGANIZATIONNAME = "HabitRPG Inc.";
 				TargetAttributes = {
 					29701FEA1F5848880097BBCC = {
 						CreatedOnToolsVersion = 8.3.3;

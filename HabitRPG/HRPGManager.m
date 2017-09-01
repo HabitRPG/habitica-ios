@@ -3,7 +3,7 @@
 //  HabitRPG
 //
 //  Created by Phillip Thelen on 09/03/14.
-//  Copyright (c) 2014 Phillip Thelen. All rights reserved.
+//  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 
 #import "HRPGManager.h"

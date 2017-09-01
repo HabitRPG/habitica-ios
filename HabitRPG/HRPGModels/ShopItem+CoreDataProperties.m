@@ -3,7 +3,7 @@
 //  Habitica
 //
 //  Created by Phillip Thelen on 14/02/2017.
-//  Copyright © 2017 Phillip Thelen. All rights reserved.
+//  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 
 #import "ShopItem+CoreDataProperties.h"

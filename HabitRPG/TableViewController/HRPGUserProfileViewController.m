@@ -3,7 +3,7 @@
 //  Habitica
 //
 //  Created by Phillip on 13/07/14.
-//  Copyright (c) 2014 Phillip Thelen. All rights reserved.
+//  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 
 #import "HRPGUserProfileViewController.h"

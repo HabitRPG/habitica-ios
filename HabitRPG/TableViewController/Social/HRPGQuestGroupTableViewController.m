@@ -3,7 +3,7 @@
 //  Habitica
 //
 //  Created by Phillip Thelen on 12/02/16.
-//  Copyright © 2016 Phillip Thelen. All rights reserved.
+//  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 
 #import "HRPGQuestGroupTableViewController.h"
