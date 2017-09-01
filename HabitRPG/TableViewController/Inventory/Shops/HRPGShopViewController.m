@@ -116,6 +116,7 @@
     self.dataSource = [HRPGShopCollectionViewDataSource new];
     self.dataSource.delegate = self;
     self.dataSource.collectionView = self.collectionView;
+    self.dataSource.ownedItems = [self.viewModel fetchOwnedItems];
     
     self.collectionView.dataSource = self.dataSource;
     self.collectionView.delegate = self.dataSource;

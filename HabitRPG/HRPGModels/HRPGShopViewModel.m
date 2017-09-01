@@ -69,4 +69,21 @@
     return isTimeTrav && ![[HRPGManager sharedManager] getUser].subscriptionPlan;
 }
 
+- (NSDictionary *)fetchOwnedItems {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BuyableItem"
+                                              inManagedObjectContext:[[HRPGManager sharedManager] getManagedObjectContext]];
+    [fetchRequest setEntity:entity];
+    
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"owned > 0"]];
+    
+    NSError *error;
+    NSArray *results = [[[HRPGManager sharedManager] getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    NSMutableDictionary *ownedItems = [[NSMutableDictionary alloc] initWithCapacity:results.count];
+    for (Item *item in results) {
+        [ownedItems setValue:item forKey:item.key];
+    }
+    return ownedItems;
+}
+
 @end

@@ -16,6 +16,8 @@ import UIKit
 class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSource {
     weak var delegate: HRPGShopCollectionViewDataSourceDelegate?
     
+    var ownedItems = [String: Item]()
+    
     // MARK: Collection view data source and delegate methods
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -36,6 +38,9 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
         if let item = fetchedResultsController?.sections?[indexPath.section].objects?[indexPath.item] as? ShopItem {
             if let itemCell = cell as? InAppRewardCell {
                 itemCell.configure(item: item)
+                if let ownedItem = ownedItems[item.key ?? ""] {
+                    itemCell.itemsLeft = ownedItem.owned.intValue
+                }
             }
         }
         return cell

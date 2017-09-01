@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Item.h"
 @class Shop;
 
 @interface HRPGShopViewModel : NSObject
@@ -16,4 +17,6 @@
 - (NSFetchedResultsController *)fetchedShopItemResultsForIdentifier:(NSString *)identifier;
 - (void)fetchShopInformationForIdentifier:(NSString *)identifier;
 - (BOOL)shouldPromptToSubscribe;
+
+- (NSDictionary<NSString *, Item *> *)fetchOwnedItems;
 @end

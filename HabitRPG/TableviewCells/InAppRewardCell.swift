@@ -16,7 +16,7 @@ class InAppRewardCell: UICollectionViewCell {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var pinnedIndicatorView: UIImageView!
     
-    private var itemsLeft = 0 {
+    var itemsLeft = 0 {
         didSet {
             if itemsLeft > 0 {
                 infoImageView.image = HabiticaIcons.imageOfItemIndicatorNumber
