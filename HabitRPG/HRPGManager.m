@@ -4682,6 +4682,22 @@ NSString *currentUser;
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             [self fetchUser:^() {
                 NSError *executeError = nil;
+                
+                NSError *error;
+                NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+                [fetchRequest
+                 setEntity:[NSEntityDescription entityForName:@"ShopItem"
+                                       inManagedObjectContext:[self getManagedObjectContext]]];
+                [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == 'gem'"]];
+                
+                NSArray *existingItems =
+                [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+                if (existingItems.count > 0) {
+                    ShopItem *gem = existingItems.firstObject;
+                    gem.itemsLeft = @([gem.itemsLeft integerValue] - 1);
+                }
+                
+                
                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
                 [self displayPurchaseNotification:[NSString stringWithFormat:NSLocalizedString(@"You purchased %@", nil), text] withImage:imageName];
                 if (successBlock) {

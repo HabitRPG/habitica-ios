@@ -20,6 +20,7 @@ class HRPGFetchedResultsCollectionViewDataSource: NSObject, UICollectionViewData
             if let results = fetchedResultsController, let sections = results.sections, sections.count == 0 {
                 fetchedResultsDelegate?.onEmptyFetchedResults()
             }
+            fetchedResultsController?.delegate = self
         }
     }
     
@@ -39,50 +40,7 @@ class HRPGFetchedResultsCollectionViewDataSource: NSObject, UICollectionViewData
     
     // MARK: FetchedResultsController delegate
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo,
-                    atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        let indexSet = NSIndexSet(index: sectionIndex) as IndexSet
-        switch type {
-        case NSFetchedResultsChangeType.insert:
-            collectionView?.insertSections(indexSet)
-            break
-            
-        case NSFetchedResultsChangeType.delete:
-            collectionView?.deleteSections(indexSet)
-            break
-            
-        case NSFetchedResultsChangeType.update:
-            collectionView?.reloadSections(indexSet)
-            break
-            
-        case NSFetchedResultsChangeType.move:
-            break
-        }
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case NSFetchedResultsChangeType.insert:
-            if let newPath = newIndexPath {
-                collectionView?.insertItems(at: [newPath])
-            }
-            break
-        case NSFetchedResultsChangeType.delete:
-            if let path = indexPath {
-                collectionView?.deleteItems(at: [path])
-            }
-            break
-        case NSFetchedResultsChangeType.update:
-            if let path = indexPath {
-                collectionView?.reloadItems(at: [path])
-            }
-            break
-        case NSFetchedResultsChangeType.move:
-            if let path = indexPath, let newPath = newIndexPath {
-                collectionView?.deleteItems(at: [path])
-                collectionView?.insertItems(at: [newPath])
-            }
-            break
-        }
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        collectionView?.reloadData()
     }
 }

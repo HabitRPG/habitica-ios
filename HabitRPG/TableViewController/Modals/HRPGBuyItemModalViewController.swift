@@ -288,7 +288,7 @@ class HRPGBuyItemModalViewController: UIViewController {
                 }
             } else if currency == .gem && value.floatValue > HRPGManager.shared().getUser().balance.floatValue * 4.0 {
                 performSegue(withIdentifier: "insufficientGems", sender: self)
-            } else if currency == .gem {
+            } else if currency == .gem || purchaseType == "gems" {
                 HRPGManager.shared().purchaseItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: nil, onError: {
                     self.performSegue(withIdentifier: "insufficientGems", sender: self)
                 })

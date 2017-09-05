@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PDKeychainBindingsController
 
 class HRPGShopUserHeaderView: UIView, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var userClassImageView: UIImageView!
@@ -79,8 +78,7 @@ class HRPGShopUserHeaderView: UIView, NSFetchedResultsControllerDelegate {
             fetchRequest.entity = entity
             fetchRequest.fetchBatchSize = 20
             
-            let keyChain = PDKeychainBindings.shared()
-            if let stringId = keyChain?.string(forKey:"id") {
+            if let stringId = AuthenticationManager.shared.currentUserId {
                 let formatString = "id == '\(stringId)'"
                 fetchRequest.predicate = NSPredicate(format: formatString)
                 
@@ -93,7 +91,7 @@ class HRPGShopUserHeaderView: UIView, NSFetchedResultsControllerDelegate {
                                                                                                  managedObjectContext:managedContext,
                                                                                                  sectionNameKeyPath:nil,
                                                                                                  cacheName:nil)
-                aFetchedResultsController.delegate = self;
+                aFetchedResultsController.delegate = self
                 do {
                     try aFetchedResultsController.performFetch()
                 } catch let error as NSError {
