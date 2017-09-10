@@ -8,9 +8,9 @@
 
 #import "Task+CoreDataProperties.h"
 
-@implementation Task (CoreDataProperties)
+@implementation OldTask (CoreDataProperties)
 
-+ (NSFetchRequest<Task *> *)fetchRequest {
++ (NSFetchRequest<OldTask *> *)fetchRequest {
 	return [[NSFetchRequest alloc] initWithEntityName:@"Task"];
 }
 

@@ -11,9 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Task (CoreDataProperties)
+@interface OldTask (CoreDataProperties)
 
-+ (NSFetchRequest<Task *> *)fetchRequest;
++ (NSFetchRequest<OldTask *> *)fetchRequest;
 
 @property (nullable, nonatomic, copy) NSString *attribute;
 @property (nullable, nonatomic, copy) NSString *challengeID;
@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface Task (CoreDataGeneratedAccessors)
+@interface OldTask (CoreDataGeneratedAccessors)
 
 - (void)insertObject:(ChecklistItem *)value inChecklistAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromChecklistAtIndex:(NSUInteger)idx;

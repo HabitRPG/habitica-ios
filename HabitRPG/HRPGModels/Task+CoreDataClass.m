@@ -17,13 +17,13 @@
 #import <CoreSpotlight/CoreSpotlight.h>
 #import "HRPGManager.h"
 
-@interface Task ()
+@interface OldTask ()
 
 @property BOOL observesCompleted;
 
 @end
 
-@implementation Task
+@implementation OldTask
 
 @synthesize currentlyChecking;
 @synthesize observesCompleted;

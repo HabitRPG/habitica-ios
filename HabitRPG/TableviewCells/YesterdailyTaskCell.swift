@@ -27,13 +27,14 @@ class YesterdailyTaskCell: UITableViewCell {
 
     func configure(task: Task) {
         checkbox.configure(for: task)
-        titleTextView.text = task.text?.unicodeEmoji
+        titleTextView.text = task.text.unicodeEmoji
 
         checklistStackview.subviews.forEach { view in
             view.removeFromSuperview()
         }
         
-        guard let checklist = task.checklist else {
+        //TODO: Checklists
+        /*guard let checklist = task.checklist else {
             return
         }
         checklistItems = checklist.array as? [ChecklistItem]
@@ -48,7 +49,7 @@ class YesterdailyTaskCell: UITableViewCell {
                 let recognizer = UITapGestureRecognizer(target: self, action:#selector(YesterdailyTaskCell.handleChecklistTap(recognizer:)))
                 view.addGestureRecognizer(recognizer)
             }
-        }
+        }*/
     }
 
     override func layoutSubviews() {

@@ -77,7 +77,7 @@
     UITableView *tableView = self.viewController.tableView;
     XCTAssertEqual(tableView.numberOfSections, 5);
 }
-
+/*
 - (void) testThatItCreatesEditFormForHabits {
     //given
     Task *habit = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:[self.sharedManager getManagedObjectContext]];
@@ -217,5 +217,5 @@
     //XCTAssertEqual([tableView numberOfRowsInSection:2], 8);
     
 }
-
+*/
 @end

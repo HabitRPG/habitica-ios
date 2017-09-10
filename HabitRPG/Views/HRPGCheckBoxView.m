@@ -8,6 +8,7 @@
 
 #import "HRPGCheckBoxView.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGCheckBoxView ()
 
@@ -54,16 +55,16 @@
 
 - (void)configureForTask:(Task *)task withOffset:(NSInteger)offset {
     self.boxFillColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-    self.checked = [task.completed boolValue];
+    self.checked = task.completed;
     if ([task.type isEqualToString:@"daily"]) {
         self.cornerRadius = 3;
 
-        if ([task.completed boolValue]) {
+        if (task.completed) {
             self.boxFillColor = [UIColor gray400];
             self.backgroundColor = [UIColor gray500];
             self.checkColor = [UIColor gray200];
         } else {
-            if ([task dueTodayWithOffset:offset]) {
+            if (task.isDue) {
                 self.backgroundColor = [task lightTaskColor];
                 self.checkColor = [task taskColor];
             } else {
@@ -74,7 +75,7 @@
 
     } else {
         self.cornerRadius = self.size / 2;
-        if ([task.completed boolValue]) {
+        if (task.completed) {
             self.boxFillColor = [UIColor gray400];
             self.backgroundColor = [UIColor gray600];
             self.checkColor = [UIColor gray200];

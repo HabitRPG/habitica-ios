@@ -37,7 +37,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         }
         let today = Date()
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)
-        sharedManager.fetchTasks(forDay: yesterday, onSuccess: {
+        /*sharedManager.fetchTasks(forDay: yesterday, onSuccess: {
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
             fetchRequest.predicate = NSPredicate(format: "type == 'daily' && completed == false && isDue == true && yesterDaily == true")
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
@@ -60,7 +60,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
                     }
                 }
             }
-        }, onError: nil)
+        }, onError: nil)*/
     }
 
     override func viewDidLoad() {
@@ -114,7 +114,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
 
     private func checkedCell(_ indexPath: IndexPath) {
         if let tasks = self.tasks {
-            tasks[indexPath.item].completed = NSNumber(value: !(tasks[indexPath.item].completed?.boolValue ?? true))
+            tasks[indexPath.item].completed = !(tasks[indexPath.item].completed)
             self.yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
         }
     }
@@ -143,7 +143,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     func handleDismiss() {
         var completedTasks = [Task]()
         if let tasks = self.tasks {
-            for task in tasks where task.completed?.boolValue ?? false {
+            for task in tasks where task.completed {
                 completedTasks.append(task)
             }
         }

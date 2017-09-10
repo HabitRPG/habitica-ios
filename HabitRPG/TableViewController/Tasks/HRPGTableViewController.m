@@ -15,6 +15,8 @@
 #import "NSString+Emoji.h"
 #import <POP/POP.h>
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
+#import <Realm/Realm.h>
 
 @interface HRPGTableViewController ()<UISearchBarDelegate>
 @property NSString *readableName;
@@ -92,7 +94,7 @@ BOOL editable;
 
     [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
     NSError *error;
-    [self.fetchedResultsController performFetch:&error];
+    [self.fetchedResultsController updateFetchRequest:self.fetchedResultsController.fetchRequest sectionNameKeyPath:nil andPerformFetch:YES];
 
     [self.tableView reloadData];
 }
@@ -150,7 +152,7 @@ BOOL editable;
                 self.userDrivenDataUpdate = YES;
                 Task *sourceTask = [self taskAtIndexPath:sourceIndexPath];
                 Task *task = [self taskAtIndexPath:indexPath];
-                NSNumber *sourceOrder = sourceTask.order;
+                NSInteger *sourceOrder = sourceTask.order;
                 sourceTask.order = task.order;
                 task.order = sourceOrder;
                 
@@ -185,7 +187,7 @@ BOOL editable;
             
         default: {
             Task *task = [self taskAtIndexPath:sourceIndexPath];
-            [[HRPGManager sharedManager] moveTask:task toPosition:task.order onSuccess:nil onError:nil];
+            [[HRPGManager sharedManager] moveTask:task toPosition:@(task.order) onSuccess:nil onError:nil];
             
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
             cell.alpha = 0.0;
@@ -241,7 +243,7 @@ BOOL editable;
     NSMutableArray *predicateArray = [[NSMutableArray alloc] initWithCapacity:3];
     HRPGTabBarController *tabBarController = (HRPGTabBarController *)self.tabBarController;
 
-    [predicateArray addObjectsFromArray:[Task predicatesForTaskType:self.typeName
+    [predicateArray addObjectsFromArray:[OldTask predicatesForTaskType:self.typeName
                                                      withFilterType:self.filterType withOffset:self.dayStart]];
 
     if ([tabBarController.selectedTags count] > 0) {
@@ -264,14 +266,14 @@ BOOL editable;
 }
 
 - (NSArray *)getSortDescriptors {
-    NSSortDescriptor *orderDescriptor =
-        [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
-    NSSortDescriptor *dateDescriptor =
-        [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:NO];
+    RLMSortDescriptor *orderDescriptor =
+        [RLMSortDescriptor sortDescriptorWithKeyPath:@"order" ascending:YES];
+    RLMSortDescriptor *dateDescriptor =
+        [RLMSortDescriptor sortDescriptorWithKeyPath:@"dateCreated" ascending:NO];
     if ([_typeName isEqual:@"todo"]) {
         if (self.filterType == TaskToDoFilterTypeDated) {
-            NSSortDescriptor *dueDescriptor =
-                [[NSSortDescriptor alloc] initWithKey:@"duedate" ascending:YES];
+            RLMSortDescriptor *dueDescriptor =
+                [RLMSortDescriptor sortDescriptorWithKeyPath:@"duedate" ascending:NO];
             return @[ dueDescriptor, orderDescriptor, dateDescriptor ];
         } else {
             return @[ orderDescriptor, dateDescriptor ];
@@ -288,8 +290,6 @@ BOOL editable;
 
     [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
     [self.fetchedResultsController.fetchRequest setSortDescriptors:[self getSortDescriptors]];
-    NSError *error;
-    [self.fetchedResultsController performFetch:&error];
     [self.tableView reloadData];
 
     NSInteger filterCount = 0;
@@ -381,24 +381,15 @@ BOOL editable;
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.fetchedResultsController sections].count;
+    return self.fetchedResultsController.numberOfSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ([self.fetchedResultsController sections].count == 0) {
-        return 0;
-    }
-    return [[self.fetchedResultsController sections][section] numberOfObjects];
+    return [self.fetchedResultsController numberOfRowsForSectionIndex:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section > [self.fetchedResultsController sections].count - 1) {
-        UITableViewCell *cell =
-            [tableView dequeueReusableCellWithIdentifier:@"EmptyCell" forIndexPath:indexPath];
-        return cell;
-    }
-
     NSString *cellname = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
 
@@ -448,47 +439,30 @@ BOOL editable;
     }
 }
 
-- (NSFetchedResultsController *)fetchedResultsController {
+- (RBQFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
 
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task"
-                                              inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setReturnsObjectsAsFaults:NO];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setFetchBatchSize:20];
+    RBQFetchRequest *fetchRequest = [[RBQFetchRequest alloc] initWithEntityName:@"Task" inRealm:[RLMRealm defaultRealm]];
     [fetchRequest setPredicate:[self getPredicate]];
 
     [fetchRequest setSortDescriptors:[self getSortDescriptors]];
 
-    NSFetchedResultsController *aFetchedResultsController =
-        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                            managedObjectContext:self.managedObjectContext
-                                              sectionNameKeyPath:nil
-                                                       cacheName:nil];
+    RBQFetchedResultsController *aFetchedResultsController =
+        [[RBQFetchedResultsController alloc] initWithFetchRequest:fetchRequest sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
-
-    NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
 
     return _fetchedResultsController;
 }
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+- (void)controllerWillChangeContent:(RBQFetchedResultsController *)controller {
     if (self.userDrivenDataUpdate) return;
     [self.tableView beginUpdates];
 }
 
-- (void)controller:(NSFetchedResultsController *)controller
-    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-             atIndex:(NSUInteger)sectionIndex
-       forChangeType:(NSFetchedResultsChangeType)type {
+- (void)controller:(RBQFetchedResultsController *)controller didChangeSection:(RBQFetchedResultsSectionInfo *)section atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
     if (self.userDrivenDataUpdate) return;
     switch (type) {
         case NSFetchedResultsChangeInsert:
@@ -511,7 +485,7 @@ BOOL editable;
     }
 }
 
-- (void)controller:(NSFetchedResultsController *)controller
+- (void)controller:(RBQFetchedResultsController *)controller
     didChangeObject:(id)anObject
         atIndexPath:(NSIndexPath *)indexPath
       forChangeType:(NSFetchedResultsChangeType)type
@@ -550,7 +524,7 @@ BOOL editable;
     }
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+- (void)controllerDidChangeContent:(RBQFetchedResultsController *)controller {
     if (self.userDrivenDataUpdate) return;
     [self.tableView endUpdates];
 }
@@ -599,13 +573,7 @@ BOOL editable;
 }
 
 - (Task *)taskAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.fetchedResultsController.sections.count > indexPath.section) {
-        id<NSFetchedResultsSectionInfo> sectionInfo =
-            [self.fetchedResultsController sections][indexPath.section];
-        if ([sectionInfo numberOfObjects] > indexPath.item) {
-            return [self.fetchedResultsController objectAtIndexPath:indexPath];
-        }
-    }
+    return [self.fetchedResultsController objectAtIndexPath:indexPath];
     return nil;
 }
 
@@ -623,8 +591,7 @@ BOOL editable;
 
     [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
     NSError *error;
-    [self.fetchedResultsController performFetch:&error];
-
+    [self.fetchedResultsController updateFetchRequest:self.fetchedResultsController.fetchRequest sectionNameKeyPath:nil andPerformFetch:YES];
     [self.tableView reloadData];
 }
 
@@ -645,9 +612,7 @@ BOOL editable;
     [HRPGSearchDataManager sharedManager].searchString = nil;
 
     [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
-    NSError *error;
-    [self.fetchedResultsController performFetch:&error];
-
+    [self.fetchedResultsController updateFetchRequest:self.fetchedResultsController.fetchRequest sectionNameKeyPath:nil andPerformFetch:YES];
     [searchBar resignFirstResponder];
 
     [self.tableView reloadData];

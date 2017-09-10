@@ -87,16 +87,16 @@
     cell.taskDetailLine.dateFormatter = self.dateFormatter;
     [cell configureWithTask:task];
     cell.checkBox.wasTouched = ^() {
-        if (![task.currentlyChecking boolValue]) {
-            task.currentlyChecking = @YES;
-            NSString *actionName = [task.completed boolValue] ? @"down" : @"up";
+        if (!task.currentlyChecking) {
+            task.currentlyChecking = YES;
+            NSString *actionName = task.completed ? @"down" : @"up";
             [[HRPGManager sharedManager] upDownTask:task
                                           direction:actionName
                                           onSuccess:^() {
-                                              task.currentlyChecking = @NO;
+                                              task.currentlyChecking = NO;
                                           }
                                             onError:^() {
-                                                task.currentlyChecking = @NO;
+                                                task.currentlyChecking = NO;
                                             }];
         }
     };

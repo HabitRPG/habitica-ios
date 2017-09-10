@@ -284,21 +284,21 @@
     [self.form formRowWithTag:@"notes"].value =
         [self.task.notes stringByReplacingEmojiCheatCodesWithUnicode];
 
-    if ([self.task.priority floatValue] == 0.1f) {
+    if (self.task.priority == 0.1f) {
         [self.form formRowWithTag:@"priority"].value =
-            [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority
+            [XLFormOptionsObject formOptionsObjectWithValue:@(self.task.priority)
                                                 displayText:NSLocalizedString(@"Trivial", nil)];
-    } else if ([self.task.priority floatValue] == 1) {
+    } else if (self.task.priority == 1) {
         [self.form formRowWithTag:@"priority"].value =
-            [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority
+            [XLFormOptionsObject formOptionsObjectWithValue:@(self.task.priority)
                                                 displayText:NSLocalizedString(@"Easy", nil)];
-    } else if ([self.task.priority floatValue] == 1.5f) {
+    } else if (self.task.priority == 1.5f) {
         [self.form formRowWithTag:@"priority"].value =
-            [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority
+            [XLFormOptionsObject formOptionsObjectWithValue:@(self.task.priority)
                                                 displayText:NSLocalizedString(@"Medium", nil)];
-    } else if ([self.task.priority floatValue] == 2) {
+    } else if (self.task.priority == 2) {
         [self.form formRowWithTag:@"priority"].value =
-            [XLFormOptionsObject formOptionsObjectWithValue:self.task.priority
+            [XLFormOptionsObject formOptionsObjectWithValue:@(self.task.priority)
                                                 displayText:NSLocalizedString(@"Hard", nil)];
     }
 
@@ -323,7 +323,7 @@
     if (![self.taskType isEqualToString:@"habit"]) {
         XLFormSectionDescriptor *section = [self.form formSectionAtIndex:1];
 
-        for (ChecklistItem *item in self.task.checklist) {
+        /*for (ChecklistItem *item in self.task.checklist) {
             XLFormRowDescriptor *row =
                 [XLFormRowDescriptor formRowDescriptorWithTag:item.id
                                                       rowType:XLFormRowDescriptorTypeText];
@@ -346,19 +346,19 @@
                 [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:rowType title:@""];
             row.value = item.time;
             [section addFormRow:row];
-        }
+        }*/
     }
 
     if ([self.taskType isEqualToString:@"habit"]) {
-        [self.form formRowWithTag:@"up"].value = self.task.up;
-        [self.form formRowWithTag:@"down"].value = self.task.down;
+        [self.form formRowWithTag:@"up"].value = @(self.task.up);
+        [self.form formRowWithTag:@"down"].value = @(self.task.down);
         [self.form formRowWithTag:@"frequency"].value = self.task.frequency;
     }
 
     if ([self.taskType isEqualToString:@"daily"]) {
         [self.form formRowWithTag:@"startDate"].value = self.task.startDate;
         [self.form formRowWithTag:@"frequency"].value = self.task.frequency;
-        [self.form formRowWithTag:@"everyX"].value = self.task.everyX;
+        [self.form formRowWithTag:@"everyX"].value = @(self.task.everyX);
     }
 
     if ([self.taskType isEqualToString:@"todo"]) {
@@ -368,9 +368,10 @@
         }
     }
 
-    for (Tag *tag in self.task.tags) {
+    //TODO: Fix tags
+    /*for (Tag *tag in self.task.tags) {
         [self.form formRowWithTag:[NSString stringWithFormat:@"tag.%@", tag.id]].value = @YES;
-    }
+    }*/
 
     [self.tableView reloadData];
 }
@@ -444,7 +445,7 @@
     [self.tableView endEditing:YES];
     if ([segue.identifier isEqualToString:@"unwindSaveSegue"]) {
         NSError *error;
-        if (!self.editTask ||
+        /*if (!self.editTask ||
             (self.editTask &&
              [self.task.managedObjectContext existingObjectWithID:self.task.objectID
                                                             error:&error] == nil)) {
@@ -452,7 +453,7 @@
                 [NSEntityDescription insertNewObjectForEntityForName:@"Task"
                                               inManagedObjectContext:self.managedObjectContext];
             self.task.type = self.taskType;
-        }
+        }*/
         NSDictionary *formValues = [self.form formValues];
         NSMutableArray *tagArray = [NSMutableArray array];
         for (NSString *key in formValues) {
@@ -476,7 +477,8 @@
             }
             if ([key isEqualToString:@"checklist"]) {
                 int checklistindex = 0;
-                for (NSString *itemText in formValues[key]) {
+                //TODO: Fix Checklist
+                /*for (NSString *itemText in formValues[key]) {
                     if ([itemText length] == 0) {
                         continue;
                     }
@@ -493,12 +495,13 @@
                 }
                 while ([self.task.checklist count] > checklistindex) {
                     [self.task removeChecklistObject:self.task.checklist[checklistindex]];
-                }
+                }*/
                 continue;
             }
             if ([key isEqualToString:@"reminders"]) {
                 int reminderindex = 0;
-                for (NSDate *itemTime in formValues[key]) {
+                //TODO: Fix reminders
+                /*for (NSDate *itemTime in formValues[key]) {
                     if ([self.task.reminders count] > reminderindex) {
                         ((Reminder *)self.task.reminders[reminderindex]).time = itemTime;
                     } else {
@@ -513,7 +516,7 @@
                 }
                 while ([self.task.reminders count] > reminderindex) {
                     [self.task removeRemindersObject:self.task.reminders[reminderindex]];
-                }
+                }*/
                 continue;
             }
             if (formValues[key] == [NSNull null]) {
@@ -526,7 +529,7 @@
             }
             if ([key isEqualToString:@"priority"]) {
                 XLFormOptionsObject *value = formValues[key];
-                self.task.priority = value.valueData;
+                self.task.priority = [value.valueData doubleValue];
                 continue;
             }
             if ([key isEqualToString:@"attribute"]) {
@@ -544,13 +547,13 @@
                 } else {
                     [weeksOfMonth addObject:[NSNumber numberWithInteger:components.weekOfMonth]];
                 }
-                self.task.daysOfMonth = daysOfMonth;
-                self.task.weeksOfMonth = weeksOfMonth;
+                //self.task.daysOfMonth = daysOfMonth;
+                //self.task.weeksOfMonth = weeksOfMonth;
                 continue;
             }
             [self.task setValue:formValues[key] forKeyPath:key];
         }
-        self.task.tagArray = tagArray;
+        ///self.task.tagArray = tagArray;
     }
 }
 
@@ -648,13 +651,13 @@
         row.value = @YES;
         [section addFormRow:row];
         if (self.editTask) {
-            [self.form formRowWithTag:@"monday"].value = self.task.monday;
-            [self.form formRowWithTag:@"tuesday"].value = self.task.tuesday;
-            [self.form formRowWithTag:@"wednesday"].value = self.task.wednesday;
-            [self.form formRowWithTag:@"thursday"].value = self.task.thursday;
-            [self.form formRowWithTag:@"friday"].value = self.task.friday;
-            [self.form formRowWithTag:@"saturday"].value = self.task.saturday;
-            [self.form formRowWithTag:@"sunday"].value = self.task.sunday;
+            [self.form formRowWithTag:@"monday"].value = @(self.task.monday);
+            [self.form formRowWithTag:@"tuesday"].value = @(self.task.tuesday);
+            [self.form formRowWithTag:@"wednesday"].value = @(self.task.wednesday);
+            [self.form formRowWithTag:@"thursday"].value = @(self.task.thursday);
+            [self.form formRowWithTag:@"friday"].value = @(self.task.friday);
+            [self.form formRowWithTag:@"saturday"].value = @(self.task.saturday);
+            [self.form formRowWithTag:@"sunday"].value = @(self.task.sunday);
         }
     } else if ([frequencyType isEqualToString:@"monthly"]) {
         XLFormRowDescriptor *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"repeatsOn"
@@ -671,7 +674,7 @@
         row.required = YES;
         row.selectorTitle = NSLocalizedString(@"Repeats On", nil);
         if (self.editTask) {
-            if (self.task.weeksOfMonth.count > 0) {
+            /*if (self.task.weeksOfMonth.count > 0) {
                 row.value =
                 [XLFormOptionsObject formOptionsObjectWithValue:@"weeksOfMonth"
                                                     displayText:NSLocalizedString(@"Week of the Month", nil)];
@@ -679,7 +682,7 @@
                 row.value =
                 [XLFormOptionsObject formOptionsObjectWithValue:@"daysOfMonth"
                                                     displayText:NSLocalizedString(@"Day of the Month", nil)];
-            }
+            }*/
         } else{
             row.value =
             [XLFormOptionsObject formOptionsObjectWithValue:@"daysOfMonth"
@@ -712,7 +715,7 @@
             row = section.formRows[1];
         }
         if (self.editTask) {
-            row.value = self.task.everyX;
+            row.value = @(self.task.everyX);
         } else {
             row.value = @1;
         }
@@ -759,13 +762,13 @@
         row.value = @YES;
         [section addFormRow:row];
         if (self.editTask) {
-            [self.form formRowWithTag:@"monday"].value = self.task.monday;
-            [self.form formRowWithTag:@"tuesday"].value = self.task.tuesday;
-            [self.form formRowWithTag:@"wednesday"].value = self.task.wednesday;
-            [self.form formRowWithTag:@"thursday"].value = self.task.thursday;
-            [self.form formRowWithTag:@"friday"].value = self.task.friday;
-            [self.form formRowWithTag:@"saturday"].value = self.task.saturday;
-            [self.form formRowWithTag:@"sunday"].value = self.task.sunday;
+            [self.form formRowWithTag:@"monday"].value = @(self.task.monday);
+            [self.form formRowWithTag:@"tuesday"].value = @(self.task.tuesday);
+            [self.form formRowWithTag:@"wednesday"].value = @(self.task.wednesday);
+            [self.form formRowWithTag:@"thursday"].value = @(self.task.thursday);
+            [self.form formRowWithTag:@"friday"].value = @(self.task.friday);
+            [self.form formRowWithTag:@"saturday"].value = @(self.task.saturday);
+            [self.form formRowWithTag:@"sunday"].value = @(self.task.sunday);
         }
     }
 }

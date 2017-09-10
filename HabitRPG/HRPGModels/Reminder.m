@@ -7,7 +7,7 @@
 //
 
 #import "Reminder.h"
-#import "Task+CoreDataClass.h"
+#import "Habitica-Swift.h"
 
 @implementation Reminder
 
@@ -46,7 +46,7 @@
 
 - (void)scheduleReminders {
     if (self.task) {
-        if ([self.task.completed boolValue]) {
+        if (self.task.completed) {
             return;
         }
     } else {
@@ -55,7 +55,7 @@
     if ([self.task.type isEqualToString:@"daily"]) {
         for (int day = 0; day < 6; day++) {
             NSDate *checkedDate = [NSDate dateWithTimeIntervalSinceNow:(day * 86400)];
-            if ([self.task dueOnDate:checkedDate]) {
+            if (self.task.isDue) {
                 [self scheduleForDay:checkedDate];
             }
         }

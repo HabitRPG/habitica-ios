@@ -9,6 +9,7 @@
 #import "HRPGSpellTaskController.h"
 #import "HRPGSpellTabBarController.h"
 #import "NSString+Emoji.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGSpellTaskController ()
 

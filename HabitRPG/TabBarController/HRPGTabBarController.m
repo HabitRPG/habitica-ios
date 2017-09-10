@@ -12,6 +12,7 @@
 #if DEBUG
 #import "FLEXManager.h"
 #endif
+#import "Habitica-Swift.h"
 
 @interface HRPGTabBarController ()
 
@@ -81,7 +82,7 @@
     if (_taskFetchedResultsController != nil) {
         return _taskFetchedResultsController;
     }
-
+/*
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task"
                                               inManagedObjectContext:self.managedObjectContext];
@@ -120,7 +121,7 @@
     if (![self.taskFetchedResultsController performFetch:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
-    }
+    }*/
 
     return _taskFetchedResultsController;
 }
@@ -232,8 +233,7 @@
     
     for (Task *task in self.taskFetchedResultsController.fetchedObjects) {
         if ([task.type isEqualToString:@"daily"]) {
-            if ([task dueTodayWithOffset:[[[HRPGManager sharedManager] getUser]
-                                          .preferences.dayStart integerValue]]) {
+            if (task.isDue) {
                 dailyBadgeCount++;
             }
         } else {

@@ -32,7 +32,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         
         handleChecklist(task)
 
-        if task.completed?.boolValue ?? false {
+        if task.completed {
             self.checklistIndicator.backgroundColor = .gray500()
             self.titleLabel.textColor = .gray300()
             self.backgroundColor = .gray600()
@@ -53,15 +53,16 @@ class CheckedTableViewCell: TaskTableViewCell {
         self.checklistRightBorderView.backgroundColor = task.taskColor()
         self.checklistIndicator.isHidden = false
         self.checklistIndicator.translatesAutoresizingMaskIntoConstraints = false
-        let checklistCount = task.checklist?.count ?? 0
+        //let checklistCount = task.checklist?.count ?? 0
+        let checklistCount = 0
         
         if checklistCount > 0 {
             var checkedCount = 0
-            if let checklist = task.checklist?.array as? [ChecklistItem] {
+            /*if let checklist = task.checklist?.array as? [ChecklistItem] {
                 for item in checklist where item.completed.boolValue {
                     checkedCount += 1
                 }
-            }
+            }*/
             self.checklistDoneLabel.text = "\(checkedCount)"
             self.checklistAllLabel.text = "\(checklistCount)"
             self.checklistDoneLabel.textColor = .white
@@ -105,7 +106,7 @@ class CheckedTableViewCell: TaskTableViewCell {
                         action(item)
                     }
                 }
-            }
+            }*/
         }
     }
 }
