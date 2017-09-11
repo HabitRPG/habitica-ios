@@ -68,6 +68,9 @@
 		29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
 		29ED4BDA1F6582A3003FAB1F /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED4BD91F6582A3003FAB1F /* TaskRepository.swift */; };
 		29ED4BDE1F658C02003FAB1F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED4BDD1F658C02003FAB1F /* Task.swift */; };
+		29ED4BE11F65B1A6003FAB1F /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED4BE01F65B1A6003FAB1F /* APIClient.swift */; };
+		29ED4BE31F65B611003FAB1F /* JSON+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED4BE21F65B611003FAB1F /* JSON+Date.swift */; };
+		29ED4BE71F65B896003FAB1F /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED4BE61F65B896003FAB1F /* Formatter.swift */; };
 		29F89F1A1F47882A004E5B84 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89F191F47882A004E5B84 /* String-Extensions.swift */; };
 		49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6D1F17DDF9004830D9 /* Shop.storyboard */; };
 		49005B701F17E7AC004830D9 /* Shops.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6F1F17E7AC004830D9 /* Shops.storyboard */; };
@@ -492,6 +495,9 @@
 		29ED4BD91F6582A3003FAB1F /* TaskRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		29ED4BDB1F658496003FAB1F /* HabitRPG 48.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 48.xcdatamodel"; sourceTree = "<group>"; };
 		29ED4BDD1F658C02003FAB1F /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		29ED4BE01F65B1A6003FAB1F /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		29ED4BE21F65B611003FAB1F /* JSON+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSON+Date.swift"; sourceTree = "<group>"; };
+		29ED4BE61F65B896003FAB1F /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		29F89F191F47882A004E5B84 /* String-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extensions.swift"; sourceTree = "<group>"; };
 		2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
 		2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1243,6 +1249,14 @@
 			name = Realm;
 			sourceTree = "<group>";
 		};
+		29ED4BDF1F65B196003FAB1F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				29ED4BE01F65B1A6003FAB1F /* APIClient.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		4908642C1F4530DC00BD9896 /* Shop */ = {
 			isa = PBXGroup;
 			children = (
@@ -1478,6 +1492,7 @@
 		D95704371E106BF3004F6804 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				29ED4BE21F65B611003FAB1F /* JSON+Date.swift */,
 				D95704381E106C11004F6804 /* LocalizedString.swift */,
 				D95704421E1528F2004F6804 /* Event-Extensions.swift */,
 				D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */,
@@ -1628,6 +1643,7 @@
 		D987393919687E46002A2426 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				29ED4BE61F65B896003FAB1F /* Formatter.swift */,
 				299BD6361F5457E100E22935 /* HabiticaIcons.swift */,
 				D90EA03819D60427001EABE4 /* Intro Images */,
 				D99BC43019D4C34A006DC132 /* 1Password.xcassets */,
@@ -2202,6 +2218,7 @@
 		D9EB4E9418CB4A9400BB2094 /* Habitica */ = {
 			isa = PBXGroup;
 			children = (
+				29ED4BDF1F65B196003FAB1F /* API */,
 				D9BB45DB1E7AE23E0002AE2E /* Repositories */,
 				D97ED0AB1E6DBB5F006C2A26 /* Interactors */,
 				D95704371E106BF3004F6804 /* Extensions */,
@@ -2937,6 +2954,7 @@
 				D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */,
 				29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */,
 				D979AD1A1AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m in Sources */,
+				29ED4BE11F65B1A6003FAB1F /* APIClient.swift in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
 				D96BFC511E1930A500266EEF /* Signal-Extensions.swift in Sources */,
 				D9436AC91C64F880008D1171 /* HRPGGuildsOverviewViewController.m in Sources */,
@@ -2951,12 +2969,14 @@
 				D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */,
 				D947960A1972C248002CB34C /* HRPGUserProfileViewController.m in Sources */,
 				299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */,
+				29ED4BE71F65B896003FAB1F /* Formatter.swift in Sources */,
 				D9F1E3E81E55DCEC0034D0F4 /* SubscriptionInformationCell.swift in Sources */,
 				D9D96F03194B96FD00796FE7 /* HRPGMountMasterViewController.m in Sources */,
 				D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */,
 				D9E46B041DABCD9100E390D7 /* Buff+CoreDataProperties.m in Sources */,
 				297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */,
 				2957B8C41F4D922C00E836EF /* CustomRewardCell.swift in Sources */,
+				29ED4BE31F65B611003FAB1F /* JSON+Date.swift in Sources */,
 				2957B8B11F4B2C6C00E836EF /* Map44To45.xcmappingmodel in Sources */,
 				D95D03941C74AA5500D6BFB3 /* Preferences.m in Sources */,
 				D9BB45DD1E7AE5240002AE2E /* ConfigRepository.swift in Sources */,
