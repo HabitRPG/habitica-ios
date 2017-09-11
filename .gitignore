@@ -28,3 +28,4 @@ fastlane/screenshots
 translations
 fastlane/Preview.html
 .idea
+/fastlane/report.xml
