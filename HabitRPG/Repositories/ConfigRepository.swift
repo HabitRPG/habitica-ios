@@ -11,13 +11,14 @@ import Alamofire
 
 @objc
 enum ConfigVariable: Int {
-    case enableRepeatables, supportEmail
+    case enableRepeatables, supportEmail, enableNewShops
 
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
         switch self {
         case .enableRepeatables: return "enableRepeatables"
         case .supportEmail: return "supportEmail"
+        case .enableNewShops: return "enableNewShops"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -27,7 +28,7 @@ enum ConfigVariable: Int {
 class ConfigRepository: NSObject {
 
     private static let configUrl = "https://s3.amazonaws.com/habitica-assets/mobileApp/endpoint/config-ios.json"
-    private static let configVariables: [ConfigVariable] = [.enableRepeatables, .supportEmail]
+    private static let configVariables: [ConfigVariable] = [.enableRepeatables, .supportEmail, .enableNewShops]
     private let userConfig = UserDefaults.standard
 
     func fetchremoteConfig() {

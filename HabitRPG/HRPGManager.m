@@ -49,6 +49,7 @@
 @interface HRPGManager ()
 @property HRPGNetworkIndicatorController *networkIndicatorController;
 @property HRPGNotificationManager *notificationManager;
+@property ConfigRepository *configRepository;
 @end
 
 @implementation HRPGManager {
@@ -90,6 +91,7 @@ NSString *currentUser;
 
 - (void)loadObjectManager:(RKManagedObjectStore *)existingManagedObjectStore {
     self.notificationManager = [[HRPGNotificationManager alloc] initWithSharedManager:self];
+    self.configRepository = [[ConfigRepository alloc] init];
     NSError *error = nil;
     NSURL *modelURL =
         [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"HabitRPG" ofType:@"momd"]];
@@ -136,7 +138,7 @@ NSString *currentUser;
     NSString *DISABLE_SSL = [defaults stringForKey:@"DISABLE_SSL"];
 
     if (CUSTOM_DOMAIN.length == 0) {
-        CUSTOM_DOMAIN = @"habitrpg-staging.herokuapp.com/";
+        CUSTOM_DOMAIN = @"habitica.com/";
     }
 
     if (![[CUSTOM_DOMAIN substringFromIndex: [CUSTOM_DOMAIN length] - 1]  isEqual: @"/"]) {
@@ -634,6 +636,22 @@ NSString *currentUser;
                               parsedArguments:&argsDict];
         if (match) {
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"InAppReward"];
+            return fetchRequest;
+        }
+        
+        return nil;
+    }];
+    
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:@"user/inventory/buy"];
+        
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:[URL relativePath]
+                         tokenizeQueryStrings:YES
+                              parsedArguments:&argsDict];
+        if (match) {
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"InAppReward"];
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"key != 'armoire' && key != 'potion'"];
             return fetchRequest;
         }
         
@@ -1729,6 +1747,39 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
+    RKEntityMapping *potionMapping =
+    [RKEntityMapping mappingForEntityForName:@"InAppReward" inManagedObjectStore:managedObjectStore];
+    [potionMapping addAttributeMappingsFromDictionary:@{
+                                                        @"text" : @"text",
+                                                        @"key" : @"key",
+                                                        @"value" : @"value",
+                                                        @"notes" : @"notes",
+                                                        }];
+    potionMapping.identificationAttributes = @[ @"key" ];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:potionMapping
+                          method:RKRequestMethodGET
+                          pathPattern:@"content"
+                          keyPath:@"data.potion"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    RKEntityMapping *armoireMapping = [RKEntityMapping mappingForEntityForName:@"InAppReward"
+                                                          inManagedObjectStore:managedObjectStore];
+    [armoireMapping addAttributeMappingsFromDictionary:@{
+                                                         @"text" : @"text",
+                                                         @"key" : @"key",
+                                                         @"value" : @"value",
+                                                         @"notes" : @"notes",
+                                                         }];
+    armoireMapping.identificationAttributes = @[ @"key" ];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:armoireMapping
+                          method:RKRequestMethodGET
+                          pathPattern:@"content"
+                          keyPath:@"data.armoire"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+
     RKEntityMapping *inAppRewardsMapping =
         [RKEntityMapping mappingForEntityForName:@"InAppReward" inManagedObjectStore:managedObjectStore];
     [inAppRewardsMapping addAttributeMappingsFromArray:@[
@@ -1754,6 +1805,13 @@ NSString *currentUser;
                                method:RKRequestMethodGET
                           pathPattern:@"user/in-app-rewards"
                               keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:inAppRewardsMapping
+                          method:RKRequestMethodGET
+                          pathPattern:@"user/inventory/buy"
+                          keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
@@ -3366,26 +3424,33 @@ NSString *currentUser;
 }
 
 - (void)fetchBuyableRewards:(void (^)())successBlock onError:(void (^)())errorBlock {
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"user/in-app-rewards"
-        parameters:nil
-        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            NSError *executeError = nil;
-
-            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-            if (successBlock) {
-                successBlock();
-            }
-            [self.networkIndicatorController endNetworking];
-            return;
-        }
-        failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            [self handleNetworkError:operation withError:error];
-            if (errorBlock) {
-                errorBlock();
-            }
-            [self.networkIndicatorController endNetworking];
-            return;
-        }];
+    NSString *url = nil;
+    if ([self.configRepository boolWithVariable:ConfigVariableEnableNewShops]) {
+        url = @"user/in-app-rewards";
+    } else {
+        url = @"user/inventory/buy";
+    }
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:url
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  NSError *executeError = nil;
+                                                  
+                                                  [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                                  if (successBlock) {
+                                                      successBlock();
+                                                  }
+                                                  [self.networkIndicatorController endNetworking];
+                                                  return;
+                                              }
+                                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  [self handleNetworkError:operation withError:error];
+                                                  if (errorBlock) {
+                                                      errorBlock();
+                                                  }
+                                                  [self.networkIndicatorController endNetworking];
+                                                  return;
+                                              }];
 }
 
 - (void)clearCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock {

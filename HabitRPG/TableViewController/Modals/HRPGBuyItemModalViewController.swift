@@ -13,6 +13,7 @@ class HRPGBuyItemModalViewController: UIViewController {
     var reward: MetaReward?
     var shopIdentifier: String?
     let inventoryRepository = InventoryRepository()
+    let showPinning = ConfigRepository().bool(variable: .enableNewShops)
     
     @IBOutlet weak var topContentView: UIView!
     @IBOutlet weak var bottomButtons: UIView!
@@ -46,6 +47,8 @@ class HRPGBuyItemModalViewController: UIViewController {
         
         closableShopModal.closeButton.addTarget(self, action: #selector(closePressed), for: UIControlEvents.touchUpInside)
         buyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buyPressed)))
+        
+        pinButton.isHidden = !showPinning
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -169,11 +172,11 @@ class HRPGBuyItemModalViewController: UIViewController {
         if let user = HRPGManager.shared().getUser(), let currency = currency {
             switch currency {
             case .gold:
-                return price < user.gold.floatValue
+                return price <= user.gold.floatValue
             case .gem:
-                return price < user.balance.floatValue*4
+                return price <= user.balance.floatValue*4
             case .hourglass:
-                return price < user.subscriptionPlan.consecutiveTrinkets?.floatValue ?? 0
+                return price <= user.subscriptionPlan.consecutiveTrinkets?.floatValue ?? 0
             }
         }
         
