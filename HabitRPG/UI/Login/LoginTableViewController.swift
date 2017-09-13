@@ -101,6 +101,14 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         generateStars()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override func prefersHomeIndicatorAutoHidden() -> Bool {
+        return true
+    }
+    
     private func generateStars() {
         generateStars(largeCount: 1, mediumCount: 12, smallCount: 25)
     }

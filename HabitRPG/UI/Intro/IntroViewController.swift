@@ -63,4 +63,8 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
                 }
         }
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

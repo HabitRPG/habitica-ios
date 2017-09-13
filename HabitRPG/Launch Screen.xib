@@ -1,9 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,35 +17,35 @@
                 <viewControllerLayoutGuide type="bottom" id="27h-Iu-1BN"/>
             </layoutGuides>
             <view key="view" contentMode="scaleToFill" id="akb-tb-YfK">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_bg" translatesAutoresizingMaskIntoConstraints="NO" id="9Cx-qw-8Nb">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="VYm-Tu-aaY">
-                        <rect key="frame" x="218" y="120" width="165" height="140"/>
+                        <rect key="frame" x="105" y="144" width="165" height="140"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="140" id="4Dq-1m-lqT"/>
                             <constraint firstAttribute="width" constant="165" id="71H-rT-Iw7"/>
                         </constraints>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="VYm-Tu-aaY" firstAttribute="top" secondItem="Cr3-tQ-hPU" secondAttribute="bottom" constant="100" id="668-ZF-Asg"/>
                     <constraint firstItem="VYm-Tu-aaY" firstAttribute="centerX" secondItem="akb-tb-YfK" secondAttribute="centerX" id="8K6-bI-S0P"/>
-                    <constraint firstItem="27h-Iu-1BN" firstAttribute="top" secondItem="9Cx-qw-8Nb" secondAttribute="bottom" id="NGS-mx-LWK"/>
-                    <constraint firstItem="9Cx-qw-8Nb" firstAttribute="top" secondItem="akb-tb-YfK" secondAttribute="topMargin" id="REM-HW-3Yy"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="9Cx-qw-8Nb" secondAttribute="trailing" constant="-20" id="hW5-a8-Yev"/>
-                    <constraint firstItem="9Cx-qw-8Nb" firstAttribute="leading" secondItem="akb-tb-YfK" secondAttribute="leadingMargin" constant="-20" id="x94-bn-GpC"/>
+                    <constraint firstItem="9Cx-qw-8Nb" firstAttribute="top" secondItem="akb-tb-YfK" secondAttribute="top" id="REM-HW-3Yy"/>
+                    <constraint firstAttribute="trailing" secondItem="9Cx-qw-8Nb" secondAttribute="trailing" id="hW5-a8-Yev"/>
+                    <constraint firstAttribute="bottom" secondItem="9Cx-qw-8Nb" secondAttribute="bottom" id="pru-pc-6zf"/>
+                    <constraint firstItem="9Cx-qw-8Nb" firstAttribute="leading" secondItem="akb-tb-YfK" secondAttribute="leading" id="x94-bn-GpC"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="544" y="-220"/>
+            <point key="canvasLocation" x="543.5" y="-220"/>
         </viewController>
     </objects>
     <resources>
-        <image name="launch_bg" width="375" height="667"/>
+        <image name="launch_bg" width="414" height="736"/>
         <image name="launch_logo" width="165" height="140"/>
     </resources>
 </document>

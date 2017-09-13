@@ -20,7 +20,6 @@
 - (UIView *)viewWithIcon:(UIImage *)image;
 
 - (Task *)taskAtIndexPath:(NSIndexPath *)indexPath;
-- (NSIndexPath *)indexPathForTaskWithOffset:(NSIndexPath *)indexPath;
 
 @property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 - (NSPredicate *)getPredicate;

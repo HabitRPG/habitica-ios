@@ -29,3 +29,5 @@ translations
 fastlane/Preview.html
 .idea
 /fastlane/report.xml
+/Habitica.ipa
+/Habitica.app.dSYM.zip

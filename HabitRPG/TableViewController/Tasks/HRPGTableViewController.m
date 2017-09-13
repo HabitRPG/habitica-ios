@@ -50,7 +50,7 @@ BOOL editable;
     self.refreshControl = refresh;
 
     self.searchBar =
-        [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 44)];
+        [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 48)];
     self.searchBar.placeholder = NSLocalizedString(@"Search", nil);
     self.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchBar;

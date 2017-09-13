@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,20 +17,19 @@
                 <outlet property="bottomConstraint" destination="EJH-i4-erq" id="VFt-wv-m6w"/>
                 <outlet property="centerConstraint" destination="xgC-DY-9hh" id="Hii-zU-okN"/>
                 <outlet property="speechbubbleView" destination="TFD-Hg-5Ed" id="4wm-aC-RQr"/>
-                <outlet property="topConstraint" destination="OtB-fE-d4z" id="oFV-44-fhS"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hi-5C-4hb" customClass="HRPGHoledView">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                     <color key="backgroundColor" red="0.31081205610000001" green="0.16604828830000001" blue="0.57755351070000005" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view alpha="0.0" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="TFD-Hg-5Ed" customClass="SpeechbubbleView" customModule="Habitica" customModuleProvider="target">
-                    <rect key="frame" x="16" y="16" width="343" height="635"/>
+                    <rect key="frame" x="16" y="42" width="343" height="728"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="boO-fS-rkl"/>
@@ -44,14 +45,15 @@
                 <constraint firstAttribute="bottom" secondItem="5hi-5C-4hb" secondAttribute="bottom" id="0xn-ey-QNT"/>
                 <constraint firstAttribute="trailing" secondItem="5hi-5C-4hb" secondAttribute="trailing" id="4vs-Aw-dF1"/>
                 <constraint firstItem="TFD-Hg-5Ed" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="999" constant="16" id="BQf-kB-loJ"/>
-                <constraint firstAttribute="bottom" secondItem="TFD-Hg-5Ed" secondAttribute="bottom" constant="16" id="EJH-i4-erq"/>
+                <constraint firstAttribute="bottomMargin" secondItem="TFD-Hg-5Ed" secondAttribute="bottom" constant="8" id="EJH-i4-erq"/>
+                <constraint firstItem="I7Z-b1-h36" firstAttribute="top" secondItem="TFD-Hg-5Ed" secondAttribute="bottom" constant="-726" id="EwD-ba-Jdt"/>
                 <constraint firstItem="5hi-5C-4hb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LYf-Iy-lZ6"/>
-                <constraint firstItem="TFD-Hg-5Ed" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" priority="999" constant="16" id="OtB-fE-d4z"/>
                 <constraint firstAttribute="trailing" secondItem="TFD-Hg-5Ed" secondAttribute="trailing" priority="999" constant="16" id="hn0-1z-WpB"/>
                 <constraint firstItem="TFD-Hg-5Ed" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xML-gd-GpC"/>
                 <constraint firstItem="TFD-Hg-5Ed" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" priority="999" id="xgC-DY-9hh"/>
                 <constraint firstItem="5hi-5C-4hb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xzl-lk-2nr"/>
             </constraints>
+            <viewLayoutGuide key="safeArea" id="I7Z-b1-h36"/>
         </view>
     </objects>
 </document>

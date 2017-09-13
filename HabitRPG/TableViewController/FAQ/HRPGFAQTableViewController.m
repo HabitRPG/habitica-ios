@@ -29,7 +29,7 @@
     
     self.searchBar =
         [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 44)];
-    self.searchBar.placeholder = NSLocalizedString(@"Search", <#comment#>);
+    self.searchBar.placeholder = NSLocalizedString(@"Search", nil);
     self.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchBar;
     

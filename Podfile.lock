@@ -1,6 +1,6 @@
 PODS:
   - AFNetworking (1.3.4)
-  - Alamofire (4.4.0)
+  - Alamofire (4.5.1)
   - Amplitude-iOS (3.14.1)
   - AppAuth (0.9.1)
   - AttributedMarkdown (0.9.2)
@@ -14,13 +14,13 @@ PODS:
     - AFNetworking (~> 1.3)
   - DateTools (2.0.0)
   - Down (0.3.4)
-  - DTCoreText (1.6.20):
-    - DTCoreText/Core (= 1.6.20)
+  - DTCoreText (1.6.21):
+    - DTCoreText/Core (= 1.6.21)
     - DTFoundation/Core (~> 1.7.5)
     - DTFoundation/DTAnimatedGIF (~> 1.7.5)
     - DTFoundation/DTHTMLParser (~> 1.7.5)
     - DTFoundation/UIKit (~> 1.7.5)
-  - DTCoreText/Core (1.6.20):
+  - DTCoreText/Core (1.6.21):
     - DTFoundation/Core (~> 1.7.5)
     - DTFoundation/DTAnimatedGIF (~> 1.7.5)
     - DTFoundation/DTHTMLParser (~> 1.7.5)
@@ -35,9 +35,9 @@ PODS:
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
   - Eureka (3.0.0)
-  - FBSDKCoreKit (4.23.0):
+  - FBSDKCoreKit (4.26.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.23.0):
+  - FBSDKLoginKit (4.26.0):
     - FBSDKCoreKit
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
@@ -112,11 +112,11 @@ PODS:
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (6.0.0)
   - PDKeychainBindingsController (0.0.1)
-  - pop (1.0.9)
+  - pop (1.0.10)
   - PopupDialog (0.5.4)
-  - ReactiveCocoa (5.0.3):
+  - ReactiveCocoa (5.0.4):
     - ReactiveSwift (~> 1.1)
-  - ReactiveSwift (1.1.3):
+  - ReactiveSwift (1.1.5):
     - Result (~> 3.2)
   - RestKit (0.27.0):
     - RestKit/Core (= 0.27.0)
@@ -141,8 +141,8 @@ PODS:
   - SeedsSDK (0.4.6)
   - SlackTextViewController (1.9.5)
   - SOCKit (1.1)
-  - SwiftLint (0.19.0)
-  - SwiftyStoreKit (0.10.3)
+  - SwiftLint (0.22.0)
+  - SwiftyStoreKit (0.10.7)
   - TransitionKit (2.2.1)
   - VTAcknowledgementsViewController (1.2.1)
   - XLForm (3.3.0)
@@ -164,7 +164,7 @@ DEPENDENCIES:
   - Down
   - DTCoreText
   - EAIntroView
-  - Eureka
+  - Eureka (from `https://github.com/xmartlabs/Eureka`, branch `feature/Xcode9-Swift3_2`)
   - FBSDKCoreKit (~> 4)
   - FBSDKLoginKit (~> 4)
   - FBSnapshotTestCase (from `https://github.com/alanzeino/ios-snapshot-test-case.git`, commit `f97dd8e423a382eb61387564120e56a69bc98285`)
@@ -197,6 +197,9 @@ EXTERNAL SOURCES:
   CargoBay:
     :branch: v1
     :git: https://github.com/vIiRuS/CargoBay.git
+  Eureka:
+    :branch: feature/Xcode9-Swift3_2
+    :git: https://github.com/xmartlabs/Eureka
   FBSnapshotTestCase:
     :commit: f97dd8e423a382eb61387564120e56a69bc98285
     :git: https://github.com/alanzeino/ios-snapshot-test-case.git
@@ -216,6 +219,9 @@ CHECKOUT OPTIONS:
   CargoBay:
     :commit: 60fee59c70227085afe547edb3016e2656171fc6
     :git: https://github.com/vIiRuS/CargoBay.git
+  Eureka:
+    :commit: 170433bedb6db4228da60eb6c866156b6b29e666
+    :git: https://github.com/xmartlabs/Eureka
   FBSnapshotTestCase:
     :commit: f97dd8e423a382eb61387564120e56a69bc98285
     :git: https://github.com/alanzeino/ios-snapshot-test-case.git
@@ -228,7 +234,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
-  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   Amplitude-iOS: 4a3c8807b2ea5369dc11e87e23825bff01e5a922
   AppAuth: f7d9a2ce4ffe79a62a8b0c1d0938e88d9809b846
   AttributedMarkdown: ac5060667280be8cc8ee33a46c73e4ec6b17ca1a
@@ -236,13 +242,13 @@ SPEC CHECKSUMS:
   CargoBay: d0ab6070553bb49ef61e6b5a036c0091936cc3be
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   Down: 3f35b61e51a603df3e9e7e0289b15752e72f82e6
-  DTCoreText: 51904f2374af443e0d270d6fdc76035ab6f9ef8a
+  DTCoreText: e5d688cffc9f6a61eddd1a4f94e2046851230de3
   DTFoundation: 26a164ef510877387906fb92bff524a792db4bf8
   EAIntroView: 3494b7bbd1212e3a4f7e8d16194a1b00e7b9abb2
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
-  Eureka: f36fd440c3ebb7bfea0a4fbe6f16a05f1cb35906
-  FBSDKCoreKit: d7829f5a69901cd7296105328e4c3c3fc7da6518
-  FBSDKLoginKit: 6b92bd65f319d669d2b0730e49db495ef1660566
+  Eureka: 5b9418d7bfdc21ca977d69d124a6409f3e9af2c7
+  FBSDKCoreKit: c8b8582311ec11b145451d8b9717dc6cc2ae5a76
+  FBSDKLoginKit: f3f03b94c21eb834af243c0a881d48641f47ca60
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
@@ -261,18 +267,18 @@ SPEC CHECKSUMS:
   NSString+Emoji: 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: 752f9b11fd810a15162d50f11c06ff94f8e012eb
   PDKeychainBindingsController: fa8cb3cf99f2ea9240d61066ed0549f34e2cec3c
-  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   PopupDialog: 2993779aa88470585f4e9c3f240382ea82f98ef0
-  ReactiveCocoa: 066a855f613fb72f68258771095805fdb10312d2
-  ReactiveSwift: f54ba12c2e799003432930fa55495315ae44f32b
+  ReactiveCocoa: b31e754d15937811ede648fc83cd68f5de70a3d4
+  ReactiveSwift: 3fea31f8fc49f112d2dc613282c5d395c4d167bb
   RestKit: 9539fb2ca8cd53431a1fdc7f55bba4af3646cfa9
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
   SeedsSDK: caeda3e1732a6b2ba41aad3f01bfee2584b2ec94
   SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
-  SwiftLint: 3537a05b34060e78e7510f04fb7537d738247803
-  SwiftyStoreKit: 91c41fb7c09b2937078936054db7b4eb908ed02a
+  SwiftLint: 1134786caedd2caab0560d2f36b76414a5a56808
+  SwiftyStoreKit: b13badd58fe138e258d04dec7bc1c9b092351af6
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   VTAcknowledgementsViewController: e1de80f2c0ce31cc7e1c6f1c8aaeec2770371f09
   XLForm: d5c391dfc62865927b5bcab0a5a0dbfb3e02b0ec
@@ -280,6 +286,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 880db437f5ddcfc6890eebcc288b08d42768424c
+PODFILE CHECKSUM: 9ffd070de764b77346ae2303257facaa3a7b2646
 
 COCOAPODS: 1.3.1
