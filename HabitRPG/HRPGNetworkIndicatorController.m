@@ -16,7 +16,7 @@
 
 - (void)beginNetworking {
     if (self.networkCount == 0) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        [self performSelectorOnMainThread:@selector(showIndicator) withObject:self waitUntilDone:NO];
     }
     self.networkCount++;
 }
@@ -24,10 +24,19 @@
 - (void)endNetworking {
     self.networkCount--;
     if (self.networkCount == 0) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        [self performSelectorOnMainThread:@selector(hideIndicator) withObject:self waitUntilDone:NO];
     } else if (self.networkCount < 0) {
         self.networkCount = 0;
     }
+}
+
+- (void)showIndicator {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+
+- (void)hideIndicator {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 @end

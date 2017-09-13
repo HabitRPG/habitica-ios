@@ -30,7 +30,6 @@ target 'Habitica' do
   pod 'FLEX', '~> 2.0', :configurations => ['Debug']
   pod 'pop'
   pod 'DTCoreText'
-  pod 'CargoBay', :git => 'https://github.com/vIiRuS/CargoBay.git', :branch => 'v1'
   pod 'MRProgress'
   pod 'Google/Analytics'
   pod 'KLCPopup'

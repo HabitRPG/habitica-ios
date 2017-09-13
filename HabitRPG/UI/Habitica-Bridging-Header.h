@@ -36,3 +36,4 @@
 #import "Gear.h"
 #import "Quest+CoreDataClass.h"
 #import "QuestReward+CoreDataClass.h"
+#import "HRPGGemPurchaseView.h"

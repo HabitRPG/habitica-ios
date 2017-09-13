@@ -4681,6 +4681,13 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
+            if ([errorMessage.errorMessage isEqualToString:@"INVALID_ITEM_PURCHASED"]) {
+                if (successBlock) {
+                    successBlock();
+                }
+                return;
+            }
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
             } else {
