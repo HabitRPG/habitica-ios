@@ -170,15 +170,19 @@ class HRPGBuyItemModalViewController: UIViewController {
         var price: Float = 0.0
         
         if let item = self.item, let currencyString = item.currency {
-                currency = Currency(rawValue: currencyString)
-            price = item.value?.floatValue ?? 0
-        } else if let inAppReward = reward as? InAppReward, let currencyString = inAppReward.currency {
             currency = Currency(rawValue: currencyString)
+            price = item.value?.floatValue ?? 0
+        } else if let inAppReward = reward as? InAppReward {
+            if let currencyString = inAppReward.currency {
+                currency = Currency(rawValue: currencyString)
+            } else {
+                currency = Currency.gold
+            }
             price = inAppReward.value?.floatValue ?? 0
         }
         
-        if let user = HRPGManager.shared().getUser(), let currency = currency {
-            switch currency {
+        if let user = HRPGManager.shared().getUser(), let selectedCurrency = currency {
+            switch selectedCurrency {
             case .gold:
                 return price <= user.gold.floatValue
             case .gem:
@@ -187,7 +191,6 @@ class HRPGBuyItemModalViewController: UIViewController {
                 return price <= user.subscriptionPlan.consecutiveTrinkets?.floatValue ?? 0
             }
         }
-        
         return false
     }
     
@@ -247,6 +250,8 @@ class HRPGBuyItemModalViewController: UIViewController {
         }, onError: nil)
     }
     
+    //swiftlint:disable function_body_length
+    //swiftlint:disable cyclomatic_complexity
     func buyPressed() {
         if itemIsLocked() {
             return

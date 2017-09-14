@@ -82,6 +82,7 @@ protocol LoginViewModelType {
 class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOutputs {
 
     //swiftlint:disable function_body_length
+    //swiftlint:disable cyclomatic_complexity
     init() {
         let authValues = Signal.combineLatest(
             self.authTypeProperty.signal,

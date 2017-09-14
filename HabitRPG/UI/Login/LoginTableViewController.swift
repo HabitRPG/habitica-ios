@@ -208,6 +208,8 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //swiftlint:disable function_body_length
+    //swiftlint:disable cyclomatic_complexity
     func setupDecorations() {
         self.viewModel.outputs.formVisibility.observeValues {[weak self] (value) in
             guard let weakSelf = self else {
