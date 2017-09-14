@@ -114,13 +114,13 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
 
     private func checkedCell(_ indexPath: IndexPath) {
         if let tasks = self.tasks {
-            tasks[indexPath.item].completed = NSNumber(booleanLiteral: !(tasks[indexPath.item].completed?.boolValue ?? true))
+            tasks[indexPath.item].completed = NSNumber(value: !(tasks[indexPath.item].completed?.boolValue ?? true))
             self.yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
         }
     }
     
     private func checkChecklistItem(_ indexPath: IndexPath, item: ChecklistItem) {
-        item.completed = NSNumber(booleanLiteral: !(item.completed?.boolValue ?? true))
+        item.completed = NSNumber(value: !(item.completed?.boolValue ?? true))
         self.yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
     }
 

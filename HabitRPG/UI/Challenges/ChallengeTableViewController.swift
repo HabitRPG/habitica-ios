@@ -45,7 +45,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let subscriber = Observer<Bool, NSError>(value: {[weak self] in
+        let subscriber = Signal<Bool, NSError>.Observer(value: {[weak self] in
             self?.handleJoinLeave(isMember: $0)
         })
         disposable = CompositeDisposable()

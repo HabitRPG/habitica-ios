@@ -81,13 +81,13 @@ class TutorialStepView: UIView {
         self.frame = onView.frame
         UIView.animate(withDuration: 0.3, animations: {[weak self] in
             self?.backgroundView.alpha = 1
-        }) {[weak self] _ in
+        }, completion: {[weak self] _ in
             UIView.animate(withDuration: 0.4, delay: 0.3, options: [], animations: {[weak self] in
                 self?.speechbubbleView.alpha = 1
             }, completion: {[weak self] _ in
                 self?.speechbubbleView.animateTextView()
             })
-        }
+        })
     }
     
     func dismiss(animated: Bool) {
@@ -95,11 +95,11 @@ class TutorialStepView: UIView {
         if let action = self.dismissAction {
             action()
         }
-        UIView.animate(withDuration: 0.4, animations: {[weak self] in
+        UIView .animate(withDuration: 0.4, animations: {[weak self] in
             self?.alpha = 0
-        }) {[weak self] _ in
-            self?.removeFromSuperview()
-        }
+            }, completion: {[weak self] _ in
+                self?.removeFromSuperview()
+        })
     }
     
     func setText(_ text: String) {

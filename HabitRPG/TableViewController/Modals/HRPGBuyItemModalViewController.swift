@@ -98,22 +98,10 @@ class HRPGBuyItemModalViewController: UIViewController {
             if let itemView = itemView {
                 switch getPurchaseType() {
                 case "quests":
-                    let questView = QuestDetailView(frame: CGRect.zero)
-                    if let quest = inventoryRepository.getQuest(key) {
-                        questView.configure(quest: quest)
-                    }
-                    addItemAndDetails(itemView, questView, to: contentView)
+                    setupQuests(contentView, itemView: itemView, key: key)
                     break
                 case "gear":
-                    if let identifier = shopIdentifier, identifier == TimeTravelersShopKey {
-                        addItemSet(itemView: itemView, to: contentView)
-                    } else {
-                        let statsView = HRPGItemStatsView(frame: CGRect.zero)
-                        if let gear = inventoryRepository.getGear(key) {
-                            statsView.configure(gear: gear)
-                        }
-                        addItemAndDetails(itemView, statsView, to: contentView)
-                    }
+                    setupGear(contentView, itemView: itemView, key: key, shopIdentifier: shopIdentifier)
                     break
                 case "mystery_set":
                     addItemSet(itemView: itemView, to: contentView)
@@ -125,6 +113,26 @@ class HRPGBuyItemModalViewController: UIViewController {
             contentView.translatesAutoresizingMaskIntoConstraints = false
             
             contentView.triggerLayout()
+        }
+    }
+    
+    private func setupQuests(_ contentView: UIView, itemView: UIView, key: String) {
+        let questView = QuestDetailView(frame: CGRect.zero)
+        if let quest = inventoryRepository.getQuest(key) {
+            questView.configure(quest: quest)
+        }
+        addItemAndDetails(itemView, questView, to: contentView)
+    }
+    
+    private func setupGear(_ contentView: UIView, itemView: UIView, key: String, shopIdentifier: String?) {
+        if let identifier = shopIdentifier, identifier == TimeTravelersShopKey {
+            addItemSet(itemView: itemView, to: contentView)
+        } else {
+            let statsView = HRPGItemStatsView(frame: CGRect.zero)
+            if let gear = inventoryRepository.getGear(key) {
+                statsView.configure(gear: gear)
+            }
+            addItemAndDetails(itemView, statsView, to: contentView)
         }
     }
     
@@ -220,11 +228,6 @@ class HRPGBuyItemModalViewController: UIViewController {
         contentView.addSubview(itemView)
         contentView.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(itemView))
         contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-20-|", ["itemView": itemView]))
-        
-        let firstGearSetItem = HRPGGearSetItem(frame: CGRect.zero)
-        let secondGearSetItem = HRPGGearSetItem(frame: CGRect.zero)
-        let thirdGearSetItem = HRPGGearSetItem(frame: CGRect.zero)
-        let fourthGearSetItem = HRPGGearSetItem(frame: CGRect.zero)
     }
     
     // MARK: actions

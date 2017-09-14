@@ -138,6 +138,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     func bindViewModel() {
         setupButtons()
         setupFieldVisibility()
+        setupDecorations()
         setupReturnTypes()
         setupTextInput()
         setupOnePassword()
@@ -205,7 +206,9 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
                 weakSelf.passwordRepeatField.entryView.isEnabled = false
             }
         }
-        
+    }
+    
+    func setupDecorations() {
         self.viewModel.outputs.formVisibility.observeValues {[weak self] (value) in
             guard let weakSelf = self else {
                 return

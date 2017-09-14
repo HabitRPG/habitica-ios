@@ -7,7 +7,6 @@
 //
 
 #import "HRPGGroupAboutTableViewController.h"
-#import "DTAttributedTextView.h"
 #import "HRPGGroupFormViewController.h"
 #import "HRPGGroupTableViewController.h"
 #import "HRPGProfileViewController.h"
@@ -17,8 +16,6 @@
 
 @interface HRPGGroupAboutTableViewController ()
 @property NSString *replyMessage;
-@property DTAttributedTextView *sizeTextView;
-@property NSMutableDictionary *attributes;
 
 @end
 
@@ -27,8 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.clearsSelectionOnViewWillAppear = NO;
-    self.sizeTextView = [[DTAttributedTextView alloc] init];
-    [self configureMarkdownAttributes];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 40;
 
     [self setupBarButton];
 }
@@ -67,42 +64,30 @@
 }
 
 - (void)leaveGroup {
-    if ([UIAlertController class]) {
-        UIAlertController *alertController =
-            [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Are you sure?", nil)
-                                                message:nil
-                                         preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction *cancelAction =
-            [UIAlertAction actionWithTitle:NSLocalizedString(@"Go Back", nil)
-                                     style:UIAlertActionStyleCancel
-                                   handler:^(UIAlertAction *action){
-                                   }];
-        [alertController addAction:cancelAction];
-
-        UIAlertAction *confirmAction =
-            [UIAlertAction actionWithTitle:NSLocalizedString(@"Leave Group", nil)
-                                     style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction *action) {
-                                       [self alertView:nil clickedButtonAtIndex:1];
-                                   }];
-        [alertController addAction:confirmAction];
-
-        [self presentViewController:alertController
-                           animated:YES
-                         completion:^(){
-                         }];
-    } else {
-        UIAlertView *message =
-            [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Are you sure?", nil)
-                                       message:nil
-                                      delegate:self
-                             cancelButtonTitle:NSLocalizedString(@"Leave Group", nil)
-                             otherButtonTitles:nil];
-
-        [message addButtonWithTitle:NSLocalizedString(@"Opt-Out", nil)];
-        [message show];
-    }
+    UIAlertController *alertController =
+    [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Are you sure?", nil)
+                                        message:nil
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction =
+    [UIAlertAction actionWithTitle:NSLocalizedString(@"Go Back", nil)
+                             style:UIAlertActionStyleCancel
+                           handler:^(UIAlertAction *action){
+                           }];
+    [alertController addAction:cancelAction];
+    
+    UIAlertAction *confirmAction =
+    [UIAlertAction actionWithTitle:NSLocalizedString(@"Leave Group", nil)
+                             style:UIAlertActionStyleDefault
+                           handler:^(UIAlertAction *action) {
+                               [self alertClickedButtonAtIndex:1];
+                           }];
+    [alertController addAction:confirmAction];
+    
+    [self presentViewController:alertController
+                       animated:YES
+                     completion:^(){
+                     }];
 }
 
 - (void)joinGroup {
@@ -125,18 +110,6 @@
         return 3;
     } else {
         return 2;
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.item == 0) {
-        self.sizeTextView.attributedString = [self renderMarkdown:self.group.hdescription];
-        CGSize suggestedSize = [self.sizeTextView.attributedTextContentView
-            suggestedFrameSizeToFitEntireStringConstraintedToWidth:self.viewWidth - 48];
-        CGFloat rowHeight = suggestedSize.height + 24;
-        return rowHeight;
-    } else {
-        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
     }
 }
 
@@ -198,7 +171,7 @@
           } onError:nil];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertClickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         __weak HRPGGroupAboutTableViewController *weakSelf = self;
         [[HRPGManager sharedManager]

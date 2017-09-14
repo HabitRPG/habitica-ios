@@ -33,8 +33,8 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     var taskSetupViewController: TaskSetupViewController?
     var currentpage = 0
     
-    var createdTags = [SetupTaskCategory:Tag]()
-    var tagsToCreate = [SetupTaskCategory:Tag]()
+    var createdTags = [SetupTaskCategory: Tag]()
+    var tagsToCreate = [SetupTaskCategory: Tag]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,7 +157,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         }
         createTag {[weak self] in
             self?.createTasks {
-                self?.sharedManager?.fetchUser({ 
+                self?.sharedManager?.fetchUser({
                     self?.showMainView()
                 }, onError: {
                     self?.showMainView()

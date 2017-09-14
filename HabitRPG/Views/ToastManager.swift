@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+//swiftlint:disable:next attributes
 @objc public enum ToastColor: Int {
     case blue = 0, green, red, gray, yellow, purple
     
@@ -56,11 +57,11 @@ class ToastManager: NSObject {
                                                                               metrics: nil, views: ["view": contentView]))
                 UIView.animate(withDuration: 0.2, animations: { () -> Void in
                     contentView.alpha = 1
-                }) { (_) in
+                }, completion: { (_) in
                     if let completionBlock = completion {
                         completionBlock()
                     }
-            }
+            })
         } else {
             self.displayQueue.removeFirst()
         }
@@ -71,12 +72,12 @@ class ToastManager: NSObject {
             withDuration: 0.2,
             animations: { () -> Void in
                 toast.alpha = 0
-        }) { (_) in
+        }, completion: { (_) in
             toast.removeFromSuperview()
             if let completionBlock = completion {
                 completionBlock()
             }
-        }
+        })
      }
     
     private func display(toast: ToastView) {

@@ -5107,11 +5107,9 @@ NSString *currentUser;
 
     if ([self.user.level integerValue] == 10 && ![self.user.preferences.disableClass boolValue]) {
         HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
-        UIViewController *activeViewController = del.window.rootViewController;UINavigationController *selectClassNavigationController =
-        [del.window.rootViewController.storyboard
-         instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
+        UIViewController *activeViewController = del.window.rootViewController;
+        UINavigationController *selectClassNavigationController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
         selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
-
         [activeViewController presentViewController:selectClassNavigationController
                                            animated:YES
                                          completion:^(){

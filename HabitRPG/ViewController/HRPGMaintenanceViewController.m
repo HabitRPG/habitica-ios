@@ -24,8 +24,6 @@
 @property CGFloat titleHeight;
 @property CGFloat descriptionHeight;
 
-@property NSMutableDictionary *attributes;
-
 @end
 
 @implementation HRPGMaintenanceViewController
@@ -35,7 +33,6 @@
 
     if (self) {
         self.view.backgroundColor = [UIColor whiteColor];
-        [self configureMarkdownAttributes];
 
         self.scrollView = [[UIScrollView alloc] init];
         [self.view addSubview:self.scrollView];

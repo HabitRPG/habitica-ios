@@ -2,7 +2,7 @@
 
 import ReactiveSwift
 
-internal extension Event {
+internal extension Signal.Event {
     internal var isNext: Bool {
         if case .value = self {
             return true

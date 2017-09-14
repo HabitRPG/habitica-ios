@@ -12,7 +12,7 @@ import ReactiveSwift
 class Interactor<Input, Output> {
 
     var reactive: Signal<Output, NSError>
-    private let observer: Observer<Input, NSError>
+    private let observer: Signal<Input, NSError>.Observer
 
     init() {
         let (reactive, observer) = Signal<Input, NSError>.pipe()

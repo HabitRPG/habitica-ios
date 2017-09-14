@@ -17,7 +17,6 @@
 
 @interface HRPGUserProfileViewController ()
 @property(nonatomic, readonly, getter=getUser) User *user;
-@property NSMutableDictionary *attributes;
 @property NSDictionary *gearDictionary;
 @property BOOL isAttributesExpanded;
 @end
@@ -31,7 +30,6 @@
         onSuccess:nil onError:nil];
 
     self.navigationItem.title = self.username;
-    [self configureMarkdownAttributes];
     
     self.isAttributesExpanded = NO;
     

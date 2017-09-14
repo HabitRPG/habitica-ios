@@ -28,7 +28,7 @@ trailing_whitespace:
 type_name:
   min_length: 4 # only warning
   max_length: # warning and error
-    warning: 40
+    warning: 45
     error: 50
   excluded: iPhone # excluded via string
 reporter: "emoji"

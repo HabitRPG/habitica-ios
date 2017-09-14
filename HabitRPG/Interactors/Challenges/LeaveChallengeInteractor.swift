@@ -34,7 +34,7 @@ class LeaveChallengeInteractor: Interactor<Challenge, Bool> {
         }
     }
 
-    private func createConfirmationAlert(challenge: Challenge, observer: Observer<(Bool, Bool, Challenge), NSError>) {
+    private func createConfirmationAlert(challenge: Challenge, observer: Signal<(Bool, Bool, Challenge), NSError>.Observer) {
         let alert = UIAlertController(title: NSLocalizedString("Leave Challenge?", comment: ""),
                                       message: NSLocalizedString("Do you want to leave the challenge and keep or delete the tasks?", comment: ""),
                                       preferredStyle: .alert)

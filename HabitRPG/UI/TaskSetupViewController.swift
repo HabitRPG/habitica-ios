@@ -188,35 +188,7 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
     }
     
     func toggleButton(_ sender: UIGestureRecognizer) {
-        var category: SetupTaskCategory?
-        if let button = sender.view as? UIButton {
-            switch button {
-            case workCategoryButton:
-                category = .work
-                break
-            case exerciseCategoryButton:
-                category = .exercise
-                break
-            case healthCategoryButton:
-                category = .health
-                break
-            case schoolCategoryButton:
-                category = .school
-                break
-            case teamCategoryButton:
-                category = .selfcare
-                break
-            case choresCategoryButtton:
-                category = .chores
-                break
-            case creativityCategoryButton:
-                category = .creativity
-                break
-            default:
-                category = nil
-            }
-        }
-        if let selectedCategory = category {
+        if let selectedCategory = getCategoryFor(view: sender.view) {
             if selectedCategories.contains(selectedCategory) {
                 if let index = selectedCategories.index(of: selectedCategory) {
                     selectedCategories.remove(at: index)
@@ -226,6 +198,30 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
             }
         }
         updateButtonBackgrounds()
+    }
+    
+    private func getCategoryFor(view: UIView?) -> SetupTaskCategory? {
+        if let button = view as? UIButton {
+            switch button {
+            case workCategoryButton:
+                return .work
+            case exerciseCategoryButton:
+                return .exercise
+            case healthCategoryButton:
+                return .health
+            case schoolCategoryButton:
+                return .school
+            case teamCategoryButton:
+                return .selfcare
+            case choresCategoryButtton:
+                return .chores
+            case creativityCategoryButton:
+                return .creativity
+            default:
+                return nil
+            }
+        }
+        return nil
     }
     
     func updateButtonBackgrounds() {

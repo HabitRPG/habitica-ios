@@ -15,5 +15,4 @@ class RoundedView: UIView {
         layer.cornerRadius = frame.size.height / 2.0
     }
     
-    
 }

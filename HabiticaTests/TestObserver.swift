@@ -16,14 +16,14 @@ import Result
  */
 internal final class TestObserver <Value, E: Error> {
     
-    internal private(set) var events: [Event<Value, E>] = []
-    internal private(set) var observer: Observer<Value, E>!
+    internal private(set) var events: [Signal<Value, E>.Event] = []
+    internal private(set) var observer: Signal<Value, E>.Observer!
     
     internal init() {
-        self.observer = Observer<Value, E>(action)
+        self.observer = Signal<Value, E>.Observer(action)
     }
     
-    private func action(event: Event<Value, E>) -> () {
+    private func action(event: Signal<Value, E>.Event) -> () {
         self.events.append(event)
     }
     

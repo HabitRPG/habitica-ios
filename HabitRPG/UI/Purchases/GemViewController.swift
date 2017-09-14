@@ -12,7 +12,7 @@ import SwiftyStoreKit
 import StoreKit
 import Keys
 
-class GemViewController : UICollectionViewController, SeedsInAppMessageDelegate {
+class GemViewController: UICollectionViewController, SeedsInAppMessageDelegate {
     
     let identifiers = ["com.habitrpg.ios.Habitica.4gems", "com.habitrpg.ios.Habitica.21gems",
                         "com.habitrpg.ios.Habitica.42gems", "com.habitrpg.ios.Habitica.84gems"

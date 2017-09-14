@@ -367,6 +367,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         }
     }
 
+    //swiftlint:disable:next cyclomatic_complexity
     private func isCustomizationActive(_ customization: SetupCustomization) -> Bool {
         if let user = self.user {
             switch customization.subcategory {

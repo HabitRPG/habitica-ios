@@ -90,15 +90,19 @@ class CheckedTableViewCell: TaskTableViewCell {
             view.removeFromSuperview()
         }
         if isExpanded {
-            if let checklist = task.checklist?.array as? [ChecklistItem] {
-                for item in checklist {
-                    let checkbox = HRPGCheckBoxView()
-                    checkbox.configure(for: item, withTitle: true)
-                    checklistContainer.addArrangedSubview(checkbox)
-                    checkbox.wasTouched = {[weak self] in
-                        if let action = self?.checklistItemTouched {
-                            action(item)
-                        }
+            addChecklistViews(task: task)
+        }
+    }
+    
+    private func addChecklistViews(task: Task) {
+        if let checklist = task.checklist?.array as? [ChecklistItem] {
+            for item in checklist {
+                let checkbox = HRPGCheckBoxView()
+                checkbox.configure(for: item, withTitle: true)
+                checklistContainer.addArrangedSubview(checkbox)
+                checkbox.wasTouched = {[weak self] in
+                    if let action = self?.checklistItemTouched {
+                        action(item)
                     }
                 }
             }

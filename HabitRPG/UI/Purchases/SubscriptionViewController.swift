@@ -358,9 +358,9 @@ class SubscriptionViewController: HRPGBaseViewController {
             validUntil: Date()
         )
         switch purchaseResult {
-        case .purchased(_):
+        case .purchased:
             return true
-        case .expired(_):
+        case .expired:
             return false
         case .notPurchased:
             return false

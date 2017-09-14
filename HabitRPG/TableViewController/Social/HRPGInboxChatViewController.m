@@ -20,7 +20,6 @@
 
 @property User *user;
 @property UITextView *sizeTextView;
-@property NSMutableDictionary *attributes;
 @property CGFloat viewWidth;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *profileBarButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
@@ -37,7 +36,6 @@
     self.sizeTextView = [[UITextView alloc] init];
     self.sizeTextView.textContainerInset = UIEdgeInsetsZero;
     self.sizeTextView.contentInset = UIEdgeInsetsZero;
-    [self configureMarkdownAttributes];
     self.viewWidth = self.view.frame.size.width;
 
     self.user = [[HRPGManager sharedManager] getUser];

@@ -12,7 +12,7 @@ import UIKit
  UnableToScanHexValue:      "Scan hex error"
  MismatchedHexStringLength: "Invalid RGB string, number of characters after '#' should be either 3, 4, 6 or 8"
  */
-public enum UIColorInputError : Error {
+public enum UIColorInputError: Error {
     case missingHashMarkAsPrefix,
     unableToScanHexValue,
     mismatchedHexStringLength
@@ -87,13 +87,13 @@ extension UIColor {
         }
         
         let hexString: String = rgba.substring(from: rgba.characters.index(rgba.startIndex, offsetBy: 1))
-        var hexValue:  UInt32 = 0
+        var hexValue: UInt32 = 0
         
         guard Scanner(string: hexString).scanHexInt32(&hexValue) else {
             throw UIColorInputError.unableToScanHexValue
         }
         
-        switch (hexString.characters.count) {
+        switch hexString.characters.count {
         case 3:
             self.init(hex3: UInt16(hexValue))
         case 4:
@@ -132,29 +132,29 @@ extension UIColor {
         var a: CGFloat = 0
         self.getRed(&r, green: &g, blue: &b, alpha: &a)
         
-        if (includeAlpha) {
+        if includeAlpha {
             return String(format: "#%02X%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255), Int(a * 255))
         } else {
             return String(format: "#%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
         }
     }
     
-    func lighter(by percentage:CGFloat=30.0) -> UIColor? {
+    func lighter(by percentage: CGFloat=30.0) -> UIColor? {
         return self.adjust(by: abs(percentage) )
     }
     
-    func darker(by percentage:CGFloat=30.0) -> UIColor? {
+    func darker(by percentage: CGFloat=30.0) -> UIColor? {
         return self.adjust(by: -1 * abs(percentage) )
     }
     
-    func adjust(by percentage:CGFloat=30.0) -> UIColor? {
-        var r:CGFloat=0, g:CGFloat=0, b:CGFloat=0, a:CGFloat=0;
-        if(self.getRed(&r, green: &g, blue: &b, alpha: &a)){
+    func adjust(by percentage: CGFloat=30.0) -> UIColor? {
+        var r: CGFloat=0, g: CGFloat=0, b: CGFloat=0, a: CGFloat=0
+        if self.getRed(&r, green: &g, blue: &b, alpha: &a) {
             return UIColor(red: min(r + percentage/100, 1.0),
                            green: min(g + percentage/100, 1.0),
                            blue: min(b + percentage/100, 1.0),
                            alpha: a)
-        }else{
+        } else {
             return nil
         }
     }
@@ -170,7 +170,7 @@ extension String {
         }
         
         let hexString: String = self.substring(from: self.characters.index(self.startIndex, offsetBy: 1))
-        switch (hexString.characters.count) {
+        switch hexString.characters.count {
         case 4:
             return "#"
                 + hexString.substring(from: self.characters.index(self.startIndex, offsetBy: 1))

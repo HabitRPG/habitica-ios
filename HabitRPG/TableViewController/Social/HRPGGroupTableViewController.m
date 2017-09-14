@@ -21,8 +21,6 @@
 @interface HRPGGroupTableViewController ()
 @property NSString *replyMessage;
 @property UITextView *sizeTextView;
-@property NSMutableDictionary *attributes;
-
 @end
 
 @implementation HRPGGroupTableViewController
@@ -34,7 +32,6 @@
         self.sizeTextView = [[UITextView alloc] init];
         self.sizeTextView.textContainerInset = UIEdgeInsetsZero;
         self.sizeTextView.contentInset = UIEdgeInsetsZero;
-        [self configureMarkdownAttributes];
     }
 
     return self;
@@ -50,8 +47,6 @@
 
     UINib *nib = [UINib nibWithNibName:@"ChatMessageCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"ChatMessageCell"];
-
-    [self configureMarkdownAttributes];
 
     self.user = [[HRPGManager sharedManager] getUser];
 

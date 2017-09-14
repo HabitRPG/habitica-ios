@@ -9,22 +9,22 @@
 import Foundation
 
 extension CGRect {
-    func replaceWidth(newValue : CGFloat) -> CGRect {
+    func replaceWidth(newValue: CGFloat) -> CGRect {
         var rect = self
         rect.size.width = newValue
         return rect
     }
-    func replaceHeight(newValue : CGFloat) -> CGRect {
+    func replaceHeight(newValue: CGFloat) -> CGRect {
         var rect = self
         rect.size.height = newValue
         return rect
     }
-    func replaceX(newValue : CGFloat) -> CGRect {
+    func replaceX(newValue: CGFloat) -> CGRect {
         var rect = self
         rect.origin.x = newValue
         return rect
     }
-    func replaceY(newValue : CGFloat) -> CGRect {
+    func replaceY(newValue: CGFloat) -> CGRect {
         var rect = self
         rect.origin.y = newValue
         return rect

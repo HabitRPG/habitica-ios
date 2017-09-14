@@ -51,10 +51,8 @@ class HRPGShopBannerView: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        get {
             notesLabel.sizeToFit()
             return CGSize(width: UIScreen.main.bounds.size.width, height: 167 + notesLabel.bounds.size.height)
-        }
     }
     
     private func setupShop() {

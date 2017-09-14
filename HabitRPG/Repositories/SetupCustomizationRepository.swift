@@ -17,38 +17,50 @@ class SetupCustomizationRepository {
     static func getCustomizations(category: AvatarCustomizationCategory, subcategory: AvatarCustomizationSubcategory?, user: User) -> [SetupCustomization] {
         switch category {
         case .body:
-            switch subcategory {
-            case .some(.shirt):
-                return getShirts(size: user.preferences.size)
-            case .some(.size):
-                return getSizes()
-            default:
-                return Array()
-            }
+            return getBodyCustomizations(subcategory: subcategory, user: user)
         case .skin:
             return getSkins()
         case .hair:
-            switch subcategory {
-            case .some(.bangs):
-                return getBangs(color: user.preferences.hairColor)
-            case .some(.ponytail):
-                return getPonytails(color: user.preferences.hairColor)
-            case .some(.color):
-                return getHairColors()
-            default:
-                return Array()
-            }
+            return getHairCustomizations(subcategory: subcategory, user: user)
         case .extras:
-            switch subcategory {
-            case .some(.wheelchair):
-                return getWheelchairs()
-            case .some(.glasses):
-                return getGlasses()
-            case .some(.flower):
-                return getFlowers()
-            default:
-                return Array()
-            }
+            return getExtrasCustomizations(subcategory: subcategory, user: user)
+        }
+    }
+    
+    static private func getBodyCustomizations(subcategory: AvatarCustomizationSubcategory?, user: User) -> [SetupCustomization] {
+        switch subcategory {
+        case .some(.shirt):
+            return getShirts(size: user.preferences.size)
+        case .some(.size):
+            return getSizes()
+        default:
+            return Array()
+        }
+    }
+
+    static private func getHairCustomizations(subcategory: AvatarCustomizationSubcategory?, user: User) -> [SetupCustomization] {
+        switch subcategory {
+        case .some(.bangs):
+            return getBangs(color: user.preferences.hairColor)
+        case .some(.ponytail):
+            return getPonytails(color: user.preferences.hairColor)
+        case .some(.color):
+            return getHairColors()
+        default:
+            return Array()
+        }
+    }
+    
+    static private func getExtrasCustomizations(subcategory: AvatarCustomizationSubcategory?, user: User) -> [SetupCustomization] {
+        switch subcategory {
+        case .some(.wheelchair):
+            return getWheelchairs()
+        case .some(.glasses):
+            return getGlasses()
+        case .some(.flower):
+            return getFlowers()
+        default:
+            return Array()
         }
     }
     

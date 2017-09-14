@@ -131,7 +131,23 @@ class ToastView: UIView {
         bottomSpacing.constant = 6
         leadingSpacing.constant = 8
         trailingSpacing.constant = 8
-        if let title = self.options.title {
+        
+        configureTitle(self.options.title)
+        configureSubtitle(self.options.subtitle)
+        configureLeftImage(self.options.leftImage)
+        configureRightView(icon: self.options.rightIcon, text: self.options.rightText, textColor: self.options.rightTextColor)
+        
+        priceContainerWidth.constant = 0
+        
+        self.setNeedsLayout()
+        setNeedsUpdateConstraints()
+        updateConstraints()
+        setNeedsLayout()
+        layoutIfNeeded()
+    }
+    
+    private func configureTitle(_ title: String?) {
+        if let title = title {
             titleLabel.isHidden = false
             titleLabel.text = title
             titleLabel.sizeToFit()
@@ -141,8 +157,10 @@ class ToastView: UIView {
             titleLabel.isHidden = true
             titleLabel.text = nil
         }
-        
-        if let subtitle = self.options.subtitle {
+    }
+    
+    private func configureSubtitle(_ subtitle: String?) {
+        if let subtitle = subtitle {
             subtitleLabel.isHidden = false
             subtitleLabel.text = subtitle
             subtitleLabel.sizeToFit()
@@ -152,8 +170,10 @@ class ToastView: UIView {
             subtitleLabel.isHidden = true
             subtitleLabel.text = nil
         }
-        
-        if let leftImage = self.options.leftImage {
+    }
+    
+    private func configureLeftImage(_ leftImage: UIImage?) {
+        if let leftImage = leftImage {
             leftImageView.isHidden = false
             leftImageView.image = leftImage
             leadingSpacing.constant = 4
@@ -164,8 +184,10 @@ class ToastView: UIView {
             leftImageWidth.constant = 0
             leftImageHeight.priority = 500
         }
-        
-        if let icon = options.rightIcon, let text = options.rightText, let textColor = options.rightTextColor {
+    }
+    
+    private func configureRightView(icon: UIImage?, text: String?, textColor: UIColor?) {
+        if let icon = icon, let text = text, let textColor = textColor {
             priceContainer.isHidden = false
             priceIconLabel.icon = icon
             priceIconLabel.text = text
@@ -176,13 +198,6 @@ class ToastView: UIView {
             priceContainer.isHidden = true
             priceIconLabel.removeFromSuperview()
         }
-        
-        priceContainerWidth.constant = 0
-        
-        self.setNeedsLayout()
-        setNeedsUpdateConstraints()
-        updateConstraints()
-        setNeedsLayout()
-        layoutIfNeeded()
     }
+    
 }

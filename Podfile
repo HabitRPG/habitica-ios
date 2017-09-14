@@ -1,5 +1,6 @@
 platform :ios, '9.3'
 use_frameworks!
+inhibit_all_warnings!
 
 plugin 'cocoapods-keys', {
   :keys => [
@@ -29,12 +30,10 @@ target 'Habitica' do
   pod 'XLForm'
   pod 'FLEX', '~> 2.0', :configurations => ['Debug']
   pod 'pop'
-  pod 'DTCoreText'
   pod 'MRProgress'
   pod 'Google/Analytics'
   pod 'KLCPopup'
   pod 'EAIntroView'
-  pod 'AttributedMarkdown', :git => 'https://github.com/dreamwieber/AttributedMarkdown.git'
   pod 'Amplitude-iOS', '~> 3.14.1'
   pod 'Masonry'
   pod "SlackTextViewController"
@@ -44,14 +43,14 @@ target 'Habitica' do
   pod 'FBSDKCoreKit', '~> 4'
   pod 'FBSDKLoginKit', '~> 4'
 
-  pod 'ReactiveCocoa', '~> 5.0.3'
+  pod 'ReactiveCocoa', '~> 6.0.1'
 
   pod 'SwiftyStoreKit'
 
   pod 'Down'
 
   pod 'PopupDialog', :git => 'https://github.com/Orderella/PopupDialog.git', :branch => 'development'
-  pod 'Alamofire', '~> 4.4'
+  pod 'Alamofire', '~> 4.5'
   pod 'SwiftLint'
   pod 'Eureka', :git => 'https://github.com/xmartlabs/Eureka', :branch => 'feature/Xcode9-Swift3_2'
 

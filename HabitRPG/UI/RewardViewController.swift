@@ -52,9 +52,9 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
     func refresh() {
         HRPGManager.shared().fetchBuyableRewards({[weak self] in
             self?.refreshControl.endRefreshing()
-        }) {[weak self] in
+        }, onError: {[weak self] in
             self?.refreshControl.endRefreshing()
-        }
+        })
     }
     
     private var editedReward: Reward?
@@ -127,30 +127,6 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
         } else {
             return UIEdgeInsets(top: 12, left: 6, bottom: 12, right: 6)
         }
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        //TODO: Implement correctly
-        /*guard let indexPath = indexPath else {
-            return
-        }
-        switch type {
-        case .delete:
-            collectionView?.deleteItems(at: [indexPath])
-            break
-        case .insert:
-            collectionView?.insertItems(at: [indexPath])
-            break
-        case .move:
-            guard let newIndexPath = newIndexPath else {
-                return
-            }
-            collectionView?.moveItem(at: indexPath, to: newIndexPath)
-            break
-        case .update:
-            collectionView?.reloadItems(at: [indexPath])
-            break
-        }*/
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

@@ -12,15 +12,12 @@
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 
 @interface HRPGFAQDetailViewController ()
-@property NSMutableDictionary *attributes;
 @end
 
 @implementation HRPGFAQDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [self configureMarkdownAttributes];
 
     self.questionLabel.text = self.faq.question;
     self.answerTextView.attributedText = [self renderMarkdown:[self.faq getRelevantAnswer]];

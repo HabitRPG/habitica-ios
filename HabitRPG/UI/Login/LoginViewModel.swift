@@ -393,17 +393,15 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     internal var passwordText: Signal<String, NoError>
     internal var passwordRepeatText: Signal<String, NoError>
 
-    private var showNextViewControllerObserver: Observer<(), NoError>
-    private var showErrorObserver: Observer<String, NoError>
-    private var loadingIndicatorVisibilityObserver: Observer<Bool, NoError>
+    private var showNextViewControllerObserver: Signal<(), NoError>.Observer
+    private var showErrorObserver: Signal<String, NoError>.Observer
+    private var loadingIndicatorVisibilityObserver: Signal<Bool, NoError>.Observer
 
     internal var inputs: LoginViewModelInputs { return self }
     internal var outputs: LoginViewModelOutputs { return self }
     
     var currentAuthType: LoginViewAuthType {
-        get {
             return authTypeProperty.value
-        }
     }
 }
 

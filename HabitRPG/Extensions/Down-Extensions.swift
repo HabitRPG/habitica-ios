@@ -11,13 +11,13 @@ import Down
 
 extension Down {
 
-    func toHabiticaAttributedString() throws -> NSAttributedString {
+    func toHabiticaAttributedString() throws -> NSMutableAttributedString {
         return try self.toHabiticaAttributedString(baseFont: UIFont.preferredFont(forTextStyle: .body))
     }
 
-    func toHabiticaAttributedString(baseFont: UIFont) throws -> NSAttributedString {
+    func toHabiticaAttributedString(baseFont: UIFont) throws -> NSMutableAttributedString {
         guard let string = try self.toAttributedString().mutableCopy() as? NSMutableAttributedString else {
-            return NSAttributedString()
+            return NSMutableAttributedString()
         }
         let fontSizeOffset = baseFont.pointSize - 12.0
         string.enumerateAttribute(NSFontAttributeName,
@@ -37,5 +37,15 @@ extension Down {
             }
         })
         return string
+    }
+}
+
+class HabiticaMarkdownHelper: NSObject {
+    
+    static func toHabiticaAttributedString(_ text: String) throws -> NSMutableAttributedString {
+        if let attributedString =  try? Down(markdownString: text).toHabiticaAttributedString() {
+            return attributedString
+        }
+        return NSMutableAttributedString(string: text)
     }
 }

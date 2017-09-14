@@ -76,12 +76,12 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let subscriber = Observer<Bool, NSError>(value: {[weak self] in
+        let subscriber = Signal<Bool, NSError>.Observer(value: {[weak self] in
             self?.handleJoinLeave(isMember: $0)
         })
         disposable = CompositeDisposable()
-        disposable.add(self.joinInteractor?.reactive.observe(subscriber, during: self.lifetime))
-        disposable.add(self.leaveInteractor?.reactive.observe(subscriber, during: self.lifetime))
+        disposable.add(self.joinInteractor?.reactive.observe(subscriber))
+        disposable.add(self.leaveInteractor?.reactive.observe(subscriber))
 
         self.navController = self.topHeaderNavigationController
         guard let navController = self.navController else {
