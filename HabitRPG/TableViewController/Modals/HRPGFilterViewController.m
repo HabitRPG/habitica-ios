@@ -10,6 +10,7 @@
 #import "HRPGCheckBoxView.h"
 #import "Tag.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGFilterViewController ()
 
@@ -340,40 +341,37 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *title = nil;
     if (tag) {
         title = NSLocalizedString(@"Edit Tag", nil);
-    } else {
-        title = NSLocalizedString(@"Create Tag", nil);
-    }
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:nil
-                                                   delegate:self
-                                          cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                          otherButtonTitles:NSLocalizedString(@"Save", nil), nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    if (tag) {
-        UITextField *textField = [alert textFieldAtIndex:0];
-        textField.text = tag.name;
         self.editedTag = tag;
     } else {
-        self.editedTag = nil;
+        title = NSLocalizedString(@"Create Tag", nil);
+    self.editedTag = nil;
     }
-    [alert show];
-}
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    UITextField *textField = [alertView textFieldAtIndex:0];
-    NSString *newTagName = textField.text;
-    if (self.editedTag) {
-        self.editedTag.name = newTagName;
-        [[HRPGManager sharedManager] updateTag:self.editedTag onSuccess:nil onError:nil];
-        self.editedTag = nil;
-    } else {
-        Tag *newTag =
-        [NSEntityDescription insertNewObjectForEntityForName:@"Tag"
-                                      inManagedObjectContext:self.managedObjectContext];
-        newTag.name = newTagName;
-        newTag.order = [NSNumber numberWithInteger:self.fetchedResultsController.fetchedObjects.count];
-        [[HRPGManager sharedManager] createTag:newTag onSuccess:nil onError:nil];
-    }
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction cancelActionWithHandler:nil]];
+     [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+         UITextField *textField = alertController.textFields[0];
+         NSString *newTagName = textField.text;
+         if (self.editedTag) {
+             self.editedTag.name = newTagName;
+             [[HRPGManager sharedManager] updateTag:self.editedTag onSuccess:nil onError:nil];
+             self.editedTag = nil;
+         } else {
+             Tag *newTag =
+             [NSEntityDescription insertNewObjectForEntityForName:@"Tag"
+                                           inManagedObjectContext:self.managedObjectContext];
+             newTag.name = newTagName;
+             newTag.order = [NSNumber numberWithInteger:self.fetchedResultsController.fetchedObjects.count];
+             [[HRPGManager sharedManager] createTag:newTag onSuccess:nil onError:nil];
+         }
+    }]];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        if (tag) {
+            textField.text = tag.name;
+        }
+    }];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

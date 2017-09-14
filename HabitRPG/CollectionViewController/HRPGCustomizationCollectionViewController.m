@@ -11,6 +11,7 @@
 #import "Customization.h"
 #import "Gear.h"
 #import "HRPGPurchaseButton.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGCustomizationCollectionViewController ()
 @property(nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -146,18 +147,15 @@ static NSString *const reuseIdentifier = @"Cell";
 - (void)collectionView:(UICollectionView *)collectionView
     didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *actionString = NSLocalizedString(@"Use", nil);
-    NSString *titleString;
     NSInteger tag = 0;
+    UIAlertController *alertController =  [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertController addAction:[UIAlertAction cancelActionWithHandler:nil]];
     if ([self.entityName isEqualToString:@"Customization"]) {
         Customization *customization = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
         if (![customization.purchased boolValue] && [customization.price integerValue] > 0) {
-            titleString = [NSString
-                stringWithFormat:NSLocalizedString(@"This item can be purchased for %@ Gems", nil),
-                                 customization.price];
-            actionString =
-                [NSString stringWithFormat:NSLocalizedString(@"Purchase for %@ Gems", nil),
-                                           customization.price];
+            alertController.title = [NSString stringWithFormat:NSLocalizedString(@"This item can be purchased for %@ Gems", nil), customization.price];
+            actionString = [NSString stringWithFormat:NSLocalizedString(@"Purchase for %@ Gems", nil), customization.price];
             tag = 1;
         }
         self.selectedCustomization = customization;
@@ -166,29 +164,58 @@ static NSString *const reuseIdentifier = @"Cell";
         Gear *gear = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
         if (!gear.owned) {
-            titleString = [NSString
-                stringWithFormat:NSLocalizedString(@"This item can be purchased for 2 Gems", nil)];
-            actionString =
-                [NSString stringWithFormat:NSLocalizedString(@"Purchase for 2 Gems", nil)];
+            alertController.title = [NSString stringWithFormat:NSLocalizedString(@"This item can be purchased for 2 Gems", nil)];
+            actionString = [NSString stringWithFormat:NSLocalizedString(@"Purchase for 2 Gems", nil)];
             tag = 1;
         }
         self.selectedCustomization = gear;
     }
-
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:titleString
-                                                       delegate:self
-                                              cancelButtonTitle:@"Cancel"
-                                         destructiveButtonTitle:nil
-                                              otherButtonTitles:actionString, nil];
-    popup.tag = tag;
-
-    // get the selected cell so that the popup can be displayed near it on the iPad
-    UICollectionViewCell *selectedCell =
-        [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
-    CGRect rectIPad = [self.collectionView convertRect:selectedCell.frame toView:self.view];
-    // using the following form rather than [popup showInView:[UIApplication
-    // sharedApplication].keyWindow]] to make it compatible with both iPhone and iPad
-    [popup showFromRect:rectIPad inView:self.view animated:YES];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:actionString style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        switch (tag) {
+            case 0:
+                if ([self.entityName isEqualToString:@"Customization"]) {
+                    [[HRPGManager sharedManager] updateUser:@{
+                                                              self.userKey : [self.selectedCustomization valueForKey:@"name"]
+                                                              }
+                                                  onSuccess:nil onError:nil];
+                } else {
+                    [[HRPGManager sharedManager] equipObject:[self.selectedCustomization valueForKey:@"key"]
+                                                    withType:self.userKey
+                                                   onSuccess:nil onError:nil];
+                }
+                break;
+            case 1:
+                if ([self.entityName isEqualToString:@"Customization"]) {
+                    if ([self.user.balance floatValue] <
+                        [[self.selectedCustomization valueForKey:@"price"] floatValue] / 4) {
+                        [self displayGemPurchaseView];
+                        return;
+                    }
+                    [[HRPGManager sharedManager] unlockPath:[self.selectedCustomization getPath]
+                                                  onSuccess:nil onError:nil];
+                } else {
+                    if ([self.user.balance floatValue] < 0.5) {
+                        [self displayGemPurchaseView];
+                        return;
+                    }
+                    __weak HRPGCustomizationCollectionViewController *weakSelf = self;
+                    Gear *gear = self.selectedCustomization;
+                    [[HRPGManager sharedManager] purchaseItem:gear.key withPurchaseType:gear.type withText:gear.text withImageName:[@"shop_" stringByAppendingString:gear.key] onSuccess:^() {
+                        if (weakSelf) {
+                            [weakSelf.collectionView reloadData];
+                        }
+                    }
+                                                      onError:nil];
+                }
+                break;
+            default:
+                break;
+        }
+    }]];
+    
+    alertController.popoverPresentationController.sourceView = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
@@ -295,85 +322,29 @@ static NSString *const reuseIdentifier = @"Cell";
     }
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    switch (actionSheet.tag) {
-        case 0:
-            if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
-                if ([self.entityName isEqualToString:@"Customization"]) {
-                    [[HRPGManager sharedManager] updateUser:@{
-                        self.userKey : [self.selectedCustomization valueForKey:@"name"]
-                    }
-                        onSuccess:nil onError:nil];
-                } else {
-                    [[HRPGManager sharedManager] equipObject:[self.selectedCustomization valueForKey:@"key"]
-                        withType:self.userKey
-                        onSuccess:nil onError:nil];
-                }
-            }
-            break;
-        case 1:
-            if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
-                if ([self.entityName isEqualToString:@"Customization"]) {
-                    if ([self.user.balance floatValue] <
-                        [[self.selectedCustomization valueForKey:@"price"] floatValue] / 4) {
-                        [self displayGemPurchaseView];
-                        return;
-                    }
-                    [[HRPGManager sharedManager] unlockPath:[self.selectedCustomization getPath]
-                        onSuccess:nil onError:nil];
-                } else {
-                    if ([self.user.balance floatValue] < 0.5) {
-                        [self displayGemPurchaseView];
-                        return;
-                    }
-                    __weak HRPGCustomizationCollectionViewController *weakSelf = self;
-                    Gear *gear = self.selectedCustomization;
-                    [[HRPGManager sharedManager] purchaseItem:gear.key withPurchaseType:gear.type withText:gear.text withImageName:[@"shop_" stringByAppendingString:gear.key] onSuccess:^() {
-                            if (weakSelf) {
-                                [weakSelf.collectionView reloadData];
-                            }
-                        }
-                        onError:nil];
-                }
-            }
-            break;
-        case 2:
-            if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
-                if ([self.user.balance floatValue] < [self.setPrice floatValue] / 4) {
-                    [self displayGemPurchaseView];
-                    return;
-                }
-                __weak HRPGCustomizationCollectionViewController *weakSelf = self;
-                [[HRPGManager sharedManager] unlockPath:self.selectedSetPath
-                    onSuccess:^() {
-                        if (weakSelf) {
-                            [weakSelf.collectionView reloadData];
-                        }
-                    } onError:nil];
-            }
-            break;
-        default:
-            break;
-    }
-}
-
 - (void)purchaseSet:(HRPGPurchaseButton *)button {
-    UIActionSheet *popup = [[UIActionSheet alloc]
-                 initWithTitle:[NSString
-                                   stringWithFormat:NSLocalizedString(
-                                                        @"This set can be unlocked for %@ Gems",
-                                                        nil),
-                                                    self.setPrice]
-                      delegate:self
-             cancelButtonTitle:@"Cancel"
-        destructiveButtonTitle:nil
-             otherButtonTitles:[NSString
-                                   stringWithFormat:NSLocalizedString(@"Unlock for %@ Gems", nil),
-                                                    self.setPrice],
-                               nil];
-    popup.tag = 2;
-    [popup showInView:[UIApplication sharedApplication].keyWindow];
     self.selectedSetPath = button.setPath;
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString
+                                                                                      stringWithFormat:NSLocalizedString(
+                                                                                                                         @"This set can be unlocked for %@ Gems",
+                                                                                                                         nil),
+                                                                                      self.setPrice]
+                                                                             message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertController addAction:[UIAlertAction cancelActionWithHandler:nil]];
+    __weak HRPGCustomizationCollectionViewController *weakSelf = self;
+    [alertController addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Unlock for %@ Gems", nil), self.setPrice] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if ([weakSelf.user.balance floatValue] < [self.setPrice floatValue] / 4) {
+            [weakSelf displayGemPurchaseView];
+            return;
+        }
+        [[HRPGManager sharedManager] unlockPath:weakSelf.selectedSetPath
+                                      onSuccess:^() {
+                                          if (weakSelf) {
+                                              [weakSelf.collectionView reloadData];
+                                          }
+                                      } onError:nil];
+    }]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)displayGemPurchaseView {

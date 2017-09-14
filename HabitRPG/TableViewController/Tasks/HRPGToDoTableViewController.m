@@ -85,7 +85,6 @@
     };
     
     cell.taskDetailLine.dateFormatter = self.dateFormatter;
-    __weak HRPGToDoTableViewController *weakSelf = self;
     [cell configureWithTask:task];
     cell.checkBox.wasTouched = ^() {
         if (![task.currentlyChecking boolValue]) {

@@ -139,12 +139,8 @@
         withInvitationType:formViewController.invitationType
         toGroupWithID:self.partyID
                             onSuccess:^() {
-                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invitation Successful", nil)
-                                                                                message:NSLocalizedString(@"The users were invited to your party", nil)
-                                                                               delegate:nil
-                                                                      cancelButtonTitle:@"OK"
-                                                                      otherButtonTitles:nil];
-                                [alert show];
+                                UIAlertController *alertController = [UIAlertController alertWithTitle:NSLocalizedString(@"Invitation Successful", nil) message:NSLocalizedString(@"The users were invited to your party", nil) handler:nil];
+                                [self presentViewController:alertController animated:YES completion:nil];
                             } onError:nil];
 }
 

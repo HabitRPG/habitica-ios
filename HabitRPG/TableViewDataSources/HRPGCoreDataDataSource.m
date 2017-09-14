@@ -143,8 +143,7 @@
     if (self.cellIdentifierBlock) {
         cellIdentifier = self.cellIdentifierBlock(item, indexPath);
     }
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
-                                                            forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (self.configureCellBlock) {
         self.configureCellBlock(cell, item, indexPath);
     }

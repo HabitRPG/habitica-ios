@@ -13,30 +13,18 @@ public extension UIAlertController {
             message: message,
             preferredStyle: .alert
         )
-        alertController.addAction(
-            UIAlertAction(
-                title: "OK".localized,
-                style: .cancel,
-                handler: handler
-            )
-        )
+        alertController.addAction(UIAlertAction.okAction())
 
         return alertController
     }
 
-    public static func genericError(message: String, title: String = "Error") -> UIAlertController {
+    public static func genericError(message: String, title: String = NSLocalizedString("Error", comment: "")) -> UIAlertController {
         let alertController = UIAlertController(
             title: title.localized,
             message: message.localized,
             preferredStyle: .alert
         )
-        alertController.addAction(
-            UIAlertAction(
-                title: "OK".localized,
-                style: .cancel,
-                handler: nil
-            )
-        )
+        alertController.addAction(UIAlertAction.okAction())
 
         return alertController
     }

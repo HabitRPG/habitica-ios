@@ -232,7 +232,6 @@
 
     self.selectedIndex = indexPath;
     if (indexPath.item == 4) {
-        if ([UIAlertController class]) {
             UIAlertController *alertController =
                 [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Are you sure?", nil)
                                                     message:nil
@@ -249,7 +248,7 @@
                 [UIAlertAction actionWithTitle:NSLocalizedString(@"Opt-Out", nil)
                                          style:UIAlertActionStyleDefault
                                        handler:^(UIAlertAction *action) {
-                                           [self alertView:nil clickedButtonAtIndex:1];
+                                           [self alertClickedButtonAtIndex:1];
                                        }];
             [alertController addAction:confirmAction];
 
@@ -257,66 +256,39 @@
                                animated:YES
                              completion:^(){
                              }];
-        } else {
-            UIAlertView *message =
-                [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Are you sure?", nil)
-                                           message:nil
-                                          delegate:self
-                                 cancelButtonTitle:NSLocalizedString(@"Go Back", nil)
-                                 otherButtonTitles:nil];
-
-            [message addButtonWithTitle:NSLocalizedString(@"Opt-Out", nil)];
-            [message show];
-        }
     } else {
         NSString *className = self.classesArray[indexPath.item][0];
-        if ([UIAlertController class]) {
-            UIAlertController *alertController = [UIAlertController
-                alertControllerWithTitle:NSLocalizedString(@"Are you sure?", nil)
-                                 message:[NSString
-                                             stringWithFormat:NSLocalizedString(
-                                                                  @"You will become a %@.", nil),
-                                                              className]
-                          preferredStyle:UIAlertControllerStyleAlert];
-
-            UIAlertAction *cancelAction =
-                [UIAlertAction actionWithTitle:NSLocalizedString(@"Go Back", nil)
-                                         style:UIAlertActionStyleCancel
-                                       handler:^(UIAlertAction *action){
-
-                                       }];
-            [alertController addAction:cancelAction];
-
-            UIAlertAction *confirmAction = [UIAlertAction
-                actionWithTitle:[NSString stringWithFormat:NSLocalizedString(
-                                                               @"I want to become a %@", nil),
-                                                           className]
-                          style:UIAlertActionStyleDefault
-                        handler:^(UIAlertAction *action) {
-                            [self alertView:nil clickedButtonAtIndex:1];
-                        }];
-            [alertController addAction:confirmAction];
-            __weak HRPGClassTableViewController *weakSelf = self;
-            [self presentViewController:alertController
-                               animated:YES
-                             completion:^() {
-                                 [weakSelf.tableView deselectRowAtIndexPath:indexPath animated:YES];
-                             }];
-        } else {
-            UIAlertView *message = [[UIAlertView alloc]
-                    initWithTitle:NSLocalizedString(@"Are you sure?", nil)
-                          message:[NSString stringWithFormat:NSLocalizedString(
-                                                                 @"You will become a %@.", nil),
-                                                             className]
-                         delegate:self
-                cancelButtonTitle:NSLocalizedString(@"Go Back", nil)
-                otherButtonTitles:nil];
-
-            [message addButtonWithTitle:[NSString
-                                            stringWithFormat:NSLocalizedString(@"Become a %@", nil),
-                                                             className]];
-            [message show];
-        }
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle:NSLocalizedString(@"Are you sure?", nil)
+                                              message:[NSString
+                                                       stringWithFormat:NSLocalizedString(
+                                                                                          @"You will become a %@.", nil),
+                                                       className]
+                                              preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction =
+        [UIAlertAction actionWithTitle:NSLocalizedString(@"Go Back", nil)
+                                 style:UIAlertActionStyleCancel
+                               handler:^(UIAlertAction *action){
+                                   
+                               }];
+        [alertController addAction:cancelAction];
+        
+        UIAlertAction *confirmAction = [UIAlertAction
+                                        actionWithTitle:[NSString stringWithFormat:NSLocalizedString(
+                                                                                                     @"I want to become a %@", nil),
+                                                         className]
+                                        style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction *action) {
+                                            [self alertClickedButtonAtIndex:1];
+                                        }];
+        [alertController addAction:confirmAction];
+        __weak HRPGClassTableViewController *weakSelf = self;
+        [self presentViewController:alertController
+                           animated:YES
+                         completion:^() {
+                             [weakSelf.tableView deselectRowAtIndexPath:indexPath animated:YES];
+                         }];
     }
 }
 
@@ -417,7 +389,7 @@
     return user;
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertClickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
         [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
     } else {

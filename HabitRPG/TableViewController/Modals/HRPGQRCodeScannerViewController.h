@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface HRPGQRCodeScannerViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate>
+@interface HRPGQRCodeScannerViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate>
 
 - (BOOL) isCameraAvailable;
 - (void) startScanning;

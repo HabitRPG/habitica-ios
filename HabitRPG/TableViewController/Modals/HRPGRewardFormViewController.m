@@ -11,6 +11,7 @@
 #import "HRPGManager.h"
 #import "NSString+Emoji.h"
 #import "XLForm.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGRewardFormViewController ()
 @property(nonatomic) NSArray *tags;
@@ -119,13 +120,8 @@
 }
 
 - (void)showFormValidationError:(NSError *)error {
-    UIAlertView *alertView =
-        [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Validation Error", nil)
-                                   message:error.localizedDescription
-                                  delegate:self
-                         cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                         otherButtonTitles:nil];
-    [alertView show];
+    UIAlertController *alertController = [UIAlertController alertWithTitle:NSLocalizedString(@"Validation Error", nil) message:nil handler:nil];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {

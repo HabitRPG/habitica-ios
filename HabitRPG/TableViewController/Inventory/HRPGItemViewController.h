@@ -11,7 +11,7 @@
 #import "HRPGCoreDataDataSourceDelegate.h"
 
 @interface HRPGItemViewController
-    : HRPGBaseViewController<UIActionSheetDelegate, HRPGCoreDataDataSourceDelegate>
+    : HRPGBaseViewController<HRPGCoreDataDataSourceDelegate>
 
 @property(strong) NSString *itemType;
 @property BOOL shouldDismissAfterAction;

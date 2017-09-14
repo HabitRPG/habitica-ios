@@ -229,37 +229,32 @@
         message = NSLocalizedString(
             @"Once a quest is started, no other party members can join the quest.", nil);
     }
-    UIAlertView *alertView =
-        [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Are you sure?", nil)
-                                   message:message
-                                  delegate:self
-                         cancelButtonTitle:NSLocalizedString(@"No", nil)
-                         otherButtonTitles:NSLocalizedString(@"Yes", nil), nil];
-    [alertView show];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Are you sure?", nil) message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"No", nil) style:UIAlertActionStyleCancel handler:nil]];
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
         __weak HRPGQuestDetailViewController *weakSelf = self;
         if ([self.group.questActive boolValue]) {
             [[HRPGManager sharedManager] abortQuest:self.group.id
-                onSuccess:^() {
-                    [weakSelf.navigationController popViewControllerAnimated:YES];
-                }
-                onError:^(NSString *errorMessage) {
-                    weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
-                }];
+                                          onSuccess:^() {
+                                              [weakSelf.navigationController popViewControllerAnimated:YES];
+                                          }
+                                            onError:^(NSString *errorMessage) {
+                                                weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
+                                            }];
         } else {
             [[HRPGManager sharedManager] forceStartQuest:self.group.id
-                onSuccess:^() {
-                    [weakSelf.navigationController popViewControllerAnimated:YES];
-                }
-                onError:^(NSString *errorMessage) {
-                    weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
-                }];
+                                               onSuccess:^() {
+                                                   [weakSelf.navigationController popViewControllerAnimated:YES];
+                                               }
+                                                 onError:^(NSString *errorMessage) {
+                                                     weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
+                                                 }];
         }
-    }
+    }]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

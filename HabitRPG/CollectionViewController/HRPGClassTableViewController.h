@@ -10,8 +10,7 @@
 #import "HRPGManager.h"
 #import "TutorialStepsProtocol.h"
 
-@interface HRPGClassTableViewController
-    : UITableViewController<UIAlertViewDelegate, TutorialStepsProtocol>
+@interface HRPGClassTableViewController : UITableViewController<TutorialStepsProtocol>
 
 @property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 

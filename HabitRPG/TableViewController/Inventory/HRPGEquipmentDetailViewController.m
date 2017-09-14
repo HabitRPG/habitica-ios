@@ -9,6 +9,7 @@
 #import "HRPGEquipmentDetailViewController.h"
 #import "Gear.h"
 #import "HRPGCoreDataDataSource.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGEquipmentDetailViewController ()
 @property User *user;
@@ -102,21 +103,43 @@ float textWidth;
         }
     }
     selectedGear = gear;
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil
-                                                       delegate:self
-                                              cancelButtonTitle:@"Cancel"
-                                         destructiveButtonTitle:nil
-                                              otherButtonTitles:gearString, nil];
-    popup.tag = 1;
-
-    // get the selected cell so that the popup can be displayed near it on the iPad
-    UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
-
-    CGRect rectIPad = CGRectMake(selectedCell.frame.origin.x, selectedCell.frame.origin.y,
-                                 selectedCell.frame.size.width, selectedCell.frame.size.height);
-    // using the following form rather than [popup showInView:[UIApplication
-    // sharedApplication].keyWindow]] to make it compatible with both iPhone and iPad
-    [popup showFromRect:rectIPad inView:self.view animated:YES];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    __weak HRPGEquipmentDetailViewController *weakSelf = self;
+    [alertController addAction:[UIAlertAction cancelActionWithHandler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf.tableView deselectRowAtIndexPath:selectedIndex animated:YES];
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:gearString style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf.tableView deselectRowAtIndexPath:selectedIndex animated:YES];
+            [[HRPGManager sharedManager]
+             equipObject:selectedGear.key
+             withType:self.equipType
+             onSuccess:^() {
+                 if (weakSelf.equippedIndex && (weakSelf.equippedIndex.item != selectedIndex.item ||
+                                                weakSelf.equippedIndex.section != selectedIndex.section)) {
+                     [weakSelf.tableView reloadRowsAtIndexPaths:@[ selectedIndex, weakSelf.equippedIndex ]
+                                               withRowAnimation:UITableViewRowAnimationFade];
+                 } else {
+                     [weakSelf.tableView reloadRowsAtIndexPaths:@[ selectedIndex ]
+                                               withRowAnimation:UITableViewRowAnimationFade];
+                 }
+                 if ([weakSelf.equipType isEqualToString:@"equipped"]) {
+                     if ([selectedGear isEquippedBy:weakSelf.user]) {
+                         weakSelf.equippedIndex = selectedIndex;
+                     } else {
+                         weakSelf.equippedIndex = nil;
+                     }
+                 } else {
+                     if ([selectedGear isCostumeOf:weakSelf.user]) {
+                         weakSelf.equippedIndex = selectedIndex;
+                     } else {
+                         weakSelf.equippedIndex = nil;
+                     }
+                 }
+             }
+             onError:nil];
+    }]];
+    alertController.popoverPresentationController.sourceView = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 
@@ -157,44 +180,6 @@ float textWidth;
             cell.backgroundColor = [UIColor whiteColor];
         }
     }
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [self.tableView deselectRowAtIndexPath:selectedIndex animated:YES];
-    if (buttonIndex == 0) {
-        __weak HRPGEquipmentDetailViewController *weakSelf = self;
-        [[HRPGManager sharedManager]
-            equipObject:selectedGear.key
-               withType:self.equipType
-              onSuccess:^() {
-                  if (weakSelf.equippedIndex && (weakSelf.equippedIndex.item != selectedIndex.item ||
-                                             weakSelf.equippedIndex.section != selectedIndex.section)) {
-                      [weakSelf.tableView reloadRowsAtIndexPaths:@[ selectedIndex, weakSelf.equippedIndex ]
-                                            withRowAnimation:UITableViewRowAnimationFade];
-                  } else {
-                      [weakSelf.tableView reloadRowsAtIndexPaths:@[ selectedIndex ]
-                                            withRowAnimation:UITableViewRowAnimationFade];
-                  }
-                  if ([weakSelf.equipType isEqualToString:@"equipped"]) {
-                      if ([selectedGear isEquippedBy:weakSelf.user]) {
-                          weakSelf.equippedIndex = selectedIndex;
-                      } else {
-                          weakSelf.equippedIndex = nil;
-                      }
-                  } else {
-                      if ([selectedGear isCostumeOf:weakSelf.user]) {
-                          weakSelf.equippedIndex = selectedIndex;
-                      } else {
-                          weakSelf.equippedIndex = nil;
-                      }
-                  }
-              }
-                onError:nil];
-    }
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    [self.tableView deselectRowAtIndexPath:selectedIndex animated:YES];
 }
 
 @end

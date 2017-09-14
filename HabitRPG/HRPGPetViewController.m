@@ -12,6 +12,7 @@
 #import "HRPGFeedViewController.h"
 #import "HatchingPotion.h"
 #import "UIViewcontroller+TutorialSteps.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGPetViewController ()
 @property(nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -164,7 +165,6 @@
 - (void)collectionView:(UICollectionView *)collectionView
     didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *equipString = NSLocalizedString(@"Equip", nil);
-    NSString *feedString = NSLocalizedString(@"Feed", nil);
     Pet *pet = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
     if (!pet.trained || [pet.trained integerValue] == -1) {
@@ -172,28 +172,32 @@
     } else if ([self.equippedPetName isEqualToString:pet.key]) {
         equipString = NSLocalizedString(@"Unequip", nil);
     }
-    if (![pet isFeedable]) {
-        feedString = nil;
-    }
-
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:[self nicePetName:pet]
-                                                       delegate:self
-                                              cancelButtonTitle:@"Cancel"
-                                         destructiveButtonTitle:nil
-                                              otherButtonTitles:equipString, feedString, nil];
-    popup.tag = 1;
     self.selectedPet = pet;
-
-    // get the selected cell so that the popup can be displayed near it on the iPad
-    UICollectionViewCell *selectedCell =
-        [self.collectionView cellForItemAtIndexPath:indexPath];
-
-    CGRect rectIPad = CGRectMake(selectedCell.frame.origin.x,
-                                 selectedCell.frame.origin.y + selectedCell.frame.size.height,
-                                 selectedCell.frame.size.width, selectedCell.frame.size.height);
-    // using the following form rather than [popup showInView:[UIApplication
-    // sharedApplication].keyWindow]] to make it compatible with both iPhone and iPad
-    [popup showFromRect:rectIPad inView:self.view animated:YES];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[self nicePetName:pet] message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertController addAction:[UIAlertAction cancelActionWithHandler:nil]];
+    if (equipString) {
+        __weak HRPGPetViewController *weakSelf;
+        [alertController addAction:[UIAlertAction actionWithTitle:equipString style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[HRPGManager sharedManager] equipObject:self.selectedPet.key
+                                            withType:@"pet"
+                                           onSuccess:^() {
+                                               if ([weakSelf.equippedPetName isEqualToString:weakSelf.selectedPet.key]) {
+                                                   weakSelf.equippedPetName = nil;
+                                               } else {
+                                                   weakSelf.equippedPetName = weakSelf.selectedPet.key;
+                                               }
+                                           }
+                                             onError:nil];
+        }]];
+    }
+    if (![pet isFeedable]) {
+        [alertController addAction:[UIAlertAction actionWithTitle:equipString style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self performSegueWithIdentifier:@"FeedSegue" sender:self];
+        }]];
+    }
+    alertController.popoverPresentationController.sourceView = [self.collectionView cellForItemAtIndexPath:indexPath];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
@@ -336,24 +340,6 @@
                 progressView.progress = [pet.trained floatValue] / 50;
             }
         }
-    }
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
-        __weak HRPGPetViewController *weakSelf;
-        [[HRPGManager sharedManager] equipObject:self.selectedPet.key
-            withType:@"pet"
-            onSuccess:^() {
-                if ([weakSelf.equippedPetName isEqualToString:weakSelf.selectedPet.key]) {
-                    weakSelf.equippedPetName = nil;
-                } else {
-                    weakSelf.equippedPetName = weakSelf.selectedPet.key;
-                }
-            }
-            onError:nil];
-    } else if (actionSheet.numberOfButtons > 2 && buttonIndex == 1) {
-        [self performSegueWithIdentifier:@"FeedSegue" sender:self];
     }
 }
 

@@ -24,7 +24,6 @@
 }
 
 - (void)setupTableView {
-        __weak HRPGSpellUserTableViewController *weakSelf = self;
         TableViewCellConfigureBlock configureCell = ^(UITableViewCell *cell, User *user, NSIndexPath *indexPath) {
             UITextView *nameTextView = [cell viewWithTag:1];
             UIView *avatarView = [cell viewWithTag:2];

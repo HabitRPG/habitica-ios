@@ -28,7 +28,6 @@
 
 @interface HRPGAppDelegate ()
 
-@property NSString *notifiedTaskID;
 @property HabiticaAppDelegate *swiftAppDelegate;
 
 @end
@@ -44,7 +43,7 @@
     [self.swiftAppDelegate setupAnalytics];
     [self.swiftAppDelegate setupPopups];
     
-    [[UIView appearanceWhenContainedIn:[UIAlertController class], nil] setTintColor:[UIColor purple400]];
+    [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UIAlertController class]]] setTintColor:[UIColor purple400]];
 
     [self configureNotifications:application];
 
@@ -231,17 +230,13 @@
         return;
     }
 
-    self.notifiedTaskID = [notification.userInfo valueForKey:@"taskID"];
-    if (self.notifiedTaskID) {
-        UIAlertView *message =
-            [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Reminder", nil)
-                                       message:notification.alertBody
-                                      delegate:self
-                             cancelButtonTitle:NSLocalizedString(@"Close", nil)
-                             otherButtonTitles:NSLocalizedString(@"Complete", nil), nil];
-        message.delegate = self;
-        [message show];
-    }
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Reminder", nil) message:notification.alertBody preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault handler:nil]];
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Complete", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self completeTaskWithId:[notification.userInfo valueForKey:@"taskID"] completionHandler:nil];
+    }]];
+    [self.window.rootViewController.presentedViewController presentViewController:alertController animated:YES completion:nil];
+    
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -413,12 +408,6 @@
                     };
                 }];
         }
-    }
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        [self completeTaskWithId:self.notifiedTaskID completionHandler:nil];
     }
 }
 

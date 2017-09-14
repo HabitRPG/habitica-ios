@@ -10,7 +10,7 @@
 #import "HRPGBaseCollectionViewController.h"
 
 @interface HRPGPetViewController
-    : HRPGBaseCollectionViewController<NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
+    : HRPGBaseCollectionViewController<NSFetchedResultsControllerDelegate>
 
 @property(nonatomic) NSString *petName;
 @property(nonatomic) NSString *petType;

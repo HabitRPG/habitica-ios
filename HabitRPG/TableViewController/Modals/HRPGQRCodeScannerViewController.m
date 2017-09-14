@@ -8,6 +8,7 @@
 
 #import "HRPGQRCodeScannerViewController.h"
 #import "NSString+UUID.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGQRCodeScannerViewController ()
 
@@ -172,22 +173,15 @@
                 if ([self.scannedCode isValidUUID]) {
                     [self performSegueWithIdentifier:@"ScannedCodeSegue" sender:self];
                 } else {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invalid Habitica User ID", nil)
-                                                                    message:NSLocalizedString(@"The scanned QR-Code did not contain a valid Habitica User ID.", nil)
-                                                                   delegate:nil
-                                                          cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                                          otherButtonTitles:nil];
-                    alert.delegate = self;
-                    [alert show];
+                    UIAlertController *alertController = [UIAlertController alertWithTitle:NSLocalizedString(@"Invalid Habitica User ID", nil) message:NSLocalizedString(@"The scanned QR-Code did not contain a valid Habitica User ID.", nil) handler:^(UIAlertAction * _Nonnull action) {
+                        self.scannedCode = nil;
+                    }];
+                    [self presentViewController:alertController animated:true completion:nil];
                 }
                 return;
             }
         }
     }
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    self.scannedCode = nil;
 }
 
 - (NSString *)getScannedUUID:(NSString *)scannedData {

@@ -10,7 +10,7 @@
 #import "HRPGBaseViewController.h"
 
 @interface HRPGEquipmentDetailViewController
-    : HRPGBaseViewController<UIActionSheetDelegate>
+    : HRPGBaseViewController
 
 @property NSString *type;
 @property NSString *equipType;

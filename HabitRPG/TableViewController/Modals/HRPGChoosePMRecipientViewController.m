@@ -10,6 +10,7 @@
 #import "UIColor+Habitica.h"
 #import "HRPGQRCodeScannerViewController.h"
 #import "NSString+UUID.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGChoosePMRecipientViewController ()
 
@@ -70,13 +71,8 @@
     if ([identifier isEqualToString:@"SelectedRecipientSegue"]) {
         id userID = self.formValues[@"userID"];
         if (userID == [NSNull null] || ![userID isValidUUID]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Invalid Habitica User ID", nil)
-                                                            message:NSLocalizedString(@"You have to specify a valid Habitica User ID as recipient.", nil)
-                                                           delegate:nil
-                                                  cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                                  otherButtonTitles:nil];
-            alert.delegate = self;
-            [alert show];
+            UIAlertController *alertController = [UIAlertController alertWithTitle:NSLocalizedString(@"Invalid Habitica User ID", nil) message:NSLocalizedString(@"You have to specify a valid Habitica User ID as recipient.", nil) handler:nil];
+            [self presentViewController:alertController animated:true completion:nil];
             return NO;
         }
     }

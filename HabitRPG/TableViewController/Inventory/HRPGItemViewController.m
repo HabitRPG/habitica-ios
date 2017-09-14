@@ -18,6 +18,7 @@
 #import "UIColor+Habitica.h"
 #import "HRPGShopViewController.h"
 #import "Shop.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGItemViewController ()
 @property Item *selectedItem;
@@ -321,54 +322,51 @@ float textWidth;
         extraItem = NSLocalizedString(@"Open", nil);
         destructiveButton = nil;
     }
-
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil
-                                                       delegate:self
-                                              cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                         destructiveButtonTitle:destructiveButton
-                                              otherButtonTitles:extraItem, nil];
-    popup.tag = 1;
     self.selectedItem = item;
 
-    // get the selected cell so that the popup can be displayed near it on the iPad
-    UITableViewCell *selectedCell = [self.dataSource cellAtIndexPath:indexPath];
-
-    CGRect rectIPad = CGRectMake(selectedCell.frame.origin.x, selectedCell.frame.origin.y,
-                                 selectedCell.frame.size.width, selectedCell.frame.size.height);
-    // using the following form rather than [popup showInView:[UIApplication
-    // sharedApplication].keyWindow]] to make it compatible with both iPhone and iPad
-    [popup showFromRect:rectIPad inView:self.view animated:YES];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
-    if (buttonIndex == actionSheet.destructiveButtonIndex) {
-        [[HRPGManager sharedManager] sellItem:self.selectedItem onSuccess:nil onError:nil];
-    } else if (buttonIndex == 0 && [self.selectedItem isKindOfClass:[Quest class]]) {
-        User *user = [[HRPGManager sharedManager] getUser];
-        Quest *quest = (Quest *)self.selectedItem;
-        [[HRPGManager sharedManager] inviteToQuest:user.partyID withQuest:quest onSuccess:^() {
-            if (self.shouldDismissAfterAction) {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
-        }onError:nil];
-    } else if (buttonIndex == 0 && [self.selectedItem.key isEqualToString:@"inventory_present"]) {
-        [[HRPGManager sharedManager] openMysteryItem:nil onError:nil];
-    } else if (buttonIndex == 1 && ![self.selectedItem isKindOfClass:[Quest class]]) {
-        self.isHatching = YES;
-        if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
-            self.itemType = @"eggs";
-        } else if ([self.selectedItem isKindOfClass:[Egg class]]) {
-            self.itemType = @"hatchingPotions";
-        }
-        [self.dataSource reconfigureFetchRequest];
-        [self fetchExistingPetsWithPartName:self.selectedItem.key];
-        [self showCancelButton];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertController addAction:[UIAlertAction cancelActionWithHandler:^(UIAlertAction * _Nonnull action) {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:true];
+    }]];
+    if (destructiveButton != nil) {
+        [alertController addAction:[UIAlertAction actionWithTitle:destructiveButton style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [self.tableView deselectRowAtIndexPath:indexPath animated:true];
+[[HRPGManager sharedManager] sellItem:self.selectedItem onSuccess:nil onError:nil];
+        }]];
     }
+    [alertController addAction:[UIAlertAction actionWithTitle:extraItem style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:true];
+        if ([self.selectedItem isKindOfClass:[Quest class]]) {
+            User *user = [[HRPGManager sharedManager] getUser];
+            Quest *quest = (Quest *)self.selectedItem;
+            [[HRPGManager sharedManager] inviteToQuest:user.partyID withQuest:quest onSuccess:^() {
+                if (self.shouldDismissAfterAction) {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+            }onError:nil];
+        } else if ([self.selectedItem.key isEqualToString:@"inventory_present"]) {
+            [[HRPGManager sharedManager] openMysteryItem:nil onError:nil];
+        } else if (![self.selectedItem isKindOfClass:[Quest class]]) {
+            self.isHatching = YES;
+            if ([self.selectedItem isKindOfClass:[HatchingPotion class]]) {
+                self.itemType = @"eggs";
+            } else if ([self.selectedItem isKindOfClass:[Egg class]]) {
+                self.itemType = @"hatchingPotions";
+            }
+            [self.dataSource reconfigureFetchRequest];
+            [self fetchExistingPetsWithPartName:self.selectedItem.key];
+            [self showCancelButton];
+        }
+    }]];
+    
+    UITableViewCell *selectedCell = [self.dataSource cellAtIndexPath:indexPath];
+    alertController.popoverPresentationController.sourceView = selectedCell;
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+- (void)actionSheetClickedButtonAtIndex:(NSInteger)buttonIndex {
     [self.tableView deselectRowAtIndexPath:self.selectedIndex animated:YES];
+    
 }
 
 - (void)configureCell:(UITableViewCell *)cell

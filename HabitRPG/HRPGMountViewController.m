@@ -16,7 +16,6 @@
 @property(nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property(nonatomic) NSArray *eggs;
 @property(nonatomic) NSArray *hatchingPotions;
-@property(nonatomic) Pet *selectedMount;
 @property UIBarButtonItem *navigationButton;
 @property CGSize screenSize;
 @property NSString *equippedMountName;
@@ -157,24 +156,26 @@
         equipString = NSLocalizedString(@"Unmount", nil);
     }
 
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:[self niceMountName:mount]
-                                                       delegate:self
-                                              cancelButtonTitle:@"Cancel"
-                                         destructiveButtonTitle:nil
-                                              otherButtonTitles:equipString, nil];
-    popup.tag = 1;
-    self.selectedMount = mount;
-
-    // get the selected cell so that the popup can be displayed near it on the iPad
-    UICollectionViewCell *selectedCell =
-        [self.collectionView cellForItemAtIndexPath:indexPath];
-
-    CGRect rectIPad = CGRectMake(selectedCell.frame.origin.x,
-                                 selectedCell.frame.origin.y + selectedCell.frame.size.height,
-                                 selectedCell.frame.size.width, selectedCell.frame.size.height);
-    // using the following form rather than [popup showInView:[UIApplication
-    // sharedApplication].keyWindow]] to make it compatible with both iPhone and iPad
-    [popup showFromRect:rectIPad inView:self.view animated:YES];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[self niceMountName:mount] message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil]];
+    if (equipString) {
+        __weak HRPGMountViewController *weakSelf = self;
+        [alertController addAction:[UIAlertAction actionWithTitle:equipString style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[HRPGManager sharedManager] equipObject:mount.key
+                                            withType:@"mount"
+                                           onSuccess:^() {
+                                               if ([weakSelf.equippedMountName isEqualToString:mount.key]) {
+                                                   weakSelf.equippedMountName = nil;
+                                               } else {
+                                                   weakSelf.equippedMountName = mount.key;
+                                               }
+                                           }
+                                             onError:^(){
+                                             }];
+        }]];
+    }
+    alertController.popoverPresentationController.sourceView = [self.collectionView cellForItemAtIndexPath:indexPath];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
@@ -276,23 +277,6 @@
         [[HRPGManager sharedManager] setImage:@"PixelPaw" withFormat:@"png" onView:imageView];
         imageView.contentMode = UIViewContentModeCenter;
         imageView.alpha = 0.3f;
-    }
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (actionSheet.numberOfButtons > 1 && buttonIndex == 0) {
-        __weak HRPGMountViewController *weakSelf = self;
-        [[HRPGManager sharedManager] equipObject:self.selectedMount.key
-            withType:@"mount"
-            onSuccess:^() {
-                if ([weakSelf.equippedMountName isEqualToString:weakSelf.selectedMount.key]) {
-                    weakSelf.equippedMountName = nil;
-                } else {
-                    weakSelf.equippedMountName = weakSelf.selectedMount.key;
-                }
-            }
-            onError:^(){
-            }];
     }
 }
 
