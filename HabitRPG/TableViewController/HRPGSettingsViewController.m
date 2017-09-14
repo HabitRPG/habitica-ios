@@ -382,16 +382,15 @@ User *user;
         [self performSegueWithIdentifier:@"AccountDetailSegue" sender:self];
     } else if ([formRow.tag isEqualToString:@"selectClass"]) {
         if ([user.flags.classSelected boolValue] && ![user.preferences.disableClass boolValue]) {
-            UIAlertView *confirmationAlert = [[UIAlertView alloc]
-                    initWithTitle:NSLocalizedString(@"Are you sure?", nil)
-                          message:NSLocalizedString(@"This will reset your character's class and "
-                                                    @"allocated points (you'll get them all back "
-                                                    @"to re-allocate), and costs 3 gems.",
-                                                    nil)
-                         delegate:self
-                cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                otherButtonTitles:NSLocalizedString(@"Change Class", nil), nil];
-            [confirmationAlert show];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Are you sure?", nil) message:NSLocalizedString(@"This will reset your character's class and "
+                                                                                                                                                                @"allocated points (you'll get them all back "
+                                                                                                                                                                @"to re-allocate), and costs 3 gems.",
+                                                                                                                                                                nil) preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction cancelActionWithHandler:nil]];
+            [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Change Class", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self displayClassSelectionViewController];
+            }]];
+            [self presentViewController:alertController animated:YES completion:nil];
         } else {
             [self displayClassSelectionViewController];
         }
@@ -486,12 +485,6 @@ User *user;
         (HRPGClassTableViewController *)selectClassNavigationController.topViewController;
     classTableViewController.shouldResetClass = [user.flags.classSelected boolValue] || [user.preferences.disableClass boolValue];
     [self presentViewController:selectClassNavigationController animated:YES completion:^(){}];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        [self displayClassSelectionViewController];
-    }
 }
 
 - (void)changePushNotificationSettings:(PushNotifications *)newValues {

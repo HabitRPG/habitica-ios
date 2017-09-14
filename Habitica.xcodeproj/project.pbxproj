@@ -157,7 +157,7 @@
 		D9436AC11C63A4BB008D1171 /* UIViewController+Markdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D9436AC01C63A4BB008D1171 /* UIViewController+Markdown.m */; };
 		D9436AC91C64F880008D1171 /* HRPGGuildsOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9436AC81C64F880008D1171 /* HRPGGuildsOverviewViewController.m */; };
 		D94461911AB355940015215E /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
-		D946E5C21B30A89500806BE6 /* NSDAte+NSDateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = D946E5C11B30A89500806BE6 /* NSDAte+NSDateMock.m */; };
+		D946E5C21B30A89500806BE6 /* NSDate+NSDateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = D946E5C11B30A89500806BE6 /* NSDate+NSDateMock.m */; };
 		D946E5C41B30A9D700806BE6 /* HRPGTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D946E5C31B30A9D700806BE6 /* HRPGTaskTests.m */; };
 		D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */; };
 		D947960A1972C248002CB34C /* HRPGUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94796091972C248002CB34C /* HRPGUserProfileViewController.m */; };
@@ -651,8 +651,8 @@
 		D94461861AB34F5C0015215E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D94461871AB34F5C0015215E /* HabiticaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabiticaTests.m; sourceTree = "<group>"; };
 		D94461901AB355940015215E /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = user.json; path = HabiticaTests/Fixtures/user.json; sourceTree = SOURCE_ROOT; };
-		D946E5C01B30A89500806BE6 /* NSDAte+NSDateMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDAte+NSDateMock.h"; sourceTree = "<group>"; };
-		D946E5C11B30A89500806BE6 /* NSDAte+NSDateMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDAte+NSDateMock.m"; sourceTree = "<group>"; };
+		D946E5C01B30A89500806BE6 /* NSDate+NSDateMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NSDateMock.h"; sourceTree = "<group>"; };
+		D946E5C11B30A89500806BE6 /* NSDate+NSDateMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NSDateMock.m"; sourceTree = "<group>"; };
 		D946E5C31B30A9D700806BE6 /* HRPGTaskTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTaskTests.m; sourceTree = "<group>"; };
 		D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGImageOverlayView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGImageOverlayView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -1456,8 +1456,8 @@
 		D946E5BF1B30A7D200806BE6 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				D946E5C01B30A89500806BE6 /* NSDAte+NSDateMock.h */,
-				D946E5C11B30A89500806BE6 /* NSDAte+NSDateMock.m */,
+				D946E5C01B30A89500806BE6 /* NSDate+NSDateMock.h */,
+				D946E5C11B30A89500806BE6 /* NSDate+NSDateMock.m */,
 			);
 			name = Mocks;
 			sourceTree = "<group>";
@@ -2844,7 +2844,7 @@
 				D946E5C41B30A9D700806BE6 /* HRPGTaskTests.m in Sources */,
 				D99EA73D1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m in Sources */,
 				D95704471E153767004F6804 /* TestObserver.swift in Sources */,
-				D946E5C21B30A89500806BE6 /* NSDAte+NSDateMock.m in Sources */,
+				D946E5C21B30A89500806BE6 /* NSDate+NSDateMock.m in Sources */,
 				D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */,
 				D9709A501E7F17150005F35B /* TaskDetailLineViewTests.swift in Sources */,
 				D9709A4E1E7F13330005F35B /* ChallengeTableViewControllerTests.swift in Sources */,

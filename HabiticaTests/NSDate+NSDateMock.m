@@ -6,7 +6,7 @@
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 
-#import "NSDAte+NSDateMock.h"
+#import "NSDate+NSDateMock.h"
 
 @implementation NSDate (NSDateMock)
 

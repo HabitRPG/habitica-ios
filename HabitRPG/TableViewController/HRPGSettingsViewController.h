@@ -10,6 +10,6 @@
 #import "HRPGBaseViewController.h"
 #import "XLFormViewController.h"
 
-@interface HRPGSettingsViewController : XLFormViewController<UIAlertViewDelegate>
+@interface HRPGSettingsViewController : XLFormViewController
 @property NSString *username;
 @end
