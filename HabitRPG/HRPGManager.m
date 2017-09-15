@@ -50,6 +50,7 @@
 @property HRPGNetworkIndicatorController *networkIndicatorController;
 @property HRPGNotificationManager *notificationManager;
 @property ConfigRepository *configRepository;
+@property NSString *lastDeletedTaskID;
 @end
 
 @implementation HRPGManager {
@@ -3213,6 +3214,10 @@ NSString *currentUser;
 }
 
 - (void)deleteTask:(Task *)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    if ([task.id isEqualToString:self.lastDeletedTaskID]) {
+        return;
+    }
+    self.lastDeletedTaskID = task.id;
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] deleteObject:task

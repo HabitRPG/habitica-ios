@@ -52,11 +52,11 @@
 }
 
 + (UIColor *)yellow50 {
-    return [UIColor colorWithRed:1.0f green:180.0f / 255.0f blue:69.0f / 255.0f alpha:1.0f];
+    return [UIColor colorWithRed:255.0f / 255.0f green:180.0f / 255.0f blue:69.0f / 255.0f alpha:1.0f];
 }
 
 + (UIColor *)yellow100 {
-    return [UIColor colorWithRed:1.0f green:190.0f / 255.0f blue:93.0f / 255.0f alpha:1.0f];
+    return [UIColor colorWithRed:255.0f / 255.0f green:190.0f / 255.0f blue:93.0f / 255.0f alpha:1.0f];
 }
 
 + (UIColor *)yellow500 {
