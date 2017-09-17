@@ -8,7 +8,6 @@
 
 import Foundation
 import RealmSwift
-import Alamofire
 import SwiftyJSON
 
 class TaskRepository: NSObject {

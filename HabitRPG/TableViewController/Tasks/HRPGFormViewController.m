@@ -7,8 +7,6 @@
 //
 
 #import "HRPGFormViewController.h"
-#import "ChecklistItem.h"
-
 #import "NSString+Emoji.h"
 #import "Reminder.h"
 #import "Tag.h"

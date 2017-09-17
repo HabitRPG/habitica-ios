@@ -17,8 +17,9 @@
 #import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
 #import <Realm/Realm.h>
+#import "Task+CoreDataClass.h"
 
-@interface HRPGTableViewController ()<UISearchBarDelegate>
+@interface HRPGTableViewController ()<UISearchBarDelegate, ResultsControllerDelegate>
 @property NSString *readableName;
 @property NSString *typeName;
 @property int extraCellSpacing;
@@ -700,6 +701,23 @@ BOOL editable;
             [self.tableView setContentOffset:scrollPoint animated:NO];
         }
     }
+}
+
+- (void)beginUpdateWithController:(id<ResultsController>)controller {
+    [self.tableView beginUpdates];
+}
+
+- (void)updateSectionWithController:(id<ResultsController>)controller {
+    
+}
+
+- (void)updateItemWithController:(id<ResultsController>)controller indexPath:(NSIndexPath *)indexPath changeType:(enum ResultsChangeType)changeType {
+    
+}
+
+
+- (void)endUpdateWithController:(id<ResultsController>)controller {
+    [self.tableView endUpdates];
 }
 
 @end

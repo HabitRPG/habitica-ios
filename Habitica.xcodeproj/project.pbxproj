@@ -15,6 +15,9 @@
 		291105161F6E9DF5001D699C /* BaseLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291105151F6E9DF5001D699C /* BaseLocalRepository.swift */; };
 		291105191F6E9E3D001D699C /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291105181F6E9E3D001D699C /* BaseRepository.swift */; };
 		2911051B1F6E9EEC001D699C /* TaskLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911051A1F6E9EEC001D699C /* TaskLocalRepository.swift */; };
+		2911051D1F6EA3E3001D699C /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911051C1F6EA3E3001D699C /* ResultsController.swift */; };
+		2911051F1F6EA416001D699C /* ResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911051E1F6EA416001D699C /* ResultsControllerDelegate.swift */; };
+		291105211F6EAB28001D699C /* ChecklistItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291105201F6EAB28001D699C /* ChecklistItems.swift */; };
 		29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E421F3DD2120094A3E3 /* TutorialStepView.swift */; };
 		29255E451F3DD3ED0094A3E3 /* TutorialStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29255E441F3DD3ED0094A3E3 /* TutorialStepView.xib */; };
 		29255E471F3E14920094A3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E461F3E14920094A3E3 /* AppDelegate.swift */; };
@@ -302,7 +305,6 @@
 		D9B2F28F1D99669C001810BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9B2F2911D99669C001810BD /* Localizable.strings */; };
 		D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */; };
 		D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */; };
-		D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0BF18D5EFF400C8D1B7 /* ChecklistItem.m */; };
 		D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0CE18D5F4D400C8D1B7 /* Tag.m */; };
 		D9B5C0E118D602FC00C8D1B7 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E018D602FC00C8D1B7 /* Group.m */; };
 		D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E318D610E300C8D1B7 /* HRPGTaskResponse.m */; };
@@ -432,6 +434,9 @@
 		291105151F6E9DF5001D699C /* BaseLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLocalRepository.swift; sourceTree = "<group>"; };
 		291105181F6E9E3D001D699C /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
 		2911051A1F6E9EEC001D699C /* TaskLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLocalRepository.swift; sourceTree = "<group>"; };
+		2911051C1F6EA3E3001D699C /* ResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsController.swift; sourceTree = "<group>"; };
+		2911051E1F6EA416001D699C /* ResultsControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsControllerDelegate.swift; sourceTree = "<group>"; };
+		291105201F6EAB28001D699C /* ChecklistItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItems.swift; sourceTree = "<group>"; };
 		29255E421F3DD2120094A3E3 /* TutorialStepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialStepView.swift; sourceTree = "<group>"; };
 		29255E441F3DD3ED0094A3E3 /* TutorialStepView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialStepView.xib; sourceTree = "<group>"; };
 		29255E461F3E14920094A3E3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -955,8 +960,6 @@
 		D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGManager.m; sourceTree = "<group>"; };
 		D9B5C0B518D5C07100C8D1B7 /* HRPGProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGProfileViewController.h; sourceTree = "<group>"; };
 		D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGProfileViewController.m; sourceTree = "<group>"; };
-		D9B5C0BE18D5EFF400C8D1B7 /* ChecklistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ChecklistItem.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D9B5C0BF18D5EFF400C8D1B7 /* ChecklistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ChecklistItem.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9B5C0CD18D5F4D400C8D1B7 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		D9B5C0CE18D5F4D400C8D1B7 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		D9B5C0DF18D602FC00C8D1B7 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Group.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -1104,8 +1107,6 @@
 		D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionInformation.swift; sourceTree = "<group>"; };
 		D9F1E3ED1E576E430034D0F4 /* Task+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Task+CoreDataClass.h"; sourceTree = "<group>"; };
 		D9F1E3EE1E576E430034D0F4 /* Task+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Task+CoreDataClass.m"; sourceTree = "<group>"; };
-		D9F1E3EF1E576E430034D0F4 /* Task+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Task+CoreDataProperties.h"; sourceTree = "<group>"; };
-		D9F1E3F01E576E430034D0F4 /* Task+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Task+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D9FBC0F11D538B5C008C9EF4 /* HRPGCoreDataDatasourceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGCoreDataDatasourceDelegate.h; sourceTree = "<group>"; };
 		D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTypingLabel.h; sourceTree = "<group>"; };
 		D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTypingLabel.m; sourceTree = "<group>"; };
@@ -1283,6 +1284,7 @@
 			isa = PBXGroup;
 			children = (
 				29ED4BDD1F658C02003FAB1F /* Task.swift */,
+				291105201F6EAB28001D699C /* ChecklistItems.swift */,
 			);
 			name = Realm;
 			sourceTree = "<group>";
@@ -1455,6 +1457,8 @@
 			children = (
 				494E54051F2D7F9E0003683C /* TVDataSources */,
 				494E54061F2D7FAB0003683C /* CVDataSources */,
+				2911051C1F6EA3E3001D699C /* ResultsController.swift */,
+				2911051E1F6EA416001D699C /* ResultsControllerDelegate.swift */,
 			);
 			name = DataSources;
 			path = TableViewDataSources;
@@ -2010,8 +2014,6 @@
 				D98F5DC81C6A45800035CBEC /* ChatMessageLike.m */,
 				D98F5DC51C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.h */,
 				D98F5DC61C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m */,
-				D9B5C0BE18D5EFF400C8D1B7 /* ChecklistItem.h */,
-				D9B5C0BF18D5EFF400C8D1B7 /* ChecklistItem.m */,
 				D979AD111AF3CF6C00D59FAE /* Customization.h */,
 				D979AD121AF3CF6C00D59FAE /* Customization.m */,
 				D9C7C1EE18E26BBB0083F4E4 /* Egg.h */,
@@ -2108,8 +2110,6 @@
 				D9B5C0CE18D5F4D400C8D1B7 /* Tag.m */,
 				D9F1E3ED1E576E430034D0F4 /* Task+CoreDataClass.h */,
 				D9F1E3EE1E576E430034D0F4 /* Task+CoreDataClass.m */,
-				D9F1E3EF1E576E430034D0F4 /* Task+CoreDataProperties.h */,
-				D9F1E3F01E576E430034D0F4 /* Task+CoreDataProperties.m */,
 				D9FC1A841BC2D8A300B97D23 /* TutorialSteps.h */,
 				D9FC1A851BC2D8A300B97D23 /* TutorialSteps.m */,
 				D9FC1A821BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.h */,
@@ -2982,6 +2982,7 @@
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
 				299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */,
 				D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */,
+				2911051F1F6EA416001D699C /* ResultsControllerDelegate.swift in Sources */,
 				D98AD5541943986100AF6174 /* HRPGMountViewController.m in Sources */,
 				D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */,
 				29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */,
@@ -3019,6 +3020,7 @@
 				D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */,
 				D9E46B041DABCD9100E390D7 /* Buff+CoreDataProperties.m in Sources */,
 				297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */,
+				291105211F6EAB28001D699C /* ChecklistItems.swift in Sources */,
 				2957B8C41F4D922C00E836EF /* CustomRewardCell.swift in Sources */,
 				29ED4BE31F65B611003FAB1F /* JSON+Date.swift in Sources */,
 				2957B8B11F4B2C6C00E836EF /* Map44To45.xcmappingmodel in Sources */,
@@ -3078,7 +3080,6 @@
 				D995D5961D1D499D00D5251C /* PushNotifications+CoreDataProperties.m in Sources */,
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
 				D92CDAE018CB83B90006C242 /* HRPGHabitTableViewController.m in Sources */,
-				D9F1E3F21E576E430034D0F4 /* Task+CoreDataProperties.m in Sources */,
 				D9C0E51A1C6510B40062C89A /* HRPGPublicGuildsViewController.m in Sources */,
 				D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */,
 				D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */,
@@ -3133,6 +3134,7 @@
 				493ECBCB1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift in Sources */,
 				2957B8BC1F4B4DDE00E836EF /* InAppRewardCell.swift in Sources */,
 				D9BB45CC1E76E0FC0002AE2E /* ToDoTableViewCell.swift in Sources */,
+				2911051D1F6EA3E3001D699C /* ResultsController.swift in Sources */,
 				29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */,
 				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,
 				29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */,
@@ -3147,7 +3149,6 @@
 				D9D593661D008C7500D6C388 /* PushDevice+CoreDataProperties.m in Sources */,
 				D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */,
 				D905D08A1DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m in Sources */,
-				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
 				2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */,
 				D92A085D1D3520D8000F8B66 /* ShopItem+CoreDataProperties.m in Sources */,
 				29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */,

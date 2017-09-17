@@ -44,6 +44,8 @@ class Task: Object, JSONSerializable {
     dynamic var nextDue: Date?
     dynamic var currentlyChecking = false
     
+    let checklist = List<ChecklistItem>()
+    
     convenience required init(json: JSON) {
         self.init()
         id = json["id"].stringValue
@@ -72,6 +74,12 @@ class Task: Object, JSONSerializable {
         yesterdaily = json["yesterdaily"].bool ?? false
         counterUp = json["counterUp"].int ?? 0
         counterDown = json["counterDown"].int ?? 0
+        
+        if let checklistJSON = json["checklist"].array {
+            checklistJSON.forEach({ (itemJSON) in
+                checklist.append(ChecklistItem(json: itemJSON))
+            })
+        }
     }
     
     override static func primaryKey() -> String? {

@@ -7,7 +7,6 @@
 //
 
 #import "HRPGDailyTableViewController.h"
-#import "ChecklistItem.h"
 #import "HRPGCheckBoxView.h"
 #import "Habitica-Swift.h"
 
@@ -67,9 +66,9 @@
     
     __weak DailyTableViewCell *weakCell = cell;
     cell.checklistItemTouched = ^(ChecklistItem *item) {
-        if (![item.currentlyChecking boolValue]) {
+        if (!item.currentlyChecking) {
             item.currentlyChecking = @YES;
-            item.completed = @(![item.completed boolValue]);
+            item.completed = !item.completed;
             [[HRPGManager sharedManager] scoreChecklistItem:task
                                               checklistItem:item
                                                   onSuccess:^() {

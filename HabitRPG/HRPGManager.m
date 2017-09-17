@@ -32,7 +32,6 @@
 #import "HRPGUserBuyResponse.h"
 #import "Quest+CoreDataClass.h"
 #import "Reward.h"
-#import "ChecklistItem.h"
 #import "UIColor+Habitica.h"
 #import "HRPGURLParser.h"
 #import "HRPGResponseMessage.h"

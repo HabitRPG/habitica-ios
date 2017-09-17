@@ -89,7 +89,7 @@
 }
 
 - (void)configureForChecklistItem:(ChecklistItem *)item withTitle:(BOOL)withTitle {
-    self.checked = [item.completed boolValue] || [item.currentlyChecking boolValue];
+    self.checked = item.completed || item.currentlyChecking;
     if (self.label == nil && withTitle) {
         self.label = [[UILabel alloc] init];
         self.label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];

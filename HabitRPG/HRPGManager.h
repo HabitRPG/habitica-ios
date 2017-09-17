@@ -13,7 +13,6 @@
 #import "Group.h"
 #import "MetaReward.h"
 #import "Pet.h"
-#import "Task+CoreDataClass.h"
 #import "User.h"
 #import "User.h"
 #import "Item.h"
@@ -21,6 +20,8 @@
 #import "ShopItem+CoreDataClass.h"
 #import "Spell.h"
 #import "HRPGNotification.h"
+
+@class Task, ChecklistItem;
 
 @interface HRPGManager : NSObject
 

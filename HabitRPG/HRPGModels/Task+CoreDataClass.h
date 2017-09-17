@@ -53,5 +53,3 @@ typedef NS_ENUM(NSInteger, TaskToDoFilterType) {
 @end
 
 NS_ASSUME_NONNULL_END
-
-#import "Task+CoreDataProperties.h"
