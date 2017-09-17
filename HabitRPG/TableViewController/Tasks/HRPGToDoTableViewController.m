@@ -7,9 +7,9 @@
 //
 
 #import "HRPGToDoTableViewController.h"
-#import "ChecklistItem.h"
 #import "HRPGCheckBoxView.h"
 #import "Habitica-Swift.h"
+#import "Task+CoreDataClass.h"
 
 @interface HRPGToDoTableViewController ()
 @property NSString *readableName;
@@ -68,9 +68,9 @@
     
     __weak ToDoTableViewCell *weakCell = cell;
     cell.checklistItemTouched = ^(ChecklistItem *item) {
-        if (![item.currentlyChecking boolValue]) {
+        if (!item.currentlyChecking) {
             item.currentlyChecking = @YES;
-            item.completed = @(![item.completed boolValue]);
+            item.completed = !item.completed;
             [[HRPGManager sharedManager] scoreChecklistItem:task
                                               checklistItem:item
                                                   onSuccess:^() {
@@ -87,16 +87,16 @@
     cell.taskDetailLine.dateFormatter = self.dateFormatter;
     [cell configureWithTask:task];
     cell.checkBox.wasTouched = ^() {
-        if (![task.currentlyChecking boolValue]) {
-            task.currentlyChecking = @YES;
-            NSString *actionName = [task.completed boolValue] ? @"down" : @"up";
+        if (!task.currentlyChecking) {
+            task.currentlyChecking = YES;
+            NSString *actionName = task.completed ? @"down" : @"up";
             [[HRPGManager sharedManager] upDownTask:task
                                           direction:actionName
                                           onSuccess:^() {
-                                              task.currentlyChecking = @NO;
+                                              task.currentlyChecking = NO;
                                           }
                                             onError:^() {
-                                                task.currentlyChecking = @NO;
+                                                task.currentlyChecking = NO;
                                             }];
         }
     };

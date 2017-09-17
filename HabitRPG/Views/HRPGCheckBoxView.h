@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChecklistItem.h"
-#import "Task+CoreDataClass.h"
+
+@class Task, ChecklistItem;
 
 @interface HRPGCheckBoxView : UIView
 

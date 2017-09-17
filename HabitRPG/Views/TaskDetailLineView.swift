@@ -72,10 +72,10 @@ class TaskDetailLineView: UIView {
 
     public func configure(task: Task) {
         hasContent = false
-        setTag(enabled: task.tagArray.count > 0)
-        setReminder(enabled: (task.reminders?.count ?? 0) > 0)
-        setChallenge(enabled: task.challengeID != nil)
-        setStreak(count: task.streak?.intValue ?? 0)
+        //setTag(enabled: task.tagArray.count > 0)
+        //setReminder(enabled: (task.reminders?.count ?? 0) > 0)
+        setChallenge(enabled: task.challengeID.characters.count > 0)
+        setStreak(count: task.streak)
 
         if task.type == "habit" {
             setCalendarIcon(enabled: false)
@@ -179,11 +179,11 @@ class TaskDetailLineView: UIView {
     private func setLastCompleted(task: Task) {
         var counterString = ""
         
-        let upCounter = task.counterUp?.intValue ?? 0
-        let downCounter = task.counterDown?.intValue ?? 0
-        if task.up?.boolValue ?? false && task.down?.boolValue ?? false && upCounter+downCounter > 0 {
+        let upCounter = task.counterUp
+        let downCounter = task.counterDown
+        if task.up && task.down && upCounter+downCounter > 0 {
             counterString = "+\(upCounter) | -\(downCounter)"
-        } else if task.up?.boolValue ?? false && upCounter > 0 {
+        } else if task.up && upCounter > 0 {
             counterString = "\(upCounter)"
         } else if downCounter > 0 {
             counterString = "\(downCounter)"

@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, TaskToDoFilterType) {
     TaskToDoFilterTypeDone
 };
 
-@interface Task : NSManagedObject
+@interface OldTask : NSManagedObject
 
 @property(nonatomic) NSArray *tagArray;
 // Temporary variable to store whether or not the task is currently being checked or not. Used to
@@ -53,5 +53,3 @@ typedef NS_ENUM(NSInteger, TaskToDoFilterType) {
 @end
 
 NS_ASSUME_NONNULL_END
-
-#import "Task+CoreDataProperties.h"

@@ -144,28 +144,28 @@ class TaskRepeatablesSummaryInteractorTests: HabiticaTests {
     func testMonthyEveryDayOfMonth() {
         task.everyX = 1
         task.frequency = "monthly"
-        task.daysOfMonth = Set(arrayLiteral: 31)
+        //task.daysOfMonth = Set(arrayLiteral: 31)
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats monthly on the 31"
     }
     
     func testMonthyEveryThreeDayOfMonth() {
         task.everyX = 3
         task.frequency = "monthly"
-        task.daysOfMonth = Set(arrayLiteral: 31)
+        //task.daysOfMonth = Set(arrayLiteral: 31)
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats every 3 months on the 31"
     }
     
     func testMonthyEveryWeekOfMonth() {
         task.everyX = 1
         task.frequency = "monthly"
-        task.weeksOfMonth = Set(arrayLiteral: 5)
+        //task.weeksOfMonth = Set(arrayLiteral: 5)
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats monthly on the 5 Tuesday"
     }
     
     func testMonthyEveryThreeWeekOfMonth() {
         task.everyX = 3
         task.frequency = "monthly"
-        task.weeksOfMonth = Set(arrayLiteral: 5)
+        //task.weeksOfMonth = Set(arrayLiteral: 5)
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats every 3 months on the 5 Tuesday"
         
     }

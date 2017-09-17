@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
+#import <RBQFetchedResultsController/RBQFetchedResultsController.h>
+#import <RBQFetchedResultsController/RBQFetchRequest.h>
 
-@interface HRPGTableViewController : HRPGBaseViewController<NSFetchedResultsControllerDelegate>
+@interface HRPGTableViewController : HRPGBaseViewController<RBQFetchedResultsControllerDelegate>
 
 - (void)refresh;
 
@@ -21,7 +23,7 @@
 
 - (Task *)taskAtIndexPath:(NSIndexPath *)indexPath;
 
-@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property(strong, nonatomic) RBQFetchedResultsController *fetchedResultsController;
 - (NSPredicate *)getPredicate;
 
 - (void)scrollToTaskWithId:(NSString *)taskID;

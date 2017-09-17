@@ -9,6 +9,7 @@
 #import "HRPGHabitButtons.h"
 #import "UIColor+LighterDarker.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGHabitButtons ()
 
@@ -27,7 +28,7 @@
     self.buttonSize = 32;
     [self cleanUp];
 
-    BOOL isActive = isNegative ? [task.down boolValue] : [task.up boolValue];
+    BOOL isActive = isNegative ? task.down : task.up;
     
     self.label = [[UIImageView alloc] init];
     [self addSubview:self.label];
@@ -51,7 +52,7 @@
         [self.label addGestureRecognizer:tapRecognizer];
         self.backgroundColor = [task lightTaskColor];
         
-        NSInteger taskValue = task.value.integerValue;
+        NSInteger taskValue = task.value;
         if (taskValue >= -10 && taskValue < -1) {
             self.roundedView.backgroundColor = [UIColor orange10];
         } else if (taskValue >= -1 && taskValue < 1) {

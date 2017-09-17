@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
+		2911050B1F6E8AA5001D699C /* BaseAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911050A1F6E8AA5001D699C /* BaseAPICall.swift */; };
+		2911050E1F6E8C12001D699C /* RetrieveTasksAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911050D1F6E8C12001D699C /* RetrieveTasksAPICall.swift */; };
+		291105111F6E9155001D699C /* JsonSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291105101F6E9155001D699C /* JsonSerializable.swift */; };
+		291105131F6E91DE001D699C /* JSONSerializableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291105121F6E91DE001D699C /* JSONSerializableArray.swift */; };
+		291105161F6E9DF5001D699C /* BaseLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291105151F6E9DF5001D699C /* BaseLocalRepository.swift */; };
+		291105191F6E9E3D001D699C /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291105181F6E9E3D001D699C /* BaseRepository.swift */; };
+		2911051B1F6E9EEC001D699C /* TaskLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911051A1F6E9EEC001D699C /* TaskLocalRepository.swift */; };
+		2911051D1F6EA3E3001D699C /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911051C1F6EA3E3001D699C /* ResultsController.swift */; };
+		2911051F1F6EA416001D699C /* ResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911051E1F6EA416001D699C /* ResultsControllerDelegate.swift */; };
+		291105211F6EAB28001D699C /* ChecklistItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291105201F6EAB28001D699C /* ChecklistItems.swift */; };
 		29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E421F3DD2120094A3E3 /* TutorialStepView.swift */; };
 		29255E451F3DD3ED0094A3E3 /* TutorialStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29255E441F3DD3ED0094A3E3 /* TutorialStepView.xib */; };
 		29255E471F3E14920094A3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E461F3E14920094A3E3 /* AppDelegate.swift */; };
@@ -66,6 +76,10 @@
 		29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */; };
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
 		29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
+		29ED4BDA1F6582A3003FAB1F /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED4BD91F6582A3003FAB1F /* TaskRepository.swift */; };
+		29ED4BDE1F658C02003FAB1F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED4BDD1F658C02003FAB1F /* Task.swift */; };
+		29ED4BE31F65B611003FAB1F /* JSON+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED4BE21F65B611003FAB1F /* JSON+Date.swift */; };
+		29ED4BE71F65B896003FAB1F /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED4BE61F65B896003FAB1F /* Formatter.swift */; };
 		29F89F1A1F47882A004E5B84 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89F191F47882A004E5B84 /* String-Extensions.swift */; };
 		49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6D1F17DDF9004830D9 /* Shop.storyboard */; };
 		49005B701F17E7AC004830D9 /* Shops.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6F1F17E7AC004830D9 /* Shops.storyboard */; };
@@ -291,7 +305,6 @@
 		D9B2F28F1D99669C001810BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9B2F2911D99669C001810BD /* Localizable.strings */; };
 		D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */; };
 		D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */; };
-		D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0BF18D5EFF400C8D1B7 /* ChecklistItem.m */; };
 		D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0CE18D5F4D400C8D1B7 /* Tag.m */; };
 		D9B5C0E118D602FC00C8D1B7 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E018D602FC00C8D1B7 /* Group.m */; };
 		D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E318D610E300C8D1B7 /* HRPGTaskResponse.m */; };
@@ -414,6 +427,16 @@
 /* Begin PBXFileReference section */
 		281AC256BB298E2B402BE5DF /* Pods-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2907F99D1F694C4000328AEE /* GemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemViewController.swift; sourceTree = "<group>"; };
+		2911050A1F6E8AA5001D699C /* BaseAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPICall.swift; sourceTree = "<group>"; };
+		2911050D1F6E8C12001D699C /* RetrieveTasksAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksAPICall.swift; sourceTree = "<group>"; };
+		291105101F6E9155001D699C /* JsonSerializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonSerializable.swift; sourceTree = "<group>"; };
+		291105121F6E91DE001D699C /* JSONSerializableArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSerializableArray.swift; sourceTree = "<group>"; };
+		291105151F6E9DF5001D699C /* BaseLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLocalRepository.swift; sourceTree = "<group>"; };
+		291105181F6E9E3D001D699C /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
+		2911051A1F6E9EEC001D699C /* TaskLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLocalRepository.swift; sourceTree = "<group>"; };
+		2911051C1F6EA3E3001D699C /* ResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsController.swift; sourceTree = "<group>"; };
+		2911051E1F6EA416001D699C /* ResultsControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsControllerDelegate.swift; sourceTree = "<group>"; };
+		291105201F6EAB28001D699C /* ChecklistItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItems.swift; sourceTree = "<group>"; };
 		29255E421F3DD2120094A3E3 /* TutorialStepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialStepView.swift; sourceTree = "<group>"; };
 		29255E441F3DD3ED0094A3E3 /* TutorialStepView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialStepView.xib; sourceTree = "<group>"; };
 		29255E461F3E14920094A3E3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -487,6 +510,11 @@
 		29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationRepository.swift; sourceTree = "<group>"; };
 		29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomization.swift; sourceTree = "<group>"; };
 		29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extensions.swift"; sourceTree = "<group>"; };
+		29ED4BD91F6582A3003FAB1F /* TaskRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
+		29ED4BDB1F658496003FAB1F /* HabitRPG 48.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 48.xcdatamodel"; sourceTree = "<group>"; };
+		29ED4BDD1F658C02003FAB1F /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		29ED4BE21F65B611003FAB1F /* JSON+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSON+Date.swift"; sourceTree = "<group>"; };
+		29ED4BE61F65B896003FAB1F /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		29F89F191F47882A004E5B84 /* String-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extensions.swift"; sourceTree = "<group>"; };
 		2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
 		2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -932,8 +960,6 @@
 		D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGManager.m; sourceTree = "<group>"; };
 		D9B5C0B518D5C07100C8D1B7 /* HRPGProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGProfileViewController.h; sourceTree = "<group>"; };
 		D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGProfileViewController.m; sourceTree = "<group>"; };
-		D9B5C0BE18D5EFF400C8D1B7 /* ChecklistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ChecklistItem.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D9B5C0BF18D5EFF400C8D1B7 /* ChecklistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ChecklistItem.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9B5C0CD18D5F4D400C8D1B7 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		D9B5C0CE18D5F4D400C8D1B7 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		D9B5C0DF18D602FC00C8D1B7 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Group.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -1081,8 +1107,6 @@
 		D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionInformation.swift; sourceTree = "<group>"; };
 		D9F1E3ED1E576E430034D0F4 /* Task+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Task+CoreDataClass.h"; sourceTree = "<group>"; };
 		D9F1E3EE1E576E430034D0F4 /* Task+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Task+CoreDataClass.m"; sourceTree = "<group>"; };
-		D9F1E3EF1E576E430034D0F4 /* Task+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Task+CoreDataProperties.h"; sourceTree = "<group>"; };
-		D9F1E3F01E576E430034D0F4 /* Task+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Task+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D9FBC0F11D538B5C008C9EF4 /* HRPGCoreDataDatasourceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGCoreDataDatasourceDelegate.h; sourceTree = "<group>"; };
 		D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTypingLabel.h; sourceTree = "<group>"; };
 		D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTypingLabel.m; sourceTree = "<group>"; };
@@ -1140,6 +1164,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2911050C1F6E8BCF001D699C /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				2911050D1F6E8C12001D699C /* RetrieveTasksAPICall.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		2911050F1F6E9145001D699C /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				291105101F6E9155001D699C /* JsonSerializable.swift */,
+				291105121F6E91DE001D699C /* JSONSerializableArray.swift */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		291105141F6E9DE2001D699C /* local */ = {
+			isa = PBXGroup;
+			children = (
+				291105151F6E9DF5001D699C /* BaseLocalRepository.swift */,
+				2911051A1F6E9EEC001D699C /* TaskLocalRepository.swift */,
+			);
+			path = local;
+			sourceTree = "<group>";
+		};
 		2957B8AA1F4B297300E836EF /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1228,6 +1278,24 @@
 				297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */,
 			);
 			name = Setup;
+			sourceTree = "<group>";
+		};
+		29ED4BDC1F658BF9003FAB1F /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				29ED4BDD1F658C02003FAB1F /* Task.swift */,
+				291105201F6EAB28001D699C /* ChecklistItems.swift */,
+			);
+			name = Realm;
+			sourceTree = "<group>";
+		};
+		29ED4BDF1F65B196003FAB1F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2911050C1F6E8BCF001D699C /* Tasks */,
+				2911050A1F6E8AA5001D699C /* BaseAPICall.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		4908642C1F4530DC00BD9896 /* Shop */ = {
@@ -1389,6 +1457,8 @@
 			children = (
 				494E54051F2D7F9E0003683C /* TVDataSources */,
 				494E54061F2D7FAB0003683C /* CVDataSources */,
+				2911051C1F6EA3E3001D699C /* ResultsController.swift */,
+				2911051E1F6EA416001D699C /* ResultsControllerDelegate.swift */,
 			);
 			name = DataSources;
 			path = TableViewDataSources;
@@ -1465,6 +1535,7 @@
 		D95704371E106BF3004F6804 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				29ED4BE21F65B611003FAB1F /* JSON+Date.swift */,
 				D95704381E106C11004F6804 /* LocalizedString.swift */,
 				D95704421E1528F2004F6804 /* Event-Extensions.swift */,
 				D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */,
@@ -1615,6 +1686,7 @@
 		D987393919687E46002A2426 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				29ED4BE61F65B896003FAB1F /* Formatter.swift */,
 				299BD6361F5457E100E22935 /* HabiticaIcons.swift */,
 				D90EA03819D60427001EABE4 /* Intro Images */,
 				D99BC43019D4C34A006DC132 /* 1Password.xcassets */,
@@ -1717,6 +1789,7 @@
 		D9B5C0EB18D6321400C8D1B7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				29ED4BDC1F658BF9003FAB1F /* Realm */,
 				493ECBC91F4DD7DD0099B1FC /* View Models */,
 				D9C3D01D19509E4C00D22A4A /* Core Data */,
 				D9B5C0E818D6320C00C8D1B7 /* HRPGLoginData.h */,
@@ -1756,9 +1829,12 @@
 		D9BB45DB1E7AE23E0002AE2E /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				291105141F6E9DE2001D699C /* local */,
 				D9BB45DC1E7AE5240002AE2E /* ConfigRepository.swift */,
 				29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */,
 				298119AA1F50251300F9FB39 /* InventoryRepository.swift */,
+				29ED4BD91F6582A3003FAB1F /* TaskRepository.swift */,
+				291105181F6E9E3D001D699C /* BaseRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1938,8 +2014,6 @@
 				D98F5DC81C6A45800035CBEC /* ChatMessageLike.m */,
 				D98F5DC51C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.h */,
 				D98F5DC61C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m */,
-				D9B5C0BE18D5EFF400C8D1B7 /* ChecklistItem.h */,
-				D9B5C0BF18D5EFF400C8D1B7 /* ChecklistItem.m */,
 				D979AD111AF3CF6C00D59FAE /* Customization.h */,
 				D979AD121AF3CF6C00D59FAE /* Customization.m */,
 				D9C7C1EE18E26BBB0083F4E4 /* Egg.h */,
@@ -2036,8 +2110,6 @@
 				D9B5C0CE18D5F4D400C8D1B7 /* Tag.m */,
 				D9F1E3ED1E576E430034D0F4 /* Task+CoreDataClass.h */,
 				D9F1E3EE1E576E430034D0F4 /* Task+CoreDataClass.m */,
-				D9F1E3EF1E576E430034D0F4 /* Task+CoreDataProperties.h */,
-				D9F1E3F01E576E430034D0F4 /* Task+CoreDataProperties.m */,
 				D9FC1A841BC2D8A300B97D23 /* TutorialSteps.h */,
 				D9FC1A851BC2D8A300B97D23 /* TutorialSteps.m */,
 				D9FC1A821BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.h */,
@@ -2187,6 +2259,8 @@
 		D9EB4E9418CB4A9400BB2094 /* Habitica */ = {
 			isa = PBXGroup;
 			children = (
+				2911050F1F6E9145001D699C /* JSON */,
+				29ED4BDF1F65B196003FAB1F /* API */,
 				D9BB45DB1E7AE23E0002AE2E /* Repositories */,
 				D97ED0AB1E6DBB5F006C2A26 /* Interactors */,
 				D95704371E106BF3004F6804 /* Extensions */,
@@ -2647,14 +2721,22 @@
 				"${BUILT_PRODUCTS_DIR}/NSString+Emoji/NSString_Emoji.framework",
 				"${BUILT_PRODUCTS_DIR}/PDKeychainBindingsController/PDKeychainBindingsController.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
+				"${BUILT_PRODUCTS_DIR}/RBQFetchedResultsController/RBQFetchedResultsController.framework",
+				"${BUILT_PRODUCTS_DIR}/RBQSafeRealmObject/RBQSafeRealmObject.framework",
 				"${BUILT_PRODUCTS_DIR}/RKValueTransformers/RKValueTransformers.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmUtilities/RealmUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/RestKit/RestKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SOCKit/SOCKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SafeRealmObject/SafeRealmObject.framework",
 				"${BUILT_PRODUCTS_DIR}/SeedsSDK/SeedsSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/SlackTextViewController/SlackTextViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftFetchedResultsController/SwiftFetchedResultsController.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/TransitionKit/TransitionKit.framework",
 				"${BUILT_PRODUCTS_DIR}/VTAcknowledgementsViewController/VTAcknowledgementsViewController.framework",
@@ -2688,14 +2770,22 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSString_Emoji.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PDKeychainBindingsController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RBQFetchedResultsController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RBQSafeRealmObject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RKValueTransformers.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RestKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SOCKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SafeRealmObject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SeedsSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlackTextViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftFetchedResultsController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VTAcknowledgementsViewController.framework",
@@ -2885,17 +2975,20 @@
 				2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */,
 				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
 				298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */,
+				291105131F6E91DE001D699C /* JSONSerializableArray.swift in Sources */,
 				D9D17CCC1E6736A600AD9232 /* ChallengeDetailHeaderView.swift in Sources */,
 				D9BB45D61E79968B0002AE2E /* ChallengeFilterAlert.swift in Sources */,
 				D9D593671D008C7500D6C388 /* PushDevice.m in Sources */,
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
 				299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */,
 				D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */,
+				2911051F1F6EA416001D699C /* ResultsControllerDelegate.swift in Sources */,
 				D98AD5541943986100AF6174 /* HRPGMountViewController.m in Sources */,
 				D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */,
 				29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */,
 				D98F5DCA1C6A45800035CBEC /* ChatMessageLike.m in Sources */,
 				D96C85421DCB6501003E3616 /* HRPGDropsEnabledNotification.m in Sources */,
+				2911051B1F6E9EEC001D699C /* TaskLocalRepository.swift in Sources */,
 				D9A1A27E1BA593D900903567 /* HRPGRewardTableViewCell.m in Sources */,
 				2957B8A81F4B071700E836EF /* InAppReward+CoreDataClass.m in Sources */,
 				299BD62F1F541EFC00E22935 /* QuestReward+CoreDataClass.m in Sources */,
@@ -2909,6 +3002,7 @@
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
 				D96BFC511E1930A500266EEF /* Signal-Extensions.swift in Sources */,
 				D9436AC91C64F880008D1171 /* HRPGGuildsOverviewViewController.m in Sources */,
+				2911050E1F6E8C12001D699C /* RetrieveTasksAPICall.swift in Sources */,
 				D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */,
 				D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */,
 				D9D21731198D509100023367 /* HRPGDeathView.m in Sources */,
@@ -2920,12 +3014,15 @@
 				D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */,
 				D947960A1972C248002CB34C /* HRPGUserProfileViewController.m in Sources */,
 				299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */,
+				29ED4BE71F65B896003FAB1F /* Formatter.swift in Sources */,
 				D9F1E3E81E55DCEC0034D0F4 /* SubscriptionInformationCell.swift in Sources */,
 				D9D96F03194B96FD00796FE7 /* HRPGMountMasterViewController.m in Sources */,
 				D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */,
 				D9E46B041DABCD9100E390D7 /* Buff+CoreDataProperties.m in Sources */,
 				297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */,
+				291105211F6EAB28001D699C /* ChecklistItems.swift in Sources */,
 				2957B8C41F4D922C00E836EF /* CustomRewardCell.swift in Sources */,
+				29ED4BE31F65B611003FAB1F /* JSON+Date.swift in Sources */,
 				2957B8B11F4B2C6C00E836EF /* Map44To45.xcmappingmodel in Sources */,
 				D95D03941C74AA5500D6BFB3 /* Preferences.m in Sources */,
 				D9BB45DD1E7AE5240002AE2E /* ConfigRepository.swift in Sources */,
@@ -2946,6 +3043,7 @@
 				D95D039B1C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.m in Sources */,
 				D9BB45631E71CE910002AE2E /* HabitTableViewCell.swift in Sources */,
 				D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */,
+				291105161F6E9DF5001D699C /* BaseLocalRepository.swift in Sources */,
 				D9D593581D004CC900D6C388 /* HRPGInboxTableViewController.m in Sources */,
 				D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */,
 				29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */,
@@ -2968,7 +3066,9 @@
 				D9D5935D1D00523800D6C388 /* InboxMessage+CoreDataProperties.m in Sources */,
 				494E53FB1F2C14980003683C /* HRPGShopsTableViewCell.swift in Sources */,
 				49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */,
+				29ED4BDE1F658C02003FAB1F /* Task.swift in Sources */,
 				D994B1491AD9177D008AE188 /* UIView+Screenshot.m in Sources */,
+				291105191F6E9E3D001D699C /* BaseRepository.swift in Sources */,
 				D97C71ED18F32FEF0089FDC6 /* Gear.m in Sources */,
 				D95704391E106C11004F6804 /* LocalizedString.swift in Sources */,
 				D9525F991E5F405400C529B8 /* Challenge+CoreDataProperties.m in Sources */,
@@ -2980,7 +3080,6 @@
 				D995D5961D1D499D00D5251C /* PushNotifications+CoreDataProperties.m in Sources */,
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
 				D92CDAE018CB83B90006C242 /* HRPGHabitTableViewController.m in Sources */,
-				D9F1E3F21E576E430034D0F4 /* Task+CoreDataProperties.m in Sources */,
 				D9C0E51A1C6510B40062C89A /* HRPGPublicGuildsViewController.m in Sources */,
 				D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */,
 				D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */,
@@ -2992,12 +3091,14 @@
 				D9D0451C1C2B1AEC00630244 /* Reminder.m in Sources */,
 				D94FEDEB1BB314B10046A52E /* HRPGGroupFormViewController.m in Sources */,
 				D97ED0B21E6DE3BF006C2A26 /* LeaveChallengeInteractor.swift in Sources */,
+				291105111F6E9155001D699C /* JsonSerializable.swift in Sources */,
 				D95CBD481BBC0EDA002F4498 /* UIView+Pulse.m in Sources */,
 				D96C85481DCCD8BC003E3616 /* UIWindow+VisibleController.m in Sources */,
 				D98F5DC11C6A1DA60035CBEC /* HRPGGroupTableViewController.m in Sources */,
 				D984D5861E48E5CF006E84F8 /* TaskDetailLineView.swift in Sources */,
 				2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */,
 				4904C7401F1ED87400F80723 /* GradientImageView.swift in Sources */,
+				2911050B1F6E8AA5001D699C /* BaseAPICall.swift in Sources */,
 				2957B8CA1F4ED7C800E836EF /* Currency.swift in Sources */,
 				D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */,
 				D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */,
@@ -3033,6 +3134,7 @@
 				493ECBCB1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift in Sources */,
 				2957B8BC1F4B4DDE00E836EF /* InAppRewardCell.swift in Sources */,
 				D9BB45CC1E76E0FC0002AE2E /* ToDoTableViewCell.swift in Sources */,
+				2911051D1F6EA3E3001D699C /* ResultsController.swift in Sources */,
 				29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */,
 				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,
 				29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */,
@@ -3047,7 +3149,6 @@
 				D9D593661D008C7500D6C388 /* PushDevice+CoreDataProperties.m in Sources */,
 				D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */,
 				D905D08A1DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m in Sources */,
-				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
 				2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */,
 				D92A085D1D3520D8000F8B66 /* ShopItem+CoreDataProperties.m in Sources */,
 				29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */,
@@ -3120,6 +3221,7 @@
 				29B388DF1EEF4FBD00A72950 /* MorningNotification.swift in Sources */,
 				D97C71E718F32FED0089FDC6 /* Potion.m in Sources */,
 				D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */,
+				29ED4BDA1F6582A3003FAB1F /* TaskRepository.swift in Sources */,
 				D98F5DD71C6CFFC60035CBEC /* HRPGPartyTableViewController.m in Sources */,
 				D98AD5511943904F00AF6174 /* HatchingPotion.m in Sources */,
 				D97C71F018F32FEF0089FDC6 /* MetaReward.m in Sources */,
@@ -3841,6 +3943,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				29ED4BDB1F658496003FAB1F /* HabitRPG 48.xcdatamodel */,
 				299BD6381F54961700E22935 /* HabitRPG 47.xcdatamodel */,
 				299BD6241F54181A00E22935 /* HabitRPG 46.xcdatamodel */,
 				2957B8A31F4B054500E836EF /* HabitRPG 45.xcdatamodel */,
@@ -3865,7 +3968,7 @@
 				D9B326771CD969D700973440 /* HabitRPG 26.xcdatamodel */,
 				D94E0AD81CCF9B8800B60210 /* HabitRPG 25.xcdatamodel */,
 			);
-			currentVersion = 299BD6381F54961700E22935 /* HabitRPG 47.xcdatamodel */;
+			currentVersion = 29ED4BDB1F658496003FAB1F /* HabitRPG 48.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

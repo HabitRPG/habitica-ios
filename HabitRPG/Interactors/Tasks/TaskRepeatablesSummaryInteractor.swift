@@ -74,21 +74,21 @@ struct RepeatableTask {
 
     init(task: Task) {
         self.frequency = task.frequency
-        self.everyX = task.everyX?.intValue ?? 1
-        self.monday = task.monday?.boolValue ?? false
-        self.tuesday = task.tuesday?.boolValue ?? false
-        self.wednesday = task.wednesday?.boolValue ?? false
-        self.thursday = task.thursday?.boolValue ?? false
-        self.friday = task.friday?.boolValue ?? false
-        self.saturday = task.saturday?.boolValue ?? false
-        self.sunday = task.sunday?.boolValue ?? false
+        self.everyX = task.everyX
+        self.monday = task.monday
+        self.tuesday = task.tuesday
+        self.wednesday = task.wednesday
+        self.thursday = task.thursday
+        self.friday = task.friday
+        self.saturday = task.saturday
+        self.sunday = task.sunday
         self.startDate = task.startDate
-        if let daysOfMonth = task.daysOfMonth {
+        /*if let daysOfMonth = task.daysOfMonth {
             self.daysOfMonth = daysOfMonth
         }
         if let weeksOfMonth = task.weeksOfMonth {
             self.weeksOfMonth = weeksOfMonth
-        }
+        }*/
     }
 
     init(frequency: String?,

@@ -290,7 +290,8 @@
         }
     }
 
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    //TODO: Fix reminders
+    /*NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity =
         [NSEntityDescription entityForName:@"Task"
                     inManagedObjectContext:[[HRPGManager sharedManager] getManagedObjectContext]];
@@ -307,7 +308,7 @@
         for (Reminder *reminder in task.reminders) {
             [reminder scheduleReminders];
         }
-    }
+    }*/
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastReminderSchedule"];
 }
 
@@ -394,7 +395,7 @@
                                                                     error:&error];
     if (fetchedObjects != nil && fetchedObjects.count == 1) {
         Task *task = fetchedObjects[0];
-        if (![task.completed boolValue]) {
+        if (!task.completed) {
             [[HRPGManager sharedManager] upDownTask:task
                 direction:@"up"
                 onSuccess:^() {

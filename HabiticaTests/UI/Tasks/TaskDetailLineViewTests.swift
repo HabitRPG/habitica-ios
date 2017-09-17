@@ -53,7 +53,7 @@ class TaskDetailLineViewTests: HabiticaTests {
             return;
         }
         tag.id = "id"
-        task.tags = Set(arrayLiteral: tag)
+        //task.tags = Set(arrayLiteral: tag)
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
         expect(self.taskDetailLine.tagIconView.isHidden) == false
@@ -74,7 +74,7 @@ class TaskDetailLineViewTests: HabiticaTests {
         guard let reminder = NSEntityDescription.insertNewObject(forEntityName: "Reminder", into: self.sharedManager.getManagedObjectContext()) as? Reminder else {
             return;
         }
-        task.reminders = NSOrderedSet(array: [reminder])
+        //task.reminders = NSOrderedSet(array: [reminder])
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
         expect(self.taskDetailLine.tagIconView.isHidden) == true
@@ -83,7 +83,7 @@ class TaskDetailLineViewTests: HabiticaTests {
     }
     
     func testStreakVisible() {
-        task.streak = NSNumber(integerLiteral: 2)
+        //task.streak = NSNumber(integerLiteral: 2)
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
         expect(self.taskDetailLine.tagIconView.isHidden) == true
@@ -93,7 +93,7 @@ class TaskDetailLineViewTests: HabiticaTests {
     }
     
     func testStreakHiddenIfZero() {
-        task.streak = NSNumber(integerLiteral: 0)
+        //task.streak = NSNumber(integerLiteral: 0)
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
         expect(self.taskDetailLine.tagIconView.isHidden) == true

@@ -32,7 +32,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         
         handleChecklist(task)
 
-        if task.completed?.boolValue ?? false {
+        if task.completed {
             self.checklistIndicator.backgroundColor = .gray500()
             self.titleLabel.textColor = .gray300()
             self.backgroundColor = .gray600()
@@ -53,14 +53,12 @@ class CheckedTableViewCell: TaskTableViewCell {
         self.checklistRightBorderView.backgroundColor = task.taskColor()
         self.checklistIndicator.isHidden = false
         self.checklistIndicator.translatesAutoresizingMaskIntoConstraints = false
-        let checklistCount = task.checklist?.count ?? 0
+        let checklistCount = task.checklist.count
         
         if checklistCount > 0 {
             var checkedCount = 0
-            if let checklist = task.checklist?.array as? [ChecklistItem] {
-                for item in checklist where item.completed.boolValue {
-                    checkedCount += 1
-                }
+            for item in task.checklist where item.completed {
+                checkedCount += 1
             }
             self.checklistDoneLabel.text = "\(checkedCount)"
             self.checklistAllLabel.text = "\(checklistCount)"
@@ -95,15 +93,13 @@ class CheckedTableViewCell: TaskTableViewCell {
     }
     
     private func addChecklistViews(task: Task) {
-        if let checklist = task.checklist?.array as? [ChecklistItem] {
-            for item in checklist {
-                let checkbox = HRPGCheckBoxView()
-                checkbox.configure(for: item, withTitle: true)
-                checklistContainer.addArrangedSubview(checkbox)
-                checkbox.wasTouched = {[weak self] in
-                    if let action = self?.checklistItemTouched {
-                        action(item)
-                    }
+        for item in task.checklist {
+            let checkbox = HRPGCheckBoxView()
+            checkbox.configure(for: item, withTitle: true)
+            checklistContainer.addArrangedSubview(checkbox)
+            checkbox.wasTouched = {[weak self] in
+                if let action = self?.checklistItemTouched {
+                    action(item)
                 }
             }
         }

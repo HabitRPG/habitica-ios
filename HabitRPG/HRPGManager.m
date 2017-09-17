@@ -32,7 +32,6 @@
 #import "HRPGUserBuyResponse.h"
 #import "Quest+CoreDataClass.h"
 #import "Reward.h"
-#import "ChecklistItem.h"
 #import "UIColor+Habitica.h"
 #import "HRPGURLParser.h"
 #import "HRPGResponseMessage.h"
@@ -49,6 +48,7 @@
 @interface HRPGManager ()
 @property HRPGNetworkIndicatorController *networkIndicatorController;
 @property HRPGNotificationManager *notificationManager;
+@property TaskRepository *taskRepository;
 @property ConfigRepository *configRepository;
 @property NSString *lastDeletedTaskID;
 @end
@@ -91,6 +91,7 @@ NSString *currentUser;
 }
 
 - (void)loadObjectManager:(RKManagedObjectStore *)existingManagedObjectStore {
+    self.taskRepository = [[TaskRepository alloc] init];
     self.notificationManager = [[HRPGNotificationManager alloc] initWithSharedManager:self];
     self.configRepository = [[ConfigRepository alloc] init];
     NSError *error = nil;
@@ -190,63 +191,7 @@ NSString *currentUser;
     RKValueTransformer *transformer = [HRPGManager millisecondsSince1970ToDateValueTransformer];
     [[RKValueTransformer defaultValueTransformer] insertValueTransformer:transformer atIndex:0];
 
-    RKEntityMapping *taskMapping =
-        [RKEntityMapping mappingForEntityForName:@"Task" inManagedObjectStore:managedObjectStore];
-    [taskMapping addAttributeMappingsFromDictionary:@{
-        @"_id" : @"id",
-        @"attribute" : @"attribute",
-        @"down" : @"down",
-        @"up" : @"up",
-        @"priority" : @"priority",
-        @"text" : @"text",
-        @"value" : @"value",
-        @"type" : @"type",
-        @"completed" : @"completed",
-        @"notes" : @"notes",
-        @"streak" : @"streak",
-        @"dateCreated" : @"dateCreated",
-        @"repeat.m" : @"monday",
-        @"repeat.t" : @"tuesday",
-        @"repeat.w" : @"wednesday",
-        @"repeat.th" : @"thursday",
-        @"repeat.f" : @"friday",
-        @"repeat.s" : @"saturday",
-        @"repeat.su" : @"sunday",
-        @"date" : @"duedate",
-        @"tags" : @"tagArray",
-        @"everyX" : @"everyX",
-        @"frequency" : @"frequency",
-        @"startDate" : @"startDate",
-        @"challenge.id" : @"challengeID",
-        @"daysOfMonth" : @"daysOfMonth",
-        @"weeksOfMonth" : @"weeksOfMonth",
-        @"isDue": @"isDue",
-        @"nextDue": @"nextDue",
-        @"yesterDaily": @"yesterDaily",
-        @"counterUp": @"counterUp",
-        @"counterDown": @"counterDown"
-    }];
-    taskMapping.identificationAttributes = @[ @"id" ];
-    RKEntityMapping *checklistItemMapping =
-        [RKEntityMapping mappingForEntityForName:@"ChecklistItem"
-                            inManagedObjectStore:managedObjectStore];
-    [checklistItemMapping addAttributeMappingsFromArray:@[ @"id", @"text", @"completed" ]];
-    checklistItemMapping.identificationAttributes = @[ @"id", @"text" ];
-
-    [taskMapping addPropertyMapping:[RKRelationshipMapping
-                                        relationshipMappingFromKeyPath:@"checklist"
-                                                             toKeyPath:@"checklist"
-                                                           withMapping:checklistItemMapping]];
-    RKEntityMapping *remindersMapping =
-        [RKEntityMapping mappingForEntityForName:@"Reminder"
-                            inManagedObjectStore:managedObjectStore];
-    [remindersMapping addAttributeMappingsFromArray:@[ @"id", @"startDate", @"time" ]];
-    remindersMapping.identificationAttributes = @[ @"id" ];
-
-    [taskMapping
-        addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"reminders"
-                                                                       toKeyPath:@"reminders"
-                                                                     withMapping:remindersMapping]];
+    
     [[RKObjectManager sharedManager].router.routeSet
         addRoute:[RKRoute routeWithClass:[Task class]
                              pathPattern:@"tasks/:id"
@@ -264,91 +209,6 @@ NSString *currentUser;
                              pathPattern:@"tasks/:id"
                                   method:RKRequestMethodDELETE]];
 
-    RKObjectMapping *taskRequestMapping =
-        [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-    [taskRequestMapping addAttributeMappingsFromDictionary:@{
-        @"id" : @"_id",
-        @"attribute" : @"attribute",
-        @"down" : @"down",
-        @"up" : @"up",
-        @"priority" : @"priority",
-        @"text" : @"text",
-        @"value" : @"value",
-        @"type" : @"type",
-        @"completed" : @"completed",
-        @"notes" : @"notes",
-        @"streak" : @"streak",
-        @"dateCreated" : @"dateCreated",
-        @"monday" : @"repeat.m",
-        @"tuesday" : @"repeat.t",
-        @"wednesday" : @"repeat.w",
-        @"thursday" : @"repeat.th",
-        @"friday" : @"repeat.f",
-        @"saturday" : @"repeat.s",
-        @"sunday" : @"repeat.su",
-        @"duedate" : @"date",
-        @"tagArray" : @"tags",
-        @"everyX" : @"everyX",
-        @"frequency" : @"frequency",
-        @"startDate" : @"startDate",
-        @"daysOfMonth" : @"daysOfMonth",
-        @"weeksOfMonth" : @"weeksOfMonth",
-        @"yesterDaily": @"yesterDaily"
-    }];
-    RKObjectMapping *checklistItemRequestMapping =
-        [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-    [checklistItemRequestMapping addAttributeMappingsFromArray:@[ @"id", @"text", @"completed" ]];
-    [taskRequestMapping
-        addPropertyMapping:[RKRelationshipMapping
-                               relationshipMappingFromKeyPath:@"checklist"
-                                                    toKeyPath:@"checklist"
-                                                  withMapping:checklistItemRequestMapping]];
-    RKObjectMapping *reminderRequestmapping =
-        [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-    [reminderRequestmapping addAttributeMappingsFromArray:@[ @"id", @"startDate", @"time" ]];
-    [taskRequestMapping
-        addPropertyMapping:[RKRelationshipMapping
-                               relationshipMappingFromKeyPath:@"reminders"
-                                                    toKeyPath:@"reminders"
-                                                  withMapping:reminderRequestmapping]];
-
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor
-        responseDescriptorWithMapping:taskMapping
-                               method:RKRequestMethodPUT
-                          pathPattern:@"tasks/:id"
-                              keyPath:@"data"
-                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
-    responseDescriptor = [RKResponseDescriptor
-        responseDescriptorWithMapping:taskMapping
-                               method:RKRequestMethodDELETE
-                          pathPattern:@"tasks/:id"
-                              keyPath:@"data"
-                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
-    RKRequestDescriptor *requestDescriptor =
-        [RKRequestDescriptor requestDescriptorWithMapping:taskRequestMapping
-                                              objectClass:[Task class]
-                                              rootKeyPath:nil
-                                                   method:RKRequestMethodPUT];
-    [objectManager addRequestDescriptor:requestDescriptor];
-
-    [[RKObjectManager sharedManager].router.routeSet
-        addRoute:[RKRoute routeWithName:@"taskdirection"
-                            pathPattern:@"tasks/:id/score/:direction"
-                                 method:RKRequestMethodPOST]];
-    responseDescriptor = [RKResponseDescriptor
-        responseDescriptorWithMapping:taskMapping
-                               method:RKRequestMethodPOST
-                          pathPattern:@"tasks/user"
-                              keyPath:@"data"
-                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:taskRequestMapping
-                                                              objectClass:[Task class]
-                                                              rootKeyPath:nil
-                                                                   method:RKRequestMethodPOST];
-    [objectManager addResponseDescriptor:responseDescriptor];
-    [objectManager addRequestDescriptor:requestDescriptor];
 
     RKEntityMapping *rewardMapping =
         [RKEntityMapping mappingForEntityForName:@"Reward" inManagedObjectStore:managedObjectStore];
@@ -392,7 +252,7 @@ NSString *currentUser;
                              pathPattern:@"tasks/:key"
                                   method:RKRequestMethodDELETE]];
 
-    requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:rewardRequestMapping
+    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:rewardRequestMapping
                                                               objectClass:[Reward class]
                                                               rootKeyPath:nil
                                                                    method:RKRequestMethodPOST];
@@ -406,13 +266,9 @@ NSString *currentUser;
     RKDynamicMapping *dynamicTaskMapping = [RKDynamicMapping new];
     [dynamicTaskMapping
         setObjectMappingForRepresentationBlock:^RKObjectMapping *(id representation) {
-            if ([[representation valueForKey:@"type"] isEqualToString:@"reward"]) {
                 return rewardMapping;
-            } else {
-                return taskMapping;
-            }
         }];
-    responseDescriptor = [RKResponseDescriptor
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor
         responseDescriptorWithMapping:dynamicTaskMapping
                                method:RKRequestMethodGET
                           pathPattern:@"tasks/user"
@@ -425,14 +281,6 @@ NSString *currentUser;
                                method:RKRequestMethodPOST
                           pathPattern:@"tasks/clearCompletedTodos"
                               keyPath:@"data"
-                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
-
-    responseDescriptor = [RKResponseDescriptor
-                          responseDescriptorWithMapping:taskMapping
-                          method:RKRequestMethodPOST
-                          pathPattern:@"tasks/:id/checklist/:checklistId/score"
-                          keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
@@ -1121,33 +969,6 @@ NSString *currentUser;
                                          relationshipMappingFromKeyPath:@"tutorial.common"
                                                               toKeyPath:@"commonTutorialSteps"
                                                             withMapping:tutorialsSeenMapping]];
-
-    RKEntityMapping *taskOrderMapping = [RKEntityMapping mappingForEntityForName:@"Task" inManagedObjectStore:managedObjectStore];
-    [taskOrderMapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:nil toKeyPath:@"id"]];
-    [taskOrderMapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:@"@metadata.mapping.collectionIndex" toKeyPath:@"order"]];
-    taskOrderMapping.identificationAttributes = @[ @"id" ];
-
-    responseDescriptor = [RKResponseDescriptor
-                          responseDescriptorWithMapping:taskOrderMapping
-                          method:RKRequestMethodAny
-                          pathPattern:@"user"
-                          keyPath:@"data.tasksOrder.habits"
-                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
-    responseDescriptor = [RKResponseDescriptor
-                          responseDescriptorWithMapping:taskOrderMapping
-                          method:RKRequestMethodAny
-                          pathPattern:@"user"
-                          keyPath:@"data.tasksOrder.todos"
-                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
-    responseDescriptor = [RKResponseDescriptor
-                          responseDescriptorWithMapping:taskOrderMapping
-                          method:RKRequestMethodAny
-                          pathPattern:@"user"
-                          keyPath:@"data.tasksOrder.dailys"
-                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
 
     RKEntityMapping *inboxMessageMapping = [RKEntityMapping mappingForEntityForName:@"InboxMessage"
                                                        inManagedObjectStore:managedObjectStore];
@@ -2460,26 +2281,11 @@ NSString *currentUser;
         url = [url stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     }
     
-    [[RKObjectManager sharedManager] getObjectsAtPath:url
-        parameters:nil
-        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            NSError *executeError = nil;
-            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-            [defaults setObject:[NSDate date] forKey:@"lastTaskFetch"];
-            [defaults synchronize];
-            if (successBlock) {
-                successBlock();
-            }
-            [self.networkIndicatorController endNetworking];
-            return;
+    [self.taskRepository retrieveTasksWithReturnBlock:^{
+        if (successBlock) {
+            successBlock();
         }
-        failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            if (errorBlock) {
-                errorBlock();
-            }
-            [self.networkIndicatorController endNetworking];
-            return;
-        }];
+    }];
 }
 
 - (void)fetchCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock {
@@ -2965,10 +2771,11 @@ NSString *currentUser;
             NSError *executeError = nil;
             HRPGTaskResponse *taskResponse = (HRPGTaskResponse *)[mappingResult dictionary][@"data"];
 
-            if ([task.managedObjectContext existingObjectWithID:task.objectID
+            //TODO: Fix scoring task
+            /*if ([task.managedObjectContext existingObjectWithID:task.objectID
                                                           error:&executeError] != nil) {
                 task.value = @([task.value floatValue] + [taskResponse.delta floatValue]);
-            }
+            }*/
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
 
             if ([self.user.level integerValue] < [taskResponse.level integerValue]) {
@@ -3004,16 +2811,16 @@ NSString *currentUser;
 
             if ([task.type isEqualToString:@"daily"]) {
                 if ([withDirection isEqualToString:@"up"]) {
-                    task.streak = @([task.streak integerValue] + 1);
-                } else if ([task.streak integerValue] > 0) {
-                    task.streak = @([task.streak integerValue] - 1);
+                    task.streak = task.streak + 1;
+                } else if (task.streak > 0) {
+                    task.streak = task.streak - 1;
                 }
             }
             if ([task.type isEqualToString:@"habit"]) {
                 if ([withDirection isEqualToString:@"up"]) {
-                    task.counterUp = @([task.counterUp integerValue] + 1);
+                    task.counterUp = task.counterUp + 1;
                 } else {
-                    task.counterDown = @([task.counterDown integerValue] + 1);
+                    task.counterDown = task.counterDown + 1;
                 }
             }
 
