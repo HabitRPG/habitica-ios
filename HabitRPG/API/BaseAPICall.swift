@@ -1,8 +1,8 @@
 //
-//  APIClient.swift
+//  BaseAPICall.swift
 //  Habitica
 //
-//  Created by Phillip on 10.09.17.
+//  Created by Phillip on 17.09.17.
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 
@@ -10,31 +10,30 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class APIClient {
+class BaseAPICall<T: JSONSerializable> {
+    let baseURL = "https://habitica.com/api/v3/"
     
-    static let baseUrl = "https://habitica.com/api/v3/"
+    var relativeURL: String = ""
+    var method: HTTPMethod = .get
+    var data: [String:AnyObject]?
     
-    static func retrieveTasks(completion: @escaping ([Task]) -> Void) {
-        makeRequest("tasks/user", method: .get) { (jsonData) in
-            completion(jsonData.arrayValue.map {Task(json: $0)})
-        }
+    var url: String {
+        return baseURL + relativeURL
     }
     
-    static func makeRequest(_ url: String, method: HTTPMethod, completion: @escaping (_ json: JSON) -> Void) {
-        makeRequest(url, method: method, data: nil, completion: completion)
-    }
-    
-    static func makeRequest(_ url: String, method: HTTPMethod, data: [String:AnyObject]?, completion: @escaping (_ json: JSON) -> Void) {
+    func execute(completion: @escaping (_ result: T?) -> Void) {
         let headers: HTTPHeaders = [
             "x-api-user": AuthenticationManager.shared.currentUserId ?? "",
             "x-api-key": AuthenticationManager.shared.currentUserKey ?? "",
             "Accept": "application/json"
         ]
-        Alamofire.request(baseUrl + url, method: method, parameters: data, headers: headers).responseJSON { response in
+        Alamofire.request(url, method: method, parameters: data, headers: headers).validate().responseJSON { (response) in
             switch response.result {
             case .success:
                 if let value = response.result.value {
-                    completion(JSON(value))
+                    let rootJSON = JSON(value)
+                    let object = try? T.init(json: rootJSON["data"])
+                    completion(object)
                 }
             case .failure:
                 var errorMessage = "General error message"

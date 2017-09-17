@@ -96,7 +96,7 @@ class CheckedTableViewCell: TaskTableViewCell {
     }
     
     private func addChecklistViews(task: Task) {
-        if let checklist = task.checklist?.array as? [ChecklistItem] {
+        /*if let checklist = task.checklist?.array as? [ChecklistItem] {
             for item in checklist {
                 let checkbox = HRPGCheckBoxView()
                 checkbox.configure(for: item, withTitle: true)
@@ -106,7 +106,7 @@ class CheckedTableViewCell: TaskTableViewCell {
                         action(item)
                     }
                 }
-            }*/
-        }
+            }
+        }*/
     }
 }

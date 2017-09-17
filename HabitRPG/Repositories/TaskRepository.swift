@@ -13,13 +13,14 @@ import SwiftyJSON
 
 class TaskRepository: NSObject {
     
-    private let realm = try? Realm()
+    let localRepository = TaskLocalRepository()
     
     public func retrieveTasks(returnBlock: @escaping () -> Void) {
-        APIClient.retrieveTasks { (tasks) in
-            try? self.realm?.write {
-                self.realm?.add(tasks, update: true)
+        RetrieveTasksAPICall().execute { (result) in
+            if let tasks = result {
+                self.localRepository.save(objects: tasks)
             }
+            returnBlock()
         }
     }
 }

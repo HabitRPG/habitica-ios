@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import SwiftyJSON
 
-class Task: Object {
+class Task: Object, JSONSerializable {
 
     dynamic var text = ""
     dynamic var notes = ""
@@ -44,7 +44,7 @@ class Task: Object {
     dynamic var nextDue: Date?
     dynamic var currentlyChecking = false
     
-    convenience init(json: JSON) {
+    convenience required init(json: JSON) {
         self.init()
         id = json["id"].stringValue
         text = json["text"].stringValue
