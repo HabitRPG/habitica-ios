@@ -334,6 +334,7 @@ float textWidth;
 [[HRPGManager sharedManager] sellItem:self.selectedItem onSuccess:nil onError:nil];
         }]];
     }
+    if (extraItem) {
     [alertController addAction:[UIAlertAction actionWithTitle:extraItem style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.tableView deselectRowAtIndexPath:indexPath animated:true];
         if ([self.selectedItem isKindOfClass:[Quest class]]) {
@@ -358,6 +359,7 @@ float textWidth;
             [self showCancelButton];
         }
     }]];
+    }
     
     UITableViewCell *selectedCell = [self.dataSource cellAtIndexPath:indexPath];
     alertController.popoverPresentationController.sourceView = selectedCell;

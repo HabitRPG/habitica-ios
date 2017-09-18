@@ -50,6 +50,11 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
     }
     
     func refresh() {
+        HRPGManager.shared().fetchUser(true, onSuccess: {[weak self] in
+            self?.refreshControl.endRefreshing()
+            }, onError: {[weak self] in
+            self?.refreshControl.endRefreshing()
+        })
         HRPGManager.shared().fetchBuyableRewards({[weak self] in
             self?.refreshControl.endRefreshing()
         }, onError: {[weak self] in

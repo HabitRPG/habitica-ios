@@ -14,6 +14,7 @@ class HRPGShopBannerView: UIView {
     @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var shopNameLabel: UILabel!
     @IBOutlet weak var shopPlaqueImageView: UIImageView!
+    @IBOutlet weak var gradientView: GradientView!
     private var _shop: Shop?
     var shop: Shop? {
         set(newShop) {
@@ -47,12 +48,15 @@ class HRPGShopBannerView: UIView {
             ]
             
             addSubview(view)
+            
+            gradientView.startColor = UIColor.white.withAlphaComponent(0.8)
+            gradientView.endColor = UIColor.white
         }
     }
     
     override var intrinsicContentSize: CGSize {
             notesLabel.sizeToFit()
-            return CGSize(width: UIScreen.main.bounds.size.width, height: 167 + notesLabel.bounds.size.height)
+            return CGSize(width: UIScreen.main.bounds.size.width, height: 140 + notesLabel.bounds.size.height)
     }
     
     private func setupShop() {

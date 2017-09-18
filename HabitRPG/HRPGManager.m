@@ -3120,7 +3120,7 @@ NSString *currentUser;
 
             NSNumber *goldDiff = @([taskResponse.gold floatValue] - [self.user.gold floatValue]);
             self.user.gold = taskResponse.gold;
-            [self displayRewardNotification:goldDiff withText:@"Test"];
+            [self displayRewardNotification:goldDiff];
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
             if (successBlock) {
                 successBlock();
@@ -3275,9 +3275,15 @@ NSString *currentUser;
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-            if (successBlock) {
-                successBlock();
-            }
+            [self fetchTasks:^{
+                if (successBlock) {
+                    successBlock();
+                }
+            } onError:^{
+                if (successBlock) {
+                    successBlock();
+                }
+            }];
             [self.networkIndicatorController endNetworking];
             return;
         }
@@ -3718,7 +3724,7 @@ NSString *currentUser;
                     }
                 }];
             } else {
-                [self displayRewardNotification:goldDiff withText:text];
+                [self displayItemBoughtNotification:goldDiff withText:text];
                 if (successBlock) {
                     successBlock();
                 }
@@ -4762,16 +4768,17 @@ NSString *currentUser;
                 
                 NSError *error;
                 NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-                [fetchRequest
-                 setEntity:[NSEntityDescription entityForName:@"ShopItem"
-                                       inManagedObjectContext:[self getManagedObjectContext]]];
-                [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == 'gem'"]];
+                [fetchRequest setEntity:[NSEntityDescription entityForName:@"ShopItem" inManagedObjectContext:[self getManagedObjectContext]]];
+                [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", key]];
                 
                 NSArray *existingItems =
                 [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
                 if (existingItems.count > 0) {
-                    ShopItem *gem = existingItems.firstObject;
-                    gem.itemsLeft = @([gem.itemsLeft integerValue] - 1);
+                    ShopItem *item = existingItems.firstObject;
+                    if ([@"gem" isEqualToString:key]) {
+                        item.itemsLeft = @([item.itemsLeft integerValue] - 1);
+                    }
+                    item.lastPurchased = [NSDate date];
                 }
                 
                 
@@ -4810,6 +4817,19 @@ NSString *currentUser;
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [self fetchUser:^() {
                                                 NSError *executeError = nil;
+                                                
+                                                NSError *error;
+                                                NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+                                                [fetchRequest setEntity:[NSEntityDescription entityForName:@"ShopItem" inManagedObjectContext:[self getManagedObjectContext]]];
+                                                [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", key]];
+                                                
+                                                NSArray *existingItems =
+                                                [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+                                                if (existingItems.count > 0) {
+                                                    ShopItem *item = existingItems.firstObject;
+                                                    item.lastPurchased = [NSDate date];
+                                                }
+                                                
                                                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
                                                 [self displayPurchaseNotification:[NSString stringWithFormat:NSLocalizedString(@"You purchased %@", nil), text] withImage:imageName];
                                                 if (successBlock) {
@@ -4876,6 +4896,19 @@ NSString *currentUser;
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [self fetchUser:^() {
                                                 NSError *executeError = nil;
+                                                
+                                                NSError *error;
+                                                NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+                                                [fetchRequest setEntity:[NSEntityDescription entityForName:@"ShopItem" inManagedObjectContext:[self getManagedObjectContext]]];
+                                                [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", key]];
+                                                
+                                                NSArray *existingItems =
+                                                [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+                                                if (existingItems.count > 0) {
+                                                    ShopItem *item = existingItems.firstObject;
+                                                    item.lastPurchased = [NSDate date];
+                                                }
+                                                
                                                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
                                                 [self displayPurchaseNotification:[NSString stringWithFormat:NSLocalizedString(@"You purchased %@", nil), text] withImage:imageName];
                                                 if (successBlock) {
@@ -5175,7 +5208,12 @@ NSString *currentUser;
     [ToastManager showWithToast:toastView];
 }
 
-- (void)displayRewardNotification:(NSNumber *)goldDiff withText:(NSString *)text {
+- (void)displayRewardNotification:(NSNumber *)goldDiff {
+    ToastView *toastView = [[ToastView alloc] initWithTitle:NSLocalizedString(@"Purchased Reward", nil) rightIcon:HabiticaIcons.imageOfGold rightText:[goldDiff stringValue] rightTextColor:[UIColor yellow5] background:ToastColorGray];
+    [ToastManager showWithToast:toastView];
+}
+
+- (void)displayItemBoughtNotification:(NSNumber *)goldDiff withText:(NSString *)text {
     ToastView *toastView = [[ToastView alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Purchased %@", nil), text] rightIcon:HabiticaIcons.imageOfGold rightText:[goldDiff stringValue] rightTextColor:[UIColor yellow5] background:ToastColorGray];
     [ToastManager showWithToast:toastView];
 }

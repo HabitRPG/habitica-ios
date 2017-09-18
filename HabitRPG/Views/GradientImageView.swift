@@ -9,13 +9,24 @@
 import UIKit
 
 class GradientImageView: UIImageView {
-    open var gradient: CAGradientLayer = CAGradientLayer()
+    private var _gradient: CAGradientLayer?
+    open var gradient: CAGradientLayer? {
+        set {
+            gradient?.removeFromSuperlayer()
+            _gradient = newValue
+            if let newGradient = gradient {
+                self.layer.insertSublayer(newGradient, at: 0)
+            }
+            setNeedsLayout()
+        }
+        get {
+            return _gradient
+        }
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        gradient.removeFromSuperlayer()
-        gradient.frame = self.bounds
-        self.layer.insertSublayer(gradient, at: 0)
+        gradient?.frame = self.bounds
     }
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -31,13 +31,21 @@
                                             <constraint firstAttribute="width" priority="500" constant="30" id="K79-8P-MSu"/>
                                         </constraints>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ky0-YM-H79">
+                                        <rect key="frame" x="0.0" y="0.0" width="78" height="32"/>
+                                        <color key="backgroundColor" red="0.14192527532577515" green="0.80092591047286987" blue="0.56276619434356689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95675891637802124" green="0.95692259073257446" blue="0.95674854516983032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="3Cu-3k-KMy"/>
+                                    <constraint firstItem="Ky0-YM-H79" firstAttribute="top" secondItem="827-G9-ba1" secondAttribute="top" id="65k-KO-icN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ky0-YM-H79" secondAttribute="trailing" id="BYf-og-21L"/>
                                     <constraint firstItem="e3y-4x-dBE" firstAttribute="centerX" secondItem="827-G9-ba1" secondAttribute="centerX" id="E40-5h-PyA"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ky0-YM-H79" secondAttribute="bottom" id="PTE-iI-5la"/>
                                     <constraint firstItem="e3y-4x-dBE" firstAttribute="top" secondItem="827-G9-ba1" secondAttribute="top" id="R60-Ec-Fdg"/>
                                     <constraint firstAttribute="bottom" secondItem="e3y-4x-dBE" secondAttribute="bottom" id="lg5-YW-TON"/>
+                                    <constraint firstItem="Ky0-YM-H79" firstAttribute="leading" secondItem="827-G9-ba1" secondAttribute="leading" id="tjZ-2k-D4w"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eGb-th-auK">
@@ -82,7 +90,7 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQC-S4-QYp">
                         <rect key="frame" x="58" y="0.0" width="28" height="28"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -111,6 +119,7 @@
                 <outlet property="infoImageView" destination="Zk1-te-Not" id="ESz-Cn-2gZ"/>
                 <outlet property="infoLabel" destination="jQC-S4-QYp" id="Jdg-MC-vNS"/>
                 <outlet property="pinnedIndicatorView" destination="SeM-3f-dTN" id="yxS-vi-dAB"/>
+                <outlet property="purchaseConfirmationView" destination="Ky0-YM-H79" id="rdv-lG-U36"/>
             </connections>
             <point key="canvasLocation" x="-303" y="-23"/>
         </collectionViewCell>

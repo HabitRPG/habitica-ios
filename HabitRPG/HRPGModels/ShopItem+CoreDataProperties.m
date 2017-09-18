@@ -2,8 +2,9 @@
 //  ShopItem+CoreDataProperties.m
 //  Habitica
 //
-//  Created by Phillip Thelen on 14/02/2017.
+//  Created by Phillip on 18.09.17.
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
+//
 //
 
 #import "ShopItem+CoreDataProperties.h"
@@ -14,21 +15,23 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"ShopItem"];
 }
 
+@dynamic availableUntil;
 @dynamic currency;
 @dynamic imageName;
 @dynamic index;
+@dynamic isSubscriberItem;
+@dynamic itemsLeft;
 @dynamic key;
 @dynamic locked;
 @dynamic notes;
+@dynamic path;
+@dynamic pinType;
 @dynamic purchaseType;
 @dynamic text;
 @dynamic type;
 @dynamic unlockCondition;
 @dynamic value;
-@dynamic isSubscriberItem;
-@dynamic itemsLeft;
+@dynamic lastPurchased;
 @dynamic category;
-@dynamic path;
-@dynamic pinType;
 
 @end

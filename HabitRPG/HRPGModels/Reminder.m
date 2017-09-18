@@ -13,14 +13,16 @@
 
 - (void)willSave {
     if (self.hasChanges) {
-        if (self.inserted) {
-            [self scheduleReminders];
-        } else {
-            [self removeAllNotifications];
-            if (self.updated) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (self.inserted) {
                 [self scheduleReminders];
+            } else {
+                [self removeAllNotifications];
+                if (self.updated) {
+                    [self scheduleReminders];
+                }
             }
-        }
+        });
     }
     [super didSave];
 }

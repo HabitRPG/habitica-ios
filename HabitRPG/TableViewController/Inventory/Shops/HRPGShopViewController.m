@@ -53,10 +53,6 @@
     [self.topHeaderNavigationController startFollowingScrollView:self.collectionView];
     self.topHeaderNavigationController.shouldHideTopHeader = NO;
     self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0);
-    if (!self.extraHeight) {
-        self.extraHeight = self.navigationController.navigationBar.bounds.size.height +
-                            [UIApplication sharedApplication].statusBarFrame.size.height;
-    }
     [self scrollToTop];
     
     User *user = [[HRPGManager sharedManager] getUser];

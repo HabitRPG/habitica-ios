@@ -195,6 +195,12 @@ class TaskDetailLineView: UIView {
             streakIconViewWidth.constant = 12
             streakIconLabelSpacing.constant = 4
             detailStreakSpacing.constant = TaskDetailLineView.spacing
+        } else {
+            streakLabel.text = nil
+            streakIconView.isHidden = true
+            streakIconViewWidth.constant = 0
+            streakIconLabelSpacing.constant = 0
+            detailStreakSpacing.constant = 0
         }
     }
 

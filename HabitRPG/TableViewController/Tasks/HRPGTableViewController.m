@@ -53,6 +53,8 @@ BOOL editable;
         [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 48)];
     self.searchBar.placeholder = NSLocalizedString(@"Search", nil);
     self.searchBar.delegate = self;
+    self.searchBar.backgroundImage = [[UIImage alloc] init];
+    self.searchBar.backgroundColor = [UIColor gray500];
     self.tableView.tableHeaderView = self.searchBar;
 
     [[NSNotificationCenter defaultCenter] addObserver:self

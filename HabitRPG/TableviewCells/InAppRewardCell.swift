@@ -15,6 +15,7 @@ class InAppRewardCell: UICollectionViewCell {
     @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var pinnedIndicatorView: UIImageView!
+    @IBOutlet weak var purchaseConfirmationView: UIImageView!
     
     var itemsLeft = 0 {
         didSet {
@@ -90,6 +91,10 @@ class InAppRewardCell: UICollectionViewCell {
             setCanAfford(price, currency: currency)
         }
         isPinned = false
+        
+        if let lastPurchased = reward.lastPurchased, wasRecentlyPurchased(lastPurchased) {
+            showPurchaseConfirmation()
+        }
     }
     
     func configure(item: ShopItem) {
@@ -101,6 +106,26 @@ class InAppRewardCell: UICollectionViewCell {
             currencyView.currency = currency
             setCanAfford( item.value?.floatValue ?? 0, currency: currency)
         }
+        
+        if let lastPurchased = item.lastPurchased, wasRecentlyPurchased(lastPurchased) {
+            showPurchaseConfirmation()
+        }
+    }
+    
+    func wasRecentlyPurchased(_ lastPurchase: Date) -> Bool {
+        let now = Date().addingTimeInterval(-30)
+        return now < lastPurchase
+    }
+    
+    func showPurchaseConfirmation() {
+        purchaseConfirmationView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: .white, percentage: 1.0)
+        UIView.animate(withDuration: 0.25, animations: {[weak self] in
+            self?.purchaseConfirmationView.alpha = 1
+        }, completion: {[weak self] (_) in
+            UIView.animate(withDuration: 0.25, delay: 1.5, options: [], animations: {
+                self?.purchaseConfirmationView.alpha = 0
+            }, completion: nil)
+        })
     }
     
     func setCanAfford(_ price: Float, currency: Currency) {

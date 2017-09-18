@@ -104,15 +104,16 @@
     [self updateViewFrames];
 }
 - (void)updateViewFrames {
-    self.iconView.frame = CGRectMake(0, 0, 16, 16);
-    self.progressBar.frame = CGRectMake(31, 0, self.frame.size.width - 31, 16);
-    self.labelView.frame = CGRectMake(33, 18, (self.frame.size.width - 33) / 2, self.fontSize + 1);
-    self.typeView.frame = CGRectMake((self.frame.size.width + 33) / 2, 18,
-                                     (self.frame.size.width - 33) / 2, self.fontSize + 1);
+    self.iconView.frame = CGRectMake(0, 0, 18, 18);
+    self.progressBar.frame = CGRectMake(24, 1, self.frame.size.width - 24, 16);
+    self.labelView.frame = CGRectMake(25, 19, (self.frame.size.width - 25) / 2, self.fontSize + 1);
+    self.typeView.frame = CGRectMake((self.frame.size.width + 25) / 2, 19,
+                                     (self.frame.size.width - 25) / 2, self.fontSize + 1);
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    [self.progressBar setNeedsDisplay];
     [self updateViewFrames];
 }
 

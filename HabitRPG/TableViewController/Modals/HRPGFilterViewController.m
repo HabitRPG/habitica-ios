@@ -258,7 +258,7 @@
         checkboxView.checkColor = [UIColor purple300];
     }
     checkboxView.checked = [self.areTagsSelected[indexPath.item] boolValue];
-    [checkboxView setNeedsDisplay];
+    [checkboxView.layer setNeedsDisplay];
 
     if (tag.challenge) {
         UIImageView *imageView = [cell viewWithTag:3];

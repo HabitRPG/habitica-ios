@@ -14,6 +14,7 @@ import UIKit
 
 class HRPGFetchedResultsCollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate {
     var collectionView: UICollectionView?
+    var contentChangeWasUpdate = false
     weak var fetchedResultsDelegate: HRPGFetchedResultsCollectionViewDataSourceDelegate?
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? {
         didSet {
@@ -40,7 +41,17 @@ class HRPGFetchedResultsCollectionViewDataSource: NSObject, UICollectionViewData
     
     // MARK: FetchedResultsController delegate
     
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        if let path = indexPath, type == .update {
+            self.collectionView?.reloadItems(at: [path])
+            contentChangeWasUpdate = true
+        }
+    }
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        collectionView?.reloadData()
+        if !contentChangeWasUpdate {
+            collectionView?.reloadData()
+        }
+        contentChangeWasUpdate = false
     }
 }
