@@ -80,6 +80,7 @@ class TaskDetailLineView: UIView {
         if task.type == "habit" {
             setCalendarIcon(enabled: false)
             setLastCompleted(task: task)
+            detailLabel.isHidden = true
         } else if task.type == "daily" {
             setCalendarIcon(enabled: false)
             detailLabel.isHidden = true

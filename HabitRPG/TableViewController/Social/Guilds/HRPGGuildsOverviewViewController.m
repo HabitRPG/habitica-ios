@@ -9,6 +9,7 @@
 #import "HRPGGuildsOverviewViewController.h"
 #import "HRPGGroupTableViewController.h"
 #import "NSString+Emoji.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGGuildsOverviewViewController ()
 
@@ -22,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.tintColor = [UIColor purple400];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 

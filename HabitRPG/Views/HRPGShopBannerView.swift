@@ -67,7 +67,18 @@ class HRPGShopBannerView: UIView {
             }, onError: {})
             HRPGManager.shared().setImage(identifier + "_scene", withFormat: "png", on: self.shopForegroundImageView)
             
-            self.shopNameLabel.text = unwrappedShop.text
+            switch unwrappedShop.identifier {
+            case .some("market"):
+                self.shopNameLabel.text = "Alex"
+            case .some("questShop"):
+                self.shopNameLabel.text = "Ian"
+            case .some("seasonalShop"):
+                self.shopNameLabel.text = "Leslie"
+            case .some("timeTravelersShop"):
+                self.shopNameLabel.text = "Tyler & Vicky"
+            default:
+                self.shopNameLabel.text = unwrappedShop.text
+            }
             
             if let notes = unwrappedShop.notes?.strippingHTML() {
                 self.notesLabel.text = notes

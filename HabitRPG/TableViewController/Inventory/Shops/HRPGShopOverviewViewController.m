@@ -34,6 +34,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self.topHeaderNavigationController setShouldHideTopHeader:YES];
     [self.topHeaderNavigationController stopFollowingScrollView];
 }
 

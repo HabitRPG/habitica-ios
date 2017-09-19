@@ -11,6 +11,7 @@
 #import "HRPGGroupTableViewController.h"
 #import "HRPGCoreDataDataSource.h"
 #import "NSString+Emoji.h"
+#import "UIColor+Habitica.h"
 
 @interface HRPGPublicGuildsViewController ()
 @property(nonatomic, strong) UISearchBar *searchBar;
@@ -24,6 +25,7 @@
     [super viewDidLoad];
     [self setupTableView];
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.tintColor = [UIColor purple400];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 

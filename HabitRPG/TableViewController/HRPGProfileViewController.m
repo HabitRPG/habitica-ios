@@ -54,6 +54,7 @@ NSString *currentUserID;
         initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
 
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.tintColor = [UIColor purple400];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 

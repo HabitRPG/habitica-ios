@@ -98,6 +98,8 @@
             self.backgroundView.frame = frame;
             if (!self.shouldHideTopHeader) {
                 [self setNavigationBarColors:1];
+            } else {
+                [self setNavigationBarColors:0];
             }
         }
         completion:^(BOOL completed){
