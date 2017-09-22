@@ -10,7 +10,7 @@
 #import "Shop.h"
 #import "User.h"
 #import "HRPGManager.h"
-
+#import "Habitica-Swift.h"
 @implementation HRPGShopViewModel
 
 - (void) fetchShopInformationForIdentifier:(NSString *)identifier {

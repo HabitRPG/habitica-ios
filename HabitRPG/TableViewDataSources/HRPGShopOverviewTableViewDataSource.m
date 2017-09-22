@@ -12,7 +12,23 @@
 #import "Shop.h"
 #import "HRPGManager.h"
 
+@interface HRPGShopOverviewTableViewDataSource ()
+
+@property NSString *shopSpriteSuffix;
+
+@end
+
 @implementation HRPGShopOverviewTableViewDataSource
+
+- (instancetype)init {
+    self = [super init];
+    
+    if (self) {
+        self.shopSpriteSuffix = [[ConfigRepository new] stringWithVariable:ConfigVariableShopSpriteSuffix defaultValue:@""];
+    }
+    
+    return self;
+}
 
 - (void)configureCell:(HRPGShopsTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
     NSString *identifier = [self.delegate identifierAtIndex:indexPath.item];
@@ -28,10 +44,10 @@
         } else {
             cell.subtitleLabel.text = @"";
         }
-        [[HRPGManager sharedManager] getImage:[NSString stringWithFormat:@"%@_background", identifier] withFormat:@"png" onSuccess:^(UIImage *image) {
+        [[HRPGManager sharedManager] getImage:[NSString stringWithFormat:@"%@_background%@", identifier, self.shopSpriteSuffix] withFormat:@"png" onSuccess:^(UIImage *image) {
             cell.backgroundImageView.image = [image resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
         } onError:nil];
-        [[HRPGManager sharedManager] setImage:[NSString stringWithFormat:@"%@_scene", identifier] withFormat:@"png" onView:cell.characterImageView];
+        [[HRPGManager sharedManager] setImage:[NSString stringWithFormat:@"%@_scene%@", identifier, self.shopSpriteSuffix] withFormat:@"png" onView:cell.characterImageView];
     } else {
         [self.delegate refreshShopWithIdentifier:identifier onSuccess:^{
             [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
