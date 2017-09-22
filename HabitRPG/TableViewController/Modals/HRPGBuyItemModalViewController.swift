@@ -268,7 +268,7 @@ class HRPGBuyItemModalViewController: UIViewController {
             purchaseType = shopItem.purchaseType ?? ""
             text = shopItem.text ?? ""
             imageName = shopItem.imageName ?? ""
-            setIdentifier = shopItem.category?.identifier ?? ""
+            setIdentifier = shopItem.category?.identifier ?? shopItem.key ?? ""
             value = shopItem.value ?? 0
             if let currencyString = shopItem.currency, let thisCurrency = Currency(rawValue: currencyString) {
                 currency = thisCurrency
@@ -289,7 +289,9 @@ class HRPGBuyItemModalViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
             if currency == .hourglass {
                 if purchaseType == "gear" || purchaseType == "mystery_set" {
-                    HRPGManager.shared().purchaseMysterySet(setIdentifier, onSuccess: nil, onError: {
+                    HRPGManager.shared().purchaseMysterySet(setIdentifier, onSuccess: {
+                        HRPGManager.shared().fetchShopInventory("timeTravelersShop", onSuccess: nil, onError: nil)
+                    }, onError: {
                         self.performSegue(withIdentifier: "insufficientHourglasses", sender: self)
                     })
                 } else {

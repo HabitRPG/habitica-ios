@@ -168,11 +168,10 @@
 }
 
 - (CGFloat)topHeaderHeight {
-    if (self.alternativeHeaderView) {
-        return self.alternativeHeaderView.intrinsicContentSize.height;
-    }
     if (self.shouldHideTopHeader) {
         return 0;
+    } else if (self.alternativeHeaderView) {
+        return self.alternativeHeaderView.intrinsicContentSize.height;
     } else {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             return 200;

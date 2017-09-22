@@ -35,13 +35,11 @@
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
     
-    NSPredicate *predicate;
+    NSString *predicateString = @"category.shop.identifier == %@";
     if ([[HRPGManager sharedManager] getUser].subscriptionPlan.isActive) {
-        predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@", identifier];
-    } else {
-        predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@ && (isSubscriberItem == nil || isSubscriberItem != YES)", identifier];
+        predicateString = [predicateString stringByAppendingString:@" && (isSubscriberItem == nil || isSubscriberItem != YES)"];
     }
-    [fetchRequest setPredicate:predicate];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:predicateString, identifier]];
     
     NSSortDescriptor *indexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
     NSSortDescriptor *categoryIndexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"category.text" ascending:YES];

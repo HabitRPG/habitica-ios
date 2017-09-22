@@ -2,22 +2,26 @@
 //  ShopCategory+CoreDataProperties.m
 //  Habitica
 //
-//  Created by Phillip Thelen on 15/07/16.
+//  Created by Phillip on 22.09.17.
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
 //
 
 #import "ShopCategory+CoreDataProperties.h"
 
 @implementation ShopCategory (CoreDataProperties)
 
++ (NSFetchRequest<ShopCategory *> *)fetchRequest {
+	return [[NSFetchRequest alloc] initWithEntityName:@"ShopCategory"];
+}
+
 @dynamic identifier;
 @dynamic index;
 @dynamic notes;
 @dynamic purchaseAll;
 @dynamic text;
+@dynamic pinType;
+@dynamic path;
 @dynamic items;
 @dynamic shop;
 

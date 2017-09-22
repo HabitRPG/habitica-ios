@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "ShopCategory.h"
+#import "ShopCategory+CoreDataClass.h"
 #import "MetaReward.h"
 
 NS_ASSUME_NONNULL_BEGIN

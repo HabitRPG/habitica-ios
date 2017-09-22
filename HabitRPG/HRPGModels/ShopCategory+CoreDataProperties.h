@@ -2,26 +2,27 @@
 //  ShopCategory+CoreDataProperties.h
 //  Habitica
 //
-//  Created by Phillip Thelen on 15/07/16.
+//  Created by Phillip on 22.09.17.
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
 //
 
-#import "ShopCategory.h"
+#import "ShopCategory+CoreDataClass.h"
 
-@class ShopItem;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ShopCategory (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *identifier;
-@property (nullable, nonatomic, retain) NSNumber *index;
-@property (nullable, nonatomic, retain) NSString *notes;
-@property (nullable, nonatomic, retain) NSNumber *purchaseAll;
-@property (nullable, nonatomic, retain) NSString *text;
++ (NSFetchRequest<ShopCategory *> *)fetchRequest;
+
+@property (nullable, nonatomic, copy) NSString *identifier;
+@property (nullable, nonatomic, copy) NSNumber *index;
+@property (nullable, nonatomic, copy) NSString *notes;
+@property (nullable, nonatomic, copy) NSNumber *purchaseAll;
+@property (nullable, nonatomic, copy) NSString *text;
+@property (nullable, nonatomic, copy) NSString *pinType;
+@property (nullable, nonatomic, copy) NSString *path;
 @property (nullable, nonatomic, retain) NSOrderedSet<ShopItem *> *items;
 @property (nullable, nonatomic, retain) Shop *shop;
 

@@ -20,6 +20,13 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
     
     // MARK: Collection view data source and delegate methods
     
+    func titleFor(section: Int) -> String? {
+        return fetchedResultsController?.sections?[section].name
+    }
+    
+    func itemAt(indexPath: IndexPath) -> ShopItem? {
+        return fetchedResultsController?.sections?[indexPath.section].objects?[indexPath.item] as? ShopItem
+    }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(
                 ofKind: UICollectionElementKindSectionHeader,
@@ -27,7 +34,7 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
             ) as? HRPGShopSectionHeaderCollectionReusableView
         
         if let headerView = view {
-            headerView.titleLabel.text = fetchedResultsController?.sections?[indexPath.section].name
+            headerView.titleLabel.text = titleFor(section: indexPath.section)
             return headerView
         }
         return UICollectionReusableView()
@@ -35,7 +42,7 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
-        if let item = fetchedResultsController?.sections?[indexPath.section].objects?[indexPath.item] as? ShopItem {
+        if let item = itemAt(indexPath: indexPath) {
             if let itemCell = cell as? InAppRewardCell {
                 itemCell.configure(item: item)
                 if let ownedItem = ownedItems[item.key ?? ""] {
@@ -47,7 +54,7 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelectItem(fetchedResultsController?.sections?[indexPath.section].objects?[indexPath.item] as? ShopItem)
+        delegate?.didSelectItem(itemAt(indexPath: indexPath))
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

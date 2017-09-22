@@ -1,21 +1,20 @@
 //
-//  ShopCategory.h
+//  ShopCategory+CoreDataClass.h
 //  Habitica
 //
-//  Created by Phillip Thelen on 12/07/16.
+//  Created by Phillip on 22.09.17.
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
+//
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Shop;
+@class Shop, ShopItem;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ShopCategory : NSManagedObject
-
-// Insert code here to declare functionality of your managed object subclass
 
 @end
 

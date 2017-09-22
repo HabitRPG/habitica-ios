@@ -109,7 +109,11 @@
     collectionViewLayout.sectionInset = UIEdgeInsetsMake(0, 6, 20, 6);
     self.collectionView.collectionViewLayout = collectionViewLayout;
     
-    self.dataSource = [HRPGShopCollectionViewDataSource new];
+    if ([self.shopIdentifier isEqualToString:@"timeTravelersShop"]) {
+        self.dataSource = [TimeTravelersCollectionViewDataSource new];
+    } else {
+        self.dataSource = [HRPGShopCollectionViewDataSource new];
+    }
     self.dataSource.delegate = self;
     self.dataSource.collectionView = self.collectionView;
     self.dataSource.ownedItems = [self.viewModel fetchOwnedItems];

@@ -7,7 +7,7 @@
 //
 
 #import "ShopItem+CoreDataClass.h"
-#import "ShopCategory.h"
+#import "ShopCategory+CoreDataClass.h"
 @implementation ShopItem
 
 - (NSString *)imageName {
