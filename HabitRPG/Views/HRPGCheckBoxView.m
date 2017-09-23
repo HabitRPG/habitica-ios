@@ -232,7 +232,8 @@
     [self.boxFillColor setFill];
     [borderPath fill];
     if ([(HRPGCheckmarkLayer *)layer drawPercentage] > 0) {
-        [HabiticaIcons drawCheckmarkWithFrame:self.frame resizing:HabiticaIconsResizingBehaviorCenter checkmarkColor:self.checkColor percentage:[(HRPGCheckmarkLayer *)layer drawPercentage]];
+        CGRect checkFrame = CGRectMake(self.padding, self.frame.size.height / 2 - self.size / 2, self.size, self.size);
+        [HabiticaIcons drawCheckmarkWithFrame:checkFrame resizing:HabiticaIconsResizingBehaviorCenter checkmarkColor:self.checkColor percentage:[(HRPGCheckmarkLayer *)layer drawPercentage]];
     }
     UIGraphicsPopContext();
 }
