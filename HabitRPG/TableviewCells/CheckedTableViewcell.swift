@@ -116,6 +116,20 @@ class CheckedTableViewCell: TaskTableViewCell {
     override func applyAccessibility(_ task: Task) {
         super.applyAccessibility(task)
         self.accessibilityCustomActions = [UIAccessibilityCustomAction(name: NSLocalizedString("Complete Task", comment: ""), target: self, selector: #selector(checkTask))]
+        var stateText = ""
+        if task.type == "daily" {
+            if task.isDue?.boolValue ?? false {
+                stateText = NSLocalizedString("Due", comment: "")
+            } else {
+                stateText = NSLocalizedString("Not due", comment: "")
+            }
+        } else {
+            stateText = NSLocalizedString("Not completed", comment: "")
+        }
+        if task.completed?.boolValue ?? false {
+            stateText = NSLocalizedString("Completed", comment: "")
+        }
+        self.accessibilityLabel = "\(stateText), \(task.text ?? "")"
     }
     
     func checkTask() {
