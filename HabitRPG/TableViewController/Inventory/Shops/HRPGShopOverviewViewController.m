@@ -36,6 +36,8 @@
     [super viewDidAppear:animated];
     [self.topHeaderNavigationController setShouldHideTopHeader:YES];
     [self.topHeaderNavigationController stopFollowingScrollView];
+    
+    [self.tableView reloadData];
 }
 
 - (void)setupShopDictionary {

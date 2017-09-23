@@ -941,7 +941,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="116.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fF7-Ba-R5J">
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fF7-Ba-R5J">
                                             <rect key="frame" x="8" y="38" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="Inw-7m-2PN"/>
@@ -1022,7 +1022,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="sQv-Bn-7Bh" firstAttribute="leading" secondItem="wqO-ut-8WX" secondAttribute="trailing" constant="8" id="3Ca-Vx-2xJ"/>
-                                        <constraint firstItem="fF7-Ba-R5J" firstAttribute="leading" secondItem="pxT-10-PCg" secondAttribute="leading" constant="8" id="4Yp-0c-g25"/>
+                                        <constraint firstItem="fF7-Ba-R5J" firstAttribute="leading" secondItem="pxT-10-PCg" secondAttribute="leadingMargin" id="4Yp-0c-g25"/>
                                         <constraint firstItem="w49-vQ-PRQ" firstAttribute="leading" secondItem="fF7-Ba-R5J" secondAttribute="trailing" constant="8" id="Btu-CT-ZJT"/>
                                         <constraint firstItem="wqO-ut-8WX" firstAttribute="top" secondItem="G18-we-7gy" secondAttribute="bottom" priority="500" constant="8" id="C49-1A-o2v"/>
                                         <constraint firstItem="wqO-ut-8WX" firstAttribute="bottom" secondItem="pxT-10-PCg" secondAttribute="bottomMargin" priority="500" id="EVb-3Y-Pj5"/>

@@ -55,16 +55,20 @@
     self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0);
     [self scrollToTop];
     
-    User *user = [[HRPGManager sharedManager] getUser];
-    if (user && user.health && user.health.floatValue <= 0) {
-        [[HRPGDeathView new] show];
-    }
+    self.user = [[HRPGManager sharedManager] getUser];
+    
+    [self.user addObserver:self forKeyPath:@"gold" options:0 context:NULL];
+    [self.user addObserver:self forKeyPath:@"balance" options:0 context:NULL];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     self.topHeaderNavigationController.shouldHideTopHeader = YES;
     [self.topHeaderNavigationController stopFollowingScrollView];
     [self.topHeaderNavigationController removeAlternativeHeaderView];
+    
+    [self.user removeObserver:self forKeyPath:@"gold"];
+    [self.user removeObserver:self forKeyPath:@"balance"];
+    
     [super viewWillDisappear:animated];
 }
 
@@ -212,6 +216,12 @@
 
 - (void)onEmptyFetchedResults {
     [self configureEmpty];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([@"gold" isEqualToString:keyPath] || [@"balance" isEqualToString:keyPath]) {
+        [self setupNavBar];
+    }
 }
 
 #pragma mark - lazy loaders

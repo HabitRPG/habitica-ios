@@ -36,7 +36,7 @@ class ConfigRepository: NSObject {
         Alamofire.request(ConfigRepository.configUrl).responseJSON { response in
             if let JSON = response.result.value as? [String: Any] {
                 for variable in ConfigRepository.configVariables {
-                    if JSON.contains(where: { (key, value) -> Bool in
+                    if JSON.contains(where: { (key, _) -> Bool in
                         return key == variable.name()
                     }) {
                         self.userConfig.set(JSON[variable.name()], forKey: variable.name())
@@ -48,10 +48,6 @@ class ConfigRepository: NSObject {
 
     func bool(variable: ConfigVariable) -> Bool {
         return userConfig.bool(forKey: variable.name())
-    }
-    
-    func bool(variable: ConfigVariable, defaultValue: Bool) -> Bool {
-        return userConfig.bool(forKey: variable.name()) ?? defaultValue
     }
 
     func string(variable: ConfigVariable) -> String? {

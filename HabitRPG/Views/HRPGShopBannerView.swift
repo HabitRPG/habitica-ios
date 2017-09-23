@@ -84,6 +84,7 @@ class HRPGShopBannerView: UIView {
             if let notes = unwrappedShop.notes?.strippingHTML() {
                 self.notesLabel.text = notes
             }
+            self.invalidateIntrinsicContentSize()
         }
     }
 

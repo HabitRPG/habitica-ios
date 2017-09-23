@@ -263,6 +263,7 @@ class HRPGBuyItemModalViewController: UIViewController {
         var currency = Currency.gold
         var setIdentifier = ""
         var value: NSNumber = 0
+        var successBlock = {}
         if let shopItem = item {
             key = shopItem.key ?? ""
             purchaseType = shopItem.purchaseType ?? ""
@@ -272,6 +273,9 @@ class HRPGBuyItemModalViewController: UIViewController {
             value = shopItem.value ?? 0
             if let currencyString = shopItem.currency, let thisCurrency = Currency(rawValue: currencyString) {
                 currency = thisCurrency
+            }
+            successBlock = {
+                HRPGManager.shared().fetchShopInventory(self.shopIdentifier, onSuccess: nil, onError: nil)
             }
         } else if let inAppReward = reward as? InAppReward {
             key = inAppReward.key ?? ""
@@ -283,35 +287,37 @@ class HRPGBuyItemModalViewController: UIViewController {
             if let currencyString = inAppReward.currency, let thisCurrency = Currency(rawValue: currencyString) {
                 currency = thisCurrency
             }
+            successBlock = {
+                HRPGManager.shared().fetchBuyableRewards(nil, onError: nil)
+            }
         }
         
         if key != "" {
             self.dismiss(animated: true, completion: nil)
+            
             if currency == .hourglass {
                 if purchaseType == "gear" || purchaseType == "mystery_set" {
-                    HRPGManager.shared().purchaseMysterySet(setIdentifier, onSuccess: {
-                        HRPGManager.shared().fetchShopInventory("timeTravelersShop", onSuccess: nil, onError: nil)
-                    }, onError: {
+                    HRPGManager.shared().purchaseMysterySet(setIdentifier, onSuccess: successBlock, onError: {
                         self.performSegue(withIdentifier: "insufficientHourglasses", sender: self)
                     })
                 } else {
-                    HRPGManager.shared().purchaseHourglassItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: nil, onError: {
+                    HRPGManager.shared().purchaseHourglassItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {
                             self.performSegue(withIdentifier: "insufficientHourglasses", sender: self)
                     })
                 }
             } else if currency == .gem && value.floatValue > HRPGManager.shared().getUser().balance.floatValue * 4.0 {
                 performSegue(withIdentifier: "insufficientGems", sender: self)
             } else if currency == .gem || purchaseType == "gems" {
-                HRPGManager.shared().purchaseItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: nil, onError: {
+                HRPGManager.shared().purchaseItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {
                     self.performSegue(withIdentifier: "insufficientGems", sender: self)
                 })
             } else {
                 if currency == .gold && purchaseType == "quests" {
-                    HRPGManager.shared().purchaseQuest(key, withText: text, withImageName: imageName, onSuccess: nil, onError: {
+                    HRPGManager.shared().purchaseQuest(key, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {
                         self.performSegue(withIdentifier: "insufficientGold", sender: self)
                     })
                 } else {
-                    HRPGManager.shared().buyObject(key, withValue: value, withText: text, onSuccess: nil, onError: {
+                    HRPGManager.shared().buyObject(key, withValue: value, withText: text, onSuccess: successBlock, onError: {
                         self.performSegue(withIdentifier: "insufficientGold", sender: self)
                     })
                 }
