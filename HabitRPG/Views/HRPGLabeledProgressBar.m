@@ -85,6 +85,7 @@
     _type = type;
     self.typeView.text = self.type;
     [self updateViewFrames];
+    [self applyAccessibility];
 }
 
 - (void)setLabelViewText {
@@ -95,6 +96,7 @@
         self.labelView.text =
             [NSString stringWithFormat:@"%ld / %@", (long)ceil([self.value integerValue]), self.maxValue];
     }
+    [self applyAccessibility];
 }
 
 - (void)setFontSize:(NSInteger)fontSize {
@@ -123,10 +125,21 @@
     } else {
         self.alpha = 0.4;
     }
+    [self applyAccessibility];
 }
 
 - (BOOL)isActive {
     return true;
+}
+
+- (void)applyAccessibility {
+    self.isAccessibilityElement = self.isActive;
+    
+    self.shouldGroupAccessibilityChildren = true;
+    self.labelView.isAccessibilityElement = false;
+    self.typeView.isAccessibilityElement = false;
+    
+    self.accessibilityLabel = [NSString stringWithFormat:@"%@, %ld of %@", self.typeView.text, (long)[self.value integerValue], self.maxValue];
 }
 
 @end

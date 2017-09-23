@@ -17,6 +17,7 @@ class HRPGCurrencyCountView: UIView {
     public var amount = 0 {
         didSet {
             countLabel.text = String(describing: amount)
+            applyAccesibility()
         }
     }
     
@@ -24,12 +25,14 @@ class HRPGCurrencyCountView: UIView {
         didSet {
             currencyImageView.image = currency.getImage()
             updateStateValues()
+            applyAccesibility()
         }
     }
     
     public var state: CurrencyCountViewState = .normal {
         didSet {
             updateStateValues()
+            applyAccesibility()
         }
     }
     
@@ -124,5 +127,13 @@ class HRPGCurrencyCountView: UIView {
     
     public func setAsHourglasses() {
         currency = .hourglass
+    }
+    
+    private func applyAccesibility() {
+        self.shouldGroupAccessibilityChildren = true
+        self.isAccessibilityElement = true
+        self.countLabel.isAccessibilityElement = false
+        
+        self.accessibilityLabel = "\(amount) \(currency)"
     }
 }

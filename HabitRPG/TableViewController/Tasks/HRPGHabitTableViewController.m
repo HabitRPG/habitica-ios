@@ -47,12 +47,12 @@
 
     [cell configureWithTask:task];
 
-    [cell.plusButton action:^() {
+    cell.plusTouched = ^{
         [[HRPGManager sharedManager] upDownTask:task direction:@"up" onSuccess:nil onError:nil];
-    }];
-    [cell.minusButton action:^() {
+    };
+    cell.minusTouched = ^{
         [[HRPGManager sharedManager] upDownTask:task direction:@"down" onSuccess:nil onError:nil];
-    }];
+    };
 }
 
 - (NSString *)getCellNibName {

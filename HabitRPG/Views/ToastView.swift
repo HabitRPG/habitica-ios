@@ -38,6 +38,7 @@ class ToastView: UIView {
         options.subtitle = subtitle
         options.backgroundColor = background
         loadOptions()
+        accessibilityLabel = "\(title), \(subtitle)"
     }
     
     public convenience init(title: String, background: ToastColor) {
@@ -45,6 +46,7 @@ class ToastView: UIView {
         options.title = title
         options.backgroundColor = background
         loadOptions()
+        accessibilityLabel = title
     }
     
     public convenience init(title: String, subtitle: String, icon: UIImage, background: ToastColor) {
@@ -54,6 +56,7 @@ class ToastView: UIView {
         options.leftImage = icon
         options.backgroundColor = background
         loadOptions()
+        accessibilityLabel = "\(title), \(subtitle)"
     }
     
     public convenience init(title: String, icon: UIImage, background: ToastColor) {
@@ -62,6 +65,7 @@ class ToastView: UIView {
         options.backgroundColor = background
         options.leftImage = icon
         loadOptions()
+        accessibilityLabel = title
     }
     
     public convenience init(title: String, rightIcon: UIImage, rightText: String, rightTextColor: UIColor, background: ToastColor) {
@@ -72,25 +76,28 @@ class ToastView: UIView {
         options.rightText = rightText
         options.rightTextColor = rightTextColor
         loadOptions()
+        accessibilityLabel = title
     }
     
     public convenience init(healthDiff: Float, magicDiff: Float, expDiff: Float, goldDiff: Float, background: ToastColor) {
         self.init(frame: CGRect.zero)
-        addStatsView(HabiticaIcons.imageOfHeartDarkBg, diff: healthDiff)
-        addStatsView(HabiticaIcons.imageOfExperience, diff: expDiff)
-        addStatsView(HabiticaIcons.imageOfMagic, diff: magicDiff)
-        addStatsView(HabiticaIcons.imageOfGold, diff: goldDiff)
+        accessibilityLabel = "You received "
+        addStatsView(HabiticaIcons.imageOfHeartDarkBg, diff: healthDiff, label: "Health")
+        addStatsView(HabiticaIcons.imageOfExperience, diff: expDiff, label: "Experience")
+        addStatsView(HabiticaIcons.imageOfMagic, diff: magicDiff, label: "Mana")
+        addStatsView(HabiticaIcons.imageOfGold, diff: goldDiff, label: "Gold")
         options.backgroundColor = background
         loadOptions()
     }
     
-    private func addStatsView(_ icon: UIImage, diff: Float) {
+    private func addStatsView(_ icon: UIImage, diff: Float, label: String) {
         if diff != 0 {
             let iconLabel = IconLabel()
             iconLabel.icon = icon
             iconLabel.text = diff > 0 ? String(format: "+%.2f", diff) : String(format: "%.2f", diff)
             iconLabel.setContentCompressionResistancePriority(1000, for: .horizontal)
             statsDiffStackView.addArrangedSubview(iconLabel)
+            accessibilityLabel = (accessibilityLabel ?? "") + "\(Int(diff)) \(label), "
         }
     }
     
@@ -120,6 +127,8 @@ class ToastView: UIView {
             
             self.isUserInteractionEnabled = false
             backgroundView.isUserInteractionEnabled = true
+            
+            self.isAccessibilityElement = false
         }
     }
 

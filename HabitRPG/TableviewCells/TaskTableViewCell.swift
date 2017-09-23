@@ -37,5 +37,13 @@ class TaskTableViewCell: UITableViewCell {
         self.taskDetailLine.isHidden = !self.taskDetailLine.hasContent
 
         self.setNeedsLayout()
+        
+        self.applyAccessibility(task)
+    }
+    
+    func applyAccessibility(_ task: Task) {
+        self.shouldGroupAccessibilityChildren = true
+        self.isAccessibilityElement = true
+        self.accessibilityHint = NSLocalizedString("Double tap to edit", comment: "")
     }
 }

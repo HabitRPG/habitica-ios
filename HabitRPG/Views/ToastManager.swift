@@ -44,6 +44,7 @@ class ToastManager: NSObject {
             if let tabbarController = viewController.tabBarController {
                 viewController = tabbarController
             }
+            UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, toast.accessibilityLabel)
             let contentView = toast
             contentView.frame = CGRect(x: 0, y: 0, width: viewController.view.frame.size.width, height: viewController.view.frame.size.height)
             contentView.setNeedsLayout()

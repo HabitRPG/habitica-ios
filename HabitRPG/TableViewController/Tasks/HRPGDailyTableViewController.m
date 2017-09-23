@@ -50,7 +50,7 @@
     Task *task = [self taskAtIndexPath:indexPath];
     cell.isExpanded = self.expandedIndexPath != nil && indexPath.item == self.expandedIndexPath.item;
     [cell configureWithTask:task offset:self.dayStart];
-    cell.checkBox.wasTouched = ^() {
+    cell.checkboxTouched = ^() {
         if (![task.currentlyChecking boolValue]) {
             task.currentlyChecking = @YES;
             NSString *actionName = [task.completed boolValue] ? @"down" : @"up";

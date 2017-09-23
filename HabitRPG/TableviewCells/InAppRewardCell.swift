@@ -17,6 +17,8 @@ class InAppRewardCell: UICollectionViewCell {
     @IBOutlet weak var pinnedIndicatorView: UIImageView!
     @IBOutlet weak var purchaseConfirmationView: UIImageView!
     
+    private var itemName = ""
+    
     var itemsLeft = 0 {
         didSet {
             if itemsLeft > 0 {
@@ -81,6 +83,7 @@ class InAppRewardCell: UICollectionViewCell {
         let price = reward.value?.floatValue ?? 0
         currencyView.amount = reward.value?.intValue ?? 0
         imageName = reward.imageName ?? ""
+        itemName = reward.text ?? ""
         if let currencyString = reward.currency, let thisCurrency = Currency(rawValue: currencyString) {
             currencyView.currency = thisCurrency
             currency = thisCurrency
@@ -95,11 +98,13 @@ class InAppRewardCell: UICollectionViewCell {
         if let lastPurchased = reward.lastPurchased, wasRecentlyPurchased(lastPurchased) {
             showPurchaseConfirmation()
         }
+        applyAccessibility()
     }
     
     func configure(item: ShopItem) {
         currencyView.amount = item.value?.intValue ?? 0
         imageName = item.imageName ?? ""
+        itemName = item.text ?? ""
         isLocked = item.locked?.boolValue ?? false
         itemsLeft = item.itemsLeft?.intValue ?? 0
         if let currencyString = item.currency, let currency = Currency(rawValue: currencyString) {
@@ -110,6 +115,7 @@ class InAppRewardCell: UICollectionViewCell {
         if let lastPurchased = item.lastPurchased, wasRecentlyPurchased(lastPurchased) {
             showPurchaseConfirmation()
         }
+        applyAccessibility()
     }
     
     func wasRecentlyPurchased(_ lastPurchase: Date) -> Bool {
@@ -150,5 +156,12 @@ class InAppRewardCell: UICollectionViewCell {
         } else {
             currencyView.state = .locked
         }
+    }
+    
+    private func applyAccessibility() {
+        shouldGroupAccessibilityChildren = true
+        currencyView.isAccessibilityElement = false
+        isAccessibilityElement = true
+        accessibilityLabel = "\(itemName), \(currencyView.accessibilityLabel ?? "")"
     }
 }

@@ -163,6 +163,12 @@ class HRPGBuyItemModalViewController: UIViewController {
                 currencyCountView.state = .cantAfford
             }
         }
+        
+        buyButton.shouldGroupAccessibilityChildren = true
+        buyButton.isAccessibilityElement = true
+        currencyCountView.isAccessibilityElement = false
+        let currencyText = currencyCountView.accessibilityLabel ?? ""
+        buyButton.accessibilityLabel = NSLocalizedString("Buy for \(currencyText)", comment: "")
     }
     
     func canAfford() -> Bool {

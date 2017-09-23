@@ -98,6 +98,8 @@ BOOL editable;
     [self.fetchedResultsController performFetch:&error];
 
     [self.tableView reloadData];
+    
+    self.navigationItem.rightBarButtonItem.accessibilityLabel = [NSString stringWithFormat:NSLocalizedString(@"Add %@", nil), self.readableName];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

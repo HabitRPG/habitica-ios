@@ -23,12 +23,16 @@ class CheckedTableViewCell: TaskTableViewCell {
     
     weak var task: Task?
     var isExpanded = false
+    var checkboxTouched: (() -> Void)?
     var checklistItemTouched: ((_ item: ChecklistItem) -> Void)?
 
     override func configure(task: Task) {
         self.task = task
         super.configure(task: task)
         self.checkBox.configure(for: task)
+        self.checkBox.wasTouched = {[weak self] in
+            self?.checkTask()
+        }
         
         handleChecklist(task)
 
@@ -106,6 +110,17 @@ class CheckedTableViewCell: TaskTableViewCell {
                     }
                 }
             }
+        }
+    }
+    
+    override func applyAccessibility(_ task: Task) {
+        super.applyAccessibility(task)
+        self.accessibilityCustomActions = [UIAccessibilityCustomAction(name: NSLocalizedString("Complete Task", comment: ""), target: self, selector: #selector(checkTask))]
+    }
+    
+    func checkTask() {
+        if let action = checkboxTouched {
+            action()
         }
     }
 }

@@ -86,7 +86,7 @@
     
     cell.taskDetailLine.dateFormatter = self.dateFormatter;
     [cell configureWithTask:task];
-    cell.checkBox.wasTouched = ^() {
+    cell.checkboxTouched = ^() {
         if (![task.currentlyChecking boolValue]) {
             task.currentlyChecking = @YES;
             NSString *actionName = [task.completed boolValue] ? @"down" : @"up";
