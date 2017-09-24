@@ -32,7 +32,9 @@
 @implementation HRPGShopViewController
 
 - (void)viewDidLoad {
+    [self.topHeaderNavigationController setAlternativeHeaderView:self.shopBannerView];
     [super viewDidLoad];
+    self.extraHeight = 0;
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -41,6 +43,15 @@
     self.dataSource.fetchedResultsDelegate = self;
     self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier];
     
+    if (self.topHeaderNavigationController) {
+        self.topHeaderNavigationController.shouldHideTopHeader = NO;
+        [self.collectionView setContentInset:UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0)];
+        self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0);
+        if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden) {
+            [self.collectionView  setContentOffset:CGPointMake(0, -[self.topHeaderNavigationController getContentOffset])];
+        }
+    }
+    
     [self refresh];
 }
 
@@ -48,11 +59,6 @@
     [super viewDidAppear:animated];
     
     [self setupNavBar];
-    
-    [self.topHeaderNavigationController setAlternativeHeaderView:self.shopBannerView];
-    [self.topHeaderNavigationController startFollowingScrollView:self.collectionView];
-    self.topHeaderNavigationController.shouldHideTopHeader = NO;
-    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0);
     [self scrollToTop];
     
     self.user = [[HRPGManager sharedManager] getUser];
@@ -111,7 +117,7 @@
     UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     collectionViewLayout.itemSize = CGSizeMake(90, 120);
     collectionViewLayout.sectionInset = UIEdgeInsetsMake(0, 6, 20, 6);
-    self.collectionView.collectionViewLayout = collectionViewLayout;
+    //self.collectionView.collectionViewLayout = collectionViewLayout;
     
     if ([self.shopIdentifier isEqualToString:@"timeTravelersShop"]) {
         self.dataSource = [TimeTravelersCollectionViewDataSource new];
@@ -127,7 +133,7 @@
 }
 
 - (void)scrollToTop {
-    [self.collectionView setContentInset:(UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset] + self.extraHeight, 0, 60, 0))];
+    //[self.collectionView setContentInset:(UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset] + self.extraHeight, 0, 60, 0))];
     [self.collectionView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 }
 

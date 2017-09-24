@@ -41,13 +41,6 @@ class HRPGFetchedResultsCollectionViewDataSource: NSObject, UICollectionViewData
     
     // MARK: FetchedResultsController delegate
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        if let path = indexPath, type == .update {
-            self.collectionView?.reloadItems(at: [path])
-            contentChangeWasUpdate = true
-        }
-    }
-    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         if !contentChangeWasUpdate {
             collectionView?.reloadData()
