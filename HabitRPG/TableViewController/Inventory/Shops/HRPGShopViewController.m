@@ -25,7 +25,6 @@
 @property User *user;
 
 @property NSIndexPath *selectedIndex;
-@property (nonatomic) CGFloat extraHeight;
 
 @end
 
@@ -34,9 +33,8 @@
 - (void)viewDidLoad {
     [self.topHeaderNavigationController setAlternativeHeaderView:self.shopBannerView];
     [super viewDidLoad];
-    self.extraHeight = 0;
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self setupNavBar];
     
     [self setupCollectionView];
     
@@ -58,7 +56,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self setupNavBar];
     [self scrollToTop];
     
     self.user = [[HRPGManager sharedManager] getUser];
@@ -106,9 +103,20 @@
     [gold setAsGold];
     gold.amount = [[[HRPGManager sharedManager] getUser].gold intValue];
     
-    UIBarButtonItem *gemsBarItem = [[UIBarButtonItem alloc] initWithCustomView:gems];
-    UIBarButtonItem *goldBarItem = [[UIBarButtonItem alloc] initWithCustomView:gold];
+    // This may seem unnecessary (or gross), but it corrects a bug on iOS 9/10 related to frames in UIBarButtonItems
+    UIBarButtonItem *gemsBarItem = [[UIBarButtonItem alloc] initWithCustomView:[self viewContainingCenteredView:gems]];
+    UIBarButtonItem *goldBarItem = [[UIBarButtonItem alloc] initWithCustomView:[self viewContainingCenteredView:gold]];
+    
     self.navigationItem.rightBarButtonItems = @[goldBarItem, gemsBarItem];
+}
+
+// This may seem unnecessary (or gross), but it corrects a bug on iOS 9/10 related to frames in UIBarButtonItems
+- (UIView *)viewContainingCenteredView:(UIView *)view {
+    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [container addSubview:view];
+    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[view]-(0)-|" options:0 metrics:nil views:@{@"view": view}]];
+    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(0)-[view]-(0)-|" options:0 metrics:nil views:@{@"view": view}]];
+    return container;
 }
 
 - (void)setupCollectionView {
@@ -133,7 +141,6 @@
 }
 
 - (void)scrollToTop {
-    //[self.collectionView setContentInset:(UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset] + self.extraHeight, 0, 60, 0))];
     [self.collectionView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 }
 
@@ -194,8 +201,6 @@
     [bgView layoutIfNeeded];
     
     self.collectionView.backgroundView = bgView;
-    
-    self.extraHeight = 350;
 }
 
 #pragma mark - data source delegate
