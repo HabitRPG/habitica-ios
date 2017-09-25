@@ -37,6 +37,9 @@ NSString *currentUserID;
         [self.tableView reloadData];
     }
     self.navigationItem.title = NSLocalizedString(@"Menu", nil);
+
+    [self.topHeaderNavigationController removeAlternativeHeaderView];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -84,7 +87,7 @@ NSString *currentUserID;
         UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0);
     [self.tableView
         setContentInset:(UIEdgeInsetsMake([navigationController getContentInset], 0, -150, 0))];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reloadPartyData:)
                                                  name:@"partyUpdated"

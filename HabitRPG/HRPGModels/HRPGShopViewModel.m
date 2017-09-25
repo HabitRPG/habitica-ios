@@ -36,7 +36,7 @@
     [fetchRequest setFetchBatchSize:20];
     
     NSString *predicateString = @"category.shop.identifier == %@";
-    if ([[HRPGManager sharedManager] getUser].subscriptionPlan.isActive) {
+    if (![[HRPGManager sharedManager] getUser].subscriptionPlan.isActive) {
         predicateString = [predicateString stringByAppendingString:@" && (isSubscriberItem == nil || isSubscriberItem != YES)"];
     }
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:predicateString, identifier]];
