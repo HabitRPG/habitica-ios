@@ -103,14 +103,19 @@
     [gold setAsGold];
     gold.amount = [[[HRPGManager sharedManager] getUser].gold intValue];
     
-    // This may seem unnecessary (or gross), but it corrects a bug on iOS 9/10 related to frames in UIBarButtonItems
-    UIBarButtonItem *gemsBarItem = [[UIBarButtonItem alloc] initWithCustomView:[self viewContainingCenteredView:gems]];
-    UIBarButtonItem *goldBarItem = [[UIBarButtonItem alloc] initWithCustomView:[self viewContainingCenteredView:gold]];
+    UIBarButtonItem *gemsBarItem;
+    UIBarButtonItem *goldBarItem;
+    if (@available(iOS 11, *)) {
+        gemsBarItem = [[UIBarButtonItem alloc] initWithCustomView:gems];
+        goldBarItem = [[UIBarButtonItem alloc] initWithCustomView:gold];
+    } else {
+        gemsBarItem = [[UIBarButtonItem alloc] initWithCustomView:[self viewContainingCenteredView:gems]];
+        goldBarItem = [[UIBarButtonItem alloc] initWithCustomView:[self viewContainingCenteredView:gold]];
+    }
     
     self.navigationItem.rightBarButtonItems = @[goldBarItem, gemsBarItem];
 }
 
-// This may seem unnecessary (or gross), but it corrects a bug on iOS 9/10 related to frames in UIBarButtonItems
 - (UIView *)viewContainingCenteredView:(UIView *)view {
     UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [container addSubview:view];
