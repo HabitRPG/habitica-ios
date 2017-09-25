@@ -1,0 +1,551 @@
+{
+    "success": true,
+    "data": [{
+        "_id": "b6c4e",
+        "userId": "123fde",
+        "text": "Blog",
+        "updatedAt": "2017-09-29T12:44:42.441Z",
+        "createdAt": "2016-08-08T16:10:52.031Z",
+        "reminders": [],
+        "group": {
+            "approval": {
+                "requested": false,
+                "approved": false,
+                "required": false
+            },
+            "assignedUsers": []
+        },
+        "challenge": {},
+        "attribute": "per",
+        "priority": 2,
+        "value": 0.15545176127942112,
+        "tags": [],
+        "notes": "",
+        "type": "habit",
+        "history": [ {
+            "value": 1,
+            "date": 1505536494742
+        }, {
+            "value": 1.243614090235369,
+            "date": 1506489450864
+        }],
+        "frequency": "daily",
+        "counterDown": 0,
+        "counterUp": 0,
+        "down": false,
+        "up": true,
+        "id": "b6c4e"
+    }, {
+        "_id": "2c443",
+        "text": "Workout hard",
+        "userId": "123fde",
+        "_legacyId": "62d2ffeb-fd74-4f98-b461-960f87556b3c",
+        "updatedAt": "2017-09-29T12:44:42.442Z",
+        "createdAt": "2016-03-28T22:17:59.992Z",
+        "reminders": [],
+        "group": {
+            "approval": {
+                "requested": false,
+                "approved": false,
+                "required": false
+            },
+            "assignedUsers": []
+        },
+        "challenge": {},
+        "attribute": "str",
+        "priority": 2,
+        "value": 1.1088938844524097,
+        "tags": [],
+        "notes": "",
+        "type": "habit",
+        "history": [{
+            "value": 1.5372154285245325,
+            "date": 1506569637477
+        }, {
+            "value": 2.4985892175868627,
+            "date": 1506569638396
+        }, {
+            "value": 2.2177877689048193,
+            "date": 1506658222052
+        }],
+        "frequency": "daily",
+        "counterDown": 0,
+        "counterUp": 0,
+        "down": false,
+        "up": true,
+        "id": "2c443"
+    }, {
+        "_id": "a3a43",
+        "userId": "123fde",
+        "text": "HB",
+        "date": "",
+        "updatedAt": "2017-09-29T12:44:42.586Z",
+        "createdAt": "2016-08-09T04:41:59.853Z",
+        "reminders": [],
+        "group": {
+            "approval": {
+                "requested": false,
+                "approved": false,
+                "required": false
+            },
+            "assignedUsers": []
+        },
+        "challenge": {},
+        "attribute": "int",
+        "priority": 1.5,
+        "value": -359.56178918462115,
+        "tags": [],
+        "notes": "",
+        "type": "todo",
+        "checklist": [{
+            "id": "14f56c99-5e1a-4f32-9f72-5917e149bfce",
+            "text": "Attributes",
+            "completed": false
+        }, {
+            "id": "c3b9a281-3bd1-4635-afae-5b599fafd23e",
+            "text": "GIF armor",
+            "completed": false
+        }, {
+            "id": "3753175e-4a44-49a5-a36b-bea938e9562e",
+            "text": "Watch app",
+            "completed": false
+        }],
+        "collapseChecklist": true,
+        "completed": false,
+        "id": "a3a43"
+    }, {
+        "_id": "e4b6",
+        "text": "Floss",
+        "userId": "123fde",
+        "_legacyId": "0e353c08-1fe1-4952-9cbb-1e6f2dda2fc7",
+        "isDue": true,
+        "updatedAt": "2017-09-30T16:33:57.484Z",
+        "createdAt": "2016-01-26T22:20:02.943Z",
+        "reminders": [],
+        "group": {
+            "approval": {
+                "requested": false,
+                "approved": false,
+                "required": false
+            },
+            "assignedUsers": []
+        },
+        "challenge": {},
+        "attribute": "con",
+        "priority": 1,
+        "value": 40.86083513659276,
+        "tags": [],
+        "notes": "",
+        "type": "daily",
+        "checklist": [],
+        "collapseChecklist": false,
+        "completed": false,
+        "history": [{
+            "value": 38.54159648862649,
+            "date": 1506480946422
+        }, {
+            "value": 39.12140615061806,
+            "date": 1506565888193
+        }, {
+            "value": 39.701215812609625,
+            "date": 1506605263802
+        }, {
+            "value": 40.28102547460119,
+            "date": 1506689081391
+        }],
+        "yesterDaily": true,
+        "nextDue": ["Sun Oct 01 2017 00:00:00 GMT-0400", "Tue Oct 03 2017 00:00:00 GMT-0400", "Wed Oct 04 2017 00:00:00 GMT-0400", "Thu Oct 05 2017 00:00:00 GMT-0400", "Fri Oct 06 2017 00:00:00 GMT-0400", "Sat Oct 07 2017 00:00:00 GMT-0400"],
+        "weeksOfMonth": [],
+        "daysOfMonth": [26],
+        "streak": 27,
+        "repeat": {
+            "su": true,
+            "s": true,
+            "f": true,
+            "th": true,
+            "w": true,
+            "t": true,
+            "m": true
+        },
+        "startDate": "2016-01-26T17:20:01.839Z",
+        "everyX": 1,
+        "frequency": "weekly",
+        "id": "e4b6"
+    }, {
+        "_id": "a107d6",
+        "text": "Duolingo",
+        "userId": "123fde",
+        "_legacyId": "a0f41f13-a1f6-4aa3-8941-3056b530e04a",
+        "isDue": false,
+        "updatedAt": "2017-09-30T16:33:57.486Z",
+        "createdAt": "2016-02-01T09:16:37.602Z",
+        "reminders": [],
+        "group": {
+            "approval": {
+                "requested": false,
+                "approved": false,
+                "required": false
+            },
+            "assignedUsers": []
+        },
+        "challenge": {},
+        "attribute": "int",
+        "priority": 2,
+        "value": -16.546771437545285,
+        "tags": [],
+        "notes": "",
+        "type": "daily",
+        "checklist": [],
+        "collapseChecklist": false,
+        "completed": false,
+        "history": [{
+            "value": -13.656234723709591,
+            "date": 1506565888256
+        }, {
+            "value": -15.075229182956086,
+            "date": 1506605263892
+        }, {
+            "value": -16.546771437545285,
+            "date": 1506689081442
+        }],
+        "yesterDaily": true,
+        "nextDue": ["Mon Oct 02 2017 00:00:00 GMT-0400", "Tue Oct 03 2017 00:00:00 GMT-0400", "Wed Oct 04 2017 00:00:00 GMT-0400", "Thu Oct 05 2017 00:00:00 GMT-0400", "Fri Oct 06 2017 00:00:00 GMT-0400", "Fri Oct 13 2017 00:00:00 GMT-0400"],
+        "weeksOfMonth": [],
+        "daysOfMonth": [],
+        "streak": 0,
+        "repeat": {
+            "su": false,
+            "s": false,
+            "f": true,
+            "th": true,
+            "w": true,
+            "t": true,
+            "m": true
+        },
+        "startDate": "2016-02-01T09:16:43.560Z",
+        "everyX": 1,
+        "frequency": "weekly",
+        "id": "a107d6"
+    }, {
+        "_id": "d5d10c5",
+        "userId": "123fde",
+        "text": "Push ups",
+        "isDue": true,
+        "updatedAt": "2017-09-30T16:33:57.489Z",
+        "createdAt": "2016-07-26T02:42:08.322Z",
+        "reminders": [],
+        "group": {
+            "approval": {
+                "requested": false,
+                "approved": false,
+                "required": false
+            },
+            "assignedUsers": []
+        },
+        "challenge": {},
+        "attribute": "str",
+        "priority": 1.5,
+        "value": 14.228441010639532,
+        "tags": [],
+        "notes": "",
+        "type": "daily",
+        "checklist": [],
+        "collapseChecklist": false,
+        "completed": false,
+        "history": [{
+            "value": 13.521275177144622,
+            "date": 1506605264096
+        }, {
+            "value": 14.228441010639532,
+            "date": 1506689081574
+        }],
+        "yesterDaily": true,
+        "nextDue": ["Sun Oct 01 2017 00:00:00 GMT-0400", "Tue Oct 03 2017 00:00:00 GMT-0400", "Wed Oct 04 2017 00:00:00 GMT-0400", "Thu Oct 05 2017 00:00:00 GMT-0400", "Fri Oct 06 2017 00:00:00 GMT-0400", "Sat Oct 07 2017 00:00:00 GMT-0400"],
+        "weeksOfMonth": [],
+        "daysOfMonth": [],
+        "streak": 21,
+        "repeat": {
+            "su": true,
+            "s": true,
+            "f": true,
+            "th": true,
+            "w": true,
+            "t": true,
+            "m": true
+        },
+        "startDate": "2016-07-26T02:41:44.567Z",
+        "everyX": 1,
+        "frequency": "weekly",
+        "id": "d5d10c5"
+    }, {
+        "_id": "3b96",
+        "userId": "123fde",
+        "text": "Subject matter research",
+        "isDue": false,
+        "updatedAt": "2017-09-30T16:33:57.489Z",
+        "createdAt": "2016-08-08T16:10:31.472Z",
+        "reminders": [],
+        "group": {
+            "approval": {
+                "requested": false,
+                "approved": false,
+                "required": false
+            },
+            "assignedUsers": []
+        },
+        "challenge": {},
+        "attribute": "per",
+        "priority": 1,
+        "value": 57.216175552784925,
+        "tags": [],
+        "notes": "",
+        "type": "daily",
+        "checklist": [],
+        "collapseChecklist": false,
+        "completed": false,
+        "history": [{
+            "value": 55.47674656681022,
+            "date": 1506565888448
+        }, {
+            "value": 56.05655622880179,
+            "date": 1506605264145
+        }, {
+            "value": 56.63636589079336,
+            "date": 1506689081617
+        }],
+        "yesterDaily": true,
+        "nextDue": ["Mon Oct 02 2017 00:00:00 GMT-0400", "Tue Oct 03 2017 00:00:00 GMT-0400", "Wed Oct 04 2017 00:00:00 GMT-0400", "Thu Oct 05 2017 00:00:00 GMT-0400", "Fri Oct 06 2017 00:00:00 GMT-0400", "Fri Oct 13 2017 00:00:00 GMT-0400"],
+        "weeksOfMonth": [],
+        "daysOfMonth": [],
+        "streak": 3,
+        "repeat": {
+            "su": false,
+            "s": false,
+            "f": true,
+            "th": true,
+            "w": true,
+            "t": true,
+            "m": true
+        },
+        "startDate": "2016-08-08T04:00:00.000Z",
+        "everyX": 1,
+        "frequency": "weekly",
+        "id": "3b96"
+    }, {
+        "_id": "e17d8c",
+        "userId": "123fde",
+        "text": "Sophie",
+        "updatedAt": "2017-09-29T12:44:42.466Z",
+        "createdAt": "2017-02-12T01:00:13.569Z",
+        "reminders": [],
+        "group": {
+            "approval": {
+                "requested": false,
+                "approved": false,
+                "required": false
+            },
+            "assignedUsers": []
+        },
+        "challenge": {},
+        "attribute": "con",
+        "priority": 2,
+        "value": -359.56178918462115,
+        "tags": [],
+        "notes": "",
+        "type": "todo",
+        "checklist": [],
+        "collapseChecklist": false,
+        "completed": false,
+        "id": "e17d8c"
+    }, {
+        "_id": "3107b3",
+        "isDue": false,
+        "userId": "123fde",
+        "text": "Blog",
+        "updatedAt": "2017-09-30T16:33:57.507Z",
+        "createdAt": "2017-05-24T13:52:01.587Z",
+        "reminders": [],
+        "group": {
+            "approval": {
+                "requested": false,
+                "approved": false,
+                "required": false
+            },
+            "assignedUsers": []
+        },
+        "challenge": {},
+        "attribute": "per",
+        "priority": 2,
+        "value": -36.76419061919579,
+        "tags": [],
+        "notes": "",
+        "type": "daily",
+        "checklist": [],
+        "collapseChecklist": false,
+        "completed": false,
+        "history": [{
+            "value": -42.487686108794605,
+            "date": 1506565889229
+        }, {
+            "value": -39.51706747761617,
+            "date": 1506605264951
+        }, {
+            "value": -36.76419061919579,
+            "date": 1506689082076
+        }],
+        "yesterDaily": true,
+        "nextDue": ["Mon Oct 02 2017 00:00:00 GMT-0400", "Tue Oct 03 2017 00:00:00 GMT-0400", "Wed Oct 04 2017 00:00:00 GMT-0400", "Thu Oct 05 2017 00:00:00 GMT-0400", "Fri Oct 06 2017 00:00:00 GMT-0400", "Fri Oct 13 2017 00:00:00 GMT-0400"],
+        "weeksOfMonth": [],
+        "daysOfMonth": [24],
+        "streak": 15,
+        "repeat": {
+            "su": false,
+            "s": false,
+            "f": true,
+            "th": true,
+            "w": true,
+            "t": true,
+            "m": true
+        },
+        "startDate": "2017-05-24T04:00:00.000Z",
+        "everyX": 1,
+        "frequency": "weekly",
+        "id": "3107b3"
+    }, {
+        "_id": "5a9759b",
+        "userId": "123fde",
+        "text": "Julia",
+        "date": "",
+        "updatedAt": "2017-09-29T12:44:42.497Z",
+        "createdAt": "2017-07-22T05:03:08.917Z",
+        "reminders": [],
+        "group": {
+            "approval": {
+                "requested": false,
+                "approved": false,
+                "required": false
+            },
+            "assignedUsers": []
+        },
+        "challenge": {},
+        "attribute": "con",
+        "priority": 1,
+        "value": -104.36040453968873,
+        "tags": [],
+        "notes": "",
+        "type": "todo",
+        "checklist": [],
+        "collapseChecklist": false,
+        "completed": false,
+        "id": "5a9759b"
+    }, {
+        "_id": "31a6d9",
+        "userId": "123fde",
+        "text": "Finish RN class",
+        "date": "",
+        "updatedAt": "2017-09-29T12:44:42.498Z",
+        "createdAt": "2017-07-26T02:39:25.652Z",
+        "reminders": [],
+        "group": {
+            "approval": {
+                "requested": false,
+                "approved": false,
+                "required": false
+            },
+            "assignedUsers": []
+        },
+        "challenge": {},
+        "attribute": "per",
+        "priority": 2,
+        "value": -90.92875271627123,
+        "tags": [],
+        "notes": "",
+        "type": "todo",
+        "checklist": [],
+        "collapseChecklist": false,
+        "completed": false,
+        "id": "31a6d9"
+    }, {
+        "_id": "c22cfa",
+        "isDue": true,
+        "userId": "123fde",
+        "text": "SSBM",
+        "updatedAt": "2017-09-30T16:33:57.509Z",
+        "createdAt": "2017-08-14T19:45:11.573Z",
+        "reminders": [],
+        "group": {
+            "approval": {
+                "requested": false,
+                "approved": false,
+                "required": false
+            },
+            "assignedUsers": []
+        },
+        "challenge": {},
+        "attribute": "con",
+        "priority": 1.5,
+        "value": -21.74873396477568,
+        "tags": [],
+        "notes": "",
+        "type": "daily",
+        "checklist": [],
+        "collapseChecklist": false,
+        "completed": false,
+        "history": [{
+            "value": -18.47068419506875,
+            "date": 1506565889300
+        }, {
+            "value": -20.076001440517096,
+            "date": 1506605265039
+        }, {
+            "value": -21.74873396477568,
+            "date": 1506689082120
+        }],
+        "yesterDaily": true,
+        "nextDue": ["Sun Oct 01 2017 00:00:00 GMT-0400", "Tue Oct 03 2017 00:00:00 GMT-0400", "Wed Oct 04 2017 00:00:00 GMT-0400", "Thu Oct 05 2017 00:00:00 GMT-0400", "Fri Oct 06 2017 00:00:00 GMT-0400", "Sat Oct 07 2017 00:00:00 GMT-0400"],
+        "weeksOfMonth": [],
+        "daysOfMonth": [],
+        "streak": 0,
+        "repeat": {
+            "su": true,
+            "s": true,
+            "f": true,
+            "th": true,
+            "w": true,
+            "t": true,
+            "m": true
+        },
+        "startDate": "2017-08-14T04:00:00.000Z",
+        "everyX": 1,
+        "frequency": "weekly",
+        "id": "c22cfa"
+    }, {
+        "_id": "d17c31",
+        "userId": "123fde",
+        "text": "Order checks",
+        "updatedAt": "2017-09-29T12:44:42.502Z",
+        "createdAt": "2017-08-24T01:24:05.468Z",
+        "reminders": [],
+        "group": {
+            "approval": {
+                "requested": false,
+                "approved": false,
+                "required": false
+            },
+            "assignedUsers": []
+        },
+        "challenge": {},
+        "attribute": "str",
+        "priority": 1,
+        "value": -21.83636856201968,
+        "tags": [],
+        "notes": "",
+        "type": "todo",
+        "checklist": [],
+        "collapseChecklist": false,
+        "completed": false,
+        "id": "d17c31"
+    }],
+    "notifications": [],
+    "userV": 22381
+}

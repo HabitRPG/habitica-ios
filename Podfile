@@ -44,6 +44,8 @@ target 'Habitica' do
   pod 'FBSDKLoginKit', '~> 4'
 
   pod 'ReactiveCocoa', '~> 7'
+  pod 'FunkyNetwork', git: 'https://github.com/schrockblock/funky-network.git'
+  pod 'Eson'
 
   pod 'SwiftyStoreKit'
 

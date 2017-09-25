@@ -59,13 +59,13 @@
         withAnimation:(BOOL)animate {
     Task *task = [self taskAtIndexPath:indexPath];
     cell.isExpanded = self.expandedIndexPath != nil && indexPath.item == self.expandedIndexPath.item;
-    
+
     UITapGestureRecognizer *btnTapRecognizer =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(expandSelectedCell:)];
     btnTapRecognizer.numberOfTapsRequired = 1;
     [cell.checklistIndicator addGestureRecognizer:btnTapRecognizer];
-    
+
     __weak ToDoTableViewCell *weakCell = cell;
     cell.checklistItemTouched = ^(ChecklistItem *item) {
         if (![item.currentlyChecking boolValue]) {
@@ -83,7 +83,7 @@
                                                   }];
         }
     };
-    
+
     cell.taskDetailLine.dateFormatter = self.dateFormatter;
     [cell configureWithTask:task];
     cell.checkboxTouched = ^() {
