@@ -201,7 +201,7 @@
         <!--Insufficient Gems View Controller-->
         <scene sceneID="wZ7-VK-NpV">
             <objects>
-                <viewController id="mJy-hz-jsh" customClass="HRPGInsufficientGemsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InsufficientGemsViewController" id="mJy-hz-jsh" customClass="HRPGInsufficientGemsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oDn-5b-j7G"/>
                         <viewControllerLayoutGuide type="bottom" id="h9m-1V-pC1"/>
@@ -292,7 +292,7 @@
         <!--Insufficient Gold View Controller-->
         <scene sceneID="cWi-pm-kiG">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="MH9-dz-o73" customClass="HRPGInsufficientGoldViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InsufficientGoldViewController" modalPresentationStyle="overCurrentContext" id="MH9-dz-o73" customClass="HRPGInsufficientGoldViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5tr-Yz-fF8"/>
                         <viewControllerLayoutGuide type="bottom" id="Q1P-3l-hBT"/>
@@ -369,7 +369,7 @@
         <!--Insufficient Hourglasses View Controller-->
         <scene sceneID="IKx-VE-RcY">
             <objects>
-                <viewController id="H4v-s7-uWa" customClass="HRPGInsufficientHourglassesViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InsufficientHourglassesViewController" id="H4v-s7-uWa" customClass="HRPGInsufficientHourglassesViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ccg-vi-lXU"/>
                         <viewControllerLayoutGuide type="bottom" id="R8r-Qm-gts"/>

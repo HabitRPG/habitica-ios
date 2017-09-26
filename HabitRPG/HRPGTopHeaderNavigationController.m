@@ -203,6 +203,9 @@
 
 #pragma mark - Helpers
 - (CGFloat)getContentInset {
+    if (self.shouldHideTopHeader) {
+        return 0;
+    }
     return [self topHeaderHeight] + self.bottomBorderView.frame.size.height;
 }
 
@@ -215,6 +218,9 @@
 - (CGFloat)getContentOffset {
     if ((self.backgroundView.frame.origin.y + self.backgroundView.frame.size.height) <
         self.bgViewOffset) {
+        return 0;
+    }
+    if (self.shouldHideTopHeader) {
         return 0;
     }
     return self.backgroundView.frame.size.height + self.backgroundView.frame.origin.y;

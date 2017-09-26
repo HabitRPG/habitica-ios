@@ -56,9 +56,9 @@ class HRPGShopBannerView: UIView {
     
     override var intrinsicContentSize: CGSize {
         notesLabel.sizeToFit()
-        var labelHeight: CGFloat = 60.0
-        if notesLabel.bounds.size.height > labelHeight {
-            labelHeight = notesLabel.bounds.size.height
+        var labelHeight: CGFloat = notesLabel.bounds.size.height
+        if labelHeight == 0 {
+            labelHeight = 60
         }
         return CGSize(width: UIScreen.main.bounds.size.width, height: 140 + labelHeight)
     }
@@ -86,7 +86,12 @@ class HRPGShopBannerView: UIView {
             }
             
             if let notes = unwrappedShop.notes?.strippingHTML() {
-                self.notesLabel.text = notes
+                let paragraphStyle = NSMutableParagraphStyle()
+                paragraphStyle.lineSpacing = 4
+                
+                let attrString = NSMutableAttributedString(string: notes)
+                attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+                self.notesLabel.attributedText = attrString
             }
             self.invalidateIntrinsicContentSize()
         }

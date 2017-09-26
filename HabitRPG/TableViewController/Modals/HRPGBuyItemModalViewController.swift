@@ -156,7 +156,9 @@ class HRPGBuyItemModalViewController: UIViewController {
         if canAfford() && !isLocked {
             currencyCountView.state = .normal
         } else {
-            buyLabel.textColor = .gray400()
+            if currencyCountView.currency == .gold {
+                buyLabel.textColor = .gray400()
+            }
             if isLocked {
                 currencyCountView.state = .locked
             } else {
@@ -301,30 +303,51 @@ class HRPGBuyItemModalViewController: UIViewController {
         if key != "" {
             self.dismiss(animated: true, completion: nil)
             
+            let topViewController = self.presentingViewController
+            let storyboard = UIStoryboard(name: "BuyModal", bundle: nil)
+            if !canAfford() {
+                var viewControllerName: String? = nil
+                if currency == .hourglass {
+                    viewControllerName = "InsufficientHourglassesViewController"
+                } else if currency == .gem {
+                    viewControllerName = "InsufficientGemsViewController"
+                } else {
+                    viewControllerName = "InsufficientGoldViewController"
+                }
+                
+                if let name = viewControllerName {
+                    let viewController = storyboard.instantiateViewController(withIdentifier: name)
+                    viewController.modalTransitionStyle = .crossDissolve
+                    viewController.modalPresentationStyle = .currentContext
+                    topViewController?.present(viewController, animated: true, completion: nil)
+                }
+                
+                return
+            }
+            
             if currency == .hourglass {
                 if purchaseType == "gear" || purchaseType == "mystery_set" {
                     HRPGManager.shared().purchaseMysterySet(setIdentifier, onSuccess: successBlock, onError: {
-                        self.performSegue(withIdentifier: "insufficientHourglasses", sender: self)
+                        topViewController?.performSegue(withIdentifier: "insufficientHourglasses", sender: self)
                     })
                 } else {
                     HRPGManager.shared().purchaseHourglassItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {
-                            self.performSegue(withIdentifier: "insufficientHourglasses", sender: self)
+                            topViewController?.performSegue(withIdentifier: "insufficientHourglasses", sender: self)
                     })
                 }
-            } else if currency == .gem && value.floatValue > HRPGManager.shared().getUser().balance.floatValue * 4.0 {
-                performSegue(withIdentifier: "insufficientGems", sender: self)
+
             } else if currency == .gem || purchaseType == "gems" {
                 HRPGManager.shared().purchaseItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {
-                    self.performSegue(withIdentifier: "insufficientGems", sender: self)
+                    topViewController?.performSegue(withIdentifier: "insufficientGems", sender: self)
                 })
             } else {
                 if currency == .gold && purchaseType == "quests" {
                     HRPGManager.shared().purchaseQuest(key, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {
-                        self.performSegue(withIdentifier: "insufficientGold", sender: self)
+                        topViewController?.performSegue(withIdentifier: "insufficientGold", sender: self)
                     })
                 } else {
                     HRPGManager.shared().buyObject(key, withValue: value, withText: text, onSuccess: successBlock, onError: {
-                        self.performSegue(withIdentifier: "insufficientGold", sender: self)
+                        topViewController?.performSegue(withIdentifier: "insufficientGold", sender: self)
                     })
                 }
             }

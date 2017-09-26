@@ -40,6 +40,11 @@
     [self.tableView reloadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.topHeaderNavigationController removeAlternativeHeaderView];
+}
+
 - (void)setupShopDictionary {
     self.dataSource.delegate = self.viewModel;
     

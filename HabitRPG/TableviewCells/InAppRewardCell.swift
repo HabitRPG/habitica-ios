@@ -106,7 +106,6 @@ class InAppRewardCell: UICollectionViewCell {
         imageName = item.imageName ?? ""
         itemName = item.text ?? ""
         isLocked = item.locked?.boolValue ?? false
-        itemsLeft = item.itemsLeft?.intValue ?? 0
         if let currencyString = item.currency, let currency = Currency(rawValue: currencyString) {
             currencyView.currency = currency
             setCanAfford( item.value?.floatValue ?? 0, currency: currency)

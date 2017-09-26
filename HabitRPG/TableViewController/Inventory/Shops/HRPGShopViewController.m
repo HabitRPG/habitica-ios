@@ -25,6 +25,7 @@
 @property User *user;
 
 @property NSIndexPath *selectedIndex;
+@property BOOL insetWasSetup;
 
 @end
 
@@ -41,7 +42,13 @@
     self.dataSource.fetchedResultsDelegate = self;
     self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier];
     
-    if (self.topHeaderNavigationController) {
+    [self refresh];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.topHeaderNavigationController && !self.insetWasSetup) {
+        self.insetWasSetup = YES;
         self.topHeaderNavigationController.shouldHideTopHeader = NO;
         [self.collectionView setContentInset:UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0)];
         self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0);
@@ -49,8 +56,6 @@
             [self.collectionView  setContentOffset:CGPointMake(0, -[self.topHeaderNavigationController getContentOffset])];
         }
     }
-    
-    [self refresh];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -65,15 +70,14 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    self.topHeaderNavigationController.shouldHideTopHeader = YES;
     [self.topHeaderNavigationController stopFollowingScrollView];
-    [self.topHeaderNavigationController removeAlternativeHeaderView];
     
     [self.user removeObserver:self forKeyPath:@"gold"];
     [self.user removeObserver:self forKeyPath:@"balance"];
     
     [super viewWillDisappear:animated];
 }
+
 
 - (void)refresh {
     [self setupShop];
@@ -97,7 +101,7 @@
 - (void)setupNavBar {
     HRPGCurrencyCountView *gems = [HRPGCurrencyCountView new];
     [gems setAsGems];
-    gems.amount = [[NSNumber numberWithFloat:4.f * [[[HRPGManager sharedManager] getUser].balance floatValue]] intValue];
+    gems.amount = [[NSNumber numberWithFloat:4.0f * [[[HRPGManager sharedManager] getUser].balance floatValue]] intValue];
     
     HRPGCurrencyCountView *gold = [HRPGCurrencyCountView new];
     [gold setAsGold];
