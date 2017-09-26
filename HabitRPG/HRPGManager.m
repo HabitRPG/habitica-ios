@@ -139,7 +139,7 @@ NSString *currentUser;
     NSString *DISABLE_SSL = [defaults stringForKey:@"DISABLE_SSL"];
 
     if (CUSTOM_DOMAIN.length == 0) {
-        CUSTOM_DOMAIN = @"habitica.com/";
+        CUSTOM_DOMAIN = @"habitrpg-staging.herokuapp.com/";
     }
 
     if (![[CUSTOM_DOMAIN substringFromIndex: [CUSTOM_DOMAIN length] - 1]  isEqual: @"/"]) {

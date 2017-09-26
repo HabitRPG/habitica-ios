@@ -75,6 +75,9 @@ class InAppRewardCell: UICollectionViewCell {
     public var isPinned = false {
         didSet {
             pinnedIndicatorView.isHidden = !isPinned
+            if isPinned {
+                pinnedIndicatorView.image = HabiticaIcons.imageOfPinnedItem
+            }
         }
     }
     

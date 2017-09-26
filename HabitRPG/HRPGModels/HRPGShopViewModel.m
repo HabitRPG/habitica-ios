@@ -84,4 +84,19 @@
     return ownedItems;
 }
 
+- (NSDictionary *)fetchPinnedItems {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"InAppReward"
+                                              inManagedObjectContext:[[HRPGManager sharedManager] getManagedObjectContext]];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *results = [[[HRPGManager sharedManager] getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    NSMutableDictionary *ownedItems = [[NSMutableDictionary alloc] initWithCapacity:results.count];
+    for (InAppReward *item in results) {
+        [ownedItems setValue:item forKey:item.key];
+    }
+    return ownedItems;
+}
+
 @end

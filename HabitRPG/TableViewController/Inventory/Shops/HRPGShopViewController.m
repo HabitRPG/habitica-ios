@@ -144,9 +144,20 @@
     self.dataSource.delegate = self;
     self.dataSource.collectionView = self.collectionView;
     self.dataSource.ownedItems = [self.viewModel fetchOwnedItems];
+    self.dataSource.pinnedItems = [self.viewModel fetchPinnedItems];
     
     self.collectionView.dataSource = self.dataSource;
     self.collectionView.delegate = self.dataSource;
+}
+
+- (void)loadOwnedItems {
+    self.dataSource.ownedItems = [self.viewModel fetchOwnedItems];
+    [self.collectionView reloadData];
+}
+
+- (void)loadPinnedItems {
+    self.dataSource.pinnedItems = [self.viewModel fetchPinnedItems];
+    [self.collectionView reloadData];
 }
 
 - (void)scrollToTop {
@@ -220,6 +231,7 @@
     vc.item = item;
     vc.shopIdentifier = self.shopIdentifier;
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    vc.shopViewController = self;
     [self.tabBarController presentViewController:vc animated:YES completion:nil];
 }
 

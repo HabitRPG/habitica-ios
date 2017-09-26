@@ -17,6 +17,7 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
     weak var delegate: HRPGShopCollectionViewDataSourceDelegate?
     
     var ownedItems = [String: Item]()
+    var pinnedItems = [String: InAppReward]()
     
     // MARK: Collection view data source and delegate methods
     
@@ -48,6 +49,9 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
                 if let ownedItem = ownedItems[item.key ?? ""] {
                     itemCell.itemsLeft = ownedItem.owned.intValue
                 }
+                itemCell.isPinned = pinnedItems.contains(where: { (key, _) -> Bool in
+                    return key == item.key ?? ""
+                })
             }
         }
         return cell

@@ -26,6 +26,8 @@ class HRPGBuyItemModalViewController: UIViewController {
     @IBOutlet weak var buyLabel: UILabel!
     @IBOutlet weak var currencyCountView: HRPGCurrencyCountView!
     @IBOutlet weak var closableShopModal: HRPGCloseableShopModalView!
+    
+    public weak var shopViewController: HRPGShopViewController?
 
     private var isPinned: Bool = false {
         didSet {
@@ -89,6 +91,15 @@ class HRPGBuyItemModalViewController: UIViewController {
             var itemView: HRPGSimpleShopItemView?
             if let item = self.item {
                 itemView = HRPGSimpleShopItemView(withItem: item, for: contentView)
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "InAppReward")
+                fetchRequest.predicate = NSPredicate(format: "key == %@", item.key ?? "")
+                
+                do {
+                    let fetchedRewards = try HRPGManager.shared().getManagedObjectContext().fetch(fetchRequest)
+                    isPinned = fetchedRewards.count > 0
+                } catch {
+                    fatalError("Failed to fetch employees: \(error)")
+                }
             } else if let reward = self.reward {
                 itemView = HRPGSimpleShopItemView(withReward: reward, for: contentView)
                 isPinned = true
@@ -255,6 +266,9 @@ class HRPGBuyItemModalViewController: UIViewController {
         }
         HRPGManager.shared().togglePinnedItem(pinType, withPath: path, onSuccess: {[weak self] in
             self?.isPinned = !(self?.isPinned ?? false)
+            if let shopViewController = self?.shopViewController {
+                shopViewController.loadPinnedItems()
+            }
         }, onError: nil)
     }
     

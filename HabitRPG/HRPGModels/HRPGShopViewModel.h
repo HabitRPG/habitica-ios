@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Item.h"
+#import "InAppReward+CoreDataClass.h"
 @class Shop;
 
 @interface HRPGShopViewModel : NSObject
@@ -19,4 +20,5 @@
 - (BOOL)shouldPromptToSubscribe;
 
 - (NSDictionary<NSString *, Item *> *)fetchOwnedItems;
+- (NSDictionary<NSString *, InAppReward *> *)fetchPinnedItems;
 @end

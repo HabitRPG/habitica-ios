@@ -12,4 +12,7 @@
 
 @property NSString *shopIdentifier;
 
+- (void)loadPinnedItems;
+- (void)loadOwnedItems;
+
 @end
