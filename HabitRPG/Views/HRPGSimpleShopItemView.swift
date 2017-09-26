@@ -10,6 +10,7 @@ import UIKit
 
 @IBDesignable
 class HRPGSimpleShopItemView: UIView {
+    @IBOutlet weak var topBannerLabel: PaddedLabel!
     @IBOutlet weak var shopItemImageView: UIImageView!
     @IBOutlet weak var shopItemTitleLabel: UILabel!
     @IBOutlet weak var shopItemDescriptionLabel: UILabel!
@@ -87,6 +88,9 @@ class HRPGSimpleShopItemView: UIView {
                 self.shopItemDescriptionLabel.addConstraint(constraint)
             }
         }
+        if item.key == "gem" {
+            setGemsLeft(item.itemsLeft?.intValue ?? 0)
+        }
     }
     
     init(withReward reward: MetaReward, for contentView: UIView) {
@@ -123,6 +127,13 @@ class HRPGSimpleShopItemView: UIView {
                 self.shopItemDescriptionLabel.addConstraint(constraint)
             }
         }
+    }
+    
+    private func setGemsLeft(_ gemsLeft: Int) {
+        let totalCount = HRPGManager.shared().getUser().subscriptionPlan.totalGemCap
+        topBannerLabel.text = NSLocalizedString("Monthly Gems: \(gemsLeft)/\(totalCount) Remaining", comment: "")
+        topBannerLabel.backgroundColor = UIColor.green10()
+        topBannerLabel.verticalPadding = 4 6
     }
     
     // MARK: - Private Helper Methods
