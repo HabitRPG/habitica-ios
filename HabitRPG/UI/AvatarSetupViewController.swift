@@ -67,7 +67,6 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     @IBOutlet weak var subcategoryIndicatorPosition: NSLayoutConstraint!
     @IBOutlet weak var subcategoryIndicatorWidth: NSLayoutConstraint!
     
-    var sharedManager: HRPGManager?
     var user: User?
     
     var currentCategory: AvatarCustomizationCategory = .body {
@@ -148,7 +147,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         updateData["preferences.hair.flower"] = chooseRandomKey(SetupCustomizationRepository.getCustomizations(category: .extras, subcategory: .flower, user: user), weighFirstOption: true)
         updateData["preferences.chair"] = chooseRandomKey(SetupCustomizationRepository.getCustomizations(category: .extras, subcategory: .wheelchair, user: user), weighFirstOption: true)
         
-        self.sharedManager?.updateUser(updateData, refetchUser: false, onSuccess: {[weak self] in
+        HRPGManager.shared().updateUser(updateData, refetchUser: false, onSuccess: {[weak self] in
             self?.updateActiveCustomizations()
             }, onError: nil)
     }
@@ -311,11 +310,11 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
             } else {
                 key = newCustomization.key
             }
-            self.sharedManager?.equipObject(key, withType: "equipped", onSuccess: {[weak self] in
+            HRPGManager.shared().equipObject(key, withType: "equipped", onSuccess: {[weak self] in
                 self?.updateActiveCustomizations()
                 }, onError: nil)
         } else {
-            self.sharedManager?.updateUser(["preferences."+newCustomization.path: newCustomization.key], refetchUser: false, onSuccess: {[weak self] in
+            HRPGManager.shared().updateUser(["preferences."+newCustomization.path: newCustomization.key], refetchUser: false, onSuccess: {[weak self] in
                 self?.updateActiveCustomizations()
                 }, onError: nil)
         }

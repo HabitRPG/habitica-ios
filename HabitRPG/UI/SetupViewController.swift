@@ -26,8 +26,6 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var previousButtonTextView: UILabel!
     @IBOutlet weak var previousButtonImageView: UIImageView!
     
-    var sharedManager: HRPGManager?
-    
     var views: [UIView] = []
     var viewControllers: [TypingTextViewController] = []
     var taskSetupViewController: TaskSetupViewController?
@@ -38,9 +36,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.sharedManager = HRPGManager.shared()
-        
+                
         let nextGesture = UITapGestureRecognizer(target: self, action: #selector(scrollToNextPage))
         nextButtonView.addGestureRecognizer(nextGesture)
         let previousGesture = UITapGestureRecognizer(target: self, action: #selector(scrollToPreviousPage))
@@ -150,14 +146,14 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         let overlayView = MRProgressOverlayView.showOverlayAdded(to: self.view, title: NSLocalizedString("Teleporting to Habitica", comment: ""), mode: .indeterminate, animated: true)
         overlayView?.setTintColor(UIColor.purple400())
         overlayView?.backgroundColor = UIColor.purple50().withAlphaComponent(0.6)
-        if let viewController = taskSetupViewController, let manager = sharedManager {
+        if let viewController = taskSetupViewController {
             for taskCategory in viewController.selectedCategories {
-                tagsToCreate[taskCategory] = taskCategory.getTag(managedObjectContext: manager.getManagedObjectContext())
+                tagsToCreate[taskCategory] = taskCategory.getTag(managedObjectContext: HRPGManager.shared().getManagedObjectContext())
             }
         }
         createTag {[weak self] in
             self?.createTasks {
-                self?.sharedManager?.fetchUser({
+                HRPGManager.shared().fetchUser({
                     self?.showMainView()
                 }, onError: {
                     self?.showMainView()
@@ -172,7 +168,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
             return
         }
         if let tag = tagsToCreate.removeValue(forKey: taskCategory) {
-            sharedManager?.createTag(tag, onSuccess: {[weak self] tag in
+            HRPGManager.shared().createTag(tag, onSuccess: {[weak self] tag in
                 self?.createdTags[taskCategory] = tag
                 self?.createTag(completeFunc)
                 }, onError: {[weak self] in
@@ -209,7 +205,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                 completeFunc()
                 return
             }
-            self.sharedManager?.createTasks(tasks, onSuccess: {
+            HRPGManager.shared().createTasks(tasks, onSuccess: {
                 completeFunc()
             }, onError: {
                 completeFunc()
