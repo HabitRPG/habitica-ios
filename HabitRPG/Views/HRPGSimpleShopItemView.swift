@@ -133,7 +133,7 @@ class HRPGSimpleShopItemView: UIView {
         let totalCount = HRPGManager.shared().getUser().subscriptionPlan.totalGemCap
         topBannerLabel.text = NSLocalizedString("Monthly Gems: \(gemsLeft)/\(totalCount) Remaining", comment: "")
         topBannerLabel.backgroundColor = UIColor.green10()
-        topBannerLabel.verticalPadding = 4 6
+        topBannerLabel.verticalPadding = 6
     }
     
     // MARK: - Private Helper Methods
