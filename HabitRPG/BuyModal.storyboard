@@ -329,7 +329,6 @@
                                             <constraint firstAttribute="height" constant="139" id="clb-WV-yX3"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="gold_coin"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="You need to complete more tasks before you can afford this item!"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="shouldHideNotes" value="YES"/>
                                         </userDefinedRuntimeAttributes>
@@ -359,6 +358,7 @@
                     <connections>
                         <outlet property="actionButton" destination="Wl4-Aq-qfJ" id="if3-Mb-J94"/>
                         <outlet property="imageTextView" destination="JPn-ef-wu2" id="tyu-Cn-7n9"/>
+                        <outlet property="infoView" destination="JPn-ef-wu2" id="1cz-aM-R5s"/>
                         <outlet property="titleLabel" destination="MAF-Nb-1hY" id="9k3-dk-EPn"/>
                     </connections>
                 </viewController>
@@ -398,7 +398,6 @@
                                         <rect key="frame" x="0.0" y="46" width="343" height="139"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="hourglass"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="You'll need more Mystic Hourglasses to buy this item!"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="shouldHideNotes" value="YES"/>
                                         </userDefinedRuntimeAttributes>
@@ -451,6 +450,7 @@
                         <outlet property="actionButton" destination="4E3-xU-II9" id="ebD-1f-AUz"/>
                         <outlet property="backgroundModalView" destination="HsQ-qc-HER" id="vVT-pz-7GQ"/>
                         <outlet property="imageTextView" destination="8iQ-Ji-0DG" id="KSm-Qm-slL"/>
+                        <outlet property="infoView" destination="8iQ-Ji-0DG" id="MjR-8o-gk0"/>
                         <outlet property="titleLabel" destination="Z4L-Zx-0jp" id="nfU-Hy-vxI"/>
                     </connections>
                 </viewController>
@@ -461,7 +461,5 @@
     </scenes>
     <resources>
         <image name="84_gems" width="65" height="63"/>
-        <image name="gold_coin" width="18" height="18"/>
-        <image name="hourglass" width="24" height="24"/>
     </resources>
 </document>

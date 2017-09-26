@@ -19,9 +19,12 @@ class HRPGInsufficientGemsViewController: HRPGSingleOptionModalViewController {
     }
     
     @IBAction func actionButtonPressed() {
-        let storyboard = UIStoryboard(name: "Main", bundle:nil)
-        let navigationController = storyboard.instantiateViewController(withIdentifier: "PurchaseGemNavController")
-        present(navigationController, animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
+        if let parentViewController = self.presentingViewController {
+            let storyboard = UIStoryboard(name: "Main", bundle:nil)
+            let navigationController = storyboard.instantiateViewController(withIdentifier: "PurchaseGemNavController")
+            parentViewController.present(navigationController, animated: true, completion: nil)
+        }
     }
     
     func closePressed() {

@@ -10,8 +10,11 @@ import UIKit
 
 class HRPGInsufficientGoldViewController: HRPGSingleOptionModalViewController {
 
+    @IBOutlet weak var infoView: HRPGSimpleShopItemView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        infoView.image = HabiticaIcons.imageOfGoldReward
     }
 
     @IBAction func closePressed() {
