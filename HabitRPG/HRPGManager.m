@@ -1798,6 +1798,7 @@ NSString *currentUser;
     [inAppRewardsMapping addAttributeMappingsFromDictionary:@{
                                                               @"class": @"imageName",
                                                               @"@metadata.mapping.collectionIndex": @"order",
+                                                              @"event.end": @"availableUntil",
                                                               }];
     inAppRewardsMapping.identificationAttributes = @[ @"key" ];
     inAppRewardsMapping.assignsDefaultValueForMissingAttributes = NO;
@@ -2120,15 +2121,15 @@ NSString *currentUser;
     [shopCategoryMapping addAttributeMappingsFromArray:@[@"text", @"identifier", @"notes", @"purchaseAll", @"pinType", @"path"]];
     [shopCategoryMapping addAttributeMappingsFromDictionary:@{@"@metadata.mapping.collectionIndex": @"index"}];
     shopCategoryMapping.identificationAttributes = @[ @"identifier" ];
-    [shopMapping
-     addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"categories"
+    [shopMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"categories"
                                                                     toKeyPath:@"categories"
                                                                   withMapping:shopCategoryMapping]];
     RKEntityMapping *shopItemMapping = [RKEntityMapping mappingForEntityForName:@"ShopItem" inManagedObjectStore:managedObjectStore];
     [shopItemMapping addAttributeMappingsFromArray:@[@"text", @"key", @"notes", @"type", @"value", @"currency", @"locked", @"purchaseType", @"path", @"pinType"]];
     [shopItemMapping addAttributeMappingsFromDictionary:@{@"@metadata.mapping.collectionIndex": @"index",
                                                           @"class": @"imageName",
-                                                          @"unlockCondition.condition": @"unlockCondition"}];
+                                                          @"unlockCondition.condition": @"unlockCondition",
+                                                          @"event.end": @"availableUntil",}];
     shopItemMapping.identificationAttributes = @[ @"key", @"purchaseType" ];
     [shopCategoryMapping
      addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items"

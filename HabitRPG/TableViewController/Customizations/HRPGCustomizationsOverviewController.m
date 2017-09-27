@@ -84,10 +84,6 @@ NSIndexPath *selectedIndex;
         return cell;
     }
     NSString *cellName = @"Cell";
-    if (indexPath.section == 2) {
-        cellName = @"BackgroundCell";
-    }
-
     UITableViewCell *cell =
         [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
@@ -101,9 +97,6 @@ NSIndexPath *selectedIndex;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.item == 0) {
         return 50;
-    }
-    if (indexPath.section == 2) {
-        return 148;
     }
     return 76;
 }

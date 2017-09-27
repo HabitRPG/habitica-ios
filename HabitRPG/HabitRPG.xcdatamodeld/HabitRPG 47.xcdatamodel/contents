@@ -171,6 +171,7 @@
         <relationship name="preferences" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Preferences" inverseName="improvementCategories" inverseEntity="Preferences" syncable="YES"/>
     </entity>
     <entity name="InAppReward" representedClassName="InAppReward" parentEntity="MetaReward" syncable="YES">
+        <attribute name="availableUntil" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="currency" optional="YES" attributeType="String" defaultValueString="gold" syncable="YES"/>
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isSuggested" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
@@ -555,7 +556,7 @@
         <element name="Group" positionX="0" positionY="0" width="128" height="390"/>
         <element name="HatchingPotion" positionX="0" positionY="0" width="128" height="60"/>
         <element name="ImprovementCategory" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="InAppReward" positionX="18" positionY="162" width="128" height="165"/>
+        <element name="InAppReward" positionX="18" positionY="162" width="128" height="180"/>
         <element name="InboxMessage" positionX="9" positionY="153" width="128" height="255"/>
         <element name="Item" positionX="0" positionY="0" width="128" height="165"/>
         <element name="MetaReward" positionX="0" positionY="0" width="128" height="150"/>

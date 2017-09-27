@@ -1924,8 +1924,6 @@
 		D9C3D01D19509E4C00D22A4A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				2907267F1F750FC400545550 /* ShopCategory+CoreDataClass.h */,
-				290726801F750FC400545550 /* ShopCategory+CoreDataClass.m */,
 				D9E46AFF1DABCD9100E390D7 /* Buff+CoreDataClass.h */,
 				D9E46B001DABCD9100E390D7 /* Buff+CoreDataClass.m */,
 				D9E46B011DABCD9100E390D7 /* Buff+CoreDataProperties.h */,
@@ -2022,6 +2020,8 @@
 				D92A08501D3520D8000F8B66 /* Shop.m */,
 				D92A084D1D3520D8000F8B66 /* Shop+CoreDataProperties.h */,
 				D92A084E1D3520D8000F8B66 /* Shop+CoreDataProperties.m */,
+				2907267F1F750FC400545550 /* ShopCategory+CoreDataClass.h */,
+				290726801F750FC400545550 /* ShopCategory+CoreDataClass.m */,
 				D92A08511D3520D8000F8B66 /* ShopCategory+CoreDataProperties.h */,
 				D92A08521D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m */,
 				D99CDDDB1E5368E400ABD85F /* ShopItem+CoreDataClass.h */,

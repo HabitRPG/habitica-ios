@@ -49,7 +49,7 @@
                                               user.preferences.hairColor];
         }
     } else if ([self.type isEqualToString:@"background"]) {
-        return [NSString stringWithFormat:@"background_%@", self.name];
+        return [NSString stringWithFormat:@"icon_background_%@", self.name];
     } else if ([self.type isEqualToString:@"chair"]) {
         if (![self.name isEqualToString:@"none"]) {
             return [@"chair_" stringByAppendingString:self.name];

@@ -101,6 +101,7 @@ class InAppRewardCell: UICollectionViewCell {
         if let lastPurchased = reward.lastPurchased, wasRecentlyPurchased(lastPurchased) {
             showPurchaseConfirmation()
         }
+        availableUntil = reward.availableUntil
         applyAccessibility()
     }
     
@@ -117,6 +118,7 @@ class InAppRewardCell: UICollectionViewCell {
         if let lastPurchased = item.lastPurchased, wasRecentlyPurchased(lastPurchased) {
             showPurchaseConfirmation()
         }
+        availableUntil = item.availableUntil
         applyAccessibility()
     }
     
