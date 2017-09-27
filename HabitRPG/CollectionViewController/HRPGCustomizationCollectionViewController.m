@@ -231,7 +231,7 @@ static NSString *const reuseIdentifier = @"Cell";
         }
     }]];
     
-    if ([@"background" isEqualToString:self.type]) {
+    if ([@"background" isEqualToString:self.type] && false) {
         [alertController addAction:[UIAlertAction actionWithTitle:pinString style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [[HRPGManager sharedManager] togglePinnedItem:weakSelf.type withPath:path onSuccess:^() {
                 if (weakSelf) {
