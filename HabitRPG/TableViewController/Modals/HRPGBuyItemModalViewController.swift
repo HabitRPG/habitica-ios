@@ -318,7 +318,6 @@ class HRPGBuyItemModalViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
             
             let topViewController = self.presentingViewController
-            let storyboard = UIStoryboard(name: "BuyModal", bundle: nil)
             if !canAfford() {
                 var viewControllerName: String? = nil
                 if currency == .hourglass {
@@ -330,10 +329,7 @@ class HRPGBuyItemModalViewController: UIViewController {
                 }
                 
                 if let name = viewControllerName {
-                    let viewController = storyboard.instantiateViewController(withIdentifier: name)
-                    viewController.modalTransitionStyle = .crossDissolve
-                    viewController.modalPresentationStyle = .currentContext
-                    topViewController?.present(viewController, animated: true, completion: nil)
+                    HRPGBuyItemModalViewController.displayViewController(name: name, parent: topViewController)
                 }
                 
                 return
@@ -342,30 +338,38 @@ class HRPGBuyItemModalViewController: UIViewController {
             if currency == .hourglass {
                 if purchaseType == "gear" || purchaseType == "mystery_set" {
                     HRPGManager.shared().purchaseMysterySet(setIdentifier, onSuccess: successBlock, onError: {
-                        topViewController?.performSegue(withIdentifier: "insufficientHourglasses", sender: self)
+                        HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
                     })
                 } else {
                     HRPGManager.shared().purchaseHourglassItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {
-                            topViewController?.performSegue(withIdentifier: "insufficientHourglasses", sender: self)
+                        HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
                     })
                 }
 
             } else if currency == .gem || purchaseType == "gems" {
                 HRPGManager.shared().purchaseItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {
-                    topViewController?.performSegue(withIdentifier: "insufficientGems", sender: self)
+                    HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGemsViewController", parent: topViewController)
                 })
             } else {
                 if currency == .gold && purchaseType == "quests" {
                     HRPGManager.shared().purchaseQuest(key, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {
-                        topViewController?.performSegue(withIdentifier: "insufficientGold", sender: self)
+                        HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
                     })
                 } else {
                     HRPGManager.shared().buyObject(key, withValue: value, withText: text, onSuccess: successBlock, onError: {
-                        topViewController?.performSegue(withIdentifier: "insufficientGold", sender: self)
+                        HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
                     })
                 }
             }
         }
+    }
+    
+    private static func displayViewController(name: String, parent: UIViewController?) {
+        let storyboard = UIStoryboard(name: "BuyModal", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: name)
+        viewController.modalTransitionStyle = .crossDissolve
+        viewController.modalPresentationStyle = .currentContext
+        parent?.present(viewController, animated: true, completion: nil)
     }
     
     func closePressed() {

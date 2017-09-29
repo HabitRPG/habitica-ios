@@ -106,7 +106,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HRPGChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatMessageCell" forIndexPath:indexPath];
+    HRPGChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatMessageCell"];
     cell.transform = self.tableView.transform;
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;

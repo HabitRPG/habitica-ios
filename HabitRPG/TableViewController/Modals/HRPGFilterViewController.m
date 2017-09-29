@@ -215,9 +215,11 @@
             break;
 
         case NSFetchedResultsChangeDelete:
-            [self.areTagsSelected removeObjectAtIndex:indexPath.item];
-            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
+            if (self.areTagsSelected.count > indexPath.item) {
+                [self.areTagsSelected removeObjectAtIndex:indexPath.item];
+                [tableView deleteRowsAtIndexPaths:@[ indexPath ]
+                                 withRowAnimation:UITableViewRowAnimationFade];
+            }
             break;
 
         case NSFetchedResultsChangeUpdate:

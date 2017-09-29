@@ -207,10 +207,13 @@
     
     [bgView addSubview:closedShopInfoView];
     [bgView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[closedView]-0-|" options:0 metrics:nil views:@{@"closedView": closedShopInfoView}]];
-    [bgView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:visualFormat
-                                                                   options:0
-                                                                   metrics:nil
-                                                                     views:views]];
+    if (visualFormat != nil) {
+        [bgView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:visualFormat
+                                                                       options:0
+                                                                       metrics:nil
+                                                                         views:views]];
+    }
+    
     closedShopInfoView.image = [UIImage imageNamed:imageName];
     closedShopInfoView.shopItemTitleLabel.text = title;
     closedShopInfoView.shopItemDescriptionLabel.text = notes;
