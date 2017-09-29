@@ -95,7 +95,7 @@
 }
 
 - (BOOL)isFeedable {
-    return !((self.asMount) || ([self.type isEqualToString:@"specialPets"]));
+    return !((self.asMount) || ([self.type isEqualToString:@"specialPets"]) || (!self.trained || [self.trained integerValue] == -1));
 }
 
 @end

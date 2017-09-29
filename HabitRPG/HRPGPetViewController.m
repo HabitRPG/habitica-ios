@@ -191,8 +191,8 @@
                                              onError:nil];
         }]];
     }
-    if (![pet isFeedable]) {
-        [alertController addAction:[UIAlertAction actionWithTitle:equipString style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    if ([pet isFeedable]) {
+        [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Feed", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self performSegueWithIdentifier:@"FeedSegue" sender:self];
         }]];
     }
