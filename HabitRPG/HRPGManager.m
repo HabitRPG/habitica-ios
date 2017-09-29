@@ -4640,7 +4640,7 @@ NSString *currentUser;
                 preferenceString =
                     NSLocalizedString(@"Your pet eats the %@ but doesn't seem to enjoy it.", nil);
             }
-            [ToastManager showWithText:preferenceString color:ToastColorGray];
+            [ToastManager showWithText:[NSString stringWithFormat:preferenceString, food.text] color:ToastColorGray];
             if ([result[@"value"] integerValue] == -1) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self displayMountRaisedNotification:pet];
