@@ -11,7 +11,6 @@
 #import "HRPGManager.h"
 
 @interface TasksDataSource ()
-@property NSDateFormatter *dateFormatter;
 @property NSIndexPath *expandedIndexPath;
 @end
 
@@ -47,7 +46,11 @@
         }
     };
     
-    cell.taskDetailLine.dateFormatter = self.dateFormatter;
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    dateFormatter.timeStyle = NSDateFormatterNoStyle;
+    cell.taskDetailLine.dateFormatter = dateFormatter;
+    
     [cell configureNewWithTask:task];
     cell.checkBox.wasTouched = ^() {
 //        if (![task.currentlyChecking boolValue]) {
