@@ -147,6 +147,14 @@
 		4924314F202CD19A00288278 /* ChallengeRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4924314D202CD19A00288278 /* ChallengeRewardTableViewCell.xib */; };
 		491063F31F8027070057707D /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 491063F21F8027070057707D /* tasks.json */; };
 		491063F41F80276C0057707D /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 491063F21F8027070057707D /* tasks.json */; };
+		491063F61F807D410057707D /* TodosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491063F51F807D410057707D /* TodosTableViewController.swift */; };
+		491063F91F807E3B0057707D /* GetTasksCallSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491063F81F807E3B0057707D /* GetTasksCallSpec.swift */; };
+		491063FB1F8080A70057707D /* GetUserCallSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491063FA1F8080A70057707D /* GetUserCallSpec.swift */; };
+		491063FD1F8081380057707D /* GetUserCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491063FC1F8081380057707D /* GetUserCall.swift */; };
+		491063FF1F8081680057707D /* ResponseObjectCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491063FE1F8081680057707D /* ResponseObjectCall.swift */; };
+		491064011F80823F0057707D /* HRPGUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491064001F80823F0057707D /* HRPGUser.swift */; };
+		491064021F8083680057707D /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
+		491064051F8083E60057707D /* TasksDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 491064041F8083E60057707D /* TasksDataSource.m */; };
 		492EAFBD1F7DB3D500C802EF /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492EAFBC1F7DB3D500C802EF /* TasksViewModel.swift */; };
 		492EAFC01F7E9B4C00C802EF /* TasksViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492EAFBF1F7E9B4C00C802EF /* TasksViewModelSpec.swift */; };
 		493576281F7009C800F1EC2E /* HRPGTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493576271F7009C800F1EC2E /* HRPGTask.swift */; };
@@ -665,6 +673,14 @@
 		4924314C202CD19A00288278 /* ChallengeRewardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardTableViewCell.swift; sourceTree = "<group>"; };
 		4924314D202CD19A00288278 /* ChallengeRewardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeRewardTableViewCell.xib; sourceTree = "<group>"; };
 		491063F21F8027070057707D /* tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tasks.json; path = HabiticaTests/Fixtures/tasks.json; sourceTree = SOURCE_ROOT; };
+		491063F51F807D410057707D /* TodosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosTableViewController.swift; sourceTree = "<group>"; };
+		491063F81F807E3B0057707D /* GetTasksCallSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTasksCallSpec.swift; sourceTree = "<group>"; };
+		491063FA1F8080A70057707D /* GetUserCallSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserCallSpec.swift; sourceTree = "<group>"; };
+		491063FC1F8081380057707D /* GetUserCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetUserCall.swift; path = Network/GetUserCall.swift; sourceTree = "<group>"; };
+		491063FE1F8081680057707D /* ResponseObjectCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResponseObjectCall.swift; path = Network/ResponseObjectCall.swift; sourceTree = "<group>"; };
+		491064001F80823F0057707D /* HRPGUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRPGUser.swift; sourceTree = "<group>"; };
+		491064031F8083E60057707D /* TasksDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TasksDataSource.h; sourceTree = "<group>"; };
+		491064041F8083E60057707D /* TasksDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TasksDataSource.m; sourceTree = "<group>"; };
 		492EAFBC1F7DB3D500C802EF /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		492EAFBF1F7E9B4C00C802EF /* TasksViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModelSpec.swift; sourceTree = "<group>"; };
 		493576271F7009C800F1EC2E /* HRPGTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGTask.swift; sourceTree = "<group>"; };
@@ -1471,6 +1487,15 @@
 			name = Shop;
 			sourceTree = "<group>";
 		};
+		491063F71F807E150057707D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				491063F81F807E3B0057707D /* GetTasksCallSpec.swift */,
+				491063FA1F8080A70057707D /* GetUserCallSpec.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		492EAFBE1F7E9B0C00C802EF /* View Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1485,7 +1510,9 @@
 				49486D7F1F72BE0B0094EC8F /* HRPGServerConfig.swift */,
 				49486D851F72D8C00094EC8F /* AuthenticatedCall.swift */,
 				49486D8B1F72E01C0094EC8F /* ResponseArrayCall.swift */,
+				491063FE1F8081680057707D /* ResponseObjectCall.swift */,
 				4935762A1F700D1000F1EC2E /* GetTasksCall.swift */,
+				491063FC1F8081380057707D /* GetUserCall.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -1510,6 +1537,7 @@
 				49486D831F72C4FA0094EC8F /* ResponseArray.swift */,
 				493576271F7009C800F1EC2E /* HRPGTask.swift */,
 				49486D891F72DED00094EC8F /* HRPGChecklistItem.swift */,
+				491064001F80823F0057707D /* HRPGUser.swift */,
 			);
 			name = "Server Models";
 			sourceTree = "<group>";
@@ -1530,6 +1558,8 @@
 				494E54021F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.h */,
 				494E54031F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m */,
 				49DCECA61F96ECEF00982E99 /* MultiModelDataSource.swift */,
+				491064031F8083E60057707D /* TasksDataSource.h */,
+				491064041F8083E60057707D /* TasksDataSource.m */,
 			);
 			name = TVDataSources;
 			sourceTree = "<group>";
@@ -1740,6 +1770,7 @@
 			children = (
 				49B87D94201BBF3800CA1A75 /* HabiticaTests.h */,
 				49B87D95201BBF3800CA1A75 /* HabiticaTests.m */,
+				491063F71F807E150057707D /* Network */,
 				492EAFBE1F7E9B0C00C802EF /* View Models */,
 				D9709A551E80536A0005F35B /* Interactors */,
 				D957043F1E152576004F6804 /* TestHelpers */,
@@ -2489,6 +2520,7 @@
 				D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */,
 				D92CDAE518CB84000006C242 /* HRPGToDoTableViewController.h */,
 				D92CDAE618CB84000006C242 /* HRPGToDoTableViewController.m */,
+				491063F51F807D410057707D /* TodosTableViewController.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -2802,6 +2834,7 @@
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
+				491064021F8083680057707D /* user.json in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
@@ -3247,6 +3280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491063FB1F8080A70057707D /* GetUserCallSpec.swift in Sources */,
 				D9709A5A1E82E4470005F35B /* ChallengeFormViewController.swift in Sources */,
 				D957044B1E1585DB004F6804 /* LoginViewControllerTests.swift in Sources */,
 				D95704431E1528F2004F6804 /* Event-Extensions.swift in Sources */,
@@ -3263,6 +3297,7 @@
 				D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */,
 				298409CD203C3283003AD202 /* AvatarViewTests.swift in Sources */,
 				D9709A501E7F17150005F35B /* TaskDetailLineViewTests.swift in Sources */,
+				491063F91F807E3B0057707D /* GetTasksCallSpec.swift in Sources */,
 				D9709A4E1E7F13330005F35B /* ChallengeTableViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3279,6 +3314,7 @@
 				498E4CFF1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift in Sources */,
 				298409D8203C8645003AD202 /* ChatMessage+CoreDataProperties.m in Sources */,
 				297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */,
+				491064011F80823F0057707D /* HRPGUser.swift in Sources */,
 				D99DEC87190836D400FFD2B9 /* Item.m in Sources */,
 				299BD62D1F541EFC00E22935 /* Quest+CoreDataClass.m in Sources */,
 				D93432571D5A2B9500025412 /* HRPGChoosePMRecipientViewController.m in Sources */,
@@ -3311,6 +3347,7 @@
 				2907267E1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift in Sources */,
 				D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */,
 				D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */,
+				491064051F8083E60057707D /* TasksDataSource.m in Sources */,
 				2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */,
 				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
 				298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */,
@@ -3395,6 +3432,8 @@
 				29E163092008E7B600685640 /* Habitica.xcdatamodeld in Sources */,
 				29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */,
 				494E54041F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m in Sources */,
+				D92C60F81BD3F28A005F68CC /* HRPGAccountDetailViewController.m in Sources */,
+				491063F61F807D410057707D /* TodosTableViewController.swift in Sources */,
 				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
 				D96C853F1DCB631B003E3616 /* HRPGBaseNotificationView.m in Sources */,
 				49F145A12016674F00AAC434 /* ChallengeCategory+CoreDataProperties.m in Sources */,
@@ -3516,6 +3555,7 @@
 				49DCECA71F96ECEF00982E99 /* MultiModelDataSource.swift in Sources */,
 				D905D08A1DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m in Sources */,
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
+				491063FF1F8081680057707D /* ResponseObjectCall.swift in Sources */,
 				2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */,
 				D92A085D1D3520D8000F8B66 /* ShopItem+CoreDataProperties.m in Sources */,
 				29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */,
@@ -3556,6 +3596,7 @@
 				D92A084B1D33FA08000F8B66 /* HRPGShopViewController.m in Sources */,
 				D92A085B1D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m in Sources */,
 				D92503BE1D5C9219006C9388 /* NSString+UUID.m in Sources */,
+				491063FD1F8081380057707D /* GetUserCall.swift in Sources */,
 				D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */,
 				D9CE90471E4CDF3F00702578 /* Designable-Extensions.swift in Sources */,
 				D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */,

@@ -24,7 +24,9 @@
  
 - (void)configureForTask:(NSObject<HRPGTaskProtocol> *)task;
 - (void)configureForTask:(NSObject<HRPGTaskProtocol> *)task withOffset:(NSInteger)offset;
+
 - (void)configureForChecklistItem:(ChecklistItem *)item withTitle:(BOOL)withTitle;
+- (void)configureForHRPGChecklistItem:(HRPGChecklistItem *)item withTitle:(BOOL)withTitle;
 
 @property(copy, nonatomic) void (^wasTouched)(void);
 

@@ -42,4 +42,40 @@ public class HRPGTask: NSObject {
     var currentlyChecking = false
     
     var checklist = [HRPGChecklistItem]()
+    
+    public func taskColor() -> UIColor {
+        if value < -20 {
+            return UIColor.darkRed10()
+        } else if value < -10 {
+            return UIColor.red10()
+        } else if value < -1 {
+            return UIColor.orange10()
+        } else if value < 1 {
+            return UIColor.yellow10()
+        } else if value < 5 {
+            return UIColor.green10()
+        } else if value < 10 {
+            return UIColor.teal10()
+        } else {
+            return UIColor.blue10()
+        }
+    }
+    
+    public func lightTaskColor() -> UIColor {
+        if value < -20 {
+            return UIColor.darkRed100()
+        } else if value < -10 {
+            return UIColor.red100()
+        } else if value < -1 {
+            return UIColor.orange100()
+        } else if value < 1 {
+            return UIColor.yellow100()
+        } else if value < 5 {
+            return UIColor.green100()
+        } else if value < 10 {
+            return UIColor.teal100()
+        } else {
+            return UIColor.blue100()
+        }
+    }
 }

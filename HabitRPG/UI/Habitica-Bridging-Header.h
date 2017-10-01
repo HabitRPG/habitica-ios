@@ -50,3 +50,5 @@
 #import "ChatMessageAvatar+CoreDataClass.h"
 #import "ChatMessageLike+CoreDataClass.h"
 #import "HRPGGroupTableViewController.h"
+#import "HRPGTableViewController.h"
+#import "TasksDataSource.h"

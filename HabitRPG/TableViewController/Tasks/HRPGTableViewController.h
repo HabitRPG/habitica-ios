@@ -33,4 +33,9 @@
 
 - (void)didChangeFilter:(NSNotification *)notification;
 
+- (NSString *)getCellNibName;
+
+- (void)configureCell:(UITableViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+        withAnimation:(BOOL)animate;
 @end
