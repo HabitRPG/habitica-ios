@@ -155,7 +155,8 @@ NSInteger rowOffset = 16;
         self.experienceLabel.maxValue = self.user.nextLevel;
     }
 
-    if ([self.user.level integerValue] >= 10 && ![self.user.preferences.disableClass boolValue]) {
+    BOOL reachedLevelTen = [self.user.level integerValue] >= 10;
+    if (reachedLevelTen && ![self.user.preferences.disableClass boolValue]) {
         self.magicLabel.value = self.user.magic;
         if ([self.user.maxMagic integerValue] > 0) {
             self.magicLabel.maxValue = self.user.maxMagic;
@@ -164,7 +165,11 @@ NSInteger rowOffset = 16;
     } else {
         self.magicLabel.isActive = NO;
         self.magicLabel.value = @0;
-        self.magicLabel.labelView.text = NSLocalizedString(@"Unlocks at level 10", nil);
+        if (reachedLevelTen) {
+            self.magicLabel.labelView.text = NSLocalizedString(@"Unlocks after selecting a class", nil);
+        } else {
+            self.magicLabel.labelView.text = NSLocalizedString(@"Unlocks at level 10", nil);
+        }
     }
 
     self.usernameLabel.text = self.user.username;
