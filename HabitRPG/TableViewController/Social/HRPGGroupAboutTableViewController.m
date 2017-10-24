@@ -13,6 +13,7 @@
 #import "UIColor+Habitica.h"
 #import "UIViewController+Markdown.h"
 #import "NSString+Emoji.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGGroupAboutTableViewController ()
 @property NSString *replyMessage;
@@ -64,30 +65,15 @@
 }
 
 - (void)leaveGroup {
-    UIAlertController *alertController =
-    [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Are you sure?", nil)
-                                        message:nil
-                                 preferredStyle:UIAlertControllerStyleAlert];
+    HabiticaAlertController *alertController =
+    [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Are you sure?", nil)
+                                        message:nil];
     
-    UIAlertAction *cancelAction =
-    [UIAlertAction actionWithTitle:NSLocalizedString(@"Go Back", nil)
-                             style:UIAlertActionStyleCancel
-                           handler:^(UIAlertAction *action){
-                           }];
-    [alertController addAction:cancelAction];
-    
-    UIAlertAction *confirmAction =
-    [UIAlertAction actionWithTitle:NSLocalizedString(@"Leave Group", nil)
-                             style:UIAlertActionStyleDefault
-                           handler:^(UIAlertAction *action) {
-                               [self alertClickedButtonAtIndex:1];
-                           }];
-    [alertController addAction:confirmAction];
-    
-    [self presentViewController:alertController
-                       animated:YES
-                     completion:^(){
-                     }];
+    [alertController addCancelActionWithHandler:nil];
+    [alertController addActionWithTitle:NSLocalizedString(@"Leave Group", nil) style:UIAlertActionStyleDefault isMainAction:YES handler:^(UIButton * _Nonnull button) {
+        [self alertClickedButtonAtIndex:1];
+    }];
+    [alertController show];
 }
 
 - (void)joinGroup {

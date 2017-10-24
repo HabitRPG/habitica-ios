@@ -90,11 +90,26 @@ User *user;
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"User", nil)];
     [formDescriptor addFormSection:section];
 
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"accountDetail"
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"profile"
                                                 rowType:XLFormRowDescriptorTypeInfo
-                                                  title:NSLocalizedString(@"Account Details", nil)];
+                                                  title:NSLocalizedString(@"Profile", nil)];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"authentication"
+                                                rowType:XLFormRowDescriptorTypeInfo
+                                                  title:NSLocalizedString(@"Authentication", nil)];
+    [section addFormRow:row];
+    
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"apiSettings"
+                                                rowType:XLFormRowDescriptorTypeInfo
+                                                  title:NSLocalizedString(@"API", nil)];
     [section addFormRow:row];
 
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"fixCharacterValues"
+                                                rowType:XLFormRowDescriptorTypeInfo
+                                                  title:NSLocalizedString(@"Fix Character Values", nil)];
+    [section addFormRow:row];
+    
     if ([user.level integerValue] > 10) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"selectClass"
                                                     rowType:XLFormRowDescriptorTypeInfo
@@ -295,40 +310,19 @@ User *user;
                                           animated:YES];
     [self configureProgressView:overlayView];
     __weak HRPGSettingsViewController *weakSelf = self;
-    void (^logoutBlock)() = ^() {
-        [[AuthenticationManager shared] clearAuthenticationForAllUsers];
-        [defaults setObject:@"" forKey:@"partyID"];
-        [defaults setObject:@"" forKey:@"habitFilter"];
-        [defaults setObject:@"" forKey:@"dailyFilter"];
-        [defaults setObject:@"" forKey:@"todoFilter"];
-        [[HRPGManager sharedManager] clearLoginCredentials];
-
-        [[HRPGManager sharedManager]
-         resetSavedDatabase:NO
-         onComplete:^() {
-             [overlayView dismiss:YES
-                       completion:^() {
-                           UIStoryboard *storyboard =
-                           [UIStoryboard storyboardWithName:@"Intro" bundle:nil];
-                           UINavigationController *navigationController =
-                           [storyboard instantiateViewControllerWithIdentifier:
-                            @"LoginTableViewController"];
-                           [weakSelf presentViewController:navigationController
-                                              animated:YES
-                                            completion:nil];
-                       }];
-         }];
-    };
-
-    if ([defaults stringForKey:@"PushNotificationDeviceToken"]) {
-        [[HRPGManager sharedManager] removePushDevice:^{
-            logoutBlock();
-        } onError:^{
-            logoutBlock();
-        }];
-    } else {
-        logoutBlock();
-    }
+    [[HRPGManager sharedManager] logoutUser:^{
+        [overlayView dismiss:YES
+                  completion:^() {
+                      UIStoryboard *storyboard =
+                      [UIStoryboard storyboardWithName:@"Intro" bundle:nil];
+                      UINavigationController *navigationController =
+                      [storyboard instantiateViewControllerWithIdentifier:
+                       @"LoginTableViewController"];
+                      [weakSelf presentViewController:navigationController
+                                             animated:YES
+                                           completion:nil];
+                  }];
+    }];
 }
 
 - (void)resetCache {
@@ -378,19 +372,23 @@ User *user;
 - (void)didSelectFormRow:(XLFormRowDescriptor *)formRow {
     [super didSelectFormRow:formRow];
 
-    if ([formRow.tag isEqual:@"accountDetail"]) {
-        [self performSegueWithIdentifier:@"AccountDetailSegue" sender:self];
+    if ([formRow.tag isEqual:@"profile"]) {
+        [self performSegueWithIdentifier:@"ProfileSegue" sender:self];
+    } else if ([formRow.tag isEqual:@"authentication"]) {
+        [self performSegueWithIdentifier:@"AuthenticationSegue" sender:self];
+    } else if ([formRow.tag isEqual:@"apiSettings"]) {
+        [self performSegueWithIdentifier:@"APISegue" sender:self];
     } else if ([formRow.tag isEqualToString:@"selectClass"]) {
         if ([user.flags.classSelected boolValue] && ![user.preferences.disableClass boolValue]) {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Are you sure?", nil) message:NSLocalizedString(@"This will reset your character's class and "
-                                                                                                                                                                @"allocated points (you'll get them all back "
-                                                                                                                                                                @"to re-allocate), and costs 3 gems.",
-                                                                                                                                                                nil) preferredStyle:UIAlertControllerStyleAlert];
-            [alertController addAction:[UIAlertAction cancelActionWithHandler:nil]];
-            [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Change Class", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Are you sure?", nil) message:NSLocalizedString(@"This will reset your character's class and "
+                                                                                                                                                           @"allocated points (you'll get them all back "
+                                                                                                                                                           @"to re-allocate), and costs 3 gems.",
+                                                                                                                                                           nil)];
+            [alertController addCancelActionWithHandler:nil];
+            [alertController addActionWithTitle:NSLocalizedString(@"Change Class", nil) style:UIAlertActionStyleDefault isMainAction:YES handler:^(UIButton * _Nonnull button) {
                 [self displayClassSelectionViewController];
-            }]];
-            [self presentViewController:alertController animated:YES completion:nil];
+            }];
+            [alertController show];
         } else {
             [self displayClassSelectionViewController];
         }
@@ -458,7 +456,7 @@ User *user;
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
 
-    if (indexPath.section == 0 && indexPath.item == 0) {
+    if (indexPath.section == 0 && indexPath.item < 4) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;

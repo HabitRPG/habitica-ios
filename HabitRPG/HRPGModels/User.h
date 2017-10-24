@@ -19,6 +19,8 @@
 
 @interface User : NSManagedObject
 
+@property(nonatomic, retain) NSString *loginname;
+@property(nonatomic, retain) NSString *photoUrl;
 @property(nonatomic, retain) NSNumber *balance;
 @property(nonatomic, retain) NSString *blurb;
 @property(nonatomic, retain) NSNumber *strength;

@@ -9,6 +9,7 @@
 #import "HRPGProfileViewController.h"
 #import "HRPGTopHeaderNavigationController.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGProfileViewController ()
 

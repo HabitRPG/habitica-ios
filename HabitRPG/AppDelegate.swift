@@ -23,6 +23,9 @@ class HabiticaAppDelegate: NSObject {
         appearance.color = UIColor.purple50()
         appearance.opacity = 0.6
         appearance.blurEnabled = false
+        var dialogAppearance = PopupDialogDefaultView.appearance()
+        dialogAppearance.cornerRadius = 12
+
     }
     
     func setupLogging() {

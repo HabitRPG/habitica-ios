@@ -23,7 +23,7 @@ class LeaveChallengeInteractor: Interactor<Challenge, Bool> {
             return signal
             }.filter { (shouldLeave, _, _) in
                 return shouldLeave
-            }.flatMap(.concat) {[weak self] (_, keepTasks, challenge) -> Signal<Bool, NSError> in
+            }.flatMap(.concat) { (_, keepTasks, challenge) -> Signal<Bool, NSError> in
                 let (signal, observer) = Signal<Bool, NSError>.pipe()
                 HRPGManager.shared().leave(challenge, keepTasks:keepTasks, onSuccess: {
                     observer.send(value: false)
@@ -35,23 +35,17 @@ class LeaveChallengeInteractor: Interactor<Challenge, Bool> {
     }
 
     private func createConfirmationAlert(challenge: Challenge, observer: Signal<(Bool, Bool, Challenge), NSError>.Observer) {
-        let alert = UIAlertController(title: NSLocalizedString("Leave Challenge?", comment: ""),
-                                      message: NSLocalizedString("Do you want to leave the challenge and keep or delete the tasks?", comment: ""),
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Keep tasks", comment: ""), style: .default, handler: { (_) in
+        let alert = HabiticaAlertController(title: NSLocalizedString("Leave Challenge?", comment: ""),
+                                      message: NSLocalizedString("Do you want to leave the challenge and keep or delete the tasks?", comment: ""))
+        alert.addAction(title: NSLocalizedString("Keep tasks", comment: ""), handler: { (_) in
             observer.send(value: (true, true, challenge))
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Delete tasks", comment: ""), style: .default, handler: { (_) in
+        })
+        alert.addAction(title: NSLocalizedString("Delete tasks", comment: ""), style: .destructive, handler: { (_) in
             observer.send(value: (true, false, challenge))
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (_) in
+        })
+        alert.setCloseAction(title: NSLocalizedString("Cancel", comment: ""), handler: { (_) in
             observer.send(value: (false, false, challenge))
-        }))
-        if var presentingController = self.presentingController {
-            if let viewController = presentingController.presentedViewController {
-                presentingController = viewController
-            }
-            presentingController.present(alert, animated: true, completion: nil)
-        }
+        })
+        alert.show()
     }
 }

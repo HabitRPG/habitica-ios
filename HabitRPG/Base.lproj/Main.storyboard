@@ -361,28 +361,6 @@
             </objects>
             <point key="canvasLocation" x="2804" y="62.518740629685162"/>
         </scene>
-        <!--Settings-->
-        <scene sceneID="w06-Bd-ZSd">
-            <objects>
-                <viewController id="rnp-jn-Sbn" customClass="HRPGSettingsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bY0-6L-Wg2"/>
-                        <viewControllerLayoutGuide type="bottom" id="gl0-Rw-NE4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="swP-J2-b8e">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Settings" id="uSK-A3-t5d"/>
-                    <connections>
-                        <segue destination="oWJ-UN-iB6" kind="show" identifier="AccountDetailSegue" id="cKe-PQ-RiM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TUq-ef-mfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2805" y="758"/>
-        </scene>
         <!--To-Dos-->
         <scene sceneID="d7F-oT-WJq">
             <objects>
@@ -620,84 +598,6 @@
             </objects>
             <point key="canvasLocation" x="3654" y="-815"/>
         </scene>
-        <!--Account Detail View Controller-->
-        <scene sceneID="zDN-qt-6ud">
-            <objects>
-                <tableViewController id="oWJ-UN-iB6" customClass="HRPGAccountDetailViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="6gv-oj-5sK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="KkO-6T-Qmx" detailTextLabel="ciB-Fl-be7" style="IBUITableViewCellStyleSubtitle" id="WtM-z6-f0u" customClass="HRPGCopyTableViewCell">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WtM-z6-f0u" id="prJ-63-V6l">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KkO-6T-Qmx">
-                                            <rect key="frame" x="16" y="6" width="31.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ciB-Fl-be7">
-                                            <rect key="frame" x="16" y="25.5" width="40.5" height="13.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="QRCodeCell" rowHeight="320" id="N0w-xc-R7a" customClass="HRPGCopyTableViewCell">
-                                <rect key="frame" x="0.0" y="99.5" width="375" height="320"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N0w-xc-R7a" id="N3W-Gf-sNt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="319.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQf-WK-CPE" customClass="HRPGQRCodeView">
-                                            <rect key="frame" x="35" y="7" width="306" height="306"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="306" id="aIt-MW-I94"/>
-                                                <constraint firstAttribute="width" constant="306" id="ry9-oo-6Db"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="JQf-WK-CPE" secondAttribute="bottom" id="7Kk-hB-AVJ"/>
-                                        <constraint firstItem="JQf-WK-CPE" firstAttribute="top" secondItem="N3W-Gf-sNt" secondAttribute="topMargin" id="MqW-sl-2ge"/>
-                                        <constraint firstItem="JQf-WK-CPE" firstAttribute="centerX" secondItem="N3W-Gf-sNt" secondAttribute="centerX" id="giu-Mo-xdi"/>
-                                        <constraint firstItem="JQf-WK-CPE" firstAttribute="leading" secondItem="N3W-Gf-sNt" secondAttribute="leadingMargin" id="xdb-Tw-B9M"/>
-                                        <constraint firstItem="JQf-WK-CPE" firstAttribute="centerY" secondItem="N3W-Gf-sNt" secondAttribute="centerY" id="xrF-rq-fNe"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="JQf-WK-CPE" secondAttribute="trailing" id="xs9-9P-jq0"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="7Kk-hB-AVJ"/>
-                                            <exclude reference="MqW-sl-2ge"/>
-                                            <exclude reference="xdb-Tw-B9M"/>
-                                            <exclude reference="xs9-9P-jq0"/>
-                                        </mask>
-                                    </variation>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="oWJ-UN-iB6" id="xAG-Ee-UdH"/>
-                            <outlet property="delegate" destination="oWJ-UN-iB6" id="1Tl-sv-2sw"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iC6-xQ-uVy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3797" y="4"/>
-        </scene>
         <!--Profile-->
         <scene sceneID="STv-3f-rgk">
             <objects>
@@ -838,8 +738,8 @@
                         <segue destination="r5L-RV-Ig6" kind="show" identifier="AboutSegue" id="V5t-v4-xQG"/>
                         <segue destination="Eg1-Bx-Zdn" kind="show" identifier="CustomizationSegue" id="w7r-aq-PPf"/>
                         <segue destination="Kau-eC-iCv" kind="show" identifier="FAQSegue" id="Ndm-2R-Hd2"/>
-                        <segue destination="rnp-jn-Sbn" kind="show" identifier="SettingsSegue" id="m7Q-TK-tXy"/>
                         <segue destination="Bwt-cz-wxO" kind="show" identifier="ShopsSegue" id="fqC-VU-hsx"/>
+                        <segue destination="6X4-ER-0VC" kind="show" identifier="SettingsSegue" id="iEJ-Rx-jir"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVG-cg-SZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1418,6 +1318,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q5s-Wo-MJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6401.25" y="126.25"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="5Gi-ds-f28">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="6X4-ER-0VC" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oDN-Uj-ZJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3588" y="1476"/>
         </scene>
         <!--Equipment-->
         <scene sceneID="Yhp-7F-G4C">

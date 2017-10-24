@@ -71,8 +71,8 @@
     if ([identifier isEqualToString:@"SelectedRecipientSegue"]) {
         id userID = self.formValues[@"userID"];
         if (userID == [NSNull null] || ![userID isValidUUID]) {
-            UIAlertController *alertController = [UIAlertController alertWithTitle:NSLocalizedString(@"Invalid Habitica User ID", nil) message:NSLocalizedString(@"You have to specify a valid Habitica User ID as recipient.", nil) handler:nil];
-            [self presentViewController:alertController animated:true completion:nil];
+            HabiticaAlertController *alertController = [HabiticaAlertController genericErrorWithMessage:NSLocalizedString(@"You have to specify a valid Habitica User ID as recipient.", nil) title:NSLocalizedString(@"Invalid Habitica User ID", nil)];
+            [alertController show];
             return NO;
         }
     }

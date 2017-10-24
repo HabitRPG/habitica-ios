@@ -86,9 +86,9 @@ class RewardFormController: XLFormViewController {
     }
     
     internal override func showFormValidationError(_ error: Error!) {
-        let alertView = UIAlertController(title: NSLocalizedString("Validation Error", comment: ""), message: error.localizedDescription, preferredStyle: .alert)
-        alertView.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
-        self.present(alertView, animated: true, completion: nil)
+        let alertView = HabiticaAlertController(title: NSLocalizedString("Validation Error", comment: ""), message: error.localizedDescription)
+        alertView.addOkAction()
+        alertView.show()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

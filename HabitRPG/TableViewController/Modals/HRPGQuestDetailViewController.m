@@ -9,6 +9,7 @@
 #import "HRPGQuestDetailViewController.h"
 #import "YYWebImage.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGQuestDetailViewController ()
 @property UIImage *bossImage;
@@ -230,9 +231,9 @@
             @"Once a quest is started, no other party members can join the quest.", nil);
     }
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Are you sure?", nil) message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"No", nil) style:UIAlertActionStyleCancel handler:nil]];
-    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Are you sure?", nil) message:nil];
+    [alertController addActionWithTitle:NSLocalizedString(@"No", nil) style:UIAlertActionStyleCancel isMainAction:NO handler:nil];
+    [alertController addActionWithTitle:NSLocalizedString(@"Yes", nil) style:UIAlertActionStyleDefault isMainAction:YES handler:^(UIButton * _Nonnull button) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
         __weak HRPGQuestDetailViewController *weakSelf = self;
         if ([self.group.questActive boolValue]) {
@@ -252,9 +253,9 @@
                                                      weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
                                                  }];
         }
-    }]];
+    }];
     
-    [self presentViewController:alertController animated:YES completion:nil];
+    [alertController show];
 }
 
 @end

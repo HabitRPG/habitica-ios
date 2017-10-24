@@ -139,8 +139,9 @@
         withInvitationType:formViewController.invitationType
         toGroupWithID:self.partyID
                             onSuccess:^() {
-                                UIAlertController *alertController = [UIAlertController alertWithTitle:NSLocalizedString(@"Invitation Successful", nil) message:NSLocalizedString(@"The users were invited to your party", nil) handler:nil];
-                                [self presentViewController:alertController animated:YES completion:nil];
+                                HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Invitation Successful", nil) message:NSLocalizedString(@"The users were invited to your party", nil)];
+                                [alertController addOkActionWithHandler:nil];
+                                [alertController show];
                             } onError:nil];
 }
 

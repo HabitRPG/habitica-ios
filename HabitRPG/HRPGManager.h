@@ -339,6 +339,14 @@
       onSuccess:(void (^)())successBlock
         onError:(void (^)())errorBlock;
 
+- (void)resetAccount:(void (^)())successBlock
+             onError:(void (^)())errorBlock;
+
+- (void)deleteAccount:(NSString *)password
+         successBlock:(void (^)())successBlock
+             onError:(void (^)())errorBlock;
+
+- (void)logoutUser:(void (^)())completionBlock;
 
 - (NSManagedObjectContext *)getManagedObjectContext;
 

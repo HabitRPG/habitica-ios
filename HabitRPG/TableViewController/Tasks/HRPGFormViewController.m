@@ -423,8 +423,8 @@
 }
 
 - (void)showFormValidationError:(NSError *)error {
-    UIAlertController *alertController = [UIAlertController alertWithTitle:NSLocalizedString(@"Validation Error", nil) message:nil handler:nil];
-    [self presentViewController:alertController animated:true completion:nil];
+    HabiticaAlertController *alertController = [HabiticaAlertController genericErrorWithMessage:nil title:NSLocalizedString(@"Validation Error", nil)];
+    [alertController show];
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {

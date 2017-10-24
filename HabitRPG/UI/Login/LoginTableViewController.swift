@@ -150,7 +150,8 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         self.viewModel.outputs.showError
             .observe(on: QueueScheduler.main)
             .observeValues { [weak self] message in
-                self?.present(UIAlertController.genericError(message: message), animated: true, completion: nil)
+                let alertController = HabiticaAlertController.genericError(message: message)
+                alertController.show()
         }
 
         self.viewModel.outputs.showNextViewController

@@ -173,10 +173,11 @@
                 if ([self.scannedCode isValidUUID]) {
                     [self performSegueWithIdentifier:@"ScannedCodeSegue" sender:self];
                 } else {
-                    UIAlertController *alertController = [UIAlertController alertWithTitle:NSLocalizedString(@"Invalid Habitica User ID", nil) message:NSLocalizedString(@"The scanned QR-Code did not contain a valid Habitica User ID.", nil) handler:^(UIAlertAction * _Nonnull action) {
+                    HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Invalid Habitica User ID", nil) message:NSLocalizedString(@"The scanned QR-Code did not contain a valid Habitica User ID.", nil)];
+                    [alertController addOkActionWithHandler:^(UIButton * _Nonnull button) {
                         self.scannedCode = nil;
                     }];
-                    [self presentViewController:alertController animated:true completion:nil];
+                    [alertController show];
                 }
                 return;
             }

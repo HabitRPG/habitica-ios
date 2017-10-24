@@ -63,6 +63,13 @@
 		29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA1621F2B6D2000029737 /* SetupViewController.swift */; };
 		29B388DF1EEF4FBD00A72950 /* MorningNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B388DE1EEF4FBD00A72950 /* MorningNotification.swift */; };
 		29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */; };
+		29B3FEAA1F9A0D0F000B12CF /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29B3FEA91F9A0D0F000B12CF /* Settings.storyboard */; };
+		29B3FEAC1F9A3395000B12CF /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEAB1F9A3395000B12CF /* ProfileSettingsViewController.swift */; };
+		29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */; };
+		29B3FEB11F9A37E3000B12CF /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEB01F9A37E3000B12CF /* BaseSettingsViewController.swift */; };
+		29B3FEBA1F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEB91F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift */; };
+		29B3FEBC1F9E3B17000B12CF /* HabiticaAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */; };
+		29B3FEBE1F9E3DC3000B12CF /* HabiticaAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */; };
 		29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */; };
 		29B6AD4C1F2A0DBE00AC8878 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */; };
 		29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */; };
@@ -140,7 +147,6 @@
 		D92A085D1D3520D8000F8B66 /* ShopItem+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A08561D3520D8000F8B66 /* ShopItem+CoreDataProperties.m */; };
 		D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C0C401B8745DF000AF799 /* HRPGAPITests.m */; };
 		D92C0C441B8749DF000AF799 /* HabiticaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D94461871AB34F5C0015215E /* HabiticaTests.m */; };
-		D92C60F81BD3F28A005F68CC /* HRPGAccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C60F71BD3F28A005F68CC /* HRPGAccountDetailViewController.m */; };
 		D92C60FC1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */; };
 		D92CDADD18CB79E50006C242 /* HRPGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */; };
 		D92CDAE018CB83B90006C242 /* HRPGHabitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDADF18CB83B90006C242 /* HRPGHabitTableViewController.m */; };
@@ -487,6 +493,14 @@
 		29B388DE1EEF4FBD00A72950 /* MorningNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorningNotification.swift; sourceTree = "<group>"; };
 		29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyChecklistItem.xib; sourceTree = "<group>"; };
 		29B388E21EF3D40600A72950 /* HabitRPG 41.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 41.xcdatamodel"; sourceTree = "<group>"; };
+		29B3FEA91F9A0D0F000B12CF /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		29B3FEAB1F9A3395000B12CF /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
+		29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISettingsViewController.swift; sourceTree = "<group>"; };
+		29B3FEB01F9A37E3000B12CF /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
+		29B3FEB21F9A50F0000B12CF /* HabitRPG 49.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 49.xcdatamodel"; sourceTree = "<group>"; };
+		29B3FEB91F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSettingsViewController.swift; sourceTree = "<group>"; };
+		29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaAlertController.swift; sourceTree = "<group>"; };
+		29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabiticaAlertController.xib; sourceTree = "<group>"; };
 		29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginEntryView.xib; sourceTree = "<group>"; };
 		29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
 		29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationRepository.swift; sourceTree = "<group>"; };
@@ -609,8 +623,6 @@
 		D92A08561D3520D8000F8B66 /* ShopItem+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ShopItem+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D92C0C401B8745DF000AF799 /* HRPGAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAPITests.m; sourceTree = "<group>"; };
 		D92C0C421B8748CD000AF799 /* HabiticaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HabiticaTests.h; sourceTree = "<group>"; };
-		D92C60F61BD3F28A005F68CC /* HRPGAccountDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAccountDetailViewController.h; sourceTree = "<group>"; };
-		D92C60F71BD3F28A005F68CC /* HRPGAccountDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAccountDetailViewController.m; sourceTree = "<group>"; };
 		D92C60FA1BD3FAC1005F68CC /* HRPGCopyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCopyTableViewCell.h; sourceTree = "<group>"; };
 		D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCopyTableViewCell.m; sourceTree = "<group>"; };
 		D92CDADB18CB79E50006C242 /* HRPGTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTableViewController.h; sourceTree = "<group>"; };
@@ -1235,6 +1247,17 @@
 			name = Setup;
 			sourceTree = "<group>";
 		};
+		29B3FEAD1F9A339B000B12CF /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				29B3FEAB1F9A3395000B12CF /* ProfileSettingsViewController.swift */,
+				29B3FEB01F9A37E3000B12CF /* BaseSettingsViewController.swift */,
+				29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */,
+				29B3FEB91F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		4908642C1F4530DC00BD9896 /* Shop */ = {
 			isa = PBXGroup;
 			children = (
@@ -1369,8 +1392,6 @@
 				D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */,
 				D966557218FB129F0014C09D /* HRPGSettingsViewController.h */,
 				D966557318FB129F0014C09D /* HRPGSettingsViewController.m */,
-				D92C60F61BD3F28A005F68CC /* HRPGAccountDetailViewController.h */,
-				D92C60F71BD3F28A005F68CC /* HRPGAccountDetailViewController.m */,
 				D94796081972C248002CB34C /* HRPGUserProfileViewController.h */,
 				D94796091972C248002CB34C /* HRPGUserProfileViewController.m */,
 				D97CCDBA19A7AFFA00DA128A /* HRPGArrayViewController.h */,
@@ -1674,6 +1695,7 @@
 				D9A63A371E104F6C0083ADC4 /* Login */,
 				29AAA1641F2B6D2400029737 /* Setup */,
 				2957B8B41F4B2DF900E836EF /* Rewards */,
+				29B3FEAD1F9A339B000B12CF /* Settings */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1828,6 +1850,8 @@
 				299BD6331F5420F000E22935 /* Tutorials */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
+				29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */,
+				29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2239,6 +2263,7 @@
 				49005B6D1F17DDF9004830D9 /* Shop.storyboard */,
 				49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */,
 				D942B53A1CAAE6B1009AB756 /* Social.storyboard */,
+				29B3FEA91F9A0D0F000B12CF /* Settings.storyboard */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				297AF81F1F29EF0D003B7194 /* Intro.storyboard */,
 				2957B8AA1F4B297300E836EF /* Core Data */,
@@ -2458,6 +2483,7 @@
 				49DCB7991F3407B30079FDD0 /* BuyModal.storyboard in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
 				D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */,
+				29B3FEBE1F9E3DC3000B12CF /* HabiticaAlertController.xib in Resources */,
 				298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */,
 				D9BB45D81E7998710002AE2E /* ChallengeFilterAlert.xib in Resources */,
 				2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */,
@@ -2493,6 +2519,7 @@
 				49DCB7BA1F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib in Resources */,
 				49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
+				29B3FEAA1F9A0D0F000B12CF /* Settings.storyboard in Resources */,
 				29701FE21F5617900097BBCC /* ToastView.xib in Resources */,
 				D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */,
 				49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */,
@@ -2959,7 +2986,6 @@
 				D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */,
 				29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */,
 				494E54041F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m in Sources */,
-				D92C60F81BD3F28A005F68CC /* HRPGAccountDetailViewController.m in Sources */,
 				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
 				D96C853F1DCB631B003E3616 /* HRPGBaseNotificationView.m in Sources */,
 				D905D08F1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m in Sources */,
@@ -2973,6 +2999,7 @@
 				D95D03951C74AA5500D6BFB3 /* Outfit+CoreDataProperties.m in Sources */,
 				D914398A1BAF14C40006999E /* UIImage+withColor.m in Sources */,
 				D97ED0B01E6DBC87006C2A26 /* Interactor.swift in Sources */,
+				29B3FEAC1F9A3395000B12CF /* ProfileSettingsViewController.swift in Sources */,
 				D9AEEA731ACEDD470076951B /* HRPGWebViewController.m in Sources */,
 				D9D5935D1D00523800D6C388 /* InboxMessage+CoreDataProperties.m in Sources */,
 				494E53FB1F2C14980003683C /* HRPGShopsTableViewCell.swift in Sources */,
@@ -3042,6 +3069,7 @@
 				2957B8BC1F4B4DDE00E836EF /* InAppRewardCell.swift in Sources */,
 				D9BB45CC1E76E0FC0002AE2E /* ToDoTableViewCell.swift in Sources */,
 				29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */,
+				29B3FEB11F9A37E3000B12CF /* BaseSettingsViewController.swift in Sources */,
 				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,
 				29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */,
 				D99CDDDD1E5368E400ABD85F /* ShopItem+CoreDataClass.m in Sources */,
@@ -3059,6 +3087,7 @@
 				2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */,
 				D92A085D1D3520D8000F8B66 /* ShopItem+CoreDataProperties.m in Sources */,
 				29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */,
+				29B3FEBC1F9E3B17000B12CF /* HabiticaAlertController.swift in Sources */,
 				D9709A541E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift in Sources */,
 				D98F5DC91C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m in Sources */,
 				D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */,
@@ -3104,10 +3133,12 @@
 				D9ADD34E1943BBB6006202C1 /* Food.m in Sources */,
 				D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */,
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
+				29B3FEBA1F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift in Sources */,
 				493ECBB71F47D7E10099B1FC /* HRPGGearSetItem.swift in Sources */,
 				49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */,
 				299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */,
 				D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */,
+				29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */,
 				D984D58D1E4A2F2D006E84F8 /* SubscriptionOptionView.swift in Sources */,
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
 				D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */,
@@ -3849,6 +3880,7 @@
 		D94AADAE192973CD00546C8E /* HabitRPG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				29B3FEB21F9A50F0000B12CF /* HabitRPG 49.xcdatamodel */,
 				299BD6381F54961700E22935 /* HabitRPG 47.xcdatamodel */,
 				299BD6241F54181A00E22935 /* HabitRPG 46.xcdatamodel */,
 				2957B8A31F4B054500E836EF /* HabitRPG 45.xcdatamodel */,
@@ -3873,7 +3905,7 @@
 				D9B326771CD969D700973440 /* HabitRPG 26.xcdatamodel */,
 				D94E0AD81CCF9B8800B60210 /* HabitRPG 25.xcdatamodel */,
 			);
-			currentVersion = 299BD6381F54961700E22935 /* HabitRPG 47.xcdatamodel */;
+			currentVersion = 29B3FEB21F9A50F0000B12CF /* HabitRPG 49.xcdatamodel */;
 			path = HabitRPG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

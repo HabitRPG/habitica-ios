@@ -766,7 +766,10 @@ NSString *currentUser;
         @"_id" : @"id",
         @"balance" : @"balance",
         @"profile.name" : @"username",
+        @"profile.photourl" : @"photoUrl",
+        @"profile.blurb" : @"blurb",
         @"auth.local.email" : @"email",
+        @"auth.local.username" : @"loginname",
         @"stats.lvl" : @"level",
         @"stats.gp" : @"gold",
         @"stats.exp" : @"experience",
@@ -5063,6 +5066,65 @@ NSString *currentUser;
             [self.networkIndicatorController endNetworking];
             return;
         }];
+    }
+}
+
+- (void)resetAccount:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    [[RKObjectManager sharedManager] postObject:nil path:@"user/reset" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self.networkIndicatorController endNetworking];
+        [self fetchUser:successBlock onError:errorBlock];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [self handleNetworkError:operation withError:error];
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)deleteAccount:(NSString *)password successBlock:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    [[RKObjectManager sharedManager] deleteObject:nil path:@"user" parameters:@{@"password": password} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self.networkIndicatorController endNetworking];
+        [self fetchUser:successBlock onError:errorBlock];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [self handleNetworkError:operation withError:error];
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)logoutUser:(void (^)())completionBlock {
+    void (^logoutBlock)() = ^() {
+        [[AuthenticationManager shared] clearAuthenticationForAllUsers];
+        [defaults setObject:@"" forKey:@"partyID"];
+        [defaults setObject:@"" forKey:@"habitFilter"];
+        [defaults setObject:@"" forKey:@"dailyFilter"];
+        [defaults setObject:@"" forKey:@"todoFilter"];
+        [[HRPGManager sharedManager] clearLoginCredentials];
+        
+        [[HRPGManager sharedManager]
+         resetSavedDatabase:NO
+         onComplete:^() {
+             if (completionBlock != nil) {
+                 completionBlock();
+             }
+         }];
+    };
+    
+    if ([defaults stringForKey:@"PushNotificationDeviceToken"]) {
+        [[HRPGManager sharedManager] removePushDevice:^{
+            logoutBlock();
+        } onError:^{
+            logoutBlock();
+        }];
+    } else {
+        logoutBlock();
     }
 }
 

@@ -14,6 +14,7 @@
 #import "UIColor+Habitica.h"
 #import "Amplitude.h"
 #import "UIViewcontroller+TutorialSteps.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGClassTableViewController ()
 @property CGSize screenSize;
@@ -232,63 +233,27 @@
 
     self.selectedIndex = indexPath;
     if (indexPath.item == 4) {
-            UIAlertController *alertController =
-                [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Are you sure?", nil)
-                                                    message:nil
-                                             preferredStyle:UIAlertControllerStyleAlert];
-
-            UIAlertAction *cancelAction =
-                [UIAlertAction actionWithTitle:NSLocalizedString(@"Go Back", nil)
-                                         style:UIAlertActionStyleCancel
-                                       handler:^(UIAlertAction *action){
-                                       }];
-            [alertController addAction:cancelAction];
-
-            UIAlertAction *confirmAction =
-                [UIAlertAction actionWithTitle:NSLocalizedString(@"Opt-Out", nil)
-                                         style:UIAlertActionStyleDefault
-                                       handler:^(UIAlertAction *action) {
-                                           [self alertClickedButtonAtIndex:1];
-                                       }];
-            [alertController addAction:confirmAction];
-
-            [self presentViewController:alertController
-                               animated:YES
-                             completion:^(){
-                             }];
+        HabiticaAlertController *alertController =
+        [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Are you sure?", nil)
+                                        message:nil];
+        [alertController addCancelActionWithHandler:nil];
+        [alertController addActionWithTitle:NSLocalizedString(@"Opt-Out", nil) style:UIAlertActionStyleDefault isMainAction:YES handler:^(UIButton * _Nonnull button) {
+            [self alertClickedButtonAtIndex:1];
+        }];
+        [alertController show];
     } else {
         NSString *className = self.classesArray[indexPath.item][0];
-        UIAlertController *alertController = [UIAlertController
-                                              alertControllerWithTitle:NSLocalizedString(@"Are you sure?", nil)
+        HabiticaAlertController *alertController = [HabiticaAlertController
+                                              alertWithTitle:NSLocalizedString(@"Are you sure?", nil)
                                               message:[NSString
-                                                       stringWithFormat:NSLocalizedString(
-                                                                                          @"You will become a %@.", nil),
-                                                       className]
-                                              preferredStyle:UIAlertControllerStyleAlert];
+                                                       stringWithFormat:NSLocalizedString(@"You will become a %@.", nil), className]];
         
-        UIAlertAction *cancelAction =
-        [UIAlertAction actionWithTitle:NSLocalizedString(@"Go Back", nil)
-                                 style:UIAlertActionStyleCancel
-                               handler:^(UIAlertAction *action){
-                                   
-                               }];
-        [alertController addAction:cancelAction];
+        [alertController addCancelActionWithHandler:nil];
         
-        UIAlertAction *confirmAction = [UIAlertAction
-                                        actionWithTitle:[NSString stringWithFormat:NSLocalizedString(
-                                                                                                     @"I want to become a %@", nil),
-                                                         className]
-                                        style:UIAlertActionStyleDefault
-                                        handler:^(UIAlertAction *action) {
-                                            [self alertClickedButtonAtIndex:1];
-                                        }];
-        [alertController addAction:confirmAction];
-        __weak HRPGClassTableViewController *weakSelf = self;
-        [self presentViewController:alertController
-                           animated:YES
-                         completion:^() {
-                             [weakSelf.tableView deselectRowAtIndexPath:indexPath animated:YES];
-                         }];
+        [alertController addActionWithTitle:[NSString stringWithFormat:NSLocalizedString(@"I want to become a %@", nil), className] style:UIAlertActionStyleDefault isMainAction:YES handler:^(UIButton * _Nonnull button) {
+            [self alertClickedButtonAtIndex:1];
+        }];
+        [alertController show];
     }
 }
 
