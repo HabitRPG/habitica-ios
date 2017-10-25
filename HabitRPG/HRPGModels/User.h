@@ -204,4 +204,6 @@
 - (BOOL)didCronRunToday;
 
 - (BOOL)isSubscribed;
+
+- (BOOL)hasClassSelected;
 @end

@@ -783,4 +783,8 @@
     return self.subscriptionPlan.planId != nil && (self.subscriptionPlan.dateTerminated == nil || [self.subscriptionPlan.dateTerminated compare:[NSDate date]] != NSOrderedDescending);
 }
 
+- (BOOL)hasClassSelected {
+    return [self.level integerValue] >= 10 && ![self.preferences.disableClass boolValue];
+}
+
 @end

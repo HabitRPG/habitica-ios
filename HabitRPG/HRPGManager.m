@@ -5246,6 +5246,9 @@ NSString *currentUser;
     if ([healthDiff intValue] < 0) {
         notificationColor = ToastColorRed;
     }
+    if (![self.user hasClassSelected]) {
+        magicDiff = @0;
+    }
     ToastView *toastView = [[ToastView alloc] initWithHealthDiff:healthDiff.floatValue magicDiff:magicDiff.floatValue expDiff:expDiff.floatValue goldDiff:goldDiff.floatValue background:notificationColor];
     [ToastManager showWithToast:toastView];
 }
