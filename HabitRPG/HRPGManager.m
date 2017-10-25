@@ -139,7 +139,7 @@ NSString *currentUser;
     NSString *DISABLE_SSL = [defaults stringForKey:@"DISABLE_SSL"];
 
     if (CUSTOM_DOMAIN.length == 0) {
-        CUSTOM_DOMAIN = @"habitrpg-staging.herokuapp.com/";
+        CUSTOM_DOMAIN = @"habitica.com/";
     }
 
     if (![[CUSTOM_DOMAIN substringFromIndex: [CUSTOM_DOMAIN length] - 1]  isEqual: @"/"]) {
@@ -5126,6 +5126,76 @@ NSString *currentUser;
     } else {
         logoutBlock();
     }
+}
+
+- (void)changeEmail:(NSString *)newEmail withPassword:(NSString *)password successBlock:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    [[RKObjectManager sharedManager] putObject:nil path:@"user/auth/update-email" parameters:@{@"newEmail": newEmail, @"password": password} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self.networkIndicatorController endNetworking];
+        self.user.email = newEmail;
+        if (successBlock) {
+            successBlock();
+        }
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [self handleNetworkError:operation withError:error];
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)changeLoginName:(NSString *)newLoginName withPassword:(NSString *)password successBlock:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    [[RKObjectManager sharedManager] putObject:nil path:@"user/auth/update-username" parameters:@{@"username": newLoginName, @"password": password} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self.networkIndicatorController endNetworking];
+        self.user.loginname = newLoginName;
+        if (successBlock) {
+            successBlock();
+        }
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [self handleNetworkError:operation withError:error];
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)changePassword:(NSString *)newPassword oldPassword:(NSString *)oldPassword confirmPassword:(NSString *)confirmedPassword successBlock:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    [[RKObjectManager sharedManager] putObject:nil path:@"user/auth/update-password" parameters:@{@"newPassword": newPassword, @"password": oldPassword, @"confirmPassword": confirmedPassword} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self.networkIndicatorController endNetworking];
+        if (successBlock) {
+            successBlock();
+        }
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [self handleNetworkError:operation withError:error];
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
+}
+
+- (void)sendPasswordResetEmail:(NSString *)email successBlock:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    [[RKObjectManager sharedManager] postObject:nil path:@"user/reset-password" parameters:@{@"email": email} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self.networkIndicatorController endNetworking];
+        if (successBlock) {
+            successBlock();
+        }
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [self handleNetworkError:operation withError:error];
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
 }
 
 - (void)togglePinnedItem:(NSString *)pinType withPath:(NSString *)path onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {

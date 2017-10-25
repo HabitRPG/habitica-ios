@@ -348,6 +348,26 @@
 
 - (void)logoutUser:(void (^)())completionBlock;
 
+- (void)changeEmail:(NSString *)newEmail
+       withPassword:(NSString *)password
+       successBlock:(void (^)())successBlock
+            onError:(void (^)())errorBlock;
+
+- (void)changeLoginName:(NSString *)newLoginName
+       withPassword:(NSString *)password
+       successBlock:(void (^)())successBlock
+            onError:(void (^)())errorBlock;
+
+- (void)changePassword:(NSString *)newPassword
+       oldPassword:(NSString *)oldPassword
+           confirmPassword:(NSString *)confirmedPassword
+       successBlock:(void (^)())successBlock
+            onError:(void (^)())errorBlock;
+
+- (void)sendPasswordResetEmail:(NSString *)email
+                  onSuccess:(void (^)())successBlock
+                       onError:(void (^)())errorBlock;
+
 - (NSManagedObjectContext *)getManagedObjectContext;
 
 - (void)displayNetworkError;

@@ -230,12 +230,12 @@
         return;
     }
 
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Reminder", nil) message:notification.alertBody preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault handler:nil]];
-    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Complete", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Reminder", nil) message:notification.alertBody];
+    [alertController addActionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault isMainAction:NO handler:nil];
+    [alertController addActionWithTitle:NSLocalizedString(@"Complete", nil) style:UIAlertActionStyleDefault isMainAction:YES handler:^(UIButton * _Nonnull button) {
         [self completeTaskWithId:[notification.userInfo valueForKey:@"taskID"] completionHandler:nil];
-    }]];
-    [self.window.rootViewController.presentedViewController presentViewController:alertController animated:YES completion:nil];
+    }];
+    [alertController show];
     
 }
 

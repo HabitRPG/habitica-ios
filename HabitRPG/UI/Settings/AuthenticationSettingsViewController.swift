@@ -16,7 +16,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 3
+            return 4
         } else {
             return 2
         }
@@ -41,6 +41,9 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
                 cell.textLabel?.text = NSLocalizedString("E-Mail", comment: "")
                 cell.detailTextLabel?.text = user?.email
             } else if indexPath.item == 2 {
+                cell.textLabel?.text = NSLocalizedString("Change Password", comment: "")
+                cell.detailTextLabel?.text = nil
+            } else if indexPath.item == 3 {
                 cell.textLabel?.text = NSLocalizedString("Login Methods", comment: "")
                 var loginMethods = [String]()
                 if user?.email != nil {
@@ -68,8 +71,16 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if indexPath.section == 1 {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 0 {
+            if indexPath.item == 0 {
+                showLoginNameChangeAlert()
+            } else if indexPath.item == 1 {
+                showEmailChangeAlert()
+            } else if indexPath.item == 2 {
+                showPasswordChangeAlert()
+            }
+        } else if indexPath.section == 1 {
             if indexPath.item == 0 {
                 showResetAccountAlert()
             } else {
@@ -129,6 +140,94 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
             HRPGManager.shared().resetAccount(nil, onError: nil)
         }
         alertController.show()
+    }
+    
+    private func showEmailChangeAlert() {
+        let alertController = HabiticaAlertController(title: NSLocalizedString("Change Email", comment: ""))
         
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        let emailTextField = UITextField()
+        emailTextField.placeholder = NSLocalizedString("New Email", comment: "")
+        emailTextField.borderStyle = .roundedRect
+        emailTextField.keyboardType = .emailAddress
+        emailTextField.autocapitalizationType = .none
+        emailTextField.spellCheckingType = .no
+        emailTextField.text = user?.email
+        stackView.addArrangedSubview(emailTextField)
+        let passwordTextField = UITextField()
+        passwordTextField.placeholder = NSLocalizedString("Password", comment: "")
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.borderStyle = .roundedRect
+        stackView.addArrangedSubview(passwordTextField)
+        alertController.contentView = stackView
+        
+        alertController.addCancelAction()
+        alertController.addAction(title: NSLocalizedString("Change", comment: ""), isMainAction: true) {[weak self] _ in
+            HRPGManager.shared().changeEmail(emailTextField.text, withPassword: passwordTextField.text, successBlock: {
+                self?.tableView.reloadData()
+            }, onError: nil)
+        }
+        alertController.show()
+    }
+    
+    private func showLoginNameChangeAlert() {
+        let alertController = HabiticaAlertController(title: NSLocalizedString("Change Login Name", comment: ""))
+        
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        let loginNameTextField = UITextField()
+        loginNameTextField.placeholder = NSLocalizedString("New Login Name", comment: "")
+        loginNameTextField.borderStyle = .roundedRect
+        loginNameTextField.autocapitalizationType = .none
+        loginNameTextField.spellCheckingType = .no
+        loginNameTextField.text = user?.loginname
+        stackView.addArrangedSubview(loginNameTextField)
+        let passwordTextField = UITextField()
+        passwordTextField.placeholder = NSLocalizedString("Password", comment: "")
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.borderStyle = .roundedRect
+        stackView.addArrangedSubview(passwordTextField)
+        alertController.contentView = stackView
+        
+        alertController.addCancelAction()
+        alertController.addAction(title: NSLocalizedString("Change", comment: ""), isMainAction: true) {[weak self] _ in
+            HRPGManager.shared().changeLoginName(loginNameTextField.text, withPassword: passwordTextField.text, successBlock: {
+                self?.tableView.reloadData()
+            }, onError: nil)
+        }
+        alertController.show()
+    }
+    
+    private func showPasswordChangeAlert() {
+        let alertController = HabiticaAlertController(title: NSLocalizedString("Change Login Name", comment: ""))
+        
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        let oldPasswordTextField = UITextField()
+        oldPasswordTextField.placeholder = NSLocalizedString("Old Password", comment: "")
+        oldPasswordTextField.isSecureTextEntry = true
+        oldPasswordTextField.borderStyle = .roundedRect
+        stackView.addArrangedSubview(oldPasswordTextField)
+        let newPasswordTextField = UITextField()
+        newPasswordTextField.placeholder = NSLocalizedString("New Password", comment: "")
+        newPasswordTextField.borderStyle = .roundedRect
+        newPasswordTextField.isSecureTextEntry = true
+        stackView.addArrangedSubview(newPasswordTextField)
+        let confirmTextField = UITextField()
+        confirmTextField.placeholder = NSLocalizedString("Confirm New Password", comment: "")
+        confirmTextField.isSecureTextEntry = true
+        confirmTextField.borderStyle = .roundedRect
+        stackView.addArrangedSubview(confirmTextField)
+        alertController.contentView = stackView
+        
+        alertController.addCancelAction()
+        alertController.addAction(title: NSLocalizedString("Change", comment: ""), isMainAction: true) { _ in
+            HRPGManager.shared().changePassword(newPasswordTextField.text, oldPassword: oldPasswordTextField.text, confirmPassword: confirmTextField.text, successBlock: nil, onError: nil)
+        }
+        alertController.show()
     }
 }

@@ -131,7 +131,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="QC8-Jd-4Uw">
-                                        <rect key="frame" x="16" y="218" width="343" height="348"/>
+                                        <rect key="frame" x="16" y="218" width="343" height="389.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u44-DM-dLI" customClass="LoginEntryView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
@@ -213,6 +213,20 @@
                                                 <rect key="frame" x="0.0" y="316" width="343" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Login with Google"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ld-qT-Xe8">
+                                                <rect key="frame" x="0.0" y="360" width="343" height="29.5"/>
+                                                <state key="normal">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Forgot Password">
+                                                            <attributes>
+                                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <font key="NSFont" size="15" name=".SFNSText"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                </state>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -309,6 +323,7 @@
                         <outlet property="beginButtonContainer" destination="fnm-XO-uKx" id="6yB-WU-gX9"/>
                         <outlet property="emailField" destination="5b1-2A-EzA" id="NNz-T1-geX"/>
                         <outlet property="facebookLoginButton" destination="xka-dX-nD0" id="VU0-3b-KRN"/>
+                        <outlet property="forgotPasswordButton" destination="2Ld-qT-Xe8" id="16V-hN-omO"/>
                         <outlet property="formBottomConstraint" destination="XXd-A0-FqZ" id="BC7-xV-AeF"/>
                         <outlet property="formContainer" destination="QC8-Jd-4Uw" id="7wE-HR-0yI"/>
                         <outlet property="googleLoginButton" destination="fYX-yC-fON" id="u5Q-5X-hvE"/>
@@ -1422,7 +1437,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5Hb-dX-OsZ"/>
-        <segue reference="mhd-Im-RcK"/>
+        <segue reference="aKA-6e-Im9"/>
         <segue reference="6ya-X1-F2T"/>
     </inferredMetricsTieBreakers>
 </document>

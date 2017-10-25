@@ -32,7 +32,8 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var formBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var logoFormSpacing: NSLayoutConstraint!
     @IBOutlet weak var logoHeight: NSLayoutConstraint!
-
+    @IBOutlet weak var forgotPasswordButton: UIButton!
+    
     @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak private var loginActivityIndicator: UIActivityIndicatorView!
 
@@ -61,6 +62,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         googleLoginButton.addTarget(self, action: #selector(googleLoginButtonPressed), for: .touchUpInside)
         facebookLoginButton.addTarget(self, action: #selector(facebookLoginButtonPressed), for: .touchUpInside)
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonPressed), for: .touchUpInside)
 
         onePasswordButton.addTarget(self, action: #selector(onePasswordButtonPressed), for: .touchUpInside)
         
@@ -386,6 +388,36 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
 
     func facebookLoginButtonPressed() {
         self.viewModel.inputs.facebookLoginButtonPressed()
+    }
+    
+    func forgotPasswordButtonPressed() {
+        let alertController = HabiticaAlertController(title: NSLocalizedString("Email a Password Reset Link", comment: ""))
+        
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        let textView = UITextView()
+        textView.text = NSLocalizedString("Enter the email address you used to register your Habitica account.", comment: "")
+        textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        textView.textColor = UIColor.gray100()
+        textView.isEditable = false
+        textView.isScrollEnabled = false
+        textView.isSelectable = false
+        stackView.addArrangedSubview(textView)
+        let textField = UITextField()
+        textField.placeholder = NSLocalizedString("Email", comment: "")
+        textField.isSecureTextEntry = true
+        textField.borderStyle = .roundedRect
+        stackView.addArrangedSubview(textField)
+        alertController.contentView = stackView
+        
+        alertController.addCancelAction()
+        alertController.addAction(title: NSLocalizedString("Send", comment: ""), isMainAction: true) { _ in
+            HRPGManager.shared().sendPasswordResetEmail(textField.text, onSuccess: {
+                let confirmationAlertController = HabiticaAlertController(title: NSLocalizedString("If we have your email on file, instructions for setting a new password have been sent to your email.", comment: ""))
+            }, onError: nil)
+        }
+        alertController.show()
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
