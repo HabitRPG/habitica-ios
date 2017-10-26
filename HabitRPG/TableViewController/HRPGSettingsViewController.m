@@ -378,6 +378,8 @@ User *user;
         [self performSegueWithIdentifier:@"AuthenticationSegue" sender:self];
     } else if ([formRow.tag isEqual:@"apiSettings"]) {
         [self performSegueWithIdentifier:@"APISegue" sender:self];
+    } else if ([formRow.tag isEqualToString:@"fixCharacterValues"]) {
+        [self performSegueWithIdentifier:@"FixValuesSegue" sender:self];
     } else if ([formRow.tag isEqualToString:@"selectClass"]) {
         if ([user.flags.classSelected boolValue] && ![user.preferences.disableClass boolValue]) {
             HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Are you sure?", nil) message:NSLocalizedString(@"This will reset your character's class and "

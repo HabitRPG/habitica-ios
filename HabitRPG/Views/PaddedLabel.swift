@@ -18,4 +18,9 @@ class PaddedLabel: UILabel {
         return CGSize(width: size.width+horizontalPadding*2, height: size.height+verticalPadding*2)
     }
     
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let paddedSize = CGSize(width: size.width-horizontalPadding*2, height: size.height-verticalPadding*2)
+        return super.sizeThatFits(paddedSize)
+    }
+    
 }

@@ -20,6 +20,7 @@
 		293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */; };
 		293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282171F39E1A400D42961 /* WelcomeViewController.swift */; };
 		2932821A1F39E28000D42961 /* TypingTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282191F39E28000D42961 /* TypingTextViewController.swift */; };
+		294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */; };
 		2957B8A81F4B071700E836EF /* InAppReward+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8A51F4B071700E836EF /* InAppReward+CoreDataClass.m */; };
 		2957B8A91F4B071700E836EF /* InAppReward+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8A71F4B071700E836EF /* InAppReward+CoreDataProperties.m */; };
 		2957B8B11F4B2C6C00E836EF /* Map44To45.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8B01F4B2C6C00E836EF /* Map44To45.xcmappingmodel */; };
@@ -435,6 +436,7 @@
 		293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupCustomizationItemView.xib; sourceTree = "<group>"; };
 		293282171F39E1A400D42961 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		293282191F39E28000D42961 /* TypingTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingTextViewController.swift; sourceTree = "<group>"; };
+		294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCharacterViewController.swift; sourceTree = "<group>"; };
 		2957B8A31F4B054500E836EF /* HabitRPG 45.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 45.xcdatamodel"; sourceTree = "<group>"; };
 		2957B8A41F4B071700E836EF /* InAppReward+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InAppReward+CoreDataClass.h"; sourceTree = "<group>"; };
 		2957B8A51F4B071700E836EF /* InAppReward+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "InAppReward+CoreDataClass.m"; sourceTree = "<group>"; };
@@ -1252,6 +1254,7 @@
 			children = (
 				29B3FEAB1F9A3395000B12CF /* ProfileSettingsViewController.swift */,
 				29B3FEB01F9A37E3000B12CF /* BaseSettingsViewController.swift */,
+				294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */,
 				29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */,
 				29B3FEB91F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift */,
 			);
@@ -2977,6 +2980,7 @@
 				D93D79721D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m in Sources */,
 				29AAA15D1F2A3AA600029737 /* GradientView.swift in Sources */,
 				D94FEDEE1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m in Sources */,
+				294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */,
 				D96C86CB1BB0546400E4C134 /* HRPGCopyLabel.m in Sources */,
 				D92C60FC1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m in Sources */,
 				D95D039B1C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.m in Sources */,
@@ -3654,7 +3658,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 248;
+				CURRENT_PROJECT_VERSION = 250;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -3746,7 +3750,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 248;
+				CURRENT_PROJECT_VERSION = 250;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";

@@ -153,4 +153,5 @@
     <resources>
         <image name="ic_chevron_right_white" width="36" height="36"/>
     </resources>
+    <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseSettingsViewController: UITableViewController {
+class BaseSettingsViewController: HRPGBaseViewController {
     
     let user = HRPGManager.shared().getUser()
     
