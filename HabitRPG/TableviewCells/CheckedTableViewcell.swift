@@ -21,20 +21,26 @@ class CheckedTableViewCell: TaskTableViewCell {
     @IBOutlet weak var checklistLeftBorderView: UIView!
     @IBOutlet weak var checklistRightBorderView: UIView!
     
-    weak var task: Task?
+    weak var task: HRPGTaskProtocol?
     @objc var isExpanded = false
     @objc var checkboxTouched: (() -> Void)?
     @objc var checklistItemTouched: ((_ item: ChecklistItem) -> Void)?
 
-    override func configure(task: Task) {
+    override func configure(task: HRPGTaskProtocol) {
         self.task = task
         super.configure(task: task)
-        self.checkBox.configure(for: task)
-        self.checkBox.wasTouched = {[weak self] in
-            self?.checkTask()
+        if let taskObject = task as? NSObjectProtocol & HRPGTaskProtocol {
+            self.checkBox.configure(forTask: taskObject)
+        }
+        if task is Task {
+            self.checkBox.wasTouched = {[weak self] in
+                self?.checkTask()
+            }
         }
         
-        handleChecklist(task)
+        if let task = self.task as? Task {
+            handleChecklist(task)
+        }
 
         if task.completed?.boolValue ?? false {
             self.checklistIndicator.backgroundColor = .gray500()

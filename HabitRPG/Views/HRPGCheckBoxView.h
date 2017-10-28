@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ChecklistItem.h"
-#import "Task+CoreDataClass.h"
+#import "HRPGTaskProtocol.h"
 
 @interface HRPGCheckBoxView : UIView
 
@@ -22,8 +22,8 @@
 @property(nonatomic) CGFloat padding;
 @property(nonatomic) BOOL borderedBox;
  
-- (void)configureForTask:(Task *)task;
-- (void)configureForTask:(Task *)task withOffset:(NSInteger)offset;
+- (void)configureForTask:(NSObject<HRPGTaskProtocol> *)task;
+- (void)configureForTask:(NSObject<HRPGTaskProtocol> *)task withOffset:(NSInteger)offset;
 - (void)configureForChecklistItem:(ChecklistItem *)item withTitle:(BOOL)withTitle;
 
 @property(copy, nonatomic) void (^wasTouched)(void);

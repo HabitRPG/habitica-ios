@@ -12,6 +12,10 @@ enum CurrencyCountViewState {
     case normal, cantAfford, locked
 }
 
+enum CurrencyCountViewSize {
+    case normal, large
+}
+
 class HRPGCurrencyCountView: UIView {
     
     @objc public var amount = 0 {
@@ -36,6 +40,12 @@ class HRPGCurrencyCountView: UIView {
         }
     }
     
+    public var viewSize: CurrencyCountViewSize = .normal {
+        didSet {
+            updateSize()
+        }
+    }
+    
     @objc public var font: UIFont {
         get {
             return countLabel.font
@@ -48,6 +58,9 @@ class HRPGCurrencyCountView: UIView {
     
     private let countLabel: HRPGAbbrevNumberLabel = HRPGAbbrevNumberLabel()
     private let currencyImageView: UIImageView = UIImageView(image: HabiticaIcons.imageOfGold)
+    
+    private var widthConstraint: NSLayoutConstraint?
+    private var heightConstraint: NSLayoutConstraint?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -88,14 +101,41 @@ class HRPGCurrencyCountView: UIView {
                                               attribute: NSLayoutAttribute.centerY,
                                               multiplier: 1,
                                               constant: 0))
-        currencyImageView.addConstraint(
-            NSLayoutConstraint.init(item: currencyImageView,
-                                    attribute: NSLayoutAttribute.width,
-                                    relatedBy: NSLayoutRelation.equal,
-                                    toItem: nil,
-                                    attribute: NSLayoutAttribute.notAnAttribute,
-                                    multiplier: 1,
-                                    constant: 18))
+        
+        widthConstraint = NSLayoutConstraint.init(item: currencyImageView,
+                                                  attribute: NSLayoutAttribute.width,
+                                                  relatedBy: NSLayoutRelation.equal,
+                                                  toItem: nil,
+                                                  attribute: NSLayoutAttribute.notAnAttribute,
+                                                  multiplier: 1,
+                                                  constant: viewSize == .normal ? 18 : 24)
+        heightConstraint = NSLayoutConstraint.init(item: currencyImageView,
+                                                   attribute: NSLayoutAttribute.height,
+                                                   relatedBy: NSLayoutRelation.equal,
+                                                   toItem: nil,
+                                                   attribute: NSLayoutAttribute.notAnAttribute,
+                                                   multiplier: 1,
+                                                   constant: viewSize == .normal ? 16 : 20)
+        if let width = widthConstraint {
+            currencyImageView.addConstraint(width)
+        }
+        if let height = heightConstraint {
+            currencyImageView.addConstraint(height)
+        }
+        
+        setNeedsUpdateConstraints()
+        updateConstraints()
+        setNeedsLayout()
+        layoutIfNeeded()
+    }
+    
+    private func updateSize() {
+        widthConstraint?.constant = (viewSize == .normal ? 18 : 24)
+        heightConstraint?.constant = (viewSize == .normal ? 16 : 20)
+        
+        countLabel.font = viewSize == .normal ? UIFont.preferredFont(forTextStyle: .footnote) : countLabel.font.withSize(17)
+        
+        currencyImageView.image = (viewSize == .normal ? #imageLiteral(resourceName: "Gem") : #imageLiteral(resourceName: "big_gem"))
         
         setNeedsUpdateConstraints()
         updateConstraints()
