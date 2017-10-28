@@ -44,3 +44,4 @@
 #import "HRPGGGuidelinesViewController.h"
 #import "HRPGChatTableViewCell.h"
 #import "HRPGUserProfileViewController.h"
+#import "HRPGTaskProtocol.h"

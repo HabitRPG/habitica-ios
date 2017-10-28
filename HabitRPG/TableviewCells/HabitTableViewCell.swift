@@ -18,16 +18,20 @@ class HabitTableViewCell: TaskTableViewCell {
     @objc var plusTouched: (() -> Void)?
     @objc var minusTouched: (() -> Void)?
 
-    override func configure(task: Task) {
+    override func configure(task: HRPGTaskProtocol) {
         super.configure(task: task)
-        self.plusButton.configure(for: task, isNegative: false)
-        self.plusButton.action({[weak self] in
-            self?.scoreUp()
-        })
-        self.minusButton.configure(for: task, isNegative: true)
-        self.minusButton.action({[weak self] in
-            self?.scoreDown()
-        })
+        if let taskObject = task as? NSObjectProtocol & HRPGTaskProtocol {
+            self.plusButton.configure(forTask: taskObject, isNegative: false)
+            self.minusButton.configure(forTask: taskObject, isNegative: true)
+        }
+        if task is Task {
+            self.plusButton.action({[weak self] in
+                self?.scoreUp()
+            })
+            self.minusButton.action({[weak self] in
+                self?.scoreDown()
+            })
+        }
     }
     
     override func applyAccessibility(_ task: Task) {

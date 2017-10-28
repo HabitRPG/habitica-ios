@@ -136,6 +136,18 @@
 		494E54151F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E54141F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift */; };
 		494E54221F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */; };
 		494E54251F3124890003683C /* HRPGShopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54241F3124890003683C /* HRPGShopViewModel.m */; };
+		498E4CF71FA17B7F006933FF /* ChallengeButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498E4CF51FA17B7F006933FF /* ChallengeButtonTableViewCell.swift */; };
+		498E4CF81FA17B7F006933FF /* ChallengeButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 498E4CF61FA17B7F006933FF /* ChallengeButtonTableViewCell.xib */; };
+		498E4CFB1FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498E4CF91FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift */; };
+		498E4CFC1FA17B9E006933FF /* ChallengeCreatorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 498E4CFA1FA17B9E006933FF /* ChallengeCreatorTableViewCell.xib */; };
+		498E4CFF1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498E4CFD1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift */; };
+		498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 498E4CFE1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib */; };
+		498E4D031FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498E4D011FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift */; };
+		498E4D041FA17C31006933FF /* ChallengeDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 498E4D021FA17C31006933FF /* ChallengeDescriptionTableViewCell.xib */; };
+		498E4D071FA17DB9006933FF /* ChallengeActionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498E4D051FA17DB9006933FF /* ChallengeActionsTableViewCell.swift */; };
+		498E4D081FA17DB9006933FF /* ChallengeActionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 498E4D061FA17DB9006933FF /* ChallengeActionsTableViewCell.xib */; };
+		49A84FB21F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A84FB01F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift */; };
+		49A84FB31F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A84FB11F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib */; };
 		49DCB7991F3407B30079FDD0 /* BuyModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */; };
 		49DCB79B1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */; };
 		49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */; };
@@ -147,6 +159,10 @@
 		49DCB7BC1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7BB1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift */; };
 		49DCB7C21F40D7F10079FDD0 /* HRPGShopBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7C11F40D7F00079FDD0 /* HRPGShopBannerView.swift */; };
 		49DCB7C41F40D80B0079FDD0 /* HRPGShopBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7C31F40D80B0079FDD0 /* HRPGShopBannerView.xib */; };
+		49DCECA71F96ECEF00982E99 /* FixedSizeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECA61F96ECEF00982E99 /* FixedSizeDataSource.swift */; };
+		49DCECA91F96F8DE00982E99 /* ChallengeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECA81F96F8DE00982E99 /* ChallengeDetailViewModel.swift */; };
+		49DCECE81F9A843E00982E99 /* FixedSizeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECE71F9A843E00982E99 /* FixedSizeTableViewController.swift */; };
+		49DCECEA1F9A84AF00982E99 /* ChallengeDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECE91F9A84AF00982E99 /* ChallengeDetailsTableViewController.swift */; };
 		823F7132DD74058859184F61 /* Pods_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */; };
 		98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */; };
 		CF54FEE0D3F7F352ECA56F23 /* HRPGContentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CF54FD820D81110D9EF4756E /* HRPGContentResponse.m */; };
@@ -593,6 +609,19 @@
 		494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopSectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		494E54231F3124890003683C /* HRPGShopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopViewModel.h; sourceTree = "<group>"; };
 		494E54241F3124890003683C /* HRPGShopViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopViewModel.m; sourceTree = "<group>"; };
+		498E4CF51FA17B7F006933FF /* ChallengeButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeButtonTableViewCell.swift; sourceTree = "<group>"; };
+		498E4CF61FA17B7F006933FF /* ChallengeButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeButtonTableViewCell.xib; sourceTree = "<group>"; };
+		498E4CF91FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCreatorTableViewCell.swift; sourceTree = "<group>"; };
+		498E4CFA1FA17B9E006933FF /* ChallengeCreatorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeCreatorTableViewCell.xib; sourceTree = "<group>"; };
+		498E4CFD1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCategoriesTableViewCell.swift; sourceTree = "<group>"; };
+		498E4CFE1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeCategoriesTableViewCell.xib; sourceTree = "<group>"; };
+		498E4D011FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		498E4D021FA17C31006933FF /* ChallengeDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeDescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		498E4D051FA17DB9006933FF /* ChallengeActionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeActionsTableViewCell.swift; sourceTree = "<group>"; };
+		498E4D061FA17DB9006933FF /* ChallengeActionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeActionsTableViewCell.xib; sourceTree = "<group>"; };
+		498E4D091FA4F2B3006933FF /* HRPGTaskProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGTaskProtocol.h; sourceTree = "<group>"; };
+		49A84FB01F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailInfoTableViewCell.swift; sourceTree = "<group>"; };
+		49A84FB11F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeDetailInfoTableViewCell.xib; sourceTree = "<group>"; };
 		49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BuyModal.storyboard; sourceTree = "<group>"; };
 		49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGBuyItemModalViewController.swift; sourceTree = "<group>"; };
 		49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGSimpleShopItemView.swift; sourceTree = "<group>"; };
@@ -604,6 +633,10 @@
 		49DCB7BB1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGCloseableShopModalView.swift; sourceTree = "<group>"; };
 		49DCB7C11F40D7F00079FDD0 /* HRPGShopBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopBannerView.swift; sourceTree = "<group>"; };
 		49DCB7C31F40D80B0079FDD0 /* HRPGShopBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopBannerView.xib; sourceTree = "<group>"; };
+		49DCECA61F96ECEF00982E99 /* FixedSizeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedSizeDataSource.swift; sourceTree = "<group>"; };
+		49DCECA81F96F8DE00982E99 /* ChallengeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailViewModel.swift; sourceTree = "<group>"; };
+		49DCECE71F9A843E00982E99 /* FixedSizeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FixedSizeTableViewController.swift; path = HabitRPG/TableViewController/FixedSizeTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		49DCECE91F9A84AF00982E99 /* ChallengeDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailsTableViewController.swift; sourceTree = "<group>"; };
 		98A4DBEE1B643BC100A9E2A8 /* HRPGSearchDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSearchDataManager.h; sourceTree = "<group>"; };
 		98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSearchDataManager.m; sourceTree = "<group>"; };
 		BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabiticaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1347,6 +1380,7 @@
 				D9FBC0F11D538B5C008C9EF4 /* HRPGCoreDataDatasourceDelegate.h */,
 				494E54021F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.h */,
 				494E54031F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m */,
+				49DCECA61F96ECEF00982E99 /* FixedSizeDataSource.swift */,
 			);
 			name = TVDataSources;
 			sourceTree = "<group>";
@@ -1367,6 +1401,35 @@
 				494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */,
 			);
 			name = "Collection View Cells";
+			sourceTree = "<group>";
+		};
+		49A84FAF1F9FC945003E2956 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				49DCECE91F9A84AF00982E99 /* ChallengeDetailsTableViewController.swift */,
+				49DCECA81F96F8DE00982E99 /* ChallengeDetailViewModel.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		49A84FB41F9FCA54003E2956 /* Challenges */ = {
+			isa = PBXGroup;
+			children = (
+				D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */,
+				49A84FB01F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift */,
+				49A84FB11F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib */,
+				498E4CF51FA17B7F006933FF /* ChallengeButtonTableViewCell.swift */,
+				498E4CF61FA17B7F006933FF /* ChallengeButtonTableViewCell.xib */,
+				498E4CF91FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift */,
+				498E4CFA1FA17B9E006933FF /* ChallengeCreatorTableViewCell.xib */,
+				498E4CFD1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift */,
+				498E4CFE1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib */,
+				498E4D011FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift */,
+				498E4D021FA17C31006933FF /* ChallengeDescriptionTableViewCell.xib */,
+				498E4D051FA17DB9006933FF /* ChallengeActionsTableViewCell.swift */,
+				498E4D061FA17DB9006933FF /* ChallengeActionsTableViewCell.xib */,
+			);
+			path = Challenges;
 			sourceTree = "<group>";
 		};
 		49DCB7B31F3F5E820079FDD0 /* Shop */ = {
@@ -1449,6 +1512,7 @@
 			children = (
 				D99F15BE191027D90081836E /* HRPGBaseViewController.h */,
 				D99F15BF191027D90081836E /* HRPGBaseViewController.m */,
+				49DCECE71F9A843E00982E99 /* FixedSizeTableViewController.swift */,
 				D9B5C0B518D5C07100C8D1B7 /* HRPGProfileViewController.h */,
 				D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */,
 				D966557218FB129F0014C09D /* HRPGSettingsViewController.h */,
@@ -1812,6 +1876,7 @@
 			children = (
 				493ECBC91F4DD7DD0099B1FC /* View Models */,
 				D9C3D01D19509E4C00D22A4A /* Core Data */,
+				498E4D091FA4F2B3006933FF /* HRPGTaskProtocol.h */,
 				D9B5C0E818D6320C00C8D1B7 /* HRPGLoginData.h */,
 				D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */,
 				D9B5C0E218D610E200C8D1B7 /* HRPGTaskResponse.h */,
@@ -1956,7 +2021,7 @@
 		D9C2570D1B9B4BFB00839F48 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */,
+				49A84FB41F9FCA54003E2956 /* Challenges */,
 				D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */,
 				2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */,
 				2957B8B71F4B2F6A00E836EF /* CustomRewardCell.xib */,
@@ -2169,6 +2234,7 @@
 		D9E02EC41E5E02E7002CFCE2 /* Challenges */ = {
 			isa = PBXGroup;
 			children = (
+				49A84FAF1F9FC945003E2956 /* Details */,
 				D9709A591E82E4470005F35B /* ChallengeFormViewController.swift */,
 				D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */,
 				D9D17CC91E6705EE00AD9232 /* ChallengeDetailTableViewController.swift */,
@@ -2539,6 +2605,7 @@
 				2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
 				293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */,
+				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
@@ -2552,7 +2619,9 @@
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
 				49DCB7C41F40D80B0079FDD0 /* HRPGShopBannerView.xib in Resources */,
 				D905D08C1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib in Resources */,
+				498E4CF81FA17B7F006933FF /* ChallengeButtonTableViewCell.xib in Resources */,
 				299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */,
+				498E4D081FA17DB9006933FF /* ChallengeActionsTableViewCell.xib in Resources */,
 				49DCB7B81F3F64D40079FDD0 /* HRPGShopModalBgView.xib in Resources */,
 				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
 				493ECBB91F47D82A0099B1FC /* HRPGGearSetItem.xib in Resources */,
@@ -2562,12 +2631,15 @@
 				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
 				D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */,
 				D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */,
+				49A84FB31F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib in Resources */,
 				D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */,
 				2957B8BA1F4B4B3300E836EF /* InAppRewardCell.xib in Resources */,
 				D9CE90431E4CDC9100702578 /* SubscriptionDetailView.xib in Resources */,
+				498E4D041FA17C31006933FF /* ChallengeDescriptionTableViewCell.xib in Resources */,
 				29255E451F3DD3ED0094A3E3 /* TutorialStepView.xib in Resources */,
 				D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */,
 				29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */,
+				498E4CFC1FA17B9E006933FF /* ChallengeCreatorTableViewCell.xib in Resources */,
 				D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */,
 				29E1630D200E23A500685640 /* MenuNavigationBarView.xib in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
@@ -2833,7 +2905,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CAC33FCF49D4A93D53AF498F /* [CP] Embed Pods Frameworks */ = {
@@ -2873,7 +2945,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D940A7E01B0CF7E900370F2E /* ShellScript */ = {
@@ -2945,6 +3017,7 @@
 				494E53FE1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m in Sources */,
 				D9C2572D1B9DC58700839F48 /* FAQ.m in Sources */,
 				D92761621CCFBEAD0049ECAC /* Flags.m in Sources */,
+				498E4CFF1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift in Sources */,
 				297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */,
 				D99DEC87190836D400FFD2B9 /* Item.m in Sources */,
 				299BD62D1F541EFC00E22935 /* Quest+CoreDataClass.m in Sources */,
@@ -2965,6 +3038,7 @@
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
 				2986EB0B1FCC63F900B316F6 /* AttributePointsViewController.swift in Sources */,
 				D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */,
+				49DCECA91F96F8DE00982E99 /* ChallengeDetailViewModel.swift in Sources */,
 				D9B8C1201AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m in Sources */,
 				494E54251F3124890003683C /* HRPGShopViewModel.m in Sources */,
 				29E16313200E619400685640 /* QuestProgressView.swift in Sources */,
@@ -3133,6 +3207,7 @@
 				D995D5971D1D499D00D5251C /* PushNotifications.m in Sources */,
 				29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */,
 				29FC884C2010CC8A002B3D3F /* SocialRepository.swift in Sources */,
+				498E4D031FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift in Sources */,
 				D9BBF32C1DBD127A00C4114C /* HRPGShopAdFooter.m in Sources */,
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,
 				29E16315200E629800685640 /* QuestProgressBarView.swift in Sources */,
@@ -3140,6 +3215,7 @@
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
 				493ECBCB1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift in Sources */,
 				2957B8BC1F4B4DDE00E836EF /* InAppRewardCell.swift in Sources */,
+				49DCECEA1F9A84AF00982E99 /* ChallengeDetailsTableViewController.swift in Sources */,
 				D9BB45CC1E76E0FC0002AE2E /* ToDoTableViewCell.swift in Sources */,
 				29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */,
 				29B3FEB11F9A37E3000B12CF /* BaseSettingsViewController.swift in Sources */,
@@ -3155,7 +3231,9 @@
 				D92A08591D3520D8000F8B66 /* Shop+CoreDataProperties.m in Sources */,
 				D92761611CCFBEAD0049ECAC /* Flags+CoreDataProperties.m in Sources */,
 				D9D593661D008C7500D6C388 /* PushDevice+CoreDataProperties.m in Sources */,
+				49A84FB21F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift in Sources */,
 				D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */,
+				49DCECA71F96ECEF00982E99 /* FixedSizeDataSource.swift in Sources */,
 				D905D08A1DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m in Sources */,
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
 				2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */,
@@ -3170,6 +3248,7 @@
 				D9CE90491E4DCF7D00702578 /* SubscriptionDetailView.swift in Sources */,
 				D92CDAE718CB84000006C242 /* HRPGToDoTableViewController.m in Sources */,
 				2932821A1F39E28000D42961 /* TypingTextViewController.swift in Sources */,
+				498E4CF71FA17B7F006933FF /* ChallengeButtonTableViewCell.swift in Sources */,
 				D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */,
 				494E54101F2EEF810003683C /* Amplitude+HRPGHelpers.m in Sources */,
 				D95D03961C74AA5500D6BFB3 /* Outfit.m in Sources */,
@@ -3212,10 +3291,13 @@
 				49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */,
 				299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */,
 				29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */,
+				498E4CFB1FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift in Sources */,
+				D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */,
 				D984D58D1E4A2F2D006E84F8 /* SubscriptionOptionView.swift in Sources */,
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
 				D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */,
 				D96BFC4F1E191D7200266EEF /* UIAlertController-Extensions.swift in Sources */,
+				49DCECE81F9A843E00982E99 /* FixedSizeTableViewController.swift in Sources */,
 				293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */,
 				D9AEA8A11C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m in Sources */,
 				D98F5DBE1C6A1D770035CBEC /* HRPGChatTableViewCell.m in Sources */,
@@ -3231,6 +3313,7 @@
 				2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */,
 				D9BB45D21E7713E80002AE2E /* ChallengeTask+CoreDataProperties.m in Sources */,
 				494E54221F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift in Sources */,
+				498E4D071FA17DB9006933FF /* ChallengeActionsTableViewCell.swift in Sources */,
 				29B388DF1EEF4FBD00A72950 /* MorningNotification.swift in Sources */,
 				D97C71E718F32FED0089FDC6 /* Potion.m in Sources */,
 				D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */,

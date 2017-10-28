@@ -23,7 +23,7 @@
 
 #pragma mark - Configuration
 
-- (void)configureForTask:(Task *)task isNegative:(BOOL)isNegative {
+- (void)configureForTask:(NSObject<HRPGTaskProtocol> *)task isNegative:(BOOL)isNegative {
     self.buttonSize = 32;
     [self cleanUp];
 

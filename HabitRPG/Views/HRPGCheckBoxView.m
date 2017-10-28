@@ -110,11 +110,11 @@
     self.userInteractionEnabled = false;
 }
 
-- (void)configureForTask:(Task *)task {
+- (void)configureForTask:(NSObject<HRPGTaskProtocol> *)task {
     [self configureForTask:task withOffset:0];
 }
 
-- (void)configureForTask:(Task *)task withOffset:(NSInteger)offset {
+- (void)configureForTask:(NSObject<HRPGTaskProtocol> *)task withOffset:(NSInteger)offset {
     self.boxFillColor = [UIColor colorWithWhite:1.0 alpha:0.7];
     self.checked = [task.completed boolValue];
     ((HRPGCheckmarkLayer *)self.layer).drawPercentage = self.checked ? 1.0f : 0.0f;
@@ -126,12 +126,17 @@
             self.backgroundColor = [UIColor gray500];
             self.checkColor = [UIColor gray200];
         } else {
-            if ([task dueTodayWithOffset:offset]) {
+            self.backgroundColor = [UIColor gray600];
+            self.checkColor = [UIColor gray200];
+            if ([task isKindOfClass:Task.class]) {
+                Task *concreteTask = (Task *)task;
+                if ([concreteTask dueTodayWithOffset:offset]) {
+                    self.backgroundColor = [concreteTask lightTaskColor];
+                    self.checkColor = [concreteTask taskColor];
+                }
+            } else {
                 self.backgroundColor = [task lightTaskColor];
                 self.checkColor = [task taskColor];
-            } else {
-                self.backgroundColor = [UIColor gray600];
-                self.checkColor = [UIColor gray200];
             }
         }
 
