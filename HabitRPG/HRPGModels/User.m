@@ -93,6 +93,34 @@
 @dynamic specialItems;
 @dynamic challenges;
 
++ (void)fetchUserWithId:(NSString *)userId completionBlock:(void (^)(User *))completion {
+    User *user = [self fetchLocalUserWithId:userId];
+    if (user) {
+        completion(user);
+    } else {
+        [[HRPGManager sharedManager] fetchMember:userId onSuccess:^{
+            completion([self fetchLocalUserWithId:userId]);
+        } onError:nil];
+    }
+}
+
++ (User *)fetchLocalUserWithId:(NSString *)userId {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User"
+                                               inManagedObjectContext:[[HRPGManager sharedManager] getManagedObjectContext]];
+    [fetchRequest setEntity:entity];
+    
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", userId]];
+    
+    NSError *error;
+    NSArray *results = [[[HRPGManager sharedManager] getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    if (results.count > 0) {
+        User *member = results[0];
+        return member;
+    }
+    return nil;
+}
+
 - (void)setAvatarSubview:(UIView *)view showsBackground:(BOOL)showsBackground showsMount:(BOOL)showsMount showsPet:(BOOL)showsPet {
     [self setAvatarSubview:view showsBackground:showsBackground showsMount:showsMount showsPet:showsPet isFainted:NO];
 }
