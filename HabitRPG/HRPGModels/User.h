@@ -93,6 +93,10 @@
 
 @end
 
+@interface User (ConvenienceMethods)
++ (void)fetchUserWithId:(NSString *)userId completionBlock:(void (^)(User *))completion;
+@end
+
 @interface User (CoreDataGeneratedAccessors)
 
 - (void)addGroupsObject:(Group *)value;

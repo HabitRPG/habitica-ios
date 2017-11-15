@@ -13,7 +13,7 @@ protocol ChallengeCreatorCellDelegate: class {
 }
 
 class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
-    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var avatarView: UIView!
     @IBOutlet weak var userNameLabel: UILabel!
     
     weak var delegate: ChallengeCreatorCellDelegate?
@@ -24,11 +24,25 @@ class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
     }
     
     func configure(with challenge: Challenge) {
-        configure(user: challenge.user)
+        userNameLabel.text = challenge.leaderName
+        
+        User.fetch(withId: challenge.leaderId) { (user) in
+            self.configure(user: user)
+        }
     }
     
     func configure(user: User?) {
-        userNameLabel.text = user?.username
+        if let member = user {
+            if let avatar = member.getAvatarViewShowsBackground(true, showsMount: false, showsPet: false) {
+                avatarView.addSubview(avatar)
+                avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(-10)-[avatar]-(0)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
+                avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-15)-[avatar]-(-10)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
+                
+                setNeedsUpdateConstraints()
+                setNeedsLayout()
+                layoutIfNeeded()
+            }
+        }
     }
     
     @IBAction func messagesPressed() {

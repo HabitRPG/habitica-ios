@@ -133,6 +133,7 @@
 		494E54151F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E54141F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift */; };
 		494E54221F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */; };
 		494E54251F3124890003683C /* HRPGShopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54241F3124890003683C /* HRPGShopViewModel.m */; };
+		496C1C871FA54E0F0058771A /* ChallengeDetailsSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496C1C861FA54E0F0058771A /* ChallengeDetailsSpecs.swift */; };
 		498E4CF71FA17B7F006933FF /* ChallengeButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498E4CF51FA17B7F006933FF /* ChallengeButtonTableViewCell.swift */; };
 		498E4CF81FA17B7F006933FF /* ChallengeButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 498E4CF61FA17B7F006933FF /* ChallengeButtonTableViewCell.xib */; };
 		498E4CFB1FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498E4CF91FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift */; };
@@ -603,6 +604,7 @@
 		494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopSectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		494E54231F3124890003683C /* HRPGShopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopViewModel.h; sourceTree = "<group>"; };
 		494E54241F3124890003683C /* HRPGShopViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopViewModel.m; sourceTree = "<group>"; };
+		496C1C861FA54E0F0058771A /* ChallengeDetailsSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailsSpecs.swift; sourceTree = "<group>"; };
 		498E4CF51FA17B7F006933FF /* ChallengeButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeButtonTableViewCell.swift; sourceTree = "<group>"; };
 		498E4CF61FA17B7F006933FF /* ChallengeButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeButtonTableViewCell.xib; sourceTree = "<group>"; };
 		498E4CF91FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCreatorTableViewCell.swift; sourceTree = "<group>"; };
@@ -1674,6 +1676,7 @@
 			isa = PBXGroup;
 			children = (
 				D9709A4D1E7F13330005F35B /* ChallengeTableViewControllerTests.swift */,
+				496C1C861FA54E0F0058771A /* ChallengeDetailsSpecs.swift */,
 			);
 			path = Challenges;
 			sourceTree = "<group>";
@@ -2983,6 +2986,7 @@
 				D946E5C41B30A9D700806BE6 /* HRPGTaskTests.m in Sources */,
 				D99EA73D1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m in Sources */,
 				D95704471E153767004F6804 /* TestObserver.swift in Sources */,
+				496C1C871FA54E0F0058771A /* ChallengeDetailsSpecs.swift in Sources */,
 				D946E5C21B30A89500806BE6 /* NSDate+NSDateMock.m in Sources */,
 				D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */,
 				D9709A501E7F17150005F35B /* TaskDetailLineViewTests.swift in Sources */,

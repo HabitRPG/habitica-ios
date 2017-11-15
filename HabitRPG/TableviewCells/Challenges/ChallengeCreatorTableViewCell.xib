@@ -12,20 +12,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="KGk-i7-Jjw" customClass="ChallengeCreatorTableViewCell" customModule="Habitica" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="KGk-i7-Jjw" customClass="ChallengeCreatorTableViewCell" customModule="Habitica" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Izs-nZ-hRJ">
-                        <rect key="frame" x="12" y="12" width="40" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="40" id="JGn-vJ-aPf"/>
-                            <constraint firstAttribute="height" constant="40" id="gd6-NR-mLc"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLF-Gq-BbA">
                         <rect key="frame" x="64" y="12" width="37.5" height="18"/>
                         <constraints>
@@ -48,26 +41,39 @@
                             <action selector="messagesPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0XT-3K-qOu"/>
                         </connections>
                     </button>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6vU-hE-qe3">
+                        <rect key="frame" x="12" y="12" width="40" height="40"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="Xb8-AY-Q2D"/>
+                            <constraint firstAttribute="height" constant="40" id="scw-2I-qnQ"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Izs-nZ-hRJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="147-hQ-hh7"/>
+                    <constraint firstAttribute="bottom" secondItem="6vU-hE-qe3" secondAttribute="bottom" constant="11.5" id="5o0-ef-0Qh"/>
                     <constraint firstAttribute="trailing" secondItem="0yS-nU-vi8" secondAttribute="trailing" constant="8" id="6JN-hi-s76"/>
                     <constraint firstItem="wLF-Gq-BbA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="8QM-wG-HHl"/>
-                    <constraint firstAttribute="bottom" secondItem="Izs-nZ-hRJ" secondAttribute="bottom" constant="12" id="Jt7-sN-RlA"/>
+                    <constraint firstItem="6vU-hE-qe3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="HHY-CB-4P4"/>
                     <constraint firstItem="7NI-3F-aM2" firstAttribute="leading" secondItem="wLF-Gq-BbA" secondAttribute="leading" id="Ncz-iW-sKh"/>
                     <constraint firstItem="0yS-nU-vi8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Qlh-UH-DTe"/>
-                    <constraint firstItem="Izs-nZ-hRJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="V7l-cO-3Bh"/>
+                    <constraint firstItem="wLF-Gq-BbA" firstAttribute="leading" secondItem="6vU-hE-qe3" secondAttribute="trailing" constant="12" id="c2s-OK-4dg"/>
                     <constraint firstItem="7NI-3F-aM2" firstAttribute="top" secondItem="wLF-Gq-BbA" secondAttribute="bottom" constant="1" id="hT4-iF-A8Z"/>
-                    <constraint firstItem="7NI-3F-aM2" firstAttribute="bottom" secondItem="Izs-nZ-hRJ" secondAttribute="bottom" id="vqN-u6-glE"/>
-                    <constraint firstItem="wLF-Gq-BbA" firstAttribute="leading" secondItem="Izs-nZ-hRJ" secondAttribute="trailing" constant="12" id="zX0-4t-rtZ"/>
+                    <constraint firstItem="7NI-3F-aM2" firstAttribute="bottom" secondItem="6vU-hE-qe3" secondAttribute="bottom" id="kZ4-wF-dkd"/>
+                    <constraint firstItem="6vU-hE-qe3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="xux-2T-5kV"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="userImageView" destination="Izs-nZ-hRJ" id="TyA-DC-SzB"/>
+                <outlet property="avatarView" destination="6vU-hE-qe3" id="A0G-3g-deG"/>
                 <outlet property="userNameLabel" destination="wLF-Gq-BbA" id="lQn-9k-MEf"/>
             </connections>
-            <point key="canvasLocation" x="-199" y="-152.5"/>
+            <point key="canvasLocation" x="-199" y="-153"/>
         </tableViewCell>
     </objects>
     <resources>
