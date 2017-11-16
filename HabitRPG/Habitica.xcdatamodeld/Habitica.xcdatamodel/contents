@@ -36,17 +36,12 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="challenges" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="ChallengeTask" representedClassName="ChallengeTask" syncable="YES">
-        <attribute name="attribute" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="down" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="priority" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="up" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="value" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="dailyChallenge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Challenge" inverseName="dailies" inverseEntity="Challenge" syncable="YES"/>
         <relationship name="habitChallenge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Challenge" inverseName="habits" inverseEntity="Challenge" syncable="YES"/>
         <relationship name="rewardChallenge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Challenge" inverseName="rewards" inverseEntity="Challenge" syncable="YES"/>
@@ -553,7 +548,7 @@
         <element name="Buff" positionX="9" positionY="153" width="128" height="210"/>
         <element name="BuyableItem" positionX="0" positionY="0" width="128" height="60"/>
         <element name="Challenge" positionX="9" positionY="153" width="128" height="300"/>
-        <element name="ChallengeTask" positionX="9" positionY="153" width="128" height="270"/>
+        <element name="ChallengeTask" positionX="9" positionY="153" width="128" height="195"/>
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="240"/>
         <element name="ChatMessageLike" positionX="0" positionY="0" width="128" height="75"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>

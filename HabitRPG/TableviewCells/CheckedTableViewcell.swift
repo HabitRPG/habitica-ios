@@ -40,6 +40,11 @@ class CheckedTableViewCell: TaskTableViewCell {
         
         if let task = self.task as? Task {
             handleChecklist(task)
+        } else if task is ChallengeTask {
+            self.checklistDoneLabel.isHidden = true
+            self.checklistAllLabel.isHidden = true
+            self.checklistSeparator.isHidden = true
+            self.checklistIndicatorWidth.constant = 0
         }
 
         if task.completed?.boolValue ?? false {
@@ -58,9 +63,11 @@ class CheckedTableViewCell: TaskTableViewCell {
     }
     
     func handleChecklist(_ task: Task) {
-        self.checklistIndicator.backgroundColor = task.lightTaskColor()
-        self.checklistLeftBorderView.backgroundColor = task.taskColor()
-        self.checklistRightBorderView.backgroundColor = task.taskColor()
+        if let value = task.value {
+            self.checklistIndicator.backgroundColor = UIColor.forTaskValueLight(value)
+            self.checklistLeftBorderView.backgroundColor = UIColor.forTaskValue(value)
+            self.checklistRightBorderView.backgroundColor = UIColor.forTaskValue(value)
+        }
         self.checklistIndicator.isHidden = false
         self.checklistIndicator.translatesAutoresizingMaskIntoConstraints = false
         let checklistCount = task.checklist?.count ?? 0

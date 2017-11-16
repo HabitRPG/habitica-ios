@@ -9,6 +9,7 @@
 #import "HRPGSpellTaskController.h"
 #import "HRPGSpellTabBarController.h"
 #import "NSString+Emoji.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGSpellTaskController ()
 
@@ -41,7 +42,7 @@
     UITableViewCell *cell =
         [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
     cell.textLabel.text = [task.text stringByReplacingEmojiCheatCodesWithUnicode];
-    cell.backgroundColor = [task lightTaskColor];
+    cell.backgroundColor = [UIColor forTaskValueLight:task.value];
     if (task.challengeID) {
         cell.detailTextLabel.text = NSLocalizedString(@"Can't cast a spell on a challenge task.", nil);
         cell.backgroundColor = [UIColor lightGrayColor];

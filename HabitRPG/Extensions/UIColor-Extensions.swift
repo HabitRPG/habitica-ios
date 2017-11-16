@@ -121,6 +121,54 @@ extension UIColor {
     }
     
     /**
+     The color associated with a specific task value. Defaults to blue50.
+
+     - parameter taskValue: NSNumber value.
+     */
+    public static func forTaskValue(_ taskValue: NSNumber) -> UIColor {
+        let intValue: Int = taskValue.intValue
+        if (intValue < -20) {
+            return UIColor.darkRed50()
+        } else if (intValue < -10) {
+            return UIColor.red50()
+        } else if (intValue < -1) {
+            return UIColor.orange50()
+        } else if (intValue < 1) {
+            return UIColor.yellow50()
+        } else if (intValue < 5) {
+            return UIColor.green50()
+        } else if (intValue < 10) {
+            return UIColor.teal50()
+        } else {
+            return UIColor.blue50()
+        }
+    }
+    
+    /**
+     The light color associated with a specific task value. Defaults to blue100.
+     
+     - parameter taskValue: NSNumber value.
+     */
+    public static func forTaskValueLight(_ taskValue: NSNumber) -> UIColor {
+        let intValue: Int = taskValue.intValue
+        if (intValue < -20) {
+            return UIColor.darkRed100()
+        } else if (intValue < -10) {
+            return UIColor.red100()
+        } else if (intValue < -1) {
+            return UIColor.orange100()
+        } else if (intValue < 1) {
+            return UIColor.yellow100()
+        } else if (intValue < 5) {
+            return UIColor.green100()
+        } else if (intValue < 10) {
+            return UIColor.teal100()
+        } else {
+            return UIColor.blue100()
+        }
+    }
+    
+    /**
      Hex string of a UIColor instance.
      
      - parameter includeAlpha: Whether the alpha should be included.
