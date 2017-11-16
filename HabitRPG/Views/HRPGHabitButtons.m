@@ -9,6 +9,7 @@
 #import "HRPGHabitButtons.h"
 #import "UIColor+LighterDarker.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGHabitButtons ()
 
@@ -49,7 +50,7 @@
         tapRecognizer.numberOfTapsRequired = 1;
         self.label.userInteractionEnabled = YES;
         [self.label addGestureRecognizer:tapRecognizer];
-        self.backgroundColor = [task lightTaskColor];
+        self.backgroundColor = [UIColor forTaskValueLight:task.value];
         
         NSInteger taskValue = task.value.integerValue;
         if (taskValue >= -10 && taskValue < -1) {

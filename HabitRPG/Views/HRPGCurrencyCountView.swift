@@ -79,7 +79,7 @@ class HRPGCurrencyCountView: UIView {
         currencyImageView.translatesAutoresizingMaskIntoConstraints = false
         countLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        currencyImageView.contentMode = UIViewContentMode.right
+        currencyImageView.contentMode = UIViewContentMode.scaleAspectFit
         
         countLabel.text = "0"
         countLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
@@ -135,7 +135,9 @@ class HRPGCurrencyCountView: UIView {
         
         countLabel.font = viewSize == .normal ? UIFont.preferredFont(forTextStyle: .footnote) : countLabel.font.withSize(17)
         
-        currencyImageView.image = (viewSize == .normal ? #imageLiteral(resourceName: "Gem") : #imageLiteral(resourceName: "big_gem"))
+        if currency == .gem {
+            currencyImageView.image = (viewSize == .normal ? HabiticaIcons.imageOfGem : HabiticaIcons.imageOfGem_36)
+        }
         
         setNeedsUpdateConstraints()
         updateConstraints()

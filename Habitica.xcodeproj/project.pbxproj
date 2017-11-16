@@ -126,6 +126,7 @@
 		493ECBB71F47D7E10099B1FC /* HRPGGearSetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493ECBB61F47D7E10099B1FC /* HRPGGearSetItem.swift */; };
 		493ECBB91F47D82A0099B1FC /* HRPGGearSetItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 493ECBB81F47D82A0099B1FC /* HRPGGearSetItem.xib */; };
 		493ECBCB1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493ECBCA1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift */; };
+		494131FF1FBCEE9E00F26C81 /* Map47To48.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 494131FE1FBCEE9E00F26C81 /* Map47To48.xcmappingmodel */; };
 		494E53FB1F2C14980003683C /* HRPGShopsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E53FA1F2C14980003683C /* HRPGShopsTableViewCell.swift */; };
 		494E53FE1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E53FD1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m */; };
 		494E54011F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54001F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m */; };
@@ -594,6 +595,8 @@
 		493ECBB61F47D7E10099B1FC /* HRPGGearSetItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGGearSetItem.swift; sourceTree = "<group>"; };
 		493ECBB81F47D82A0099B1FC /* HRPGGearSetItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGGearSetItem.xib; sourceTree = "<group>"; };
 		493ECBCA1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopsOverviewViewModel.swift; sourceTree = "<group>"; };
+		494131FD1FBCED2800F26C81 /* HabitRPG 48.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 48.xcdatamodel"; sourceTree = "<group>"; };
+		494131FE1FBCEE9E00F26C81 /* Map47To48.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Map47To48.xcmappingmodel; sourceTree = "<group>"; };
 		494E53FA1F2C14980003683C /* HRPGShopsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopsTableViewCell.swift; sourceTree = "<group>"; };
 		494E53FC1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HRPGTopHeaderNavigationController.h"; sourceTree = "<group>"; };
 		494E53FD1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HRPGTopHeaderNavigationController.m"; sourceTree = "<group>"; };
@@ -1223,6 +1226,19 @@
 			name = "Core Data";
 			sourceTree = "<group>";
 		};
+<<<<<<< 8342fe5c11be9884deaec725205fd03d72df820b
+=======
+		2957B8AB1F4B297B00E836EF /* Migration Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				2957B8B01F4B2C6C00E836EF /* Map44To45.xcmappingmodel */,
+				29FDF3421F7B344900C930D1 /* Map44To47.xcmappingmodel */,
+				494131FE1FBCEE9E00F26C81 /* Map47To48.xcmappingmodel */,
+			);
+			name = "Migration Mapping";
+			sourceTree = "<group>";
+		};
+>>>>>>> address comments, fix challenge bugs
 		2957B8B41F4B2DF900E836EF /* Rewards */ = {
 			isa = PBXGroup;
 			children = (

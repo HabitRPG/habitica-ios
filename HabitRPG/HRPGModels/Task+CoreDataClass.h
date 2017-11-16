@@ -43,9 +43,6 @@ typedef NS_ENUM(NSInteger, TaskToDoFilterType) {
 - (BOOL)dueOnDate:(NSDate *)date;
 - (BOOL)dueOnDate:(NSDate *)date withOffset:(NSInteger)offset;
 
-- (UIColor *)taskColor;
-- (UIColor *)lightTaskColor;
-
 - (BOOL)allWeekdaysInactive;
 
 + (NSArray *)predicatesForTaskType:(NSString *)taskType withFilterType:(NSInteger)filterType withOffset:(NSInteger)offset;

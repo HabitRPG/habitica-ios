@@ -22,7 +22,4 @@
 @property (nullable, nonatomic, copy) NSNumber *up;
 @property (nullable, nonatomic, copy) NSNumber *value;
 
-- (nonnull UIColor *)taskColor;
-- (nonnull UIColor *)lightTaskColor;
-
 @end

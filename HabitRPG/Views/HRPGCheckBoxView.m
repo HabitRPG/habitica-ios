@@ -131,12 +131,12 @@
             if ([task isKindOfClass:Task.class]) {
                 Task *concreteTask = (Task *)task;
                 if ([concreteTask dueTodayWithOffset:offset]) {
-                    self.backgroundColor = [concreteTask lightTaskColor];
-                    self.checkColor = [concreteTask taskColor];
+                    self.backgroundColor = [UIColor forTaskValueLight:concreteTask.value];
+                    self.checkColor = [UIColor forTaskValue:concreteTask.value];
                 }
             } else {
-                self.backgroundColor = [task lightTaskColor];
-                self.checkColor = [task taskColor];
+                self.backgroundColor = [UIColor forTaskValueLight:task.value];
+                self.checkColor = [UIColor forTaskValue:task.value];
             }
         }
 
@@ -147,8 +147,8 @@
             self.backgroundColor = [UIColor gray600];
             self.checkColor = [UIColor gray200];
         } else {
-            self.backgroundColor = [task lightTaskColor];
-            self.checkColor = [task taskColor];
+            self.backgroundColor = [UIColor forTaskValueLight:task.value];
+            self.checkColor = [UIColor forTaskValue:task.value];
         }
     }
 
