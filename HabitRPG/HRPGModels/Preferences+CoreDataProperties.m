@@ -35,5 +35,6 @@
 @dynamic pushNotifications;
 @dynamic chair;
 @dynamic allocationMode;
+@dynamic automaticAllocation;
 
 @end

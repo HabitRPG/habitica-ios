@@ -76,6 +76,7 @@
 @dynamic lastCron;
 @dynamic needsCron;
 @dynamic loginIncentives;
+@dynamic pointsToAllocate;
 
 @synthesize petCount = _petCount;
 @synthesize customizationsDictionary;

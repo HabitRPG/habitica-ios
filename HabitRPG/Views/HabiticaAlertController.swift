@@ -13,6 +13,9 @@ import PopupDialog
 class HabiticaAlertController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabelTopMargin: NSLayoutConstraint!
+    @IBOutlet weak var titleLabelBottomMargin: NSLayoutConstraint!
+    @IBOutlet weak var titleLabelBackground: UIView!
     @IBOutlet weak var containerView: UIStackView!
     @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var closeButton: UIButton!
@@ -111,6 +114,13 @@ class HabiticaAlertController: UIViewController {
         if titleLabel != nil {
             titleLabel.text = title
         }
+        if title == nil && titleLabelTopMargin != nil && titleLabelBottomMargin != nil {
+            titleLabelTopMargin.constant = 0
+            titleLabelBottomMargin.constant = 0
+        } else if titleLabelTopMargin != nil && titleLabelBottomMargin != nil {
+            titleLabelTopMargin.constant = 12
+            titleLabelBottomMargin.constant = 12
+        }
     }
     
     private func configureMessageView() {
@@ -124,7 +134,7 @@ class HabiticaAlertController: UIViewController {
         label.textColor = UIColor.gray100()
         label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         contentView = label
-        titleLabel.backgroundColor = .white
+        titleLabelBackground.backgroundColor = .white
     }
     
     private func configureContentView() {

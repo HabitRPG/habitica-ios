@@ -789,6 +789,7 @@ NSString *currentUser;
         @"stats.training.int" : @"trainingIntelligence",
         @"stats.training.per" : @"trainingPerception",
         @"stats.training.str" : @"trainingStrength",
+        @"stats.points" : @"pointsToAllocate",
         @"contributor.level" : @"contributorLevel",
         @"contributor.text" : @"contributorText",
         @"contributor.contributions" : @"contributions",
@@ -924,7 +925,8 @@ NSString *currentUser;
                                                               @"consecutive.trinkets": @"consecutiveTrinkets",
                                                               @"consecutive.gemCapExtra": @"gemCapExtra",
                                                               @"gemsBought": @"gemsBought",
-                                                              @"mysteryItems": @"mysteryItemsArray"
+                                                              @"mysteryItems": @"mysteryItemsArray",
+                                                              @"automaticAllocation": @"automaticAllocation",
                                                               }];
     subscriptionMapping.identificationAttributes = @[ @"customerId" ];
     [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"purchased.plan" toKeyPath:@"subscriptionPlan" withMapping:subscriptionMapping]];
@@ -1377,7 +1379,6 @@ NSString *currentUser;
                               keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-    buyMapping.assignsDefaultValueForMissingAttributes = NO;
     responseDescriptor = [RKResponseDescriptor
         responseDescriptorWithMapping:buyMapping
                                method:RKRequestMethodPOST
@@ -1386,6 +1387,31 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
+    RKObjectMapping *statsMapping = [RKObjectMapping mappingForClass:[Stats class]];
+    [statsMapping addAttributeMappingsFromDictionary:@{
+                                                       @"str": @"strength",
+                                                       @"int": @"intelligence",
+                                                       @"con": @"constitution",
+                                                       @"per": @"perception",
+                                                       @"points": @"points",
+                                                       @"mp": @"mana"
+                                                       }];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:statsMapping
+                          method:RKRequestMethodPOST
+                          pathPattern:@"user/allocate"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:statsMapping
+                          method:RKRequestMethodPOST
+                          pathPattern:@"user/allocate-bulk"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    
     entityMapping =
         [RKEntityMapping mappingForEntityForName:@"Group" inManagedObjectStore:managedObjectStore];
     [entityMapping addAttributeMappingsFromDictionary:@{
@@ -5223,6 +5249,42 @@ NSString *currentUser;
                                             return;
                                         }];
 }
+
+- (void)allocateAttributePoint:(NSString *)attribute onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:[NSString stringWithFormat:@"user/allocate?stat=%@", attribute]
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            Stats *stats = [mappingResult dictionary][@"data"];
+                                            self.user.strength = [NSNumber numberWithLong:stats.strength];
+                                            self.user.intelligence = [NSNumber numberWithLong:stats.intelligence];
+                                            self.user.constitution = [NSNumber numberWithLong:stats.constitution];
+                                            self.user.perception = [NSNumber numberWithLong:stats.perception];
+                                            self.user.pointsToAllocate = [NSNumber numberWithLong:stats.points];
+                                            self.user.magic = [NSNumber numberWithFloat:stats.mana];
+                                            NSError *executeError = nil;
+                                            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                            if (successBlock) {
+                                                successBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            [self handleNetworkError:operation withError:error];
+                                            if (errorBlock) {
+                                                NSString *errorMessage = @"";
+                                                if (((NSArray *)[error userInfo][RKObjectMapperErrorObjectsKey]).count > 0) {
+                                                    errorMessage = ((RKErrorMessage *)[error userInfo][RKObjectMapperErrorObjectsKey][0]).errorMessage;
+                                                }
+                                                errorBlock(errorMessage);
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
+     }
 
 - (void)displayNetworkError {
     [ToastManager showWithText:NSLocalizedString(@"Couldn't connect to the server. Check your network connection", nil) color:ToastColorRed];

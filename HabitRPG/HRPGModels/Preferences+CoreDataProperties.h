@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Preferences (CoreDataProperties)
 
 @property(nullable, nonatomic, retain) NSString *allocationMode;
+@property(nullable, nonatomic, retain) NSNumber *automaticAllocation;
 @property(nullable, nonatomic, retain) NSString *background;
 @property(nullable, nonatomic, retain) NSNumber *dayStart;
 @property(nullable, nonatomic, retain) NSNumber *disableClass;

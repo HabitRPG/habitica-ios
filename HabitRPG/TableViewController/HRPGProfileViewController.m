@@ -201,10 +201,16 @@ NSString *currentUserID;
             ![self.user.preferences.disableClass boolValue]) {
             [self performSegueWithIdentifier:@"SelectClassSegue" sender:self];
         } else {
-            [self performSegueWithIdentifier:@"SpellSegue" sender:self];
+            UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"User" bundle:nil];
+            UIViewController *tavernViewController =
+            [secondStoryBoard instantiateViewControllerWithIdentifier:@"SpellsViewController"];
+            [self.navigationController pushViewController:tavernViewController animated:YES];
         }
     } else if (indexPath.section == 0 && indexPath.item == 1) {
-        [self performSegueWithIdentifier:@"AttributePointsSegue" sender:self];
+        UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"User" bundle:nil];
+        UIViewController *tavernViewController =
+        [secondStoryBoard instantiateViewControllerWithIdentifier:@"AttributePointsViewController"];
+        [self.navigationController pushViewController:tavernViewController animated:YES];
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
         UIViewController *inboxViewController =

@@ -368,6 +368,10 @@
                   onSuccess:(void (^)())successBlock
                        onError:(void (^)())errorBlock;
 
+- (void)allocateAttributePoint:(NSString *)attribute
+                     onSuccess:(void (^)())successBlock
+                       onError:(void (^)())errorBlock;
+
 - (NSManagedObjectContext *)getManagedObjectContext;
 
 - (void)displayNetworkError;
