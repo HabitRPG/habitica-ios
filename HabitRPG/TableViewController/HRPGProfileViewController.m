@@ -122,12 +122,12 @@ NSString *currentUserID;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            // Below level 10 users don't have spells
+            // Below level 10 users don't have spells or attribute points
             if ([self.user.level integerValue] < 10 ||
                 [self.user.preferences.disableClass boolValue]) {
                 return 0;
             } else {
-                return 1;
+                return 2;
             }
         case 1:
             return 5;
@@ -203,6 +203,8 @@ NSString *currentUserID;
         } else {
             [self performSegueWithIdentifier:@"SpellSegue" sender:self];
         }
+    } else if (indexPath.section == 0 && indexPath.item == 1) {
+        [self performSegueWithIdentifier:@"AttributePointsSegue" sender:self];
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
         UIViewController *inboxViewController =
@@ -287,6 +289,8 @@ NSString *currentUserID;
                 title = NSLocalizedString(@"Use Skills", nil);
             }
         }
+    } else if (indexPath.section == 0 && indexPath.item == 1) {
+        title = NSLocalizedString(@"Attribute Points", nil);
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         title = NSLocalizedString(@"Inbox", nil);
         User *user = self.user;

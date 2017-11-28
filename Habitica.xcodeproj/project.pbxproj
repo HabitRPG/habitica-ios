@@ -49,6 +49,7 @@
 		298119AF1F5040DA00F9FB39 /* QuestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298119AE1F5040DA00F9FB39 /* QuestDetailView.swift */; };
 		298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298119B01F50453100F9FB39 /* QuestGoalView.swift */; };
 		298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298119B41F5048C000F9FB39 /* QuestGoalView.xib */; };
+		2986EB0B1FCC63F900B316F6 /* AttributePointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */; };
 		299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6211F505DFA00E22935 /* PaddedLabel.swift */; };
 		299BD62D1F541EFC00E22935 /* Quest+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6261F541EFC00E22935 /* Quest+CoreDataClass.m */; };
 		299BD62E1F541EFC00E22935 /* Quest+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6281F541EFC00E22935 /* Quest+CoreDataProperties.m */; };
@@ -471,6 +472,7 @@
 		298119AE1F5040DA00F9FB39 /* QuestDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestDetailView.swift; sourceTree = "<group>"; };
 		298119B01F50453100F9FB39 /* QuestGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestGoalView.swift; sourceTree = "<group>"; };
 		298119B41F5048C000F9FB39 /* QuestGoalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestGoalView.xib; sourceTree = "<group>"; };
+		2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributePointsViewController.swift; sourceTree = "<group>"; };
 		299BD6211F505DFA00E22935 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		299BD6241F54181A00E22935 /* HabitRPG 46.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 46.xcdatamodel"; sourceTree = "<group>"; };
 		299BD6251F541EFC00E22935 /* Quest+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Quest+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -1195,6 +1197,14 @@
 			path = "Habitica Snapshots";
 			sourceTree = "<group>";
 		};
+		2986EB091FCC63CC00B316F6 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		299BD6311F5420A300E22935 /* Challenges */ = {
 			isa = PBXGroup;
 			children = (
@@ -1692,6 +1702,7 @@
 		D9A63A311E1031FD0083ADC4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2986EB091FCC63CC00B316F6 /* User */,
 				D9E02EC41E5E02E7002CFCE2 /* Challenges */,
 				D984D5871E49F9D9006E84F8 /* Purchases */,
 				D96BFC4D1E181B5500266EEF /* Intro */,
@@ -2913,6 +2924,7 @@
 				D903B7891DCA2BE6001F2893 /* HRPGNotification.m in Sources */,
 				D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */,
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
+				2986EB0B1FCC63F900B316F6 /* AttributePointsViewController.swift in Sources */,
 				D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */,
 				D9B8C1201AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m in Sources */,
 				494E54251F3124890003683C /* HRPGShopViewModel.m in Sources */,
