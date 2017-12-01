@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PopupDialog
 
 class AttributePointsVieController: UIViewController {
     
@@ -54,7 +55,8 @@ class AttributePointsVieController: UIViewController {
     }
     
     let user = HRPGManager.shared().getUser()
-    
+    private var observerContext = 0
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.hrpgTopHeaderNavigationController().removeAlternativeHeaderView()
@@ -87,6 +89,21 @@ class AttributePointsVieController: UIViewController {
         distributeEvenlyHelpView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(distributeEvenlyHelpTapped)))
         distributeClassHelpView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(distributeClassHelpTapped)))
         distributeTaskHelpView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(distributeTaskHelpTapped)))
+
+        pointsToAllocateLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openBulkAssignView)))
+        
+        user?.addObserver(self, forKeyPath: #keyPath(User.pointsToAllocate), options: [.new, .old], context: &observerContext)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        user?.removeObserver(self, forKeyPath: #keyPath(User.pointsToAllocate), context: &observerContext)
+        super.viewWillDisappear(animated)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        updateUser()
+        updateStats()
+        updateAutoAllocatonViews()
     }
     
     private func allocate(_ attribute: String) {
@@ -323,5 +340,13 @@ class AttributePointsVieController: UIViewController {
             }, onError: {[weak self] in
                 self?.updateAutoAllocatonViews()
         })
+    }
+    
+    func openBulkAssignView() {
+        let viewController = BulkStatsAllocationViewController(nibName: "BulkStatsAllocationView", bundle: Bundle.main)
+        let popup = PopupDialog(viewController: viewController, gestureDismissal: false) {[weak self] in
+        }
+    
+        self.present(popup, animated: true, completion: nil)
     }
 }

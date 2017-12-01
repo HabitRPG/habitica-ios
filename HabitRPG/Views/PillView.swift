@@ -60,12 +60,6 @@ class PillView: UIView {
         }
     }
 
-    @IBInspectable var borderColor: UIColor = UIColor.gray200() {
-        didSet {
-            self.layer.borderColor = borderColor.cgColor
-        }
-    }
-
     @IBInspectable var pillColor: UIColor = UIColor.gray400() {
         didSet {
             layer.backgroundColor = pillColor.cgColor
@@ -128,6 +122,10 @@ class PillView: UIView {
         self.label.textAlignment = .center
         self.label.font = UIFont.preferredFont(forTextStyle: .caption1)
         self.iconView.contentMode = .center
+        
+        if borderColor == nil {
+            borderColor = UIColor.gray200()
+        }
     }
 
     override func layoutSubviews() {

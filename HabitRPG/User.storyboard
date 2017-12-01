@@ -148,7 +148,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2a-L8-1Zi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3090" y="731"/>
+            <point key="canvasLocation" x="-1332" y="-4"/>
         </scene>
         <!--Attribute Points-->
         <scene sceneID="gTY-HZ-Xt1">
@@ -177,7 +177,7 @@
                                                             <constraint firstAttribute="width" constant="77" id="yMd-jY-qRw"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="0 Points to Allocate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAQ-Tl-eLi">
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="0 Points to Allocate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAQ-Tl-eLi">
                                                         <rect key="frame" x="203.5" y="0.0" width="160" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" priority="500" constant="160" id="Csc-sg-aZ6"/>
@@ -615,7 +615,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXv-bk-ISX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4343" y="731"/>
+            <point key="canvasLocation" x="-356" y="-4"/>
         </scene>
     </scenes>
 </document>

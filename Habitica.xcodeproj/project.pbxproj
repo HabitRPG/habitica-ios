@@ -24,6 +24,10 @@
 		293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4991FCD7DC0003B6F4F /* StatsView.swift */; };
 		293BB49C1FCD7DC8003B6F4F /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293BB49B1FCD7DC8003B6F4F /* StatsView.xib */; };
 		293BB49F1FCDCD33003B6F4F /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB49E1FCDCD33003B6F4F /* Stats.swift */; };
+		293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */; };
+		293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293BB4A21FD07603003B6F4F /* StatsSliderView.xib */; };
+		293BB4A51FD078EC003B6F4F /* StatsSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */; };
+		293BB4A91FD0806C003B6F4F /* BulkStatsAllocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */; };
 		294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */; };
 		2957B8A81F4B071700E836EF /* InAppReward+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8A51F4B071700E836EF /* InAppReward+CoreDataClass.m */; };
 		2957B8A91F4B071700E836EF /* InAppReward+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8A71F4B071700E836EF /* InAppReward+CoreDataProperties.m */; };
@@ -446,6 +450,10 @@
 		293BB49B1FCD7DC8003B6F4F /* StatsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsView.xib; sourceTree = "<group>"; };
 		293BB49D1FCD94E8003B6F4F /* HabitRPG 50.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 50.xcdatamodel"; sourceTree = "<group>"; };
 		293BB49E1FCDCD33003B6F4F /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BulkStatsAllocationView.xib; sourceTree = "<group>"; };
+		293BB4A21FD07603003B6F4F /* StatsSliderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsSliderView.xib; sourceTree = "<group>"; };
+		293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSliderView.swift; sourceTree = "<group>"; };
+		293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkStatsAllocationViewController.swift; sourceTree = "<group>"; };
 		294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCharacterViewController.swift; sourceTree = "<group>"; };
 		2957B8A31F4B054500E836EF /* HabitRPG 45.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 45.xcdatamodel"; sourceTree = "<group>"; };
 		2957B8A41F4B071700E836EF /* InAppReward+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InAppReward+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -1210,6 +1218,7 @@
 			isa = PBXGroup;
 			children = (
 				2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */,
+				293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1818,6 +1827,7 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */,
 				299BD6311F5420A300E22935 /* Challenges */,
 				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
 				29AAA15C1F2A3AA600029737 /* GradientView.swift */,
@@ -1869,6 +1879,8 @@
 				293282131F389CC000D42961 /* SetupCustomizationItemView.swift */,
 				293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */,
 				49DCB7B31F3F5E820079FDD0 /* Shop */,
+				293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */,
+				293BB4A21FD07603003B6F4F /* StatsSliderView.xib */,
 				293BB4991FCD7DC0003B6F4F /* StatsView.swift */,
 				293BB49B1FCD7DC8003B6F4F /* StatsView.xib */,
 				299BD6321F5420D600E22935 /* Tasks */,
@@ -2516,8 +2528,10 @@
 				D9BB45D81E7998710002AE2E /* ChallengeFilterAlert.xib in Resources */,
 				2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
+				293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
+				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
@@ -3041,6 +3055,7 @@
 				D9525F991E5F405400C529B8 /* Challenge+CoreDataProperties.m in Sources */,
 				299BD6301F541EFC00E22935 /* QuestReward+CoreDataProperties.m in Sources */,
 				D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */,
+				293BB4A91FD0806C003B6F4F /* BulkStatsAllocationViewController.swift in Sources */,
 				D9660D751AB23F150084CE37 /* HRPGTopHeaderNavigationController.m in Sources */,
 				293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */,
 				49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */,
@@ -3124,6 +3139,7 @@
 				D98F5DC91C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m in Sources */,
 				D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */,
 				D98F5AEC190566CA002F8223 /* User.m in Sources */,
+				293BB4A51FD078EC003B6F4F /* StatsSliderView.swift in Sources */,
 				D9CE90491E4DCF7D00702578 /* SubscriptionDetailView.swift in Sources */,
 				D92CDAE718CB84000006C242 /* HRPGToDoTableViewController.m in Sources */,
 				2932821A1F39E28000D42961 /* TypingTextViewController.swift in Sources */,

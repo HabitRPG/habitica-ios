@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,10 +25,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gwa-ZK-hE5">
-                    <rect key="frame" x="40" y="150.5" width="295" height="366.5"/>
+                    <rect key="frame" x="40" y="151.5" width="295" height="364.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You ran out of Health!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBh-ep-V0f">
-                            <rect key="frame" x="0.0" y="0.0" width="295" height="26"/>
+                            <rect key="frame" x="0.0" y="0.0" width="295" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="21" id="oMy-ZV-gOh"/>
                             </constraints>
@@ -37,7 +37,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You lost a Level, your Gold, and a piece of Equipment, but you can get them all back with hard work!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOV-OM-bmO">
-                            <rect key="frame" x="0.0" y="265" width="295" height="64.5"/>
+                            <rect key="frame" x="0.0" y="263" width="295" height="64.5"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="21" id="Nzd-I1-bpC"/>
                             </constraints>
@@ -46,7 +46,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't despair!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNl-0m-81s">
-                            <rect key="frame" x="0.0" y="228" width="295" height="21"/>
+                            <rect key="frame" x="0.0" y="226" width="295" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="21" id="4o6-9A-o7S"/>
                             </constraints>
@@ -55,14 +55,14 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ilf-pB-byZ" customClass="HRPGLabeledProgressBar">
-                            <rect key="frame" x="0.0" y="58" width="295" height="40"/>
+                            <rect key="frame" x="0.0" y="56" width="295" height="40"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="rdL-92-sPj"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4KX-TZ-jpu">
-                            <rect key="frame" x="72.5" y="114" width="120" height="90"/>
+                            <rect key="frame" x="72.5" y="112" width="120" height="90"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="90" id="NLl-12-jM7"/>
@@ -70,7 +70,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good luck--you'll do great." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zu6-yT-wkR">
-                            <rect key="frame" x="0.0" y="345.5" width="295" height="21"/>
+                            <rect key="frame" x="0.0" y="343.5" width="295" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="21" id="cFS-Yg-LW0"/>
                             </constraints>

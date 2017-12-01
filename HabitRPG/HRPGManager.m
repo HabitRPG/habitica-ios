@@ -5286,6 +5286,42 @@ NSString *currentUser;
                                         }];
      }
 
+- (void)bulkAllocateAttributePoint:(NSInteger)strengthValue intelligence:(NSInteger)intelligenceValue constitution:(NSInteger)constitutionValue perception:(NSInteger)perceptionValue onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:@"user/allocate-bulk"
+                                     parameters:@{@"stats": @{@"str": [NSNumber numberWithLong:strengthValue], @"int": [NSNumber numberWithLong:intelligenceValue], @"con": [NSNumber numberWithLong:constitutionValue], @"per": [NSNumber numberWithLong:perceptionValue]}}
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            Stats *stats = [mappingResult dictionary][@"data"];
+                                            self.user.strength = [NSNumber numberWithLong:stats.strength];
+                                            self.user.intelligence = [NSNumber numberWithLong:stats.intelligence];
+                                            self.user.constitution = [NSNumber numberWithLong:stats.constitution];
+                                            self.user.perception = [NSNumber numberWithLong:stats.perception];
+                                            self.user.pointsToAllocate = [NSNumber numberWithLong:stats.points];
+                                            self.user.magic = [NSNumber numberWithFloat:stats.mana];
+                                            NSError *executeError = nil;
+                                            [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                            if (successBlock) {
+                                                successBlock();
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            [self handleNetworkError:operation withError:error];
+                                            if (errorBlock) {
+                                                NSString *errorMessage = @"";
+                                                if (((NSArray *)[error userInfo][RKObjectMapperErrorObjectsKey]).count > 0) {
+                                                    errorMessage = ((RKErrorMessage *)[error userInfo][RKObjectMapperErrorObjectsKey][0]).errorMessage;
+                                                }
+                                                errorBlock(errorMessage);
+                                            }
+                                            [self.networkIndicatorController endNetworking];
+                                            return;
+                                        }];
+}
+
 - (void)displayNetworkError {
     [ToastManager showWithText:NSLocalizedString(@"Couldn't connect to the server. Check your network connection", nil) color:ToastColorRed];
 

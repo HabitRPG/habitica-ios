@@ -372,6 +372,13 @@
                      onSuccess:(void (^)())successBlock
                        onError:(void (^)())errorBlock;
 
+- (void)bulkAllocateAttributePoint:(NSInteger)strengthValue
+                      intelligence:(NSInteger)intelligenceValue
+                      constitution:(NSInteger)constitutionValue
+                        perception:(NSInteger)perceptionValue
+                     onSuccess:(void (^)())successBlock
+                       onError:(void (^)())errorBlock;
+
 - (NSManagedObjectContext *)getManagedObjectContext;
 
 - (void)displayNetworkError;
