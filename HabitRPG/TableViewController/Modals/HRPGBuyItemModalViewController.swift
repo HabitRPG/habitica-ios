@@ -49,8 +49,8 @@ class HRPGBuyItemModalViewController: UIViewController {
         
         closableShopModal.closeButton.addTarget(self, action: #selector(closePressed), for: UIControlEvents.touchUpInside)
         buyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buyPressed)))
-        
-        pinButton.isHidden = !showPinning
+        let inAppReward = ( reward as? InAppReward)
+        pinButton.isHidden = !showPinning ||  inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
     }
     
     override func viewWillAppear(_ animated: Bool) {
