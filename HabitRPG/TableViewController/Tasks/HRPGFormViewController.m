@@ -19,7 +19,6 @@
 @property(nonatomic) BOOL formFilled;
 @property(nonatomic) XLFormSectionDescriptor *duedateSection;
 @property NSInteger customDayStart;
-@property(nonatomic, strong) NSString *allocationMode;
 @property TaskRepeatablesSummaryInteractor *summaryInteractor;
 
 @end
@@ -30,7 +29,6 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         User *user = [[HRPGManager sharedManager] getUser];
-        self.allocationMode = user.preferences.allocationMode;
         self.customDayStart = [user.preferences.dayStart integerValue];
         self.managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
         [self initializeForm];
@@ -87,7 +85,7 @@
     row.selectorTitle = NSLocalizedString(@"Select Difficulty", nil);
     [section addFormRow:row];
 
-    if ([self.allocationMode isEqualToString:@"taskbased"]) {
+    if ([self hasTaskBasedAllocation]) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"attribute"
                                                     rowType:XLFormRowDescriptorTypeSelectorPush
                                                       title:NSLocalizedString(@"Attributes", nil)];
@@ -800,6 +798,11 @@
         }
     }
     return nil;
+}
+
+- (BOOL)hasTaskBasedAllocation {
+    User *user = [[HRPGManager sharedManager] getUser];
+    return [user.preferences.automaticAllocation boolValue] && [user.preferences.allocationMode isEqualToString:@"taskbased"];
 }
 
 @end
