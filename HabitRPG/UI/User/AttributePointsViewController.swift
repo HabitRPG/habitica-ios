@@ -9,7 +9,7 @@
 import UIKit
 import PopupDialog
 
-class AttributePointsVieController: UIViewController {
+class AttributePointsVieController: HRPGBaseViewController {
     
     @IBOutlet weak var pointsToAllocateLabel: UILabel!
     @IBOutlet weak var pointsToAllocateRightView: UIImageView!
@@ -56,7 +56,19 @@ class AttributePointsVieController: UIViewController {
     
     let user = HRPGManager.shared().getUser()
     private var observerContext = 0
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tutorialIdentifier = "stats"
+    }
+    
+    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable : Any]! {
+        if tutorialIdentifier == "stats" {
+            return ["text": NSLocalizedString("Tap the gray button to allocate lots of your stats at once, or tap the arrows to add them one point at a time.", comment: "")]
+        }
+        return nil
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.hrpgTopHeaderNavigationController().removeAlternativeHeaderView()

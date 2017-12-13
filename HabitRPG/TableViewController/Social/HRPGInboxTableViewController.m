@@ -21,6 +21,7 @@
 @implementation HRPGInboxTableViewController
 
 - (void)viewDidLoad {
+    self.tutorialIdentifier = @"inbox";
     [super viewDidLoad];
     
     self.clearsSelectionOnViewWillAppear = NO;
@@ -36,6 +37,16 @@
 - (void)viewDidAppear:(BOOL)animated {
     [[HRPGManager sharedManager] markInboxSeen:nil onError:nil];
     [super viewDidAppear:animated];
+}
+
+-(NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
+    if ([tutorialIdentifier isEqualToString:@"inbox"]) {
+        return @{
+                 @"text" :
+                     NSLocalizedString(@"This is where you can read and reply to private messages! You can also message people from their profiles.", nil)
+                 };
+    }
+    return nil;
 }
 
 #pragma mark - Table view data source
