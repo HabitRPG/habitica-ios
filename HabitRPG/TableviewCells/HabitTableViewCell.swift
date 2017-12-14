@@ -15,8 +15,8 @@ class HabitTableViewCell: TaskTableViewCell {
     //swiftlint:disable:next private_outlet
     @IBOutlet weak var minusButton: HRPGHabitButtons!
 
-    var plusTouched: (() -> Void)?
-    var minusTouched: (() -> Void)?
+    @objc var plusTouched: (() -> Void)?
+    @objc var minusTouched: (() -> Void)?
 
     override func configure(task: Task) {
         super.configure(task: task)
@@ -42,12 +42,14 @@ class HabitTableViewCell: TaskTableViewCell {
         self.accessibilityCustomActions = customActions
     }
     
+    @objc
     func scoreUp() {
         if let action = plusTouched {
             action()
         }
     }
     
+    @objc
     func scoreDown() {
         if let action = minusTouched {
             action()

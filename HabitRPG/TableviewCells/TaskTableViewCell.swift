@@ -18,13 +18,14 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var taskDetailLine: TaskDetailLineView!
     //swiftlint:disable private_outlet
 
+    @objc
     func configure(task: Task) {
         self.titleLabel.text = task.text?.unicodeEmoji
         self.titleLabel.font = UIFont.preferredFont(forTextStyle: .body)
         self.titleLabel.textColor = .gray10()
         self.subtitleLabel.textColor = .gray200()
 
-        if let trimmedNotes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.characters.count > 0 {
+        if let trimmedNotes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.count > 0 {
             self.subtitleLabel.text = trimmedNotes.unicodeEmoji
             self.subtitleLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
             self.subtitleLabel.isHidden = false

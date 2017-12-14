@@ -55,14 +55,14 @@ class AttributePointsVieController: HRPGBaseViewController {
     }
     
     let user = HRPGManager.shared().getUser()
-    private var observerContext = 0
+    private var observer: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tutorialIdentifier = "stats"
     }
     
-    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable : Any]! {
+    override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {
         if tutorialIdentifier == "stats" {
             return ["text": NSLocalizedString("Tap the gray button to allocate lots of your stats at once, or tap the arrows to add them one point at a time.", comment: "")]
         }
@@ -104,18 +104,16 @@ class AttributePointsVieController: HRPGBaseViewController {
 
         pointsToAllocateLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openBulkAssignView)))
         
-        user?.addObserver(self, forKeyPath: #keyPath(User.pointsToAllocate), options: [.new, .old], context: &observerContext)
+        observer = user?.observe(\.pointsToAllocate, changeHandler: {[weak self] (_, _) in
+            self?.updateUser()
+            self?.updateStats()
+            self?.updateAutoAllocatonViews()
+        })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        user?.removeObserver(self, forKeyPath: #keyPath(User.pointsToAllocate), context: &observerContext)
+        observer?.invalidate()
         super.viewWillDisappear(animated)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        updateUser()
-        updateStats()
-        updateAutoAllocatonViews()
     }
     
     private func allocate(_ attribute: String) {
@@ -184,48 +182,45 @@ class AttributePointsVieController: HRPGBaseViewController {
         constitutionStatsView.allocatedValue = user.constitution?.intValue ?? 0
         perceptionStatsView.allocatedValue = user.perception?.intValue ?? 0
         
-        DispatchQueue.global(qos: .background).async {
-            let fetchRequest = NSFetchRequest<Gear>(entityName: "Gear")
-            var keys = [String]()
-            keys.append(user.equipped.armor ?? "")
-            keys.append(user.equipped.back ?? "")
-            keys.append(user.equipped.body ?? "")
-            keys.append(user.equipped.eyewear ?? "")
-            keys.append(user.equipped.head ?? "")
-            keys.append(user.equipped.headAccessory ?? "")
-            keys.append(user.equipped.weapon ?? "")
-            keys.append(user.equipped.shield ?? "")
-            fetchRequest.predicate = NSPredicate(format: "key in %@", keys)
-            let result = try? HRPGManager.shared().getManagedObjectContext().fetch(fetchRequest)
-            if let gear = result {
-                DispatchQueue.main.async {[weak self] in
-                    self?.updateGearStats(gear)
-                }
+        DispatchQueue.global(qos: .background).async {[weak self] in
+            self?.fetchGearStats(user: user)
+        }
+    }
+    
+    private func fetchGearStats(user: User) {
+        let fetchRequest = NSFetchRequest<Gear>(entityName: "Gear")
+        var keys = [String]()
+        keys.append(user.equipped.armor ?? "")
+        keys.append(user.equipped.back ?? "")
+        keys.append(user.equipped.body ?? "")
+        keys.append(user.equipped.eyewear ?? "")
+        keys.append(user.equipped.head ?? "")
+        keys.append(user.equipped.headAccessory ?? "")
+        keys.append(user.equipped.weapon ?? "")
+        keys.append(user.equipped.shield ?? "")
+        fetchRequest.predicate = NSPredicate(format: "key in %@", keys)
+        let result = try? HRPGManager.shared().getManagedObjectContext().fetch(fetchRequest)
+        if let gear = result {
+            DispatchQueue.main.async {[weak self] in
+                self?.updateGearStats(gear)
             }
-            
         }
     }
     
     private func updateGearStats(_ gear: [Gear]) {
-        var strength = 0
-        var intelligence = 0
-        var constitution = 0
-        var perception = 0
-        
-        var strengthBonus = 0.0
-        var intelligenceBonus = 0.0
-        var constitutionBonus = 0.0
-        var perceptionBonus = 0.0
+        var strength = 0.0
+        var intelligence = 0.0
+        var constitution = 0.0
+        var perception = 0.0
         
         for row in gear {
-            strength += row.str.intValue
-            intelligence += row.intelligence.intValue
-            constitution += row.con.intValue
-            perception += row.per.intValue
+            strength += row.str.doubleValue
+            intelligence += row.intelligence.doubleValue
+            constitution += row.con.doubleValue
+            perception += row.per.doubleValue
             
             var itemClass = row.klass
             let itemSpecialClass = row.specialClass
-
             let classBonus = 0.5
             let userClassMatchesGearClass = itemClass == user?.hclass
             let userClassMatchesGearSpecialClass = itemSpecialClass == user?.hclass
@@ -238,42 +233,32 @@ class AttributePointsVieController: HRPGBaseViewController {
                 itemClass = itemSpecialClass
             }
             
-            if let itemClass = itemClass {
-                switch itemClass {
-                case "rogue":
-                    strengthBonus += row.str.doubleValue * classBonus
-                    perceptionBonus += row.per.doubleValue * classBonus
-                    break
-                case "healer":
-                    constitutionBonus += row.con.doubleValue * classBonus
-                    intelligenceBonus += row.intelligence.doubleValue * classBonus
-                    break
-                case "warrior":
-                    strengthBonus += row.str.doubleValue * classBonus
-                    constitutionBonus += row.con.doubleValue * classBonus
-                    break
-                case "wizard":
-                    intelligenceBonus += row.intelligence.doubleValue * classBonus
-                    perceptionBonus += row.per.doubleValue * classBonus
-                    break
-                default:
-                    break
-                }
+            switch itemClass {
+            case "rogue"?:
+                strength += row.str.doubleValue * classBonus
+                perception += row.per.doubleValue * classBonus
+            case "healer"?:
+                constitution += row.con.doubleValue * classBonus
+                intelligence += row.intelligence.doubleValue * classBonus
+            case "warrior"?:
+                strength += row.str.doubleValue * classBonus
+                constitution += row.con.doubleValue * classBonus
+            case "wizard"?:
+                intelligence += row.intelligence.doubleValue * classBonus
+                perception += row.per.doubleValue * classBonus
+            default:
+                break
             }
         }
-        strength += Int(strengthBonus)
-        intelligence += Int(intelligenceBonus)
-        constitution += Int(constitutionBonus)
-        perception += Int(perceptionBonus)
         
-        totalStrength += strength
-        totalIntelligence += intelligence
-        totalConstitution += constitution
-        totalPerception += perception
-        strengthStatsView.equipmentValue = strength
-        intelligenceStatsView.equipmentValue = intelligence
-        constitutionStatsView.equipmentValue = constitution
-        perceptionStatsView.equipmentValue = perception
+        totalStrength += Int(strength)
+        totalIntelligence += Int(intelligence)
+        totalConstitution += Int(constitution)
+        totalPerception += Int(perception)
+        strengthStatsView.equipmentValue = Int(strength)
+        intelligenceStatsView.equipmentValue = Int(intelligence)
+        constitutionStatsView.equipmentValue = Int(constitution)
+        perceptionStatsView.equipmentValue = Int(perception)
     }
     
     private func updateAutoAllocatonViews() {
@@ -287,17 +272,14 @@ class AttributePointsVieController: HRPGBaseViewController {
                 distributeEvenlyCheckmark.isHidden = false
                 distributeClassCheckmark.isHidden = true
                 distributeTaskCheckmark.isHidden = true
-                break
             case "classbased":
                 distributeEvenlyCheckmark.isHidden = true
                 distributeClassCheckmark.isHidden = false
                 distributeTaskCheckmark.isHidden = true
-                break
             case "taskbased":
                 distributeEvenlyCheckmark.isHidden = true
                 distributeClassCheckmark.isHidden = true
                 distributeTaskCheckmark.isHidden = false
-                break
             default:
                 break
             }
@@ -314,26 +296,32 @@ class AttributePointsVieController: HRPGBaseViewController {
         })
     }
     
+    @objc
     func distributeEvenlyTapped() {
         setAllocationMode("flat")
     }
     
+    @objc
     func distributeClassTapped() {
         setAllocationMode("classbased")
     }
     
+    @objc
     func distributeTaskTapped() {
         setAllocationMode("taskbased")
     }
     
+    @objc
     func distributeEvenlyHelpTapped() {
         showHelpView(NSLocalizedString("Assigns the same number of points to each attribute.", comment: ""))
     }
     
+    @objc
     func distributeClassHelpTapped() {
         showHelpView(NSLocalizedString("Assigns more points to the attributes important to your Class.", comment: ""))
     }
     
+    @objc
     func distributeTaskHelpTapped() {
         showHelpView(NSLocalizedString("Assigns points based on the Strength, Intelligence, Constitution, and Perception categories associated with the tasks you complete.", comment: ""))
     }
@@ -354,9 +342,10 @@ class AttributePointsVieController: HRPGBaseViewController {
         })
     }
     
+    @objc
     func openBulkAssignView() {
         let viewController = BulkStatsAllocationViewController(nibName: "BulkStatsAllocationView", bundle: Bundle.main)
-        let popup = PopupDialog(viewController: viewController, gestureDismissal: false) {[weak self] in
+        let popup = PopupDialog(viewController: viewController, gestureDismissal: false) {
         }
     
         self.present(popup, animated: true, completion: nil)

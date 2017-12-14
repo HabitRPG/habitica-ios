@@ -14,10 +14,10 @@ import UIKit
 }
 
 class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSource {
-    weak var delegate: HRPGShopCollectionViewDataSourceDelegate?
+    @objc weak var delegate: HRPGShopCollectionViewDataSourceDelegate?
     
-    var ownedItems = [String: Item]()
-    var pinnedItems = [String: InAppReward]()
+    @objc var ownedItems = [String: Item]()
+    @objc var pinnedItems = [String: InAppReward]()
     
     // MARK: Collection view data source and delegate methods
     

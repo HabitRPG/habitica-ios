@@ -1679,7 +1679,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="s9t-re-NbM" kind="show" id="nYO-SY-Og4"/>
+                        <segue destination="s9t-re-NbM" kind="show" identifier="ShowShopSegue" id="nYO-SY-Og4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OdM-ul-yrc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3158,7 +3158,7 @@ and helps keep Habitica running</string>
         <segue reference="DAI-nh-Ljl"/>
         <segue reference="fUS-KU-QMo"/>
         <segue reference="aWZ-FG-z5O"/>
-        <segue reference="nYO-SY-Og4"/>
+        <segue reference="V6b-ej-qnx"/>
         <segue reference="jeD-LQ-1O1"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

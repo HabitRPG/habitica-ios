@@ -41,7 +41,7 @@ class CustomRewardCell: UICollectionViewCell {
     
     func configure(reward: Reward) {
         titleLabel.text = reward.text
-        if reward.notes.characters.count > 0 {
+        if reward.notes.count > 0 {
             notesLabel.isHidden = false
             notesLabel.text = reward.notes
         } else {
@@ -50,6 +50,7 @@ class CustomRewardCell: UICollectionViewCell {
         amountLabel.text = reward.value.stringValue
     }
     
+    @objc
     func buyButtonTapped() {
         if let action = onBuyButtonTapped {
             action()

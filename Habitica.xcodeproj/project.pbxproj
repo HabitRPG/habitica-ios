@@ -306,7 +306,6 @@
 		D9AEEA731ACEDD470076951B /* HRPGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */; };
 		D9AEF8E41CE4CCA5006914CB /* HRPGURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEF8E31CE4CCA5006914CB /* HRPGURLParser.m */; };
 		D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */; };
-		D9B2F28F1D99669C001810BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9B2F2911D99669C001810BD /* Localizable.strings */; };
 		D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */; };
 		D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */; };
 		D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0BF18D5EFF400C8D1B7 /* ChecklistItem.m */; };
@@ -318,7 +317,6 @@
 		D9B8C1281AFFB5D500634B5A /* blade.json in Resources */ = {isa = PBXBuildFile; fileRef = D9B8C1271AFFB5D500634B5A /* blade.json */; };
 		D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */; };
 		D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */; };
-		D9BB28411D5CF3C7003894A8 /* HRPGDailyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDAE318CB83EF0006C242 /* HRPGDailyTableViewController.m */; };
 		D9BB45591E71AFAF0002AE2E /* Down-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45581E71AFAF0002AE2E /* Down-Extensions.swift */; };
 		D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB455A1E71C52F0002AE2E /* TaskTableViewCell.swift */; };
 		D9BB455D1E71C8C70002AE2E /* CheckedTableViewcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */; };
@@ -407,13 +405,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		29701FF01F5848890097BBCC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D9EB4E8318CB4A9400BB2094 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D9EB4E8A18CB4A9400BB2094;
-			remoteInfo = Habitica;
-		};
-		D905767D1BD82DB8009BB7BC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D9EB4E8318CB4A9400BB2094 /* Project object */;
 			proxyType = 1;
@@ -589,7 +580,6 @@
 		D905766E1BD7F581009BB7BC /* HRPGHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGHintView.m; sourceTree = "<group>"; };
 		D90576701BD80275009BB7BC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		D90576711BD80275009BB7BC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		D90576781BD82DB8009BB7BC /* HabitRPGUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitRPGUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D90576821BD8323F009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D90576861BD83240009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D905768B1BD83241009BB7BC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1138,13 +1128,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D90576751BD82DB8009BB7BC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D94461801AB34F5C0015215E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1673,46 +1656,46 @@
 		D987393919687E46002A2426 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				299BD6361F5457E100E22935 /* HabiticaIcons.swift */,
-				D90EA03819D60427001EABE4 /* Intro Images */,
 				D99BC43019D4C34A006DC132 /* 1Password.xcassets */,
-				D99BC43119D4C34A006DC132 /* OnePasswordExtension.h */,
-				D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */,
-				D987393A19687F3E002A2426 /* NSNumber+abbreviation.h */,
-				D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */,
-				D93422B71AB792B5003AFCDE /* UIColor+LighterDarker.h */,
-				D93422B81AB792B5003AFCDE /* UIColor+LighterDarker.m */,
-				D994B1471AD9177D008AE188 /* UIView+Screenshot.h */,
-				D994B1481AD9177D008AE188 /* UIView+Screenshot.m */,
-				D976D23E1B98FA940032BC41 /* UIColor+Habitica.h */,
-				D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */,
-				D91439881BAF14C40006999E /* UIImage+withColor.h */,
-				D91439891BAF14C40006999E /* UIImage+withColor.m */,
-				D9A1A27F1BA7029D00903567 /* NSDate+DaysSince.h */,
-				D9A1A2801BA7029D00903567 /* NSDate+DaysSince.m */,
-				D9CD2DD31BCAA6F700B1304B /* UIViewController+TutorialSteps.h */,
-				D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */,
-				D9436ABF1C63A4BB008D1171 /* UIViewController+Markdown.h */,
-				D9436AC01C63A4BB008D1171 /* UIViewController+Markdown.m */,
-				D9CD2DD61BCAC00300B1304B /* TutorialStepsProtocol.h */,
+				494E540E1F2EEF810003683C /* Amplitude+HRPGHelpers.h */,
+				494E540F1F2EEF810003683C /* Amplitude+HRPGHelpers.m */,
+				494E53FF1F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.h */,
+				494E54001F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m */,
+				299BD6361F5457E100E22935 /* HabiticaIcons.swift */,
+				D995D5981D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.h */,
+				D995D5991D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m */,
 				D9E9E0C21CCE55DA006D94A2 /* HRPGSharingManager.h */,
 				D9E9E0C31CCE55DA006D94A2 /* HRPGSharingManager.m */,
 				D9AEF8E21CE4CCA5006914CB /* HRPGURLParser.h */,
 				D9AEF8E31CE4CCA5006914CB /* HRPGURLParser.m */,
+				D90EA03819D60427001EABE4 /* Intro Images */,
+				D9A1A27F1BA7029D00903567 /* NSDate+DaysSince.h */,
+				D9A1A2801BA7029D00903567 /* NSDate+DaysSince.m */,
+				D987393A19687F3E002A2426 /* NSNumber+abbreviation.h */,
+				D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */,
 				D9ADD3521CF3169B001D005B /* NSString+StripHTML.h */,
 				D9ADD3531CF3169B001D005B /* NSString+StripHTML.m */,
-				D995D5981D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.h */,
-				D995D5991D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m */,
 				D92503BC1D5C9219006C9388 /* NSString+UUID.h */,
 				D92503BD1D5C9219006C9388 /* NSString+UUID.m */,
-				D96C85461DCCD8BC003E3616 /* UIWindow+VisibleController.h */,
-				D96C85471DCCD8BC003E3616 /* UIWindow+VisibleController.m */,
+				D99BC43119D4C34A006DC132 /* OnePasswordExtension.h */,
+				D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */,
+				D9CD2DD61BCAC00300B1304B /* TutorialStepsProtocol.h */,
+				D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */,
+				D976D23E1B98FA940032BC41 /* UIColor+Habitica.h */,
+				D93422B71AB792B5003AFCDE /* UIColor+LighterDarker.h */,
+				D93422B81AB792B5003AFCDE /* UIColor+LighterDarker.m */,
+				D91439881BAF14C40006999E /* UIImage+withColor.h */,
+				D91439891BAF14C40006999E /* UIImage+withColor.m */,
+				D994B1471AD9177D008AE188 /* UIView+Screenshot.h */,
+				D994B1481AD9177D008AE188 /* UIView+Screenshot.m */,
 				494E53FC1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.h */,
 				494E53FD1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m */,
-				494E53FF1F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.h */,
-				494E54001F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m */,
-				494E540E1F2EEF810003683C /* Amplitude+HRPGHelpers.h */,
-				494E540F1F2EEF810003683C /* Amplitude+HRPGHelpers.m */,
+				D9436ABF1C63A4BB008D1171 /* UIViewController+Markdown.h */,
+				D9436AC01C63A4BB008D1171 /* UIViewController+Markdown.m */,
+				D9CD2DD31BCAA6F700B1304B /* UIViewController+TutorialSteps.h */,
+				D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */,
+				D96C85461DCCD8BC003E3616 /* UIWindow+VisibleController.h */,
+				D96C85471DCCD8BC003E3616 /* UIWindow+VisibleController.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -2221,7 +2204,6 @@
 			children = (
 				D9EB4E8B18CB4A9400BB2094 /* Habitica.app */,
 				D94461831AB34F5C0015215E /* HabiticaTests.xctest */,
-				D90576781BD82DB8009BB7BC /* HabitRPGUITests.xctest */,
 				29701FEB1F5848880097BBCC /* Habitica Snapshots.xctest */,
 			);
 			name = Products;
@@ -2349,24 +2331,6 @@
 			productReference = 29701FEB1F5848880097BBCC /* Habitica Snapshots.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		D90576771BD82DB8009BB7BC /* HabitRPGUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D905767F1BD82DB8009BB7BC /* Build configuration list for PBXNativeTarget "HabitRPGUITests" */;
-			buildPhases = (
-				D90576741BD82DB8009BB7BC /* Sources */,
-				D90576751BD82DB8009BB7BC /* Frameworks */,
-				D90576761BD82DB8009BB7BC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D905767E1BD82DB8009BB7BC /* PBXTargetDependency */,
-			);
-			name = HabitRPGUITests;
-			productName = HabitRPGUITests;
-			productReference = D90576781BD82DB8009BB7BC /* HabitRPGUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		D94461821AB34F5C0015215E /* HabiticaTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D944618B1AB34F5C0015215E /* Build configuration list for PBXNativeTarget "HabiticaTests" */;
@@ -2430,16 +2394,13 @@
 					29701FEA1F5848880097BBCC = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 9Q9SMRMCNN;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
-						TestTargetID = D9EB4E8A18CB4A9400BB2094;
-					};
-					D90576771BD82DB8009BB7BC = {
-						CreatedOnToolsVersion = 7.0.1;
 						TestTargetID = D9EB4E8A18CB4A9400BB2094;
 					};
 					D94461821AB34F5C0015215E = {
 						CreatedOnToolsVersion = 6.1;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0920;
 						TestTargetID = D9EB4E8A18CB4A9400BB2094;
 					};
 					D9EB4E8A18CB4A9400BB2094 = {
@@ -2480,7 +2441,6 @@
 			targets = (
 				D9EB4E8A18CB4A9400BB2094 /* Habitica */,
 				D94461821AB34F5C0015215E /* HabiticaTests */,
-				D90576771BD82DB8009BB7BC /* HabitRPGUITests */,
 				29701FEA1F5848880097BBCC /* Habitica Snapshots */,
 			);
 		};
@@ -2491,14 +2451,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D90576761BD82DB8009BB7BC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D9B2F28F1D99669C001810BD /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2898,14 +2850,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D90576741BD82DB8009BB7BC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D9BB28411D5CF3C7003894A8 /* HRPGDailyTableViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D944617F1AB34F5C0015215E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3236,11 +3180,6 @@
 			target = D9EB4E8A18CB4A9400BB2094 /* Habitica */;
 			targetProxy = 29701FF01F5848890097BBCC /* PBXContainerItemProxy */;
 		};
-		D905767E1BD82DB8009BB7BC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D9EB4E8A18CB4A9400BB2094 /* Habitica */;
-			targetProxy = D905767D1BD82DB8009BB7BC /* PBXContainerItemProxy */;
-		};
 		D944618A1AB34F5C0015215E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D9EB4E8A18CB4A9400BB2094 /* Habitica */;
@@ -3414,48 +3353,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Habitica;
-			};
-			name = Release;
-		};
-		D90576801BD82DB8009BB7BC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = HabitRPGUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = net.pherth.ios.HabitRPGUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_TARGET_NAME = Habitica;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		D90576811BD82DB8009BB7BC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = HabitRPGUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = net.pherth.ios.HabitRPGUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = Habitica;
-				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -3777,7 +3674,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HabitRPG/UI/Habitica-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
@@ -3868,7 +3765,7 @@
 				PRODUCT_NAME = Habitica;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HabitRPG/UI/Habitica-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
@@ -3883,15 +3780,6 @@
 			buildConfigurations = (
 				29701FF21F5848890097BBCC /* Debug */,
 				29701FF31F5848890097BBCC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D905767F1BD82DB8009BB7BC /* Build configuration list for PBXNativeTarget "HabitRPGUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D90576801BD82DB8009BB7BC /* Debug */,
-				D90576811BD82DB8009BB7BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -10,6 +10,7 @@ import UIKit
 
 extension UIAlertAction {
     
+    @objc
     static func cancelAction(handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertAction {
         return UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: {(action) in
             if let clickHandler = handler {
@@ -18,6 +19,7 @@ extension UIAlertAction {
         })
     }
     
+    @objc
     static func okAction(handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertAction {
         return UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: {(action) in
             if let clickHandler = handler {

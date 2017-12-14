@@ -15,7 +15,7 @@ class LoginEntryView: UIView, UITextFieldDelegate {
         didSet {
             if let text = placeholderText {
                 let color = UIColor.white.withAlphaComponent(0.5)
-                entryView.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName: color])
+                entryView.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedStringKey.foregroundColor: color])
             } else {
                 entryView.placeholder = ""
             }
@@ -113,6 +113,7 @@ class LoginEntryView: UIView, UITextFieldDelegate {
         return false
     }
     
+    @objc
     func tappedView() {
         entryView.becomeFirstResponder()
     }

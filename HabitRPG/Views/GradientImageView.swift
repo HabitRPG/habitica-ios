@@ -10,7 +10,7 @@ import UIKit
 
 class GradientImageView: UIImageView {
     private var _gradient: CAGradientLayer?
-    open var gradient: CAGradientLayer? {
+    @objc open var gradient: CAGradientLayer? {
         set {
             gradient?.removeFromSuperlayer()
             _gradient = newValue

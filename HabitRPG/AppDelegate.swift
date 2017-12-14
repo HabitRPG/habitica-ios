@@ -18,20 +18,23 @@ import Alamofire
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.
 class HabiticaAppDelegate: NSObject {
     
+    @objc
     func setupPopups() {
         let appearance = PopupDialogOverlayView.appearance()
         appearance.color = UIColor.purple50()
         appearance.opacity = 0.6
         appearance.blurEnabled = false
-        var dialogAppearance = PopupDialogDefaultView.appearance()
+        let dialogAppearance = PopupDialogDefaultView.appearance()
         dialogAppearance.cornerRadius = 12
 
     }
     
+    @objc
     func setupLogging() {
         Fabric.with([Crashlytics.self])
     }
     
+    @objc
     func setupAnalytics() {
         guard let gai = GAI.sharedInstance() else {
             assert(false, "Google Analytics not configured correctly")
@@ -44,6 +47,7 @@ class HabiticaAppDelegate: NSObject {
         Amplitude.instance().initializeApiKey(keys.amplitudeApiKey)
     }
     
+    @objc
     func handleInitialLaunch() {
         let defaults = UserDefaults.standard
         if !defaults.bool(forKey: "wasLaunchedBefore") {
@@ -69,6 +73,7 @@ class HabiticaAppDelegate: NSObject {
         }
     }
 
+    @objc
     func handleMaintenanceScreen() {
         Alamofire.request("https://habitica-assets.s3.amazonaws.com/mobileApp/endpoint/maintenance-ios.json")
             .validate()
@@ -93,6 +98,7 @@ class HabiticaAppDelegate: NSObject {
         }
     }
     
+    @objc
     func displayMaintenanceScreen(data: NSDictionary, isDeprecated: Bool) {
         if let presentedController = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.presentedViewController {
         if !(presentedController is HRPGMaintenanceViewController) {
@@ -106,6 +112,7 @@ class HabiticaAppDelegate: NSObject {
         }
     }
     
+    @objc
     func hideMaintenanceScreen() {
         if let presentedController = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.presentedViewController {
             if presentedController is HRPGMaintenanceViewController {

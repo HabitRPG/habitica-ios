@@ -20,7 +20,7 @@ extension Down {
             return NSMutableAttributedString()
         }
         let fontSizeOffset = baseFont.pointSize - 12.0
-        string.enumerateAttribute(NSFontAttributeName,
+        string.enumerateAttribute(NSAttributedStringKey.font,
                                   in: NSRange(location: 0, length: string.length),
                                   options: NSAttributedString.EnumerationOptions.longestEffectiveRangeNotRequired,
                                   using: { (value, range, _) in
@@ -33,7 +33,7 @@ extension Down {
                 } else {
                     font = UIFont.systemFont(ofSize: oldFont.pointSize+fontSizeOffset)
                 }
-                string.addAttribute(NSFontAttributeName, value: font, range: range)
+                string.addAttribute(NSAttributedStringKey.font, value: font, range: range)
             }
         })
         return string
@@ -42,6 +42,7 @@ extension Down {
 
 class HabiticaMarkdownHelper: NSObject {
     
+    @objc
     static func toHabiticaAttributedString(_ text: String) throws -> NSMutableAttributedString {
         if let attributedString =  try? Down(markdownString: text).toHabiticaAttributedString() {
             return attributedString

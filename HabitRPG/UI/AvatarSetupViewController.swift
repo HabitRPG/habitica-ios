@@ -117,22 +117,27 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         currentCategory = .body
     }
     
+    @objc
     func setBodyCategory() {
         currentCategory = .body
     }
     
+    @objc
     func setSkinCategory() {
         currentCategory = .skin
     }
     
+    @objc
     func setHairCategory() {
         currentCategory = .hair
     }
     
+    @objc
     func setExtrasCategory() {
         currentCategory = .extras
     }
     
+    @objc
     func randomizeButtonTapped() {
         guard let user = self.user else {
             return
@@ -263,6 +268,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         }
     }
     
+    @objc
     func subcategoryTapped(_ sender: UIButton!) {
         updateSubcategoryIndicator(sender)
         guard let activeIndex = subCategoryContainer.arrangedSubviews.index(of: sender) else {
@@ -289,6 +295,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         }
     }
     
+    @objc
     func setupCustomizationTapped(_ sender: UITapGestureRecognizer) {
         guard let view = sender.view as? SetupCustomizationItemView else {
             return
@@ -305,7 +312,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         let newCustomization = content[activeIndex]
         if newCustomization.path == "glasses" {
             var key: String?
-            if newCustomization.key.characters.count == 0 {
+            if newCustomization.key.count == 0 {
                 key = user?.equipped.eyewear
             } else {
                 key = newCustomization.key

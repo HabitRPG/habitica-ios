@@ -113,6 +113,7 @@ class StatsView: UIView {
         }
     }
     
+    @objc
     func allocateButtonTapped() {
         if let action = allocateAction {
             action()

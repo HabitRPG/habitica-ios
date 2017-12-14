@@ -22,14 +22,14 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
     private let (lifetime, token) = Lifetime.make()
     private var disposable: CompositeDisposable = CompositeDisposable()
 
-    var showOnlyUserChallenges = true
+    @objc var showOnlyUserChallenges = true
 
     var displayedAlert: ChallengeDetailAlert?
 
     var isFiltering = false
     var showOwned = true
     var showNotOwned = true
-    var shownGuilds: [String]?
+    @objc var shownGuilds: [String]?
 
     let segmentedFilterControl = UISegmentedControl(items: [NSLocalizedString("My Challenges", comment: ""), NSLocalizedString("Public Challenges", comment: "")])
 
@@ -124,6 +124,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
                                                  asDelegateFor: self.tableView)
     }
 
+    @objc
     func switchFilter(_ segmentedControl: UISegmentedControl) {
         self.showOnlyUserChallenges = self.segmentedFilterControl.selectedSegmentIndex == 0
         self.dataSource?.reconfigureFetchRequest()
@@ -182,6 +183,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         self.tableView.reloadData()
     }
 
+    @objc
     func filterTapped(_ sender: UIButton!) {
         let viewController = ChallengeFilterAlert()
         viewController.showOwned = showOwned
@@ -228,7 +230,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
             searchComponents.append(component)
         }
         if let searchText = self.searchText {
-            if searchText.characters.count > 0 {
+            if searchText.count > 0 {
                 searchComponents.append("((name CONTAINS[cd] \'\(searchText)\') OR (notes CONTAINS[cd] \'\(searchText)\'))")
             }
         }

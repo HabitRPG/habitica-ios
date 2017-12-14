@@ -25,7 +25,7 @@ class LeaveChallengeInteractor: Interactor<Challenge, Bool> {
                 return shouldLeave
             }.flatMap(.concat) { (_, keepTasks, challenge) -> Signal<Bool, NSError> in
                 let (signal, observer) = Signal<Bool, NSError>.pipe()
-                HRPGManager.shared().leave(challenge, keepTasks:keepTasks, onSuccess: {
+                HRPGManager.shared().leave(challenge, keepTasks: keepTasks, onSuccess: {
                     observer.send(value: false)
                 }, onError: {
                     observer.send(error: NSError())
@@ -43,7 +43,7 @@ class LeaveChallengeInteractor: Interactor<Challenge, Bool> {
         alert.addAction(title: NSLocalizedString("Delete tasks", comment: ""), style: .destructive, handler: { (_) in
             observer.send(value: (true, false, challenge))
         })
-        alert.setCloseAction(title: NSLocalizedString("Cancel", comment: ""), handler: { (_) in
+        alert.setCloseAction(title: NSLocalizedString("Cancel", comment: ""), handler: {
             observer.send(value: (false, false, challenge))
         })
         alert.show()

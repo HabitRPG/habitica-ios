@@ -27,6 +27,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     var tasks: [Task]?
     var user: User?
 
+    @objc
     static func showDialog(sharedManager: HRPGManager, user: User) {
         let viewController = YesterdailiesDialogView(nibName: "YesterdailiesDialogView", bundle: Bundle.main)
         viewController.sharedManager = sharedManager

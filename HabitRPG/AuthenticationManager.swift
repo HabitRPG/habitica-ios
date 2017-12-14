@@ -11,8 +11,9 @@ import PDKeychainBindingsController
 import KeychainAccess
 class AuthenticationManager: NSObject {
     
-    static let shared = AuthenticationManager()
+    @objc static let shared = AuthenticationManager()
 
+    @objc
     func migrateAuthentication() {
         let defaults = UserDefaults.standard
         guard let oldKeychain = PDKeychainBindingsController.shared() else {
@@ -29,7 +30,7 @@ class AuthenticationManager: NSObject {
             .accessibility(.afterFirstUnlock)
     }
     
-    var currentUserId: String? {
+    @objc var currentUserId: String? {
         get {
             let defaults = UserDefaults.standard
             return defaults.string(forKey: "currentUserId")
@@ -41,7 +42,7 @@ class AuthenticationManager: NSObject {
         }
     }
     
-    var currentUserKey: String? {
+    @objc var currentUserKey: String? {
         get {
             if let userId = self.currentUserId {
                 return keychain[userId]
@@ -56,22 +57,25 @@ class AuthenticationManager: NSObject {
         }
     }
     
+    @objc
     func hasAuthentication() -> Bool {
         if UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT") {
             //If in snapshot mode it should always start fresh on launch
             return false
         }
         if let userId = self.currentUserId {
-            return userId.characters.count > 0
+            return userId.count > 0
         }
         return false
     }
     
+    @objc
     func setAuthentication(userId: String, key: String) {
         currentUserId = userId
         currentUserKey = key
     }
     
+    @objc
     func clearAuthenticationForAllUsers() {
         currentUserId = nil
         currentUserKey = nil
@@ -83,6 +87,7 @@ class AuthenticationManager: NSObject {
         oldKeychain.store(nil, forKey: "key")
     }
     
+    @objc
     func clearAuthentication(userId: String) {
         //Will be used once we support multiple users
         clearAuthenticationForAllUsers()

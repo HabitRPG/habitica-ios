@@ -49,6 +49,7 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
         }
     }
     
+    @objc
     func refresh() {
         HRPGManager.shared().fetchUser(true, onSuccess: {[weak self] in
             self?.refreshControl.endRefreshing()

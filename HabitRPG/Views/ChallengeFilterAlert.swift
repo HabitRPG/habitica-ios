@@ -18,7 +18,7 @@ class ChallengeFilterAlert: UIViewController {
     @IBOutlet weak private var doneButton: UIButton!
     @IBOutlet weak private var allGroupsButton: UIButton!
     @IBOutlet weak private var noGroupsButton: UIButton!
-    @IBOutlet weak private var groupListView: TZStackView!
+    @IBOutlet weak private var groupListView: UIStackView!
     @IBOutlet weak private var ownedButton: LabeledCheckboxView!
     @IBOutlet weak private var notOwnedButton: LabeledCheckboxView!
 

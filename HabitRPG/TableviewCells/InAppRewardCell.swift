@@ -61,7 +61,7 @@ class InAppRewardCell: UICollectionViewCell {
     
     public var imageName = "" {
         didSet {
-            if imageName.characters.count == 0 {
+            if imageName.count == 0 {
                 return
             }
             if imageName.contains(" ") {
@@ -145,13 +145,10 @@ class InAppRewardCell: UICollectionViewCell {
             switch currency {
             case .gold:
                 canAfford = price < user.gold.floatValue
-                break
             case .gem:
                 canAfford = price < user.balance.floatValue*4
-                break
             case .hourglass:
                 canAfford = price < user.subscriptionPlan.consecutiveTrinkets?.floatValue ?? 0
-                break
             }
         }
     

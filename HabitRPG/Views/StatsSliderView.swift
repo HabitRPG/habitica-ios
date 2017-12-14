@@ -55,6 +55,7 @@ class StatsSliderView: UIView {
         slider.addTarget(self, action: #selector(sliderChanged), for: .valueChanged)
     }
     
+    @objc
     func sliderChanged() {
         let newValue = roundf(slider.value)
         slider.value = newValue

@@ -22,9 +22,9 @@ class CheckedTableViewCell: TaskTableViewCell {
     @IBOutlet weak var checklistRightBorderView: UIView!
     
     weak var task: Task?
-    var isExpanded = false
-    var checkboxTouched: (() -> Void)?
-    var checklistItemTouched: ((_ item: ChecklistItem) -> Void)?
+    @objc var isExpanded = false
+    @objc var checkboxTouched: (() -> Void)?
+    @objc var checklistItemTouched: ((_ item: ChecklistItem) -> Void)?
 
     override func configure(task: Task) {
         self.task = task
@@ -132,6 +132,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         self.accessibilityLabel = "\(stateText), \(task.text ?? "")"
     }
     
+    @objc
     func checkTask() {
         if let action = checkboxTouched {
             action()

@@ -101,7 +101,7 @@ class IconLabel: UIView {
                                                       attribute: NSLayoutAttribute.notAnAttribute,
                                                       multiplier: 1,
                                                       constant: 18)
-        widthConstraint.priority = 500
+        widthConstraint.priority = UILayoutPriority(rawValue: 500)
         self.addConstraint(widthConstraint)
         
         setNeedsUpdateConstraints()

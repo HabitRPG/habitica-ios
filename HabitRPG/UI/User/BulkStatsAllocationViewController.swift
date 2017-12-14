@@ -109,8 +109,11 @@ class BulkStatsAllocationViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-        HRPGManager.shared().bulkAllocateAttributePoint(strengthSliderView.value, intelligence: intelligenceSliderView.value, constitution: constitutionSliderView.value, perception: perceptionSliderView.value, onSuccess: {
-        }, onError: {
-        })
+        HRPGManager.shared().bulkAllocateAttributePoint(strengthSliderView.value,
+                                                        intelligence: intelligenceSliderView.value,
+                                                        constitution: constitutionSliderView.value,
+                                                        perception: perceptionSliderView.value,
+                                                        onSuccess: {},
+                                                        onError: {})
     }
 }

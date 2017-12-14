@@ -77,6 +77,8 @@
 @dynamic needsCron;
 @dynamic loginIncentives;
 @dynamic pointsToAllocate;
+@dynamic loginname;
+@dynamic photoUrl;
 
 @synthesize petCount = _petCount;
 @synthesize customizationsDictionary;
