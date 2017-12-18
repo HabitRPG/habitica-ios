@@ -25,10 +25,10 @@ class ChallengeTableViewCell: UITableViewCell {
         self.prizeLabel.text = challenge.prize?.stringValue
         self.nameLabel.text = challenge.name?.unicodeEmoji
 
-        self.groupLabel.text = challenge.group?.name.unicodeEmoji
+        self.groupLabel.text = challenge.group?.name?.unicodeEmoji
 
         if let leaderName = challenge.leaderName {
-            self.leaderLabel.text = "By \(leaderName.unicodeEmoji)".localized
+            self.leaderLabel.text = NSLocalizedString("By \(leaderName.unicodeEmoji)", comment: "")
         }
         self.memberCountLabel.text = challenge.memberCount?.stringValue
 
