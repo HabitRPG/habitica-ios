@@ -22,19 +22,19 @@
 @property XLFormSectionDescriptor *reminderSection;
 @property XLFormSectionDescriptor *appBadgeSection;
 @property XLFormRowDescriptor *pushNotificationRow;
+@property User *user;
 @end
 
 @implementation HRPGSettingsViewController
 NSUserDefaults *defaults;
-User *user;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
         defaults = [NSUserDefaults standardUserDefaults];
-        user = [[HRPGManager sharedManager] getUser];
-        self.username = user.username;
+        self.user = [[HRPGManager sharedManager] getUser];
+        self.username = self.user.username;
 
         [self initializeForm];
     }
@@ -110,16 +110,16 @@ User *user;
                                                   title:NSLocalizedString(@"Fix Character Values", nil)];
     [section addFormRow:row];
     
-    if ([user.level integerValue] > 10) {
+    if ([self.user.level integerValue] >= 10) {
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"selectClass"
                                                     rowType:XLFormRowDescriptorTypeInfo
                                                       title:nil];
-        if ([user.flags.classSelected boolValue] && ![user.preferences.disableClass boolValue]) {
+        if ([self.user.flags.classSelected boolValue] && ![self.user.preferences.disableClass boolValue]) {
             row.title = NSLocalizedString(@"Change Class", nil);
             row.value = [NSString stringWithFormat:NSLocalizedString(@"%@ Gems", nil), @3];
-        } else if ([user.preferences.disableClass boolValue]) {
+        } else if ([self.user.preferences.disableClass boolValue]) {
             row.title = NSLocalizedString(@"Enable Class System", nil);
-        } else if (![user.flags.classSelected boolValue]) {
+        } else if (![self.user.flags.classSelected boolValue]) {
             row.title = NSLocalizedString(@"Select Class", nil);
         }
         [section addFormRow:row];
@@ -178,9 +178,9 @@ User *user;
     }
     row.selectorOptions = hourOptions;
     NSDate *currentDayStart = [dateFormatter
-        dateFromString:[NSString stringWithFormat:@"%@:00:00", user.preferences.dayStart]];
+        dateFromString:[NSString stringWithFormat:@"%@:00:00", self.user.preferences.dayStart]];
     row.value = [XLFormOptionsObject
-        formOptionsObjectWithValue:user.preferences.dayStart
+        formOptionsObjectWithValue:self.user.preferences.dayStart
                        displayText:[NSDateFormatter
                                        localizedStringFromDate:currentDayStart
                                                      dateStyle:NSDateFormatterNoStyle
@@ -189,7 +189,7 @@ User *user;
     section = [XLFormSectionDescriptor formSectionWithTitle:NSLocalizedString(@"Social", nil)];
     [formDescriptor addFormSection:section];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"disablePushNotifications" rowType:XLFormRowDescriptorTypeBooleanSwitch title:NSLocalizedString(@"Disable all Push Notifications", nil)];
-    row.value = [XLFormOptionsObject formOptionsOptionForValue:user.preferences.pushNotifications.unsubscribeFromAll fromOptions:nil];
+    row.value = [XLFormOptionsObject formOptionsOptionForValue:self.user.preferences.pushNotifications.unsubscribeFromAll fromOptions:nil];
     [row.cellConfig setObject:[UIColor purple400] forKey:@"self.tintColor"];
     [section addFormRow:row];
     self.pushNotificationRow =
@@ -202,7 +202,7 @@ User *user;
     [section addFormRow:self.pushNotificationRow];
 
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"disableInbox" rowType:XLFormRowDescriptorTypeBooleanSwitch title:NSLocalizedString(@"Disable Private Messages", nil)];
-    row.value = [XLFormOptionsObject formOptionsOptionForValue:user.inboxOptOut fromOptions:nil];
+    row.value = [XLFormOptionsObject formOptionsOptionForValue:self.user.inboxOptOut fromOptions:nil];
     [row.cellConfig setObject:[UIColor purple400] forKey:@"self.tintColor"];
     [section addFormRow:row];
 
@@ -277,28 +277,28 @@ User *user;
     self.pushNotificationRow.selectorOptions = selectorOptions;
 
     NSMutableArray *valueOptions = [NSMutableArray arrayWithCapacity:8];
-    if ([user.preferences.pushNotifications.wonChallenge boolValue]) {
+    if ([self.user.preferences.pushNotifications.wonChallenge boolValue]) {
         [valueOptions addObject:selectorOptions[0]];
     }
-    if ([user.preferences.pushNotifications.newPM boolValue]) {
+    if ([self.user.preferences.pushNotifications.newPM boolValue]) {
         [valueOptions addObject:selectorOptions[1]];
     }
-    if ([user.preferences.pushNotifications.giftedGems boolValue]) {
+    if ([self.user.preferences.pushNotifications.giftedGems boolValue]) {
         [valueOptions addObject:selectorOptions[2]];
     }
-    if ([user.preferences.pushNotifications.giftedSubscription boolValue]) {
+    if ([self.user.preferences.pushNotifications.giftedSubscription boolValue]) {
         [valueOptions addObject:selectorOptions[3]];
     }
-    if ([user.preferences.pushNotifications.invitedParty boolValue]) {
+    if ([self.user.preferences.pushNotifications.invitedParty boolValue]) {
         [valueOptions addObject:selectorOptions[4]];
     }
-    if ([user.preferences.pushNotifications.invitedGuild boolValue]) {
+    if ([self.user.preferences.pushNotifications.invitedGuild boolValue]) {
         [valueOptions addObject:selectorOptions[5]];
     }
-    if ([user.preferences.pushNotifications.questStarted boolValue]) {
+    if ([self.user.preferences.pushNotifications.questStarted boolValue]) {
         [valueOptions addObject:selectorOptions[6]];
     }
-    if ([user.preferences.pushNotifications.invitedQuest boolValue]) {
+    if ([self.user.preferences.pushNotifications.invitedQuest boolValue]) {
         [valueOptions addObject:selectorOptions[7]];
     }
     self.pushNotificationRow.value = valueOptions;
@@ -381,7 +381,7 @@ User *user;
     } else if ([formRow.tag isEqualToString:@"fixCharacterValues"]) {
         [self performSegueWithIdentifier:@"FixValuesSegue" sender:self];
     } else if ([formRow.tag isEqualToString:@"selectClass"]) {
-        if ([user.flags.classSelected boolValue] && ![user.preferences.disableClass boolValue]) {
+        if ([self.user.flags.classSelected boolValue] && ![self.user.preferences.disableClass boolValue]) {
             HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Are you sure?", nil) message:NSLocalizedString(@"This will reset your character's class and "
                                                                                                                                                            @"allocated points (you'll get them all back "
                                                                                                                                                            @"to re-allocate), and costs 3 gems.",
@@ -431,12 +431,12 @@ User *user;
     } else if ([rowDescriptor.tag isEqualToString:@"disablePushNotifications"]) {
         self.pushNotificationRow.disabled = newValue;
         [self updateFormRow:self.pushNotificationRow];
-        PushNotifications *pushNotifications = user.preferences.pushNotifications;
+        PushNotifications *pushNotifications = self.user.preferences.pushNotifications;
         pushNotifications.unsubscribeFromAll = newValue;
         [self changePushNotificationSettings:pushNotifications];
     } else if ([rowDescriptor.tag isEqualToString:@"pushNotifications"]) {
         NSArray *values = self.formValues[@"pushNotifications"];
-        PushNotifications *pushNotifications = user.preferences.pushNotifications;
+        PushNotifications *pushNotifications = self.user.preferences.pushNotifications;
         NSMutableArray *newValues = [NSMutableArray arrayWithCapacity:values.count];
         for (XLFormOptionsObject *value in values) {
             [newValues addObject:value.valueData];
@@ -483,7 +483,7 @@ User *user;
     selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
     HRPGClassTableViewController *classTableViewController =
         (HRPGClassTableViewController *)selectClassNavigationController.topViewController;
-    classTableViewController.shouldResetClass = [user.flags.classSelected boolValue] || [user.preferences.disableClass boolValue];
+    classTableViewController.shouldResetClass = [self.user.flags.classSelected boolValue] || [self.user.preferences.disableClass boolValue];
     [self presentViewController:selectClassNavigationController animated:YES completion:^(){}];
 }
 

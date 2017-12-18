@@ -2239,13 +2239,18 @@ NSString *currentUser;
         NSArray *fetchedObjects =
             [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
         if ([fetchedObjects count] > 0) {
-            self.user = [fetchedObjects lastObject];
+            self.user = [fetchedObjects firstObject];
             if ([fetchedObjects count] > 1) {
                 NSDictionary *userInfo = @{
                                            NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedString(@"Invalid number of user objects: %d", nil), [fetchedObjects count]],
                                            };
                 NSError *error = [NSError errorWithDomain:NSSQLiteErrorDomain code:-10 userInfo:userInfo];
                 [CrashlyticsKit recordError:error];
+                for (int x = 1; x < fetchedObjects.count; x++) {
+                    User *user = fetchedObjects[x];
+                    [[self getManagedObjectContext] deleteObject:user];
+                    [self fetchUser:nil onError:nil];
+                }
             }
         } else {
             [self fetchUser:nil onError:nil];

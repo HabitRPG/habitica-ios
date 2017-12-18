@@ -275,7 +275,6 @@
 }
 
 - (void) openQuestSelection {
-    
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController *itemNavigationController =
     [storyBoard instantiateViewControllerWithIdentifier:@"ItemNavigationController"];

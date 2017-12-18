@@ -793,8 +793,7 @@
             return [self.summaryInteractor repeatablesSummaryWithFrequency:values[@"frequency"].valueData everyX:values[@"everyX"].valueData monday:values[@"monday"].valueData tuesday:values[@"tuesday"].valueData wednesday:values[@"wednesday"].valueData thursday:values[@"thursday"].valueData friday:values[@"friday"].valueData saturday:values[@"saturday"].valueData sunday:values[@"sunday"].valueData startDate:values[@"startDate"].valueData daysOfMonth:daysOfMonth weeksOfMonth:weeksOfMonth];
         }
         if (section == 3) {
-            return NSLocalizedString(@"Each reminder notifies on the days the daily is active.",
-                                     nil);
+            return NSLocalizedString(@"Each reminder notifies on the days the daily is active.", nil);
         }
     }
     return nil;
