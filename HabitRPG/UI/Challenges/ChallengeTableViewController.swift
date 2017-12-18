@@ -184,11 +184,10 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ChallengeDetailsTableViewController {
-            let viewModel = ChallengeDetailViewModel()
-            HRPGManager.shared().fetchChallengeTasks(self.selectedChallenge, onSuccess: {[weak self] () in
-                viewModel.setChallenge(self?.selectedChallenge)
-                }, onError: nil)
-            vc.viewModel = viewModel
+            if let selectedChallenge = self.selectedChallenge {
+                let viewModel = ChallengeDetailViewModel(challenge: selectedChallenge)
+                vc.viewModel = viewModel
+            }
         }
         if let challengeDetailViewController = segue.destination as? ChallengeDetailTableViewController {
             challengeDetailViewController.challengeId = self.selectedChallenge?.id

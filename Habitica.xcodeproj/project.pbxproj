@@ -145,6 +145,7 @@
 		498E4D041FA17C31006933FF /* ChallengeDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 498E4D021FA17C31006933FF /* ChallengeDescriptionTableViewCell.xib */; };
 		498E4D071FA17DB9006933FF /* ChallengeActionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498E4D051FA17DB9006933FF /* ChallengeActionsTableViewCell.swift */; };
 		498E4D081FA17DB9006933FF /* ChallengeActionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 498E4D061FA17DB9006933FF /* ChallengeActionsTableViewCell.xib */; };
+		49A4646B1FCD18FD00E14A5D /* HRPGButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A4646A1FCD18FD00E14A5D /* HRPGButtonViewModel.swift */; };
 		49A84FB21F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A84FB01F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift */; };
 		49A84FB31F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A84FB11F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib */; };
 		49DCB7991F3407B30079FDD0 /* BuyModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */; };
@@ -619,6 +620,7 @@
 		498E4D051FA17DB9006933FF /* ChallengeActionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeActionsTableViewCell.swift; sourceTree = "<group>"; };
 		498E4D061FA17DB9006933FF /* ChallengeActionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeActionsTableViewCell.xib; sourceTree = "<group>"; };
 		498E4D091FA4F2B3006933FF /* HRPGTaskProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGTaskProtocol.h; sourceTree = "<group>"; };
+		49A4646A1FCD18FD00E14A5D /* HRPGButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRPGButtonViewModel.swift; sourceTree = "<group>"; };
 		49A84FB01F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailInfoTableViewCell.swift; sourceTree = "<group>"; };
 		49A84FB11F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeDetailInfoTableViewCell.xib; sourceTree = "<group>"; };
 		49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BuyModal.storyboard; sourceTree = "<group>"; };
@@ -1363,6 +1365,7 @@
 				494E54231F3124890003683C /* HRPGShopViewModel.h */,
 				494E54241F3124890003683C /* HRPGShopViewModel.m */,
 				493ECBCA1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift */,
+				49A4646A1FCD18FD00E14A5D /* HRPGButtonViewModel.swift */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -3071,6 +3074,7 @@
 				D92A085A1D3520D8000F8B66 /* Shop.m in Sources */,
 				D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */,
 				D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */,
+				49A4646B1FCD18FD00E14A5D /* HRPGButtonViewModel.swift in Sources */,
 				29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */,
 				D979AD1A1AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
