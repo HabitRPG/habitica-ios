@@ -91,17 +91,17 @@
                                                       title:NSLocalizedString(@"Attributes", nil)];
         row.selectorOptions = @[
             [XLFormOptionsObject formOptionsObjectWithValue:@"str"
-                                                displayText:NSLocalizedString(@"Physical", nil)],
+                                                displayText:NSLocalizedString(@"Strength", nil)],
             [XLFormOptionsObject formOptionsObjectWithValue:@"int"
-                                                displayText:NSLocalizedString(@"Mental", nil)],
+                                                displayText:NSLocalizedString(@"Intelligence", nil)],
             [XLFormOptionsObject formOptionsObjectWithValue:@"con"
-                                                displayText:NSLocalizedString(@"Social", nil)],
+                                                displayText:NSLocalizedString(@"Constitution", nil)],
             [XLFormOptionsObject formOptionsObjectWithValue:@"per"
-                                                displayText:NSLocalizedString(@"Other", nil)]
+                                                displayText:NSLocalizedString(@"Perception", nil)]
         ];
         row.value =
             [XLFormOptionsObject formOptionsObjectWithValue:@"str"
-                                                displayText:NSLocalizedString(@"Physical", nil)];
+                                                displayText:NSLocalizedString(@"Strength", nil)];
         row.required = YES;
         row.selectorTitle = NSLocalizedString(@"Select Attributes", nil);
         [section addFormRow:row];
@@ -303,19 +303,19 @@
     if ([self.task.attribute isEqualToString:@"str"]) {
         [self.form formRowWithTag:@"attribute"].value =
             [XLFormOptionsObject formOptionsObjectWithValue:self.task.attribute
-                                                displayText:NSLocalizedString(@"Physical", nil)];
+                                                displayText:NSLocalizedString(@"Strength", nil)];
     } else if ([self.task.attribute isEqualToString:@"int"]) {
         [self.form formRowWithTag:@"attribute"].value =
             [XLFormOptionsObject formOptionsObjectWithValue:self.task.attribute
-                                                displayText:NSLocalizedString(@"Mental", nil)];
+                                                displayText:NSLocalizedString(@"Intelligence", nil)];
     } else if ([self.task.attribute isEqualToString:@"con"]) {
         [self.form formRowWithTag:@"attribute"].value =
             [XLFormOptionsObject formOptionsObjectWithValue:self.task.attribute
-                                                displayText:NSLocalizedString(@"Social", nil)];
+                                                displayText:NSLocalizedString(@"Constitution", nil)];
     } else if ([self.task.attribute isEqualToString:@"per"]) {
         [self.form formRowWithTag:@"attribute"].value =
             [XLFormOptionsObject formOptionsObjectWithValue:self.task.attribute
-                                                displayText:NSLocalizedString(@"Other", nil)];
+                                                displayText:NSLocalizedString(@"Perception", nil)];
     }
 
     if (![self.taskType isEqualToString:@"habit"]) {
