@@ -46,15 +46,16 @@
         cell.textLabel.text = faq.question;
     };
     FetchRequestConfigureBlock configureFetchRequest = ^(NSFetchRequest *fetchRequest) {
-        if (weakSelf.searchText) {
+        if (weakSelf.searchText && weakSelf.searchText.length > 0) {
             NSPredicate *predicate =
             [NSPredicate predicateWithFormat:@"question CONTAINS[cd] %@", weakSelf.searchText];
             
             [fetchRequest setPredicate:predicate];
+        } else {
+            [fetchRequest setPredicate:nil];
         }
         
-        NSSortDescriptor *indexDescriptor =
-        [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
+        NSSortDescriptor *indexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
         NSArray *sortDescriptors = @[ indexDescriptor ];
         
         [fetchRequest setSortDescriptors:sortDescriptors];
