@@ -783,7 +783,7 @@
 }
 
 - (BOOL)isSubscribed {
-    return self.subscriptionPlan.planId != nil && (self.subscriptionPlan.dateTerminated == nil || [self.subscriptionPlan.dateTerminated compare:[NSDate date]] != NSOrderedDescending);
+    return self.subscriptionPlan.customerId != nil && (self.subscriptionPlan.dateTerminated == nil || [self.subscriptionPlan.dateTerminated compare:[NSDate date]] != NSOrderedDescending);
 }
 
 - (BOOL)hasClassSelected {
