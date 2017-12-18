@@ -5382,16 +5382,14 @@ NSString *currentUser;
 - (void)displayLevelUpNotification {
     [self fetchUser:nil onError:nil];
 
-    if ([self.user.level integerValue] == 10 && ![self.user.preferences.disableClass boolValue]) {
+    if ([self.user.level integerValue] >= 10 && ![self.user.preferences.disableClass boolValue]) {
         HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
-        UIViewController *activeViewController = del.window.rootViewController;
+        UIViewController *activeViewController = del.window.visibleViewController;
         UINavigationController *selectClassNavigationController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
         selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
         [activeViewController presentViewController:selectClassNavigationController
                                            animated:YES
-                                         completion:^(){
-
-                                         }];
+                                         completion:^(){}];
     } else {
         NSArray *nibViews =
         [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView" owner:self options:nil];
