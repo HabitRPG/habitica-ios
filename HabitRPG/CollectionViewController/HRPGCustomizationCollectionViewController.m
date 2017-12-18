@@ -172,6 +172,11 @@ static NSString *const reuseIdentifier = @"Cell";
         if (self.pinnedItems[customization.name]) {
             pinString = NSLocalizedString(@"Unpin from Rewards", nil);
         }
+        
+        if ([self unselectingBackground: customization]) {
+            actionString = NSLocalizedString(@"Unselect", nil);
+        }
+        
         path = [NSString stringWithFormat:@"backgrounds.%@.%@", customization.set, customization.name];
         self.selectedCustomization = customization;
 
@@ -198,6 +203,11 @@ static NSString *const reuseIdentifier = @"Cell";
                                                               self.userKey : [self.selectedCustomization valueForKey:@"name"]
                                                               }
                                                   onSuccess:nil onError:nil];
+                    if ([self unselectingBackground: self.selectedCustomization]) {
+                        [[HRPGManager sharedManager] unlockPath:[self.selectedCustomization getPath]
+                                                      onSuccess:nil onError:nil];
+                    }
+                    
                 } else {
                     [[HRPGManager sharedManager] equipObject:[self.selectedCustomization valueForKey:@"key"]
                                                     withType:self.userKey
@@ -379,6 +389,10 @@ static NSString *const reuseIdentifier = @"Cell";
     UINavigationController *navigationController =
         [storyboard instantiateViewControllerWithIdentifier:@"PurchaseGemNavController"];
     [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (BOOL) unselectingBackground:(Customization *)customization {
+    return [self.user.preferences.background isEqualToString:customization.name];
 }
 
 @end
