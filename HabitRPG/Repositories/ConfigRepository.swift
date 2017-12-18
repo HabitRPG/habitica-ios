@@ -32,6 +32,7 @@ class ConfigRepository: NSObject {
     private static let configVariables: [ConfigVariable] = [.enableRepeatables, .supportEmail, .enableNewShops, .shopSpriteSuffix]
     private let userConfig = UserDefaults.standard
 
+    @objc
     func fetchremoteConfig() {
         Alamofire.request(ConfigRepository.configUrl).responseJSON { response in
             if let JSON = response.result.value as? [String: Any] {
@@ -46,17 +47,21 @@ class ConfigRepository: NSObject {
         }
     }
 
+    @objc
     func bool(variable: ConfigVariable) -> Bool {
         return userConfig.bool(forKey: variable.name())
     }
 
+    @objc
     func string(variable: ConfigVariable) -> String? {
         return userConfig.string(forKey: variable.name())
     }
+    @objc
     func string(variable: ConfigVariable, defaultValue: String) -> String {
         return userConfig.string(forKey: variable.name()) ?? defaultValue
     }
     
+    @objc
     func integer(variable: ConfigVariable) -> Int {
         return userConfig.integer(forKey: variable.name())
     }

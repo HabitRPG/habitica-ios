@@ -11,7 +11,7 @@ import Foundation
 class SetupCustomizationRepository {
     
     static func getCustomizations(category: AvatarCustomizationCategory, user: User) -> [SetupCustomization] {
-        return getCustomizations(category: category, subcategory: nil, user:user)
+        return getCustomizations(category: category, subcategory: nil, user: user)
     }
     
     static func getCustomizations(category: AvatarCustomizationCategory, subcategory: AvatarCustomizationSubcategory?, user: User) -> [SetupCustomization] {

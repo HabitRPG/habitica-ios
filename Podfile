@@ -38,12 +38,12 @@ target 'Habitica' do
   pod 'Masonry'
   pod "SlackTextViewController"
   pod 'AppAuth'
-  pod 'SeedsSDK', '0.4.6'
+  pod 'SeedsSDK'
 
   pod 'FBSDKCoreKit', '~> 4'
   pod 'FBSDKLoginKit', '~> 4'
 
-  pod 'ReactiveCocoa', '~> 6.0.1'
+  pod 'ReactiveCocoa', '~> 7'
 
   pod 'SwiftyStoreKit'
 
@@ -52,7 +52,7 @@ target 'Habitica' do
   pod 'PopupDialog', :git => 'https://github.com/Orderella/PopupDialog.git', :branch => 'development'
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftLint'
-  pod 'Eureka', :git => 'https://github.com/xmartlabs/Eureka', :branch => 'feature/Xcode9-Swift3_2'
+  pod 'Eureka'
 
   target 'HabiticaTests' do
       inherit! :search_paths

@@ -12,7 +12,7 @@ import SwiftyStoreKit
 import StoreKit
 import Keys
 
-class GemViewController: UICollectionViewController, SeedsInAppMessageDelegate {
+class GemViewController: UICollectionViewController {
     
     let identifiers = ["com.habitrpg.ios.Habitica.4gems", "com.habitrpg.ios.Habitica.21gems",
                         "com.habitrpg.ios.Habitica.42gems", "com.habitrpg.ios.Habitica.84gems"
@@ -28,7 +28,7 @@ class GemViewController: UICollectionViewController, SeedsInAppMessageDelegate {
         #if DEBUG
             appleValidator = AppleReceiptValidator(service: .sandbox)
         #else
-            appleValidator = AppleReceiptValidator(service: .production)
+            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
         #endif
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -37,7 +37,7 @@ class GemViewController: UICollectionViewController, SeedsInAppMessageDelegate {
         #if DEBUG
             appleValidator = AppleReceiptValidator(service: .sandbox)
         #else
-            appleValidator = AppleReceiptValidator(service: .production)
+            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
         #endif
         super.init(coder: aDecoder)
     }
@@ -63,7 +63,7 @@ class GemViewController: UICollectionViewController, SeedsInAppMessageDelegate {
     
     func completionHandler() {
         SwiftyStoreKit.completeTransactions(atomically: false) { products in
-            SwiftyStoreKit.verifyReceipt(using: self.appleValidator, password: self.itunesSharedSecret) { result in
+            SwiftyStoreKit.verifyReceipt(using: self.appleValidator, forceRefresh: true) { result in
                 switch result {
                 case .success(let receipt):
                     for product in products {
@@ -107,7 +107,7 @@ class GemViewController: UICollectionViewController, SeedsInAppMessageDelegate {
     }
     
     @IBAction func checkForExistingSubscription(_ sender: Any) {
-        SwiftyStoreKit.verifyReceipt(using: self.appleValidator, password: self.itunesSharedSecret) { result in
+        SwiftyStoreKit.verifyReceipt(using: self.appleValidator, forceRefresh: true) { result in
             switch result {
             case .success(let verifiedReceipt):
                 guard let purchases = verifiedReceipt["latest_receipt_info"] as? [ReceiptInfo] else {
@@ -185,10 +185,8 @@ class GemViewController: UICollectionViewController, SeedsInAppMessageDelegate {
             case .some(HRPGPurchaseButtonStateError), .some(HRPGPurchaseButtonStateLabel):
                 purchaseButton?.state = HRPGPurchaseButtonStateLoading
                 self?.purchaseGems(identifier: product.productIdentifier)
-                break
             case .some(HRPGPurchaseButtonStateDone):
                 self?.dismiss(animated: true, completion: nil)
-                break
             default:
                 break
             }
@@ -235,7 +233,7 @@ class GemViewController: UICollectionViewController, SeedsInAppMessageDelegate {
     }
     
     func verifyPurchase(_ product: PurchaseDetails) {
-        SwiftyStoreKit.verifyReceipt(using: appleValidator, password: self.itunesSharedSecret) { result in
+        SwiftyStoreKit.verifyReceipt(using: appleValidator, forceRefresh: true) { result in
             switch result {
             case .success(let receipt):
                 // Verify the purchase of a Subscription

@@ -9,9 +9,9 @@
 import UIKit
 
 class HRPGBuyItemModalViewController: UIViewController {
-    var item: ShopItem?
-    var reward: MetaReward?
-    var shopIdentifier: String?
+    @objc var item: ShopItem?
+    @objc var reward: MetaReward?
+    @objc var shopIdentifier: String?
     let inventoryRepository = InventoryRepository()
     let showPinning = ConfigRepository().bool(variable: .enableNewShops)
     
@@ -27,7 +27,7 @@ class HRPGBuyItemModalViewController: UIViewController {
     @IBOutlet weak var currencyCountView: HRPGCurrencyCountView!
     @IBOutlet weak var closableShopModal: HRPGCloseableShopModalView!
     
-    public weak var shopViewController: HRPGShopViewController?
+    @objc public weak var shopViewController: HRPGShopViewController?
 
     private var isPinned: Bool = false {
         didSet {
@@ -49,8 +49,8 @@ class HRPGBuyItemModalViewController: UIViewController {
         
         closableShopModal.closeButton.addTarget(self, action: #selector(closePressed), for: UIControlEvents.touchUpInside)
         buyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buyPressed)))
-        
-        pinButton.isHidden = !showPinning
+        let inAppReward = ( reward as? InAppReward)
+        pinButton.isHidden = !showPinning ||  inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +69,7 @@ class HRPGBuyItemModalViewController: UIViewController {
         
         buyButton.layer.borderWidth = 0.5
         buyButton.layer.borderColor = UIColor.gray400().cgColor
-        currencyCountView.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightSemibold)
+        currencyCountView.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)
         
         hourglassCountView.currency = .hourglass
         gemCountView.currency = .gem
@@ -110,15 +110,12 @@ class HRPGBuyItemModalViewController: UIViewController {
                 switch getPurchaseType() {
                 case "quests":
                     setupQuests(contentView, itemView: itemView, key: key)
-                    break
                 case "gear":
                     setupGear(contentView, itemView: itemView, key: key, shopIdentifier: shopIdentifier)
-                    break
                 case "mystery_set":
                     addItemSet(itemView: itemView, to: contentView)
                 default:
                     contentView.addSingleViewWithConstraints(itemView)
-                    break
                 }
             }
             contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -274,6 +271,7 @@ class HRPGBuyItemModalViewController: UIViewController {
     
     //swiftlint:disable function_body_length
     //swiftlint:disable cyclomatic_complexity
+    @objc
     func buyPressed() {
         if itemIsLocked() {
             return
@@ -372,6 +370,7 @@ class HRPGBuyItemModalViewController: UIViewController {
         parent?.present(viewController, animated: true, completion: nil)
     }
     
+    @objc
     func closePressed() {
         dismiss(animated: true, completion: nil)
     }

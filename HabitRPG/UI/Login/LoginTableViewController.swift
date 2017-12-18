@@ -12,7 +12,7 @@ import ReactiveSwift
 
 class LoginTableViewController: UIViewController, UITextFieldDelegate {
 
-    public var isRootViewController = false
+    @objc public var isRootViewController = false
 
     @IBOutlet weak private var usernameField: LoginEntryView!
     @IBOutlet weak private var emailField: LoginEntryView!
@@ -151,7 +151,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
 
         self.viewModel.outputs.showError
             .observe(on: QueueScheduler.main)
-            .observeValues { [weak self] message in
+            .observeValues { message in
                 let alertController = HabiticaAlertController.genericError(message: message)
                 alertController.show()
         }
@@ -164,7 +164,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
             if weakSelf.isRootViewController || segueName == "SetupSegue" {
                 weakSelf.performSegue(withIdentifier: segueName, sender: self)
             } else {
-                weakSelf.dismiss(animated: true, completion:nil)
+                weakSelf.dismiss(animated: true, completion: nil)
             }
         }
         self.viewModel.outputs.loadingIndicatorVisibility
@@ -346,50 +346,62 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
+    @objc
     func loginBeginButtonPressed() {
         self.viewModel.inputs.setAuthType(authType: .login)
     }
+    @objc
     func registerBeginButtonPressed() {
         self.viewModel.inputs.setAuthType(authType: .register)
     }
+    @objc
     func backButtonPressed() {
         self.viewModel.inputs.setAuthType(authType: .none)
         self.view.endEditing(false)
     }
 
+    @objc
     func usernameTextFieldChanged(textField: UITextField) {
         self.viewModel.inputs.usernameChanged(username: textField.text)
     }
 
+    @objc
     func emailTextFieldChanged(textField: UITextField) {
         self.viewModel.inputs.emailChanged(email: textField.text)
     }
 
+    @objc
     func passwordTextFieldChanged(textField: UITextField) {
         self.viewModel.inputs.passwordChanged(password: textField.text)
     }
 
+    @objc
     func passwordRepeatTextFieldChanged(textField: UITextField) {
         self.viewModel.inputs.passwordRepeatChanged(passwordRepeat: textField.text)
     }
 
+    @objc
     func loginButtonPressed() {
         self.viewModel.inputs.loginButtonPressed()
         self.view.endEditing(true)
     }
 
+    @objc
     func googleLoginButtonPressed() {
         self.viewModel.inputs.googleLoginButtonPressed()
     }
 
+    @objc
     func onePasswordButtonPressed() {
         self.viewModel.inputs.onePasswordTapped()
     }
 
+    @objc
     func facebookLoginButtonPressed() {
         self.viewModel.inputs.facebookLoginButtonPressed()
     }
     
+    @objc
     func forgotPasswordButtonPressed() {
         let alertController = HabiticaAlertController(title: NSLocalizedString("Email a Password Reset Link", comment: ""))
         
@@ -415,6 +427,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         alertController.addAction(title: NSLocalizedString("Send", comment: ""), isMainAction: true) { _ in
             HRPGManager.shared().sendPasswordResetEmail(textField.text, onSuccess: {
                 let confirmationAlertController = HabiticaAlertController(title: NSLocalizedString("If we have your email on file, instructions for setting a new password have been sent to your email.", comment: ""))
+                confirmationAlertController.show()
             }, onError: nil)
         }
         alertController.show()
@@ -445,10 +458,12 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    @objc
     func keyboardWillShowNotification(notification: NSNotification) {
         updateBottomLayoutConstraint(notification: notification)
     }
     
+    @objc
     func keyboardWillHideNotification(notification: NSNotification) {
         updateBottomLayoutConstraint(notification: notification)
     }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1679,7 +1679,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="s9t-re-NbM" kind="show" id="nYO-SY-Og4"/>
+                        <segue destination="s9t-re-NbM" kind="show" identifier="ShowShopSegue" id="nYO-SY-Og4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OdM-ul-yrc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1821,7 +1821,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdQ-c8-t8K">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
@@ -2391,11 +2391,6 @@ and helps keep Habitica running</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="7y1-ng-Z7N">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9g9-mP-YcI">
-                            <connections>
-                                <segue destination="BLS-Kk-Pc6" kind="unwind" unwindAction="unwindToList:" id="6I4-nj-prd"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="?" id="obl-zo-g8m">
                             <connections>
                                 <segue destination="wZU-Fa-eCi" kind="show" identifier="HelpSegue" id="GTg-7t-9tX"/>
@@ -2404,7 +2399,6 @@ and helps keep Habitica running</string>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Zz-Pr-Eqx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="BLS-Kk-Pc6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1014.375" y="7282.5"/>
         </scene>
@@ -3162,9 +3156,9 @@ and helps keep Habitica running</string>
         <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="DAI-nh-Ljl"/>
-        <segue reference="sPD-XR-ORt"/>
+        <segue reference="fUS-KU-QMo"/>
         <segue reference="aWZ-FG-z5O"/>
-        <segue reference="nYO-SY-Og4"/>
+        <segue reference="V6b-ej-qnx"/>
         <segue reference="jeD-LQ-1O1"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

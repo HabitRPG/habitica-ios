@@ -149,7 +149,8 @@ class TaskRepeatablesSummaryInteractor: NSObject {
         super.init()
     }
 
-    //swiftlint:disable:next function_parameter_count
+    //swiftlint:disable function_parameter_count
+    @objc
     func repeatablesSummary(frequency: String?,
                             everyX: NSNumber?,
                             monday: NSNumber?,
@@ -176,7 +177,9 @@ class TaskRepeatablesSummaryInteractor: NSObject {
                                   weeksOfMonth: weeksOfMonth)
         return self.repeatablesSummary(task)
     }
+    //swiftlint:enable function_parameter_count
 
+    @objc
     func repeatablesSummary(_ task: Task) -> String {
         return self.repeatablesSummary(RepeatableTask(task: task))
     }
@@ -187,23 +190,23 @@ class TaskRepeatablesSummaryInteractor: NSObject {
         var repeatType = RepeatType.daily
         var repeatOnString: String? = nil
         switch task.frequency ?? "" {
-            case "daily":
-                repeatType = .daily
-            case "weekly":
-                if task.allWeekdaysInactive() {
-                    repeatType = .never
-                } else {
-                    repeatType = .weekly
-                }
-                repeatOnString = weeklyRepeatOn(task)
-            case "monthly":
-                repeatType = .monthly
-                repeatOnString = monthlyRepeatOn(task)
-            case "yearly":
-                repeatType = .yearly
-                repeatOnString = yearlyRepeatOn(task)
-            default:
-                break
+        case "daily":
+            repeatType = .daily
+        case "weekly":
+            if task.allWeekdaysInactive() {
+                repeatType = .never
+            } else {
+                repeatType = .weekly
+            }
+            repeatOnString = weeklyRepeatOn(task)
+        case "monthly":
+            repeatType = .monthly
+            repeatOnString = monthlyRepeatOn(task)
+        case "yearly":
+            repeatType = .yearly
+            repeatOnString = yearlyRepeatOn(task)
+        default:
+            break
         }
 
         if task.everyX == 0 {

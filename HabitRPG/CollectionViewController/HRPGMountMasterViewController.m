@@ -50,6 +50,18 @@ NSUserDefaults *defaults;
     [fetchRequest setEntity:entity];
     self.hatchingPotions =
         [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    self.tutorialIdentifier = @"mounts";
+}
+
+- (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
+    if ([tutorialIdentifier isEqualToString:@"mounts"]) {
+        return @{
+                 @"text" :
+                     NSLocalizedString(@"Grow mounts by feeding or saddling pets so that your avatar can ride them!", nil)
+                 };
+    }
+    return nil;
 }
 
 - (Egg *)eggWithKey:(NSString *)key {

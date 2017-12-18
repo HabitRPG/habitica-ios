@@ -14,7 +14,7 @@ enum CurrencyCountViewState {
 
 class HRPGCurrencyCountView: UIView {
     
-    public var amount = 0 {
+    @objc public var amount = 0 {
         didSet {
             countLabel.text = String(describing: amount)
             applyAccesibility()
@@ -36,7 +36,7 @@ class HRPGCurrencyCountView: UIView {
         }
     }
     
-    public var font: UIFont {
+    @objc public var font: UIFont {
         get {
             return countLabel.font
         }
@@ -105,11 +105,9 @@ class HRPGCurrencyCountView: UIView {
         case .normal:
             countLabel.textColor = currency.getTextColor()
             currencyImageView.alpha = 1.0
-            break
         case .cantAfford:
             countLabel.textColor = .red100()
             currencyImageView.alpha = 0.3
-            break
         case .locked:
             countLabel.textColor = .gray400()
             currencyImageView.alpha = 0.3
@@ -117,14 +115,17 @@ class HRPGCurrencyCountView: UIView {
     }
     
     //Helper methods since objc can't access swift enums
+    @objc
     public func setAsGold() {
         currency = .gold
     }
     
+    @objc
     public func setAsGems() {
         currency = .gem
     }
     
+    @objc
     public func setAsHourglasses() {
         currency = .hourglass
     }

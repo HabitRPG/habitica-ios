@@ -12,13 +12,13 @@ enum SetupTaskCategory {
     case work, exercise, health, school, selfcare, chores, creativity
 
     //siwftlint:disable:next identifier_name
-    func createSampleHabit(_ text: String, tagId: String?, up: Bool, down: Bool) -> [String: Any] {
+    func createSampleHabit(_ text: String, tagId: String?, positive: Bool, negative: Bool) -> [String: Any] {
         var task = [
             "text": text,
-            "up": up,
-            "down": down,
+            "up": positive,
+            "down": negative,
             "type": "habit"
-        ] as [String : Any]
+        ] as [String: Any]
         if let id = tagId {
             task["tags"] = [id]
         }
@@ -40,7 +40,7 @@ enum SetupTaskCategory {
             "saturday": true,
             "sunday": true,
             "type": "daily"
-        ] as [String : Any]
+        ] as [String: Any]
         if let id = tagId {
             task["tags"] = [id]
         }
@@ -52,18 +52,18 @@ enum SetupTaskCategory {
             "text": text,
             "type": "todo",
             "notes": notes
-        ] as [String : Any]
+        ] as [String: Any]
         if let id = tagId {
             task["tags"] = [id]
         }
         return task
     }
     
-    func getTasks(tagId: String?) -> [[String:Any]] {
+    func getTasks(tagId: String?) -> [[String: Any]] {
         switch self {
         case .work:
             return [
-                createSampleHabit(NSLocalizedString("Process email", comment: ""), tagId: tagId, up: true, down: false),
+                createSampleHabit(NSLocalizedString("Process email", comment: ""), tagId: tagId, positive: true, negative: false),
                 createSampleDaily(NSLocalizedString("Worked on today’s most important task", comment: ""),
                                   tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: "")),
                 createSampleToDo(NSLocalizedString("Complete work project", comment: ""), tagId: tagId,
@@ -71,37 +71,37 @@ enum SetupTaskCategory {
             ]
         case .exercise:
             return [
-                createSampleHabit(NSLocalizedString("10 minutes cardio", comment: ""), tagId: tagId, up: true, down: false),
+                createSampleHabit(NSLocalizedString("10 minutes cardio", comment: ""), tagId: tagId, positive: true, negative: false),
                 createSampleDaily(NSLocalizedString("Daily workout routine", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule and specify exercises!", comment: "")),
                 createSampleToDo(NSLocalizedString("Set up workout schedule", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to add a checklist!", comment: ""))
             ]
         case .health:
             return [
-                createSampleHabit(NSLocalizedString("Eat health/junk food", comment: ""), tagId: tagId, up: true, down: true),
+                createSampleHabit(NSLocalizedString("Eat health/junk food", comment: ""), tagId: tagId, positive: true, negative: true),
                 createSampleDaily(NSLocalizedString("Floss", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to make any changes!", comment: "")),
                 createSampleToDo(NSLocalizedString("Brainstorm a healthy change", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to add checklists!", comment: ""))
             ]
         case .school:
             return [
-                createSampleHabit(NSLocalizedString("Study/Procrastinate", comment: ""), tagId: tagId, up: true, down: true),
+                createSampleHabit(NSLocalizedString("Study/Procrastinate", comment: ""), tagId: tagId, positive: true, negative: true),
                 createSampleDaily(NSLocalizedString("Do homework", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: "")),
                 createSampleToDo(NSLocalizedString("Finish assignment for class", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: ""))
             ]
         case .selfcare:
             return [
-                createSampleHabit(NSLocalizedString("Take a short break", comment: ""), tagId: tagId, up: true, down: false),
+                createSampleHabit(NSLocalizedString("Take a short break", comment: ""), tagId: tagId, positive: true, negative: false),
                 createSampleDaily(NSLocalizedString("5 minutes of quiet breathing", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule!", comment: "")),
                 createSampleToDo(NSLocalizedString("Engage in a fun activity", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify what you plan to do!", comment: ""))
             ]
         case .chores:
             return [
-                createSampleHabit(NSLocalizedString("10 minutes cleaning", comment: ""), tagId: tagId, up: true, down: false),
+                createSampleHabit(NSLocalizedString("10 minutes cleaning", comment: ""), tagId: tagId, positive: true, negative: false),
                 createSampleDaily(NSLocalizedString("Wash dishes", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule!", comment: "")),
                 createSampleToDo(NSLocalizedString("Organize clutter", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify the cluttered area!", comment: ""))
             ]
         case .creativity:
             return [
-                createSampleHabit(NSLocalizedString("Practiced a new creative technique", comment: ""), tagId: tagId, up: true, down: false),
+                createSampleHabit(NSLocalizedString("Practiced a new creative technique", comment: ""), tagId: tagId, positive: true, negative: false),
                 createSampleDaily(NSLocalizedString("Work on creative project", comment: ""), tagId: tagId,
                                   notes: NSLocalizedString("Tap to specify the name of your current project + set the schedule!", comment: "")),
                 createSampleToDo(NSLocalizedString("Finish creative project", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify the name of your project", comment: ""))
@@ -187,6 +187,7 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
         updateButtonBackgrounds()
     }
     
+    @objc
     func toggleButton(_ sender: UIGestureRecognizer) {
         if let selectedCategory = getCategoryFor(view: sender.view) {
             if selectedCategories.contains(selectedCategory) {

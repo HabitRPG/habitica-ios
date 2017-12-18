@@ -321,7 +321,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             guard let viewController = self.viewController else {
                 return
             }
-            appDelegate.currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request, presenting:viewController, callback: {[weak self] (authState, _) in
+            appDelegate.currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request, presenting: viewController, callback: {[weak self] (authState, _) in
                 if authState != nil {
                     self?.sharedManager?.loginUserSocial("", withNetwork: "google", withAccessToken: authState?.lastTokenResponse?.accessToken, onSuccess: {
                         self?.onSuccessfulLogin()
@@ -336,9 +336,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     private let onSuccessfulLoginProperty = MutableProperty(())
     func onSuccessfulLogin() {
         self.sharedManager?.setCredentials()
-        self.sharedManager?.fetchUser({[weak self] _ in
+        self.sharedManager?.fetchUser({[weak self] in
             self?.onSuccessfulLoginProperty.value = ()
-        }, onError: {[weak self] _ in
+        }, onError: {[weak self] in
             self?.onSuccessfulLoginProperty.value = ()
         })
     }
@@ -408,7 +408,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
 
 func isValid(authType: LoginViewAuthType, email: String, username: String, password: String, passwordRepeat: String) -> Bool {
 
-    if username.characters.isEmpty || password.characters.isEmpty {
+    if username.isEmpty || password.isEmpty {
         return false
     }
 
@@ -417,7 +417,7 @@ func isValid(authType: LoginViewAuthType, email: String, username: String, passw
             return false
         }
 
-        if !password.characters.isEmpty && password != passwordRepeat {
+        if !password.isEmpty && password != passwordRepeat {
             return false
         }
     }
@@ -428,6 +428,6 @@ func isValid(authType: LoginViewAuthType, email: String, username: String, passw
 func isValidEmail(email: String) -> Bool {
     let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
 
-    let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+    let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
     return emailTest.evaluate(with: email)
 }

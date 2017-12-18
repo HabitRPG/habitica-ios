@@ -91,6 +91,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         return currentpage
     }
     
+    @objc
     func scrollToNextPage() {
         if getCurrentPage() >= 2 {
             completeSetup()
@@ -99,6 +100,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         scrollToPage(getCurrentPage()+1)
     }
     
+    @objc
     func scrollToPreviousPage() {
         if getCurrentPage() <= 0 {
             return

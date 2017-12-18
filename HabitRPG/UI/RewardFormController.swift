@@ -103,7 +103,7 @@ class RewardFormController: XLFormViewController {
             reward?.value = NSNumber.init(value: formValues["value"] as? Int ?? 0)
             
             var tags = [String]()
-            if let values = formValues as? [String : Any] {
+            if let values = formValues as? [String: Any] {
                 for (key, value) in values {
                     if key.contains("tag."), let bool = value as? NSNumber, bool.boolValue {
                         tags.append(key.substring(from: key.index(key.startIndex, offsetBy: 4)))

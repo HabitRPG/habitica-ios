@@ -14,8 +14,9 @@ import UIKit
 
 class HRPGShopsOverviewViewModel: NSObject, HRPGShopOverviewTableViewDataSourceDelegate {
     lazy var shopDictionary: [AnyHashable: Any]? = [AnyHashable: Any]()
-    weak var delegate: HRPGShopsOverviewViewModelDelegate?
+    @objc weak var delegate: HRPGShopsOverviewViewModelDelegate?
     
+    @objc
     func fetchShops() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
         if let context = HRPGManager.shared().getManagedObjectContext() {
@@ -40,6 +41,7 @@ class HRPGShopsOverviewViewModel: NSObject, HRPGShopOverviewTableViewDataSourceD
         }
     }
     
+    @objc
     func refreshShops() {
         var semaphore = 4
         let success: (() -> Void) = {
@@ -61,6 +63,7 @@ class HRPGShopsOverviewViewModel: NSObject, HRPGShopOverviewTableViewDataSourceD
 
     // MARK: - datasource delegate
     
+    @objc
     func refreshShop(withIdentifier identifier: String?, onSuccess successBlock: (() -> Void)?, onError errorBlock: (() -> Void)?) {
         HRPGManager.shared().fetchShopInventory(identifier, onSuccess: {
             if let success = successBlock {

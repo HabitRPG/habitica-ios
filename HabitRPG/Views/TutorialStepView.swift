@@ -21,11 +21,11 @@ class TutorialStepView: UIView {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     private weak var displayView: UIView?
-    var dismissAction: (() -> Void)?
-    var hintView: HRPGHintView?
+    @objc var dismissAction: (() -> Void)?
+    @objc var hintView: HRPGHintView?
     private var textList = [String]()
     
-    var highlightedFrame: CGRect = CGRect.zero {
+    @objc var highlightedFrame: CGRect = CGRect.zero {
         didSet {
             self.backgroundView.highlightedFrame = highlightedFrame
             self.backgroundView.setNeedsDisplay()
@@ -63,6 +63,7 @@ class TutorialStepView: UIView {
         return view
     }
     
+    @objc
     func displayHint(onView: UIView, displayView: UIView, animated: Bool) {
         self.displayView = displayView
         let hintView = HRPGHintView()
@@ -76,6 +77,7 @@ class TutorialStepView: UIView {
         self.hintView = hintView
     }
     
+    @objc
     func display(onView: UIView, animated: Bool) {
         onView.addSubview(self)
         self.frame = onView.frame
@@ -90,6 +92,7 @@ class TutorialStepView: UIView {
         })
     }
     
+    @objc
     func dismiss(animated: Bool) {
         self.displayView = nil
         if let action = self.dismissAction {
@@ -102,6 +105,7 @@ class TutorialStepView: UIView {
         })
     }
     
+    @objc
     func setText(_ text: String) {
         speechbubbleView.text = text
         if textList.count == 0 {
@@ -109,6 +113,7 @@ class TutorialStepView: UIView {
         }
     }
     
+    @objc
     func setTexts(list: [String]) {
         if list.count > 0 {
             speechbubbleView.caretView.isHidden = false
@@ -118,6 +123,7 @@ class TutorialStepView: UIView {
         }
     }
     
+    @objc
     func hintViewTapped() {
         self.hintView?.removeFromSuperview()
         self.hintView = nil
@@ -126,6 +132,7 @@ class TutorialStepView: UIView {
         }
     }
     
+    @objc
     func viewTapped() {
         if textList.count == 0 {
             self.dismiss(animated: true)

@@ -45,11 +45,12 @@ class GradientView: UIView {
     
     override class var layerClass: AnyClass { return CAGradientLayer.self }
     
-    var gradientLayer: CAGradientLayer {
+    @objc var gradientLayer: CAGradientLayer {
         //swiftlint:disable:next force_cast
         return layer as! CAGradientLayer
     }
     
+    @objc
     func updatePoints() {
         if horizontalMode {
             gradientLayer.startPoint = diagonalMode ? CGPoint(x: 1, y: 0) : CGPoint(x: 0, y: 0.5)
@@ -59,9 +60,11 @@ class GradientView: UIView {
             gradientLayer.endPoint   = diagonalMode ? CGPoint(x: 1, y: 1) : CGPoint(x: 0.5, y: 1)
         }
     }
+    @objc
     func updateLocations() {
         gradientLayer.locations = [startLocation as NSNumber, endLocation as NSNumber]
     }
+    @objc
     func updateColors() {
         gradientLayer.colors    = [startColor.cgColor, endColor.cgColor]
     }

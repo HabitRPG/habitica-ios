@@ -29,7 +29,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         #if DEBUG
             appleValidator = AppleReceiptValidator(service: .sandbox)
         #else
-            appleValidator = AppleReceiptValidator(service: .production)
+            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
         #endif
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -38,7 +38,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         #if DEBUG
             appleValidator = AppleReceiptValidator(service: .sandbox)
         #else
-            appleValidator = AppleReceiptValidator(service: .production)
+            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
         #endif
         super.init(coder: aDecoder)
     }
@@ -51,11 +51,11 @@ class SubscriptionViewController: HRPGBaseViewController {
         if let termsView = self.tableView.tableFooterView?.viewWithTag(2) as? UITextView {
             let termsAttributedText = NSMutableAttributedString(string: "Subscriptions auto renew at the end of their duration, unless you cancel. " +
                 "By continuing you accept the Terms of Use and Privacy Policy")
-            termsAttributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.gray50(), range: NSRange(location: 0, length: termsAttributedText.length))
+            termsAttributedText.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.gray50(), range: NSRange(location: 0, length: termsAttributedText.length))
             let termsRange = termsAttributedText.mutableString.range(of: "Terms of Use")
-            termsAttributedText.addAttributes([NSLinkAttributeName: "https://habitica.com/static/terms"], range: termsRange)
+            termsAttributedText.addAttributes([NSAttributedStringKey.link: "https://habitica.com/static/terms"], range: termsRange)
             let privacyRange = termsAttributedText.mutableString.range(of: "Privacy Policy")
-            termsAttributedText.addAttributes([NSLinkAttributeName: "https://habitica.com/static/privacy"], range: privacyRange)
+            termsAttributedText.addAttributes([NSAttributedStringKey.link: "https://habitica.com/static/privacy"], range: privacyRange)
             termsView.attributedText = termsAttributedText
         }
         let optionNib = UINib.init(nibName: "SubscriptionOptionView", bundle: nil)
@@ -88,7 +88,7 @@ class SubscriptionViewController: HRPGBaseViewController {
 
     func completionHandler() {
         SwiftyStoreKit.completeTransactions(atomically: false) { products in
-            SwiftyStoreKit.verifyReceipt(using: self.appleValidator, password: self.itunesSharedSecret) { result in
+            SwiftyStoreKit.verifyReceipt(using: self.appleValidator, forceRefresh: true) { result in
                 switch result {
                 case .success(let receipt):
                     for product in products {
@@ -132,7 +132,7 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     @IBAction func checkForExistingSubscription(_ sender: Any) {
-        SwiftyStoreKit.verifyReceipt(using: self.appleValidator, password: self.itunesSharedSecret) { result in
+        SwiftyStoreKit.verifyReceipt(using: self.appleValidator, forceRefresh: true) { result in
             switch result {
             case .success(let verifiedReceipt):
                 guard let purchases = verifiedReceipt["latest_receipt_info"] as? [ReceiptInfo] else {
@@ -205,7 +205,7 @@ class SubscriptionViewController: HRPGBaseViewController {
                 let description = SubscriptionInformation.descriptions[indexPath.item] as NSString
                 let height = 90 + description.boundingRect(with: CGSize.init(width: self.viewWidth-80, height: CGFloat.infinity),
                                                      options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                                                     attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body)],
+                                                     attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .body)],
                                                      context: nil).size.height
                 return height
             } else {
@@ -312,7 +312,7 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     func verifyAndSubscribe(_ product: PurchaseDetails) {
-        SwiftyStoreKit.verifyReceipt(using: appleValidator, password: self.itunesSharedSecret) { result in
+        SwiftyStoreKit.verifyReceipt(using: appleValidator, forceRefresh: true) { result in
             switch result {
             case .success(let receipt):
                 // Verify the purchase of a Subscription
@@ -333,7 +333,7 @@ class SubscriptionViewController: HRPGBaseViewController {
 
     func activateSubscription(_ identifier: String, receipt: ReceiptInfo, completion: @escaping (Bool) -> Void) {
         if let lastReceipt = receipt["latest_receipt"] as? String {
-            HRPGManager.shared().subscribe(identifier, withReceipt:lastReceipt, onSuccess: {
+            HRPGManager.shared().subscribe(identifier, withReceipt: lastReceipt, onSuccess: {
                 completion(true)
                 self.isSubscribed = true
                 self.tableView.reloadData()

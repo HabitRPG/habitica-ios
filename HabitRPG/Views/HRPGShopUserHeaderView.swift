@@ -37,6 +37,7 @@ class HRPGShopUserHeaderView: UIView, NSFetchedResultsControllerDelegate {
         super.awakeFromNib()
     }
     
+    @objc
     func resetUser() {
         fetchedResultsController = createFetchedResultsController()
         setData()
@@ -82,15 +83,15 @@ class HRPGShopUserHeaderView: UIView, NSFetchedResultsControllerDelegate {
                 let formatString = "id == '\(stringId)'"
                 fetchRequest.predicate = NSPredicate(format: formatString)
                 
-                let sortDescriptor = NSSortDescriptor(key: "id", ascending:false)
+                let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
                 let sortDescriptors = [ sortDescriptor ]
                 
                 fetchRequest.sortDescriptors = sortDescriptors
                 
-                let aFetchedResultsController = NSFetchedResultsController<NSFetchRequestResult>(fetchRequest:fetchRequest,
-                                                                                                 managedObjectContext:managedContext,
-                                                                                                 sectionNameKeyPath:nil,
-                                                                                                 cacheName:nil)
+                let aFetchedResultsController = NSFetchedResultsController<NSFetchRequestResult>(fetchRequest: fetchRequest,
+                                                                                                 managedObjectContext: managedContext,
+                                                                                                 sectionNameKeyPath: nil,
+                                                                                                 cacheName: nil)
                 aFetchedResultsController.delegate = self
                 do {
                     try aFetchedResultsController.performFetch()

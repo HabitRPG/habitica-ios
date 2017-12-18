@@ -32,6 +32,7 @@ class ToastView: UIView {
     
     var options: ToastOptions = ToastOptions()
     
+    @objc
     public convenience init(title: String, subtitle: String, background: ToastColor) {
         self.init(frame: CGRect.zero)
         options.title = title
@@ -41,6 +42,7 @@ class ToastView: UIView {
         accessibilityLabel = "\(title), \(subtitle)"
     }
     
+    @objc
     public convenience init(title: String, background: ToastColor) {
         self.init(frame: CGRect.zero)
         options.title = title
@@ -49,6 +51,7 @@ class ToastView: UIView {
         accessibilityLabel = title
     }
     
+    @objc
     public convenience init(title: String, subtitle: String, icon: UIImage, background: ToastColor) {
         self.init(frame: CGRect.zero)
         options.title = title
@@ -59,6 +62,7 @@ class ToastView: UIView {
         accessibilityLabel = "\(title), \(subtitle)"
     }
     
+    @objc
     public convenience init(title: String, icon: UIImage, background: ToastColor) {
         self.init(frame: CGRect.zero)
         options.title = title
@@ -68,6 +72,7 @@ class ToastView: UIView {
         accessibilityLabel = title
     }
     
+    @objc
     public convenience init(title: String, rightIcon: UIImage, rightText: String, rightTextColor: UIColor, background: ToastColor) {
         self.init(frame: CGRect.zero)
         options.title = title
@@ -79,6 +84,7 @@ class ToastView: UIView {
         accessibilityLabel = title
     }
     
+    @objc
     public convenience init(healthDiff: Float, magicDiff: Float, expDiff: Float, goldDiff: Float, background: ToastColor) {
         self.init(frame: CGRect.zero)
         accessibilityLabel = "You received "
@@ -95,7 +101,7 @@ class ToastView: UIView {
             let iconLabel = IconLabel()
             iconLabel.icon = icon
             iconLabel.text = diff > 0 ? String(format: "+%.2f", diff) : String(format: "%.2f", diff)
-            iconLabel.setContentCompressionResistancePriority(1000, for: .horizontal)
+            iconLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .horizontal)
             statsDiffStackView.addArrangedSubview(iconLabel)
             accessibilityLabel = (accessibilityLabel ?? "") + "\(Int(diff)) \(label), "
         }
@@ -187,11 +193,11 @@ class ToastView: UIView {
             leftImageView.image = leftImage
             leadingSpacing.constant = 4
             leftImageWidth.constant = 46
-            leftImageHeight.priority = 999
+            leftImageHeight.priority = UILayoutPriority(rawValue: 999)
         } else {
             leftImageView.isHidden = true
             leftImageWidth.constant = 0
-            leftImageHeight.priority = 500
+            leftImageHeight.priority = UILayoutPriority(rawValue: 500)
         }
     }
     

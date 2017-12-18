@@ -9,6 +9,7 @@
 import Foundation
 
 class DailyTableViewCell: CheckedTableViewCell {
+    @objc
     func configure(task: Task, offset: Int) {
         super.configure(task: task)
         if !(task.completed?.boolValue ?? false) {

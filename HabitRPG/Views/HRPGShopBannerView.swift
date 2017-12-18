@@ -16,7 +16,7 @@ class HRPGShopBannerView: UIView {
     @IBOutlet weak var shopPlaqueImageView: UIImageView!
     @IBOutlet weak var gradientView: GradientView!
     private var _shop: Shop?
-    var shop: Shop? {
+    @objc var shop: Shop? {
         set(newShop) {
             _shop = newShop
             setupShop()
@@ -90,7 +90,7 @@ class HRPGShopBannerView: UIView {
                 paragraphStyle.lineSpacing = 4
                 
                 let attrString = NSMutableAttributedString(string: notes)
-                attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+                attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length:   attrString.length))
                 self.notesLabel.attributedText = attrString
             }
             self.invalidateIntrinsicContentSize()

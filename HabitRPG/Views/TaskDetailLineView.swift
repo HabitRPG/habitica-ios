@@ -38,7 +38,7 @@ class TaskDetailLineView: UIView {
 
     var contentView: UIView?
 
-    var dateFormatter: DateFormatter?
+    @objc var dateFormatter: DateFormatter?
 
     var hasContent = true
 
@@ -70,6 +70,7 @@ class TaskDetailLineView: UIView {
         return view
     }
 
+    @objc
     public func configure(task: Task) {
         hasContent = false
         setTag(enabled: task.tagArray.count > 0)
@@ -190,7 +191,7 @@ class TaskDetailLineView: UIView {
             counterString = "\(downCounter)"
         }
         
-        if counterString.characters.count > 0 {
+        if counterString.count > 0 {
             streakLabel.text = counterString
             streakIconView.isHidden = false
             streakIconViewWidth.constant = 12

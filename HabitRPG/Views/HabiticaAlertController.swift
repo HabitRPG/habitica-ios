@@ -76,6 +76,7 @@ class HabiticaAlertController: UIViewController {
         configureButtons()
     }
     
+    @objc
     func addAction(title: String, style: UIAlertActionStyle = .default, isMainAction: Bool = false, handler: ((UIButton) -> Swift.Void)? = nil) {
         let button = UIButton()
         button.setTitle(title, for: .normal)
@@ -105,6 +106,7 @@ class HabiticaAlertController: UIViewController {
         }
     }
     
+    @objc
     func setCloseAction(title: String, handler: @escaping (() -> Void)) {
         closeAction = handler
         closeTitle = title
@@ -177,6 +179,7 @@ class HabiticaAlertController: UIViewController {
         }
     }
     
+    @objc
     func show() {
         if var topController = UIApplication.shared.keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
@@ -189,6 +192,7 @@ class HabiticaAlertController: UIViewController {
         }
     }
     
+    @objc
     func buttonTapped(_ button: UIButton) {
         self.dismiss(animated: true, completion: nil)
         buttonHandlers[button.tag]?(button)
@@ -203,6 +207,7 @@ class HabiticaAlertController: UIViewController {
 }
 
 extension HabiticaAlertController {
+    @objc
     public static func alert(title: String? = nil,
                              message: String? = nil) -> HabiticaAlertController {
         let alertController = HabiticaAlertController(
@@ -212,6 +217,7 @@ extension HabiticaAlertController {
         return alertController
     }
     
+    @objc
     public static func genericError(message: String?, title: String = NSLocalizedString("Error", comment: "")) -> HabiticaAlertController {
         let alertController = HabiticaAlertController(
             title: title,
@@ -222,10 +228,12 @@ extension HabiticaAlertController {
         return alertController
     }
     
+    @objc
     func addCancelAction(handler: ((UIButton) -> Void)? = nil) {
         self.addAction(title: NSLocalizedString("Cancel", comment: ""), handler: handler)
     }
     
+    @objc
     func addOkAction(handler: ((UIButton) -> Void)? = nil) {
         self.addAction(title: NSLocalizedString("OK", comment: ""), handler: handler)
     }

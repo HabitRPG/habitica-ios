@@ -106,10 +106,12 @@ class ToastManager: NSObject {
         }
     }
     
+    @objc
     class func show(toast: ToastView) {
         self.shared.add(toast: toast)
     }
     
+    @objc
     class func show(text: String, color: ToastColor) {
         ToastManager.show(toast: ToastView(title: text, background: color))
     }

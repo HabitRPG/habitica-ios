@@ -67,6 +67,7 @@ class LabeledCheckboxView: UILabel {
         }
     }
 
+    @objc
     func tapped() {
         isChecked = !isChecked
         if let action = checkedAction {
