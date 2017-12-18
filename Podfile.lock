@@ -121,7 +121,7 @@ PODS:
   - SlackTextViewController (1.9.6)
   - SOCKit (1.1)
   - SwiftLint (0.24.0)
-  - SwiftyStoreKit (0.11.0)
+  - SwiftyStoreKit (0.11.1)
   - TransitionKit (2.2.1)
   - VTAcknowledgementsViewController (1.3)
   - XLForm (4.0.0)
@@ -226,7 +226,7 @@ SPEC CHECKSUMS:
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   SwiftLint: a014c92b4664e8b13f380f8640a51bb1733778ba
-  SwiftyStoreKit: c5cb38110cb01b55b9c5f25d7f69d0083650b2a4
+  SwiftyStoreKit: d52d1473f5baf8385c86d7455c9f6b0d0a74cef2
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   VTAcknowledgementsViewController: 0bc8149be64f0d5b7f398e146353af8fde04b313
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
