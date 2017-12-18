@@ -11,7 +11,7 @@ import Quick
 import Nimble
 @testable import Habitica
 
-class TableOfContentsSpec: QuickSpec {
+class ChallengeDetailsViewModelSpec: QuickSpec {
     override func spec() {
         describe("challenge details view model") {
             context("button cell") {
