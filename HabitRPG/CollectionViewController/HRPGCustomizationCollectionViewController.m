@@ -155,7 +155,7 @@ static NSString *const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView
     didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *actionString = NSLocalizedString(@"Use", nil);
+    NSString *actionString = NSLocalizedString(@"Select", nil);
     NSInteger tag = 0;
     UIAlertController *alertController =  [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alertController addAction:[UIAlertAction cancelActionWithHandler:nil]];
@@ -173,8 +173,8 @@ static NSString *const reuseIdentifier = @"Cell";
             pinString = NSLocalizedString(@"Unpin from Rewards", nil);
         }
         
-        if ([self unselectingBackground: customization]) {
-            actionString = NSLocalizedString(@"Unselect", nil);
+        if ([self deselectBackground: customization]) {
+            actionString = NSLocalizedString(@"Deselect", nil);
         }
         
         path = [NSString stringWithFormat:@"backgrounds.%@.%@", customization.set, customization.name];
@@ -203,7 +203,7 @@ static NSString *const reuseIdentifier = @"Cell";
                                                               self.userKey : [self.selectedCustomization valueForKey:@"name"]
                                                               }
                                                   onSuccess:nil onError:nil];
-                    if ([self unselectingBackground: self.selectedCustomization]) {
+                    if ([self deselectBackground: self.selectedCustomization]) {
                         [[HRPGManager sharedManager] unlockPath:[self.selectedCustomization getPath]
                                                       onSuccess:nil onError:nil];
                     }
@@ -391,7 +391,7 @@ static NSString *const reuseIdentifier = @"Cell";
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
-- (BOOL) unselectingBackground:(Customization *)customization {
+- (BOOL) deselectBackground:(Customization *)customization {
     return [self.user.preferences.background isEqualToString:customization.name];
 }
 
