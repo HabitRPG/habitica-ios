@@ -167,6 +167,10 @@ NSUserDefaults *defaults;
 
     NSMutableArray *hourOptions = [NSMutableArray arrayWithCapacity:23];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //Set locale to en_GB since that uses 24hr format and doesn't break the date formatter.
+    //Using the regular locale while a 12hr format is active, the formatting for the time changes and doesn't work
+    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"]];
+    [dateFormatter setFormatterBehavior:NSDateFormatterBehaviorDefault];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     [dateFormatter setDateFormat:@"HH:mm:ss"];
     for (int hour = 0; hour < 24; hour++) {
