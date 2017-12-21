@@ -1153,6 +1153,13 @@ NSString *currentUser;
                           keyPath:@"data.tasksOrder.dailys"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:taskOrderMapping
+                          method:RKRequestMethodAny
+                          pathPattern:@"tasks/:id/move/to/:pos"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
 
     RKEntityMapping *inboxMessageMapping = [RKEntityMapping mappingForEntityForName:@"InboxMessage"
                                                        inManagedObjectStore:managedObjectStore];
@@ -2489,7 +2496,7 @@ NSString *currentUser;
     NSString *url = @"tasks/user";
     if (dueDate) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = @"YYYY-MM-dd'T'HH:mm:ssXXX";
+        formatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssXXX";
         url = [url stringByAppendingString:@"?type=dailys&dueDate="];
         url = [url stringByAppendingString:[formatter stringFromDate:dueDate]];
         url = [url stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
@@ -3278,6 +3285,9 @@ NSString *currentUser;
 }
 
 - (void)moveTask:(Task *)task toPosition:(NSNumber *)position onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
+    task.order = position;
+    NSError *executeError = nil;
+    [[self getManagedObjectContext] saveToPersistentStore:&executeError];
     [[RKObjectManager sharedManager] postObject:nil
                                            path:[NSString stringWithFormat:@"tasks/%@/move/to/%@", task.id, position]
                                      parameters:nil

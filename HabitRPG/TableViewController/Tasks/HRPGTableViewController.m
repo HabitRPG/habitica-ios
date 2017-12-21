@@ -16,7 +16,7 @@
 #import <POP/POP.h>
 #import "UIColor+Habitica.h"
 
-@interface HRPGTableViewController ()<UISearchBarDelegate>
+@interface HRPGTableViewController ()<UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate>
 @property NSString *readableName;
 @property NSString *typeName;
 @property int extraCellSpacing;
@@ -30,12 +30,13 @@
 @property BOOL userDrivenDataUpdate;
 @property NSTimer *scrollTimer;
 @property CGFloat autoScrollSpeed;
-
+@property Task *movedTask;
 @end
 
 @implementation HRPGTableViewController
 Task *editedTask;
 BOOL editable;
+NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begins.
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -69,13 +70,19 @@ BOOL editable;
         self.extraCellSpacing = 8;
     }
     self.dayStart = [[[HRPGManager sharedManager] getUser].preferences.dayStart integerValue];
-    
-    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
-                                               initWithTarget:self action:@selector(longPressGestureRecognized:)];
-    [self.tableView addGestureRecognizer:longPress];
-    
+
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44;
+    
+    if (@available(iOS 11.0, *)) {
+        self.tableView.dragDelegate = self;
+        self.tableView.dropDelegate = self;
+        [self.tableView setDragInteractionEnabled:YES];
+    } else {
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
+                                                   initWithTarget:self action:@selector(longPressGestureRecognized:)];
+        [self.tableView addGestureRecognizer:longPress];
+    }
 }
 
 - (NSString *)getCellNibName {
@@ -118,8 +125,6 @@ BOOL editable;
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
     
     static UIView       *snapshot = nil;        ///< A snapshot of the row user is moving.
-    static NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begins.
-    
     switch (state) {
         case UIGestureRecognizerStateBegan: {
             if (indexPath) {
@@ -740,6 +745,47 @@ BOOL editable;
             [self.tableView setContentOffset:scrollPoint animated:NO];
         }
     }
+}
+
+- (NSArray<UIDragItem *> *)tableView:(UITableView *)tableView itemsForBeginningDragSession:(id<UIDragSession>)session atIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(11.0) {
+    self.movedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSString *taskName = self.movedTask.id;
+    sourceIndexPath = indexPath;
+    
+    NSData *data = [taskName dataUsingEncoding:NSUTF8StringEncoding];
+    NSItemProvider *itemProvider = [[NSItemProvider alloc] init];
+    
+    [itemProvider registerDataRepresentationForTypeIdentifier:[NSString stringWithString:kUTTypeUTF16PlainText] visibility:NSItemProviderRepresentationVisibilityOwnProcess loadHandler:^NSProgress * _Nullable(void (^ _Nonnull completionHandler)(NSData * _Nullable, NSError * _Nullable)) {
+        completionHandler(data, nil);
+        return nil;
+    }];
+    self.userDrivenDataUpdate = YES;
+    return @[[[UIDragItem alloc] initWithItemProvider: itemProvider]];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canHandleDropSession:(id<UIDropSession>)session NS_AVAILABLE_IOS(11.0) {
+    return YES;
+}
+
+- (UITableViewDropProposal *)tableView:(UITableView *)tableView dropSessionDidUpdate:(id<UIDropSession>)session withDestinationIndexPath:(NSIndexPath *)destinationIndexPath NS_AVAILABLE_IOS(11.0) {
+    int taskOrder = 0;
+    self.movedTask.order = [NSNumber numberWithInteger:destinationIndexPath.item];
+    for (Task *task in self.fetchedResultsController.fetchedObjects) {
+        if ([task.id isEqualToString:self.movedTask.id]) {
+            break;
+        }
+        task.order = [NSNumber numberWithInteger:taskOrder];
+        taskOrder++;
+    }
+    return [[UITableViewDropProposal alloc] initWithDropOperation:UIDropOperationMove intent:UITableViewDropIntentInsertAtDestinationIndexPath];
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    [[HRPGManager sharedManager] moveTask:self.movedTask toPosition:[NSNumber numberWithInteger:destinationIndexPath.item] onSuccess:^() {
+        self.userDrivenDataUpdate = NO;
+    } onError:^() {
+        self.userDrivenDataUpdate = NO;
+    }];
 }
 
 @end

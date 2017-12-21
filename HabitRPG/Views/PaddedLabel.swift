@@ -10,8 +10,8 @@ import UIKit
 
 class PaddedLabel: UILabel {
     
-    var horizontalPadding: CGFloat = 8.0
-    var verticalPadding: CGFloat = 4.0
+    @objc public var horizontalPadding: CGFloat = 8.0
+    @objc public var verticalPadding: CGFloat = 4.0
     
     override var intrinsicContentSize: CGSize {
         let size = super.intrinsicContentSize
@@ -23,4 +23,9 @@ class PaddedLabel: UILabel {
         return super.sizeThatFits(paddedSize)
     }
     
+    override func sizeToFit() {
+        super.sizeToFit()
+        let paddedSize = CGSize(width: frame.size.width+horizontalPadding*2, height: frame.size.height+verticalPadding*2)
+        frame = CGRect(x: 0, y: 0, width: paddedSize.width, height: paddedSize.height)
+    }
 }
