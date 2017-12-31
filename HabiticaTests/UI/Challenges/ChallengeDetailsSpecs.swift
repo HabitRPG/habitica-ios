@@ -16,12 +16,12 @@ class ChallengeDetailsViewModelSpec: QuickSpec {
         describe("challenge details view model") {
             context("button cell") {
                 it("allows joining") {
-                    let vm = ChallengeDetailViewModel()
                     let challenge = Challenge()
+                    let vm = ChallengeDetailViewModel(challenge: challenge)
                     
                     waitUntil(action: { (done) in
-                        vm.buttonCellStateSignal.observeValues({ (state) in
-                            expect(state).to(equal(ChallengeButtonCellState.join))
+                        vm.joinLeaveStyleProvider.buttonStateSignal.observeValues({ (state) in
+                            expect(state).to(equal(ChallengeButtonState.join))
                             done()
                         })
                         vm.setChallenge(challenge)
@@ -29,13 +29,13 @@ class ChallengeDetailsViewModelSpec: QuickSpec {
                 }
                 
                 it("allows leaving") {
-                    let vm = ChallengeDetailViewModel()
                     let challenge = Challenge()
                     challenge.user = User()
+                    let vm = ChallengeDetailViewModel(challenge: challenge)
                     
                     waitUntil(action: { (done) in
-                        vm.buttonCellStateSignal.observeValues({ (state) in
-                            expect(state).to(equal(ChallengeButtonCellState.leave))
+                        vm.joinLeaveStyleProvider.buttonStateSignal.observeValues({ (state) in
+                            expect(state).to(equal(ChallengeButtonState.leave))
                             done()
                         })
                         vm.setChallenge(challenge)
@@ -44,12 +44,12 @@ class ChallengeDetailsViewModelSpec: QuickSpec {
                 
                 context("when has tasks") {
                     it("allows publishing") {
-                        let vm = ChallengeDetailViewModel()
                         let challenge = Challenge()
                         challenge.dailies = [ChallengeTask()]
+                        let vm = ChallengeDetailViewModel(challenge: challenge)
                         
                         waitUntil(action: { (done) in
-                            vm.enabledSignal.observeValues({ (isEnabled) in
+                            vm.publishStyleProvider.enabledSignal.observeValues({ (isEnabled) in
                                 expect(isEnabled).to(beTrue())
                                 done()
                             })
@@ -60,11 +60,11 @@ class ChallengeDetailsViewModelSpec: QuickSpec {
                 
                 context("when no tasks") {
                     it("doesn't allow publishing") {
-                        let vm = ChallengeDetailViewModel()
                         let challenge = Challenge()
+                        let vm = ChallengeDetailViewModel(challenge: challenge)
                         
                         waitUntil(action: { (done) in
-                            vm.enabledSignal.observeValues({ (isEnabled) in
+                            vm.publishStyleProvider.enabledSignal.observeValues({ (isEnabled) in
                                 expect(isEnabled).to(beFalse())
                                 done()
                             })

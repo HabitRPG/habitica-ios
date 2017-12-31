@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Down
 
 class ChallengeDescriptionTableViewCell: UITableViewCell, ChallengeConfigurable {
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -17,7 +18,10 @@ class ChallengeDescriptionTableViewCell: UITableViewCell, ChallengeConfigurable 
     }
     
     func configure(with challenge: Challenge) {
-        descriptionLabel.text = challenge.notes
+        if let notes = challenge.notes {
+            descriptionLabel.attributedText = try? Down(markdownString: notes.unicodeEmoji).toHabiticaAttributedString(baseFont: descriptionLabel.font)
+            descriptionLabel.textColor = UIColor.gray10()
+        }
     }
     
 }
