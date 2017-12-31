@@ -20,7 +20,9 @@ class TaskTableViewCell: UITableViewCell {
 
     @objc
     func configure(task: HRPGTaskProtocol) {
-        self.titleLabel.text = task.text?.unicodeEmoji
+        if let text = task.text {
+            self.titleLabel.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString()
+        }
         self.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
         self.titleLabel.textColor = .gray10()
         self.subtitleLabel.textColor = .gray200()

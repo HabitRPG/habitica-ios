@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="205.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Challenge Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WQ-0g-PAH">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WQ-0g-PAH">
                         <rect key="frame" x="16" y="8" width="288" height="21"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                         <color key="textColor" red="0.30588235294117649" green="0.29019607843137252" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
@@ -87,20 +87,24 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Ends on " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcc-fD-hHj">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ends on " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcc-fD-hHj">
                         <rect key="frame" x="135.5" y="37" width="49" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.52941176469999995" green="0.50588235290000005" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="IER-c7-s8I">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="IER-c7-s8I">
                         <rect key="frame" x="107.5" y="34" width="20" height="20"/>
                     </imageView>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9o1-yw-Y5u">
+                        <rect key="frame" x="16" y="59.5" width="288" height="69.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="4WQ-0g-PAH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="0oc-XH-irW"/>
-                    <constraint firstItem="z75-Sz-mPV" firstAttribute="top" secondItem="dcc-fD-hHj" secondAttribute="bottom" constant="60" id="ALj-lJ-kOm"/>
+                    <constraint firstItem="9o1-yw-Y5u" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="H9y-CW-tEo"/>
                     <constraint firstAttribute="bottom" secondItem="y1q-zC-HVD" secondAttribute="bottom" constant="8.5" id="I1N-Ns-edq"/>
                     <constraint firstAttribute="trailing" secondItem="4WQ-0g-PAH" secondAttribute="trailing" constant="16" id="JnH-YH-k0R"/>
                     <constraint firstItem="dcc-fD-hHj" firstAttribute="centerY" secondItem="IER-c7-s8I" secondAttribute="centerY" id="LPu-56-tg0"/>
@@ -113,6 +117,8 @@
                     <constraint firstItem="z75-Sz-mPV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="csF-3Q-dXd"/>
                     <constraint firstItem="z75-Sz-mPV" firstAttribute="height" secondItem="y1q-zC-HVD" secondAttribute="height" id="flf-Cl-04G"/>
                     <constraint firstAttribute="trailing" secondItem="y1q-zC-HVD" secondAttribute="trailing" constant="16" id="kJy-VB-fiD"/>
+                    <constraint firstItem="9o1-yw-Y5u" firstAttribute="top" secondItem="dcc-fD-hHj" secondAttribute="bottom" constant="8" id="oH3-1q-Al7"/>
+                    <constraint firstItem="z75-Sz-mPV" firstAttribute="top" secondItem="9o1-yw-Y5u" secondAttribute="bottom" constant="8" id="tXM-Zd-x4C"/>
                     <constraint firstItem="dcc-fD-hHj" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="yFp-cX-tK1"/>
                 </constraints>
             </tableViewCellContentView>
@@ -122,6 +128,7 @@
                 <outlet property="expirationLabel" destination="dcc-fD-hHj" id="3GA-dk-GdZ"/>
                 <outlet property="participantsLabel" destination="UKx-BH-FaZ" id="yuj-3H-SWG"/>
                 <outlet property="rewardCurrencyCountView" destination="JNN-zz-1gk" id="47Z-gH-N7B"/>
+                <outlet property="tagHolderView" destination="9o1-yw-Y5u" id="Z1t-8j-faI"/>
             </connections>
             <point key="canvasLocation" x="-155" y="-67"/>
         </tableViewCell>

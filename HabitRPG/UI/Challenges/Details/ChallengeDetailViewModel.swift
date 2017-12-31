@@ -16,7 +16,7 @@ enum ChallengeButtonState {
 
 protocol ChallengeDetailViewModelInputs {
     func viewDidLoad()
-    func setChallenge(_ challenge: Challenge?)
+    func setChallenge(_ challenge: Challenge)
 }
 
 protocol ChallengeDetailViewModelOutputs {
@@ -31,9 +31,20 @@ protocol ChallengeDetailViewModelProtocol {
 class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetailViewModelInputs, ChallengeDetailViewModelOutputs {
     var cellModelsSignal: Signal<[FixedSizeDataSourceSection], NoError>
     
-    let challengeProperty: MutableProperty<Challenge?> = MutableProperty<Challenge?>(nil)
-    let cellModelsProperty: MutableProperty<[FixedSizeDataSourceSection]> = MutableProperty<[FixedSizeDataSourceSection]>([])
+    let challengeProperty: MutableProperty<Challenge>
     let viewDidLoadProperty = MutableProperty()
+    
+    let cellModelsProperty: MutableProperty<[FixedSizeDataSourceSection]> = MutableProperty<[FixedSizeDataSourceSection]>([])
+    let infoSectionProperty: MutableProperty<FixedSizeDataSourceSection> = MutableProperty<FixedSizeDataSourceSection>(FixedSizeDataSourceSection())
+    let habitsSectionProperty: MutableProperty<FixedSizeDataSourceSection> = MutableProperty<FixedSizeDataSourceSection>(FixedSizeDataSourceSection())
+    let dailiesSectionProperty: MutableProperty<FixedSizeDataSourceSection> = MutableProperty<FixedSizeDataSourceSection>(FixedSizeDataSourceSection())
+    let todosSectionProperty: MutableProperty<FixedSizeDataSourceSection> = MutableProperty<FixedSizeDataSourceSection>(FixedSizeDataSourceSection())
+    let rewardsSectionProperty: MutableProperty<FixedSizeDataSourceSection> = MutableProperty<FixedSizeDataSourceSection>(FixedSizeDataSourceSection())
+    let endSectionProperty: MutableProperty<FixedSizeDataSourceSection> = MutableProperty<FixedSizeDataSourceSection>(FixedSizeDataSourceSection())
+    
+    let mainButtonItemProperty: MutableProperty<ButtonCellFixedSizeDataSourceItem?> = MutableProperty<ButtonCellFixedSizeDataSourceItem?>(nil)
+    let endButtonItemProperty: MutableProperty<ButtonCellFixedSizeDataSourceItem?> = MutableProperty<ButtonCellFixedSizeDataSourceItem?>(nil)
+    let doubleEndButtonItemProperty: MutableProperty<DoubleButtonFixedSizeDataSourceItem?> = MutableProperty<DoubleButtonFixedSizeDataSourceItem?>(nil)
     
     let joinLeaveStyleProvider: JoinLeaveButtonAttributeProvider
     let publishStyleProvider: PublishButtonAttributeProvider
@@ -41,6 +52,8 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     let endChallengeStyleProvider: EndChallengeButtonAttributeProvider
     
     init(challenge: Challenge) {
+        challengeProperty = MutableProperty<Challenge>(challenge)
+        
         joinLeaveStyleProvider = JoinLeaveButtonAttributeProvider(challenge)
         publishStyleProvider = PublishButtonAttributeProvider(challenge)
         participantsStyleProvider = ParticipantsButtonAttributeProvider(challenge)
@@ -50,11 +63,118 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         
         cellModelsSignal = Signal.merge(cellModelsProperty.signal, initialCellModelsSignal)
         
-        challengeProperty.signal.observeValues { [weak self] (challenge) in
-            self?.cellModelsProperty.value = self?.generateCellModels(challenge: challenge) ?? []
+        Signal.zip(infoSectionProperty.signal,
+                   habitsSectionProperty.signal,
+                   dailiesSectionProperty.signal,
+                   todosSectionProperty.signal,
+                   rewardsSectionProperty.signal,
+                   endSectionProperty.signal)
+            .map { sectionTuple -> [FixedSizeDataSourceSection] in
+                return [sectionTuple.0, sectionTuple.1, sectionTuple.2, sectionTuple.3, sectionTuple.4, sectionTuple.5]
+            }
+            .observeValues { sections in
+                self.cellModelsProperty.value = sections.filter { $0.items?.count ?? 0 > 0 }
         }
         
+        setupInfo()
+        
+        setupButtons()
+        
+        setupTasks()
+        
         reloadChallenge(challenge: challenge)
+    }
+    
+    func setupInfo() {
+        challengeProperty.signal.observeValues { (challenge) in
+            let infoItem = ChallengeFixedSizeDataSourceItem<ChallengeDetailInfoTableViewCell>(challenge, identifier: "info")
+            let creatorItem = ChallengeFixedSizeDataSourceItem<ChallengeCreatorTableViewCell>(challenge, identifier: "creator")
+            let descriptionItem = ChallengeFixedSizeDataSourceItem<ChallengeDescriptionTableViewCell>(challenge, identifier: "description")
+            
+            let infoSection = FixedSizeDataSourceSection()
+            if let mainButton = self.mainButtonItemProperty.value {
+                infoSection.items = [infoItem, mainButton, creatorItem, descriptionItem]
+            } else {
+                infoSection.items = [infoItem, creatorItem, descriptionItem]
+            }
+            self.infoSectionProperty.value = infoSection
+        }
+    }
+    
+    func setupTasks() {
+        challengeProperty.signal.observeValues { (challenge) in
+            let habitsSection = FixedSizeDataSourceSection()
+            habitsSection.title = "Habits"
+            habitsSection.items = challenge.habits?.map({ (task) -> FixedSizeDataSourceItem in
+                return ChallengeTaskFixedSizeDataSourceItem<HabitTableViewCell>(task, identifier: "habit")
+            })
+            self.habitsSectionProperty.value = habitsSection
+            
+            let dailiesSection = FixedSizeDataSourceSection()
+            dailiesSection.title = "Dailies"
+            dailiesSection.items = challenge.dailies?.map({ (task) -> FixedSizeDataSourceItem in
+                return ChallengeTaskFixedSizeDataSourceItem<DailyTableViewCell>(task, identifier: "daily")
+            })
+            self.dailiesSectionProperty.value = dailiesSection
+            
+            let todosSection = FixedSizeDataSourceSection()
+            todosSection.title = "Todos"
+            todosSection.items = challenge.todos?.map({ (task) -> FixedSizeDataSourceItem in
+                return ChallengeTaskFixedSizeDataSourceItem<ToDoTableViewCell>(task, identifier: "todo")
+            })
+            self.todosSectionProperty.value = todosSection
+            
+            let rewardsSection = FixedSizeDataSourceSection()
+            rewardsSection.title = "Rewards"
+            self.rewardsSectionProperty.value = rewardsSection
+        }
+    }
+    
+    func setupButtons() {
+        let ownedChallengeSignal = challengeProperty.signal.filter(isOwner(of:))
+        let unownedChallengeSignal = challengeProperty.signal.filter({ !isOwner(of: $0) })
+        
+        endButtonItemProperty.signal.skipNil().observeValues { (item) in
+            let endSection = FixedSizeDataSourceSection()
+            endSection.items = [item]
+            self.endSectionProperty.value = endSection
+        }
+        
+        doubleEndButtonItemProperty.signal.skipNil().observeValues { (item) in
+            let endSection = FixedSizeDataSourceSection()
+            endSection.items = [item]
+            self.endSectionProperty.value = endSection
+        }
+        
+        let endButtonNilSignal = endButtonItemProperty.signal.map { $0 == nil }
+        let doubleEndButtonNilSignal = doubleEndButtonItemProperty.signal.map { $0 == nil }
+        endButtonNilSignal.and(doubleEndButtonNilSignal).filter({ $0 }).observeValues({ _ in
+            let endSection = FixedSizeDataSourceSection()
+            self.endSectionProperty.value = endSection
+            
+        })
+        
+        ownedChallengeSignal.observeValues { (challenge) in
+            self.doubleEndButtonItemProperty.value = DoubleButtonFixedSizeDataSourceItem(identifier: "endButton", leftAttributeProvider: self.joinLeaveStyleProvider, leftInputs: self.joinLeaveStyleProvider, rightAttributeProvider: self.endChallengeStyleProvider, rightInputs: self.endChallengeStyleProvider)
+        }
+        ownedChallengeSignal.filter(isChallengePublished(_:)).observeValues { _ in
+            self.mainButtonItemProperty.value = ButtonCellFixedSizeDataSourceItem(attributeProvider: self.participantsStyleProvider, inputs: self.participantsStyleProvider, identifier: "mainButton")
+        }
+        ownedChallengeSignal.filter({ !isChallengePublished($0) }).observeValues { _ in
+            self.mainButtonItemProperty.value = ButtonCellFixedSizeDataSourceItem(attributeProvider: self.publishStyleProvider, inputs: self.publishStyleProvider, identifier: "mainButton")
+        }
+        
+        unownedChallengeSignal.observeValues { (challenge) in
+            self.doubleEndButtonItemProperty.value = nil
+        }
+        unownedChallengeSignal.filter(isChallengeJoinable(challenge:)).observeValues { _ in
+            self.mainButtonItemProperty.value = ButtonCellFixedSizeDataSourceItem(attributeProvider: self.joinLeaveStyleProvider, inputs: self.joinLeaveStyleProvider, identifier: "mainButton")
+            self.endButtonItemProperty.value = nil
+            self.doubleEndButtonItemProperty.value = nil
+        }
+        unownedChallengeSignal.filter({ !isChallengeJoinable(challenge: $0) }).observeValues { _ in
+            self.endButtonItemProperty.value = ButtonCellFixedSizeDataSourceItem(attributeProvider: self.joinLeaveStyleProvider, inputs: self.joinLeaveStyleProvider, identifier: "mainButton")
+        }
     }
     
     func reloadChallenge(challenge: Challenge) {
@@ -83,73 +203,13 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             }, onError: nil)
     }
     
-    func generateCellModels(challenge: Challenge?) -> [FixedSizeDataSourceSection] {
-        let infoSection = FixedSizeDataSourceSection()
-        let habitsSection = FixedSizeDataSourceSection()
-        let dailiesSection = FixedSizeDataSourceSection()
-        let todosSection = FixedSizeDataSourceSection()
-        let rewardsSection = FixedSizeDataSourceSection()
-        let endSection = FixedSizeDataSourceSection()
-        
-        if let challenge = challenge {
-            var endButtonItem = ButtonCellFixedSizeDataSourceItem(attributeProvider: joinLeaveStyleProvider, inputs: joinLeaveStyleProvider, identifier: "endButton")
-            var doubleEndButtonItem = ButtonCellFixedSizeDataSourceItem(attributeProvider: endChallengeStyleProvider, inputs: endChallengeStyleProvider, identifier: "doubleEndButton")
-            
-            let infoItem = ChallengeFixedSizeDataSourceItem<ChallengeDetailInfoTableViewCell>(challenge, identifier: "info")
-            var mainButtonItem: ButtonCellFixedSizeDataSourceItem?
-            if (isOwner(of: challenge)) {
-                if (isChallengePublished(challenge)) {
-                    mainButtonItem = ButtonCellFixedSizeDataSourceItem(attributeProvider: participantsStyleProvider, inputs: participantsStyleProvider, identifier: "mainButton")
-                } else {
-                    mainButtonItem = ButtonCellFixedSizeDataSourceItem(attributeProvider: publishStyleProvider, inputs: publishStyleProvider, identifier: "mainButton")
-                }
-                endSection.items = [doubleEndButtonItem]
-            } else if (!isChallengeJoinable(challenge: challenge)) {
-                endSection.items = [endButtonItem]
-            } else {
-                mainButtonItem = ButtonCellFixedSizeDataSourceItem(attributeProvider: joinLeaveStyleProvider, inputs: joinLeaveStyleProvider, identifier: "mainButton")
-            }
-            let creatorItem = ChallengeFixedSizeDataSourceItem<ChallengeCreatorTableViewCell>(challenge, identifier: "creator")
-            let descriptionItem = ChallengeFixedSizeDataSourceItem<ChallengeDescriptionTableViewCell>(challenge, identifier: "description")
-            
-            if let buttonItem = mainButtonItem {
-                infoSection.items = [infoItem, buttonItem, creatorItem, descriptionItem]
-            } else {
-                infoSection.items = [infoItem, creatorItem, descriptionItem]
-            }
-            
-            habitsSection.title = "Habits"
-            habitsSection.items = challenge.habits?.map({ (task) -> FixedSizeDataSourceItem in
-                return ChallengeTaskFixedSizeDataSourceItem<HabitTableViewCell>(task, identifier: "habit")
-            })
-            
-            dailiesSection.title = "Dailies"
-            dailiesSection.items = challenge.dailies?.map({ (task) -> FixedSizeDataSourceItem in
-                return ChallengeTaskFixedSizeDataSourceItem<DailyTableViewCell>(task, identifier: "daily")
-            })
-            
-            todosSection.title = "Todos"
-            todosSection.items = challenge.todos?.map({ (task) -> FixedSizeDataSourceItem in
-                return ChallengeTaskFixedSizeDataSourceItem<ToDoTableViewCell>(task, identifier: "todo")
-            })
-            
-            rewardsSection.title = "Rewards"
-//            rewardsSection.items = challengeProperty.value?.rewards?.map({ (task) -> FixedSizeDataSourceItem in
-//                return ChallengeTaskFixedSizeDataSourceItem<RewaTab>(task, identifier: "reward")
-//            })
-        }
-        
-        let sections = [infoSection, habitsSection, dailiesSection, todosSection, rewardsSection, endSection]
-        return sections.filter { $0.items?.count ?? 0 > 0 }
-    }
-    
     // MARK: ChallengeDetailViewModelInputs
     
     func viewDidLoad() {
         viewDidLoadProperty.value = ()
     }
     
-    func setChallenge(_ challenge: Challenge?) {
+    func setChallenge(_ challenge: Challenge) {
         challengeProperty.value = challenge
     }
     
@@ -201,7 +261,7 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
         enabledSignal = buttonStateSignal.map { $0 != .publishDisabled }
         
         buttonStateSignal.sample(on: buttonPressedProperty.signal).observeValues { [weak self] (state) in
-            if (state == .join) {
+            if state == .join {
                 HRPGManager.shared().join(self?.challengeProperty.value, onSuccess: {
                     self?.challengeUpdatedProperty.value = ()
                 }, onError: nil)
@@ -302,7 +362,7 @@ class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
     let enabledSignal: Signal<Bool, NoError>
     
     init(_ challenge: Challenge) {
-        let participantsViewableSignal = challengeProperty.signal.filter(isOwner(of:)).filter(isChallengePublished(_:)).filter({ !isChallengeJoinable(challenge: $0)}).map { _ in ChallengeButtonState.viewParticipants }
+        let participantsViewableSignal = challengeProperty.signal.filter(isOwner(of:)).filter(isChallengePublished(_:)).filter({ !isChallengeJoinable(challenge: $0) }).map { _ in ChallengeButtonState.viewParticipants }
         
         buttonStateSignal = participantsViewableSignal.sample(on: triggerStyleProperty.signal)
         
@@ -435,6 +495,31 @@ class ConcreteFixedSizeDataSourceItem<T>: FixedSizeDataSourceItem where T: UITab
     
     func configureCell(_ cell: UITableViewCell) {
         // NO OP: override me!
+    }
+}
+
+class DoubleButtonFixedSizeDataSourceItem: ConcreteFixedSizeDataSourceItem<DoubleButtonTableViewCell> {
+    let leftAttributeProvider: HRPGButtonAttributeProvider?
+    let leftInputs: HRPGButtonModelInputs?
+    let rightAttributeProvider: HRPGButtonAttributeProvider?
+    let rightInputs: HRPGButtonModelInputs?
+    
+    init(identifier: String, leftAttributeProvider: HRPGButtonAttributeProvider?, leftInputs: HRPGButtonModelInputs?, rightAttributeProvider: HRPGButtonAttributeProvider?, rightInputs: HRPGButtonModelInputs?) {
+        self.leftAttributeProvider = leftAttributeProvider
+        self.leftInputs = leftInputs
+        self.rightAttributeProvider = rightAttributeProvider
+        self.rightInputs = rightInputs
+        super.init(identifier: identifier)
+    }
+    
+    override func configureCell(_ cell: UITableViewCell) {
+        if let buttonCell = cell as? DoubleButtonTableViewCell {
+            buttonCell.leftButtonViewModel.attributeProvider = leftAttributeProvider
+            buttonCell.leftModelInputs = leftInputs
+            
+            buttonCell.rightButtonViewModel.attributeProvider = rightAttributeProvider
+            buttonCell.rightModelInputs = rightInputs
+        }
     }
 }
 
