@@ -114,6 +114,9 @@ class ChallengeFilterAlert: UIViewController {
                 self.groups = groups
                 if groups.count > 0 {
                     for group in groups {
+                        if group.id == nil {
+                            return
+                        }
                         let groupView = LabeledCheckboxView(frame: CGRect.zero)
                         groupView.text = group.name
                         if initShownGuilds {

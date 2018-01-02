@@ -23,6 +23,7 @@
 @property CGFloat viewWidth;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *profileBarButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
+@property NSIndexPath *expandedChatPath;
 @end
 
 @implementation HRPGInboxChatViewController
@@ -276,12 +277,18 @@
         profileViewController.username = message.username;
         [weakSelf.navigationController pushViewController:profileViewController animated:YES];
     };
-    
+    cell.copyAction = ^{
+        UIPasteboard *pb = [UIPasteboard generalPasteboard];
+        [pb setString:message.text];
+    };
     cell.deleteAction = ^() {
         [[HRPGManager sharedManager] deletePrivateMessage:message onSuccess:nil onError:nil];
     };
+    cell.expandAction = ^{
+        [self expandSelectedCell:indexPath];
+    };
     
-    [cell configureForInboxMessage:message withUser:self.user];
+    [cell configureForInboxMessage:message withUser:self.user isExpanded:[self.expandedChatPath isEqual:indexPath]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -298,6 +305,32 @@
         _managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
     }
     return _managedObjectContext;
+}
+
+- (void)expandSelectedCell:(NSIndexPath *)indexPath {
+    NSIndexPath *expandedPath = self.expandedChatPath;
+    if ([self.tableView numberOfRowsInSection:0] < expandedPath.item) {
+        expandedPath = nil;
+    }
+    self.expandedChatPath = indexPath;
+    if (expandedPath == nil || indexPath.item == expandedPath.item) {
+        CheckedTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        cell.isExpanded = !cell.isExpanded;
+        if (!cell.isExpanded) {
+            self.expandedChatPath = nil;
+        }
+        [self.tableView beginUpdates];
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView endUpdates];
+    } else {
+        CheckedTableViewCell *oldCell = [self.tableView cellForRowAtIndexPath:expandedPath];
+        CheckedTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        [self.tableView beginUpdates];
+        cell.isExpanded = YES;
+        oldCell.isExpanded = NO;
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath, expandedPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView endUpdates];
+    }
 }
 
 @end

@@ -187,6 +187,61 @@
     return [UIColor colorWithWhite:249.0f / 255.0f alpha:1.0f];
 }
 
++ (UIColor * _Nonnull)tier1Color {
+    return [UIColor colorWithRed:196.0f / 255.0f green:40.0f / 255.0f blue:113.0f / 255.0f alpha:1.0f];
+}
+
++ (UIColor * _Nonnull)tier2Color {
+    return [UIColor colorWithRed:176.0f / 255.0f green:21.0f / 255.0f blue:21.0f / 255.0f alpha:1.0f];
+}
+
++ (UIColor * _Nonnull)tier3Color {
+    return [UIColor colorWithRed:215.0f / 255.0f green:14.0f / 255.0f blue:20.0f / 255.0f alpha:1.0f];
+}
+
++ (UIColor * _Nonnull)tier4Color {
+    return [UIColor colorWithRed:194.0f / 255.0f green:77.0f / 255.0f blue:0.0f alpha:1.0f];
+}
+
++ (UIColor * _Nonnull)tier5Color {
+    return [UIColor colorWithRed:158.0f / 255.0f green:101.0f / 255.0f blue:15.0f / 255.0f alpha:1.0f];
+}
+
++ (UIColor * _Nonnull)tier6Color {
+    return [UIColor colorWithRed:43.0f / 255.0f green:131.0f / 255.0f blue:99.0f / 255.0f alpha:1.0f];
+}
+
++ (UIColor * _Nonnull)tier7Color {
+    return [UIColor colorWithRed:22.0f / 255.0f green:126.0f / 255.0f blue:135.0f / 255.0f alpha:1.0f];
+}
+
++ (UIColor * _Nonnull)tierModColor {
+    return [UIColor colorWithRed:39.0f / 255.0f green:126.0f / 255.0f blue:171.0f / 255.0f alpha:1.0f];
+}
+
++ (UIColor *)contributorColorFor:(NSInteger)level {
+    if (level == 1) {
+        return [UIColor tier1Color];
+    } else if (level == 2) {
+        return [UIColor tier2Color];
+    } else if (level == 3) {
+        return [UIColor tier3Color];
+    } else if (level == 4) {
+        return [UIColor tier4Color];
+    } else if (level == 5) {
+        return [UIColor tier5Color];
+    } else if (level == 6) {
+        return [UIColor tier6Color];
+    } else if (level == 7) {
+        return [UIColor tier7Color];
+    } else if (level == 8) {
+        return [UIColor tierModColor];
+    } else if (level == 9) {
+        return [UIColor purple300];
+    }
+    return [UIColor gray10];
+}
+
 
 // http://stackoverflow.com/a/18903483/1315039
 - (UIColor *)blendWithColor:(UIColor *)color2 alpha:(CGFloat)alpha2 {

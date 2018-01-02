@@ -64,6 +64,8 @@
 + (UIColor *)gray600;
 + (UIColor *)gray700;
 
++ (UIColor *)contributorColorFor:(NSInteger)level;
+
 - (UIColor *)blendWithColor:(UIColor *)color2 alpha:(CGFloat)alpha2;
 
 @end

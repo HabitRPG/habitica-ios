@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ChatMessage.h"
 #import "InboxMessage.h"
+#import "Habitica-Swift.h"
 
 typedef NS_ENUM(NSInteger, HRPGChatTableViewCellType) {
     HRPGChatTableViewCellTypeGroup,
@@ -18,31 +19,33 @@ typedef NS_ENUM(NSInteger, HRPGChatTableViewCellType) {
 
 @interface HRPGChatTableViewCell : UITableViewCell<UIGestureRecognizerDelegate>
 
-@property(weak, nonatomic) IBOutlet UILabel *usernameLabel;
-@property(weak, nonatomic) IBOutlet UIImageView *modIndicatorImageView;
-@property(weak, nonatomic) IBOutlet NSLayoutConstraint *indicatorImageViewWidthConstraint;
-@property(weak, nonatomic) IBOutlet UIView *usernameWrapper;
+@property BOOL isExpanded;
+
+@property (weak, nonatomic) IBOutlet UIView *messageWrapper;
+@property(weak, nonatomic) IBOutlet UsernameLabel *usernameLabel;
 @property(weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property(weak, nonatomic) IBOutlet UITextView *messageTextView;
-@property(weak, nonatomic) IBOutlet NSLayoutConstraint *usernameHeightConstraint;
-@property(weak, nonatomic) IBOutlet NSLayoutConstraint *usernameWidthConstraint;
 @property(weak, nonatomic) IBOutlet UIButton *plusOneButton;
-@property(weak, nonatomic) IBOutlet NSLayoutConstraint *plusOneButtonHeightConstraint;
-@property(weak, nonatomic) IBOutlet NSLayoutConstraint *plusOneButtonWidthConstraint;
-@property (weak, nonatomic) IBOutlet UILabel *sendingLabel;
+@property (weak, nonatomic) IBOutlet UIStackView *extraButtonsStackView;
+@property (weak, nonatomic) IBOutlet UIButton *reportButton;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 - (void)configureForMessage:(ChatMessage *)message
                  withUserID:(NSString *)userID
                withUsername:(NSString *)username
-                isModerator:(BOOL)isModerator;
+                isModerator:(BOOL)isModerator
+                 isExpanded:(BOOL)isExpanded;
 
 - (void)configureForInboxMessage:(InboxMessage *)message
-                        withUser:(User *)thisUser;
+                        withUser:(User *)thisUser
+                      isExpanded:(BOOL)isExpanded;
 
 @property(nonatomic) void (^profileAction)();
 @property(nonatomic) void (^flagAction)();
 @property(nonatomic) void (^replyAction)();
 @property(nonatomic) void (^deleteAction)();
 @property(nonatomic) void (^plusOneAction)();
+@property(nonatomic) void (^copyAction)();
+@property(nonatomic) void (^expandAction)();
 
 @end

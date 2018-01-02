@@ -21,6 +21,7 @@
 @interface HRPGGroupTableViewController ()
 @property NSString *replyMessage;
 @property UITextView *sizeTextView;
+@property NSIndexPath *expandedChatPath;
 @end
 
 @implementation HRPGGroupTableViewController
@@ -50,9 +51,15 @@
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"ChatMessageCell"];
 
     self.user = [[HRPGManager sharedManager] getUser];
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = [UIColor gray700];
 
     [self fetchGroup];
     [self refresh];
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 90;
 }
 
 - (void)refresh {
@@ -166,23 +173,6 @@
         return NSLocalizedString(@"Chat", nil);
     }
     return @"";
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == [self chatSectionIndex]) {
-        ChatMessage *message = [self chatMessageAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
-        if (!message.attributedText) {
-            message.attributedText = [self renderMarkdown:message.text];
-        }
-        self.sizeTextView.attributedText = message.attributedText;
-
-        CGSize suggestedSize =
-            [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth - 26, CGFLOAT_MAX)];
-
-        CGFloat rowHeight = suggestedSize.height + 35;
-        return rowHeight;
-    }
-    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -369,7 +359,8 @@
     if (!message.attributedText) {
         message.attributedText = [self renderMarkdown:message.text];
     }
-    [cell configureForMessage:message withUserID:self.user.id withUsername:self.user.username isModerator:([self.user.contributorLevel intValue] >= 8)];
+    
+    [cell configureForMessage:message withUserID:self.user.id withUsername:self.user.username isModerator:([self.user.contributorLevel intValue] >= 8) isExpanded:[self.expandedChatPath isEqual:indexPath]];
     cell.profileAction = ^() {
         HRPGUserProfileViewController *profileViewController =
             [self.storyboard instantiateViewControllerWithIdentifier:@"UserProfileViewController"];
@@ -410,15 +401,20 @@
                                                 animated:YES
                                               completion:nil];
     };
-
     cell.plusOneAction = ^() {
         [[HRPGManager sharedManager] likeMessage:message withGroup:self.groupID onSuccess:^() {
             [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         } onError:nil];
     };
-
     cell.deleteAction = ^() {
         [[HRPGManager sharedManager] deleteMessage:message withGroup:self.groupID onSuccess:nil onError:nil];
+    };
+    cell.copyAction = ^{
+        UIPasteboard *pb = [UIPasteboard generalPasteboard];
+        [pb setString:message.text];
+    };
+    cell.expandAction = ^{
+        [self expandSelectedCell:indexPath];
     };
 }
 
@@ -431,6 +427,32 @@
         }
     }
     return item;
+}
+
+- (void)expandSelectedCell:(NSIndexPath *)indexPath {
+    NSIndexPath *expandedPath = self.expandedChatPath;
+    if ([self.tableView numberOfRowsInSection:[self chatSectionIndex]] < expandedPath.item) {
+        expandedPath = nil;
+    }
+    self.expandedChatPath = indexPath;
+    if (expandedPath == nil || indexPath.item == expandedPath.item) {
+        HRPGChatTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        cell.isExpanded = !cell.isExpanded;
+        if (!cell.isExpanded) {
+            self.expandedChatPath = nil;
+        }
+        [self.tableView beginUpdates];
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView endUpdates];
+    } else {
+        HRPGChatTableViewCell *oldCell = [self.tableView cellForRowAtIndexPath:expandedPath];
+        HRPGChatTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        [self.tableView beginUpdates];
+        cell.isExpanded = YES;
+        oldCell.isExpanded = NO;
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath, expandedPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView endUpdates];
+    }
 }
 
 @end
