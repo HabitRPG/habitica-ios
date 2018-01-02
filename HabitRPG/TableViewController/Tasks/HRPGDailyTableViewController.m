@@ -94,6 +94,9 @@
     CGPoint p = [gesture locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
     NSIndexPath *expandedPath = self.expandedIndexPath;
+    if ([self.tableView numberOfRowsInSection:0] < expandedPath.item) {
+        expandedPath = nil;
+    }
     self.expandedIndexPath = indexPath;
     if (expandedPath == nil || indexPath.item == expandedPath.item) {
         CheckedTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
