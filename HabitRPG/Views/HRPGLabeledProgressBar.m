@@ -7,6 +7,7 @@
 //
 
 #import "HRPGLabeledProgressBar.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGLabeledProgressBar ()
 
@@ -51,6 +52,11 @@
     self.typeView.textColor = [UIColor darkGrayColor];
     [self addSubview:self.typeView];
     self.fontSize = 11;
+    NSOperatingSystemVersion ios10_0_0 = (NSOperatingSystemVersion){10, 0, 0};
+    if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios10_0_0]) {
+        self.labelView.adjustsFontForContentSizeCategory = YES;
+        self.typeView.adjustsFontForContentSizeCategory = YES;
+    }
 }
 
 - (void)setColor:(UIColor *)color {
@@ -100,9 +106,10 @@
 }
 
 - (void)setFontSize:(NSInteger)fontSize {
-    _fontSize = fontSize;
-    self.typeView.font = [UIFont systemFontOfSize:fontSize];
-    self.labelView.font = [UIFont systemFontOfSize:fontSize];
+    UIFont *scaledFont = [CustomFontMetrics scaledSystemFontOfSize:fontSize compatibleWith:nil];
+    _fontSize = scaledFont.pointSize;
+    self.typeView.font = scaledFont;
+    self.labelView.font = scaledFont;
     [self updateViewFrames];
 }
 - (void)updateViewFrames {

@@ -91,6 +91,9 @@ NSInteger rowOffset = 16;
     UIGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGemView)];
     [self.gemView addGestureRecognizer:recognizer];
 
+    self.usernameLabel.font = [CustomFontMetrics scaledSystemFontOfSize:16 compatibleWith:nil];
+    self.levelLabel.font = [CustomFontMetrics scaledSystemFontOfSize:11 compatibleWith:nil];
+    
     [self setData];
     [super awakeFromNib];
 }

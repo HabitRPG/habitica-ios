@@ -58,6 +58,10 @@ class TaskDetailLineView: UIView {
             view.frame = bounds
             view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
             addSubview(view)
+            
+            let font = CustomFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.systemFont(ofSize: 13))
+            self.detailLabel.font = font
+            self.streakLabel.font = font
         }
     }
 

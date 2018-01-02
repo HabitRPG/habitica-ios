@@ -12,7 +12,7 @@ import Down
 extension Down {
 
     func toHabiticaAttributedString() throws -> NSMutableAttributedString {
-        return try self.toHabiticaAttributedString(baseFont: UIFont.preferredFont(forTextStyle: .body))
+        return try self.toHabiticaAttributedString(baseFont: CustomFontMetrics.scaledSystemFont(ofSize: 13))
     }
 
     func toHabiticaAttributedString(baseFont: UIFont) throws -> NSMutableAttributedString {

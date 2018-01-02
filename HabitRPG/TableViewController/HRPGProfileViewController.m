@@ -78,7 +78,7 @@ NSString *currentUserID;
                              objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]];
     footerView.textColor = [UIColor lightGrayColor];
     footerView.textAlignment = NSTextAlignmentCenter;
-    footerView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+    footerView.font = [CustomFontMetrics scaledSystemFontOfSize:12 compatibleWith:nil];
     footerView.numberOfLines = 0;
     self.tableView.tableFooterView = footerView;
 
@@ -93,6 +93,9 @@ NSString *currentUserID;
                                              selector:@selector(reloadPartyData:)
                                                  name:@"partyUpdated"
                                                object:nil];
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44;
 }
 
 - (void)refresh {
@@ -189,10 +192,6 @@ NSString *currentUserID;
         iconView.image = [UIImage imageNamed:@"icon_help"];
     }
     return view;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -363,6 +362,8 @@ NSString *currentUserID;
     }
     UILabel *label = [cell viewWithTag:1];
     label.text = title;
+    label.font = [CustomFontMetrics scaledSystemFontOfSize:17 compatibleWith:nil];
+    label.adjustsFontForContentSizeCategory = YES;
     UIImageView *indicatorView = [cell viewWithTag:2];
     indicatorView.hidden = !showIndicator;
     indicatorView.layer.cornerRadius = indicatorView.frame.size.height / 2;

@@ -1821,7 +1821,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdQ-c8-t8K">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
@@ -3156,7 +3156,7 @@ and helps keep Habitica running</string>
         <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="DAI-nh-Ljl"/>
-        <segue reference="fUS-KU-QMo"/>
+        <segue reference="sPD-XR-ORt"/>
         <segue reference="aWZ-FG-z5O"/>
         <segue reference="V6b-ej-qnx"/>
         <segue reference="jeD-LQ-1O1"/>
