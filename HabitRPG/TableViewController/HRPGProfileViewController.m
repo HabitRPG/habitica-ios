@@ -363,7 +363,10 @@ NSString *currentUserID;
     UILabel *label = [cell viewWithTag:1];
     label.text = title;
     label.font = [CustomFontMetrics scaledSystemFontOfSize:17 compatibleWith:nil];
-    label.adjustsFontForContentSizeCategory = YES;
+    NSOperatingSystemVersion ios10_0_0 = (NSOperatingSystemVersion){10, 0, 0};
+    if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios10_0_0]) {
+        label.adjustsFontForContentSizeCategory = YES;
+    }
     UIImageView *indicatorView = [cell viewWithTag:2];
     indicatorView.hidden = !showIndicator;
     indicatorView.layer.cornerRadius = indicatorView.frame.size.height / 2;

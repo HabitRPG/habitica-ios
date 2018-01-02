@@ -17,7 +17,8 @@ class HRPGShopsTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 28, ofWeight: .regular)
+        subtitleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 28, ofWeight: .regular)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
