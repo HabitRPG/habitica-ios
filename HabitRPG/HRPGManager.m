@@ -1853,8 +1853,27 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
+    RKEntityMapping *singleGearMapping =
+    [RKEntityMapping mappingForEntityForName:@"Gear" inManagedObjectStore:managedObjectStore];
+    [singleGearMapping addAttributeMappingsFromDictionary:@{
+                                                            @"key": @"key",
+                                                            @"text" : @"text",
+                                                            @"notes" : @"notes",
+                                                            @"con" : @"con",
+                                                            @"value" : @"value",
+                                                            @"type" : @"type",
+                                                            @"klass" : @"klass",
+                                                            @"index" : @"index",
+                                                            @"str" : @"str",
+                                                            @"int" : @"intelligence",
+                                                            @"per" : @"per",
+                                                            @"event.start" : @"eventStart",
+                                                            @"event.end" : @"eventEnd",
+                                                            @"specialClass" : @"specialClass",
+                                                            @"gearSet" : @"set"
+                                                            }];
     responseDescriptor = [RKResponseDescriptor
-                          responseDescriptorWithMapping:gearMapping
+                          responseDescriptorWithMapping:singleGearMapping
                           method:RKRequestMethodPOST
                           pathPattern:@"user/open-mystery-item"
                           keyPath:@"data"
@@ -5551,10 +5570,24 @@ NSString *currentUser;
 }
 
 - (void)displayMysteryItemNotification:(Gear *)gear {
+    NSError *error;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest
+     setEntity:[NSEntityDescription entityForName:@"Gear" inManagedObjectContext:[self getManagedObjectContext]]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", gear.key]];
+    NSArray *fetchedItem = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    NSString *mysteryItemText = nil;
+    if (fetchedItem.count > 0) {
+        Gear *mysteryItem = fetchedItem[0];
+        mysteryItemText = mysteryItem.text;
+    } else {
+        mysteryItemText = NSLocalizedString(@"Mystery Item", nil);
+    }
     [self getImage:[NSString stringWithFormat:@"shop_%@", gear.key]
         withFormat:@"png"
          onSuccess:^(UIImage *image) {
-             ToastView *toastView = [[ToastView alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"You received a %@", nil), gear.text] icon:image background:ToastColorBlue];
+             ToastView *toastView = [[ToastView alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"You received a %@", nil), mysteryItemText] icon:image background:ToastColorBlue];
              [ToastManager showWithToast:toastView];
          } onError:nil];
 }
