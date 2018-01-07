@@ -9,6 +9,7 @@
 #import "HRPGChatTableViewCell.h"
 #import <DateTools/DateTools.h>
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGChatTableViewCell ()
 
@@ -30,7 +31,7 @@
         tapRecognizer.cancelsTouchesInView = NO;
         [self.contentView addGestureRecognizer:tapRecognizer];
         [self.usernameLabel addGestureRecognizer:profileTapRecognizer];
-        self.messageTextView.font = [UIFont systemFontOfSize:15.0f];
+        self.messageTextView.font = [CustomFontMetrics scaledSystemFontOfSize:13 compatibleWith:nil];
     }
     return self;
 }
@@ -120,7 +121,7 @@
     if (message.attributedText.length > 0) {
         self.messageTextView.attributedText = [message.attributedText attributedSubstringFromRange:NSMakeRange(0, message.attributedText.length-1)];
     } else {
-        self.messageTextView.text = @"";
+        self.messageTextView.text = message.text;
     }
     self.isOwnMessage = [message.uuid isEqualToString:userID];
     [self.reportButton setHidden:self.isOwnMessage];
@@ -157,16 +158,19 @@
     self.messageTextView.textColor = [UIColor blackColor];
 
     self.timeLabel.text = message.timestamp.timeAgoSinceNow;
-    self.messageTextView.attributedText = message.attributedText;
-    [self.messageTextView setNeedsLayout];
+    if (message.attributedText.length > 0) {
+        self.messageTextView.attributedText = [message.attributedText attributedSubstringFromRange:NSMakeRange(0, message.attributedText.length-1)];
+    } else {
+        self.messageTextView.text = message.text;
+    }
 
     self.plusOneButton.hidden = YES;
     self.isOwnMessage = [message.sent boolValue];
     [self.reportButton setHidden:self.isOwnMessage];
     [self.deleteButton setHidden:!self.isOwnMessage ];
     
-    [self.extraButtonsStackView setHidden:!isExpanded];
-    
+    [self showHideExtraButtons:isExpanded];
+
     if (self.isOwnMessage) {
         self.backgroundColor = [UIColor gray500];
     }

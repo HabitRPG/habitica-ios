@@ -19,19 +19,20 @@ extension Down {
         guard let string = try self.toAttributedString().mutableCopy() as? NSMutableAttributedString else {
             return NSMutableAttributedString()
         }
-        let fontSizeOffset = baseFont.pointSize - 12.0
+        let baseSize = baseFont.pointSize
         string.enumerateAttribute(NSAttributedStringKey.font,
                                   in: NSRange(location: 0, length: string.length),
                                   options: NSAttributedString.EnumerationOptions.longestEffectiveRangeNotRequired,
                                   using: { (value, range, _) in
             if let oldFont = value as? UIFont {
                 let font: UIFont
+                let fontSizeOffset = oldFont.pointSize - 12
                 if oldFont.fontName.lowercased().contains("bold") {
-                    font = UIFont.boldSystemFont(ofSize: oldFont.pointSize+fontSizeOffset)
+                    font = UIFont.boldSystemFont(ofSize: baseSize+fontSizeOffset)
                 } else if oldFont.fontName.lowercased().contains("italic") {
-                    font = UIFont.italicSystemFont(ofSize: oldFont.pointSize+fontSizeOffset)
+                    font = UIFont.italicSystemFont(ofSize: baseSize+fontSizeOffset)
                 } else {
-                    font = UIFont.systemFont(ofSize: oldFont.pointSize+fontSizeOffset)
+                    font = UIFont.systemFont(ofSize: baseSize+fontSizeOffset)
                 }
                 string.addAttribute(NSAttributedStringKey.font, value: font, range: range)
             }

@@ -54,6 +54,10 @@
     } else {
         [self.navigationItem setRightBarButtonItems:@[self.profileBarButton] animated:NO];
     }
+
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 90;
 }
 
 - (void)setNavigationTitle {
@@ -111,21 +115,6 @@
     cell.transform = self.tableView.transform;
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    InboxMessage *message = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        
-    if (!message.attributedText) {
-        message.attributedText = [self renderMarkdown:message.text];
-    }
-    self.sizeTextView.attributedText = message.attributedText;
-    
-    CGSize suggestedSize =
-    [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth - 26, CGFLOAT_MAX)];
-    
-    CGFloat rowHeight = suggestedSize.height + 35;
-    return rowHeight;
 }
 
 - (void)didPressRightButton:(id)sender {
