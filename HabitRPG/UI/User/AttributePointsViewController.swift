@@ -9,7 +9,7 @@
 import UIKit
 import PopupDialog
 
-class AttributePointsVieController: HRPGBaseViewController {
+class AttributePointsVieController: HRPGUIViewController {
     
     @IBOutlet weak var pointsToAllocateLabel: UILabel!
     @IBOutlet weak var pointsToAllocateRightView: UIImageView!

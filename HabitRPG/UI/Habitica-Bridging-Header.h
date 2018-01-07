@@ -40,3 +40,4 @@
 #import "HRPGMaintenanceViewController.h"
 #import "HRPGShopViewController.h"
 #import "HRPGCopyTableViewCell.h"
+#import "HRPGUIViewController.h"

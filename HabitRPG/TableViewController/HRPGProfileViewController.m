@@ -295,9 +295,9 @@ NSString *currentUserID;
             }
         }
     } else if (indexPath.section == 0 && indexPath.item == 1) {
-        title = NSLocalizedString(@"Attribute Points", nil);
+        title = NSLocalizedString(@"Stats", nil);
     } else if (indexPath.section == 1 && indexPath.item == 0) {
-        title = NSLocalizedString(@"Inbox", nil);
+        title = NSLocalizedString(@"Messages", nil);
         User *user = self.user;
         if (user) {
             if ([user.inboxNewMessages integerValue] > 0) {
