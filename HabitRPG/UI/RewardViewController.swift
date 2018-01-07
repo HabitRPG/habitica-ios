@@ -47,6 +47,8 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
         do {
             try? self.fetchedResultsController.performFetch()
         }
+        
+        refresh()
     }
     
     @objc
