@@ -22,6 +22,7 @@ class HabiticaAlertController: UIViewController {
     @IBOutlet weak var alertStackView: UIStackView!
     @IBOutlet weak var bottomOffsetConstraint: NSLayoutConstraint!
     @IBOutlet weak var centerConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollviewHeightConstraint: NSLayoutConstraint!
     
     private var buttonHandlers = [Int: ((UIButton) -> Swift.Void)]()
     private var buttons = [UIButton]()
@@ -85,6 +86,22 @@ class HabiticaAlertController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
         super.viewWillDisappear(animated)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        let height = containerView.frame.size.height
+        var maximumHeight = view.frame.size.height
+        if #available(iOS 11.0, *) {
+            let guide = view.safeAreaLayoutGuide
+            maximumHeight = guide.layoutFrame.size.height
+        }
+        maximumHeight -= 32 + 140
+        if height > maximumHeight {
+            scrollviewHeightConstraint.constant = maximumHeight
+        } else {
+            scrollviewHeightConstraint.constant = height
+        }
+        super.viewWillLayoutSubviews()
     }
     
     @objc
