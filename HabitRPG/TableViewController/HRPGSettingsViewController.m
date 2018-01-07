@@ -482,8 +482,8 @@ NSUserDefaults *defaults;
 }
 
 - (void)displayClassSelectionViewController {
-    UINavigationController *selectClassNavigationController = [self.storyboard
-        instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *selectClassNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];
     selectClassNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
     HRPGClassTableViewController *classTableViewController =
         (HRPGClassTableViewController *)selectClassNavigationController.topViewController;

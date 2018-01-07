@@ -79,6 +79,8 @@ class HabiticaAlertController: UIViewController {
     @objc
     func addAction(title: String, style: UIAlertActionStyle = .default, isMainAction: Bool = false, handler: ((UIButton) -> Swift.Void)? = nil) {
         let button = UIButton()
+        button.titleLabel?.lineBreakMode = .byWordWrapping
+        button.titleLabel?.textAlignment = .center
         button.setTitle(title, for: .normal)
         button.backgroundColor = UIColor("#F9F7FF")
         if style == .destructive {
