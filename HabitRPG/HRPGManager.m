@@ -5241,7 +5241,9 @@ NSString *currentUser;
     }];
 }
 
-- (void)sendPasswordResetEmail:(NSString *)email successBlock:(void (^)())successBlock onError:(void (^)())errorBlock {
+- (void)sendPasswordResetEmail:(NSString *)email
+                     onSuccess:(void (^)())successBlock
+                       onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     [[RKObjectManager sharedManager] postObject:nil path:@"user/reset-password" parameters:@{@"email": email} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self.networkIndicatorController endNetworking];

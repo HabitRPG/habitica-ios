@@ -418,7 +418,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         stackView.addArrangedSubview(textView)
         let textField = UITextField()
         textField.placeholder = NSLocalizedString("Email", comment: "")
-        textField.isSecureTextEntry = true
         textField.borderStyle = .roundedRect
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
@@ -426,8 +425,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         alertController.addCancelAction()
         alertController.addAction(title: NSLocalizedString("Send", comment: ""), isMainAction: true) { _ in
             HRPGManager.shared().sendPasswordResetEmail(textField.text, onSuccess: {
-                let confirmationAlertController = HabiticaAlertController(title: NSLocalizedString("If we have your email on file, instructions for setting a new password have been sent to your email.", comment: ""))
-                confirmationAlertController.show()
+                ToastManager.show(text: NSLocalizedString("If we have your email on file, instructions for setting a new password have been sent to your email.", comment: ""), color: .green)
             }, onError: nil)
         }
         alertController.show()
