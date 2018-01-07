@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HabiticaAlertController" customModule="Habitica" customModuleProvider="target">
             <connections>
                 <outlet property="alertStackView" destination="TfL-K4-Ks4" id="dzH-0N-t5J"/>
+                <outlet property="bottomOffsetConstraint" destination="8EC-pR-IK1" id="Kpa-30-jU0"/>
                 <outlet property="buttonStackView" destination="q8R-qq-vxV" id="E0D-eA-zXr"/>
+                <outlet property="centerConstraint" destination="Ja4-aA-Xor" id="xJm-tB-avg"/>
                 <outlet property="closeButton" destination="TbI-aA-bqR" id="fdb-2o-5FY"/>
                 <outlet property="containerView" destination="ZV8-ae-TgB" id="ZCd-I2-WLG"/>
                 <outlet property="titleLabel" destination="iMp-sa-Osx" id="hL2-Jz-5bz"/>
@@ -157,9 +159,9 @@
             <constraints>
                 <constraint firstItem="I9B-sr-L3E" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hIR-Qr-gyg" secondAttribute="trailing" constant="16" id="0nz-qf-CS5"/>
                 <constraint firstItem="I9B-sr-L3E" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hIR-Qr-gyg" secondAttribute="bottom" constant="16" id="8EC-pR-IK1"/>
-                <constraint firstItem="hIR-Qr-gyg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="I9B-sr-L3E" secondAttribute="top" constant="16" id="9Et-vd-sNt"/>
+                <constraint firstItem="hIR-Qr-gyg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="I9B-sr-L3E" secondAttribute="top" priority="500" constant="16" id="9Et-vd-sNt"/>
                 <constraint firstItem="hIR-Qr-gyg" firstAttribute="centerX" secondItem="bkQ-it-OYY" secondAttribute="centerX" id="JJc-fz-JrU"/>
-                <constraint firstItem="hIR-Qr-gyg" firstAttribute="centerY" secondItem="bkQ-it-OYY" secondAttribute="centerY" id="Ja4-aA-Xor"/>
+                <constraint firstItem="hIR-Qr-gyg" firstAttribute="centerY" secondItem="bkQ-it-OYY" secondAttribute="centerY" priority="999" id="Ja4-aA-Xor"/>
                 <constraint firstItem="hIR-Qr-gyg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="I9B-sr-L3E" secondAttribute="leading" constant="16" id="eRo-Sv-1Jj"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="I9B-sr-L3E"/>

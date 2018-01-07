@@ -20,6 +20,8 @@ class HabiticaAlertController: UIViewController {
     @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var alertStackView: UIStackView!
+    @IBOutlet weak var bottomOffsetConstraint: NSLayoutConstraint!
+    @IBOutlet weak var centerConstraint: NSLayoutConstraint!
     
     private var buttonHandlers = [Int: ((UIButton) -> Swift.Void)]()
     private var buttons = [UIButton]()
@@ -74,6 +76,31 @@ class HabiticaAlertController: UIViewController {
         configureContentView()
         configureCloseButton()
         configureButtons()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        super.viewWillDisappear(animated)
+    }
+    
+    @objc
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            self.bottomOffsetConstraint.constant = keyboardHeight + 8
+            self.centerConstraint.isActive = false
+        }
+    }
+    
+    @objc
+    func keyboardWillHide(notification: NSNotification) {
+        self.bottomOffsetConstraint.constant = 16
+        self.centerConstraint.isActive = true
     }
     
     @objc

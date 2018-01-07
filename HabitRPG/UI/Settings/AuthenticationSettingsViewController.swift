@@ -106,6 +106,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         let textField = UITextField()
         textField.placeholder = NSLocalizedString("Password", comment: "")
         textField.isSecureTextEntry = true
+        textField.returnKeyType = .done
         textField.borderStyle = .roundedRect
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
