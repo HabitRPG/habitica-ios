@@ -18,6 +18,8 @@ class FixCharacterViewController: HRPGBaseViewController {
         "stats.lvl": 0.0
     ]
     
+    var habitClass = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let view = UIView()
@@ -39,6 +41,7 @@ class FixCharacterViewController: HRPGBaseViewController {
         stats["stats.mp"] = user?.magic.doubleValue
         stats["stats.gp"] = user?.gold.doubleValue
         stats["stats.lvl"] = user?.level.doubleValue
+        habitClass = user?.dirtyClass ?? ""
         //stats["achievements.streak"] = user?.health
     }
     
@@ -115,13 +118,13 @@ class FixCharacterViewController: HRPGBaseViewController {
         case 4:
             titleLabel.text = NSLocalizedString("Character Level", comment: "")
             titleLabel.textColor = .purple300()
-            iconView.backgroundColor = UIColor.purple400().withAlphaComponent(0.2)
-            iconView.image = HabiticaIcons.imageOfRogueLightBg
+            configure(iconView: iconView, forHabitClass: habitClass)
             return
         case 5:
             titleLabel.text = NSLocalizedString("21-Day Streaks", comment: "")
             titleLabel.textColor = .gray10()
             iconView.backgroundColor = UIColor.gray500().withAlphaComponent(0.5)
+            iconView.image = #imageLiteral(resourceName: "streak_achievement")
             return
         default:
             return
@@ -139,6 +142,29 @@ class FixCharacterViewController: HRPGBaseViewController {
     @IBAction func textFieldChanged(_ sender: UITextField) {
         if let cell = sender.superview?.superview?.superview as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
             stats[identifierFor(index: indexPath.item)] = Double(sender.text ?? "")
+        }
+    }
+    
+    func configure(iconView: UIImageView, forHabitClass habitClass: String) {
+        switch habitClass {
+        case "warrior":
+            iconView.backgroundColor = UIColor.red500().withAlphaComponent(0.5)
+            iconView.image = HabiticaIcons.imageOfWarriorLightBg
+            return
+        case "wizard":
+            iconView.backgroundColor = UIColor.blue500().withAlphaComponent(0.5)
+            iconView.image = HabiticaIcons.imageOfMageLightBg
+            return
+        case "healer":
+            iconView.backgroundColor = UIColor.yellow500().withAlphaComponent(0.5)
+            iconView.image = HabiticaIcons.imageOfHealerLightBg
+            return
+        case "rogue":
+            iconView.backgroundColor = UIColor.purple400().withAlphaComponent(0.2)
+            iconView.image = HabiticaIcons.imageOfRogueLightBg
+            return
+        default:
+            return
         }
     }
 }
