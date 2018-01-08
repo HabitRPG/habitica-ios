@@ -348,6 +348,10 @@ class HRPGBuyItemModalViewController: UIViewController {
                 HRPGManager.shared().purchaseItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {
                     HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGemsViewController", parent: topViewController)
                 })
+            } else if purchaseType == "fortify" {
+                HRPGManager.shared().reroll(successBlock, onError: {
+                    HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                });
             } else {
                 if currency == .gold && purchaseType == "quests" {
                     HRPGManager.shared().purchaseQuest(key, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {

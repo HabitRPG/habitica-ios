@@ -5286,6 +5286,35 @@ NSString *currentUser;
                                         }];
 }
 
+- (void)reroll:(void (^)())successBlock onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] getObject:nil
+                                          path:@"user/reroll"
+                                    parameters:nil
+                                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                           [self fetchUser:^{
+                                               if (successBlock) {
+                                                   successBlock();
+                                               }
+                                           } onError:^{
+                                               if (successBlock) {
+                                                   successBlock();
+                                               }
+                                           }];
+                                           [self.networkIndicatorController endNetworking];
+                                           return;
+                                       }
+                                       failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                           [self handleNetworkError:operation withError:error];
+                                           if (errorBlock) {
+                                               errorBlock();
+                                           }
+                                           [self.networkIndicatorController endNetworking];
+                                           return;
+                                       }];
+}
+
 - (void)allocateAttributePoint:(NSString *)attribute onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     

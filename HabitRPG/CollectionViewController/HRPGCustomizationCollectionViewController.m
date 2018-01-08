@@ -72,7 +72,11 @@ static NSString *const reuseIdentifier = @"Cell";
 - (CGSize)collectionView:(UICollectionView *)collectionView
                     layout:(UICollectionViewLayout *)collectionViewLayout
     sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((self.screenSize.width - 46) / 4, 75.0f);
+    if ([self.type isEqualToString:@"background"]) {
+        return CGSizeMake((self.screenSize.width - 46) / 4, 68.0f);
+    } else {
+        return CGSizeMake((self.screenSize.width - 46) / 4, 75.0f);
+    }
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
