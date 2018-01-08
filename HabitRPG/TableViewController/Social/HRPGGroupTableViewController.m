@@ -62,6 +62,21 @@
     self.tableView.estimatedRowHeight = 90;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (InboxMessage *message in self.chatMessagesFRC.fetchedObjects) {
+            if (!message.attributedText) {
+                message.attributedText = [self renderMarkdown:message.text];
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+        });
+    });
+}
+
 - (void)refresh {
     [[HRPGManager sharedManager] fetchGroup:self.groupID
         onSuccess:^() {
@@ -135,6 +150,27 @@
     } else {
         return 1;
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.chatSectionIndex != indexPath.section) {
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
+    NSIndexPath *objectIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+    ChatMessage *message = [self chatMessageAtIndexPath:objectIndexPath];
+    if (message.attributedText && message.attributedText.length > 0) {
+        self.sizeTextView.attributedText = [message.attributedText attributedSubstringFromRange:NSMakeRange(0, message.attributedText.length-1)];
+    } else {
+        self.sizeTextView.text = message.text;
+    }
+    
+    CGSize suggestedSize = [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth - 41, CGFLOAT_MAX)];
+    
+    CGFloat rowHeight = suggestedSize.height + 72;
+    if (self.expandedChatPath.item == indexPath.item) {
+        rowHeight += 36;
+    }
+    return rowHeight;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -31,6 +31,8 @@
         tapRecognizer.cancelsTouchesInView = NO;
         [self.contentView addGestureRecognizer:tapRecognizer];
         [self.usernameLabel addGestureRecognizer:profileTapRecognizer];
+        self.messageTextView.textContainerInset = UIEdgeInsetsZero;
+        self.messageTextView.contentInset = UIEdgeInsetsZero;
         self.messageTextView.font = [CustomFontMetrics scaledSystemFontOfSize:13 compatibleWith:nil];
     }
     return self;

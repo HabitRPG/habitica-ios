@@ -15,6 +15,7 @@
 #import "HRPGFlagInformationOverlayView.h"
 #import "KLCPopup.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGInboxChatViewController ()
 
@@ -37,6 +38,7 @@
     self.sizeTextView = [[UITextView alloc] init];
     self.sizeTextView.textContainerInset = UIEdgeInsetsZero;
     self.sizeTextView.contentInset = UIEdgeInsetsZero;
+    self.sizeTextView.font = [CustomFontMetrics scaledSystemFontOfSize:13.0f compatibleWith:nil];
     self.viewWidth = self.view.frame.size.width;
 
     self.user = [[HRPGManager sharedManager] getUser];
@@ -56,8 +58,24 @@
     }
 
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 90;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (InboxMessage *message in self.fetchedResultsController.fetchedObjects) {
+            if (!message.attributedText) {
+                message.attributedText = [self renderMarkdown:message.text];
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+        });
+    });
 }
 
 - (void)setNavigationTitle {
@@ -115,6 +133,24 @@
     cell.transform = self.tableView.transform;
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    InboxMessage *message = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
+    if (message.attributedText && message.attributedText.length > 0) {
+        self.sizeTextView.attributedText = [message.attributedText attributedSubstringFromRange:NSMakeRange(0, message.attributedText.length-1)];
+    } else {
+        self.sizeTextView.text = message.text;
+    }
+    
+    CGSize suggestedSize = [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth - 41, CGFLOAT_MAX)];
+    
+    CGFloat rowHeight = suggestedSize.height + 72;
+    if (self.expandedChatPath.item == indexPath.item) {
+        rowHeight += 36;
+    }
+    return rowHeight;
 }
 
 - (void)didPressRightButton:(id)sender {
