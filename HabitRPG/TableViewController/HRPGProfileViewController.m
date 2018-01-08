@@ -126,9 +126,10 @@ NSString *currentUserID;
     switch (section) {
         case 0:
             // Below level 10 users don't have spells or attribute points
-            if ([self.user.level integerValue] < 10 ||
-                [self.user.preferences.disableClass boolValue]) {
+            if ([self.user.level integerValue] < 10) {
                 return 0;
+            } else if ([self.user.preferences.disableClass boolValue]) {
+                return 1;
             } else {
                 return 2;
             }
@@ -199,6 +200,11 @@ NSString *currentUserID;
         if (![self.user.flags.classSelected boolValue] &&
             ![self.user.preferences.disableClass boolValue]) {
             [self performSegueWithIdentifier:@"SelectClassSegue" sender:self];
+        } else if ([self.user.preferences.disableClass boolValue]) {
+            UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"User" bundle:nil];
+            UIViewController *tavernViewController =
+            [secondStoryBoard instantiateViewControllerWithIdentifier:@"AttributePointsViewController"];
+            [self.navigationController pushViewController:tavernViewController animated:YES];
         } else {
             UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"User" bundle:nil];
             UIViewController *tavernViewController =
@@ -286,6 +292,8 @@ NSString *currentUserID;
         if (![self.user.flags.classSelected boolValue] &&
             ![self.user.preferences.disableClass boolValue]) {
             title = NSLocalizedString(@"Select Class", nil);
+        } else if ([self.user.preferences.disableClass boolValue]) {
+            title = NSLocalizedString(@"Stats", nil);
         } else {
             if ([self.user.hclass isEqualToString:@"wizard"] ||
                 [self.user.hclass isEqualToString:@"healer"]) {
