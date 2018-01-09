@@ -53,6 +53,7 @@ class StatsSliderView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         slider.addTarget(self, action: #selector(sliderChanged), for: .valueChanged)
+        allocatedTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
     
     @objc
@@ -60,6 +61,18 @@ class StatsSliderView: UIView {
         let newValue = roundf(slider.value)
         slider.value = newValue
         let intValue = Int(newValue)
+        if value != intValue {
+            value = intValue
+        }
+    }
+    
+    @objc
+    func textFieldChanged() {
+        let newValue = roundf(Float(allocatedTextField.text ?? "") ?? 0)
+        var intValue = Int(newValue)
+        if intValue > maxValue {
+            intValue = maxValue
+        }
         if value != intValue {
             value = intValue
         }
