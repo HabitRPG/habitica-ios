@@ -86,6 +86,8 @@
                 isModerator:(BOOL)isModerator
                  isExpanded:(BOOL)isExpanded {
     self.isExpanded = isExpanded;
+    self.backgroundColor = [UIColor whiteColor];
+    self.leftMarginConstraint.constant = 8;
     self.isPrivateMessage = NO;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.backgroundColor = [UIColor whiteColor];
@@ -129,7 +131,7 @@
     [self.reportButton setHidden:self.isOwnMessage];
     [self.deleteButton setHidden:!self.isOwnMessage ];
     if (self.isOwnMessage) {
-        self.backgroundColor = [UIColor gray500];
+        self.leftMarginConstraint.constant = 64;
     }
     
     [self showHideExtraButtons:isExpanded];
@@ -144,6 +146,8 @@
                         withUser:(User *)thisUser
                       isExpanded:(BOOL)isExpanded {
     self.isExpanded = isExpanded;
+    self.backgroundColor = [UIColor whiteColor];
+    self.leftMarginConstraint.constant = 8;
     self.isPrivateMessage = YES;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.backgroundColor = [UIColor whiteColor];
@@ -174,7 +178,7 @@
     [self showHideExtraButtons:isExpanded];
 
     if (self.isOwnMessage) {
-        self.backgroundColor = [UIColor gray500];
+        self.leftMarginConstraint.constant = 64;
     }
 }
 

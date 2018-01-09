@@ -33,7 +33,7 @@
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TbF-Ge-g2M">
                                 <rect key="frame" x="8" y="47" width="432" height="28"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="rNi-MH-cry"/>
                                 </constraints>
@@ -157,6 +157,7 @@
                 <outlet property="deleteButton" destination="dUD-VU-Sa0" id="Gfd-tq-BVV"/>
                 <outlet property="extraButtonsHeightContraint" destination="SMC-KR-CqC" id="7wq-3T-6g4"/>
                 <outlet property="extraButtonsStackView" destination="t1D-ft-H8i" id="bbV-iK-hBW"/>
+                <outlet property="leftMarginConstraint" destination="jiB-De-5sK" id="ubO-AA-xTD"/>
                 <outlet property="messageTextView" destination="TbF-Ge-g2M" id="ej9-Rj-7Cp"/>
                 <outlet property="messageWrapper" destination="73G-Ol-XzR" id="5H9-Dn-wM2"/>
                 <outlet property="plusOneButton" destination="bFH-4J-Pe0" id="h50-yg-naf"/>

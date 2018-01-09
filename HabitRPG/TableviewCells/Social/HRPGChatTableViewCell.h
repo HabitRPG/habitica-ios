@@ -29,6 +29,7 @@ typedef NS_ENUM(NSInteger, HRPGChatTableViewCellType) {
 @property (weak, nonatomic) IBOutlet UIStackView *extraButtonsStackView;
 @property (weak, nonatomic) IBOutlet UIButton *reportButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftMarginConstraint;
 
 - (void)configureForMessage:(ChatMessage *)message
                  withUserID:(NSString *)userID
