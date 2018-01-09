@@ -419,6 +419,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         let textField = UITextField()
         textField.placeholder = NSLocalizedString("Email", comment: "")
         textField.borderStyle = .roundedRect
+        textField.keyboardType = .emailAddress
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
         
