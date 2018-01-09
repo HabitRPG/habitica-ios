@@ -11,7 +11,7 @@ import PopupDialog
 
 class AttributePointsVieController: HRPGUIViewController {
     
-    @IBOutlet weak var pointsToAllocateLabel: UILabel!
+    @IBOutlet weak var pointsToAllocateLabel: PaddedLabel!
     @IBOutlet weak var pointsToAllocateRightView: UIImageView!
     @IBOutlet weak var pointsToAllocateLeftView: UIImageView!
     @IBOutlet weak var statsViewWrapper: UIStackView!
@@ -103,6 +103,9 @@ class AttributePointsVieController: HRPGUIViewController {
         distributeTaskHelpView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(distributeTaskHelpTapped)))
 
         pointsToAllocateLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openBulkAssignView)))
+        pointsToAllocateLabel.horizontalPadding = 12
+        pointsToAllocateLabel.verticalPadding = 4
+        pointsToAllocateLabel.layer.cornerRadius = pointsToAllocateLabel.frame.size.height/2
         
         observer = user?.observe(\.pointsToAllocate, changeHandler: {[weak self] (_, _) in
             self?.updateUser()
@@ -135,7 +138,11 @@ class AttributePointsVieController: HRPGUIViewController {
         pointsToAllocateRightView.isHidden = !canAllocatePoints
         if !canAllocatePoints {
             pointsToAllocateLabel.text = NSLocalizedString("0 Points to Allocate", comment: "")
+            pointsToAllocateLabel.backgroundColor = UIColor.white
+            pointsToAllocateLabel.textColor = UIColor.gray300()
         } else {
+            pointsToAllocateLabel.backgroundColor = UIColor.gray100()
+            pointsToAllocateLabel.textColor = UIColor.white
             if user.pointsToAllocate == 1 {
                 pointsToAllocateLabel.text = NSLocalizedString("1 Point to Allocate", comment: "")
             } else {
