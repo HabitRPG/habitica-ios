@@ -294,7 +294,7 @@ class AttributePointsVieController: HRPGUIViewController {
     }
     
     @IBAction func autoAllocationChanged(_ sender: UISwitch) {
-        user?.preferences.automaticAllocation = NSNumber(value: true)
+        user?.preferences.automaticAllocation = NSNumber(value: sender.isOn)
         updateAutoAllocatonViews()
         HRPGManager.shared().updateUser(["preferences.automaticAllocation": sender.isOn], onSuccess: {[weak self] in
             self?.updateAutoAllocatonViews()
