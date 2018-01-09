@@ -33,7 +33,7 @@
         [self.usernameLabel addGestureRecognizer:profileTapRecognizer];
         self.messageTextView.textContainerInset = UIEdgeInsetsZero;
         self.messageTextView.contentInset = UIEdgeInsetsZero;
-        self.messageTextView.font = [CustomFontMetrics scaledSystemFontOfSize:13 compatibleWith:nil];
+        self.messageTextView.font = [CustomFontMetrics scaledSystemFontOfSize:15 compatibleWith:nil];
     }
     return self;
 }

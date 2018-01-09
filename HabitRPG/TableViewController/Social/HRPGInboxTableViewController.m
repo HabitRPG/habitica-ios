@@ -10,6 +10,7 @@
 #import "InboxMessage.h"
 #import "HRPGInboxChatViewController.h"
 #import "HRPGChoosePMRecipientViewController.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGInboxTableViewController ()
 
@@ -27,6 +28,9 @@
     self.clearsSelectionOnViewWillAppear = NO;
     
     [self rebuildMessageList];
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 60;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -131,8 +135,12 @@
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate {
     InboxMessage *message = [self.inboxMessages objectAtIndex:indexPath.item];
-    cell.textLabel.text = message.username;
-    cell.detailTextLabel.text = message.text;
+    UsernameLabel *usernameLabel = [cell viewWithTag:1];
+    usernameLabel.text = message.username;
+    usernameLabel.contributorLevel = [message.contributorLevel integerValue];
+    usernameLabel.font = [UIFont systemFontOfSize:17.0f];
+    UILabel *label = [cell viewWithTag:2];
+    label.text = message.text;
 }
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {

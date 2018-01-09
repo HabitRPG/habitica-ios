@@ -38,7 +38,7 @@
     self.sizeTextView = [[UITextView alloc] init];
     self.sizeTextView.textContainerInset = UIEdgeInsetsZero;
     self.sizeTextView.contentInset = UIEdgeInsetsZero;
-    self.sizeTextView.font = [CustomFontMetrics scaledSystemFontOfSize:13.0f compatibleWith:nil];
+    self.sizeTextView.font = [CustomFontMetrics scaledSystemFontOfSize:15.0f compatibleWith:nil];
     self.viewWidth = self.view.frame.size.width;
 
     self.user = [[HRPGManager sharedManager] getUser];

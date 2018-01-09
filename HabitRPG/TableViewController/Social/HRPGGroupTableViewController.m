@@ -33,6 +33,7 @@
         self.sizeTextView = [[UITextView alloc] init];
         self.sizeTextView.textContainerInset = UIEdgeInsetsZero;
         self.sizeTextView.contentInset = UIEdgeInsetsZero;
+        self.sizeTextView.font = [CustomFontMetrics scaledSystemFontOfSize:15.0f compatibleWith:nil];
     }
 
     return self;
@@ -392,9 +393,6 @@
                      atIndexPath:(NSIndexPath *)indexPath {
     NSIndexPath *objectIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
     ChatMessage *message = [self chatMessageAtIndexPath:objectIndexPath];
-    if (!message.attributedText) {
-        message.attributedText = [self renderMarkdown:message.text];
-    }
     
     [cell configureForMessage:message withUserID:self.user.id withUsername:self.user.username isModerator:([self.user.contributorLevel intValue] >= 8) isExpanded:[self.expandedChatPath isEqual:indexPath]];
     cell.profileAction = ^() {
