@@ -28,6 +28,7 @@
     if (self) {
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandCell:)];
         [self.contentView removeGestureRecognizer:self.contentView.gestureRecognizers[0]];
+        [self.messageTextView addGestureRecognizer:tapRecognizer];
         tapRecognizer.delegate = self;
         tapRecognizer.cancelsTouchesInView = NO;
         [self.contentView addGestureRecognizer:tapRecognizer];
@@ -39,6 +40,9 @@
     [super awakeFromNib];
     UITapGestureRecognizer *profileTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(displayProfile:)];
     [self.usernameLabel addGestureRecognizer:profileTapRecognizer];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandCell:)];
+    tapRecognizer.delegate = self;
+    [self.messageTextView addGestureRecognizer:tapRecognizer];
     self.messageTextView.textContainerInset = UIEdgeInsetsZero;
     self.messageTextView.contentInset = UIEdgeInsetsZero;
     self.messageTextView.font = [CustomFontMetrics scaledSystemFontOfSize:15 compatibleWith:nil];
