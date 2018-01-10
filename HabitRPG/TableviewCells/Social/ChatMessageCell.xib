@@ -23,6 +23,7 @@
                         <subviews>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoQ-TM-ipq" customClass="UsernameLabel" customModule="Habitica" customModuleProvider="target">
                                 <rect key="frame" x="12" y="12" width="79" height="20.5"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="c3e-0H-2Xp"/>
                                     <constraint firstAttribute="width" priority="500" constant="42" id="iFy-2g-gSc"/>
@@ -153,6 +154,7 @@
                     <constraint firstItem="73G-Ol-XzR" firstAttribute="top" secondItem="QoR-9C-CZD" secondAttribute="top" constant="4" id="kYP-Rm-c9M"/>
                 </constraints>
             </tableViewCellContentView>
+            <gestureRecognizers/>
             <connections>
                 <outlet property="deleteButton" destination="dUD-VU-Sa0" id="Gfd-tq-BVV"/>
                 <outlet property="extraButtonsHeightContraint" destination="SMC-KR-CqC" id="7wq-3T-6g4"/>

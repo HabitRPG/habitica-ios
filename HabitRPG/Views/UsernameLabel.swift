@@ -23,6 +23,7 @@ class UsernameLabel: UILabel {
         super.awakeFromNib()
         font = UIFont.systemFont(ofSize: 15.0)
         addSubview(iconView)
+        self.isUserInteractionEnabled = true
     }
     
     override func layoutSubviews() {

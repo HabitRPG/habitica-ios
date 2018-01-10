@@ -24,18 +24,23 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        UITapGestureRecognizer *profileTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(displayProfile:)];
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandCell:)];
         [self.contentView removeGestureRecognizer:self.contentView.gestureRecognizers[0]];
         tapRecognizer.delegate = self;
         tapRecognizer.cancelsTouchesInView = NO;
         [self.contentView addGestureRecognizer:tapRecognizer];
-        [self.usernameLabel addGestureRecognizer:profileTapRecognizer];
-        self.messageTextView.textContainerInset = UIEdgeInsetsZero;
-        self.messageTextView.contentInset = UIEdgeInsetsZero;
-        self.messageTextView.font = [CustomFontMetrics scaledSystemFontOfSize:15 compatibleWith:nil];
     }
     return self;
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    UITapGestureRecognizer *profileTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(displayProfile:)];
+    [self.usernameLabel addGestureRecognizer:profileTapRecognizer];
+    self.messageTextView.textContainerInset = UIEdgeInsetsZero;
+    self.messageTextView.contentInset = UIEdgeInsetsZero;
+    self.messageTextView.font = [CustomFontMetrics scaledSystemFontOfSize:15 compatibleWith:nil];
+    
 }
 
 - (void)displayProfile:(UITapGestureRecognizer *)gestureRecognizer {
@@ -184,10 +189,10 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
        shouldReceiveTouch:(UITouch *)touch {
-    if (CGRectContainsPoint(self.plusOneButton.frame, [touch locationInView:self])) {
+    if (CGRectContainsPoint(self.plusOneButton.frame, [touch locationInView:self.contentView])) {
         return NO;  // ignore the touch
     }
-    if (CGRectContainsPoint(self.messageTextView.frame, [touch locationInView:self])) {
+    if (CGRectContainsPoint(self.messageTextView.frame, [touch locationInView:self.contentView])) {
         NSLayoutManager *layoutManager = self.messageTextView.layoutManager;
         CGPoint location = [touch locationInView:self.messageTextView];
         location.x -= self.messageTextView.textContainerInset.left;
@@ -208,8 +213,10 @@
             }
         }
     }
-    
-    if (CGRectContainsPoint(self.extraButtonsStackView.frame, [touch locationInView:self])) {
+    if (CGRectContainsPoint(self.usernameLabel.frame, [touch locationInView:self.contentView])) {
+        return NO;
+    }
+    if (CGRectContainsPoint(self.extraButtonsStackView.frame, [touch locationInView:self.contentView])) {
         return NO;
     }
     return YES;  // handle the touch
