@@ -10,6 +10,8 @@
 #import <DateTools/DateTools.h>
 #import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
+#import "NSString+Emoji.h"
+
 
 @interface HRPGChatTableViewCell ()
 
@@ -98,7 +100,7 @@
     self.backgroundColor = [UIColor whiteColor];
     self.isModerator = isModerator;
     if (message.user) {
-        self.usernameLabel.text = message.user;
+        self.usernameLabel.text = [message.user stringByReplacingEmojiCheatCodesWithUnicode];
         self.usernameLabel.contributorLevel = [message.contributorLevel integerValue];
         self.messageTextView.textColor = [UIColor gray10];
     } else {
@@ -159,10 +161,10 @@
     [self.plusOneButton setHidden:YES];
     NSInteger contributorLevel;
     if ([message.sent boolValue]) {
-        self.usernameLabel.text = thisUser.username;
+        self.usernameLabel.text = [thisUser.username stringByReplacingEmojiCheatCodesWithUnicode];
         contributorLevel = [thisUser.contributorLevel integerValue];
     } else {
-        self.usernameLabel.text = message.username;
+        self.usernameLabel.text = [message.username stringByReplacingEmojiCheatCodesWithUnicode];
         contributorLevel = [message.contributorLevel integerValue];
     }
     self.usernameLabel.contributorLevel = contributorLevel;
