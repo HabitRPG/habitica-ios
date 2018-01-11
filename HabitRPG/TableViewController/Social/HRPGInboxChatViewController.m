@@ -144,7 +144,11 @@
         self.sizeTextView.text = message.text;
     }
     
-    CGSize suggestedSize = [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth - 41, CGFLOAT_MAX)];
+    CGFloat horizontalPadding = 41;
+    if ([message.sent boolValue]) {
+        horizontalPadding += 56;
+    }
+    CGSize suggestedSize = [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth - horizontalPadding, CGFLOAT_MAX)];
     
     CGFloat rowHeight = suggestedSize.height + 72;
     if (self.expandedChatPath.item == indexPath.item) {

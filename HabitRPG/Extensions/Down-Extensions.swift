@@ -16,6 +16,9 @@ extension Down {
     }
 
     func toHabiticaAttributedString(baseFont: UIFont) throws -> NSMutableAttributedString {
+        if self.markdownString.range(of: "[*_#\\[]", options: .regularExpression, range: nil, locale: nil) == nil {
+            return NSMutableAttributedString(string: self.markdownString, attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15)])
+        }
         guard let string = try self.toAttributedString().mutableCopy() as? NSMutableAttributedString else {
             return NSMutableAttributedString()
         }

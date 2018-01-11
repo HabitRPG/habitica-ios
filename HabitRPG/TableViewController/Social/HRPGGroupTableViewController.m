@@ -70,12 +70,17 @@
 }
 
 - (void)renderAttributedTexts {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        for (InboxMessage *message in self.chatMessagesFRC.fetchedObjects) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSDate *methodStart = [NSDate date];
+        for (ChatMessage *message in self.chatMessagesFRC.fetchedObjects) {
             if (!message.attributedText) {
                 message.attributedText = [self renderMarkdown:message.text];
             }
         }
+        NSDate *methodFinish = [NSDate date];
+        NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
+        NSLog(@"executionTime = %f", executionTime);
+        NSLog(@"DONE PROCESSING");
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
         });
