@@ -18,7 +18,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         if section == 0 {
             return 4
         } else {
-            return 2
+            return 1
         }
     }
     
