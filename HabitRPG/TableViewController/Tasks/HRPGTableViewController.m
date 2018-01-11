@@ -749,10 +749,10 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 
 - (NSArray<UIDragItem *> *)tableView:(UITableView *)tableView itemsForBeginningDragSession:(id<UIDragSession>)session atIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(11.0) {
     self.movedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSString *taskName = self.movedTask.id;
+    NSString *taskName = self.movedTask.text;
     sourceIndexPath = indexPath;
     
-    NSData *data = [taskName dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [taskName dataUsingEncoding:NSUTF16StringEncoding];
     NSItemProvider *itemProvider = [[NSItemProvider alloc] init];
     
     [itemProvider registerDataRepresentationForTypeIdentifier:[NSString stringWithString:kUTTypeUTF16PlainText] visibility:NSItemProviderRepresentationVisibilityOwnProcess loadHandler:^NSProgress * _Nullable(void (^ _Nonnull completionHandler)(NSData * _Nullable, NSError * _Nullable)) {

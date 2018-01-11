@@ -66,7 +66,11 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    [self renderAttributedTexts];
+}
+
+- (void)renderAttributedTexts {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         for (InboxMessage *message in self.chatMessagesFRC.fetchedObjects) {
             if (!message.attributedText) {
                 message.attributedText = [self renderMarkdown:message.text];
@@ -164,6 +168,23 @@
     } else {
         self.sizeTextView.text = message.text;
     }
+    
+    CGSize suggestedSize = [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth - 41, CGFLOAT_MAX)];
+    
+    CGFloat rowHeight = suggestedSize.height + 72;
+    if (self.expandedChatPath.item == indexPath.item) {
+        rowHeight += 36;
+    }
+    return rowHeight;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.chatSectionIndex != indexPath.section) {
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
+    NSIndexPath *objectIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+    ChatMessage *message = [self chatMessageAtIndexPath:objectIndexPath];
+    self.sizeTextView.text = message.text;
     
     CGSize suggestedSize = [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth - 41, CGFLOAT_MAX)];
     
@@ -308,11 +329,14 @@
     indexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:[self chatSectionIndex]];
     newIndexPath = [NSIndexPath indexPathForRow:newIndexPath.row inSection:[self chatSectionIndex]];
     switch (type) {
-        case NSFetchedResultsChangeInsert:
+        case NSFetchedResultsChangeInsert: {
+            NSIndexPath *objectIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+            ChatMessage *message = [self chatMessageAtIndexPath:objectIndexPath];
+            message.attributedText = [self renderMarkdown:message.text];
             [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
                              withRowAnimation:UITableViewRowAnimationFade];
             break;
-
+        }
         case NSFetchedResultsChangeDelete:
             [tableView deleteRowsAtIndexPaths:@[ indexPath ]
                              withRowAnimation:UITableViewRowAnimationFade];
