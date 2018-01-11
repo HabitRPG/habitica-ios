@@ -2516,8 +2516,17 @@ NSString *currentUser;
     if (dueDate) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssXXX";
+        NSMutableString *dateString =  [[formatter stringFromDate:dueDate] mutableCopy];
+        NSError *error = NULL;
+        NSRegularExpression *regex = [NSRegularExpression
+                                      regularExpressionWithPattern:@"T[0-9]:"
+                                      options:NSRegularExpressionCaseInsensitive
+                                      error:&error];
+        [regex enumerateMatchesInString:dateString options:0 range:NSMakeRange(0, [dateString length]) usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop){
+            [dateString insertString:@"0" atIndex:match.range.location];
+        }];
         url = [url stringByAppendingString:@"?type=dailys&dueDate="];
-        url = [url stringByAppendingString:[formatter stringFromDate:dueDate]];
+        url = [url stringByAppendingString:dateString];
         url = [url stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     }
     
