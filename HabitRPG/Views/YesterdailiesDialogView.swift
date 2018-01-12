@@ -51,6 +51,9 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
                 sharedManager.runCron(nil, onSuccess: nil, onError: nil)
                 return
             }
+            if user.didCronRunToday() {
+                return
+            }
             let popup = PopupDialog(viewController: viewController)
             if var topController = UIApplication.shared.keyWindow?.rootViewController {
                 while let presentedViewController = topController.presentedViewController {
