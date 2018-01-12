@@ -21,7 +21,7 @@ class HabiticaAlertController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var alertStackView: UIStackView!
     @IBOutlet weak var bottomOffsetConstraint: NSLayoutConstraint!
-    @IBOutlet weak var centerConstraint: NSLayoutConstraint!
+    @IBOutlet var centerConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollviewHeightConstraint: NSLayoutConstraint!
     
     private var buttonHandlers = [Int: ((UIButton) -> Swift.Void)]()
