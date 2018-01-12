@@ -48,7 +48,19 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
             try? self.fetchedResultsController.performFetch()
         }
         
+        tutorialIdentifier = "rewards"
+        
         refresh()
+    }
+    
+    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable : Any] {
+        if tutorialIdentifier == "rewards" {
+            return [
+                "textList": NSArray.init(array: [NSLocalizedString("Buy gear for your avatar with the gold you earn!", comment: ""),
+                                                 NSLocalizedString("You can also make real-world Custom Rewards based on what motivates you.", comment: "")])
+            ]
+        }
+        return [:]
     }
     
     @objc
