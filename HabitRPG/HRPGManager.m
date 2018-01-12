@@ -95,7 +95,7 @@ NSString *currentUser;
     self.configRepository = [[ConfigRepository alloc] init];
     NSError *error = nil;
     NSURL *modelURL =
-        [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"HabitRPG" ofType:@"momd"]];
+        [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Habitica" ofType:@"momd"]];
     // NOTE: Due to an iOS 5 bug, the managed object model returned is immutable.
     if (!existingManagedObjectStore) {
         NSManagedObjectModel *managedObjectModel =
@@ -107,7 +107,7 @@ NSString *currentUser;
         [managedObjectStore createPersistentStoreCoordinator];
 
         NSString *storePath =
-            [RKApplicationDataDirectory() stringByAppendingPathComponent:@"HabitRPG.sqlite"];
+            [RKApplicationDataDirectory() stringByAppendingPathComponent:@"Habitica.sqlite"];
         NSDictionary *options = @{
             NSMigratePersistentStoresAutomaticallyOption : @YES,
             NSInferMappingModelAutomaticallyOption : @YES

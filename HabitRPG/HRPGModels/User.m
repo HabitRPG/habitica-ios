@@ -469,7 +469,7 @@
             return [tutorialStep.wasShown boolValue];
         }
     }
-    return NO;
+    return YES;
 }
 
 - (void)willSave {

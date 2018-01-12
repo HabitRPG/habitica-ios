@@ -53,7 +53,7 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
         refresh()
     }
     
-    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable : Any] {
+    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable: Any] {
         if tutorialIdentifier == "rewards" {
             return [
                 "textList": NSArray.init(array: [NSLocalizedString("Buy gear for your avatar with the gold you earn!", comment: ""),
