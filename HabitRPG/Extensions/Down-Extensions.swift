@@ -40,6 +40,10 @@ extension Down {
                 string.addAttribute(NSAttributedStringKey.font, value: font, range: range)
             }
         })
+        if string.length == 0 {
+            return string
+        }
+        string.deleteCharacters(in: NSRange(location: 0, length: string.length-1))
         return string
     }
 }

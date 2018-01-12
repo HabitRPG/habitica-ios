@@ -139,7 +139,7 @@
 
     self.timeLabel.text = message.timestamp.timeAgoSinceNow;
     if (message.attributedText.length > 0) {
-        self.messageTextView.attributedText = [message.attributedText attributedSubstringFromRange:NSMakeRange(0, message.attributedText.length-1)];
+        self.messageTextView.attributedText = message.attributedText;
     } else {
         self.messageTextView.text = message.text;
     }
@@ -181,7 +181,7 @@
 
     self.timeLabel.text = message.timestamp.timeAgoSinceNow;
     if (message.attributedText.length > 0) {
-        self.messageTextView.attributedText = [message.attributedText attributedSubstringFromRange:NSMakeRange(0, message.attributedText.length-1)];
+        self.messageTextView.attributedText = message.attributedText;
     } else {
         self.messageTextView.text = message.text;
     }

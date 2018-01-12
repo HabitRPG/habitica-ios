@@ -110,14 +110,19 @@ class HabiticaAlertController: UIViewController {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             self.bottomOffsetConstraint.constant = keyboardHeight + 8
-            self.centerConstraint.isActive = false
+            if self.centerConstraint.isActive {
+                self.centerConstraint.isActive = false
+            }
         }
     }
     
     @objc
     func keyboardWillHide(notification: NSNotification) {
         self.bottomOffsetConstraint.constant = 16
-        self.centerConstraint.isActive = true
+        if !self.centerConstraint.isActive {
+            self.centerConstraint.isActive = true
+        }
+        
     }
     
     @objc

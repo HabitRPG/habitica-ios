@@ -151,7 +151,7 @@
     CGSize suggestedSize = [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth - horizontalPadding, CGFLOAT_MAX)];
     
     CGFloat rowHeight = suggestedSize.height + 72;
-    if (self.expandedChatPath.item == indexPath.item) {
+    if (self.expandedChatPath != nil && self.expandedChatPath.item == indexPath.item) {
         rowHeight += 36;
     }
     return rowHeight;

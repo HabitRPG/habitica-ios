@@ -210,8 +210,8 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         stackView.spacing = 16
         let oldPasswordTextField = UITextField()
         oldPasswordTextField.placeholder = NSLocalizedString("Old Password", comment: "")
-        oldPasswordTextField.isSecureTextEntry = true
         oldPasswordTextField.borderStyle = .roundedRect
+        oldPasswordTextField.isSecureTextEntry = true
         stackView.addArrangedSubview(oldPasswordTextField)
         let newPasswordTextField = UITextField()
         newPasswordTextField.placeholder = NSLocalizedString("New Password", comment: "")
@@ -220,8 +220,8 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         stackView.addArrangedSubview(newPasswordTextField)
         let confirmTextField = UITextField()
         confirmTextField.placeholder = NSLocalizedString("Confirm New Password", comment: "")
-        confirmTextField.isSecureTextEntry = true
         confirmTextField.borderStyle = .roundedRect
+        confirmTextField.isSecureTextEntry = true
         stackView.addArrangedSubview(confirmTextField)
         alertController.contentView = stackView
         
