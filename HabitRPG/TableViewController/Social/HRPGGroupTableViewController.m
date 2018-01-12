@@ -118,6 +118,10 @@
     NSError *error;
     NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     if (results.count == 1) {
+        BOOL shouldReload = NO;
+        if (self.group == nil) {
+            shouldReload = YES;
+        }
         self.group = results[0];
 
         if (![self.group.isMember boolValue] && [self.group.type isEqualToString:@"guild"] &&
@@ -129,6 +133,9 @@
                                                 action:@selector(joinGroup)];
             barButton.tintColor = [UIColor green50];
             self.navigationItem.rightBarButtonItem = barButton;
+        }
+        if (shouldReload) {
+            [self.tableView reloadData];
         }
     } else {
         [self refresh];
