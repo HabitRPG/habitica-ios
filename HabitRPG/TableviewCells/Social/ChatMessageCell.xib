@@ -94,6 +94,9 @@
                                         <state key="normal" title="Copy" image="ChatCopy">
                                             <color key="titleColor" red="0.64723795650000004" green="0.63275462390000003" blue="0.67308568950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="copyButtonTapped:" destination="XSH-GM-86g" eventType="touchUpInside" id="eQz-PS-ukm"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSF-K3-LSE">
                                         <rect key="frame" x="142" y="0.0" width="63" height="36"/>
@@ -115,7 +118,6 @@
                                         </state>
                                         <connections>
                                             <action selector="deleteButtonTapped:" destination="XSH-GM-86g" eventType="touchUpInside" id="0EW-qp-RIv"/>
-                                            <action selector="reportButtonTapped:" destination="XSH-GM-86g" eventType="touchUpInside" id="q15-jz-2O0"/>
                                         </connections>
                                     </button>
                                 </subviews>

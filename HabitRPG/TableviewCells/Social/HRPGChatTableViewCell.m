@@ -90,6 +90,11 @@
         self.deleteAction();
     }
 }
+- (IBAction)copyButtonTapped:(id)sender {
+    if (self.copyAction) {
+        self.copyAction();
+    }
+}
 
 - (void)configureForMessage:(ChatMessage *)message
                  withUserID:(NSString *)userID
