@@ -43,7 +43,7 @@ extension Down {
         if string.length == 0 {
             return string
         }
-        string.deleteCharacters(in: NSRange(location: 0, length: string.length-1))
+        string.deleteCharacters(in: NSRange(location: string.length-1, length: 1))
         return string
     }
 }
