@@ -177,7 +177,7 @@ class GemViewController: UICollectionViewController {
             cell.setGemAmount(42)
         } else if product.productIdentifier == "com.habitrpg.ios.Habitica.84gems" {
             cell.setGemAmount(84)
-            cell.showSeedsPromo(true)
+            cell.showSeedsPromo(false)
         }
         
         cell.setPurchaseTap {[weak self] (purchaseButton) in
