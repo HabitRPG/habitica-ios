@@ -31,15 +31,13 @@
     [[Amplitude instance] logNavigateEventForClass:NSStringFromClass([self class])];
 
     if (self.topHeaderNavigationController) {
-        self.topHeaderNavigationController.hideNavbar = NO;
-        self.topHeaderNavigationController.navbarVisibleColor = self.topHeaderNavigationController.defaultNavbarVisibleColor;
         [self.tableView setContentInset:UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0)];
         self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0);
         if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden) {
             [self.tableView setContentOffset:CGPointMake(0, -self.topHeaderNavigationController.contentOffset)];
         }
     }
-
+    
     self.viewWidth = self.view.frame.size.width;
 }
 
@@ -82,6 +80,13 @@
     [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
 
     if (self.topHeaderNavigationController) {
+            self.topHeaderNavigationController.hideNavbar = NO;
+            self.topHeaderNavigationController.navbarVisibleColor = self.topHeaderNavigationController.defaultNavbarVisibleColor;
+            [self.tableView setContentInset:UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0)];
+            self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0);
+            if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden) {
+                [self.tableView setContentOffset:CGPointMake(0, -self.topHeaderNavigationController.contentOffset)];
+            }
         if (self.tableView.contentOffset.y < -self.topHeaderNavigationController.contentOffset) {
             [self.tableView setContentOffset:CGPointMake(0, 0)];
         }

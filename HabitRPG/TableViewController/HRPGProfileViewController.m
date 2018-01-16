@@ -14,6 +14,7 @@
 @interface HRPGProfileViewController ()
 
 @property(nonatomic) User *user;
+@property(nonatomic) MenuNavigationBarView *navbarView;
 
 @end
 
@@ -22,69 +23,36 @@ NSString *username;
 NSInteger userLevel;
 NSString *currentUserID;
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if (![currentUserID isEqualToString:[HRPGManager.sharedManager getUser].id]) {
-        // user has changed. Reload data.
-        currentUserID = [HRPGManager.sharedManager getUser].id;
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", currentUserID];
-        [self.fetchedResultsController.fetchRequest setPredicate:predicate];
-        NSError *error;
-        [self.fetchedResultsController performFetch:&error];
-        if (self.user) {
-            username = self.user.username;
-            userLevel = [self.user.level integerValue];
-        }
-        [self.tableView reloadData];
-    }
-    self.navigationItem.title = NSLocalizedString(@"Menu", nil);
-
-    [self.topHeaderNavigationController removeAlternativeHeaderView];
-    self.topHeaderNavigationController.hideNavbar = YES;
-    self.topHeaderNavigationController.navbarVisibleColor = [UIColor purple300];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    if (self.topHeaderNavigationController.shouldHideTopHeader) {
-        self.topHeaderNavigationController.shouldHideTopHeader = NO;
-        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-    }
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.tableHeaderView = [[UIView alloc]
-        initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
-
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
+    self.navbarView = [[MenuNavigationBarView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 72)];
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.tintColor = [UIColor purple400];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
-
+    
     if (self.user) {
-        username = self.user.username;
-        userLevel = [self.user.level integerValue];
+        [self configure:self.user];
     } else {
         // User does not exist in database. Fetch it.
         [self refresh];
     }
-
+    
     UILabel *footerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 170)];
     footerView.text = [NSString
-        stringWithFormat:NSLocalizedString(@"Hey! You are awesome!\nVersion %@ (%@)", nil),
-                         [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"],
-                         [[NSBundle mainBundle]
-                             objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]];
+                       stringWithFormat:NSLocalizedString(@"Hey! You are awesome!\nVersion %@ (%@)", nil),
+                       [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"],
+                       [[NSBundle mainBundle]
+                        objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]];
     footerView.textColor = [UIColor lightGrayColor];
     footerView.textAlignment = NSTextAlignmentCenter;
     footerView.font = [CustomFontMetrics scaledSystemFontOfSize:12 compatibleWith:nil];
     footerView.numberOfLines = 0;
     self.tableView.tableFooterView = footerView;
-
+    
     TopHeaderViewController *navigationController =
-        (TopHeaderViewController *)self.navigationController;
+    (TopHeaderViewController *)self.navigationController;
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationController.contentInset, 0, 0, 0);
     [self.tableView setContentInset:(UIEdgeInsetsMake(navigationController.contentInset, 0, -150, 0))];
     
@@ -95,6 +63,42 @@ NSString *currentUserID;
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.topHeaderNavigationController setAlternativeHeaderView:self.navbarView];
+    [self.topHeaderNavigationController showHeaderWithAnimated:NO];
+    [super viewWillAppear:animated];
+    self.topHeaderNavigationController.navbarVisibleColor = [UIColor purple300];
+    self.topHeaderNavigationController.hideNavbar = YES;
+    if (![currentUserID isEqualToString:[HRPGManager.sharedManager getUser].id]) {
+        // user has changed. Reload data.
+        currentUserID = [HRPGManager.sharedManager getUser].id;
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", currentUserID];
+        [self.fetchedResultsController.fetchRequest setPredicate:predicate];
+        NSError *error;
+        [self.fetchedResultsController performFetch:&error];
+        if (self.user) {
+            [self configure:self.user];
+        }
+        [self.tableView reloadData];
+    }
+    self.navigationItem.title = NSLocalizedString(@"Menu", nil);
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.topHeaderNavigationController stopFollowingScrollView];
+    
+    if (self.topHeaderNavigationController.shouldHideTopHeader) {
+        self.topHeaderNavigationController.shouldHideTopHeader = NO;
+        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.topHeaderNavigationController removeAlternativeHeaderView];
+    [super viewWillDisappear:animated];
 }
 
 - (void)refresh {
@@ -429,13 +433,13 @@ NSString *currentUserID;
     switch (type) {
         case NSFetchedResultsChangeInsert: {
             self.user = (User *)[self.fetchedResultsController objectAtIndexPath:newIndexPath];
-            username = self.user.username;
+            [self configure:self.user];
             [tableView reloadData];
             break;
         }
         case NSFetchedResultsChangeUpdate: {
             self.user = (User *)[self.fetchedResultsController objectAtIndexPath:newIndexPath];
-            username = self.user.username;
+            [self configure:self.user];
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
                           withRowAnimation:UITableViewRowAnimationAutomatic];
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2]
@@ -445,7 +449,7 @@ NSString *currentUserID;
             break;
         }
         case NSFetchedResultsChangeDelete: {
-            username = nil;
+            [self configure:nil];
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
                           withRowAnimation:UITableViewRowAnimationAutomatic];
         }
@@ -467,6 +471,14 @@ NSString *currentUserID;
     }
 
     return _user;
+}
+
+- (void)configure:(User *)user {
+    username = user.username;
+    userLevel = [user.level integerValue];
+    if (user != nil) {
+        [self.navbarView configureWithUser:user];
+    }
 }
 
 @end

@@ -105,7 +105,7 @@ class TopHeaderViewController: UINavigationController {
         if self.shouldHideTopHeader {
             return 0
         }
-        return self.backgroundView.frame.size.height + self.backgroundView.frame.origin.y
+        return self.backgroundView.frame.size.height + contentInset
     }
     
     private var navbarColorBlendingAlpha: CGFloat {
@@ -150,23 +150,25 @@ class TopHeaderViewController: UINavigationController {
         }
     }
     
-    func showHeader() {
+    @objc
+    public func showHeader(animated: Bool = true) {
         self.state = HRPGTopHeaderStateVisible
         var frame = self.backgroundView.frame
         frame.origin.y = self.bgViewOffset
         self.headerYPosition = frame.origin.y
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: animated ? 0.3 : 0.0, delay: 0, options: .curveEaseInOut, animations: {
             self.backgroundView.frame = frame
             self.setNavigationBarColors(0)
         }, completion: nil)
     }
     
-    func hideHeader() {
+    @objc
+    public func hideHeader(animated: Bool = true) {
         self.state = HRPGTopHeaderStateHidden
         var frame = self.backgroundView.frame
         frame.origin.y = -frame.size.height
         self.headerYPosition = frame.origin.y
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: animated ? 0.3 : 0.0, delay: 0, options: .curveEaseInOut, animations: {
             self.backgroundView.frame = frame
             if !self.shouldHideTopHeader {
                 self.setNavigationBarColors(1)
@@ -219,6 +221,7 @@ class TopHeaderViewController: UINavigationController {
     
     func setNavigationBarColors(_ alpha: CGFloat) {
         self.upperBackgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
+        self.backgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
         self.navigationBar.tintColor = UIColor.purple400().blend(with: .white, alpha: alpha)
         self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black.blend(with: .white, alpha: alpha)]
         if self.navigationBar.barStyle == .default && alpha > 0.5 {
@@ -236,6 +239,10 @@ class TopHeaderViewController: UINavigationController {
         self.alternativeHeaderView = alternativeHeaderView
         self.headerView?.removeFromSuperview()
         if let header = self.alternativeHeaderView {
+            header.autoresizingMask = [
+                UIViewAutoresizing.flexibleWidth,
+                UIViewAutoresizing.flexibleHeight
+            ]
             self.backgroundView.addSubview(header)
             header.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: header.intrinsicContentSize.height)
             header.layoutSubviews()
@@ -252,6 +259,7 @@ class TopHeaderViewController: UINavigationController {
         self.alternativeHeaderView = nil
         if let header = self.headerView {
             self.backgroundView.addSubview(header)
+            self.showHeader(animated: false)
         }
         self.viewWillLayoutSubviews()
     }

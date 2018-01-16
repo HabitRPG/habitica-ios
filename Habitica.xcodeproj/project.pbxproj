@@ -86,6 +86,8 @@
 		29E162E5200227AA00685640 /* HRPGUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E4200227AA00685640 /* HRPGUIViewController.m */; };
 		29E163092008E7B600685640 /* Habitica.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 29E163072008E7B600685640 /* Habitica.xcdatamodeld */; };
 		29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */; };
+		29E1630D200E23A500685640 /* MenuNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29E1630C200E23A500685640 /* MenuNavigationBarView.xib */; };
+		29E1630F200E279900685640 /* MenuNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1630E200E279900685640 /* MenuNavigationBarView.swift */; };
 		29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */; };
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
 		29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
@@ -513,6 +515,8 @@
 		29E162E4200227AA00685640 /* HRPGUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRPGUIViewController.m; sourceTree = "<group>"; };
 		29E163082008E7B600685640 /* Habitica.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habitica.xcdatamodel; sourceTree = "<group>"; };
 		29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderNavigationController.swift; sourceTree = "<group>"; };
+		29E1630C200E23A500685640 /* MenuNavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuNavigationBarView.xib; sourceTree = "<group>"; };
+		29E1630E200E279900685640 /* MenuNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationBarView.swift; sourceTree = "<group>"; };
 		29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationRepository.swift; sourceTree = "<group>"; };
 		29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomization.swift; sourceTree = "<group>"; };
 		29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extensions.swift"; sourceTree = "<group>"; };
@@ -1848,6 +1852,8 @@
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
 				29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */,
+				29E1630C200E23A500685640 /* MenuNavigationBarView.xib */,
+				29E1630E200E279900685640 /* MenuNavigationBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2483,6 +2489,7 @@
 				D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */,
 				29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */,
 				D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */,
+				29E1630D200E23A500685640 /* MenuNavigationBarView.xib in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				49DCB7B01F3923F20079FDD0 /* HRPGSimpleShopItemView.xib in Resources */,
 				D91CCAD01BCF11CC001C6A0C /* HRPGUserTopHeader.xib in Resources */,
@@ -2944,6 +2951,7 @@
 				D96C86CB1BB0546400E4C134 /* HRPGCopyLabel.m in Sources */,
 				D92C60FC1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m in Sources */,
 				D95D039B1C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.m in Sources */,
+				29E1630F200E279900685640 /* MenuNavigationBarView.swift in Sources */,
 				D9BB45631E71CE910002AE2E /* HabitTableViewCell.swift in Sources */,
 				D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */,
 				D9D593581D004CC900D6C388 /* HRPGInboxTableViewController.m in Sources */,

@@ -70,6 +70,7 @@ class AttributePointsVieController: HRPGUIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.hrpgTopHeaderNavigationController().hideNavbar = false
         super.viewWillAppear(animated)
         self.hrpgTopHeaderNavigationController().removeAlternativeHeaderView()
         self.hrpgTopHeaderNavigationController().shouldHideTopHeader = true
