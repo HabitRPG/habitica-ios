@@ -9,7 +9,6 @@
 #import "HRPGSettingsViewController.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGClassTableViewController.h"
-#import "HRPGTopHeaderNavigationController.h"
 #import "MRProgress.h"
 #import "UIColor+Habitica.h"
 #import "XLForm.h"
@@ -45,11 +44,11 @@ NSUserDefaults *defaults;
     [super viewDidLoad];
 
     [self.tableView
-        setContentInset:UIEdgeInsetsMake([[self hrpgTopHeaderNavigationController] getContentInset], 0, 0, 0)];
+     setContentInset:UIEdgeInsetsMake([self hrpgTopHeaderNavigationController].contentInset, 0, 0, 0)];
     self.tableView.scrollIndicatorInsets =
-        UIEdgeInsetsMake([[self hrpgTopHeaderNavigationController] getContentInset], 0, 0, 0);
-    [self.tableView setContentOffset:CGPointMake(0, -[[self hrpgTopHeaderNavigationController] getContentOffset])];
-
+    UIEdgeInsetsMake([self hrpgTopHeaderNavigationController].contentInset, 0, 0, 0);
+    [self.tableView setContentOffset:CGPointMake(0, -[self hrpgTopHeaderNavigationController].contentOffset)];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reloadAllData:)
                                                  name:@"shouldReloadAllData"
@@ -72,7 +71,7 @@ NSUserDefaults *defaults;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if ([self hrpgTopHeaderNavigationController]) {
-        [[self hrpgTopHeaderNavigationController] scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
+        [[self hrpgTopHeaderNavigationController] scrollView:scrollView scrolledToPosition:scrollView.contentOffset.y];
     }
 }
 

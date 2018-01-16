@@ -61,8 +61,8 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
 
         if let navController = self.topHeaderNavigationController {
             navController.setAlternativeHeaderView(segmentedWrapper)
-            self.tableView.contentInset = UIEdgeInsets(top: navController.getContentInset(), left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
-            self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: navController.getContentInset(), left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
+            self.tableView.contentInset = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
+            self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
         }
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 80))
         let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 40))

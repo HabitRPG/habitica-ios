@@ -85,6 +85,7 @@
 		29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E11FFC21E100685640 /* CustomFontMetrics.swift */; };
 		29E162E5200227AA00685640 /* HRPGUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E4200227AA00685640 /* HRPGUIViewController.m */; };
 		29E163092008E7B600685640 /* Habitica.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 29E163072008E7B600685640 /* Habitica.xcdatamodeld */; };
+		29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */; };
 		29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */; };
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
 		29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
@@ -511,6 +512,7 @@
 		29E162E3200227AA00685640 /* HRPGUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGUIViewController.h; sourceTree = "<group>"; };
 		29E162E4200227AA00685640 /* HRPGUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRPGUIViewController.m; sourceTree = "<group>"; };
 		29E163082008E7B600685640 /* Habitica.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habitica.xcdatamodel; sourceTree = "<group>"; };
+		29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderNavigationController.swift; sourceTree = "<group>"; };
 		29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationRepository.swift; sourceTree = "<group>"; };
 		29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomization.swift; sourceTree = "<group>"; };
 		29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extensions.swift"; sourceTree = "<group>"; };
@@ -2241,6 +2243,7 @@
 				D9722B7E19BD041E009D8AD3 /* HRPGNavigationController.h */,
 				D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */,
 				D9660D731AB23F150084CE37 /* HRPGTopHeaderNavigationController.h */,
+				29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */,
 				D9660D741AB23F150084CE37 /* HRPGTopHeaderNavigationController.m */,
 				D9E46AFB1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.h */,
 				D9E46AFC1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m */,
@@ -3118,6 +3121,7 @@
 				D96C85451DCBAC90003E3616 /* HRPGStreakAchievementNotification.m in Sources */,
 				490864301F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift in Sources */,
 				293BB49F1FCDCD33003B6F4F /* Stats.swift in Sources */,
+				29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */,
 				D905766F1BD7F581009BB7BC /* HRPGHintView.m in Sources */,
 				29B6AD4C1F2A0DBE00AC8878 /* LoginEntryView.swift in Sources */,
 				D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */,

@@ -9,7 +9,6 @@
 #import "HRPGAboutViewController.h"
 #import "VTAcknowledgementsViewController.h"
 #import <sys/utsname.h>
-#import "HRPGTopHeaderNavigationController.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGAboutViewController ()
@@ -144,15 +143,14 @@
 
             if (self.topHeaderNavigationController) {
                 [viewController.tableView
-                    setContentInset:UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0,
+                    setContentInset:UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0,
                                                      0)];
                 viewController.tableView.scrollIndicatorInsets =
-                    UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0);
+                    UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0);
                 if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden) {
                     [viewController.tableView
                         setContentOffset:CGPointMake(0,
-                                                     self.tableView.contentInset.top -
-                                                         [self.topHeaderNavigationController getContentOffset])];
+                                                     self.tableView.contentInset.top - self.topHeaderNavigationController.contentOffset)];
                 }
             }
 

@@ -17,7 +17,7 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
     var headerView: ChallengeDetailHeaderView? = .fromNib()
 
     var dataSource: HRPGCoreDataDataSource?
-    weak var navController: HRPGTopHeaderNavigationController?
+    weak var navController: TopHeaderViewController?
 
     var joinInteractor: JoinChallengeInteractor?
     var leaveInteractor: LeaveChallengeInteractor?
@@ -88,8 +88,8 @@ class ChallengeDetailTableViewController: HRPGBaseViewController {
             return
         }
         navController.setAlternativeHeaderView(self.headerView)
-        self.tableView.contentInset = UIEdgeInsets(top: navController.getContentInset(), left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
-        self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: navController.getContentInset(), left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
+        self.tableView.contentInset = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
+        self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

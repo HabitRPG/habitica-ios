@@ -7,13 +7,13 @@
 //
 
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
-#import "HRPGTopHeaderNavigationController.h"
+#import "Habitica-Swift.h"
 
-@implementation UIViewController (HRPGTopHeaderNavigationController)
+@implementation UIViewController (TopHeaderViewController)
 
-- (HRPGTopHeaderNavigationController *)hrpgTopHeaderNavigationController {
-    if ([self.navigationController isKindOfClass:[HRPGTopHeaderNavigationController class]]) {
-        return (HRPGTopHeaderNavigationController *)self.navigationController;
+- (TopHeaderViewController *)hrpgTopHeaderNavigationController {
+    if ([self.navigationController isKindOfClass:[TopHeaderViewController class]]) {
+        return (TopHeaderViewController *)self.navigationController;
     }
     return nil;
 }

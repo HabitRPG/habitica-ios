@@ -10,7 +10,6 @@
 #import "InboxMessage.h"
 #import "UIViewController+Markdown.h"
 #import "HRPGChatTableViewCell.h"
-#import "HRPGTopHeaderNavigationController.h"
 #import "HRPGUserProfileViewController.h"
 #import "HRPGFlagInformationOverlayView.h"
 #import "KLCPopup.h"
@@ -114,7 +113,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([self hrpgTopHeaderNavigationController]) {
-        [[self hrpgTopHeaderNavigationController] scrollview:self.scrollView scrolledToPosition:0];
+        [[self hrpgTopHeaderNavigationController] scrollView:self.scrollView scrolledToPosition:0];
     }
 }
 

@@ -40,7 +40,8 @@ NSString *currentUserID;
     self.navigationItem.title = NSLocalizedString(@"Menu", nil);
 
     [self.topHeaderNavigationController removeAlternativeHeaderView];
-
+    self.topHeaderNavigationController.hideNavbar = YES;
+    self.topHeaderNavigationController.navbarVisibleColor = [UIColor purple300];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -82,12 +83,10 @@ NSString *currentUserID;
     footerView.numberOfLines = 0;
     self.tableView.tableFooterView = footerView;
 
-    HRPGTopHeaderNavigationController *navigationController =
-        (HRPGTopHeaderNavigationController *)self.navigationController;
-    self.tableView.scrollIndicatorInsets =
-        UIEdgeInsetsMake([navigationController getContentInset], 0, 0, 0);
-    [self.tableView
-        setContentInset:(UIEdgeInsetsMake([navigationController getContentInset], 0, -150, 0))];
+    TopHeaderViewController *navigationController =
+        (TopHeaderViewController *)self.navigationController;
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationController.contentInset, 0, 0, 0);
+    [self.tableView setContentInset:(UIEdgeInsetsMake(navigationController.contentInset, 0, -150, 0))];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reloadPartyData:)

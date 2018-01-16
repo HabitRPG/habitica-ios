@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class HRPGTopHeaderNavigationController;
 
-@interface UIViewController (HRPGTopHeaderNavigationController)
+@class TopHeaderViewController;
 
-- (HRPGTopHeaderNavigationController *)hrpgTopHeaderNavigationController;
+@interface UIViewController (TopHeaderViewController)
+
+- (TopHeaderViewController *)hrpgTopHeaderNavigationController;
 
 @end

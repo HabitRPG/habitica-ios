@@ -7,9 +7,9 @@
 //
 
 #import "HRPGFAQDetailViewController.h"
-#import "HRPGTopHeaderNavigationController.h"
 #import "UIViewController+Markdown.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGFAQDetailViewController ()
 @end
@@ -25,7 +25,7 @@
 
     if ([self hrpgTopHeaderNavigationController]) {
         if ([self hrpgTopHeaderNavigationController].state != HRPGTopHeaderStateHidden) {
-            [[self hrpgTopHeaderNavigationController] scrollview:nil scrolledToPosition:0];
+            [[self hrpgTopHeaderNavigationController] scrollView:nil scrolledToPosition:0];
         }
     }
 }

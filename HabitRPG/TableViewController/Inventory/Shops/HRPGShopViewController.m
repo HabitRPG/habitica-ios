@@ -50,10 +50,10 @@
     if (self.topHeaderNavigationController && !self.insetWasSetup) {
         self.insetWasSetup = YES;
         self.topHeaderNavigationController.shouldHideTopHeader = NO;
-        [self.collectionView setContentInset:UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0)];
-        self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0);
+        [self.collectionView setContentInset:UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0)];
+        self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0);
         if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden) {
-            [self.collectionView  setContentOffset:CGPointMake(0, -[self.topHeaderNavigationController getContentOffset])];
+            [self.collectionView  setContentOffset:CGPointMake(0, -self.topHeaderNavigationController.contentOffset)];
         }
     }
 }
@@ -239,9 +239,9 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.topHeaderNavigationController scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
+    [self.topHeaderNavigationController scrollView:scrollView scrolledToPosition:scrollView.contentOffset.y];
     if ([self.viewModel shouldPromptToSubscribe]) {
-        CGFloat alpha = scrollView.contentOffset.y + 350 + [self.topHeaderNavigationController getContentInset] - 80;
+        CGFloat alpha = scrollView.contentOffset.y + 350 + self.topHeaderNavigationController.contentInset - 80;
         alpha /= -80;
         if (alpha > 1) alpha = 1;
         if (alpha < 0) alpha = 0;

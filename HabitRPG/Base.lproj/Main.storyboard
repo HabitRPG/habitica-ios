@@ -2951,7 +2951,7 @@ and helps keep Habitica running</string>
         <!--Menu-->
         <scene sceneID="Vp9-dg-sDn">
             <objects>
-                <navigationController restorationIdentifier="ProfileNavigationController" definesPresentationContext="YES" id="JSb-MY-Gwo" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="ProfileNavigationController" definesPresentationContext="YES" id="JSb-MY-Gwo" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Menu" image="tabbar_menu" id="hyj-Mf-lvH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gph-cu-5tJ">
                         <autoresizingMask key="autoresizingMask"/>
@@ -2967,7 +2967,7 @@ and helps keep Habitica running</string>
         <!--To-Dos-->
         <scene sceneID="xdc-Uc-O5P">
             <objects>
-                <navigationController restorationIdentifier="TodoNavigationController" definesPresentationContext="YES" id="F9m-od-YIG" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="TodoNavigationController" definesPresentationContext="YES" id="F9m-od-YIG" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="To-Dos" image="tabbar_todos" id="Np7-ws-fF6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mXU-6R-4bg">
                         <autoresizingMask key="autoresizingMask"/>
@@ -2983,7 +2983,7 @@ and helps keep Habitica running</string>
         <!--Dailies-->
         <scene sceneID="qkM-wB-5kH">
             <objects>
-                <navigationController restorationIdentifier="DailyNavigationController" definesPresentationContext="YES" id="szj-Xo-0pc" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="DailyNavigationController" definesPresentationContext="YES" id="szj-Xo-0pc" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dailies" id="pdW-W9-wj6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tc8-JW-aRd">
                         <autoresizingMask key="autoresizingMask"/>
@@ -2999,7 +2999,7 @@ and helps keep Habitica running</string>
         <!--Habits-->
         <scene sceneID="0w6-RO-vbL">
             <objects>
-                <navigationController restorationIdentifier="HabitNavigationController" definesPresentationContext="YES" id="ZPa-UZ-Rgq" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="HabitNavigationController" definesPresentationContext="YES" id="ZPa-UZ-Rgq" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Habits" image="tabbar_habits" id="3G8-SH-Shd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qQq-gV-VmG">
                         <autoresizingMask key="autoresizingMask"/>
@@ -3035,7 +3035,7 @@ and helps keep Habitica running</string>
         <!--Rewards-->
         <scene sceneID="ADP-AR-Pd2">
             <objects>
-                <navigationController restorationIdentifier="RewardNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="tYf-ZM-zIQ" customClass="HRPGTopHeaderNavigationController" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="RewardNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="tYf-ZM-zIQ" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Rewards" image="tabbar_rewards" id="zFI-xr-RjT"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="qZ5-Dx-RNg"/>

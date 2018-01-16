@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HRPGManager.h"
 #import "TutorialStepsProtocol.h"
-@class HRPGTopHeaderNavigationController;
+@class TopHeaderViewController;
 
 @interface HRPGBaseViewController : UITableViewController<TutorialStepsProtocol>
 
@@ -22,7 +22,7 @@
 @property BOOL displayedTutorialStep;
 @property TutorialStepView *activeTutorialView;
 
-@property (nonatomic, readonly) HRPGTopHeaderNavigationController *topHeaderNavigationController;
+@property (nonatomic, readonly) TopHeaderViewController *topHeaderNavigationController;
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification;
 

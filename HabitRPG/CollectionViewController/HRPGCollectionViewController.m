@@ -7,12 +7,12 @@
 //
 
 #import "HRPGCollectionViewController.h"
-#import "HRPGTopHeaderNavigationController.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "Amplitude+HRPGHelpers.h"
 #import "Google/Analytics.h"
 #import "HRPGManager.h"
 #import "HRPGDeathView.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGCollectionViewController ()
 @end
@@ -29,12 +29,12 @@
     [[Amplitude instance] logNavigateEventForClass:NSStringFromClass([self class])];
     
     if (self.topHeaderNavigationController) {
-        UIEdgeInsets insets = UIEdgeInsetsMake([self.topHeaderNavigationController getContentInset], 0, 0, 0);
+        UIEdgeInsets insets = UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0);
         self.collectionView.contentInset = insets;
         self.collectionView.scrollIndicatorInsets = insets;
         if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden) {
             self.collectionView.contentOffset =
-                CGPointMake(0, -[self.topHeaderNavigationController getContentOffset]);
+                CGPointMake(0, -self.topHeaderNavigationController.contentOffset);
         }
     }
 }
@@ -43,14 +43,16 @@
     [super viewWillAppear:animated];
     
     if (self.topHeaderNavigationController) {
+        self.topHeaderNavigationController.hideNavbar = NO;
+        self.topHeaderNavigationController.navbarVisibleColor = self.topHeaderNavigationController.defaultNavbarVisibleColor;
         CGFloat y = self.collectionView.contentOffset.y;
         CGFloat top = self.collectionView.contentInset.top;
         if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden &&
-            y < top - [self.topHeaderNavigationController getContentOffset]) {
+            y < top - self.topHeaderNavigationController.contentOffset) {
             self.collectionView.contentOffset =
-                CGPointMake(0, -[self.topHeaderNavigationController getContentOffset]);
+                CGPointMake(0, -self.topHeaderNavigationController.contentOffset);
         } else if (self.topHeaderNavigationController.state == HRPGTopHeaderStateVisible) {
-            [self.topHeaderNavigationController scrollview:self.collectionView
+            [self.topHeaderNavigationController scrollView:self.collectionView
                                         scrolledToPosition:y];
         }
     }
@@ -72,10 +74,10 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.topHeaderNavigationController scrollview:scrollView scrolledToPosition:scrollView.contentOffset.y];
+    [self.topHeaderNavigationController scrollView:scrollView scrolledToPosition:scrollView.contentOffset.y];
 }
 
-- (HRPGTopHeaderNavigationController *)topHeaderNavigationController {
+- (TopHeaderViewController *)topHeaderNavigationController {
     return [self hrpgTopHeaderNavigationController];
 }
 

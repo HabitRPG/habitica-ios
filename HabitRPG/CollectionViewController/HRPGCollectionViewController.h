@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class HRPGTopHeaderNavigationController;
+@class TopHeaderViewController;
 
 @interface HRPGCollectionViewController : UICollectionViewController
 
-@property (nonatomic, readonly) HRPGTopHeaderNavigationController *topHeaderNavigationController;
+@property (nonatomic, readonly) TopHeaderViewController *topHeaderNavigationController;
 
 @end

@@ -8,7 +8,6 @@
 
 #import "HRPGBaseCollectionViewController.h"
 #import "HRPGNavigationController.h"
-#import "HRPGTopHeaderNavigationController.h"
 #import "UIViewcontroller+TutorialSteps.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 
