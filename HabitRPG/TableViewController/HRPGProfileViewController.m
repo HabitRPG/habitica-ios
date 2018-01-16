@@ -27,6 +27,16 @@ NSString *currentUserID;
     [super viewDidLoad];
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
     self.navbarView = [[MenuNavigationBarView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 72)];
+    __weak HRPGProfileViewController *weakSelf = self;
+    [self.navbarView setMessagesAction:^{
+        UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
+        UIViewController *inboxViewController =
+        [secondStoryBoard instantiateViewControllerWithIdentifier:@"InboxViewController"];
+        [weakSelf.navigationController pushViewController:inboxViewController animated:YES];
+    }];
+    [self.navbarView setSettingsAction:^{
+        [weakSelf performSegueWithIdentifier:@"SettingsSegue" sender:weakSelf];
+    }];
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.tintColor = [UIColor purple400];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
@@ -137,11 +147,11 @@ NSString *currentUserID;
                 return 2;
             }
         case 1:
-            return 5;
+            return 4;
         case 2:
             return 7;
         case 3:
-            return 4;
+            return 3;
         default:
             return 0;
     }
@@ -221,25 +231,20 @@ NSString *currentUserID;
         [self.navigationController pushViewController:tavernViewController animated:YES];
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
-        UIViewController *inboxViewController =
-        [secondStoryBoard instantiateViewControllerWithIdentifier:@"InboxViewController"];
-        [self.navigationController pushViewController:inboxViewController animated:YES];
-    } else if (indexPath.section == 1 && indexPath.item == 1) {
-        UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
         UIViewController *tavernViewController =
             [secondStoryBoard instantiateViewControllerWithIdentifier:@"TavernViewController"];
         [self.navigationController pushViewController:tavernViewController animated:YES];
-    } else if (indexPath.section == 1 && indexPath.item == 2) {
+    } else if (indexPath.section == 1 && indexPath.item == 1) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
         UIViewController *partyViewController =
             [secondStoryBoard instantiateViewControllerWithIdentifier:@"PartyViewController"];
         [self.navigationController pushViewController:partyViewController animated:YES];
-    } else if (indexPath.section == 1 && indexPath.item == 3) {
+    } else if (indexPath.section == 1 && indexPath.item == 2) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
         UIViewController *guildsViewController = [secondStoryBoard
                                                   instantiateViewControllerWithIdentifier:@"GuildsOverviewViewController"];
         [self.navigationController pushViewController:guildsViewController animated:YES];
-    } else if (indexPath.section == 1 && indexPath.item == 4) {
+    } else if (indexPath.section == 1 && indexPath.item == 3) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
         UIViewController *challengeViewController = [secondStoryBoard
                                                   instantiateViewControllerWithIdentifier:@"ChallengeTableViewController"];
@@ -277,10 +282,8 @@ NSString *currentUserID;
     } else if (indexPath.section == 3 && indexPath.item == 0) {
         [self performSegueWithIdentifier:@"NewsSegue" sender:self];
     } else if (indexPath.section == 3 && indexPath.item == 1) {
-        [self performSegueWithIdentifier:@"SettingsSegue" sender:self];
-    } else if (indexPath.section == 3 && indexPath.item == 2) {
         [self performSegueWithIdentifier:@"FAQSegue" sender:self];
-    } else if (indexPath.section == 3 && indexPath.item == 3) {
+    } else if (indexPath.section == 3 && indexPath.item == 2) {
         [self performSegueWithIdentifier:@"AboutSegue" sender:self];
     }
 }
@@ -308,16 +311,8 @@ NSString *currentUserID;
     } else if (indexPath.section == 0 && indexPath.item == 1) {
         title = NSLocalizedString(@"Stats", nil);
     } else if (indexPath.section == 1 && indexPath.item == 0) {
-        title = NSLocalizedString(@"Messages", nil);
-        User *user = self.user;
-        if (user) {
-            if ([user.inboxNewMessages integerValue] > 0) {
-                showIndicator = YES;
-            }
-        }
-    } else if (indexPath.section == 1 && indexPath.item == 1) {
         title = NSLocalizedString(@"Tavern", nil);
-    } else if (indexPath.section == 1 && indexPath.item == 2) {
+    } else if (indexPath.section == 1 && indexPath.item == 1) {
         title = NSLocalizedString(@"Party", nil);
         accessibilityLabel = title;
         User *user = self.user;
@@ -326,9 +321,9 @@ NSString *currentUserID;
                 showIndicator = YES;
             }
         }
-    } else if (indexPath.section == 1 && indexPath.item == 3) {
+    } else if (indexPath.section == 1 && indexPath.item == 2) {
         title = NSLocalizedString(@"Guilds", nil);
-    } else if (indexPath.section == 1 && indexPath.item == 4) {
+    } else if (indexPath.section == 1 && indexPath.item == 3) {
         title = NSLocalizedString(@"Challenges", nil);
     } else if (indexPath.section == 2 && indexPath.item == 0) {
         title = NSLocalizedString(@"Shops", nil);
@@ -359,10 +354,8 @@ NSString *currentUserID;
             }
         }
     } else if (indexPath.section == 3 && indexPath.item == 1) {
-        title = NSLocalizedString(@"Settings", nil);
-    } else if (indexPath.section == 3 && indexPath.item == 2) {
         title = NSLocalizedString(@"Help & FAQ", nil);
-    } else if (indexPath.section == 3 && indexPath.item == 3) {
+    } else if (indexPath.section == 3 && indexPath.item == 2) {
         title = NSLocalizedString(@"About", nil);
     }
 
