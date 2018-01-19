@@ -14,6 +14,8 @@ class QuestProgressView: UIView {
     @IBOutlet weak var healthProgressView: QuestProgressBarView!
     @IBOutlet weak var rageProgressView: QuestProgressBarView!
     @IBOutlet weak var backgroundView: UIImageView!
+    @IBOutlet weak var contentStackView: UIStackView!
+    @IBOutlet weak var gradientView: GradientView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,7 +45,8 @@ class QuestProgressView: UIView {
             rageProgressView.barColor = UIColor.yellow50()
             rageProgressView.icon = #imageLiteral(resourceName: "icon_rage")
             
-            self.backgroundView.image = #imageLiteral(resourceName: "BossContainer").resizableImage(withCapInsets: UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10), resizingMode: UIImageResizingMode.stretch)
+            contentStackView.layoutMargins = UIEdgeInsets(top: 16, left: 12, bottom: 12, right: 12)
+            contentStackView.isLayoutMarginsRelativeArrangement = true
             
             setNeedsUpdateConstraints()
             updateConstraints()
@@ -58,10 +61,19 @@ class QuestProgressView: UIView {
         healthProgressView.maxValue = quest.bossHp?.floatValue ?? 0
         if let bossRage = quest.bossRage?.floatValue, bossRage > 0 {
             rageProgressView.maxValue = quest.bossRage?.floatValue ?? 0
+            rageProgressView.title = NSLocalizedString("Rage attack: \(quest.rageTitle ?? "")", comment: "")
         } else {
             rageProgressView.isHidden = true
         }
         HRPGManager.shared().setImage("quest_" + quest.key, withFormat: "png", on: questImageView)
+        
+        let colorDark = UIColor.init(quest.colorDark ?? "", defaultColor: UIColor.clear)
+        let colorMedium = UIColor.init(quest.colorMedium ?? "", defaultColor: UIColor.clear)
+        let colorLight = UIColor.init(quest.colorLight ?? "", defaultColor: UIColor.clear)
+        let colorExtraLight = UIColor.init(quest.colorExtraLight ?? "", defaultColor: UIColor.clear)
+        self.backgroundView.image = HabiticaIcons.imageOfQuestBackground(bossColorDark: colorDark, bossColorMedium: colorMedium, bossColorLight: colorExtraLight).resizableImage(withCapInsets: UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10), resizingMode: UIImageResizingMode.stretch)
+        
+        gradientView.endColor = colorLight
     }
     
     @objc

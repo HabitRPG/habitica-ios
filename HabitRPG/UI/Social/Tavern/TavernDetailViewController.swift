@@ -29,6 +29,9 @@ class TavernDetailViewController: UIViewController {
         didSet {
             if let quest = self.quest {
                 questProgressView.configure(quest: quest)
+                questProgressView.isHidden = false
+            } else {
+                questProgressView.isHidden = true
             }
         }
     }

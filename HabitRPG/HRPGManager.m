@@ -2041,6 +2041,10 @@ NSString *currentUser;
         @"(key).boss.rage.title" : @"rageTitle",
         @"(key).boss.rage.value" : @"bossRage",
         @"(key).boss.rage.description" : @"rageDescription",
+        @"(key).colors.dark": @"colorDark",
+        @"(key).colors.medium": @"colorMedium",
+        @"(key).colors.light": @"colorLight",
+        @"(key).colors.extralight": @"colorExtraLight",
         @"@metadata.mapping.rootKeyPath" : @"type"
     }];
     questMapping.identificationAttributes = @[ @"key" ];

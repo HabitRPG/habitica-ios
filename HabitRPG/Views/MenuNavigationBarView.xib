@@ -49,29 +49,29 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdf-Mj-RXC">
-                    <rect key="frame" x="72" y="0.0" width="144" height="72"/>
+                    <rect key="frame" x="72" y="0.0" width="219" height="72"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7w-qy-bea">
-                    <rect key="frame" x="302" y="0.0" width="57" height="72"/>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7w-qy-bea">
+                    <rect key="frame" x="335" y="0.0" width="24" height="72"/>
                     <constraints>
                         <constraint firstAttribute="width" priority="500" constant="46" id="Hqp-Ye-fjP"/>
                     </constraints>
-                    <state key="normal" title="Settings">
+                    <state key="normal" image="MenuSettings">
                         <color key="titleColor" white="1" alpha="0.80039612676056338" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
                         <action selector="settingsButtonTapped:" destination="-1" eventType="touchUpInside" id="taR-zM-USU"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZj-6g-7yy">
-                    <rect key="frame" x="224" y="0.0" width="70" height="72"/>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZj-6g-7yy">
+                    <rect key="frame" x="299" y="0.0" width="24" height="72"/>
                     <constraints>
                         <constraint firstAttribute="width" priority="500" constant="46" id="EB4-Lt-Hax"/>
                     </constraints>
-                    <state key="normal" title="Messages">
+                    <state key="normal" image="MenuMessages">
                         <color key="titleColor" white="1" alpha="0.80039612676056338" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -88,7 +88,7 @@
                 <constraint firstAttribute="bottom" secondItem="EZj-6g-7yy" secondAttribute="bottom" id="P6J-2g-5Jn"/>
                 <constraint firstAttribute="bottom" secondItem="u7w-qy-bea" secondAttribute="bottom" id="Rur-BT-TwQ"/>
                 <constraint firstAttribute="bottom" secondItem="Z4n-km-qTV" secondAttribute="bottom" constant="16" id="WOt-fT-hcf"/>
-                <constraint firstItem="u7w-qy-bea" firstAttribute="leading" secondItem="EZj-6g-7yy" secondAttribute="trailing" constant="8" id="XxV-y5-Qsc"/>
+                <constraint firstItem="u7w-qy-bea" firstAttribute="leading" secondItem="EZj-6g-7yy" secondAttribute="trailing" constant="12" id="XxV-y5-Qsc"/>
                 <constraint firstItem="rdf-Mj-RXC" firstAttribute="leading" secondItem="Z4n-km-qTV" secondAttribute="trailing" constant="12" id="ZCw-Dv-qV0"/>
                 <constraint firstItem="EZj-6g-7yy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gKZ-PC-rEf"/>
                 <constraint firstAttribute="bottom" secondItem="rdf-Mj-RXC" secondAttribute="bottom" id="hbe-L8-e8Q"/>
@@ -100,4 +100,8 @@
             <point key="canvasLocation" x="25.5" y="-242.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="MenuMessages" width="24" height="24"/>
+        <image name="MenuSettings" width="24" height="24"/>
+    </resources>
 </document>

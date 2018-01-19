@@ -26,6 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *previous;
 @property (nullable, nonatomic, copy) NSString *rageDescription;
 @property (nullable, nonatomic, copy) NSString *rageTitle;
+@property (nullable, nonatomic, copy) NSString *colorDark;
+@property (nullable, nonatomic, copy) NSString *colorMedium;
+@property (nullable, nonatomic, copy) NSString *colorLight;
+@property (nullable, nonatomic, copy) NSString *colorExtraLight;
 @property (nullable, nonatomic, retain) NSOrderedSet<QuestCollect *> *collect;
 @property (nullable, nonatomic, retain) User *user;
 @property (nullable, nonatomic, retain) NSSet<QuestReward *> *itemDrops;

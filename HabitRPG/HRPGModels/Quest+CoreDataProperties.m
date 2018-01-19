@@ -28,5 +28,9 @@
 @dynamic collect;
 @dynamic user;
 @dynamic itemDrops;
+@dynamic colorDark;
+@dynamic colorMedium;
+@dynamic colorLight;
+@dynamic colorExtraLight;
 
 @end

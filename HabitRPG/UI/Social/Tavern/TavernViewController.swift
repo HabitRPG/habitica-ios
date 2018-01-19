@@ -49,6 +49,8 @@ class TavernViewController: HRPGUIViewController, UIScrollViewDelegate {
         if let questKey = group?.questKey {
             let quest = InventoryRepository().getQuest(questKey)
             detailViewController?.quest = quest
+        } else {
+            detailViewController?.quest = nil
         }
     }
     
