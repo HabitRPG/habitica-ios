@@ -71,16 +71,11 @@
 
 - (void)renderAttributedTexts {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSDate *methodStart = [NSDate date];
         for (ChatMessage *message in self.chatMessagesFRC.fetchedObjects) {
             if (!message.attributedText) {
                 message.attributedText = [self renderMarkdown:message.text];
             }
         }
-        NSDate *methodFinish = [NSDate date];
-        NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
-        NSLog(@"executionTime = %f", executionTime);
-        NSLog(@"DONE PROCESSING");
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
         });
@@ -430,7 +425,7 @@
     NSIndexPath *objectIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
     ChatMessage *message = [self chatMessageAtIndexPath:objectIndexPath];
     
-    [cell configureForMessage:message withUserID:self.user.id withUsername:self.user.username isModerator:([self.user.contributorLevel intValue] >= 8) isExpanded:[self.expandedChatPath isEqual:indexPath]];
+    [cell configureForMessage:message withUserID:self.user.id withUsername:self.user.username isModerator:[self.user isModerator] isExpanded:[self.expandedChatPath isEqual:indexPath]];
     cell.profileAction = ^() {
         HRPGUserProfileViewController *profileViewController =
             [self.storyboard instantiateViewControllerWithIdentifier:@"UserProfileViewController"];

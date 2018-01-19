@@ -8,30 +8,14 @@
 
 import Foundation
 
-class InventoryRepository {
-    
-    lazy var managedObjectContext: NSManagedObjectContext = {
-        return HRPGManager.shared().getManagedObjectContext()
-    }()
-    
+class InventoryRepository: BaseRepository {
+
     func getGear(_ key: String) -> Gear? {
-        let fetchRequest = NSFetchRequest<Gear>(entityName: "Gear")
-        fetchRequest.predicate = NSPredicate(format: "key == %@", key)
-        let result = try? managedObjectContext.fetch(fetchRequest)
-        if let gear = result?[0] {
-            return gear
-        }
-        return nil
+        return makeFetchRequest(entityName: "Gear", predicate: NSPredicate(format: "key == %@", key))
     }
     
     func getQuest(_ key: String) -> Quest? {
-        let fetchRequest = NSFetchRequest<Quest>(entityName: "Quest")
-        fetchRequest.predicate = NSPredicate(format: "key == %@", key)
-        let result = try? managedObjectContext.fetch(fetchRequest)
-        if let quest = result?[0] {
-            return quest
-        }
-        return nil
+        return makeFetchRequest(entityName: "Quest", predicate: NSPredicate(format: "key == %@", key))
     }
     
 }

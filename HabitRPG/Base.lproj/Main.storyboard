@@ -748,7 +748,7 @@
         <!--About-->
         <scene sceneID="Whw-Wx-8Rx">
             <objects>
-                <tableViewController id="r5L-RV-Ig6" customClass="HRPGAboutViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AboutViewController" id="r5L-RV-Ig6" customClass="HRPGAboutViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qDx-P9-rXy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -827,7 +827,7 @@
         <!--FAQ-->
         <scene sceneID="V5q-Dw-DeL">
             <objects>
-                <tableViewController id="Kau-eC-iCv" customClass="HRPGFAQTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FAQOverviewViewController" id="Kau-eC-iCv" customClass="HRPGFAQTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="5qA-rI-0zB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

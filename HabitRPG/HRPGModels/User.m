@@ -790,4 +790,8 @@
     return [self.level integerValue] >= 10 && ![self.preferences.disableClass boolValue];
 }
 
+- (BOOL)isModerator {
+    return [self.contributorLevel intValue] >= 8;
+}
+
 @end

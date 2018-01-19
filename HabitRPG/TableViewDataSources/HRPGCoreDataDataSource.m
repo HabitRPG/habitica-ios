@@ -240,4 +240,8 @@
     }
 }
 
+- (NSArray *)items {
+    return self.fetchedResultsController.fetchedObjects;
+}
+
 @end

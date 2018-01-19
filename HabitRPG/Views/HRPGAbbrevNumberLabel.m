@@ -7,6 +7,7 @@
 //
 
 #import "HRPGAbbrevNumberLabel.h"
+#import "Habitica-Swift.h"
 
 @implementation HRPGAbbrevNumberLabel
 

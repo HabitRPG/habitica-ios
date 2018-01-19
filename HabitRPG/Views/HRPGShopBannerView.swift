@@ -49,6 +49,8 @@ class HRPGShopBannerView: UIView {
             
             addSubview(view)
             
+            shopPlaqueImageView.image = UIImage(named: "Nameplate")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))
+            
             gradientView.startColor = UIColor.white.withAlphaComponent(0.8)
             gradientView.endColor = UIColor.white
         }
@@ -64,14 +66,8 @@ class HRPGShopBannerView: UIView {
     }
     
     private func setupShop() {
-        let shopSpriteSuffix = ConfigRepository().string(variable: .shopSpriteSuffix, defaultValue: "")
-        shopPlaqueImageView.image = UIImage(named: "Nameplate")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))
         if let unwrappedShop = shop, let identifier = unwrappedShop.identifier {
-            HRPGManager.shared().getImage(identifier + "_background"+shopSpriteSuffix, withFormat: "png", onSuccess: { (image) in
-                self.shopBgImageView.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImageResizingMode.tile)
-            }, onError: {})
-            HRPGManager.shared().setImage(identifier + "_scene"+shopSpriteSuffix, withFormat: "png", on: self.shopForegroundImageView)
-            
+            setSprites(identifier: identifier)
             switch unwrappedShop.identifier {
             case .some("market"):
                 self.shopNameLabel.text = "Alex"
@@ -86,15 +82,26 @@ class HRPGShopBannerView: UIView {
             }
             
             if let notes = unwrappedShop.notes?.strippingHTML() {
-                let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.lineSpacing = 4
-                
-                let attrString = NSMutableAttributedString(string: notes)
-                attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length:   attrString.length))
-                self.notesLabel.attributedText = attrString
+                setNotes(notes)
             }
             self.invalidateIntrinsicContentSize()
         }
     }
 
+    func setSprites(identifier: String) {
+        let shopSpriteSuffix = ConfigRepository().string(variable: .shopSpriteSuffix, defaultValue: "")
+        HRPGManager.shared().getImage(identifier + "_background"+shopSpriteSuffix, withFormat: "png", onSuccess: { (image) in
+            self.shopBgImageView.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImageResizingMode.tile)
+        }, onError: {})
+        HRPGManager.shared().setImage(identifier + "_scene"+shopSpriteSuffix, withFormat: "png", on: self.shopForegroundImageView)
+    }
+    
+    func setNotes(_ notes: String) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        
+        let attrString = NSMutableAttributedString(string: notes)
+        attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length:   attrString.length))
+        self.notesLabel.attributedText = attrString
+    }
 }

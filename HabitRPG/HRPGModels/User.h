@@ -207,4 +207,6 @@
 - (BOOL)isSubscribed;
 
 - (BOOL)hasClassSelected;
+
+- (BOOL)isModerator;
 @end

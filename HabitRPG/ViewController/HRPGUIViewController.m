@@ -8,8 +8,19 @@
 
 #import "HRPGUIViewController.h"
 #import "UIViewController+TutorialSteps.h"
+#import "UIViewController+HRPGTopHeaderNavigationController.h"
+#import "Habitica-Swift.h"
 
 @implementation HRPGUIViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if ([self hrpgTopHeaderNavigationController]) {
+        [self hrpgTopHeaderNavigationController].hideNavbar = NO;
+        [self hrpgTopHeaderNavigationController].navbarVisibleColor = [self hrpgTopHeaderNavigationController].defaultNavbarVisibleColor;
+    }
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

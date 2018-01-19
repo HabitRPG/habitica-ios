@@ -29,6 +29,7 @@ typedef NSString*(^CellIdentifierBlock)(id item, NSIndexPath *indexPath);
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath;
 - (id)cellAtIndexPath:(NSIndexPath *)indexPath;
+- (NSArray *)items;
 - (NSInteger)numberOfSections;
 
 - (void)reconfigureFetchRequest;

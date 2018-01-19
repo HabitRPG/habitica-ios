@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ChatMessage.h"
 #import "InboxMessage.h"
-#import "Habitica-Swift.h"
+
+@class UsernameLabel;
 
 typedef NS_ENUM(NSInteger, HRPGChatTableViewCellType) {
     HRPGChatTableViewCellTypeGroup,

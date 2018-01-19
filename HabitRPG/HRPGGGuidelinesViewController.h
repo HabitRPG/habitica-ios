@@ -10,4 +10,6 @@
 
 @interface HRPGGGuidelinesViewController : UIViewController
 
+@property BOOL needsAccepting;
+
 @end
