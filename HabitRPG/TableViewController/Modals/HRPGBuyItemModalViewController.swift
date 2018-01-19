@@ -58,10 +58,6 @@ class HRPGBuyItemModalViewController: UIViewController {
         refreshBalances()
     }
     
-    deinit {
-        closableShopModal.closeButton.removeTarget(self, action: #selector(closePressed), for: UIControlEvents.touchUpInside)
-    }
-    
     func styleViews() {
         pinButton.layer.borderWidth = 0.5
         pinButton.layer.borderColor = UIColor.gray400().cgColor
