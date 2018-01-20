@@ -173,6 +173,9 @@ class GroupChatViewController: SLKTextViewController {
         } else {
             let cell = self.tableView?.cellForRow(at: indexPath) as? HRPGChatTableViewCell
             cell?.isExpanded = !(cell?.isExpanded ?? false)
+            if !(cell?.isExpanded ?? false) {
+                self.expandedChatPath = nil
+            }
             self.tableView?.beginUpdates()
             self.tableView?.reloadRows(at: [indexPath], with: .automatic)
             self.tableView?.endUpdates()

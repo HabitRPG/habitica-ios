@@ -16,6 +16,11 @@ class QuestProgressView: UIView {
     @IBOutlet weak var backgroundView: UIImageView!
     @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var gradientView: GradientView!
+    @IBOutlet weak var descriptionSeparator: UIView!
+    @IBOutlet weak var descriptionTitle: UILabel!
+    @IBOutlet weak var descriptionTitleStackView: UIStackView!
+    @IBOutlet weak var descriptionStackView: UIStackView!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,6 +53,10 @@ class QuestProgressView: UIView {
             contentStackView.layoutMargins = UIEdgeInsets(top: 16, left: 12, bottom: 12, right: 12)
             contentStackView.isLayoutMarginsRelativeArrangement = true
             
+            descriptionTitleStackView.layoutMargins = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+            descriptionTitleStackView.isLayoutMarginsRelativeArrangement = true
+            descriptionTextView.contentInset = UIEdgeInsets.zero
+            
             setNeedsUpdateConstraints()
             updateConstraints()
             setNeedsLayout()
@@ -74,6 +83,7 @@ class QuestProgressView: UIView {
         self.backgroundView.image = HabiticaIcons.imageOfQuestBackground(bossColorDark: colorDark, bossColorMedium: colorMedium, bossColorLight: colorExtraLight).resizableImage(withCapInsets: UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10), resizingMode: UIImageResizingMode.stretch)
         
         gradientView.endColor = colorLight
+        descriptionSeparator.backgroundColor = colorLight
     }
     
     @objc
