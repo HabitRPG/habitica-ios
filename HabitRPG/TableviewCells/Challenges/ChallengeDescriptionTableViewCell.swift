@@ -9,8 +9,14 @@
 import UIKit
 import Down
 
-class ChallengeDescriptionTableViewCell: UITableViewCell, ChallengeConfigurable {
+class ChallengeDescriptionTableViewCell: ResizableTableViewCell, ChallengeConfigurable {
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var caretButton: UIButton!
+    @IBOutlet weak var marginConstraint: NSLayoutConstraint!
+    
+    private var heightConstraint: NSLayoutConstraint?
+    
+    private var isExpanded = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,4 +30,52 @@ class ChallengeDescriptionTableViewCell: UITableViewCell, ChallengeConfigurable 
         }
     }
     
+    func expand() {
+        rotateCaret()
+        
+        self.marginConstraint.constant = 8
+        if let constraint = self.heightConstraint {
+            self.descriptionLabel.removeConstraint(constraint)
+        }
+        
+        self.resizingDelegate?.cellResized()
+    }
+    
+    func collapse() {
+        rotateCaret()
+        
+        self.marginConstraint.constant = 0
+        if self.heightConstraint == nil {
+            self.heightConstraint = NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutAttribute.height, relatedBy: .equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
+        }
+        
+        if let constraint = self.heightConstraint {
+            self.descriptionLabel.addConstraint(constraint)
+        }
+        
+        self.resizingDelegate?.cellResized()
+    }
+    
+    func rotateCaret() {
+        let angle = self.isExpanded ? 0 : CGFloat.pi
+        self.caretButton.transform = CGAffineTransform(rotationAngle: angle)
+//        caretButton.isEnabled = false
+//
+//        UIView.animate(withDuration: 0.5, animations: {
+//            let angle = self.isExpanded ? 0 : CGFloat.pi
+//            self.caretButton.transform = CGAffineTransform(rotationAngle: angle)
+//        }, completion: { _ in
+//            self.caretButton.isEnabled = true
+//        })
+    }
+    
+    @IBAction func caretPressed(_ sender: Any) {
+        isExpanded = !isExpanded
+        
+        if isExpanded {
+            expand()
+        } else {
+            collapse()
+        }
+    }
 }

@@ -60,7 +60,8 @@ class FixedSizeDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections?[section].title
+        let isSectionView = tableView.delegate?.tableView?(tableView, viewForHeaderInSection: section) != nil
+        return isSectionView ? nil : sections?[section].title
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

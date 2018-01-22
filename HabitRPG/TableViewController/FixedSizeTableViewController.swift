@@ -9,7 +9,7 @@
 import UIKit
 
 class FixedSizeTableViewController: HRPGBaseViewController {
-    let dataSource = FixedSizeDataSource()
+    let dataSource: FixedSizeDataSource = FixedSizeDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -21,6 +21,7 @@ protocol ChallengeDetailViewModelInputs {
 
 protocol ChallengeDetailViewModelOutputs {
     var cellModelsSignal: Signal<[FixedSizeDataSourceSection], NoError> { get }
+    var reloadTableSignal: Signal<Void, NoError> { get }
 }
 
 protocol ChallengeDetailViewModelProtocol {
@@ -28,11 +29,13 @@ protocol ChallengeDetailViewModelProtocol {
     var outputs: ChallengeDetailViewModelOutputs { get }
 }
 
-class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetailViewModelInputs, ChallengeDetailViewModelOutputs {
+class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetailViewModelInputs, ChallengeDetailViewModelOutputs, ResizableTableViewCellDelegate {
     var cellModelsSignal: Signal<[FixedSizeDataSourceSection], NoError>
+    var reloadTableSignal: Signal<Void, NoError>
     
     let challengeProperty: MutableProperty<Challenge>
     let viewDidLoadProperty = MutableProperty()
+    let reloadTableProperty = MutableProperty()
     
     let cellModelsProperty: MutableProperty<[FixedSizeDataSourceSection]> = MutableProperty<[FixedSizeDataSourceSection]>([])
     let infoSectionProperty: MutableProperty<FixedSizeDataSourceSection> = MutableProperty<FixedSizeDataSourceSection>(FixedSizeDataSourceSection())
@@ -53,6 +56,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     
     init(challenge: Challenge) {
         challengeProperty = MutableProperty<Challenge>(challenge)
+        reloadTableSignal = reloadTableProperty.signal
         
         joinLeaveStyleProvider = JoinLeaveButtonAttributeProvider(challenge)
         publishStyleProvider = PublishButtonAttributeProvider(challenge)
@@ -89,13 +93,14 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         challengeProperty.signal.observeValues { (challenge) in
             let infoItem = ChallengeFixedSizeDataSourceItem<ChallengeDetailInfoTableViewCell>(challenge, identifier: "info")
             let creatorItem = ChallengeFixedSizeDataSourceItem<ChallengeCreatorTableViewCell>(challenge, identifier: "creator")
-            let descriptionItem = ChallengeFixedSizeDataSourceItem<ChallengeDescriptionTableViewCell>(challenge, identifier: "description")
+            let categoryItem = ChallengeFixedSizeDataSourceItem<ChallengeCategoriesTableViewCell>(challenge, identifier: "categories")
+            let descriptionItem = ChallengeResizableFixedSizeDataSourceItem<ChallengeDescriptionTableViewCell>(challenge, resizingDelegate: self, identifier: "description")
             
             let infoSection = FixedSizeDataSourceSection()
             if let mainButton = self.mainButtonItemProperty.value {
-                infoSection.items = [infoItem, mainButton, creatorItem, descriptionItem]
+                infoSection.items = [infoItem, mainButton, creatorItem, categoryItem, descriptionItem]
             } else {
-                infoSection.items = [infoItem, creatorItem, descriptionItem]
+                infoSection.items = [infoItem, creatorItem, categoryItem, descriptionItem]
             }
             self.infoSectionProperty.value = infoSection
         }
@@ -201,6 +206,12 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         HRPGManager.shared().fetchChallengeTasks(challenge, onSuccess: {[weak self] () in
             self?.setChallenge(challenge)
             }, onError: nil)
+    }
+    
+    // MARK: Resizing delegate
+    
+    func cellResized() {
+        reloadTableProperty.value = ()
     }
     
     // MARK: ChallengeDetailViewModelInputs
@@ -556,6 +567,24 @@ class ChallengeFixedSizeDataSourceItem<T>: ConcreteFixedSizeDataSourceItem<T> wh
     override func configureCell(_ cell: UITableViewCell) {
         if let clazzCell: T = cell as? T {
             clazzCell.configure(with: challenge)
+        }
+    }
+}
+
+class ChallengeResizableFixedSizeDataSourceItem<T>: ChallengeFixedSizeDataSourceItem<T> where T: ChallengeConfigurable, T: ResizableTableViewCell {
+    weak var resizingDelegate: ResizableTableViewCellDelegate?
+    
+    init(_ challenge: Challenge, resizingDelegate: ResizableTableViewCellDelegate?, identifier: String) {
+        super.init(challenge, identifier: identifier)
+        
+        self.resizingDelegate = resizingDelegate
+    }
+    
+    override func configureCell(_ cell: UITableViewCell) {
+        super.configureCell(cell)
+        
+        if let clazzCell: T = cell as? T {
+            clazzCell.resizingDelegate = resizingDelegate
         }
     }
 }
