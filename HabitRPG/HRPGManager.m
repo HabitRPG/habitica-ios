@@ -5455,7 +5455,7 @@ NSString *currentUser;
 - (void)displayLevelUpNotification {
     [self fetchUser:nil onError:nil];
 
-    if ([self.user.level integerValue] >= 10 && ![self.user.preferences.disableClass boolValue]) {
+    if ([self.user.level integerValue] >= 10 && ![self.user.preferences.disableClass boolValue] && ![self.user.flags.classSelected boolValue]) {
         HRPGAppDelegate *del = (HRPGAppDelegate *)[UIApplication sharedApplication].delegate;
         UIViewController *activeViewController = del.window.visibleViewController;
         UINavigationController *selectClassNavigationController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"SelectClassNavigationController"];

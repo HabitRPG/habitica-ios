@@ -1,15 +1,16 @@
 PODS:
   - Alamofire (4.6.0)
   - Amplitude-iOS (3.14.1)
-  - AppAuth (0.91.0)
-  - Bolts (1.8.4):
-    - Bolts/AppLinks (= 1.8.4)
-    - Bolts/Tasks (= 1.8.4)
-  - Bolts/AppLinks (1.8.4):
+  - AppAuth (0.92.0)
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.8.4)
+  - Bolts/Tasks (1.9.0)
   - DateTools (2.0.0)
   - Down (0.4.2)
+  - DynamicBlurView (2.0.2)
   - EAIntroView (2.12.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
@@ -92,10 +93,11 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (6.1.0)
   - PDKeychainBindingsController (0.0.1)
   - pop (1.0.10)
-  - PopupDialog (0.6.2)
-  - ReactiveCocoa (7.0.1):
-    - ReactiveSwift (~> 3.0)
-  - ReactiveSwift (3.0.0):
+  - PopupDialog (0.7.0):
+    - DynamicBlurView (~> 2.0)
+  - ReactiveCocoa (7.1.0):
+    - ReactiveSwift (~> 3.1)
+  - ReactiveSwift (3.1.0):
     - Result (~> 3.2)
   - RestKit (0.27.2):
     - RestKit/Core (= 0.27.2)
@@ -120,8 +122,8 @@ PODS:
   - SeedsSDK (0.5.0)
   - SlackTextViewController (1.9.6)
   - SOCKit (1.1)
-  - SwiftLint (0.24.0)
-  - SwiftyStoreKit (0.11.1)
+  - SwiftLint (0.24.2)
+  - SwiftyStoreKit (0.12.1)
   - TransitionKit (2.2.1)
   - VTAcknowledgementsViewController (1.3)
   - XLForm (4.0.0)
@@ -182,16 +184,17 @@ CHECKOUT OPTIONS:
     :commit: f97dd8e423a382eb61387564120e56a69bc98285
     :git: https://github.com/alanzeino/ios-snapshot-test-case.git
   PopupDialog:
-    :commit: e40044fe105ed9ba9c8a21e0123e1b805102282e
+    :commit: 91d634b1068d91be2658a63959f79e209e03ecb9
     :git: https://github.com/Orderella/PopupDialog.git
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Amplitude-iOS: 4a3c8807b2ea5369dc11e87e23825bff01e5a922
-  AppAuth: 3e0dc9c00ef333dc62064e4830aa89b597ae8d2f
-  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  AppAuth: 3f4f1d6d85ad631d0bbf15ffcdc10c447face97a
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   Down: 92efba7c95a8efdb84b7114e365db4a37f3df76e
+  DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
   EAIntroView: 249559079ddfdbe80e5bcb755c04c3b964b2ac27
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   Eureka: c8bd5cc07143b6f66268c208d28a246c99b41955
@@ -216,17 +219,17 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
   PDKeychainBindingsController: fa8cb3cf99f2ea9240d61066ed0549f34e2cec3c
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
-  PopupDialog: 4249a2fa2c2552b99cc74b245544701714162ae4
-  ReactiveCocoa: a1b5d502d0d1534f9a72981a485b297b17127f83
-  ReactiveSwift: d9fe0db33c1aaabecb092e8de83cf52875c0de6f
+  PopupDialog: 2f2fdb00c83b563c3f0ef7ba5a21cbb10497c890
+  ReactiveCocoa: 105ad96f6b8711f1ee7d165fc96587479298053b
+  ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
   RestKit: 556c913b0640c5bc5a9cb972361504e3ed628a1d
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
   SeedsSDK: 8de27e088c15ff3eba33a6d2941ec507e4a5bb95
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
-  SwiftLint: a014c92b4664e8b13f380f8640a51bb1733778ba
-  SwiftyStoreKit: d52d1473f5baf8385c86d7455c9f6b0d0a74cef2
+  SwiftLint: 2aa21b96c8d13396a051bc1cb659d2ce1e0075b0
+  SwiftyStoreKit: 98742f9d7941ecaca0f248de0f49c5ecf585bc95
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   VTAcknowledgementsViewController: 0bc8149be64f0d5b7f398e146353af8fde04b313
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
