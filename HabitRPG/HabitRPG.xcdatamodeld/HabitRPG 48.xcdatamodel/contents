@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="16G29" minimumToolsVersion="Xcode 4.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D29a" minimumToolsVersion="Xcode 4.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="Buff" representedClassName="Buff" syncable="YES">
         <attribute name="constitution" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="intelligence" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -28,12 +28,19 @@
         <attribute name="prize" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChallengeCategory" inverseName="challengeCategory" inverseEntity="ChallengeCategory" syncable="YES"/>
         <relationship name="dailies" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChallengeTask" inverseName="dailyChallenge" inverseEntity="ChallengeTask" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="challenges" inverseEntity="Group" syncable="YES"/>
         <relationship name="habits" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChallengeTask" inverseName="habitChallenge" inverseEntity="ChallengeTask" syncable="YES"/>
         <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChallengeTask" inverseName="rewardChallenge" inverseEntity="ChallengeTask" syncable="YES"/>
         <relationship name="todos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChallengeTask" inverseName="todoChallenge" inverseEntity="ChallengeTask" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="challenges" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="ChallengeCategory" representedClassName="ChallengeCategory" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="slug" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="challengeCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Challenge" inverseName="categories" inverseEntity="Challenge" syncable="YES"/>
     </entity>
     <entity name="ChallengeTask" representedClassName="ChallengeTask" syncable="YES">
         <attribute name="attribute" optional="YES" attributeType="String" syncable="YES"/>
@@ -547,7 +554,8 @@
     <elements>
         <element name="Buff" positionX="9" positionY="153" width="128" height="210"/>
         <element name="BuyableItem" positionX="0" positionY="0" width="128" height="60"/>
-        <element name="Challenge" positionX="9" positionY="153" width="128" height="300"/>
+        <element name="Challenge" positionX="-657" positionY="159" width="128" height="313"/>
+        <element name="ChallengeCategory" positionX="-369" positionY="72" width="128" height="103"/>
         <element name="ChallengeTask" positionX="9" positionY="153" width="128" height="270"/>
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="240"/>
         <element name="ChatMessageLike" positionX="0" positionY="0" width="128" height="75"/>

@@ -168,6 +168,8 @@
 		49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E378522009542C00E0DA3D /* ChallengeTableViewHeaderView.xib */; };
 		49E6F57D1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6F57B1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.swift */; };
 		49E6F57E1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */; };
+		49F1459E2016667D00AAC434 /* ChallengeCategory+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F1459D2016667D00AAC434 /* ChallengeCategory+CoreDataClass.m */; };
+		49F145A12016674F00AAC434 /* ChallengeCategory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F145A02016674F00AAC434 /* ChallengeCategory+CoreDataProperties.m */; };
 		823F7132DD74058859184F61 /* Pods_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */; };
 		98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */; };
 		CF54FEE0D3F7F352ECA56F23 /* HRPGContentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CF54FD820D81110D9EF4756E /* HRPGContentResponse.m */; };
@@ -648,6 +650,10 @@
 		49E378522009542C00E0DA3D /* ChallengeTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTableViewHeaderView.xib; sourceTree = "<group>"; };
 		49E6F57B1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleButtonTableViewCell.swift; sourceTree = "<group>"; };
 		49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleButtonTableViewCell.xib; sourceTree = "<group>"; };
+		49F1459C2016667D00AAC434 /* ChallengeCategory+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChallengeCategory+CoreDataClass.h"; sourceTree = "<group>"; };
+		49F1459D2016667D00AAC434 /* ChallengeCategory+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChallengeCategory+CoreDataClass.m"; sourceTree = "<group>"; };
+		49F1459F2016674F00AAC434 /* ChallengeCategory+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChallengeCategory+CoreDataProperties.h"; sourceTree = "<group>"; };
+		49F145A02016674F00AAC434 /* ChallengeCategory+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChallengeCategory+CoreDataProperties.m"; sourceTree = "<group>"; };
 		98A4DBEE1B643BC100A9E2A8 /* HRPGSearchDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSearchDataManager.h; sourceTree = "<group>"; };
 		98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSearchDataManager.m; sourceTree = "<group>"; };
 		BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabiticaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2107,6 +2113,10 @@
 				D9525F951E5F405400C529B8 /* Challenge+CoreDataClass.m */,
 				D9525F961E5F405400C529B8 /* Challenge+CoreDataProperties.h */,
 				D9525F971E5F405400C529B8 /* Challenge+CoreDataProperties.m */,
+				49F1459C2016667D00AAC434 /* ChallengeCategory+CoreDataClass.h */,
+				49F1459D2016667D00AAC434 /* ChallengeCategory+CoreDataClass.m */,
+				49F1459F2016674F00AAC434 /* ChallengeCategory+CoreDataProperties.h */,
+				49F145A02016674F00AAC434 /* ChallengeCategory+CoreDataProperties.m */,
 				D9BB45CD1E7713E80002AE2E /* ChallengeTask+CoreDataClass.h */,
 				D9BB45CE1E7713E80002AE2E /* ChallengeTask+CoreDataClass.m */,
 				D9BB45CF1E7713E80002AE2E /* ChallengeTask+CoreDataProperties.h */,
@@ -3135,6 +3145,7 @@
 				494E54041F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m in Sources */,
 				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
 				D96C853F1DCB631B003E3616 /* HRPGBaseNotificationView.m in Sources */,
+				49F145A12016674F00AAC434 /* ChallengeCategory+CoreDataProperties.m in Sources */,
 				D905D08F1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m in Sources */,
 				49DCB7B21F3E6D400079FDD0 /* HRPGSingleOptionModalViewController.swift in Sources */,
 				D91CCACD1BCD9068001C6A0C /* HRPGHoledView.m in Sources */,
@@ -3172,6 +3183,7 @@
 				D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */,
 				D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */,
 				D9C0E51F1C6516C50062C89A /* HRPGPublicGuildTableViewCell.m in Sources */,
+				49F1459E2016667D00AAC434 /* ChallengeCategory+CoreDataClass.m in Sources */,
 				D95D039C1C74E3E900D6BFB3 /* ImprovementCategory.m in Sources */,
 				D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */,
 				D9D0451C1C2B1AEC00630244 /* Reminder.m in Sources */,

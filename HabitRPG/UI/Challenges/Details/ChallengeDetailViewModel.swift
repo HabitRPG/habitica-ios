@@ -87,13 +87,24 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         setupTasks()
         
         reloadChallenge(challenge: challenge)
+        
+        challengeProperty.signal.observeValues { newChallenge in
+            self.joinLeaveStyleProvider.challengeProperty.value = newChallenge
+            self.publishStyleProvider.challengeProperty.value = newChallenge
+            self.participantsStyleProvider.challengeProperty.value = newChallenge
+            self.endChallengeStyleProvider.challengeProperty.value = newChallenge
+        }
+        
+        joinLeaveStyleProvider.challengeUpdatedProperty.signal.observeValues { _ in
+            self.reloadChallenge(challenge: self.challengeProperty.value)
+        }
     }
     
     func setupInfo() {
         challengeProperty.signal.observeValues { (challenge) in
             let infoItem = ChallengeFixedSizeDataSourceItem<ChallengeDetailInfoTableViewCell>(challenge, identifier: "info")
             let creatorItem = ChallengeFixedSizeDataSourceItem<ChallengeCreatorTableViewCell>(challenge, identifier: "creator")
-            let categoryItem = ChallengeFixedSizeDataSourceItem<ChallengeCategoriesTableViewCell>(challenge, identifier: "categories")
+            let categoryItem = ChallengeResizableFixedSizeDataSourceItem<ChallengeCategoriesTableViewCell>(challenge, resizingDelegate: self, identifier: "categories")
             let descriptionItem = ChallengeResizableFixedSizeDataSourceItem<ChallengeDescriptionTableViewCell>(challenge, resizingDelegate: self, identifier: "description")
             
             let infoSection = FixedSizeDataSourceSection()
@@ -159,7 +170,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             
         })
         
-        ownedChallengeSignal.observeValues { (challenge) in
+        ownedChallengeSignal.observeValues { _ in
             self.doubleEndButtonItemProperty.value = DoubleButtonFixedSizeDataSourceItem(identifier: "endButton", leftAttributeProvider: self.joinLeaveStyleProvider, leftInputs: self.joinLeaveStyleProvider, rightAttributeProvider: self.endChallengeStyleProvider, rightInputs: self.endChallengeStyleProvider)
         }
         ownedChallengeSignal.filter(isChallengePublished(_:)).observeValues { _ in
@@ -169,7 +180,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             self.mainButtonItemProperty.value = ButtonCellFixedSizeDataSourceItem(attributeProvider: self.publishStyleProvider, inputs: self.publishStyleProvider, identifier: "mainButton")
         }
         
-        unownedChallengeSignal.observeValues { (challenge) in
+        unownedChallengeSignal.observeValues { _ in
             self.doubleEndButtonItemProperty.value = nil
         }
         unownedChallengeSignal.filter(isChallengeJoinable(challenge:)).observeValues { _ in
@@ -183,6 +194,20 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     }
     
     func reloadChallenge(challenge: Challenge) {
+        loadFromStorage(challenge)
+        HRPGManager.shared().fetch(challenge, onSuccess: {
+            self.loadFromStorage(challenge)
+            self.reloadChallengeTasks(challenge: challenge)
+        }, onError: {})
+    }
+    
+    func reloadChallengeTasks(challenge: Challenge) {
+        HRPGManager.shared().fetchChallengeTasks(challenge, onSuccess: {[weak self] () in
+            self?.setChallenge(challenge)
+            }, onError: nil)
+    }
+    
+    func loadFromStorage(_ challenge: Challenge) {
         if let challengeId = challenge.id {
             let entity = NSEntityDescription.entity(forEntityName: "Challenge", in: HRPGManager.shared().getManagedObjectContext())
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
@@ -195,17 +220,10 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
                 if challenges.count > 0 {
                     let loadedChallenge = challenges[0]
                     self.setChallenge(loadedChallenge)
-                    reloadChallengeTasks(challenge: loadedChallenge)
                 }
             } catch {
             }
         }
-    }
-    
-    func reloadChallengeTasks(challenge: Challenge) {
-        HRPGManager.shared().fetchChallengeTasks(challenge, onSuccess: {[weak self] () in
-            self?.setChallenge(challenge)
-            }, onError: nil)
     }
     
     // MARK: Resizing delegate
