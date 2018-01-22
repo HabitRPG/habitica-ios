@@ -11,8 +11,8 @@ import SwiftyStoreKit
 import Keys
 import Crashlytics
 
-class PurchaseHandler {
-    static let shared = PurchaseHandler()
+class PurchaseHandler: NSObject {
+    @objc static let shared = PurchaseHandler()
 
     static let IAPIdentifiers = ["com.habitrpg.ios.Habitica.4gems", "com.habitrpg.ios.Habitica.21gems",
                               "com.habitrpg.ios.Habitica.42gems", "com.habitrpg.ios.Habitica.84gems"
@@ -21,7 +21,8 @@ class PurchaseHandler {
     private let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
     private let appleValidator: AppleReceiptValidator
 
-    private init() {
+    private var hasCompletionHandler = false
+    override private init() {
         #if DEBUG
             appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
         #else
@@ -29,7 +30,12 @@ class PurchaseHandler {
         #endif
     }
     
+    @objc
     func completionHandler() {
+        if hasCompletionHandler {
+            return
+        }
+        hasCompletionHandler = true
         SwiftyStoreKit.completeTransactions(atomically: false) { products in
             print(String(describing: products))
             SwiftyStoreKit.fetchReceipt(forceRefresh: false) { result in

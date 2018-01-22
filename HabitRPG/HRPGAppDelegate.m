@@ -42,7 +42,6 @@
     [self.swiftAppDelegate setupLogging];
     [self.swiftAppDelegate setupAnalytics];
     [self.swiftAppDelegate setupPopups];
-    [self.swiftAppDelegate setupPurchaseHandling];
     
     [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UIAlertController class]]] setTintColor:[UIColor purple400]];
 
@@ -103,8 +102,7 @@
 }
 
 - (void)loadContent {
-    NSDate *lastContentFetch =
-    [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetch"];
+    NSDate *lastContentFetch = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetch"];
     NSString *lastContentFetchVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetchVersion"];
     NSString *currentBuildNumber = [[NSBundle mainBundle]
                                     objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
