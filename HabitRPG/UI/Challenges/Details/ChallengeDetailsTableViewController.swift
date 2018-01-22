@@ -29,6 +29,12 @@ class ChallengeDetailsTableViewController: FixedSizeTableViewController {
             self.tableView.reloadData()
         }
         
+        viewModel?.joinLeaveStyleProvider.promptProperty.signal.observeValues({ (prompt) in
+            if let alertController = prompt {
+                self.present(alertController, animated: true, completion: nil)
+            }
+        })
+        
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200

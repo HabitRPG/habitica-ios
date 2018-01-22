@@ -76,6 +76,10 @@
 - (void)fetchChallenges:(void (^)())successBlock
                 onError:(void (^)())errorBlock;
 
+- (void)fetchChallenge:(Challenge *)challenge
+             onSuccess:(void (^)())successBlock
+               onError:(void (^)())errorBlock;
+
 - (void)joinChallenge:(Challenge *)challenge
             onSuccess:(void (^)())successBlock
               onError:(void (^)())errorBlock;
@@ -84,7 +88,6 @@
              keepTasks:(Boolean)keepTasks
             onSuccess:(void (^)())successBlock
               onError:(void (^)())errorBlock;
-
 
 - (void)fetchChallengeTasks:(Challenge *)challenge
              onSuccess:(void (^)())successBlock

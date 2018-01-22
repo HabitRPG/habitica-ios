@@ -11,20 +11,23 @@ import UIKit
 class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigurable {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var caretButton: UIButton!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet var bottomConstraint: NSLayoutConstraint!
     var categories: [String]?
-    var categoryLabels: [UILabel]?
+    var categoryViews: [UIView] = []
     
     private var isExpanded = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        collapse()
     }
     
     func configure(with challenge: Challenge) {
-        
+        categories = challenge.categories?.map { $0.name ?? "" }
+        if isExpanded {
+            self.contentView.removeConstraint(bottomConstraint)
+            addCategories()
+            contentView.updateLayout()
+        }
     }
     
     func addCategories() {
@@ -35,10 +38,12 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
                 contentView.addSubview(label)
                 contentView.addConstraint(NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: aboveView, attribute: .bottom, multiplier: 1, constant: 8))
                 contentView.addConstraint(NSLayoutConstraint(item: label, attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1, constant: 16))
+                categoryViews.append(label)
                 aboveView = label
             }
         }
-        contentView.addConstraint(NSLayoutConstraint(item: aboveView, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1, constant: 8))
+        contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .equal, toItem: aboveView,
+                                                     attribute: .bottom, multiplier: 1, constant: bottomConstraint.constant))
     }
     
     func createCategoryLabel(_ category: String) -> UILabel {
@@ -46,6 +51,7 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
         label.text = "  \(category)  "
         label.textColor = UIColor.gray200()
         label.backgroundColor = UIColor.gray600()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         return label
     }
@@ -53,7 +59,7 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
     func emptyTagLabel() -> UILabel {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
-        label.cornerRadius = 11
+        label.cornerRadius = 8
         return label
     }
     
@@ -61,6 +67,7 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
         rotateCaret()
         
         self.contentView.removeConstraint(bottomConstraint)
+        addCategories()
         
         self.resizingDelegate?.cellResized()
     }
@@ -68,7 +75,12 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
     func collapse() {
         rotateCaret()
         
+        for view in categoryViews {
+            view.removeFromSuperview()
+        }
+        categoryViews = []
         self.contentView.addConstraint(bottomConstraint)
+        self.contentView.updateLayout()
         
         self.resizingDelegate?.cellResized()
     }
