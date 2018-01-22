@@ -15,16 +15,25 @@ class ChallengeDetailsTableViewController: FixedSizeTableViewController {
         super.viewDidLoad()
         
         title = "Details"
+        
+        self.topHeaderNavigationController.setShouldHideTopHeader(true, animated: false)
+        self.topHeaderNavigationController.stopFollowingScrollView()
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
         viewModel?.cellModelsSignal.observeValues({ (sections) in
             self.dataSource.sections = sections
             self.tableView.reloadData()
         })
         
+        viewModel?.reloadTableSignal.observeValues {
+            self.tableView.reloadData()
+        }
+        
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         tableView.tableFooterView = UIView()
+        tableView.register(UINib(nibName: "ChallengeTableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "header")
         
         self.viewModel?.viewDidLoad()
     }
@@ -32,11 +41,34 @@ class ChallengeDetailsTableViewController: FixedSizeTableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.topHeaderNavigationController.shouldHideTopHeader = true
+        self.topHeaderNavigationController.setShouldHideTopHeader(true, animated: false)
         self.topHeaderNavigationController.stopFollowingScrollView()
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let dataSourceSection = dataSource.sections?[section] {
+            if let sectionTitleString = dataSourceSection.title {
+                if let itemCount = dataSourceSection.items?.count {
+                    
+                    let header: ChallengeTableViewHeaderView? = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? ChallengeTableViewHeaderView
+                    
+                    header?.titleLabel.text = sectionTitleString
+                    header?.countLabel.text = "\(itemCount)"
+
+                    return header
+                }
+            }
+        }
+        
+        return nil
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return dataSource.sections?[section].title != nil ? 55 : 0
     }
 }

@@ -71,39 +71,55 @@
 }
 
 - (void)showHeader {
+    [self showHeaderAnimated:YES];
+}
+
+- (void)showHeaderAnimated:(BOOL)animated {
     self.state = HRPGTopHeaderStateVisible;
     CGRect frame = self.backgroundView.frame;
     frame.origin.y = [self bgViewOffset];
     self.headerYPosition = frame.origin.y;
-    [UIView animateWithDuration:0.3
-        delay:0
-        options:UIViewAnimationOptionCurveEaseOut
-        animations:^() {
-            self.backgroundView.frame = frame;
-            [self setNavigationBarColors:0];
-        }
-        completion:^(BOOL completed){
-        }];
+    void(^block)() = ^() {
+        self.backgroundView.frame = frame;
+        [self setNavigationBarColors:0];
+    };
+    if (animated) {
+        [UIView animateWithDuration:0.3
+                              delay:0
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:block
+                         completion:^(BOOL completed){}];
+    } else {
+        block();
+    }
 }
 
 - (void)hideHeader {
+    [self hideHeaderAnimated:YES];
+}
+
+- (void)hideHeaderAnimated:(BOOL)animated {
     self.state = HRPGTopHeaderStateHidden;
     CGRect frame = self.backgroundView.frame;
     frame.origin.y = -frame.size.height;
     self.headerYPosition = frame.origin.y;
-    [UIView animateWithDuration:0.3
-        delay:0
-        options:UIViewAnimationOptionCurveEaseOut
-        animations:^() {
-            self.backgroundView.frame = frame;
-            if (!self.shouldHideTopHeader) {
-                [self setNavigationBarColors:1];
-            } else {
-                [self setNavigationBarColors:0];
-            }
+    void(^block)() = ^() {
+        self.backgroundView.frame = frame;
+        if (!self.shouldHideTopHeader) {
+            [self setNavigationBarColors:1];
+        } else {
+            [self setNavigationBarColors:0];
         }
-        completion:^(BOOL completed){
-        }];
+    };
+    if (animated) {
+        [UIView animateWithDuration:0.3
+                              delay:0
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:block
+                         completion:^(BOOL completed){}];
+    } else {
+        block();
+    }
 }
 
 - (void)startFollowingScrollView:(UIScrollView *)scrollView {
@@ -236,7 +252,7 @@
     return YES;
 }
 
-- (void)setShouldHideTopHeader:(BOOL)shouldHideTopHeader{
+- (void)setShouldHideTopHeader:(BOOL)shouldHideTopHeader animated:(BOOL)animated {
     if (_shouldHideTopHeader != shouldHideTopHeader) {
         _shouldHideTopHeader = shouldHideTopHeader;
         if (shouldHideTopHeader) {
@@ -247,6 +263,10 @@
             [self.view layoutIfNeeded];
         }
     }
+}
+
+- (void)setShouldHideTopHeader:(BOOL)shouldHideTopHeader{
+    [self setShouldHideTopHeader:shouldHideTopHeader animated:YES];
 }
 
 @end

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ChallengeTableViewHeaderView" customModule="Habitica" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="265" height="55"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1G-xY-Iba">
+                    <rect key="frame" x="16" y="27" width="37.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvP-rR-Wme">
+                    <rect key="frame" x="61.5" y="26" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="22" id="X08-zy-JeO"/>
+                        <constraint firstAttribute="height" constant="22" id="gjH-J8-DRb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="V1G-xY-Iba" secondAttribute="bottom" constant="7" id="asm-og-WQC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="xvP-rR-Wme" secondAttribute="bottom" constant="7" id="bkZ-66-B2P"/>
+                <constraint firstItem="V1G-xY-Iba" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="27" id="fNM-TZ-gbE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xvP-rR-Wme" secondAttribute="trailing" priority="750" constant="9" id="rB1-gM-V43"/>
+                <constraint firstItem="V1G-xY-Iba" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="urh-ml-oTY"/>
+                <constraint firstItem="xvP-rR-Wme" firstAttribute="leading" secondItem="V1G-xY-Iba" secondAttribute="trailing" constant="8" id="ws8-SL-2Pe"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="countLabel" destination="xvP-rR-Wme" id="utS-eL-5FA"/>
+                <outlet property="titleLabel" destination="V1G-xY-Iba" id="hjy-yL-i0l"/>
+            </connections>
+            <point key="canvasLocation" x="-318.5" y="-258.5"/>
+        </view>
+    </objects>
+</document>

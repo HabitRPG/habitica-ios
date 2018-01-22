@@ -163,6 +163,9 @@
 		49DCECA91F96F8DE00982E99 /* ChallengeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECA81F96F8DE00982E99 /* ChallengeDetailViewModel.swift */; };
 		49DCECE81F9A843E00982E99 /* FixedSizeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECE71F9A843E00982E99 /* FixedSizeTableViewController.swift */; };
 		49DCECEA1F9A84AF00982E99 /* ChallengeDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECE91F9A84AF00982E99 /* ChallengeDetailsTableViewController.swift */; };
+		49E3784F200912BA00E0DA3D /* ResizableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3784E200912BA00E0DA3D /* ResizableTableViewCell.swift */; };
+		49E378512009540500E0DA3D /* ChallengeTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E378502009540500E0DA3D /* ChallengeTableViewHeaderView.swift */; };
+		49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E378522009542C00E0DA3D /* ChallengeTableViewHeaderView.xib */; };
 		49E6F57D1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6F57B1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.swift */; };
 		49E6F57E1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */; };
 		823F7132DD74058859184F61 /* Pods_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */; };
@@ -640,6 +643,9 @@
 		49DCECA81F96F8DE00982E99 /* ChallengeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailViewModel.swift; sourceTree = "<group>"; };
 		49DCECE71F9A843E00982E99 /* FixedSizeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FixedSizeTableViewController.swift; path = HabitRPG/TableViewController/FixedSizeTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		49DCECE91F9A84AF00982E99 /* ChallengeDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailsTableViewController.swift; sourceTree = "<group>"; };
+		49E3784E200912BA00E0DA3D /* ResizableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableTableViewCell.swift; sourceTree = "<group>"; };
+		49E378502009540500E0DA3D /* ChallengeTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewHeaderView.swift; sourceTree = "<group>"; };
+		49E378522009542C00E0DA3D /* ChallengeTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTableViewHeaderView.xib; sourceTree = "<group>"; };
 		49E6F57B1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleButtonTableViewCell.swift; sourceTree = "<group>"; };
 		49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleButtonTableViewCell.xib; sourceTree = "<group>"; };
 		98A4DBEE1B643BC100A9E2A8 /* HRPGSearchDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSearchDataManager.h; sourceTree = "<group>"; };
@@ -1413,12 +1419,15 @@
 				498E4CF61FA17B7F006933FF /* ChallengeButtonTableViewCell.xib */,
 				498E4CF91FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift */,
 				498E4CFA1FA17B9E006933FF /* ChallengeCreatorTableViewCell.xib */,
-				498E4CFD1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift */,
-				498E4CFE1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib */,
 				498E4D011FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift */,
 				498E4D021FA17C31006933FF /* ChallengeDescriptionTableViewCell.xib */,
 				498E4D051FA17DB9006933FF /* ChallengeActionsTableViewCell.swift */,
 				498E4D061FA17DB9006933FF /* ChallengeActionsTableViewCell.xib */,
+				49E3784E200912BA00E0DA3D /* ResizableTableViewCell.swift */,
+				498E4CFD1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift */,
+				498E4CFE1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib */,
+				49E378502009540500E0DA3D /* ChallengeTableViewHeaderView.swift */,
+				49E378522009542C00E0DA3D /* ChallengeTableViewHeaderView.xib */,
 			);
 			path = Challenges;
 			sourceTree = "<group>";
@@ -2603,6 +2612,7 @@
 				2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
 				293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */,
+				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
@@ -3032,6 +3042,7 @@
 				D9E46B091DABE97200E390D7 /* SpecialItems+CoreDataClass.m in Sources */,
 				29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */,
 				D903B7891DCA2BE6001F2893 /* HRPGNotification.m in Sources */,
+				49E3784F200912BA00E0DA3D /* ResizableTableViewCell.swift in Sources */,
 				D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */,
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
 				2986EB0B1FCC63F900B316F6 /* AttributePointsViewController.swift in Sources */,
@@ -3210,6 +3221,7 @@
 				D9BBF32C1DBD127A00C4114C /* HRPGShopAdFooter.m in Sources */,
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,
 				29E16315200E629800685640 /* QuestProgressBarView.swift in Sources */,
+				49E378512009540500E0DA3D /* ChallengeTableViewHeaderView.swift in Sources */,
 				D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */,
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
 				493ECBCB1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift in Sources */,

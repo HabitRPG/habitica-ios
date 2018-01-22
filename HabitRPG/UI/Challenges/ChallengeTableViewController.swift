@@ -64,11 +64,14 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
             self.tableView.contentInset = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
             self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
         }
+        
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 80))
+        
         let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 40))
         searchbar.placeholder = NSLocalizedString("Search", comment: "")
         searchbar.delegate = self
         headerView.addSubview(searchbar)
+        
         let filterView = UIButton(frame: CGRect(x: 0, y: 40, width: self.view.frame.size.width, height: 40))
         filterView.setTitle(NSLocalizedString("Filter", comment: ""), for: .normal)
         filterView.backgroundColor = .gray500()
@@ -84,6 +87,8 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         
         if self.topHeaderNavigationController.shouldHideTopHeader {
             self.topHeaderNavigationController.shouldHideTopHeader = false
+            self.tableView.contentInset = UIEdgeInsets(top: self.topHeaderNavigationController.getContentInset(), left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
+            self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: self.topHeaderNavigationController.getContentInset(), left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
             self.tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
         }
     }
