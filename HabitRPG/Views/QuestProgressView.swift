@@ -82,7 +82,13 @@ class QuestProgressView: UIView {
             carretIconView.tintColor = .white
             carretIconView.image = #imageLiteral(resourceName: "carret_down").withRenderingMode(.alwaysTemplate)
             
-            hideDescription()
+            let userDefaults = UserDefaults()
+            if userDefaults.bool(forKey: "worldBossArtCollapsed") {
+                hideBossArt()
+            }
+            if userDefaults.bool(forKey: "worldBossDescriptionCollapsed") {
+                hideDescription()
+            }
             
             setNeedsUpdateConstraints()
             updateConstraints()
@@ -116,7 +122,9 @@ class QuestProgressView: UIView {
         gradientView.endColor = colorLight
         descriptionSeparator.backgroundColor = colorLight
         questArtSeparator.backgroundColor = colorLight
-        descriptionTextView.attributedText = try? Down(markdownString: quest.notes).toHabiticaAttributedString()
+        let description = try? Down(markdownString: quest.notes).toHabiticaAttributedString()
+        description?.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: description?.length ?? 0))
+        descriptionTextView.attributedText = description
         
         bossArtCarret.tintColor = colorExtraLight
     }
@@ -152,6 +160,9 @@ class QuestProgressView: UIView {
         descriptionTextView.isHidden = false
         superview?.setNeedsLayout()
         superview?.layoutIfNeeded()
+        
+        let userDefaults = UserDefaults()
+        userDefaults.set(false, forKey: "worldBossDescriptionCollapsed")
     }
     
     private func hideDescription() {
@@ -159,6 +170,9 @@ class QuestProgressView: UIView {
         descriptionTextView.isHidden = true
         superview?.setNeedsLayout()
         superview?.layoutIfNeeded()
+        
+        let userDefaults = UserDefaults()
+        userDefaults.set(true, forKey: "worldBossDescriptionCollapsed")
     }
     
     @objc
@@ -174,12 +188,18 @@ class QuestProgressView: UIView {
         bossArtCarret.image = #imageLiteral(resourceName: "carret_down").withRenderingMode(.alwaysTemplate)
         questImageView.isHidden = false
         gradientView.isHidden = false
+        
+        let userDefaults = UserDefaults()
+        userDefaults.set(false, forKey: "worldBossArtCollapsed")
     }
     
     private func hideBossArt() {
         bossArtCarret.image = #imageLiteral(resourceName: "carret_up").withRenderingMode(.alwaysTemplate)
         questImageView.isHidden = true
         gradientView.isHidden = true
+        
+        let userDefaults = UserDefaults()
+        userDefaults.set(true, forKey: "worldBossArtCollapsed")
     }
     
     @objc

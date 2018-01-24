@@ -85,7 +85,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boss Art" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0P-wy-RMQ" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
-                                    <rect key="frame" x="12" y="0.0" width="417" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="417" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -94,8 +94,8 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Q0P-wy-RMQ" secondAttribute="bottom" id="1ox-zg-itX"/>
-                                <constraint firstItem="Q0P-wy-RMQ" firstAttribute="leading" secondItem="lz0-l1-egF" secondAttribute="leading" constant="12" id="9CK-4f-diA"/>
-                                <constraint firstAttribute="trailing" secondItem="kAf-nG-QPM" secondAttribute="trailing" constant="12" id="Bfa-tr-M1h"/>
+                                <constraint firstItem="Q0P-wy-RMQ" firstAttribute="leading" secondItem="lz0-l1-egF" secondAttribute="leading" id="9CK-4f-diA"/>
+                                <constraint firstAttribute="trailing" secondItem="kAf-nG-QPM" secondAttribute="trailing" id="Bfa-tr-M1h"/>
                                 <constraint firstItem="kAf-nG-QPM" firstAttribute="centerY" secondItem="Q0P-wy-RMQ" secondAttribute="centerY" id="CIi-f2-67A"/>
                                 <constraint firstAttribute="height" id="Tcq-ad-Auq"/>
                                 <constraint firstItem="Q0P-wy-RMQ" firstAttribute="top" secondItem="lz0-l1-egF" secondAttribute="top" id="XZ7-Wq-9s2"/>
@@ -154,7 +154,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="World Boss Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfF-U7-UKb" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
-                                    <rect key="frame" x="12" y="0.0" width="417" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="417" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -162,11 +162,11 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="zQP-j3-PiL" secondAttribute="trailing" constant="12" id="Uxe-Jw-XFx"/>
+                                <constraint firstAttribute="trailing" secondItem="zQP-j3-PiL" secondAttribute="trailing" id="Uxe-Jw-XFx"/>
                                 <constraint firstAttribute="bottom" secondItem="MfF-U7-UKb" secondAttribute="bottom" id="X6b-sS-STI"/>
                                 <constraint firstAttribute="height" id="Xvm-GH-6LG"/>
                                 <constraint firstItem="zQP-j3-PiL" firstAttribute="leading" secondItem="MfF-U7-UKb" secondAttribute="trailing" constant="8" id="bTw-LE-XTf"/>
-                                <constraint firstItem="MfF-U7-UKb" firstAttribute="leading" secondItem="puO-aa-kJS" secondAttribute="leading" constant="12" id="gmS-Ol-qXf"/>
+                                <constraint firstItem="MfF-U7-UKb" firstAttribute="leading" secondItem="puO-aa-kJS" secondAttribute="leading" id="gmS-Ol-qXf"/>
                                 <constraint firstItem="zQP-j3-PiL" firstAttribute="centerY" secondItem="MfF-U7-UKb" secondAttribute="centerY" id="lEk-Px-1sZ"/>
                                 <constraint firstItem="MfF-U7-UKb" firstAttribute="top" secondItem="puO-aa-kJS" secondAttribute="top" id="sQY-jS-X0A"/>
                             </constraints>
