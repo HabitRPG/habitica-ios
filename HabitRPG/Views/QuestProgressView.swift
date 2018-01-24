@@ -103,10 +103,10 @@ class QuestProgressView: UIView {
         }
         HRPGManager.shared().setImage("quest_" + quest.key, withFormat: "gif", on: questImageView)
         
-        let colorDark = UIColor.init(quest.colorDark ?? "", defaultColor: UIColor.clear)
-        let colorMedium = UIColor.init(quest.colorMedium ?? "", defaultColor: UIColor.clear)
-        let colorLight = UIColor.init(quest.colorLight ?? "", defaultColor: UIColor.clear)
-        let colorExtraLight = UIColor.init(quest.colorExtraLight ?? "", defaultColor: UIColor.clear)
+        let colorDark = quest.uicolorDark
+        let colorMedium = quest.uicolorMedium
+        let colorLight = quest.uicolorLight
+        let colorExtraLight = quest.uicolorExtraLight
         self.backgroundView.image = HabiticaIcons.imageOfQuestBackground(bossColorDark: colorDark,
                                                                          bossColorMedium: colorMedium,
                                                                          bossColorLight: colorExtraLight)
@@ -184,7 +184,7 @@ class QuestProgressView: UIView {
     
     @objc
     func rageStrikeButtonTapped() {
-        let alertController = HabiticaAlertController.alert(title: NSLocalizedString("What's a Rage Strike?", comment: ""), message: NSLocalizedString("", comment: ""))
+        let alertController = HabiticaAlertController.alert(title: NSLocalizedString("What's a Rage Strike?", comment: ""), message: NSLocalizedString("There are 3 potential Rage Strikes\nThis gauge fills when Habiticans miss their Dailies. If it fills up, the DysHeartener will unleash its Shattering Heartbreak attack on one of Habitica's shopkeepers, so be sure to do your tasks!", comment: ""))
         alertController.titleBackgroundColor = UIColor.orange50()
         alertController.addCloseAction()
         alertController.show()

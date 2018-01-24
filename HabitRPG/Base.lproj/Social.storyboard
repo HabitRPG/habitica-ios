@@ -2814,6 +2814,7 @@ Invite friends now to earn a Quest Scroll!</string>
                         <outlet property="questProgressView" destination="Tec-cM-iOQ" id="UtX-Su-rUP"/>
                         <outlet property="tavernHeaderView" destination="Rbl-0s-XZ1" id="1rZ-AP-xCd"/>
                         <outlet property="worldBossStackView" destination="ZjB-q3-Y3D" id="wAx-1v-P09"/>
+                        <outlet property="worldBossTitleView" destination="GXW-0g-7xG" id="5HP-hW-mcq"/>
                         <segue destination="qim-an-Lm9" kind="show" identifier="GuidelinesSegue" id="9hs-wq-6bn"/>
                     </connections>
                 </viewController>

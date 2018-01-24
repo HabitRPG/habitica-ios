@@ -18,6 +18,7 @@ class TavernDetailViewController: UIViewController {
     @IBOutlet weak var guidelinesStackView: CollapsibleStackView!
     @IBOutlet weak var linksStackView: CollapsibleStackView!
     @IBOutlet weak var questProgressView: QuestProgressView!
+    @IBOutlet weak var worldBossTitleView: CollapsibleTitle!
     
     var group: Group? {
         didSet {
@@ -32,6 +33,20 @@ class TavernDetailViewController: UIViewController {
                 questProgressView.configure(quest: quest)
                 tavernHeaderView.setNotes(NSLocalizedString("Oh dear, pay no heed to the monster below -- this is still a safe haven to chat on your breaks.", comment: ""))
                 questProgressView.isHidden = false
+                
+                
+                worldBossTitleView.infoIconAction = {
+                    let alertController = HabiticaAlertController.alert(title: NSLocalizedString("What’s a World Boss?", comment: ""))
+                    let view = Bundle.main.loadNibNamed("WorldBossDescription", owner: nil, options: nil)?.last as? WorldBossDescriptionView
+                    view?.bossName = quest.bossName
+                    view?.questColorLight = quest.uicolorLight
+                    view?.questColorExtraLight = quest.uicolorExtraLight
+                    alertController.contentView = view
+                    alertController.titleBackgroundColor = quest.uicolorLight
+                    alertController.addCloseAction()
+                    alertController.show()
+                    alertController.titleLabel.textColor = .white
+                }
             } else {
                 questProgressView.isHidden = true
             }
@@ -54,6 +69,9 @@ class TavernDetailViewController: UIViewController {
         guidelinesStackView.isLayoutMarginsRelativeArrangement = true
         linksStackView.layoutMargins = margins
         linksStackView.isLayoutMarginsRelativeArrangement = true
+        
+        worldBossTitleView.hasInfoIcon = true
+        
         configureInnButton()
     }
     

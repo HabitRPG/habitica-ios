@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WorldBossDescriptionView" customModule="Habitica" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="CSh-UK-A6k">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuX-eM-obY">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="76.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="A World Boss is a special event where the whole community works together to take down a powerful monster with their tasks!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRf-Ka-hx1">
+                            <rect key="frame" x="0.0" y="88.5" width="375" height="54"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="w7v-7L-dpj">
+                            <rect key="frame" x="0.0" y="154.5" width="375" height="75.5"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4h-Op-AiH">
+                                    <rect key="frame" x="0.0" y="0.0" width="6" height="75.5"/>
+                                    <subviews>
+                                        <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKu-OA-aNf">
+                                            <rect key="frame" x="0.0" y="34.5" width="6" height="6"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="6" id="S4d-Sx-3b9"/>
+                                                <constraint firstAttribute="height" constant="6" id="jfD-wx-Qzu"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="MKu-OA-aNf" firstAttribute="centerX" secondItem="u4h-Op-AiH" secondAttribute="centerX" id="0ZN-B0-DSu"/>
+                                        <constraint firstItem="MKu-OA-aNf" firstAttribute="centerY" secondItem="u4h-Op-AiH" secondAttribute="centerY" id="uT6-lz-9xO"/>
+                                        <constraint firstAttribute="width" constant="6" id="v9e-O0-SfQ"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete tasks to damage the Boss" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlU-Y5-3k7">
+                                    <rect key="frame" x="14" y="0.0" width="361" height="75.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nFQ-Ms-p8w">
+                            <rect key="frame" x="0.0" y="242" width="375" height="76.5"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4L-7H-uMW">
+                                    <rect key="frame" x="0.0" y="0.0" width="6" height="76.5"/>
+                                    <subviews>
+                                        <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMX-eM-8Bu">
+                                            <rect key="frame" x="0.0" y="34.5" width="6" height="6"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="6" id="4dI-T3-Cdl"/>
+                                                <constraint firstAttribute="width" constant="6" id="mHq-oF-n3f"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="6" id="Qgd-Lt-raR"/>
+                                        <constraint firstItem="aMX-eM-8Bu" firstAttribute="centerX" secondItem="u4L-7H-uMW" secondAttribute="centerX" id="XSR-Ef-RDQ"/>
+                                        <constraint firstItem="aMX-eM-8Bu" firstAttribute="centerY" secondItem="u4L-7H-uMW" secondAttribute="centerY" id="piN-Vt-Wsb"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4S-mj-QE4">
+                                    <rect key="frame" x="14" y="0.0" width="361" height="76.5"/>
+                                    <string key="text">The Boss won’t damage you for missed tasks, but its Rage meter will go up. If the bar fills up, the Boss will attack one of the shopkeepers!</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AVQ-gR-TzR">
+                            <rect key="frame" x="0.0" y="330.5" width="375" height="92.5"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1O-xH-WJI">
+                                    <rect key="frame" x="0.0" y="0.0" width="6" height="92.5"/>
+                                    <subviews>
+                                        <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfD-kL-aXt">
+                                            <rect key="frame" x="0.0" y="42.5" width="6" height="6"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="6" id="Tbb-gL-cpU"/>
+                                                <constraint firstAttribute="height" constant="6" id="guk-33-LDf"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="VfD-kL-aXt" firstAttribute="centerY" secondItem="a1O-xH-WJI" secondAttribute="centerY" id="Djp-XY-nsB"/>
+                                        <constraint firstItem="VfD-kL-aXt" firstAttribute="centerX" secondItem="a1O-xH-WJI" secondAttribute="centerX" id="F26-r1-QJg"/>
+                                        <constraint firstAttribute="width" constant="6" id="xYy-tc-4Lc"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can continue with normal Quest Bosses, damage will apply to both" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhY-Ut-TVP">
+                                    <rect key="frame" x="14" y="0.0" width="361" height="92.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0XT-nZ-FuY">
+                            <rect key="frame" x="0.0" y="435" width="375" height="114.5"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AnC-Xo-ieP">
+                                    <rect key="frame" x="0.0" y="0.0" width="6" height="114.5"/>
+                                    <subviews>
+                                        <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRx-jy-iYi">
+                                            <rect key="frame" x="0.0" y="53.5" width="6" height="6"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="6" id="mwR-5Z-myn"/>
+                                                <constraint firstAttribute="width" constant="6" id="uJE-bi-8Fo"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="6" id="ExJ-dm-tky"/>
+                                        <constraint firstItem="HRx-jy-iYi" firstAttribute="centerX" secondItem="AnC-Xo-ieP" secondAttribute="centerX" id="GgS-1c-biF"/>
+                                        <constraint firstItem="HRx-jy-iYi" firstAttribute="centerY" secondItem="AnC-Xo-ieP" secondAttribute="centerY" id="UYo-vN-bSe"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check the Tavern to see Boss progress and Rage attacks" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQl-fQ-dwa">
+                                    <rect key="frame" x="14" y="0.0" width="361" height="114.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqz-kz-T8L" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="561.5" width="375" height="105.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="CSh-UK-A6k" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="MEp-q5-s0t"/>
+                <constraint firstAttribute="trailing" secondItem="CSh-UK-A6k" secondAttribute="trailing" id="Qvm-4Y-dOH"/>
+                <constraint firstAttribute="bottom" secondItem="CSh-UK-A6k" secondAttribute="bottom" id="hiQ-Dk-CQS"/>
+                <constraint firstItem="CSh-UK-A6k" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zwB-0s-USG"/>
+            </constraints>
+            <connections>
+                <outlet property="actionPromptLabel" destination="rqz-kz-T8L" id="YjT-RO-R9E"/>
+                <outlet property="firstBullet" destination="w7v-7L-dpj" id="TEo-Px-GT9"/>
+                <outlet property="fourthBullet" destination="0XT-nZ-FuY" id="p7o-SM-H7G"/>
+                <outlet property="secondBullet" destination="nFQ-Ms-p8w" id="nmp-54-oSf"/>
+                <outlet property="thirdBullet" destination="AVQ-gR-TzR" id="7Em-Xi-SM0"/>
+                <outlet property="titleView" destination="yuX-eM-obY" id="Lly-fb-0dP"/>
+            </connections>
+        </view>
+    </objects>
+</document>

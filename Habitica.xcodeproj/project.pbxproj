@@ -105,6 +105,9 @@
 		29FC885420175C70002B3D3F /* RageStrikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC885320175C70002B3D3F /* RageStrikeView.swift */; };
 		29FC88562017B840002B3D3F /* CollapsibleTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC88552017B840002B3D3F /* CollapsibleTitle.swift */; };
 		29FC885A2017C039002B3D3F /* CollapsibleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC88592017C039002B3D3F /* CollapsibleStackView.swift */; };
+		29FC885C2018D47D002B3D3F /* Quest-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC885B2018D47D002B3D3F /* Quest-Extensions.swift */; };
+		29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29FC885D2018D858002B3D3F /* WorldBossDescription.xib */; };
+		29FC88602018DB64002B3D3F /* WorldBossDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC885F2018DB64002B3D3F /* WorldBossDescriptionView.swift */; };
 		49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6D1F17DDF9004830D9 /* Shop.storyboard */; };
 		49005B701F17E7AC004830D9 /* Shops.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6F1F17E7AC004830D9 /* Shops.storyboard */; };
 		49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */; };
@@ -547,6 +550,9 @@
 		29FC885320175C70002B3D3F /* RageStrikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageStrikeView.swift; sourceTree = "<group>"; };
 		29FC88552017B840002B3D3F /* CollapsibleTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTitle.swift; sourceTree = "<group>"; };
 		29FC88592017C039002B3D3F /* CollapsibleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleStackView.swift; sourceTree = "<group>"; };
+		29FC885B2018D47D002B3D3F /* Quest-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quest-Extensions.swift"; sourceTree = "<group>"; };
+		29FC885D2018D858002B3D3F /* WorldBossDescription.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorldBossDescription.xib; sourceTree = "<group>"; };
+		29FC885F2018DB64002B3D3F /* WorldBossDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBossDescriptionView.swift; sourceTree = "<group>"; };
 		2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
 		2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC569DB4F5A31ED940986A5 /* Pods-Habitica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.release.xcconfig"; sourceTree = "<group>"; };
@@ -1536,6 +1542,7 @@
 				29F89F191F47882A004E5B84 /* String-Extensions.swift */,
 				29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */,
 				29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */,
+				29FC885B2018D47D002B3D3F /* Quest-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1905,6 +1912,8 @@
 				29FC885320175C70002B3D3F /* RageStrikeView.swift */,
 				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
 				29FC88592017C039002B3D3F /* CollapsibleStackView.swift */,
+				29FC885D2018D858002B3D3F /* WorldBossDescription.xib */,
+				29FC885F2018DB64002B3D3F /* WorldBossDescriptionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2517,6 +2526,7 @@
 				293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
+				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
@@ -2982,6 +2992,7 @@
 				49DCB7B61F3F64B40079FDD0 /* HRPGShopModalBgView.swift in Sources */,
 				29E1631B200E84AC00685640 /* TavernViewController.swift in Sources */,
 				D9BB45D11E7713E80002AE2E /* ChallengeTask+CoreDataClass.m in Sources */,
+				29FC885C2018D47D002B3D3F /* Quest-Extensions.swift in Sources */,
 				D9525F981E5F405400C529B8 /* Challenge+CoreDataClass.m in Sources */,
 				D98F5DDA1C6E17280035CBEC /* HRPGQuestGroupTableViewController.m in Sources */,
 				D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */,
@@ -3064,6 +3075,7 @@
 				D9D0451C1C2B1AEC00630244 /* Reminder.m in Sources */,
 				D94FEDEB1BB314B10046A52E /* HRPGGroupFormViewController.m in Sources */,
 				D97ED0B21E6DE3BF006C2A26 /* LeaveChallengeInteractor.swift in Sources */,
+				29FC88602018DB64002B3D3F /* WorldBossDescriptionView.swift in Sources */,
 				D95CBD481BBC0EDA002F4498 /* UIView+Pulse.m in Sources */,
 				D96C85481DCCD8BC003E3616 /* UIWindow+VisibleController.m in Sources */,
 				29FC885220134A8F002B3D3F /* PurchaseHandler.swift in Sources */,

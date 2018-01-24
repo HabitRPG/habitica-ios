@@ -49,7 +49,7 @@ class RageStrikeView: UIView {
         if isActive {
             
         } else {
-            let alertController = HabiticaAlertController.alert(title: NSLocalizedString("Pending Strike", comment: ""), message: NSLocalizedString("", comment: ""))
+            let alertController = HabiticaAlertController.alert(title: NSLocalizedString("Pending Strike", comment: ""), message: NSLocalizedString("The DysHeartener attacks!\nThe World Boss will lash out and attack one of our friendly shopkeepers once its rage bar fills. Keep up with your Dailies to try and prevent it from happening!", comment: ""))
             alertController.titleBackgroundColor = UIColor.orange50()
             alertController.addCloseAction()
             alertController.show()
