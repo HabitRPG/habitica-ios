@@ -149,12 +149,10 @@
         <attribute name="questKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="questLeader" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="questRage" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="rageStrikes" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unreadMessages" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="worldDmgMarket" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="worldDmgStable" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="worldDmgTavern" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="challenges" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Challenge" inverseName="group" inverseEntity="Challenge" syncable="YES"/>
         <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ChatMessage" inverseName="group" inverseEntity="ChatMessage" syncable="YES"/>
         <relationship name="collectStatus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestCollect" inverseName="group" inverseEntity="QuestCollect" syncable="YES"/>
@@ -562,7 +560,7 @@
         <element name="Flags" positionX="9" positionY="153" width="128" height="270"/>
         <element name="Food" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Gear" positionX="0" positionY="0" width="128" height="300"/>
-        <element name="Group" positionX="0" positionY="0" width="128" height="420"/>
+        <element name="Group" positionX="0" positionY="0" width="128" height="390"/>
         <element name="HatchingPotion" positionX="0" positionY="0" width="128" height="60"/>
         <element name="ImprovementCategory" positionX="0" positionY="0" width="128" height="90"/>
         <element name="InAppReward" positionX="18" positionY="162" width="128" height="180"/>

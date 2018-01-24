@@ -22,9 +22,6 @@
 @property(nonatomic, retain) NSString *questLeader;
 @property(nonatomic, retain) NSNumber *questRage;
 @property(nonatomic, retain) NSString *questKey;
-@property(nonatomic, retain) NSNumber *worldDmgTavern;
-@property(nonatomic, retain) NSNumber *worldDmgStable;
-@property(nonatomic, retain) NSNumber *worldDmgMarket;
 @property(nonatomic, retain) NSNumber *unreadMessages;
 @property(nonatomic, retain) NSString *type;
 @property(nonatomic, retain) NSOrderedSet *chatmessages;
@@ -35,6 +32,10 @@
 @property(nonatomic, retain) NSNumber *isMember;
 @property(nonatomic, retain) NSNumber *memberCount;
 @property(nonatomic, retain) NSNumber *balance;
+@property(readonly) NSDictionary<NSString *, NSNumber *> *rageStrikes;
+@property(readonly) NSUInteger rageStrikeCount;
+@property(readonly) NSUInteger totalRageStrikes;
+
 @end
 
 @interface Group (CoreDataGeneratedAccessors)

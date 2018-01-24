@@ -39,11 +39,18 @@ class HabiticaAlertController: UIViewController {
         }
     }
     
+    var titleBackgroundColor: UIColor = .white {
+        didSet {
+            configureTitleView()
+        }
+    }
+    
     var message: String? {
         didSet {
             if message == nil || self.view == nil {
                 return
             }
+            titleBackgroundColor = .white
             configureMessageView()
         }
     }
@@ -174,6 +181,9 @@ class HabiticaAlertController: UIViewController {
             titleLabelTopMargin.constant = 12
             titleLabelBottomMargin.constant = 12
         }
+        if titleLabelBackground != nil {
+            titleLabelBackground.backgroundColor = titleBackgroundColor
+        }
     }
     
     private func configureMessageView() {
@@ -187,7 +197,6 @@ class HabiticaAlertController: UIViewController {
         label.textColor = UIColor.gray100()
         label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         contentView = label
-        titleLabelBackground.backgroundColor = .white
     }
     
     private func configureContentView() {
@@ -282,6 +291,11 @@ extension HabiticaAlertController {
     @objc
     func addCancelAction(handler: ((UIButton) -> Void)? = nil) {
         self.addAction(title: NSLocalizedString("Cancel", comment: ""), handler: handler)
+    }
+    
+    @objc
+    func addCloseAction(handler: ((UIButton) -> Void)? = nil) {
+        self.addAction(title: NSLocalizedString("Close", comment: ""), handler: handler)
     }
     
     @objc

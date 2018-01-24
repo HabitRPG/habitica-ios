@@ -13,9 +13,10 @@ class TavernDetailViewController: UIViewController {
     @IBOutlet weak var tavernHeaderView: HRPGShopBannerView!
     
     @IBOutlet weak var innButton: UIButton!
-    @IBOutlet weak var innStackView: UIStackView!
-    @IBOutlet weak var guidelinesStackView: UIStackView!
-    @IBOutlet weak var linksStackView: UIStackView!
+    @IBOutlet weak var worldBossStackView: CollapsibleStackView!
+    @IBOutlet weak var innStackView: CollapsibleStackView!
+    @IBOutlet weak var guidelinesStackView: CollapsibleStackView!
+    @IBOutlet weak var linksStackView: CollapsibleStackView!
     @IBOutlet weak var questProgressView: QuestProgressView!
     
     var group: Group? {
@@ -29,6 +30,7 @@ class TavernDetailViewController: UIViewController {
         didSet {
             if let quest = self.quest {
                 questProgressView.configure(quest: quest)
+                tavernHeaderView.setNotes(NSLocalizedString("Oh dear, pay no heed to the monster below -- this is still a safe haven to chat on your breaks.", comment: ""))
                 questProgressView.isHidden = false
             } else {
                 questProgressView.isHidden = true
@@ -43,7 +45,9 @@ class TavernDetailViewController: UIViewController {
         tavernHeaderView.setSprites(identifier: "tavern")
         tavernHeaderView.setNotes(NSLocalizedString("Welcome to the Inn! Pull up a chair to chat, or take a break from your tasks.", comment: ""))
         
-        let margins = UIEdgeInsets(top: 20, left: 16, bottom: 20, right: 16)
+        let margins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        worldBossStackView.layoutMargins = margins
+        worldBossStackView.isLayoutMarginsRelativeArrangement = true
         innStackView.layoutMargins = margins
         innStackView.isLayoutMarginsRelativeArrangement = true
         guidelinesStackView.layoutMargins = margins
@@ -51,6 +55,13 @@ class TavernDetailViewController: UIViewController {
         linksStackView.layoutMargins = margins
         linksStackView.isLayoutMarginsRelativeArrangement = true
         configureInnButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //workaround to get the view to size correctly.
+        worldBossStackView.isCollapsed = worldBossStackView.isCollapsed
     }
     
     @IBAction func innButtonTapped(_ sender: Any) {

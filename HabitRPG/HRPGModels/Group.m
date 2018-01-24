@@ -19,9 +19,6 @@
 @dynamic questLeader;
 @dynamic questRage;
 @dynamic questKey;
-@dynamic worldDmgTavern;
-@dynamic worldDmgStable;
-@dynamic worldDmgMarket;
 @dynamic unreadMessages;
 @dynamic type;
 @dynamic chatmessages;
@@ -32,6 +29,7 @@
 @dynamic isMember;
 @dynamic memberCount;
 @dynamic balance;
+@dynamic rageStrikes;
 
 - (void)addChatmessagesObject:(ChatMessage *)value {
     NSMutableOrderedSet *tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.chatmessages];
@@ -59,6 +57,20 @@
         [self setPrimitiveValue:type forKey:@"type"];
         [self didChangeValueForKey:@"type"];
     }
+}
+
+- (NSUInteger)rageStrikeCount {
+    NSUInteger count = 0;
+    for (NSNumber *isActive in self.rageStrikes.allValues) {
+        if (isActive.boolValue) {
+            count += 1;
+        }
+    }
+    return count;
+}
+
+- (NSUInteger)totalRageStrikes {
+    return self.rageStrikes.count;
 }
 
 @end

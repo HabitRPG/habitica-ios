@@ -102,6 +102,9 @@
 		29FC884C2010CC8A002B3D3F /* SocialRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884B2010CC8A002B3D3F /* SocialRepository.swift */; };
 		29FC884E2010CCC2002B3D3F /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
 		29FC885220134A8F002B3D3F /* PurchaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC885120134A8F002B3D3F /* PurchaseHandler.swift */; };
+		29FC885420175C70002B3D3F /* RageStrikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC885320175C70002B3D3F /* RageStrikeView.swift */; };
+		29FC88562017B840002B3D3F /* CollapsibleTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC88552017B840002B3D3F /* CollapsibleTitle.swift */; };
+		29FC885A2017C039002B3D3F /* CollapsibleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC88592017C039002B3D3F /* CollapsibleStackView.swift */; };
 		49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6D1F17DDF9004830D9 /* Shop.storyboard */; };
 		49005B701F17E7AC004830D9 /* Shops.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6F1F17E7AC004830D9 /* Shops.storyboard */; };
 		49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */; };
@@ -287,7 +290,6 @@
 		D98F5DD11C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */; };
 		D98F5DD71C6CFFC60035CBEC /* HRPGPartyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DD61C6CFFC60035CBEC /* HRPGPartyTableViewController.m */; };
 		D98F5DDA1C6E17280035CBEC /* HRPGQuestGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DD91C6E17280035CBEC /* HRPGQuestGroupTableViewController.m */; };
-		D98F5DDD1C6E1D030035CBEC /* HRPGTavernTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DDC1C6E1D030035CBEC /* HRPGTavernTableViewController.m */; };
 		D994B1491AD9177D008AE188 /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = D994B1481AD9177D008AE188 /* UIView+Screenshot.m */; };
 		D995D5961D1D499D00D5251C /* PushNotifications+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D995D5931D1D499D00D5251C /* PushNotifications+CoreDataProperties.m */; };
 		D995D5971D1D499D00D5251C /* PushNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = D995D5951D1D499D00D5251C /* PushNotifications.m */; };
@@ -373,7 +375,7 @@
 		D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */; };
 		D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */; };
 		D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */; };
-		D9D17CD41E68995000AD9232 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		D9D17CD41E68995000AD9232 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */; };
 		D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */; };
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
@@ -542,6 +544,9 @@
 		29FC884D2010CCC2002B3D3F /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
 		29FC885020121771002B3D3F /* Habitica 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 2.xcdatamodel"; sourceTree = "<group>"; };
 		29FC885120134A8F002B3D3F /* PurchaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHandler.swift; sourceTree = "<group>"; };
+		29FC885320175C70002B3D3F /* RageStrikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageStrikeView.swift; sourceTree = "<group>"; };
+		29FC88552017B840002B3D3F /* CollapsibleTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTitle.swift; sourceTree = "<group>"; };
+		29FC88592017C039002B3D3F /* CollapsibleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleStackView.swift; sourceTree = "<group>"; };
 		2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
 		2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC569DB4F5A31ED940986A5 /* Pods-Habitica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.release.xcconfig"; sourceTree = "<group>"; };
@@ -874,8 +879,6 @@
 		D98F5DD61C6CFFC60035CBEC /* HRPGPartyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPartyTableViewController.m; sourceTree = "<group>"; };
 		D98F5DD81C6E17280035CBEC /* HRPGQuestGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGQuestGroupTableViewController.h; sourceTree = "<group>"; };
 		D98F5DD91C6E17280035CBEC /* HRPGQuestGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGQuestGroupTableViewController.m; sourceTree = "<group>"; };
-		D98F5DDB1C6E1D030035CBEC /* HRPGTavernTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTavernTableViewController.h; sourceTree = "<group>"; };
-		D98F5DDC1C6E1D030035CBEC /* HRPGTavernTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTavernTableViewController.m; sourceTree = "<group>"; };
 		D994B1471AD9177D008AE188 /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Screenshot.h"; path = "HabitRPG/Utilities/UIView+Screenshot.h"; sourceTree = SOURCE_ROOT; };
 		D994B1481AD9177D008AE188 /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Screenshot.m"; path = "HabitRPG/Utilities/UIView+Screenshot.m"; sourceTree = SOURCE_ROOT; };
 		D995D5921D1D499D00D5251C /* PushNotifications+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PushNotifications+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -1455,8 +1458,6 @@
 			isa = PBXGroup;
 			children = (
 				D9D593551D004CB400D6C388 /* Inbox */,
-				D98F5DDB1C6E1D030035CBEC /* HRPGTavernTableViewController.h */,
-				D98F5DDC1C6E1D030035CBEC /* HRPGTavernTableViewController.m */,
 				D98F5DBF1C6A1DA60035CBEC /* HRPGGroupTableViewController.h */,
 				D98F5DC01C6A1DA60035CBEC /* HRPGGroupTableViewController.m */,
 				D98F5DD81C6E17280035CBEC /* HRPGQuestGroupTableViewController.h */,
@@ -1901,6 +1902,9 @@
 				29E16316200E632200685640 /* QuestProgressBarView.xib */,
 				29E16310200E5FEA00685640 /* QuestProgressView.xib */,
 				29E16312200E619400685640 /* QuestProgressView.swift */,
+				29FC885320175C70002B3D3F /* RageStrikeView.swift */,
+				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
+				29FC88592017C039002B3D3F /* CollapsibleStackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2511,12 +2515,12 @@
 				2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */,
 				D90EA03719D60421001EABE4 /* HabitIntro.png in Resources */,
 				293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
+				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
+				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
 				29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */,
@@ -3021,6 +3025,7 @@
 				D905D08F1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m in Sources */,
 				49DCB7B21F3E6D400079FDD0 /* HRPGSingleOptionModalViewController.swift in Sources */,
 				D91CCACD1BCD9068001C6A0C /* HRPGHoledView.m in Sources */,
+				29FC885420175C70002B3D3F /* RageStrikeView.swift in Sources */,
 				D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */,
 				D9D9EF981D54E51C00FC89C1 /* HRPGQRCodeView.m in Sources */,
 				D9E46B031DABCD9100E390D7 /* Buff+CoreDataClass.m in Sources */,
@@ -3082,6 +3087,7 @@
 				2957B8A91F4B071700E836EF /* InAppReward+CoreDataProperties.m in Sources */,
 				D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */,
 				D9CE90411E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.m in Sources */,
+				29FC88562017B840002B3D3F /* CollapsibleTitle.swift in Sources */,
 				298119AB1F50251300F9FB39 /* InventoryRepository.swift in Sources */,
 				29E162E5200227AA00685640 /* HRPGUIViewController.m in Sources */,
 				D9A28F721B08DF58002907E0 /* HRPGPurchaseButton.m in Sources */,
@@ -3140,7 +3146,6 @@
 				D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */,
 				D98C62BC1DACF933005661CC /* HRPGSpellUserTableViewController.m in Sources */,
 				D995D59A1D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m in Sources */,
-				D98F5DDD1C6E1D030035CBEC /* HRPGTavernTableViewController.m in Sources */,
 				D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */,
 				D9AEF8E41CE4CCA5006914CB /* HRPGURLParser.m in Sources */,
 				D9525F9B1E5F559600C529B8 /* ChallengeTableViewCell.swift in Sources */,
@@ -3199,6 +3204,7 @@
 				29B388DF1EEF4FBD00A72950 /* MorningNotification.swift in Sources */,
 				D97C71E718F32FED0089FDC6 /* Potion.m in Sources */,
 				D9B5C0E418D610E300C8D1B7 /* HRPGTaskResponse.m in Sources */,
+				29FC885A2017C039002B3D3F /* CollapsibleStackView.swift in Sources */,
 				D98F5DD71C6CFFC60035CBEC /* HRPGPartyTableViewController.m in Sources */,
 				D98AD5511943904F00AF6174 /* HatchingPotion.m in Sources */,
 				D97C71F018F32FEF0089FDC6 /* MetaReward.m in Sources */,
