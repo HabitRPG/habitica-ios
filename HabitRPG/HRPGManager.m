@@ -795,6 +795,7 @@ NSString *currentUser;
         @"contributor.contributions" : @"contributions",
         @"party.order" : @"partyOrder",
         @"party._id" : @"partyID",
+        @"party.quest.progress.up" : @"pendingDamage",
         @"items.pets" : @"petCountArray",
         @"purchased" : @"customizationsDictionary",
         @"invitations.party.id" : @"invitedParty",

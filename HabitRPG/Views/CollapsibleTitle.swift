@@ -69,7 +69,7 @@ class CollapsibleTitle: UILabel, UIGestureRecognizerDelegate {
     }
     
     override func layoutSubviews() {
-        carretIconView.frame = CGRect(x: bounds.size.width-24, y: bounds.size.height/2-12, width: 24, height: 24)
+        carretIconView.frame = CGRect(x: bounds.size.width-40, y: bounds.size.height/2-12, width: 24, height: 24)
         if let iconView = infoIconView {
             iconView.frame = CGRect(x: intrinsicContentSize.width+8, y: 0, width: 18, height: bounds.size.height)
         }

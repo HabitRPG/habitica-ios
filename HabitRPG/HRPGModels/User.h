@@ -76,6 +76,7 @@
 @property(nonatomic, retain) NSNumber *needsCron;
 @property(nonatomic, retain) NSNumber *loginIncentives;
 @property(nonatomic, retain) NSNumber *pointsToAllocate;
+@property(nonatomic, retain) NSNumber *pendingDamage;
 
 @property(nonatomic, retain) Preferences *preferences;
 @property(nonatomic, retain) Outfit *costume;

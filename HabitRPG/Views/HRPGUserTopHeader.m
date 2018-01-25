@@ -169,7 +169,7 @@ NSInteger rowOffset = 16;
         self.magicLabel.isActive = NO;
         self.magicLabel.value = @0;
         if (reachedLevelTen) {
-            self.magicLabel.labelView.text = NSLocalizedString(@"Unlocks after selecting a class", nil);
+            self.magicLabel = NSLocalizedString(@"Unlocks after selecting a class", nil);
         } else {
             self.magicLabel.labelView.text = NSLocalizedString(@"Unlocks at level 10", nil);
         }

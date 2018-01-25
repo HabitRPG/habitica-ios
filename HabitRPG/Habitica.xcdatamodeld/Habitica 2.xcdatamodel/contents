@@ -507,6 +507,7 @@
         <attribute name="partyID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="partyOrder" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="partyPosition" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="pendingDamage" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="perception" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="petCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="petCountArray" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
@@ -587,6 +588,6 @@
         <element name="Task" positionX="0" positionY="0" width="128" height="585"/>
         <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
         <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="1260"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1275"/>
     </elements>
 </model>

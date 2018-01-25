@@ -11,6 +11,9 @@
 
 @interface HRPGLabeledProgressBar ()
 
+
+@property ProgressBar *progressBar;
+
 @end
 
 @implementation HRPGLabeledProgressBar
@@ -37,7 +40,7 @@
 - (void)initViews {
     self.color = [UIColor blackColor];
 
-    self.progressBar = [[HRPGProgressBar alloc] init];
+    self.progressBar = [[ProgressBar alloc] init];
     [self addSubview:self.progressBar];
     self.iconView = [[UIImageView alloc] init];
     self.iconView.contentMode = UIViewContentModeLeft;
@@ -79,7 +82,7 @@
 - (void)setMaxValue:(NSNumber *)maxValue {
     _maxValue = maxValue;
     [self setLabelViewText];
-    [self.progressBar setMaxBarValue:[maxValue floatValue]];
+    self.progressBar.maxValue = [maxValue floatValue];
 }
 
 - (void)setFrame:(CGRect)frame {

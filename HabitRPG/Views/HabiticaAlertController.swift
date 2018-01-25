@@ -50,6 +50,18 @@ class HabiticaAlertController: UIViewController {
             if message == nil || self.view == nil {
                 return
             }
+            attributedMessage = nil
+            titleBackgroundColor = .white
+            configureMessageView()
+        }
+    }
+    
+    var attributedMessage: NSAttributedString? {
+        didSet {
+            if attributedMessage == nil || self.view == nil {
+                return
+            }
+            message = nil
             titleBackgroundColor = .white
             configureMessageView()
         }
@@ -67,6 +79,12 @@ class HabiticaAlertController: UIViewController {
         self.init()
         self.title = newTitle
         self.message = newMessage
+    }
+    
+    convenience init(title newTitle: String?, attributedMessage newMessage: NSAttributedString) {
+        self.init()
+        self.title = newTitle
+        self.attributedMessage = newMessage
     }
     
     init() {
@@ -187,15 +205,19 @@ class HabiticaAlertController: UIViewController {
     }
     
     private func configureMessageView() {
-        if message == nil || containerView == nil {
+        if (message == nil && attributedMessage == nil) || containerView == nil {
             return
         }
         let label = UILabel()
-        label.text = message
+        label.textColor = UIColor.gray100()
+        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+        if message != nil {
+            label.text = message
+        } else {
+            label.attributedText = attributedMessage
+        }
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.textColor = UIColor.gray100()
-        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         contentView = label
     }
     
@@ -210,10 +232,10 @@ class HabiticaAlertController: UIViewController {
             containerView.superview?.isHidden = false
             alertStackView.spacing = 24
         }
-        if let view = containerView.arrangedSubviews.first {
-            view.removeFromSuperview()
-        }
         if let view = contentView {
+            if let oldView = containerView.arrangedSubviews.first {
+                oldView.removeFromSuperview()
+            }
             self.containerView.addArrangedSubview(view)
         }
     }
@@ -273,6 +295,16 @@ extension HabiticaAlertController {
         let alertController = HabiticaAlertController(
             title: title,
             message: message
+        )
+        return alertController
+    }
+    
+    @objc
+    public static func alert(title: String? = nil,
+                             attributedMessage: NSAttributedString) -> HabiticaAlertController {
+        let alertController = HabiticaAlertController(
+            title: title,
+            attributedMessage: attributedMessage
         )
         return alertController
     }

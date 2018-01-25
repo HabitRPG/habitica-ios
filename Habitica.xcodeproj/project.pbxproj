@@ -108,6 +108,7 @@
 		29FC885C2018D47D002B3D3F /* Quest-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC885B2018D47D002B3D3F /* Quest-Extensions.swift */; };
 		29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29FC885D2018D858002B3D3F /* WorldBossDescription.xib */; };
 		29FC88602018DB64002B3D3F /* WorldBossDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC885F2018DB64002B3D3F /* WorldBossDescriptionView.swift */; };
+		29FC8862201A300B002B3D3F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC8861201A300B002B3D3F /* ProgressBar.swift */; };
 		49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6D1F17DDF9004830D9 /* Shop.storyboard */; };
 		49005B701F17E7AC004830D9 /* Shops.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6F1F17E7AC004830D9 /* Shops.storyboard */; };
 		49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */; };
@@ -334,7 +335,6 @@
 		D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E918D6320D00C8D1B7 /* HRPGLoginData.m */; };
 		D9B8C1201AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B8C11F1AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m */; };
 		D9B8C1281AFFB5D500634B5A /* blade.json in Resources */ = {isa = PBXBuildFile; fileRef = D9B8C1271AFFB5D500634B5A /* blade.json */; };
-		D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */; };
 		D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */; };
 		D9BB45591E71AFAF0002AE2E /* Down-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45581E71AFAF0002AE2E /* Down-Extensions.swift */; };
 		D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB455A1E71C52F0002AE2E /* TaskTableViewCell.swift */; };
@@ -553,6 +553,7 @@
 		29FC885B2018D47D002B3D3F /* Quest-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quest-Extensions.swift"; sourceTree = "<group>"; };
 		29FC885D2018D858002B3D3F /* WorldBossDescription.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorldBossDescription.xib; sourceTree = "<group>"; };
 		29FC885F2018DB64002B3D3F /* WorldBossDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBossDescriptionView.swift; sourceTree = "<group>"; };
+		29FC8861201A300B002B3D3F /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
 		2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC569DB4F5A31ED940986A5 /* Pods-Habitica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.release.xcconfig"; sourceTree = "<group>"; };
@@ -992,8 +993,6 @@
 		D9B8C11E1AFE70F900634B5A /* HRPGCustomizationCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCustomizationCollectionViewController.h; sourceTree = "<group>"; };
 		D9B8C11F1AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCustomizationCollectionViewController.m; sourceTree = "<group>"; };
 		D9B8C1271AFFB5D500634B5A /* blade.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = blade.json; path = HabiticaTests/Fixtures/blade.json; sourceTree = SOURCE_ROOT; };
-		D9BA33CC1AB5D2CF0028AFEC /* HRPGProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGProgressBar.h; sourceTree = "<group>"; };
-		D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGProgressBar.m; sourceTree = "<group>"; };
 		D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLabeledProgressBar.h; sourceTree = "<group>"; };
 		D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLabeledProgressBar.m; sourceTree = "<group>"; };
 		D9BB45581E71AFAF0002AE2E /* Down-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Down-Extensions.swift"; sourceTree = "<group>"; };
@@ -1866,8 +1865,7 @@
 				D905D08D1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.h */,
 				D905D08E1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m */,
 				D905D08B1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib */,
-				D9BA33CC1AB5D2CF0028AFEC /* HRPGProgressBar.h */,
-				D9BA33CD1AB5D2CF0028AFEC /* HRPGProgressBar.m */,
+				29FC8861201A300B002B3D3F /* ProgressBar.swift */,
 				D9884B4319168AF00078BC7C /* HRPGProgressView.h */,
 				D9884B4419168AF00078BC7C /* HRPGProgressView.m */,
 				D9D9EF961D54E51C00FC89C1 /* HRPGQRCodeView.h */,
@@ -3132,6 +3130,7 @@
 				D903B78C1DCA4C25001F2893 /* HRPGNotificationManager.m in Sources */,
 				49DCB7C21F40D7F10079FDD0 /* HRPGShopBannerView.swift in Sources */,
 				494E540B1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift in Sources */,
+				29FC8862201A300B002B3D3F /* ProgressBar.swift in Sources */,
 				D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */,
 				D92A08591D3520D8000F8B66 /* Shop+CoreDataProperties.m in Sources */,
 				D92761611CCFBEAD0049ECAC /* Flags+CoreDataProperties.m in Sources */,
@@ -3192,7 +3191,6 @@
 				493ECBB71F47D7E10099B1FC /* HRPGGearSetItem.swift in Sources */,
 				49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */,
 				299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */,
-				D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */,
 				29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */,
 				D984D58D1E4A2F2D006E84F8 /* SubscriptionOptionView.swift in Sources */,
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,

@@ -10,11 +10,15 @@ import UIKit
 
 class QuestProgressBarView: UIView {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var progressView: UIView!
-    @IBOutlet weak var progressViewWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var valueLabel: UILabel!
-    @IBOutlet weak var iconView: UIImageView!
+    private var formatter = NumberFormatter()
+    
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var progressView: ProgressBar!
+    @IBOutlet private weak var valueLabel: UILabel!
+    @IBOutlet private weak var iconView: UIImageView!
+    @IBOutlet private weak var pendingLabel: UILabel!
+    @IBOutlet private weak var pendingIconView: UIImageView!
+    @IBOutlet weak var pendingView: UIView!
     
     public var title: String? {
         get {
@@ -24,13 +28,37 @@ class QuestProgressBarView: UIView {
             titleLabel.text = newValue
         }
     }
+    public var pendingTitle: String = "" {
+        didSet {
+            updatePendingLabel()
+        }
+    }
     
-    public var barColor: UIColor? {
+    public var barColor: UIColor {
         get {
-            return progressView.backgroundColor
+            return progressView.barColor
         }
         set {
-            progressView.backgroundColor = newValue
+            progressView.barColor = newValue
+            pendingLabel.textColor = newValue
+        }
+    }
+    
+    public var pendingBarColor: UIColor {
+        get {
+            return progressView.stackedBarColor
+        }
+        set {
+            progressView.stackedBarColor = newValue
+        }
+    }
+    
+    public var pendingIcon: UIImage? {
+        get {
+            return pendingIconView.image
+        }
+        set {
+            pendingIconView.image = newValue
         }
     }
     
@@ -45,31 +73,31 @@ class QuestProgressBarView: UIView {
 
     public var maxValue: Float = 0 {
         didSet {
-            updateProgressBarWidth()
+            progressView.maxValue = CGFloat(maxValue)
             updateValueLabel()
         }
     }
     
     public var currentValue: Float = 0 {
         didSet {
-            updateProgressBarWidth()
+            progressView.value = CGFloat(currentValue)
             updateValueLabel()
+        }
+    }
+    public var pendingValue: Float = 0 {
+        didSet {
+            progressView.stackedValue = CGFloat(pendingValue)
+            updatePendingLabel()
         }
     }
     
     private func updateValueLabel() {
-        self.valueLabel.text = "\(String(currentValue).stringWithAbbreviatedNumber()) / \(String(maxValue).stringWithAbbreviatedNumber())"
+        self.valueLabel.text = "\(formatter.string(from: NSNumber(value: currentValue)) ?? "") / \(formatter.string(from: NSNumber(value: maxValue)) ?? "")"
     }
     
-    private func updateProgressBarWidth() {
-        var percent = self.currentValue / self.maxValue
-        if self.maxValue == 0 || percent < 0 {
-            percent = 0
-        }
-        if percent > 1.0 {
-            percent = 1.0
-        }
-        progressViewWidthConstraint.constant = CGFloat(percent) * self.frame.size.width
+    private func updatePendingLabel() {
+        pendingView.isHidden = pendingTitle.count == 0
+        pendingLabel.text = "\(formatter.string(from: NSNumber(value: pendingValue)) ?? "") \(pendingTitle)"
     }
     
     override init(frame: CGRect) {
@@ -94,6 +122,16 @@ class QuestProgressBarView: UIView {
                 UIViewAutoresizing.flexibleHeight
             ]
             addSubview(view)
+            pendingView.isHidden = true
+            
+            progressView.barBackgroundColor = UIColor.init(white: 1.0, alpha: 0.16)
+            titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
+            pendingLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+            valueLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+            
+            formatter.usesGroupingSeparator = true
+            formatter.numberStyle = .decimal
+            formatter.locale = NSLocale.current
             
             setNeedsUpdateConstraints()
             updateConstraints()

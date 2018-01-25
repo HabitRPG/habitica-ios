@@ -27,6 +27,8 @@ class QuestProgressView: UIView {
     @IBOutlet weak var descriptionTitleHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var bossArtTitle: UIView!
+    @IBOutlet weak var bossArtTitleLabel: PaddedLabel!
+    @IBOutlet weak var bossArtCreditLabel: UILabel!
     @IBOutlet weak var bossArtTitleHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bossArtCarret: UIImageView!
     @IBOutlet weak var questArtSeparator: UIView!
@@ -65,14 +67,16 @@ class QuestProgressView: UIView {
             
             healthProgressView.barColor = UIColor.red50()
             healthProgressView.icon = HabiticaIcons.imageOfHeartLightBg
+            healthProgressView.pendingBarColor = UIColor.red10().withAlphaComponent(0.3)
+            healthProgressView.pendingIcon = HabiticaIcons.imageOfDamage
+            healthProgressView.pendingTitle = "dmg pending"
             rageProgressView.barColor = UIColor.orange100()
             rageProgressView.icon = #imageLiteral(resourceName: "icon_rage")
-            rageStrikeCountLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
             rageStrikeCountLabelHeight.constant = 30
             rageStrikeContainerHeight.constant = 84
             rageStrikeCountLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(rageStrikeButtonTapped)))
             
-            contentStackView.layoutMargins = UIEdgeInsets(top: 12, left: 12, bottom: 0, right: 12)
+            contentStackView.layoutMargins = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
             contentStackView.isLayoutMarginsRelativeArrangement = true
             
             descriptionTitleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(descriptionTitleTapped)))
@@ -81,6 +85,12 @@ class QuestProgressView: UIView {
             descriptionTextView.contentInset = UIEdgeInsets.zero
             carretIconView.tintColor = .white
             carretIconView.image = #imageLiteral(resourceName: "carret_down").withRenderingMode(.alwaysTemplate)
+            
+            
+            bossArtTitleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
+            descriptionTitle.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
+            rageStrikeCountLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
+            bossArtCreditLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
             
             let userDefaults = UserDefaults()
             if userDefaults.bool(forKey: "worldBossArtCollapsed") {
@@ -127,6 +137,7 @@ class QuestProgressView: UIView {
         descriptionTextView.attributedText = description
         
         bossArtCarret.tintColor = colorExtraLight
+        bossArtCreditLabel.textColor = colorExtraLight
     }
     
     @objc
@@ -144,6 +155,11 @@ class QuestProgressView: UIView {
             rageStrikeView.isActive = rageStrike.value.boolValue
             rageStrikeContainer.addArrangedSubview(rageStrikeView)
         }
+    }
+    
+    @objc
+    func configure(user: User) {
+        healthProgressView.pendingValue = user.pendingDamage.floatValue
     }
     
     @objc
@@ -204,7 +220,13 @@ class QuestProgressView: UIView {
     
     @objc
     func rageStrikeButtonTapped() {
-        let alertController = HabiticaAlertController.alert(title: NSLocalizedString("What's a Rage Strike?", comment: ""), message: NSLocalizedString("There are 3 potential Rage Strikes\nThis gauge fills when Habiticans miss their Dailies. If it fills up, the DysHeartener will unleash its Shattering Heartbreak attack on one of Habitica's shopkeepers, so be sure to do your tasks!", comment: ""))
+        let string = NSLocalizedString("There are 3 potential Rage Strikes\nThis gauge fills when Habiticans miss their Dailies. If it fills up, the DysHeartener will unleash its Shattering Heartbreak attack on one of Habitica's shopkeepers, so be sure to do your tasks!", comment: "")
+        let attributedString = NSMutableAttributedString(string: string)
+        let firstLineRange = NSRange(location: 0, length: string.components(separatedBy: "\n")[0].count)
+        attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 17), range: firstLineRange)
+        attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: firstLineRange)
+        attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
+        let alertController = HabiticaAlertController.alert(title: NSLocalizedString("What's a Rage Strike?", comment: ""), attributedMessage: attributedString)
         alertController.titleBackgroundColor = UIColor.orange50()
         alertController.addCloseAction()
         alertController.show()

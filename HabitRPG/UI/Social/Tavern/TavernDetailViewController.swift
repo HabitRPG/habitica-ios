@@ -34,7 +34,6 @@ class TavernDetailViewController: UIViewController {
                 tavernHeaderView.setNotes(NSLocalizedString("Oh dear, pay no heed to the monster below -- this is still a safe haven to chat on your breaks.", comment: ""))
                 questProgressView.isHidden = false
                 
-                
                 worldBossTitleView.infoIconAction = {
                     let alertController = HabiticaAlertController.alert(title: NSLocalizedString("What’s a World Boss?", comment: ""))
                     let view = Bundle.main.loadNibNamed("WorldBossDescription", owner: nil, options: nil)?.last as? WorldBossDescriptionView
@@ -73,6 +72,8 @@ class TavernDetailViewController: UIViewController {
         worldBossTitleView.hasInfoIcon = true
         
         configureInnButton()
+        
+        questProgressView.configure(user: HRPGManager.shared().getUser())
     }
     
     override func viewWillAppear(_ animated: Bool) {

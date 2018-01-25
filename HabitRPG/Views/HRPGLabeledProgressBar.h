@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HRPGProgressBar.h"
 
 IB_DESIGNABLE
 @interface HRPGLabeledProgressBar : UIView
@@ -15,7 +14,6 @@ IB_DESIGNABLE
 @property UIImageView *iconView;
 @property UILabel *labelView;
 @property UILabel *typeView;
-@property HRPGProgressBar *progressBar;
 
 @property BOOL isActive;
 

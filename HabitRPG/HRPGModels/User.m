@@ -79,6 +79,7 @@
 @dynamic pointsToAllocate;
 @dynamic loginname;
 @dynamic photoUrl;
+@dynamic pendingDamage;
 
 @synthesize petCount = _petCount;
 @synthesize customizationsDictionary;
