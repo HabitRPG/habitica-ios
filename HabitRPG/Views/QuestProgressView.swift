@@ -86,7 +86,6 @@ class QuestProgressView: UIView {
             carretIconView.tintColor = .white
             carretIconView.image = #imageLiteral(resourceName: "carret_down").withRenderingMode(.alwaysTemplate)
             
-            
             bossArtTitleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
             descriptionTitle.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
             rageStrikeCountLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .semibold)

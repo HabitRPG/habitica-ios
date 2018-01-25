@@ -30,6 +30,7 @@ class TavernDetailViewController: UIViewController {
     var quest: Quest? {
         didSet {
             if let quest = self.quest {
+                worldBossStackView.isHidden = false
                 questProgressView.configure(quest: quest)
                 tavernHeaderView.setNotes(NSLocalizedString("Oh dear, pay no heed to the monster below -- this is still a safe haven to chat on your breaks.", comment: ""))
                 questProgressView.isHidden = false
@@ -47,7 +48,7 @@ class TavernDetailViewController: UIViewController {
                     alertController.titleLabel.textColor = .white
                 }
             } else {
-                questProgressView.isHidden = true
+                worldBossStackView.isHidden = true
             }
         }
     }
@@ -70,6 +71,8 @@ class TavernDetailViewController: UIViewController {
         linksStackView.isLayoutMarginsRelativeArrangement = true
         
         worldBossTitleView.hasInfoIcon = true
+        
+        quest = nil
         
         configureInnButton()
         

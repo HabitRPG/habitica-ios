@@ -54,9 +54,6 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
                             <real key="value" value="0.0"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
-                            <real key="value" value="1"/>
-                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyL-Zx-7vm">

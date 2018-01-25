@@ -14,9 +14,14 @@ class BaseRepository {
         return HRPGManager.shared().getManagedObjectContext()
     }()
     
-    internal func makeFetchRequest<T: NSManagedObject>(entityName: String, predicate: NSPredicate) -> T? {
+    func getFetchRequest<T: NSManagedObject>(entityName: String, predicate: NSPredicate) -> NSFetchRequest<T> {
         let fetchRequest = NSFetchRequest<T>(entityName: entityName)
         fetchRequest.predicate = predicate
+        return fetchRequest
+    }
+    
+    internal func makeFetchRequest<T: NSManagedObject>(entityName: String, predicate: NSPredicate) -> T? {
+        let fetchRequest: NSFetchRequest<T> = getFetchRequest(entityName: entityName, predicate: predicate)
         let result = try? managedObjectContext.fetch(fetchRequest)
         if result?.count ?? 0 > 0, let item = result?[0] {
             return item

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TavernViewController: HRPGUIViewController, UIScrollViewDelegate {
+class TavernViewController: HRPGUIViewController, UIScrollViewDelegate, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
@@ -18,6 +18,8 @@ class TavernViewController: HRPGUIViewController, UIScrollViewDelegate {
     
     var detailViewController: TavernDetailViewController?
     var chatViewController: GroupChatViewController?
+    
+    private var fetchedResultsController: NSFetchedResultsController<Group>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,14 +45,29 @@ class TavernViewController: HRPGUIViewController, UIScrollViewDelegate {
     }
     
     private func fetchGroup() {
-        let group = SocialRepository().getGroup("00000000-0000-4000-A000-000000000000")
-        detailViewController?.group = group
+        let fetchRequest: NSFetchRequest<Group> = SocialRepository().getFetchRequest(entityName: "Group",
+                                                                    predicate: NSPredicate(format: "id == %@", "00000000-0000-4000-A000-000000000000")
+            )
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
+        fetchedResultsController = NSFetchedResultsController<Group>(fetchRequest: fetchRequest, managedObjectContext: HRPGManager.shared().getManagedObjectContext(), sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController?.delegate = self
         
-        if let questKey = group?.questKey {
-            let quest = InventoryRepository().getQuest(questKey)
-            detailViewController?.quest = quest
-        } else {
-            detailViewController?.quest = nil
+        try? fetchedResultsController?.performFetch()
+        
+        setGroup()
+    }
+    
+    private func setGroup() {
+        if let items = fetchedResultsController?.fetchedObjects, items.count > 0 {
+            let group = items[0]
+            detailViewController?.group = group
+            
+            if let questKey = group.questKey {
+                let quest = InventoryRepository().getQuest(questKey)
+                detailViewController?.quest = quest
+            } else {
+                detailViewController?.quest = nil
+            }
         }
     }
     
@@ -69,6 +86,10 @@ class TavernViewController: HRPGUIViewController, UIScrollViewDelegate {
             navController.showHeader()
             scrollViewTopConstraint.constant = navController.contentInset
         }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        setGroup()
     }
     
     @objc
