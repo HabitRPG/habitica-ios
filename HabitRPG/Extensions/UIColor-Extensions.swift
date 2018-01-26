@@ -125,19 +125,19 @@ extension UIColor {
 
      - parameter taskValue: NSNumber value.
      */
-    public static func forTaskValue(_ taskValue: NSNumber) -> UIColor {
+    @objc public static func forTaskValue(_ taskValue: NSNumber) -> UIColor {
         let intValue: Int = taskValue.intValue
-        if (intValue < -20) {
+        if intValue < -20 {
             return UIColor.darkRed50()
-        } else if (intValue < -10) {
+        } else if intValue < -10 {
             return UIColor.red50()
-        } else if (intValue < -1) {
+        } else if intValue < -1 {
             return UIColor.orange50()
-        } else if (intValue < 1) {
+        } else if intValue < 1 {
             return UIColor.yellow50()
-        } else if (intValue < 5) {
+        } else if intValue < 5 {
             return UIColor.green50()
-        } else if (intValue < 10) {
+        } else if intValue < 10 {
             return UIColor.teal50()
         } else {
             return UIColor.blue50()
@@ -149,19 +149,19 @@ extension UIColor {
      
      - parameter taskValue: NSNumber value.
      */
-    public static func forTaskValueLight(_ taskValue: NSNumber) -> UIColor {
+    @objc public static func forTaskValueLight(_ taskValue: NSNumber) -> UIColor {
         let intValue: Int = taskValue.intValue
-        if (intValue < -20) {
+        if intValue < -20 {
             return UIColor.darkRed100()
-        } else if (intValue < -10) {
+        } else if intValue < -10 {
             return UIColor.red100()
-        } else if (intValue < -1) {
+        } else if intValue < -1 {
             return UIColor.orange100()
-        } else if (intValue < 1) {
+        } else if intValue < 1 {
             return UIColor.yellow100()
-        } else if (intValue < 5) {
+        } else if intValue < 5 {
             return UIColor.green100()
-        } else if (intValue < 10) {
+        } else if intValue < 10 {
             return UIColor.teal100()
         } else {
             return UIColor.blue100()

@@ -16,8 +16,6 @@ class ChallengeDetailsTableViewController: FixedSizeTableViewController {
         
         title = "Details"
         
-        self.topHeaderNavigationController.setShouldHideTopHeader(true, animated: false)
-        self.topHeaderNavigationController.stopFollowingScrollView()
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
         viewModel?.cellModelsSignal.observeValues({ (sections) in
@@ -30,10 +28,8 @@ class ChallengeDetailsTableViewController: FixedSizeTableViewController {
         }
         
         viewModel?.animateUpdatesSignal.observeValues({ _ in
-//            UIView.animate(withDuration: 0.5, animations: {
-                self.tableView.beginUpdates()
-                self.tableView.endUpdates()
-//            })
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
         })
         
         viewModel?.joinLeaveStyleProvider.promptProperty.signal.observeValues({ (prompt) in
@@ -54,8 +50,6 @@ class ChallengeDetailsTableViewController: FixedSizeTableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.topHeaderNavigationController.setShouldHideTopHeader(true, animated: false)
-        self.topHeaderNavigationController.stopFollowingScrollView()
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     

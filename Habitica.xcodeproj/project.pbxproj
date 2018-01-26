@@ -126,7 +126,6 @@
 		493ECBB71F47D7E10099B1FC /* HRPGGearSetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493ECBB61F47D7E10099B1FC /* HRPGGearSetItem.swift */; };
 		493ECBB91F47D82A0099B1FC /* HRPGGearSetItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 493ECBB81F47D82A0099B1FC /* HRPGGearSetItem.xib */; };
 		493ECBCB1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493ECBCA1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift */; };
-		494131FF1FBCEE9E00F26C81 /* Map47To48.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 494131FE1FBCEE9E00F26C81 /* Map47To48.xcmappingmodel */; };
 		494E53FB1F2C14980003683C /* HRPGShopsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E53FA1F2C14980003683C /* HRPGShopsTableViewCell.swift */; };
 		494E53FE1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E53FD1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m */; };
 		494E54011F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54001F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m */; };
@@ -151,6 +150,8 @@
 		49A4646B1FCD18FD00E14A5D /* HRPGButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A4646A1FCD18FD00E14A5D /* HRPGButtonViewModel.swift */; };
 		49A84FB21F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A84FB01F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift */; };
 		49A84FB31F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A84FB11F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib */; };
+		49B87D93201BB37300CA1A75 /* Mapping2to3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 49B87D92201BB37300CA1A75 /* Mapping2to3.xcmappingmodel */; };
+		49B87D96201BBF3800CA1A75 /* HabiticaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B87D95201BBF3800CA1A75 /* HabiticaTests.m */; };
 		49DCB7991F3407B30079FDD0 /* BuyModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */; };
 		49DCB79B1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */; };
 		49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */; };
@@ -208,7 +209,6 @@
 		D92A085B1D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A08521D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m */; };
 		D92A085D1D3520D8000F8B66 /* ShopItem+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D92A08561D3520D8000F8B66 /* ShopItem+CoreDataProperties.m */; };
 		D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C0C401B8745DF000AF799 /* HRPGAPITests.m */; };
-		D92C0C441B8749DF000AF799 /* HabiticaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D94461871AB34F5C0015215E /* HabiticaTests.m */; };
 		D92C60FC1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */; };
 		D92CDADD18CB79E50006C242 /* HRPGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDADC18CB79E50006C242 /* HRPGTableViewController.m */; };
 		D92CDAE018CB83B90006C242 /* HRPGHabitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92CDADF18CB83B90006C242 /* HRPGHabitTableViewController.m */; };
@@ -604,8 +604,6 @@
 		493ECBB61F47D7E10099B1FC /* HRPGGearSetItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGGearSetItem.swift; sourceTree = "<group>"; };
 		493ECBB81F47D82A0099B1FC /* HRPGGearSetItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGGearSetItem.xib; sourceTree = "<group>"; };
 		493ECBCA1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopsOverviewViewModel.swift; sourceTree = "<group>"; };
-		494131FD1FBCED2800F26C81 /* HabitRPG 48.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HabitRPG 48.xcdatamodel"; sourceTree = "<group>"; };
-		494131FE1FBCEE9E00F26C81 /* Map47To48.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Map47To48.xcmappingmodel; sourceTree = "<group>"; };
 		494E53FA1F2C14980003683C /* HRPGShopsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopsTableViewCell.swift; sourceTree = "<group>"; };
 		494E53FC1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HRPGTopHeaderNavigationController.h"; sourceTree = "<group>"; };
 		494E53FD1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HRPGTopHeaderNavigationController.m"; sourceTree = "<group>"; };
@@ -637,6 +635,10 @@
 		49A4646A1FCD18FD00E14A5D /* HRPGButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRPGButtonViewModel.swift; sourceTree = "<group>"; };
 		49A84FB01F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailInfoTableViewCell.swift; sourceTree = "<group>"; };
 		49A84FB11F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeDetailInfoTableViewCell.xib; sourceTree = "<group>"; };
+		49B87D8F201BA88C00CA1A75 /* Habitica 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 3.xcdatamodel"; sourceTree = "<group>"; };
+		49B87D92201BB37300CA1A75 /* Mapping2to3.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Mapping2to3.xcmappingmodel; sourceTree = "<group>"; };
+		49B87D94201BBF3800CA1A75 /* HabiticaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HabiticaTests.h; sourceTree = "<group>"; };
+		49B87D95201BBF3800CA1A75 /* HabiticaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabiticaTests.m; sourceTree = "<group>"; };
 		49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BuyModal.storyboard; sourceTree = "<group>"; };
 		49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGBuyItemModalViewController.swift; sourceTree = "<group>"; };
 		49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGSimpleShopItemView.swift; sourceTree = "<group>"; };
@@ -730,7 +732,6 @@
 		D92A08551D3520D8000F8B66 /* ShopItem+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShopItem+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D92A08561D3520D8000F8B66 /* ShopItem+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ShopItem+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D92C0C401B8745DF000AF799 /* HRPGAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGAPITests.m; sourceTree = "<group>"; };
-		D92C0C421B8748CD000AF799 /* HabiticaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HabiticaTests.h; sourceTree = "<group>"; };
 		D92C60FA1BD3FAC1005F68CC /* HRPGCopyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCopyTableViewCell.h; sourceTree = "<group>"; };
 		D92C60FB1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCopyTableViewCell.m; sourceTree = "<group>"; };
 		D92CDADB18CB79E50006C242 /* HRPGTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTableViewController.h; sourceTree = "<group>"; };
@@ -773,7 +774,6 @@
 		D9436AC81C64F880008D1171 /* HRPGGuildsOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGuildsOverviewViewController.m; sourceTree = "<group>"; };
 		D94461831AB34F5C0015215E /* HabiticaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabiticaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94461861AB34F5C0015215E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D94461871AB34F5C0015215E /* HabiticaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabiticaTests.m; sourceTree = "<group>"; };
 		D94461901AB355940015215E /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = user.json; path = HabiticaTests/Fixtures/user.json; sourceTree = SOURCE_ROOT; };
 		D946E5C01B30A89500806BE6 /* NSDate+NSDateMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NSDateMock.h"; sourceTree = "<group>"; };
 		D946E5C11B30A89500806BE6 /* NSDate+NSDateMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NSDateMock.m"; sourceTree = "<group>"; };
@@ -1241,6 +1241,7 @@
 		2957B8AA1F4B297300E836EF /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				49B87D92201BB37300CA1A75 /* Mapping2to3.xcmappingmodel */,
 				29E163072008E7B600685640 /* Habitica.xcdatamodeld */,
 			);
 			name = "Core Data";
@@ -1610,14 +1611,14 @@
 		D94461841AB34F5C0015215E /* HabiticaTests */ = {
 			isa = PBXGroup;
 			children = (
+				49B87D94201BBF3800CA1A75 /* HabiticaTests.h */,
+				49B87D95201BBF3800CA1A75 /* HabiticaTests.m */,
 				D9709A551E80536A0005F35B /* Interactors */,
 				D957043F1E152576004F6804 /* TestHelpers */,
 				D957043C1E151C1C004F6804 /* HabiticaTests-Bridging-Header.h */,
 				D957043A1E151BE5004F6804 /* UI */,
 				D946E5BF1B30A7D200806BE6 /* Mocks */,
 				D9B967CB1AB33BD0001D84F7 /* Fixtures */,
-				D92C0C421B8748CD000AF799 /* HabiticaTests.h */,
-				D94461871AB34F5C0015215E /* HabiticaTests.m */,
 				D92C0C401B8745DF000AF799 /* HRPGAPITests.m */,
 				D99EA73C1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m */,
 				D946E5C31B30A9D700806BE6 /* HRPGTaskTests.m */,
@@ -2426,8 +2427,8 @@
 				D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */,
 				D9722B7E19BD041E009D8AD3 /* HRPGNavigationController.h */,
 				D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */,
-				D9660D731AB23F150084CE37 /* HRPGTopHeaderNavigationController.h */,
 				29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */,
+				D9660D731AB23F150084CE37 /* HRPGTopHeaderNavigationController.h */,
 				D9660D741AB23F150084CE37 /* HRPGTopHeaderNavigationController.m */,
 				D9E46AFB1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.h */,
 				D9E46AFC1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m */,
@@ -3036,7 +3037,7 @@
 				D957044D1E1589AB004F6804 /* TraitController.swift in Sources */,
 				D9709A581E8053A00005F35B /* TaskRepeatablesSummaryInteractorTests.swift in Sources */,
 				D957043E1E151C1C004F6804 /* LoginViewModelTests.swift in Sources */,
-				D92C0C441B8749DF000AF799 /* HabiticaTests.m in Sources */,
+				49B87D96201BBF3800CA1A75 /* HabiticaTests.m in Sources */,
 				D946E5C41B30A9D700806BE6 /* HRPGTaskTests.m in Sources */,
 				D99EA73D1B8664D30048BF6A /* HRPGTaskFormViewControllerTests.m in Sources */,
 				D95704471E153767004F6804 /* TestObserver.swift in Sources */,
@@ -3145,6 +3146,7 @@
 				D9FC1A861BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m in Sources */,
 				29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */,
 				D94AADB4192A30F900546C8E /* Spell.m in Sources */,
+				49B87D93201BB37300CA1A75 /* Mapping2to3.xcmappingmodel in Sources */,
 				D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */,
 				D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */,
 				D9ADD3631944FDBE006202C1 /* HRPGFilterViewController.m in Sources */,
@@ -3339,7 +3341,6 @@
 				299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */,
 				29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */,
 				498E4CFB1FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift in Sources */,
-				D9BA33CE1AB5D2CF0028AFEC /* HRPGProgressBar.m in Sources */,
 				D984D58D1E4A2F2D006E84F8 /* SubscriptionOptionView.swift in Sources */,
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
 				D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */,
@@ -4029,10 +4030,11 @@
 		29E163072008E7B600685640 /* Habitica.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				49B87D8F201BA88C00CA1A75 /* Habitica 3.xcdatamodel */,
 				29FC885020121771002B3D3F /* Habitica 2.xcdatamodel */,
 				29E163082008E7B600685640 /* Habitica.xcdatamodel */,
 			);
-			currentVersion = 29FC885020121771002B3D3F /* Habitica 2.xcdatamodel */;
+			currentVersion = 49B87D8F201BA88C00CA1A75 /* Habitica 3.xcdatamodel */;
 			path = Habitica.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

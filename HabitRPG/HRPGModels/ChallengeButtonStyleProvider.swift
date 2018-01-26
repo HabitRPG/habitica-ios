@@ -78,10 +78,10 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
     let challengeProperty: MutableProperty<Challenge?> = MutableProperty<Challenge?>(nil)
     
     let buttonStateSignal: Signal<ChallengeButtonState, NoError>
-    let buttonPressedProperty = MutableProperty()
+    let buttonPressedProperty = MutableProperty(())
     
     let challengeUpdatedSignal: Signal<Bool, NoError>
-    let challengeUpdatedProperty = MutableProperty()
+    let challengeUpdatedProperty = MutableProperty(())
     
     let promptProperty = MutableProperty<UIAlertController?>(nil)
     
@@ -144,7 +144,7 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
     
     // MARK: HRPGButtonAttributeProvider functions
     
-    let triggerStyleProperty: MutableProperty = MutableProperty()
+    let triggerStyleProperty: MutableProperty = MutableProperty(())
     func triggerStyle() {
         self.triggerStyleProperty.value = ()
     }
@@ -160,7 +160,7 @@ class PublishButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonMod
     let challengeProperty: MutableProperty<Challenge?> = MutableProperty<Challenge?>(nil)
     
     let buttonStateSignal: Signal<ChallengeButtonState, NoError>
-    let buttonPressedProperty = MutableProperty()
+    let buttonPressedProperty = MutableProperty(())
     
     let bgColorSignal: Signal<UIColor?, NoError>
     let titleSignal: Signal<String, NoError>
@@ -189,7 +189,7 @@ class PublishButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonMod
     
     // MARK: HRPGButtonAttributeProvider functions
     
-    let triggerStyleProperty = MutableProperty()
+    let triggerStyleProperty = MutableProperty(())
     func triggerStyle() {
         triggerStyleProperty.value = ()
     }
@@ -205,7 +205,7 @@ class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
     let challengeProperty: MutableProperty<Challenge?> = MutableProperty<Challenge?>(nil)
     
     let buttonStateSignal: Signal<ChallengeButtonState, NoError>
-    let buttonPressedProperty = MutableProperty()
+    let buttonPressedProperty = MutableProperty(())
     
     let bgColorSignal: Signal<UIColor?, NoError>
     let titleSignal: Signal<String, NoError>
@@ -225,7 +225,7 @@ class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
     
     // MARK: HRPGButtonAttributeProvider functions
     
-    let triggerStyleProperty = MutableProperty()
+    let triggerStyleProperty = MutableProperty(())
     func triggerStyle() {
         triggerStyleProperty.value = ()
     }
@@ -241,7 +241,7 @@ class EndChallengeButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
     let challengeProperty: MutableProperty<Challenge?> = MutableProperty<Challenge?>(nil)
     
     let buttonStateSignal: Signal<ChallengeButtonState, NoError>
-    let buttonPressedProperty = MutableProperty()
+    let buttonPressedProperty = MutableProperty(())
     
     let bgColorSignal: Signal<UIColor?, NoError>
     let titleSignal: Signal<String, NoError>
@@ -261,7 +261,7 @@ class EndChallengeButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
     
     // MARK: HRPGButtonAttributeProvider functions
     
-    let triggerStyleProperty = MutableProperty()
+    let triggerStyleProperty = MutableProperty(())
     func triggerStyle() {
         triggerStyleProperty.value = ()
     }
