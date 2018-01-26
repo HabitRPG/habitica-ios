@@ -151,6 +151,20 @@ class TopHeaderViewController: UINavigationController {
     }
     
     @objc
+    public func setShouldHideTopHeader(_ shouldHide: Bool, animated: Bool) {
+        if shouldHideTopHeader != shouldHide {
+            shouldHideTopHeader = shouldHide
+            if (shouldHide) {
+                hideHeader(animated: animated)
+            } else {
+                showHeader(animated: animated)
+                view.setNeedsLayout()
+                view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc
     public func showHeader(animated: Bool = true) {
         self.state = HRPGTopHeaderStateVisible
         var frame = self.backgroundView.frame

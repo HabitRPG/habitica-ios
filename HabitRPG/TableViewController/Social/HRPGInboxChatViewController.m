@@ -47,7 +47,10 @@
     
     [self setNavigationTitle];
     if (self.username == nil || [self.username length] == 0) {
-        [self fetchMemberWithNetworkFallback:YES];
+        [User fetchUserWithId:self.userID completionBlock:^(User *member) {
+            self.username = member.username;
+            [self setNavigationTitle];
+        }];
     }
     
     if (self.isPresentedModally) {
@@ -84,31 +87,6 @@
         self.navigationItem.title = NSLocalizedString(@"Write Message", nil);
     }
 }
-
-- (void)fetchMemberWithNetworkFallback:(BOOL)fallback {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User"
-                                              inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", self.userID]];
-    
-    NSError *error;
-    NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    if (results.count > 1) {
-        User *member = results[0];
-        self.username = member.username;
-        [self setNavigationTitle];
-    } else {
-        if (fallback) {
-            [[HRPGManager sharedManager] fetchMember:self.userID onSuccess:^{
-                [self fetchMemberWithNetworkFallback:NO];
-            } onError:nil];
-        }
-        
-    }
-}
-
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

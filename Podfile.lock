@@ -1,29 +1,24 @@
 PODS:
-  - Alamofire (4.6.0)
+  - Alamofire (4.5.1)
   - Amplitude-iOS (3.14.1)
-  - AppAuth (0.92.0)
-  - Bolts (1.9.0):
-    - Bolts/AppLinks (= 1.9.0)
-    - Bolts/Tasks (= 1.9.0)
-  - Bolts/AppLinks (1.9.0):
+  - AppAuth (0.91.0)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
-  - Bolts/Tasks (1.9.0)
+  - Bolts/Tasks (1.8.4)
   - DateTools (2.0.0)
   - Down (0.4.2)
-  - DynamicBlurView (2.0.2)
+  - DynamicBlurView (2.0.0)
   - EAIntroView (2.12.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
   - Eureka (4.0.1)
-  - FBSDKCoreKit (4.29.0):
+  - FBSDKCoreKit (4.28.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.29.0):
+  - FBSDKLoginKit (4.28.0):
     - FBSDKCoreKit
-  - FBSnapshotTestCase (2.1.4):
-    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
-  - FBSnapshotTestCase/Core (2.1.4)
-  - FBSnapshotTestCase/SwiftSupport (2.1.4):
-    - FBSnapshotTestCase/Core
   - FirebaseAnalytics (3.9.0):
     - FirebaseCore (~> 3.6)
     - FirebaseInstanceID (~> 1.0)
@@ -42,6 +37,11 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.3)
   - GoogleToolboxForMac/NSData+zlib (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
+  - iOSSnapshotTestCase (2.1.6):
+    - iOSSnapshotTestCase/SwiftSupport (= 2.1.6)
+  - iOSSnapshotTestCase/Core (2.1.6)
+  - iOSSnapshotTestCase/SwiftSupport (2.1.6):
+    - iOSSnapshotTestCase/Core
   - ISO8601DateFormatterValueTransformer (0.6.1):
     - RKValueTransformers (~> 1.1.0)
   - KeychainAccess (3.1.0)
@@ -76,7 +76,7 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
-  - Nimble (7.0.3)
+  - Nimble (7.0.2)
   - NSString+Emoji (0.2.0)
   - OHHTTPStubs (6.1.0):
     - OHHTTPStubs/Default (= 6.1.0)
@@ -95,9 +95,10 @@ PODS:
   - pop (1.0.10)
   - PopupDialog (0.7.0):
     - DynamicBlurView (~> 2.0)
-  - ReactiveCocoa (7.1.0):
-    - ReactiveSwift (~> 3.1)
-  - ReactiveSwift (3.1.0):
+  - Quick (1.2.0)
+  - ReactiveCocoa (7.0.0):
+    - ReactiveSwift (~> 3.0)
+  - ReactiveSwift (3.0.0):
     - Result (~> 3.2)
   - RestKit (0.27.2):
     - RestKit/Core (= 0.27.2)
@@ -122,8 +123,8 @@ PODS:
   - SeedsSDK (0.5.0)
   - SlackTextViewController (1.9.6)
   - SOCKit (1.1)
-  - SwiftLint (0.24.2)
-  - SwiftyStoreKit (0.12.1)
+  - SwiftLint (0.24.0)
+  - SwiftyStoreKit (0.11.0)
   - TransitionKit (2.2.1)
   - VTAcknowledgementsViewController (1.3)
   - XLForm (4.0.0)
@@ -145,9 +146,9 @@ DEPENDENCIES:
   - Eureka
   - FBSDKCoreKit (~> 4)
   - FBSDKLoginKit (~> 4)
-  - FBSnapshotTestCase (from `https://github.com/alanzeino/ios-snapshot-test-case.git`, commit `f97dd8e423a382eb61387564120e56a69bc98285`)
   - FLEX (~> 2.0)
   - Google/Analytics
+  - iOSSnapshotTestCase (from `https://github.com/uber/ios-snapshot-test-case.git`)
   - KeychainAccess
   - Keys (from `Pods/CocoaPodsKeys`)
   - KLCPopup
@@ -159,6 +160,7 @@ DEPENDENCIES:
   - PDKeychainBindingsController (~> 0.0.1)
   - pop
   - PopupDialog (from `https://github.com/Orderella/PopupDialog.git`, branch `development`)
+  - Quick (~> 1.2.0)
   - ReactiveCocoa (~> 7)
   - RestKit
   - SeedsSDK
@@ -170,9 +172,8 @@ DEPENDENCIES:
   - YYWebImage (~> 1.0.5)
 
 EXTERNAL SOURCES:
-  FBSnapshotTestCase:
-    :commit: f97dd8e423a382eb61387564120e56a69bc98285
-    :git: https://github.com/alanzeino/ios-snapshot-test-case.git
+  iOSSnapshotTestCase:
+    :git: https://github.com/uber/ios-snapshot-test-case.git
   Keys:
     :path: Pods/CocoaPodsKeys
   PopupDialog:
@@ -180,27 +181,26 @@ EXTERNAL SOURCES:
     :git: https://github.com/Orderella/PopupDialog.git
 
 CHECKOUT OPTIONS:
-  FBSnapshotTestCase:
-    :commit: f97dd8e423a382eb61387564120e56a69bc98285
-    :git: https://github.com/alanzeino/ios-snapshot-test-case.git
+  iOSSnapshotTestCase:
+    :commit: a781a1e51415796ba166cef79184977992f905b4
+    :git: https://github.com/uber/ios-snapshot-test-case.git
   PopupDialog:
     :commit: 91d634b1068d91be2658a63959f79e209e03ecb9
     :git: https://github.com/Orderella/PopupDialog.git
 
 SPEC CHECKSUMS:
-  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   Amplitude-iOS: 4a3c8807b2ea5369dc11e87e23825bff01e5a922
-  AppAuth: 3f4f1d6d85ad631d0bbf15ffcdc10c447face97a
-  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  AppAuth: 3e0dc9c00ef333dc62064e4830aa89b597ae8d2f
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   Down: 92efba7c95a8efdb84b7114e365db4a37f3df76e
-  DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
+  DynamicBlurView: 7b1bfbc1e7a0606b8a1855ff809ccaccfbda6b30
   EAIntroView: 249559079ddfdbe80e5bcb755c04c3b964b2ac27
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   Eureka: c8bd5cc07143b6f66268c208d28a246c99b41955
-  FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
-  FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
-  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  FBSDKCoreKit: ca961e279113f691fd83dc634c0bbad9d4e3f370
+  FBSDKLoginKit: b077381c27d800f21661757e8140cf2c80a91e4a
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
   FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
@@ -208,28 +208,30 @@ SPEC CHECKSUMS:
   Google: 98da4b1a60ed0beb80a290387a28333406a1eb90
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  iOSSnapshotTestCase: dc636173d7398d13e99b809852472a3eb125fc2e
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
   KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
   NSString+Emoji: 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
   PDKeychainBindingsController: fa8cb3cf99f2ea9240d61066ed0549f34e2cec3c
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   PopupDialog: 2f2fdb00c83b563c3f0ef7ba5a21cbb10497c890
-  ReactiveCocoa: 105ad96f6b8711f1ee7d165fc96587479298053b
-  ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  ReactiveCocoa: 06a54796a36dfc346f082498d08e7a8fb50c4e2f
+  ReactiveSwift: d9fe0db33c1aaabecb092e8de83cf52875c0de6f
   RestKit: 556c913b0640c5bc5a9cb972361504e3ed628a1d
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
   SeedsSDK: 8de27e088c15ff3eba33a6d2941ec507e4a5bb95
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
-  SwiftLint: 2aa21b96c8d13396a051bc1cb659d2ce1e0075b0
-  SwiftyStoreKit: 98742f9d7941ecaca0f248de0f49c5ecf585bc95
+  SwiftLint: a014c92b4664e8b13f380f8640a51bb1733778ba
+  SwiftyStoreKit: c5cb38110cb01b55b9c5f25d7f69d0083650b2a4
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   VTAcknowledgementsViewController: 0bc8149be64f0d5b7f398e146353af8fde04b313
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
@@ -237,6 +239,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: d8b9a5b94302115a406e3b2637812db47adb3f68
+PODFILE CHECKSUM: f32adce6480268707d12ae28aa85944969a2fae3
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.2.1

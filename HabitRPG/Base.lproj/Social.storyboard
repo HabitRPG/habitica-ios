@@ -1052,6 +1052,22 @@ Invite friends now to earn a Quest Scroll!</string>
             </objects>
             <point key="canvasLocation" x="1773" y="1876"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="amF-HH-oTT">
+            <objects>
+                <navigationController id="qu8-iE-4IX" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TVx-i3-Nky">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ub7-zx-k6a" kind="relationship" relationship="rootViewController" id="FZ7-L8-sBk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7e9-JM-KJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1390" y="3917"/>
+        </scene>
         <!--Guilds-->
         <scene sceneID="nVW-YU-1Jc">
             <objects>
@@ -1422,6 +1438,25 @@ Invite friends now to earn a Quest Scroll!</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0kd-Gx-ciV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1593" y="5030"/>
+        </scene>
+        <!--Challenge Details Table View Controller-->
+        <scene sceneID="w6C-fL-Avu">
+            <objects>
+                <tableViewController id="LJL-4h-PRX" customClass="ChallengeDetailsTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mSs-Sh-idc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <connections>
+                            <outlet property="dataSource" destination="LJL-4h-PRX" id="1ig-QN-NYm"/>
+                            <outlet property="delegate" destination="LJL-4h-PRX" id="KnE-YN-Yie"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VUH-pH-siP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="742" y="5813"/>
         </scene>
         <!--Members-->
         <scene sceneID="g8Z-ZM-3o1">
@@ -2373,7 +2408,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                     <rect key="frame" x="0.0" y="26" width="285" height="22"/>
                                                     <subviews>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Cn6-3X-i7r" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="75.5" height="22"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="22"/>
                                                             <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" priority="500" constant="60" id="Fao-rF-1qx"/>
@@ -2397,7 +2432,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="RvD-OK-24y" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                                            <rect key="frame" x="83.5" y="0.0" width="106.5" height="22"/>
+                                                            <rect key="frame" x="68" y="0.0" width="60" height="22"/>
                                                             <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" priority="500" constant="60" id="dja-it-hkk"/>
@@ -2486,6 +2521,7 @@ Invite friends now to earn a Quest Scroll!</string>
                     <navigationItem key="navigationItem" title="Challenges" id="OHs-Q2-g2k"/>
                     <connections>
                         <segue destination="UVz-HW-Tqj" kind="show" identifier="ChallengeDetailSegue" id="DaI-oi-4AM"/>
+                        <segue destination="LJL-4h-PRX" kind="show" identifier="challengeDetailsSegue" id="XbT-AM-M1f"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zG1-Iw-A7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2863,6 +2899,15 @@ Invite friends now to earn a Quest Scroll!</string>
         <segue reference="EV0-ra-m7s"/>
         <segue reference="VUt-se-F6s"/>
         <segue reference="wif-V9-Mcy"/>
+        <segue reference="jBF-PN-2IP"/>
+        <segue reference="VPE-S9-CFY"/>
+        <segue reference="CUP-gn-Xug"/>
+        <segue reference="kns-o3-fej"/>
+        <segue reference="2KU-R3-vSq"/>
+        <segue reference="636-nl-5aS"/>
+        <segue reference="EV0-ra-m7s"/>
+        <segue reference="bEM-KI-Si8"/>
+        <segue reference="C12-ty-sO4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

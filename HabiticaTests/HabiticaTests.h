@@ -1,9 +1,9 @@
 //
 //  HabiticaTests.h
-//  Habitica
+//  HabiticaTests
 //
-//  Created by Phillip Thelen on 21/08/15.
-//  Copyright © 2017 HabitRPG Inc. All rights reserved.
+//  Created by Elliot Schrock on 1/26/18.
+//  Copyright © 2018 HabitRPG Inc. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

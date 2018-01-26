@@ -19,8 +19,10 @@ class TaskTableViewCell: UITableViewCell {
     //swiftlint:disable private_outlet
 
     @objc
-    func configure(task: Task) {
-        self.titleLabel.text = task.text?.unicodeEmoji
+    func configure(task: HRPGTaskProtocol) {
+        if let text = task.text {
+            self.titleLabel.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString()
+        }
         self.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
         self.titleLabel.textColor = .gray10()
         self.subtitleLabel.textColor = .gray200()
@@ -39,7 +41,9 @@ class TaskTableViewCell: UITableViewCell {
 
         self.setNeedsLayout()
         
-        self.applyAccessibility(task)
+        if let task = task as? Task {
+            self.applyAccessibility(task)
+        }
     }
     
     func applyAccessibility(_ task: Task) {

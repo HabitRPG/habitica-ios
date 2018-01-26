@@ -26,6 +26,7 @@
 @dynamic shortName;
 @dynamic updatedAt;
 @dynamic group;
+@dynamic categories;
 @dynamic habits;
 @dynamic user;
 @dynamic dailies;
