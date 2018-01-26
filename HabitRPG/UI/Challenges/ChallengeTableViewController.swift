@@ -87,8 +87,8 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         
         if self.topHeaderNavigationController.shouldHideTopHeader {
             self.topHeaderNavigationController.shouldHideTopHeader = false
-            self.tableView.contentInset = UIEdgeInsets(top: self.topHeaderNavigationController.getContentInset(), left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
-            self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: self.topHeaderNavigationController.getContentInset(), left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
+            self.tableView.contentInset = UIEdgeInsets(top: self.topHeaderNavigationController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
+            self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: self.topHeaderNavigationController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
             self.tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
         }
     }

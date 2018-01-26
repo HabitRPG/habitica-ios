@@ -59,5 +59,6 @@ target 'Habitica' do
       pod 'OHHTTPStubs'
       pod 'Quick', '~> 1.2.0'
       pod 'Nimble', '~> 7.0.0'
+      pod 'iOSSnapshotTestCase', git: 'https://github.com/uber/ios-snapshot-test-case.git'
   end
 end

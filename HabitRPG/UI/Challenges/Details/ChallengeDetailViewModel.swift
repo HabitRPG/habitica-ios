@@ -39,9 +39,9 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     let animateUpdatesSignal: Signal<(), NoError>
     
     let challengeProperty: MutableProperty<Challenge>
-    let viewDidLoadProperty = MutableProperty()
-    let reloadTableProperty = MutableProperty()
-    let animateUpdatesProperty = MutableProperty()
+    let viewDidLoadProperty = MutableProperty(())
+    let reloadTableProperty = MutableProperty(())
+    let animateUpdatesProperty = MutableProperty(())
     
     let cellModelsProperty: MutableProperty<[FixedSizeDataSourceSection]> = MutableProperty<[FixedSizeDataSourceSection]>([])
     let infoSectionProperty: MutableProperty<FixedSizeDataSourceSection> = MutableProperty<FixedSizeDataSourceSection>(FixedSizeDataSourceSection())
