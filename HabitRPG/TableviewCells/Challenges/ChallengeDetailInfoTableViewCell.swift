@@ -37,7 +37,7 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
         
         var tags: [UILabel] = []
         
-        if isOwner(of: challenge) {
+        if Challenge.isOwner(of: challenge) {
             tags.append(ownerTag())
         }
         if let isOfficial = challenge.official?.boolValue, isOfficial {

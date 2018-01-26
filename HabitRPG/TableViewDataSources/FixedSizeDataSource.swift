@@ -14,6 +14,26 @@ protocol FixedSizeDataSourceItem {
     func configureCell(_ cell: UITableViewCell)
 }
 
+class ConcreteFixedSizeDataSourceItem<T>: FixedSizeDataSourceItem where T: UITableViewCell {
+    private let identifier: String
+    
+    init(identifier: String) {
+        self.identifier = identifier
+    }
+    
+    func cellIdentifier() -> String {
+        return identifier
+    }
+    
+    func cellClass() -> UITableViewCell.Type {
+        return T.self
+    }
+    
+    func configureCell(_ cell: UITableViewCell) {
+        // NO OP: override me!
+    }
+}
+
 // MARK: -
 
 class FixedSizeDataSourceSection {

@@ -31,3 +31,28 @@ class DoubleButtonTableViewCell: UITableViewCell {
         rightModelInputs?.hrpgButtonPressed()
     }
 }
+
+class DoubleButtonFixedSizeDataSourceItem: ConcreteFixedSizeDataSourceItem<DoubleButtonTableViewCell> {
+    let leftAttributeProvider: HRPGButtonAttributeProvider?
+    let leftInputs: HRPGButtonModelInputs?
+    let rightAttributeProvider: HRPGButtonAttributeProvider?
+    let rightInputs: HRPGButtonModelInputs?
+    
+    init(identifier: String, leftAttributeProvider: HRPGButtonAttributeProvider?, leftInputs: HRPGButtonModelInputs?, rightAttributeProvider: HRPGButtonAttributeProvider?, rightInputs: HRPGButtonModelInputs?) {
+        self.leftAttributeProvider = leftAttributeProvider
+        self.leftInputs = leftInputs
+        self.rightAttributeProvider = rightAttributeProvider
+        self.rightInputs = rightInputs
+        super.init(identifier: identifier)
+    }
+    
+    override func configureCell(_ cell: UITableViewCell) {
+        if let buttonCell = cell as? DoubleButtonTableViewCell {
+            buttonCell.leftButtonViewModel.attributeProvider = leftAttributeProvider
+            buttonCell.leftModelInputs = leftInputs
+            
+            buttonCell.rightButtonViewModel.attributeProvider = rightAttributeProvider
+            buttonCell.rightModelInputs = rightInputs
+        }
+    }
+}
