@@ -46,27 +46,30 @@ class ChallengeDescriptionTableViewCell: ResizableTableViewCell, ChallengeConfig
         
         self.marginConstraint.constant = 0
         if self.heightConstraint == nil {
-            self.heightConstraint = NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutAttribute.height, relatedBy: .equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
+            self.heightConstraint = NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutAttribute.height, relatedBy: .equal,
+                                                       toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
         }
         
         if let constraint = self.heightConstraint {
             self.descriptionLabel.addConstraint(constraint)
         }
         
+        UIView.animate(withDuration: 0.25) {
+            self.contentView.updateLayout()
+        }
+        
         self.resizingDelegate?.cellResized()
     }
     
     func rotateCaret() {
-        let angle = self.isExpanded ? 0 : CGFloat.pi
-        self.caretButton.transform = CGAffineTransform(rotationAngle: angle)
-//        caretButton.isEnabled = false
-//
-//        UIView.animate(withDuration: 0.5, animations: {
-//            let angle = self.isExpanded ? 0 : CGFloat.pi
-//            self.caretButton.transform = CGAffineTransform(rotationAngle: angle)
-//        }, completion: { _ in
-//            self.caretButton.isEnabled = true
-//        })
+        caretButton.isEnabled = false
+
+        UIView.animate(withDuration: 0.25, animations: {
+            let angle = self.isExpanded ? 0 : CGFloat.pi
+            self.caretButton.transform = CGAffineTransform(rotationAngle: angle)
+        }, completion: { _ in
+            self.caretButton.isEnabled = true
+        })
     }
     
     @IBAction func caretPressed(_ sender: Any) {

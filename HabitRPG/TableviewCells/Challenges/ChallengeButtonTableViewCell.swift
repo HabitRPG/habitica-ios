@@ -22,3 +22,21 @@ class ChallengeButtonTableViewCell: UITableViewCell {
         modelInputs?.hrpgButtonPressed()
     }
 }
+
+class ButtonCellFixedSizeDataSourceItem: ConcreteFixedSizeDataSourceItem<ChallengeButtonTableViewCell> {
+    let attributeProvider: HRPGButtonAttributeProvider?
+    let inputs: HRPGButtonModelInputs?
+    
+    init(attributeProvider: HRPGButtonAttributeProvider?, inputs: HRPGButtonModelInputs?, identifier: String) {
+        self.attributeProvider = attributeProvider
+        self.inputs = inputs
+        super.init(identifier: identifier)
+    }
+    
+    override func configureCell(_ cell: UITableViewCell) {
+        if let buttonCell = cell as? ChallengeButtonTableViewCell {
+            buttonCell.buttonViewModel.attributeProvider = attributeProvider
+            buttonCell.modelInputs = inputs
+        }
+    }
+}

@@ -86,16 +86,14 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
     }
     
     func rotateCaret() {
-        let angle = self.isExpanded ? 0 : CGFloat.pi
-        self.caretButton.transform = CGAffineTransform(rotationAngle: angle)
-//        caretButton.isEnabled = false
-//
-//        UIView.animate(withDuration: 0.5, animations: {
-//            let angle = self.isExpanded ? 0 : CGFloat.pi
-//            self.caretButton.transform = CGAffineTransform(rotationAngle: angle)
-//        }, completion: { _ in
-//            self.caretButton.isEnabled = true
-//        })
+        caretButton.isEnabled = false
+
+        UIView.animate(withDuration: 0.25, animations: {
+            let angle = self.isExpanded ? 0 : CGFloat.pi
+            self.caretButton.transform = CGAffineTransform(rotationAngle: angle)
+        }, completion: { _ in
+            self.caretButton.isEnabled = true
+        })
     }
     
     @IBAction func caretPressed() {

@@ -29,6 +29,13 @@ class ChallengeDetailsTableViewController: FixedSizeTableViewController {
             self.tableView.reloadData()
         }
         
+        viewModel?.animateUpdatesSignal.observeValues({ _ in
+//            UIView.animate(withDuration: 0.5, animations: {
+                self.tableView.beginUpdates()
+                self.tableView.endUpdates()
+//            })
+        })
+        
         viewModel?.joinLeaveStyleProvider.promptProperty.signal.observeValues({ (prompt) in
             if let alertController = prompt {
                 self.present(alertController, animated: true, completion: nil)

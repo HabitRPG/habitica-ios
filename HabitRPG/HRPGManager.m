@@ -2210,7 +2210,9 @@ NSString *currentUser;
                                                            }];
     
     RKEntityMapping *challengeCategoryMapping = [RKEntityMapping mappingForEntityForName:@"ChallengeCategory" inManagedObjectStore:managedObjectStore];
-    [challengeCategoryMapping addAttributeMappingsFromArray:@[@"name", @"id", @"slug"]];
+    [challengeCategoryMapping addAttributeMappingsFromArray:@[@"name", @"slug"]];
+    [challengeCategoryMapping addAttributeMappingsFromDictionary:@{@"_id": @"id"}];
+    challengeCategoryMapping.identificationAttributes = @[@"id"];
     [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"categories"
                                                                                      toKeyPath:@"categories"
                                                                                    withMapping:challengeCategoryMapping]];
