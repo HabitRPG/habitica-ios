@@ -16,6 +16,9 @@
 @property(nonatomic) User *user;
 @property(nonatomic) MenuNavigationBarView *navbarView;
 
+@property(nonatomic) NSFetchedResultsController *tavernFetchedResultsController;
+@property(nonatomic) WorldBossMenuHeader *worldBossHeaderView;
+@property(nonatomic) UIColor *navbarColor;
 @end
 
 @implementation HRPGProfileViewController
@@ -24,15 +27,17 @@ NSInteger userLevel;
 NSString *currentUserID;
 
 - (void)viewDidLoad {
+    self.topHeaderNavigationController.hideNavbar = YES;
     [super viewDidLoad];
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
-    self.navbarView = [[MenuNavigationBarView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 72)];
+    self.navbarColor = [UIColor purple300];
+    self.navbarView = (MenuNavigationBarView *)[MenuNavigationBarView loadFromNibWithNibName:@"MenuNavigationBarView"];
     __weak HRPGProfileViewController *weakSelf = self;
     [self.navbarView setMessagesAction:^{
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
         UIViewController *inboxViewController =
-        [secondStoryBoard instantiateViewControllerWithIdentifier:@"InboxViewController"];
-        [weakSelf.navigationController pushViewController:inboxViewController animated:YES];
+        [secondStoryBoard instantiateViewControllerWithIdentifier:@"InboxNavigationViewController"];
+        inboxViewController.modalPresentationStyle = UIModalPresentationPageSheet;
+        [weakSelf presentViewController:inboxViewController animated:YES completion:nil];
     }];
     [self.navbarView setSettingsAction:^{
         [weakSelf performSegueWithIdentifier:@"SettingsSegue" sender:weakSelf];
@@ -61,6 +66,8 @@ NSString *currentUserID;
     footerView.numberOfLines = 0;
     self.tableView.tableFooterView = footerView;
     
+    [self showWorldBossIfNeeded];
+    
     TopHeaderViewController *navigationController =
     (TopHeaderViewController *)self.navigationController;
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationController.contentInset, 0, 0, 0);
@@ -79,7 +86,8 @@ NSString *currentUserID;
     [self.topHeaderNavigationController setAlternativeHeaderView:self.navbarView];
     [self.topHeaderNavigationController showHeaderWithAnimated:NO];
     [super viewWillAppear:animated];
-    self.topHeaderNavigationController.navbarVisibleColor = [UIColor purple300];
+    self.topHeaderNavigationController.navbarVisibleColor = self.navbarColor;
+    self.navbarView.backgroundColor = self.navbarColor;
     self.topHeaderNavigationController.hideNavbar = YES;
     if (![currentUserID isEqualToString:[HRPGManager.sharedManager getUser].id]) {
         // user has changed. Reload data.
@@ -116,8 +124,7 @@ NSString *currentUserID;
         [self.refreshControl endRefreshing];
         [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:1 inSection:1] ]
                               withRowAnimation:UITableViewRowAnimationFade];
-    }
-        onError:^() {
+    } onError:^() {
             [self.refreshControl endRefreshing];
         }];
 }
@@ -127,6 +134,37 @@ NSString *currentUserID;
     [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:1 inSection:1] ]
                           withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
+}
+
+- (void)showWorldBossIfNeeded {
+    if (self.tavernFetchedResultsController.fetchedObjects.count == 0) {
+        return;
+    }
+    Group *tavern = self.tavernFetchedResultsController.fetchedObjects[0];
+    if (tavern.questActive.boolValue) {
+        if (self.worldBossHeaderView == nil) {
+            NSFetchRequest *questFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Quest"];
+            questFetchRequest.predicate = [NSPredicate predicateWithFormat:@"key == %@", tavern.questKey];
+            NSError *error;
+            NSArray<Quest *> *result = [[HRPGManager.sharedManager getManagedObjectContext] executeFetchRequest:questFetchRequest error:&error];
+            if (result.count > 0) {
+                self.worldBossHeaderView = (WorldBossMenuHeader *)[WorldBossMenuHeader loadFromNibWithNibName:@"WorldBossMenuHeader"];
+                self.tableView.tableHeaderView = self.worldBossHeaderView;
+                Quest *quest = result[0];
+                [self.worldBossHeaderView configureWithQuest:quest];
+                [self.tableView reloadData];
+                self.navbarColor = quest.uicolorDark;
+            }
+        }
+        [self.worldBossHeaderView configureWithGroup:tavern];
+    } else {
+        if (self.worldBossHeaderView != nil) {
+            self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
+            self.worldBossHeaderView = nil;
+            [self.tableView reloadData];
+        }
+        self.navbarColor = [UIColor purple300];
+    }
 }
 
 #pragma mark - Table view data source
@@ -411,10 +449,47 @@ NSString *currentUserID;
     return _fetchedResultsController;
 }
 
+- (NSFetchedResultsController *)tavernFetchedResultsController {
+    if (_tavernFetchedResultsController != nil) {
+        return _tavernFetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group"
+                                              inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", @"00000000-0000-4000-A000-000000000000"]];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
+    NSArray *sortDescriptors = @[ sortDescriptor ];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSFetchedResultsController *aFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:self.managedObjectContext
+                                          sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    aFetchedResultsController.delegate = self;
+    self.tavernFetchedResultsController = aFetchedResultsController;
+    
+    NSError *error = nil;
+    if (![self.tavernFetchedResultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return _tavernFetchedResultsController;
+}
+
 - (void)controller:(NSFetchedResultsController *)controller
     didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
              atIndex:(NSUInteger)sectionIndex
        forChangeType:(NSFetchedResultsChangeType)type {
+    if ([controller isEqual:self.tavernFetchedResultsController]) {
+        return;
+    }
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
@@ -422,6 +497,9 @@ NSString *currentUserID;
         atIndexPath:(NSIndexPath *)indexPath
       forChangeType:(NSFetchedResultsChangeType)type
        newIndexPath:(NSIndexPath *)newIndexPath {
+    if ([controller isEqual:self.tavernFetchedResultsController]) {
+        return;
+    }
     UITableView *tableView = self.tableView;
     switch (type) {
         case NSFetchedResultsChangeInsert: {
@@ -452,7 +530,11 @@ NSString *currentUserID;
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView reloadData];
+    if ([controller isEqual:self.tavernFetchedResultsController]) {
+        [self showWorldBossIfNeeded];
+    } else {
+        [self.tableView reloadData];
+    }
 }
 
 - (User *)user {

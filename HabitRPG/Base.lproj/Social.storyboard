@@ -68,6 +68,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Messages" id="WTK-c7-15D">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="1Vo-kN-YKi">
+                            <connections>
+                                <segue destination="uYD-UD-cT1" kind="unwind" unwindAction="unwindToList:" id="L9K-pD-A3g"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="h1j-I7-oPp">
                             <connections>
                                 <segue destination="hQu-VZ-lTI" kind="presentation" id="8La-9P-jkL"/>
@@ -76,6 +81,7 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YrI-c1-IZm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="uYD-UD-cT1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1772" y="14.842578710644679"/>
         </scene>

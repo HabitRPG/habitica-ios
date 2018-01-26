@@ -224,10 +224,15 @@ class TopHeaderViewController: UINavigationController {
         self.backgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
         self.navigationBar.tintColor = UIColor.purple400().blend(with: .white, alpha: alpha)
         self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black.blend(with: .white, alpha: alpha)]
-        if self.navigationBar.barStyle == .default && alpha > 0.5 {
+        updateStatusbarColor()
+    }
+    
+    private func updateStatusbarColor() {
+        let isLightColor = self.upperBackgroundView.backgroundColor?.isLight() ?? true
+        if self.navigationBar.barStyle == .default && !isLightColor {
             self.navigationBar.barStyle = .black
             self.setNeedsStatusBarAppearanceUpdate()
-        } else if self.navigationBar.barStyle == .black && alpha < 0.5 {
+        } else if self.navigationBar.barStyle == .black && isLightColor {
             self.navigationBar.barStyle = .default
             self.setNeedsStatusBarAppearanceUpdate()
         }
@@ -244,6 +249,7 @@ class TopHeaderViewController: UINavigationController {
                 UIViewAutoresizing.flexibleHeight
             ]
             self.backgroundView.addSubview(header)
+            self.bottomBorderView.isHidden = true
             header.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: header.intrinsicContentSize.height)
             header.layoutSubviews()
         }
@@ -259,6 +265,7 @@ class TopHeaderViewController: UINavigationController {
         self.alternativeHeaderView = nil
         if let header = self.headerView {
             self.backgroundView.addSubview(header)
+            self.bottomBorderView.isHidden = false
             self.showHeader(animated: false)
         }
         self.viewWillLayoutSubviews()

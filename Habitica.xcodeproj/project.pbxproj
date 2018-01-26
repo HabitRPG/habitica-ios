@@ -109,6 +109,8 @@
 		29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29FC885D2018D858002B3D3F /* WorldBossDescription.xib */; };
 		29FC88602018DB64002B3D3F /* WorldBossDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC885F2018DB64002B3D3F /* WorldBossDescriptionView.swift */; };
 		29FC8862201A300B002B3D3F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC8861201A300B002B3D3F /* ProgressBar.swift */; };
+		29FC8864201B78D6002B3D3F /* WorldBossMenuHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29FC8863201B78D6002B3D3F /* WorldBossMenuHeader.xib */; };
+		29FC8866201B7B5B002B3D3F /* WorldBossMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC8865201B7B5B002B3D3F /* WorldBossMenuHeader.swift */; };
 		49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6D1F17DDF9004830D9 /* Shop.storyboard */; };
 		49005B701F17E7AC004830D9 /* Shops.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6F1F17E7AC004830D9 /* Shops.storyboard */; };
 		49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */; };
@@ -554,6 +556,8 @@
 		29FC885D2018D858002B3D3F /* WorldBossDescription.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorldBossDescription.xib; sourceTree = "<group>"; };
 		29FC885F2018DB64002B3D3F /* WorldBossDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBossDescriptionView.swift; sourceTree = "<group>"; };
 		29FC8861201A300B002B3D3F /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		29FC8863201B78D6002B3D3F /* WorldBossMenuHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorldBossMenuHeader.xib; sourceTree = "<group>"; };
+		29FC8865201B7B5B002B3D3F /* WorldBossMenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBossMenuHeader.swift; sourceTree = "<group>"; };
 		2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
 		2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC569DB4F5A31ED940986A5 /* Pods-Habitica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.release.xcconfig"; sourceTree = "<group>"; };
@@ -1294,6 +1298,23 @@
 			path = Tavern;
 			sourceTree = "<group>";
 		};
+		29FC8867201B7B61002B3D3F /* Quests */ = {
+			isa = PBXGroup;
+			children = (
+				29E16316200E632200685640 /* QuestProgressBarView.xib */,
+				29E16310200E5FEA00685640 /* QuestProgressView.xib */,
+				29E16312200E619400685640 /* QuestProgressView.swift */,
+				29FC885320175C70002B3D3F /* RageStrikeView.swift */,
+				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
+				29FC88592017C039002B3D3F /* CollapsibleStackView.swift */,
+				29FC885D2018D858002B3D3F /* WorldBossDescription.xib */,
+				29FC885F2018DB64002B3D3F /* WorldBossDescriptionView.swift */,
+				29FC8863201B78D6002B3D3F /* WorldBossMenuHeader.xib */,
+				29FC8865201B7B5B002B3D3F /* WorldBossMenuHeader.swift */,
+			);
+			path = Quests;
+			sourceTree = "<group>";
+		};
 		4908642C1F4530DC00BD9896 /* Shop */ = {
 			isa = PBXGroup;
 			children = (
@@ -1528,20 +1549,20 @@
 		D95704371E106BF3004F6804 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D95704381E106C11004F6804 /* LocalizedString.swift */,
-				D95704421E1528F2004F6804 /* Event-Extensions.swift */,
-				D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */,
-				D96BFC501E1930A500266EEF /* Signal-Extensions.swift */,
-				D9CE90461E4CDF3F00702578 /* Designable-Extensions.swift */,
-				D9525F9E1E65A18300C529B8 /* EmojifiedString.swift */,
-				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
-				D9BB45581E71AFAF0002AE2E /* Down-Extensions.swift */,
-				29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */,
 				29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */,
-				29F89F191F47882A004E5B84 /* String-Extensions.swift */,
-				29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */,
-				29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */,
+				D9CE90461E4CDF3F00702578 /* Designable-Extensions.swift */,
+				D9BB45581E71AFAF0002AE2E /* Down-Extensions.swift */,
+				D9525F9E1E65A18300C529B8 /* EmojifiedString.swift */,
+				D95704421E1528F2004F6804 /* Event-Extensions.swift */,
+				D95704381E106C11004F6804 /* LocalizedString.swift */,
 				29FC885B2018D47D002B3D3F /* Quest-Extensions.swift */,
+				D96BFC501E1930A500266EEF /* Signal-Extensions.swift */,
+				29F89F191F47882A004E5B84 /* String-Extensions.swift */,
+				29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */,
+				D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */,
+				29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */,
+				29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */,
+				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1904,14 +1925,7 @@
 				29E1630C200E23A500685640 /* MenuNavigationBarView.xib */,
 				29E1630E200E279900685640 /* MenuNavigationBarView.swift */,
 				29E16314200E629800685640 /* QuestProgressBarView.swift */,
-				29E16316200E632200685640 /* QuestProgressBarView.xib */,
-				29E16310200E5FEA00685640 /* QuestProgressView.xib */,
-				29E16312200E619400685640 /* QuestProgressView.swift */,
-				29FC885320175C70002B3D3F /* RageStrikeView.swift */,
-				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
-				29FC88592017C039002B3D3F /* CollapsibleStackView.swift */,
-				29FC885D2018D858002B3D3F /* WorldBossDescription.xib */,
-				29FC885F2018DB64002B3D3F /* WorldBossDescriptionView.swift */,
+				29FC8867201B7B61002B3D3F /* Quests */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2539,6 +2553,7 @@
 				49DCB7B81F3F64D40079FDD0 /* HRPGShopModalBgView.xib in Resources */,
 				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
 				493ECBB91F47D82A0099B1FC /* HRPGGearSetItem.xib in Resources */,
+				29FC8864201B78D6002B3D3F /* WorldBossMenuHeader.xib in Resources */,
 				49005B701F17E7AC004830D9 /* Shops.storyboard in Resources */,
 				493ECBB51F47A58F0099B1FC /* HRPGItemStatsView.xib in Resources */,
 				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
@@ -2943,6 +2958,7 @@
 				29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */,
 				D903B7891DCA2BE6001F2893 /* HRPGNotification.m in Sources */,
 				D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */,
+				29FC8866201B7B5B002B3D3F /* WorldBossMenuHeader.swift in Sources */,
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
 				2986EB0B1FCC63F900B316F6 /* AttributePointsViewController.swift in Sources */,
 				D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */,

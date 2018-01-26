@@ -19,35 +19,8 @@ class MenuNavigationBarView: UIView {
     @IBOutlet weak var messagesButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupView()
-    }
     
     // MARK: - Private Helper Methods
-    
-    private func setupView() {
-        if let view = viewFromNibForClass() {
-            translatesAutoresizingMaskIntoConstraints = true
-            
-            view.frame = bounds
-            view.autoresizingMask = [
-                UIViewAutoresizing.flexibleWidth,
-                UIViewAutoresizing.flexibleHeight
-            ]
-            addSubview(view)
-
-            setNeedsUpdateConstraints()
-            updateConstraints()
-            setNeedsLayout()
-            layoutIfNeeded()
-        }
-    }
     
     @objc
     public func configure(user: User) {

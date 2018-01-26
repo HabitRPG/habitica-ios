@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R9E-Gz-gXb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mxq-5y-Lb4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,6 +12,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="dGW-NW-L6M">
+            <objects>
+                <navigationController id="Mxq-5y-Lb4" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Klt-Yp-IvD">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="R9E-Gz-gXb" kind="relationship" relationship="rootViewController" id="YvI-ES-uch"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tdA-64-WrQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-574" y="543"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="UN9-Vb-65b">
             <objects>
@@ -26,7 +42,13 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="c7M-Vz-ttl"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="Tco-at-cZc"/>
+                    <navigationItem key="navigationItem" title="Settings" id="Tco-at-cZc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="VNG-g8-YAw">
+                            <connections>
+                                <segue destination="rXC-mZ-gfO" kind="unwind" unwindAction="unwindToList:" id="Wh2-ae-Or4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="BCm-To-foE" kind="show" identifier="AuthenticationSegue" id="hUS-j2-7FX">
                             <nil key="action"/>
@@ -37,6 +59,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPD-C1-pas" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rXC-mZ-gfO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="127" y="543"/>
         </scene>

@@ -10,19 +10,19 @@ import Foundation
 
 extension Quest {
     
-    var uicolorDark: UIColor {
+    @objc var uicolorDark: UIColor {
         return UIColor.init(colorDark ?? "", defaultColor: UIColor.clear)
     }
     
-    var uicolorMedium: UIColor {
+    @objc var uicolorMedium: UIColor {
         return UIColor.init(colorMedium ?? "", defaultColor: UIColor.clear)
     }
     
-    var uicolorLight: UIColor {
+    @objc var uicolorLight: UIColor {
         return UIColor.init(colorLight ?? "", defaultColor: UIColor.clear)
     }
     
-    var uicolorExtraLight: UIColor {
+    @objc var uicolorExtraLight: UIColor {
         return UIColor.init(colorExtraLight ?? "", defaultColor: UIColor.clear)
     }
 }

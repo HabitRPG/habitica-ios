@@ -20,6 +20,15 @@ extension UIView {
         return view
     }
     
+    @objc
+    class func loadFromNib(nibName: String) -> UIView? {
+        guard let nibs = Bundle.main.loadNibNamed(nibName, owner: nil, options: nil) else {
+            return nil
+        }
+        return nibs[0] as? UIView
+    }
+    
+    @objc
     func viewFromNibForClass() -> UIView? {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
