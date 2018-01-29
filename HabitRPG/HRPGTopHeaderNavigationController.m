@@ -9,6 +9,7 @@
 #import "HRPGTopHeaderNavigationController.h"
 #import "HRPGUserTopHeader.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGTopHeaderNavigationController ()
 
@@ -71,10 +72,10 @@
 }
 
 - (void)showHeader {
-    [self showHeaderAnimated:YES];
+    [self showHeaderWithAnimated:YES];
 }
 
-- (void)showHeaderAnimated:(BOOL)animated {
+- (void)showHeaderWithAnimated:(BOOL)animated {
     self.state = HRPGTopHeaderStateVisible;
     CGRect frame = self.backgroundView.frame;
     frame.origin.y = [self bgViewOffset];
@@ -95,10 +96,10 @@
 }
 
 - (void)hideHeader {
-    [self hideHeaderAnimated:YES];
+    [self hideHeaderWithAnimated:YES];
 }
 
-- (void)hideHeaderAnimated:(BOOL)animated {
+- (void)hideHeaderWithAnimated:(BOOL)animated {
     self.state = HRPGTopHeaderStateHidden;
     CGRect frame = self.backgroundView.frame;
     frame.origin.y = -frame.size.height;
@@ -136,7 +137,7 @@
     self.scrollableView = nil;
 }
 
-- (void)scrollview:(UIScrollView *)scrollView scrolledToPosition:(CGFloat)position {
+- (void)scrollView:(UIScrollView *)scrollView scrolledToPosition:(CGFloat)position {
     if (self.scrollableView != scrollView) {
         return;
     }
@@ -218,6 +219,15 @@
 }
 
 #pragma mark - Helpers
+
+- (CGFloat)contentInset {
+    return [self getContentInset];
+}
+
+- (CGFloat)contentOffset {
+    return [self getContentOffset];
+}
+
 - (CGFloat)getContentInset {
     if (self.shouldHideTopHeader) {
         return 0;

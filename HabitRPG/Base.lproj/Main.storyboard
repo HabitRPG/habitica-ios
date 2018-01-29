@@ -3158,8 +3158,6 @@ and helps keep Habitica running</string>
         <segue reference="DAI-nh-Ljl"/>
         <segue reference="sPD-XR-ORt"/>
         <segue reference="aWZ-FG-z5O"/>
-        <segue reference="V6b-ej-qnx"/>
-        <segue reference="jeD-LQ-1O1"/>
         <segue reference="nYO-SY-Og4"/>
         <segue reference="HFM-OL-cM8"/>
     </inferredMetricsTieBreakers>

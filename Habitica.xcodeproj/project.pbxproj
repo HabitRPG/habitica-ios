@@ -400,7 +400,6 @@
 		D9CE90491E4DCF7D00702578 /* SubscriptionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CE90481E4DCF7D00702578 /* SubscriptionDetailView.swift */; };
 		D9D0451B1C2B1AEC00630244 /* Reminder+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D045181C2B1AEC00630244 /* Reminder+CoreDataProperties.m */; };
 		D9D0451C1C2B1AEC00630244 /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D0451A1C2B1AEC00630244 /* Reminder.m */; };
-		D9D17CCA1E6705EE00AD9232 /* ChallengeDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CC91E6705EE00AD9232 /* ChallengeDetailTableViewController.swift */; };
 		D9D17CCC1E6736A600AD9232 /* ChallengeDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCB1E6736A600AD9232 /* ChallengeDetailHeaderView.swift */; };
 		D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */; };
 		D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */; };
@@ -1111,7 +1110,6 @@
 		D9D045181C2B1AEC00630244 /* Reminder+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reminder+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D9D045191C2B1AEC00630244 /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
 		D9D0451A1C2B1AEC00630244 /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
-		D9D17CC91E6705EE00AD9232 /* ChallengeDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailTableViewController.swift; sourceTree = "<group>"; };
 		D9D17CCB1E6736A600AD9232 /* ChallengeDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailHeaderView.swift; sourceTree = "<group>"; };
 		D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeDetailHeaderView.xib; sourceTree = "<group>"; };
 		D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Extensions.swift"; sourceTree = "<group>"; };
@@ -2258,7 +2256,6 @@
 				49A84FAF1F9FC945003E2956 /* Details */,
 				D9709A591E82E4470005F35B /* ChallengeFormViewController.swift */,
 				D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */,
-				D9D17CC91E6705EE00AD9232 /* ChallengeDetailTableViewController.swift */,
 			);
 			path = Challenges;
 			sourceTree = "<group>";
@@ -3159,7 +3156,6 @@
 				D9D9EF981D54E51C00FC89C1 /* HRPGQRCodeView.m in Sources */,
 				D9E46B031DABCD9100E390D7 /* Buff+CoreDataClass.m in Sources */,
 				4908641D1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift in Sources */,
-				D9D17CCA1E6705EE00AD9232 /* ChallengeDetailTableViewController.swift in Sources */,
 				D95D03951C74AA5500D6BFB3 /* Outfit+CoreDataProperties.m in Sources */,
 				D914398A1BAF14C40006999E /* UIImage+withColor.m in Sources */,
 				D97ED0B01E6DBC87006C2A26 /* Interactor.swift in Sources */,

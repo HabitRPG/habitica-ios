@@ -7,7 +7,6 @@
 //
 
 #import "HRPGProfileViewController.h"
-#import "HRPGTopHeaderNavigationController.h"
 #import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
 
@@ -61,11 +60,6 @@ NSString *currentUserID;
     footerView.numberOfLines = 0;
     self.tableView.tableFooterView = footerView;
     
-    TopHeaderViewController *navigationController =
-    (TopHeaderViewController *)self.navigationController;
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationController.contentInset, 0, 0, 0);
-    [self.tableView setContentInset:(UIEdgeInsetsMake(navigationController.contentInset, 0, -150, 0))];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reloadPartyData:)
                                                  name:@"partyUpdated"
@@ -76,9 +70,17 @@ NSString *currentUserID;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    self.topHeaderNavigationController.shouldHideTopHeader = NO;
     [self.topHeaderNavigationController setAlternativeHeaderView:self.navbarView];
     [self.topHeaderNavigationController showHeaderWithAnimated:NO];
+    
     [super viewWillAppear:animated];
+    
+    UINavigationController<TopHeaderNavigationControllerProtocol> *navigationController =
+        (UINavigationController<TopHeaderNavigationControllerProtocol> *)self.navigationController;
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationController.contentInset, 0, 0, 0);
+    [self.tableView setContentInset:(UIEdgeInsetsMake(navigationController.contentInset, 0, -150, 0))];
+    
     self.topHeaderNavigationController.navbarVisibleColor = [UIColor purple300];
     self.topHeaderNavigationController.hideNavbar = YES;
     if (![currentUserID isEqualToString:[HRPGManager.sharedManager getUser].id]) {

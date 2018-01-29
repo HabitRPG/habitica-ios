@@ -8,7 +8,39 @@
 
 import UIKit
 
-class TopHeaderViewController: UINavigationController {
+@objc
+protocol TopHeaderNavigationControllerProtocol: class {
+    @objc var state: HRPGTopHeaderState { get set }
+    @objc var defaultNavbarHiddenColor: UIColor? { get }
+    @objc var defaultNavbarVisibleColor: UIColor { get }
+    @objc var navbarHiddenColor: UIColor { get set }
+    @objc var navbarVisibleColor: UIColor { get set }
+    @objc var hideNavbar: Bool { get set }
+    @objc var shouldHideTopHeader: Bool { get set }
+    @objc var contentInset: CGFloat { get }
+    @objc var contentOffset: CGFloat { get }
+    
+    @objc
+    func setShouldHideTopHeader(_ shouldHide: Bool, animated: Bool)
+    @objc
+    func showHeader(animated: Bool)
+    @objc
+    func hideHeader(animated: Bool)
+    @objc
+    func startFollowing(scrollView: UIScrollView)
+    @objc
+    func stopFollowingScrollView()
+    @objc
+    func setAlternativeHeaderView(_ alternativeHeaderView: UIView?)
+    @objc
+    func removeAlternativeHeaderView()
+    @objc
+    func scrollView(_ scrollView: UIScrollView?, scrolledToPosition position: CGFloat)
+    @objc
+    func setNavigationBarColors(_ alpha: CGFloat)
+}
+
+class TopHeaderViewController: UINavigationController, TopHeaderNavigationControllerProtocol {
     @objc public var state: HRPGTopHeaderState = HRPGTopHeaderStateVisible
     @objc public let defaultNavbarHiddenColor = UIColor.purple300()
     @objc public let defaultNavbarVisibleColor = UIColor.white
@@ -154,7 +186,7 @@ class TopHeaderViewController: UINavigationController {
     public func setShouldHideTopHeader(_ shouldHide: Bool, animated: Bool) {
         if shouldHideTopHeader != shouldHide {
             shouldHideTopHeader = shouldHide
-            if (shouldHide) {
+            if shouldHide {
                 hideHeader(animated: animated)
             } else {
                 showHeader(animated: animated)
@@ -171,8 +203,7 @@ class TopHeaderViewController: UINavigationController {
         frame.origin.y = self.bgViewOffset
         self.headerYPosition = frame.origin.y
         UIView.animate(withDuration: animated ? 0.3 : 0.0, delay: 0, options: .curveEaseInOut, animations: {
-            self.backgroundView.frame = frame
-            self.setNavigationBarColors(0)
+            self.setNewFrame(frame)
         }, completion: nil)
     }
     
@@ -183,13 +214,15 @@ class TopHeaderViewController: UINavigationController {
         frame.origin.y = -frame.size.height
         self.headerYPosition = frame.origin.y
         UIView.animate(withDuration: animated ? 0.3 : 0.0, delay: 0, options: .curveEaseInOut, animations: {
-            self.backgroundView.frame = frame
-            if !self.shouldHideTopHeader {
-                self.setNavigationBarColors(1)
-            } else {
-                self.setNavigationBarColors(0)
-            }
+            self.setNewFrame(frame)
         }, completion: nil)
+    }
+    
+    func setNewFrame(_ frame: CGRect) {
+        self.backgroundView.frame = frame
+        self.setNavigationBarColors(self.shouldHideTopHeader ? 0 : 1)
+        self.alternativeHeaderView?.alpha = self.shouldHideTopHeader ? 0 : 1
+        self.headerView?.alpha = self.shouldHideTopHeader ? 0 : 1
     }
     
     @objc
@@ -233,7 +266,8 @@ class TopHeaderViewController: UINavigationController {
         self.setNavigationBarColors(navbarColorBlendingAlpha)
     }
     
-    func setNavigationBarColors(_ alpha: CGFloat) {
+    @objc
+    public func setNavigationBarColors(_ alpha: CGFloat) {
         self.upperBackgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
         self.backgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
         self.navigationBar.tintColor = UIColor.purple400().blend(with: .white, alpha: alpha)
@@ -273,7 +307,6 @@ class TopHeaderViewController: UINavigationController {
         self.alternativeHeaderView = nil
         if let header = self.headerView {
             self.backgroundView.addSubview(header)
-            self.showHeader(animated: false)
         }
         self.viewWillLayoutSubviews()
     }
