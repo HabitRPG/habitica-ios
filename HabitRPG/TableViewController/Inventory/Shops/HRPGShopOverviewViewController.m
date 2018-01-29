@@ -36,7 +36,21 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    self.topHeaderNavigationController.shouldHideTopHeader = YES;
+    [self.topHeaderNavigationController hideHeaderWithAnimated:NO];
+    [self.topHeaderNavigationController stopFollowingScrollView];
+    [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
     [self.tableView reloadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.topHeaderNavigationController.shouldHideTopHeader = YES;
+    [self.topHeaderNavigationController hideHeaderWithAnimated:NO];
+    [self.topHeaderNavigationController stopFollowingScrollView];
+    [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 
 - (void)setupShopDictionary {

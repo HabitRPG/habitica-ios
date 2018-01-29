@@ -15,8 +15,6 @@ class ChallengeDetailsTableViewController: FixedSizeTableViewController {
         super.viewDidLoad()
         
         title = "Details"
-        
-        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
         viewModel?.cellModelsSignal.observeValues({ (sections) in
             self.dataSource.sections = sections
@@ -47,9 +45,19 @@ class ChallengeDetailsTableViewController: FixedSizeTableViewController {
         self.viewModel?.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.topHeaderNavigationController.setShouldHideTopHeader(true, animated: false)
+        self.topHeaderNavigationController.stopFollowingScrollView()
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.topHeaderNavigationController.setShouldHideTopHeader(true, animated: false)
+        self.topHeaderNavigationController.stopFollowingScrollView()
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     

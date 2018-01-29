@@ -32,7 +32,11 @@
 @implementation HRPGShopViewController
 
 - (void)viewDidLoad {
+    self.topHeaderNavigationController.shouldHideTopHeader = NO;
+    [self.topHeaderNavigationController setAlternativeHeaderView:self.shopBannerView];
+
     [super viewDidLoad];
+    
     self.topHeaderCoordinator.alternativeHeader = self.shopBannerView;
 
     [self setupNavBar];

@@ -1400,45 +1400,6 @@ Invite friends now to earn a Quest Scroll!</string>
             </objects>
             <point key="canvasLocation" x="2890" y="3884"/>
         </scene>
-        <!--Challenge Detail Table View Controller-->
-        <scene sceneID="mNn-0E-AvO">
-            <objects>
-                <tableViewController id="UVz-HW-Tqj" customClass="ChallengeDetailTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="VvY-Kp-DUc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="CEm-cZ-jgm">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CEm-cZ-jgm" id="Us5-jL-vP8">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="UVz-HW-Tqj" id="M8a-uQ-lBM"/>
-                            <outlet property="delegate" destination="UVz-HW-Tqj" id="Hmb-LX-Xb8"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="9Ej-2z-PxV">
-                        <barButtonItem key="rightBarButtonItem" title="Leave" id="8I3-3f-XWz">
-                            <connections>
-                                <action selector="joinLeaveTapped:" destination="UVz-HW-Tqj" id="wAf-PV-bIX"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="joinLeaveButton" destination="8I3-3f-XWz" id="Tce-tp-iOF"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0kd-Gx-ciV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1593" y="5030"/>
-        </scene>
         <!--Challenge Details Table View Controller-->
         <scene sceneID="w6C-fL-Avu">
             <objects>
@@ -1456,7 +1417,7 @@ Invite friends now to earn a Quest Scroll!</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUH-pH-siP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="742" y="5813"/>
+            <point key="canvasLocation" x="1497" y="5030"/>
         </scene>
         <!--Members-->
         <scene sceneID="g8Z-ZM-3o1">
@@ -2234,7 +2195,7 @@ Invite friends now to earn a Quest Scroll!</string>
                         <viewControllerLayoutGuide type="bottom" id="2nR-i8-He8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ye8-1F-ID7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLc-mV-bsJ">
@@ -2248,11 +2209,11 @@ Invite friends now to earn a Quest Scroll!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <webView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHB-Pq-EF3">
-                                <rect key="frame" x="0.0" y="136.5" width="375" height="466.5"/>
+                                <rect key="frame" x="0.0" y="136.5" width="375" height="530.5"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7z-X9-NMm">
-                                <rect key="frame" x="0.0" y="559" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="cancel" id="WTk-yZ-gdz">
                                         <connections>
@@ -2520,7 +2481,6 @@ Invite friends now to earn a Quest Scroll!</string>
                     </tableView>
                     <navigationItem key="navigationItem" title="Challenges" id="OHs-Q2-g2k"/>
                     <connections>
-                        <segue destination="UVz-HW-Tqj" kind="show" identifier="ChallengeDetailSegue" id="DaI-oi-4AM"/>
                         <segue destination="LJL-4h-PRX" kind="show" identifier="challengeDetailsSegue" id="XbT-AM-M1f"/>
                     </connections>
                 </tableViewController>
@@ -2890,17 +2850,8 @@ Invite friends now to earn a Quest Scroll!</string>
         <image name="pillGryphon" width="14" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CPW-wy-yYL"/>
-        <segue reference="Jab-rS-wPn"/>
-        <segue reference="9hs-wq-6bn"/>
-        <segue reference="kns-o3-fej"/>
-        <segue reference="6R8-Nh-Pn7"/>
-        <segue reference="Hfa-0k-B92"/>
-        <segue reference="EV0-ra-m7s"/>
-        <segue reference="VUt-se-F6s"/>
-        <segue reference="wif-V9-Mcy"/>
         <segue reference="jBF-PN-2IP"/>
-        <segue reference="VPE-S9-CFY"/>
+        <segue reference="vfM-rh-2w8"/>
         <segue reference="CUP-gn-Xug"/>
         <segue reference="kns-o3-fej"/>
         <segue reference="2KU-R3-vSq"/>

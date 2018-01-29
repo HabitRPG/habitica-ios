@@ -40,30 +40,31 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
 
         self.configureTableView()
         HRPGManager.shared().fetchChallenges(nil, onError: nil)
-
+        
+        self.segmentedFilterControl.selectedSegmentIndex = 0
+        self.segmentedFilterControl.tintColor = UIColor.purple300()
+        self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let segmentedWrapper = PaddedView()
+        segmentedWrapper.containedView = self.segmentedFilterControl
+        
+        if let navController = self.topHeaderNavigationController {
+            navController.setAlternativeHeaderView(segmentedWrapper)
+            navController.setShouldHideTopHeader(true, animated: false)
+            self.tableView.contentInset = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
+            self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
+        }
+        
         let subscriber = Signal<Bool, NSError>.Observer(value: {[weak self] in
             self?.handleJoinLeave(isMember: $0)
         })
         disposable = CompositeDisposable()
         disposable.add(self.joinInteractor?.reactive.take(during: self.lifetime).observe(subscriber))
         disposable.add(self.leaveInteractor?.reactive.take(during: self.lifetime).observe(subscriber))
-
-        self.segmentedFilterControl.selectedSegmentIndex = 0
-        self.segmentedFilterControl.tintColor = UIColor.purple300()
-        self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
-
-        let segmentedWrapper = PaddedView()
-        segmentedWrapper.containedView = self.segmentedFilterControl
-
-        if let navController = self.topHeaderNavigationController {
-            navController.setAlternativeHeaderView(segmentedWrapper)
-            self.tableView.contentInset = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
-            self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
-        }
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 80))
         
@@ -85,18 +86,19 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if self.topHeaderNavigationController.shouldHideTopHeader {
-            self.topHeaderNavigationController.shouldHideTopHeader = false
-            self.tableView.contentInset = UIEdgeInsets(top: self.topHeaderNavigationController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
-            self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: self.topHeaderNavigationController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
-            self.tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
+        if let navController = self.topHeaderNavigationController {
+            navController.setNavigationBarColors(1)
+            navController.hideNavbar = false
+            navController.showHeader(animated: true)
+            navController.setShouldHideTopHeader(false, animated: true)
+            self.tableView.contentInset = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
+            self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
         }
+        
+        self.tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        if let navController = self.topHeaderNavigationController {
-            navController.removeAlternativeHeaderView()
-        }
         disposable.dispose()
         super.viewWillDisappear(animated)
     }
@@ -152,33 +154,6 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         self.selectedChallenge = selectedChallenge
         
         self.performSegue(withIdentifier: "challengeDetailsSegue", sender: self)
-//        if showOnlyUserChallenges {
-//            self.performSegue(withIdentifier: "ChallengeDetailSegue", sender: self)
-//        } else {
-//            let viewController = ChallengeDetailAlert(nibName: "ChallengeDetailAlert", bundle: Bundle.main)
-//            HRPGManager.shared().fetchChallengeTasks(self.selectedChallenge, onSuccess: {[weak self] () in
-//                viewController.challenge = self?.selectedChallenge
-//            }, onError: nil)
-//            viewController.challenge = self.selectedChallenge
-//            viewController.joinLeaveAction = {[weak self] isMember in
-//                guard let challenge = self?.selectedChallenge else {
-//                    return
-//                }
-//                if let weakSelf = self {
-//                    if isMember {
-//                        weakSelf.joinInteractor?.run(with: challenge)
-//                    } else {
-//                        weakSelf.leaveInteractor?.run(with: challenge)
-//                    }
-//                }
-//            }
-//            let popup = PopupDialog(viewController: viewController) {[weak self] in
-//                self?.displayedAlert = nil
-//                self?.tableView.deselectRow(at: indexPath, animated: true)
-//            }
-//            self.displayedAlert = viewController
-//            self.present(popup, animated: true, completion: nil)
-//        }
     }
 
     func handleJoinLeave(isMember: Bool) {
@@ -193,9 +168,6 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
                 let viewModel = ChallengeDetailViewModel(challenge: selectedChallenge)
                 vc.viewModel = viewModel
             }
-        }
-        if let challengeDetailViewController = segue.destination as? ChallengeDetailTableViewController {
-            challengeDetailViewController.challengeId = self.selectedChallenge?.id
         }
     }
 
