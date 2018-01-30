@@ -107,6 +107,7 @@ NSString *currentUserID;
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.topHeaderNavigationController stopFollowingScrollView];
+    [self.topHeaderNavigationController showHeaderWithAnimated:NO];
     
     if (self.topHeaderNavigationController.shouldHideTopHeader) {
         self.topHeaderNavigationController.shouldHideTopHeader = NO;

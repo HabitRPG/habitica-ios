@@ -137,6 +137,12 @@ class QuestProgressView: UIView {
         
         bossArtCarret.tintColor = colorExtraLight
         bossArtCreditLabel.textColor = colorExtraLight
+        
+        for view in rageStrikeContainer.arrangedSubviews {
+            if let rageStrikeView = view as? RageStrikeView {
+                rageStrikeView.bossName = quest.bossName ?? ""
+            }
+        }
     }
     
     @objc
@@ -151,6 +157,7 @@ class QuestProgressView: UIView {
         }
         for rageStrike in group.rageStrikes {
             let rageStrikeView = RageStrikeView()
+            rageStrikeView.locationIdentifier = rageStrike.key
             rageStrikeView.isActive = rageStrike.value.boolValue
             rageStrikeContainer.addArrangedSubview(rageStrikeView)
         }
