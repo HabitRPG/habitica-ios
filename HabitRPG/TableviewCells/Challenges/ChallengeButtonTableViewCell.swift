@@ -23,7 +23,7 @@ class ChallengeButtonTableViewCell: UITableViewCell {
     }
 }
 
-class ButtonCellFixedSizeDataSourceItem: ConcreteFixedSizeDataSourceItem<ChallengeButtonTableViewCell> {
+class ButtonCellMultiModelDataSourceItem: ConcreteMultiModelDataSourceItem<ChallengeButtonTableViewCell> {
     let attributeProvider: HRPGButtonAttributeProvider?
     let inputs: HRPGButtonModelInputs?
     

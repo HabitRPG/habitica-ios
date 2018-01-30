@@ -8,8 +8,8 @@
 
 import UIKit
 
-class FixedSizeTableViewController: HRPGBaseViewController {
-    let dataSource: FixedSizeDataSource = FixedSizeDataSource()
+class MultiModelTableViewController: HRPGBaseViewController {
+    let dataSource: MultiModelDataSource = MultiModelDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol FixedSizeDataSourceItem {
+protocol MultiModelDataSourceItem {
     func cellIdentifier() -> String
     func cellClass() -> UITableViewCell.Type
     func configureCell(_ cell: UITableViewCell)
 }
 
-class ConcreteFixedSizeDataSourceItem<T>: FixedSizeDataSourceItem where T: UITableViewCell {
+class ConcreteMultiModelDataSourceItem<T>: MultiModelDataSourceItem where T: UITableViewCell {
     private let identifier: String
     
     init(identifier: String) {
@@ -36,20 +36,20 @@ class ConcreteFixedSizeDataSourceItem<T>: FixedSizeDataSourceItem where T: UITab
 
 // MARK: -
 
-class FixedSizeDataSourceSection {
+class MultiModelDataSourceSection {
     var title: String?
-    var items: [FixedSizeDataSourceItem]?
+    var items: [MultiModelDataSourceItem]?
 }
 
 // MARK: -
 
-class FixedSizeDataSource: NSObject, UITableViewDataSource {
+class MultiModelDataSource: NSObject, UITableViewDataSource {
     var tableView: UITableView? {
         didSet {
             registerCells()
         }
     }
-    var sections: [FixedSizeDataSourceSection]? {
+    var sections: [MultiModelDataSourceSection]? {
         didSet {
             registerCells()
         }

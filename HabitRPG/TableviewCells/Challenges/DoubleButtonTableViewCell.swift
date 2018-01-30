@@ -32,7 +32,7 @@ class DoubleButtonTableViewCell: UITableViewCell {
     }
 }
 
-class DoubleButtonFixedSizeDataSourceItem: ConcreteFixedSizeDataSourceItem<DoubleButtonTableViewCell> {
+class DoubleButtonMultiModelDataSourceItem: ConcreteMultiModelDataSourceItem<DoubleButtonTableViewCell> {
     let leftAttributeProvider: HRPGButtonAttributeProvider?
     let leftInputs: HRPGButtonModelInputs?
     let rightAttributeProvider: HRPGButtonAttributeProvider?

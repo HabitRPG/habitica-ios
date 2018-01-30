@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChallengeDetailsTableViewController: FixedSizeTableViewController {
+class ChallengeDetailsTableViewController: MultiModelTableViewController {
     var viewModel: ChallengeDetailViewModel?
 
     override func viewDidLoad() {

@@ -121,6 +121,7 @@
 		4908641D1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908641C1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift */; };
 		4908642E1F45316700BD9896 /* HRPGInsufficientGoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908642D1F45316700BD9896 /* HRPGInsufficientGoldViewController.swift */; };
 		490864301F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908642F1F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift */; };
+		491C6E5B2020FE64005030A2 /* Challenge-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */; };
 		493ECBB31F47A1100099B1FC /* HRPGItemStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493ECBB21F47A1100099B1FC /* HRPGItemStatsView.swift */; };
 		493ECBB51F47A58F0099B1FC /* HRPGItemStatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 493ECBB41F47A58F0099B1FC /* HRPGItemStatsView.xib */; };
 		493ECBB71F47D7E10099B1FC /* HRPGGearSetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493ECBB61F47D7E10099B1FC /* HRPGGearSetItem.swift */; };
@@ -163,9 +164,9 @@
 		49DCB7BC1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7BB1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift */; };
 		49DCB7C21F40D7F10079FDD0 /* HRPGShopBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7C11F40D7F00079FDD0 /* HRPGShopBannerView.swift */; };
 		49DCB7C41F40D80B0079FDD0 /* HRPGShopBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7C31F40D80B0079FDD0 /* HRPGShopBannerView.xib */; };
-		49DCECA71F96ECEF00982E99 /* FixedSizeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECA61F96ECEF00982E99 /* FixedSizeDataSource.swift */; };
+		49DCECA71F96ECEF00982E99 /* MultiModelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECA61F96ECEF00982E99 /* MultiModelDataSource.swift */; };
 		49DCECA91F96F8DE00982E99 /* ChallengeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECA81F96F8DE00982E99 /* ChallengeDetailViewModel.swift */; };
-		49DCECE81F9A843E00982E99 /* FixedSizeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECE71F9A843E00982E99 /* FixedSizeTableViewController.swift */; };
+		49DCECE81F9A843E00982E99 /* MultiModelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECE71F9A843E00982E99 /* MultiModelTableViewController.swift */; };
 		49DCECEA1F9A84AF00982E99 /* ChallengeDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECE91F9A84AF00982E99 /* ChallengeDetailsTableViewController.swift */; };
 		49E3784F200912BA00E0DA3D /* ResizableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3784E200912BA00E0DA3D /* ResizableTableViewCell.swift */; };
 		49E378512009540500E0DA3D /* ChallengeTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E378502009540500E0DA3D /* ChallengeTableViewHeaderView.swift */; };
@@ -598,6 +599,7 @@
 		4908641C1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGInsufficientGemsViewController.swift; sourceTree = "<group>"; };
 		4908642D1F45316700BD9896 /* HRPGInsufficientGoldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGInsufficientGoldViewController.swift; sourceTree = "<group>"; };
 		4908642F1F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGInsufficientHourglassesViewController.swift; sourceTree = "<group>"; };
+		491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge-Extensions.swift"; sourceTree = "<group>"; };
 		493ECBB21F47A1100099B1FC /* HRPGItemStatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGItemStatsView.swift; sourceTree = "<group>"; };
 		493ECBB41F47A58F0099B1FC /* HRPGItemStatsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGItemStatsView.xib; sourceTree = "<group>"; };
 		493ECBB61F47D7E10099B1FC /* HRPGGearSetItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGGearSetItem.swift; sourceTree = "<group>"; };
@@ -649,9 +651,9 @@
 		49DCB7BB1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGCloseableShopModalView.swift; sourceTree = "<group>"; };
 		49DCB7C11F40D7F00079FDD0 /* HRPGShopBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopBannerView.swift; sourceTree = "<group>"; };
 		49DCB7C31F40D80B0079FDD0 /* HRPGShopBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopBannerView.xib; sourceTree = "<group>"; };
-		49DCECA61F96ECEF00982E99 /* FixedSizeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedSizeDataSource.swift; sourceTree = "<group>"; };
+		49DCECA61F96ECEF00982E99 /* MultiModelDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiModelDataSource.swift; sourceTree = "<group>"; };
 		49DCECA81F96F8DE00982E99 /* ChallengeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailViewModel.swift; sourceTree = "<group>"; };
-		49DCECE71F9A843E00982E99 /* FixedSizeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FixedSizeTableViewController.swift; path = HabitRPG/TableViewController/FixedSizeTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		49DCECE71F9A843E00982E99 /* MultiModelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultiModelTableViewController.swift; path = HabitRPG/TableViewController/MultiModelTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		49DCECE91F9A84AF00982E99 /* ChallengeDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailsTableViewController.swift; sourceTree = "<group>"; };
 		49E3784E200912BA00E0DA3D /* ResizableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableTableViewCell.swift; sourceTree = "<group>"; };
 		49E378502009540500E0DA3D /* ChallengeTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewHeaderView.swift; sourceTree = "<group>"; };
@@ -1406,7 +1408,7 @@
 				D9FBC0F11D538B5C008C9EF4 /* HRPGCoreDataDatasourceDelegate.h */,
 				494E54021F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.h */,
 				494E54031F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m */,
-				49DCECA61F96ECEF00982E99 /* FixedSizeDataSource.swift */,
+				49DCECA61F96ECEF00982E99 /* MultiModelDataSource.swift */,
 			);
 			name = TVDataSources;
 			sourceTree = "<group>";
@@ -1543,7 +1545,7 @@
 			children = (
 				D99F15BE191027D90081836E /* HRPGBaseViewController.h */,
 				D99F15BF191027D90081836E /* HRPGBaseViewController.m */,
-				49DCECE71F9A843E00982E99 /* FixedSizeTableViewController.swift */,
+				49DCECE71F9A843E00982E99 /* MultiModelTableViewController.swift */,
 				D9B5C0B518D5C07100C8D1B7 /* HRPGProfileViewController.h */,
 				D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */,
 				D966557218FB129F0014C09D /* HRPGSettingsViewController.h */,
@@ -1660,6 +1662,7 @@
 				29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */,
 				29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */,
 				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
+				491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3277,7 +3280,7 @@
 				D9D593661D008C7500D6C388 /* PushDevice+CoreDataProperties.m in Sources */,
 				49A84FB21F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift in Sources */,
 				D92CDAEA18CB8C130006C242 /* HRPGFormViewController.m in Sources */,
-				49DCECA71F96ECEF00982E99 /* FixedSizeDataSource.swift in Sources */,
+				49DCECA71F96ECEF00982E99 /* MultiModelDataSource.swift in Sources */,
 				D905D08A1DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m in Sources */,
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
 				2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */,
@@ -3341,9 +3344,10 @@
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
 				D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */,
 				D96BFC4F1E191D7200266EEF /* UIAlertController-Extensions.swift in Sources */,
-				49DCECE81F9A843E00982E99 /* FixedSizeTableViewController.swift in Sources */,
+				49DCECE81F9A843E00982E99 /* MultiModelTableViewController.swift in Sources */,
 				293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */,
 				D9AEA8A11C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m in Sources */,
+				491C6E5B2020FE64005030A2 /* Challenge-Extensions.swift in Sources */,
 				D98F5DBE1C6A1D770035CBEC /* HRPGChatTableViewCell.m in Sources */,
 				2957B8C81F4DCF7800E836EF /* RewardFormController.swift in Sources */,
 				D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */,

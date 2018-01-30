@@ -20,7 +20,7 @@ protocol ChallengeDetailViewModelInputs {
 }
 
 protocol ChallengeDetailViewModelOutputs {
-    var cellModelsSignal: Signal<[FixedSizeDataSourceSection], NoError> { get }
+    var cellModelsSignal: Signal<[MultiModelDataSourceSection], NoError> { get }
     var reloadTableSignal: Signal<Void, NoError> { get }
     var animateUpdatesSignal: Signal<(), NoError> { get }
 }
@@ -34,7 +34,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     var inputs: ChallengeDetailViewModelInputs { return self }
     var outputs: ChallengeDetailViewModelOutputs { return self }
     
-    let cellModelsSignal: Signal<[FixedSizeDataSourceSection], NoError>
+    let cellModelsSignal: Signal<[MultiModelDataSourceSection], NoError>
     let reloadTableSignal: Signal<Void, NoError>
     let animateUpdatesSignal: Signal<(), NoError>
     
@@ -43,17 +43,17 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     let reloadTableProperty = MutableProperty(())
     let animateUpdatesProperty = MutableProperty(())
     
-    let cellModelsProperty: MutableProperty<[FixedSizeDataSourceSection]> = MutableProperty<[FixedSizeDataSourceSection]>([])
-    let infoSectionProperty: MutableProperty<FixedSizeDataSourceSection> = MutableProperty<FixedSizeDataSourceSection>(FixedSizeDataSourceSection())
-    let habitsSectionProperty: MutableProperty<FixedSizeDataSourceSection> = MutableProperty<FixedSizeDataSourceSection>(FixedSizeDataSourceSection())
-    let dailiesSectionProperty: MutableProperty<FixedSizeDataSourceSection> = MutableProperty<FixedSizeDataSourceSection>(FixedSizeDataSourceSection())
-    let todosSectionProperty: MutableProperty<FixedSizeDataSourceSection> = MutableProperty<FixedSizeDataSourceSection>(FixedSizeDataSourceSection())
-    let rewardsSectionProperty: MutableProperty<FixedSizeDataSourceSection> = MutableProperty<FixedSizeDataSourceSection>(FixedSizeDataSourceSection())
-    let endSectionProperty: MutableProperty<FixedSizeDataSourceSection> = MutableProperty<FixedSizeDataSourceSection>(FixedSizeDataSourceSection())
+    let cellModelsProperty: MutableProperty<[MultiModelDataSourceSection]> = MutableProperty<[MultiModelDataSourceSection]>([])
+    let infoSectionProperty: MutableProperty<MultiModelDataSourceSection> = MutableProperty<MultiModelDataSourceSection>(MultiModelDataSourceSection())
+    let habitsSectionProperty: MutableProperty<MultiModelDataSourceSection> = MutableProperty<MultiModelDataSourceSection>(MultiModelDataSourceSection())
+    let dailiesSectionProperty: MutableProperty<MultiModelDataSourceSection> = MutableProperty<MultiModelDataSourceSection>(MultiModelDataSourceSection())
+    let todosSectionProperty: MutableProperty<MultiModelDataSourceSection> = MutableProperty<MultiModelDataSourceSection>(MultiModelDataSourceSection())
+    let rewardsSectionProperty: MutableProperty<MultiModelDataSourceSection> = MutableProperty<MultiModelDataSourceSection>(MultiModelDataSourceSection())
+    let endSectionProperty: MutableProperty<MultiModelDataSourceSection> = MutableProperty<MultiModelDataSourceSection>(MultiModelDataSourceSection())
     
-    let mainButtonItemProperty: MutableProperty<ButtonCellFixedSizeDataSourceItem?> = MutableProperty<ButtonCellFixedSizeDataSourceItem?>(nil)
-    let endButtonItemProperty: MutableProperty<ButtonCellFixedSizeDataSourceItem?> = MutableProperty<ButtonCellFixedSizeDataSourceItem?>(nil)
-    let doubleEndButtonItemProperty: MutableProperty<DoubleButtonFixedSizeDataSourceItem?> = MutableProperty<DoubleButtonFixedSizeDataSourceItem?>(nil)
+    let mainButtonItemProperty: MutableProperty<ButtonCellMultiModelDataSourceItem?> = MutableProperty<ButtonCellMultiModelDataSourceItem?>(nil)
+    let endButtonItemProperty: MutableProperty<ButtonCellMultiModelDataSourceItem?> = MutableProperty<ButtonCellMultiModelDataSourceItem?>(nil)
+    let doubleEndButtonItemProperty: MutableProperty<DoubleButtonMultiModelDataSourceItem?> = MutableProperty<DoubleButtonMultiModelDataSourceItem?>(nil)
     
     let joinLeaveStyleProvider: JoinLeaveButtonAttributeProvider
     let publishStyleProvider: PublishButtonAttributeProvider
@@ -80,7 +80,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
                    todosSectionProperty.signal,
                    rewardsSectionProperty.signal,
                    endSectionProperty.signal)
-            .map { sectionTuple -> [FixedSizeDataSourceSection] in
+            .map { sectionTuple -> [MultiModelDataSourceSection] in
                 return [sectionTuple.0, sectionTuple.1, sectionTuple.2, sectionTuple.3, sectionTuple.4, sectionTuple.5]
             }
             .observeValues { sections in
@@ -109,12 +109,12 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     
     func setupInfo() {
         challengeProperty.signal.observeValues { (challenge) in
-            let infoItem = ChallengeFixedSizeDataSourceItem<ChallengeDetailInfoTableViewCell>(challenge, identifier: "info")
-            let creatorItem = ChallengeFixedSizeDataSourceItem<ChallengeCreatorTableViewCell>(challenge, identifier: "creator")
-            let categoryItem = ChallengeResizableFixedSizeDataSourceItem<ChallengeCategoriesTableViewCell>(challenge, resizingDelegate: self, identifier: "categories")
-            let descriptionItem = ChallengeResizableFixedSizeDataSourceItem<ChallengeDescriptionTableViewCell>(challenge, resizingDelegate: self, identifier: "description")
+            let infoItem = ChallengeMultiModelDataSourceItem<ChallengeDetailInfoTableViewCell>(challenge, identifier: "info")
+            let creatorItem = ChallengeMultiModelDataSourceItem<ChallengeCreatorTableViewCell>(challenge, identifier: "creator")
+            let categoryItem = ChallengeResizableMultiModelDataSourceItem<ChallengeCategoriesTableViewCell>(challenge, resizingDelegate: self, identifier: "categories")
+            let descriptionItem = ChallengeResizableMultiModelDataSourceItem<ChallengeDescriptionTableViewCell>(challenge, resizingDelegate: self, identifier: "description")
             
-            let infoSection = FixedSizeDataSourceSection()
+            let infoSection = MultiModelDataSourceSection()
             if let mainButton = self.mainButtonItemProperty.value {
                 infoSection.items = [infoItem, mainButton, creatorItem, categoryItem, descriptionItem]
             } else {
@@ -126,28 +126,28 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     
     func setupTasks() {
         challengeProperty.signal.observeValues { (challenge) in
-            let habitsSection = FixedSizeDataSourceSection()
+            let habitsSection = MultiModelDataSourceSection()
             habitsSection.title = "Habits"
-            habitsSection.items = challenge.habits?.map({ (task) -> FixedSizeDataSourceItem in
-                return ChallengeTaskFixedSizeDataSourceItem<HabitTableViewCell>(task, identifier: "habit")
+            habitsSection.items = challenge.habits?.map({ (task) -> MultiModelDataSourceItem in
+                return ChallengeTaskMultiModelDataSourceItem<HabitTableViewCell>(task, identifier: "habit")
             })
             self.habitsSectionProperty.value = habitsSection
             
-            let dailiesSection = FixedSizeDataSourceSection()
+            let dailiesSection = MultiModelDataSourceSection()
             dailiesSection.title = "Dailies"
-            dailiesSection.items = challenge.dailies?.map({ (task) -> FixedSizeDataSourceItem in
-                return ChallengeTaskFixedSizeDataSourceItem<DailyTableViewCell>(task, identifier: "daily")
+            dailiesSection.items = challenge.dailies?.map({ (task) -> MultiModelDataSourceItem in
+                return ChallengeTaskMultiModelDataSourceItem<DailyTableViewCell>(task, identifier: "daily")
             })
             self.dailiesSectionProperty.value = dailiesSection
             
-            let todosSection = FixedSizeDataSourceSection()
+            let todosSection = MultiModelDataSourceSection()
             todosSection.title = "Todos"
-            todosSection.items = challenge.todos?.map({ (task) -> FixedSizeDataSourceItem in
-                return ChallengeTaskFixedSizeDataSourceItem<ToDoTableViewCell>(task, identifier: "todo")
+            todosSection.items = challenge.todos?.map({ (task) -> MultiModelDataSourceItem in
+                return ChallengeTaskMultiModelDataSourceItem<ToDoTableViewCell>(task, identifier: "todo")
             })
             self.todosSectionProperty.value = todosSection
             
-            let rewardsSection = FixedSizeDataSourceSection()
+            let rewardsSection = MultiModelDataSourceSection()
             rewardsSection.title = "Rewards"
             self.rewardsSectionProperty.value = rewardsSection
         }
@@ -158,13 +158,13 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         let unownedChallengeSignal = challengeProperty.signal.filter({ !Challenge.isOwner(of: $0) })
         
         endButtonItemProperty.signal.skipNil().observeValues { (item) in
-            let endSection = FixedSizeDataSourceSection()
+            let endSection = MultiModelDataSourceSection()
             endSection.items = [item]
             self.endSectionProperty.value = endSection
         }
         
         doubleEndButtonItemProperty.signal.skipNil().observeValues { (item) in
-            let endSection = FixedSizeDataSourceSection()
+            let endSection = MultiModelDataSourceSection()
             endSection.items = [item]
             self.endSectionProperty.value = endSection
         }
@@ -172,32 +172,32 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         let endButtonNilSignal = endButtonItemProperty.signal.map { $0 == nil }
         let doubleEndButtonNilSignal = doubleEndButtonItemProperty.signal.map { $0 == nil }
         endButtonNilSignal.and(doubleEndButtonNilSignal).filter({ $0 }).observeValues({ _ in
-            let endSection = FixedSizeDataSourceSection()
+            let endSection = MultiModelDataSourceSection()
             self.endSectionProperty.value = endSection
             
         })
         
         ownedChallengeSignal.observeValues { _ in
-            self.doubleEndButtonItemProperty.value = DoubleButtonFixedSizeDataSourceItem(identifier: "endButton", leftAttributeProvider: self.joinLeaveStyleProvider, leftInputs: self.joinLeaveStyleProvider,
+            self.doubleEndButtonItemProperty.value = DoubleButtonMultiModelDataSourceItem(identifier: "endButton", leftAttributeProvider: self.joinLeaveStyleProvider, leftInputs: self.joinLeaveStyleProvider,
                                                                                          rightAttributeProvider: self.endChallengeStyleProvider, rightInputs: self.endChallengeStyleProvider)
         }
         ownedChallengeSignal.filter(Challenge.isPublished(_:)).observeValues { _ in
-            self.mainButtonItemProperty.value = ButtonCellFixedSizeDataSourceItem(attributeProvider: self.participantsStyleProvider, inputs: self.participantsStyleProvider, identifier: "mainButton")
+            self.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.participantsStyleProvider, inputs: self.participantsStyleProvider, identifier: "mainButton")
         }
         ownedChallengeSignal.filter({ !Challenge.isPublished($0) }).observeValues { _ in
-            self.mainButtonItemProperty.value = ButtonCellFixedSizeDataSourceItem(attributeProvider: self.publishStyleProvider, inputs: self.publishStyleProvider, identifier: "mainButton")
+            self.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.publishStyleProvider, inputs: self.publishStyleProvider, identifier: "mainButton")
         }
         
         unownedChallengeSignal.observeValues { _ in
             self.doubleEndButtonItemProperty.value = nil
         }
         unownedChallengeSignal.filter(Challenge.isJoinable(challenge:)).observeValues { _ in
-            self.mainButtonItemProperty.value = ButtonCellFixedSizeDataSourceItem(attributeProvider: self.joinLeaveStyleProvider, inputs: self.joinLeaveStyleProvider, identifier: "mainButton")
+            self.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.joinLeaveStyleProvider, inputs: self.joinLeaveStyleProvider, identifier: "mainButton")
             self.endButtonItemProperty.value = nil
             self.doubleEndButtonItemProperty.value = nil
         }
         unownedChallengeSignal.filter({ !Challenge.isJoinable(challenge: $0) }).observeValues { _ in
-            self.endButtonItemProperty.value = ButtonCellFixedSizeDataSourceItem(attributeProvider: self.joinLeaveStyleProvider, inputs: self.joinLeaveStyleProvider, identifier: "mainButton")
+            self.endButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.joinLeaveStyleProvider, inputs: self.joinLeaveStyleProvider, identifier: "mainButton")
         }
     }
     
@@ -259,7 +259,7 @@ protocol ChallengeConfigurable {
 
 // MARK: -
 
-class ChallengeFixedSizeDataSourceItem<T>: ConcreteFixedSizeDataSourceItem<T> where T: UITableViewCell, T: ChallengeConfigurable {
+class ChallengeMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem<T> where T: UITableViewCell, T: ChallengeConfigurable {
     private let challenge: Challenge
     
     init(_ challenge: Challenge, identifier: String) {
@@ -276,7 +276,7 @@ class ChallengeFixedSizeDataSourceItem<T>: ConcreteFixedSizeDataSourceItem<T> wh
 
 // MARK: -
 
-class ChallengeResizableFixedSizeDataSourceItem<T>: ChallengeFixedSizeDataSourceItem<T> where T: ChallengeConfigurable, T: ResizableTableViewCell {
+class ChallengeResizableMultiModelDataSourceItem<T>: ChallengeMultiModelDataSourceItem<T> where T: ChallengeConfigurable, T: ResizableTableViewCell {
     weak var resizingDelegate: ResizableTableViewCellDelegate?
     
     init(_ challenge: Challenge, resizingDelegate: ResizableTableViewCellDelegate?, identifier: String) {
@@ -296,7 +296,7 @@ class ChallengeResizableFixedSizeDataSourceItem<T>: ChallengeFixedSizeDataSource
 
 // MARK: -
 
-class ChallengeTaskFixedSizeDataSourceItem<T>: ConcreteFixedSizeDataSourceItem<T> where T: TaskTableViewCell {
+class ChallengeTaskMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem<T> where T: TaskTableViewCell {
     private let challengeTask: ChallengeTask
     
     public init(_ challengeTask: ChallengeTask, identifier: String) {

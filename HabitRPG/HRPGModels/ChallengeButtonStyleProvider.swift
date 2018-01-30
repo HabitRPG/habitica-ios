@@ -14,65 +14,6 @@ protocol ChallengeButtonStyleProvider: HRPGButtonAttributeProvider, HRPGButtonMo
     var challengeUpdatedSignal: Signal<Bool, NoError> { get }
 }
 
-extension Challenge {
-    
-    static func shouldBePublishable(challenge: Challenge?) -> Bool {
-        if !isOwner(of: challenge) {
-            return false
-        } else {
-            let hasDailies = challenge?.dailies?.count ?? 0 > 0
-            let hasHabits = challenge?.habits?.count ?? 0 > 0
-            let hasTodos = challenge?.todos?.count ?? 0 > 0
-            let hasRewards = challenge?.rewards?.count ?? 0 > 0
-            
-            return hasDailies || hasHabits || hasTodos || hasRewards
-        }
-    }
-    
-    static func shouldBeUnpublishable(challenge: Challenge?) -> Bool {
-        if !isOwner(of: challenge) {
-            return false
-        } else {
-            let hasDailies = challenge?.dailies?.count ?? 0 > 0
-            let hasHabits = challenge?.habits?.count ?? 0 > 0
-            let hasTodos = challenge?.todos?.count ?? 0 > 0
-            let hasRewards = challenge?.rewards?.count ?? 0 > 0
-            
-            return !(hasDailies || hasHabits || hasTodos || hasRewards)
-        }
-    }
-    
-    static func shouldEnable(challenge: Challenge?) -> Bool {
-        if !isOwner(of: challenge) {
-            return true
-        } else {
-            let hasDailies = challenge?.dailies?.count ?? 0 > 0
-            let hasHabits = challenge?.habits?.count ?? 0 > 0
-            let hasTodos = challenge?.todos?.count ?? 0 > 0
-            let hasRewards = challenge?.rewards?.count ?? 0 > 0
-            
-            return hasDailies || hasHabits || hasTodos || hasRewards
-        }
-    }
-    
-    static func isOwner(of challenge: Challenge?) -> Bool {
-        return false
-    }
-    
-    static func isPublished(_ challenge: Challenge?) -> Bool {
-        return false
-    }
-    
-    static func isEndable(_ challenge: Challenge?) -> Bool {
-        return false
-    }
-    
-    static func isJoinable(challenge: Challenge?) -> Bool {
-        return challenge?.user == nil
-    }
-    
-}
-
 class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
     
     let challengeProperty: MutableProperty<Challenge?> = MutableProperty<Challenge?>(nil)
@@ -83,7 +24,7 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
     let challengeUpdatedSignal: Signal<Bool, NoError>
     let challengeUpdatedProperty = MutableProperty(())
     
-    let promptProperty = MutableProperty<UIAlertController?>(nil)
+    let promptProperty = MutableProperty<UIViewController?>(nil)
     
     let bgColorSignal: Signal<UIColor?, NoError>
     let titleSignal: Signal<String, NoError>
@@ -123,21 +64,20 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
         challengeProperty.value = challenge
     }
     
-    func leavePrompt() -> UIAlertController {
-        let alert = UIAlertController(title: NSLocalizedString("Leave Challenge?", comment: ""),
-                                      message: NSLocalizedString("Do you want to leave the challenge and keep or delete the tasks?", comment: ""),
-                                      preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Keep tasks", comment: ""), style: .default, handler: { (_) in
+    func leavePrompt() -> UIViewController {
+        let alert = HabiticaAlertController(title: NSLocalizedString("Leave Challenge?", comment: ""),
+                                            message: NSLocalizedString("Do you want to leave the challenge and keep or delete the tasks?", comment: ""))
+        alert.addAction(title: NSLocalizedString("Keep tasks", comment: ""), style: .default, handler: { (_) in
             HRPGManager.shared().leave(self.challengeProperty.value, keepTasks: true, onSuccess: {
                 self.challengeUpdatedProperty.value = ()
             }, onError: nil)
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Delete tasks", comment: ""), style: .default, handler: { (_) in
+        })
+        alert.addAction(title: NSLocalizedString("Delete tasks", comment: ""), style: .default, handler: { (_) in
             HRPGManager.shared().leave(self.challengeProperty.value, keepTasks: false, onSuccess: {
                 self.challengeUpdatedProperty.value = ()
             }, onError: nil)
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (_) in }))
+        })
+        alert.addAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (_) in })
         
         return alert
     }

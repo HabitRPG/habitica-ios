@@ -33,14 +33,16 @@ class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
     
     func configure(user: User?) {
         if let member = user {
-            if let avatar = member.getAvatarViewShowsBackground(true, showsMount: false, showsPet: false) {
-                avatarView.addSubview(avatar)
-                avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(-10)-[avatar]-(0)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
-                avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-15)-[avatar]-(-10)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
-                
-                setNeedsUpdateConstraints()
-                setNeedsLayout()
-                layoutIfNeeded()
+            if avatarView.subviews.count == 0 {
+                if let avatar = member.getAvatarViewShowsBackground(true, showsMount: false, showsPet: false) {
+                    avatarView.addSubview(avatar)
+                    avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(-10)-[avatar]-(0)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
+                    avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-15)-[avatar]-(-10)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
+                    
+                    setNeedsUpdateConstraints()
+                    setNeedsLayout()
+                    layoutIfNeeded()
+                }
             }
         }
     }
