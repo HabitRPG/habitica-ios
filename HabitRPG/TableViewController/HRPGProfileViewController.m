@@ -27,10 +27,15 @@ NSInteger userLevel;
 NSString *currentUserID;
 
 - (void)viewDidLoad {
-    self.topHeaderNavigationController.hideNavbar = YES;
     [super viewDidLoad];
     self.navbarColor = [UIColor purple300];
     self.navbarView = (MenuNavigationBarView *)[MenuNavigationBarView loadFromNibWithNibName:@"MenuNavigationBarView"];
+    self.topHeaderCoordinator.hideNavBar = YES;
+    self.topHeaderCoordinator.alternativeHeader = self.navbarView;
+    self.topHeaderCoordinator.navbarVisibleColor = self.navbarColor;
+    self.topHeaderCoordinator.followScrollView = NO;
+    self.navbarColor = [UIColor purple300];
+    self.navbarView.backgroundColor = self.navbarColor;
     __weak HRPGProfileViewController *weakSelf = self;
     [self.navbarView setMessagesAction:^{
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
@@ -68,11 +73,6 @@ NSString *currentUserID;
     
     [self showWorldBossIfNeeded];
     
-    TopHeaderViewController *navigationController =
-    (TopHeaderViewController *)self.navigationController;
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationController.contentInset, 0, 0, 0);
-    [self.tableView setContentInset:(UIEdgeInsetsMake(navigationController.contentInset, 0, -150, 0))];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reloadPartyData:)
                                                  name:@"partyUpdated"
@@ -83,12 +83,7 @@ NSString *currentUserID;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.topHeaderNavigationController setAlternativeHeaderView:self.navbarView];
-    [self.topHeaderNavigationController showHeaderWithAnimated:NO];
     [super viewWillAppear:animated];
-    self.topHeaderNavigationController.navbarVisibleColor = self.navbarColor;
-    self.navbarView.backgroundColor = self.navbarColor;
-    self.topHeaderNavigationController.hideNavbar = YES;
     if (![currentUserID isEqualToString:[HRPGManager.sharedManager getUser].id]) {
         // user has changed. Reload data.
         currentUserID = [HRPGManager.sharedManager getUser].id;
@@ -102,22 +97,6 @@ NSString *currentUserID;
         [self.tableView reloadData];
     }
     self.navigationItem.title = NSLocalizedString(@"Menu", nil);
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self.topHeaderNavigationController stopFollowingScrollView];
-    [self.topHeaderNavigationController showHeaderWithAnimated:NO];
-    
-    if (self.topHeaderNavigationController.shouldHideTopHeader) {
-        self.topHeaderNavigationController.shouldHideTopHeader = NO;
-        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-    }
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [self.topHeaderNavigationController removeAlternativeHeaderView];
-    [super viewWillDisappear:animated];
 }
 
 - (void)refresh {
@@ -289,7 +268,6 @@ NSString *currentUserID;
                                                   instantiateViewControllerWithIdentifier:@"ChallengeTableViewController"];
         [self.navigationController pushViewController:challengeViewController animated:YES];
     } else if (indexPath.section == 2 && indexPath.item == 0) {
-        self.topHeaderNavigationController.shouldHideTopHeader = YES;
         [self performSegueWithIdentifier:@"ShopsSegue" sender:self];
     } else if (indexPath.section == 2 && indexPath.item == 1) {
         [self performSegueWithIdentifier:@"CustomizationSegue" sender:self];

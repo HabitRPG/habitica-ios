@@ -155,11 +155,13 @@ class QuestProgressView: UIView {
         rageStrikeContainer.arrangedSubviews.forEach { (view) in
             view.removeFromSuperview()
         }
-        for rageStrike in group.rageStrikes {
-            let rageStrikeView = RageStrikeView()
-            rageStrikeView.locationIdentifier = rageStrike.key
-            rageStrikeView.isActive = rageStrike.value.boolValue
-            rageStrikeContainer.addArrangedSubview(rageStrikeView)
+        if let rageStrikes = group.rageStrikes {
+            for rageStrike in group.rageStrikes {
+                let rageStrikeView = RageStrikeView()
+                rageStrikeView.locationIdentifier = rageStrike.key
+                rageStrikeView.isActive = rageStrike.value.boolValue
+                rageStrikeContainer.addArrangedSubview(rageStrikeView)
+            }
         }
     }
     

@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.topHeaderCoordinator.hideHeader = YES;
     
     self.viewModel.delegate = self;
     [self.viewModel fetchShops];
@@ -34,15 +35,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.topHeaderNavigationController setShouldHideTopHeader:YES];
-    [self.topHeaderNavigationController stopFollowingScrollView];
     
     [self.tableView reloadData];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.topHeaderNavigationController removeAlternativeHeaderView];
 }
 
 - (void)setupShopDictionary {

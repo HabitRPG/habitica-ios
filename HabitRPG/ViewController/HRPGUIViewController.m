@@ -13,18 +13,28 @@
 
 @implementation HRPGUIViewController
 
+- (void)viewDidLoad {
+    self.topHeaderCoordinator = [[TopHeaderCoordinator alloc] initWithTopHeaderNavigationController:[self hrpgTopHeaderNavigationController]];
+    [super viewDidLoad];
+    [self.topHeaderCoordinator viewDidLoad];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if ([self hrpgTopHeaderNavigationController]) {
-        [self hrpgTopHeaderNavigationController].hideNavbar = NO;
-        [self hrpgTopHeaderNavigationController].navbarVisibleColor = [self hrpgTopHeaderNavigationController].defaultNavbarVisibleColor;
-    }
+    [self.topHeaderCoordinator viewWillAppear];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [super displayTutorialStep:[HRPGManager sharedManager]];
+    
+    [self.topHeaderCoordinator viewDidAppear];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.topHeaderCoordinator viewWillDisappear];
+    [super viewWillDisappear:animated];
 }
 
 @end

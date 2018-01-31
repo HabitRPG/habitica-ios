@@ -59,6 +59,7 @@ class AttributePointsVieController: HRPGUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topHeaderCoordinator?.hideHeader = true
         self.tutorialIdentifier = "stats"
     }
     
@@ -70,11 +71,7 @@ class AttributePointsVieController: HRPGUIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.hrpgTopHeaderNavigationController().hideNavbar = false
         super.viewWillAppear(animated)
-        self.hrpgTopHeaderNavigationController().removeAlternativeHeaderView()
-        self.hrpgTopHeaderNavigationController().shouldHideTopHeader = true
-        self.hrpgTopHeaderNavigationController().stopFollowingScrollView()
         
         pointsToAllocateLeftView.image = HabiticaIcons.imageOfAttributeSparklesLeft
         pointsToAllocateRightView.image = HabiticaIcons.imageOfAttributeSparklesRight
@@ -113,11 +110,6 @@ class AttributePointsVieController: HRPGUIViewController {
             self?.updateStats()
             self?.updateAutoAllocatonViews()
         })
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        observer?.invalidate()
-        super.viewWillDisappear(animated)
     }
     
     private func allocate(_ attribute: String) {

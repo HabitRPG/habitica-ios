@@ -9,7 +9,7 @@
 import UIKit
 
 class TavernViewController: HRPGUIViewController, UIScrollViewDelegate, NSFetchedResultsControllerDelegate {
-    
+        
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
     
@@ -23,10 +23,11 @@ class TavernViewController: HRPGUIViewController, UIScrollViewDelegate, NSFetche
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.segmentedControl.selectedSegmentIndex = 0
         self.segmentedControl.tintColor = UIColor.purple300()
         self.segmentedControl.addTarget(self, action: #selector(TavernViewController.switchView(_:)), for: .valueChanged)
+        topHeaderCoordinator?.hideHeader = false
+        topHeaderCoordinator?.alternativeHeader = segmentedControl
 
         scrollView.delegate = self
         
@@ -82,8 +83,6 @@ class TavernViewController: HRPGUIViewController, UIScrollViewDelegate, NSFetche
         let segmentedWrapper = PaddedView()
         segmentedWrapper.containedView = self.segmentedControl
         if let navController = self.hrpgTopHeaderNavigationController() {
-            navController.setAlternativeHeaderView(segmentedWrapper)
-            navController.showHeader()
             scrollViewTopConstraint.constant = navController.contentInset
         }
     }

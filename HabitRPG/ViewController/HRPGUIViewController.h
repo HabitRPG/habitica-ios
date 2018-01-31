@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "TutorialStepsProtocol.h"
 
+@class TopHeaderCoordinator;
+
 @interface HRPGUIViewController : UIViewController<TutorialStepsProtocol>
 
 @property NSString *tutorialIdentifier;
 @property NSArray *coachMarks;
 @property BOOL displayedTutorialStep;
 @property TutorialStepView *activeTutorialView;
+@property TopHeaderCoordinator *topHeaderCoordinator;
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */; };
 		2907267E1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */; };
 		290726811F750FC400545550 /* ShopCategory+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 290726801F750FC400545550 /* ShopCategory+CoreDataClass.m */; };
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
@@ -443,6 +444,7 @@
 
 /* Begin PBXFileReference section */
 		281AC256BB298E2B402BE5DF /* Pods-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderCoordinator.swift; sourceTree = "<group>"; };
 		2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTravelersCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		2907267F1F750FC400545550 /* ShopCategory+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShopCategory+CoreDataClass.h"; sourceTree = "<group>"; };
 		290726801F750FC400545550 /* ShopCategory+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ShopCategory+CoreDataClass.m"; sourceTree = "<group>"; };
@@ -1705,6 +1707,7 @@
 				494E540F1F2EEF810003683C /* Amplitude+HRPGHelpers.m */,
 				494E53FF1F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.h */,
 				494E54001F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m */,
+				29E162E11FFC21E100685640 /* CustomFontMetrics.swift */,
 				299BD6361F5457E100E22935 /* HabiticaIcons.swift */,
 				D995D5981D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.h */,
 				D995D5991D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m */,
@@ -1723,6 +1726,8 @@
 				D92503BD1D5C9219006C9388 /* NSString+UUID.m */,
 				D99BC43119D4C34A006DC132 /* OnePasswordExtension.h */,
 				D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */,
+				29FC885120134A8F002B3D3F /* PurchaseHandler.swift */,
+				290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */,
 				D9CD2DD61BCAC00300B1304B /* TutorialStepsProtocol.h */,
 				D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */,
 				D976D23E1B98FA940032BC41 /* UIColor+Habitica.h */,
@@ -1740,8 +1745,6 @@
 				D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */,
 				D96C85461DCCD8BC003E3616 /* UIWindow+VisibleController.h */,
 				D96C85471DCCD8BC003E3616 /* UIWindow+VisibleController.m */,
-				29E162E11FFC21E100685640 /* CustomFontMetrics.swift */,
-				29FC885120134A8F002B3D3F /* PurchaseHandler.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1749,15 +1752,15 @@
 		D9A63A311E1031FD0083ADC4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				29E16318200E849000685640 /* Social */,
-				2986EB091FCC63CC00B316F6 /* User */,
 				D9E02EC41E5E02E7002CFCE2 /* Challenges */,
-				D984D5871E49F9D9006E84F8 /* Purchases */,
 				D96BFC4D1E181B5500266EEF /* Intro */,
 				D9A63A371E104F6C0083ADC4 /* Login */,
-				29AAA1641F2B6D2400029737 /* Setup */,
+				D984D5871E49F9D9006E84F8 /* Purchases */,
 				2957B8B41F4B2DF900E836EF /* Rewards */,
 				29B3FEAD1F9A339B000B12CF /* Settings */,
+				29AAA1641F2B6D2400029737 /* Setup */,
+				29E16318200E849000685640 /* Social */,
+				2986EB091FCC63CC00B316F6 /* User */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1886,7 +1889,6 @@
 				D905D08D1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.h */,
 				D905D08E1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m */,
 				D905D08B1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib */,
-				29FC8861201A300B002B3D3F /* ProgressBar.swift */,
 				D9884B4319168AF00078BC7C /* HRPGProgressView.h */,
 				D9884B4419168AF00078BC7C /* HRPGProgressView.m */,
 				D9D9EF961D54E51C00FC89C1 /* HRPGQRCodeView.h */,
@@ -1900,12 +1902,17 @@
 				D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */,
 				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
 				29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */,
+				29E1630E200E279900685640 /* MenuNavigationBarView.swift */,
+				29E1630C200E23A500685640 /* MenuNavigationBarView.xib */,
 				D96C853C1DCB61EE003E3616 /* Notifications */,
 				299BD6211F505DFA00E22935 /* PaddedLabel.swift */,
 				D9525F9C1E64739900C529B8 /* PaddedView.swift */,
 				D9CE90441E4CDD6200702578 /* PillView.swift */,
+				29FC8861201A300B002B3D3F /* ProgressBar.swift */,
 				298119B01F50453100F9FB39 /* QuestGoalView.swift */,
 				298119B41F5048C000F9FB39 /* QuestGoalView.xib */,
+				29E16314200E629800685640 /* QuestProgressBarView.swift */,
+				29FC8867201B7B61002B3D3F /* Quests */,
 				29701FE51F56DABC0097BBCC /* RoundedView.swift */,
 				293282131F389CC000D42961 /* SetupCustomizationItemView.swift */,
 				293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */,
@@ -1919,13 +1926,9 @@
 				29255E481F3E1B0F0094A3E3 /* ToastView.swift */,
 				29701FE11F5617900097BBCC /* ToastView.xib */,
 				299BD6331F5420F000E22935 /* Tutorials */,
+				29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
-				29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */,
-				29E1630C200E23A500685640 /* MenuNavigationBarView.xib */,
-				29E1630E200E279900685640 /* MenuNavigationBarView.swift */,
-				29E16314200E629800685640 /* QuestProgressBarView.swift */,
-				29FC8867201B7B61002B3D3F /* Quests */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3039,6 +3042,7 @@
 				D95D039B1C74E3E900D6BFB3 /* ImprovementCategory+CoreDataProperties.m in Sources */,
 				29E1630F200E279900685640 /* MenuNavigationBarView.swift in Sources */,
 				D9BB45631E71CE910002AE2E /* HabitTableViewCell.swift in Sources */,
+				290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */,
 				D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */,
 				D9D593581D004CC900D6C388 /* HRPGInboxTableViewController.m in Sources */,
 				D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */,

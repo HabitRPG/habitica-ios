@@ -22,6 +22,7 @@
 @implementation HRPGBaseViewController
 
 - (void)viewDidLoad {
+    self.topHeaderCoordinator = [[TopHeaderCoordinator alloc] initWithTopHeaderNavigationController:self.topHeaderNavigationController scrollView:self.tableView];
     [super viewDidLoad];
 
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -30,13 +31,7 @@
 
     [[Amplitude instance] logNavigateEventForClass:NSStringFromClass([self class])];
 
-    if (self.topHeaderNavigationController) {
-        [self.tableView setContentInset:UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0)];
-        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0);
-        if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden) {
-            [self.tableView setContentOffset:CGPointMake(0, -self.topHeaderNavigationController.contentOffset)];
-        }
-    }
+    [self.topHeaderCoordinator viewDidLoad];
     
     self.viewWidth = self.view.frame.size.width;
 }
@@ -79,18 +74,7 @@
     NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
     [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
 
-    if (self.topHeaderNavigationController) {
-            self.topHeaderNavigationController.hideNavbar = NO;
-            self.topHeaderNavigationController.navbarVisibleColor = self.topHeaderNavigationController.defaultNavbarVisibleColor;
-            [self.tableView setContentInset:UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0)];
-            self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0);
-            if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden) {
-                [self.tableView setContentOffset:CGPointMake(0, -self.topHeaderNavigationController.contentOffset)];
-            }
-        if (self.tableView.contentOffset.y < -self.topHeaderNavigationController.contentOffset) {
-            [self.tableView setContentOffset:CGPointMake(0, 0)];
-        }
-    }
+    [self.topHeaderCoordinator viewWillAppear];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -104,28 +88,16 @@
     }
 
     [self displayTutorialStep:[HRPGManager sharedManager]];
-
-    if (self.topHeaderNavigationController) {
-        [self.topHeaderNavigationController startFollowingScrollView:self.tableView];
-        if (self.topHeaderNavigationController.state == HRPGTopHeaderStateVisible &&
-            self.tableView.contentOffset.y > -self.topHeaderNavigationController.contentOffset) {
-            [self.topHeaderNavigationController scrollView:self.tableView
-                                        scrolledToPosition:self.tableView.contentOffset.y];
-        }
-    }
+    [self.topHeaderCoordinator viewDidAppear];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (self.topHeaderNavigationController) {
-        [self.topHeaderNavigationController scrollView:scrollView scrolledToPosition:scrollView.contentOffset.y];
-    }
+    [self.topHeaderCoordinator scrollViewDidScroll];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if (self.topHeaderNavigationController) {
-        [self.topHeaderNavigationController stopFollowingScrollView];
-    }
+    [self.topHeaderCoordinator viewWillDisappear];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

@@ -20,6 +20,7 @@
 @implementation HRPGCollectionViewController
 
 - (void)viewDidLoad {
+    self.topHeaderCoordinator = [[TopHeaderCoordinator alloc] initWithTopHeaderNavigationController:self.topHeaderNavigationController scrollView:self.collectionView];
     [super viewDidLoad];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -28,40 +29,19 @@
     
     [[Amplitude instance] logNavigateEventForClass:NSStringFromClass([self class])];
     
-    if (self.topHeaderNavigationController) {
-        UIEdgeInsets insets = UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0);
-        self.collectionView.contentInset = insets;
-        self.collectionView.scrollIndicatorInsets = insets;
-        if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden) {
-            self.collectionView.contentOffset =
-                CGPointMake(0, -self.topHeaderNavigationController.contentOffset);
-        }
-    }
+    [self.topHeaderCoordinator viewDidLoad];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if (self.topHeaderNavigationController) {
-        self.topHeaderNavigationController.hideNavbar = NO;
-        self.topHeaderNavigationController.navbarVisibleColor = self.topHeaderNavigationController.defaultNavbarVisibleColor;
-        CGFloat y = self.collectionView.contentOffset.y;
-        CGFloat top = self.collectionView.contentInset.top;
-        if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden &&
-            y < top - self.topHeaderNavigationController.contentOffset) {
-            self.collectionView.contentOffset =
-                CGPointMake(0, -self.topHeaderNavigationController.contentOffset);
-        } else if (self.topHeaderNavigationController.state == HRPGTopHeaderStateVisible) {
-            [self.topHeaderNavigationController scrollView:self.collectionView
-                                        scrolledToPosition:y];
-        }
-    }
+    [self.topHeaderCoordinator viewWillAppear];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.topHeaderNavigationController startFollowingScrollView:self.collectionView];
-    
+    [self.topHeaderCoordinator viewDidAppear];
+
     User *user = [[HRPGManager sharedManager] getUser];
     if (user && user.health && user.health.floatValue <= 0) {
         [[HRPGDeathView new] show];
@@ -70,11 +50,11 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.topHeaderNavigationController stopFollowingScrollView];
+    [self.topHeaderCoordinator viewWillDisappear];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.topHeaderNavigationController scrollView:scrollView scrolledToPosition:scrollView.contentOffset.y];
+    [self.topHeaderCoordinator scrollViewDidScroll];
 }
 
 - (TopHeaderViewController *)topHeaderNavigationController {

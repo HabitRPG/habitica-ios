@@ -10,7 +10,7 @@ import UIKit
 
 class TopHeaderViewController: UINavigationController {
     @objc public var state: HRPGTopHeaderState = HRPGTopHeaderStateVisible
-    @objc public let defaultNavbarHiddenColor = UIColor.purple300()
+    @objc public let defaultNavbarHiddenColor = UIColor.purple300() ?? UIColor.white
     @objc public let defaultNavbarVisibleColor = UIColor.white
     private var headerView: UIView?
     private var alternativeHeaderView: UIView?
@@ -49,9 +49,9 @@ class TopHeaderViewController: UINavigationController {
                     self.hideHeader()
                 } else {
                     self.showHeader()
-                    self.view.setNeedsLayout()
-                    self.view.layoutIfNeeded()
                 }
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
             }
         }
     }
@@ -166,7 +166,7 @@ class TopHeaderViewController: UINavigationController {
     public func hideHeader(animated: Bool = true) {
         self.state = HRPGTopHeaderStateHidden
         var frame = self.backgroundView.frame
-        frame.origin.y = -frame.size.height
+        frame.origin.y = -topHeaderHeight
         self.headerYPosition = frame.origin.y
         UIView.animate(withDuration: animated ? 0.3 : 0.0, delay: 0, options: .curveEaseInOut, animations: {
             self.backgroundView.frame = frame
@@ -266,7 +266,6 @@ class TopHeaderViewController: UINavigationController {
         if let header = self.headerView {
             self.backgroundView.addSubview(header)
             self.bottomBorderView.isHidden = false
-            self.showHeader(animated: false)
         }
         self.viewWillLayoutSubviews()
     }
