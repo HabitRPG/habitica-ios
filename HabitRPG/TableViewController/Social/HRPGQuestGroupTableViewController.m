@@ -193,11 +193,10 @@
                 (indexPath.item == 1 && ![self listMembers])) {
                 UILabel *lifeLabel = [cell viewWithTag:1];
                 lifeLabel.text =
-                    [NSString stringWithFormat:@"%@ / %@", self.group.questHP, self.quest.bossHp];
+                [NSString stringWithFormat:@"%@ / %@", [NSNumber numberWithFloat:ceil(self.group.questHP.floatValue)], self.quest.bossHp];
                 lifeLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
                 HRPGProgressView *lifeBar = [cell viewWithTag:2];
-                lifeBar.progress =
-                    @([self.group.questHP floatValue] / [self.quest.bossHp floatValue]);
+                lifeBar.progress = @([self.group.questHP floatValue] / [self.quest.bossHp floatValue]);
             } else if ((indexPath.item == 3 && [self listMembers]) ||
                        (indexPath.item == 2 && ![self listMembers])) {
                 UILabel *lifeLabel = [cell viewWithTag:1];
@@ -240,7 +239,7 @@
 }
 
 - (bool)isActiveBossQuest {
-    return [self.group.questActive boolValue] && [self.group.questHP integerValue] > 0;
+    return [self.group.questActive boolValue] && [self.group.questHP floatValue] > 0;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

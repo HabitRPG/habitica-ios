@@ -2043,7 +2043,7 @@ NSString *currentUser;
         @"(key).colors.dark": @"colorDark",
         @"(key).colors.medium": @"colorMedium",
         @"(key).colors.light": @"colorLight",
-        @"(key).colors.extralight": @"colorExtraLight",
+        @"(key).colors.a": @"colorExtraLight",
         @"@metadata.mapping.rootKeyPath" : @"type"
     }];
     questMapping.identificationAttributes = @[ @"key" ];

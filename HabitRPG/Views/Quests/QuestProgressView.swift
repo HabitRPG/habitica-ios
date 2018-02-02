@@ -147,8 +147,8 @@ class QuestProgressView: UIView {
     
     @objc
     func configure(group: Group) {
-        healthProgressView.currentValue = group.questHP.floatValue
-        rageProgressView.currentValue = group.questRage.floatValue
+        healthProgressView.currentValue = group.questHP?.floatValue ?? 0
+        rageProgressView.currentValue = group.questRage?.floatValue ?? 0
         
         rageStrikeCountLabel.text = "Rage Strikes: \(group.rageStrikeCount)/\(group.totalRageStrikes)"
         
@@ -156,7 +156,7 @@ class QuestProgressView: UIView {
             view.removeFromSuperview()
         }
         if let rageStrikes = group.rageStrikes {
-            for rageStrike in group.rageStrikes {
+            for rageStrike in rageStrikes {
                 let rageStrikeView = RageStrikeView()
                 rageStrikeView.locationIdentifier = rageStrike.key
                 rageStrikeView.isActive = rageStrike.value.boolValue
