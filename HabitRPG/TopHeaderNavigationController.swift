@@ -54,13 +54,24 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     private var gestureRecognizer: UIPanGestureRecognizer?
     private var headerYPosition: CGFloat = 0
     
+    private var visibleTintColor = UIColor.purple400()
+    private var hiddenTintColor = UIColor.white
+    private var visibleTextColor = UIColor.black
+    private var hiddenTextColor = UIColor.white
+    
     @objc public var navbarHiddenColor: UIColor = UIColor.purple300() {
         didSet {
+            let isHiddenLightColor = navbarHiddenColor.isLight()
+            hiddenTintColor = isHiddenLightColor ? UIColor.purple400() : UIColor.white
+            hiddenTextColor = isHiddenLightColor ? UIColor.black : UIColor.white
             setNavigationBarColors(navbarColorBlendingAlpha)
         }
     }
     @objc public var navbarVisibleColor: UIColor = UIColor.white {
         didSet {
+            let isVisibleLightColor = navbarVisibleColor.isLight()
+            visibleTintColor = isVisibleLightColor ? UIColor.purple400() : UIColor.white
+            visibleTextColor = isVisibleLightColor ? UIColor.black : UIColor.white
             setNavigationBarColors(navbarColorBlendingAlpha)
         }
     }
@@ -270,8 +281,8 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     public func setNavigationBarColors(_ alpha: CGFloat) {
         self.upperBackgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
         self.backgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
-        self.navigationBar.tintColor = UIColor.purple400().blend(with: .white, alpha: alpha)
-        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black.blend(with: .white, alpha: alpha)]
+        self.navigationBar.tintColor = visibleTintColor.blend(with: hiddenTintColor, alpha: alpha)
+        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: visibleTextColor.blend(with: hiddenTextColor, alpha: alpha)]
         updateStatusbarColor()
     }
     
