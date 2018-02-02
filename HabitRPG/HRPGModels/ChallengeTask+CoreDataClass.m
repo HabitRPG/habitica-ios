@@ -8,6 +8,8 @@
 
 #import "ChallengeTask+CoreDataClass.h"
 #import "Challenge+CoreDataClass.h"
+#import "UIColor+Habitica.h"
+
 @implementation ChallengeTask
 
 @end

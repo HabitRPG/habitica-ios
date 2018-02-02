@@ -2209,6 +2209,14 @@ NSString *currentUser;
                                                            @"leader.profile.name": @"leaderName",
                                                            }];
     
+    RKEntityMapping *challengeCategoryMapping = [RKEntityMapping mappingForEntityForName:@"ChallengeCategory" inManagedObjectStore:managedObjectStore];
+    [challengeCategoryMapping addAttributeMappingsFromArray:@[@"name", @"slug"]];
+    [challengeCategoryMapping addAttributeMappingsFromDictionary:@{@"_id": @"id"}];
+    challengeCategoryMapping.identificationAttributes = @[@"id"];
+    [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"categories"
+                                                                                     toKeyPath:@"categories"
+                                                                                   withMapping:challengeCategoryMapping]];
+    
     RKEntityMapping *groupMapping = [RKEntityMapping mappingForEntityForName:@"Group" inManagedObjectStore:managedObjectStore];
     [groupMapping addAttributeMappingsFromArray:@[@"id", @"name"]];
     [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"group" toKeyPath:@"group" withMapping:groupMapping]];
@@ -2222,7 +2230,6 @@ NSString *currentUser;
     [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tasksOrder.dailies" toKeyPath:@"dailies" withMapping:challengeTaskOrderMapping]];
     [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tasksOrder.todos" toKeyPath:@"todos" withMapping:challengeTaskOrderMapping]];
     [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tasksOrder.rewards" toKeyPath:@"rewards" withMapping:challengeTaskOrderMapping]];
-
     
     responseDescriptor = [RKResponseDescriptor
                           responseDescriptorWithMapping:challengeMapping
@@ -2928,6 +2935,31 @@ NSString *currentUser;
                                               }];
 }
 
+- (void)fetchChallenge:(Challenge *)challenge
+             onSuccess:(void (^)())successBlock
+               onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"challenges/%@", challenge.id]
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  NSError *executeError = nil;
+                                                  [[self getManagedObjectContext] saveToPersistentStore:&executeError];
+                                                  if (successBlock) {
+                                                      successBlock();
+                                                  }
+                                                  [self.networkIndicatorController endNetworking];
+                                                  return;
+                                              }
+                                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  [self handleNetworkError:operation withError:error];
+                                                  if (errorBlock) {
+                                                      errorBlock();
+                                                  }
+                                                  [self.networkIndicatorController endNetworking];
+                                                  return;
+                                              }];
+}
 
 - (void)joinChallenge:(Challenge *)challenge onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];

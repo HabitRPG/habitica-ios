@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SLKTextViewController.h"
+#import <SlackTextViewController/SLKTextViewController.h>
 #import "HRPGManager.h"
 
 @interface HRPGInboxChatViewController : SLKTextViewController<NSFetchedResultsControllerDelegate>

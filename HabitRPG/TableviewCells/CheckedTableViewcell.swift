@@ -21,20 +21,31 @@ class CheckedTableViewCell: TaskTableViewCell {
     @IBOutlet weak var checklistLeftBorderView: UIView!
     @IBOutlet weak var checklistRightBorderView: UIView!
     
-    weak var task: Task?
+    weak var task: HRPGTaskProtocol?
     @objc var isExpanded = false
     @objc var checkboxTouched: (() -> Void)?
     @objc var checklistItemTouched: ((_ item: ChecklistItem) -> Void)?
 
-    override func configure(task: Task) {
+    override func configure(task: HRPGTaskProtocol) {
         self.task = task
         super.configure(task: task)
-        self.checkBox.configure(for: task)
-        self.checkBox.wasTouched = {[weak self] in
-            self?.checkTask()
+        if let taskObject = task as? NSObjectProtocol & HRPGTaskProtocol {
+            self.checkBox.configure(forTask: taskObject)
+        }
+        if task is Task {
+            self.checkBox.wasTouched = {[weak self] in
+                self?.checkTask()
+            }
         }
         
-        handleChecklist(task)
+        if let task = self.task as? Task {
+            handleChecklist(task)
+        } else if task is ChallengeTask {
+            self.checklistDoneLabel.isHidden = true
+            self.checklistAllLabel.isHidden = true
+            self.checklistSeparator.isHidden = true
+            self.checklistIndicatorWidth.constant = 0
+        }
 
         if task.completed?.boolValue ?? false {
             self.checklistIndicator.backgroundColor = .gray500()
@@ -52,9 +63,11 @@ class CheckedTableViewCell: TaskTableViewCell {
     }
     
     func handleChecklist(_ task: Task) {
-        self.checklistIndicator.backgroundColor = task.lightTaskColor()
-        self.checklistLeftBorderView.backgroundColor = task.taskColor()
-        self.checklistRightBorderView.backgroundColor = task.taskColor()
+        if let value = task.value {
+            self.checklistIndicator.backgroundColor = UIColor.forTaskValueLight(value)
+            self.checklistLeftBorderView.backgroundColor = UIColor.forTaskValue(value)
+            self.checklistRightBorderView.backgroundColor = UIColor.forTaskValue(value)
+        }
         self.checklistIndicator.isHidden = false
         self.checklistIndicator.translatesAutoresizingMaskIntoConstraints = false
         let checklistCount = task.checklist?.count ?? 0

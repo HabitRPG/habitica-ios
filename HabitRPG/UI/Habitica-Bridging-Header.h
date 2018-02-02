@@ -11,6 +11,7 @@
 #import "SubscriptionPlan+CoreDataClass.h"
 #import "HRPGCoreDataDataSource.h"
 #import "Challenge+CoreDataClass.h"
+#import "ChallengeCategory+CoreDataClass.h"
 #import "ChallengeTask+CoreDataClass.h"
 #import "ChecklistItem.h"
 #import "HRPGCheckBoxView.h"
@@ -44,3 +45,6 @@
 #import "HRPGGGuidelinesViewController.h"
 #import "HRPGChatTableViewCell.h"
 #import "HRPGUserProfileViewController.h"
+#import "HRPGInboxChatViewController.h"
+#import <SlackTextViewController/SLKTextViewController.h>
+#import "HRPGTaskProtocol.h"

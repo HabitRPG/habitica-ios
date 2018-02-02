@@ -7,11 +7,11 @@
 //
 
 #import "Task+CoreDataClass.h"
-
+#import "HRPGTaskProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Task (CoreDataProperties)
+@interface Task (CoreDataProperties) <HRPGTaskProtocol>
 
 + (NSFetchRequest<Task *> *)fetchRequest;
 

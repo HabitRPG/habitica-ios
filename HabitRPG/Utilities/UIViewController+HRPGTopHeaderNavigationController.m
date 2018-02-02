@@ -11,9 +11,9 @@
 
 @implementation UIViewController (TopHeaderViewController)
 
-- (TopHeaderViewController *)hrpgTopHeaderNavigationController {
-    if ([self.navigationController isKindOfClass:[TopHeaderViewController class]]) {
-        return (TopHeaderViewController *)self.navigationController;
+- (UINavigationController<TopHeaderNavigationControllerProtocol> *)hrpgTopHeaderNavigationController {
+    if ([self.navigationController isKindOfClass:[UINavigationController class]] && [self.navigationController conformsToProtocol:@protocol(TopHeaderNavigationControllerProtocol)]) {
+        return (UINavigationController<TopHeaderNavigationControllerProtocol> *)self.navigationController;
     }
     return nil;
 }

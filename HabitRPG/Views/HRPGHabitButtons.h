@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Task+CoreDataClass.h"
+#import "HRPGTaskProtocol.h"
 
 @interface HRPGHabitButtons : UIView
 
-- (void)configureForTask:(Task *)task isNegative:(BOOL)isNegative;
+- (void)configureForTask:(NSObject<HRPGTaskProtocol> *)task isNegative:(BOOL)isNegative;
 
 - (void)action:(void (^)())actionBlock;
 

@@ -75,22 +75,35 @@ class TaskDetailLineView: UIView {
     }
 
     @objc
-    public func configure(task: Task) {
+    public func configure(task: HRPGTaskProtocol) {
         hasContent = false
-        setTag(enabled: task.tagArray.count > 0)
-        setReminder(enabled: (task.reminders?.count ?? 0) > 0)
-        setChallenge(enabled: task.challengeID != nil)
-        setStreak(count: task.streak?.intValue ?? 0)
+        if let task = task as? Task {
+            setTag(enabled: task.tagArray.count > 0)
+            setReminder(enabled: (task.reminders?.count ?? 0) > 0)
+            setChallenge(enabled: task.challengeID != nil)
+            setStreak(count: task.streak?.intValue ?? 0)
+        } else if task is ChallengeTask {
+            setTag(enabled: false)
+            setReminder(enabled: false)
+            setChallenge(enabled: true)
+            setStreak(count: 0)
+        }
 
         if task.type == "habit" {
             setCalendarIcon(enabled: false)
-            setLastCompleted(task: task)
             detailLabel.isHidden = true
+            if let task = task as? Task {
+                setLastCompleted(task: task)
+            }
         } else if task.type == "daily" {
             setCalendarIcon(enabled: false)
             detailLabel.isHidden = true
         } else if task.type == "todo" {
-            setDueDate(task: task)
+            if let task = task as? Task {
+                setDueDate(task: task)
+            } else {
+                setDueDate(task: nil)
+            }
         }
 
         hasContent = !tagIconView.isHidden || !reminderIconView.isHidden || !challengeIconView.isHidden || !streakIconView.isHidden || !detailLabel.isHidden
@@ -118,8 +131,8 @@ class TaskDetailLineView: UIView {
         }
     }
 
-    private func setDueDate(task: Task) {
-        if let duedate = task.duedate {
+    private func setDueDate(task: Task?) {
+        if let duedate = task?.duedate {
             detailLabel.isHidden = false
             let calendar = Calendar.current
             var components = calendar.dateComponents([.year, .month, .day], from: Date())
@@ -153,10 +166,8 @@ class TaskDetailLineView: UIView {
                         detailLabel.text = "Due in \(differenceInDays) days".localized
                     }
                 } else {
-                    if let duedate = task.duedate {
-                        setCalendarIcon(enabled: true)
-                        self.detailLabel.text = "Due \(formatter.string(from: duedate))".localized
-                    }
+                    setCalendarIcon(enabled: true)
+                    self.detailLabel.text = "Due \(formatter.string(from: duedate))".localized
                 }
             }
         } else {

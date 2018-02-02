@@ -11,7 +11,7 @@ import UIKit
 class TopHeaderCoordinator: NSObject {
     
     private weak var scrollView: UIScrollView?
-    private weak var topHeaderNavigationController: TopHeaderViewController?
+    private weak var topHeaderNavigationController: (UINavigationController & TopHeaderNavigationControllerProtocol)?
     @objc weak var alternativeHeader: UIView?
     @objc var hideNavBar = false
     @objc var hideHeader = false
@@ -20,12 +20,12 @@ class TopHeaderCoordinator: NSObject {
     @objc var navbarVisibleColor: UIColor?
     
     @objc
-    init(topHeaderNavigationController: TopHeaderViewController) {
+    init(topHeaderNavigationController: UINavigationController & TopHeaderNavigationControllerProtocol) {
         self.topHeaderNavigationController = topHeaderNavigationController
     }
     
     @objc
-    init(topHeaderNavigationController: TopHeaderViewController, scrollView: UIScrollView) {
+    init(topHeaderNavigationController: UINavigationController & TopHeaderNavigationControllerProtocol, scrollView: UIScrollView) {
         self.topHeaderNavigationController = topHeaderNavigationController
         self.scrollView = scrollView
     }

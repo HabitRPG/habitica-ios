@@ -25,6 +25,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.topHeaderCoordinator.hideHeader = NO;
+    self.topHeaderCoordinator.followScrollView = YES;
+    self.topHeaderNavigationController.shouldHideTopHeader = NO;
 
     [[HRPGManager sharedManager] fetchMember:self.userID
         onSuccess:nil onError:nil];

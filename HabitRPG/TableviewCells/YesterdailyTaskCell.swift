@@ -26,7 +26,7 @@ class YesterdailyTaskCell: UITableViewCell {
     }
 
     func configure(task: Task) {
-        checkbox.configure(for: task)
+        checkbox.configure(forTask: task)
         titleTextView.text = task.text?.unicodeEmoji
 
         checklistStackview.subviews.forEach { view in

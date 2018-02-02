@@ -121,6 +121,54 @@ extension UIColor {
     }
     
     /**
+     The color associated with a specific task value. Defaults to blue50.
+
+     - parameter taskValue: NSNumber value.
+     */
+    @objc public static func forTaskValue(_ taskValue: NSNumber) -> UIColor {
+        let intValue: Int = taskValue.intValue
+        if intValue < -20 {
+            return UIColor.darkRed50()
+        } else if intValue < -10 {
+            return UIColor.red50()
+        } else if intValue < -1 {
+            return UIColor.orange50()
+        } else if intValue < 1 {
+            return UIColor.yellow50()
+        } else if intValue < 5 {
+            return UIColor.green50()
+        } else if intValue < 10 {
+            return UIColor.teal50()
+        } else {
+            return UIColor.blue50()
+        }
+    }
+    
+    /**
+     The light color associated with a specific task value. Defaults to blue100.
+     
+     - parameter taskValue: NSNumber value.
+     */
+    @objc public static func forTaskValueLight(_ taskValue: NSNumber) -> UIColor {
+        let intValue: Int = taskValue.intValue
+        if intValue < -20 {
+            return UIColor.darkRed100()
+        } else if intValue < -10 {
+            return UIColor.red100()
+        } else if intValue < -1 {
+            return UIColor.orange100()
+        } else if intValue < 1 {
+            return UIColor.yellow100()
+        } else if intValue < 5 {
+            return UIColor.green100()
+        } else if intValue < 10 {
+            return UIColor.teal100()
+        } else {
+            return UIColor.blue100()
+        }
+    }
+    
+    /**
      Hex string of a UIColor instance.
      
      - parameter includeAlpha: Whether the alpha should be included.
@@ -164,7 +212,12 @@ extension UIColor {
         guard let components = self.cgColor.components else {
             return false
         }
-        let brightness = ((components[0] * 299) + (components[1] * 587) + (components[2] * 114)) / 1000
+        var brightness: CGFloat = 0.0
+        if components.count >= 3 {
+            brightness = ((components[0] * 299) + (components[1] * 587) + (components[2] * 114)) / 1000
+        } else {
+            brightness = components[0]
+        }
         
         if brightness < 0.5 {
             return false

@@ -147,7 +147,7 @@
     return _managedObjectContext;
 }
 
-- (TopHeaderViewController *)topHeaderNavigationController {
+- (UINavigationController<TopHeaderNavigationControllerProtocol> *)topHeaderNavigationController {
     return [self hrpgTopHeaderNavigationController];
 }
 

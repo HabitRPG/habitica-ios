@@ -8,7 +8,7 @@
 
 #import "Challenge+CoreDataClass.h"
 
-@class ChallengeTask;
+@class ChallengeTask, ChallengeCategory;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *shortName;
 @property (nullable, nonatomic, copy) NSDate *updatedAt;
 @property (nullable, nonatomic, retain) Group *group;
+@property (nullable, nonatomic, retain) NSSet<ChallengeCategory *> *categories;
 @property (nullable, nonatomic, retain) NSSet<ChallengeTask *> *habits;
 @property (nullable, nonatomic, retain) User *user;
 @property (nullable, nonatomic, retain) NSSet<ChallengeTask *> *dailies;

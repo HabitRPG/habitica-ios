@@ -9,6 +9,7 @@
 #import "HRPGTopHeaderNavigationController.h"
 #import "HRPGUserTopHeader.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGTopHeaderNavigationController ()
 
@@ -71,39 +72,55 @@
 }
 
 - (void)showHeader {
+    [self showHeaderWithAnimated:YES];
+}
+
+- (void)showHeaderWithAnimated:(BOOL)animated {
     self.state = HRPGTopHeaderStateVisible;
     CGRect frame = self.backgroundView.frame;
     frame.origin.y = [self bgViewOffset];
     self.headerYPosition = frame.origin.y;
-    [UIView animateWithDuration:0.3
-        delay:0
-        options:UIViewAnimationOptionCurveEaseOut
-        animations:^() {
-            self.backgroundView.frame = frame;
-            [self setNavigationBarColors:0];
-        }
-        completion:^(BOOL completed){
-        }];
+    void(^block)() = ^() {
+        self.backgroundView.frame = frame;
+        [self setNavigationBarColors:0];
+    };
+    if (animated) {
+        [UIView animateWithDuration:0.3
+                              delay:0
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:block
+                         completion:^(BOOL completed){}];
+    } else {
+        block();
+    }
 }
 
 - (void)hideHeader {
+    [self hideHeaderWithAnimated:YES];
+}
+
+- (void)hideHeaderWithAnimated:(BOOL)animated {
     self.state = HRPGTopHeaderStateHidden;
     CGRect frame = self.backgroundView.frame;
     frame.origin.y = -frame.size.height;
     self.headerYPosition = frame.origin.y;
-    [UIView animateWithDuration:0.3
-        delay:0
-        options:UIViewAnimationOptionCurveEaseOut
-        animations:^() {
-            self.backgroundView.frame = frame;
-            if (!self.shouldHideTopHeader) {
-                [self setNavigationBarColors:1];
-            } else {
-                [self setNavigationBarColors:0];
-            }
+    void(^block)() = ^() {
+        self.backgroundView.frame = frame;
+        if (!self.shouldHideTopHeader) {
+            [self setNavigationBarColors:1];
+        } else {
+            [self setNavigationBarColors:0];
         }
-        completion:^(BOOL completed){
-        }];
+    };
+    if (animated) {
+        [UIView animateWithDuration:0.3
+                              delay:0
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:block
+                         completion:^(BOOL completed){}];
+    } else {
+        block();
+    }
 }
 
 - (void)startFollowingScrollView:(UIScrollView *)scrollView {
@@ -120,7 +137,7 @@
     self.scrollableView = nil;
 }
 
-- (void)scrollview:(UIScrollView *)scrollView scrolledToPosition:(CGFloat)position {
+- (void)scrollView:(UIScrollView *)scrollView scrolledToPosition:(CGFloat)position {
     if (self.scrollableView != scrollView) {
         return;
     }
@@ -202,6 +219,15 @@
 }
 
 #pragma mark - Helpers
+
+- (CGFloat)contentInset {
+    return [self getContentInset];
+}
+
+- (CGFloat)contentOffset {
+    return [self getContentOffset];
+}
+
 - (CGFloat)getContentInset {
     if (self.shouldHideTopHeader) {
         return 0;
@@ -236,7 +262,7 @@
     return YES;
 }
 
-- (void)setShouldHideTopHeader:(BOOL)shouldHideTopHeader{
+- (void)setShouldHideTopHeader:(BOOL)shouldHideTopHeader animated:(BOOL)animated {
     if (_shouldHideTopHeader != shouldHideTopHeader) {
         _shouldHideTopHeader = shouldHideTopHeader;
         if (shouldHideTopHeader) {
@@ -247,6 +273,10 @@
             [self.view layoutIfNeeded];
         }
     }
+}
+
+- (void)setShouldHideTopHeader:(BOOL)shouldHideTopHeader{
+    [self setShouldHideTopHeader:shouldHideTopHeader animated:YES];
 }
 
 @end
