@@ -11,7 +11,7 @@ import UIKit
 @objc
 protocol TopHeaderNavigationControllerProtocol: class {
     @objc var state: HRPGTopHeaderState { get set }
-    @objc var defaultNavbarHiddenColor: UIColor? { get }
+    @objc var defaultNavbarHiddenColor: UIColor { get }
     @objc var defaultNavbarVisibleColor: UIColor { get }
     @objc var navbarHiddenColor: UIColor { get set }
     @objc var navbarVisibleColor: UIColor { get set }

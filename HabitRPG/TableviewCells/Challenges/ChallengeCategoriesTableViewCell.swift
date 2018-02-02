@@ -25,6 +25,7 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
         categories = challenge.categories?.map { $0.name ?? "" }
         if isExpanded {
             self.contentView.removeConstraint(bottomConstraint)
+            removeOldCategoryViews()
             addCategories()
             contentView.updateLayout()
         }
@@ -75,9 +76,7 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
     func collapse() {
         rotateCaret()
         
-        for view in categoryViews {
-            view.removeFromSuperview()
-        }
+        removeOldCategoryViews()
         categoryViews = []
         self.contentView.addConstraint(bottomConstraint)
         self.contentView.updateLayout()
@@ -94,6 +93,12 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
         }, completion: { _ in
             self.caretButton.isEnabled = true
         })
+    }
+    
+    func removeOldCategoryViews() {
+        for view in categoryViews {
+            view.removeFromSuperview()
+        }
     }
     
     @IBAction func caretPressed() {

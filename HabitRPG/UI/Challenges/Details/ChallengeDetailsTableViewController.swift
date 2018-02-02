@@ -13,6 +13,8 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.topHeaderCoordinator.hideHeader = true
+        self.topHeaderCoordinator.followScrollView = false
         
         title = "Details"
 
@@ -47,22 +49,6 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         tableView.register(UINib(nibName: "ChallengeTableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "header")
         
         self.viewModel?.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.topHeaderNavigationController.setShouldHideTopHeader(true, animated: false)
-        self.topHeaderNavigationController.stopFollowingScrollView()
-        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.topHeaderNavigationController.setShouldHideTopHeader(true, animated: false)
-        self.topHeaderNavigationController.stopFollowingScrollView()
-        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
