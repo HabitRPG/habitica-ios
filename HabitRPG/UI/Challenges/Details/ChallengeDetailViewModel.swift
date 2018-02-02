@@ -23,6 +23,7 @@ protocol ChallengeDetailViewModelOutputs {
     var cellModelsSignal: Signal<[MultiModelDataSourceSection], NoError> { get }
     var reloadTableSignal: Signal<Void, NoError> { get }
     var animateUpdatesSignal: Signal<(), NoError> { get }
+    var nextViewControllerSignal: Signal<UIViewController, NoError> { get }
 }
 
 protocol ChallengeDetailViewModelProtocol {
@@ -30,18 +31,20 @@ protocol ChallengeDetailViewModelProtocol {
     var outputs: ChallengeDetailViewModelOutputs { get }
 }
 
-class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetailViewModelInputs, ChallengeDetailViewModelOutputs, ResizableTableViewCellDelegate {
+class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetailViewModelInputs, ChallengeDetailViewModelOutputs, ResizableTableViewCellDelegate, ChallengeCreatorCellDelegate {
     var inputs: ChallengeDetailViewModelInputs { return self }
     var outputs: ChallengeDetailViewModelOutputs { return self }
     
     let cellModelsSignal: Signal<[MultiModelDataSourceSection], NoError>
     let reloadTableSignal: Signal<Void, NoError>
     let animateUpdatesSignal: Signal<(), NoError>
+    let nextViewControllerSignal: Signal<UIViewController, NoError>
     
     let challengeProperty: MutableProperty<Challenge>
     let viewDidLoadProperty = MutableProperty(())
     let reloadTableProperty = MutableProperty(())
     let animateUpdatesProperty = MutableProperty(())
+    let nextViewControllerProperty = MutableProperty<UIViewController?>(nil)
     
     let cellModelsProperty: MutableProperty<[MultiModelDataSourceSection]> = MutableProperty<[MultiModelDataSourceSection]>([])
     let infoSectionProperty: MutableProperty<MultiModelDataSourceSection> = MutableProperty<MultiModelDataSourceSection>(MultiModelDataSourceSection())
@@ -64,6 +67,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         challengeProperty = MutableProperty<Challenge>(challenge)
         reloadTableSignal = reloadTableProperty.signal
         animateUpdatesSignal = animateUpdatesProperty.signal
+        nextViewControllerSignal = nextViewControllerProperty.signal.skipNil()
         
         joinLeaveStyleProvider = JoinLeaveButtonAttributeProvider(challenge)
         publishStyleProvider = PublishButtonAttributeProvider(challenge)
@@ -110,7 +114,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     func setupInfo() {
         challengeProperty.signal.observeValues { (challenge) in
             let infoItem = ChallengeMultiModelDataSourceItem<ChallengeDetailInfoTableViewCell>(challenge, identifier: "info")
-            let creatorItem = ChallengeMultiModelDataSourceItem<ChallengeCreatorTableViewCell>(challenge, identifier: "creator")
+            let creatorItem = ChallengeCreatorMultiModelDataSourceItem(challenge, cellDelegate: self, identifier: "creator")
             let categoryItem = ChallengeResizableMultiModelDataSourceItem<ChallengeCategoriesTableViewCell>(challenge, resizingDelegate: self, identifier: "categories")
             let descriptionItem = ChallengeResizableMultiModelDataSourceItem<ChallengeDescriptionTableViewCell>(challenge, resizingDelegate: self, identifier: "description")
             
@@ -174,7 +178,6 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         endButtonNilSignal.and(doubleEndButtonNilSignal).filter({ $0 }).observeValues({ _ in
             let endSection = MultiModelDataSourceSection()
             self.endSectionProperty.value = endSection
-            
         })
         
         ownedChallengeSignal.observeValues { _ in
@@ -240,6 +243,27 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         animateUpdatesProperty.value = ()
     }
     
+    // MARK: Creator delegate
+    
+    func userPressed(_ user: User) {
+        let secondStoryBoard = UIStoryboard(name: "Social", bundle: nil)
+        if let userViewController: HRPGUserProfileViewController = secondStoryBoard.instantiateViewController(withIdentifier: "UserProfileViewController") as? HRPGUserProfileViewController {
+            userViewController.userID = user.id
+            userViewController.username = user.username
+            nextViewControllerProperty.value = userViewController
+        }
+    }
+    
+    func messagePressed(user: User) {
+        let secondStoryBoard = UIStoryboard(name: "Social", bundle: nil)
+        if let chatViewController: HRPGInboxChatViewController = secondStoryBoard.instantiateViewController(withIdentifier: "InboxChatViewController") as? HRPGInboxChatViewController {
+            chatViewController.userID = user.id
+            chatViewController.username = user.username
+            chatViewController.isPresentedModally = true
+            nextViewControllerProperty.value = chatViewController
+        }
+    }
+    
     // MARK: ChallengeDetailViewModelInputs
     
     func viewDidLoad() {
@@ -270,6 +294,27 @@ class ChallengeMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem<T> 
     override func configureCell(_ cell: UITableViewCell) {
         if let clazzCell: T = cell as? T {
             clazzCell.configure(with: challenge)
+        }
+    }
+}
+
+// MARK: -
+
+class ChallengeCreatorMultiModelDataSourceItem: ChallengeMultiModelDataSourceItem<ChallengeCreatorTableViewCell> {
+    private let challenge: Challenge
+    private weak var cellDelegate: ChallengeCreatorCellDelegate?
+    
+    init(_ challenge: Challenge, cellDelegate: ChallengeCreatorCellDelegate, identifier: String) {
+        self.challenge = challenge
+        self.cellDelegate = cellDelegate
+        super.init(challenge, identifier: identifier)
+    }
+    
+    override func configureCell(_ cell: UITableViewCell) {
+        super.configureCell(cell)
+        
+        if let creatorCell = cell as? ChallengeCreatorTableViewCell {
+            creatorCell.delegate = cellDelegate
         }
     }
 }

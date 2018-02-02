@@ -9,7 +9,8 @@
 import UIKit
 
 protocol ChallengeCreatorCellDelegate: class {
-    func messagePressed()
+    func userPressed(_ user: User)
+    func messagePressed(user: User)
 }
 
 class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
@@ -17,6 +18,24 @@ class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
     @IBOutlet weak var userNameLabel: UILabel!
     
     weak var delegate: ChallengeCreatorCellDelegate?
+    
+    private var user: User? {
+        didSet {
+            if let member = user {
+                if avatarView.subviews.count == 0 {
+                    if let avatar = member.getAvatarViewShowsBackground(true, showsMount: false, showsPet: false) {
+                        avatarView.addSubview(avatar)
+                        avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(-10)-[avatar]-(0)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
+                        avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-15)-[avatar]-(-10)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
+                        
+                        setNeedsUpdateConstraints()
+                        setNeedsLayout()
+                        layoutIfNeeded()
+                    }
+                }
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,23 +51,19 @@ class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
     }
     
     func configure(user: User?) {
-        if let member = user {
-            if avatarView.subviews.count == 0 {
-                if let avatar = member.getAvatarViewShowsBackground(true, showsMount: false, showsPet: false) {
-                    avatarView.addSubview(avatar)
-                    avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(-10)-[avatar]-(0)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
-                    avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-15)-[avatar]-(-10)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
-                    
-                    setNeedsUpdateConstraints()
-                    setNeedsLayout()
-                    layoutIfNeeded()
-                }
-            }
+        self.user = user
+    }
+    
+    @IBAction func userPressed() {
+        if let user = user {
+            delegate?.userPressed(user)
         }
     }
     
     @IBAction func messagesPressed() {
-        delegate?.messagePressed()
+        if let user = user {
+            delegate?.messagePressed(user: user)
+        }
     }
     
 }

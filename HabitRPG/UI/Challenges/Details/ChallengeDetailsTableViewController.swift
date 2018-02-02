@@ -16,23 +16,27 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         
         title = "Details"
 
-        viewModel?.cellModelsSignal.observeValues({ (sections) in
-            self.dataSource.sections = sections
-            self.tableView.reloadData()
+        viewModel?.cellModelsSignal.observeValues({ [weak self] (sections) in
+            self?.dataSource.sections = sections
+            self?.tableView.reloadData()
         })
         
-        viewModel?.reloadTableSignal.observeValues {
-            self.tableView.reloadData()
+        viewModel?.reloadTableSignal.observeValues { [weak self] _ in
+            self?.tableView.reloadData()
         }
         
-        viewModel?.animateUpdatesSignal.observeValues({ _ in
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
+        viewModel?.animateUpdatesSignal.observeValues({ [weak self] _ in
+            self?.tableView.beginUpdates()
+            self?.tableView.endUpdates()
         })
         
-        viewModel?.joinLeaveStyleProvider.promptProperty.signal.observeValues({ (prompt) in
+        viewModel?.nextViewControllerSignal.observeValues({ [weak self] viewController in
+            self?.navigationController?.pushViewController(viewController, animated: true)
+        })
+        
+        viewModel?.joinLeaveStyleProvider.promptProperty.signal.observeValues({ [weak self] prompt in
             if let alertController = prompt {
-                self.present(alertController, animated: true, completion: nil)
+                self?.present(alertController, animated: true, completion: nil)
             }
         })
         
@@ -59,10 +63,6 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         self.topHeaderNavigationController.setShouldHideTopHeader(true, animated: false)
         self.topHeaderNavigationController.stopFollowingScrollView()
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

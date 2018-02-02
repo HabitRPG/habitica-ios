@@ -39,7 +39,7 @@ extension Challenge {
     }
     
     static func isPublished(_ challenge: Challenge?) -> Bool {
-        return false
+        return true
     }
     
     static func isEndable(_ challenge: Challenge?) -> Bool {

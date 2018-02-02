@@ -45,4 +45,6 @@
 #import "HRPGGGuidelinesViewController.h"
 #import "HRPGChatTableViewCell.h"
 #import "HRPGUserProfileViewController.h"
+#import "HRPGInboxChatViewController.h"
+#import <SlackTextViewController/SLKTextViewController.h>
 #import "HRPGTaskProtocol.h"
