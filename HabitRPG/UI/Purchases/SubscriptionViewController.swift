@@ -351,7 +351,7 @@ class SubscriptionViewController: HRPGBaseViewController {
             return false
         }
         let purchaseResult = SwiftyStoreKit.verifySubscription(
-            type: .autoRenewable,
+            ofType: .autoRenewable,
             productId: identifier,
             inReceipt: receipt,
             validUntil: Date()
