@@ -22,7 +22,7 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
     }
     
     func configure(with challenge: Challenge) {
-        challengeTitleLabel.text = challenge.name
+        challengeTitleLabel.text = challenge.name?.unicodeEmoji
         rewardCurrencyCountView.amount = challenge.prize?.intValue ?? 0
         participantsLabel.text = "\(challenge.memberCount?.intValue ?? 0)"
         
@@ -104,7 +104,7 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
     
     func nameTag(_ shortName: String) -> UILabel {
         let label = emptyTagLabel()
-        label.text = "  \(shortName)  "
+        label.text = "  \(shortName.unicodeEmoji)  "
         label.textColor = UIColor.gray200()
         label.backgroundColor = UIColor.gray600()
         
