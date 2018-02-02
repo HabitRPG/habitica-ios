@@ -15,7 +15,7 @@ protocol HRPGButtonModelInputs: class {
 }
 
 protocol HRPGButtonAttributeProvider: class {
-    var bgColorSignal: Signal<UIColor?, NoError> { get }
+    var bgColorSignal: Signal<UIColor, NoError> { get }
     var titleSignal: Signal<String, NoError> { get }
     var enabledSignal: Signal<Bool, NoError> { get }
     

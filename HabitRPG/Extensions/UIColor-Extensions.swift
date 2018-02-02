@@ -212,7 +212,12 @@ extension UIColor {
         guard let components = self.cgColor.components else {
             return false
         }
-        let brightness = ((components[0] * 299) + (components[1] * 587) + (components[2] * 114)) / 1000
+        var brightness: CGFloat = 0.0
+        if components.count >= 3 {
+            brightness = ((components[0] * 299) + (components[1] * 587) + (components[2] * 114)) / 1000
+        } else {
+            brightness = components[0]
+        }
         
         if brightness < 0.5 {
             return false

@@ -26,7 +26,7 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
     
     let promptProperty = MutableProperty<UIViewController?>(nil)
     
-    let bgColorSignal: Signal<UIColor?, NoError>
+    let bgColorSignal: Signal<UIColor, NoError>
     let titleSignal: Signal<String, NoError>
     let enabledSignal: Signal<Bool, NoError>
     
@@ -102,7 +102,7 @@ class PublishButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonMod
     let buttonStateSignal: Signal<ChallengeButtonState, NoError>
     let buttonPressedProperty = MutableProperty(())
     
-    let bgColorSignal: Signal<UIColor?, NoError>
+    let bgColorSignal: Signal<UIColor, NoError>
     let titleSignal: Signal<String, NoError>
     let enabledSignal: Signal<Bool, NoError>
     
@@ -147,7 +147,7 @@ class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
     let buttonStateSignal: Signal<ChallengeButtonState, NoError>
     let buttonPressedProperty = MutableProperty(())
     
-    let bgColorSignal: Signal<UIColor?, NoError>
+    let bgColorSignal: Signal<UIColor, NoError>
     let titleSignal: Signal<String, NoError>
     let enabledSignal: Signal<Bool, NoError>
     
@@ -183,7 +183,7 @@ class EndChallengeButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
     let buttonStateSignal: Signal<ChallengeButtonState, NoError>
     let buttonPressedProperty = MutableProperty(())
     
-    let bgColorSignal: Signal<UIColor?, NoError>
+    let bgColorSignal: Signal<UIColor, NoError>
     let titleSignal: Signal<String, NoError>
     let enabledSignal: Signal<Bool, NoError>
     

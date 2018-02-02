@@ -10,62 +10,62 @@
 
 @interface UIColor (Habitica)
 
-+ (UIColor *)purple50;
-+ (UIColor *)purple100;
-+ (UIColor *)purple200;
-+ (UIColor *)purple300;
-+ (UIColor *)purple400;
-+ (UIColor *)purple500;
-+ (UIColor *)purple600;
++ (nonnull UIColor *)purple50;
++ (nonnull UIColor *)purple100;
++ (nonnull UIColor *)purple200;
++ (nonnull UIColor *)purple300;
++ (nonnull UIColor *)purple400;
++ (nonnull UIColor *)purple500;
++ (nonnull UIColor *)purple600;
 
-+ (UIColor *)darkRed10;
-+ (UIColor *)darkRed50;
-+ (UIColor *)darkRed100;
-+ (UIColor *)darkRed500;
++ (nonnull UIColor *)darkRed10;
++ (nonnull UIColor *)darkRed50;
++ (nonnull UIColor *)darkRed100;
++ (nonnull UIColor *)darkRed500;
 
-+ (UIColor *)red10;
-+ (UIColor *)red50;
-+ (UIColor *)red100;
-+ (UIColor *)red500;
++ (nonnull UIColor *)red10;
++ (nonnull UIColor *)red50;
++ (nonnull UIColor *)red100;
++ (nonnull UIColor *)red500;
 
-+ (UIColor *)orange10;
-+ (UIColor *)orange50;
-+ (UIColor *)orange100;
-+ (UIColor *)orange500;
++ (nonnull UIColor *)orange10;
++ (nonnull UIColor *)orange50;
++ (nonnull UIColor *)orange100;
++ (nonnull UIColor *)orange500;
 
-+ (UIColor *)yellow5;
-+ (UIColor *)yellow10;
-+ (UIColor *)yellow50;
-+ (UIColor *)yellow100;
-+ (UIColor *)yellow500;
++ (nonnull UIColor *)yellow5;
++ (nonnull UIColor *)yellow10;
++ (nonnull UIColor *)yellow50;
++ (nonnull UIColor *)yellow100;
++ (nonnull UIColor *)yellow500;
 
-+ (UIColor *)green10;
-+ (UIColor *)green50;
-+ (UIColor *)green100;
-+ (UIColor *)green500;
++ (nonnull UIColor *)green10;
++ (nonnull UIColor *)green50;
++ (nonnull UIColor *)green100;
++ (nonnull UIColor *)green500;
 
-+ (UIColor *)teal10;
-+ (UIColor *)teal50;
-+ (UIColor *)teal100;
-+ (UIColor *)teal500;
++ (nonnull UIColor *)teal10;
++ (nonnull UIColor *)teal50;
++ (nonnull UIColor *)teal100;
++ (nonnull UIColor *)teal500;
 
-+ (UIColor *)blue10;
-+ (UIColor *)blue50;
-+ (UIColor *)blue100;
-+ (UIColor *)blue500;
++ (nonnull UIColor *)blue10;
++ (nonnull UIColor *)blue50;
++ (nonnull UIColor *)blue100;
++ (nonnull UIColor *)blue500;
 
-+ (UIColor *)gray10;
-+ (UIColor *)gray50;
-+ (UIColor *)gray100;
-+ (UIColor *)gray200;
-+ (UIColor *)gray300;
-+ (UIColor *)gray400;
-+ (UIColor *)gray500;
-+ (UIColor *)gray600;
-+ (UIColor *)gray700;
++ (nonnull UIColor *)gray10;
++ (nonnull UIColor *)gray50;
++ (nonnull UIColor *)gray100;
++ (nonnull UIColor *)gray200;
++ (nonnull UIColor *)gray300;
++ (nonnull UIColor *)gray400;
++ (nonnull UIColor *)gray500;
++ (nonnull UIColor *)gray600;
++ (nonnull UIColor *)gray700;
 
-+ (UIColor *)contributorColorFor:(NSInteger)level;
++ (nonnull UIColor *)contributorColorFor:(NSInteger)level;
 
-- (UIColor *)blendWithColor:(UIColor *)color2 alpha:(CGFloat)alpha2;
+- (nullable UIColor *)blendWithColor:(nullable UIColor *)color2 alpha:(CGFloat)alpha2;
 
 @end
