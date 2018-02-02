@@ -14,6 +14,7 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.topHeaderCoordinator.hideHeader = true
+        self.topHeaderCoordinator.navbarHiddenColor = .white
         self.topHeaderCoordinator.followScrollView = false
         
         title = "Details"
